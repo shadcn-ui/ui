@@ -4,6 +4,7 @@ import { build } from "@/src/commands/build"
 import { diff } from "@/src/commands/diff"
 import { info } from "@/src/commands/info"
 import { init } from "@/src/commands/init"
+import { list } from "@/src/commands/list"
 import { migrate } from "@/src/commands/migrate"
 import { build as registryBuild } from "@/src/commands/registry/build"
 import { mcp as registryMcp } from "@/src/commands/registry/mcp"
@@ -30,6 +31,7 @@ async function main() {
     .addCommand(add)
     .addCommand(diff)
     .addCommand(view)
+    .addCommand(list)
     .addCommand(migrate)
     .addCommand(info)
     .addCommand(build)

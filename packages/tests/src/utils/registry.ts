@@ -125,6 +125,30 @@ export async function createRegistryServer(
       return
     }
 
+    // Check if this is a registry.json request
+    if (urlWithoutQuery?.endsWith("/registry")) {
+      // Check if this requires bearer authentication
+      if (request.url?.includes("/bearer/")) {
+        // Validate bearer token
+        const token = request.headers.authorization?.split(" ")[1]
+        if (token !== "EXAMPLE_BEARER_TOKEN") {
+          response.writeHead(401, { "Content-Type": "application/json" })
+          response.end(JSON.stringify({ error: "Unauthorized" }))
+          return
+        }
+      }
+
+      response.writeHead(200, { "Content-Type": "application/json" })
+      response.end(
+        JSON.stringify({
+          name: "Test Registry",
+          homepage: "https://example.com",
+          items: items,
+        })
+      )
+      return
+    }
+
     const match = urlWithoutQuery?.match(
       new RegExp(`^${path}/(?:.*/)?([^/]+)$`)
     )
@@ -186,10 +210,16 @@ export async function createRegistryServer(
     response.end(JSON.stringify(item))
   })
 
+  let actualPort: number = port
+
   return {
     start: async () => {
       await new Promise<void>((resolve) => {
         server.listen(port, () => {
+          const address = server.address()
+          if (typeof address === 'object' && address !== null) {
+            actualPort = address.port
+          }
           resolve()
         })
       })
@@ -200,6 +230,9 @@ export async function createRegistryServer(
           resolve()
         })
       })
+    },
+    get port() {
+      return actualPort
     },
   }
 }
