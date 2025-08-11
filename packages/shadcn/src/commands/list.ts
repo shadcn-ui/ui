@@ -70,7 +70,11 @@ export const list = new Command()
       // Validate registries early for better error messages.
       validateRegistryConfigForItems(registries, config)
 
-      const results: Array<{ registry: string; items: any[] }> = []
+      const results: Array<{
+        name: string
+        homepage: string
+        items: any[]
+      }> = []
 
       for (const registry of registries) {
         try {
@@ -88,7 +92,7 @@ export const list = new Command()
             })
           )
           results.push({
-            registry,
+            ...registryData,
             items: simplifiedItems,
           })
         } catch (error: any) {

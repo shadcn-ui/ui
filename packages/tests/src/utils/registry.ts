@@ -217,7 +217,7 @@ export async function createRegistryServer(
       await new Promise<void>((resolve) => {
         server.listen(port, () => {
           const address = server.address()
-          if (typeof address === 'object' && address !== null) {
+          if (typeof address === "object" && address !== null) {
             actualPort = address.port
           }
           resolve()

@@ -172,7 +172,10 @@ afterAll(async () => {
 describe("shadcn list", () => {
   it("should list items from shadcn registry", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@shadcn"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@shadcn",
+    ])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveLength(1)
@@ -225,7 +228,10 @@ describe("shadcn list", () => {
       "@one": `http://localhost:${registryOne.port}/r/{name}`,
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@one"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@one",
+    ])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveLength(1)
@@ -248,7 +254,10 @@ describe("shadcn list", () => {
 
   it("should handle non-existent registry gracefully", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@unknown"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@unknown",
+    ])
 
     expect(output.stdout).toContain('Unknown registry "@unknown"')
   })
@@ -264,7 +273,10 @@ describe("shadcn list", () => {
       },
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@two"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@two",
+    ])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveLength(1)
@@ -291,7 +303,10 @@ describe("shadcn list", () => {
       "@two": `http://localhost:${registryTwo.port}/registry/bearer/{name}`,
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@two"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@two",
+    ])
     expect(output.stdout).toContain("Unauthorized")
   })
 
@@ -310,7 +325,10 @@ describe("shadcn list", () => {
     try {
       process.env.BEARER_TOKEN = "EXAMPLE_BEARER_TOKEN"
 
-      const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@two"])
+      const output = await npxShadcnWithMockRegistry(fixturePath, [
+        "list",
+        "@two",
+      ])
 
       const parsed = JSON.parse(output.stdout)
       expect(parsed[0]).toMatchObject({
@@ -341,14 +359,20 @@ describe("shadcn list", () => {
       },
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@auth"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@auth",
+    ])
 
     expect(output.stdout).toContain("MISSING_ENV_VAR")
   })
 
   it("should work with @shadcn namespace", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@shadcn"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@shadcn",
+    ])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveLength(1)
@@ -363,7 +387,10 @@ describe("shadcn list", () => {
 
   it("should handle namespace with special characters", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@test-123"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@test-123",
+    ])
 
     expect(output.stdout).toContain('Unknown registry "@test-123"')
   })
@@ -394,7 +421,10 @@ describe("shadcn list", () => {
       "@one": `http://localhost:${registryOne.port}/r/{name}`,
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@one"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@one",
+    ])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveLength(1)
@@ -410,7 +440,10 @@ describe("shadcn list", () => {
       "@one": `http://localhost:${registryOne.port}/r/{name}`,
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@two"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@two",
+    ])
 
     expect(output.stdout).toContain('Unknown registry "@two"')
   })
@@ -444,7 +477,10 @@ describe("shadcn list", () => {
       "@bad": `http://localhost:${badServer.port}/bad/{name}`,
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@bad"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@bad",
+    ])
 
     // Should handle validation error
     expect(output.stdout.toLowerCase()).toContain("failed to parse")
@@ -458,7 +494,10 @@ describe("shadcn list", () => {
       "@timeout": `http://localhost:9999/timeout/{name}`, // Non-existent server
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@timeout"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@timeout",
+    ])
 
     // Check for connection error in the output
     expect(output.stdout.toLowerCase()).toContain("failed, reason:")
@@ -489,7 +528,11 @@ describe("shadcn list", () => {
       "@two": `http://localhost:${registryTwo.port}/registry/{name}`,
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@one", "@two"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@one",
+      "@two",
+    ])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveLength(2)
@@ -512,7 +555,11 @@ describe("shadcn list", () => {
     })
 
     // List from both registries
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@one", "@two"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@one",
+      "@two",
+    ])
 
     const parsed = JSON.parse(output.stdout)
     expect(parsed).toHaveLength(2)
@@ -541,7 +588,10 @@ describe("shadcn list", () => {
       "@one": `http://localhost:${registryOne.port}/r/{name}`,
     })
 
-    const output = await npxShadcnWithMockRegistry(fixturePath, ["list", "@one"])
+    const output = await npxShadcnWithMockRegistry(fixturePath, [
+      "list",
+      "@one",
+    ])
     const parsed = JSON.parse(output.stdout)
 
     // Check that we only get name, type, and description fields
