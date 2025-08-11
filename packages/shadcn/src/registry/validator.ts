@@ -1,7 +1,7 @@
+import { extractEnvVars } from "@/src/registry/env"
+import { RegistryMissingEnvironmentVariablesError } from "@/src/registry/errors"
+import { registryConfigItemSchema } from "@/src/schema"
 import { z } from "zod"
-
-import { extractEnvVars } from "./env"
-import { registryConfigItemSchema } from "./schema"
 
 export function extractEnvVarsFromRegistryConfig(
   config: z.infer<typeof registryConfigItemSchema>
@@ -37,20 +37,6 @@ export function validateRegistryConfig(
   const missing = requiredVars.filter((v) => !process.env[v])
 
   if (missing.length > 0) {
-    const suggestions = missing.map((v) => {
-      // Common patterns for environment variable names
-      if (v.includes("TOKEN")) return `export ${v}="your-token-here"`
-      if (v.includes("KEY")) return `export ${v}="your-api-key-here"`
-      if (v.includes("SECRET")) return `export ${v}="your-secret-here"`
-      return `export ${v}="your-value-here"`
-    })
-
-    throw new Error(
-      `Registry "${registryName}" requires environment variables:\n\n` +
-        missing.map((v) => `  • ${v}`).join("\n") +
-        "\n\nSet them in your environment:\n\n" +
-        suggestions.map((s) => `  ${s}`).join("\n") +
-        "\n\nOr add them to a .env file in your project root."
-    )
+    throw new RegistryMissingEnvironmentVariablesError(registryName, missing)
   }
 }
