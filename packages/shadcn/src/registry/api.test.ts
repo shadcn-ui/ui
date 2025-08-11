@@ -6,6 +6,7 @@ import {
   RegistryErrorCode,
   RegistryFetchError,
   RegistryForbiddenError,
+  RegistryInvalidNamespaceError,
   RegistryLocalFileError,
   RegistryNotConfiguredError,
   RegistryNotFoundError,
@@ -256,6 +257,79 @@ describe("getRegistryItem", () => {
       name: "button",
       type: "registry:ui",
     })
+  })
+
+  it("should fetch items from direct URLs", async () => {
+    const itemUrl = "https://example.com/custom-button.json"
+
+    server.use(
+      http.get(itemUrl, () => {
+        return HttpResponse.json({
+          name: "custom-button",
+          type: "registry:ui",
+          files: [
+            {
+              path: "ui/custom-button.tsx",
+              content: "// custom button content",
+              type: "registry:ui",
+            },
+          ],
+        })
+      })
+    )
+
+    const [result] = await getRegistryItems([itemUrl])
+    expect(result).toMatchObject({
+      name: "custom-button",
+      type: "registry:ui",
+      files: [
+        {
+          path: "ui/custom-button.tsx",
+          content: "// custom button content",
+          type: "registry:ui",
+        },
+      ],
+    })
+  })
+
+  it("should handle mixed inputs (URLs, local files, and registry names)", async () => {
+    const itemUrl = "https://example.com/url-item.json"
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const localFile = path.join(tempDir, "local-item.json")
+
+    // Setup URL mock
+    server.use(
+      http.get(itemUrl, () => {
+        return HttpResponse.json({
+          name: "url-item",
+          type: "registry:ui",
+          files: [],
+        })
+      })
+    )
+
+    // Setup local file
+    await fs.writeFile(
+      localFile,
+      JSON.stringify({
+        name: "local-item",
+        type: "registry:ui",
+        files: [],
+      })
+    )
+
+    try {
+      // Fetch mixed: URL, local file, and registry name
+      const results = await getRegistryItems([itemUrl, localFile, "button"])
+
+      expect(results).toHaveLength(3)
+      expect(results[0].name).toBe("url-item")
+      expect(results[1].name).toBe("local-item")
+      expect(results[2].name).toBe("button")
+    } finally {
+      await fs.unlink(localFile)
+      await fs.rmdir(tempDir)
+    }
   })
 
   it("should handle local files with URL dependencies", async () => {
@@ -576,7 +650,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@acme", mockConfig)
+    const result = await getRegistry("@acme", { config: mockConfig })
 
     expect(result).toMatchObject({
       name: "@acme/registry",
@@ -612,10 +686,10 @@ describe("getRegistry", () => {
     } as any
 
     // Test both with and without /registry suffix
-    const result1 = await getRegistry("@acme", mockConfig)
+    const result1 = await getRegistry("@acme", { config: mockConfig })
     expect(result1.name).toBe("@acme/registry")
 
-    const result2 = await getRegistry("@acme/registry", mockConfig)
+    const result2 = await getRegistry("@acme/registry", { config: mockConfig })
     expect(result2.name).toBe("@acme/registry")
   })
 
@@ -650,7 +724,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@private", mockConfig)
+    const result = await getRegistry("@private", { config: mockConfig })
 
     expect(result).toMatchObject({
       name: "@private/registry",
@@ -668,9 +742,9 @@ describe("getRegistry", () => {
       registries: {},
     } as any
 
-    await expect(getRegistry("@unknown", mockConfig)).rejects.toThrow(
-      RegistryNotConfiguredError
-    )
+    await expect(
+      getRegistry("@unknown", { config: mockConfig })
+    ).rejects.toThrow(RegistryNotConfiguredError)
   })
 
   it("should throw RegistryParseError on invalid registry data", async () => {
@@ -693,9 +767,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@invalid", mockConfig)).rejects.toThrow(
-      RegistryParseError
-    )
+    await expect(
+      getRegistry("@invalid", { config: mockConfig })
+    ).rejects.toThrow(RegistryParseError)
   })
 
   it("should throw RegistryFetchError on network error", async () => {
@@ -715,7 +789,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@error", mockConfig)).rejects.toThrow(
+    await expect(getRegistry("@error", { config: mockConfig })).rejects.toThrow(
       RegistryFetchError
     )
   })
@@ -726,9 +800,9 @@ describe("getRegistry", () => {
       tailwind: { baseColor: "neutral", cssVariables: true },
     } as any
 
-    await expect(getRegistry("@nonexistent", mockConfig)).rejects.toThrow(
-      RegistryNotConfiguredError
-    )
+    await expect(
+      getRegistry("@nonexistent", { config: mockConfig })
+    ).rejects.toThrow(RegistryNotConfiguredError)
   })
 
   it("should handle registry with no items gracefully", async () => {
@@ -754,7 +828,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@empty", mockConfig)
+    const result = await getRegistry("@empty", { config: mockConfig })
     expect(result).toMatchObject(registryData)
     expect(result.items).toHaveLength(0)
   })
@@ -776,9 +850,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@notfound", mockConfig)).rejects.toThrow(
-      RegistryNotFoundError
-    )
+    await expect(
+      getRegistry("@notfound", { config: mockConfig })
+    ).rejects.toThrow(RegistryNotFoundError)
   })
 
   it("should handle 401 error from registry endpoint", async () => {
@@ -798,9 +872,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@unauthorized", mockConfig)).rejects.toThrow(
-      RegistryUnauthorizedError
-    )
+    await expect(
+      getRegistry("@unauthorized", { config: mockConfig })
+    ).rejects.toThrow(RegistryUnauthorizedError)
   })
 
   it("should handle 403 error from registry endpoint", async () => {
@@ -820,9 +894,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@forbidden", mockConfig)).rejects.toThrow(
-      RegistryForbiddenError
-    )
+    await expect(
+      getRegistry("@forbidden", { config: mockConfig })
+    ).rejects.toThrow(RegistryForbiddenError)
   })
 
   it("should set headers in context when provided", async () => {
@@ -856,7 +930,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await getRegistry("@headers-test", mockConfig)
+    await getRegistry("@headers-test", { config: mockConfig })
 
     expect(receivedHeaders["x-custom-header"]).toBe("test-value")
     expect(receivedHeaders.authorization).toBe("Bearer test-token")
@@ -885,7 +959,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@no-headers", mockConfig)
+    const result = await getRegistry("@no-headers", { config: mockConfig })
     expect(result).toMatchObject(registryData)
   })
 
@@ -912,7 +986,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@acme/sub", mockConfig)
+    const result = await getRegistry("@acme/sub", { config: mockConfig })
     expect(result).toMatchObject(registryData)
   })
 
@@ -937,7 +1011,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@defaults", minimalConfig)
+    const result = await getRegistry("@defaults", { config: minimalConfig })
     expect(result).toMatchObject(registryData)
   })
 
@@ -961,7 +1035,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@malformed", mockConfig)).rejects.toThrow()
+    await expect(
+      getRegistry("@malformed", { config: mockConfig })
+    ).rejects.toThrow()
   })
 
   it("should throw RegistryParseError with proper context", async () => {
@@ -987,7 +1063,7 @@ describe("getRegistry", () => {
     } as any
 
     try {
-      await getRegistry("@parsetest/registry", mockConfig)
+      await getRegistry("@parsetest/registry", { config: mockConfig })
       expect.fail("Should have thrown RegistryParseError")
     } catch (error) {
       expect(error).toBeInstanceOf(RegistryParseError)
@@ -1001,5 +1077,116 @@ describe("getRegistry", () => {
         }
       }
     }
+  })
+
+  it("should throw RegistryInvalidNamespaceError for registry name without @ prefix", async () => {
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {},
+    } as any
+
+    await expect(
+      getRegistry("invalid-name", { config: mockConfig })
+    ).rejects.toThrow(RegistryInvalidNamespaceError)
+  })
+
+  it("should accept valid registry names with hyphens and underscores", async () => {
+    const registryData = {
+      name: "@test-123_abc/registry",
+      homepage: "https://test.com",
+      items: [],
+    }
+
+    server.use(
+      http.get("https://test.com/registry.json", () => {
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@test-123_abc": {
+          url: "https://test.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@test-123_abc", { config: mockConfig })
+    expect(result).toMatchObject(registryData)
+  })
+
+  // Tests for URL support
+  it("should fetch registry from a direct URL", async () => {
+    const registryUrl = "https://example.com/custom-registry.json"
+
+    server.use(
+      http.get(registryUrl, () => {
+        return HttpResponse.json({
+          name: "custom-registry",
+          homepage: "https://example.com",
+          items: [
+            { name: "button", type: "registry:ui" },
+            { name: "card", type: "registry:ui" },
+          ],
+        })
+      })
+    )
+
+    const result = await getRegistry(registryUrl)
+    expect(result).toMatchObject({
+      name: "custom-registry",
+      homepage: "https://example.com",
+      items: [
+        { name: "button", type: "registry:ui" },
+        { name: "card", type: "registry:ui" },
+      ],
+    })
+  })
+
+  it("should handle malformed URL gracefully", async () => {
+    const badUrl = "not-a-valid-url"
+
+    // Should throw RegistryInvalidNamespaceError for non-@ and non-URL strings
+    await expect(getRegistry(badUrl)).rejects.toThrow(
+      RegistryInvalidNamespaceError
+    )
+  })
+
+  it("should distinguish between URL and registry name", async () => {
+    // Test that it correctly identifies and handles a URL vs registry name
+    const registryName = "@shadcn"
+    const registryUrl = "https://ui.shadcn.com/registry.json"
+
+    // Mock for URL
+    server.use(
+      http.get(registryUrl, () => {
+        return HttpResponse.json({
+          name: "shadcn-from-url",
+          homepage: "https://ui.shadcn.com",
+          items: [],
+        })
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@shadcn": {
+          url: "https://ui.shadcn.com/{name}.json",
+        },
+      },
+    } as any
+
+    // Fetch by URL should bypass registry config
+    const urlResult = await getRegistry(registryUrl)
+    expect(urlResult.name).toBe("shadcn-from-url")
+
+    // Fetch by registry name should use config
+    const nameResult = await getRegistry(registryName, { config: mockConfig })
+    expect(nameResult).toBeDefined()
   })
 })

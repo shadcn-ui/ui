@@ -10,7 +10,7 @@ export async function updateAppIndex(component: string, config: Config) {
     return
   }
 
-  const [registryItem] = await getRegistryItems([component], config)
+  const [registryItem] = await getRegistryItems([component], { config })
   if (
     !registryItem?.meta?.importSpecifier ||
     !registryItem?.meta?.moduleSpecifier
