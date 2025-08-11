@@ -2,4 +2,4 @@
 "shadcn": major
 ---
 
-add npx shadcn view command
+add view and search commands
