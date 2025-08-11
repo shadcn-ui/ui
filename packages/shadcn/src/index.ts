@@ -4,10 +4,10 @@ import { build } from "@/src/commands/build"
 import { diff } from "@/src/commands/diff"
 import { info } from "@/src/commands/info"
 import { init } from "@/src/commands/init"
-import { list } from "@/src/commands/list"
 import { migrate } from "@/src/commands/migrate"
 import { build as registryBuild } from "@/src/commands/registry/build"
 import { mcp as registryMcp } from "@/src/commands/registry/mcp"
+import { search } from "@/src/commands/search"
 import { view } from "@/src/commands/view"
 import { Command } from "commander"
 
@@ -31,7 +31,7 @@ async function main() {
     .addCommand(add)
     .addCommand(diff)
     .addCommand(view)
-    .addCommand(list)
+    .addCommand(search)
     .addCommand(migrate)
     .addCommand(info)
     .addCommand(build)

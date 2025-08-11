@@ -1,5 +1,7 @@
 export { getRegistryItems, resolveRegistryItems, getRegistry } from "./api"
 
+export { searchRegistries } from "./search"
+
 export {
   RegistryError,
   RegistryNotFoundError,

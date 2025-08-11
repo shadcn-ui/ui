@@ -1,7 +1,7 @@
 import path from "path"
-import { getRegistry } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
 import { clearRegistryContext } from "@/src/registry/context"
+import { searchRegistries } from "@/src/registry/search"
 import { validateRegistryConfigForItems } from "@/src/registry/validator"
 import { rawConfigSchema } from "@/src/schema"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -11,26 +11,39 @@ import { Command } from "commander"
 import fsExtra from "fs-extra"
 import { z } from "zod"
 
-const listOptionsSchema = z.object({
+const searchOptionsSchema = z.object({
   cwd: z.string(),
+  query: z.string().optional(),
+  limit: z.number().optional(),
+  offset: z.number().optional(),
 })
 
 // TODO: We're duplicating logic for shadowConfig here.
 // Revisit and properly abstract this.
 
-export const list = new Command()
-  .name("list")
-  .description("list available items from registries")
-  .argument("<registries...>", "the registry names to list items from")
+export const search = new Command()
+  .name("search")
+  .description("search items from registries")
+  .argument("<registries...>", "the registry names to search items from")
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
+  .option("-q, --query <query>", "query string")
+  .option(
+    "-l, --limit <number>",
+    "maximum number of items to display per registry",
+    "100"
+  )
+  .option("-o, --offset <number>", "number of items to skip", "0")
   .action(async (registries: string[], opts) => {
     try {
-      const options = listOptionsSchema.parse({
+      const options = searchOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
+        query: opts.query,
+        limit: opts.limit ? parseInt(opts.limit, 10) : undefined,
+        offset: opts.offset ? parseInt(opts.offset, 10) : undefined,
       })
 
       await loadEnvFiles(options.cwd)
@@ -70,36 +83,16 @@ export const list = new Command()
       // Validate registries early for better error messages.
       validateRegistryConfigForItems(registries, config)
 
-      const results: Array<{
-        name: string
-        homepage: string
-        items: any[]
-      }> = []
-
-      for (const registry of registries) {
-        try {
-          const registryData = await getRegistry(
-            registry as `@${string}`,
-            config
-          )
-          // registryData has shape { name, homepage, items }
-          // We want just the items array with only name, type, and description
-          const simplifiedItems = (registryData.items || []).map(
-            (item: any) => ({
-              name: item.name,
-              type: item.type,
-              description: item.description,
-            })
-          )
-          results.push({
-            ...registryData,
-            items: simplifiedItems,
-          })
-        } catch (error: any) {
-          // Re-throw the error to show proper error messages
-          throw error
-        }
-      }
+      // Use searchRegistries for both search and non-search cases
+      const results = await searchRegistries(
+        registries as `@${string}`[],
+        {
+          query: options.query,
+          limit: options.limit,
+          offset: options.offset,
+        },
+        config
+      )
 
       console.log(JSON.stringify(results, null, 2))
       process.exit(0)
