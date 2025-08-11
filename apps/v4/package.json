@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack --port 4000",
-    "build": "pnpm --filter=shadcn build && next build",
+    "build": "pnpm --filter=shadcn build && pnpm --filter=@workspace/ui build && next build",
     "start": "next start --port 4000",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -57,6 +57,7 @@
     "@tailwindcss/postcss": "^4.1.11",
     "@tanstack/react-table": "^8.9.1",
     "@vercel/analytics": "^1.4.1",
+    "@workspace/ui": "workspace:*",
     "change-case": "^5.4.4",
     "chrono-node": "^2.8.2",
     "class-variance-authority": "^0.7.1",
