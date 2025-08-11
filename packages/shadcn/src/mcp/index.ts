@@ -198,7 +198,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           throw new Error("Name is required")
         }
 
-        const [item] = await getRegistryItems([name], undefined, {
+        const [item] = await getRegistryItems([name], {
           useCache: false,
         })
 
@@ -215,7 +215,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
 
         const itemUrl = getRegistryItemUrl(name, REGISTRY_URL)
-        const item = await getRegistryItems([itemUrl], undefined, {
+        const item = await getRegistryItems([itemUrl], {
           useCache: false,
         })
 

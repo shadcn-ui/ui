@@ -77,10 +77,9 @@ export const add = new Command()
       }
 
       if (components.length > 0) {
-        const [registryItem] = await getRegistryItems(
-          [components[0]],
-          initialConfig
-        )
+        const [registryItem] = await getRegistryItems([components[0]], {
+          config: initialConfig,
+        })
         const itemType = registryItem?.type
 
         if (isUniversalRegistryItem(registryItem)) {

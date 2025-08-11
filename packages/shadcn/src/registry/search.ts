@@ -22,18 +22,21 @@ const searchResultsSchema = z.object({
 })
 
 export async function searchRegistries(
-  registries: Array<Parameters<typeof getRegistry>[0]>,
+  registries: string[],
   options?: {
     query?: string
     limit?: number
     offset?: number
-  },
-  config?: Partial<Config>
+    config?: Partial<Config>
+    useCache?: boolean
+  }
 ) {
+  const { query, limit, offset, config, useCache } = options || {}
+
   let allItems: z.infer<typeof searchResultItemSchema>[] = []
 
   for (const registry of registries) {
-    const registryData = await getRegistry(registry, config)
+    const registryData = await getRegistry(registry, { config, useCache })
 
     const itemsWithRegistry = (registryData.items || []).map((item: any) => ({
       name: item.name,
@@ -46,9 +49,9 @@ export async function searchRegistries(
   }
 
   // Apply search if query is provided
-  if (options?.query) {
+  if (query) {
     allItems = searchItems(allItems, {
-      query: options.query,
+      query,
       // No limit here - we want to search all items then paginate
       limit: allItems.length,
       keys: ["name", "description"],
@@ -56,19 +59,19 @@ export async function searchRegistries(
   }
 
   // Apply offset and limit pagination
-  const offset = options?.offset || 0
-  const limit = options?.limit || allItems.length
+  const paginationOffset = offset || 0
+  const paginationLimit = limit || allItems.length
   const totalItems = allItems.length
 
   // Build result with pagination
   const result: z.infer<typeof searchResultsSchema> = {
     pagination: {
       total: totalItems,
-      offset,
-      limit,
-      hasMore: offset + limit < totalItems,
+      offset: paginationOffset,
+      limit: paginationLimit,
+      hasMore: paginationOffset + paginationLimit < totalItems,
     },
-    items: allItems.slice(offset, offset + limit),
+    items: allItems.slice(paginationOffset, paginationOffset + paginationLimit),
   }
 
   return searchResultsSchema.parse(result)

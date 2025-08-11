@@ -403,10 +403,7 @@ describe("shadcn search", () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     const output = await npxShadcn(fixturePath, ["search", "@"])
 
-    expect(output.stdout).toContain("Failed to parse registry item: @")
-    expect(output.stdout).toContain(
-      "Registry name must start with @ followed by alphanumeric characters"
-    )
+    expect(output.stdout).toContain("The item at @/registry was not found.")
   })
 
   it("should handle namespace without @ prefix", async () => {
@@ -414,8 +411,7 @@ describe("shadcn search", () => {
     const output = await npxShadcn(fixturePath, ["search", "one"])
 
     // Without @ prefix, it should show an error
-    expect(output.stdout).toContain("Failed to parse registry item: one")
-    expect(output.stdout).toContain("Registry name must start with @")
+    expect(output.stdout).toContain('Invalid registry namespace: "one".')
   })
 
   it("should list from components.json with registries config only (shadow config)", async () => {
