@@ -28,10 +28,25 @@ import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
 
+// Schema for validating registry names
+const registryNameSchema = z
+  .string()
+  .regex(
+    /^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/,
+    "Registry name must start with @ followed by alphanumeric characters, hyphens, or underscores"
+  )
+
 export async function getRegistry(
   name: `@${string}`,
   config?: Partial<Config>
 ) {
+  // Validate the registry name using Zod schema
+  try {
+    registryNameSchema.parse(name.split("/")[0])
+  } catch (error) {
+    throw new RegistryParseError(name, error)
+  }
+
   if (!name.endsWith("/registry")) {
     name = `${name}/registry`
   }

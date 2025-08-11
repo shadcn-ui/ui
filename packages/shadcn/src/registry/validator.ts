@@ -1,6 +1,10 @@
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
+import { configWithDefaults } from "@/src/registry/config"
+import { clearRegistryContext } from "@/src/registry/context"
 import { extractEnvVars } from "@/src/registry/env"
 import { RegistryMissingEnvironmentVariablesError } from "@/src/registry/errors"
 import { registryConfigItemSchema } from "@/src/schema"
+import { Config } from "@/src/utils/get-config"
 import { z } from "zod"
 
 export function extractEnvVarsFromRegistryConfig(
@@ -39,4 +43,16 @@ export function validateRegistryConfig(
   if (missing.length > 0) {
     throw new RegistryMissingEnvironmentVariablesError(registryName, missing)
   }
+}
+
+export function validateRegistryConfigForItems(
+  items: string[],
+  config?: Config
+): void {
+  for (const item of items) {
+    buildUrlAndHeadersForRegistryItem(item, configWithDefaults(config))
+  }
+
+  // Clear the registry context after validation.
+  clearRegistryContext()
 }

@@ -1002,4 +1002,149 @@ describe("getRegistry", () => {
       }
     }
   })
+
+  it("should throw RegistryParseError for registry name without @ prefix", async () => {
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    try {
+      // Cast to bypass TypeScript checking since we're testing runtime validation
+      await getRegistry("invalid-name" as `@${string}`, mockConfig)
+      expect.fail("Should have thrown RegistryParseError")
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryParseError)
+      if (error instanceof RegistryParseError) {
+        expect(error.code).toBe(RegistryErrorCode.PARSE_ERROR)
+        expect(error.message).toContain("Failed to parse registry item")
+        expect(error.message).toContain("invalid-name")
+        expect(error.parseError).toBeDefined()
+        if (error.parseError instanceof z.ZodError) {
+          const zodError = error.parseError as z.ZodError
+          expect(zodError.errors[0].message).toContain(
+            "Registry name must start with @"
+          )
+        }
+      }
+    }
+  })
+
+  it("should throw RegistryParseError for empty registry name (@)", async () => {
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@acme": {
+          url: "https://acme.com/{name}.json",
+        },
+      },
+    } as any
+
+    try {
+      await getRegistry("@" as `@${string}`, mockConfig)
+      expect.fail("Should have thrown RegistryParseError")
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryParseError)
+      if (error instanceof RegistryParseError) {
+        expect(error.code).toBe(RegistryErrorCode.PARSE_ERROR)
+        expect(error.message).toContain("Failed to parse registry item")
+        expect(error.parseError).toBeDefined()
+        if (error.parseError instanceof z.ZodError) {
+          const zodError = error.parseError as z.ZodError
+          expect(zodError.errors[0].message).toContain(
+            "Registry name must start with @ followed by alphanumeric characters"
+          )
+        }
+      }
+    }
+  })
+
+  it("should accept valid registry names with hyphens and underscores", async () => {
+    const registryData = {
+      name: "@test-123_abc/registry",
+      homepage: "https://test.com",
+      items: [],
+    }
+
+    server.use(
+      http.get("https://test.com/registry.json", () => {
+        return HttpResponse.json(registryData)
+      })
+    )
+
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@test-123_abc": {
+          url: "https://test.com/{name}.json",
+        },
+      },
+    } as any
+
+    const result = await getRegistry("@test-123_abc", mockConfig)
+    expect(result).toMatchObject(registryData)
+  })
+
+  it("should throw RegistryParseError for registry name with invalid characters", async () => {
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {
+        "@test$invalid": {
+          url: "https://test.com/{name}.json",
+        },
+      },
+    } as any
+
+    try {
+      await getRegistry("@test$invalid" as `@${string}`, mockConfig)
+      expect.fail("Should have thrown RegistryParseError")
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryParseError)
+      if (error instanceof RegistryParseError) {
+        expect(error.code).toBe(RegistryErrorCode.PARSE_ERROR)
+        expect(error.message).toContain("Failed to parse registry item")
+        expect(error.parseError).toBeDefined()
+        if (error.parseError instanceof z.ZodError) {
+          const zodError = error.parseError as z.ZodError
+          expect(zodError.errors[0].message).toContain(
+            "Registry name must start with @ followed by alphanumeric characters, hyphens, or underscores"
+          )
+        }
+      }
+    }
+  })
+
+  it("should throw RegistryParseError for registry name starting with @-", async () => {
+    const mockConfig = {
+      style: "new-york",
+      tailwind: { baseColor: "neutral", cssVariables: true },
+      registries: {},
+    } as any
+
+    try {
+      await getRegistry("@-invalid" as `@${string}`, mockConfig)
+      expect.fail("Should have thrown RegistryParseError")
+    } catch (error) {
+      expect(error).toBeInstanceOf(RegistryParseError)
+      if (error instanceof RegistryParseError) {
+        expect(error.code).toBe(RegistryErrorCode.PARSE_ERROR)
+        expect(error.message).toContain("Failed to parse registry item")
+        expect(error.parseError).toBeDefined()
+        if (error.parseError instanceof z.ZodError) {
+          const zodError = error.parseError as z.ZodError
+          expect(zodError.errors[0].message).toContain(
+            "Registry name must start with @ followed by alphanumeric characters"
+          )
+        }
+      }
+    }
+  })
 })
