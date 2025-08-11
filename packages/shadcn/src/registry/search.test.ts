@@ -398,4 +398,135 @@ describe("searchRegistries", () => {
 
     mockGetRegistry.mockRestore()
   })
+
+  // Tests for URL support
+  it("should search registries from direct URLs", async () => {
+    const registryUrl1 = "https://example.com/registry1.json"
+    const registryUrl2 = "https://example.com/registry2.json"
+
+    // Mock getRegistry to handle URLs
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockImplementation(async (nameOrUrl: string) => {
+      if (nameOrUrl === registryUrl1) {
+        return {
+          name: "registry1",
+          homepage: "https://example.com/registry1",
+          items: [
+            {
+              name: "component1",
+              type: "registry:ui",
+              description: "First component",
+            },
+            {
+              name: "component2",
+              type: "registry:ui",
+              description: "Second component",
+            },
+          ],
+        }
+      }
+      if (nameOrUrl === registryUrl2) {
+        return {
+          name: "registry2",
+          homepage: "https://example.com/registry2",
+          items: [
+            {
+              name: "component3",
+              type: "registry:ui",
+              description: "Third component",
+            },
+          ],
+        }
+      }
+      throw new Error(`Unknown URL: ${nameOrUrl}`)
+    })
+
+    const results = await searchRegistries([registryUrl1, registryUrl2])
+
+    expect(results.items).toHaveLength(3)
+    expect(results.items[0]).toMatchObject({
+      name: "component1",
+      registry: registryUrl1,
+    })
+    expect(results.items[1]).toMatchObject({
+      name: "component2",
+      registry: registryUrl1,
+    })
+    expect(results.items[2]).toMatchObject({
+      name: "component3",
+      registry: registryUrl2,
+    })
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("should handle mixed registry names and URLs", async () => {
+    const registryName = "@shadcn"
+    const registryUrl = "https://custom.com/registry.json"
+
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockImplementation(async (nameOrUrl: string) => {
+      if (nameOrUrl === "@shadcn" || nameOrUrl === "@shadcn/registry") {
+        return {
+          name: "shadcn/ui",
+          homepage: "https://ui.shadcn.com",
+          items: [
+            {
+              name: "button",
+              type: "registry:ui",
+              description: "A button component",
+            },
+          ],
+        }
+      }
+      if (nameOrUrl === registryUrl) {
+        return {
+          name: "custom",
+          homepage: "https://custom.com",
+          items: [
+            {
+              name: "custom-component",
+              type: "registry:ui",
+              description: "A custom component",
+            },
+          ],
+        }
+      }
+      throw new Error(`Unknown registry: ${nameOrUrl}`)
+    })
+
+    const results = await searchRegistries([registryName, registryUrl], {
+      query: "button",
+    })
+
+    // Should find the button from @shadcn
+    expect(results.items).toHaveLength(1)
+    expect(results.items[0]).toMatchObject({
+      name: "button",
+      registry: registryName,
+    })
+
+    mockGetRegistry.mockRestore()
+  })
+
+  it("should handle URL fetch errors gracefully", async () => {
+    const badUrl = "https://nonexistent.com/registry.json"
+
+    const mockGetRegistry = vi.mocked(getRegistry)
+
+    mockGetRegistry.mockImplementation(async (nameOrUrl: string) => {
+      if (nameOrUrl === badUrl) {
+        throw new Error("Failed to fetch registry")
+      }
+      throw new Error(`Unknown registry: ${nameOrUrl}`)
+    })
+
+    await expect(searchRegistries([badUrl])).rejects.toThrow(
+      "Failed to fetch registry"
+    )
+
+    mockGetRegistry.mockRestore()
+  })
 })

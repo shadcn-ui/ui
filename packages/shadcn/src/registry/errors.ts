@@ -236,3 +236,17 @@ export class RegistryMissingEnvironmentVariablesError extends RegistryError {
     this.name = "RegistryMissingEnvironmentVariablesError"
   }
 }
+
+export class RegistryInvalidNamespaceError extends RegistryError {
+  constructor(public readonly name: string) {
+    const message = `Invalid registry namespace: "${name}". Registry names must start with @ (e.g., @shadcn, @v0).`
+
+    super(message, {
+      code: RegistryErrorCode.VALIDATION_ERROR,
+      context: { name },
+      suggestion:
+        "Use a valid registry name starting with @ or provide a direct URL to the registry.",
+    })
+    this.name = "RegistryInvalidNamespaceError"
+  }
+}

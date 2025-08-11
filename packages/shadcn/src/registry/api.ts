@@ -7,6 +7,7 @@ import {
   setRegistryHeaders,
 } from "@/src/registry/context"
 import {
+  RegistryInvalidNamespaceError,
   RegistryNotFoundError,
   RegistryParseError,
 } from "@/src/registry/errors"
@@ -15,6 +16,7 @@ import {
   fetchRegistryItems,
   resolveRegistryTree,
 } from "@/src/registry/resolver"
+import { isUrl } from "@/src/registry/utils"
 import {
   iconsSchema,
   registryBaseColorSchema,
@@ -28,16 +30,8 @@ import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
 
-// Schema for validating registry names
-const registryNameSchema = z
-  .string()
-  .regex(
-    /^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/,
-    "Registry name must start with @ followed by alphanumeric characters, hyphens, or underscores"
-  )
-
 export async function getRegistry(
-  name: `@${string}`,
+  name: string,
   options?: {
     config?: Partial<Config>
     useCache?: boolean
@@ -45,27 +39,33 @@ export async function getRegistry(
 ) {
   const { config, useCache } = options || {}
 
-  // Validate the registry name using Zod schema
-  try {
-    registryNameSchema.parse(name.split("/")[0])
-  } catch (error) {
-    throw new RegistryParseError(name, error)
+  if (isUrl(name)) {
+    const [result] = await fetchRegistry([name], { useCache })
+    try {
+      return registrySchema.parse(result)
+    } catch (error) {
+      throw new RegistryParseError(name, error)
+    }
   }
 
-  if (!name.endsWith("/registry")) {
-    name = `${name}/registry`
+  if (!name.startsWith("@")) {
+    throw new RegistryInvalidNamespaceError(name)
+  }
+
+  let registryName = name
+  if (!registryName.endsWith("/registry")) {
+    registryName = `${registryName}/registry`
   }
 
   const urlAndHeaders = buildUrlAndHeadersForRegistryItem(
-    name,
+    registryName as `@${string}`,
     configWithDefaults(config)
   )
 
   if (!urlAndHeaders?.url) {
-    throw new RegistryNotFoundError(name)
+    throw new RegistryNotFoundError(registryName)
   }
 
-  // Set headers in context if provided
   if (urlAndHeaders.headers && Object.keys(urlAndHeaders.headers).length > 0) {
     setRegistryHeaders({
       [urlAndHeaders.url]: urlAndHeaders.headers,
@@ -77,7 +77,7 @@ export async function getRegistry(
   try {
     return registrySchema.parse(result)
   } catch (error) {
-    throw new RegistryParseError(name, error)
+    throw new RegistryParseError(registryName, error)
   }
 }
 

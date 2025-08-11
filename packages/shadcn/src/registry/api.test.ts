@@ -6,6 +6,7 @@ import {
   RegistryErrorCode,
   RegistryFetchError,
   RegistryForbiddenError,
+  RegistryInvalidNamespaceError,
   RegistryLocalFileError,
   RegistryNotConfiguredError,
   RegistryNotFoundError,
@@ -256,6 +257,79 @@ describe("getRegistryItem", () => {
       name: "button",
       type: "registry:ui",
     })
+  })
+
+  it("should fetch items from direct URLs", async () => {
+    const itemUrl = "https://example.com/custom-button.json"
+
+    server.use(
+      http.get(itemUrl, () => {
+        return HttpResponse.json({
+          name: "custom-button",
+          type: "registry:ui",
+          files: [
+            {
+              path: "ui/custom-button.tsx",
+              content: "// custom button content",
+              type: "registry:ui",
+            },
+          ],
+        })
+      })
+    )
+
+    const [result] = await getRegistryItems([itemUrl])
+    expect(result).toMatchObject({
+      name: "custom-button",
+      type: "registry:ui",
+      files: [
+        {
+          path: "ui/custom-button.tsx",
+          content: "// custom button content",
+          type: "registry:ui",
+        },
+      ],
+    })
+  })
+
+  it("should handle mixed inputs (URLs, local files, and registry names)", async () => {
+    const itemUrl = "https://example.com/url-item.json"
+    const tempDir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-test-"))
+    const localFile = path.join(tempDir, "local-item.json")
+
+    // Setup URL mock
+    server.use(
+      http.get(itemUrl, () => {
+        return HttpResponse.json({
+          name: "url-item",
+          type: "registry:ui",
+          files: [],
+        })
+      })
+    )
+
+    // Setup local file
+    await fs.writeFile(
+      localFile,
+      JSON.stringify({
+        name: "local-item",
+        type: "registry:ui",
+        files: [],
+      })
+    )
+
+    try {
+      // Fetch mixed: URL, local file, and registry name
+      const results = await getRegistryItems([itemUrl, localFile, "button"])
+
+      expect(results).toHaveLength(3)
+      expect(results[0].name).toBe("url-item")
+      expect(results[1].name).toBe("local-item")
+      expect(results[2].name).toBe("button")
+    } finally {
+      await fs.unlink(localFile)
+      await fs.rmdir(tempDir)
+    }
   })
 
   it("should handle local files with URL dependencies", async () => {
@@ -1005,66 +1079,16 @@ describe("getRegistry", () => {
     }
   })
 
-  it("should throw RegistryParseError for registry name without @ prefix", async () => {
+  it("should throw RegistryInvalidNamespaceError for registry name without @ prefix", async () => {
     const mockConfig = {
       style: "new-york",
       tailwind: { baseColor: "neutral", cssVariables: true },
-      registries: {
-        "@acme": {
-          url: "https://acme.com/{name}.json",
-        },
-      },
+      registries: {},
     } as any
 
-    try {
-      // Cast to bypass TypeScript checking since we're testing runtime validation
-      await getRegistry("invalid-name" as `@${string}`, { config: mockConfig })
-      expect.fail("Should have thrown RegistryParseError")
-    } catch (error) {
-      expect(error).toBeInstanceOf(RegistryParseError)
-      if (error instanceof RegistryParseError) {
-        expect(error.code).toBe(RegistryErrorCode.PARSE_ERROR)
-        expect(error.message).toContain("Failed to parse registry item")
-        expect(error.message).toContain("invalid-name")
-        expect(error.parseError).toBeDefined()
-        if (error.parseError instanceof z.ZodError) {
-          const zodError = error.parseError as z.ZodError
-          expect(zodError.errors[0].message).toContain(
-            "Registry name must start with @"
-          )
-        }
-      }
-    }
-  })
-
-  it("should throw RegistryParseError for empty registry name (@)", async () => {
-    const mockConfig = {
-      style: "new-york",
-      tailwind: { baseColor: "neutral", cssVariables: true },
-      registries: {
-        "@acme": {
-          url: "https://acme.com/{name}.json",
-        },
-      },
-    } as any
-
-    try {
-      await getRegistry("@" as `@${string}`, { config: mockConfig })
-      expect.fail("Should have thrown RegistryParseError")
-    } catch (error) {
-      expect(error).toBeInstanceOf(RegistryParseError)
-      if (error instanceof RegistryParseError) {
-        expect(error.code).toBe(RegistryErrorCode.PARSE_ERROR)
-        expect(error.message).toContain("Failed to parse registry item")
-        expect(error.parseError).toBeDefined()
-        if (error.parseError instanceof z.ZodError) {
-          const zodError = error.parseError as z.ZodError
-          expect(zodError.errors[0].message).toContain(
-            "Registry name must start with @ followed by alphanumeric characters"
-          )
-        }
-      }
-    }
+    await expect(
+      getRegistry("invalid-name", { config: mockConfig })
+    ).rejects.toThrow(RegistryInvalidNamespaceError)
   })
 
   it("should accept valid registry names with hyphens and underscores", async () => {
@@ -1094,59 +1118,75 @@ describe("getRegistry", () => {
     expect(result).toMatchObject(registryData)
   })
 
-  it("should throw RegistryParseError for registry name with invalid characters", async () => {
+  // Tests for URL support
+  it("should fetch registry from a direct URL", async () => {
+    const registryUrl = "https://example.com/custom-registry.json"
+
+    server.use(
+      http.get(registryUrl, () => {
+        return HttpResponse.json({
+          name: "custom-registry",
+          homepage: "https://example.com",
+          items: [
+            { name: "button", type: "registry:ui" },
+            { name: "card", type: "registry:ui" },
+          ],
+        })
+      })
+    )
+
+    const result = await getRegistry(registryUrl)
+    expect(result).toMatchObject({
+      name: "custom-registry",
+      homepage: "https://example.com",
+      items: [
+        { name: "button", type: "registry:ui" },
+        { name: "card", type: "registry:ui" },
+      ],
+    })
+  })
+
+  it("should handle malformed URL gracefully", async () => {
+    const badUrl = "not-a-valid-url"
+
+    // Should throw RegistryInvalidNamespaceError for non-@ and non-URL strings
+    await expect(getRegistry(badUrl)).rejects.toThrow(
+      RegistryInvalidNamespaceError
+    )
+  })
+
+  it("should distinguish between URL and registry name", async () => {
+    // Test that it correctly identifies and handles a URL vs registry name
+    const registryName = "@shadcn"
+    const registryUrl = "https://ui.shadcn.com/registry.json"
+
+    // Mock for URL
+    server.use(
+      http.get(registryUrl, () => {
+        return HttpResponse.json({
+          name: "shadcn-from-url",
+          homepage: "https://ui.shadcn.com",
+          items: [],
+        })
+      })
+    )
+
     const mockConfig = {
       style: "new-york",
       tailwind: { baseColor: "neutral", cssVariables: true },
       registries: {
-        "@test$invalid": {
-          url: "https://test.com/{name}.json",
+        "@shadcn": {
+          url: "https://ui.shadcn.com/{name}.json",
         },
       },
     } as any
 
-    try {
-      await getRegistry("@test$invalid" as `@${string}`, { config: mockConfig })
-      expect.fail("Should have thrown RegistryParseError")
-    } catch (error) {
-      expect(error).toBeInstanceOf(RegistryParseError)
-      if (error instanceof RegistryParseError) {
-        expect(error.code).toBe(RegistryErrorCode.PARSE_ERROR)
-        expect(error.message).toContain("Failed to parse registry item")
-        expect(error.parseError).toBeDefined()
-        if (error.parseError instanceof z.ZodError) {
-          const zodError = error.parseError as z.ZodError
-          expect(zodError.errors[0].message).toContain(
-            "Registry name must start with @ followed by alphanumeric characters, hyphens, or underscores"
-          )
-        }
-      }
-    }
-  })
+    // Fetch by URL should bypass registry config
+    const urlResult = await getRegistry(registryUrl)
+    expect(urlResult.name).toBe("shadcn-from-url")
 
-  it("should throw RegistryParseError for registry name starting with @-", async () => {
-    const mockConfig = {
-      style: "new-york",
-      tailwind: { baseColor: "neutral", cssVariables: true },
-      registries: {},
-    } as any
-
-    try {
-      await getRegistry("@-invalid" as `@${string}`, { config: mockConfig })
-      expect.fail("Should have thrown RegistryParseError")
-    } catch (error) {
-      expect(error).toBeInstanceOf(RegistryParseError)
-      if (error instanceof RegistryParseError) {
-        expect(error.code).toBe(RegistryErrorCode.PARSE_ERROR)
-        expect(error.message).toContain("Failed to parse registry item")
-        expect(error.parseError).toBeDefined()
-        if (error.parseError instanceof z.ZodError) {
-          const zodError = error.parseError as z.ZodError
-          expect(zodError.errors[0].message).toContain(
-            "Registry name must start with @ followed by alphanumeric characters"
-          )
-        }
-      }
-    }
+    // Fetch by registry name should use config
+    const nameResult = await getRegistry(registryName, { config: mockConfig })
+    expect(nameResult).toBeDefined()
   })
 })

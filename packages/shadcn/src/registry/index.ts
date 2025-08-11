@@ -12,4 +12,5 @@ export {
   RegistryLocalFileError,
   RegistryParseError,
   RegistryMissingEnvironmentVariablesError,
+  RegistryInvalidNamespaceError,
 } from "./errors"

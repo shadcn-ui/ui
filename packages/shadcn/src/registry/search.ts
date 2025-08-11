@@ -22,7 +22,7 @@ const searchResultsSchema = z.object({
 })
 
 export async function searchRegistries(
-  registries: Array<Parameters<typeof getRegistry>[0]>,
+  registries: string[],
   options?: {
     query?: string
     limit?: number
