@@ -576,7 +576,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@acme", mockConfig)
+    const result = await getRegistry("@acme", { config: mockConfig })
 
     expect(result).toMatchObject({
       name: "@acme/registry",
@@ -612,10 +612,10 @@ describe("getRegistry", () => {
     } as any
 
     // Test both with and without /registry suffix
-    const result1 = await getRegistry("@acme", mockConfig)
+    const result1 = await getRegistry("@acme", { config: mockConfig })
     expect(result1.name).toBe("@acme/registry")
 
-    const result2 = await getRegistry("@acme/registry", mockConfig)
+    const result2 = await getRegistry("@acme/registry", { config: mockConfig })
     expect(result2.name).toBe("@acme/registry")
   })
 
@@ -650,7 +650,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@private", mockConfig)
+    const result = await getRegistry("@private", { config: mockConfig })
 
     expect(result).toMatchObject({
       name: "@private/registry",
@@ -668,9 +668,9 @@ describe("getRegistry", () => {
       registries: {},
     } as any
 
-    await expect(getRegistry("@unknown", mockConfig)).rejects.toThrow(
-      RegistryNotConfiguredError
-    )
+    await expect(
+      getRegistry("@unknown", { config: mockConfig })
+    ).rejects.toThrow(RegistryNotConfiguredError)
   })
 
   it("should throw RegistryParseError on invalid registry data", async () => {
@@ -693,9 +693,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@invalid", mockConfig)).rejects.toThrow(
-      RegistryParseError
-    )
+    await expect(
+      getRegistry("@invalid", { config: mockConfig })
+    ).rejects.toThrow(RegistryParseError)
   })
 
   it("should throw RegistryFetchError on network error", async () => {
@@ -715,7 +715,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@error", mockConfig)).rejects.toThrow(
+    await expect(getRegistry("@error", { config: mockConfig })).rejects.toThrow(
       RegistryFetchError
     )
   })
@@ -726,9 +726,9 @@ describe("getRegistry", () => {
       tailwind: { baseColor: "neutral", cssVariables: true },
     } as any
 
-    await expect(getRegistry("@nonexistent", mockConfig)).rejects.toThrow(
-      RegistryNotConfiguredError
-    )
+    await expect(
+      getRegistry("@nonexistent", { config: mockConfig })
+    ).rejects.toThrow(RegistryNotConfiguredError)
   })
 
   it("should handle registry with no items gracefully", async () => {
@@ -754,7 +754,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@empty", mockConfig)
+    const result = await getRegistry("@empty", { config: mockConfig })
     expect(result).toMatchObject(registryData)
     expect(result.items).toHaveLength(0)
   })
@@ -776,9 +776,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@notfound", mockConfig)).rejects.toThrow(
-      RegistryNotFoundError
-    )
+    await expect(
+      getRegistry("@notfound", { config: mockConfig })
+    ).rejects.toThrow(RegistryNotFoundError)
   })
 
   it("should handle 401 error from registry endpoint", async () => {
@@ -798,9 +798,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@unauthorized", mockConfig)).rejects.toThrow(
-      RegistryUnauthorizedError
-    )
+    await expect(
+      getRegistry("@unauthorized", { config: mockConfig })
+    ).rejects.toThrow(RegistryUnauthorizedError)
   })
 
   it("should handle 403 error from registry endpoint", async () => {
@@ -820,9 +820,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@forbidden", mockConfig)).rejects.toThrow(
-      RegistryForbiddenError
-    )
+    await expect(
+      getRegistry("@forbidden", { config: mockConfig })
+    ).rejects.toThrow(RegistryForbiddenError)
   })
 
   it("should set headers in context when provided", async () => {
@@ -856,7 +856,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await getRegistry("@headers-test", mockConfig)
+    await getRegistry("@headers-test", { config: mockConfig })
 
     expect(receivedHeaders["x-custom-header"]).toBe("test-value")
     expect(receivedHeaders.authorization).toBe("Bearer test-token")
@@ -885,7 +885,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@no-headers", mockConfig)
+    const result = await getRegistry("@no-headers", { config: mockConfig })
     expect(result).toMatchObject(registryData)
   })
 
@@ -912,7 +912,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@acme/sub", mockConfig)
+    const result = await getRegistry("@acme/sub", { config: mockConfig })
     expect(result).toMatchObject(registryData)
   })
 
@@ -937,7 +937,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@defaults", minimalConfig)
+    const result = await getRegistry("@defaults", { config: minimalConfig })
     expect(result).toMatchObject(registryData)
   })
 
@@ -961,7 +961,9 @@ describe("getRegistry", () => {
       },
     } as any
 
-    await expect(getRegistry("@malformed", mockConfig)).rejects.toThrow()
+    await expect(
+      getRegistry("@malformed", { config: mockConfig })
+    ).rejects.toThrow()
   })
 
   it("should throw RegistryParseError with proper context", async () => {
@@ -987,7 +989,7 @@ describe("getRegistry", () => {
     } as any
 
     try {
-      await getRegistry("@parsetest/registry", mockConfig)
+      await getRegistry("@parsetest/registry", { config: mockConfig })
       expect.fail("Should have thrown RegistryParseError")
     } catch (error) {
       expect(error).toBeInstanceOf(RegistryParseError)
@@ -1016,7 +1018,7 @@ describe("getRegistry", () => {
 
     try {
       // Cast to bypass TypeScript checking since we're testing runtime validation
-      await getRegistry("invalid-name" as `@${string}`, mockConfig)
+      await getRegistry("invalid-name" as `@${string}`, { config: mockConfig })
       expect.fail("Should have thrown RegistryParseError")
     } catch (error) {
       expect(error).toBeInstanceOf(RegistryParseError)
@@ -1047,7 +1049,7 @@ describe("getRegistry", () => {
     } as any
 
     try {
-      await getRegistry("@" as `@${string}`, mockConfig)
+      await getRegistry("@" as `@${string}`, { config: mockConfig })
       expect.fail("Should have thrown RegistryParseError")
     } catch (error) {
       expect(error).toBeInstanceOf(RegistryParseError)
@@ -1088,7 +1090,7 @@ describe("getRegistry", () => {
       },
     } as any
 
-    const result = await getRegistry("@test-123_abc", mockConfig)
+    const result = await getRegistry("@test-123_abc", { config: mockConfig })
     expect(result).toMatchObject(registryData)
   })
 
@@ -1104,7 +1106,7 @@ describe("getRegistry", () => {
     } as any
 
     try {
-      await getRegistry("@test$invalid" as `@${string}`, mockConfig)
+      await getRegistry("@test$invalid" as `@${string}`, { config: mockConfig })
       expect.fail("Should have thrown RegistryParseError")
     } catch (error) {
       expect(error).toBeInstanceOf(RegistryParseError)
@@ -1130,7 +1132,7 @@ describe("getRegistry", () => {
     } as any
 
     try {
-      await getRegistry("@-invalid" as `@${string}`, mockConfig)
+      await getRegistry("@-invalid" as `@${string}`, { config: mockConfig })
       expect.fail("Should have thrown RegistryParseError")
     } catch (error) {
       expect(error).toBeInstanceOf(RegistryParseError)

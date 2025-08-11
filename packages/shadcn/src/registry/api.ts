@@ -38,8 +38,13 @@ const registryNameSchema = z
 
 export async function getRegistry(
   name: `@${string}`,
-  config?: Partial<Config>
+  options?: {
+    config?: Partial<Config>
+    useCache?: boolean
+  }
 ) {
+  const { config, useCache } = options || {}
+
   // Validate the registry name using Zod schema
   try {
     registryNameSchema.parse(name.split("/")[0])
@@ -67,7 +72,7 @@ export async function getRegistry(
     })
   }
 
-  const [result] = await fetchRegistry([urlAndHeaders.url])
+  const [result] = await fetchRegistry([urlAndHeaders.url], { useCache })
 
   try {
     return registrySchema.parse(result)
@@ -78,21 +83,29 @@ export async function getRegistry(
 
 export async function getRegistryItems(
   items: string[],
-  config?: Partial<Config>,
-  options: { useCache?: boolean } = {}
+  options?: {
+    config?: Partial<Config>
+    useCache?: boolean
+  }
 ) {
+  const { config, useCache = false } = options || {}
+
   clearRegistryContext()
 
-  return fetchRegistryItems(items, configWithDefaults(config), options)
+  return fetchRegistryItems(items, configWithDefaults(config), { useCache })
 }
 
 export async function resolveRegistryItems(
   items: string[],
-  config?: Partial<Config>,
-  options: { useCache?: boolean } = {}
+  options?: {
+    config?: Partial<Config>
+    useCache?: boolean
+  }
 ) {
+  const { config, useCache = false } = options || {}
+
   clearRegistryContext()
-  return resolveRegistryTree(items, configWithDefaults(config), options)
+  return resolveRegistryTree(items, configWithDefaults(config), { useCache })
 }
 
 export async function getShadcnRegistryIndex() {

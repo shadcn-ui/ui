@@ -57,7 +57,7 @@ export const view = new Command()
       // Validate registries early for better error messages.
       validateRegistryConfigForItems(items, config)
 
-      const payload = await getRegistryItems(items, config)
+      const payload = await getRegistryItems(items, { config })
       console.log(JSON.stringify(payload, null, 2))
       process.exit(0)
     } catch (error) {

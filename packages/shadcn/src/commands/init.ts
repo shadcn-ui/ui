@@ -172,7 +172,9 @@ export const init = new Command()
         // This forces a shadowConfig validation early in the process.
         buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
 
-        const [item] = await getRegistryItems([components[0]], shadowConfig)
+        const [item] = await getRegistryItems([components[0]], {
+          config: shadowConfig,
+        })
         if (item?.type === "registry:style") {
           // Set a default base color so we're not prompted.
           // The style will extend or override it.

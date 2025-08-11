@@ -84,15 +84,12 @@ export const search = new Command()
       validateRegistryConfigForItems(registries, config)
 
       // Use searchRegistries for both search and non-search cases
-      const results = await searchRegistries(
-        registries as `@${string}`[],
-        {
-          query: options.query,
-          limit: options.limit,
-          offset: options.offset,
-        },
-        config
-      )
+      const results = await searchRegistries(registries as `@${string}`[], {
+        query: options.query,
+        limit: options.limit,
+        offset: options.offset,
+        config,
+      })
 
       console.log(JSON.stringify(results, null, 2))
       process.exit(0)
