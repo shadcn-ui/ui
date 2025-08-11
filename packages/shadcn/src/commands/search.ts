@@ -24,7 +24,10 @@ const searchOptionsSchema = z.object({
 export const search = new Command()
   .name("search")
   .description("search items from registries")
-  .argument("<registries...>", "the registry names to search items from")
+  .argument(
+    "<registries...>",
+    "the registry names or urls to search items from. Names must be prefixed with @."
+  )
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
