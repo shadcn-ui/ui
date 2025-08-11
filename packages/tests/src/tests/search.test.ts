@@ -197,18 +197,21 @@ describe("shadcn search", () => {
           type: "registry:ui",
           description: "A button component",
           registry: "@shadcn",
+          addCommandArgument: "@shadcn/button",
         },
         {
           name: "card",
           type: "registry:ui",
           description: "A card component",
           registry: "@shadcn",
+          addCommandArgument: "@shadcn/card",
         },
         {
           name: "alert-dialog",
           type: "registry:ui",
           description: undefined,
           registry: "@shadcn",
+          addCommandArgument: "@shadcn/alert-dialog",
         },
       ])
     )
@@ -257,11 +260,13 @@ describe("shadcn search", () => {
           type: "registry:component",
           description: "Foo component from registry one",
           registry: "@one",
+          addCommandArgument: "@one/foo",
         },
         {
           name: "bar",
           type: "registry:component",
           registry: "@one",
+          addCommandArgument: "@one/bar",
         },
       ])
     )
@@ -952,7 +957,7 @@ describe("shadcn search", () => {
     expect(parsed3.pagination.hasMore).toBe(false)
   })
 
-  it("should list with only name, type, and description fields", async () => {
+  it("should list with only name, type, description, registry, and addCommandArgument fields", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
 
     await configureRegistries(fixturePath, {
@@ -962,12 +967,13 @@ describe("shadcn search", () => {
     const output = await npxShadcn(fixturePath, ["search", "@one"])
     const parsed = JSON.parse(output.stdout)
 
-    // Check that we only get name, type, description, and registry fields
+    // Check that we only get name, type, description, registry, and addCommand fields
     expect(parsed.items).toContainEqual({
       name: "foo",
       type: "registry:component",
       description: "Foo component from registry one",
       registry: "@one",
+      addCommandArgument: "@one/foo",
     })
 
     // Verify that other fields are not included
@@ -977,5 +983,29 @@ describe("shadcn search", () => {
     expect(fooItem.files).toBeUndefined()
     expect(fooItem.tailwind).toBeUndefined()
     expect(fooItem.cssVars).toBeUndefined()
+  })
+
+  it("should handle different registry URL patterns for addCommand", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+
+    await configureRegistries(fixturePath, {
+      "@one": "http://localhost:9181/r/{name}",
+      "@two": "http://localhost:9182/registry/{name}",
+    })
+
+    const output = await npxShadcn(fixturePath, ["search", "@one", "@two"])
+    const parsed = JSON.parse(output.stdout)
+
+    // Check @one registry items have correct addCommand
+    const fooItem = parsed.items.find(
+      (item: any) => item.name === "foo" && item.registry === "@one"
+    )
+    expect(fooItem.addCommandArgument).toBe("@one/foo")
+
+    // Check @two registry items have correct addCommand
+    const itemItem = parsed.items.find(
+      (item: any) => item.name === "item" && item.registry === "@two"
+    )
+    expect(itemItem.addCommandArgument).toBe("@two/item")
   })
 })
