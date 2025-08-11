@@ -210,16 +210,10 @@ export async function createRegistryServer(
     response.end(JSON.stringify(item))
   })
 
-  let actualPort: number = port
-
   return {
     start: async () => {
       await new Promise<void>((resolve) => {
         server.listen(port, () => {
-          const address = server.address()
-          if (typeof address === "object" && address !== null) {
-            actualPort = address.port
-          }
           resolve()
         })
       })
@@ -230,9 +224,6 @@ export async function createRegistryServer(
           resolve()
         })
       })
-    },
-    get port() {
-      return actualPort
     },
   }
 }
