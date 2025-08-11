@@ -17,7 +17,8 @@
         "registry:theme",
         "registry:page",
         "registry:file",
-        "registry:style"
+        "registry:style",
+        "registry:item"
       ],
       "description": "The type of the item. This is used to determine the type and target path of the item when resolved for a project."
     },
@@ -79,7 +80,8 @@
               "registry:theme",
               "registry:page",
               "registry:file",
-              "registry:style"
+              "registry:style",
+              "registry:item"
             ],
             "description": "The type of the file. This is used to determine the type of the file when resolved for a project."
           },
@@ -187,6 +189,13 @@
             }
           }
         ]
+      }
+    },
+    "envVars": {
+      "type": "object",
+      "description": "Environment variables required by the registry item. Key-value pairs that will be added to the project's .env file.",
+      "additionalProperties": {
+        "type": "string"
       }
     },
     "meta": {

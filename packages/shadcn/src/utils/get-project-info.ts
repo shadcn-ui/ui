@@ -1,11 +1,7 @@
 import path from "path"
+import { rawConfigSchema } from "@/src/schema"
 import { FRAMEWORKS, Framework } from "@/src/utils/frameworks"
-import {
-  Config,
-  RawConfig,
-  getConfig,
-  resolveConfigPaths,
-} from "@/src/utils/get-config"
+import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
@@ -121,11 +117,10 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
 
   // TanStack Start.
   if (
-    configFiles.find((file) => file.startsWith("app.config."))?.length &&
     [
       ...Object.keys(packageJson?.dependencies ?? {}),
       ...Object.keys(packageJson?.devDependencies ?? {}),
-    ].find((dep) => dep.startsWith("@tanstack/start"))
+    ].find((dep) => dep.startsWith("@tanstack/react-start"))
   ) {
     type.framework = FRAMEWORKS["tanstack-start"]
     return type
@@ -144,6 +139,26 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   // We'll assume that it got caught by the Remix check above.
   if (configFiles.find((file) => file.startsWith("vite.config."))?.length) {
     type.framework = FRAMEWORKS["vite"]
+    return type
+  }
+
+  // Vinxi-based (such as @tanstack/start and @solidjs/solid-start)
+  // They are vite-based, and the same configurations used for Vite should work flawlessly
+  const appConfig = configFiles.find((file) => file.startsWith("app.config"))
+  if (appConfig?.length) {
+    const appConfigContents = await fs.readFile(
+      path.resolve(cwd, appConfig),
+      "utf8"
+    )
+    if (appConfigContents.includes("defineConfig")) {
+      type.framework = FRAMEWORKS["vite"]
+      return type
+    }
+  }
+
+  // Expo.
+  if (packageJson?.dependencies?.expo) {
+    type.framework = FRAMEWORKS["expo"]
     return type
   }
 
@@ -313,7 +328,7 @@ export async function getProjectConfig(
     return null
   }
 
-  const config: RawConfig = {
+  const config: z.infer<typeof rawConfigSchema> = {
     $schema: "https://ui.shadcn.com/schema.json",
     rsc: projectInfo.isRSC,
     tsx: projectInfo.isTsx,
@@ -338,9 +353,9 @@ export async function getProjectConfig(
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function getProjectTailwindVersionFromConfig(
-  config: Config
-): Promise<TailwindVersion> {
+export async function getProjectTailwindVersionFromConfig(config: {
+  resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+}): Promise<TailwindVersion> {
   if (!config.resolvedPaths?.cwd) {
     return "v3"
   }

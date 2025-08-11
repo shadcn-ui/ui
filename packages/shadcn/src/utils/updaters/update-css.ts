@@ -1,6 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { registryItemCssSchema } from "@/src/registry/schema"
+import { registryItemCssSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
@@ -79,8 +79,70 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
 
           const [, name, params] = atRuleMatch
 
+          // Special handling for plugins - place them after imports
+          if (name === "plugin") {
+            // Find existing plugin with same params
+            const existingPlugin = root.nodes?.find(
+              (node): node is AtRule =>
+                node.type === "atrule" &&
+                node.name === "plugin" &&
+                node.params === params
+            )
+
+            if (!existingPlugin) {
+              const pluginRule = postcss.atRule({
+                name: "plugin",
+                params,
+                raws: { semicolon: true, before: "\n" },
+              })
+
+              // Find the last import or plugin node to insert after
+              const importNodes = root.nodes?.filter(
+                (node): node is AtRule =>
+                  node.type === "atrule" && node.name === "import"
+              )
+
+              const pluginNodes = root.nodes?.filter(
+                (node): node is AtRule =>
+                  node.type === "atrule" && node.name === "plugin"
+              )
+
+              if (pluginNodes && pluginNodes.length > 0) {
+                // Insert after the last existing plugin
+                const lastPlugin = pluginNodes[pluginNodes.length - 1]
+                root.insertAfter(lastPlugin, pluginRule)
+              } else if (importNodes && importNodes.length > 0) {
+                // Insert after the last import if no plugins exist
+                const lastImport = importNodes[importNodes.length - 1]
+                root.insertAfter(lastImport, pluginRule)
+                // Add a break comment before the first plugin to create spacing
+                root.insertBefore(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
+                // Add a break comment after the plugin for spacing from other content
+                root.insertAfter(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
+              } else {
+                // If no imports or plugins, insert at the beginning
+                root.prepend(pluginRule)
+                // Add a break comment before the first plugin for spacing
+                root.insertBefore(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
+                // Add a break comment after the plugin for spacing from other content
+                root.insertAfter(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
+              }
+            }
+          }
           // Special handling for keyframes - place them under @theme inline
-          if (name === "keyframes") {
+          else if (name === "keyframes") {
             let themeInline = root.nodes?.find(
               (node): node is AtRule =>
                 node.type === "atrule" &&

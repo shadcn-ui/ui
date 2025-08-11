@@ -3,6 +3,7 @@ import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
 
+import { getAllBlocks } from "@/lib/blocks"
 import { registry } from "@/registry/index"
 
 async function buildRegistryIndex() {
@@ -60,7 +61,7 @@ export const Index: Record<string, any> = {`
   index += `
   }`
 
-  console.log(`#️⃣  ${Object.keys(registry.items).length} components found`)
+  console.log(`#️⃣  ${Object.keys(registry.items).length} items found`)
 
   // Write style index.
   rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"))
@@ -91,6 +92,16 @@ async function buildRegistryJsonFile() {
   await fs.writeFile(
     path.join(process.cwd(), `registry.json`),
     JSON.stringify(fixedRegistry, null, 2)
+  )
+
+  // 3. Copy the registry.json to the www/public/r/styles/new-york-v4 directory.
+  await fs.cp(
+    path.join(process.cwd(), "registry.json"),
+    path.join(
+      process.cwd(),
+      "../www/public/r/styles/new-york-v4/registry.json"
+    ),
+    { recursive: true }
   )
 }
 
@@ -139,9 +150,28 @@ async function syncRegistry() {
   }
 }
 
+async function buildBlocksIndex() {
+  const blocks = await getAllBlocks(["registry:block"])
+
+  const payload = blocks.map((block) => ({
+    name: block.name,
+    description: block.description,
+    categories: block.categories,
+  }))
+
+  rimraf.sync(path.join(process.cwd(), "registry/__blocks__.json"))
+  await fs.writeFile(
+    path.join(process.cwd(), "registry/__blocks__.json"),
+    JSON.stringify(payload, null, 2)
+  )
+}
+
 try {
   console.log("🗂️ Building registry/__index__.tsx...")
   await buildRegistryIndex()
+
+  console.log("🗂️ Building registry/__blocks__.json...")
+  await buildBlocksIndex()
 
   console.log("💅 Building registry.json...")
   await buildRegistryJsonFile()

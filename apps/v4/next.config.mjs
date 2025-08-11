@@ -70,6 +70,14 @@ const nextConfig = {
       },
     ]
   },
+  rewrites() {
+    return [
+      {
+        source: "/docs/:path*.mdx",
+        destination: "/llm/:path*",
+      },
+    ]
+  },
 }
 
 const withMDX = createMDX({})

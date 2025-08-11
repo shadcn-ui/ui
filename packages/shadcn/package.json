@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "2.6.0",
+  "version": "2.10.0",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -35,6 +35,10 @@
       "types": "./dist/registry/index.d.ts",
       "default": "./dist/registry/index.js"
     },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "default": "./dist/schema/index.js"
+    },
     "./mcp": {
       "types": "./dist/mcp/index.d.ts",
       "default": "./dist/mcp/index.js"
@@ -63,6 +67,7 @@
     "@babel/core": "^7.22.1",
     "@babel/parser": "^7.22.6",
     "@babel/plugin-transform-typescript": "^7.22.5",
+    "@dotenvx/dotenvx": "^1.48.4",
     "@modelcontextprotocol/sdk": "^1.10.2",
     "commander": "^10.0.0",
     "cosmiconfig": "^8.1.3",

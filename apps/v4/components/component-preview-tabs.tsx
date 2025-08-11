@@ -22,7 +22,7 @@ export function ComponentPreviewTabs({
 
   return (
     <div
-      className={cn("group relative my-4 flex flex-col gap-2", className)}
+      className={cn("group relative mt-4 mb-12 flex flex-col gap-2", className)}
       {...props}
     >
       <Tabs
@@ -51,7 +51,7 @@ export function ComponentPreviewTabs({
       </Tabs>
       <div
         data-tab={tab}
-        className="data-[tab=code]:border-code relative rounded-lg border md:-mx-4"
+        className="data-[tab=code]:border-code relative rounded-lg border md:-mx-1"
       >
         <div
           data-slot="preview"
