@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest"
 
 import { getRegistry } from "./api"
-import { searchRegistries } from "./search"
+import { buildRegistryItemNameFromRegistry, searchRegistries } from "./search"
 
 describe("searchRegistries", () => {
   it("should fetch and return registries in flat format", async () => {
@@ -56,18 +56,21 @@ describe("searchRegistries", () => {
           type: "registry:ui",
           description: "A button component",
           registry: "@shadcn",
+          addCommandArgument: "@shadcn/button",
         },
         {
           name: "card",
           type: "registry:ui",
           description: "A card component",
           registry: "@shadcn",
+          addCommandArgument: "@shadcn/card",
         },
         {
           name: "header",
           type: "registry:component",
           description: "A header component",
           registry: "@custom",
+          addCommandArgument: "@custom/header",
         },
       ],
       pagination: {
@@ -120,6 +123,7 @@ describe("searchRegistries", () => {
     expect(results.items).toHaveLength(1)
     expect(results.items[0].name).toBe("button")
     expect(results.items[0].registry).toBe("@shadcn")
+    expect(results.items[0].addCommandArgument).toBe("@shadcn/button")
     expect(results.pagination).toEqual({
       total: 1,
       offset: 0,
@@ -528,5 +532,124 @@ describe("searchRegistries", () => {
     )
 
     mockGetRegistry.mockRestore()
+  })
+})
+
+describe("buildRegistryItemNameFromRegistry", () => {
+  const testCases = [
+    // Namespace registries
+    {
+      name: "namespace registry",
+      itemName: "button",
+      registry: "@shadcn",
+      expected: "@shadcn/button",
+    },
+    {
+      name: "namespace registry with org",
+      itemName: "card",
+      registry: "@myorg",
+      expected: "@myorg/card",
+    },
+
+    // URL with registry in path
+    {
+      name: "URL with registry.json",
+      itemName: "button",
+      registry: "http://example.com/r/registry.json",
+      expected: "http://example.com/r/button.json",
+    },
+    {
+      name: "URL with multiple registry in path - replaces last",
+      itemName: "button",
+      registry: "http://example.com/registry/foo/registry",
+      expected: "http://example.com/registry/foo/button",
+    },
+    {
+      name: "URL with registry in nested path",
+      itemName: "dialog",
+      registry: "http://example.com/components/registry/index.json",
+      expected: "http://example.com/components/dialog/index.json",
+    },
+
+    // URL with registry in query params
+    {
+      name: "URL with registry in query param",
+      itemName: "modal",
+      registry: "http://registry.foo.com?item=registry",
+      expected: "http://registry.foo.com?item=modal",
+    },
+    {
+      name: "URL with registry in query param (multiple params)",
+      itemName: "tabs",
+      registry: "http://api.example.com/fetch?name=registry&type=component",
+      expected: "http://api.example.com/fetch?name=tabs&type=component",
+    },
+    {
+      name: "URL with registry in both path and query",
+      itemName: "button",
+      registry: "http://example.com/registry?name=registry",
+      expected: "http://example.com/button?name=button",
+    },
+
+    // Edge cases - should NOT replace in domain/subdomain
+    {
+      name: "URL with registry in subdomain - should NOT replace",
+      itemName: "button",
+      registry: "http://registry.example.com/api",
+      expected: "http://registry.example.com/api",
+    },
+    {
+      name: "URL with registry in domain - should NOT replace",
+      itemName: "button",
+      registry: "http://myregistry.com/api",
+      expected: "http://myregistry.com/api",
+    },
+
+    // URLs without registry
+    {
+      name: "URL without registry word",
+      itemName: "button",
+      registry: "http://example.com/components/all",
+      expected: "http://example.com/components/all",
+    },
+    {
+      name: "URL with only query params, no registry",
+      itemName: "button",
+      registry: "http://example.com?type=ui",
+      expected: "http://example.com?type=ui",
+    },
+
+    // HTTPS and ports
+    {
+      name: "HTTPS URL with registry",
+      itemName: "sidebar",
+      registry: "https://secure.example.com/components/registry",
+      expected: "https://secure.example.com/components/sidebar",
+    },
+    {
+      name: "URL with port and registry",
+      itemName: "header",
+      registry: "http://localhost:3000/api/registry",
+      expected: "http://localhost:3000/api/header",
+    },
+
+    // Complex cases
+    {
+      name: "URL with hash and registry",
+      itemName: "footer",
+      registry: "http://example.com/registry#latest",
+      expected: "http://example.com/footer#latest",
+    },
+    {
+      name: "URL with encoded characters",
+      itemName: "button",
+      registry: "http://example.com/registry%20component",
+      expected: "http://example.com/button%20component",
+    },
+  ]
+
+  it.each(testCases)("$name", ({ itemName, registry, expected }) => {
+    const result = buildRegistryItemNameFromRegistry(itemName, registry)
+    expect(result).toBe(expected)
   })
 })
