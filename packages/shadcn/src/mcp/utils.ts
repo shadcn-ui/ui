@@ -5,8 +5,8 @@ import { z } from "zod"
 
 const SHADCN_CLI_COMMAND = "shadcn@beta"
 
-export function npxShadcn(command: string) {
-  const packageRunner = getPackageRunner(process.cwd())
+export async function npxShadcn(command: string) {
+  const packageRunner = await getPackageRunner(process.cwd())
   return `${packageRunner} ${SHADCN_CLI_COMMAND} ${command}`
 }
 
@@ -98,4 +98,35 @@ export function formatRegistryItems(
     ]
     return parts.filter(Boolean).join("\n")
   })
+}
+
+export function formatItemExamples(
+  items: z.infer<typeof registryItemSchema>[],
+  query: string
+) {
+  const sections = items.map((item) => {
+    const parts: string[] = [
+      `## Example: ${item.name}`,
+      item.description ? `\n${item.description}\n` : "",
+    ]
+
+    if (item.files?.length) {
+      item.files.forEach((file) => {
+        if (file.content) {
+          parts.push(`### Code (${file.path}):\n`)
+          parts.push("```tsx")
+          parts.push(file.content)
+          parts.push("```")
+        }
+      })
+    }
+
+    return parts.filter(Boolean).join("\n")
+  })
+
+  const header = `# Usage Examples\n\nFound ${items.length} example${
+    items.length > 1 ? "s" : ""
+  } matching "${query}":\n`
+
+  return header + sections.join("\n\n---\n\n")
 }

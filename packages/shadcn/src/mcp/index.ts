@@ -10,6 +10,7 @@ import { z } from "zod"
 import { zodToJsonSchema } from "zod-to-json-schema"
 
 import {
+  formatItemExamples,
   formatRegistryItems,
   formatSearchResultsWithPagination,
   getMcpConfig,
@@ -63,7 +64,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "search_items_in_registries",
         description:
-          "Search for components in registries using fuzzy matching (requires components.json)",
+          "Search for components in registries using fuzzy matching (requires components.json). After finding an item, use get_item_examples_from_registries to see usage examples.",
         inputSchema: zodToJsonSchema(
           z.object({
             registries: z
@@ -90,13 +91,46 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "view_items_in_registries",
         description:
-          "View detailed information about specific registry items including the name, description, type and files content.",
+          "View detailed information about specific registry items including the name, description, type and files content. For usage examples, use get_item_examples_from_registries instead.",
         inputSchema: zodToJsonSchema(
           z.object({
             items: z
               .array(z.string())
               .describe(
                 "Array of item names with registry prefix (e.g., ['@shadcn/button', '@shadcn/card'])"
+              ),
+          })
+        ),
+      },
+      {
+        name: "get_item_examples_from_registries",
+        description:
+          "Find usage examples and demos with their complete code. Search for patterns like 'accordion-demo', 'button example', 'card-demo', etc. Returns full implementation code with dependencies.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            registries: z
+              .array(z.string())
+              .describe(
+                "Array of registry names to search (e.g., ['@shadcn', '@acme'])"
+              ),
+            query: z
+              .string()
+              .describe(
+                "Search query for examples (e.g., 'accordion-demo', 'button demo', 'card example', 'tooltip-demo', 'example-booking-form', 'example-hero'). Common patterns: '{item-name}-demo', '{item-name} example', 'example {item-name}'"
+              ),
+          })
+        ),
+      },
+      {
+        name: "get_add_command_for_items",
+        description:
+          "Get the shadcn CLI add command for specific items in a registry. This is useful for adding one or more components to your project.",
+        inputSchema: zodToJsonSchema(
+          z.object({
+            items: z
+              .array(z.string())
+              .describe(
+                "Array of items to get the add command for prefixed with the registry name (e.g., ['@shadcn/button', '@shadcn/card'])"
               ),
           })
         ),
@@ -141,9 +175,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                   .join("\n")}
 
                 You can view the items in a registry by running:
-                \`${npxShadcn("view @name-of-registry")}\`
+                \`${await npxShadcn("view @name-of-registry")}\`
 
-                For example: \`${npxShadcn("view @shadcn")}\` or \`${npxShadcn(
+                For example: \`${await npxShadcn(
+                  "view @shadcn"
+                )}\` or \`${await npxShadcn(
                 "view @shadcn @acme"
               )}\` to view multiple registries.
                 `,
@@ -271,6 +307,74 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
               text: dedent`Item Details:
 
               ${formattedItems.join("\n\n---\n\n")}`,
+            },
+          ],
+        }
+      }
+
+      case "get_item_examples_from_registries": {
+        const inputSchema = z.object({
+          query: z.string(),
+          registries: z.array(z.string()),
+        })
+
+        const args = inputSchema.parse(request.params.arguments)
+        const config = await getMcpConfig()
+
+        const results = await searchRegistries(args.registries, {
+          query: args.query,
+          config,
+          useCache: false,
+        })
+
+        if (results.items.length === 0) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: dedent`No examples found for query "${args.query}".
+
+                Try searching with patterns like:
+                - "accordion-demo" for accordion examples
+                - "button demo" or "button example"
+                - Component name followed by "-demo" or "example"
+
+                You can also:
+                1. Use search_items_in_registries to find all items matching your query
+                2. View the main component with view_items_in_registries for inline usage documentation`,
+              },
+            ],
+          }
+        }
+
+        const itemNames = results.items.map((item) => item.addCommandArgument)
+        const fullItems = await getRegistryItems(itemNames, {
+          config,
+          useCache: false,
+        })
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: formatItemExamples(fullItems, args.query),
+            },
+          ],
+        }
+      }
+
+      case "get_add_command_for_items": {
+        const args = z
+          .object({
+            items: z.array(z.string()),
+          })
+          .parse(request.params.arguments)
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: await npxShadcn(`add ${args.items.join(" ")}`),
             },
           ],
         }
