@@ -89,7 +89,7 @@ const menuItems = {
   ),
   scira: (url: string) => (
     <a
-      href={getPromptUrl("http://localhost:3000/", url)}
+      href={getPromptUrl("https://scira.ai/", url)}
       target="_blank"
       className="m-0 p-0"
     >
