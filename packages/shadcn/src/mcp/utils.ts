@@ -1,4 +1,4 @@
-import { getRegistriesConfig } from "@/src/registry"
+import { getRegistriesConfig } from "@/src/registry/api"
 import { registryItemSchema, searchResultsSchema } from "@/src/schema"
 import { getPackageRunner } from "@/src/utils/get-package-manager"
 import { z } from "zod"

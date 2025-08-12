@@ -1,9 +1,4 @@
-export {
-  getRegistryItems,
-  resolveRegistryItems,
-  getRegistry,
-  getRegistriesConfig,
-} from "./api"
+export { getRegistryItems, resolveRegistryItems, getRegistry } from "./api"
 
 export { searchRegistries } from "./search"
 
