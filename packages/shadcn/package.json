@@ -60,7 +60,8 @@
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
     "pub:release": "pnpm build && pnpm publish --access public",
     "test": "vitest run",
-    "test:dev": "REGISTRY_URL=http://localhost:4000/r vitest run"
+    "test:dev": "REGISTRY_URL=http://localhost:4000/r vitest run",
+    "mcp:inspect": "pnpm dlx @modelcontextprotocol/inspector node dist/index.js mcp"
   },
   "dependencies": {
     "@antfu/ni": "^25.0.0",
@@ -71,6 +72,7 @@
     "@modelcontextprotocol/sdk": "^1.17.2",
     "commander": "^14.0.0",
     "cosmiconfig": "^9.0.0",
+    "dedent": "^1.6.0",
     "deepmerge": "^4.3.1",
     "diff": "^8.0.2",
     "execa": "^9.6.0",

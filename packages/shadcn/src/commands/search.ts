@@ -23,6 +23,7 @@ const searchOptionsSchema = z.object({
 
 export const search = new Command()
   .name("search")
+  .alias("list")
   .description("search items from registries")
   .argument(
     "<registries...>",
