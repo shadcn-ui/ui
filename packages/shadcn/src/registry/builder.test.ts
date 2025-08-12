@@ -1,10 +1,13 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
+
+import { REGISTRY_URL } from "@/src/registry/constants"
 import { afterEach, beforeEach, describe, expect, it } from "vitest"
 
 import {
   buildHeadersFromRegistryConfig,
   buildUrlAndHeadersForRegistryItem,
   buildUrlFromRegistryConfig,
+  resolveRegistryUrl,
 } from "./builder"
 
 describe("buildUrlFromRegistryConfig", () => {
@@ -445,5 +448,29 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
     expect(
       buildUrlAndHeadersForRegistryItem("./local/button", config)
     ).toBeNull()
+  })
+})
+
+describe("resolveRegistryUrl", () => {
+  it("should return the URL as-is for valid URLs", () => {
+    const url = "https://example.com/component.json"
+    expect(resolveRegistryUrl(url)).toBe(url)
+  })
+
+  it("should append /json to v0 registry URLs", () => {
+    const v0Url = "https://v0.dev/chat/b/abc123"
+    expect(resolveRegistryUrl(v0Url)).toBe("https://v0.dev/chat/b/abc123/json")
+  })
+
+  it("should not append /json if already present", () => {
+    const v0Url = "https://v0.dev/chat/b/abc123/json"
+    expect(resolveRegistryUrl(v0Url)).toBe(v0Url)
+  })
+
+  it("should prepend REGISTRY_URL for non-URLs", () => {
+    expect(resolveRegistryUrl("test.json")).toBe(`${REGISTRY_URL}/test.json`)
+    expect(resolveRegistryUrl("styles/default/button.json")).toBe(
+      `${REGISTRY_URL}/styles/default/button.json`
+    )
   })
 })

@@ -1,7 +1,8 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
-import { getRegistryIndex, getRegistryItem } from "@/src/registry/api"
+import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
+import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
@@ -17,21 +18,6 @@ import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
-
-const DEPRECATED_COMPONENTS = [
-  {
-    name: "toast",
-    deprecatedBy: "sonner",
-    message:
-      "The toast component is deprecated. Use the sonner component instead.",
-  },
-  {
-    name: "toaster",
-    deprecatedBy: "sonner",
-    message:
-      "The toaster component is deprecated. Use the sonner component instead.",
-  },
-]
 
 export const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -83,6 +69,7 @@ export const add = new Command()
       let initialConfig = await getConfig(options.cwd)
       if (!initialConfig) {
         initialConfig = createConfig({
+          style: "new-york",
           resolvedPaths: {
             cwd: options.cwd,
           },
@@ -90,7 +77,9 @@ export const add = new Command()
       }
 
       if (components.length > 0) {
-        const registryItem = await getRegistryItem(components[0], initialConfig)
+        const [registryItem] = await getRegistryItems([components[0]], {
+          config: initialConfig,
+        })
         const itemType = registryItem?.type
 
         if (isUniversalRegistryItem(registryItem)) {
@@ -170,7 +159,7 @@ export const add = new Command()
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
-          style: "index",
+          baseStyle: true,
         })
       }
 
@@ -202,7 +191,7 @@ export const add = new Command()
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
-            style: "index",
+            baseStyle: true,
           })
 
           shouldUpdateAppIndex =
@@ -235,7 +224,7 @@ export const add = new Command()
 async function promptForRegistryComponents(
   options: z.infer<typeof addOptionsSchema>
 ) {
-  const registryIndex = await getRegistryIndex()
+  const registryIndex = await getShadcnRegistryIndex()
   if (!registryIndex) {
     logger.break()
     handleError(new Error("Failed to fetch registry index."))

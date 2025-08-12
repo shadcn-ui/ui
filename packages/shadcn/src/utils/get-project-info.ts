@@ -1,5 +1,5 @@
 import path from "path"
-import { rawConfigSchema } from "@/src/registry"
+import { rawConfigSchema } from "@/src/schema"
 import { FRAMEWORKS, Framework } from "@/src/utils/frameworks"
 import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
@@ -353,9 +353,9 @@ export async function getProjectConfig(
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function getProjectTailwindVersionFromConfig(
-  config: Config
-): Promise<TailwindVersion> {
+export async function getProjectTailwindVersionFromConfig(config: {
+  resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+}): Promise<TailwindVersion> {
   if (!config.resolvedPaths?.cwd) {
     return "v3"
   }
