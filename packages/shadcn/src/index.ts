@@ -7,6 +7,8 @@ import { init } from "@/src/commands/init"
 import { migrate } from "@/src/commands/migrate"
 import { build as registryBuild } from "@/src/commands/registry/build"
 import { mcp as registryMcp } from "@/src/commands/registry/mcp"
+import { search } from "@/src/commands/search"
+import { view } from "@/src/commands/view"
 import { Command } from "commander"
 
 import packageJson from "../package.json"
@@ -17,7 +19,7 @@ process.on("SIGTERM", () => process.exit(0))
 async function main() {
   const program = new Command()
     .name("shadcn")
-    .description("add components and dependencies to your project")
+    .description("add items from registries to your project")
     .version(
       packageJson.version || "1.0.0",
       "-v, --version",
@@ -28,6 +30,8 @@ async function main() {
     .addCommand(init)
     .addCommand(add)
     .addCommand(diff)
+    .addCommand(view)
+    .addCommand(search)
     .addCommand(migrate)
     .addCommand(info)
     .addCommand(build)

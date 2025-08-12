@@ -1,6 +1,6 @@
 "use server"
 
-import { registryItemSchema } from "shadcn/registry"
+import { registryItemSchema } from "shadcn/schema"
 import { z } from "zod"
 
 export async function getAllBlockIds(

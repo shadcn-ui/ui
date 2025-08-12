@@ -607,3 +607,18 @@ describe("canDeduplicateFiles", () => {
     expect(canDeduplicateFiles(undefined as any)).toBe(false)
   })
 })
+
+describe("isUrl", () => {
+  it("should return true for valid URLs", () => {
+    expect(isUrl("https://example.com")).toBe(true)
+    expect(isUrl("http://localhost:3000")).toBe(true)
+    expect(isUrl("https://example.com/path/to/file.json")).toBe(true)
+  })
+
+  it("should return false for non-URLs", () => {
+    expect(isUrl("not-a-url")).toBe(false)
+    expect(isUrl("/path/to/file")).toBe(false)
+    expect(isUrl("./relative/path")).toBe(false)
+    expect(isUrl("~/home/path")).toBe(false)
+  })
+})
