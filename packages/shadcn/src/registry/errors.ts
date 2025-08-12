@@ -250,3 +250,38 @@ export class RegistryInvalidNamespaceError extends RegistryError {
     this.name = "RegistryInvalidNamespaceError"
   }
 }
+
+export class ConfigMissingError extends RegistryError {
+  constructor(public readonly cwd: string) {
+    const message = `No components.json found in ${cwd} or parent directories.`
+
+    super(message, {
+      code: RegistryErrorCode.NOT_CONFIGURED,
+      context: { cwd },
+      suggestion:
+        "Run 'npx shadcn@latest init' to create a components.json file, or check that you're in the correct directory.",
+    })
+    this.name = "ConfigMissingError"
+  }
+}
+
+export class ConfigParseError extends RegistryError {
+  constructor(public readonly cwd: string, parseError: unknown) {
+    let message = `Invalid components.json configuration in ${cwd}.`
+
+    if (parseError instanceof z.ZodError) {
+      message = `Invalid components.json configuration in ${cwd}:\n${parseError.errors
+        .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
+        .join("\n")}`
+    }
+
+    super(message, {
+      code: RegistryErrorCode.INVALID_CONFIG,
+      cause: parseError,
+      context: { cwd },
+      suggestion:
+        "Check your components.json file for syntax errors or invalid configuration. Run 'npx shadcn@latest init' to regenerate a valid configuration.",
+    })
+    this.name = "ConfigParseError"
+  }
+}
