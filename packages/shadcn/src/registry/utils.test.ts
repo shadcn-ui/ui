@@ -1,6 +1,11 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it, test, vi } from "vitest"
+import { z } from "zod"
 
+import { Config } from "../utils/get-config"
+import { registryItemFileSchema } from "./schema"
 import {
+  canDeduplicateFiles,
+  deduplicateFilesByTarget,
   getDependencyFromModuleSpecifier,
   isLocalFile,
   isUniversalRegistryItem,
@@ -337,5 +342,283 @@ describe("isUniversalRegistryItem", () => {
       ],
     }
     expect(isUniversalRegistryItem(registryItem)).toBe(false)
+  })
+})
+
+vi.mock("../utils/get-project-info", () => ({
+  getProjectInfo: vi.fn().mockResolvedValue({
+    isSrcDir: false,
+    framework: { name: "next-app" },
+  }),
+}))
+
+vi.mock("../utils/updaters/update-files", () => ({
+  findCommonRoot: vi.fn().mockImplementation(() => ""),
+  resolveFilePath: vi.fn().mockImplementation((file) => {
+    const typeMap: Record<string, string> = {
+      "registry:ui": "components/ui",
+      "registry:lib": "lib",
+      "registry:hook": "hooks",
+    }
+    const baseDir = typeMap[file.type] || "components"
+
+    if (file.target) {
+      return file.target
+    }
+
+    const filename = file.path.split("/").pop()
+    return `${baseDir}/${filename}`
+  }),
+}))
+
+describe("deduplicateFilesByTarget", () => {
+  const createMockConfig = (overrides = {}): Config =>
+    ({
+      style: "default",
+      tailwind: { baseColor: "neutral" },
+      resolvedPaths: {
+        cwd: "/test/project",
+        tailwindConfig: "/test/project/tailwind.config.js",
+        tailwindCss: "/test/project/globals.css",
+        utils: "/test/project/lib/utils",
+        components: "/test/project/components",
+        lib: "/test/project/lib",
+        hooks: "/test/project/hooks",
+        ui: "/test/project/components/ui",
+      },
+      ...overrides,
+    } as Config)
+
+  test("should deduplicate files with same resolved path", async () => {
+    const config = createMockConfig()
+    const filesArrays = [
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "ui/button.tsx",
+          content: "Button A",
+          type: "registry:ui",
+        },
+      ]),
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "ui/button.tsx",
+          content: "Button B",
+          type: "registry:ui",
+        },
+      ]),
+    ]
+
+    const result = await deduplicateFilesByTarget(filesArrays, config)
+
+    expect(result).toHaveLength(1)
+    expect(result[0]).toMatchInlineSnapshot(`
+      {
+        "content": "Button B",
+        "path": "ui/button.tsx",
+        "type": "registry:ui",
+      }
+    `)
+  })
+
+  test("should preserve files with different resolved paths", async () => {
+    const config = createMockConfig()
+    const filesArrays = [
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "ui/button.tsx",
+          content: "Button",
+          type: "registry:ui",
+        },
+        {
+          path: "lib/utils.ts",
+          content: "Utils",
+          type: "registry:lib",
+        },
+      ]),
+    ]
+
+    const result = await deduplicateFilesByTarget(filesArrays, config)
+
+    expect(result).toHaveLength(2)
+    expect(result).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ path: "ui/button.tsx" }),
+        expect.objectContaining({ path: "lib/utils.ts" }),
+      ])
+    )
+  })
+
+  test("should handle explicit targets", async () => {
+    const config = createMockConfig()
+    const filesArrays = [
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "custom/component.tsx",
+          content: "Component A",
+          type: "registry:ui",
+        },
+      ]),
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "different/path.tsx",
+          content: "Component B",
+          type: "registry:ui",
+          target: "components/ui/button.tsx",
+        },
+      ]),
+    ]
+
+    const result = await deduplicateFilesByTarget(filesArrays, config)
+    expect(result).toHaveLength(2)
+  })
+
+  test("should handle undefined file arrays", async () => {
+    const config = createMockConfig()
+    const filesArrays = [
+      undefined,
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "ui/button.tsx",
+          content: "Button",
+          type: "registry:ui",
+        },
+      ]),
+      undefined,
+    ]
+
+    const result = await deduplicateFilesByTarget(filesArrays, config)
+
+    expect(result).toHaveLength(1)
+    expect(result[0]).toMatchObject({ path: "ui/button.tsx" })
+  })
+
+  test("should fallback to concatenation when config is incomplete", async () => {
+    const incompleteConfig = {
+      style: "default",
+      resolvedPaths: {
+        cwd: "/test/project",
+      },
+    } as Config
+
+    const filesArrays = [
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "ui/button.tsx",
+          content: "Button A",
+          type: "registry:ui",
+        },
+      ]),
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "ui/button.tsx",
+          content: "Button B",
+          type: "registry:ui",
+        },
+      ]),
+    ]
+
+    const result = await deduplicateFilesByTarget(filesArrays, incompleteConfig)
+
+    expect(result).toHaveLength(2)
+    expect(result[0]).toMatchObject({ content: "Button A" })
+    expect(result[1]).toMatchObject({ content: "Button B" })
+  })
+
+  test("should maintain last-wins behavior for conflicting files", async () => {
+    const config = createMockConfig()
+    const filesArrays = [
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "ui/button.tsx",
+          content: "First",
+          type: "registry:ui",
+        },
+      ]),
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "ui/button.tsx",
+          content: "Second",
+          type: "registry:ui",
+        },
+      ]),
+      z.array(registryItemFileSchema).parse([
+        {
+          path: "ui/button.tsx",
+          content: "Third",
+          type: "registry:ui",
+        },
+      ]),
+    ]
+
+    const result = await deduplicateFilesByTarget(filesArrays, config)
+
+    expect(result).toHaveLength(1)
+    expect(result[0].content).toBe("Third")
+  })
+})
+
+describe("canDeduplicateFiles", () => {
+  test("should return true when all required paths are present", () => {
+    const config = {
+      resolvedPaths: {
+        cwd: "/test/project",
+        ui: "/test/project/components/ui",
+        lib: "/test/project/lib",
+        components: "/test/project/components",
+        hooks: "/test/project/hooks",
+      },
+    } as Config
+
+    expect(canDeduplicateFiles(config)).toBe(true)
+  })
+
+  test("should return true when cwd and at least one component path is present", () => {
+    const config = {
+      resolvedPaths: {
+        cwd: "/test/project",
+        ui: "/test/project/components/ui",
+      },
+    } as Config
+
+    expect(canDeduplicateFiles(config)).toBe(true)
+  })
+
+  test("should return false when cwd is missing", () => {
+    const config = {
+      resolvedPaths: {
+        ui: "/test/project/components/ui",
+      },
+    } as Config
+
+    expect(canDeduplicateFiles(config)).toBe(false)
+  })
+
+  test("should return false when no component paths are present", () => {
+    const config = {
+      resolvedPaths: {
+        cwd: "/test/project",
+      },
+    } as Config
+
+    expect(canDeduplicateFiles(config)).toBe(false)
+  })
+
+  test("should return false when config is undefined", () => {
+    expect(canDeduplicateFiles(undefined as any)).toBe(false)
+  })
+})
+
+describe("isUrl", () => {
+  it("should return true for valid URLs", () => {
+    expect(isUrl("https://example.com")).toBe(true)
+    expect(isUrl("http://localhost:3000")).toBe(true)
+    expect(isUrl("https://example.com/path/to/file.json")).toBe(true)
+  })
+
+  it("should return false for non-URLs", () => {
+    expect(isUrl("not-a-url")).toBe(false)
+    expect(isUrl("/path/to/file")).toBe(false)
+    expect(isUrl("./relative/path")).toBe(false)
+    expect(isUrl("~/home/path")).toBe(false)
   })
 })

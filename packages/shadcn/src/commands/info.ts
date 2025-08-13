@@ -1,5 +1,6 @@
 import { getConfig } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
+import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
 
@@ -12,9 +13,13 @@ export const info = new Command()
     process.cwd()
   )
   .action(async (opts) => {
-    logger.info("> project info")
-    console.log(await getProjectInfo(opts.cwd))
-    logger.break()
-    logger.info("> components.json")
-    console.log(await getConfig(opts.cwd))
+    try {
+      logger.info("> project info")
+      console.log(await getProjectInfo(opts.cwd))
+      logger.break()
+      logger.info("> components.json")
+      console.log(await getConfig(opts.cwd))
+    } catch (error) {
+      handleError(error)
+    }
   })

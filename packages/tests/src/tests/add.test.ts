@@ -9,6 +9,9 @@ import {
   npxShadcn,
 } from "../utils/helpers"
 
+// Note: The tests here intentionally do not use a mocked registry.
+// We test this against the real registry.
+
 describe("shadcn add", () => {
   it("should add item to project", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
@@ -277,5 +280,20 @@ describe("shadcn add", () => {
       MULTILINE_VAR=line1
       "
     `)
+  })
+
+  it("should add registry:item with no framework", async () => {
+    const fixturePath = await createFixtureTestDirectory("no-framework")
+    await npxShadcn(fixturePath, [
+      "add",
+      "../../fixtures/registry/example-item.json",
+    ])
+
+    expect(await fs.pathExists(path.join(fixturePath, "path/to/foo.txt"))).toBe(
+      true
+    )
+    expect(
+      await fs.readFile(path.join(fixturePath, "path/to/foo.txt"), "utf-8")
+    ).toBe("Foo Bar")
   })
 })
