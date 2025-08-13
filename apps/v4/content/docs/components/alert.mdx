@@ -40,20 +40,38 @@ npx shadcn@latest add alert
 
 </TabsContent>
 
-</CodeTabs>
-
 ## Usage
 
 ```tsx showLineNumbers
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertIcon, AlertDescription, AlertTitle } from "@/components/ui/alert"
 ```
 
 ```tsx showLineNumbers
 <Alert variant="default | destructive">
-  <Terminal />
+  <AlertIcon>
+    <Terminal className="size-4 text-blue-600" />
+  </AlertIcon>
   <AlertTitle>Heads up!</AlertTitle>
   <AlertDescription>
     You can add components and dependencies to your app using the cli.
   </AlertDescription>
 </Alert>
 ```
+
+## Customizing the icon
+
+To change the icon size or spacing for a specific alert, simply pass a custom className to the icon or to the `AlertIcon` component:
+
+```tsx
+<Alert>
+  <AlertIcon className="mr-4">
+    <Terminal className="size-10 text-blue-600" />
+  </AlertIcon>
+  <AlertTitle>Custom icon size and spacing</AlertTitle>
+  <AlertDescription>
+    This alert uses a larger icon and extra spacing.
+  </AlertDescription>
+</Alert>
+```
+
+The `AlertIcon` component ensures that icon layout and spacing are easy to override per instance, without affecting other alerts or needing `!important`.
