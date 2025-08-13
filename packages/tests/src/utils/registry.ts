@@ -125,6 +125,30 @@ export async function createRegistryServer(
       return
     }
 
+    // Check if this is a registry.json request
+    if (urlWithoutQuery?.endsWith("/registry")) {
+      // Check if this requires bearer authentication
+      if (request.url?.includes("/bearer/")) {
+        // Validate bearer token
+        const token = request.headers.authorization?.split(" ")[1]
+        if (token !== "EXAMPLE_BEARER_TOKEN") {
+          response.writeHead(401, { "Content-Type": "application/json" })
+          response.end(JSON.stringify({ error: "Unauthorized" }))
+          return
+        }
+      }
+
+      response.writeHead(200, { "Content-Type": "application/json" })
+      response.end(
+        JSON.stringify({
+          name: "Test Registry",
+          homepage: "https://example.com",
+          items: items,
+        })
+      )
+      return
+    }
+
     const match = urlWithoutQuery?.match(
       new RegExp(`^${path}/(?:.*/)?([^/]+)$`)
     )

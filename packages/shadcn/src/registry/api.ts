@@ -1,12 +1,14 @@
 import path from "path"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
-import { BASE_COLORS } from "@/src/registry/constants"
+import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import {
   clearRegistryContext,
   setRegistryHeaders,
 } from "@/src/registry/context"
 import {
+  ConfigParseError,
+  RegistryInvalidNamespaceError,
   RegistryNotFoundError,
   RegistryParseError,
 } from "@/src/registry/errors"
@@ -15,69 +17,139 @@ import {
   fetchRegistryItems,
   resolveRegistryTree,
 } from "@/src/registry/resolver"
+import { isUrl } from "@/src/registry/utils"
 import {
   iconsSchema,
+  rawConfigSchema,
   registryBaseColorSchema,
+  registryConfigSchema,
   registryIndexSchema,
   registryItemSchema,
   registrySchema,
   stylesSchema,
 } from "@/src/schema"
-import { Config } from "@/src/utils/get-config"
+import { Config, explorer } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
 
 export async function getRegistry(
-  name: `@${string}`,
-  config?: Partial<Config>
+  name: string,
+  options?: {
+    config?: Partial<Config>
+    useCache?: boolean
+  }
 ) {
-  if (!name.endsWith("/registry")) {
-    name = `${name}/registry`
+  const { config, useCache } = options || {}
+
+  if (isUrl(name)) {
+    const [result] = await fetchRegistry([name], { useCache })
+    try {
+      return registrySchema.parse(result)
+    } catch (error) {
+      throw new RegistryParseError(name, error)
+    }
+  }
+
+  if (!name.startsWith("@")) {
+    throw new RegistryInvalidNamespaceError(name)
+  }
+
+  let registryName = name
+  if (!registryName.endsWith("/registry")) {
+    registryName = `${registryName}/registry`
   }
 
   const urlAndHeaders = buildUrlAndHeadersForRegistryItem(
-    name,
+    registryName as `@${string}`,
     configWithDefaults(config)
   )
 
   if (!urlAndHeaders?.url) {
-    throw new RegistryNotFoundError(name)
+    throw new RegistryNotFoundError(registryName)
   }
 
-  // Set headers in context if provided
   if (urlAndHeaders.headers && Object.keys(urlAndHeaders.headers).length > 0) {
     setRegistryHeaders({
       [urlAndHeaders.url]: urlAndHeaders.headers,
     })
   }
 
-  const [result] = await fetchRegistry([urlAndHeaders.url])
+  const [result] = await fetchRegistry([urlAndHeaders.url], { useCache })
 
   try {
     return registrySchema.parse(result)
   } catch (error) {
-    throw new RegistryParseError(name, error)
+    throw new RegistryParseError(registryName, error)
   }
 }
 
 export async function getRegistryItems(
   items: string[],
-  config?: Partial<Config>,
-  options: { useCache?: boolean } = {}
+  options?: {
+    config?: Partial<Config>
+    useCache?: boolean
+  }
 ) {
+  const { config, useCache = false } = options || {}
+
   clearRegistryContext()
 
-  return fetchRegistryItems(items, configWithDefaults(config), options)
+  return fetchRegistryItems(items, configWithDefaults(config), { useCache })
 }
 
 export async function resolveRegistryItems(
   items: string[],
-  config?: Partial<Config>,
-  options: { useCache?: boolean } = {}
+  options?: {
+    config?: Partial<Config>
+    useCache?: boolean
+  }
 ) {
+  const { config, useCache = false } = options || {}
+
   clearRegistryContext()
-  return resolveRegistryTree(items, configWithDefaults(config), options)
+  return resolveRegistryTree(items, configWithDefaults(config), { useCache })
+}
+
+export async function getRegistriesConfig(
+  cwd: string,
+  options?: { useCache?: boolean }
+) {
+  const { useCache = true } = options || {}
+
+  // Clear cache if requested
+  if (!useCache) {
+    explorer.clearCaches()
+  }
+
+  const configResult = await explorer.search(cwd)
+
+  if (!configResult) {
+    // Do not throw an error if the config is missing.
+    // We still have access to the built-in registries.
+    return {
+      registries: BUILTIN_REGISTRIES,
+    }
+  }
+
+  // Parse just the registries field from the config
+  const registriesConfig = z
+    .object({
+      registries: registryConfigSchema.optional(),
+    })
+    .safeParse(configResult.config)
+
+  if (!registriesConfig.success) {
+    throw new ConfigParseError(cwd, registriesConfig.error)
+  }
+
+  // Merge built-in registries with user registries
+  return {
+    registries: {
+      ...BUILTIN_REGISTRIES,
+      ...(registriesConfig.data.registries || {}),
+    },
+  }
 }
 
 export async function getShadcnRegistryIndex() {

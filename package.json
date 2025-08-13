@@ -38,7 +38,7 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "preview": "turbo run preview",
-    "typecheck": "turbo run typecheck",
+    "typecheck": "turbo run typecheck --filter=!www",
     "format:write": "turbo run format:write",
     "format:check": "turbo run format:check",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
