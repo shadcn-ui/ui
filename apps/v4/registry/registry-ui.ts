@@ -610,4 +610,15 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "inline-edit",
+    type: "registry:ui",
+    dependencies: ["cn"],
+    files: [
+      {
+        path: "ui/inline-edit.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
