@@ -1,12 +1,13 @@
 import path from "path"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
-import { BASE_COLORS } from "@/src/registry/constants"
+import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import {
   clearRegistryContext,
   setRegistryHeaders,
 } from "@/src/registry/context"
 import {
+  ConfigParseError,
   RegistryInvalidNamespaceError,
   RegistryNotFoundError,
   RegistryParseError,
@@ -19,13 +20,15 @@ import {
 import { isUrl } from "@/src/registry/utils"
 import {
   iconsSchema,
+  rawConfigSchema,
   registryBaseColorSchema,
+  registryConfigSchema,
   registryIndexSchema,
   registryItemSchema,
   registrySchema,
   stylesSchema,
 } from "@/src/schema"
-import { Config } from "@/src/utils/get-config"
+import { Config, explorer } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { z } from "zod"
@@ -106,6 +109,47 @@ export async function resolveRegistryItems(
 
   clearRegistryContext()
   return resolveRegistryTree(items, configWithDefaults(config), { useCache })
+}
+
+export async function getRegistriesConfig(
+  cwd: string,
+  options?: { useCache?: boolean }
+) {
+  const { useCache = true } = options || {}
+
+  // Clear cache if requested
+  if (!useCache) {
+    explorer.clearCaches()
+  }
+
+  const configResult = await explorer.search(cwd)
+
+  if (!configResult) {
+    // Do not throw an error if the config is missing.
+    // We still have access to the built-in registries.
+    return {
+      registries: BUILTIN_REGISTRIES,
+    }
+  }
+
+  // Parse just the registries field from the config
+  const registriesConfig = z
+    .object({
+      registries: registryConfigSchema.optional(),
+    })
+    .safeParse(configResult.config)
+
+  if (!registriesConfig.success) {
+    throw new ConfigParseError(cwd, registriesConfig.error)
+  }
+
+  // Merge built-in registries with user registries
+  return {
+    registries: {
+      ...BUILTIN_REGISTRIES,
+      ...(registriesConfig.data.registries || {}),
+    },
+  }
 }
 
 export async function getShadcnRegistryIndex() {

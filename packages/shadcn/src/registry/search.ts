@@ -1,26 +1,9 @@
+import { searchResultItemSchema, searchResultsSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import fuzzysort from "fuzzysort"
 import { z } from "zod"
 
 import { getRegistry } from "./api"
-
-const searchResultItemSchema = z.object({
-  name: z.string(),
-  type: z.string().optional(),
-  description: z.string().optional(),
-  registry: z.string(),
-  addCommandArgument: z.string(),
-})
-
-const searchResultsSchema = z.object({
-  pagination: z.object({
-    total: z.number(),
-    offset: z.number(),
-    limit: z.number(),
-    hasMore: z.boolean(),
-  }),
-  items: z.array(searchResultItemSchema),
-})
 
 export async function searchRegistries(
   registries: string[],
