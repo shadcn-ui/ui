@@ -338,6 +338,16 @@
       ]
     },
     {
+      "name": "inline-edit",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/inline-edit.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "input-otp",
       "type": "registry:ui",
       "dependencies": [
@@ -4638,6 +4648,19 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/input-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "inline-edit-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "inline-edit"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/inline-edit-demo.tsx",
           "type": "registry:example"
         }
       ]
