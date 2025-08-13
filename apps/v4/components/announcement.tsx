@@ -6,8 +6,8 @@ import { Badge } from "@/registry/new-york-v4/ui/badge"
 export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="rounded-full">
-      <Link href="/docs/components/calendar">
-        New Calendar Component <ArrowRightIcon />
+      <Link href="/docs/registry/namespace">
+        Introducing Namespaced Registries <ArrowRightIcon />
       </Link>
     </Badge>
   )
