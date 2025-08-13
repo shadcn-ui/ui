@@ -2,7 +2,7 @@
   "pages": [
     "index",
     "getting-started",
-    "faq",
+    "namespace",
     "open-in-v0",
     "examples",
     "registry-json",
