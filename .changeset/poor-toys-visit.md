@@ -1,5 +1,0 @@
----
-"shadcn": major
----
-
-add getRegistry
