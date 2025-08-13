@@ -68,6 +68,7 @@ export const initOptionsSchema = z.object({
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
+  unifiedRadixImports: z.boolean().optional(),
   template: z
     .string()
     .optional()
@@ -136,6 +137,11 @@ export const init = new Command()
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
   .option("--no-base-style", "do not install the base shadcn style.")
+  .option(
+    "--unified-radix-imports",
+    "replace @radix-ui/react-* imports in added files with unified radix-ui imports and install radix-ui",
+    false
+  )
   .action(async (components, opts) => {
     try {
       const options = initOptionsSchema.parse({
@@ -294,6 +300,8 @@ export async function runInit(
     baseStyle: options.baseStyle,
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
+    unifiedRadixImports:
+      options.unifiedRadixImports ?? config.unifiedRadixImports ?? false,
   })
 
   // If a new project is using src dir, let's update the tailwind content config.
@@ -403,6 +411,16 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       active: "yes",
       inactive: "no",
     },
+    {
+      type: "toggle",
+      name: "unifiedRadixImports",
+      message: `Would you like to use ${highlighter.info(
+        "unified radix-ui import instead of @radix-ui/react-*"
+      )}?`,
+      initial: defaultConfig?.unifiedRadixImports ?? false,
+      active: "yes",
+      inactive: "no",
+    },
   ])
 
   return rawConfigSchema.parse({
@@ -417,6 +435,7 @@ async function promptForConfig(defaultConfig: Config | null = null) {
     },
     rsc: options.rsc,
     tsx: options.typescript,
+    unifiedRadixImports: options.unifiedRadixImports,
     aliases: {
       utils: options.utils,
       components: options.components,
@@ -482,6 +501,8 @@ async function promptForMinimalConfig(
     },
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
+    unifiedRadixImports:
+      defaultConfig?.unifiedRadixImports,
     iconLibrary: defaultConfig?.iconLibrary,
     aliases: defaultConfig?.aliases,
   })
