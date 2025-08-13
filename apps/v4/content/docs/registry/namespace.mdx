@@ -21,6 +21,7 @@ Namespaced registries let you configure multiple resource sources in one project
 - [Versioning](#versioning)
 - [Dependency Resolution](#dependency-resolution)
 - [Built-in Registries](#built-in-registries)
+- [CLI Commands](#cli-commands)
 - [Error Handling](#error-handling)
 - [Creating Your Own Registry](#creating-your-own-registry)
 - [Example Configurations](#example-configurations)
@@ -740,6 +741,78 @@ Implement semantic versioning with range support:
 4. **Support version pinning** for reproducible builds
 5. **Implement version discovery** endpoints (e.g., `/versions/{name}`)
 6. **Cache versioned resources** appropriately with proper cache headers
+
+## CLI Commands
+
+The shadcn CLI provides several commands for working with namespaced registries:
+
+### Adding Resources
+
+Install resources from any configured registry:
+
+```bash
+# Install from a specific registry
+npx shadcn@beta add @v0/dashboard
+
+# Install multiple resources
+npx shadcn@beta add @acme/button @lib/utils @ai/prompt
+
+# Install from URL directly
+npx shadcn@beta add https://registry.example.com/button.json
+
+# Install from local file
+npx shadcn@beta add ./local-registry/button.json
+```
+
+### Viewing Resources
+
+Inspect registry items before installation:
+
+```bash
+# View a resource from a registry
+npx shadcn@beta view @acme/button
+
+# View multiple resources
+npx shadcn@beta view @v0/dashboard @shadcn/card
+
+# View from URL
+npx shadcn@beta view https://registry.example.com/button.json
+```
+
+The `view` command displays:
+
+- Resource metadata (name, type, description)
+- Dependencies and registry dependencies
+- File contents that will be installed
+- CSS variables and Tailwind configuration
+- Required environment variables
+
+### Searching Registries
+
+Search for available resources in registries:
+
+```bash
+# Search a specific registry
+npx shadcn@beta search @v0
+
+# Search with query
+npx shadcn@beta search @acme --query "auth"
+
+# Search multiple registries
+npx shadcn@beta search @v0 @acme @lib
+
+# Limit results
+npx shadcn@beta search @v0 --limit 10 --offset 20
+
+# List all items (alias for search)
+npx shadcn@beta list @acme
+```
+
+Search results include:
+
+- Resource name and type
+- Description
+- Registry source
 
 ## Error Handling
 
