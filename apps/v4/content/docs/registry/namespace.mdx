@@ -15,9 +15,9 @@ Namespaced registries let you configure multiple resource sources in one project
 - [Overview](#overview)
 - [Decentralized Namespace System](#decentralized-namespace-system)
 - [Getting Started](#getting-started)
+- [Registry Naming Convention](#registry-naming-convention)
 - [Configuration](#configuration)
 - [Authentication & Security](#authentication--security)
-- [Security Considerations](#security-considerations)
 - [Versioning](#versioning)
 - [Dependency Resolution](#dependency-resolution)
 - [Built-in Registries](#built-in-registries)
@@ -39,6 +39,117 @@ Registry namespaces are prefixed with `@` and provide a way to organize and refe
 - `@ai/chatbot-rules` - AI prompt rules from an AI resources registry
 - `@themes/dark-mode` - Theme configuration from a themes registry
 
+## Decentralized Namespace System
+
+We intentionally designed the namespace system to be decentralized. There is no central registrar for namespaces. You are free to create and use any namespace you want.
+
+This decentralized approach gives you complete flexibility to organize your resources however makes sense for your organization.
+
+You can create multiple registries for different purposes:
+
+```json title="components.json" showLineNumbers
+{
+  "registries": {
+    "@acme-ui": "https://registry.acme.com/ui/{name}.json",
+    "@acme-docs": "https://registry.acme.com/docs/{name}.json",
+    "@acme-ai": "https://registry.acme.com/ai/{name}.json",
+    "@acme-themes": "https://registry.acme.com/themes/{name}.json",
+    "@acme-internal": {
+      "url": "https://internal.acme.com/registry/{name}.json",
+      "headers": {
+        "Authorization": "Bearer ${INTERNAL_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+This allows you to:
+
+- **Organize by type**: Separate UI components, documentation, AI resources, etc.
+- **Organize by team**: Different teams can maintain their own registries
+- **Organize by visibility**: Public vs. private resources
+- **Organize by version**: Stable vs. experimental registries
+- **No naming conflicts**: Since there's no central authority, you don't need to worry about namespace collisions
+
+### Examples of Multi-Registry Setups
+
+#### By Resource Type
+
+```json title="components.json" showLineNumbers
+{
+  "@components": "https://cdn.company.com/components/{name}.json",
+  "@hooks": "https://cdn.company.com/hooks/{name}.json",
+  "@utils": "https://cdn.company.com/utils/{name}.json",
+  "@prompts": "https://cdn.company.com/ai-prompts/{name}.json"
+}
+```
+
+#### By Team or Department
+
+```json title="components.json" showLineNumbers
+{
+  "@design": "https://design.company.com/registry/{name}.json",
+  "@engineering": "https://eng.company.com/registry/{name}.json",
+  "@marketing": "https://marketing.company.com/registry/{name}.json"
+}
+```
+
+#### By Stability
+
+```json title="components.json" showLineNumbers
+{
+  "@stable": "https://registry.company.com/stable/{name}.json",
+  "@latest": "https://registry.company.com/beta/{name}.json",
+  "@experimental": "https://registry.company.com/experimental/{name}.json"
+}
+```
+
+## Getting Started
+
+### Installing Resources
+
+Once configured, you can install resources using the namespace syntax:
+
+```bash
+npx shadcn@beta add @v0/dashboard
+```
+
+or multiple resources at once:
+
+```bash
+npx shadcn@beta add @acme/header @lib/auth-utils @ai/chatbot-rules
+```
+
+### Quick Configuration
+
+Add registries to your `components.json`:
+
+```json title="components.json"
+{
+  "registries": {
+    "@v0": "https://v0.dev/chat/b/{name}",
+    "@acme": "https://registry.acme.com/resources/{name}.json"
+  }
+}
+```
+
+Then start installing:
+
+```bash
+npx shadcn@beta add @acme/button
+```
+
+## Registry Naming Convention
+
+Registry names must follow these rules:
+
+- Start with `@` symbol
+- Contain only alphanumeric characters, hyphens, and underscores
+- Examples of valid names: `@v0`, `@acme-ui`, `@my_company`
+
+The pattern for referencing resources is: `@namespace/resource-name`
+
 ## Configuration
 
 Namespaced registries are configured in your `components.json` file under the `registries` field.
@@ -58,7 +169,7 @@ The simplest way to configure a registry is with a URL template string:
 }
 ```
 
-> **Note:** The `{name}` placeholder in the URL is automatically parsed and replaced with the resource name when you run `npx shadcn@latest add @namespace/resource-name`. For example, `@acme/button` becomes `https://registry.acme.com/resources/button.json`. See [URL Pattern System](#url-pattern-system) for more details.
+> **Note:** The `{name}` placeholder in the URL is automatically parsed and replaced with the resource name when you run `npx shadcn@beta add @namespace/resource-name`. For example, `@acme/button` becomes `https://registry.acme.com/resources/button.json`. See [URL Pattern System](#url-pattern-system) for more details.
 
 ### Advanced Configuration
 
@@ -84,17 +195,7 @@ For registries that require authentication or additional parameters, use the obj
 
 > **Note:** Environment variables in the format `${VAR_NAME}` are automatically expanded from your environment (process.env). This works in URLs, headers, and params. For example, `${REGISTRY_TOKEN}` will be replaced with the value of `process.env.REGISTRY_TOKEN`. See [Authentication & Security](#authentication--security) for more details on using environment variables.
 
-## Registry Naming Convention
-
-Registry names must follow these rules:
-
-- Start with `@` symbol
-- Contain only alphanumeric characters, hyphens, and underscores
-- Examples of valid names: `@v0`, `@acme-ui`, `@my_company`
-
-The pattern for referencing resources is: `@namespace/resource-name`
-
-## URL Pattern System
+### URL Pattern System
 
 Registry URLs support the following placeholders:
 
@@ -102,7 +203,7 @@ Registry URLs support the following placeholders:
 
 The `{name}` placeholder is replaced with the resource name:
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@acme": "https://registry.acme.com/{name}.json"
 }
@@ -124,22 +225,6 @@ The `{style}` placeholder is replaced with the current style configuration:
 With style set to `new-york`, installing `@themes/card` resolves to: `https://registry.example.com/new-york/card.json`
 
 The style placeholder is optional. Use this when you want to serve different versions of the same resource. For example, you can serve a different version of a component for each style.
-
-## Usage
-
-### Installing Resources
-
-Once configured, you can install resources using the namespace syntax:
-
-```bash
-npx shadcn@latest add @v0/dashboard
-```
-
-or multiple resources at once:
-
-```bash
-npx shadcn@latest add @acme/header @lib/auth-utils @ai/chatbot-rules
-```
 
 ## Authentication & Security
 
@@ -183,7 +268,7 @@ REGISTRY_TOKEN=your_secret_token_here
 
 #### API Key in Headers
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@private": {
     "url": "https://api.company.com/registry/{name}",
@@ -196,7 +281,7 @@ REGISTRY_TOKEN=your_secret_token_here
 
 #### Basic Authentication
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@internal": {
     "url": "https://registry.company.com/{name}.json",
@@ -209,7 +294,7 @@ REGISTRY_TOKEN=your_secret_token_here
 
 #### Query Parameter Authentication
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@secure": {
     "url": "https://registry.example.com/{name}.json",
@@ -226,7 +311,7 @@ REGISTRY_TOKEN=your_secret_token_here
 
 Some registries require multiple authentication methods:
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@enterprise": {
     "url": "https://api.enterprise.com/v2/registry/{name}",
@@ -242,7 +327,7 @@ Some registries require multiple authentication methods:
 }
 ```
 
-## Security Considerations
+### Security Considerations
 
 When working with namespaced registries, especially third-party or public ones, security is paramount. Here's how we handle security:
 
@@ -264,7 +349,7 @@ Environment variables used for authentication are:
 
 Example of secure configuration:
 
-```json
+```json title="components.json" showLineNumbers
 {
   "registries": {
     "@private": {
@@ -291,7 +376,7 @@ We strongly recommend using HTTPS for all registry URLs:
 - **Certificate validation**: Ensures you're connecting to the legitimate registry
 - **Credential protection**: Headers and tokens are encrypted in transit
 
-```json
+```json title="components.json" showLineNumbers
 {
   "registries": {
     "@secure": "https://registry.example.com/{name}.json", // ✅ Good
@@ -311,7 +396,7 @@ Resources from registries are treated as data, not code:
 
 ### Registry Trust Model
 
-The namespace system operates on a trust model similar to npm:
+The namespace system operates on a trust model:
 
 - **You trust what you install**: Only add registries you trust to your configuration
 - **Explicit configuration**: Registries must be explicitly configured in `components.json`
@@ -325,13 +410,11 @@ If you're running your own registry:
 1. **Use HTTPS always**: Never serve registry content over HTTP
 2. **Implement authentication**: Require API keys or tokens for private registries
 3. **Rate limiting**: Protect your registry from abuse
-4. **Access logs**: Monitor who's accessing your registry
-5. **Content validation**: Validate resources before serving them
-6. **Version immutability**: Never change a resource once published
+4. **Content validation**: Validate resources before serving them
 
 Example secure registry setup:
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@company": {
     "url": "https://registry.company.com/v1/{name}.json",
@@ -348,16 +431,18 @@ Example secure registry setup:
 The CLI provides transparency about what's being installed. You can see the payload of a registry item using the following command:
 
 ```bash
-npx shadcn@latest view @acme/button
+npx shadcn@beta view @acme/button
 ```
 
 This will output the payload of the registry item to the console.
 
-### Dependency Resolution
+## Dependency Resolution
+
+### Basic Dependency Resolution
 
 Resources can have dependencies across different registries:
 
-```json title="registry-item.json"
+```json title="registry-item.json" showLineNumbers
 {
   "name": "dashboard",
   "type": "registry:block",
@@ -373,13 +458,13 @@ Resources can have dependencies across different registries:
 
 The CLI automatically resolves and installs all dependencies from their respective registries.
 
-## Advanced Dependency Resolution
+### Advanced Dependency Resolution
 
 Understanding how dependencies are resolved internally is important if you're developing registries or need to customize third-party resources.
 
 ### How Resolution Works
 
-When you run `npx shadcn@latest add @namespace/resource`, the CLI does the following:
+When you run `npx shadcn@beta add @namespace/resource`, the CLI does the following:
 
 1. **Clears registry context** to start fresh
 2. **Fetches the main resource** from the specified registry
@@ -391,7 +476,7 @@ When you run `npx shadcn@latest add @namespace/resource`, the CLI does the follo
 This means that if you run the following command:
 
 ```bash
-npx shadcn@latest add @acme/auth @custom/login-form
+npx shadcn@beta add @acme/auth @custom/login-form
 ```
 
 The `login-form.ts` from `@custom/login-form` will override the `login-form.ts` from `@acme/auth` because it's resolved last.
@@ -406,7 +491,7 @@ Let's say you want to customize a button from a vendor registry:
 
 **1. Original vendor button** (`@vendor/button`):
 
-```json
+```json title="button.json" showLineNumbers
 {
   "name": "button",
   "type": "registry:ui",
@@ -427,7 +512,7 @@ Let's say you want to customize a button from a vendor registry:
 
 **2. Create your custom override** (`@my-company/custom-button`):
 
-```json
+```json title="custom-button.json" showLineNumbers
 {
   "name": "custom-button",
   "type": "registry:ui",
@@ -445,7 +530,7 @@ Let's say you want to customize a button from a vendor registry:
 **3. Install your custom version**:
 
 ```bash
-npx shadcn@latest add @my-company/custom-button
+npx shadcn@beta add @my-company/custom-button
 ```
 
 This installs the original button from `@vendor/button` and then overrides the `cssVars` with your own custom values.
@@ -456,7 +541,7 @@ This installs the original button from `@vendor/button` and then overrides the `
 
 Keep the original and add extensions:
 
-```json
+```json title="extended-table.json" showLineNumbers
 {
   "name": "extended-table",
   "registryDependencies": ["@vendor/table"],
@@ -475,7 +560,7 @@ This will install the original table from `@vendor/table` and then add your exte
 
 Override only specific files from a complex component:
 
-```json
+```json title="custom-auth.json" showLineNumbers
 {
   "name": "custom-auth",
   "registryDependencies": [
@@ -495,7 +580,7 @@ Override only specific files from a complex component:
 
 When you install `@custom/dashboard` that depends on multiple resources:
 
-```json
+```json title="dashboard.json" showLineNumbers
 {
   "name": "dashboard",
   "registryDependencies": [
@@ -518,15 +603,13 @@ Resolution order:
 2. **Circular Dependency Prevention**: Automatically detects and prevents circular dependencies
 3. **Smart Installation Order**: Dependencies are installed first, then the resources that use them
 
-## Decentralized Namespace System
-
 We intentionally designed the namespace system to be decentralized. There is no central registrar for namespaces. You are free to create and use any namespace you want.
 
 This decentralized approach gives you complete flexibility to organize your resources however makes sense for your organization.
 
 You can create multiple registries for different purposes:
 
-```json
+```json title="components.json" showLineNumbers
 {
   "registries": {
     "@acme-ui": "https://registry.acme.com/ui/{name}.json",
@@ -555,7 +638,7 @@ This allows you to:
 
 #### By Resource Type
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@components": "https://cdn.company.com/components/{name}.json",
   "@hooks": "https://cdn.company.com/hooks/{name}.json",
@@ -576,7 +659,7 @@ This allows you to:
 
 #### By Stability
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@stable": "https://registry.company.com/stable/{name}.json",
   "@latest": "https://registry.company.com/beta/{name}.json",
@@ -589,7 +672,7 @@ This allows you to:
 The `@shadcn` namespace is built-in and always available:
 
 ```bash
-npx shadcn@latest add @shadcn/button
+npx shadcn@beta add @shadcn/button
 ```
 
 This is equivalent to installing from the default shadcn/ui registry.
@@ -600,7 +683,7 @@ You can implement versioning for your registry resources using query parameters.
 
 ### Basic Version Parameter
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@versioned": {
     "url": "https://registry.example.com/{name}",
@@ -617,7 +700,7 @@ This resolves `@versioned/button` to: `https://registry.example.com/button?versi
 
 Use environment variables to control versions across your project:
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@stable": {
     "url": "https://registry.company.com/{name}",
@@ -637,7 +720,7 @@ This allows you to:
 
 Implement semantic versioning with range support:
 
-```json
+```json title="components.json" showLineNumbers
 {
   "@npm-style": {
     "url": "https://registry.example.com/{name}",
@@ -665,7 +748,7 @@ Implement semantic versioning with range support:
 If you reference a registry that isn't configured:
 
 ```bash
-npx shadcn@latest add @non-existent/component
+npx shadcn@beta add @non-existent/component
 ```
 
 Error:
@@ -735,7 +818,7 @@ To make your registry compatible with the namespace system, you can serve any ty
 
 5. **Document your namespace**: Provide clear instructions for users to configure your registry:
 
-```json
+```json title="components.json" showLineNumbers
 {
   "registries": {
     "@your-registry": "https://your-domain.com/r/{name}.json"
@@ -749,7 +832,7 @@ To make your registry compatible with the namespace system, you can serve any ty
 
 The namespace parser uses the following regex pattern:
 
-```regex
+```regex title="namespace-parser.js"
 /^(@[a-zA-Z0-9](?:[a-zA-Z0-9-_]*[a-zA-Z0-9])?)\/(.+)$/
 ```
 
