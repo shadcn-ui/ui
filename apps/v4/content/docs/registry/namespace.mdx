@@ -227,6 +227,16 @@ With style set to `new-york`, installing `@themes/card` resolves to: `https://re
 
 The style placeholder is optional. Use this when you want to serve different versions of the same resource. For example, you can serve a different version of a component for each style.
 
+### Registry URLs Without .json Extensions
+
+There is no strict requirement for registry URL's to end with `.json` or be served as static `.json` files. They can be dynamic endpoints that return JSON, which is typical in the case of authenticated registries.
+
+```json
+{
+  "@private": "https://registry.example.com/{name}"
+}
+```
+
 ## Authentication & Security
 
 ### Environment Variables
