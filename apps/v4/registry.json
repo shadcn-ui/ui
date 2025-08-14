@@ -19,6 +19,22 @@
       "cssVars": {}
     },
     {
+      "name": "style",
+      "type": "registry:style",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {}
+    },
+    {
       "name": "accordion",
       "type": "registry:ui",
       "dependencies": [
@@ -169,7 +185,7 @@
       "name": "chart",
       "type": "registry:ui",
       "dependencies": [
-        "recharts",
+        "recharts@2.15.4",
         "lucide-react"
       ],
       "registryDependencies": [

@@ -1,5 +1,57 @@
 # @shadcn/ui
 
+## 2.10.0
+
+### Minor Changes
+
+- [#7902](https://github.com/shadcn-ui/ui/pull/7902) [`e6778dee87de1a183843f233b3f27fbfb1a700ec`](https://github.com/shadcn-ui/ui/commit/e6778dee87de1a183843f233b3f27fbfb1a700ec) Thanks [@shadcn](https://github.com/shadcn)! - add support for envVars in schema
+
+- [#7896](https://github.com/shadcn-ui/ui/pull/7896) [`97a8de1c1b2ae590cc9dbe17970a882990c35a59`](https://github.com/shadcn-ui/ui/commit/97a8de1c1b2ae590cc9dbe17970a882990c35a59) Thanks [@shadcn](https://github.com/shadcn)! - add support for env vars in registry
+
+### Patch Changes
+
+- [#7908](https://github.com/shadcn-ui/ui/pull/7908) [`d891132f2a0121e12c92839e19f5d90252f9a640`](https://github.com/shadcn-ui/ui/commit/d891132f2a0121e12c92839e19f5d90252f9a640) Thanks [@shadcn](https://github.com/shadcn)! - remove init tests
+
+## 2.9.3
+
+### Patch Changes
+
+- [#7837](https://github.com/shadcn-ui/ui/pull/7837) [`20e913d8e1df1acddc7bd4b8328088a25869ba7c`](https://github.com/shadcn-ui/ui/commit/20e913d8e1df1acddc7bd4b8328088a25869ba7c) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of themes
+
+## 2.9.2
+
+### Patch Changes
+
+- [#7833](https://github.com/shadcn-ui/ui/pull/7833) [`d9cdc3f7ae69e571de7dc116effc381ad76685c3`](https://github.com/shadcn-ui/ui/commit/d9cdc3f7ae69e571de7dc116effc381ad76685c3) Thanks [@shadcn](https://github.com/shadcn)! - Revert "fix: handling of shouldOverwriteCssVars"
+
+## 2.9.1
+
+### Patch Changes
+
+- [#7829](https://github.com/shadcn-ui/ui/pull/7829) [`ed5237c231f3b70107131bd7ba517e73b8c9014d`](https://github.com/shadcn-ui/ui/commit/ed5237c231f3b70107131bd7ba517e73b8c9014d) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of shouldOverwriteCssVars
+
+## 2.9.0
+
+### Minor Changes
+
+- [#7782](https://github.com/shadcn-ui/ui/pull/7782) [`06d03d64f437b543bf5fa07ccbc559f285538ffd`](https://github.com/shadcn-ui/ui/commit/06d03d64f437b543bf5fa07ccbc559f285538ffd) Thanks [@shadcn](https://github.com/shadcn)! - add universal registry items support
+
+### Patch Changes
+
+- [#7795](https://github.com/shadcn-ui/ui/pull/7795) [`6c341c16aeaf5ade177a4a1ba4fb9afcd33d5fee`](https://github.com/shadcn-ui/ui/commit/6c341c16aeaf5ade177a4a1ba4fb9afcd33d5fee) Thanks [@shadcn](https://github.com/shadcn)! - fix safe target handling
+
+- [#7757](https://github.com/shadcn-ui/ui/pull/7757) [`db93787712fe51346bf87dbae8b4cf4e38ed8c27`](https://github.com/shadcn-ui/ui/commit/db93787712fe51346bf87dbae8b4cf4e38ed8c27) Thanks [@shadcn](https://github.com/shadcn)! - implement registry path validation
+
+## 2.8.0
+
+### Minor Changes
+
+- [#7720](https://github.com/shadcn-ui/ui/pull/7720) [`d544a7f7a519cd5b171d9ee7cb2fd1a226659ece`](https://github.com/shadcn-ui/ui/commit/d544a7f7a519cd5b171d9ee7cb2fd1a226659ece) Thanks [@shadcn](https://github.com/shadcn)! - refactor registry dependencies resolution
+
+- [#7717](https://github.com/shadcn-ui/ui/pull/7717) [`48fe0d709fd2b244314f95f56e7afb38b117ed8a`](https://github.com/shadcn-ui/ui/commit/48fe0d709fd2b244314f95f56e7afb38b117ed8a) Thanks [@shadcn](https://github.com/shadcn)! - add support for local registry item
+
+- [#6330](https://github.com/shadcn-ui/ui/pull/6330) [`ed244ea0b5abf7db50ac5fcf26e2993133fe94f7`](https://github.com/shadcn-ui/ui/commit/ed244ea0b5abf7db50ac5fcf26e2993133fe94f7) Thanks [@KitsuneDev](https://github.com/KitsuneDev)! - add support for vinxi based framework
+
 ## 2.7.0
 
 ### Minor Changes

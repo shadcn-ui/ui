@@ -15,9 +15,9 @@ import { PageNav } from "@/components/page-nav"
 import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
-const title = "Build your Component Library"
+const title = "The Foundation for your Design System"
 const description =
-  "A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code."
+  "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code."
 
 export const dynamic = "force-static"
 export const revalidate = false
@@ -51,14 +51,14 @@ export default function IndexPage() {
     <div className="flex flex-1 flex-col">
       <PageHeader>
         <Announcement />
-        <PageHeaderHeading>{title}</PageHeaderHeading>
+        <PageHeaderHeading className="max-w-4xl">{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
           <Button asChild size="sm">
             <Link href="/docs/installation">Get Started</Link>
           </Button>
           <Button asChild size="sm" variant="ghost">
-            <Link href="/blocks">Browse Blocks</Link>
+            <Link href="/docs/components">View Components</Link>
           </Button>
         </PageActions>
       </PageHeader>

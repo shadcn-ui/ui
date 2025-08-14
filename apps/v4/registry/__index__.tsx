@@ -16,6 +16,16 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "style": {
+    name: "style",
+    description: "",
+    type: "registry:style",
+    registryDependencies: ["utils"],
+    files: [],
+    component: null,
+    categories: undefined,
+    meta: undefined,
+  },
   "accordion": {
     name: "accordion",
     description: "",
