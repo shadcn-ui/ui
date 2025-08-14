@@ -1,59 +1,158 @@
-import { promises as fs } from "fs"
-import { homedir } from "os"
 import path from "path"
-import { isLocalFile } from "@/src/registry/utils"
-import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
-import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
-import deepmerge from "deepmerge"
-import { HttpsProxyAgent } from "https-proxy-agent"
-import fetch from "node-fetch"
-import { z } from "zod"
-
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
+import { configWithDefaults } from "@/src/registry/config"
+import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
+import {
+  clearRegistryContext,
+  setRegistryHeaders,
+} from "@/src/registry/context"
+import {
+  ConfigParseError,
+  RegistryInvalidNamespaceError,
+  RegistryNotFoundError,
+  RegistryParseError,
+} from "@/src/registry/errors"
+import { fetchRegistry } from "@/src/registry/fetcher"
+import {
+  fetchRegistryItems,
+  resolveRegistryTree,
+} from "@/src/registry/resolver"
+import { isUrl } from "@/src/registry/utils"
 import {
   iconsSchema,
+  rawConfigSchema,
   registryBaseColorSchema,
+  registryConfigSchema,
   registryIndexSchema,
   registryItemSchema,
-  registryResolvedItemsTreeSchema,
+  registrySchema,
   stylesSchema,
-} from "./schema"
+} from "@/src/schema"
+import { Config, explorer } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
+import { logger } from "@/src/utils/logger"
+import { z } from "zod"
 
-const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
+export async function getRegistry(
+  name: string,
+  options?: {
+    config?: Partial<Config>
+    useCache?: boolean
+  }
+) {
+  const { config, useCache } = options || {}
 
-const agent = process.env.https_proxy
-  ? new HttpsProxyAgent(process.env.https_proxy)
-  : undefined
+  if (isUrl(name)) {
+    const [result] = await fetchRegistry([name], { useCache })
+    try {
+      return registrySchema.parse(result)
+    } catch (error) {
+      throw new RegistryParseError(name, error)
+    }
+  }
 
-const registryCache = new Map<string, Promise<any>>()
+  if (!name.startsWith("@")) {
+    throw new RegistryInvalidNamespaceError(name)
+  }
 
-export const BASE_COLORS = [
-  {
-    name: "neutral",
-    label: "Neutral",
-  },
-  {
-    name: "gray",
-    label: "Gray",
-  },
-  {
-    name: "zinc",
-    label: "Zinc",
-  },
-  {
-    name: "stone",
-    label: "Stone",
-  },
-  {
-    name: "slate",
-    label: "Slate",
-  },
-] as const
+  let registryName = name
+  if (!registryName.endsWith("/registry")) {
+    registryName = `${registryName}/registry`
+  }
 
-export async function getRegistryIndex() {
+  const urlAndHeaders = buildUrlAndHeadersForRegistryItem(
+    registryName as `@${string}`,
+    configWithDefaults(config)
+  )
+
+  if (!urlAndHeaders?.url) {
+    throw new RegistryNotFoundError(registryName)
+  }
+
+  if (urlAndHeaders.headers && Object.keys(urlAndHeaders.headers).length > 0) {
+    setRegistryHeaders({
+      [urlAndHeaders.url]: urlAndHeaders.headers,
+    })
+  }
+
+  const [result] = await fetchRegistry([urlAndHeaders.url], { useCache })
+
+  try {
+    return registrySchema.parse(result)
+  } catch (error) {
+    throw new RegistryParseError(registryName, error)
+  }
+}
+
+export async function getRegistryItems(
+  items: string[],
+  options?: {
+    config?: Partial<Config>
+    useCache?: boolean
+  }
+) {
+  const { config, useCache = false } = options || {}
+
+  clearRegistryContext()
+
+  return fetchRegistryItems(items, configWithDefaults(config), { useCache })
+}
+
+export async function resolveRegistryItems(
+  items: string[],
+  options?: {
+    config?: Partial<Config>
+    useCache?: boolean
+  }
+) {
+  const { config, useCache = false } = options || {}
+
+  clearRegistryContext()
+  return resolveRegistryTree(items, configWithDefaults(config), { useCache })
+}
+
+export async function getRegistriesConfig(
+  cwd: string,
+  options?: { useCache?: boolean }
+) {
+  const { useCache = true } = options || {}
+
+  // Clear cache if requested
+  if (!useCache) {
+    explorer.clearCaches()
+  }
+
+  const configResult = await explorer.search(cwd)
+
+  if (!configResult) {
+    // Do not throw an error if the config is missing.
+    // We still have access to the built-in registries.
+    return {
+      registries: BUILTIN_REGISTRIES,
+    }
+  }
+
+  // Parse just the registries field from the config
+  const registriesConfig = z
+    .object({
+      registries: registryConfigSchema.optional(),
+    })
+    .safeParse(configResult.config)
+
+  if (!registriesConfig.success) {
+    throw new ConfigParseError(cwd, registriesConfig.error)
+  }
+
+  // Merge built-in registries with user registries
+  return {
+    registries: {
+      ...BUILTIN_REGISTRIES,
+      ...(registriesConfig.data.registries || {}),
+    },
+  }
+}
+
+export async function getShadcnRegistryIndex() {
   try {
     const [result] = await fetchRegistry(["index.json"])
 
@@ -86,46 +185,6 @@ export async function getRegistryIcons() {
   }
 }
 
-export async function getRegistryItem(name: string, style: string) {
-  try {
-    // Handle local file paths
-    if (isLocalFile(name)) {
-      return await getLocalRegistryItem(name)
-    }
-
-    // Handle URLs and component names
-    const [result] = await fetchRegistry([
-      isUrl(name) ? name : `styles/${style}/${name}.json`,
-    ])
-
-    return registryItemSchema.parse(result)
-  } catch (error) {
-    logger.break()
-    handleError(error)
-    return null
-  }
-}
-
-async function getLocalRegistryItem(filePath: string) {
-  try {
-    // Handle tilde expansion for home directory
-    let expandedPath = filePath
-    if (filePath.startsWith("~/")) {
-      expandedPath = path.join(homedir(), filePath.slice(2))
-    }
-
-    const resolvedPath = path.resolve(expandedPath)
-    const content = await fs.readFile(resolvedPath, "utf8")
-    const parsed = JSON.parse(content)
-
-    return registryItemSchema.parse(parsed)
-  } catch (error) {
-    logger.error(`Failed to read local registry file: ${filePath}`)
-    handleError(error)
-    return null
-  }
-}
-
 export async function getRegistryBaseColors() {
   return BASE_COLORS
 }
@@ -140,6 +199,9 @@ export async function getRegistryBaseColor(baseColor: string) {
   }
 }
 
+/**
+ * @deprecated This function is deprecated and will be removed in a future version.
+ */
 export async function resolveTree(
   index: z.infer<typeof registryIndexSchema>,
   names: string[]
@@ -167,19 +229,26 @@ export async function resolveTree(
   )
 }
 
+/**
+ * @deprecated This function is deprecated and will be removed in a future version.
+ */
 export async function fetchTree(
   style: string,
   tree: z.infer<typeof registryIndexSchema>
 ) {
   try {
     const paths = tree.map((item) => `styles/${style}/${item.name}.json`)
-    const result = await fetchRegistry(paths)
-    return registryIndexSchema.parse(result)
+    const results = await fetchRegistry(paths)
+    return results.map((result) => registryItemSchema.parse(result))
   } catch (error) {
     handleError(error)
+    return []
   }
 }
 
+/**
+ * @deprecated This function is deprecated and will be removed in a future version.
+ */
 export async function getItemTargetPath(
   config: Config,
   item: Pick<z.infer<typeof registryItemSchema>, "type">,
