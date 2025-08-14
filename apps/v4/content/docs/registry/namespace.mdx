@@ -877,6 +877,15 @@ Access forbidden for https://api.company.com/button.json
 Verify your API key has the necessary permissions.
 ```
 
+You may provide a custom error message with the `message` property in your response. This will be shown in the CLI output. This can be useful to direct users to a page where they can get access to your registry.
+
+```json
+{
+  "error": "Authentication failed",
+  "message": "This is a private registry. Please visit https://www.yourwebsite.com to create an account and generate an accesss token."
+}
+```
+
 ## Creating Your Own Registry
 
 To make your registry compatible with the namespace system, you can serve any type of resource - components, libraries, utilities, AI prompts, themes, configurations, or any other shareable code/content:
