@@ -296,13 +296,35 @@ Use `css` to add new rules to the project's CSS file eg. `@layer base`, `@layer 
 }
 ```
 
+### envVars
+
+Use `envVars` to add environment variables to your registry item.
+
+```json title="registry-item.json" showLineNumbers
+{
+  "envVars": {
+    "NEXT_PUBLIC_APP_URL": "http://localhost:4000",
+    "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/postgres",
+    "OPENAI_API_KEY": ""
+  }
+}
+```
+
+Environment variables are added to the `.env.local` or `.env` file. Existing variables are not overwritten.
+
+<Callout>
+
+**IMPORTANT:** Use `envVars` to add development or example variables. Do NOT use it to add production variables.
+
+</Callout>
+
 ### docs
 
 Use `docs` to show custom documentation or message when installing your registry item via the CLI.
 
 ```json title="registry-item.json" showLineNumbers
 {
-  "docs": "Remember to add the FOO_BAR environment variable to your .env file."
+  "docs": "To get an OPENAI_API_KEY, sign up for an account at https://platform.openai.com."
 }
 ```
 
