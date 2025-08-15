@@ -1,5 +1,6 @@
 import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
+import { SyntaxKind } from "ts-morph"
 
 export const transformImport: Transformer = async ({
   sourceFile,
@@ -9,32 +10,34 @@ export const transformImport: Transformer = async ({
   const workspaceAlias = config.aliases?.utils?.split("/")[0]?.slice(1)
   const utilsImport = `@${workspaceAlias}/lib/utils`
 
-  const importDeclarations = sourceFile.getImportDeclarations()
-
   if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
     return sourceFile
   }
 
-  for (const importDeclaration of importDeclarations) {
-    const moduleSpecifier = updateImportAliases(
-      importDeclaration.getModuleSpecifierValue(),
+  for (const specifier of sourceFile.getImportStringLiterals()) {
+    const updated = updateImportAliases(
+      specifier.getLiteralValue(),
       config,
       isRemote
     )
-
-    importDeclaration.setModuleSpecifier(moduleSpecifier)
+    specifier.setLiteralValue(updated)
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (utilsImport === moduleSpecifier || moduleSpecifier === "@/lib/utils") {
-      const namedImports = importDeclaration.getNamedImports()
-      const cnImport = namedImports.find((i) => i.getName() === "cn")
-      if (cnImport) {
-        importDeclaration.setModuleSpecifier(
-          utilsImport === moduleSpecifier
-            ? moduleSpecifier.replace(utilsImport, config.aliases.utils)
-            : config.aliases.utils
-        )
-      }
+    if (utilsImport === updated || updated === "@/lib/utils") {
+      const importDeclaration = specifier.getFirstAncestorByKind(
+        SyntaxKind.ImportDeclaration
+      )
+      const isCnImport = importDeclaration
+        ?.getNamedImports()
+        .some((namedImport) => namedImport.getName() === "cn")
+
+      if (!isCnImport) continue
+
+      specifier.setLiteralValue(
+        utilsImport === updated
+          ? updated.replace(utilsImport, config.aliases.utils)
+          : config.aliases.utils
+      )
     }
   }
 
