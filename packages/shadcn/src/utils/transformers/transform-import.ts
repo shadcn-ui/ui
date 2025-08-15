@@ -1,5 +1,6 @@
 import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
+import { SyntaxKind } from "ts-morph"
 
 export const transformImport: Transformer = async ({
   sourceFile,
@@ -13,28 +14,28 @@ export const transformImport: Transformer = async ({
     return sourceFile
   }
 
-  for (const literal of sourceFile.getImportStringLiterals()) {
-    const specifier = updateImportAliases(
-      literal.getLiteralValue(),
+  for (const specifier of sourceFile.getImportStringLiterals()) {
+    const updated = updateImportAliases(
+      specifier.getLiteralValue(),
       config,
       isRemote
     )
-
-    literal.setLiteralValue(specifier)
-  }
-
-  for (const importDeclaration of sourceFile.getImportDeclarations()) {
-    const specifier = importDeclaration.getModuleSpecifierValue()
+    specifier.setLiteralValue(updated)
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (utilsImport === specifier || specifier === "@/lib/utils") {
-      const namedImports = importDeclaration.getNamedImports()
+    if (utilsImport === updated || updated === "@/lib/utils") {
+      const importDeclaration = specifier.getFirstAncestorByKind(
+        SyntaxKind.ImportDeclaration
+      )
+      const isCnImport = importDeclaration
+        ?.getNamedImports()
+        .some((namedImport) => namedImport.getName() === "cn")
 
-      const cnImport = namedImports.find((i) => i.getName() === "cn")
-      if (!cnImport) continue
-      importDeclaration.setModuleSpecifier(
-        utilsImport === specifier
-          ? specifier.replace(utilsImport, config.aliases.utils)
+      if (!isCnImport) continue
+
+      specifier.setLiteralValue(
+        utilsImport === updated
+          ? updated.replace(utilsImport, config.aliases.utils)
           : config.aliases.utils
       )
     }
