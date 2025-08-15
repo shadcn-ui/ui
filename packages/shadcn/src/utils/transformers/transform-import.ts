@@ -9,32 +9,34 @@ export const transformImport: Transformer = async ({
   const workspaceAlias = config.aliases?.utils?.split("/")[0]?.slice(1)
   const utilsImport = `@${workspaceAlias}/lib/utils`
 
-  const importDeclarations = sourceFile.getImportDeclarations()
-
   if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
     return sourceFile
   }
 
-  for (const importDeclaration of importDeclarations) {
-    const moduleSpecifier = updateImportAliases(
-      importDeclaration.getModuleSpecifierValue(),
+  for (const literal of sourceFile.getImportStringLiterals()) {
+    const specifier = updateImportAliases(
+      literal.getLiteralValue(),
       config,
       isRemote
     )
 
-    importDeclaration.setModuleSpecifier(moduleSpecifier)
+    literal.setLiteralValue(specifier)
+  }
+
+  for (const importDeclaration of sourceFile.getImportDeclarations()) {
+    const specifier = importDeclaration.getModuleSpecifierValue()
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (utilsImport === moduleSpecifier || moduleSpecifier === "@/lib/utils") {
+    if (utilsImport === specifier || specifier === "@/lib/utils") {
       const namedImports = importDeclaration.getNamedImports()
+
       const cnImport = namedImports.find((i) => i.getName() === "cn")
-      if (cnImport) {
-        importDeclaration.setModuleSpecifier(
-          utilsImport === moduleSpecifier
-            ? moduleSpecifier.replace(utilsImport, config.aliases.utils)
-            : config.aliases.utils
-        )
-      }
+      if (!cnImport) continue
+      importDeclaration.setModuleSpecifier(
+        utilsImport === specifier
+          ? specifier.replace(utilsImport, config.aliases.utils)
+          : config.aliases.utils
+      )
     }
   }
 
