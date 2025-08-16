@@ -18,6 +18,7 @@ const MONOREPO_TEMPLATE_URL =
 export const TEMPLATES = {
   next: "next",
   "next-monorepo": "next-monorepo",
+  "vite-react-monorepo": "vite-react-monorepo",
 } as const
 
 export async function createProject(
@@ -74,6 +75,7 @@ export async function createProject(
         choices: [
           { title: "Next.js", value: "next" },
           { title: "Next.js (Monorepo)", value: "next-monorepo" },
+          { title: "Vite-React (Monorepo)", value: "vite-react-monorepo" },
         ],
         initial: 0,
       },
@@ -136,6 +138,16 @@ export async function createProject(
 
   if (template === TEMPLATES["next-monorepo"]) {
     await createMonorepoProject(projectPath, {
+      templateTitle: "Next.js monorepo",
+      templateDir: "monorepo-next",
+      packageManager,
+    })
+  }
+
+  if (template === TEMPLATES["vite-react-monorepo"]) {
+    await createMonorepoProject(projectPath, {
+      templateTitle: "Vite-React monorepo",
+      templateDir: "monorepo-vite-react",
       packageManager,
     })
   }
@@ -201,11 +213,13 @@ async function createNextProject(
 async function createMonorepoProject(
   projectPath: string,
   options: {
+    templateTitle: string
+    templateDir: string
     packageManager: string
   }
 ) {
   const createSpinner = spinner(
-    `Creating a new Next.js monorepo. This may take a few minutes.`
+    `Creating a new ${options.templateTitle}. This may take a few minutes.`
   ).start()
 
   try {
@@ -226,9 +240,9 @@ async function createMonorepoProject(
       "-C",
       templatePath,
       "--strip-components=2",
-      "ui-main/templates/monorepo-next",
+      `ui-main/templates/${options.templateDir}`,
     ])
-    const extractedPath = path.resolve(templatePath, "monorepo-next")
+    const extractedPath = path.resolve(templatePath, options.templateDir)
     await fs.move(extractedPath, projectPath)
     await fs.remove(templatePath)
 
@@ -247,9 +261,11 @@ async function createMonorepoProject(
     })
     // await execa("cd", [cwd])
 
-    createSpinner?.succeed("Creating a new Next.js monorepo.")
+    createSpinner?.succeed(`Creating a new ${options.templateTitle}.`)
   } catch (error) {
-    createSpinner?.fail("Something went wrong creating a new Next.js monorepo.")
+    createSpinner?.fail(
+      `Something went wrong creating a new ${options.templateTitle}.`
+    )
     handleError(error)
   }
 }

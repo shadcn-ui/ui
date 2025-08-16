@@ -1,0 +1,10 @@
+{
+  "extends": "@workspace/typescript-config/vitejs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@workspace/ui/*": ["../../packages/ui/src/*"]
+    }
+  }
+}
