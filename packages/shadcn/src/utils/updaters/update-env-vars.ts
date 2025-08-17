@@ -1,6 +1,6 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { registryItemEnvVarsSchema } from "@/src/registry/schema"
+import { registryItemEnvVarsSchema } from "@/src/schema"
 import {
   findExistingEnvFile,
   getNewEnvKeys,

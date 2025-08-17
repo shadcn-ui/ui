@@ -9,7 +9,7 @@ import {
   registryItemSchema,
   registryItemTypeSchema,
   registrySchema,
-} from "shadcn/registry"
+} from "shadcn/schema"
 import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 

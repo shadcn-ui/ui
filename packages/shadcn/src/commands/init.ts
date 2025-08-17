@@ -1,15 +1,16 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
-import { buildUrlAndHeadersForRegistryItem } from "@/src/registry"
 import {
-  BASE_COLORS,
   getRegistryBaseColors,
-  getRegistryItem,
+  getRegistryItems,
   getRegistryStyles,
 } from "@/src/registry/api"
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
+import { configWithDefaults } from "@/src/registry/config"
+import { BASE_COLORS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
-import { rawConfigSchema } from "@/src/registry/schema"
+import { rawConfigSchema } from "@/src/schema"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -152,12 +153,7 @@ export const init = new Command()
       if (components.length > 0) {
         // We don't know the full config at this point.
         // So we'll use a shadow config to fetch the first item.
-        let shadowConfig: Parameters<typeof getRegistryItem>[1] = {
-          style: "new-york",
-          resolvedPaths: {
-            cwd: "",
-          },
-        }
+        let shadowConfig = configWithDefaults({})
 
         // Check if there's a components.json file.
         // If so, we'll merge with our shadow config.
@@ -165,10 +161,7 @@ export const init = new Command()
         if (fsExtra.existsSync(componentsJsonPath)) {
           const existingConfig = await fsExtra.readJson(componentsJsonPath)
           const config = rawConfigSchema.partial().parse(existingConfig)
-          shadowConfig = {
-            ...shadowConfig,
-            ...config,
-          }
+          shadowConfig = configWithDefaults(config)
 
           // Since components.json might not be valid at this point.
           // Temporarily rename components.json to allow preflight to run.
@@ -179,7 +172,9 @@ export const init = new Command()
         // This forces a shadowConfig validation early in the process.
         buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
 
-        const item = await getRegistryItem(components[0], shadowConfig)
+        const [item] = await getRegistryItems([components[0]], {
+          config: shadowConfig,
+        })
         if (item?.type === "registry:style") {
           // Set a default base color so we're not prompted.
           // The style will extend or override it.
@@ -204,6 +199,9 @@ export const init = new Command()
           "Success!"
         )} Project initialization completed.\nYou may now add components.`
       )
+
+      // We need when runninng with custom cwd.
+      deleteFileBackup(path.resolve(options.cwd, "components.json"))
       logger.break()
     } catch (error) {
       logger.break()

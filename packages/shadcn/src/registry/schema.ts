@@ -197,3 +197,21 @@ export const configSchema = rawConfigSchema.extend({
 // TODO: type the key.
 // Okay for now since I don't want a breaking change.
 export const workspaceConfigSchema = z.record(configSchema)
+
+export const searchResultItemSchema = z.object({
+  name: z.string(),
+  type: z.string().optional(),
+  description: z.string().optional(),
+  registry: z.string(),
+  addCommandArgument: z.string(),
+})
+
+export const searchResultsSchema = z.object({
+  pagination: z.object({
+    total: z.number(),
+    offset: z.number(),
+    limit: z.number(),
+    hasMore: z.boolean(),
+  }),
+  items: z.array(searchResultItemSchema),
+})
