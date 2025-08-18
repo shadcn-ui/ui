@@ -5,6 +5,28 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
+    "index": {
+      name: "index",
+      description: "",
+      type: "registry:style",
+      registryDependencies: ["utils"],
+      files: [],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/style/index")),
+      source: "",
+      meta: undefined,
+    },
+    "style": {
+      name: "style",
+      description: "",
+      type: "registry:style",
+      registryDependencies: ["utils"],
+      files: [],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/style/style")),
+      source: "",
+      meta: undefined,
+    },
     "accordion": {
       name: "accordion",
       description: "",
@@ -5838,6 +5860,28 @@ export const Index: Record<string, any> = {
       meta: undefined,
     },
   },  "default": {
+    "index": {
+      name: "index",
+      description: "",
+      type: "registry:style",
+      registryDependencies: ["utils"],
+      files: [],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/style/index")),
+      source: "",
+      meta: undefined,
+    },
+    "style": {
+      name: "style",
+      description: "",
+      type: "registry:style",
+      registryDependencies: ["utils"],
+      files: [],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/style/style")),
+      source: "",
+      meta: undefined,
+    },
     "accordion": {
       name: "accordion",
       description: "",

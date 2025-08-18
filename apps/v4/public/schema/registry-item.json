@@ -191,6 +191,13 @@
         ]
       }
     },
+    "envVars": {
+      "type": "object",
+      "description": "Environment variables required by the registry item. Key-value pairs that will be added to the project's .env file.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "meta": {
       "type": "object",
       "description": "Additional metadata for the registry item. This is an object with any key value pairs.",

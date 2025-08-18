@@ -1,4 +1,4 @@
-import { RegistryItem } from "@/src/registry/schema"
+import { RegistryItem } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import { getPackageManager } from "@/src/utils/get-package-manager"
