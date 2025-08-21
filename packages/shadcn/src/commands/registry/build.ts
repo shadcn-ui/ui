@@ -1,12 +1,8 @@
 import * as fs from "fs/promises"
 import * as path from "path"
 import { preFlightRegistryBuild } from "@/src/preflights/preflight-registry"
-import {
-  configSchema,
-  registryItemSchema,
-  registrySchema,
-} from "@/src/registry"
 import { recursivelyResolveFileImports } from "@/src/registry/utils"
+import { configSchema, registryItemSchema, registrySchema } from "@/src/schema"
 import * as ERRORS from "@/src/utils/errors"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"

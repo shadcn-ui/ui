@@ -1,5 +1,5 @@
 ---
-"shadcn": minor
+"shadcn": major
 ---
 
 copy registry.json on build

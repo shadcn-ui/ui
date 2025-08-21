@@ -1,10 +1,10 @@
 import path from "path"
+import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import {
   configSchema,
   rawConfigSchema,
   workspaceConfigSchema,
-} from "@/src/registry"
-import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
+} from "@/src/schema"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
@@ -22,7 +22,7 @@ export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
 // A simple components.json file would be nice.
-const explorer = cosmiconfig("components", {
+export const explorer = cosmiconfig("components", {
   searchPlaces: ["components.json"],
 })
 
