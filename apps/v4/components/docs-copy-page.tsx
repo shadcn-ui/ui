@@ -87,6 +87,21 @@ const menuItems = {
       Open in Claude
     </a>
   ),
+  t3chat: (url: string) => (
+    <a
+      href={getPromptUrl("https://t3.chat/new", url)}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M14.25 0h-4.5C4.4 0 0 4.4 0 9.75c0 3.5 1.85 6.6 4.7 8.25h-.2v6l6.75-4.5h3c5.4 0 9.75-4.4 9.75-9.75S19.7 0 14.25 0m0 16.5h-3L7.5 18.75v-2.7C4.9 15.2 3 12.7 3 9.75A6.75 6.75 0 0 1 9.75 3h4.5a6.75 6.75 0 0 1 0 13.5"
+          fill="currentColor"
+        />
+      </svg>
+      Open in T3.chat
+    </a>
+  ),
 }
 
 export function DocsCopyPage({ page, url }: { page: string; url: string }) {
