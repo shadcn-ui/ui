@@ -1,4 +1,4 @@
-import { fetchRegistry } from "@/src/registry/api"
+import { fetchRegistry } from "@/src/registry/fetcher"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
@@ -19,7 +19,7 @@ import { TEMPLATES, createProject } from "./create-project"
 vi.mock("fs-extra")
 vi.mock("execa")
 vi.mock("prompts")
-vi.mock("@/src/registry/api")
+vi.mock("@/src/registry/fetcher")
 vi.mock("@/src/utils/get-package-manager", () => ({
   getPackageManager: vi.fn().mockResolvedValue("npm"),
 }))
