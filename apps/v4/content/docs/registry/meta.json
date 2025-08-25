@@ -6,6 +6,7 @@
     "namespace",
     "authentication",
     "examples",
+    "mcp",
     "open-in-v0",
     "registry-json",
     "registry-item-json"

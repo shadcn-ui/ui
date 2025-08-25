@@ -13,6 +13,22 @@ import {
   PopoverTrigger,
 } from "@/registry/new-york-v4/ui/popover"
 
+const TOP_LEVEL_SECTIONS = [
+  { name: "Get Started", href: "/docs" },
+  {
+    name: "Components",
+    href: "/docs/components",
+  },
+  {
+    name: "Registry",
+    href: "/docs/registry",
+  },
+  {
+    name: "MCP Server",
+    href: "/docs/mcp",
+  },
+]
+
 export function MobileNav({
   tree,
   items,
@@ -75,6 +91,18 @@ export function MobileNav({
               {items.map((item, index) => (
                 <MobileLink key={index} href={item.href} onOpenChange={setOpen}>
                   {item.label}
+                </MobileLink>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-4">
+            <div className="text-muted-foreground text-sm font-medium">
+              Sections
+            </div>
+            <div className="flex flex-col gap-3">
+              {TOP_LEVEL_SECTIONS.map(({ name, href }) => (
+                <MobileLink key={name} href={href} onOpenChange={setOpen}>
+                  {name}
                 </MobileLink>
               ))}
             </div>

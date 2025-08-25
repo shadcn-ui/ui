@@ -1,0 +1,85 @@
+---
+title: MCP Server
+description: MCP support for registry developers
+---
+
+The [shadcn MCP server](/docs/mcp) works out of the box with any shadcn-compatible registry. You do not need to do anything special to enable MCP support for your registry.
+
+See the [MCP documentation](/docs/mcp) for more information on how to use the shadcn MCP server.
+
+## Configuring MCP
+
+Ask your registry consumers to configure your registry in their `components.json` file and install the shadcn MCP server:
+
+<Tabs defaultValue="claude">
+  <TabsList>
+    <TabsTrigger value="claude">Claude Code</TabsTrigger>
+    <TabsTrigger value="cursor">Cursor</TabsTrigger>
+    <TabsTrigger value="vscode">VS Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="claude" className="mt-4">
+
+    **Configure your registry** in your `components.json` file:
+       ```json title="components.json"
+       {
+         "registries": {
+           "@acme": "https://acme.com/r/{name}.json"
+         }
+       }
+       ```
+
+    **Run the following command** in your project:
+       ```bash
+       npx shadcn@latest mcp init --client claude
+       ```
+
+    **Restart Claude Code** and try the following prompts:
+       - Show me all available components in the @acme registry
+       - Create a contact form using components from the @acme registry
+
+    **Note:** You can use `/mcp` command in Claude Code to debug the MCP server.
+
+  </TabsContent>
+
+  <TabsContent value="cursor" className="mt-4">
+    **Configure your registry** in your `components.json` file:
+       ```json title="components.json"
+       {
+         "registries": {
+           "@acme": "https://acme.com/r/{name}.json"
+         }
+       }
+       ```
+
+    **Run the following command** in your project:
+       ```bash
+       npx shadcn@latest mcp init --client cursor
+       ```
+
+    Open **Cursor Settings** and **Enable the MCP server** for shadcn. Then try the following prompts:
+       - Show me all available components in the @acme registry
+       - Create a contact form using components from the @acme registry
+
+  </TabsContent>
+
+  <TabsContent value="vscode" className="mt-4">
+    **Configure your registry** in your `components.json` file:
+       ```json title="components.json"
+       {
+         "registries": {
+           "@acme": "https://acme.com/r/{name}.json"
+         }
+       }
+       ```
+
+    **Run the following command** in your project:
+       ```bash
+       npx shadcn@latest mcp init --client vscode
+       ```
+
+    Open `.vscode/mcp.json` and click **Start** next to the shadcn server. Then try the following prompts with GitHub Copilot:
+       - Show me all available components in the @acme registry
+       - Create a contact form using components from the @acme registry
+
+  </TabsContent>
+</Tabs>
