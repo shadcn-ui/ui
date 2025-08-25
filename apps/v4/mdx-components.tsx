@@ -62,7 +62,7 @@ export const mdxComponents = {
   h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-28 text-xl font-semibold tracking-tight *:[code]:text-xl",
+        "font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight *:[code]:text-xl",
         className
       )}
       {...props}

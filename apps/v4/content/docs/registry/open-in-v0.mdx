@@ -8,8 +8,8 @@ If your registry is hosted and publicly accessible via a URL, you can open a reg
 eg. [https://v0.dev/chat/api/open?url=https://ui.shadcn.com/r/styles/new-york/login-01.json](https://v0.dev/chat/api/open?url=https://ui.shadcn.com/r/styles/new-york/login-01.json)
 
 <Callout className="mt-6">
-  **Note:** The `Open in v0` button does not support `cssVars` and `tailwind`
-  properties.
+  **Important:** `Open in v0` does not support `cssVars`, `css`, `envVars`,
+  namespaced registries, or advanced authentication methods.
 </Callout>
 
 ## Button
@@ -61,4 +61,46 @@ export function OpenInV0Button({ url }: { url: string }) {
 
 ## Authentication
 
-See the [Adding Auth](/docs/registry/getting-started#adding-auth) section for more information on how to authenticate requests to your registry and Open in v0.
+Open in v0 only supports query parameter authentication. It does not support namespaced registries or advanced authentication methods like Bearer tokens or API keys in headers.
+
+### Using Query Parameter Authentication
+
+To add authentication to your registry for Open in v0, use a `token` query parameter:
+
+```
+https://registry.company.com/r/hello-world.json?token=your_secure_token_here
+```
+
+When implementing this on your registry server:
+
+1. Check for the `token` query parameter
+2. Validate the token against your authentication system
+3. Return a `401 Unauthorized` response if the token is invalid or missing
+4. Both the shadcn CLI and Open in v0 will handle the 401 response and display an appropriate message to users
+
+### Example Implementation
+
+```typescript
+// Next.js API route example
+export async function GET(request: NextRequest) {
+  const token = request.nextUrl.searchParams.get('token')
+  
+  if (!isValidToken(token)) {
+    return NextResponse.json(
+      { 
+        error: "Unauthorized",
+        message: "Invalid or missing token" 
+      },
+      { status: 401 }
+    )
+  }
+  
+  // Return the registry item
+  return NextResponse.json(registryItem)
+}
+```
+
+<Callout className="mt-6">
+  **Security Note:** Make sure to encrypt and expire tokens. Never expose
+  production tokens in documentation or examples.
+</Callout>

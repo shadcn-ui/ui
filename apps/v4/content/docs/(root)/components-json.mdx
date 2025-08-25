@@ -210,3 +210,93 @@ Import alias for `hooks` such as `use-media-query` or `use-toast`.
   }
 }
 ```
+
+## registries
+
+Configure multiple resource registries for your project. This allows you to install components, libraries, utilities, and other resources from various sources including private registries.
+
+See the <Link href="/docs/registry/namespace">Namespaced Registries</Link> documentation for detailed information.
+
+### Basic Configuration
+
+Configure registries with URL templates:
+
+```json title="components.json"
+{
+  "registries": {
+    "@v0": "https://v0.dev/chat/b/{name}",
+    "@acme": "https://registry.acme.com/{name}.json",
+    "@internal": "https://internal.company.com/{name}.json"
+  }
+}
+```
+
+The `{name}` placeholder is replaced with the resource name when installing.
+
+### Advanced Configuration with Authentication
+
+For private registries that require authentication:
+
+```json title="components.json"
+{
+  "registries": {
+    "@private": {
+      "url": "https://api.company.com/registry/{name}.json",
+      "headers": {
+        "Authorization": "Bearer ${REGISTRY_TOKEN}",
+        "X-API-Key": "${API_KEY}"
+      },
+      "params": {
+        "version": "latest"
+      }
+    }
+  }
+}
+```
+
+Environment variables in the format `${VAR_NAME}` are automatically expanded from your environment.
+
+### Using Namespaced Registries
+
+Once configured, install resources using the namespace syntax:
+
+```bash
+# Install from a configured registry
+npx shadcn@latest add @v0/dashboard
+
+# Install from private registry
+npx shadcn@latest add @private/button
+
+# Install multiple resources
+npx shadcn@latest add @acme/header @internal/auth-utils
+```
+
+### Example: Multiple Registry Setup
+
+```json title="components.json"
+{
+  "registries": {
+    "@shadcn": "https://ui.shadcn.com/r/{name}.json",
+    "@company-ui": {
+      "url": "https://registry.company.com/ui/{name}.json",
+      "headers": {
+        "Authorization": "Bearer ${COMPANY_TOKEN}"
+      }
+    },
+    "@team": {
+      "url": "https://team.company.com/{name}.json",
+      "params": {
+        "team": "frontend",
+        "version": "${REGISTRY_VERSION}"
+      }
+    }
+  }
+}
+```
+
+This configuration allows you to:
+- Install public components from shadcn/ui
+- Access private company UI components with authentication
+- Use team-specific resources with versioning
+
+For more information about authentication, see the <Link href="/docs/registry/authentication">Authentication</Link> documentation.

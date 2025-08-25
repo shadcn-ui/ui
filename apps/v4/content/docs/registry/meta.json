@@ -1,10 +1,12 @@
 {
+  "title": "Registry",
   "pages": [
     "index",
     "getting-started",
     "namespace",
-    "open-in-v0",
+    "authentication",
     "examples",
+    "open-in-v0",
     "registry-json",
     "registry-item-json"
   ]
