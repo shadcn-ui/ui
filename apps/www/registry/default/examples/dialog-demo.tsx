@@ -33,6 +33,12 @@ export default function DialogDemo() {
               id="name"
               defaultValue="Pedro Duarte"
               className="col-span-3"
+              onFocus={(e) => {
+                setTimeout(() => {
+                  e.target.selectionStart = e.target.selectionEnd =
+                    e.target.value.length
+                }, 0)
+              }}
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
