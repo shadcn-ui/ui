@@ -7,6 +7,8 @@ The [shadcn MCP server](/docs/mcp) works out of the box with any shadcn-compatib
 
 See the [MCP documentation](/docs/mcp) for more information on how to use the shadcn MCP server.
 
+---
+
 ## Configuring MCP
 
 Ask your registry consumers to configure your registry in their `components.json` file and install the shadcn MCP server:
@@ -18,24 +20,26 @@ Ask your registry consumers to configure your registry in their `components.json
     <TabsTrigger value="vscode">VS Code</TabsTrigger>
   </TabsList>
   <TabsContent value="claude" className="mt-4">
-
     **Configure your registry** in your `components.json` file:
-       ```json title="components.json"
-       {
-         "registries": {
-           "@acme": "https://acme.com/r/{name}.json"
-         }
-       }
-       ```
+
+    ```json title="components.json" showLineNumbers
+    {
+      "registries": {
+        "@acme": "https://acme.com/r/{name}.json"
+      }
+    }
+    ```
 
     **Run the following command** in your project:
-       ```bash
-       npx shadcn@latest mcp init --client claude
-       ```
+
+    ```bash
+    npx shadcn@latest mcp init --client claude
+    ```
 
     **Restart Claude Code** and try the following prompts:
-       - Show me all available components in the @acme registry
-       - Create a contact form using components from the @acme registry
+       - Show me all available components in the shadcn registry
+       - Add the button, dialog and card components to my project
+       - Create a contact form using components from the shadcn registry
 
     **Note:** You can use `/mcp` command in Claude Code to debug the MCP server.
 
@@ -43,43 +47,56 @@ Ask your registry consumers to configure your registry in their `components.json
 
   <TabsContent value="cursor" className="mt-4">
     **Configure your registry** in your `components.json` file:
-       ```json title="components.json"
-       {
-         "registries": {
-           "@acme": "https://acme.com/r/{name}.json"
-         }
-       }
-       ```
 
+    ```json title="components.json" showLineNumbers
+    {
+      "registries": {
+        "@acme": "https://acme.com/r/{name}.json"
+      }
+    }
+    ```
     **Run the following command** in your project:
        ```bash
        npx shadcn@latest mcp init --client cursor
        ```
 
     Open **Cursor Settings** and **Enable the MCP server** for shadcn. Then try the following prompts:
-       - Show me all available components in the @acme registry
-       - Create a contact form using components from the @acme registry
+       - Show me all available components in the shadcn registry
+       - Add the button, dialog and card components to my project
+       - Create a contact form using components from the shadcn registry
 
   </TabsContent>
 
   <TabsContent value="vscode" className="mt-4">
     **Configure your registry** in your `components.json` file:
-       ```json title="components.json"
-       {
-         "registries": {
-           "@acme": "https://acme.com/r/{name}.json"
-         }
-       }
-       ```
 
+    ```json title="components.json" showLineNumbers
+    {
+      "registries": {
+        "@acme": "https://acme.com/r/{name}.json"
+      }
+    }
+    ```
     **Run the following command** in your project:
        ```bash
        npx shadcn@latest mcp init --client vscode
        ```
 
     Open `.vscode/mcp.json` and click **Start** next to the shadcn server. Then try the following prompts with GitHub Copilot:
-       - Show me all available components in the @acme registry
-       - Create a contact form using components from the @acme registry
+       - Show me all available components in the shadcn registry
+       - Add the button, dialog and card components to my project
+       - Create a contact form using components from the shadcn registry
 
   </TabsContent>
 </Tabs>
+
+---
+
+### Best Practices
+
+Here are some best practices for MCP-compatible registries:
+
+1. **Clear Descriptions**: Add concise, informative descriptions that help AI assistants understand what a registry item is for and how to use it.
+2. **Proper Dependencies**: List all `dependencies` accurately so MCP can install them automatically.
+3. **Registry Dependencies**: Use `registryDependencies` to indicate relationships between items.
+4. **Consistent Naming**: Use kebab-case for component names and maintain consistency across your registry.

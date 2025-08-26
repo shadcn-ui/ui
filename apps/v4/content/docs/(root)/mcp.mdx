@@ -1,13 +1,27 @@
 ---
 title: MCP Server
-description: Use the shadcn MCP server to browse, search, and install components from registries
+description: Use the shadcn MCP server to browse, search, and install components from registries.
 ---
 
-The shadcn MCP (Model Context Protocol) server allows AI assistants to interact with items from registries. You can browse available components, search for specific resources, and install them directly into your project using natural language.
+The shadcn MCP Server allows AI assistants to interact with items from registries. You can browse available components, search for specific ones, and install them directly into your project using natural language.
 
-For example, you can ask an AI assistant to "Build a landing page using components from the @acme registry" or "Find me a login form from the shadcn registry".
+For example, you can ask an AI assistant to "Build a landing page using components from the acme registry" or "Find me a login form from the shadcn registry".
+
+Registries are configured in your project's `components.json` file.
+
+```json title="components.json" showLineNumbers
+{
+  "registries": {
+    "@acme": "https://acme.com/r/{name}.json"
+  }
+}
+```
+
+---
 
 ## Quick Start
+
+Select your MCP client and follow the instructions to configure the shadcn MCP server. If you'd like to do it manually, see the [Configuration](#configuration) section.
 
 <Tabs defaultValue="claude">
   <TabsList>
@@ -57,6 +71,8 @@ For example, you can ask an AI assistant to "Build a landing page using componen
   </TabsContent>
 </Tabs>
 
+---
+
 ## What is MCP?
 
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io) is an open protocol that enables AI assistants to securely connect to external data sources and tools. With the shadcn MCP server, your AI assistant gains direct access to:
@@ -84,21 +100,17 @@ The shadcn MCP server works out of the box with any shadcn-compatible registry.
 - **Third-Party Registries** - Any registry following the shadcn registry specification
 - **Namespaced Registries** - Multiple registries configured with `@namespace` syntax
 
-## Prerequisites
-
-Before using MCP, ensure you have:
-
-1. **shadcn CLI installed** in your project: (if you don't have it, run `npm install -D shadcn`)
-
-2. **A valid components.json** file in your project root (created via `npx shadcn@latest init`)
+---
 
 ## Configuration
 
+The shadcn MCP server works with any MCP client. Here are the instructions for the most popular ones.
+
 ### Claude Code
 
-To use MCP with Claude Code, add the shadcn server to your project's `.mcp.json` configuration file:
+To use the shadcn MCP server with Claude Code, add the following configuration to your project's `.mcp.json` file:
 
-```json title=".mcp.json"
+```json title=".mcp.json" showLineNumbers
 {
   "mcpServers": {
     "shadcn": {
@@ -109,13 +121,15 @@ To use MCP with Claude Code, add the shadcn server to your project's `.mcp.json`
 }
 ```
 
-After adding the configuration, restart Claude Code for the changes to take effect. See the [Claude Code MCP documentation](https://docs.anthropic.com/en/docs/claude-code/mcp) for more details.
+After adding the configuration, restart Claude Code and run `/mcp` to see the shadcn MCP server in the list. If you see `Connected`, you're good to go.
+
+See the [Claude Code MCP documentation](https://docs.anthropic.com/en/docs/claude-code/mcp) for more details.
 
 ### Cursor
 
 To configure MCP in Cursor, add the shadcn server to your project's `.cursor/mcp.json` configuration file:
 
-```json title=".cursor/mcp.json"
+```json title=".cursor/mcp.json" showLineNumbers
 {
   "mcpServers": {
     "shadcn": {
@@ -126,13 +140,17 @@ To configure MCP in Cursor, add the shadcn server to your project's `.cursor/mcp
 }
 ```
 
-After adding the configuration, enable the MCP server in Cursor Settings (Restart Cursor if needed). See the [Cursor MCP documentation](https://docs.cursor.com/en/context/mcp#using-mcp-json) for more details.
+After adding the configuration, enable the shadcn MCP server in Cursor Settings.
+
+Once enabled, you should see a green dot next to the shadcn server in the MCP server list and a list of available tools.
+
+See the [Cursor MCP documentation](https://docs.cursor.com/en/context/mcp#using-mcp-json) for more details.
 
 ### VS Code
 
 To configure MCP in VS Code with GitHub Copilot, add the shadcn server to your project's `.vscode/mcp.json` configuration file:
 
-```json title=".vscode/mcp.json"
+```json title=".vscode/mcp.json" showLineNumbers
 {
   "mcpServers": {
     "shadcn": {
@@ -143,37 +161,23 @@ To configure MCP in VS Code with GitHub Copilot, add the shadcn server to your p
 }
 ```
 
-After adding the configuration, restart VS Code for the changes to take effect. See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for more details.
+After adding the configuration, open `.vscode/mcp.json` and click **Start** next to the shadcn server.
 
-### Zed
+See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for more details.
 
-To configure MCP in Zed, add the shadcn server to your project's `.zed/settings.json` configuration file:
-
-```json title=".zed/settings.json"
-{
-  "context_servers": {
-    "shadcn": {
-      "command": "npx",
-      "args": ["shadcn@latest", "mcp"]
-    }
-  }
-}
-```
-
-After adding the configuration, restart Zed for the changes to take effect. See the [Zed MCP documentation](https://zed.dev/docs/ai/mcp) for more details.
+---
 
 ## Configuring Registries
 
 The MCP server supports multiple registries through your project's `components.json` configuration. This allows you to access components from various sources including private registries and third-party providers.
 
 <Callout>
-  **Note:** By default, MCP connects to the shadcn/ui registry. No configuration
-  is needed to access standard shadcn/ui components.
+  **Note:** No configuration is needed to access standard shadcn/ui registry.
 </Callout>
 
 Configure additional registries in your `components.json`:
 
-```json title="components.json"
+```json title="components.json" showLineNumbers
 {
   "registries": {
     "@acme": "https://registry.acme.com/{name}.json",
@@ -187,6 +191,8 @@ Configure additional registries in your `components.json`:
 }
 ```
 
+---
+
 ### Authentication
 
 For private registries requiring authentication, set environment variables in your `.env.local`:
@@ -197,6 +203,8 @@ API_KEY=your_api_key_here
 ```
 
 For more details on registry configuration, see the [Namespaces documentation](/docs/registry/namespace).
+
+---
 
 ## Example Prompts
 
@@ -217,6 +225,8 @@ Once MCP is configured, you can use natural language to interact with registries
 - "Show me components from @acme registry"
 - "Install @internal/auth-form"
 - "Build me a landing page using hero, features and testimonials components from the @acme registry"
+
+---
 
 ## Troubleshooting
 
@@ -246,6 +256,8 @@ If components fail to install:
 2. **Verify Paths** - Confirm the target directories exist
 3. **Check Permissions** - Ensure write permissions for component directories
 4. **Review Dependencies** - Check that required dependencies are installed
+
+---
 
 ## Learn More
 
