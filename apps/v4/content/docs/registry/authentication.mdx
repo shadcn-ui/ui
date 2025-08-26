@@ -338,9 +338,10 @@ Your registry server can return custom error messages in the response body, and 
 ```typescript
 // Registry server returns custom error
 return NextResponse.json(
-  { 
+  {
     error: "Unauthorized",
-    message: "Your subscription has expired. Please renew at company.com/billing" 
+    message:
+      "Your subscription has expired. Please renew at company.com/billing",
   },
   { status: 403 }
 )
@@ -358,9 +359,10 @@ This helps provide context-specific guidance:
 // Different error messages for different scenarios
 if (!token) {
   return NextResponse.json(
-    { 
+    {
       error: "Unauthorized",
-      message: "Authentication required. Set REGISTRY_TOKEN in your .env.local file" 
+      message:
+        "Authentication required. Set REGISTRY_TOKEN in your .env.local file",
     },
     { status: 401 }
   )
@@ -368,9 +370,9 @@ if (!token) {
 
 if (isExpiredToken(token)) {
   return NextResponse.json(
-    { 
+    {
       error: "Unauthorized",
-      message: "Token expired. Request a new token at company.com/tokens" 
+      message: "Token expired. Request a new token at company.com/tokens",
     },
     { status: 401 }
   )
@@ -378,9 +380,9 @@ if (isExpiredToken(token)) {
 
 if (!hasTeamAccess(token, component)) {
   return NextResponse.json(
-    { 
+    {
       error: "Forbidden",
-      message: `Component '${component}' is restricted to the Design team` 
+      message: `Component '${component}' is restricted to the Design team`,
     },
     { status: 403 }
   )

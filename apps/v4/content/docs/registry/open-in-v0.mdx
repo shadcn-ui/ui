@@ -83,18 +83,18 @@ When implementing this on your registry server:
 ```typescript
 // Next.js API route example
 export async function GET(request: NextRequest) {
-  const token = request.nextUrl.searchParams.get('token')
-  
+  const token = request.nextUrl.searchParams.get("token")
+
   if (!isValidToken(token)) {
     return NextResponse.json(
-      { 
+      {
         error: "Unauthorized",
-        message: "Invalid or missing token" 
+        message: "Invalid or missing token",
       },
       { status: 401 }
     )
   }
-  
+
   // Return the registry item
   return NextResponse.json(registryItem)
 }
