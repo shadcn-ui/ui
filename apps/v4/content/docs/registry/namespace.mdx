@@ -24,6 +24,8 @@ Namespaced registries let you configure multiple resource sources in one project
 - [Best Practices](#best-practices)
 - [Troubleshooting](#troubleshooting)
 
+---
+
 ## Overview
 
 Registry namespaces are prefixed with `@` and provide a way to organize and reference resources from different sources. Resources can be any type of content: components, libraries, utilities, hooks, AI prompts, configuration files, themes, and more. For example:
@@ -34,6 +36,8 @@ Registry namespaces are prefixed with `@` and provide a way to organize and refe
 - `@acme/auth-utils` - Authentication utilities from your company's private registry
 - `@ai/chatbot-rules` - AI prompt rules from an AI resources registry
 - `@themes/dark-mode` - Theme configuration from a themes registry
+
+---
 
 ## Decentralized Namespace System
 
@@ -101,6 +105,8 @@ This allows you to:
 }
 ```
 
+---
+
 ## Getting Started
 
 ### Installing Resources
@@ -136,6 +142,8 @@ Then start installing:
 npx shadcn@beta add @acme/button
 ```
 
+---
+
 ## Registry Naming Convention
 
 Registry names must follow these rules:
@@ -145,6 +153,8 @@ Registry names must follow these rules:
 - Examples of valid names: `@v0`, `@acme-ui`, `@my_company`
 
 The pattern for referencing resources is: `@namespace/resource-name`
+
+---
 
 ## Configuration
 
@@ -191,6 +201,8 @@ For registries that require authentication or additional parameters, use the obj
 
 > **Note:** Environment variables in the format `${VAR_NAME}` are automatically expanded from your environment (process.env). This works in URLs, headers, and params. For example, `${REGISTRY_TOKEN}` will be replaced with the value of `process.env.REGISTRY_TOKEN`. See [Authentication & Security](#authentication--security) for more details on using environment variables.
 
+---
+
 ### URL Pattern System
 
 Registry URLs support the following placeholders:
@@ -221,6 +233,8 @@ The `{style}` placeholder is replaced with the current style configuration:
 With style set to `new-york`, installing `@themes/card` resolves to: `https://registry.example.com/new-york/card.json`
 
 The style placeholder is optional. Use this when you want to serve different versions of the same resource. For example, you can serve a different version of a component for each style.
+
+---
 
 ## Authentication & Security
 
@@ -431,6 +445,8 @@ npx shadcn@beta view @acme/button
 ```
 
 This will output the payload of the registry item to the console.
+
+---
 
 ## Dependency Resolution
 
@@ -663,6 +679,8 @@ This allows you to:
 }
 ```
 
+---
+
 ## Built-in Registries
 
 The `@shadcn` namespace is built-in and always available:
@@ -672,6 +690,8 @@ npx shadcn@beta add @shadcn/button
 ```
 
 This is equivalent to installing from the default shadcn/ui registry.
+
+---
 
 ## Versioning
 
@@ -736,6 +756,8 @@ Implement semantic versioning with range support:
 4. **Support version pinning** for reproducible builds
 5. **Implement version discovery** endpoints (e.g., `/versions/{name}`)
 6. **Cache versioned resources** appropriately with proper cache headers
+
+---
 
 ## CLI Commands
 
@@ -809,6 +831,8 @@ Search results include:
 - Description
 - Registry source
 
+---
+
 ## Error Handling
 
 ### Registry Not Configured
@@ -872,6 +896,8 @@ Access forbidden for https://api.company.com/button.json
 Verify your API key has the necessary permissions.
 ```
 
+---
+
 ## Creating Your Own Registry
 
 To make your registry compatible with the namespace system, you can serve any type of resource - components, libraries, utilities, AI prompts, themes, configurations, or any other shareable code/content:
@@ -893,6 +919,8 @@ To make your registry compatible with the namespace system, you can serve any ty
   }
 }
 ```
+
+---
 
 ## Technical Details
 
@@ -925,6 +953,8 @@ When a component has dependencies from different registries, the resolver:
 3. Deduplicates files based on target paths
 4. Merges configurations (tailwind, cssVars, etc.) from all sources
 
+---
+
 ## Best Practices
 
 1. **Use environment variables** for sensitive data like API keys and tokens
@@ -933,6 +963,8 @@ When a component has dependencies from different registries, the resolver:
 4. **Implement proper error responses** with helpful messages
 5. **Cache registry responses** when possible to improve performance
 6. **Support style variants** if your components have multiple themes
+
+---
 
 ## Troubleshooting
 
