@@ -58,21 +58,9 @@ const CLIENTS = [
       },
     },
   },
-  // {
-  //   name: "zed",
-  //   label: "Zed Editor",
-  //   configPath: ".zed/settings.json",
-  //   config: {
-  //     context_servers: {
-  //       shadcn: {
-  //         source: "custom",
-  //         command: "npx",
-  //         args: [`shadcn@${SHADCN_MCP_VERSION}`, "mcp"],
-  //       },
-  //     },
-  //   },
-  // },
 ] as const
+
+const DEPENDENCIES = [`shadcn@${SHADCN_MCP_VERSION}`]
 
 export const mcp = new Command()
   .name("mcp")
@@ -94,7 +82,7 @@ export const mcp = new Command()
   })
 
 const mcpInitOptionsSchema = z.object({
-  client: z.enum(["claude", "cursor", "vscode", "zed"]),
+  client: z.enum(["claude", "cursor", "vscode"]),
   cwd: z.string(),
 })
 
@@ -107,7 +95,7 @@ mcp
   )
   .action(async (opts, command) => {
     try {
-      // Get the cwd from parent command
+      // Get the cwd from parent command.
       const parentOpts = command.parent?.opts() || {}
       const cwd = parentOpts.cwd || process.cwd()
 
@@ -143,7 +131,7 @@ mcp
 
       const config = await getConfig(options.cwd)
       if (config) {
-        await updateDependencies([], ["shadcn"], config, {
+        await updateDependencies([], DEPENDENCIES, config, {
           silent: false,
         })
       } else {
@@ -152,9 +140,13 @@ mcp
         const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
 
         const installSpinner = spinner("Installing dependencies...").start()
-        await execa(packageManager, [installCommand, devFlag, "shadcn"], {
-          cwd: options.cwd,
-        })
+        await execa(
+          packageManager,
+          [installCommand, devFlag, ...DEPENDENCIES],
+          {
+            cwd: options.cwd,
+          }
+        )
         installSpinner.succeed("Installing dependencies.")
       }
 
