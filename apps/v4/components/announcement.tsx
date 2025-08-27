@@ -6,8 +6,8 @@ import { Badge } from "@/registry/new-york-v4/ui/badge"
 export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="rounded-full">
-      <Link href="/docs/registry/namespace">
-        Introducing Namespaced Registries <ArrowRightIcon />
+      <Link href="/docs/changelog">
+        Now available: shadcn CLI 3.0 <ArrowRightIcon />
       </Link>
     </Badge>
   )

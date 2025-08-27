@@ -298,7 +298,7 @@ export const mdxComponents = {
   }: React.ComponentProps<typeof TabsList>) => (
     <TabsList
       className={cn(
-        "justify-start gap-4 rounded-none bg-transparent px-2 md:px-0",
+        "justify-start gap-4 rounded-none bg-transparent px-0",
         className
       )}
       {...props}
