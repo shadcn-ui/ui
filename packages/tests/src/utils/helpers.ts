@@ -64,12 +64,26 @@ export async function runCommand(
   }
 }
 
-export async function npxShadcn(cwd: string, args: string[]) {
-  return runCommand(cwd, args, {
+export async function npxShadcn(
+  cwd: string,
+  args: string[],
+  {
+    debug = false,
+  }: {
+    debug?: boolean
+  } = {}
+) {
+  const result = await runCommand(cwd, args, {
     env: {
       REGISTRY_URL: getRegistryUrl(),
     },
   })
+
+  if (debug) {
+    console.log(result)
+  }
+
+  return result
 }
 
 export function cssHasProperties(

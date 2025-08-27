@@ -75,6 +75,23 @@ export async function createRegistryServer(
       return
     }
 
+    if (urlWithoutQuery?.includes("styles/index")) {
+      response.writeHead(200, { "Content-Type": "application/json" })
+      response.end(
+        JSON.stringify([
+          {
+            name: "new-york",
+            label: "New York",
+          },
+          {
+            name: "default",
+            label: "Default",
+          },
+        ])
+      )
+      return
+    }
+
     if (urlWithoutQuery?.includes("index")) {
       response.writeHead(200, { "Content-Type": "application/json" })
       response.end(
@@ -104,6 +121,30 @@ export async function createRegistryServer(
             ],
           },
         ])
+      )
+      return
+    }
+
+    // Check if this is a registry.json request
+    if (urlWithoutQuery?.endsWith("/registry")) {
+      // Check if this requires bearer authentication
+      if (request.url?.includes("/bearer/")) {
+        // Validate bearer token
+        const token = request.headers.authorization?.split(" ")[1]
+        if (token !== "EXAMPLE_BEARER_TOKEN") {
+          response.writeHead(401, { "Content-Type": "application/json" })
+          response.end(JSON.stringify({ error: "Unauthorized" }))
+          return
+        }
+      }
+
+      response.writeHead(200, { "Content-Type": "application/json" })
+      response.end(
+        JSON.stringify({
+          name: "Test Registry",
+          homepage: "https://example.com",
+          items: items,
+        })
       )
       return
     }
@@ -193,7 +234,7 @@ export async function configureRegistries(
 ) {
   if (!fs.pathExistsSync(path.join(fixturePath, "components.json"))) {
     await fs.writeJSON(path.join(fixturePath, "components.json"), {
-      payload,
+      registries: payload,
     })
   }
 

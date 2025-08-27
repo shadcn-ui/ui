@@ -2,18 +2,25 @@ import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
-  BASE_COLORS,
   getRegistryBaseColors,
-  getRegistryItem,
+  getRegistryItems,
   getRegistryStyles,
 } from "@/src/registry/api"
+import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
+import { configWithDefaults } from "@/src/registry/config"
+import { BASE_COLORS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
-import { rawConfigSchema } from "@/src/registry/schema"
-import { isLocalFile, isUrl } from "@/src/registry/utils"
+import { rawConfigSchema } from "@/src/schema"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
+import {
+  FILE_BACKUP_SUFFIX,
+  createFileBackup,
+  deleteFileBackup,
+  restoreFileBackup,
+} from "@/src/utils/file-helper"
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -34,8 +41,22 @@ import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
+import deepmerge from "deepmerge"
+import fsExtra from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
+
+process.on("exit", (code) => {
+  const filePath = path.resolve(process.cwd(), "components.json")
+
+  // Delete backup if successful.
+  if (code === 0) {
+    return deleteFileBackup(filePath)
+  }
+
+  // Restore backup if error.
+  return restoreFileBackup(filePath)
+})
 
 export const initOptionsSchema = z.object({
   cwd: z.string(),
@@ -78,7 +99,7 @@ export const initOptionsSchema = z.object({
         ).join("', '")}'`,
       }
     ),
-  style: z.string(),
+  baseStyle: z.boolean(),
 })
 
 export const init = new Command()
@@ -114,32 +135,67 @@ export const init = new Command()
   )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
+  .option("--no-base-style", "do not install the base shadcn style.")
   .action(async (components, opts) => {
     try {
+      // Apply defaults when --defaults flag is set.
+      if (opts.defaults) {
+        opts.template = opts.template || "next"
+        opts.baseColor = opts.baseColor || "neutral"
+      }
+
       const options = initOptionsSchema.parse({
         cwd: path.resolve(opts.cwd),
         isNewProject: false,
         components,
-        style: "index",
         ...opts,
       })
 
       await loadEnvFiles(options.cwd)
 
-      const config = await getConfig(options.cwd)
-
       // We need to check if we're initializing with a new style.
-      // We fetch the payload of the first item.
-      // This is okay since the request is cached and deduped.
+      // This will allow us to determine if we need to install the base style.
+      // And if we should prompt the user for a base color.
       if (components.length > 0) {
-        const item = await getRegistryItem(components[0], config || undefined)
+        // We don't know the full config at this point.
+        // So we'll use a shadow config to fetch the first item.
+        let shadowConfig = configWithDefaults({})
 
-        // Skip base color if style.
-        // We set a default and let the style override it.
-        if (item?.type === "registry:style") {
-          options.baseColor = "neutral"
-          options.style = item.extends ?? "index"
+        // Check if there's a components.json file.
+        // If so, we'll merge with our shadow config.
+        const componentsJsonPath = path.resolve(options.cwd, "components.json")
+        if (fsExtra.existsSync(componentsJsonPath)) {
+          const existingConfig = await fsExtra.readJson(componentsJsonPath)
+          const config = rawConfigSchema.partial().parse(existingConfig)
+          shadowConfig = configWithDefaults(config)
+
+          // Since components.json might not be valid at this point.
+          // Temporarily rename components.json to allow preflight to run.
+          // We'll rename it back after preflight.
+          createFileBackup(componentsJsonPath)
         }
+
+        // This forces a shadowConfig validation early in the process.
+        buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
+
+        const [item] = await getRegistryItems([components[0]], {
+          config: shadowConfig,
+        })
+        if (item?.type === "registry:style") {
+          // Set a default base color so we're not prompted.
+          // The style will extend or override it.
+          options.baseColor = "neutral"
+
+          // If the style extends none, we don't want to install the base style.
+          options.baseStyle =
+            item.extends === "none" ? false : options.baseStyle
+        }
+      }
+
+      // If --no-base-style, we don't want to prompt for a base color either.
+      // The style will extend or override it.
+      if (!options.baseStyle) {
+        options.baseColor = "neutral"
       }
 
       await runInit(options)
@@ -149,6 +205,9 @@ export const init = new Command()
           "Success!"
         )} Project initialization completed.\nYou may now add components.`
       )
+
+      // We need when runninng with custom cwd.
+      deleteFileBackup(path.resolve(options.cwd, "components.json"))
       logger.break()
     } catch (error) {
       logger.break()
@@ -187,7 +246,8 @@ export async function runInit(
   }
 
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)
-  const config = projectConfig
+
+  let config = projectConfig
     ? await promptForMinimalConfig(projectConfig, options)
     : await promptForConfig(await getConfig(options.cwd))
 
@@ -206,23 +266,38 @@ export async function runInit(
     }
   }
 
-  // Write components.json.
   const componentSpinner = spinner(`Writing components.json.`).start()
   const targetPath = path.resolve(options.cwd, "components.json")
-  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
+  const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
+
+  // Merge with backup config if it exists and not using --force
+  if (!options.force && fsExtra.existsSync(backupPath)) {
+    const existingConfig = await fsExtra.readJson(backupPath)
+
+    // Move registries at the end of the config.
+    const { registries, ...merged } = deepmerge(existingConfig, config)
+    config = { ...merged, registries }
+  }
+
+  // Write components.json.
+  await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
   componentSpinner.succeed()
 
   // Add components.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
   const components = [
-    ...(options.style === "none" ? [] : [options.style]),
+    // "index" is the default shadcn style.
+    // Why index? Because when style is true, we read style from components.json and fetch that.
+    // i.e new-york from components.json then fetch /styles/new-york/index.
+    // TODO: Fix this so that we can extend any style i.e --style=new-york.
+    ...(options.baseStyle ? ["index"] : []),
     ...(options.components ?? []),
   ]
   await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
     silent: options.silent,
-    style: options.style,
+    baseStyle: options.baseStyle,
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
