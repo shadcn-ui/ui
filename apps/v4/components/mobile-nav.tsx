@@ -4,6 +4,7 @@ import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 
+import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -100,11 +101,16 @@ export function MobileNav({
               Sections
             </div>
             <div className="flex flex-col gap-3">
-              {TOP_LEVEL_SECTIONS.map(({ name, href }) => (
-                <MobileLink key={name} href={href} onOpenChange={setOpen}>
-                  {name}
-                </MobileLink>
-              ))}
+              {TOP_LEVEL_SECTIONS.map(({ name, href }) => {
+                if (!showMcpDocs && href.includes("/mcp")) {
+                  return null
+                }
+                return (
+                  <MobileLink key={name} href={href} onOpenChange={setOpen}>
+                    {name}
+                  </MobileLink>
+                )
+              })}
             </div>
           </div>
           <div className="flex flex-col gap-8">
@@ -118,6 +124,9 @@ export function MobileNav({
                     <div className="flex flex-col gap-3">
                       {group.children.map((item) => {
                         if (item.type === "page") {
+                          if (!showMcpDocs && item.url.includes("/mcp")) {
+                            return null
+                          }
                           return (
                             <MobileLink
                               key={`${item.url}-${index}`}

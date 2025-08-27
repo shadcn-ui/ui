@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { showMcpDocs } from "@/lib/flags"
 import type { source } from "@/lib/source"
 import {
   Sidebar,
@@ -54,6 +55,9 @@ export function DocsSidebar({
           <SidebarGroupContent>
             <SidebarMenu>
               {TOP_LEVEL_SECTIONS.map(({ name, href }) => {
+                if (!showMcpDocs && href.includes("/mcp")) {
+                  return null
+                }
                 return (
                   <SidebarMenuItem key={name}>
                     <SidebarMenuButton
@@ -90,6 +94,14 @@ export function DocsSidebar({
                 {item.type === "folder" && (
                   <SidebarMenu className="gap-0.5">
                     {item.children.map((item) => {
+                      if (
+                        !showMcpDocs &&
+                        item.type === "page" &&
+                        item.url?.includes("/mcp")
+                      ) {
+                        return null
+                      }
+
                       return (
                         item.type === "page" &&
                         !EXCLUDED_PAGES.includes(item.url) && (

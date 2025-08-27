@@ -7,6 +7,7 @@ import { IconArrowRight } from "@tabler/icons-react"
 import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
+import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
@@ -213,6 +214,10 @@ export function CommandMenu({
                   group.children.map((item) => {
                     if (item.type === "page") {
                       const isComponent = item.url.includes("/components/")
+
+                      if (!showMcpDocs && item.url.includes("/mcp")) {
+                        return null
+                      }
 
                       return (
                         <CommandMenuItem
