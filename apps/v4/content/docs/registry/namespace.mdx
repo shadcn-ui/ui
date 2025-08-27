@@ -114,13 +114,13 @@ This allows you to:
 Once configured, you can install resources using the namespace syntax:
 
 ```bash
-npx shadcn@beta add @v0/dashboard
+npx shadcn@latest add @v0/dashboard
 ```
 
 or multiple resources at once:
 
 ```bash
-npx shadcn@beta add @acme/header @lib/auth-utils @ai/chatbot-rules
+npx shadcn@latest add @acme/header @lib/auth-utils @ai/chatbot-rules
 ```
 
 ### Quick Configuration
@@ -139,7 +139,7 @@ Add registries to your `components.json`:
 Then start installing:
 
 ```bash
-npx shadcn@beta add @acme/button
+npx shadcn@latest add @acme/button
 ```
 
 ---
@@ -175,7 +175,7 @@ The simplest way to configure a registry is with a URL template string:
 }
 ```
 
-> **Note:** The `{name}` placeholder in the URL is automatically parsed and replaced with the resource name when you run `npx shadcn@beta add @namespace/resource-name`. For example, `@acme/button` becomes `https://registry.acme.com/resources/button.json`. See [URL Pattern System](#url-pattern-system) for more details.
+> **Note:** The `{name}` placeholder in the URL is automatically parsed and replaced with the resource name when you run `npx shadcn@latest add @namespace/resource-name`. For example, `@acme/button` becomes `https://registry.acme.com/resources/button.json`. See [URL Pattern System](#url-pattern-system) for more details.
 
 ### Advanced Configuration
 
@@ -441,7 +441,7 @@ Example secure registry setup:
 The CLI provides transparency about what's being installed. You can see the payload of a registry item using the following command:
 
 ```bash
-npx shadcn@beta view @acme/button
+npx shadcn@latest view @acme/button
 ```
 
 This will output the payload of the registry item to the console.
@@ -476,7 +476,7 @@ Understanding how dependencies are resolved internally is important if you're de
 
 ### How Resolution Works
 
-When you run `npx shadcn@beta add @namespace/resource`, the CLI does the following:
+When you run `npx shadcn@latest add @namespace/resource`, the CLI does the following:
 
 1. **Clears registry context** to start fresh
 2. **Fetches the main resource** from the specified registry
@@ -488,7 +488,7 @@ When you run `npx shadcn@beta add @namespace/resource`, the CLI does the followi
 This means that if you run the following command:
 
 ```bash
-npx shadcn@beta add @acme/auth @custom/login-form
+npx shadcn@latest add @acme/auth @custom/login-form
 ```
 
 The `login-form.ts` from `@custom/login-form` will override the `login-form.ts` from `@acme/auth` because it's resolved last.
@@ -542,7 +542,7 @@ Let's say you want to customize a button from a vendor registry:
 **3. Install your custom version**:
 
 ```bash
-npx shadcn@beta add @my-company/custom-button
+npx shadcn@latest add @my-company/custom-button
 ```
 
 This installs the original button from `@vendor/button` and then overrides the `cssVars` with your own custom values.
@@ -686,7 +686,7 @@ This allows you to:
 The `@shadcn` namespace is built-in and always available:
 
 ```bash
-npx shadcn@beta add @shadcn/button
+npx shadcn@latest add @shadcn/button
 ```
 
 This is equivalent to installing from the default shadcn/ui registry.
@@ -769,16 +769,16 @@ Install resources from any configured registry:
 
 ```bash
 # Install from a specific registry
-npx shadcn@beta add @v0/dashboard
+npx shadcn@latest add @v0/dashboard
 
 # Install multiple resources
-npx shadcn@beta add @acme/button @lib/utils @ai/prompt
+npx shadcn@latest add @acme/button @lib/utils @ai/prompt
 
 # Install from URL directly
-npx shadcn@beta add https://registry.example.com/button.json
+npx shadcn@latest add https://registry.example.com/button.json
 
 # Install from local file
-npx shadcn@beta add ./local-registry/button.json
+npx shadcn@latest add ./local-registry/button.json
 ```
 
 ### Viewing Resources
@@ -787,13 +787,13 @@ Inspect registry items before installation:
 
 ```bash
 # View a resource from a registry
-npx shadcn@beta view @acme/button
+npx shadcn@latest view @acme/button
 
 # View multiple resources
-npx shadcn@beta view @v0/dashboard @shadcn/card
+npx shadcn@latest view @v0/dashboard @shadcn/card
 
 # View from URL
-npx shadcn@beta view https://registry.example.com/button.json
+npx shadcn@latest view https://registry.example.com/button.json
 ```
 
 The `view` command displays:
@@ -810,19 +810,19 @@ Search for available resources in registries:
 
 ```bash
 # Search a specific registry
-npx shadcn@beta search @v0
+npx shadcn@latest search @v0
 
 # Search with query
-npx shadcn@beta search @acme --query "auth"
+npx shadcn@latest search @acme --query "auth"
 
 # Search multiple registries
-npx shadcn@beta search @v0 @acme @lib
+npx shadcn@latest search @v0 @acme @lib
 
 # Limit results
-npx shadcn@beta search @v0 --limit 10 --offset 20
+npx shadcn@latest search @v0 --limit 10 --offset 20
 
 # List all items (alias for search)
-npx shadcn@beta list @acme
+npx shadcn@latest list @acme
 ```
 
 Search results include:
@@ -840,7 +840,7 @@ Search results include:
 If you reference a registry that isn't configured:
 
 ```bash
-npx shadcn@beta add @non-existent/component
+npx shadcn@latest add @non-existent/component
 ```
 
 Error:
