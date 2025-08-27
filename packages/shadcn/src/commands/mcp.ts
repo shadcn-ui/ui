@@ -16,7 +16,7 @@ import fsExtra from "fs-extra"
 import prompts from "prompts"
 import z from "zod"
 
-const SHADCN_MCP_VERSION = "beta"
+const SHADCN_MCP_VERSION = "latest"
 
 const CLIENTS = [
   {
