@@ -332,6 +332,7 @@ export async function getProjectConfig(
     $schema: "https://ui.shadcn.com/schema.json",
     rsc: projectInfo.isRSC,
     tsx: projectInfo.isTsx,
+    unifiedRadixImports: false,
     style: "new-york",
     tailwind: {
       config: projectInfo.tailwindConfigFile ?? "",
