@@ -14,6 +14,8 @@ import { SiteConfig } from "@/components/site-config"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
+import AskAIButton from "./ask-ai-button"
+
 export function SiteHeader() {
   const colors = getColors()
   const pageTree = source.pageTree
@@ -55,6 +57,7 @@ export function SiteHeader() {
             <Separator orientation="vertical" className="3xl:flex hidden" />
             <SiteConfig className="3xl:flex hidden" />
             <Separator orientation="vertical" />
+            <AskAIButton />
             <ModeSwitcher />
           </div>
         </div>
