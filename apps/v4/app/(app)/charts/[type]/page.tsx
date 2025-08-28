@@ -48,9 +48,9 @@ export default async function ChartPage({ params }: ChartPageProps) {
         {type.charAt(0).toUpperCase() + type.slice(1)} Charts
       </h2>
       <div className="grid flex-1 scroll-mt-20 items-stretch gap-10 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-10">
-        {Array.from({ length: 12 }).map((_, index) => {
+        {Array.from({ length: chartList.length }).map((_, index) => {
           const chart = chartList[index]
-          return chart ? (
+          return (
             <ChartDisplay
               key={chart.id}
               name={chart.id}
@@ -58,11 +58,6 @@ export default async function ChartPage({ params }: ChartPageProps) {
             >
               <chart.component />
             </ChartDisplay>
-          ) : (
-            <div
-              key={`empty-${index}`}
-              className="hidden aspect-square w-full rounded-lg border border-dashed xl:block"
-            />
           )
         })}
       </div>
