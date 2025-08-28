@@ -267,7 +267,7 @@ Use to define CSS variables for your registry item.
 
 ### css
 
-Use `css` to add new rules to the project's CSS file eg. `@layer base`, `@layer components`, `@utility`, `@keyframes`, `@plugin`, etc.
+Use `css` to add new rules to the project's CSS file eg. `@layer base`, `@layer components`, `@utility`, `@keyframes`, `@plugin`, `@import`, etc.
 
 ```json title="registry-item.json" showLineNumbers
 {
@@ -297,7 +297,8 @@ Use `css` to add new rules to the project's CSS file eg. `@layer base`, `@layer 
       "50%": {
         "transform": "rotate(3deg)"
       }
-    }
+    },
+    "@import": "./example.css"
   }
 }
 ```
