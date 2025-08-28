@@ -339,7 +339,24 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
 
   if (typeof properties === "object") {
     for (const [prop, value] of Object.entries(properties)) {
-      if (typeof value === "string") {
+      // Handle @apply
+      if (prop === "@apply" && typeof value === "string") {
+        const applyAtRule = postcss.atRule({
+          name: "apply",
+          params: value,
+          raws: { semicolon: true, before: "\n    " },
+        })
+
+        // Replace existing apply or add new one
+        const existingApply = rule.nodes?.find(
+          (node): node is AtRule =>
+            node.type === "atrule" && node.name === "apply"
+        )
+
+        existingApply
+          ? existingApply.replaceWith(applyAtRule)
+          : rule.append(applyAtRule)
+      } else if (typeof value === "string") {
         const decl = postcss.decl({
           prop,
           value: value,
@@ -375,6 +392,18 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
             const clone = node.clone()
             clone.raws.before = "\n    "
             rule?.append(clone)
+          } else if (node.type === "atrule" && node.name === "apply") {
+            // Handle @apply in string, replace existing one if present
+            const clone = node.clone()
+            clone.raws.before = "\n    "
+
+            const existingApply = rule.nodes?.find(
+              (node): node is AtRule =>
+                node.type === "atrule" && node.name === "apply"
+            )
+            existingApply
+              ? existingApply.replaceWith(clone)
+              : rule?.append(clone)
           }
         })
       }
