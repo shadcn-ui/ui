@@ -57,6 +57,9 @@ export default function Calendar26() {
                 captionLayout="dropdown"
                 onSelect={(date) => {
                   setDateFrom(date)
+                  if (date && dateTo && date >= dateTo) {
+                    setDateTo(undefined)
+                  }
                   setOpenFrom(false)
                 }}
               />
