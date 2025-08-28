@@ -12,6 +12,12 @@ The `registry-item.json` schema is used to define your custom registry items.
   "type": "registry:block",
   "title": "Hello World",
   "description": "A simple hello world component.",
+  "registryDependencies": [
+    "button",
+    "@acme/input-form",
+    "https://example.com/r/foo"
+  ],
+  "dependencies": ["is-even@3.0.0", "motion"],
   "files": [
     {
       "path": "registry/new-york/hello-world/hello-world.tsx",
@@ -140,17 +146,17 @@ Use `@version` to specify the version of your registry item.
 
 ### registryDependencies
 
-Used for registry dependencies. Can be names or URLs. Use the name of the item to reference shadcn/ui components and urls to reference other registries.
+Used for registry dependencies. Can be names, namespaced or URLs.
 
 - For `shadcn/ui` registry items such as `button`, `input`, `select`, etc use the name eg. `['button', 'input', 'select']`.
+- For namespaced registry items such as `@acme` use the name eg. `['@acme/input-form']`.
 - For custom registry items use the URL of the registry item eg. `['https://example.com/r/hello-world.json']`.
 
 ```json title="registry-item.json" showLineNumbers
 {
   "registryDependencies": [
     "button",
-    "input",
-    "select",
+    "@acme/input-form",
     "https://example.com/r/editor.json"
   ]
 }
