@@ -153,4 +153,50 @@
   .container {
     @apply px-4 xl:px-6 mx-auto max-w-screen-2xl;
   }
+
+  /* Apply an enhanced background gaussian blur effec */
+  .glassy-filter::before {
+    /* Variable for tweaking blur radius */
+    --blur-radius: 0.5rem;
+
+    /* Base setup for container that applies blur effect */
+    @apply content-[''] absolute inset-0 h-[200%] backdrop-blur pointer-events-none z-[-1];
+
+    /* The background gaussian blur effect (fallback for unsupported properties */
+    /* is already applied at an element's level using in-line tailwind classes) */
+    @supports (backdrop-filter: blur(var(--blur-radius))) or
+      (-webkit-backdrop-filter: blur(var(--blur-radius))) {
+      position: absolute;
+      inset: 0;
+      -webkit-backdrop-filter: blur(
+        var(--blur-radius)
+      ); /* Support for WebKit and Chromium based browsers */
+      backdrop-filter: blur(var(--blur-radius));
+
+      /* Elements that go outside of the viewport are not taken into account for the gaussian blur effect, hence 
+      /* making the top of the header flickery while scrolling. This property hides that top flickery part. */
+      background: linear-gradient(
+        to bottom,
+        hsl(var(--background)),
+        transparent 50%
+      );
+      pointer-events: none;
+    }
+
+    /* If the browser supports mask-image, cuts top half of the element, effectively making it */
+    /* take into account background UI (that's not yet behind it) for the gaussian blur effect */
+    @supports (mask-image: none) or (-webkit-mask-image: none) {
+      height: 200%; /* Make pseudoelement's height 200% of header's height */
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0% 50%,
+        transparent 50% 100%
+      ); /* Support for WebKit and Chromium based browsers */
+      mask-image: linear-gradient(
+        to bottom,
+        black 0% 50%,
+        transparent 50% 100%
+      );
+    }
+  }
 }
