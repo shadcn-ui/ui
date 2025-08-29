@@ -328,6 +328,20 @@ Add custom theme variables to the `theme` object.
 }
 ```
 
+## Add custom plugins
+
+```json title="example-plugin.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-plugin",
+  "type": "registry:component",
+  "css": {
+    "@plugin @tailwindcss/typography": {},
+    "@plugin foo": {}
+  }
+}
+```
+
 ## Add custom animations
 
 Note: you need to define both `@keyframes` in css and `theme` in cssVars to use animations.
@@ -352,5 +366,97 @@ Note: you need to define both `@keyframes` in css and `theme` in cssVars to use 
       }
     }
   }
+}
+```
+
+## Add environment variables
+
+You can add environment variables using the `envVars` field.
+
+```json title="example-item.json" showLineNumbers {5-9}
+{»
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-item",
+  "type": "registry:item",
+  "envVars": {
+    "NEXT_PUBLIC_APP_URL": "http://localhost:4000",
+    "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/postgres",
+    "OPENAI_API_KEY": ""
+  }
+}
+```
+
+Environment variables are added to the `.env.local` or `.env` file. Existing variables are not overwritten.
+
+<Callout>
+
+**IMPORTANT:** Use `envVars` to add development or example variables. Do NOT use it to add production variables.
+
+</Callout>
+
+## Universal Items
+
+As of `2.9.0`, you can create universal items that can be installed without framework detection or components.json.
+
+To make an item universal i.e framework agnostic, all the files in the item must have an explicit target.
+
+Here's an example of a registry item that installs custom Cursor rules for _python_:
+
+```json title=".cursor/rules/custom-python.mdc" showLineNumbers {9}
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "python-rules",
+  "type": "registry:item",
+  "files": [
+    {
+      "path": "/path/to/your/registry/default/custom-python.mdc",
+      "type": "registry:file",
+      "target": "~/.cursor/rules/custom-python.mdc",
+      "content": "..."
+    }
+  ]
+}
+```
+
+Here's another example for installation custom ESLint config:
+
+```json title=".eslintrc.json" showLineNumbers {9}
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "my-eslint-config",
+  "type": "registry:item",
+  "files": [
+    {
+      "path": "/path/to/your/registry/default/custom-eslint.json",
+      "type": "registry:file",
+      "target": "~/.eslintrc.json",
+      "content": "..."
+    }
+  ]
+}
+```
+
+You can also have a universal item that installs multiple files:
+
+```json title="my-custom-starter-template.json" showLineNumbers {9}
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "my-custom-start-template",
+  "type": "registry:item",
+  dependencies: ["better-auth"]
+  "files": [
+    {
+      "path": "/path/to/file-01.json",
+      "type": "registry:file",
+      "target": "~/file-01.json",
+      "content": "..."
+    },
+    {
+      "path": "/path/to/file-02.vue",
+      "type": "registry:file",
+      "target": "~/pages/file-02.vue",
+      "content": "..."
+    }
+  ]
 }
 ```
