@@ -8,6 +8,7 @@ import { absoluteUrl, cn } from "@/lib/utils"
 import { Style, styles } from "@/registry/registry-styles"
 
 import "@/styles/mdx.css"
+
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 
 const getCachedRegistryItem = React.cache(

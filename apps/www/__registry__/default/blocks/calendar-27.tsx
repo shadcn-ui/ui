@@ -86,8 +86,8 @@ export default function Calendar27() {
   }, [range])
 
   return (
-    <Card className="@container/card w-full max-w-xl">
-      <CardHeader className="@md/card:grid relative flex flex-col border-b">
+    <Card className="w-full max-w-xl @container/card">
+      <CardHeader className="relative flex flex-col border-b @md/card:grid">
         <CardTitle>Web Analytics</CardTitle>
         <CardDescription>
           Showing total visitors for this month.

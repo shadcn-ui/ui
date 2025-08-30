@@ -12,7 +12,7 @@ import {
   parseEnvContent,
 } from "@/src/utils/env-helpers"
 import { Config } from "@/src/utils/get-config"
-import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
+import { getProjectInfo, ProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { resolveImport } from "@/src/utils/resolve-import"

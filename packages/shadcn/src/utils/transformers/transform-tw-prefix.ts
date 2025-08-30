@@ -2,8 +2,8 @@ import { Transformer } from "@/src/utils/transformers"
 import { SyntaxKind } from "ts-morph"
 
 import {
-  TailwindVersion,
   getProjectTailwindVersionFromConfig,
+  TailwindVersion,
 } from "../get-project-info"
 import { splitClassName } from "./transform-css-vars"
 

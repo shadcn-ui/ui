@@ -1,6 +1,6 @@
 import path from "path"
 import { rawConfigSchema } from "@/src/schema"
-import { FRAMEWORKS, Framework } from "@/src/utils/frameworks"
+import { Framework, FRAMEWORKS } from "@/src/utils/frameworks"
 import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"

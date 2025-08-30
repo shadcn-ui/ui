@@ -10,7 +10,7 @@ import {
 
 export default function AppPage() {
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
+    <div className="flex h-screen flex-col items-center justify-center">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Add Task</CardTitle>

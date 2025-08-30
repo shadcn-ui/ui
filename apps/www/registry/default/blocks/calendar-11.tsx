@@ -23,7 +23,7 @@ export default function Calendar11() {
         disableNavigation
         className="rounded-lg border shadow-sm"
       />
-      <div className="text-muted-foreground text-center text-xs">
+      <div className="text-center text-xs text-muted-foreground">
         We are open in June and July only.
       </div>
     </div>

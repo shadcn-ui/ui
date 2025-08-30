@@ -5,6 +5,7 @@ import { ChartCodeViewer } from "@/components/chart-code-viewer"
 import { Separator } from "@/registry/new-york/ui/separator"
 
 import "@/styles/mdx.css"
+
 import {
   AreaChart,
   BarChartBig,

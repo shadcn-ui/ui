@@ -20,7 +20,7 @@ import { registryItemFileSchema, registryItemSchema } from "shadcn/schema"
 import { z } from "zod"
 
 import { trackEvent } from "@/lib/events"
-import { FileTree, createFileTreeForRegistryItemFiles } from "@/lib/registry"
+import { createFileTreeForRegistryItemFiles, FileTree } from "@/lib/registry"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { V0Button } from "@/components/v0-button"
 import { Button } from "@/registry/new-york/ui/button"

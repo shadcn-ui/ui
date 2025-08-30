@@ -168,7 +168,7 @@ export default function AppSidebar() {
                       <CollapsibleTrigger asChild>
                         <SidebarMenuButton>
                           <span>{item.title}</span>
-                          <ChevronRight className="transition-transform ml-auto group-data-[state=open]/collapsible:rotate-90" />
+                          <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
                         </SidebarMenuButton>
                       </CollapsibleTrigger>
                       <CollapsibleContent>

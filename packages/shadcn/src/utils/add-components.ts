@@ -178,9 +178,8 @@ async function addWorkspaceComponents(
   // Process global updates (tailwind, css vars, dependencies) first for the main target.
   // These should typically go to the UI package in a workspace.
   const mainTargetConfig = workspaceConfig.ui
-  const tailwindVersion = await getProjectTailwindVersionFromConfig(
-    mainTargetConfig
-  )
+  const tailwindVersion =
+    await getProjectTailwindVersionFromConfig(mainTargetConfig)
   const workspaceRoot = findCommonRoot(
     config.resolvedPaths.cwd,
     mainTargetConfig.resolvedPaths.ui
