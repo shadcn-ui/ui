@@ -88,7 +88,7 @@ pnpm --filter=www dev
 2. To run the `shadcn-ui` package:
 
 ```bash
-pnpm --filter=shadcn-ui dev
+pnpm --filter=shadcn dev
 ```
 
 ## Running the CLI Locally
