@@ -79,8 +79,20 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
 
           const [, name, params] = atRuleMatch
 
+          // Special handling for @import rules
+          if (name === "import") {
+            if (Array.isArray(properties)) {
+              // Handle array of import statements
+              properties.forEach((importPath: string) => {
+                addImportRule(root, importPath)
+              })
+            } else if (typeof properties === "string") {
+              // Handle single import statement
+              addImportRule(root, properties)
+            }
+          }
           // Special handling for plugins - place them after imports
-          if (name === "plugin") {
+          else if (name === "plugin") {
             // Find existing plugin with same params
             const existingPlugin = root.nodes?.find(
               (node): node is AtRule =>
@@ -249,6 +261,48 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
         }
       }
     },
+  }
+}
+
+function addImportRule(root: Root, importPath: string) {
+  // Check if import already exists
+  const existingImport = root.nodes?.find(
+    (node): node is AtRule =>
+      node.type === "atrule" &&
+      node.name === "import" &&
+      (node.params === `"${importPath}"` ||
+        node.params === `'${importPath}'` ||
+        node.params === importPath)
+  )
+
+  if (!existingImport) {
+    // Format the import path with quotes if not already present
+    let formattedImportPath = importPath
+    if (!importPath.startsWith('"') && !importPath.startsWith("'")) {
+      formattedImportPath = `"${importPath}"`
+    }
+
+    const importRule = postcss.atRule({
+      name: "import",
+      params: formattedImportPath,
+      raws: { semicolon: true, before: "\n" },
+    })
+
+    // Find existing imports to determine insertion point
+    const existingImports =
+      root.nodes?.filter(
+        (node): node is AtRule =>
+          node.type === "atrule" && node.name === "import"
+      ) || []
+
+    if (existingImports.length > 0) {
+      // Insert after the last existing import
+      const lastImport = existingImports[existingImports.length - 1]
+      root.insertAfter(lastImport, importRule)
+    } else {
+      // No existing imports, insert at the beginning
+      root.prepend(importRule)
+    }
   }
 }
 
