@@ -4,7 +4,7 @@ description: Latest updates and announcements.
 toc: false
 ---
 
-## August 2025 - shadcn CLI 3.0
+## August 2025 - shadcn CLI 3.0 and MCP Server
 
 We just shipped shadcn CLI 3.0 with support for namespaced registries, advanced authentication, new commands and a completely rewritten registry engine.
 
@@ -13,6 +13,7 @@ We just shipped shadcn CLI 3.0 with support for namespaced registries, advanced 
 - [Namespaced Registries](#namespaced-registries) - Install components using `@registry/name` format.
 - [Private Registries](#private-registries) - Secure your registry with advanced authentication.
 - [Search & Discovery](#search--discovery) - New commands to find and view code before installing.
+- [MCP Server](#mcp-server) - MCP server for all registries.
 - [Faster Everything](#faster-everything) - Completely rewritten registry resolution.
 - [Improved Error Handling](#improved-error-handling) - Better error messages for users and LLMs.
 - [Upgrade Guide](#upgrade-guide) - Migration notes for existing users.
@@ -119,6 +120,34 @@ npx shadcn list @acme
 ```
 
 Preview components before installing them. Search across multiple registries. See the code and all dependencies upfront.
+
+### MCP Server
+
+<Image
+  src="/images/mcp.jpeg"
+  width="1432"
+  height="1050"
+  alt="Lift Mode"
+  className="mt-6 w-full overflow-hidden rounded-lg border"
+/>
+
+Back in April, we [introduced](https://x.com/shadcn/status/1917597228513853603) the first version of the MCP server. Since then, we've taken everything we learned and built a better MCP server.
+
+Here's what's new:
+
+- Works with all registries. Zero config
+- One command to add to your favorite MCP clients
+- We improved the underlying tools
+- Better integration with the CLI and registries
+- Support for multiple registries in the same project
+
+Add the MCP server to your project:
+
+```bash
+npx shadcn@latest mcp init
+```
+
+See the [docs](/docs/mcp) for more details.
 
 ### Faster Everything
 
@@ -262,7 +291,7 @@ We're working on zero-config MCP support for shadcn/ui registry. One command `np
   className="mt-6 w-full overflow-hidden rounded-lg border"
 />
 
-Learn more in the thread here: https://x.com/shadcn/status/1917597228513853603
+Learn more in the [thread here](https://x.com/shadcn/status/1917597228513853603).
 
 ## March 2025 - shadcn 2.5.0
 
@@ -1042,7 +1071,7 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none">
+      <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none">
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
