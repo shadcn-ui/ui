@@ -135,6 +135,12 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           })
         ),
       },
+      {
+        name: "get_audit_checklist",
+        description:
+          "After creating new components or generating new code files, use this tool for a quick checklist to verify that everything is working as expected. Make sure to run the tool after all required steps have been completed.",
+        inputSchema: zodToJsonSchema(z.object({})),
+      },
     ],
   }
 })
@@ -375,6 +381,27 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             {
               type: "text",
               text: await npxShadcn(`add ${args.items.join(" ")}`),
+            },
+          ],
+        }
+      }
+
+      case "get_audit_checklist": {
+        return {
+          content: [
+            {
+              type: "text",
+              text: dedent`## Component Audit Checklist
+
+              After adding or generating components, check the following common issues:
+
+              - [ ] Ensure imports are correct i.e named vs default imports
+              - [ ] If using next/image, ensure images.remotePatterns next.config.js is configured correctly.
+              - [ ] Ensure all dependencies are installed.
+              - [ ] Check for linting errors or warnings
+              - [ ] Check for TypeScript errors
+              - [ ] Use the Playwright MCP if available.
+              `,
             },
           ],
         }

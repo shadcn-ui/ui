@@ -16,6 +16,12 @@ The `registry.json` schema is used to define your custom component registry.
       "type": "registry:block",
       "title": "Hello World",
       "description": "A simple hello world component.",
+      "registryDependencies": [
+        "button",
+        "@acme/input-form",
+        "https://example.com/r/foo"
+      ],
+      "dependencies": ["is-even@3.0.0", "motion"],
       "files": [
         {
           "path": "registry/new-york/hello-world/hello-world.tsx",
@@ -73,6 +79,12 @@ The `items` in your registry. Each item must implement the [registry-item schema
       "type": "registry:block",
       "title": "Hello World",
       "description": "A simple hello world component.",
+      "registryDependencies": [
+        "button",
+        "@acme/input-form",
+        "https://example.com/r/foo"
+      ],
+      "dependencies": ["is-even@3.0.0", "motion"],
       "files": [
         {
           "path": "registry/new-york/hello-world/hello-world.tsx",

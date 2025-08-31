@@ -3,23 +3,27 @@ title: Getting Started
 description: Learn how to get setup and run your own component registry.
 ---
 
-This guide will walk you through the process of setting up your own component registry.
-
-It assumes you already have a project with components and would like to turn it into a registry.
+This guide will walk you through the process of setting up your own component registry. It assumes you already have a project with components and would like to turn it into a registry.
 
 If you're starting a new registry project, you can use the [registry template](https://github.com/shadcn-ui/registry-template) as a starting point. We have already configured it for you.
 
+## Requirements
+
+You are free to design and host your custom registry as you see fit. The only requirement is that your registry items must be valid JSON files that conform to the [registry-item schema specification](/docs/registry/registry-item-json).
+
+If you'd like to see an example of a registry, we have a [template project](https://github.com/shadcn-ui/registry-template) for you to use as a starting point.
+
 ## registry.json
 
-The `registry.json` file is only required if you're using the `shadcn` CLI to build your registry.
+The `registry.json` is the entry point for the registry. It contains the registry's name, homepage, and defines all the items present in the registry.
 
-If you're using a different build system, you can skip this step as long as your build system produces valid JSON files that conform to the [registry-item schema specification](/docs/registry/registry-item-json).
+Your registry must have this file (or JSON payload) present at the root of the registry endpoint. The registry endpoint is the URL where your registry is hosted.
 
-<Steps>
+The `shadcn` CLI will automatically generate this file for you when you run the `build` command.
 
-### Add a registry.json file
+## Add a registry.json file
 
-Create a `registry.json` file in the root of your project. Your project can be a Next.js, Remix, Vite, or any other project that supports React.
+Create a `registry.json` file in the root of your project. Your project can be a Next.js, Vite, Vue, Svelte, PHP or any other framework as long as it supports serving JSON over HTTP.
 
 ```json title="registry.json" showLineNumbers
 {
@@ -34,11 +38,7 @@ Create a `registry.json` file in the root of your project. Your project can be a
 
 This `registry.json` file must conform to the [registry schema specification](/docs/registry/registry-json).
 
-</Steps>
-
 ## Add a registry item
-
-<Steps>
 
 ### Create your component
 
@@ -98,15 +98,9 @@ For every file you add, you must specify the `path` and `type` of the file. The 
 
 You can read more about the registry item schema and file types in the [registry item schema docs](/docs/registry/registry-item-json).
 
-</Steps>
-
 ## Build your registry
 
-<Steps>
-
 ### Install the shadcn CLI
-
-Note: the `build` command is currently only available in the `shadcn@canary` version of the CLI.
 
 ```bash
 npm install shadcn@canary
@@ -140,8 +134,6 @@ You can change the output directory by passing the `--output` option. See the [s
 
 </Callout>
 
-</Steps>
-
 ## Serve your registry
 
 If you're running your registry on Next.js, you can now serve your registry by running the `next` server. The command might differ for other frameworks.
@@ -156,24 +148,13 @@ Your files will now be served at `http://localhost:3000/r/[NAME].json` eg. `http
 
 To make your registry available to other developers, you can publish it by deploying your project to a public URL.
 
-## Adding Auth
-
-The `shadcn` CLI does not offer a built-in way to add auth to your registry. We recommend handling authorization on your registry server.
-
-A common simple approach is to use a `token` query parameter to authenticate requests to your registry. e.g. `http://localhost:3000/r/hello-world.json?token=[SECURE_TOKEN_HERE]`.
-
-Use the secure token to authenticate requests and return a 401 Unauthorized response if the token is invalid. Both the `shadcn` CLI and `Open in v0` will handle the 401 response and display a message to the user.
-
-<Callout className="mt-6">
-  **Note:** Make sure to encrypt and expire tokens.
-</Callout>
-
 ## Guidelines
 
 Here are some guidelines to follow when building components for a registry.
 
 - Place your registry item in the `registry/[STYLE]/[NAME]` directory. I'm using `new-york` as an example. It can be anything you want as long as it's nested under the `registry` directory.
 - The following properties are required for the block definition: `name`, `description`, `type` and `files`.
+- It is recommended to add a proper name and description to your registry item. This helps LLMs understand the component and its purpose.
 - Make sure to list all registry dependencies in `registryDependencies`. A registry dependency is the name of the component in the registry eg. `input`, `button`, `card`, etc or a URL to a registry item eg. `http://localhost:3000/r/editor.json`.
 - Make sure to list all dependencies in `dependencies`. A dependency is the name of the package in the registry eg. `zod`, `sonner`, etc. To set a version, you can use the `name@version` format eg. `zod@^3.20.0`.
 - **Imports should always use the `@/registry` path.** eg. `import { HelloWorld } from "@/registry/new-york/hello-world/hello-world"`
@@ -186,3 +167,7 @@ To install a registry item using the `shadcn` CLI, use the `add` command followe
 ```bash
 npx shadcn@latest add http://localhost:3000/r/hello-world.json
 ```
+
+See the [Namespaced
+Registries](/docs/registry/namespace) docs for more information on
+how to install registry items from a namespaced registry.

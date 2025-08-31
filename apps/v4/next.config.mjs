@@ -73,6 +73,11 @@ const nextConfig = {
         destination: "/docs/:path*.md",
         permanent: true,
       },
+      {
+        source: "/mcp",
+        destination: "/docs/mcp",
+        permanent: false,
+      },
     ]
   },
   rewrites() {
