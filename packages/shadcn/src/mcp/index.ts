@@ -17,6 +17,15 @@ import {
   npxShadcn,
 } from "./utils"
 
+const GET_PROJECT_REGISTRIES_TOOL_NAME = "get_project_registries"
+const LIST_ITEMS_IN_REGISTRIES_TOOL_NAME = "list_items_in_registries"
+const SEARCH_ITEMS_IN_REGISTRIES_TOOL_NAME = "search_items_in_registries"
+const VIEW_ITEMS_IN_REGISTRIES_TOOL_NAME = "view_items_in_registries"
+const GET_ITEM_EXAMPLES_FROM_REGISTRIES_TOOL_NAME =
+  "get_item_examples_from_registries"
+const GET_ADD_COMMAND_FOR_ITEMS_TOOL_NAME = "get_add_command_for_items"
+const GET_AUDIT_CHECKLIST_TOOL_NAME = "get_audit_checklist"
+
 export const server = new Server(
   {
     name: "shadcn",
@@ -34,13 +43,13 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
       {
-        name: "get_project_registries",
+        name: GET_PROJECT_REGISTRIES_TOOL_NAME,
         description:
           "Get configured registry names from components.json - Returns error if no components.json exists (use init_project to create one)",
         inputSchema: zodToJsonSchema(z.object({})),
       },
       {
-        name: "list_items_in_registries",
+        name: LIST_ITEMS_IN_REGISTRIES_TOOL_NAME,
         description:
           "List items from registries (requires components.json - use init_project if missing)",
         inputSchema: zodToJsonSchema(
@@ -62,9 +71,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         ),
       },
       {
-        name: "search_items_in_registries",
-        description:
-          "Search for components in registries using fuzzy matching (requires components.json). After finding an item, use get_item_examples_from_registries to see usage examples.",
+        name: SEARCH_ITEMS_IN_REGISTRIES_TOOL_NAME,
+        description: `Search for components in registries using fuzzy matching (requires components.json). After finding an item, use ${GET_ITEM_EXAMPLES_FROM_REGISTRIES_TOOL_NAME} to see usage examples.`,
         inputSchema: zodToJsonSchema(
           z.object({
             registries: z
@@ -89,9 +97,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         ),
       },
       {
-        name: "view_items_in_registries",
-        description:
-          "View detailed information about specific registry items including the name, description, type and files content. For usage examples, use get_item_examples_from_registries instead.",
+        name: VIEW_ITEMS_IN_REGISTRIES_TOOL_NAME,
+        description: `View detailed information about specific registry items including the name, description, type and files content. For usage examples, use ${GET_ITEM_EXAMPLES_FROM_REGISTRIES_TOOL_NAME} instead.`,
         inputSchema: zodToJsonSchema(
           z.object({
             items: z
@@ -103,7 +110,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         ),
       },
       {
-        name: "get_item_examples_from_registries",
+        name: GET_ITEM_EXAMPLES_FROM_REGISTRIES_TOOL_NAME,
         description:
           "Find usage examples and demos with their complete code. Search for patterns like 'accordion-demo', 'button example', 'card-demo', etc. Returns full implementation code with dependencies.",
         inputSchema: zodToJsonSchema(
@@ -122,7 +129,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         ),
       },
       {
-        name: "get_add_command_for_items",
+        name: GET_ADD_COMMAND_FOR_ITEMS_TOOL_NAME,
         description:
           "Get the shadcn CLI add command for specific items in a registry. This is useful for adding one or more components to your project.",
         inputSchema: zodToJsonSchema(
@@ -136,7 +143,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         ),
       },
       {
-        name: "get_audit_checklist",
+        name: GET_AUDIT_CHECKLIST_TOOL_NAME,
         description:
           "After creating new components or generating new code files, use this tool for a quick checklist to verify that everything is working as expected. Make sure to run the tool after all required steps have been completed.",
         inputSchema: zodToJsonSchema(z.object({})),
@@ -152,7 +159,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
 
     switch (request.params.name) {
-      case "get_project_registries": {
+      case GET_PROJECT_REGISTRIES_TOOL_NAME: {
         const config = await getMcpConfig(process.cwd())
 
         if (!config?.registries) {
@@ -194,7 +201,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
       }
 
-      case "search_items_in_registries": {
+      case SEARCH_ITEMS_IN_REGISTRIES_TOOL_NAME: {
         const inputSchema = z.object({
           registries: z.array(z.string()),
           query: z.string(),
@@ -239,7 +246,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
       }
 
-      case "list_items_in_registries": {
+      case LIST_ITEMS_IN_REGISTRIES_TOOL_NAME: {
         const inputSchema = z.object({
           registries: z.array(z.string()),
           limit: z.number().optional(),
@@ -280,7 +287,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
       }
 
-      case "view_items_in_registries": {
+      case VIEW_ITEMS_IN_REGISTRIES_TOOL_NAME: {
         const inputSchema = z.object({
           items: z.array(z.string()),
         })
@@ -318,7 +325,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
       }
 
-      case "get_item_examples_from_registries": {
+      case GET_ITEM_EXAMPLES_FROM_REGISTRIES_TOOL_NAME: {
         const inputSchema = z.object({
           query: z.string(),
           registries: z.array(z.string()),
@@ -346,8 +353,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                 - Component name followed by "-demo" or "example"
 
                 You can also:
-                1. Use search_items_in_registries to find all items matching your query
-                2. View the main component with view_items_in_registries for inline usage documentation`,
+                1. Use ${SEARCH_ITEMS_IN_REGISTRIES_TOOL_NAME} to find all items matching your query
+                2. View the main component with ${VIEW_ITEMS_IN_REGISTRIES_TOOL_NAME} for inline usage documentation`,
               },
             ],
           }
@@ -369,7 +376,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
       }
 
-      case "get_add_command_for_items": {
+      case GET_ADD_COMMAND_FOR_ITEMS_TOOL_NAME: {
         const args = z
           .object({
             items: z.array(z.string()),
@@ -386,7 +393,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
       }
 
-      case "get_audit_checklist": {
+      case GET_AUDIT_CHECKLIST_TOOL_NAME: {
         return {
           content: [
             {
