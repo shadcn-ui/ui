@@ -60,6 +60,21 @@ export async function transformCss(
   })
 
   let output = result.css
+
+  // PostCSS doesn't add semicolons to at-rules without bodies when they're the last node.
+  // We need to manually ensure they have semicolons.
+  const root = result.root
+  if (root.nodes && root.nodes.length > 0) {
+    const lastNode = root.nodes[root.nodes.length - 1]
+    if (
+      lastNode.type === "atrule" &&
+      !lastNode.nodes &&
+      !output.trimEnd().endsWith(";")
+    ) {
+      output = output.trimEnd() + ";"
+    }
+  }
+
   output = output.replace(/\/\* ---break--- \*\//g, "")
   output = output.replace(/(\n\s*\n)+/g, "\n\n")
   output = output.trimEnd()
@@ -79,15 +94,55 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
 
           const [, name, params] = atRuleMatch
 
-          // Special handling for plugins - place them after imports
-          if (name === "plugin") {
-            // Ensure plugin name is quoted if not already
+          // Special handling for imports - place them at the top.
+          if (name === "import") {
+            // Check if this import already exists.
+            const existingImport = root.nodes?.find(
+              (node): node is AtRule =>
+                node.type === "atrule" &&
+                node.name === "import" &&
+                node.params === params
+            )
+
+            if (!existingImport) {
+              const importRule = postcss.atRule({
+                name: "import",
+                params,
+                raws: { semicolon: true },
+              })
+
+              // Find the last import to insert after, or insert at beginning.
+              const importNodes = root.nodes?.filter(
+                (node): node is AtRule =>
+                  node.type === "atrule" && node.name === "import"
+              )
+
+              if (importNodes && importNodes.length > 0) {
+                // Insert after the last existing import.
+                const lastImport = importNodes[importNodes.length - 1]
+                importRule.raws.before = "\n"
+                root.insertAfter(lastImport, importRule)
+              } else {
+                // No imports exist, insert at the very beginning.
+                // Check if the file is empty.
+                if (!root.nodes || root.nodes.length === 0) {
+                  importRule.raws.before = ""
+                } else {
+                  importRule.raws.before = ""
+                }
+                root.prepend(importRule)
+              }
+            }
+          }
+          // Special handling for plugins - place them after imports.
+          else if (name === "plugin") {
+            // Ensure plugin name is quoted if not already.
             let quotedParams = params
             if (params && !params.startsWith('"') && !params.startsWith("'")) {
               quotedParams = `"${params}"`
             }
 
-            // Normalize params for comparison (remove quotes)
+            // Normalize params for comparison (remove quotes).
             const normalizeParams = (p: string) => {
               if (p.startsWith('"') && p.endsWith('"')) {
                 return p.slice(1, -1)
@@ -98,7 +153,7 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
               return p
             }
 
-            // Find existing plugin with same normalized params
+            // Find existing plugin with same normalized params.
             const existingPlugin = root.nodes?.find((node): node is AtRule => {
               if (node.type !== "atrule" || node.name !== "plugin") {
                 return false

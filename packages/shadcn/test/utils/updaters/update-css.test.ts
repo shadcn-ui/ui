@@ -585,6 +585,106 @@ describe("transformCss", () => {
     `)
   })
 
+  test("should add @import statements", async () => {
+    const input = ``
+
+    const result = await transformCss(input, {
+      "@import \"tailwindcss\"": {},
+      "@import \"./styles/base.css\"": {},
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import \"tailwindcss\";
+      @import \"./styles/base.css\";"
+    `)
+  })
+
+  test("should add @import with url() syntax", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@import url(\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap\")": {},
+      "@import url('./local-styles.css')": {},
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+      @import url('./local-styles.css');"
+    `)
+  })
+
+  test("should not duplicate existing @import statements", async () => {
+    const input = `@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import "./styles/base.css";`
+
+    const result = await transformCss(input, {
+      "@import \"tailwindcss\"": {},  // Should not duplicate
+      "@import url(\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap\")": {},  // Should not duplicate
+      "@import \"./styles/base.css\"": {},  // Should not duplicate
+      "@import \"./styles/new.css\"": {},  // Should add this one
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+      @import "./styles/base.css";
+      @import "./styles/new.css";"
+    `)
+  })
+
+  test("should handle @import with media queries", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@import \"print-styles.css\" print": {},
+      "@import url(\"mobile.css\") screen and (max-width: 768px)": {},
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+      @import "print-styles.css" print;
+      @import url("mobile.css") screen and (max-width: 768px);"
+    `)
+  })
+
+  test("should place imports before plugins and other content", async () => {
+    const input = `@layer base {
+  body {
+    font-family: sans-serif;
+  }
+}`
+
+    const result = await transformCss(input, {
+      "@import \"tailwindcss\"": {},
+      "@plugin \"foo\"": {},
+      "@layer components": {
+        ".card": {
+          padding: "1rem",
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @plugin "foo";
+
+      @layer base {
+        body {
+          font-family: sans-serif;
+        }
+      }
+
+      @layer components {
+        .card {
+          padding: 1rem;
+        }
+      }"
+    `)
+  })
+
   test("should handle comprehensive CSS with plugins", async () => {
     const input = `@import "tailwindcss";
 @import url("fonts.css");
