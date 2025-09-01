@@ -442,6 +442,7 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
       if (
         prop.startsWith("@") &&
         typeof value === "object" &&
+        value !== null &&
         Object.keys(value).length === 0
       ) {
         // Parse the at-rule.
