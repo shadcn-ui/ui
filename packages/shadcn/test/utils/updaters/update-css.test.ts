@@ -333,7 +333,7 @@ describe("transformCss", () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
-      "@plugin \"foo\"": {},
+      '@plugin "foo"': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -357,8 +357,8 @@ describe("transformCss", () => {
 }`
 
     const result = await transformCss(input, {
-      "@plugin \"foo\"": {},
-      "@plugin \"bar\"": {},
+      '@plugin "foo"': {},
+      '@plugin "bar"': {},
       "@layer components": {
         ".card": {
           padding: "1rem",
@@ -402,8 +402,8 @@ describe("transformCss", () => {
 }`
 
     const result = await transformCss(input, {
-      "@plugin \"foo\"": {},
-      "@plugin \"bar\"": {},
+      '@plugin "foo"': {},
+      '@plugin "bar"': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -429,7 +429,7 @@ describe("transformCss", () => {
 }`
 
     const result = await transformCss(input, {
-      "@plugin \"foo\"": {},
+      '@plugin "foo"': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -448,8 +448,8 @@ describe("transformCss", () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
-      "@plugin \"@tailwindcss/typography\"": {},
-      "@plugin \"./custom-plugin.js\"": {},
+      '@plugin "@tailwindcss/typography"': {},
+      '@plugin "./custom-plugin.js"': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -464,8 +464,8 @@ describe("transformCss", () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
-      "@plugin \"tailwindcss/plugin\"": {},
-      "@plugin \"@headlessui/tailwindcss\"": {},
+      '@plugin "tailwindcss/plugin"': {},
+      '@plugin "@headlessui/tailwindcss"': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -481,8 +481,8 @@ describe("transformCss", () => {
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");`
 
     const result = await transformCss(input, {
-      "@plugin \"foo\"": {},
-      "@plugin \"bar\"": {},
+      '@plugin "foo"': {},
+      '@plugin "bar"': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -498,7 +498,7 @@ describe("transformCss", () => {
     const input = ``
 
     const result = await transformCss(input, {
-      "@plugin \"foo\"": {},
+      '@plugin "foo"': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -514,8 +514,8 @@ describe("transformCss", () => {
 @plugin "another-existing";`
 
     const result = await transformCss(input, {
-      "@plugin \"new-plugin\"": {},
-      "@plugin \"final-plugin\"": {},
+      '@plugin "new-plugin"': {},
+      '@plugin "final-plugin"': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -555,9 +555,9 @@ describe("transformCss", () => {
 @plugin "bar";`
 
     const result = await transformCss(input, {
-      "@plugin foo": {},  // Should detect this as duplicate
-      "@plugin bar": {},  // Should detect this as duplicate
-      "@plugin baz": {},  // Should add this one
+      "@plugin foo": {}, // Should detect this as duplicate
+      "@plugin bar": {}, // Should detect this as duplicate
+      "@plugin baz": {}, // Should add this one
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -573,7 +573,7 @@ describe("transformCss", () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
-      "@plugin \"already-quoted\"": {},
+      '@plugin "already-quoted"': {},
       "@plugin 'single-quoted'": {},
     })
 
@@ -589,8 +589,8 @@ describe("transformCss", () => {
     const input = ``
 
     const result = await transformCss(input, {
-      "@import \"tailwindcss\"": {},
-      "@import \"./styles/base.css\"": {},
+      '@import "tailwindcss"': {},
+      '@import "./styles/base.css"': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -603,7 +603,8 @@ describe("transformCss", () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
-      "@import url(\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap\")": {},
+      '@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap")':
+        {},
       "@import url('./local-styles.css')": {},
     })
 
@@ -620,10 +621,11 @@ describe("transformCss", () => {
 @import "./styles/base.css";`
 
     const result = await transformCss(input, {
-      "@import \"tailwindcss\"": {},  // Should not duplicate
-      "@import url(\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap\")": {},  // Should not duplicate
-      "@import \"./styles/base.css\"": {},  // Should not duplicate
-      "@import \"./styles/new.css\"": {},  // Should add this one
+      '@import "tailwindcss"': {}, // Should not duplicate
+      '@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap")':
+        {}, // Should not duplicate
+      '@import "./styles/base.css"': {}, // Should not duplicate
+      '@import "./styles/new.css"': {}, // Should add this one
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -638,8 +640,8 @@ describe("transformCss", () => {
     const input = `@import "tailwindcss";`
 
     const result = await transformCss(input, {
-      "@import \"print-styles.css\" print": {},
-      "@import url(\"mobile.css\") screen and (max-width: 768px)": {},
+      '@import "print-styles.css" print': {},
+      '@import url("mobile.css") screen and (max-width: 768px)': {},
     })
 
     expect(result).toMatchInlineSnapshot(`
@@ -657,8 +659,8 @@ describe("transformCss", () => {
 }`
 
     const result = await transformCss(input, {
-      "@import \"tailwindcss\"": {},
-      "@plugin \"foo\"": {},
+      '@import "tailwindcss"': {},
+      '@plugin "foo"': {},
       "@layer components": {
         ".card": {
           padding: "1rem",
@@ -685,6 +687,85 @@ describe("transformCss", () => {
     `)
   })
 
+  test("should handle @apply within rules", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@layer base": {
+        "*": {
+          "@apply border-border outline-ring/70": {},
+        },
+        h1: {
+          "@apply text-2xl font-bold": {},
+          color: "red",
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/70;
+        }
+        h1 {
+          @apply text-2xl font-bold;
+          color: red;
+        }
+      }"
+    `)
+  })
+
+  test("should handle at-rules with empty body", async () => {
+    const input = ``
+
+    const result = await transformCss(input, {
+      "@tailwind base": {},
+      "@tailwind components": {},
+      "@tailwind utilities": {},
+      "@layer components": {
+        ".btn": {
+          "@apply px-4 py-2 rounded": {},
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "
+      @tailwind base;
+
+      @tailwind components;
+
+      @tailwind utilities;
+
+      @layer components {
+        .btn {
+          @apply px-4 py-2 rounded;
+        }
+      }"
+    `)
+  })
+
+  test("should handle empty CSS rules", async () => {
+    const input = ``
+
+    const result = await transformCss(input, {
+      ".empty-rule": {},
+      ".rule-with-content": {
+        padding: "1rem",
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "
+        .empty-rule {}
+        .rule-with-content {
+          padding: 1rem;
+      }"
+    `)
+  })
+
   test("should handle comprehensive CSS with plugins", async () => {
     const input = `@import "tailwindcss";
 @import url("fonts.css");
@@ -705,8 +786,8 @@ describe("transformCss", () => {
 }`
 
     const result = await transformCss(input, {
-      "@plugin \"@tailwindcss/typography\"": {},
-      "@plugin \"./custom\"": {},
+      '@plugin "@tailwindcss/typography"': {},
+      '@plugin "./custom"': {},
       "@layer components": {
         ".btn": {
           padding: "0.5rem 1rem",

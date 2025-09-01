@@ -213,7 +213,34 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
               }
             }
           }
-          // Special handling for keyframes - place them under @theme inline
+          // Check if this is any at-rule with no body (empty object).
+          else if (
+            typeof properties === "object" &&
+            Object.keys(properties).length === 0
+          ) {
+            // Handle any at-rule with no body (e.g., @apply, @tailwind, etc.).
+            const atRule = root.nodes?.find(
+              (node): node is AtRule =>
+                node.type === "atrule" &&
+                node.name === name &&
+                node.params === params
+            ) as AtRule | undefined
+
+            if (!atRule) {
+              const newAtRule = postcss.atRule({
+                name,
+                params,
+                raws: { semicolon: true },
+              })
+
+              root.append(newAtRule)
+              root.insertBefore(
+                newAtRule,
+                postcss.comment({ text: "---break---" })
+              )
+            }
+          }
+          // Special handling for keyframes - place them under @theme inline.
           else if (name === "keyframes") {
             let themeInline = root.nodes?.find(
               (node): node is AtRule =>
@@ -411,14 +438,31 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
 
   if (typeof properties === "object") {
     for (const [prop, value] of Object.entries(properties)) {
-      if (typeof value === "string") {
+      // Check if this is any at-rule with empty object (no body).
+      if (
+        prop.startsWith("@") &&
+        typeof value === "object" &&
+        Object.keys(value).length === 0
+      ) {
+        // Parse the at-rule.
+        const atRuleMatch = prop.match(/@([a-zA-Z-]+)\s*(.*)/)
+        if (atRuleMatch) {
+          const [, atRuleName, atRuleParams] = atRuleMatch
+          const atRule = postcss.atRule({
+            name: atRuleName,
+            params: atRuleParams,
+            raws: { semicolon: true, before: "\n    " },
+          })
+          rule.append(atRule)
+        }
+      } else if (typeof value === "string") {
         const decl = postcss.decl({
           prop,
           value: value,
           raws: { semicolon: true, before: "\n    " },
         })
 
-        // Replace existing property or add new one
+        // Replace existing property or add new one.
         const existingDecl = rule.nodes?.find(
           (node): node is Declaration =>
             node.type === "decl" && node.prop === prop
@@ -426,10 +470,10 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
 
         existingDecl ? existingDecl.replaceWith(decl) : rule.append(decl)
       } else if (typeof value === "object") {
-        // Nested selector (including & selectors)
+        // Nested selector (including & selectors).
         const nestedSelector = prop.startsWith("&")
           ? selector.replace(/^([^:]+)/, `$1${prop.substring(1)}`)
-          : prop // Use the original selector for other nested elements
+          : prop // Use the original selector for other nested elements.
         processRule(parent, nestedSelector, value)
       }
     }
