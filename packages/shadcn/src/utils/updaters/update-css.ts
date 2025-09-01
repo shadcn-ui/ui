@@ -81,18 +81,35 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
 
           // Special handling for plugins - place them after imports
           if (name === "plugin") {
-            // Find existing plugin with same params
-            const existingPlugin = root.nodes?.find(
-              (node): node is AtRule =>
-                node.type === "atrule" &&
-                node.name === "plugin" &&
-                node.params === params
-            )
+            // Ensure plugin name is quoted if not already
+            let quotedParams = params
+            if (params && !params.startsWith('"') && !params.startsWith("'")) {
+              quotedParams = `"${params}"`
+            }
+
+            // Normalize params for comparison (remove quotes)
+            const normalizeParams = (p: string) => {
+              if (p.startsWith('"') && p.endsWith('"')) {
+                return p.slice(1, -1)
+              }
+              if (p.startsWith("'") && p.endsWith("'")) {
+                return p.slice(1, -1)
+              }
+              return p
+            }
+
+            // Find existing plugin with same normalized params
+            const existingPlugin = root.nodes?.find((node): node is AtRule => {
+              if (node.type !== "atrule" || node.name !== "plugin") {
+                return false
+              }
+              return normalizeParams(node.params) === normalizeParams(params)
+            })
 
             if (!existingPlugin) {
               const pluginRule = postcss.atRule({
                 name: "plugin",
-                params,
+                params: quotedParams,
                 raws: { semicolon: true, before: "\n" },
               })
 
