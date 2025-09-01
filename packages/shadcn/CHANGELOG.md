@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 3.1.0
+
+### Minor Changes
+
+- [#8110](https://github.com/shadcn-ui/ui/pull/8110) [`64f8baf9aa7562d4d2170863c29c6ae723f31df3`](https://github.com/shadcn-ui/ui/commit/64f8baf9aa7562d4d2170863c29c6ae723f31df3) Thanks [@shadcn](https://github.com/shadcn)! - allow no files items
+
+- [#8109](https://github.com/shadcn-ui/ui/pull/8109) [`e84c819977046f555daa9a8af5736ad7725fb4da`](https://github.com/shadcn-ui/ui/commit/e84c819977046f555daa9a8af5736ad7725fb4da) Thanks [@shadcn](https://github.com/shadcn)! - update handling of import and apply at rules
+
 ## 3.0.0
 
 ### Major Changes
