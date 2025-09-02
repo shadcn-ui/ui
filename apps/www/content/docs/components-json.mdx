@@ -211,3 +211,26 @@ Import alias for `hooks` such as `use-media-query` or `use-toast`.
   }
 }
 ```
+
+### Custom aliases
+
+You can define additional alias keys beyond the built-ins (components, utils, ui, lib, hooks). These map extra “buckets” you might reference from a registry or in your code.
+
+- Default behavior: built‑in buckets work out of the box. If a registry bucket has no matching alias, it falls back to your `components` alias (e.g., `@/registry/new-york/payload/x` → `@/components/payload/x`).
+- Purpose: primarily enables third‑party registries to ship a greater variety of components (custom buckets like `payload`, `editor`, `cms`).
+- Control installation paths: route each third‑party library’s code to specific locations via custom alias keys.
+- Requirements: some libraries may require one or more aliases—check their docs. If not set, fallback to `components` may not match the library’s expectations.
+- Usage: add any key under `aliases` (for example, `"payload": "@/payload"`). The CLI rewrites both import specifiers that start with `@/` or `@/registry/(style?)/…` and alias‑like string literals in code.
+
+```json title="components.json"
+{
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "payload": "@/payload",
+    "editor": "@/vendor/editor"
+  }
+}
+```
+
+Tip: include any custom alias roots in your `tsconfig.json`/`jsconfig.json` path mappings.
