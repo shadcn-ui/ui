@@ -22,6 +22,7 @@ import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
+import { transformStringAliases } from "@/src/utils/transformers/transform-string-aliases"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
 import { Project, ScriptKind } from "ts-morph"
@@ -123,6 +124,7 @@ export async function updateFiles(
           },
           [
             transformImport,
+            transformStringAliases,
             transformRsc,
             transformCssVars,
             transformTwPrefixes,
