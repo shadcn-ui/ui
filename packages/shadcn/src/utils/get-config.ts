@@ -189,9 +189,9 @@ export async function findPackageRoot(cwd: string, resolvedPath: string) {
 function isAliasKey(
   key: string,
   config: Config
-): key is keyof Config["aliases"] {
+): key is keyof Config["resolvedPaths"] {
   return Object.keys(config.resolvedPaths)
-    .filter((key) => key !== "utils")
+    .filter((k) => k !== "utils")
     .includes(key)
 }
 
@@ -272,7 +272,13 @@ export function createConfig(partial?: DeepPartial<Config>): Config {
       },
       aliases: {
         ...defaultConfig.aliases,
-        ...(partial.aliases || {}),
+        ...((partial.aliases
+          ? Object.fromEntries(
+              Object.entries(partial.aliases as Record<string, unknown>).filter(
+                ([, v]) => typeof v === "string"
+              )
+            )
+          : {}) as Record<string, string>),
       },
     }
   }
