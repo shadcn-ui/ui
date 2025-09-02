@@ -111,7 +111,7 @@ turbo.json
 
 1. Every workspace must have a `components.json` file. A `package.json` file tells npm how to install the dependencies. A `components.json` file tells the CLI how and where to install components.
 
-2. The `components.json` file must properly define aliases for the workspace. This tells the CLI how to import components, hooks, utilities, etc. You may also define additional alias keys to map custom buckets (e.g., `payload`), and the CLI will rewrite both imports and alias-like strings to those paths. This primarily supports third‑party registries and lets you control where each third‑party library’s code is installed. Some libraries may require one or more aliases—ensure each workspace’s path mappings (tsconfig/jsconfig) include them.
+2. The `components.json` file must define aliases for the workspace. You can also add custom alias keys to route files from third‑party registries (for example, `payload`). The CLI rewrites both imports and alias‑like strings to those paths. Buckets without a matching alias fall back to `components`. Make sure each workspace’s `tsconfig.json`/`jsconfig.json` includes path mappings for any custom aliases.
 
 <Tabs defaultValue="v4">
 

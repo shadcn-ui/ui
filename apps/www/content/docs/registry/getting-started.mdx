@@ -189,11 +189,11 @@ Here are some guidelines to follow when building components for a registry.
 - The following properties are required for the block definition: `name`, `description`, `type` and `files`.
 - Make sure to list all registry dependencies in `registryDependencies`. A registry dependency is the name of the component in the registry eg. `input`, `button`, `card`, etc or a URL to a registry item eg. `http://localhost:3000/r/editor.json`.
 - Make sure to list all dependencies in `dependencies`. A dependency is the name of the package in the registry eg. `zod`, `sonner`, etc. To set a version, you can use the `name@version` format eg. `zod@^3.20.0`.
-- **Imports should always use the `@/registry` path.** e.g. `import { HelloWorld } from "@/registry/new-york/hello-world/hello-world"`. The `style` segment after `@/registry` is optional—`@/registry/hello-world/...` is also accepted and will be rewritten based on your configured style.
-- The CLI also rewrites alias-like string literals (e.g., configuration values such as `"@/registry/new-york/lib/fields/color"` or `"@/lib/fields/color"`).
-- Unknown registry buckets fall back to your `components` alias by default (e.g., `@/registry/new-york/payload/x` → `@/components/payload/x`). Define custom alias keys in `components.json` to route these to specific locations (e.g., `"payload": "@/payload"`).
-- This capability mainly enables third‑party registries to ship a greater variety of files (custom buckets). It also lets you control where each third‑party library’s code is installed. Some libraries may require one or more aliases—check their docs.
-- Ideally, place your files within a registry item in `components`, `hooks`, `lib` directories.
+- Use the `@/registry` path for imports. e.g. `import { HelloWorld } from "@/registry/new-york/hello-world/hello-world"`. The `style` segment is optional—`@/registry/hello-world/...` also works and will be rewritten based on your configured style.
+- The CLI also rewrites alias-like string literals (for example, `"@/registry/new-york/lib/fields/color"` or `"@/lib/fields/color"`).
+- Buckets without a matching alias fall back to your `components` alias (e.g., `@/registry/new-york/payload/x` → `@/components/payload/x`). Add custom alias keys in `components.json` to route these to specific locations (e.g., `"payload": "@/payload"`).
+- This helps third‑party registries ship more than just `ui/lib/hooks/components`, and lets you control where each library’s files are installed. Some libraries require aliases—check their docs.
+- Ideally, place files within `components`, `hooks`, `lib` inside each registry item.
 
 ## Install using the CLI
 

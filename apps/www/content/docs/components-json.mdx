@@ -214,13 +214,13 @@ Import alias for `hooks` such as `use-media-query` or `use-toast`.
 
 ### Custom aliases
 
-You can define additional alias keys beyond the built-ins (components, utils, ui, lib, hooks). These map extra “buckets” you might reference from a registry or in your code.
+Add extra alias keys when you need to route files from third‑party registries (for example, `payload`, `editor`, `cms`). These work alongside the built‑ins (`components`, `utils`, `ui`, `lib`, `hooks`).
 
-- Default behavior: built‑in buckets work out of the box. If a registry bucket has no matching alias, it falls back to your `components` alias (e.g., `@/registry/new-york/payload/x` → `@/components/payload/x`).
-- Purpose: primarily enables third‑party registries to ship a greater variety of components (custom buckets like `payload`, `editor`, `cms`).
-- Control installation paths: route each third‑party library’s code to specific locations via custom alias keys.
-- Requirements: some libraries may require one or more aliases—check their docs. If not set, fallback to `components` may not match the library’s expectations.
-- Usage: add any key under `aliases` (for example, `"payload": "@/payload"`). The CLI rewrites both import specifiers that start with `@/` or `@/registry/(style?)/…` and alias‑like string literals in code.
+- Default: built‑ins work out of the box. Buckets without a matching alias fall back to your `components` alias (e.g., `@/registry/new-york/payload/x` → `@/components/payload/x`).
+- Why: lets third‑party registries ship more than just `ui/lib/hooks/components`.
+- Control: send each library’s files to a predictable place with a custom alias.
+- Requirements: some libraries expect aliases—check their docs.
+- How: add a key under `aliases` (e.g., `"payload": "@/payload"`). The CLI rewrites both `@/…` and `@/registry/(style?)/…` imports, and alias‑like string literals.
 
 ```json title="components.json"
 {
@@ -233,4 +233,4 @@ You can define additional alias keys beyond the built-ins (components, utils, ui
 }
 ```
 
-Tip: include any custom alias roots in your `tsconfig.json`/`jsconfig.json` path mappings.
+Tip: add path mappings for any custom alias roots in your `tsconfig.json`/`jsconfig.json`.
