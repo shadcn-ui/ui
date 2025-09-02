@@ -1,5 +1,6 @@
 import { type Config } from "@/src/utils/get-config"
 import { describe, expect, test } from "vitest"
+
 import { transform } from "../transformers"
 import { transformStringAliases } from "./transform-string-aliases"
 
@@ -36,10 +37,9 @@ describe("transformStringAliases", () => {
       aliases: { ...baseConfig.aliases, lib: "@acme/lib" },
     }
     const raw = `export const admin = { field: "@/registry/new-york/lib/fields/color" }\n`
-    const out = await transform(
-      { filename: "a.ts", raw, config },
-      [transformStringAliases]
-    )
+    const out = await transform({ filename: "a.ts", raw, config }, [
+      transformStringAliases,
+    ])
     expect(out).toContain('"@acme/lib/fields/color"')
   })
 
@@ -49,10 +49,9 @@ describe("transformStringAliases", () => {
       aliases: { ...baseConfig.aliases, lib: "@acme/lib" },
     }
     const raw = `const s = "@/registry/lib/fields/color"\n`
-    const out = await transform(
-      { filename: "a.ts", raw, config },
-      [transformStringAliases]
-    )
+    const out = await transform({ filename: "a.ts", raw, config }, [
+      transformStringAliases,
+    ])
     expect(out).toContain('"@acme/lib/fields/color"')
   })
 
@@ -62,10 +61,9 @@ describe("transformStringAliases", () => {
       aliases: { ...baseConfig.aliases, hooks: "@acme/hooks" },
     }
     const raw = `const x = "@/hooks/use-thing"\n`
-    const out = await transform(
-      { filename: "a.ts", raw, config },
-      [transformStringAliases]
-    )
+    const out = await transform({ filename: "a.ts", raw, config }, [
+      transformStringAliases,
+    ])
     expect(out).toContain('"@acme/hooks/use-thing"')
   })
 
@@ -75,19 +73,29 @@ describe("transformStringAliases", () => {
       aliases: { ...baseConfig.aliases, components: "@acme/components" },
     }
     const raw = `const x = "@/registry/new-york/payload/my-field"\n`
-    const out = await transform(
-      { filename: "a.ts", raw, config },
-      [transformStringAliases]
-    )
+    const out = await transform({ filename: "a.ts", raw, config }, [
+      transformStringAliases,
+    ])
     expect(out).toContain('"@acme/components/payload/my-field"')
   })
 
   test("non-alias strings are unchanged", async () => {
     const raw = `const t = "hello world"\n`
-    const out = await transform(
-      { filename: "a.ts", raw, config: baseConfig },
-      [transformStringAliases]
-    )
+    const out = await transform({ filename: "a.ts", raw, config: baseConfig }, [
+      transformStringAliases,
+    ])
     expect(out).toContain('"hello world"')
+  })
+
+  test("rewrites string with custom alias bucket (payload)", async () => {
+    const config: Config = {
+      ...baseConfig,
+      aliases: { ...baseConfig.aliases, payload: "@acme/payload" } as any,
+    }
+    const raw = `const x = "@/registry/new-york/payload/my-field"\n`
+    const out = await transform({ filename: "a.ts", raw, config }, [
+      transformStringAliases,
+    ])
+    expect(out).toContain('"@acme/payload/my-field"')
   })
 })

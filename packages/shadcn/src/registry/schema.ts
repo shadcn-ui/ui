@@ -164,13 +164,15 @@ export const rawConfigSchema = z
       prefix: z.string().default("").optional(),
     }),
     iconLibrary: z.string().optional(),
-    aliases: z.object({
-      components: z.string(),
-      utils: z.string(),
-      ui: z.string().optional(),
-      lib: z.string().optional(),
-      hooks: z.string().optional(),
-    }),
+    aliases: z
+      .object({
+        components: z.string(),
+        utils: z.string(),
+        ui: z.string().optional(),
+        lib: z.string().optional(),
+        hooks: z.string().optional(),
+      })
+      .catchall(z.string()),
     registries: registryConfigSchema.optional(),
   })
   .strict()
