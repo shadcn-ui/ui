@@ -1,4 +1,5 @@
-import { Config } from "@/src/utils/get-config"
+import { FALLBACK_STYLE } from "@/src/registry/constants"
+import { Config, DEFAULT_STYLE } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
 
 export const transformImport: Transformer = async ({
@@ -57,7 +58,7 @@ export function updateImportAliases(
     moduleSpecifier.startsWith("@/") &&
     !moduleSpecifier.startsWith("@/registry/")
   ) {
-    const style = config.style || "new-york"
+    const style = config.style || FALLBACK_STYLE
     moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/${style}/`)
   }
 
@@ -92,13 +93,15 @@ export function updateImportAliases(
     const parts = withoutPrefix.split("/")
 
     // Determine bucket with or without style
+    const resolvedPathKeys = config.resolvedPaths
+      ? Object.keys(config.resolvedPaths).filter(
+          (k) => !["cwd", "tailwindConfig", "tailwindCss"].includes(k)
+        )
+      : ["components", "utils", "ui", "lib", "hooks"]
+
     const aliasKeys = new Set([
-      ...Object.keys(config.aliases),
-      "components",
-      "ui",
-      "lib",
-      "hooks",
-      "utils",
+      ...Object.keys(config.aliases ?? {}),
+      ...resolvedPathKeys,
     ])
 
     let bucket = ""
@@ -107,8 +110,8 @@ export function updateImportAliases(
     const styleCandidates = new Set([
       config.style,
       "new-york",
-      "new-york-v4",
-      "default",
+      FALLBACK_STYLE,
+      DEFAULT_STYLE,
     ]) as Set<string>
     const hasStyle =
       parts.length >= 2 &&
