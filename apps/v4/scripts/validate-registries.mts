@@ -49,6 +49,7 @@ async function main() {
   }
 
   console.log("\n✅ All registries validated successfully!")
+  process.exit(0)
 }
 
 main().catch((error) => {
