@@ -1,5 +1,51 @@
 # @shadcn/ui
 
+## 3.1.0
+
+### Minor Changes
+
+- [#8110](https://github.com/shadcn-ui/ui/pull/8110) [`64f8baf9aa7562d4d2170863c29c6ae723f31df3`](https://github.com/shadcn-ui/ui/commit/64f8baf9aa7562d4d2170863c29c6ae723f31df3) Thanks [@shadcn](https://github.com/shadcn)! - allow no files items
+
+- [#8109](https://github.com/shadcn-ui/ui/pull/8109) [`e84c819977046f555daa9a8af5736ad7725fb4da`](https://github.com/shadcn-ui/ui/commit/e84c819977046f555daa9a8af5736ad7725fb4da) Thanks [@shadcn](https://github.com/shadcn)! - update handling of import and apply at rules
+
+## 3.0.0
+
+### Major Changes
+
+- [#8004](https://github.com/shadcn-ui/ui/pull/8004) [`a941287411e4cf4eca29779a8220d59bfca2a25c`](https://github.com/shadcn-ui/ui/commit/a941287411e4cf4eca29779a8220d59bfca2a25c) Thanks [@shadcn](https://github.com/shadcn)! - bump all dependencies
+
+- [#8012](https://github.com/shadcn-ui/ui/pull/8012) [`296feb28a220627958f3a558dcb2384875c2d7a1`](https://github.com/shadcn-ui/ui/commit/296feb28a220627958f3a558dcb2384875c2d7a1) Thanks [@shadcn](https://github.com/shadcn)! - add new mcp server and command
+
+- [#7994](https://github.com/shadcn-ui/ui/pull/7994) [`4f5333ea7ae8a2197fb84472addaa9fd66d984ef`](https://github.com/shadcn-ui/ui/commit/4f5333ea7ae8a2197fb84472addaa9fd66d984ef) Thanks [@shadcn](https://github.com/shadcn)! - add view and search commands
+
+- [#7983](https://github.com/shadcn-ui/ui/pull/7983) [`a426fea9410ade04c26bb4edfa5da813ecaddc17`](https://github.com/shadcn-ui/ui/commit/a426fea9410ade04c26bb4edfa5da813ecaddc17) Thanks [@shadcn](https://github.com/shadcn)! - update getRegistry, getRegistryItems and resolveRegistryItems apis
+
+- [#7990](https://github.com/shadcn-ui/ui/pull/7990) [`b3639227d0737538e98923ab335b6dd03f2c993f`](https://github.com/shadcn-ui/ui/commit/b3639227d0737538e98923ab335b6dd03f2c993f) Thanks [@shadcn](https://github.com/shadcn)! - deprecate fetchRegistry and resolveRegistryTree
+
+- [#7972](https://github.com/shadcn-ui/ui/pull/7972) [`6e870c399350adf17554c35cdf732421ac8a6ab2`](https://github.com/shadcn-ui/ui/commit/6e870c399350adf17554c35cdf732421ac8a6ab2) Thanks [@shadcn](https://github.com/shadcn)! - copy registry.json on build
+
+- [#7989](https://github.com/shadcn-ui/ui/pull/7989) [`a4a36007578a6847c0b1f02c1b46350de6ebe2cc`](https://github.com/shadcn-ui/ui/commit/a4a36007578a6847c0b1f02c1b46350de6ebe2cc) Thanks [@shadcn](https://github.com/shadcn)! - move schema to shadcn/schema
+
+- [#8001](https://github.com/shadcn-ui/ui/pull/8001) [`fed7e3bfdc2696b8bc1fb8e65134e96330347aa0`](https://github.com/shadcn-ui/ui/commit/fed7e3bfdc2696b8bc1fb8e65134e96330347aa0) Thanks [@shadcn](https://github.com/shadcn)! - update signatures for getRegistry, getRegistryItems, resolveRegistryItems and searchRegistries
+
+- [#7992](https://github.com/shadcn-ui/ui/pull/7992) [`7d71b02fb1c69b649fd143d0eeab1ddc7995f5ca`](https://github.com/shadcn-ui/ui/commit/7d71b02fb1c69b649fd143d0eeab1ddc7995f5ca) Thanks [@shadcn](https://github.com/shadcn)! - add getRegistry
+
+- [#7948](https://github.com/shadcn-ui/ui/pull/7948) [`2c164b0f221fac0367a0eda3ce8502b38b25ce3e`](https://github.com/shadcn-ui/ui/commit/2c164b0f221fac0367a0eda3ce8502b38b25ce3e) Thanks [@shadcn](https://github.com/shadcn)! - update registry dependencies resolution algorithm
+
+- [#8086](https://github.com/shadcn-ui/ui/pull/8086) [`17422714f65a36a9fc81eeb227366a2e44171be9`](https://github.com/shadcn-ui/ui/commit/17422714f65a36a9fc81eeb227366a2e44171be9) Thanks [@shadcn](https://github.com/shadcn)! - add mcp init command
+
+- [#7940](https://github.com/shadcn-ui/ui/pull/7940) [`578f83cbefe1b3d70b8179a58c70c5729fd1982f`](https://github.com/shadcn-ui/ui/commit/578f83cbefe1b3d70b8179a58c70c5729fd1982f) Thanks [@shadcn](https://github.com/shadcn)! - add support for namespaced registries
+
+### Minor Changes
+
+- [#7955](https://github.com/shadcn-ui/ui/pull/7955) [`a80ab374830fa414bf3672fefc66b03ea4b8da78`](https://github.com/shadcn-ui/ui/commit/a80ab374830fa414bf3672fefc66b03ea4b8da78) Thanks [@shadcn](https://github.com/shadcn)! - update file handling for monorepo
+
+### Patch Changes
+
+- [#8081](https://github.com/shadcn-ui/ui/pull/8081) [`fc27ba269217ade8ae3a87724259874da799cd03`](https://github.com/shadcn-ui/ui/commit/fc27ba269217ade8ae3a87724259874da799cd03) Thanks [@shadcn](https://github.com/shadcn)! - fix --defaults option
+
+- [#7962](https://github.com/shadcn-ui/ui/pull/7962) [`fc8927a1f9d7d1be3338e3d984de20355af61083`](https://github.com/shadcn-ui/ui/commit/fc8927a1f9d7d1be3338e3d984de20355af61083) Thanks [@shadcn](https://github.com/shadcn)! - fix monorepo init on nix system
+
 ## 2.10.0
 
 ### Minor Changes

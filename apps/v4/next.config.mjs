@@ -68,12 +68,22 @@ const nextConfig = {
         destination: "/view/:name",
         permanent: true,
       },
+      {
+        source: "/docs/:path*.mdx",
+        destination: "/docs/:path*.md",
+        permanent: true,
+      },
+      {
+        source: "/mcp",
+        destination: "/docs/mcp",
+        permanent: false,
+      },
     ]
   },
   rewrites() {
     return [
       {
-        source: "/docs/:path*.mdx",
+        source: "/docs/:path*.md",
         destination: "/llm/:path*",
       },
     ]
