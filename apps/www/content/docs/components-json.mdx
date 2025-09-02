@@ -214,7 +214,7 @@ Import alias for `hooks` such as `use-media-query` or `use-toast`.
 
 ### Custom aliases
 
-Add extra alias keys when you need to route files from third‑party registries (for example, `payload`, `editor`, `cms`). These work alongside the built‑ins (`components`, `utils`, `ui`, `lib`, `hooks`).
+Add extra alias keys when you need to route files from third‑party registries (for example, `payload`). These work alongside the built‑ins (`components`, `utils`, `ui`, `lib`, `hooks`).
 
 - Default: built‑ins work out of the box. Buckets without a matching alias fall back to your `components` alias (e.g., `@/registry/new-york/payload/x` → `@/components/payload/x`).
 - Why: lets third‑party registries ship more than just `ui/lib/hooks/components`.
@@ -227,8 +227,7 @@ Add extra alias keys when you need to route files from third‑party registries 
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
-    "payload": "@/payload",
-    "editor": "@/vendor/editor"
+    "payload": "@/payload"
   }
 }
 ```
