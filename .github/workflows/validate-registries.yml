@@ -53,8 +53,9 @@ jobs:
         run: |
           set +e
           pnpm --filter=v4 validate:registries
-          echo "status=$?" >> $GITHUB_OUTPUT
-          exit $?
+          VALIDATION_STATUS=$?
+          echo "status=$VALIDATION_STATUS" >> $GITHUB_OUTPUT
+          exit 0
 
       - name: Add label to PR
         if: github.event_name == 'pull_request'
