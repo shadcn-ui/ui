@@ -11,6 +11,7 @@ import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import { z } from "zod"
 
+import { transformStringAliases } from "./transform-string-aliases"
 import { transformTwPrefixes } from "./transform-tw-prefix"
 
 export type TransformOpts = {
@@ -41,6 +42,7 @@ export async function transform(
   opts: TransformOpts,
   transformers: Transformer[] = [
     transformImport,
+    transformStringAliases,
     transformRsc,
     transformCssVars,
     transformTwPrefixes,

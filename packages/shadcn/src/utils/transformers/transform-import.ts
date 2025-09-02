@@ -41,7 +41,7 @@ export const transformImport: Transformer = async ({
   return sourceFile
 }
 
-function updateImportAliases(
+export function updateImportAliases(
   moduleSpecifier: string,
   config: Config,
   isRemote: boolean = false
@@ -51,54 +51,91 @@ function updateImportAliases(
     return moduleSpecifier
   }
 
-  // This treats the remote as coming from a faux registry.
-  if (isRemote && moduleSpecifier.startsWith("@/")) {
-    moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
+  // Treat remote source imports as coming from a faux registry.
+  if (
+    isRemote &&
+    moduleSpecifier.startsWith("@/") &&
+    !moduleSpecifier.startsWith("@/registry/")
+  ) {
+    const style = config.style || "new-york"
+    moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/${style}/`)
   }
 
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
-    // We fix the alias and return.
-    const alias = config.aliases.components.split("/")[0]
-    return moduleSpecifier.replace(/^@\//, `${alias}/`)
+    // Rewrite bare alias buckets (e.g. @/ui, @/lib, @/hooks, @/components, @/utils)
+    const knownAliasKeys = Object.keys(config.aliases) as Array<
+      keyof Config["aliases"]
+    >
+    for (const key of knownAliasKeys) {
+      const target = (config.aliases as any)[key]
+      if (!target) continue
+      const re = new RegExp(`^@\\/${key}(?=(/|$))`)
+      if (re.test(moduleSpecifier)) {
+        if (key === "ui") {
+          const replacement =
+            config.aliases.ui ?? `${config.aliases.components}/ui`
+          return moduleSpecifier.replace(re, replacement)
+        }
+        return moduleSpecifier.replace(re, target)
+      }
+    }
+
+    // Otherwise, only adjust the alias scope (e.g. @/ -> @acme/)
+    const aliasScope = config.aliases.components.split("/")[0]
+    return moduleSpecifier.replace(/^@\//, `${aliasScope}/`)
   }
 
-  if (moduleSpecifier.match(/^@\/registry\/(.+)\/ui/)) {
-    return moduleSpecifier.replace(
-      /^@\/registry\/(.+)\/ui/,
-      config.aliases.ui ?? `${config.aliases.components}/ui`
-    )
+  // Registry import with optional style segment.
+  if (moduleSpecifier.startsWith("@/registry/")) {
+    const withoutPrefix = moduleSpecifier.replace(/^@\/registry\//, "")
+    const parts = withoutPrefix.split("/")
+
+    // Determine bucket with or without style
+    const aliasKeys = new Set([
+      ...Object.keys(config.aliases),
+      "components",
+      "ui",
+      "lib",
+      "hooks",
+      "utils",
+    ])
+
+    let bucket = ""
+    let rest = ""
+
+    const styleCandidates = new Set([
+      config.style,
+      "new-york",
+      "new-york-v4",
+      "default",
+    ]) as Set<string>
+    const hasStyle =
+      parts.length >= 2 &&
+      (aliasKeys.has(parts[1]) || styleCandidates.has(parts[0]))
+
+    if (hasStyle) {
+      bucket = parts[1]
+      rest = parts.slice(2).join("/")
+    } else {
+      bucket = parts[0]
+      rest = parts.slice(1).join("/")
+    }
+
+    rest = rest ? `/${rest}` : ""
+
+    if (bucket === "ui") {
+      const replacement = config.aliases.ui ?? `${config.aliases.components}/ui`
+      return `${replacement}${rest}`
+    }
+
+    if ((config.aliases as any)[bucket]) {
+      return `${(config.aliases as any)[bucket]}${rest}`
+    }
+
+    // Unknown bucket: fall back to components alias while preserving the rest
+    return `${config.aliases.components}/${bucket}${rest}`.replace(/\/$/, "")
   }
 
-  if (
-    config.aliases.components &&
-    moduleSpecifier.match(/^@\/registry\/(.+)\/components/)
-  ) {
-    return moduleSpecifier.replace(
-      /^@\/registry\/(.+)\/components/,
-      config.aliases.components
-    )
-  }
-
-  if (config.aliases.lib && moduleSpecifier.match(/^@\/registry\/(.+)\/lib/)) {
-    return moduleSpecifier.replace(
-      /^@\/registry\/(.+)\/lib/,
-      config.aliases.lib
-    )
-  }
-
-  if (
-    config.aliases.hooks &&
-    moduleSpecifier.match(/^@\/registry\/(.+)\/hooks/)
-  ) {
-    return moduleSpecifier.replace(
-      /^@\/registry\/(.+)\/hooks/,
-      config.aliases.hooks
-    )
-  }
-
-  return moduleSpecifier.replace(
-    /^@\/registry\/[^/]+/,
-    config.aliases.components
-  )
+  return moduleSpecifier
 }
