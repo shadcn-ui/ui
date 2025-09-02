@@ -123,4 +123,16 @@ describe("transformImport", () => {
     ])
     expect(out).toContain('from "@acme/payload/field"')
   })
+
+  test("rewrites registry custom alias bucket without style (payload)", async () => {
+    const config: Config = {
+      ...baseConfig,
+      aliases: { ...baseConfig.aliases, payload: "@acme/payload" } as any,
+    }
+    const raw = `import x from "@/registry/payload/field"\n`
+    const out = await transform({ filename: "a.ts", raw, config }, [
+      transformImport,
+    ])
+    expect(out).toContain('from "@acme/payload/field"')
+  })
 })
