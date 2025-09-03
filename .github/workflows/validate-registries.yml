@@ -51,22 +51,20 @@ jobs:
       - name: Validate registries
         id: validate
         run: |
-          set +e
           pnpm --filter=v4 validate:registries
-          VALIDATION_STATUS=$?
-          echo "status=$VALIDATION_STATUS" >> $GITHUB_OUTPUT
-          exit 0
+          echo "validation_passed=$?" >> $GITHUB_ENV
+        continue-on-error: true
 
       - name: Add label to PR
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
-            const success = '${{ steps.validate.outputs.status }}' === '0';
-            const label = success ? 'registries: valid' : 'registries: invalid';
+            const validationPassed = '${{ env.validation_passed }}' === '0';
+            const label = validationPassed ? 'registries: valid' : 'registries: invalid';
+            const oppositeLabel = validationPassed ? 'registries: invalid' : 'registries: valid';
 
             // Remove opposite label if it exists
-            const oppositeLabel = success ? 'registries: invalid' : 'registries: valid';
             try {
               await github.rest.issues.removeLabel({
                 owner: context.repo.owner,
@@ -85,3 +83,7 @@ jobs:
               issue_number: context.issue.number,
               labels: [label]
             });
+      
+      - name: Fail if validation failed
+        if: env.validation_passed != '0'
+        run: exit 1
