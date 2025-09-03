@@ -10,7 +10,7 @@ const registriesIndexSchema = z.record(
 
 async function main() {
   // 1. Validate the registries.json file.
-  const registriesFile = path.join(process.cwd(), "public/registries.json")
+  const registriesFile = path.join(process.cwd(), "public/r/registries.json")
   const content = await fs.readFile(registriesFile, "utf-8")
   const data = JSON.parse(content)
   const registries = registriesIndexSchema.parse(data)
@@ -48,7 +48,7 @@ async function main() {
     process.exit(1)
   }
 
-  console.log("\n✅ All registries validated successfully!")
+  console.log("\n✅ All registries passed validation.")
   process.exit(0)
 }
 
