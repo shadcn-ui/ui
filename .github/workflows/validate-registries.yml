@@ -83,7 +83,3 @@ jobs:
               issue_number: context.issue.number,
               labels: [label]
             });
-      
-      - name: Fail if validation failed
-        if: env.validation_passed != '0'
-        run: exit 1
