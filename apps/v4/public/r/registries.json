@@ -10,6 +10,5 @@
   "@originui": "https://originui.com/r/{name}.json",
   "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
   "@tailark": "https://tailark.com/r/{name}.json",
-  "@react-bits": "https://reactbits.dev/r/{name}.json",
-  "@invalid": "https://shadcn.com/r/registry.json"
+  "@react-bits": "https://reactbits.dev/r/{name}.json"
 }
