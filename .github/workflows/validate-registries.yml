@@ -1,0 +1,88 @@
+name: Validate Registries
+
+on:
+  pull_request:
+    paths:
+      - "apps/v4/public/r/registries.json"
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/v4/public/r/registries.json"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: pnpm validate:registries
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9.0.6
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build packages
+        run: pnpm build --filter=shadcn
+
+      - name: Validate registries
+        id: validate
+        run: |
+          pnpm --filter=v4 validate:registries
+          echo "validation_passed=$?" >> $GITHUB_ENV
+        continue-on-error: true
+
+      - name: Add label to PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const validationPassed = '${{ env.validation_passed }}' === '0';
+            const label = validationPassed ? 'registries: valid' : 'registries: invalid';
+            const oppositeLabel = validationPassed ? 'registries: invalid' : 'registries: valid';
+
+            // Remove opposite label if it exists
+            try {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                name: oppositeLabel
+              });
+            } catch (e) {
+              // Label might not exist, that's ok
+            }
+
+            // Add the appropriate label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: [label]
+            });
