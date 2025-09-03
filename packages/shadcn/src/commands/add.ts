@@ -14,6 +14,7 @@ import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
 import prompts from "prompts"
@@ -74,6 +75,16 @@ export const add = new Command()
             cwd: options.cwd,
           },
         })
+      }
+
+      let hasNewRegistries = false
+      if (components.length > 0) {
+        const { config: updatedConfig, newRegistries } =
+          await ensureRegistriesInConfig(components, initialConfig, {
+            silent: options.silent,
+          })
+        initialConfig = updatedConfig
+        hasNewRegistries = newRegistries.length > 0
       }
 
       if (components.length > 0) {
@@ -205,6 +216,15 @@ export const add = new Command()
           `Failed to read config at ${highlighter.info(options.cwd)}.`
         )
       }
+
+      const { config: updatedConfig } = await ensureRegistriesInConfig(
+        options.components,
+        config,
+        {
+          silent: options.silent || hasNewRegistries,
+        }
+      )
+      config = updatedConfig
 
       await addComponents(options.components, config, options)
 

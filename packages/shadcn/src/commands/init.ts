@@ -38,6 +38,7 @@ import {
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
@@ -175,6 +176,16 @@ export const init = new Command()
           createFileBackup(componentsJsonPath)
         }
 
+        // Ensure all registries used in components are configured.
+        const { config: updatedConfig } = await ensureRegistriesInConfig(
+          components,
+          shadowConfig,
+          {
+            silent: true,
+          }
+        )
+        shadowConfig = updatedConfig
+
         // This forces a shadowConfig validation early in the process.
         buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
 
@@ -266,6 +277,31 @@ export async function runInit(
     }
   }
 
+  // Prepare the list of components to be added.
+  const components = [
+    // "index" is the default shadcn style.
+    // Why index? Because when style is true, we read style from components.json and fetch that.
+    // i.e new-york from components.json then fetch /styles/new-york/index.
+    // TODO: Fix this so that we can extend any style i.e --style=new-york.
+    ...(options.baseStyle ? ["index"] : []),
+    ...(options.components ?? []),
+  ]
+
+  // Ensure registries are configured for the components we're about to add.
+  const fullConfigForRegistry = await resolveConfigPaths(options.cwd, config)
+  const { config: configWithRegistries } = await ensureRegistriesInConfig(
+    components,
+    fullConfigForRegistry,
+    {
+      silent: true,
+    }
+  )
+
+  // Update config with any new registries found.
+  if (configWithRegistries.registries) {
+    config.registries = configWithRegistries.registries
+  }
+
   const componentSpinner = spinner(`Writing components.json.`).start()
   const targetPath = path.resolve(options.cwd, "components.json")
   const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
@@ -285,14 +321,6 @@ export async function runInit(
 
   // Add components.
   const fullConfig = await resolveConfigPaths(options.cwd, config)
-  const components = [
-    // "index" is the default shadcn style.
-    // Why index? Because when style is true, we read style from components.json and fetch that.
-    // i.e new-york from components.json then fetch /styles/new-york/index.
-    // TODO: Fix this so that we can extend any style i.e --style=new-york.
-    ...(options.baseStyle ? ["index"] : []),
-    ...(options.components ?? []),
-  ]
   await addComponents(components, fullConfig, {
     // Init will always overwrite files.
     overwrite: true,
