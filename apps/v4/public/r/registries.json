@@ -1,3 +1,4 @@
 {
-  "@alpine": "https://alpine-registry.vercel.app/r/{name}.json"
+  "@alpine": "https://alpine-registry.vercel.app/r/{name}.json",
+  "@ai-elements": "https://registry.ai-sdk.dev/{name}.json"
 }
