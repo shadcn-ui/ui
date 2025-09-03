@@ -82,6 +82,7 @@ export const add = new Command()
         const { config: updatedConfig, newRegistries } =
           await ensureRegistriesInConfig(components, initialConfig, {
             silent: options.silent,
+            writeFile: false,
           })
         initialConfig = updatedConfig
         hasNewRegistries = newRegistries.length > 0
@@ -145,6 +146,7 @@ export const add = new Command()
       let { errors, config } = await preFlightAdd(options)
 
       // No components.json file. Prompt the user to run init.
+      let initHasRun = false
       if (errors[ERRORS.MISSING_CONFIG]) {
         const { proceed } = await prompts({
           type: "confirm",
@@ -166,15 +168,18 @@ export const add = new Command()
           force: true,
           defaults: false,
           skipPreflight: false,
-          silent: true,
+          silent: options.silent || !hasNewRegistries,
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
           baseStyle: true,
+          components: options.components,
         })
+        initHasRun = true
       }
 
       let shouldUpdateAppIndex = false
+
       if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
         const { projectPath, template } = await createProject({
           cwd: options.cwd,
@@ -198,12 +203,14 @@ export const add = new Command()
             force: true,
             defaults: false,
             skipPreflight: true,
-            silent: true,
+            silent: !hasNewRegistries && options.silent,
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
             baseStyle: true,
+            components: options.components,
           })
+          initHasRun = true
 
           shouldUpdateAppIndex =
             options.components?.length === 1 &&
@@ -226,7 +233,9 @@ export const add = new Command()
       )
       config = updatedConfig
 
-      await addComponents(options.components, config, options)
+      if (!initHasRun) {
+        await addComponents(options.components, config, options)
+      }
 
       // If we're adding a single component and it's from the v0 registry,
       // let's update the app/page.tsx file to import the component.

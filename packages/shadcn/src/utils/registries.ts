@@ -12,10 +12,12 @@ export async function ensureRegistriesInConfig(
   config: Config,
   options: {
     silent?: boolean
+    writeFile?: boolean
   } = {}
 ) {
   options = {
     silent: false,
+    writeFile: true,
     ...options,
   }
 
@@ -80,21 +82,20 @@ export async function ensureRegistriesInConfig(
     },
   }
 
-  const { resolvedPaths, ...configWithoutResolvedPaths } =
-    newConfigWithRegistries
-
-  const configSpinner = spinner("Updating components.json.", {
-    silent: options.silent,
-  }).start()
-
-  const updatedConfig = rawConfigSchema.parse(configWithoutResolvedPaths)
-  await fs.writeFile(
-    path.resolve(config.resolvedPaths.cwd, "components.json"),
-    JSON.stringify(updatedConfig, null, 2) + "\n",
-    "utf-8"
-  )
-
-  configSpinner.succeed()
+  if (options.writeFile) {
+    const { resolvedPaths, ...configWithoutResolvedPaths } =
+      newConfigWithRegistries
+    const configSpinner = spinner("Updating components.json.", {
+      silent: options.silent,
+    }).start()
+    const updatedConfig = rawConfigSchema.parse(configWithoutResolvedPaths)
+    await fs.writeFile(
+      path.resolve(config.resolvedPaths.cwd, "components.json"),
+      JSON.stringify(updatedConfig, null, 2) + "\n",
+      "utf-8"
+    )
+    configSpinner.succeed()
+  }
 
   return {
     config: newConfigWithRegistries,
