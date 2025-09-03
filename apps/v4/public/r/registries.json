@@ -1,4 +1,12 @@
 {
+  "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
+  "@ai-elements": "https://registry.ai-sdk.dev/{name}.json",
   "@alpine": "https://alpine-registry.vercel.app/r/{name}.json",
-  "@ai-elements": "https://registry.ai-sdk.dev/{name}.json"
+  "@cult-ui": "https://cult-ui.com/r/{name}.json",
+  "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
+  "@magic-ui": "https://magicui.design/r/{name}.json",
+  "@motion-primitives": "https://motion-primitives.com/c/{name}.json",
+  "@originui": "https://originui.com/r/{name}.json",
+  "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
+  "@tailark": "https://tailark.com/r/{name}.json"
 }
