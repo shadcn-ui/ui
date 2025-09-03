@@ -8,7 +8,7 @@ import {
 } from "@/src/registry/api"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
-import { BASE_COLORS } from "@/src/registry/constants"
+import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { rawConfigSchema } from "@/src/schema"
 import { addComponents } from "@/src/utils/add-components"
@@ -314,6 +314,14 @@ export async function runInit(
     const { registries, ...merged } = deepmerge(existingConfig, config)
     config = { ...merged, registries }
   }
+
+  // Make sure to filter out built-in registries.
+  // TODO: fix this in ensureRegistriesInConfig.
+  config.registries = Object.fromEntries(
+    Object.entries(config.registries || {}).filter(
+      ([key]) => !Object.keys(BUILTIN_REGISTRIES).includes(key)
+    )
+  )
 
   // Write components.json.
   await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
