@@ -16,7 +16,6 @@ jobs:
     name: pnpm validate:registries
     permissions:
       contents: read
-      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,37 +51,4 @@ jobs:
         run: pnpm build --filter=shadcn
 
       - name: Validate registries
-        id: validate
-        run: |
-          pnpm --filter=v4 validate:registries
-          echo "validation_passed=$?" >> $GITHUB_ENV
-        continue-on-error: true
-
-      - name: Add label to PR
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const validationPassed = '${{ env.validation_passed }}' === '0';
-            const label = validationPassed ? 'registries: valid' : 'registries: invalid';
-            const oppositeLabel = validationPassed ? 'registries: invalid' : 'registries: valid';
-
-            // Remove opposite label if it exists
-            try {
-              await github.rest.issues.removeLabel({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.issue.number,
-                name: oppositeLabel
-              });
-            } catch (e) {
-              // Label might not exist, that's ok
-            }
-
-            // Add the appropriate label
-            await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              labels: [label]
-            });
+        run: pnpm --filter=v4 validate:registries
