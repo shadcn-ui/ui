@@ -14,6 +14,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --log-level silent --write \"registry/**/*.{ts,tsx,json,mdx}\" --cache",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
+    "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
@@ -86,7 +87,7 @@
     "recharts": "2.15.1",
     "rehype-pretty-code": "^0.14.1",
     "rimraf": "^6.0.1",
-    "shadcn": "3.0.0",
+    "shadcn": "3.2.1",
     "shiki": "^1.10.1",
     "sonner": "^2.0.0",
     "tailwind-merge": "^3.0.1",

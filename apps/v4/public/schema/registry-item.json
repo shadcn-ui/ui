@@ -163,32 +163,7 @@
       "type": "object",
       "description": "CSS definitions to be added to the project's CSS file. Supports at-rules, selectors, nested rules, utilities, layers, and more.",
       "additionalProperties": {
-        "oneOf": [
-          {
-            "type": "string",
-            "description": "Direct CSS string (e.g., 'font-family: sans-serif; line-height: 1.5;')"
-          },
-          {
-            "type": "object",
-            "description": "CSS properties or nested selectors",
-            "additionalProperties": {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "description": "CSS property value (e.g., 'blue', 'var(--color-primary)')"
-                },
-                {
-                  "type": "object",
-                  "description": "Nested selector or rule with properties",
-                  "additionalProperties": {
-                    "type": "string",
-                    "description": "CSS property value for nested rule"
-                  }
-                }
-              ]
-            }
-          }
-        ]
+        "$ref": "#/definitions/cssValue"
       }
     },
     "envVars": {
@@ -219,5 +194,22 @@
       "description": "The name of the registry item to extend. This is used to extend the base shadcn/ui style. Set to none to start fresh. This is available for registry:style items only."
     }
   },
-  "required": ["name", "type"]
+  "required": ["name", "type"],
+  "definitions": {
+    "cssValue": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "CSS property value or direct CSS string"
+        },
+        {
+          "type": "object",
+          "description": "Nested CSS properties, selectors, or at-rules. Empty objects are allowed for at-rules with no body.",
+          "additionalProperties": {
+            "$ref": "#/definitions/cssValue"
+          }
+        }
+      ]
+    }
+  }
 }

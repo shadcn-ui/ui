@@ -107,9 +107,14 @@ async function buildRegistryJsonFile() {
 
 async function buildRegistry() {
   return new Promise((resolve, reject) => {
+    // Use local shadcn copy.
     const process = exec(
-      `pnpm dlx shadcn build registry.json --output ../www/public/r/styles/new-york-v4`
+      `node ../../packages/shadcn/dist/index.js build registry.json --output ../www/public/r/styles/new-york-v4`
     )
+
+    // exec(
+    //   `pnpm dlx shadcn build registry.json --output ../www/public/r/styles/new-york-v4`
+    // )
 
     process.on("exit", (code) => {
       if (code === 0) {

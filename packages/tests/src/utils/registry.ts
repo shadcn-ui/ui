@@ -13,7 +13,18 @@ export async function createRegistryServer(
   }
 ) {
   const server = createServer((request, response) => {
-    const urlWithoutQuery = request.url?.split("?")[0]?.replace(/\.json$/, "")
+    const urlRaw = request.url?.split("?")[0]
+
+    // Handle registries.json endpoint (don't strip .json for this one)
+    if (urlRaw?.endsWith("/registries.json")) {
+      response.writeHead(200, { "Content-Type": "application/json" })
+      // Return empty registry index for tests - we want to test manual configuration.
+      response.end(JSON.stringify({}))
+      return
+    }
+
+    // For other endpoints, strip .json extension
+    const urlWithoutQuery = urlRaw?.replace(/\.json$/, "")
 
     if (urlWithoutQuery?.includes("icons/index")) {
       response.writeHead(200, { "Content-Type": "application/json" })
