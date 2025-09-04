@@ -12,5 +12,7 @@
   "@tailark": "https://tailark.com/r/{name}.json",
   "@react-bits": "https://reactbits.dev/r/{name}.json",
   "@heseui": "https://www.heseui.com/r/{name}.json",
-  "@paceui-ui": "https://ui.paceui.com/r/{name}.json"
+  "@paceui-ui": "https://ui.paceui.com/r/{name}.json",
+  "@basecn": "https://basecn.dev/r/{name}.json",
+  "@ncdai": "https://chanhdai.com/r/{name}.json"
 }
