@@ -18,12 +18,8 @@ export async function createRegistryServer(
     // Handle registries.json endpoint (don't strip .json for this one)
     if (urlRaw?.endsWith("/registries.json")) {
       response.writeHead(200, { "Content-Type": "application/json" })
-      response.end(
-        JSON.stringify({
-          "@one": `http://localhost:${port}${path}/{name}`,
-          "@two": `http://localhost:5555/registry/{name}`,
-        })
-      )
+      // Return empty registry index for tests - we want to test manual configuration.
+      response.end(JSON.stringify({}))
       return
     }
 
