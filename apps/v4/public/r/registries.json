@@ -20,6 +20,7 @@
   "@ncdai": "https://chanhdai.com/r/{name}.json",
   "@8bitcn": "https://8bitcn.com/r/{name}.json",
   "@billingsdk": "https://billingsdk.com/r/{name}.json",
+  "@elements": "https://tryelements.dev/r/{name}.json",
   "@nativeui": "https://nativeui.io/registry/{name}.json",
   "@smoothui": "https://smoothui.dev/r/{name}.json"
 }
