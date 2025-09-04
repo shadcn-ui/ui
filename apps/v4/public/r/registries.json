@@ -15,5 +15,6 @@
   "@paceui-ui": "https://ui.paceui.com/r/{name}.json",
   "@basecn": "https://basecn.dev/r/{name}.json",
   "@ncdai": "https://chanhdai.com/r/{name}.json",
-  "@8bitcn": "https://8bitcn.com/r/{name}.json"
+  "@8bitcn": "https://8bitcn.com/r/{name}.json",
+  "@evilcharts": "https://evilcharts.com/chart/{name}.json"
 }
