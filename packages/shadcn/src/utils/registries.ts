@@ -1,7 +1,7 @@
 import path from "path"
 import { fetchRegistries } from "@/src/registry/api"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
-import { parseRegistryAndItemFromString } from "@/src/registry/parser"
+import { resolveRegistryNamespaces } from "@/src/registry/namespaces"
 import { rawConfigSchema } from "@/src/registry/schema"
 import { Config } from "@/src/utils/get-config"
 import { spinner } from "@/src/utils/spinner"
@@ -21,16 +21,10 @@ export async function ensureRegistriesInConfig(
     ...options,
   }
 
-  const registryNames = new Set<string>()
+  // Use resolveRegistryNamespaces to discover all namespaces including dependencies.
+  const registryNames = await resolveRegistryNamespaces(components, config)
 
-  for (const component of components) {
-    const { registry } = parseRegistryAndItemFromString(component)
-    if (registry) {
-      registryNames.add(registry)
-    }
-  }
-
-  const missingRegistries = Array.from(registryNames).filter(
+  const missingRegistries = registryNames.filter(
     (registry) =>
       !config.registries?.[registry] &&
       !Object.keys(BUILTIN_REGISTRIES).includes(registry)
