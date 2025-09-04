@@ -59,6 +59,14 @@ export function Mail({
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed)
   const [mail] = useMail()
 
+  const [searchQuery, setSearchQuery] = React.useState("")
+  const filteredMails = mails.filter(
+    (item) =>
+      item.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.text.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+
+
   return (
     <TooltipProvider delayDuration={0}>
       <ResizablePanelGroup
@@ -205,16 +213,17 @@ export function Mail({
               <form>
                 <div className="relative">
                   <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Search" className="pl-8" />
+                  <Input placeholder="Search" className="pl-8"  value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}/>
                 </div>
               </form>
             </div>
             <TabsContent value="all" className="m-0">
-              <MailList items={mails} />
-            </TabsContent>
-            <TabsContent value="unread" className="m-0">
-              <MailList items={mails.filter((item) => !item.read)} />
-            </TabsContent>
+                <MailList items={filteredMails} />
+              </TabsContent>
+              <TabsContent value="unread" className="m-0">
+                <MailList items={filteredMails.filter((item) => !item.read)} />
+              </TabsContent>
           </Tabs>
         </ResizablePanel>
         <ResizableHandle withHandle />
