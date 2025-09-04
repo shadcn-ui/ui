@@ -15,5 +15,6 @@
   "@paceui-ui": "https://ui.paceui.com/r/{name}.json",
   "@basecn": "https://basecn.dev/r/{name}.json",
   "@ncdai": "https://chanhdai.com/r/{name}.json",
-  "@8bitcn": "https://8bitcn.com/r/{name}.json"
+  "@8bitcn": "https://8bitcn.com/r/{name}.json",
+  "@billingsdk": "https://billingsdk.com/r/{name}.json"
 }
