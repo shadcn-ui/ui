@@ -29,3 +29,7 @@ To use the components in your app, import them from the `ui` package.
 ```tsx
 import { Button } from "@workspace/ui/components/button"
 ```
+
+## Using Docker
+
+If you want to use Docker for development, please refer to the [Docker documentation](https://ui.shadcn.com/docs/monorepo) for guidance on how to set up your Docker environment.
