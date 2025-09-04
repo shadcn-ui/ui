@@ -24,7 +24,7 @@ export default function Calendar26() {
   )
 
   return (
-    <div className="flex w-full max-w-64 min-w-0 flex-col gap-6">
+    <div className="flex w-full min-w-0 max-w-64 flex-col gap-6">
       <div className="flex gap-4">
         <div className="flex flex-1 flex-col gap-3">
           <Label htmlFor="date-from" className="px-1">
@@ -72,7 +72,7 @@ export default function Calendar26() {
             id="time-from"
             step="1"
             defaultValue="10:30:00"
-            className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+            className="appearance-none bg-background [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
           />
         </div>
       </div>
@@ -124,7 +124,7 @@ export default function Calendar26() {
             id="time-to"
             step="1"
             defaultValue="12:30:00"
-            className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+            className="appearance-none bg-background [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
           />
         </div>
       </div>

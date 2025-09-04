@@ -11,6 +11,7 @@ import {
 import { Button } from "@/registry/new-york/ui/button"
 
 import "@/styles/mdx.css"
+
 import Link from "next/link"
 
 const title = "Building Blocks for the Web"

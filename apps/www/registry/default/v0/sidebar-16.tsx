@@ -267,8 +267,8 @@ export default function Page() {
         } as React.CSSProperties
       }
     >
-      <header className="sticky top-0 bg-sidebar flex h-[--header-height] shrink-0 items-center gap-2 border-b px-4 isolate z-20">
-        <div className="flex items-center gap-2 w-full">
+      <header className="sticky top-0 isolate z-20 flex h-[--header-height] shrink-0 items-center gap-2 border-b bg-sidebar px-4">
+        <div className="flex w-full items-center gap-2">
           <Button
             className="hidden md:flex"
             variant="ghost"
@@ -357,7 +357,7 @@ export default function Page() {
                     Components
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {components.map((component) => (
                         <li>
                           <NavigationMenuLink key={component.title} asChild>
@@ -612,9 +612,9 @@ export default function Page() {
         </Sidebar>
 
         <SidebarInset>
-          <header className=" flex shrink-0 items-center gap-2 border-b py-2">
+          <header className="flex shrink-0 items-center gap-2 border-b py-2">
             <div className="flex items-center gap-2 px-4 py-2">
-              <div className="flex md:hidden items-center gap-2">
+              <div className="flex items-center gap-2 md:hidden">
                 <SidebarTrigger />
                 <Separator orientation="vertical" className="mr-2 h-4" />
               </div>
