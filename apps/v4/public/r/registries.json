@@ -11,5 +11,6 @@
   "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
   "@tailark": "https://tailark.com/r/{name}.json",
   "@react-bits": "https://reactbits.dev/r/{name}.json",
-  "@heseui": "https://www.heseui.com/r/{name}.json"
+  "@heseui": "https://www.heseui.com/r/{name}.json",
+  "@paceui-ui": "https://www.ui.paceui.com/r/{name}.json"
 }
