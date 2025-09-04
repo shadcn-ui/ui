@@ -2,13 +2,12 @@
 
 set -e # bail on errors
 GLOB=$1
-IS_CI="${CI:-false}"
 BASE=$(pwd)
 COMMIT_MESSAGE=$(git log -1 --pretty=%B)
 
 for folder in $GLOB; do
   [ -d "$folder" ] || continue
-  cd $BASE
+  cd "$BASE"
 
   if [ -n "$(git status --porcelain)" ]; then
     git add .
@@ -23,10 +22,10 @@ for folder in $GLOB; do
   # clone, delete files in the clone, and copy (new) files over
   # this handles file deletions, additions, and changes seamlessly
   # note: redirect output to dev/null to avoid any possibility of leaking token
-  git clone --quiet --depth 1 git@github.com:shadcn/${NAME}.git $CLONE_DIR > /dev/null
-  cd $CLONE_DIR
+  git clone --quiet --depth 1 git@github.com:shadcn/${NAME}.git "$CLONE_DIR" > /dev/null
+  cd "$CLONE_DIR"
   find . | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf # delete all files (to handle deletions in monorepo)
-  cp -r $BASE/$folder/. .
+  cp -r "$BASE/$folder/." .
 
   if [ -n "$(git status --porcelain)" ]; then
     git add .
@@ -34,6 +33,6 @@ for folder in $GLOB; do
     git push origin main
   fi
 
-  cd $BASE
-  rm -rf $CLONE_DIR
+  cd "$BASE"
+  rm -rf "$CLONE_DIR"
 done
