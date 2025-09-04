@@ -1,7 +1,10 @@
 {
   "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
   "@ai-elements": "https://registry.ai-sdk.dev/{name}.json",
+  "@alexcarpenter": "https://ui.alexcarpenter.me/r/{name}.json",
   "@alpine": "https://alpine-registry.vercel.app/r/{name}.json",
+  "@blocks": "https://blocks.so/r/{name}.json",
+  "@clerk": "https://clerk.com/r/{name}.json",
   "@cult-ui": "https://cult-ui.com/r/{name}.json",
   "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
   "@kokonutui": "https://kokonutui.com/r/{name}.json",
@@ -16,5 +19,8 @@
   "@basecn": "https://basecn.dev/r/{name}.json",
   "@ncdai": "https://chanhdai.com/r/{name}.json",
   "@8bitcn": "https://8bitcn.com/r/{name}.json",
-  "@billingsdk": "https://billingsdk.com/r/{name}.json"
+  "@billingsdk": "https://billingsdk.com/r/{name}.json",
+  "@elements": "https://tryelements.dev/r/{name}.json",
+  "@nativeui": "https://nativeui.io/registry/{name}.json",
+  "@smoothui": "https://smoothui.dev/r/{name}.json"
 }
