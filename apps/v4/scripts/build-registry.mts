@@ -61,7 +61,7 @@ export const Index: Record<string, any> = {`
   index += `
   }`
 
-  console.log(`#️⃣  ${Object.keys(registry.items).length} components found`)
+  console.log(`#️⃣  ${Object.keys(registry.items).length} items found`)
 
   // Write style index.
   rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"))
@@ -93,13 +93,28 @@ async function buildRegistryJsonFile() {
     path.join(process.cwd(), `registry.json`),
     JSON.stringify(fixedRegistry, null, 2)
   )
+
+  // 3. Copy the registry.json to the www/public/r/styles/new-york-v4 directory.
+  await fs.cp(
+    path.join(process.cwd(), "registry.json"),
+    path.join(
+      process.cwd(),
+      "../www/public/r/styles/new-york-v4/registry.json"
+    ),
+    { recursive: true }
+  )
 }
 
 async function buildRegistry() {
   return new Promise((resolve, reject) => {
+    // Use local shadcn copy.
     const process = exec(
-      `pnpm dlx shadcn build registry.json --output ../www/public/r/styles/new-york-v4`
+      `node ../../packages/shadcn/dist/index.js build registry.json --output ../www/public/r/styles/new-york-v4`
     )
+
+    // exec(
+    //   `pnpm dlx shadcn build registry.json --output ../www/public/r/styles/new-york-v4`
+    // )
 
     process.on("exit", (code) => {
       if (code === 0) {

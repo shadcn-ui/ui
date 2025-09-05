@@ -10,6 +10,7 @@ import { findNeighbour } from "fumadocs-core/server"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
+import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
@@ -102,12 +103,17 @@ export default async function Page(props: {
                 <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
                   {doc.title}
                 </h1>
-                <div className="flex items-center gap-2 pt-1.5">
+                <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
+                  <DocsCopyPage
+                    // @ts-expect-error - revisit fumadocs types.
+                    page={doc.content}
+                    url={absoluteUrl(page.url)}
+                  />
                   {neighbours.previous && (
                     <Button
                       variant="secondary"
                       size="icon"
-                      className="extend-touch-target size-8 shadow-none md:size-7"
+                      className="extend-touch-target ml-auto size-8 shadow-none md:size-7"
                       asChild
                     >
                       <Link href={neighbours.previous.url}>
@@ -160,7 +166,7 @@ export default async function Page(props: {
             <MDX components={mdxComponents} />
           </div>
         </div>
-        <div className="mx-auto flex h-16 w-full max-w-2xl items-center gap-2 px-4 md:px-0">
+        <div className="mx-auto hidden h-16 w-full max-w-2xl items-center gap-2 px-4 sm:flex md:px-0">
           {neighbours.previous && (
             <Button
               variant="secondary"
@@ -187,7 +193,7 @@ export default async function Page(props: {
           )}
         </div>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
         {/* @ts-expect-error - revisit fumadocs types. */}
         {doc.toc?.length ? (
