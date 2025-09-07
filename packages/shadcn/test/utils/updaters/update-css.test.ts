@@ -717,6 +717,125 @@ describe("transformCss", () => {
     `)
   })
 
+  test("should not duplicate identical @apply statements", async () => {
+    const input = `@import "tailwindcss";
+
+@layer base {
+  * {
+    @apply border-border outline-ring/70;
+  }
+  h1 {
+    @apply text-2xl font-bold;
+    color: red;
+  }
+}`
+
+    const result = await transformCss(input, {
+      "@layer base": {
+        "*": {
+          "@apply border-border outline-ring/70": {},
+        },
+        h1: {
+          "@apply text-2xl font-bold": {},
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/70;
+        }
+        h1 {
+          @apply text-2xl font-bold;
+          color: red;
+        }
+      }"
+    `)
+  })
+
+  test("should handle @apply within @utility directives", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@utility underline-interact": {
+        "@apply underline underline-offset-2 hover:decoration-transparent": {},
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @utility underline-interact {
+        @apply underline underline-offset-2 hover:decoration-transparent;
+      }"
+    `)
+  })
+
+  test("should not duplicate identical @apply statements within @utility directives", async () => {
+    const input = `@import "tailwindcss";
+
+@utility underline-interact {
+  @apply underline underline-offset-2 hover:decoration-transparent;
+}`
+
+    const result = await transformCss(input, {
+      "@utility underline-interact": {
+        "@apply underline underline-offset-2 hover:decoration-transparent": {},
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @utility underline-interact {
+        @apply underline underline-offset-2 hover:decoration-transparent;
+      }"
+    `)
+  })
+
+  test("should handle @apply within @variant directives", async () => {
+    const input = `@import "tailwindcss";`
+
+    const result = await transformCss(input, {
+      "@variant dark": {
+        "@apply bg-background text-foreground": {},
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @variant dark {
+        @apply bg-background text-foreground;
+      }"
+    `)
+  })
+
+  test("should not duplicate identical @apply statements within @utility directives", async () => {
+    const input = `@import "tailwindcss";
+
+@variant dark {
+  @apply bg-background text-foreground;
+}`
+
+    const result = await transformCss(input, {
+      "@variant dark": {
+        "@apply bg-background text-foreground": {},
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @variant dark {
+        @apply bg-background text-foreground;
+      }"
+    `)
+  })
+
   test("should handle at-rules with empty body", async () => {
     const input = ``
 
