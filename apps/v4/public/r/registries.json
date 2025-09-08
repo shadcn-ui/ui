@@ -3,6 +3,7 @@
   "@ai-elements": "https://registry.ai-sdk.dev/{name}.json",
   "@alexcarpenter": "https://ui.alexcarpenter.me/r/{name}.json",
   "@alpine": "https://alpine-registry.vercel.app/r/{name}.json",
+  "@animate-ui": "https://animate-ui.com/r/{name}.json",
   "@blocks": "https://blocks.so/r/{name}.json",
   "@clerk": "https://clerk.com/r/{name}.json",
   "@cult-ui": "https://cult-ui.com/r/{name}.json",
@@ -23,5 +24,7 @@
   "@elements": "https://tryelements.dev/r/{name}.json",
   "@nativeui": "https://nativeui.io/registry/{name}.json",
   "@smoothui": "https://smoothui.dev/r/{name}.json",
-  "@formcn": "https://formcn.dev/r/{name}.json"
+  "@formcn": "https://formcn.dev/r/{name}.json",
+  "@limeplay": "https://limeplay.winoffrg.dev/r/{name}.json",
+  "@skiper-ui": "https://skiper-ui.com/registry/{name}.json"
 }
