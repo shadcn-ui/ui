@@ -23,5 +23,5 @@
   "@elements": "https://tryelements.dev/r/{name}.json",
   "@nativeui": "https://nativeui.io/registry/{name}.json",
   "@smoothui": "https://smoothui.dev/r/{name}.json",
-  "@skiper-ui": "https://skiper-ui.com//registry/{name}.json"
+  "@skiper-ui": "https://skiper-ui.com/registry/{name}.json"
 }
