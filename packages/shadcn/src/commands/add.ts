@@ -1,35 +1,24 @@
 import path from "path"
 import { runInit } from "@/src/commands/init"
 import { preFlightAdd } from "@/src/preflights/preflight-add"
-import { getRegistryIndex, getRegistryItem, isUrl } from "@/src/registry/api"
-import { registryItemTypeSchema } from "@/src/registry/schema"
+import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
+import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
+import { clearRegistryContext } from "@/src/registry/context"
+import { isUniversalRegistryItem } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
+import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
-import { getConfig } from "@/src/utils/get-config"
+import { createConfig, getConfig } from "@/src/utils/get-config"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
-
-const DEPRECATED_COMPONENTS = [
-  {
-    name: "toast",
-    deprecatedBy: "sonner",
-    message:
-      "The toast component is deprecated. Use the sonner component instead.",
-  },
-  {
-    name: "toaster",
-    deprecatedBy: "sonner",
-    message:
-      "The toaster component is deprecated. Use the sonner component instead.",
-  },
-]
 
 export const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -46,10 +35,7 @@ export const addOptionsSchema = z.object({
 export const add = new Command()
   .name("add")
   .description("add a component to your project")
-  .argument(
-    "[components...]",
-    "the components to add or a url to the component."
-  )
+  .argument("[components...]", "names, url or local path to component")
   .option("-y, --yes", "skip confirmation prompt.", false)
   .option("-o, --overwrite", "overwrite existing files.", false)
   .option(
@@ -79,33 +65,61 @@ export const add = new Command()
         ...opts,
       })
 
-      let itemType: z.infer<typeof registryItemTypeSchema> | undefined
+      await loadEnvFiles(options.cwd)
 
-      if (components.length > 0 && isUrl(components[0])) {
-        const item = await getRegistryItem(components[0], "")
-        itemType = item?.type
+      let initialConfig = await getConfig(options.cwd)
+      if (!initialConfig) {
+        initialConfig = createConfig({
+          style: "new-york",
+          resolvedPaths: {
+            cwd: options.cwd,
+          },
+        })
       }
 
-      if (
-        !options.yes &&
-        (itemType === "registry:style" || itemType === "registry:theme")
-      ) {
-        logger.break()
-        const { confirm } = await prompts({
-          type: "confirm",
-          name: "confirm",
-          message: highlighter.warn(
-            `You are about to install a new ${itemType.replace(
-              "registry:",
-              ""
-            )}. \nExisting CSS variables and components will be overwritten. Continue?`
-          ),
+      let hasNewRegistries = false
+      if (components.length > 0) {
+        const { config: updatedConfig, newRegistries } =
+          await ensureRegistriesInConfig(components, initialConfig, {
+            silent: options.silent,
+            writeFile: false,
+          })
+        initialConfig = updatedConfig
+        hasNewRegistries = newRegistries.length > 0
+      }
+
+      if (components.length > 0) {
+        const [registryItem] = await getRegistryItems([components[0]], {
+          config: initialConfig,
         })
-        if (!confirm) {
+        const itemType = registryItem?.type
+
+        if (isUniversalRegistryItem(registryItem)) {
+          await addComponents(components, initialConfig, options)
+          return
+        }
+
+        if (
+          !options.yes &&
+          (itemType === "registry:style" || itemType === "registry:theme")
+        ) {
           logger.break()
-          logger.log(`Installation cancelled.`)
-          logger.break()
-          process.exit(1)
+          const { confirm } = await prompts({
+            type: "confirm",
+            name: "confirm",
+            message: highlighter.warn(
+              `You are about to install a new ${itemType.replace(
+                "registry:",
+                ""
+              )}. \nExisting CSS variables and components will be overwritten. Continue?`
+            ),
+          })
+          if (!confirm) {
+            logger.break()
+            logger.log(`Installation cancelled.`)
+            logger.break()
+            process.exit(1)
+          }
         }
       }
 
@@ -132,6 +146,7 @@ export const add = new Command()
       let { errors, config } = await preFlightAdd(options)
 
       // No components.json file. Prompt the user to run init.
+      let initHasRun = false
       if (errors[ERRORS.MISSING_CONFIG]) {
         const { proceed } = await prompts({
           type: "confirm",
@@ -153,15 +168,18 @@ export const add = new Command()
           force: true,
           defaults: false,
           skipPreflight: false,
-          silent: true,
+          silent: options.silent || !hasNewRegistries,
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
-          style: "index",
+          baseStyle: true,
+          components: options.components,
         })
+        initHasRun = true
       }
 
       let shouldUpdateAppIndex = false
+
       if (errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
         const { projectPath, template } = await createProject({
           cwd: options.cwd,
@@ -185,12 +203,14 @@ export const add = new Command()
             force: true,
             defaults: false,
             skipPreflight: true,
-            silent: true,
+            silent: !hasNewRegistries && options.silent,
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
-            style: "index",
+            baseStyle: true,
+            components: options.components,
           })
+          initHasRun = true
 
           shouldUpdateAppIndex =
             options.components?.length === 1 &&
@@ -204,7 +224,18 @@ export const add = new Command()
         )
       }
 
-      await addComponents(options.components, config, options)
+      const { config: updatedConfig } = await ensureRegistriesInConfig(
+        options.components,
+        config,
+        {
+          silent: options.silent || hasNewRegistries,
+        }
+      )
+      config = updatedConfig
+
+      if (!initHasRun) {
+        await addComponents(options.components, config, options)
+      }
 
       // If we're adding a single component and it's from the v0 registry,
       // let's update the app/page.tsx file to import the component.
@@ -214,13 +245,15 @@ export const add = new Command()
     } catch (error) {
       logger.break()
       handleError(error)
+    } finally {
+      clearRegistryContext()
     }
   })
 
 async function promptForRegistryComponents(
   options: z.infer<typeof addOptionsSchema>
 ) {
-  const registryIndex = await getRegistryIndex()
+  const registryIndex = await getShadcnRegistryIndex()
   if (!registryIndex) {
     logger.break()
     handleError(new Error("Failed to fetch registry index."))
