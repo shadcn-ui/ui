@@ -1,5 +1,17 @@
 # @shadcn/ui
 
+## 3.2.1
+
+### Patch Changes
+
+- [#8147](https://github.com/shadcn-ui/ui/pull/8147) [`e5402f9a20f070e92e7384c1ae08e6bfb79cd7a9`](https://github.com/shadcn-ui/ui/commit/e5402f9a20f070e92e7384c1ae08e6bfb79cd7a9) Thanks [@shadcn](https://github.com/shadcn)! - fix recursive namespacing
+
+## 3.2.0
+
+### Minor Changes
+
+- [#8128](https://github.com/shadcn-ui/ui/pull/8128) [`9c5eb0d20f0b75b28dccee219bf74fc9cd2019c6`](https://github.com/shadcn-ui/ui/commit/9c5eb0d20f0b75b28dccee219bf74fc9cd2019c6) Thanks [@shadcn](https://github.com/shadcn)! - add support for registries index
+
 ## 3.1.0
 
 ### Minor Changes

@@ -426,7 +426,16 @@ describe("resolveRegistryItems with URL dependencies", () => {
       const mockConfig = {
         style: "new-york",
         tailwind: { baseColor: "neutral", cssVariables: true },
-        resolvedPaths: { cwd: process.cwd() },
+        resolvedPaths: {
+          cwd: process.cwd(),
+          tailwindConfig: "./tailwind.config.js",
+          tailwindCss: "./globals.css",
+          utils: "./lib/utils",
+          components: "./components",
+          lib: "./lib",
+          hooks: "./hooks",
+          ui: "./components/ui",
+        },
       } as any
 
       const result = await resolveRegistryTree([tempFile], mockConfig)
@@ -489,7 +498,16 @@ describe("resolveRegistryItems with URL dependencies", () => {
       const mockConfig = {
         style: "new-york",
         tailwind: { baseColor: "neutral", cssVariables: true },
-        resolvedPaths: { cwd: process.cwd() },
+        resolvedPaths: {
+          cwd: process.cwd(),
+          tailwindConfig: "./tailwind.config.js",
+          tailwindCss: "./globals.css",
+          utils: "./lib/utils",
+          components: "./components",
+          lib: "./lib",
+          hooks: "./hooks",
+          ui: "./components/ui",
+        },
         registries: {
           "@custom": {
             url: "https://custom-registry.com/{name}.json",
