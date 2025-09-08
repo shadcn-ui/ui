@@ -26,5 +26,6 @@
   "@smoothui": "https://smoothui.dev/r/{name}.json",
   "@formcn": "https://formcn.dev/r/{name}.json",
   "@limeplay": "https://limeplay.winoffrg.dev/r/{name}.json",
-  "@skiper-ui": "https://skiper-ui.com/registry/{name}.json"
+  "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
+  "@shadcn-editor": "https://shadcn-editor.vercel.app/r/{name}.json"
 }
