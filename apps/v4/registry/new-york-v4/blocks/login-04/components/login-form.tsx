@@ -1,6 +1,12 @@
 import { cn } from "@/registry/new-york-v4/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Card, CardContent } from "@/registry/new-york-v4/ui/card"
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldSeparator,
+} from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
 import { Label } from "@/registry/new-york-v4/ui/label"
 
@@ -13,14 +19,14 @@ export function LoginForm({
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
           <form className="p-6 md:p-8">
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col items-center text-center">
+            <FieldGroup>
+              <Field className="items-center text-center">
                 <h1 className="text-2xl font-bold">Welcome back</h1>
                 <p className="text-muted-foreground text-balance">
                   Login to your Acme Inc account
                 </p>
-              </div>
-              <div className="grid gap-3">
+              </Field>
+              <Field>
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
@@ -28,8 +34,8 @@ export function LoginForm({
                   placeholder="m@example.com"
                   required
                 />
-              </div>
-              <div className="grid gap-3">
+              </Field>
+              <Field>
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
                   <a
@@ -40,16 +46,14 @@ export function LoginForm({
                   </a>
                 </div>
                 <Input id="password" type="password" required />
-              </div>
-              <Button type="submit" className="w-full">
-                Login
-              </Button>
-              <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
-                <span className="bg-card text-muted-foreground relative z-10 px-2">
-                  Or continue with
-                </span>
-              </div>
-              <div className="grid grid-cols-3 gap-4">
+              </Field>
+              <Field>
+                <Button type="submit" className="w-full">
+                  Login
+                </Button>
+              </Field>
+              <FieldSeparator>Or continue with</FieldSeparator>
+              <Field className="grid grid-cols-3 gap-4">
                 <Button variant="outline" type="button" className="w-full">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path
@@ -77,14 +81,14 @@ export function LoginForm({
                   </svg>
                   <span className="sr-only">Login with Meta</span>
                 </Button>
-              </div>
-              <div className="text-center text-sm">
+              </Field>
+              <FieldDescription className="text-center">
                 Don&apos;t have an account?{" "}
                 <a href="#" className="underline underline-offset-4">
                   Sign up
                 </a>
-              </div>
-            </div>
+              </FieldDescription>
+            </FieldGroup>
           </form>
           <div className="bg-muted relative hidden md:block">
             <img
@@ -95,10 +99,10 @@ export function LoginForm({
           </div>
         </CardContent>
       </Card>
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+      <FieldDescription className="text-center">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
         and <a href="#">Privacy Policy</a>.
-      </div>
+      </FieldDescription>
     </div>
   )
 }

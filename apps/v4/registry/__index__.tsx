@@ -368,6 +368,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "field": {
+    name: "field",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/new-york-v4/ui/field.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/field.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "form": {
     name: "form",
     description: "",
@@ -1428,7 +1446,7 @@ export const Index: Record<string, any> = {
     name: "login-01",
     description: "A simple login form.",
     type: "registry:block",
-    registryDependencies: ["button","card","input","label"],
+    registryDependencies: ["button","card","input","label","field"],
     files: [{
       path: "registry/new-york-v4/blocks/login-01/page.tsx",
       type: "registry:page",
@@ -1450,7 +1468,7 @@ export const Index: Record<string, any> = {
     name: "login-02",
     description: "A two column login page with a cover image.",
     type: "registry:block",
-    registryDependencies: ["button","card","input","label"],
+    registryDependencies: ["button","input","label","field"],
     files: [{
       path: "registry/new-york-v4/blocks/login-02/page.tsx",
       type: "registry:page",
@@ -1472,7 +1490,7 @@ export const Index: Record<string, any> = {
     name: "login-03",
     description: "A login page with a muted background color.",
     type: "registry:block",
-    registryDependencies: ["button","card","input","label"],
+    registryDependencies: ["button","card","input","label","field"],
     files: [{
       path: "registry/new-york-v4/blocks/login-03/page.tsx",
       type: "registry:page",
@@ -1494,7 +1512,7 @@ export const Index: Record<string, any> = {
     name: "login-04",
     description: "A login page with form and image.",
     type: "registry:block",
-    registryDependencies: ["button","card","input","label"],
+    registryDependencies: ["button","card","input","label","field"],
     files: [{
       path: "registry/new-york-v4/blocks/login-04/page.tsx",
       type: "registry:page",
@@ -1516,7 +1534,7 @@ export const Index: Record<string, any> = {
     name: "login-05",
     description: "A simple email-only login page.",
     type: "registry:block",
-    registryDependencies: ["button","card","input","label"],
+    registryDependencies: ["button","input","label","field"],
     files: [{
       path: "registry/new-york-v4/blocks/login-05/page.tsx",
       type: "registry:page",
@@ -2109,6 +2127,226 @@ export const Index: Record<string, any> = {
     }),
     categories: ["calendar","date"],
     meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+  },
+  "signup-01": {
+    name: "signup-01",
+    description: "A simple signup form.",
+    type: "registry:block",
+    registryDependencies: ["button","card","input","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/signup-01/page.tsx",
+      type: "registry:page",
+      target: "app/signup/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/signup-01/components/signup-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/signup-01/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","signup"],
+    meta: undefined,
+  },
+  "signup-02": {
+    name: "signup-02",
+    description: "A two column signup page with a cover image.",
+    type: "registry:block",
+    registryDependencies: ["button","input","label","field"],
+    files: [{
+      path: "registry/new-york-v4/blocks/signup-02/page.tsx",
+      type: "registry:page",
+      target: "app/signup/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/signup-02/components/signup-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/signup-02/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","signup"],
+    meta: undefined,
+  },
+  "signup-03": {
+    name: "signup-03",
+    description: "A signup page with a muted background color.",
+    type: "registry:block",
+    registryDependencies: ["button","card","input","label","field"],
+    files: [{
+      path: "registry/new-york-v4/blocks/signup-03/page.tsx",
+      type: "registry:page",
+      target: "app/signup/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/signup-03/components/signup-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/signup-03/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","signup"],
+    meta: undefined,
+  },
+  "signup-04": {
+    name: "signup-04",
+    description: "A signup page with form and image.",
+    type: "registry:block",
+    registryDependencies: ["button","card","input","label","field"],
+    files: [{
+      path: "registry/new-york-v4/blocks/signup-04/page.tsx",
+      type: "registry:page",
+      target: "app/signup/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/signup-04/components/signup-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/signup-04/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","signup"],
+    meta: undefined,
+  },
+  "signup-05": {
+    name: "signup-05",
+    description: "A simple signup form with social providers.",
+    type: "registry:block",
+    registryDependencies: ["button","input","label"],
+    files: [{
+      path: "registry/new-york-v4/blocks/signup-05/page.tsx",
+      type: "registry:page",
+      target: "app/signup/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/signup-05/components/signup-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/signup-05/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","signup"],
+    meta: undefined,
+  },
+  "otp-01": {
+    name: "otp-01",
+    description: "A simple OTP verification form.",
+    type: "registry:block",
+    registryDependencies: ["button","card","input-otp","label","field"],
+    files: [{
+      path: "registry/new-york-v4/blocks/otp-01/page.tsx",
+      type: "registry:page",
+      target: "app/otp/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/otp-01/components/otp-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/otp-01/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","otp"],
+    meta: undefined,
+  },
+  "otp-02": {
+    name: "otp-02",
+    description: "A two column OTP page with a cover image.",
+    type: "registry:block",
+    registryDependencies: ["button","input-otp","label","field"],
+    files: [{
+      path: "registry/new-york-v4/blocks/otp-02/page.tsx",
+      type: "registry:page",
+      target: "app/otp/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/otp-02/components/otp-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/otp-02/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","otp"],
+    meta: undefined,
+  },
+  "otp-03": {
+    name: "otp-03",
+    description: "An OTP page with a muted background color.",
+    type: "registry:block",
+    registryDependencies: ["button","card","input-otp","label","field"],
+    files: [{
+      path: "registry/new-york-v4/blocks/otp-03/page.tsx",
+      type: "registry:page",
+      target: "app/otp/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/otp-03/components/otp-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/otp-03/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","otp"],
+    meta: undefined,
+  },
+  "otp-04": {
+    name: "otp-04",
+    description: "An OTP page with form and image.",
+    type: "registry:block",
+    registryDependencies: ["button","card","input-otp","label","field"],
+    files: [{
+      path: "registry/new-york-v4/blocks/otp-04/page.tsx",
+      type: "registry:page",
+      target: "app/otp/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/otp-04/components/otp-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/otp-04/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","otp"],
+    meta: undefined,
+  },
+  "otp-05": {
+    name: "otp-05",
+    description: "A simple OTP form with social providers.",
+    type: "registry:block",
+    registryDependencies: ["button","input-otp","label","field"],
+    files: [{
+      path: "registry/new-york-v4/blocks/otp-05/page.tsx",
+      type: "registry:page",
+      target: "app/otp/page.tsx"
+    },{
+      path: "registry/new-york-v4/blocks/otp-05/components/otp-form.tsx",
+      type: "registry:component",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/blocks/otp-05/page.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["authentication","otp"],
+    meta: undefined,
   },
   "chart-area-axes": {
     name: "chart-area-axes",

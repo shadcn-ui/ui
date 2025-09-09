@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { cookies } from "next/headers"
 
+import { ModeSwitcher } from "@/components/mode-switcher"
 import { ThemeSelector } from "@/components/theme-selector"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import {
@@ -31,6 +32,7 @@ import { DatePickerDemo } from "@/app/(internal)/sink/components/date-picker-dem
 import { DialogDemo } from "@/app/(internal)/sink/components/dialog-demo"
 import { DrawerDemo } from "@/app/(internal)/sink/components/drawer-demo"
 import { DropdownMenuDemo } from "@/app/(internal)/sink/components/dropdown-menu-demo"
+import { FieldDemo } from "@/app/(internal)/sink/components/field-demo"
 import { FormDemo } from "@/app/(internal)/sink/components/form-demo"
 import { HoverCardDemo } from "@/app/(internal)/sink/components/hover-card-demo"
 import { InputDemo } from "@/app/(internal)/sink/components/input-demo"
@@ -78,7 +80,10 @@ export default async function SinkPage() {
           <SidebarTrigger />
           <Separator orientation="vertical" className="mr-4 ml-2 !h-4" />
           <h1 className="text-base font-medium">Kitchen Sink</h1>
-          <ThemeSelector className="ml-auto" />
+          <div className="ml-auto flex items-center gap-2">
+            <ModeSwitcher />
+            <ThemeSelector />
+          </div>
         </header>
         <div className="@container grid flex-1 gap-4 p-4">
           <ComponentWrapper name="accordion">
@@ -143,6 +148,9 @@ export default async function SinkPage() {
           </ComponentWrapper>
           <ComponentWrapper name="dropdown-menu">
             <DropdownMenuDemo />
+          </ComponentWrapper>
+          <ComponentWrapper name="field">
+            <FieldDemo />
           </ComponentWrapper>
           <ComponentWrapper name="form">
             <FormDemo />

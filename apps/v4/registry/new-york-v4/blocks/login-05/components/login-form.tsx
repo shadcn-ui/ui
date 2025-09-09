@@ -2,6 +2,12 @@ import { GalleryVerticalEnd } from "lucide-react"
 
 import { cn } from "@/registry/new-york-v4/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldSeparator,
+} from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
 import { Label } from "@/registry/new-york-v4/ui/label"
 
@@ -12,8 +18,8 @@ export function LoginForm({
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <form>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col items-center gap-2">
+        <FieldGroup>
+          <Field className="text-center">
             <a
               href="#"
               className="flex flex-col items-center gap-2 font-medium"
@@ -24,33 +30,26 @@ export function LoginForm({
               <span className="sr-only">Acme Inc.</span>
             </a>
             <h1 className="text-xl font-bold">Welcome to Acme Inc.</h1>
-            <div className="text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <a href="#" className="underline underline-offset-4">
-                Sign up
-              </a>
-            </div>
-          </div>
-          <div className="flex flex-col gap-6">
-            <div className="grid gap-3">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
-            </div>
+            <FieldDescription>
+              Don&apos;t have an account? <a href="#">Sign up</a>
+            </FieldDescription>
+          </Field>
+          <Field>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="m@example.com"
+              required
+            />
+          </Field>
+          <Field>
             <Button type="submit" className="w-full">
               Login
             </Button>
-          </div>
-          <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
-            <span className="bg-background text-muted-foreground relative z-10 px-2">
-              Or
-            </span>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          </Field>
+          <FieldSeparator>Or</FieldSeparator>
+          <Field className="grid gap-4 sm:grid-cols-2">
             <Button variant="outline" type="button" className="w-full">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
@@ -69,13 +68,13 @@ export function LoginForm({
               </svg>
               Continue with Google
             </Button>
-          </div>
-        </div>
+          </Field>
+        </FieldGroup>
       </form>
-      <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+      <FieldDescription className="text-center">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
         and <a href="#">Privacy Policy</a>.
-      </div>
+      </FieldDescription>
     </div>
   )
 }
