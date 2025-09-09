@@ -30,5 +30,6 @@
   "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
   "@shadcn-editor": "https://shadcn-editor.vercel.app/r/{name}.json",
   "@rigidui": "https://rigidui.com/r/{name}.json",
+  "@registry-starter": "https://registry-starter.vercel.app/r/{name}.json",
   "@retroui": "https://retroui.dev/r/{name}.json"
 }
