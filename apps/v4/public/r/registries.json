@@ -26,5 +26,6 @@
   "@smoothui": "https://smoothui.dev/r/{name}.json",
   "@formcn": "https://formcn.dev/r/{name}.json",
   "@limeplay": "https://limeplay.winoffrg.dev/r/{name}.json",
-  "@skiper-ui": "https://skiper-ui.com/registry/{name}.json"
+  "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
+  "@retroui": "https://retroui.dev/r/{name}.json"
 }
