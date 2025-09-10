@@ -274,6 +274,10 @@ export function createConfig(partial?: DeepPartial<Config>): Config {
         ...defaultConfig.aliases,
         ...(partial.aliases || {}),
       },
+      registries: {
+        ...defaultConfig.registries,
+        ...(partial.registries || {}),
+      },
     }
   }
 
