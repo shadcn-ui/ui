@@ -285,6 +285,18 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "input-group",
+    type: "registry:ui",
+    dependencies: ["class-variance-authority"],
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "ui/input-group.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "input-otp",
     type: "registry:ui",
     dependencies: ["input-otp"],

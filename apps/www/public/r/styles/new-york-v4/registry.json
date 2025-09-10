@@ -348,6 +348,22 @@
       ]
     },
     {
+      "name": "input-group",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "input-otp",
       "type": "registry:ui",
       "dependencies": [

@@ -164,7 +164,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar side="left" collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
         <SidebarGroup className="py-0 group-data-[collapsible=icon]:hidden">
@@ -226,7 +226,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             {data.components.map((item) => (
               <SidebarMenuItem key={item.name}>
                 <SidebarMenuButton asChild>
-                  <Link href={`/sink#${item.name}`}>
+                  <Link href={`/sink/${item.name}`}>
                     <span>{getComponentName(item.name)}</span>
                   </Link>
                 </SidebarMenuButton>

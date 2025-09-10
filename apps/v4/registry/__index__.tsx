@@ -440,6 +440,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "input-group": {
+    name: "input-group",
+    description: "",
+    type: "registry:ui",
+    registryDependencies: ["input"],
+    files: [{
+      path: "registry/new-york-v4/ui/input-group.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/ui/input-group.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "input-otp": {
     name: "input-otp",
     description: "",

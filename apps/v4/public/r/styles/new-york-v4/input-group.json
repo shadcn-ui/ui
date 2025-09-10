@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group",
+  "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/input-group.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\n\nfunction InputGroup({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"input-group\"\n      className={cn(\n        \"group border-input dark:bg-input/30 relative isolate flex h-9 w-full items-stretch gap-2 rounded-md border px-3 shadow-xs transition-[color,box-shadow] outline-none\",\n        \"has-[input[aria-invalid=true]]:ring-destructive/20 dark:has-[input[aria-invalid=true]]:ring-destructive/40 has-[input[aria-invalid=true]]:border-destructive\",\n        \"has-[input:focus-visible]:border-ring has-[input:focus-visible]:ring-ring/50 has-[input:focus-visible]:ring-[3px]\",\n        \"*:[input]:flex-1 *:[input]:rounded-none *:[input]:border-0 *:[input]:bg-transparent *:[input]:px-0 *:[input]:shadow-none *:[input]:focus-visible:ring-0 *:[input]:dark:bg-transparent\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction InputGroupAddon({\n  className,\n  side = \"left\",\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  side?: \"left\" | \"right\"\n}) {\n  return (\n    <div\n      data-slot=\"input-group-addon\"\n      data-side={side}\n      className={cn(\n        \"flex h-auto items-center justify-center py-1.5 text-sm select-none data-[side=left]:order-first data-[side=left]:has-[>button]:ml-[-0.45rem] data-[side=right]:order-last data-[side=right]:has-[>button]:mr-[-0.4rem] *:[svg:not([class*='size-'])]:size-4\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction InputGroupButton({\n  className,\n  variant = \"ghost\",\n  size = \"default\",\n  ...props\n}: React.ComponentProps<typeof Button>) {\n  return (\n    <Button\n      data-size={size}\n      variant={variant}\n      size={size}\n      className={cn(\n        className,\n        \"h-6 gap-1 px-1.5 shadow-none not-[.rounded-full]:rounded-[calc(var(--radius)-5px)] has-[>svg]:px-1.5 data-[size=icon]:size-6 data-[slot=button]:h-6 data-[slot=button]:gap-1 data-[slot=button]:px-1.5\"\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { InputGroup, InputGroupAddon, InputGroupButton }\n",
+      "type": "registry:ui"
+    }
+  ]
+}
