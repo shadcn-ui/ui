@@ -52,7 +52,7 @@ You can fork this repo by clicking the fork button in the top right corner of th
 ### Clone on your local machine
 
 ```bash
-git clone https://github.com/your-username/ui.git
+git clone https://github.com/shadcn-ui/ui.git
 ```
 
 ### Navigate to project directory
