@@ -31,13 +31,10 @@ export const transformCssVars: Transformer = async ({
   //   }
   // }
   sourceFile.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach((node) => {
-    const value = node.getText()
-    if (value) {
-      const valueWithColorMapping = applyColorMapping(
-        value.replace(/"/g, ""),
-        baseColor.inlineColors
-      )
-      node.replaceWithText(`"${valueWithColorMapping.trim()}"`)
+    const raw = node.getLiteralText()
+    const mapped = applyColorMapping(raw, baseColor.inlineColors).trim()
+    if (mapped !== raw) {
+      node.setLiteralValue(mapped)
     }
   })
 
