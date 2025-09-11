@@ -66,6 +66,7 @@
     "date-fns": "^4.1.0",
     "embla-carousel-autoplay": "8.5.2",
     "embla-carousel-react": "8.5.2",
+    "framer-motion": "^11.18.2",
     "fumadocs-core": "15.3.1",
     "fumadocs-docgen": "2.0.0",
     "fumadocs-mdx": "11.6.3",
