@@ -65,10 +65,10 @@ export default function Calendar31() {
           {events.map((event) => (
             <div
               key={event.title}
-              className="bg-muted after:bg-primary/70 relative rounded-md p-2 pl-6 text-sm after:absolute after:inset-y-2 after:left-2 after:w-1 after:rounded-full"
+              className="relative rounded-md bg-muted p-2 pl-6 text-sm after:absolute after:inset-y-2 after:left-2 after:w-1 after:rounded-full after:bg-primary/70"
             >
               <div className="font-medium">{event.title}</div>
-              <div className="text-muted-foreground text-xs">
+              <div className="text-xs text-muted-foreground">
                 {formatDateRange(new Date(event.from), new Date(event.to))}
               </div>
             </div>

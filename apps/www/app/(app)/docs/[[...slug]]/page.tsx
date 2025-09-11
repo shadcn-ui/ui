@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
 
 import "@/styles/mdx.css"
+
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ChevronRight, ExternalLink } from "lucide-react"

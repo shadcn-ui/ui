@@ -37,7 +37,7 @@ export default function Page() {
         } as React.CSSProperties
       }
     >
-      <header className="bg-sidebar sticky h-[--header-height] top-0 z-50 w-full border-b border-border/40  backdrop-blur">
+      <header className="sticky top-0 z-50 h-[--header-height] w-full border-b border-border/40 bg-sidebar backdrop-blur">
         <div className="flex h-14 items-center px-4">
           <div className="mr-4 hidden md:flex">
             <Button
@@ -98,9 +98,9 @@ export default function Page() {
         <AppSidebar />
 
         <SidebarInset>
-          <header className=" flex shrink-0 items-center gap-2 border-b py-2">
+          <header className="flex shrink-0 items-center gap-2 border-b py-2">
             <div className="flex items-center gap-2 px-4 py-2">
-              <div className="flex md:hidden items-center gap-2">
+              <div className="flex items-center gap-2 md:hidden">
                 <SidebarTrigger />
                 <Separator orientation="vertical" className="mr-2 h-4" />
               </div>
