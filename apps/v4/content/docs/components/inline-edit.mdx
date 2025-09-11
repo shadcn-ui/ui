@@ -1,0 +1,227 @@
+---
+title: Inline Edit
+description: Displays a text field that can be edited in place.
+component: true
+---
+
+<ComponentPreview
+  name="inline-edit-demo"
+  description="A text field that can be edited in place."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add inline-edit
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="inline-edit" title="components/ui/inline-edit.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { InlineEdit } from "@/components/ui/inline-edit"
+```
+
+```tsx
+<InlineEdit />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview
+  name="inline-edit-demo"
+  description="A text field that can be edited in place."
+/>
+
+## Props
+
+The `InlineEdit` component accepts the following props:
+
+### variant
+
+Controls the visual style of the component.
+
+- `default` (default) - Subtle background on hover with rounded corners
+- `ghost` - Transparent background on hover
+- `outline` - Border with accent colors on hover
+
+```tsx
+<InlineEdit variant="default" />
+<InlineEdit variant="ghost" />
+<InlineEdit variant="outline" />
+```
+
+### size
+
+Controls the size and spacing of the component.
+
+- `default` (default) - Standard size with min-height of 36px
+- `sm` - Small size with min-height of 32px
+- `lg` - Large size with min-height of 40px
+
+```tsx
+<InlineEdit size="sm" />
+<InlineEdit size="default" />
+<InlineEdit size="lg" />
+```
+
+### inputType
+
+Controls the input type for the edit field.
+
+- `text` (default) - Standard text input
+- `email` - Email input with validation
+- `password` - Password input (masked)
+- `number` - Numeric input
+- `url` - URL input with validation
+- `tel` - Telephone number input
+
+```tsx
+<InlineEdit inputType="email" placeholder="Enter email" />
+<InlineEdit inputType="number" placeholder="Enter number" />
+<InlineEdit inputType="url" placeholder="Enter URL" />
+<InlineEdit inputType="tel" placeholder="Enter phone number" />
+```
+
+### State Control
+
+#### isEditing
+
+Controls whether the component is in edit mode (for controlled usage).
+
+```tsx
+<InlineEdit isEditing={true} />
+```
+
+#### disabled
+
+Disables the component, preventing editing.
+
+```tsx
+<InlineEdit disabled />
+```
+
+#### required
+
+Makes the field required, preventing empty submissions.
+
+```tsx
+<InlineEdit required />
+```
+
+#### isLoading
+
+Shows loading state with spinner.
+
+```tsx
+<InlineEdit isLoading />
+```
+
+#### error
+
+Displays an error message below the input.
+
+```tsx
+<InlineEdit error="This field is required" />
+```
+
+### Behavior Options
+
+#### showEditIcon
+
+Controls whether to show the edit icon on hover (default: `true`).
+
+```tsx
+<InlineEdit showEditIcon={false} />
+```
+
+#### showActionButtons
+
+Shows save/cancel buttons when editing (default: `false`).
+
+```tsx
+<InlineEdit showActionButtons />
+```
+
+#### saveOnEnter
+
+Save changes when Enter key is pressed (default: `true`).
+
+```tsx
+<InlineEdit saveOnEnter={false} />
+```
+
+#### cancelOnEscape
+
+Cancel editing when Escape key is pressed (default: `true`).
+
+```tsx
+<InlineEdit cancelOnEscape={false} />
+```
+
+#### saveOnBlur
+
+Save changes when input loses focus (default: `true`).
+
+```tsx
+<InlineEdit saveOnBlur={false} />
+```
+
+### Validation
+
+#### maxLength
+
+Maximum number of characters allowed.
+
+```tsx
+<InlineEdit maxLength={50} />
+```
+
+#### minLength
+
+Minimum number of characters required.
+
+```tsx
+<InlineEdit minLength={3} />
+```
+
+### Example with Props
+
+```tsx
+<InlineEdit
+  variant="outline"
+  size="lg"
+  inputType="email"
+  required
+  maxLength={100}
+  showActionButtons
+  defaultValue="Click to edit this text"
+/>
+```
