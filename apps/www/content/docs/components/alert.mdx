@@ -1,6 +1,6 @@
 ---
 title: Alert
-description: Displays a callout for user attention.
+description: A flexible alert component for displaying important messages, warnings, and notifications to users.
 component: true
 ---
 
@@ -9,6 +9,16 @@ component: true
   title="An alert with an icon, title and description."
   description="An alert with an icon, title and description. The title says 'Heads up!' and the description is 'You can add components to your app using the cli.'."
 />
+
+## Features
+
+- Multiple variants: default, destructive, and custom
+- Icon support with automatic spacing
+- Title and description components
+- Accessible by default with proper ARIA attributes
+- Customizable with Tailwind CSS
+- Responsive design
+- Flexible content layout
 
 ## Installation
 
@@ -44,18 +54,78 @@ npx shadcn@latest add alert
 
 ## Usage
 
-```tsx
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-```
+### Basic Usage
 
 ```tsx
-<Alert>
-  <Terminal className="h-4 w-4" />
-  <AlertTitle>Heads up!</AlertTitle>
-  <AlertDescription>
-    You can add components and dependencies to your app using the cli.
-  </AlertDescription>
-</Alert>
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Terminal } from "lucide-react"
+
+export default function Page() {
+  return (
+    <Alert>
+      <Terminal className="h-4 w-4" />
+      <AlertTitle>Heads up!</AlertTitle>
+      <AlertDescription>
+        You can add components and dependencies to your app using the cli.
+      </AlertDescription>
+    </Alert>
+  )
+}
+```
+
+### With Custom Icon
+
+```tsx
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AlertCircle, CheckCircle, Info } from "lucide-react"
+
+export default function Page() {
+  return (
+    <div className="space-y-4">
+      <Alert>
+        <Info className="h-4 w-4" />
+        <AlertTitle>Information</AlertTitle>
+        <AlertDescription>
+          This is an informational message.
+        </AlertDescription>
+      </Alert>
+
+      <Alert>
+        <CheckCircle className="h-4 w-4" />
+        <AlertTitle>Success</AlertTitle>
+        <AlertDescription>
+          Your changes have been saved successfully.
+        </AlertDescription>
+      </Alert>
+
+      <Alert variant="destructive">
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>
+          There was a problem processing your request.
+        </AlertDescription>
+      </Alert>
+    </div>
+  )
+}
+```
+
+### With Custom Styling
+
+```tsx
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { cn } from "@/lib/utils"
+
+export default function Page() {
+  return (
+    <Alert className="bg-blue-50 border-blue-200">
+      <AlertTitle className="text-blue-800">Custom Alert</AlertTitle>
+      <AlertDescription className="text-blue-600">
+        This alert has custom colors using Tailwind CSS.
+      </AlertDescription>
+    </Alert>
+  )
+}
 ```
 
 ## Examples
@@ -75,3 +145,58 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
   title="An alert with a destructive variant."
   description="An alert with a destructive variant. The title says 'Delete this item?' and the description is 'This action cannot be undone.'."
 />
+
+### With Action
+
+<ComponentPreview
+  name="alert-with-action"
+  title="An alert with an action button."
+  description="An alert that includes a button for taking action."
+/>
+
+### With Custom Icon
+
+<ComponentPreview
+  name="alert-with-custom-icon"
+  title="An alert with a custom icon."
+  description="An alert using a different icon from the Lucide icon set."
+/>
+
+## API Reference
+
+### Alert Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| variant | "default" \| "destructive" | "default" | The visual style of the alert |
+| className | string | undefined | Additional CSS classes to apply |
+
+### AlertTitle Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | undefined | Additional CSS classes to apply |
+
+### AlertDescription Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | undefined | Additional CSS classes to apply |
+
+## Best Practices
+
+1. **Use Clear Titles**: Keep alert titles short and descriptive
+2. **Provide Context**: Include relevant details in the description
+3. **Choose Appropriate Icons**: Use icons that match the alert's purpose
+4. **Consider Variants**: Use the destructive variant for errors and warnings
+5. **Maintain Consistency**: Keep alert styling consistent throughout your application
+6. **Accessibility**: Ensure alerts are properly announced by screen readers
+7. **Responsive Design**: Test alerts on different screen sizes
+
+## Changelog
+
+### 2024-10-16 Icon Styling
+
+Added automatic icon styling with the following classes:
+- `h-4 w-4` for consistent icon sizing
+- Proper spacing between icon and content
