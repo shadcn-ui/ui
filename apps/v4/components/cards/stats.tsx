@@ -92,7 +92,7 @@ export function CardsStats() {
           </ChartContainer>
         </CardContent>
       </Card>
-      <Card className="pb-0 lg:hidden xl:flex">
+      <Card className="overflow-x-auto pb-0 lg:hidden xl:flex">
         <CardHeader>
           <CardDescription>Subscriptions</CardDescription>
           <CardTitle className="text-3xl">+2,350</CardTitle>
