@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/button-group.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\n\nfunction ButtonGroup({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"button-group\"\n      className={cn(\n        \"inline-flex h-9 items-center justify-center rounded-md p-1 text-muted-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction ButtonGroupItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof Button>) {\n  return (\n    <Button\n      className={cn(\n        \"h-7 rounded-sm px-2 shadow-none hover:bg-accent hover:text-accent-foreground focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm\",\n        className\n      )}\n      variant=\"ghost\"\n      size=\"sm\"\n      {...props}\n    />\n  )\n}\n\nexport { ButtonGroup, ButtonGroupItem }",
+      "type": "registry:ui"
+    }
+  ]
+}

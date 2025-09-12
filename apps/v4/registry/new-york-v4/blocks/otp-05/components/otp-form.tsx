@@ -20,7 +20,7 @@ export function OTPForm({ className, ...props }: React.ComponentProps<"div">) {
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <form>
         <FieldGroup>
-          <Field className="text-center">
+          <div className="flex flex-col items-center gap-2 text-center">
             <a
               href="#"
               className="flex flex-col items-center gap-2 font-medium"
@@ -34,7 +34,7 @@ export function OTPForm({ className, ...props }: React.ComponentProps<"div">) {
             <FieldDescription>
               We sent a 6-digit code to your email address
             </FieldDescription>
-          </Field>
+          </div>
           <Field>
             <Label htmlFor="otp" className="sr-only">
               Verification code

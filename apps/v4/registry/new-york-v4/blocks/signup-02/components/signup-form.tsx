@@ -16,12 +16,12 @@ export function SignupForm({
   return (
     <form className={cn("flex flex-col gap-6", className)} {...props}>
       <FieldGroup>
-        <Field className="items-center gap-2 text-center">
+        <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Create your account</h1>
           <p className="text-muted-foreground text-sm text-balance">
             Fill in the form below to create your account
           </p>
-        </Field>
+        </div>
         <Field>
           <Label htmlFor="name">Full Name</Label>
           <Input id="name" type="text" placeholder="John Doe" required />

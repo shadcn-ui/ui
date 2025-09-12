@@ -19,7 +19,7 @@ export function SignupForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <form>
         <FieldGroup>
-          <Field className="text-center">
+          <div className="flex flex-col items-center gap-2 text-center">
             <a
               href="#"
               className="flex flex-col items-center gap-2 font-medium"
@@ -33,7 +33,7 @@ export function SignupForm({
             <FieldDescription>
               Already have an account? <a href="#">Sign in</a>
             </FieldDescription>
-          </Field>
+          </div>
           <Field>
             <Label htmlFor="email">Email</Label>
             <Input

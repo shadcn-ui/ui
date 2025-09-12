@@ -1,3 +1,4 @@
+import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -30,21 +31,42 @@ function FieldGroup({
   )
 }
 
-function Field({ className, ...props }: React.ComponentProps<"div">) {
+function Field({
+  className,
+  orientation = "vertical",
+  asChild = false,
+  ...props
+}: React.ComponentProps<"div"> & {
+  orientation?: "vertical" | "horizontal"
+  asChild?: boolean
+}) {
+  const Comp = asChild ? Slot : "div"
+
   return (
-    <div
+    <Comp
       data-slot="field"
+      data-orientation={orientation}
       className={cn(
-        "group [&:not([class*='items-']):items-start flex flex-col gap-3",
-        "[&>[data-slot=input],[data-slot=select-trigger],[data-slot=textarea],[data-slot=toggle-group]]:w-full",
+        "group flex w-full gap-3",
+        "data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start",
+        "data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:items-center data-[orientation=horizontal]:has-[[data-slot=field-description]]:items-start",
         "*:data-[slot=label]:w-fit",
         "*:data-[slot=field-description]:-mt-1",
-        "has-data-[slot=slider]:gap-4 has-data-[slot=slider]:*:data-[slot=field-description]:last:mt-0",
-        "has-[>*[data-slot=radio-group-item]]:flex-row has-[>*[data-slot=radio-group-item]]:gap-2 [&:not([class*='items-']):has(>*[data-slot=radio-group-item])]:items-center",
-        "has-[>*[data-slot=checkbox]]:flex-row has-[>*[data-slot=checkbox]]:gap-2 [&:not([class*='items-']):has(>*[data-slot=checkbox])]:items-center",
-        "has-[>*[data-slot=switch]]:flex-row has-[>*[data-slot=switch]]:gap-2.5 [&:not([class*='items-']):has(>*[data-slot=switch])]:items-center",
-        "data-[invalid=true]:*:data-[slot=label]:text-destructive data-[invalid=true]:*:data-[slot=field-description]:text-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:border-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/20 dark:data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/40",
+        "*:data-[slot=input]:w-full data-[orientation=horizontal]:*:data-[slot=input]:w-fit",
+        "*:data-[slot=toggle-group]:w-full",
         "*:data-[slot=switch]:last:ml-auto",
+        "*:data-[slot=checkbox]:last:ml-auto",
+        "*:data-[slot=radio-group-item]:last:ml-auto",
+        "*:data-[slot=select-trigger]:w-full *:data-[slot=select-trigger]:last:ml-auto data-[orientation=horizontal]:*:data-[slot=select-trigger]:w-fit",
+        "*:data-[slot=radio-group]:w-full",
+        "*:data-[slot=slider]:w-full *:data-[slot=slider]:last:ml-auto data-[orientation=horizontal]:*:data-[slot=slider]:w-32",
+        "*:data-[slot=input]:last:ml-auto",
+        "has-data-[slot=slider]:gap-4 has-data-[slot=slider]:*:data-[slot=field-description]:last:mt-0",
+        "has-[>*[data-slot=radio-group-item]]:gap-2 [&:not([class*='items-']):has(>*[data-slot=radio-group-item])]:items-center",
+        "has-[>*[data-slot=checkbox]]:gap-2 [&:not([class*='items-']):has(>*[data-slot=checkbox])]:items-center",
+        "has-[>*[data-slot=switch]]:gap-2.5 [&:not([class*='items-']):has(>*[data-slot=switch])]:items-center",
+        "data-[invalid=true]:*:data-[slot=label]:text-destructive data-[invalid=true]:*:data-[slot=field-description]:text-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:border-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/20 dark:data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/40",
+        "[&label]:has-data-[state=checked]:bg-primary/5 dark:[&label]:has-data-[state=checked]:bg-primary/10 [&label]:has-data-[state=checked]:border-ring [&label]:rounded-md [&label]:border [&label]:p-4 [&label]:**:data-[slot=field-description]:mb-0",
         className
       )}
       {...props}
@@ -57,7 +79,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "text-muted-foreground text-sm",
+        "text-muted-foreground text-sm font-normal",
         "[[data-slot=label]+&]:-mt-2 [[data-slot=label]+&]:mb-1",
         "has-[+[data-slot=slider]]:-mt-2",
         "*:[a]:hover:text-primary *:[a]:underline *:[a]:underline-offset-4",

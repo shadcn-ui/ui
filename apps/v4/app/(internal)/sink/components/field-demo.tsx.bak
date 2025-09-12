@@ -83,165 +83,132 @@ export function FieldDemo() {
       <div className="flex flex-col gap-6">
         <Card>
           <CardContent>
-            <FieldSet>
-              <FieldGroup>
-                <Field orientation="horizontal">
-                  <Field>
-                    <Label htmlFor="enable-touch-id">Enable Touch ID</Label>
-                    <FieldDescription>
-                      Enable Touch ID to quickly unlock your device.
-                    </FieldDescription>
-                  </Field>
-                  <Checkbox id="enable-touch-id" />
+            <FieldGroup>
+              <Field orientation="horizontal">
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-md border">
+                  <IconSunHigh className="size-4" />
+                </div>
+                <Field>
+                  <Label htmlFor="true-tone">True Tone</Label>
+                  <FieldDescription>
+                    Automatically adjusts the color temperature to match the
+                    ambient light.
+                  </FieldDescription>
                 </Field>
-                <FieldSeparator />
-                <Field orientation="horizontal">
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" type="text" />
+                <Switch id="true-tone" />
+              </Field>
+              <FieldSeparator />
+              <Field orientation="horizontal">
+                <Field>
+                  <Label htmlFor="enable-touch-id">Enable Touch ID</Label>
+                  <FieldDescription>
+                    Enable Touch ID to quickly unlock your device.
+                  </FieldDescription>
                 </Field>
-                <FieldSeparator />
-                <Field orientation="horizontal">
-                  <Label htmlFor="refresh-rate" className="flex-1">
-                    Refresh Rate
+                <Checkbox id="enable-touch-id" />
+              </Field>
+              <FieldSeparator />
+              <Field orientation="horizontal">
+                <Label htmlFor="refresh-rate" className="flex-1">
+                  Refresh Rate
+                </Label>
+                <Select defaultValue="promotion">
+                  <SelectTrigger id="refresh-rate">ProMotion</SelectTrigger>
+                  <SelectContent align="end">
+                    <SelectGroup>
+                      <SelectItem value="promotion">ProMotion</SelectItem>
+                    </SelectGroup>
+                    <SelectSeparator />
+                    <SelectGroup>
+                      <SelectItem value="60">60 Hz</SelectItem>
+                      <SelectItem value="120">120 Hz</SelectItem>
+                      <SelectItem value="144">144 Hz</SelectItem>
+                      <SelectItem value="165">165 Hz</SelectItem>
+                      <SelectItem value="240">240 Hz</SelectItem>
+                      <SelectItem value="360">360 Hz</SelectItem>
+                      <SelectItem value="480">480 Hz</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </Field>
+              <FieldSeparator />
+              <Field orientation="horizontal">
+                <Field className="flex-1">
+                  <Label htmlFor="connected-to-tv" className="flex-1">
+                    When connected to TV
                   </Label>
-                  <Select>
-                    <SelectTrigger id="refresh-rate">ProMotion</SelectTrigger>
-                    <SelectContent align="end">
-                      <SelectGroup>
-                        <SelectItem value="promotion">ProMotion</SelectItem>
-                      </SelectGroup>
-                      <SelectSeparator />
-                      <SelectGroup>
-                        <SelectItem value="60">60 Hz</SelectItem>
-                        <SelectItem value="120">120 Hz</SelectItem>
-                        <SelectItem value="144">144 Hz</SelectItem>
-                        <SelectItem value="165">165 Hz</SelectItem>
-                        <SelectItem value="240">240 Hz</SelectItem>
-                        <SelectItem value="360">360 Hz</SelectItem>
-                        <SelectItem value="480">480 Hz</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
+                  <FieldDescription>
+                    Choose what to show or use the TV as a secondary display.
+                  </FieldDescription>
                 </Field>
-                <FieldSeparator />
-                <Field orientation="horizontal">
-                  <Field className="flex-1">
-                    <Label htmlFor="connected-to-tv" className="flex-1">
-                      When connected to TV
-                    </Label>
-                    <FieldDescription>
-                      Choose what to show or use the TV as a secondary display.
-                    </FieldDescription>
-                  </Field>
-                  <Select defaultValue="ask-what-to-show">
-                    <SelectTrigger id="connected-to-tv">
+                <Select defaultValue="ask-what-to-show">
+                  <SelectTrigger id="connected-to-tv">
+                    Ask What to Show
+                  </SelectTrigger>
+                  <SelectContent align="end">
+                    <SelectItem value="ask-what-to-show">
                       Ask What to Show
-                    </SelectTrigger>
-                    <SelectContent align="end">
-                      <SelectItem value="ask-what-to-show">
-                        Ask What to Show
-                      </SelectItem>
-                      <SelectItem value="mirror">
-                        Mirror Entire Screen
-                      </SelectItem>
-                      <SelectItem value="extend">Extend Display</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </Field>
-                <FieldSeparator />
-                <Field>
-                  <Label htmlFor="battery-level">Battery Level</Label>
-                  <FieldDescription>
-                    Choose your preferred battery level.
-                  </FieldDescription>
-                  <RadioGroup>
-                    <Field orientation="horizontal">
-                      <RadioGroupItem value="high" id="battery-level-high" />
-                      <Label htmlFor="battery-level-high">High</Label>
-                    </Field>
-                    <Field orientation="horizontal">
-                      <RadioGroupItem
-                        value="medium"
-                        id="battery-level-medium"
-                      />
-                      <Label htmlFor="battery-level-medium">Medium</Label>
-                    </Field>
-                    <Field orientation="horizontal">
-                      <RadioGroupItem value="low" id="battery-level-low" />
-                      <Label htmlFor="battery-level-low">Low</Label>
-                    </Field>
-                  </RadioGroup>
-                </Field>
-                <FieldSeparator />
-                <Field>
-                  <Label htmlFor="search-results">Search Results</Label>
-                  <FieldDescription>
-                    Only selected categories will appear in search results.
-                  </FieldDescription>
+                    </SelectItem>
+                    <SelectItem value="mirror">Mirror Entire Screen</SelectItem>
+                    <SelectItem value="extend">Extend Display</SelectItem>
+                  </SelectContent>
+                </Select>
+              </Field>
+              <FieldSeparator />
+              <Field>
+                <Label htmlFor="battery-level">Battery Level</Label>
+                <FieldDescription>
+                  Choose your preferred battery level.
+                </FieldDescription>
+                <RadioGroup>
                   <Field orientation="horizontal">
-                    <Checkbox id="search-results-application" />
-                    <Label htmlFor="search-results-application">
-                      Application
-                    </Label>
+                    <RadioGroupItem value="high" id="battery-level-high" />
+                    <Label htmlFor="battery-level-high">High</Label>
                   </Field>
                   <Field orientation="horizontal">
-                    <Checkbox id="search-results-music" />
-                    <Label htmlFor="search-results-music">Music</Label>
+                    <RadioGroupItem value="medium" id="battery-level-medium" />
+                    <Label htmlFor="battery-level-medium">Medium</Label>
                   </Field>
                   <Field orientation="horizontal">
-                    <Checkbox id="search-results-video" />
-                    <Label htmlFor="search-results-video">Video</Label>
+                    <RadioGroupItem value="low" id="battery-level-low" />
+                    <Label htmlFor="battery-level-low">Low</Label>
                   </Field>
-                  <Field orientation="horizontal">
-                    <Checkbox id="search-results-photo" />
-                    <Label htmlFor="search-results-photo">Photo</Label>
-                  </Field>
-                  <Field orientation="horizontal">
-                    <Checkbox id="search-results-document" />
-                    <Label htmlFor="search-results-document">Document</Label>
-                  </Field>
-                  <Field orientation="horizontal">
-                    <Checkbox id="search-results-other" />
-                    <Label htmlFor="search-results-other">Other</Label>
-                  </Field>
-                </Field>
-              </FieldGroup>
-            </FieldSet>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent>
-            <FieldSet>
-              <FieldGroup variant="outline">
+                </RadioGroup>
+              </Field>
+              <FieldSeparator />
+              <Field>
+                <Label htmlFor="search-results">Search Results</Label>
+                <FieldDescription>
+                  Only selected categories will appear in search results.
+                </FieldDescription>
                 <Field orientation="horizontal">
-                  <Label htmlFor="brightness">Brightness</Label>
-                  <Slider
-                    id="brightness"
-                    defaultValue={[50]}
-                    max={100}
-                    step={1}
-                  />
-                </Field>
-                <FieldSeparator />
-                <Field orientation="horizontal">
-                  <Label htmlFor="automatic-brightness">
-                    Automatic Brightness
+                  <Checkbox id="search-results-application" />
+                  <Label htmlFor="search-results-application">
+                    Application
                   </Label>
-                  <Switch id="automatic-brightness" />
                 </Field>
-                <FieldSeparator />
                 <Field orientation="horizontal">
-                  <Field>
-                    <Label htmlFor="true-tone">True Tone</Label>
-                    <FieldDescription>
-                      Automatically adjusts the color temperature to match the
-                      ambient light.
-                    </FieldDescription>
-                  </Field>
-                  <Switch id="true-tone" />
+                  <Checkbox id="search-results-music" />
+                  <Label htmlFor="search-results-music">Music</Label>
                 </Field>
-              </FieldGroup>
-            </FieldSet>
+                <Field orientation="horizontal">
+                  <Checkbox id="search-results-video" />
+                  <Label htmlFor="search-results-video">Video</Label>
+                </Field>
+                <Field orientation="horizontal">
+                  <Checkbox id="search-results-photo" />
+                  <Label htmlFor="search-results-photo">Photo</Label>
+                </Field>
+                <Field orientation="horizontal">
+                  <Checkbox id="search-results-document" />
+                  <Label htmlFor="search-results-document">Document</Label>
+                </Field>
+                <Field orientation="horizontal">
+                  <Checkbox id="search-results-other" />
+                  <Label htmlFor="search-results-other">Other</Label>
+                </Field>
+              </Field>
+            </FieldGroup>
           </CardContent>
         </Card>
         <FormInputDemo />
@@ -251,90 +218,6 @@ export function FieldDemo() {
         <CheckoutForm />
       </div>
       <div className="flex flex-col gap-6">
-        <Card>
-          <CardContent>
-            <RadioGroup defaultValue="plus">
-              <Field orientation="horizontal" asChild>
-                <Label htmlFor="plus">
-                  <Field>
-                    <div data-slot="label">Plus</div>
-                    <FieldDescription>
-                      For individuals and small teams
-                    </FieldDescription>
-                  </Field>
-                  <RadioGroupItem value="plus" id="plus" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label htmlFor="pro">
-                  <div data-slot="label">Pro</div>
-                  <RadioGroupItem value="pro" id="pro" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal">
-                <RadioGroupItem value="enterprise" id="enterprise" />
-                <Label htmlFor="enterprise">Enterprise</Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label htmlFor="custom">
-                  <RadioGroupItem value="custom" id="custom" />
-                  <Field>
-                    <div data-slot="label">Custom</div>
-                    <FieldDescription>
-                      For large teams and enterprises
-                    </FieldDescription>
-                  </Field>
-                </Label>
-              </Field>
-            </RadioGroup>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent>
-            <FieldGroup className="gap-2">
-              <Field orientation="horizontal" asChild>
-                <Label>
-                  <Field>
-                    <div>Increase Contrast</div>
-                    <FieldDescription>
-                      Increase the contrast of the UI to make it easier to read.
-                    </FieldDescription>
-                  </Field>
-                  <Checkbox id="increase-contrast" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label>
-                  <Field>
-                    <div>Reduce Transparency</div>
-                    <FieldDescription>
-                      Reduce the transparency of the UI to make it easier to
-                      read.
-                    </FieldDescription>
-                  </Field>
-                  <Checkbox id="reduce-transparency" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label>
-                  <Field>
-                    <div>Reduce Motion</div>
-                    <FieldDescription>
-                      Reduce the motion of the UI to make it easier to read.
-                    </FieldDescription>
-                  </Field>
-                  <Checkbox id="reduce-motion" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label>
-                  <div>Enable Dark Mode</div>
-                  <Checkbox id="enable-dark-mode" />
-                </Label>
-              </Field>
-            </FieldGroup>
-          </CardContent>
-        </Card>
         <FormSpecialInputTypesDemo />
         <FormTextareaDemo />
         <FormSelectDemo />
@@ -472,7 +355,7 @@ function LoginForm() {
                 </a>
               </FieldDescription>
             </Field>
-            <Field orientation="horizontal">
+            <Field>
               <Checkbox id="login-7x9-remember" />
               <Label htmlFor="login-7x9-remember" className="font-normal">
                 Remember me for 30 days
@@ -562,7 +445,7 @@ function FinderPreferencesForm() {
           <FieldGroup>
             <Field>
               <Label>Show these items on the desktop:</Label>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="finder-pref-9k2-hard-disks" />
                 <Label
                   htmlFor="finder-pref-9k2-hard-disks"
@@ -571,7 +454,7 @@ function FinderPreferencesForm() {
                   Hard disks
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="finder-pref-9k2-external-disks" />
                 <Label
                   htmlFor="finder-pref-9k2-external-disks"
@@ -580,7 +463,7 @@ function FinderPreferencesForm() {
                   External disks
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="finder-pref-9k2-cds-dvds" />
                 <Label
                   htmlFor="finder-pref-9k2-cds-dvds"
@@ -589,7 +472,7 @@ function FinderPreferencesForm() {
                   CDs, DVDs, and iPods
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="finder-pref-9k2-connected-servers" />
                 <Label
                   htmlFor="finder-pref-9k2-connected-servers"
@@ -634,7 +517,7 @@ function FinderPreferencesForm() {
               </InputGroup>
             </Field>
             <FieldSeparator />
-            <Field orientation="horizontal">
+            <Field>
               <Checkbox id="finder-pref-9k2-sync-folders" defaultChecked />
               <Field>
                 <Label
@@ -649,7 +532,7 @@ function FinderPreferencesForm() {
                 </FieldDescription>
               </Field>
             </Field>
-            <Field orientation="horizontal">
+            <Field>
               <Checkbox id="finder-pref-9k2-open-tabs" defaultChecked />
               <Label
                 htmlFor="finder-pref-9k2-open-tabs"
@@ -1013,7 +896,7 @@ export function NewsletterForm() {
                 </Label>
               </Field>
             </Field>
-            <Field orientation="horizontal">
+            <Field>
               <Checkbox id="newsletter-2q8-privacy" required />
               <Label
                 htmlFor="newsletter-2q8-privacy"
@@ -1295,19 +1178,19 @@ export function FormRadioDemo() {
           <Field>
             <Label>Subscription Plan</Label>
             <RadioGroup defaultValue="free">
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="free" id="free" />
                 <Label htmlFor="free" className="font-normal">
                   Free Plan
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="pro" id="pro" />
                 <Label htmlFor="pro" className="font-normal">
                   Pro Plan
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="enterprise" id="enterprise" />
                 <Label htmlFor="enterprise" className="font-normal">
                   Enterprise
@@ -1317,26 +1200,26 @@ export function FormRadioDemo() {
           </Field>
           <Field>
             <Label>Size</Label>
-            <RadioGroup defaultValue="medium" className="flex gap-2">
-              <Field orientation="horizontal">
+            <RadioGroup defaultValue="medium" className="flex flex-row gap-4">
+              <Field>
                 <RadioGroupItem value="small" id="size-small" />
                 <Label htmlFor="size-small" className="font-normal">
                   Small
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="medium" id="size-medium" />
                 <Label htmlFor="size-medium" className="font-normal">
                   Medium
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="large" id="size-large" />
                 <Label htmlFor="size-large" className="font-normal">
                   Large
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="xlarge" id="size-xlarge" />
                 <Label htmlFor="size-xlarge" className="font-normal">
                   X-Large
@@ -1351,19 +1234,19 @@ export function FormRadioDemo() {
               Choose how you want to receive notifications.
             </FieldDescription>
             <RadioGroup defaultValue="email">
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="email" id="notify-email" />
                 <Label htmlFor="notify-email" className="font-normal">
                   Email only
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="sms" id="notify-sms" />
                 <Label htmlFor="notify-sms" className="font-normal">
                   SMS only
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="both" id="notify-both" />
                 <Label htmlFor="notify-both" className="font-normal">
                   Both Email & SMS
@@ -1377,19 +1260,19 @@ export function FormRadioDemo() {
               defaultValue="standard"
               className="flex flex-wrap gap-4"
             >
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="express" id="delivery-express" />
                 <Label htmlFor="delivery-express" className="font-normal">
                   Express (1-2 days)
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="standard" id="delivery-standard" />
                 <Label htmlFor="delivery-standard" className="font-normal">
                   Standard (3-5 days)
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <RadioGroupItem value="economy" id="delivery-economy" />
                 <Label htmlFor="delivery-economy" className="font-normal">
                   Economy (5-7 days)
@@ -1414,17 +1297,19 @@ export function FormCheckboxDemo() {
       </CardHeader>
       <CardContent>
         <FieldGroup>
-          <Field orientation="horizontal">
+          <Field>
             <Checkbox id="terms" />
             <Label htmlFor="terms" className="font-normal">
               I agree to the terms and conditions
             </Label>
           </Field>
 
-          <Field orientation="horizontal">
+          <Field className="items-start">
             <Checkbox id="newsletter" />
             <Field>
-              <Label htmlFor="newsletter">Subscribe to newsletter</Label>
+              <Label htmlFor="newsletter" className="font-normal">
+                Subscribe to newsletter
+              </Label>
               <FieldDescription>
                 Receive weekly updates about new features and promotions.
               </FieldDescription>
@@ -1435,19 +1320,19 @@ export function FormCheckboxDemo() {
             <FieldDescription>
               Select all that apply to customize your experience.
             </FieldDescription>
-            <Field orientation="horizontal">
+            <Field>
               <Checkbox id="pref-dark" />
               <Label htmlFor="pref-dark" className="font-normal">
                 Dark mode
               </Label>
             </Field>
-            <Field orientation="horizontal">
+            <Field>
               <Checkbox id="pref-compact" />
               <Label htmlFor="pref-compact" className="font-normal">
                 Compact view
               </Label>
             </Field>
-            <Field orientation="horizontal">
+            <Field>
               <Checkbox id="pref-notifications" />
               <Label htmlFor="pref-notifications" className="font-normal">
                 Enable notifications
@@ -1460,43 +1345,43 @@ export function FormCheckboxDemo() {
               Select the days you are available.
             </FieldDescription>
             <Field orientation="horizontal">
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="mon" />
                 <Label htmlFor="mon" className="font-normal">
                   Mon
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="tue" />
                 <Label htmlFor="tue" className="font-normal">
                   Tue
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="wed" />
                 <Label htmlFor="wed" className="font-normal">
                   Wed
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="thu" />
                 <Label htmlFor="thu" className="font-normal">
                   Thu
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="fri" />
                 <Label htmlFor="fri" className="font-normal">
                   Fri
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="sat" />
                 <Label htmlFor="sat" className="font-normal">
                   Sat
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="sun" />
                 <Label htmlFor="sun" className="font-normal">
                   Sun
@@ -1507,37 +1392,37 @@ export function FormCheckboxDemo() {
           <Field>
             <Label>Skills</Label>
             <Field orientation="horizontal" className="flex-wrap">
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="javascript" />
                 <Label htmlFor="javascript" className="font-normal">
                   JavaScript
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="typescript" />
                 <Label htmlFor="typescript" className="font-normal">
                   TypeScript
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="react" />
                 <Label htmlFor="react" className="font-normal">
                   React
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="nodejs" />
                 <Label htmlFor="nodejs" className="font-normal">
                   Node.js
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="python" />
                 <Label htmlFor="python" className="font-normal">
                   Python
                 </Label>
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="database" />
                 <Label htmlFor="database" className="font-normal">
                   Database
@@ -1620,7 +1505,7 @@ export function FormSwitchDemo() {
       </CardHeader>
       <CardContent>
         <FieldGroup>
-          <Field orientation="horizontal">
+          <Field>
             <Field>
               <Label htmlFor="airplane-mode">Airplane Mode</Label>
               <FieldDescription>
@@ -1629,7 +1514,7 @@ export function FormSwitchDemo() {
             </Field>
             <Switch id="airplane-mode" />
           </Field>
-          <Field orientation="horizontal">
+          <Field>
             <Field>
               <Label htmlFor="notifications">Push Notifications</Label>
               <FieldDescription>
@@ -1656,7 +1541,7 @@ export function FormSwitchDemo() {
               </FieldDescription>
             </Field>
           </Field>
-          <Field orientation="horizontal">
+          <Field>
             <Switch id="auto-save" defaultChecked />
             <Field>
               <Label htmlFor="auto-save">Auto-save</Label>
@@ -1670,26 +1555,26 @@ export function FormSwitchDemo() {
             <FieldDescription>
               Manage your privacy preferences.
             </FieldDescription>
-            <Field orientation="horizontal">
+            <Field>
               <Switch id="profile-visible" defaultChecked />
               <Label htmlFor="profile-visible" className="font-normal">
                 Make profile visible to others
               </Label>
             </Field>
-            <Field orientation="horizontal">
+            <Field>
               <Switch id="show-email" />
               <Label htmlFor="show-email" className="font-normal">
                 Show email on profile
               </Label>
             </Field>
-            <Field orientation="horizontal">
+            <Field>
               <Switch id="allow-indexing" defaultChecked />
               <Label htmlFor="allow-indexing" className="font-normal">
                 Allow search engines to index profile
               </Label>
             </Field>
           </Field>
-          <Field orientation="horizontal">
+          <Field>
             <Switch id="disabled-switch" disabled />
             <Field>
               <Label htmlFor="disabled-switch" className="opacity-50">
@@ -2333,19 +2218,19 @@ export function FormFieldSetDemo() {
               <Field>
                 <Label>Preferred Contact Method</Label>
                 <RadioGroup defaultValue="email">
-                  <Field orientation="horizontal">
+                  <Field>
                     <RadioGroupItem value="email" id="contact-email" />
                     <Label htmlFor="contact-email" className="font-normal">
                       Email
                     </Label>
                   </Field>
-                  <Field orientation="horizontal">
+                  <Field>
                     <RadioGroupItem value="phone" id="contact-phone" />
                     <Label htmlFor="contact-phone" className="font-normal">
                       Phone
                     </Label>
                   </Field>
-                  <Field orientation="horizontal">
+                  <Field>
                     <RadioGroupItem value="sms" id="contact-sms" />
                     <Label htmlFor="contact-sms" className="font-normal">
                       SMS
@@ -2355,19 +2240,19 @@ export function FormFieldSetDemo() {
               </Field>
               <Field>
                 <Label>Notification Types</Label>
-                <Field orientation="horizontal">
+                <Field>
                   <Checkbox id="updates" defaultChecked />
                   <Label htmlFor="updates" className="font-normal">
                     Product updates
                   </Label>
                 </Field>
-                <Field orientation="horizontal">
+                <Field>
                   <Checkbox id="newsletters" />
                   <Label htmlFor="newsletters" className="font-normal">
                     Newsletters
                   </Label>
                 </Field>
-                <Field orientation="horizontal">
+                <Field>
                   <Checkbox id="promotions" />
                   <Label htmlFor="promotions" className="font-normal">
                     Promotional offers
@@ -2379,7 +2264,7 @@ export function FormFieldSetDemo() {
           <FieldSet>
             <FieldLegend>Account Settings</FieldLegend>
             <FieldGroup>
-              <Field orientation="horizontal">
+              <Field>
                 <Field>
                   <Label htmlFor="two-factor">Two-Factor Authentication</Label>
                   <FieldDescription>
@@ -2388,7 +2273,7 @@ export function FormFieldSetDemo() {
                 </Field>
                 <Switch id="two-factor" />
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Field>
                   <Label htmlFor="public-profile">Public Profile</Label>
                   <FieldDescription>
@@ -2397,7 +2282,7 @@ export function FormFieldSetDemo() {
                 </Field>
                 <Switch id="public-profile" defaultChecked />
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Field>
                   <Label htmlFor="activity-status">Show Activity Status</Label>
                   <FieldDescription>
@@ -2461,7 +2346,7 @@ export function FormFieldSetDemo() {
                   className="min-h-[100px]"
                 />
               </Field>
-              <Field orientation="horizontal">
+              <Field>
                 <Checkbox id="agree-terms" />
                 <Label htmlFor="agree-terms" className="font-normal">
                   I agree to the terms and conditions
@@ -2512,13 +2397,13 @@ export function FormFieldSeparatorDemo() {
           </Field>
           <FieldSeparator>Additional Options</FieldSeparator>
           <FieldGroup>
-            <Field orientation="horizontal">
+            <Field>
               <Checkbox id="option1" />
               <Label htmlFor="option1" className="font-normal">
                 Enable additional features
               </Label>
             </Field>
-            <Field orientation="horizontal">
+            <Field>
               <Checkbox id="option2" />
               <Label htmlFor="option2" className="font-normal">
                 Subscribe to updates
@@ -2536,15 +2421,15 @@ export function FormFieldSeparatorDemo() {
           </Field>
           <FieldSeparator>Or choose a different path</FieldSeparator>
           <FieldGroup>
-            <Field orientation="horizontal">
+            <Field>
               <RadioGroup defaultValue="option1">
-                <Field orientation="horizontal">
+                <Field>
                   <RadioGroupItem value="option1" id="path1" />
                   <Label htmlFor="path1" className="font-normal">
                     Option Path 1
                   </Label>
                 </Field>
-                <Field orientation="horizontal">
+                <Field>
                   <RadioGroupItem value="option2" id="path2" />
                   <Label htmlFor="path2" className="font-normal">
                     Option Path 2
@@ -2555,7 +2440,7 @@ export function FormFieldSeparatorDemo() {
           </FieldGroup>
           <FieldSeparator>Account Settings</FieldSeparator>
           <FieldGroup>
-            <Field orientation="horizontal">
+            <Field>
               <Switch id="separator-7e9-notifications" />
               <Field>
                 <Label htmlFor="separator-7e9-notifications">
@@ -2566,7 +2451,7 @@ export function FormFieldSeparatorDemo() {
                 </FieldDescription>
               </Field>
             </Field>
-            <Field orientation="horizontal">
+            <Field>
               <Switch id="separator-7e9-privacy" />
               <Field>
                 <Label htmlFor="separator-7e9-privacy">
@@ -2578,7 +2463,7 @@ export function FormFieldSeparatorDemo() {
               </Field>
             </Field>
           </FieldGroup>
-          <Field orientation="horizontal">
+          <Field>
             <Button type="submit" className="w-full">
               Submit Form
             </Button>
@@ -2870,22 +2755,22 @@ export function SurveyForm() {
             <Field>
               <Label>How often do you use our product?</Label>
               <RadioGroup>
-                <Field orientation="horizontal">
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="daily" id="daily" />
                   <Label htmlFor="daily">Daily</Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="weekly" id="weekly" />
                   <Label htmlFor="weekly">Weekly</Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="monthly" id="monthly" />
                   <Label htmlFor="monthly">Monthly</Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="rarely" id="rarely" />
                   <Label htmlFor="rarely">Rarely</Label>
-                </Field>
+                </div>
               </RadioGroup>
             </Field>
             <Field>
@@ -2893,70 +2778,70 @@ export function SurveyForm() {
                 Which features do you use most? (Select all that apply)
               </Label>
               <div className="grid grid-cols-2 gap-2">
-                <Field orientation="horizontal">
+                <div className="flex items-center space-x-2">
                   <Checkbox id="dashboard" />
                   <Label htmlFor="dashboard" className="text-sm">
                     Dashboard
                   </Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <Checkbox id="reports" />
                   <Label htmlFor="reports" className="text-sm">
                     Reports
                   </Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <Checkbox id="analytics" />
                   <Label htmlFor="analytics" className="text-sm">
                     Analytics
                   </Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <Checkbox id="integrations" />
                   <Label htmlFor="integrations" className="text-sm">
                     Integrations
                   </Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <Checkbox id="api" />
                   <Label htmlFor="api" className="text-sm">
                     API Access
                   </Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <Checkbox id="support" />
                   <Label htmlFor="support" className="text-sm">
                     Support
                   </Label>
-                </Field>
+                </div>
               </div>
             </Field>
             <Field>
               <Label>How satisfied are you with our product?</Label>
               <RadioGroup>
-                <Field orientation="horizontal">
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="very-satisfied" id="very-satisfied" />
                   <Label htmlFor="very-satisfied">Very Satisfied</Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="satisfied" id="satisfied" />
                   <Label htmlFor="satisfied">Satisfied</Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="neutral" id="neutral" />
                   <Label htmlFor="neutral">Neutral</Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem value="dissatisfied" id="dissatisfied" />
                   <Label htmlFor="dissatisfied">Dissatisfied</Label>
-                </Field>
-                <Field orientation="horizontal">
+                </div>
+                <div className="flex items-center space-x-2">
                   <RadioGroupItem
                     value="very-dissatisfied"
                     id="very-dissatisfied"
                   />
                   <Label htmlFor="very-dissatisfied">Very Dissatisfied</Label>
-                </Field>
+                </div>
               </RadioGroup>
             </Field>
             <Field>
@@ -2998,6 +2883,11 @@ export function SurveyForm() {
 }
 
 export function ComplexFormDemo() {
+  const [startDate, setStartDate] = useState<Date>()
+  const [experience, setExperience] = useState([3])
+  const [skills, setSkills] = useState<string[]>([])
+  const [workType, setWorkType] = useState("hybrid")
+
   return (
     <Card className="w-full max-w-3xl">
       <CardHeader>
@@ -3056,6 +2946,35 @@ export function ComplexFormDemo() {
                       placeholder="+1 (555) 123-4567"
                     />
                   </Field>
+                  <Field>
+                    <Label htmlFor="complex-6d8-birthdate">Date of Birth</Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          id="complex-6d8-birthdate"
+                          variant="outline"
+                          className={cn(
+                            "w-full justify-start text-left font-normal",
+                            !startDate && "text-muted-foreground"
+                          )}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {startDate ? (
+                            format(startDate, "PPP")
+                          ) : (
+                            <span>Pick a date</span>
+                          )}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={startDate}
+                          onSelect={setStartDate}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </Field>
                 </div>
               </FieldGroup>
             </FieldSet>
@@ -3086,14 +3005,26 @@ export function ComplexFormDemo() {
 
                 <Field>
                   <Label htmlFor="experience">Years of Experience</Label>
-                  <Slider id="experience" max={20} min={0} step={1} />
-                  <FieldDescription>Years of experience</FieldDescription>
+                  <Slider
+                    id="experience"
+                    value={experience}
+                    onValueChange={setExperience}
+                    max={20}
+                    min={0}
+                    step={1}
+                  />
+                  <FieldDescription>
+                    {experience[0]} {experience[0] === 1 ? "year" : "years"} of
+                    experience
+                  </FieldDescription>
                 </Field>
 
                 <Field>
                   <Label>Employment Type Preference</Label>
                   <ToggleGroup
                     type="single"
+                    value={workType}
+                    onValueChange={setWorkType}
                     variant="outline"
                     className="w-full"
                   >
@@ -3107,6 +3038,88 @@ export function ComplexFormDemo() {
                       Hybrid
                     </ToggleGroupItem>
                   </ToggleGroup>
+                </Field>
+
+                <Field>
+                  <Label>Salary Expectations</Label>
+                  <RadioGroup defaultValue="80-100">
+                    <Field>
+                      <RadioGroupItem value="60-80" id="salary-60-80" />
+                      <Label htmlFor="salary-60-80" className="font-normal">
+                        $60,000 - $80,000
+                      </Label>
+                    </Field>
+                    <Field>
+                      <RadioGroupItem value="80-100" id="salary-80-100" />
+                      <Label htmlFor="salary-80-100" className="font-normal">
+                        $80,000 - $100,000
+                      </Label>
+                    </Field>
+                    <Field>
+                      <RadioGroupItem value="100-120" id="salary-100-120" />
+                      <Label htmlFor="salary-100-120" className="font-normal">
+                        $100,000 - $120,000
+                      </Label>
+                    </Field>
+                    <Field>
+                      <RadioGroupItem value="120+" id="salary-120-plus" />
+                      <Label htmlFor="salary-120-plus" className="font-normal">
+                        $120,000+
+                      </Label>
+                    </Field>
+                  </RadioGroup>
+                </Field>
+
+                <Field>
+                  <Label>Technical Skills</Label>
+                  <FieldDescription>Select all that apply</FieldDescription>
+                  <div className="grid grid-cols-3 gap-3">
+                    <Field>
+                      <Checkbox
+                        id="skill-js"
+                        onCheckedChange={(checked) => {
+                          if (checked) {
+                            setSkills([...skills, "javascript"])
+                          } else {
+                            setSkills(skills.filter((s) => s !== "javascript"))
+                          }
+                        }}
+                      />
+                      <Label htmlFor="skill-js" className="font-normal">
+                        JavaScript
+                      </Label>
+                    </Field>
+                    <Field>
+                      <Checkbox id="skill-ts" />
+                      <Label htmlFor="skill-ts" className="font-normal">
+                        TypeScript
+                      </Label>
+                    </Field>
+                    <Field>
+                      <Checkbox id="skill-react" />
+                      <Label htmlFor="skill-react" className="font-normal">
+                        React
+                      </Label>
+                    </Field>
+                    <Field>
+                      <Checkbox id="skill-node" />
+                      <Label htmlFor="skill-node" className="font-normal">
+                        Node.js
+                      </Label>
+                    </Field>
+                    <Field>
+                      <Checkbox id="skill-python" />
+                      <Label htmlFor="skill-python" className="font-normal">
+                        Python
+                      </Label>
+                    </Field>
+                    <Field>
+                      <Checkbox id="skill-docker" />
+                      <Label htmlFor="skill-docker" className="font-normal">
+                        Docker
+                      </Label>
+                    </Field>
+                  </div>
                 </Field>
               </FieldGroup>
             </FieldSet>
@@ -3152,13 +3165,13 @@ export function ComplexFormDemo() {
                 <Field>
                   <Label htmlFor="references">References Available</Label>
                   <RadioGroup defaultValue="yes">
-                    <Field orientation="horizontal">
+                    <Field>
                       <RadioGroupItem value="yes" id="ref-yes" />
                       <Label htmlFor="ref-yes" className="font-normal">
                         Yes, upon request
                       </Label>
                     </Field>
-                    <Field orientation="horizontal">
+                    <Field>
                       <RadioGroupItem value="no" id="ref-no" />
                       <Label htmlFor="ref-no" className="font-normal">
                         No
@@ -3207,14 +3220,15 @@ export function ComplexFormDemo() {
                     className="ml-auto"
                   />
                 </Field>
+
                 <FieldGroup>
-                  <Field orientation="horizontal">
+                  <Field>
                     <Checkbox id="terms" required />
                     <Label htmlFor="terms" className="font-normal">
                       I agree to the terms and conditions and privacy policy
                     </Label>
                   </Field>
-                  <Field orientation="horizontal">
+                  <Field>
                     <Checkbox id="accurate" required />
                     <Label htmlFor="accurate" className="font-normal">
                       I confirm that all information provided is accurate
@@ -3407,7 +3421,7 @@ export function ComplexFormInvalidDemo() {
                 <Field data-invalid>
                   <Label>Salary Expectations</Label>
                   <RadioGroup defaultValue="80-100">
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <RadioGroupItem value="60-80" id="salary-60-80-invalid" />
                       <Label
                         htmlFor="salary-60-80-invalid"
@@ -3416,7 +3430,7 @@ export function ComplexFormInvalidDemo() {
                         $60,000 - $80,000
                       </Label>
                     </Field>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <RadioGroupItem
                         value="80-100"
                         id="salary-80-100-invalid"
@@ -3428,7 +3442,7 @@ export function ComplexFormInvalidDemo() {
                         $80,000 - $100,000
                       </Label>
                     </Field>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <RadioGroupItem
                         value="100-120"
                         id="salary-100-120-invalid"
@@ -3440,7 +3454,7 @@ export function ComplexFormInvalidDemo() {
                         $100,000 - $120,000
                       </Label>
                     </Field>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <RadioGroupItem
                         value="120+"
                         id="salary-120-plus-invalid"
@@ -3459,7 +3473,7 @@ export function ComplexFormInvalidDemo() {
                   <Label>Technical Skills</Label>
                   <FieldDescription>Select all that apply</FieldDescription>
                   <div className="grid grid-cols-3 gap-3">
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <Checkbox
                         id="skill-js-invalid"
                         onCheckedChange={(checked) => {
@@ -3474,13 +3488,13 @@ export function ComplexFormInvalidDemo() {
                         JavaScript
                       </Label>
                     </Field>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <Checkbox id="skill-ts-invalid" />
                       <Label htmlFor="skill-ts-invalid" className="font-normal">
                         TypeScript
                       </Label>
                     </Field>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <Checkbox id="skill-react-invalid" />
                       <Label
                         htmlFor="skill-react-invalid"
@@ -3489,7 +3503,7 @@ export function ComplexFormInvalidDemo() {
                         React
                       </Label>
                     </Field>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <Checkbox id="skill-node-invalid" />
                       <Label
                         htmlFor="skill-node-invalid"
@@ -3498,7 +3512,7 @@ export function ComplexFormInvalidDemo() {
                         Node.js
                       </Label>
                     </Field>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <Checkbox id="skill-python-invalid" />
                       <Label
                         htmlFor="skill-python-invalid"
@@ -3507,7 +3521,7 @@ export function ComplexFormInvalidDemo() {
                         Python
                       </Label>
                     </Field>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <Checkbox id="skill-docker-invalid" />
                       <Label
                         htmlFor="skill-docker-invalid"
@@ -3571,13 +3585,13 @@ export function ComplexFormInvalidDemo() {
                     References Available
                   </Label>
                   <RadioGroup defaultValue="yes" aria-invalid>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <RadioGroupItem value="yes" id="ref-yes-invalid" />
                       <Label htmlFor="ref-yes-invalid" className="font-normal">
                         Yes, upon request
                       </Label>
                     </Field>
-                    <Field data-invalid orientation="horizontal">
+                    <Field data-invalid>
                       <RadioGroupItem value="no" id="ref-no-invalid" />
                       <Label htmlFor="ref-no-invalid" className="font-normal">
                         No
@@ -3615,7 +3629,7 @@ export function ComplexFormInvalidDemo() {
                   </InputOTP>
                 </Field>
 
-                <Field data-invalid orientation="horizontal">
+                <Field data-invalid>
                   <Field>
                     <Label htmlFor="notifications-invalid">
                       Email Notifications
@@ -3633,14 +3647,14 @@ export function ComplexFormInvalidDemo() {
                 </Field>
 
                 <FieldGroup>
-                  <Field data-invalid orientation="horizontal">
+                  <Field data-invalid>
                     <Checkbox id="terms-invalid" required />
                     <Label htmlFor="terms-invalid" className="font-normal">
                       I agree to the terms and conditions and privacy policy
                     </Label>
                   </Field>
 
-                  <Field data-invalid orientation="horizontal">
+                  <Field data-invalid>
                     <Checkbox id="accurate-invalid" required />
                     <Label htmlFor="accurate-invalid" className="font-normal">
                       I confirm that all information provided is accurate

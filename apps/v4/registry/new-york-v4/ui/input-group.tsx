@@ -8,7 +8,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="input-group"
       className={cn(
-        "group border-input dark:bg-input/30 relative isolate flex h-9 w-full items-stretch gap-2 rounded-md border px-3 shadow-xs transition-[color,box-shadow] outline-none",
+        "group border-input dark:bg-input/30 relative isolate flex h-9 w-full items-center gap-2 rounded-md border px-3 shadow-xs transition-[color,box-shadow] outline-none",
         "has-[input[aria-invalid=true]]:ring-destructive/20 dark:has-[input[aria-invalid=true]]:ring-destructive/40 has-[input[aria-invalid=true]]:border-destructive",
         "has-[input:focus-visible]:border-ring has-[input:focus-visible]:ring-ring/50 has-[input:focus-visible]:ring-[3px]",
         "*:[input]:flex-1 *:[input]:rounded-none *:[input]:border-0 *:[input]:bg-transparent *:[input]:px-0 *:[input]:shadow-none *:[input]:focus-visible:ring-0 *:[input]:dark:bg-transparent",
@@ -21,17 +21,17 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 
 function InputGroupAddon({
   className,
-  side = "left",
+  align = "start",
   ...props
 }: React.ComponentProps<"div"> & {
-  side?: "left" | "right"
+  align?: "start" | "end"
 }) {
   return (
     <div
       data-slot="input-group-addon"
-      data-side={side}
+      data-align={align}
       className={cn(
-        "flex h-auto items-center justify-center py-1.5 text-sm select-none data-[side=left]:order-first data-[side=left]:has-[>button]:ml-[-0.45rem] data-[side=right]:order-last data-[side=right]:has-[>button]:mr-[-0.4rem] *:[svg:not([class*='size-'])]:size-4",
+        "flex h-auto items-center justify-center py-1.5 text-sm select-none data-[align=start]:order-first data-[align=start]:has-[>button]:ml-[-0.45rem] data-[align=end]:order-last data-[align=end]:has-[>button]:mr-[-0.4rem] *:[svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

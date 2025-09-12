@@ -112,6 +112,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "button-group",
+    type: "registry:ui",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "ui/button-group.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "calendar",
     type: "registry:ui",
     dependencies: ["react-day-picker@latest", "date-fns"],

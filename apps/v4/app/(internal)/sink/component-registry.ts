@@ -6,6 +6,7 @@ import { AvatarDemo } from "./components/avatar-demo"
 import { BadgeDemo } from "./components/badge-demo"
 import { BreadcrumbDemo } from "./components/breadcrumb-demo"
 import { ButtonDemo } from "./components/button-demo"
+import { ButtonGroupDemo } from "./components/button-group-demo"
 import { CalendarDemo } from "./components/calendar-demo"
 import { CardDemo } from "./components/card-demo"
 import { CarouselDemo } from "./components/carousel-demo"
@@ -86,6 +87,10 @@ export const componentRegistry: Record<string, ComponentConfig> = {
   button: {
     name: "Button",
     component: ButtonDemo,
+  },
+  "button-group": {
+    name: "Button Group",
+    component: ButtonGroupDemo,
   },
   calendar: {
     name: "Calendar",

@@ -20,12 +20,12 @@ export function LoginForm({
         <CardContent className="grid p-0 md:grid-cols-2">
           <form className="p-6 md:p-8">
             <FieldGroup>
-              <Field className="items-center text-center">
+              <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-2xl font-bold">Welcome back</h1>
                 <p className="text-muted-foreground text-balance">
                   Login to your Acme Inc account
                 </p>
-              </Field>
+              </div>
               <Field>
                 <Label htmlFor="email">Email</Label>
                 <Input

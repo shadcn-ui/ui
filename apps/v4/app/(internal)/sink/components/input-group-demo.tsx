@@ -101,13 +101,13 @@ export function InputGroupDemo() {
         <Label htmlFor="input-icon-after-zxcv">Icon (right)</Label>
         <InputGroup>
           <Input id="input-icon-after-zxcv" />
-          <InputGroupAddon side="right">
+          <InputGroupAddon align="end">
             <EyeClosedIcon />
           </InputGroupAddon>
         </InputGroup>
         <InputGroup>
           <Input id="input-icon-after-zc3v" />
-          <InputGroupAddon side="right">
+          <InputGroupAddon align="end">
             <IconLoader2 className="text-muted-foreground animate-spin" />
           </InputGroupAddon>
         </InputGroup>
@@ -120,7 +120,7 @@ export function InputGroupDemo() {
           <InputGroupAddon>
             <IconMicrophone className="text-muted-foreground" />
           </InputGroupAddon>
-          <InputGroupAddon side="right">
+          <InputGroupAddon align="end">
             <IconPlayerRecordFilled className="animate-pulse text-red-500" />
           </InputGroupAddon>
         </InputGroup>
@@ -147,7 +147,7 @@ export function InputGroupDemo() {
         </InputGroup>
         <InputGroup>
           <Input id="input-prefix-lkjh" />
-          <InputGroupAddon side="right" className="text-muted-foreground">
+          <InputGroupAddon align="end" className="text-muted-foreground">
             (optional)
           </InputGroupAddon>
         </InputGroup>
@@ -174,13 +174,13 @@ export function InputGroupDemo() {
         </InputGroup>
         <InputGroup>
           <Input id="input-button-hj14" />
-          <InputGroupAddon side="right">
+          <InputGroupAddon align="end">
             <InputGroupButton variant="secondary">Button</InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
         <InputGroup>
           <Input id="input-button-hj15" />
-          <InputGroupAddon side="right">
+          <InputGroupAddon align="end">
             <InputGroupButton size="icon">
               <IconCopy />
             </InputGroupButton>
@@ -188,7 +188,7 @@ export function InputGroupDemo() {
         </InputGroup>
         <InputGroup>
           <Input id="input-button-hj16" />
-          <InputGroupAddon side="right">
+          <InputGroupAddon align="end">
             <InputGroupButton variant="secondary" size="icon">
               <IconTrash />
             </InputGroupButton>
@@ -217,7 +217,7 @@ export function InputGroupDemo() {
             https://
           </InputGroupAddon>
           <Input id="input-button-hj16" />
-          <InputGroupAddon side="right">
+          <InputGroupAddon align="end">
             <InputGroupButton size="icon">
               <IconStar />
             </InputGroupButton>
@@ -229,7 +229,7 @@ export function InputGroupDemo() {
         <Label htmlFor="input-button-hj17">Tooltip</Label>
         <InputGroup>
           <Input id="input-button-hj17" />
-          <InputGroupAddon side="right">
+          <InputGroupAddon align="end">
             <Tooltip>
               <TooltipTrigger asChild>
                 <InputGroupButton size="icon" className="rounded-full">
