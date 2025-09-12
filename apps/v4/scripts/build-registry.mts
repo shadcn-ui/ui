@@ -1,5 +1,5 @@
 import { exec } from "child_process"
-import { promises as fs } from "fs"
+import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
 
@@ -136,6 +136,17 @@ async function syncRegistry() {
     registryContent = await fs.readFile(registryIndexPath, "utf8")
   } catch {
     // File might not exist yet, that's ok
+  }
+
+  // 0. Copy registries.json from v4 to www before building www registry.
+  const v4RegistriesPath = path.join(process.cwd(), "public/r/registries.json")
+  const wwwRegistriesPath = path.resolve(process.cwd(), "../www/public/r/registries.json")
+  
+  if (existsSync(v4RegistriesPath)) {
+    // Ensure the www/public/r directory exists.
+    await fs.mkdir(path.dirname(wwwRegistriesPath), { recursive: true })
+    // Copy registries.json to www.
+    await fs.cp(v4RegistriesPath, wwwRegistriesPath)
   }
 
   // 1. Call pnpm registry:build for www.

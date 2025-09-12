@@ -31,7 +31,7 @@ function InputGroupAddon({
       data-slot="input-group-addon"
       data-align={align}
       className={cn(
-        "flex h-auto items-center justify-center py-1.5 text-sm select-none data-[align=start]:order-first data-[align=start]:has-[>button]:ml-[-0.45rem] data-[align=end]:order-last data-[align=end]:has-[>button]:mr-[-0.4rem] *:[svg:not([class*='size-'])]:size-4",
+        "flex h-auto items-center justify-center py-1.5 text-sm select-none data-[align=end]:order-last data-[align=end]:has-[>button]:mr-[-0.4rem] data-[align=start]:order-first data-[align=start]:has-[>button]:ml-[-0.45rem] *:[svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

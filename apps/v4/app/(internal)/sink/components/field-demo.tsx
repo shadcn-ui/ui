@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { IconInfoCircle, IconSunHigh } from "@tabler/icons-react"
+import { IconInfoCircle } from "@tabler/icons-react"
 import { addDays, format } from "date-fns"
 import { REGEXP_ONLY_DIGITS } from "input-otp"
 import {
