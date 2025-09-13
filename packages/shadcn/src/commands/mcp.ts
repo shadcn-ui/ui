@@ -3,7 +3,10 @@ import path from "path"
 import { server } from "@/src/mcp"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import { getConfig } from "@/src/utils/get-config"
-import { getPackageManager } from "@/src/utils/get-package-manager"
+import {
+  getPackageManager,
+  getPackageManagerExecutable,
+} from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
@@ -135,7 +138,7 @@ mcp
           silent: false,
         })
       } else {
-        const packageManager = await getPackageManager(options.cwd)
+        const packageManager = await getPackageManagerExecutable(options.cwd)
         const installCommand = packageManager === "npm" ? "install" : "add"
         const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
 
