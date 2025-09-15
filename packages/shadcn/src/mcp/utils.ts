@@ -3,7 +3,7 @@ import { registryItemSchema, searchResultsSchema } from "@/src/schema"
 import { getPackageRunner } from "@/src/utils/get-package-manager"
 import { z } from "zod"
 
-const SHADCN_CLI_COMMAND = "shadcn@beta"
+const SHADCN_CLI_COMMAND = "shadcn@latest"
 
 export async function npxShadcn(command: string) {
   const packageRunner = await getPackageRunner(process.cwd())
