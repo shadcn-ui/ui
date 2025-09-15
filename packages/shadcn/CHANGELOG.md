@@ -8,6 +8,8 @@
 
 ### Patch Changes
 
+- [#8186](https://github.com/shadcn-ui/ui/pull/8186) [`cdf58be7e1ed25bf1dd19a1c60612c5e89b82a60`](https://github.com/shadcn-ui/ui/commit/cdf58be7e1ed25bf1dd19a1c60612c5e89b82a60) Thanks [@imskyleen](https://github.com/imskyleen)! - fix transformCssVars function with prefix
+
 - [#8036](https://github.com/shadcn-ui/ui/pull/8036) [`fae1a81addb22429c103d5d08813e1c80779d5fb`](https://github.com/shadcn-ui/ui/commit/fae1a81addb22429c103d5d08813e1c80779d5fb) Thanks [@fuma-nama](https://github.com/fuma-nama)! - fix async imports not being transformed when installing components
 
 ## 3.2.1
