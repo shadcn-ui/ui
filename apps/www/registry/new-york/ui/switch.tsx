@@ -19,6 +19,7 @@ const Switch = React.forwardRef<
     ref={ref}
   >
     <SwitchPrimitives.Thumb
+      key={dir}
       className={cn(
         "pointer-events-none block h-4 w-4 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=unchecked]:translate-x-0 data-[state=checked]:translate-x-4 data-[state=checked]:-translate-x-4",
         dir === "rtl" ? "data-[state=checked]:-translate-x-4" : "data-[state=checked]:translate-x-4"

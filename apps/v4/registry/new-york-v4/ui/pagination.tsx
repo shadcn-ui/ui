@@ -6,7 +6,7 @@ import {
 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/registry/new-york-v4/ui/button"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
@@ -39,8 +39,7 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 
 type PaginationLinkProps = {
   isActive?: boolean
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">
+} & React.ComponentProps<typeof Button>
 
 function PaginationLink({
   className,
@@ -49,26 +48,29 @@ function PaginationLink({
   ...props
 }: PaginationLinkProps) {
   return (
-    <a
+    <Button
       aria-current={isActive ? "page" : undefined}
       data-slot="pagination-link"
       data-active={isActive}
-      className={cn(
-        buttonVariants({
-          variant: isActive ? "outline" : "ghost",
-          size,
-        }),
-        className
-      )}
+      variant={isActive ? "outline" : "ghost"}
+      size={size}
+      className={className}
       {...props}
     />
   )
 }
 
+type PaginationNavigationProps = {
+  showText?: boolean
+  children?: React.ReactNode
+} & React.ComponentProps<typeof PaginationLink>
+
 function PaginationPrevious({
   className,
+  showText = true,
+  children,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: PaginationNavigationProps) {
   return (
     <PaginationLink
       aria-label="Go to previous page"
@@ -77,15 +79,17 @@ function PaginationPrevious({
       {...props}
     >
       <ChevronLeftIcon />
-      <span className="hidden sm:block">Previous</span>
+      {showText && (children || <span className="hidden sm:block">Previous</span>)}
     </PaginationLink>
   )
 }
 
 function PaginationNext({
   className,
+  showText = true,
+  children,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: PaginationNavigationProps) {
   return (
     <PaginationLink
       aria-label="Go to next page"
@@ -93,7 +97,7 @@ function PaginationNext({
       className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
       {...props}
     >
-      <span className="hidden sm:block">Next</span>
+      {showText && (children || <span className="hidden sm:block">Next</span>)}
       <ChevronRightIcon />
     </PaginationLink>
   )
