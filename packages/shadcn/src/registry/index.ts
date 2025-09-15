@@ -1,4 +1,4 @@
-export { getRegistryItems, resolveRegistryItems, getRegistry } from "./api"
+export { getRegistryItems, resolveRegistryItems, getRegistry, getRegistriesIndex } from "./api"
 
 export { searchRegistries } from "./search"
 
@@ -11,6 +11,7 @@ export {
   RegistryNotConfiguredError,
   RegistryLocalFileError,
   RegistryParseError,
+  RegistriesIndexParseError,
   RegistryMissingEnvironmentVariablesError,
   RegistryInvalidNamespaceError,
 } from "./errors"
