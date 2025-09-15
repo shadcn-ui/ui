@@ -35,8 +35,10 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLegend,
+  FieldOption,
   FieldSeparator,
   FieldSet,
+  FieldTitle,
 } from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
 import {
@@ -80,170 +82,273 @@ import {
 export function FieldDemo() {
   return (
     <div className="bg-muted flex flex-wrap items-start gap-5 p-4 *:[div]:w-md">
-      <div className="flex flex-col gap-6">
-        <Card>
-          <CardContent>
-            <FieldSet>
-              <FieldGroup>
-                <Field orientation="horizontal">
+      <Card>
+        <CardContent>
+          <FieldSet>
+            <FieldGroup>
+              <Field>
+                <Label htmlFor="name">Name</Label>
+                <FieldDescription>
+                  Enter your name so it is long enough to test the layout.
+                </FieldDescription>
+                <Input id="name" type="text" />
+              </Field>
+              <Field>
+                <Label htmlFor="name-2">Name</Label>
+                <Input id="name-2" type="text" />
+                <FieldDescription>
+                  Enter your name so it is long enough to test the layout.
+                </FieldDescription>
+              </Field>
+              <Field>
+                <Checkbox id="terms-21f" />
+                <Label htmlFor="terms-21f">Accept terms and conditions</Label>
+              </Field>
+              <Field>
+                <Label htmlFor="terms-21f">Accept terms and conditions</Label>
+                <Checkbox id="terms-21f" />
+              </Field>
+              <Field>
+                <Label htmlFor="dark-mode">Dark Mode</Label>
+                <Switch id="dark-mode" />
+              </Field>
+              <RadioGroup>
+                <Field>
+                  <Label htmlFor="dark-mode-22">Dark Mode</Label>
+                  <RadioGroupItem value="dark-mode-22" id="dark-mode-22" />
+                </Field>
+              </RadioGroup>
+              <Field>
+                <Label htmlFor="enable-touch-id">Enable Touch ID</Label>
+                <FieldDescription>
+                  Enable Touch ID to quickly unlock your device.
+                </FieldDescription>
+                <Checkbox id="enable-touch-id" />
+              </Field>
+              <FieldSeparator />
+              <Field>
+                <Label htmlFor="battery-level">Battery Level</Label>
+                <FieldDescription>
+                  Choose your preferred battery level.
+                </FieldDescription>
+                <RadioGroup>
                   <Field>
-                    <Label htmlFor="enable-touch-id">Enable Touch ID</Label>
-                    <FieldDescription>
-                      Enable Touch ID to quickly unlock your device.
-                    </FieldDescription>
+                    <RadioGroupItem value="high" id="battery-level-high" />
+                    <Label htmlFor="battery-level-high">High</Label>
                   </Field>
-                  <Checkbox id="enable-touch-id" />
-                </Field>
-                <FieldSeparator />
-                <Field orientation="horizontal">
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" type="text" />
-                </Field>
-                <FieldSeparator />
-                <Field orientation="horizontal">
-                  <Label htmlFor="refresh-rate" className="flex-1">
-                    Refresh Rate
+                  <Field>
+                    <RadioGroupItem value="medium" id="battery-level-medium" />
+                    <Label htmlFor="battery-level-medium">Medium</Label>
+                  </Field>
+                  <Field>
+                    <RadioGroupItem value="low" id="battery-level-low" />
+                    <Label htmlFor="battery-level-low">Low</Label>
+                  </Field>
+                </RadioGroup>
+              </Field>
+              <FieldSeparator />
+              <Field>
+                <Label htmlFor="search-results">Search Results</Label>
+                <FieldDescription>
+                  Only selected categories will appear in search results.
+                </FieldDescription>
+                <Field>
+                  <Checkbox id="search-results-application" />
+                  <Label htmlFor="search-results-application">
+                    Application
                   </Label>
-                  <Select>
-                    <SelectTrigger id="refresh-rate">ProMotion</SelectTrigger>
-                    <SelectContent align="end">
-                      <SelectGroup>
-                        <SelectItem value="promotion">ProMotion</SelectItem>
-                      </SelectGroup>
-                      <SelectSeparator />
-                      <SelectGroup>
-                        <SelectItem value="60">60 Hz</SelectItem>
-                        <SelectItem value="120">120 Hz</SelectItem>
-                        <SelectItem value="144">144 Hz</SelectItem>
-                        <SelectItem value="165">165 Hz</SelectItem>
-                        <SelectItem value="240">240 Hz</SelectItem>
-                        <SelectItem value="360">360 Hz</SelectItem>
-                        <SelectItem value="480">480 Hz</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
                 </Field>
-                <FieldSeparator />
-                <Field orientation="horizontal">
-                  <Field className="flex-1">
-                    <Label htmlFor="connected-to-tv" className="flex-1">
-                      When connected to TV
-                    </Label>
-                    <FieldDescription>
-                      Choose what to show or use the TV as a secondary display.
-                    </FieldDescription>
-                  </Field>
-                  <Select defaultValue="ask-what-to-show">
-                    <SelectTrigger id="connected-to-tv">
+                <Field>
+                  <Checkbox id="search-results-music" />
+                  <Label htmlFor="search-results-music">Music</Label>
+                </Field>
+                <Field>
+                  <Checkbox id="search-results-video" />
+                  <Label htmlFor="search-results-video">Video</Label>
+                </Field>
+                <Field>
+                  <Checkbox id="search-results-photo" />
+                  <Label htmlFor="search-results-photo">Photo</Label>
+                </Field>
+                <Field>
+                  <Checkbox id="search-results-document" />
+                  <Label htmlFor="search-results-document">Document</Label>
+                </Field>
+                <Field>
+                  <Checkbox id="search-results-other" />
+                  <Label htmlFor="search-results-other">Other</Label>
+                </Field>
+              </Field>
+              {/* <Field>
+                <Label>Measurement System</Label>
+                <FieldDescription>
+                  Select your preferred measurement system.
+                </FieldDescription>
+                <RadioGroup>
+                  <FieldOption htmlFor="metric">
+                    <Field orientation="horizontal">
+                      <FieldTitle>Metric</FieldTitle>
+                      <RadioGroupItem value="metric" id="metric" />
+                    </Field>
+                  </FieldOption>
+                  <FieldOption>
+                    <Field orientation="horizontal">
+                      <RadioGroupItem value="imperial" id="imperial" />
+                      <FieldTitle>Imperial</FieldTitle>
+                    </Field>
+                  </FieldOption>
+                  <FieldOption htmlFor="custom-units">
+                    <Field orientation="horizontal">
+                      <FieldTitle>Custom</FieldTitle>
+                      <RadioGroupItem value="custom-units" id="custom-units" />
+                    </Field>
+                  </FieldOption>
+                </RadioGroup>
+              </Field>
+              <Field>
+                <Label>Display Resolution</Label>
+                <FieldDescription>
+                  Select your preferred display resolution.
+                </FieldDescription>
+                <RadioGroup className="grid grid-cols-2 gap-2">
+                  <FieldOption htmlFor="1080p">
+                    <Field orientation="horizontal">
+                      <RadioGroupItem value="1080p" id="1080p" />
+                      <FieldTitle>1920x1080</FieldTitle>
+                    </Field>
+                  </FieldOption>
+                  <FieldOption htmlFor="1440p">
+                    <Field orientation="horizontal">
+                      <RadioGroupItem value="1440p" id="1440p" />
+                      <FieldTitle>2560x1440</FieldTitle>
+                    </Field>
+                  </FieldOption>
+                  <FieldOption htmlFor="4k">
+                    <Field orientation="horizontal">
+                      <RadioGroupItem value="4k" id="4k" />
+                      <FieldTitle>3840x2160</FieldTitle>
+                      <FieldDescription>
+                        This is a description for the 4k option.
+                      </FieldDescription>
+                    </Field>
+                  </FieldOption>
+                  <FieldOption htmlFor="8k">
+                    <Field orientation="horizontal">
+                      <RadioGroupItem value="8k" id="8k" />
+                      <FieldTitle>7680x4320</FieldTitle>
+                    </Field>
+                  </FieldOption>
+                </RadioGroup>
+              </Field>
+              <Field orientation="horizontal">
+                <Checkbox value="4k" id="4k-1" />
+                <Label htmlFor="4k-1">3840x2160</Label>
+              </Field>
+              <Field orientation="horizontal">
+                <Label htmlFor="true-tone-333">True Tone</Label>
+                <Switch value="true-tone-333" id="true-tone-333" />
+              </Field>
+              <Field orientation="horizontal">
+                <Switch value="dark-mode" id="dark-mode" />
+                <Label htmlFor="dark-mode">Dark Mode</Label>
+              </Field>
+              <Field orientation="horizontal">
+                <Checkbox value="4k" id="4k-1" />
+                <Label htmlFor="4k-1">3840x2160</Label>
+                <FieldDescription>
+                  This is a description for the 4k option.
+                </FieldDescription>
+              </Field>
+              <Field orientation="horizontal">
+                <Label htmlFor="4k-2222">3840x2160</Label>
+                <FieldDescription>
+                  This is a longer description. Keep it short and sweet. Lorem
+                  ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+                  quos.
+                </FieldDescription>
+                <Checkbox value="4k" id="4k-12222" />
+              </Field>
+            </FieldGroup>
+            <FieldGroup>
+              <Field>
+                <Label htmlFor="name">Name</Label>
+                <FieldDescription>Enter your name.</FieldDescription>
+                <Input id="name" type="text" />
+              </Field>
+              <Field orientation="horizontal">
+                <Input id="name-3k1" type="text" />
+                <Label htmlFor="name-3k1">Name</Label>
+                <FieldDescription>Enter your name.</FieldDescription>
+              </Field>
+              <Field orientation="horizontal">
+                <Label htmlFor="name">Name</Label>
+                <FieldDescription>Enter your name.</FieldDescription>
+                <Input id="name" type="text" />
+              </Field>
+              <Field orientation="horizontal">
+                <Label htmlFor="enable-touch-id">Enable Touch ID</Label>
+                <FieldDescription>
+                  Enable Touch ID to quickly unlock your device.
+                </FieldDescription>
+                <Checkbox id="enable-touch-id" />
+              </Field>
+              <FieldSeparator />
+              <Field orientation="horizontal">
+                <Label htmlFor="username">Username</Label>
+                <Input id="username" type="text" />
+              </Field>
+              <FieldSeparator />
+              <Field orientation="horizontal">
+                <Label htmlFor="refresh-rate" className="flex-1">
+                  Refresh Rate
+                </Label>
+                <Select>
+                  <SelectTrigger id="refresh-rate">ProMotion</SelectTrigger>
+                  <SelectContent align="end">
+                    <SelectGroup>
+                      <SelectItem value="promotion">ProMotion</SelectItem>
+                    </SelectGroup>
+                    <SelectSeparator />
+                    <SelectGroup>
+                      <SelectItem value="60">60 Hz</SelectItem>
+                      <SelectItem value="120">120 Hz</SelectItem>
+                      <SelectItem value="144">144 Hz</SelectItem>
+                      <SelectItem value="165">165 Hz</SelectItem>
+                      <SelectItem value="240">240 Hz</SelectItem>
+                      <SelectItem value="360">360 Hz</SelectItem>
+                      <SelectItem value="480">480 Hz</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </Field>
+              <FieldSeparator />
+              <Field orientation="horizontal">
+                <Label htmlFor="connected-to-tv" className="flex-1">
+                  When connected to TV
+                </Label>
+                <FieldDescription>
+                  Choose what to show or use the TV as a secondary display.
+                </FieldDescription>
+                <Select defaultValue="ask-what-to-show">
+                  <SelectTrigger id="connected-to-tv">
+                    Ask What to Show
+                  </SelectTrigger>
+                  <SelectContent align="end">
+                    <SelectItem value="ask-what-to-show">
                       Ask What to Show
-                    </SelectTrigger>
-                    <SelectContent align="end">
-                      <SelectItem value="ask-what-to-show">
-                        Ask What to Show
-                      </SelectItem>
-                      <SelectItem value="mirror">
-                        Mirror Entire Screen
-                      </SelectItem>
-                      <SelectItem value="extend">Extend Display</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </Field>
-                <FieldSeparator />
-                <Field>
-                  <Label htmlFor="battery-level">Battery Level</Label>
-                  <FieldDescription>
-                    Choose your preferred battery level.
-                  </FieldDescription>
-                  <RadioGroup>
-                    <Field orientation="horizontal">
-                      <RadioGroupItem value="high" id="battery-level-high" />
-                      <Label htmlFor="battery-level-high">High</Label>
-                    </Field>
-                    <Field orientation="horizontal">
-                      <RadioGroupItem
-                        value="medium"
-                        id="battery-level-medium"
-                      />
-                      <Label htmlFor="battery-level-medium">Medium</Label>
-                    </Field>
-                    <Field orientation="horizontal">
-                      <RadioGroupItem value="low" id="battery-level-low" />
-                      <Label htmlFor="battery-level-low">Low</Label>
-                    </Field>
-                  </RadioGroup>
-                </Field>
-                <FieldSeparator />
-                <Field>
-                  <Label htmlFor="search-results">Search Results</Label>
-                  <FieldDescription>
-                    Only selected categories will appear in search results.
-                  </FieldDescription>
-                  <Field orientation="horizontal">
-                    <Checkbox id="search-results-application" />
-                    <Label htmlFor="search-results-application">
-                      Application
-                    </Label>
-                  </Field>
-                  <Field orientation="horizontal">
-                    <Checkbox id="search-results-music" />
-                    <Label htmlFor="search-results-music">Music</Label>
-                  </Field>
-                  <Field orientation="horizontal">
-                    <Checkbox id="search-results-video" />
-                    <Label htmlFor="search-results-video">Video</Label>
-                  </Field>
-                  <Field orientation="horizontal">
-                    <Checkbox id="search-results-photo" />
-                    <Label htmlFor="search-results-photo">Photo</Label>
-                  </Field>
-                  <Field orientation="horizontal">
-                    <Checkbox id="search-results-document" />
-                    <Label htmlFor="search-results-document">Document</Label>
-                  </Field>
-                  <Field orientation="horizontal">
-                    <Checkbox id="search-results-other" />
-                    <Label htmlFor="search-results-other">Other</Label>
-                  </Field>
-                </Field>
-              </FieldGroup>
-            </FieldSet>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent>
-            <FieldSet>
-              <FieldGroup variant="outline">
-                <Field orientation="horizontal">
-                  <Label htmlFor="brightness">Brightness</Label>
-                  <Slider
-                    id="brightness"
-                    defaultValue={[50]}
-                    max={100}
-                    step={1}
-                  />
-                </Field>
-                <FieldSeparator />
-                <Field orientation="horizontal">
-                  <Label htmlFor="automatic-brightness">
-                    Automatic Brightness
-                  </Label>
-                  <Switch id="automatic-brightness" />
-                </Field>
-                <FieldSeparator />
-                <Field orientation="horizontal">
-                  <Field>
-                    <Label htmlFor="true-tone">True Tone</Label>
-                    <FieldDescription>
-                      Automatically adjusts the color temperature to match the
-                      ambient light.
-                    </FieldDescription>
-                  </Field>
-                  <Switch id="true-tone" />
-                </Field>
-              </FieldGroup>
-            </FieldSet>
-          </CardContent>
-        </Card>
+                    </SelectItem>
+                    <SelectItem value="mirror">Mirror Entire Screen</SelectItem>
+                    <SelectItem value="extend">Extend Display</SelectItem>
+                  </SelectContent>
+                </Select>
+              </Field>
+              <FieldSeparator /> */}
+            </FieldGroup>
+          </FieldSet>
+        </CardContent>
+      </Card>
+      {/* <div className="flex flex-col gap-6">
+        <FieldOptionRadioDemo />
         <FormInputDemo />
         <FormInputTypesDemo />
         <FeedbackForm />
@@ -251,90 +356,6 @@ export function FieldDemo() {
         <CheckoutForm />
       </div>
       <div className="flex flex-col gap-6">
-        <Card>
-          <CardContent>
-            <RadioGroup defaultValue="plus">
-              <Field orientation="horizontal" asChild>
-                <Label htmlFor="plus">
-                  <Field>
-                    <div data-slot="label">Plus</div>
-                    <FieldDescription>
-                      For individuals and small teams
-                    </FieldDescription>
-                  </Field>
-                  <RadioGroupItem value="plus" id="plus" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label htmlFor="pro">
-                  <div data-slot="label">Pro</div>
-                  <RadioGroupItem value="pro" id="pro" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal">
-                <RadioGroupItem value="enterprise" id="enterprise" />
-                <Label htmlFor="enterprise">Enterprise</Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label htmlFor="custom">
-                  <RadioGroupItem value="custom" id="custom" />
-                  <Field>
-                    <div data-slot="label">Custom</div>
-                    <FieldDescription>
-                      For large teams and enterprises
-                    </FieldDescription>
-                  </Field>
-                </Label>
-              </Field>
-            </RadioGroup>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent>
-            <FieldGroup className="gap-2">
-              <Field orientation="horizontal" asChild>
-                <Label>
-                  <Field>
-                    <div>Increase Contrast</div>
-                    <FieldDescription>
-                      Increase the contrast of the UI to make it easier to read.
-                    </FieldDescription>
-                  </Field>
-                  <Checkbox id="increase-contrast" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label>
-                  <Field>
-                    <div>Reduce Transparency</div>
-                    <FieldDescription>
-                      Reduce the transparency of the UI to make it easier to
-                      read.
-                    </FieldDescription>
-                  </Field>
-                  <Checkbox id="reduce-transparency" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label>
-                  <Field>
-                    <div>Reduce Motion</div>
-                    <FieldDescription>
-                      Reduce the motion of the UI to make it easier to read.
-                    </FieldDescription>
-                  </Field>
-                  <Checkbox id="reduce-motion" />
-                </Label>
-              </Field>
-              <Field orientation="horizontal" asChild>
-                <Label>
-                  <div>Enable Dark Mode</div>
-                  <Checkbox id="enable-dark-mode" />
-                </Label>
-              </Field>
-            </FieldGroup>
-          </CardContent>
-        </Card>
         <FormSpecialInputTypesDemo />
         <FormTextareaDemo />
         <FormSelectDemo />
@@ -366,7 +387,7 @@ export function FieldDemo() {
       <div className="flex flex-col gap-6">
         <ComplexFormDemo />
         <ComplexFormInvalidDemo />
-      </div>
+      </div> */}
     </div>
   )
 }
@@ -679,8 +700,8 @@ function ContactForm() {
           <FieldGroup>
             <div className="grid grid-cols-2 gap-4">
               <Field>
-                <Label htmlFor="contact-3k2-firstName">First Name</Label>
-                <Input id="contact-3k2-firstName" placeholder="John" required />
+                <Label htmlFor="contact-3k1-firstName">First Name</Label>
+                <Input id="contact-3k1-firstName" placeholder="John" required />
               </Field>
               <Field>
                 <Label htmlFor="contact-3k2-lastName">Last Name</Label>
@@ -3911,6 +3932,105 @@ function CheckoutForm() {
             </Field>
           </FieldGroup>
         </form>
+      </CardContent>
+    </Card>
+  )
+}
+
+function FieldOptionRadioDemo() {
+  return (
+    <Card>
+      <CardContent>
+        <FieldGroup>
+          <Field>
+            <Label>Measurement System</Label>
+            <FieldDescription>
+              Select your preferred measurement system.
+            </FieldDescription>
+            <RadioGroup>
+              <FieldOption htmlFor="metric">
+                <Field orientation="horizontal">
+                  <FieldTitle>Metric</FieldTitle>
+                  <RadioGroupItem value="metric" id="metric" />
+                </Field>
+              </FieldOption>
+              <FieldOption>
+                <Field orientation="horizontal">
+                  <RadioGroupItem value="imperial" id="imperial" />
+                  <FieldTitle>Imperial</FieldTitle>
+                </Field>
+              </FieldOption>
+              <FieldOption htmlFor="custom-units">
+                <Field orientation="horizontal">
+                  <FieldTitle>Custom</FieldTitle>
+                  <RadioGroupItem value="custom-units" id="custom-units" />
+                </Field>
+              </FieldOption>
+            </RadioGroup>
+          </Field>
+          <Field>
+            <Label>Display Resolution</Label>
+            <FieldDescription>
+              Select your preferred display resolution.
+            </FieldDescription>
+            <RadioGroup className="grid grid-cols-2 gap-2">
+              <FieldOption htmlFor="1080p">
+                <Field orientation="horizontal">
+                  <RadioGroupItem value="1080p" id="1080p" />
+                  <FieldTitle>1920x1080</FieldTitle>
+                </Field>
+              </FieldOption>
+              <FieldOption htmlFor="1440p">
+                <Field orientation="horizontal">
+                  <RadioGroupItem value="1440p" id="1440p" />
+                  <FieldTitle>2560x1440</FieldTitle>
+                </Field>
+              </FieldOption>
+              <FieldOption htmlFor="4k">
+                <Field orientation="horizontal">
+                  <RadioGroupItem value="4k" id="4k" />
+                  <FieldTitle>3840x2160</FieldTitle>
+                  <FieldDescription>
+                    This is a description for the 4k option.
+                  </FieldDescription>
+                </Field>
+              </FieldOption>
+              <FieldOption htmlFor="8k">
+                <Field orientation="horizontal">
+                  <RadioGroupItem value="8k" id="8k" />
+                  <FieldTitle>7680x4320</FieldTitle>
+                </Field>
+              </FieldOption>
+            </RadioGroup>
+          </Field>
+          <Field orientation="horizontal">
+            <Checkbox value="4k" id="4k-1" />
+            <Label htmlFor="4k-1">3840x2160</Label>
+          </Field>
+          <Field orientation="horizontal">
+            <Label htmlFor="true-tone-333">True Tone</Label>
+            <Switch value="true-tone-333" id="true-tone-333" />
+          </Field>
+          <Field orientation="horizontal">
+            <Switch value="dark-mode" id="dark-mode" />
+            <Label htmlFor="dark-mode">Dark Mode</Label>
+          </Field>
+          <Field orientation="horizontal">
+            <Checkbox value="4k" id="4k-1" />
+            <Label htmlFor="4k-1">3840x2160</Label>
+            <FieldDescription>
+              This is a description for the 4k option.
+            </FieldDescription>
+          </Field>
+          <Field orientation="horizontal">
+            <Label htmlFor="4k-2222">3840x2160</Label>
+            <FieldDescription>
+              This is a longer description. Keep it short and sweet. Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+            </FieldDescription>
+            <Checkbox value="4k" id="4k-12222" />
+          </Field>
+        </FieldGroup>
       </CardContent>
     </Card>
   )

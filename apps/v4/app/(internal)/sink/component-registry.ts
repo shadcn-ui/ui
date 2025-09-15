@@ -29,6 +29,7 @@ import { InputOTPDemo } from "./components/input-otp-demo"
 import { LabelDemo } from "./components/label-demo"
 import { MenubarDemo } from "./components/menubar-demo"
 import { NavigationMenuDemo } from "./components/navigation-menu-demo"
+import { OptionDemo } from "./components/option-demo"
 import { PaginationDemo } from "./components/pagination-demo"
 import { PopoverDemo } from "./components/popover-demo"
 import { ProgressDemo } from "./components/progress-demo"
@@ -180,6 +181,10 @@ export const componentRegistry: Record<string, ComponentConfig> = {
   "navigation-menu": {
     name: "Navigation Menu",
     component: NavigationMenuDemo,
+  },
+  option: {
+    name: "Option",
+    component: OptionDemo,
   },
   pagination: {
     name: "Pagination",

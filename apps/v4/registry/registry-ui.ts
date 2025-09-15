@@ -352,6 +352,16 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "option",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/option.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "pagination",
     type: "registry:ui",
     registryDependencies: ["button"],
