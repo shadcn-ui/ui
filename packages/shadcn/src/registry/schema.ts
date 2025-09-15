@@ -52,18 +52,12 @@ export const registryItemCssVarsSchema = z.object({
   dark: z.record(z.string(), z.string()).optional(),
 })
 
-export const registryItemCssSchema = z.record(
-  z.string(),
-  z.lazy(() =>
-    z.union([
-      z.string(),
-      z.record(
-        z.string(),
-        z.union([z.string(), z.record(z.string(), z.string())])
-      ),
-    ])
-  )
+// Recursive type for CSS properties that supports empty objects at any level.
+const cssValueSchema: z.ZodType<any> = z.lazy(() =>
+  z.union([z.string(), z.record(z.string(), cssValueSchema)])
 )
+
+export const registryItemCssSchema = z.record(z.string(), cssValueSchema)
 
 export const registryItemEnvVarsSchema = z.record(z.string(), z.string())
 
@@ -215,3 +209,8 @@ export const searchResultsSchema = z.object({
   }),
   items: z.array(searchResultItemSchema),
 })
+
+export const registriesIndexSchema = z.record(
+  z.string().regex(/^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/),
+  z.string()
+)

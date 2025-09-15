@@ -1,7 +1,11 @@
 import path from "path"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
-import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
+import {
+  BASE_COLORS,
+  BUILTIN_REGISTRIES,
+  REGISTRY_URL,
+} from "@/src/registry/constants"
 import {
   clearRegistryContext,
   setRegistryHeaders,
@@ -20,7 +24,7 @@ import {
 import { isUrl } from "@/src/registry/utils"
 import {
   iconsSchema,
-  rawConfigSchema,
+  registriesIndexSchema,
   registryBaseColorSchema,
   registryConfigSchema,
   registryIndexSchema,
@@ -271,4 +275,17 @@ export async function getItemTargetPath(
     config.resolvedPaths[parent as keyof typeof config.resolvedPaths],
     type
   )
+}
+
+export async function fetchRegistries() {
+  try {
+    // TODO: Do we want this inside /r?
+    const url = `${REGISTRY_URL}/registries.json`
+    const [data] = await fetchRegistry([url], {
+      useCache: process.env.NODE_ENV !== "development",
+    })
+    return registriesIndexSchema.parse(data)
+  } catch {
+    return null
+  }
 }

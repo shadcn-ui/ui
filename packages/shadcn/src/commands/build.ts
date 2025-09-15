@@ -53,10 +53,6 @@ export const build = new Command()
 
       const buildSpinner = spinner("Building registry...")
       for (const registryItem of result.data.items) {
-        if (!registryItem.files) {
-          continue
-        }
-
         buildSpinner.start(`Building ${registryItem.name}...`)
 
         // Add the schema to the registry item.
@@ -64,7 +60,7 @@ export const build = new Command()
           "https://ui.shadcn.com/schema/registry-item.json"
 
         // Loop through each file in the files array.
-        for (const file of registryItem.files) {
+        for (const file of registryItem.files ?? []) {
           file["content"] = await fs.readFile(
             path.resolve(resolvePaths.cwd, file.path),
             "utf-8"
