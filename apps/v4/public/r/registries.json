@@ -9,7 +9,7 @@
   "@cult-ui": "https://cult-ui.com/r/{name}.json",
   "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
   "@kokonutui": "https://kokonutui.com/r/{name}.json",
-  "@magic-ui": "https://magicui.design/r/{name}.json",
+  "@magicui": "https://magicui.design/r/{name}.json",
   "@motion-primitives": "https://motion-primitives.com/c/{name}.json",
   "@originui": "https://originui.com/r/{name}.json",
   "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
