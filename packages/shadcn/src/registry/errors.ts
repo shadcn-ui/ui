@@ -299,7 +299,9 @@ export class RegistriesIndexParseError extends RegistryError {
         .filter((v, i, arr) => arr.indexOf(v) === i) // remove duplicates
 
       if (invalidNamespaces.length > 0) {
-        message = `Failed to parse registries index. Invalid registry namespace(s): ${invalidNamespaces.join(", ")}\n${parseError.errors
+        message = `Failed to parse registries index. Invalid registry namespace(s): ${invalidNamespaces.join(
+          ", "
+        )}\n${parseError.errors
           .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
           .join("\n")}`
       } else {

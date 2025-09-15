@@ -27,7 +27,12 @@ import {
 } from "vitest"
 import { z } from "zod"
 
-import { getRegistriesConfig, getRegistry, getRegistryItems, getRegistriesIndex } from "./api"
+import {
+  getRegistriesConfig,
+  getRegistriesIndex,
+  getRegistry,
+  getRegistryItems,
+} from "./api"
 import { RegistriesIndexParseError } from "./errors"
 
 vi.mock("@/src/utils/handle-error", () => ({
@@ -1714,7 +1719,9 @@ describe("getRegistriesConfig", () => {
         })
       )
 
-      await expect(getRegistriesIndex({ useCache: false })).rejects.toThrow(RegistriesIndexParseError)
+      await expect(getRegistriesIndex({ useCache: false })).rejects.toThrow(
+        RegistriesIndexParseError
+      )
     })
 
     it("should handle network timeout", async () => {
