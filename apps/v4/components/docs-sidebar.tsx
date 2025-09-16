@@ -30,9 +30,13 @@ const TOP_LEVEL_SECTIONS = [
     name: "MCP Server",
     href: "/docs/mcp",
   },
+  {
+    name: "Changelog",
+    href: "/docs/changelog",
+  },
 ]
 const EXCLUDED_SECTIONS = ["installation", "dark-mode"]
-const EXCLUDED_PAGES = ["/docs"]
+const EXCLUDED_PAGES = ["/docs", "/docs/changelog"]
 
 export function DocsSidebar({
   tree,
