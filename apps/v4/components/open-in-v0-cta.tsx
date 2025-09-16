@@ -13,7 +13,7 @@ export function OpenInV0Cta({ className }: React.ComponentProps<"div">) {
         Deploy your shadcn/ui app on Vercel
       </div>
       <div className="text-muted-foreground">
-        Trusted by OpenAI, Sonos, Chick-fil-A, and more.
+        Trusted by OpenAI, Sonos, Adobe, and more.
       </div>
       <div className="text-muted-foreground">
         Vercel provides tools and infrastructure to deploy apps and features at

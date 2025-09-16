@@ -4,9 +4,10 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import { type DialogProps } from "@radix-ui/react-dialog"
 import { IconArrowRight } from "@tabler/icons-react"
-import { CornerDownLeftIcon } from "lucide-react"
+import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
+import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
@@ -35,17 +36,21 @@ import { Separator } from "@/registry/new-york-v4/ui/separator"
 export function CommandMenu({
   tree,
   colors,
+  blocks,
+  navItems,
   ...props
 }: DialogProps & {
   tree: typeof source.pageTree
   colors: ColorPalette[]
+  blocks?: { name: string; description: string; categories: string[] }[]
+  navItems?: { href: string; label: string }[]
 }) {
   const router = useRouter()
   const isMac = useIsMac()
   const [config] = useConfig()
   const [open, setOpen] = React.useState(false)
   const [selectedType, setSelectedType] = React.useState<
-    "color" | "page" | "component" | null
+    "color" | "page" | "component" | "block" | null
   >(null)
   const [copyPayload, setCopyPayload] = React.useState("")
   const packageManager = config.packageManager || "pnpm"
@@ -72,6 +77,14 @@ export function CommandMenu({
       setCopyPayload(color.className)
     },
     [setSelectedType, setCopyPayload]
+  )
+
+  const handleBlockHighlight = React.useCallback(
+    (block: { name: string; description: string; categories: string[] }) => {
+      setSelectedType("block")
+      setCopyPayload(`${packageManager} dlx shadcn@latest add ${block.name}`)
+    },
+    [setSelectedType, setCopyPayload, packageManager]
   )
 
   const runCommand = React.useCallback((command: () => unknown) => {
@@ -101,6 +114,13 @@ export function CommandMenu({
             copyToClipboardWithMeta(copyPayload, {
               name: "copy_color",
               properties: { color: copyPayload },
+            })
+          }
+
+          if (selectedType === "block") {
+            copyToClipboardWithMeta(copyPayload, {
+              name: "copy_npm_command",
+              properties: { command: copyPayload, pm: packageManager },
             })
           }
 
@@ -145,12 +165,45 @@ export function CommandMenu({
           <DialogTitle>Search documentation...</DialogTitle>
           <DialogDescription>Search for a command to run...</DialogDescription>
         </DialogHeader>
-        <Command className="**:data-[slot=command-input-wrapper]:bg-input/50 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-9 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-9 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border">
+        <Command
+          className="**:data-[slot=command-input-wrapper]:bg-input/50 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-9 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-9 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border"
+          filter={(value, search, keywords) => {
+            const extendValue = value + " " + (keywords?.join(" ") || "")
+            if (extendValue.toLowerCase().includes(search.toLowerCase())) {
+              return 1
+            }
+            return 0
+          }}
+        >
           <CommandInput placeholder="Search documentation..." />
           <CommandList className="no-scrollbar min-h-80 scroll-pt-2 scroll-pb-1.5">
             <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
               No results found.
             </CommandEmpty>
+            {navItems && navItems.length > 0 && (
+              <CommandGroup
+                heading="Pages"
+                className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+              >
+                {navItems.map((item) => (
+                  <CommandMenuItem
+                    key={item.href}
+                    value={`Navigation ${item.label}`}
+                    keywords={["nav", "navigation", item.label.toLowerCase()]}
+                    onHighlight={() => {
+                      setSelectedType("page")
+                      setCopyPayload("")
+                    }}
+                    onSelect={() => {
+                      runCommand(() => router.push(item.href))
+                    }}
+                  >
+                    <IconArrowRight />
+                    {item.label}
+                  </CommandMenuItem>
+                ))}
+              </CommandGroup>
+            )}
             {tree.children.map((group) => (
               <CommandGroup
                 key={group.$id}
@@ -161,6 +214,10 @@ export function CommandMenu({
                   group.children.map((item) => {
                     if (item.type === "page") {
                       const isComponent = item.url.includes("/components/")
+
+                      if (!showMcpDocs && item.url.includes("/mcp")) {
+                        return null
+                      }
 
                       return (
                         <CommandMenuItem
@@ -227,6 +284,41 @@ export function CommandMenu({
                 ))}
               </CommandGroup>
             ))}
+            {blocks?.length ? (
+              <CommandGroup
+                heading="Blocks"
+                className="!p-0 [&_[cmdk-group-heading]]:!p-3"
+              >
+                {blocks.map((block) => (
+                  <CommandMenuItem
+                    key={block.name}
+                    value={block.name}
+                    onHighlight={() => {
+                      handleBlockHighlight(block)
+                    }}
+                    keywords={[
+                      "block",
+                      block.name,
+                      block.description,
+                      ...block.categories,
+                    ]}
+                    onSelect={() => {
+                      runCommand(() =>
+                        router.push(
+                          `/blocks/${block.categories[0]}#${block.name}`
+                        )
+                      )
+                    }}
+                  >
+                    <SquareDashedIcon />
+                    {block.description}
+                    <span className="text-muted-foreground ml-auto font-mono text-xs font-normal tabular-nums">
+                      {block.name}
+                    </span>
+                  </CommandMenuItem>
+                ))}
+              </CommandGroup>
+            ) : null}
           </CommandList>
         </Command>
         <div className="text-muted-foreground absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium dark:border-t-neutral-700 dark:bg-neutral-800">

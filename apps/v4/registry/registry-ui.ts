@@ -1,4 +1,4 @@
-import { type Registry } from "shadcn/registry"
+import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
@@ -114,7 +114,7 @@ export const ui: Registry["items"] = [
   {
     name: "calendar",
     type: "registry:ui",
-    dependencies: ["react-day-picker@8.10.1", "date-fns"],
+    dependencies: ["react-day-picker@latest", "date-fns"],
     registryDependencies: ["button"],
     files: [
       {
@@ -155,7 +155,7 @@ export const ui: Registry["items"] = [
       },
     ],
     registryDependencies: ["card"],
-    dependencies: ["recharts", "lucide-react"],
+    dependencies: ["recharts@2.15.4", "lucide-react"],
   },
   {
     name: "checkbox",

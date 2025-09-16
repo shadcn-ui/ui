@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { registryItemSchema } from "shadcn/registry"
+import { registryItemSchema } from "shadcn/schema"
 import { z } from "zod"
 
 import { siteConfig } from "@/lib/config"
@@ -34,7 +34,7 @@ export async function generateMetadata({
   const description = item.description
 
   return {
-    title: `${item.name}${item.description ? ` - ${item.description}` : ""}`,
+    title: item.description,
     description,
     openGraph: {
       title,

@@ -137,7 +137,7 @@
     "name": "calendar",
     "type": "registry:ui",
     "dependencies": [
-      "react-day-picker@8.10.1",
+      "react-day-picker@latest",
       "date-fns"
     ],
     "registryDependencies": [
@@ -180,7 +180,7 @@
     "name": "chart",
     "type": "registry:ui",
     "dependencies": [
-      "recharts",
+      "recharts@2.15.4",
       "lucide-react"
     ],
     "registryDependencies": [
