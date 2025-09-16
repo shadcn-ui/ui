@@ -5,20 +5,25 @@ import {
   IconArrowRight,
   IconBrandGithubCopilot,
   IconChevronDown,
+  IconCircleCheck,
   IconCloudCode,
   IconHeart,
   IconMinus,
+  IconPin,
   IconPlus,
+  IconUserCircle,
 } from "@tabler/icons-react"
 import {
   AlertTriangleIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
+  AudioLinesIcon,
   CheckIcon,
   ChevronDownIcon,
   CopyIcon,
   FlipHorizontalIcon,
   FlipVerticalIcon,
+  MoreHorizontalIcon,
   PercentIcon,
   RotateCwIcon,
   SearchIcon,
@@ -29,7 +34,10 @@ import {
 } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+} from "@/registry/new-york-v4/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -56,9 +64,15 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
+  SelectValue,
 } from "@/registry/new-york-v4/ui/select"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { Textarea } from "@/registry/new-york-v4/ui/textarea"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/new-york-v4/ui/tooltip"
 
 export function ButtonGroupDemo() {
   const [currency, setCurrency] = useState("$")
@@ -141,6 +155,33 @@ export function ButtonGroupDemo() {
                 <DropdownMenuItem variant="destructive">
                   <TrashIcon />
                   Delete Conversation
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </ButtonGroup>
+        <ButtonGroup className="[--radius:0.9rem]">
+          <Button variant="secondary">Actions</Button>
+          <ButtonGroupSeparator />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="secondary">
+                <MoreHorizontalIcon />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="[--radius:0.9rem]">
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <IconCircleCheck />
+                  Select Messages
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPin />
+                  Edit Pins
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconUserCircle />
+                  Set Up Name & Photo
                 </DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
@@ -316,6 +357,190 @@ export function ButtonGroupDemo() {
           <span>1.2K</span>
         </Button>
       </ButtonGroup>
+
+      <ExportButtonGroup />
+
+      <ButtonGroup className="gap-2 [--radius:9999rem]">
+        <ButtonGroup>
+          <Button variant="outline" size="icon">
+            <IconPlus />
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <InputGroup>
+            <Input placeholder="Send a message..." />
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <InputGroupAddon align="end">
+                  <AudioLinesIcon />
+                </InputGroupAddon>
+              </TooltipTrigger>
+              <TooltipContent>Voice Mode</TooltipContent>
+            </Tooltip>
+          </InputGroup>
+        </ButtonGroup>
+      </ButtonGroup>
+
+      <ButtonGroup>
+        <Button variant="outline" size="sm">
+          <ArrowLeftIcon />
+          Previous
+        </Button>
+        <Button variant="outline" size="sm">
+          1
+        </Button>
+        <Button variant="outline" size="sm">
+          2
+        </Button>
+        <Button variant="outline" size="sm">
+          3
+        </Button>
+        <Button variant="outline" size="sm">
+          4
+        </Button>
+        <Button variant="outline" size="sm">
+          5
+        </Button>
+        <Button variant="outline" size="sm">
+          Next
+          <ArrowRightIcon />
+        </Button>
+      </ButtonGroup>
+
+      <ButtonGroup className="gap-2 [--radius:0.9rem] [--spacing:0.22rem]">
+        <ButtonGroup>
+          <Button variant="outline">1</Button>
+          <Button variant="outline">2</Button>
+          <Button variant="outline">3</Button>
+          <Button variant="outline">4</Button>
+          <Button variant="outline">5</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline" size="icon">
+            <ArrowLeftIcon />
+          </Button>
+          <Button variant="outline" size="icon">
+            <ArrowRightIcon />
+          </Button>
+        </ButtonGroup>
+      </ButtonGroup>
+
+      <ButtonGroup aria-label="Single navigation button">
+        <Button variant="outline" size="icon">
+          <ArrowLeftIcon />
+        </Button>
+      </ButtonGroup>
+
+      <Field>
+        <Label id="alignment-label">Text Alignment</Label>
+        <ButtonGroup aria-labelledby="alignment-label">
+          <Button variant="outline" size="sm">
+            Left
+          </Button>
+          <Button variant="outline" size="sm">
+            Center
+          </Button>
+          <Button variant="outline" size="sm">
+            Right
+          </Button>
+          <Button variant="outline" size="sm">
+            Justify
+          </Button>
+        </ButtonGroup>
+      </Field>
+
+      <div className="flex gap-6">
+        <ButtonGroup
+          orientation="vertical"
+          aria-label="Media controls"
+          className="h-fit"
+        >
+          <Button variant="outline" size="icon">
+            <IconPlus />
+          </Button>
+          <Button variant="outline" size="icon">
+            <IconMinus />
+          </Button>
+        </ButtonGroup>
+
+        <ButtonGroup
+          orientation="vertical"
+          aria-label="Design tools palette"
+          className="gap-2"
+        >
+          <ButtonGroup orientation="vertical">
+            <Button variant="outline" size="icon">
+              <SearchIcon />
+            </Button>
+            <Button variant="outline" size="icon">
+              <CopyIcon />
+            </Button>
+            <Button variant="outline" size="icon">
+              <ShareIcon />
+            </Button>
+          </ButtonGroup>
+
+          <ButtonGroup orientation="vertical">
+            <Button variant="outline" size="icon">
+              <FlipHorizontalIcon />
+            </Button>
+            <Button variant="outline" size="icon">
+              <FlipVerticalIcon />
+            </Button>
+            <Button variant="outline" size="icon">
+              <RotateCwIcon />
+            </Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button variant="outline" size="icon">
+              <TrashIcon />
+            </Button>
+          </ButtonGroup>
+        </ButtonGroup>
+
+        <ButtonGroup orientation="vertical">
+          <Button variant="outline" size="sm">
+            <IconPlus /> Increase
+          </Button>
+          <Button variant="outline" size="sm">
+            <IconMinus /> Decrease
+          </Button>
+        </ButtonGroup>
+
+        <ButtonGroup orientation="vertical">
+          <Button variant="secondary" size="sm">
+            <IconPlus /> Increase
+          </Button>
+          <ButtonGroupSeparator orientation="horizontal" />
+          <Button variant="secondary" size="sm">
+            <IconMinus /> Decrease
+          </Button>
+        </ButtonGroup>
+      </div>
     </div>
+  )
+}
+
+function ExportButtonGroup() {
+  const [exportType, setExportType] = useState("pdf")
+  return (
+    <>
+      <ButtonGroup>
+        <Input />
+        <Select value={exportType} onValueChange={setExportType}>
+          <SelectTrigger>
+            <SelectValue asChild>
+              <span>{exportType}</span>
+            </SelectValue>
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="pdf">pdf</SelectItem>
+            <SelectItem value="xlsx">xlsx</SelectItem>
+            <SelectItem value="csv">csv</SelectItem>
+            <SelectItem value="json">json</SelectItem>
+          </SelectContent>
+        </Select>
+      </ButtonGroup>
+    </>
   )
 }
