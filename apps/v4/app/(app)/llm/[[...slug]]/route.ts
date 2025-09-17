@@ -16,7 +16,6 @@ export async function GET(
     notFound()
   }
 
-  // @ts-expect-error - revisit fumadocs types.
   return new NextResponse(page.data.content, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
