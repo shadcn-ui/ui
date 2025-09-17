@@ -4,10 +4,33 @@ import { cn } from "@/lib/utils"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
+function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
+  return (
+    <fieldset
+      data-slot="field-set"
+      className={cn("flex flex-col gap-6", className)}
+      {...props}
+    />
+  )
+}
+
+function FieldLegend({ className, ...props }: React.ComponentProps<"legend">) {
+  return (
+    <legend
+      data-slot="field-legend"
+      className={cn(
+        "mb-6 text-base font-medium has-[+[data-slot=field-description]]:mb-1",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 const fieldGroupVariants = cva("group/field-group flex flex-col gap-7", {
   variants: {
     variant: {
-      default: "*:data-[slot=field-group]:gap-4",
+      default: "[&>[data-slot=field-group]]:gap-4",
       outline: "border border-input rounded-lg p-6 gap-6 bg-background",
     },
   },
@@ -31,39 +54,40 @@ function FieldGroup({
   )
 }
 
-function FieldOption({ className, ...props }: React.ComponentProps<"label">) {
-  return (
-    <Label
-      data-slot="field-option"
-      className={cn(
-        "group/field-option has-data-[state=checked]:bg-primary/5 dark:has-data-[state=checked]:bg-primary/10 has-data-[state=checked]:border-ring group/option flex items-start gap-2 rounded-md border",
-        "has-data-[slot=field]:flex-col *:data-[slot=field]:p-4",
-        "*:[img]:rounded-t-md",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
 function Field({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field"
       className={cn(
         "group/field flex w-full flex-col items-start gap-3",
-        "has-[>*[data-slot=checkbox],>*[data-slot=radio-group-item],>*[data-slot=switch]]:flex-row",
-        "has-[label+[data-slot=checkbox],label+[data-slot=radio-group-item],label+[data-slot=switch]]:*:first:flex-1",
-        "has-[[data-slot=field-title]+[data-slot=checkbox],[data-slot=field-title]+[data-slot=radio-group-item],[data-slot=field-title]+[data-slot=switch]]:*:first:flex-1",
-        // Child Input.
-        "*:data-[slot=label]:w-fit",
-        "*:data-[slot=toggle-group]:w-full",
-        "*:data-[slot=input]:w-full",
-        "*:data-[slot=select-trigger]:w-full",
-        "*:data-[slot=slider]:w-full",
-        "*:data-[slot=radio-group]:w-full",
-        // Invalid State.
-        "data-[invalid=true]:*:data-[slot=label]:text-destructive data-[invalid=true]:*:data-[slot=field-description]:text-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:border-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/20 dark:data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/40",
+
+        // Label + input alignment
+        "has-[>[data-slot=checkbox]]:flex-row",
+        "has-[>[data-slot=radio-group-item]]:flex-row",
+        "has-[>[data-slot=switch]]:flex-row",
+
+        "has-[label+[data-slot=checkbox]]:[&>:first-child]:flex-1",
+        "has-[label+[data-slot=radio-group-item]]:[&>:first-child]:flex-1",
+        "has-[label+[data-slot=switch]]:[&>:first-child]:flex-1",
+
+        "has-[[data-slot=field-title]+[data-slot=checkbox]]:[&>:first-child]:flex-1",
+        "has-[[data-slot=field-title]+[data-slot=radio-group-item]]:[&>:first-child]:flex-1",
+        "has-[[data-slot=field-title]+[data-slot=switch]]:[&>:first-child]:flex-1",
+
+        // Child inputs (direct children only)
+        "[&>[data-slot=label]]:w-fit",
+        "[&>[data-slot=toggle-group]]:w-full",
+        "[&>[data-slot=input]]:w-full",
+        "[&>[data-slot=select-trigger]]:w-full",
+        "[&>[data-slot=slider]]:w-full",
+        "[&>[data-slot=radio-group]]:w-full",
+
+        // Invalid state handling
+        "data-[invalid=true]:[&>[data-slot=label]]:text-destructive",
+        "data-[invalid=true]:[&>[data-slot=field-description]]:text-destructive",
+        "data-[invalid=true]:[&>[data-slot=popover-trigger]]:border-destructive",
+        "data-[invalid=true]:[&>[data-slot=popover-trigger]]:ring-destructive/20",
+        "dark:data-[invalid=true]:[&>[data-slot=popover-trigger]]:ring-destructive/40",
 
         className
       )}
@@ -77,7 +101,33 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-content"
       className={cn(
-        "flex flex-1 flex-col gap-2 [[data-slot=field-option]_&]:gap-1.5",
+        "flex flex-1 flex-col gap-2 [[data-slot=field-label]_&]:gap-1.5",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function FieldLabel({
+  className,
+  ...props
+}: React.ComponentProps<typeof Label>) {
+  return (
+    <Label
+      data-slot="field-label"
+      className={cn(
+        "group/field-label flex items-start gap-2",
+
+        // Direct Children.
+        "*:data-[slot=field]:p-4",
+        "*:[img]:rounded-t-md",
+
+        // Child field variations.
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border",
+
+        // Check state.
+        "has-data-[state=checked]:bg-primary/5 has-data-[state=checked]:border-ring dark:has-data-[state=checked]:bg-primary/10",
         className
       )}
       {...props}
@@ -103,33 +153,8 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "text-muted-foreground text-sm font-normal",
-        "[[data-slot=label]+&]:-mt-0.5",
-        "has-[+[data-slot=slider]]:-mt-2",
-        "*:[a]:hover:text-primary *:[a]:underline *:[a]:underline-offset-4",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
-  return (
-    <fieldset
-      data-slot="field-set"
-      className={cn("flex flex-col gap-6", className)}
-      {...props}
-    />
-  )
-}
-
-function FieldLegend({ className, ...props }: React.ComponentProps<"legend">) {
-  return (
-    <legend
-      data-slot="field-legend"
-      className={cn(
-        "mb-6 text-base font-medium has-[+[data-slot=field-description]]:mb-1",
+        "text-muted-foreground text-sm font-normal has-[+[data-slot=slider]]:-mt-2 [[data-slot=label]+&]:-mt-0.5",
+        "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
         className
       )}
       {...props}
@@ -166,10 +191,10 @@ function FieldSeparator({
 
 export {
   Field,
+  FieldLabel,
   FieldDescription,
   FieldGroup,
   FieldLegend,
-  FieldOption,
   FieldSeparator,
   FieldSet,
   FieldContent,
