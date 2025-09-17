@@ -83,7 +83,7 @@ function Field({ className, ...props }: React.ComponentProps<"div">) {
         "[&>[data-slot=radio-group]]:w-full",
 
         // Invalid state handling
-        "data-[invalid=true]:[&>[data-slot=label]]:text-destructive",
+        "data-[invalid=true]:[&>[data-slot=field-label]]:text-destructive",
         "data-[invalid=true]:[&>[data-slot=field-description]]:text-destructive",
         "data-[invalid=true]:[&>[data-slot=popover-trigger]]:border-destructive",
         "data-[invalid=true]:[&>[data-slot=popover-trigger]]:ring-destructive/20",
@@ -189,10 +189,22 @@ function FieldSeparator({
   )
 }
 
+function FieldError({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      role="alert"
+      data-slot="field-error"
+      className={cn("text-destructive text-sm font-normal", className)}
+      {...props}
+    />
+  )
+}
+
 export {
   Field,
   FieldLabel,
   FieldDescription,
+  FieldError,
   FieldGroup,
   FieldLegend,
   FieldSeparator,

@@ -44,6 +44,7 @@ import {
   Field,
   FieldContent,
   FieldDescription,
+  FieldError,
   FieldGroup,
   FieldLabel,
   FieldLegend,
@@ -99,7 +100,6 @@ export function FieldDemo() {
           <JobApplicationForm />
           <CheckoutForm />
         </div>
-
         <div className="flex flex-col gap-6">
           <FormSpecialInputTypesDemo />
           <FormTextareaDemo />
@@ -132,6 +132,7 @@ export function FieldDemo() {
         <div className="flex flex-col gap-6">
           <ComplexFormDemo />
           <ComplexFormInvalidDemo />
+          <FieldErrorDemo />
         </div>
       </div>
     </>
@@ -4829,6 +4830,95 @@ function CheckoutForm() {
             </Field>
           </FieldGroup>
         </form>
+      </CardContent>
+    </Card>
+  )
+}
+
+export function FieldErrorDemo() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Field Error Examples</CardTitle>
+        <CardDescription>
+          Testing FieldError component with different content types and lengths.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <FieldGroup>
+          <Field>
+            <FieldLabel htmlFor="error-simple">Simple Error</FieldLabel>
+            <Input id="error-simple" placeholder="Enter value..." />
+            <FieldError>
+              <p>This field is required.</p>
+            </FieldError>
+          </Field>
+
+          <Field>
+            <FieldLabel htmlFor="error-list">List Error</FieldLabel>
+            <Input id="error-list" placeholder="Enter password..." />
+            <FieldError>
+              <ul className="list-inside list-disc space-y-1">
+                <li>Password must be at least 8 characters long</li>
+                <li>Must contain at least one uppercase letter</li>
+                <li>Must contain at least one number</li>
+              </ul>
+            </FieldError>
+          </Field>
+
+          <Field>
+            <FieldLabel htmlFor="error-long">Long Error Message</FieldLabel>
+            <Input id="error-long" placeholder="Enter complex data..." />
+            <FieldError>
+              <p>
+                The value you entered does not match the expected format. Please
+                ensure you provide a valid input that adheres to the specified
+                requirements including proper formatting, character limits, and
+                content validation rules that have been established for this
+                particular field type.
+              </p>
+            </FieldError>
+          </Field>
+
+          <Field>
+            <FieldLabel htmlFor="error-multiple">
+              Multiple Paragraphs
+            </FieldLabel>
+            <Input id="error-multiple" placeholder="Enter data..." />
+            <FieldError>
+              <p>Primary validation failed: The input format is incorrect.</p>
+              <p className="mt-2">
+                Secondary issue: The value conflicts with existing data. Please
+                choose a different value.
+              </p>
+            </FieldError>
+          </Field>
+
+          <Field>
+            <FieldLabel htmlFor="error-short">Short Error</FieldLabel>
+            <Input id="error-short" placeholder="Enter value..." />
+            <FieldError>
+              <p>Invalid.</p>
+            </FieldError>
+          </Field>
+
+          <Field>
+            <FieldLabel htmlFor="error-mixed">Mixed Content</FieldLabel>
+            <Textarea
+              id="error-mixed"
+              placeholder="Enter description..."
+              className="min-h-[80px]"
+            />
+            <FieldError>
+              <p>Content validation errors:</p>
+              <ul className="mt-2 list-inside list-disc space-y-1">
+                <li>Description too short (minimum 10 characters)</li>
+                <li>Contains inappropriate content</li>
+              </ul>
+              <p className="mt-2">Please revise your input and try again.</p>
+            </FieldError>
+          </Field>
+        </FieldGroup>
       </CardContent>
     </Card>
   )

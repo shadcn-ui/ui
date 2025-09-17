@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import {
   AudioWaveform,
   BookOpen,
@@ -9,7 +10,7 @@ import {
   ChevronRightIcon,
   Command,
   GalleryVerticalEnd,
-  Search,
+  SearchIcon,
   Settings2,
   SquareTerminal,
 } from "lucide-react"
@@ -22,6 +23,10 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/registry/new-york-v4/ui/collapsible"
+import {
+  InputGroup,
+  InputGroupAddon,
+} from "@/registry/new-york-v4/ui/input-group"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Sidebar,
@@ -40,6 +45,7 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "@/registry/new-york-v4/ui/sidebar"
+import { componentRegistry } from "@/app/(internal)/sink/component-registry"
 
 // This is sample data.
 const data = {
@@ -163,6 +169,7 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname()
   return (
     <Sidebar side="left" collapsible="icon" {...props}>
       <SidebarHeader>
@@ -173,12 +180,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <Label htmlFor="search" className="sr-only">
                 Search
               </Label>
-              <SidebarInput
-                id="search"
-                placeholder="Search the docs..."
-                className="pl-8"
-              />
-              <Search className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 opacity-50 select-none" />
+              <InputGroup className="bg-background h-8 shadow-none">
+                <SidebarInput
+                  id="search"
+                  placeholder="Search the docs..."
+                  className="h-7"
+                />
+                <InputGroupAddon>
+                  <SearchIcon className="text-muted-foreground" />
+                </InputGroupAddon>
+              </InputGroup>
             </form>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -221,17 +232,55 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-          <SidebarGroupLabel>Components</SidebarGroupLabel>
           <SidebarMenu>
-            {data.components.map((item) => (
-              <SidebarMenuItem key={item.name}>
-                <SidebarMenuButton asChild>
-                  <Link href={`/sink/${item.name}`}>
-                    <span>{getComponentName(item.name)}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
+            {["registry:ui", "registry:page", "registry:block"].map((type) => {
+              const typeComponents = Object.entries(componentRegistry).filter(
+                ([, item]) => item.type === type
+              )
+              if (typeComponents.length === 0) {
+                return null
+              }
+
+              return (
+                <Collapsible
+                  key={type}
+                  asChild
+                  defaultOpen={pathname.includes("/sink/")}
+                  className="group/collapsible"
+                >
+                  <SidebarMenuItem>
+                    <CollapsibleTrigger asChild>
+                      <SidebarMenuButton>
+                        <span>
+                          {type === "registry:ui"
+                            ? "Components"
+                            : type === "registry:page"
+                              ? "Pages"
+                              : "Blocks"}
+                        </span>
+                        <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                      </SidebarMenuButton>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <SidebarMenuSub>
+                        {typeComponents.map(([key, item]) => (
+                          <SidebarMenuSubItem key={item.name}>
+                            <SidebarMenuSubButton
+                              asChild
+                              isActive={pathname.includes(`/sink/${key}`)}
+                            >
+                              <Link href={item.href}>
+                                <span>{item.name}</span>
+                              </Link>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        ))}
+                      </SidebarMenuSub>
+                    </CollapsibleContent>
+                  </SidebarMenuItem>
+                </Collapsible>
+              )
+            })}
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
@@ -241,9 +290,4 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarRail />
     </Sidebar>
   )
-}
-
-function getComponentName(name: string) {
-  // convert kebab-case to title case
-  return name.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase())
 }

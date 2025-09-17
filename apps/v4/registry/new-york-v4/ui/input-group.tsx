@@ -58,12 +58,14 @@ function InputGroupAddon({
 
 function InputGroupButton({
   className,
+  type = "button",
   variant = "ghost",
-  size = "default",
+  size = "icon",
   ...props
 }: React.ComponentProps<typeof Button>) {
   return (
     <Button
+      type={type}
       data-size={size}
       variant={variant}
       size={size}

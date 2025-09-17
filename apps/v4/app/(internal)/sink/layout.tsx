@@ -15,7 +15,7 @@ export default async function SinkLayout({
   children: React.ReactNode
 }) {
   return (
-    <SidebarProvider defaultOpen={false} className="theme-container">
+    <SidebarProvider defaultOpen={true} className="theme-container">
       <AppSidebar />
       <SidebarInset>
         <header className="bg-background sticky top-0 z-10 flex h-14 items-center border-b p-4">
