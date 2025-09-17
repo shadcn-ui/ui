@@ -82,11 +82,9 @@ export default async function Page(props: {
   }
 
   const doc = page.data
-  // @ts-expect-error - revisit fumadocs types.
   const MDX = doc.body
   const neighbours = await findNeighbour(source.pageTree, page.url)
 
-  // @ts-expect-error - revisit fumadocs types.
   const links = doc.links
 
   return (
@@ -105,7 +103,6 @@ export default async function Page(props: {
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
                   <DocsCopyPage
-                    // @ts-expect-error - revisit fumadocs types.
                     page={doc.content}
                     url={absoluteUrl(page.url)}
                   />
@@ -195,10 +192,8 @@ export default async function Page(props: {
       </div>
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
-        {/* @ts-expect-error - revisit fumadocs types. */}
         {doc.toc?.length ? (
           <div className="no-scrollbar overflow-y-auto px-8">
-            {/* @ts-expect-error - revisit fumadocs types. */}
             <DocsTableOfContents toc={doc.toc} />
             <div className="h-12" />
           </div>
