@@ -285,3 +285,41 @@ export class ConfigParseError extends RegistryError {
     this.name = "ConfigParseError"
   }
 }
+
+export class RegistriesIndexParseError extends RegistryError {
+  public readonly parseError: unknown
+
+  constructor(parseError: unknown) {
+    let message = "Failed to parse registries index"
+
+    if (parseError instanceof z.ZodError) {
+      const invalidNamespaces = parseError.errors
+        .filter((e) => e.path.length > 0)
+        .map((e) => `"${e.path[0]}"`)
+        .filter((v, i, arr) => arr.indexOf(v) === i) // remove duplicates
+
+      if (invalidNamespaces.length > 0) {
+        message = `Failed to parse registries index. Invalid registry namespace(s): ${invalidNamespaces.join(
+          ", "
+        )}\n${parseError.errors
+          .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
+          .join("\n")}`
+      } else {
+        message = `Failed to parse registries index:\n${parseError.errors
+          .map((e) => `  - ${e.path.join(".")}: ${e.message}`)
+          .join("\n")}`
+      }
+    }
+
+    super(message, {
+      code: RegistryErrorCode.PARSE_ERROR,
+      cause: parseError,
+      context: { parseError },
+      suggestion:
+        "The registries index may be corrupted or have invalid registry namespace format. Registry names must start with @ (e.g., @shadcn, @example).",
+    })
+
+    this.parseError = parseError
+    this.name = "RegistriesIndexParseError"
+  }
+}

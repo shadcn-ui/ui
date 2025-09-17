@@ -1,5 +1,5 @@
 import path from "path"
-import { fetchRegistries } from "@/src/registry/api"
+import { getRegistriesIndex } from "@/src/registry/api"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { resolveRegistryNamespaces } from "@/src/registry/namespaces"
 import { rawConfigSchema } from "@/src/registry/schema"
@@ -39,7 +39,10 @@ export async function ensureRegistriesInConfig(
 
   // We'll fail silently if we can't fetch the registry index.
   // The error handling by caller will guide user to add the missing registries.
-  const registryIndex = await fetchRegistries()
+  const registryIndex = await getRegistriesIndex({
+    useCache: process.env.NODE_ENV !== "development",
+  })
+
   if (!registryIndex) {
     return {
       config,
