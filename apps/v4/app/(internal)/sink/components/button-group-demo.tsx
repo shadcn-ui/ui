@@ -360,6 +360,20 @@ export function ButtonGroupDemo() {
 
       <ExportButtonGroup />
 
+      <ButtonGroup>
+        <Select defaultValue="hours">
+          <SelectTrigger id="duration">
+            <SelectValue placeholder="Select duration" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="hours">Hours</SelectItem>
+            <SelectItem value="days">Days</SelectItem>
+            <SelectItem value="weeks">Weeks</SelectItem>
+          </SelectContent>
+        </Select>
+        <Input />
+      </ButtonGroup>
+
       <ButtonGroup className="gap-2 [--radius:9999rem]">
         <ButtonGroup>
           <Button variant="outline" size="icon">

@@ -31,59 +31,53 @@ function FieldGroup({
   )
 }
 
-// const fieldVariants = cva(
-//   [
-//     "group flex w-full gap-3",
-//     "has-[>*[data-slot=checkbox],>*[data-slot=radio-group-item],>*[data-slot=switch]]:flex-row",
-//     // Direct children.
-//     "*:data-[slot=label]:w-fit",
-//     "*:data-[slot=toggle-group]:w-full",
-//     "*:data-[slot=switch]:last:ml-auto",
-//     "*:data-[slot=checkbox]:last:ml-auto",
-//     "*:data-[slot=radio-group-item]:last:ml-auto",
-//     "*:data-[slot=select-trigger]:w-full *:data-[slot=select-trigger]:last:ml-auto",
-//     "*:data-[slot=radio-group]:w-full",
-//     "*:data-[slot=slider]:w-full *:data-[slot=slider]:last:ml-auto",
-//     "*:data-[slot=input]:last:ml-auto",
-//     // Conditional classes based on children.
-//     "has-data-[slot=slider]:gap-4 has-data-[slot=slider]:*:data-[slot=field-description]:last:mt-0",
-//     // "has-[>*[data-slot=radio-group-item]]:gap-3 [&:not([class*='items-']):has(>*[data-slot=radio-group-item])]:items-center",
-//     // "has-[>*[data-slot=checkbox]]:gap-3 [&:not([class*='items-']):has(>*[data-slot=checkbox])]:items-center",
-//     // "has-[>*[data-slot=switch]]:gap-2.5 [&:not([class*='items-']):has(>*[data-slot=switch])]:items-center",
-//     // Invalid state.
-//     "data-[invalid=true]:*:data-[slot=label]:text-destructive data-[invalid=true]:*:data-[slot=field-description]:text-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:border-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/20 dark:data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/40",
-//   ],
-//   {
-//     variants: {
-//       orientation: {
-//         vertical: ["flex-col", "*:data-[slot=input]:w-full"],
-//         horizontal: [
-//           "grid grid-cols-[1fr_auto] items-center gap-3 grid-rows-1 *:row-span-2",
-//           "*:data-[slot=input]:w-fit",
-//           "*:data-[slot=select-trigger]:w-fit",
-//           "*:data-[slot=slider]:w-32",
-//           "*:data-[slot=field-description]:col-start-2 *:data-[slot=field-description]:row-start-2 *:data-[slot=field-description]:mb-0",
-//           "has-[[data-slot=label]:nth-child(2),[data-slot=field-title]:nth-child(2)]:grid-cols-[auto_1fr] has-[[data-slot=label]:nth-child(2),[data-slot=field-title]:nth-child(2)]:*:row-span-1",
-//           "has-data-[slot=field-description]:items-start has-data-[slot=field-description]:grid-rows-2",
-//           "has-[label:first-child]:has-[*[data-slot=field-description]]:*:data-[slot=field-description]:col-start-1",
-//           // "has-[label:first-child]:has-[*[data-slot=field-description]]:*:data-[slot=field-description]:col-start-1 has-[label:first-child]:has-[*[data-slot=field-description]]:*:last:row-span-2 has-[label:first-child]:has-[*[data-slot=field-description]]:*:last:self-start has-[label:first-child]:has-[*[data-slot=field-description]]:gap-x-4 has-[label:first-child]:has-[*[data-slot=field-description]]:*:first:row-span-1 ",
-//         ],
-//       },
-//     },
-//     defaultVariants: {
-//       orientation: "vertical",
-//     },
-//   }
-// )
+function FieldOption({ className, ...props }: React.ComponentProps<"label">) {
+  return (
+    <Label
+      data-slot="field-option"
+      className={cn(
+        "group/field-option has-data-[state=checked]:bg-primary/5 dark:has-data-[state=checked]:bg-primary/10 has-data-[state=checked]:border-ring group/option flex items-start gap-2 rounded-md border",
+        "has-data-[slot=field]:flex-col *:data-[slot=field]:p-4",
+        "*:[img]:rounded-t-md",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 function Field({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field"
       className={cn(
-        "group/field flex w-full flex-col gap-3",
+        "group/field flex w-full flex-col items-start gap-3",
         "has-[>*[data-slot=checkbox],>*[data-slot=radio-group-item],>*[data-slot=switch]]:flex-row",
         "has-[label+[data-slot=checkbox],label+[data-slot=radio-group-item],label+[data-slot=switch]]:*:first:flex-1",
+        "has-[[data-slot=field-title]+[data-slot=checkbox],[data-slot=field-title]+[data-slot=radio-group-item],[data-slot=field-title]+[data-slot=switch]]:*:first:flex-1",
+        // Child Input.
+        "*:data-[slot=label]:w-fit",
+        "*:data-[slot=toggle-group]:w-full",
+        "*:data-[slot=input]:w-full",
+        "*:data-[slot=select-trigger]:w-full",
+        "*:data-[slot=slider]:w-full",
+        "*:data-[slot=radio-group]:w-full",
+        // Invalid State.
+        "data-[invalid=true]:*:data-[slot=label]:text-destructive data-[invalid=true]:*:data-[slot=field-description]:text-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:border-destructive data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/20 dark:data-[invalid=true]:*:data-[slot=popover-trigger]:ring-destructive/40",
+
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="field-content"
+      className={cn(
+        "flex flex-1 flex-col gap-2 [[data-slot=field-option]_&]:gap-1.5",
         className
       )}
       {...props}
@@ -170,22 +164,6 @@ function FieldSeparator({
   )
 }
 
-function FieldOption({ className, ...props }: React.ComponentProps<"label">) {
-  return (
-    <Label
-      data-slot="option"
-      role="option"
-      className={cn(
-        "has-data-[state=checked]:bg-primary/5 dark:has-data-[state=checked]:bg-primary/10 has-data-[state=checked]:border-ring group/option flex flex-col gap-2 rounded-md border",
-        "*:data-[slot=field]:p-4",
-        "*:[img]:rounded-t-md",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
 export {
   Field,
   FieldDescription,
@@ -194,5 +172,6 @@ export {
   FieldOption,
   FieldSeparator,
   FieldSet,
+  FieldContent,
   FieldTitle,
 }

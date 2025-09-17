@@ -14,9 +14,10 @@ function ButtonGroup({
       data-slot="button-group"
       data-orientation={orientation}
       className={cn(
-        "flex w-fit items-stretch *:focus-visible:z-10 *:[[data-slot=select-trigger]]:!w-fit *:[input]:flex-1",
+        "flex w-fit items-stretch *:focus-visible:z-10 *:[[data-slot=select-trigger]:not([class*=w-*])]:w-fit *:[input]:flex-1",
         "data-[orientation=horizontal]:[&:has(>*+*)>*:not(:first-child)]:-ml-px data-[orientation=horizontal]:[&:has(>*+*)>*:not(:first-child)]:rounded-l-none data-[orientation=horizontal]:[&:has(>*+*)>*:not(:last-child)]:rounded-r-none",
         "data-[orientation=vertical]:flex-col data-[orientation=vertical]:[&:has(>*+*)>*:not(:first-child)]:-my-px data-[orientation=vertical]:[&:has(>*+*)>*:not(:first-child)]:rounded-t-none data-[orientation=vertical]:[&:has(>*+*)>*:not(:last-child)]:rounded-b-none",
+        "has-[select[aria-hidden=true]:last-child]:*:data-[slot=select-trigger]:last-of-type:rounded-r-md",
         className
       )}
       {...props}
