@@ -22,6 +22,9 @@ export function ButtonDemo() {
           <Loader2Icon className="animate-spin" />
           Please wait
         </Button>
+        <Button color="green">Green</Button>
+        <Button color="blue">Blue</Button>
+        <Button color="red">Red</Button>
       </div>
       <div className="flex flex-wrap items-center gap-2 md:flex-row">
         <Button size="sm">Small</Button>
