@@ -1,4 +1,3 @@
-import LoginFormPage from "./(form)/login-form/page"
 import NextFormPage from "./(form)/next-form/page"
 import ReactHookFormPage from "./(form)/react-hook-form/page"
 import TanstackFormPage from "./(form)/tanstack-form/page"
@@ -362,12 +361,6 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: TooltipDemo,
     type: "registry:ui",
     href: "/sink/tooltip",
-  },
-  "login-form": {
-    name: "Login Form",
-    component: LoginFormPage,
-    type: "registry:page",
-    href: "/sink/login-form",
   },
   "next-form": {
     name: "Next.js Form",
