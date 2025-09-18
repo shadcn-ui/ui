@@ -94,6 +94,9 @@ async function buildRegistryJsonFile() {
     JSON.stringify(fixedRegistry, null, 2)
   )
 
+  // 3. Format the registry.json file.
+  await exec(`prettier --write registry.json`)
+
   // 3. Copy the registry.json to the www/public/r/styles/new-york-v4 directory.
   await fs.cp(
     path.join(process.cwd(), "registry.json"),
@@ -183,6 +186,8 @@ async function buildBlocksIndex() {
     path.join(process.cwd(), "registry/__blocks__.json"),
     JSON.stringify(payload, null, 2)
   )
+
+  await exec(`prettier --write registry/__blocks__.json`)
 }
 
 try {
