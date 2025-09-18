@@ -1,4 +1,7 @@
-import ComplexFormPage from "./complex-form/page"
+import LoginFormPage from "./(form)/login-form/page"
+import NextFormPage from "./(form)/next-form/page"
+import ReactHookFormPage from "./(form)/react-hook-form/page"
+import TanstackFormPage from "./(form)/tanstack-form/page"
 import { AccordionDemo } from "./components/accordion-demo"
 import { AlertDemo } from "./components/alert-demo"
 import { AlertDialogDemo } from "./components/alert-dialog-demo"
@@ -49,7 +52,6 @@ import { TextareaDemo } from "./components/textarea-demo"
 import { ToggleDemo } from "./components/toggle-demo"
 import { ToggleGroupDemo } from "./components/toggle-group-demo"
 import { TooltipDemo } from "./components/tooltip-demo"
-import LoginFormPage from "./login-form/page"
 
 type ComponentConfig = {
   name: string
@@ -367,11 +369,23 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     type: "registry:page",
     href: "/sink/login-form",
   },
-  "complex-form": {
-    name: "Complex Form",
-    component: ComplexFormPage,
+  "next-form": {
+    name: "Next.js Form",
+    component: NextFormPage,
     type: "registry:page",
-    href: "/sink/complex-form",
+    href: "/sink/next-form",
+  },
+  "tanstack-form": {
+    name: "Tanstack Form",
+    component: TanstackFormPage,
+    type: "registry:page",
+    href: "/sink/tanstack-form",
+  },
+  "react-hook-form": {
+    name: "React Hook Form",
+    component: ReactHookFormPage,
+    type: "registry:page",
+    href: "/sink/react-hook-form",
   },
 }
 

@@ -70,7 +70,7 @@ function InputGroupButton({
       variant={variant}
       size={size}
       className={cn(
-        "h-6 gap-1 px-1.5 shadow-none",
+        "h-6 gap-1 px-1.5 text-sm shadow-none",
         "not-[.rounded-full]:rounded-[calc(var(--radius)-5px)]",
         "has-[>svg]:px-1.5",
         "data-[size=icon]:size-6",

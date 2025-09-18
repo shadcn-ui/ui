@@ -3,7 +3,7 @@
 import {
   FormState,
   loginSchema,
-} from "@/app/(internal)/sink/login-form/login-form"
+} from "@/app/(internal)/sink/(form)/login-form/login-form"
 
 export async function loginAction(
   _prevState: FormState,

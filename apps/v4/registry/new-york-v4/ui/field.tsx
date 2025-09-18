@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -8,7 +9,11 @@ function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   return (
     <fieldset
       data-slot="field-set"
-      className={cn("flex flex-col gap-6", className)}
+      className={cn(
+        "flex flex-col gap-6",
+        "[&>[data-slot=radio-group]]:-mt-2",
+        className
+      )}
       {...props}
     />
   )
@@ -62,17 +67,17 @@ function Field({ className, ...props }: React.ComponentProps<"div">) {
         "group/field flex w-full flex-col items-start gap-3",
 
         // Label + input alignment
-        "has-[>[data-slot=checkbox]]:flex-row",
-        "has-[>[data-slot=radio-group-item]]:flex-row",
-        "has-[>[data-slot=switch]]:flex-row",
+        "has-[>[role=checkbox]]:flex-row",
+        "has-[>[role=radio]]:flex-row",
+        "has-[>[role=switch]]:flex-row",
 
-        "has-[label+[data-slot=checkbox]]:[&>:first-child]:flex-1",
-        "has-[label+[data-slot=radio-group-item]]:[&>:first-child]:flex-1",
-        "has-[label+[data-slot=switch]]:[&>:first-child]:flex-1",
+        "has-[label+[role=checkbox]]:[&>:first-child]:flex-1",
+        "has-[label+[role=radio]]:[&>:first-child]:flex-1",
+        "has-[label+[role=switch]]:[&>:first-child]:flex-1",
 
-        "has-[[data-slot=field-title]+[data-slot=checkbox]]:[&>:first-child]:flex-1",
-        "has-[[data-slot=field-title]+[data-slot=radio-group-item]]:[&>:first-child]:flex-1",
-        "has-[[data-slot=field-title]+[data-slot=switch]]:[&>:first-child]:flex-1",
+        "has-[[data-slot=field-title]+[role=checkbox]]:[&>:first-child]:flex-1",
+        "has-[[data-slot=field-title]+[role=radio]]:[&>:first-child]:flex-1",
+        "has-[[data-slot=field-title]+[role=switch]]:[&>:first-child]:flex-1",
 
         // Child inputs (direct children only)
         "[&>[data-slot=label]]:w-fit",
@@ -81,6 +86,9 @@ function Field({ className, ...props }: React.ComponentProps<"div">) {
         "[&>[data-slot=select-trigger]]:w-full",
         "[&>[data-slot=slider]]:w-full",
         "[&>[data-slot=radio-group]]:w-full",
+        "[&>[data-slot=popover-trigger]]:w-full",
+        "[&>[role=radiogroup]]:w-full",
+        "[&>[role=group]]:w-full",
 
         // Invalid state handling
         "data-[invalid=true]:[&>[data-slot=field-label]]:text-destructive",
@@ -128,6 +136,9 @@ function FieldLabel({
 
         // Check state.
         "has-data-[state=checked]:bg-primary/5 has-data-[state=checked]:border-ring dark:has-data-[state=checked]:bg-primary/10",
+
+        // Invalid state.
+        "group-data-[invalid=true]/field:text-destructive",
         className
       )}
       {...props}
@@ -141,6 +152,9 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="field-title"
       className={cn(
         "group-has-aria-invalid/field:text-destructive flex items-center gap-2 text-sm leading-none font-medium select-none group-has-data-[disabled]/field:opacity-60",
+
+        // Invalid state.
+        "group-data-[invalid=true]/field:text-destructive",
         className
       )}
       {...props}
@@ -153,8 +167,9 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "text-muted-foreground text-sm font-normal has-[+[data-slot=slider]]:-mt-2 [[data-slot=label]+&]:-mt-0.5",
+        "text-muted-foreground text-sm font-normal",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+        "has-[+[data-slot=slider]]:-mt-1",
         className
       )}
       {...props}
@@ -189,14 +204,50 @@ function FieldSeparator({
   )
 }
 
-function FieldError({ className, ...props }: React.ComponentProps<"div">) {
+function FieldError({
+  className,
+  children,
+  errors,
+  ...props
+}: React.ComponentProps<"div"> & {
+  errors?: Array<{ message?: string } | undefined>
+}) {
+  const content = useMemo(() => {
+    if (children) {
+      return children
+    }
+
+    if (!errors) {
+      return null
+    }
+
+    if (errors?.length === 1 && errors[0]?.message) {
+      return errors[0].message
+    }
+
+    return (
+      <ul className="ml-4 flex list-disc flex-col gap-1">
+        {errors.map(
+          (error, index) =>
+            error?.message && <li key={index}>{error.message}</li>
+        )}
+      </ul>
+    )
+  }, [children, errors])
+
+  if (!content) {
+    return null
+  }
+
   return (
     <div
       role="alert"
       data-slot="field-error"
       className={cn("text-destructive text-sm font-normal", className)}
       {...props}
-    />
+    >
+      {content}
+    </div>
   )
 }
 

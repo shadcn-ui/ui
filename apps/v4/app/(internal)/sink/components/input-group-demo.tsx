@@ -157,31 +157,37 @@ export function InputGroupDemo() {
         <InputGroup>
           <Input id="input-button-hjkl" />
           <InputGroupAddon>
-            <InputGroupButton>Button</InputGroupButton>
+            <InputGroupButton size="default">Button</InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
         <InputGroup>
           <Input id="input-button-hj12" />
           <InputGroupAddon>
-            <InputGroupButton variant="outline">Button</InputGroupButton>
+            <InputGroupButton variant="outline" size="default">
+              Button
+            </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
         <InputGroup>
           <Input id="input-button-hj13" />
           <InputGroupAddon>
-            <InputGroupButton variant="secondary">Button</InputGroupButton>
+            <InputGroupButton variant="secondary" size="default">
+              Button
+            </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
         <InputGroup>
           <Input id="input-button-hj14" />
           <InputGroupAddon align="end">
-            <InputGroupButton variant="secondary">Button</InputGroupButton>
+            <InputGroupButton variant="secondary" size="default">
+              Button
+            </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
         <InputGroup>
           <Input id="input-button-hj15" />
           <InputGroupAddon align="end">
-            <InputGroupButton size="icon">
+            <InputGroupButton>
               <IconCopy />
             </InputGroupButton>
           </InputGroupAddon>
@@ -189,7 +195,7 @@ export function InputGroupDemo() {
         <InputGroup>
           <Input id="input-button-hj16" />
           <InputGroupAddon align="end">
-            <InputGroupButton variant="secondary" size="icon">
+            <InputGroupButton variant="secondary">
               <IconTrash />
             </InputGroupButton>
           </InputGroupAddon>
@@ -198,7 +204,7 @@ export function InputGroupDemo() {
           <Popover>
             <PopoverTrigger asChild>
               <InputGroupAddon>
-                <InputGroupButton variant="secondary" size="icon">
+                <InputGroupButton variant="secondary">
                   <IconInfoCircle />
                 </InputGroupButton>
               </InputGroupAddon>
@@ -218,7 +224,7 @@ export function InputGroupDemo() {
           </InputGroupAddon>
           <Input id="input-button-hj16" />
           <InputGroupAddon align="end">
-            <InputGroupButton size="icon">
+            <InputGroupButton>
               <IconStar />
             </InputGroupButton>
           </InputGroupAddon>
@@ -232,7 +238,7 @@ export function InputGroupDemo() {
           <InputGroupAddon align="end">
             <Tooltip>
               <TooltipTrigger asChild>
-                <InputGroupButton size="icon" className="rounded-full">
+                <InputGroupButton className="rounded-full">
                   <IconInfoCircle />
                 </InputGroupButton>
               </TooltipTrigger>
@@ -249,7 +255,10 @@ export function InputGroupDemo() {
           <InputGroupAddon>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <InputGroupButton className="text-muted-foreground tabular-nums">
+                <InputGroupButton
+                  size="default"
+                  className="text-muted-foreground tabular-nums"
+                >
                   {country} <ChevronDownIcon />
                 </InputGroupButton>
               </DropdownMenuTrigger>

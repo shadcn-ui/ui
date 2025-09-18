@@ -233,7 +233,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarGroup>
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
           <SidebarMenu>
-            {["registry:ui", "registry:page", "registry:block"].map((type) => {
+            {["registry:page", "registry:ui", "registry:block"].map((type) => {
               const typeComponents = Object.entries(componentRegistry).filter(
                 ([, item]) => item.type === type
               )
