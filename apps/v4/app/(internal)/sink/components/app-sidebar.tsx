@@ -264,10 +264,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     <CollapsibleContent>
                       <SidebarMenuSub>
                         {typeComponents.map(([key, item]) => (
-                          <SidebarMenuSubItem key={item.name}>
+                          <SidebarMenuSubItem key={key}>
                             <SidebarMenuSubButton
                               asChild
-                              isActive={pathname.includes(`/sink/${key}`)}
+                              isActive={pathname === item.href}
                             >
                               <Link href={item.href}>
                                 <span>{item.name}</span>

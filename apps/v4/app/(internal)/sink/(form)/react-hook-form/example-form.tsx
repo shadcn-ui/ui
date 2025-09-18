@@ -108,7 +108,12 @@ export function ExampleForm() {
                   return (
                     <Field data-invalid={isInvalid}>
                       <FieldLabel htmlFor={field.name}>Name</FieldLabel>
-                      <Input {...field} aria-invalid={isInvalid} />
+                      <Input
+                        {...field}
+                        id={field.name}
+                        aria-invalid={isInvalid}
+                        autoComplete="off"
+                      />
                       <FieldDescription>Enter your name</FieldDescription>
                       {isInvalid && <FieldError errors={[fieldState.error]} />}
                     </Field>
@@ -123,7 +128,13 @@ export function ExampleForm() {
                   return (
                     <Field data-invalid={isInvalid}>
                       <FieldLabel htmlFor={field.name}>Email</FieldLabel>
-                      <Input type="email" {...field} aria-invalid={isInvalid} />
+                      <Input
+                        {...field}
+                        type="email"
+                        id={field.name}
+                        aria-invalid={isInvalid}
+                        autoComplete="off"
+                      />
                       <FieldDescription>
                         Enter your email address
                       </FieldDescription>
@@ -145,6 +156,7 @@ export function ExampleForm() {
                         Choose your subscription plan.
                       </FieldDescription>
                       <RadioGroup
+                        name={field.name}
                         value={field.value}
                         onValueChange={field.onChange}
                         aria-invalid={isInvalid}
@@ -202,7 +214,7 @@ export function ExampleForm() {
                         onValueChange={field.onChange}
                         aria-invalid={isInvalid}
                       >
-                        <SelectTrigger>
+                        <SelectTrigger id={field.name}>
                           <SelectValue placeholder="Select billing period" />
                         </SelectTrigger>
                         <SelectContent>
@@ -235,6 +247,7 @@ export function ExampleForm() {
                           <Field key={addon.id} data-invalid={isInvalid}>
                             <Checkbox
                               id={addon.id}
+                              name={field.name}
                               aria-invalid={isInvalid}
                               checked={field.value.includes(addon.id)}
                               onCheckedChange={(checked) => {
@@ -271,7 +284,7 @@ export function ExampleForm() {
                   const isInvalid = fieldState.invalid
                   return (
                     <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>Team Size</FieldLabel>
+                      <FieldTitle>Team Size</FieldTitle>
                       <FieldDescription>
                         How many people will be using the subscription?
                       </FieldDescription>
@@ -367,11 +380,8 @@ export function ExampleForm() {
                   const isInvalid = fieldState.invalid
                   return (
                     <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>
-                        Theme Preference
-                      </FieldLabel>
+                      <FieldTitle>Theme Preference</FieldTitle>
                       <ToggleGroup
-                        id={field.name}
                         type="single"
                         variant="outline"
                         value={field.value}
@@ -402,9 +412,10 @@ export function ExampleForm() {
                     <Field data-invalid={isInvalid}>
                       <FieldLabel htmlFor={field.name}>Password</FieldLabel>
                       <Input
+                        {...field}
                         type="password"
                         placeholder="Enter your password"
-                        {...field}
+                        id={field.name}
                         aria-invalid={isInvalid}
                       />
                       <FieldDescription>
@@ -428,9 +439,10 @@ export function ExampleForm() {
                         Additional Comments
                       </FieldLabel>
                       <Textarea
+                        {...field}
+                        id={field.name}
                         placeholder="Tell us more about your needs..."
                         rows={3}
-                        {...field}
                         aria-invalid={isInvalid}
                       />
                       <FieldDescription>

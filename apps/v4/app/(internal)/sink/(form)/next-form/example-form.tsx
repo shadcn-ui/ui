@@ -111,6 +111,7 @@ export function ExampleForm() {
                   defaultValue={formState.values.name}
                   disabled={pending}
                   aria-invalid={!!formState.errors?.name?.length}
+                  autoComplete="off"
                 />
                 <FieldDescription>Enter your name</FieldDescription>
                 {formState.errors?.name && (
@@ -126,6 +127,7 @@ export function ExampleForm() {
                   defaultValue={formState.values.email}
                   disabled={pending}
                   aria-invalid={!!formState.errors?.email?.length}
+                  autoComplete="off"
                 />
                 <FieldDescription>Enter your email address</FieldDescription>
                 {formState.errors?.email && (
@@ -143,6 +145,7 @@ export function ExampleForm() {
                   name="plan"
                   defaultValue={formState.values.plan}
                   disabled={pending}
+                  aria-invalid={!!formState.errors?.plan?.length}
                 >
                   <FieldLabel htmlFor="basic">
                     <Field>
@@ -178,8 +181,9 @@ export function ExampleForm() {
                   name="billingPeriod"
                   defaultValue={formState.values.billingPeriod}
                   disabled={pending}
+                  aria-invalid={!!formState.errors?.billingPeriod?.length}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger id="billingPeriod">
                     <SelectValue placeholder="Select billing period" />
                   </SelectTrigger>
                   <SelectContent>
@@ -212,6 +216,7 @@ export function ExampleForm() {
                           addon.id
                         )}
                         disabled={pending}
+                        aria-invalid={!!formState.errors?.addons?.length}
                       />
                       <FieldContent>
                         <FieldLabel htmlFor={addon.id}>
@@ -262,6 +267,7 @@ export function ExampleForm() {
                   name="emailNotifications"
                   defaultChecked={formState.values.emailNotifications}
                   disabled={pending}
+                  aria-invalid={!!formState.errors?.emailNotifications?.length}
                 />
               </Field>
               <FieldSeparator />
@@ -293,8 +299,9 @@ export function ExampleForm() {
                   name="theme"
                   defaultValue={formState.values.theme}
                   disabled={pending}
+                  aria-invalid={!!formState.errors?.theme?.length}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger id="theme">
                     <SelectValue placeholder="Select theme" />
                   </SelectTrigger>
                   <SelectContent>

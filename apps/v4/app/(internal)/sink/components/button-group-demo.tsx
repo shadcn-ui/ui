@@ -37,6 +37,7 @@ import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   ButtonGroup,
   ButtonGroupSeparator,
+  ButtonGroupText,
 } from "@/registry/new-york-v4/ui/button-group"
 import {
   DropdownMenu,
@@ -84,6 +85,13 @@ export function ButtonGroupDemo() {
           Get Started <IconArrowRight />
         </Button>
       </ButtonGroup>
+      <ButtonGroup>
+        <Button>Button</Button>
+        <ButtonGroupSeparator className="bg-primary/80" />
+        <Button>
+          Get Started <IconArrowRight />
+        </Button>
+      </ButtonGroup>
 
       <ButtonGroup>
         <Button variant="outline">Button</Button>
@@ -96,6 +104,26 @@ export function ButtonGroupDemo() {
       <ButtonGroup>
         <Button variant="outline">Button</Button>
         <Button variant="outline">Another Button</Button>
+      </ButtonGroup>
+
+      <ButtonGroup>
+        <ButtonGroupText>Text</ButtonGroupText>
+        <Button variant="outline">Another Button</Button>
+      </ButtonGroup>
+
+      <ButtonGroup>
+        <ButtonGroupText asChild>
+          <Label htmlFor="input">
+            <IconCloudCode /> GPU Size
+          </Label>
+        </ButtonGroupText>
+        <Input id="input" placeholder="Type something here..." />
+      </ButtonGroup>
+
+      <ButtonGroup>
+        <ButtonGroupText>Prefix</ButtonGroupText>
+        <Input id="input" placeholder="Type something here..." />
+        <ButtonGroupText>Suffix</ButtonGroupText>
       </ButtonGroup>
 
       <div className="flex gap-4">

@@ -121,6 +121,7 @@ export function ExampleForm() {
                         onBlur={field.handleBlur}
                         onChange={(e) => field.handleChange(e.target.value)}
                         aria-invalid={isInvalid}
+                        autoComplete="off"
                       />
                       <FieldDescription>Enter your name</FieldDescription>
                       {isInvalid && (
@@ -146,6 +147,7 @@ export function ExampleForm() {
                         onBlur={field.handleBlur}
                         onChange={(e) => field.handleChange(e.target.value)}
                         aria-invalid={isInvalid}
+                        autoComplete="off"
                       />
                       <FieldDescription>
                         Enter your email address
@@ -170,8 +172,10 @@ export function ExampleForm() {
                         Choose your subscription plan.
                       </FieldDescription>
                       <RadioGroup
+                        name={field.name}
                         value={field.state.value}
                         onValueChange={field.handleChange}
+                        aria-invalid={isInvalid}
                       >
                         <FieldLabel htmlFor="basic">
                           <Field>
@@ -226,8 +230,9 @@ export function ExampleForm() {
                         name={field.name}
                         value={field.state.value}
                         onValueChange={field.handleChange}
+                        aria-invalid={isInvalid}
                       >
-                        <SelectTrigger>
+                        <SelectTrigger id={field.name}>
                           <SelectValue placeholder="Select billing period" />
                         </SelectTrigger>
                         <SelectContent>
@@ -263,6 +268,7 @@ export function ExampleForm() {
                           <Field key={addon.id} data-invalid={isInvalid}>
                             <Checkbox
                               id={addon.id}
+                              name={field.name}
                               aria-invalid={isInvalid}
                               checked={field.state.value.includes(addon.id)}
                               onCheckedChange={(checked) => {
@@ -304,7 +310,7 @@ export function ExampleForm() {
                     field.state.meta.isTouched && !field.state.meta.isValid
                   return (
                     <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>Team Size</FieldLabel>
+                      <FieldTitle>Team Size</FieldTitle>
                       <FieldDescription>
                         How many people will be using the subscription?
                       </FieldDescription>
@@ -403,9 +409,7 @@ export function ExampleForm() {
                     field.state.meta.isTouched && !field.state.meta.isValid
                   return (
                     <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>
-                        Theme Preference
-                      </FieldLabel>
+                      <FieldTitle>Theme Preference</FieldTitle>
                       <ToggleGroup
                         id={field.name}
                         type="single"
@@ -414,6 +418,7 @@ export function ExampleForm() {
                         onValueChange={(value) =>
                           value && field.handleChange(value)
                         }
+                        aria-invalid={isInvalid}
                       >
                         <ToggleGroupItem value="light">Light</ToggleGroupItem>
                         <ToggleGroupItem value="dark">Dark</ToggleGroupItem>
