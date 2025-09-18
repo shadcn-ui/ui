@@ -38,16 +38,17 @@ function InputGroupAddon({
       data-slot="input-group-addon"
       data-align={align}
       className={cn(
-        "flex h-auto items-center justify-center py-1.5 text-sm select-none",
+        "text-muted-foreground flex h-auto items-center justify-center py-1.5 text-sm font-medium select-none",
 
         // Alignment and button adjustments.
         "data-[align=end]:order-last",
-        "data-[align=end]:[&>button]:mr-[-0.4rem]",
+        "data-[align=end]:[&>button]:mr-[-0.4rem] data-[align=end]:[&>kbd]:mr-[-0.35rem]",
         "data-[align=start]:order-first",
-        "data-[align=start]:[&>button]:ml-[-0.45rem]",
+        "data-[align=start]:[&>button]:ml-[-0.45rem] data-[align=start]:[&>kbd]:ml-[-0.35rem]",
 
         // Child SVGs without size class should default to size-4.
         "[&>svg:not([class*='size-'])]:size-4",
+        "[&>kbd]:rounded-[calc(var(--radius)-5px)]",
 
         className
       )}

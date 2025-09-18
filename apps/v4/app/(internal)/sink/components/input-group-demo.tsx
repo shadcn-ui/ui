@@ -7,6 +7,7 @@ import {
   IconLoader2,
   IconMicrophone,
   IconPlayerRecordFilled,
+  IconServerSpark,
   IconStar,
   IconTrash,
 } from "@tabler/icons-react"
@@ -30,6 +31,7 @@ import {
   InputGroupAddon,
   InputGroupButton,
 } from "@/registry/new-york-v4/ui/input-group"
+import { Kbd, KbdGroup } from "@/registry/new-york-v4/ui/kbd"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Popover,
@@ -279,6 +281,41 @@ export function InputGroupDemo() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+          </InputGroupAddon>
+        </InputGroup>
+      </Field>
+
+      <Field>
+        <Label htmlFor="input-button-hj19">Input Group with Kbd</Label>
+        <InputGroup>
+          <Input id="input-button-hj19" />
+          <InputGroupAddon>
+            <Kbd>⌘K</Kbd>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <Input id="input-button-hj29" />
+          <InputGroupAddon align="end">
+            <Kbd>⌘K</Kbd>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <Input id="input-button-hj39" placeholder="Search for Apps..." />
+          <InputGroupAddon align="end">Ask AI</InputGroupAddon>
+          <InputGroupAddon align="end">
+            <Kbd>Tab</Kbd>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <Input id="input-button-hj49" placeholder="Type to search..." />
+          <InputGroupAddon align="start">
+            <IconServerSpark />
+          </InputGroupAddon>
+          <InputGroupAddon align="end">
+            <KbdGroup>
+              <Kbd>Ctrl</Kbd>
+              <Kbd>C</Kbd>
+            </KbdGroup>
           </InputGroupAddon>
         </InputGroup>
       </Field>
