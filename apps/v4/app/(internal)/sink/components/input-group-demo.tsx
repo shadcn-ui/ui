@@ -2,11 +2,13 @@
 
 import { useState } from "react"
 import {
+  IconCheck,
   IconCopy,
   IconInfoCircle,
   IconLoader2,
   IconMicrophone,
   IconPlayerRecordFilled,
+  IconSearch,
   IconServerSpark,
   IconStar,
   IconTrash,
@@ -24,7 +26,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/new-york-v4/ui/dropdown-menu"
-import { Field } from "@/registry/new-york-v4/ui/field"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
@@ -319,6 +325,37 @@ export function InputGroupDemo() {
           </InputGroupAddon>
         </InputGroup>
       </Field>
+
+      <Field>
+        <FieldLabel htmlFor="username">Username</FieldLabel>
+        <InputGroup>
+          <Input id="username" defaultValue="shadcn" />
+          <InputGroupAddon align="end">
+            <div className="flex size-4 items-center justify-center rounded-full bg-green-500 dark:bg-green-800">
+              <IconCheck className="size-3 text-white" />
+            </div>
+          </InputGroupAddon>
+        </InputGroup>
+        <FieldDescription className="text-green-700">
+          This username is available.
+        </FieldDescription>
+      </Field>
+
+      <InputGroup>
+        <Input id="keywords" placeholder="Search documentation..." />
+        <InputGroupAddon>
+          <IconSearch />
+        </InputGroupAddon>
+        <InputGroupAddon align="end">12 results</InputGroupAddon>
+      </InputGroup>
+
+      <InputGroup data-disabled="true">
+        <Input id="keywords" placeholder="Search documentation..." disabled />
+        <InputGroupAddon>
+          <IconSearch />
+        </InputGroupAddon>
+        <InputGroupAddon align="end">Disabled</InputGroupAddon>
+      </InputGroup>
     </div>
   )
 }
