@@ -94,6 +94,9 @@ async function buildRegistryJsonFile() {
     JSON.stringify(fixedRegistry, null, 2)
   )
 
+  // 3. Format the registry.json file.
+  await exec(`prettier --write registry.json`)
+
   // 3. Copy the registry.json to the www/public/r/styles/new-york-v4 directory.
   await fs.cp(
     path.join(process.cwd(), "registry.json"),
@@ -140,8 +143,11 @@ async function syncRegistry() {
 
   // 0. Copy registries.json from v4 to www before building www registry.
   const v4RegistriesPath = path.join(process.cwd(), "public/r/registries.json")
-  const wwwRegistriesPath = path.resolve(process.cwd(), "../www/public/r/registries.json")
-  
+  const wwwRegistriesPath = path.resolve(
+    process.cwd(),
+    "../www/public/r/registries.json"
+  )
+
   if (existsSync(v4RegistriesPath)) {
     // Ensure the www/public/r directory exists.
     await fs.mkdir(path.dirname(wwwRegistriesPath), { recursive: true })
@@ -180,6 +186,8 @@ async function buildBlocksIndex() {
     path.join(process.cwd(), "registry/__blocks__.json"),
     JSON.stringify(payload, null, 2)
   )
+
+  await exec(`prettier --write registry/__blocks__.json`)
 }
 
 try {
