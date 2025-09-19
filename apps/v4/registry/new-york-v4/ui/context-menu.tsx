@@ -6,17 +6,75 @@ import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+const ContextMenuGuardContext = React.createContext<
+  | {
+      open: boolean
+      setOpen: (open: boolean) => void
+    }
+  | null
+>(null)
+
 function ContextMenu({
+  open: openProp,
+  onOpenChange,
+  modal = true,
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Root>) {
-  return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
+  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(false)
+  const isControlled = openProp !== undefined
+  const open = isControlled ? (openProp as boolean) : uncontrolledOpen
+
+  const setOpen = React.useCallback(
+    (nextOpen: boolean) => {
+      if (!isControlled) setUncontrolledOpen(nextOpen)
+      onOpenChange?.(nextOpen)
+    },
+    [isControlled, onOpenChange]
+  )
+
+  const guardValue = React.useMemo(
+    () => ({ open, setOpen }),
+    [open, setOpen]
+  )
+
+  return (
+    <ContextMenuGuardContext.Provider value={guardValue}>
+      <ContextMenuPrimitive.Root
+        data-slot="context-menu"
+        open={open}
+        onOpenChange={setOpen}
+        modal={modal}
+        {...props}
+      />
+    </ContextMenuGuardContext.Provider>
+  )
 }
 
 function ContextMenuTrigger({
+  onContextMenu,
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Trigger>) {
+  const ctx = React.useContext(ContextMenuGuardContext)
+  const handleContextMenu = React.useCallback<
+    NonNullable<React.ComponentProps<typeof ContextMenuPrimitive.Trigger>["onContextMenu"]>
+  >(
+    (event) => {
+      if (ctx?.open) {
+        // Guard: ignore re-entrant open while already open
+        event.preventDefault()
+        return
+      }
+      onContextMenu?.(event)
+    },
+    [ctx?.open, onContextMenu]
+  )
+
   return (
-    <ContextMenuPrimitive.Trigger data-slot="context-menu-trigger" {...props} />
+    <ContextMenuPrimitive.Trigger
+      data-slot="context-menu-trigger"
+      onContextMenu={handleContextMenu}
+      {...props}
+    />
   )
 }
 
