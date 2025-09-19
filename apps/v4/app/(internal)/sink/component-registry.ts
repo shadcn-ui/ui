@@ -23,6 +23,7 @@ import { DatePickerDemo } from "./components/date-picker-demo"
 import { DialogDemo } from "./components/dialog-demo"
 import { DrawerDemo } from "./components/drawer-demo"
 import { DropdownMenuDemo } from "./components/dropdown-menu-demo"
+import { EmptyDemo } from "./components/empty-demo"
 import { FieldDemo } from "./components/field-demo"
 import { FormDemo } from "./components/form-demo"
 import { HoverCardDemo } from "./components/hover-card-demo"
@@ -194,6 +195,12 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: DropdownMenuDemo,
     type: "registry:ui",
     href: "/sink/dropdown-menu",
+  },
+  empty: {
+    name: "Empty",
+    component: EmptyDemo,
+    type: "registry:ui",
+    href: "/sink/empty",
   },
   field: {
     name: "Field",
