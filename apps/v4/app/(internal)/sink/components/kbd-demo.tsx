@@ -3,6 +3,11 @@ import { CommandIcon, WavesIcon } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
+import {
+  Field,
+  FieldContent,
+  FieldTitle,
+} from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
@@ -17,10 +22,11 @@ import {
 
 export function KbdDemo() {
   return (
-    <div className="flex max-w-xs flex-col gap-4">
+    <div className="flex max-w-xs flex-col items-start gap-4">
       <div className="flex items-center gap-2">
         <Kbd>Ctrl</Kbd>
         <Kbd>⌘K</Kbd>
+        <Kbd>Ctrl + B</Kbd>
       </div>
       <div className="flex items-center gap-2">
         <Kbd>⌘</Kbd>
@@ -94,6 +100,14 @@ export function KbdDemo() {
           </TooltipContent>
         </Tooltip>
       </ButtonGroup>
+      <Field>
+        <FieldTitle>With samp</FieldTitle>
+        <FieldContent>
+          <Kbd>
+            <samp>File</samp>
+          </Kbd>
+        </FieldContent>
+      </Field>
     </div>
   )
 }
