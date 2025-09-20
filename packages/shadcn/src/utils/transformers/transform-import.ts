@@ -1,42 +1,68 @@
 import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
+import { SyntaxKind } from "ts-morph"
 
-export const transformImport: Transformer = async ({ sourceFile, config }) => {
-  const importDeclarations = sourceFile.getImportDeclarations()
+export const transformImport: Transformer = async ({
+  sourceFile,
+  config,
+  isRemote,
+}) => {
+  const workspaceAlias = config.aliases?.utils?.split("/")[0]?.slice(1)
+  const utilsImport = `@${workspaceAlias}/lib/utils`
 
-  for (const importDeclaration of importDeclarations) {
-    const moduleSpecifier = updateImportAliases(
-      importDeclaration.getModuleSpecifierValue(),
-      config
+  if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
+    return sourceFile
+  }
+
+  for (const specifier of sourceFile.getImportStringLiterals()) {
+    const updated = updateImportAliases(
+      specifier.getLiteralValue(),
+      config,
+      isRemote
     )
-
-    importDeclaration.setModuleSpecifier(moduleSpecifier)
+    specifier.setLiteralValue(updated)
 
     // Replace `import { cn } from "@/lib/utils"`
-    if (moduleSpecifier == "@/lib/utils") {
-      const namedImports = importDeclaration.getNamedImports()
-      const cnImport = namedImports.find((i) => i.getName() === "cn")
-      if (cnImport) {
-        importDeclaration.setModuleSpecifier(
-          moduleSpecifier.replace(/^@\/lib\/utils/, config.aliases.utils)
-        )
-      }
+    if (utilsImport === updated || updated === "@/lib/utils") {
+      const importDeclaration = specifier.getFirstAncestorByKind(
+        SyntaxKind.ImportDeclaration
+      )
+      const isCnImport = importDeclaration
+        ?.getNamedImports()
+        .some((namedImport) => namedImport.getName() === "cn")
+
+      if (!isCnImport) continue
+
+      specifier.setLiteralValue(
+        utilsImport === updated
+          ? updated.replace(utilsImport, config.aliases.utils)
+          : config.aliases.utils
+      )
     }
   }
 
   return sourceFile
 }
 
-function updateImportAliases(moduleSpecifier: string, config: Config) {
+function updateImportAliases(
+  moduleSpecifier: string,
+  config: Config,
+  isRemote: boolean = false
+) {
   // Not a local import.
-  if (!moduleSpecifier.startsWith("@/")) {
+  if (!moduleSpecifier.startsWith("@/") && !isRemote) {
     return moduleSpecifier
+  }
+
+  // This treats the remote as coming from a faux registry.
+  if (isRemote && moduleSpecifier.startsWith("@/")) {
+    moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
   }
 
   // Not a registry import.
   if (!moduleSpecifier.startsWith("@/registry/")) {
-    // We fix the alias an return.
-    const alias = config.aliases.components.charAt(0)
+    // We fix the alias and return.
+    const alias = config.aliases.components.split("/")[0]
     return moduleSpecifier.replace(/^@\//, `${alias}/`)
   }
 

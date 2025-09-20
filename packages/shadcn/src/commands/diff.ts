@@ -1,16 +1,16 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { Config, getConfig } from "@/src/utils/get-config"
-import { handleError } from "@/src/utils/handle-error"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
 import {
   fetchTree,
   getItemTargetPath,
   getRegistryBaseColor,
-  getRegistryIndex,
-} from "@/src/utils/registry"
-import { registryIndexSchema } from "@/src/utils/registry/schema"
+  getShadcnRegistryIndex,
+} from "@/src/registry/api"
+import { registryIndexSchema } from "@/src/schema"
+import { Config, getConfig } from "@/src/utils/get-config"
+import { handleError } from "@/src/utils/handle-error"
+import { highlighter } from "@/src/utils/highlighter"
+import { logger } from "@/src/utils/logger"
 import { transform } from "@/src/utils/transformers"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
@@ -57,7 +57,7 @@ export const diff = new Command()
         process.exit(1)
       }
 
-      const registryIndex = await getRegistryIndex()
+      const registryIndex = await getShadcnRegistryIndex()
 
       if (!registryIndex) {
         handleError(new Error("Failed to fetch registry index."))

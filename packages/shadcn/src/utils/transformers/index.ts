@@ -1,9 +1,10 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
+import { registryBaseColorSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
-import { registryBaseColorSchema } from "@/src/utils/registry/schema"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
+import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformJsx } from "@/src/utils/transformers/transform-jsx"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
@@ -18,6 +19,7 @@ export type TransformOpts = {
   config: Config
   baseColor?: z.infer<typeof registryBaseColorSchema>
   transformJsx?: boolean
+  isRemote?: boolean
 }
 
 export type Transformer<Output = SourceFile> = (
@@ -42,6 +44,7 @@ export async function transform(
     transformRsc,
     transformCssVars,
     transformTwPrefixes,
+    transformIcons,
   ]
 ) {
   const tempFile = await createTempSourceFile(opts.filename)
@@ -50,7 +53,7 @@ export async function transform(
   })
 
   for (const transformer of transformers) {
-    transformer({ sourceFile, ...opts })
+    await transformer({ sourceFile, ...opts })
   }
 
   if (opts.transformJsx) {

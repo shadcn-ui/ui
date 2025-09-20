@@ -7,7 +7,13 @@ export default defineConfig({
       ...configDefaults.exclude,
       "**/node_modules/**",
       "**/fixtures/**",
+      "**/templates/**",
+      "**/packages/tests/**",
     ],
   },
-  plugins: [tsconfigPaths()],
+  plugins: [
+    tsconfigPaths({
+      ignoreConfigErrors: true,
+    }),
+  ],
 })

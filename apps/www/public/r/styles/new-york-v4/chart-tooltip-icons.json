@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-tooltip-icons",
+  "type": "registry:block",
+  "registryDependencies": [
+    "card",
+    "chart"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/charts/chart-tooltip-icons.tsx",
+      "content": "\"use client\"\n\nimport { Footprints, Waves } from \"lucide-react\"\nimport { Bar, BarChart, XAxis } from \"recharts\"\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport {\n  ChartConfig,\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/registry/new-york-v4/ui/chart\"\n\nexport const description = \"A stacked bar chart with a legend\"\n\nconst chartData = [\n  { date: \"2024-07-15\", running: 450, swimming: 300 },\n  { date: \"2024-07-16\", running: 380, swimming: 420 },\n  { date: \"2024-07-17\", running: 520, swimming: 120 },\n  { date: \"2024-07-18\", running: 140, swimming: 550 },\n  { date: \"2024-07-19\", running: 600, swimming: 350 },\n  { date: \"2024-07-20\", running: 480, swimming: 400 },\n]\n\nconst chartConfig = {\n  running: {\n    label: \"Running\",\n    color: \"var(--chart-1)\",\n    icon: Footprints,\n  },\n  swimming: {\n    label: \"Swimming\",\n    color: \"var(--chart-2)\",\n    icon: Waves,\n  },\n} satisfies ChartConfig\n\nexport function ChartTooltipIcons() {\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>Tooltip - Icons</CardTitle>\n        <CardDescription>Tooltip with icons.</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={chartConfig}>\n          <BarChart accessibilityLayer data={chartData}>\n            <XAxis\n              dataKey=\"date\"\n              tickLine={false}\n              tickMargin={10}\n              axisLine={false}\n              tickFormatter={(value) => {\n                return new Date(value).toLocaleDateString(\"en-US\", {\n                  weekday: \"short\",\n                })\n              }}\n            />\n            <Bar\n              dataKey=\"running\"\n              stackId=\"a\"\n              fill=\"var(--color-running)\"\n              radius={[0, 0, 4, 4]}\n            />\n            <Bar\n              dataKey=\"swimming\"\n              stackId=\"a\"\n              fill=\"var(--color-swimming)\"\n              radius={[4, 4, 0, 0]}\n            />\n            <ChartTooltip\n              content={<ChartTooltipContent hideLabel />}\n              cursor={false}\n              defaultIndex={1}\n            />\n          </BarChart>\n        </ChartContainer>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "categories": [
+    "charts",
+    "charts-tooltip"
+  ]
+}
