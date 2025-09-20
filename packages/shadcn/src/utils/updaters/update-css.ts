@@ -308,6 +308,10 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
                       raws: { semicolon: true, before: "\n    " },
                     })
                     atRule.append(decl)
+                  }
+                  // Check if this is any at-rule with empty object (no body).
+                  else if (isEmptyAtRule(prop, value)) {
+                    processEmptyAtRule(atRule, prop, value)
                   } else if (typeof value === "object") {
                     processRule(atRule, prop, value)
                   }
@@ -332,6 +336,10 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
                     existingDecl
                       ? existingDecl.replaceWith(decl)
                       : utilityAtRule.append(decl)
+                  }
+                  // Check if this is any at-rule with empty object (no body).
+                  else if (isEmptyAtRule(prop, value)) {
+                    processEmptyAtRule(utilityAtRule, prop, value)
                   } else if (typeof value === "object") {
                     processRule(utilityAtRule, prop, value)
                   }
@@ -348,6 +356,49 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
         }
       }
     },
+  }
+}
+
+function isEmptyAtRule(selector: string, properties: any) {
+  return (
+    selector.startsWith("@") &&
+    typeof properties === "object" &&
+    properties !== null &&
+    Object.keys(properties).length === 0
+  )
+}
+
+function processEmptyAtRule(
+  parent: Root | Rule | AtRule,
+  selector: string,
+  properties: any
+) {
+  if (!isEmptyAtRule(selector, properties)) {
+    return
+  }
+
+  const atRuleMatch = selector.match(/@([a-zA-Z-]+)\s*(.*)/)
+  if (!atRuleMatch) {
+    return
+  }
+  const [, atRuleName, atRuleParams] = atRuleMatch
+
+  // Find existing at-rule with same name and value.
+  const existingAtRule = parent.nodes?.find(
+    (node): node is AtRule =>
+      node.type === "atrule" &&
+      node.name === atRuleName &&
+      node.params === atRuleParams
+  )
+
+  // Only append new at-rule if it doesn't already exist.
+  if (!existingAtRule) {
+    const atRule = postcss.atRule({
+      name: atRuleName,
+      params: atRuleParams,
+      raws: { semicolon: true, before: `${parent.raws.before ?? ""}  ` },
+    })
+    parent.append(atRule)
   }
 }
 
@@ -376,7 +427,9 @@ function processAtRule(
   // Process children of this at-rule
   if (typeof properties === "object") {
     for (const [childSelector, childProps] of Object.entries(properties)) {
-      if (childSelector.startsWith("@")) {
+      if (isEmptyAtRule(childSelector, childProps)) {
+        processEmptyAtRule(atRule, childSelector, childProps)
+      } else if (childSelector.startsWith("@")) {
         // Nested at-rule
         const nestedMatch = childSelector.match(/@([a-zA-Z-]+)\s*(.*)/)
         if (nestedMatch) {
@@ -439,23 +492,8 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
   if (typeof properties === "object") {
     for (const [prop, value] of Object.entries(properties)) {
       // Check if this is any at-rule with empty object (no body).
-      if (
-        prop.startsWith("@") &&
-        typeof value === "object" &&
-        value !== null &&
-        Object.keys(value).length === 0
-      ) {
-        // Parse the at-rule.
-        const atRuleMatch = prop.match(/@([a-zA-Z-]+)\s*(.*)/)
-        if (atRuleMatch) {
-          const [, atRuleName, atRuleParams] = atRuleMatch
-          const atRule = postcss.atRule({
-            name: atRuleName,
-            params: atRuleParams,
-            raws: { semicolon: true, before: "\n    " },
-          })
-          rule.append(atRule)
-        }
+      if (isEmptyAtRule(prop, value)) {
+        processEmptyAtRule(rule, prop, value)
       } else if (typeof value === "string") {
         const decl = postcss.decl({
           prop,
