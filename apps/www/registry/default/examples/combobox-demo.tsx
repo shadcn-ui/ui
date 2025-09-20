@@ -55,9 +55,12 @@ export default function ComboboxDemo() {
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
+          <span className="w-full truncate">
+            {value
+              ? frameworks.find((framework) => framework.value === value)?.label
+              : "Select framework..."}
+          </span>
+
           <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
