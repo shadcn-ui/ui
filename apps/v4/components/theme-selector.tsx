@@ -58,6 +58,18 @@ const COLOR_THEMES = [
     name: "Teal",
     value: "teal",
   },
+  {
+    name: "Yellow",
+    value: "yellow",
+  },
+  {
+    name: "Violet",
+    value: "violet",
+  },
+  {
+    name: "Red",
+    value: "red",
+  },
 ]
 
 export function ThemeSelector({ className }: React.ComponentProps<"div">) {
