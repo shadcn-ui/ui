@@ -11,7 +11,7 @@ export default function TooltipDemo() {
       <TooltipTrigger asChild>
         <Button variant="outline">Hover</Button>
       </TooltipTrigger>
-      <TooltipContent>
+      <TooltipContent highlight="Ctrl + K">
         <p>Add to library</p>
       </TooltipContent>
     </Tooltip>
