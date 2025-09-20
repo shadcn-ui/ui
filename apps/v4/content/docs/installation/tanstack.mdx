@@ -16,32 +16,44 @@ Start by creating a new TanStack Start project by following the [Build a Project
 Install `tailwindcss` and its dependencies.
 
 ```bash
-npm install tailwindcss @tailwindcss/postcss postcss
+npm install tailwindcss @tailwindcss/vite
 ```
 
-### Create postcss.config.ts
+### Add Tailwind plugin to `vite.config.ts`
 
-Create a `postcss.config.ts` file at the root of your project.
+Add tailwindcss plugin to `vite.config.ts`.
 
-```ts title="postcss.config.ts" showLineNumbers
-export default {
-  plugins: {
-    "@tailwindcss/postcss": {},
+```ts title="vite.config.ts" showLineNumbers {5,12} showLineNumbers
+import { defineConfig } from 'vite'
+import tsConfigPaths from 'vite-tsconfig-paths'
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import viteReact from '@vitejs/plugin-react'
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+  server: {
+    port: 3000,
   },
-}
+  plugins: [
+    tailwindcss(),
+    tsConfigPaths(),
+    tanstackStart({ customViteReactPlugin: true }),
+    viteReact(),
+  ],
+})
 ```
 
-### Create `app/styles/app.css`
+### Create `src/styles/app.css`
 
-Create an `app.css` file in the `app/styles` directory and import `tailwindcss`
+Create an `app.css` file in the `src/styles` directory and import `tailwindcss`
 
-```css title="app/styles/app.css"
+```css title="src/styles/app.css"
 @import "tailwindcss" source("../");
 ```
 
 ### Import `app.css`
 
-```tsx title="app/routes/__root.tsx" showLineNumbers {5,21-26} showLineNumbers
+```tsx title="src/routes/__root.tsx" showLineNumbers {5,21-26} showLineNumbers
 import type { ReactNode } from "react"
 import { createRootRoute, Outlet } from "@tanstack/react-router"
 import { Meta, Scripts } from "@tanstack/start"
@@ -88,7 +100,7 @@ Add the following code to the `tsconfig.json` file to resolve paths.
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./app/*"]
+      "@/*": ["./src/*"]
     }
   }
 }
