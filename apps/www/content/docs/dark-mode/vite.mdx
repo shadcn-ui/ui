@@ -41,24 +41,58 @@ export function ThemeProvider({
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
   )
+  const root = window.document.documentElement
+  const systemThemeMediaQuery = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  )
+
+  const addThemeClass = useCallback(
+    (themeClass: Exclude<Theme, "system">) => {
+      root.classList.add(themeClass)
+    },
+    [root.classList]
+  )
+
+  const removeThemeClasses = useCallback(() => {
+    root.classList.remove("light", "dark")
+  }, [root.classList])
+
+  const handleSystemThemeChange = useCallback(() => {
+    const isDarkTheme = systemThemeMediaQuery.matches
+    removeThemeClasses()
+    addThemeClass(isDarkTheme ? "dark" : "light")
+  }, [addThemeClass, systemThemeMediaQuery.matches, removeThemeClasses])
+
+  const addSystemThemeListener = useCallback(() => {
+    systemThemeMediaQuery.addEventListener("change", handleSystemThemeChange)
+  }, [handleSystemThemeChange, systemThemeMediaQuery])
+
+  const removeSystemThemeListener = useCallback(() => {
+    systemThemeMediaQuery.removeEventListener("change", handleSystemThemeChange)
+  }, [handleSystemThemeChange, systemThemeMediaQuery])
 
   useEffect(() => {
-    const root = window.document.documentElement
-
-    root.classList.remove("light", "dark")
-
     if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light"
-
-      root.classList.add(systemTheme)
+      handleSystemThemeChange()
+      removeSystemThemeListener()
+      addSystemThemeListener()
       return
     }
 
-    root.classList.add(theme)
-  }, [theme])
+    removeSystemThemeListener()
+    removeThemeClasses()
+    addThemeClass(theme)
+
+    return removeSystemThemeListener
+  }, [
+    addSystemThemeListener,
+    addThemeClass,
+    handleSystemThemeChange,
+    systemThemeMediaQuery,
+    removeSystemThemeListener,
+    removeThemeClasses,
+    theme,
+  ])
 
   const value = {
     theme,
