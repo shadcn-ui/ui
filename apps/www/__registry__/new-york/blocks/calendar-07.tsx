@@ -23,7 +23,7 @@ export default function Calendar07() {
         max={20}
         className="rounded-lg border shadow-sm"
       />
-      <div className="text-muted-foreground text-center text-xs">
+      <div className="text-center text-xs text-muted-foreground">
         Your stay must be between 2 and 20 nights
       </div>
     </div>
