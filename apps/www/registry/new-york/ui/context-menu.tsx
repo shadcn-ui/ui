@@ -6,9 +6,71 @@ import { Check, ChevronRight, Circle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const ContextMenu = ContextMenuPrimitive.Root
+const ContextMenuGuardContext = React.createContext<
+  | {
+      open: boolean
+      setOpen: (open: boolean) => void
+    }
+  | null
+>(null)
 
-const ContextMenuTrigger = ContextMenuPrimitive.Trigger
+const ContextMenu = ({
+  open: openProp,
+  onOpenChange,
+  modal = true,
+  ...props
+}: React.ComponentProps<typeof ContextMenuPrimitive.Root>) => {
+  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(false)
+  const isControlled = openProp !== undefined
+  const open = isControlled ? (openProp as boolean) : uncontrolledOpen
+
+  const setOpen = React.useCallback(
+    (nextOpen: boolean) => {
+      if (!isControlled) setUncontrolledOpen(nextOpen)
+      onOpenChange?.(nextOpen)
+    },
+    [isControlled, onOpenChange]
+  )
+
+  const guardValue = React.useMemo(
+    () => ({ open, setOpen }),
+    [open, setOpen]
+  )
+
+  return (
+    <ContextMenuGuardContext.Provider value={guardValue}>
+      <ContextMenuPrimitive.Root
+        open={open}
+        onOpenChange={setOpen}
+        modal={modal}
+        {...props}
+      />
+    </ContextMenuGuardContext.Provider>
+  )
+}
+
+const ContextMenuTrigger = ({
+  onContextMenu,
+  ...props
+}: React.ComponentProps<typeof ContextMenuPrimitive.Trigger>) => {
+  const ctx = React.useContext(ContextMenuGuardContext)
+  const handleContextMenu = React.useCallback<
+    NonNullable<React.ComponentProps<typeof ContextMenuPrimitive.Trigger>["onContextMenu"]>
+  >(
+    (event) => {
+      if (ctx?.open) {
+        event.preventDefault()
+        return
+      }
+      onContextMenu?.(event)
+    },
+    [ctx?.open, onContextMenu]
+  )
+
+  return (
+    <ContextMenuPrimitive.Trigger onContextMenu={handleContextMenu} {...props} />
+  )
+}
 
 const ContextMenuGroup = ContextMenuPrimitive.Group
 
