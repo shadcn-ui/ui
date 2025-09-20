@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.3.1
+
+### Patch Changes
+
+- [`75dde2e64679081dad63ecd20f3fd9e3b68fa0ce`](https://github.com/shadcn-ui/ui/commit/75dde2e64679081dad63ecd20f3fd9e3b68fa0ce) Thanks [@shadcn](https://github.com/shadcn)! - fix deps in cts projects
+
 ## 3.3.0
 
 ### Minor Changes
