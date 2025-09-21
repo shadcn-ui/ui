@@ -305,6 +305,17 @@
       ]
     },
     {
+      "name": "multi-select-combo-box",
+      "type": "registry:ui",
+      "registryDependencies": ["button", "separator", "badge", "popover", "command"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/multi-select-combo-box.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "navigation-menu",
       "type": "registry:ui",
       "dependencies": ["@radix-ui/react-navigation-menu"],
