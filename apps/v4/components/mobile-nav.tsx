@@ -28,6 +28,10 @@ const TOP_LEVEL_SECTIONS = [
     name: "MCP Server",
     href: "/docs/mcp",
   },
+  {
+    name: "Changelog",
+    href: "/docs/changelog",
+  },
 ]
 
 export function MobileNav({
