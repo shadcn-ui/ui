@@ -1,4 +1,4 @@
-import * as React from "react"
+"use client"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -7,8 +7,9 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="input-group"
+      role="presentation"
       className={cn(
-        "group/input-group border-input dark:bg-input/30 relative isolate flex h-9 w-full items-center gap-2 rounded-md border px-3 shadow-xs transition-[color,box-shadow] outline-none",
+        "group/input-group border-input dark:bg-input/30 -px-3 -gap-2 relative isolate flex h-9 w-full items-center rounded-md border shadow-xs transition-[color,box-shadow] outline-none",
 
         // Error state.
         "has-[input[aria-invalid=true]]:ring-destructive/20 has-[input[aria-invalid=true]]:border-destructive dark:has-[input[aria-invalid=true]]:ring-destructive/40",
@@ -17,7 +18,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
         "has-[input:focus-visible]:border-ring has-[input:focus-visible]:ring-ring/50 has-[input:focus-visible]:ring-[3px]",
 
         // Child input overrides (direct children only).
-        "[&>input]:flex-1 [&>input]:rounded-none [&>input]:border-0 [&>input]:bg-transparent [&>input]:px-0 [&>input]:shadow-none dark:[&>input]:bg-transparent [&>input:focus-visible]:ring-0",
+        "[&>input]:flex-1 [&>input]:rounded-none [&>input]:border-0 [&>input]:bg-transparent [&>input]:shadow-none dark:[&>input]:bg-transparent [&>input:focus-visible]:ring-0",
 
         className
       )}
@@ -34,15 +35,23 @@ function InputGroupAddon({
   align?: "start" | "end"
 }) {
   return (
-    <div
+    <span
       data-slot="input-group-addon"
       data-align={align}
-      className={cn(
-        "text-muted-foreground flex h-auto items-center justify-center py-1.5 text-sm font-medium select-none",
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest("button")) {
+          return
+        }
 
-        // Alignment and button adjustments.
-        "data-[align=end]:order-last",
-        "data-[align=start]:order-first",
+        // Focus the input.
+        e.currentTarget.parentElement?.querySelector("input")?.focus()
+      }}
+      className={cn(
+        "text-muted-foreground flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium select-none",
+
+        // Alignment and button adjustments.a
+        "data-[align=end]:order-last data-[align=end]:pr-3",
+        "data-[align=start]:order-first data-[align=start]:pl-3",
         "data-[align=end]:has-[>button]:mr-[-0.4rem] data-[align=end]:has-[>kbd]:mr-[-0.35rem]",
         "data-[align=start]:has-[>button]:ml-[-0.45rem] data-[align=start]:has-[>kbd]:ml-[-0.35rem]",
 

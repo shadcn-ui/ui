@@ -559,6 +559,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "spinner",
+    type: "registry:ui",
+    dependencies: ["class-variance-authority"],
+    files: [
+      {
+        path: "ui/spinner.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "switch",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-switch"],

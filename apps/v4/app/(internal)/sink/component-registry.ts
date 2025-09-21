@@ -46,6 +46,7 @@ import { SheetDemo } from "./components/sheet-demo"
 import { SkeletonDemo } from "./components/skeleton-demo"
 import { SliderDemo } from "./components/slider-demo"
 import { SonnerDemo } from "./components/sonner-demo"
+import { SpinnerDemo } from "./components/spinner-demo"
 import { SwitchDemo } from "./components/switch-demo"
 import { TableDemo } from "./components/table-demo"
 import { TabsDemo } from "./components/tabs-demo"
@@ -333,6 +334,12 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: SonnerDemo,
     type: "registry:ui",
     href: "/sink/sonner",
+  },
+  spinner: {
+    name: "Spinner",
+    component: SpinnerDemo,
+    type: "registry:ui",
+    href: "/sink/spinner",
   },
   switch: {
     name: "Switch",

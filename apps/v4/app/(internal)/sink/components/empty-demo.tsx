@@ -224,8 +224,8 @@ export function EmptyDemo() {
             <PopoverTrigger asChild>
               <Button variant="outline">Open Popover</Button>
             </PopoverTrigger>
-            <PopoverContent className="p-2">
-              <Empty className="bg-muted rounded-sm p-6">
+            <PopoverContent className="rounded-2xl p-2">
+              <Empty className="rounded-sm p-6">
                 <EmptyHeader>
                   <EmptyTitle>Nothing to see here</EmptyTitle>
                   <EmptyDescription>

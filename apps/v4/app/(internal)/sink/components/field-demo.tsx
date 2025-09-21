@@ -44,7 +44,6 @@ import {
   Field,
   FieldContent,
   FieldDescription,
-  FieldError,
   FieldGroup,
   FieldLabel,
   FieldLegend,
@@ -90,15 +89,21 @@ import {
 
 export function FieldDemo() {
   return (
-    <>
-      <RandomFields />
-      <div className="bg-muted flex flex-wrap items-start gap-5 p-4 *:[div]:w-md">
+    <div className="-m-6">
+      <div className="bg-muted flex flex-wrap items-start gap-5 p-4 *:[div]:max-w-[435px]">
         <div className="flex flex-col gap-6">
+          <BasicFields />
+          <PrivacySettings />
+          <HearAboutUs />
+          <ClusterConfig />
+          <ShippingMethods />
+        </div>
+        <div className="flex flex-col gap-6">
+          <SubscriptionPlan />
           <FormInputDemo />
           <FormInputTypesDemo />
           <FeedbackForm />
           <JobApplicationForm />
-          <CheckoutForm />
         </div>
         <div className="flex flex-col gap-6">
           <FormSpecialInputTypesDemo />
@@ -106,6 +111,7 @@ export function FieldDemo() {
           <FormSelectDemo />
           <ProfileSettingsForm />
           <FormFieldGroupOutlineDemo />
+          <SurveyForm />
         </div>
         <div className="flex flex-col gap-6">
           <FormRadioDemo />
@@ -114,6 +120,7 @@ export function FieldDemo() {
           <NewsletterForm />
           <PaymentForm />
           <ContactForm />
+          <ComplexFormDemo />
         </div>
         <div className="flex flex-col gap-6">
           <FormSwitchDemo />
@@ -127,558 +134,714 @@ export function FieldDemo() {
           <SignupForm />
           <LoginForm />
           <FinderPreferencesForm />
-          <SurveyForm />
-        </div>
-        <div className="flex flex-col gap-6">
-          <ComplexFormDemo />
+          <CheckoutForm />
           <ComplexFormInvalidDemo />
-          <FieldErrorDemo />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
-function RandomFields() {
+function BasicFields() {
   return (
-    <div className="bg-muted flex flex-wrap items-start gap-5 p-4 *:[div]:w-md">
+    <Card>
+      <CardContent>
+        <FieldSet>
+          <FieldGroup>
+            <Field>
+              <FieldLabel htmlFor="name">Name</FieldLabel>
+              <FieldDescription>
+                Enter your name so it is long enough to test the layout.
+              </FieldDescription>
+              <Input id="name" type="text" />
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="name-2">
+                Name{" "}
+                <Badge variant="secondary" className="ml-auto">
+                  Recommended
+                </Badge>
+              </FieldLabel>
+              <Input id="name-2" type="text" />
+              <FieldDescription>
+                Enter your name so it is long enough to test the layout.
+              </FieldDescription>
+            </Field>
+            <Field>
+              <Checkbox id="terms-21f" />
+              <FieldLabel htmlFor="terms-21f">
+                Accept terms and conditions
+              </FieldLabel>
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="terms-21f">
+                Accept terms and conditions
+              </FieldLabel>
+              <Checkbox id="terms-21f" />
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="dark-mode">Dark Mode</FieldLabel>
+              <Switch id="dark-mode" />
+            </Field>
+            <RadioGroup>
+              <Field>
+                <FieldLabel htmlFor="dark-mode-22">Dark Mode</FieldLabel>
+                <RadioGroupItem value="dark-mode-22" id="dark-mode-22" />
+              </Field>
+            </RadioGroup>
+            <Field>
+              <FieldContent>
+                <FieldLabel htmlFor="enable-touch-id">
+                  Enable Touch ID
+                </FieldLabel>
+                <FieldDescription>
+                  Enable Touch ID to quickly unlock your device.
+                </FieldDescription>
+              </FieldContent>
+              <Checkbox id="enable-touch-id" />
+            </Field>
+            <FieldSeparator />
+            <Field>
+              <FieldLabel htmlFor="battery-level">Battery Level</FieldLabel>
+              <FieldDescription>
+                Choose your preferred battery level.
+              </FieldDescription>
+              <RadioGroup>
+                <Field>
+                  <RadioGroupItem value="high" id="battery-level-high" />
+                  <FieldLabel htmlFor="battery-level-high">High</FieldLabel>
+                </Field>
+                <Field>
+                  <RadioGroupItem value="medium" id="battery-level-medium" />
+                  <FieldLabel htmlFor="battery-level-medium">Medium</FieldLabel>
+                </Field>
+                <Field>
+                  <RadioGroupItem value="low" id="battery-level-low" />
+                  <FieldLabel htmlFor="battery-level-low">Low</FieldLabel>
+                </Field>
+              </RadioGroup>
+            </Field>
+            <FieldSeparator />
+            <Field>
+              <FieldLabel htmlFor="search-results">Search Results</FieldLabel>
+              <FieldDescription>
+                Only selected categories will appear in search results.
+              </FieldDescription>
+              <Field>
+                <Checkbox id="search-results-application" />
+                <FieldLabel htmlFor="search-results-application">
+                  Application
+                </FieldLabel>
+              </Field>
+              <Field>
+                <Checkbox id="search-results-music" />
+                <FieldLabel htmlFor="search-results-music">Music</FieldLabel>
+              </Field>
+              <Field>
+                <Checkbox id="search-results-video" />
+                <FieldLabel htmlFor="search-results-video">Video</FieldLabel>
+              </Field>
+              <Field>
+                <Checkbox id="search-results-photo" />
+                <FieldLabel htmlFor="search-results-photo">Photo</FieldLabel>
+              </Field>
+              <Field>
+                <Checkbox id="search-results-document" />
+                <FieldLabel htmlFor="search-results-document">
+                  Document
+                </FieldLabel>
+              </Field>
+              <Field>
+                <Checkbox id="search-results-other" />
+                <FieldLabel htmlFor="search-results-other">Other</FieldLabel>
+              </Field>
+            </Field>
+            <Field>
+              <FieldContent>
+                <FieldLabel>Measurement System</FieldLabel>
+                <FieldDescription>
+                  Select your preferred measurement system.
+                </FieldDescription>
+              </FieldContent>
+              <RadioGroup>
+                <FieldLabel htmlFor="metric">
+                  <Field>
+                    <FieldTitle>Metric</FieldTitle>
+                    <RadioGroupItem value="metric" id="metric" />
+                  </Field>
+                </FieldLabel>
+                <FieldLabel>
+                  <Field>
+                    <RadioGroupItem value="imperial" id="imperial" />
+                    <FieldTitle>Imperial</FieldTitle>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="custom-units">
+                  <Field>
+                    <FieldTitle>Custom</FieldTitle>
+                    <RadioGroupItem value="custom-units" id="custom-units" />
+                  </Field>
+                </FieldLabel>
+              </RadioGroup>
+            </Field>
+          </FieldGroup>
+        </FieldSet>
+      </CardContent>
+    </Card>
+  )
+}
+
+function SubscriptionPlan() {
+  return (
+    <Card>
+      <CardContent>
+        <FieldGroup>
+          <FieldSet>
+            <FieldLegend>Subscription Plan</FieldLegend>
+            <FieldDescription>Choose your subscription plan.</FieldDescription>
+            <RadioGroup defaultValue="plus">
+              <FieldLabel htmlFor="plus">
+                <Field>
+                  <FieldContent>
+                    <FieldTitle>Plus</FieldTitle>
+                    <FieldDescription>
+                      For individuals and small teams
+                    </FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem value="plus" id="plus" />
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="pro">
+                <Field>
+                  <FieldContent>
+                    <FieldTitle>Pro</FieldTitle>
+                    <FieldDescription>
+                      For individuals and small teams
+                    </FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem value="pro" id="pro" />
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="enterprise">
+                <Field>
+                  <FieldContent>
+                    <FieldTitle>Enterprise</FieldTitle>
+                    <FieldDescription>
+                      For large teams and enterprises
+                    </FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem value="enterprise" id="enterprise" />
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="custom-plan">
+                <Field>
+                  <FieldContent>
+                    <FieldTitle>Custom</FieldTitle>
+                    <FieldDescription>
+                      For large teams and enterprises
+                    </FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem value="custom-plan" id="custom-plan" />
+                </Field>
+              </FieldLabel>
+            </RadioGroup>
+          </FieldSet>
+          <FieldSet>
+            <FieldLegend>Display Settings</FieldLegend>
+            <FieldDescription>Manage your display settings.</FieldDescription>
+            <Field>
+              <FieldLabel htmlFor="increase-contrast">
+                <Field>
+                  <FieldContent>
+                    <FieldTitle>Increase Contrast</FieldTitle>
+                    <FieldDescription>
+                      Increase the contrast of the UI to make it easier to read.
+                    </FieldDescription>
+                  </FieldContent>
+                  <Switch id="increase-contrast" />
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="reduce-transparency">
+                <Field>
+                  <FieldContent>
+                    <FieldTitle>Reduce Transparency</FieldTitle>
+                    <FieldDescription>
+                      Reduce the transparency of the UI to make it easier to
+                      read.
+                    </FieldDescription>
+                  </FieldContent>
+                  <Switch id="reduce-transparency" />
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="reduce-motion">
+                <Field>
+                  <FieldContent>
+                    <FieldTitle>Reduce Motion</FieldTitle>
+                    <FieldDescription>
+                      Reduce motion of the UI to make it easier to read.
+                    </FieldDescription>
+                  </FieldContent>
+                  <Switch id="reduce-motion" />
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="enable-dark-mode">
+                <Field>
+                  <FieldContent>
+                    <FieldTitle>Enable Dark Mode</FieldTitle>
+                    <FieldDescription>
+                      Enable dark mode to make the UI easier to read.
+                    </FieldDescription>
+                  </FieldContent>
+                  <Switch id="enable-dark-mode" />
+                </Field>
+              </FieldLabel>
+            </Field>
+            <FieldSet>
+              <FieldLegend>Display Resolution</FieldLegend>
+              <FieldDescription>
+                Select your preferred display resolution.
+              </FieldDescription>
+              <RadioGroup className="grid grid-cols-2 gap-2">
+                <FieldLabel htmlFor="1080p">
+                  <Field>
+                    <RadioGroupItem value="1080p" id="1080p" />
+                    <FieldTitle>1920x1080</FieldTitle>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="1440p">
+                  <Field>
+                    <RadioGroupItem value="1440p" id="1440p" />
+                    <FieldTitle>2560x1440</FieldTitle>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="4k">
+                  <Field>
+                    <RadioGroupItem value="4k" id="4k" />
+                    <FieldContent>
+                      <FieldTitle>3840x2160</FieldTitle>
+                      <FieldDescription>
+                        This is a description for the 4k option.
+                      </FieldDescription>
+                    </FieldContent>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="8k">
+                  <Field>
+                    <RadioGroupItem value="8k" id="8k" />
+                    <FieldTitle>7680x4320</FieldTitle>
+                  </Field>
+                </FieldLabel>
+              </RadioGroup>
+            </FieldSet>
+          </FieldSet>
+        </FieldGroup>
+      </CardContent>
+    </Card>
+  )
+}
+
+function PrivacySettings() {
+  return (
+    <div className="flex flex-col gap-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>Privacy Settings</CardTitle>
+          <CardDescription>
+            Choose who can see your profile and what they can see.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <RadioGroup>
+            <FieldLabel htmlFor="everyone">
+              <Field>
+                <FieldContent>
+                  <FieldTitle>
+                    Everyone <Badge className="rounded-full">Default</Badge>
+                  </FieldTitle>
+                  <FieldDescription>
+                    Anyone can see your profile.
+                  </FieldDescription>
+                </FieldContent>
+                <RadioGroupItem
+                  value="everyone"
+                  id="everyone"
+                  className="sr-only"
+                />
+                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+              </Field>
+            </FieldLabel>
+            <FieldLabel htmlFor="followers">
+              <Field>
+                <FieldContent>
+                  <FieldTitle>Followers</FieldTitle>
+                  <FieldDescription>
+                    Visible to your followers and connections.
+                  </FieldDescription>
+                </FieldContent>
+                <RadioGroupItem
+                  value="followers"
+                  id="followers"
+                  className="sr-only"
+                />
+                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+              </Field>
+            </FieldLabel>
+            <FieldLabel htmlFor="custom">
+              <Field>
+                <FieldContent>
+                  <FieldTitle>Custom</FieldTitle>
+                  <FieldDescription>
+                    Choose who can see your profile.
+                  </FieldDescription>
+                </FieldContent>
+                <RadioGroupItem
+                  value="custom"
+                  id="custom"
+                  className="sr-only"
+                />
+                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+              </Field>
+            </FieldLabel>
+          </RadioGroup>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Privacy Settings</CardTitle>
+          <CardDescription>
+            Choose who can see your profile and what they can see.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <RadioGroup>
+            <FieldLabel htmlFor="everyone">
+              <Field>
+                <RadioGroupItem value="everyone" id="everyone" />
+                <FieldContent>
+                  <FieldTitle>Everyone</FieldTitle>
+                  <FieldDescription>
+                    Anyone can see your profile.
+                  </FieldDescription>
+                </FieldContent>
+              </Field>
+            </FieldLabel>
+            <FieldLabel htmlFor="followers">
+              <Field>
+                <RadioGroupItem value="followers" id="followers" />
+                <FieldContent>
+                  <FieldTitle>Followers</FieldTitle>
+                  <FieldDescription>
+                    Visible to your followers and connections.
+                  </FieldDescription>
+                </FieldContent>
+              </Field>
+            </FieldLabel>
+            <FieldLabel htmlFor="custom">
+              <Field>
+                <RadioGroupItem value="custom" id="custom" />
+                <FieldContent>
+                  <FieldTitle>Custom</FieldTitle>
+                  <FieldDescription>
+                    Choose who can see your profile.
+                  </FieldDescription>
+                </FieldContent>
+                <Button variant="outline" className="w-fit">
+                  Choose
+                </Button>
+              </Field>
+            </FieldLabel>
+          </RadioGroup>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Privacy Settings</CardTitle>
+          <CardDescription>
+            Choose who can see your profile and what they can see.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <RadioGroup>
+            <FieldLabel htmlFor="everyone-3">
+              <Field>
+                <div className="bg-muted group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground group-has-data-[state=checked]/field:border-primary flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-100">
+                  <IconWorld className="size-4" />
+                </div>
+                <FieldContent>
+                  <FieldTitle>Everyone</FieldTitle>
+                  <FieldDescription>
+                    Anyone can see your profile.
+                  </FieldDescription>
+                </FieldContent>
+                <RadioGroupItem
+                  value="everyone"
+                  id="everyone-3"
+                  className="sr-only"
+                />
+                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+              </Field>
+            </FieldLabel>
+            <FieldLabel htmlFor="followers-3">
+              <Field>
+                <div className="bg-muted group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground group-has-data-[state=checked]/field:border-primary flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-100">
+                  <IconUsers className="size-4" />
+                </div>
+                <FieldContent>
+                  <FieldTitle>Followers</FieldTitle>
+                  <FieldDescription>
+                    Visible to your followers and connections.
+                  </FieldDescription>
+                </FieldContent>
+                <RadioGroupItem
+                  value="followers-3"
+                  id="followers-3"
+                  className="sr-only"
+                />
+                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+              </Field>
+            </FieldLabel>
+            <FieldLabel htmlFor="custom-3">
+              <Field>
+                <div className="bg-muted group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground group-has-data-[state=checked]/field:border-primary flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-100">
+                  <IconPlus className="size-4" />
+                </div>
+                <FieldContent>
+                  <FieldTitle>Custom</FieldTitle>
+                  <FieldDescription>
+                    Choose who can see your profile.
+                  </FieldDescription>
+                </FieldContent>
+                <RadioGroupItem
+                  value="custom-3"
+                  id="custom-3"
+                  className="sr-only"
+                />
+                <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
+                <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
+              </Field>
+            </FieldLabel>
+          </RadioGroup>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+function HearAboutUs() {
+  return (
+    <Card>
+      <CardContent>
+        <form>
+          <FieldGroup>
+            <FieldSet>
+              <FieldLegend>How did you hear about us?</FieldLegend>
+              <FieldDescription>
+                Select the option that best describes how you heard about us.
+              </FieldDescription>
+              <FieldGroup className="flex flex-row flex-wrap gap-2 [--radius:9999rem] **:data-[slot=checkbox]:rounded-full **:data-[slot=field]:gap-2 **:data-[slot=field]:overflow-hidden **:data-[slot=field]:px-2.5 **:data-[slot=field]:py-2 *:data-[slot=field-label]:w-fit">
+                <FieldLabel htmlFor="social-media">
+                  <Field>
+                    <Checkbox
+                      value="social-media"
+                      id="social-media"
+                      className="-ml-6 -translate-x-1 transition-all duration-100 group-has-data-[state=checked]/field-label:ml-0 group-has-data-[state=checked]/field-label:translate-x-0"
+                    />
+                    <FieldTitle>Social Media</FieldTitle>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="search-engine">
+                  <Field>
+                    <Checkbox
+                      value="search-engine"
+                      id="search-engine"
+                      className="-ml-6 -translate-x-1 transition-all duration-100 group-has-data-[state=checked]/field-label:ml-0 group-has-data-[state=checked]/field-label:translate-x-0"
+                    />
+                    <FieldTitle>Search Engine</FieldTitle>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="referral">
+                  <Field>
+                    <Checkbox
+                      value="referral"
+                      id="referral"
+                      className="-ml-6 -translate-x-1 transition-all duration-100 group-has-data-[state=checked]/field-label:ml-0 group-has-data-[state=checked]/field-label:translate-x-0"
+                    />
+                    <FieldTitle>Referral</FieldTitle>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="other">
+                  <Field>
+                    <Checkbox
+                      value="other"
+                      id="other"
+                      className="-ml-6 -translate-x-1 transition-all duration-100 group-has-data-[state=checked]/field-label:ml-0 group-has-data-[state=checked]/field-label:translate-x-0"
+                    />
+                    <FieldTitle>Other (Please specify)</FieldTitle>
+                  </Field>
+                </FieldLabel>
+              </FieldGroup>
+            </FieldSet>
+          </FieldGroup>
+        </form>
+      </CardContent>
+    </Card>
+  )
+}
+
+function ClusterConfig() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Buy your cluster</CardTitle>
+        <CardDescription>
+          Need a custom setup? <a href="#">Contact us</a>.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form>
+          <FieldGroup>
+            <Field>
+              <FieldLabel htmlFor="gpu-type">GPU Type</FieldLabel>
+              <FieldDescription>
+                Select the GPU type for your cluster.
+              </FieldDescription>
+              <RadioGroup defaultValue="h100">
+                <FieldLabel htmlFor="h100">
+                  <Field>
+                    <RadioGroupItem value="h100" id="h100" />
+                    <FieldContent>
+                      <FieldTitle>NVIDIA H100</FieldTitle>
+                      <FieldDescription>SXM5 80GB VRAM</FieldDescription>
+                    </FieldContent>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="h200">
+                  <Field>
+                    <RadioGroupItem value="h200" id="h200" />
+                    <FieldContent>
+                      <FieldTitle>NVIDIA H200</FieldTitle>
+                      <FieldDescription>SXM5 141GB VRAM</FieldDescription>
+                    </FieldContent>
+                  </Field>
+                </FieldLabel>
+              </RadioGroup>
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="compute-environment">
+                Compute Environment
+              </FieldLabel>
+              <RadioGroup defaultValue="kubernetes">
+                <FieldLabel htmlFor="kubernetes">
+                  <Field>
+                    <RadioGroupItem value="kubernetes" id="kubernetes" />
+                    <FieldContent>
+                      <FieldTitle>Kubernetes</FieldTitle>
+                      <FieldDescription>
+                        Run GPU workloads on a K8s configured cluster.
+                      </FieldDescription>
+                    </FieldContent>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="vm">
+                  <Field>
+                    <RadioGroupItem value="vm" id="vm" />
+                    <FieldContent>
+                      <FieldTitle>Virtual Machine</FieldTitle>
+                      <FieldDescription>
+                        Access a VM configured cluster via SSH to run GPU
+                        workloads.
+                      </FieldDescription>
+                    </FieldContent>
+                  </Field>
+                </FieldLabel>
+              </RadioGroup>
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="number-of-gpus">Number of GPUs</FieldLabel>
+              <FieldDescription>
+                Buy a single node with 8 GPUs or many interconnected nodes. You
+                can add more GPUs later.
+              </FieldDescription>
+              <ButtonGroup>
+                <Input />
+                <Button variant="outline" size="icon">
+                  <IconMinus />
+                </Button>
+                <Button variant="outline" size="icon">
+                  <IconPlus />
+                </Button>
+              </ButtonGroup>
+            </Field>
+            <FieldSet>
+              <FieldLegend>Starting date</FieldLegend>
+              <RadioGroup defaultValue="today">
+                <FieldLabel htmlFor="today">
+                  <Field>
+                    <RadioGroupItem value="today" id="today" />
+                    <FieldContent>
+                      <FieldTitle>Start cluster now</FieldTitle>
+                      <FieldDescription>
+                        Your cluster will be ready to use immediately.
+                      </FieldDescription>
+                    </FieldContent>
+                  </Field>
+                </FieldLabel>
+                <FieldLabel htmlFor="scheduled">
+                  <Field>
+                    <RadioGroupItem value="scheduled" id="scheduled" />
+                    <FieldContent>
+                      <FieldTitle>Schedule a start date and time</FieldTitle>
+                      <FieldDescription>
+                        Set a start date and time for your cluster.
+                      </FieldDescription>
+                    </FieldContent>
+                  </Field>
+                </FieldLabel>
+              </RadioGroup>
+            </FieldSet>
+            <Field>
+              <FieldLabel htmlFor="duration">Duration</FieldLabel>
+              <FieldDescription>You can add more time later.</FieldDescription>
+              <ButtonGroup>
+                <Input />
+                <Select defaultValue="hours">
+                  <SelectTrigger id="duration" className="w-24">
+                    <SelectValue placeholder="Select duration" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="hours">Hours</SelectItem>
+                    <SelectItem value="days">Days</SelectItem>
+                    <SelectItem value="weeks">Weeks</SelectItem>
+                  </SelectContent>
+                </Select>
+              </ButtonGroup>
+            </Field>
+            <Field>
+              <Button type="submit">Get Instant Quote</Button>
+            </Field>
+          </FieldGroup>
+        </form>
+      </CardContent>
+    </Card>
+  )
+}
+
+function ShippingMethods() {
+  return (
+    <div className="flex flex-col gap-6">
       <Card>
         <CardContent>
           <FieldSet>
-            <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="name">Name</FieldLabel>
-                <FieldDescription>
-                  Enter your name so it is long enough to test the layout.
-                </FieldDescription>
-                <Input id="name" type="text" />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="name-2">Name</FieldLabel>
-                <Input id="name-2" type="text" />
-                <FieldDescription>
-                  Enter your name so it is long enough to test the layout.
-                </FieldDescription>
-              </Field>
-              <Field>
-                <Checkbox id="terms-21f" />
-                <FieldLabel htmlFor="terms-21f">
-                  Accept terms and conditions
-                </FieldLabel>
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="terms-21f">
-                  Accept terms and conditions
-                </FieldLabel>
-                <Checkbox id="terms-21f" />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="dark-mode">Dark Mode</FieldLabel>
-                <Switch id="dark-mode" />
-              </Field>
-              <RadioGroup>
-                <Field>
-                  <FieldLabel htmlFor="dark-mode-22">Dark Mode</FieldLabel>
-                  <RadioGroupItem value="dark-mode-22" id="dark-mode-22" />
-                </Field>
-              </RadioGroup>
-              <Field>
-                <FieldContent>
-                  <FieldLabel htmlFor="enable-touch-id">
-                    Enable Touch ID
-                  </FieldLabel>
-                  <FieldDescription>
-                    Enable Touch ID to quickly unlock your device.
-                  </FieldDescription>
-                </FieldContent>
-                <Checkbox id="enable-touch-id" />
-              </Field>
-              <FieldSeparator />
-              <Field>
-                <FieldLabel htmlFor="battery-level">Battery Level</FieldLabel>
-                <FieldDescription>
-                  Choose your preferred battery level.
-                </FieldDescription>
-                <RadioGroup>
-                  <Field>
-                    <RadioGroupItem value="high" id="battery-level-high" />
-                    <FieldLabel htmlFor="battery-level-high">High</FieldLabel>
-                  </Field>
-                  <Field>
-                    <RadioGroupItem value="medium" id="battery-level-medium" />
-                    <FieldLabel htmlFor="battery-level-medium">
-                      Medium
-                    </FieldLabel>
-                  </Field>
-                  <Field>
-                    <RadioGroupItem value="low" id="battery-level-low" />
-                    <FieldLabel htmlFor="battery-level-low">Low</FieldLabel>
-                  </Field>
-                </RadioGroup>
-              </Field>
-              <FieldSeparator />
-              <Field>
-                <FieldLabel htmlFor="search-results">Search Results</FieldLabel>
-                <FieldDescription>
-                  Only selected categories will appear in search results.
-                </FieldDescription>
-                <Field>
-                  <Checkbox id="search-results-application" />
-                  <FieldLabel htmlFor="search-results-application">
-                    Application
-                  </FieldLabel>
-                </Field>
-                <Field>
-                  <Checkbox id="search-results-music" />
-                  <FieldLabel htmlFor="search-results-music">Music</FieldLabel>
-                </Field>
-                <Field>
-                  <Checkbox id="search-results-video" />
-                  <FieldLabel htmlFor="search-results-video">Video</FieldLabel>
-                </Field>
-                <Field>
-                  <Checkbox id="search-results-photo" />
-                  <FieldLabel htmlFor="search-results-photo">Photo</FieldLabel>
-                </Field>
-                <Field>
-                  <Checkbox id="search-results-document" />
-                  <FieldLabel htmlFor="search-results-document">
-                    Document
-                  </FieldLabel>
-                </Field>
-                <Field>
-                  <Checkbox id="search-results-other" />
-                  <FieldLabel htmlFor="search-results-other">Other</FieldLabel>
-                </Field>
-              </Field>
-              <Field>
-                <FieldContent>
-                  <FieldLabel>Measurement System</FieldLabel>
-                  <FieldDescription>
-                    Select your preferred measurement system.
-                  </FieldDescription>
-                </FieldContent>
-                <RadioGroup>
-                  <FieldLabel htmlFor="metric">
-                    <Field>
-                      <FieldTitle>Metric</FieldTitle>
-                      <RadioGroupItem value="metric" id="metric" />
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel>
-                    <Field>
-                      <RadioGroupItem value="imperial" id="imperial" />
-                      <FieldTitle>Imperial</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="custom-units">
-                    <Field>
-                      <FieldTitle>Custom</FieldTitle>
-                      <RadioGroupItem value="custom-units" id="custom-units" />
-                    </Field>
-                  </FieldLabel>
-                </RadioGroup>
-              </Field>
-            </FieldGroup>
-          </FieldSet>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent>
-          <FieldGroup>
-            <FieldSet>
-              <FieldLegend>Subscription Plan</FieldLegend>
-              <FieldDescription>
-                Choose your subscription plan.
-              </FieldDescription>
-              <RadioGroup defaultValue="plus">
-                <FieldLabel htmlFor="plus">
-                  <Field>
-                    <FieldContent>
-                      <FieldTitle>Plus</FieldTitle>
-                      <FieldDescription>
-                        For individuals and small teams
-                      </FieldDescription>
-                    </FieldContent>
-                    <RadioGroupItem value="plus" id="plus" />
-                  </Field>
-                </FieldLabel>
-                <FieldLabel htmlFor="pro">
-                  <Field>
-                    <FieldContent>
-                      <FieldTitle>Pro</FieldTitle>
-                      <FieldDescription>
-                        For individuals and small teams
-                      </FieldDescription>
-                    </FieldContent>
-                    <RadioGroupItem value="pro" id="pro" />
-                  </Field>
-                </FieldLabel>
-                <FieldLabel htmlFor="enterprise">
-                  <Field>
-                    <FieldContent>
-                      <FieldTitle>Enterprise</FieldTitle>
-                      <FieldDescription>
-                        For large teams and enterprises
-                      </FieldDescription>
-                    </FieldContent>
-                    <RadioGroupItem value="enterprise" id="enterprise" />
-                  </Field>
-                </FieldLabel>
-                <FieldLabel htmlFor="custom-plan">
-                  <Field>
-                    <FieldContent>
-                      <FieldTitle>Custom</FieldTitle>
-                      <FieldDescription>
-                        For large teams and enterprises
-                      </FieldDescription>
-                    </FieldContent>
-                    <RadioGroupItem value="custom-plan" id="custom-plan" />
-                  </Field>
-                </FieldLabel>
-              </RadioGroup>
-            </FieldSet>
-            <FieldSet>
-              <FieldLegend>Display Settings</FieldLegend>
-              <FieldDescription>Manage your display settings.</FieldDescription>
-              <Field>
-                <FieldLabel htmlFor="increase-contrast">
-                  <Field>
-                    <FieldContent>
-                      <FieldTitle>Increase Contrast</FieldTitle>
-                      <FieldDescription>
-                        Increase the contrast of the UI to make it easier to
-                        read.
-                      </FieldDescription>
-                    </FieldContent>
-                    <Switch id="increase-contrast" />
-                  </Field>
-                </FieldLabel>
-                <FieldLabel htmlFor="reduce-transparency">
-                  <Field>
-                    <FieldContent>
-                      <FieldTitle>Reduce Transparency</FieldTitle>
-                      <FieldDescription>
-                        Reduce the transparency of the UI to make it easier to
-                        read.
-                      </FieldDescription>
-                    </FieldContent>
-                    <Switch id="reduce-transparency" />
-                  </Field>
-                </FieldLabel>
-                <FieldLabel htmlFor="reduce-motion">
-                  <Field>
-                    <FieldContent>
-                      <FieldTitle>Reduce Motion</FieldTitle>
-                      <FieldDescription>
-                        Reduce motion of the UI to make it easier to read.
-                      </FieldDescription>
-                    </FieldContent>
-                    <Switch id="reduce-motion" />
-                  </Field>
-                </FieldLabel>
-                <FieldLabel htmlFor="enable-dark-mode">
-                  <Field>
-                    <FieldContent>
-                      <FieldTitle>Enable Dark Mode</FieldTitle>
-                      <FieldDescription>
-                        Enable dark mode to make the UI easier to read.
-                      </FieldDescription>
-                    </FieldContent>
-                    <Switch id="enable-dark-mode" />
-                  </Field>
-                </FieldLabel>
-              </Field>
-              <Field>
-                <FieldLabel>Display Resolution</FieldLabel>
-                <FieldDescription>
-                  Select your preferred display resolution.
-                </FieldDescription>
-                <RadioGroup className="grid grid-cols-2 gap-2">
-                  <FieldLabel htmlFor="1080p">
-                    <Field>
-                      <RadioGroupItem value="1080p" id="1080p" />
-                      <FieldTitle>1920x1080</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="1440p">
-                    <Field>
-                      <RadioGroupItem value="1440p" id="1440p" />
-                      <FieldTitle>2560x1440</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="4k">
-                    <Field>
-                      <RadioGroupItem value="4k" id="4k" />
-                      <FieldContent>
-                        <FieldTitle>3840x2160</FieldTitle>
-                        <FieldDescription>
-                          This is a description for the 4k option.
-                        </FieldDescription>
-                      </FieldContent>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="8k">
-                    <Field>
-                      <RadioGroupItem value="8k" id="8k" />
-                      <FieldTitle>7680x4320</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                </RadioGroup>
-              </Field>
-            </FieldSet>
-          </FieldGroup>
-        </CardContent>
-      </Card>
-      <div className="flex flex-col gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Privacy Settings</CardTitle>
-            <CardDescription>
-              Choose who can see your profile and what they can see.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <RadioGroup>
-              <FieldLabel htmlFor="everyone">
-                <Field>
-                  <FieldContent>
-                    <FieldTitle>Everyone</FieldTitle>
-                    <FieldDescription>
-                      Anyone can see your profile.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem
-                    value="everyone"
-                    id="everyone"
-                    className="sr-only"
-                  />
-                  <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                  <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
-                </Field>
-              </FieldLabel>
-              <FieldLabel htmlFor="followers">
-                <Field>
-                  <FieldContent>
-                    <FieldTitle>Followers</FieldTitle>
-                    <FieldDescription>
-                      Visible to your followers and connections.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem
-                    value="followers"
-                    id="followers"
-                    className="sr-only"
-                  />
-                  <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                  <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
-                </Field>
-              </FieldLabel>
-              <FieldLabel htmlFor="custom">
-                <Field>
-                  <FieldContent>
-                    <FieldTitle>Custom</FieldTitle>
-                    <FieldDescription>
-                      Choose who can see your profile.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem
-                    value="custom"
-                    id="custom"
-                    className="sr-only"
-                  />
-                  <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                  <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
-                </Field>
-              </FieldLabel>
-            </RadioGroup>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Privacy Settings</CardTitle>
-            <CardDescription>
-              Choose who can see your profile and what they can see.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <RadioGroup>
-              <FieldLabel htmlFor="everyone">
-                <Field>
-                  <RadioGroupItem value="everyone" id="everyone" />
-                  <FieldContent>
-                    <FieldTitle>Everyone</FieldTitle>
-                    <FieldDescription>
-                      Anyone can see your profile.
-                    </FieldDescription>
-                  </FieldContent>
-                </Field>
-              </FieldLabel>
-              <FieldLabel htmlFor="followers">
-                <Field>
-                  <RadioGroupItem value="followers" id="followers" />
-                  <FieldContent>
-                    <FieldTitle>Followers</FieldTitle>
-                    <FieldDescription>
-                      Visible to your followers and connections.
-                    </FieldDescription>
-                  </FieldContent>
-                </Field>
-              </FieldLabel>
-              <FieldLabel htmlFor="custom">
-                <Field>
-                  <RadioGroupItem value="custom" id="custom" />
-                  <FieldContent>
-                    <FieldTitle>Custom</FieldTitle>
-                    <FieldDescription>
-                      Choose who can see your profile.
-                    </FieldDescription>
-                  </FieldContent>
-                  <Button variant="outline" className="w-fit">
-                    Choose
-                  </Button>
-                </Field>
-              </FieldLabel>
-            </RadioGroup>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Privacy Settings</CardTitle>
-            <CardDescription>
-              Choose who can see your profile and what they can see.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <RadioGroup>
-              <FieldLabel htmlFor="everyone-3">
-                <Field>
-                  <div className="bg-muted group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground group-has-data-[state=checked]/field:border-primary flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-100">
-                    <IconWorld className="size-4" />
-                  </div>
-                  <FieldContent>
-                    <FieldTitle>Everyone</FieldTitle>
-                    <FieldDescription>
-                      Anyone can see your profile.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem
-                    value="everyone"
-                    id="everyone-3"
-                    className="sr-only"
-                  />
-                  <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                  <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
-                </Field>
-              </FieldLabel>
-              <FieldLabel htmlFor="followers-3">
-                <Field>
-                  <div className="bg-muted group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground group-has-data-[state=checked]/field:border-primary flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-100">
-                    <IconUsers className="size-4" />
-                  </div>
-                  <FieldContent>
-                    <FieldTitle>Followers</FieldTitle>
-                    <FieldDescription>
-                      Visible to your followers and connections.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem
-                    value="followers-3"
-                    id="followers-3"
-                    className="sr-only"
-                  />
-                  <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                  <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
-                </Field>
-              </FieldLabel>
-              <FieldLabel htmlFor="custom-3">
-                <Field>
-                  <div className="bg-muted group-has-data-[state=checked]/field:bg-primary group-has-data-[state=checked]/field:text-primary-foreground group-has-data-[state=checked]/field:border-primary flex size-8 shrink-0 items-center justify-center rounded-full border transition-all duration-100">
-                    <IconPlus className="size-4" />
-                  </div>
-                  <FieldContent>
-                    <FieldTitle>Custom</FieldTitle>
-                    <FieldDescription>
-                      Choose who can see your profile.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem
-                    value="custom-3"
-                    id="custom-3"
-                    className="sr-only"
-                  />
-                  <IconCircle className="stroke-input size-5 stroke-1 group-has-data-[state=checked]/field:hidden" />
-                  <IconCircleCheckFilled className="fill-primary hidden size-5 group-has-data-[state=checked]/field:block" />
-                </Field>
-              </FieldLabel>
-            </RadioGroup>
-          </CardContent>
-        </Card>
-      </div>
-      <Card>
-        <CardContent>
-          <form>
-            <FieldGroup>
-              <Field>
-                <FieldLabel>How did you hear about us?</FieldLabel>
-                <FieldDescription>
-                  Select the option that best describes how you heard about us.
-                </FieldDescription>
-                <FieldGroup className="flex flex-row flex-wrap gap-2 [--radius:9999rem] **:data-[slot=checkbox]:rounded-full **:data-[slot=field]:gap-2 **:data-[slot=field]:overflow-hidden **:data-[slot=field]:px-2.5 **:data-[slot=field]:py-2 *:data-[slot=field-label]:w-fit">
-                  <FieldLabel htmlFor="social-media">
-                    <Field>
-                      <Checkbox
-                        value="social-media"
-                        id="social-media"
-                        className="-ml-6 -translate-x-1 transition-all duration-100 group-has-data-[state=checked]/field-label:ml-0 group-has-data-[state=checked]/field-label:translate-x-0"
-                      />
-                      <FieldTitle>Social Media</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="search-engine">
-                    <Field>
-                      <Checkbox
-                        value="search-engine"
-                        id="search-engine"
-                        className="-ml-6 -translate-x-1 transition-all duration-100 group-has-data-[state=checked]/field-label:ml-0 group-has-data-[state=checked]/field-label:translate-x-0"
-                      />
-                      <FieldTitle>Search Engine</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="referral">
-                    <Field>
-                      <Checkbox
-                        value="referral"
-                        id="referral"
-                        className="-ml-6 -translate-x-1 transition-all duration-100 group-has-data-[state=checked]/field-label:ml-0 group-has-data-[state=checked]/field-label:translate-x-0"
-                      />
-                      <FieldTitle>Referral</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="other">
-                    <Field>
-                      <Checkbox
-                        value="other"
-                        id="other"
-                        className="-ml-6 -translate-x-1 transition-all duration-100 group-has-data-[state=checked]/field-label:ml-0 group-has-data-[state=checked]/field-label:translate-x-0"
-                      />
-                      <FieldTitle>Other (Please specify)</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                </FieldGroup>
-              </Field>
-            </FieldGroup>
-          </form>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent>
-          <Field>
-            <FieldLabel>Shipping Method</FieldLabel>
+            <FieldLegend>Shipping Method</FieldLegend>
             <FieldDescription>
               Select the shipping method for your order.
             </FieldDescription>
-            <RadioGroup className="[--spacing:0.2rem]">
+            <RadioGroup>
               <FieldLabel htmlFor="pickup">
                 <Field>
                   <RadioGroupItem value="pickup" id="pickup" />
@@ -733,282 +896,109 @@ function RandomFields() {
                 </Field>
               </FieldLabel>
             </RadioGroup>
-          </Field>
+          </FieldSet>
         </CardContent>
       </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Buy your cluster</CardTitle>
-          <CardDescription>
-            Need a custom setup? <a href="#">Contact us</a>.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="gpu-type">GPU Type</FieldLabel>
-                <FieldDescription>
-                  Select the GPU type for your cluster.
-                </FieldDescription>
-                <RadioGroup defaultValue="h100">
-                  <FieldLabel htmlFor="h100">
-                    <Field>
-                      <RadioGroupItem value="h100" id="h100" />
-                      <FieldContent>
-                        <FieldTitle>NVIDIA H100</FieldTitle>
-                        <FieldDescription>SXM5 80GB VRAM</FieldDescription>
-                      </FieldContent>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="h200">
-                    <Field>
-                      <RadioGroupItem value="h200" id="h200" />
-                      <FieldContent>
-                        <FieldTitle>NVIDIA H200</FieldTitle>
-                        <FieldDescription>SXM5 141GB VRAM</FieldDescription>
-                      </FieldContent>
-                    </Field>
-                  </FieldLabel>
-                </RadioGroup>
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="compute-environment">
-                  Compute Environment
-                </FieldLabel>
-                <RadioGroup defaultValue="kubernetes">
-                  <FieldLabel htmlFor="kubernetes">
-                    <Field>
-                      <RadioGroupItem value="kubernetes" id="kubernetes" />
-                      <FieldContent>
-                        <FieldTitle>Kubernetes</FieldTitle>
-                        <FieldDescription>
-                          Run GPU workloads on a K8s configured cluster.
-                        </FieldDescription>
-                      </FieldContent>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="vm">
-                    <Field>
-                      <RadioGroupItem value="vm" id="vm" />
-                      <FieldContent>
-                        <FieldTitle>Virtual Machine</FieldTitle>
-                        <FieldDescription>
-                          Access a VM configured cluster via SSH to run GPU
-                          workloads.
-                        </FieldDescription>
-                      </FieldContent>
-                    </Field>
-                  </FieldLabel>
-                </RadioGroup>
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="number-of-gpus">Number of GPUs</FieldLabel>
-                <FieldDescription>
-                  Buy a single node with 8 GPUs or many interconnected nodes.
-                  You can add more GPUs later.
-                </FieldDescription>
-                <ButtonGroup>
-                  <Input />
-                  <Button variant="outline" size="icon">
-                    <IconMinus />
-                  </Button>
-                  <Button variant="outline" size="icon">
-                    <IconPlus />
-                  </Button>
-                </ButtonGroup>
-              </Field>
-              <FieldSet>
-                <FieldLegend>Starting date</FieldLegend>
-                <RadioGroup defaultValue="today">
-                  <FieldLabel htmlFor="today">
-                    <Field>
-                      <RadioGroupItem value="today" id="today" />
-                      <FieldContent>
-                        <FieldTitle>Start cluster now</FieldTitle>
-                        <FieldDescription>
-                          Your cluster will be ready to use immediately.
-                        </FieldDescription>
-                      </FieldContent>
-                    </Field>
-                  </FieldLabel>
-                  <FieldLabel htmlFor="scheduled">
-                    <Field>
-                      <RadioGroupItem value="scheduled" id="scheduled" />
-                      <FieldContent>
-                        <FieldTitle>Schedule a start date and time</FieldTitle>
-                        <FieldDescription>
-                          Set a start date and time for your cluster.
-                        </FieldDescription>
-                      </FieldContent>
-                    </Field>
-                  </FieldLabel>
-                </RadioGroup>
-              </FieldSet>
-              <Field>
-                <FieldLabel htmlFor="duration">Duration</FieldLabel>
-                <FieldDescription>
-                  You can add more time later.
-                </FieldDescription>
-                <ButtonGroup>
-                  <Input />
-                  <Select defaultValue="hours">
-                    <SelectTrigger id="duration" className="w-24">
-                      <SelectValue placeholder="Select duration" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="hours">Hours</SelectItem>
-                      <SelectItem value="days">Days</SelectItem>
-                      <SelectItem value="weeks">Weeks</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </ButtonGroup>
-              </Field>
-              <Field>
-                <Button type="submit">Get Instant Quote</Button>
-              </Field>
-            </FieldGroup>
-          </form>
-        </CardContent>
-      </Card>
-      <div>
-        <form>
-          <FieldGroup
-            variant="outline"
-            className="*:data-[slot=field-separator]:-mx-6"
-          >
-            <Field>
-              <FieldLabel htmlFor="gpu-type">GPU Type</FieldLabel>
-              <FieldDescription>
-                Select the GPU type for your cluster.
-              </FieldDescription>
-              <RadioGroup defaultValue="h100">
-                <FieldLabel htmlFor="h100">
-                  <Field>
-                    <RadioGroupItem value="h100" id="h100" />
-                    <FieldContent>
-                      <FieldTitle>NVIDIA H100</FieldTitle>
-                      <FieldDescription>SXM5 80GB VRAM</FieldDescription>
-                    </FieldContent>
-                  </Field>
-                </FieldLabel>
-                <FieldLabel htmlFor="h200">
-                  <Field>
-                    <RadioGroupItem value="h200" id="h200" />
-                    <FieldContent>
-                      <FieldTitle>NVIDIA H200</FieldTitle>
-                      <FieldDescription>SXM5 141GB VRAM</FieldDescription>
-                    </FieldContent>
-                  </Field>
-                </FieldLabel>
-              </RadioGroup>
-            </Field>
-            <FieldSeparator />
-            <Field>
-              <FieldLabel htmlFor="compute-environment">
-                Compute Environment
+      <form>
+        <FieldGroup
+          variant="outline"
+          className="*:data-[slot=field-separator]:-mx-6"
+        >
+          <Field>
+            <FieldLabel htmlFor="gpu-type">GPU Type</FieldLabel>
+            <FieldDescription>
+              Select the GPU type for your cluster.
+            </FieldDescription>
+            <RadioGroup defaultValue="h100">
+              <FieldLabel htmlFor="h100">
+                <Field>
+                  <RadioGroupItem value="h100" id="h100" />
+                  <FieldContent>
+                    <FieldTitle>NVIDIA H100</FieldTitle>
+                    <FieldDescription>SXM5 80GB VRAM</FieldDescription>
+                  </FieldContent>
+                </Field>
               </FieldLabel>
-              <FieldDescription>
-                Select the compute environment for your cluster.
-              </FieldDescription>
-              <RadioGroup defaultValue="kubernetes">
-                <FieldLabel htmlFor="kubernetes">
-                  <Field>
-                    <RadioGroupItem value="kubernetes" id="kubernetes" />
-                    <FieldContent>
-                      <FieldTitle>Kubernetes</FieldTitle>
-                      <FieldDescription>
-                        Run GPU workloads on a K8s configured cluster.
-                      </FieldDescription>
-                    </FieldContent>
-                  </Field>
-                </FieldLabel>
-                <FieldLabel htmlFor="vm">
-                  <Field>
-                    <RadioGroupItem value="vm" id="vm" />
-                    <FieldContent>
-                      <FieldTitle>Virtual Machine</FieldTitle>
-                      <FieldDescription>
-                        Access a VM configured cluster via SSH to run GPU
-                        workloads.
-                      </FieldDescription>
-                    </FieldContent>
-                  </Field>
-                </FieldLabel>
-              </RadioGroup>
-            </Field>
-            <FieldSeparator />
-            <Field>
-              <FieldLabel htmlFor="number-of-gpus">Number of GPUs</FieldLabel>
-              <FieldDescription>
-                Buy a single node with 8 GPUs or many interconnected nodes. You
-                can add more GPUs later.
-              </FieldDescription>
-              <ButtonGroup>
-                <Input />
-                <Button variant="outline" size="icon">
-                  <IconMinus />
-                </Button>
-                <Button variant="outline" size="icon">
-                  <IconPlus />
-                </Button>
-              </ButtonGroup>
-            </Field>
-            <FieldSeparator />
-            <FieldSet>
-              <FieldLegend>Starting date</FieldLegend>
-              <FieldDescription>
-                When you want to start your cluster.
-              </FieldDescription>
-              <RadioGroup defaultValue="today">
-                <FieldLabel htmlFor="today">
-                  <Field>
-                    <RadioGroupItem value="today" id="today" />
-                    <FieldContent>
-                      <FieldTitle>Start cluster now</FieldTitle>
-                      <FieldDescription>
-                        Your cluster will be ready to use immediately.
-                      </FieldDescription>
-                    </FieldContent>
-                  </Field>
-                </FieldLabel>
-                <FieldLabel htmlFor="scheduled">
-                  <Field>
-                    <RadioGroupItem value="scheduled" id="scheduled" />
-                    <FieldContent>
-                      <FieldTitle>Schedule a start date and time</FieldTitle>
-                      <FieldDescription>
-                        Set a start date and time for your cluster.
-                      </FieldDescription>
-                    </FieldContent>
-                  </Field>
-                </FieldLabel>
-              </RadioGroup>
-            </FieldSet>
-            <FieldSeparator />
-            <Field>
-              <FieldLabel htmlFor="duration">Duration</FieldLabel>
-              <FieldDescription>You can add more time later.</FieldDescription>
-              <ButtonGroup>
-                <Input />
-                <Select defaultValue="hours">
-                  <SelectTrigger id="duration" className="w-24">
-                    <SelectValue placeholder="Select duration" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="hours">Hours</SelectItem>
-                    <SelectItem value="days">Days</SelectItem>
-                    <SelectItem value="weeks">Weeks</SelectItem>
-                  </SelectContent>
-                </Select>
-              </ButtonGroup>
-            </Field>
-            <Field>
-              <Button type="submit">Get Instant Quote</Button>
-            </Field>
-          </FieldGroup>
-        </form>
-      </div>
+              <FieldLabel htmlFor="h200">
+                <Field>
+                  <RadioGroupItem value="h200" id="h200" />
+                  <FieldContent>
+                    <FieldTitle>NVIDIA H200</FieldTitle>
+                    <FieldDescription>SXM5 141GB VRAM</FieldDescription>
+                  </FieldContent>
+                </Field>
+              </FieldLabel>
+            </RadioGroup>
+          </Field>
+          <FieldSeparator />
+          <FieldSet>
+            <FieldLegend>Compute Environment</FieldLegend>
+            <FieldDescription>
+              Select the compute environment for your cluster.
+            </FieldDescription>
+            <RadioGroup defaultValue="kubernetes">
+              <FieldLabel htmlFor="kubernetes">
+                <Field>
+                  <RadioGroupItem value="kubernetes" id="kubernetes" />
+                  <FieldContent>
+                    <FieldTitle>Kubernetes</FieldTitle>
+                    <FieldDescription>
+                      Run GPU workloads on a K8s configured cluster.
+                    </FieldDescription>
+                  </FieldContent>
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="vm">
+                <Field>
+                  <RadioGroupItem value="vm" id="vm" />
+                  <FieldContent>
+                    <FieldTitle>Virtual Machine</FieldTitle>
+                    <FieldDescription>
+                      Access a VM configured cluster via SSH to run GPU
+                      workloads.
+                    </FieldDescription>
+                  </FieldContent>
+                </Field>
+              </FieldLabel>
+            </RadioGroup>
+          </FieldSet>
+          <FieldSeparator />
+          <FieldSet>
+            <FieldLegend>Starting date</FieldLegend>
+            <FieldDescription>
+              When you want to start your cluster.
+            </FieldDescription>
+            <RadioGroup defaultValue="today">
+              <FieldLabel htmlFor="today">
+                <Field>
+                  <RadioGroupItem value="today" id="today" />
+                  <FieldContent>
+                    <FieldTitle>Start cluster now</FieldTitle>
+                    <FieldDescription>
+                      Your cluster will be ready to use immediately.
+                    </FieldDescription>
+                  </FieldContent>
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="scheduled">
+                <Field>
+                  <RadioGroupItem value="scheduled" id="scheduled" />
+                  <FieldContent>
+                    <FieldTitle>Schedule a start date and time</FieldTitle>
+                    <FieldDescription>
+                      Set a start date and time for your cluster.
+                    </FieldDescription>
+                  </FieldContent>
+                </Field>
+              </FieldLabel>
+            </RadioGroup>
+          </FieldSet>
+          <FieldSeparator />
+          <Field>
+            <Button type="submit">Get Instant Quote</Button>
+          </Field>
+        </FieldGroup>
+      </form>
     </div>
   )
 }
@@ -2012,8 +2002,8 @@ export function FormRadioDemo() {
       </CardHeader>
       <CardContent>
         <FieldGroup>
-          <Field>
-            <FieldLabel>Subscription Plan</FieldLabel>
+          <FieldSet>
+            <FieldLegend>Subscription Plan</FieldLegend>
             <RadioGroup defaultValue="free">
               <Field>
                 <RadioGroupItem value="free" id="free" />
@@ -2040,9 +2030,10 @@ export function FormRadioDemo() {
                 </FieldContent>
               </Field>
             </RadioGroup>
-          </Field>
-          <Field>
-            <FieldLabel>Size</FieldLabel>
+          </FieldSet>
+          <FieldSet>
+            <FieldLegend>Size</FieldLegend>
+            <FieldDescription>Select your preferred size.</FieldDescription>
             <RadioGroup defaultValue="medium" className="flex gap-2">
               <Field>
                 <RadioGroupItem value="small" id="size-small" />
@@ -2077,10 +2068,9 @@ export function FormRadioDemo() {
                 </FieldContent>
               </Field>
             </RadioGroup>
-            <FieldDescription>Select your preferred size.</FieldDescription>
-          </Field>
-          <Field>
-            <FieldLabel>Notification Preferences</FieldLabel>
+          </FieldSet>
+          <FieldSet>
+            <FieldLegend>Notification Preferences</FieldLegend>
             <FieldDescription>
               Choose how you want to receive notifications.
             </FieldDescription>
@@ -2110,9 +2100,9 @@ export function FormRadioDemo() {
                 </FieldContent>
               </Field>
             </RadioGroup>
-          </Field>
-          <Field>
-            <FieldLabel>Delivery Speed</FieldLabel>
+          </FieldSet>
+          <FieldSet>
+            <FieldLegend>Delivery Speed</FieldLegend>
             <RadioGroup
               defaultValue="standard"
               className="flex flex-wrap gap-4"
@@ -2126,6 +2116,7 @@ export function FormRadioDemo() {
                   >
                     Express (1-2 days)
                   </FieldLabel>
+                  <FieldDescription>Get your order quickly.</FieldDescription>
                 </FieldContent>
               </Field>
               <Field>
@@ -2137,6 +2128,9 @@ export function FormRadioDemo() {
                   >
                     Standard (3-5 days)
                   </FieldLabel>
+                  <FieldDescription>
+                    Get your order in a few days.
+                  </FieldDescription>
                 </FieldContent>
               </Field>
               <Field>
@@ -2148,10 +2142,13 @@ export function FormRadioDemo() {
                   >
                     Economy (5-7 days)
                   </FieldLabel>
+                  <FieldDescription>
+                    Get your order in a few days.
+                  </FieldDescription>
                 </FieldContent>
               </Field>
             </RadioGroup>
-          </Field>
+          </FieldSet>
         </FieldGroup>
       </CardContent>
     </Card>
@@ -3745,54 +3742,42 @@ export function SurveyForm() {
               <FieldLabel>
                 Which features do you use most? (Select all that apply)
               </FieldLabel>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid w-full grid-cols-2 gap-2">
                 <Field>
                   <Checkbox id="dashboard" />
-                  <FieldContent>
-                    <FieldLabel htmlFor="dashboard" className="text-sm">
-                      Dashboard
-                    </FieldLabel>
-                  </FieldContent>
+                  <FieldLabel htmlFor="dashboard" className="text-sm">
+                    Dashboard
+                  </FieldLabel>
                 </Field>
                 <Field>
                   <Checkbox id="reports" />
-                  <FieldContent>
-                    <FieldLabel htmlFor="reports" className="text-sm">
-                      Reports
-                    </FieldLabel>
-                  </FieldContent>
+                  <FieldLabel htmlFor="reports" className="text-sm">
+                    Reports
+                  </FieldLabel>
                 </Field>
                 <Field>
                   <Checkbox id="analytics" />
-                  <FieldContent>
-                    <FieldLabel htmlFor="analytics" className="text-sm">
-                      Analytics
-                    </FieldLabel>
-                  </FieldContent>
+                  <FieldLabel htmlFor="analytics" className="text-sm">
+                    Analytics
+                  </FieldLabel>
                 </Field>
                 <Field>
                   <Checkbox id="integrations" />
-                  <FieldContent>
-                    <FieldLabel htmlFor="integrations" className="text-sm">
-                      Integrations
-                    </FieldLabel>
-                  </FieldContent>
+                  <FieldLabel htmlFor="integrations" className="text-sm">
+                    Integrations
+                  </FieldLabel>
                 </Field>
                 <Field>
                   <Checkbox id="api" />
-                  <FieldContent>
-                    <FieldLabel htmlFor="api" className="text-sm">
-                      API Access
-                    </FieldLabel>
-                  </FieldContent>
+                  <FieldLabel htmlFor="api" className="text-sm">
+                    API Access
+                  </FieldLabel>
                 </Field>
                 <Field>
                   <Checkbox id="support" />
-                  <FieldContent>
-                    <FieldLabel htmlFor="support" className="text-sm">
-                      Support
-                    </FieldLabel>
-                  </FieldContent>
+                  <FieldLabel htmlFor="support" className="text-sm">
+                    Support
+                  </FieldLabel>
                 </Field>
               </div>
             </Field>
@@ -4830,95 +4815,6 @@ function CheckoutForm() {
             </Field>
           </FieldGroup>
         </form>
-      </CardContent>
-    </Card>
-  )
-}
-
-export function FieldErrorDemo() {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Field Error Examples</CardTitle>
-        <CardDescription>
-          Testing FieldError component with different content types and lengths.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <FieldGroup>
-          <Field>
-            <FieldLabel htmlFor="error-simple">Simple Error</FieldLabel>
-            <Input id="error-simple" placeholder="Enter value..." />
-            <FieldError>
-              <p>This field is required.</p>
-            </FieldError>
-          </Field>
-
-          <Field>
-            <FieldLabel htmlFor="error-list">List Error</FieldLabel>
-            <Input id="error-list" placeholder="Enter password..." />
-            <FieldError>
-              <ul className="list-inside list-disc space-y-1">
-                <li>Password must be at least 8 characters long</li>
-                <li>Must contain at least one uppercase letter</li>
-                <li>Must contain at least one number</li>
-              </ul>
-            </FieldError>
-          </Field>
-
-          <Field>
-            <FieldLabel htmlFor="error-long">Long Error Message</FieldLabel>
-            <Input id="error-long" placeholder="Enter complex data..." />
-            <FieldError>
-              <p>
-                The value you entered does not match the expected format. Please
-                ensure you provide a valid input that adheres to the specified
-                requirements including proper formatting, character limits, and
-                content validation rules that have been established for this
-                particular field type.
-              </p>
-            </FieldError>
-          </Field>
-
-          <Field>
-            <FieldLabel htmlFor="error-multiple">
-              Multiple Paragraphs
-            </FieldLabel>
-            <Input id="error-multiple" placeholder="Enter data..." />
-            <FieldError>
-              <p>Primary validation failed: The input format is incorrect.</p>
-              <p className="mt-2">
-                Secondary issue: The value conflicts with existing data. Please
-                choose a different value.
-              </p>
-            </FieldError>
-          </Field>
-
-          <Field>
-            <FieldLabel htmlFor="error-short">Short Error</FieldLabel>
-            <Input id="error-short" placeholder="Enter value..." />
-            <FieldError>
-              <p>Invalid.</p>
-            </FieldError>
-          </Field>
-
-          <Field>
-            <FieldLabel htmlFor="error-mixed">Mixed Content</FieldLabel>
-            <Textarea
-              id="error-mixed"
-              placeholder="Enter description..."
-              className="min-h-[80px]"
-            />
-            <FieldError>
-              <p>Content validation errors:</p>
-              <ul className="mt-2 list-inside list-disc space-y-1">
-                <li>Description too short (minimum 10 characters)</li>
-                <li>Contains inappropriate content</li>
-              </ul>
-              <p className="mt-2">Please revise your input and try again.</p>
-            </FieldError>
-          </Field>
-        </FieldGroup>
       </CardContent>
     </Card>
   )

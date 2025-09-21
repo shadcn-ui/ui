@@ -66,20 +66,20 @@ function Field({ className, ...props }: React.ComponentProps<"div">) {
       className={cn(
         "group/field flex w-full flex-col items-start gap-3",
 
-        // Label + input alignment
-        "has-[>[role=checkbox]]:flex-row",
-        "has-[>[role=radio]]:flex-row",
-        "has-[>[role=switch]]:flex-row",
+        // Label + input alignment.
+        "has-[>[data-slot=field-content]]:!items-start",
+        "has-[>[role=checkbox]]:flex-row has-[>[role=checkbox]]:items-center",
+        "has-[>[role=radio]]:flex-row has-[>[role=radio]]:items-center",
+        "has-[>[role=switch]]:flex-row has-[>[role=switch]]:items-center",
 
         "has-[label+[role=checkbox]]:[&>:first-child]:flex-1",
         "has-[label+[role=radio]]:[&>:first-child]:flex-1",
         "has-[label+[role=switch]]:[&>:first-child]:flex-1",
-
         "has-[[data-slot=field-title]+[role=checkbox]]:[&>:first-child]:flex-1",
         "has-[[data-slot=field-title]+[role=radio]]:[&>:first-child]:flex-1",
         "has-[[data-slot=field-title]+[role=switch]]:[&>:first-child]:flex-1",
 
-        // Child inputs (direct children only)
+        // Child inputs (direct children only).
         "[&>[data-slot=label]]:w-fit",
         "[&>[data-slot=toggle-group]]:w-full",
         "[&>[data-slot=input]]:w-full",
@@ -89,9 +89,10 @@ function Field({ className, ...props }: React.ComponentProps<"div">) {
         "[&>[data-slot=popover-trigger]]:w-full",
         "[&>[role=radiogroup]]:w-full",
         "[&>[role=group]]:w-full",
+        "[&>[role=toolbar]]:w-full",
 
         // Invalid state handling
-        "data-[invalid=true]:[&>[data-slot=field-label]]:text-destructive",
+        "data-[invalid=true]:[&>label]:text-destructive",
         "data-[invalid=true]:[&>[data-slot=field-description]]:text-destructive",
         "data-[invalid=true]:[&>[data-slot=popover-trigger]]:border-destructive",
         "data-[invalid=true]:[&>[data-slot=popover-trigger]]:ring-destructive/20",
@@ -126,19 +127,18 @@ function FieldLabel({
       data-slot="field-label"
       className={cn(
         "group/field-label flex items-start gap-2",
-
-        // Direct Children.
-        "*:data-[slot=field]:p-4",
-        "*:[img]:rounded-t-md",
+        "*:data-[slot=field]:p-4 *:[img]:rounded-t-md",
 
         // Child field variations.
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border",
+        "has-[>[data-slot=badge]]:w-full has-[>[data-slot=badge]]:items-center",
 
         // Check state.
         "has-data-[state=checked]:bg-primary/5 has-data-[state=checked]:border-ring dark:has-data-[state=checked]:bg-primary/10",
 
         // Invalid state.
         "group-data-[invalid=true]/field:text-destructive",
+        "group-data-[disabled=true]/field:opacity-50",
         className
       )}
       {...props}
@@ -152,9 +152,8 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="field-title"
       className={cn(
         "group-has-aria-invalid/field:text-destructive flex items-center gap-2 text-sm leading-none font-medium select-none group-has-data-[disabled]/field:opacity-60",
-
-        // Invalid state.
         "group-data-[invalid=true]/field:text-destructive",
+        "group-data-[disabled=true]/field:opacity-50",
         className
       )}
       {...props}
@@ -189,7 +188,7 @@ function FieldSeparator({
       data-slot="field-separator"
       data-content={!!children}
       className={cn(
-        "relative -my-4 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2 data-[content=true]:-my-2",
+        "relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2",
         className
       )}
       {...props}

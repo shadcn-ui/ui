@@ -31,7 +31,7 @@ function EmptyIcon({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="empty-icon"
       className={cn(
-        "bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-6",
+        "bg-muted text-foreground mb-2 flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-6",
         className
       )}
       {...props}
