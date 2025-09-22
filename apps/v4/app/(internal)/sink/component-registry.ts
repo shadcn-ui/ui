@@ -62,6 +62,7 @@ type ComponentConfig = {
   className?: string
   type: "registry:ui" | "registry:page" | "registry:block"
   href: string
+  label?: string
 }
 
 export const componentRegistry: Record<string, ComponentConfig> = {
@@ -118,6 +119,7 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: ButtonGroupDemo,
     type: "registry:ui",
     href: "/sink/button-group",
+    label: "New",
   },
   calendar: {
     name: "Calendar",
@@ -203,12 +205,14 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: EmptyDemo,
     type: "registry:ui",
     href: "/sink/empty",
+    label: "New",
   },
   field: {
     name: "Field",
     component: FieldDemo,
     type: "registry:ui",
     href: "/sink/field",
+    label: "New",
   },
   form: {
     name: "Form",
@@ -233,6 +237,7 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: InputGroupDemo,
     type: "registry:ui",
     href: "/sink/input-group",
+    label: "New",
   },
   "input-otp": {
     name: "Input OTP",
@@ -245,6 +250,7 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: KbdDemo,
     type: "registry:ui",
     href: "/sink/kbd",
+    label: "New",
   },
   label: {
     name: "Label",
@@ -341,6 +347,7 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: SpinnerDemo,
     type: "registry:ui",
     href: "/sink/spinner",
+    label: "New",
   },
   switch: {
     name: "Switch",

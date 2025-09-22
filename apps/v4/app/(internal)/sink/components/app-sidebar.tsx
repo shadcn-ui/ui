@@ -38,6 +38,7 @@ import {
   SidebarHeader,
   SidebarInput,
   SidebarMenu,
+  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
@@ -271,6 +272,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             >
                               <Link href={item.href}>
                                 <span>{item.name}</span>
+                                {item.label && (
+                                  <SidebarMenuBadge>
+                                    {item.label}
+                                  </SidebarMenuBadge>
+                                )}
                               </Link>
                             </SidebarMenuSubButton>
                           </SidebarMenuSubItem>
