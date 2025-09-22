@@ -218,7 +218,7 @@ export function NotionPromptForm() {
                     <InputGroupButton
                       variant="outline"
                       size={!hasMentions ? "sm" : "icon-sm"}
-                      className="rounded-full"
+                      className="rounded-full transition-transform"
                     >
                       <IconAt /> {!hasMentions && "Add context"}
                     </InputGroupButton>
@@ -255,7 +255,7 @@ export function NotionPromptForm() {
                 </Command>
               </PopoverContent>
             </Popover>
-            <div className="no-scrollbar flex gap-1 overflow-y-auto">
+            <div className="no-scrollbar -m-1.5 flex gap-1 overflow-y-auto p-1.5">
               {mentions.map((mention) => {
                 const item = SAMPLE_DATA.mentionable.find(
                   (item) => item.title === mention
