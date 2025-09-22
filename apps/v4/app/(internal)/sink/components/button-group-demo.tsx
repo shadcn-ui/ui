@@ -256,7 +256,7 @@ export function ButtonGroupDemo() {
         </Button>
         <InputGroup>
           <Input placeholder="0.00" />
-          <InputGroupAddon align="end" className="text-muted-foreground">
+          <InputGroupAddon align="inline-end" className="text-muted-foreground">
             <PercentIcon />
           </InputGroupAddon>
         </InputGroup>
@@ -265,7 +265,10 @@ export function ButtonGroupDemo() {
       <div className="flex gap-2 [--radius:0.95rem] [--ring:var(--color-blue-300)] [--spacing:0.22rem] **:[.shadow-xs]:shadow-none">
         <InputGroup>
           <Input placeholder="Type to search..." />
-          <InputGroupAddon className="text-muted-foreground">
+          <InputGroupAddon
+            align="inline-start"
+            className="text-muted-foreground"
+          >
             <SearchIcon />
           </InputGroupAddon>
         </InputGroup>
@@ -310,7 +313,10 @@ export function ButtonGroupDemo() {
                 W
               </InputGroupAddon>
               <Input id="width" />
-              <InputGroupAddon align="end" className="text-muted-foreground">
+              <InputGroupAddon
+                align="inline-end"
+                className="text-muted-foreground"
+              >
                 px
               </InputGroupAddon>
             </InputGroup>
@@ -327,7 +333,7 @@ export function ButtonGroupDemo() {
           <ButtonGroup className="w-full">
             <InputGroup>
               <Input id="color" />
-              <InputGroupAddon>
+              <InputGroupAddon align="inline-start">
                 <Popover>
                   <PopoverTrigger asChild>
                     <InputGroupButton>
@@ -365,7 +371,10 @@ export function ButtonGroupDemo() {
                   </PopoverContent>
                 </Popover>
               </InputGroupAddon>
-              <InputGroupAddon align="end" className="text-muted-foreground">
+              <InputGroupAddon
+                align="inline-end"
+                className="text-muted-foreground"
+              >
                 %
               </InputGroupAddon>
             </InputGroup>
@@ -413,7 +422,7 @@ export function ButtonGroupDemo() {
             <Input placeholder="Send a message..." />
             <Tooltip>
               <TooltipTrigger asChild>
-                <InputGroupAddon align="end">
+                <InputGroupAddon align="inline-end">
                   <AudioLinesIcon />
                 </InputGroupAddon>
               </TooltipTrigger>

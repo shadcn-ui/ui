@@ -89,7 +89,7 @@ export function EmptyDemo() {
             <InputGroupAddon>
               <SearchIcon />
             </InputGroupAddon>
-            <InputGroupAddon align="end">
+            <InputGroupAddon align="inline-end">
               <Kbd>/</Kbd>
             </InputGroupAddon>
           </InputGroup>
@@ -131,7 +131,7 @@ export function EmptyDemo() {
                   <InputGroupAddon>
                     <SearchIcon />
                   </InputGroupAddon>
-                  <InputGroupAddon align="end">
+                  <InputGroupAddon align="inline-end">
                     <Kbd>/</Kbd>
                   </InputGroupAddon>
                 </InputGroup>

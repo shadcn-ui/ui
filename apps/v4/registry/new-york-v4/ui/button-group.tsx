@@ -12,7 +12,7 @@ function ButtonGroup({
 }) {
   return (
     <div
-      role="toolbar"
+      role="group"
       data-slot="button-group"
       data-orientation={orientation}
       className={cn(
