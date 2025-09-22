@@ -111,7 +111,13 @@ export async function preFlightInit(
   const tsConfigSpinner = spinner(`Validating import alias.`, {
     silent: options.silent,
   }).start()
-  if (!projectInfo?.aliasPrefix) {
+  
+  // For monorepo setups, be more lenient with alias validation
+  const isMonorepo = fs.existsSync(path.resolve(options.cwd, "../../pnpm-workspace.yaml")) ||
+                    fs.existsSync(path.resolve(options.cwd, "../../package.json")) ||
+                    fs.existsSync(path.resolve(options.cwd, "../../../turbo.json"))
+  
+  if (!projectInfo?.aliasPrefix && !isMonorepo) {
     errors[ERRORS.IMPORT_ALIAS_MISSING] = true
     tsConfigSpinner?.fail()
   } else {

@@ -243,29 +243,54 @@ export async function getTailwindConfigFile(cwd: string) {
 }
 
 export async function getTsConfigAliasPrefix(cwd: string) {
-  const tsConfig = await loadConfig(cwd)
+  // First try to load tsconfig using tsconfig-paths
+  let tsConfig = await loadConfig(cwd)
+
+  // If that fails, try to read tsconfig.json directly
+  if (tsConfig?.resultType === "failed" || !tsConfig?.paths) {
+    const directTsConfig = await getTsConfig(cwd)
+    if (directTsConfig?.compilerOptions?.paths) {
+      tsConfig = {
+        resultType: "success" as const,
+        paths: directTsConfig.compilerOptions.paths,
+        absoluteBaseUrl: cwd,
+        configFileAbsolutePath: path.resolve(cwd, "tsconfig.json")
+      }
+    }
+  }
 
   if (
+    !tsConfig ||
     tsConfig?.resultType === "failed" ||
-    !Object.entries(tsConfig?.paths).length
+    !tsConfig?.paths ||
+    !Object.entries(tsConfig.paths).length
   ) {
     return null
   }
 
-  // This assume that the first alias is the prefix.
-  for (const [alias, paths] of Object.entries(tsConfig.paths)) {
+  // Convert paths to array format if they're strings
+  const normalizedPaths: Record<string, string[]> = {}
+  for (const [alias, pathValue] of Object.entries(tsConfig.paths)) {
+    normalizedPaths[alias] = Array.isArray(pathValue) ? pathValue : [pathValue]
+  }
+
+  // Look for common alias patterns
+  for (const [alias, paths] of Object.entries(normalizedPaths)) {
     if (
-      paths.includes("./*") ||
-      paths.includes("./src/*") ||
-      paths.includes("./app/*") ||
-      paths.includes("./resources/js/*") // Laravel.
+      paths.some(p => 
+        p === "./*" ||
+        p === "./src/*" ||
+        p === "./app/*" ||
+        p === "./resources/js/*" || // Laravel
+        p.endsWith("/*") && (p.startsWith("./") || !p.includes("/"))
+      )
     ) {
       return alias.replace(/\/\*$/, "") ?? null
     }
   }
 
   // Use the first alias as the prefix.
-  return Object.keys(tsConfig?.paths)?.[0].replace(/\/\*$/, "") ?? null
+  return Object.keys(normalizedPaths)?.[0]?.replace(/\/\*$/, "") ?? null
 }
 
 export async function isTypeScriptProject(cwd: string) {
@@ -328,6 +353,9 @@ export async function getProjectConfig(
     return null
   }
 
+  // Use default alias prefix if none detected (common in monorepos)
+  const aliasPrefix = projectInfo.aliasPrefix || "@"
+  
   const config: z.infer<typeof rawConfigSchema> = {
     $schema: "https://ui.shadcn.com/schema.json",
     rsc: projectInfo.isRSC,
@@ -342,11 +370,11 @@ export async function getProjectConfig(
     },
     iconLibrary: "lucide",
     aliases: {
-      components: `${projectInfo.aliasPrefix}/components`,
-      ui: `${projectInfo.aliasPrefix}/components/ui`,
-      hooks: `${projectInfo.aliasPrefix}/hooks`,
-      lib: `${projectInfo.aliasPrefix}/lib`,
-      utils: `${projectInfo.aliasPrefix}/lib/utils`,
+      components: `${aliasPrefix}/components`,
+      ui: `${aliasPrefix}/components/ui`,
+      hooks: `${aliasPrefix}/hooks`,
+      lib: `${aliasPrefix}/lib`,
+      utils: `${aliasPrefix}/lib/utils`,
     },
   }
 

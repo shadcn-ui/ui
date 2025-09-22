@@ -253,7 +253,42 @@ export async function runInit(
 
   if (newProjectTemplate === "next-monorepo") {
     options.cwd = path.resolve(options.cwd, "apps/web")
-    return await getConfig(options.cwd)
+    
+    // For monorepo, we need to ensure we have a proper config
+    const config = await getConfig(options.cwd)
+    if (!config) {
+      // Create a default config for monorepo setup
+      const defaultConfig = {
+        $schema: "https://ui.shadcn.com/schema.json",
+        style: "new-york",
+        rsc: true,
+        tsx: true,
+        tailwind: {
+          config: "tailwind.config.mjs",
+          css: "app/globals.css",
+          baseColor: "zinc",
+          cssVariables: true,
+          prefix: ""
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+          ui: "@/components/ui",
+          lib: "@/lib",
+          hooks: "@/hooks"
+        }
+      }
+      
+      // Write the config file
+      await fs.writeFile(
+        path.resolve(options.cwd, "components.json"),
+        JSON.stringify(defaultConfig, null, 2) + "\n",
+        "utf8"
+      )
+      
+      return defaultConfig
+    }
+    return config
   }
 
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)
