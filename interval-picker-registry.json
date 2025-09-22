@@ -1,0 +1,22 @@
+{
+  "name": "interval-picker",
+  "type": "registry:ui",
+  "dependencies": [
+    "date-fns"
+  ],
+  "registryDependencies": [
+    "button",
+    "input", 
+    "label",
+    "radio-group",
+    "select",
+    "calendar",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "ui/interval-picker.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
