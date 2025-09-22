@@ -114,7 +114,7 @@ export const ui: Registry["items"] = [
   {
     name: "button-group",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "separator"],
     files: [
       {
         path: "ui/button-group.tsx",
@@ -259,6 +259,7 @@ export const ui: Registry["items"] = [
   {
     name: "field",
     type: "registry:ui",
+    registryDependencies: ["label", "separator"],
     files: [
       {
         path: "ui/field.tsx",
@@ -308,8 +309,7 @@ export const ui: Registry["items"] = [
   {
     name: "input-group",
     type: "registry:ui",
-    dependencies: ["class-variance-authority"],
-    registryDependencies: ["input"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "ui/input-group.tsx",

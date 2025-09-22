@@ -9,23 +9,27 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="input-group"
-      role="presentation"
+      role="group"
       className={cn(
-        "group/input-group border-input dark:bg-input/30 relative isolate flex h-9 w-full items-center rounded-md border shadow-xs transition-[color,box-shadow] outline-none",
-        "has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:flex-col",
-        "has-[>textarea]:h-auto",
-        "has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3",
+        "group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-md border shadow-xs transition-[color,box-shadow] outline-none",
+        "h-9 has-[>textarea]:h-auto",
 
-        // Error state.
-        "has-[[aria-invalid=true]]:ring-destructive/20 has-[[aria-invalid=true]]:border-destructive dark:has-[[aria-invalid=true]]:ring-destructive/40",
+        // Variants based on alignment.
+        "has-[>[data-align=inline-start]]:[&>input]:pl-2",
+        "has-[>[data-align=inline-end]]:[&>input]:pr-2",
+        "has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
+        "has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
 
-        // Focus state.
-        "has-[input:focus-visible,textarea:focus-visible]:border-ring has-[input:focus-visible,textarea:focus-visible]:ring-ring/50 has-[input:focus-visible,textarea:focus-visible]:ring-[3px]",
-        "has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
-
-        // Child input overrides (direct children only).
+        // Child input overrides.
         "[&>input]:flex-1 [&>input]:rounded-none [&>input]:border-0 [&>input]:bg-transparent [&>input]:shadow-none dark:[&>input]:bg-transparent [&>input:focus-visible]:ring-0",
         "[&>textarea]:flex-1 [&>textarea]:resize-none [&>textarea]:rounded-none [&>textarea]:border-0 [&>textarea]:bg-transparent [&>textarea]:shadow-none dark:[&>textarea]:bg-transparent [&>textarea:focus-visible]:ring-0",
+
+        // Focus state.
+        "has-[input:focus-visible]:border-ring has-[input:focus-visible]:ring-ring/50 has-[input:focus-visible]:ring-[3px]",
+        "has-[textarea:focus-visible]:border-ring has-[textarea:focus-visible]:ring-ring/50 has-[textarea:focus-visible]:ring-[3px]",
+
+        // Error state.
+        "has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
 
         className
       )}
@@ -34,37 +38,38 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+const inputGroupAddonVariants = cva(
+  "text-muted-foreground flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium select-none [&>svg:not([class*='size-'])]:size-4 [&>kbd]:rounded-[calc(var(--radius)-5px)] group-data-[disabled=true]/input-group:opacity-50",
+  {
+    variants: {
+      align: {
+        "inline-start":
+          "order-first pl-3 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]",
+        "inline-end":
+          "order-last pr-3 has-[>button]:mr-[-0.4rem] has-[>kbd]:mr-[-0.35rem]",
+        "block-start":
+          "order-first w-full justify-start px-3 pt-3 [.border-b]:pb-3",
+        "block-end":
+          "order-last w-full justify-start px-3 pb-3 [.border-t]:pt-3",
+      },
+    },
+    defaultVariants: {
+      align: "inline-start",
+    },
+  }
+)
+
 function InputGroupAddon({
   className,
   align = "inline-start",
   ...props
-}: React.ComponentProps<"div"> & {
-  align?: "inline-start" | "inline-end" | "block-start" | "block-end"
-}) {
+}: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
   return (
     <div
       role="group"
       data-slot="input-group-addon"
       data-align={align}
-      className={cn(
-        "text-muted-foreground flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium select-none",
-
-        // Alignment and button adjustments.a
-        "data-[align=inline-end]:order-last data-[align=inline-end]:pr-3",
-        "data-[align=inline-start]:order-first data-[align=inline-start]:pl-3",
-        "data-[align=inline-end]:has-[>button]:mr-[-0.4rem] data-[align=inline-end]:has-[>kbd]:mr-[-0.35rem]",
-        "data-[align=inline-start]:has-[>button]:ml-[-0.45rem] data-[align=inline-start]:has-[>kbd]:ml-[-0.35rem]",
-
-        "data-[align=block-start]:order-first data-[align=block-start]:w-full data-[align=block-start]:justify-start data-[align=block-start]:px-3 data-[align=block-start]:pt-3 data-[align=block-start]:[.border-b]:pb-3",
-        "data-[align=block-end]:order-last data-[align=block-end]:w-full data-[align=block-end]:justify-start data-[align=block-end]:px-3 data-[align=block-end]:pb-3 data-[align=block-end]:[.border-t]:pt-3",
-
-        // Children.
-        "[&>svg:not([class*='size-'])]:size-4",
-        "[&>kbd]:rounded-[calc(var(--radius)-5px)]",
-        "group-data-[disabled=true]/input-group:opacity-50",
-
-        className
-      )}
+      className={cn(inputGroupAddonVariants({ align }), className)}
       onClick={(e) => {
         if ((e.target as HTMLElement).closest("button")) {
           return

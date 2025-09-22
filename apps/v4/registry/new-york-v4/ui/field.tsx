@@ -9,6 +9,7 @@ function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   return (
     <fieldset
       data-slot="field-set"
+      data-field="field-set"
       className={cn(
         "flex flex-col gap-6",
         "[&>[data-slot=radio-group]]:-mt-2",
@@ -23,6 +24,7 @@ function FieldLegend({ className, ...props }: React.ComponentProps<"legend">) {
   return (
     <legend
       data-slot="field-legend"
+      data-field="field-legend"
       className={cn(
         "mb-6 text-base font-medium has-[+[data-slot=field-description]]:mb-1",
         className
@@ -52,6 +54,7 @@ function FieldGroup({
   return (
     <div
       data-slot="field-group"
+      data-field="field-group"
       data-variant={variant}
       className={cn(fieldGroupVariants({ variant, className }))}
       {...props}
@@ -62,7 +65,9 @@ function FieldGroup({
 function Field({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
+      role="group"
       data-slot="field"
+      data-field="field"
       className={cn(
         "group/field flex w-full flex-col items-start gap-3",
 
@@ -71,22 +76,15 @@ function Field({ className, ...props }: React.ComponentProps<"div">) {
         "has-[>[role=checkbox]]:flex-row has-[>[role=checkbox]]:items-center",
         "has-[>[role=radio]]:flex-row has-[>[role=radio]]:items-center",
         "has-[>[role=switch]]:flex-row has-[>[role=switch]]:items-center",
-
-        "has-[label+[role=checkbox]]:[&>:first-child]:flex-1",
-        "has-[label+[role=radio]]:[&>:first-child]:flex-1",
-        "has-[label+[role=switch]]:[&>:first-child]:flex-1",
-        "has-[[data-slot=field-title]+[role=checkbox]]:[&>:first-child]:flex-1",
-        "has-[[data-slot=field-title]+[role=radio]]:[&>:first-child]:flex-1",
-        "has-[[data-slot=field-title]+[role=switch]]:[&>:first-child]:flex-1",
+        "has-[[data-field=label]+[role=checkbox]]:[&>:first-child]:flex-1",
+        "has-[[data-field=label]+[role=radio]]:[&>:first-child]:flex-1",
+        "has-[[data-field=label]+[role=switch]]:[&>:first-child]:flex-1",
 
         // Child inputs (direct children only).
-        "[&>[data-slot=label]]:w-fit",
-        "[&>[data-slot=toggle-group]]:w-full",
         "[&>[data-slot=input]]:w-full",
-        "[&>[data-slot=select-trigger]]:w-full",
         "[&>[data-slot=slider]]:w-full",
-        "[&>[data-slot=radio-group]]:w-full",
         "[&>[data-slot=popover-trigger]]:w-full",
+        "[&>[role=combobox]]:w-full",
         "[&>[role=radiogroup]]:w-full",
         "[&>[role=group]]:w-full",
         "[&>[role=toolbar]]:w-full",
@@ -109,6 +107,7 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field-content"
+      data-field="field-content"
       className={cn(
         "flex flex-1 flex-col gap-2 [[data-slot=field-label]_&]:gap-1.5",
         className
@@ -125,9 +124,9 @@ function FieldLabel({
   return (
     <Label
       data-slot="field-label"
+      data-field="label"
       className={cn(
-        "group/field-label flex items-start gap-2",
-        "*:data-[slot=field]:p-4 *:[img]:rounded-t-md",
+        "group/field-label flex w-fit items-start gap-2 *:data-[slot=field]:p-4",
 
         // Child field variations.
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border",
@@ -150,10 +149,9 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field-title"
+      data-field="label"
       className={cn(
-        "group-has-aria-invalid/field:text-destructive flex items-center gap-2 text-sm leading-none font-medium select-none group-has-data-[disabled]/field:opacity-60",
-        "group-data-[invalid=true]/field:text-destructive",
-        "group-data-[disabled=true]/field:opacity-50",
+        "group-data-[invalid=true]/field:text-destructive flex w-fit items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]/field:opacity-50",
         className
       )}
       {...props}
@@ -165,6 +163,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
       data-slot="field-description"
+      data-field="field-description"
       className={cn(
         "text-muted-foreground text-sm font-normal",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
@@ -186,6 +185,7 @@ function FieldSeparator({
   return (
     <div
       data-slot="field-separator"
+      data-field="field-separator"
       data-content={!!children}
       className={cn(
         "relative -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2",
@@ -242,6 +242,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
+      data-field="field-error"
       className={cn("text-destructive text-sm font-normal", className)}
       {...props}
     >

@@ -3,7 +3,8 @@
   "name": "button-group",
   "type": "registry:ui",
   "registryDependencies": [
-    "button"
+    "button",
+    "separator"
   ],
   "files": [
     {

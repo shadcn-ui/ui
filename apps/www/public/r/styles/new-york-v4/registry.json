@@ -111,7 +111,7 @@
     {
       "name": "button-group",
       "type": "registry:ui",
-      "registryDependencies": ["button"],
+      "registryDependencies": ["button", "separator"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/button-group.tsx",
@@ -256,6 +256,7 @@
     {
       "name": "field",
       "type": "registry:ui",
+      "registryDependencies": ["label", "separator"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/field.tsx",
@@ -305,8 +306,7 @@
     {
       "name": "input-group",
       "type": "registry:ui",
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["input"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/input-group.tsx",

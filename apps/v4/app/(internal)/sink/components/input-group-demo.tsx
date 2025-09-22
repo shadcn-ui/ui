@@ -185,15 +185,13 @@ export function InputGroupDemo() {
           </InputGroup>
           <InputGroup>
             <Input id="input-optional-12" />
-            <InputGroupAddon
-              align="inline-end"
-              className="text-muted-foreground"
-            >
-              (optional)
+            <InputGroupAddon align="inline-end">
+              <InputGroupText>(optional)</InputGroupText>
             </InputGroupAddon>
           </InputGroup>
         </Field>
         <Field>
+          <FieldLabel htmlFor="input-button-13">Button</FieldLabel>
           <InputGroup>
             <Input id="input-button-13" />
             <InputGroupAddon>
@@ -273,7 +271,7 @@ export function InputGroupDemo() {
           </InputGroup>
         </Field>
         <Field>
-          <FieldLabel htmlFor="input-addon-20">Addon</FieldLabel>
+          <FieldLabel htmlFor="input-addon-20">Addon (block-start)</FieldLabel>
           <InputGroup className="h-auto">
             <Input id="input-addon-20" />
             <InputGroupAddon align="block-start">
@@ -283,9 +281,9 @@ export function InputGroupDemo() {
           </InputGroup>
         </Field>
         <Field>
-          <FieldLabel htmlFor="input-addon-20">Addon</FieldLabel>
+          <FieldLabel htmlFor="input-addon-21">Addon (block-end)</FieldLabel>
           <InputGroup className="h-auto">
-            <Input id="input-addon-20" />
+            <Input id="input-addon-21" />
             <InputGroupAddon align="block-end">
               <InputGroupText>20/240 characters</InputGroupText>
               <IconInfoCircle className="text-muted-foreground ml-auto" />
@@ -293,7 +291,7 @@ export function InputGroupDemo() {
           </InputGroup>
         </Field>
       </div>
-      <div className="flex flex-col gap-10 p-4">
+      <div className="flex flex-col gap-10">
         <Field>
           <FieldLabel htmlFor="input-tooltip-20">Tooltip</FieldLabel>
           <InputGroup>
@@ -312,7 +310,7 @@ export function InputGroupDemo() {
         </Field>
         <Field>
           <FieldLabel htmlFor="input-dropdown-21">Dropdown</FieldLabel>
-          <InputGroup className="gap-1">
+          <InputGroup>
             <Input id="input-dropdown-21" />
             <InputGroupAddon>
               <DropdownMenu>

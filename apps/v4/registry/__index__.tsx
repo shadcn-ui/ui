@@ -174,7 +174,7 @@ export const Index: Record<string, any> = {
     name: "button-group",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: ["button","separator"],
     files: [{
       path: "registry/new-york-v4/ui/button-group.tsx",
       type: "registry:ui",
@@ -408,7 +408,7 @@ export const Index: Record<string, any> = {
     name: "field",
     description: "",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["label","separator"],
     files: [{
       path: "registry/new-york-v4/ui/field.tsx",
       type: "registry:ui",
@@ -480,7 +480,7 @@ export const Index: Record<string, any> = {
     name: "input-group",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["input"],
+    registryDependencies: ["button"],
     files: [{
       path: "registry/new-york-v4/ui/input-group.tsx",
       type: "registry:ui",

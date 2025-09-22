@@ -1576,7 +1576,6 @@ export function JobApplicationForm() {
                 <Input id="job-5p7-lastName-fl0" placeholder="Doe" required />
               </Field>
             </div>
-
             <Field>
               <FieldLabel htmlFor="job-5p7-email-6cz">Email</FieldLabel>
               <Input
@@ -2952,7 +2951,7 @@ export function FormDatePickerDemo() {
                     !date && "text-muted-foreground"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <CalendarIcon />
                   {date ? format(date, "PPP") : <span>Pick a date</span>}
                 </Button>
               </PopoverTrigger>
@@ -2973,7 +2972,7 @@ export function FormDatePickerDemo() {
                     !birthDate && "text-muted-foreground"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <CalendarIcon />
                   {birthDate ? (
                     format(birthDate, "PPP")
                   ) : (
@@ -3009,7 +3008,7 @@ export function FormDatePickerDemo() {
                     !appointmentDate && "text-muted-foreground"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <CalendarIcon />
                   {appointmentDate ? (
                     format(appointmentDate, "PPP")
                   ) : (
@@ -3043,7 +3042,7 @@ export function FormDatePickerDemo() {
                     !dateRange && "text-muted-foreground"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <CalendarIcon />
                   {dateRange?.from ? (
                     dateRange.to ? (
                       <>
@@ -3084,7 +3083,7 @@ export function FormDatePickerDemo() {
                     !vacationDates && "text-muted-foreground"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <CalendarIcon />
                   {vacationDates?.from ? (
                     vacationDates.to ? (
                       <>
@@ -3151,7 +3150,7 @@ export function FormDatePickerDemo() {
               className="w-full justify-start text-left font-normal opacity-50"
               disabled
             >
-              <CalendarIcon className="mr-2 h-4 w-4" />
+              <CalendarIcon />
               <span>Date selection disabled</span>
             </Button>
             <FieldDescription>
@@ -3778,11 +3777,11 @@ export function ProfileSettingsForm() {
                 </Field>
               </FieldGroup>
             </FieldSet>
-            <Field>
-              <Button type="submit">Save Changes</Button>
+            <Field className="flex-row justify-end">
               <Button type="button" variant="outline">
                 Cancel
               </Button>
+              <Button type="submit">Save Changes</Button>
             </Field>
           </FieldGroup>
         </form>
@@ -4018,19 +4017,16 @@ export function ComplexFormDemo() {
                     We&apos;ll use this for all communications.
                   </FieldDescription>
                 </Field>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <Field>
-                    <FieldLabel htmlFor="complex-6d8-phone-a7k">
-                      Phone Number
-                    </FieldLabel>
-                    <Input
-                      id="complex-6d8-phone-a7k"
-                      type="tel"
-                      placeholder="+1 (555) 123-4567"
-                    />
-                  </Field>
-                </div>
+                <Field>
+                  <FieldLabel htmlFor="complex-6d8-phone-a7k">
+                    Phone Number
+                  </FieldLabel>
+                  <Input
+                    id="complex-6d8-phone-a7k"
+                    type="tel"
+                    placeholder="+1 (555) 123-4567"
+                  />
+                </Field>
               </FieldGroup>
             </FieldSet>
             <FieldSeparator />
@@ -4280,7 +4276,6 @@ export function ComplexFormInvalidDemo() {
                     We&apos;ll use this for all communications.
                   </FieldDescription>
                 </Field>
-
                 <div className="grid grid-cols-2 gap-4">
                   <Field data-invalid>
                     <FieldLabel htmlFor="phone-invalid-2r4">
@@ -4307,7 +4302,7 @@ export function ComplexFormInvalidDemo() {
                             !startDate && "text-muted-foreground"
                           )}
                         >
-                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          <CalendarIcon />
                           {startDate ? (
                             format(startDate, "PPP")
                           ) : (
