@@ -1,4 +1,4 @@
-import { ExampleForm } from "@/app/(internal)/sink/(form)/react-hook-form/example-form"
+import { ExampleForm } from "@/app/(internal)/sink/(pages)/react-hook-form/example-form"
 
 export default function ReactHookFormPage() {
   return (

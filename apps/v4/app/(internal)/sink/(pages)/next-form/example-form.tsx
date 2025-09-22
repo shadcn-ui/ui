@@ -48,7 +48,7 @@ import {
 } from "@/registry/new-york-v4/ui/select"
 import { Switch } from "@/registry/new-york-v4/ui/switch"
 import { Textarea } from "@/registry/new-york-v4/ui/textarea"
-import { addons, exampleFormSchema } from "@/app/(internal)/sink/(form)/schema"
+import { addons, exampleFormSchema } from "@/app/(internal)/sink/(pages)/schema"
 
 import { subscriptionAction } from "./actions"
 

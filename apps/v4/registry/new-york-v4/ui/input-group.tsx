@@ -1,5 +1,7 @@
 "use client"
 
+import { cva, type VariantProps } from "class-variance-authority"
+
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
@@ -74,29 +76,35 @@ function InputGroupAddon({
   )
 }
 
+const inputGroupButtonVariants = cva("text-sm shadow-none", {
+  variants: {
+    size: {
+      default:
+        "h-6 gap-1 px-1.5 has-[>svg:first-child]:pl-2 has-[>svg:last-child]:pr-2 rounded-[calc(var(--radius)-5px)]",
+      icon: "size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
+      sm: "h-7 px-2.5 has-[>svg:first-child]:pl-2 has-[>svg:last-child]:pr-2 gap-1.5 rounded-md",
+      "icon-sm": "size-7 p-0 has-[>svg]:p-0",
+    },
+  },
+  defaultVariants: {
+    size: "icon",
+  },
+})
+
 function InputGroupButton({
   className,
   type = "button",
   variant = "ghost",
   size = "icon",
   ...props
-}: React.ComponentProps<typeof Button>) {
+}: Omit<React.ComponentProps<typeof Button>, "size"> &
+  VariantProps<typeof inputGroupButtonVariants>) {
   return (
     <Button
       type={type}
       data-size={size}
       variant={variant}
-      size={size}
-      className={cn(
-        "h-6 gap-1 px-1.5 text-sm shadow-none",
-        "not-[.rounded-full]:rounded-[calc(var(--radius)-5px)]",
-        "has-[>svg]:px-1.5",
-        "data-[size=icon]:size-6",
-        "data-[slot=button]:h-6",
-        "data-[slot=button]:gap-1",
-        "data-[slot=button]:px-1.5",
-        className
-      )}
+      className={cn(inputGroupButtonVariants({ size }), className)}
       {...props}
     />
   )

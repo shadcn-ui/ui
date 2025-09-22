@@ -59,7 +59,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/new-york-v4/ui/toggle-group"
-import { addons, exampleFormSchema } from "@/app/(internal)/sink/(form)/schema"
+import { addons, exampleFormSchema } from "@/app/(internal)/sink/(pages)/schema"
 
 export function ExampleForm() {
   const form = useForm({

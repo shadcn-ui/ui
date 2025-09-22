@@ -523,7 +523,7 @@ export function InputGroupDemo() {
               </InputGroupButton>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <InputGroupButton variant="ghost" size="sm">
+                  <InputGroupButton variant="ghost" size="default">
                     Auto
                   </InputGroupButton>
                 </DropdownMenuTrigger>

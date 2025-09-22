@@ -1,6 +1,7 @@
-import NextFormPage from "./(form)/next-form/page"
-import ReactHookFormPage from "./(form)/react-hook-form/page"
-import TanstackFormPage from "./(form)/tanstack-form/page"
+import BlocksPage from "./(pages)/blocks/page"
+import NextFormPage from "./(pages)/next-form/page"
+import ReactHookFormPage from "./(pages)/react-hook-form/page"
+import TanstackFormPage from "./(pages)/tanstack-form/page"
 import { AccordionDemo } from "./components/accordion-demo"
 import { AlertDemo } from "./components/alert-demo"
 import { AlertDialogDemo } from "./components/alert-dialog-demo"
@@ -382,6 +383,12 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: TooltipDemo,
     type: "registry:ui",
     href: "/sink/tooltip",
+  },
+  blocks: {
+    name: "Blocks",
+    component: BlocksPage,
+    type: "registry:page",
+    href: "/sink/blocks",
   },
   "next-form": {
     name: "Next.js Form",

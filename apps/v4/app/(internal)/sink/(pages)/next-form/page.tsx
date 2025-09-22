@@ -1,4 +1,4 @@
-import { ExampleForm } from "@/app/(internal)/sink/(form)/next-form/example-form"
+import { ExampleForm } from "@/app/(internal)/sink/(pages)/next-form/example-form"
 
 export default function NextFormPage() {
   return (

@@ -1,4 +1,4 @@
-import { ExampleForm } from "@/app/(internal)/sink/(form)/tanstack-form/example-form"
+import { ExampleForm } from "@/app/(internal)/sink/(pages)/tanstack-form/example-form"
 
 export default function TanstackFormPage() {
   return (
