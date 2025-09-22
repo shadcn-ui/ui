@@ -7,7 +7,9 @@ import { cn } from "@/lib/utils"
 
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
-  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> & { dir?: "ltr" | "rtl" }
+  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> & {
+    dir?: "ltr" | "rtl"
+  }
 >(({ className, dir = "ltr", ...props }, ref) => (
   <SwitchPrimitives.Root
     dir={dir}
@@ -21,8 +23,10 @@ const Switch = React.forwardRef<
     <SwitchPrimitives.Thumb
       key={dir}
       className={cn(
-        "pointer-events-none block h-4 w-4 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=unchecked]:translate-x-0 data-[state=checked]:translate-x-4 data-[state=checked]:-translate-x-4",
-        dir === "rtl" ? "data-[state=checked]:-translate-x-4" : "data-[state=checked]:translate-x-4"
+        "pointer-events-none block h-4 w-4 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=unchecked]:translate-x-0",
+        dir === "rtl"
+          ? "data-[state=checked]:-translate-x-4"
+          : "data-[state=checked]:translate-x-4"
       )}
     />
   </SwitchPrimitives.Root>

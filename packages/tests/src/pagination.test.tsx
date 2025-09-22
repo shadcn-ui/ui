@@ -1,12 +1,13 @@
 import * as React from "react"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
+
 import {
   Pagination,
-  PaginationPrevious,
-  PaginationNext,
   PaginationEllipsis,
   PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
 } from "../pagination"
 
 describe("Pagination Component", () => {
@@ -22,12 +23,16 @@ describe("Pagination Component", () => {
     // Check Previous button text and icon
     expect(screen.getByLabelText(/go to previous page/i)).toBeInTheDocument()
     expect(screen.getByText("Prev")).toBeInTheDocument()
-    expect(screen.getByLabelText(/go to previous page/i).querySelector("svg")).toBeInTheDocument()
+    expect(
+      screen.getByLabelText(/go to previous page/i).querySelector("svg")
+    ).toBeInTheDocument()
 
     // Check Next button icon only (no text)
     expect(screen.getByLabelText(/go to next page/i)).toBeInTheDocument()
     expect(screen.queryByText("Next")).not.toBeInTheDocument()
-    expect(screen.getByLabelText(/go to next page/i).querySelector("svg")).toBeInTheDocument()
+    expect(
+      screen.getByLabelText(/go to next page/i).querySelector("svg")
+    ).toBeInTheDocument()
 
     // Check Ellipsis icon
     expect(screen.getByLabelText(/more pages/i)).toBeInTheDocument()

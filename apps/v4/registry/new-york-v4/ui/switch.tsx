@@ -9,7 +9,9 @@ function Switch({
   className,
   dir = "ltr",
   ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root> & { dir?: "ltr" | "rtl" }) {
+}: React.ComponentProps<typeof SwitchPrimitive.Root> & {
+  dir?: "ltr" | "rtl"
+}) {
   return (
     <SwitchPrimitive.Root
       data-slot="switch"
