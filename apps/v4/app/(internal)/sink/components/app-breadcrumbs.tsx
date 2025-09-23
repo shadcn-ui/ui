@@ -33,8 +33,8 @@ export function AppBreadcrumbs() {
         <BreadcrumbItem>
           <BreadcrumbLink href="/sink">Kitchen Sink</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
+        <BreadcrumbSeparator className="hidden sm:flex" />
+        <BreadcrumbItem className="hidden sm:block">
           <BreadcrumbPage className="capitalize">{name}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>

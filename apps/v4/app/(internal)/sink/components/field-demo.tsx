@@ -104,6 +104,8 @@ export function FieldDemo() {
           <FormInputTypesDemo />
           <FeedbackForm />
           <JobApplicationForm />
+          <FormDatePickerDemo />
+          <LoginForm />
         </div>
         <div className="flex flex-col gap-6">
           <FormSpecialInputTypesDemo />
@@ -112,6 +114,7 @@ export function FieldDemo() {
           <ProfileSettingsForm />
           <FormFieldGroupOutlineDemo />
           <SurveyForm />
+          <SignupForm />
         </div>
         <div className="flex flex-col gap-6">
           <FormRadioDemo />
@@ -121,22 +124,18 @@ export function FieldDemo() {
           <PaymentForm />
           <ContactForm />
           <ComplexFormDemo />
+          <ComplexFormInvalidDemo />
         </div>
         <div className="flex flex-col gap-6">
+          <CheckoutForm />
           <FormSwitchDemo />
           <FormToggleGroupDemo />
           <FormOTPDemo />
           <FormFieldSetDemo />
           <FormFieldSeparatorDemo />
-        </div>
-        <div className="flex flex-col gap-6">
-          <FormDatePickerDemo />
-          <SignupForm />
-          <LoginForm />
           <FinderPreferencesForm />
-          <CheckoutForm />
-          <ComplexFormInvalidDemo />
         </div>
+        <div className="flex flex-col gap-6"></div>
       </div>
     </div>
   )
@@ -3354,7 +3353,7 @@ export function FormFieldSetDemo() {
                   className="min-h-[100px]"
                 />
               </Field>
-              <Field>
+              <Field orientation="horizontal">
                 <Checkbox id="agree-terms-04d" />
                 <FieldContent>
                   <FieldLabel htmlFor="agree-terms-04d" className="font-normal">
@@ -4176,12 +4175,6 @@ export function ComplexFormInvalidDemo() {
 
   return (
     <Card className="w-full max-w-3xl">
-      <CardHeader>
-        <CardTitle>Job Application Form (Validation State)</CardTitle>
-        <CardDescription>
-          Example showing all fields with invalid state
-        </CardDescription>
-      </CardHeader>
       <CardContent>
         <form>
           <FieldGroup>
@@ -4215,7 +4208,6 @@ export function ComplexFormInvalidDemo() {
                     />
                   </Field>
                 </div>
-
                 <Field data-invalid>
                   <FieldLabel htmlFor="email-invalid-8tl">
                     Email Address
@@ -4276,11 +4268,38 @@ export function ComplexFormInvalidDemo() {
                     </Popover>
                   </Field>
                 </div>
+                <Field data-invalid>
+                  <FieldLabel htmlFor="coverLetter-invalid-6n9">
+                    Cover Letter
+                  </FieldLabel>
+                  <Textarea
+                    id="coverLetter-invalid-6n9"
+                    placeholder="Tell us why you're a great fit for this position..."
+                    className="min-h-[120px]"
+                    aria-invalid
+                  />
+                  <FieldDescription>
+                    Briefly describe your interest and qualifications (500 words
+                    max)
+                  </FieldDescription>
+                </Field>
+                <Field data-invalid>
+                  <FieldLabel htmlFor="resume-invalid-b6z">
+                    Upload Resume
+                  </FieldLabel>
+                  <Input
+                    id="resume-invalid-b6z"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    aria-invalid
+                  />
+                  <FieldDescription>
+                    PDF or Word document (max 5MB)
+                  </FieldDescription>
+                </Field>
               </FieldGroup>
             </FieldSet>
-
             <FieldSeparator />
-
             <FieldSet>
               <FieldLegend>Professional Background</FieldLegend>
               <FieldGroup>
@@ -4306,7 +4325,6 @@ export function ComplexFormInvalidDemo() {
                     </SelectContent>
                   </Select>
                 </Field>
-
                 <Field data-invalid>
                   <FieldLabel htmlFor="experience-invalid-xri">
                     Years of Experience
@@ -4324,7 +4342,6 @@ export function ComplexFormInvalidDemo() {
                     experience
                   </FieldDescription>
                 </Field>
-
                 <Field data-invalid>
                   <FieldLabel>Employment Type Preference</FieldLabel>
                   <ToggleGroup
@@ -4396,55 +4413,6 @@ export function ComplexFormInvalidDemo() {
                     </Field>
                   </FieldGroup>
                 </FieldSet>
-              </FieldGroup>
-            </FieldSet>
-            <FieldSeparator />
-            <FieldSet>
-              <FieldLegend>Additional Information</FieldLegend>
-              <FieldGroup>
-                <Field data-invalid>
-                  <FieldLabel htmlFor="portfolio-invalid-l2n">
-                    Portfolio URL
-                  </FieldLabel>
-                  <Input
-                    id="portfolio-invalid-l2n"
-                    type="url"
-                    placeholder="https://yourportfolio.com"
-                    aria-invalid
-                  />
-                  <FieldDescription>
-                    Optional: Share your portfolio or GitHub profile
-                  </FieldDescription>
-                </Field>
-                <Field data-invalid>
-                  <FieldLabel htmlFor="coverLetter-invalid-6n9">
-                    Cover Letter
-                  </FieldLabel>
-                  <Textarea
-                    id="coverLetter-invalid-6n9"
-                    placeholder="Tell us why you're a great fit for this position..."
-                    className="min-h-[120px]"
-                    aria-invalid
-                  />
-                  <FieldDescription>
-                    Briefly describe your interest and qualifications (500 words
-                    max)
-                  </FieldDescription>
-                </Field>
-                <Field data-invalid>
-                  <FieldLabel htmlFor="resume-invalid-b6z">
-                    Upload Resume
-                  </FieldLabel>
-                  <Input
-                    id="resume-invalid-b6z"
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    aria-invalid
-                  />
-                  <FieldDescription>
-                    PDF or Word document (max 5MB)
-                  </FieldDescription>
-                </Field>
               </FieldGroup>
             </FieldSet>
             <FieldSeparator />

@@ -3,11 +3,6 @@ import { CommandIcon, WavesIcon } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
-import {
-  Field,
-  FieldContent,
-  FieldTitle,
-} from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
@@ -100,14 +95,9 @@ export function KbdDemo() {
           </TooltipContent>
         </Tooltip>
       </ButtonGroup>
-      <Field>
-        <FieldTitle>With samp</FieldTitle>
-        <FieldContent>
-          <Kbd>
-            <samp>File</samp>
-          </Kbd>
-        </FieldContent>
-      </Field>
+      <Kbd>
+        <samp>File</samp>
+      </Kbd>
     </div>
   )
 }

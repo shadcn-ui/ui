@@ -55,7 +55,7 @@ export function DisplaySettings() {
               Adjust the display brightness level.
             </FieldDescription>
           </FieldContent>
-          <div className="flex w-full items-center gap-2 md:w-1/3">
+          <div className="flex min-w-[150px] items-center gap-2">
             <SunDimIcon className="size-4 shrink-0" />
             <Slider
               id="brightness"
@@ -98,7 +98,7 @@ export function DisplaySettings() {
             </FieldDescription>
           </FieldContent>
           <Select>
-            <SelectTrigger id="refresh-rate" className="ml-auto">
+            <SelectTrigger id="refresh-rate" className="ml-auto min-w-[200px]">
               <SelectValue placeholder="Select" />
             </SelectTrigger>
             <SelectContent align="end">
