@@ -286,7 +286,11 @@ export function NotionPromptForm() {
           <InputGroupAddon align="block-end" className="gap-1">
             <Tooltip>
               <TooltipTrigger asChild>
-                <InputGroupButton size="icon-sm" className="rounded-full">
+                <InputGroupButton
+                  size="icon-sm"
+                  className="rounded-full"
+                  aria-label="Attach file"
+                >
                   <IconPaperclip />
                 </InputGroupButton>
               </TooltipTrigger>
