@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Form from "next/form"
-import { Loader2 } from "lucide-react"
 import { z } from "zod"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -46,6 +45,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 import { Switch } from "@/registry/new-york-v4/ui/switch"
 import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 import { addons, exampleFormSchema } from "@/app/(internal)/sink/(pages)/schema"
@@ -135,7 +135,6 @@ export function ExampleForm() {
                 )}
               </Field>
               <FieldSeparator />
-
               <FieldSet data-invalid={!!formState.errors?.plan?.length}>
                 <FieldLegend>Subscription Plan</FieldLegend>
                 <FieldDescription>
@@ -148,7 +147,7 @@ export function ExampleForm() {
                   aria-invalid={!!formState.errors?.plan?.length}
                 >
                   <FieldLabel htmlFor="basic">
-                    <Field>
+                    <Field orientation="horizontal">
                       <FieldContent>
                         <FieldTitle>Basic</FieldTitle>
                         <FieldDescription>
@@ -159,7 +158,7 @@ export function ExampleForm() {
                     </Field>
                   </FieldLabel>
                   <FieldLabel htmlFor="pro">
-                    <Field>
+                    <Field orientation="horizontal">
                       <FieldContent>
                         <FieldTitle>Pro</FieldTitle>
                         <FieldDescription>
@@ -199,15 +198,14 @@ export function ExampleForm() {
                 )}
               </Field>
               <FieldSeparator />
-
               <FieldSet data-invalid={!!formState.errors?.addons?.length}>
                 <FieldLegend>Add-ons</FieldLegend>
                 <FieldDescription>
                   Select additional features you&apos;d like to include.
                 </FieldDescription>
-                <Field>
+                <FieldGroup data-slot="checkbox-group">
                   {addons.map((addon) => (
-                    <Field key={addon.id}>
+                    <Field key={addon.id} orientation="horizontal">
                       <Checkbox
                         id={addon.id}
                         name="addons"
@@ -226,7 +224,7 @@ export function ExampleForm() {
                       </FieldContent>
                     </Field>
                   ))}
-                </Field>
+                </FieldGroup>
                 {formState.errors?.addons && (
                   <FieldError>{formState.errors.addons[0]}</FieldError>
                 )}
@@ -252,8 +250,7 @@ export function ExampleForm() {
                 )}
               </Field>
               <FieldSeparator />
-
-              <Field>
+              <Field orientation="horizontal">
                 <FieldContent>
                   <FieldLabel htmlFor="emailNotifications">
                     Email Notifications
@@ -271,7 +268,6 @@ export function ExampleForm() {
                 />
               </Field>
               <FieldSeparator />
-
               <Field data-invalid={!!formState.errors?.startDate?.length}>
                 <FieldLabel htmlFor="startDate">Start Date</FieldLabel>
                 <Input
@@ -292,7 +288,6 @@ export function ExampleForm() {
                 )}
               </Field>
               <FieldSeparator />
-
               <Field data-invalid={!!formState.errors?.theme?.length}>
                 <FieldLabel htmlFor="theme">Theme Preference</FieldLabel>
                 <Select
@@ -318,7 +313,6 @@ export function ExampleForm() {
                 )}
               </Field>
               <FieldSeparator />
-
               <Field data-invalid={!!formState.errors?.password?.length}>
                 <FieldLabel htmlFor="password">Password</FieldLabel>
                 <Input
@@ -339,7 +333,6 @@ export function ExampleForm() {
                 )}
               </Field>
               <FieldSeparator />
-
               <Field data-invalid={!!formState.errors?.comments?.length}>
                 <FieldLabel htmlFor="comments">Additional Comments</FieldLabel>
                 <Textarea
@@ -363,7 +356,7 @@ export function ExampleForm() {
           </Form>
         </CardContent>
         <CardFooter className="border-t">
-          <Field className="flex-row">
+          <Field orientation="horizontal" className="justify-end">
             <Button
               type="button"
               variant="outline"
@@ -373,19 +366,13 @@ export function ExampleForm() {
             >
               Reset
             </Button>
-            <Button
-              type="submit"
-              className="ml-auto"
-              disabled={pending}
-              form="subscription-form"
-            >
-              {pending && <Loader2 className="animate-spin" />}
-              {pending ? "Creating..." : "Create Subscription"}
+            <Button type="submit" disabled={pending} form="subscription-form">
+              {pending && <Spinner />}
+              Create Subscription
             </Button>
           </Field>
         </CardFooter>
       </Card>
-
       <Dialog open={showResults} onOpenChange={setShowResults}>
         <DialogContent>
           <DialogHeader>

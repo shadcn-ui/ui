@@ -178,7 +178,7 @@ export function ExampleForm() {
                         aria-invalid={isInvalid}
                       >
                         <FieldLabel htmlFor="basic">
-                          <Field>
+                          <Field orientation="horizontal">
                             <FieldContent>
                               <FieldTitle>Basic</FieldTitle>
                               <FieldDescription>
@@ -193,7 +193,7 @@ export function ExampleForm() {
                           </Field>
                         </FieldLabel>
                         <FieldLabel htmlFor="pro">
-                          <Field>
+                          <Field orientation="horizontal">
                             <FieldContent>
                               <FieldTitle>Pro</FieldTitle>
                               <FieldDescription>
@@ -263,9 +263,9 @@ export function ExampleForm() {
                       <FieldDescription>
                         Select additional features you&apos;d like to include.
                       </FieldDescription>
-                      <Field data-invalid={isInvalid}>
+                      <FieldGroup data-slot="checkbox-group">
                         {addons.map((addon) => (
-                          <Field key={addon.id} data-invalid={isInvalid}>
+                          <Field key={addon.id} orientation="horizontal">
                             <Checkbox
                               id={addon.id}
                               name={field.name}
@@ -294,7 +294,7 @@ export function ExampleForm() {
                             </FieldContent>
                           </Field>
                         ))}
-                      </Field>
+                      </FieldGroup>
                       {isInvalid && (
                         <FieldError errors={field.state.meta.errors} />
                       )}
@@ -337,7 +337,7 @@ export function ExampleForm() {
                   const isInvalid =
                     field.state.meta.isTouched && !field.state.meta.isValid
                   return (
-                    <Field data-invalid={isInvalid}>
+                    <Field orientation="horizontal">
                       <FieldContent>
                         <FieldLabel htmlFor={field.name}>
                           Email Notifications
@@ -500,7 +500,7 @@ export function ExampleForm() {
           </form>
         </CardContent>
         <CardFooter className="border-t">
-          <Field className="flex-row">
+          <Field orientation="horizontal" className="justify-end">
             <Button
               type="button"
               variant="outline"
@@ -508,7 +508,7 @@ export function ExampleForm() {
             >
               Reset
             </Button>
-            <Button type="submit" className="ml-auto" form="example-form">
+            <Button type="submit" form="example-form">
               Submit
             </Button>
           </Field>

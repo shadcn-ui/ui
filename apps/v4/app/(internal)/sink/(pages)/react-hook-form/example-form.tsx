@@ -162,7 +162,7 @@ export function ExampleForm() {
                         aria-invalid={isInvalid}
                       >
                         <FieldLabel htmlFor="basic">
-                          <Field>
+                          <Field orientation="horizontal">
                             <FieldContent>
                               <FieldTitle>Basic</FieldTitle>
                               <FieldDescription>
@@ -177,7 +177,7 @@ export function ExampleForm() {
                           </Field>
                         </FieldLabel>
                         <FieldLabel htmlFor="pro">
-                          <Field>
+                          <Field orientation="horizontal">
                             <FieldContent>
                               <FieldTitle>Pro</FieldTitle>
                               <FieldDescription>
@@ -242,9 +242,9 @@ export function ExampleForm() {
                       <FieldDescription>
                         Select additional features you&apos;d like to include.
                       </FieldDescription>
-                      <Field data-invalid={isInvalid}>
+                      <FieldGroup data-slot="checkbox-group">
                         {addons.map((addon) => (
-                          <Field key={addon.id} data-invalid={isInvalid}>
+                          <Field key={addon.id} orientation="horizontal">
                             <Checkbox
                               id={addon.id}
                               name={field.name}
@@ -270,7 +270,7 @@ export function ExampleForm() {
                             </FieldContent>
                           </Field>
                         ))}
-                      </Field>
+                      </FieldGroup>
                       {isInvalid && <FieldError errors={[fieldState.error]} />}
                     </FieldSet>
                   )
@@ -310,7 +310,7 @@ export function ExampleForm() {
                 render={({ field, fieldState }) => {
                   const isInvalid = fieldState.invalid
                   return (
-                    <Field data-invalid={isInvalid}>
+                    <Field orientation="horizontal">
                       <FieldContent>
                         <FieldLabel htmlFor={field.name}>
                           Email Notifications
@@ -458,19 +458,18 @@ export function ExampleForm() {
           </form>
         </CardContent>
         <CardFooter className="border-t">
-          <div className="flex w-full gap-2">
+          <Field orientation="horizontal" className="justify-end">
             <Button
               type="button"
               variant="outline"
               onClick={() => form.reset()}
-              className="flex-1"
             >
               Reset
             </Button>
-            <Button type="submit" form="subscription-form" className="flex-1">
+            <Button type="submit" form="subscription-form">
               Submit
             </Button>
-          </div>
+          </Field>
         </CardFooter>
       </Card>
       <Dialog open={open} onOpenChange={setOpen}>
