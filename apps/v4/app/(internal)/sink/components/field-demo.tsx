@@ -4184,7 +4184,6 @@ export function ComplexFormDemo() {
 export function ComplexFormInvalidDemo() {
   const [startDate, setStartDate] = useState<Date>()
   const [experience, setExperience] = useState([3])
-  const [skills, setSkills] = useState<string[]>([])
   const [workType, setWorkType] = useState("hybrid")
 
   return (

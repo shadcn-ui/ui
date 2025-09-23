@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { CheckIcon } from "lucide-react"
 
 import {
   Field,
@@ -101,7 +102,7 @@ export function AppearanceSettings() {
           </RadioGroup>
         </FieldSet>
         <FieldSeparator />
-        <Field orientation="responsive">
+        <Field orientation="horizontal">
           <FieldContent>
             <FieldTitle>Accent</FieldTitle>
             <FieldDescription>
@@ -114,18 +115,16 @@ export function AppearanceSettings() {
                 <Label
                   htmlFor={accent.value}
                   key={accent.value}
-                  className="size-6 rounded-full"
+                  className="flex size-6 items-center justify-center rounded-full"
                   style={{ backgroundColor: accent.value }}
                 >
-                  <Field>
-                    <FieldTitle className="sr-only">{accent.name}</FieldTitle>
-                    <RadioGroupItem
-                      id={accent.value}
-                      value={accent.value}
-                      aria-label={accent.name}
-                      className="size-6 border-none [&_svg]:size-3 [&_svg]:fill-white [&_svg]:stroke-white"
-                    />
-                  </Field>
+                  <RadioGroupItem
+                    id={accent.value}
+                    value={accent.value}
+                    aria-label={accent.name}
+                    className="peer sr-only"
+                  />
+                  <CheckIcon className="hidden size-4 stroke-white peer-data-[state=checked]:block" />
                 </Label>
               ))}
             </RadioGroup>
