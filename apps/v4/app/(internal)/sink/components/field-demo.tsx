@@ -89,20 +89,8 @@ import {
 
 export function FieldDemo() {
   return (
-    <div className="-m-6">
-      <div className="p-6">
-        <FieldGroup>
-          <Field orientation="horizontal">
-            <FieldLabel htmlFor="name-x28k">Last Name</FieldLabel>
-            <Input id="name-x28k" type="text" />
-          </Field>
-          <Field orientation="horizontal">
-            <FieldLabel htmlFor="message-x28k">Message</FieldLabel>
-            <Textarea id="message-x28k" />
-          </Field>
-        </FieldGroup>
-      </div>
-      <div className="bg-muted grid gap-4 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+    <div className="@container -m-6">
+      <div className="bg-muted grid gap-4 p-4 @3xl:grid-cols-2 @5xl:grid-cols-3 @[120rem]:grid-cols-4 @[140rem]:grid-cols-5">
         <div className="flex flex-col gap-6">
           <BasicFields />
           <PrivacySettings />

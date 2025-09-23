@@ -229,7 +229,11 @@
   }
 
   [data-slot="toggle-group"],
-  [data-slot="toggle-group-item"] {
+  [data-slot="toggle-group-item"],
+  [data-slot="checkbox"],
+  [data-slot="radio"],
+  [data-slot="switch"],
+  [data-slot="switch-thumb"] {
     @apply !rounded-none !shadow-none;
   }
 }
