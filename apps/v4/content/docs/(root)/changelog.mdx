@@ -4,6 +4,24 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## September 2025 - Registry Index
+
+We've created an index of open source registries that you can install items from.
+
+You can search, view and add items from the registry index without configuring the `.components.json` file.
+
+They'll be automatically added to your `components.json` file for you.
+
+```bash
+npx shadcn add @ai-elements/prompt-input
+```
+
+The full list of registries is available at [https://ui.shadcn.com/r/registries.json](https://ui.shadcn.com/r/registries.json).
+
+To add a registry to the index, submit a PR to the `shadcn/ui` repository. See the [registry index documentation](/docs/registry/registry-index) for more details.
+
+---
+
 ## August 2025 - shadcn CLI 3.0 and MCP Server
 
 We just shipped shadcn CLI 3.0 with support for namespaced registries, advanced authentication, new commands and a completely rewritten registry engine.
@@ -1071,7 +1089,7 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none">
+      <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none">
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>

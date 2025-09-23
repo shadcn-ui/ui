@@ -41,7 +41,7 @@ Registry namespaces are prefixed with `@` and provide a way to organize and refe
 
 ## Decentralized Namespace System
 
-We intentionally designed the namespace system to be decentralized. There is no central registrar for namespaces. You are free to create and use any namespace you want.
+We intentionally designed the namespace system to be decentralized. There is a [central open source registry index](/docs/registry/registry-index) for open source namespaces but you are free to create and use any namespace you want.
 
 This decentralized approach gives you complete flexibility to organize your resources however makes sense for your organization.
 
@@ -614,82 +614,6 @@ Resolution order:
 1. **Source Tracking**: Each resource knows which registry it came from, avoiding naming conflicts
 2. **Circular Dependency Prevention**: Automatically detects and prevents circular dependencies
 3. **Smart Installation Order**: Dependencies are installed first, then the resources that use them
-
-We intentionally designed the namespace system to be decentralized. There is no central registrar for namespaces. You are free to create and use any namespace you want.
-
-This decentralized approach gives you complete flexibility to organize your resources however makes sense for your organization.
-
-You can create multiple registries for different purposes:
-
-```json title="components.json" showLineNumbers
-{
-  "registries": {
-    "@acme-ui": "https://registry.acme.com/ui/{name}.json",
-    "@acme-docs": "https://registry.acme.com/docs/{name}.json",
-    "@acme-ai": "https://registry.acme.com/ai/{name}.json",
-    "@acme-themes": "https://registry.acme.com/themes/{name}.json",
-    "@acme-internal": {
-      "url": "https://internal.acme.com/registry/{name}.json",
-      "headers": {
-        "Authorization": "Bearer ${INTERNAL_TOKEN}"
-      }
-    }
-  }
-}
-```
-
-This allows you to:
-
-- **Organize by type**: Separate UI components, documentation, AI resources, etc.
-- **Organize by team**: Different teams can maintain their own registries
-- **Organize by visibility**: Public vs. private resources
-- **Organize by version**: Stable vs. experimental registries
-- **No naming conflicts**: Since there's no central authority, you don't need to worry about namespace collisions
-
-### Examples of Multi-Registry Setups
-
-#### By Resource Type
-
-```json title="components.json" showLineNumbers
-{
-  "@components": "https://cdn.company.com/components/{name}.json",
-  "@hooks": "https://cdn.company.com/hooks/{name}.json",
-  "@utils": "https://cdn.company.com/utils/{name}.json",
-  "@prompts": "https://cdn.company.com/ai-prompts/{name}.json"
-}
-```
-
-#### By Team or Department
-
-```json
-{
-  "@design": "https://design.company.com/registry/{name}.json",
-  "@engineering": "https://eng.company.com/registry/{name}.json",
-  "@marketing": "https://marketing.company.com/registry/{name}.json"
-}
-```
-
-#### By Stability
-
-```json title="components.json" showLineNumbers
-{
-  "@stable": "https://registry.company.com/stable/{name}.json",
-  "@latest": "https://registry.company.com/beta/{name}.json",
-  "@experimental": "https://registry.company.com/experimental/{name}.json"
-}
-```
-
----
-
-## Built-in Registries
-
-The `@shadcn` namespace is built-in and always available:
-
-```bash
-npx shadcn@latest add @shadcn/button
-```
-
-This is equivalent to installing from the default shadcn/ui registry.
 
 ---
 

@@ -12,7 +12,7 @@ exports[`transform css vars 2`] = `
 "import * as React from "react"
 export function Foo() {
 	return <div className="bg-white hover:bg-stone-100 text-stone-50 sm:focus:text-stone-900 dark:bg-stone-950 dark:hover:bg-stone-800 dark:text-stone-900 dark:sm:focus:text-stone-50">foo</div>
-}""
+}"
     "
 `;
 
@@ -20,7 +20,7 @@ exports[`transform css vars 3`] = `
 "import * as React from "react"
 export function Foo() {
 	return <div className={cn("bg-white hover:bg-stone-100 dark:bg-stone-950 dark:hover:bg-stone-800", true && "text-stone-50 sm:focus:text-stone-900 dark:text-stone-900 dark:sm:focus:text-stone-50")}>foo</div>
-}""
+}"
     "
 `;
 
@@ -28,6 +28,6 @@ exports[`transform css vars 4`] = `
 "import * as React from "react"
 export function Foo() {
 	return <div className={cn("bg-white border border-stone-200 dark:bg-stone-950 dark:border-stone-800")}>foo</div>
-}""
+}"
     "
 `;
