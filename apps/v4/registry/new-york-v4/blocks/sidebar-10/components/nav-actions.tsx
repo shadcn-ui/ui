@@ -110,7 +110,7 @@ export function NavActions() {
       <div className="text-muted-foreground hidden font-medium md:inline-block">
         Edit Oct 08
       </div>
-      <Button variant="ghost" size="icon" className="h-7 w-7">
+      <Button variant="ghost" size="icon" className="size-7">
         <Star />
       </Button>
       <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -118,7 +118,7 @@ export function NavActions() {
           <Button
             variant="ghost"
             size="icon"
-            className="data-[state=open]:bg-accent h-7 w-7"
+            className="data-[state=open]:bg-accent size-7"
           >
             <MoreHorizontal />
           </Button>
