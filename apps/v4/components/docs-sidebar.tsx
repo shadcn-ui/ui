@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { WITH_BADGES } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
 import type { source } from "@/lib/source"
 import {
@@ -37,11 +38,6 @@ const TOP_LEVEL_SECTIONS = [
 ]
 const EXCLUDED_SECTIONS = ["installation", "dark-mode"]
 const EXCLUDED_PAGES = ["/docs", "/docs/changelog"]
-export const WITH_BADGES = [
-  "/docs/components/button",
-  "/docs/components/button-group",
-  "/docs/components/spinner",
-]
 
 export function DocsSidebar({
   tree,

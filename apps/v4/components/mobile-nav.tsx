@@ -4,10 +4,10 @@ import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 
+import { WITH_BADGES } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
-import { WITH_BADGES } from "@/components/docs-sidebar"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Popover,
