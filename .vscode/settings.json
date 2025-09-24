@@ -3,8 +3,10 @@
     { "pattern": "apps/*/" },
     { "pattern": "packages/*/" }
   ],
-  "tailwindCSS.experimental.classRegex": [
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  "tailwindCSS.classFunctions": ["cva", "cn"],
+  "vitest.debugExclude": [
+    "<node_internals>/**",
+    "**/node_modules/**",
+    "**/fixtures/**"
   ]
 }

@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
+import { Check, ChevronsUpDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { useMutationObserver } from "@/hooks/use-mutation-observer"
@@ -64,7 +64,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
             className="w-full justify-between"
           >
             {selectedModel ? selectedModel.name : "Select a model..."}
-            <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent align="end" className="w-[250px] p-0">
@@ -135,13 +135,15 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
   const ref = React.useRef<HTMLDivElement>(null)
 
   useMutationObserver(ref, (mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type === "attributes") {
-        if (mutation.attributeName === "aria-selected") {
-          onPeek(model)
-        }
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "aria-selected" &&
+        ref.current?.getAttribute("aria-selected") === "true"
+      ) {
+        onPeek(model)
       }
-    }
+    })
   })
 
   return (
@@ -149,14 +151,11 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
       key={model.id}
       onSelect={onSelect}
       ref={ref}
-      className="aria-selected:bg-primary aria-selected:text-primary-foreground"
+      className="data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground"
     >
       {model.name}
-      <CheckIcon
-        className={cn(
-          "ml-auto h-4 w-4",
-          isSelected ? "opacity-100" : "opacity-0"
-        )}
+      <Check
+        className={cn("ml-auto", isSelected ? "opacity-100" : "opacity-0")}
       />
     </CommandItem>
   )

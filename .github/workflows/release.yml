@@ -37,11 +37,11 @@ jobs:
       #   run: pnpm check
 
       - name: Build the package
-        run: pnpm build:cli
+        run: pnpm shadcn:build
 
       - name: Create Version PR or Publish to NPM
         id: changesets
-        uses: changesets/action@v1.4.1
+        uses: changesets/action@v1
         with:
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
