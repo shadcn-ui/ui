@@ -288,6 +288,127 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "button-group-demo",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-nested",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-nested.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-size",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-size.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-separator",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-separator.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-split",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-split.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-input",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-input.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-dropdown",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-dropdown.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-select",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-select.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-popover",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-popover.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-input-group",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-input-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-group-orientation",
+    type: "registry:example",
+    registryDependencies: ["button-group"],
+    files: [
+      {
+        path: "examples/button-group-orientation.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "calendar-demo",
     type: "registry:example",
     registryDependencies: ["calendar"],

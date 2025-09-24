@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-orientation",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/button-group-orientation.tsx",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { ButtonGroup } from \"@/registry/new-york-v4/ui/button-group\"\n\nexport default function ButtonGroupOrientation() {\n  return (\n    <div className=\"flex flex-col items-start gap-8\">\n      <div>\n        <h4 className=\"mb-4 text-sm font-medium\">Horizontal (default)</h4>\n        <ButtonGroup orientation=\"horizontal\">\n          <Button variant=\"outline\">Left</Button>\n          <Button variant=\"outline\">Center</Button>\n          <Button variant=\"outline\">Right</Button>\n        </ButtonGroup>\n      </div>\n      <div>\n        <h4 className=\"mb-4 text-sm font-medium\">Vertical</h4>\n        <ButtonGroup orientation=\"vertical\">\n          <Button variant=\"outline\">Top</Button>\n          <Button variant=\"outline\">Middle</Button>\n          <Button variant=\"outline\">Bottom</Button>\n        </ButtonGroup>\n      </div>\n    </div>\n  )\n}",
+      "type": "registry:example"
+    }
+  ]
+}

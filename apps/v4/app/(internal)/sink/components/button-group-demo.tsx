@@ -395,7 +395,7 @@ export function ButtonGroupDemo() {
           </Select>
           <Input />
         </ButtonGroup>
-        <ButtonGroup className="gap-2 [--radius:9999rem]">
+        <ButtonGroup className="[--radius:9999rem]">
           <ButtonGroup>
             <Button variant="outline" size="icon">
               <IconPlus />
@@ -440,7 +440,7 @@ export function ButtonGroupDemo() {
             <ArrowRightIcon />
           </Button>
         </ButtonGroup>
-        <ButtonGroup className="gap-2 [--radius:0.9rem] [--spacing:0.22rem]">
+        <ButtonGroup className="[--radius:0.9rem] [--spacing:0.22rem]">
           <ButtonGroup>
             <Button variant="outline">1</Button>
             <Button variant="outline">2</Button>
@@ -457,7 +457,7 @@ export function ButtonGroupDemo() {
             </Button>
           </ButtonGroup>
         </ButtonGroup>
-        <div className="flex gap-8">
+        <ButtonGroup>
           <ButtonGroup>
             <Button variant="outline">
               <ArrowLeftIcon />
@@ -471,7 +471,7 @@ export function ButtonGroupDemo() {
               <ArrowLeftIcon />
             </Button>
           </ButtonGroup>
-        </div>
+        </ButtonGroup>
       </div>
       <div className="flex max-w-xs flex-col gap-6">
         <Field>
@@ -504,11 +504,7 @@ export function ButtonGroupDemo() {
               <IconMinus />
             </Button>
           </ButtonGroup>
-          <ButtonGroup
-            orientation="vertical"
-            aria-label="Design tools palette"
-            className="gap-2"
-          >
+          <ButtonGroup orientation="vertical" aria-label="Design tools palette">
             <ButtonGroup orientation="vertical">
               <Button variant="outline" size="icon">
                 <SearchIcon />

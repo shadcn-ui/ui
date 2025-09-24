@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-select",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/button-group-select.tsx",
+      "content": "import { ButtonGroup } from \"@/registry/new-york-v4/ui/button-group\"\n\nexport default function ButtonGroupSelect() {\n  return <ButtonGroup />\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
