@@ -197,7 +197,7 @@ export function NotionPromptForm() {
   const hasMentions = mentions.length > 0
 
   return (
-    <form>
+    <form className="[--radius:1.2rem]">
       <Field>
         <FieldLabel htmlFor="notion-prompt" className="sr-only">
           Prompt

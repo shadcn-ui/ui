@@ -45,7 +45,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
       role="group"
       data-slot="field-group"
       className={cn(
-        "group/field-group flex flex-col gap-7 [&>[data-slot=field-group]]:gap-4",
+        "group/field-group @container/field-group flex flex-col gap-7 [&>[data-slot=field-group]]:gap-4",
         "data-[slot=checkbox-group]:gap-3",
         className
       )}
@@ -66,9 +66,9 @@ const fieldVariants = cva(
           "has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
         ],
         responsive: [
-          "flex-col [&>*]:w-full [&>.sr-only]:w-auto sm:flex-row sm:items-center sm:[&>*]:w-auto",
-          "sm:[&>[data-slot=field-label]]:flex-auto",
-          "sm:has-[>[data-slot=field-content]]:items-start sm:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+          "flex-col [&>*]:w-full [&>.sr-only]:w-auto @md/field-group:flex-row @md/field-group:items-center @md/field-group:[&>*]:w-auto",
+          "@md/field-group:[&>[data-slot=field-label]]:flex-auto",
+          "@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
         ],
       },
     },
@@ -130,7 +130,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-label"
       className={cn(
-        "flex w-fit items-center gap-2 text-sm leading-snug font-medium select-none group-data-[disabled=true]/field:opacity-50",
+        "flex w-fit items-center gap-2 text-sm leading-snug font-medium group-data-[disabled=true]/field:opacity-50",
         className
       )}
       {...props}
@@ -143,7 +143,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "text-muted-foreground text-sm font-normal",
+        "text-muted-foreground text-sm leading-normal font-normal text-balance",
         "last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
         className

@@ -77,7 +77,7 @@ export function AppearanceSettings() {
             Select the mode to use for the appearance.
           </FieldDescription>
           <RadioGroup
-            className="flex flex-col gap-4 lg:grid lg:grid-cols-3"
+            className="flex flex-col gap-4 @min-[28rem]/field-group:grid @min-[28rem]/field-group:grid-cols-3"
             defaultValue="light"
           >
             {modes.map((mode) => (
@@ -91,9 +91,12 @@ export function AppearanceSettings() {
                   alt={mode.name}
                   width={160}
                   height={90}
-                  className="hidden aspect-video object-cover md:block dark:brightness-[0.2] dark:grayscale"
+                  className="hidden aspect-video w-full object-cover @min-[28rem]/field-group:block dark:brightness-[0.2] dark:grayscale"
                 />
-                <Field orientation="horizontal">
+                <Field
+                  orientation="horizontal"
+                  className="border-t-input border-t"
+                >
                   <FieldTitle>{mode.name}</FieldTitle>
                   <RadioGroupItem id={mode.value} value={mode.value} />
                 </Field>
