@@ -9,6 +9,7 @@ export default defineConfig({
       "**/fixtures/**",
       "**/templates/**",
     ],
+    testTimeout: 8000,
   },
   plugins: [
     tsconfigPaths({

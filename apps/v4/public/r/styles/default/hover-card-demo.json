@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card-demo",
+  "type": "registry:example",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "registryDependencies": [
+    "hover-card"
+  ],
+  "files": [
+    {
+      "path": "examples/hover-card-demo.tsx",
+      "content": "import { CalendarDays } from \"lucide-react\"\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/default/ui/avatar\"\nimport { Button } from \"@/registry/default/ui/button\"\nimport {\n  HoverCard,\n  HoverCardContent,\n  HoverCardTrigger,\n} from \"@/registry/default/ui/hover-card\"\n\nexport default function HoverCardDemo() {\n  return (\n    <HoverCard>\n      <HoverCardTrigger asChild>\n        <Button variant=\"link\">@nextjs</Button>\n      </HoverCardTrigger>\n      <HoverCardContent className=\"w-80\">\n        <div className=\"flex justify-between space-x-4\">\n          <Avatar>\n            <AvatarImage src=\"https://github.com/vercel.png\" />\n            <AvatarFallback>VC</AvatarFallback>\n          </Avatar>\n          <div className=\"space-y-1\">\n            <h4 className=\"text-sm font-semibold\">@nextjs</h4>\n            <p className=\"text-sm\">\n              The React Framework – created and maintained by @vercel.\n            </p>\n            <div className=\"flex items-center pt-2\">\n              <CalendarDays className=\"mr-2 h-4 w-4 opacity-70\" />{\" \"}\n              <span className=\"text-xs text-muted-foreground\">\n                Joined December 2021\n              </span>\n            </div>\n          </div>\n        </div>\n      </HoverCardContent>\n    </HoverCard>\n  )\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

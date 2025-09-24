@@ -98,7 +98,7 @@ To run the CLI locally, you can follow the workflow:
 1. Start by running the registry (main site) to make sure the components are up to date:
 
    ```bash
-   pnpm www:dev
+   pnpm v4:dev
    ```
 
 2. Run the development script for the CLI:
