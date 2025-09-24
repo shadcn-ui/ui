@@ -95,7 +95,7 @@ export function AppearanceSettings() {
                 />
                 <Field
                   orientation="horizontal"
-                  className="border-t-input border-t"
+                  className="@min-[28rem]/field-group:border-t-input @min-[28rem]/field-group:border-t"
                 >
                   <FieldTitle>{mode.name}</FieldTitle>
                   <RadioGroupItem id={mode.value} value={mode.value} />

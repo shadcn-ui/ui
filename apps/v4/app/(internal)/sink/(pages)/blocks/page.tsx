@@ -7,7 +7,7 @@ import { NotionPromptForm } from "./notion-prompt-form"
 
 export default function BlocksPage() {
   return (
-    <div className="@container flex flex-1 flex-col gap-12 p-4 md:p-6">
+    <div className="@container flex flex-1 flex-col gap-12 p-4">
       <div className="grid flex-1 gap-12 @3xl:grid-cols-2 @5xl:grid-cols-3 @[120rem]:grid-cols-4 [&>div]:max-w-lg">
         <div className="flex flex-col gap-12">
           <NotionPromptForm />
