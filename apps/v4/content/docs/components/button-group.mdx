@@ -113,7 +113,72 @@ export function ButtonGroupTextDemo() {
 
 ---
 
+## Accessibility
+
+- The `ButtonGroup` component has the `role` attribute set to `group`.
+- Use <Kbd>Tab</Kbd> to navigate between the buttons in the group.
+- Use `aria-label` or `aria-labelledby` to label the button group.
+
+```tsx showLineNumbers
+<ButtonGroup aria-label="Button group">
+  <Button>Button 1</Button>
+  <Button>Button 2</Button>
+</ButtonGroup>
+```
+
+---
+
+## ButtonGroup vs ToggleGroup
+
+- Use the `ButtonGroup` component when you want to group buttons that perform an action.
+- Use the `ToggleGroup` component when you want to group buttons that toggle a state.
+
+---
+
 ## Examples
+
+### Orientation
+
+The `ButtonGroup` component has an `orientation` prop that can be used to change the orientation of the button group.
+
+<ComponentPreview name="button-group-orientation" />
+
+```tsx showLineNumbers
+import { ButtonGroup } from "@/components/ui/button-group"
+
+export function ButtonGroupOrientation() {
+  return (
+    <ButtonGroup orientation="vertical">
+      <Button>Button 1</Button>
+      <Button>Button 2</Button>
+    </ButtonGroup>
+  )
+}
+```
+
+### Size
+
+The `ButtonGroup` component does not have a size prop, but you can control the size of the buttons within the group by using the `size` prop on the individual buttons.
+
+<ComponentPreview name="button-group-size" />
+
+```tsx showLineNumbers
+import { IconPlus } from "@tabler/icons-react"
+
+import { ButtonGroup } from "@/components/ui/button-group"
+
+export function ButtonGroupSizes() {
+  return (
+    <ButtonGroup>
+      <Button size="sm">Button 1</Button>
+      <Button size="sm">Button 2</Button>
+      <Button size="icon-sm">
+        <IconPlus />
+      </Button>
+    </ButtonGroup>
+  )
+}
+```
 
 ### Nested
 
@@ -135,30 +200,6 @@ export function ButtonGroupNested() {
         <Button>Button 3</Button>
         <Button>Button 4</Button>
       </ButtonGroup>
-    </ButtonGroup>
-  )
-}
-```
-
-### Sizes
-
-The `ButtonGroup` component does not have a size prop, but you can control the size of the buttons within the group by using the `size` prop on the individual buttons.
-
-<ComponentPreview name="button-group-size" />
-
-```tsx showLineNumbers
-import { IconPlus } from "@tabler/icons-react"
-
-import { ButtonGroup } from "@/components/ui/button-group"
-
-export function ButtonGroupSizes() {
-  return (
-    <ButtonGroup>
-      <Button size="sm">Button 1</Button>
-      <Button size="sm">Button 2</Button>
-      <Button size="icon-sm">
-        <IconPlus />
-      </Button>
     </ButtonGroup>
   )
 }

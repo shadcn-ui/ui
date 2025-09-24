@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
+import { WITH_BADGES } from "@/components/docs-sidebar"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Popover,
@@ -136,8 +137,12 @@ export function MobileNav({
                               key={`${item.url}-${index}`}
                               href={item.url}
                               onOpenChange={setOpen}
+                              className="flex items-center gap-2"
                             >
-                              {item.name}
+                              {item.name}{" "}
+                              {WITH_BADGES.includes(item.url) && (
+                                <span className="flex size-2 rounded-full bg-blue-500" />
+                              )}
                             </MobileLink>
                           )
                         }

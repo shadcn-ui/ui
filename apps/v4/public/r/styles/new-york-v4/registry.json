@@ -3575,6 +3575,17 @@
       ]
     },
     {
+      "name": "button-default",
+      "type": "registry:example",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-default.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "button-secondary",
       "type": "registry:example",
       "registryDependencies": ["button"],
@@ -4597,6 +4608,105 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/sonner-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-demo",
+      "type": "registry:example",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-button",
+      "type": "registry:example",
+      "registryDependencies": ["spinner", "button"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-button.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-badge",
+      "type": "registry:example",
+      "registryDependencies": ["spinner", "badge"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-badge.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-input-group",
+      "type": "registry:example",
+      "registryDependencies": ["spinner", "button", "input"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-input-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-empty",
+      "type": "registry:example",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-empty.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-color",
+      "type": "registry:example",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-color.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-custom",
+      "type": "registry:example",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-custom.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-size",
+      "type": "registry:example",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-size.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-item",
+      "type": "registry:example",
+      "registryDependencies": ["spinner"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-item.tsx",
           "type": "registry:example"
         }
       ]

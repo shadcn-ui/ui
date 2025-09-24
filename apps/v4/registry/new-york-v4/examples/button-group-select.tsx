@@ -48,7 +48,7 @@ export default function ButtonGroupSelect() {
         <Input placeholder="10.00" pattern="[0-9]*" />
       </ButtonGroup>
       <ButtonGroup>
-        <Button aria-label="Send" size="icon">
+        <Button aria-label="Send" size="icon" variant="outline">
           <ArrowRightIcon />
         </Button>
       </ButtonGroup>

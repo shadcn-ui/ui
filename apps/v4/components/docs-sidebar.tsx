@@ -37,6 +37,11 @@ const TOP_LEVEL_SECTIONS = [
 ]
 const EXCLUDED_SECTIONS = ["installation", "dark-mode"]
 const EXCLUDED_PAGES = ["/docs", "/docs/changelog"]
+export const WITH_BADGES = [
+  "/docs/components/button",
+  "/docs/components/button-group",
+  "/docs/components/spinner",
+]
 
 export function DocsSidebar({
   tree,
@@ -118,6 +123,9 @@ export function DocsSidebar({
                               <Link href={item.url}>
                                 <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
+                                {WITH_BADGES.includes(item.url) && (
+                                  <span className="flex size-2 rounded-full bg-blue-500" />
+                                )}
                               </Link>
                             </SidebarMenuButton>
                           </SidebarMenuItem>

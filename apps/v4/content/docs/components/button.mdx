@@ -5,6 +5,13 @@ featured: true
 component: true
 ---
 
+<Callout variant="info">
+**Updated:** We have updated the button component to add new sizes. See the
+[changelog](/docs/components/button#changelog) for more details. Follow the
+instructions to update your project.
+
+</Callout>
+
 <ComponentPreview name="button-demo" description="A button" />
 
 ## Installation
@@ -73,22 +80,35 @@ export function LinkAsButton() {
 }
 ```
 
+---
+
+## API Reference
+
+### Button
+
+The `Button` component is a wrapper around the `button` element that adds a variety of styles and functionality.
+
+| Prop      | Type                                                                          | Default     |
+| --------- | ----------------------------------------------------------------------------- | ----------- |
+| `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"` | `"default"` |
+| `size`    | `"default" \| "sm" \| "lg" \| "icon" \| "icon-sm" \| "icon-lg"`               | `"default"` |
+| `asChild` | `boolean`                                                                     | `false`     |
+
+---
+
+## Button Group
+
+To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/button-group) documentation for more details.
+
+<ComponentPreview name="button-group-demo" />
+
+---
+
 ## Examples
 
 ### Default
 
-<ComponentPreview name="button-demo" description="A primary button" />
-
-### Secondary
-
-<ComponentPreview name="button-secondary" description="A secondary button" />
-
-### Destructive
-
-<ComponentPreview
-  name="button-destructive"
-  description="A destructive button"
-/>
+<ComponentPreview name="button-default" description="A primary button" />
 
 ### Outline
 
@@ -97,11 +117,22 @@ export function LinkAsButton() {
   description="A button using the outline variant."
 />
 
+### Secondary
+
+<ComponentPreview name="button-secondary" description="A secondary button" />
+
 ### Ghost
 
 <ComponentPreview
   name="button-ghost"
   description="A button using the ghost variant"
+/>
+
+### Destructive
+
+<ComponentPreview
+  name="button-destructive"
+  description="A destructive button"
 />
 
 ### Link
@@ -119,9 +150,30 @@ export function LinkAsButton() {
 
 <ComponentPreview name="button-with-icon" description="A button with an icon" />
 
-### Loading
+### Spinner
 
 <ComponentPreview
   name="button-loading"
   description="A button with a loading state."
 />
+
+---
+
+## Changelog
+
+### 2025-09-24 New sizes
+
+We have added two new sizes to the button component: `icon-sm` and `icon-lg`. These sizes are used to create icon buttons. To add them, edit `button.tsx` and add the following code under `size` in `buttonVariants`:
+
+```tsx showLineNumbers title="components/ui/button.tsx"
+const buttonVariants = cva("...", {
+  variants: {
+    size: {
+      // ...
+      "icon-sm": "size-8",
+      "icon-lg": "size-10",
+      // ...
+    },
+  },
+})
+```
