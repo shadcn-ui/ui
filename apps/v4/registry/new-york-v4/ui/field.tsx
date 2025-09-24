@@ -1,3 +1,5 @@
+"use client"
+
 import { useMemo } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
@@ -42,7 +44,6 @@ function FieldLegend({
 function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      role="group"
       data-slot="field-group"
       className={cn(
         "group/field-group @container/field-group flex flex-col gap-7 [&>[data-slot=field-group]]:gap-4",
@@ -143,7 +144,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "text-muted-foreground text-sm leading-normal font-normal text-balance",
+        "text-muted-foreground text-sm leading-normal font-normal group-has-[[data-orientation=horizontal]]/field:text-balance",
         "last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5",
         "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
         className

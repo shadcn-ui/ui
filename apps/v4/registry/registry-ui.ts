@@ -329,6 +329,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "item",
+    type: "registry:ui",
+    registryDependencies: ["separator"],
+    files: [
+      {
+        path: "ui/item.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "label",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-label"],

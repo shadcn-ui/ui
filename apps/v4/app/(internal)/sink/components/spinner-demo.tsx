@@ -20,7 +20,7 @@ import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
 export function SpinnerDemo() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex w-full flex-col gap-12">
       <div className="flex items-center gap-6">
         <Spinner />
         <Spinner className="size-8" />

@@ -7,6 +7,156 @@
   --chart-5: var(--color-blue-800);
 }
 
+.theme-mono .theme-container,
+.theme-mono [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-mono);
+  --primary: var(--color-stone-600);
+  --primary-foreground: var(--color-stone-50);
+  --chart-1: var(--color-stone-300);
+  --chart-2: var(--color-stone-500);
+  --chart-3: var(--color-stone-600);
+  --chart-4: var(--color-stone-700);
+  --chart-5: var(--color-stone-800);
+  --sidebar-primary: var(--color-stone-600);
+  --sidebar-primary-foreground: var(--color-stone-50);
+  --sidebar-ring: var(--color-stone-400);
+
+  @variant dark {
+    --primary: var(--color-stone-500);
+    --primary-foreground: var(--color-stone-50);
+    --sidebar-primary: var(--color-stone-500);
+    --sidebar-primary-foreground: var(--color-stone-50);
+    --sidebar-ring: var(--color-stone-900);
+  }
+
+  @media (min-width: 1024px) {
+    --font-sans: var(--font-mono);
+    --radius: 0.45em;
+    --text-lg: 1rem;
+    --text-xl: 1.1rem;
+    --text-2xl: 1.2rem;
+    --text-3xl: 1.3rem;
+    --text-4xl: 1.4rem;
+    --text-5xl: 1.5rem;
+    --text-6xl: 1.6rem;
+    --text-7xl: 1.7rem;
+    --text-8xl: 1.8rem;
+    --text-base: 0.85rem;
+    --text-sm: 0.8rem;
+    --spacing: 0.222222rem;
+  }
+
+  .rounded-xs,
+  .rounded-sm,
+  .rounded-md,
+  .rounded-lg,
+  .rounded-xl {
+    border-radius: 0;
+  }
+
+  .shadow-xs,
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl {
+    box-shadow: none;
+  }
+
+  [data-slot="toggle-group"],
+  [data-slot="toggle-group-item"],
+  [data-slot="checkbox"],
+  [data-slot="radio"],
+  [data-slot="switch"],
+  [data-slot="switch-thumb"] {
+    @apply !rounded-none !shadow-none;
+  }
+}
+
+.theme-scaled .theme-container,
+.theme-scaled [data-radix-popper-content-wrapper] {
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+
+  @media (min-width: 1024px) {
+    --radius: 0.45em;
+    --text-lg: 1rem;
+    --text-xl: 1.1rem;
+    --text-2xl: 1.2rem;
+    --text-3xl: 1.3rem;
+    --text-4xl: 1.4rem;
+    --text-5xl: 1.5rem;
+    --text-6xl: 1.6rem;
+    --text-7xl: 1.7rem;
+    --text-8xl: 1.8rem;
+    --text-base: 0.85rem;
+    --text-sm: 0.8rem;
+    --spacing: 0.2rem;
+  }
+
+  [data-slot="select-trigger"],
+  [data-slot="toggle-group-item"] {
+    --spacing: 0.2rem;
+  }
+
+  [data-slot="card"] {
+    border-radius: var(--radius);
+    padding-block: calc(var(--spacing) * 4);
+    gap: calc(var(--spacing) * 2);
+  }
+
+  [data-slot="card"].pb-0 {
+    padding-bottom: 0;
+  }
+}
+
+.theme-rounded-none .theme-container,
+.theme-rounded-none [data-radix-popper-content-wrapper] {
+  --radius: 0;
+}
+
+.theme-rounded-small .theme-container,
+.theme-rounded-small [data-radix-popper-content-wrapper] {
+  --radius: 0.4rem;
+}
+
+.theme-rounded-medium .theme-container,
+.theme-rounded-medium [data-radix-popper-content-wrapper] {
+  --radius: 0.65rem;
+}
+
+.theme-rounded-large .theme-container,
+.theme-rounded-large [data-radix-popper-content-wrapper] {
+  --radius: 1rem;
+}
+
+.theme-rounded-full .theme-container,
+.theme-rounded-full [data-radix-popper-content-wrapper] {
+  --radius: 1.2rem;
+}
+
+.theme-inter .theme-container,
+.theme-inter [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-inter);
+}
+
+.theme-noto-sans .theme-container,
+.theme-noto-sans [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-noto-sans);
+}
+
+.theme-nunito-sans .theme-container,
+.theme-nunito-sans [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-nunito-sans);
+}
+
+.theme-figtree .theme-container,
+.theme-figtree [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-figtree);
+}
+
 .theme-blue .theme-container,
 .theme-blue [data-radix-popper-content-wrapper] {
   --primary: var(--color-blue-600);
@@ -170,111 +320,6 @@
     --sidebar-primary: var(--color-teal-500);
     --sidebar-primary-foreground: var(--color-teal-50);
     --sidebar-ring: var(--color-teal-900);
-  }
-}
-
-.theme-mono .theme-container,
-.theme-mono [data-radix-popper-content-wrapper] {
-  --font-sans: var(--font-mono);
-  --primary: var(--color-stone-600);
-  --primary-foreground: var(--color-stone-50);
-  --chart-1: var(--color-stone-300);
-  --chart-2: var(--color-stone-500);
-  --chart-3: var(--color-stone-600);
-  --chart-4: var(--color-stone-700);
-  --chart-5: var(--color-stone-800);
-  --sidebar-primary: var(--color-stone-600);
-  --sidebar-primary-foreground: var(--color-stone-50);
-  --sidebar-ring: var(--color-stone-400);
-
-  @variant dark {
-    --primary: var(--color-stone-500);
-    --primary-foreground: var(--color-stone-50);
-    --sidebar-primary: var(--color-stone-500);
-    --sidebar-primary-foreground: var(--color-stone-50);
-    --sidebar-ring: var(--color-stone-900);
-  }
-
-  @media (min-width: 1024px) {
-    --font-sans: var(--font-mono);
-    --radius: 0.45em;
-    --text-lg: 1rem;
-    --text-xl: 1.1rem;
-    --text-2xl: 1.2rem;
-    --text-3xl: 1.3rem;
-    --text-4xl: 1.4rem;
-    --text-5xl: 1.5rem;
-    --text-6xl: 1.6rem;
-    --text-7xl: 1.7rem;
-    --text-8xl: 1.8rem;
-    --text-base: 0.85rem;
-    --text-sm: 0.8rem;
-    --spacing: 0.222222rem;
-  }
-
-  .rounded-xs,
-  .rounded-sm,
-  .rounded-md,
-  .rounded-lg,
-  .rounded-xl {
-    border-radius: 0;
-  }
-
-  .shadow-xs,
-  .shadow-sm,
-  .shadow-md,
-  .shadow-lg,
-  .shadow-xl {
-    box-shadow: none;
-  }
-
-  [data-slot="toggle-group"],
-  [data-slot="toggle-group-item"],
-  [data-slot="checkbox"],
-  [data-slot="radio"],
-  [data-slot="switch"],
-  [data-slot="switch-thumb"] {
-    @apply !rounded-none !shadow-none;
-  }
-}
-
-.theme-scaled .theme-container,
-.theme-scaled [data-radix-popper-content-wrapper] {
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-
-  @media (min-width: 1024px) {
-    --radius: 0.45em;
-    --text-lg: 1rem;
-    --text-xl: 1.1rem;
-    --text-2xl: 1.2rem;
-    --text-3xl: 1.3rem;
-    --text-4xl: 1.4rem;
-    --text-5xl: 1.5rem;
-    --text-6xl: 1.6rem;
-    --text-7xl: 1.7rem;
-    --text-8xl: 1.8rem;
-    --text-base: 0.85rem;
-    --text-sm: 0.8rem;
-    --spacing: 0.2rem;
-  }
-
-  [data-slot="select-trigger"],
-  [data-slot="toggle-group-item"] {
-    --spacing: 0.2rem;
-  }
-
-  [data-slot="card"] {
-    border-radius: var(--radius);
-    padding-block: calc(var(--spacing) * 4);
-    gap: calc(var(--spacing) * 2);
-  }
-
-  [data-slot="card"].pb-0 {
-    padding-bottom: 0;
   }
 }
 

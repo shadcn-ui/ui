@@ -33,7 +33,7 @@ import {
 
 export function EmptyDemo() {
   return (
-    <div className="grid gap-8">
+    <div className="grid w-full gap-8">
       <Empty className="min-h-[80svh]">
         <EmptyHeader>
           <EmptyIcon>

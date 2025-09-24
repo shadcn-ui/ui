@@ -31,6 +31,7 @@ import { HoverCardDemo } from "./components/hover-card-demo"
 import { InputDemo } from "./components/input-demo"
 import { InputGroupDemo } from "./components/input-group-demo"
 import { InputOTPDemo } from "./components/input-otp-demo"
+import { ItemDemo } from "./components/item-demo"
 import { KbdDemo } from "./components/kbd-demo"
 import { LabelDemo } from "./components/label-demo"
 import { MenubarDemo } from "./components/menubar-demo"
@@ -244,6 +245,13 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: InputOTPDemo,
     type: "registry:ui",
     href: "/sink/input-otp",
+  },
+  item: {
+    name: "Item",
+    component: ItemDemo,
+    type: "registry:ui",
+    href: "/sink/item",
+    label: "New",
   },
   kbd: {
     name: "Kbd",

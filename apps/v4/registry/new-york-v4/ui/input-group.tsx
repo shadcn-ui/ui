@@ -22,7 +22,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 
         // Child input overrides.
         "[&>input]:flex-1 [&>input]:rounded-none [&>input]:border-0 [&>input]:bg-transparent [&>input]:shadow-none dark:[&>input]:bg-transparent [&>input:focus-visible]:ring-0",
-        "[&>textarea]:flex-1 [&>textarea]:resize-none [&>textarea]:rounded-none [&>textarea]:border-0 [&>textarea]:bg-transparent [&>textarea]:shadow-none dark:[&>textarea]:bg-transparent [&>textarea:focus-visible]:ring-0",
+        "[&>textarea]:flex-1 [&>textarea]:resize-none [&>textarea]:rounded-none [&>textarea]:border-0 [&>textarea]:bg-transparent [&>textarea]:py-3 [&>textarea]:shadow-none dark:[&>textarea]:bg-transparent [&>textarea:focus-visible]:ring-0",
 
         // Focus state.
         "has-[input:focus-visible]:border-ring has-[input:focus-visible]:ring-ring/50 has-[input:focus-visible]:ring-[3px]",
@@ -85,7 +85,7 @@ const inputGroupButtonVariants = cva("text-sm shadow-none", {
   variants: {
     size: {
       default:
-        "h-6 gap-1 px-1.5 has-[>svg:first-child]:pl-2 has-[>svg:last-child]:pr-2 rounded-[calc(var(--radius)-5px)]",
+        "h-6 gap-1 px-2 has-[>svg:first-child]:pl-2 has-[>svg:last-child]:pr-2 rounded-[calc(var(--radius)-5px)]",
       icon: "size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
       sm: "h-7 px-2.5 has-[>svg:first-child]:pl-2 has-[>svg:last-child]:pr-2 gap-1.5 rounded-md",
       "icon-sm": "size-7 p-0 has-[>svg]:p-0",

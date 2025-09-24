@@ -14,18 +14,22 @@ export const metadata: Metadata = {
 export default function SinkPage() {
   return (
     <div className="@container grid flex-1 gap-4 p-4">
-      {Object.entries(componentRegistry).map(([key, component]) => {
-        const Component = component.component
-        return (
-          <ComponentWrapper
-            key={key}
-            name={key}
-            className={component.className || ""}
-          >
-            <Component />
-          </ComponentWrapper>
-        )
-      })}
+      {Object.entries(componentRegistry)
+        .filter(([, component]) => {
+          return component.type === "registry:ui"
+        })
+        .map(([key, component]) => {
+          const Component = component.component
+          return (
+            <ComponentWrapper
+              key={key}
+              name={key}
+              className={component.className || ""}
+            >
+              <Component />
+            </ComponentWrapper>
+          )
+        })}
     </div>
   )
 }

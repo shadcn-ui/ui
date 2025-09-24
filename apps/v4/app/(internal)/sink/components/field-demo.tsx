@@ -89,7 +89,7 @@ import {
 
 export function FieldDemo() {
   return (
-    <div className="@container -m-6">
+    <div className="@container w-full">
       <div className="bg-muted grid gap-4 p-4 @3xl:grid-cols-2 @5xl:grid-cols-3 @[120rem]:grid-cols-4 @[140rem]:grid-cols-5">
         <div className="flex flex-col gap-6">
           <BasicFields />
