@@ -273,9 +273,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                               <Link href={item.href}>
                                 <span>{item.name}</span>
                                 {item.label && (
-                                  <SidebarMenuBadge>
-                                    {item.label}
-                                  </SidebarMenuBadge>
+                                  <span className="flex size-2 rounded-full bg-blue-500" />
                                 )}
                               </Link>
                             </SidebarMenuSubButton>
