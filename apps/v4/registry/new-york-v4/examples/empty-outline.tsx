@@ -1,3 +1,5 @@
+import { IconCloud } from "@tabler/icons-react"
+
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Empty,
@@ -7,23 +9,22 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/registry/new-york-v4/ui/empty"
-import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
-export default function SpinnerEmpty() {
+export default function EmptyOutline() {
   return (
-    <Empty className="w-full">
+    <Empty className="border border-dashed">
       <EmptyHeader>
         <EmptyMedia variant="icon">
-          <Spinner />
+          <IconCloud />
         </EmptyMedia>
-        <EmptyTitle>Processing your request</EmptyTitle>
+        <EmptyTitle>Cloud Storage Empty</EmptyTitle>
         <EmptyDescription>
-          Please wait while we process your request. Do not refresh the page.
+          Upload files to your cloud storage to access them anywhere.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
         <Button variant="outline" size="sm">
-          Cancel
+          Upload Files
         </Button>
       </EmptyContent>
     </Empty>

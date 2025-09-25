@@ -776,6 +776,83 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "empty-demo",
+    type: "registry:example",
+    registryDependencies: ["empty", "button"],
+    files: [
+      {
+        path: "examples/empty-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-icon",
+    type: "registry:example",
+    registryDependencies: ["empty"],
+    files: [
+      {
+        path: "examples/empty-icon.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-avatar",
+    type: "registry:example",
+    registryDependencies: ["empty", "button", "avatar"],
+    files: [
+      {
+        path: "examples/empty-avatar.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-avatar-group",
+    type: "registry:example",
+    registryDependencies: ["empty", "button", "avatar"],
+    files: [
+      {
+        path: "examples/empty-avatar-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-input-group",
+    type: "registry:example",
+    registryDependencies: ["empty", "button", "input"],
+    files: [
+      {
+        path: "examples/empty-input-group.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-outline",
+    type: "registry:example",
+    registryDependencies: ["empty", "button"],
+    files: [
+      {
+        path: "examples/empty-outline.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "empty-background",
+    type: "registry:example",
+    registryDependencies: ["empty"],
+    files: [
+      {
+        path: "examples/empty-background.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "drawer-dialog",
     type: "registry:example",
     registryDependencies: ["drawer", "dialog"],

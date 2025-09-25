@@ -77,6 +77,13 @@ You can nest multiple button groups to create a more complex layout with spacing
 | ------------- | ---------------------------- | -------------- |
 | `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
 
+```tsx
+<ButtonGroup>
+  <Button>Button 1</Button>
+  <Button>Button 2</Button>
+</ButtonGroup>
+```
+
 ### ButtonGroupSeparator
 
 The `ButtonGroupSeparator` component is a separator that separates the buttons in the button group. Buttons with variant `outline` generally do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
@@ -85,6 +92,14 @@ The `ButtonGroupSeparator` component is a separator that separates the buttons i
 | ------------- | ---------------------------- | ------------ |
 | `orientation` | `"horizontal" \| "vertical"` | `"vertical"` |
 
+```tsx
+<ButtonGroup>
+  <Button>Button 1</Button>
+  <ButtonGroupSeparator />
+  <Button>Button 2</Button>
+</ButtonGroup>
+```
+
 ### ButtonGroupText
 
 Use this component to display text within a button group.
@@ -92,6 +107,13 @@ Use this component to display text within a button group.
 | Prop      | Type      | Default |
 | --------- | --------- | ------- |
 | `asChild` | `boolean` | `false` |
+
+```tsx
+<ButtonGroup>
+  <ButtonGroupText>Text</ButtonGroupText>
+  <Button>Button</Button>
+</ButtonGroup>
+```
 
 You can use the `asChild` prop to render a custom component as the text, for example a label.
 

@@ -7,7 +7,7 @@ import {
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
-  EmptyIcon,
+  EmptyMedia,
   EmptyTitle,
 } from "@/registry/new-york-v4/ui/empty"
 import { Field, FieldLabel } from "@/registry/new-york-v4/ui/field"
@@ -78,9 +78,9 @@ export function SpinnerDemo() {
       </div>
       <Empty className="min-h-[80svh]">
         <EmptyHeader>
-          <EmptyIcon>
+          <EmptyMedia variant="icon">
             <Spinner />
-          </EmptyIcon>
+          </EmptyMedia>
           <EmptyTitle>No projects yet</EmptyTitle>
           <EmptyDescription>
             You haven&apos;t created any projects yet. Get started by creating

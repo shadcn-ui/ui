@@ -18,14 +18,6 @@ export default function SpinnerItem() {
           <Spinner />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Loading...</ItemTitle>
-        </ItemContent>
-      </Item>
-      <Item variant="outline">
-        <ItemMedia variant="icon">
-          <Spinner />
-        </ItemMedia>
-        <ItemContent>
           <ItemTitle>Downloading...</ItemTitle>
           <ItemDescription>129 MB / 1000 MB</ItemDescription>
         </ItemContent>
@@ -37,14 +29,6 @@ export default function SpinnerItem() {
         <div className="basis-full">
           <Progress value={50} />
         </div>
-      </Item>
-      <Item variant="muted">
-        <ItemMedia>
-          <Spinner />
-        </ItemMedia>
-        <ItemContent>
-          <ItemTitle>Processing payment...</ItemTitle>
-        </ItemContent>
       </Item>
     </div>
   )

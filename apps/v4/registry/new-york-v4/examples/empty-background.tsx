@@ -1,3 +1,6 @@
+import { IconBell } from "@tabler/icons-react"
+import { RefreshCcwIcon } from "lucide-react"
+
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Empty,
@@ -7,23 +10,23 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/registry/new-york-v4/ui/empty"
-import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
-export default function SpinnerEmpty() {
+export default function EmptyMuted() {
   return (
-    <Empty className="w-full">
+    <Empty className="from-muted/50 to-background h-full bg-gradient-to-b from-30%">
       <EmptyHeader>
         <EmptyMedia variant="icon">
-          <Spinner />
+          <IconBell />
         </EmptyMedia>
-        <EmptyTitle>Processing your request</EmptyTitle>
+        <EmptyTitle>No Notifications</EmptyTitle>
         <EmptyDescription>
-          Please wait while we process your request. Do not refresh the page.
+          You&apos;re all caught up. New notifications will appear here.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
         <Button variant="outline" size="sm">
-          Cancel
+          <RefreshCcwIcon />
+          Refresh
         </Button>
       </EmptyContent>
     </Empty>

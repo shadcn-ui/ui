@@ -1,0 +1,329 @@
+---
+title: Empty
+description: Use the Empty component to display a empty state.
+---
+
+<ComponentPreview name="empty-demo" className="[&_.preview]:p-0" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add empty
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-slot
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="empty" title="components/ui/empty.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty"
+```
+
+```tsx
+<Empty>
+  <EmptyHeader>
+    <EmptyMedia variant="icon">
+      <Icon />
+    </EmptyMedia>
+  </EmptyHeader>
+  <EmptyTitle>No data</EmptyTitle>
+  <EmptyDescription>No data found</EmptyDescription>
+  <EmptyContent>
+    <Button>Add data</Button>
+  </EmptyContent>
+</Empty>
+```
+
+## API Reference
+
+### Empty
+
+The main component of the empty state. Wraps the `EmptyHeader` and `EmptyContent` components.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<Empty>
+  <EmptyHeader />
+  <EmptyContent />
+</Empty>
+```
+
+### EmptyHeader
+
+The `EmptyHeader` component wraps the empty media, title, and description.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<EmptyHeader>
+  <EmptyMedia />
+  <EmptyTitle />
+  <EmptyDescription />
+</EmptyHeader>
+```
+
+### EmptyMedia
+
+Use the `EmptyMedia` component to display the media of the empty state such as an icon or an image. You can also use it to display other components such as an avatar.
+
+| Prop        | Type                  | Default   |
+| ----------- | --------------------- | --------- |
+| `variant`   | `"default" \| "icon"` | `default` |
+| `className` | `string`              |           |
+
+```tsx
+<EmptyMedia variant="icon">
+  <Icon />
+</EmptyMedia>
+```
+
+```tsx
+<EmptyMedia>
+  <Avatar>
+    <AvatarImage src="..." />
+    <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+</EmptyMedia>
+```
+
+### EmptyTitle
+
+Use the `EmptyTitle` component to display the title of the empty state.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<EmptyTitle>No data</EmptyTitle>
+```
+
+### EmptyDescription
+
+Use the `EmptyDescription` component to display the description of the empty state.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### EmptyContent
+
+Use the `EmptyContent` component to display the content of the empty state such as a button, input or a link.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<EmptyContent>
+  <Button>Add data</Button>
+</EmptyContent>
+```
+
+## Examples
+
+### Outline
+
+Use the `border` and `rounded-*` utilities to create a outline empty state.
+
+<ComponentPreview name="empty-outline" className="[&_.preview]:p-0" />
+
+```tsx showLineNumbers
+import { Button } from "@/components/ui/button"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@/components/ui/empty"
+
+export function EmptyOutline() {
+  return (
+    <Empty className="rounded-xl border">
+      <EmptyHeader>
+        <EmptyTitle>No data</EmptyTitle>
+        <EmptyDescription>Add your default data here.</EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <Button>Add data</Button>
+      </EmptyContent>
+    </Empty>
+  )
+}
+```
+
+### Background
+
+Use the `bg-*` and `bg-gradient-*` utilities to add a background to the empty state.
+
+<ComponentPreview name="empty-background" className="[&_.preview]:p-0" />
+
+```tsx showLineNumbers
+import { RefreshCcwIcon } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty"
+
+export function EmptyBackground() {
+  return (
+    <Empty className="from-muted/50 to-background h-full bg-gradient-to-b from-30%">
+      <EmptyHeader>
+        <EmptyMedia variant="icon">
+          <IconBell />
+        </EmptyMedia>
+        <EmptyTitle>No notifications</EmptyTitle>
+        <EmptyDescription>
+          You&apos;re all caught up. New notifications will appear here.
+        </EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <Button variant="outline" size="sm">
+          <RefreshCcwIcon />
+          Refresh
+        </Button>
+      </EmptyContent>
+    </Empty>
+  )
+}
+```
+
+### Avatar
+
+Use the `EmptyMedia` component to display an avatar in the empty state.
+
+<ComponentPreview name="empty-avatar" className="[&_.preview]:p-0" />
+
+```tsx showLineNumbers
+export function EmptyAvatar() {
+  return (
+    <Empty>
+      <EmptyHeader>
+        <EmptyMedia>
+          <Avatar>
+            <AvatarImage src="..." />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </EmptyMedia>
+      </EmptyHeader>
+    </Empty>
+  )
+}
+```
+
+### Avatar Group
+
+Use the `EmptyMedia` component to display an avatar group in the empty state.
+
+<ComponentPreview name="empty-avatar-group" className="[&_.preview]:p-0" />
+
+```tsx showLineNumbers
+export function EmptyAvatarGroup() {
+  return (
+    <Empty>
+      <EmptyHeader>
+        <EmptyMedia variant="default">
+          <div className="flex -space-x-2">
+            <Avatar className="border-background h-8 w-8 border-2 opacity-50">
+              <AvatarImage src="..." />
+              <AvatarFallback>JD</AvatarFallback>
+            </Avatar>
+            <Avatar className="border-background h-8 w-8 border-2 opacity-30">
+              <AvatarImage src="..." />
+              <AvatarFallback>AB</AvatarFallback>
+            </Avatar>
+          </div>
+        </EmptyMedia>
+      </EmptyHeader>
+    </Empty>
+  )
+}
+```
+
+### InputGroup
+
+You can add an `InputGroup` component to the `EmptyContent` component.
+
+<ComponentPreview name="empty-input-group" className="[&_.preview]:p-0" />
+
+```tsx showLineNumbers
+import { SearchIcon } from "lucide-react"
+
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@/components/ui/empty"
+import { Input } from "@/components/ui/input"
+import { InputGroup, InputGroupAddon } from "@/components/ui/input-group"
+
+export function EmptyInputGroup() {
+  return (
+    <Empty>
+      <EmptyHeader>
+        <EmptyTitle>No data</EmptyTitle>
+        <EmptyDescription>Add your default data here.</EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <InputGroup>
+          <Input placeholder="Search..." />
+          <InputGroupAddon>
+            <SearchIcon />
+          </InputGroupAddon>
+        </InputGroup>
+      </EmptyContent>
+    </Empty>
+  )
+}
+```

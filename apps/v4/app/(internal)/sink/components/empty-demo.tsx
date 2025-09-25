@@ -16,7 +16,7 @@ import {
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
-  EmptyIcon,
+  EmptyMedia,
   EmptyTitle,
 } from "@/registry/new-york-v4/ui/empty"
 import { Input } from "@/registry/new-york-v4/ui/input"
@@ -36,9 +36,9 @@ export function EmptyDemo() {
     <div className="grid w-full gap-8">
       <Empty className="min-h-[80svh]">
         <EmptyHeader>
-          <EmptyIcon>
+          <EmptyMedia variant="icon">
             <IconFolderCode />
-          </EmptyIcon>
+          </EmptyMedia>
           <EmptyTitle>No projects yet</EmptyTitle>
           <EmptyDescription>
             You haven&apos;t created any projects yet. Get started by creating
@@ -148,9 +148,9 @@ export function EmptyDemo() {
           <CardContent>
             <Empty className="p-4">
               <EmptyHeader>
-                <EmptyIcon>
+                <EmptyMedia variant="icon">
                   <IconFolderCode />
-                </EmptyIcon>
+                </EmptyMedia>
                 <EmptyTitle>No projects yet</EmptyTitle>
                 <EmptyDescription>
                   You haven&apos;t created any projects yet. Get started by
@@ -191,9 +191,9 @@ export function EmptyDemo() {
               </DialogHeader>
               <Empty className="p-4">
                 <EmptyHeader>
-                  <EmptyIcon>
+                  <EmptyMedia variant="icon">
                     <IconFolderCode />
-                  </EmptyIcon>
+                  </EmptyMedia>
                   <EmptyTitle>No projects yet</EmptyTitle>
                   <EmptyDescription>
                     You haven&apos;t created any projects yet. Get started by
