@@ -1,6 +1,7 @@
 ---
 title: Empty
 description: Use the Empty component to display a empty state.
+component: true
 ---
 
 <ComponentPreview name="empty-demo" className="[&_.preview]:p-0" />
@@ -24,12 +25,6 @@ npx shadcn@latest add empty
 <TabsContent value="manual">
 
 <Steps>
-
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install @radix-ui/react-slot
-```
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -166,9 +161,12 @@ Use the `EmptyContent` component to display the content of the empty state such 
 
 ### Outline
 
-Use the `border` and `rounded-*` utilities to create a outline empty state.
+Use the `border` utility class to create a outline empty state.
 
-<ComponentPreview name="empty-outline" className="[&_.preview]:p-0" />
+<ComponentPreview
+  name="empty-outline"
+  className="[&_.preview]:p-6 md:[&_.preview]:p-10"
+/>
 
 ```tsx showLineNumbers
 import { Button } from "@/components/ui/button"
