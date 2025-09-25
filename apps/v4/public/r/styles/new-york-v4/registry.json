@@ -4239,6 +4239,127 @@
       ]
     },
     {
+      "name": "field-demo",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-input",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-textarea",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-textarea.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-fieldset",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-fieldset.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-radio",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-radio.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-checkbox",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-checkbox.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-switch",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-switch.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-slider",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-slider.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-select",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-select.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-choice-card",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-choice-card.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-group",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "drawer-dialog",
       "type": "registry:example",
       "registryDependencies": ["drawer", "dialog"],

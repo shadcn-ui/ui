@@ -1,0 +1,460 @@
+---
+title: Field
+description: Combine labels, controls, and help text to compose accessible form fields and grouped inputs.
+component: true
+---
+
+<ComponentPreview name="field-demo" className="[&_.preview]:h-[850px]" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add field
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="field" title="components/ui/field.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldTitle,
+} from "@/components/ui/field"
+```
+
+```tsx showLineNumbers
+<FieldSet>
+  <FieldLegend>Profile</FieldLegend>
+  <FieldGroup>
+    <Field>
+      <FieldLabel htmlFor="name">Full name</FieldLabel>
+      <Input id="name" autoComplete="off" placeholder="Evil Rabbit" />
+      <FieldDescription>This appears on invoices and emails.</FieldDescription>
+    </Field>
+    <Field>
+      <FieldLabel htmlFor="username">Username</FieldLabel>
+      <Input id="username" autoComplete="off" aria-invalid />
+      <FieldError>Choose another username.</FieldError>
+    </Field>
+  </FieldGroup>
+</FieldSet>
+```
+
+## Anatomy
+
+The `Field` family is designed for composing accessible forms. A typical field is structured as follows:
+
+```tsx showLineNumbers
+<Field>
+  <FieldLabel htmlFor="input-id">Label</FieldLabel>
+  {/* Input, Select, Switch, etc. */}
+  <FieldDescription>Optional helper text.</FieldDescription>
+  <FieldError>Validation message.</FieldError>
+</Field>
+```
+
+- `Field` is the core wrapper for a single field.
+- `FieldContent` is a flex column that groups label and description.
+- Wrap related fields with `FieldGroup`, and use `FieldSet` with `FieldLegend` for semantic grouping.
+
+## Examples
+
+### Input
+
+<ComponentPreview name="field-input" className="!mb-4" />
+
+```tsx showLineNumbers
+<Field>
+  <FieldLabel htmlFor="username">Username</FieldLabel>
+  <Input id="username" type="text" placeholder="Enter username" />
+  <FieldDescription>
+    Choose a unique username for your account.
+  </FieldDescription>
+</Field>
+```
+
+### Textarea
+
+<ComponentPreview name="field-textarea" className="!mb-4" />
+
+```tsx showLineNumbers
+<Field>
+  <FieldLabel htmlFor="feedback">Feedback</FieldLabel>
+  <Textarea id="feedback" placeholder="Your feedback helps us improve..." />
+  <FieldDescription>Share your thoughts about our service.</FieldDescription>
+</Field>
+```
+
+### Select
+
+<ComponentPreview name="field-select" className="!mb-4" />
+
+```tsx showLineNumbers
+<Field>
+  <FieldLabel>Department</FieldLabel>
+  <Select>
+    <SelectTrigger>
+      <SelectValue placeholder="Select Department" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="engineering">Engineering</SelectItem>
+      <SelectItem value="design">Design</SelectItem>
+    </SelectContent>
+  </Select>
+  <FieldDescription>Select your department or area of work.</FieldDescription>
+</Field>
+```
+
+### Slider
+
+<ComponentPreview name="field-slider" className="!mb-4" />
+
+```tsx showLineNumbers
+<Field>
+  <FieldTitle>Price Range</FieldTitle>
+  <FieldDescription>Set your budget range ($0 - $1000).</FieldDescription>
+  <Slider aria-label="Price Range" max={1000} min={0} step={10} />
+</Field>
+```
+
+### Fieldset
+
+<ComponentPreview name="field-fieldset" className="!mb-4" />
+
+### Checkbox
+
+<ComponentPreview name="field-checkbox" className="!mb-4" />
+
+```tsx showLineNumbers
+<Field orientation="horizontal">
+  <Checkbox id="sync" defaultChecked />
+  <FieldContent>
+    <FieldLabel htmlFor="sync">Sync Desktop & Documents folders</FieldLabel>
+    <FieldDescription>
+      Your Desktop & Documents folders are being synced with iCloud Drive. You
+      can access them from other devices.
+    </FieldDescription>
+  </FieldContent>
+</Field>
+```
+
+### Radio
+
+<ComponentPreview name="field-radio" className="!mb-4" />
+
+```tsx showLineNumbers
+<FieldSet>
+  <FieldLabel>Subscription Plan</FieldLabel>
+  <FieldDescription>
+    Yearly and lifetime plans offer significant savings.
+  </FieldDescription>
+  <RadioGroup defaultValue="monthly">
+    <Field orientation="horizontal">
+      <RadioGroupItem value="monthly" id="plan-monthly" />
+      <FieldLabel htmlFor="plan-monthly" className="font-normal">
+        Monthly ($9.99/month)
+      </FieldLabel>
+    </Field>
+    <Field orientation="horizontal">
+      <RadioGroupItem value="yearly" id="plan-yearly" />
+      <FieldLabel htmlFor="plan-yearly" className="font-normal">
+        Yearly ($99.99/year)
+      </FieldLabel>
+    </Field>
+    <Field orientation="horizontal">
+      <RadioGroupItem value="lifetime" id="plan-lifetime" />
+      <FieldLabel htmlFor="plan-lifetime" className="font-normal">
+        Lifetime ($299.99)
+      </FieldLabel>
+    </Field>
+  </RadioGroup>
+</FieldSet>
+```
+
+### Switch
+
+<ComponentPreview name="field-switch" className="!mb-4" />
+
+```tsx showLineNumbers
+<Field orientation="horizontal">
+  <FieldContent>
+    <FieldLabel htmlFor="2fa">Multi-factor authentication</FieldLabel>
+    <FieldDescription>
+      Enable multi-factor authentication. If you do not have a two-factor
+      device, you can use a one-time code sent to your email.
+    </FieldDescription>
+  </FieldContent>
+  <Switch id="2fa" />
+</Field>
+```
+
+### Choice Card
+
+To create a selectable field group, wrap `Field` components inside `FieldLabel`.
+
+<ComponentPreview name="field-choice-card" />
+
+```tsx showLineNumbers
+<FieldLabel htmlFor="compute-environment-p8w">
+  <Field>
+    <FieldContent>
+      <FieldTitle>Compute Environment</FieldTitle>
+      <FieldDescription>
+        Run GPU workloads on a K8s configured cluster.
+      </FieldDescription>
+    </FieldContent>
+    <RadioGroupItem value="kubernetes" id="kubernetes-r2h" />
+  </Field>
+</FieldLabel>
+```
+
+### Field Group
+
+Use `FieldGroup` to stack `Field` components. Use `FieldSeparator` to separate them.
+
+<ComponentPreview name="field-group" className="!mb-4" />
+
+```tsx showLineNumbers
+<FieldGroup>
+  <Field>{/* ... */}</Field>
+  <FieldSeparator />
+  <Field>{/* ... */}</Field>
+</FieldGroup>
+```
+
+## Responsive Layout
+
+- **Vertical fields:** Default orientation stacks label, control, and helper text—ideal for mobile-first layouts.
+- **Horizontal fields:** Set `orientation="horizontal"` on `Field` to align the label and control side-by-side. Combine with `FieldContent` to keep descriptions aligned.
+- **Responsive fields:** Use `orientation="responsive"` for automatic column layouts inside container-aware parents. Pair with `@container/field-group` classes on `FieldGroup` to switch orientations at specific breakpoints.
+
+```tsx showLineNumbers
+<FieldGroup>
+  <Field orientation="responsive">
+    <FieldContent>
+      <FieldLabel htmlFor="timezone">Timezone</FieldLabel>
+      <FieldDescription>Select the timezone for reminders.</FieldDescription>
+    </FieldContent>
+    <Select id="timezone">
+      <SelectTrigger>
+        <SelectValue placeholder="Select" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="utc">UTC</SelectItem>
+        <SelectItem value="pst">Pacific Time</SelectItem>
+      </SelectContent>
+    </Select>
+  </Field>
+</FieldGroup>
+```
+
+## Responsive Techniques
+
+- Enable container queries by adding `@container/field-group` to the wrapping `FieldGroup`. Components such as `Field` listen for these scopes to adjust orientation.
+- Constrain control widths with utility classes (`md:w-1/2`, `max-w-sm`) applied directly to inputs or `FieldContent`.
+- Combine CSS grid with `gap` utilities to create multi-column forms. For example, `className="grid gap-4 md:grid-cols-2"` on nested wrappers inside `FieldGroup`.
+- Use `flex` utilities within `FieldContent` (`className="flex flex-col gap-2"`) when combining multiple controls like `InputGroup` and buttons, as seen in `ChatSettings` personalization.
+
+## Validation and Errors
+
+- Add `data-invalid` to `Field` to switch the entire block into an error state.
+- Use `aria-invalid` on the input itself for assistive technologies.
+- Render `FieldError` immediately after the control or inside `FieldContent` to keep error messages aligned with the field.
+
+```tsx showLineNumbers /data-invalid/ /aria-invalid/
+<Field data-invalid>
+  <FieldLabel htmlFor="email">Email</FieldLabel>
+  <Input id="email" type="email" aria-invalid />
+  <FieldError>Enter a valid email address.</FieldError>
+</Field>
+```
+
+## Accessibility
+
+- `FieldSet` and `FieldLegend` keep related controls grouped for keyboard and assistive tech users.
+- `Field` outputs `role="group"` so nested controls inherit labeling from `FieldLabel` and `FieldLegend` when combined.
+- Use `FieldSeparator` sparingly to ensure screen readers encounter clear section boundaries.
+
+## API Reference
+
+### FieldSet
+
+Container that renders a semantic `fieldset` with spacing presets.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<FieldSet>
+  <FieldLegend>Delivery</FieldLegend>
+  <FieldGroup>{/* Fields */}</FieldGroup>
+</FieldSet>
+```
+
+### FieldLegend
+
+Legend element for a `FieldSet`. Switch to the `label` variant to align with label sizing.
+
+| Prop        | Type                  | Default    |
+| ----------- | --------------------- | ---------- |
+| `variant`   | `"legend" \| "label"` | `"legend"` |
+| `className` | `string`              |            |
+
+```tsx
+<FieldLegend variant="label">Notification Preferences</FieldLegend>
+```
+
+The `FieldLegend` has two variants: `legend` and `label`. Use `label` to use label sizing and alignment. Handy if you have nested `FieldSet`.
+
+### FieldGroup
+
+Layout wrapper that stacks `Field` components and enables container queries for responsive orientations.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<FieldGroup className="@container/field-group flex flex-col gap-6">
+  <Field>{/* ... */}</Field>
+  <Field>{/* ... */}</Field>
+</FieldGroup>
+```
+
+### Field
+
+The core wrapper for a single field. Provides orientation control, invalid state styling, and spacing.
+
+| Prop           | Type                                         | Default      |
+| -------------- | -------------------------------------------- | ------------ |
+| `orientation`  | `"vertical" \| "horizontal" \| "responsive"` | `"vertical"` |
+| `className`    | `string`                                     |              |
+| `data-invalid` | `boolean`                                    |              |
+
+```tsx
+<Field orientation="horizontal">
+  <FieldLabel htmlFor="remember">Remember me</FieldLabel>
+  <Switch id="remember" />
+</Field>
+```
+
+### FieldContent
+
+Flex column that groups control and descriptions. Use when the label sits beside the control.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<Field>
+  <Checkbox id="notifications" />
+  <FieldContent>
+    <FieldLabel htmlFor="notifications">Notifications</FieldLabel>
+    <FieldDescription>Email, SMS, and push options.</FieldDescription>
+  </FieldContent>
+</Field>
+```
+
+### FieldLabel
+
+Label styled for both direct inputs and nested `Field` children.
+
+| Prop        | Type      | Default |
+| ----------- | --------- | ------- |
+| `className` | `string`  |         |
+| `asChild`   | `boolean` | `false` |
+
+```tsx
+<FieldLabel htmlFor="email">Email</FieldLabel>
+```
+
+### FieldTitle
+
+Use inside `FieldContent` when you need a title with the same styling as the label.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<FieldContent>
+  <FieldTitle>Enable Touch ID</FieldTitle>
+  <FieldDescription>Unlock your device faster.</FieldDescription>
+</FieldContent>
+```
+
+### FieldDescription
+
+Helper text slot that automatically balances long lines in horizontal layouts.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<FieldDescription>We never share your email with anyone.</FieldDescription>
+```
+
+### FieldSeparator
+
+Visual divider to separate sections inside a `FieldGroup`. Accepts optional inline content.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<FieldSeparator>Or continue with</FieldSeparator>
+```
+
+### FieldError
+
+Accessible error container that accepts children or an `errors` array (e.g., from `react-hook-form`).
+
+| Prop        | Type                                       | Default |
+| ----------- | ------------------------------------------ | ------- |
+| `errors`    | `Array<{ message?: string } \| undefined>` |         |
+| `className` | `string`                                   |         |
+
+```tsx
+<FieldError errors={errors.username} />
+```
+
+When the `errors` array contains multiple messages, the component renders a list automatically.
+
+`FieldError` also accepts issues produced by any validator that implements [Standard Schema](https://standardschema.dev/), including Zod, Valibot, and ArkType. Pass the `issues` array from the schema result directly to render a unified error list across libraries.

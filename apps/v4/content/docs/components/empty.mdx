@@ -66,97 +66,6 @@ import {
 </Empty>
 ```
 
-## API Reference
-
-### Empty
-
-The main component of the empty state. Wraps the `EmptyHeader` and `EmptyContent` components.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
-
-```tsx
-<Empty>
-  <EmptyHeader />
-  <EmptyContent />
-</Empty>
-```
-
-### EmptyHeader
-
-The `EmptyHeader` component wraps the empty media, title, and description.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
-
-```tsx
-<EmptyHeader>
-  <EmptyMedia />
-  <EmptyTitle />
-  <EmptyDescription />
-</EmptyHeader>
-```
-
-### EmptyMedia
-
-Use the `EmptyMedia` component to display the media of the empty state such as an icon or an image. You can also use it to display other components such as an avatar.
-
-| Prop        | Type                  | Default   |
-| ----------- | --------------------- | --------- |
-| `variant`   | `"default" \| "icon"` | `default` |
-| `className` | `string`              |           |
-
-```tsx
-<EmptyMedia variant="icon">
-  <Icon />
-</EmptyMedia>
-```
-
-```tsx
-<EmptyMedia>
-  <Avatar>
-    <AvatarImage src="..." />
-    <AvatarFallback>CN</AvatarFallback>
-  </Avatar>
-</EmptyMedia>
-```
-
-### EmptyTitle
-
-Use the `EmptyTitle` component to display the title of the empty state.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
-
-```tsx
-<EmptyTitle>No data</EmptyTitle>
-```
-
-### EmptyDescription
-
-Use the `EmptyDescription` component to display the description of the empty state.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
-
-### EmptyContent
-
-Use the `EmptyContent` component to display the content of the empty state such as a button, input or a link.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
-
-```tsx
-<EmptyContent>
-  <Button>Add data</Button>
-</EmptyContent>
-```
-
 ## Examples
 
 ### Outline
@@ -324,4 +233,95 @@ export function EmptyInputGroup() {
     </Empty>
   )
 }
+```
+
+## API Reference
+
+### Empty
+
+The main component of the empty state. Wraps the `EmptyHeader` and `EmptyContent` components.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<Empty>
+  <EmptyHeader />
+  <EmptyContent />
+</Empty>
+```
+
+### EmptyHeader
+
+The `EmptyHeader` component wraps the empty media, title, and description.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<EmptyHeader>
+  <EmptyMedia />
+  <EmptyTitle />
+  <EmptyDescription />
+</EmptyHeader>
+```
+
+### EmptyMedia
+
+Use the `EmptyMedia` component to display the media of the empty state such as an icon or an image. You can also use it to display other components such as an avatar.
+
+| Prop        | Type                  | Default   |
+| ----------- | --------------------- | --------- |
+| `variant`   | `"default" \| "icon"` | `default` |
+| `className` | `string`              |           |
+
+```tsx
+<EmptyMedia variant="icon">
+  <Icon />
+</EmptyMedia>
+```
+
+```tsx
+<EmptyMedia>
+  <Avatar>
+    <AvatarImage src="..." />
+    <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+</EmptyMedia>
+```
+
+### EmptyTitle
+
+Use the `EmptyTitle` component to display the title of the empty state.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<EmptyTitle>No data</EmptyTitle>
+```
+
+### EmptyDescription
+
+Use the `EmptyDescription` component to display the description of the empty state.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+### EmptyContent
+
+Use the `EmptyContent` component to display the content of the empty state such as a button, input or a link.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<EmptyContent>
+  <Button>Add data</Button>
+</EmptyContent>
 ```

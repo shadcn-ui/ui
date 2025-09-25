@@ -12,7 +12,14 @@ instructions to update your project.
 
 </Callout>
 
-<ComponentPreview name="button-demo" description="A button" />
+<ComponentPreview name="button-demo" description="A button" className="mb-4" />
+
+```tsx showLineNumbers
+<Button variant="outline">Button</Button>
+<Button variant="outline" size="icon" aria-label="Submit">
+  <ArrowUpIcon />
+</Button>
+```
 
 ## Installation
 
@@ -62,7 +69,160 @@ import { Button } from "@/components/ui/button"
 <Button variant="outline">Button</Button>
 ```
 
-## Link
+---
+
+## Examples
+
+### Default
+
+<ComponentPreview
+  name="button-default"
+  description="A primary button"
+  className="mb-4"
+/>
+
+```tsx
+<Button>Button</Button>
+```
+
+### Outline
+
+<ComponentPreview
+  name="button-outline"
+  description="A button using the outline variant."
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="outline">Outline</Button>
+```
+
+### Secondary
+
+<ComponentPreview
+  name="button-secondary"
+  description="A secondary button"
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="secondary">Secondary</Button>
+```
+
+### Ghost
+
+<ComponentPreview
+  name="button-ghost"
+  description="A button using the ghost variant"
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="ghost">Ghost</Button>
+```
+
+### Destructive
+
+<ComponentPreview
+  name="button-destructive"
+  description="A destructive button"
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="destructive">Destructive</Button>
+```
+
+### Link
+
+<ComponentPreview
+  name="button-link"
+  description="A button using the link variant."
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="link">Link</Button>
+```
+
+### Icon
+
+<ComponentPreview
+  name="button-icon"
+  description="An icon button"
+  className="mb-4"
+/>
+
+```tsx showLineNumbers
+<Button variant="outline" size="icon" aria-label="Submit">
+  <CircleFadingArrowUpIcon />
+</Button>
+```
+
+### With Icon
+
+The spacing between the icon and the text is automatically adjusted
+based on the size of the button. You do not need any margin on the icon.
+
+<ComponentPreview
+  name="button-with-icon"
+  description="A button with an icon"
+  className="mb-4"
+/>
+
+```tsx
+<Button variant="outline" size="sm">
+  <IconGitBranch /> New Branch
+</Button>
+```
+
+### Spinner
+
+<ComponentPreview
+  name="button-loading"
+  description="A button with a loading state."
+  className="mb-4"
+/>
+
+```tsx showLineNumbers
+<Button size="sm" variant="outline" disabled>
+  <Spinner />
+  Submit
+</Button>
+```
+
+### Button Group
+
+To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/button-group) documentation for more details.
+
+<ComponentPreview name="button-group-demo" className="mb-4" />
+
+```tsx showLineNumbers
+<ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline" size="icon" aria-label="Go Back">
+      <ArrowLeftIcon />
+    </Button>
+  </ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline">Archive</Button>
+    <Button variant="outline">Report</Button>
+  </ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline">Snooze</Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" aria-label="More Options">
+          <MoreHorizontalIcon />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent />
+    </DropdownMenu>
+  </ButtonGroup>
+</ButtonGroup>
+```
+
+### Link
 
 You can use the `asChild` prop to make another component look like a button. Here's an example of a link that looks like a button.
 
@@ -80,8 +240,6 @@ export function LinkAsButton() {
 }
 ```
 
----
-
 ## API Reference
 
 ### Button
@@ -93,71 +251,6 @@ The `Button` component is a wrapper around the `button` element that adds a vari
 | `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"` | `"default"` |
 | `size`    | `"default" \| "sm" \| "lg" \| "icon" \| "icon-sm" \| "icon-lg"`               | `"default"` |
 | `asChild` | `boolean`                                                                     | `false`     |
-
----
-
-## Button Group
-
-To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/button-group) documentation for more details.
-
-<ComponentPreview name="button-group-demo" />
-
----
-
-## Examples
-
-### Default
-
-<ComponentPreview name="button-default" description="A primary button" />
-
-### Outline
-
-<ComponentPreview
-  name="button-outline"
-  description="A button using the outline variant."
-/>
-
-### Secondary
-
-<ComponentPreview name="button-secondary" description="A secondary button" />
-
-### Ghost
-
-<ComponentPreview
-  name="button-ghost"
-  description="A button using the ghost variant"
-/>
-
-### Destructive
-
-<ComponentPreview
-  name="button-destructive"
-  description="A destructive button"
-/>
-
-### Link
-
-<ComponentPreview
-  name="button-link"
-  description="A button using the link variant."
-/>
-
-### Icon
-
-<ComponentPreview name="button-icon" description="An icon button" />
-
-### With Icon
-
-<ComponentPreview name="button-with-icon" description="A button with an icon" />
-
-### Spinner
-
-<ComponentPreview
-  name="button-loading"
-  description="A button with a loading state."
-/>
-
----
 
 ## Changelog
 
