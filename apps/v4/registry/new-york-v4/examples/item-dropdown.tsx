@@ -1,7 +1,6 @@
 "use client"
 
-import * as React from "react"
-import { ChevronDownIcon, MoreVertical } from "lucide-react"
+import { ChevronDownIcon } from "lucide-react"
 
 import {
   Avatar,

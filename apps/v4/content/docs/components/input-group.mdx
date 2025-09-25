@@ -1,0 +1,187 @@
+---
+title: Input Group
+description: Display additional information or actions to an input or textarea.
+component: true
+---
+
+import { IconInfoCircle } from "@tabler/icons-react"
+
+<ComponentPreview name="input-group-demo" className="[&_.preview]:p-4" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add input-group
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input-group" title="components/ui/input-group.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+} from "@/registry/new-york-v4/ui/input-group"
+```
+
+```tsx showLineNumbers
+<InputGroup>
+  <Input placeholder="Search..." />
+  <InputGroupAddon>
+    <SearchIcon />
+  </InputGroupAddon>
+</InputGroup>
+```
+
+## API Reference
+
+### InputGroup
+
+The main component that wraps inputs and addons.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<InputGroup>
+  <Input />
+  <InputGroupAddon />
+</InputGroup>
+```
+
+### InputGroupAddon
+
+Use the `InputGroupAddon` component to display icons, text, buttons, or other content alongside inputs.
+
+<Callout icon={<IconInfoCircle />} title="Focus Navigation">
+  For proper focus navigation, the `InputGroupAddon` component should be a
+  placed after the input. Use the `align` prop to position the addon.
+</Callout>
+
+| Prop        | Type                                                             | Default          |
+| ----------- | ---------------------------------------------------------------- | ---------------- |
+| `align`     | `"inline-start" \| "inline-end" \| "block-start" \| "block-end"` | `"inline-start"` |
+| `className` | `string`                                                         |                  |
+
+```tsx
+<InputGroupAddon>
+  <SearchIcon />
+</InputGroupAddon>
+```
+
+**For `<Input />
+  `, use the `inline-start` or `inline-end` alignment. For `<Textarea />
+  `, use the `block-start` or `block-end` alignment.**
+
+### InputGroupButton
+
+Use the `InputGroupButton` component to display buttons within input groups.
+
+| Prop        | Type                                                                          | Default   |
+| ----------- | ----------------------------------------------------------------------------- | --------- |
+| `size`      | `"default" \| "icon" \| "sm" \| "icon-sm"`                                    | `"icon"`  |
+| `variant`   | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"ghost"` |
+| `className` | `string`                                                                      |           |
+
+```tsx
+<InputGroupButton>
+  <CopyIcon />
+</InputGroupButton>
+```
+
+### InputGroupText
+
+Use the `InputGroupText` component to display text content within input groups.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<InputGroupText>(optional)</InputGroupText>
+```
+
+## Examples
+
+### Icon
+
+<ComponentPreview name="input-group-icon" className="[&_.preview]:p-4" />
+
+### Text
+
+Display additional text information alongside inputs.
+
+<ComponentPreview name="input-group-text" className="[&_.preview]:p-4" />
+
+### Button
+
+Add buttons to perform actions within the input group.
+
+<ComponentPreview name="input-group-button" className="[&_.preview]:p-4" />
+
+### Tooltip
+
+Add tooltips to provide additional context or help.
+
+<ComponentPreview name="input-group-tooltip" className="[&_.preview]:p-4" />
+
+### Textarea
+
+Input groups also work with textarea components. For `<Textarea />`, use the `block-start` or `block-end` alignment.
+
+<ComponentPreview name="input-group-textarea" className="[&_.preview]:p-4" />
+
+### Spinner
+
+Show loading indicators while processing input.
+
+<ComponentPreview name="input-group-spinner" className="[&_.preview]:p-4" />
+
+### Label
+
+Use labels within input groups to improve accessibility.
+
+<ComponentPreview name="input-group-label" className="[&_.preview]:p-4" />
+
+### Dropdown
+
+Combine input groups with dropdown menus for complex interactions.
+
+<ComponentPreview name="input-group-dropdown" className="[&_.preview]:p-4" />
+
+### Button Group
+
+Combine input groups with button groups to create suffixes and prefixes.
+
+<ComponentPreview
+  name="input-group-button-group"
+  className="[&_.preview]:p-4"
+/>

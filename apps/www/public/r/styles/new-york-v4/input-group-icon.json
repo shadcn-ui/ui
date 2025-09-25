@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-icon",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-icon.tsx",
+      "content": "import { CheckIcon, CreditCardIcon, MailIcon, SearchIcon } from \"lucide-react\"\n\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\nimport {\n  InputGroup,\n  InputGroupAddon,\n} from \"@/registry/new-york-v4/ui/input-group\"\n\nexport default function InputGroupIcon() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-6\">\n      <InputGroup>\n        <Input placeholder=\"Search...\" />\n        <InputGroupAddon>\n          <SearchIcon />\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <Input type=\"email\" placeholder=\"Enter your email\" />\n        <InputGroupAddon>\n          <MailIcon />\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <Input placeholder=\"Card number\" />\n        <InputGroupAddon>\n          <CreditCardIcon />\n        </InputGroupAddon>\n        <InputGroupAddon align=\"inline-end\">\n          <CheckIcon />\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
