@@ -10,6 +10,7 @@
   "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
   "@kokonutui": "https://kokonutui.com/r/{name}.json",
   "@magicui": "https://magicui.design/r/{name}.json",
+  "@magicui-pro": "https://pro.magicui.design/registry/{name}",
   "@motion-primitives": "https://motion-primitives.com/c/{name}.json",
   "@originui": "https://originui.com/r/{name}.json",
   "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
