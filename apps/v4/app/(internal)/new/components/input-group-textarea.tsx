@@ -1,0 +1,46 @@
+import {
+  IconBrandJavascript,
+  IconCopy,
+  IconCornerDownLeft,
+  IconRefresh,
+} from "@tabler/icons-react"
+
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+} from "@/registry/new-york-v4/ui/input-group"
+import { Textarea } from "@/registry/new-york-v4/ui/textarea"
+
+export function InputGroupTextarea() {
+  return (
+    <div className="grid w-full max-w-md gap-4">
+      <InputGroup>
+        <Textarea
+          id="textarea-code-32"
+          placeholder="console.log('Hello, world!');"
+          className="min-h-[180px]"
+        />
+        <InputGroupAddon align="block-end" className="border-t">
+          <InputGroupText>Line 1, Column 1</InputGroupText>
+          <InputGroupButton size="sm" className="ml-auto" variant="default">
+            Run <IconCornerDownLeft />
+          </InputGroupButton>
+        </InputGroupAddon>
+        <InputGroupAddon align="block-start" className="border-b">
+          <InputGroupText className="font-mono font-medium">
+            <IconBrandJavascript />
+            script.js
+          </InputGroupText>
+          <InputGroupButton className="ml-auto">
+            <IconRefresh />
+          </InputGroupButton>
+          <InputGroupButton variant="ghost">
+            <IconCopy />
+          </InputGroupButton>
+        </InputGroupAddon>
+      </InputGroup>
+    </div>
+  )
+}

@@ -159,9 +159,9 @@
 
 .theme-blue .theme-container,
 .theme-blue [data-radix-popper-content-wrapper] {
-  --primary: var(--color-blue-600);
+  --primary: var(--color-blue-700);
   --primary-foreground: var(--color-blue-50);
-  --ring: var(--color-blue-400);
+  /* --ring: var(--color-blue-100); */
   --sidebar-primary: var(--color-blue-600);
   --sidebar-primary-foreground: var(--color-blue-50);
   --sidebar-ring: var(--color-blue-400);
@@ -172,7 +172,7 @@
   --chart-5: var(--color-blue-800);
 
   @variant dark {
-    --primary: var(--color-blue-500);
+    --primary: var(--color-blue-700);
     --primary-foreground: var(--color-blue-50);
     --ring: var(--color-blue-900);
     --sidebar-primary: var(--color-blue-500);
