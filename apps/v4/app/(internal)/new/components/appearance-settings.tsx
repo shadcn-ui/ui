@@ -49,61 +49,38 @@ export function AppearanceSettings() {
   return (
     <FieldSet>
       <FieldGroup>
-        <FieldGroup>
-          <FieldSet>
-            <FieldLegend>Compute Environment</FieldLegend>
-            <FieldDescription>
-              Select the compute environment for your cluster.
-            </FieldDescription>
-            <RadioGroup defaultValue="kubernetes">
-              <FieldLabel htmlFor="kubernetes-r2h">
-                <Field orientation="horizontal">
-                  <FieldContent>
-                    <FieldTitle>Kubernetes</FieldTitle>
-                    <FieldDescription>
-                      Run GPU workloads on a K8s configured cluster. This is the
-                      default.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem value="kubernetes" id="kubernetes-r2h" />
-                </Field>
-              </FieldLabel>
-              <FieldLabel htmlFor="vm-z4k">
-                <Field orientation="horizontal">
-                  <FieldContent>
-                    <FieldTitle>Virtual Machine</FieldTitle>
-                    <FieldDescription>
-                      Access a VM configured cluster to run workloads. (Coming
-                      soon)
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem value="vm" id="vm-z4k" />
-                </Field>
-              </FieldLabel>
-            </RadioGroup>
-          </FieldSet>
-        </FieldGroup>
-        <FieldSeparator />
-        <Field orientation="horizontal">
-          <FieldContent>
-            <FieldLabel htmlFor="number-of-gpus-f6l">Number of GPUs</FieldLabel>
-            <FieldDescription>You can add more later.</FieldDescription>
-          </FieldContent>
-          <ButtonGroup>
-            <Input
-              id="number-of-gpus-f6l"
-              placeholder="8"
-              size={6}
-              className="!w-20"
-            />
-            <Button variant="outline" size="icon" type="button">
-              <IconMinus />
-            </Button>
-            <Button variant="outline" size="icon" type="button">
-              <IconPlus />
-            </Button>
-          </ButtonGroup>
-        </Field>
+        <FieldSet>
+          <FieldLegend>Compute Environment</FieldLegend>
+          <FieldDescription>
+            Select the compute environment for your cluster.
+          </FieldDescription>
+          <RadioGroup defaultValue="kubernetes">
+            <FieldLabel htmlFor="kubernetes-r2h">
+              <Field orientation="horizontal">
+                <FieldContent>
+                  <FieldTitle>Kubernetes</FieldTitle>
+                  <FieldDescription>
+                    Run GPU workloads on a K8s configured cluster. This is the
+                    default.
+                  </FieldDescription>
+                </FieldContent>
+                <RadioGroupItem value="kubernetes" id="kubernetes-r2h" />
+              </Field>
+            </FieldLabel>
+            <FieldLabel htmlFor="vm-z4k">
+              <Field orientation="horizontal">
+                <FieldContent>
+                  <FieldTitle>Virtual Machine</FieldTitle>
+                  <FieldDescription>
+                    Access a VM configured cluster to run workloads. (Coming
+                    soon)
+                  </FieldDescription>
+                </FieldContent>
+                <RadioGroupItem value="vm" id="vm-z4k" />
+              </Field>
+            </FieldLabel>
+          </RadioGroup>
+        </FieldSet>
         <FieldSeparator />
         <Field orientation="horizontal">
           <FieldContent>
@@ -134,6 +111,27 @@ export function AppearanceSettings() {
               ))}
             </RadioGroup>
           </FieldSet>
+        </Field>
+        <FieldSeparator />
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldLabel htmlFor="number-of-gpus-f6l">Number of GPUs</FieldLabel>
+            <FieldDescription>You can add more later.</FieldDescription>
+          </FieldContent>
+          <ButtonGroup>
+            <Input
+              id="number-of-gpus-f6l"
+              placeholder="8"
+              size={6}
+              className="!w-20"
+            />
+            <Button variant="outline" size="icon" type="button">
+              <IconMinus />
+            </Button>
+            <Button variant="outline" size="icon" type="button">
+              <IconPlus />
+            </Button>
+          </ButtonGroup>
         </Field>
         <FieldSeparator />
         <Field orientation="horizontal">

@@ -1,9 +1,7 @@
 "use client"
 
-import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { Field, FieldLabel } from "@/registry/new-york-v4/ui/field"
-import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Select,
   SelectContent,
