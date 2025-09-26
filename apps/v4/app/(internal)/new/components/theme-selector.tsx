@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
+import { Field, FieldLabel } from "@/registry/new-york-v4/ui/field"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Select,
@@ -101,20 +102,16 @@ const THEMES = {
   ],
 }
 
-export function ThemeSelector({ className }: React.ComponentProps<"div">) {
+export function ThemeSelector() {
   const { activeTheme, setActiveTheme } = useThemeConfig()
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
-      <Label htmlFor="theme-selector" className="sr-only">
+    <Field className="flex-1">
+      <FieldLabel htmlFor="theme-selector" className="sr-only">
         Theme
-      </Label>
+      </FieldLabel>
       <Select value={activeTheme} onValueChange={setActiveTheme}>
-        <SelectTrigger
-          id="theme-selector"
-          size="sm"
-          className="justify-start *:data-[slot=select-value]:w-16"
-        >
+        <SelectTrigger id="theme-selector" size="sm">
           <SelectValue placeholder="Select" />
         </SelectTrigger>
         <SelectContent align="end">
@@ -142,6 +139,6 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
           )}
         </SelectContent>
       </Select>
-    </div>
+    </Field>
   )
 }

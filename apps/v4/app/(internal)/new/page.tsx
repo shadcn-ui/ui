@@ -25,7 +25,7 @@ import { ThemeSelector } from "./components/theme-selector"
 export default function NewSinkPage() {
   return (
     <div className="flex min-h-screen flex-col justify-center">
-      <div className="theme-container mx-auto grid max-w-[2200px] grid-cols-4 gap-8 p-8">
+      <div className="theme-container mx-auto grid max-w-[2200px] gap-8 p-6 md:grid-cols-2 md:p-8 lg:grid-cols-3 xl:grid-cols-4">
         <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
           <FieldDemo />
         </div>
@@ -42,7 +42,7 @@ export default function NewSinkPage() {
           <FieldSeparator>Appearance Settings</FieldSeparator>
           <AppearanceSettings />
         </div>
-        <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
+        <div className="order-first flex flex-col gap-6 min-[1400px]:order-last *:[div]:w-full *:[div]:max-w-full">
           <div className="flex gap-2">
             <SpinnerBadge />
             <ThemeSelector />
