@@ -8,6 +8,7 @@ import {
 } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
+import { determineFileType } from "@/src/utils/registry/determine-file-type"
 import { resolveImport } from "@/src/utils/resolve-import"
 import {
   findCommonRoot,
@@ -225,30 +226,6 @@ export async function recursivelyResolveFileImports(
 async function createTempSourceFile(filename: string) {
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
   return path.join(dir, filename)
-}
-
-// This is a bit tricky to accurately determine.
-// For now we'll use the module specifier to determine the type.
-function determineFileType(
-  moduleSpecifier: string
-): z.infer<typeof registryItemSchema>["type"] {
-  if (moduleSpecifier.includes("/ui/")) {
-    return "registry:ui"
-  }
-
-  if (moduleSpecifier.includes("/lib/")) {
-    return "registry:lib"
-  }
-
-  if (moduleSpecifier.includes("/hooks/")) {
-    return "registry:hook"
-  }
-
-  if (moduleSpecifier.includes("/components/")) {
-    return "registry:component"
-  }
-
-  return "registry:component"
 }
 
 // Additional utility functions for local file support
