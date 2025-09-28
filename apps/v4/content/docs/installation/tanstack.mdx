@@ -41,7 +41,7 @@ Create an `app.css` file in the `app/styles` directory and import `tailwindcss`
 
 ### Import `app.css`
 
-```tsx title="app/routes/__root.tsx" showLineNumbers {5,21-26} showLineNumbers
+```tsx title="app/routes/__root.tsx" showLineNumbers {5,21-26,29-40}
 import type { ReactNode } from "react"
 import { createRootRoute, Outlet } from "@tanstack/react-router"
 import { Meta, Scripts } from "@tanstack/start"
@@ -58,9 +58,6 @@ export const Route = createRootRoute({
         name: "viewport",
         content: "width=device-width, initial-scale=1",
       },
-      {
-        title: "TanStack Start Starter",
-      },
     ],
     links: [
       {
@@ -68,9 +65,24 @@ export const Route = createRootRoute({
         href: appCss,
       },
     ],
+    title: "TanStack Start Starter",
   }),
   component: RootComponent,
 })
+
+function RootComponent() {
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+      </head>
+      <body>
+        <Outlet />
+        <Scripts />
+      </body>
+    </html>
+  )
+}
 ```
 
 ### Edit tsconfig.json file
