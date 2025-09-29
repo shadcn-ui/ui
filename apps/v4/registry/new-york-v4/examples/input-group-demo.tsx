@@ -40,7 +40,7 @@ export default function InputGroupDemo() {
         <InputGroupAddon align="inline-end">
           <Tooltip>
             <TooltipTrigger asChild>
-              <InputGroupButton className="rounded-full">
+              <InputGroupButton className="rounded-full" size="icon-xs">
                 <IconInfoCircle />
               </InputGroupButton>
             </TooltipTrigger>
@@ -51,14 +51,16 @@ export default function InputGroupDemo() {
       <InputGroup>
         <Textarea placeholder="Ask, Search or Chat..." />
         <InputGroupAddon align="block-end">
-          <InputGroupButton variant="outline" className="rounded-full">
+          <InputGroupButton
+            variant="outline"
+            className="rounded-full"
+            size="icon-xs"
+          >
             <IconPlus />
           </InputGroupButton>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <InputGroupButton variant="ghost" size="default">
-                Auto
-              </InputGroupButton>
+              <InputGroupButton variant="ghost">Auto</InputGroupButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent
               side="top"
@@ -72,7 +74,11 @@ export default function InputGroupDemo() {
           </DropdownMenu>
           <InputGroupText className="ml-auto">52% used</InputGroupText>
           <Separator orientation="vertical" className="!h-4" />
-          <InputGroupButton variant="default" className="rounded-full">
+          <InputGroupButton
+            variant="default"
+            className="rounded-full"
+            size="icon-xs"
+          >
             <ArrowUpIcon />
             <span className="sr-only">Send</span>
           </InputGroupButton>

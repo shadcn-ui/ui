@@ -33,10 +33,10 @@ export default function InputGroupTextarea() {
             <IconBrandJavascript />
             script.js
           </InputGroupText>
-          <InputGroupButton className="ml-auto">
+          <InputGroupButton className="ml-auto" size="icon-xs">
             <IconRefresh />
           </InputGroupButton>
-          <InputGroupButton variant="ghost">
+          <InputGroupButton variant="ghost" size="icon-xs">
             <IconCopy />
           </InputGroupButton>
         </InputGroupAddon>

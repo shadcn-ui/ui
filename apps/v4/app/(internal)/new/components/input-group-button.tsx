@@ -25,7 +25,7 @@ export function InputGroupButtonExample() {
         <Popover>
           <PopoverTrigger asChild>
             <InputGroupAddon>
-              <InputGroupButton variant="secondary">
+              <InputGroupButton variant="secondary" size="icon-xs">
                 <IconInfoCircle />
               </InputGroupButton>
             </InputGroupAddon>
@@ -42,7 +42,10 @@ export function InputGroupButtonExample() {
           https://
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
-          <InputGroupButton onClick={() => setIsFavorite(!isFavorite)}>
+          <InputGroupButton
+            onClick={() => setIsFavorite(!isFavorite)}
+            size="icon-xs"
+          >
             <IconStar
               data-favorite={isFavorite}
               className="data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"

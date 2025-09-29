@@ -122,13 +122,14 @@ export function AppearanceSettings() {
             <Input
               id="number-of-gpus-f6l"
               placeholder="8"
-              size={6}
-              className="!w-20"
+              size={3}
+              className="h-8 !w-14 font-mono"
+              maxLength={3}
             />
-            <Button variant="outline" size="icon" type="button">
+            <Button variant="outline" size="icon-sm" type="button">
               <IconMinus />
             </Button>
-            <Button variant="outline" size="icon" type="button">
+            <Button variant="outline" size="icon-sm" type="button">
               <IconPlus />
             </Button>
           </ButtonGroup>

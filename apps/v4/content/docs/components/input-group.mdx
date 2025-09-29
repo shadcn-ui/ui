@@ -54,8 +54,11 @@ import {
 ```tsx showLineNumbers
 <InputGroup>
   <Input placeholder="Search..." />
-  <InputGroupAddon>
+  <InputGroupAddon size="icon-xs">
     <SearchIcon />
+  </InputGroupAddon>
+  <InputGroupAddon align="inline-end">
+    <InputGroupButton>Search</InputGroupButton>
   </InputGroupAddon>
 </InputGroup>
 ```
@@ -149,7 +152,7 @@ Use the `InputGroupAddon` component to display icons, text, buttons, or other co
 | `className` | `string`                                                         |                  |
 
 ```tsx
-<InputGroupAddon>
+<InputGroupAddon align="inline-end">
   <SearchIcon />
 </InputGroupAddon>
 ```
@@ -164,24 +167,13 @@ Use the `InputGroupButton` component to display buttons within input groups.
 
 | Prop        | Type                                                                          | Default   |
 | ----------- | ----------------------------------------------------------------------------- | --------- |
-| `size`      | `"default" \| "icon" \| "sm" \| "icon-sm"`                                    | `"icon"`  |
+| `size`      | `"xs" \| "icon-xs" \| "sm" \| "icon-sm"`                                      | `"xs"`    |
 | `variant`   | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"ghost"` |
 | `className` | `string`                                                                      |           |
 
 ```tsx
-<InputGroupButton>
+<InputGroupButton>Button</InputGroupButton>
+<InputGroupButton size="icon-xs">
   <CopyIcon />
 </InputGroupButton>
-```
-
-### InputGroupText
-
-Use the `InputGroupText` component to display text content within input groups.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
-
-```tsx
-<InputGroupText>(optional)</InputGroupText>
 ```

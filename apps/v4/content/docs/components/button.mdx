@@ -6,7 +6,7 @@ component: true
 ---
 
 <Callout variant="info">
-**Updated:** We have updated the button component to add new sizes. See the
+**Updated:** We have updated the button component to add new sizes: `icon-sm` and `icon-lg`. See the
 [changelog](/docs/components/button#changelog) for more details. Follow the
 instructions to update your project.
 
@@ -72,6 +72,30 @@ import { Button } from "@/components/ui/button"
 ---
 
 ## Examples
+
+### Size
+
+<ComponentPreview name="button-size" className="mb-4" />
+
+```tsx
+// Small
+<Button size="sm" variant="outline">Small</Button>
+<Button size="icon-sm" aria-label="Submit" variant="outline">
+  <ArrowUpRightIcon />
+</Button>
+
+// Medium
+<Button variant="outline">Default</Button>
+<Button size="icon" aria-label="Submit" variant="outline">
+  <ArrowUpRightIcon />
+</Button>
+
+// Large
+<Button size="lg" variant="outline">Large</Button>
+<Button size="icon-lg" aria-label="Submit" variant="outline">
+  <ArrowUpRightIcon />
+</Button>
+```
 
 ### Default
 
@@ -173,6 +197,18 @@ based on the size of the button. You do not need any margin on the icon.
 ```tsx
 <Button variant="outline" size="sm">
   <IconGitBranch /> New Branch
+</Button>
+```
+
+### Rounded
+
+Use the `rounded-full` class to make the button rounded.
+
+<ComponentPreview name="button-rounded" className="mb-4" />
+
+```tsx
+<Button variant="outline" size="icon" className="rounded-full">
+  <ArrowUpRightIcon />
 </Button>
 ```
 

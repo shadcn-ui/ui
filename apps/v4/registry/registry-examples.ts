@@ -299,6 +299,28 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "button-rounded",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-rounded.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "button-size",
+    type: "registry:example",
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "examples/button-size.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "button-group-demo",
     type: "registry:example",
     registryDependencies: ["button-group"],

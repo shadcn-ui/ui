@@ -42,6 +42,7 @@ export function ButtonGroupInputGroup() {
                   data-active={voiceEnabled}
                   className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
                   aria-pressed={voiceEnabled}
+                  size="icon-xs"
                 >
                   <AudioLinesIcon />
                 </InputGroupButton>

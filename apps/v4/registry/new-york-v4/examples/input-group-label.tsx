@@ -23,15 +23,16 @@ export default function InputGroupLabel() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <Input id="email" placeholder="shadcn@vercel.com" />
+        <Input id="email-2" placeholder="shadcn@vercel.com" />
         <InputGroupAddon align="block-start">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email-2">Email</Label>
           <Tooltip>
             <TooltipTrigger asChild>
               <InputGroupButton
                 variant="ghost"
                 aria-label="Help"
-                className="ml-auto"
+                className="ml-auto rounded-full"
+                size="icon-xs"
               >
                 <InfoIcon />
               </InputGroupButton>

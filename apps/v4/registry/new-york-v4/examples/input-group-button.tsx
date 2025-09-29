@@ -33,6 +33,7 @@ export default function InputGroupButtonExample() {
           <InputGroupButton
             aria-label="Copy"
             title="Copy"
+            size="icon-xs"
             onClick={() => {
               copyToClipboard("https://x.com/shadcn")
             }}
@@ -45,7 +46,7 @@ export default function InputGroupButtonExample() {
         <Popover>
           <PopoverTrigger asChild>
             <InputGroupAddon>
-              <InputGroupButton variant="secondary">
+              <InputGroupButton variant="secondary" size="icon-xs">
                 <IconInfoCircle />
               </InputGroupButton>
             </InputGroupAddon>
@@ -58,17 +59,26 @@ export default function InputGroupButtonExample() {
             <p>You should not enter any sensitive information on this site.</p>
           </PopoverContent>
         </Popover>
-        <InputGroupAddon className="text-muted-foreground">
+        <InputGroupAddon className="text-muted-foreground pl-1.5">
           https://
         </InputGroupAddon>
         <Input id="input-secure-19" />
         <InputGroupAddon align="inline-end">
-          <InputGroupButton onClick={() => setIsFavorite(!isFavorite)}>
+          <InputGroupButton
+            onClick={() => setIsFavorite(!isFavorite)}
+            size="icon-xs"
+          >
             <IconStar
               data-favorite={isFavorite}
               className="data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600"
             />
           </InputGroupButton>
+        </InputGroupAddon>
+      </InputGroup>
+      <InputGroup>
+        <Input placeholder="Type to search..." />
+        <InputGroupAddon align="inline-end">
+          <InputGroupButton variant="secondary">Go</InputGroupButton>
         </InputGroupAddon>
       </InputGroup>
     </div>

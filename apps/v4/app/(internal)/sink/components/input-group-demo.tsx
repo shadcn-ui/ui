@@ -18,6 +18,7 @@ import {
   IconTrash,
 } from "@tabler/icons-react"
 import {
+  ArrowRightIcon,
   ArrowUpIcon,
   ChevronDownIcon,
   EyeClosedIcon,
@@ -152,6 +153,7 @@ export function InputGroupDemo() {
             <InputGroupAddon align="inline-end">
               <IconStar />
               <InputGroupButton
+                size="icon-xs"
                 onClick={() => toast.success("Copied to clipboard")}
               >
                 <IconCopy />
@@ -195,37 +197,31 @@ export function InputGroupDemo() {
           <InputGroup>
             <Input id="input-button-13" />
             <InputGroupAddon>
-              <InputGroupButton size="default">Button</InputGroupButton>
+              <InputGroupButton>Button</InputGroupButton>
             </InputGroupAddon>
           </InputGroup>
           <InputGroup>
             <Input id="input-button-14" />
             <InputGroupAddon>
-              <InputGroupButton variant="outline" size="default">
-                Button
-              </InputGroupButton>
+              <InputGroupButton variant="outline">Button</InputGroupButton>
             </InputGroupAddon>
           </InputGroup>
           <InputGroup>
             <Input id="input-button-15" />
             <InputGroupAddon>
-              <InputGroupButton variant="secondary" size="default">
-                Button
-              </InputGroupButton>
+              <InputGroupButton variant="secondary">Button</InputGroupButton>
             </InputGroupAddon>
           </InputGroup>
           <InputGroup>
             <Input id="input-button-16" />
             <InputGroupAddon align="inline-end">
-              <InputGroupButton variant="secondary" size="default">
-                Button
-              </InputGroupButton>
+              <InputGroupButton variant="secondary">Button</InputGroupButton>
             </InputGroupAddon>
           </InputGroup>
           <InputGroup>
             <Input id="input-button-17" />
             <InputGroupAddon align="inline-end">
-              <InputGroupButton>
+              <InputGroupButton size="icon-xs">
                 <IconCopy />
               </InputGroupButton>
             </InputGroupAddon>
@@ -233,7 +229,7 @@ export function InputGroupDemo() {
           <InputGroup>
             <Input id="input-button-18" />
             <InputGroupAddon align="inline-end">
-              <InputGroupButton variant="secondary">
+              <InputGroupButton variant="secondary" size="icon-xs">
                 <IconTrash />
               </InputGroupButton>
             </InputGroupAddon>
@@ -242,7 +238,7 @@ export function InputGroupDemo() {
             <Popover>
               <PopoverTrigger asChild>
                 <InputGroupAddon>
-                  <InputGroupButton variant="secondary">
+                  <InputGroupButton variant="secondary" size="icon-xs">
                     <IconInfoCircle />
                   </InputGroupButton>
                 </InputGroupAddon>
@@ -263,6 +259,7 @@ export function InputGroupDemo() {
             <Input id="input-secure-19" />
             <InputGroupAddon align="inline-end">
               <InputGroupButton
+                size="icon-xs"
                 onClick={() => toast.success("Added to favorites")}
               >
                 <IconStar />
@@ -299,7 +296,7 @@ export function InputGroupDemo() {
             <InputGroupAddon align="inline-end">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <InputGroupButton className="rounded-full">
+                  <InputGroupButton className="rounded-full" size="icon-xs">
                     <IconInfoCircle />
                   </InputGroupButton>
                 </TooltipTrigger>
@@ -315,10 +312,7 @@ export function InputGroupDemo() {
             <InputGroupAddon>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <InputGroupButton
-                    size="default"
-                    className="text-muted-foreground tabular-nums"
-                  >
+                  <InputGroupButton className="text-muted-foreground tabular-nums">
                     {country} <ChevronDownIcon />
                   </InputGroupButton>
                 </DropdownMenuTrigger>
@@ -503,6 +497,7 @@ export function InputGroupDemo() {
               <InputGroupText>0/280 characters</InputGroupText>
               <InputGroupButton
                 variant="default"
+                size="icon-xs"
                 className="ml-auto rounded-full"
               >
                 <ArrowUpIcon />
@@ -516,14 +511,16 @@ export function InputGroupDemo() {
           <InputGroup>
             <Textarea id="prompt-31" placeholder="Ask, Search or Chat..." />
             <InputGroupAddon align="block-end">
-              <InputGroupButton variant="outline" className="rounded-full">
+              <InputGroupButton
+                variant="outline"
+                className="rounded-full"
+                size="icon-xs"
+              >
                 <IconPlus />
               </InputGroupButton>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <InputGroupButton variant="ghost" size="default">
-                    Auto
-                  </InputGroupButton>
+                  <InputGroupButton variant="ghost">Auto</InputGroupButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent side="top" align="start">
                   <DropdownMenuItem>Auto</DropdownMenuItem>
@@ -534,7 +531,11 @@ export function InputGroupDemo() {
               <InputGroupText className="ml-auto">
                 12 messages left
               </InputGroupText>
-              <InputGroupButton variant="default" className="rounded-full">
+              <InputGroupButton
+                variant="default"
+                className="rounded-full"
+                size="icon-xs"
+              >
                 <ArrowUpIcon />
                 <span className="sr-only">Send</span>
               </InputGroupButton>
@@ -574,10 +575,10 @@ export function InputGroupDemo() {
                 <IconBrandJavascript />
                 script.js
               </InputGroupText>
-              <InputGroupButton className="ml-auto">
+              <InputGroupButton size="icon-xs" className="ml-auto">
                 <IconRefresh />
               </InputGroupButton>
-              <InputGroupButton variant="ghost">
+              <InputGroupButton size="icon-xs" variant="ghost">
                 <IconCopy />
               </InputGroupButton>
             </InputGroupAddon>
@@ -608,7 +609,7 @@ export function InputGroupDemo() {
                 Cancel
               </Button>
               <Button variant="default" size="sm">
-                Post
+                Post <ArrowRightIcon />
               </Button>
             </InputGroupAddon>
           </InputGroup>
