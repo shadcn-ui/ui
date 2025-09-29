@@ -15,12 +15,11 @@ import {
   FieldSet,
   FieldTitle,
 } from "@/registry/new-york-v4/ui/field"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-  InputGroupTextarea,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Kbd } from "@/registry/new-york-v4/ui/kbd"
 import {
@@ -38,6 +37,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
+import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
@@ -300,7 +300,7 @@ export function ChatSettings() {
               <Field orientation="responsive">
                 <FieldLabel htmlFor="nickname">Nickname</FieldLabel>
                 <InputGroup>
-                  <Input
+                  <InputGroupInput
                     id="nickname"
                     placeholder="Broski"
                     className="@md/field-group:max-w-[200px]"
@@ -308,7 +308,7 @@ export function ChatSettings() {
                   <InputGroupAddon align="inline-end">
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <InputGroupButton>
+                        <InputGroupButton size="icon-xs">
                           <InfoIcon />
                         </InputGroupButton>
                       </TooltipTrigger>
@@ -331,7 +331,7 @@ export function ChatSettings() {
                     personalize your experience.
                   </FieldDescription>
                 </FieldContent>
-                <InputGroupTextarea
+                <Textarea
                   id="about"
                   placeholder="I'm a software engineer..."
                   className="min-h-[120px] @md/field-group:min-w-full @2xl/field-group:min-w-[300px]"
@@ -387,7 +387,7 @@ export function ChatSettings() {
                 <FieldLabel htmlFor="instructions">
                   Custom Instructions
                 </FieldLabel>
-                <InputGroupTextarea
+                <Textarea
                   id="instructions"
                   value={customInstructions}
                   onChange={(e) => setCustomInstructions(e.target.value)}
