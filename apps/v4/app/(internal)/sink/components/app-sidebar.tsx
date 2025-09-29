@@ -185,6 +185,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   id="search"
                   placeholder="Search the docs..."
                   className="h-7"
+                  data-slot="input-group-control"
                 />
                 <InputGroupAddon>
                   <SearchIcon className="text-muted-foreground" />

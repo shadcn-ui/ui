@@ -20,6 +20,7 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Kbd } from "@/registry/new-york-v4/ui/kbd"
 import {
@@ -37,7 +38,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
-import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
@@ -331,7 +331,7 @@ export function ChatSettings() {
                     personalize your experience.
                   </FieldDescription>
                 </FieldContent>
-                <Textarea
+                <InputGroupTextarea
                   id="about"
                   placeholder="I'm a software engineer..."
                   className="min-h-[120px] @md/field-group:min-w-full @2xl/field-group:min-w-[300px]"
@@ -387,7 +387,7 @@ export function ChatSettings() {
                 <FieldLabel htmlFor="instructions">
                   Custom Instructions
                 </FieldLabel>
-                <Textarea
+                <InputGroupTextarea
                   id="instructions"
                   value={customInstructions}
                   onChange={(e) => setCustomInstructions(e.target.value)}

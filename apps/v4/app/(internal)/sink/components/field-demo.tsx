@@ -55,6 +55,7 @@ import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import {
   InputOTP,
@@ -1397,7 +1398,7 @@ function FinderPreferencesForm() {
                 </SelectContent>
               </Select>
               <InputGroup>
-                <Input placeholder="Select location" />
+                <InputGroupInput placeholder="Select location" />
                 <InputGroupAddon>
                   <IconInfoCircle />
                 </InputGroupAddon>

@@ -6,18 +6,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/new-york-v4/ui/dropdown-menu"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 
 export default function InputGroupDropdown() {
   return (
     <div className="grid w-full max-w-sm gap-4">
       <InputGroup>
-        <Input placeholder="Enter file name" />
+        <InputGroupInput placeholder="Enter file name" />
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -38,7 +38,7 @@ export default function InputGroupDropdown() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup className="[--radius:0.95rem]">
-        <Input placeholder="Enter search query" />
+        <InputGroupInput placeholder="Enter search query" />
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

@@ -480,7 +480,7 @@ export const Index: Record<string, any> = {
     name: "input-group",
     description: "",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: ["button","input","textarea"],
     files: [{
       path: "registry/new-york-v4/ui/input-group.tsx",
       type: "registry:ui",
@@ -5768,6 +5768,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "input-group-custom": {
+    name: "input-group-custom",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["input-group","badge","progress","dropdown-menu","tooltip"],
+    files: [{
+      path: "registry/new-york-v4/examples/input-group-custom.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/input-group-custom.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "input-otp-demo": {
     name: "input-otp-demo",
     description: "",
@@ -5996,6 +6014,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/item-dropdown.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "item-link": {
+    name: "item-link",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [{
+      path: "registry/new-york-v4/examples/item-link.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/item-link.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

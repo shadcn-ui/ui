@@ -1,10 +1,10 @@
 import { InfoIcon } from "lucide-react"
 
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import {
@@ -17,13 +17,13 @@ export default function InputGroupLabel() {
   return (
     <div className="grid w-full max-w-sm gap-4">
       <InputGroup>
-        <Input id="email" placeholder="shadcn" />
+        <InputGroupInput id="email" placeholder="shadcn" />
         <InputGroupAddon>
           <Label htmlFor="email">@</Label>
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <Input id="email-2" placeholder="shadcn@vercel.com" />
+        <InputGroupInput id="email-2" placeholder="shadcn@vercel.com" />
         <InputGroupAddon align="block-start">
           <Label htmlFor="email-2">Email</Label>
           <Tooltip>

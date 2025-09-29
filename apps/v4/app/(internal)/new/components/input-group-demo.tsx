@@ -7,15 +7,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/new-york-v4/ui/dropdown-menu"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
   InputGroupText,
+  InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
-import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
@@ -26,14 +26,14 @@ export function InputGroupDemo() {
   return (
     <div className="grid w-full max-w-sm gap-6">
       <InputGroup>
-        <Input placeholder="Search..." />
+        <InputGroupInput placeholder="Search..." />
         <InputGroupAddon>
           <Search />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <Input placeholder="example.com" className="!pl-1" />
+        <InputGroupInput placeholder="example.com" className="!pl-1" />
         <InputGroupAddon>
           <InputGroupText>https://</InputGroupText>
         </InputGroupAddon>
@@ -49,7 +49,7 @@ export function InputGroupDemo() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <Textarea placeholder="Ask, Search or Chat..." />
+        <InputGroupTextarea placeholder="Ask, Search or Chat..." />
         <InputGroupAddon align="block-end">
           <InputGroupButton
             variant="outline"
@@ -85,7 +85,7 @@ export function InputGroupDemo() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <Input placeholder="@shadcn" />
+        <InputGroupInput placeholder="@shadcn" />
         <InputGroupAddon align="inline-end">
           <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
             <IconCheck className="size-3 text-white" />

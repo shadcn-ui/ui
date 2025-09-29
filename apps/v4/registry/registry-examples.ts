@@ -1238,6 +1238,23 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "input-group-custom",
+    type: "registry:example",
+    registryDependencies: [
+      "input-group",
+      "badge",
+      "progress",
+      "dropdown-menu",
+      "tooltip",
+    ],
+    files: [
+      {
+        path: "examples/input-group-custom.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "input-otp-demo",
     type: "registry:example",
     registryDependencies: ["input-otp"],
@@ -1376,6 +1393,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/item-dropdown.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "item-link",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "examples/item-link.tsx",
         type: "registry:example",
       },
     ],

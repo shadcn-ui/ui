@@ -29,9 +29,9 @@ const people = [
     email: "shadcn@vercel.com",
   },
   {
-    username: "leerob",
-    avatar: "https://github.com/leerob.png",
-    email: "leerob@vercel.com",
+    username: "maxleiter",
+    avatar: "https://github.com/maxleiter.png",
+    email: "maxleiter@vercel.com",
   },
   {
     username: "evilrabbit",
@@ -42,14 +42,14 @@ const people = [
 
 export default function ItemDropdown() {
   return (
-    <div className="flex min-h-64 w-full max-w-md flex-col items-center gap-6 [--radius:0.95rem]">
+    <div className="flex min-h-64 w-full max-w-md flex-col items-center gap-6">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm" className="w-fit">
             Select <ChevronDownIcon />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-72 [--radius:0.95rem]" align="end">
+        <DropdownMenuContent className="w-72 [--radius:0.65rem]" align="end">
           {people.map((person) => (
             <DropdownMenuItem key={person.username} className="p-0">
               <Item size="sm" className="w-full p-2">

@@ -11,10 +11,10 @@ import {
   EmptyTitle,
 } from "@/registry/new-york-v4/ui/empty"
 import { Field, FieldLabel } from "@/registry/new-york-v4/ui/field"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
@@ -69,7 +69,7 @@ export function SpinnerDemo() {
         <Field>
           <FieldLabel htmlFor="input-group-spinner">Input Group</FieldLabel>
           <InputGroup>
-            <Input id="input-group-spinner" />
+            <InputGroupInput id="input-group-spinner" />
             <InputGroupAddon>
               <Spinner />
             </InputGroupAddon>

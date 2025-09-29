@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/examples/input-group-button-group.tsx",
-      "content": "import { IconInfoCircle } from \"@tabler/icons-react\"\n\nimport {\n  ButtonGroup,\n  ButtonGroupText,\n} from \"@/registry/new-york-v4/ui/button-group\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\nimport {\n  InputGroup,\n  InputGroupAddon,\n} from \"@/registry/new-york-v4/ui/input-group\"\n\nexport default function InputGroupButtonGroup() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-6\">\n      <ButtonGroup>\n        <ButtonGroupText>https://</ButtonGroupText>\n        <InputGroup>\n          <Input id=\"url\" />\n          <InputGroupAddon align=\"inline-end\">\n            <IconInfoCircle />\n          </InputGroupAddon>\n        </InputGroup>\n        <ButtonGroupText>.com</ButtonGroupText>\n      </ButtonGroup>\n    </div>\n  )\n}\n",
+      "content": "import { IconInfoCircle } from \"@tabler/icons-react\"\n\nimport {\n  ButtonGroup,\n  ButtonGroupText,\n} from \"@/registry/new-york-v4/ui/button-group\"\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupInput,\n} from \"@/registry/new-york-v4/ui/input-group\"\n\nexport default function InputGroupButtonGroup() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-6\">\n      <ButtonGroup>\n        <ButtonGroupText>https://</ButtonGroupText>\n        <InputGroup>\n          <InputGroupInput id=\"url\" />\n          <InputGroupAddon align=\"inline-end\">\n            <IconInfoCircle />\n          </InputGroupAddon>\n        </InputGroup>\n        <ButtonGroupText>.com</ButtonGroupText>\n      </ButtonGroup>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

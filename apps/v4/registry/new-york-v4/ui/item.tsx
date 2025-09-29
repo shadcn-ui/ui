@@ -107,7 +107,10 @@ function ItemContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="item-content"
-      className={cn("flex flex-1 flex-col gap-1", className)}
+      className={cn(
+        "flex flex-1 flex-col gap-1 [&+[data-slot=item-content]]:flex-none",
+        className
+      )}
       {...props}
     />
   )
@@ -150,6 +153,32 @@ function ItemActions({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+function ItemHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="item-header"
+      className={cn(
+        "flex basis-full items-center justify-between gap-2",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function ItemFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="item-footer"
+      className={cn(
+        "flex basis-full items-center justify-between gap-2",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 export {
   Item,
   ItemMedia,
@@ -159,4 +188,6 @@ export {
   ItemSeparator,
   ItemTitle,
   ItemDescription,
+  ItemHeader,
+  ItemFooter,
 }

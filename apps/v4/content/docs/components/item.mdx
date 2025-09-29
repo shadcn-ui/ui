@@ -50,6 +50,8 @@ import {
   ItemActions,
   ItemContent,
   ItemDescription,
+  ItemFooter,
+  ItemHeader,
   ItemMedia,
   ItemTitle,
 } from "@/registry/new-york-v4/ui/item"
@@ -57,12 +59,14 @@ import {
 
 ```tsx showLineNumbers
 <Item>
+  <ItemHeader>Item Header</ItemHeader>
   <ItemMedia />
   <ItemContent>
     <ItemTitle>Item</ItemTitle>
     <ItemDescription>Item</ItemDescription>
   </ItemContent>
   <ItemActions />
+  <ItemFooter>Item Footer</ItemFooter>
 </Item>
 ```
 
@@ -99,6 +103,25 @@ The `Item` component has different sizes for different use cases. For example, y
 ### Group
 
 <ComponentPreview name="item-group" className="[&_.preview]:p-4" />
+
+### Link
+
+To render an item as a link, use the `asChild` prop. The hover and focus states will be applied to the anchor element.
+
+<ComponentPreview name="item-link" className="[&_.preview]:p-4" />
+
+```tsx showLineNumbers
+<Item asChild>
+  <a href="/dashboard">
+    <ItemMedia />
+    <ItemContent>
+      <ItemTitle>Dashboard</ItemTitle>
+      <ItemDescription>Overview of your account and activity.</ItemDescription>
+    </ItemContent>
+    <ItemActions />
+  </a>
+</Item>
+```
 
 ### Dropdown
 
@@ -263,4 +286,28 @@ Use the `ItemActions` component to display action buttons or other interactive e
   <Button>Action</Button>
   <Button>Action</Button>
 </ItemActions>
+```
+
+### ItemHeader
+
+Use the `ItemHeader` component to display a header in the item.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<ItemHeader>Item Header</ItemHeader>
+```
+
+### ItemFooter
+
+Use the `ItemFooter` component to display a footer in the item.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+```tsx
+<ItemFooter>Item Footer</ItemFooter>
 ```

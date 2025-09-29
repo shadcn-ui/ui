@@ -3,11 +3,11 @@
 import * as React from "react"
 import { IconInfoCircle, IconStar } from "@tabler/icons-react"
 
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import {
   Popover,
@@ -21,7 +21,7 @@ export function InputGroupButtonExample() {
   return (
     <div className="grid w-full max-w-sm gap-6">
       <InputGroup className="[--radius:9999px]">
-        <Input id="input-secure-19" />
+        <InputGroupInput id="input-secure-19" />
         <Popover>
           <PopoverTrigger asChild>
             <InputGroupAddon>

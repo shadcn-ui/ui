@@ -25,9 +25,9 @@ const people = [
     email: "shadcn@vercel.com",
   },
   {
-    username: "leerob",
-    avatar: "https://github.com/leerob.png",
-    email: "leerob@vercel.com",
+    username: "maxleiter",
+    avatar: "https://github.com/maxleiter.png",
+    email: "maxleiter@vercel.com",
   },
   {
     username: "evilrabbit",

@@ -48,6 +48,7 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
 import {
   Popover,
@@ -55,7 +56,6 @@ import {
   PopoverTrigger,
 } from "@/registry/new-york-v4/ui/popover"
 import { Switch } from "@/registry/new-york-v4/ui/switch"
-import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
@@ -122,8 +122,8 @@ const SAMPLE_DATA = {
     },
     {
       type: "user",
-      title: "leerob",
-      image: "https://github.com/leerob.png",
+      title: "maxleiter",
+      image: "https://github.com/maxleiter.png",
       workspace: "Cursor",
     },
     {
@@ -203,7 +203,7 @@ export function NotionPromptForm() {
           Prompt
         </FieldLabel>
         <InputGroup className="bg-background dark:bg-background shadow-none">
-          <Textarea
+          <InputGroupTextarea
             id="notion-prompt"
             placeholder="Ask, search, or make anything..."
           />

@@ -309,7 +309,7 @@ export const ui: Registry["items"] = [
   {
     name: "input-group",
     type: "registry:ui",
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "input", "textarea"],
     files: [
       {
         path: "ui/input-group.tsx",

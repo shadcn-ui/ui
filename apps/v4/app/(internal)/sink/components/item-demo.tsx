@@ -21,7 +21,9 @@ import {
   ItemActions,
   ItemContent,
   ItemDescription,
+  ItemFooter,
   ItemGroup,
+  ItemHeader,
   ItemMedia,
   ItemSeparator,
   ItemTitle,
@@ -36,8 +38,8 @@ const people = [
     message: "Just shipped a component that fixes itself",
   },
   {
-    username: "leerob",
-    avatar: "https://github.com/leerob.png",
+    username: "pranathip",
+    avatar: "https://github.com/pranathip.png",
     message: "My code is so clean, it does its own laundry",
   },
   {
@@ -105,10 +107,49 @@ const music = [
   },
 ]
 
+const issues = [
+  {
+    number: 1247,
+    date: "March 15, 2024",
+    title:
+      "Button component doesn't respect disabled state when using custom variants",
+    description:
+      "When applying custom variants to the Button component, the disabled prop is ignored and the button remains clickable. This affects accessibility and user experience.",
+  },
+  {
+    number: 892,
+    date: "February 8, 2024",
+    title: "Dialog component causes scroll lock on mobile devices",
+    description:
+      "The Dialog component prevents scrolling on the background content but doesn't restore scroll position properly on mobile Safari and Chrome, causing layout shifts.",
+  },
+  {
+    number: 1156,
+    date: "January 22, 2024",
+    title: "TypeScript errors with Select component in strict mode",
+    description:
+      "Using the Select component with TypeScript strict mode enabled throws type errors related to generic constraints and value prop typing.",
+  },
+  {
+    number: 734,
+    date: "December 3, 2023",
+    title: "Dark mode toggle causes flash of unstyled content",
+    description:
+      "When switching between light and dark themes, there's a brief moment where components render with incorrect styling before the theme transition completes.",
+  },
+  {
+    number: 1389,
+    date: "April 2, 2024",
+    title: "Form validation messages overlap with floating labels",
+    description:
+      "Error messages in Form components with floating labels appear underneath the label text, making them difficult to read. Need better positioning logic for validation feedback.",
+  },
+]
+
 export function ItemDemo() {
   return (
     <div className="@container w-full">
-      <div className="grid gap-4 @3xl:grid-cols-2 @5xl:grid-cols-3 @[120rem]:grid-cols-4 @[140rem]:grid-cols-5">
+      <div className="flex flex-wrap gap-6 2xl:gap-12">
         <div className="flex max-w-sm flex-col gap-6">
           <Item>
             <ItemContent>
@@ -233,8 +274,8 @@ export function ItemDemo() {
                 </Avatar>
                 <Avatar>
                   <AvatarImage
-                    src="https://github.com/leerob.png"
-                    alt="@leerob"
+                    src="https://github.com/maxleiter.png"
+                    alt="@maxleiter"
                   />
                   <AvatarFallback>LR</AvatarFallback>
                 </Avatar>
@@ -264,6 +305,7 @@ export function ItemDemo() {
             </ItemActions>
           </Item>
           <Item variant="outline">
+            <ItemHeader>Your download has started.</ItemHeader>
             <ItemMedia variant="icon">
               <Spinner />
             </ItemMedia>
@@ -276,9 +318,9 @@ export function ItemDemo() {
                 Cancel
               </Button>
             </ItemActions>
-            <div className="basis-full">
+            <ItemFooter>
               <Progress value={50} />
-            </div>
+            </ItemFooter>
           </Item>
         </div>
         <div className="flex max-w-lg flex-col gap-6">
@@ -292,6 +334,7 @@ export function ItemDemo() {
                       alt={song.title}
                       width={32}
                       height={32}
+                      className="grayscale"
                     />
                   </ItemMedia>
                   <ItemContent>
@@ -318,6 +361,28 @@ export function ItemDemo() {
                   </ItemActions>
                 </a>
               </Item>
+            ))}
+          </ItemGroup>
+        </div>
+        <div className="flex max-w-lg flex-col gap-6">
+          <ItemGroup>
+            {issues.map((issue) => (
+              <React.Fragment key={issue.number}>
+                <Item asChild className="rounded-none">
+                  <a href="#">
+                    <ItemContent>
+                      <ItemTitle className="line-clamp-1">
+                        {issue.title}
+                      </ItemTitle>
+                      <ItemDescription>{issue.description}</ItemDescription>
+                    </ItemContent>
+                    <ItemContent className="self-start">
+                      #{issue.number}
+                    </ItemContent>
+                  </a>
+                </Item>
+                <ItemSeparator />
+              </React.Fragment>
             ))}
           </ItemGroup>
         </div>

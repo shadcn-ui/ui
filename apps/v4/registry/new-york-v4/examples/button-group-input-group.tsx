@@ -5,11 +5,11 @@ import { AudioLinesIcon, PlusIcon } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import {
   Tooltip,
@@ -28,7 +28,7 @@ export default function ButtonGroupInputGroup() {
       </ButtonGroup>
       <ButtonGroup>
         <InputGroup>
-          <Input
+          <InputGroupInput
             placeholder={
               voiceEnabled ? "Record and send audio..." : "Send a message..."
             }

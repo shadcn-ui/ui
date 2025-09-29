@@ -85,6 +85,7 @@
     "react-dom": "19.1.0",
     "react-hook-form": "^7.62.0",
     "react-resizable-panels": "^2.1.7",
+    "react-textarea-autosize": "^8.5.9",
     "recharts": "2.15.1",
     "rehype-pretty-code": "^0.14.1",
     "rimraf": "^6.0.1",

@@ -1,10 +1,10 @@
 import { HelpCircle, InfoIcon } from "lucide-react"
 
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import {
   Tooltip,
@@ -16,7 +16,7 @@ export default function InputGroupTooltip() {
   return (
     <div className="grid w-full max-w-sm gap-4">
       <InputGroup>
-        <Input placeholder="Enter password" type="password" />
+        <InputGroupInput placeholder="Enter password" type="password" />
         <InputGroupAddon align="inline-end">
           <Tooltip>
             <TooltipTrigger asChild>
@@ -35,7 +35,7 @@ export default function InputGroupTooltip() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <Input placeholder="Your email address" />
+        <InputGroupInput placeholder="Your email address" />
         <InputGroupAddon align="inline-end">
           <Tooltip>
             <TooltipTrigger asChild>
@@ -54,7 +54,7 @@ export default function InputGroupTooltip() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <Input placeholder="Enter API key" />
+        <InputGroupInput placeholder="Enter API key" />
         <Tooltip>
           <TooltipTrigger asChild>
             <InputGroupAddon>

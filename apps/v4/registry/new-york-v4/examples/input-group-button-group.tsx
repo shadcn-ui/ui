@@ -4,10 +4,10 @@ import {
   ButtonGroup,
   ButtonGroupText,
 } from "@/registry/new-york-v4/ui/button-group"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 
 export default function InputGroupButtonGroup() {
@@ -16,7 +16,7 @@ export default function InputGroupButtonGroup() {
       <ButtonGroup>
         <ButtonGroupText>https://</ButtonGroupText>
         <InputGroup>
-          <Input id="url" />
+          <InputGroupInput id="url" />
           <InputGroupAddon align="inline-end">
             <IconInfoCircle />
           </InputGroupAddon>

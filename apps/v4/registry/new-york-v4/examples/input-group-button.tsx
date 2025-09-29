@@ -9,11 +9,11 @@ import {
 } from "@tabler/icons-react"
 
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import {
   Popover,
@@ -28,7 +28,7 @@ export default function InputGroupButtonExample() {
   return (
     <div className="grid w-full max-w-sm gap-6">
       <InputGroup>
-        <Input placeholder="https://x.com/shadcn" readOnly />
+        <InputGroupInput placeholder="https://x.com/shadcn" readOnly />
         <InputGroupAddon align="inline-end">
           <InputGroupButton
             aria-label="Copy"
@@ -62,7 +62,7 @@ export default function InputGroupButtonExample() {
         <InputGroupAddon className="text-muted-foreground pl-1.5">
           https://
         </InputGroupAddon>
-        <Input id="input-secure-19" />
+        <InputGroupInput id="input-secure-19" />
         <InputGroupAddon align="inline-end">
           <InputGroupButton
             onClick={() => setIsFavorite(!isFavorite)}
@@ -76,7 +76,7 @@ export default function InputGroupButtonExample() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <Input placeholder="Type to search..." />
+        <InputGroupInput placeholder="Type to search..." />
         <InputGroupAddon align="inline-end">
           <InputGroupButton variant="secondary">Go</InputGroupButton>
         </InputGroupAddon>

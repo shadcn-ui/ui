@@ -3,10 +3,10 @@ import { CommandIcon, WavesIcon } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Kbd, KbdGroup } from "@/registry/new-york-v4/ui/kbd"
 import {
@@ -60,7 +60,7 @@ export function KbdDemo() {
         </Kbd>
       </KbdGroup>
       <InputGroup>
-        <Input />
+        <InputGroupInput />
         <InputGroupAddon>
           <Kbd>Space</Kbd>
         </InputGroupAddon>

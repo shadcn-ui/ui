@@ -21,12 +21,12 @@ export default function ItemAvatar() {
       <Item variant="outline">
         <ItemMedia>
           <Avatar className="size-10">
-            <AvatarImage src="https://github.com/leerob.png" />
-            <AvatarFallback>LR</AvatarFallback>
+            <AvatarImage src="https://github.com/evilrabbit.png" />
+            <AvatarFallback>ER</AvatarFallback>
           </Avatar>
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Lee Robinson</ItemTitle>
+          <ItemTitle>Evil Rabbit</ItemTitle>
           <ItemDescription>Last seen 5 months ago</ItemDescription>
         </ItemContent>
         <ItemActions>
@@ -48,7 +48,10 @@ export default function ItemAvatar() {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <Avatar className="hidden sm:flex">
-              <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+              <AvatarImage
+                src="https://github.com/maxleiter.png"
+                alt="@maxleiter"
+              />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
             <Avatar>

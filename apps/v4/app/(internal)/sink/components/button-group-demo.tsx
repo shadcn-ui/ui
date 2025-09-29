@@ -53,6 +53,7 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import {
@@ -242,7 +243,7 @@ export function ButtonGroupDemo() {
             <RotateCwIcon />
           </Button>
           <InputGroup>
-            <Input placeholder="0.00" />
+            <InputGroupInput placeholder="0.00" />
             <InputGroupAddon
               align="inline-end"
               className="text-muted-foreground"
@@ -253,7 +254,7 @@ export function ButtonGroupDemo() {
         </ButtonGroup>
         <div className="flex gap-2 [--radius:0.95rem] [--ring:var(--color-blue-300)] [--spacing:0.22rem] **:[.shadow-xs]:shadow-none">
           <InputGroup>
-            <Input placeholder="Type to search..." />
+            <InputGroupInput placeholder="Type to search..." />
             <InputGroupAddon
               align="inline-start"
               className="text-muted-foreground"
@@ -297,10 +298,10 @@ export function ButtonGroupDemo() {
             <Label htmlFor="width">Width</Label>
             <ButtonGroup>
               <InputGroup>
+                <InputGroupInput id="width" />
                 <InputGroupAddon className="text-muted-foreground">
                   W
                 </InputGroupAddon>
-                <Input id="width" />
                 <InputGroupAddon
                   align="inline-end"
                   className="text-muted-foreground"
@@ -320,7 +321,7 @@ export function ButtonGroupDemo() {
             <Label htmlFor="color">Color</Label>
             <ButtonGroup className="w-full">
               <InputGroup>
-                <Input id="color" />
+                <InputGroupInput id="color" />
                 <InputGroupAddon align="inline-start">
                   <Popover>
                     <PopoverTrigger asChild>
@@ -403,7 +404,7 @@ export function ButtonGroupDemo() {
           </ButtonGroup>
           <ButtonGroup>
             <InputGroup>
-              <Input placeholder="Send a message..." />
+              <InputGroupInput placeholder="Send a message..." />
               <Tooltip>
                 <TooltipTrigger asChild>
                   <InputGroupAddon align="inline-end">

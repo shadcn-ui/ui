@@ -47,14 +47,16 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
   InputGroupText,
+  InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
 ```
 
 ```tsx showLineNumbers
 <InputGroup>
-  <Input placeholder="Search..." />
-  <InputGroupAddon size="icon-xs">
+  <InputGroupInput placeholder="Search..." />
+  <InputGroupAddon>
     <SearchIcon />
   </InputGroupAddon>
   <InputGroupAddon align="inline-end">
@@ -120,6 +122,35 @@ Combine input groups with button groups to create suffixes and prefixes.
   className="[&_.preview]:p-4"
 />
 
+### Custom Input
+
+To use your own custom input with `InputGroup`, add the `data-slot="input-group-control"` attribute to the input. The behavior and focus state will be handled automatically.
+
+No style is applied to the custom input. You can apply your own styles using the `className` prop.
+
+<ComponentPreview
+  name="input-group-custom"
+  className="!mb-4 [&_.preview]:p-4"
+/>
+
+```tsx showLineNumbers
+import { InputGroup, InputGroupAddon } from "@/component/ui/input-group"
+import TextareaAutosize from "react-textarea-autosize"
+
+export function InputGroupCustom() {
+  return (
+    <InputGroup>
+      <TextareaAutosize
+        data-slot="input-group-control"
+        className="dark:bg-input/30 flex field-sizing-content min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2 text-base transition-[color,box-shadow] outline-none"
+        placeholder="Autoresize textarea..."
+      />
+      <InputGroupAddon align="block-end">how</InputGroupAddon>
+    </InputGroup>
+  )
+}
+```
+
 ## API Reference
 
 ### InputGroup
@@ -132,7 +163,7 @@ The main component that wraps inputs and addons.
 
 ```tsx
 <InputGroup>
-  <Input />
+  <InputGroupInput />
   <InputGroupAddon />
 </InputGroup>
 ```
@@ -157,9 +188,7 @@ Use the `InputGroupAddon` component to display icons, text, buttons, or other co
 </InputGroupAddon>
 ```
 
-**For `<Input />
-  `, use the `inline-start` or `inline-end` alignment. For `<Textarea />
-  `, use the `block-start` or `block-end` alignment.**
+**For `<InputGroupInput />`, use the `inline-start` or `inline-end` alignment. For `<InputGroupTextarea />`, use the `block-start` or `block-end` alignment.**
 
 ### InputGroupButton
 
@@ -176,4 +205,42 @@ Use the `InputGroupButton` component to display buttons within input groups.
 <InputGroupButton size="icon-xs">
   <CopyIcon />
 </InputGroupButton>
+```
+
+### InputGroupInput
+
+Use the `InputGroupInput` component as a replacement for `<Input />` when building input groups. This component has the input group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+All other props are passed through to the underlying `<Input />` component.
+
+```tsx
+<InputGroup>
+  <InputGroupInput placeholder="Enter text..." />
+  <InputGroupAddon>
+    <SearchIcon />
+  </InputGroupAddon>
+</InputGroup>
+```
+
+### InputGroupTextarea
+
+Use the `InputGroupTextarea` component as a replacement for `<Textarea />` when building input groups. This component has the textarea group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` |         |
+
+All other props are passed through to the underlying `<Textarea />` component.
+
+```tsx
+<InputGroup>
+  <InputGroupTextarea placeholder="Enter message..." />
+  <InputGroupAddon align="block-end">
+    <InputGroupButton>Send</InputGroupButton>
+  </InputGroupAddon>
+</InputGroup>
 ```

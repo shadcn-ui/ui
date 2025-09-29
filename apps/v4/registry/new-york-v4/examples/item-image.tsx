@@ -33,7 +33,7 @@ const music = [
 export default function ItemImage() {
   return (
     <div className="flex w-full max-w-md flex-col gap-6">
-      <ItemGroup className="gap-4 [--radius:1.5rem]">
+      <ItemGroup className="gap-4">
         {music.map((song) => (
           <Item key={song.title} variant="outline" asChild role="listitem">
             <a href="#">

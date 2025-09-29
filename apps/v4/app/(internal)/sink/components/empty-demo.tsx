@@ -19,10 +19,10 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/registry/new-york-v4/ui/empty"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Kbd } from "@/registry/new-york-v4/ui/kbd"
 import {
@@ -85,7 +85,7 @@ export function EmptyDemo() {
         </EmptyHeader>
         <EmptyContent>
           <InputGroup className="w-3/4">
-            <Input placeholder="Try searching for pages..." />
+            <InputGroupInput placeholder="Try searching for pages..." />
             <InputGroupAddon>
               <SearchIcon />
             </InputGroupAddon>
@@ -127,7 +127,7 @@ export function EmptyDemo() {
               </EmptyHeader>
               <EmptyContent>
                 <InputGroup className="w-3/4">
-                  <Input placeholder="Try searching for pages..." />
+                  <InputGroupInput placeholder="Try searching for pages..." />
                   <InputGroupAddon>
                     <SearchIcon />
                   </InputGroupAddon>

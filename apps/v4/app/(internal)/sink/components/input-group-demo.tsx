@@ -41,6 +41,7 @@ import {
 import {
   Field,
   FieldDescription,
+  FieldGroup,
   FieldLabel,
 } from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
@@ -48,7 +49,9 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
+  InputGroupInput,
   InputGroupText,
+  InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Kbd, KbdGroup } from "@/registry/new-york-v4/ui/kbd"
 import {
@@ -79,13 +82,13 @@ export function InputGroupDemo() {
         <Field>
           <FieldLabel htmlFor="input-group-02">Input Group</FieldLabel>
           <InputGroup>
-            <Input id="input-group-02" placeholder="Default" />
+            <InputGroupInput id="input-group-02" placeholder="Default" />
           </InputGroup>
         </Field>
         <Field data-disabled="true">
           <FieldLabel htmlFor="input-disabled-03">Disabled</FieldLabel>
           <InputGroup>
-            <Input
+            <InputGroupInput
               id="input-disabled-03"
               placeholder="This field is disabled"
               disabled
@@ -95,25 +98,23 @@ export function InputGroupDemo() {
         <Field data-invalid="true">
           <FieldLabel htmlFor="input-invalid-04">Invalid</FieldLabel>
           <InputGroup>
-            <Input
+            <InputGroupInput
               id="input-invalid-04"
               placeholder="This field is invalid"
               aria-invalid="true"
             />
           </InputGroup>
         </Field>
-      </div>
-      <div className="flex flex-col gap-10">
         <Field>
           <FieldLabel htmlFor="input-icon-left-05">Icon (left)</FieldLabel>
           <InputGroup>
-            <Input id="input-icon-left-05" />
+            <InputGroupInput id="input-icon-left-05" />
             <InputGroupAddon>
               <SearchIcon className="text-muted-foreground" />
             </InputGroupAddon>
           </InputGroup>
           <InputGroup>
-            <Input id="input-icon-left-06" />
+            <InputGroupInput id="input-icon-left-06" />
             <InputGroupAddon>
               <FlipVerticalIcon className="text-muted-foreground" />
             </InputGroupAddon>
@@ -122,13 +123,13 @@ export function InputGroupDemo() {
         <Field>
           <FieldLabel htmlFor="input-icon-right-07">Icon (right)</FieldLabel>
           <InputGroup>
-            <Input id="input-icon-right-07" />
+            <InputGroupInput id="input-icon-right-07" />
             <InputGroupAddon align="inline-end">
               <EyeClosedIcon />
             </InputGroupAddon>
           </InputGroup>
           <InputGroup>
-            <Input id="input-icon-right-08" />
+            <InputGroupInput id="input-icon-right-08" />
             <InputGroupAddon align="inline-end">
               <IconLoader2 className="text-muted-foreground animate-spin" />
             </InputGroupAddon>
@@ -137,7 +138,7 @@ export function InputGroupDemo() {
         <Field>
           <FieldLabel htmlFor="input-icon-both-09">Icon (both)</FieldLabel>
           <InputGroup>
-            <Input id="input-icon-both-09" />
+            <InputGroupInput id="input-icon-both-09" />
             <InputGroupAddon>
               <IconMicrophone className="text-muted-foreground" />
             </InputGroupAddon>
@@ -149,7 +150,7 @@ export function InputGroupDemo() {
         <Field>
           <FieldLabel htmlFor="input-icon-both-10">Multiple Icons</FieldLabel>
           <InputGroup>
-            <Input id="input-icon-both-10" />
+            <InputGroupInput id="input-icon-both-10" />
             <InputGroupAddon align="inline-end">
               <IconStar />
               <InputGroupButton
@@ -164,135 +165,44 @@ export function InputGroupDemo() {
             </InputGroupAddon>
           </InputGroup>
         </Field>
-      </div>
-      <div className="flex flex-col gap-10">
         <Field>
-          <FieldLabel htmlFor="input-label-10">Label</FieldLabel>
+          <FieldLabel htmlFor="input-description-10">Description</FieldLabel>
           <InputGroup>
-            <InputGroupAddon>
-              <FieldLabel htmlFor="input-label-10">Label</FieldLabel>
-            </InputGroupAddon>
-            <Input id="input-label-10" />
-          </InputGroup>
-          <InputGroup className="gap-0">
-            <InputGroupAddon>
-              <FieldLabel
-                htmlFor="input-prefix-11"
-                className="text-muted-foreground"
-              >
-                example.com/
-              </FieldLabel>
-            </InputGroupAddon>
-            <Input id="input-prefix-11" />
-          </InputGroup>
-          <InputGroup>
-            <Input id="input-optional-12" />
+            <InputGroupInput id="input-description-10" />
             <InputGroupAddon align="inline-end">
-              <InputGroupText>(optional)</InputGroupText>
+              <IconInfoCircle />
             </InputGroupAddon>
           </InputGroup>
+          <FieldDescription>
+            This is a description of the input group.
+          </FieldDescription>
         </Field>
-        <Field>
-          <FieldLabel htmlFor="input-button-13">Button</FieldLabel>
-          <InputGroup>
-            <Input id="input-button-13" />
-            <InputGroupAddon>
-              <InputGroupButton>Button</InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-          <InputGroup>
-            <Input id="input-button-14" />
-            <InputGroupAddon>
-              <InputGroupButton variant="outline">Button</InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-          <InputGroup>
-            <Input id="input-button-15" />
-            <InputGroupAddon>
-              <InputGroupButton variant="secondary">Button</InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-          <InputGroup>
-            <Input id="input-button-16" />
-            <InputGroupAddon align="inline-end">
-              <InputGroupButton variant="secondary">Button</InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-          <InputGroup>
-            <Input id="input-button-17" />
-            <InputGroupAddon align="inline-end">
-              <InputGroupButton size="icon-xs">
-                <IconCopy />
-              </InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-          <InputGroup>
-            <Input id="input-button-18" />
-            <InputGroupAddon align="inline-end">
-              <InputGroupButton variant="secondary" size="icon-xs">
-                <IconTrash />
-              </InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-          <InputGroup className="[--radius:9999px]">
-            <Popover>
-              <PopoverTrigger asChild>
-                <InputGroupAddon>
-                  <InputGroupButton variant="secondary" size="icon-xs">
-                    <IconInfoCircle />
-                  </InputGroupButton>
-                </InputGroupAddon>
-              </PopoverTrigger>
-              <PopoverContent
-                align="start"
-                className="flex flex-col gap-1 rounded-xl text-sm"
-              >
-                <p className="font-medium">Your connection is not secure.</p>
-                <p>
-                  You should not enter any sensitive information on this site.
-                </p>
-              </PopoverContent>
-            </Popover>
-            <InputGroupAddon className="text-muted-foreground">
-              https://
-            </InputGroupAddon>
-            <Input id="input-secure-19" />
-            <InputGroupAddon align="inline-end">
-              <InputGroupButton
-                size="icon-xs"
-                onClick={() => toast.success("Added to favorites")}
-              >
-                <IconStar />
-              </InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-        </Field>
-        <Field>
-          <FieldLabel htmlFor="input-addon-20">Addon (block-start)</FieldLabel>
-          <InputGroup className="h-auto">
-            <Input id="input-addon-20" />
-            <InputGroupAddon align="block-start">
-              <InputGroupText>First Name</InputGroupText>
-              <IconInfoCircle className="text-muted-foreground ml-auto" />
-            </InputGroupAddon>
-          </InputGroup>
-        </Field>
-        <Field>
-          <FieldLabel htmlFor="input-addon-21">Addon (block-end)</FieldLabel>
-          <InputGroup className="h-auto">
-            <Input id="input-addon-21" />
-            <InputGroupAddon align="block-end">
-              <InputGroupText>20/240 characters</InputGroupText>
-              <IconInfoCircle className="text-muted-foreground ml-auto" />
-            </InputGroupAddon>
-          </InputGroup>
-        </Field>
+        <FieldGroup className="grid grid-cols-2 gap-4">
+          <Field>
+            <FieldLabel htmlFor="input-group-11">First Name</FieldLabel>
+            <InputGroup>
+              <InputGroupInput id="input-group-11" placeholder="First Name" />
+              <InputGroupAddon align="inline-end">
+                <IconInfoCircle />
+              </InputGroupAddon>
+            </InputGroup>
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="input-group-12">Last Name</FieldLabel>
+            <InputGroup>
+              <InputGroupInput id="input-group-12" placeholder="Last Name" />
+              <InputGroupAddon align="inline-end">
+                <IconInfoCircle />
+              </InputGroupAddon>
+            </InputGroup>
+          </Field>
+        </FieldGroup>
       </div>
       <div className="flex flex-col gap-10">
         <Field>
           <FieldLabel htmlFor="input-tooltip-20">Tooltip</FieldLabel>
           <InputGroup>
-            <Input id="input-tooltip-20" />
+            <InputGroupInput id="input-tooltip-20" />
             <InputGroupAddon align="inline-end">
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -308,7 +218,7 @@ export function InputGroupDemo() {
         <Field>
           <FieldLabel htmlFor="input-dropdown-21">Dropdown</FieldLabel>
           <InputGroup>
-            <Input id="input-dropdown-21" />
+            <InputGroupInput id="input-dropdown-21" />
             <InputGroupAddon>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -337,28 +247,183 @@ export function InputGroupDemo() {
           </InputGroup>
         </Field>
         <Field>
+          <FieldLabel htmlFor="input-label-10">Label</FieldLabel>
+          <InputGroup>
+            <InputGroupAddon>
+              <FieldLabel htmlFor="input-label-10">Label</FieldLabel>
+            </InputGroupAddon>
+            <InputGroupInput id="input-label-10" />
+          </InputGroup>
+          <InputGroup className="gap-0">
+            <InputGroupAddon>
+              <FieldLabel
+                htmlFor="input-prefix-11"
+                className="text-muted-foreground"
+              >
+                example.com/
+              </FieldLabel>
+            </InputGroupAddon>
+            <InputGroupInput id="input-prefix-11" />
+          </InputGroup>
+          <InputGroup>
+            <InputGroupInput id="input-optional-12" />
+            <InputGroupAddon align="inline-end">
+              <InputGroupText>(optional)</InputGroupText>
+            </InputGroupAddon>
+          </InputGroup>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="input-button-13">Button</FieldLabel>
+          <InputGroup>
+            <InputGroupInput id="input-button-13" />
+            <InputGroupAddon>
+              <InputGroupButton>Button</InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+          <InputGroup>
+            <InputGroupInput id="input-button-14" />
+            <InputGroupAddon>
+              <InputGroupButton variant="outline">Button</InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+          <InputGroup>
+            <InputGroupInput id="input-button-15" />
+            <InputGroupAddon>
+              <InputGroupButton variant="secondary">Button</InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+          <InputGroup>
+            <InputGroupInput id="input-button-16" />
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton variant="secondary">Button</InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+          <InputGroup>
+            <InputGroupInput id="input-button-17" />
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton size="icon-xs">
+                <IconCopy />
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+          <InputGroup>
+            <InputGroupInput id="input-button-18" />
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton variant="secondary" size="icon-xs">
+                <IconTrash />
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+          <InputGroup className="[--radius:9999px]">
+            <Popover>
+              <PopoverTrigger asChild>
+                <InputGroupAddon>
+                  <InputGroupButton variant="secondary" size="icon-xs">
+                    <IconInfoCircle />
+                  </InputGroupButton>
+                </InputGroupAddon>
+              </PopoverTrigger>
+              <PopoverContent
+                align="start"
+                className="flex flex-col gap-1 rounded-xl text-sm"
+              >
+                <p className="font-medium">Your connection is not secure.</p>
+                <p>
+                  You should not enter any sensitive information on this site.
+                </p>
+              </PopoverContent>
+            </Popover>
+            <InputGroupAddon className="text-muted-foreground">
+              https://
+            </InputGroupAddon>
+            <InputGroupInput id="input-secure-19" />
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton
+                size="icon-xs"
+                onClick={() => toast.success("Added to favorites")}
+              >
+                <IconStar />
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="input-addon-20">Addon (block-start)</FieldLabel>
+          <InputGroup className="h-auto">
+            <InputGroupInput id="input-addon-20" />
+            <InputGroupAddon align="block-start">
+              <InputGroupText>First Name</InputGroupText>
+              <IconInfoCircle className="text-muted-foreground ml-auto" />
+            </InputGroupAddon>
+          </InputGroup>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="input-addon-21">Addon (block-end)</FieldLabel>
+          <InputGroup className="h-auto">
+            <InputGroupInput id="input-addon-21" />
+            <InputGroupAddon align="block-end">
+              <InputGroupText>20/240 characters</InputGroupText>
+              <IconInfoCircle className="text-muted-foreground ml-auto" />
+            </InputGroupAddon>
+          </InputGroup>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="textarea-comment-33">Default Button</FieldLabel>
+          <InputGroup>
+            <InputGroupTextarea
+              id="textarea-comment-33"
+              placeholder="Share your thoughts..."
+              className="py-2.5"
+            />
+            <InputGroupAddon align="block-end">
+              <ButtonGroup>
+                <Button variant="outline" size="sm">
+                  Button
+                </Button>
+                <Button variant="outline" size="icon" className="size-8">
+                  <IconChevronDown />
+                </Button>
+              </ButtonGroup>
+              <Button variant="ghost" className="ml-auto" size="sm">
+                Cancel
+              </Button>
+              <Button variant="default" size="sm">
+                Post <ArrowRightIcon />
+              </Button>
+            </InputGroupAddon>
+          </InputGroup>
+        </Field>
+      </div>
+      <div className="flex flex-col gap-10">
+        <Field>
           <FieldLabel htmlFor="input-kbd-22">Input Group with Kbd</FieldLabel>
           <InputGroup>
-            <Input id="input-kbd-22" />
+            <InputGroupInput id="input-kbd-22" />
             <InputGroupAddon>
               <Kbd>⌘K</Kbd>
             </InputGroupAddon>
           </InputGroup>
           <InputGroup>
-            <Input id="input-kbd-23" />
+            <InputGroupInput id="input-kbd-23" />
             <InputGroupAddon align="inline-end">
               <Kbd>⌘K</Kbd>
             </InputGroupAddon>
           </InputGroup>
           <InputGroup>
-            <Input id="input-search-apps-24" placeholder="Search for Apps..." />
+            <InputGroupInput
+              id="input-search-apps-24"
+              placeholder="Search for Apps..."
+            />
             <InputGroupAddon align="inline-end">Ask AI</InputGroupAddon>
             <InputGroupAddon align="inline-end">
               <Kbd>Tab</Kbd>
             </InputGroupAddon>
           </InputGroup>
           <InputGroup>
-            <Input id="input-search-type-25" placeholder="Type to search..." />
+            <InputGroupInput
+              id="input-search-type-25"
+              placeholder="Type to search..."
+            />
             <InputGroupAddon align="inline-start">
               <IconServerSpark />
             </InputGroupAddon>
@@ -370,12 +435,10 @@ export function InputGroupDemo() {
             </InputGroupAddon>
           </InputGroup>
         </Field>
-      </div>
-      <div className="flex flex-col gap-10">
         <Field>
           <FieldLabel htmlFor="input-username-26">Username</FieldLabel>
           <InputGroup>
-            <Input id="input-username-26" defaultValue="shadcn" />
+            <InputGroupInput id="input-username-26" defaultValue="shadcn" />
             <InputGroupAddon align="inline-end">
               <div className="flex size-4 items-center justify-center rounded-full bg-green-500 dark:bg-green-800">
                 <IconCheck className="size-3 text-white" />
@@ -386,9 +449,8 @@ export function InputGroupDemo() {
             This username is available.
           </FieldDescription>
         </Field>
-
         <InputGroup>
-          <Input
+          <InputGroupInput
             id="input-search-docs-27"
             placeholder="Search documentation..."
           />
@@ -397,9 +459,8 @@ export function InputGroupDemo() {
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
         </InputGroup>
-
         <InputGroup data-disabled="true">
-          <Input
+          <InputGroupInput
             id="input-search-disabled-28"
             placeholder="Search documentation..."
             disabled
@@ -414,7 +475,7 @@ export function InputGroupDemo() {
           <ButtonGroup>
             <ButtonGroupText>https://</ButtonGroupText>
             <InputGroup>
-              <Input id="url" />
+              <InputGroupInput id="url" />
               <InputGroupAddon align="inline-end">
                 <IconInfoCircle />
               </InputGroupAddon>
@@ -431,9 +492,40 @@ export function InputGroupDemo() {
             This is a description of the input group.
           </FieldDescription>
           <InputGroup>
-            <Input id="input-group-29" disabled defaultValue="shadcn" />
+            <InputGroupInput
+              id="input-group-29"
+              disabled
+              defaultValue="shadcn"
+            />
             <InputGroupAddon align="inline-end">
               <Spinner />
+            </InputGroupAddon>
+          </InputGroup>
+        </Field>
+
+        <Field>
+          <FieldLabel htmlFor="textarea-code-32">Code Editor</FieldLabel>
+          <InputGroup>
+            <InputGroupTextarea
+              id="textarea-code-32"
+              placeholder="console.log('Hello, world!');"
+              className="min-h-[300px] py-3"
+            />
+            <InputGroupAddon align="block-start" className="border-b">
+              <InputGroupText className="font-mono font-medium">
+                <IconBrandJavascript />
+                script.js
+              </InputGroupText>
+              <InputGroupButton size="icon-xs" className="ml-auto">
+                <IconRefresh />
+              </InputGroupButton>
+              <InputGroupButton size="icon-xs" variant="ghost">
+                <IconCopy />
+              </InputGroupButton>
+            </InputGroupAddon>
+            <InputGroupAddon align="block-end" className="border-t">
+              <InputGroupText>Line 1, Column 1</InputGroupText>
+              <InputGroupText className="ml-auto">JavaScript</InputGroupText>
             </InputGroupAddon>
           </InputGroup>
         </Field>
@@ -451,7 +543,7 @@ export function InputGroupDemo() {
             Input Group
           </FieldLabel>
           <InputGroup>
-            <Textarea
+            <InputGroupTextarea
               id="textarea-header-footer-13"
               placeholder="Enter your text here..."
             />
@@ -463,7 +555,7 @@ export function InputGroupDemo() {
         <Field data-invalid="true">
           <FieldLabel htmlFor="textarea-header-footer-14">Invalid</FieldLabel>
           <InputGroup>
-            <Textarea
+            <InputGroupTextarea
               id="textarea-header-footer-14"
               placeholder="Enter your text here..."
               aria-invalid="true"
@@ -476,7 +568,7 @@ export function InputGroupDemo() {
         <Field data-disabled="true">
           <FieldLabel htmlFor="textarea-header-footer-15">Disabled</FieldLabel>
           <InputGroup>
-            <Textarea
+            <InputGroupTextarea
               id="textarea-header-footer-15"
               placeholder="Enter your text here..."
               disabled
@@ -489,7 +581,7 @@ export function InputGroupDemo() {
         <Field>
           <FieldLabel htmlFor="textarea-header-footer-30">Textarea</FieldLabel>
           <InputGroup>
-            <Textarea
+            <InputGroupTextarea
               id="textarea-header-footer-30"
               placeholder="Enter your text here..."
             />
@@ -509,7 +601,10 @@ export function InputGroupDemo() {
         <Field>
           <FieldLabel htmlFor="prompt-31">Enter your prompt</FieldLabel>
           <InputGroup>
-            <Textarea id="prompt-31" placeholder="Ask, Search or Chat..." />
+            <InputGroupTextarea
+              id="prompt-31"
+              placeholder="Ask, Search or Chat..."
+            />
             <InputGroupAddon align="block-end">
               <InputGroupButton
                 variant="outline"
@@ -548,7 +643,7 @@ export function InputGroupDemo() {
         <Field>
           <FieldLabel htmlFor="textarea-comment-31">Comment Box</FieldLabel>
           <InputGroup>
-            <Textarea
+            <InputGroupTextarea
               id="textarea-comment-31"
               placeholder="Share your thoughts..."
             />
@@ -559,58 +654,6 @@ export function InputGroupDemo() {
               <InputGroupButton variant="default" size="sm">
                 Post Comment
               </InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-        </Field>
-        <Field>
-          <FieldLabel htmlFor="textarea-code-32">Code Editor</FieldLabel>
-          <InputGroup>
-            <Textarea
-              id="textarea-code-32"
-              placeholder="console.log('Hello, world!');"
-              className="min-h-[300px] py-3"
-            />
-            <InputGroupAddon align="block-start" className="border-b">
-              <InputGroupText className="font-mono font-medium">
-                <IconBrandJavascript />
-                script.js
-              </InputGroupText>
-              <InputGroupButton size="icon-xs" className="ml-auto">
-                <IconRefresh />
-              </InputGroupButton>
-              <InputGroupButton size="icon-xs" variant="ghost">
-                <IconCopy />
-              </InputGroupButton>
-            </InputGroupAddon>
-            <InputGroupAddon align="block-end" className="border-t">
-              <InputGroupText>Line 1, Column 1</InputGroupText>
-              <InputGroupText className="ml-auto">JavaScript</InputGroupText>
-            </InputGroupAddon>
-          </InputGroup>
-        </Field>
-        <Field>
-          <FieldLabel htmlFor="textarea-comment-33">Default Button</FieldLabel>
-          <InputGroup>
-            <Textarea
-              id="textarea-comment-33"
-              placeholder="Share your thoughts..."
-              className="py-2.5"
-            />
-            <InputGroupAddon align="block-end">
-              <ButtonGroup>
-                <Button variant="outline" size="sm">
-                  Button
-                </Button>
-                <Button variant="outline" size="icon" className="size-8">
-                  <IconChevronDown />
-                </Button>
-              </ButtonGroup>
-              <Button variant="ghost" className="ml-auto" size="sm">
-                Cancel
-              </Button>
-              <Button variant="default" size="sm">
-                Post <ArrowRightIcon />
-              </Button>
             </InputGroupAddon>
           </InputGroup>
         </Field>

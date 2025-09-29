@@ -10,14 +10,14 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,
+  InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
-import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 
-export function InputGroupTextarea() {
+export function InputGroupTextareaExample() {
   return (
     <div className="grid w-full max-w-md gap-4">
       <InputGroup>
-        <Textarea
+        <InputGroupTextarea
           id="textarea-code-32"
           placeholder="console.log('Hello, world!');"
           className="min-h-[180px]"
