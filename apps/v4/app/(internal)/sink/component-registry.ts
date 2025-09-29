@@ -1,4 +1,5 @@
-import BlocksPage from "./(pages)/blocks/page"
+import FormsPage from "@/app/(internal)/sink/(pages)/forms/page"
+
 import NextFormPage from "./(pages)/next-form/page"
 import ReactHookFormPage from "./(pages)/react-hook-form/page"
 import TanstackFormPage from "./(pages)/tanstack-form/page"
@@ -400,10 +401,10 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     href: "/sink/tooltip",
   },
   blocks: {
-    name: "Blocks",
-    component: BlocksPage,
+    name: "Forms",
+    component: FormsPage,
     type: "registry:page",
-    href: "/sink/blocks",
+    href: "/sink/forms",
   },
   "next-form": {
     name: "Next.js Form",

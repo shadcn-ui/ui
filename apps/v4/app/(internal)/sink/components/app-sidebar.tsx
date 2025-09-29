@@ -26,6 +26,7 @@ import {
 import {
   InputGroup,
   InputGroupAddon,
+  InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import {
@@ -36,7 +37,6 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInput,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -181,7 +181,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 Search
               </Label>
               <InputGroup className="bg-background h-8 shadow-none">
-                <SidebarInput
+                <InputGroupInput
                   id="search"
                   placeholder="Search the docs..."
                   className="h-7"
