@@ -11,9 +11,9 @@ import {
   Field,
   FieldDescription,
   FieldGroup,
+  FieldLabel,
 } from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
-import { Label } from "@/registry/new-york-v4/ui/label"
 
 export function LoginForm({
   className,
@@ -32,7 +32,7 @@ export function LoginForm({
           <form>
             <FieldGroup>
               <Field>
-                <Label htmlFor="email">Email</Label>
+                <FieldLabel htmlFor="email">Email</FieldLabel>
                 <Input
                   id="email"
                   type="email"
@@ -42,7 +42,7 @@ export function LoginForm({
               </Field>
               <Field>
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <FieldLabel htmlFor="password">Password</FieldLabel>
                   <a
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
@@ -52,20 +52,15 @@ export function LoginForm({
                 </div>
                 <Input id="password" type="password" required />
               </Field>
-              <FieldGroup>
-                <Button type="submit" className="w-full">
-                  Login
-                </Button>
-                <Button variant="outline" className="w-full">
+              <Field>
+                <Button type="submit">Login</Button>
+                <Button variant="outline" type="button">
                   Login with Google
                 </Button>
                 <FieldDescription className="text-center">
-                  Don&apos;t have an account?{" "}
-                  <a href="#" className="underline underline-offset-4">
-                    Sign up
-                  </a>
+                  Don&apos;t have an account? <a href="#">Sign up</a>
                 </FieldDescription>
-              </FieldGroup>
+              </Field>
             </FieldGroup>
           </form>
         </CardContent>

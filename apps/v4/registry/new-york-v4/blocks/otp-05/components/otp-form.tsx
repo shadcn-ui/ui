@@ -6,6 +6,7 @@ import {
   Field,
   FieldDescription,
   FieldGroup,
+  FieldLabel,
 } from "@/registry/new-york-v4/ui/field"
 import {
   InputOTP,
@@ -13,7 +14,6 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/registry/new-york-v4/ui/input-otp"
-import { Label } from "@/registry/new-york-v4/ui/label"
 
 export function OTPForm({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -36,9 +36,9 @@ export function OTPForm({ className, ...props }: React.ComponentProps<"div">) {
             </FieldDescription>
           </div>
           <Field>
-            <Label htmlFor="otp" className="sr-only">
+            <FieldLabel htmlFor="otp" className="sr-only">
               Verification code
-            </Label>
+            </FieldLabel>
             <InputOTP
               maxLength={6}
               id="otp"
@@ -62,13 +62,11 @@ export function OTPForm({ className, ...props }: React.ComponentProps<"div">) {
             </FieldDescription>
           </Field>
           <Field>
-            <Button type="submit" className="w-full">
-              Verify
-            </Button>
+            <Button type="submit">Verify</Button>
           </Field>
         </FieldGroup>
       </form>
-      <FieldDescription className="text-center">
+      <FieldDescription className="px-6 text-center">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
         and <a href="#">Privacy Policy</a>.
       </FieldDescription>

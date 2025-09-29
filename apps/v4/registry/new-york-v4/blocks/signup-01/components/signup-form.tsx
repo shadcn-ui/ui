@@ -10,9 +10,9 @@ import {
   Field,
   FieldDescription,
   FieldGroup,
+  FieldLabel,
 } from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
-import { Label } from "@/registry/new-york-v4/ui/label"
 
 export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
   return (
@@ -27,11 +27,11 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
         <form>
           <FieldGroup>
             <Field>
-              <Label htmlFor="name">Full Name</Label>
+              <FieldLabel htmlFor="name">Full Name</FieldLabel>
               <Input id="name" type="text" placeholder="John Doe" required />
             </Field>
             <Field>
-              <Label htmlFor="email">Email</Label>
+              <FieldLabel htmlFor="email">Email</FieldLabel>
               <Input
                 id="email"
                 type="email"
@@ -44,32 +44,29 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
               </FieldDescription>
             </Field>
             <Field>
-              <Label htmlFor="password">Password</Label>
+              <FieldLabel htmlFor="password">Password</FieldLabel>
               <Input id="password" type="password" required />
               <FieldDescription>
                 Must be at least 8 characters long.
               </FieldDescription>
             </Field>
             <Field>
-              <Label htmlFor="confirm-password">Confirm Password</Label>
+              <FieldLabel htmlFor="confirm-password">
+                Confirm Password
+              </FieldLabel>
               <Input id="confirm-password" type="password" required />
               <FieldDescription>Please confirm your password.</FieldDescription>
             </Field>
             <FieldGroup>
               <Field>
-                <Button type="submit" className="w-full">
-                  Create Account
-                </Button>
-                <Button variant="outline" className="w-full">
+                <Button type="submit">Create Account</Button>
+                <Button variant="outline" type="button">
                   Sign up with Google
                 </Button>
+                <FieldDescription className="px-6 text-center">
+                  Already have an account? <a href="#">Sign in</a>
+                </FieldDescription>
               </Field>
-              <FieldDescription className="text-center">
-                Already have an account?{" "}
-                <a href="#" className="underline underline-offset-4">
-                  Sign in
-                </a>
-              </FieldDescription>
             </FieldGroup>
           </FieldGroup>
         </form>

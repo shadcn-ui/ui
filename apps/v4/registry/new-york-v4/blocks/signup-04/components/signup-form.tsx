@@ -5,10 +5,10 @@ import {
   Field,
   FieldDescription,
   FieldGroup,
+  FieldLabel,
   FieldSeparator,
 } from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
-import { Label } from "@/registry/new-york-v4/ui/label"
 
 export function SignupForm({
   className,
@@ -27,7 +27,7 @@ export function SignupForm({
                 </p>
               </div>
               <Field>
-                <Label htmlFor="email">Email</Label>
+                <FieldLabel htmlFor="email">Email</FieldLabel>
                 <Input
                   id="email"
                   type="email"
@@ -42,11 +42,13 @@ export function SignupForm({
               <Field>
                 <Field className="grid grid-cols-2 gap-4">
                   <Field>
-                    <Label htmlFor="password">Password</Label>
+                    <FieldLabel htmlFor="password">Password</FieldLabel>
                     <Input id="password" type="password" required />
                   </Field>
                   <Field>
-                    <Label htmlFor="confirm-password">Confirm Password</Label>
+                    <FieldLabel htmlFor="confirm-password">
+                      Confirm Password
+                    </FieldLabel>
                     <Input id="confirm-password" type="password" required />
                   </Field>
                 </Field>
@@ -55,9 +57,7 @@ export function SignupForm({
                 </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit" className="w-full">
-                  Create Account
-                </Button>
+                <Button type="submit">Create Account</Button>
               </Field>
               <FieldSeparator>Or continue with</FieldSeparator>
               <Field className="grid grid-cols-3 gap-4">
@@ -90,10 +90,7 @@ export function SignupForm({
                 </Button>
               </Field>
               <FieldDescription className="text-center">
-                Already have an account?{" "}
-                <a href="#" className="underline underline-offset-4">
-                  Sign in
-                </a>
+                Already have an account? <a href="#">Sign in</a>
               </FieldDescription>
             </FieldGroup>
           </form>
@@ -106,7 +103,7 @@ export function SignupForm({
           </div>
         </CardContent>
       </Card>
-      <FieldDescription className="text-center">
+      <FieldDescription className="px-6 text-center">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
         and <a href="#">Privacy Policy</a>.
       </FieldDescription>

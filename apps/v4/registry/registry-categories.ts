@@ -12,7 +12,7 @@ export const registryCategories = [
   {
     name: "Authentication",
     slug: "authentication",
-    hidden: false,
+    hidden: true,
   },
   {
     name: "Login",

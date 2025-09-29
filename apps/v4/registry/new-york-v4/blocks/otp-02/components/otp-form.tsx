@@ -4,6 +4,7 @@ import {
   Field,
   FieldDescription,
   FieldGroup,
+  FieldLabel,
 } from "@/registry/new-york-v4/ui/field"
 import {
   InputOTP,
@@ -11,7 +12,6 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/registry/new-york-v4/ui/input-otp"
-import { Label } from "@/registry/new-york-v4/ui/label"
 
 export function OTPForm({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -25,9 +25,9 @@ export function OTPForm({ className, ...props }: React.ComponentProps<"div">) {
             </p>
           </div>
           <Field>
-            <Label htmlFor="otp" className="sr-only">
+            <FieldLabel htmlFor="otp" className="sr-only">
               Verification code
-            </Label>
+            </FieldLabel>
             <InputOTP maxLength={6} id="otp" required>
               <InputOTPGroup className="gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border">
                 <InputOTPSlot index={0} />
@@ -48,14 +48,9 @@ export function OTPForm({ className, ...props }: React.ComponentProps<"div">) {
               Enter the 6-digit code sent to your email.
             </FieldDescription>
           </Field>
-          <Button type="submit" className="w-full">
-            Verify
-          </Button>
+          <Button type="submit">Verify</Button>
           <FieldDescription className="text-center">
-            Didn&apos;t receive the code?{" "}
-            <a href="#" className="underline underline-offset-4">
-              Resend
-            </a>
+            Didn&apos;t receive the code? <a href="#">Resend</a>
           </FieldDescription>
         </FieldGroup>
       </form>
