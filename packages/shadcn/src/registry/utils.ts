@@ -8,6 +8,7 @@ import {
 } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
+import { createRegistryFile } from "@/src/utils/registry/create-registry-file"
 import { determineFileType } from "@/src/utils/registry/determine-file-type"
 import { resolveImport } from "@/src/utils/resolve-import"
 import {
@@ -107,11 +108,7 @@ export async function recursivelyResolveFileImports(
 
   // Add the original file first
   const fileType = determineFileType(filePath)
-  const originalFile = {
-    path: relativeRegistryFilePath,
-    type: fileType,
-    target: "",
-  }
+  const originalFile = createRegistryFile(relativeRegistryFilePath, fileType)
   files.push(originalFile)
 
   // 1. Find all import statements in the file.
