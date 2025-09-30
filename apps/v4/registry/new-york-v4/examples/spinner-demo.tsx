@@ -14,7 +14,7 @@ export default function SpinnerDemo() {
           <Spinner />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Processing payment...</ItemTitle>
+          <ItemTitle className="line-clamp-1">Processing payment...</ItemTitle>
         </ItemContent>
         <ItemContent className="flex-none justify-end">
           <span className="text-sm tabular-nums">$100.00</span>

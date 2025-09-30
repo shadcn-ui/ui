@@ -25,7 +25,7 @@ export default function EmptyInputGroup() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <InputGroup className="w-3/4">
+        <InputGroup className="sm:w-3/4">
           <InputGroupInput placeholder="Try searching for pages..." />
           <InputGroupAddon>
             <SearchIcon />
