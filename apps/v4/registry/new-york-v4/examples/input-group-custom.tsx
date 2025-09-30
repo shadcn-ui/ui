@@ -14,7 +14,7 @@ export default function InputGroupCustom() {
       <InputGroup>
         <TextareaAutosize
           data-slot="input-group-control"
-          className="dark:bg-input/30 flex field-sizing-content min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2 text-base transition-[color,box-shadow] outline-none md:text-sm"
+          className="flex field-sizing-content min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2.5 text-base transition-[color,box-shadow] outline-none md:text-sm"
           placeholder="Autoresize textarea..."
         />
         <InputGroupAddon align="block-end">

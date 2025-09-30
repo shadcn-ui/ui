@@ -96,59 +96,17 @@ The `Field` family is designed for composing accessible forms. A typical field i
 
 <ComponentPreview name="field-input" className="!mb-4" />
 
-```tsx showLineNumbers
-<Field>
-  <FieldLabel htmlFor="username">Username</FieldLabel>
-  <Input id="username" type="text" placeholder="Enter username" />
-  <FieldDescription>
-    Choose a unique username for your account.
-  </FieldDescription>
-</Field>
-```
-
 ### Textarea
 
 <ComponentPreview name="field-textarea" className="!mb-4" />
-
-```tsx showLineNumbers
-<Field>
-  <FieldLabel htmlFor="feedback">Feedback</FieldLabel>
-  <Textarea id="feedback" placeholder="Your feedback helps us improve..." />
-  <FieldDescription>Share your thoughts about our service.</FieldDescription>
-</Field>
-```
 
 ### Select
 
 <ComponentPreview name="field-select" className="!mb-4" />
 
-```tsx showLineNumbers
-<Field>
-  <FieldLabel>Department</FieldLabel>
-  <Select>
-    <SelectTrigger>
-      <SelectValue placeholder="Select Department" />
-    </SelectTrigger>
-    <SelectContent>
-      <SelectItem value="engineering">Engineering</SelectItem>
-      <SelectItem value="design">Design</SelectItem>
-    </SelectContent>
-  </Select>
-  <FieldDescription>Select your department or area of work.</FieldDescription>
-</Field>
-```
-
 ### Slider
 
 <ComponentPreview name="field-slider" className="!mb-4" />
-
-```tsx showLineNumbers
-<Field>
-  <FieldTitle>Price Range</FieldTitle>
-  <FieldDescription>Set your budget range ($0 - $1000).</FieldDescription>
-  <Slider aria-label="Price Range" max={1000} min={0} step={10} />
-</Field>
-```
 
 ### Fieldset
 
@@ -158,68 +116,13 @@ The `Field` family is designed for composing accessible forms. A typical field i
 
 <ComponentPreview name="field-checkbox" className="!mb-4" />
 
-```tsx showLineNumbers
-<Field orientation="horizontal">
-  <Checkbox id="sync" defaultChecked />
-  <FieldContent>
-    <FieldLabel htmlFor="sync">Sync Desktop & Documents folders</FieldLabel>
-    <FieldDescription>
-      Your Desktop & Documents folders are being synced with iCloud Drive. You
-      can access them from other devices.
-    </FieldDescription>
-  </FieldContent>
-</Field>
-```
-
 ### Radio
 
 <ComponentPreview name="field-radio" className="!mb-4" />
 
-```tsx showLineNumbers
-<FieldSet>
-  <FieldLabel>Subscription Plan</FieldLabel>
-  <FieldDescription>
-    Yearly and lifetime plans offer significant savings.
-  </FieldDescription>
-  <RadioGroup defaultValue="monthly">
-    <Field orientation="horizontal">
-      <RadioGroupItem value="monthly" id="plan-monthly" />
-      <FieldLabel htmlFor="plan-monthly" className="font-normal">
-        Monthly ($9.99/month)
-      </FieldLabel>
-    </Field>
-    <Field orientation="horizontal">
-      <RadioGroupItem value="yearly" id="plan-yearly" />
-      <FieldLabel htmlFor="plan-yearly" className="font-normal">
-        Yearly ($99.99/year)
-      </FieldLabel>
-    </Field>
-    <Field orientation="horizontal">
-      <RadioGroupItem value="lifetime" id="plan-lifetime" />
-      <FieldLabel htmlFor="plan-lifetime" className="font-normal">
-        Lifetime ($299.99)
-      </FieldLabel>
-    </Field>
-  </RadioGroup>
-</FieldSet>
-```
-
 ### Switch
 
 <ComponentPreview name="field-switch" className="!mb-4" />
-
-```tsx showLineNumbers
-<Field orientation="horizontal">
-  <FieldContent>
-    <FieldLabel htmlFor="2fa">Multi-factor authentication</FieldLabel>
-    <FieldDescription>
-      Enable multi-factor authentication. If you do not have a two-factor
-      device, you can use a one-time code sent to your email.
-    </FieldDescription>
-  </FieldContent>
-  <Switch id="2fa" />
-</Field>
-```
 
 ### Choice Card
 
@@ -227,33 +130,11 @@ To create a selectable field group, wrap `Field` components inside `FieldLabel`.
 
 <ComponentPreview name="field-choice-card" />
 
-```tsx showLineNumbers
-<FieldLabel htmlFor="compute-environment-p8w">
-  <Field>
-    <FieldContent>
-      <FieldTitle>Compute Environment</FieldTitle>
-      <FieldDescription>
-        Run GPU workloads on a K8s configured cluster.
-      </FieldDescription>
-    </FieldContent>
-    <RadioGroupItem value="kubernetes" id="kubernetes-r2h" />
-  </Field>
-</FieldLabel>
-```
-
 ### Field Group
 
 Use `FieldGroup` to stack `Field` components. Use `FieldSeparator` to separate them.
 
 <ComponentPreview name="field-group" className="!mb-4" />
-
-```tsx showLineNumbers
-<FieldGroup>
-  <Field>{/* ... */}</Field>
-  <FieldSeparator />
-  <Field>{/* ... */}</Field>
-</FieldGroup>
-```
 
 ## Responsive Layout
 
@@ -261,22 +142,33 @@ Use `FieldGroup` to stack `Field` components. Use `FieldSeparator` to separate t
 - **Horizontal fields:** Set `orientation="horizontal"` on `Field` to align the label and control side-by-side. Combine with `FieldContent` to keep descriptions aligned.
 - **Responsive fields:** Use `orientation="responsive"` for automatic column layouts inside container-aware parents. Pair with `@container/field-group` classes on `FieldGroup` to switch orientations at specific breakpoints.
 
+<ComponentPreview name="field-responsive" className="!mb-4" />
+
 ```tsx showLineNumbers
 <FieldGroup>
   <Field orientation="responsive">
     <FieldContent>
-      <FieldLabel htmlFor="timezone">Timezone</FieldLabel>
-      <FieldDescription>Select the timezone for reminders.</FieldDescription>
+      <FieldLabel htmlFor="name">Name</FieldLabel>
+      <FieldDescription>
+        Provide your full name for identification
+      </FieldDescription>
     </FieldContent>
-    <Select id="timezone">
-      <SelectTrigger>
-        <SelectValue placeholder="Select" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="utc">UTC</SelectItem>
-        <SelectItem value="pst">Pacific Time</SelectItem>
-      </SelectContent>
-    </Select>
+    <Input id="name" placeholder="Evil Rabbit" required />
+  </Field>
+  <Field orientation="responsive">
+    <FieldContent>
+      <FieldLabel htmlFor="lastName">Message</FieldLabel>
+      <FieldDescription>
+        You can write your message here. Keep it short, preferably under 100
+        characters.
+      </FieldDescription>
+    </FieldContent>
+    <Textarea
+      id="message"
+      placeholder="Hello, world!"
+      required
+      className="min-h-[100px] min-w-[300px] resize-none"
+    />
   </Field>
 </FieldGroup>
 ```

@@ -5,9 +5,9 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
+  InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
-import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 
 export default function SpinnerInputGroup() {
   return (
@@ -19,7 +19,7 @@ export default function SpinnerInputGroup() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <Textarea placeholder="Send a message..." disabled />
+        <InputGroupTextarea placeholder="Send a message..." disabled />
         <InputGroupAddon align="block-end">
           <Spinner /> Validating...
           <InputGroupButton className="ml-auto" variant="default">

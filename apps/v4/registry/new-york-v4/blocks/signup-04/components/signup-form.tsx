@@ -59,7 +59,9 @@ export function SignupForm({
               <Field>
                 <Button type="submit">Create Account</Button>
               </Field>
-              <FieldSeparator>Or continue with</FieldSeparator>
+              <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
+                Or continue with
+              </FieldSeparator>
               <Field className="grid grid-cols-3 gap-4">
                 <Button variant="outline" type="button">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

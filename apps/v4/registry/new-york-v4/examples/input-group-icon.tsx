@@ -1,4 +1,11 @@
-import { CheckIcon, CreditCardIcon, MailIcon, SearchIcon } from "lucide-react"
+import {
+  CheckIcon,
+  CreditCardIcon,
+  InfoIcon,
+  MailIcon,
+  SearchIcon,
+  StarIcon,
+} from "lucide-react"
 
 import {
   InputGroup,
@@ -28,6 +35,13 @@ export default function InputGroupIcon() {
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <CheckIcon />
+        </InputGroupAddon>
+      </InputGroup>
+      <InputGroup>
+        <InputGroupInput placeholder="Card number" />
+        <InputGroupAddon align="inline-end">
+          <StarIcon />
+          <InfoIcon />
         </InputGroupAddon>
       </InputGroup>
     </div>

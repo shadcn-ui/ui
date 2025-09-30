@@ -38,8 +38,6 @@ npx shadcn@latest add spinner
 
 </CodeTabs>
 
----
-
 ## Usage
 
 ```tsx
@@ -49,8 +47,6 @@ import { Spinner } from "@/components/ui/spinner"
 ```tsx
 <Spinner />
 ```
-
----
 
 ## Customization
 
@@ -77,8 +73,6 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
 export { Spinner }
 ```
 
----
-
 ## Examples
 
 ### Size
@@ -87,27 +81,11 @@ Use the `size-*` utility class to change the size of the spinner.
 
 <ComponentPreview name="spinner-size" />
 
-```tsx showLineNumbers
-import { Spinner } from "@/components/ui/spinner"
-
-export function SpinnerSize() {
-  return <Spinner className="size-8" />
-}
-```
-
 ### Color
 
 Use the `text-` utility class to change the color of the spinner.
 
 <ComponentPreview name="spinner-color" />
-
-```tsx showLineNumbers
-import { Spinner } from "@/components/ui/spinner"
-
-export function SpinnerColor() {
-  return <Spinner className="text-blue-500" />
-}
-```
 
 ### Button
 
@@ -115,37 +93,11 @@ Add a spinner to a button to indicate a loading state. The `<Button />` will han
 
 <ComponentPreview name="spinner-button" />
 
-```tsx showLineNumbers
-import { Spinner } from "@/components/ui/spinner"
-
-export function SpinnerButton() {
-  return (
-    <Button>
-      <Spinner />
-      Loading...
-    </Button>
-  )
-}
-```
-
 ### Badge
 
 You can also use a spinner inside a badge.
 
 <ComponentPreview name="spinner-badge" />
-
-```tsx showLineNumbers
-import { Spinner } from "@/components/ui/spinner"
-
-export function SpinnerBadge() {
-  return (
-    <Badge variant="outline">
-      <Spinner />
-      Loading...
-    </Badge>
-  )
-}
-```
 
 ### Input Group
 
@@ -153,67 +105,15 @@ Input Group can have spinners inside `<InputGroupAddon>`.
 
 <ComponentPreview name="spinner-input-group" />
 
-```tsx showLineNumbers
-import { Spinner } from "@/components/ui/spinner"
-
-export function SpinnerInputGroup() {
-  return (
-    <InputGroup>
-      <Input placeholder="Send a message..." disabled />
-      <InputGroupAddon align="inline-end">
-        <Spinner />
-      </InputGroupAddon>
-    </InputGroup>
-  )
-}
-```
-
 ### Empty
 
 <ComponentPreview name="spinner-empty" />
-
-```tsx showLineNumbers
-import { Spinner } from "@/components/ui/spinner"
-
-export function SpinnerEmpty() {
-  return (
-    <Empty>
-      <EmptyHeader>
-        <EmptyMedia variant="icon">
-          <Spinner />
-        </EmptyMedia>
-        <EmptyTitle>Loading...</EmptyTitle>
-        <EmptyDescription>Please wait while we load the data.</EmptyDescription>
-      </EmptyHeader>
-    </Empty>
-  )
-}
-```
 
 ### Item
 
 Use the spinner inside `<ItemMedia>` to indicate a loading state.
 
 <ComponentPreview name="spinner-item" />
-
-```tsx showLineNumbers
-import { Spinner } from "@/components/ui/spinner"
-
-export function SpinnerItem() {
-  return (
-    <Item>
-      <ItemMedia>
-        <Spinner />
-      </ItemMedia>
-      <ItemContent>
-        <ItemTitle>Loading...</ItemTitle>
-      </ItemContent>
-    </Item>
-  )
-}
-```
-
----
 
 ## API Reference
 

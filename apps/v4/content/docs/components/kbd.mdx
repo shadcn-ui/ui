@@ -38,8 +38,6 @@ npx shadcn@latest add kbd
 
 </CodeTabs>
 
----
-
 ## Usage
 
 ```tsx
@@ -50,7 +48,31 @@ import { Kbd } from "@/components/ui/kbd"
 <Kbd>Ctrl</Kbd>
 ```
 
----
+## Examples
+
+### Group
+
+Use the `KbdGroup` component to group keyboard keys together.
+
+<ComponentPreview name="kbd-group" />
+
+### Button
+
+Use the `Kbd` component inside a `Button` component to display a keyboard key inside a button.
+
+<ComponentPreview name="kbd-button" />
+
+### Tooltip
+
+You can use the `Kbd` component inside a `Tooltip` component to display a tooltip with a keyboard key.
+
+<ComponentPreview name="kbd-tooltip" />
+
+### Input Group
+
+You can use the `Kbd` component inside a `InputGroupAddon` component to display a keyboard key inside an input group.
+
+<ComponentPreview name="kbd-input-group" />
 
 ## API Reference
 
@@ -80,31 +102,3 @@ Use the `KbdGroup` component to group `Kbd` components together.
   <Kbd>B</Kbd>
 </KbdGroup>
 ```
-
----
-
-## Examples
-
-### Group
-
-Use the `KbdGroup` component to group keyboard keys together.
-
-<ComponentPreview name="kbd-group" />
-
-### Button
-
-Use the `Kbd` component inside a `Button` component to display a keyboard key inside a button.
-
-<ComponentPreview name="kbd-button" />
-
-### Tooltip
-
-You can use the `Kbd` component inside a `Tooltip` component to display a tooltip with a keyboard key.
-
-<ComponentPreview name="kbd-tooltip" />
-
-### Input Group
-
-You can use the `Kbd` component inside a `InputGroupAddon` component to display a keyboard key inside an input group.
-
-<ComponentPreview name="kbd-input-group" />

@@ -87,42 +87,11 @@ The `ButtonGroup` component has an `orientation` prop that can be used to change
 
 <ComponentPreview name="button-group-orientation" />
 
-```tsx showLineNumbers
-import { ButtonGroup } from "@/components/ui/button-group"
-
-export function ButtonGroupOrientation() {
-  return (
-    <ButtonGroup orientation="vertical">
-      <Button>Button 1</Button>
-      <Button>Button 2</Button>
-    </ButtonGroup>
-  )
-}
-```
-
 ### Size
 
 The `ButtonGroup` component does not have a size prop, but you can control the size of the buttons within the group by using the `size` prop on the individual buttons.
 
 <ComponentPreview name="button-group-size" />
-
-```tsx showLineNumbers
-import { IconPlus } from "@tabler/icons-react"
-
-import { ButtonGroup } from "@/components/ui/button-group"
-
-export function ButtonGroupSizes() {
-  return (
-    <ButtonGroup>
-      <Button size="sm">Button 1</Button>
-      <Button size="sm">Button 2</Button>
-      <Button size="icon-sm">
-        <IconPlus />
-      </Button>
-    </ButtonGroup>
-  )
-}
-```
 
 ### Nested
 
@@ -130,44 +99,11 @@ Nest `<ButtonGroup>` components to create button groups with spacing.
 
 <ComponentPreview name="button-group-nested" />
 
-```tsx showLineNumbers
-import { ButtonGroup } from "@/components/ui/button-group"
-
-export function ButtonGroupNested() {
-  return (
-    <ButtonGroup>
-      <ButtonGroup>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
-      </ButtonGroup>
-      <ButtonGroup>
-        <Button>Button 3</Button>
-        <Button>Button 4</Button>
-      </ButtonGroup>
-    </ButtonGroup>
-  )
-}
-```
-
 ### Separator
 
 The `ButtonGroupSeparator` component is a separator that separates the buttons in the button group. Buttons with variant `outline` generally do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
 
 <ComponentPreview name="button-group-separator" />
-
-```tsx showLineNumbers
-import { ButtonGroupSeparator } from "@/components/ui/button-group"
-
-export function ButtonGroupSeparatorDemo() {
-  return (
-    <ButtonGroup>
-      <Button>Button 1</Button>
-      <ButtonGroupSeparator />
-      <Button>Button 2</Button>
-    </ButtonGroup>
-  )
-}
-```
 
 ### Split
 
@@ -175,43 +111,11 @@ To create a split button group, add two buttons to the button group separated by
 
 <ComponentPreview name="button-group-split" />
 
-```tsx showLineNumbers
-import { IconPlus } from "@tabler/icons-react"
-
-import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group"
-
-export function ButtonGroupSplitDemo() {
-  return (
-    <ButtonGroup>
-      <Button>Button 1</Button>
-      <ButtonGroupSeparator />
-      <Button size="icon">
-        <IconPlus />
-      </Button>
-    </ButtonGroup>
-  )
-}
-```
-
 ### Input
 
 You can also use the `ButtonGroup` component to wrap an `Input` component.
 
 <ComponentPreview name="button-group-input" />
-
-```tsx showLineNumbers
-import { ButtonGroup } from "@/components/ui/button-group"
-import { Input } from "@/components/ui/input"
-
-export function ButtonGroupInputDemo() {
-  return (
-    <ButtonGroup>
-      <Input placeholder="Search..." />
-      <Button variant="outline">Search</Button>
-    </ButtonGroup>
-  )
-}
-```
 
 ### Input Group
 
@@ -219,54 +123,11 @@ A `ButtonGroup` can be used to wrap an `InputGroup` component.
 
 <ComponentPreview name="button-group-input-group" />
 
-```tsx showLineNumbers
-import { SearchIcon } from "lucide-react"
-
-import { ButtonGroup } from "@/components/ui/button-group"
-import { Input } from "@/components/ui/input"
-import { InputGroup, InputGroupAddon } from "@/components/ui/input-group"
-
-export function ButtonGroupInputGroupDemo() {
-  return (
-    <ButtonGroup>
-      <InputGroup>
-        <Input placeholder="Search..." />
-        <InputGroupAddon>
-          <SearchIcon />
-        </InputGroupAddon>
-      </InputGroup>
-    </ButtonGroup>
-  )
-}
-```
-
 ### Dropdown Menu
 
 You can create a split button group with a `DropdownMenu` component.
 
 <ComponentPreview name="button-group-dropdown" />
-
-```tsx showLineNumbers
-import { ButtonGroup } from "@/components/ui/button-group"
-
-export function ButtonGroupDropdownMenuDemo() {
-  return (
-    <ButtonGroup>
-      <Button>Button 1</Button>
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Button>Button 2</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem value="option1">Option 1</DropdownMenuItem>
-          <DropdownMenuItem value="option2">Option 2</DropdownMenuItem>
-          <DropdownMenuItem value="option3">Option 3</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </ButtonGroup>
-  )
-}
-```
 
 ### Select
 
@@ -274,58 +135,11 @@ You can also use the `ButtonGroup` component to wrap a `Select` component.
 
 <ComponentPreview name="button-group-select" />
 
-```tsx showLineNumbers
-import { ButtonGroup } from "@/components/ui/button-group"
-import { Select } from "@/components/ui/select"
-
-export function ButtonGroupSelectDemo() {
-  return (
-    <ButtonGroup>
-      <Button>Button 1</Button>
-      <Select>
-        <SelectTrigger>
-          <SelectValue placeholder="Select an option" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="option1">Option 1</SelectItem>
-          <SelectItem value="option2">Option 2</SelectItem>
-          <SelectItem value="option3">Option 3</SelectItem>
-        </SelectContent>
-      </Select>
-    </ButtonGroup>
-  )
-}
-```
-
 ### Popover
 
 You can also use the `ButtonGroup` component to wrap a `Popover` component.
 
 <ComponentPreview name="button-group-popover" />
-
-```tsx showLineNumbers
-import { ButtonGroup } from "@/components/ui/button-group"
-import { Popover } from "@/components/ui/popover"
-
-export function ButtonGroupPopoverDemo() {
-  return (
-    <ButtonGroup>
-      <Button>Button 1</Button>
-    </ButtonGroup>
-    </ButtonGroup>
-      <Popover>
-        <PopoverTrigger>
-          <Button>Button 2</Button>
-        </PopoverTrigger>
-        <PopoverContent>
-          <PopoverHeader>Popover Header</PopoverHeader>
-          <PopoverBody>Popover Body</PopoverBody>
-        </PopoverContent>
-      </Popover>
-    </ButtonGroup>
-  )
-}
-```
 
 ## API Reference
 

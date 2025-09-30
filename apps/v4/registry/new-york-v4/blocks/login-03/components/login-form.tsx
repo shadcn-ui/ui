@@ -42,8 +42,6 @@ export function LoginForm({
                   </svg>
                   Login with Apple
                 </Button>
-              </Field>
-              <Field>
                 <Button variant="outline" type="button">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path
@@ -54,7 +52,9 @@ export function LoginForm({
                   Login with Google
                 </Button>
               </Field>
-              <FieldSeparator>Or continue with</FieldSeparator>
+              <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
+                Or continue with
+              </FieldSeparator>
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
                 <Input

@@ -77,72 +77,11 @@ Use the `border` utility class to create a outline empty state.
   className="[&_.preview]:p-6 md:[&_.preview]:p-10"
 />
 
-```tsx showLineNumbers
-import { Button } from "@/components/ui/button"
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyTitle,
-} from "@/components/ui/empty"
-
-export function EmptyOutline() {
-  return (
-    <Empty className="rounded-xl border">
-      <EmptyHeader>
-        <EmptyTitle>No data</EmptyTitle>
-        <EmptyDescription>Add your default data here.</EmptyDescription>
-      </EmptyHeader>
-      <EmptyContent>
-        <Button>Add data</Button>
-      </EmptyContent>
-    </Empty>
-  )
-}
-```
-
 ### Background
 
 Use the `bg-*` and `bg-gradient-*` utilities to add a background to the empty state.
 
 <ComponentPreview name="empty-background" className="[&_.preview]:p-0" />
-
-```tsx showLineNumbers
-import { RefreshCcwIcon } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/components/ui/empty"
-
-export function EmptyBackground() {
-  return (
-    <Empty className="from-muted/50 to-background h-full bg-gradient-to-b from-30%">
-      <EmptyHeader>
-        <EmptyMedia variant="icon">
-          <IconBell />
-        </EmptyMedia>
-        <EmptyTitle>No notifications</EmptyTitle>
-        <EmptyDescription>
-          You&apos;re all caught up. New notifications will appear here.
-        </EmptyDescription>
-      </EmptyHeader>
-      <EmptyContent>
-        <Button variant="outline" size="sm">
-          <RefreshCcwIcon />
-          Refresh
-        </Button>
-      </EmptyContent>
-    </Empty>
-  )
-}
-```
 
 ### Avatar
 
@@ -150,90 +89,17 @@ Use the `EmptyMedia` component to display an avatar in the empty state.
 
 <ComponentPreview name="empty-avatar" className="[&_.preview]:p-0" />
 
-```tsx showLineNumbers
-export function EmptyAvatar() {
-  return (
-    <Empty>
-      <EmptyHeader>
-        <EmptyMedia>
-          <Avatar>
-            <AvatarImage src="..." />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-        </EmptyMedia>
-      </EmptyHeader>
-    </Empty>
-  )
-}
-```
-
 ### Avatar Group
 
 Use the `EmptyMedia` component to display an avatar group in the empty state.
 
 <ComponentPreview name="empty-avatar-group" className="[&_.preview]:p-0" />
 
-```tsx showLineNumbers
-export function EmptyAvatarGroup() {
-  return (
-    <Empty>
-      <EmptyHeader>
-        <EmptyMedia variant="default">
-          <div className="flex -space-x-2">
-            <Avatar className="border-background h-8 w-8 border-2 opacity-50">
-              <AvatarImage src="..." />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-            <Avatar className="border-background h-8 w-8 border-2 opacity-30">
-              <AvatarImage src="..." />
-              <AvatarFallback>AB</AvatarFallback>
-            </Avatar>
-          </div>
-        </EmptyMedia>
-      </EmptyHeader>
-    </Empty>
-  )
-}
-```
-
 ### InputGroup
 
 You can add an `InputGroup` component to the `EmptyContent` component.
 
 <ComponentPreview name="empty-input-group" className="[&_.preview]:p-0" />
-
-```tsx showLineNumbers
-import { SearchIcon } from "lucide-react"
-
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyTitle,
-} from "@/components/ui/empty"
-import { Input } from "@/components/ui/input"
-import { InputGroup, InputGroupAddon } from "@/components/ui/input-group"
-
-export function EmptyInputGroup() {
-  return (
-    <Empty>
-      <EmptyHeader>
-        <EmptyTitle>No data</EmptyTitle>
-        <EmptyDescription>Add your default data here.</EmptyDescription>
-      </EmptyHeader>
-      <EmptyContent>
-        <InputGroup>
-          <Input placeholder="Search..." />
-          <InputGroupAddon>
-            <SearchIcon />
-          </InputGroupAddon>
-        </InputGroup>
-      </EmptyContent>
-    </Empty>
-  )
-}
-```
 
 ## API Reference
 

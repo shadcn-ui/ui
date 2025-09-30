@@ -4,6 +4,7 @@ import {
   ItemActions,
   ItemContent,
   ItemDescription,
+  ItemFooter,
   ItemMedia,
   ItemTitle,
 } from "@/registry/new-york-v4/ui/item"
@@ -26,9 +27,9 @@ export default function SpinnerItem() {
             Cancel
           </Button>
         </ItemActions>
-        <div className="basis-full">
-          <Progress value={50} />
-        </div>
+        <ItemFooter>
+          <Progress value={75} />
+        </ItemFooter>
       </Item>
     </div>
   )

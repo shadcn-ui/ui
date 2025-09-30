@@ -4,7 +4,7 @@ import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 
-import { WITH_BADGES } from "@/lib/docs"
+import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
@@ -140,7 +140,7 @@ export function MobileNav({
                               className="flex items-center gap-2"
                             >
                               {item.name}{" "}
-                              {WITH_BADGES.includes(item.url) && (
+                              {PAGES_NEW.includes(item.url) && (
                                 <span className="flex size-2 rounded-full bg-blue-500" />
                               )}
                             </MobileLink>

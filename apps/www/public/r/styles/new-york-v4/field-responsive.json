@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-responsive",
+  "type": "registry:example",
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/field-responsive.tsx",
+      "content": "import {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\nimport { Textarea } from \"@/registry/new-york-v4/ui/textarea\"\n\nexport default function FieldResponsive() {\n  return (\n    <div className=\"w-full max-w-4xl\">\n      <form>\n        <FieldGroup>\n          <Field orientation=\"responsive\">\n            <FieldContent>\n              <FieldLabel htmlFor=\"name\">Name</FieldLabel>\n              <FieldDescription>\n                Provide your full name for identification\n              </FieldDescription>\n            </FieldContent>\n            <Input id=\"name\" placeholder=\"Evil Rabbit\" required />\n          </Field>\n          <Field orientation=\"responsive\">\n            <FieldContent>\n              <FieldLabel htmlFor=\"lastName\">Message</FieldLabel>\n              <FieldDescription>\n                You can write your message here. Keep it short, preferably under\n                100 characters.\n              </FieldDescription>\n            </FieldContent>\n            <Textarea\n              id=\"message\"\n              placeholder=\"Hello, world!\"\n              required\n              className=\"min-h-[100px] min-w-[300px] resize-none\"\n            />\n          </Field>\n        </FieldGroup>\n      </form>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

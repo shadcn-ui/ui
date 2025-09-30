@@ -4382,6 +4382,17 @@
       ]
     },
     {
+      "name": "field-responsive",
+      "type": "registry:example",
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-responsive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "drawer-dialog",
       "type": "registry:example",
       "registryDependencies": ["drawer", "dialog"],

@@ -996,6 +996,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "field-responsive",
+    type: "registry:example",
+    registryDependencies: ["field"],
+    files: [
+      {
+        path: "examples/field-responsive.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "drawer-dialog",
     type: "registry:example",
     registryDependencies: ["drawer", "dialog"],

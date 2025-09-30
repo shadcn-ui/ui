@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { WITH_BADGES } from "@/lib/docs"
+import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
 import type { source } from "@/lib/source"
 import {
@@ -119,8 +119,11 @@ export function DocsSidebar({
                               <Link href={item.url}>
                                 <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
-                                {WITH_BADGES.includes(item.url) && (
-                                  <span className="flex size-2 rounded-full bg-blue-500" />
+                                {PAGES_NEW.includes(item.url) && (
+                                  <span
+                                    className="flex size-2 rounded-full bg-blue-500"
+                                    title="New"
+                                  />
                                 )}
                               </Link>
                             </SidebarMenuButton>

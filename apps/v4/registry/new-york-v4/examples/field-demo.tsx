@@ -133,6 +133,7 @@ export default function FieldDemo() {
                 <Textarea
                   id="checkout-7j9-optional-comments"
                   placeholder="Add any additional comments"
+                  className="resize-none"
                 />
               </Field>
             </FieldGroup>

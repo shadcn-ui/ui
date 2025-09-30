@@ -1,5 +1,4 @@
-export const WITH_BADGES = [
-  "/docs/components/button",
+export const PAGES_NEW = [
   "/docs/components/button-group",
   "/docs/components/empty",
   "/docs/components/field",
@@ -8,3 +7,5 @@ export const WITH_BADGES = [
   "/docs/components/kbd",
   "/docs/components/spinner",
 ]
+
+export const PAGES_UPDATED = ["/docs/components/button"]

@@ -6,11 +6,10 @@ export default function KbdGroupExample() {
       <p className="text-muted-foreground text-sm">
         Use{" "}
         <KbdGroup>
-          <Kbd>Ctrl</Kbd>
-          <span>+</span>
-          <Kbd>B</Kbd>
+          <Kbd>Ctrl + B</Kbd>
+          <Kbd>Ctrl + K</Kbd>
         </KbdGroup>{" "}
-        to toggle the sidebar
+        to open the command palette
       </p>
     </div>
   )
