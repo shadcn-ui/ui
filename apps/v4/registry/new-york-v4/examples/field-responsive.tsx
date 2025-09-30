@@ -34,7 +34,7 @@ export default function FieldResponsive() {
               id="message"
               placeholder="Hello, world!"
               required
-              className="min-h-[100px] min-w-[300px] resize-none"
+              className="min-h-[100px] resize-none sm:min-w-[300px]"
             />
           </Field>
         </FieldGroup>

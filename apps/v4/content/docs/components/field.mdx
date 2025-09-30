@@ -4,7 +4,10 @@ description: Combine labels, controls, and help text to compose accessible form 
 component: true
 ---
 
-<ComponentPreview name="field-demo" className="[&_.preview]:h-[850px]" />
+<ComponentPreview
+  name="field-demo"
+  className="[&_.preview]:h-[800px] [&_.preview]:p-6 md:[&_.preview]:h-[850px]"
+/>
 
 ## Installation
 
@@ -94,47 +97,47 @@ The `Field` family is designed for composing accessible forms. A typical field i
 
 ### Input
 
-<ComponentPreview name="field-input" className="!mb-4" />
+<ComponentPreview name="field-input" className="!mb-4 [&_.preview]:p-6" />
 
 ### Textarea
 
-<ComponentPreview name="field-textarea" className="!mb-4" />
+<ComponentPreview name="field-textarea" className="!mb-4 [&_.preview]:p-6" />
 
 ### Select
 
-<ComponentPreview name="field-select" className="!mb-4" />
+<ComponentPreview name="field-select" className="!mb-4 [&_.preview]:p-6" />
 
 ### Slider
 
-<ComponentPreview name="field-slider" className="!mb-4" />
+<ComponentPreview name="field-slider" className="!mb-4 [&_.preview]:p-6" />
 
 ### Fieldset
 
-<ComponentPreview name="field-fieldset" className="!mb-4" />
+<ComponentPreview name="field-fieldset" className="!mb-4 [&_.preview]:p-6" />
 
 ### Checkbox
 
-<ComponentPreview name="field-checkbox" className="!mb-4" />
+<ComponentPreview name="field-checkbox" className="!mb-4 [&_.preview]:p-6" />
 
 ### Radio
 
-<ComponentPreview name="field-radio" className="!mb-4" />
+<ComponentPreview name="field-radio" className="!mb-4 [&_.preview]:p-6" />
 
 ### Switch
 
-<ComponentPreview name="field-switch" className="!mb-4" />
+<ComponentPreview name="field-switch" className="!mb-4 [&_.preview]:p-6" />
 
 ### Choice Card
 
 To create a selectable field group, wrap `Field` components inside `FieldLabel`.
 
-<ComponentPreview name="field-choice-card" />
+<ComponentPreview name="field-choice-card" className="!mb-4 [&_.preview]:p-6" />
 
 ### Field Group
 
 Use `FieldGroup` to stack `Field` components. Use `FieldSeparator` to separate them.
 
-<ComponentPreview name="field-group" className="!mb-4" />
+<ComponentPreview name="field-group" className="!mb-4 [&_.preview]:p-6" />
 
 ## Responsive Layout
 
@@ -142,7 +145,7 @@ Use `FieldGroup` to stack `Field` components. Use `FieldSeparator` to separate t
 - **Horizontal fields:** Set `orientation="horizontal"` on `Field` to align the label and control side-by-side. Combine with `FieldContent` to keep descriptions aligned.
 - **Responsive fields:** Use `orientation="responsive"` for automatic column layouts inside container-aware parents. Pair with `@container/field-group` classes on `FieldGroup` to switch orientations at specific breakpoints.
 
-<ComponentPreview name="field-responsive" className="!mb-4" />
+<ComponentPreview name="field-responsive" className="!mb-4 [&_.preview]:p-6" />
 
 ```tsx showLineNumbers
 <FieldGroup>

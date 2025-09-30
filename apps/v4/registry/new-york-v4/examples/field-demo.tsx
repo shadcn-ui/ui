@@ -55,11 +55,11 @@ export default function FieldDemo() {
               </Field>
               <div className="grid grid-cols-3 gap-4">
                 <Field>
-                  <FieldLabel htmlFor="checkout-7j9-exp-month-ts6">
+                  <FieldLabel htmlFor="checkout-exp-month-ts6">
                     Month
                   </FieldLabel>
                   <Select defaultValue="">
-                    <SelectTrigger id="checkout-7j9-exp-month-ts6">
+                    <SelectTrigger id="checkout-exp-month-ts6">
                       <SelectValue placeholder="MM" />
                     </SelectTrigger>
                     <SelectContent>
