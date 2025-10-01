@@ -1508,26 +1508,32 @@ export const blocks: Registry["items"] = [
       {
         path: "blocks/new-components-01/components/ui/field.tsx",
         type: "registry:ui",
+        target: "components/ui/field.tsx",
       },
       {
         path: "blocks/new-components-01/components/ui/button-group.tsx",
         type: "registry:ui",
+        target: "components/ui/button-group.tsx",
       },
       {
         path: "blocks/new-components-01/components/ui/input-group.tsx",
         type: "registry:ui",
+        target: "components/ui/input-group.tsx",
       },
       {
         path: "blocks/new-components-01/components/ui/empty.tsx",
         type: "registry:ui",
+        target: "components/ui/empty.tsx",
       },
       {
         path: "blocks/new-components-01/components/ui/item.tsx",
         type: "registry:ui",
+        target: "components/ui/item.tsx",
       },
       {
         path: "blocks/new-components-01/components/ui/spinner.tsx",
         type: "registry:ui",
+        target: "components/ui/spinner.tsx",
       },
       {
         path: "blocks/new-components-01/components/appearance-settings.tsx",

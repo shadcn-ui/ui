@@ -2468,27 +2468,27 @@ export const Index: Record<string, any> = {
     },{
       path: "registry/new-york-v4/blocks/new-components-01/components/ui/field.tsx",
       type: "registry:ui",
-      target: ""
+      target: "components/ui/field.tsx"
     },{
       path: "registry/new-york-v4/blocks/new-components-01/components/ui/button-group.tsx",
       type: "registry:ui",
-      target: ""
+      target: "components/ui/button-group.tsx"
     },{
       path: "registry/new-york-v4/blocks/new-components-01/components/ui/input-group.tsx",
       type: "registry:ui",
-      target: ""
+      target: "components/ui/input-group.tsx"
     },{
       path: "registry/new-york-v4/blocks/new-components-01/components/ui/empty.tsx",
       type: "registry:ui",
-      target: ""
+      target: "components/ui/empty.tsx"
     },{
       path: "registry/new-york-v4/blocks/new-components-01/components/ui/item.tsx",
       type: "registry:ui",
-      target: ""
+      target: "components/ui/item.tsx"
     },{
       path: "registry/new-york-v4/blocks/new-components-01/components/ui/spinner.tsx",
       type: "registry:ui",
-      target: ""
+      target: "components/ui/spinner.tsx"
     },{
       path: "registry/new-york-v4/blocks/new-components-01/components/appearance-settings.tsx",
       type: "registry:component",
