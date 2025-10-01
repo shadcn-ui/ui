@@ -1495,4 +1495,113 @@ export const blocks: Registry["items"] = [
     ],
     categories: ["authentication", "otp"],
   },
+  {
+    name: "new-components-01",
+    description: "New components",
+    type: "registry:block",
+    files: [
+      {
+        path: "blocks/new-components-01/page.tsx",
+        type: "registry:page",
+        target: "app/page.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/field.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/button-group.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/input-group.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/empty.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/item.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/spinner.tsx",
+        type: "registry:ui",
+      },
+      {
+        path: "blocks/new-components-01/components/appearance-settings.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/button-group-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/button-group-input-group.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/button-group-nested.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/button-group-popover.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/empty-avatar-group.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/empty-input-group.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/field-choice-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/field-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/field-slider.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/input-group-button.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/input-group-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/input-group-textarea.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/item-avatar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/item-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/notion-prompt-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/spinner-badge.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/spinner-empty.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["components", "showcase"],
+  },
 ]

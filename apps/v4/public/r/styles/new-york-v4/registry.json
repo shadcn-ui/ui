@@ -2162,6 +2162,115 @@
       "categories": ["authentication", "otp"]
     },
     {
+      "name": "new-components-01",
+      "type": "registry:block",
+      "description": "New components",
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/field.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/button-group.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/input-group.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/empty.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/item.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/spinner.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/appearance-settings.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-demo.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-input-group.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-nested.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-popover.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/empty-avatar-group.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/empty-input-group.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/field-choice-card.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/field-demo.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/field-slider.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/input-group-button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/input-group-demo.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/input-group-textarea.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/item-avatar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/item-demo.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/notion-prompt-form.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/spinner-badge.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/new-components-01/components/spinner-empty.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["components", "showcase"]
+    },
+    {
       "name": "chart-area-axes",
       "type": "registry:block",
       "registryDependencies": ["card", "chart"],
@@ -5131,6 +5240,17 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/spinner-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-basic",
+      "type": "registry:example",
+      "registryDependencies": ["spinner", "button"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-basic.tsx",
           "type": "registry:example"
         }
       ]

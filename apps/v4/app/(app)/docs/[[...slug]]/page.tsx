@@ -158,15 +158,6 @@ export default async function Page(props: {
                   </a>
                 </Badge>
               )}
-              <Badge asChild variant="secondary" className="rounded-full">
-                <a
-                  href={`/sink/${params.slug?.[1]}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Sink <IconArrowUpRight />
-                </a>
-              </Badge>
             </div>
           </div>
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">

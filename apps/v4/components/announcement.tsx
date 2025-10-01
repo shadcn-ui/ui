@@ -7,7 +7,7 @@ export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="rounded-full">
       <Link href="/docs/changelog">
-        Now available: shadcn CLI 3.0 and MCP Server <ArrowRightIcon />
+        New Components: Field, Input Group, Item and more <ArrowRightIcon />
       </Link>
     </Badge>
   )

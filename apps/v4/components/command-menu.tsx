@@ -145,7 +145,7 @@ export function CommandMenu({
         <Button
           variant="secondary"
           className={cn(
-            "bg-surface text-foreground dark:bg-card relative h-8 w-full justify-start pl-2.5 font-medium shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64"
+            "bg-surface text-foreground dark:bg-card relative h-8 w-full justify-start pl-3 font-medium shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64"
           )}
           onClick={() => setOpen(true)}
           {...props}
@@ -154,8 +154,8 @@ export function CommandMenu({
           <span className="inline-flex lg:hidden">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
             <KbdGroup>
-              <Kbd>{isMac ? "⌘" : "Ctrl"}</Kbd>
-              <Kbd>K</Kbd>
+              <Kbd className="border">{isMac ? "⌘" : "Ctrl"}</Kbd>
+              <Kbd className="border">K</Kbd>
             </KbdGroup>
           </div>
         </Button>

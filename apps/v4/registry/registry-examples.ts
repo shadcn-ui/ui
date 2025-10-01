@@ -1750,6 +1750,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "spinner-basic",
+    type: "registry:example",
+    registryDependencies: ["spinner", "button"],
+    files: [
+      {
+        path: "examples/spinner-basic.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "spinner-button",
     type: "registry:example",
     registryDependencies: ["spinner", "button"],
