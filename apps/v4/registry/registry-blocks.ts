@@ -1536,6 +1536,21 @@ export const blocks: Registry["items"] = [
         target: "components/ui/spinner.tsx",
       },
       {
+        path: "blocks/new-components-01/components/ui/button.tsx",
+        type: "registry:ui",
+        target: "components/ui/button.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/input.tsx",
+        type: "registry:ui",
+        target: "components/ui/input.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: "components/ui/tooltip.tsx",
+      },
+      {
         path: "blocks/new-components-01/components/appearance-settings.tsx",
         type: "registry:component",
       },

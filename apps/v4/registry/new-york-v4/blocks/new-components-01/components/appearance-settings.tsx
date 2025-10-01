@@ -3,7 +3,6 @@
 import { IconMinus, IconPlus } from "@tabler/icons-react"
 import { CheckIcon } from "lucide-react"
 
-import { useThemeConfig } from "@/components/active-theme"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
 import {
@@ -45,7 +44,6 @@ const accents = [
 ]
 
 export function AppearanceSettings() {
-  const { activeTheme, setActiveTheme } = useThemeConfig()
   return (
     <FieldSet>
       <FieldGroup>
@@ -88,11 +86,7 @@ export function AppearanceSettings() {
             <FieldDescription>Select the accent color to use.</FieldDescription>
           </FieldContent>
           <FieldSet aria-label="Accent">
-            <RadioGroup
-              className="flex flex-wrap gap-2"
-              value={activeTheme}
-              onValueChange={setActiveTheme}
-            >
+            <RadioGroup className="flex flex-wrap gap-2" defaultValue="blue">
               {accents.map((accent) => (
                 <Label
                   htmlFor={accent.value}
