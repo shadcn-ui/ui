@@ -1,11 +1,21 @@
 import { existsSync, promises as fs } from "fs"
+import { tmpdir } from "os"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
-import { RegistryItem, registryItemFileSchema } from "@/src/registry/schema"
+import { RegistryItem, registryItemFileSchema } from "@/src/schema"
+import { isContentSame } from "@/src/utils/compare"
+import {
+  findExistingEnvFile,
+  getNewEnvKeys,
+  isEnvFile,
+  mergeEnvContent,
+  parseEnvContent,
+} from "@/src/utils/env-helpers"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import { resolveImport } from "@/src/utils/resolve-import"
 import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
@@ -14,6 +24,8 @@ import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
+import { Project, ScriptKind } from "ts-morph"
+import { loadConfig } from "tsconfig-paths"
 import { z } from "zod"
 
 export async function updateFiles(
@@ -25,6 +37,7 @@ export async function updateFiles(
     silent?: boolean
     rootSpinner?: ReturnType<typeof spinner>
     isRemote?: boolean
+    isWorkspace?: boolean
   }
 ) {
   if (!files?.length) {
@@ -39,6 +52,7 @@ export async function updateFiles(
     force: false,
     silent: false,
     isRemote: false,
+    isWorkspace: false,
     ...options,
   }
   const filesCreatedSpinner = spinner(`Updating files.`, {
@@ -47,12 +61,16 @@ export async function updateFiles(
 
   const [projectInfo, baseColor] = await Promise.all([
     getProjectInfo(config.resolvedPaths.cwd),
-    getRegistryBaseColor(config.tailwind.baseColor),
+    config.tailwind.baseColor
+      ? getRegistryBaseColor(config.tailwind.baseColor)
+      : Promise.resolve(undefined),
   ])
 
-  const filesCreated = []
-  const filesUpdated = []
-  const filesSkipped = []
+  let filesCreated: string[] = []
+  let filesUpdated: string[] = []
+  let filesSkipped: string[] = []
+  let envVarsAdded: string[] = []
+  let envFile: string | null = null
 
   for (const file of files) {
     if (!file.content) {
@@ -81,41 +99,56 @@ export async function updateFiles(
       )
     }
 
+    if (isEnvFile(filePath) && !existsSync(filePath)) {
+      const alternativeEnvFile = findExistingEnvFile(targetDir)
+      if (alternativeEnvFile) {
+        filePath = alternativeEnvFile
+      }
+    }
+
     const existingFile = existsSync(filePath)
 
     // Run our transformers.
-    const content = await transform(
-      {
-        filename: file.path,
-        raw: file.content,
-        config,
-        baseColor,
-        transformJsx: !config.tsx,
-        isRemote: options.isRemote,
-      },
-      [
-        transformImport,
-        transformRsc,
-        transformCssVars,
-        transformTwPrefixes,
-        transformIcons,
-      ]
-    )
+    // Skip transformers for .env files to preserve exact content
+    const content = isEnvFile(filePath)
+      ? file.content
+      : await transform(
+          {
+            filename: file.path,
+            raw: file.content,
+            config,
+            baseColor,
+            transformJsx: !config.tsx,
+            isRemote: options.isRemote,
+          },
+          [
+            transformImport,
+            transformRsc,
+            transformCssVars,
+            transformTwPrefixes,
+            transformIcons,
+          ]
+        )
 
     // Skip the file if it already exists and the content is the same.
-    if (existingFile) {
+    // Exception: Don't skip .env files as we merge content instead of replacing
+    if (existingFile && !isEnvFile(filePath)) {
       const existingFileContent = await fs.readFile(filePath, "utf-8")
-      const [normalizedExisting, normalizedNew] = await Promise.all([
-        getNormalizedFileContent(existingFileContent),
-        getNormalizedFileContent(content),
-      ])
-      if (normalizedExisting === normalizedNew) {
+
+      if (
+        isContentSame(existingFileContent, content, {
+          // Ignore import differences for workspace components.
+          // TODO: figure out if we always want this.
+          ignoreImports: options.isWorkspace,
+        })
+      ) {
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
         continue
       }
     }
 
-    if (existingFile && !options.overwrite) {
+    // Skip overwrite prompt for .env files - we'll handle them specially
+    if (existingFile && !options.overwrite && !isEnvFile(filePath)) {
       filesCreatedSpinner.stop()
       if (options.rootSpinner) {
         options.rootSpinner.stop()
@@ -147,16 +180,56 @@ export async function updateFiles(
       await fs.mkdir(targetDir, { recursive: true })
     }
 
+    // Special handling for .env files - append only new keys
+    if (isEnvFile(filePath) && existingFile) {
+      const existingFileContent = await fs.readFile(filePath, "utf-8")
+      const mergedContent = mergeEnvContent(existingFileContent, content)
+      envVarsAdded = getNewEnvKeys(existingFileContent, content)
+      envFile = path.relative(config.resolvedPaths.cwd, filePath)
+
+      if (!envVarsAdded.length) {
+        filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+        continue
+      }
+
+      await fs.writeFile(filePath, mergedContent, "utf-8")
+      filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
+      continue
+    }
+
     await fs.writeFile(filePath, content, "utf-8")
-    existingFile
-      ? filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
-      : filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
+
+    // Handle file creation logging
+    if (!existingFile) {
+      filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
+
+      if (isEnvFile(filePath)) {
+        envVarsAdded = Object.keys(parseEnvContent(content))
+        envFile = path.relative(config.resolvedPaths.cwd, filePath)
+      }
+    } else {
+      filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
+    }
   }
+
+  const allFiles = [...filesCreated, ...filesUpdated, ...filesSkipped]
+  const updatedFiles = await resolveImports(allFiles, config)
+
+  // Let's update filesUpdated with the updated files.
+  filesUpdated.push(...updatedFiles)
+
+  // If a file is in filesCreated and filesUpdated, we should remove it from filesUpdated.
+  filesUpdated = filesUpdated.filter((file) => !filesCreated.includes(file))
 
   const hasUpdatedFiles = filesCreated.length || filesUpdated.length
   if (!hasUpdatedFiles && !filesSkipped.length) {
     filesCreatedSpinner?.info("No files updated.")
   }
+
+  // Remove duplicates.
+  filesCreated = Array.from(new Set(filesCreated))
+  filesUpdated = Array.from(new Set(filesUpdated))
+  filesSkipped = Array.from(new Set(filesSkipped))
 
   if (filesCreated.length) {
     filesCreatedSpinner?.succeed(
@@ -201,6 +274,17 @@ export async function updateFiles(
     if (!options.silent) {
       for (const file of filesSkipped) {
         logger.log(`  - ${file}`)
+      }
+    }
+  }
+
+  if (envVarsAdded.length && envFile) {
+    spinner(
+      `Added the following variables to ${highlighter.info(envFile)}:`
+    )?.info()
+    if (!options.silent) {
+      for (const key of envVarsAdded) {
+        logger.log(`  ${highlighter.success("+")} ${key}`)
       }
     }
   }
@@ -332,10 +416,6 @@ export function resolveNestedFilePath(
   return fileSegments.slice(commonDirIndex + 1).join("/")
 }
 
-export async function getNormalizedFileContent(content: string) {
-  return content.replace(/\r\n/g, "\n").trim()
-}
-
 export function resolvePageTarget(
   target: string,
   framework?: ProjectInfo["framework"]["name"]
@@ -370,4 +450,233 @@ export function resolvePageTarget(
   }
 
   return ""
+}
+
+async function resolveImports(filePaths: string[], config: Config) {
+  const project = new Project({
+    compilerOptions: {},
+  })
+  const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
+  const tsConfig = loadConfig(config.resolvedPaths.cwd)
+  const updatedFiles = []
+
+  if (!projectInfo || tsConfig.resultType === "failed") {
+    return []
+  }
+
+  for (const filepath of filePaths) {
+    const resolvedPath = path.resolve(config.resolvedPaths.cwd, filepath)
+
+    // Check if the file exists.
+    if (!existsSync(resolvedPath)) {
+      continue
+    }
+
+    const content = await fs.readFile(resolvedPath, "utf-8")
+
+    const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
+    const sourceFile = project.createSourceFile(
+      path.join(dir, basename(resolvedPath)),
+      content,
+      {
+        scriptKind: ScriptKind.TSX,
+      }
+    )
+
+    // Skip if the file extension is not one of the supported extensions.
+    if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
+      continue
+    }
+
+    const importDeclarations = sourceFile.getImportDeclarations()
+    for (const importDeclaration of importDeclarations) {
+      const moduleSpecifier = importDeclaration.getModuleSpecifierValue()
+
+      // Filter out non-local imports.
+      if (
+        projectInfo?.aliasPrefix &&
+        !moduleSpecifier.startsWith(`${projectInfo.aliasPrefix}/`)
+      ) {
+        continue
+      }
+
+      // Find the probable import file path.
+      // This is where we expect to find the file on disk.
+      const probableImportFilePath = await resolveImport(
+        moduleSpecifier,
+        tsConfig
+      )
+
+      if (!probableImportFilePath) {
+        continue
+      }
+
+      // Find the actual import file path.
+      // This is the path where the file has been installed.
+      const resolvedImportFilePath = resolveModuleByProbablePath(
+        probableImportFilePath,
+        filePaths,
+        config
+      )
+
+      if (!resolvedImportFilePath) {
+        continue
+      }
+
+      // Convert the resolved import file path to an aliased import.
+      const newImport = toAliasedImport(
+        resolvedImportFilePath,
+        config,
+        projectInfo
+      )
+
+      if (!newImport || newImport === moduleSpecifier) {
+        continue
+      }
+
+      importDeclaration.setModuleSpecifier(newImport)
+
+      // Write the updated content to the file.
+      await fs.writeFile(resolvedPath, sourceFile.getFullText(), "utf-8")
+
+      // Track the updated file.
+      updatedFiles.push(filepath)
+    }
+  }
+
+  return updatedFiles
+}
+
+/**
+ * Given an absolute "probable" import path (no ext),
+ * plus an array of absolute file paths you already know about,
+ * return 0–N matches (best match first), and also check disk for any missing ones.
+ */
+export function resolveModuleByProbablePath(
+  probableImportFilePath: string,
+  files: string[],
+  config: Config,
+  extensions: string[] = [".tsx", ".ts", ".js", ".jsx", ".css"]
+) {
+  const cwd = path.normalize(config.resolvedPaths.cwd)
+
+  // 1) Build a set of POSIX-normalized, project-relative files
+  const relativeFiles = files.map((f) => f.split(path.sep).join(path.posix.sep))
+  const fileSet = new Set(relativeFiles)
+
+  // 2) Strip any existing extension off the absolute base path
+  const extInPath = path.extname(probableImportFilePath)
+  const hasExt = extInPath !== ""
+  const absBase = hasExt
+    ? probableImportFilePath.slice(0, -extInPath.length)
+    : probableImportFilePath
+
+  // 3) Compute the project-relative "base" directory for strong matching
+  const relBaseRaw = path.relative(cwd, absBase)
+  const relBase = relBaseRaw.split(path.sep).join(path.posix.sep)
+
+  // 4) Decide which extensions to try
+  const tryExts = hasExt ? [extInPath] : extensions
+
+  // 5) Collect candidates
+  const candidates = new Set<string>()
+
+  // 5a) Fast‑path: [base + ext] and [base/index + ext]
+  for (const e of tryExts) {
+    const absCand = absBase + e
+    const relCand = path.posix.normalize(path.relative(cwd, absCand))
+    if (fileSet.has(relCand) || existsSync(absCand)) {
+      candidates.add(relCand)
+    }
+
+    const absIdx = path.join(absBase, `index${e}`)
+    const relIdx = path.posix.normalize(path.relative(cwd, absIdx))
+    if (fileSet.has(relIdx) || existsSync(absIdx)) {
+      candidates.add(relIdx)
+    }
+  }
+
+  // 5b) Fallback: scan known files by basename
+  const name = path.basename(absBase)
+  for (const f of relativeFiles) {
+    if (tryExts.some((e) => f.endsWith(`/${name}${e}`))) {
+      candidates.add(f)
+    }
+  }
+
+  // 6) If no matches, bail
+  if (candidates.size === 0) return null
+
+  // 7) Sort by (1) extension priority, then (2) "strong" base match
+  const sorted = Array.from(candidates).sort((a, b) => {
+    // a) extension order
+    const aExt = path.posix.extname(a)
+    const bExt = path.posix.extname(b)
+    const ord = tryExts.indexOf(aExt) - tryExts.indexOf(bExt)
+    if (ord !== 0) return ord
+    // b) strong match if path starts with relBase
+    const aStrong = relBase && a.startsWith(relBase) ? -1 : 1
+    const bStrong = relBase && b.startsWith(relBase) ? -1 : 1
+    return aStrong - bStrong
+  })
+
+  // 8) Return the first (best) candidate
+  return sorted[0]
+}
+
+export function toAliasedImport(
+  filePath: string,
+  config: Config,
+  projectInfo: ProjectInfo
+): string | null {
+  const abs = path.normalize(path.join(config.resolvedPaths.cwd, filePath))
+
+  // 1️⃣ Find the longest matching alias root in resolvedPaths
+  //    e.g. key="ui", root="/…/components/ui" beats key="components"
+  const matches = Object.entries(config.resolvedPaths)
+    .filter(
+      ([, root]) => root && abs.startsWith(path.normalize(root + path.sep))
+    )
+    .sort((a, b) => b[1].length - a[1].length)
+
+  if (matches.length === 0) {
+    return null
+  }
+  const [aliasKey, rootDir] = matches[0]
+
+  // 2️⃣ Compute the path UNDER that root
+  let rel = path.relative(rootDir, abs)
+  // force POSIX-style separators
+  rel = rel.split(path.sep).join("/") // e.g. "button/index.tsx"
+
+  // 3️⃣ Strip code-file extensions, keep others (css, json, etc.)
+  const ext = path.posix.extname(rel)
+  const codeExts = [".ts", ".tsx", ".js", ".jsx"]
+  const keepExt = codeExts.includes(ext) ? "" : ext
+  let noExt = rel.slice(0, rel.length - ext.length)
+
+  // 4️⃣ Collapse "/index" to its directory
+  if (noExt.endsWith("/index")) {
+    noExt = noExt.slice(0, -"/index".length)
+  }
+
+  // 5️⃣ Build the aliased path
+  //    config.aliases[aliasKey] is e.g. "@/components/ui"
+  const aliasBase =
+    aliasKey === "cwd"
+      ? projectInfo.aliasPrefix
+      : config.aliases[aliasKey as keyof typeof config.aliases]
+  if (!aliasBase) {
+    return null
+  }
+  // if noExt is empty (i.e. file was exactly at the root), we import the root
+  let suffix = noExt === "" ? "" : `/${noExt}`
+
+  // Rremove /src from suffix.
+  // Alias will handle this.
+  suffix = suffix.replace("/src", "")
+
+  // 6️⃣ Prepend the prefix from projectInfo (e.g. "@") if needed
+  //    but usually config.aliases already include it.
+  return `${aliasBase}${suffix}${keepExt}`
 }

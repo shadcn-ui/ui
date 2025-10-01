@@ -15,10 +15,10 @@
   "scripts": {
     "build": "turbo run build",
     "build:cli": "turbo --filter=shadcn build",
-    "build:registry": "pnpm --filter=www build:registry && pnpm --filter=www lint:fix && pnpm format:write -- --loglevel silent",
-    "registry:build": "pnpm --filter=www build:registry && pnpm --filter=www lint:fix && pnpm format:write -- --loglevel silent",
+    "build:registry": "pnpm --filter=www,v4 build:registry && pnpm --filter=www,v4 lint:fix && pnpm format:write -- --loglevel silent",
+    "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
     "registry:capture": "pnpm --filter=www registry:capture",
-    "dev": "turbo run dev --parallel",
+    "dev": "turbo run dev --filter=!www --parallel",
     "shadcn-ui:dev": "turbo --filter=shadcn-ui dev",
     "shadcn-ui": "pnpm --filter=shadcn-ui start:dev",
     "shadcn-ui:test": "pnpm --filter=shadcn-ui test",
@@ -35,11 +35,10 @@
     "www:build": "pnpm --filter=www build",
     "v4:dev": "pnpm --filter=v4 dev",
     "v4:build": "pnpm --filter=v4 build",
-    "v4:registry:build": "pnpm --filter=v4 registry:build && pnpm --filter=v4 lint:fix && pnpm format:write -- --loglevel silent",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "preview": "turbo run preview",
-    "typecheck": "turbo run typecheck",
+    "typecheck": "turbo run typecheck --filter=!www",
     "format:write": "turbo run format:write",
     "format:check": "turbo run format:check",
     "sync:templates": "./scripts/sync-templates.sh \"templates/*\"",
@@ -47,7 +46,9 @@
     "release": "changeset version",
     "pub:beta": "cd packages/shadcn && pnpm pub:beta",
     "pub:release": "cd packages/shadcn && pnpm pub:release",
-    "test": "turbo run test --filter=!shadcn-ui --force"
+    "test:dev": "turbo run test --filter=!shadcn-ui --force",
+    "test": "start-server-and-test v4:dev http://localhost:4000 test:dev",
+    "validate:registries": "pnpm --filter=v4 validate:registries"
   },
   "packageManager": "pnpm@9.0.6",
   "dependencies": {
@@ -68,6 +69,7 @@
     "eslint-config-turbo": "^1.9.9",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-tailwindcss": "3.13.1",
+    "motion": "^12.12.1",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.3",
@@ -76,14 +78,16 @@
     "tailwindcss-animate": "^1.0.5",
     "tsx": "^4.1.4",
     "turbo": "^1.9.9",
-    "vite": "^5.4.1",
+    "vite": "^5.4.15",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^2.0.5"
+    "vitest": "^2.1.9"
   },
   "devDependencies": {
+    "@types/hast": "^3.0.4",
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
+    "start-server-and-test": "^2.0.12",
     "typescript": "^5.5.3"
   }
 }

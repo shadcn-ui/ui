@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-header",
+  "type": "registry:internal",
+  "files": [
+    {
+      "path": "registry/new-york-v4/internal/sidebar-header.tsx",
+      "content": "\"use client\"\n\nimport { ChevronDownIcon } from \"lucide-react\"\n\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"@/registry/new-york-v4/ui/dropdown-menu\"\nimport {\n  Sidebar,\n  SidebarHeader,\n  SidebarInset,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n  SidebarTrigger,\n} from \"@/registry/new-york-v4/ui/sidebar\"\n\nexport default function AppSidebar() {\n  return (\n    <SidebarProvider>\n      <Sidebar>\n        <SidebarHeader>\n          <SidebarMenu>\n            <SidebarMenuItem>\n              <DropdownMenu>\n                <DropdownMenuTrigger asChild>\n                  <SidebarMenuButton className=\"data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground\">\n                    Select Workspace\n                    <ChevronDownIcon className=\"ml-auto\" />\n                  </SidebarMenuButton>\n                </DropdownMenuTrigger>\n                <DropdownMenuContent className=\"w-(--radix-popper-anchor-width)\">\n                  <DropdownMenuItem>\n                    <span>Acme Inc</span>\n                  </DropdownMenuItem>\n                  <DropdownMenuItem>\n                    <span>Acme Corp.</span>\n                  </DropdownMenuItem>\n                </DropdownMenuContent>\n              </DropdownMenu>\n            </SidebarMenuItem>\n          </SidebarMenu>\n        </SidebarHeader>\n      </Sidebar>\n      <SidebarInset>\n        <header className=\"flex h-12 items-center justify-between px-4\">\n          <SidebarTrigger />\n        </header>\n      </SidebarInset>\n    </SidebarProvider>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

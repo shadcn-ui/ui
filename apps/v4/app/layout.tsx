@@ -1,43 +1,25 @@
-import type { Metadata, Viewport } from "next"
-import { Geist_Mono as FontMono, Inter as FontSans } from "next/font/google"
+import type { Metadata } from "next"
 
+import { META_THEME_COLORS, siteConfig } from "@/lib/config"
+import { fontVariables } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import { LayoutProvider } from "@/hooks/use-layout"
+import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/registry/new-york-v4/ui/sonner"
-import { siteConfig } from "@/www/config/site"
 
-import "./globals.css"
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
-const fontMono = FontMono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
-
-const META_THEME_COLORS = {
-  light: "#ffffff",
-  dark: "#09090b",
-}
+import "@/styles/globals.css"
 
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
   },
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
   description: siteConfig.description,
-  keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
-  ],
+  keywords: ["Next.js", "React", "Tailwind CSS", "Components", "shadcn"],
   authors: [
     {
       name: "shadcn",
@@ -48,13 +30,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
+    url: process.env.NEXT_PUBLIC_APP_URL!,
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image.png`,
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -65,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: [`${process.env.NEXT_PUBLIC_APP_URL}/opengraph-image.png`],
     creator: "@shadcn",
   },
   icons: {
@@ -74,10 +56,6 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
-}
-
-export const viewport: Viewport = {
-  themeColor: META_THEME_COLORS.light,
 }
 
 export default function RootLayout({
@@ -95,27 +73,30 @@ export default function RootLayout({
                 if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
                 }
+                if (localStorage.layout) {
+                  document.documentElement.classList.add('layout-' + localStorage.layout)
+                }
               } catch (_) {}
             `,
           }}
         />
+        <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
       <body
         className={cn(
-          "bg-background overscroll-none font-sans antialiased",
-          fontSans.variable,
-          fontMono.variable
+          "text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
+          fontVariables
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster />
-          <Analytics />
+        <ThemeProvider>
+          <LayoutProvider>
+            <ActiveThemeProvider>
+              {children}
+              <TailwindIndicator />
+              <Toaster position="top-center" />
+              <Analytics />
+            </ActiveThemeProvider>
+          </LayoutProvider>
         </ThemeProvider>
       </body>
     </html>

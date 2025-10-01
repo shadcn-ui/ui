@@ -148,6 +148,13 @@ You can test Tailwind v4 + React 19 today using the `canary` release of the CLI.
 
 ## Upgrade Your Project
 
+<Callout className="bg-blue-50 mt-6 border-blue-600 dark:border-blue-900 dark:bg-blue-950 mb-6 [&_code]:bg-blue-100 dark:[&_code]:bg-blue-900">
+  **Important:** Before upgrading, please read the [Tailwind v4 Compatibility
+  Docs](https://tailwindcss.com/docs/compatibility) and make sure your project
+  is ready for the upgrade. Tailwind v4 uses bleeding-edge browser features and
+  is designed for modern browsers.
+</Callout>
+
 One of the major advantages of using `shadcn/ui` is that the code you end up with is exactly what you'd write yourself. There are no hidden abstractions.
 
 This means when a dependency has a new release, you can just follow the official upgrade paths.
@@ -183,7 +190,7 @@ Here's how you do it:
 
 1. Move `:root` and `.dark` out of the `@layer` base.
 2. Wrap the color values in `hsl()`
-3. Add the `inline` option to `@theme` i.e `@theme inline {`
+3. Add the `inline` option to `@theme` i.e `@theme inline`
 4. Remove the `hsl()` wrappers from `@theme`
 
 ```css showLineNumbers
@@ -192,7 +199,7 @@ Here's how you do it:
   --foreground: hsl(0 0% 3.9%);
 }
 
-dark {
+.dark {
   --background: hsl(0 0% 3.9%); // <-- Wrap in hsl
   --foreground: hsl(0 0% 98%);
 }
@@ -241,9 +248,9 @@ pnpm up "@radix-ui/*" cmdk lucide-react recharts tailwind-merge clsx --latest
 
 ### 6. Remove forwardRef
 
-You can use the `preset-19` codemod to migrate your `forwardRef` to props or manually update the primitives.
+You can use the `remove-forward-ref` codemod to migrate your `forwardRef` to props or manually update the primitives.
 
-For the codemod, see https://react.dev/blog/2024/04/25/react-19-upgrade-guide#typescript-changes.
+For the codemod, see https://github.com/reactjs/react-codemod#remove-forward-ref.
 
 If you want to do it manually, here's how to do it step by step:
 
@@ -285,6 +292,58 @@ function AccordionItem({
 }
 ```
 
-## Share Your Feedback
+## Changelog
 
-We’d love for you to test these updates and share your feedback! If you run into anything weird or have suggestions, add a comment below.
+### March 19, 2025 - Deprecate `tailwindcss-animate`
+
+We've deprecated `tailwindcss-animate` in favor of `tw-animate-css`.
+
+New project will have `tw-animate-css` installed by default.
+
+For existing projects, follow the steps below to migrate.
+
+1. Remove `tailwindcss-animate` from your dependencies.
+2. Remove the `@plugin 'tailwindcss-animate'` from your globals.css file.
+3. Install `tw-animate-css` as a dev dependency.
+4. Add the `@import "tw-animate-css"` to your globals.css file.
+
+```diff showLineNumbers
+- @plugin 'tailwindcss-animate';
++ @import "tw-animate-css";
+```
+
+### March 12, 2025 - New Dark Mode Colors
+
+We've revisted the dark mode colors and updated them to be more accessible.
+
+If you're running an existing Tailwind v4 project (**not an upgraded one**[^1]), you can update your components to use the new dark mode colors by re-adding your components using the CLI[^2].
+
+<Steps>
+
+<Step>Commit any changes</Step>
+
+**The CLI will overwrite your existing components.** We recommend committing any changes you've made to your components before running the CLI.
+
+```bash
+git add .
+git commit -m "..."
+```
+
+<Step>Update components</Step>
+
+```bash
+npx shadcn@latest add --all --overwrite
+```
+
+<Step>Update colors</Step>
+
+Update the dark mode colors in your `globals.css` file to new OKLCH colors. See the [Base Colors](/docs/theming#base-colors) reference for a list of colors.
+
+<Step>Review changes</Step>
+
+Review and re-apply any changes you made to your components.
+
+</Steps>
+
+[^1]: Upgraded projects are not affected by this change. You can continue using the old dark mode colors.
+[^2]: Updating your components will overwrite your existing components.

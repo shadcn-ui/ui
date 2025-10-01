@@ -3,7 +3,7 @@ import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
 import { getRegistryIcons } from "@/src/registry/api"
-import { iconsSchema } from "@/src/registry/schema"
+import { iconsSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { ICON_LIBRARIES } from "@/src/utils/icon-libraries"
@@ -98,7 +98,7 @@ export async function migrateIcons(config: Config) {
   }
 
   if (targetLibrary.package) {
-    await updateDependencies([targetLibrary.package], config, {
+    await updateDependencies([targetLibrary.package], [], config, {
       silent: false,
     })
   }
