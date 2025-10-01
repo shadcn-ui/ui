@@ -1551,6 +1551,11 @@ export const blocks: Registry["items"] = [
         target: "components/ui/tooltip.tsx",
       },
       {
+        path: "blocks/new-components-01/components/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: "components/ui/dropdown-menu.tsx",
+      },
+      {
         path: "blocks/new-components-01/components/appearance-settings.tsx",
         type: "registry:component",
       },
