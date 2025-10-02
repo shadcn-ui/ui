@@ -239,11 +239,11 @@ multi-section forms.
 Making it responsive is easy. Use `orientation="responsive"` and it switches
 between vertical and horizontal layouts based on container width. Done.
 
-<ComponentPreview name="field-responsive" className="[&_.preview]:h-[500px]" />
+<ComponentPreview name="field-responsive" className="[&_.preview]:h-[600px]" />
 
 Wait here's more. Wrap your fields in `FieldLabel` to create a selectable field group. Really easy. And it looks great.
 
-<ComponentPreview name="field-choice-card" className="[&_.preview]:h-[500px]" />
+<ComponentPreview name="field-choice-card" className="[&_.preview]:h-[600px]" />
 
 ### Item
 
@@ -275,17 +275,29 @@ Here's a basic item:
 </Item>
 ```
 
-<ComponentPreview name="item-demo" className="[&_.preview]:h-[300px]" />
+<ComponentPreview
+  name="item-demo"
+  className="[&_.preview]:h-[300px] [&_.preview]:p-4"
+/>
 
 You can add icons, avatars, or images to the item.
 
-<ComponentPreview name="item-icon" className="[&_.preview]:h-[300px]" />
+<ComponentPreview
+  name="item-icon"
+  className="[&_.preview]:h-[300px] [&_.preview]:p-4"
+/>
 
-<ComponentPreview name="item-avatar" className="[&_.preview]:h-[300px]" />
+<ComponentPreview
+  name="item-avatar"
+  className="[&_.preview]:h-[300px] [&_.preview]:p-4"
+/>
 
 And here's what a list of items looks like with `ItemGroup`:
 
-<ComponentPreview name="item-group" className="[&_.preview]:h-[400px]" />
+<ComponentPreview
+  name="item-group"
+  className="[&_.preview]:h-[500px] [&_.preview]:p-4"
+/>
 
 Need it as a link? Use the `asChild` prop:
 
@@ -303,7 +315,10 @@ Need it as a link? Use the `asChild` prop:
 </Item>
 ```
 
-<ComponentPreview name="item-link" className="[&_.preview]:h-[400px]" />
+<ComponentPreview
+  name="item-link"
+  className="[&_.preview]:h-[400px] [&_.preview]:p-4"
+/>
 
 ### Empty
 
@@ -334,7 +349,10 @@ Here's how you use it:
 </Empty>
 ```
 
-<ComponentPreview name="empty-demo" className="[&_.preview]:h-[400px]" />
+<ComponentPreview
+  name="empty-demo"
+  className="[&_.preview]:h-[400px] [&_.preview]:p-4"
+/>
 
 You can use it with avatars:
 
