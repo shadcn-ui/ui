@@ -17,7 +17,7 @@ import {
 
 export function EmptyAvatarGroup() {
   return (
-    <Empty className="border md:p-6">
+    <Empty className="flex-none border">
       <EmptyHeader>
         <EmptyMedia>
           <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">

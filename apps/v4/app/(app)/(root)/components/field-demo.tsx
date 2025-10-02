@@ -40,20 +40,26 @@ export function FieldDemo() {
                   required
                 />
               </Field>
-              <Field>
-                <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
-                  Card Number
-                </FieldLabel>
-                <Input
-                  id="checkout-7j9-card-number-uw1"
-                  placeholder="1234 5678 9012 3456"
-                  required
-                />
-                <FieldDescription>
-                  Enter your 16-digit card number
-                </FieldDescription>
-              </Field>
               <div className="grid grid-cols-3 gap-4">
+                <Field className="col-span-2">
+                  <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
+                    Card Number
+                  </FieldLabel>
+                  <Input
+                    id="checkout-7j9-card-number-uw1"
+                    placeholder="1234 5678 9012 3456"
+                    required
+                  />
+                  <FieldDescription>
+                    Enter your 16-digit number.
+                  </FieldDescription>
+                </Field>
+                <Field className="col-span-1">
+                  <FieldLabel htmlFor="checkout-7j9-cvv">CVV</FieldLabel>
+                  <Input id="checkout-7j9-cvv" placeholder="123" required />
+                </Field>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
                 <Field>
                   <FieldLabel htmlFor="checkout-7j9-exp-month-ts6">
                     Month
@@ -95,10 +101,6 @@ export function FieldDemo() {
                       <SelectItem value="2029">2029</SelectItem>
                     </SelectContent>
                   </Select>
-                </Field>
-                <Field>
-                  <FieldLabel htmlFor="checkout-7j9-cvv">CVV</FieldLabel>
-                  <Input id="checkout-7j9-cvv" placeholder="123" required />
                 </Field>
               </div>
             </FieldGroup>
