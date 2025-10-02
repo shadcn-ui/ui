@@ -59,10 +59,6 @@ const THEMES = baseColors.filter(
 export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
   const { activeTheme = "neutral", setActiveTheme } = useThemeConfig()
 
-  React.useEffect(() => {
-    setActiveTheme("neutral")
-  }, [])
-
   return (
     <div className={cn("flex w-full items-center gap-2", className)}>
       <ScrollArea className="hidden max-w-[96%] md:max-w-[600px] lg:flex lg:max-w-none">
