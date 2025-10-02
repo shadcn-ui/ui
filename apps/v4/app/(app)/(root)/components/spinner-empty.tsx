@@ -11,7 +11,7 @@ import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
 export function SpinnerEmpty() {
   return (
-    <Empty className="w-full">
+    <Empty className="w-full border md:p-6">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <Spinner />

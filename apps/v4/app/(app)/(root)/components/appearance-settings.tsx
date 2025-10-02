@@ -93,7 +93,7 @@ export function AppearanceSettings() {
         <Field orientation="horizontal">
           <FieldContent>
             <FieldTitle>Accent</FieldTitle>
-            <FieldDescription>Select the accent color to use.</FieldDescription>
+            <FieldDescription>Select the accent color.</FieldDescription>
           </FieldContent>
           <FieldSet aria-label="Accent">
             <RadioGroup

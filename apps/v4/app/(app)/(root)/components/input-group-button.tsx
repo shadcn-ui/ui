@@ -25,7 +25,7 @@ export function InputGroupButtonExample() {
         Input Secure
       </Label>
       <InputGroup className="[--radius:9999px]">
-        <InputGroupInput id="input-secure-19" />
+        <InputGroupInput id="input-secure-19" className="!pl-0.5" />
         <Popover>
           <PopoverTrigger asChild>
             <InputGroupAddon>
