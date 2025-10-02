@@ -64,7 +64,11 @@ export function AppearanceSettings() {
                     default.
                   </FieldDescription>
                 </FieldContent>
-                <RadioGroupItem value="kubernetes" id="kubernetes-r2h" />
+                <RadioGroupItem
+                  value="kubernetes"
+                  id="kubernetes-r2h"
+                  aria-label="Kubernetes"
+                />
               </Field>
             </FieldLabel>
             <FieldLabel htmlFor="vm-z4k">
@@ -76,7 +80,11 @@ export function AppearanceSettings() {
                     soon)
                   </FieldDescription>
                 </FieldContent>
-                <RadioGroupItem value="vm" id="vm-z4k" />
+                <RadioGroupItem
+                  value="vm"
+                  id="vm-z4k"
+                  aria-label="Virtual Machine"
+                />
               </Field>
             </FieldLabel>
           </RadioGroup>

@@ -7,7 +7,6 @@ export const dynamic = "force-static"
 export const revalidate = false
 
 const FEATURED_BLOCKS = [
-  "new-components-01",
   "dashboard-01",
   "sidebar-07",
   "sidebar-03",
