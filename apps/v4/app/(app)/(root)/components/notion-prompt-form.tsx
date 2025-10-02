@@ -348,8 +348,8 @@ export function NotionPromptForm() {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 side="top"
-                align="start"
-                className="[--radius:1.2rem]"
+                align="end"
+                className="[--radius:1rem]"
               >
                 <DropdownMenuGroup>
                   <DropdownMenuItem
@@ -388,7 +388,7 @@ export function NotionPromptForm() {
                       </Avatar>
                       shadcn
                     </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent className="w-72 p-0 [--radius:1.2rem]">
+                    <DropdownMenuSubContent className="w-72 p-0 [--radius:1rem]">
                       <Command>
                         <CommandInput
                           placeholder="Find or use knowledge in..."
