@@ -5,6 +5,7 @@
   "@alpine": "https://alpine-registry.vercel.app/r/{name}.json",
   "@animate-ui": "https://animate-ui.com/r/{name}.json",
   "@blocks": "https://blocks.so/r/{name}.json",
+  "@bucharitesh": "https://bucharitesh.in/r/{name}.json",
   "@clerk": "https://clerk.com/r/{name}.json",
   "@cult-ui": "https://cult-ui.com/r/{name}.json",
   "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
