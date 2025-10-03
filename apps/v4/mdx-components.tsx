@@ -96,19 +96,12 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  a: ({ className, children, ...props }: React.ComponentProps<"a">) => {
-    const target =
-      children === "/new" || children === "Open in v0" ? "_blank" : undefined
-    return (
-      <a
-        className={cn("font-medium underline underline-offset-4", className)}
-        {...props}
-        target={target}
-      >
-        {children}
-      </a>
-    )
-  },
+  a: ({ className, ...props }: React.ComponentProps<"a">) => (
+    <a
+      className={cn("font-medium underline underline-offset-4", className)}
+      {...props}
+    />
+  ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
     <p
       className={cn("leading-relaxed [&:not(:first-child)]:mt-6", className)}
