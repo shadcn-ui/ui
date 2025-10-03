@@ -143,22 +143,24 @@ export default async function Page(props: {
                 </p>
               )}
             </div>
-            <div className="flex items-center gap-2 pt-4">
-              {links?.doc && (
-                <Badge asChild variant="secondary" className="rounded-full">
-                  <a href={links.doc} target="_blank" rel="noreferrer">
-                    Docs <IconArrowUpRight />
-                  </a>
-                </Badge>
-              )}
-              {links?.api && (
-                <Badge asChild variant="secondary" className="rounded-full">
-                  <a href={links.api} target="_blank" rel="noreferrer">
-                    API Reference <IconArrowUpRight />
-                  </a>
-                </Badge>
-              )}
-            </div>
+            {links ? (
+              <div className="flex items-center gap-2 pt-4">
+                {links?.doc && (
+                  <Badge asChild variant="secondary" className="rounded-full">
+                    <a href={links.doc} target="_blank" rel="noreferrer">
+                      Docs <IconArrowUpRight />
+                    </a>
+                  </Badge>
+                )}
+                {links?.api && (
+                  <Badge asChild variant="secondary" className="rounded-full">
+                    <a href={links.api} target="_blank" rel="noreferrer">
+                      API Reference <IconArrowUpRight />
+                    </a>
+                  </Badge>
+                )}
+              </div>
+            ) : null}
           </div>
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />
