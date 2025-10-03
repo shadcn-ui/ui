@@ -40,6 +40,7 @@ export function InputGroupButtonExample() {
           </PopoverTrigger>
           <PopoverContent
             align="start"
+            alignOffset={10}
             className="flex flex-col gap-1 rounded-xl text-sm"
           >
             <p className="font-medium">Your connection is not secure.</p>
