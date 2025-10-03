@@ -19,6 +19,7 @@ import {
 
 export default function ButtonGroupInputGroup() {
   const [voiceEnabled, setVoiceEnabled] = React.useState(false)
+
   return (
     <ButtonGroup className="[--radius:9999rem]">
       <ButtonGroup>
@@ -39,6 +40,7 @@ export default function ButtonGroupInputGroup() {
               <TooltipTrigger asChild>
                 <InputGroupButton
                   onClick={() => setVoiceEnabled(!voiceEnabled)}
+                  size="icon-xs"
                   data-active={voiceEnabled}
                   className="data-[active=true]:bg-orange-100 data-[active=true]:text-orange-700 dark:data-[active=true]:bg-orange-800 dark:data-[active=true]:text-orange-100"
                   aria-pressed={voiceEnabled}

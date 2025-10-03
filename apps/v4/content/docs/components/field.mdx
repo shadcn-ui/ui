@@ -61,6 +61,7 @@ import {
 ```tsx showLineNumbers
 <FieldSet>
   <FieldLegend>Profile</FieldLegend>
+  <FieldDescription>This appears on invoices and emails.</FieldDescription>
   <FieldGroup>
     <Field>
       <FieldLabel htmlFor="name">Full name</FieldLabel>
@@ -71,6 +72,10 @@ import {
       <FieldLabel htmlFor="username">Username</FieldLabel>
       <Input id="username" autoComplete="off" aria-invalid />
       <FieldError>Choose another username.</FieldError>
+    </Field>
+    <Field orientation="horizontal">
+      <Switch id="newsletter" />
+      <FieldLabel htmlFor="newsletter">Subscribe to the newsletter</FieldLabel>
     </Field>
   </FieldGroup>
 </FieldSet>
@@ -90,7 +95,7 @@ The `Field` family is designed for composing accessible forms. A typical field i
 ```
 
 - `Field` is the core wrapper for a single field.
-- `FieldContent` is a flex column that groups label and description.
+- `FieldContent` is a flex column that groups label and description. Not required if you have no description.
 - Wrap related fields with `FieldGroup`, and use `FieldSet` with `FieldLegend` for semantic grouping.
 
 ## Examples
@@ -129,64 +134,31 @@ The `Field` family is designed for composing accessible forms. A typical field i
 
 ### Choice Card
 
-To create a selectable field group, wrap `Field` components inside `FieldLabel`.
+Wrap `Field` components inside `FieldLabel` to create selectable field groups. This works with `RadioItem`, `Checkbox` and `Switch` components.
 
 <ComponentPreview name="field-choice-card" className="!mb-4 [&_.preview]:p-6" />
 
 ### Field Group
 
-Use `FieldGroup` to stack `Field` components. Use `FieldSeparator` to separate them.
+Stack `Field` components with `FieldGroup`. Add `FieldSeparator` to divide them.
 
 <ComponentPreview name="field-group" className="!mb-4 [&_.preview]:p-6" />
 
 ## Responsive Layout
 
 - **Vertical fields:** Default orientation stacks label, control, and helper text—ideal for mobile-first layouts.
-- **Horizontal fields:** Set `orientation="horizontal"` on `Field` to align the label and control side-by-side. Combine with `FieldContent` to keep descriptions aligned.
-- **Responsive fields:** Use `orientation="responsive"` for automatic column layouts inside container-aware parents. Pair with `@container/field-group` classes on `FieldGroup` to switch orientations at specific breakpoints.
+- **Horizontal fields:** Set `orientation="horizontal"` on `Field` to align the label and control side-by-side. Pair with `FieldContent` to keep descriptions aligned.
+- **Responsive fields:** Set `orientation="responsive"` for automatic column layouts inside container-aware parents. Apply `@container/field-group` classes on `FieldGroup` to switch orientations at specific breakpoints.
 
-<ComponentPreview name="field-responsive" className="!mb-4 [&_.preview]:p-6" />
-
-```tsx showLineNumbers
-<FieldGroup>
-  <Field orientation="responsive">
-    <FieldContent>
-      <FieldLabel htmlFor="name">Name</FieldLabel>
-      <FieldDescription>
-        Provide your full name for identification
-      </FieldDescription>
-    </FieldContent>
-    <Input id="name" placeholder="Evil Rabbit" required />
-  </Field>
-  <Field orientation="responsive">
-    <FieldContent>
-      <FieldLabel htmlFor="lastName">Message</FieldLabel>
-      <FieldDescription>
-        You can write your message here. Keep it short, preferably under 100
-        characters.
-      </FieldDescription>
-    </FieldContent>
-    <Textarea
-      id="message"
-      placeholder="Hello, world!"
-      required
-      className="min-h-[100px] min-w-[300px] resize-none"
-    />
-  </Field>
-</FieldGroup>
-```
-
-## Responsive Techniques
-
-- Enable container queries by adding `@container/field-group` to the wrapping `FieldGroup`. Components such as `Field` listen for these scopes to adjust orientation.
-- Constrain control widths with utility classes (`md:w-1/2`, `max-w-sm`) applied directly to inputs or `FieldContent`.
-- Combine CSS grid with `gap` utilities to create multi-column forms. For example, `className="grid gap-4 md:grid-cols-2"` on nested wrappers inside `FieldGroup`.
-- Use `flex` utilities within `FieldContent` (`className="flex flex-col gap-2"`) when combining multiple controls like `InputGroup` and buttons, as seen in `ChatSettings` personalization.
+<ComponentPreview
+  name="field-responsive"
+  className="!mb-4 [&_.preview]:h-[650px] [&_.preview]:p-6 [&_.preview]:md:h-[500px] [&_.preview]:md:p-10"
+/>
 
 ## Validation and Errors
 
 - Add `data-invalid` to `Field` to switch the entire block into an error state.
-- Use `aria-invalid` on the input itself for assistive technologies.
+- Add `aria-invalid` on the input itself for assistive technologies.
 - Render `FieldError` immediately after the control or inside `FieldContent` to keep error messages aligned with the field.
 
 ```tsx showLineNumbers /data-invalid/ /aria-invalid/
@@ -201,7 +173,7 @@ Use `FieldGroup` to stack `Field` components. Use `FieldSeparator` to separate t
 
 - `FieldSet` and `FieldLegend` keep related controls grouped for keyboard and assistive tech users.
 - `Field` outputs `role="group"` so nested controls inherit labeling from `FieldLabel` and `FieldLegend` when combined.
-- Use `FieldSeparator` sparingly to ensure screen readers encounter clear section boundaries.
+- Apply `FieldSeparator` sparingly to ensure screen readers encounter clear section boundaries.
 
 ## API Reference
 
@@ -233,7 +205,7 @@ Legend element for a `FieldSet`. Switch to the `label` variant to align with lab
 <FieldLegend variant="label">Notification Preferences</FieldLegend>
 ```
 
-The `FieldLegend` has two variants: `legend` and `label`. Use `label` to use label sizing and alignment. Handy if you have nested `FieldSet`.
+The `FieldLegend` has two variants: `legend` and `label`. The `label` variant applies label sizing and alignment. Handy if you have nested `FieldSet`.
 
 ### FieldGroup
 
@@ -269,7 +241,7 @@ The core wrapper for a single field. Provides orientation control, invalid state
 
 ### FieldContent
 
-Flex column that groups control and descriptions. Use when the label sits beside the control.
+Flex column that groups control and descriptions when the label sits beside the control. Not required if you have no description.
 
 | Prop        | Type     | Default |
 | ----------- | -------- | ------- |
@@ -300,7 +272,7 @@ Label styled for both direct inputs and nested `Field` children.
 
 ### FieldTitle
 
-Use inside `FieldContent` when you need a title with the same styling as the label.
+Renders a title with label styling inside `FieldContent`.
 
 | Prop        | Type     | Default |
 | ----------- | -------- | ------- |

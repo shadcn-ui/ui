@@ -36,7 +36,7 @@ export default function FieldDemo() {
                 </FieldLabel>
                 <Input
                   id="checkout-7j9-card-name-43j"
-                  placeholder="John Doe"
+                  placeholder="Evil Rabbit"
                   required
                 />
               </Field>

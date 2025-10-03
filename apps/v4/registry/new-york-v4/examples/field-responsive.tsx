@@ -1,3 +1,4 @@
+import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Field,
   FieldContent,
@@ -44,6 +45,13 @@ export default function FieldResponsive() {
                 required
                 className="min-h-[100px] resize-none sm:min-w-[300px]"
               />
+            </Field>
+            <FieldSeparator />
+            <Field orientation="responsive">
+              <Button type="submit">Submit</Button>
+              <Button type="button" variant="outline">
+                Cancel
+              </Button>
             </Field>
           </FieldGroup>
         </FieldSet>

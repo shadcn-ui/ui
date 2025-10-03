@@ -25,7 +25,9 @@ export default function InputGroupLabel() {
       <InputGroup>
         <InputGroupInput id="email-2" placeholder="shadcn@vercel.com" />
         <InputGroupAddon align="block-start">
-          <Label htmlFor="email-2">Email</Label>
+          <Label htmlFor="email-2" className="text-foreground">
+            Email
+          </Label>
           <Tooltip>
             <TooltipTrigger asChild>
               <InputGroupButton

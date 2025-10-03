@@ -1398,6 +1398,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "item-header",
+    type: "registry:example",
+    registryDependencies: ["item"],
+    files: [
+      {
+        path: "examples/item-header.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "item-dropdown",
     type: "registry:example",
     registryDependencies: ["item"],

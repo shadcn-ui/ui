@@ -78,7 +78,7 @@ export default function InputGroupButtonExample() {
       <InputGroup>
         <InputGroupInput placeholder="Type to search..." />
         <InputGroupAddon align="inline-end">
-          <InputGroupButton variant="secondary">Go</InputGroupButton>
+          <InputGroupButton variant="secondary">Search</InputGroupButton>
         </InputGroupAddon>
       </InputGroup>
     </div>

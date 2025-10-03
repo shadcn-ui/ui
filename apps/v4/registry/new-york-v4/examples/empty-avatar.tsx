@@ -19,7 +19,10 @@ export default function EmptyAvatar() {
       <EmptyHeader>
         <EmptyMedia variant="default">
           <Avatar className="size-12">
-            <AvatarImage src="https://github.com/maxleiter.png" />
+            <AvatarImage
+              src="https://github.com/shadcn.png"
+              className="grayscale"
+            />
             <AvatarFallback>LR</AvatarFallback>
           </Avatar>
         </EmptyMedia>

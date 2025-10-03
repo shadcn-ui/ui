@@ -91,7 +91,7 @@ Add tooltips to provide additional context or help.
 
 ### Textarea
 
-Input groups also work with textarea components. For `<Textarea />`, use the `block-start` or `block-end` alignment.
+Input groups also work with textarea components. Use `block-start` or `block-end` for alignment.
 
 <ComponentPreview name="input-group-textarea" className="[&_.preview]:p-4" />
 
@@ -103,19 +103,19 @@ Show loading indicators while processing input.
 
 ### Label
 
-Use labels within input groups to improve accessibility.
+Add labels within input groups to improve accessibility.
 
 <ComponentPreview name="input-group-label" className="[&_.preview]:p-4" />
 
 ### Dropdown
 
-Combine input groups with dropdown menus for complex interactions.
+Pair input groups with dropdown menus for complex interactions.
 
 <ComponentPreview name="input-group-dropdown" className="[&_.preview]:p-4" />
 
 ### Button Group
 
-Combine input groups with button groups to create suffixes and prefixes.
+Wrap input groups with button groups to create prefixes and suffixes.
 
 <ComponentPreview
   name="input-group-button-group"
@@ -124,9 +124,9 @@ Combine input groups with button groups to create suffixes and prefixes.
 
 ### Custom Input
 
-To use your own custom input with `InputGroup`, add the `data-slot="input-group-control"` attribute to the input. The behavior and focus state will be handled automatically.
+Add the `data-slot="input-group-control"` attribute to your custom input for automatic behavior and focus state handling.
 
-No style is applied to the custom input. You can apply your own styles using the `className` prop.
+No style is applied to the custom input. Apply your own styles using the `className` prop.
 
 <ComponentPreview
   name="input-group-custom"
@@ -170,11 +170,11 @@ The main component that wraps inputs and addons.
 
 ### InputGroupAddon
 
-Use the `InputGroupAddon` component to display icons, text, buttons, or other content alongside inputs.
+Displays icons, text, buttons, or other content alongside inputs.
 
 <Callout icon={<IconInfoCircle />} title="Focus Navigation">
-  For proper focus navigation, the `InputGroupAddon` component should be a
-  placed after the input. Use the `align` prop to position the addon.
+  For proper focus navigation, the `InputGroupAddon` component should be placed
+  after the input. Set the `align` prop to position the addon.
 </Callout>
 
 | Prop        | Type                                                             | Default          |
@@ -190,9 +190,18 @@ Use the `InputGroupAddon` component to display icons, text, buttons, or other co
 
 **For `<InputGroupInput />`, use the `inline-start` or `inline-end` alignment. For `<InputGroupTextarea />`, use the `block-start` or `block-end` alignment.**
 
+The `InputGroupAddon` component can have multiple `InputGroupButton` components and icons.
+
+```tsx
+<InputGroupAddon>
+  <InputGroupButton>Button</InputGroupButton>
+  <InputGroupButton>Button</InputGroupButton>
+</InputGroupAddon>
+```
+
 ### InputGroupButton
 
-Use the `InputGroupButton` component to display buttons within input groups.
+Displays buttons within input groups.
 
 | Prop        | Type                                                                          | Default   |
 | ----------- | ----------------------------------------------------------------------------- | --------- |
@@ -202,14 +211,14 @@ Use the `InputGroupButton` component to display buttons within input groups.
 
 ```tsx
 <InputGroupButton>Button</InputGroupButton>
-<InputGroupButton size="icon-xs">
+<InputGroupButton size="icon-xs" aria-label="Copy">
   <CopyIcon />
 </InputGroupButton>
 ```
 
 ### InputGroupInput
 
-Use the `InputGroupInput` component as a replacement for `<Input />` when building input groups. This component has the input group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
+Replacement for `<Input />` when building input groups. This component has the input group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
 
 | Prop        | Type     | Default |
 | ----------- | -------- | ------- |
@@ -228,7 +237,7 @@ All other props are passed through to the underlying `<Input />` component.
 
 ### InputGroupTextarea
 
-Use the `InputGroupTextarea` component as a replacement for `<Textarea />` when building input groups. This component has the textarea group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
+Replacement for `<Textarea />` when building input groups. This component has the textarea group styles pre-applied and uses the unified `data-slot="input-group-control"` for focus state handling.
 
 | Prop        | Type     | Default |
 | ----------- | -------- | ------- |

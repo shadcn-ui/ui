@@ -1,5 +1,5 @@
 import { IconFolderCode } from "@tabler/icons-react"
-import { ArrowUpRightIcon, PlusIcon } from "lucide-react"
+import { ArrowUpRightIcon } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -25,21 +25,21 @@ export default function EmptyDemo() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button size="sm">
-          <PlusIcon />
-          Create project
-        </Button>
-        <Button
-          variant="link"
-          asChild
-          className="text-muted-foreground"
-          size="sm"
-        >
-          <a href="#">
-            Learn more <ArrowUpRightIcon />
-          </a>
-        </Button>
+        <div className="flex gap-2">
+          <Button size="sm">Create Project</Button>
+          <Button variant="outline">Import Project</Button>
+        </div>
       </EmptyContent>
+      <Button
+        variant="link"
+        asChild
+        className="text-muted-foreground"
+        size="sm"
+      >
+        <a href="#">
+          Learn More <ArrowUpRightIcon />
+        </a>
+      </Button>
     </Empty>
   )
 }

@@ -37,12 +37,12 @@ export default function InputGroupDropdown() {
           </DropdownMenu>
         </InputGroupAddon>
       </InputGroup>
-      <InputGroup className="[--radius:0.95rem]">
+      <InputGroup className="[--radius:1rem]">
         <InputGroupInput placeholder="Enter search query" />
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <InputGroupButton variant="outline" className="!pr-1.5 text-xs">
+              <InputGroupButton variant="ghost" className="!pr-1.5 text-xs">
                 Search In... <ChevronDownIcon className="size-3" />
               </InputGroupButton>
             </DropdownMenuTrigger>

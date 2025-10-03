@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-header",
+  "type": "registry:example",
+  "registryDependencies": [
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/item-header.tsx",
+      "content": "import { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { Progress } from \"@/registry/new-york-v4/ui/progress\"\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemFooter,\n  ItemHeader,\n  ItemMedia,\n  ItemTitle,\n} from \"@/registry/new-york-v4/ui/item\"\n\nexport default function ItemHeader() {\n  return (\n    <div className=\"flex w-full max-w-lg flex-col gap-6\">\n      <Item variant=\"outline\">\n        <ItemHeader>Your download has started.</ItemHeader>\n        <ItemMedia variant=\"icon\">\n          <Spinner />\n        </ItemMedia>\n        <ItemContent>\n          <ItemTitle>Downloading...</ItemTitle>\n          <ItemDescription>129 MB / 1000 MB</ItemDescription>\n        </ItemContent>\n        <ItemActions>\n          <Button variant=\"outline\" size=\"sm\">\n            Cancel\n          </Button>\n        </ItemActions>\n        <ItemFooter>\n          <Progress value={13} />\n        </ItemFooter>\n      </Item>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

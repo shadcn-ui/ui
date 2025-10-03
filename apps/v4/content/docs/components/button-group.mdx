@@ -83,13 +83,13 @@ import {
 
 ### Orientation
 
-The `ButtonGroup` component has an `orientation` prop that can be used to change the orientation of the button group.
+Set the `orientation` prop to change the button group layout.
 
 <ComponentPreview name="button-group-orientation" />
 
 ### Size
 
-The `ButtonGroup` component does not have a size prop, but you can control the size of the buttons within the group by using the `size` prop on the individual buttons.
+Control the size of buttons using the `size` prop on individual buttons.
 
 <ComponentPreview name="button-group-size" />
 
@@ -101,43 +101,45 @@ Nest `<ButtonGroup>` components to create button groups with spacing.
 
 ### Separator
 
-The `ButtonGroupSeparator` component is a separator that separates the buttons in the button group. Buttons with variant `outline` generally do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
+The `ButtonGroupSeparator` component visually divides buttons within a group.
+
+Buttons with variant `outline` do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
 
 <ComponentPreview name="button-group-separator" />
 
 ### Split
 
-To create a split button group, add two buttons to the button group separated by a `ButtonGroupSeparator`.
+Create a split button group by adding two buttons separated by a `ButtonGroupSeparator`.
 
 <ComponentPreview name="button-group-split" />
 
 ### Input
 
-You can also use the `ButtonGroup` component to wrap an `Input` component.
+Wrap an `Input` component with buttons.
 
 <ComponentPreview name="button-group-input" />
 
 ### Input Group
 
-A `ButtonGroup` can be used to wrap an `InputGroup` component.
+Wrap an `InputGroup` component to create complex input layouts.
 
 <ComponentPreview name="button-group-input-group" />
 
 ### Dropdown Menu
 
-You can create a split button group with a `DropdownMenu` component.
+Create a split button group with a `DropdownMenu` component.
 
 <ComponentPreview name="button-group-dropdown" />
 
 ### Select
 
-You can also use the `ButtonGroup` component to wrap a `Select` component.
+Pair with a `Select` component.
 
 <ComponentPreview name="button-group-select" />
 
 ### Popover
 
-You can also use the `ButtonGroup` component to wrap a `Popover` component.
+Use with a `Popover` component.
 
 <ComponentPreview name="button-group-popover" />
 
@@ -146,8 +148,6 @@ You can also use the `ButtonGroup` component to wrap a `Popover` component.
 ### ButtonGroup
 
 The `ButtonGroup` component is a container that groups related buttons together with consistent styling.
-
-You can nest multiple button groups to create a more complex layout with spacing. See the [nested](#nested) example for more details.
 
 | Prop          | Type                         | Default        |
 | ------------- | ---------------------------- | -------------- |
@@ -160,9 +160,18 @@ You can nest multiple button groups to create a more complex layout with spacing
 </ButtonGroup>
 ```
 
+Nest multiple button groups to create complex layouts with spacing. See the [nested](#nested) example for more details.
+
+```tsx
+<ButtonGroup>
+  <ButtonGroup />
+  <ButtonGroup />
+</ButtonGroup>
+```
+
 ### ButtonGroupSeparator
 
-The `ButtonGroupSeparator` component is a separator that separates the buttons in the button group. Buttons with variant `outline` generally do not need a separator since they have a border. For other variants, a separator is recommended to improve the visual hierarchy.
+The `ButtonGroupSeparator` component visually divides buttons within a group.
 
 | Prop          | Type                         | Default      |
 | ------------- | ---------------------------- | ------------ |
@@ -191,9 +200,9 @@ Use this component to display text within a button group.
 </ButtonGroup>
 ```
 
-You can use the `asChild` prop to render a custom component as the text, for example a label.
+Use the `asChild` prop to render a custom component as the text, for example a label.
 
-```tsx showLineNumbers title="Label in Button Group"
+```tsx showLineNumbers
 import { ButtonGroupText } from "@/components/ui/button-group"
 import { Label } from "@/components/ui/label"
 
