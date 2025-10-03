@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-link",
+  "type": "registry:example",
+  "registryDependencies": [
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/item-link.tsx",
+      "content": "import { ChevronRightIcon, ExternalLinkIcon } from \"lucide-react\"\n\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemTitle,\n} from \"@/registry/new-york-v4/ui/item\"\n\nexport default function ItemLink() {\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-4\">\n      <Item asChild>\n        <a href=\"#\">\n          <ItemContent>\n            <ItemTitle>Visit our documentation</ItemTitle>\n            <ItemDescription>\n              Learn how to get started with our components.\n            </ItemDescription>\n          </ItemContent>\n          <ItemActions>\n            <ChevronRightIcon className=\"size-4\" />\n          </ItemActions>\n        </a>\n      </Item>\n      <Item variant=\"outline\" asChild>\n        <a href=\"#\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <ItemContent>\n            <ItemTitle>External resource</ItemTitle>\n            <ItemDescription>\n              Opens in a new tab with security attributes.\n            </ItemDescription>\n          </ItemContent>\n          <ItemActions>\n            <ExternalLinkIcon className=\"size-4\" />\n          </ItemActions>\n        </a>\n      </Item>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
