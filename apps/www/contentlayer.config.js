@@ -1,4 +1,3 @@
-import { getHighlighter } from "@shikijs/compat"
 import {
   defineDocumentType,
   defineNestedType,
@@ -9,6 +8,7 @@ import rehypePrettyCode from "rehype-pretty-code"
 import rehypeSlug from "rehype-slug"
 import { codeImport } from "remark-code-import"
 import remarkGfm from "remark-gfm"
+import { getSingletonHighlighter } from "shiki"
 import { visit } from "unist-util-visit"
 
 import { rehypeComponent } from "./lib/rehype-component"
@@ -114,7 +114,7 @@ export default makeSource({
         rehypePrettyCode,
         {
           theme: "github-dark-default",
-          getHighlighter,
+          getHighlighter: getSingletonHighlighter,
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted

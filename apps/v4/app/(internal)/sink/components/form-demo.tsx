@@ -79,20 +79,21 @@ const FormSchema = z.object({
     .max(160, {
       message: "Bio must not be longer than 30 characters.",
     }),
-  email: z
-    .string({
-      required_error: "Please select an email to display.",
-    })
-    .email(),
-  type: z.enum(["all", "mentions", "none"], {
-    required_error: "You need to select a notification type.",
+  email: z.email({
+    error: "Please select an email to display.",
+  }),
+  type: z.literal(["all", "mentions", "none"], {
+    error: "You need to select a notification type.",
   }),
   mobile: z.boolean().default(false).optional(),
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: "You have to select at least one item.",
   }),
   dob: z.date({
-    required_error: "A date of birth is required.",
+    error: (iss) =>
+      iss.input === undefined
+        ? "A date of birth is required."
+        : "Invalid input.",
   }),
   marketing_emails: z.boolean().default(false).optional(),
   security_emails: z.boolean(),
