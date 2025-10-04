@@ -26,7 +26,7 @@ export default function EmptyDemo() {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex gap-2">
-          <Button size="sm">Create Project</Button>
+          <Button>Create Project</Button>
           <Button variant="outline">Import Project</Button>
         </div>
       </EmptyContent>
