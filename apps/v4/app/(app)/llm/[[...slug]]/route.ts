@@ -17,8 +17,7 @@ export async function GET(
     notFound()
   }
 
-  // @ts-expect-error - revisit fumadocs types.
-  const processedContent = processMdxForLLMs(page.data.content)
+  const processedContent = processMdxForLLMs(await page.data.getText("raw"))
 
   return new NextResponse(processedContent, {
     headers: {

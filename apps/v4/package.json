@@ -67,10 +67,8 @@
     "date-fns": "^4.1.0",
     "embla-carousel-autoplay": "8.5.2",
     "embla-carousel-react": "8.5.2",
-    "fumadocs-core": "15.3.1",
-    "fumadocs-docgen": "2.0.0",
-    "fumadocs-mdx": "11.6.3",
-    "fumadocs-ui": "15.3.1",
+    "fumadocs-core": "15.8.3",
+    "fumadocs-mdx": "12.0.2",
     "input-otp": "^1.4.2",
     "jotai": "^2.1.0",
     "little-date": "^1.0.0",
@@ -90,12 +88,12 @@
     "rehype-pretty-code": "^0.14.1",
     "rimraf": "^6.0.1",
     "shadcn": "3.3.1",
-    "shiki": "^1.10.1",
+    "shiki": "^3.13.0",
     "sonner": "^2.0.0",
     "tailwind-merge": "^3.0.1",
     "ts-morph": "18.0.0",
     "vaul": "1.1.2",
-    "zod": "^3.24.1"
+    "zod": "^4.1.11"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -114,8 +112,8 @@
     "tailwindcss": "^4.1.11",
     "tw-animate-css": "^1.2.4",
     "typescript": "^5",
-    "unist-builder": "3.0.0",
-    "unist-util-visit": "^4.1.2"
+    "unist-builder": "4.0.0",
+    "unist-util-visit": "^5.0.0"
   },
   "prettier": {
     "endOfLine": "lf",
