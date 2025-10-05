@@ -19,6 +19,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "avatar.vercel.sh",
+      },
     ],
   },
   redirects() {
@@ -67,6 +71,24 @@ const nextConfig = {
         source: "/view/styles/:style/:name",
         destination: "/view/:name",
         permanent: true,
+      },
+      {
+        source: "/docs/:path*.mdx",
+        destination: "/docs/:path*.md",
+        permanent: true,
+      },
+      {
+        source: "/mcp",
+        destination: "/docs/mcp",
+        permanent: false,
+      },
+    ]
+  },
+  rewrites() {
+    return [
+      {
+        source: "/docs/:path*.md",
+        destination: "/llm/:path*",
       },
     ]
   },

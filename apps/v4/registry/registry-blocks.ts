@@ -1,4 +1,4 @@
-import { type Registry } from "shadcn/registry"
+import { type Registry } from "shadcn/schema"
 
 export const blocks: Registry["items"] = [
   {
@@ -619,7 +619,7 @@ export const blocks: Registry["items"] = [
     name: "login-01",
     description: "A simple login form.",
     type: "registry:block",
-    registryDependencies: ["button", "card", "input", "label"],
+    registryDependencies: ["button", "card", "input", "label", "field"],
     files: [
       {
         path: "blocks/login-01/page.tsx",
@@ -637,7 +637,7 @@ export const blocks: Registry["items"] = [
     name: "login-02",
     description: "A two column login page with a cover image.",
     type: "registry:block",
-    registryDependencies: ["button", "card", "input", "label"],
+    registryDependencies: ["button", "input", "label", "field"],
     files: [
       {
         path: "blocks/login-02/page.tsx",
@@ -655,7 +655,7 @@ export const blocks: Registry["items"] = [
     name: "login-03",
     description: "A login page with a muted background color.",
     type: "registry:block",
-    registryDependencies: ["button", "card", "input", "label"],
+    registryDependencies: ["button", "card", "input", "label", "field"],
     files: [
       {
         path: "blocks/login-03/page.tsx",
@@ -673,7 +673,7 @@ export const blocks: Registry["items"] = [
     name: "login-04",
     description: "A login page with form and image.",
     type: "registry:block",
-    registryDependencies: ["button", "card", "input", "label"],
+    registryDependencies: ["button", "card", "input", "label", "field"],
     files: [
       {
         path: "blocks/login-04/page.tsx",
@@ -691,7 +691,7 @@ export const blocks: Registry["items"] = [
     name: "login-05",
     description: "A simple email-only login page.",
     type: "registry:block",
-    registryDependencies: ["button", "card", "input", "label"],
+    registryDependencies: ["button", "input", "label", "field"],
     files: [
       {
         path: "blocks/login-05/page.tsx",
@@ -1314,5 +1314,320 @@ export const blocks: Registry["items"] = [
         "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
       mobile: "component",
     },
+  },
+  {
+    name: "signup-01",
+    description: "A simple signup form.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label"],
+    files: [
+      {
+        path: "blocks/signup-01/page.tsx",
+        target: "app/signup/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/signup-01/components/signup-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "signup"],
+  },
+  {
+    name: "signup-02",
+    description: "A two column signup page with a cover image.",
+    type: "registry:block",
+    registryDependencies: ["button", "input", "label", "field"],
+    files: [
+      {
+        path: "blocks/signup-02/page.tsx",
+        target: "app/signup/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/signup-02/components/signup-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "signup"],
+  },
+  {
+    name: "signup-03",
+    description: "A signup page with a muted background color.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label", "field"],
+    files: [
+      {
+        path: "blocks/signup-03/page.tsx",
+        target: "app/signup/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/signup-03/components/signup-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "signup"],
+  },
+  {
+    name: "signup-04",
+    description: "A signup page with form and image.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input", "label", "field"],
+    files: [
+      {
+        path: "blocks/signup-04/page.tsx",
+        target: "app/signup/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/signup-04/components/signup-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "signup"],
+  },
+  {
+    name: "signup-05",
+    description: "A simple signup form with social providers.",
+    type: "registry:block",
+    registryDependencies: ["button", "input", "label"],
+    files: [
+      {
+        path: "blocks/signup-05/page.tsx",
+        target: "app/signup/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/signup-05/components/signup-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "signup"],
+  },
+  {
+    name: "otp-01",
+    description: "A simple OTP verification form.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input-otp", "label", "field"],
+    files: [
+      {
+        path: "blocks/otp-01/page.tsx",
+        target: "app/otp/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/otp-01/components/otp-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "otp"],
+  },
+  {
+    name: "otp-02",
+    description: "A two column OTP page with a cover image.",
+    type: "registry:block",
+    registryDependencies: ["button", "input-otp", "label", "field"],
+    files: [
+      {
+        path: "blocks/otp-02/page.tsx",
+        target: "app/otp/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/otp-02/components/otp-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "otp"],
+  },
+  {
+    name: "otp-03",
+    description: "An OTP page with a muted background color.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input-otp", "label", "field"],
+    files: [
+      {
+        path: "blocks/otp-03/page.tsx",
+        target: "app/otp/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/otp-03/components/otp-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "otp"],
+  },
+  {
+    name: "otp-04",
+    description: "An OTP page with form and image.",
+    type: "registry:block",
+    registryDependencies: ["button", "card", "input-otp", "label", "field"],
+    files: [
+      {
+        path: "blocks/otp-04/page.tsx",
+        target: "app/otp/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/otp-04/components/otp-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "otp"],
+  },
+  {
+    name: "otp-05",
+    description: "A simple OTP form with social providers.",
+    type: "registry:block",
+    registryDependencies: ["button", "input-otp", "label", "field"],
+    files: [
+      {
+        path: "blocks/otp-05/page.tsx",
+        target: "app/otp/page.tsx",
+        type: "registry:page",
+      },
+      {
+        path: "blocks/otp-05/components/otp-form.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["authentication", "otp"],
+  },
+  {
+    name: "new-components-01",
+    description: "New components",
+    type: "registry:block",
+    files: [
+      {
+        path: "blocks/new-components-01/page.tsx",
+        type: "registry:page",
+        target: "app/page.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/field.tsx",
+        type: "registry:ui",
+        target: "components/ui/field.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/button-group.tsx",
+        type: "registry:ui",
+        target: "components/ui/button-group.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/input-group.tsx",
+        type: "registry:ui",
+        target: "components/ui/input-group.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/empty.tsx",
+        type: "registry:ui",
+        target: "components/ui/empty.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/item.tsx",
+        type: "registry:ui",
+        target: "components/ui/item.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/spinner.tsx",
+        type: "registry:ui",
+        target: "components/ui/spinner.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/button.tsx",
+        type: "registry:ui",
+        target: "components/ui/button.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/input.tsx",
+        type: "registry:ui",
+        target: "components/ui/input.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: "components/ui/tooltip.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: "components/ui/dropdown-menu.tsx",
+      },
+      {
+        path: "blocks/new-components-01/components/appearance-settings.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/button-group-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/button-group-input-group.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/button-group-nested.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/button-group-popover.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/empty-avatar-group.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/empty-input-group.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/field-choice-card.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/field-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/field-slider.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/input-group-button.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/input-group-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/input-group-textarea.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/item-avatar.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/item-demo.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/notion-prompt-form.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/spinner-badge.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/new-components-01/components/spinner-empty.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["components", "showcase"],
   },
 ]
