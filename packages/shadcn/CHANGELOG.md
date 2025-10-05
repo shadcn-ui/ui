@@ -4,6 +4,8 @@
 
 ### Minor Changes
 
+- [#7742](https://github.com/shadcn-ui/ui/pull/7742) [`da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad`](https://github.com/shadcn-ui/ui/commit/da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad) Thanks [@sirldev](https://github.com/sirldev)! - rename monorepo project on init
+
 - [#8348](https://github.com/shadcn-ui/ui/pull/8348) [`e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e`](https://github.com/shadcn-ui/ui/commit/e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e) Thanks [@shadcn](https://github.com/shadcn)! - add mcp support for codex
 
 ## 3.3.1
