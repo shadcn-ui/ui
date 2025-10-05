@@ -36,7 +36,9 @@
   "@shadcn-editor": "https://shadcn-editor.vercel.app/r/{name}.json",
   "@shadcn-studio": "https://shadcnstudio.com/r/{name}.json",
   "@rigidui": "https://rigidui.com/r/{name}.json",
+  "@skyr": "https://ui-play.skyroc.me/r/{name}.json",
   "@retroui": "https://retroui.dev/r/{name}.json",
   "@wds": "https://wds-shadcn-registry.netlify.app/r/{name}.json",
-  "@97cn": "https://97cn.itzik.co/r/{name}.json"
+  "@97cn": "https://97cn.itzik.co/r/{name}.json",
+  "@better-upload": "https://better-upload.com/r/{name}.json"
 }
