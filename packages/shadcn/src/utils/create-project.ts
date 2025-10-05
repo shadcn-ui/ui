@@ -11,6 +11,7 @@ import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
+import { extract } from "tar"
 
 const MONOREPO_TEMPLATE_URL =
   "https://codeload.github.com/shadcn-ui/ui/tar.gz/main"
@@ -220,14 +221,39 @@ async function createMonorepoProject(
     // Write the tar file
     const tarPath = path.resolve(templatePath, "template.tar.gz")
     await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
-    await execa("tar", [
-      "-xzf",
-      tarPath,
-      "-C",
-      templatePath,
-      "--strip-components=2",
-      "ui-main/templates/monorepo-next",
-    ])
+    
+    // Use cross-platform tar extraction
+    try {
+      await extract({
+        file: tarPath,
+        cwd: templatePath,
+        strip: 2,
+        filter: (path) => path.startsWith('ui-main/templates/monorepo-next/')
+      })
+    } catch (tarError) {
+      // Fallback to system tar command with proper Windows handling
+      const tarArgs = [
+        "-xzf",
+        tarPath,
+        "-C",
+        templatePath,
+        "--strip-components=2",
+        "ui-main/templates/monorepo-next",
+      ]
+      
+      // On Windows, use WSL or Git Bash tar if available
+      if (process.platform === "win32") {
+        try {
+          await execa("wsl", ["tar", ...tarArgs])
+        } catch {
+          // Try with Git Bash tar
+          await execa("tar", tarArgs, { shell: true })
+        }
+      } else {
+        await execa("tar", tarArgs)
+      }
+    }
+    
     const extractedPath = path.resolve(templatePath, "monorepo-next")
     await fs.move(extractedPath, projectPath)
     await fs.remove(templatePath)
@@ -238,14 +264,17 @@ async function createMonorepoProject(
     })
 
     // Try git init.
-    const cwd = process.cwd()
-    await execa("git", ["--version"], { cwd: projectPath })
-    await execa("git", ["init"], { cwd: projectPath })
-    await execa("git", ["add", "-A"], { cwd: projectPath })
-    await execa("git", ["commit", "-m", "Initial commit"], {
-      cwd: projectPath,
-    })
-    // await execa("cd", [cwd])
+    try {
+      await execa("git", ["--version"], { cwd: projectPath })
+      await execa("git", ["init"], { cwd: projectPath })
+      await execa("git", ["add", "-A"], { cwd: projectPath })
+      await execa("git", ["commit", "-m", "Initial commit"], {
+        cwd: projectPath,
+      })
+    } catch (gitError) {
+      // Git init is optional, continue without it
+      logger.warn("Git initialization failed, but project was created successfully.")
+    }
 
     createSpinner?.succeed("Creating a new Next.js monorepo.")
   } catch (error) {
