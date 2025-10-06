@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-input-group",
+  "type": "registry:example",
+  "registryDependencies": [
+    "kbd",
+    "input",
+    "button",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/kbd-input-group.tsx",
+      "content": "import { SearchIcon } from \"lucide-react\"\n\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupInput,\n} from \"@/registry/new-york-v4/ui/input-group\"\nimport { Kbd } from \"@/registry/new-york-v4/ui/kbd\"\n\nexport default function KbdInputGroup() {\n  return (\n    <div className=\"flex w-full max-w-xs flex-col gap-6\">\n      <InputGroup>\n        <InputGroupInput placeholder=\"Search...\" />\n        <InputGroupAddon>\n          <SearchIcon />\n        </InputGroupAddon>\n        <InputGroupAddon align=\"inline-end\">\n          <Kbd>⌘</Kbd>\n          <Kbd>K</Kbd>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

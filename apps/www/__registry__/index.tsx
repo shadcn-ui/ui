@@ -147,6 +147,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "button-group": {
+      name: "button-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator"],
+      files: [{
+        path: "registry/new-york/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/button-group.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "calendar": {
       name: "calendar",
       description: "",
@@ -312,6 +327,36 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "empty": {
+      name: "empty",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/empty.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "field": {
+      name: "field",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "registry/new-york/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/field.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "form": {
       name: "form",
       description: "",
@@ -357,6 +402,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "input-group": {
+      name: "input-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "registry/new-york/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/input-group.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "input-otp": {
       name: "input-otp",
       description: "",
@@ -369,6 +429,36 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/input-otp.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "item": {
+      name: "item",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "registry/new-york/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/item.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "kbd": {
+      name: "kbd",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/kbd.tsx")),
       source: "",
       meta: undefined,
     },
@@ -609,6 +699,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/sonner.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "spinner": {
+      name: "spinner",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/spinner.tsx")),
       source: "",
       meta: undefined,
     },
@@ -6002,6 +6107,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "button-group": {
+      name: "button-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator"],
+      files: [{
+        path: "registry/default/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/button-group.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "calendar": {
       name: "calendar",
       description: "",
@@ -6167,6 +6287,36 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "empty": {
+      name: "empty",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/empty.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "field": {
+      name: "field",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "registry/default/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/field.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "form": {
       name: "form",
       description: "",
@@ -6212,6 +6362,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "input-group": {
+      name: "input-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "registry/default/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/input-group.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "input-otp": {
       name: "input-otp",
       description: "",
@@ -6224,6 +6389,36 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/input-otp.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "item": {
+      name: "item",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "registry/default/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/item.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "kbd": {
+      name: "kbd",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/kbd.tsx")),
       source: "",
       meta: undefined,
     },
@@ -6464,6 +6659,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/sonner.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "spinner": {
+      name: "spinner",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/spinner.tsx")),
       source: "",
       meta: undefined,
     },

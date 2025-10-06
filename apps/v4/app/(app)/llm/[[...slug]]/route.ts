@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { NextResponse, type NextRequest } from "next/server"
 
+import { processMdxForLLMs } from "@/lib/llm"
 import { source } from "@/lib/source"
 
 export const revalidate = false
@@ -17,7 +18,9 @@ export async function GET(
   }
 
   // @ts-expect-error - revisit fumadocs types.
-  return new NextResponse(page.data.content, {
+  const processedContent = processMdxForLLMs(page.data.content)
+
+  return new NextResponse(processedContent, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
     },
