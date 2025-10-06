@@ -19,7 +19,7 @@
     "execa": "^7.0.0",
     "fs-extra": "^11.1.0",
     "rimraf": "^6.0.1",
-    "typescript": "^5.5.3",
+    "typescript": "^5.9.3",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^2.1.9"
   }
