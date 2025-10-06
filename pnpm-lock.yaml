@@ -331,7 +331,7 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1
       shadcn:
-        specifier: 3.3.1
+        specifier: 3.4.0
         version: link:../../packages/shadcn
       shiki:
         specifier: ^1.10.1
@@ -611,7 +611,7 @@ importers:
         specifier: 2.12.7
         version: 2.12.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       shadcn:
-        specifier: 3.3.1
+        specifier: 3.4.0
         version: link:../../packages/shadcn
       sharp:
         specifier: ^0.32.6
