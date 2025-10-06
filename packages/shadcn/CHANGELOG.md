@@ -1,5 +1,51 @@
 # @shadcn/ui
 
+## 3.4.0
+
+### Minor Changes
+
+- [#7742](https://github.com/shadcn-ui/ui/pull/7742) [`da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad`](https://github.com/shadcn-ui/ui/commit/da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad) Thanks [@sirldev](https://github.com/sirldev)! - rename monorepo project on init
+
+- [#8348](https://github.com/shadcn-ui/ui/pull/8348) [`e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e`](https://github.com/shadcn-ui/ui/commit/e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e) Thanks [@shadcn](https://github.com/shadcn)! - add mcp support for codex
+
+## 3.3.1
+
+### Patch Changes
+
+- [`75dde2e64679081dad63ecd20f3fd9e3b68fa0ce`](https://github.com/shadcn-ui/ui/commit/75dde2e64679081dad63ecd20f3fd9e3b68fa0ce) Thanks [@shadcn](https://github.com/shadcn)! - fix deps in cts projects
+
+## 3.3.0
+
+### Minor Changes
+
+- [#8216](https://github.com/shadcn-ui/ui/pull/8216) [`fc6d909ba23ac1ba09cf32087f0524aca398b5aa`](https://github.com/shadcn-ui/ui/commit/fc6d909ba23ac1ba09cf32087f0524aca398b5aa) Thanks [@shadcn](https://github.com/shadcn)! - add getRegistriesIndex
+
+### Patch Changes
+
+- [#8186](https://github.com/shadcn-ui/ui/pull/8186) [`cdf58be7e1ed25bf1dd19a1c60612c5e89b82a60`](https://github.com/shadcn-ui/ui/commit/cdf58be7e1ed25bf1dd19a1c60612c5e89b82a60) Thanks [@imskyleen](https://github.com/imskyleen)! - fix transformCssVars function with prefix
+
+- [#8036](https://github.com/shadcn-ui/ui/pull/8036) [`fae1a81addb22429c103d5d08813e1c80779d5fb`](https://github.com/shadcn-ui/ui/commit/fae1a81addb22429c103d5d08813e1c80779d5fb) Thanks [@fuma-nama](https://github.com/fuma-nama)! - fix async imports not being transformed when installing components
+
+## 3.2.1
+
+### Patch Changes
+
+- [#8147](https://github.com/shadcn-ui/ui/pull/8147) [`e5402f9a20f070e92e7384c1ae08e6bfb79cd7a9`](https://github.com/shadcn-ui/ui/commit/e5402f9a20f070e92e7384c1ae08e6bfb79cd7a9) Thanks [@shadcn](https://github.com/shadcn)! - fix recursive namespacing
+
+## 3.2.0
+
+### Minor Changes
+
+- [#8128](https://github.com/shadcn-ui/ui/pull/8128) [`9c5eb0d20f0b75b28dccee219bf74fc9cd2019c6`](https://github.com/shadcn-ui/ui/commit/9c5eb0d20f0b75b28dccee219bf74fc9cd2019c6) Thanks [@shadcn](https://github.com/shadcn)! - add support for registries index
+
+## 3.1.0
+
+### Minor Changes
+
+- [#8110](https://github.com/shadcn-ui/ui/pull/8110) [`64f8baf9aa7562d4d2170863c29c6ae723f31df3`](https://github.com/shadcn-ui/ui/commit/64f8baf9aa7562d4d2170863c29c6ae723f31df3) Thanks [@shadcn](https://github.com/shadcn)! - allow no files items
+
+- [#8109](https://github.com/shadcn-ui/ui/pull/8109) [`e84c819977046f555daa9a8af5736ad7725fb4da`](https://github.com/shadcn-ui/ui/commit/e84c819977046f555daa9a8af5736ad7725fb4da) Thanks [@shadcn](https://github.com/shadcn)! - update handling of import and apply at rules
+
 ## 3.0.0
 
 ### Major Changes

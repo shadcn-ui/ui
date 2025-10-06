@@ -1,12 +1,11 @@
-import { Loader2Icon } from "lucide-react"
-
 import { Button } from "@/registry/new-york-v4/ui/button"
+import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
 export default function ButtonLoading() {
   return (
-    <Button size="sm" disabled>
-      <Loader2Icon className="animate-spin" />
-      Please wait
+    <Button size="sm" variant="outline" disabled>
+      <Spinner />
+      Submit
     </Button>
   )
 }

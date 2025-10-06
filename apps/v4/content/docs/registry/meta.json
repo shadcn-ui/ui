@@ -7,6 +7,7 @@
     "authentication",
     "examples",
     "mcp",
+    "registry-index",
     "open-in-v0",
     "registry-json",
     "registry-item-json"
