@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-size",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/button-size.tsx",
+      "content": "import { ArrowUpRightIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function ButtonSize() {\n  return (\n    <div className=\"flex flex-col items-start gap-8 sm:flex-row\">\n      <div className=\"flex items-start gap-2\">\n        <Button size=\"sm\" variant=\"outline\">\n          Small\n        </Button>\n        <Button size=\"icon-sm\" aria-label=\"Submit\" variant=\"outline\">\n          <ArrowUpRightIcon />\n        </Button>\n      </div>\n      <div className=\"flex items-start gap-2\">\n        <Button variant=\"outline\">Default</Button>\n        <Button size=\"icon\" aria-label=\"Submit\" variant=\"outline\">\n          <ArrowUpRightIcon />\n        </Button>\n      </div>\n      <div className=\"flex items-start gap-2\">\n        <Button variant=\"outline\" size=\"lg\">\n          Large\n        </Button>\n        <Button size=\"icon-lg\" aria-label=\"Submit\" variant=\"outline\">\n          <ArrowUpRightIcon />\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
