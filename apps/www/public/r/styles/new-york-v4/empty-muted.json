@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-muted",
+  "type": "registry:example",
+  "registryDependencies": [
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/empty-muted.tsx",
+      "content": "import { IconBell, IconMail, IconCalendar, IconMessageCircle } from \"@tabler/icons-react\"\n\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/new-york-v4/ui/empty\"\n\nexport default function EmptyMuted() {\n  return (\n    <div className=\"grid gap-8 md:grid-cols-2\">\n      <Empty className=\"text-muted-foreground\">\n        <EmptyHeader>\n          <EmptyMedia variant=\"icon\" className=\"bg-muted/50 text-muted-foreground\">\n            <IconBell />\n          </EmptyMedia>\n          <EmptyTitle className=\"text-muted-foreground\">No notifications</EmptyTitle>\n          <EmptyDescription className=\"text-muted-foreground/70\">\n            You&apos;re all caught up. New notifications will appear here.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n\n      <Empty className=\"text-muted-foreground\">\n        <EmptyHeader>\n          <EmptyMedia variant=\"icon\" className=\"bg-muted/50 text-muted-foreground\">\n            <IconMail />\n          </EmptyMedia>\n          <EmptyTitle className=\"text-muted-foreground\">Inbox empty</EmptyTitle>\n          <EmptyDescription className=\"text-muted-foreground/70\">\n            No new messages. Enjoy the peace and quiet.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n\n      <Empty className=\"text-muted-foreground\">\n        <EmptyHeader>\n          <EmptyMedia variant=\"icon\" className=\"bg-muted/50 text-muted-foreground\">\n            <IconCalendar />\n          </EmptyMedia>\n          <EmptyTitle className=\"text-muted-foreground\">No events today</EmptyTitle>\n          <EmptyDescription className=\"text-muted-foreground/70\">\n            Your calendar is clear. Time to focus on important tasks.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n\n      <Empty className=\"text-muted-foreground\">\n        <EmptyHeader>\n          <EmptyMedia variant=\"icon\" className=\"bg-muted/50 text-muted-foreground\">\n            <IconMessageCircle />\n          </EmptyMedia>\n          <EmptyTitle className=\"text-muted-foreground\">No recent activity</EmptyTitle>\n          <EmptyDescription className=\"text-muted-foreground/70\">\n            Activity from your team and projects will show up here.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n    </div>\n  )\n}",
+      "type": "registry:example"
+    }
+  ]
+}
