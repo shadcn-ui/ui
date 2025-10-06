@@ -27,6 +27,7 @@
   "@billingsdk": "https://billingsdk.com/r/{name}.json",
   "@elements": "https://tryelements.dev/r/{name}.json",
   "@nativeui": "https://nativeui.io/registry/{name}.json",
+  "@scrollxui": "https://www.scrollxui.dev/registry/{name}.json",
   "@smoothui": "https://smoothui.dev/r/{name}.json",
   "@svgl": "https://svgl.app/r/{name}.json",
   "@formcn": "https://formcn.dev/r/{name}.json",
