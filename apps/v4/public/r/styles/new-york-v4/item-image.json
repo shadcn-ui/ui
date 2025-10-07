@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-image",
+  "type": "registry:example",
+  "registryDependencies": [
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/item-image.tsx",
+      "content": "import Image from \"next/image\"\n\nimport {\n  Item,\n  ItemContent,\n  ItemDescription,\n  ItemGroup,\n  ItemMedia,\n  ItemTitle,\n} from \"@/registry/new-york-v4/ui/item\"\n\nconst music = [\n  {\n    title: \"Midnight City Lights\",\n    artist: \"Neon Dreams\",\n    album: \"Electric Nights\",\n    duration: \"3:45\",\n  },\n  {\n    title: \"Coffee Shop Conversations\",\n    artist: \"The Morning Brew\",\n    album: \"Urban Stories\",\n    duration: \"4:05\",\n  },\n  {\n    title: \"Digital Rain\",\n    artist: \"Cyber Symphony\",\n    album: \"Binary Beats\",\n    duration: \"3:30\",\n  },\n]\n\nexport default function ItemImage() {\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-6\">\n      <ItemGroup className=\"gap-4\">\n        {music.map((song) => (\n          <Item key={song.title} variant=\"outline\" asChild role=\"listitem\">\n            <a href=\"#\">\n              <ItemMedia variant=\"image\">\n                <Image\n                  src={`https://avatar.vercel.sh/${song.title}`}\n                  alt={song.title}\n                  width={32}\n                  height={32}\n                  className=\"object-cover grayscale\"\n                />\n              </ItemMedia>\n              <ItemContent>\n                <ItemTitle className=\"line-clamp-1\">\n                  {song.title} -{\" \"}\n                  <span className=\"text-muted-foreground\">{song.album}</span>\n                </ItemTitle>\n                <ItemDescription>{song.artist}</ItemDescription>\n              </ItemContent>\n              <ItemContent className=\"flex-none text-center\">\n                <ItemDescription>{song.duration}</ItemDescription>\n              </ItemContent>\n            </a>\n          </Item>\n        ))}\n      </ItemGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

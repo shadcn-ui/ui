@@ -4,6 +4,404 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## October 2025 - New Components
+
+For this round of components, I looked at what we build every day, the boring stuff we rebuild over and over, and made reusable abstractions you can actually use.
+
+**These components work with every component library, Radix, Base UI, React Aria, you name it. Copy and paste to your projects.**
+
+- [Spinner](#spinner): An indicator to show a loading state.
+- [Kbd](#kbd): Display a keyboard key or group of keys.
+- [Button Group](#button-group): A group of buttons for actions and split buttons.
+- [Input Group](#input-group): Input with icons, buttons, labels and more.
+- [Field](#field): One component. All your forms.
+- [Item](#item): Display lists of items, cards, and more.
+- [Empty](#empty): Use this one for empty states.
+
+### Spinner
+
+Okay let's start with the easiest ones: **Spinner** and **Kbd**. Pretty basic. We all know what they do.
+
+Here's how you render a spinner:
+
+```tsx
+import { Spinner } from "@/components/ui/spinner"
+```
+
+```tsx
+<Spinner />
+```
+
+Here's what it looks like:
+
+<ComponentPreview
+  name="spinner-basic"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
+
+Here's what it looks like in a button:
+
+<ComponentPreview
+  name="spinner-button"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
+
+You can edit the code and replace it with your own spinner.
+
+<ComponentPreview
+  name="spinner-custom"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
+
+### Kbd
+
+Kbd is a component that renders a keyboard key.
+
+```tsx
+import { Kbd, KbdGroup } from "@/components/ui/kbd"
+```
+
+```tsx
+<Kbd>Ctrl</Kbd>
+```
+
+Use `KbdGroup` to group keyboard keys together.
+
+```tsx showLineNumbers
+<KbdGroup>
+  <Kbd>Ctrl</Kbd>
+  <Kbd>B</Kbd>
+</KbdGroup>
+```
+
+<ComponentPreview
+  name="kbd-demo"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
+
+You can add it to buttons, tooltips, input groups, and more.
+
+### Button Group
+
+I got a lot of requests for this one: Button Group. It's a container that groups related buttons together with consistent styling. Great for action groups, split buttons, and more.
+
+<ComponentPreview
+  name="button-group-demo"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
+
+Here's the code:
+
+```tsx
+import { ButtonGroup } from "@/components/ui/button-group"
+```
+
+```tsx showLineNumbers
+<ButtonGroup>
+  <Button>Button 1</Button>
+  <Button>Button 2</Button>
+</ButtonGroup>
+```
+
+You can nest button groups to create more complex layouts with spacing.
+
+```tsx showLineNumbers
+<ButtonGroup>
+  <ButtonGroup>
+    <Button>Button 1</Button>
+    <Button>Button 2</Button>
+  </ButtonGroup>
+  <ButtonGroup>
+    <Button>Button 3</Button>
+    <Button>Button 4</Button>
+  </ButtonGroup>
+</ButtonGroup>
+```
+
+Use `ButtonGroupSeparator` to create split buttons. Classic dropdown pattern.
+
+<ComponentPreview
+  name="button-group-dropdown"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
+
+You can also use it to add prefix or suffix buttons and text to inputs.
+
+<ComponentPreview
+  name="button-group-select"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
+
+```tsx showLineNumbers
+<ButtonGroup>
+  <ButtonGroupText>Prefix</ButtonGroupText>
+  <Input placeholder="Type something here..." />
+  <Button>Button</Button>
+</ButtonGroup>
+```
+
+### Input Group
+
+Input Group lets you add icons, buttons, and more to your inputs. You know, all those little bits you always need around your inputs.
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group"
+```
+
+```tsx showLineNumbers
+<InputGroup>
+  <InputGroupInput placeholder="Search..." />
+  <InputGroupAddon>
+    <SearchIcon />
+  </InputGroupAddon>
+</InputGroup>
+```
+
+Here's a preview with icons:
+
+<ComponentPreview
+  name="input-group-icon"
+  className="[&_.preview]:h-[300px] [&_pre]:!h-[300px]"
+/>
+
+You can also add buttons to the input group.
+
+<ComponentPreview
+  name="input-group-button"
+  className="[&_.preview]:h-[300px] [&_pre]:!h-[300px]"
+/>
+
+Or text, labels, tooltips,...
+
+<ComponentPreview
+  name="input-group-text"
+  className="[&_.preview]:h-[350px] [&_pre]:!h-[350px]"
+/>
+
+It also works with textareas so you can build really complex components with lots of knobs and dials or yet another prompt form.
+
+<ComponentPreview
+  name="input-group-textarea"
+  className="[&_.preview]:h-[450px] [&_pre]:!h-[450px]"
+/>
+
+Oh here are some cool ones with spinners:
+
+<ComponentPreview
+  name="input-group-spinner"
+  className="[&_.preview]:h-[350px] [&_pre]:!h-[350px]"
+/>
+
+### Field
+
+Introducing **Field**, a component for building really complex forms. The abstraction here is beautiful.
+
+It took me a long time to get it right but I made it work with all your form libraries: Server Actions, React Hook Form, TanStack Form, Bring Your Own Form.
+
+```tsx
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from "@/components/ui/field"
+```
+
+Here's a basic field with an input:
+
+```tsx showLineNumbers
+<Field>
+  <FieldLabel htmlFor="username">Username</FieldLabel>
+  <Input id="username" placeholder="Max Leiter" />
+  <FieldDescription>
+    Choose a unique username for your account.
+  </FieldDescription>
+</Field>
+```
+
+<ComponentPreview
+  name="field-input"
+  className="[&_.preview]:h-[350px] [&_pre]:!h-[350px]"
+/>
+
+It works with all form controls. Inputs, textareas, selects, checkboxes, radios, switches, sliders, you name it. Here's a full example:
+
+<ComponentPreview
+  name="field-demo"
+  className="[&_.preview]:h-[850px] [&_pre]:!h-[850px]"
+/>
+
+Here are some checkbox fields:
+
+<ComponentPreview
+  name="field-checkbox"
+  className="[&_.preview]:h-[500px] [&_pre]:!h-[500px]"
+/>
+
+You can group fields together using `FieldGroup` and `FieldSet`. Perfect for
+multi-section forms.
+
+```tsx showLineNumbers
+<FieldSet>
+  <FieldLegend />
+  <FieldGroup>
+    <Field />
+    <Field />
+  </FieldGroup>
+</FieldSet>
+```
+
+<ComponentPreview
+  name="field-fieldset"
+  className="[&_.preview]:h-[500px] [&_pre]:!h-[500px]"
+/>
+
+Making it responsive is easy. Use `orientation="responsive"` and it switches
+between vertical and horizontal layouts based on container width. Done.
+
+<ComponentPreview
+  name="field-responsive"
+  className="[&_.preview]:h-[600px] [&_pre]:!h-[600px]"
+/>
+
+Wait here's more. Wrap your fields in `FieldLabel` to create a selectable field group. Really easy. And it looks great.
+
+<ComponentPreview
+  name="field-choice-card"
+  className="[&_.preview]:h-[600px] [&_pre]:!h-[600px]"
+/>
+
+### Item
+
+This one is a straightforward flex container that can house nearly any type of content.
+
+I've built this so many times that I decided to create a component for it. Now I use it all the time. I use it to display lists of items, cards, and more.
+
+```tsx
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item"
+```
+
+Here's a basic item:
+
+```tsx showLineNumbers
+<Item>
+  <ItemMedia variant="icon">
+    <HomeIcon />
+  </ItemMedia>
+  <ItemContent>
+    <ItemTitle>Dashboard</ItemTitle>
+    <ItemDescription>Overview of your account and activity.</ItemDescription>
+  </ItemContent>
+</Item>
+```
+
+<ComponentPreview
+  name="item-demo"
+  className="[&_.preview]:h-[300px] [&_.preview]:p-4 [&_pre]:!h-[300px]"
+/>
+
+You can add icons, avatars, or images to the item.
+
+<ComponentPreview
+  name="item-icon"
+  className="[&_.preview]:h-[300px] [&_.preview]:p-4 [&_pre]:!h-[300px]"
+/>
+
+<ComponentPreview
+  name="item-avatar"
+  className="[&_.preview]:h-[300px] [&_.preview]:p-4 [&_pre]:!h-[300px]"
+/>
+
+And here's what a list of items looks like with `ItemGroup`:
+
+<ComponentPreview
+  name="item-group"
+  className="[&_.preview]:h-[500px] [&_.preview]:p-4 [&_pre]:!h-[500px]"
+/>
+
+Need it as a link? Use the `asChild` prop:
+
+```tsx showLineNumbers
+<Item asChild>
+  <a href="/dashboard">
+    <ItemMedia variant="icon">
+      <HomeIcon />
+    </ItemMedia>
+    <ItemContent>
+      <ItemTitle>Dashboard</ItemTitle>
+      <ItemDescription>Overview of your account and activity.</ItemDescription>
+    </ItemContent>
+  </a>
+</Item>
+```
+
+<ComponentPreview
+  name="item-link"
+  className="[&_.preview]:h-[400px] [&_.preview]:p-4 [&_pre]:!h-[400px]"
+/>
+
+### Empty
+
+Okay last one: **Empty**. Use this to display empty states in your app.
+
+```tsx
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty"
+```
+
+Here's how you use it:
+
+```tsx showLineNumbers
+<Empty>
+  <EmptyMedia variant="icon">
+    <InboxIcon />
+  </EmptyMedia>
+  <EmptyTitle>No messages</EmptyTitle>
+  <EmptyDescription>You don't have any messages yet.</EmptyDescription>
+  <EmptyContent>
+    <Button>Send a message</Button>
+  </EmptyContent>
+</Empty>
+```
+
+<ComponentPreview
+  name="empty-demo"
+  className="[&_.preview]:h-[400px] [&_.preview]:p-4 [&_pre]:!h-[400px]"
+/>
+
+You can use it with avatars:
+
+<ComponentPreview
+  name="empty-avatar"
+  className="[&_.preview]:h-[400px] [&_pre]:!h-[400px]"
+/>
+
+Or with input groups for things like search results or email subscriptions:
+
+<ComponentPreview
+  name="empty-input-group"
+  className="[&_.preview]:h-[450px] [&_pre]:!h-[450px]"
+/>
+
+That's it. Seven new components. Works with all your libraries. Ready for your projects.
+
+---
+
 ## September 2025 - Registry Index
 
 We've created an index of open source registries that you can install items from.
