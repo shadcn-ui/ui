@@ -1056,6 +1056,86 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "form-rhf-demo",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "input-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-rhf-demo.tsx",
+        type: "registry:example",
+      },
+      {
+        path: "examples/form-rhf-demo-schema.ts",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
+    name: "form-rhf-complex",
+    type: "registry:example",
+    registryDependencies: [
+      "field",
+      "button",
+      "card",
+      "checkbox",
+      "radio-group",
+      "select",
+      "switch",
+    ],
+    files: [
+      {
+        path: "examples/form-rhf-complex.tsx",
+        type: "registry:example",
+      },
+      {
+        path: "examples/form-rhf-complex-schema.ts",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
+    name: "form-tanstack-demo",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "input-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-demo.tsx",
+        type: "registry:example",
+      },
+      {
+        path: "examples/form-tanstack-demo-schema.ts",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
+    name: "form-tanstack-complex",
+    type: "registry:example",
+    registryDependencies: [
+      "field",
+      "button",
+      "card",
+      "checkbox",
+      "radio-group",
+      "select",
+      "switch",
+    ],
+    files: [
+      {
+        path: "examples/form-tanstack-complex.tsx",
+        type: "registry:example",
+      },
+      {
+        path: "examples/form-tanstack-complex-schema.ts",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
     name: "drawer-dialog",
     type: "registry:example",
     registryDependencies: ["drawer", "dialog"],

@@ -1,6 +1,447 @@
 ---
 title: React Hook Form
-description: Build forms in React using useFormState and Server Actions
+description: Build forms in React using React Hook Form and Zod.
+links:
+  doc: https://react-hook-form.com
 ---
 
-[WIP]
+import { InfoIcon } from "lucide-react"
+
+In this guide, we will take a look at building forms with React Hook Form. We'll cover building forms, validation, error handling, accessibility, and more.
+
+## Demo
+
+We are going to build the following form with a simple text input and a textarea. On submit, we'll validate the form data using Zod and display any errors.
+
+<ComponentPreview
+  name="form-rhf-demo"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
+
+<Callout icon={<InfoIcon />}>
+  **Note:** React Hook Form is a client-side form library. All validation and
+  state management happens in the browser.
+</Callout>
+
+## Approach
+
+This form leverages React Hook Form for performant, flexible form handling. We'll build our form using the `<Field />` component, which gives you **complete flexibility over the markup and styling**.
+
+- Uses React Hook Form's `useForm` hook for form state management.
+- `<Controller />` component for controlled inputs.
+- `<Field />` components for building accessible forms.
+- Client-side validation using Zod with `zodResolver`.
+- Real-time validation feedback.
+
+## Anatomy
+
+Here's a basic example of a form using React Hook Form with the `<Field />` component.
+
+```tsx showLineNumbers
+<form onSubmit={form.handleSubmit(onSubmit)}>
+  <FieldGroup>
+    <Controller
+      name="title"
+      control={form.control}
+      render={({ field, fieldState }) => {
+        const isInvalid = fieldState.invalid
+        return (
+          <Field data-invalid={isInvalid}>
+            <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
+            <Input
+              {...field}
+              id={field.name}
+              aria-invalid={isInvalid}
+              placeholder="Login button not working on mobile"
+              autoComplete="off"
+            />
+            <FieldDescription>
+              Provide a concise title for your bug report.
+            </FieldDescription>
+            {isInvalid && <FieldError errors={[fieldState.error]} />}
+          </Field>
+        )
+      }}
+    />
+  </FieldGroup>
+  <Button type="submit">Submit</Button>
+</form>
+```
+
+## Usage
+
+### Create a form schema
+
+We'll start by defining the shape of our form using a Zod schema in a `schema.ts` file.
+
+<Callout icon={<InfoIcon />}>
+  **Note:** This example uses `zod v3` for schema validation, but you can
+  replace it with any other schema validation library supported by React Hook
+  Form.
+</Callout>
+
+```tsx showLineNumbers title="schema.ts"
+import { z } from "zod"
+
+export const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+```
+
+### Define the form state type
+
+Next, we'll create a type for our form state. Since React Hook Form is client-side only, we don't need a success field.
+
+```tsx showLineNumbers title="schema.ts"
+import { z } from "zod"
+
+export type FormState = {
+  values: z.infer<typeof formSchema>
+  errors: null | Partial<Record<keyof z.infer<typeof formSchema>, string[]>>
+}
+```
+
+### Setup the form
+
+Use the `useForm` hook from React Hook Form to create your form instance with the Zod resolver.
+
+```tsx showLineNumbers title="form.tsx" {1-2,4-6,8-15}
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+
+import { formSchema } from "./schema"
+
+export function BugReportForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    mode: "onChange",
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+  })
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    console.log(data)
+  }
+
+  return <form onSubmit={form.handleSubmit(onSubmit)}>{/* ... */}</form>
+}
+```
+
+**Note:** We set `mode: "onChange"` to enable real-time validation as the user types.
+
+### Build the form
+
+We can now build the form using the `<Controller />` component from React Hook Form and the `<Field />` component.
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-rhf-demo.tsx"
+  title="form.tsx"
+/>
+
+### Done
+
+That's it. You now have a fully accessible form with client-side validation.
+
+When you submit the form, the `onSubmit` function will be called with the validated form data. If the form data is invalid, React Hook Form will display the errors next to each field.
+
+## Validation
+
+### Client-side Validation
+
+React Hook Form validates your form data using the Zod schema. Validation happens in real-time as the user types (when `mode: "onChange"` is set).
+
+```tsx showLineNumbers title="form.tsx" {8-14}
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+
+import { formSchema } from "./schema"
+
+export function BugReportForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    mode: "onChange",
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+  })
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log(data)
+  }
+
+  return <form onSubmit={form.handleSubmit(onSubmit)}>{/* ... */}</form>
+}
+```
+
+### Validation Modes
+
+React Hook Form supports different validation modes:
+
+- `mode: "onChange"` - Validation triggers on every change.
+- `mode: "onBlur"` - Validation triggers on blur.
+- `mode: "onSubmit"` - Validation triggers on submit (default).
+- `mode: "onTouched"` - Validation triggers on first blur, then on every change.
+- `mode: "all"` - Validation triggers on blur and change.
+
+```tsx showLineNumbers
+const form = useForm<z.infer<typeof formSchema>>({
+  resolver: zodResolver(formSchema),
+  mode: "onChange", // or "onBlur", "onSubmit", "onTouched", "all"
+})
+```
+
+## Displaying Errors
+
+Display errors next to the field using `<FieldError />`. Make sure to add the `data-invalid` prop to the `<Field />` component and `aria-invalid` prop to the input.
+
+```tsx showLineNumbers
+<Controller
+  name="email"
+  control={form.control}
+  render={({ field, fieldState }) => {
+    const isInvalid = fieldState.invalid
+    return (
+      <Field data-invalid={isInvalid}>
+        <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+        <Input
+          {...field}
+          id={field.name}
+          type="email"
+          aria-invalid={isInvalid}
+        />
+        {isInvalid && <FieldError errors={[fieldState.error]} />}
+      </Field>
+    )
+  }}
+/>
+```
+
+## Working with Different Field Types
+
+### Text Inputs
+
+For simple text inputs, spread the `field` object onto the input.
+
+```tsx showLineNumbers
+<Controller
+  name="name"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field data-invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+      <Input {...field} id={field.name} aria-invalid={fieldState.invalid} />
+      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+    </Field>
+  )}
+/>
+```
+
+### Select
+
+For select components, use `value` and `onValueChange`.
+
+```tsx showLineNumbers
+<Controller
+  name="country"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field data-invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Country</FieldLabel>
+      <Select
+        name={field.name}
+        value={field.value}
+        onValueChange={field.onChange}
+        aria-invalid={fieldState.invalid}
+      >
+        <SelectTrigger id={field.name}>
+          <SelectValue placeholder="Select a country" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="us">United States</SelectItem>
+          <SelectItem value="uk">United Kingdom</SelectItem>
+        </SelectContent>
+      </Select>
+      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+    </Field>
+  )}
+/>
+```
+
+### Checkboxes
+
+For checkboxes, handle the `checked` state and `onCheckedChange` event.
+
+```tsx showLineNumbers
+<Controller
+  name="addons"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <FieldSet data-invalid={fieldState.invalid}>
+      <FieldLegend>Add-ons</FieldLegend>
+      <FieldGroup data-slot="checkbox-group">
+        {addons.map((addon) => (
+          <Field key={addon.id} orientation="horizontal">
+            <Checkbox
+              id={addon.id}
+              name={field.name}
+              checked={field.value.includes(addon.id)}
+              onCheckedChange={(checked) => {
+                const newValue = checked
+                  ? [...field.value, addon.id]
+                  : field.value.filter((value) => value !== addon.id)
+                field.onChange(newValue)
+              }}
+            />
+            <FieldContent>
+              <FieldLabel htmlFor={addon.id}>{addon.title}</FieldLabel>
+            </FieldContent>
+          </Field>
+        ))}
+      </FieldGroup>
+      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+    </FieldSet>
+  )}
+/>
+```
+
+### Switch
+
+For switches, use `checked` and `onCheckedChange`.
+
+```tsx showLineNumbers
+<Controller
+  name="notifications"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field orientation="horizontal">
+      <FieldContent>
+        <FieldLabel htmlFor={field.name}>Email Notifications</FieldLabel>
+        <FieldDescription>
+          Receive email updates about your account
+        </FieldDescription>
+      </FieldContent>
+      <Switch
+        id={field.name}
+        name={field.name}
+        checked={field.value}
+        onCheckedChange={field.onChange}
+        aria-invalid={fieldState.invalid}
+      />
+    </Field>
+  )}
+/>
+```
+
+## Resetting the Form
+
+Use `form.reset()` to reset the form to its default values.
+
+```tsx showLineNumbers
+<Button type="button" variant="outline" onClick={() => form.reset()}>
+  Reset
+</Button>
+```
+
+## Complex Forms
+
+Here is an example of a more complex form with multiple fields and validation.
+
+<ComponentPreview
+  name="form-rhf-complex"
+  className="[&_.preview]:h-[1100px] [&_pre]:!h-[1100px]"
+  hideCode
+/>
+
+### Schema
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-rhf-complex-schema.ts"
+  title="schema.ts"
+/>
+
+### Form
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-rhf-complex.tsx"
+  title="form.tsx"
+/>
+
+## Form State
+
+React Hook Form provides several methods to access form state:
+
+```tsx showLineNumbers
+const form = useForm()
+
+// Check if form is valid
+const isValid = form.formState.isValid
+
+// Check if form is submitting
+const isSubmitting = form.formState.isSubmitting
+
+// Check if form is dirty (has changed)
+const isDirty = form.formState.isDirty
+
+// Get all errors
+const errors = form.formState.errors
+
+// Check if a specific field is touched
+const isTouched = form.formState.touchedFields.email
+```
+
+## Submitting Forms
+
+### Basic Submit
+
+```tsx showLineNumbers
+function onSubmit(data: z.infer<typeof formSchema>) {
+  console.log(data)
+}
+
+;<form onSubmit={form.handleSubmit(onSubmit)}>{/* ... */}</form>
+```
+
+### With Toast Notification
+
+```tsx showLineNumbers
+import { toast } from "sonner"
+
+function onSubmit(data: z.infer<typeof formSchema>) {
+  toast.success("Form submitted", {
+    description: "Your data has been saved successfully.",
+  })
+}
+```
+
+### With API Call
+
+```tsx showLineNumbers
+async function onSubmit(data: z.infer<typeof formSchema>) {
+  try {
+    const response = await fetch("/api/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+
+    if (!response.ok) throw new Error("Failed to submit")
+
+    toast.success("Form submitted successfully")
+  } catch (error) {
+    toast.error("Failed to submit form")
+  }
+}
+```

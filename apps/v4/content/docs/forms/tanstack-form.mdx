@@ -1,6 +1,579 @@
 ---
-title: Tanstack Form
-description: Build forms in React using useFormState and Server Actions
+title: TanStack Form
+description: Build forms in React using TanStack Form and Zod.
+links:
+  doc: https://tanstack.com/form
 ---
 
-[WIP]
+import { InfoIcon } from "lucide-react"
+
+In this guide, we will take a look at building forms with TanStack Form. We'll cover building forms, validation, error handling, accessibility, and more.
+
+## Demo
+
+We are going to build the following form with a simple text input and a textarea. On submit, we'll validate the form data using Zod and display any errors.
+
+<ComponentPreview
+  name="form-tanstack-demo"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
+
+<Callout icon={<InfoIcon />}>
+  **Note:** TanStack Form is a headless, framework-agnostic form library. All
+  validation and state management happens in the browser.
+</Callout>
+
+## Approach
+
+This form leverages TanStack Form for powerful, headless form handling. We'll build our form using the `<Field />` component, which gives you **complete flexibility over the markup and styling**.
+
+- Uses TanStack Form's `useForm` hook for form state management.
+- `form.Field` component with render prop pattern for controlled inputs.
+- `<Field />` components for building accessible forms.
+- Client-side validation using Zod.
+- Real-time validation feedback.
+
+## Anatomy
+
+Here's a basic example of a form using TanStack Form with the `<Field />` component.
+
+```tsx showLineNumbers
+<form
+  onSubmit={(e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    void form.handleSubmit()
+  }}
+>
+  <FieldGroup>
+    <form.Field
+      name="title"
+      children={(field) => {
+        const isInvalid =
+          field.state.meta.isTouched && !field.state.meta.isValid
+        return (
+          <Field data-invalid={isInvalid}>
+            <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
+            <Input
+              id={field.name}
+              name={field.name}
+              value={field.state.value}
+              onBlur={field.handleBlur}
+              onChange={(e) => field.handleChange(e.target.value)}
+              aria-invalid={isInvalid}
+              placeholder="Login button not working on mobile"
+              autoComplete="off"
+            />
+            <FieldDescription>
+              Provide a concise title for your bug report.
+            </FieldDescription>
+            {isInvalid && <FieldError errors={field.state.meta.errors} />}
+          </Field>
+        )
+      }}
+    />
+  </FieldGroup>
+  <Button type="submit">Submit</Button>
+</form>
+```
+
+## Usage
+
+### Create a form schema
+
+We'll start by defining the shape of our form using a Zod schema in a `schema.ts` file.
+
+<Callout icon={<InfoIcon />}>
+  **Note:** This example uses `zod v3` for schema validation. TanStack Form
+  integrates seamlessly with Zod through its validators API.
+</Callout>
+
+```tsx showLineNumbers title="schema.ts"
+import { z } from "zod"
+
+export const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
+```
+
+### Setup the form
+
+Use the `useForm` hook from TanStack Form to create your form instance with Zod validation.
+
+```tsx showLineNumbers title="form.tsx" {1-2,4-6,8-18}
+import { useForm } from "@tanstack/react-form"
+import { toast } from "sonner"
+import { z } from "zod"
+
+import { formSchema } from "./schema"
+
+export function BugReportForm() {
+  const form = useForm({
+    defaultValues: {
+      title: "",
+      description: "",
+    },
+    validators: {
+      onChange: formSchema,
+    },
+    onSubmit: async ({ value }) => {
+      toast.success("Form submitted successfully")
+    },
+  })
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        void form.handleSubmit()
+      }}
+    >
+      {/* ... */}
+    </form>
+  )
+}
+```
+
+**Note:** We use `validators: { onChange: formSchema }` to enable real-time validation as the user types.
+
+### Build the form
+
+We can now build the form using the `form.Field` component from TanStack Form and the `<Field />` component.
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-tanstack-demo.tsx"
+  title="form.tsx"
+/>
+
+### Done
+
+That's it. You now have a fully accessible form with client-side validation.
+
+When you submit the form, the `onSubmit` function will be called with the validated form data. If the form data is invalid, TanStack Form will display the errors next to each field.
+
+## Validation
+
+### Client-side Validation
+
+TanStack Form validates your form data using the Zod schema. Validation happens in real-time as the user types.
+
+```tsx showLineNumbers title="form.tsx" {8-11}
+import { useForm } from "@tanstack/react-form"
+
+import { formSchema } from "./schema"
+
+export function BugReportForm() {
+  const form = useForm({
+    defaultValues: { title: "", description: "" },
+    validators: {
+      onChange: formSchema,
+    },
+    onSubmit: async ({ value }) => {
+      console.log(value)
+    },
+  })
+
+  return <form onSubmit={/* ... */}>{/* ... */}</form>
+}
+```
+
+### Validation Modes
+
+TanStack Form supports different validation strategies through the `validators` option:
+
+- `onChange` - Validation triggers on every change.
+- `onBlur` - Validation triggers on blur.
+- `onSubmit` - Validation triggers on submit.
+- `onMount` - Validation triggers on mount.
+
+```tsx showLineNumbers
+const form = useForm({
+  defaultValues: { title: "", description: "" },
+  validators: {
+    onChange: formSchema, // Real-time validation
+    onBlur: formSchema, // Blur validation
+    onSubmit: formSchema, // Submit validation
+  },
+})
+```
+
+## Displaying Errors
+
+Display errors next to the field using `<FieldError />`. Make sure to add the `data-invalid` prop to the `<Field />` component and `aria-invalid` prop to the input.
+
+```tsx showLineNumbers
+<form.Field
+  name="email"
+  children={(field) => {
+    const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field data-invalid={isInvalid}>
+        <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+        <Input
+          id={field.name}
+          name={field.name}
+          value={field.state.value}
+          onBlur={field.handleBlur}
+          onChange={(e) => field.handleChange(e.target.value)}
+          type="email"
+          aria-invalid={isInvalid}
+        />
+        {isInvalid && <FieldError errors={field.state.meta.errors} />}
+      </Field>
+    )
+  }}
+/>
+```
+
+## Working with Different Field Types
+
+### Text Inputs
+
+For simple text inputs, use `field.state.value` and `field.handleChange`.
+
+```tsx showLineNumbers
+<form.Field
+  name="name"
+  children={(field) => {
+    const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field data-invalid={isInvalid}>
+        <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+        <Input
+          id={field.name}
+          name={field.name}
+          value={field.state.value}
+          onBlur={field.handleBlur}
+          onChange={(e) => field.handleChange(e.target.value)}
+          aria-invalid={isInvalid}
+        />
+        {isInvalid && <FieldError errors={field.state.meta.errors} />}
+      </Field>
+    )
+  }}
+/>
+```
+
+### Select
+
+For select components, use `value` and `onValueChange`.
+
+```tsx showLineNumbers
+<form.Field
+  name="country"
+  children={(field) => {
+    const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field data-invalid={isInvalid}>
+        <FieldLabel htmlFor={field.name}>Country</FieldLabel>
+        <Select
+          name={field.name}
+          value={field.state.value}
+          onValueChange={field.handleChange}
+          aria-invalid={isInvalid}
+        >
+          <SelectTrigger id={field.name}>
+            <SelectValue placeholder="Select a country" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="us">United States</SelectItem>
+            <SelectItem value="uk">United Kingdom</SelectItem>
+          </SelectContent>
+        </Select>
+        {isInvalid && <FieldError errors={field.state.meta.errors} />}
+      </Field>
+    )
+  }}
+/>
+```
+
+### Checkboxes (Array)
+
+For checkbox arrays, use `mode="array"` and TanStack Form's array helpers.
+
+```tsx showLineNumbers
+<form.Field
+  name="addons"
+  mode="array"
+  children={(field) => {
+    const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <FieldSet data-invalid={isInvalid}>
+        <FieldLegend>Add-ons</FieldLegend>
+        <FieldGroup data-slot="checkbox-group">
+          {addons.map((addon) => (
+            <Field key={addon.id} orientation="horizontal">
+              <Checkbox
+                id={addon.id}
+                name={field.name}
+                checked={field.state.value.includes(addon.id)}
+                onCheckedChange={(checked) => {
+                  if (checked) {
+                    field.pushValue(addon.id)
+                  } else {
+                    const index = field.state.value.indexOf(addon.id)
+                    if (index > -1) {
+                      field.removeValue(index)
+                    }
+                  }
+                }}
+              />
+              <FieldContent>
+                <FieldLabel htmlFor={addon.id}>{addon.title}</FieldLabel>
+              </FieldContent>
+            </Field>
+          ))}
+        </FieldGroup>
+        {isInvalid && <FieldError errors={field.state.meta.errors} />}
+      </FieldSet>
+    )
+  }}
+/>
+```
+
+### Switch
+
+For switches, use `checked` and `onCheckedChange`.
+
+```tsx showLineNumbers
+<form.Field
+  name="notifications"
+  children={(field) => {
+    const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field orientation="horizontal">
+        <FieldContent>
+          <FieldLabel htmlFor={field.name}>Email Notifications</FieldLabel>
+          <FieldDescription>
+            Receive email updates about your account
+          </FieldDescription>
+        </FieldContent>
+        <Switch
+          id={field.name}
+          name={field.name}
+          checked={field.state.value}
+          onCheckedChange={field.handleChange}
+        />
+        {isInvalid && <FieldError errors={field.state.meta.errors} />}
+      </Field>
+    )
+  }}
+/>
+```
+
+## Resetting the Form
+
+Use `form.reset()` to reset the form to its default values.
+
+```tsx showLineNumbers
+<Button type="button" variant="outline" onClick={() => form.reset()}>
+  Reset
+</Button>
+```
+
+## Complex Forms
+
+Here is an example of a more complex form with multiple fields and validation.
+
+<ComponentPreview
+  name="form-tanstack-complex"
+  className="[&_.preview]:h-[1100px] [&_pre]:!h-[1100px]"
+  hideCode
+/>
+
+### Schema
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-tanstack-complex-schema.ts"
+  title="schema.ts"
+/>
+
+### Form
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-tanstack-complex.tsx"
+  title="form.tsx"
+/>
+
+## Form State
+
+TanStack Form provides several methods to access form state:
+
+```tsx showLineNumbers
+const form = useForm(/* ... */)
+
+// Access all form values
+const values = form.state.values
+
+// Check if form is valid
+const isValid = form.state.isValid
+
+// Check if form is submitting
+const isSubmitting = form.state.isSubmitting
+
+// Check if form is dirty (has changed)
+const isDirty = form.state.isDirty
+
+// Check if a specific field is touched
+form.getFieldInfo("email").state.meta.isTouched
+```
+
+## Field State
+
+Each field provides its own state through the render prop:
+
+```tsx showLineNumbers
+<form.Field
+  name="email"
+  children={(field) => {
+    // Field value
+    const value = field.state.value
+
+    // Validation state
+    const isValid = field.state.meta.isValid
+    const isTouched = field.state.meta.isTouched
+    const isDirty = field.state.meta.isDirty
+
+    // Errors
+    const errors = field.state.meta.errors
+
+    return <Field>{/* ... */}</Field>
+  }}
+/>
+```
+
+## Submitting Forms
+
+### Basic Submit
+
+```tsx showLineNumbers
+const form = useForm({
+  defaultValues: { title: "", description: "" },
+  validators: {
+    onChange: formSchema,
+  },
+  onSubmit: async ({ value }) => {
+    console.log(value)
+  },
+})
+
+return (
+  <form
+    onSubmit={(e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      void form.handleSubmit()
+    }}
+  >
+    {/* ... */}
+  </form>
+)
+```
+
+### With Toast Notification
+
+```tsx showLineNumbers
+import { toast } from "sonner"
+
+const form = useForm({
+  defaultValues: { title: "", description: "" },
+  validators: {
+    onChange: formSchema,
+  },
+  onSubmit: async ({ value }) => {
+    toast.success("Form submitted", {
+      description: "Your data has been saved successfully.",
+    })
+  },
+})
+```
+
+### With API Call
+
+```tsx showLineNumbers
+const form = useForm({
+  defaultValues: { title: "", description: "" },
+  validators: {
+    onChange: formSchema,
+  },
+  onSubmit: async ({ value }) => {
+    try {
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(value),
+      })
+
+      if (!response.ok) throw new Error("Failed to submit")
+
+      toast.success("Form submitted successfully")
+    } catch (error) {
+      toast.error("Failed to submit form")
+    }
+  },
+})
+```
+
+## Array Fields
+
+TanStack Form provides powerful array field management with `mode="array"`.
+
+### Adding Items
+
+Use `field.pushValue(item)` to add items to an array field.
+
+```tsx showLineNumbers
+<form.Field
+  name="tags"
+  mode="array"
+  children={(field) => (
+    <div>
+      <Button onClick={() => field.pushValue("")}>Add Tag</Button>
+    </div>
+  )}
+/>
+```
+
+### Removing Items
+
+Use `field.removeValue(index)` to remove items from an array field.
+
+```tsx showLineNumbers
+<form.Field
+  name="tags"
+  mode="array"
+  children={(field) => (
+    <div>
+      {field.state.value.map((_, index) => (
+        <Button key={index} onClick={() => field.removeValue(index)}>
+          Remove
+        </Button>
+      ))}
+    </div>
+  )}
+/>
+```
+
+### Updating Items
+
+Access nested fields using dot notation.
+
+```tsx showLineNumbers
+<form.Field
+  name={`tags[${index}]`}
+  children={(field) => (
+    <Input
+      value={field.state.value}
+      onChange={(e) => field.handleChange(e.target.value)}
+    />
+  )}
+/>
+```

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-rhf-demo",
+  "type": "registry:example",
+  "dependencies": [
+    "react-hook-form",
+    "@hookform/resolvers",
+    "zod"
+  ],
+  "registryDependencies": [
+    "field",
+    "input",
+    "input-group",
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/form-rhf-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { zodResolver } from \"@hookform/resolvers/zod\"\nimport { Controller, useForm } from \"react-hook-form\"\nimport { toast } from \"sonner\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport {\n  Field,\n  FieldDescription,\n  FieldError,\n  FieldGroup,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupText,\n  InputGroupTextarea,\n} from \"@/registry/new-york-v4/ui/input-group\"\n\nimport { formSchema, type FormState } from \"./form-rhf-demo-schema\"\n\nexport default function FormRhfDemo() {\n  const form = useForm<FormState>({\n    resolver: zodResolver(formSchema),\n    mode: \"onChange\",\n    defaultValues: {\n      title: \"\",\n      description: \"\",\n    },\n  })\n\n  function onSubmit(data: FormState) {\n    toast(\"Thank you for your feedback\", {\n      description: \"We'll review your report and get back to you soon.\",\n    })\n    form.reset()\n  }\n\n  return (\n    <Card className=\"w-full max-w-md\">\n      <CardHeader>\n        <CardTitle>Bug Report</CardTitle>\n        <CardDescription>\n          Help us improve by reporting bugs you encounter.\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <form id=\"bug-report-form\" onSubmit={form.handleSubmit(onSubmit)}>\n          <FieldGroup>\n            <Controller\n              name=\"title\"\n              control={form.control}\n              render={({ field, fieldState }) => {\n                const isInvalid = fieldState.invalid\n                return (\n                  <Field data-invalid={isInvalid}>\n                    <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>\n                    <Input\n                      {...field}\n                      id={field.name}\n                      aria-invalid={isInvalid}\n                      placeholder=\"Login button not working on mobile\"\n                      autoComplete=\"off\"\n                    />\n                    {isInvalid && <FieldError errors={[fieldState.error]} />}\n                  </Field>\n                )\n              }}\n            />\n            <Controller\n              name=\"description\"\n              control={form.control}\n              render={({ field, fieldState }) => {\n                const isInvalid = fieldState.invalid\n                return (\n                  <Field data-invalid={isInvalid}>\n                    <FieldLabel htmlFor={field.name}>Description</FieldLabel>\n                    <InputGroup>\n                      <InputGroupTextarea\n                        {...field}\n                        id={field.name}\n                        placeholder=\"I'm having an issue with the login button on mobile.\"\n                        rows={6}\n                        className=\"min-h-24 resize-none\"\n                        aria-invalid={isInvalid}\n                      />\n                      <InputGroupAddon align=\"block-end\">\n                        <InputGroupText className=\"tabular-nums\">\n                          {field.value.length}/100 characters\n                        </InputGroupText>\n                      </InputGroupAddon>\n                    </InputGroup>\n                    <FieldDescription>\n                      Include steps to reproduce, expected behavior, and what\n                      actually happened.\n                    </FieldDescription>\n                    {isInvalid && <FieldError errors={[fieldState.error]} />}\n                  </Field>\n                )\n              }}\n            />\n          </FieldGroup>\n        </form>\n      </CardContent>\n      <CardFooter>\n        <Field orientation=\"horizontal\">\n          <Button type=\"button\" variant=\"outline\" onClick={() => form.reset()}>\n            Reset\n          </Button>\n          <Button type=\"submit\" form=\"bug-report-form\">\n            Submit\n          </Button>\n        </Field>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    },
+    {
+      "path": "registry/new-york-v4/examples/form-rhf-demo-schema.ts",
+      "content": "import { z } from \"zod\"\n\nexport const formSchema = z.object({\n  title: z\n    .string()\n    .min(5, \"Bug title must be at least 5 characters.\")\n    .max(32, \"Bug title must be at most 32 characters.\"),\n  description: z\n    .string()\n    .min(20, \"Description must be at least 20 characters.\")\n    .max(100, \"Description must be at most 100 characters.\"),\n})\n\nexport type FormState = z.infer<typeof formSchema>\n",
+      "type": "registry:example"
+    }
+  ]
+}
