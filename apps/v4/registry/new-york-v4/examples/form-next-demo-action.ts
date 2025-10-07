@@ -1,8 +1,11 @@
 "use server"
 
-import { formSchema, type FormState } from "./form-next-input-textarea-schema"
+import { formSchema, type FormState } from "./form-next-demo-schema"
 
-export async function formAction(_prevState: FormState, formData: FormData) {
+export async function demoFormAction(
+  _prevState: FormState,
+  formData: FormData
+) {
   const values = {
     title: formData.get("title") as string,
     description: formData.get("description") as string,
@@ -22,7 +25,10 @@ export async function formAction(_prevState: FormState, formData: FormData) {
   // Call your database or API here.
 
   return {
-    values,
+    values: {
+      title: "",
+      description: "",
+    },
     errors: null,
     success: true,
   }

@@ -5520,18 +5520,44 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "form-next-input-textarea": {
-    name: "form-next-input-textarea",
+  "form-next-demo": {
+    name: "form-next-demo",
     description: "",
     type: "registry:example",
     registryDependencies: ["field","input","textarea","button","card","spinner"],
     files: [{
-      path: "registry/new-york-v4/examples/form-next-input-textarea.tsx",
+      path: "registry/new-york-v4/examples/form-next-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/form-next-input-textarea.tsx")
+      const mod = await import("@/registry/new-york-v4/examples/form-next-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "form-next-complex": {
+    name: "form-next-complex",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","input","textarea","button","card","spinner","checkbox","dialog","radio-group","select","switch"],
+    files: [{
+      path: "registry/new-york-v4/examples/form-next-complex.tsx",
+      type: "registry:example",
+      target: ""
+    },{
+      path: "registry/new-york-v4/examples/form-next-complex-schema.ts",
+      type: "registry:example",
+      target: ""
+    },{
+      path: "registry/new-york-v4/examples/form-next-complex-action.ts",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/form-next-complex.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

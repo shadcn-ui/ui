@@ -11,15 +11,15 @@ In this guide, we will take a look at building forms with Next.js using `useActi
 
 We are going to build the following form with a simple text input and a textarea. On submit, we'll use a server action to validate the form data and update the form state.
 
-<Callout icon={<InfoIcon />}>
-  **Note:** These examples intentionally disable browser validation to show how
-  schema validation and form errors work in server actions.
-</Callout>
-
 <ComponentPreview
-  name="form-next-input-textarea"
+  name="form-next-demo"
   className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
 />
+
+<Callout icon={<InfoIcon />}>
+  **Note:** The examples on this page intentionally disable browser validation
+  to show how schema validation and form errors work in server actions.
+</Callout>
 
 ## Approach
 
@@ -69,9 +69,9 @@ Here's a basic example of a form using the `<Field />` component.
 We'll start by defining the shape of our form using a Zod schema in a `schema.ts` file.
 
 <Callout icon={<InfoIcon />}>
-  **Note:** This example uses `zod 3` for schema validation, but you can replace
-  it with any other schema validation library. Make sure your schema library
-  conforms to the Standard Schema specification.
+  **Note:** This example uses `zod v3` for schema validation, but you can
+  replace it with any other schema validation library. Make sure your schema
+  library conforms to the Standard Schema specification.
 </Callout>
 
 ```tsx showLineNumbers title="schema.ts"
@@ -109,188 +109,21 @@ export type FormState = {
 
 A server action is a function that runs on the server and can be called from the client. We'll use it to validate the form data and update the form state.
 
-```tsx showLineNumbers title="actions.ts"
-"use server"
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-next-demo-action.ts"
+  title="actions.ts"
+/>
 
-import { formSchema, type FormState } from "./schema"
-
-export async function bugReportFormAction(
-  _prevState: FormState,
-  formData: FormData
-) {
-  const values = {
-    title: formData.get("title") as string,
-    description: formData.get("description") as string,
-  }
-
-  const result = formSchema.safeParse(values)
-
-  if (!result.success) {
-    return {
-      values,
-      success: false,
-      errors: result.error.flatten().fieldErrors,
-    }
-  }
-
-  // Do something with the values.
-  // Call your database or API here.
-
-  return {
-    values,
-    errors: null,
-    success: true,
-  }
-}
-```
-
-**Note:** We are returning `values` for both success and error cases. This is because we want to keep the user submitted values in the form state.
+**Note:** We're returning `values` for error cases. This is because we want to keep the user submitted values in the form state. For success cases, we're returning empty values to reset the form.
 
 ### Build the form
 
 We can now build the form using the `<Field />` component. We'll use the `useActionState` hook to manage the form state, server action, and pending state.
 
-<CodeCollapsibleWrapper>
-
-```tsx showLineNumbers title="form.tsx"
-"use client"
-
-import * as React from "react"
-import Form from "next/form"
-import { toast } from "sonner"
-
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import {
-  Field,
-  FieldDescription,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/components/ui/input-group"
-import { Spinner } from "@/components/ui/spinner"
-
-import { bugReportFormAction } from "./actions"
-import { type FormState } from "./schema"
-
-export function BugReportForm() {
-  const formId = React.useId()
-  const [formKey, setFormKey] = React.useState(formId)
-  const [formState, formAction, pending] = React.useActionState<
-    FormState,
-    FormData
-  >(bugReportFormAction, {
-    values: {
-      title: "",
-      description: "",
-    },
-    errors: null,
-    success: false,
-  })
-  const [descriptionLength, setDescriptionLength] = React.useState(0)
-
-  React.useEffect(() => {
-    // Show a success toast when the form is submitted successfully.
-    if (formState.success) {
-      toast("Thank you for your feedback", {
-        description: "We'll review your report and get back to you soon.",
-      })
-
-      // Reset the form.
-      setFormKey(formKey + 1)
-      setDescriptionLength(0)
-    }
-  }, [formState.success])
-
-  React.useEffect(() => {
-    setDescriptionLength(formState.values.description.length)
-  }, [formState.values.description])
-
-  return (
-    <Card className="w-full max-w-md">
-      <CardHeader>
-        <CardTitle>Bug Report</CardTitle>
-        <CardDescription>
-          Help us improve by reporting bugs you encounter.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form action={formAction} id="bug-report-form" key={formKey}>
-          <FieldGroup>
-            <Field data-invalid={!!formState.errors?.title?.length}>
-              <FieldLabel htmlFor="title">Bug Title</FieldLabel>
-              <Input
-                id="title"
-                name="title"
-                defaultValue={formState.values.title}
-                disabled={pending}
-                aria-invalid={!!formState.errors?.title?.length}
-                placeholder="Login button not working on mobile"
-                autoComplete="off"
-              />
-              {formState.errors?.title && (
-                <FieldError>{formState.errors.title[0]}</FieldError>
-              )}
-            </Field>
-            <Field data-invalid={!!formState.errors?.description?.length}>
-              <FieldLabel htmlFor="description">Description</FieldLabel>
-              <InputGroup>
-                <InputGroupTextarea
-                  id="description"
-                  name="description"
-                  defaultValue={formState.values.description}
-                  placeholder="I'm having an issue with the login button on mobile."
-                  rows={6}
-                  className="min-h-24 resize-none"
-                  disabled={pending}
-                  aria-invalid={!!formState.errors?.description?.length}
-                  onChange={(e) => setDescriptionLength(e.target.value.length)}
-                />
-                <InputGroupAddon align="block-end">
-                  <InputGroupText className="tabular-nums">
-                    {descriptionLength}/100 characters
-                  </InputGroupText>
-                </InputGroupAddon>
-              </InputGroup>
-              <FieldDescription>
-                Include steps to reproduce, expected behavior, and what actually
-                happened.
-              </FieldDescription>
-              {formState.errors?.description && (
-                <FieldError>{formState.errors.description[0]}</FieldError>
-              )}
-            </Field>
-          </FieldGroup>
-        </Form>
-      </CardContent>
-      <CardFooter>
-        <Field orientation="horizontal">
-          <Button type="submit" disabled={pending} form="bug-report-form">
-            {pending && <Spinner />}
-            Submit
-          </Button>
-        </Field>
-      </CardFooter>
-    </Card>
-  )
-}
-```
-
-</CodeCollapsibleWrapper>
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-next-demo.tsx"
+  title="form.tsx"
+/>
 
 ### Done
 
@@ -471,3 +304,34 @@ Display errors next to the field using `<FieldError />`. Make sure to add the `d
   )}
 </Field>
 ```
+
+## Complex Forms
+
+Here is an example of a more complex form with multiple fields and validation.
+
+<ComponentPreview
+  name="form-next-complex"
+  className="[&_.preview]:h-[1100px] [&_pre]:!h-[1100px]"
+  hideCode
+/>
+
+### Schema
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-next-complex-schema.ts"
+  title="schema.ts"
+/>
+
+### Form
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-next-complex.tsx"
+  title="form.tsx"
+/>
+
+### Server Action
+
+<ComponentSource
+  src="/registry/new-york-v4/examples/form-next-complex-action.ts"
+  title="actions.ts"
+/>

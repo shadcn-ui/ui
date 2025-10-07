@@ -29,16 +29,14 @@ import {
 } from "@/registry/new-york-v4/ui/input-group"
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
-import { formAction as formActionServer } from "./form-next-input-textarea-action"
-import { type FormState } from "./form-next-input-textarea-schema"
+import { demoFormAction } from "./form-next-demo-action"
+import { type FormState } from "./form-next-demo-schema"
 
-export default function FormNextInputTextarea() {
-  const formId = React.useId()
-  const [formKey, setFormKey] = React.useState(formId)
+export default function FormNextDemo() {
   const [formState, formAction, pending] = React.useActionState<
     FormState,
     FormData
-  >(formActionServer, {
+  >(demoFormAction, {
     values: {
       title: "",
       description: "",
@@ -53,10 +51,6 @@ export default function FormNextInputTextarea() {
       toast("Thank you for your feedback", {
         description: "We'll review your report and get back to you soon.",
       })
-
-      // Reset the form.
-      setFormKey(formKey + 1)
-      setDescriptionLength(0)
     }
   }, [formState.success])
 
@@ -73,7 +67,7 @@ export default function FormNextInputTextarea() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Form action={formAction} id={`form-${formId}`} key={formKey}>
+        <Form action={formAction} id="bug-report-form">
           <FieldGroup>
             <Field data-invalid={!!formState.errors?.title?.length}>
               <FieldLabel htmlFor="title">Bug Title</FieldLabel>
@@ -123,7 +117,7 @@ export default function FormNextInputTextarea() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="submit" disabled={pending} form={`form-${formId}`}>
+          <Button type="submit" disabled={pending} form="bug-report-form">
             {pending && <Spinner />}
             Submit
           </Button>

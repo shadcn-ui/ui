@@ -22,7 +22,7 @@ export function ComponentPreview({
 
   if (!Component) {
     return (
-      <p className="text-muted-foreground text-sm">
+      <p className="text-muted-foreground mt-6 text-sm">
         Component{" "}
         <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
           {name}

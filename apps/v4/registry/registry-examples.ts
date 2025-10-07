@@ -1007,7 +1007,7 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "form-next-input-textarea",
+    name: "form-next-demo",
     type: "registry:example",
     registryDependencies: [
       "field",
@@ -1019,7 +1019,38 @@ export const examples: Registry["items"] = [
     ],
     files: [
       {
-        path: "examples/form-next-input-textarea.tsx",
+        path: "examples/form-next-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "form-next-complex",
+    type: "registry:example",
+    registryDependencies: [
+      "field",
+      "input",
+      "textarea",
+      "button",
+      "card",
+      "spinner",
+      "checkbox",
+      "dialog",
+      "radio-group",
+      "select",
+      "switch",
+    ],
+    files: [
+      {
+        path: "examples/form-next-complex.tsx",
+        type: "registry:example",
+      },
+      {
+        path: "examples/form-next-complex-schema.ts",
+        type: "registry:example",
+      },
+      {
+        path: "examples/form-next-complex-action.ts",
         type: "registry:example",
       },
     ],
