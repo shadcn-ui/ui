@@ -230,7 +230,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: "text",
-              text: formatSearchResultsWithPagination(results, {
+              text: await formatSearchResultsWithPagination(results, {
                 query: args.query,
                 registries: args.registries,
               }),
@@ -272,7 +272,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: "text",
-              text: formatSearchResultsWithPagination(results, {
+              text: await formatSearchResultsWithPagination(results, {
                 registries: args.registries,
               }),
             },
