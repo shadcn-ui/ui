@@ -328,16 +328,153 @@ Add custom theme variables to the `theme` object.
 }
 ```
 
+## Add CSS imports
+
+Use `@import` to add CSS imports to your registry item. The imports will be placed at the top of the CSS file.
+
+### Basic import
+
+```json title="example-import.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "custom-import",
+  "type": "registry:component",
+  "css": {
+    "@import \"tailwindcss\"": {},
+    "@import \"./styles/base.css\"": {}
+  }
+}
+```
+
+### Import with url() syntax
+
+```json title="example-url-import.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-import",
+  "type": "registry:item",
+  "css": {
+    "@import url(\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap\")": {},
+    "@import url('./local-styles.css')": {}
+  }
+}
+```
+
+### Import with media queries
+
+```json title="example-media-import.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-import",
+  "type": "registry:item",
+  "css": {
+    "@import \"print-styles.css\" print": {},
+    "@import url(\"mobile.css\") screen and (max-width: 768px)": {}
+  }
+}
+```
+
 ## Add custom plugins
+
+Use `@plugin` to add Tailwind plugins to your registry item. Plugins will be automatically placed after imports and before other content.
+
+**Important:** When using plugins from npm packages, you must also add them to the `dependencies` array.
+
+### Basic plugin usage
 
 ```json title="example-plugin.json" showLineNumbers
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "custom-plugin",
+  "type": "registry:item",
+  "css": {
+    "@plugin \"@tailwindcss/typography\"": {},
+    "@plugin \"foo\"": {}
+  }
+}
+```
+
+### Plugin with npm dependency
+
+When using plugins from npm packages like `@tailwindcss/typography`, include them in the dependencies.
+
+```json title="example-typography.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-component",
+  "type": "registry:item",
+  "dependencies": ["@tailwindcss/typography"],
+  "css": {
+    "@plugin \"@tailwindcss/typography\"": {},
+    "@layer components": {
+      ".prose": {
+        "max-width": "65ch"
+      }
+    }
+  }
+}
+```
+
+### Scoped and file-based plugins
+
+```json title="example-scoped-plugin.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scoped-plugins",
   "type": "registry:component",
   "css": {
-    "@plugin @tailwindcss/typography": {},
-    "@plugin foo": {}
+    "@plugin \"@headlessui/tailwindcss\"": {},
+    "@plugin \"tailwindcss/plugin\"": {},
+    "@plugin \"./custom-plugin.js\"": {}
+  }
+}
+```
+
+### Multiple plugins with automatic ordering
+
+When you add multiple plugins, they are automatically grouped together and deduplicated.
+
+```json title="example-multiple-plugins.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multiple-plugins",
+  "type": "registry:item",
+  "dependencies": [
+    "@tailwindcss/typography",
+    "@tailwindcss/forms",
+    "tw-animate-css"
+  ],
+  "css": {
+    "@plugin \"@tailwindcss/typography\"": {},
+    "@plugin \"@tailwindcss/forms\"": {},
+    "@plugin \"tw-animate-css\"": {}
+  }
+}
+```
+
+## Combined imports and plugins
+
+When using both `@import` and `@plugin` directives, imports are placed first, followed by plugins, then other CSS content.
+
+```json title="example-combined.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combined-example",
+  "type": "registry:item",
+  "dependencies": ["@tailwindcss/typography", "tw-animate-css"],
+  "css": {
+    "@import \"tailwindcss\"": {},
+    "@import url(\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap\")": {},
+    "@plugin \"@tailwindcss/typography\"": {},
+    "@plugin \"tw-animate-css\"": {},
+    "@layer base": {
+      "body": {
+        "font-family": "Inter, sans-serif"
+      }
+    },
+    "@utility content-auto": {
+      "content-visibility": "auto"
+    }
   }
 }
 ```
@@ -443,7 +580,7 @@ You can also have a universal item that installs multiple files:
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "my-custom-start-template",
   "type": "registry:item",
-  dependencies: ["better-auth"]
+  "dependencies": ["better-auth"],
   "files": [
     {
       "path": "/path/to/file-01.json",

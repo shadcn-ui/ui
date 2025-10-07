@@ -12,6 +12,7 @@ import {
 } from "@/src/registry/context"
 import {
   ConfigParseError,
+  RegistriesIndexParseError,
   RegistryInvalidNamespaceError,
   RegistryNotFoundError,
   RegistryParseError,
@@ -277,15 +278,24 @@ export async function getItemTargetPath(
   )
 }
 
-export async function fetchRegistries() {
+export async function getRegistriesIndex(options?: { useCache?: boolean }) {
+  options = {
+    useCache: true,
+    ...options,
+  }
+
+  const url = `${REGISTRY_URL}/registries.json`
+  const [data] = await fetchRegistry([url], {
+    useCache: options.useCache,
+  })
+
   try {
-    // TODO: Do we want this inside /r?
-    const url = `${REGISTRY_URL}/registries.json`
-    const [data] = await fetchRegistry([url], {
-      useCache: process.env.NODE_ENV !== "development",
-    })
     return registriesIndexSchema.parse(data)
-  } catch {
-    return null
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      throw new RegistriesIndexParseError(error)
+    }
+
+    throw error
   }
 }
