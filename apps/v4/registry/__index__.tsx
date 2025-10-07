@@ -5520,6 +5520,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "form-next-input-textarea": {
+    name: "form-next-input-textarea",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","input","textarea","button","card","spinner"],
+    files: [{
+      path: "registry/new-york-v4/examples/form-next-input-textarea.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/form-next-input-textarea.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "drawer-dialog": {
     name: "drawer-dialog",
     description: "",

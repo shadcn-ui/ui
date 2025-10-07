@@ -4,6 +4,7 @@
     "(root)",
     "changelog",
     "components",
+    "forms",
     "installation",
     "dark-mode",
     "registry"

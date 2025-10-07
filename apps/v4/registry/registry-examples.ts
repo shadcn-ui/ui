@@ -1007,6 +1007,24 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "form-next-input-textarea",
+    type: "registry:example",
+    registryDependencies: [
+      "field",
+      "input",
+      "textarea",
+      "button",
+      "card",
+      "spinner",
+    ],
+    files: [
+      {
+        path: "examples/form-next-input-textarea.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "drawer-dialog",
     type: "registry:example",
     registryDependencies: ["drawer", "dialog"],
