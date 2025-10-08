@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-custom",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group",
+    "badge",
+    "progress",
+    "dropdown-menu",
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-custom.tsx",
+      "content": "\"use client\"\n\nimport TextareaAutosize from \"react-textarea-autosize\"\n\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n} from \"@/registry/new-york-v4/ui/input-group\"\n\nexport default function InputGroupCustom() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-6\">\n      <InputGroup>\n        <TextareaAutosize\n          data-slot=\"input-group-control\"\n          className=\"flex field-sizing-content min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2.5 text-base transition-[color,box-shadow] outline-none md:text-sm\"\n          placeholder=\"Autoresize textarea...\"\n        />\n        <InputGroupAddon align=\"block-end\">\n          <InputGroupButton className=\"ml-auto\" size=\"sm\" variant=\"default\">\n            Submit\n          </InputGroupButton>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -236,6 +236,16 @@ async function createMonorepoProject(
     await execa(options.packageManager, ["install"], {
       cwd: projectPath,
     })
+    // await execa("cd", [cwd])
+
+    // Write project name to the package.json
+    const packageJsonPath = path.join(projectPath, "package.json")
+    if (fs.existsSync(packageJsonPath)) {
+      const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+      const packageJson = JSON.parse(packageJsonContent)
+      packageJson.name = projectPath.split("/").pop()
+      await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
+    }
 
     // Try git init.
     const cwd = process.cwd()
@@ -245,7 +255,6 @@ async function createMonorepoProject(
     await execa("git", ["commit", "-m", "Initial commit"], {
       cwd: projectPath,
     })
-    // await execa("cd", [cwd])
 
     createSpinner?.succeed("Creating a new Next.js monorepo.")
   } catch (error) {
