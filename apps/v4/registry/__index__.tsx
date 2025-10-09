@@ -5520,50 +5520,6 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "form-next-demo": {
-    name: "form-next-demo",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["field","input","textarea","button","card","spinner"],
-    files: [{
-      path: "registry/new-york-v4/examples/form-next-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/form-next-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "form-next-complex": {
-    name: "form-next-complex",
-    description: "",
-    type: "registry:example",
-    registryDependencies: ["field","input","textarea","button","card","spinner","checkbox","dialog","radio-group","select","switch"],
-    files: [{
-      path: "registry/new-york-v4/examples/form-next-complex.tsx",
-      type: "registry:example",
-      target: ""
-    },{
-      path: "registry/new-york-v4/examples/form-next-complex-schema.ts",
-      type: "registry:example",
-      target: ""
-    },{
-      path: "registry/new-york-v4/examples/form-next-complex-action.ts",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/form-next-complex.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
   "form-rhf-demo": {
     name: "form-rhf-demo",
     description: "",
@@ -5573,13 +5529,117 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/examples/form-rhf-demo.tsx",
       type: "registry:example",
       target: ""
-    },{
-      path: "registry/new-york-v4/examples/form-rhf-demo-schema.ts",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/form-rhf-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "form-rhf-input": {
+    name: "form-rhf-input",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","input","button","card"],
+    files: [{
+      path: "registry/new-york-v4/examples/form-rhf-input.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/examples/form-rhf-demo.tsx")
+      const mod = await import("@/registry/new-york-v4/examples/form-rhf-input.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "form-rhf-select": {
+    name: "form-rhf-select",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","select","button","card"],
+    files: [{
+      path: "registry/new-york-v4/examples/form-rhf-select.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/form-rhf-select.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "form-rhf-checkbox": {
+    name: "form-rhf-checkbox",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","checkbox","button","card"],
+    files: [{
+      path: "registry/new-york-v4/examples/form-rhf-checkbox.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/form-rhf-checkbox.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "form-rhf-switch": {
+    name: "form-rhf-switch",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","switch","button","card"],
+    files: [{
+      path: "registry/new-york-v4/examples/form-rhf-switch.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/form-rhf-switch.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "form-rhf-textarea": {
+    name: "form-rhf-textarea",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","textarea","button","card"],
+    files: [{
+      path: "registry/new-york-v4/examples/form-rhf-textarea.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/form-rhf-textarea.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "form-rhf-radiogroup": {
+    name: "form-rhf-radiogroup",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["field","radio-group","button","card"],
+    files: [{
+      path: "registry/new-york-v4/examples/form-rhf-radiogroup.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/form-rhf-radiogroup.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -5593,10 +5653,6 @@ export const Index: Record<string, any> = {
     registryDependencies: ["field","button","card","checkbox","radio-group","select","switch"],
     files: [{
       path: "registry/new-york-v4/examples/form-rhf-complex.tsx",
-      type: "registry:example",
-      target: ""
-    },{
-      path: "registry/new-york-v4/examples/form-rhf-complex-schema.ts",
       type: "registry:example",
       target: ""
     }],
@@ -5617,10 +5673,6 @@ export const Index: Record<string, any> = {
       path: "registry/new-york-v4/examples/form-tanstack-demo.tsx",
       type: "registry:example",
       target: ""
-    },{
-      path: "registry/new-york-v4/examples/form-tanstack-demo-schema.ts",
-      type: "registry:example",
-      target: ""
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/form-tanstack-demo.tsx")
@@ -5637,10 +5689,6 @@ export const Index: Record<string, any> = {
     registryDependencies: ["field","button","card","checkbox","radio-group","select","switch"],
     files: [{
       path: "registry/new-york-v4/examples/form-tanstack-complex.tsx",
-      type: "registry:example",
-      target: ""
-    },{
-      path: "registry/new-york-v4/examples/form-tanstack-complex-schema.ts",
       type: "registry:example",
       target: ""
     }],

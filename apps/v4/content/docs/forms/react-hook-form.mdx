@@ -7,21 +7,23 @@ links:
 
 import { InfoIcon } from "lucide-react"
 
-In this guide, we will take a look at building forms with React Hook Form. We'll cover building forms, validation, error handling, accessibility, and more.
+In this guide, we will take a look at building forms with React Hook Form. We'll cover building forms with the `<Field />` component, adding schema validation using Zod, error handling, accessibility, and more.
 
 ## Demo
 
-We are going to build the following form with a simple text input and a textarea. On submit, we'll validate the form data using Zod and display any errors.
+We are going to build the following form. It has a simple text input and a textarea. On submit, we'll validate the form data and display any errors.
+
+<Callout icon={<InfoIcon />}>
+  **Note:** For the purpose of this demo, we have intentionally disabled browser
+  validation to show how schema validation and form errors work in React Hook
+  Form. It is recommended to add basic browser validation in your production
+  code.
+</Callout>
 
 <ComponentPreview
   name="form-rhf-demo"
   className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
 />
-
-<Callout icon={<InfoIcon />}>
-  **Note:** React Hook Form is a client-side form library. All validation and
-  state management happens in the browser.
-</Callout>
 
 ## Approach
 
@@ -31,41 +33,32 @@ This form leverages React Hook Form for performant, flexible form handling. We'l
 - `<Controller />` component for controlled inputs.
 - `<Field />` components for building accessible forms.
 - Client-side validation using Zod with `zodResolver`.
-- Real-time validation feedback.
 
 ## Anatomy
 
-Here's a basic example of a form using React Hook Form with the `<Field />` component.
+Here's a basic example of a form using the `<Controller />` component from React Hook Form and the `<Field />` component.
 
-```tsx showLineNumbers
-<form onSubmit={form.handleSubmit(onSubmit)}>
-  <FieldGroup>
-    <Controller
-      name="title"
-      control={form.control}
-      render={({ field, fieldState }) => {
-        const isInvalid = fieldState.invalid
-        return (
-          <Field data-invalid={isInvalid}>
-            <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
-            <Input
-              {...field}
-              id={field.name}
-              aria-invalid={isInvalid}
-              placeholder="Login button not working on mobile"
-              autoComplete="off"
-            />
-            <FieldDescription>
-              Provide a concise title for your bug report.
-            </FieldDescription>
-            {isInvalid && <FieldError errors={[fieldState.error]} />}
-          </Field>
-        )
-      }}
-    />
-  </FieldGroup>
-  <Button type="submit">Submit</Button>
-</form>
+```tsx showLineNumbers {5-18}
+<Controller
+  name="title"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field data-invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
+      <Input
+        {...field}
+        id={field.name}
+        aria-invalid={fieldState.invalid}
+        placeholder="Login button not working on mobile"
+        autoComplete="off"
+      />
+      <FieldDescription>
+        Provide a concise title for your bug report.
+      </FieldDescription>
+      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+    </Field>
+  )}
+/>
 ```
 
 ## Usage
@@ -80,10 +73,10 @@ We'll start by defining the shape of our form using a Zod schema in a `schema.ts
   Form.
 </Callout>
 
-```tsx showLineNumbers title="schema.ts"
+```tsx showLineNumbers title="bug-report-form.tsx"
 import { z } from "zod"
 
-export const formSchema = z.object({
+const formSchema = z.object({
   title: z
     .string()
     .min(5, "Bug title must be at least 5 characters.")
@@ -95,34 +88,29 @@ export const formSchema = z.object({
 })
 ```
 
-### Define the form state type
-
-Next, we'll create a type for our form state. Since React Hook Form is client-side only, we don't need a success field.
-
-```tsx showLineNumbers title="schema.ts"
-import { z } from "zod"
-
-export type FormState = {
-  values: z.infer<typeof formSchema>
-  errors: null | Partial<Record<keyof z.infer<typeof formSchema>, string[]>>
-}
-```
-
 ### Setup the form
 
-Use the `useForm` hook from React Hook Form to create your form instance with the Zod resolver.
+Next, we'll use the `useForm` hook from React Hook Form to create our form instance. We'll also add the Zod resolver to validate the form data.
 
-```tsx showLineNumbers title="form.tsx" {1-2,4-6,8-15}
+```tsx showLineNumbers title="bug-report-form.tsx" {17-23}
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { formSchema } from "./schema"
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
 
 export function BugReportForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    mode: "onChange",
     defaultValues: {
       title: "",
       description: "",
@@ -134,11 +122,15 @@ export function BugReportForm() {
     console.log(data)
   }
 
-  return <form onSubmit={form.handleSubmit(onSubmit)}>{/* ... */}</form>
+  return (
+    <form onSubmit={form.handleSubmit(onSubmit)}>
+      {/* ... */}
+      {/* Build the form here */}
+      {/* ... */}
+    </form>
+  )
 }
 ```
-
-**Note:** We set `mode: "onChange"` to enable real-time validation as the user types.
 
 ### Build the form
 
@@ -159,83 +151,83 @@ When you submit the form, the `onSubmit` function will be called with the valida
 
 ### Client-side Validation
 
-React Hook Form validates your form data using the Zod schema. Validation happens in real-time as the user types (when `mode: "onChange"` is set).
+React Hook Form validates your form data using the Zod schema. Define a schema and pass it to the `resolver` option of the `useForm` hook.
 
-```tsx showLineNumbers title="form.tsx" {8-14}
+```tsx showLineNumbers title="example-form.tsx" {5-8,12}
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { formSchema } from "./schema"
+const formSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+})
 
-export function BugReportForm() {
+export function ExampleForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    mode: "onChange",
     defaultValues: {
       title: "",
       description: "",
     },
   })
-
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(data)
-  }
-
-  return <form onSubmit={form.handleSubmit(onSubmit)}>{/* ... */}</form>
 }
 ```
 
 ### Validation Modes
 
-React Hook Form supports different validation modes:
+React Hook Form supports different validation modes.
 
-- `mode: "onChange"` - Validation triggers on every change.
-- `mode: "onBlur"` - Validation triggers on blur.
-- `mode: "onSubmit"` - Validation triggers on submit (default).
-- `mode: "onTouched"` - Validation triggers on first blur, then on every change.
-- `mode: "all"` - Validation triggers on blur and change.
-
-```tsx showLineNumbers
+```tsx showLineNumbers title="example-form.tsx" {3}
 const form = useForm<z.infer<typeof formSchema>>({
   resolver: zodResolver(formSchema),
   mode: "onChange", // or "onBlur", "onSubmit", "onTouched", "all"
 })
 ```
 
+| Mode          | Description                                              |
+| ------------- | -------------------------------------------------------- |
+| `"onChange"`  | Validation triggers on every change.                     |
+| `"onBlur"`    | Validation triggers on blur.                             |
+| `"onSubmit"`  | Validation triggers on submit (default).                 |
+| `"onTouched"` | Validation triggers on first blur, then on every change. |
+| `"all"`       | Validation triggers on blur and change.                  |
+
 ## Displaying Errors
 
-Display errors next to the field using `<FieldError />`. Make sure to add the `data-invalid` prop to the `<Field />` component and `aria-invalid` prop to the input.
+Display errors next to the field using `<FieldError />`. **Make sure to add the `data-invalid` prop to the `<Field />` component and `aria-invalid` prop to the form control such as input, select, etc.**
 
-```tsx showLineNumbers
+```tsx showLineNumbers title="example-form.tsx" {5,11,13}
 <Controller
   name="email"
   control={form.control}
-  render={({ field, fieldState }) => {
-    const isInvalid = fieldState.invalid
-    return (
-      <Field data-invalid={isInvalid}>
-        <FieldLabel htmlFor={field.name}>Email</FieldLabel>
-        <Input
-          {...field}
-          id={field.name}
-          type="email"
-          aria-invalid={isInvalid}
-        />
-        {isInvalid && <FieldError errors={[fieldState.error]} />}
-      </Field>
-    )
-  }}
+  render={({ field, fieldState }) => (
+    <Field data-invalid={fieldState.invalid}>
+      <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+      <Input
+        {...field}
+        id={field.name}
+        type="email"
+        aria-invalid={fieldState.invalid}
+      />
+      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+    </Field>
+  )}
 />
 ```
 
 ## Working with Different Field Types
 
-### Text Inputs
+### Input
+
+<ComponentPreview
+  name="form-rhf-input"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
 
 For simple text inputs, spread the `field` object onto the input.
 
-```tsx showLineNumbers
+```tsx showLineNumbers {7}
 <Controller
   name="name"
   control={form.control}
@@ -249,65 +241,132 @@ For simple text inputs, spread the `field` object onto the input.
 />
 ```
 
-### Select
+### Textarea
 
-For select components, use `value` and `onValueChange`.
+<ComponentPreview
+  name="form-rhf-textarea"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
 
-```tsx showLineNumbers
+For textarea fields, spread the `field` object onto the textarea.
+
+```tsx showLineNumbers {5,6-11}
 <Controller
-  name="country"
+  name="about"
   control={form.control}
   render={({ field, fieldState }) => (
     <Field data-invalid={fieldState.invalid}>
-      <FieldLabel htmlFor={field.name}>Country</FieldLabel>
-      <Select
-        name={field.name}
-        value={field.value}
-        onValueChange={field.onChange}
+      <FieldLabel htmlFor="form-rhf-textarea-about">More about you</FieldLabel>
+      <Textarea
+        {...field}
+        id="form-rhf-textarea-about"
         aria-invalid={fieldState.invalid}
-      >
-        <SelectTrigger id={field.name}>
-          <SelectValue placeholder="Select a country" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="us">United States</SelectItem>
-          <SelectItem value="uk">United Kingdom</SelectItem>
-        </SelectContent>
-      </Select>
+        placeholder="I'm a software engineer..."
+        className="min-h-[120px]"
+      />
+      <FieldDescription>
+        Tell us more about yourself. This will be used to help us personalize
+        your experience.
+      </FieldDescription>
       {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
     </Field>
   )}
 />
 ```
 
-### Checkboxes
+### Select
 
-For checkboxes, handle the `checked` state and `onCheckedChange` event.
+<ComponentPreview
+  name="form-rhf-select"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
+
+For select components, use `value` and `onValueChange`. To show errors, add the `aria-invalid` prop to the `<SelectTrigger />` component.
+
+```tsx showLineNumbers {5-12,14-20}
+<Controller
+  name="language"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <Field orientation="responsive" data-invalid={fieldState.invalid}>
+      <FieldContent>
+        <FieldLabel htmlFor="form-rhf-select-language">
+          Spoken Language
+        </FieldLabel>
+        <FieldDescription>
+          For best results, select the language you speak.
+        </FieldDescription>
+        {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+      </FieldContent>
+      <Select
+        name={field.name}
+        value={field.value}
+        onValueChange={field.onChange}
+      >
+        <SelectTrigger
+          id="form-rhf-select-language"
+          aria-invalid={fieldState.invalid}
+          className="min-w-[120px]"
+        >
+          <SelectValue placeholder="Select" />
+        </SelectTrigger>
+        <SelectContent position="item-aligned">
+          <SelectItem value="auto">Auto</SelectItem>
+          <SelectSeparator />
+          <SelectItem value="en">English</SelectItem>
+          <SelectItem value="es">Spanish</SelectItem>
+          <SelectItem value="fr">French</SelectItem>
+        </SelectContent>
+      </Select>
+    </Field>
+  )}
+/>
+```
+
+### Checkbox
+
+<ComponentPreview
+  name="form-rhf-checkbox"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
+
+For checkboxes, use the `checked` state and `onCheckedChange` event.
 
 ```tsx showLineNumbers
 <Controller
-  name="addons"
+  name="tasks"
   control={form.control}
   render={({ field, fieldState }) => (
     <FieldSet data-invalid={fieldState.invalid}>
-      <FieldLegend>Add-ons</FieldLegend>
+      <FieldLegend variant="label">Tasks</FieldLegend>
+      <FieldDescription>
+        Get notified when tasks you&apos;ve created have updates.
+      </FieldDescription>
       <FieldGroup data-slot="checkbox-group">
-        {addons.map((addon) => (
-          <Field key={addon.id} orientation="horizontal">
+        {tasks.map((task) => (
+          <Field
+            key={task.id}
+            orientation="horizontal"
+            data-invalid={fieldState.invalid}
+          >
             <Checkbox
-              id={addon.id}
+              id={`form-rhf-checkbox-${task.id}`}
               name={field.name}
-              checked={field.value.includes(addon.id)}
+              aria-invalid={fieldState.invalid}
+              checked={field.value.includes(task.id)}
               onCheckedChange={(checked) => {
                 const newValue = checked
-                  ? [...field.value, addon.id]
-                  : field.value.filter((value) => value !== addon.id)
+                  ? [...field.value, task.id]
+                  : field.value.filter((value) => value !== task.id)
                 field.onChange(newValue)
               }}
             />
-            <FieldContent>
-              <FieldLabel htmlFor={addon.id}>{addon.title}</FieldLabel>
-            </FieldContent>
+            <FieldLabel
+              htmlFor={`form-rhf-checkbox-${task.id}`}
+              className="font-normal"
+            >
+              {task.label}
+            </FieldLabel>
           </Field>
         ))}
       </FieldGroup>
@@ -317,24 +376,79 @@ For checkboxes, handle the `checked` state and `onCheckedChange` event.
 />
 ```
 
+### Radio Group
+
+<ComponentPreview
+  name="form-rhf-radiogroup"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
+
+For radio groups, use `value` and `onValueChange`. To show errors, add the `aria-invalid` prop to the `<RadioGroup />` component.
+
+```tsx showLineNumbers {5-7,9-14}
+<Controller
+  name="plan"
+  control={form.control}
+  render={({ field, fieldState }) => (
+    <FieldSet data-invalid={fieldState.invalid}>
+      <FieldLegend>Plan</FieldLegend>
+      <FieldDescription>
+        You can upgrade or downgrade your plan at any time.
+      </FieldDescription>
+      <RadioGroup
+        name={field.name}
+        value={field.value}
+        onValueChange={field.onChange}
+        aria-invalid={fieldState.invalid}
+      >
+        {plans.map((plan) => (
+          <FieldLabel key={plan.id} htmlFor={`form-rhf-radiogroup-${plan.id}`}>
+            <Field orientation="horizontal" data-invalid={fieldState.invalid}>
+              <FieldContent>
+                <FieldTitle>{plan.title}</FieldTitle>
+                <FieldDescription>{plan.description}</FieldDescription>
+              </FieldContent>
+              <RadioGroupItem
+                value={plan.id}
+                id={`form-rhf-radiogroup-${plan.id}`}
+                aria-invalid={fieldState.invalid}
+              />
+            </Field>
+          </FieldLabel>
+        ))}
+      </RadioGroup>
+      {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+    </FieldSet>
+  )}
+/>
+```
+
 ### Switch
+
+<ComponentPreview
+  name="form-rhf-switch"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
 
 For switches, use `checked` and `onCheckedChange`.
 
-```tsx showLineNumbers
+```tsx showLineNumbers {5-16}
 <Controller
-  name="notifications"
+  name="twoFactor"
   control={form.control}
   render={({ field, fieldState }) => (
-    <Field orientation="horizontal">
+    <Field orientation="horizontal" data-invalid={fieldState.invalid}>
       <FieldContent>
-        <FieldLabel htmlFor={field.name}>Email Notifications</FieldLabel>
+        <FieldLabel htmlFor="form-rhf-switch-twoFactor">
+          Multi-factor authentication
+        </FieldLabel>
         <FieldDescription>
-          Receive email updates about your account
+          Enable multi-factor authentication to secure your account.
         </FieldDescription>
+        {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
       </FieldContent>
       <Switch
-        id={field.name}
+        id="form-rhf-switch-twoFactor"
         name={field.name}
         checked={field.value}
         onCheckedChange={field.onChange}
@@ -361,87 +475,5 @@ Here is an example of a more complex form with multiple fields and validation.
 
 <ComponentPreview
   name="form-rhf-complex"
-  className="[&_.preview]:h-[1100px] [&_pre]:!h-[1100px]"
-  hideCode
+  className="[&_.preview]:h-[1300px] [&_pre]:!h-[1300px]"
 />
-
-### Schema
-
-<ComponentSource
-  src="/registry/new-york-v4/examples/form-rhf-complex-schema.ts"
-  title="schema.ts"
-/>
-
-### Form
-
-<ComponentSource
-  src="/registry/new-york-v4/examples/form-rhf-complex.tsx"
-  title="form.tsx"
-/>
-
-## Form State
-
-React Hook Form provides several methods to access form state:
-
-```tsx showLineNumbers
-const form = useForm()
-
-// Check if form is valid
-const isValid = form.formState.isValid
-
-// Check if form is submitting
-const isSubmitting = form.formState.isSubmitting
-
-// Check if form is dirty (has changed)
-const isDirty = form.formState.isDirty
-
-// Get all errors
-const errors = form.formState.errors
-
-// Check if a specific field is touched
-const isTouched = form.formState.touchedFields.email
-```
-
-## Submitting Forms
-
-### Basic Submit
-
-```tsx showLineNumbers
-function onSubmit(data: z.infer<typeof formSchema>) {
-  console.log(data)
-}
-
-;<form onSubmit={form.handleSubmit(onSubmit)}>{/* ... */}</form>
-```
-
-### With Toast Notification
-
-```tsx showLineNumbers
-import { toast } from "sonner"
-
-function onSubmit(data: z.infer<typeof formSchema>) {
-  toast.success("Form submitted", {
-    description: "Your data has been saved successfully.",
-  })
-}
-```
-
-### With API Call
-
-```tsx showLineNumbers
-async function onSubmit(data: z.infer<typeof formSchema>) {
-  try {
-    const response = await fetch("/api/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-
-    if (!response.ok) throw new Error("Failed to submit")
-
-    toast.success("Form submitted successfully")
-  } catch (error) {
-    toast.error("Failed to submit form")
-  }
-}
-```

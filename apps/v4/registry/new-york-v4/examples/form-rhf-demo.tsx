@@ -4,6 +4,7 @@ import * as React from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Controller, useForm } from "react-hook-form"
 import { toast } from "sonner"
+import * as z from "zod"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -29,21 +30,30 @@ import {
   InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
 
-import { formSchema, type FormState } from "./form-rhf-demo-schema"
+export const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
 
-export default function FormRhfDemo() {
-  const form = useForm<FormState>({
+export default function BugReportForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    mode: "onChange",
     defaultValues: {
       title: "",
       description: "",
     },
   })
 
-  function onSubmit(data: FormState) {
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log(data)
     toast("Thank you for your feedback", {
-      description: "We'll review your report and get back to you soon.",
+      description: "We'll review and get back to you soon.",
     })
     form.reset()
   }
@@ -57,59 +67,61 @@ export default function FormRhfDemo() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form id="bug-report-form" onSubmit={form.handleSubmit(onSubmit)}>
+        <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
               name="title"
               control={form.control}
-              render={({ field, fieldState }) => {
-                const isInvalid = fieldState.invalid
-                return (
-                  <Field data-invalid={isInvalid}>
-                    <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
-                    <Input
-                      {...field}
-                      id={field.name}
-                      aria-invalid={isInvalid}
-                      placeholder="Login button not working on mobile"
-                      autoComplete="off"
-                    />
-                    {isInvalid && <FieldError errors={[fieldState.error]} />}
-                  </Field>
-                )
-              }}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-rhf-demo-title">
+                    Bug Title
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id="form-rhf-demo-title"
+                    aria-invalid={fieldState.invalid}
+                    placeholder="Login button not working on mobile"
+                    autoComplete="off"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
             />
             <Controller
               name="description"
               control={form.control}
-              render={({ field, fieldState }) => {
-                const isInvalid = fieldState.invalid
-                return (
-                  <Field data-invalid={isInvalid}>
-                    <FieldLabel htmlFor={field.name}>Description</FieldLabel>
-                    <InputGroup>
-                      <InputGroupTextarea
-                        {...field}
-                        id={field.name}
-                        placeholder="I'm having an issue with the login button on mobile."
-                        rows={6}
-                        className="min-h-24 resize-none"
-                        aria-invalid={isInvalid}
-                      />
-                      <InputGroupAddon align="block-end">
-                        <InputGroupText className="tabular-nums">
-                          {field.value.length}/100 characters
-                        </InputGroupText>
-                      </InputGroupAddon>
-                    </InputGroup>
-                    <FieldDescription>
-                      Include steps to reproduce, expected behavior, and what
-                      actually happened.
-                    </FieldDescription>
-                    {isInvalid && <FieldError errors={[fieldState.error]} />}
-                  </Field>
-                )
-              }}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="form-rhf-demo-description">
+                    Description
+                  </FieldLabel>
+                  <InputGroup>
+                    <InputGroupTextarea
+                      {...field}
+                      id="form-rhf-demo-description"
+                      placeholder="I'm having an issue with the login button on mobile."
+                      rows={6}
+                      className="min-h-24 resize-none"
+                      aria-invalid={fieldState.invalid}
+                    />
+                    <InputGroupAddon align="block-end">
+                      <InputGroupText className="tabular-nums">
+                        {field.value.length}/100 characters
+                      </InputGroupText>
+                    </InputGroupAddon>
+                  </InputGroup>
+                  <FieldDescription>
+                    Include steps to reproduce, expected behavior, and what
+                    actually happened.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
             />
           </FieldGroup>
         </form>
@@ -119,7 +131,7 @@ export default function FormRhfDemo() {
           <Button type="button" variant="outline" onClick={() => form.reset()}>
             Reset
           </Button>
-          <Button type="submit" form="bug-report-form">
+          <Button type="submit" form="form-rhf-demo">
             Submit
           </Button>
         </Field>

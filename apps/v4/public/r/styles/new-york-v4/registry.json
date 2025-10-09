@@ -4528,55 +4528,6 @@
       ]
     },
     {
-      "name": "form-next-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "field",
-        "input",
-        "textarea",
-        "button",
-        "card",
-        "spinner"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/form-next-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "form-next-complex",
-      "type": "registry:example",
-      "registryDependencies": [
-        "field",
-        "input",
-        "textarea",
-        "button",
-        "card",
-        "spinner",
-        "checkbox",
-        "dialog",
-        "radio-group",
-        "select",
-        "switch"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/form-next-complex.tsx",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/new-york-v4/examples/form-next-complex-schema.ts",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/new-york-v4/examples/form-next-complex-action.ts",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
       "name": "form-rhf-demo",
       "type": "registry:example",
       "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
@@ -4591,9 +4542,77 @@
         {
           "path": "registry/new-york-v4/examples/form-rhf-demo.tsx",
           "type": "registry:example"
-        },
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-input",
+      "type": "registry:example",
+      "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
+      "registryDependencies": ["field", "input", "button", "card"],
+      "files": [
         {
-          "path": "registry/new-york-v4/examples/form-rhf-demo-schema.ts",
+          "path": "registry/new-york-v4/examples/form-rhf-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-select",
+      "type": "registry:example",
+      "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
+      "registryDependencies": ["field", "select", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-select.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-checkbox",
+      "type": "registry:example",
+      "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
+      "registryDependencies": ["field", "checkbox", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-checkbox.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-switch",
+      "type": "registry:example",
+      "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
+      "registryDependencies": ["field", "switch", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-switch.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-textarea",
+      "type": "registry:example",
+      "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
+      "registryDependencies": ["field", "textarea", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-textarea.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-radiogroup",
+      "type": "registry:example",
+      "dependencies": ["react-hook-form", "@hookform/resolvers", "zod"],
+      "registryDependencies": ["field", "radio-group", "button", "card"],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-radiogroup.tsx",
           "type": "registry:example"
         }
       ]
@@ -4615,10 +4634,6 @@
         {
           "path": "registry/new-york-v4/examples/form-rhf-complex.tsx",
           "type": "registry:example"
-        },
-        {
-          "path": "registry/new-york-v4/examples/form-rhf-complex-schema.ts",
-          "type": "registry:example"
         }
       ]
     },
@@ -4636,10 +4651,6 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/form-tanstack-demo.tsx",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/new-york-v4/examples/form-tanstack-demo-schema.ts",
           "type": "registry:example"
         }
       ]
@@ -4660,10 +4671,6 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/form-tanstack-complex.tsx",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/new-york-v4/examples/form-tanstack-complex-schema.ts",
           "type": "registry:example"
         }
       ]

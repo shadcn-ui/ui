@@ -1007,55 +1007,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "form-next-demo",
-    type: "registry:example",
-    registryDependencies: [
-      "field",
-      "input",
-      "textarea",
-      "button",
-      "card",
-      "spinner",
-    ],
-    files: [
-      {
-        path: "examples/form-next-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "form-next-complex",
-    type: "registry:example",
-    registryDependencies: [
-      "field",
-      "input",
-      "textarea",
-      "button",
-      "card",
-      "spinner",
-      "checkbox",
-      "dialog",
-      "radio-group",
-      "select",
-      "switch",
-    ],
-    files: [
-      {
-        path: "examples/form-next-complex.tsx",
-        type: "registry:example",
-      },
-      {
-        path: "examples/form-next-complex-schema.ts",
-        type: "registry:example",
-      },
-      {
-        path: "examples/form-next-complex-action.ts",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "form-rhf-demo",
     type: "registry:example",
     registryDependencies: ["field", "input", "input-group", "button", "card"],
@@ -1064,8 +1015,76 @@ export const examples: Registry["items"] = [
         path: "examples/form-rhf-demo.tsx",
         type: "registry:example",
       },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
+    name: "form-rhf-input",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "button", "card"],
+    files: [
       {
-        path: "examples/form-rhf-demo-schema.ts",
+        path: "examples/form-rhf-input.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
+    name: "form-rhf-select",
+    type: "registry:example",
+    registryDependencies: ["field", "select", "button", "card"],
+    files: [
+      {
+        path: "examples/form-rhf-select.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
+    name: "form-rhf-checkbox",
+    type: "registry:example",
+    registryDependencies: ["field", "checkbox", "button", "card"],
+    files: [
+      {
+        path: "examples/form-rhf-checkbox.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
+    name: "form-rhf-switch",
+    type: "registry:example",
+    registryDependencies: ["field", "switch", "button", "card"],
+    files: [
+      {
+        path: "examples/form-rhf-switch.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
+    name: "form-rhf-textarea",
+    type: "registry:example",
+    registryDependencies: ["field", "textarea", "button", "card"],
+    files: [
+      {
+        path: "examples/form-rhf-textarea.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
+    name: "form-rhf-radiogroup",
+    type: "registry:example",
+    registryDependencies: ["field", "radio-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-rhf-radiogroup.tsx",
         type: "registry:example",
       },
     ],
@@ -1088,10 +1107,6 @@ export const examples: Registry["items"] = [
         path: "examples/form-rhf-complex.tsx",
         type: "registry:example",
       },
-      {
-        path: "examples/form-rhf-complex-schema.ts",
-        type: "registry:example",
-      },
     ],
     dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
   },
@@ -1102,10 +1117,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/form-tanstack-demo.tsx",
-        type: "registry:example",
-      },
-      {
-        path: "examples/form-tanstack-demo-schema.ts",
         type: "registry:example",
       },
     ],
@@ -1126,10 +1137,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/form-tanstack-complex.tsx",
-        type: "registry:example",
-      },
-      {
-        path: "examples/form-tanstack-complex-schema.ts",
         type: "registry:example",
       },
     ],
