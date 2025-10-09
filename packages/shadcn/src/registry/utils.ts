@@ -5,11 +5,14 @@ import {
   configSchema,
   registryItemFileSchema,
   registryItemSchema,
+  type RegistryItem,
 } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { createRegistryFile } from "@/src/utils/registry/create-registry-file"
 import { determineFileType } from "@/src/utils/registry/determine-file-type"
+import { getStatsOrNonFile } from "@/src/utils/registry/get-stats-or-non-file"
+import { tryAlternativePath } from "@/src/utils/registry/try-alternative-path"
 import { resolveImport } from "@/src/utils/resolve-import"
 import {
   findCommonRoot,
@@ -63,7 +66,11 @@ export async function recursivelyResolveFileImports(
   config: z.infer<typeof configSchema>,
   projectInfo: ProjectInfo,
   processedFiles: Set<string> = new Set()
-): Promise<Pick<z.infer<typeof registryItemSchema>, "files" | "dependencies">> {
+): Promise<
+  Pick<RegistryItem, "files" | "dependencies"> & {
+    removeFiles?: string[] // optional array of file paths to remove
+  }
+> {
   const resolvedFilePath = path.resolve(config.resolvedPaths.cwd, filePath)
   const relativeRegistryFilePath = path.relative(
     config.resolvedPaths.cwd,
@@ -87,10 +94,17 @@ export async function recursivelyResolveFileImports(
   }
   processedFiles.add(relativeRegistryFilePath)
 
-  const stat = await fs.stat(resolvedFilePath)
+  const stat = await getStatsOrNonFile(resolvedFilePath)
   if (!stat.isFile()) {
     // Optionally log or handle this case
-    return { dependencies: [], files: [] }
+
+    const alt = await tryAlternativePath(filePath, config)
+    if (!alt) return { dependencies: [], files: [], removeFiles: [filePath] }
+
+    const fileType = determineFileType(filePath)
+    const originalFile = createRegistryFile(alt.relative, fileType)
+
+    return { dependencies: [], files: [originalFile], removeFiles: [filePath] }
   }
 
   const content = await fs.readFile(resolvedFilePath, "utf-8")
