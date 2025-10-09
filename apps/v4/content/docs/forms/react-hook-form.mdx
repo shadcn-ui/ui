@@ -477,3 +477,139 @@ Here is an example of a more complex form with multiple fields and validation.
   name="form-rhf-complex"
   className="[&_.preview]:h-[1300px] [&_pre]:!h-[1300px]"
 />
+
+<ComponentPreview
+  name="form-rhf-password"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
+
+## Array Fields
+
+<ComponentPreview
+  name="form-rhf-array"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
+
+React Hook Form provides a `useFieldArray` hook for managing dynamic array fields. This is useful when you need to add or remove fields dynamically.
+
+### Using useFieldArray
+
+Use the `useFieldArray` hook to manage array fields. It provides `fields`, `append`, and `remove` methods.
+
+```tsx showLineNumbers {8-11}
+import { useFieldArray, useForm } from "react-hook-form"
+
+export function ExampleForm() {
+  const form = useForm({
+    // ... form config
+  })
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: "emails",
+  })
+}
+```
+
+### Array Field Structure
+
+Wrap your array fields in a `<FieldSet />` with a `<FieldLegend />` and `<FieldDescription />`.
+
+```tsx showLineNumbers {5-10}
+<FieldSet className="gap-4">
+  <FieldLegend variant="label">Email Addresses</FieldLegend>
+  <FieldDescription>
+    Add up to 5 email addresses where we can contact you.
+  </FieldDescription>
+  <FieldGroup className="gap-4">{/* Array items go here */}</FieldGroup>
+</FieldSet>
+```
+
+### Controller Pattern for Array Items
+
+Map over the `fields` array and use `<Controller />` for each item. **Make sure to use `field.id` as the key**.
+
+```tsx showLineNumbers {1,3-5}
+{
+  fields.map((field, index) => (
+    <Controller
+      key={field.id}
+      name={`emails.${index}.address`}
+      control={form.control}
+      render={({ field: controllerField, fieldState }) => (
+        <Field orientation="horizontal" data-invalid={fieldState.invalid}>
+          <FieldContent>
+            <InputGroup>
+              <InputGroupInput
+                {...controllerField}
+                id={`form-rhf-array-email-${index}`}
+                aria-invalid={fieldState.invalid}
+                placeholder="name@example.com"
+                type="email"
+                autoComplete="email"
+              />
+              {/* Remove button */}
+            </InputGroup>
+            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+          </FieldContent>
+        </Field>
+      )}
+    />
+  ))
+}
+```
+
+### Adding Items
+
+Use the `append` method to add new items to the array.
+
+```tsx showLineNumbers {5,6}
+<Button
+  type="button"
+  variant="outline"
+  size="sm"
+  onClick={() => append({ address: "" })}
+  disabled={fields.length >= 5}
+>
+  Add Email Address
+</Button>
+```
+
+### Removing Items
+
+Use the `remove` method to remove items from the array. Add the remove button conditionally.
+
+```tsx showLineNumbers {1,2-14}
+{
+  fields.length > 1 && (
+    <InputGroupAddon align="inline-end">
+      <InputGroupButton
+        type="button"
+        variant="ghost"
+        size="icon-xs"
+        onClick={() => remove(index)}
+        aria-label={`Remove email ${index + 1}`}
+      >
+        <XIcon />
+      </InputGroupButton>
+    </InputGroupAddon>
+  )
+}
+```
+
+### Array Validation
+
+Use Zod's `array` method to validate array fields.
+
+```tsx showLineNumbers {2-9}
+const formSchema = z.object({
+  emails: z
+    .array(
+      z.object({
+        address: z.string().email("Enter a valid email address."),
+      })
+    )
+    .min(1, "Add at least one email address.")
+    .max(5, "You can add up to 5 email addresses."),
+})
+```

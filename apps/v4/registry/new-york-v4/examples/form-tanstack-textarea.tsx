@@ -1,9 +1,9 @@
 /* eslint-disable react/no-children-prop */
 "use client"
 
-import * as React from "react"
 import { useForm } from "@tanstack/react-form"
 import { toast } from "sonner"
+import * as z from "zod"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -21,21 +21,19 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/registry/new-york-v4/ui/field"
-import { Input } from "@/registry/new-york-v4/ui/input"
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/registry/new-york-v4/ui/input-group"
+import { Textarea } from "@/registry/new-york-v4/ui/textarea"
 
-import { formSchema } from "./form-tanstack-demo-schema"
+const formSchema = z.object({
+  about: z
+    .string()
+    .min(10, "Please provide at least 10 characters.")
+    .max(200, "Please keep it under 200 characters."),
+})
 
-export default function FormTanstackDemo() {
+export default function FormTanstackTextarea() {
   const form = useForm({
     defaultValues: {
-      title: "",
-      description: "",
+      about: "",
     },
     validators: {
       onChange: formSchema,
@@ -61,14 +59,14 @@ export default function FormTanstackDemo() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <CardTitle>Bug Report</CardTitle>
+        <CardTitle>Personalization</CardTitle>
         <CardDescription>
-          Help us improve by reporting bugs you encounter.
+          Customize your experience by telling us more about yourself.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form
-          id="bug-report-form"
+          id="form-tanstack-textarea"
           onSubmit={(e) => {
             e.preventDefault()
             e.stopPropagation()
@@ -77,59 +75,28 @@ export default function FormTanstackDemo() {
         >
           <FieldGroup>
             <form.Field
-              name="title"
+              name="about"
               children={(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
                   <Field data-invalid={isInvalid}>
-                    <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
-                    <Input
-                      id={field.name}
+                    <FieldLabel htmlFor="form-tanstack-textarea-about">
+                      More about you
+                    </FieldLabel>
+                    <Textarea
+                      id="form-tanstack-textarea-about"
                       name={field.name}
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
                       aria-invalid={isInvalid}
-                      placeholder="Login button not working on mobile"
-                      autoComplete="off"
+                      placeholder="I'm a software engineer..."
+                      className="min-h-[120px]"
                     />
-                    {isInvalid && (
-                      <FieldError errors={field.state.meta.errors} />
-                    )}
-                  </Field>
-                )
-              }}
-            />
-            <form.Field
-              name="description"
-              children={(field) => {
-                const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid
-                return (
-                  <Field data-invalid={isInvalid}>
-                    <FieldLabel htmlFor={field.name}>Description</FieldLabel>
-                    <InputGroup>
-                      <InputGroupTextarea
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        placeholder="I'm having an issue with the login button on mobile."
-                        rows={6}
-                        className="min-h-24 resize-none"
-                        aria-invalid={isInvalid}
-                      />
-                      <InputGroupAddon align="block-end">
-                        <InputGroupText className="tabular-nums">
-                          {field.state.value.length}/100 characters
-                        </InputGroupText>
-                      </InputGroupAddon>
-                    </InputGroup>
                     <FieldDescription>
-                      Include steps to reproduce, expected behavior, and what
-                      actually happened.
+                      Tell us more about yourself. This will be used to help us
+                      personalize your experience.
                     </FieldDescription>
                     {isInvalid && (
                       <FieldError errors={field.state.meta.errors} />
@@ -146,8 +113,8 @@ export default function FormTanstackDemo() {
           <Button type="button" variant="outline" onClick={() => form.reset()}>
             Reset
           </Button>
-          <Button type="submit" form="bug-report-form">
-            Submit
+          <Button type="submit" form="form-tanstack-textarea">
+            Save
           </Button>
         </Field>
       </CardFooter>

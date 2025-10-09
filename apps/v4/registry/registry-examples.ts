@@ -1091,6 +1091,18 @@ export const examples: Registry["items"] = [
     dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
   },
   {
+    name: "form-rhf-array",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "input-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-rhf-array.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
     name: "form-rhf-complex",
     type: "registry:example",
     registryDependencies: [
@@ -1111,12 +1123,114 @@ export const examples: Registry["items"] = [
     dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
   },
   {
+    name: "form-rhf-password",
+    type: "registry:example",
+    registryDependencies: [
+      "field",
+      "input-group",
+      "progress",
+      "button",
+      "card",
+    ],
+    files: [
+      {
+        path: "examples/form-rhf-password.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form", "@hookform/resolvers", "zod"],
+  },
+  {
     name: "form-tanstack-demo",
     type: "registry:example",
     registryDependencies: ["field", "input", "input-group", "button", "card"],
     files: [
       {
         path: "examples/form-tanstack-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
+    name: "form-tanstack-input",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-input.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
+    name: "form-tanstack-textarea",
+    type: "registry:example",
+    registryDependencies: ["field", "textarea", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-textarea.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
+    name: "form-tanstack-select",
+    type: "registry:example",
+    registryDependencies: ["field", "select", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-select.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
+    name: "form-tanstack-checkbox",
+    type: "registry:example",
+    registryDependencies: ["field", "checkbox", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-checkbox.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
+    name: "form-tanstack-switch",
+    type: "registry:example",
+    registryDependencies: ["field", "switch", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-switch.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
+    name: "form-tanstack-radiogroup",
+    type: "registry:example",
+    registryDependencies: ["field", "radio-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-radiogroup.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["@tanstack/react-form", "zod"],
+  },
+  {
+    name: "form-tanstack-array",
+    type: "registry:example",
+    registryDependencies: ["field", "input", "input-group", "button", "card"],
+    files: [
+      {
+        path: "examples/form-tanstack-array.tsx",
         type: "registry:example",
       },
     ],

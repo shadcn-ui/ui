@@ -7,21 +7,23 @@ links:
 
 import { InfoIcon } from "lucide-react"
 
-In this guide, we will take a look at building forms with TanStack Form. We'll cover building forms, validation, error handling, accessibility, and more.
+In this guide, we will take a look at building forms with TanStack Form. We'll cover building forms with the `<Field />` component, adding schema validation using Zod, error handling, accessibility, and more.
 
 ## Demo
 
-We are going to build the following form with a simple text input and a textarea. On submit, we'll validate the form data using Zod and display any errors.
+We are going to build the following form. It has a simple text input and a textarea. On submit, we'll validate the form data and display any errors.
+
+<Callout icon={<InfoIcon />}>
+  **Note:** For the purpose of this demo, we have intentionally disabled browser
+  validation to show how schema validation and form errors work in TanStack
+  Form. It is recommended to add basic browser validation in your production
+  code.
+</Callout>
 
 <ComponentPreview
   name="form-tanstack-demo"
   className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
 />
-
-<Callout icon={<InfoIcon />}>
-  **Note:** TanStack Form is a headless, framework-agnostic form library. All
-  validation and state management happens in the browser.
-</Callout>
 
 ## Approach
 
@@ -235,26 +237,77 @@ Display errors next to the field using `<FieldError />`. Make sure to add the `d
 
 ## Working with Different Field Types
 
-### Text Inputs
+### Input
+
+<ComponentPreview
+  name="form-tanstack-input"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
 
 For simple text inputs, use `field.state.value` and `field.handleChange`.
 
-```tsx showLineNumbers
+```tsx showLineNumbers {6-14}
 <form.Field
-  name="name"
+  name="username"
   children={(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
       <Field data-invalid={isInvalid}>
-        <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+        <FieldLabel htmlFor="form-tanstack-input-username">Username</FieldLabel>
         <Input
-          id={field.name}
+          id="form-tanstack-input-username"
           name={field.name}
           value={field.state.value}
           onBlur={field.handleBlur}
           onChange={(e) => field.handleChange(e.target.value)}
           aria-invalid={isInvalid}
+          placeholder="shadcn"
+          autoComplete="username"
         />
+        <FieldDescription>
+          This is your public display name. Must be between 3 and 10 characters.
+          Must only contain letters, numbers, and underscores.
+        </FieldDescription>
+        {isInvalid && <FieldError errors={field.state.meta.errors} />}
+      </Field>
+    )
+  }}
+/>
+```
+
+### Textarea
+
+<ComponentPreview
+  name="form-tanstack-textarea"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
+
+For textarea fields, use `field.state.value` and `field.handleChange`.
+
+```tsx showLineNumbers {6-14}
+<form.Field
+  name="about"
+  children={(field) => {
+    const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field data-invalid={isInvalid}>
+        <FieldLabel htmlFor="form-tanstack-textarea-about">
+          More about you
+        </FieldLabel>
+        <Textarea
+          id="form-tanstack-textarea-about"
+          name={field.name}
+          value={field.state.value}
+          onBlur={field.handleBlur}
+          onChange={(e) => field.handleChange(e.target.value)}
+          aria-invalid={isInvalid}
+          placeholder="I'm a software engineer..."
+          className="min-h-[120px]"
+        />
+        <FieldDescription>
+          Tell us more about yourself. This will be used to help us personalize
+          your experience.
+        </FieldDescription>
         {isInvalid && <FieldError errors={field.state.meta.errors} />}
       </Field>
     )
@@ -264,71 +317,105 @@ For simple text inputs, use `field.state.value` and `field.handleChange`.
 
 ### Select
 
-For select components, use `value` and `onValueChange`.
+<ComponentPreview
+  name="form-tanstack-select"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
 
-```tsx showLineNumbers
+For select components, use `field.state.value` and `field.handleChange`.
+
+```tsx showLineNumbers {6-12,14-24}
 <form.Field
-  name="country"
+  name="language"
   children={(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
-      <Field data-invalid={isInvalid}>
-        <FieldLabel htmlFor={field.name}>Country</FieldLabel>
+      <Field orientation="responsive" data-invalid={isInvalid}>
+        <FieldContent>
+          <FieldLabel htmlFor="form-tanstack-select-language">
+            Spoken Language
+          </FieldLabel>
+          <FieldDescription>
+            For best results, select the language you speak.
+          </FieldDescription>
+          {isInvalid && <FieldError errors={field.state.meta.errors} />}
+        </FieldContent>
         <Select
           name={field.name}
           value={field.state.value}
           onValueChange={field.handleChange}
-          aria-invalid={isInvalid}
         >
-          <SelectTrigger id={field.name}>
-            <SelectValue placeholder="Select a country" />
+          <SelectTrigger
+            id="form-tanstack-select-language"
+            aria-invalid={isInvalid}
+            className="min-w-[120px]"
+          >
+            <SelectValue placeholder="Select" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="us">United States</SelectItem>
-            <SelectItem value="uk">United Kingdom</SelectItem>
+          <SelectContent position="item-aligned">
+            <SelectItem value="auto">Auto</SelectItem>
+            <SelectSeparator />
+            <SelectItem value="en">English</SelectItem>
+            <SelectItem value="es">Spanish</SelectItem>
+            <SelectItem value="fr">French</SelectItem>
           </SelectContent>
         </Select>
-        {isInvalid && <FieldError errors={field.state.meta.errors} />}
       </Field>
     )
   }}
 />
 ```
 
-### Checkboxes (Array)
+### Checkbox
+
+<ComponentPreview
+  name="form-tanstack-checkbox"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
 
 For checkbox arrays, use `mode="array"` and TanStack Form's array helpers.
 
 ```tsx showLineNumbers
 <form.Field
-  name="addons"
+  name="tasks"
   mode="array"
   children={(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
       <FieldSet data-invalid={isInvalid}>
-        <FieldLegend>Add-ons</FieldLegend>
+        <FieldLegend variant="label">Tasks</FieldLegend>
+        <FieldDescription>
+          Get notified when tasks you&apos;ve created have updates.
+        </FieldDescription>
         <FieldGroup data-slot="checkbox-group">
-          {addons.map((addon) => (
-            <Field key={addon.id} orientation="horizontal">
+          {tasks.map((task) => (
+            <Field
+              key={task.id}
+              orientation="horizontal"
+              data-invalid={isInvalid}
+            >
               <Checkbox
-                id={addon.id}
+                id={`form-tanstack-checkbox-${task.id}`}
                 name={field.name}
-                checked={field.state.value.includes(addon.id)}
+                aria-invalid={isInvalid}
+                checked={field.state.value.includes(task.id)}
                 onCheckedChange={(checked) => {
                   if (checked) {
-                    field.pushValue(addon.id)
+                    field.pushValue(task.id)
                   } else {
-                    const index = field.state.value.indexOf(addon.id)
+                    const index = field.state.value.indexOf(task.id)
                     if (index > -1) {
                       field.removeValue(index)
                     }
                   }
                 }}
               />
-              <FieldContent>
-                <FieldLabel htmlFor={addon.id}>{addon.title}</FieldLabel>
-              </FieldContent>
+              <FieldLabel
+                htmlFor={`form-tanstack-checkbox-${task.id}`}
+                className="font-normal"
+              >
+                {task.label}
+              </FieldLabel>
             </Field>
           ))}
         </FieldGroup>
@@ -339,30 +426,90 @@ For checkbox arrays, use `mode="array"` and TanStack Form's array helpers.
 />
 ```
 
-### Switch
+### Radio Group
 
-For switches, use `checked` and `onCheckedChange`.
+<ComponentPreview
+  name="form-tanstack-radiogroup"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
 
-```tsx showLineNumbers
+For radio groups, use `field.state.value` and `field.handleChange`.
+
+```tsx showLineNumbers {6-9,11-15}
 <form.Field
-  name="notifications"
+  name="plan"
   children={(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
-      <Field orientation="horizontal">
+      <FieldSet data-invalid={isInvalid}>
+        <FieldLegend>Plan</FieldLegend>
+        <FieldDescription>
+          You can upgrade or downgrade your plan at any time.
+        </FieldDescription>
+        <RadioGroup
+          name={field.name}
+          value={field.state.value}
+          onValueChange={field.handleChange}
+          aria-invalid={isInvalid}
+        >
+          {plans.map((plan) => (
+            <FieldLabel
+              key={plan.id}
+              htmlFor={`form-tanstack-radiogroup-${plan.id}`}
+            >
+              <Field orientation="horizontal" data-invalid={isInvalid}>
+                <FieldContent>
+                  <FieldTitle>{plan.title}</FieldTitle>
+                  <FieldDescription>{plan.description}</FieldDescription>
+                </FieldContent>
+                <RadioGroupItem
+                  value={plan.id}
+                  id={`form-tanstack-radiogroup-${plan.id}`}
+                  aria-invalid={isInvalid}
+                />
+              </Field>
+            </FieldLabel>
+          ))}
+        </RadioGroup>
+        {isInvalid && <FieldError errors={field.state.meta.errors} />}
+      </FieldSet>
+    )
+  }}
+/>
+```
+
+### Switch
+
+<ComponentPreview
+  name="form-tanstack-switch"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+/>
+
+For switches, use `field.state.value` and `field.handleChange`.
+
+```tsx showLineNumbers {6-16}
+<form.Field
+  name="twoFactor"
+  children={(field) => {
+    const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+    return (
+      <Field orientation="horizontal" data-invalid={isInvalid}>
         <FieldContent>
-          <FieldLabel htmlFor={field.name}>Email Notifications</FieldLabel>
+          <FieldLabel htmlFor="form-tanstack-switch-twoFactor">
+            Multi-factor authentication
+          </FieldLabel>
           <FieldDescription>
-            Receive email updates about your account
+            Enable multi-factor authentication to secure your account.
           </FieldDescription>
+          {isInvalid && <FieldError errors={field.state.meta.errors} />}
         </FieldContent>
         <Switch
-          id={field.name}
+          id="form-tanstack-switch-twoFactor"
           name={field.name}
           checked={field.state.value}
           onCheckedChange={field.handleChange}
+          aria-invalid={isInvalid}
         />
-        {isInvalid && <FieldError errors={field.state.meta.errors} />}
       </Field>
     )
   }}
@@ -386,194 +533,139 @@ Here is an example of a more complex form with multiple fields and validation.
 <ComponentPreview
   name="form-tanstack-complex"
   className="[&_.preview]:h-[1100px] [&_pre]:!h-[1100px]"
-  hideCode
 />
 
-### Schema
+## Array Fields
 
-<ComponentSource
-  src="/registry/new-york-v4/examples/form-tanstack-complex-schema.ts"
-  title="schema.ts"
+TanStack Form provides powerful array field management with `mode="array"`. This allows you to dynamically add, remove, and update array items with full validation support.
+
+<ComponentPreview
+  name="form-tanstack-array"
+  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
 />
 
-### Form
+This example demonstrates managing multiple email addresses with array fields. Users can add up to 5 email addresses, remove individual addresses, and each address is validated independently.
 
-<ComponentSource
-  src="/registry/new-york-v4/examples/form-tanstack-complex.tsx"
-  title="form.tsx"
-/>
+### Array Field Structure
 
-## Form State
+Use `mode="array"` on the parent field to enable array field management.
 
-TanStack Form provides several methods to access form state:
-
-```tsx showLineNumbers
-const form = useForm(/* ... */)
-
-// Access all form values
-const values = form.state.values
-
-// Check if form is valid
-const isValid = form.state.isValid
-
-// Check if form is submitting
-const isSubmitting = form.state.isSubmitting
-
-// Check if form is dirty (has changed)
-const isDirty = form.state.isDirty
-
-// Check if a specific field is touched
-form.getFieldInfo("email").state.meta.isTouched
-```
-
-## Field State
-
-Each field provides its own state through the render prop:
-
-```tsx showLineNumbers
+```tsx showLineNumbers {2,6-8}
 <form.Field
-  name="email"
+  name="emails"
+  mode="array"
   children={(field) => {
-    // Field value
-    const value = field.state.value
-
-    // Validation state
-    const isValid = field.state.meta.isValid
-    const isTouched = field.state.meta.isTouched
-    const isDirty = field.state.meta.isDirty
-
-    // Errors
-    const errors = field.state.meta.errors
-
-    return <Field>{/* ... */}</Field>
+    return (
+      <FieldSet>
+        <FieldLegend variant="label">Email Addresses</FieldLegend>
+        <FieldDescription>
+          Add up to 5 email addresses where we can contact you.
+        </FieldDescription>
+        <FieldGroup>
+          {field.state.value.map((_, index) => (
+            // Nested field for each array item
+          ))}
+        </FieldGroup>
+      </FieldSet>
+    )
   }}
 />
 ```
 
-## Submitting Forms
+### Nested Fields
 
-### Basic Submit
+Access individual array items using bracket notation: `fieldName[index].propertyName`. This example uses `InputGroup` to display the remove button inline with the input.
 
-```tsx showLineNumbers
-const form = useForm({
-  defaultValues: { title: "", description: "" },
-  validators: {
-    onChange: formSchema,
-  },
-  onSubmit: async ({ value }) => {
-    console.log(value)
-  },
-})
-
-return (
-  <form
-    onSubmit={(e) => {
-      e.preventDefault()
-      e.stopPropagation()
-      void form.handleSubmit()
-    }}
-  >
-    {/* ... */}
-  </form>
-)
+```tsx showLineNumbers {2,6-17}
+<form.Field
+  name={`emails[${index}].address`}
+  children={(subField) => {
+    const isSubFieldInvalid =
+      subField.state.meta.isTouched && !subField.state.meta.isValid
+    return (
+      <Field orientation="horizontal" data-invalid={isSubFieldInvalid}>
+        <FieldContent>
+          <InputGroup>
+            <InputGroupInput
+              id={`form-tanstack-array-email-${index}`}
+              name={subField.name}
+              value={subField.state.value}
+              onBlur={subField.handleBlur}
+              onChange={(e) => subField.handleChange(e.target.value)}
+              aria-invalid={isSubFieldInvalid}
+              placeholder="name@example.com"
+              type="email"
+            />
+            {field.state.value.length > 1 && (
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton
+                  type="button"
+                  variant="ghost"
+                  size="icon-xs"
+                  onClick={() => field.removeValue(index)}
+                  aria-label={`Remove email ${index + 1}`}
+                >
+                  <XIcon />
+                </InputGroupButton>
+              </InputGroupAddon>
+            )}
+          </InputGroup>
+          {isSubFieldInvalid && (
+            <FieldError errors={subField.state.meta.errors} />
+          )}
+        </FieldContent>
+      </Field>
+    )
+  }}
+/>
 ```
-
-### With Toast Notification
-
-```tsx showLineNumbers
-import { toast } from "sonner"
-
-const form = useForm({
-  defaultValues: { title: "", description: "" },
-  validators: {
-    onChange: formSchema,
-  },
-  onSubmit: async ({ value }) => {
-    toast.success("Form submitted", {
-      description: "Your data has been saved successfully.",
-    })
-  },
-})
-```
-
-### With API Call
-
-```tsx showLineNumbers
-const form = useForm({
-  defaultValues: { title: "", description: "" },
-  validators: {
-    onChange: formSchema,
-  },
-  onSubmit: async ({ value }) => {
-    try {
-      const response = await fetch("/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(value),
-      })
-
-      if (!response.ok) throw new Error("Failed to submit")
-
-      toast.success("Form submitted successfully")
-    } catch (error) {
-      toast.error("Failed to submit form")
-    }
-  },
-})
-```
-
-## Array Fields
-
-TanStack Form provides powerful array field management with `mode="array"`.
 
 ### Adding Items
 
-Use `field.pushValue(item)` to add items to an array field.
+Use `field.pushValue(item)` to add items to an array field. You can disable the button when the array reaches its maximum length.
 
-```tsx showLineNumbers
-<form.Field
-  name="tags"
-  mode="array"
-  children={(field) => (
-    <div>
-      <Button onClick={() => field.pushValue("")}>Add Tag</Button>
-    </div>
-  )}
-/>
+```tsx showLineNumbers {4,5}
+<Button
+  type="button"
+  variant="outline"
+  size="sm"
+  onClick={() => field.pushValue({ address: "" })}
+  disabled={field.state.value.length >= 5}
+>
+  Add Email Address
+</Button>
 ```
 
 ### Removing Items
 
-Use `field.removeValue(index)` to remove items from an array field.
+Use `field.removeValue(index)` to remove items from an array field. You can conditionally show the remove button only when there's more than one item.
 
-```tsx showLineNumbers
-<form.Field
-  name="tags"
-  mode="array"
-  children={(field) => (
-    <div>
-      {field.state.value.map((_, index) => (
-        <Button key={index} onClick={() => field.removeValue(index)}>
-          Remove
-        </Button>
-      ))}
-    </div>
-  )}
-/>
+```tsx showLineNumbers {1,3}
+{
+  field.state.value.length > 1 && (
+    <InputGroupButton
+      onClick={() => field.removeValue(index)}
+      aria-label={`Remove email ${index + 1}`}
+    >
+      <XIcon />
+    </InputGroupButton>
+  )
+}
 ```
 
-### Updating Items
+### Array Validation
 
-Access nested fields using dot notation.
+Validate array fields using Zod's array methods.
 
-```tsx showLineNumbers
-<form.Field
-  name={`tags[${index}]`}
-  children={(field) => (
-    <Input
-      value={field.state.value}
-      onChange={(e) => field.handleChange(e.target.value)}
-    />
-  )}
-/>
+```tsx showLineNumbers {3-10}
+const formSchema = z.object({
+  emails: z
+    .array(
+      z.object({
+        address: z.string().email("Enter a valid email address."),
+      })
+    )
+    .min(1, "Add at least one email address.")
+    .max(5, "You can add up to 5 email addresses."),
+})
 ```
