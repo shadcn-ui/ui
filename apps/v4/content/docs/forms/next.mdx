@@ -97,7 +97,7 @@ Next, we'll create a type for our form state that includes values, errors, and s
 import { z } from "zod"
 
 export type FormState = {
-  values: z.infer<typeof formSchema>
+  values?: z.infer<typeof formSchema>
   errors: null | Partial<Record<keyof z.infer<typeof formSchema>, string[]>>
   success: boolean
 }
@@ -151,10 +151,6 @@ export function BugReportForm() {
   const [formState, formAction, pending] = React.useActionState(
     bugReportFormAction,
     {
-      values: {
-        title: "",
-        description: "",
-      },
       errors: null,
       success: false,
     }
@@ -213,7 +209,7 @@ Use `safeParse()` on your schema in your server action to validate the form data
 export async function bugReportFormAction(
   _prevState: FormState,
   formData: FormData
-): Promise<FormState> {
+) {
   const values = {
     title: formData.get("title") as string,
     description: formData.get("description") as string,
@@ -230,7 +226,6 @@ export async function bugReportFormAction(
   }
 
   return {
-    values: result.data,
     errors: null,
     success: true,
   }
@@ -239,7 +234,9 @@ export async function bugReportFormAction(
 
 ### Business Logic Validation
 
-You can add additional custom validation logic in your server action. Make sure to return the errors, values, and success status to the client.
+You can add additional custom validation logic in your server action.
+
+Make sure to return the values on validation errors. This is to ensure that the form state maintains the user's input.
 
 ```tsx showLineNumbers title="actions.ts" {22-35}
 "use server"
@@ -279,7 +276,6 @@ export async function bugReportFormAction(
   }
 
   return {
-    values: result.data,
     errors: null,
     success: true,
   }
@@ -303,6 +299,70 @@ Display errors next to the field using `<FieldError />`. Make sure to add the `d
     <FieldError>{formState.errors.email[0]}</FieldError>
   )}
 </Field>
+```
+
+## Resetting the Form
+
+When you submit a form with a server action, React will automatically reset the form state to the initial values.
+
+### Reset on Success
+
+To reset the form on success, you can omit the `values` from the server action and React will automatically reset the form state to the initial values. This is standard React behavior.
+
+```tsx showLineNumbers title="actions.ts" {22-26}
+export async function demoFormAction(
+  _prevState: FormState,
+  formData: FormData
+) {
+  const values = {
+    title: formData.get("title") as string,
+    description: formData.get("description") as string,
+  }
+
+  // Validation.
+  if (!result.success) {
+    return {
+      values,
+      success: false,
+      errors: result.error.flatten().fieldErrors,
+    }
+  }
+
+  // Business logic.
+  callYourDatabaseOrAPI(values)
+
+  // Omit the values on success to reset the form state.
+  return {
+    errors: null,
+    success: true,
+  }
+}
+```
+
+### Preserve on Validation Errors
+
+To prevent the form from being reset on failure, you can return the values in the server action. This is to ensure that the form state maintains the user's input.
+
+```tsx showLineNumbers title="actions.ts" {12-17}
+export async function demoFormAction(
+  _prevState: FormState,
+  formData: FormData
+) {
+  const values = {
+    title: formData.get("title") as string,
+    description: formData.get("description") as string,
+  }
+
+  // Validation.
+  if (!result.success) {
+    return {
+      // Return the values on validation errors.
+      values,
+      success: false,
+      errors: result.error.flatten().fieldErrors,
+    }
+  }
+}
 ```
 
 ## Complex Forms
