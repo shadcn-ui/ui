@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-spinner",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-spinner.tsx",
+      "content": "import { LoaderIcon } from \"lucide-react\"\n\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupInput,\n  InputGroupText,\n} from \"@/registry/new-york-v4/ui/input-group\"\nimport { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\n\nexport default function InputGroupSpinner() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-4\">\n      <InputGroup data-disabled>\n        <InputGroupInput placeholder=\"Searching...\" disabled />\n        <InputGroupAddon align=\"inline-end\">\n          <Spinner />\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup data-disabled>\n        <InputGroupInput placeholder=\"Processing...\" disabled />\n        <InputGroupAddon>\n          <Spinner />\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup data-disabled>\n        <InputGroupInput placeholder=\"Saving changes...\" disabled />\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupText>Saving...</InputGroupText>\n          <Spinner />\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup data-disabled>\n        <InputGroupInput placeholder=\"Refreshing data...\" disabled />\n        <InputGroupAddon>\n          <LoaderIcon className=\"animate-spin\" />\n        </InputGroupAddon>\n        <InputGroupAddon align=\"inline-end\">\n          <InputGroupText className=\"text-muted-foreground\">\n            Please wait...\n          </InputGroupText>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
