@@ -47,7 +47,7 @@ export default function FormRhfArray() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      emails: [{ address: "" }],
+      emails: [{ address: "" }, { address: "" }],
     },
   })
 

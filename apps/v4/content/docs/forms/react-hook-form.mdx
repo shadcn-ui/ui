@@ -62,20 +62,20 @@ Here's a basic example of a form using the `<Controller />` component from React
 />
 ```
 
-## Usage
+## Form
 
 ### Create a form schema
 
-We'll start by defining the shape of our form using a Zod schema in a `schema.ts` file.
+We'll start by defining the shape of our form using a Zod schema
 
 <Callout icon={<InfoIcon />}>
   **Note:** This example uses `zod v3` for schema validation, but you can
-  replace it with any other schema validation library supported by React Hook
-  Form.
+  replace it with any other Standard Schema validation library supported by
+  React Hook Form.
 </Callout>
 
-```tsx showLineNumbers title="bug-report-form.tsx"
-import { z } from "zod"
+```tsx showLineNumbers title="form.tsx"
+import * as z from "zod"
 
 const formSchema = z.object({
   title: z
@@ -93,10 +93,10 @@ const formSchema = z.object({
 
 Next, we'll use the `useForm` hook from React Hook Form to create our form instance. We'll also add the Zod resolver to validate the form data.
 
-```tsx showLineNumbers title="bug-report-form.tsx" {17-23}
+```tsx showLineNumbers title="form.tsx" {17-23}
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import * as z from "zod"
 
 const formSchema = z.object({
   title: z
@@ -157,7 +157,7 @@ React Hook Form validates your form data using the Zod schema. Define a schema a
 ```tsx showLineNumbers title="example-form.tsx" {5-8,12}
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import * as z from "zod"
 
 const formSchema = z.object({
   title: z.string(),
@@ -179,10 +179,10 @@ export function ExampleForm() {
 
 React Hook Form supports different validation modes.
 
-```tsx showLineNumbers title="example-form.tsx" {3}
+```tsx showLineNumbers title="form.tsx" {3}
 const form = useForm<z.infer<typeof formSchema>>({
   resolver: zodResolver(formSchema),
-  mode: "onChange", // or "onBlur", "onSubmit", "onTouched", "all"
+  mode: "onChange",
 })
 ```
 
@@ -196,9 +196,12 @@ const form = useForm<z.infer<typeof formSchema>>({
 
 ## Displaying Errors
 
-Display errors next to the field using `<FieldError />`. **Make sure to add the `data-invalid` prop to the `<Field />` component and `aria-invalid` prop to the form control such as input, select, etc.**
+Display errors next to the field using `<FieldError />`. For styling and accessibility:
 
-```tsx showLineNumbers title="example-form.tsx" {5,11,13}
+- Add the `data-invalid` prop to the `<Field />` component.
+- Add the `aria-invalid` prop to the form control such as `<Input />`, `<SelectTrigger />`, `<Checkbox />`, etc.
+
+```tsx showLineNumbers title="form.tsx" {5,11,13}
 <Controller
   name="email"
   control={form.control}
@@ -232,7 +235,7 @@ Display errors next to the field using `<FieldError />`. **Make sure to add the 
 
 For simple text inputs, spread the `field` object onto the input.
 
-```tsx showLineNumbers {7}
+```tsx showLineNumbers title="form.tsx" {5,7,8}
 <Controller
   name="name"
   control={form.control}
@@ -259,7 +262,7 @@ For simple text inputs, spread the `field` object onto the input.
 
 For textarea fields, spread the `field` object onto the textarea.
 
-```tsx showLineNumbers {5,6-11}
+```tsx showLineNumbers title="form.tsx" {5,10,18}
 <Controller
   name="about"
   control={form.control}
@@ -290,13 +293,11 @@ For textarea fields, spread the `field` object onto the textarea.
 
 <ComponentPreview
   name="form-rhf-select"
-  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[500px] sm:[&_pre]:!h-[500px]"
   chromeLessOnMobile
 />
 
-For select components, use `value` and `onValueChange`. To show errors, add the `aria-invalid` prop to the `<SelectTrigger />` component.
-
-```tsx showLineNumbers {5-12,14-20}
+```tsx showLineNumbers title="form.tsx" {5,13,22}
 <Controller
   name="language"
   control={form.control}
@@ -325,10 +326,7 @@ For select components, use `value` and `onValueChange`. To show errors, add the 
         </SelectTrigger>
         <SelectContent position="item-aligned">
           <SelectItem value="auto">Auto</SelectItem>
-          <SelectSeparator />
           <SelectItem value="en">English</SelectItem>
-          <SelectItem value="es">Spanish</SelectItem>
-          <SelectItem value="fr">French</SelectItem>
         </SelectContent>
       </Select>
     </Field>
@@ -340,6 +338,7 @@ For select components, use `value` and `onValueChange`. To show errors, add the 
 
 - For checkbox arrays, use `field.value` and `field.onChange` with array manipulation.
 - To show errors, add the `aria-invalid` prop to the `<Checkbox />` component and the `data-invalid` prop to the `<Field />` component.
+- Remember to add `data-slot="checkbox-group"` to the `<FieldGroup />` component for proper styling and spacing.
 
 <ComponentPreview
   name="form-rhf-checkbox"
@@ -347,14 +346,12 @@ For select components, use `value` and `onValueChange`. To show errors, add the 
   chromeLessOnMobile
 />
 
-For checkboxes, use the `checked` state and `onCheckedChange` event.
-
-```tsx showLineNumbers
+```tsx showLineNumbers title="form.tsx" {10,15,20-22,38}
 <Controller
   name="tasks"
   control={form.control}
   render={({ field, fieldState }) => (
-    <FieldSet data-invalid={fieldState.invalid}>
+    <FieldSet>
       <FieldLegend variant="label">Tasks</FieldLegend>
       <FieldDescription>
         Get notified when tasks you&apos;ve created have updates.
@@ -396,7 +393,7 @@ For checkboxes, use the `checked` state and `onCheckedChange` event.
 ### Radio Group
 
 - For radio groups, use `field.value` and `field.onChange` on the `<RadioGroup />` component.
-- To show errors, add the `aria-invalid` prop to the `<RadioGroup />` component and the `data-invalid` prop to the `<FieldSet />` component.
+- To show errors, add the `aria-invalid` prop to the `<RadioGroupItem />` component and the `data-invalid` prop to the `<Field />` component.
 
 <ComponentPreview
   name="form-rhf-radiogroup"
@@ -404,14 +401,12 @@ For checkboxes, use the `checked` state and `onCheckedChange` event.
   chromeLessOnMobile
 />
 
-For radio groups, use `value` and `onValueChange`. To show errors, add the `aria-invalid` prop to the `<RadioGroup />` component.
-
-```tsx showLineNumbers {5-7,9-14}
+```tsx showLineNumbers title="form.tsx" {12-13,17,25,31}
 <Controller
   name="plan"
   control={form.control}
   render={({ field, fieldState }) => (
-    <FieldSet data-invalid={fieldState.invalid}>
+    <FieldSet>
       <FieldLegend>Plan</FieldLegend>
       <FieldDescription>
         You can upgrade or downgrade your plan at any time.
@@ -420,7 +415,6 @@ For radio groups, use `value` and `onValueChange`. To show errors, add the `aria
         name={field.name}
         value={field.value}
         onValueChange={field.onChange}
-        aria-invalid={fieldState.invalid}
       >
         {plans.map((plan) => (
           <FieldLabel key={plan.id} htmlFor={`form-rhf-radiogroup-${plan.id}`}>
@@ -451,13 +445,11 @@ For radio groups, use `value` and `onValueChange`. To show errors, add the `aria
 
 <ComponentPreview
   name="form-rhf-switch"
-  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[500px] sm:[&_pre]:!h-[500px]"
   chromeLessOnMobile
 />
 
-For switches, use `checked` and `onCheckedChange`.
-
-```tsx showLineNumbers {5-16}
+```tsx showLineNumbers title="form.tsx" {5,13,18-19}
 <Controller
   name="twoFactor"
   control={form.control}
@@ -484,6 +476,16 @@ For switches, use `checked` and `onCheckedChange`.
 />
 ```
 
+### Complex Forms
+
+Here is an example of a more complex form with multiple fields and validation.
+
+<ComponentPreview
+  name="form-rhf-complex"
+  className="sm:[&_.preview]:h-[1300px] sm:[&_pre]:!h-[1300px]"
+  chromeLessOnMobile
+/>
+
 ## Resetting the Form
 
 Use `form.reset()` to reset the form to its default values.
@@ -494,23 +496,9 @@ Use `form.reset()` to reset the form to its default values.
 </Button>
 ```
 
-## Complex Forms
-
-Here is an example of a more complex form with multiple fields and validation.
-
-<ComponentPreview
-  name="form-rhf-complex"
-  className="sm:[&_.preview]:h-[1300px] sm:[&_pre]:!h-[1300px]"
-  chromeLessOnMobile
-/>
-
-<ComponentPreview
-  name="form-rhf-password"
-  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
-  chromeLessOnMobile
-/>
-
 ## Array Fields
+
+React Hook Form provides a `useFieldArray` hook for managing dynamic array fields. This is useful when you need to add or remove fields dynamically.
 
 <ComponentPreview
   name="form-rhf-array"
@@ -518,13 +506,11 @@ Here is an example of a more complex form with multiple fields and validation.
   chromeLessOnMobile
 />
 
-React Hook Form provides a `useFieldArray` hook for managing dynamic array fields. This is useful when you need to add or remove fields dynamically.
-
 ### Using useFieldArray
 
 Use the `useFieldArray` hook to manage array fields. It provides `fields`, `append`, and `remove` methods.
 
-```tsx showLineNumbers {8-11}
+```tsx showLineNumbers title="form.tsx" {8-11}
 import { useFieldArray, useForm } from "react-hook-form"
 
 export function ExampleForm() {
@@ -543,7 +529,7 @@ export function ExampleForm() {
 
 Wrap your array fields in a `<FieldSet />` with a `<FieldLegend />` and `<FieldDescription />`.
 
-```tsx showLineNumbers {5-10}
+```tsx showLineNumbers title="form.tsx"
 <FieldSet className="gap-4">
   <FieldLegend variant="label">Email Addresses</FieldLegend>
   <FieldDescription>
@@ -557,7 +543,7 @@ Wrap your array fields in a `<FieldSet />` with a `<FieldLegend />` and `<FieldD
 
 Map over the `fields` array and use `<Controller />` for each item. **Make sure to use `field.id` as the key**.
 
-```tsx showLineNumbers {1,3-5}
+```tsx showLineNumbers title="form.tsx"
 {
   fields.map((field, index) => (
     <Controller
@@ -591,7 +577,7 @@ Map over the `fields` array and use `<Controller />` for each item. **Make sure 
 
 Use the `append` method to add new items to the array.
 
-```tsx showLineNumbers {5,6}
+```tsx showLineNumbers title="form.tsx"
 <Button
   type="button"
   variant="outline"
@@ -607,7 +593,7 @@ Use the `append` method to add new items to the array.
 
 Use the `remove` method to remove items from the array. Add the remove button conditionally.
 
-```tsx showLineNumbers {1,2-14}
+```tsx showLineNumbers title="form.tsx"
 {
   fields.length > 1 && (
     <InputGroupAddon align="inline-end">
@@ -629,7 +615,7 @@ Use the `remove` method to remove items from the array. Add the remove button co
 
 Use Zod's `array` method to validate array fields.
 
-```tsx showLineNumbers {2-9}
+```tsx showLineNumbers title="form.tsx"
 const formSchema = z.object({
   emails: z
     .array(

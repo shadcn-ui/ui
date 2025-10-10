@@ -30,7 +30,7 @@ import {
   InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
 
-export const formSchema = z.object({
+const formSchema = z.object({
   title: z
     .string()
     .min(5, "Bug title must be at least 5 characters.")
