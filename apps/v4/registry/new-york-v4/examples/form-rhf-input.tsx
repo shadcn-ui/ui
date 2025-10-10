@@ -60,7 +60,7 @@ export default function FormRhfInput() {
   }
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Profile Settings</CardTitle>
         <CardDescription>

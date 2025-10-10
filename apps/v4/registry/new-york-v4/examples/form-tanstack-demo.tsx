@@ -4,6 +4,7 @@
 import * as React from "react"
 import { useForm } from "@tanstack/react-form"
 import { toast } from "sonner"
+import * as z from "zod"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -29,21 +30,30 @@ import {
   InputGroupTextarea,
 } from "@/registry/new-york-v4/ui/input-group"
 
-import { formSchema } from "./form-tanstack-demo-schema"
+const formSchema = z.object({
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
+  description: z
+    .string()
+    .min(20, "Description must be at least 20 characters.")
+    .max(100, "Description must be at most 100 characters."),
+})
 
-export default function FormTanstackDemo() {
+export default function BugReportForm() {
   const form = useForm({
     defaultValues: {
       title: "",
       description: "",
     },
     validators: {
-      onChange: formSchema,
+      onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] rounded-md p-4">
+          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -59,7 +69,7 @@ export default function FormTanstackDemo() {
   })
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Bug Report</CardTitle>
         <CardDescription>
@@ -71,8 +81,7 @@ export default function FormTanstackDemo() {
           id="bug-report-form"
           onSubmit={(e) => {
             e.preventDefault()
-            e.stopPropagation()
-            void form.handleSubmit()
+            form.handleSubmit()
           }}
         >
           <FieldGroup>

@@ -74,7 +74,7 @@ export default function FormRhfArray() {
   }
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full sm:max-w-md">
       <CardHeader className="border-b">
         <CardTitle>Contact Emails</CardTitle>
         <CardDescription>Manage your contact email addresses.</CardDescription>

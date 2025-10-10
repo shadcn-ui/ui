@@ -42,7 +42,7 @@ export default function FormRhfTextarea() {
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] rounded-md p-4">
+        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -57,7 +57,7 @@ export default function FormRhfTextarea() {
   }
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Personalization</CardTitle>
         <CardDescription>

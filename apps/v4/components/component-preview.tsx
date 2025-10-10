@@ -10,6 +10,7 @@ export function ComponentPreview({
   className,
   align = "center",
   hideCode = false,
+  chromeLessOnMobile = false,
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
@@ -17,6 +18,7 @@ export function ComponentPreview({
   description?: string
   hideCode?: boolean
   type?: "block" | "component" | "example"
+  chromeLessOnMobile?: boolean
 }) {
   const Component = Index[name]?.component
 
@@ -63,6 +65,7 @@ export function ComponentPreview({
       hideCode={hideCode}
       component={<Component />}
       source={<ComponentSource name={name} collapsible={false} />}
+      chromeLessOnMobile={chromeLessOnMobile}
       {...props}
     />
   )

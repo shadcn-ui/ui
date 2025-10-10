@@ -49,6 +49,7 @@ export async function ComponentSource({
 
   // Replace export default with export.
   code = code.replaceAll("export default", "export")
+  code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
 
   const lang = language ?? title?.split(".").pop() ?? "tsx"
   const highlightedCode = await highlightCode(code, lang)

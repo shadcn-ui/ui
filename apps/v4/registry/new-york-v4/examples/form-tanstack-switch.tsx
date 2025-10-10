@@ -36,12 +36,12 @@ export default function FormTanstackSwitch() {
       twoFactor: false,
     },
     validators: {
-      onChange: formSchema,
+      onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] rounded-md p-4">
+          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -57,7 +57,7 @@ export default function FormTanstackSwitch() {
   })
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Security Settings</CardTitle>
         <CardDescription>
@@ -69,8 +69,7 @@ export default function FormTanstackSwitch() {
           id="form-tanstack-switch"
           onSubmit={(e) => {
             e.preventDefault()
-            e.stopPropagation()
-            void form.handleSubmit()
+            form.handleSubmit()
           }}
         >
           <FieldGroup>

@@ -4,6 +4,7 @@
 import * as React from "react"
 import { useForm } from "@tanstack/react-form"
 import { toast } from "sonner"
+import * as z from "zod"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Card, CardContent, CardFooter } from "@/registry/new-york-v4/ui/card"
@@ -33,7 +34,50 @@ import {
 } from "@/registry/new-york-v4/ui/select"
 import { Switch } from "@/registry/new-york-v4/ui/switch"
 
-import { addons, formSchema } from "./form-tanstack-complex-schema"
+const addons = [
+  {
+    id: "analytics",
+    title: "Analytics",
+    description: "Advanced analytics and reporting",
+  },
+  {
+    id: "backup",
+    title: "Backup",
+    description: "Automated daily backups",
+  },
+  {
+    id: "support",
+    title: "Priority Support",
+    description: "24/7 premium customer support",
+  },
+] as const
+
+const formSchema = z.object({
+  plan: z
+    .string({
+      required_error: "Please select a subscription plan",
+    })
+    .min(1, "Please select a subscription plan")
+    .refine((value) => value === "basic" || value === "pro", {
+      message: "Invalid plan selection. Please choose Basic or Pro",
+    }),
+  billingPeriod: z
+    .string({
+      required_error: "Please select a billing period",
+    })
+    .min(1, "Please select a billing period"),
+  addons: z
+    .array(z.string())
+    .min(1, "Please select at least one add-on")
+    .max(3, "You can select up to 3 add-ons")
+    .refine(
+      (value) => value.every((addon) => addons.some((a) => a.id === addon)),
+      {
+        message: "You selected an invalid add-on",
+      }
+    ),
+  emailNotifications: z.boolean(),
+})
 
 export default function FormTanstackComplex() {
   const form = useForm({
@@ -44,12 +88,12 @@ export default function FormTanstackComplex() {
       emailNotifications: false,
     },
     validators: {
-      onChange: formSchema,
+      onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] rounded-md p-4">
+          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -71,8 +115,7 @@ export default function FormTanstackComplex() {
           id="subscription-form"
           onSubmit={(e) => {
             e.preventDefault()
-            e.stopPropagation()
-            void form.handleSubmit()
+            form.handleSubmit()
           }}
         >
           <FieldGroup>
@@ -82,7 +125,7 @@ export default function FormTanstackComplex() {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <FieldSet data-invalid={isInvalid}>
+                  <FieldSet>
                     <FieldLegend>Subscription Plan</FieldLegend>
                     <FieldDescription>
                       Choose your subscription plan.
@@ -91,10 +134,12 @@ export default function FormTanstackComplex() {
                       name={field.name}
                       value={field.state.value}
                       onValueChange={field.handleChange}
-                      aria-invalid={isInvalid}
                     >
                       <FieldLabel htmlFor="basic">
-                        <Field orientation="horizontal">
+                        <Field
+                          orientation="horizontal"
+                          data-invalid={isInvalid}
+                        >
                           <FieldContent>
                             <FieldTitle>Basic</FieldTitle>
                             <FieldDescription>
@@ -109,7 +154,10 @@ export default function FormTanstackComplex() {
                         </Field>
                       </FieldLabel>
                       <FieldLabel htmlFor="pro">
-                        <Field orientation="horizontal">
+                        <Field
+                          orientation="horizontal"
+                          data-invalid={isInvalid}
+                        >
                           <FieldContent>
                             <FieldTitle>Pro</FieldTitle>
                             <FieldDescription>
@@ -172,14 +220,18 @@ export default function FormTanstackComplex() {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <FieldSet data-invalid={isInvalid}>
+                  <FieldSet>
                     <FieldLegend>Add-ons</FieldLegend>
                     <FieldDescription>
                       Select additional features you&apos;d like to include.
                     </FieldDescription>
                     <FieldGroup data-slot="checkbox-group">
                       {addons.map((addon) => (
-                        <Field key={addon.id} orientation="horizontal">
+                        <Field
+                          key={addon.id}
+                          orientation="horizontal"
+                          data-invalid={isInvalid}
+                        >
                           <Checkbox
                             id={addon.id}
                             name={field.name}
@@ -223,7 +275,7 @@ export default function FormTanstackComplex() {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <Field orientation="horizontal">
+                  <Field orientation="horizontal" data-invalid={isInvalid}>
                     <FieldContent>
                       <FieldLabel htmlFor={field.name}>
                         Email Notifications
@@ -237,6 +289,7 @@ export default function FormTanstackComplex() {
                       name={field.name}
                       checked={field.state.value}
                       onCheckedChange={field.handleChange}
+                      aria-invalid={isInvalid}
                     />
                     {isInvalid && (
                       <FieldError errors={field.state.meta.errors} />

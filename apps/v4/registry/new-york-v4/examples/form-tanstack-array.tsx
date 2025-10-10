@@ -22,11 +22,9 @@ import {
   FieldDescription,
   FieldError,
   FieldGroup,
-  FieldLabel,
   FieldLegend,
   FieldSet,
 } from "@/registry/new-york-v4/ui/field"
-import { Input } from "@/registry/new-york-v4/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
@@ -51,12 +49,12 @@ export default function FormTanstackArray() {
       emails: [{ address: "" }],
     },
     validators: {
-      onChange: formSchema,
+      onBlur: formSchema,
     },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] rounded-md p-4">
+          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -72,7 +70,7 @@ export default function FormTanstackArray() {
   })
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full sm:max-w-md">
       <CardHeader className="border-b">
         <CardTitle>Contact Emails</CardTitle>
         <CardDescription>Manage your contact email addresses.</CardDescription>
@@ -82,8 +80,7 @@ export default function FormTanstackArray() {
           id="form-tanstack-array"
           onSubmit={(e) => {
             e.preventDefault()
-            e.stopPropagation()
-            void form.handleSubmit()
+            form.handleSubmit()
           }}
         >
           <form.Field name="emails" mode="array">

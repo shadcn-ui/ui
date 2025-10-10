@@ -57,12 +57,12 @@ export default function FormTanstackCheckbox() {
       tasks: [] as string[],
     },
     validators: {
-      onChange: formSchema,
+      onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] rounded-md p-4">
+          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -78,7 +78,7 @@ export default function FormTanstackCheckbox() {
   })
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Notifications</CardTitle>
         <CardDescription>Manage your notification preferences.</CardDescription>
@@ -88,8 +88,7 @@ export default function FormTanstackCheckbox() {
           id="form-tanstack-checkbox"
           onSubmit={(e) => {
             e.preventDefault()
-            e.stopPropagation()
-            void form.handleSubmit()
+            form.handleSubmit()
           }}
         >
           <FieldGroup>
@@ -99,14 +98,14 @@ export default function FormTanstackCheckbox() {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <FieldSet data-invalid={isInvalid}>
+                  <FieldSet>
                     <FieldLegend variant="label">Responses</FieldLegend>
                     <FieldDescription>
                       Get notified for requests that take time, like research or
                       image generation.
                     </FieldDescription>
                     <FieldGroup data-slot="checkbox-group">
-                      <Field orientation="horizontal">
+                      <Field orientation="horizontal" data-invalid={isInvalid}>
                         <Checkbox
                           id="form-tanstack-checkbox-responses"
                           name={field.name}
@@ -139,7 +138,7 @@ export default function FormTanstackCheckbox() {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <FieldSet data-invalid={isInvalid}>
+                  <FieldSet>
                     <FieldLegend variant="label">Tasks</FieldLegend>
                     <FieldDescription>
                       Get notified when tasks you&apos;ve created have updates.

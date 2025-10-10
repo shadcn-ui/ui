@@ -7,11 +7,11 @@ links:
 
 import { InfoIcon } from "lucide-react"
 
-In this guide, we will take a look at building forms with TanStack Form. We'll cover building forms with the `<Field />` component, adding schema validation using Zod, error handling, accessibility, and more.
+This guide explores how to build forms using TanStack Form. You'll learn to create forms with the `<Field />` component, implement schema validation with Zod, handle errors, and ensure accessibility.
 
 ## Demo
 
-We are going to build the following form. It has a simple text input and a textarea. On submit, we'll validate the form data and display any errors.
+We'll start by building the following form. It has a simple text input and a textarea. On submit, we'll validate the form data and display any errors.
 
 <Callout icon={<InfoIcon />}>
   **Note:** For the purpose of this demo, we have intentionally disabled browser
@@ -22,7 +22,8 @@ We are going to build the following form. It has a simple text input and a texta
 
 <ComponentPreview
   name="form-tanstack-demo"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 ## Approach
@@ -39,12 +40,11 @@ This form leverages TanStack Form for powerful, headless form handling. We'll bu
 
 Here's a basic example of a form using TanStack Form with the `<Field />` component.
 
-```tsx showLineNumbers
+```tsx showLineNumbers {15-31}
 <form
   onSubmit={(e) => {
     e.preventDefault()
-    e.stopPropagation()
-    void form.handleSubmit()
+    form.handleSubmit()
   }}
 >
   <FieldGroup>
@@ -79,21 +79,22 @@ Here's a basic example of a form using TanStack Form with the `<Field />` compon
 </form>
 ```
 
-## Usage
+## Form
 
-### Create a form schema
+### Create a schema
 
-We'll start by defining the shape of our form using a Zod schema in a `schema.ts` file.
+We'll start by defining the shape of our form using a Zod schema.
 
 <Callout icon={<InfoIcon />}>
   **Note:** This example uses `zod v3` for schema validation. TanStack Form
-  integrates seamlessly with Zod through its validators API.
+  integrates seamlessly with Zod and other Standard Schema validation libraries
+  through its validators API.
 </Callout>
 
-```tsx showLineNumbers title="schema.ts"
-import { z } from "zod"
+```tsx showLineNumbers title="form.tsx"
+import * as z from "zod"
 
-export const formSchema = z.object({
+const formSchema = z.object({
   title: z
     .string()
     .min(5, "Bug title must be at least 5 characters.")
@@ -109,12 +110,14 @@ export const formSchema = z.object({
 
 Use the `useForm` hook from TanStack Form to create your form instance with Zod validation.
 
-```tsx showLineNumbers title="form.tsx" {1-2,4-6,8-18}
+```tsx showLineNumbers title="form.tsx" {10-21}
 import { useForm } from "@tanstack/react-form"
 import { toast } from "sonner"
-import { z } from "zod"
+import * as z from "zod"
 
-import { formSchema } from "./schema"
+const formSchema = z.object({
+  // ...
+})
 
 export function BugReportForm() {
   const form = useForm({
@@ -123,7 +126,7 @@ export function BugReportForm() {
       description: "",
     },
     validators: {
-      onChange: formSchema,
+      onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
       toast.success("Form submitted successfully")
@@ -134,8 +137,7 @@ export function BugReportForm() {
     <form
       onSubmit={(e) => {
         e.preventDefault()
-        e.stopPropagation()
-        void form.handleSubmit()
+        form.handleSubmit()
       }}
     >
       {/* ... */}
@@ -144,7 +146,7 @@ export function BugReportForm() {
 }
 ```
 
-**Note:** We use `validators: { onChange: formSchema }` to enable real-time validation as the user types.
+We are using `onSubmit` to validate the form data here. TanStack Form supports other validation modes, which you can read about in the [documentation](https://tanstack.com/form/latest/docs/framework/react/guides/dynamic-validation).
 
 ### Build the form
 
@@ -167,16 +169,21 @@ When you submit the form, the `onSubmit` function will be called with the valida
 
 TanStack Form validates your form data using the Zod schema. Validation happens in real-time as the user types.
 
-```tsx showLineNumbers title="form.tsx" {8-11}
+```tsx showLineNumbers title="form.tsx" {13-15}
 import { useForm } from "@tanstack/react-form"
 
-import { formSchema } from "./schema"
+const formSchema = z.object({
+  // ...
+})
 
 export function BugReportForm() {
   const form = useForm({
-    defaultValues: { title: "", description: "" },
+    defaultValues: {
+      title: "",
+      description: "",
+    },
     validators: {
-      onChange: formSchema,
+      onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
       console.log(value)
@@ -191,31 +198,39 @@ export function BugReportForm() {
 
 TanStack Form supports different validation strategies through the `validators` option:
 
-- `onChange` - Validation triggers on every change.
-- `onBlur` - Validation triggers on blur.
-- `onSubmit` - Validation triggers on submit.
-- `onMount` - Validation triggers on mount.
+| Mode         | Description                          |
+| ------------ | ------------------------------------ |
+| `"onChange"` | Validation triggers on every change. |
+| `"onBlur"`   | Validation triggers on blur.         |
+| `"onSubmit"` | Validation triggers on submit.       |
 
-```tsx showLineNumbers
+```tsx showLineNumbers title="form.tsx" {6-9}
 const form = useForm({
-  defaultValues: { title: "", description: "" },
+  defaultValues: {
+    title: "",
+    description: "",
+  },
   validators: {
-    onChange: formSchema, // Real-time validation
-    onBlur: formSchema, // Blur validation
-    onSubmit: formSchema, // Submit validation
+    onSubmit: formSchema,
+    onChange: formSchema,
+    onBlur: formSchema,
   },
 })
 ```
 
 ## Displaying Errors
 
-Display errors next to the field using `<FieldError />`. Make sure to add the `data-invalid` prop to the `<Field />` component and `aria-invalid` prop to the input.
+Display errors next to the field using `<FieldError />`. For styling and accessibility:
 
-```tsx showLineNumbers
+- Add the `data-invalid` prop to the `<Field />` component.
+- Add the `aria-invalid` prop to the form control such as `<Input />`, `<SelectTrigger />`, `<Checkbox />`, etc.
+
+```tsx showLineNumbers title="form.tsx" {4,18}
 <form.Field
   name="email"
   children={(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+
     return (
       <Field data-invalid={isInvalid}>
         <FieldLabel htmlFor={field.name}>Email</FieldLabel>
@@ -239,14 +254,16 @@ Display errors next to the field using `<FieldError />`. Make sure to add the `d
 
 ### Input
 
+- For input fields, use `field.state.value` and `field.handleChange` on the `<Input />` component.
+- To show errors, add the `aria-invalid` prop to the `<Input />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-tanstack-input"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
-For simple text inputs, use `field.state.value` and `field.handleChange`.
-
-```tsx showLineNumbers {6-14}
+```tsx showLineNumbers title="form.tsx" {6,11-14,22}
 <form.Field
   name="username"
   children={(field) => {
@@ -277,14 +294,16 @@ For simple text inputs, use `field.state.value` and `field.handleChange`.
 
 ### Textarea
 
+- For textarea fields, use `field.state.value` and `field.handleChange` on the `<Textarea />` component.
+- To show errors, add the `aria-invalid` prop to the `<Textarea />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-tanstack-textarea"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
-For textarea fields, use `field.state.value` and `field.handleChange`.
-
-```tsx showLineNumbers {6-14}
+```tsx showLineNumbers title="form.tsx" {6,13-16,24}
 <form.Field
   name="about"
   children={(field) => {
@@ -317,14 +336,16 @@ For textarea fields, use `field.state.value` and `field.handleChange`.
 
 ### Select
 
+- For select components, use `field.state.value` and `field.handleChange` on the `<Select />` component.
+- To show errors, add the `aria-invalid` prop to the `<SelectTrigger />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-tanstack-select"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
-For select components, use `field.state.value` and `field.handleChange`.
-
-```tsx showLineNumbers {6-12,14-24}
+```tsx showLineNumbers title="form.tsx" {6,18-19,23}
 <form.Field
   name="language"
   children={(field) => {
@@ -354,10 +375,7 @@ For select components, use `field.state.value` and `field.handleChange`.
           </SelectTrigger>
           <SelectContent position="item-aligned">
             <SelectItem value="auto">Auto</SelectItem>
-            <SelectSeparator />
             <SelectItem value="en">English</SelectItem>
-            <SelectItem value="es">Spanish</SelectItem>
-            <SelectItem value="fr">French</SelectItem>
           </SelectContent>
         </Select>
       </Field>
@@ -368,21 +386,25 @@ For select components, use `field.state.value` and `field.handleChange`.
 
 ### Checkbox
 
+- For checkbox, use `field.state.value` and `field.handleChange` on the `<Checkbox />` component.
+- To show errors, add the `aria-invalid` prop to the `<Checkbox />` component and the `data-invalid` prop to the `<Field />` component.
+- For checkbox arrays, use `mode="array"` on the `<form.Field />` component and TanStack Form's array helpers.
+- Remember to add `data-slot="checkbox-group"` to the `<FieldGroup />` component for proper styling and spacing.
+
 <ComponentPreview
   name="form-tanstack-checkbox"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
-For checkbox arrays, use `mode="array"` and TanStack Form's array helpers.
-
-```tsx showLineNumbers
+```tsx showLineNumbers title="form.tsx" {12,17,22-24,44}
 <form.Field
   name="tasks"
   mode="array"
   children={(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
-      <FieldSet data-invalid={isInvalid}>
+      <FieldSet>
         <FieldLegend variant="label">Tasks</FieldLegend>
         <FieldDescription>
           Get notified when tasks you&apos;ve created have updates.
@@ -428,20 +450,22 @@ For checkbox arrays, use `mode="array"` and TanStack Form's array helpers.
 
 ### Radio Group
 
+- For radio groups, use `field.state.value` and `field.handleChange` on the `<RadioGroup />` component.
+- To show errors, add the `aria-invalid` prop to the `<RadioGroupItem />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-tanstack-radiogroup"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
-For radio groups, use `field.state.value` and `field.handleChange`.
-
-```tsx showLineNumbers {6-9,11-15}
+```tsx showLineNumbers title="form.tsx" {21,29,35}
 <form.Field
   name="plan"
   children={(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
-      <FieldSet data-invalid={isInvalid}>
+      <FieldSet>
         <FieldLegend>Plan</FieldLegend>
         <FieldDescription>
           You can upgrade or downgrade your plan at any time.
@@ -450,7 +474,6 @@ For radio groups, use `field.state.value` and `field.handleChange`.
           name={field.name}
           value={field.state.value}
           onValueChange={field.handleChange}
-          aria-invalid={isInvalid}
         >
           {plans.map((plan) => (
             <FieldLabel
@@ -480,14 +503,16 @@ For radio groups, use `field.state.value` and `field.handleChange`.
 
 ### Switch
 
+- For switches, use `field.state.value` and `field.handleChange` on the `<Switch />` component.
+- To show errors, add the `aria-invalid` prop to the `<Switch />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-tanstack-switch"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[500px] sm:[&_pre]:!h-[500px]"
+  chromeLessOnMobile
 />
 
-For switches, use `field.state.value` and `field.handleChange`.
-
-```tsx showLineNumbers {6-16}
+```tsx showLineNumbers title="form.tsx" {6,14,19-21}
 <form.Field
   name="twoFactor"
   children={(field) => {
@@ -516,6 +541,16 @@ For switches, use `field.state.value` and `field.handleChange`.
 />
 ```
 
+### Complex Forms
+
+Here is an example of a more complex form with multiple fields and validation.
+
+<ComponentPreview
+  name="form-tanstack-complex"
+  className="sm:[&_.preview]:h-[1100px] sm:[&_pre]:!h-[1100px]"
+  chromeLessOnMobile
+/>
+
 ## Resetting the Form
 
 Use `form.reset()` to reset the form to its default values.
@@ -526,22 +561,14 @@ Use `form.reset()` to reset the form to its default values.
 </Button>
 ```
 
-## Complex Forms
-
-Here is an example of a more complex form with multiple fields and validation.
-
-<ComponentPreview
-  name="form-tanstack-complex"
-  className="[&_.preview]:h-[1100px] [&_pre]:!h-[1100px]"
-/>
-
 ## Array Fields
 
 TanStack Form provides powerful array field management with `mode="array"`. This allows you to dynamically add, remove, and update array items with full validation support.
 
 <ComponentPreview
   name="form-tanstack-array"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 This example demonstrates managing multiple email addresses with array fields. Users can add up to 5 email addresses, remove individual addresses, and each address is validated independently.
@@ -550,7 +577,7 @@ This example demonstrates managing multiple email addresses with array fields. U
 
 Use `mode="array"` on the parent field to enable array field management.
 
-```tsx showLineNumbers {2,6-8}
+```tsx showLineNumbers title="form.tsx" {3,12-14}
 <form.Field
   name="emails"
   mode="array"
@@ -576,7 +603,7 @@ Use `mode="array"` on the parent field to enable array field management.
 
 Access individual array items using bracket notation: `fieldName[index].propertyName`. This example uses `InputGroup` to display the remove button inline with the input.
 
-```tsx showLineNumbers {2,6-17}
+```tsx showLineNumbers title="form.tsx"
 <form.Field
   name={`emails[${index}].address`}
   children={(subField) => {
@@ -624,7 +651,7 @@ Access individual array items using bracket notation: `fieldName[index].property
 
 Use `field.pushValue(item)` to add items to an array field. You can disable the button when the array reaches its maximum length.
 
-```tsx showLineNumbers {4,5}
+```tsx showLineNumbers title="form.tsx"
 <Button
   type="button"
   variant="outline"
@@ -640,7 +667,7 @@ Use `field.pushValue(item)` to add items to an array field. You can disable the 
 
 Use `field.removeValue(index)` to remove items from an array field. You can conditionally show the remove button only when there's more than one item.
 
-```tsx showLineNumbers {1,3}
+```tsx showLineNumbers title="form.tsx"
 {
   field.state.value.length > 1 && (
     <InputGroupButton
@@ -657,7 +684,7 @@ Use `field.removeValue(index)` to remove items from an array field. You can cond
 
 Validate array fields using Zod's array methods.
 
-```tsx showLineNumbers {3-10}
+```tsx showLineNumbers title="form.tsx"
 const formSchema = z.object({
   emails: z
     .array(

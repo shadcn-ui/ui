@@ -58,12 +58,12 @@ export default function FormTanstackRadioGroup() {
       plan: "",
     },
     validators: {
-      onChange: formSchema,
+      onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] rounded-md p-4">
+          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -79,7 +79,7 @@ export default function FormTanstackRadioGroup() {
   })
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Subscription Plan</CardTitle>
         <CardDescription>
@@ -91,8 +91,7 @@ export default function FormTanstackRadioGroup() {
           id="form-tanstack-radiogroup"
           onSubmit={(e) => {
             e.preventDefault()
-            e.stopPropagation()
-            void form.handleSubmit()
+            form.handleSubmit()
           }}
         >
           <FieldGroup>
@@ -102,7 +101,7 @@ export default function FormTanstackRadioGroup() {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <FieldSet data-invalid={isInvalid}>
+                  <FieldSet>
                     <FieldLegend>Plan</FieldLegend>
                     <FieldDescription>
                       You can upgrade or downgrade your plan at any time.
@@ -111,7 +110,6 @@ export default function FormTanstackRadioGroup() {
                       name={field.name}
                       value={field.state.value}
                       onValueChange={field.handleChange}
-                      aria-invalid={isInvalid}
                     >
                       {plans.map((plan) => (
                         <FieldLabel

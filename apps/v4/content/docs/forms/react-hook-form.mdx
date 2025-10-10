@@ -22,7 +22,8 @@ We are going to build the following form. It has a simple text input and a texta
 
 <ComponentPreview
   name="form-rhf-demo"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 ## Approach
@@ -220,9 +221,13 @@ Display errors next to the field using `<FieldError />`. **Make sure to add the 
 
 ### Input
 
+- For input fields, spread the `field` object onto the `<Input />` component.
+- To show errors, add the `aria-invalid` prop to the `<Input />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-rhf-input"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 For simple text inputs, spread the `field` object onto the input.
@@ -243,9 +248,13 @@ For simple text inputs, spread the `field` object onto the input.
 
 ### Textarea
 
+- For textarea fields, spread the `field` object onto the `<Textarea />` component.
+- To show errors, add the `aria-invalid` prop to the `<Textarea />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-rhf-textarea"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 For textarea fields, spread the `field` object onto the textarea.
@@ -276,9 +285,13 @@ For textarea fields, spread the `field` object onto the textarea.
 
 ### Select
 
+- For select components, use `field.value` and `field.onChange` on the `<Select />` component.
+- To show errors, add the `aria-invalid` prop to the `<SelectTrigger />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-rhf-select"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 For select components, use `value` and `onValueChange`. To show errors, add the `aria-invalid` prop to the `<SelectTrigger />` component.
@@ -325,9 +338,13 @@ For select components, use `value` and `onValueChange`. To show errors, add the 
 
 ### Checkbox
 
+- For checkbox arrays, use `field.value` and `field.onChange` with array manipulation.
+- To show errors, add the `aria-invalid` prop to the `<Checkbox />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-rhf-checkbox"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 For checkboxes, use the `checked` state and `onCheckedChange` event.
@@ -378,9 +395,13 @@ For checkboxes, use the `checked` state and `onCheckedChange` event.
 
 ### Radio Group
 
+- For radio groups, use `field.value` and `field.onChange` on the `<RadioGroup />` component.
+- To show errors, add the `aria-invalid` prop to the `<RadioGroup />` component and the `data-invalid` prop to the `<FieldSet />` component.
+
 <ComponentPreview
   name="form-rhf-radiogroup"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 For radio groups, use `value` and `onValueChange`. To show errors, add the `aria-invalid` prop to the `<RadioGroup />` component.
@@ -425,9 +446,13 @@ For radio groups, use `value` and `onValueChange`. To show errors, add the `aria
 
 ### Switch
 
+- For switches, use `field.value` and `field.onChange` on the `<Switch />` component.
+- To show errors, add the `aria-invalid` prop to the `<Switch />` component and the `data-invalid` prop to the `<Field />` component.
+
 <ComponentPreview
   name="form-rhf-switch"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 For switches, use `checked` and `onCheckedChange`.
@@ -475,19 +500,22 @@ Here is an example of a more complex form with multiple fields and validation.
 
 <ComponentPreview
   name="form-rhf-complex"
-  className="[&_.preview]:h-[1300px] [&_pre]:!h-[1300px]"
+  className="sm:[&_.preview]:h-[1300px] sm:[&_pre]:!h-[1300px]"
+  chromeLessOnMobile
 />
 
 <ComponentPreview
   name="form-rhf-password"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 ## Array Fields
 
 <ComponentPreview
   name="form-rhf-array"
-  className="[&_.preview]:h-[700px] [&_pre]:!h-[700px]"
+  className="sm:[&_.preview]:h-[700px] sm:[&_pre]:!h-[700px]"
+  chromeLessOnMobile
 />
 
 React Hook Form provides a `useFieldArray` hook for managing dynamic array fields. This is useful when you need to add or remove fields dynamically.

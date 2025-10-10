@@ -63,7 +63,7 @@ export default function FormRhfSelect() {
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] rounded-md p-4">
+        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -78,7 +78,7 @@ export default function FormRhfSelect() {
   }
 
   return (
-    <Card className="w-full max-w-lg">
+    <Card className="w-full sm:max-w-lg">
       <CardHeader>
         <CardTitle>Language Preferences</CardTitle>
         <CardDescription>
