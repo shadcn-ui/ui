@@ -37,7 +37,7 @@ function getItems(
   if (node.type === "paragraph") {
     visit(node, (item: UnistNode) => {
       if (item.type === "link") {
-        current.url = (item as any).url
+        current.url = item.url
         current.title = flattenNode(node)
       }
 
