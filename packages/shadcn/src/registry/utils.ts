@@ -278,13 +278,16 @@ export function isUniversalRegistryItem(
     | null
     | undefined
 ): boolean {
-  return (
-    !!registryItem?.files?.length &&
-    registryItem.files.every(
-      (file) =>
-        !!file.target &&
-        (file.type === "registry:file" || file.type === "registry:item")
-    )
+  if (!registryItem) {
+    return false
+  }
+
+  const files = registryItem.files ?? []
+
+  return files.every(
+    (file) =>
+      !!file.target &&
+      (file.type === "registry:file" || file.type === "registry:item")
   )
 }
 
