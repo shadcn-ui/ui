@@ -29,6 +29,7 @@ Select your MCP client and follow the instructions to configure the shadcn MCP s
     <TabsTrigger value="cursor">Cursor</TabsTrigger>
     <TabsTrigger value="vscode">VS Code</TabsTrigger>
     <TabsTrigger value="codex">Codex</TabsTrigger>
+    <TabsTrigger value="opencode">OpenCode</TabsTrigger>
   </TabsList>
   <TabsContent value="claude" className="mt-4">
     **Run the following command** in your project:
@@ -90,6 +91,19 @@ Select your MCP client and follow the instructions to configure the shadcn MCP s
        ```
 
     **Restart Codex** and try the following prompts:
+       - Show me all available components in the shadcn registry
+       - Add the button, dialog and card components to my project
+       - Create a contact form using components from the shadcn registry
+
+  </TabsContent>
+
+  <TabsContent value="opencode" className="mt-4">
+    **Run the following command** in your project:
+       ```bash
+       npx shadcn@latest mcp init --client opencode
+       ```
+
+    **Restart OpenCode** and try the following prompts:
        - Show me all available components in the shadcn registry
        - Add the button, dialog and card components to my project
        - Create a contact form using components from the shadcn registry

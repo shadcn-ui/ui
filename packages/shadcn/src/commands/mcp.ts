@@ -68,6 +68,21 @@ command = "npx"
 args = ["shadcn@${SHADCN_MCP_VERSION}", "mcp"]
 `,
   },
+  {
+    name: "opencode",
+    label: "OpenCode",
+    configPath: "opencode.json",
+    config: {
+      "$schema": "https://opencode.ai/config.json",
+      "mcp": {
+        "shadcn": {
+          "type": "local",
+          "command": ["npx", `shadcn@${SHADCN_MCP_VERSION}`, "mcp"],
+          "enabled": true,
+        },
+      },
+    },
+  },
 ] as const
 
 const DEPENDENCIES = [`shadcn@${SHADCN_MCP_VERSION}`]
@@ -92,7 +107,7 @@ export const mcp = new Command()
   })
 
 const mcpInitOptionsSchema = z.object({
-  client: z.enum(["claude", "cursor", "vscode", "codex"]),
+  client: z.enum(["claude", "cursor", "vscode", "codex", "opencode"]),
   cwd: z.string(),
 })
 
