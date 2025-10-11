@@ -5,6 +5,7 @@ export interface UnistNode extends Node {
   name?: string
   tagName?: string
   value?: string
+  url?: string
   properties?: {
     __rawString__?: string
     __className__?: string
