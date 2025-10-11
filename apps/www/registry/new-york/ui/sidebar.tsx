@@ -461,8 +461,11 @@ SidebarGroupLabel.displayName = "SidebarGroupLabel"
 
 const SidebarGroupAction = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<"button"> & { asChild?: boolean }
->(({ className, asChild = false, ...props }, ref) => {
+  React.ComponentProps<"button"> & { 
+    asChild?: boolean;
+    absolute?: boolean;
+  }
+>(({ className, asChild = false, absolute = true, ...props }, ref) => {
   const Comp = asChild ? Slot : "button"
 
   return (
@@ -470,10 +473,11 @@ const SidebarGroupAction = React.forwardRef<
       ref={ref}
       data-sidebar="group-action"
       className={cn(
-        "absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         // Increases the hit area of the button on mobile.
         "after:absolute after:-inset-2 after:md:hidden",
         "group-data-[collapsible=icon]:hidden",
+        absolute && "absolute right-3 top-3.5",
         className
       )}
       {...props}
@@ -481,6 +485,24 @@ const SidebarGroupAction = React.forwardRef<
   )
 })
 SidebarGroupAction.displayName = "SidebarGroupAction"
+
+const SidebarGroupActions = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<"div">
+>(({ className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      data-sidebar="group-actions"
+      className={cn(
+        "absolute right-3 top-3.5 flex items-center space-x-2",
+        className
+      )}
+      {...props}
+    />
+  )
+})
+SidebarGroupActions.displayName = "SidebarGroupActions"
 
 const SidebarGroupContent = React.forwardRef<
   HTMLDivElement,
@@ -751,6 +773,7 @@ export {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupAction,
+  SidebarGroupActions,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
