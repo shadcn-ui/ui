@@ -189,9 +189,18 @@ async function createNextProject(
     )
   } catch (error) {
     logger.break()
-    logger.error(
-      `Something went wrong creating a new Next.js project. Please try again.`
-    )
+    logger.error(`Something went wrong creating a new Next.js project. Please try again.`)
+
+    if (error && typeof error === 'object' && 'stderr' in error) {
+      const execaError = error as any
+      const errorMessage = execaError.stderr || execaError.stdout || execaError.message
+      if (errorMessage) {
+        logger.error(errorMessage.trim())
+      }
+    } else if (error instanceof Error) {
+      logger.error(error.message)
+    }
+
     process.exit(1)
   }
 
