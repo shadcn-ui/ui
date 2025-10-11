@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { type DialogProps } from "@radix-ui/react-dialog"
 import { IconArrowRight } from "@tabler/icons-react"
 import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
+import { useCommandState } from "cmdk"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
 import { showMcpDocs } from "@/lib/flags"
@@ -361,6 +362,8 @@ function CommandMenuItem({
   "aria-selected"?: string
 }) {
   const ref = React.useRef<HTMLDivElement>(null)
+
+  useCommandState((state) => state.search)
 
   useMutationObserver(ref, (mutations) => {
     mutations.forEach((mutation) => {
