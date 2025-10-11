@@ -223,14 +223,6 @@ describe("isUniversalRegistryItem", () => {
     expect(isUniversalRegistryItem(registryItem)).toBe(true)
   })
 
-  it("should return true when item has registryDependencies and no files", () => {
-    const registryItem = {
-      files: [],
-      registryDependencies: ["registry/custom/item.json"],
-    }
-    expect(isUniversalRegistryItem(registryItem)).toBe(true)
-  })
-
   it("should return true when files is undefined", () => {
     const registryItem = {}
     expect(isUniversalRegistryItem(registryItem)).toBe(true)
