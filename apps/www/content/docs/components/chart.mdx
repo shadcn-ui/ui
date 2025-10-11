@@ -487,6 +487,19 @@ const chartData = [
 ]
 ```
 
+### Grids
+
+For theming of cartesian grids, you must pass in the default values to override it with tailwind classes:
+
+```tsx
+<CartesianGrid
+  stroke={"#000000"}
+  strokeOpacity={1}
+  vertical={false}
+  className="stroke-black/50 dark:stroke-white/50"
+/>
+```
+
 #### Tailwind
 
 ```tsx
