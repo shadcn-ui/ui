@@ -63,3 +63,33 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
 ```
+
+## Examples
+
+### With conditional image loading
+
+```tsx
+<Avatar>
+  {user?.image && <AvatarImage src={user.image} alt={user.name} />}
+  <AvatarFallback>
+    {user?.name ? user.name.charAt(0).toUpperCase() : "?"}
+  </AvatarFallback>
+</Avatar>
+```
+
+### With error handling
+
+```tsx
+<Avatar>
+  <AvatarImage 
+    src={user?.image || ""} 
+    alt={user?.name}
+    onError={(e) => {
+      console.log("Failed to load image", e);
+    }}
+  />
+  <AvatarFallback>
+    {user?.name ? user.name.charAt(0).toUpperCase() : "?"}
+  </AvatarFallback>
+</Avatar>
+```

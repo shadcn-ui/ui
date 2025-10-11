@@ -99,3 +99,16 @@ import { toast } from "sonner"
 ```tsx
 toast("Event has been created.")
 ```
+
+## Examples
+
+### With testId for testing
+
+```tsx
+<Toaster testId="toast-container" />
+```
+
+```tsx
+// In your tests
+const toastContainer = screen.getByTestId("toast-container")
+```
