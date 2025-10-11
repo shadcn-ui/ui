@@ -1459,6 +1459,25 @@ export const Index: Record<string, any> = {
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
     },
+    "login-06": {
+      name: "login-06",
+      description: "A two column login page with a cover image.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/new-york/blocks/login-06/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/new-york/blocks/login-06/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["authentication","login"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/login-06/page.tsx")),
+      source: "__registry__/new-york/blocks/login-06/page.tsx",
+      meta: undefined,
+    },
     "calendar-01": {
       name: "calendar-01",
       description: "A simple calendar.",
@@ -7417,6 +7436,25 @@ export const Index: Record<string, any> = {
       categories: ["authentication","login"],
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
+      meta: undefined,
+    },
+    "login-06": {
+      name: "login-06",
+      description: "A two column login page with a cover image.",
+      type: "registry:block",
+      registryDependencies: ["button","card","input","label"],
+      files: [{
+        path: "registry/default/blocks/login-06/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/default/blocks/login-06/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["authentication","login"],
+      component: React.lazy(() => import("@/registry/default/blocks/login-06/page.tsx")),
+      source: "__registry__/default/blocks/login-06/page.tsx",
       meta: undefined,
     },
     "calendar-01": {
