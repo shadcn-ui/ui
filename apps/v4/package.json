@@ -83,6 +83,7 @@
     "react": "19.1.0",
     "react-day-picker": "^9.7.0",
     "react-dom": "19.1.0",
+    "react-focus-lock": "^2.13.6",
     "react-hook-form": "^7.62.0",
     "react-resizable-panels": "^2.1.7",
     "react-textarea-autosize": "^8.5.9",
