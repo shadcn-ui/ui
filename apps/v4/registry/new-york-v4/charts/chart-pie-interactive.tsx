@@ -109,7 +109,7 @@ export function ChartPieInteractive() {
                 >
                   <div className="flex items-center gap-2 text-xs">
                     <span
-                      className="flex h-3 w-3 shrink-0 rounded-xs"
+                      className="flex size-3 shrink-0 rounded-xs"
                       style={{
                         backgroundColor: `var(--color-${key})`,
                       }}

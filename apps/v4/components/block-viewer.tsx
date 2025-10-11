@@ -392,7 +392,7 @@ function Tree({ item, index }: { item: FileTree; index: number }) {
           }
         >
           <ChevronRight className="invisible" />
-          <File className="h-4 w-4" />
+          <File className="size-4" />
           {item.name}
         </SidebarMenuButton>
       </SidebarMenuItem>

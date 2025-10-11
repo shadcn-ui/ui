@@ -81,7 +81,7 @@ export default function DrawerDemo() {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
+                className="size-8 shrink-0 rounded-full"
                 onClick={() => onClick(-10)}
                 disabled={goal <= 200}
               >
@@ -99,7 +99,7 @@ export default function DrawerDemo() {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 shrink-0 rounded-full"
+                className="size-8 shrink-0 rounded-full"
                 onClick={() => onClick(10)}
                 disabled={goal >= 400}
               >

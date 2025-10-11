@@ -33,7 +33,7 @@ export function ChartToolbar({
           event="copy_chart_code"
           name={chart.name}
           code={chart.files?.[0]?.content ?? ""}
-          className="[&_svg]-h-3 text-foreground hover:bg-muted dark:text-foreground h-6 w-6 rounded-[6px] bg-transparent shadow-none [&_svg]:w-3"
+          className="[&_svg]-h-3 text-foreground hover:bg-muted dark:text-foreground size-6 rounded-[6px] bg-transparent shadow-none [&_svg]:w-3"
         />
         <Separator
           orientation="vertical"

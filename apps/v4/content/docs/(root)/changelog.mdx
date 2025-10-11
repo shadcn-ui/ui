@@ -954,7 +954,7 @@ If you have a [v0](https://v0.dev) account, you can use the **Edit in v0** featu
     viewBox="0 0 40 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="text-foreground h-40 w-40"
+    className="text-foreground size-40"
   >
     <path
       d="M23.3919 0H32.9188C36.7819 0 39.9136 3.13165 39.9136 6.99475V16.0805H36.0006V6.99475C36.0006 6.90167 35.9969 6.80925 35.9898 6.71766L26.4628 16.079C26.4949 16.08 26.5272 16.0805 26.5595 16.0805H36.0006V19.7762H26.5595C22.6964 19.7762 19.4788 16.6139 19.4788 12.7508V3.68923H23.3919V12.7508C23.3919 12.9253 23.4054 13.0977 23.4316 13.2668L33.1682 3.6995C33.0861 3.6927 33.003 3.68923 32.9188 3.68923H23.3919V0Z"
@@ -1403,7 +1403,7 @@ const buttonVariants = cva({
       default: "h-10 px-4 py-2",
       sm: "h-9 rounded-md px-3",
       lg: "h-11 rounded-md px-8",
-      icon: "h-10 w-10",
+      icon: "size-10",
     },
   },
 })
@@ -1487,8 +1487,8 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none">
-        <X className="h-4 w-4" />
+      <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none">
+        <X className="size-4" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
     </SheetPrimitive.Content>
