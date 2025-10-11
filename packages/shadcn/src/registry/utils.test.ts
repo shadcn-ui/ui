@@ -216,16 +216,24 @@ describe("isUniversalRegistryItem", () => {
     expect(isUniversalRegistryItem(registryItem)).toBe(false)
   })
 
-  it("should return false when files array is empty", () => {
+  it("should return true when files array is empty", () => {
     const registryItem = {
       files: [],
     }
-    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+    expect(isUniversalRegistryItem(registryItem)).toBe(true)
   })
 
-  it("should return false when files is undefined", () => {
+  it("should return true when item has registryDependencies and no files", () => {
+    const registryItem = {
+      files: [],
+      registryDependencies: ["registry/custom/item.json"],
+    }
+    expect(isUniversalRegistryItem(registryItem)).toBe(true)
+  })
+
+  it("should return true when files is undefined", () => {
     const registryItem = {}
-    expect(isUniversalRegistryItem(registryItem)).toBe(false)
+    expect(isUniversalRegistryItem(registryItem)).toBe(true)
   })
 
   it("should return false when registryItem is null", () => {
