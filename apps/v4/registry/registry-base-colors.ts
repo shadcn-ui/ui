@@ -751,6 +751,195 @@ export const baseColors = [
       },
     },
   },
+  {
+    name: "amber",
+    label: "Amber",
+    activeColor: {
+      light: "47.9 95.8% 53.1%",
+      dark: "47.9 95.8% 53.1%",
+    },
+    cssVars: {
+      light: {
+        background: "0 0% 100%",
+        foreground: "20 14.3% 4.1%",
+        card: "0 0% 100%",
+        "card-foreground": "20 14.3% 4.1%",
+        popover: "0 0% 100%",
+        "popover-foreground": "20 14.3% 4.1%",
+        primary: "47.9 95.8% 53.1%",
+        "primary-foreground": "26 83.3% 14.1%",
+        secondary: "60 4.8% 95.9%",
+        "secondary-foreground": "24 9.8% 10%",
+        muted: "60 4.8% 95.9%",
+        "muted-foreground": "25 5.3% 44.7%",
+        accent: "60 4.8% 95.9%",
+        "accent-foreground": "24 9.8% 10%",
+        destructive: "0 84.2% 60.2%",
+        "destructive-foreground": "60 9.1% 97.8%",
+        border: "20 5.9% 90%",
+        input: "20 5.9% 90%",
+        ring: "20 14.3% 4.1%",
+        radius: "0.5rem",
+        "chart-1": "55.5 91.7% 64.9%",
+        "chart-2": "47.9 95.8% 53.1%",
+        "chart-3": "40.6 96.1% 40%",
+        "chart-4": "35.5 91.7% 32.9%",
+        "chart-5": "31.8 94.5% 25.1%",
+      },
+      dark: {
+        background: "20 14.3% 4.1%",
+        foreground: "60 9.1% 97.8%",
+        card: "20 14.3% 4.1%",
+        "card-foreground": "60 9.1% 97.8%",
+        popover: "20 14.3% 4.1%",
+        "popover-foreground": "60 9.1% 97.8%",
+        primary: "47.9 95.8% 53.1%",
+        "primary-foreground": "26 83.3% 14.1%",
+        secondary: "12 6.5% 15.1%",
+        "secondary-foreground": "60 9.1% 97.8%",
+        muted: "12 6.5% 15.1%",
+        "muted-foreground": "24 5.4% 63.9%",
+        accent: "12 6.5% 15.1%",
+        "accent-foreground": "60 9.1% 97.8%",
+        destructive: "0 62.8% 30.6%",
+        "destructive-foreground": "60 9.1% 97.8%",
+        border: "12 6.5% 15.1%",
+        input: "12 6.5% 15.1%",
+        ring: "35.5 91.7% 32.9%",
+        "chart-1": "220 70% 50%",
+        "chart-2": "160 60% 45%",
+        "chart-3": "30 80% 55%",
+        "chart-4": "280 65% 60%",
+        "chart-5": "340 75% 55%",
+      },
+    },
+  },
+  {
+    name: "purple",
+    label: "Purple",
+    activeColor: {
+      light: "262.1 83.3% 57.8%",
+      dark: "263.4 70% 50.4%",
+    },
+    cssVars: {
+      light: {
+        background: "0 0% 100%",
+        foreground: "224 71.4% 4.1%",
+        card: "0 0% 100%",
+        "card-foreground": "224 71.4% 4.1%",
+        popover: "0 0% 100%",
+        "popover-foreground": "224 71.4% 4.1%",
+        primary: "262.1 83.3% 57.8%",
+        "primary-foreground": "210 20% 98%",
+        secondary: "220 14.3% 95.9%",
+        "secondary-foreground": "220.9 39.3% 11%",
+        muted: "220 14.3% 95.9%",
+        "muted-foreground": "220 8.9% 46.1%",
+        accent: "220 14.3% 95.9%",
+        "accent-foreground": "220.9 39.3% 11%",
+        destructive: "0 84.2% 60.2%",
+        "destructive-foreground": "210 20% 98%",
+        border: "220 13% 91%",
+        input: "220 13% 91%",
+        ring: "262.1 83.3% 57.8%",
+        radius: "0.5rem",
+        "chart-1": "262 63% 77%",
+        "chart-2": "262.1 83.3% 57.8%",
+        "chart-3": "263.4 70% 50.4%",
+        "chart-4": "264 67% 42%",
+        "chart-5": "264 69% 35%",
+      },
+      dark: {
+        background: "224 71.4% 4.1%",
+        foreground: "210 20% 98%",
+        card: "224 71.4% 4.1%",
+        "card-foreground": "210 20% 98%",
+        popover: "224 71.4% 4.1%",
+        "popover-foreground": "210 20% 98%",
+        primary: "263.4 70% 50.4%",
+        "primary-foreground": "210 20% 98%",
+        secondary: "215 27.9% 16.9%",
+        "secondary-foreground": "210 20% 98%",
+        muted: "215 27.9% 16.9%",
+        "muted-foreground": "217.9 10.6% 64.9%",
+        accent: "215 27.9% 16.9%",
+        "accent-foreground": "210 20% 98%",
+        destructive: "0 62.8% 30.6%",
+        "destructive-foreground": "210 20% 98%",
+        border: "215 27.9% 16.9%",
+        input: "215 27.9% 16.9%",
+        ring: "263.4 70% 50.4%",
+        "chart-1": "220 70% 50%",
+        "chart-2": "160 60% 45%",
+        "chart-3": "30 80% 55%",
+        "chart-4": "280 65% 60%",
+        "chart-5": "340 75% 55%",
+      },
+    },
+  },
+  {
+    name: "teal",
+    label: "Teal",
+    activeColor: {
+      light: "172.5 66% 50.6%",
+      dark: "172.5 66% 50.6%",
+    },
+    cssVars: {
+      light: {
+        background: "0 0% 100%",
+        foreground: "222.2 84% 4.9%",
+        card: "0 0% 100%",
+        "card-foreground": "222.2 84% 4.9%",
+        popover: "0 0% 100%",
+        "popover-foreground": "222.2 84% 4.9%",
+        primary: "172.5 66% 50.6%",
+        "primary-foreground": "166 23% 94.9%",
+        secondary: "210 40% 96.1%",
+        "secondary-foreground": "222.2 47.4% 11.2%",
+        muted: "210 40% 96.1%",
+        "muted-foreground": "215.4 16.3% 46.9%",
+        accent: "210 40% 96.1%",
+        "accent-foreground": "222.2 47.4% 11.2%",
+        destructive: "0 84.2% 60.2%",
+        "destructive-foreground": "210 40% 98%",
+        border: "214.3 31.8% 91.4%",
+        input: "214.3 31.8% 91.4%",
+        ring: "172.5 66% 50.6%",
+        radius: "0.5rem",
+        "chart-1": "172 66% 70%",
+        "chart-2": "172.5 66% 50.6%",
+        "chart-3": "174 62% 40%",
+        "chart-4": "175 60% 33%",
+        "chart-5": "176 61% 24%",
+      },
+      dark: {
+        background: "222.2 84% 4.9%",
+        foreground: "210 40% 98%",
+        card: "222.2 84% 4.9%",
+        "card-foreground": "210 40% 98%",
+        popover: "222.2 84% 4.9%",
+        "popover-foreground": "210 40% 98%",
+        primary: "172.5 66% 50.6%",
+        "primary-foreground": "166 23% 94.9%",
+        secondary: "217.2 32.6% 17.5%",
+        "secondary-foreground": "210 40% 98%",
+        muted: "217.2 32.6% 17.5%",
+        "muted-foreground": "215 20.2% 65.1%",
+        accent: "217.2 32.6% 17.5%",
+        "accent-foreground": "210 40% 98%",
+        destructive: "0 62.8% 30.6%",
+        "destructive-foreground": "210 40% 98%",
+        border: "217.2 32.6% 17.5%",
+        input: "217.2 32.6% 17.5%",
+        ring: "172.5 66% 50.6%",
+        "chart-1": "220 70% 50%",
+        "chart-2": "160 60% 45%",
+        "chart-3": "30 80% 55%",
+        "chart-4": "280 65% 60%",
+        "chart-5": "340 75% 55%",
+      },
+    },
+  },
 ] as const
 
 export type BaseColor = (typeof baseColors)[number]
@@ -1099,6 +1288,489 @@ export const baseColorsV4 = {
       "sidebar-accent-foreground": "oklch(0.984 0.003 247.858)", // --color-slate-50
       "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white
       "sidebar-ring": "oklch(0.551 0.027 264.364)", // --color-slate-500
+    },
+  },
+  blue: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.545 0.243 264.376)", // --color-blue-600
+      "primary-foreground": "oklch(0.987 0.007 247.105)", // --color-blue-50
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.712 0.185 257.623)", // --color-blue-400
+      "chart-1": "oklch(0.816 0.121 235.633)", // --color-blue-300
+      "chart-2": "oklch(0.602 0.214 262.881)", // --color-blue-500
+      "chart-3": "oklch(0.545 0.243 264.376)", // --color-blue-600
+      "chart-4": "oklch(0.488 0.243 264.376)", // --color-blue-700
+      "chart-5": "oklch(0.421 0.216 264.064)", // --color-blue-800
+      radius: "0.625rem",
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.545 0.243 264.376)", // --color-blue-600
+      "sidebar-primary-foreground": "oklch(0.987 0.007 247.105)", // --color-blue-50
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.712 0.185 257.623)", // --color-blue-400
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.602 0.214 262.881)", // --color-blue-500
+      "primary-foreground": "oklch(0.987 0.007 247.105)", // --color-blue-50
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.299 0.13 269.384)", // --color-blue-900
+      "chart-1": "oklch(0.816 0.121 235.633)", // --color-blue-300
+      "chart-2": "oklch(0.602 0.214 262.881)", // --color-blue-500
+      "chart-3": "oklch(0.545 0.243 264.376)", // --color-blue-600
+      "chart-4": "oklch(0.488 0.243 264.376)", // --color-blue-700
+      "chart-5": "oklch(0.421 0.216 264.064)", // --color-blue-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.602 0.214 262.881)", // --color-blue-500
+      "sidebar-primary-foreground": "oklch(0.987 0.007 247.105)", // --color-blue-50
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.299 0.13 269.384)", // --color-blue-900
+    },
+  },
+  green: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.743 0.213 131.526)", // --color-lime-600
+      "primary-foreground": "oklch(0.986 0.021 120.575)", // --color-lime-50
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.847 0.171 134.399)", // --color-lime-400
+      "chart-1": "oklch(0.838 0.12 166.277)", // --color-green-300
+      "chart-2": "oklch(0.696 0.17 162.48)", // --color-green-500
+      "chart-3": "oklch(0.601 0.168 163.276)", // --color-green-600
+      "chart-4": "oklch(0.518 0.143 162.849)", // --color-green-700
+      "chart-5": "oklch(0.427 0.115 163.224)", // --color-green-800
+      radius: "0.625rem",
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.743 0.213 131.526)", // --color-lime-600
+      "sidebar-primary-foreground": "oklch(0.986 0.021 120.575)", // --color-lime-50
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.847 0.171 134.399)", // --color-lime-400
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.743 0.213 131.526)", // --color-lime-600
+      "primary-foreground": "oklch(0.986 0.021 120.575)", // --color-lime-50
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.456 0.157 128.248)", // --color-lime-900
+      "chart-1": "oklch(0.838 0.12 166.277)", // --color-green-300
+      "chart-2": "oklch(0.696 0.17 162.48)", // --color-green-500
+      "chart-3": "oklch(0.601 0.168 163.276)", // --color-green-600
+      "chart-4": "oklch(0.518 0.143 162.849)", // --color-green-700
+      "chart-5": "oklch(0.427 0.115 163.224)", // --color-green-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.795 0.206 131.687)", // --color-lime-500
+      "sidebar-primary-foreground": "oklch(0.986 0.021 120.575)", // --color-lime-50
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.456 0.157 128.248)", // --color-lime-900
+    },
+  },
+  amber: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.716 0.191 70.077)", // --color-amber-600
+      "primary-foreground": "oklch(0.987 0.022 90.58)", // --color-amber-50
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.828 0.189 84.429)", // --color-amber-400
+      "chart-1": "oklch(0.869 0.158 95.552)", // --color-amber-300
+      "chart-2": "oklch(0.769 0.188 70.08)", // --color-amber-500
+      "chart-3": "oklch(0.716 0.191 70.077)", // --color-amber-600
+      "chart-4": "oklch(0.642 0.176 65.755)", // --color-amber-700
+      "chart-5": "oklch(0.555 0.161 63.276)", // --color-amber-800
+      radius: "0.625rem",
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.716 0.191 70.077)", // --color-amber-600
+      "sidebar-primary-foreground": "oklch(0.987 0.022 90.58)", // --color-amber-50
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.828 0.189 84.429)", // --color-amber-400
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.769 0.188 70.08)", // --color-amber-500
+      "primary-foreground": "oklch(0.987 0.022 90.58)", // --color-amber-50
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.421 0.095 57.708)", // --color-amber-900
+      "chart-1": "oklch(0.869 0.158 95.552)", // --color-amber-300
+      "chart-2": "oklch(0.769 0.188 70.08)", // --color-amber-500
+      "chart-3": "oklch(0.716 0.191 70.077)", // --color-amber-600
+      "chart-4": "oklch(0.642 0.176 65.755)", // --color-amber-700
+      "chart-5": "oklch(0.555 0.161 63.276)", // --color-amber-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.769 0.188 70.08)", // --color-amber-500
+      "sidebar-primary-foreground": "oklch(0.987 0.022 90.58)", // --color-amber-50
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.421 0.095 57.708)", // --color-amber-900
+    },
+  },
+  rose: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.645 0.246 16.439)", // --color-rose-500 (approx HSL 346.8 77.2% 49.8%)
+      "primary-foreground": "oklch(0.969 0.015 12.422)", // --color-rose-50 (approx HSL 355.7 100% 97.3%)
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.645 0.246 16.439)", // --color-rose-500 (approx HSL 346.8 77.2% 49.8%)
+      "chart-1": "oklch(0.804 0.188 17.264)", // --color-rose-300
+      "chart-2": "oklch(0.645 0.246 16.439)", // --color-rose-500
+      "chart-3": "oklch(0.583 0.244 20.513)", // --color-rose-600
+      "chart-4": "oklch(0.514 0.216 21.028)", // --color-rose-700
+      "chart-5": "oklch(0.422 0.183 19.004)", // --color-rose-800
+      radius: "0.625rem",
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.645 0.246 16.439)", // --color-rose-500 (approx HSL 346.8 77.2% 49.8%)
+      "sidebar-primary-foreground": "oklch(0.969 0.015 12.422)", // --color-rose-50 (approx HSL 355.7 100% 97.3%)
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.645 0.246 16.439)", // --color-rose-500 (approx HSL 346.8 77.2% 49.8%)
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.645 0.246 16.439)", // --color-rose-500 (approx HSL 346.8 77.2% 49.8%)
+      "primary-foreground": "oklch(0.969 0.015 12.422)", // --color-rose-50 (approx HSL 355.7 100% 97.3%)
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.645 0.246 16.439)", // --color-rose-500 (approx HSL 346.8 77.2% 49.8%)
+      "chart-1": "oklch(0.804 0.188 17.264)", // --color-rose-300
+      "chart-2": "oklch(0.645 0.246 16.439)", // --color-rose-500
+      "chart-3": "oklch(0.583 0.244 20.513)", // --color-rose-600
+      "chart-4": "oklch(0.514 0.216 21.028)", // --color-rose-700
+      "chart-5": "oklch(0.422 0.183 19.004)", // --color-rose-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.645 0.246 16.439)", // --color-rose-500 (approx HSL 346.8 77.2% 49.8%)
+      "sidebar-primary-foreground": "oklch(0.969 0.015 12.422)", // --color-rose-50 (approx HSL 355.7 100% 97.3%)
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.645 0.246 16.439)", // --color-rose-500 (approx HSL 346.8 77.2% 49.8%)
+    },
+  },
+  purple: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.561 0.265 303.828)", // --color-purple-600
+      "primary-foreground": "oklch(0.979 0.01 302.712)", // --color-purple-50
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.706 0.221 303.007)", // --color-purple-400
+      "chart-1": "oklch(0.826 0.137 302.594)", // --color-purple-300
+      "chart-2": "oklch(0.627 0.265 303.9)", // --color-purple-500
+      "chart-3": "oklch(0.561 0.265 303.828)", // --color-purple-600
+      "chart-4": "oklch(0.496 0.249 303.659)", // --color-purple-700
+      "chart-5": "oklch(0.433 0.217 303.087)", // --color-purple-800
+      radius: "0.625rem",
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.561 0.265 303.828)", // --color-purple-600
+      "sidebar-primary-foreground": "oklch(0.979 0.01 302.712)", // --color-purple-50
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.706 0.221 303.007)", // --color-purple-400
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.627 0.265 303.9)", // --color-purple-500
+      "primary-foreground": "oklch(0.979 0.01 302.712)", // --color-purple-50
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.347 0.135 301.685)", // --color-purple-900
+      "chart-1": "oklch(0.826 0.137 302.594)", // --color-purple-300
+      "chart-2": "oklch(0.627 0.265 303.9)", // --color-purple-500
+      "chart-3": "oklch(0.561 0.265 303.828)", // --color-purple-600
+      "chart-4": "oklch(0.496 0.249 303.659)", // --color-purple-700
+      "chart-5": "oklch(0.433 0.217 303.087)", // --color-purple-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.627 0.265 303.9)", // --color-purple-500
+      "sidebar-primary-foreground": "oklch(0.979 0.01 302.712)", // --color-purple-50
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.347 0.135 301.685)", // --color-purple-900
+    },
+  },
+  orange: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.705 0.213 47.604)", // --color-orange-500 (approx HSL 24.6 95% 53.1%)
+      "primary-foreground": "oklch(0.98 0.016 73.684)", // --color-orange-50 (approx HSL 60 9.1% 97.8%)
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.705 0.213 47.604)", // --color-orange-500 (approx HSL 24.6 95% 53.1%)
+      "chart-1": "oklch(0.816 0.175 51.713)", // --color-orange-300
+      "chart-2": "oklch(0.705 0.213 47.604)", // --color-orange-500
+      "chart-3": "oklch(0.646 0.222 41.116)", // --color-orange-600
+      "chart-4": "oklch(0.565 0.195 38.191)", // --color-orange-700
+      "chart-5": "oklch(0.47 0.17 31.873)", // --color-orange-800
+      radius: "0.625rem",
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.705 0.213 47.604)", // --color-orange-500 (approx HSL 24.6 95% 53.1%)
+      "sidebar-primary-foreground": "oklch(0.98 0.016 73.684)", // --color-orange-50 (approx HSL 60 9.1% 97.8%)
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.705 0.213 47.604)", // --color-orange-500 (approx HSL 24.6 95% 53.1%)
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.646 0.222 41.116)", // --color-orange-600 (approx HSL 20.5 90.2% 48.2%)
+      "primary-foreground": "oklch(0.98 0.016 73.684)", // --color-orange-50 (approx HSL 60 9.1% 97.8%)
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.357 0.127 26.174)", // --color-orange-900
+      "chart-1": "oklch(0.816 0.175 51.713)", // --color-orange-300
+      "chart-2": "oklch(0.705 0.213 47.604)", // --color-orange-500
+      "chart-3": "oklch(0.646 0.222 41.116)", // --color-orange-600
+      "chart-4": "oklch(0.565 0.195 38.191)", // --color-orange-700
+      "chart-5": "oklch(0.47 0.17 31.873)", // --color-orange-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.646 0.222 41.116)", // --color-orange-600 (approx HSL 20.5 90.2% 48.2%)
+      "sidebar-primary-foreground": "oklch(0.98 0.016 73.684)", // --color-orange-50 (approx HSL 60 9.1% 97.8%)
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.357 0.127 26.174)", // --color-orange-900
+    },
+  },
+  teal: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.6 0.118 184.704)", // --color-teal-600
+      "primary-foreground": "oklch(0.984 0.01 180.67)", // --color-teal-50
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.721 0.114 183.158)", // --color-teal-400
+      "chart-1": "oklch(0.834 0.076 182.849)", // --color-teal-300
+      "chart-2": "oklch(0.663 0.123 183.291)", // --color-teal-500
+      "chart-3": "oklch(0.6 0.118 184.704)", // --color-teal-600
+      "chart-4": "oklch(0.512 0.101 184.892)", // --color-teal-700
+      "chart-5": "oklch(0.432 0.086 185.539)", // --color-teal-800
+      radius: "0.625rem",
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.6 0.118 184.704)", // --color-teal-600
+      "sidebar-primary-foreground": "oklch(0.984 0.01 180.67)", // --color-teal-50
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.721 0.114 183.158)", // --color-teal-400
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.663 0.123 183.291)", // --color-teal-500
+      "primary-foreground": "oklch(0.984 0.01 180.67)", // --color-teal-50
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.295 0.042 183.86)", // --color-teal-900
+      "chart-1": "oklch(0.834 0.076 182.849)", // --color-teal-300
+      "chart-2": "oklch(0.663 0.123 183.291)", // --color-teal-500
+      "chart-3": "oklch(0.6 0.118 184.704)", // --color-teal-600
+      "chart-4": "oklch(0.512 0.101 184.892)", // --color-teal-700
+      "chart-5": "oklch(0.432 0.086 185.539)", // --color-teal-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.663 0.123 183.291)", // --color-teal-500
+      "sidebar-primary-foreground": "oklch(0.984 0.01 180.67)", // --color-teal-50
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.295 0.042 183.86)", // --color-teal-900
     },
   },
 } as const
@@ -1784,6 +2456,211 @@ export const baseColorsOKLCH = {
       "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
       "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
       "sidebar-ring": "oklch(0.541 0.281 293.009)", // --color-violet-600 (approx HSL 263.4 70% 50.4%)
+    },
+  },
+
+  amber: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.716 0.191 70.077)", // --color-amber-600
+      "primary-foreground": "oklch(0.987 0.022 90.58)", // --color-amber-50
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.828 0.189 84.429)", // --color-amber-400
+      "chart-1": "oklch(0.869 0.158 95.552)", // --color-amber-300
+      "chart-2": "oklch(0.769 0.188 70.08)", // --color-amber-500
+      "chart-3": "oklch(0.716 0.191 70.077)", // --color-amber-600
+      "chart-4": "oklch(0.642 0.176 65.755)", // --color-amber-700
+      "chart-5": "oklch(0.555 0.161 63.276)", // --color-amber-800
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.716 0.191 70.077)", // --color-amber-600
+      "sidebar-primary-foreground": "oklch(0.987 0.022 90.58)", // --color-amber-50
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.828 0.189 84.429)", // --color-amber-400
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.769 0.188 70.08)", // --color-amber-500
+      "primary-foreground": "oklch(0.987 0.022 90.58)", // --color-amber-50
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.421 0.095 57.708)", // --color-amber-900
+      "chart-1": "oklch(0.869 0.158 95.552)", // --color-amber-300
+      "chart-2": "oklch(0.769 0.188 70.08)", // --color-amber-500
+      "chart-3": "oklch(0.716 0.191 70.077)", // --color-amber-600
+      "chart-4": "oklch(0.642 0.176 65.755)", // --color-amber-700
+      "chart-5": "oklch(0.555 0.161 63.276)", // --color-amber-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.769 0.188 70.08)", // --color-amber-500
+      "sidebar-primary-foreground": "oklch(0.987 0.022 90.58)", // --color-amber-50
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.421 0.095 57.708)", // --color-amber-900
+    },
+  },
+  purple: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.561 0.265 303.828)", // --color-purple-600
+      "primary-foreground": "oklch(0.979 0.01 302.712)", // --color-purple-50
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.706 0.221 303.007)", // --color-purple-400
+      "chart-1": "oklch(0.826 0.137 302.594)", // --color-purple-300
+      "chart-2": "oklch(0.627 0.265 303.9)", // --color-purple-500
+      "chart-3": "oklch(0.561 0.265 303.828)", // --color-purple-600
+      "chart-4": "oklch(0.496 0.249 303.659)", // --color-purple-700
+      "chart-5": "oklch(0.433 0.217 303.087)", // --color-purple-800
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.561 0.265 303.828)", // --color-purple-600
+      "sidebar-primary-foreground": "oklch(0.979 0.01 302.712)", // --color-purple-50
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.706 0.221 303.007)", // --color-purple-400
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.627 0.265 303.9)", // --color-purple-500
+      "primary-foreground": "oklch(0.979 0.01 302.712)", // --color-purple-50
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.347 0.135 301.685)", // --color-purple-900
+      "chart-1": "oklch(0.826 0.137 302.594)", // --color-purple-300
+      "chart-2": "oklch(0.627 0.265 303.9)", // --color-purple-500
+      "chart-3": "oklch(0.561 0.265 303.828)", // --color-purple-600
+      "chart-4": "oklch(0.496 0.249 303.659)", // --color-purple-700
+      "chart-5": "oklch(0.433 0.217 303.087)", // --color-purple-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.627 0.265 303.9)", // --color-purple-500
+      "sidebar-primary-foreground": "oklch(0.979 0.01 302.712)", // --color-purple-50
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.347 0.135 301.685)", // --color-purple-900
+    },
+  },
+  teal: {
+    light: {
+      background: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      foreground: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      card: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "card-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      popover: "oklch(1 0 0)", // --color-zinc-50 (from zinc)
+      "popover-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      primary: "oklch(0.6 0.118 184.704)", // --color-teal-600
+      "primary-foreground": "oklch(0.984 0.01 180.67)", // --color-teal-50
+      secondary: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "secondary-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      muted: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "muted-foreground": "oklch(0.552 0.016 285.938)", // --color-zinc-500 (from zinc)
+      accent: "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      destructive: "oklch(0.577 0.245 27.325)", // --color-red-600 (from zinc)
+      border: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      input: "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      ring: "oklch(0.721 0.114 183.158)", // --color-teal-400
+      "chart-1": "oklch(0.834 0.076 182.849)", // --color-teal-300
+      "chart-2": "oklch(0.663 0.123 183.291)", // --color-teal-500
+      "chart-3": "oklch(0.6 0.118 184.704)", // --color-teal-600
+      "chart-4": "oklch(0.512 0.101 184.892)", // --color-teal-700
+      "chart-5": "oklch(0.432 0.086 185.539)", // --color-teal-800
+      sidebar: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-foreground": "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      "sidebar-primary": "oklch(0.6 0.118 184.704)", // --color-teal-600
+      "sidebar-primary-foreground": "oklch(0.984 0.01 180.67)", // --color-teal-50
+      "sidebar-accent": "oklch(0.967 0.001 286.375)", // --color-zinc-100 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-border": "oklch(0.92 0.004 286.32)", // --color-zinc-200 (from zinc)
+      "sidebar-ring": "oklch(0.721 0.114 183.158)", // --color-teal-400
+    },
+    dark: {
+      background: "oklch(0.141 0.005 285.823)", // --color-zinc-950 (from zinc)
+      foreground: "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      card: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "card-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      popover: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "popover-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      primary: "oklch(0.663 0.123 183.291)", // --color-teal-500
+      "primary-foreground": "oklch(0.984 0.01 180.67)", // --color-teal-50
+      secondary: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "secondary-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      muted: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "muted-foreground": "oklch(0.705 0.015 286.067)", // --color-zinc-400 (from zinc)
+      accent: "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      destructive: "oklch(0.704 0.191 22.216)", // --color-red-400 (from zinc)
+      border: "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      input: "oklch(1 0 0 / 15%)", // --color-white (from zinc)
+      ring: "oklch(0.295 0.042 183.86)", // --color-teal-900
+      "chart-1": "oklch(0.834 0.076 182.849)", // --color-teal-300
+      "chart-2": "oklch(0.663 0.123 183.291)", // --color-teal-500
+      "chart-3": "oklch(0.6 0.118 184.704)", // --color-teal-600
+      "chart-4": "oklch(0.512 0.101 184.892)", // --color-teal-700
+      "chart-5": "oklch(0.432 0.086 185.539)", // --color-teal-800
+      sidebar: "oklch(0.21 0.006 285.885)", // --color-zinc-900 (from zinc)
+      "sidebar-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-primary": "oklch(0.663 0.123 183.291)", // --color-teal-500
+      "sidebar-primary-foreground": "oklch(0.984 0.01 180.67)", // --color-teal-50
+      "sidebar-accent": "oklch(0.274 0.006 286.033)", // --color-zinc-800 (from zinc)
+      "sidebar-accent-foreground": "oklch(0.985 0 0)", // --color-zinc-50 (from zinc)
+      "sidebar-border": "oklch(1 0 0 / 10%)", // --color-white (from zinc)
+      "sidebar-ring": "oklch(0.295 0.042 183.86)", // --color-teal-900
     },
   },
 }
