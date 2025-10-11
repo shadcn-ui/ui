@@ -86,13 +86,15 @@ import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 ```
 
 ```tsx {3-5}
-<NavigationMenuItem>
-  <Link href="/docs" legacyBehavior passHref>
-    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-      Documentation
-    </NavigationMenuLink>
-  </Link>
-</NavigationMenuItem>
+<NavigationMenu>
+  <NavigationMenuItem>
+    <Link href="/docs" legacyBehavior passHref>
+      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+        Documentation
+      </NavigationMenuLink>
+    </Link>
+  </NavigationMenuItem>
+</NavigationMenu>
 ```
 
 See also the [Radix UI documentation](https://www.radix-ui.com/docs/primitives/components/navigation-menu#with-client-side-routing) for handling client side routing.
