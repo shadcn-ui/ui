@@ -12,6 +12,8 @@ import { Toaster } from "@/registry/new-york-v4/ui/sonner"
 
 import "@/styles/globals.css"
 
+import SiteAssistTheme from "@/components/siteassist-theme"
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -69,9 +71,31 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
+              !function(t,e,c,n,s){if(t[s])return;const i=t[s]=function(){i._q.push(arguments)};i._q=[];const o=e.createElement("script");o.async=!0,o.src="https://cnrib24ur3hk4b49.public.blob.vercel-storage.com/widget/latest/widget.js",e.head.appendChild(o)}(window,document,0,0,"SiteAssist");
+            `,
+          }}
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              SiteAssist("init", {
+                apiKey: "proj_oOASydLaXiclOMUAkE92MwptmwC",
+                type: 'sidepanel'
+              });
+            `,
+          }}
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
               try {
                 if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+                  SiteAssist?.('changeTheme', 'dark')
+                } else {
+                  SiteAssist?.('changeTheme', 'light')  
                 }
                 if (localStorage.layout) {
                   document.documentElement.classList.add('layout-' + localStorage.layout)
@@ -80,6 +104,7 @@ export default function RootLayout({
             `,
           }}
         />
+
         <meta name="theme-color" content={META_THEME_COLORS.light} />
       </head>
       <body
@@ -97,6 +122,7 @@ export default function RootLayout({
               <Analytics />
             </ActiveThemeProvider>
           </LayoutProvider>
+          <SiteAssistTheme />
         </ThemeProvider>
       </body>
     </html>
