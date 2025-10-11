@@ -52,7 +52,7 @@ export default function Calendar32() {
           />
         </DrawerContent>
       </Drawer>
-      <div className="text-muted-foreground px-1 text-sm">
+      <div className="px-1 text-sm text-muted-foreground">
         This example works best on mobile.
       </div>
     </div>

@@ -22,7 +22,7 @@ export default function Calendar06() {
         min={5}
         className="rounded-lg border shadow-sm"
       />
-      <div className="text-muted-foreground text-center text-xs">
+      <div className="text-center text-xs text-muted-foreground">
         A minimum of 5 days is required
       </div>
     </div>
