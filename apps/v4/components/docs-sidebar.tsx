@@ -79,7 +79,7 @@ export function DocsSidebar({
                       className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                     >
                       <Link href={href}>
-                        <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
+                        <span className="absolute inset-0 flex w-[var(--sidebar-width)] bg-transparent" />
                         {name}
                       </Link>
                     </SidebarMenuButton>
@@ -121,7 +121,7 @@ export function DocsSidebar({
                               className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                             >
                               <Link href={item.url}>
-                                <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
+                                <span className="absolute inset-0 flex w-[var(--sidebar-width)] bg-transparent" />
                                 {item.name}
                                 {PAGES_NEW.includes(item.url) && (
                                   <span
