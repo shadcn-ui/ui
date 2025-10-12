@@ -9,12 +9,14 @@ export function ComponentPreviewTabs({
   className,
   align = "center",
   hideCode = false,
+  chromeLessOnMobile = false,
   component,
   source,
   ...props
 }: React.ComponentProps<"div"> & {
   align?: "center" | "start" | "end"
   hideCode?: boolean
+  chromeLessOnMobile?: boolean
   component: React.ReactNode
   source: React.ReactNode
 }) {
@@ -51,7 +53,8 @@ export function ComponentPreviewTabs({
       </Tabs>
       <div
         data-tab={tab}
-        className="data-[tab=code]:border-code relative rounded-lg border md:-mx-1"
+        data-chrome-less-on-mobile={chromeLessOnMobile}
+        className="data-[tab=code]:border-code relative rounded-lg border data-[chrome-less-on-mobile=true]:border-0 sm:data-[chrome-less-on-mobile=true]:border md:-mx-1"
       >
         <div
           data-slot="preview"
@@ -61,7 +64,8 @@ export function ComponentPreviewTabs({
           <div
             data-align={align}
             className={cn(
-              "preview flex h-[450px] w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start"
+              "preview flex w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
+              chromeLessOnMobile ? "sm:p-10" : "h-[450px] p-10"
             )}
           >
             {component}
