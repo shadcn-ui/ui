@@ -1,4 +1,4 @@
-import { RegistryItem } from "@/src/registry/schema"
+import { RegistryItem } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import { getPackageManager } from "@/src/utils/get-package-manager"
@@ -30,7 +30,7 @@ export async function updateDependencies(
   const dependenciesSpinner = spinner(`Installing dependencies.`, {
     silent: options.silent,
   })?.start()
-  const packageManager = await getPackageManager(config.resolvedPaths.cwd)
+  const packageManager = await getUpdateDependenciesPackageManager(config)
 
   // Offer to use --force or --legacy-peer-deps if using React 19 with npm.
   let flag = ""
@@ -62,38 +62,13 @@ export async function updateDependencies(
 
   dependenciesSpinner?.start()
 
-  if (dependencies?.length) {
-    await execa(
-      packageManager,
-      [
-        packageManager === "npm" ? "install" : "add",
-        ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
-        ...(packageManager === "deno"
-          ? dependencies.map((dep) => `npm:${dep}`)
-          : dependencies),
-      ],
-      {
-        cwd: config.resolvedPaths.cwd,
-      }
-    )
-  }
-
-  if (devDependencies?.length) {
-    await execa(
-      packageManager,
-      [
-        packageManager === "npm" ? "install" : "add",
-        ...(packageManager === "npm" && flag ? [`--${flag}`] : []),
-        "-D",
-        ...(packageManager === "deno"
-          ? devDependencies.map((dep) => `npm:${dep}`)
-          : devDependencies),
-      ],
-      {
-        cwd: config.resolvedPaths.cwd,
-      }
-    )
-  }
+  await installWithPackageManager(
+    packageManager,
+    dependencies,
+    devDependencies,
+    config.resolvedPaths.cwd,
+    flag
+  )
 
   dependenciesSpinner?.succeed()
 }
@@ -112,4 +87,108 @@ function shouldPromptForNpmFlag(config: Config) {
     packageInfo.dependencies["react-day-picker"]?.startsWith("8")
 
   return hasReact19 && hasReactDayPicker8
+}
+
+async function getUpdateDependenciesPackageManager(config: Config) {
+  const expoVersion = getPackageInfo(config.resolvedPaths.cwd, false)
+    ?.dependencies?.expo
+
+  if (expoVersion) {
+    // Ensures package versions match the React Native version.
+    // https://docs.expo.dev/more/expo-cli/#install
+    return "expo"
+  }
+
+  return getPackageManager(config.resolvedPaths.cwd)
+}
+
+async function installWithPackageManager(
+  packageManager: Awaited<
+    ReturnType<typeof getUpdateDependenciesPackageManager>
+  >,
+  dependencies: string[],
+  devDependencies: string[],
+  cwd: string,
+  flag?: string
+) {
+  if (packageManager === "npm") {
+    return installWithNpm(dependencies, devDependencies, cwd, flag)
+  }
+
+  if (packageManager === "deno") {
+    return installWithDeno(dependencies, devDependencies, cwd)
+  }
+
+  if (packageManager === "expo") {
+    return installWithExpo(dependencies, devDependencies, cwd)
+  }
+
+  if (dependencies?.length) {
+    await execa(packageManager, ["add", ...dependencies], {
+      cwd,
+    })
+  }
+
+  if (devDependencies?.length) {
+    await execa(packageManager, ["add", "-D", ...devDependencies], { cwd })
+  }
+}
+
+async function installWithNpm(
+  dependencies: string[],
+  devDependencies: string[],
+  cwd: string,
+  flag?: string
+) {
+  if (dependencies.length) {
+    await execa(
+      "npm",
+      ["install", ...(flag ? [`--${flag}`] : []), ...dependencies],
+      { cwd }
+    )
+  }
+
+  if (devDependencies.length) {
+    await execa(
+      "npm",
+      ["install", ...(flag ? [`--${flag}`] : []), "-D", ...devDependencies],
+      { cwd }
+    )
+  }
+}
+
+async function installWithDeno(
+  dependencies: string[],
+  devDependencies: string[],
+  cwd: string
+) {
+  if (dependencies?.length) {
+    await execa("deno", ["add", ...dependencies.map((dep) => `npm:${dep}`)], {
+      cwd,
+    })
+  }
+
+  if (devDependencies?.length) {
+    await execa(
+      "deno",
+      ["add", "-D", ...devDependencies.map((dep) => `npm:${dep}`)],
+      { cwd }
+    )
+  }
+}
+
+async function installWithExpo(
+  dependencies: string[],
+  devDependencies: string[],
+  cwd: string
+) {
+  if (dependencies.length) {
+    await execa("npx", ["expo", "install", ...dependencies], { cwd })
+  }
+
+  if (devDependencies.length) {
+    await execa("npx", ["expo", "install", "-- -D", ...devDependencies], {
+      cwd,
+    })
+  }
 }

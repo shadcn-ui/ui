@@ -1,3 +1,39 @@
+import { registryConfigSchema } from "@/src/schema"
+import { z } from "zod"
+
+export const REGISTRY_URL =
+  process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
+
+export const FALLBACK_STYLE = "new-york-v4"
+
+export const BASE_COLORS = [
+  {
+    name: "neutral",
+    label: "Neutral",
+  },
+  {
+    name: "gray",
+    label: "Gray",
+  },
+  {
+    name: "zinc",
+    label: "Zinc",
+  },
+  {
+    name: "stone",
+    label: "Stone",
+  },
+  {
+    name: "slate",
+    label: "Slate",
+  },
+] as const
+
+// Built-in registries that are always available and cannot be overridden
+export const BUILTIN_REGISTRIES: z.infer<typeof registryConfigSchema> = {
+  "@shadcn": `${REGISTRY_URL}/styles/{style}/{name}.json`,
+}
+
 export const BUILTIN_MODULES = new Set([
   [
     // Node.js built-in modules
@@ -121,3 +157,18 @@ export const BUILTIN_MODULES = new Set([
     "bun:internal",
   ],
 ])
+
+export const DEPRECATED_COMPONENTS = [
+  {
+    name: "toast",
+    deprecatedBy: "sonner",
+    message:
+      "The toast component is deprecated. Use the sonner component instead.",
+  },
+  {
+    name: "toaster",
+    deprecatedBy: "sonner",
+    message:
+      "The toaster component is deprecated. Use the sonner component instead.",
+  },
+]
