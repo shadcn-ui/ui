@@ -41,16 +41,17 @@ export default function SonnerTypes() {
       <Button
         variant="outline"
         onClick={() => {
-          const promise = () =>
-            new Promise((resolve) =>
-              setTimeout(() => resolve({ name: "Event" }), 2000)
-            )
-
-          toast.promise(promise(), {
-            loading: "Loading...",
-            success: (data) => `${data.name} has been created`,
-            error: "Error",
-          })
+          toast.promise<{ name: string }>(
+            () =>
+              new Promise((resolve) =>
+                setTimeout(() => resolve({ name: "Event" }), 2000)
+              ),
+            {
+              loading: "Loading...",
+              success: (data) => `${data.name} has been created`,
+              error: "Error",
+            }
+          )
         }}
       >
         Promise
