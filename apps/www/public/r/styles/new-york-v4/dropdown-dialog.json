@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-dialog",
+  "type": "registry:example",
+  "registryDependencies": [
+    "dropdown-menu",
+    "dialog",
+    "button",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/dropdown-dialog.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Dialog,\n  DialogClose,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n} from \"@/registry/new-york-v4/ui/dialog\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from \"@/registry/new-york-v4/ui/dropdown-menu\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\n\nexport default function DropdownDialog() {\n  const [showDeleteDialog, setShowDeleteDialog] = useState(false)\n  const [showEditDialog, setShowEditDialog] = useState(false)\n\n  return (\n    <>\n      <DropdownMenu>\n        <DropdownMenuTrigger asChild>\n          <Button variant=\"outline\">Options</Button>\n        </DropdownMenuTrigger>\n        <DropdownMenuContent className=\"w-56\" align=\"start\">\n          <DropdownMenuLabel>Actions</DropdownMenuLabel>\n          <DropdownMenuItem onSelect={() => setShowEditDialog(true)}>\n            Edit\n          </DropdownMenuItem>\n          <DropdownMenuItem>Duplicate</DropdownMenuItem>\n          <DropdownMenuItem>Archive</DropdownMenuItem>\n          <DropdownMenuSeparator />\n          <DropdownMenuItem\n            onSelect={() => setShowDeleteDialog(true)}\n            className=\"text-destructive focus:text-destructive\"\n          >\n            Delete\n          </DropdownMenuItem>\n        </DropdownMenuContent>\n      </DropdownMenu>\n\n      <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>\n        <DialogContent className=\"sm:max-w-[425px]\">\n          <DialogHeader>\n            <DialogTitle>Edit item</DialogTitle>\n            <DialogDescription>\n              Make changes to your item here. Click save when you&apos;re done.\n            </DialogDescription>\n          </DialogHeader>\n          <div className=\"grid gap-4\">\n            <div className=\"grid gap-3\">\n              <Label htmlFor=\"name\">Name</Label>\n              <Input id=\"name\" name=\"name\" defaultValue=\"Item name\" />\n            </div>\n            <div className=\"grid gap-3\">\n              <Label htmlFor=\"description\">Description</Label>\n              <Input\n                id=\"description\"\n                name=\"description\"\n                defaultValue=\"Item description\"\n              />\n            </div>\n          </div>\n          <DialogFooter>\n            <DialogClose asChild>\n              <Button variant=\"outline\">Cancel</Button>\n            </DialogClose>\n            <Button type=\"submit\">Save changes</Button>\n          </DialogFooter>\n        </DialogContent>\n      </Dialog>\n\n      <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>\n        <DialogContent>\n          <DialogHeader>\n            <DialogTitle>Are you sure?</DialogTitle>\n            <DialogDescription>\n              This action cannot be undone. This will permanently delete your\n              item.\n            </DialogDescription>\n          </DialogHeader>\n          <DialogFooter>\n            <DialogClose asChild>\n              <Button variant=\"outline\">Cancel</Button>\n            </DialogClose>\n            <Button variant=\"destructive\">Delete</Button>\n          </DialogFooter>\n        </DialogContent>\n      </Dialog>\n    </>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
