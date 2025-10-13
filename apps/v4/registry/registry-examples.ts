@@ -1318,23 +1318,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "dropdown-dialog",
-    type: "registry:example",
-    registryDependencies: [
-      "dropdown-menu",
-      "dialog",
-      "button",
-      "input",
-      "label",
-    ],
-    files: [
-      {
-        path: "examples/dropdown-dialog.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "hover-card-demo",
     type: "registry:example",
     registryDependencies: ["hover-card"],
