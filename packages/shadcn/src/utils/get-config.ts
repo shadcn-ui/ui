@@ -1,4 +1,10 @@
 import path from "path"
+import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
+import {
+  configSchema,
+  rawConfigSchema,
+  workspaceConfigSchema,
+} from "@/src/schema"
 import { getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
 import { resolveImport } from "@/src/utils/resolve-import"
@@ -16,54 +22,11 @@ export const DEFAULT_TAILWIND_BASE_COLOR = "slate"
 
 // TODO: Figure out if we want to support all cosmiconfig formats.
 // A simple components.json file would be nice.
-const explorer = cosmiconfig("components", {
+export const explorer = cosmiconfig("components", {
   searchPlaces: ["components.json"],
 })
 
-export const rawConfigSchema = z
-  .object({
-    $schema: z.string().optional(),
-    style: z.string(),
-    rsc: z.coerce.boolean().default(false),
-    tsx: z.coerce.boolean().default(true),
-    tailwind: z.object({
-      config: z.string().optional(),
-      css: z.string(),
-      baseColor: z.string(),
-      cssVariables: z.boolean().default(true),
-      prefix: z.string().default("").optional(),
-    }),
-    aliases: z.object({
-      components: z.string(),
-      utils: z.string(),
-      ui: z.string().optional(),
-      lib: z.string().optional(),
-      hooks: z.string().optional(),
-    }),
-    iconLibrary: z.string().optional(),
-  })
-  .strict()
-
-export type RawConfig = z.infer<typeof rawConfigSchema>
-
-export const configSchema = rawConfigSchema.extend({
-  resolvedPaths: z.object({
-    cwd: z.string(),
-    tailwindConfig: z.string(),
-    tailwindCss: z.string(),
-    utils: z.string(),
-    components: z.string(),
-    lib: z.string(),
-    hooks: z.string(),
-    ui: z.string(),
-  }),
-})
-
 export type Config = z.infer<typeof configSchema>
-
-// TODO: type the key.
-// Okay for now since I don't want a breaking change.
-export const workspaceConfigSchema = z.record(configSchema)
 
 export async function getConfig(cwd: string) {
   const config = await getRawConfig(cwd)
@@ -80,7 +43,16 @@ export async function getConfig(cwd: string) {
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function resolveConfigPaths(cwd: string, config: RawConfig) {
+export async function resolveConfigPaths(
+  cwd: string,
+  config: z.infer<typeof rawConfigSchema>
+) {
+  // Merge built-in registries with user registries
+  config.registries = {
+    ...BUILTIN_REGISTRIES,
+    ...(config.registries || {}),
+  }
+
   // Read tsconfig.json.
   const tsConfig = await loadConfig(cwd)
 
@@ -129,7 +101,9 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
   })
 }
 
-export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
+export async function getRawConfig(
+  cwd: string
+): Promise<z.infer<typeof rawConfigSchema> | null> {
   try {
     const configResult = await explorer.search(cwd)
 
@@ -137,9 +111,25 @@ export async function getRawConfig(cwd: string): Promise<RawConfig | null> {
       return null
     }
 
-    return rawConfigSchema.parse(configResult.config)
+    const config = rawConfigSchema.parse(configResult.config)
+
+    // Check if user is trying to override built-in registries
+    if (config.registries) {
+      for (const registryName of Object.keys(config.registries)) {
+        if (registryName in BUILTIN_REGISTRIES) {
+          throw new Error(
+            `"${registryName}" is a built-in registry and cannot be overridden.`
+          )
+        }
+      }
+    }
+
+    return config
   } catch (error) {
     const componentPath = `${cwd}/components.json`
+    if (error instanceof Error && error.message.includes("reserved registry")) {
+      throw error
+    }
     throw new Error(
       `Invalid configuration found in ${highlighter.info(componentPath)}.`
     )
@@ -262,6 +252,9 @@ export function createConfig(partial?: DeepPartial<Config>): Config {
       components: "",
       utils: "",
     },
+    registries: {
+      ...BUILTIN_REGISTRIES,
+    },
   }
 
   // Deep merge the partial config with defaults
@@ -280,6 +273,10 @@ export function createConfig(partial?: DeepPartial<Config>): Config {
       aliases: {
         ...defaultConfig.aliases,
         ...(partial.aliases || {}),
+      },
+      registries: {
+        ...defaultConfig.registries,
+        ...(partial.registries || {}),
       },
     }
   }

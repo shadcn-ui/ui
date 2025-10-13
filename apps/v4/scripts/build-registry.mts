@@ -1,5 +1,5 @@
 import { exec } from "child_process"
-import { promises as fs } from "fs"
+import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
 
@@ -61,7 +61,7 @@ export const Index: Record<string, any> = {`
   index += `
   }`
 
-  console.log(`#️⃣  ${Object.keys(registry.items).length} components found`)
+  console.log(`#️⃣  ${Object.keys(registry.items).length} items found`)
 
   // Write style index.
   rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"))
@@ -93,13 +93,31 @@ async function buildRegistryJsonFile() {
     path.join(process.cwd(), `registry.json`),
     JSON.stringify(fixedRegistry, null, 2)
   )
+
+  // 3. Format the registry.json file.
+  await exec(`prettier --write registry.json`)
+
+  // 3. Copy the registry.json to the www/public/r/styles/new-york-v4 directory.
+  await fs.cp(
+    path.join(process.cwd(), "registry.json"),
+    path.join(
+      process.cwd(),
+      "../www/public/r/styles/new-york-v4/registry.json"
+    ),
+    { recursive: true }
+  )
 }
 
 async function buildRegistry() {
   return new Promise((resolve, reject) => {
+    // Use local shadcn copy.
     const process = exec(
-      `pnpm dlx shadcn build registry.json --output ../www/public/r/styles/new-york-v4`
+      `node ../../packages/shadcn/dist/index.js build registry.json --output ../www/public/r/styles/new-york-v4`
     )
+
+    // exec(
+    //   `pnpm dlx shadcn build registry.json --output ../www/public/r/styles/new-york-v4`
+    // )
 
     process.on("exit", (code) => {
       if (code === 0) {
@@ -121,6 +139,20 @@ async function syncRegistry() {
     registryContent = await fs.readFile(registryIndexPath, "utf8")
   } catch {
     // File might not exist yet, that's ok
+  }
+
+  // 0. Copy registries.json from v4 to www before building www registry.
+  const v4RegistriesPath = path.join(process.cwd(), "public/r/registries.json")
+  const wwwRegistriesPath = path.resolve(
+    process.cwd(),
+    "../www/public/r/registries.json"
+  )
+
+  if (existsSync(v4RegistriesPath)) {
+    // Ensure the www/public/r directory exists.
+    await fs.mkdir(path.dirname(wwwRegistriesPath), { recursive: true })
+    // Copy registries.json to www.
+    await fs.cp(v4RegistriesPath, wwwRegistriesPath)
   }
 
   // 1. Call pnpm registry:build for www.
@@ -154,6 +186,8 @@ async function buildBlocksIndex() {
     path.join(process.cwd(), "registry/__blocks__.json"),
     JSON.stringify(payload, null, 2)
   )
+
+  await exec(`prettier --write registry/__blocks__.json`)
 }
 
 try {
