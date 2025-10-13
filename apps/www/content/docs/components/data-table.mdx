@@ -246,7 +246,7 @@ export function DataTable<TData, TValue>({
 Finally, we'll render our table in our page component.
 
 ```tsx showLineNumbers title="app/payments/page.tsx" {22}
-import { Payment, columns } from "./columns"
+import { columns, Payment } from "./columns"
 import { DataTable } from "./data-table"
 
 async function getData(): Promise<Payment[]> {

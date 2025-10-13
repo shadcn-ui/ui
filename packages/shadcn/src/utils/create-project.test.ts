@@ -13,7 +13,7 @@ import {
   type MockInstance,
 } from "vitest"
 
-import { TEMPLATES, createProject } from "./create-project"
+import { createProject, TEMPLATES } from "./create-project"
 
 // Mock dependencies
 vi.mock("fs-extra")

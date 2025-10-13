@@ -65,7 +65,7 @@ export default function Calendar29() {
             <Button
               id="date-picker"
               variant="ghost"
-              className="absolute top-1/2 right-2 size-6 -translate-y-1/2"
+              className="absolute right-2 top-1/2 size-6 -translate-y-1/2"
             >
               <CalendarIcon className="size-3.5" />
               <span className="sr-only">Select date</span>
@@ -87,7 +87,7 @@ export default function Calendar29() {
           </PopoverContent>
         </Popover>
       </div>
-      <div className="text-muted-foreground px-1 text-sm">
+      <div className="px-1 text-sm text-muted-foreground">
         Your post will be published on{" "}
         <span className="font-medium">{formatDate(date)}</span>.
       </div>

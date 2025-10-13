@@ -47,7 +47,7 @@ export default function AppSidebar() {
         </SidebarHeader>
       </Sidebar>
       <SidebarInset>
-        <header className="flex items-center justify-between px-4 h-12">
+        <header className="flex h-12 items-center justify-between px-4">
           <SidebarTrigger />
         </header>
       </SidebarInset>

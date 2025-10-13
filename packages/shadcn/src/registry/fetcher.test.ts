@@ -5,7 +5,7 @@ import {
   RegistryNotFoundError,
   RegistryUnauthorizedError,
 } from "@/src/registry/errors"
-import { HttpResponse, http } from "msw"
+import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest"
 

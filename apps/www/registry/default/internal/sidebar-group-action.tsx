@@ -9,7 +9,7 @@ import {
   Plus,
   Send,
 } from "lucide-react"
-import { Toaster, toast } from "sonner"
+import { toast, Toaster } from "sonner"
 
 import {
   Sidebar,

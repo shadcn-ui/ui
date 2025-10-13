@@ -43,7 +43,7 @@ export default function Calendar13() {
             )
           }
         >
-          <SelectTrigger id="dropdown" className="bg-background w-full">
+          <SelectTrigger id="dropdown" className="w-full bg-background">
             <SelectValue placeholder="Dropdown" />
           </SelectTrigger>
           <SelectContent align="center">
