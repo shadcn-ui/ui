@@ -5804,6 +5804,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "dropdown-menu-dialog": {
+    name: "dropdown-menu-dialog",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dropdown-menu","dialog","button","input","label"],
+    files: [{
+      path: "registry/new-york-v4/examples/dropdown-menu-dialog.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-dialog.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "hover-card-demo": {
     name: "hover-card-demo",
     description: "",
