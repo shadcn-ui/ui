@@ -6864,6 +6864,19 @@
       ]
     },
     {
+      "name": "sonner-types",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/sonner-types.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "spinner-demo",
       "type": "registry:example",
       "registryDependencies": [
