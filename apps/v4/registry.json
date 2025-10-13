@@ -2162,141 +2162,6 @@
       "categories": ["authentication", "otp"]
     },
     {
-      "name": "new-components-01",
-      "type": "registry:block",
-      "description": "New components",
-      "files": [
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/page.tsx",
-          "type": "registry:page",
-          "target": "app/page.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/field.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/field.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/button-group.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/button-group.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/input-group.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/input-group.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/empty.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/empty.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/item.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/item.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/spinner.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/spinner.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/button.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/button.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/input.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/input.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/tooltip.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/tooltip.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/dropdown-menu.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/dropdown-menu.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/appearance-settings.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-demo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-input-group.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-nested.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-popover.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/empty-avatar-group.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/empty-input-group.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/field-choice-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/field-demo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/field-slider.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/input-group-button.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/input-group-demo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/input-group-textarea.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/item-avatar.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/item-demo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/notion-prompt-form.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/spinner-badge.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/spinner-empty.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": ["components", "showcase"]
-    },
-    {
       "name": "chart-area-axes",
       "type": "registry:block",
       "registryDependencies": ["card", "chart"],
@@ -4841,6 +4706,23 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/dropdown-menu-radio-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu-dialog",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dropdown-menu",
+        "dialog",
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/dropdown-menu-dialog.tsx",
           "type": "registry:example"
         }
       ]
