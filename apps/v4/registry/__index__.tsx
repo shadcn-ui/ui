@@ -6956,6 +6956,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "sonner-types": {
+    name: "sonner-types",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["sonner"],
+    files: [{
+      path: "registry/new-york-v4/examples/sonner-types.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/sonner-types.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "spinner-demo": {
     name: "spinner-demo",
     description: "",
