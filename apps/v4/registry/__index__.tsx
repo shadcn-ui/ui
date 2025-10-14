@@ -2456,136 +2456,6 @@ export const Index: Record<string, any> = {
     categories: ["authentication","otp"],
     meta: undefined,
   },
-  "new-components-01": {
-    name: "new-components-01",
-    description: "New components",
-    type: "registry:block",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/new-york-v4/blocks/new-components-01/page.tsx",
-      type: "registry:page",
-      target: "app/page.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/field.tsx",
-      type: "registry:ui",
-      target: "components/ui/field.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/button-group.tsx",
-      type: "registry:ui",
-      target: "components/ui/button-group.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/input-group.tsx",
-      type: "registry:ui",
-      target: "components/ui/input-group.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/empty.tsx",
-      type: "registry:ui",
-      target: "components/ui/empty.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/item.tsx",
-      type: "registry:ui",
-      target: "components/ui/item.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/spinner.tsx",
-      type: "registry:ui",
-      target: "components/ui/spinner.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/button.tsx",
-      type: "registry:ui",
-      target: "components/ui/button.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/input.tsx",
-      type: "registry:ui",
-      target: "components/ui/input.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/tooltip.tsx",
-      type: "registry:ui",
-      target: "components/ui/tooltip.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/ui/dropdown-menu.tsx",
-      type: "registry:ui",
-      target: "components/ui/dropdown-menu.tsx"
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/appearance-settings.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/button-group-demo.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/button-group-input-group.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/button-group-nested.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/button-group-popover.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/empty-avatar-group.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/empty-input-group.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/field-choice-card.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/field-demo.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/field-slider.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/input-group-button.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/input-group-demo.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/input-group-textarea.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/item-avatar.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/item-demo.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/notion-prompt-form.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/spinner-badge.tsx",
-      type: "registry:component",
-      target: ""
-    },{
-      path: "registry/new-york-v4/blocks/new-components-01/components/spinner-empty.tsx",
-      type: "registry:component",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/new-york-v4/blocks/new-components-01/page.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: ["components","showcase"],
-    meta: undefined,
-  },
   "chart-area-axes": {
     name: "chart-area-axes",
     description: "",
@@ -5934,6 +5804,24 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "dropdown-menu-dialog": {
+    name: "dropdown-menu-dialog",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dropdown-menu","dialog","button","input","label"],
+    files: [{
+      path: "registry/new-york-v4/examples/dropdown-menu-dialog.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/dropdown-menu-dialog.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "hover-card-demo": {
     name: "hover-card-demo",
     description: "",
@@ -7062,6 +6950,24 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/new-york-v4/examples/sonner-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "sonner-types": {
+    name: "sonner-types",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["sonner"],
+    files: [{
+      path: "registry/new-york-v4/examples/sonner-types.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/sonner-types.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

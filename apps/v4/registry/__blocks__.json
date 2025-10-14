@@ -318,10 +318,5 @@
     "name": "otp-05",
     "description": "A simple OTP form with social providers.",
     "categories": ["authentication", "otp"]
-  },
-  {
-    "name": "new-components-01",
-    "description": "New components",
-    "categories": ["components", "showcase"]
   }
 ]

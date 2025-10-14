@@ -43,5 +43,9 @@
   "@97cn": "https://97cn.itzik.co/r/{name}.json",
   "@better-upload": "https://better-upload.com/r/{name}.json",
   "@zippystarter": "https://zippystarter.com/r/{name}.json",
-  "@elevenlabs-ui": "https://ui.elevenlabs.io/r/{name}.json"
+  "@elevenlabs-ui": "https://ui.elevenlabs.io/r/{name}.json",
+  "@eldoraui": "https://eldoraui.site/r/{name}.json",
+  "@intentui": "https://intentui.com/r/{name}",
+  "@shadcn-map": "http://shadcn-map.vercel.app/r/{name}.json",
+  "@fancy": "https://fancycomponents.dev/r/{name}.json"
 }
