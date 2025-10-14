@@ -296,4 +296,31 @@ describe("shadcn add", () => {
       await fs.readFile(path.join(fixturePath, "path/to/foo.txt"), "utf-8")
     ).toBe("Foo Bar")
   })
+
+  it("should add at-property", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    await npxShadcn(fixturePath, [
+      "add",
+      "../../fixtures/registry/example-at-property.json",
+      "--yes",
+    ])
+
+    const globalCssContent = await fs.readFile(
+      path.join(fixturePath, "app/globals.css"),
+      "utf-8"
+    )
+
+    expect(
+      cssHasProperties(globalCssContent, [
+        {
+          selector: "@property --foo",
+          properties: {
+            syntax: "'<number>'",
+            inherits: "false",
+            "initial-value": "0",
+          },
+        },
+      ])
+    ).toBe(true)
+  })
 })
