@@ -47,5 +47,6 @@
   "@eldoraui": "https://eldoraui.site/r/{name}.json",
   "@intentui": "https://intentui.com/r/{name}",
   "@shadcn-map": "http://shadcn-map.vercel.app/r/{name}.json",
-  "@fancy": "https://fancycomponents.dev/r/{name}.json"
+  "@fancy": "https://fancycomponents.dev/r/{name}.json",
+  "@marmelab": "https://marmelab.com/shadcn-admin-kit/r/{name}.json"
 }
