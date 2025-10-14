@@ -3,13 +3,16 @@ import { createMatchPath, type ConfigLoaderSuccessResult } from "tsconfig-paths"
 
 const FN = "resolvePathWithOptions"
 
-const createPathResolver = (config: ConfigLoaderSuccessResult) => {
+type Config = Pick<ConfigLoaderSuccessResult, "absoluteBaseUrl" | "paths"> &
+  Partial<ConfigLoaderSuccessResult>
+
+const createPathResolver = (config: Config) => {
   return createMatchPath(config.absoluteBaseUrl, config.paths)
 }
 
 const resolvePathWithOptions = (
-  config: ConfigLoaderSuccessResult,
   importPath: string,
+  config: Config,
   extensions: string[] = [".ts", ".tsx", ".jsx", ".js", ".css"],
   fileExists?: (name: string) => boolean
 ): string | undefined => {

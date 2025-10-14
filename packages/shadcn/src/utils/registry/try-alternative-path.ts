@@ -26,7 +26,7 @@ const tryAlternativePath = async (
       return null
     }
 
-    const absolutePath = resolvePathWithOptions(tsConfig, filePath)
+    const absolutePath = resolvePathWithOptions(filePath, tsConfig)
     if (!absolutePath) {
       logger.warn(`${FN}: Unable to resolve import path: ${filePath}`)
       return null
