@@ -2664,144 +2664,6 @@
       ]
     },
     {
-      "name": "new-components-01",
-      "type": "registry:block",
-      "description": "New components",
-      "files": [
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/page.tsx",
-          "type": "registry:page",
-          "target": "app/page.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/field.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/field.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/button-group.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/button-group.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/input-group.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/input-group.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/empty.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/empty.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/item.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/item.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/spinner.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/spinner.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/button.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/button.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/input.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/input.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/tooltip.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/tooltip.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/ui/dropdown-menu.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/dropdown-menu.tsx"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/appearance-settings.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-demo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-input-group.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-nested.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/button-group-popover.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/empty-avatar-group.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/empty-input-group.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/field-choice-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/field-demo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/field-slider.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/input-group-button.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/input-group-demo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/input-group-textarea.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/item-avatar.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/item-demo.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/notion-prompt-form.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/spinner-badge.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york-v4/blocks/new-components-01/components/spinner-empty.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "components",
-        "showcase"
-      ]
-    },
-    {
       "name": "chart-area-axes",
       "type": "registry:block",
       "registryDependencies": [
@@ -5684,6 +5546,407 @@
       ]
     },
     {
+      "name": "form-rhf-demo",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-input",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-select",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "select",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-select.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-checkbox",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "checkbox",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-checkbox.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-switch",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "switch",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-switch.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-textarea",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "textarea",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-textarea.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-radiogroup",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "radio-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-radiogroup.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-array",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-array.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-complex",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "button",
+        "card",
+        "checkbox",
+        "radio-group",
+        "select",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-complex.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-password",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input-group",
+        "progress",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-password.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-demo",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-input",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-textarea",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "textarea",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-textarea.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-select",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "select",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-select.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-checkbox",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "checkbox",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-checkbox.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-switch",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "switch",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-switch.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-radiogroup",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "radio-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-radiogroup.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-array",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-array.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-complex",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "button",
+        "card",
+        "checkbox",
+        "radio-group",
+        "select",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-complex.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "drawer-dialog",
       "type": "registry:example",
       "registryDependencies": [
@@ -5734,6 +5997,23 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/dropdown-menu-radio-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu-dialog",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dropdown-menu",
+        "dialog",
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/dropdown-menu-dialog.tsx",
           "type": "registry:example"
         }
       ]
@@ -6579,6 +6859,19 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/sonner-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "sonner-types",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/sonner-types.tsx",
           "type": "registry:example"
         }
       ]
