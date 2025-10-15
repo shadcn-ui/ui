@@ -1,4 +1,4 @@
-name: www deprecated action
+name: Deprecated
 
 on:
   pull_request:
@@ -47,4 +47,25 @@ jobs:
                 issue_number: context.issue.number,
                 body: comment
               });
+
+              // Add deprecated label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['deprecated']
+              });
+            } else {
+              // Remove deprecated label if no www files are changed
+              try {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  name: 'deprecated'
+                });
+              } catch (error) {
+                // Label doesn't exist, which is fine
+                console.log('Deprecated label not found, skipping removal');
+              }
             }
