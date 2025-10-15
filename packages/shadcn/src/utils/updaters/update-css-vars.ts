@@ -3,7 +3,7 @@ import path from "path"
 import {
   registryItemCssVarsSchema,
   registryItemTailwindSchema,
-} from "@/src/registry/schema"
+} from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import { TailwindVersion } from "@/src/utils/get-project-info"
@@ -897,6 +897,7 @@ export function isColorValue(value: string) {
     value.startsWith("hsl") ||
     value.startsWith("rgb") ||
     value.startsWith("#") ||
-    value.startsWith("oklch")
+    value.startsWith("oklch") ||
+    value.startsWith("var(--color-")
   )
 }

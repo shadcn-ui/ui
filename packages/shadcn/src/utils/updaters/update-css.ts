@@ -1,6 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { registryItemCssSchema } from "@/src/registry/schema"
+import { registryItemCssSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
@@ -60,6 +60,21 @@ export async function transformCss(
   })
 
   let output = result.css
+
+  // PostCSS doesn't add semicolons to at-rules without bodies when they're the last node.
+  // We need to manually ensure they have semicolons.
+  const root = result.root
+  if (root.nodes && root.nodes.length > 0) {
+    const lastNode = root.nodes[root.nodes.length - 1]
+    if (
+      lastNode.type === "atrule" &&
+      !lastNode.nodes &&
+      !output.trimEnd().endsWith(";")
+    ) {
+      output = output.trimEnd() + ";"
+    }
+  }
+
   output = output.replace(/\/\* ---break--- \*\//g, "")
   output = output.replace(/(\n\s*\n)+/g, "\n\n")
   output = output.trimEnd()
@@ -79,8 +94,154 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
 
           const [, name, params] = atRuleMatch
 
-          // Special handling for keyframes - place them under @theme inline
-          if (name === "keyframes") {
+          // Special handling for imports - place them at the top.
+          if (name === "import") {
+            // Check if this import already exists.
+            const existingImport = root.nodes?.find(
+              (node): node is AtRule =>
+                node.type === "atrule" &&
+                node.name === "import" &&
+                node.params === params
+            )
+
+            if (!existingImport) {
+              const importRule = postcss.atRule({
+                name: "import",
+                params,
+                raws: { semicolon: true },
+              })
+
+              // Find the last import to insert after, or insert at beginning.
+              const importNodes = root.nodes?.filter(
+                (node): node is AtRule =>
+                  node.type === "atrule" && node.name === "import"
+              )
+
+              if (importNodes && importNodes.length > 0) {
+                // Insert after the last existing import.
+                const lastImport = importNodes[importNodes.length - 1]
+                importRule.raws.before = "\n"
+                root.insertAfter(lastImport, importRule)
+              } else {
+                // No imports exist, insert at the very beginning.
+                // Check if the file is empty.
+                if (!root.nodes || root.nodes.length === 0) {
+                  importRule.raws.before = ""
+                } else {
+                  importRule.raws.before = ""
+                }
+                root.prepend(importRule)
+              }
+            }
+          }
+          // Special handling for plugins - place them after imports.
+          else if (name === "plugin") {
+            // Ensure plugin name is quoted if not already.
+            let quotedParams = params
+            if (params && !params.startsWith('"') && !params.startsWith("'")) {
+              quotedParams = `"${params}"`
+            }
+
+            // Normalize params for comparison (remove quotes).
+            const normalizeParams = (p: string) => {
+              if (p.startsWith('"') && p.endsWith('"')) {
+                return p.slice(1, -1)
+              }
+              if (p.startsWith("'") && p.endsWith("'")) {
+                return p.slice(1, -1)
+              }
+              return p
+            }
+
+            // Find existing plugin with same normalized params.
+            const existingPlugin = root.nodes?.find((node): node is AtRule => {
+              if (node.type !== "atrule" || node.name !== "plugin") {
+                return false
+              }
+              return normalizeParams(node.params) === normalizeParams(params)
+            })
+
+            if (!existingPlugin) {
+              const pluginRule = postcss.atRule({
+                name: "plugin",
+                params: quotedParams,
+                raws: { semicolon: true, before: "\n" },
+              })
+
+              // Find the last import or plugin node to insert after
+              const importNodes = root.nodes?.filter(
+                (node): node is AtRule =>
+                  node.type === "atrule" && node.name === "import"
+              )
+
+              const pluginNodes = root.nodes?.filter(
+                (node): node is AtRule =>
+                  node.type === "atrule" && node.name === "plugin"
+              )
+
+              if (pluginNodes && pluginNodes.length > 0) {
+                // Insert after the last existing plugin
+                const lastPlugin = pluginNodes[pluginNodes.length - 1]
+                root.insertAfter(lastPlugin, pluginRule)
+              } else if (importNodes && importNodes.length > 0) {
+                // Insert after the last import if no plugins exist
+                const lastImport = importNodes[importNodes.length - 1]
+                root.insertAfter(lastImport, pluginRule)
+                // Add a break comment before the first plugin to create spacing
+                root.insertBefore(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
+                // Add a break comment after the plugin for spacing from other content
+                root.insertAfter(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
+              } else {
+                // If no imports or plugins, insert at the beginning
+                root.prepend(pluginRule)
+                // Add a break comment before the first plugin for spacing
+                root.insertBefore(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
+                // Add a break comment after the plugin for spacing from other content
+                root.insertAfter(
+                  pluginRule,
+                  postcss.comment({ text: "---break---" })
+                )
+              }
+            }
+          }
+          // Check if this is any at-rule with no body (empty object).
+          else if (
+            typeof properties === "object" &&
+            Object.keys(properties).length === 0
+          ) {
+            // Handle any at-rule with no body (e.g., @apply, @tailwind, etc.).
+            const atRule = root.nodes?.find(
+              (node): node is AtRule =>
+                node.type === "atrule" &&
+                node.name === name &&
+                node.params === params
+            ) as AtRule | undefined
+
+            if (!atRule) {
+              const newAtRule = postcss.atRule({
+                name,
+                params,
+                raws: { semicolon: true },
+              })
+
+              root.append(newAtRule)
+              root.insertBefore(
+                newAtRule,
+                postcss.comment({ text: "---break---" })
+              )
+            }
+          }
+          // Special handling for keyframes - place them under @theme inline.
+          else if (name === "keyframes") {
             let themeInline = root.nodes?.find(
               (node): node is AtRule =>
                 node.type === "atrule" &&
@@ -177,6 +338,10 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
                 }
               }
             }
+          }
+          // Handle at-property as regular CSS rules
+          else if (name === "property") {
+            processRule(root, selector, properties)
           } else {
             // Handle other at-rules normally
             processAtRule(root, name, params, properties)
@@ -277,14 +442,32 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
 
   if (typeof properties === "object") {
     for (const [prop, value] of Object.entries(properties)) {
-      if (typeof value === "string") {
+      // Check if this is any at-rule with empty object (no body).
+      if (
+        prop.startsWith("@") &&
+        typeof value === "object" &&
+        value !== null &&
+        Object.keys(value).length === 0
+      ) {
+        // Parse the at-rule.
+        const atRuleMatch = prop.match(/@([a-zA-Z-]+)\s*(.*)/)
+        if (atRuleMatch) {
+          const [, atRuleName, atRuleParams] = atRuleMatch
+          const atRule = postcss.atRule({
+            name: atRuleName,
+            params: atRuleParams,
+            raws: { semicolon: true, before: "\n    " },
+          })
+          rule.append(atRule)
+        }
+      } else if (typeof value === "string") {
         const decl = postcss.decl({
           prop,
           value: value,
           raws: { semicolon: true, before: "\n    " },
         })
 
-        // Replace existing property or add new one
+        // Replace existing property or add new one.
         const existingDecl = rule.nodes?.find(
           (node): node is Declaration =>
             node.type === "decl" && node.prop === prop
@@ -292,10 +475,10 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
 
         existingDecl ? existingDecl.replaceWith(decl) : rule.append(decl)
       } else if (typeof value === "object") {
-        // Nested selector (including & selectors)
+        // Nested selector (including & selectors).
         const nestedSelector = prop.startsWith("&")
           ? selector.replace(/^([^:]+)/, `$1${prop.substring(1)}`)
-          : prop // Use the original selector for other nested elements
+          : prop // Use the original selector for other nested elements.
         processRule(parent, nestedSelector, value)
       }
     }

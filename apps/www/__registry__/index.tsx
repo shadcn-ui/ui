@@ -5,6 +5,28 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
+    "index": {
+      name: "index",
+      description: "",
+      type: "registry:style",
+      registryDependencies: ["utils"],
+      files: [],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/style/index")),
+      source: "",
+      meta: undefined,
+    },
+    "style": {
+      name: "style",
+      description: "",
+      type: "registry:style",
+      registryDependencies: ["utils"],
+      files: [],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/style/style")),
+      source: "",
+      meta: undefined,
+    },
     "accordion": {
       name: "accordion",
       description: "",
@@ -122,6 +144,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/button.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "button-group": {
+      name: "button-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator"],
+      files: [{
+        path: "registry/new-york/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/button-group.tsx")),
       source: "",
       meta: undefined,
     },
@@ -290,6 +327,36 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "empty": {
+      name: "empty",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/empty.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "field": {
+      name: "field",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "registry/new-york/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/field.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "form": {
       name: "form",
       description: "",
@@ -335,6 +402,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "input-group": {
+      name: "input-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "registry/new-york/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/input-group.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "input-otp": {
       name: "input-otp",
       description: "",
@@ -347,6 +429,36 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/input-otp.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "item": {
+      name: "item",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "registry/new-york/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/item.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "kbd": {
+      name: "kbd",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/kbd.tsx")),
       source: "",
       meta: undefined,
     },
@@ -587,6 +699,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/new-york/ui/sonner.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "spinner": {
+      name: "spinner",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/spinner.tsx")),
       source: "",
       meta: undefined,
     },
@@ -1331,6 +1458,486 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/blocks/login-05/page.tsx")),
       source: "__registry__/new-york/blocks/login-05/page.tsx",
       meta: undefined,
+    },
+    "calendar-01": {
+      name: "calendar-01",
+      description: "A simple calendar.",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-01.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-01.tsx")),
+      source: "__registry__/new-york/blocks/calendar-01.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-02": {
+      name: "calendar-02",
+      description: "Multiple months with single selection.",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-02.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-02.tsx")),
+      source: "__registry__/new-york/blocks/calendar-02.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-03": {
+      name: "calendar-03",
+      description: "Multiple months with multiple selection.",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-03.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-03.tsx")),
+      source: "__registry__/new-york/blocks/calendar-03.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-04": {
+      name: "calendar-04",
+      description: "Single month with range selection",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-04.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-04.tsx")),
+      source: "__registry__/new-york/blocks/calendar-04.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28","mobile":"component"},
+    },
+    "calendar-05": {
+      name: "calendar-05",
+      description: "Multiple months with range selection",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-05.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-05.tsx")),
+      source: "__registry__/new-york/blocks/calendar-05.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-06": {
+      name: "calendar-06",
+      description: "Range selection with minimum days",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-06.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-06.tsx")),
+      source: "__registry__/new-york/blocks/calendar-06.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-07": {
+      name: "calendar-07",
+      description: "Range selection with minimum and maximum days",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-07.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-07.tsx")),
+      source: "__registry__/new-york/blocks/calendar-07.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-08": {
+      name: "calendar-08",
+      description: "Calendar with disabled days",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-08.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-08.tsx")),
+      source: "__registry__/new-york/blocks/calendar-08.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-09": {
+      name: "calendar-09",
+      description: "Calendar with disabled weekends",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-09.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-09.tsx")),
+      source: "__registry__/new-york/blocks/calendar-09.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-10": {
+      name: "calendar-10",
+      description: "Today button",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","button"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-10.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-10.tsx")),
+      source: "__registry__/new-york/blocks/calendar-10.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-11": {
+      name: "calendar-11",
+      description: "Start and end of month",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-11.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-11.tsx")),
+      source: "__registry__/new-york/blocks/calendar-11.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-12": {
+      name: "calendar-12",
+      description: "Localized calendar",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","select"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-12.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-12.tsx")),
+      source: "__registry__/new-york/blocks/calendar-12.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-13": {
+      name: "calendar-13",
+      description: "With Month and Year Dropdown",
+      type: "registry:block",
+      registryDependencies: ["calendar","label","select"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-13.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-13.tsx")),
+      source: "__registry__/new-york/blocks/calendar-13.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-14": {
+      name: "calendar-14",
+      description: "With Booked/Unavailable Days",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-14.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-14.tsx")),
+      source: "__registry__/new-york/blocks/calendar-14.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-15": {
+      name: "calendar-15",
+      description: "With Week Numbers",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-15.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-15.tsx")),
+      source: "__registry__/new-york/blocks/calendar-15.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-16": {
+      name: "calendar-16",
+      description: "With time picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","input","label"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-16.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-16.tsx")),
+      source: "__registry__/new-york/blocks/calendar-16.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-17": {
+      name: "calendar-17",
+      description: "With time picker inline",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","input","label"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-17.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-17.tsx")),
+      source: "__registry__/new-york/blocks/calendar-17.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-18": {
+      name: "calendar-18",
+      description: "Variable size",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-18.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-18.tsx")),
+      source: "__registry__/new-york/blocks/calendar-18.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-19": {
+      name: "calendar-19",
+      description: "With presets",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","input","label"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-19.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-19.tsx")),
+      source: "__registry__/new-york/blocks/calendar-19.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-20": {
+      name: "calendar-20",
+      description: "With time presets",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","button"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-20.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-20.tsx")),
+      source: "__registry__/new-york/blocks/calendar-20.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-21": {
+      name: "calendar-21",
+      description: "Custom days and formatters",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-21.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-21.tsx")),
+      source: "__registry__/new-york/blocks/calendar-21.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-22": {
+      name: "calendar-22",
+      description: "Date picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","label"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-22.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-22.tsx")),
+      source: "__registry__/new-york/blocks/calendar-22.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-23": {
+      name: "calendar-23",
+      description: "Date range picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","label"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-23.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-23.tsx")),
+      source: "__registry__/new-york/blocks/calendar-23.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-24": {
+      name: "calendar-24",
+      description: "Date and Time picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","label"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-24.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-24.tsx")),
+      source: "__registry__/new-york/blocks/calendar-24.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-25": {
+      name: "calendar-25",
+      description: "Date and Time range picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","label"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-25.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-25.tsx")),
+      source: "__registry__/new-york/blocks/calendar-25.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-26": {
+      name: "calendar-26",
+      description: "Date range picker with time",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","input","label"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-26.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-26.tsx")),
+      source: "__registry__/new-york/blocks/calendar-26.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-27": {
+      name: "calendar-27",
+      description: "Chart filter",
+      type: "registry:block",
+      registryDependencies: ["calendar","chart","card","popover","button"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-27.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-27.tsx")),
+      source: "__registry__/new-york/blocks/calendar-27.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-28": {
+      name: "calendar-28",
+      description: "Input with date picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","input","label","popover","button"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-28.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-28.tsx")),
+      source: "__registry__/new-york/blocks/calendar-28.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-29": {
+      name: "calendar-29",
+      description: "Natural language date picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","input","label","popover","button"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-29.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-29.tsx")),
+      source: "__registry__/new-york/blocks/calendar-29.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-30": {
+      name: "calendar-30",
+      description: "With little-date",
+      type: "registry:block",
+      registryDependencies: ["calendar","input","label","popover","button"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-30.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-30.tsx")),
+      source: "__registry__/new-york/blocks/calendar-30.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-31": {
+      name: "calendar-31",
+      description: "With event slots",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","button"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-31.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-31.tsx")),
+      source: "__registry__/new-york/blocks/calendar-31.tsx",
+      meta: {"iframeHeight":"700px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-32": {
+      name: "calendar-32",
+      description: "Date picker in a drawer",
+      type: "registry:block",
+      registryDependencies: ["calendar","button","drawer"],
+      files: [{
+        path: "registry/new-york/blocks/calendar-32.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/new-york/blocks/calendar-32.tsx")),
+      source: "__registry__/new-york/blocks/calendar-32.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
     },
     "chart-area-axes": {
       name: "chart-area-axes",
@@ -5358,6 +5965,28 @@ export const Index: Record<string, any> = {
       meta: undefined,
     },
   },  "default": {
+    "index": {
+      name: "index",
+      description: "",
+      type: "registry:style",
+      registryDependencies: ["utils"],
+      files: [],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/style/index")),
+      source: "",
+      meta: undefined,
+    },
+    "style": {
+      name: "style",
+      description: "",
+      type: "registry:style",
+      registryDependencies: ["utils"],
+      files: [],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/style/style")),
+      source: "",
+      meta: undefined,
+    },
     "accordion": {
       name: "accordion",
       description: "",
@@ -5475,6 +6104,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/button.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "button-group": {
+      name: "button-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator"],
+      files: [{
+        path: "registry/default/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/button-group.tsx")),
       source: "",
       meta: undefined,
     },
@@ -5643,6 +6287,36 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "empty": {
+      name: "empty",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/empty.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "field": {
+      name: "field",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "registry/default/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/field.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "form": {
       name: "form",
       description: "",
@@ -5688,6 +6362,21 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "input-group": {
+      name: "input-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "registry/default/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/input-group.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "input-otp": {
       name: "input-otp",
       description: "",
@@ -5700,6 +6389,36 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/input-otp.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "item": {
+      name: "item",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "registry/default/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/item.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "kbd": {
+      name: "kbd",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/kbd.tsx")),
       source: "",
       meta: undefined,
     },
@@ -5940,6 +6659,21 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/ui/sonner.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "spinner": {
+      name: "spinner",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/spinner.tsx")),
       source: "",
       meta: undefined,
     },
@@ -6684,6 +7418,486 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/blocks/login-05/page.tsx")),
       source: "__registry__/default/blocks/login-05/page.tsx",
       meta: undefined,
+    },
+    "calendar-01": {
+      name: "calendar-01",
+      description: "A simple calendar.",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-01.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-01.tsx")),
+      source: "__registry__/default/blocks/calendar-01.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-02": {
+      name: "calendar-02",
+      description: "Multiple months with single selection.",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-02.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-02.tsx")),
+      source: "__registry__/default/blocks/calendar-02.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-03": {
+      name: "calendar-03",
+      description: "Multiple months with multiple selection.",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-03.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-03.tsx")),
+      source: "__registry__/default/blocks/calendar-03.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-04": {
+      name: "calendar-04",
+      description: "Single month with range selection",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-04.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-04.tsx")),
+      source: "__registry__/default/blocks/calendar-04.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0 xl:pt-28","mobile":"component"},
+    },
+    "calendar-05": {
+      name: "calendar-05",
+      description: "Multiple months with range selection",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-05.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-05.tsx")),
+      source: "__registry__/default/blocks/calendar-05.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-06": {
+      name: "calendar-06",
+      description: "Range selection with minimum days",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-06.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-06.tsx")),
+      source: "__registry__/default/blocks/calendar-06.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-07": {
+      name: "calendar-07",
+      description: "Range selection with minimum and maximum days",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-07.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-07.tsx")),
+      source: "__registry__/default/blocks/calendar-07.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-08": {
+      name: "calendar-08",
+      description: "Calendar with disabled days",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-08.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-08.tsx")),
+      source: "__registry__/default/blocks/calendar-08.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-09": {
+      name: "calendar-09",
+      description: "Calendar with disabled weekends",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-09.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-09.tsx")),
+      source: "__registry__/default/blocks/calendar-09.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-10": {
+      name: "calendar-10",
+      description: "Today button",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","button"],
+      files: [{
+        path: "registry/default/blocks/calendar-10.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-10.tsx")),
+      source: "__registry__/default/blocks/calendar-10.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-11": {
+      name: "calendar-11",
+      description: "Start and end of month",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-11.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-11.tsx")),
+      source: "__registry__/default/blocks/calendar-11.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-12": {
+      name: "calendar-12",
+      description: "Localized calendar",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","select"],
+      files: [{
+        path: "registry/default/blocks/calendar-12.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-12.tsx")),
+      source: "__registry__/default/blocks/calendar-12.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-13": {
+      name: "calendar-13",
+      description: "With Month and Year Dropdown",
+      type: "registry:block",
+      registryDependencies: ["calendar","label","select"],
+      files: [{
+        path: "registry/default/blocks/calendar-13.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-13.tsx")),
+      source: "__registry__/default/blocks/calendar-13.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-14": {
+      name: "calendar-14",
+      description: "With Booked/Unavailable Days",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-14.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-14.tsx")),
+      source: "__registry__/default/blocks/calendar-14.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-15": {
+      name: "calendar-15",
+      description: "With Week Numbers",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-15.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-15.tsx")),
+      source: "__registry__/default/blocks/calendar-15.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-16": {
+      name: "calendar-16",
+      description: "With time picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","input","label"],
+      files: [{
+        path: "registry/default/blocks/calendar-16.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-16.tsx")),
+      source: "__registry__/default/blocks/calendar-16.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-17": {
+      name: "calendar-17",
+      description: "With time picker inline",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","input","label"],
+      files: [{
+        path: "registry/default/blocks/calendar-17.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-17.tsx")),
+      source: "__registry__/default/blocks/calendar-17.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-18": {
+      name: "calendar-18",
+      description: "Variable size",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-18.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-18.tsx")),
+      source: "__registry__/default/blocks/calendar-18.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-19": {
+      name: "calendar-19",
+      description: "With presets",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","input","label"],
+      files: [{
+        path: "registry/default/blocks/calendar-19.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-19.tsx")),
+      source: "__registry__/default/blocks/calendar-19.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-20": {
+      name: "calendar-20",
+      description: "With time presets",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","button"],
+      files: [{
+        path: "registry/default/blocks/calendar-20.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-20.tsx")),
+      source: "__registry__/default/blocks/calendar-20.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-21": {
+      name: "calendar-21",
+      description: "Custom days and formatters",
+      type: "registry:block",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/default/blocks/calendar-21.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-21.tsx")),
+      source: "__registry__/default/blocks/calendar-21.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-22": {
+      name: "calendar-22",
+      description: "Date picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","label"],
+      files: [{
+        path: "registry/default/blocks/calendar-22.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-22.tsx")),
+      source: "__registry__/default/blocks/calendar-22.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-23": {
+      name: "calendar-23",
+      description: "Date range picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","label"],
+      files: [{
+        path: "registry/default/blocks/calendar-23.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-23.tsx")),
+      source: "__registry__/default/blocks/calendar-23.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-24": {
+      name: "calendar-24",
+      description: "Date and Time picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","label"],
+      files: [{
+        path: "registry/default/blocks/calendar-24.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-24.tsx")),
+      source: "__registry__/default/blocks/calendar-24.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-25": {
+      name: "calendar-25",
+      description: "Date and Time range picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","label"],
+      files: [{
+        path: "registry/default/blocks/calendar-25.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-25.tsx")),
+      source: "__registry__/default/blocks/calendar-25.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-26": {
+      name: "calendar-26",
+      description: "Date range picker with time",
+      type: "registry:block",
+      registryDependencies: ["calendar","popover","button","input","label"],
+      files: [{
+        path: "registry/default/blocks/calendar-26.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-26.tsx")),
+      source: "__registry__/default/blocks/calendar-26.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-27": {
+      name: "calendar-27",
+      description: "Chart filter",
+      type: "registry:block",
+      registryDependencies: ["calendar","chart","card","popover","button"],
+      files: [{
+        path: "registry/default/blocks/calendar-27.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-27.tsx")),
+      source: "__registry__/default/blocks/calendar-27.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-28": {
+      name: "calendar-28",
+      description: "Input with date picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","input","label","popover","button"],
+      files: [{
+        path: "registry/default/blocks/calendar-28.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-28.tsx")),
+      source: "__registry__/default/blocks/calendar-28.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-29": {
+      name: "calendar-29",
+      description: "Natural language date picker",
+      type: "registry:block",
+      registryDependencies: ["calendar","input","label","popover","button"],
+      files: [{
+        path: "registry/default/blocks/calendar-29.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-29.tsx")),
+      source: "__registry__/default/blocks/calendar-29.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-30": {
+      name: "calendar-30",
+      description: "With little-date",
+      type: "registry:block",
+      registryDependencies: ["calendar","input","label","popover","button"],
+      files: [{
+        path: "registry/default/blocks/calendar-30.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-30.tsx")),
+      source: "__registry__/default/blocks/calendar-30.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
+    },
+    "calendar-31": {
+      name: "calendar-31",
+      description: "With event slots",
+      type: "registry:block",
+      registryDependencies: ["calendar","card","button"],
+      files: [{
+        path: "registry/default/blocks/calendar-31.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-31.tsx")),
+      source: "__registry__/default/blocks/calendar-31.tsx",
+      meta: {"iframeHeight":"700px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0","mobile":"component"},
+    },
+    "calendar-32": {
+      name: "calendar-32",
+      description: "Date picker in a drawer",
+      type: "registry:block",
+      registryDependencies: ["calendar","button","drawer"],
+      files: [{
+        path: "registry/default/blocks/calendar-32.tsx",
+        type: "registry:component",
+        target: ""
+      }],
+      categories: ["calendar","date"],
+      component: React.lazy(() => import("@/registry/default/blocks/calendar-32.tsx")),
+      source: "__registry__/default/blocks/calendar-32.tsx",
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24","mobile":"component"},
     },
     "chart-area-axes": {
       name: "chart-area-axes",
