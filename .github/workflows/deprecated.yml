@@ -39,7 +39,8 @@ jobs:
             const changedFiles = `${{ steps.changed-files.outputs.all_changed_files }}`.split(' ');
             const wwwFiles = changedFiles.filter(file =>
               file.startsWith('apps/www/') &&
-              !file.startsWith('apps/www/public/r/')
+              !file.startsWith('apps/www/public/r/') &&
+              file !== 'apps/www/package.json'
             );
 
             if (wwwFiles.length > 0) {
