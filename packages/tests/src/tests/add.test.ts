@@ -340,5 +340,38 @@ describe("shadcn add", () => {
     expect(
       await fs.pathExists(path.join(fixturePath, "custom/ui/card.tsx"))
     ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(false)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/card.tsx"))
+    ).toBe(false)
+  })
+
+  it("should add at-property", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app-init")
+    await npxShadcn(fixturePath, [
+      "add",
+      "../../fixtures/registry/example-at-property.json",
+      "--yes",
+    ])
+
+    const globalCssContent = await fs.readFile(
+      path.join(fixturePath, "app/globals.css"),
+      "utf-8"
+    )
+
+    expect(
+      cssHasProperties(globalCssContent, [
+        {
+          selector: "@property --foo",
+          properties: {
+            syntax: "'<number>'",
+            inherits: "false",
+            "initial-value": "0",
+          },
+        },
+      ])
+    ).toBe(true)
   })
 })

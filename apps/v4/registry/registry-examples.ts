@@ -2017,6 +2017,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "sonner-types",
+    type: "registry:example",
+    registryDependencies: ["sonner"],
+    files: [
+      {
+        path: "examples/sonner-types.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "spinner-demo",
     type: "registry:example",
     registryDependencies: ["spinner"],
