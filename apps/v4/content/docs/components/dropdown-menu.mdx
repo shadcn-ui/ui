@@ -93,3 +93,19 @@ import {
   name="dropdown-menu-radio-group"
   description="A dropdown menu with radio items."
 />
+
+### Dialog
+
+This example shows how to open a dialog from a dropdown menu.
+
+Use `modal={false}` on the `DropdownMenu` component.
+
+```tsx showLineNumbers
+<DropdownMenu modal={false}>
+  <DropdownMenuTrigger asChild>
+    <Button variant="outline">Actions</Button>
+  </DropdownMenuTrigger>
+</DropdownMenu>
+```
+
+<ComponentPreview name="dropdown-menu-dialog" />

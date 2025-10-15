@@ -71,7 +71,20 @@ import { Button } from "@/components/ui/button"
 <Button variant="outline">Button</Button>
 ```
 
----
+## Cursor
+
+Tailwind v4 [switched](https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor) from `cursor: pointer` to `cursor: default` for the button component.
+
+If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
+
+```css showLineNumbers title="globals.css"
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+```
 
 ## Examples
 
@@ -265,7 +278,7 @@ To create a button group, use the `ButtonGroup` component. See the [Button Group
 You can use the `asChild` prop to make another component look like a button. Here's an example of a link that looks like a button.
 
 ```tsx showLineNumbers
-import { Link } from "next/link"
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 
