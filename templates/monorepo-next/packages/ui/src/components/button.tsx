@@ -4,6 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@workspace/ui/lib/utils"
 
+// Add color variants for each button variant
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
@@ -20,6 +21,13 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        subtle: "",
+        soft: "",
+      },
+      color: {
+        primary: "",
+        secondary: "",
+        warning: "",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -28,29 +36,86 @@ const buttonVariants = cva(
         icon: "size-9",
       },
     },
+    compoundVariants: [
+      // Subtle
+      {
+        variant: "subtle",
+        color: "primary",
+        className: "bg-blue-100 text-blue-700 hover:bg-blue-200",
+      },
+      {
+        variant: "subtle",
+        color: "secondary",
+        className: "bg-gray-100 text-gray-700 hover:bg-gray-200",
+      },
+      {
+        variant: "subtle",
+        color: "warning",
+        className: "bg-yellow-100 text-yellow-700 hover:bg-yellow-200",
+      },
+      // Soft
+      {
+        variant: "soft",
+        color: "primary",
+        className: "bg-blue-200 text-blue-800 hover:bg-blue-300",
+      },
+      {
+        variant: "soft",
+        color: "secondary",
+        className: "bg-gray-200 text-gray-800 hover:bg-gray-300",
+      },
+      {
+        variant: "soft",
+        color: "warning",
+        className: "bg-yellow-200 text-yellow-800 hover:bg-yellow-300",
+      },
+      // Outline
+      {
+        variant: "outline",
+        color: "primary",
+        className:
+          "border border-blue-500 text-blue-500 bg-transparent hover:bg-blue-50",
+      },
+      {
+        variant: "outline",
+        color: "secondary",
+        className:
+          "border border-gray-500 text-gray-500 bg-transparent hover:bg-gray-50",
+      },
+      {
+        variant: "outline",
+        color: "warning",
+        className:
+          "border border-yellow-500 text-yellow-500 bg-transparent hover:bg-yellow-50",
+      },
+    ],
     defaultVariants: {
       variant: "default",
+      color: "primary",
       size: "default",
     },
   }
 )
 
+type ButtonProps = React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }
+
 function Button({
   className,
   variant,
+  color,
   size,
   asChild = false,
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
+}: ButtonProps) {
   const Comp = asChild ? Slot : "button"
 
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, color, size }), className)}
       {...props}
     />
   )
