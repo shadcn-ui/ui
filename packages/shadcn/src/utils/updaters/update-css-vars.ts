@@ -897,6 +897,7 @@ export function isColorValue(value: string) {
     value.startsWith("hsl") ||
     value.startsWith("rgb") ||
     value.startsWith("#") ||
-    value.startsWith("oklch")
+    value.startsWith("oklch") ||
+    value.startsWith("var(--color-")
   )
 }
