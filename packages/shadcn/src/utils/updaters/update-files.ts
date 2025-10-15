@@ -1,8 +1,16 @@
-import { existsSync, promises as fs } from "fs"
+import { existsSync, promises as fs, statSync } from "fs"
 import { tmpdir } from "os"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
-import { RegistryItem, registryItemFileSchema } from "@/src/registry/schema"
+import { RegistryItem, registryItemFileSchema } from "@/src/schema"
+import { isContentSame } from "@/src/utils/compare"
+import {
+  findExistingEnvFile,
+  getNewEnvKeys,
+  isEnvFile,
+  mergeEnvContent,
+  parseEnvContent,
+} from "@/src/utils/env-helpers"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -29,6 +37,8 @@ export async function updateFiles(
     silent?: boolean
     rootSpinner?: ReturnType<typeof spinner>
     isRemote?: boolean
+    isWorkspace?: boolean
+    path?: string
   }
 ) {
   if (!files?.length) {
@@ -43,6 +53,7 @@ export async function updateFiles(
     force: false,
     silent: false,
     isRemote: false,
+    isWorkspace: false,
     ...options,
   }
   const filesCreatedSpinner = spinner(`Updating files.`, {
@@ -51,14 +62,19 @@ export async function updateFiles(
 
   const [projectInfo, baseColor] = await Promise.all([
     getProjectInfo(config.resolvedPaths.cwd),
-    getRegistryBaseColor(config.tailwind.baseColor),
+    config.tailwind.baseColor
+      ? getRegistryBaseColor(config.tailwind.baseColor)
+      : Promise.resolve(undefined),
   ])
 
   let filesCreated: string[] = []
   let filesUpdated: string[] = []
   let filesSkipped: string[] = []
+  let envVarsAdded: string[] = []
+  let envFile: string | null = null
 
-  for (const file of files) {
+  for (let index = 0; index < files.length; index++) {
+    const file = files[index]
     if (!file.content) {
       continue
     }
@@ -70,6 +86,8 @@ export async function updateFiles(
         files.map((f) => f.path),
         file.path
       ),
+      path: options.path,
+      fileIndex: index,
     })
 
     if (!filePath) {
@@ -85,41 +103,63 @@ export async function updateFiles(
       )
     }
 
+    if (isEnvFile(filePath) && !existsSync(filePath)) {
+      const alternativeEnvFile = findExistingEnvFile(targetDir)
+      if (alternativeEnvFile) {
+        filePath = alternativeEnvFile
+      }
+    }
+
     const existingFile = existsSync(filePath)
 
+    // Check if the path exists and is a directory - we can't write to directories.
+    if (existingFile && statSync(filePath).isDirectory()) {
+      throw new Error(
+        `Cannot write to ${filePath}: path exists and is a directory. Please provide a file path instead.`
+      )
+    }
+
     // Run our transformers.
-    const content = await transform(
-      {
-        filename: file.path,
-        raw: file.content,
-        config,
-        baseColor,
-        transformJsx: !config.tsx,
-        isRemote: options.isRemote,
-      },
-      [
-        transformImport,
-        transformRsc,
-        transformCssVars,
-        transformTwPrefixes,
-        transformIcons,
-      ]
-    )
+    // Skip transformers for .env files to preserve exact content
+    const content = isEnvFile(filePath)
+      ? file.content
+      : await transform(
+          {
+            filename: file.path,
+            raw: file.content,
+            config,
+            baseColor,
+            transformJsx: !config.tsx,
+            isRemote: options.isRemote,
+          },
+          [
+            transformImport,
+            transformRsc,
+            transformCssVars,
+            transformTwPrefixes,
+            transformIcons,
+          ]
+        )
 
     // Skip the file if it already exists and the content is the same.
-    if (existingFile) {
+    // Exception: Don't skip .env files as we merge content instead of replacing
+    if (existingFile && !isEnvFile(filePath)) {
       const existingFileContent = await fs.readFile(filePath, "utf-8")
-      const [normalizedExisting, normalizedNew] = await Promise.all([
-        getNormalizedFileContent(existingFileContent),
-        getNormalizedFileContent(content),
-      ])
-      if (normalizedExisting === normalizedNew) {
+
+      if (
+        isContentSame(existingFileContent, content, {
+          // Ignore import differences for workspace components.
+          // TODO: figure out if we always want this.
+          ignoreImports: options.isWorkspace,
+        })
+      ) {
         filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
         continue
       }
     }
 
-    if (existingFile && !options.overwrite) {
+    // Skip overwrite prompt for .env files - we'll handle them specially
+    if (existingFile && !options.overwrite && !isEnvFile(filePath)) {
       filesCreatedSpinner.stop()
       if (options.rootSpinner) {
         options.rootSpinner.stop()
@@ -151,10 +191,36 @@ export async function updateFiles(
       await fs.mkdir(targetDir, { recursive: true })
     }
 
+    // Special handling for .env files - append only new keys
+    if (isEnvFile(filePath) && existingFile) {
+      const existingFileContent = await fs.readFile(filePath, "utf-8")
+      const mergedContent = mergeEnvContent(existingFileContent, content)
+      envVarsAdded = getNewEnvKeys(existingFileContent, content)
+      envFile = path.relative(config.resolvedPaths.cwd, filePath)
+
+      if (!envVarsAdded.length) {
+        filesSkipped.push(path.relative(config.resolvedPaths.cwd, filePath))
+        continue
+      }
+
+      await fs.writeFile(filePath, mergedContent, "utf-8")
+      filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
+      continue
+    }
+
     await fs.writeFile(filePath, content, "utf-8")
-    existingFile
-      ? filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
-      : filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
+
+    // Handle file creation logging
+    if (!existingFile) {
+      filesCreated.push(path.relative(config.resolvedPaths.cwd, filePath))
+
+      if (isEnvFile(filePath)) {
+        envVarsAdded = Object.keys(parseEnvContent(content))
+        envFile = path.relative(config.resolvedPaths.cwd, filePath)
+      }
+    } else {
+      filesUpdated.push(path.relative(config.resolvedPaths.cwd, filePath))
+    }
   }
 
   const allFiles = [...filesCreated, ...filesUpdated, ...filesSkipped]
@@ -223,6 +289,17 @@ export async function updateFiles(
     }
   }
 
+  if (envVarsAdded.length && envFile) {
+    spinner(
+      `Added the following variables to ${highlighter.info(envFile)}:`
+    )?.info()
+    if (!options.silent) {
+      for (const key of envVarsAdded) {
+        logger.log(`  ${highlighter.success("+")} ${key}`)
+      }
+    }
+  }
+
   if (!options.silent) {
     logger.break()
   }
@@ -241,8 +318,32 @@ export function resolveFilePath(
     isSrcDir?: boolean
     commonRoot?: string
     framework?: ProjectInfo["framework"]["name"]
+    path?: string
+    fileIndex?: number
   }
 ) {
+  // Handle custom path if provided.
+  if (options.path) {
+    const resolvedPath = path.isAbsolute(options.path)
+      ? options.path
+      : path.join(config.resolvedPaths.cwd, options.path)
+
+    const isFilePath = /\.[^/\\]+$/.test(resolvedPath)
+
+    if (isFilePath) {
+      // We'll only use the custom path for the first file.
+      // This is for registry items with multiple files.
+      if (options.fileIndex === 0) {
+        return resolvedPath
+      }
+    } else {
+      // If the custom path is a directory,
+      // We'll place all files in the directory.
+      const fileName = path.basename(file.path)
+      return path.join(resolvedPath, fileName)
+    }
+  }
+
   if (file.target) {
     if (file.target.startsWith("~/")) {
       return path.join(config.resolvedPaths.cwd, file.target.replace("~/", ""))
@@ -350,10 +451,6 @@ export function resolveNestedFilePath(
   return fileSegments.slice(commonDirIndex + 1).join("/")
 }
 
-export async function getNormalizedFileContent(content: string) {
-  return content.replace(/\r\n/g, "\n").trim()
-}
-
 export function resolvePageTarget(
   target: string,
   framework?: ProjectInfo["framework"]["name"]
@@ -395,7 +492,7 @@ async function resolveImports(filePaths: string[], config: Config) {
     compilerOptions: {},
   })
   const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
-  const tsConfig = await loadConfig(config.resolvedPaths.cwd)
+  const tsConfig = loadConfig(config.resolvedPaths.cwd)
   const updatedFiles = []
 
   if (!projectInfo || tsConfig.resultType === "failed") {

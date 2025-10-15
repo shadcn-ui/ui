@@ -4,6 +4,8 @@ import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 
+import { PAGES_NEW } from "@/lib/docs"
+import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -12,6 +14,30 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york-v4/ui/popover"
+
+const TOP_LEVEL_SECTIONS = [
+  { name: "Get Started", href: "/docs" },
+  {
+    name: "Components",
+    href: "/docs/components",
+  },
+  {
+    name: "Registry",
+    href: "/docs/registry",
+  },
+  {
+    name: "MCP Server",
+    href: "/docs/mcp",
+  },
+  {
+    name: "Forms",
+    href: "/docs/forms",
+  },
+  {
+    name: "Changelog",
+    href: "/docs/changelog",
+  },
+]
 
 export function MobileNav({
   tree,
@@ -79,6 +105,23 @@ export function MobileNav({
               ))}
             </div>
           </div>
+          <div className="flex flex-col gap-4">
+            <div className="text-muted-foreground text-sm font-medium">
+              Sections
+            </div>
+            <div className="flex flex-col gap-3">
+              {TOP_LEVEL_SECTIONS.map(({ name, href }) => {
+                if (!showMcpDocs && href.includes("/mcp")) {
+                  return null
+                }
+                return (
+                  <MobileLink key={name} href={href} onOpenChange={setOpen}>
+                    {name}
+                  </MobileLink>
+                )
+              })}
+            </div>
+          </div>
           <div className="flex flex-col gap-8">
             {tree?.children?.map((group, index) => {
               if (group.type === "folder") {
@@ -90,13 +133,20 @@ export function MobileNav({
                     <div className="flex flex-col gap-3">
                       {group.children.map((item) => {
                         if (item.type === "page") {
+                          if (!showMcpDocs && item.url.includes("/mcp")) {
+                            return null
+                          }
                           return (
                             <MobileLink
                               key={`${item.url}-${index}`}
                               href={item.url}
                               onOpenChange={setOpen}
+                              className="flex items-center gap-2"
                             >
-                              {item.name}
+                              {item.name}{" "}
+                              {PAGES_NEW.includes(item.url) && (
+                                <span className="flex size-2 rounded-full bg-blue-500" />
+                              )}
                             </MobileLink>
                           )
                         }

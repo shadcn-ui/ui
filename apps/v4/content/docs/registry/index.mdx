@@ -1,15 +1,14 @@
 ---
-title: Registry
-description: Run your own component registry.
+title: Introduction
+description: Run your own code registry.
 ---
 
-<Callout>
-  **Note:** This feature is currently experimental. Help us improve it by
-  testing it out and sending feedback. If you have any questions, please [reach
-  out to us](https://github.com/shadcn-ui/ui/discussions).
-</Callout>
+You can use the `shadcn` CLI to run your own code registry. Running your own registry allows you to distribute your custom components, hooks, pages, config, rules and other files to any project.
 
-You can use the `shadcn` CLI to run your own component registry. Running your own registry allows you to distribute your custom components, hooks, pages, and other files to any React project.
+<Callout>
+  **Note:** The registry works with any project type and any framework, and is
+  not limited to React.
+</Callout>
 
 <figure className="flex flex-col gap-4">
   <Image
@@ -27,14 +26,54 @@ You can use the `shadcn` CLI to run your own component registry. Running your ow
     className="mt-6 hidden w-full overflow-hidden rounded-lg border shadow-sm dark:block"
   />
   <figcaption className="text-center text-sm text-gray-500">
-    Distribute code to any React project.
+    A distribution system for code
   </figcaption>
 </figure>
 
-Registry items are automatically compatible with the `shadcn` CLI and `Open in v0`.
+Ready to create your own registry? In the next section, we'll walk you through setting up your own custom registry step-by-step, from creating your first component to publishing it for others to use.
 
-## Requirements
+<div className="mt-6 grid gap-4 sm:grid-cols-2">
+  <LinkedCard href="/docs/registry/getting-started" className="items-start text-sm md:p-6">
+    <div className="font-medium">Getting Started</div>
+    <div className="text-muted-foreground">
+      Set up and build your own registry
+    </div>
+  </LinkedCard>
 
-You are free to design and host your custom registry as you see fit. The only requirement is that your registry items must be valid JSON files that conform to the [registry-item schema specification](/docs/registry/registry-item-json).
-
-If you'd like to see an example of a registry, we have a [template project](https://github.com/shadcn-ui/registry-template) for you to use as a starting point.
+<LinkedCard
+  href="/docs/registry/authentication"
+  className="items-start text-sm md:p-6"
+>
+  <div className="font-medium">Authentication</div>
+  <div className="text-muted-foreground">
+    Secure your registry with authentication
+  </div>
+</LinkedCard>
+<LinkedCard
+  href="/docs/registry/namespace"
+  className="items-start text-sm md:p-6"
+>
+  <div className="font-medium">Namespaces</div>
+  <div className="text-muted-foreground">
+    Configure registries with namespaces
+  </div>
+</LinkedCard>
+<LinkedCard
+  href="/docs/registry/examples"
+  className="items-start text-sm md:p-6"
+>
+  <div className="font-medium">Examples</div>
+  <div className="text-muted-foreground">
+    Registry item examples and configurations
+  </div>
+</LinkedCard>
+  <LinkedCard
+    href="/docs/registry/registry-json"
+    className="items-start text-sm md:p-6"
+  >
+    <div className="font-medium">Schema</div>
+    <div className="text-muted-foreground">
+      Schema specification for registry.json
+    </div>
+  </LinkedCard>
+</div>
