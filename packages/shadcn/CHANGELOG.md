@@ -1,5 +1,23 @@
 # @shadcn/ui
 
+## 3.4.1
+
+### Patch Changes
+
+- [#8420](https://github.com/shadcn-ui/ui/pull/8420) [`40c3ff513a88ca8e6f02bf798a7cf73b88401024`](https://github.com/shadcn-ui/ui/commit/40c3ff513a88ca8e6f02bf798a7cf73b88401024) Thanks [@zbeyens](https://github.com/zbeyens)! - Fix support for universal registry items that only have dependencies without files
+
+- [#8459](https://github.com/shadcn-ui/ui/pull/8459) [`7cd019ad3652a0e98770b89032b7a161edfda805`](https://github.com/shadcn-ui/ui/commit/7cd019ad3652a0e98770b89032b7a161edfda805) Thanks [@shadcn](https://github.com/shadcn)! - add support for color as var
+
+- [#8451](https://github.com/shadcn-ui/ui/pull/8451) [`b83023034a301b41fa18045af0d9bd787e415aa5`](https://github.com/shadcn-ui/ui/commit/b83023034a301b41fa18045af0d9bd787e415aa5) Thanks [@diegohaz](https://github.com/diegohaz)! - fix adding registry item with CSS at-property
+
+## 3.4.0
+
+### Minor Changes
+
+- [#7742](https://github.com/shadcn-ui/ui/pull/7742) [`da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad`](https://github.com/shadcn-ui/ui/commit/da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad) Thanks [@sirldev](https://github.com/sirldev)! - rename monorepo project on init
+
+- [#8348](https://github.com/shadcn-ui/ui/pull/8348) [`e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e`](https://github.com/shadcn-ui/ui/commit/e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e) Thanks [@shadcn](https://github.com/shadcn)! - add mcp support for codex
+
 ## 3.3.1
 
 ### Patch Changes
