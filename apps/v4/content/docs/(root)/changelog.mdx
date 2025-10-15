@@ -34,15 +34,24 @@ import { Spinner } from "@/components/ui/spinner"
 
 Here's what it looks like:
 
-<ComponentPreview name="spinner-basic" className="[&_.preview]:h-[250px]" />
+<ComponentPreview
+  name="spinner-basic"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
 
 Here's what it looks like in a button:
 
-<ComponentPreview name="spinner-button" className="[&_.preview]:h-[250px]" />
+<ComponentPreview
+  name="spinner-button"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
 
 You can edit the code and replace it with your own spinner.
 
-<ComponentPreview name="spinner-custom" className="[&_.preview]:h-[250px]" />
+<ComponentPreview
+  name="spinner-custom"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
 
 ### Kbd
 
@@ -65,7 +74,10 @@ Use `KbdGroup` to group keyboard keys together.
 </KbdGroup>
 ```
 
-<ComponentPreview name="kbd-demo" className="[&_.preview]:h-[250px]" />
+<ComponentPreview
+  name="kbd-demo"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
 
 You can add it to buttons, tooltips, input groups, and more.
 
@@ -73,7 +85,10 @@ You can add it to buttons, tooltips, input groups, and more.
 
 I got a lot of requests for this one: Button Group. It's a container that groups related buttons together with consistent styling. Great for action groups, split buttons, and more.
 
-<ComponentPreview name="button-group-demo" className="[&_.preview]:h-[250px]" />
+<ComponentPreview
+  name="button-group-demo"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
+/>
 
 Here's the code:
 
@@ -107,14 +122,14 @@ Use `ButtonGroupSeparator` to create split buttons. Classic dropdown pattern.
 
 <ComponentPreview
   name="button-group-dropdown"
-  className="[&_.preview]:h-[250px]"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
 />
 
 You can also use it to add prefix or suffix buttons and text to inputs.
 
 <ComponentPreview
   name="button-group-select"
-  className="[&_.preview]:h-[250px]"
+  className="[&_.preview]:h-[250px] [&_pre]:!h-[250px]"
 />
 
 ```tsx showLineNumbers
@@ -148,31 +163,37 @@ import {
 
 Here's a preview with icons:
 
-<ComponentPreview name="input-group-icon" className="[&_.preview]:h-[300px]" />
+<ComponentPreview
+  name="input-group-icon"
+  className="[&_.preview]:h-[300px] [&_pre]:!h-[300px]"
+/>
 
 You can also add buttons to the input group.
 
 <ComponentPreview
   name="input-group-button"
-  className="[&_.preview]:h-[300px]"
+  className="[&_.preview]:h-[300px] [&_pre]:!h-[300px]"
 />
 
 Or text, labels, tooltips,...
 
-<ComponentPreview name="input-group-text" className="[&_.preview]:h-[350px]" />
+<ComponentPreview
+  name="input-group-text"
+  className="[&_.preview]:h-[350px] [&_pre]:!h-[350px]"
+/>
 
 It also works with textareas so you can build really complex components with lots of knobs and dials or yet another prompt form.
 
 <ComponentPreview
   name="input-group-textarea"
-  className="[&_.preview]:h-[450px]"
+  className="[&_.preview]:h-[450px] [&_pre]:!h-[450px]"
 />
 
 Oh here are some cool ones with spinners:
 
 <ComponentPreview
   name="input-group-spinner"
-  className="[&_.preview]:h-[350px]"
+  className="[&_.preview]:h-[350px] [&_pre]:!h-[350px]"
 />
 
 ### Field
@@ -202,15 +223,24 @@ Here's a basic field with an input:
 </Field>
 ```
 
-<ComponentPreview name="field-input" className="[&_.preview]:h-[350px]" />
+<ComponentPreview
+  name="field-input"
+  className="[&_.preview]:h-[350px] [&_pre]:!h-[350px]"
+/>
 
 It works with all form controls. Inputs, textareas, selects, checkboxes, radios, switches, sliders, you name it. Here's a full example:
 
-<ComponentPreview name="field-demo" className="[&_.preview]:h-[850px]" />
+<ComponentPreview
+  name="field-demo"
+  className="[&_.preview]:h-[850px] [&_pre]:!h-[850px]"
+/>
 
 Here are some checkbox fields:
 
-<ComponentPreview name="field-checkbox" className="[&_.preview]:h-[500px]" />
+<ComponentPreview
+  name="field-checkbox"
+  className="[&_.preview]:h-[500px] [&_pre]:!h-[500px]"
+/>
 
 You can group fields together using `FieldGroup` and `FieldSet`. Perfect for
 multi-section forms.
@@ -225,16 +255,25 @@ multi-section forms.
 </FieldSet>
 ```
 
-<ComponentPreview name="field-fieldset" className="[&_.preview]:h-[500px]" />
+<ComponentPreview
+  name="field-fieldset"
+  className="[&_.preview]:h-[500px] [&_pre]:!h-[500px]"
+/>
 
 Making it responsive is easy. Use `orientation="responsive"` and it switches
 between vertical and horizontal layouts based on container width. Done.
 
-<ComponentPreview name="field-responsive" className="[&_.preview]:h-[600px]" />
+<ComponentPreview
+  name="field-responsive"
+  className="[&_.preview]:h-[600px] [&_pre]:!h-[600px]"
+/>
 
 Wait here's more. Wrap your fields in `FieldLabel` to create a selectable field group. Really easy. And it looks great.
 
-<ComponentPreview name="field-choice-card" className="[&_.preview]:h-[600px]" />
+<ComponentPreview
+  name="field-choice-card"
+  className="[&_.preview]:h-[600px] [&_pre]:!h-[600px]"
+/>
 
 ### Item
 
@@ -268,26 +307,26 @@ Here's a basic item:
 
 <ComponentPreview
   name="item-demo"
-  className="[&_.preview]:h-[300px] [&_.preview]:p-4"
+  className="[&_.preview]:h-[300px] [&_.preview]:p-4 [&_pre]:!h-[300px]"
 />
 
 You can add icons, avatars, or images to the item.
 
 <ComponentPreview
   name="item-icon"
-  className="[&_.preview]:h-[300px] [&_.preview]:p-4"
+  className="[&_.preview]:h-[300px] [&_.preview]:p-4 [&_pre]:!h-[300px]"
 />
 
 <ComponentPreview
   name="item-avatar"
-  className="[&_.preview]:h-[300px] [&_.preview]:p-4"
+  className="[&_.preview]:h-[300px] [&_.preview]:p-4 [&_pre]:!h-[300px]"
 />
 
 And here's what a list of items looks like with `ItemGroup`:
 
 <ComponentPreview
   name="item-group"
-  className="[&_.preview]:h-[500px] [&_.preview]:p-4"
+  className="[&_.preview]:h-[500px] [&_.preview]:p-4 [&_pre]:!h-[500px]"
 />
 
 Need it as a link? Use the `asChild` prop:
@@ -308,7 +347,7 @@ Need it as a link? Use the `asChild` prop:
 
 <ComponentPreview
   name="item-link"
-  className="[&_.preview]:h-[400px] [&_.preview]:p-4"
+  className="[&_.preview]:h-[400px] [&_.preview]:p-4 [&_pre]:!h-[400px]"
 />
 
 ### Empty
@@ -342,16 +381,22 @@ Here's how you use it:
 
 <ComponentPreview
   name="empty-demo"
-  className="[&_.preview]:h-[400px] [&_.preview]:p-4"
+  className="[&_.preview]:h-[400px] [&_.preview]:p-4 [&_pre]:!h-[400px]"
 />
 
 You can use it with avatars:
 
-<ComponentPreview name="empty-avatar" className="[&_.preview]:h-[400px]" />
+<ComponentPreview
+  name="empty-avatar"
+  className="[&_.preview]:h-[400px] [&_pre]:!h-[400px]"
+/>
 
 Or with input groups for things like search results or email subscriptions:
 
-<ComponentPreview name="empty-input-group" className="[&_.preview]:h-[450px]" />
+<ComponentPreview
+  name="empty-input-group"
+  className="[&_.preview]:h-[450px] [&_pre]:!h-[450px]"
+/>
 
 That's it. Seven new components. Works with all your libraries. Ready for your projects.
 

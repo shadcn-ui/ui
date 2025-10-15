@@ -43,6 +43,14 @@ export async function ComponentSource({
     return null
   }
 
+  // Fix imports.
+  // Replace @/registry/new-york-v4/ with @/components/.
+  code = code.replaceAll("@/registry/new-york-v4/", "@/components/")
+
+  // Replace export default with export.
+  code = code.replaceAll("export default", "export")
+  code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
+
   const lang = language ?? title?.split(".").pop() ?? "tsx"
   const highlightedCode = await highlightCode(code, lang)
 
