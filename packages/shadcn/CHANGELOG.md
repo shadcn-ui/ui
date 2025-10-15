@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.4.2
+
+### Patch Changes
+
+- [#8478](https://github.com/shadcn-ui/ui/pull/8478) [`b52ec12f1e22cf89270bf3d931f5b7544e4b80b4`](https://github.com/shadcn-ui/ui/commit/b52ec12f1e22cf89270bf3d931f5b7544e4b80b4) Thanks [@shadcn](https://github.com/shadcn)! - fix regression with universal item detection
+
 ## 3.4.1
 
 ### Patch Changes
