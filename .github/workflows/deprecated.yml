@@ -1,13 +1,14 @@
 name: Deprecated
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize]
 
 permissions:
   issues: write
   contents: read
   pull-requests: write
+
 jobs:
   deprecated:
     runs-on: ubuntu-latest
