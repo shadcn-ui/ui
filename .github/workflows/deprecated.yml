@@ -4,6 +4,9 @@ on:
   pull_request:
     types: [opened, synchronize]
 
+permissions:
+  issues: write
+  contents: read
 jobs:
   deprecated:
     runs-on: ubuntu-latest
