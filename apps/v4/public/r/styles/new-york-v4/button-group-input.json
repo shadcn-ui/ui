@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-input",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/button-group-input.tsx",
+      "content": "import { SearchIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { ButtonGroup } from \"@/registry/new-york-v4/ui/button-group\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\n\nexport default function ButtonGroupInput() {\n  return (\n    <ButtonGroup>\n      <Input placeholder=\"Search...\" />\n      <Button variant=\"outline\" aria-label=\"Search\">\n        <SearchIcon />\n      </Button>\n    </ButtonGroup>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
