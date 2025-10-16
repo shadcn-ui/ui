@@ -15,6 +15,7 @@
   "@blocks": "https://blocks.so/r/{name}.json",
   "@bucharitesh": "https://bucharitesh.in/r/{name}.json",
   "@clerk": "https://clerk.com/r/{name}.json",
+  "@coss": "https://coss.com/ui/r/{name}.json",
   "@cult-ui": "https://cult-ui.com/r/{name}.json",
   "@efferd-ui": "https://ui.efferd.com/r/{name}.json",
   "@eldoraui": "https://eldoraui.site/r/{name}.json",
