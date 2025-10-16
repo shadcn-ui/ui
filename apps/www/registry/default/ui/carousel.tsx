@@ -77,13 +77,22 @@ const Carousel = React.forwardRef<
       setCanScrollNext(api.canScrollNext())
     }, [])
 
+    const onButtonClick = React.useCallback(
+      (api: CarouselApi) => {
+        const autoplay = api?.plugins()?.autoplay;
+        autoplay?.[autoplay.options?.stopOnInteraction === false ? "reset" : "stop"]?.()
+      }, []
+    )
+
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev()
-    }, [api])
+      onButtonClick(api)
+    }, [api, onButtonClick])
 
     const scrollNext = React.useCallback(() => {
       api?.scrollNext()
-    }, [api])
+      onButtonClick(api)
+    }, [api, onButtonClick])
 
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
