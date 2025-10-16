@@ -71,6 +71,7 @@ export function ChartPieDonutActive() {
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
+              defaultIndex={0}
             />
             <Pie
               data={chartData}
@@ -78,7 +79,6 @@ export function ChartPieDonutActive() {
               nameKey="browser"
               innerRadius={60}
               strokeWidth={5}
-              activeIndex={0}
               activeShape={({
                 outerRadius = 0,
                 ...props

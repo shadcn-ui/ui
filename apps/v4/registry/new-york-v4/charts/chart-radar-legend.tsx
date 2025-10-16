@@ -61,6 +61,8 @@ export function ChartRadarLegend() {
             margin={{
               top: -40,
               bottom: -10,
+              left: 0,
+              right: 0,
             }}
           >
             <ChartTooltip
