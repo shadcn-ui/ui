@@ -7,6 +7,7 @@ import { IconArrowRight } from "@tabler/icons-react"
 import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
+import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
@@ -30,6 +31,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/new-york-v4/ui/dialog"
+import { Kbd, KbdGroup } from "@/registry/new-york-v4/ui/kbd"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 export function CommandMenu({
@@ -143,7 +145,7 @@ export function CommandMenu({
         <Button
           variant="secondary"
           className={cn(
-            "bg-surface text-surface-foreground/60 dark:bg-card relative h-8 w-full justify-start pl-2.5 font-normal shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64"
+            "bg-surface text-foreground dark:bg-card relative h-8 w-full justify-start pl-3 font-medium shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64"
           )}
           onClick={() => setOpen(true)}
           {...props}
@@ -151,8 +153,10 @@ export function CommandMenu({
           <span className="hidden lg:inline-flex">Search documentation...</span>
           <span className="inline-flex lg:hidden">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
-            <CommandMenuKbd>{isMac ? "⌘" : "Ctrl"}</CommandMenuKbd>
-            <CommandMenuKbd className="aspect-square">K</CommandMenuKbd>
+            <KbdGroup>
+              <Kbd className="border">{isMac ? "⌘" : "Ctrl"}</Kbd>
+              <Kbd className="border">K</Kbd>
+            </KbdGroup>
           </div>
         </Button>
       </DialogTrigger>
@@ -213,6 +217,10 @@ export function CommandMenu({
                   group.children.map((item) => {
                     if (item.type === "page") {
                       const isComponent = item.url.includes("/components/")
+
+                      if (!showMcpDocs && item.url.includes("/mcp")) {
+                        return null
+                      }
 
                       return (
                         <CommandMenuItem

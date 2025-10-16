@@ -144,19 +144,19 @@ export default async function Page(props: {
               )}
             </div>
             {links ? (
-              <div className="flex items-center space-x-2 pt-4">
+              <div className="flex items-center gap-2 pt-4">
                 {links?.doc && (
-                  <Badge asChild variant="secondary">
-                    <Link href={links.doc} target="_blank" rel="noreferrer">
+                  <Badge asChild variant="secondary" className="rounded-full">
+                    <a href={links.doc} target="_blank" rel="noreferrer">
                       Docs <IconArrowUpRight />
-                    </Link>
+                    </a>
                   </Badge>
                 )}
                 {links?.api && (
-                  <Badge asChild variant="secondary">
-                    <Link href={links.api} target="_blank" rel="noreferrer">
+                  <Badge asChild variant="secondary" className="rounded-full">
+                    <a href={links.api} target="_blank" rel="noreferrer">
                       API Reference <IconArrowUpRight />
-                    </Link>
+                    </a>
                   </Badge>
                 )}
               </div>
@@ -193,7 +193,7 @@ export default async function Page(props: {
           )}
         </div>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
         {/* @ts-expect-error - revisit fumadocs types. */}
         {doc.toc?.length ? (

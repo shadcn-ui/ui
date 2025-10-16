@@ -556,9 +556,13 @@ describe("registries", () => {
       "@two": "http://localhost:5555/registry/{name}",
     })
 
-    const output = await npxShadcn(fixturePath, ["add", "@two/one", "@one/foo"])
+    const output = await npxShadcn(fixturePath, [
+      "add",
+      "@two/one",
+      "@foobar/foo",
+    ])
 
-    expect(output.stdout).toContain('Unknown registry "@one"')
+    expect(output.stdout).toContain('Unknown registry "@foobar"')
   })
 
   it("should show an error when authentication is not configured", async () => {

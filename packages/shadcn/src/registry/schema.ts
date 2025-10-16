@@ -52,18 +52,12 @@ export const registryItemCssVarsSchema = z.object({
   dark: z.record(z.string(), z.string()).optional(),
 })
 
-export const registryItemCssSchema = z.record(
-  z.string(),
-  z.lazy(() =>
-    z.union([
-      z.string(),
-      z.record(
-        z.string(),
-        z.union([z.string(), z.record(z.string(), z.string())])
-      ),
-    ])
-  )
+// Recursive type for CSS properties that supports empty objects at any level.
+const cssValueSchema: z.ZodType<any> = z.lazy(() =>
+  z.union([z.string(), z.record(z.string(), cssValueSchema)])
 )
+
+export const registryItemCssSchema = z.record(z.string(), cssValueSchema)
 
 export const registryItemEnvVarsSchema = z.record(z.string(), z.string())
 
@@ -197,3 +191,26 @@ export const configSchema = rawConfigSchema.extend({
 // TODO: type the key.
 // Okay for now since I don't want a breaking change.
 export const workspaceConfigSchema = z.record(configSchema)
+
+export const searchResultItemSchema = z.object({
+  name: z.string(),
+  type: z.string().optional(),
+  description: z.string().optional(),
+  registry: z.string(),
+  addCommandArgument: z.string(),
+})
+
+export const searchResultsSchema = z.object({
+  pagination: z.object({
+    total: z.number(),
+    offset: z.number(),
+    limit: z.number(),
+    hasMore: z.boolean(),
+  }),
+  items: z.array(searchResultItemSchema),
+})
+
+export const registriesIndexSchema = z.record(
+  z.string().regex(/^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/),
+  z.string()
+)
