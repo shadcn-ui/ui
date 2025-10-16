@@ -77,12 +77,12 @@ export function ChartBarActive() {
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
+              defaultIndex={2}
             />
             <Bar
               dataKey="visitors"
               strokeWidth={2}
               radius={8}
-              activeIndex={2}
               activeBar={({ ...props }) => {
                 return (
                   <Rectangle

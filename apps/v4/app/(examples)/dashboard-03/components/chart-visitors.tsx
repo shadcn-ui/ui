@@ -129,6 +129,7 @@ export function ChartVisitors() {
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
+              defaultIndex={activeIndex}
             />
             <Pie
               data={desktopData}
@@ -136,7 +137,6 @@ export function ChartVisitors() {
               nameKey="month"
               innerRadius={60}
               strokeWidth={5}
-              activeIndex={activeIndex}
               activeShape={({
                 outerRadius = 0,
                 ...props
