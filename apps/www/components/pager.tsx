@@ -1,4 +1,6 @@
+import { useEffect } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Doc } from "contentlayer/generated"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { NavItem, NavItemWithChildren } from "types/nav"
@@ -12,6 +14,20 @@ interface DocsPagerProps {
 
 export function DocsPager({ doc }: DocsPagerProps) {
   const pager = getPagerForDoc(doc)
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft" && pager?.prev?.href) {
+        router.push(pager.prev.href)
+      } else if (event.key === "ArrowRight" && pager?.next?.href) {
+        router.push(pager.next.href)
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [pager?.next?.href, pager?.prev?.href, router])
 
   if (!pager) {
     return null
@@ -52,10 +68,7 @@ export function getPagerForDoc(doc: Doc) {
     activeIndex !== flattenedLinks.length - 1
       ? flattenedLinks[activeIndex + 1]
       : null
-  return {
-    prev,
-    next,
-  }
+  return { prev, next }
 }
 
 export function flatten(links: NavItemWithChildren[]): NavItem[] {
