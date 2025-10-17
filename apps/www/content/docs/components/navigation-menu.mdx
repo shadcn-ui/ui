@@ -87,11 +87,11 @@ import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 
 ```tsx {3-5}
 <NavigationMenuItem>
-  <Link href="/docs" legacyBehavior passHref>
-    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+  <NavigationMenuLink asChild>
+    <Link href="/docs" className={navigationMenuTriggerStyle()}>
       Documentation
-    </NavigationMenuLink>
-  </Link>
+    </Link>
+  </NavigationMenuLink>
 </NavigationMenuItem>
 ```
 
