@@ -327,7 +327,8 @@ SidebarRail.displayName = "SidebarRail"
 const SidebarInset = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"main">
->(({ className, ...props }, ref) => {
+>(({ className, style, ...props }, ref) => {
+  const { open } = useSidebar()
   return (
     <main
       ref={ref}
@@ -336,6 +337,12 @@ const SidebarInset = React.forwardRef<
         "md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
         className
       )}
+      style={
+        {
+          width: open ? `calc(100% - ${SIDEBAR_WIDTH})` : `calc(100% - ${SIDEBAR_WIDTH_ICON})`,
+          ...style,
+        } as React.CSSProperties
+      }
       {...props}
     />
   )
