@@ -170,10 +170,13 @@ function CustomizerCode({ themeName }: { themeName: string }) {
     () => baseColors.find((theme) => theme.name === themeName),
     [themeName]
   )
-  const activeThemeOKLCH = React.useMemo(
-    () => baseColorsOKLCH[themeName as keyof typeof baseColorsOKLCH],
-    [themeName]
-  )
+
+  const activeThemeOKLCH = React.useMemo(() => {
+    return (
+      baseColorsOKLCH[activeTheme?.name as keyof typeof baseColorsOKLCH] ??
+      baseColorsOKLCH["default"]
+    )
+  }, [activeTheme])
 
   React.useEffect(() => {
     if (hasCopied) {
