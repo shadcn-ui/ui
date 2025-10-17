@@ -2,6 +2,38 @@ import { expect, test } from "vitest"
 
 import { transform } from "../../src/utils/transformers"
 
+
+test('transform nested workspace folder for utils, website/src/utils', async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+
+      raw: `import { Button } from "website/src/components/ui/button"
+      import { Box } from "website/src/components/box"
+      import { cn } from "website/src/utils"
+    `,
+      config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "neutral",
+          cssVariables: true,
+        },
+        aliases: {
+          components: "website/src/components",
+          lib: "website/src/lib",
+          utils: "website/src/utils",
+        },
+      },
+    })
+  ).toMatchInlineSnapshot(`
+    "import { Button } from "website/src/components/ui/button"
+          import { Box } from "website/src/components/box"
+          import { cn } from "website/src/utils"
+        "
+  `)
+
+})
+
 test("transform import", async () => {
   expect(
     await transform({
