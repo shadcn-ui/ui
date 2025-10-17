@@ -105,7 +105,12 @@ export default function ComboboxForm() {
                             value={language.label}
                             key={language.value}
                             onSelect={() => {
-                              form.setValue("language", language.value)
+                              form.setValue(
+                                "language",
+                                form.getValues("language") === language.value
+                                  ? ""
+                                  : language.value
+                              )
                             }}
                           >
                             {language.label}
