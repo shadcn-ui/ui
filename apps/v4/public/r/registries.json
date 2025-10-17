@@ -52,5 +52,11 @@
   "@tailark": "https://tailark.com/r/{name}.json",
   "@tweakcn": "https://tweakcn.com/r/themes/{name}.json",
   "@wds": "https://wds-shadcn-registry.netlify.app/r/{name}.json",
+  "@97cn": "https://97cn.itzik.co/r/{name}.json",
+  "@better-upload": "https://better-upload.com/r/{name}.json",
+  "@zippystarter": "https://zippystarter.com/r/{name}.json",
+  "@elevenlabs-ui": "https://ui.elevenlabs.io/r/{name}.json",
+  "@intentui": "https://intentui.com/r/{name}",
+  "@shadcn-native": "https://shadcn-native.moveinready.casa/registry/{name}"
   "@zippystarter": "https://zippystarter.com/r/{name}.json"
 }
