@@ -46,6 +46,7 @@
   "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
   "@skyr": "https://ui-play.skyroc.me/r/{name}.json",
   "@smoothui": "https://smoothui.dev/r/{name}.json",
+  "@supabase": "https://supabase.com/ui/r/{name}.json",
   "@svgl": "https://svgl.app/r/{name}.json",
   "@tailark": "https://tailark.com/r/{name}.json",
   "@tweakcn": "https://tweakcn.com/r/themes/{name}.json",
