@@ -137,9 +137,11 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
           aria-expanded={open}
           className="w-full justify-between md:max-w-[200px]"
         >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
+          <span className="truncate">
+            {value
+              ? frameworks.find((framework) => framework.value === value)?.label
+              : "Select framework..."}
+          </span>
           <ChevronsUpDown className="text-muted-foreground" />
         </Button>
       </PopoverTrigger>
