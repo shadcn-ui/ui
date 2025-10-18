@@ -4652,6 +4652,42 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
+  "carousel-dots": {
+    name: "carousel-dots",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [{
+      path: "registry/new-york-v4/examples/carousel-dots.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/carousel-dots.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "carousel-dot-vertical": {
+    name: "carousel-dot-vertical",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [{
+      path: "registry/new-york-v4/examples/carousel-dot-vertical.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/new-york-v4/examples/carousel-dot-vertical.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
   "checkbox-demo": {
     name: "checkbox-demo",
     description: "",
