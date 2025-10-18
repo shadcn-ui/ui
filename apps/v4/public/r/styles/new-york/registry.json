@@ -187,6 +187,21 @@
       ]
     },
     {
+      "name": "button-group",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "button",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/ui/button-group.tsx",
+          "type": "registry:ui",
+          "target": ""
+        }
+      ]
+    },
+    {
       "name": "calendar",
       "type": "registry:ui",
       "dependencies": [
@@ -353,6 +368,32 @@
       ]
     },
     {
+      "name": "empty",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/new-york/ui/empty.tsx",
+          "type": "registry:ui",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "label",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/ui/field.tsx",
+          "type": "registry:ui",
+          "target": ""
+        }
+      ]
+    },
+    {
       "name": "form",
       "type": "registry:ui",
       "dependencies": [
@@ -400,6 +441,22 @@
       ]
     },
     {
+      "name": "input-group",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "button",
+        "input",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/ui/input-group.tsx",
+          "type": "registry:ui",
+          "target": ""
+        }
+      ]
+    },
+    {
       "name": "input-otp",
       "type": "registry:ui",
       "dependencies": [
@@ -408,6 +465,31 @@
       "files": [
         {
           "path": "registry/new-york/ui/input-otp.tsx",
+          "type": "registry:ui",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/ui/item.tsx",
+          "type": "registry:ui",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/new-york/ui/kbd.tsx",
           "type": "registry:ui",
           "target": ""
         }
@@ -683,6 +765,20 @@
       "files": [
         {
           "path": "registry/new-york/ui/sonner.tsx",
+          "type": "registry:ui",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/ui/spinner.tsx",
           "type": "registry:ui",
           "target": ""
         }

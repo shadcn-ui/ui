@@ -14,6 +14,14 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import { Input } from "@/registry/new-york-v4/ui/input"
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemTitle,
+} from "@/registry/new-york-v4/ui/item"
 import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Select,
@@ -73,42 +81,35 @@ export function CardsShare() {
         <Separator className="my-4" />
         <div className="flex flex-col gap-4">
           <div className="text-sm font-medium">People with access</div>
-          <div className="grid gap-6">
+          <ItemGroup>
             {people.map((person) => (
-              <div
-                key={person.email}
-                className="flex items-center justify-between gap-4"
-              >
-                <div className="flex items-center gap-4">
-                  <Avatar>
-                    <AvatarImage src={person.avatar} alt="Image" />
-                    <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="text-sm leading-none font-medium">
-                      {person.name}
-                    </p>
-                    <p className="text-muted-foreground text-sm">
-                      {person.email}
-                    </p>
-                  </div>
-                </div>
-                <Select defaultValue="edit">
-                  <SelectTrigger
-                    className="ml-auto pr-2"
-                    aria-label="Edit"
-                    size="sm"
-                  >
-                    <SelectValue placeholder="Select" />
-                  </SelectTrigger>
-                  <SelectContent align="end">
-                    <SelectItem value="edit">Can edit</SelectItem>
-                    <SelectItem value="view">Can view</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <Item key={person.email} className="px-0 py-2">
+                <Avatar>
+                  <AvatarImage src={person.avatar} alt="Image" />
+                  <AvatarFallback>{person.name.charAt(0)}</AvatarFallback>
+                </Avatar>
+                <ItemContent>
+                  <ItemTitle>{person.name}</ItemTitle>
+                  <ItemDescription>{person.email}</ItemDescription>
+                </ItemContent>
+                <ItemActions>
+                  <Select defaultValue="edit">
+                    <SelectTrigger
+                      className="ml-auto pr-2"
+                      aria-label="Edit"
+                      size="sm"
+                    >
+                      <SelectValue placeholder="Select" />
+                    </SelectTrigger>
+                    <SelectContent align="end">
+                      <SelectItem value="edit">Can edit</SelectItem>
+                      <SelectItem value="view">Can view</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </ItemActions>
+              </Item>
             ))}
-          </div>
+          </ItemGroup>
         </div>
       </CardContent>
     </Card>
