@@ -4284,6 +4284,36 @@ export const Index: Record<string, any> = {
       source: "",
       meta: undefined,
     },
+    "carousel-dots": {
+      name: "carousel-dots",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["carousel"],
+      files: [{
+        path: "registry/new-york/examples/carousel-dots.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/carousel-dots.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "carousel-dot-vertical": {
+      name: "carousel-dot-vertical",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["carousel"],
+      files: [{
+        path: "registry/new-york/examples/carousel-dot-vertical.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/new-york/examples/carousel-dot-vertical.tsx")),
+      source: "",
+      meta: undefined,
+    },
     "checkbox-demo": {
       name: "checkbox-demo",
       description: "",
@@ -10241,6 +10271,36 @@ export const Index: Record<string, any> = {
       }],
       categories: undefined,
       component: React.lazy(() => import("@/registry/default/examples/carousel-plugin.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "carousel-dots": {
+      name: "carousel-dots",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["carousel"],
+      files: [{
+        path: "registry/default/examples/carousel-dots.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/carousel-dots.tsx")),
+      source: "",
+      meta: undefined,
+    },
+    "carousel-dot-vertical": {
+      name: "carousel-dot-vertical",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["carousel"],
+      files: [{
+        path: "registry/default/examples/carousel-dot-vertical.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() => import("@/registry/default/examples/carousel-dot-vertical.tsx")),
       source: "",
       meta: undefined,
     },

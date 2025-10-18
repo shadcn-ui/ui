@@ -5481,6 +5481,34 @@
       ]
     },
     {
+      "name": "carousel-dots",
+      "type": "registry:example",
+      "registryDependencies": [
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/carousel-dots.tsx",
+          "type": "registry:example",
+          "target": ""
+        }
+      ]
+    },
+    {
+      "name": "carousel-dot-vertical",
+      "type": "registry:example",
+      "registryDependencies": [
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/carousel-dot-vertical.tsx",
+          "type": "registry:example",
+          "target": ""
+        }
+      ]
+    },
+    {
       "name": "checkbox-demo",
       "type": "registry:example",
       "registryDependencies": [
