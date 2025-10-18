@@ -552,6 +552,28 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "carousel-dots",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [
+      {
+        path: "examples/carousel-dots.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "carousel-dot-vertical",
+    type: "registry:example",
+    registryDependencies: ["carousel"],
+    files: [
+      {
+        path: "examples/carousel-dot-vertical.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "checkbox-demo",
     type: "registry:example",
     registryDependencies: ["checkbox"],
