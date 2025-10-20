@@ -2369,6 +2369,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "toggle-group-spacing",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [
+      {
+        path: "examples/toggle-group-spacing.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "toggle-demo",
     type: "registry:example",
     registryDependencies: ["toggle"],
