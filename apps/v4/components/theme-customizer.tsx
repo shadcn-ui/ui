@@ -144,7 +144,7 @@ export function CopyCodeButton({
             Copy Code
           </Button>
         </DialogTrigger>
-        <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-900 dark:ring-neutral-800">
+        <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
           <DialogHeader>
             <DialogTitle className="capitalize">
               {activeThemeName === "neutral" ? "Default" : activeThemeName}
