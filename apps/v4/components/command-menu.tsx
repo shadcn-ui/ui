@@ -4,9 +4,11 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import { type DialogProps } from "@radix-ui/react-dialog"
 import { IconArrowRight } from "@tabler/icons-react"
+import { useDocsSearch } from "fumadocs-core/search/client"
 import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
+import { trackEvent } from "@/lib/events"
 import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
@@ -33,6 +35,7 @@ import {
 } from "@/registry/new-york-v4/ui/dialog"
 import { Kbd, KbdGroup } from "@/registry/new-york-v4/ui/kbd"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
 export function CommandMenu({
   tree,
@@ -54,7 +57,56 @@ export function CommandMenu({
     "color" | "page" | "component" | "block" | null
   >(null)
   const [copyPayload, setCopyPayload] = React.useState("")
+
+  const { search, setSearch, query } = useDocsSearch({
+    type: "fetch",
+  })
   const packageManager = config.packageManager || "pnpm"
+
+  // Track search queries with debouncing to avoid excessive tracking.
+  const searchTimeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined)
+  const lastTrackedQueryRef = React.useRef<string>("")
+
+  const trackSearchQuery = React.useCallback((query: string) => {
+    const trimmedQuery = query.trim()
+
+    // Only track if the query is different from the last tracked query and has content.
+    if (trimmedQuery && trimmedQuery !== lastTrackedQueryRef.current) {
+      lastTrackedQueryRef.current = trimmedQuery
+      trackEvent({
+        name: "search_query",
+        properties: {
+          query: trimmedQuery,
+          query_length: trimmedQuery.length,
+        },
+      })
+    }
+  }, [])
+
+  const handleSearchChange = React.useCallback(
+    (value: string) => {
+      // Clear existing timeout.
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current)
+      }
+
+      // Set new timeout to debounce both search and tracking.
+      searchTimeoutRef.current = setTimeout(() => {
+        setSearch(value)
+        trackSearchQuery(value)
+      }, 500)
+    },
+    [setSearch, trackSearchQuery]
+  )
+
+  // Cleanup timeout on unmount.
+  React.useEffect(() => {
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current)
+      }
+    }
+  }, [])
 
   const handlePageHighlight = React.useCallback(
     (isComponent: boolean, item: { url: string; name?: React.ReactNode }) => {
@@ -171,6 +223,7 @@ export function CommandMenu({
         <Command
           className="**:data-[slot=command-input-wrapper]:bg-input/50 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-9 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-9 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border"
           filter={(value, search, keywords) => {
+            handleSearchChange(search)
             const extendValue = value + " " + (keywords?.join(" ") || "")
             if (extendValue.toLowerCase().includes(search.toLowerCase())) {
               return 1
@@ -178,7 +231,14 @@ export function CommandMenu({
             return 0
           }}
         >
-          <CommandInput placeholder="Search documentation..." />
+          <div className="relative">
+            <CommandInput placeholder="Search documentation..." />
+            {query.isLoading && (
+              <div className="pointer-events-none absolute top-1/2 right-3 z-10 flex -translate-y-1/2 items-center justify-center">
+                <Spinner className="text-muted-foreground size-4" />
+              </div>
+            )}
+          </div>
           <CommandList className="no-scrollbar min-h-80 scroll-pt-2 scroll-pb-1.5">
             <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
               No results found.
@@ -322,6 +382,12 @@ export function CommandMenu({
                 ))}
               </CommandGroup>
             ) : null}
+            <SearchResults
+              open={open}
+              setOpen={setOpen}
+              query={query}
+              search={search}
+            />
           </CommandList>
         </Command>
         <div className="text-muted-foreground absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium dark:border-t-neutral-700 dark:bg-neutral-800">
@@ -397,5 +463,68 @@ function CommandMenuKbd({ className, ...props }: React.ComponentProps<"kbd">) {
       )}
       {...props}
     />
+  )
+}
+
+type Query = Awaited<ReturnType<typeof useDocsSearch>>["query"]
+
+function SearchResults({
+  setOpen,
+  query,
+  search,
+}: {
+  open: boolean
+  setOpen: (open: boolean) => void
+  query: Query
+  search: string
+}) {
+  const router = useRouter()
+
+  const uniqueResults =
+    query.data && Array.isArray(query.data)
+      ? query.data.filter(
+          (item, index, self) =>
+            !(
+              item.type === "text" &&
+              item.content.trim().split(/\s+/).length <= 1
+            ) && index === self.findIndex((t) => t.content === item.content)
+        )
+      : []
+
+  if (!search.trim()) {
+    return null
+  }
+
+  if (!query.data || query.data === "empty") {
+    return null
+  }
+
+  if (query.data && uniqueResults.length === 0) {
+    return null
+  }
+
+  return (
+    <CommandGroup
+      className="!px-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+      heading="Search Results"
+    >
+      {uniqueResults.map((item) => {
+        return (
+          <CommandItem
+            key={item.id}
+            data-type={item.type}
+            onSelect={() => {
+              router.push(item.url)
+              setOpen(false)
+            }}
+            className="data-[selected=true]:border-input data-[selected=true]:bg-input/50 h-9 rounded-md border border-transparent !px-3 font-normal"
+            keywords={[item.content]}
+            value={`${item.content} ${item.type}`}
+          >
+            <div className="line-clamp-1 text-sm">{item.content}</div>
+          </CommandItem>
+        )
+      })}
+    </CommandGroup>
   )
 }
