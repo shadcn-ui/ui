@@ -201,7 +201,7 @@ function FieldError({
     }
 
     const uniqueErrors = [
-      ...new Map(errors.map((err) => [err?.message, err])).values(),
+      ...new Map(errors.map((error) => [error?.message, error])).values(),
     ]
 
     if (uniqueErrors?.length == 1) {
