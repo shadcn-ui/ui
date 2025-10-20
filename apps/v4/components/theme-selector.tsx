@@ -6,59 +6,17 @@ import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
-  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { baseColors } from "@/registry/registry-base-colors"
 
-const DEFAULT_THEMES = [
-  {
-    name: "Default",
-    value: "default",
-  },
-  {
-    name: "Scaled",
-    value: "scaled",
-  },
-  {
-    name: "Mono",
-    value: "mono",
-  },
-]
+import { CopyCodeButton } from "./theme-customizer"
 
-const COLOR_THEMES = [
-  {
-    name: "Blue",
-    value: "blue",
-  },
-  {
-    name: "Green",
-    value: "green",
-  },
-  {
-    name: "Amber",
-    value: "amber",
-  },
-  {
-    name: "Rose",
-    value: "rose",
-  },
-  {
-    name: "Purple",
-    value: "purple",
-  },
-  {
-    name: "Orange",
-    value: "orange",
-  },
-  {
-    name: "Teal",
-    value: "teal",
-  },
-]
+const COLOR_THEMES = baseColors.filter(
+  (theme) => !["slate", "stone", "gray", "zinc"].includes(theme.name)
+)
 
 export function ThemeSelector({ className }: React.ComponentProps<"div">) {
   const { activeTheme, setActiveTheme } = useThemeConfig()
@@ -78,32 +36,18 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
           <SelectValue placeholder="Select a theme" />
         </SelectTrigger>
         <SelectContent align="end">
-          <SelectGroup>
-            {DEFAULT_THEMES.map((theme) => (
-              <SelectItem
-                key={theme.name}
-                value={theme.value}
-                className="data-[state=checked]:opacity-50"
-              >
-                {theme.name}
-              </SelectItem>
-            ))}
-          </SelectGroup>
-          <SelectSeparator />
-          <SelectGroup>
-            <SelectLabel>Colors</SelectLabel>
-            {COLOR_THEMES.map((theme) => (
-              <SelectItem
-                key={theme.name}
-                value={theme.value}
-                className="data-[state=checked]:opacity-50"
-              >
-                {theme.name}
-              </SelectItem>
-            ))}
-          </SelectGroup>
+          {COLOR_THEMES.map((theme) => (
+            <SelectItem
+              key={theme.name}
+              value={theme.name}
+              className="data-[state=checked]:opacity-50"
+            >
+              {theme.label === "Neutral" ? "Default" : theme.label}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
+      <CopyCodeButton variant="secondary" size="sm" />
     </div>
   )
 }
