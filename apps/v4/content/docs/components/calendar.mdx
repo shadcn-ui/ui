@@ -81,6 +81,42 @@ return (
 
 See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
 
+## Timezone Issue (Date Selecting Previous Day)
+
+If you notice that selecting a date highlights the **previous day** (for example, selecting the 20th highlights the 19th), this is usually caused by *timezone differences*.
+
+To fix this, you can pass the user’s **local timezone** to the Calendar component.
+
+here's how:
+
+```tsx showLineNumbers
+const [timeZone, setTimeZone] = React.useState<string | undefined>(undefined)
+
+React.useEffect(() => {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
+    setTimeZone(tz)
+  } catch {
+    setTimeZone(undefined)
+  }
+}, [])
+```
+
+Then add the timeZone prop to your Calendar:
+
+```tsx showLineNumbers
+<Calendar
+  disabled={disabled}
+  mode="single"
+  onSelect={handleDateSelect}
+  selected={dateValue}
+  timeZone={timeZone} // [!code highlight]
+  captionLayout="dropdown"
+/>
+```
+
+Adding the timeZone prop ensures the Calendar correctly aligns dates to the user’s local time, preventing off-by-one-day selection issues that can occur due to UTC conversion
+
 ## About
 
 The `Calendar` component is built on top of [React DayPicker](https://react-day-picker.js.org).
