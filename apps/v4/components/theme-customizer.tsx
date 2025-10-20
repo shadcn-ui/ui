@@ -4,6 +4,7 @@ import * as React from "react"
 import template from "lodash/template"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 
+import { THEMES } from "@/lib/themes"
 import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
@@ -51,10 +52,6 @@ interface BaseColorOKLCH {
   light: Record<string, string>
   dark: Record<string, string>
 }
-
-const THEMES = baseColors.filter(
-  (theme) => !["slate", "stone", "gray", "zinc"].includes(theme.name)
-)
 
 export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
   const { activeTheme = "neutral", setActiveTheme } = useThemeConfig()
