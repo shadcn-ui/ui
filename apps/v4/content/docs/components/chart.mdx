@@ -596,6 +596,12 @@ In Recharts v3, the `accessibilityLayer` prop is `true` by default.
 
 ## Upgrade Guide
 
+<Callout icon={<InfoIcon />}>
+
+**Before you upgrade:** Note that `recharts` removed [internal props](https://github.com/recharts/recharts/wiki/3.0-migration-guide#removal-of-internal-props). This means the `<Customized />` component no longer receives props. If you depend on those props, you might need to wait for Recharts to release new hooks. You can ask for new hooks by creating an issue on the [recharts](https://github.com/recharts/recharts/issues) repository.
+
+</Callout>
+
 Run the following command to upgrade your `chart.tsx` component:
 
 ```bash
