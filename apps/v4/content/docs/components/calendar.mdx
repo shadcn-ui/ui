@@ -81,42 +81,6 @@ return (
 
 See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
 
-## Timezone Issue (Date Selecting Previous Day)
-
-If you notice that selecting a date highlights the **previous day** (for example, selecting the 20th highlights the 19th), this is usually caused by *timezone differences*.
-
-To fix this, you can pass the user’s **local timezone** to the Calendar component.
-
-here's how:
-
-```tsx showLineNumbers
-const [timeZone, setTimeZone] = React.useState<string | undefined>(undefined)
-
-React.useEffect(() => {
-  try {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
-    setTimeZone(tz)
-  } catch {
-    setTimeZone(undefined)
-  }
-}, [])
-```
-
-Then add the timeZone prop to your Calendar:
-
-```tsx showLineNumbers
-<Calendar
-  disabled={disabled}
-  mode="single"
-  onSelect={handleDateSelect}
-  selected={dateValue}
-  timeZone={timeZone} // [!code highlight]
-  captionLayout="dropdown"
-/>
-```
-
-Adding the timeZone prop ensures the Calendar correctly aligns dates to the user’s local time, preventing off-by-one-day selection issues that can occur due to UTC conversion
-
 ## About
 
 The `Calendar` component is built on top of [React DayPicker](https://react-day-picker.js.org).
@@ -143,6 +107,34 @@ To use the Persian calendar, edit `components/ui/calendar.tsx` and replace `reac
   title="Persian / Hijri / Jalali Calendar"
   description="A Persian calendar."
 />
+
+## Selected Date (With TimeZone)
+
+The Calendar component accepts a `timeZone` prop to ensure dates are displayed and selected in the user's local timezone.
+
+```tsx showLineNumbers
+export function CalendarWithTimezone() {
+  const [date, setDate] = React.useState<Date | undefined>(undefined)
+  const [timeZone, setTimeZone] = React.useState<string | undefined>(undefined)
+
+  React.useEffect(() => {
+    setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone)
+  }, [])
+
+  return (
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+      timeZone={timeZone}
+    />
+  )
+}
+```
+
+**Note:** If you notice a selected date offset (for example, selecting the 20th highlights the 19th), make sure the `timeZone` prop is set to the user's local timezone.
+
+**Why client-side?** The timezone is detected using `Intl.DateTimeFormat().resolvedOptions().timeZone` inside a `useEffect` to ensure compatibility with server-side rendering. Detecting the timezone during render would cause hydration mismatches, as the server and client may be in different timezones.
 
 ## Examples
 
