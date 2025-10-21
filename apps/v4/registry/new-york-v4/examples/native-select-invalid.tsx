@@ -5,7 +5,7 @@ import {
 
 export default function NativeSelectInvalid() {
   return (
-    <NativeSelect className="w-[180px]" aria-invalid="true">
+    <NativeSelect aria-invalid="true">
       <NativeSelectOption value="">Select role</NativeSelectOption>
       <NativeSelectOption value="admin">Admin</NativeSelectOption>
       <NativeSelectOption value="editor">Editor</NativeSelectOption>

@@ -5,7 +5,7 @@ import {
 
 export default function NativeSelectDemo() {
   return (
-    <NativeSelect className="w-[180px]">
+    <NativeSelect>
       <NativeSelectOption value="">Select status</NativeSelectOption>
       <NativeSelectOption value="todo">Todo</NativeSelectOption>
       <NativeSelectOption value="in-progress">In Progress</NativeSelectOption>

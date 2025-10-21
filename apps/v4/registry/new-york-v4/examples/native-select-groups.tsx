@@ -6,7 +6,7 @@ import {
 
 export default function NativeSelectGroups() {
   return (
-    <NativeSelect className="w-[180px]">
+    <NativeSelect>
       <NativeSelectOption value="">Select department</NativeSelectOption>
       <NativeSelectOptGroup label="Engineering">
         <NativeSelectOption value="frontend">Frontend</NativeSelectOption>
