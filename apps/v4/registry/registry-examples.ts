@@ -1786,6 +1786,50 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "native-select-demo",
+    type: "registry:example",
+    registryDependencies: ["native-select"],
+    files: [
+      {
+        path: "examples/native-select-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "native-select-groups",
+    type: "registry:example",
+    registryDependencies: ["native-select"],
+    files: [
+      {
+        path: "examples/native-select-groups.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "native-select-disabled",
+    type: "registry:example",
+    registryDependencies: ["native-select"],
+    files: [
+      {
+        path: "examples/native-select-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "native-select-invalid",
+    type: "registry:example",
+    registryDependencies: ["native-select"],
+    files: [
+      {
+        path: "examples/native-select-invalid.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "pagination-demo",
     type: "registry:example",
     registryDependencies: ["pagination"],
@@ -2364,6 +2408,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/toggle-group-single.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toggle-group-spacing",
+    type: "registry:example",
+    registryDependencies: ["toggle-group"],
+    files: [
+      {
+        path: "examples/toggle-group-spacing.tsx",
         type: "registry:example",
       },
     ],
