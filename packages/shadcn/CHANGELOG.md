@@ -1,5 +1,105 @@
 # @shadcn/ui
 
+## 3.4.2
+
+### Patch Changes
+
+- [#8478](https://github.com/shadcn-ui/ui/pull/8478) [`b52ec12f1e22cf89270bf3d931f5b7544e4b80b4`](https://github.com/shadcn-ui/ui/commit/b52ec12f1e22cf89270bf3d931f5b7544e4b80b4) Thanks [@shadcn](https://github.com/shadcn)! - fix regression with universal item detection
+
+## 3.4.1
+
+### Patch Changes
+
+- [#8420](https://github.com/shadcn-ui/ui/pull/8420) [`40c3ff513a88ca8e6f02bf798a7cf73b88401024`](https://github.com/shadcn-ui/ui/commit/40c3ff513a88ca8e6f02bf798a7cf73b88401024) Thanks [@zbeyens](https://github.com/zbeyens)! - Fix support for universal registry items that only have dependencies without files
+
+- [#8459](https://github.com/shadcn-ui/ui/pull/8459) [`7cd019ad3652a0e98770b89032b7a161edfda805`](https://github.com/shadcn-ui/ui/commit/7cd019ad3652a0e98770b89032b7a161edfda805) Thanks [@shadcn](https://github.com/shadcn)! - add support for color as var
+
+- [#8451](https://github.com/shadcn-ui/ui/pull/8451) [`b83023034a301b41fa18045af0d9bd787e415aa5`](https://github.com/shadcn-ui/ui/commit/b83023034a301b41fa18045af0d9bd787e415aa5) Thanks [@diegohaz](https://github.com/diegohaz)! - fix adding registry item with CSS at-property
+
+## 3.4.0
+
+### Minor Changes
+
+- [#7742](https://github.com/shadcn-ui/ui/pull/7742) [`da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad`](https://github.com/shadcn-ui/ui/commit/da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad) Thanks [@sirldev](https://github.com/sirldev)! - rename monorepo project on init
+
+- [#8348](https://github.com/shadcn-ui/ui/pull/8348) [`e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e`](https://github.com/shadcn-ui/ui/commit/e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e) Thanks [@shadcn](https://github.com/shadcn)! - add mcp support for codex
+
+## 3.3.1
+
+### Patch Changes
+
+- [`75dde2e64679081dad63ecd20f3fd9e3b68fa0ce`](https://github.com/shadcn-ui/ui/commit/75dde2e64679081dad63ecd20f3fd9e3b68fa0ce) Thanks [@shadcn](https://github.com/shadcn)! - fix deps in cts projects
+
+## 3.3.0
+
+### Minor Changes
+
+- [#8216](https://github.com/shadcn-ui/ui/pull/8216) [`fc6d909ba23ac1ba09cf32087f0524aca398b5aa`](https://github.com/shadcn-ui/ui/commit/fc6d909ba23ac1ba09cf32087f0524aca398b5aa) Thanks [@shadcn](https://github.com/shadcn)! - add getRegistriesIndex
+
+### Patch Changes
+
+- [#8186](https://github.com/shadcn-ui/ui/pull/8186) [`cdf58be7e1ed25bf1dd19a1c60612c5e89b82a60`](https://github.com/shadcn-ui/ui/commit/cdf58be7e1ed25bf1dd19a1c60612c5e89b82a60) Thanks [@imskyleen](https://github.com/imskyleen)! - fix transformCssVars function with prefix
+
+- [#8036](https://github.com/shadcn-ui/ui/pull/8036) [`fae1a81addb22429c103d5d08813e1c80779d5fb`](https://github.com/shadcn-ui/ui/commit/fae1a81addb22429c103d5d08813e1c80779d5fb) Thanks [@fuma-nama](https://github.com/fuma-nama)! - fix async imports not being transformed when installing components
+
+## 3.2.1
+
+### Patch Changes
+
+- [#8147](https://github.com/shadcn-ui/ui/pull/8147) [`e5402f9a20f070e92e7384c1ae08e6bfb79cd7a9`](https://github.com/shadcn-ui/ui/commit/e5402f9a20f070e92e7384c1ae08e6bfb79cd7a9) Thanks [@shadcn](https://github.com/shadcn)! - fix recursive namespacing
+
+## 3.2.0
+
+### Minor Changes
+
+- [#8128](https://github.com/shadcn-ui/ui/pull/8128) [`9c5eb0d20f0b75b28dccee219bf74fc9cd2019c6`](https://github.com/shadcn-ui/ui/commit/9c5eb0d20f0b75b28dccee219bf74fc9cd2019c6) Thanks [@shadcn](https://github.com/shadcn)! - add support for registries index
+
+## 3.1.0
+
+### Minor Changes
+
+- [#8110](https://github.com/shadcn-ui/ui/pull/8110) [`64f8baf9aa7562d4d2170863c29c6ae723f31df3`](https://github.com/shadcn-ui/ui/commit/64f8baf9aa7562d4d2170863c29c6ae723f31df3) Thanks [@shadcn](https://github.com/shadcn)! - allow no files items
+
+- [#8109](https://github.com/shadcn-ui/ui/pull/8109) [`e84c819977046f555daa9a8af5736ad7725fb4da`](https://github.com/shadcn-ui/ui/commit/e84c819977046f555daa9a8af5736ad7725fb4da) Thanks [@shadcn](https://github.com/shadcn)! - update handling of import and apply at rules
+
+## 3.0.0
+
+### Major Changes
+
+- [#8004](https://github.com/shadcn-ui/ui/pull/8004) [`a941287411e4cf4eca29779a8220d59bfca2a25c`](https://github.com/shadcn-ui/ui/commit/a941287411e4cf4eca29779a8220d59bfca2a25c) Thanks [@shadcn](https://github.com/shadcn)! - bump all dependencies
+
+- [#8012](https://github.com/shadcn-ui/ui/pull/8012) [`296feb28a220627958f3a558dcb2384875c2d7a1`](https://github.com/shadcn-ui/ui/commit/296feb28a220627958f3a558dcb2384875c2d7a1) Thanks [@shadcn](https://github.com/shadcn)! - add new mcp server and command
+
+- [#7994](https://github.com/shadcn-ui/ui/pull/7994) [`4f5333ea7ae8a2197fb84472addaa9fd66d984ef`](https://github.com/shadcn-ui/ui/commit/4f5333ea7ae8a2197fb84472addaa9fd66d984ef) Thanks [@shadcn](https://github.com/shadcn)! - add view and search commands
+
+- [#7983](https://github.com/shadcn-ui/ui/pull/7983) [`a426fea9410ade04c26bb4edfa5da813ecaddc17`](https://github.com/shadcn-ui/ui/commit/a426fea9410ade04c26bb4edfa5da813ecaddc17) Thanks [@shadcn](https://github.com/shadcn)! - update getRegistry, getRegistryItems and resolveRegistryItems apis
+
+- [#7990](https://github.com/shadcn-ui/ui/pull/7990) [`b3639227d0737538e98923ab335b6dd03f2c993f`](https://github.com/shadcn-ui/ui/commit/b3639227d0737538e98923ab335b6dd03f2c993f) Thanks [@shadcn](https://github.com/shadcn)! - deprecate fetchRegistry and resolveRegistryTree
+
+- [#7972](https://github.com/shadcn-ui/ui/pull/7972) [`6e870c399350adf17554c35cdf732421ac8a6ab2`](https://github.com/shadcn-ui/ui/commit/6e870c399350adf17554c35cdf732421ac8a6ab2) Thanks [@shadcn](https://github.com/shadcn)! - copy registry.json on build
+
+- [#7989](https://github.com/shadcn-ui/ui/pull/7989) [`a4a36007578a6847c0b1f02c1b46350de6ebe2cc`](https://github.com/shadcn-ui/ui/commit/a4a36007578a6847c0b1f02c1b46350de6ebe2cc) Thanks [@shadcn](https://github.com/shadcn)! - move schema to shadcn/schema
+
+- [#8001](https://github.com/shadcn-ui/ui/pull/8001) [`fed7e3bfdc2696b8bc1fb8e65134e96330347aa0`](https://github.com/shadcn-ui/ui/commit/fed7e3bfdc2696b8bc1fb8e65134e96330347aa0) Thanks [@shadcn](https://github.com/shadcn)! - update signatures for getRegistry, getRegistryItems, resolveRegistryItems and searchRegistries
+
+- [#7992](https://github.com/shadcn-ui/ui/pull/7992) [`7d71b02fb1c69b649fd143d0eeab1ddc7995f5ca`](https://github.com/shadcn-ui/ui/commit/7d71b02fb1c69b649fd143d0eeab1ddc7995f5ca) Thanks [@shadcn](https://github.com/shadcn)! - add getRegistry
+
+- [#7948](https://github.com/shadcn-ui/ui/pull/7948) [`2c164b0f221fac0367a0eda3ce8502b38b25ce3e`](https://github.com/shadcn-ui/ui/commit/2c164b0f221fac0367a0eda3ce8502b38b25ce3e) Thanks [@shadcn](https://github.com/shadcn)! - update registry dependencies resolution algorithm
+
+- [#8086](https://github.com/shadcn-ui/ui/pull/8086) [`17422714f65a36a9fc81eeb227366a2e44171be9`](https://github.com/shadcn-ui/ui/commit/17422714f65a36a9fc81eeb227366a2e44171be9) Thanks [@shadcn](https://github.com/shadcn)! - add mcp init command
+
+- [#7940](https://github.com/shadcn-ui/ui/pull/7940) [`578f83cbefe1b3d70b8179a58c70c5729fd1982f`](https://github.com/shadcn-ui/ui/commit/578f83cbefe1b3d70b8179a58c70c5729fd1982f) Thanks [@shadcn](https://github.com/shadcn)! - add support for namespaced registries
+
+### Minor Changes
+
+- [#7955](https://github.com/shadcn-ui/ui/pull/7955) [`a80ab374830fa414bf3672fefc66b03ea4b8da78`](https://github.com/shadcn-ui/ui/commit/a80ab374830fa414bf3672fefc66b03ea4b8da78) Thanks [@shadcn](https://github.com/shadcn)! - update file handling for monorepo
+
+### Patch Changes
+
+- [#8081](https://github.com/shadcn-ui/ui/pull/8081) [`fc27ba269217ade8ae3a87724259874da799cd03`](https://github.com/shadcn-ui/ui/commit/fc27ba269217ade8ae3a87724259874da799cd03) Thanks [@shadcn](https://github.com/shadcn)! - fix --defaults option
+
+- [#7962](https://github.com/shadcn-ui/ui/pull/7962) [`fc8927a1f9d7d1be3338e3d984de20355af61083`](https://github.com/shadcn-ui/ui/commit/fc8927a1f9d7d1be3338e3d984de20355af61083) Thanks [@shadcn](https://github.com/shadcn)! - fix monorepo init on nix system
+
 ## 2.10.0
 
 ### Minor Changes

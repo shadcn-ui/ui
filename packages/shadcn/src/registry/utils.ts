@@ -267,24 +267,35 @@ export function isLocalFile(path: string) {
 
 /**
  * Check if a registry item is universal (framework-agnostic).
- * A universal registry item must have all files with:
- * 1. Explicit targets
- * 2. Type "registry:file"
+ * A universal registry item must:
+ * 1. Have type "registry:item" or "registry:file"
+ * 2. If it has files, all files must have explicit targets and be type "registry:file" or "registry:item"
  * It can be installed without framework detection or components.json.
  */
 export function isUniversalRegistryItem(
   registryItem:
-    | Pick<z.infer<typeof registryItemSchema>, "files">
+    | Pick<z.infer<typeof registryItemSchema>, "files" | "type">
     | null
     | undefined
 ): boolean {
-  return (
-    !!registryItem?.files?.length &&
-    registryItem.files.every(
-      (file) =>
-        !!file.target &&
-        (file.type === "registry:file" || file.type === "registry:item")
-    )
+  if (!registryItem) {
+    return false
+  }
+
+  if (
+    registryItem.type !== "registry:item" &&
+    registryItem.type !== "registry:file"
+  ) {
+    return false
+  }
+
+  const files = registryItem.files ?? []
+
+  // If there are files, all must have targets and be of type registry:file or registry:item.
+  return files.every(
+    (file) =>
+      !!file.target &&
+      (file.type === "registry:file" || file.type === "registry:item")
   )
 }
 

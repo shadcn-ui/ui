@@ -139,6 +139,20 @@
       ]
     },
     {
+      "name": "button-group",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "button",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "calendar",
       "type": "registry:ui",
       "dependencies": [
@@ -294,6 +308,30 @@
       ]
     },
     {
+      "name": "empty",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "label",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "form",
       "type": "registry:ui",
       "dependencies": [
@@ -338,6 +376,21 @@
       ]
     },
     {
+      "name": "input-group",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "button",
+        "input",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "input-otp",
       "type": "registry:ui",
       "dependencies": [
@@ -346,6 +399,19 @@
       "files": [
         {
           "path": "registry/new-york-v4/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/item.tsx",
           "type": "registry:ui"
         }
       ]
@@ -610,6 +676,19 @@
       ]
     },
     {
+      "name": "spinner",
+      "type": "registry:ui",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "switch",
       "type": "registry:ui",
       "dependencies": [
@@ -693,6 +772,26 @@
       "files": [
         {
           "path": "registry/new-york-v4/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/native-select.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1390,7 +1489,8 @@
         "button",
         "card",
         "input",
-        "label"
+        "label",
+        "field"
       ],
       "files": [
         {
@@ -1414,9 +1514,9 @@
       "description": "A two column login page with a cover image.",
       "registryDependencies": [
         "button",
-        "card",
         "input",
-        "label"
+        "label",
+        "field"
       ],
       "files": [
         {
@@ -1442,7 +1542,8 @@
         "button",
         "card",
         "input",
-        "label"
+        "label",
+        "field"
       ],
       "files": [
         {
@@ -1468,7 +1569,8 @@
         "button",
         "card",
         "input",
-        "label"
+        "label",
+        "field"
       ],
       "files": [
         {
@@ -1492,9 +1594,9 @@
       "description": "A simple email-only login page.",
       "registryDependencies": [
         "button",
-        "card",
         "input",
-        "label"
+        "label",
+        "field"
       ],
       "files": [
         {
@@ -2305,6 +2407,270 @@
       "categories": [
         "calendar",
         "date"
+      ]
+    },
+    {
+      "name": "signup-01",
+      "type": "registry:block",
+      "description": "A simple signup form.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/signup-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/signup-01/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "signup"
+      ]
+    },
+    {
+      "name": "signup-02",
+      "type": "registry:block",
+      "description": "A two column signup page with a cover image.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/signup-02/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/signup-02/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "signup"
+      ]
+    },
+    {
+      "name": "signup-03",
+      "type": "registry:block",
+      "description": "A signup page with a muted background color.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/signup-03/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/signup-03/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "signup"
+      ]
+    },
+    {
+      "name": "signup-04",
+      "type": "registry:block",
+      "description": "A signup page with form and image.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/signup-04/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/signup-04/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "signup"
+      ]
+    },
+    {
+      "name": "signup-05",
+      "type": "registry:block",
+      "description": "A simple signup form with social providers.",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/signup-05/page.tsx",
+          "type": "registry:page",
+          "target": "app/signup/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/signup-05/components/signup-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "signup"
+      ]
+    },
+    {
+      "name": "otp-01",
+      "type": "registry:block",
+      "description": "A simple OTP verification form.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input-otp",
+        "label",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/otp-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/otp/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/otp-01/components/otp-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "otp"
+      ]
+    },
+    {
+      "name": "otp-02",
+      "type": "registry:block",
+      "description": "A two column OTP page with a cover image.",
+      "registryDependencies": [
+        "button",
+        "input-otp",
+        "label",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/otp-02/page.tsx",
+          "type": "registry:page",
+          "target": "app/otp/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/otp-02/components/otp-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "otp"
+      ]
+    },
+    {
+      "name": "otp-03",
+      "type": "registry:block",
+      "description": "An OTP page with a muted background color.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input-otp",
+        "label",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/otp-03/page.tsx",
+          "type": "registry:page",
+          "target": "app/otp/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/otp-03/components/otp-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "otp"
+      ]
+    },
+    {
+      "name": "otp-04",
+      "type": "registry:block",
+      "description": "An OTP page with form and image.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input-otp",
+        "label",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/otp-04/page.tsx",
+          "type": "registry:page",
+          "target": "app/otp/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/otp-04/components/otp-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "otp"
+      ]
+    },
+    {
+      "name": "otp-05",
+      "type": "registry:block",
+      "description": "A simple OTP form with social providers.",
+      "registryDependencies": [
+        "button",
+        "input-otp",
+        "label",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/blocks/otp-05/page.tsx",
+          "type": "registry:page",
+          "target": "app/otp/page.tsx"
+        },
+        {
+          "path": "registry/new-york-v4/blocks/otp-05/components/otp-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "otp"
       ]
     },
     {
@@ -3593,176 +3959,367 @@
       ]
     },
     {
-      "name": "theme-daylight",
+      "name": "theme-stone",
       "type": "registry:theme",
       "cssVars": {
         "light": {
-          "background": "36 39% 88%",
-          "foreground": "36 45% 15%",
-          "primary": "36 45% 70%",
-          "primary-foreground": "36 45% 11%",
-          "secondary": "40 35% 77%",
-          "secondary-foreground": "36 45% 25%",
-          "accent": "36 64% 57%",
-          "accent-foreground": "36 72% 17%",
-          "destructive": "0 84% 37%",
-          "destructive-foreground": "0 0% 98%",
-          "muted": "36 33% 75%",
-          "muted-foreground": "36 45% 25%",
-          "card": "36 46% 82%",
-          "card-foreground": "36 45% 20%",
-          "popover": "0 0% 100%",
-          "popover-foreground": "240 10% 3.9%",
-          "border": "36 45% 60%",
-          "input": "36 45% 60%",
-          "ring": "36 45% 30%",
-          "chart-1": "25 34% 28%",
-          "chart-2": "26 36% 34%",
-          "chart-3": "28 40% 40%",
-          "chart-4": "31 41% 48%",
-          "chart-5": "35 43% 53%"
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.147 0.004 49.25)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.147 0.004 49.25)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.147 0.004 49.25)",
+          "primary": "oklch(0.216 0.006 56.043)",
+          "primary-foreground": "oklch(0.985 0.001 106.423)",
+          "secondary": "oklch(0.97 0.001 106.424)",
+          "secondary-foreground": "oklch(0.216 0.006 56.043)",
+          "muted": "oklch(0.97 0.001 106.424)",
+          "muted-foreground": "oklch(0.553 0.013 58.071)",
+          "accent": "oklch(0.97 0.001 106.424)",
+          "accent-foreground": "oklch(0.216 0.006 56.043)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.923 0.003 48.717)",
+          "input": "oklch(0.923 0.003 48.717)",
+          "ring": "oklch(0.709 0.01 56.259)",
+          "chart-1": "oklch(0.646 0.222 41.116)",
+          "chart-2": "oklch(0.6 0.118 184.704)",
+          "chart-3": "oklch(0.398 0.07 227.392)",
+          "chart-4": "oklch(0.828 0.189 84.429)",
+          "chart-5": "oklch(0.769 0.188 70.08)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0.001 106.423)",
+          "sidebar-foreground": "oklch(0.147 0.004 49.25)",
+          "sidebar-primary": "oklch(0.216 0.006 56.043)",
+          "sidebar-primary-foreground": "oklch(0.985 0.001 106.423)",
+          "sidebar-accent": "oklch(0.97 0.001 106.424)",
+          "sidebar-accent-foreground": "oklch(0.216 0.006 56.043)",
+          "sidebar-border": "oklch(0.923 0.003 48.717)",
+          "sidebar-ring": "oklch(0.709 0.01 56.259)"
         },
         "dark": {
-          "background": "36 39% 88%",
-          "foreground": "36 45% 15%",
-          "primary": "36 45% 70%",
-          "primary-foreground": "36 45% 11%",
-          "secondary": "40 35% 77%",
-          "secondary-foreground": "36 45% 25%",
-          "accent": "36 64% 57%",
-          "accent-foreground": "36 72% 17%",
-          "destructive": "0 84% 37%",
-          "destructive-foreground": "0 0% 98%",
-          "muted": "36 33% 75%",
-          "muted-foreground": "36 45% 25%",
-          "card": "36 46% 82%",
-          "card-foreground": "36 45% 20%",
-          "popover": "0 0% 100%",
-          "popover-foreground": "240 10% 3.9%",
-          "border": "36 45% 60%",
-          "input": "36 45% 60%",
-          "ring": "36 45% 30%",
-          "chart-1": "25 34% 28%",
-          "chart-2": "26 36% 34%",
-          "chart-3": "28 40% 40%",
-          "chart-4": "31 41% 48%",
-          "chart-5": "35 43% 53%"
+          "background": "oklch(0.147 0.004 49.25)",
+          "foreground": "oklch(0.985 0.001 106.423)",
+          "card": "oklch(0.216 0.006 56.043)",
+          "card-foreground": "oklch(0.985 0.001 106.423)",
+          "popover": "oklch(0.216 0.006 56.043)",
+          "popover-foreground": "oklch(0.985 0.001 106.423)",
+          "primary": "oklch(0.923 0.003 48.717)",
+          "primary-foreground": "oklch(0.216 0.006 56.043)",
+          "secondary": "oklch(0.268 0.007 34.298)",
+          "secondary-foreground": "oklch(0.985 0.001 106.423)",
+          "muted": "oklch(0.268 0.007 34.298)",
+          "muted-foreground": "oklch(0.709 0.01 56.259)",
+          "accent": "oklch(0.268 0.007 34.298)",
+          "accent-foreground": "oklch(0.985 0.001 106.423)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.553 0.013 58.071)",
+          "chart-1": "oklch(0.488 0.243 264.376)",
+          "chart-2": "oklch(0.696 0.17 162.48)",
+          "chart-3": "oklch(0.769 0.188 70.08)",
+          "chart-4": "oklch(0.627 0.265 303.9)",
+          "chart-5": "oklch(0.645 0.246 16.439)",
+          "sidebar": "oklch(0.216 0.006 56.043)",
+          "sidebar-foreground": "oklch(0.985 0.001 106.423)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.985 0.001 106.423)",
+          "sidebar-accent": "oklch(0.268 0.007 34.298)",
+          "sidebar-accent-foreground": "oklch(0.985 0.001 106.423)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.553 0.013 58.071)"
         }
       }
     },
     {
-      "name": "theme-midnight",
+      "name": "theme-zinc",
       "type": "registry:theme",
       "cssVars": {
         "light": {
-          "background": "240 5% 6%",
-          "foreground": "60 5% 90%",
-          "primary": "240 0% 90%",
-          "primary-foreground": "60 0% 0%",
-          "secondary": "240 4% 15%",
-          "secondary-foreground": "60 5% 85%",
-          "accent": "240 0% 13%",
-          "accent-foreground": "60 0% 100%",
-          "destructive": "0 60% 50%",
-          "destructive-foreground": "0 0% 98%",
-          "muted": "240 5% 25%",
-          "muted-foreground": "60 5% 85%",
-          "card": "240 4% 10%",
-          "card-foreground": "60 5% 90%",
-          "popover": "240 5% 15%",
-          "popover-foreground": "60 5% 85%",
-          "border": "240 6% 20%",
-          "input": "240 6% 20%",
-          "ring": "240 5% 90%",
-          "chart-1": "359 2% 90%",
-          "chart-2": "240 1% 74%",
-          "chart-3": "240 1% 58%",
-          "chart-4": "240 1% 42%",
-          "chart-5": "240 2% 26%"
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.141 0.005 285.823)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.141 0.005 285.823)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.141 0.005 285.823)",
+          "primary": "oklch(0.21 0.006 285.885)",
+          "primary-foreground": "oklch(0.985 0 0)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.967 0.001 286.375)",
+          "muted-foreground": "oklch(0.552 0.016 285.938)",
+          "accent": "oklch(0.967 0.001 286.375)",
+          "accent-foreground": "oklch(0.21 0.006 285.885)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.92 0.004 286.32)",
+          "input": "oklch(0.92 0.004 286.32)",
+          "ring": "oklch(0.705 0.015 286.067)",
+          "chart-1": "oklch(0.646 0.222 41.116)",
+          "chart-2": "oklch(0.6 0.118 184.704)",
+          "chart-3": "oklch(0.398 0.07 227.392)",
+          "chart-4": "oklch(0.828 0.189 84.429)",
+          "chart-5": "oklch(0.769 0.188 70.08)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.141 0.005 285.823)",
+          "sidebar-primary": "oklch(0.21 0.006 285.885)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.967 0.001 286.375)",
+          "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)",
+          "sidebar-border": "oklch(0.92 0.004 286.32)",
+          "sidebar-ring": "oklch(0.705 0.015 286.067)"
         },
         "dark": {
-          "background": "240 5% 6%",
-          "foreground": "60 5% 90%",
-          "primary": "240 0% 90%",
-          "primary-foreground": "60 0% 0%",
-          "secondary": "240 4% 15%",
-          "secondary-foreground": "60 5% 85%",
-          "accent": "240 0% 13%",
-          "accent-foreground": "60 0% 100%",
-          "destructive": "0 60% 50%",
-          "destructive-foreground": "0 0% 98%",
-          "muted": "240 5% 25%",
-          "muted-foreground": "60 5% 85%",
-          "card": "240 4% 10%",
-          "card-foreground": "60 5% 90%",
-          "popover": "240 5% 15%",
-          "popover-foreground": "60 5% 85%",
-          "border": "240 6% 20%",
-          "input": "240 6% 20%",
-          "ring": "240 5% 90%",
-          "chart-1": "359 2% 90%",
-          "chart-2": "240 1% 74%",
-          "chart-3": "240 1% 58%",
-          "chart-4": "240 1% 42%",
-          "chart-5": "240 2% 26%"
+          "background": "oklch(0.141 0.005 285.823)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.21 0.006 285.885)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.21 0.006 285.885)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.92 0.004 286.32)",
+          "primary-foreground": "oklch(0.21 0.006 285.885)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.274 0.006 286.033)",
+          "muted-foreground": "oklch(0.705 0.015 286.067)",
+          "accent": "oklch(0.274 0.006 286.033)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.552 0.016 285.938)",
+          "chart-1": "oklch(0.488 0.243 264.376)",
+          "chart-2": "oklch(0.696 0.17 162.48)",
+          "chart-3": "oklch(0.769 0.188 70.08)",
+          "chart-4": "oklch(0.627 0.265 303.9)",
+          "chart-5": "oklch(0.645 0.246 16.439)",
+          "sidebar": "oklch(0.21 0.006 285.885)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.274 0.006 286.033)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.552 0.016 285.938)"
         }
       }
     },
     {
-      "name": "theme-emerald",
+      "name": "theme-neutral",
       "type": "registry:theme",
       "cssVars": {
         "light": {
-          "background": "0 0% 100%",
-          "foreground": "240 10% 3.9%",
-          "card": "0 0% 100%",
-          "card-foreground": "240 10% 3.9%",
-          "popover": "0 0% 100%",
-          "popover-foreground": "240 10% 3.9%",
-          "primary": "142 86% 28%",
-          "primary-foreground": "356 29% 98%",
-          "secondary": "240 4.8% 95.9%",
-          "secondary-foreground": "240 5.9% 10%",
-          "muted": "240 4.8% 95.9%",
-          "muted-foreground": "240 3.8% 45%",
-          "accent": "240 4.8% 95.9%",
-          "accent-foreground": "240 5.9% 10%",
-          "destructive": "0 72% 51%",
-          "destructive-foreground": "0 0% 98%",
-          "border": "240 5.9% 90%",
-          "input": "240 5.9% 90%",
-          "ring": "142 86% 28%",
-          "chart-1": "139 65% 20%",
-          "chart-2": "140 74% 44%",
-          "chart-3": "142 88% 28%",
-          "chart-4": "137 55% 15%",
-          "chart-5": "141 40% 9%"
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.205 0 0)",
+          "primary-foreground": "oklch(0.985 0 0)",
+          "secondary": "oklch(0.97 0 0)",
+          "secondary-foreground": "oklch(0.205 0 0)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.646 0.222 41.116)",
+          "chart-2": "oklch(0.6 0.118 184.704)",
+          "chart-3": "oklch(0.398 0.07 227.392)",
+          "chart-4": "oklch(0.828 0.189 84.429)",
+          "chart-5": "oklch(0.769 0.188 70.08)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.205 0 0)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
         },
         "dark": {
-          "background": "240 10% 3.9%",
-          "foreground": "0 0% 98%",
-          "card": "240 10% 3.9%",
-          "card-foreground": "0 0% 98%",
-          "popover": "240 10% 3.9%",
-          "popover-foreground": "0 0% 98%",
-          "primary": "142 86% 28%",
-          "primary-foreground": "356 29% 98%",
-          "secondary": "240 4.8% 95.9%",
-          "secondary-foreground": "240 5.9% 10%",
-          "muted": "240 3.7% 15.9%",
-          "muted-foreground": "240 5% 64.9%",
-          "accent": "240 3.7% 15.9%",
-          "accent-foreground": "0 0% 98%",
-          "destructive": "0 72% 51%",
-          "destructive-foreground": "0 0% 98%",
-          "border": "240 3.7% 15.9%",
-          "input": "240 3.7% 15.9%",
-          "ring": "142 86% 28%",
-          "chart-1": "142 88% 28%",
-          "chart-2": "139 65% 20%",
-          "chart-3": "140 74% 24%",
-          "chart-4": "137 55% 15%",
-          "chart-5": "141 40% 9%"
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.922 0 0)",
+          "primary-foreground": "oklch(0.205 0 0)",
+          "secondary": "oklch(0.269 0 0)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.488 0.243 264.376)",
+          "chart-2": "oklch(0.696 0.17 162.48)",
+          "chart-3": "oklch(0.769 0.188 70.08)",
+          "chart-4": "oklch(0.627 0.265 303.9)",
+          "chart-5": "oklch(0.645 0.246 16.439)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)"
+        }
+      }
+    },
+    {
+      "name": "theme-gray",
+      "type": "registry:theme",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.13 0.028 261.692)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.13 0.028 261.692)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.13 0.028 261.692)",
+          "primary": "oklch(0.21 0.034 264.665)",
+          "primary-foreground": "oklch(0.985 0.002 247.839)",
+          "secondary": "oklch(0.967 0.003 264.542)",
+          "secondary-foreground": "oklch(0.21 0.034 264.665)",
+          "muted": "oklch(0.967 0.003 264.542)",
+          "muted-foreground": "oklch(0.551 0.027 264.364)",
+          "accent": "oklch(0.967 0.003 264.542)",
+          "accent-foreground": "oklch(0.21 0.034 264.665)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.928 0.006 264.531)",
+          "input": "oklch(0.928 0.006 264.531)",
+          "ring": "oklch(0.707 0.022 261.325)",
+          "chart-1": "oklch(0.646 0.222 41.116)",
+          "chart-2": "oklch(0.6 0.118 184.704)",
+          "chart-3": "oklch(0.398 0.07 227.392)",
+          "chart-4": "oklch(0.828 0.189 84.429)",
+          "chart-5": "oklch(0.769 0.188 70.08)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0.002 247.839)",
+          "sidebar-foreground": "oklch(0.13 0.028 261.692)",
+          "sidebar-primary": "oklch(0.21 0.034 264.665)",
+          "sidebar-primary-foreground": "oklch(0.985 0.002 247.839)",
+          "sidebar-accent": "oklch(0.967 0.003 264.542)",
+          "sidebar-accent-foreground": "oklch(0.21 0.034 264.665)",
+          "sidebar-border": "oklch(0.928 0.006 264.531)",
+          "sidebar-ring": "oklch(0.707 0.022 261.325)"
+        },
+        "dark": {
+          "background": "oklch(0.13 0.028 261.692)",
+          "foreground": "oklch(0.985 0.002 247.839)",
+          "card": "oklch(0.21 0.034 264.665)",
+          "card-foreground": "oklch(0.985 0.002 247.839)",
+          "popover": "oklch(0.21 0.034 264.665)",
+          "popover-foreground": "oklch(0.985 0.002 247.839)",
+          "primary": "oklch(0.928 0.006 264.531)",
+          "primary-foreground": "oklch(0.21 0.034 264.665)",
+          "secondary": "oklch(0.278 0.033 256.848)",
+          "secondary-foreground": "oklch(0.985 0.002 247.839)",
+          "muted": "oklch(0.278 0.033 256.848)",
+          "muted-foreground": "oklch(0.707 0.022 261.325)",
+          "accent": "oklch(0.278 0.033 256.848)",
+          "accent-foreground": "oklch(0.985 0.002 247.839)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.551 0.027 264.364)",
+          "chart-1": "oklch(0.488 0.243 264.376)",
+          "chart-2": "oklch(0.696 0.17 162.48)",
+          "chart-3": "oklch(0.769 0.188 70.08)",
+          "chart-4": "oklch(0.627 0.265 303.9)",
+          "chart-5": "oklch(0.645 0.246 16.439)",
+          "sidebar": "oklch(0.21 0.034 264.665)",
+          "sidebar-foreground": "oklch(0.985 0.002 247.839)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.985 0.002 247.839)",
+          "sidebar-accent": "oklch(0.278 0.033 256.848)",
+          "sidebar-accent-foreground": "oklch(0.985 0.002 247.839)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.551 0.027 264.364)"
+        }
+      }
+    },
+    {
+      "name": "theme-slate",
+      "type": "registry:theme",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.129 0.042 264.695)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.129 0.042 264.695)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.129 0.042 264.695)",
+          "primary": "oklch(0.208 0.042 265.755)",
+          "primary-foreground": "oklch(0.984 0.003 247.858)",
+          "secondary": "oklch(0.968 0.007 247.896)",
+          "secondary-foreground": "oklch(0.208 0.042 265.755)",
+          "muted": "oklch(0.968 0.007 247.896)",
+          "muted-foreground": "oklch(0.554 0.046 257.417)",
+          "accent": "oklch(0.968 0.007 247.896)",
+          "accent-foreground": "oklch(0.208 0.042 265.755)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.929 0.013 255.508)",
+          "input": "oklch(0.929 0.013 255.508)",
+          "ring": "oklch(0.704 0.04 256.788)",
+          "chart-1": "oklch(0.646 0.222 41.116)",
+          "chart-2": "oklch(0.6 0.118 184.704)",
+          "chart-3": "oklch(0.398 0.07 227.392)",
+          "chart-4": "oklch(0.828 0.189 84.429)",
+          "chart-5": "oklch(0.769 0.188 70.08)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.984 0.003 247.858)",
+          "sidebar-foreground": "oklch(0.129 0.042 264.695)",
+          "sidebar-primary": "oklch(0.208 0.042 265.755)",
+          "sidebar-primary-foreground": "oklch(0.984 0.003 247.858)",
+          "sidebar-accent": "oklch(0.968 0.007 247.896)",
+          "sidebar-accent-foreground": "oklch(0.208 0.042 265.755)",
+          "sidebar-border": "oklch(0.929 0.013 255.508)",
+          "sidebar-ring": "oklch(0.704 0.04 256.788)"
+        },
+        "dark": {
+          "background": "oklch(0.129 0.042 264.695)",
+          "foreground": "oklch(0.984 0.003 247.858)",
+          "card": "oklch(0.208 0.042 265.755)",
+          "card-foreground": "oklch(0.984 0.003 247.858)",
+          "popover": "oklch(0.208 0.042 265.755)",
+          "popover-foreground": "oklch(0.984 0.003 247.858)",
+          "primary": "oklch(0.929 0.013 255.508)",
+          "primary-foreground": "oklch(0.208 0.042 265.755)",
+          "secondary": "oklch(0.279 0.041 260.031)",
+          "secondary-foreground": "oklch(0.984 0.003 247.858)",
+          "muted": "oklch(0.279 0.041 260.031)",
+          "muted-foreground": "oklch(0.704 0.04 256.788)",
+          "accent": "oklch(0.279 0.041 260.031)",
+          "accent-foreground": "oklch(0.984 0.003 247.858)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.551 0.027 264.364)",
+          "chart-1": "oklch(0.488 0.243 264.376)",
+          "chart-2": "oklch(0.696 0.17 162.48)",
+          "chart-3": "oklch(0.769 0.188 70.08)",
+          "chart-4": "oklch(0.627 0.265 303.9)",
+          "chart-5": "oklch(0.645 0.246 16.439)",
+          "sidebar": "oklch(0.208 0.042 265.755)",
+          "sidebar-foreground": "oklch(0.984 0.003 247.858)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.984 0.003 247.858)",
+          "sidebar-accent": "oklch(0.279 0.041 260.031)",
+          "sidebar-accent-foreground": "oklch(0.984 0.003 247.858)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.551 0.027 264.364)"
         }
       }
     },
@@ -3989,6 +4546,19 @@
       ]
     },
     {
+      "name": "button-default",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-default.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "button-secondary",
       "type": "registry:example",
       "registryDependencies": [
@@ -4101,6 +4671,175 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/button-as-child.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-rounded",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-rounded.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-size",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-size.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-nested",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-nested.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-size",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-size.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-separator",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-separator.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-split",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-split.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-input",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-dropdown",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-select",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-select.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-popover",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-popover.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-input-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-input-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "button-group-orientation",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/button-group-orientation.tsx",
           "type": "registry:example"
         }
       ]
@@ -4562,6 +5301,662 @@
       ]
     },
     {
+      "name": "empty-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "empty",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/empty-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "empty-icon",
+      "type": "registry:example",
+      "registryDependencies": [
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/empty-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "empty-avatar",
+      "type": "registry:example",
+      "registryDependencies": [
+        "empty",
+        "button",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/empty-avatar.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "empty-avatar-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "empty",
+        "button",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/empty-avatar-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "empty-input-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "empty",
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/empty-input-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "empty-outline",
+      "type": "registry:example",
+      "registryDependencies": [
+        "empty",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/empty-outline.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "empty-background",
+      "type": "registry:example",
+      "registryDependencies": [
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/empty-background.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-input",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-textarea",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-textarea.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-fieldset",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-fieldset.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-radio",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-radio.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-checkbox",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-checkbox.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-switch",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-switch.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-slider",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-slider.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-select",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-select.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-choice-card",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-choice-card.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "field-responsive",
+      "type": "registry:example",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/field-responsive.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-demo",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-input",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-select",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "select",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-select.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-checkbox",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "checkbox",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-checkbox.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-switch",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "switch",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-switch.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-textarea",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "textarea",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-textarea.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-radiogroup",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "radio-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-radiogroup.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-array",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-array.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-complex",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "button",
+        "card",
+        "checkbox",
+        "radio-group",
+        "select",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-complex.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-rhf-password",
+      "type": "registry:example",
+      "dependencies": [
+        "react-hook-form",
+        "@hookform/resolvers",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input-group",
+        "progress",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-rhf-password.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-demo",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-input",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-input.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-textarea",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "textarea",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-textarea.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-select",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "select",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-select.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-checkbox",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "checkbox",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-checkbox.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-switch",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "switch",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-switch.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-radiogroup",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "radio-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-radiogroup.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-array",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "input",
+        "input-group",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-array.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "form-tanstack-complex",
+      "type": "registry:example",
+      "dependencies": [
+        "@tanstack/react-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "field",
+        "button",
+        "card",
+        "checkbox",
+        "radio-group",
+        "select",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/form-tanstack-complex.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "drawer-dialog",
       "type": "registry:example",
       "registryDependencies": [
@@ -4612,6 +6007,23 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/dropdown-menu-radio-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu-dialog",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dropdown-menu",
+        "dialog",
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/dropdown-menu-dialog.tsx",
           "type": "registry:example"
         }
       ]
@@ -4728,6 +6140,160 @@
       ]
     },
     {
+      "name": "input-group-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-label",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-label.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-text",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-text.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-tooltip",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-tooltip.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-button",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-button.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-button-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-button-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-dropdown",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group",
+        "dropdown-menu",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-spinner",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-spinner.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-textarea",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-textarea.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-icon",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-group-custom",
+      "type": "registry:example",
+      "registryDependencies": [
+        "input-group",
+        "badge",
+        "progress",
+        "dropdown-menu",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/input-group-custom.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "input-otp-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -4794,6 +6360,207 @@
       ]
     },
     {
+      "name": "item-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "item-size",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-size.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "item-variant",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-variant.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "item-icon",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-icon.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "item-image",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-image.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "item-avatar",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-avatar.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "item-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "item-header",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-header.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "item-dropdown",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "item-link",
+      "type": "registry:example",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/item-link.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "kbd-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/kbd-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "kbd-tooltip",
+      "type": "registry:example",
+      "registryDependencies": [
+        "kbd",
+        "tooltip",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/kbd-tooltip.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "kbd-input-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "kbd",
+        "input",
+        "button",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/kbd-input-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "kbd-button",
+      "type": "registry:example",
+      "registryDependencies": [
+        "kbd",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/kbd-button.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "kbd-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/kbd-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "label-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -4828,6 +6595,58 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/navigation-menu-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "native-select-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/native-select-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "native-select-groups",
+      "type": "registry:example",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/native-select-groups.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "native-select-disabled",
+      "type": "registry:example",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/native-select-disabled.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "native-select-invalid",
+      "type": "registry:example",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/native-select-invalid.tsx",
           "type": "registry:example"
         }
       ]
@@ -5107,6 +6926,154 @@
       ]
     },
     {
+      "name": "sonner-types",
+      "type": "registry:example",
+      "registryDependencies": [
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/sonner-types.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-basic",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-basic.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-button",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-button.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-badge",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner",
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-badge.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-input-group",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner",
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-input-group.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-empty",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-empty.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-color",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-color.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-custom",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-custom.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-size",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-size.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "spinner-item",
+      "type": "registry:example",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/spinner-item.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "switch-demo",
       "type": "registry:example",
       "registryDependencies": [
@@ -5315,6 +7282,19 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/toggle-group-single.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group-spacing",
+      "type": "registry:example",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/toggle-group-spacing.tsx",
           "type": "registry:example"
         }
       ]
