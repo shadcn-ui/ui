@@ -241,7 +241,7 @@ export function CommandMenu({
           </div>
           <CommandList className="no-scrollbar min-h-80 scroll-pt-2 scroll-pb-1.5">
             <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
-              No results found.
+              {query.isLoading ? "Searching..." : "No results found."}
             </CommandEmpty>
             {navItems && navItems.length > 0 && (
               <CommandGroup
