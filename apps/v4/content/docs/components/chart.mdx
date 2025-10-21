@@ -4,9 +4,11 @@ description: Beautiful charts. Built using Recharts. Copy and paste into your ap
 component: true
 ---
 
-<Callout>
+import { InfoIcon } from "lucide-react"
 
-**Note:** We're working on upgrading to Recharts v3. In the meantime, if you'd like to start testing v3, see the code in the comment [here](https://github.com/shadcn-ui/ui/issues/7669#issuecomment-2998299159). We'll have an official release soon.
+<Callout icon={<InfoIcon />}>
+
+**Note:** The `chart` component is now using Recharts v3. See the [Upgrade Guide](/docs/components/chart#upgrade-guide).
 
 </Callout>
 
@@ -468,7 +470,7 @@ const chartData = [
 #### Tailwind
 
 ```tsx
-<LabelList className="fill-[--color-desktop]" />
+<LabelList className="fill-(--color-desktop)" />
 ```
 
 ## Tooltip
@@ -527,11 +529,11 @@ const chartConfig = {
   },
   chrome: {
     label: "Chrome",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
   safari: {
     label: "Safari",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 ```
@@ -573,11 +575,11 @@ const chartData = [
 const chartConfig = {
   chrome: {
     label: "Chrome",
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
   safari: {
     label: "Safari",
-    color: "hsl(var(--chart-2))",
+    color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 ```
@@ -590,10 +592,29 @@ This will use `Chrome` and `Safari` for the legend names.
 
 ## Accessibility
 
-You can turn on the `accessibilityLayer` prop to add an accessible layer to your chart.
+In Recharts v3, the `accessibilityLayer` prop is `true` by default.
 
-This prop adds keyboard access and screen reader support to your charts.
+## Upgrade Guide
 
-```tsx
-<LineChart accessibilityLayer />
+<Callout icon={<InfoIcon />}>
+
+**Before you upgrade:** Note that `recharts` removed [internal props](https://github.com/recharts/recharts/wiki/3.0-migration-guide#removal-of-internal-props). This means the `<Customized />` component no longer receives props. If you depend on those props, you might need to wait for Recharts to release new hooks. You can ask for new hooks by creating an issue on the [recharts](https://github.com/recharts/recharts/issues) repository.
+
+</Callout>
+
+Run the following command to upgrade your `chart.tsx` component:
+
+```bash
+npx shadcn@latest add chart --overwrite
 ```
+
+You can upgrade most charts by following the official upgrade guide: https://github.com/recharts/recharts/wiki/3.0-migration-guide
+
+Here are a few breaking changes that are relevant to `shadcn/charts`:
+
+1. The `layout` property has been removed from `<Bar />`. Remove it from your charts and use `layout` on `<BarChart />`.
+2. The `activeIndex` property has been removed. Use `defaultIndex` on `<ChartTooltip />`.
+3. The `accessibilityLayer` prop is `true` by default. You can turn it off by setting it to `false`.
+4. The `margin` type has been updated. You are now required to provide a value for all margins: `top`, `right`, `bottom`, `left`.
+
+See also this [diff](https://github.com/shadcn-ui/ui/pull/8486/files) where I upgraded the example charts to Recharts v3.

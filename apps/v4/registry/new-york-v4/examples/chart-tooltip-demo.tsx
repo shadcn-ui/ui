@@ -34,8 +34,8 @@ export default function Component() {
         <TooltipDemo
           label="Page Views"
           payload={[
-            { name: "Desktop", value: 186, fill: "hsl(var(--chart-1))" },
-            { name: "Mobile", value: 80, fill: "hsl(var(--chart-2))" },
+            { name: "Desktop", value: 186, fill: "var(--chart-1)" },
+            { name: "Mobile", value: 80, fill: "var(--chart-2)" },
           ]}
           className="w-[8rem]"
         />
@@ -68,8 +68,8 @@ export default function Component() {
           label="Browser"
           hideLabel
           payload={[
-            { name: "Chrome", value: 1286, fill: "hsl(var(--chart-3))" },
-            { name: "Firefox", value: 1000, fill: "hsl(var(--chart-4))" },
+            { name: "Chrome", value: 1286, fill: "var(--chart-3)" },
+            { name: "Firefox", value: 1000, fill: "var(--chart-4)" },
           ]}
           indicator="dashed"
           className="w-[8rem]"
@@ -78,9 +78,7 @@ export default function Component() {
       <div className="!hidden md:!flex">
         <TooltipDemo
           label="Page Views"
-          payload={[
-            { name: "Desktop", value: 12486, fill: "hsl(var(--chart-3))" },
-          ]}
+          payload={[{ name: "Desktop", value: 12486, fill: "var(--chart-3)" }]}
           className="w-[9rem]"
           indicator="line"
         />
@@ -92,9 +90,7 @@ export default function Component() {
         <TooltipDemo
           label="Browser"
           hideLabel
-          payload={[
-            { name: "Chrome", value: 1286, fill: "hsl(var(--chart-1))" },
-          ]}
+          payload={[{ name: "Chrome", value: 1286, fill: "var(--chart-1)" }]}
           indicator="dot"
           className="w-[8rem]"
         />
@@ -177,7 +173,7 @@ function TooltipDemo({
                 {!hideIndicator && (
                   <div
                     className={cn(
-                      "shrink-0 rounded-[2px] border-[--color-border] bg-[--color-bg]",
+                      "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
                       {
                         "h-2.5 w-2.5": indicator === "dot",
                         "w-1": indicator === "line",

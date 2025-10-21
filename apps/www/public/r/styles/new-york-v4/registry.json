@@ -156,7 +156,7 @@
     {
       "name": "chart",
       "type": "registry:ui",
-      "dependencies": ["recharts@2.15.4", "lucide-react"],
+      "dependencies": ["recharts", "lucide-react"],
       "registryDependencies": ["card"],
       "files": [
         {

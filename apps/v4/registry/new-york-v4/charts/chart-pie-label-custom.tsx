@@ -85,7 +85,7 @@ export function ChartPieLabelCustom() {
                     dominantBaseline={props.dominantBaseline}
                     fill="hsla(var(--foreground))"
                   >
-                    {payload.visitors}
+                    {(payload as (typeof chartData)[0]).visitors}
                   </text>
                 )
               }}
