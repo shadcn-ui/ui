@@ -192,186 +192,159 @@ function CustomizerCode({ themeName }: { themeName: string }) {
           <TabsTrigger value="v3">Tailwind v3</TabsTrigger>
         </TabsList>
         <TabsContent value="v4">
-          <figure
-            data-rehype-pretty-code-figure
-            className="!mx-0 mt-0 rounded-lg"
-          >
-            <figcaption
-              className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
-              data-rehype-pretty-code-title=""
-              data-language="css"
-              data-theme="github-dark github-light-default"
+          {activeThemeOKLCH ? (
+            <figure
+              data-rehype-pretty-code-figure
+              className="!mx-0 mt-0 rounded-lg"
             >
-              <Icons.css className="fill-foreground" />
-              app/globals.css
-            </figcaption>
-            <pre className="no-scrollbar max-h-[300px] min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 md:max-h-[450px]">
-              <Button
-                data-slot="copy-button"
-                size="icon"
-                variant="ghost"
-                className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
-                onClick={() => {
-                  copyToClipboardWithMeta(
-                    tailwindVersion === "v3"
-                      ? getThemeCode(activeTheme, 0.65)
-                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
-                    {
-                      name: "copy_theme_code",
-                      properties: {
-                        theme: themeName,
-                        radius: 0.5,
-                      },
-                    }
-                  )
-                  setHasCopied(true)
-                }}
+              <figcaption
+                className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+                data-rehype-pretty-code-title=""
+                data-language="css"
+                data-theme="github-dark github-light-default"
               >
-                <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
-              </Button>
-              <code data-line-numbers data-language="css">
-                <span data-line className="line text-code-foreground">
-                  &nbsp;:root &#123;
-                </span>
-                <span data-line className="line text-code-foreground">
-                  &nbsp;&nbsp;&nbsp;--radius: 0.65rem;
-                </span>
-                {Object.entries(activeThemeOKLCH?.light).map(([key, value]) => (
-                  <span
-                    data-line
-                    className="line text-code-foreground"
-                    key={key}
-                  >
-                    &nbsp;&nbsp;&nbsp;--{key}: {value};
+                <Icons.css className="fill-foreground" />
+                app/globals.css
+              </figcaption>
+              <pre className="no-scrollbar max-h-[300px] min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 md:max-h-[450px]">
+                <Button
+                  data-slot="copy-button"
+                  size="icon"
+                  variant="ghost"
+                  className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
+                  onClick={() => {
+                    copyToClipboardWithMeta(
+                      tailwindVersion === "v3"
+                        ? getThemeCode(activeTheme, 0.65)
+                        : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
+                      {
+                        name: "copy_theme_code",
+                        properties: {
+                          theme: themeName,
+                          radius: 0.5,
+                        },
+                      }
+                    )
+                    setHasCopied(true)
+                  }}
+                >
+                  <span className="sr-only">Copy</span>
+                  {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                </Button>
+                <code data-line-numbers data-language="css">
+                  <span data-line className="line text-code-foreground">
+                    &nbsp;:root &#123;
                   </span>
-                ))}
-                <span data-line className="line text-code-foreground">
-                  &nbsp;&#125;
-                </span>
-                <span data-line className="line text-code-foreground">
-                  &nbsp;
-                </span>
-                <span data-line className="line text-code-foreground">
-                  &nbsp;.dark &#123;
-                </span>
-                {Object.entries(activeThemeOKLCH?.dark).map(([key, value]) => (
-                  <span
-                    data-line
-                    className="line text-code-foreground"
-                    key={key}
-                  >
-                    &nbsp;&nbsp;&nbsp;--{key}: {value};
+                  <span data-line className="line text-code-foreground">
+                    &nbsp;&nbsp;&nbsp;--radius: 0.65rem;
                   </span>
-                ))}
-                <span data-line className="line text-code-foreground">
-                  &nbsp;&#125;
-                </span>
-              </code>
-            </pre>
-          </figure>
+                  {Object.entries(activeThemeOKLCH?.light).map(
+                    ([key, value]) => (
+                      <span
+                        data-line
+                        className="line text-code-foreground"
+                        key={key}
+                      >
+                        &nbsp;&nbsp;&nbsp;--{key}: {value};
+                      </span>
+                    )
+                  )}
+                  <span data-line className="line text-code-foreground">
+                    &nbsp;&#125;
+                  </span>
+                  <span data-line className="line text-code-foreground">
+                    &nbsp;
+                  </span>
+                  <span data-line className="line text-code-foreground">
+                    &nbsp;.dark &#123;
+                  </span>
+                  {Object.entries(activeThemeOKLCH?.dark).map(
+                    ([key, value]) => (
+                      <span
+                        data-line
+                        className="line text-code-foreground"
+                        key={key}
+                      >
+                        &nbsp;&nbsp;&nbsp;--{key}: {value};
+                      </span>
+                    )
+                  )}
+                  <span data-line className="line text-code-foreground">
+                    &nbsp;&#125;
+                  </span>
+                </code>
+              </pre>
+            </figure>
+          ) : (
+            <div className="border-muted bg-muted/50 text-muted-foreground flex h-[300px] items-center justify-center rounded-md border text-sm">
+              <p>Theme variables not available at the moment</p>
+            </div>
+          )}
         </TabsContent>
         <TabsContent value="v3">
-          <figure
-            data-rehype-pretty-code-figure
-            className="!mx-0 mt-0 rounded-lg"
-          >
-            <figcaption
-              className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
-              data-rehype-pretty-code-title=""
-              data-language="css"
-              data-theme="github-dark github-light-default"
+          {activeTheme ? (
+            <figure
+              data-rehype-pretty-code-figure
+              className="!mx-0 mt-0 rounded-lg"
             >
-              <Icons.css className="fill-foreground" />
-              app/globals.css
-            </figcaption>
-            <pre className="no-scrollbar max-h-[300px] min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 md:max-h-[450px]">
-              <Button
-                data-slot="copy-button"
-                size="icon"
-                variant="ghost"
-                className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
-                onClick={() => {
-                  copyToClipboardWithMeta(
-                    tailwindVersion === "v3"
-                      ? getThemeCode(activeTheme, 0.65)
-                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
-                    {
-                      name: "copy_theme_code",
-                      properties: {
-                        theme: themeName,
-                        radius: 0.5,
-                      },
-                    }
-                  )
-                  setHasCopied(true)
-                }}
+              <figcaption
+                className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+                data-rehype-pretty-code-title=""
+                data-language="css"
+                data-theme="github-dark github-light-default"
               >
-                <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
-              </Button>
-              <code data-line-numbers data-language="css">
-                <span data-line className="line">
-                  @layer base &#123;
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;:root &#123;
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-                  {activeTheme?.cssVars.light["background"]};
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-                  {activeTheme?.cssVars.light["foreground"]};
-                </span>
-                {[
-                  "card",
-                  "popover",
-                  "primary",
-                  "secondary",
-                  "muted",
-                  "accent",
-                  "destructive",
-                ].map((prefix) => (
-                  <React.Fragment key={prefix}>
-                    <span data-line className="line">
-                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                <Icons.css className="fill-foreground" />
+                app/globals.css
+              </figcaption>
+              <pre className="no-scrollbar max-h-[300px] min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 md:max-h-[450px]">
+                <Button
+                  data-slot="copy-button"
+                  size="icon"
+                  variant="ghost"
+                  className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
+                  onClick={() => {
+                    copyToClipboardWithMeta(
+                      tailwindVersion === "v3"
+                        ? getThemeCode(activeTheme, 0.65)
+                        : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
                       {
-                        activeTheme?.cssVars.light[
-                          prefix as keyof typeof activeTheme.cssVars.light
-                        ]
+                        name: "copy_theme_code",
+                        properties: {
+                          theme: themeName,
+                          radius: 0.5,
+                        },
                       }
-                      ;
-                    </span>
-                    <span data-line className="line">
-                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
-                      {
-                        activeTheme?.cssVars.light[
-                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
-                        ]
-                      }
-                      ;
-                    </span>
-                  </React.Fragment>
-                ))}
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-                  {activeTheme?.cssVars.light["border"]};
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-                  {activeTheme?.cssVars.light["input"]};
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-                  {activeTheme?.cssVars.light["ring"]};
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--radius: 0.5rem;
-                </span>
-                {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
-                  (prefix) => (
+                    )
+                    setHasCopied(true)
+                  }}
+                >
+                  <span className="sr-only">Copy</span>
+                  {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                </Button>
+                <code data-line-numbers data-language="css">
+                  <span data-line className="line">
+                    @layer base &#123;
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;:root &#123;
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                    {activeTheme?.cssVars.light["background"]};
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                    {activeTheme?.cssVars.light["foreground"]};
+                  </span>
+                  {[
+                    "card",
+                    "popover",
+                    "primary",
+                    "secondary",
+                    "muted",
+                    "accent",
+                    "destructive",
+                  ].map((prefix) => (
                     <React.Fragment key={prefix}>
                       <span data-line className="line">
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
@@ -382,70 +355,73 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                         }
                         ;
                       </span>
+                      <span data-line className="line">
+                        &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                        {
+                          activeTheme?.cssVars.light[
+                            `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
+                          ]
+                        }
+                        ;
+                      </span>
                     </React.Fragment>
-                  )
-                )}
-                <span data-line className="line">
-                  &nbsp;&nbsp;&#125;
-                </span>
-                <span data-line className="line">
-                  &nbsp;
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;.dark &#123;
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-                  {activeTheme?.cssVars.dark["background"]};
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-                  {activeTheme?.cssVars.dark["foreground"]};
-                </span>
-                {[
-                  "card",
-                  "popover",
-                  "primary",
-                  "secondary",
-                  "muted",
-                  "accent",
-                  "destructive",
-                ].map((prefix) => (
-                  <React.Fragment key={prefix}>
-                    <span data-line className="line">
-                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                      {
-                        activeTheme?.cssVars.dark[
-                          prefix as keyof typeof activeTheme.cssVars.dark
-                        ]
-                      }
-                      ;
-                    </span>
-                    <span data-line className="line">
-                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
-                      {
-                        activeTheme?.cssVars.dark[
-                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
-                        ]
-                      }
-                      ;
-                    </span>
-                  </React.Fragment>
-                ))}
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-                  {activeTheme?.cssVars.dark["border"]};
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-                  {activeTheme?.cssVars.dark["input"]};
-                </span>
-                <span data-line className="line">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-                  {activeTheme?.cssVars.dark["ring"]};
-                </span>
-                {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
-                  (prefix) => (
+                  ))}
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                    {activeTheme?.cssVars.light["border"]};
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                    {activeTheme?.cssVars.light["input"]};
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                    {activeTheme?.cssVars.light["ring"]};
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--radius: 0.5rem;
+                  </span>
+                  {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+                    (prefix) => (
+                      <React.Fragment key={prefix}>
+                        <span data-line className="line">
+                          &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                          {
+                            activeTheme?.cssVars.light[
+                              prefix as keyof typeof activeTheme.cssVars.light
+                            ]
+                          }
+                          ;
+                        </span>
+                      </React.Fragment>
+                    )
+                  )}
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&#125;
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;.dark &#123;
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                    {activeTheme?.cssVars.dark["background"]};
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                    {activeTheme?.cssVars.dark["foreground"]};
+                  </span>
+                  {[
+                    "card",
+                    "popover",
+                    "primary",
+                    "secondary",
+                    "muted",
+                    "accent",
+                    "destructive",
+                  ].map((prefix) => (
                     <React.Fragment key={prefix}>
                       <span data-line className="line">
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
@@ -456,18 +432,58 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                         }
                         ;
                       </span>
+                      <span data-line className="line">
+                        &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                        {
+                          activeTheme?.cssVars.dark[
+                            `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
+                          ]
+                        }
+                        ;
+                      </span>
                     </React.Fragment>
-                  )
-                )}
-                <span data-line className="line">
-                  &nbsp;&nbsp;&#125;
-                </span>
-                <span data-line className="line">
-                  &#125;
-                </span>
-              </code>
-            </pre>
-          </figure>
+                  ))}
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                    {activeTheme?.cssVars.dark["border"]};
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                    {activeTheme?.cssVars.dark["input"]};
+                  </span>
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                    {activeTheme?.cssVars.dark["ring"]};
+                  </span>
+                  {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+                    (prefix) => (
+                      <React.Fragment key={prefix}>
+                        <span data-line className="line">
+                          &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                          {
+                            activeTheme?.cssVars.dark[
+                              prefix as keyof typeof activeTheme.cssVars.dark
+                            ]
+                          }
+                          ;
+                        </span>
+                      </React.Fragment>
+                    )
+                  )}
+                  <span data-line className="line">
+                    &nbsp;&nbsp;&#125;
+                  </span>
+                  <span data-line className="line">
+                    &#125;
+                  </span>
+                </code>
+              </pre>
+            </figure>
+          ) : (
+            <div className="border-muted bg-muted/50 text-muted-foreground flex h-[300px] items-center justify-center rounded-md border text-sm">
+              <p>Theme variables not available at the moment</p>
+            </div>
+          )}
         </TabsContent>
       </Tabs>
     </>
