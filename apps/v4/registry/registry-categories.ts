@@ -12,11 +12,21 @@ export const registryCategories = [
   {
     name: "Authentication",
     slug: "authentication",
-    hidden: false,
+    hidden: true,
   },
   {
     name: "Login",
     slug: "login",
+    hidden: false,
+  },
+  {
+    name: "Signup",
+    slug: "signup",
+    hidden: false,
+  },
+  {
+    name: "OTP",
+    slug: "otp",
     hidden: false,
   },
   {

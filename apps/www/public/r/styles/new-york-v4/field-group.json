@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-group",
+  "type": "registry:example",
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/field-group.tsx",
+      "content": "import { Checkbox } from \"@/registry/new-york-v4/ui/checkbox\"\nimport {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n  FieldSeparator,\n  FieldSet,\n} from \"@/registry/new-york-v4/ui/field\"\n\nexport default function FieldGroupExample() {\n  return (\n    <div className=\"w-full max-w-md\">\n      <FieldGroup>\n        <FieldSet>\n          <FieldLabel>Responses</FieldLabel>\n          <FieldDescription>\n            Get notified when ChatGPT responds to requests that take time, like\n            research or image generation.\n          </FieldDescription>\n          <FieldGroup data-slot=\"checkbox-group\">\n            <Field orientation=\"horizontal\">\n              <Checkbox id=\"push\" defaultChecked disabled />\n              <FieldLabel htmlFor=\"push\" className=\"font-normal\">\n                Push notifications\n              </FieldLabel>\n            </Field>\n          </FieldGroup>\n        </FieldSet>\n        <FieldSeparator />\n        <FieldSet>\n          <FieldLabel>Tasks</FieldLabel>\n          <FieldDescription>\n            Get notified when tasks you&apos;ve created have updates.{\" \"}\n            <a href=\"#\">Manage tasks</a>\n          </FieldDescription>\n          <FieldGroup data-slot=\"checkbox-group\">\n            <Field orientation=\"horizontal\">\n              <Checkbox id=\"push-tasks\" />\n              <FieldLabel htmlFor=\"push-tasks\" className=\"font-normal\">\n                Push notifications\n              </FieldLabel>\n            </Field>\n            <Field orientation=\"horizontal\">\n              <Checkbox id=\"email-tasks\" />\n              <FieldLabel htmlFor=\"email-tasks\" className=\"font-normal\">\n                Email notifications\n              </FieldLabel>\n            </Field>\n          </FieldGroup>\n        </FieldSet>\n      </FieldGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

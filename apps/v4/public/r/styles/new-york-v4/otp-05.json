@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "otp-05",
+  "type": "registry:block",
+  "description": "A simple OTP form with social providers.",
+  "registryDependencies": [
+    "button",
+    "input-otp",
+    "label",
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/blocks/otp-05/page.tsx",
+      "content": "import { OTPForm } from \"@/registry/new-york-v4/blocks/otp-05/components/otp-form\"\n\nexport default function OTPPage() {\n  return (\n    <div className=\"bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10\">\n      <div className=\"w-full max-w-sm\">\n        <OTPForm />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/otp/page.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/blocks/otp-05/components/otp-form.tsx",
+      "content": "import { GalleryVerticalEnd } from \"lucide-react\"\n\nimport { cn } from \"@/registry/new-york-v4/lib/utils\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSeparator,\n  InputOTPSlot,\n} from \"@/registry/new-york-v4/ui/input-otp\"\n\nexport function OTPForm({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div className={cn(\"flex flex-col gap-6\", className)} {...props}>\n      <form>\n        <FieldGroup>\n          <div className=\"flex flex-col items-center gap-2 text-center\">\n            <a\n              href=\"#\"\n              className=\"flex flex-col items-center gap-2 font-medium\"\n            >\n              <div className=\"flex size-8 items-center justify-center rounded-md\">\n                <GalleryVerticalEnd className=\"size-6\" />\n              </div>\n              <span className=\"sr-only\">Acme Inc.</span>\n            </a>\n            <h1 className=\"text-xl font-bold\">Enter verification code</h1>\n            <FieldDescription>\n              We sent a 6-digit code to your email address\n            </FieldDescription>\n          </div>\n          <Field>\n            <FieldLabel htmlFor=\"otp\" className=\"sr-only\">\n              Verification code\n            </FieldLabel>\n            <InputOTP\n              maxLength={6}\n              id=\"otp\"\n              required\n              containerClassName=\"gap-4\"\n            >\n              <InputOTPGroup className=\"gap-2.5 *:data-[slot=input-otp-slot]:h-16 *:data-[slot=input-otp-slot]:w-12 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border *:data-[slot=input-otp-slot]:text-xl\">\n                <InputOTPSlot index={0} />\n                <InputOTPSlot index={1} />\n                <InputOTPSlot index={2} />\n              </InputOTPGroup>\n              <InputOTPSeparator />\n              <InputOTPGroup className=\"gap-2.5 *:data-[slot=input-otp-slot]:h-16 *:data-[slot=input-otp-slot]:w-12 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border *:data-[slot=input-otp-slot]:text-xl\">\n                <InputOTPSlot index={3} />\n                <InputOTPSlot index={4} />\n                <InputOTPSlot index={5} />\n              </InputOTPGroup>\n            </InputOTP>\n            <FieldDescription className=\"text-center\">\n              Didn&apos;t receive the code? <a href=\"#\">Resend</a>\n            </FieldDescription>\n          </Field>\n          <Field>\n            <Button type=\"submit\">Verify</Button>\n          </Field>\n        </FieldGroup>\n      </form>\n      <FieldDescription className=\"px-6 text-center\">\n        By clicking continue, you agree to our <a href=\"#\">Terms of Service</a>{\" \"}\n        and <a href=\"#\">Privacy Policy</a>.\n      </FieldDescription>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "authentication",
+    "otp"
+  ]
+}

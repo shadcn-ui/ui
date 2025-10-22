@@ -1,4 +1,4 @@
-import { existsSync, promises as fs } from "fs"
+import { existsSync, promises as fs, statSync } from "fs"
 import { tmpdir } from "os"
 import path, { basename } from "path"
 import { getRegistryBaseColor } from "@/src/registry/api"
@@ -38,6 +38,7 @@ export async function updateFiles(
     rootSpinner?: ReturnType<typeof spinner>
     isRemote?: boolean
     isWorkspace?: boolean
+    path?: string
   }
 ) {
   if (!files?.length) {
@@ -72,7 +73,8 @@ export async function updateFiles(
   let envVarsAdded: string[] = []
   let envFile: string | null = null
 
-  for (const file of files) {
+  for (let index = 0; index < files.length; index++) {
+    const file = files[index]
     if (!file.content) {
       continue
     }
@@ -84,6 +86,8 @@ export async function updateFiles(
         files.map((f) => f.path),
         file.path
       ),
+      path: options.path,
+      fileIndex: index,
     })
 
     if (!filePath) {
@@ -107,6 +111,13 @@ export async function updateFiles(
     }
 
     const existingFile = existsSync(filePath)
+
+    // Check if the path exists and is a directory - we can't write to directories.
+    if (existingFile && statSync(filePath).isDirectory()) {
+      throw new Error(
+        `Cannot write to ${filePath}: path exists and is a directory. Please provide a file path instead.`
+      )
+    }
 
     // Run our transformers.
     // Skip transformers for .env files to preserve exact content
@@ -307,8 +318,32 @@ export function resolveFilePath(
     isSrcDir?: boolean
     commonRoot?: string
     framework?: ProjectInfo["framework"]["name"]
+    path?: string
+    fileIndex?: number
   }
 ) {
+  // Handle custom path if provided.
+  if (options.path) {
+    const resolvedPath = path.isAbsolute(options.path)
+      ? options.path
+      : path.join(config.resolvedPaths.cwd, options.path)
+
+    const isFilePath = /\.[^/\\]+$/.test(resolvedPath)
+
+    if (isFilePath) {
+      // We'll only use the custom path for the first file.
+      // This is for registry items with multiple files.
+      if (options.fileIndex === 0) {
+        return resolvedPath
+      }
+    } else {
+      // If the custom path is a directory,
+      // We'll place all files in the directory.
+      const fileName = path.basename(file.path)
+      return path.join(resolvedPath, fileName)
+    }
+  }
+
   if (file.target) {
     if (file.target.startsWith("~/")) {
       return path.join(config.resolvedPaths.cwd, file.target.replace("~/", ""))
