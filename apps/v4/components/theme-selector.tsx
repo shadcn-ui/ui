@@ -1,5 +1,6 @@
 "use client"
 
+import { THEMES } from "@/lib/themes"
 import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { Label } from "@/registry/new-york-v4/ui/label"
@@ -10,13 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { baseColors } from "@/registry/registry-base-colors"
 
 import { CopyCodeButton } from "./theme-customizer"
-
-const COLOR_THEMES = baseColors.filter(
-  (theme) => !["slate", "stone", "gray", "zinc"].includes(theme.name)
-)
 
 export function ThemeSelector({ className }: React.ComponentProps<"div">) {
   const { activeTheme, setActiveTheme } = useThemeConfig()
@@ -36,7 +32,7 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
           <SelectValue placeholder="Select a theme" />
         </SelectTrigger>
         <SelectContent align="end">
-          {COLOR_THEMES.map((theme) => (
+          {THEMES.map((theme) => (
             <SelectItem
               key={theme.name}
               value={theme.name}

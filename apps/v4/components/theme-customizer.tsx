@@ -1,9 +1,10 @@
 "use client"
 
 import * as React from "react"
+import { IconCheck, IconCopy } from "@tabler/icons-react"
 import template from "lodash/template"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
 
+import { THEMES } from "@/lib/themes"
 import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
@@ -51,10 +52,6 @@ interface BaseColorOKLCH {
   light: Record<string, string>
   dark: Record<string, string>
 }
-
-const THEMES = baseColors.filter(
-  (theme) => !["slate", "stone", "gray", "zinc"].includes(theme.name)
-)
 
 export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
   const { activeTheme = "neutral", setActiveTheme } = useThemeConfig()
@@ -147,7 +144,7 @@ export function CopyCodeButton({
             Copy Code
           </Button>
         </DialogTrigger>
-        <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-900 dark:ring-neutral-800">
+        <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
           <DialogHeader>
             <DialogTitle className="capitalize">
               {activeThemeName === "neutral" ? "Default" : activeThemeName}
@@ -231,7 +228,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 }}
               >
                 <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                {hasCopied ? <IconCheck /> : <IconCopy />}
               </Button>
               <code data-line-numbers data-language="css">
                 <span data-line className="line text-code-foreground">
@@ -311,7 +308,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 }}
               >
                 <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                {hasCopied ? <IconCheck /> : <IconCopy />}
               </Button>
               <code data-line-numbers data-language="css">
                 <span data-line className="line">

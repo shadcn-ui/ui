@@ -32,6 +32,7 @@
   "@motion-primitives": "https://motion-primitives.com/c/{name}.json",
   "@nativeui": "https://nativeui.io/registry/{name}.json",
   "@ncdai": "https://chanhdai.com/r/{name}.json",
+  "@oui": "https://oui.mw10013.workers.dev/r/{name}.json",
   "@paceui-ui": "https://ui.paceui.com/r/{name}.json",
   "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
   "@react-bits": "https://reactbits.dev/r/{name}.json",
@@ -44,6 +45,7 @@
   "@shadcn-map": "http://shadcn-map.vercel.app/r/{name}.json",
   "@shadcn-studio": "https://shadcnstudio.com/r/{name}.json",
   "@shadcnblocks": "https://shadcnblocks.com/r/{name}.json",
+  "@simple-ai": "https://simple-ai.dev/r/{name}.json",
   "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
   "@skyr": "https://ui-play.skyroc.me/r/{name}.json",
   "@smoothui": "https://smoothui.dev/r/{name}.json",
@@ -52,5 +54,8 @@
   "@tailark": "https://tailark.com/r/{name}.json",
   "@tweakcn": "https://tweakcn.com/r/themes/{name}.json",
   "@wds": "https://wds-shadcn-registry.netlify.app/r/{name}.json",
-  "@zippystarter": "https://zippystarter.com/r/{name}.json"
+  "@zippystarter": "https://zippystarter.com/r/{name}.json",
+  "@shadcndesign": "https://shadcndesign-free.vercel.app/r/{name}.json",
+  "@ha-components": "https://hacomponents.keshuac.com/r/{name}.json",
+  "@shadix-ui": "https://shadix-ui.vercel.app/r/{name}.json"
 }
