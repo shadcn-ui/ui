@@ -25,13 +25,15 @@ async function transformNextMiddleware(
     projectInfo?.framework.name === "next-app" ||
     projectInfo?.framework.name === "next-pages"
 
-  if (isRootMiddleware && isNextJs && projectInfo?.frameworkVersion) {
-    const majorVersion = parseInt(projectInfo.frameworkVersion.split(".")[0])
-    const isNext16Plus = !isNaN(majorVersion) && majorVersion >= 16
+  if (!isRootMiddleware || !isNextJs || !projectInfo?.frameworkVersion) {
+    return sourceFile
+  }
 
-    if (!isNext16Plus) {
-      return sourceFile
-    }
+  const majorVersion = parseInt(projectInfo.frameworkVersion.split(".")[0])
+  const isNext16Plus = !isNaN(majorVersion) && majorVersion >= 16
+
+  if (!isNext16Plus) {
+    return sourceFile
   }
 
   // export function middleware.

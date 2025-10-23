@@ -54,7 +54,7 @@ describe("transformNext", () => {
       expect(
         await transform(
           {
-            filename: "middleware.ts",
+            filename: "/test-project/middleware.ts",
             raw: `import { NextResponse } from "next/server"
 
 export function middleware(request: Request) {
@@ -90,7 +90,7 @@ export function middleware(request: Request) {
       expect(
         await transform(
           {
-            filename: "middleware.ts",
+            filename: "/test-project/middleware.ts",
             raw: `import { NextResponse } from "next/server"
 
 export async function middleware(request: Request) {
@@ -126,7 +126,7 @@ export async function middleware(request: Request) {
       expect(
         await transform(
           {
-            filename: "middleware.ts",
+            filename: "/test-project/middleware.ts",
             raw: `import { NextResponse } from "next/server"
 
 export const middleware = (request: Request) => {
@@ -162,7 +162,7 @@ export const middleware = (request: Request) => {
       expect(
         await transform(
           {
-            filename: "middleware.ts",
+            filename: "/test-project/middleware.ts",
             raw: `import { NextResponse } from "next/server"
 
 function handler(request: Request) {
