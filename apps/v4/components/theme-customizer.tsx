@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { IconCheck, IconCopy } from "@tabler/icons-react"
 import template from "lodash/template"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
 
 import { THEMES } from "@/lib/themes"
 import { cn } from "@/lib/utils"
@@ -228,7 +228,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 }}
               >
                 <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                {hasCopied ? <IconCheck /> : <IconCopy />}
               </Button>
               <code data-line-numbers data-language="css">
                 <span data-line className="line text-code-foreground">
@@ -308,7 +308,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 }}
               >
                 <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                {hasCopied ? <IconCheck /> : <IconCopy />}
               </Button>
               <code data-line-numbers data-language="css">
                 <span data-line className="line">
