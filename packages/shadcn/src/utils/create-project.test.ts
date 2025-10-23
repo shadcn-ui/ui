@@ -249,8 +249,7 @@ describe("createProject", () => {
 
     const execaCalls = vi.mocked(execa).mock.calls
     const createNextCall = execaCalls.find(
-      (call) =>
-        Array.isArray(call[1]) && call[1].includes("create-next-app@15")
+      (call) => Array.isArray(call[1]) && call[1].includes("create-next-app@15")
     )
 
     expect(createNextCall).toBeDefined()
