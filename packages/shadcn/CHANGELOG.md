@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.5.0
+
+### Minor Changes
+
+- [#8550](https://github.com/shadcn-ui/ui/pull/8550) [`6bddba986d75da35e18343dbb6254fed4537b7d7`](https://github.com/shadcn-ui/ui/commit/6bddba986d75da35e18343dbb6254fed4537b7d7) Thanks [@shadcn](https://github.com/shadcn)! - add Next.js 16 support for init command
+
 ## 3.4.2
 
 ### Patch Changes
