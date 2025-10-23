@@ -1,5 +1,29 @@
 # @shadcn/ui
 
+## 3.5.0
+
+### Minor Changes
+
+- [#8555](https://github.com/shadcn-ui/ui/pull/8555) [`d7e0dc3ec81676d47351e8f7134639e0dd0c3e3c`](https://github.com/shadcn-ui/ui/commit/d7e0dc3ec81676d47351e8f7134639e0dd0c3e3c) Thanks [@shadcn](https://github.com/shadcn)! - rename middleware to proxy for Next.js 16
+
+- [#8550](https://github.com/shadcn-ui/ui/pull/8550) [`6bddba986d75da35e18343dbb6254fed4537b7d7`](https://github.com/shadcn-ui/ui/commit/6bddba986d75da35e18343dbb6254fed4537b7d7) Thanks [@shadcn](https://github.com/shadcn)! - add Next.js 16 support for init command
+
+## 3.4.2
+
+### Patch Changes
+
+- [#8478](https://github.com/shadcn-ui/ui/pull/8478) [`b52ec12f1e22cf89270bf3d931f5b7544e4b80b4`](https://github.com/shadcn-ui/ui/commit/b52ec12f1e22cf89270bf3d931f5b7544e4b80b4) Thanks [@shadcn](https://github.com/shadcn)! - fix regression with universal item detection
+
+## 3.4.1
+
+### Patch Changes
+
+- [#8420](https://github.com/shadcn-ui/ui/pull/8420) [`40c3ff513a88ca8e6f02bf798a7cf73b88401024`](https://github.com/shadcn-ui/ui/commit/40c3ff513a88ca8e6f02bf798a7cf73b88401024) Thanks [@zbeyens](https://github.com/zbeyens)! - Fix support for universal registry items that only have dependencies without files
+
+- [#8459](https://github.com/shadcn-ui/ui/pull/8459) [`7cd019ad3652a0e98770b89032b7a161edfda805`](https://github.com/shadcn-ui/ui/commit/7cd019ad3652a0e98770b89032b7a161edfda805) Thanks [@shadcn](https://github.com/shadcn)! - add support for color as var
+
+- [#8451](https://github.com/shadcn-ui/ui/pull/8451) [`b83023034a301b41fa18045af0d9bd787e415aa5`](https://github.com/shadcn-ui/ui/commit/b83023034a301b41fa18045af0d9bd787e415aa5) Thanks [@diegohaz](https://github.com/diegohaz)! - fix adding registry item with CSS at-property
+
 ## 3.4.0
 
 ### Minor Changes
