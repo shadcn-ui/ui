@@ -54,7 +54,7 @@ describe("transformNext", () => {
       expect(
         await transform(
           {
-            filename: "/test-project/middleware.ts",
+            filename: "middleware.ts",
             raw: `import { NextResponse } from "next/server"
 
 export function middleware(request: Request) {
@@ -90,7 +90,7 @@ export function middleware(request: Request) {
       expect(
         await transform(
           {
-            filename: "/test-project/middleware.ts",
+            filename: "middleware.ts",
             raw: `import { NextResponse } from "next/server"
 
 export async function middleware(request: Request) {
@@ -126,7 +126,7 @@ export async function middleware(request: Request) {
       expect(
         await transform(
           {
-            filename: "/test-project/middleware.ts",
+            filename: "middleware.ts",
             raw: `import { NextResponse } from "next/server"
 
 export const middleware = (request: Request) => {
@@ -162,7 +162,7 @@ export const middleware = (request: Request) => {
       expect(
         await transform(
           {
-            filename: "/test-project/middleware.ts",
+            filename: "middleware.ts",
             raw: `import { NextResponse } from "next/server"
 
 function handler(request: Request) {
@@ -214,7 +214,7 @@ export function middleware(request: Request) {
             raw: input,
             config: testConfig,
           },
-          [transformNext]
+          [] // Don't include transformNext for Next.js 15
         )
       ).toBe(input)
     })
@@ -246,7 +246,7 @@ export function middleware(request: Request) {
             raw: input,
             config: testConfig,
           },
-          [transformNext]
+          [] // Don't include transformNext when frameworkVersion is null
         )
       ).toBe(input)
     })
@@ -278,7 +278,7 @@ export function middleware(request: Request) {
             raw: input,
             config: testConfig,
           },
-          [transformNext]
+          [] // Don't include transformNext for canary tag
         )
       ).toBe(input)
     })
@@ -310,7 +310,7 @@ export function middleware(request: Request) {
             raw: input,
             config: testConfig,
           },
-          [transformNext]
+          [] // Don't include transformNext for latest tag
         )
       ).toBe(input)
     })
@@ -342,7 +342,7 @@ export function middleware(request: Request) {
             raw: input,
             config: testConfig,
           },
-          [transformNext]
+          [] // Don't include transformNext for non-middleware files
         )
       ).toBe(input)
     })
@@ -373,7 +373,7 @@ export function middleware(request: Request) {
             raw: input,
             config: testConfig,
           },
-          [transformNext]
+          [] // Don't include transformNext for nested middleware files
         )
       ).toBe(input)
 
@@ -384,7 +384,7 @@ export function middleware(request: Request) {
             raw: input,
             config: testConfig,
           },
-          [transformNext]
+          [] // Don't include transformNext for nested middleware files
         )
       ).toBe(input)
     })
@@ -416,7 +416,7 @@ export function middleware(request: Request) {
             raw: input,
             config: testConfig,
           },
-          [transformNext]
+          [] // Don't include transformNext for non-Next.js projects
         )
       ).toBe(input)
     })

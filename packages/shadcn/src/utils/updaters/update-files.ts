@@ -139,7 +139,9 @@ export async function updateFiles(
             transformCssVars,
             transformTwPrefixes,
             transformIcons,
-            transformNext,
+            ...(_isNext16Middleware(filePath, projectInfo, config)
+              ? [transformNext]
+              : []),
           ]
         )
 
@@ -189,20 +191,8 @@ export async function updateFiles(
     }
 
     // Rename middleware.ts to proxy.ts for Next.js 16+.
-    const isRootMiddleware =
-      filePath === path.join(config.resolvedPaths.cwd, "middleware.ts") ||
-      filePath === path.join(config.resolvedPaths.cwd, "middleware.js")
-    const isNextJs =
-      projectInfo?.framework.name === "next-app" ||
-      projectInfo?.framework.name === "next-pages"
-
-    if (isRootMiddleware && isNextJs && projectInfo?.frameworkVersion) {
-      const majorVersion = parseInt(projectInfo.frameworkVersion.split(".")[0])
-      const isNext16Plus = !isNaN(majorVersion) && majorVersion >= 16
-
-      if (isNext16Plus) {
-        filePath = filePath.replace(/middleware\.(ts|js)$/, "proxy.$1")
-      }
+    if (_isNext16Middleware(filePath, projectInfo, config)) {
+      filePath = filePath.replace(/middleware\.(ts|js)$/, "proxy.$1")
     }
 
     // Create the target directory if it doesn't exist.
@@ -733,4 +723,27 @@ export function toAliasedImport(
   // 6️⃣ Prepend the prefix from projectInfo (e.g. "@") if needed
   //    but usually config.aliases already include it.
   return `${aliasBase}${suffix}${keepExt}`
+}
+
+function _isNext16Middleware(
+  filePath: string,
+  projectInfo: ProjectInfo | null,
+  config: Config
+) {
+  const isRootMiddleware =
+    filePath === path.join(config.resolvedPaths.cwd, "middleware.ts") ||
+    filePath === path.join(config.resolvedPaths.cwd, "middleware.js")
+
+  const isNextJs =
+    projectInfo?.framework.name === "next-app" ||
+    projectInfo?.framework.name === "next-pages"
+
+  if (!isRootMiddleware || !isNextJs || !projectInfo?.frameworkVersion) {
+    return false
+  }
+
+  const majorVersion = parseInt(projectInfo.frameworkVersion.split(".")[0])
+  const isNext16Plus = !isNaN(majorVersion) && majorVersion >= 16
+
+  return isNext16Plus
 }
