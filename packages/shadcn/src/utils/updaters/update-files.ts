@@ -21,6 +21,7 @@ import { transform } from "@/src/utils/transformers"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
+import { transformNext } from "@/src/utils/transformers/transform-next"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
@@ -138,6 +139,7 @@ export async function updateFiles(
             transformCssVars,
             transformTwPrefixes,
             transformIcons,
+            transformNext,
           ]
         )
 
@@ -183,6 +185,23 @@ export async function updateFiles(
       filesCreatedSpinner?.start()
       if (options.rootSpinner) {
         options.rootSpinner.start()
+      }
+    }
+
+    // Rename middleware.ts to proxy.ts for Next.js 16+.
+    const isRootMiddleware =
+      filePath === path.join(config.resolvedPaths.cwd, "middleware.ts") ||
+      filePath === path.join(config.resolvedPaths.cwd, "middleware.js")
+    const isNextJs =
+      projectInfo?.framework.name === "next-app" ||
+      projectInfo?.framework.name === "next-pages"
+
+    if (isRootMiddleware && isNextJs && projectInfo?.frameworkVersion) {
+      const majorVersion = parseInt(projectInfo.frameworkVersion.split(".")[0])
+      const isNext16Plus = !isNaN(majorVersion) && majorVersion >= 16
+
+      if (isNext16Plus) {
+        filePath = filePath.replace(/middleware\.(ts|js)$/, "proxy.$1")
       }
     }
 
