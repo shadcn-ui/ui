@@ -140,8 +140,15 @@ export function CopyCodeButton({
       </Drawer>
       <Dialog>
         <DialogTrigger asChild>
-          <Button className={cn("hidden sm:flex", className)} {...props}>
-            Copy Code
+          <Button
+            data-size={props.size}
+            className={cn("group/button hidden sm:flex", className)}
+            {...props}
+          >
+            <IconCopy />
+            <span className="group-data-[size=icon-sm]/button:sr-only">
+              Copy Code
+            </span>
           </Button>
         </DialogTrigger>
         <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
