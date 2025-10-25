@@ -23,7 +23,17 @@ export default function CalendarHijri() {
       defaultMonth={date}
       selected={date}
       onSelect={setDate}
-      className="rounded-lg border shadow-sm"
+      className="rounded-lg border shadow-sm",
+      captionLayout='dropdown'
+      /**
+       * You can handle months in two ways:
+       * 1. Apply this solution for a specific Calendar instance.
+       * 2. Override the default `formatMonthDropdown` function
+       *    directly in the Calendar component code, as explained below.
+       */
+      formatters={{
+        formatMonthDropdown: date => date.toLocaleString('fa-IR', { month: 'short' }),
+      }}
     />
   )
 }
@@ -56,9 +66,14 @@ function Calendar({
         className
       )}
       captionLayout={captionLayout}
+      /**
+       * To override the month display when `captionLayout='dropdown'`
+       * provide a custom `formatMonthDropdown` here
+       * You can set your preferred locale or pass a prop as needed
+       */
       formatters={{
         formatMonthDropdown: (date) =>
-          date.toLocaleString("default", { month: "short" }),
+          date.toLocaleString("fa-IR", { month: "short" }), // customize the locale as needed
         ...formatters,
       }}
       classNames={{
