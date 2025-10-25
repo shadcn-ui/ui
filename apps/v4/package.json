@@ -22,7 +22,7 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
-    "@faker-js/faker": "^8.2.0",
+    "@faker-js/faker": "^10.1.0",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accessible-icon": "^1.1.1",
     "@radix-ui/react-accordion": "^1.2.2",
