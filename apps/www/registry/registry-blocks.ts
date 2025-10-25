@@ -126,6 +126,7 @@ export const blocks: Registry["items"] = [
       "separator",
       "label",
       "dropdown-menu",
+      "collapsible",
     ],
     files: [
       {
