@@ -661,9 +661,10 @@ const SidebarMenuSkeleton = React.forwardRef<
   }
 >(({ className, showIcon = false, ...props }, ref) => {
   // Random width between 50 to 90%.
-  const width = React.useMemo(() => {
+  // eslint-disable-next-line react-naming-convention/use-state -- Allow value-only state destructuring for resolving react-hooks/purity problem https://github.com/shadcn-ui/ui/issues/8540
+  const [width] = React.useState(() => {
     return `${Math.floor(Math.random() * 40) + 50}%`
-  }, [])
+  })
 
   return (
     <div
