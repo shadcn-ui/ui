@@ -43,7 +43,7 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
           ))}
         </SelectContent>
       </Select>
-      <CopyCodeButton variant="secondary" size="sm" />
+      <CopyCodeButton variant="secondary" size="icon-sm" />
     </div>
   )
 }
