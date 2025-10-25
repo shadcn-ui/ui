@@ -57,7 +57,9 @@ export function ChartCopyButton({
           {hasCopied ? <IconCheck /> : <IconCopy />}
         </Button>
       </TooltipTrigger>
-      <TooltipContent className="bg-black text-white">Copy code</TooltipContent>
+      <TooltipContent className="bg-black text-white [&_svg]:bg-black [&_svg]:fill-black">
+        Copy code
+      </TooltipContent>
     </Tooltip>
   )
 }
