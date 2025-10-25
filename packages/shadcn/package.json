@@ -100,6 +100,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/prompts": "^2.4.9",
     "@types/stringify-object": "^4.0.5",
+    "node-gyp": "^11.5.0",
     "rimraf": "^6.0.1",
     "tsup": "^8.5.0",
     "type-fest": "^4.41.0",
