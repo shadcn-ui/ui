@@ -2,7 +2,6 @@ import * as React from "react"
 import { IconArrowUpRight } from "@tabler/icons-react"
 
 import registries from "@/registry/directory.json"
-import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Item,
   ItemActions,
