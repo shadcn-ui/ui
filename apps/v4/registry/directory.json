@@ -1,0 +1,44 @@
+[
+  {
+    "name": "@ai-elements",
+    "homepage": "https://ai-sdk.dev/elements",
+    "url": "https://registry.ai-sdk.dev/{name}.json",
+    "description": "Pre-built components like conversations, messages and more to help you build AI-native applications faster.",
+    "logo": "<svg stroke-linejoin='round' viewBox='0 0 16 16' width='18' style='color:currentcolor'><path fill-rule='evenodd' clip-rule='evenodd' d='M8 1L16 15H0L8 1Z' fill='currentColor'></path></svg>"
+  },
+  {
+    "name": "@algolia",
+    "homepage": "https://sitesearch.algolia.com",
+    "url": "https://sitesearch.algolia.com/r/{name}.json",
+    "description": "Enterprises and developers use Algolia’s AI search infrastructure to understand users and show them what they’re looking for.",
+    "logo": "<svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>Algolia</title><path d='M12 0C5.445 0 .103 5.285.01 11.817c-.097 6.634 5.285 12.131 11.92 12.17a11.91 11.91 0 0 0 5.775-1.443.281.281 0 0 0 .052-.457l-1.122-.994a.79.79 0 0 0-.833-.14 9.693 9.693 0 0 1-3.923.77c-5.36-.067-9.692-4.527-9.607-9.888.084-5.293 4.417-9.573 9.73-9.573h9.73v17.296l-5.522-4.907a.407.407 0 0 0-.596.063 4.52 4.52 0 0 1-3.934 1.793 4.538 4.538 0 0 1-4.192-4.168 4.53 4.53 0 0 1 4.512-4.872 4.532 4.532 0 0 1 4.509 4.126c.018.205.11.397.265.533l1.438 1.275a.28.28 0 0 0 .462-.158 6.82 6.82 0 0 0 .099-1.725c-.232-3.376-2.966-6.092-6.345-6.3-3.873-.24-7.11 2.79-7.214 6.588-.1 3.7 2.933 6.892 6.634 6.974a6.75 6.75 0 0 0 4.136-1.294l7.212 6.394a.48.48 0 0 0 .797-.36V.456A.456.456 0 0 0 23.54 0Z'/></svg>"
+  },
+  {
+    "name": "@clerk",
+    "homepage": "https://clerk.com/docs/guides/development/shadcn-cli",
+    "url": "https://clerk.com/r/{name}.json",
+    "description": "The easiest way to add authentication and user management to your application. Purpose-built for React, Next.js, Remix, and The Modern Web.",
+    "logo": "<svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>Clerk</title><path d='m21.47 20.829-2.881-2.881a.572.572 0 0 0-.7-.084 6.854 6.854 0 0 1-7.081 0 .576.576 0 0 0-.7.084l-2.881 2.881a.576.576 0 0 0-.103.69.57.57 0 0 0 .166.186 12 12 0 0 0 14.113 0 .58.58 0 0 0 .239-.423.576.576 0 0 0-.172-.453Zm.002-17.668-2.88 2.88a.569.569 0 0 1-.701.084A6.857 6.857 0 0 0 8.724 8.08a6.862 6.862 0 0 0-1.222 3.692 6.86 6.86 0 0 0 .978 3.764.573.573 0 0 1-.083.699l-2.881 2.88a.567.567 0 0 1-.864-.063A11.993 11.993 0 0 1 6.771 2.7a11.99 11.99 0 0 1 14.637-.405.566.566 0 0 1 .232.418.57.57 0 0 1-.168.448Zm-7.118 12.261a3.427 3.427 0 1 0 0-6.854 3.427 3.427 0 0 0 0 6.854Z'/></svg>"
+  },
+  {
+    "name": "@kibo-ui",
+    "homepage": "https://www.kibo-ui.com/",
+    "url": "https://www.kibo-ui.com/r/{name}.json",
+    "description": "Kibo UI is a custom registry of composable, accessible and open source components designed for use with shadcn/ui.",
+    "logo": "<svg fill='none' viewBox='0 0 116 116' xmlns='http://www.w3.org/2000/svg'><title>Kibo UI</title><g fill='currentColor'><path clip-rule='evenodd' d='m29.3378 0h87.0002v87l-29.0002 29v-87h-87.000031zm-29.000031 95.7389v-37.7389h37.738831zm58.000031 20.2611h-37.249l37.249-37.2488z' fill-rule='evenodd'></path></g></svg>"
+  },
+  {
+    "name": "@elevenlabs-ui",
+    "homepage": "https://ui.elevenlabs.io",
+    "url": "https://ui.elevenlabs.io/r/{name}.json",
+    "description": "A collection of Open Source agent and audio components that you can customize and extend.",
+    "logo": "<svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'/></svg>"
+  },
+  {
+    "name": "@supabase",
+    "homepage": "https://supabase.com/ui",
+    "url": "https://supabase.com/ui/r/{name}.json",
+    "description": "A collection of React components and blocks built on the shadcn/ui library that connect your front-end to your Supabase back-end via a single command.",
+    "logo": "<svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>Supabase</title><path d='M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z'/></svg>"
+  }
+]
