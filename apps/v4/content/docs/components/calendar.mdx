@@ -317,7 +317,10 @@ function Calendar({
           defaultClassNames.week_number
         ),
         day: cn(
-          "group/day relative aspect-square h-full w-full select-none p-0 text-center [&:first-child[data-selected=true]_button]:rounded-l-md [&:last-child[data-selected=true]_button]:rounded-r-md",
+          "relative w-full h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
+          props.showWeekNumber
+            ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
+            : "[&:first-child[data-selected=true]_button]:rounded-l-md",
           defaultClassNames.day
         ),
         range_start: cn(
@@ -445,3 +448,25 @@ npx shadcn@latest add calendar-02
 ```
 
 This will install the latest version of the calendar blocks.
+
+## Changelog
+
+### 2025-10-26 Fixed day radius with week numbers
+
+We have fixed an issue where the selected day's left border radius was not applied correctly when week numbers were displayed. The fix ensures that when `showWeekNumber` is enabled, the first day (which is the second child due to the week number column) correctly receives the rounded left border.
+
+To apply this fix, edit `components/ui/calendar.tsx` and update the `day` class in `classNames`:
+
+```tsx showLineNumbers title="components/ui/calendar.tsx" {5-7}
+classNames={{
+  // ... other classNames
+  day: cn(
+    "relative w-full h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
+    props.showWeekNumber
+      ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
+      : "[&:first-child[data-selected=true]_button]:rounded-l-md",
+    defaultClassNames.day
+  ),
+  // ... other classNames
+}}
+```

@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/new-york-v4/blocks/calendar-15.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\n\nexport default function Calendar15() {\n  const [date, setDate] = React.useState<Date | undefined>(\n    new Date(2025, 5, 12)\n  )\n\n  return (\n    <Calendar\n      mode=\"single\"\n      defaultMonth={date}\n      selected={date}\n      onSelect={setDate}\n      className=\"rounded-lg border shadow-sm\"\n      showWeekNumber\n    />\n  )\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { DateRange } from \"react-day-picker\"\n\nimport { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\n\nexport default function Calendar15() {\n  const [dateRange, setDateRange] = React.useState<DateRange | undefined>({\n    from: new Date(2025, 5, 12),\n    to: new Date(2025, 5, 23),\n  })\n\n  return (\n    <Calendar\n      mode=\"range\"\n      defaultMonth={dateRange?.from}\n      selected={dateRange}\n      onSelect={setDateRange}\n      className=\"rounded-lg border shadow-sm\"\n      showWeekNumber\n    />\n  )\n}\n",
       "type": "registry:component"
     }
   ],
