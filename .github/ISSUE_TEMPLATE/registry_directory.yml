@@ -53,7 +53,7 @@ body:
     id: requirements
     attributes:
       label: Checklist
-      description: Verify that your registry meets the following requirements:
+      description: Verify that your registry meets the following requirements.
       options:
         - label: The registry must be open source and publicly accessible.
         - label: The registry must be a valid JSON file that conforms to the [registry schema](https://ui.shadcn.com/docs/registry/registry-json) specification.
