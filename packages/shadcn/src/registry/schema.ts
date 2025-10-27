@@ -209,3 +209,8 @@ export const searchResultsSchema = z.object({
   }),
   items: z.array(searchResultItemSchema),
 })
+
+export const registriesIndexSchema = z.record(
+  z.string().regex(/^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/),
+  z.string()
+)
