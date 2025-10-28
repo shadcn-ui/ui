@@ -165,7 +165,7 @@ async function buildRegistry(styleName: string) {
     )
 
     // exec(
-    //   `pnpm dlx shadcn build registry-${style}.json --output public/r/styles/${style}`
+    //   `pnpm dlx shadcn build registry-${styleName}.json --output public/r/styles/${styleName}`
     // )
 
     process.on("exit", (code) => {
