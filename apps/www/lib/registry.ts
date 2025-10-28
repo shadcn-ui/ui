@@ -162,12 +162,16 @@ function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
 
 async function createTempSourceFile(filename: string) {
   const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
-  return path.join(dir, filename)
-}
+  const contentDir = path.resolve(process.cwd(), "content")
+  const filePath = path.resolve(contentDir, file)
 
-function removeVariable(sourceFile: SourceFile, name: string) {
-  sourceFile.getVariableDeclaration(name)?.remove()
-}
+  if (!filePath.startsWith(contentDir + path.sep)) {
+    throw new Error("Path traversal attempt detected.")
+  }
+
+  const content = await fs.readFile(filePath, "utf8")
+
+  return content
 
 function extractVariable(sourceFile: SourceFile, name: string) {
   const variable = sourceFile.getVariableDeclaration(name)
