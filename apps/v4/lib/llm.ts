@@ -1,6 +1,7 @@
 import fs from "fs"
 
 import { Index } from "@/registry/__index__"
+import { DEFAULT_STYLE } from "@/registry/styles"
 
 export function processMdxForLLMs(content: string) {
   const componentPreviewRegex =
@@ -8,7 +9,7 @@ export function processMdxForLLMs(content: string) {
 
   return content.replace(componentPreviewRegex, (match, name) => {
     try {
-      const component = Index[name]
+      const component = Index[DEFAULT_STYLE.name]?.[name]
       if (!component?.files) {
         return match
       }

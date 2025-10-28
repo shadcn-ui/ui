@@ -4,6 +4,7 @@ import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
 import { Index } from "@/registry/__index__"
+import { DEFAULT_STYLE } from "@/registry/styles"
 
 interface UnistNode {
   type: string
@@ -111,7 +112,7 @@ export function rehypeComponent() {
         }
 
         try {
-          const component = Index[name]
+          const component = Index[DEFAULT_STYLE.name]?.[name]
           const src = component.files[0]?.path
 
           // Read the source file.

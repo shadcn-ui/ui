@@ -10,9 +10,16 @@ import {
 import { cn } from "@/lib/utils"
 import { BlockViewer } from "@/components/block-viewer"
 import { ComponentPreview } from "@/components/component-preview"
+import { type Style } from "@/registry/styles"
 
-export async function BlockDisplay({ name }: { name: string }) {
-  const item = await getCachedRegistryItem(name)
+export async function BlockDisplay({
+  name,
+  style,
+}: {
+  name: string
+  style: Style
+}) {
+  const item = await getCachedRegistryItem(name, style)
 
   if (!item?.files) {
     return null
@@ -37,9 +44,11 @@ export async function BlockDisplay({ name }: { name: string }) {
   )
 }
 
-const getCachedRegistryItem = React.cache(async (name: string) => {
-  return await getRegistryItem(name)
-})
+const getCachedRegistryItem = React.cache(
+  async (name: string, style: Style) => {
+    return await getRegistryItem(name, style)
+  }
+)
 
 const getCachedFileTree = React.cache(
   async (files: Array<{ path: string; target?: string }>) => {

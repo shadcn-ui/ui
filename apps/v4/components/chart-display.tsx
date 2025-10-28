@@ -6,6 +6,7 @@ import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { ChartToolbar } from "@/components/chart-toolbar"
+import { type Style } from "@/registry/styles"
 
 export type Chart = z.infer<typeof registryItemSchema> & {
   highlightedCode: string
@@ -13,10 +14,14 @@ export type Chart = z.infer<typeof registryItemSchema> & {
 
 export async function ChartDisplay({
   name,
+  style,
   children,
   className,
-}: { name: string } & React.ComponentProps<"div">) {
-  const chart = await getCachedRegistryItem(name)
+}: {
+  name: string
+  style: Style
+} & React.ComponentProps<"div">) {
+  const chart = await getCachedRegistryItem(name, style)
   const highlightedCode = await getChartHighlightedCode(
     chart?.files?.[0]?.content ?? ""
   )
@@ -45,9 +50,11 @@ export async function ChartDisplay({
   )
 }
 
-const getCachedRegistryItem = React.cache(async (name: string) => {
-  return await getRegistryItem(name)
-})
+const getCachedRegistryItem = React.cache(
+  async (name: string, style: Style) => {
+    return await getRegistryItem(name, style)
+  }
+)
 
 const getChartHighlightedCode = React.cache(async (content: string) => {
   return await highlightCode(content)

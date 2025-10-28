@@ -6,13 +6,36 @@ import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
 import { Index } from "@/registry/__index__"
+import { type Style } from "@/registry/styles"
 
-export function getRegistryComponent(name: string) {
-  return Index[name]?.component
+export function getRegistryComponent(name: string, style: Style) {
+  return Index[style.name]?.[name]?.component
 }
 
-export async function getRegistryItem(name: string) {
-  const item = Index[name]
+export async function getRegistryItems(
+  style: Style,
+  filter?: (item: z.infer<typeof registryItemSchema>) => boolean
+) {
+  const styleIndex = Index[style.name]
+
+  if (!styleIndex) {
+    return []
+  }
+
+  const entries = Object.values(styleIndex)
+
+  const filteredEntries = filter ? entries.filter(filter) : entries
+
+  return await Promise.all(
+    filteredEntries.map(async (entry) => {
+      const item = await getRegistryItem(entry.name, style)
+      return item
+    })
+  ).then((results) => results.filter(Boolean))
+}
+
+export async function getRegistryItem(name: string, style: Style) {
+  const item = Index[style.name]?.[name]
 
   if (!item) {
     return null

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { ChartDisplay } from "@/components/chart-display"
+import { DEFAULT_STYLE } from "@/registry/styles"
 import { charts } from "@/app/(app)/charts/charts"
 
 export const revalidate = false
@@ -54,6 +55,7 @@ export default async function ChartPage({ params }: ChartPageProps) {
             <ChartDisplay
               key={chart.id}
               name={chart.id}
+              style={DEFAULT_STYLE}
               className={cn(chart.fullWidth && "md:col-span-2 lg:col-span-3")}
             >
               <chart.component />
