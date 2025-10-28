@@ -16,7 +16,7 @@ export function ComponentPreview({
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
-  styleName: Style["name"]
+  styleName?: Style["name"]
   align?: "center" | "start" | "end"
   description?: string
   hideCode?: boolean
