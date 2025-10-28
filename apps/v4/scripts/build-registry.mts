@@ -1,4 +1,4 @@
-import { exec } from "child_process"
+import { exec, execFile } from "child_process"
 import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
@@ -140,7 +140,15 @@ async function buildRegistryJsonFile(styleName: string) {
   // 4. Write registry.json to output directory and format it.
   const registryJsonPath = path.join(outputDir, "registry.json")
   await fs.writeFile(registryJsonPath, JSON.stringify(fixedRegistry, null, 2))
-  await exec(`prettier --write ${registryJsonPath}`)
+  await new Promise<void>((resolve, reject) => {
+    execFile('prettier', ['--write', registryJsonPath], (error, stdout, stderr) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
+    });
+  })
 
   // 5. Write temporary registry file needed by shadcn build.
   const tempRegistryPath = path.join(process.cwd(), `registry-${styleName}.json`)
