@@ -21,6 +21,7 @@ import { transform } from "@/src/utils/transformers"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
+import { transformNext } from "@/src/utils/transformers/transform-next"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
 import prompts from "prompts"
@@ -138,6 +139,9 @@ export async function updateFiles(
             transformCssVars,
             transformTwPrefixes,
             transformIcons,
+            ...(_isNext16Middleware(filePath, projectInfo, config)
+              ? [transformNext]
+              : []),
           ]
         )
 
@@ -184,6 +188,11 @@ export async function updateFiles(
       if (options.rootSpinner) {
         options.rootSpinner.start()
       }
+    }
+
+    // Rename middleware.ts to proxy.ts for Next.js 16+.
+    if (_isNext16Middleware(filePath, projectInfo, config)) {
+      filePath = filePath.replace(/middleware\.(ts|js)$/, "proxy.$1")
     }
 
     // Create the target directory if it doesn't exist.
@@ -714,4 +723,27 @@ export function toAliasedImport(
   // 6️⃣ Prepend the prefix from projectInfo (e.g. "@") if needed
   //    but usually config.aliases already include it.
   return `${aliasBase}${suffix}${keepExt}`
+}
+
+function _isNext16Middleware(
+  filePath: string,
+  projectInfo: ProjectInfo | null,
+  config: Config
+) {
+  const isRootMiddleware =
+    filePath === path.join(config.resolvedPaths.cwd, "middleware.ts") ||
+    filePath === path.join(config.resolvedPaths.cwd, "middleware.js")
+
+  const isNextJs =
+    projectInfo?.framework.name === "next-app" ||
+    projectInfo?.framework.name === "next-pages"
+
+  if (!isRootMiddleware || !isNextJs || !projectInfo?.frameworkVersion) {
+    return false
+  }
+
+  const majorVersion = parseInt(projectInfo.frameworkVersion.split(".")[0])
+  const isNext16Plus = !isNaN(majorVersion) && majorVersion >= 16
+
+  return isNext16Plus
 }
