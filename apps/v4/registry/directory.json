@@ -49,13 +49,6 @@
     "logo": "<svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>ElevenLabs</title><path d='M4.6035 0v24h4.9317V0zm9.8613 0v24h4.9317V0z'/></svg>"
   },
   {
-    "name": "@hooks",
-    "homepage": "https://shadcn-hooks.vercel.app",
-    "url": "https://shadcn-hooks.vercel.app/r/{name}.json",
-    "description": "A comprehensive React Hooks Collection built with Shadcn.",
-    "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M208 128L128 208' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><path d='M192 40L40 192' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><rect x='27' y='28' width='70' height='70' rx='7' /></svg>"
-  },
-  {
     "name": "@kibo-ui",
     "homepage": "https://www.kibo-ui.com/",
     "url": "https://www.kibo-ui.com/r/{name}.json",

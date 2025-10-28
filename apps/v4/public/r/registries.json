@@ -24,7 +24,6 @@
   "@fancy": "https://fancycomponents.dev/r/{name}.json",
   "@formcn": "https://formcn.dev/r/{name}.json",
   "@heseui": "https://www.heseui.com/r/{name}.json",
-  "@hooks": "https://shadcn-hooks.vercel.app/r/{name}.json",
   "@intentui": "https://intentui.com/r/{name}",
   "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
   "@kokonutui": "https://kokonutui.com/r/{name}.json",
