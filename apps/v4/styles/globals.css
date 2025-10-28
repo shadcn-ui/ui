@@ -155,6 +155,9 @@
   body {
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+  }
+
+  [data-slot="layout"] {
     @apply 3xl:p-2 3xl:fixed:p-0 overscroll-none;
   }
 
