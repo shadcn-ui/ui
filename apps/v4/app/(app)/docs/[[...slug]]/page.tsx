@@ -6,7 +6,7 @@ import {
   IconArrowRight,
   IconArrowUpRight,
 } from "@tabler/icons-react"
-import { findNeighbour } from "fumadocs-core/server"
+import { findNeighbour } from "fumadocs-core/page-tree"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"

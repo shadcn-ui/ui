@@ -13,8 +13,6 @@ export default defineConfig({
     rehypePlugins: (plugins) => {
       plugins.shift()
       plugins.push([
-        // TODO: fix the type.
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         rehypePrettyCode as any,
         {
           theme: {

@@ -89,5 +89,11 @@
     "@types/react-dom": "^18.2.22",
     "start-server-and-test": "^2.0.12",
     "typescript": "^5.5.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.2",
+      "@types/react-dom": "19.2.2"
+    }
   }
 }
