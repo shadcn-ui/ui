@@ -54,7 +54,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/new-york-v4/ui/toggle-group"
-import { DEFAULT_STYLE, Style } from "@/registry/styles"
+import { Style } from "@/registry/styles"
 
 type BlockViewerContext = {
   item: z.infer<typeof registryItemSchema>
@@ -134,7 +134,7 @@ type BlockViewerProps = Pick<
   "item" | "tree" | "highlightedFiles"
 > & {
   children: React.ReactNode
-  style?: Style
+  style: Style
 }
 
 function BlockViewerToolbar({ style }: { style: Style }) {
@@ -233,10 +233,10 @@ function BlockViewerToolbar({ style }: { style: Style }) {
 
 function BlockViewerIframe({
   className,
-  style = DEFAULT_STYLE,
+  style,
 }: {
   className?: string
-  style?: Style
+  style: Style
 }) {
   const { item, iframeKey } = useBlockViewer()
 
@@ -486,7 +486,7 @@ function BlockViewer({
   tree,
   highlightedFiles,
   children,
-  style = DEFAULT_STYLE,
+  style,
   ...props
 }: BlockViewerProps) {
   return (

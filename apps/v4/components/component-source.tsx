@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
-import { DEFAULT_STYLE, type Style } from "@/registry/styles"
+import { type Style } from "@/registry/styles"
 
 export async function ComponentSource({
   name,
@@ -17,14 +17,14 @@ export async function ComponentSource({
   language,
   collapsible = true,
   className,
-  style = DEFAULT_STYLE,
+  style,
 }: React.ComponentProps<"div"> & {
   name?: string
   src?: string
   title?: string
   language?: string
   collapsible?: boolean
-  style?: Style
+  style: Style
 }) {
   if (!name && !src) {
     return null

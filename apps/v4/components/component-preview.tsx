@@ -3,11 +3,11 @@ import Image from "next/image"
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
 import { ComponentSource } from "@/components/component-source"
 import { Index } from "@/registry/__index__"
-import { DEFAULT_STYLE, type Style } from "@/registry/styles"
+import { type Style } from "@/registry/styles"
 
 export function ComponentPreview({
   name,
-  style = DEFAULT_STYLE,
+  style,
   type,
   className,
   align = "center",
@@ -16,7 +16,7 @@ export function ComponentPreview({
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
-  style?: Style
+  style: Style
   align?: "center" | "start" | "end"
   description?: string
   hideCode?: boolean
@@ -67,7 +67,7 @@ export function ComponentPreview({
       align={align}
       hideCode={hideCode}
       component={<Component />}
-      source={<ComponentSource name={name} collapsible={false} />}
+      source={<ComponentSource name={name} collapsible={false} style={style} />}
       chromeLessOnMobile={chromeLessOnMobile}
       {...props}
     />

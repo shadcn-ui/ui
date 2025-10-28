@@ -1,7 +1,7 @@
 import { getAllBlockIds } from "@/lib/blocks"
 import { registryCategories } from "@/lib/categories"
 import { BlockDisplay } from "@/components/block-display"
-import { DEFAULT_STYLE } from "@/registry/styles"
+import { getActiveStyle } from "@/registry/styles"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -18,13 +18,16 @@ export default async function BlocksPage({
 }: {
   params: Promise<{ categories?: string[] }>
 }) {
-  const { categories = [] } = await params
+  const [{ categories = [] }, activeStyle] = await Promise.all([
+    params,
+    getActiveStyle(),
+  ])
   const blocks = await getAllBlockIds(["registry:block"], categories)
 
   return (
     <div className="flex flex-col gap-12 md:gap-24">
       {blocks.map((name) => (
-        <BlockDisplay name={name} key={name} style={DEFAULT_STYLE} />
+        <BlockDisplay name={name} key={name} style={activeStyle} />
       ))}
     </div>
   )

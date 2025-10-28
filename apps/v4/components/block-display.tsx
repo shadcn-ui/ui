@@ -31,9 +31,15 @@ export async function BlockDisplay({
   ])
 
   return (
-    <BlockViewer item={item} tree={tree} highlightedFiles={highlightedFiles}>
+    <BlockViewer
+      item={item}
+      tree={tree}
+      highlightedFiles={highlightedFiles}
+      style={style}
+    >
       <ComponentPreview
         name={item.name}
+        style={style}
         hideCode
         className={cn(
           "my-0 **:[.preview]:h-auto **:[.preview]:p-4 **:[.preview>.p-6]:p-0",
