@@ -7,7 +7,7 @@ import { type Style } from "@/registry/styles"
 
 export function ComponentPreview({
   name,
-  style,
+  styleName = "new-york-v4",
   type,
   className,
   align = "center",
@@ -16,14 +16,14 @@ export function ComponentPreview({
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
-  style: Style
+  styleName: Style["name"]
   align?: "center" | "start" | "end"
   description?: string
   hideCode?: boolean
   type?: "block" | "component" | "example"
   chromeLessOnMobile?: boolean
 }) {
-  const Component = Index[style.name]?.[name]?.component
+  const Component = Index[styleName]?.[name]?.component
 
   if (!Component) {
     return (
@@ -55,7 +55,7 @@ export function ComponentPreview({
           className="bg-background absolute top-0 left-0 z-20 hidden w-[970px] max-w-none sm:w-[1280px] md:hidden dark:block md:dark:hidden"
         />
         <div className="bg-background absolute inset-0 hidden w-[1600px] md:block">
-          <iframe src={`/view/${style.name}/${name}`} className="size-full" />
+          <iframe src={`/view/${styleName}/${name}`} className="size-full" />
         </div>
       </div>
     )
@@ -67,7 +67,13 @@ export function ComponentPreview({
       align={align}
       hideCode={hideCode}
       component={<Component />}
-      source={<ComponentSource name={name} collapsible={false} style={style} />}
+      source={
+        <ComponentSource
+          name={name}
+          collapsible={false}
+          styleName={styleName}
+        />
+      }
       chromeLessOnMobile={chromeLessOnMobile}
       {...props}
     />

@@ -17,14 +17,14 @@ export async function ComponentSource({
   language,
   collapsible = true,
   className,
-  style,
+  styleName = "new-york-v4",
 }: React.ComponentProps<"div"> & {
   name?: string
   src?: string
   title?: string
   language?: string
   collapsible?: boolean
-  style: Style
+  styleName?: Style["name"]
 }) {
   if (!name && !src) {
     return null
@@ -33,7 +33,7 @@ export async function ComponentSource({
   let code: string | undefined
 
   if (name) {
-    const item = await getRegistryItem(name, style)
+    const item = await getRegistryItem(name, styleName)
     code = item?.files?.[0]?.content
   }
 
@@ -48,7 +48,7 @@ export async function ComponentSource({
 
   // Fix imports.
   // Replace @/registry/${style}/ with @/components/.
-  code = code.replaceAll(`@/registry/${style.name}/`, "@/components/")
+  code = code.replaceAll(`@/registry/${styleName}/`, "@/components/")
 
   // Replace export default with export.
   code = code.replaceAll("export default", "export")

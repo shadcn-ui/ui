@@ -27,7 +27,7 @@ export default async function BlocksPage({
   return (
     <div className="flex flex-col gap-12 md:gap-24">
       {blocks.map((name) => (
-        <BlockDisplay name={name} key={name} style={activeStyle} />
+        <BlockDisplay name={name} key={name} styleName={activeStyle.name} />
       ))}
     </div>
   )

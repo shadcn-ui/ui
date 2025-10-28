@@ -134,10 +134,10 @@ type BlockViewerProps = Pick<
   "item" | "tree" | "highlightedFiles"
 > & {
   children: React.ReactNode
-  style: Style
+  styleName: Style["name"]
 }
 
-function BlockViewerToolbar({ style }: { style: Style }) {
+function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
   const { setView, view, item, resizablePanelRef, setIframeKey } =
     useBlockViewer()
   const { copyToClipboard, isCopied } = useCopyToClipboard()
@@ -190,7 +190,7 @@ function BlockViewerToolbar({ style }: { style: Style }) {
               asChild
               title="Open in New Tab"
             >
-              <Link href={`/view/${style.name}/${item.name}`} target="_blank">
+              <Link href={`/view/${styleName}/${item.name}`} target="_blank">
                 <span className="sr-only">Open in New Tab</span>
                 <Fullscreen />
               </Link>
@@ -233,17 +233,17 @@ function BlockViewerToolbar({ style }: { style: Style }) {
 
 function BlockViewerIframe({
   className,
-  style,
+  styleName,
 }: {
   className?: string
-  style: Style
+  styleName: Style["name"]
 }) {
   const { item, iframeKey } = useBlockViewer()
 
   return (
     <iframe
       key={iframeKey}
-      src={`/view/${style.name}/${item.name}`}
+      src={`/view/${styleName}/${item.name}`}
       height={item.meta?.iframeHeight ?? 930}
       loading="lazy"
       className={cn(
@@ -254,7 +254,7 @@ function BlockViewerIframe({
   )
 }
 
-function BlockViewerView({ style }: { style: Style }) {
+function BlockViewerView({ styleName }: { styleName: Style["name"] }) {
   const { resizablePanelRef } = useBlockViewer()
 
   return (
@@ -271,7 +271,7 @@ function BlockViewerView({ style }: { style: Style }) {
             defaultSize={100}
             minSize={30}
           >
-            <BlockViewerIframe style={style} />
+            <BlockViewerIframe styleName={styleName} />
           </ResizablePanel>
           <ResizableHandle className="after:bg-border relative hidden w-3 bg-transparent p-0 after:absolute after:top-1/2 after:right-0 after:h-8 after:w-[6px] after:translate-x-[-1px] after:-translate-y-1/2 after:rounded-full after:transition-all after:hover:h-10 md:block" />
           <ResizablePanel defaultSize={0} minSize={0} />
@@ -486,7 +486,7 @@ function BlockViewer({
   tree,
   highlightedFiles,
   children,
-  style,
+  styleName,
   ...props
 }: BlockViewerProps) {
   return (
@@ -496,8 +496,8 @@ function BlockViewer({
       highlightedFiles={highlightedFiles}
       {...props}
     >
-      <BlockViewerToolbar style={style} />
-      <BlockViewerView style={style} />
+      <BlockViewerToolbar styleName={styleName} />
+      <BlockViewerView styleName={styleName} />
       <BlockViewerCode />
       <BlockViewerMobile>{children}</BlockViewerMobile>
     </BlockViewerProvider>

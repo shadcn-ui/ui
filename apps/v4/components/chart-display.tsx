@@ -14,14 +14,14 @@ export type Chart = z.infer<typeof registryItemSchema> & {
 
 export async function ChartDisplay({
   name,
-  style,
+  styleName,
   children,
   className,
 }: {
   name: string
-  style: Style
+  styleName: Style["name"]
 } & React.ComponentProps<"div">) {
-  const chart = await getCachedRegistryItem(name, style)
+  const chart = await getCachedRegistryItem(name, styleName)
   const highlightedCode = await getChartHighlightedCode(
     chart?.files?.[0]?.content ?? ""
   )
@@ -51,8 +51,8 @@ export async function ChartDisplay({
 }
 
 const getCachedRegistryItem = React.cache(
-  async (name: string, style: Style) => {
-    return await getRegistryItem(name, style)
+  async (name: string, styleName: Style["name"]) => {
+    return await getRegistryItem(name, styleName)
   }
 )
 

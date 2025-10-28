@@ -12,8 +12,8 @@ export const dynamic = "force-static"
 export const dynamicParams = false
 
 const getCachedRegistryItem = React.cache(
-  async (name: string, style: Style) => {
-    return await getRegistryItem(name, style)
+  async (name: string, styleName: Style["name"]) => {
+    return await getRegistryItem(name, styleName)
   }
 )
 
@@ -32,7 +32,7 @@ export async function generateMetadata({
     return {}
   }
 
-  const item = await getCachedRegistryItem(name, style)
+  const item = await getCachedRegistryItem(name, style.name)
 
   if (!item) {
     return {}
@@ -114,8 +114,8 @@ export default async function BlockPage({
     return notFound()
   }
 
-  const item = await getCachedRegistryItem(name, style)
-  const Component = getRegistryComponent(name, style)
+  const item = await getCachedRegistryItem(name, style.name)
+  const Component = getRegistryComponent(name, style.name)
 
   if (!item || !Component) {
     return notFound()

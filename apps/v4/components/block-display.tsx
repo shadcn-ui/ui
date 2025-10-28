@@ -14,12 +14,12 @@ import { type Style } from "@/registry/styles"
 
 export async function BlockDisplay({
   name,
-  style,
+  styleName,
 }: {
   name: string
-  style: Style
+  styleName: Style["name"]
 }) {
-  const item = await getCachedRegistryItem(name, style)
+  const item = await getCachedRegistryItem(name, styleName)
 
   if (!item?.files) {
     return null
@@ -35,11 +35,11 @@ export async function BlockDisplay({
       item={item}
       tree={tree}
       highlightedFiles={highlightedFiles}
-      style={style}
+      styleName={styleName}
     >
       <ComponentPreview
         name={item.name}
-        style={style}
+        styleName={styleName}
         hideCode
         className={cn(
           "my-0 **:[.preview]:h-auto **:[.preview]:p-4 **:[.preview>.p-6]:p-0",
@@ -51,8 +51,8 @@ export async function BlockDisplay({
 }
 
 const getCachedRegistryItem = React.cache(
-  async (name: string, style: Style) => {
-    return await getRegistryItem(name, style)
+  async (name: string, styleName: Style["name"]) => {
+    return await getRegistryItem(name, styleName)
   }
 )
 

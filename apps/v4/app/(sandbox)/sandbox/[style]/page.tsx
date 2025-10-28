@@ -72,7 +72,7 @@ export default async function BlockPage({
     return notFound()
   }
 
-  const items = await getRegistryItems(style, (item) =>
+  const items = await getRegistryItems(style.name, (item) =>
     allowedTypes.includes(item.type)
   )
 
@@ -86,7 +86,7 @@ export default async function BlockPage({
         {items
           .filter((item) => item !== null)
           .map((item) => {
-            const Component = getRegistryComponent(item.name, style)
+            const Component = getRegistryComponent(item.name, style.name)
             if (!Component) {
               return null
             }

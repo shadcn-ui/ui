@@ -8,15 +8,15 @@ import { z } from "zod"
 import { Index } from "@/registry/__index__"
 import { type Style } from "@/registry/styles"
 
-export function getRegistryComponent(name: string, style: Style) {
-  return Index[style.name]?.[name]?.component
+export function getRegistryComponent(name: string, styleName: Style["name"]) {
+  return Index[styleName]?.[name]?.component
 }
 
 export async function getRegistryItems(
-  style: Style,
+  styleName: Style["name"],
   filter?: (item: z.infer<typeof registryItemSchema>) => boolean
 ) {
-  const styleIndex = Index[style.name]
+  const styleIndex = Index[styleName]
 
   if (!styleIndex) {
     return []
@@ -28,14 +28,14 @@ export async function getRegistryItems(
 
   return await Promise.all(
     filteredEntries.map(async (entry) => {
-      const item = await getRegistryItem(entry.name, style)
+      const item = await getRegistryItem(entry.name, styleName)
       return item
     })
   ).then((results) => results.filter(Boolean))
 }
 
-export async function getRegistryItem(name: string, style: Style) {
-  const item = Index[style.name]?.[name]
+export async function getRegistryItem(name: string, styleName: Style["name"]) {
+  const item = Index[styleName]?.[name]
 
   if (!item) {
     return null

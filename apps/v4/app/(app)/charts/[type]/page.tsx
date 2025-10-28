@@ -56,7 +56,7 @@ export default async function ChartPage({ params }: ChartPageProps) {
             <ChartDisplay
               key={chart.id}
               name={chart.id}
-              style={activeStyle}
+              styleName={activeStyle.name}
               className={cn(chart.fullWidth && "md:col-span-2 lg:col-span-3")}
             >
               <chart.component />
