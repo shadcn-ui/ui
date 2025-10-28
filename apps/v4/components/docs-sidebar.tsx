@@ -24,8 +24,8 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/components",
   },
   {
-    name: "Registry",
-    href: "/docs/registry",
+    name: "Directory",
+    href: "/docs/directory",
   },
   {
     name: "MCP Server",
