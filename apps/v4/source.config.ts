@@ -32,12 +32,12 @@ export const docs = defineDocs({
   dir: "content/docs",
   docs: {
     schema: frontmatterSchema.extend({
-      links: z
-        .object({
+      links: z.optional(
+        z.object({
           doc: z.string().optional(),
           api: z.string().optional(),
         })
-        .optional(),
+      ),
     }),
   },
 })

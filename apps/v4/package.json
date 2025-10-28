@@ -95,7 +95,7 @@
     "tailwind-merge": "^3.0.1",
     "ts-morph": "18.0.0",
     "vaul": "1.1.2",
-    "zod": "^3.24.1"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
