@@ -29,7 +29,7 @@
   "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
   "@kokonutui": "https://kokonutui.com/r/{name}.json",
   "@limeplay": "https://limeplay.winoffrg.dev/r/{name}.json",
-  "@lytenyte": "https://www.1771technologies.com/r/{name}json",
+  "@lytenyte": "https://www.1771technologies.com/r/{name}.json",
   "@magicui": "https://magicui.design/r/{name}.json",
   "@magicui-pro": "https://pro.magicui.design/registry/{name}",
   "@motion-primitives": "https://motion-primitives.com/c/{name}.json",
