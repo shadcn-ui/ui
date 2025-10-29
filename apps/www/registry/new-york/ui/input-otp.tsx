@@ -6,6 +6,24 @@ import { Minus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+const ERROR_CONTEXT_NOT_AVAILABLE =
+  "OTPInputContext not available. Make sure you're rendering InputOTPSlot inside an OTPInput component"
+const ERROR_SLOT_NOT_EXIST = (index: number) =>
+  `InputOTPSlot with index ${index} does not exist`
+
+// Custom hook for context and slot retrieval
+const useOTPInputSlot = (index: number) => {
+  const inputOTPContext = React.useContext(OTPInputContext)
+  if (!inputOTPContext) {
+    throw new Error(ERROR_CONTEXT_NOT_AVAILABLE)
+  }
+  const slot = inputOTPContext.slots[index]
+  if (!slot) {
+    throw new Error(ERROR_SLOT_NOT_EXIST(index))
+  }
+  return slot
+}
+
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,
   React.ComponentPropsWithoutRef<typeof OTPInput>
@@ -34,8 +52,7 @@ const InputOTPSlot = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div"> & { index: number }
 >(({ index, className, ...props }, ref) => {
-  const inputOTPContext = React.useContext(OTPInputContext)
-  const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index]
+  const { char, hasFakeCaret, isActive } = useOTPInputSlot(index)
 
   return (
     <div
