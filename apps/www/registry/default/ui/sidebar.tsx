@@ -74,25 +74,58 @@ const SidebarProvider = React.forwardRef<
     ref
   ) => {
     const isMobile = useIsMobile()
-    const [openMobile, setOpenMobile] = React.useState(false)
+    // State for mobile sidebar
+    const [_openMobile, _setOpenMobile] = React.useState(false)
 
     // This is the internal state of the sidebar.
-    // We use openProp and setOpenProp for control from outside the component.
     const [_open, _setOpen] = React.useState(defaultOpen)
-    const open = openProp ?? _open
+
+    // Unified open state that considers both mobile and desktop scenarios
+    const open = openProp ?? (isMobile ? _openMobile : _open)
+
+    // Unified state update function to handle both mobile and desktop states
+    const updateOpenState = React.useCallback(
+      (value: boolean) => {
+        if (setOpenProp) {
+          setOpenProp(value)
+        }
+        if (isMobile) {
+          _setOpenMobile(value)
+        } else {
+          _setOpen(value)
+          // This sets the cookie to keep the sidebar state.
+          document.cookie = `${SIDEBAR_COOKIE_NAME}=${value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+        }
+      },
+      [isMobile, setOpenProp]
+    )
+
+    // When openProp changes, update both mobile and desktop states
+    React.useEffect(() => {
+      if (openProp !== undefined) {
+        if (isMobile) {
+          _setOpenMobile(openProp)
+        } else {
+          _setOpen(openProp)
+        }
+      }
+    }, [openProp])
+
     const setOpen = React.useCallback(
       (value: boolean | ((value: boolean) => boolean)) => {
         const openState = typeof value === "function" ? value(open) : value
-        if (setOpenProp) {
-          setOpenProp(openState)
-        } else {
-          _setOpen(openState)
-        }
-
-        // This sets the cookie to keep the sidebar state.
-        document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+        updateOpenState(openState)
       },
-      [setOpenProp, open]
+      [open, updateOpenState]
+    )
+
+    const setOpenMobile = React.useCallback(
+      (value: boolean | ((value: boolean) => boolean)) => {
+        const openState =
+          typeof value === "function" ? value(_openMobile) : value
+        updateOpenState(openState)
+      },
+      [_openMobile, updateOpenState]
     )
 
     // Helper to toggle the sidebar.
@@ -128,11 +161,19 @@ const SidebarProvider = React.forwardRef<
         open,
         setOpen,
         isMobile,
-        openMobile,
+        openMobile: _openMobile,
         setOpenMobile,
         toggleSidebar,
       }),
-      [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]
+      [
+        state,
+        open,
+        setOpen,
+        isMobile,
+        _openMobile,
+        setOpenMobile,
+        toggleSidebar,
+      ]
     )
 
     return (
