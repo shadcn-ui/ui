@@ -1,0 +1,241 @@
+---
+title: Tanstack Start
+description: Adding dark mode to your tanstack start app.
+---
+
+## Dark mode
+
+<Steps>
+
+### Create a theme provider
+
+```tsx title="components/theme-provider.tsx"
+import { createServerFn } from '@tanstack/react-start';
+import { getCookie, setCookie } from '@tanstack/react-start/server';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
+
+type Theme = 'dark' | 'light' | 'system';
+
+type ThemeProviderProps = {
+  children: React.ReactNode;
+  defaultTheme?: Theme;
+  storageKey?: string;
+};
+
+type ThemeProviderState = {
+  theme: Theme;
+  toggleTheme: (theme: Theme) => void;
+};
+
+const initialState: ThemeProviderState = {
+  theme: 'system',
+  toggleTheme: () => null,
+};
+
+export const getThemeCookie = createServerFn({ method: 'GET' })
+  .validator((d: { storageKey: string; defaultTheme?: Theme }) => d)
+  .handler(async ({ data }) => {
+    const { storageKey, defaultTheme = 'light' } = data;
+    const cookieTheme = getCookie(data.storageKey) as Theme | undefined;
+
+    return cookieTheme ?? defaultTheme;
+  });
+
+export const updateThemeCookie = createServerFn({ method: 'POST' })
+  .validator((d: { theme: Theme; storageKey: string }) => d)
+  .handler(async ({ data }) => {
+    const { storageKey, theme } = data;
+
+    setCookie(storageKey, theme, {
+      httpOnly: false,
+      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
+      maxAge: 60 * 60 * 24 * 365 * 10,
+    });
+  });
+
+const ThemeContext = createContext<ThemeProviderState>(initialState);
+
+export function ThemeProvider({
+  children,
+  defaultTheme = 'system',
+  storageKey = 'tanstack-start-ui-theme',
+}: ThemeProviderProps) {
+  const [theme, setTheme] = useState(defaultTheme);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+
+    root.classList.remove('light', 'dark');
+
+    if (typeof window !== 'undefined' && theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light';
+
+      root.classList.add(systemTheme);
+    } else {
+      root.classList.add(theme);
+    }
+
+    updateThemeCookie({ data: { storageKey, theme } });
+  }, [theme, storageKey]);
+
+  const value = useMemo<ThemeProviderState>(
+    () => ({
+      theme,
+      toggleTheme: setTheme,
+    }),
+    [theme]
+  );
+
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
+}
+
+export function useTheme() {
+  const ctx = useContext(ThemeContext);
+
+  if (!ctx) {
+    throw new Error('useTheme must be used within ThemeProvider');
+  }
+
+  return ctx;
+}
+```
+
+### Get the theme cookie and wrap your app with ThemeProvider
+
+Get the theme cookie in the loader.
+
+```tsx title="routes/__root.tsx"
+import { getThemeCookie, ThemeProvider } from '@/components/theme-provider';
+import { QueryClient } from '@tanstack/react-query';
+import {
+  HeadContent,
+  Outlet,
+  ScriptOnce,
+  Scripts,
+  createRootRouteWithContext,
+} from '@tanstack/react-router';
+import type { ReactNode } from 'react';
+import appCss from '../styles/app.css?url';
+
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
+  {
+    head: () => ({
+      meta: [
+        {
+          charSet: 'utf-8',
+        },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1',
+        },
+        {
+          title: 'TanStack Start Theme Toggler',
+        },
+      ],
+      links: [
+        {
+          rel: 'stylesheet',
+          href: appCss,
+        },
+      ],
+    }),
+    loader: async () => {
+      const theme = await getThemeCookie({ data: { storageKey: '' } });
+
+      return { theme };
+    },
+    component: RootComponent,
+  }
+);
+
+function RootComponent() {
+  const { theme } = Route.useLoaderData();
+
+  return (
+    <RootDocument>
+      <ThemeProvider defaultTheme={theme}>
+        <Outlet />
+      </ThemeProvider>
+    </RootDocument>
+  );
+}
+
+function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  const { theme } = Route.useLoaderData();
+  const themeClass = theme === 'dark' ? 'dark': ''
+
+  return (
+    <html className={themeClass}>
+      <head>
+        {/* Make sure html has the proper class based on the user's preferences */}
+        {theme === 'system' ? (
+          <ScriptOnce
+            children={`window.matchMedia('(prefers-color-scheme: dark)').matches ? document.documentElement.classList.add('dark') : null`}
+          />
+        ) : null}
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+### Add a mode toggle
+
+```tsx title="components/mode-toggle.tsx"
+
+import { useTheme } from '@/components/theme-provider';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Moon, Sun } from 'lucide-react';
+
+export function ThemeToggle() {
+  const { toggleTheme } = useTheme();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant='outline' size='icon'>
+          <Sun className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
+          <Moon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
+          <span className='sr-only'>Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align='end'>
+        <DropdownMenuItem onClick={() => toggleTheme('light')}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => toggleTheme('dark')}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => toggleTheme('system')}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
+</Steps>
