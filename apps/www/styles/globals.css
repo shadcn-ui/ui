@@ -37,6 +37,7 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 240 5% 64.9%;
+    --font-press-start-2p: 'Press Start 2P', monospace;
   }
 
   .dark {
@@ -73,6 +74,13 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 240 4.9% 83.9%;
   }
+}
+
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('../assets/fonts/press-start-2p/PressStart2P-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @layer base {

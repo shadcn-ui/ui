@@ -751,6 +751,69 @@ export const baseColors = [
       },
     },
   },
+  {
+    name: "atari",
+    label: "Atari",
+    activeColor: {
+      light: "0 0% 0%", // black
+      dark: "0 0% 100%", // white
+    },
+    cssVars: {
+      light: {
+        background: "0 0% 100%", // white
+        foreground: "0 0% 0%",   // black
+        card: "0 0% 90%",       // light gray
+        "card-foreground": "0 0% 0%", // black
+        popover: "0 0% 90%",    // light gray
+        "popover-foreground": "0 0% 0%", // black
+        primary: "0 0% 0%",     // black
+        "primary-foreground": "0 0% 100%", // white
+        secondary: "0 0% 80%",  // medium gray
+        "secondary-foreground": "0 0% 0%", // black
+        muted: "0 0% 90%",      // light gray
+        "muted-foreground": "0 0% 30%", // dark gray
+        accent: "0 0% 50%",     // gray
+        "accent-foreground": "0 0% 0%", // black
+        destructive: "0 100% 50%", // red (for emphasis on destructive actions)
+        "destructive-foreground": "0 0% 100%", // white
+        border: "0 0% 80%",     // medium gray
+        input: "0 0% 80%",      // medium gray
+        ring: "0 0% 0%",        // black
+        radius: "0.0rem",
+        "chart-1": "0 0% 50%",    // gray
+        "chart-2": "0 0% 40%",    // dark gray
+        "chart-3": "0 0% 30%",    // darker gray
+        "chart-4": "0 0% 20%",    // even darker gray
+        "chart-5": "0 0% 10%",    // almost black
+      },
+      dark: {
+        background: "0 0% 0%",   // black
+        foreground: "0 0% 100%", // white
+        card: "0 0% 10%",       // dark gray
+        "card-foreground": "0 0% 100%", // white
+        popover: "0 0% 10%",    // dark gray
+        "popover-foreground": "0 0% 100%", // white
+        primary: "0 0% 100%",   // white
+        "primary-foreground": "0 0% 0%", // black
+        secondary: "0 0% 20%",  // medium gray
+        "secondary-foreground": "0 0% 100%", // white
+        muted: "0 0% 10%",      // dark gray
+        "muted-foreground": "0 0% 70%", // light gray
+        accent: "0 0% 50%",     // gray
+        "accent-foreground": "0 0% 100%", // white
+        destructive: "0 100% 50%", // red
+        "destructive-foreground": "0 0% 0%", // black
+        border: "0 0% 20%",     // medium gray
+        input: "0 0% 20%",      // medium gray
+        ring: "0 0% 100%",      // white
+        "chart-1": "0 0% 50%",    // gray
+        "chart-2": "0 0% 60%",    // light gray
+        "chart-3": "0 0% 70%",    // lighter gray
+        "chart-4": "0 0% 80%",    // even lighter gray
+        "chart-5": "0 0% 90%",    // almost white
+      },
+    },
+  },
 ] as const
 
 export type BaseColor = (typeof baseColors)[number]
@@ -1104,6 +1167,76 @@ export const baseColorsV4 = {
 } as const
 
 export const baseColorsOKLCH = {
+  atari: { // Assuming OKLCH values would be similar for monochrome, copying HSL for now
+    light: {
+      background: "oklch(1 0 0)", // white
+      foreground: "oklch(0 0 0)",   // black
+      card: "oklch(0.9 0 0)",       // light gray
+      "card-foreground": "oklch(0 0 0)", // black
+      popover: "oklch(0.9 0 0)",    // light gray
+      "popover-foreground": "oklch(0 0 0)", // black
+      primary: "oklch(0 0 0)",     // black
+      "primary-foreground": "oklch(1 0 0)", // white
+      secondary: "oklch(0.8 0 0)",  // medium gray
+      "secondary-foreground": "oklch(0 0 0)", // black
+      muted: "oklch(0.9 0 0)",      // light gray
+      "muted-foreground": "oklch(0.3 0 0)", // dark gray
+      accent: "oklch(0.5 0 0)",     // gray
+      "accent-foreground": "oklch(0 0 0)", // black
+      destructive: "oklch(0.5 0.25 25)", // red (approx)
+      "destructive-foreground": "oklch(1 0 0)", // white
+      border: "oklch(0.8 0 0)",     // medium gray
+      input: "oklch(0.8 0 0)",      // medium gray
+      ring: "oklch(0 0 0)",        // black
+      "chart-1": "oklch(0.5 0 0)",    // gray
+      "chart-2": "oklch(0.4 0 0)",    // dark gray
+      "chart-3": "oklch(0.3 0 0)",    // darker gray
+      "chart-4": "oklch(0.2 0 0)",    // even darker gray
+      "chart-5": "oklch(0.1 0 0)",    // almost black
+      sidebar: "oklch(1 0 0)", // white
+      "sidebar-foreground": "oklch(0 0 0)",   // black
+      "sidebar-primary": "oklch(0 0 0)",     // black
+      "sidebar-primary-foreground": "oklch(1 0 0)", // white
+      "sidebar-accent": "oklch(0.9 0 0)", // light gray
+      "sidebar-accent-foreground": "oklch(0 0 0)", // black
+      "sidebar-border": "oklch(0.8 0 0)", // medium gray
+      "sidebar-ring": "oklch(0 0 0)", // black
+    },
+    dark: {
+      background: "oklch(0 0 0)",   // black
+      foreground: "oklch(1 0 0)", // white
+      card: "oklch(0.1 0 0)",       // dark gray
+      "card-foreground": "oklch(1 0 0)", // white
+      popover: "oklch(0.1 0 0)",    // dark gray
+      "popover-foreground": "oklch(1 0 0)", // white
+      primary: "oklch(1 0 0)",   // white
+      "primary-foreground": "oklch(0 0 0)", // black
+      secondary: "oklch(0.2 0 0)",  // medium gray
+      "secondary-foreground": "oklch(1 0 0)", // white
+      muted: "oklch(0.1 0 0)",      // dark gray
+      "muted-foreground": "oklch(0.7 0 0)", // light gray
+      accent: "oklch(0.5 0 0)",     // gray
+      "accent-foreground": "oklch(1 0 0)", // white
+      destructive: "oklch(0.5 0.25 25)", // red (approx)
+      "destructive-foreground": "oklch(0 0 0)", // black
+      border: "oklch(0.2 0 0)",     // medium gray
+      input: "oklch(0.2 0 0)",      // medium gray
+      ring: "oklch(1 0 0)",      // white
+      "chart-1": "oklch(0.5 0 0)",    // gray
+      "chart-2": "oklch(0.6 0 0)",    // light gray
+      "chart-3": "oklch(0.7 0 0)",    // lighter gray
+      "chart-4": "oklch(0.8 0 0)",    // even lighter gray
+      "chart-5": "oklch(0.9 0 0)",    // almost white
+      sidebar: "oklch(0 0 0)",   // black
+      "sidebar-foreground": "oklch(1 0 0)", // white
+      "sidebar-primary": "oklch(1 0 0)",   // white
+      "sidebar-primary-foreground": "oklch(0 0 0)", // black
+      "sidebar-accent": "oklch(0.1 0 0)", // dark gray
+      "sidebar-accent-foreground": "oklch(1 0 0)", // white
+      "sidebar-border": "oklch(0.2 0 0)", // medium gray
+      "sidebar-ring": "oklch(1 0 0)", // white
+    },
+  },
   zinc: {
     light: {
       background: "oklch(1 0 0)", // --color-zinc-50
