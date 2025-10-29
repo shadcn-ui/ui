@@ -8,7 +8,7 @@ export const revalidate = false
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: Promise<{ slug: string[] }> }
+  { params }: { params: Promise<{ slug?: string[] }> }
 ) {
   const slug = (await params).slug
   const page = source.getPage(slug)
@@ -17,8 +17,7 @@ export async function GET(
     notFound()
   }
 
-  // @ts-expect-error - revisit fumadocs types.
-  const processedContent = processMdxForLLMs(page.data.content)
+  const processedContent = processMdxForLLMs(await page.data.getText("raw"))
 
   return new NextResponse(processedContent, {
     headers: {

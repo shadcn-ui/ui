@@ -128,7 +128,6 @@ export const mdxComponents = {
     />
   ),
   img: ({ className, alt, ...props }: React.ComponentProps<"img">) => (
-    // eslint-disable-next-line @next/next/no-img-element
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }: React.ComponentProps<"hr">) => (
@@ -281,7 +280,7 @@ export const mdxComponents = {
   }: React.ComponentProps<"img">) => (
     <Image
       className={cn("mt-6 rounded-md border", className)}
-      src={src || ""}
+      src={(src as string) || ""}
       width={Number(width)}
       height={Number(height)}
       alt={alt || ""}
