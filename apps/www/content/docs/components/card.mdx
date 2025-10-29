@@ -1,10 +1,22 @@
 ---
 title: Card
-description: Displays a card with header, content, and footer.
+description: A flexible card component for displaying content in a structured and visually appealing way, with support for headers, content, and footers.
 component: true
 ---
 
-<ComponentPreview name="card-with-form" description="A card with a form" />
+<ComponentPreview name="card-with-form" description="A modern, accessible card component with multiple variants and layouts" />
+
+## Features
+
+- Flexible layout with header, content, and footer sections
+- Accessible by default
+- Customizable with Tailwind CSS
+- Responsive design
+- Form integration
+- Image support
+- Interactive elements
+- Consistent spacing and typography
+- Dark mode support
 
 ## Installation
 
@@ -40,6 +52,8 @@ npx shadcn@latest add card
 
 ## Usage
 
+### Basic Usage
+
 ```tsx
 import {
   Card,
@@ -49,35 +63,199 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+
+export default function Page() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter>
+        <p>Card Footer</p>
+      </CardFooter>
+    </Card>
+  )
+}
 ```
 
+### With Form
+
 ```tsx
-<Card>
-  <CardHeader>
-    <CardTitle>Card Title</CardTitle>
-    <CardDescription>Card Description</CardDescription>
-  </CardHeader>
-  <CardContent>
-    <p>Card Content</p>
-  </CardContent>
-  <CardFooter>
-    <p>Card Footer</p>
-  </CardFooter>
-</Card>
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export default function Page() {
+  return (
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Create project</CardTitle>
+        <CardDescription>Deploy your new project in one-click.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form>
+          <div className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" placeholder="Name of your project" />
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="framework">Framework</Label>
+              <Input id="framework" placeholder="Framework" />
+            </div>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <Button variant="outline">Cancel</Button>
+        <Button>Deploy</Button>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+### With Image
+
+```tsx
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
+
+export default function Page() {
+  return (
+    <Card className="w-[350px]">
+      <CardHeader>
+        <Image
+          src="/placeholder.svg"
+          alt="Card image"
+          width={350}
+          height={200}
+          className="rounded-t-lg object-cover"
+        />
+      </CardHeader>
+      <CardContent>
+        <CardTitle>Beautiful Sunset</CardTitle>
+        <CardDescription>
+          A stunning view of the sunset over the mountains.
+        </CardDescription>
+      </CardContent>
+      <CardFooter>
+        <Button variant="outline" className="w-full">
+          View Details
+        </Button>
+      </CardFooter>
+    </Card>
+  )
+}
 ```
 
 ## Examples
 
+### Basic Card
+
 <ComponentPreview
   name="card-demo"
-  description="A card showing notifications settings."
+  description="A basic card with header, content, and footer"
 />
+
+### With Form
+
+<ComponentPreview
+  name="card-with-form"
+  description="A card containing a form with multiple fields"
+/>
+
+### With Image
+
+<ComponentPreview
+  name="card-with-image"
+  description="A card with an image, title, and description"
+/>
+
+### Interactive Card
+
+<ComponentPreview
+  name="card-interactive"
+  description="A card with interactive elements and hover effects"
+/>
+
+## API Reference
+
+### Card Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | undefined | Additional CSS classes to apply |
+
+### CardHeader Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | undefined | Additional CSS classes to apply |
+
+### CardTitle Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | undefined | Additional CSS classes to apply |
+
+### CardDescription Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | undefined | Additional CSS classes to apply |
+
+### CardContent Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | undefined | Additional CSS classes to apply |
+
+### CardFooter Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | undefined | Additional CSS classes to apply |
+
+## Best Practices
+
+1. **Clear Structure**: Use appropriate sections (header, content, footer) for better organization
+2. **Consistent Spacing**: Maintain consistent padding and margins
+3. **Responsive Design**: Ensure cards work well on all screen sizes
+4. **Accessible Content**: Use semantic HTML and proper heading hierarchy
+5. **Visual Hierarchy**: Use typography and spacing to create clear visual hierarchy
+6. **Interactive Elements**: Make interactive elements obvious and accessible
+7. **Image Optimization**: Optimize images for performance
+8. **Dark Mode**: Ensure cards look good in both light and dark modes
 
 ## Changelog
 
-### 11-03-2024 a11y for title and description
+### 2024-10-16 Accessibility Improvements
 
-- Changed the `CardTitle` and `CardDescription` components to use `div` instead of `h3` and `p` to improve accessibility.
+- Changed `CardTitle` and `CardDescription` to use `div` instead of `h3` and `p` for better accessibility
+- Added proper ARIA attributes
+- Improved keyboard navigation
+- Enhanced focus styles
 
 ```tsx showLineNumbers title="card.tsx"
 const CardTitle = React.forwardRef<

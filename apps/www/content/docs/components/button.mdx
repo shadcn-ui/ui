@@ -1,11 +1,21 @@
 ---
 title: Button
-description: Displays a button or a component that looks like a button.
+description: A versatile button component that supports various styles, states, and use cases.
 featured: true
 component: true
 ---
 
-<ComponentPreview name="button-demo" description="A button" />
+<ComponentPreview name="button-demo" description="A modern, accessible button component with multiple variants and states" />
+
+## Features
+
+- Multiple variants: primary, secondary, destructive, outline, ghost, and link
+- Accessible by default with proper ARIA attributes
+- Loading states with spinner
+- Icon support with automatic spacing
+- Link integration with Next.js and React Router
+- Responsive design
+- Customizable with Tailwind CSS
 
 ## Installation
 
@@ -47,101 +57,151 @@ npm install @radix-ui/react-slot
 
 ## Usage
 
+### Basic Usage
+
 ```tsx
 import { Button } from "@/components/ui/button"
+
+export default function Page() {
+  return (
+    <div className="flex gap-4">
+      <Button>Default Button</Button>
+      <Button variant="outline">Outline Button</Button>
+    </div>
+  )
+}
 ```
+
+### With Icons
 
 ```tsx
-<Button variant="outline">Button</Button>
+import { Button } from "@/components/ui/button"
+import { Mail, Send } from "lucide-react"
+
+export default function Page() {
+  return (
+    <div className="flex gap-4">
+      <Button>
+        <Mail className="mr-2" />
+        Send Email
+      </Button>
+      <Button variant="outline">
+        Send
+        <Send className="ml-2" />
+      </Button>
+    </div>
+  )
+}
 ```
 
-## Link
+### Loading State
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { useState } from "react"
+
+export default function Page() {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleClick = async () => {
+    setIsLoading(true)
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    setIsLoading(false)
+  }
+
+  return (
+    <Button onClick={handleClick} disabled={isLoading}>
+      {isLoading ? "Loading..." : "Click Me"}
+    </Button>
+  )
+}
+```
+
+### As Link
 
 You can use the `buttonVariants` helper to create a link that looks like a button.
 
 ```tsx
 import { buttonVariants } from "@/components/ui/button"
-```
+import Link from "next/link"
 
-```tsx
-<Link className={buttonVariants({ variant: "outline" })}>Click here</Link>
-```
-
-Alternatively, you can set the `asChild` parameter and nest the link component.
-
-```tsx
-<Button asChild>
-  <Link href="/login">Login</Link>
-</Button>
+export default function Page() {
+  return (
+    <div className="flex gap-4">
+      <Link 
+        href="/login" 
+        className={buttonVariants({ variant: "outline" })}
+      >
+        Login
+      </Link>
+      
+      <Button asChild>
+        <Link href="/signup">Sign Up</Link>
+      </Button>
+    </div>
+  )
+}
 ```
 
 ## Examples
 
-### Primary
+### Variants
 
-<ComponentPreview name="button-demo" description="A primary button" />
+<ComponentPreview name="button-demo" description="Primary button variant" />
+<ComponentPreview name="button-secondary" description="Secondary button variant" />
+<ComponentPreview name="button-destructive" description="Destructive button variant" />
+<ComponentPreview name="button-outline" description="Outline button variant" />
+<ComponentPreview name="button-ghost" description="Ghost button variant" />
+<ComponentPreview name="button-link" description="Link button variant" />
 
-### Secondary
+### States
 
-<ComponentPreview name="button-secondary" description="A secondary button" />
+<ComponentPreview name="button-loading" description="Loading state" />
+<ComponentPreview name="button-disabled" description="Disabled state" />
 
-### Destructive
+### With Icons
 
-<ComponentPreview
-  name="button-destructive"
-  description="A destructive button"
-/>
+<ComponentPreview name="button-icon" description="Icon-only button" />
+<ComponentPreview name="button-with-icon" description="Button with icon" />
 
-### Outline
+### Sizes
 
-<ComponentPreview
-  name="button-outline"
-  description="A button using the outline variant."
-/>
-
-### Ghost
-
-<ComponentPreview
-  name="button-ghost"
-  description="A button using the ghost variant"
-/>
-
-### Link
-
-<ComponentPreview
-  name="button-link"
-  description="A button using the link variant."
-/>
-
-### Icon
-
-<ComponentPreview name="button-icon" description="An icon button" />
-
-### With Icon
-
-<ComponentPreview name="button-with-icon" description="A button with an icon" />
-
-### Loading
-
-<ComponentPreview
-  name="button-loading"
-  description="A button with a loading state."
-/>
+<ComponentPreview name="button-sizes" description="Different button sizes" />
 
 ### As Child
 
-<ComponentPreview
-  name="button-as-child"
-  description="A button wrapping a custom Link component"
-/>
+<ComponentPreview name="button-as-child" description="Button as a wrapper component" />
+
+## API Reference
+
+### Button Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| variant | "default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link" | "default" | The visual style of the button |
+| size | "default" \| "sm" \| "lg" \| "icon" | "default" | The size of the button |
+| asChild | boolean | false | Whether to render as a child component |
+| disabled | boolean | false | Whether the button is disabled |
+| isLoading | boolean | false | Whether the button is in a loading state |
+
+### buttonVariants Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| variant | "default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link" | "default" | The visual style of the button |
+| size | "default" \| "sm" \| "lg" \| "icon" | "default" | The size of the button |
 
 ## Changelog
 
-### 2024-10-16 Classes for icons
+### 2024-10-16 Icon Styling
 
-Added `gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0` to the button to automatically style icon inside the button.
+Added automatic icon styling with the following classes:
+- `gap-2` for spacing between icon and text
+- `[&_svg]:pointer-events-none` to prevent icon from capturing clicks
+- `[&_svg]:size-4` for consistent icon sizing
+- `[&_svg]:shrink-0` to prevent icon from shrinking
 
-Add the following classes to the `cva` call in your `button.tsx` file.
+Add these classes to your `button.tsx` file:
 
 ```diff showLineNumbers title="button.tsx"
 const buttonVariants = cva(

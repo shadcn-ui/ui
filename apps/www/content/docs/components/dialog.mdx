@@ -1,6 +1,6 @@
 ---
 title: Dialog
-description: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+description: A versatile dialog component for displaying modal content, confirmations, and forms in an accessible overlay.
 featured: true
 component: true
 links:
@@ -10,8 +10,21 @@ links:
 
 <ComponentPreview
   name="dialog-demo"
-  description="A dialog for editing profile details."
+  description="A modern, accessible dialog component with multiple variants and states"
 />
+
+## Features
+
+- Accessible by default with proper ARIA attributes
+- Keyboard navigation support
+- Focus management
+- Customizable animations
+- Flexible content layout
+- Form integration
+- Custom close button
+- Responsive design
+- Nested dialog support
+- Context menu integration
 
 ## Installation
 
@@ -53,6 +66,8 @@ npm install @radix-ui/react-dialog
 
 ## Usage
 
+### Basic Usage
+
 ```tsx
 import {
   Dialog,
@@ -62,35 +77,202 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+
+export default function Page() {
+  return (
+    <Dialog>
+      <DialogTrigger>Open Dialog</DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Edit Profile</DialogTitle>
+          <DialogDescription>
+            Make changes to your profile here. Click save when you're done.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          {/* Your dialog content here */}
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
 ```
 
+### With Form
+
 ```tsx
-<Dialog>
-  <DialogTrigger>Open</DialogTrigger>
-  <DialogContent>
-    <DialogHeader>
-      <DialogTitle>Are you absolutely sure?</DialogTitle>
-      <DialogDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </DialogDescription>
-    </DialogHeader>
-  </DialogContent>
-</Dialog>
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+export default function Page() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">Edit Profile</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Edit Profile</DialogTitle>
+          <DialogDescription>
+            Make changes to your profile here. Click save when you're done.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="name" className="text-right">
+              Name
+            </Label>
+            <Input
+              id="name"
+              defaultValue="Pedro Duarte"
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="username" className="text-right">
+              Username
+            </Label>
+            <Input
+              id="username"
+              defaultValue="@peduarte"
+              className="col-span-3"
+            />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button type="submit">Save changes</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}
+```
+
+### With Custom Close Button
+
+```tsx
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
+import { X } from "lucide-react"
+
+export default function Page() {
+  return (
+    <Dialog>
+      <DialogTrigger>Open Dialog</DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Custom Close Button</DialogTitle>
+          <DialogDescription>
+            This dialog has a custom close button in the top-right corner.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogClose asChild>
+          <Button variant="ghost" className="absolute right-4 top-4">
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </Button>
+        </DialogClose>
+        <div className="py-4">
+          {/* Your dialog content here */}
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
 ```
 
 ## Examples
 
-### Custom close button
+### Basic Dialog
 
-<ComponentPreview name="dialog-close-button" />
+<ComponentPreview
+  name="dialog-demo"
+  description="A basic dialog with header and content"
+/>
+
+### Custom Close Button
+
+<ComponentPreview 
+  name="dialog-close-button" 
+  description="A dialog with a custom close button"
+/>
+
+### With Form
+
+<ComponentPreview
+  name="dialog-form"
+  description="A dialog containing a form with multiple fields"
+/>
+
+### With Context Menu
+
+<ComponentPreview
+  name="dialog-context-menu"
+  description="A dialog triggered from a context menu"
+/>
+
+## API Reference
+
+### Dialog Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| open | boolean | undefined | The controlled open state of the dialog |
+| defaultOpen | boolean | undefined | The default open state of the dialog |
+| onOpenChange | function | undefined | Event handler called when the open state changes |
+| modal | boolean | true | Whether the dialog is modal |
+
+### DialogTrigger Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| asChild | boolean | false | Whether to render as a child component |
+
+### DialogContent Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | undefined | Additional CSS classes to apply |
+| onPointerDownOutside | function | undefined | Event handler called when pointer is pressed outside the dialog |
+| onEscapeKeyDown | function | undefined | Event handler called when escape key is pressed |
+
+## Best Practices
+
+1. **Clear Purpose**: Make the dialog's purpose clear in the title
+2. **Concise Content**: Keep dialog content focused and concise
+3. **Proper Focus**: Ensure proper focus management when opening/closing
+4. **Keyboard Support**: Support keyboard navigation and escape key
+5. **Accessibility**: Include proper ARIA attributes and roles
+6. **Responsive Design**: Ensure the dialog works well on all screen sizes
+7. **Clear Actions**: Make action buttons clear and properly labeled
+8. **Avoid Nested Dialogs**: Avoid nesting dialogs unless absolutely necessary
 
 ## Notes
+
+### Context Menu Integration
 
 To activate the `Dialog` component from within a `Context Menu` or `Dropdown Menu`, you must encase the `Context Menu` or
 `Dropdown Menu` component in the `Dialog` component. For more information, refer to the linked issue [here](https://github.com/radix-ui/primitives/issues/1836).
 
-```tsx {14-25}
+```tsx
 <Dialog>
   <ContextMenu>
     <ContextMenuTrigger>Right click</ContextMenuTrigger>
@@ -118,3 +300,12 @@ To activate the `Dialog` component from within a `Context Menu` or `Dropdown Men
   </DialogContent>
 </Dialog>
 ```
+
+## Changelog
+
+### 2024-10-16 Accessibility Improvements
+
+- Added proper ARIA attributes for better screen reader support
+- Improved keyboard navigation
+- Enhanced focus management
+- Added support for custom close buttons
