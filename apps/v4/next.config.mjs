@@ -43,16 +43,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/docs/forms",
-        destination: "/docs/components/form",
-        permanent: false,
-      },
-      {
-        source: "/docs/forms/react-hook-form",
-        destination: "/docs/components/form",
-        permanent: false,
-      },
-      {
         source: "/sidebar",
         destination: "/docs/components/sidebar",
         permanent: true,
@@ -80,6 +70,11 @@ const nextConfig = {
       {
         source: "/mcp",
         destination: "/docs/mcp",
+        permanent: false,
+      },
+      {
+        source: "/directory",
+        destination: "/docs/directory",
         permanent: false,
       },
     ]
