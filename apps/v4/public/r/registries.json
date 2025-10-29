@@ -67,5 +67,6 @@
   "@zippystarter": "https://zippystarter.com/r/{name}.json",
   "@shadcndesign": "https://shadcndesign-free.vercel.app/r/{name}.json",
   "@ha-components": "https://hacomponents.keshuac.com/r/{name}.json",
-  "@shadix-ui": "https://shadix-ui.vercel.app/r/{name}.json"
+  "@shadix-ui": "https://shadix-ui.vercel.app/r/{name}.json",
+  "@utilcn": "https://utilcn.dev/r/{name}.json"
 }

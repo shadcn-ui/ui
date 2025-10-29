@@ -105,11 +105,25 @@
     "logo": "<svg width='128' height='148' viewBox='0 0 128 148' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0.5' y='10.5' width='127' height='127' rx='0.5' fill='var(--foreground)' stroke='var(--background)'/><line x1='97' y1='128.92' x2='118.92' y2='107' stroke='var(--background)' stroke-linecap='round' stroke-width='2'/><line x1='110' y1='130.607' x2='120.607' y2='120' stroke='var(--background)' stroke-linecap='round' stroke-width='2'/><path d='M44.692 59.06H53.528V58.026C53.528 52.6993 53.904 48.6573 54.656 45.9C55.408 43.1427 56.7867 41.1373 58.792 39.884C60.672 38.6933 63.2727 37.9413 66.594 37.628C69.9153 37.3147 75.1793 37.158 82.386 37.158V49.19C79.1273 49.19 76.9967 49.2213 75.994 49.284C74.49 49.3467 73.3307 49.566 72.516 49.942C71.764 50.318 71.3253 50.882 71.2 51.634C71.012 52.386 70.918 53.4513 70.918 54.83V59.06H82.386V72.314H44.692V59.06ZM53.528 76.074H70.918V107H53.528V76.074Z' fill='var(--background)'/></svg>"
   },
   {
+    "name": "@ha-components",
+    "homepage": "https://hacomponents.keshuac.com",
+    "url": "https://hacomponents.keshuac.com/r/{name}.json",
+    "description": "A collection of customisable components to build Home Assistant dashboards.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' width='512' height='512' viewBox='0 0 512 512'><g style='fill:none;stroke:var(--foreground);stroke-width:1.5'><g style='stroke-width:1.9175;stroke-dasharray:none'><path d='M86.773 366.113c-3.077-1.34-2.88 3.354-2.88-68.747V232.38l43.18-43.154c24.344-24.33 43.731-43.36 44.444-43.627.696-.259 1.806-.346 2.468-.194.812.187 15.294 14.351 44.606 43.626l43.405 43.35v65.187c0 71.617.18 67.024-2.677 68.5-1.163.602-11.186.68-86.24.664-69.989-.015-85.168-.124-86.306-.62z' style='fill:var(--foreground);stroke:var(--foreground);stroke-width:25.3553;stroke-dasharray:none' transform='translate(-5.022 3.578)scale(.98599)'/><path stroke-linecap='round' stroke-linejoin='round' d='m2.25 12.381 8.954-8.955a1.126 1.126 0 0 1 1.591 0l8.526 8.526.429.429M4.5 10.131v10.125c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V10.131M8.25 21.381h8.25' style='stroke:var(--foreground);stroke-width:1.9175;stroke-dasharray:none' transform='translate(9.105 96.393)scale(13.0378)'/></g><g style='fill:none;stroke:currentColor;stroke-width:2.1539;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none'><path d='M12 22v-5M9 8V2M15 8V2M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z' style='stroke-width:2.1539;stroke-dasharray:none' transform='translate(264.636 116.717)scale(11.60688)'/></g></g></svg>"
+  },
+  {
     "name": "@hooks",
     "homepage": "https://shadcn-hooks.vercel.app",
     "url": "https://shadcn-hooks.vercel.app/r/{name}.json",
     "description": "A comprehensive React Hooks Collection built with Shadcn.",
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M208 128L128 208' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><path d='M192 40L40 192' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><rect x='27' y='28' width='70' height='70' rx='7' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@intentui",
+    "homepage": "https://intentui.com",
+    "url": "https://intentui.com/r/{name}",
+    "description": "Accessible React component library to copy, customize, and own your UI.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='122' height='122' fill='none' viewBox='0 0 122 122'><rect width='101.667' height='101.667' x='10.167' y='10.166' fill='#0d6dfd' rx='19.063'/><g fill='#fff' filter='url(#a)' shape-rendering='crispEdges'><path d='M27.243 32.083a4.84 4.84 0 0 1 4.84-4.84h9.678a4.84 4.84 0 0 1 4.839 4.84v9.678a4.84 4.84 0 0 1-4.84 4.84h-9.678a4.84 4.84 0 0 1-4.839-4.84z'/><path fill-opacity='.5' d='M51.366 32.083a4.84 4.84 0 0 1 4.839-4.84h9.678a4.84 4.84 0 0 1 4.84 4.84v9.678a4.84 4.84 0 0 1-4.84 4.84h-9.678a4.84 4.84 0 0 1-4.84-4.84z'/><path d='M75.488 32.083a4.84 4.84 0 0 1 4.84-4.84h9.678a4.84 4.84 0 0 1 4.839 4.84v9.678a4.84 4.84 0 0 1-4.84 4.84h-9.678a4.84 4.84 0 0 1-4.839-4.84z'/><path fill-opacity='.5' d='M75.488 56.205a4.84 4.84 0 0 1 4.84-4.839h9.678a4.84 4.84 0 0 1 4.839 4.84v9.678a4.84 4.84 0 0 1-4.84 4.839h-9.678a4.84 4.84 0 0 1-4.839-4.84z'/></g><defs><filter id='a' width='68.247' height='44.125' x='26.921' y='27.082' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'><feFlood flood-opacity='0' result='BackgroundImageFix'/><feColorMatrix in='SourceAlpha' result='hardAlpha' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'/><feOffset dy='.161'/><feGaussianBlur stdDeviation='.161'/><feComposite in2='hardAlpha' operator='out'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/><feBlend in2='BackgroundImageFix' result='effect1_dropShadow_76_525'/><feBlend in='SourceGraphic' in2='effect1_dropShadow_76_525' result='shape'/></filter></defs></svg>"
   },
   {
     "name": "@kibo-ui",
@@ -210,6 +224,13 @@
     "logo": "<svg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_22651_9557)'><g clip-path='url(#clip1_22651_9557)'><rect x='10' y='10' width='60' height='60' fill='black' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><path d='M23.75 56.25L56.25 23.75' stroke='white' stroke-width='5'/><path d='M43.75 56.25L56.25 43.75' stroke='white' stroke-width='5'/></g></g><defs><clipPath id='clip0_22651_9557'><rect width='80' height='80' fill='white'/></clipPath><clipPath id='clip1_22651_9557'><rect width='80' height='80' fill='white'/></clipPath></defs></svg>"
   },
   {
+    "name": "@shadcn-editor",
+    "homepage": "https://shadcn-editor.vercel.app",
+    "url": "https://shadcn-editor.vercel.app/r/{name}.json",
+    "description": "Accessible, Customizable, Rich Text Editor. Made with Lexical and Shadcn/UI. Open Source. Open Code.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' class='fill-none!' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-baseline-icon lucide-baseline'><path d='M4 20h16'/><path d='m6 16 6-12 6 12'/><path d='M8 12h8'/></svg>"
+  },
+  {
     "name": "@spectrumui",
     "homepage": "https://ui.spectrumhq.in",
     "url": "https://ui.spectrumhq.in/r/{name}.json",
@@ -236,6 +257,13 @@
     "url": "https://tailark.com/r/{name}.json",
     "description": "Shadcn blocks designed for building modern marketing websites.",
     "logo": "<svg width='56' height='56' viewBox='0 0 56 56' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9.33334 0H15.5556V56H9.33334V0Z' fill='url(#paint0_linear_477_3)'/><path d='M40.4444 0H46.6667V56H40.4444V0Z' fill='url(#paint1_linear_477_3)'/><path d='M56 9.33333V15.5556H0V9.33333H56Z' fill='url(#paint2_linear_477_3)'/><path d='M2.96699e-06 46.6667V40.4444H56V46.6667H2.96699e-06Z' fill='url(#paint3_linear_477_3)'/><defs><linearGradient id='paint0_linear_477_3' x1='28' y1='0' x2='28' y2='56' gradientUnits='userSpaceOnUse'><stop stop-color='#9B99FE'/><stop offset='1' stop-color='#2BC8B7'/></linearGradient><linearGradient id='paint1_linear_477_3' x1='28' y1='0' x2='28' y2='56' gradientUnits='userSpaceOnUse'><stop stop-color='#9B99FE'/><stop offset='1' stop-color='#2BC8B7'/></linearGradient><linearGradient id='paint2_linear_477_3' x1='28' y1='0' x2='28' y2='56' gradientUnits='userSpaceOnUse'><stop stop-color='#9B99FE'/><stop offset='1' stop-color='#2BC8B7'/></linearGradient><linearGradient id='paint3_linear_477_3' x1='28' y1='0' x2='28' y2='56' gradientUnits='userSpaceOnUse'><stop stop-color='#9B99FE'/><stop offset='1' stop-color='#2BC8B7'/></linearGradient></defs></svg>"
+  },
+  {
+    "name": "@utilcn",
+    "homepage": "https://utilcn.dev",
+    "url": "https://utilcn.dev/r/{name}.json",
+    "description": "Fullstack registry items to start those big features. Utilcn has ChatGPT Apps, file uploading (with progress bars) and downloading, and a way to make your env vars typesafe on the backend.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='32'><path d='M0 0 C10.56 0 21.12 0 32 0 C32 10.56 32 21.12 32 32 C21.44 32 10.88 32 0 32 C0 21.44 0 10.88 0 0 Z ' fill='var(--foreground)' transform='translate(0,0)'/><path d='M0 0 C5.28 0 10.56 0 16 0 C16 0.99 16 1.98 16 3 C10.72 3 5.44 3 0 3 C0 2.01 0 1.02 0 0 Z ' fill='var(--background)' transform='translate(8,20)'/><path d='M0 0 C3.96 0 7.92 0 12 0 C12 0.99 12 1.98 12 3 C8.04 3 4.08 3 0 3 C0 2.01 0 1.02 0 0 Z ' fill='var(--background)' transform='translate(10,16)'/><path d='M0 0 C3.96 0 7.92 0 12 0 C12 0.99 12 1.98 12 3 C8.04 3 4.08 3 0 3 C0 2.01 0 1.02 0 0 Z ' fill='var(--background)' transform='translate(10,12)'/></svg>"
   },
   {
     "name": "@wandry-ui",
