@@ -187,6 +187,7 @@ const components = {
     __yarnCommand__,
     __pnpmCommand__,
     __bunCommand__,
+    __denoCommand__,
     __withMeta__,
     __src__,
     __event__,
@@ -200,7 +201,7 @@ const components = {
     __event__?: Event["name"]
   } & NpmCommands) => {
     const isNpmCommand =
-      __npmCommand__ && __yarnCommand__ && __pnpmCommand__ && __bunCommand__
+      __npmCommand__ && __yarnCommand__ && __pnpmCommand__ && __bunCommand__ && __denoCommand__
 
     if (isNpmCommand) {
       return (
@@ -209,6 +210,7 @@ const components = {
           __yarnCommand__={__yarnCommand__}
           __pnpmCommand__={__pnpmCommand__}
           __bunCommand__={__bunCommand__}
+          __denoCommand__={__denoCommand__}
         />
       )
     }
