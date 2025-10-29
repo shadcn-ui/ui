@@ -1316,6 +1316,26 @@ export const blocks: Registry["items"] = [
     },
   },
   {
+    name: "calendar-33",
+    description: "Date range picker with tabs",
+    type: "registry:block",
+    dependencies: ["date-fns"],
+    registryDependencies: ["calendar", "button", "popover", "label", "tabs"],
+    files: [
+      {
+        path: "blocks/calendar-33.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["calendar", "date"],
+    meta: {
+      iframeHeight: "600px",
+      container:
+        "w-full bg-surface min-h-svh flex px-6 py-12 items-start md:pt-20 justify-center min-w-0 xl:py-24",
+      mobile: "component",
+    },
+  },
+  {
     name: "signup-01",
     description: "A simple signup form.",
     type: "registry:block",
