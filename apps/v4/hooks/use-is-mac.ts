@@ -5,7 +5,11 @@ export function useIsMac() {
     if (typeof window === "undefined") {
       return false
     }
-    return navigator.platform.toUpperCase().includes("MAC")
+    // Use userAgentData if available, otherwise fallback to userAgent
+    const platform =
+      (navigator.userAgentData && navigator.userAgentData.platform) ||
+      navigator.userAgent || "";
+    return platform.toUpperCase().includes("MAC");
   })
 
   return isMac
