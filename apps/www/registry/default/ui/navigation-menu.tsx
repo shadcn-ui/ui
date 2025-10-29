@@ -8,7 +8,17 @@ import { cn } from "@/lib/utils"
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
->(({ className, children, ...props }, ref) => (
+>(({ className, children, ...props }, ref) => {
+  let navigationMenuViewportIsPresent = false;
+  if(Array.isArray(children)){
+    for (const childKey of children) {
+      const child = children[childKey];
+      if (child.type && child.type.displayName === "NavigationMenuViewport") {
+        navigationMenuViewportIsPresent = true;
+      }
+    }
+  }
+return(
   <NavigationMenuPrimitive.Root
     ref={ref}
     className={cn(
@@ -18,9 +28,9 @@ const NavigationMenu = React.forwardRef<
     {...props}
   >
     {children}
-    <NavigationMenuViewport />
+    {!navigationMenuViewportIsPresent && <NavigationMenuViewport />}
   </NavigationMenuPrimitive.Root>
-))
+)})
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
 
 const NavigationMenuList = React.forwardRef<
