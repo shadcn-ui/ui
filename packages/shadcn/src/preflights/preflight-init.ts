@@ -6,7 +6,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import fs from "fs-extra"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export async function preFlightInit(
   options: z.infer<typeof initOptionsSchema>

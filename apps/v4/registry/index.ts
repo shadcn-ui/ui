@@ -1,5 +1,5 @@
 import { registryItemSchema, type Registry } from "shadcn/schema"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { blocks } from "@/registry/registry-blocks"
 import { charts } from "@/registry/registry-charts"

@@ -6,7 +6,7 @@ import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
 import { loadConfig } from "tsconfig-paths"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export type TailwindVersion = "v3" | "v4" | null
 

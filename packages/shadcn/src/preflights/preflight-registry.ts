@@ -5,7 +5,7 @@ import { getConfig } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import fs from "fs-extra"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export async function preFlightRegistryBuild(
   options: z.infer<typeof buildOptionsSchema>

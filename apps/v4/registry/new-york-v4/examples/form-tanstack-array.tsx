@@ -5,7 +5,7 @@ import * as React from "react"
 import { useForm } from "@tanstack/react-form"
 import { XIcon } from "lucide-react"
 import { toast } from "sonner"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {

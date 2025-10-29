@@ -7,7 +7,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export const buildOptionsSchema = z.object({
   cwd: z.string(),

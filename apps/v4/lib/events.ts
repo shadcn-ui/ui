@@ -1,5 +1,5 @@
 import va from "@vercel/analytics"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 const eventSchema = z.object({
   name: z.enum([

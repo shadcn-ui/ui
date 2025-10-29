@@ -3,7 +3,7 @@ import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { registryItemSchema } from "shadcn/schema"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"

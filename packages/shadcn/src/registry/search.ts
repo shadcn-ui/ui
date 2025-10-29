@@ -1,7 +1,7 @@
 import { searchResultItemSchema, searchResultsSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import fuzzysort from "fuzzysort"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { getRegistry } from "./api"
 

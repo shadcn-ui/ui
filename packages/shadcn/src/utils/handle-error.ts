@@ -1,7 +1,7 @@
 import { RegistryError } from "@/src/registry/errors"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export function handleError(error: unknown) {
   logger.break()

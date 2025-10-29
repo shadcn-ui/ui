@@ -3,7 +3,7 @@ import { tmpdir } from "os"
 import path from "path"
 import { registryItemFileSchema, registryItemSchema } from "shadcn/schema"
 import { Project, ScriptKind } from "ts-morph"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { Index } from "@/registry/__index__"
 

@@ -4,7 +4,7 @@
 import * as React from "react"
 import { useForm } from "@tanstack/react-form"
 import { toast } from "sonner"
-import * as z from "zod"
+import * as z from "zod/v3"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Card, CardContent, CardFooter } from "@/registry/new-york-v4/ui/card"

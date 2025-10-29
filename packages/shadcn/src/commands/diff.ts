@@ -14,7 +14,7 @@ import { logger } from "@/src/utils/logger"
 import { transform } from "@/src/utils/transformers"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 const updateOptionsSchema = z.object({
   component: z.string().optional(),

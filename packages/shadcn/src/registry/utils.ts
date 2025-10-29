@@ -15,7 +15,7 @@ import {
 } from "@/src/utils/updaters/update-files"
 import { Project, ScriptKind } from "ts-morph"
 import { loadConfig } from "tsconfig-paths"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js", ".css"]
 const FILE_PATH_SKIP_LIST = ["lib/utils.ts"]

@@ -18,7 +18,7 @@ import {
 } from "lucide-react"
 import { ImperativePanelHandle } from "react-resizable-panels"
 import { registryItemFileSchema, registryItemSchema } from "shadcn/schema"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { trackEvent } from "@/lib/events"
 import { createFileTreeForRegistryItemFiles, FileTree } from "@/lib/registry"

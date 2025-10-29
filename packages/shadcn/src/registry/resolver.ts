@@ -29,7 +29,7 @@ import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-inf
 import { handleError } from "@/src/utils/handle-error"
 import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
 import deepmerge from "deepmerge"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export function resolveRegistryItemsFromRegistries(
   items: string[],

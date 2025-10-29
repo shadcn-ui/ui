@@ -2,7 +2,7 @@ import { promises as fs } from "fs"
 import path from "path"
 import { Metadata } from "next"
 import Image from "next/image"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { columns } from "./components/columns"
 import { DataTable } from "./components/data-table"

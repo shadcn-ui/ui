@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod/v3"
 
 // Note: if you edit the schema here, you must also edit the schema in the
 // apps/www/public/schema/registry-item.json file.

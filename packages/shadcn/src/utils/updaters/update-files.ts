@@ -27,7 +27,7 @@ import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefi
 import prompts from "prompts"
 import { Project, ScriptKind } from "ts-morph"
 import { loadConfig } from "tsconfig-paths"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export async function updateFiles(
   files: RegistryItem["files"],

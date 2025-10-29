@@ -9,7 +9,7 @@ import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformJsx } from "@/src/utils/transformers/transform-jsx"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { transformTwPrefixes } from "./transform-tw-prefix"
 

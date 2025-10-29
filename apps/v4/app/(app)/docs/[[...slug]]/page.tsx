@@ -6,9 +6,7 @@ import {
   IconArrowRight,
   IconArrowUpRight,
 } from "@tabler/icons-react"
-import fm from "front-matter"
 import { findNeighbour } from "fumadocs-core/page-tree"
-import z from "zod"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
@@ -88,17 +86,6 @@ export default async function Page(props: {
   const neighbours = findNeighbour(source.pageTree, page.url)
 
   const raw = await page.data.getText("raw")
-  const { attributes } = fm(raw)
-  const { links } = z
-    .object({
-      links: z
-        .object({
-          doc: z.string().optional(),
-          api: z.string().optional(),
-        })
-        .optional(),
-    })
-    .parse(attributes)
 
   return (
     <div
@@ -150,18 +137,18 @@ export default async function Page(props: {
                 </p>
               )}
             </div>
-            {links ? (
+            {doc.links ? (
               <div className="flex items-center gap-2 pt-4">
-                {links?.doc && (
+                {doc.links.doc && (
                   <Badge asChild variant="secondary" className="rounded-full">
-                    <a href={links.doc} target="_blank" rel="noreferrer">
+                    <a href={doc.links.doc} target="_blank" rel="noreferrer">
                       Docs <IconArrowUpRight />
                     </a>
                   </Badge>
                 )}
-                {links?.api && (
+                {doc.links.api && (
                   <Badge asChild variant="secondary" className="rounded-full">
-                    <a href={links.api} target="_blank" rel="noreferrer">
+                    <a href={doc.links.api} target="_blank" rel="noreferrer">
                       API Reference <IconArrowUpRight />
                     </a>
                   </Badge>
