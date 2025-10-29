@@ -54,7 +54,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/new-york-v4/ui/toggle-group"
-import { Style } from "@/registry/styles"
+import { type Style } from "@/registry/styles"
 
 type BlockViewerContext = {
   item: z.infer<typeof registryItemSchema>
