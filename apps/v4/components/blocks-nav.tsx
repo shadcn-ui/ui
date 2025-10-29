@@ -3,8 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { registryCategories } from "@/lib/categories"
 import { ScrollArea, ScrollBar } from "@/registry/new-york-v4/ui/scroll-area"
-import { registryCategories } from "@/registry/registry-categories"
 
 export function BlocksNav() {
   const pathname = usePathname()

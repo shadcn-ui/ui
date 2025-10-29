@@ -2,30 +2,38 @@
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { registryItemSchema } from "shadcn/schema"
-import { z } from "zod"
 
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
+import { getStyle, STYLES, type Style } from "@/registry/styles"
 
 export const revalidate = false
 export const dynamic = "force-static"
 export const dynamicParams = false
 
-const getCachedRegistryItem = React.cache(async (name: string) => {
-  return await getRegistryItem(name)
-})
+const getCachedRegistryItem = React.cache(
+  async (name: string, styleName: Style["name"]) => {
+    return await getRegistryItem(name, styleName)
+  }
+)
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{
+    style: string
     name: string
   }>
 }): Promise<Metadata> {
-  const { name } = await params
-  const item = await getCachedRegistryItem(name)
+  const { style: styleName, name } = await params
+  const style = getStyle(styleName)
+
+  if (!style) {
+    return {}
+  }
+
+  const item = await getCachedRegistryItem(name, style.name)
 
   if (!item) {
     return {}
@@ -35,13 +43,13 @@ export async function generateMetadata({
   const description = item.description
 
   return {
-    title: item.description,
+    title: item.name,
     description,
     openGraph: {
       title,
       description,
       type: "article",
-      url: absoluteUrl(`/view/${item.name}`),
+      url: absoluteUrl(`/view/${style.name}/${item.name}`),
       images: [
         {
           url: siteConfig.ogImage,
@@ -63,32 +71,52 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const { Index } = await import("@/registry/__index__")
-  const index = z.record(registryItemSchema).parse(Index)
+  const params: Array<{ style: string; name: string }> = []
 
-  return Object.values(index)
-    .filter((block) =>
-      [
-        "registry:block",
-        "registry:component",
-        "registry:example",
-        "registry:internal",
-      ].includes(block.type)
-    )
-    .map((block) => ({
-      name: block.name,
-    }))
+  for (const style of STYLES) {
+    if (!Index[style.name]) {
+      continue
+    }
+
+    const styleIndex = Index[style.name]
+    for (const itemName in styleIndex) {
+      const item = styleIndex[itemName]
+      if (
+        [
+          "registry:block",
+          "registry:component",
+          "registry:example",
+          "registry:internal",
+        ].includes(item.type)
+      ) {
+        params.push({
+          style: style.name,
+          name: item.name,
+        })
+      }
+    }
+  }
+
+  return params
 }
 
 export default async function BlockPage({
   params,
 }: {
   params: Promise<{
+    style: string
     name: string
   }>
 }) {
-  const { name } = await params
-  const item = await getCachedRegistryItem(name)
-  const Component = getRegistryComponent(name)
+  const { style: styleName, name } = await params
+  const style = getStyle(styleName)
+
+  if (!style) {
+    return notFound()
+  }
+
+  const item = await getCachedRegistryItem(name, style.name)
+  const Component = getRegistryComponent(name, style.name)
 
   if (!item || !Component) {
     return notFound()
