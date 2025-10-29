@@ -376,6 +376,11 @@
       ]
     },
     {
+      "name": "inline-edit",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/inline-edit.tsx",
       "name": "input-group",
       "type": "registry:ui",
       "registryDependencies": [
@@ -6464,6 +6469,20 @@
       ]
     },
     {
+      "name": "inline-edit-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "inline-edit"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/inline-edit-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "input-disabled",
       "name": "item-dropdown",
       "type": "registry:example",
       "registryDependencies": [
