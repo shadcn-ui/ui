@@ -1,0 +1,58 @@
+---
+title: Icons
+description: Add icons from Lucide, React, or ShadCN to your project
+---
+
+## Radix Icons
+
+### Installation
+
+Make sure `@radix-ui/react-icons` is installed, it should already be installed by default. If not it can be installed with:
+
+```bash
+npm install @radix-ui/react-icons
+```
+
+### Usage
+
+```tsx
+import { SunIcon } from "@radix-ui/react-icons"
+
+import { Button } from "@/components/ui/button"
+
+export function ButtonIcon() {
+  return (
+    <Button variant="secondary" size="icon" className="size-8">
+      <SunIcon />
+    </Button>
+  )
+}
+
+```
+
+## Lucide Icons
+
+### Installation
+
+Make sure `lucide-react` is installed, it should already be installed by default. If not it can be installed with:
+
+```bash
+npm install lucide-react
+```
+
+### Usage
+
+```tsx
+import { Moon } from 'lucide-react';
+
+import { Button } from "@/components/ui/button"
+
+export function ButtonIcon() {
+  return (
+    <Button variant="secondary" size="icon" className="size-8">
+      <Moon />
+    </Button>
+  )
+}
+
+```
