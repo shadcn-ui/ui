@@ -1,0 +1,10 @@
+--- a/packages/nodes-base/nodes/DataTable/actions/row/Row.resource.ts
++++ b/packages/nodes-base/nodes/DataTable/actions/row/Row.resource.ts
+@@ -85,7 +85,7 @@
+ 					allowNewResource: {
+ 						label: 'resourceLocator.dataTable.createNew',
+-						url: '{{$projectId ? "/projects/" + $projectId + "/datatables/new" : "/datatables/new"}}',
++						url: '/projects/{{$projectId}}/datatables/new',
+ 					},
+ 				},
+ 			},
