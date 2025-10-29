@@ -37,15 +37,10 @@ export function rehypeComponent() {
             } else {
               const component = Index[style.name][name]
               src = fileName
-                ? component.files.find((file: unknown) => {
-                    if (typeof file === "string") {
-                      return (
-                        file.endsWith(`${fileName}.tsx`) ||
-                        file.endsWith(`${fileName}.ts`)
-                      )
-                    }
-                    return false
-                  }) || component.files[0]?.path
+                ? component.files.find((file: { path: string, type: string, target: string }) => (
+                    file.path.endsWith(`${fileName}.tsx`) ||
+                    file.path.endsWith(`${fileName}.ts`)
+                  ))?.path || component.files[0]?.path
                 : component.files[0]?.path
             }
 
