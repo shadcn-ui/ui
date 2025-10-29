@@ -88,6 +88,20 @@ export function SelectDemo() {
           </SelectItem>
         </SelectContent>
       </Select>
+      <Select defaultValue="very-long-option-name">
+        <SelectTrigger className="w-[120px]">
+          <SelectValue placeholder="Long text test" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="short">Short</SelectItem>
+          <SelectItem value="very-long-option-name">
+            Very Long Option Name That Should Be Truncated
+          </SelectItem>
+          <SelectItem value="another-very-long-option">
+            Another Very Long Option Name That Should Also Be Truncated
+          </SelectItem>
+        </SelectContent>
+      </Select>
     </div>
   )
 }
