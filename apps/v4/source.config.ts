@@ -10,10 +10,10 @@ import { transformers } from "@/lib/highlight-code"
 
 export default defineConfig({
   mdxOptions: {
-    rehypePlugins: (plugins) => {
-      plugins.shift()
-      plugins.push([
-        rehypePrettyCode as any,
+    rehypeCodeOptions: false,
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
         {
           theme: {
             dark: "github-dark",
@@ -21,10 +21,8 @@ export default defineConfig({
           },
           transformers,
         },
-      ])
-
-      return plugins
-    },
+      ],
+    ],
   },
 })
 
