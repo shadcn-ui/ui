@@ -6,7 +6,9 @@ import {
   IconArrowRight,
   IconArrowUpRight,
 } from "@tabler/icons-react"
+import fm from "front-matter"
 import { findNeighbour } from "fumadocs-core/page-tree"
+import z from "zod"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
@@ -25,7 +27,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>
+  params: Promise<{ slug: string[] }>
 }) {
   const params = await props.params
   const page = source.getPage(params.slug)
@@ -73,7 +75,7 @@ export async function generateMetadata(props: {
 }
 
 export default async function Page(props: {
-  params: Promise<{ slug?: string[] }>
+  params: Promise<{ slug: string[] }>
 }) {
   const params = await props.params
   const page = source.getPage(params.slug)
@@ -84,7 +86,19 @@ export default async function Page(props: {
   const doc = page.data
   const MDX = doc.body
   const neighbours = findNeighbour(source.pageTree, page.url)
-  const links = doc.links
+
+  const raw = await page.data.getText("raw")
+  const { attributes } = fm(raw)
+  const { links } = z
+    .object({
+      links: z
+        .object({
+          doc: z.string().optional(),
+          api: z.string().optional(),
+        })
+        .optional(),
+    })
+    .parse(attributes)
 
   return (
     <div

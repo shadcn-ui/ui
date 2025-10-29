@@ -1,7 +1,7 @@
 "use server"
 
 import { registryItemSchema } from "shadcn/schema"
-import { z } from "zod/v3"
+import { z } from "zod"
 
 export async function getAllBlockIds(
   types: z.infer<typeof registryItemSchema>["type"][] = [

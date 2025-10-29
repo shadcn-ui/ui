@@ -67,6 +67,7 @@
     "date-fns": "^4.1.0",
     "embla-carousel-autoplay": "8.5.2",
     "embla-carousel-react": "8.5.2",
+    "front-matter": "^4.0.2",
     "fumadocs-core": "16.0.5",
     "fumadocs-docgen": "2.0.0",
     "fumadocs-mdx": "13.0.2",
@@ -95,7 +96,7 @@
     "tailwind-merge": "^3.0.1",
     "ts-morph": "18.0.0",
     "vaul": "1.1.2",
-    "zod": "^4.1.12"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
