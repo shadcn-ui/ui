@@ -27,10 +27,10 @@ jobs:
         with:
           version: 9.0.6
 
-      - name: Use Node.js 18
+      - name: Use Node.js 20
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: "pnpm"
 
       - name: Install NPM Dependencies

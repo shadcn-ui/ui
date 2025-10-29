@@ -9,7 +9,7 @@ export const revalidate = false
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: Promise<{ slug: string[] }> }
+  { params }: { params: Promise<{ slug?: string[] }> }
 ) {
   const [{ slug }, activeStyle] = await Promise.all([params, getActiveStyle()])
 
@@ -20,8 +20,7 @@ export async function GET(
   }
 
   const processedContent = processMdxForLLMs(
-    // @ts-expect-error - revisit fumadocs types.
-    page.data.content,
+    await page.data.getText("raw"),
     activeStyle.name
   )
 

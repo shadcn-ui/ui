@@ -6,7 +6,9 @@ import {
   IconArrowRight,
   IconArrowUpRight,
 } from "@tabler/icons-react"
-import { findNeighbour } from "fumadocs-core/server"
+import fm from "front-matter"
+import { findNeighbour } from "fumadocs-core/page-tree"
+import z from "zod"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
@@ -25,7 +27,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>
+  params: Promise<{ slug: string[] }>
 }) {
   const params = await props.params
   const page = source.getPage(params.slug)
@@ -73,7 +75,7 @@ export async function generateMetadata(props: {
 }
 
 export default async function Page(props: {
-  params: Promise<{ slug?: string[] }>
+  params: Promise<{ slug: string[] }>
 }) {
   const params = await props.params
   const page = source.getPage(params.slug)
@@ -82,12 +84,21 @@ export default async function Page(props: {
   }
 
   const doc = page.data
-  // @ts-expect-error - revisit fumadocs types.
   const MDX = doc.body
-  const neighbours = await findNeighbour(source.pageTree, page.url)
+  const neighbours = findNeighbour(source.pageTree, page.url)
 
-  // @ts-expect-error - revisit fumadocs types.
-  const links = doc.links
+  const raw = await page.data.getText("raw")
+  const { attributes } = fm(raw)
+  const { links } = z
+    .object({
+      links: z
+        .object({
+          doc: z.string().optional(),
+          api: z.string().optional(),
+        })
+        .optional(),
+    })
+    .parse(attributes)
 
   return (
     <div
@@ -104,11 +115,7 @@ export default async function Page(props: {
                   {doc.title}
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
-                  <DocsCopyPage
-                    // @ts-expect-error - revisit fumadocs types.
-                    page={doc.content}
-                    url={absoluteUrl(page.url)}
-                  />
+                  <DocsCopyPage page={raw} url={absoluteUrl(page.url)} />
                   {neighbours.previous && (
                     <Button
                       variant="secondary"
@@ -195,10 +202,8 @@ export default async function Page(props: {
       </div>
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
-        {/* @ts-expect-error - revisit fumadocs types. */}
         {doc.toc?.length ? (
           <div className="no-scrollbar overflow-y-auto px-8">
-            {/* @ts-expect-error - revisit fumadocs types. */}
             <DocsTableOfContents toc={doc.toc} />
             <div className="h-12" />
           </div>

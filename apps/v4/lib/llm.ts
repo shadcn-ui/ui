@@ -5,7 +5,7 @@ import { type Style } from "@/registry/styles"
 
 export function processMdxForLLMs(content: string, style: Style["name"]) {
   const componentPreviewRegex =
-    /<ComponentPreview\s+[^>]*name="([^"]+)"[^>]*\/>/g
+    /<ComponentPreview[\s\S]*?name="([^"]+)"[\s\S]*?\/>/g
 
   return content.replace(componentPreviewRegex, (match, name) => {
     try {
