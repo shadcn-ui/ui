@@ -100,11 +100,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   )
 }
 
-function Tree({
-  item,
-}: {
-  item: string | (string | (string | (string | string[])[])[])[]
-}) {
+type TreeItem = string | TreeItem[]
+
+function Tree({ item }: { item: TreeItem }) {
   const [name, ...items] = Array.isArray(item) ? item : [item]
 
   if (!items.length) {
