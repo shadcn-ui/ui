@@ -11,32 +11,61 @@ description: Install and configure shadcn/ui for React Router.
 
 <Steps>
 
-### Create project
+Create project
+
+Start by creating a new React Router project using the CLI:
 
 ```bash
 npx create-react-router@latest my-app
 ```
 
-### Run the CLI
+Run the CLI
 
-Run the `shadcn` init command to setup your project:
+Run the shadcn-ui init command to setup your project. This will install dependencies, configure tailwind.config.js, and set up CSS variables.
 
 ```bash
-npx shadcn@latest init
+npx shadcn-ui@latest init
 ```
 
-### Add Components
+Configure tsconfig.json
+Update the paths in your tsconfig.json to allow TypeScript to resolve the @/* path alias.
 
+{
+  "compilerOptions": {
+    // ...
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+
+Configure vite.config.ts
+
+Next, update your vite.config.ts to add a resolve alias. This allows Vite to correctly bundle modules imported using the @/* path.
+
+import path from "path"
+import { defineConfig } from "vite"
+//... other imports
+
+export default defineConfig({
+  // ... other config
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+
+Add Components
 You can now start adding components to your project.
 
 ```bash
-npx shadcn@latest add button
+npx shadcn-ui@latest add button
 ```
 
-The command above will add the `Button` component to your project. You can then import it like this:
+The command above will add the Button component to your project. You can then import it using the @/ alias like this:
 
-```tsx showLineNumbers title="app/routes/home.tsx"
-import { Button } from "~/components/ui/button"
+import { Button } from "@/components/ui/button"
 
 import type { Route } from "./+types/home"
 
@@ -49,11 +78,11 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-svh">
+    <div className="flex min-h-svh flex-col items-center justify-center">
       <Button>Click me</Button>
     </div>
   )
 }
-```
-
 </Steps>
+```
+```
