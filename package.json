@@ -15,7 +15,7 @@
   "scripts": {
     "build": "turbo run build",
     "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
-    "registry:capture": "pnpm --filter=www registry:capture",
+    "registry:capture": "pnpm --filter=v4 registry:capture",
     "dev": "turbo run dev --parallel",
     "shadcn:dev": "turbo --filter=shadcn dev",
     "shadcn": "pnpm --filter=shadcn start:dev",
