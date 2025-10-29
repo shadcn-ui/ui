@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
+import { BaseColor, baseColors, baseColorsOKLCH } from "@/registry/base-colors"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
@@ -42,11 +43,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
-import {
-  BaseColor,
-  baseColors,
-  baseColorsOKLCH,
-} from "@/registry/registry-base-colors"
 
 interface BaseColorOKLCH {
   light: Record<string, string>

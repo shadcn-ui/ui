@@ -23,9 +23,31 @@ export async function getAllBlocks(
   categories: string[] = []
 ) {
   const { Index } = await import("@/registry/__index__")
-  const index = z.record(registryItemSchema).parse(Index)
 
-  return Object.values(index).filter(
+  // Collect all blocks from all styles.
+  const allBlocks: z.infer<typeof registryItemSchema>[] = []
+
+  for (const style in Index) {
+    const styleIndex = Index[style]
+    if (typeof styleIndex === "object" && styleIndex !== null) {
+      for (const itemName in styleIndex) {
+        const item = styleIndex[itemName]
+        allBlocks.push(item)
+      }
+    }
+  }
+
+  // Validate each block.
+  const validatedBlocks = allBlocks
+    .map((block) => {
+      const result = registryItemSchema.safeParse(block)
+      return result.success ? result.data : null
+    })
+    .filter(
+      (block): block is z.infer<typeof registryItemSchema> => block !== null
+    )
+
+  return validatedBlocks.filter(
     (block) =>
       types.includes(block.type) &&
       (categories.length === 0 ||
