@@ -1,0 +1,60 @@
+---
+title: Add a Registry
+description: Open Source Registry Index
+---
+
+The open source registry index is a list of all the open source registries that are available to use out of the box.
+
+When you run `shadcn add` or `shadcn search`, the CLI will automatically check the registry index for the registry you are looking for and add it to your `components.json` file.
+
+You can see the full list at [https://ui.shadcn.com/r/registries.json](https://ui.shadcn.com/r/registries.json).
+
+## Adding a Registry
+
+You can open an issue to add a registry to the index by filling out the [registry directory issue template](https://github.com/shadcn-ui/ui/issues/new?template=registry_directory.yml).
+
+Once you have submitted your issue, it will be validated and reviewed by the team.
+
+### Requirements
+
+1. The registry must be open source and publicly accessible.
+2. The registry must be a valid JSON file that conforms to the [registry schema specification](/docs/registry/registry-json).
+3. The registry is expected to be a flat registry with no nested items i.e `/registry.json` and `/component-name.json` files are expected to be in the root of the registry.
+4. The `files` array, if present, must NOT include a `content` property.
+
+Here's an example of a valid registry:
+
+```json title="registry.json" showLineNumbers
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "acme",
+  "homepage": "https://acme.com",
+  "items": [
+    {
+      "name": "login-form",
+      "type": "registry:component",
+      "title": "Login Form",
+      "description": "A login form component.",
+      "files": [
+        {
+          "path": "registry/new-york/auth/login-form.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "example-login-form",
+      "type": "registry:component",
+      "title": "Example Login Form",
+      "description": "An example showing how to use the login form component.",
+      "files": [
+        {
+          "path": "registry/new-york/examples/example-login-form.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+    }
+  ]
+}
+```

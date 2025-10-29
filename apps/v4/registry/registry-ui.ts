@@ -112,6 +112,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "button-group",
+    type: "registry:ui",
+    registryDependencies: ["button", "separator"],
+    files: [
+      {
+        path: "ui/button-group.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "calendar",
     type: "registry:ui",
     dependencies: ["react-day-picker@latest", "date-fns"],
@@ -236,6 +247,27 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "empty",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/empty.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "field",
+    type: "registry:ui",
+    registryDependencies: ["label", "separator"],
+    files: [
+      {
+        path: "ui/field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "form",
     type: "registry:ui",
     dependencies: [
@@ -275,12 +307,34 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "input-group",
+    type: "registry:ui",
+    registryDependencies: ["button", "input", "textarea"],
+    files: [
+      {
+        path: "ui/input-group.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "input-otp",
     type: "registry:ui",
     dependencies: ["input-otp"],
     files: [
       {
         path: "ui/input-otp.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "item",
+    type: "registry:ui",
+    registryDependencies: ["separator"],
+    files: [
+      {
+        path: "ui/item.tsx",
         type: "registry:ui",
       },
     ],
@@ -516,6 +570,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "spinner",
+    type: "registry:ui",
+    dependencies: ["class-variance-authority"],
+    files: [
+      {
+        path: "ui/spinner.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "switch",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-switch"],
@@ -617,6 +682,21 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/inline-edit.tsx",
+    name: "kbd",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/kbd.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "native-select",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/native-select.tsx",
         type: "registry:ui",
       },
     ],

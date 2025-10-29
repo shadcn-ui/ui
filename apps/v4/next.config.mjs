@@ -19,6 +19,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "avatar.vercel.sh",
+      },
     ],
   },
   redirects() {
@@ -37,16 +41,6 @@ const nextConfig = {
         source: "/figma",
         destination: "/docs/figma",
         permanent: true,
-      },
-      {
-        source: "/docs/forms",
-        destination: "/docs/components/form",
-        permanent: false,
-      },
-      {
-        source: "/docs/forms/react-hook-form",
-        destination: "/docs/components/form",
-        permanent: false,
       },
       {
         source: "/sidebar",
@@ -72,6 +66,16 @@ const nextConfig = {
         source: "/docs/:path*.mdx",
         destination: "/docs/:path*.md",
         permanent: true,
+      },
+      {
+        source: "/mcp",
+        destination: "/docs/mcp",
+        permanent: false,
+      },
+      {
+        source: "/directory",
+        destination: "/docs/directory",
+        permanent: false,
       },
     ]
   },

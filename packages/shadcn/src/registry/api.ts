@@ -1,13 +1,18 @@
 import path from "path"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
-import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
+import {
+  BASE_COLORS,
+  BUILTIN_REGISTRIES,
+  REGISTRY_URL,
+} from "@/src/registry/constants"
 import {
   clearRegistryContext,
   setRegistryHeaders,
 } from "@/src/registry/context"
 import {
   ConfigParseError,
+  RegistriesIndexParseError,
   RegistryInvalidNamespaceError,
   RegistryNotFoundError,
   RegistryParseError,
@@ -20,7 +25,7 @@ import {
 import { isUrl } from "@/src/registry/utils"
 import {
   iconsSchema,
-  rawConfigSchema,
+  registriesIndexSchema,
   registryBaseColorSchema,
   registryConfigSchema,
   registryIndexSchema,
@@ -271,4 +276,26 @@ export async function getItemTargetPath(
     config.resolvedPaths[parent as keyof typeof config.resolvedPaths],
     type
   )
+}
+
+export async function getRegistriesIndex(options?: { useCache?: boolean }) {
+  options = {
+    useCache: true,
+    ...options,
+  }
+
+  const url = `${REGISTRY_URL}/registries.json`
+  const [data] = await fetchRegistry([url], {
+    useCache: options.useCache,
+  })
+
+  try {
+    return registriesIndexSchema.parse(data)
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      throw new RegistriesIndexParseError(error)
+    }
+
+    throw error
+  }
 }

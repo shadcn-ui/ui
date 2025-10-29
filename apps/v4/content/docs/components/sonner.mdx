@@ -68,7 +68,7 @@ npm install sonner next-themes
 
 <Step>Add the Toaster component</Step>
 
-```tsx title="app/layout.tsx" {1,9}
+```tsx showLineNumbers title="app/layout.tsx" {1,8}
 import { Toaster } from "@/components/ui/sonner"
 
 export default function RootLayout({ children }) {
@@ -76,8 +76,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head />
       <body>
-        <main>{children}</main>
         <Toaster />
+        <main>{children}</main>
       </body>
     </html>
   )
@@ -98,4 +98,57 @@ import { toast } from "sonner"
 
 ```tsx
 toast("Event has been created.")
+```
+
+## Examples
+
+<ComponentPreview name="sonner-types" />
+
+## Changelog
+
+### 2025-10-13 Icons
+
+We've updated the Sonner component to use icons from `lucide`. Update your `sonner.tsx` file to use the new icons.
+
+```tsx showLineNumbers title="components/ui/sonner.tsx" {3-9,20-26}
+"use client"
+
+import {
+  CircleCheckIcon,
+  InfoIcon,
+  Loader2Icon,
+  OctagonXIcon,
+  TriangleAlertIcon,
+} from "lucide-react"
+import { useTheme } from "next-themes"
+import { Toaster as Sonner, ToasterProps } from "sonner"
+
+const Toaster = ({ ...props }: ToasterProps) => {
+  const { theme = "system" } = useTheme()
+
+  return (
+    <Sonner
+      theme={theme as ToasterProps["theme"]}
+      className="toaster group"
+      icons={{
+        success: <CircleCheckIcon className="size-4" />,
+        info: <InfoIcon className="size-4" />,
+        warning: <TriangleAlertIcon className="size-4" />,
+        error: <OctagonXIcon className="size-4" />,
+        loading: <Loader2Icon className="size-4 animate-spin" />,
+      }}
+      style={
+        {
+          "--normal-bg": "var(--popover)",
+          "--normal-text": "var(--popover-foreground)",
+          "--normal-border": "var(--border)",
+          "--border-radius": "var(--radius)",
+        } as React.CSSProperties
+      }
+      {...props}
+    />
+  )
+}
+
+export { Toaster }
 ```

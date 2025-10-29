@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-slider",
+  "type": "registry:example",
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/field-slider.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport {\n  Field,\n  FieldDescription,\n  FieldTitle,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Slider } from \"@/registry/new-york-v4/ui/slider\"\n\nexport default function FieldSlider() {\n  const [value, setValue] = useState([200, 800])\n  return (\n    <div className=\"w-full max-w-md\">\n      <Field>\n        <FieldTitle>Price Range</FieldTitle>\n        <FieldDescription>\n          Set your budget range ($\n          <span className=\"font-medium tabular-nums\">{value[0]}</span> -{\" \"}\n          <span className=\"font-medium tabular-nums\">{value[1]}</span>).\n        </FieldDescription>\n        <Slider\n          value={value}\n          onValueChange={setValue}\n          max={1000}\n          min={0}\n          step={10}\n          className=\"mt-2 w-full\"\n          aria-label=\"Price Range\"\n        />\n      </Field>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
