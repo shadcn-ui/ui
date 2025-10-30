@@ -86,15 +86,15 @@ cp .env.example .env
 
 1. To run the `ui.shadcn.com` website:
 
-```bash
-pnpm --filter=v4 dev
-```
+   ```bash
+   pnpm --filter=v4 dev
+   ```
 
 2. To run the `shadcn` package:
 
-```bash
-pnpm --filter=shadcn dev
-```
+   ```bash
+   pnpm --filter=shadcn dev
+   ```
 
 ## Running the CLI Locally
 
