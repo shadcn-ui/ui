@@ -217,13 +217,6 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='101' height='100' fill='none' viewBox='0 0 101 100'><g fill='var(--foreground)' clip-path='url(#a)'><path fill-rule='evenodd' d='M67.167 3.846H33.833c-16.285 0-29.487 13.202-29.487 29.487v33.334c0 16.285 13.202 29.487 29.487 29.487h33.334c16.285 0 29.487-13.202 29.487-29.487V33.333c0-16.285-13.202-29.487-29.487-29.487M33.833 0C15.423 0 .5 14.924.5 33.333v33.334C.5 85.077 15.424 100 33.833 100h33.334c18.41 0 33.333-14.924 33.333-33.333V33.333C100.5 14.923 85.576 0 67.167 0z' clip-rule='evenodd' opacity='.2'/><path d='M70.636 34.396a4.698 4.698 0 1 0 0-9.396 4.698 4.698 0 0 0 0 9.396'/><path fill-rule='evenodd' d='M25.672 56.879V29.698a4.698 4.698 0 1 1 9.396 0v27.181a8.725 8.725 0 0 0 8.725 8.725h13.423a8.725 8.725 0 0 0 8.724-8.725V43.59a4.698 4.698 0 1 1 9.396 0v13.29c0 10.008-8.113 18.12-18.12 18.12H43.793c-10.008 0-18.121-8.113-18.121-18.121' clip-rule='evenodd'/></g><defs><clipPath id='a'><path fill='var(--background)' d='M0 0h101v100H0z'/></clipPath></defs></svg>"
   },
   {
-    "name": "@roiui",
-    "homepage": "https://roiui.com",
-    "url": "https://roiui.com/r/{name}.json",
-    "description": "Roi UI is a library that offers UI components and blocks built with Base UI primitives. Some blocks and components use motion (framer). Everything is open-source and will be forever.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' id='Layer_2' data-name='Layer 2' viewBox='0 0 463.07 463.07'><defs><style>.cls-1{fill:var(--muted);stroke:var(--foreground);stroke-miterlimit:10;stroke-width:12px}</style></defs><g id='Layer_1-2' data-name='Layer 1'><path d='M459.07 231.54c0 41.45-11.07 80.3-30.44 113.76H231.54c6.42 0 12.72-.52 18.86-1.57 53.85-8.99 94.91-55.81 94.91-112.2s-41.05-103.21-94.91-112.2c-6.14-1.05-12.45-1.57-18.86-1.57V4c26.62 0 52.15 4.58 75.88 12.97a225 225 0 0 1 37.89 17.47 227.1 227.1 0 0 1 56.88 46.63 225 225 0 0 1 26.44 36.7c19.37 33.47 30.44 72.31 30.44 113.77Z' class='cls-1'/><path d='M345.31 231.54c0 56.38-41.05 103.21-94.91 112.2a113 113 0 0 1-18.86 1.57c-62.82 0-113.77-50.95-113.77-113.76s50.95-113.77 113.77-113.77c6.42 0 12.72.52 18.86 1.57 53.85 8.99 94.91 55.81 94.91 112.2Z' class='cls-1'/><path d='M231.53 4v113.77c-62.82 0-113.77 50.95-113.77 113.77V345.3H4V231.54c0-41.46 11.07-80.3 30.44-113.77 19.97-34.54 48.78-63.35 83.32-83.33C151.24 15.08 190.08 4 231.53 4Z' class='cls-1'/></g></svg>"
-  },
-  {
     "name": "@scrollxui",
     "homepage": "https://www.scrollxui.dev",
     "url": "https://www.scrollxui.dev/registry/{name}.json",
