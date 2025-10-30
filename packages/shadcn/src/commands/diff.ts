@@ -1,10 +1,9 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
 import {
-  fetchTree,
-  getItemTargetPath,
   getRegistryBaseColor,
   getShadcnRegistryIndex,
+  resolveRegistryItems,
 } from "@/src/registry/api"
 import { registryIndexSchema } from "@/src/schema"
 import { Config, getConfig } from "@/src/utils/get-config"
@@ -12,6 +11,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { transform } from "@/src/utils/transformers"
+import { resolveFilePath } from "@/src/utils/updaters/update-files"
 import { Command } from "commander"
 import { diffLines, type Change } from "diff"
 import { z } from "zod"
@@ -65,22 +65,25 @@ export const diff = new Command()
       }
 
       if (!options.component) {
-        const targetDir = config.resolvedPaths.components
-
         // Find all components that exist in the project.
-        const projectComponents = registryIndex.filter((item) => {
-          for (const file of item.files ?? []) {
-            const filePath = path.resolve(
-              targetDir,
-              typeof file === "string" ? file : file.path
-            )
-            if (existsSync(filePath)) {
-              return true
-            }
+        const projectComponents = []
+        for (const item of registryIndex) {
+          const tree = await resolveRegistryItems([item.name], {
+            config,
+          })
+          if (!tree?.files) {
+            continue
           }
 
-          return false
-        })
+          const hasInstalledFiles = tree.files.some((file) => {
+            const filePath = resolveFilePath(file, config, {})
+            return filePath && existsSync(filePath)
+          })
+
+          if (hasInstalledFiles) {
+            projectComponents.push(item)
+          }
+        }
 
         // Check for updates.
         const componentsWithUpdates = []
@@ -148,52 +151,43 @@ async function diffComponent(
   component: z.infer<typeof registryIndexSchema>[number],
   config: Config
 ) {
-  const payload = await fetchTree(config.style, [component])
+  const tree = await resolveRegistryItems([component.name], {
+    config,
+  })
   const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
 
-  if (!payload) {
+  if (!tree?.files) {
     return []
   }
 
   const changes = []
 
-  for (const item of payload) {
-    const targetDir = await getItemTargetPath(config, item)
-
-    if (!targetDir) {
+  for (const file of tree.files) {
+    if (!file.content) {
       continue
     }
 
-    for (const file of item.files ?? []) {
-      const filePath = path.resolve(
-        targetDir,
-        typeof file === "string" ? file : file.path
-      )
+    const filePath = resolveFilePath(file, config, {})
 
-      if (!existsSync(filePath)) {
-        continue
-      }
+    if (!filePath || !existsSync(filePath)) {
+      continue
+    }
 
-      const fileContent = await fs.readFile(filePath, "utf8")
+    const fileContent = await fs.readFile(filePath, "utf8")
 
-      if (typeof file === "string" || !file.content) {
-        continue
-      }
+    const registryContent = await transform({
+      filename: file.path,
+      raw: file.content,
+      config,
+      baseColor,
+    })
 
-      const registryContent = await transform({
-        filename: file.path,
-        raw: file.content,
-        config,
-        baseColor,
+    const patch = diffLines(registryContent as string, fileContent)
+    if (patch.length > 1) {
+      changes.push({
+        filePath,
+        patch,
       })
-
-      const patch = diffLines(registryContent as string, fileContent)
-      if (patch.length > 1) {
-        changes.push({
-          filePath,
-          patch,
-        })
-      }
     }
   }
 
