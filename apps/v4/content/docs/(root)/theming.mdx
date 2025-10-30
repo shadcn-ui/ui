@@ -15,7 +15,7 @@ To use CSS variables for theming set `tailwind.cssVariables` to `true` in your `
 
 ```json {8} title="components.json" showLineNumbers
 {
-  "style": "default",
+  "style": "new-york",
   "rsc": true,
   "tailwind": {
     "config": "",
@@ -44,7 +44,7 @@ To use utility classes for theming set `tailwind.cssVariables` to `false` in you
 
 ```json {8} title="components.json" showLineNumbers
 {
-  "style": "default",
+  "style": "new-york",
   "rsc": true,
   "tailwind": {
     "config": "",
@@ -52,14 +52,14 @@ To use utility classes for theming set `tailwind.cssVariables` to `false` in you
     "baseColor": "neutral",
     "cssVariables": false
   },
+  "iconLibrary": "lucide",
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
     "ui": "@/components/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
-  },
-  "iconLibrary": "lucide"
+  }
 }
 ```
 
@@ -163,7 +163,7 @@ Here's the list of variables available for customization:
 
 ## Adding new colors
 
-To add new colors, you need to add them to your CSS file and to your `tailwind.config.js` file.
+To add new colors, you need to add them to your CSS file under the `:root` and `dark` pseudo-classes. Then, use the `@theme inline` directive to make the colors available as CSS variables.
 
 ```css title="app/globals.css" showLineNumbers
 :root {

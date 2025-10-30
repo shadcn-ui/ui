@@ -1,13 +1,15 @@
 "use client"
 
 import * as React from "react"
+import { IconCheck, IconCopy } from "@tabler/icons-react"
 import template from "lodash/template"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
 
+import { THEMES } from "@/lib/themes"
 import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
+import { BaseColor, baseColors, baseColorsOKLCH } from "@/registry/base-colors"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
@@ -41,20 +43,11 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
-import {
-  BaseColor,
-  baseColors,
-  baseColorsOKLCH,
-} from "@/registry/registry-base-colors"
 
 interface BaseColorOKLCH {
   light: Record<string, string>
   dark: Record<string, string>
 }
-
-const THEMES = baseColors.filter(
-  (theme) => !["slate", "stone", "gray", "zinc"].includes(theme.name)
-)
 
 export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
   const { activeTheme = "neutral", setActiveTheme } = useThemeConfig()
@@ -143,11 +136,18 @@ export function CopyCodeButton({
       </Drawer>
       <Dialog>
         <DialogTrigger asChild>
-          <Button className={cn("hidden sm:flex", className)} {...props}>
-            Copy Code
+          <Button
+            data-size={props.size}
+            className={cn("group/button hidden sm:flex", className)}
+            {...props}
+          >
+            <IconCopy />
+            <span className="group-data-[size=icon-sm]/button:sr-only">
+              Copy Code
+            </span>
           </Button>
         </DialogTrigger>
-        <DialogContent className="outline-none md:max-w-3xl">
+        <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
           <DialogHeader>
             <DialogTitle className="capitalize">
               {activeThemeName === "neutral" ? "Default" : activeThemeName}
@@ -231,7 +231,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 }}
               >
                 <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                {hasCopied ? <IconCheck /> : <IconCopy />}
               </Button>
               <code data-line-numbers data-language="css">
                 <span data-line className="line text-code-foreground">
@@ -311,7 +311,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 }}
               >
                 <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                {hasCopied ? <IconCheck /> : <IconCopy />}
               </Button>
               <code data-line-numbers data-language="css">
                 <span data-line className="line">
