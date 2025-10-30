@@ -101,10 +101,7 @@ export default async function Page(props: {
     .parse(attributes)
 
   return (
-    <div
-      data-slot="docs"
-      className="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full"
-    >
+    <div className="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full">
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
         <div className="mx-auto flex w-full max-w-2xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">

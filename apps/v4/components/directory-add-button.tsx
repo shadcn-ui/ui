@@ -1,10 +1,34 @@
 "use client"
 
+import * as React from "react"
+import Link from "next/link"
 import { IconCheck } from "@tabler/icons-react"
-import { toast } from "sonner"
 
+import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { useIsMobile } from "@/hooks/use-mobile"
+import { CopyButton } from "@/components/copy-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/new-york-v4/ui/dialog"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/registry/new-york-v4/ui/drawer"
 
 export function DirectoryAddButton({
   registry,
@@ -15,17 +39,21 @@ export function DirectoryAddButton({
   }
 }) {
   const { copyToClipboard, isCopied } = useCopyToClipboard()
-  return (
+  const isMobile = useIsMobile()
+  const [open, setOpen] = React.useState(false)
+
+  const jsonValue = `{
+  "registries": {
+    "${registry.name}": "${registry.url}"
+  }
+}`
+
+  const Trigger = (
     <Button
       size="sm"
       variant="outline"
       className="relative z-10"
-      onClick={() => {
-        copyToClipboard(`"${registry.name}": "${registry.url}"`)
-        toast("MCP config copied to clipboard", {
-          description: "Paste in your project's components.json",
-        })
-      }}
+      onClick={() => setOpen(true)}
     >
       {isCopied ? (
         <IconCheck />
@@ -40,5 +68,90 @@ export function DirectoryAddButton({
       )}
       MCP
     </Button>
+  )
+
+  const Content = (
+    <>
+      <figure
+        data-rehype-pretty-code-figure
+        className={cn(
+          "group relative mt-0",
+          !isMobile &&
+            "dark:bg-background dark:[&_[data-line]:not([data-highlighted-line]):before]:bg-background!"
+        )}
+      >
+        <CopyButton
+          value={jsonValue}
+          className="top-3 right-2"
+          tooltip="Copy Code"
+        />
+        <div data-rehype-pretty-code-title>components.json</div>
+        <pre className="no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0">
+          <code data-line-numbers data-language="json">
+            <span data-line>{"{"}</span>
+            <span data-line>{'  "registries": {'}</span>
+            <span
+              data-line
+              data-highlighted-line
+            >{`    "${registry.name}": "${registry.url}"`}</span>
+            <span data-line>{"  }"}</span>
+            <span data-line>{"}"}</span>
+          </code>
+        </pre>
+      </figure>
+    </>
+  )
+
+  if (isMobile) {
+    return (
+      <Drawer open={open} onOpenChange={setOpen}>
+        <DrawerTrigger asChild>{Trigger}</DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Configure MCP</DrawerTitle>
+            <DrawerDescription>
+              Copy and paste the following code into your project&apos;s
+              components.json.
+            </DrawerDescription>
+          </DrawerHeader>
+          <div className="px-6">{Content}</div>
+          <DrawerFooter>
+            <DrawerClose asChild>
+              <Button size="sm">Close</Button>
+            </DrawerClose>
+            <Button size="sm" asChild variant="outline">
+              <Link href="/docs/mcp">Read the docs</Link>
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    )
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>{Trigger}</DialogTrigger>
+      <DialogContent
+        className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 sm:max-w-[600px] dark:bg-neutral-900 dark:ring-neutral-800"
+        onOpenAutoFocus={(e) => e.preventDefault()}
+      >
+        <DialogHeader>
+          <DialogTitle>Configure MCP</DialogTitle>
+          <DialogDescription>
+            Copy and paste the following code into your project&apos;s
+            components.json.
+          </DialogDescription>
+        </DialogHeader>
+        {Content}
+        <DialogFooter className="justify-between!">
+          <Button size="sm" asChild variant="ghost">
+            <Link href="/docs/mcp">Read the docs</Link>
+          </Button>
+          <DialogClose asChild>
+            <Button size="sm">Done</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
