@@ -24,13 +24,11 @@ export function CopyButton({
   className,
   variant = "ghost",
   event,
-  tooltip = "Copy to Clipboard",
   ...props
 }: React.ComponentProps<typeof Button> & {
   value: string
   src?: string
   event?: Event["name"]
-  tooltip?: string
 }) {
   const [hasCopied, setHasCopied] = React.useState(false)
 
@@ -45,7 +43,6 @@ export function CopyButton({
       <TooltipTrigger asChild>
         <Button
           data-slot="copy-button"
-          data-copied={hasCopied}
           size="icon"
           variant={variant}
           className={cn(
@@ -72,7 +69,9 @@ export function CopyButton({
           {hasCopied ? <IconCheck /> : <IconCopy />}
         </Button>
       </TooltipTrigger>
-      <TooltipContent>{hasCopied ? "Copied" : tooltip}</TooltipContent>
+      <TooltipContent>
+        {hasCopied ? "Copied" : "Copy to Clipboard"}
+      </TooltipContent>
     </Tooltip>
   )
 }
