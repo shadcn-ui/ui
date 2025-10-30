@@ -84,6 +84,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' class='fill-none!' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true' viewBox='0 0 24 24'><rect width='18' height='18' x='3' y='3' rx='2' ry='2'/><path d='M16 8h.01M8 8h.01M8 16h.01M16 16h.01'/></svg>"
   },
   {
+    "name": "@elements",
+    "homepage": "https://www.tryelements.dev",
+    "url": "https://www.tryelements.dev/r/registry.json",
+    "description": "Full-stack shadcn/ui components that go beyond UI. Add auth, monetization, uploads, and AI to your app in seconds.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><g clip-path='url(#clip0_18_8)'><path d='M0.248535 7.05071V0.353027H8.03229V7.05071H0.248535ZM8.03229 7.05071V0.353027H15.8161V7.05071H8.03229ZM15.8161 7.05071V0.353027H23.5999V7.05071H15.8161ZM0.248535 15.4228V8.72513H8.03229V15.4228H0.248535ZM8.03229 15.4228V8.72513H15.8161V15.4228H8.03229ZM0.248535 23.7949V17.0972H8.03229V23.7949H0.248535ZM8.03229 23.7949V17.0972H15.8161V23.7949H8.03229ZM15.8161 23.7949V17.0972H23.5999V23.7949H15.8161Z' fill='var(--foreground)'/></g><defs><clipPath id='clip0_18_8'><rect width='24' height='24' fill='var(--background)'/></clipPath></defs></svg>"
+  },
+  {
     "name": "@elevenlabs-ui",
     "homepage": "https://ui.elevenlabs.io",
     "url": "https://ui.elevenlabs.io/r/{name}.json",
@@ -175,6 +182,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 1024 1024'><rect width='1024' height='1024' fill='#000' rx='512'/><path fill='#fff' d='m284.192 203.6 3.36 74.88-9.119-3.36q5.28-40.8 27.359-59.04 22.082-18.24 56.16-18.24 41.28 0 64.32 25.92 23.52 25.92 23.52 70.56V458h-72.48V318.32q0-22.08-3.839-35.52-3.36-13.44-12-20.16-8.64-7.2-23.041-7.2-23.04 0-35.039 15.84-11.52 15.84-11.521 47.04V458h-72.96V203.6zM746.838 458l-2.88-73.44 9.12 3.36q-5.28 39.84-27.36 58.08-22.08 17.76-55.2 17.76-40.8 0-63.841-25.92-23.04-25.92-23.039-70.56V203.6h72.96v139.68q0 22.08 3.359 35.52t11.521 20.64q8.64 6.72 23.04 6.72 22.08 0 33.599-15.84 12-15.84 12-47.04V203.6h72.481V458zM454.293 563.6V890h-72.96V765.2l6.239 3.84q-6.238 17.76-17.76 30.24-11.519 12-27.359 18.24t-35.041 6.24q-34.56 0-59.52-17.28-24.48-17.76-36.96-47.52-12-30.24-12-68.16t12-67.68q12.48-30.24 36.96-47.52 24.96-17.76 59.52-17.76 29.762 0 50.4 13.92 20.641 13.92 30.241 40.32l-5.28 4.32 1.92-52.8zm-74.4 166.56q6.24-17.76 6.24-39.36 0-21.12-6.24-38.4-6.24-17.76-19.2-28.32-12.48-11.04-30.72-11.04-27.36 0-42.241 22.56-14.4 22.08-14.4 55.2 0 33.6 14.4 55.68 14.881 22.08 42.241 22.08 18.24 0 30.72-10.56 12.96-10.56 19.2-27.84M749.849 646.16q-2.88-17.28-16.32-27.36-12.96-10.56-29.76-10.56t-27.36 8.16-10.08 21.6q.48 12.96 12.96 20.16 12.48 6.72 33.6 10.56 39.36 6.24 63.36 15.84 24 9.12 36 24.48 12.48 15.36 12.48 39.36 0 24.96-14.88 41.76-14.4 16.8-39.84 25.44-25.44 8.16-58.56 8.16-36.96 0-64.8-10.08-27.36-10.56-43.2-29.76-15.84-19.68-17.76-46.56l72.96-3.84q2.4 12.48 8.64 21.6 6.72 8.64 17.28 13.44 11.04 4.32 25.44 4.32 16.32 0 28.32-6.24 12-6.72 12-19.68-.48-8.64-5.76-14.4-4.8-5.76-12.96-8.64-7.68-2.88-21.12-5.76-3.84-.48-9.6-1.92-38.88-7.68-61.92-16.32-22.56-9.12-35.04-23.52-12.48-14.88-12.48-37.92 0-24.96 13.44-43.2 13.92-18.24 39.84-27.84 25.92-10.08 61.92-10.08 48 0 78.72 23.04 30.72 22.56 37.44 62.88z'/></svg>"
   },
   {
+    "name": "@oui",
+    "homepage": "https://oui.mw10013.workers.dev",
+    "url": "https://oui.mw10013.workers.dev/r/{name}.json",
+    "description": "React Aria Components with shadcn characteristics.Copy-and-paste react aria components that run side-by-side with shadcn components.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' class='fill-none!' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/></svg>"
+  },
+  {
     "name": "@prompt-kit",
     "homepage": "https://www.prompt-kit.com",
     "url": "https://www.prompt-kit.com/c/registry.json",
@@ -201,6 +215,13 @@
     "url": "https://reui.io/r/{name}.json",
     "description": "Open-source collection of UI components and animated effects built with React, Typescript, Tailwind CSS, and Motion. Pairs beautifully with shadcn/ui.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='101' height='100' fill='none' viewBox='0 0 101 100'><g fill='var(--foreground)' clip-path='url(#a)'><path fill-rule='evenodd' d='M67.167 3.846H33.833c-16.285 0-29.487 13.202-29.487 29.487v33.334c0 16.285 13.202 29.487 29.487 29.487h33.334c16.285 0 29.487-13.202 29.487-29.487V33.333c0-16.285-13.202-29.487-29.487-29.487M33.833 0C15.423 0 .5 14.924.5 33.333v33.334C.5 85.077 15.424 100 33.833 100h33.334c18.41 0 33.333-14.924 33.333-33.333V33.333C100.5 14.923 85.576 0 67.167 0z' clip-rule='evenodd' opacity='.2'/><path d='M70.636 34.396a4.698 4.698 0 1 0 0-9.396 4.698 4.698 0 0 0 0 9.396'/><path fill-rule='evenodd' d='M25.672 56.879V29.698a4.698 4.698 0 1 1 9.396 0v27.181a8.725 8.725 0 0 0 8.725 8.725h13.423a8.725 8.725 0 0 0 8.724-8.725V43.59a4.698 4.698 0 1 1 9.396 0v13.29c0 10.008-8.113 18.12-18.12 18.12H43.793c-10.008 0-18.121-8.113-18.121-18.121' clip-rule='evenodd'/></g><defs><clipPath id='a'><path fill='var(--background)' d='M0 0h101v100H0z'/></clipPath></defs></svg>"
+  },
+  {
+    "name": "@roiui",
+    "homepage": "https://roiui.com",
+    "url": "https://roiui.com/r/{name}.json",
+    "description": "Roi UI is a library that offers UI components and blocks built with Base UI primitives. Some blocks and components use motion (framer). Everything is open-source and will be forever.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' id='Layer_2' data-name='Layer 2' viewBox='0 0 463.07 463.07'><defs><style>.cls-1{fill:var(--muted);stroke:var(--foreground);stroke-miterlimit:10;stroke-width:12px}</style></defs><g id='Layer_1-2' data-name='Layer 1'><path d='M459.07 231.54c0 41.45-11.07 80.3-30.44 113.76H231.54c6.42 0 12.72-.52 18.86-1.57 53.85-8.99 94.91-55.81 94.91-112.2s-41.05-103.21-94.91-112.2c-6.14-1.05-12.45-1.57-18.86-1.57V4c26.62 0 52.15 4.58 75.88 12.97a225 225 0 0 1 37.89 17.47 227.1 227.1 0 0 1 56.88 46.63 225 225 0 0 1 26.44 36.7c19.37 33.47 30.44 72.31 30.44 113.77Z' class='cls-1'/><path d='M345.31 231.54c0 56.38-41.05 103.21-94.91 112.2a113 113 0 0 1-18.86 1.57c-62.82 0-113.77-50.95-113.77-113.76s50.95-113.77 113.77-113.77c6.42 0 12.72.52 18.86 1.57 53.85 8.99 94.91 55.81 94.91 112.2Z' class='cls-1'/><path d='M231.53 4v113.77c-62.82 0-113.77 50.95-113.77 113.77V345.3H4V231.54c0-41.46 11.07-80.3 30.44-113.77 19.97-34.54 48.78-63.35 83.32-83.33C151.24 15.08 190.08 4 231.53 4Z' class='cls-1'/></g></svg>"
   },
   {
     "name": "@scrollxui",

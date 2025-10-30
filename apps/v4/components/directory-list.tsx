@@ -21,23 +21,37 @@ export function DirectoryList() {
     <ItemGroup className="my-8">
       {registries.map((registry, index) => (
         <React.Fragment key={index}>
-          <Item className="group/item sm:hover:bg-accent/50 relative gap-6 px-0 sm:px-4">
+          <Item className="group/item relative gap-6 px-0 sm:px-4">
             <ItemMedia
               variant="image"
               dangerouslySetInnerHTML={{ __html: registry.logo }}
               className="*:[svg]:fill-foreground grayscale *:[svg]:size-8"
             />
             <ItemContent>
-              <ItemTitle>{registry.name}</ItemTitle>
+              <ItemTitle>
+                <a
+                  href={registry.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {registry.name}
+                </a>
+              </ItemTitle>
               {registry.description && (
                 <ItemDescription className="text-pretty">
                   {registry.description}
                 </ItemDescription>
               )}
             </ItemContent>
-            <ItemActions className="hidden self-start sm:flex">
-              <Button size="sm" variant="outline">
-                View <IconArrowUpRight />
+            <ItemActions className="relative z-10 hidden self-start sm:flex">
+              <Button size="sm" variant="outline" asChild>
+                <a
+                  href={registry.homepage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View <IconArrowUpRight />
+                </a>
               </Button>
               <DirectoryAddButton registry={registry} />
             </ItemActions>
@@ -47,15 +61,6 @@ export function DirectoryList() {
               </Button>
               <DirectoryAddButton registry={registry} />
             </ItemFooter>
-            <a
-              href={registry.homepage}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visit ${registry.name}`}
-              className="absolute inset-0"
-            >
-              <span className="sr-only">Visit {registry.name}</span>
-            </a>
           </Item>
           {index < registries.length - 1 && <ItemSeparator className="my-1" />}
         </React.Fragment>

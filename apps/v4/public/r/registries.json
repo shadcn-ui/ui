@@ -46,6 +46,7 @@
   "@retroui": "https://retroui.dev/r/{name}.json",
   "@reui": "https://reui.io/r/{name}.json",
   "@rigidui": "https://rigidui.com/r/{name}.json",
+  "@roiui": "https://roiui.com/r/{name}.json",
   "@scrollxui": "https://www.scrollxui.dev/registry/{name}.json",
   "@shadcn-editor": "https://shadcn-editor.vercel.app/r/{name}.json",
   "@shadcn-map": "http://shadcn-map.vercel.app/r/{name}.json",
