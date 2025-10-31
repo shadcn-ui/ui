@@ -25,7 +25,7 @@ import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateEnvVars } from "@/src/utils/updaters/update-env-vars"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export async function addComponents(
   components: string[],

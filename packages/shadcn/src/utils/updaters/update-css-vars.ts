@@ -13,7 +13,7 @@ import postcss from "postcss"
 import AtRule from "postcss/lib/at-rule"
 import Root from "postcss/lib/root"
 import Rule from "postcss/lib/rule"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export async function updateCssVars(
   cssVars: z.infer<typeof registryItemCssVarsSchema> | undefined,

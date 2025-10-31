@@ -11,7 +11,7 @@ import { resolveImport } from "@/src/utils/resolve-import"
 import { cosmiconfig } from "cosmiconfig"
 import fg from "fast-glob"
 import { loadConfig } from "tsconfig-paths"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export const DEFAULT_STYLE = "default"
 export const DEFAULT_COMPONENTS = "@/components"

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Form from "next/form"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {

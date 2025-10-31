@@ -36,7 +36,7 @@ import {
 import { Config, explorer } from "@/src/utils/get-config"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export async function getRegistry(
   name: string,

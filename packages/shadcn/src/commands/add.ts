@@ -18,7 +18,7 @@ import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateAppIndex } from "@/src/utils/update-app-index"
 import { Command } from "commander"
 import prompts from "prompts"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),

@@ -1,7 +1,7 @@
 import { getRegistriesConfig } from "@/src/registry/api"
 import { registryItemSchema, searchResultsSchema } from "@/src/schema"
 import { getPackageRunner } from "@/src/utils/get-package-manager"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 const SHADCN_CLI_COMMAND = "shadcn@latest"
 

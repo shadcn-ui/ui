@@ -10,7 +10,7 @@ import { handleError } from "@/src/utils/handle-error"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { Command } from "commander"
 import fsExtra from "fs-extra"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 const viewOptionsSchema = z.object({
   cwd: z.string(),

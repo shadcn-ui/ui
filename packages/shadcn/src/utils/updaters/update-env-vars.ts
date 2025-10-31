@@ -10,7 +10,7 @@ import { Config } from "@/src/utils/get-config"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export async function updateEnvVars(
   envVars: z.infer<typeof registryItemEnvVarsSchema> | undefined,

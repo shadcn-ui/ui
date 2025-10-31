@@ -5,7 +5,7 @@ import { extractEnvVars } from "@/src/registry/env"
 import { RegistryMissingEnvironmentVariablesError } from "@/src/registry/errors"
 import { registryConfigItemSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export function extractEnvVarsFromRegistryConfig(
   config: z.infer<typeof registryConfigItemSchema>

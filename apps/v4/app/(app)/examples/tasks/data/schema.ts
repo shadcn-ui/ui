@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod/v3"
 
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.

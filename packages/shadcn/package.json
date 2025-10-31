@@ -92,8 +92,7 @@
     "stringify-object": "^5.0.0",
     "ts-morph": "^26.0.0",
     "tsconfig-paths": "^4.2.0",
-    "zod": "^3.24.1",
-    "zod-to-json-schema": "^3.24.6"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/babel__core": "^7.20.5",

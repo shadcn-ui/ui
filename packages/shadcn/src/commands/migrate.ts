@@ -6,7 +6,7 @@ import * as ERRORS from "@/src/utils/errors"
 import { handleError } from "@/src/utils/handle-error"
 import { logger } from "@/src/utils/logger"
 import { Command } from "commander"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export const migrations = [
   {

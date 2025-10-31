@@ -22,7 +22,7 @@ import {
   SyntaxKind,
   VariableStatement,
 } from "ts-morph"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export type UpdaterTailwindConfig = Omit<TailwindConfig, "plugins"> & {
   // We only want string plugins for now.

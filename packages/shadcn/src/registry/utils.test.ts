@@ -1,5 +1,5 @@
 import { describe, expect, it, test, vi } from "vitest"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 import { Config } from "../utils/get-config"
 import { registryItemFileSchema } from "./schema"

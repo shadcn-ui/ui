@@ -1,5 +1,5 @@
 import { registryConfigSchema } from "@/src/schema"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 export const REGISTRY_URL =
   process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"

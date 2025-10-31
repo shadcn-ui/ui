@@ -45,7 +45,7 @@ import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
 import prompts from "prompts"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 process.on("exit", (code) => {
   const filePath = path.resolve(process.cwd(), "components.json")

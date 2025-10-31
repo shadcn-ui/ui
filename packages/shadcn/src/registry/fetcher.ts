@@ -14,7 +14,7 @@ import {
 import { registryItemSchema } from "@/src/schema"
 import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
-import { z } from "zod"
+import { z } from "zod/v3"
 
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
