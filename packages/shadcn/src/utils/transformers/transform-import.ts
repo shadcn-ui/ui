@@ -15,29 +15,77 @@ export const transformImport: Transformer = async ({
   }
 
   for (const specifier of sourceFile.getImportStringLiterals()) {
-    const updated = updateImportAliases(
-      specifier.getLiteralValue(),
-      config,
-      isRemote
-    )
-    specifier.setLiteralValue(updated)
+    const originalValue = specifier.getLiteralValue()
 
-    // Replace `import { cn } from "@/lib/utils"`
-    if (utilsImport === updated || updated === "@/lib/utils") {
+    // Check if this is a cn import from utils before transforming aliases
+    let isCnImport = false
+    // Check for exports first (re-exports don't have import declarations)
+    const isExport = specifier
+      .getFirstAncestorByKind(SyntaxKind.ExportDeclaration)
+      ?.getNamedExports()
+      .some((namedExport) => namedExport.getName() === "cn") ?? false
+    
+    if (
+      originalValue === "@/lib/utils" ||
+      originalValue === "@/src/utils" ||
+      originalValue === utilsImport ||
+      originalValue.match(/^@\/registry\/[^/]+\/lib\/utils$/) ||
+      originalValue.match(/^\/lib\/utils$/) ||
+      originalValue.match(/^\/src\/utils$/) ||
+      (config.aliases?.utils && originalValue === config.aliases.utils) ||
+      (originalValue.startsWith("/") && originalValue.endsWith("/lib/utils")) ||
+      (originalValue.startsWith("/") && originalValue.endsWith("/src/utils"))
+    ) {
       const importDeclaration = specifier.getFirstAncestorByKind(
         SyntaxKind.ImportDeclaration
       )
-      const isCnImport = importDeclaration
+      isCnImport = (importDeclaration
         ?.getNamedImports()
-        .some((namedImport) => namedImport.getName() === "cn")
+        .some((namedImport) => namedImport.getName() === "cn") ?? false) || isExport
+    }
 
-      if (!isCnImport) continue
+    // Handle sub-path imports from utils (e.g., @/lib/utils/bar or @/src/utils/bar)
+    const utilsSubPathMatch = originalValue.match(/^(@\/|\/)(lib|src)\/utils\/(.+)$/)
+    if (utilsSubPathMatch && config.aliases?.utils) {
+      const [, , , subPath] = utilsSubPathMatch
+      let utilsPath = config.aliases.utils
+      const originalAlias = utilsPath
+      if (!utilsPath.endsWith('/utils')) {
+        utilsPath += '/utils'
+      }
+      // Replace /lib/utils with /src/utils, but preserve user-configured absolute paths like /app/function/lib/utils
+      if (utilsPath.includes('/lib/utils')) {
+        const isAbsoluteWithLibUtils = originalAlias.startsWith('/') && originalAlias.endsWith('/lib/utils')
+        if (!isAbsoluteWithLibUtils) {
+          utilsPath = utilsPath.replace(/\/lib\/utils$/, '/src/utils')
+        }
+      }
+      specifier.setLiteralValue(`${utilsPath}/${subPath}`)
+    } else {
+      const updated = updateImportAliases(originalValue, config, isRemote)
+      specifier.setLiteralValue(updated)
 
-      specifier.setLiteralValue(
-        utilsImport === updated
-          ? updated.replace(utilsImport, config.aliases.utils)
-          : config.aliases.utils
-      )
+      // Replace `import { cn } from "@/lib/utils"` or `@/src/utils` with configured utils alias
+      if (isCnImport && config.aliases?.utils) {
+        let utilsPath = config.aliases.utils
+        const originalAlias = utilsPath
+        // If the alias doesn't end with /utils, append it
+        if (!utilsPath.endsWith('/utils')) {
+          utilsPath += '/utils'
+        }
+        // Replace /lib/utils with /src/utils, but preserve user-configured absolute paths like /app/function/lib/utils
+        // Only replace if:
+        // 1. The original alias doesn't end with /lib/utils (user didn't explicitly configure /lib/utils), OR
+        // 2. It's a relative path pattern (starts with @/ or similar, not absolute /path)
+        if (utilsPath.includes('/lib/utils')) {
+          // Preserve absolute paths that user explicitly configured with /lib/utils
+          const isAbsoluteWithLibUtils = originalAlias.startsWith('/') && originalAlias.endsWith('/lib/utils')
+          if (!isAbsoluteWithLibUtils) {
+            utilsPath = utilsPath.replace(/\/lib\/utils$/, '/src/utils')
+          }
+        }
+        specifier.setLiteralValue(utilsPath)
+      }
     }
   }
 
