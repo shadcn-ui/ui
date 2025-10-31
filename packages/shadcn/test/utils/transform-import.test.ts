@@ -142,7 +142,59 @@ import { Foo } from "bar"
       },
     })
   ).toMatchSnapshot()
+
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@/registry/new-york/box"
+
+    import { cn } from "/app/function/lib/utils"
+    `,
+      config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "neutral",
+          cssVariables: true,
+        },
+        aliases: {
+          components: "/app/components",
+          utils: "/app/function/lib/utils",
+        },
+      },
+    })
+  ).toMatchSnapshot()
+
+  // Transform @/lib/utils to configured absolute path /app/function/lib/utils
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import * as React from "react"
+import { Foo } from "bar"
+    import { Button } from "@/components/ui/button"
+    import { Label} from "ui/label"
+    import { Box } from "@/registry/new-york/box"
+
+    import { cn } from "@/lib/utils"
+    `,
+      config: {
+        tsx: true,
+        tailwind: {
+          baseColor: "neutral",
+          cssVariables: true,
+        },
+        aliases: {
+          components: "/app/components",
+          utils: "/app/function/lib/utils",
+        },
+      },
+    })
+  ).toMatchSnapshot()
 })
+
 
 test("transform import for monorepo", async () => {
   expect(
