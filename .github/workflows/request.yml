@@ -1,0 +1,131 @@
+name: "Convert requests to discussions"
+
+on:
+  workflow_dispatch:
+  schedule:
+    # This runs every hour: https://crontab.guru/#0_*_*_*_*
+    - cron: "0 * * * *"
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'shadcn-ui'
+    steps:
+      - name: "Convert issues to discussions"
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // Fetch issues with "area: request" label (limit 20).
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'area: request',
+              state: 'open',
+              per_page: 20,
+              sort: 'created',
+              direction: 'asc',
+            });
+
+            console.log(`Found ${issues.length} issues with "area: request" label`);
+
+            if (issues.length === 0) {
+              console.log('No issues to convert');
+              return;
+            }
+
+            // Get the repository node ID for GraphQL queries.
+            const repoQuery = `
+              query getRepo($owner: String!, $repo: String!) {
+                repository(owner: $owner, name: $repo) {
+                  id
+                  discussionCategories(first: 20) {
+                    nodes {
+                      id
+                      name
+                      slug
+                    }
+                  }
+                }
+              }
+            `;
+
+            const repoResult = await github.graphql(repoQuery, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            const requestsCategory = repoResult.repository.discussionCategories.nodes.find(
+              cat => cat.name.toLowerCase() === 'requests' || cat.slug.toLowerCase() === 'requests'
+            );
+
+            if (!requestsCategory) {
+              throw new Error('Requests category not found in discussions. Available categories: ' +
+                repoResult.repository.discussionCategories.nodes.map(c => c.name).join(', '));
+            }
+
+            // Convert each issue to a discussion.
+            for (const issue of issues) {
+              try {
+                // Create discussion from issue using GraphQL.
+                const discussionTitle = issue.title;
+                const discussionBody = `**Converted from issue #${issue.number}**
+
+${issue.body || ''}
+
+---
+
+_This discussion was automatically created from [issue #${issue.number}](${issue.html_url})_`;
+
+                const createDiscussionMutation = `
+                  mutation createDiscussion($repositoryId: ID!, $categoryId: ID!, $title: String!, $body: String!) {
+                    createDiscussion(input: {
+                      repositoryId: $repositoryId
+                      categoryId: $categoryId
+                      title: $title
+                      body: $body
+                    }) {
+                      discussion {
+                        id
+                        number
+                        url
+                      }
+                    }
+                  }
+                `;
+
+                const discussionResult = await github.graphql(createDiscussionMutation, {
+                  repositoryId: repoResult.repository.id,
+                  categoryId: requestsCategory.id,
+                  title: discussionTitle,
+                  body: discussionBody,
+                });
+
+                const discussion = discussionResult.createDiscussion.discussion;
+                console.log(`Created discussion #${discussion.number} from issue #${issue.number}`);
+
+                // Add a comment to the original issue linking to the discussion.
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: `This issue has been converted to a discussion: [#${discussion.number}](${discussion.url})`,
+                });
+
+                // Close the original issue.
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  state: 'closed',
+                });
+
+                console.log(`Closed issue #${issue.number}`);
+              } catch (error) {
+                console.error(`Failed to convert issue #${issue.number}:`, error);
+                // Continue with next issue instead of failing the entire workflow.
+              }
+            }
+
+            console.log(`Completed processing ${issues.length} issues`);
+
