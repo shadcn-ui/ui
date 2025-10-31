@@ -35,7 +35,9 @@ export const transformImport: Transformer = async ({
         ?.getNamedImports()
         .some((namedImport) => namedImport.getName() === "cn")
 
-      if (!isCnImport) continue
+      if (!isCnImport || !config.aliases.utils) {
+        continue
+      }
 
       specifier.setLiteralValue(
         utilsImport === updated
