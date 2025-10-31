@@ -53,12 +53,9 @@ export const transformImport: Transformer = async ({
       if (!utilsPath.endsWith('/utils')) {
         utilsPath += '/utils'
       }
-      // Replace /lib/utils with /src/utils, but preserve user-configured absolute paths like /app/function/lib/utils
-      if (utilsPath.includes('/lib/utils')) {
-        const isAbsoluteWithLibUtils = originalAlias.startsWith('/') && originalAlias.endsWith('/lib/utils')
-        if (!isAbsoluteWithLibUtils) {
-          utilsPath = utilsPath.replace(/\/lib\/utils$/, '/src/utils')
-        }
+      const userExplicitlyConfigured = originalAlias.includes('/lib/utils') || originalAlias.includes('/src/utils')
+      if (!userExplicitlyConfigured && utilsPath.includes('/lib/utils')) {
+        utilsPath = utilsPath.replace(/\/lib\/utils$/, '/src/utils')
       }
       specifier.setLiteralValue(`${utilsPath}/${subPath}`)
     } else {
@@ -73,16 +70,9 @@ export const transformImport: Transformer = async ({
         if (!utilsPath.endsWith('/utils')) {
           utilsPath += '/utils'
         }
-        // Replace /lib/utils with /src/utils, but preserve user-configured absolute paths like /app/function/lib/utils
-        // Only replace if:
-        // 1. The original alias doesn't end with /lib/utils (user didn't explicitly configure /lib/utils), OR
-        // 2. It's a relative path pattern (starts with @/ or similar, not absolute /path)
-        if (utilsPath.includes('/lib/utils')) {
-          // Preserve absolute paths that user explicitly configured with /lib/utils
-          const isAbsoluteWithLibUtils = originalAlias.startsWith('/') && originalAlias.endsWith('/lib/utils')
-          if (!isAbsoluteWithLibUtils) {
-            utilsPath = utilsPath.replace(/\/lib\/utils$/, '/src/utils')
-          }
+        const userExplicitlyConfigured = originalAlias.includes('/lib/utils') || originalAlias.includes('/src/utils')
+        if (!userExplicitlyConfigured && utilsPath.includes('/lib/utils')) {
+          utilsPath = utilsPath.replace(/\/lib\/utils$/, '/src/utils')
         }
         specifier.setLiteralValue(utilsPath)
       }

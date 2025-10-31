@@ -59,7 +59,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "@/components/box"
 
-    import { cn } from "@/src/utils"
+    import { cn } from "@/lib/utils"
     "
 `;
 
@@ -118,7 +118,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "@custom-alias/components/box"
 
-    import { cn } from "@custom-alias/src/utils"
+    import { cn } from "@custom-alias/lib/utils"
     "
 `;
 
@@ -151,7 +151,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "@workspace/ui/components/box"
 
-    import { cn } from "@workspace/ui/src/utils"
+    import { cn } from "@workspace/ui/lib/utils"
     "
 `;
 
@@ -162,12 +162,12 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "@repo/ui/components/box"
 
-    import { cn } from "@repo/ui/src/utils"
+    import { cn } from "@repo/ui/lib/utils"
     "
 `;
 
 exports[`transform re-exports with dynamic imports 1`] = `
-"export { cn } from "@/src/utils"
+"export { cn } from "@/lib/utils"
 export { Button } from "@/components/ui/button"
 
 async function load() {
