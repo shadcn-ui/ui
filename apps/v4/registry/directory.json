@@ -210,6 +210,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
   },
   {
+    "name": "@paykit-sdk",
+    "homepage": "https://www.usepaykit.dev",
+    "url": "https://www.usepaykit.dev/r",
+    "description": "Unified payments SDK for builders — handle checkout, billing, and webhooks across Stripe, PayPal, Adyen, and regional gateways with a single integration.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='var(--foreground)' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z' /><path d='M20 3v4' /><path d='M22 5h-4' /><path d='M4 17v2' /><path d='M5 18H3' /></svg>"
+  },
+  {
     "name": "@prompt-kit",
     "homepage": "https://www.prompt-kit.com",
     "url": "https://www.prompt-kit.com/c/registry.json",
