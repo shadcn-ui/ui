@@ -7,7 +7,11 @@ export const transformImport: Transformer = async ({
   config,
   isRemote,
 }) => {
-  const workspaceAlias = config.aliases?.utils?.split("/")[0]
+  const utilsAlias = config.aliases?.utils
+  const workspaceAlias =
+    typeof utilsAlias === "string" && utilsAlias.includes("/")
+      ? utilsAlias.split("/")[0]
+      : "@"
   const utilsImport = `${workspaceAlias}/lib/utils`
 
   if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
