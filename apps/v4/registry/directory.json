@@ -140,6 +140,13 @@
     "logo": "<svg fill='none' viewBox='0 0 116 116' xmlns='http://www.w3.org/2000/svg'><title>Kibo UI</title><g fill='currentColor'><path clip-rule='evenodd' d='m29.3378 0h87.0002v87l-29.0002 29v-87h-87.000031zm-29.000031 95.7389v-37.7389h37.738831zm58.000031 20.2611h-37.249l37.249-37.2488z' fill-rule='evenodd'></path></g></svg>"
   },
   {
+    "name": "@kanpeki",
+    "homepage": "https://kanpeki.vercel.app",
+    "url": "https://kanpeki.vercel.app/r/{name}.json",
+    "description": "A set of perfect-designed components built on top of React Aria and Motion.",
+    "logo": "<svg fill='currentColor' role='img' viewBox='5 5 90 90' xmlns='http://www.w3.org/2000/svg'><path d='M60.033 21.233C29.688 21.233 5 45.921 5 76.267a2.5 2.5 0 105 0c0-27.588 22.445-50.033 50.033-50.033C76.557 26.233 90 39.677 90 56.201c0 9.686-7.88 17.566-17.566 17.566-5.459 0-9.901-4.442-9.901-9.901a5.17 5.17 0 015.165-5.165 2.24 2.24 0 012.237 2.237 2.5 2.5 0 105 0c0-3.99-3.247-7.237-7.237-7.237-5.605 0-10.165 4.56-10.165 10.165 0 8.217 6.685 14.901 14.901 14.901C84.877 78.767 95 68.644 95 56.201c0-19.282-15.686-34.968-34.967-34.968z'/></svg>"
+  },
+  {
     "name": "@kokonutui",
     "homepage": "https://kokonutui.com",
     "url": "https://kokonutui.com/r/{name}.json",
@@ -189,6 +196,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' class='fill-none!' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/></svg>"
   },
   {
+    "name": "@paceui",
+    "homepage": "https://ui.paceui.com",
+    "url": "https://ui.paceui.com/r/{name}.json",
+    "description": "Animated components and building blocks built for smooth interaction and rich detail. Copy, customise, and create without the extra setup.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
+  },
+  {
     "name": "@prompt-kit",
     "homepage": "https://www.prompt-kit.com",
     "url": "https://www.prompt-kit.com/c/registry.json",
@@ -222,6 +236,20 @@
     "url": "https://www.scrollxui.dev/registry/{name}.json",
     "description": "ScrollX UI is an open-source React and shadcn-compatible component library for animated, interactive, and customizable user interfaces. It offers motion-driven components that blend seamlessly with modern ShadCN setups.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none'><path d='M5.999 17a3 3 0 0 1-1.873-.658a2.98 2.98 0 0 1-1.107-2.011a2.98 2.98 0 0 1 .639-2.206l4-5c.978-1.225 2.883-1.471 4.143-.523l1.674 1.254l2.184-2.729a3 3 0 1 1 4.682 3.747l-4 5c-.977 1.226-2.882 1.471-4.143.526l-1.674-1.256l-2.184 2.729A2.98 2.98 0 0 1 5.999 17M10 8a1 1 0 0 0-.781.374l-4 5.001a1 1 0 0 0-.213.734c.03.266.161.504.369.67a.996.996 0 0 0 1.406-.155l3.395-4.244L13.4 12.8c.42.316 1.056.231 1.381-.176l4-5.001a1 1 0 0 0 .213-.734a1 1 0 0 0-.369-.67a.996.996 0 0 0-1.406.156l-3.395 4.242L10.6 8.2A1 1 0 0 0 10 8m9 13H5a1 1 0 1 1 0-2h14a1 1 0 1 1 0 2' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@roiui",
+    "homepage": "https://roiui.com",
+    "url": "https://roiui.com/r/{name}.json",
+    "description": "Roi UI is a library that offers UI components and blocks built with Base UI primitives. Some blocks and components use motion (framer). Everything is open-source and will be forever.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' id='Layer_2' data-name='Layer 2' viewBox='0 0 463.07 463.07'><defs><style>.cls-1{fill:var(--muted);stroke:var(--foreground);stroke-miterlimit:10;stroke-width:12px}</style></defs><g id='Layer_1-2' data-name='Layer 1'><path d='M459.07 231.54c0 41.45-11.07 80.3-30.44 113.76H231.54c6.42 0 12.72-.52 18.86-1.57 53.85-8.99 94.91-55.81 94.91-112.2s-41.05-103.21-94.91-112.2c-6.14-1.05-12.45-1.57-18.86-1.57V4c26.62 0 52.15 4.58 75.88 12.97a225 225 0 0 1 37.89 17.47 227.1 227.1 0 0 1 56.88 46.63 225 225 0 0 1 26.44 36.7c19.37 33.47 30.44 72.31 30.44 113.77Z' class='cls-1'/><path d='M345.31 231.54c0 56.38-41.05 103.21-94.91 112.2a113 113 0 0 1-18.86 1.57c-62.82 0-113.77-50.95-113.77-113.76s50.95-113.77 113.77-113.77c6.42 0 12.72.52 18.86 1.57 53.85 8.99 94.91 55.81 94.91 112.2Z' class='cls-1'/><path d='M231.53 4v113.77c-62.82 0-113.77 50.95-113.77 113.77V345.3H4V231.54c0-41.46 11.07-80.3 30.44-113.77 19.97-34.54 48.78-63.35 83.32-83.33C151.24 15.08 190.08 4 231.53 4Z' class='cls-1'/></g></svg>"
+  },
+  {
+    "name": "@solaceui",
+    "homepage": "https://www.solaceui.com",
+    "url": "https://www.solaceui.com/r/{name}.json",
+    "description": "Production-ready and tastefully crafted sections, animated components, and full-page templates for Next.js, Tailwind CSS & Motion",
+    "logo": "<svg width='310' height='310' viewBox='0 0 310 310' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_30_2)'><path d='M310 146H115.502C91.3738 146 71.8145 113.317 71.8145 73C71.8145 32.6832 91.3738 3.1937e-05 115.502 2.84124e-05L310 0V146Z' fill='var(--foreground)'/><path d='M0 164H194.498C218.626 164 238.185 196.683 238.185 237C238.185 277.317 218.626 310 194.498 310H0V164Z' fill='var(--foreground)'/></g><defs><clipPath id='clip0_30_2'><rect width='310' height='310' fill='white'/></clipPath></defs></svg>"
   },
   {
     "name": "@shadcnblocks",
