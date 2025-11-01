@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/base-lyra/examples/button-demo.tsx",
+      "content": "export default function ButtonDemo() {\n  return (\n    <button className=\"rounded-xl bg-amber-500 px-4 py-2 text-white\">\n      <span className=\"text-sm font-medium\">Base Lyra Button</span>\n    </button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

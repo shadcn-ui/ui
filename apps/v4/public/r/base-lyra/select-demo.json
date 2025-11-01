@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/base-lyra/examples/select-demo.tsx",
+      "content": "export default function SelectDemo() {\n  return <div>Base Lyra</div>\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

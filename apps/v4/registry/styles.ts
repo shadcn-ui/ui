@@ -1,5 +1,29 @@
 export const STYLES = [
-  { name: "new-york-v4" as const, title: "New York" },
+  {
+    name: "new-york-v4",
+    title: "New York",
+    componentLibrary: "radix",
+  },
+  {
+    name: "radix-nova",
+    title: "Nova",
+    componentLibrary: "radix",
+  },
+  {
+    name: "radix-lyra",
+    title: "Lyra",
+    componentLibrary: "radix",
+  },
+  {
+    name: "base-nova",
+    title: "Nova",
+    componentLibrary: "base",
+  },
+  {
+    name: "base-lyra",
+    title: "Lyra",
+    componentLibrary: "base",
+  },
 ] as const
 
 export type Style = (typeof STYLES)[number]
