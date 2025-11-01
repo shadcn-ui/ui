@@ -2,6 +2,7 @@
 import { add } from "@/src/commands/add"
 import { build } from "@/src/commands/build"
 import { diff } from "@/src/commands/diff"
+import { generate } from "@/src/commands/generate"
 import { info } from "@/src/commands/info"
 import { init } from "@/src/commands/init"
 import { mcp } from "@/src/commands/mcp"
@@ -37,6 +38,7 @@ async function main() {
     .addCommand(info)
     .addCommand(build)
     .addCommand(mcp)
+    .addCommand(generate)
   // Registry commands
   program.addCommand(registryBuild).addCommand(registryMcp)
 

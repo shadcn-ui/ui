@@ -34,6 +34,46 @@ You can also run the command without any arguments to view a list of all availab
 npx shadcn add
 ```
 
+## generate
+
+Use the `generate` command to create boilerplate code for various types of files.
+
+```bash
+npx shadcn generate [type] [name]
+```
+
+or use the shorter alias:
+
+```bash
+npx shadcn gen [type] [name]
+```
+
+### Examples
+
+```bash
+# Generate a component
+npx shadcn generate component button
+
+# Generate a custom hook
+npx shadcn gen hook use-counter
+
+# Generate a utility function
+npx shadcn generate util format-date
+
+# Generate a context provider
+npx shadcn gen context theme
+```
+
+### Available Types
+
+- `component` - React component with TypeScript
+- `hook` - Custom React hook
+- `util` - Utility function
+- `context` - React Context with Provider
+- `page` - Next.js page component
+- `layout` - Next.js layout component
+- `api` - Next.js API route
+
 ## Documentation
 
 Visit https://ui.shadcn.com/docs/cli to view the documentation.
