@@ -2729,4 +2729,22 @@ export const examples: Registry["items"] = [
       mobile: "component",
     },
   },
+  {
+    name: "rule-builder-demo",
+    type: "registry:example",
+    registryDependencies: ["rule-builder", "button", "card"],
+    files: [
+      {
+        path: "examples/rule-builder-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    categories: ["form", "builder"],
+    meta: {
+      iframeHeight: "800px",
+      container:
+        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+      mobile: "component",
+    },
+  },
 ]

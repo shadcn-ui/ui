@@ -979,6 +979,24 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "rule-builder": {
+      name: "rule-builder",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","select","input","radio-group","label","card","separator"],
+      files: [{
+        path: "registry/new-york-v4/ui/rule-builder.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/rule-builder.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "dashboard-01": {
       name: "dashboard-01",
       description: "A dashboard with sidebar, charts and data table.",
@@ -8052,6 +8070,24 @@ export const Index: Record<string, Record<string, any>> = {
       }),
       categories: ["calendar","date"],
       meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    },
+    "rule-builder-demo": {
+      name: "rule-builder-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["rule-builder","button","card"],
+      files: [{
+        path: "registry/new-york-v4/examples/rule-builder-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/rule-builder-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["form","builder"],
+      meta: {"iframeHeight":"800px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
     },
     "sidebar-demo": {
       name: "sidebar-demo",

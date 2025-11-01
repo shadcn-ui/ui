@@ -797,6 +797,25 @@
       ]
     },
     {
+      "name": "rule-builder",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "button",
+        "select",
+        "input",
+        "radio-group",
+        "label",
+        "card",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/rule-builder.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "dashboard-01",
       "type": "registry:block",
       "description": "A dashboard with sidebar, charts and data table.",
@@ -7621,6 +7640,30 @@
       "categories": [
         "calendar",
         "date"
+      ]
+    },
+    {
+      "name": "rule-builder-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "rule-builder",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/rule-builder-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "iframeHeight": "800px",
+        "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        "mobile": "component"
+      },
+      "categories": [
+        "form",
+        "builder"
       ]
     },
     {

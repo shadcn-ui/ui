@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rule-builder-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "rule-builder",
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/rule-builder-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { toast } from \"@/registry/new-york-v4/hooks/use-toast\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport {\n  defaultRuleFields,\n  defaultRuleOperators,\n  RuleBuilder,\n  type RuleGroup,\n} from \"@/registry/new-york-v4/ui/rule-builder\"\n\nexport default function RuleBuilderDemo() {\n  const [ruleGroup, setRuleGroup] = React.useState<RuleGroup>({\n    id: \"root\",\n    condition: \"and\",\n    rules: [\n      {\n        id: \"rule-1\",\n        fieldId: \"age\",\n        operatorId: \"greaterThan\",\n        value: 18,\n      },\n      {\n        id: \"rule-2\",\n        fieldId: \"city\",\n        operatorId: \"equals\",\n        value: \"北京\",\n      },\n    ],\n  })\n\n  const handleSubmit = () => {\n    toast({\n      title: \"规则已提交\",\n      description: JSON.stringify(ruleGroup, null, 2),\n      variant: \"default\",\n    })\n  }\n\n  return (\n    <Card className=\"w-full\">\n      <CardHeader>\n        <CardTitle>规则构建器</CardTitle>\n      </CardHeader>\n      <CardContent>\n        <RuleBuilder\n          fields={defaultRuleFields}\n          operators={defaultRuleOperators}\n          value={ruleGroup}\n          onChange={setRuleGroup}\n          className=\"space-y-4\"\n        />\n      </CardContent>\n      <CardFooter className=\"flex justify-end\">\n        <Button onClick={handleSubmit}>提交规则</Button>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "meta": {
+    "iframeHeight": "800px",
+    "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+    "mobile": "component"
+  },
+  "categories": [
+    "form",
+    "builder"
+  ]
+}

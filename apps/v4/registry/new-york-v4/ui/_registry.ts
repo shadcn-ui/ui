@@ -695,4 +695,23 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "rule-builder",
+    type: "registry:ui",
+    registryDependencies: [
+      "button",
+      "select",
+      "input",
+      "radio-group",
+      "label",
+      "card",
+      "separator",
+    ],
+    files: [
+      {
+        path: "ui/rule-builder.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
