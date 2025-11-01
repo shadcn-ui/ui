@@ -43,6 +43,7 @@
   "@oui": "https://oui.mw10013.workers.dev/r/{name}.json",
   "@paceui": "https://ui.paceui.com/r/{name}.json",
   "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
+  "@prosekit": "https://prosekit.dev/r/{name}.json",
   "@react-bits": "https://reactbits.dev/r/{name}.json",
   "@react-market": "https://www.react-market.com/get/{name}.json",
   "@retroui": "https://retroui.dev/r/{name}.json",
