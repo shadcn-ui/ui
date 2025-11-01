@@ -9,6 +9,10 @@ interface ScrollAreaProps extends React.ComponentProps<typeof ScrollAreaPrimitiv
   /**
    * If true, renders the viewport as a child element without extra wrapping.
    * Useful for custom scroll area implementations requiring direct viewport manipulation.
+<<<<<<< Updated upstream
+=======
+   * When true, the Viewport's className will be merged with the first child's className.
+>>>>>>> Stashed changes
    */
   raw?: boolean
 }
@@ -19,12 +23,18 @@ function ScrollArea({
   raw = false,
   ...props
 }: ScrollAreaProps) {
+<<<<<<< Updated upstream
+=======
+  const viewportClassName = "focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
+  
+>>>>>>> Stashed changes
   return (
     <ScrollAreaPrimitive.Root
       data-slot="scroll-area"
       className={cn("relative", className)}
       {...props}
     >
+<<<<<<< Updated upstream
       <ScrollAreaPrimitive.Viewport
         data-slot="scroll-area-viewport"
         asChild={raw}
@@ -32,6 +42,31 @@ function ScrollArea({
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
+=======
+      {raw ? (
+        <ScrollAreaPrimitive.Viewport
+          data-slot="scroll-area-viewport"
+          asChild
+          className={viewportClassName}
+        >
+          {React.isValidElement(children)
+            ? React.cloneElement(children, {
+                className: cn(
+                  viewportClassName,
+                  (children.props as { className?: string })?.className
+                ),
+              } as React.HTMLAttributes<HTMLElement>)
+            : children}
+        </ScrollAreaPrimitive.Viewport>
+      ) : (
+        <ScrollAreaPrimitive.Viewport
+          data-slot="scroll-area-viewport"
+          className={viewportClassName}
+        >
+          {children}
+        </ScrollAreaPrimitive.Viewport>
+      )}
+>>>>>>> Stashed changes
       <ScrollBar />
       <ScrollAreaPrimitive.Corner />
     </ScrollAreaPrimitive.Root>
