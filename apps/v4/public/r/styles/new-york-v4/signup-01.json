@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "signup-01",
+  "type": "registry:block",
+  "description": "A simple signup form.",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/blocks/signup-01/page.tsx",
+      "content": "import { SignupForm } from \"@/registry/new-york-v4/blocks/signup-01/components/signup-form\"\n\nexport default function Page() {\n  return (\n    <div className=\"flex min-h-svh w-full items-center justify-center p-6 md:p-10\">\n      <div className=\"w-full max-w-sm\">\n        <SignupForm />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/signup/page.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/blocks/signup-01/components/signup-form.tsx",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\n\nexport function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {\n  return (\n    <Card {...props}>\n      <CardHeader>\n        <CardTitle>Create an account</CardTitle>\n        <CardDescription>\n          Enter your information below to create your account\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <form>\n          <FieldGroup>\n            <Field>\n              <FieldLabel htmlFor=\"name\">Full Name</FieldLabel>\n              <Input id=\"name\" type=\"text\" placeholder=\"John Doe\" required />\n            </Field>\n            <Field>\n              <FieldLabel htmlFor=\"email\">Email</FieldLabel>\n              <Input\n                id=\"email\"\n                type=\"email\"\n                placeholder=\"m@example.com\"\n                required\n              />\n              <FieldDescription>\n                We&apos;ll use this to contact you. We will not share your email\n                with anyone else.\n              </FieldDescription>\n            </Field>\n            <Field>\n              <FieldLabel htmlFor=\"password\">Password</FieldLabel>\n              <Input id=\"password\" type=\"password\" required />\n              <FieldDescription>\n                Must be at least 8 characters long.\n              </FieldDescription>\n            </Field>\n            <Field>\n              <FieldLabel htmlFor=\"confirm-password\">\n                Confirm Password\n              </FieldLabel>\n              <Input id=\"confirm-password\" type=\"password\" required />\n              <FieldDescription>Please confirm your password.</FieldDescription>\n            </Field>\n            <FieldGroup>\n              <Field>\n                <Button type=\"submit\">Create Account</Button>\n                <Button variant=\"outline\" type=\"button\">\n                  Sign up with Google\n                </Button>\n                <FieldDescription className=\"px-6 text-center\">\n                  Already have an account? <a href=\"#\">Sign in</a>\n                </FieldDescription>\n              </Field>\n            </FieldGroup>\n          </FieldGroup>\n        </form>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "authentication",
+    "signup"
+  ]
+}
