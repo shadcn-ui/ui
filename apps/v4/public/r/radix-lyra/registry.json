@@ -13,7 +13,12 @@
           "path": "registry/radix-lyra/examples/select-demo.tsx",
           "type": "registry:example"
         }
-      ]
+      ],
+      "meta": {
+        "canva": {
+          "title": "Select"
+        }
+      }
     },
     {
       "name": "button-demo",
@@ -26,7 +31,12 @@
           "path": "registry/radix-lyra/examples/button-demo.tsx",
           "type": "registry:example"
         }
-      ]
+      ],
+      "meta": {
+        "canva": {
+          "title": "Button"
+        }
+      }
     },
     {
       "name": "button",

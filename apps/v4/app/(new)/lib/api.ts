@@ -8,9 +8,10 @@ const allowedTypes = ["registry:example"]
 export async function getRegistryItemsUsingParams(
   style: DesignSystemStyle["name"]
 ) {
-  console.log("Fetching items for style:", style)
-  const items = await getRegistryItems(style, (item) =>
-    allowedTypes.includes(item.type)
+  const items = await getRegistryItems(
+    style,
+    (item) =>
+      allowedTypes.includes(item.type) && item.meta?.canva?.title !== undefined
   )
 
   return items

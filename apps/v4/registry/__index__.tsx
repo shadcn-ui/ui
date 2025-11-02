@@ -8305,7 +8305,7 @@ export const Index: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"canva":{"title":"Select"}},
     },
     "button-demo": {
       name: "button-demo",
@@ -8323,7 +8323,7 @@ export const Index: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"canva":{"title":"Button"}},
     },
     "button": {
       name: "button",
@@ -8379,7 +8379,7 @@ export const Index: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"canva":{"title":"Select"}},
     },
     "button-demo": {
       name: "button-demo",
@@ -8397,7 +8397,7 @@ export const Index: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: undefined,
+      meta: {"canva":{"title":"Button"}},
     },
     "button": {
       name: "button",

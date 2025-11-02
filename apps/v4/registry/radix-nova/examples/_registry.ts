@@ -11,6 +11,11 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
     ],
+    meta: {
+      canva: {
+        title: "Select",
+      },
+    },
   },
   {
     name: "button-demo",
@@ -22,5 +27,10 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
     ],
+    meta: {
+      canva: {
+        title: "Button",
+      },
+    },
   },
 ]

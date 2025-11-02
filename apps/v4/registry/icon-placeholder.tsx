@@ -5,20 +5,20 @@ import { useQueryState } from "nuqs"
 
 import { IconForIconLibrary, type IconLibrary } from "@/registry/icon-libraries"
 import type { IconName } from "@/registry/icons"
-import { parseAsIconLibrary } from "@/app/(new)/lib/search-params"
+import { designSystemSearchParams } from "@/app/(new)/lib/search-params"
 
-export function IconLoader({ name }: { name: IconName }) {
+export function IconPlaceholder({ name }: { name: IconName }) {
   const [iconLibrary] = useQueryState(
     "iconLibrary",
-    parseAsIconLibrary.withDefault("lucide")
+    designSystemSearchParams.iconLibrary
   )
-  return <IconLoaderMemoized iconLibrary={iconLibrary} name={name} />
+  return <IconPlaceholderMemoized iconLibrary={iconLibrary} name={name} />
 }
 
-const IconLoaderMemoized = React.memo(
+const IconPlaceholderMemoized = React.memo(
   ({ iconLibrary, name }: { iconLibrary: IconLibrary; name: IconName }) => {
     return <IconForIconLibrary iconLibrary={iconLibrary} name={name} />
   }
 )
 
-IconLoaderMemoized.displayName = "IconLoaderMemoized"
+IconPlaceholderMemoized.displayName = "IconLoaderMemoized"

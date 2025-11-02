@@ -11,5 +11,10 @@
       "content": "import {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/radix-lyra/ui/select\"\n\nexport default function SelectDemo() {\n  return (\n    <Select>\n      <SelectTrigger>\n        <SelectValue placeholder=\"Select an option\" />\n      </SelectTrigger>\n      <SelectContent>\n        <SelectItem value=\"1\">Option 1</SelectItem>\n        <SelectItem value=\"2\">Option 2</SelectItem>\n        <SelectItem value=\"3\">Option 3</SelectItem>\n      </SelectContent>\n    </Select>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "meta": {
+    "canva": {
+      "title": "Select"
+    }
+  }
 }

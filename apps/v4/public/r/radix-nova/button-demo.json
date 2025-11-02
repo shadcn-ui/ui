@@ -8,8 +8,13 @@
   "files": [
     {
       "path": "registry/radix-nova/examples/button-demo.tsx",
-      "content": "import { ArrowUpIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/radix-nova/ui/button\"\n\nexport default function ButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2 md:flex-row\">\n      <Button variant=\"outline\">Button</Button>\n      <Button variant=\"outline\" size=\"icon\" aria-label=\"Submit\">\n        <ArrowUpIcon />\n      </Button>\n    </div>\n  )\n}\n",
+      "content": "import { IconPlaceholder } from \"@/registry/icon-placeholder\"\nimport { Button } from \"@/registry/radix-nova/ui/button\"\n\nexport default function ButtonDemo() {\n  return (\n    <div className=\"flex flex-col gap-2\">\n      <div className=\"flex flex-wrap items-center gap-2 md:flex-row\">\n        <Button>Default</Button>\n        <Button variant=\"outline\">Outline</Button>\n        <Button variant=\"ghost\">Ghost</Button>\n        <Button variant=\"destructive\">Destructive</Button>\n        <Button variant=\"secondary\">Secondary</Button>\n        <Button variant=\"link\">Link</Button>\n      </div>\n      <div className=\"flex flex-wrap items-center gap-2 md:flex-row\">\n        <Button>\n          <IconPlaceholder name=\"SelectItemCheck\" /> Icon\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "meta": {
+    "canva": {
+      "title": "Button"
+    }
+  }
 }

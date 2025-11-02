@@ -5,7 +5,8 @@ import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import { Select as SelectPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconLoader } from "@/registry/icon-loader"
+import { IconPlaceholder } from "@/registry/icon-placeholder"
+import { CanvaPortal } from "@/app/(new)/components/canva"
 
 function Select({
   ...props
@@ -45,7 +46,7 @@ function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <IconLoader name="SelectTriggerArrow" />
+        <IconPlaceholder name="SelectTriggerArrow" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -59,7 +60,7 @@ function SelectContent({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content>) {
   return (
-    <SelectPrimitive.Portal>
+    <CanvaPortal element={<SelectPrimitive.Portal />}>
       <SelectPrimitive.Content
         data-slot="select-content"
         className={cn(
@@ -84,7 +85,7 @@ function SelectContent({
         </SelectPrimitive.Viewport>
         <SelectScrollDownButton />
       </SelectPrimitive.Content>
-    </SelectPrimitive.Portal>
+    </CanvaPortal>
   )
 }
 
@@ -117,7 +118,7 @@ function SelectItem({
     >
       <span className="absolute right-2 flex size-3.5 items-center justify-center">
         <SelectPrimitive.ItemIndicator>
-          <IconLoader name="SelectItemCheck" />
+          <IconPlaceholder name="SelectItemCheck" />
         </SelectPrimitive.ItemIndicator>
       </span>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>

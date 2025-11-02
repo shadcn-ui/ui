@@ -51,6 +51,9 @@ export const parseAsIconLibrary = createParser<keyof typeof iconLibraries>({
 export const designSystemSearchParams = {
   style: parseAsStyle.withDefault("radix-nova"),
   iconLibrary: parseAsIconLibrary.withDefault("lucide"),
+}
+
+export const canvaSearchParams = {
   zoom: parseAsFloat.withDefault(1),
   scrollLeft: parseAsInteger.withDefault(0),
   scrollTop: parseAsInteger.withDefault(0),
@@ -59,6 +62,8 @@ export const designSystemSearchParams = {
 export const designSystemSearchParamsCache = createSearchParamsCache(
   designSystemSearchParams
 )
+
+export const canvaSearchParamsCache = createSearchParamsCache(canvaSearchParams)
 
 export const styleSearchParamsCache = createSearchParamsCache({
   style: parseAsStyle.withDefault("radix-nova"),

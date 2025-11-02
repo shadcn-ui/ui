@@ -86,9 +86,7 @@ export function IconForIconLibrary({
   }
 
   return (
-    <Suspense
-      fallback={<SquareIcon className="fill-muted text-muted animate-pulse" />}
-    >
+    <Suspense fallback={<SquareIcon className="opacity-0" />}>
       <IconLoaderComponent iconPromise={iconPromise} />
     </Suspense>
   )
@@ -103,8 +101,5 @@ function IconLoaderComponent({ iconPromise }: { iconPromise: IconPromise }) {
     return null
   }
 
-  return React.createElement(IconComponent, {
-    className: "size-4 text-red-500 opacity-100",
-    weight: "bold",
-  })
+  return React.createElement(IconComponent)
 }

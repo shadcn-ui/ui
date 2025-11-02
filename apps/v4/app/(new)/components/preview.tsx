@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 
 import { getRegistryComponent } from "@/lib/registry"
-import { Canva } from "@/app/(new)/components/canva"
+import { Canva, CanvaFrame } from "@/app/(new)/components/canva"
 import { getRegistryItemsUsingParams } from "@/app/(new)/lib/api"
 import { styleSearchParamsCache } from "@/app/(new)/lib/search-params"
 import type { DesignSystemStyle } from "@/app/(new)/lib/style"
@@ -32,7 +32,11 @@ async function PreviewComponent({
           if (!Component) {
             return null
           }
-          return <Component key={item.name} />
+          return (
+            <CanvaFrame name={item.meta?.canva?.title} key={item.name}>
+              <Component />
+            </CanvaFrame>
+          )
         })}
     </Canva>
   )
