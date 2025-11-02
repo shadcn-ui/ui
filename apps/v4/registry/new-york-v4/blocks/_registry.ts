@@ -2,6 +2,30 @@ import { type Registry } from "shadcn/schema"
 
 export const blocks: Registry["items"] = [
   {
+    name: "step-navigator-01",
+    type: "registry:block",
+    description: "A step navigator component for multi-step forms and wizards.",
+    registryDependencies: [
+      "button",
+      "card",
+      "progress",
+      "input",
+      "checkbox",
+      "radio-group",
+      "field"
+    ],
+    files: [
+      {
+        path: "blocks/step-navigator-01/step-navigator.tsx",
+        type: "registry:component",
+      }
+    ],
+    categories: ["form"],
+    meta: {
+      iframeHeight: "800px",
+    },
+  },
+  {
     name: "dashboard-01",
     type: "registry:block",
     description: "A dashboard with sidebar, charts and data table.",
