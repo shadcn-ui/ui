@@ -71,7 +71,7 @@ export function CanvaPortal({
   children,
 }: {
   element: React.ReactNode
-  children: React.ReactNode
+  children?: React.ReactNode
 }) {
   return children
 }

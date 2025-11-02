@@ -8289,23 +8289,23 @@ export const Index: Record<string, Record<string, any>> = {
     },
   },
   "radix-nova": {
-    "select-demo": {
-      name: "select-demo",
+    "alert-dialog-demo": {
+      name: "alert-dialog-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["select"],
+      registryDependencies: ["alert-dialog","button"],
       files: [{
-        path: "registry/radix-nova/examples/select-demo.tsx",
+        path: "registry/radix-nova/examples/alert-dialog-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/select-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/alert-dialog-demo.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Select"}},
+      meta: {"canva":{"title":"Alert Dialog"}},
     },
     "button-demo": {
       name: "button-demo",
@@ -8324,6 +8324,42 @@ export const Index: Record<string, Record<string, any>> = {
       }),
       categories: undefined,
       meta: {"canva":{"title":"Button"}},
+    },
+    "select-demo": {
+      name: "select-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["select"],
+      files: [{
+        path: "registry/radix-nova/examples/select-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/select-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Select"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/alert-dialog.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
     },
     "button": {
       name: "button",
@@ -8363,23 +8399,23 @@ export const Index: Record<string, Record<string, any>> = {
     },
   },
   "radix-lyra": {
-    "select-demo": {
-      name: "select-demo",
+    "alert-dialog-demo": {
+      name: "alert-dialog-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["select"],
+      registryDependencies: ["alert-dialog","button"],
       files: [{
-        path: "registry/radix-lyra/examples/select-demo.tsx",
+        path: "registry/radix-lyra/examples/alert-dialog-demo.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-lyra/examples/select-demo.tsx")
+        const mod = await import("@/registry/radix-lyra/examples/alert-dialog-demo.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Select"}},
+      meta: {"canva":{"title":"Alert Dialog"}},
     },
     "button-demo": {
       name: "button-demo",
@@ -8398,6 +8434,42 @@ export const Index: Record<string, Record<string, any>> = {
       }),
       categories: undefined,
       meta: {"canva":{"title":"Button"}},
+    },
+    "select-demo": {
+      name: "select-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["select"],
+      files: [{
+        path: "registry/radix-lyra/examples/select-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-lyra/examples/select-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Select"}},
+    },
+    "alert-dialog": {
+      name: "alert-dialog",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-lyra/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-lyra/ui/alert-dialog.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
     },
     "button": {
       name: "button",
