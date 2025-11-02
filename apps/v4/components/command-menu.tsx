@@ -13,7 +13,6 @@ import { showMcpDocs } from "@/lib/flags"
 import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { useIsMac } from "@/hooks/use-is-mac"
 import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -50,7 +49,6 @@ export function CommandMenu({
   navItems?: { href: string; label: string }[]
 }) {
   const router = useRouter()
-  const isMac = useIsMac()
   const [config] = useConfig()
   const [open, setOpen] = React.useState(false)
   const [selectedType, setSelectedType] = React.useState<
@@ -206,7 +204,7 @@ export function CommandMenu({
           <span className="inline-flex lg:hidden">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
             <KbdGroup>
-              <Kbd className="border">{isMac ? "⌘" : "Ctrl"}</Kbd>
+              <Kbd className="border">⌘</Kbd>
               <Kbd className="border">K</Kbd>
             </KbdGroup>
           </div>
@@ -404,7 +402,7 @@ export function CommandMenu({
             <>
               <Separator orientation="vertical" className="!h-4" />
               <div className="flex items-center gap-1">
-                <CommandMenuKbd>{isMac ? "⌘" : "Ctrl"}</CommandMenuKbd>
+                <CommandMenuKbd>⌘</CommandMenuKbd>
                 <CommandMenuKbd>C</CommandMenuKbd>
                 {copyPayload}
               </div>
