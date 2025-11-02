@@ -4,16 +4,17 @@ import {
   COMPONENT_LIBRARIES,
   type ComponentLibrary,
 } from "@/registry/component-libraries"
+import { iconLibraries } from "@/registry/icon-libraries"
 import { Field, FieldGroup, FieldLabel } from "@/registry/new-york-v4/ui/field"
 import {
   NativeSelect,
   NativeSelectOption,
 } from "@/registry/new-york-v4/ui/native-select"
-import { useDesignSystemSearchParams } from "@/app/(new)/hooks/use-design-system-search-params"
+import { useDesignSystemConfig } from "@/app/(new)/hooks/use-design-system-config"
 import { DesignSystemStyle, designSystemStyles } from "@/app/(new)/lib/style"
 
 export function ConfigForm() {
-  const [params, setParams] = useDesignSystemSearchParams()
+  const [params, setParams] = useDesignSystemConfig()
 
   const currentStyle = designSystemStyles.find(
     (style) => style.name === params.style
@@ -64,6 +65,32 @@ export function ConfigForm() {
                   {s.title}
                 </NativeSelectOption>
               ))}
+          </NativeSelect>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="iconLibrary">Icon Library</FieldLabel>
+          <NativeSelect
+            id="iconLibrary"
+            value={params.iconLibrary}
+            onChange={(e) =>
+              setParams({
+                iconLibrary: e.target.value as keyof typeof iconLibraries,
+              })
+            }
+          >
+            {(
+              Object.keys(iconLibraries) as Array<keyof typeof iconLibraries>
+            ).map((key) => {
+              const iconLibrary = iconLibraries[key]
+              return (
+                <NativeSelectOption
+                  key={iconLibrary.name}
+                  value={iconLibrary.name}
+                >
+                  {iconLibrary.title}
+                </NativeSelectOption>
+              )
+            })}
           </NativeSelect>
         </Field>
       </FieldGroup>

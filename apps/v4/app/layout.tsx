@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
@@ -91,7 +92,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LayoutProvider>
             <ActiveThemeProvider initialTheme="blue">
-              {children}
+              <NuqsAdapter>{children}</NuqsAdapter>
               <TailwindIndicator />
               <Toaster position="top-center" />
               <Analytics />

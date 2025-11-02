@@ -1,50 +1,39 @@
 import { Suspense } from "react"
 
 import { getRegistryComponent } from "@/lib/registry"
-import { cn } from "@/lib/utils"
+import { Canva } from "@/app/(new)/components/canva"
 import { getRegistryItemsUsingParams } from "@/app/(new)/lib/api"
-import {
-  designSystemSearchParamsCache,
-  getDesignSystemParamsCacheKey,
-  type DesignSystemSearchParams,
-} from "@/app/(new)/lib/search-params"
+import { styleSearchParamsCache } from "@/app/(new)/lib/search-params"
+import type { DesignSystemStyle } from "@/app/(new)/lib/style"
 
 export async function Preview() {
-  const params = designSystemSearchParamsCache.all()
-  const key = getDesignSystemParamsCacheKey(params)
+  const style = styleSearchParamsCache.get("style")
 
   return (
-    <Suspense key={key} fallback={<div>Loading...</div>}>
-      <PreviewComponent params={params} />
+    <Suspense key={style} fallback={<div>Loading...</div>}>
+      <PreviewComponent style={style} />
     </Suspense>
   )
 }
 
 async function PreviewComponent({
-  params,
+  style,
 }: {
-  params: DesignSystemSearchParams
+  style: DesignSystemStyle["name"]
 }) {
-  const items = await getRegistryItemsUsingParams(params)
+  const items = await getRegistryItemsUsingParams(style)
 
   return (
-    <div className="bg-muted flex flex-1 flex-col gap-6 p-6">
+    <Canva>
       {items
         .filter((item) => item !== null)
         .map((item) => {
-          const Component = getRegistryComponent(item.name, params.style)
+          const Component = getRegistryComponent(item.name, style)
           if (!Component) {
             return null
           }
-          return (
-            <div
-              key={item.name}
-              className="bg-background rounded-lg border p-4"
-            >
-              <Component />
-            </div>
-          )
+          return <Component key={item.name} />
         })}
-    </div>
+    </Canva>
   )
 }
