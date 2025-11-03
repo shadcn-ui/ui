@@ -1,30 +1,21 @@
 import * as React from "react"
-import { Search } from "lucide-react"
+import { Search, X, XCircle } from "lucide-react"
 
-import registries from "@/registry/directory.json"
+import { useSearchRegistry } from "@/hooks/use-search-registry"
 import { Field } from "@/registry/new-york-v4/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
+  InputGroupButton,
   InputGroupInput,
 } from "@/registry/new-york-v4/ui/input-group"
 
-type SearchDirectoryProps = {
-  setRegistries: React.Dispatch<React.SetStateAction<typeof registries>>
-}
+export const SearchDirectory = () => {
+  const { query, setQuery } = useSearchRegistry()
 
-export const SearchDirectory = ({ setRegistries }: SearchDirectoryProps) => {
-  const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value
-
-    const queriedRegiesties = registries.filter((registry) =>
-      registry.name
-        .toLowerCase()
-        .replaceAll("@", "")
-        .includes(value.toLowerCase())
-    )
-
-    setRegistries(queriedRegiesties)
+  const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setQuery(value === "" ? null : value)
   }
 
   return (
@@ -35,8 +26,19 @@ export const SearchDirectory = ({ setRegistries }: SearchDirectoryProps) => {
         </InputGroupAddon>
         <InputGroupInput
           placeholder="Search directory by name..."
+          value={query ?? ""}
           onChange={onQueryChange}
         />
+        <InputGroupAddon align="inline-end">
+          <InputGroupButton
+            aria-label="Clear"
+            title="Clear"
+            size="icon-xs"
+            onClick={() => setQuery(null)}
+          >
+            <XCircle />
+          </InputGroupButton>
+        </InputGroupAddon>
       </InputGroup>
     </Field>
   )

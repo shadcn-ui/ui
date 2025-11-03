@@ -3,6 +3,7 @@
 import * as React from "react"
 import { IconArrowUpRight } from "@tabler/icons-react"
 
+import { useSearchRegistry } from "@/hooks/use-search-registry"
 import { DirectoryAddButton } from "@/components/directory-add-button"
 import globalRegistries from "@/registry/directory.json"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -21,12 +22,11 @@ import {
 import { SearchDirectory } from "./search-directory"
 
 export function DirectoryList() {
-  const [registries, setRegistries] =
-    React.useState<typeof globalRegistries>(globalRegistries)
+  const { registries } = useSearchRegistry()
 
   return (
     <div className="mt-6">
-      <SearchDirectory setRegistries={setRegistries} />
+      <SearchDirectory />
       <ItemGroup className="my-8">
         {registries.map((registry, index) => (
           <React.Fragment key={index}>
@@ -71,7 +71,7 @@ export function DirectoryList() {
                 <DirectoryAddButton registry={registry} />
               </ItemFooter>
             </Item>
-            {index < registries.length - 1 && (
+            {index < globalRegistries.length - 1 && (
               <ItemSeparator className="my-1" />
             )}
           </React.Fragment>
