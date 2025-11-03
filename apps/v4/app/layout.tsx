@@ -85,14 +85,14 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "group/body theme-blue overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
+          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
           fontVariables
         )}
       >
         <ThemeProvider>
           <LayoutProvider>
-            <ActiveThemeProvider initialTheme="blue">
-              <NuqsAdapter>{children}</NuqsAdapter>
+            <ActiveThemeProvider>
+              {children}
               <TailwindIndicator />
               <Toaster position="top-center" />
               <Analytics />
