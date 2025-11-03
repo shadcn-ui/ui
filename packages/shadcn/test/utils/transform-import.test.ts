@@ -2,8 +2,7 @@ import { expect, test } from "vitest"
 
 import { transform } from "../../src/utils/transformers"
 
-
-test('transform nested workspace folder for utils, website/src/utils', async () => {
+test("transform nested workspace folder for utils, website/src/utils", async () => {
   expect(
     await transform({
       filename: "test.ts",
@@ -31,7 +30,6 @@ test('transform nested workspace folder for utils, website/src/utils', async () 
           import { cn } from "website/src/utils"
         "
   `)
-
 })
 
 test("transform import", async () => {
@@ -343,6 +341,30 @@ async function load() {
           utils: "@/lib/utils",
         },
       },
+    })
+  ).toMatchSnapshot()
+})
+
+test("preserve @/types imports when isRemote is true", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import type {
+  ExtendedColumnFilter,
+  FilterOperator,
+  JoinOperator,
+} from "@/types/data-table"
+
+import { Button } from "@/components/ui/button"
+    `,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+      isRemote: true,
     })
   ).toMatchSnapshot()
 })

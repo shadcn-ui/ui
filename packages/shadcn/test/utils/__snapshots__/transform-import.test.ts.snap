@@ -1,5 +1,16 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`preserve @/types imports when isRemote is true 1`] = `
+"import type {
+  ExtendedColumnFilter,
+  FilterOperator,
+  JoinOperator,
+} from "@/types/data-table"
+
+import { Button } from "@/components/ui/button"
+    "
+`;
+
 exports[`transform async/dynamic imports 1`] = `
 "import * as React from "react"
 import { Button } from "@/components/ui/button"
