@@ -544,6 +544,15 @@ async function resolveImports(filePaths: string[], config: Config) {
         continue
       }
 
+      // Preserve non-standard import paths (like @/config, @/types) that don't match
+      // known registry patterns. These should not be auto-resolved.
+      const isKnownRegistryPattern =
+        moduleSpecifier.match(/^@\/(components|ui|lib|hooks)(\/|$)/) !== null
+      if (!isKnownRegistryPattern) {
+        // Skip resolution for non-standard paths - preserve them as-is
+        continue
+      }
+
       // Find the probable import file path.
       // This is where we expect to find the file on disk.
       const probableImportFilePath = await resolveImport(

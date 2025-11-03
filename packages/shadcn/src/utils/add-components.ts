@@ -126,10 +126,16 @@ async function addProjectComponents(
   await updateDependencies(tree.dependencies, tree.devDependencies, config, {
     silent: options.silent,
   })
+
+  // Check if any components are from remote URLs
+  const { isUrl } = await import("@/src/registry/utils")
+  const isRemote = components.some((component) => isUrl(component))
+
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,
     silent: options.silent,
     path: options.path,
+    isRemote,
   })
 
   if (tree.docs) {

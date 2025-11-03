@@ -368,3 +368,23 @@ import { Button } from "@/components/ui/button"
     })
   ).toMatchSnapshot()
 })
+
+test("preserve @/config imports when isRemote is true", async () => {
+  expect(
+    await transform({
+      filename: "test.ts",
+      raw: `import type { DataTableConfig } from "@/config/data-table"
+
+import { Button } from "@/components/ui/button"
+    `,
+      config: {
+        tsx: true,
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+      isRemote: true,
+    })
+  ).toMatchSnapshot()
+})

@@ -67,11 +67,11 @@ function updateImportAliases(
     const isKnownPattern =
       moduleSpecifier.match(/^@\/(components|ui|lib|hooks)(\/|$)/) !== null
 
-    // Only transform known patterns, preserve others (like @/types, @/utils, etc.)
+    // Only transform known patterns, preserve others (like @/types, @/config, etc.)
     if (isKnownPattern) {
       moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
     } else {
-      // For non-standard paths like @/types, preserve them as-is
+      // For non-standard paths like @/types, @/config, preserve them as-is
       return moduleSpecifier
     }
   }

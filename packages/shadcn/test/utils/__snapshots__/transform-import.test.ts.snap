@@ -1,5 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`preserve @/config imports when isRemote is true 1`] = `
+"import type { DataTableConfig } from "@/config/data-table"
+
+import { Button } from "@/components/ui/button"
+    "
+`;
+
 exports[`preserve @/types imports when isRemote is true 1`] = `
 "import type {
   ExtendedColumnFilter,
