@@ -2,51 +2,39 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "alert-dialog-demo",
+    name: "alert-dialog-example",
+    title: "Alert Dialog",
     type: "registry:example",
     registryDependencies: ["alert-dialog", "button"],
     files: [
       {
-        path: "examples/alert-dialog-demo.tsx",
+        path: "examples/alert-dialog-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Alert Dialog",
-      },
-    },
   },
   {
-    name: "button-demo",
+    name: "button-example",
+    title: "Button",
     type: "registry:example",
     registryDependencies: ["button"],
     files: [
       {
-        path: "examples/button-demo.tsx",
+        path: "examples/button-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Button",
-      },
-    },
   },
   {
-    name: "select-demo",
+    name: "select-example",
+    title: "Select",
     type: "registry:example",
     registryDependencies: ["select"],
     files: [
       {
-        path: "examples/select-demo.tsx",
+        path: "examples/select-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Select",
-      },
-    },
   },
 ]

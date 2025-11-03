@@ -55,6 +55,7 @@ export const Index: Record<string, Record<string, any>> = {`
       index += `
     "${item.name}": {
       name: "${item.name}",
+      title: "${item.title}",
       description: "${item.description ?? ""}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
@@ -133,7 +134,9 @@ async function buildRegistryJsonFile(styleName: string) {
   // 3. Create the output directory and write registry.json.
   const outputDir = path.join(
     process.cwd(),
-    styleName === "new-york-v4" ? `public/r/styles/${styleName}` : `public/r/${styleName}`
+    styleName === "new-york-v4"
+      ? `public/r/styles/${styleName}`
+      : `public/r/${styleName}`
   )
   await fs.mkdir(outputDir, { recursive: true })
 
@@ -141,17 +144,20 @@ async function buildRegistryJsonFile(styleName: string) {
   const registryJsonPath = path.join(outputDir, "registry.json")
   await fs.writeFile(registryJsonPath, JSON.stringify(fixedRegistry, null, 2))
   await new Promise<void>((resolve, reject) => {
-    execFile('prettier', ['--write', registryJsonPath], (error) => {
+    execFile("prettier", ["--write", registryJsonPath], (error) => {
       if (error) {
-        reject(error);
+        reject(error)
       } else {
-        resolve();
+        resolve()
       }
-    });
+    })
   })
 
   // 5. Write temporary registry file needed by shadcn build.
-  const tempRegistryPath = path.join(process.cwd(), `registry-${styleName}.json`)
+  const tempRegistryPath = path.join(
+    process.cwd(),
+    `registry-${styleName}.json`
+  )
   await fs.writeFile(tempRegistryPath, JSON.stringify(fixedRegistry, null, 2))
 }
 
@@ -159,7 +165,9 @@ async function buildRegistry(styleName: string) {
   return new Promise((resolve, reject) => {
     // Use local shadcn copy.
     const outputPath =
-      styleName === "new-york-v4" ? `public/r/styles/${styleName}` : `public/r/${styleName}`
+      styleName === "new-york-v4"
+        ? `public/r/styles/${styleName}`
+        : `public/r/${styleName}`
     const process = exec(
       `node ../../packages/shadcn/dist/index.js build registry-${styleName}.json --output ${outputPath}`
     )
@@ -198,7 +206,9 @@ async function buildBlocksIndex() {
 
 try {
   const styles = Array.from(STYLES)
-  console.log(`🎨 Found ${styles.length} styles: ${styles.map((s) => s.name).join(", ")}`)
+  console.log(
+    `🎨 Found ${styles.length} styles: ${styles.map((s) => s.name).join(", ")}`
+  )
 
   // Build unified multi-style index.
   console.log("\n🗂️ Building unified multi-style registry/__index__.tsx...")

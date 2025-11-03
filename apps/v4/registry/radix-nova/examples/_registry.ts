@@ -2,439 +2,292 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "accordion-demo",
+    name: "accordion-example",
+    title: "Accordion",
     type: "registry:example",
     registryDependencies: ["accordion"],
     files: [
       {
-        path: "examples/accordion-demo.tsx",
+        path: "examples/accordion-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Accordion",
-      },
-    },
   },
   {
-    name: "alert-demo",
+    name: "alert-example",
+    title: "Alert",
     type: "registry:example",
     registryDependencies: ["alert"],
     files: [
       {
-        path: "examples/alert-demo.tsx",
+        path: "examples/alert-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Alert",
-      },
-    },
   },
   {
-    name: "alert-dialog-demo",
+    name: "alert-dialog-example",
+    title: "Alert Dialog",
     type: "registry:example",
     registryDependencies: ["alert-dialog", "button"],
     files: [
       {
-        path: "examples/alert-dialog-demo.tsx",
+        path: "examples/alert-dialog-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Alert Dialog",
-      },
-    },
   },
   {
-    name: "aspect-ratio-demo",
+    name: "aspect-ratio-example",
+    title: "Aspect Ratio",
     type: "registry:example",
     registryDependencies: ["aspect-ratio"],
     files: [
       {
-        path: "examples/aspect-ratio-demo.tsx",
+        path: "examples/aspect-ratio-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Aspect Ratio",
-      },
-    },
   },
   {
-    name: "avatar-demo",
+    name: "avatar-example",
+    title: "Avatar",
     type: "registry:example",
     registryDependencies: ["avatar"],
     files: [
       {
-        path: "examples/avatar-demo.tsx",
+        path: "examples/avatar-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Avatar",
-      },
-    },
   },
   {
-    name: "badge-demo",
+    name: "badge-example",
+    title: "Badge",
     type: "registry:example",
     registryDependencies: ["badge"],
     files: [
       {
-        path: "examples/badge-demo.tsx",
+        path: "examples/badge-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Badge",
-      },
-    },
   },
   {
-    name: "breadcrumb-demo",
+    name: "breadcrumb-example",
+    title: "Breadcrumb",
     type: "registry:example",
     registryDependencies: ["breadcrumb"],
     files: [
       {
-        path: "examples/breadcrumb-demo.tsx",
+        path: "examples/breadcrumb-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Breadcrumb",
-      },
-    },
   },
   {
-    name: "button-demo",
+    name: "button-example",
+    title: "Button",
     type: "registry:example",
     registryDependencies: ["button"],
     files: [
       {
-        path: "examples/button-demo.tsx",
+        path: "examples/button-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Button",
-      },
-    },
   },
   {
-    name: "button-group-demo",
+    name: "button-group-example",
+    title: "Button Group",
     type: "registry:example",
     registryDependencies: ["button-group"],
     files: [
       {
-        path: "examples/button-group-demo.tsx",
+        path: "examples/button-group-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Button Group",
-      },
-    },
   },
   {
-    name: "calendar-demo",
+    name: "calendar-example",
+    title: "Calendar",
     type: "registry:example",
-    registryDependencies: ["calendar"],
+    registryDependencies: [
+      "button",
+      "calendar",
+      "card",
+      "drawer",
+      "input",
+      "label",
+      "popover",
+    ],
     files: [
       {
-        path: "examples/calendar-demo.tsx",
+        path: "examples/calendar-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Calendar",
-      },
-    },
   },
   {
-    name: "card-demo",
+    name: "card-example",
+    title: "Card",
     type: "registry:example",
     registryDependencies: ["card"],
     files: [
       {
-        path: "examples/card-demo.tsx",
+        path: "examples/card-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Card",
-      },
-    },
   },
   {
-    name: "carousel-demo",
+    name: "carousel-example",
+    title: "Carousel",
     type: "registry:example",
     registryDependencies: ["carousel"],
     files: [
       {
-        path: "examples/carousel-demo.tsx",
+        path: "examples/carousel-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Carousel",
-      },
-    },
   },
   {
-    name: "chart-area-demo",
+    name: "chart-example",
+    title: "Chart",
     type: "registry:example",
     registryDependencies: ["chart", "card"],
     files: [
       {
-        path: "examples/chart-area-demo.tsx",
+        path: "examples/chart-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Chart Area",
-      },
-    },
   },
   {
-    name: "chart-bar-demo",
-    type: "registry:example",
-    registryDependencies: ["chart", "card"],
-    files: [
-      {
-        path: "examples/chart-bar-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-    meta: {
-      canva: {
-        title: "Chart Bar",
-      },
-    },
-  },
-  {
-    name: "chart-demo",
-    type: "registry:example",
-    registryDependencies: ["chart", "card"],
-    files: [
-      {
-        path: "examples/chart-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-    meta: {
-      canva: {
-        title: "Chart",
-      },
-    },
-  },
-  {
-    name: "chart-line-demo",
-    type: "registry:example",
-    registryDependencies: ["chart", "card"],
-    files: [
-      {
-        path: "examples/chart-line-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-    meta: {
-      canva: {
-        title: "Chart Line",
-      },
-    },
-  },
-  {
-    name: "checkbox-demo",
+    name: "checkbox-example",
+    title: "Checkbox",
     type: "registry:example",
     registryDependencies: ["checkbox"],
     files: [
       {
-        path: "examples/checkbox-demo.tsx",
+        path: "examples/checkbox-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Checkbox",
-      },
-    },
   },
   {
-    name: "collapsible-demo",
+    name: "collapsible-example",
+    title: "Collapsible",
     type: "registry:example",
     registryDependencies: ["collapsible"],
     files: [
       {
-        path: "examples/collapsible-demo.tsx",
+        path: "examples/collapsible-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Collapsible",
-      },
-    },
   },
   {
-    name: "combobox-demo",
+    name: "combobox-example",
+    title: "Combobox",
     type: "registry:example",
     registryDependencies: ["avatar", "button", "command", "popover"],
     files: [
       {
-        path: "examples/combobox-demo.tsx",
+        path: "examples/combobox-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Combobox",
-      },
-    },
   },
   {
-    name: "command-demo",
+    name: "command-example",
+    title: "Command",
     type: "registry:example",
     registryDependencies: ["command"],
     files: [
       {
-        path: "examples/command-demo.tsx",
+        path: "examples/command-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Command",
-      },
-    },
   },
   {
-    name: "context-menu-demo",
+    name: "context-menu-example",
+    title: "Context Menu",
     type: "registry:example",
     registryDependencies: ["context-menu"],
     files: [
       {
-        path: "examples/context-menu-demo.tsx",
+        path: "examples/context-menu-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Context Menu",
-      },
-    },
   },
   {
-    name: "date-picker-demo",
-    type: "registry:example",
-    registryDependencies: ["button", "calendar", "drawer", "popover"],
-    files: [
-      {
-        path: "examples/date-picker-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-    meta: {
-      canva: {
-        title: "Date Picker",
-      },
-    },
-  },
-  {
-    name: "dialog-demo",
+    name: "dialog-example",
+    title: "Dialog",
     type: "registry:example",
     registryDependencies: ["dialog"],
     files: [
       {
-        path: "examples/dialog-demo.tsx",
+        path: "examples/dialog-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Dialog",
-      },
-    },
   },
   {
-    name: "drawer-demo",
+    name: "drawer-example",
+    title: "Drawer",
     type: "registry:example",
     registryDependencies: ["drawer"],
     files: [
       {
-        path: "examples/drawer-demo.tsx",
+        path: "examples/drawer-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Drawer",
-      },
-    },
   },
   {
-    name: "dropdown-menu-demo",
+    name: "dropdown-menu-example",
+    title: "Dropdown Menu",
     type: "registry:example",
     registryDependencies: ["dropdown-menu"],
     files: [
       {
-        path: "examples/dropdown-menu-demo.tsx",
+        path: "examples/dropdown-menu-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Dropdown Menu",
-      },
-    },
   },
   {
-    name: "empty-demo",
+    name: "empty-example",
+    title: "Empty",
     type: "registry:example",
     registryDependencies: ["empty"],
     files: [
       {
-        path: "examples/empty-demo.tsx",
+        path: "examples/empty-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Empty",
-      },
-    },
   },
   {
-    name: "field-demo",
+    name: "field-example",
+    title: "Field",
     type: "registry:example",
     registryDependencies: ["field"],
     files: [
       {
-        path: "examples/field-demo.tsx",
+        path: "examples/field-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Field",
-      },
-    },
   },
   {
-    name: "form-demo",
+    name: "form-example",
+    title: "Form",
     type: "registry:example",
     registryDependencies: [
       "button",
@@ -450,494 +303,369 @@ export const examples: Registry["items"] = [
     ],
     files: [
       {
-        path: "examples/form-demo.tsx",
+        path: "examples/form-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Form",
-      },
-    },
   },
   {
-    name: "hover-card-demo",
+    name: "hover-card-example",
+    title: "Hover Card",
     type: "registry:example",
     registryDependencies: ["hover-card"],
     files: [
       {
-        path: "examples/hover-card-demo.tsx",
+        path: "examples/hover-card-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Hover Card",
-      },
-    },
   },
   {
-    name: "input-demo",
+    name: "input-example",
+    title: "Input",
     type: "registry:example",
     registryDependencies: ["input"],
     files: [
       {
-        path: "examples/input-demo.tsx",
+        path: "examples/input-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Input",
-      },
-    },
   },
   {
-    name: "input-group-demo",
+    name: "input-group-example",
+    title: "Input Group",
     type: "registry:example",
     registryDependencies: ["input-group"],
     files: [
       {
-        path: "examples/input-group-demo.tsx",
+        path: "examples/input-group-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Input Group",
-      },
-    },
   },
   {
-    name: "input-otp-demo",
+    name: "input-otp-example",
+    title: "Input OTP",
     type: "registry:example",
     registryDependencies: ["input-otp"],
     files: [
       {
-        path: "examples/input-otp-demo.tsx",
+        path: "examples/input-otp-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Input OTP",
-      },
-    },
   },
   {
-    name: "item-demo",
+    name: "item-example",
+    title: "Item",
     type: "registry:example",
     registryDependencies: ["item"],
     files: [
       {
-        path: "examples/item-demo.tsx",
+        path: "examples/item-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Item",
-      },
-    },
   },
   {
-    name: "kbd-demo",
+    name: "kbd-example",
+    title: "Kbd",
     type: "registry:example",
     registryDependencies: ["kbd"],
     files: [
       {
-        path: "examples/kbd-demo.tsx",
+        path: "examples/kbd-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Kbd",
-      },
-    },
   },
   {
-    name: "label-demo",
+    name: "label-example",
+    title: "Label",
     type: "registry:example",
     registryDependencies: ["label"],
     files: [
       {
-        path: "examples/label-demo.tsx",
+        path: "examples/label-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Label",
-      },
-    },
   },
   {
-    name: "menubar-demo",
+    name: "menubar-example",
+    title: "Menubar",
     type: "registry:example",
     registryDependencies: ["menubar"],
     files: [
       {
-        path: "examples/menubar-demo.tsx",
+        path: "examples/menubar-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Menubar",
-      },
-    },
   },
   {
-    name: "native-select-demo",
+    name: "native-select-example",
+    title: "Native Select",
     type: "registry:example",
     registryDependencies: ["native-select"],
     files: [
       {
-        path: "examples/native-select-demo.tsx",
+        path: "examples/native-select-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Native Select",
-      },
-    },
   },
   {
-    name: "navigation-menu-demo",
+    name: "navigation-menu-example",
+    title: "Navigation Menu",
     type: "registry:example",
     registryDependencies: ["navigation-menu"],
     files: [
       {
-        path: "examples/navigation-menu-demo.tsx",
+        path: "examples/navigation-menu-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Navigation Menu",
-      },
-    },
   },
   {
-    name: "pagination-demo",
+    name: "pagination-example",
+    title: "Pagination",
     type: "registry:example",
     registryDependencies: ["pagination"],
     files: [
       {
-        path: "examples/pagination-demo.tsx",
+        path: "examples/pagination-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Pagination",
-      },
-    },
   },
   {
-    name: "popover-demo",
+    name: "popover-example",
+    title: "Popover",
     type: "registry:example",
     registryDependencies: ["popover"],
     files: [
       {
-        path: "examples/popover-demo.tsx",
+        path: "examples/popover-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Popover",
-      },
-    },
   },
   {
-    name: "progress-demo",
+    name: "progress-example",
+    title: "Progress",
     type: "registry:example",
     registryDependencies: ["progress"],
     files: [
       {
-        path: "examples/progress-demo.tsx",
+        path: "examples/progress-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Progress",
-      },
-    },
   },
   {
-    name: "radio-group-demo",
+    name: "radio-group-example",
+    title: "Radio Group",
     type: "registry:example",
     registryDependencies: ["radio-group"],
     files: [
       {
-        path: "examples/radio-group-demo.tsx",
+        path: "examples/radio-group-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Radio Group",
-      },
-    },
   },
   {
-    name: "resizable-demo",
+    name: "resizable-example",
+    title: "Resizable",
     type: "registry:example",
     registryDependencies: ["resizable"],
     files: [
       {
-        path: "examples/resizable-demo.tsx",
+        path: "examples/resizable-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Resizable",
-      },
-    },
   },
   {
-    name: "scroll-area-demo",
+    name: "scroll-area-example",
+    title: "Scroll Area",
     type: "registry:example",
     registryDependencies: ["scroll-area"],
     files: [
       {
-        path: "examples/scroll-area-demo.tsx",
+        path: "examples/scroll-area-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Scroll Area",
-      },
-    },
   },
   {
-    name: "select-demo",
+    name: "select-example",
+    title: "Select",
     type: "registry:example",
     registryDependencies: ["select"],
     files: [
       {
-        path: "examples/select-demo.tsx",
+        path: "examples/select-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Select",
-      },
-    },
   },
   {
-    name: "separator-demo",
+    name: "separator-example",
+    title: "Separator",
     type: "registry:example",
     registryDependencies: ["separator"],
     files: [
       {
-        path: "examples/separator-demo.tsx",
+        path: "examples/separator-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Separator",
-      },
-    },
   },
   {
-    name: "sheet-demo",
+    name: "sheet-example",
+    title: "Sheet",
     type: "registry:example",
     registryDependencies: ["sheet"],
     files: [
       {
-        path: "examples/sheet-demo.tsx",
+        path: "examples/sheet-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Sheet",
-      },
-    },
   },
   {
-    name: "skeleton-demo",
+    name: "skeleton-example",
+    title: "Skeleton",
     type: "registry:example",
     registryDependencies: ["skeleton"],
     files: [
       {
-        path: "examples/skeleton-demo.tsx",
+        path: "examples/skeleton-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Skeleton",
-      },
-    },
   },
   {
-    name: "slider-demo",
+    name: "slider-example",
+    title: "Slider",
     type: "registry:example",
     registryDependencies: ["slider"],
     files: [
       {
-        path: "examples/slider-demo.tsx",
+        path: "examples/slider-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Slider",
-      },
-    },
   },
   {
-    name: "sonner-demo",
+    name: "sonner-example",
+    title: "Sonner",
     type: "registry:example",
     registryDependencies: ["sonner"],
     files: [
       {
-        path: "examples/sonner-demo.tsx",
+        path: "examples/sonner-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Sonner",
-      },
-    },
   },
   {
-    name: "spinner-demo",
+    name: "spinner-example",
+    title: "Spinner",
     type: "registry:example",
     registryDependencies: ["spinner"],
     files: [
       {
-        path: "examples/spinner-demo.tsx",
+        path: "examples/spinner-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Spinner",
-      },
-    },
   },
   {
-    name: "switch-demo",
+    name: "switch-example",
+    title: "Switch",
     type: "registry:example",
     registryDependencies: ["switch"],
     files: [
       {
-        path: "examples/switch-demo.tsx",
+        path: "examples/switch-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Switch",
-      },
-    },
   },
   {
-    name: "table-demo",
+    name: "table-example",
+    title: "Table",
     type: "registry:example",
     registryDependencies: ["table"],
     files: [
       {
-        path: "examples/table-demo.tsx",
+        path: "examples/table-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Table",
-      },
-    },
   },
   {
-    name: "tabs-demo",
+    name: "tabs-example",
+    title: "Tabs",
     type: "registry:example",
     registryDependencies: ["tabs"],
     files: [
       {
-        path: "examples/tabs-demo.tsx",
+        path: "examples/tabs-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Tabs",
-      },
-    },
   },
   {
-    name: "textarea-demo",
+    name: "textarea-example",
+    title: "Textarea",
     type: "registry:example",
     registryDependencies: ["textarea"],
     files: [
       {
-        path: "examples/textarea-demo.tsx",
+        path: "examples/textarea-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Textarea",
-      },
-    },
   },
   {
-    name: "toggle-demo",
+    name: "toggle-example",
+    title: "Toggle",
     type: "registry:example",
     registryDependencies: ["toggle"],
     files: [
       {
-        path: "examples/toggle-demo.tsx",
+        path: "examples/toggle-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Toggle",
-      },
-    },
   },
   {
-    name: "toggle-group-demo",
+    name: "toggle-group-example",
+    title: "Toggle Group",
     type: "registry:example",
     registryDependencies: ["toggle-group"],
     files: [
       {
-        path: "examples/toggle-group-demo.tsx",
+        path: "examples/toggle-group-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Toggle Group",
-      },
-    },
   },
   {
-    name: "tooltip-demo",
+    name: "tooltip-example",
+    title: "Tooltip",
     type: "registry:example",
     registryDependencies: ["tooltip"],
     files: [
       {
-        path: "examples/tooltip-demo.tsx",
+        path: "examples/tooltip-example.tsx",
         type: "registry:example",
       },
     ],
-    meta: {
-      canva: {
-        title: "Tooltip",
-      },
-    },
   },
 ]

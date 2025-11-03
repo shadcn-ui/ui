@@ -3,337 +3,227 @@
   "homepage": "https://ui.shadcn.com",
   "items": [
     {
-      "name": "accordion-demo",
+      "name": "accordion-example",
       "type": "registry:example",
+      "title": "Accordion",
       "registryDependencies": [
         "accordion"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/accordion-demo.tsx",
+          "path": "registry/radix-nova/examples/accordion-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Accordion"
-        }
-      }
+      ]
     },
     {
-      "name": "alert-demo",
+      "name": "alert-example",
       "type": "registry:example",
+      "title": "Alert",
       "registryDependencies": [
         "alert"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/alert-demo.tsx",
+          "path": "registry/radix-nova/examples/alert-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Alert"
-        }
-      }
+      ]
     },
     {
-      "name": "alert-dialog-demo",
+      "name": "alert-dialog-example",
       "type": "registry:example",
+      "title": "Alert Dialog",
       "registryDependencies": [
         "alert-dialog",
         "button"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/alert-dialog-demo.tsx",
+          "path": "registry/radix-nova/examples/alert-dialog-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Alert Dialog"
-        }
-      }
+      ]
     },
     {
-      "name": "aspect-ratio-demo",
+      "name": "aspect-ratio-example",
       "type": "registry:example",
+      "title": "Aspect Ratio",
       "registryDependencies": [
         "aspect-ratio"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/aspect-ratio-demo.tsx",
+          "path": "registry/radix-nova/examples/aspect-ratio-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Aspect Ratio"
-        }
-      }
+      ]
     },
     {
-      "name": "avatar-demo",
+      "name": "avatar-example",
       "type": "registry:example",
+      "title": "Avatar",
       "registryDependencies": [
         "avatar"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/avatar-demo.tsx",
+          "path": "registry/radix-nova/examples/avatar-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Avatar"
-        }
-      }
+      ]
     },
     {
-      "name": "badge-demo",
+      "name": "badge-example",
       "type": "registry:example",
+      "title": "Badge",
       "registryDependencies": [
         "badge"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/badge-demo.tsx",
+          "path": "registry/radix-nova/examples/badge-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Badge"
-        }
-      }
+      ]
     },
     {
-      "name": "breadcrumb-demo",
+      "name": "breadcrumb-example",
       "type": "registry:example",
+      "title": "Breadcrumb",
       "registryDependencies": [
         "breadcrumb"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/breadcrumb-demo.tsx",
+          "path": "registry/radix-nova/examples/breadcrumb-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Breadcrumb"
-        }
-      }
+      ]
     },
     {
-      "name": "button-demo",
+      "name": "button-example",
       "type": "registry:example",
+      "title": "Button",
       "registryDependencies": [
         "button"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/button-demo.tsx",
+          "path": "registry/radix-nova/examples/button-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Button"
-        }
-      }
+      ]
     },
     {
-      "name": "button-group-demo",
+      "name": "button-group-example",
       "type": "registry:example",
+      "title": "Button Group",
       "registryDependencies": [
         "button-group"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/button-group-demo.tsx",
+          "path": "registry/radix-nova/examples/button-group-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Button Group"
-        }
-      }
+      ]
     },
     {
-      "name": "calendar-demo",
+      "name": "calendar-example",
       "type": "registry:example",
+      "title": "Calendar",
       "registryDependencies": [
-        "calendar"
+        "button",
+        "calendar",
+        "card",
+        "drawer",
+        "input",
+        "label",
+        "popover"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/calendar-demo.tsx",
+          "path": "registry/radix-nova/examples/calendar-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Calendar"
-        }
-      }
+      ]
     },
     {
-      "name": "card-demo",
+      "name": "card-example",
       "type": "registry:example",
+      "title": "Card",
       "registryDependencies": [
         "card"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/card-demo.tsx",
+          "path": "registry/radix-nova/examples/card-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Card"
-        }
-      }
+      ]
     },
     {
-      "name": "carousel-demo",
+      "name": "carousel-example",
       "type": "registry:example",
+      "title": "Carousel",
       "registryDependencies": [
         "carousel"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/carousel-demo.tsx",
+          "path": "registry/radix-nova/examples/carousel-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Carousel"
-        }
-      }
+      ]
     },
     {
-      "name": "chart-area-demo",
+      "name": "chart-example",
       "type": "registry:example",
+      "title": "Chart",
       "registryDependencies": [
         "chart",
         "card"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/chart-area-demo.tsx",
+          "path": "registry/radix-nova/examples/chart-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Chart Area"
-        }
-      }
+      ]
     },
     {
-      "name": "chart-bar-demo",
+      "name": "checkbox-example",
       "type": "registry:example",
-      "registryDependencies": [
-        "chart",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/examples/chart-bar-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Chart Bar"
-        }
-      }
-    },
-    {
-      "name": "chart-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "chart",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/examples/chart-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Chart"
-        }
-      }
-    },
-    {
-      "name": "chart-line-demo",
-      "type": "registry:example",
-      "registryDependencies": [
-        "chart",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/examples/chart-line-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Chart Line"
-        }
-      }
-    },
-    {
-      "name": "checkbox-demo",
-      "type": "registry:example",
+      "title": "Checkbox",
       "registryDependencies": [
         "checkbox"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/checkbox-demo.tsx",
+          "path": "registry/radix-nova/examples/checkbox-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Checkbox"
-        }
-      }
+      ]
     },
     {
-      "name": "collapsible-demo",
+      "name": "collapsible-example",
       "type": "registry:example",
+      "title": "Collapsible",
       "registryDependencies": [
         "collapsible"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/collapsible-demo.tsx",
+          "path": "registry/radix-nova/examples/collapsible-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Collapsible"
-        }
-      }
+      ]
     },
     {
-      "name": "combobox-demo",
+      "name": "combobox-example",
       "type": "registry:example",
+      "title": "Combobox",
       "registryDependencies": [
         "avatar",
         "button",
@@ -342,166 +232,113 @@
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/combobox-demo.tsx",
+          "path": "registry/radix-nova/examples/combobox-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Combobox"
-        }
-      }
+      ]
     },
     {
-      "name": "command-demo",
+      "name": "command-example",
       "type": "registry:example",
+      "title": "Command",
       "registryDependencies": [
         "command"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/command-demo.tsx",
+          "path": "registry/radix-nova/examples/command-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Command"
-        }
-      }
+      ]
     },
     {
-      "name": "context-menu-demo",
+      "name": "context-menu-example",
       "type": "registry:example",
+      "title": "Context Menu",
       "registryDependencies": [
         "context-menu"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/context-menu-demo.tsx",
+          "path": "registry/radix-nova/examples/context-menu-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Context Menu"
-        }
-      }
+      ]
     },
     {
-      "name": "date-picker-demo",
+      "name": "dialog-example",
       "type": "registry:example",
-      "registryDependencies": [
-        "button",
-        "calendar",
-        "drawer",
-        "popover"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/examples/date-picker-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Date Picker"
-        }
-      }
-    },
-    {
-      "name": "dialog-demo",
-      "type": "registry:example",
+      "title": "Dialog",
       "registryDependencies": [
         "dialog"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/dialog-demo.tsx",
+          "path": "registry/radix-nova/examples/dialog-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Dialog"
-        }
-      }
+      ]
     },
     {
-      "name": "drawer-demo",
+      "name": "drawer-example",
       "type": "registry:example",
+      "title": "Drawer",
       "registryDependencies": [
         "drawer"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/drawer-demo.tsx",
+          "path": "registry/radix-nova/examples/drawer-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Drawer"
-        }
-      }
+      ]
     },
     {
-      "name": "dropdown-menu-demo",
+      "name": "dropdown-menu-example",
       "type": "registry:example",
+      "title": "Dropdown Menu",
       "registryDependencies": [
         "dropdown-menu"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/dropdown-menu-demo.tsx",
+          "path": "registry/radix-nova/examples/dropdown-menu-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Dropdown Menu"
-        }
-      }
+      ]
     },
     {
-      "name": "empty-demo",
+      "name": "empty-example",
       "type": "registry:example",
+      "title": "Empty",
       "registryDependencies": [
         "empty"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/empty-demo.tsx",
+          "path": "registry/radix-nova/examples/empty-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Empty"
-        }
-      }
+      ]
     },
     {
-      "name": "field-demo",
+      "name": "field-example",
       "type": "registry:example",
+      "title": "Field",
       "registryDependencies": [
         "field"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/field-demo.tsx",
+          "path": "registry/radix-nova/examples/field-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Field"
-        }
-      }
+      ]
     },
     {
-      "name": "form-demo",
+      "name": "form-example",
       "type": "registry:example",
+      "title": "Form",
       "registryDependencies": [
         "button",
         "calendar",
@@ -516,555 +353,430 @@
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/form-demo.tsx",
+          "path": "registry/radix-nova/examples/form-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Form"
-        }
-      }
+      ]
     },
     {
-      "name": "hover-card-demo",
+      "name": "hover-card-example",
       "type": "registry:example",
+      "title": "Hover Card",
       "registryDependencies": [
         "hover-card"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/hover-card-demo.tsx",
+          "path": "registry/radix-nova/examples/hover-card-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Hover Card"
-        }
-      }
+      ]
     },
     {
-      "name": "input-demo",
+      "name": "input-example",
       "type": "registry:example",
+      "title": "Input",
       "registryDependencies": [
         "input"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/input-demo.tsx",
+          "path": "registry/radix-nova/examples/input-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Input"
-        }
-      }
+      ]
     },
     {
-      "name": "input-group-demo",
+      "name": "input-group-example",
       "type": "registry:example",
+      "title": "Input Group",
       "registryDependencies": [
         "input-group"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/input-group-demo.tsx",
+          "path": "registry/radix-nova/examples/input-group-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Input Group"
-        }
-      }
+      ]
     },
     {
-      "name": "input-otp-demo",
+      "name": "input-otp-example",
       "type": "registry:example",
+      "title": "Input OTP",
       "registryDependencies": [
         "input-otp"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/input-otp-demo.tsx",
+          "path": "registry/radix-nova/examples/input-otp-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Input OTP"
-        }
-      }
+      ]
     },
     {
-      "name": "item-demo",
+      "name": "item-example",
       "type": "registry:example",
+      "title": "Item",
       "registryDependencies": [
         "item"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/item-demo.tsx",
+          "path": "registry/radix-nova/examples/item-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Item"
-        }
-      }
+      ]
     },
     {
-      "name": "kbd-demo",
+      "name": "kbd-example",
       "type": "registry:example",
+      "title": "Kbd",
       "registryDependencies": [
         "kbd"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/kbd-demo.tsx",
+          "path": "registry/radix-nova/examples/kbd-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Kbd"
-        }
-      }
+      ]
     },
     {
-      "name": "label-demo",
+      "name": "label-example",
       "type": "registry:example",
+      "title": "Label",
       "registryDependencies": [
         "label"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/label-demo.tsx",
+          "path": "registry/radix-nova/examples/label-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Label"
-        }
-      }
+      ]
     },
     {
-      "name": "menubar-demo",
+      "name": "menubar-example",
       "type": "registry:example",
+      "title": "Menubar",
       "registryDependencies": [
         "menubar"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/menubar-demo.tsx",
+          "path": "registry/radix-nova/examples/menubar-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Menubar"
-        }
-      }
+      ]
     },
     {
-      "name": "native-select-demo",
+      "name": "native-select-example",
       "type": "registry:example",
+      "title": "Native Select",
       "registryDependencies": [
         "native-select"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/native-select-demo.tsx",
+          "path": "registry/radix-nova/examples/native-select-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Native Select"
-        }
-      }
+      ]
     },
     {
-      "name": "navigation-menu-demo",
+      "name": "navigation-menu-example",
       "type": "registry:example",
+      "title": "Navigation Menu",
       "registryDependencies": [
         "navigation-menu"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/navigation-menu-demo.tsx",
+          "path": "registry/radix-nova/examples/navigation-menu-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Navigation Menu"
-        }
-      }
+      ]
     },
     {
-      "name": "pagination-demo",
+      "name": "pagination-example",
       "type": "registry:example",
+      "title": "Pagination",
       "registryDependencies": [
         "pagination"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/pagination-demo.tsx",
+          "path": "registry/radix-nova/examples/pagination-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Pagination"
-        }
-      }
+      ]
     },
     {
-      "name": "popover-demo",
+      "name": "popover-example",
       "type": "registry:example",
+      "title": "Popover",
       "registryDependencies": [
         "popover"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/popover-demo.tsx",
+          "path": "registry/radix-nova/examples/popover-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Popover"
-        }
-      }
+      ]
     },
     {
-      "name": "progress-demo",
+      "name": "progress-example",
       "type": "registry:example",
+      "title": "Progress",
       "registryDependencies": [
         "progress"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/progress-demo.tsx",
+          "path": "registry/radix-nova/examples/progress-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Progress"
-        }
-      }
+      ]
     },
     {
-      "name": "radio-group-demo",
+      "name": "radio-group-example",
       "type": "registry:example",
+      "title": "Radio Group",
       "registryDependencies": [
         "radio-group"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/radio-group-demo.tsx",
+          "path": "registry/radix-nova/examples/radio-group-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Radio Group"
-        }
-      }
+      ]
     },
     {
-      "name": "resizable-demo",
+      "name": "resizable-example",
       "type": "registry:example",
+      "title": "Resizable",
       "registryDependencies": [
         "resizable"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/resizable-demo.tsx",
+          "path": "registry/radix-nova/examples/resizable-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Resizable"
-        }
-      }
+      ]
     },
     {
-      "name": "scroll-area-demo",
+      "name": "scroll-area-example",
       "type": "registry:example",
+      "title": "Scroll Area",
       "registryDependencies": [
         "scroll-area"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/scroll-area-demo.tsx",
+          "path": "registry/radix-nova/examples/scroll-area-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Scroll Area"
-        }
-      }
+      ]
     },
     {
-      "name": "select-demo",
+      "name": "select-example",
       "type": "registry:example",
+      "title": "Select",
       "registryDependencies": [
         "select"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/select-demo.tsx",
+          "path": "registry/radix-nova/examples/select-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Select"
-        }
-      }
+      ]
     },
     {
-      "name": "separator-demo",
+      "name": "separator-example",
       "type": "registry:example",
+      "title": "Separator",
       "registryDependencies": [
         "separator"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/separator-demo.tsx",
+          "path": "registry/radix-nova/examples/separator-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Separator"
-        }
-      }
+      ]
     },
     {
-      "name": "sheet-demo",
+      "name": "sheet-example",
       "type": "registry:example",
+      "title": "Sheet",
       "registryDependencies": [
         "sheet"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/sheet-demo.tsx",
+          "path": "registry/radix-nova/examples/sheet-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Sheet"
-        }
-      }
+      ]
     },
     {
-      "name": "skeleton-demo",
+      "name": "skeleton-example",
       "type": "registry:example",
+      "title": "Skeleton",
       "registryDependencies": [
         "skeleton"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/skeleton-demo.tsx",
+          "path": "registry/radix-nova/examples/skeleton-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Skeleton"
-        }
-      }
+      ]
     },
     {
-      "name": "slider-demo",
+      "name": "slider-example",
       "type": "registry:example",
+      "title": "Slider",
       "registryDependencies": [
         "slider"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/slider-demo.tsx",
+          "path": "registry/radix-nova/examples/slider-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Slider"
-        }
-      }
+      ]
     },
     {
-      "name": "sonner-demo",
+      "name": "sonner-example",
       "type": "registry:example",
+      "title": "Sonner",
       "registryDependencies": [
         "sonner"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/sonner-demo.tsx",
+          "path": "registry/radix-nova/examples/sonner-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Sonner"
-        }
-      }
+      ]
     },
     {
-      "name": "spinner-demo",
+      "name": "spinner-example",
       "type": "registry:example",
+      "title": "Spinner",
       "registryDependencies": [
         "spinner"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/spinner-demo.tsx",
+          "path": "registry/radix-nova/examples/spinner-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Spinner"
-        }
-      }
+      ]
     },
     {
-      "name": "switch-demo",
+      "name": "switch-example",
       "type": "registry:example",
+      "title": "Switch",
       "registryDependencies": [
         "switch"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/switch-demo.tsx",
+          "path": "registry/radix-nova/examples/switch-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Switch"
-        }
-      }
+      ]
     },
     {
-      "name": "table-demo",
+      "name": "table-example",
       "type": "registry:example",
+      "title": "Table",
       "registryDependencies": [
         "table"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/table-demo.tsx",
+          "path": "registry/radix-nova/examples/table-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Table"
-        }
-      }
+      ]
     },
     {
-      "name": "tabs-demo",
+      "name": "tabs-example",
       "type": "registry:example",
+      "title": "Tabs",
       "registryDependencies": [
         "tabs"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/tabs-demo.tsx",
+          "path": "registry/radix-nova/examples/tabs-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Tabs"
-        }
-      }
+      ]
     },
     {
-      "name": "textarea-demo",
+      "name": "textarea-example",
       "type": "registry:example",
+      "title": "Textarea",
       "registryDependencies": [
         "textarea"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/textarea-demo.tsx",
+          "path": "registry/radix-nova/examples/textarea-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Textarea"
-        }
-      }
+      ]
     },
     {
-      "name": "toggle-demo",
+      "name": "toggle-example",
       "type": "registry:example",
+      "title": "Toggle",
       "registryDependencies": [
         "toggle"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/toggle-demo.tsx",
+          "path": "registry/radix-nova/examples/toggle-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Toggle"
-        }
-      }
+      ]
     },
     {
-      "name": "toggle-group-demo",
+      "name": "toggle-group-example",
       "type": "registry:example",
+      "title": "Toggle Group",
       "registryDependencies": [
         "toggle-group"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/toggle-group-demo.tsx",
+          "path": "registry/radix-nova/examples/toggle-group-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Toggle Group"
-        }
-      }
+      ]
     },
     {
-      "name": "tooltip-demo",
+      "name": "tooltip-example",
       "type": "registry:example",
+      "title": "Tooltip",
       "registryDependencies": [
         "tooltip"
       ],
       "files": [
         {
-          "path": "registry/radix-nova/examples/tooltip-demo.tsx",
+          "path": "registry/radix-nova/examples/tooltip-example.tsx",
           "type": "registry:example"
         }
-      ],
-      "meta": {
-        "canva": {
-          "title": "Tooltip"
-        }
-      }
+      ]
     },
     {
       "name": "accordion",
@@ -1534,6 +1246,19 @@
       "files": [
         {
           "path": "registry/radix-nova/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "dependencies": [
+        "react-resizable-panels"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-nova/ui/resizable.tsx",
           "type": "registry:ui"
         }
       ]

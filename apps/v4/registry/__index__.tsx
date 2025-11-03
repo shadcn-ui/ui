@@ -9,6 +9,7 @@ export const Index: Record<string, Record<string, any>> = {
   "new-york-v4": {
     "accordion": {
       name: "accordion",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -27,6 +28,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "alert": {
       name: "alert",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -45,6 +47,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "alert-dialog": {
       name: "alert-dialog",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
@@ -63,6 +66,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "aspect-ratio": {
       name: "aspect-ratio",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -81,6 +85,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "avatar": {
       name: "avatar",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -99,6 +104,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "badge": {
       name: "badge",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -117,6 +123,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "breadcrumb": {
       name: "breadcrumb",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -135,6 +142,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button": {
       name: "button",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -153,6 +161,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group": {
       name: "button-group",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button","separator"],
@@ -171,6 +180,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar": {
       name: "calendar",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
@@ -189,6 +199,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "card": {
       name: "card",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -207,6 +218,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "carousel": {
       name: "carousel",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
@@ -225,6 +237,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart": {
       name: "chart",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["card"],
@@ -243,6 +256,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "checkbox": {
       name: "checkbox",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -261,6 +275,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "collapsible": {
       name: "collapsible",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -279,6 +294,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "command": {
       name: "command",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["dialog"],
@@ -297,6 +313,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "context-menu": {
       name: "context-menu",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -315,6 +332,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dialog": {
       name: "dialog",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -333,6 +351,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "drawer": {
       name: "drawer",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -351,6 +370,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dropdown-menu": {
       name: "dropdown-menu",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -369,6 +389,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "empty": {
       name: "empty",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -387,6 +408,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field": {
       name: "field",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["label","separator"],
@@ -405,6 +427,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form": {
       name: "form",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button","label"],
@@ -423,6 +446,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "hover-card": {
       name: "hover-card",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -441,6 +465,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input": {
       name: "input",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -459,6 +484,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group": {
       name: "input-group",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button","input","textarea"],
@@ -477,6 +503,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-otp": {
       name: "input-otp",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -495,6 +522,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item": {
       name: "item",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["separator"],
@@ -513,6 +541,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "label": {
       name: "label",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -531,6 +560,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "menubar": {
       name: "menubar",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -549,6 +579,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "navigation-menu": {
       name: "navigation-menu",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -567,6 +598,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "pagination": {
       name: "pagination",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
@@ -585,6 +617,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "popover": {
       name: "popover",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -603,6 +636,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "progress": {
       name: "progress",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -621,6 +655,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "radio-group": {
       name: "radio-group",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -639,6 +674,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "resizable": {
       name: "resizable",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -657,6 +693,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "scroll-area": {
       name: "scroll-area",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -675,6 +712,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "select": {
       name: "select",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -693,6 +731,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "separator": {
       name: "separator",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -711,6 +750,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sheet": {
       name: "sheet",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -729,6 +769,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar": {
       name: "sidebar",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
@@ -747,6 +788,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "skeleton": {
       name: "skeleton",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -765,6 +807,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "slider": {
       name: "slider",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -783,6 +826,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sonner": {
       name: "sonner",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -801,6 +845,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner": {
       name: "spinner",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -819,6 +864,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "switch": {
       name: "switch",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -837,6 +883,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "table": {
       name: "table",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -855,6 +902,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "tabs": {
       name: "tabs",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -873,6 +921,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "textarea": {
       name: "textarea",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -891,6 +940,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle": {
       name: "toggle",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -909,6 +959,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-group": {
       name: "toggle-group",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["toggle"],
@@ -927,6 +978,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "tooltip": {
       name: "tooltip",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -945,6 +997,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "kbd": {
       name: "kbd",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -963,6 +1016,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "native-select": {
       name: "native-select",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -981,6 +1035,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dashboard-01": {
       name: "dashboard-01",
+      title: "undefined",
       description: "A dashboard with sidebar, charts and data table.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","chart","card","select","tabs","table","toggle-group","badge","button","checkbox","dropdown-menu","drawer","input","avatar","sheet","sonner"],
@@ -1039,6 +1094,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-01": {
       name: "sidebar-01",
+      title: "undefined",
       description: "A simple sidebar with navigation grouped by section.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
@@ -1069,6 +1125,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-02": {
       name: "sidebar-02",
+      title: "undefined",
       description: "A sidebar with collapsible sections.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","dropdown-menu"],
@@ -1099,6 +1156,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-03": {
       name: "sidebar-03",
+      title: "undefined",
       description: "A sidebar with submenus.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
@@ -1121,6 +1179,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-04": {
       name: "sidebar-04",
+      title: "undefined",
       description: "A floating sidebar with submenus.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator"],
@@ -1143,6 +1202,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-05": {
       name: "sidebar-05",
+      title: "undefined",
       description: "A sidebar with collapsible submenus.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","label","collapsible"],
@@ -1169,6 +1229,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-06": {
       name: "sidebar-06",
+      title: "undefined",
       description: "A sidebar with submenus as dropdowns.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","card","dropdown-menu"],
@@ -1199,6 +1260,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-07": {
       name: "sidebar-07",
+      title: "undefined",
       description: "A sidebar that collapses to icons.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
@@ -1237,6 +1299,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-08": {
       name: "sidebar-08",
+      title: "undefined",
       description: "An inset sidebar with secondary navigation.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar"],
@@ -1275,6 +1338,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-09": {
       name: "sidebar-09",
+      title: "undefined",
       description: "Collapsible nested sidebars.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","switch","label"],
@@ -1301,6 +1365,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-10": {
       name: "sidebar-10",
+      title: "undefined",
       description: "A sidebar in a popover.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu"],
@@ -1347,6 +1412,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-11": {
       name: "sidebar-11",
+      title: "undefined",
       description: "A sidebar with a collapsible file tree.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible"],
@@ -1369,6 +1435,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-12": {
       name: "sidebar-12",
+      title: "undefined",
       description: "A sidebar with a calendar.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","calendar","dropdown-menu","avatar"],
@@ -1403,6 +1470,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-13": {
       name: "sidebar-13",
+      title: "undefined",
       description: "A sidebar in a dialog.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","button","dialog"],
@@ -1425,6 +1493,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-14": {
       name: "sidebar-14",
+      title: "undefined",
       description: "A sidebar on the right.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb"],
@@ -1447,6 +1516,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-15": {
       name: "sidebar-15",
+      title: "undefined",
       description: "A left and right sidebar.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","popover","collapsible","dropdown-menu","calendar","avatar"],
@@ -1505,6 +1575,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-16": {
       name: "sidebar-16",
+      title: "undefined",
       description: "A sidebar with a sticky site header.",
       type: "registry:block",
       registryDependencies: ["sidebar","breadcrumb","separator","collapsible","dropdown-menu","avatar","button","label"],
@@ -1551,6 +1622,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "login-01": {
       name: "login-01",
+      title: "undefined",
       description: "A simple login form.",
       type: "registry:block",
       registryDependencies: ["button","card","input","label","field"],
@@ -1573,6 +1645,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "login-02": {
       name: "login-02",
+      title: "undefined",
       description: "A two column login page with a cover image.",
       type: "registry:block",
       registryDependencies: ["button","input","label","field"],
@@ -1595,6 +1668,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "login-03": {
       name: "login-03",
+      title: "undefined",
       description: "A login page with a muted background color.",
       type: "registry:block",
       registryDependencies: ["button","card","input","label","field"],
@@ -1617,6 +1691,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "login-04": {
       name: "login-04",
+      title: "undefined",
       description: "A login page with form and image.",
       type: "registry:block",
       registryDependencies: ["button","card","input","label","field"],
@@ -1639,6 +1714,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "login-05": {
       name: "login-05",
+      title: "undefined",
       description: "A simple email-only login page.",
       type: "registry:block",
       registryDependencies: ["button","input","label","field"],
@@ -1661,6 +1737,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-01": {
       name: "calendar-01",
+      title: "undefined",
       description: "A simple calendar.",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1679,6 +1756,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-02": {
       name: "calendar-02",
+      title: "undefined",
       description: "Multiple months with single selection.",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1697,6 +1775,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-03": {
       name: "calendar-03",
+      title: "undefined",
       description: "Multiple months with multiple selection.",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1715,6 +1794,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-04": {
       name: "calendar-04",
+      title: "undefined",
       description: "Single month with range selection",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1733,6 +1813,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-05": {
       name: "calendar-05",
+      title: "undefined",
       description: "Multiple months with range selection",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1751,6 +1832,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-06": {
       name: "calendar-06",
+      title: "undefined",
       description: "Range selection with minimum days",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1769,6 +1851,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-07": {
       name: "calendar-07",
+      title: "undefined",
       description: "Range selection with minimum and maximum days",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1787,6 +1870,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-08": {
       name: "calendar-08",
+      title: "undefined",
       description: "Calendar with disabled days",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1805,6 +1889,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-09": {
       name: "calendar-09",
+      title: "undefined",
       description: "Calendar with disabled weekends",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1823,6 +1908,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-10": {
       name: "calendar-10",
+      title: "undefined",
       description: "Today button",
       type: "registry:block",
       registryDependencies: ["calendar","card","button"],
@@ -1841,6 +1927,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-11": {
       name: "calendar-11",
+      title: "undefined",
       description: "Start and end of month",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1859,6 +1946,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-12": {
       name: "calendar-12",
+      title: "undefined",
       description: "Localized calendar",
       type: "registry:block",
       registryDependencies: ["calendar","card","select"],
@@ -1877,6 +1965,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-13": {
       name: "calendar-13",
+      title: "undefined",
       description: "With Month and Year Dropdown",
       type: "registry:block",
       registryDependencies: ["calendar","label","select"],
@@ -1895,6 +1984,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-14": {
       name: "calendar-14",
+      title: "undefined",
       description: "With Booked/Unavailable Days",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1913,6 +2003,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-15": {
       name: "calendar-15",
+      title: "undefined",
       description: "With Week Numbers",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1931,6 +2022,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-16": {
       name: "calendar-16",
+      title: "undefined",
       description: "With time picker",
       type: "registry:block",
       registryDependencies: ["calendar","card","input","label"],
@@ -1949,6 +2041,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-17": {
       name: "calendar-17",
+      title: "undefined",
       description: "With time picker inline",
       type: "registry:block",
       registryDependencies: ["calendar","card","input","label"],
@@ -1967,6 +2060,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-18": {
       name: "calendar-18",
+      title: "undefined",
       description: "Variable size",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -1985,6 +2079,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-19": {
       name: "calendar-19",
+      title: "undefined",
       description: "With presets",
       type: "registry:block",
       registryDependencies: ["calendar","card","input","label"],
@@ -2003,6 +2098,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-20": {
       name: "calendar-20",
+      title: "undefined",
       description: "With time presets",
       type: "registry:block",
       registryDependencies: ["calendar","card","button"],
@@ -2021,6 +2117,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-21": {
       name: "calendar-21",
+      title: "undefined",
       description: "Custom days and formatters",
       type: "registry:block",
       registryDependencies: ["calendar"],
@@ -2039,6 +2136,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-22": {
       name: "calendar-22",
+      title: "undefined",
       description: "Date picker",
       type: "registry:block",
       registryDependencies: ["calendar","popover","button","label"],
@@ -2057,6 +2155,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-23": {
       name: "calendar-23",
+      title: "undefined",
       description: "Date range picker",
       type: "registry:block",
       registryDependencies: ["calendar","popover","button","label"],
@@ -2075,6 +2174,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-24": {
       name: "calendar-24",
+      title: "undefined",
       description: "Date and Time picker",
       type: "registry:block",
       registryDependencies: ["calendar","popover","button","label"],
@@ -2093,6 +2193,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-25": {
       name: "calendar-25",
+      title: "undefined",
       description: "Date and Time range picker",
       type: "registry:block",
       registryDependencies: ["calendar","popover","button","label"],
@@ -2111,6 +2212,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-26": {
       name: "calendar-26",
+      title: "undefined",
       description: "Date range picker with time",
       type: "registry:block",
       registryDependencies: ["calendar","popover","button","input","label"],
@@ -2129,6 +2231,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-27": {
       name: "calendar-27",
+      title: "undefined",
       description: "Chart filter",
       type: "registry:block",
       registryDependencies: ["calendar","chart","card","popover","button"],
@@ -2147,6 +2250,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-28": {
       name: "calendar-28",
+      title: "undefined",
       description: "Input with date picker",
       type: "registry:block",
       registryDependencies: ["calendar","input","label","popover","button"],
@@ -2165,6 +2269,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-29": {
       name: "calendar-29",
+      title: "undefined",
       description: "Natural language date picker",
       type: "registry:block",
       registryDependencies: ["calendar","input","label","popover","button"],
@@ -2183,6 +2288,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-30": {
       name: "calendar-30",
+      title: "undefined",
       description: "With little-date",
       type: "registry:block",
       registryDependencies: ["calendar","input","label","popover","button"],
@@ -2201,6 +2307,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-31": {
       name: "calendar-31",
+      title: "undefined",
       description: "With event slots",
       type: "registry:block",
       registryDependencies: ["calendar","card","button"],
@@ -2219,6 +2326,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-32": {
       name: "calendar-32",
+      title: "undefined",
       description: "Date picker in a drawer",
       type: "registry:block",
       registryDependencies: ["calendar","button","drawer"],
@@ -2237,6 +2345,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "signup-01": {
       name: "signup-01",
+      title: "undefined",
       description: "A simple signup form.",
       type: "registry:block",
       registryDependencies: ["button","card","input","label"],
@@ -2259,6 +2368,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "signup-02": {
       name: "signup-02",
+      title: "undefined",
       description: "A two column signup page with a cover image.",
       type: "registry:block",
       registryDependencies: ["button","input","label","field"],
@@ -2281,6 +2391,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "signup-03": {
       name: "signup-03",
+      title: "undefined",
       description: "A signup page with a muted background color.",
       type: "registry:block",
       registryDependencies: ["button","card","input","label","field"],
@@ -2303,6 +2414,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "signup-04": {
       name: "signup-04",
+      title: "undefined",
       description: "A signup page with form and image.",
       type: "registry:block",
       registryDependencies: ["button","card","input","label","field"],
@@ -2325,6 +2437,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "signup-05": {
       name: "signup-05",
+      title: "undefined",
       description: "A simple signup form with social providers.",
       type: "registry:block",
       registryDependencies: ["button","input","label"],
@@ -2347,6 +2460,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "otp-01": {
       name: "otp-01",
+      title: "undefined",
       description: "A simple OTP verification form.",
       type: "registry:block",
       registryDependencies: ["button","card","input-otp","label","field"],
@@ -2369,6 +2483,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "otp-02": {
       name: "otp-02",
+      title: "undefined",
       description: "A two column OTP page with a cover image.",
       type: "registry:block",
       registryDependencies: ["button","input-otp","label","field"],
@@ -2391,6 +2506,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "otp-03": {
       name: "otp-03",
+      title: "undefined",
       description: "An OTP page with a muted background color.",
       type: "registry:block",
       registryDependencies: ["button","card","input-otp","label","field"],
@@ -2413,6 +2529,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "otp-04": {
       name: "otp-04",
+      title: "undefined",
       description: "An OTP page with form and image.",
       type: "registry:block",
       registryDependencies: ["button","card","input-otp","label","field"],
@@ -2435,6 +2552,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "otp-05": {
       name: "otp-05",
+      title: "undefined",
       description: "A simple OTP form with social providers.",
       type: "registry:block",
       registryDependencies: ["button","input-otp","label","field"],
@@ -2457,6 +2575,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-axes": {
       name: "chart-area-axes",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2475,6 +2594,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-default": {
       name: "chart-area-default",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2493,6 +2613,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-gradient": {
       name: "chart-area-gradient",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2511,6 +2632,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-icons": {
       name: "chart-area-icons",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2529,6 +2651,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-interactive": {
       name: "chart-area-interactive",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart","select"],
@@ -2547,6 +2670,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-legend": {
       name: "chart-area-legend",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2565,6 +2689,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-linear": {
       name: "chart-area-linear",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2583,6 +2708,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-stacked-expand": {
       name: "chart-area-stacked-expand",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2601,6 +2727,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-stacked": {
       name: "chart-area-stacked",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2619,6 +2746,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-area-step": {
       name: "chart-area-step",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2637,6 +2765,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-active": {
       name: "chart-bar-active",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2655,6 +2784,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-default": {
       name: "chart-bar-default",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2673,6 +2803,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-horizontal": {
       name: "chart-bar-horizontal",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2691,6 +2822,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-interactive": {
       name: "chart-bar-interactive",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2709,6 +2841,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-label-custom": {
       name: "chart-bar-label-custom",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2727,6 +2860,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-label": {
       name: "chart-bar-label",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2745,6 +2879,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-mixed": {
       name: "chart-bar-mixed",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2763,6 +2898,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-multiple": {
       name: "chart-bar-multiple",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2781,6 +2917,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-negative": {
       name: "chart-bar-negative",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2799,6 +2936,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-stacked": {
       name: "chart-bar-stacked",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2817,6 +2955,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-default": {
       name: "chart-line-default",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2835,6 +2974,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-dots-colors": {
       name: "chart-line-dots-colors",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2853,6 +2993,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-dots-custom": {
       name: "chart-line-dots-custom",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2871,6 +3012,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-dots": {
       name: "chart-line-dots",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2889,6 +3031,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-interactive": {
       name: "chart-line-interactive",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2907,6 +3050,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-label-custom": {
       name: "chart-line-label-custom",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2925,6 +3069,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-label": {
       name: "chart-line-label",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2943,6 +3088,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-linear": {
       name: "chart-line-linear",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2961,6 +3107,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-multiple": {
       name: "chart-line-multiple",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2979,6 +3126,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-line-step": {
       name: "chart-line-step",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -2997,6 +3145,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-donut-active": {
       name: "chart-pie-donut-active",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3015,6 +3164,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-donut-text": {
       name: "chart-pie-donut-text",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3033,6 +3183,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-donut": {
       name: "chart-pie-donut",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3051,6 +3202,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-interactive": {
       name: "chart-pie-interactive",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3069,6 +3221,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-label-custom": {
       name: "chart-pie-label-custom",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3087,6 +3240,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-label-list": {
       name: "chart-pie-label-list",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3105,6 +3259,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-label": {
       name: "chart-pie-label",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3123,6 +3278,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-legend": {
       name: "chart-pie-legend",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3141,6 +3297,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-separator-none": {
       name: "chart-pie-separator-none",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3159,6 +3316,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-simple": {
       name: "chart-pie-simple",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3177,6 +3335,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-pie-stacked": {
       name: "chart-pie-stacked",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3195,6 +3354,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-default": {
       name: "chart-radar-default",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3213,6 +3373,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-dots": {
       name: "chart-radar-dots",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3231,6 +3392,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-grid-circle-fill": {
       name: "chart-radar-grid-circle-fill",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3249,6 +3411,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-grid-circle-no-lines": {
       name: "chart-radar-grid-circle-no-lines",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3267,6 +3430,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-grid-circle": {
       name: "chart-radar-grid-circle",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3285,6 +3449,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-grid-custom": {
       name: "chart-radar-grid-custom",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3303,6 +3468,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-grid-fill": {
       name: "chart-radar-grid-fill",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3321,6 +3487,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-grid-none": {
       name: "chart-radar-grid-none",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3339,6 +3506,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-icons": {
       name: "chart-radar-icons",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3357,6 +3525,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-label-custom": {
       name: "chart-radar-label-custom",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3375,6 +3544,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-legend": {
       name: "chart-radar-legend",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3393,6 +3563,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-lines-only": {
       name: "chart-radar-lines-only",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3411,6 +3582,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-multiple": {
       name: "chart-radar-multiple",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3429,6 +3601,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radar-radius": {
       name: "chart-radar-radius",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3447,6 +3620,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radial-grid": {
       name: "chart-radial-grid",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3465,6 +3639,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radial-label": {
       name: "chart-radial-label",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3483,6 +3658,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radial-shape": {
       name: "chart-radial-shape",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3501,6 +3677,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radial-simple": {
       name: "chart-radial-simple",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3519,6 +3696,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radial-stacked": {
       name: "chart-radial-stacked",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3537,6 +3715,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-radial-text": {
       name: "chart-radial-text",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3555,6 +3734,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-default": {
       name: "chart-tooltip-default",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3573,6 +3753,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-indicator-line": {
       name: "chart-tooltip-indicator-line",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3591,6 +3772,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-indicator-none": {
       name: "chart-tooltip-indicator-none",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3609,6 +3791,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-label-none": {
       name: "chart-tooltip-label-none",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3627,6 +3810,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-label-custom": {
       name: "chart-tooltip-label-custom",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3645,6 +3829,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-label-formatter": {
       name: "chart-tooltip-label-formatter",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3663,6 +3848,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-formatter": {
       name: "chart-tooltip-formatter",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3681,6 +3867,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-icons": {
       name: "chart-tooltip-icons",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3699,6 +3886,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-advanced": {
       name: "chart-tooltip-advanced",
+      title: "undefined",
       description: "",
       type: "registry:block",
       registryDependencies: ["card","chart"],
@@ -3717,6 +3905,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "utils": {
       name: "utils",
+      title: "undefined",
       description: "",
       type: "registry:lib",
       registryDependencies: undefined,
@@ -3735,6 +3924,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "use-mobile": {
       name: "use-mobile",
+      title: "undefined",
       description: "",
       type: "registry:hook",
       registryDependencies: undefined,
@@ -3753,6 +3943,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "accordion-demo": {
       name: "accordion-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["accordion"],
@@ -3771,6 +3962,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "alert-demo": {
       name: "alert-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["alert"],
@@ -3789,6 +3981,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "alert-destructive": {
       name: "alert-destructive",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["alert"],
@@ -3807,6 +4000,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["alert-dialog","button"],
@@ -3825,6 +4019,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "aspect-ratio-demo": {
       name: "aspect-ratio-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["aspect-ratio"],
@@ -3843,6 +4038,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "avatar-demo": {
       name: "avatar-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["avatar"],
@@ -3861,6 +4057,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "badge-demo": {
       name: "badge-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["badge"],
@@ -3879,6 +4076,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "badge-destructive": {
       name: "badge-destructive",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["badge"],
@@ -3897,6 +4095,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "badge-outline": {
       name: "badge-outline",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["badge"],
@@ -3915,6 +4114,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "badge-secondary": {
       name: "badge-secondary",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["badge"],
@@ -3933,6 +4133,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "breadcrumb-demo": {
       name: "breadcrumb-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
@@ -3951,6 +4152,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "breadcrumb-separator": {
       name: "breadcrumb-separator",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
@@ -3969,6 +4171,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "breadcrumb-dropdown": {
       name: "breadcrumb-dropdown",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
@@ -3987,6 +4190,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "breadcrumb-ellipsis": {
       name: "breadcrumb-ellipsis",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
@@ -4005,6 +4209,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "breadcrumb-link": {
       name: "breadcrumb-link",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
@@ -4023,6 +4228,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "breadcrumb-responsive": {
       name: "breadcrumb-responsive",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
@@ -4041,6 +4247,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-demo": {
       name: "button-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4059,6 +4266,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-default": {
       name: "button-default",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4077,6 +4285,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-secondary": {
       name: "button-secondary",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4095,6 +4304,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-destructive": {
       name: "button-destructive",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4113,6 +4323,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-outline": {
       name: "button-outline",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4131,6 +4342,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-ghost": {
       name: "button-ghost",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4149,6 +4361,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-link": {
       name: "button-link",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4167,6 +4380,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-with-icon": {
       name: "button-with-icon",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4185,6 +4399,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-loading": {
       name: "button-loading",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4203,6 +4418,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-icon": {
       name: "button-icon",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4221,6 +4437,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-as-child": {
       name: "button-as-child",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4239,6 +4456,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-rounded": {
       name: "button-rounded",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4257,6 +4475,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-size": {
       name: "button-size",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
@@ -4275,6 +4494,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-demo": {
       name: "button-group-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4293,6 +4513,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-nested": {
       name: "button-group-nested",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4311,6 +4532,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-size": {
       name: "button-group-size",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4329,6 +4551,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-separator": {
       name: "button-group-separator",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4347,6 +4570,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-split": {
       name: "button-group-split",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4365,6 +4589,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-input": {
       name: "button-group-input",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4383,6 +4608,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-dropdown": {
       name: "button-group-dropdown",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4401,6 +4627,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-select": {
       name: "button-group-select",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4419,6 +4646,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-popover": {
       name: "button-group-popover",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4437,6 +4665,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-input-group": {
       name: "button-group-input-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4455,6 +4684,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group-orientation": {
       name: "button-group-orientation",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
@@ -4473,6 +4703,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-demo": {
       name: "calendar-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["calendar"],
@@ -4491,6 +4722,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-form": {
       name: "calendar-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["calendar","form","popover"],
@@ -4509,6 +4741,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "card-demo": {
       name: "card-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["card","button","switch"],
@@ -4527,6 +4760,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "card-with-form": {
       name: "card-with-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button","card","input","label","select"],
@@ -4545,6 +4779,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "carousel-demo": {
       name: "carousel-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
@@ -4563,6 +4798,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "carousel-size": {
       name: "carousel-size",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
@@ -4581,6 +4817,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "carousel-spacing": {
       name: "carousel-spacing",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
@@ -4599,6 +4836,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "carousel-orientation": {
       name: "carousel-orientation",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
@@ -4617,6 +4855,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "carousel-api": {
       name: "carousel-api",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
@@ -4635,6 +4874,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "carousel-plugin": {
       name: "carousel-plugin",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
@@ -4653,6 +4893,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "checkbox-demo": {
       name: "checkbox-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["checkbox"],
@@ -4671,6 +4912,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "checkbox-disabled": {
       name: "checkbox-disabled",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["checkbox"],
@@ -4689,6 +4931,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "checkbox-form-multiple": {
       name: "checkbox-form-multiple",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["checkbox","form"],
@@ -4707,6 +4950,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "checkbox-form-single": {
       name: "checkbox-form-single",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["checkbox","form"],
@@ -4725,6 +4969,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "checkbox-with-text": {
       name: "checkbox-with-text",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["checkbox"],
@@ -4743,6 +4988,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "collapsible-demo": {
       name: "collapsible-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["collapsible"],
@@ -4761,6 +5007,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "combobox-demo": {
       name: "combobox-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["command"],
@@ -4779,6 +5026,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "combobox-dropdown-menu": {
       name: "combobox-dropdown-menu",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["command","dropdown-menu","button"],
@@ -4797,6 +5045,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "combobox-form": {
       name: "combobox-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["command","form"],
@@ -4815,6 +5064,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "combobox-popover": {
       name: "combobox-popover",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["combobox","popover"],
@@ -4833,6 +5083,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "combobox-responsive": {
       name: "combobox-responsive",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["combobox","popover","drawer"],
@@ -4851,6 +5102,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "command-demo": {
       name: "command-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["command"],
@@ -4869,6 +5121,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "command-dialog": {
       name: "command-dialog",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["command","dialog"],
@@ -4887,6 +5140,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "context-menu-demo": {
       name: "context-menu-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["context-menu"],
@@ -4905,6 +5159,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "data-table-demo": {
       name: "data-table-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["data-table"],
@@ -4923,6 +5178,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "date-picker-demo": {
       name: "date-picker-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button","calendar","popover"],
@@ -4941,6 +5197,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "date-picker-form": {
       name: "date-picker-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button","calendar","form","popover"],
@@ -4959,6 +5216,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "date-picker-with-presets": {
       name: "date-picker-with-presets",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button","calendar","popover","select"],
@@ -4977,6 +5235,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "date-picker-with-range": {
       name: "date-picker-with-range",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["button","calendar","popover"],
@@ -4995,6 +5254,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dialog-demo": {
       name: "dialog-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["dialog"],
@@ -5013,6 +5273,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dialog-close-button": {
       name: "dialog-close-button",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["dialog","button"],
@@ -5031,6 +5292,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "drawer-demo": {
       name: "drawer-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["drawer"],
@@ -5049,6 +5311,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "empty-demo": {
       name: "empty-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["empty","button"],
@@ -5067,6 +5330,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "empty-icon": {
       name: "empty-icon",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["empty"],
@@ -5085,6 +5349,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "empty-avatar": {
       name: "empty-avatar",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["empty","button","avatar"],
@@ -5103,6 +5368,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "empty-avatar-group": {
       name: "empty-avatar-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["empty","button","avatar"],
@@ -5121,6 +5387,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "empty-input-group": {
       name: "empty-input-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["empty","button","input"],
@@ -5139,6 +5406,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "empty-outline": {
       name: "empty-outline",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["empty","button"],
@@ -5157,6 +5425,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "empty-background": {
       name: "empty-background",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["empty"],
@@ -5175,6 +5444,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-demo": {
       name: "field-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5193,6 +5463,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-input": {
       name: "field-input",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5211,6 +5482,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-textarea": {
       name: "field-textarea",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5229,6 +5501,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-fieldset": {
       name: "field-fieldset",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5247,6 +5520,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-radio": {
       name: "field-radio",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5265,6 +5539,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-checkbox": {
       name: "field-checkbox",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5283,6 +5558,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-switch": {
       name: "field-switch",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5301,6 +5577,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-slider": {
       name: "field-slider",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5319,6 +5596,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-select": {
       name: "field-select",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5337,6 +5615,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-choice-card": {
       name: "field-choice-card",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5355,6 +5634,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-group": {
       name: "field-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5373,6 +5653,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field-responsive": {
       name: "field-responsive",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
@@ -5391,6 +5672,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-demo": {
       name: "form-rhf-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","input","input-group","button","card"],
@@ -5409,6 +5691,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-input": {
       name: "form-rhf-input",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","input","button","card"],
@@ -5427,6 +5710,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-select": {
       name: "form-rhf-select",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","select","button","card"],
@@ -5445,6 +5729,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-checkbox": {
       name: "form-rhf-checkbox",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","checkbox","button","card"],
@@ -5463,6 +5748,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-switch": {
       name: "form-rhf-switch",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","switch","button","card"],
@@ -5481,6 +5767,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-textarea": {
       name: "form-rhf-textarea",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","textarea","button","card"],
@@ -5499,6 +5786,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-radiogroup": {
       name: "form-rhf-radiogroup",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","radio-group","button","card"],
@@ -5517,6 +5805,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-array": {
       name: "form-rhf-array",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","input","input-group","button","card"],
@@ -5535,6 +5824,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-complex": {
       name: "form-rhf-complex",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","button","card","checkbox","radio-group","select","switch"],
@@ -5553,6 +5843,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-rhf-password": {
       name: "form-rhf-password",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","input-group","progress","button","card"],
@@ -5571,6 +5862,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-tanstack-demo": {
       name: "form-tanstack-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","input","input-group","button","card"],
@@ -5589,6 +5881,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-tanstack-input": {
       name: "form-tanstack-input",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","input","button","card"],
@@ -5607,6 +5900,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-tanstack-textarea": {
       name: "form-tanstack-textarea",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","textarea","button","card"],
@@ -5625,6 +5919,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-tanstack-select": {
       name: "form-tanstack-select",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","select","button","card"],
@@ -5643,6 +5938,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-tanstack-checkbox": {
       name: "form-tanstack-checkbox",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","checkbox","button","card"],
@@ -5661,6 +5957,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-tanstack-switch": {
       name: "form-tanstack-switch",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","switch","button","card"],
@@ -5679,6 +5976,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-tanstack-radiogroup": {
       name: "form-tanstack-radiogroup",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","radio-group","button","card"],
@@ -5697,6 +5995,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-tanstack-array": {
       name: "form-tanstack-array",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","input","input-group","button","card"],
@@ -5715,6 +6014,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form-tanstack-complex": {
       name: "form-tanstack-complex",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["field","button","card","checkbox","radio-group","select","switch"],
@@ -5733,6 +6033,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "drawer-dialog": {
       name: "drawer-dialog",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["drawer","dialog"],
@@ -5751,6 +6052,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dropdown-menu-demo": {
       name: "dropdown-menu-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["dropdown-menu"],
@@ -5769,6 +6071,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dropdown-menu-checkboxes": {
       name: "dropdown-menu-checkboxes",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["dropdown-menu","checkbox"],
@@ -5787,6 +6090,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dropdown-menu-radio-group": {
       name: "dropdown-menu-radio-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["dropdown-menu","radio-group"],
@@ -5805,6 +6109,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dropdown-menu-dialog": {
       name: "dropdown-menu-dialog",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["dropdown-menu","dialog","button","input","label"],
@@ -5823,6 +6128,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "hover-card-demo": {
       name: "hover-card-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["hover-card"],
@@ -5841,6 +6147,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-demo": {
       name: "input-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input"],
@@ -5859,6 +6166,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-disabled": {
       name: "input-disabled",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input"],
@@ -5877,6 +6185,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-file": {
       name: "input-file",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input"],
@@ -5895,6 +6204,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-form": {
       name: "input-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input","button","form"],
@@ -5913,6 +6223,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-with-button": {
       name: "input-with-button",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input","button"],
@@ -5931,6 +6242,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-with-label": {
       name: "input-with-label",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input","button","label"],
@@ -5949,6 +6261,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-with-text": {
       name: "input-with-text",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input","button","label"],
@@ -5967,6 +6280,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-demo": {
       name: "input-group-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group"],
@@ -5985,6 +6299,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-label": {
       name: "input-group-label",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group","label"],
@@ -6003,6 +6318,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-text": {
       name: "input-group-text",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group"],
@@ -6021,6 +6337,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-tooltip": {
       name: "input-group-tooltip",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group","tooltip"],
@@ -6039,6 +6356,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-button": {
       name: "input-group-button",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group"],
@@ -6057,6 +6375,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-button-group": {
       name: "input-group-button-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group","button-group"],
@@ -6075,6 +6394,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-dropdown": {
       name: "input-group-dropdown",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group","dropdown-menu","button"],
@@ -6093,6 +6413,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-spinner": {
       name: "input-group-spinner",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group","spinner"],
@@ -6111,6 +6432,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-textarea": {
       name: "input-group-textarea",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group","textarea"],
@@ -6129,6 +6451,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-icon": {
       name: "input-group-icon",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group"],
@@ -6147,6 +6470,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group-custom": {
       name: "input-group-custom",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group","badge","progress","dropdown-menu","tooltip"],
@@ -6165,6 +6489,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-otp-demo": {
       name: "input-otp-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp"],
@@ -6183,6 +6508,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-otp-pattern": {
       name: "input-otp-pattern",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp"],
@@ -6201,6 +6527,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-otp-separator": {
       name: "input-otp-separator",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp"],
@@ -6219,6 +6546,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-otp-controlled": {
       name: "input-otp-controlled",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp"],
@@ -6237,6 +6565,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-otp-form": {
       name: "input-otp-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp","form"],
@@ -6255,6 +6584,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-demo": {
       name: "item-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6273,6 +6603,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-size": {
       name: "item-size",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6291,6 +6622,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-variant": {
       name: "item-variant",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6309,6 +6641,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-icon": {
       name: "item-icon",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6327,6 +6660,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-image": {
       name: "item-image",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6345,6 +6679,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-avatar": {
       name: "item-avatar",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6363,6 +6698,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-group": {
       name: "item-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6381,6 +6717,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-header": {
       name: "item-header",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6399,6 +6736,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-dropdown": {
       name: "item-dropdown",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6417,6 +6755,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item-link": {
       name: "item-link",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
@@ -6435,6 +6774,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "kbd-demo": {
       name: "kbd-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["kbd"],
@@ -6453,6 +6793,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "kbd-tooltip": {
       name: "kbd-tooltip",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["kbd","tooltip","button"],
@@ -6471,6 +6812,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "kbd-input-group": {
       name: "kbd-input-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["kbd","input","button","label"],
@@ -6489,6 +6831,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "kbd-button": {
       name: "kbd-button",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["kbd","button"],
@@ -6507,6 +6850,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "kbd-group": {
       name: "kbd-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["kbd"],
@@ -6525,6 +6869,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "label-demo": {
       name: "label-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["label"],
@@ -6543,6 +6888,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "menubar-demo": {
       name: "menubar-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["menubar"],
@@ -6561,6 +6907,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "navigation-menu-demo": {
       name: "navigation-menu-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["navigation-menu"],
@@ -6579,6 +6926,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "native-select-demo": {
       name: "native-select-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["native-select"],
@@ -6597,6 +6945,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "native-select-groups": {
       name: "native-select-groups",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["native-select"],
@@ -6615,6 +6964,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "native-select-disabled": {
       name: "native-select-disabled",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["native-select"],
@@ -6633,6 +6983,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "native-select-invalid": {
       name: "native-select-invalid",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["native-select"],
@@ -6651,6 +7002,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "pagination-demo": {
       name: "pagination-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["pagination"],
@@ -6669,6 +7021,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "popover-demo": {
       name: "popover-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["popover"],
@@ -6687,6 +7040,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "progress-demo": {
       name: "progress-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["progress"],
@@ -6705,6 +7059,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "radio-group-demo": {
       name: "radio-group-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["radio-group"],
@@ -6723,6 +7078,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "radio-group-form": {
       name: "radio-group-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["radio-group","form"],
@@ -6741,6 +7097,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "resizable-demo": {
       name: "resizable-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["resizable"],
@@ -6759,6 +7116,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "resizable-demo-with-handle": {
       name: "resizable-demo-with-handle",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["resizable"],
@@ -6777,6 +7135,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "resizable-vertical": {
       name: "resizable-vertical",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["resizable"],
@@ -6795,6 +7154,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "resizable-handle": {
       name: "resizable-handle",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["resizable"],
@@ -6813,6 +7173,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "scroll-area-demo": {
       name: "scroll-area-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["scroll-area"],
@@ -6831,6 +7192,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "scroll-area-horizontal-demo": {
       name: "scroll-area-horizontal-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["scroll-area"],
@@ -6849,6 +7211,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "select-demo": {
       name: "select-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["select"],
@@ -6867,6 +7230,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "select-scrollable": {
       name: "select-scrollable",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["select"],
@@ -6885,6 +7249,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "select-form": {
       name: "select-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["select"],
@@ -6903,6 +7268,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "separator-demo": {
       name: "separator-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["separator"],
@@ -6921,6 +7287,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sheet-demo": {
       name: "sheet-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["sheet"],
@@ -6939,6 +7306,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sheet-side": {
       name: "sheet-side",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["sheet"],
@@ -6957,6 +7325,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "skeleton-demo": {
       name: "skeleton-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["skeleton"],
@@ -6975,6 +7344,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "skeleton-card": {
       name: "skeleton-card",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["skeleton"],
@@ -6993,6 +7363,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "slider-demo": {
       name: "slider-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["slider"],
@@ -7011,6 +7382,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sonner-demo": {
       name: "sonner-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["sonner"],
@@ -7029,6 +7401,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sonner-types": {
       name: "sonner-types",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["sonner"],
@@ -7047,6 +7420,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-demo": {
       name: "spinner-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
@@ -7065,6 +7439,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-basic": {
       name: "spinner-basic",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner","button"],
@@ -7083,6 +7458,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-button": {
       name: "spinner-button",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner","button"],
@@ -7101,6 +7477,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-badge": {
       name: "spinner-badge",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner","badge"],
@@ -7119,6 +7496,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-input-group": {
       name: "spinner-input-group",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner","button","input"],
@@ -7137,6 +7515,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-empty": {
       name: "spinner-empty",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
@@ -7155,6 +7534,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-color": {
       name: "spinner-color",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
@@ -7173,6 +7553,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-custom": {
       name: "spinner-custom",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
@@ -7191,6 +7572,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-size": {
       name: "spinner-size",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
@@ -7209,6 +7591,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner-item": {
       name: "spinner-item",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
@@ -7227,6 +7610,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "switch-demo": {
       name: "switch-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["switch"],
@@ -7245,6 +7629,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "switch-form": {
       name: "switch-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["switch","form"],
@@ -7263,6 +7648,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "table-demo": {
       name: "table-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["table"],
@@ -7281,6 +7667,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "tabs-demo": {
       name: "tabs-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["tabs"],
@@ -7299,6 +7686,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "textarea-demo": {
       name: "textarea-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea"],
@@ -7317,6 +7705,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "textarea-disabled": {
       name: "textarea-disabled",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea"],
@@ -7335,6 +7724,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "textarea-form": {
       name: "textarea-form",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea","form"],
@@ -7353,6 +7743,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "textarea-with-button": {
       name: "textarea-with-button",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea","button"],
@@ -7371,6 +7762,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "textarea-with-label": {
       name: "textarea-with-label",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea","label"],
@@ -7389,6 +7781,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "textarea-with-text": {
       name: "textarea-with-text",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea","label"],
@@ -7407,6 +7800,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-group-demo": {
       name: "toggle-group-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
@@ -7425,6 +7819,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-group-disabled": {
       name: "toggle-group-disabled",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
@@ -7443,6 +7838,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-group-lg": {
       name: "toggle-group-lg",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
@@ -7461,6 +7857,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-group-outline": {
       name: "toggle-group-outline",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
@@ -7479,6 +7876,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-group-sm": {
       name: "toggle-group-sm",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
@@ -7497,6 +7895,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-group-single": {
       name: "toggle-group-single",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
@@ -7515,6 +7914,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-group-spacing": {
       name: "toggle-group-spacing",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
@@ -7533,6 +7933,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-demo": {
       name: "toggle-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
@@ -7551,6 +7952,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-disabled": {
       name: "toggle-disabled",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
@@ -7569,6 +7971,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-lg": {
       name: "toggle-lg",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
@@ -7587,6 +7990,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-outline": {
       name: "toggle-outline",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
@@ -7605,6 +8009,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-sm": {
       name: "toggle-sm",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
@@ -7623,6 +8028,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-with-text": {
       name: "toggle-with-text",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
@@ -7641,6 +8047,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "tooltip-demo": {
       name: "tooltip-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: ["tooltip"],
@@ -7659,6 +8066,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-blockquote": {
       name: "typography-blockquote",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7677,6 +8085,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-demo": {
       name: "typography-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7695,6 +8104,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-h1": {
       name: "typography-h1",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7713,6 +8123,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-h2": {
       name: "typography-h2",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7731,6 +8142,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-h3": {
       name: "typography-h3",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7749,6 +8161,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-h4": {
       name: "typography-h4",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7767,6 +8180,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-inline-code": {
       name: "typography-inline-code",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7785,6 +8199,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-large": {
       name: "typography-large",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7803,6 +8218,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-lead": {
       name: "typography-lead",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7821,6 +8237,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-list": {
       name: "typography-list",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7839,6 +8256,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-muted": {
       name: "typography-muted",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7857,6 +8275,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-p": {
       name: "typography-p",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7875,6 +8294,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-small": {
       name: "typography-small",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7893,6 +8313,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "typography-table": {
       name: "typography-table",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7911,6 +8332,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "mode-toggle": {
       name: "mode-toggle",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7929,6 +8351,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-demo": {
       name: "chart-bar-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7947,6 +8370,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-demo-grid": {
       name: "chart-bar-demo-grid",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7965,6 +8389,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-demo-axis": {
       name: "chart-bar-demo-axis",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -7983,6 +8408,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-demo-tooltip": {
       name: "chart-bar-demo-tooltip",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -8001,6 +8427,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-bar-demo-legend": {
       name: "chart-bar-demo-legend",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -8019,6 +8446,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart-tooltip-demo": {
       name: "chart-tooltip-demo",
+      title: "undefined",
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
@@ -8037,6 +8465,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar-hijri": {
       name: "calendar-hijri",
+      title: "undefined",
       description: "A Persian calendar.",
       type: "registry:example",
       registryDependencies: ["calendar"],
@@ -8055,6 +8484,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-demo": {
       name: "sidebar-demo",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8073,6 +8503,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-header": {
       name: "sidebar-header",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8091,6 +8522,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-footer": {
       name: "sidebar-footer",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8109,6 +8541,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-group": {
       name: "sidebar-group",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8127,6 +8560,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-group-collapsible": {
       name: "sidebar-group-collapsible",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8145,6 +8579,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-group-action": {
       name: "sidebar-group-action",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8163,6 +8598,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-menu": {
       name: "sidebar-menu",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8181,6 +8617,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-menu-action": {
       name: "sidebar-menu-action",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8199,6 +8636,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-menu-sub": {
       name: "sidebar-menu-sub",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8217,6 +8655,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-menu-collapsible": {
       name: "sidebar-menu-collapsible",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8235,6 +8674,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-menu-badge": {
       name: "sidebar-menu-badge",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8253,6 +8693,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-rsc": {
       name: "sidebar-rsc",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8271,6 +8712,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar-controlled": {
       name: "sidebar-controlled",
+      title: "undefined",
       description: "",
       type: "registry:internal",
       registryDependencies: undefined,
@@ -8289,1052 +8731,1035 @@ export const Index: Record<string, Record<string, any>> = {
     },
   },
   "radix-nova": {
-    "accordion-demo": {
-      name: "accordion-demo",
+    "accordion-example": {
+      name: "accordion-example",
+      title: "Accordion",
       description: "",
       type: "registry:example",
       registryDependencies: ["accordion"],
       files: [{
-        path: "registry/radix-nova/examples/accordion-demo.tsx",
+        path: "registry/radix-nova/examples/accordion-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/accordion-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/accordion-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Accordion"}},
+      meta: undefined,
     },
-    "alert-demo": {
-      name: "alert-demo",
+    "alert-example": {
+      name: "alert-example",
+      title: "Alert",
       description: "",
       type: "registry:example",
       registryDependencies: ["alert"],
       files: [{
-        path: "registry/radix-nova/examples/alert-demo.tsx",
+        path: "registry/radix-nova/examples/alert-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/alert-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/alert-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Alert"}},
+      meta: undefined,
     },
-    "alert-dialog-demo": {
-      name: "alert-dialog-demo",
+    "alert-dialog-example": {
+      name: "alert-dialog-example",
+      title: "Alert Dialog",
       description: "",
       type: "registry:example",
       registryDependencies: ["alert-dialog","button"],
       files: [{
-        path: "registry/radix-nova/examples/alert-dialog-demo.tsx",
+        path: "registry/radix-nova/examples/alert-dialog-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/alert-dialog-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/alert-dialog-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Alert Dialog"}},
+      meta: undefined,
     },
-    "aspect-ratio-demo": {
-      name: "aspect-ratio-demo",
+    "aspect-ratio-example": {
+      name: "aspect-ratio-example",
+      title: "Aspect Ratio",
       description: "",
       type: "registry:example",
       registryDependencies: ["aspect-ratio"],
       files: [{
-        path: "registry/radix-nova/examples/aspect-ratio-demo.tsx",
+        path: "registry/radix-nova/examples/aspect-ratio-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/aspect-ratio-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/aspect-ratio-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Aspect Ratio"}},
+      meta: undefined,
     },
-    "avatar-demo": {
-      name: "avatar-demo",
+    "avatar-example": {
+      name: "avatar-example",
+      title: "Avatar",
       description: "",
       type: "registry:example",
       registryDependencies: ["avatar"],
       files: [{
-        path: "registry/radix-nova/examples/avatar-demo.tsx",
+        path: "registry/radix-nova/examples/avatar-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/avatar-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/avatar-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Avatar"}},
+      meta: undefined,
     },
-    "badge-demo": {
-      name: "badge-demo",
+    "badge-example": {
+      name: "badge-example",
+      title: "Badge",
       description: "",
       type: "registry:example",
       registryDependencies: ["badge"],
       files: [{
-        path: "registry/radix-nova/examples/badge-demo.tsx",
+        path: "registry/radix-nova/examples/badge-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/badge-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/badge-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Badge"}},
+      meta: undefined,
     },
-    "breadcrumb-demo": {
-      name: "breadcrumb-demo",
+    "breadcrumb-example": {
+      name: "breadcrumb-example",
+      title: "Breadcrumb",
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
       files: [{
-        path: "registry/radix-nova/examples/breadcrumb-demo.tsx",
+        path: "registry/radix-nova/examples/breadcrumb-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/breadcrumb-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/breadcrumb-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Breadcrumb"}},
+      meta: undefined,
     },
-    "button-demo": {
-      name: "button-demo",
+    "button-example": {
+      name: "button-example",
+      title: "Button",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/radix-nova/examples/button-demo.tsx",
+        path: "registry/radix-nova/examples/button-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/button-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/button-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Button"}},
+      meta: undefined,
     },
-    "button-group-demo": {
-      name: "button-group-demo",
+    "button-group-example": {
+      name: "button-group-example",
+      title: "Button Group",
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
       files: [{
-        path: "registry/radix-nova/examples/button-group-demo.tsx",
+        path: "registry/radix-nova/examples/button-group-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/button-group-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/button-group-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Button Group"}},
+      meta: undefined,
     },
-    "calendar-demo": {
-      name: "calendar-demo",
+    "calendar-example": {
+      name: "calendar-example",
+      title: "Calendar",
       description: "",
       type: "registry:example",
-      registryDependencies: ["calendar"],
+      registryDependencies: ["button","calendar","card","drawer","input","label","popover"],
       files: [{
-        path: "registry/radix-nova/examples/calendar-demo.tsx",
+        path: "registry/radix-nova/examples/calendar-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/calendar-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/calendar-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Calendar"}},
+      meta: undefined,
     },
-    "card-demo": {
-      name: "card-demo",
+    "card-example": {
+      name: "card-example",
+      title: "Card",
       description: "",
       type: "registry:example",
       registryDependencies: ["card"],
       files: [{
-        path: "registry/radix-nova/examples/card-demo.tsx",
+        path: "registry/radix-nova/examples/card-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/card-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/card-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Card"}},
+      meta: undefined,
     },
-    "carousel-demo": {
-      name: "carousel-demo",
+    "carousel-example": {
+      name: "carousel-example",
+      title: "Carousel",
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
       files: [{
-        path: "registry/radix-nova/examples/carousel-demo.tsx",
+        path: "registry/radix-nova/examples/carousel-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/carousel-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/carousel-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Carousel"}},
+      meta: undefined,
     },
-    "chart-area-demo": {
-      name: "chart-area-demo",
+    "chart-example": {
+      name: "chart-example",
+      title: "Chart",
       description: "",
       type: "registry:example",
       registryDependencies: ["chart","card"],
       files: [{
-        path: "registry/radix-nova/examples/chart-area-demo.tsx",
+        path: "registry/radix-nova/examples/chart-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/chart-area-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/chart-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Chart Area"}},
+      meta: undefined,
     },
-    "chart-bar-demo": {
-      name: "chart-bar-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["chart","card"],
-      files: [{
-        path: "registry/radix-nova/examples/chart-bar-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/chart-bar-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: {"canva":{"title":"Chart Bar"}},
-    },
-    "chart-demo": {
-      name: "chart-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["chart","card"],
-      files: [{
-        path: "registry/radix-nova/examples/chart-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/chart-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: {"canva":{"title":"Chart"}},
-    },
-    "chart-line-demo": {
-      name: "chart-line-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["chart","card"],
-      files: [{
-        path: "registry/radix-nova/examples/chart-line-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/chart-line-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: {"canva":{"title":"Chart Line"}},
-    },
-    "checkbox-demo": {
-      name: "checkbox-demo",
+    "checkbox-example": {
+      name: "checkbox-example",
+      title: "Checkbox",
       description: "",
       type: "registry:example",
       registryDependencies: ["checkbox"],
       files: [{
-        path: "registry/radix-nova/examples/checkbox-demo.tsx",
+        path: "registry/radix-nova/examples/checkbox-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/checkbox-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/checkbox-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Checkbox"}},
+      meta: undefined,
     },
-    "collapsible-demo": {
-      name: "collapsible-demo",
+    "collapsible-example": {
+      name: "collapsible-example",
+      title: "Collapsible",
       description: "",
       type: "registry:example",
       registryDependencies: ["collapsible"],
       files: [{
-        path: "registry/radix-nova/examples/collapsible-demo.tsx",
+        path: "registry/radix-nova/examples/collapsible-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/collapsible-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/collapsible-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Collapsible"}},
+      meta: undefined,
     },
-    "combobox-demo": {
-      name: "combobox-demo",
+    "combobox-example": {
+      name: "combobox-example",
+      title: "Combobox",
       description: "",
       type: "registry:example",
       registryDependencies: ["avatar","button","command","popover"],
       files: [{
-        path: "registry/radix-nova/examples/combobox-demo.tsx",
+        path: "registry/radix-nova/examples/combobox-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/combobox-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/combobox-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Combobox"}},
+      meta: undefined,
     },
-    "command-demo": {
-      name: "command-demo",
+    "command-example": {
+      name: "command-example",
+      title: "Command",
       description: "",
       type: "registry:example",
       registryDependencies: ["command"],
       files: [{
-        path: "registry/radix-nova/examples/command-demo.tsx",
+        path: "registry/radix-nova/examples/command-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/command-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/command-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Command"}},
+      meta: undefined,
     },
-    "context-menu-demo": {
-      name: "context-menu-demo",
+    "context-menu-example": {
+      name: "context-menu-example",
+      title: "Context Menu",
       description: "",
       type: "registry:example",
       registryDependencies: ["context-menu"],
       files: [{
-        path: "registry/radix-nova/examples/context-menu-demo.tsx",
+        path: "registry/radix-nova/examples/context-menu-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/context-menu-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/context-menu-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Context Menu"}},
+      meta: undefined,
     },
-    "date-picker-demo": {
-      name: "date-picker-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button","calendar","drawer","popover"],
-      files: [{
-        path: "registry/radix-nova/examples/date-picker-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/date-picker-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: {"canva":{"title":"Date Picker"}},
-    },
-    "dialog-demo": {
-      name: "dialog-demo",
+    "dialog-example": {
+      name: "dialog-example",
+      title: "Dialog",
       description: "",
       type: "registry:example",
       registryDependencies: ["dialog"],
       files: [{
-        path: "registry/radix-nova/examples/dialog-demo.tsx",
+        path: "registry/radix-nova/examples/dialog-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/dialog-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/dialog-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Dialog"}},
+      meta: undefined,
     },
-    "drawer-demo": {
-      name: "drawer-demo",
+    "drawer-example": {
+      name: "drawer-example",
+      title: "Drawer",
       description: "",
       type: "registry:example",
       registryDependencies: ["drawer"],
       files: [{
-        path: "registry/radix-nova/examples/drawer-demo.tsx",
+        path: "registry/radix-nova/examples/drawer-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/drawer-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/drawer-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Drawer"}},
+      meta: undefined,
     },
-    "dropdown-menu-demo": {
-      name: "dropdown-menu-demo",
+    "dropdown-menu-example": {
+      name: "dropdown-menu-example",
+      title: "Dropdown Menu",
       description: "",
       type: "registry:example",
       registryDependencies: ["dropdown-menu"],
       files: [{
-        path: "registry/radix-nova/examples/dropdown-menu-demo.tsx",
+        path: "registry/radix-nova/examples/dropdown-menu-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/dropdown-menu-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/dropdown-menu-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Dropdown Menu"}},
+      meta: undefined,
     },
-    "empty-demo": {
-      name: "empty-demo",
+    "empty-example": {
+      name: "empty-example",
+      title: "Empty",
       description: "",
       type: "registry:example",
       registryDependencies: ["empty"],
       files: [{
-        path: "registry/radix-nova/examples/empty-demo.tsx",
+        path: "registry/radix-nova/examples/empty-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/empty-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/empty-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Empty"}},
+      meta: undefined,
     },
-    "field-demo": {
-      name: "field-demo",
+    "field-example": {
+      name: "field-example",
+      title: "Field",
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
       files: [{
-        path: "registry/radix-nova/examples/field-demo.tsx",
+        path: "registry/radix-nova/examples/field-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/field-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/field-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Field"}},
+      meta: undefined,
     },
-    "form-demo": {
-      name: "form-demo",
+    "form-example": {
+      name: "form-example",
+      title: "Form",
       description: "",
       type: "registry:example",
       registryDependencies: ["button","calendar","checkbox","form","input","popover","radio-group","select","switch","textarea"],
       files: [{
-        path: "registry/radix-nova/examples/form-demo.tsx",
+        path: "registry/radix-nova/examples/form-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/form-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/form-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Form"}},
+      meta: undefined,
     },
-    "hover-card-demo": {
-      name: "hover-card-demo",
+    "hover-card-example": {
+      name: "hover-card-example",
+      title: "Hover Card",
       description: "",
       type: "registry:example",
       registryDependencies: ["hover-card"],
       files: [{
-        path: "registry/radix-nova/examples/hover-card-demo.tsx",
+        path: "registry/radix-nova/examples/hover-card-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/hover-card-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/hover-card-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Hover Card"}},
+      meta: undefined,
     },
-    "input-demo": {
-      name: "input-demo",
+    "input-example": {
+      name: "input-example",
+      title: "Input",
       description: "",
       type: "registry:example",
       registryDependencies: ["input"],
       files: [{
-        path: "registry/radix-nova/examples/input-demo.tsx",
+        path: "registry/radix-nova/examples/input-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/input-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/input-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Input"}},
+      meta: undefined,
     },
-    "input-group-demo": {
-      name: "input-group-demo",
+    "input-group-example": {
+      name: "input-group-example",
+      title: "Input Group",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group"],
       files: [{
-        path: "registry/radix-nova/examples/input-group-demo.tsx",
+        path: "registry/radix-nova/examples/input-group-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/input-group-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/input-group-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Input Group"}},
+      meta: undefined,
     },
-    "input-otp-demo": {
-      name: "input-otp-demo",
+    "input-otp-example": {
+      name: "input-otp-example",
+      title: "Input OTP",
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp"],
       files: [{
-        path: "registry/radix-nova/examples/input-otp-demo.tsx",
+        path: "registry/radix-nova/examples/input-otp-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/input-otp-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/input-otp-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Input OTP"}},
+      meta: undefined,
     },
-    "item-demo": {
-      name: "item-demo",
+    "item-example": {
+      name: "item-example",
+      title: "Item",
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
       files: [{
-        path: "registry/radix-nova/examples/item-demo.tsx",
+        path: "registry/radix-nova/examples/item-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/item-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/item-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Item"}},
+      meta: undefined,
     },
-    "kbd-demo": {
-      name: "kbd-demo",
+    "kbd-example": {
+      name: "kbd-example",
+      title: "Kbd",
       description: "",
       type: "registry:example",
       registryDependencies: ["kbd"],
       files: [{
-        path: "registry/radix-nova/examples/kbd-demo.tsx",
+        path: "registry/radix-nova/examples/kbd-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/kbd-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/kbd-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Kbd"}},
+      meta: undefined,
     },
-    "label-demo": {
-      name: "label-demo",
+    "label-example": {
+      name: "label-example",
+      title: "Label",
       description: "",
       type: "registry:example",
       registryDependencies: ["label"],
       files: [{
-        path: "registry/radix-nova/examples/label-demo.tsx",
+        path: "registry/radix-nova/examples/label-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/label-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/label-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Label"}},
+      meta: undefined,
     },
-    "menubar-demo": {
-      name: "menubar-demo",
+    "menubar-example": {
+      name: "menubar-example",
+      title: "Menubar",
       description: "",
       type: "registry:example",
       registryDependencies: ["menubar"],
       files: [{
-        path: "registry/radix-nova/examples/menubar-demo.tsx",
+        path: "registry/radix-nova/examples/menubar-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/menubar-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/menubar-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Menubar"}},
+      meta: undefined,
     },
-    "native-select-demo": {
-      name: "native-select-demo",
+    "native-select-example": {
+      name: "native-select-example",
+      title: "Native Select",
       description: "",
       type: "registry:example",
       registryDependencies: ["native-select"],
       files: [{
-        path: "registry/radix-nova/examples/native-select-demo.tsx",
+        path: "registry/radix-nova/examples/native-select-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/native-select-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/native-select-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Native Select"}},
+      meta: undefined,
     },
-    "navigation-menu-demo": {
-      name: "navigation-menu-demo",
+    "navigation-menu-example": {
+      name: "navigation-menu-example",
+      title: "Navigation Menu",
       description: "",
       type: "registry:example",
       registryDependencies: ["navigation-menu"],
       files: [{
-        path: "registry/radix-nova/examples/navigation-menu-demo.tsx",
+        path: "registry/radix-nova/examples/navigation-menu-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/navigation-menu-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/navigation-menu-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Navigation Menu"}},
+      meta: undefined,
     },
-    "pagination-demo": {
-      name: "pagination-demo",
+    "pagination-example": {
+      name: "pagination-example",
+      title: "Pagination",
       description: "",
       type: "registry:example",
       registryDependencies: ["pagination"],
       files: [{
-        path: "registry/radix-nova/examples/pagination-demo.tsx",
+        path: "registry/radix-nova/examples/pagination-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/pagination-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/pagination-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Pagination"}},
+      meta: undefined,
     },
-    "popover-demo": {
-      name: "popover-demo",
+    "popover-example": {
+      name: "popover-example",
+      title: "Popover",
       description: "",
       type: "registry:example",
       registryDependencies: ["popover"],
       files: [{
-        path: "registry/radix-nova/examples/popover-demo.tsx",
+        path: "registry/radix-nova/examples/popover-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/popover-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/popover-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Popover"}},
+      meta: undefined,
     },
-    "progress-demo": {
-      name: "progress-demo",
+    "progress-example": {
+      name: "progress-example",
+      title: "Progress",
       description: "",
       type: "registry:example",
       registryDependencies: ["progress"],
       files: [{
-        path: "registry/radix-nova/examples/progress-demo.tsx",
+        path: "registry/radix-nova/examples/progress-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/progress-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/progress-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Progress"}},
+      meta: undefined,
     },
-    "radio-group-demo": {
-      name: "radio-group-demo",
+    "radio-group-example": {
+      name: "radio-group-example",
+      title: "Radio Group",
       description: "",
       type: "registry:example",
       registryDependencies: ["radio-group"],
       files: [{
-        path: "registry/radix-nova/examples/radio-group-demo.tsx",
+        path: "registry/radix-nova/examples/radio-group-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/radio-group-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/radio-group-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Radio Group"}},
+      meta: undefined,
     },
-    "resizable-demo": {
-      name: "resizable-demo",
+    "resizable-example": {
+      name: "resizable-example",
+      title: "Resizable",
       description: "",
       type: "registry:example",
       registryDependencies: ["resizable"],
       files: [{
-        path: "registry/radix-nova/examples/resizable-demo.tsx",
+        path: "registry/radix-nova/examples/resizable-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/resizable-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/resizable-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Resizable"}},
+      meta: undefined,
     },
-    "scroll-area-demo": {
-      name: "scroll-area-demo",
+    "scroll-area-example": {
+      name: "scroll-area-example",
+      title: "Scroll Area",
       description: "",
       type: "registry:example",
       registryDependencies: ["scroll-area"],
       files: [{
-        path: "registry/radix-nova/examples/scroll-area-demo.tsx",
+        path: "registry/radix-nova/examples/scroll-area-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/scroll-area-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/scroll-area-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Scroll Area"}},
+      meta: undefined,
     },
-    "select-demo": {
-      name: "select-demo",
+    "select-example": {
+      name: "select-example",
+      title: "Select",
       description: "",
       type: "registry:example",
       registryDependencies: ["select"],
       files: [{
-        path: "registry/radix-nova/examples/select-demo.tsx",
+        path: "registry/radix-nova/examples/select-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/select-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/select-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Select"}},
+      meta: undefined,
     },
-    "separator-demo": {
-      name: "separator-demo",
+    "separator-example": {
+      name: "separator-example",
+      title: "Separator",
       description: "",
       type: "registry:example",
       registryDependencies: ["separator"],
       files: [{
-        path: "registry/radix-nova/examples/separator-demo.tsx",
+        path: "registry/radix-nova/examples/separator-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/separator-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/separator-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Separator"}},
+      meta: undefined,
     },
-    "sheet-demo": {
-      name: "sheet-demo",
+    "sheet-example": {
+      name: "sheet-example",
+      title: "Sheet",
       description: "",
       type: "registry:example",
       registryDependencies: ["sheet"],
       files: [{
-        path: "registry/radix-nova/examples/sheet-demo.tsx",
+        path: "registry/radix-nova/examples/sheet-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/sheet-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/sheet-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Sheet"}},
+      meta: undefined,
     },
-    "skeleton-demo": {
-      name: "skeleton-demo",
+    "skeleton-example": {
+      name: "skeleton-example",
+      title: "Skeleton",
       description: "",
       type: "registry:example",
       registryDependencies: ["skeleton"],
       files: [{
-        path: "registry/radix-nova/examples/skeleton-demo.tsx",
+        path: "registry/radix-nova/examples/skeleton-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/skeleton-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/skeleton-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Skeleton"}},
+      meta: undefined,
     },
-    "slider-demo": {
-      name: "slider-demo",
+    "slider-example": {
+      name: "slider-example",
+      title: "Slider",
       description: "",
       type: "registry:example",
       registryDependencies: ["slider"],
       files: [{
-        path: "registry/radix-nova/examples/slider-demo.tsx",
+        path: "registry/radix-nova/examples/slider-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/slider-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/slider-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Slider"}},
+      meta: undefined,
     },
-    "sonner-demo": {
-      name: "sonner-demo",
+    "sonner-example": {
+      name: "sonner-example",
+      title: "Sonner",
       description: "",
       type: "registry:example",
       registryDependencies: ["sonner"],
       files: [{
-        path: "registry/radix-nova/examples/sonner-demo.tsx",
+        path: "registry/radix-nova/examples/sonner-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/sonner-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/sonner-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Sonner"}},
+      meta: undefined,
     },
-    "spinner-demo": {
-      name: "spinner-demo",
+    "spinner-example": {
+      name: "spinner-example",
+      title: "Spinner",
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
       files: [{
-        path: "registry/radix-nova/examples/spinner-demo.tsx",
+        path: "registry/radix-nova/examples/spinner-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/spinner-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/spinner-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Spinner"}},
+      meta: undefined,
     },
-    "switch-demo": {
-      name: "switch-demo",
+    "switch-example": {
+      name: "switch-example",
+      title: "Switch",
       description: "",
       type: "registry:example",
       registryDependencies: ["switch"],
       files: [{
-        path: "registry/radix-nova/examples/switch-demo.tsx",
+        path: "registry/radix-nova/examples/switch-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/switch-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/switch-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Switch"}},
+      meta: undefined,
     },
-    "table-demo": {
-      name: "table-demo",
+    "table-example": {
+      name: "table-example",
+      title: "Table",
       description: "",
       type: "registry:example",
       registryDependencies: ["table"],
       files: [{
-        path: "registry/radix-nova/examples/table-demo.tsx",
+        path: "registry/radix-nova/examples/table-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/table-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/table-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Table"}},
+      meta: undefined,
     },
-    "tabs-demo": {
-      name: "tabs-demo",
+    "tabs-example": {
+      name: "tabs-example",
+      title: "Tabs",
       description: "",
       type: "registry:example",
       registryDependencies: ["tabs"],
       files: [{
-        path: "registry/radix-nova/examples/tabs-demo.tsx",
+        path: "registry/radix-nova/examples/tabs-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/tabs-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/tabs-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Tabs"}},
+      meta: undefined,
     },
-    "textarea-demo": {
-      name: "textarea-demo",
+    "textarea-example": {
+      name: "textarea-example",
+      title: "Textarea",
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea"],
       files: [{
-        path: "registry/radix-nova/examples/textarea-demo.tsx",
+        path: "registry/radix-nova/examples/textarea-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/textarea-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/textarea-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Textarea"}},
+      meta: undefined,
     },
-    "toggle-demo": {
-      name: "toggle-demo",
+    "toggle-example": {
+      name: "toggle-example",
+      title: "Toggle",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
       files: [{
-        path: "registry/radix-nova/examples/toggle-demo.tsx",
+        path: "registry/radix-nova/examples/toggle-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/toggle-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/toggle-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Toggle"}},
+      meta: undefined,
     },
-    "toggle-group-demo": {
-      name: "toggle-group-demo",
+    "toggle-group-example": {
+      name: "toggle-group-example",
+      title: "Toggle Group",
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
       files: [{
-        path: "registry/radix-nova/examples/toggle-group-demo.tsx",
+        path: "registry/radix-nova/examples/toggle-group-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/toggle-group-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/toggle-group-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Toggle Group"}},
+      meta: undefined,
     },
-    "tooltip-demo": {
-      name: "tooltip-demo",
+    "tooltip-example": {
+      name: "tooltip-example",
+      title: "Tooltip",
       description: "",
       type: "registry:example",
       registryDependencies: ["tooltip"],
       files: [{
-        path: "registry/radix-nova/examples/tooltip-demo.tsx",
+        path: "registry/radix-nova/examples/tooltip-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-nova/examples/tooltip-demo.tsx")
+        const mod = await import("@/registry/radix-nova/examples/tooltip-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Tooltip"}},
+      meta: undefined,
     },
     "accordion": {
       name: "accordion",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9353,6 +9778,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "alert": {
       name: "alert",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9371,6 +9797,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "alert-dialog": {
       name: "alert-dialog",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
@@ -9389,6 +9816,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "aspect-ratio": {
       name: "aspect-ratio",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9407,6 +9835,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "avatar": {
       name: "avatar",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9425,6 +9854,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "badge": {
       name: "badge",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9443,6 +9873,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "breadcrumb": {
       name: "breadcrumb",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9461,6 +9892,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button": {
       name: "button",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9479,6 +9911,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button-group": {
       name: "button-group",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button","separator"],
@@ -9497,6 +9930,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "calendar": {
       name: "calendar",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
@@ -9515,6 +9949,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "card": {
       name: "card",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9533,6 +9968,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "carousel": {
       name: "carousel",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
@@ -9551,6 +9987,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "chart": {
       name: "chart",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["card"],
@@ -9569,6 +10006,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "checkbox": {
       name: "checkbox",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9587,6 +10025,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "collapsible": {
       name: "collapsible",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9605,6 +10044,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "command": {
       name: "command",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["dialog"],
@@ -9623,6 +10063,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "context-menu": {
       name: "context-menu",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9641,6 +10082,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dialog": {
       name: "dialog",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9659,6 +10101,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "drawer": {
       name: "drawer",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9677,6 +10120,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "dropdown-menu": {
       name: "dropdown-menu",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9695,6 +10139,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "empty": {
       name: "empty",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9713,6 +10158,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "field": {
       name: "field",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["label","separator"],
@@ -9731,6 +10177,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "form": {
       name: "form",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button","label"],
@@ -9749,6 +10196,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "hover-card": {
       name: "hover-card",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9767,6 +10215,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input": {
       name: "input",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9785,6 +10234,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-group": {
       name: "input-group",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button","input","textarea"],
@@ -9803,6 +10253,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "input-otp": {
       name: "input-otp",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9821,6 +10272,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "item": {
       name: "item",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["separator"],
@@ -9839,6 +10291,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "label": {
       name: "label",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9857,6 +10310,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "menubar": {
       name: "menubar",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9875,6 +10329,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "navigation-menu": {
       name: "navigation-menu",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9893,6 +10348,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "pagination": {
       name: "pagination",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button"],
@@ -9911,6 +10367,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "popover": {
       name: "popover",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9929,6 +10386,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "progress": {
       name: "progress",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9947,6 +10405,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "radio-group": {
       name: "radio-group",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9963,8 +10422,28 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "resizable": {
+      name: "resizable",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/resizable.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "scroll-area": {
       name: "scroll-area",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -9983,6 +10462,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "select": {
       name: "select",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10001,6 +10481,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "separator": {
       name: "separator",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10019,6 +10500,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sheet": {
       name: "sheet",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10037,6 +10519,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sidebar": {
       name: "sidebar",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
@@ -10055,6 +10538,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "skeleton": {
       name: "skeleton",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10073,6 +10557,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "slider": {
       name: "slider",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10091,6 +10576,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "sonner": {
       name: "sonner",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10109,6 +10595,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "spinner": {
       name: "spinner",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10127,6 +10614,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "switch": {
       name: "switch",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10145,6 +10633,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "table": {
       name: "table",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10163,6 +10652,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "tabs": {
       name: "tabs",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10181,6 +10671,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "textarea": {
       name: "textarea",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10199,6 +10690,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle": {
       name: "toggle",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10217,6 +10709,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "toggle-group": {
       name: "toggle-group",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: ["toggle"],
@@ -10235,6 +10728,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "tooltip": {
       name: "tooltip",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10253,6 +10747,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "kbd": {
       name: "kbd",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10271,6 +10766,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "native-select": {
       name: "native-select",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10289,62 +10785,66 @@ export const Index: Record<string, Record<string, any>> = {
     },
   },
   "radix-lyra": {
-    "alert-dialog-demo": {
-      name: "alert-dialog-demo",
+    "alert-dialog-example": {
+      name: "alert-dialog-example",
+      title: "Alert Dialog",
       description: "",
       type: "registry:example",
       registryDependencies: ["alert-dialog","button"],
       files: [{
-        path: "registry/radix-lyra/examples/alert-dialog-demo.tsx",
+        path: "registry/radix-lyra/examples/alert-dialog-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-lyra/examples/alert-dialog-demo.tsx")
+        const mod = await import("@/registry/radix-lyra/examples/alert-dialog-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Alert Dialog"}},
+      meta: undefined,
     },
-    "button-demo": {
-      name: "button-demo",
+    "button-example": {
+      name: "button-example",
+      title: "Button",
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
       files: [{
-        path: "registry/radix-lyra/examples/button-demo.tsx",
+        path: "registry/radix-lyra/examples/button-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-lyra/examples/button-demo.tsx")
+        const mod = await import("@/registry/radix-lyra/examples/button-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Button"}},
+      meta: undefined,
     },
-    "select-demo": {
-      name: "select-demo",
+    "select-example": {
+      name: "select-example",
+      title: "Select",
       description: "",
       type: "registry:example",
       registryDependencies: ["select"],
       files: [{
-        path: "registry/radix-lyra/examples/select-demo.tsx",
+        path: "registry/radix-lyra/examples/select-example.tsx",
         type: "registry:example",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/radix-lyra/examples/select-demo.tsx")
+        const mod = await import("@/registry/radix-lyra/examples/select-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
       categories: undefined,
-      meta: {"canva":{"title":"Select"}},
+      meta: undefined,
     },
     "alert-dialog": {
       name: "alert-dialog",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10363,6 +10863,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "button": {
       name: "button",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10381,6 +10882,7 @@ export const Index: Record<string, Record<string, any>> = {
     },
     "select": {
       name: "select",
+      title: "undefined",
       description: "",
       type: "registry:ui",
       registryDependencies: undefined,
@@ -10391,82 +10893,6 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/radix-lyra/ui/select.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-  },
-  "base-nova": {
-    "select-demo": {
-      name: "select-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["select"],
-      files: [{
-        path: "registry/base-nova/examples/select-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/base-nova/examples/select-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "button-demo": {
-      name: "button-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button"],
-      files: [{
-        path: "registry/base-nova/examples/button-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/base-nova/examples/button-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-  },
-  "base-lyra": {
-    "select-demo": {
-      name: "select-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["select"],
-      files: [{
-        path: "registry/base-lyra/examples/select-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/base-lyra/examples/select-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "button-demo": {
-      name: "button-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["button"],
-      files: [{
-        path: "registry/base-lyra/examples/button-demo.tsx",
-        type: "registry:example",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/base-lyra/examples/button-demo.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-example",
+  "type": "registry:example",
+  "title": "Badge",
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/badge-example.tsx",
+      "content": "import { IconPlaceholder } from \"@/registry/icon-placeholder\"\nimport { Badge } from \"@/registry/radix-nova/ui/badge\"\n\nexport default function BadgeDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-2\">\n      <div className=\"flex w-full flex-wrap gap-2\">\n        <Badge>Badge</Badge>\n        <Badge variant=\"secondary\">Secondary</Badge>\n        <Badge variant=\"destructive\">Destructive</Badge>\n        <Badge variant=\"outline\">Outline</Badge>\n        <Badge variant=\"outline\">\n          <IconPlaceholder name=\"BadgeCheck\" />\n          Badge\n        </Badge>\n        <Badge variant=\"destructive\">\n          <IconPlaceholder name=\"BadgeAlert\" />\n          Alert\n        </Badge>\n        <Badge className=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\">\n          8\n        </Badge>\n        <Badge\n          className=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n          variant=\"destructive\"\n        >\n          99\n        </Badge>\n        <Badge\n          className=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n          variant=\"outline\"\n        >\n          20+\n        </Badge>\n      </div>\n      <div className=\"flex w-full flex-wrap gap-2\">\n        <Badge asChild>\n          <a href=\"#\">\n            Link <IconPlaceholder name=\"BadgeLink\" />\n          </a>\n        </Badge>\n        <Badge asChild variant=\"secondary\">\n          <a href=\"#\">\n            Link <IconPlaceholder name=\"BadgeLink\" />\n          </a>\n        </Badge>\n        <Badge asChild variant=\"destructive\">\n          <a href=\"#\">\n            Link <IconPlaceholder name=\"BadgeLink\" />\n          </a>\n        </Badge>\n        <Badge asChild variant=\"outline\">\n          <a href=\"#\">\n            Link <IconPlaceholder name=\"BadgeLink\" />\n          </a>\n        </Badge>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

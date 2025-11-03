@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-example",
+  "type": "registry:example",
+  "title": "Toggle",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/toggle-example.tsx",
+      "content": "import { IconPlaceholder } from \"@/registry/icon-placeholder\"\nimport { Toggle } from \"@/registry/radix-nova/ui/toggle\"\n\nexport default function ToggleDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-6\">\n      <Toggle aria-label=\"Toggle italic\">\n        <IconPlaceholder name=\"ToggleBold\" />\n      </Toggle>\n      <Toggle aria-label=\"Toggle italic\" variant=\"default\">\n        <IconPlaceholder name=\"ToggleUnderline\" />\n      </Toggle>\n      <Toggle aria-label=\"Toggle italic\" variant=\"default\" disabled>\n        Disabled\n      </Toggle>\n      <Toggle variant=\"outline\" aria-label=\"Toggle italic\">\n        <IconPlaceholder name=\"ToggleItalic\" />\n        Italic\n      </Toggle>\n      <Toggle\n        aria-label=\"Toggle book\"\n        className=\"data-[state=on]:[&_svg]:fill-accent-foreground\"\n      >\n        <IconPlaceholder name=\"ToggleBookmark\" />\n      </Toggle>\n      <Toggle variant=\"outline\" aria-label=\"Toggle italic\" size=\"sm\">\n        Small\n      </Toggle>\n      <Toggle variant=\"outline\" aria-label=\"Toggle italic\" size=\"lg\">\n        Large\n      </Toggle>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

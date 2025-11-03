@@ -388,17 +388,17 @@ export const ui: Registry["items"] = [
       },
     ],
   },
-  // {
-  //   name: "resizable",
-  //   type: "registry:ui",
-  //   dependencies: ["react-resizable-panels"],
-  //   files: [
-  //     {
-  //       path: "ui/resizable.tsx",
-  //       type: "registry:ui",
-  //     },
-  //   ],
-  // },
+  {
+    name: "resizable",
+    type: "registry:ui",
+    dependencies: ["react-resizable-panels"],
+    files: [
+      {
+        path: "ui/resizable.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
   {
     name: "scroll-area",
     type: "registry:ui",

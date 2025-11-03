@@ -7,6 +7,7 @@
     "dev": "next dev --turbopack --port 4000",
     "build": "pnpm --filter=shadcn build && next build",
     "start": "next start --port 4000",
+    "preview": "pnpm --filter=shadcn build && next build && next start --port 4000",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "typecheck": "tsc --noEmit",
