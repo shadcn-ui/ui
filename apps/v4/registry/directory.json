@@ -308,6 +308,13 @@
     "logo": "<svg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_22651_9557)'><g clip-path='url(#clip1_22651_9557)'><rect x='10' y='10' width='60' height='60' fill='black' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><path d='M23.75 56.25L56.25 23.75' stroke='white' stroke-width='5'/><path d='M43.75 56.25L56.25 43.75' stroke='white' stroke-width='5'/></g></g><defs><clipPath id='clip0_22651_9557'><rect width='80' height='80' fill='white'/></clipPath><clipPath id='clip1_22651_9557'><rect width='80' height='80' fill='white'/></clipPath></defs></svg>"
   },
   {
+    "name": "@shadcn-studio",
+    "homepage": "https://shadcnstudio.com",
+    "url": "https://shadcnstudio.com/r/{name}.json",
+    "description": "An open-source set of shadcn/ui components, blocks, and templates with a powerful theme generator.",
+    "logo": "<svg width='33' height='33' viewBox='0 0 33 33' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0.5' y='0.5' width='32' height='32' rx='16' fill='var(--forgraound)'></rect><path d='M16.5993 7.50488V13.4044C16.5993 15.3441 15.0268 16.9166 13.0871 16.9166H7.35156' stroke='var(--background)' stroke-width='1.95122'></path><path d='M16.7562 26.3286L16.7562 20.4291C16.7562 18.4893 18.3286 16.9169 20.2684 16.9169L26.0039 16.9169' stroke='var(--background)' stroke-width='1.95122'></path><line x1='23.7326' y1='10.0919' x2='19.696' y2='14.081' stroke='var(--background)' stroke-width='1.95122'></line><line x1='13.7385' y1='20.0567' x2='9.70187' y2='24.0459' stroke='var(--background)' stroke-width='1.95122'></line><line x1='13.5426' y1='13.8681' x2='9.52961' y2='9.85513' stroke='var(--background)' stroke-width='1.95122'></line><line x1='23.689' y1='24.0419' x2='19.6761' y2='20.029' stroke='var(--background)' stroke-width='1.95122'></line></svg>"
+  },
+  {
     "name": "@shadcn-editor",
     "homepage": "https://shadcn-editor.vercel.app",
     "url": "https://shadcn-editor.vercel.app/r/{name}.json",
