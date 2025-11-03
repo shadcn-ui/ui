@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/textarea-demo.tsx",
+      "content": "import { Label } from \"@/registry/radix-nova/ui/label\"\nimport { Textarea } from \"@/registry/radix-nova/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return (\n    <div className=\"flex w-full flex-col gap-10\">\n      <Textarea placeholder=\"Type your message here.\" />\n      <Textarea placeholder=\"Type your message here.\" aria-invalid=\"true\" />\n      <div className=\"grid gap-3\">\n        <Label htmlFor=\"textarea-demo-message\">Label</Label>\n        <Textarea\n          id=\"textarea-demo-message\"\n          placeholder=\"Type your message here.\"\n          rows={6}\n        />\n      </div>\n      <div className=\"grid gap-3\">\n        <Label htmlFor=\"textarea-demo-message-2\">\n          With label and description\n        </Label>\n        <Textarea\n          id=\"textarea-demo-message-2\"\n          placeholder=\"Type your message here.\"\n          rows={6}\n        />\n        <div className=\"text-muted-foreground text-sm\">\n          Type your message and press enter to send.\n        </div>\n      </div>\n      <div className=\"grid gap-3\">\n        <Label htmlFor=\"textarea-demo-disabled\">Disabled</Label>\n        <Textarea\n          id=\"textarea-demo-disabled\"\n          placeholder=\"Type your message here.\"\n          disabled\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "meta": {
+    "canva": {
+      "title": "Textarea"
+    }
+  }
+}

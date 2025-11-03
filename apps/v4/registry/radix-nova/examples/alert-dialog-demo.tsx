@@ -1,4 +1,3 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,13 +11,11 @@ import {
 } from "@/registry/radix-nova/ui/alert-dialog"
 import { Button } from "@/registry/radix-nova/ui/button"
 
-export function AlertDialogDemo() {
+export default function AlertDialogDemo() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">
-          <IconPlaceholder name="SelectItemCheck" /> Show Dialog
-        </Button>
+        <Button variant="outline">Show Dialog</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

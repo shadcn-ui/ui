@@ -1,78 +1,95 @@
 "use client"
 
-import {
-  COMPONENT_LIBRARIES,
-  type ComponentLibrary,
-} from "@/registry/component-libraries"
+import * as React from "react"
+import { useQueryStates } from "nuqs"
+
+import { COMPONENT_LIBRARIES } from "@/registry/component-libraries"
 import { iconLibraries } from "@/registry/icon-libraries"
 import { Field, FieldGroup, FieldLabel } from "@/registry/new-york-v4/ui/field"
 import {
   NativeSelect,
   NativeSelectOption,
 } from "@/registry/new-york-v4/ui/native-select"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
 import { useDesignSystemConfig } from "@/app/(new)/hooks/use-design-system-config"
+import { canvaSearchParams } from "@/app/(new)/lib/search-params"
 import { DesignSystemStyle, designSystemStyles } from "@/app/(new)/lib/style"
+import { Theme, themes } from "@/app/(new)/lib/themes"
 
 export function ConfigForm() {
   const [params, setParams] = useDesignSystemConfig()
-
-  const currentStyle = designSystemStyles.find(
-    (style) => style.name === params.style
-  )
-  const currentLibrary = currentStyle?.componentLibrary ?? "radix"
-
-  const handleLibraryChange = (libraryName: ComponentLibrary["name"]) => {
-    const availableStyles = designSystemStyles.filter(
-      (style) => style.componentLibrary === libraryName
-    )
-    if (availableStyles.length > 0) {
-      setParams({ style: availableStyles[0].name })
-    }
-  }
+  const [canvaParams, setCanvaParams] = useQueryStates(canvaSearchParams)
 
   return (
     <div>
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="library">Component Library</FieldLabel>
-          <NativeSelect
-            id="library"
-            value={currentLibrary}
-            onChange={(e) =>
-              handleLibraryChange(e.target.value as ComponentLibrary["name"])
+          <FieldLabel htmlFor="style">Component Library & Style</FieldLabel>
+          <Select
+            value={params.style}
+            onValueChange={(value) =>
+              setParams({ style: value as DesignSystemStyle["name"] })
             }
           >
-            {COMPONENT_LIBRARIES.map((lib) => (
-              <NativeSelectOption key={lib.name} value={lib.name}>
-                {lib.title}
-              </NativeSelectOption>
-            ))}
-          </NativeSelect>
+            <SelectTrigger id="style">
+              <SelectValue placeholder="Select style" />
+            </SelectTrigger>
+            <SelectContent>
+              {COMPONENT_LIBRARIES.map((library) => {
+                const stylesForLibrary = designSystemStyles.filter(
+                  (style) => style.componentLibrary === library.name
+                )
+                if (stylesForLibrary.length === 0) {
+                  return null
+                }
+                return (
+                  <SelectGroup key={library.name}>
+                    <SelectLabel>{library.title}</SelectLabel>
+                    {stylesForLibrary.map((style) => (
+                      <SelectItem key={style.name} value={style.name}>
+                        {style.title}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                )
+              })}
+            </SelectContent>
+          </Select>
         </Field>
         <Field>
-          <FieldLabel htmlFor="style">Style</FieldLabel>
-          <NativeSelect
-            id="style"
-            value={params.style}
-            onChange={(e) =>
-              setParams({ style: e.target.value as DesignSystemStyle["name"] })
+          <FieldLabel htmlFor="theme">Theme</FieldLabel>
+          <Select
+            value={canvaParams.theme}
+            onValueChange={(value) =>
+              setCanvaParams({ theme: value as Theme["name"] })
             }
           >
-            {designSystemStyles
-              .filter((style) => style.componentLibrary === currentLibrary)
-              .map((s) => (
-                <NativeSelectOption key={s.name} value={s.name}>
-                  {s.title}
-                </NativeSelectOption>
+            <SelectTrigger id="theme">
+              <SelectValue placeholder="Select theme" />
+            </SelectTrigger>
+            <SelectContent>
+              {themes.map((theme) => (
+                <SelectItem key={theme.name} value={theme.name}>
+                  {theme.title}
+                </SelectItem>
               ))}
-          </NativeSelect>
+            </SelectContent>
+          </Select>
         </Field>
         <Field>
           <FieldLabel htmlFor="iconLibrary">Icon Library</FieldLabel>
           <NativeSelect
             id="iconLibrary"
             value={params.iconLibrary}
-            onChange={(e) =>
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
               setParams({
                 iconLibrary: e.target.value as keyof typeof iconLibraries,
               })

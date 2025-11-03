@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/input-demo.tsx",
+      "content": "import { Input } from \"@/registry/radix-nova/ui/input\"\n\nexport default function InputDemo() {\n  return (\n    <div className=\"flex flex-col flex-wrap gap-4 md:flex-row\">\n      <Input type=\"email\" placeholder=\"Email\" />\n      <Input type=\"text\" placeholder=\"Error\" aria-invalid=\"true\" />\n      <Input type=\"password\" placeholder=\"Password\" />\n      <Input type=\"number\" placeholder=\"Number\" />\n      <Input type=\"file\" placeholder=\"File\" />\n      <Input type=\"tel\" placeholder=\"Tel\" />\n      <Input type=\"text\" placeholder=\"Text\" />\n      <Input type=\"url\" placeholder=\"URL\" />\n      <Input type=\"search\" placeholder=\"Search\" />\n      <Input type=\"date\" placeholder=\"Date\" />\n      <Input type=\"datetime-local\" placeholder=\"Datetime Local\" />\n      <Input type=\"month\" placeholder=\"Month\" />\n      <Input type=\"time\" placeholder=\"Time\" />\n      <Input type=\"week\" placeholder=\"Week\" />\n      <Input disabled placeholder=\"Disabled\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "meta": {
+    "canva": {
+      "title": "Input"
+    }
+  }
+}

@@ -3,6 +3,8 @@ import type { SearchParams } from "nuqs/server"
 import { ConfigForm } from "@/app/(new)/components/config-form"
 import { Preview } from "@/app/(new)/components/preview"
 
+import "@/styles/themes.css"
+
 import {
   canvaSearchParamsCache,
   designSystemSearchParamsCache,

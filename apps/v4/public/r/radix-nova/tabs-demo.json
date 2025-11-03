@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "tabs"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/tabs-demo.tsx",
+      "content": "import { IconPlaceholder } from \"@/registry/icon-placeholder\"\nimport { Button } from \"@/registry/radix-nova/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/radix-nova/ui/card\"\nimport { Input } from \"@/registry/radix-nova/ui/input\"\nimport { Label } from \"@/registry/radix-nova/ui/label\"\nimport {\n  Tabs,\n  TabsContent,\n  TabsList,\n  TabsTrigger,\n} from \"@/registry/radix-nova/ui/tabs\"\n\nexport default function TabsDemo() {\n  return (\n    <div className=\"flex w-full max-w-sm flex-col gap-6\">\n      <Tabs defaultValue=\"account\">\n        <TabsList className=\"grid w-full grid-cols-2\">\n          <TabsTrigger value=\"account\">Account</TabsTrigger>\n          <TabsTrigger value=\"password\">Password</TabsTrigger>\n        </TabsList>\n        <TabsContent value=\"account\">\n          <Card>\n            <CardHeader>\n              <CardTitle>Account</CardTitle>\n              <CardDescription>\n                Make changes to your account here. Click save when you&apos;re\n                done.\n              </CardDescription>\n            </CardHeader>\n            <CardContent className=\"grid gap-6\">\n              <div className=\"grid gap-3\">\n                <Label htmlFor=\"tabs-demo-name\">Name</Label>\n                <Input id=\"tabs-demo-name\" defaultValue=\"Pedro Duarte\" />\n              </div>\n              <div className=\"grid gap-3\">\n                <Label htmlFor=\"tabs-demo-username\">Username</Label>\n                <Input id=\"tabs-demo-username\" defaultValue=\"@peduarte\" />\n              </div>\n            </CardContent>\n            <CardFooter>\n              <Button>Save changes</Button>\n            </CardFooter>\n          </Card>\n        </TabsContent>\n        <TabsContent value=\"password\">\n          <Card>\n            <CardHeader>\n              <CardTitle>Password</CardTitle>\n              <CardDescription>\n                Change your password here. After saving, you&apos;ll be logged\n                out.\n              </CardDescription>\n            </CardHeader>\n            <CardContent className=\"grid gap-6\">\n              <div className=\"grid gap-3\">\n                <Label htmlFor=\"tabs-demo-current\">Current password</Label>\n                <Input id=\"tabs-demo-current\" type=\"password\" />\n              </div>\n              <div className=\"grid gap-3\">\n                <Label htmlFor=\"tabs-demo-new\">New password</Label>\n                <Input id=\"tabs-demo-new\" type=\"password\" />\n              </div>\n            </CardContent>\n            <CardFooter>\n              <Button>Save password</Button>\n            </CardFooter>\n          </Card>\n        </TabsContent>\n      </Tabs>\n      <Tabs defaultValue=\"home\">\n        <TabsList>\n          <TabsTrigger value=\"home\">Home</TabsTrigger>\n          <TabsTrigger value=\"settings\">Settings</TabsTrigger>\n        </TabsList>\n      </Tabs>\n      <Tabs defaultValue=\"home\">\n        <TabsList>\n          <TabsTrigger value=\"home\">Home</TabsTrigger>\n          <TabsTrigger value=\"settings\" disabled>\n            Disabled\n          </TabsTrigger>\n        </TabsList>\n      </Tabs>\n      <Tabs defaultValue=\"preview\">\n        <TabsList>\n          <TabsTrigger value=\"preview\">\n            <IconPlaceholder name=\"TabsPreview\" />\n            Preview\n          </TabsTrigger>\n          <TabsTrigger value=\"code\">\n            <IconPlaceholder name=\"TabsCode\" />\n            Code\n          </TabsTrigger>\n        </TabsList>\n      </Tabs>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "meta": {
+    "canva": {
+      "title": "Tabs"
+    }
+  }
+}

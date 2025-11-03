@@ -11,7 +11,9 @@ export async function getRegistryItemsUsingParams(
   const items = await getRegistryItems(
     style,
     (item) =>
-      allowedTypes.includes(item.type) && item.meta?.canva?.title !== undefined
+      allowedTypes.includes(item.type) &&
+      item.meta?.canva?.title !== undefined &&
+      ["button-demo", "select-demo"].includes(item.name)
   )
 
   return items

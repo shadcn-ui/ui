@@ -1,22 +1,91 @@
+import * as React from "react"
+
+import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/registry/radix-lyra/ui/select"
 
 export default function SelectDemo() {
   return (
-    <Select>
-      <SelectTrigger>
-        <SelectValue placeholder="Select an option" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="1">Option 1</SelectItem>
-        <SelectItem value="2">Option 2</SelectItem>
-        <SelectItem value="3">Option 3</SelectItem>
-      </SelectContent>
-    </Select>
+    <div className="flex flex-wrap items-start gap-4">
+      <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes" disabled>
+              Grapes
+            </SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Large List" />
+        </SelectTrigger>
+        <SelectContent>
+          {Array.from({ length: 100 }).map((_, i) => (
+            <SelectItem key={i} value={`item-${i}`}>
+              Item {i}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      <Select disabled>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Disabled" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Apple</SelectItem>
+          <SelectItem value="banana">Banana</SelectItem>
+          <SelectItem value="blueberry">Blueberry</SelectItem>
+          <SelectItem value="grapes" disabled>
+            Grapes
+          </SelectItem>
+          <SelectItem value="pineapple">Pineapple</SelectItem>
+        </SelectContent>
+      </Select>
+      <Select>
+        <SelectTrigger className="w-[180px]">
+          <SelectValue
+            placeholder={
+              <>
+                <IconPlaceholder
+                  name="EmptySearch"
+                  className="text-muted-foreground"
+                />
+                With Icon
+              </>
+            }
+          />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="line">
+            <IconPlaceholder name="ChartTrending" />
+            Line
+          </SelectItem>
+          <SelectItem value="bar">
+            <IconPlaceholder name="ChartTrending" />
+            Bar
+          </SelectItem>
+          <SelectItem value="pie">
+            <IconPlaceholder name="ChartTrending" />
+            Pie
+          </SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
   )
 }

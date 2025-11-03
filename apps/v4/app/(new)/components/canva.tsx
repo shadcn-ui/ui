@@ -4,6 +4,7 @@ import * as React from "react"
 import { useQueryStates } from "nuqs"
 import InfiniteViewer from "react-infinite-viewer"
 
+import { cn } from "@/lib/utils"
 import { canvaSearchParams } from "@/app/(new)/lib/search-params"
 
 const ZOOM_MIN = 1
@@ -26,7 +27,7 @@ export function Canva({ children }: { children: React.ReactNode }) {
   }, [params.scrollLeft, params.scrollTop])
 
   return (
-    <div className="relative flex-1">
+    <div className={cn("relative flex-1", `theme-${params.theme}`)}>
       <div
         data-mounted={isMounted}
         className="bg-muted absolute inset-0 z-10 flex items-center justify-center data-[mounted=true]:hidden"
@@ -61,7 +62,9 @@ export function Canva({ children }: { children: React.ReactNode }) {
           }
         }}
       >
-        <div className="flex items-start gap-12">{children}</div>
+        <div className="theme-container flex items-start gap-12">
+          {children}
+        </div>
       </InfiniteViewer>
     </div>
   )

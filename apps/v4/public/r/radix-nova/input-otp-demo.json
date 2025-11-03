@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-otp"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/input-otp-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { REGEXP_ONLY_DIGITS } from \"input-otp\"\n\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSeparator,\n  InputOTPSlot,\n} from \"@/registry/radix-nova/ui/input-otp\"\nimport { Label } from \"@/registry/radix-nova/ui/label\"\n\nexport default function InputOTPDemo() {\n  return (\n    <div className=\"flex flex-col flex-wrap gap-6 md:flex-row\">\n      <InputOTPSimple />\n      <InputOTPPattern />\n      <InputOTPWithSeparator />\n      <InputOTPWithSpacing />\n    </div>\n  )\n}\n\nfunction InputOTPSimple() {\n  return (\n    <div className=\"grid gap-2\">\n      <Label htmlFor=\"simple\">Simple</Label>\n      <InputOTP id=\"simple\" maxLength={6}>\n        <InputOTPGroup>\n          <InputOTPSlot index={0} />\n          <InputOTPSlot index={1} />\n          <InputOTPSlot index={2} />\n        </InputOTPGroup>\n        <InputOTPSeparator />\n        <InputOTPGroup>\n          <InputOTPSlot index={3} />\n          <InputOTPSlot index={4} />\n          <InputOTPSlot index={5} />\n        </InputOTPGroup>\n      </InputOTP>\n    </div>\n  )\n}\n\nfunction InputOTPPattern() {\n  return (\n    <div className=\"grid gap-2\">\n      <Label htmlFor=\"digits-only\">Digits Only</Label>\n      <InputOTP id=\"digits-only\" maxLength={6} pattern={REGEXP_ONLY_DIGITS}>\n        <InputOTPGroup>\n          <InputOTPSlot index={0} />\n          <InputOTPSlot index={1} />\n          <InputOTPSlot index={2} />\n          <InputOTPSlot index={3} />\n          <InputOTPSlot index={4} />\n          <InputOTPSlot index={5} />\n        </InputOTPGroup>\n      </InputOTP>\n    </div>\n  )\n}\n\nfunction InputOTPWithSeparator() {\n  const [value, setValue] = React.useState(\"123456\")\n\n  return (\n    <div className=\"grid gap-2\">\n      <Label htmlFor=\"with-separator\">With Separator</Label>\n      <InputOTP\n        id=\"with-separator\"\n        maxLength={6}\n        value={value}\n        onChange={setValue}\n      >\n        <InputOTPGroup>\n          <InputOTPSlot index={0} />\n          <InputOTPSlot index={1} />\n        </InputOTPGroup>\n        <InputOTPSeparator />\n        <InputOTPGroup>\n          <InputOTPSlot index={2} />\n          <InputOTPSlot index={3} />\n        </InputOTPGroup>\n        <InputOTPSeparator />\n        <InputOTPGroup>\n          <InputOTPSlot index={4} />\n          <InputOTPSlot index={5} />\n        </InputOTPGroup>\n      </InputOTP>\n    </div>\n  )\n}\n\nfunction InputOTPWithSpacing() {\n  return (\n    <div className=\"grid gap-2\">\n      <Label htmlFor=\"with-spacing\">With Spacing</Label>\n      <InputOTP id=\"with-spacing\" maxLength={6}>\n        <InputOTPGroup className=\"gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border\">\n          <InputOTPSlot index={0} aria-invalid=\"true\" />\n          <InputOTPSlot index={1} aria-invalid=\"true\" />\n          <InputOTPSlot index={2} aria-invalid=\"true\" />\n          <InputOTPSlot index={3} aria-invalid=\"true\" />\n        </InputOTPGroup>\n      </InputOTP>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "meta": {
+    "canva": {
+      "title": "Input OTP"
+    }
+  }
+}

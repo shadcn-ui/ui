@@ -8289,6 +8289,42 @@ export const Index: Record<string, Record<string, any>> = {
     },
   },
   "radix-nova": {
+    "accordion-demo": {
+      name: "accordion-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [{
+        path: "registry/radix-nova/examples/accordion-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/accordion-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Accordion"}},
+    },
+    "alert-demo": {
+      name: "alert-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert"],
+      files: [{
+        path: "registry/radix-nova/examples/alert-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/alert-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Alert"}},
+    },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
       description: "",
@@ -8306,6 +8342,78 @@ export const Index: Record<string, Record<string, any>> = {
       }),
       categories: undefined,
       meta: {"canva":{"title":"Alert Dialog"}},
+    },
+    "aspect-ratio-demo": {
+      name: "aspect-ratio-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["aspect-ratio"],
+      files: [{
+        path: "registry/radix-nova/examples/aspect-ratio-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/aspect-ratio-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Aspect Ratio"}},
+    },
+    "avatar-demo": {
+      name: "avatar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar"],
+      files: [{
+        path: "registry/radix-nova/examples/avatar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/avatar-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Avatar"}},
+    },
+    "badge-demo": {
+      name: "badge-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["badge"],
+      files: [{
+        path: "registry/radix-nova/examples/badge-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/badge-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Badge"}},
+    },
+    "breadcrumb-demo": {
+      name: "breadcrumb-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["breadcrumb"],
+      files: [{
+        path: "registry/radix-nova/examples/breadcrumb-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/breadcrumb-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Breadcrumb"}},
     },
     "button-demo": {
       name: "button-demo",
@@ -8325,6 +8433,654 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: {"canva":{"title":"Button"}},
     },
+    "button-group-demo": {
+      name: "button-group-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button-group"],
+      files: [{
+        path: "registry/radix-nova/examples/button-group-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/button-group-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Button Group"}},
+    },
+    "calendar-demo": {
+      name: "calendar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["calendar"],
+      files: [{
+        path: "registry/radix-nova/examples/calendar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/calendar-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Calendar"}},
+    },
+    "card-demo": {
+      name: "card-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["card"],
+      files: [{
+        path: "registry/radix-nova/examples/card-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/card-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Card"}},
+    },
+    "carousel-demo": {
+      name: "carousel-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["carousel"],
+      files: [{
+        path: "registry/radix-nova/examples/carousel-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/carousel-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Carousel"}},
+    },
+    "chart-area-demo": {
+      name: "chart-area-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart","card"],
+      files: [{
+        path: "registry/radix-nova/examples/chart-area-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/chart-area-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Chart Area"}},
+    },
+    "chart-bar-demo": {
+      name: "chart-bar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart","card"],
+      files: [{
+        path: "registry/radix-nova/examples/chart-bar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/chart-bar-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Chart Bar"}},
+    },
+    "chart-demo": {
+      name: "chart-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart","card"],
+      files: [{
+        path: "registry/radix-nova/examples/chart-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/chart-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Chart"}},
+    },
+    "chart-line-demo": {
+      name: "chart-line-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chart","card"],
+      files: [{
+        path: "registry/radix-nova/examples/chart-line-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/chart-line-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Chart Line"}},
+    },
+    "checkbox-demo": {
+      name: "checkbox-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox"],
+      files: [{
+        path: "registry/radix-nova/examples/checkbox-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/checkbox-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Checkbox"}},
+    },
+    "collapsible-demo": {
+      name: "collapsible-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["collapsible"],
+      files: [{
+        path: "registry/radix-nova/examples/collapsible-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/collapsible-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Collapsible"}},
+    },
+    "combobox-demo": {
+      name: "combobox-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar","button","command","popover"],
+      files: [{
+        path: "registry/radix-nova/examples/combobox-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/combobox-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Combobox"}},
+    },
+    "command-demo": {
+      name: "command-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["command"],
+      files: [{
+        path: "registry/radix-nova/examples/command-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/command-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Command"}},
+    },
+    "context-menu-demo": {
+      name: "context-menu-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["context-menu"],
+      files: [{
+        path: "registry/radix-nova/examples/context-menu-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/context-menu-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Context Menu"}},
+    },
+    "date-picker-demo": {
+      name: "date-picker-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button","calendar","drawer","popover"],
+      files: [{
+        path: "registry/radix-nova/examples/date-picker-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/date-picker-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Date Picker"}},
+    },
+    "dialog-demo": {
+      name: "dialog-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dialog"],
+      files: [{
+        path: "registry/radix-nova/examples/dialog-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/dialog-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Dialog"}},
+    },
+    "drawer-demo": {
+      name: "drawer-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["drawer"],
+      files: [{
+        path: "registry/radix-nova/examples/drawer-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/drawer-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Drawer"}},
+    },
+    "dropdown-menu-demo": {
+      name: "dropdown-menu-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["dropdown-menu"],
+      files: [{
+        path: "registry/radix-nova/examples/dropdown-menu-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/dropdown-menu-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Dropdown Menu"}},
+    },
+    "empty-demo": {
+      name: "empty-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["empty"],
+      files: [{
+        path: "registry/radix-nova/examples/empty-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/empty-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Empty"}},
+    },
+    "field-demo": {
+      name: "field-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["field"],
+      files: [{
+        path: "registry/radix-nova/examples/field-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/field-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Field"}},
+    },
+    "form-demo": {
+      name: "form-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button","calendar","checkbox","form","input","popover","radio-group","select","switch","textarea"],
+      files: [{
+        path: "registry/radix-nova/examples/form-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/form-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Form"}},
+    },
+    "hover-card-demo": {
+      name: "hover-card-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["hover-card"],
+      files: [{
+        path: "registry/radix-nova/examples/hover-card-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/hover-card-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Hover Card"}},
+    },
+    "input-demo": {
+      name: "input-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input"],
+      files: [{
+        path: "registry/radix-nova/examples/input-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/input-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Input"}},
+    },
+    "input-group-demo": {
+      name: "input-group-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-group"],
+      files: [{
+        path: "registry/radix-nova/examples/input-group-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/input-group-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Input Group"}},
+    },
+    "input-otp-demo": {
+      name: "input-otp-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-otp"],
+      files: [{
+        path: "registry/radix-nova/examples/input-otp-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/input-otp-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Input OTP"}},
+    },
+    "item-demo": {
+      name: "item-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["item"],
+      files: [{
+        path: "registry/radix-nova/examples/item-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/item-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Item"}},
+    },
+    "kbd-demo": {
+      name: "kbd-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["kbd"],
+      files: [{
+        path: "registry/radix-nova/examples/kbd-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/kbd-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Kbd"}},
+    },
+    "label-demo": {
+      name: "label-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["label"],
+      files: [{
+        path: "registry/radix-nova/examples/label-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/label-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Label"}},
+    },
+    "menubar-demo": {
+      name: "menubar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["menubar"],
+      files: [{
+        path: "registry/radix-nova/examples/menubar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/menubar-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Menubar"}},
+    },
+    "native-select-demo": {
+      name: "native-select-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["native-select"],
+      files: [{
+        path: "registry/radix-nova/examples/native-select-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/native-select-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Native Select"}},
+    },
+    "navigation-menu-demo": {
+      name: "navigation-menu-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["navigation-menu"],
+      files: [{
+        path: "registry/radix-nova/examples/navigation-menu-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/navigation-menu-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Navigation Menu"}},
+    },
+    "pagination-demo": {
+      name: "pagination-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["pagination"],
+      files: [{
+        path: "registry/radix-nova/examples/pagination-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/pagination-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Pagination"}},
+    },
+    "popover-demo": {
+      name: "popover-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["popover"],
+      files: [{
+        path: "registry/radix-nova/examples/popover-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/popover-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Popover"}},
+    },
+    "progress-demo": {
+      name: "progress-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["progress"],
+      files: [{
+        path: "registry/radix-nova/examples/progress-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/progress-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Progress"}},
+    },
+    "radio-group-demo": {
+      name: "radio-group-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["radio-group"],
+      files: [{
+        path: "registry/radix-nova/examples/radio-group-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/radio-group-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Radio Group"}},
+    },
+    "resizable-demo": {
+      name: "resizable-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["resizable"],
+      files: [{
+        path: "registry/radix-nova/examples/resizable-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/resizable-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Resizable"}},
+    },
+    "scroll-area-demo": {
+      name: "scroll-area-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["scroll-area"],
+      files: [{
+        path: "registry/radix-nova/examples/scroll-area-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/scroll-area-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Scroll Area"}},
+    },
     "select-demo": {
       name: "select-demo",
       description: "",
@@ -8343,11 +9099,281 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: {"canva":{"title":"Select"}},
     },
+    "separator-demo": {
+      name: "separator-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "registry/radix-nova/examples/separator-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/separator-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Separator"}},
+    },
+    "sheet-demo": {
+      name: "sheet-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sheet"],
+      files: [{
+        path: "registry/radix-nova/examples/sheet-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/sheet-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Sheet"}},
+    },
+    "skeleton-demo": {
+      name: "skeleton-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["skeleton"],
+      files: [{
+        path: "registry/radix-nova/examples/skeleton-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/skeleton-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Skeleton"}},
+    },
+    "slider-demo": {
+      name: "slider-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["slider"],
+      files: [{
+        path: "registry/radix-nova/examples/slider-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/slider-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Slider"}},
+    },
+    "sonner-demo": {
+      name: "sonner-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["sonner"],
+      files: [{
+        path: "registry/radix-nova/examples/sonner-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/sonner-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Sonner"}},
+    },
+    "spinner-demo": {
+      name: "spinner-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["spinner"],
+      files: [{
+        path: "registry/radix-nova/examples/spinner-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/spinner-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Spinner"}},
+    },
+    "switch-demo": {
+      name: "switch-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["switch"],
+      files: [{
+        path: "registry/radix-nova/examples/switch-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/switch-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Switch"}},
+    },
+    "table-demo": {
+      name: "table-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["table"],
+      files: [{
+        path: "registry/radix-nova/examples/table-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/table-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Table"}},
+    },
+    "tabs-demo": {
+      name: "tabs-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tabs"],
+      files: [{
+        path: "registry/radix-nova/examples/tabs-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/tabs-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Tabs"}},
+    },
+    "textarea-demo": {
+      name: "textarea-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["textarea"],
+      files: [{
+        path: "registry/radix-nova/examples/textarea-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/textarea-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Textarea"}},
+    },
+    "toggle-demo": {
+      name: "toggle-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "registry/radix-nova/examples/toggle-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/toggle-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Toggle"}},
+    },
+    "toggle-group-demo": {
+      name: "toggle-group-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["toggle-group"],
+      files: [{
+        path: "registry/radix-nova/examples/toggle-group-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/toggle-group-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Toggle Group"}},
+    },
+    "tooltip-demo": {
+      name: "tooltip-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["tooltip"],
+      files: [{
+        path: "registry/radix-nova/examples/tooltip-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/tooltip-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: {"canva":{"title":"Tooltip"}},
+    },
+    "accordion": {
+      name: "accordion",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/accordion.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "alert": {
+      name: "alert",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/alert.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "alert-dialog": {
       name: "alert-dialog",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/ui/alert-dialog.tsx",
         type: "registry:ui",
@@ -8355,6 +9381,78 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/radix-nova/ui/alert-dialog.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "aspect-ratio": {
+      name: "aspect-ratio",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/aspect-ratio.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "avatar": {
+      name: "avatar",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/avatar.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "badge": {
+      name: "badge",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/badge.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "breadcrumb": {
+      name: "breadcrumb",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/breadcrumb.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
@@ -8379,6 +9477,510 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "button-group": {
+      name: "button-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator"],
+      files: [{
+        path: "registry/radix-nova/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/button-group.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "calendar": {
+      name: "calendar",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/radix-nova/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/calendar.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "card": {
+      name: "card",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/card.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "carousel": {
+      name: "carousel",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/radix-nova/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/carousel.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "chart": {
+      name: "chart",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["card"],
+      files: [{
+        path: "registry/radix-nova/ui/chart.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/chart.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "checkbox": {
+      name: "checkbox",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/checkbox.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "collapsible": {
+      name: "collapsible",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/collapsible.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "command": {
+      name: "command",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["dialog"],
+      files: [{
+        path: "registry/radix-nova/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/command.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "context-menu": {
+      name: "context-menu",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/context-menu.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "dialog": {
+      name: "dialog",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/dialog.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "drawer": {
+      name: "drawer",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/drawer.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "dropdown-menu": {
+      name: "dropdown-menu",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/dropdown-menu.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "empty": {
+      name: "empty",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/empty.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "field": {
+      name: "field",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "registry/radix-nova/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/field.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "form": {
+      name: "form",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","label"],
+      files: [{
+        path: "registry/radix-nova/ui/form.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/form.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "hover-card": {
+      name: "hover-card",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/hover-card.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "input": {
+      name: "input",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/input.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-group": {
+      name: "input-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "registry/radix-nova/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/input-group.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "input-otp": {
+      name: "input-otp",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/input-otp.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "item": {
+      name: "item",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["separator"],
+      files: [{
+        path: "registry/radix-nova/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/item.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "label": {
+      name: "label",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/label.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "menubar": {
+      name: "menubar",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/menubar.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/navigation-menu.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "pagination": {
+      name: "pagination",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [{
+        path: "registry/radix-nova/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/pagination.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "popover": {
+      name: "popover",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/popover.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "progress": {
+      name: "progress",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/progress.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "radio-group": {
+      name: "radio-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/radio-group.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "scroll-area": {
+      name: "scroll-area",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/scroll-area.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "select": {
       name: "select",
       description: "",
@@ -8391,6 +9993,294 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/radix-nova/ui/select.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "separator": {
+      name: "separator",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/separator.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sheet": {
+      name: "sheet",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/sheet.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar": {
+      name: "sidebar",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
+      files: [{
+        path: "registry/radix-nova/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/sidebar.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "skeleton": {
+      name: "skeleton",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/skeleton.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "slider": {
+      name: "slider",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/slider.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sonner": {
+      name: "sonner",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/sonner.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "spinner": {
+      name: "spinner",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/spinner.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "switch": {
+      name: "switch",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/switch.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "table": {
+      name: "table",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/table.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "tabs": {
+      name: "tabs",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/tabs.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "textarea": {
+      name: "textarea",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/textarea.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle": {
+      name: "toggle",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/toggle.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "toggle-group": {
+      name: "toggle-group",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["toggle"],
+      files: [{
+        path: "registry/radix-nova/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/toggle-group.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "tooltip": {
+      name: "tooltip",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/tooltip.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "kbd": {
+      name: "kbd",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/kbd.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "native-select": {
+      name: "native-select",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/ui/native-select.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),

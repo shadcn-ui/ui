@@ -10,6 +10,7 @@ import {
   designSystemStyles,
   type DesignSystemStyle,
 } from "@/app/(new)/lib/style"
+import { themes, type Theme } from "@/app/(new)/lib/themes"
 
 export const parseAsStyle = createParser<DesignSystemStyle["name"]>({
   parse(queryValue) {
@@ -48,6 +49,23 @@ export const parseAsIconLibrary = createParser<keyof typeof iconLibraries>({
   },
 })
 
+export const parseAsTheme = createParser<Theme["name"]>({
+  parse(queryValue) {
+    if (typeof queryValue === "string" && queryValue.trim() !== "") {
+      const trimmed = queryValue.trim()
+      const validTheme = themes.find((theme) => theme.name === trimmed)
+      return validTheme ? (validTheme.name as Theme["name"]) : null
+    }
+    return null
+  },
+  serialize(value) {
+    if (typeof value === "string" && value.trim() !== "") {
+      return value.trim()
+    }
+    throw new Error("Invalid value for serialization")
+  },
+})
+
 export const designSystemSearchParams = {
   style: parseAsStyle.withDefault("radix-nova"),
   iconLibrary: parseAsIconLibrary.withDefault("lucide"),
@@ -57,6 +75,7 @@ export const canvaSearchParams = {
   zoom: parseAsFloat.withDefault(1),
   scrollLeft: parseAsInteger.withDefault(0),
   scrollTop: parseAsInteger.withDefault(0),
+  theme: parseAsTheme.withDefault("blue"),
 }
 
 export const designSystemSearchParamsCache = createSearchParamsCache(

@@ -61,9 +61,11 @@ type IconPromise =
 export function IconForIconLibrary({
   iconLibrary,
   name,
+  className,
 }: {
   iconLibrary: IconLibrary
   name: IconName
+  className?: string
 }) {
   const iconName = icons[name]?.[iconLibrary]
   if (!iconName) {
@@ -87,12 +89,18 @@ export function IconForIconLibrary({
 
   return (
     <Suspense fallback={<SquareIcon className="opacity-0" />}>
-      <IconLoaderComponent iconPromise={iconPromise} />
+      <IconLoaderComponent iconPromise={iconPromise} className={className} />
     </Suspense>
   )
 }
 
-function IconLoaderComponent({ iconPromise }: { iconPromise: IconPromise }) {
+function IconLoaderComponent({
+  iconPromise,
+  className,
+}: {
+  iconPromise: IconPromise
+  className?: string
+}) {
   const IconComponent = React.use(
     iconPromise as React.Usable<React.ComponentType<any>>
   )
@@ -101,5 +109,5 @@ function IconLoaderComponent({ iconPromise }: { iconPromise: IconPromise }) {
     return null
   }
 
-  return React.createElement(IconComponent)
+  return React.createElement(IconComponent, { className })
 }

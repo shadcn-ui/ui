@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "chart",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/chart-demo.tsx",
+      "content": "import ChartAreaDemo from \"@/registry/radix-nova/examples/chart-area-demo\"\nimport ChartBarDemo from \"@/registry/radix-nova/examples/chart-bar-demo\"\nimport ChartLineDemo from \"@/registry/radix-nova/examples/chart-line-demo\"\n\nexport default function ChartDemo() {\n  return (\n    <div className=\"grid w-full max-w-screen-2xl gap-4 *:data-[slot=card]:flex-1 @2xl:grid-cols-2 @6xl:grid-cols-3\">\n      <ChartAreaDemo />\n      <ChartBarDemo />\n      <div className=\"@6xl:hidden\">\n        <ChartLineDemo />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "meta": {
+    "canva": {
+      "title": "Chart"
+    }
+  }
+}
