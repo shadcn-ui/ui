@@ -24,7 +24,7 @@ To create a new monorepo project, run the `init` command. You will be prompted
 to select the type of project you are creating.
 
 ```bash
-npx shadcn@canary init
+npx shadcn@latest init
 ```
 
 Select the `Next.js (Monorepo)` option.
@@ -51,15 +51,15 @@ cd apps/web
 ```
 
 ```bash
-npx shadcn@canary add [COMPONENT]
+npx shadcn@latest add [COMPONENT]
 ```
 
 The CLI will figure out what type of component you are adding and install the
 correct files to the correct path.
 
-For example, if you run `npx shadcn@canary add button`, the CLI will install the button component under `packages/ui` and update the import path for components in `apps/web`.
+For example, if you run `npx shadcn@latest add button`, the CLI will install the button component under `packages/ui` and update the import path for components in `apps/web`.
 
-If you run `npx shadcn@canary add login-01`, the CLI will install the `button`, `label`, `input` and `card` components under `packages/ui` and the `login-form` component under `apps/web/components`.
+If you run `npx shadcn@latest add login-01`, the CLI will install the `button`, `label`, `input` and `card` components under `packages/ui` and the `login-form` component under `apps/web/components`.
 
 ### Importing components
 
