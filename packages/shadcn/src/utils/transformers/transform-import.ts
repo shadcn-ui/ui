@@ -61,7 +61,6 @@ function updateImportAliases(
   }
 
   // This treats the remote as coming from a faux registry.
-  // But only for imports that match known registry patterns (components, ui, lib, hooks)
   if (isRemote && moduleSpecifier.startsWith("@/")) {
     // Check if this is a known alias pattern that should be transformed
     const isKnownPattern =

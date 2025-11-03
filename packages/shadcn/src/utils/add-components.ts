@@ -2,6 +2,7 @@ import path from "path"
 import { getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
 import { resolveRegistryTree } from "@/src/registry/resolver"
+import { isUrl } from "@/src/registry/utils"
 import {
   configSchema,
   registryItemFileSchema,
@@ -127,8 +128,6 @@ async function addProjectComponents(
     silent: options.silent,
   })
 
-  // Check if any components are from remote URLs
-  const { isUrl } = await import("@/src/registry/utils")
   const isRemote = components.some((component) => isUrl(component))
 
   await updateFiles(tree.files, config, {
