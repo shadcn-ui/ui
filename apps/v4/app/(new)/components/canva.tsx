@@ -7,7 +7,7 @@ import InfiniteViewer from "react-infinite-viewer"
 import { cn } from "@/lib/utils"
 import { canvaSearchParams } from "@/app/(new)/lib/search-params"
 
-const ZOOM_MIN = 1
+const ZOOM_MIN = 0.5
 const ZOOM_MAX = 2
 
 export function Canva({ children }: { children: React.ReactNode }) {
@@ -37,7 +37,7 @@ export function Canva({ children }: { children: React.ReactNode }) {
         ref={canvaRef}
         width="100%"
         height="100%"
-        className="bg-muted h-full w-full data-[mounted=false]:hidden"
+        className="h-full w-full data-[mounted=false]:hidden"
         displayVerticalScroll={false}
         displayHorizontalScroll={false}
         useMouseDrag
@@ -84,7 +84,7 @@ export function CanvaFrame({
   name,
 }: React.ComponentProps<"div"> & { name: string }) {
   return (
-    <div data-slot="canva-frame" className="flex flex-col gap-2">
+    <div data-slot="canva-frame" className="flex w-full flex-col gap-2">
       <div
         data-slot="canva-frame-name"
         className="text-muted-foreground px-px text-sm"
@@ -93,7 +93,7 @@ export function CanvaFrame({
       </div>
       <div
         data-slot="canva-frame-content"
-        className="bg-background aspect-[4/2.5] w-[1200px] p-6"
+        className="bg-background aspect-[4/2.5] w-full border"
       >
         {children}
       </div>

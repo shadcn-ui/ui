@@ -3,33 +3,11 @@ import {
   createSearchParamsCache,
   parseAsFloat,
   parseAsInteger,
+  parseAsString,
 } from "nuqs/server"
 
 import { iconLibraries } from "@/registry/icon-libraries"
-import {
-  designSystemStyles,
-  type DesignSystemStyle,
-} from "@/app/(new)/lib/style"
 import { themes, type Theme } from "@/app/(new)/lib/themes"
-
-export const parseAsStyle = createParser<DesignSystemStyle["name"]>({
-  parse(queryValue) {
-    if (typeof queryValue === "string" && queryValue.trim() !== "") {
-      const trimmed = queryValue.trim()
-      const validStyle = designSystemStyles.find(
-        (style) => style.name === trimmed
-      )
-      return validStyle ? (validStyle.name as DesignSystemStyle["name"]) : null
-    }
-    return null
-  },
-  serialize(value) {
-    if (typeof value === "string" && value.trim() !== "") {
-      return value.trim()
-    }
-    throw new Error("Invalid value for serialization")
-  },
-})
 
 export const parseAsIconLibrary = createParser<keyof typeof iconLibraries>({
   parse(queryValue) {
@@ -67,15 +45,15 @@ export const parseAsTheme = createParser<Theme["name"]>({
 })
 
 export const designSystemSearchParams = {
-  style: parseAsStyle.withDefault("radix-nova"),
   iconLibrary: parseAsIconLibrary.withDefault("lucide"),
+  item: parseAsString.withDefault(""),
+  theme: parseAsTheme.withDefault("blue"),
 }
 
 export const canvaSearchParams = {
-  zoom: parseAsFloat.withDefault(1),
+  zoom: parseAsFloat.withDefault(0.85),
   scrollLeft: parseAsInteger.withDefault(0),
   scrollTop: parseAsInteger.withDefault(0),
-  theme: parseAsTheme.withDefault("blue"),
 }
 
 export const designSystemSearchParamsCache = createSearchParamsCache(
@@ -84,16 +62,10 @@ export const designSystemSearchParamsCache = createSearchParamsCache(
 
 export const canvaSearchParamsCache = createSearchParamsCache(canvaSearchParams)
 
-export const styleSearchParamsCache = createSearchParamsCache({
-  style: parseAsStyle.withDefault("radix-nova"),
-})
-
 export type DesignSystemSearchParams = Awaited<
   ReturnType<typeof designSystemSearchParamsCache.parse>
 >
 
-export function getDesignSystemParamsCacheKey(
-  params: DesignSystemSearchParams
-) {
-  return params.style
-}
+export type CanvaSearchParams = Awaited<
+  ReturnType<typeof canvaSearchParamsCache.parse>
+>

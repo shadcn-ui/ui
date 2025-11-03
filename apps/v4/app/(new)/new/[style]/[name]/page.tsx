@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/static-components */
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -7,7 +6,6 @@ import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { getStyle, STYLES, type Style } from "@/registry/styles"
-import { ComponentPreview } from "@/app/(new)/components/component-preview"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -16,6 +14,12 @@ export const dynamicParams = false
 const getCachedRegistryItem = React.cache(
   async (name: string, styleName: Style["name"]) => {
     return await getRegistryItem(name, styleName)
+  }
+)
+
+const getCachedRegistryComponent = React.cache(
+  async (name: string, styleName: Style["name"]) => {
+    return await getRegistryComponent(name, styleName)
   }
 )
 
@@ -50,7 +54,7 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      url: absoluteUrl(`/view/${style.name}/${item.name}`),
+      url: absoluteUrl(`/new/${style.name}/${item.name}`),
       images: [
         {
           url: siteConfig.ogImage,
@@ -82,14 +86,7 @@ export async function generateStaticParams() {
     const styleIndex = Index[style.name]
     for (const itemName in styleIndex) {
       const item = styleIndex[itemName]
-      if (
-        [
-          "registry:block",
-          "registry:component",
-          "registry:example",
-          "registry:internal",
-        ].includes(item.type)
-      ) {
+      if (["registry:example"].includes(item.type)) {
         params.push({
           style: style.name,
           name: item.name,
@@ -117,15 +114,15 @@ export default async function BlockPage({
   }
 
   const item = await getCachedRegistryItem(name, style.name)
-  const Component = getRegistryComponent(name, style.name)
+  const Component = await getCachedRegistryComponent(name, style.name)
 
   if (!item || !Component) {
     return notFound()
   }
 
   return (
-    <ComponentPreview>
+    <div className={cn("bg-background", item.meta?.container)}>
       <Component />
-    </ComponentPreview>
+    </div>
   )
 }

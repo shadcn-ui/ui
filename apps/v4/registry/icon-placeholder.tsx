@@ -18,8 +18,9 @@ export function IconPlaceholder({
     "iconLibrary",
     designSystemSearchParams.iconLibrary
   )
+
   return (
-    <IconPlaceholderMemoized
+    <IconForIconLibrary
       iconLibrary={iconLibrary}
       name={name}
       className={className}

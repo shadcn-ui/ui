@@ -92,7 +92,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LayoutProvider>
             <ActiveThemeProvider>
-              {children}
+              <NuqsAdapter>{children}</NuqsAdapter>
               <TailwindIndicator />
               <Toaster position="top-center" />
               <Analytics />

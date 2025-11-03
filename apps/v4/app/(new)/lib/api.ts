@@ -1,20 +1,32 @@
 "use server"
 
-import { getRegistryItems } from "@/lib/registry"
+import { getRegistryItem, getRegistryItems } from "@/lib/registry"
 import type { DesignSystemStyle } from "@/app/(new)/lib/style"
 
 const allowedTypes = ["registry:example"]
 
-export async function getRegistryItemsUsingParams(
+export async function getRegistryItemsForStyle(
   style: DesignSystemStyle["name"]
 ) {
   const items = await getRegistryItems(
     style,
-    (item) =>
-      allowedTypes.includes(item.type) &&
-      item.meta?.canva?.title !== undefined &&
-      ["button-demo", "select-demo"].includes(item.name)
+    (item) => allowedTypes.includes(item.type) && item !== null
   )
 
   return items
+}
+
+export async function getRegistryItemForStyle(
+  name: string,
+  style: DesignSystemStyle["name"]
+) {
+  const item = await getRegistryItem(name, style)
+
+  console.log(item)
+
+  if (!item || !allowedTypes.includes(item.type)) {
+    return null
+  }
+
+  return item
 }

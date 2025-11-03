@@ -11,18 +11,6 @@ export const iconLibraries = {
     package: "lucide-react",
     import: "lucide-react",
   },
-  radix: {
-    name: "radix",
-    title: "Radix Icons",
-    package: "@radix-ui/react-icons",
-    import: "@radix-ui/react-icons",
-  },
-  solar: {
-    name: "solar",
-    title: "Solar (Bold)",
-    package: "@solar-icons/react-perf",
-    import: "@solar-icons/react-perf/Bold",
-  },
   tabler: {
     name: "tabler",
     title: "Tabler Icons",
