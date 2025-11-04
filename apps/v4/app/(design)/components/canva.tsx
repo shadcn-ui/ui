@@ -5,7 +5,7 @@ import { useQueryStates } from "nuqs"
 import InfiniteViewer from "react-infinite-viewer"
 
 import { cn } from "@/lib/utils"
-import { canvaSearchParams } from "@/app/(new)/lib/search-params"
+import { canvaSearchParams } from "@/app/(design)/lib/search-params"
 
 const ZOOM_MIN = 0.5
 const ZOOM_MAX = 2

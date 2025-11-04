@@ -5,7 +5,7 @@ import { Select as SelectPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 import { IconPlaceholder } from "@/registry/icon-placeholder"
-import { CanvaPortal } from "@/app/(new)/components/canva"
+import { CanvaPortal } from "@/app/(design)/components/canva"
 
 function Select({
   ...props

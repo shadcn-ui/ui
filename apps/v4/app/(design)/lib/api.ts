@@ -1,7 +1,7 @@
 "use server"
 
 import { getRegistryItem, getRegistryItems } from "@/lib/registry"
-import type { DesignSystemStyle } from "@/app/(new)/lib/style"
+import type { DesignSystemStyle } from "@/app/(design)/lib/style"
 
 const allowedTypes = ["registry:example"]
 

@@ -1,9 +1,9 @@
 import { Suspense } from "react"
 
 import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
-import { CommandMenuDialog } from "@/app/(new)/components/command-menu-dialog"
-import { getRegistryItemsForStyle } from "@/app/(new)/lib/api"
-import type { DesignSystemStyle } from "@/app/(new)/lib/style"
+import { CommandMenuDialog } from "@/app/(design)/components/command-menu-dialog"
+import { getRegistryItemsForStyle } from "@/app/(design)/lib/api"
+import type { DesignSystemStyle } from "@/app/(design)/lib/style"
 
 export async function CommandMenu({
   style,

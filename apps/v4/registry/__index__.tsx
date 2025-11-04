@@ -8731,6 +8731,25 @@ export const Index: Record<string, Record<string, any>> = {
     },
   },
   "radix-nova": {
+    "cover-example": {
+      name: "cover-example",
+      title: "Cover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/radix-nova/examples/cover-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/examples/cover-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",

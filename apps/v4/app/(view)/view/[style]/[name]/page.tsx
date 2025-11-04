@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { getStyle, STYLES, type Style } from "@/registry/styles"
-import { ComponentPreview } from "@/app/(new)/components/component-preview"
+import { ComponentPreview } from "@/app/(design)/components/component-preview"
 
 export const revalidate = false
 export const dynamic = "force-static"

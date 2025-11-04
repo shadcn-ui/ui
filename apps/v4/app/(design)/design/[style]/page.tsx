@@ -2,9 +2,9 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import type { SearchParams } from "nuqs/server"
 
-import { CommandMenu } from "@/app/(new)/components/command-menu"
-import { ConfigForm } from "@/app/(new)/components/config-form"
-import { Preview } from "@/app/(new)/components/preview"
+import { CommandMenu } from "@/app/(design)/components/command-menu"
+import { ConfigForm } from "@/app/(design)/components/config-form"
+import { Preview } from "@/app/(design)/components/preview"
 
 import "@/styles/themes.css"
 
@@ -13,13 +13,15 @@ import Link from "next/link"
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import { ModeSwitcher } from "@/components/mode-switcher"
 import { Button } from "@/registry/new-york-v4/ui/button"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { getStyle } from "@/registry/styles"
 import {
   canvaSearchParamsCache,
   designSystemSearchParamsCache,
-} from "@/app/(new)/lib/search-params"
-import { designSystemStyles } from "@/app/(new)/lib/style"
+} from "@/app/(design)/lib/search-params"
+import { designSystemStyles } from "@/app/(design)/lib/style"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -37,8 +39,8 @@ export async function generateMetadata({
     return {}
   }
 
-  const title = `New - ${style.title}`
-  const description = `Create components with the ${style.title} style`
+  const title = style.title
+  const description = "Design your custom components."
 
   return {
     title,
@@ -94,8 +96,8 @@ export default async function NewPage({
 
   return (
     <div className="bg-muted/30 flex h-svh flex-1 flex-col">
-      <header className="bg-background sticky top-0 z-50 w-full shrink-0">
-        <div className="container-wrapper 3xl:fixed:px-0 flex h-12 items-center px-4">
+      <header className="sticky top-0 z-50 w-full shrink-0">
+        <div className="container-wrapper 3xl:fixed:px-0 **:data-[slot=separator]:bg-border flex h-12 items-center gap-4 px-4 **:data-[slot=separator]:!h-4">
           <Button
             asChild
             variant="ghost"
@@ -108,13 +110,15 @@ export default async function NewPage({
             </Link>
           </Button>
           <CommandMenu style={style.name} />
+          <Separator orientation="vertical" />
+          <ModeSwitcher />
         </div>
       </header>
       <div className="flex flex-1">
         <div className="z-10 w-64 shrink-0 p-4">
           <ConfigForm />
         </div>
-        <div className="flex-1 p-6">
+        <div className="flex-1">
           <Preview style={style.name} />
         </div>
       </div>

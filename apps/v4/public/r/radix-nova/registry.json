@@ -3,6 +3,17 @@
   "homepage": "https://ui.shadcn.com",
   "items": [
     {
+      "name": "cover-example",
+      "type": "registry:example",
+      "title": "Cover",
+      "files": [
+        {
+          "path": "registry/radix-nova/examples/cover-example.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "accordion-example",
       "type": "registry:example",
       "title": "Accordion",

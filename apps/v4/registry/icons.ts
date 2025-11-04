@@ -1,35 +1,71 @@
+import { ShoppingBag } from "lucide-react"
+
 import { type IconLibrary } from "@/registry/icon-libraries"
 
 export const icons = {
+  AccordionTrigger: {
+    lucide: "ChevronDownIcon",
+    tabler: "IconCircleChevronDown",
+  },
+  CheckboxCheck: {
+    lucide: "CheckIcon",
+    tabler: "IconCheck",
+  },
   SelectTriggerArrow: {
     lucide: "ChevronDownIcon",
-    radix: "ChevronDownIcon",
-    solar: "AltArrowDown",
     tabler: "IconSelector",
   },
   SelectItemCheck: {
-    lucide: "CircleCheckIcon",
-    radix: "CheckIcon",
-    solar: "CheckCircle",
+    lucide: "CheckIcon",
     tabler: "IconCheck",
   },
   SelectScrollUpButton: {
     lucide: "ChevronUpIcon",
-    radix: "ChevronUpIcon",
-    solar: "AltArrowUp",
     tabler: "IconChevronUp",
   },
   SelectScrollDownButton: {
     lucide: "ChevronDownIcon",
-    radix: "ChevronDownIcon",
-    solar: "AltArrowDown",
     tabler: "IconChevronDown",
   },
   ButtonSend: {
     lucide: "SendIcon",
-    radix: "SendIcon",
-    solar: "Plain2",
     tabler: "IconShare",
+  },
+  BadgeCheckIcon: {
+    lucide: "BadgeCheckIcon",
+    tabler: "IconRosetteDiscountCheck",
+  },
+  ChevronRightIcon: {
+    lucide: "ChevronRightIcon",
+    tabler: "IconChevronRight",
+  },
+  ChevronDownIcon: {
+    lucide: "ChevronDownIcon",
+    tabler: "IconChevronDown",
+  },
+  AlertCircleIcon: {
+    lucide: "AlertCircleIcon",
+    tabler: "IconAlertCircle",
+  },
+  BookmarkCheckIcon: {
+    lucide: "BookmarkCheckIcon",
+    tabler: "IconBookmark",
+  },
+  CheckCircle2Icon: {
+    lucide: "CheckCircle2Icon",
+    tabler: "IconCircleCheck",
+  },
+  GiftIcon: {
+    lucide: "GiftIcon",
+    tabler: "IconGift",
+  },
+  ShoppingBagIcon: {
+    lucide: "ShoppingBagIcon",
+    tabler: "IconShoppingBag",
+  },
+  ShieldAlertIcon: {
+    lucide: "ShieldAlertIcon",
+    tabler: "IconShield",
   },
 } as const satisfies Record<string, Record<IconLibrary, string>>
 

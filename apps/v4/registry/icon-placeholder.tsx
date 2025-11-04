@@ -5,7 +5,7 @@ import { useQueryState } from "nuqs"
 
 import { IconForIconLibrary, type IconLibrary } from "@/registry/icon-libraries"
 import type { IconName } from "@/registry/icons"
-import { designSystemSearchParams } from "@/app/(new)/lib/search-params"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function IconPlaceholder({
   name,

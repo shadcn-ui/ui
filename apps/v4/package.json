@@ -55,7 +55,6 @@
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.7",
-    "@solar-icons/react-perf": "^1.0.0",
     "@tabler/icons-react": "^3.31.0",
     "@tailwindcss/postcss": "^4.1.11",
     "@tanstack/react-form": "^1.20.0",

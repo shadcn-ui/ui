@@ -23,7 +23,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/radix-nova/ui/command"
-import { designSystemSearchParams } from "@/app/(new)/lib/search-params"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function CommandMenuDialog({ items }: { items: RegistryItem[] }) {
   const [open, setOpen] = React.useState(false)
@@ -66,7 +66,7 @@ export function CommandMenuDialog({ items }: { items: RegistryItem[] }) {
           <div className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
             <KbdGroup>
               <Kbd className="border">⌘</Kbd>
-              <Kbd className="border">P</Kbd>
+              <Kbd className="border">K</Kbd>
             </KbdGroup>
           </div>
         </Button>

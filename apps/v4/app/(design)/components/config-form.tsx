@@ -22,8 +22,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { designSystemSearchParams } from "@/app/(new)/lib/search-params"
-import { Theme, themes } from "@/app/(new)/lib/themes"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
+import { Theme, themes } from "@/app/(design)/lib/themes"
 
 export function ConfigForm() {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
@@ -33,7 +33,7 @@ export function ConfigForm() {
   return (
     <Card className="gap-4 py-0">
       <CardHeader className="border-b p-4 pb-2!">
-        <CardTitle>Design System</CardTitle>
+        <CardTitle className="text-sm">Design System</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0">
         <FieldGroup>

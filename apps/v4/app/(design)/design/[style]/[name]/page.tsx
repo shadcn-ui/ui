@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { getStyle, STYLES, type Style } from "@/registry/styles"
+import { Canva } from "@/app/(design)/components/canva"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -120,9 +121,5 @@ export default async function BlockPage({
     return notFound()
   }
 
-  return (
-    <div className={cn("bg-background", item.meta?.container)}>
-      <Component />
-    </div>
-  )
+  return <Component />
 }

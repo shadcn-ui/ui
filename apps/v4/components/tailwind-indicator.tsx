@@ -1,4 +1,4 @@
-const SHOW = true
+const SHOW = false
 
 export function TailwindIndicator() {
   if (process.env.NODE_ENV === "production" || !SHOW) {

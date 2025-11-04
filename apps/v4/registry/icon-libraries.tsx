@@ -26,16 +26,6 @@ const getLucideIcon = React.cache(async (iconName: string) => {
   return iconModule[iconName as keyof typeof iconModule]
 })
 
-const getRadixIcon = React.cache(async (iconName: string) => {
-  const iconModule = await import("@radix-ui/react-icons")
-  return iconModule[iconName as keyof typeof iconModule]
-})
-
-const getSolarIcon = React.cache(async (iconName: string) => {
-  const iconModule = await import("@solar-icons/react-perf/Bold")
-  return iconModule[iconName as keyof typeof iconModule]
-})
-
 const getTablerIcon = React.cache(async (iconName: string) => {
   const iconModule = await import("@tabler/icons-react")
   return iconModule[iconName as keyof typeof iconModule]
@@ -43,8 +33,6 @@ const getTablerIcon = React.cache(async (iconName: string) => {
 
 type IconPromise =
   | ReturnType<typeof getLucideIcon>
-  | ReturnType<typeof getRadixIcon>
-  | ReturnType<typeof getSolarIcon>
   | ReturnType<typeof getTablerIcon>
 export function IconForIconLibrary({
   iconLibrary,
@@ -63,13 +51,9 @@ export function IconForIconLibrary({
   const iconPromise =
     iconLibrary === "lucide"
       ? getLucideIcon(iconName)
-      : iconLibrary === "radix"
-        ? getRadixIcon(iconName)
-        : iconLibrary === "solar"
-          ? getSolarIcon(iconName)
-          : iconLibrary === "tabler"
-            ? getTablerIcon(iconName)
-            : null
+      : iconLibrary === "tabler"
+        ? getTablerIcon(iconName)
+        : null
 
   if (!iconPromise) {
     return null
