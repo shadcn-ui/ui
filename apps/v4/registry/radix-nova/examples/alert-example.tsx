@@ -1,10 +1,10 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   Alert,
   AlertDescription,
   AlertTitle,
 } from "@/registry/radix-nova/ui/alert"
 import { Button } from "@/registry/radix-nova/ui/button"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function AlertDemo() {
   return (

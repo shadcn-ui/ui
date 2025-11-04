@@ -1,5 +1,5 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Badge } from "@/registry/radix-nova/ui/badge"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function BadgeDemo() {
   return (

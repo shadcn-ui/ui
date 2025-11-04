@@ -11,7 +11,6 @@ import {
   XAxis,
 } from "recharts"
 
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   Card,
   CardContent,
@@ -26,6 +25,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/radix-nova/ui/chart"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const areaChartData = [
   { month: "January", desktop: 186 },

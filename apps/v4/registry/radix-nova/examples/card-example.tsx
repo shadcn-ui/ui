@@ -1,6 +1,5 @@
 import Image from "next/image"
 
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   Avatar,
   AvatarFallback,
@@ -18,6 +17,7 @@ import {
 } from "@/registry/radix-nova/ui/card"
 import { Input } from "@/registry/radix-nova/ui/input"
 import { Label } from "@/registry/radix-nova/ui/label"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function CardDemo() {
   return (

@@ -1,7 +1,6 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,6 +10,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/registry/radix-nova/ui/navigation-menu"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const components: { title: string; href: string; description: string }[] = [
   {

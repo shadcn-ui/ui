@@ -2,7 +2,6 @@ import * as React from "react"
 import Image from "next/image"
 import { IconChevronRight, IconDownload } from "@tabler/icons-react"
 
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   Avatar,
   AvatarFallback,
@@ -30,6 +29,7 @@ import {
 } from "@/registry/radix-nova/ui/item"
 import { Progress } from "@/registry/radix-nova/ui/progress"
 import { Spinner } from "@/registry/radix-nova/ui/spinner"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const people = [
   {

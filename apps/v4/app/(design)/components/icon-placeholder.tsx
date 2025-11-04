@@ -1,11 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { useQueryState } from "nuqs"
 
 import { IconForIconLibrary, type IconLibrary } from "@/registry/icon-libraries"
 import type { IconName } from "@/registry/icons"
-import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
+import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system-sync"
 
 export function IconPlaceholder({
   name,
@@ -14,10 +13,7 @@ export function IconPlaceholder({
   name: IconName
   className?: string
 }) {
-  const [iconLibrary] = useQueryState(
-    "iconLibrary",
-    designSystemSearchParams.iconLibrary
-  )
+  const iconLibrary = useDesignSystemParam("iconLibrary")
 
   return (
     <IconForIconLibrary

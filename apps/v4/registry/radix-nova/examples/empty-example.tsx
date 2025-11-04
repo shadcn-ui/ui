@@ -1,6 +1,5 @@
 import { IconArrowUpRight, IconFolderCode } from "@tabler/icons-react"
 
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Button } from "@/registry/radix-nova/ui/button"
 import { Card, CardContent } from "@/registry/radix-nova/ui/card"
 import {
@@ -30,6 +29,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/radix-nova/ui/popover"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function EmptyDemo() {
   return (

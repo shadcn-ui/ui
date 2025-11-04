@@ -4,7 +4,6 @@ import * as React from "react"
 import { Command as CommandPrimitive } from "cmdk"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   Dialog,
   DialogContent,
@@ -12,6 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/registry/new-york-v4/ui/dialog"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 function Command({
   className,

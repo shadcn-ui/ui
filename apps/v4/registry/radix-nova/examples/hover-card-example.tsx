@@ -1,4 +1,3 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   Avatar,
   AvatarFallback,
@@ -10,6 +9,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/registry/radix-nova/ui/hover-card"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function HoverCardDemo() {
   return (

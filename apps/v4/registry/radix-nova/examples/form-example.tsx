@@ -7,7 +7,6 @@ import { toast } from "sonner"
 import { z } from "zod"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Button } from "@/registry/radix-nova/ui/button"
 import { Calendar } from "@/registry/radix-nova/ui/calendar"
 import { Checkbox } from "@/registry/radix-nova/ui/checkbox"
@@ -39,6 +38,7 @@ import {
 } from "@/registry/radix-nova/ui/select"
 import { Switch } from "@/registry/radix-nova/ui/switch"
 import { Textarea } from "@/registry/radix-nova/ui/textarea"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const items = [
   {

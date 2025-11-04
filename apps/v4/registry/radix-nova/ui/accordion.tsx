@@ -4,7 +4,7 @@ import * as React from "react"
 import { Accordion as AccordionPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/registry/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 function Accordion({
   ...props

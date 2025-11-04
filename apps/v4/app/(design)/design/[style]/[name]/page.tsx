@@ -1,12 +1,15 @@
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+import Script from "next/script"
 
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
-import { absoluteUrl, cn } from "@/lib/utils"
+import { absoluteUrl } from "@/lib/utils"
 import { getStyle, STYLES, type Style } from "@/registry/styles"
-import { Canva } from "@/app/(design)/components/canva"
+import { ThemeProvider } from "@/app/(design)/components/theme-provider"
+
+import "@/styles/themes.css"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -121,5 +124,34 @@ export default async function BlockPage({
     return notFound()
   }
 
-  return <Component />
+  return (
+    <>
+      <Script
+        id="design-system-params-listener"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              window.__DESIGN_SYSTEM_PARAMS__ = null;
+              window.__DESIGN_SYSTEM_READY__ = false;
+
+              // Listen for messages before page loads.
+              window.addEventListener('message', function(event) {
+                if (event.data.type === 'design-system-params' && event.data.params) {
+                  console.log('[iframe] Received params:', event.data.params);
+                  window.__DESIGN_SYSTEM_PARAMS__ = event.data.params;
+                  window.__DESIGN_SYSTEM_READY__ = true;
+                }
+              });
+
+              console.log('[iframe] Params listener installed');
+            })();
+          `,
+        }}
+      />
+      <ThemeProvider>
+        <Component />
+      </ThemeProvider>
+    </>
+  )
 }

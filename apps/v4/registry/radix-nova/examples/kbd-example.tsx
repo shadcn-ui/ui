@@ -1,6 +1,5 @@
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Button } from "@/registry/radix-nova/ui/button"
 import { ButtonGroup } from "@/registry/radix-nova/ui/button-group"
 import {
@@ -14,6 +13,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix-nova/ui/tooltip"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function KbdDemo() {
   return (

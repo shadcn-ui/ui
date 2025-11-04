@@ -1,6 +1,5 @@
 import * as React from "react"
 
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   Select,
   SelectContent,
@@ -10,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/radix-lyra/ui/select"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function SelectDemo() {
   return (

@@ -1,4 +1,3 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Card,
@@ -16,6 +15,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/radix-nova/ui/tabs"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function TabsDemo() {
   return (

@@ -2,13 +2,13 @@
 
 import * as React from "react"
 
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/registry/radix-nova/ui/collapsible"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function CollapsibleDemo() {
   const [isOpen, setIsOpen] = React.useState(false)

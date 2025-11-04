@@ -1,5 +1,5 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Toggle } from "@/registry/radix-nova/ui/toggle"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function ToggleDemo() {
   return (

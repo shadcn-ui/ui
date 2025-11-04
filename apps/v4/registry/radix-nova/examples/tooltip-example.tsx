@@ -1,10 +1,10 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix-nova/ui/tooltip"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function TooltipDemo() {
   return (

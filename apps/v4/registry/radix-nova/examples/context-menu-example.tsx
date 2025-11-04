@@ -1,4 +1,3 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -14,6 +13,7 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/registry/radix-nova/ui/context-menu"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function ContextMenuDemo() {
   return (

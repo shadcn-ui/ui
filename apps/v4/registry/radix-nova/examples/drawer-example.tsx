@@ -3,7 +3,6 @@
 import * as React from "react"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Drawer,
@@ -15,6 +14,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/registry/radix-nova/ui/drawer"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const data = [
   {

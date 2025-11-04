@@ -1,4 +1,3 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,6 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/registry/radix-lyra/ui/alert-dialog"
 import { Button } from "@/registry/radix-lyra/ui/button"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export function AlertDialogDemo() {
   return (

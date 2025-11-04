@@ -1,4 +1,3 @@
-import { IconPlaceholder } from "@/registry/icon-placeholder"
 import { Badge } from "@/registry/radix-nova/ui/badge"
 import { Button } from "@/registry/radix-nova/ui/button"
 import {
@@ -16,6 +15,7 @@ import {
   InputGroupInput,
 } from "@/registry/radix-nova/ui/input-group"
 import { Spinner } from "@/registry/radix-nova/ui/spinner"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function SpinnerDemo() {
   return (
