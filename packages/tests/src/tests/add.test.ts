@@ -297,6 +297,57 @@ describe("shadcn add", () => {
     ).toBe("Foo Bar")
   })
 
+  it("should add component to custom file path", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, [
+      "add",
+      "button",
+      "--path=custom/my-button.tsx",
+    ])
+
+    expect(
+      await fs.pathExists(path.join(fixturePath, "custom/my-button.tsx"))
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(false)
+  })
+
+  it("should add component to custom directory", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["add", "button", "--path=custom/components"])
+
+    expect(
+      await fs.pathExists(
+        path.join(fixturePath, "custom/components/button.tsx")
+      )
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(false)
+  })
+
+  it("should add multiple files to custom directory", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["add", "button", "card", "--path=custom/ui"])
+
+    expect(
+      await fs.pathExists(path.join(fixturePath, "custom/ui/button.tsx"))
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "custom/ui/card.tsx"))
+    ).toBe(true)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(false)
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/card.tsx"))
+    ).toBe(false)
+  })
+
   it("should add at-property", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     await npxShadcn(fixturePath, [

@@ -33,7 +33,7 @@ export function RootComponents() {
       <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
         <InputGroupButtonExample />
         <ItemDemo />
-        <FieldSeparator>Appearance Settings</FieldSeparator>
+        <FieldSeparator className="my-4">Appearance Settings</FieldSeparator>
         <AppearanceSettings />
       </div>
       <div className="order-first flex flex-col gap-6 lg:hidden xl:order-last xl:flex *:[div]:w-full *:[div]:max-w-full">
