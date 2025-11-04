@@ -33,6 +33,7 @@
   "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
   "@kanpeki": "https://kanpeki.vercel.app/r/{name}.json",
   "@kokonutui": "https://kokonutui.com/r/{name}.json",
+  "@lens-blocks": "https://lensblocks.com/r/{name}.json",
   "@limeplay": "https://limeplay.winoffrg.dev/r/{name}.json",
   "@lytenyte": "https://www.1771technologies.com/r/{name}.json",
   "@magicui": "https://magicui.design/r/{name}.json",

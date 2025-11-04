@@ -175,6 +175,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='none' viewBox='0 0 32 32'><style>@media (prefers-color-scheme:dark){.theme-primary{fill:#fff}.theme-accent{fill:#3bb44b}}@media (prefers-color-scheme:light){.theme-primary{fill:#0c0c0c;fill-opacity:.82}.theme-primary-solid{fill:#111}.theme-accent{fill:#2cd242}}</style><path fill-rule='evenodd' d='M12.365 24.14c2.241 3.92 8.445 5.557 12.328 3.294 3.191-1.86 4.616-6.231 3.776-9.905-.36-1.575-1.362-2.916-2.594-3.947q-.284-.236-.572-.454c.471.51.895 1.085 1.257 1.72 2.407 4.208 1.211 9.455-2.671 11.718-3.883 2.263-8.982.686-11.389-3.523a9.4 9.4 0 0 1-1.162-3.416c-.058 1.597.264 3.18 1.027 4.514' class='theme-primary' clip-rule='evenodd'/><path d='M25.917 19.269c0 3.325-2.67 6.021-5.964 6.021s-5.965-2.696-5.965-6.021c0-3.326 2.67-6.022 5.965-6.022s5.964 2.696 5.964 6.022' class='theme-primary-solid theme-primary'/><path d='M10.51 17.52c-.09-.678-4.815-10.356 0-12.346 4.814-1.99 7.648-2.36 7.648-2.36s3.006-.452 5.171-2.532-.961 7.967-2.165 10.047-3.7 1.81-5.127 3.211c-1.427 1.402-2.728 3.98-2.728 3.98s-.665-2.025-.665-3.98c0-1.954 4.775-7.371 4.775-7.371 2.095-1.447-3.433 1.55-5.394 5.472-1.573 3.144-1.54 5.461-1.512 5.907.013.107.007.102 0 0zM10.994 20.294c-.425.057-6.499 3.084-7.747 0s-1.48-4.9-1.48-4.9-.285-1.925-1.59-3.312 5 .616 6.305 1.387 1.135 2.37 2.015 3.284 2.497 1.748 2.497 1.748-1.27.426-2.497.426-4.626-3.06-4.626-3.06c-.908-1.341.973 2.2 3.434 3.456 1.973 1.008 3.427.987 3.707.969.067-.009.064-.005 0 0z' class='theme-accent'/></svg>"
   },
   {
+    "name": "@lens-blocks",
+    "homepage": "https://lensblocks.com",
+    "url": "https://lensblocks.com/r/{name}.json",
+    "description": "A collection of social media components for use with Lens Social Protocol.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2'/><rect x='14' y='2' width='8' height='8' rx='1'/></svg>"
+  },
+  {
     "name": "@lytenyte",
     "homepage": "https://www.1771technologies.com",
     "url": "https://www.1771technologies.com/r/{name}.json",
@@ -299,6 +306,13 @@
     "url": "https://shadcndesign-free.vercel.app/r/{name}.json",
     "description": "A growing collection of high-quality blocks and themes for shadcn/ui.",
     "logo": "<svg width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_22651_9557)'><g clip-path='url(#clip1_22651_9557)'><rect x='10' y='10' width='60' height='60' fill='black' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='2.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='2.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><rect x='62.5' y='62.5' width='15' height='15' fill='white' stroke='#4497F7' stroke-width='5'/><path d='M23.75 56.25L56.25 23.75' stroke='white' stroke-width='5'/><path d='M43.75 56.25L56.25 43.75' stroke='white' stroke-width='5'/></g></g><defs><clipPath id='clip0_22651_9557'><rect width='80' height='80' fill='white'/></clipPath><clipPath id='clip1_22651_9557'><rect width='80' height='80' fill='white'/></clipPath></defs></svg>"
+  },
+  {
+    "name": "@shadcn-studio",
+    "homepage": "https://shadcnstudio.com",
+    "url": "https://shadcnstudio.com/r/{name}.json",
+    "description": "An open-source set of shadcn/ui components, blocks, and templates with a powerful theme generator.",
+    "logo": "<svg width='33' height='33' viewBox='0 0 33 33' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0.5' y='0.5' width='32' height='32' rx='16' fill='var(--forgraound)'></rect><path d='M16.5993 7.50488V13.4044C16.5993 15.3441 15.0268 16.9166 13.0871 16.9166H7.35156' stroke='var(--background)' stroke-width='1.95122'></path><path d='M16.7562 26.3286L16.7562 20.4291C16.7562 18.4893 18.3286 16.9169 20.2684 16.9169L26.0039 16.9169' stroke='var(--background)' stroke-width='1.95122'></path><line x1='23.7326' y1='10.0919' x2='19.696' y2='14.081' stroke='var(--background)' stroke-width='1.95122'></line><line x1='13.7385' y1='20.0567' x2='9.70187' y2='24.0459' stroke='var(--background)' stroke-width='1.95122'></line><line x1='13.5426' y1='13.8681' x2='9.52961' y2='9.85513' stroke='var(--background)' stroke-width='1.95122'></line><line x1='23.689' y1='24.0419' x2='19.6761' y2='20.029' stroke='var(--background)' stroke-width='1.95122'></line></svg>"
   },
   {
     "name": "@shadcn-editor",
