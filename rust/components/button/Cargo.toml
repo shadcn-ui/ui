@@ -1,0 +1,18 @@
+[package]
+name = "button"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+leptos.workspace = true
+wasm-bindgen.workspace = true
+console_error_panic_hook.workspace = true
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["-O4"]

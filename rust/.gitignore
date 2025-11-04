@@ -1,0 +1,26 @@
+# Rust build artifacts
+/target/
+**/target/
+
+# WASM build output
+**/pkg/
+**/*.wasm
+**/*.js
+**/*.d.ts
+
+# Cargo.lock for libraries (keep for applications)
+# Cargo.lock
+
+# Debug symbols
+**/*.pdb
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

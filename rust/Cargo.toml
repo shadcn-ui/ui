@@ -1,0 +1,17 @@
+[workspace]
+resolver = "2"
+members = [
+    "components/button",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["shadcn/ui contributors"]
+license = "MIT"
+repository = "https://github.com/shadcn-ui/ui"
+
+[workspace.dependencies]
+leptos = { version = "0.7", features = ["csr"] }
+wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1"

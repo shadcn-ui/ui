@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shadcn/ui Button - Leptos WASM Example</title>
+
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind CSS Config for shadcn/ui colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(214.3 31.8% 91.4%)",
+                        input: "hsl(214.3 31.8% 91.4%)",
+                        ring: "hsl(222.2 84% 4.9%)",
+                        background: "hsl(0 0% 100%)",
+                        foreground: "hsl(222.2 84% 4.9%)",
+                        primary: {
+                            DEFAULT: "hsl(222.2 47.4% 11.2%)",
+                            foreground: "hsl(210 40% 98%)",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(210 40% 96.1%)",
+                            foreground: "hsl(222.2 47.4% 11.2%)",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(0 84.2% 60.2%)",
+                            foreground: "hsl(210 40% 98%)",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(210 40% 96.1%)",
+                            foreground: "hsl(215.4 16.3% 46.9%)",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(210 40% 96.1%)",
+                            foreground: "hsl(222.2 47.4% 11.2%)",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(0 0% 100%)",
+                            foreground: "hsl(222.2 84% 4.9%)",
+                        },
+                        card: {
+                            DEFAULT: "hsl(0 0% 100%)",
+                            foreground: "hsl(222.2 84% 4.9%)",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "0.5rem",
+                        md: "calc(0.5rem - 2px)",
+                        sm: "calc(0.5rem - 4px)",
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground p-8">
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-8">
+            <h1 class="text-4xl font-bold mb-2">shadcn/ui Button Component</h1>
+            <p class="text-muted-foreground text-lg">Built with Leptos and Rust WASM</p>
+        </header>
+
+        <div class="space-y-8">
+            <!-- Example Section -->
+            <section class="border border-border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Basic Button</h2>
+                <p class="text-muted-foreground mb-4">
+                    A simple button component rendered from Rust/WASM using Leptos framework.
+                </p>
+
+                <div id="app" class="flex gap-4"></div>
+            </section>
+
+            <!-- Instructions Section -->
+            <section class="border border-border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Getting Started</h2>
+
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-lg font-medium mb-2">1. Build the component</h3>
+                        <pre class="bg-muted p-4 rounded-md overflow-x-auto"><code>cd rust/components/button
+wasm-pack build --target web --out-dir pkg</code></pre>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium mb-2">2. Serve this file</h3>
+                        <pre class="bg-muted p-4 rounded-md overflow-x-auto"><code>python3 -m http.server 8080
+# Visit http://localhost:8080</code></pre>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium mb-2">3. Use in your HTML</h3>
+                        <pre class="bg-muted p-4 rounded-md overflow-x-auto"><code>&lt;script type="module"&gt;
+    import init, { mount_button } from './pkg/button.js';
+
+    async function run() {
+        await init();
+        mount_button('#app', 'Click Me');
+    }
+
+    run();
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="border border-border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Features</h2>
+                <ul class="list-disc list-inside space-y-2 text-muted-foreground">
+                    <li>Built with Leptos reactive framework</li>
+                    <li>Compiled to WebAssembly for performance</li>
+                    <li>Styled with Tailwind CSS (matching shadcn/ui design)</li>
+                    <li>Type-safe with Rust's type system</li>
+                    <li>Small bundle size when compressed</li>
+                    <li>Event handling support</li>
+                </ul>
+            </section>
+        </div>
+
+        <footer class="mt-8 pt-8 border-t border-border text-center text-muted-foreground">
+            <p>
+                Part of
+                <a href="https://ui.shadcn.com" class="underline hover:text-foreground transition-colors">
+                    shadcn/ui
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Load the Leptos Button WASM Module -->
+    <script type="module">
+        // This will load once wasm-pack build is run
+        // For now, this serves as documentation
+
+        console.log('📦 To see the button in action:');
+        console.log('1. Run: cd rust/components/button');
+        console.log('2. Run: wasm-pack build --target web --out-dir pkg');
+        console.log('3. Refresh this page');
+
+        // Uncomment when WASM is built:
+        /*
+        import init, { mount_button } from '../pkg/button.js';
+
+        async function run() {
+            await init();
+            mount_button('#app', 'Click Me!');
+        }
+
+        run();
+        */
+    </script>
+</body>
+</html>
