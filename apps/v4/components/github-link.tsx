@@ -32,8 +32,6 @@ export async function StarsCount() {
         : `${(json.stargazers_count / 1000).toFixed(1)}k`
       : json.stargazers_count.toLocaleString()
 
-  console.log(formattedCount)
-
   return (
     <span className="text-muted-foreground w-fit text-xs tabular-nums">
       {formattedCount.replace(".0k", "k")}
