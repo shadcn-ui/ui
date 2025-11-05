@@ -55,7 +55,7 @@
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tabler/icons-react": "^3.31.0",
-    "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/postcss": "^4.1.16",
     "@tanstack/react-form": "^1.20.0",
     "@tanstack/react-table": "^8.9.1",
     "@vercel/analytics": "^1.4.1",
