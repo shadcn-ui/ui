@@ -46,12 +46,16 @@ rust/
 
 ### Button
 
-A foundational clickable button component with Tailwind CSS styling.
+A flexible, accessible button component with multiple variants and sizes.
 
 **Features:**
+- 6 variants: Default, Destructive, Outline, Secondary, Ghost, Link
+- 4 sizes: Small, Default, Large, Icon
 - Tailwind CSS styling matching shadcn/ui design
 - Click event handling
-- Customizable label text
+- Disabled state support
+- Custom class names
+- Type-safe with Rust enums
 - WASM-optimized for web performance
 
 **Building:**
@@ -68,18 +72,25 @@ wasm-pack build --target web --out-dir pkg
 <html>
 <head>
     <script type="module">
-        import init, { mount_button } from './pkg/button.js';
+        import init, { mount_button, mount_button_variant, mount_button_full } from './pkg/button.js';
 
         async function run() {
             await init();
-            mount_button('#app', 'Click Me');
+
+            // Simple button
+            mount_button('Click Me');
+
+            // Button with variant
+            mount_button_variant('Delete', 'destructive');
+
+            // Button with variant and size
+            mount_button_full('Submit', 'outline', 'sm');
         }
 
         run();
     </script>
 </head>
 <body>
-    <div id="app"></div>
 </body>
 </html>
 ```
@@ -87,14 +98,28 @@ wasm-pack build --target web --out-dir pkg
 **Usage in Rust:**
 
 ```rust
-use button::Button;
+use button::{Button, ButtonVariant, ButtonSize};
 use leptos::*;
 
 #[component]
 fn App() -> impl IntoView {
     view! {
+        // Default button
+        <Button label="Click me" />
+
+        // Destructive variant
+        <Button label="Delete" variant=ButtonVariant::Destructive />
+
+        // Small outline button
         <Button
-            label="Click me"
+            label="Cancel"
+            variant=ButtonVariant::Outline
+            size=ButtonSize::Sm
+        />
+
+        // With click handler
+        <Button
+            label="Submit"
             on_click=Some(Box::new(|| {
                 // Handle click
             }))
@@ -102,6 +127,8 @@ fn App() -> impl IntoView {
     }
 }
 ```
+
+See [components/button/README.md](components/button/README.md) for full documentation.
 
 ## Building All Components
 

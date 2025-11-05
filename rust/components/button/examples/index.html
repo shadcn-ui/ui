@@ -72,14 +72,34 @@
         </header>
 
         <div class="space-y-8">
-            <!-- Example Section -->
+            <!-- Variants Section -->
             <section class="border border-border rounded-lg p-6">
-                <h2 class="text-2xl font-semibold mb-4">Basic Button</h2>
+                <h2 class="text-2xl font-semibold mb-4">Button Variants</h2>
                 <p class="text-muted-foreground mb-4">
-                    A simple button component rendered from Rust/WASM using Leptos framework.
+                    Multiple button variants matching the shadcn/ui design system.
                 </p>
 
-                <div id="app" class="flex gap-4"></div>
+                <div class="flex flex-wrap gap-4" id="variants-demo"></div>
+            </section>
+
+            <!-- Sizes Section -->
+            <section class="border border-border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Button Sizes</h2>
+                <p class="text-muted-foreground mb-4">
+                    Different sizes for various use cases.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4" id="sizes-demo"></div>
+            </section>
+
+            <!-- Combined Examples -->
+            <section class="border border-border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Combined Examples</h2>
+                <p class="text-muted-foreground mb-4">
+                    Mix variants and sizes for different contexts.
+                </p>
+
+                <div class="flex flex-wrap gap-4" id="combined-demo"></div>
             </section>
 
             <!-- Instructions Section -->
@@ -102,11 +122,19 @@ wasm-pack build --target web --out-dir pkg</code></pre>
                     <div>
                         <h3 class="text-lg font-medium mb-2">3. Use in your HTML</h3>
                         <pre class="bg-muted p-4 rounded-md overflow-x-auto"><code>&lt;script type="module"&gt;
-    import init, { mount_button } from './pkg/button.js';
+    import init, { mount_button, mount_button_variant, mount_button_full } from './pkg/button.js';
 
     async function run() {
         await init();
-        mount_button('#app', 'Click Me');
+
+        // Simple button
+        mount_button('Click Me');
+
+        // Button with variant
+        mount_button_variant('Delete', 'destructive');
+
+        // Button with variant and size
+        mount_button_full('Submit', 'outline', 'sm');
     }
 
     run();
@@ -123,7 +151,10 @@ wasm-pack build --target web --out-dir pkg</code></pre>
                     <li>Compiled to WebAssembly for performance</li>
                     <li>Styled with Tailwind CSS (matching shadcn/ui design)</li>
                     <li>Type-safe with Rust's type system</li>
-                    <li>Small bundle size when compressed</li>
+                    <li>6 variants: Default, Destructive, Outline, Secondary, Ghost, Link</li>
+                    <li>4 sizes: Small, Default, Large, Icon</li>
+                    <li>Disabled state support</li>
+                    <li>Custom class names</li>
                     <li>Event handling support</li>
                 </ul>
             </section>
@@ -141,25 +172,105 @@ wasm-pack build --target web --out-dir pkg</code></pre>
 
     <!-- Load the Leptos Button WASM Module -->
     <script type="module">
-        // This will load once wasm-pack build is run
-        // For now, this serves as documentation
+        // Check if WASM module is available
+        const wasmAvailable = await fetch('../pkg/button.js')
+            .then(res => res.ok)
+            .catch(() => false);
 
-        console.log('📦 To see the button in action:');
-        console.log('1. Run: cd rust/components/button');
-        console.log('2. Run: wasm-pack build --target web --out-dir pkg');
-        console.log('3. Refresh this page');
+        if (!wasmAvailable) {
+            console.log('📦 To see the buttons in action:');
+            console.log('1. Run: cd rust/components/button');
+            console.log('2. Run: wasm-pack build --target web --out-dir pkg');
+            console.log('3. Refresh this page');
 
-        // Uncomment when WASM is built:
-        /*
-        import init, { mount_button } from '../pkg/button.js';
+            // Show instructions in the demo areas
+            const message = `
+                <div class="bg-muted p-6 rounded-md text-center">
+                    <p class="text-sm text-muted-foreground mb-2">⚙️ WASM module not built yet</p>
+                    <p class="text-xs text-muted-foreground">Run: <code class="bg-background px-2 py-1 rounded">wasm-pack build --target web --out-dir pkg</code></p>
+                </div>
+            `;
+            document.getElementById('variants-demo').innerHTML = message;
+            document.getElementById('sizes-demo').innerHTML = message;
+            document.getElementById('combined-demo').innerHTML = message;
+        } else {
+            // Import and use the WASM module
+            const { default: init, mount_button, mount_button_variant, mount_button_full } = await import('../pkg/button.js');
 
-        async function run() {
             await init();
-            mount_button('#app', 'Click Me!');
-        }
 
-        run();
-        */
+            // Create container elements for each button
+            function createButtonContainer(containerId, beforeHTML = '') {
+                const container = document.createElement('div');
+                container.className = 'flex items-center gap-2';
+                if (beforeHTML) {
+                    const label = document.createElement('span');
+                    label.className = 'text-sm text-muted-foreground min-w-[80px]';
+                    label.innerHTML = beforeHTML;
+                    container.appendChild(label);
+                }
+                const buttonWrapper = document.createElement('div');
+                container.appendChild(buttonWrapper);
+                document.getElementById(containerId).appendChild(container);
+                return buttonWrapper;
+            }
+
+            // Variants Demo
+            const variants = [
+                { name: 'Default', variant: 'default' },
+                { name: 'Destructive', variant: 'destructive' },
+                { name: 'Outline', variant: 'outline' },
+                { name: 'Secondary', variant: 'secondary' },
+                { name: 'Ghost', variant: 'ghost' },
+                { name: 'Link', variant: 'link' }
+            ];
+
+            const variantsContainer = document.getElementById('variants-demo');
+            variantsContainer.innerHTML = '';
+
+            for (const { name, variant } of variants) {
+                const wrapper = createButtonContainer('variants-demo', `${name}:`);
+                // For default variant, use simple mount_button
+                if (variant === 'default') {
+                    mount_button(name);
+                } else {
+                    mount_button_variant(name, variant);
+                }
+            }
+
+            // Sizes Demo
+            const sizes = [
+                { name: 'Small', size: 'sm' },
+                { name: 'Default', size: 'default' },
+                { name: 'Large', size: 'lg' },
+                { name: 'Icon (⚙️)', size: 'icon' }
+            ];
+
+            const sizesContainer = document.getElementById('sizes-demo');
+            sizesContainer.innerHTML = '';
+
+            for (const { name, size } of sizes) {
+                const wrapper = createButtonContainer('sizes-demo', `${name}:`);
+                mount_button_full(size === 'icon' ? '⚙️' : name, 'default', size);
+            }
+
+            // Combined Examples
+            const combined = [
+                { label: 'Small Destructive', variant: 'destructive', size: 'sm' },
+                { label: 'Large Outline', variant: 'outline', size: 'lg' },
+                { label: 'Small Secondary', variant: 'secondary', size: 'sm' },
+                { label: 'Large Ghost', variant: 'ghost', size: 'lg' }
+            ];
+
+            const combinedContainer = document.getElementById('combined-demo');
+            combinedContainer.innerHTML = '';
+
+            for (const { label, variant, size } of combined) {
+                mount_button_full(label, variant, size);
+            }
+
+            console.log('✅ Button components loaded successfully!');
+        }
     </script>
 </body>
 </html>
