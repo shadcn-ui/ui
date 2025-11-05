@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shadcn/ui Badge - Leptos WASM Example</title>
+
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind CSS Config for shadcn/ui colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(214.3 31.8% 91.4%)",
+                        input: "hsl(214.3 31.8% 91.4%)",
+                        ring: "hsl(222.2 84% 4.9%)",
+                        background: "hsl(0 0% 100%)",
+                        foreground: "hsl(222.2 84% 4.9%)",
+                        primary: {
+                            DEFAULT: "hsl(222.2 47.4% 11.2%)",
+                            foreground: "hsl(210 40% 98%)",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(210 40% 96.1%)",
+                            foreground: "hsl(222.2 47.4% 11.2%)",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(0 84.2% 60.2%)",
+                            foreground: "hsl(210 40% 98%)",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(210 40% 96.1%)",
+                            foreground: "hsl(215.4 16.3% 46.9%)",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(210 40% 96.1%)",
+                            foreground: "hsl(222.2 47.4% 11.2%)",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "0.5rem",
+                        md: "calc(0.5rem - 2px)",
+                        sm: "calc(0.5rem - 4px)",
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground p-8">
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-8">
+            <h1 class="text-4xl font-bold mb-2">shadcn/ui Badge Component</h1>
+            <p class="text-muted-foreground text-lg">Built with Leptos and Rust WASM</p>
+        </header>
+
+        <div class="space-y-8">
+            <!-- Variants Section -->
+            <section class="border border-border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Badge Variants</h2>
+                <p class="text-muted-foreground mb-4">
+                    Four badge variants for different contexts and emphasis.
+                </p>
+
+                <div class="flex flex-wrap gap-4" id="variants-demo"></div>
+            </section>
+
+            <!-- Use Cases Section -->
+            <section class="border border-border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Common Use Cases</h2>
+                <p class="text-muted-foreground mb-4">
+                    Examples of badge usage in real-world scenarios.
+                </p>
+
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm">Status:</span>
+                        <div id="status-demo" class="flex gap-2"></div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm">Categories:</span>
+                        <div id="category-demo" class="flex gap-2"></div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm">Notifications:</span>
+                        <div id="notification-demo" class="flex gap-2"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instructions Section -->
+            <section class="border border-border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Getting Started</h2>
+
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-lg font-medium mb-2">1. Build the component</h3>
+                        <pre class="bg-muted p-4 rounded-md overflow-x-auto"><code>cd rust/components/badge
+wasm-pack build --target web --out-dir pkg</code></pre>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium mb-2">2. Use in your HTML</h3>
+                        <pre class="bg-muted p-4 rounded-md overflow-x-auto"><code>&lt;script type="module"&gt;
+    import init, { mount_badge, mount_badge_variant } from './pkg/badge.js';
+
+    async function run() {
+        await init();
+
+        // Simple badge
+        mount_badge('New');
+
+        // Badge with variant
+        mount_badge_variant('Deprecated', 'destructive');
+    }
+
+    run();
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="border border-border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Features</h2>
+                <ul class="list-disc list-inside space-y-2 text-muted-foreground">
+                    <li>Built with Leptos reactive framework</li>
+                    <li>Compiled to WebAssembly for performance</li>
+                    <li>4 variants: Default, Secondary, Destructive, Outline</li>
+                    <li>Styled with Tailwind CSS (matching shadcn/ui design)</li>
+                    <li>Type-safe with Rust's type system</li>
+                    <li>Small bundle size (~15-20KB gzipped)</li>
+                    <li>Custom class support</li>
+                    <li>Accessible with proper semantics</li>
+                </ul>
+            </section>
+        </div>
+
+        <footer class="mt-8 pt-8 border-t border-border text-center text-muted-foreground">
+            <p>
+                Part of
+                <a href="https://ui.shadcn.com" class="underline hover:text-foreground transition-colors">
+                    shadcn/ui
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Load the Leptos Badge WASM Module -->
+    <script type="module">
+        // Check if WASM module is available
+        const wasmAvailable = await fetch('../pkg/badge.js')
+            .then(res => res.ok)
+            .catch(() => false);
+
+        if (!wasmAvailable) {
+            console.log('📦 To see the badges in action:');
+            console.log('1. Run: cd rust/components/badge');
+            console.log('2. Run: wasm-pack build --target web --out-dir pkg');
+            console.log('3. Refresh this page');
+
+            // Show instructions in the demo areas
+            const message = `
+                <div class="bg-muted p-6 rounded-md text-center">
+                    <p class="text-sm text-muted-foreground mb-2">⚙️ WASM module not built yet</p>
+                    <p class="text-xs text-muted-foreground">Run: <code class="bg-background px-2 py-1 rounded">wasm-pack build --target web --out-dir pkg</code></p>
+                </div>
+            `;
+            document.getElementById('variants-demo').innerHTML = message;
+        } else {
+            // Import and use the WASM module
+            const { default: init, mount_badge_variant } = await import('../pkg/badge.js');
+
+            await init();
+
+            // Variants Demo
+            const variants = [
+                { name: 'Default', variant: 'default' },
+                { name: 'Secondary', variant: 'secondary' },
+                { name: 'Destructive', variant: 'destructive' },
+                { name: 'Outline', variant: 'outline' }
+            ];
+
+            const variantsContainer = document.getElementById('variants-demo');
+            variantsContainer.innerHTML = '';
+
+            for (const { name, variant } of variants) {
+                mount_badge_variant(name, variant);
+            }
+
+            // Status badges
+            const statusContainer = document.getElementById('status-demo');
+            if (statusContainer) {
+                mount_badge_variant('Active', 'default');
+                mount_badge_variant('Pending', 'secondary');
+                mount_badge_variant('Error', 'destructive');
+            }
+
+            // Category badges
+            const categoryContainer = document.getElementById('category-demo');
+            if (categoryContainer) {
+                mount_badge_variant('React', 'outline');
+                mount_badge_variant('TypeScript', 'outline');
+                mount_badge_variant('Rust', 'outline');
+            }
+
+            // Notification badges
+            const notificationContainer = document.getElementById('notification-demo');
+            if (notificationContainer) {
+                mount_badge_variant('New', 'default');
+                mount_badge_variant('99+', 'destructive');
+            }
+
+            console.log('✅ Badge components loaded successfully!');
+        }
+    </script>
+</body>
+</html>

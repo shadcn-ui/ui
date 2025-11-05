@@ -2,6 +2,7 @@
 resolver = "2"
 members = [
     "components/button",
+    "components/badge",
 ]
 
 [workspace.package]
