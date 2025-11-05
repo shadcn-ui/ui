@@ -10,6 +10,10 @@ export const legacyThemes = Object.keys(baseColorsV4).map((color) => {
 
 export const themes = [
   {
+    name: "default",
+    title: "Default",
+  },
+  {
     name: "nova",
     title: "Nova",
   },

@@ -4,7 +4,6 @@ import * as React from "react"
 import { useMemo, useState } from "react"
 import {
   IconApps,
-  IconArrowUp,
   IconAt,
   IconBook,
   IconCheck,
@@ -37,6 +36,17 @@ import {
   Trash2Icon,
 } from "lucide-react"
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/registry/radix-nova/ui/alert-dialog"
 import {
   Avatar,
   AvatarFallback,
@@ -133,6 +143,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix-nova/ui/tooltip"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const SAMPLE_DATA = {
   mentionable: [
@@ -241,8 +252,8 @@ const options = [
 
 export default function CoverExample() {
   return (
-    <div className="min-h-screen w-full items-start justify-center p-8">
-      <div className="mx-auto grid gap-8 py-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6 2xl:gap-8">
+    <div className="flex min-h-screen w-full items-center justify-center p-8">
+      <div className="mx-auto grid w-full max-w-screen-2xl gap-8 py-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6 2xl:gap-8">
         <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
           <FieldDemo />
         </div>
@@ -366,12 +377,11 @@ function AppearanceSettings() {
               value={gpuCount}
               onChange={handleGpuInputChange}
               size={3}
-              className="h-8 !w-14 font-mono"
               maxLength={3}
             />
             <Button
               variant="outline"
-              size="icon-sm"
+              size="icon"
               type="button"
               aria-label="Decrement"
               onClick={() => handleGpuAdjustment(-1)}
@@ -381,7 +391,7 @@ function AppearanceSettings() {
             </Button>
             <Button
               variant="outline"
-              size="icon-sm"
+              size="icon"
               type="button"
               aria-label="Increment"
               onClick={() => handleGpuAdjustment(1)}
@@ -431,7 +441,7 @@ function ButtonGroupDemo() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon-sm" aria-label="More Options">
-              <MoreHorizontalIcon />
+              <IconPlaceholder name="MoreHorizontalIcon" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
@@ -492,6 +502,14 @@ function ButtonGroupDemo() {
           </DropdownMenuContent>
         </DropdownMenu>
       </ButtonGroup>
+      <ButtonGroup>
+        <Button variant="outline" size="icon-sm" aria-label="Previous">
+          <IconPlaceholder name="ChevronLeftIcon" />
+        </Button>
+        <Button variant="outline" size="icon-sm" aria-label="Next">
+          <IconPlaceholder name="ChevronRightIcon" />
+        </Button>
+      </ButtonGroup>
     </ButtonGroup>
   )
 }
@@ -499,7 +517,7 @@ function ButtonGroupDemo() {
 function ButtonGroupInputGroup() {
   const [voiceEnabled, setVoiceEnabled] = React.useState(false)
   return (
-    <ButtonGroup className="[--radius:9999rem]">
+    <ButtonGroup>
       <ButtonGroup>
         <Button variant="outline" size="icon" aria-label="Add">
           <PlusIcon />
@@ -550,14 +568,6 @@ function ButtonGroupNested() {
           3
         </Button>
       </ButtonGroup>
-      <ButtonGroup>
-        <Button variant="outline" size="icon-sm" aria-label="Previous">
-          <ArrowLeftIcon />
-        </Button>
-        <Button variant="outline" size="icon-sm" aria-label="Next">
-          <ChevronRightIcon />
-        </Button>
-      </ButtonGroup>
     </ButtonGroup>
   )
 }
@@ -565,33 +575,85 @@ function ButtonGroupNested() {
 function ButtonGroupPopover() {
   return (
     <ButtonGroup>
-      <Button variant="outline" size="sm">
-        <BotIcon /> Copilot
-      </Button>
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button variant="outline" size="icon-sm" aria-label="Open Popover">
-            <ChevronDownIcon />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent align="end" className="rounded-xl p-0 text-sm">
-          <div className="px-4 py-3">
-            <div className="text-sm font-medium">Agent Tasks</div>
-          </div>
-          <Separator />
-          <div className="p-4 text-sm *:[p:not(:last-child)]:mb-2">
-            <Textarea
-              placeholder="Describe your task in natural language."
-              className="mb-4 resize-none"
-            />
-            <p className="font-medium">Start a new task with Copilot</p>
-            <p className="text-muted-foreground">
-              Describe your task in natural language. Copilot will work in the
-              background and open a pull request for your review.
-            </p>
-          </div>
-        </PopoverContent>
-      </Popover>
+      <ButtonGroup>
+        <Button variant="outline">Follow</Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="!pl-2">
+              <ChevronDownIcon />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
+              <DropdownMenuItem>
+                <IconPlaceholder name="VolumeOffIcon" />
+                Mute Conversation
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <IconPlaceholder name="CheckIcon" />
+                Mark as Read
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <IconPlaceholder name="UserRoundXIcon" />
+                Block User
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>Conversation</DropdownMenuLabel>
+              <DropdownMenuItem>
+                <IconPlaceholder name="ShareIcon" />
+                Share Conversation
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <IconPlaceholder name="CopyIcon" />
+                Copy Conversation
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <IconPlaceholder name="AlertTriangleIcon" />
+                Report Conversation
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem variant="destructive">
+                <IconPlaceholder name="TrashIcon" />
+                Delete Conversation
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </ButtonGroup>
+      <ButtonGroup>
+        <Button variant="outline" size="sm">
+          <BotIcon /> Copilot
+        </Button>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline" size="icon-sm" aria-label="Open Popover">
+              <ChevronDownIcon />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent align="end" className="p-0">
+            <div className="px-4 py-3">
+              <div className="text-sm font-medium">Agent Tasks</div>
+            </div>
+            <Separator />
+            <div className="p-4 text-sm *:[p:not(:last-child)]:mb-2">
+              <Textarea
+                placeholder="Describe your task in natural language."
+                className="mb-4 resize-none"
+              />
+              <p className="font-medium">Start a new task with Copilot</p>
+              <p className="text-muted-foreground">
+                Describe your task in natural language. Copilot will work in the
+                background and open a pull request for your review.
+              </p>
+            </div>
+          </PopoverContent>
+        </Popover>
+      </ButtonGroup>
     </ButtonGroup>
   )
 }
@@ -628,10 +690,52 @@ function EmptyAvatarGroup() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button size="sm">
-          <PlusIcon />
-          Invite Members
-        </Button>
+        <div className="flex gap-2">
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="outline">Show Dialog</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction>Continue</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button>Connect Mouse</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="theme-lyra:gap-4 gap-6 sm:max-w-xs">
+              <div className="bg-muted theme-lyra:size-10 mx-auto flex size-16 items-center justify-center rounded-full">
+                <IconPlaceholder
+                  name="BluetoothIcon"
+                  className="theme-lyra:size-6 size-8"
+                />
+              </div>
+              <AlertDialogHeader>
+                <AlertDialogTitle className="text-center">
+                  Allow accessory to connect?
+                </AlertDialogTitle>
+                <AlertDialogDescription className="text-center">
+                  Do you want to allow the USB accessory to connect to this
+                  device?
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter className="grid grid-cols-2 gap-4">
+                <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
+                <AlertDialogAction>Allow</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
       </EmptyContent>
     </Empty>
   )
@@ -794,7 +898,7 @@ function FieldHear() {
               <FieldDescription className="line-clamp-1">
                 Select the option that best describes how you heard about us.
               </FieldDescription>
-              <FieldGroup className="flex flex-row flex-wrap gap-2 [--radius:9999rem]">
+              <FieldGroup className="flex flex-row flex-wrap gap-2">
                 {options.map((option) => (
                   <FieldLabel
                     htmlFor={option.value}
@@ -857,7 +961,7 @@ function InputGroupButtonExample() {
       <Label htmlFor="input-secure-19" className="sr-only">
         Input Secure
       </Label>
-      <InputGroup className="[--radius:9999px]">
+      <InputGroup>
         <InputGroupInput id="input-secure-19" className="!pl-0.5" />
         <Popover>
           <PopoverTrigger asChild>
@@ -996,13 +1100,13 @@ function ItemDemo() {
       <Item variant="outline" size="sm" asChild>
         <a href="#">
           <ItemMedia>
-            <BadgeCheckIcon className="size-5" />
+            <IconPlaceholder name="BadgeCheckIcon" className="size-5" />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>Your profile has been verified.</ItemTitle>
           </ItemContent>
           <ItemActions>
-            <ChevronRightIcon className="size-4" />
+            <IconPlaceholder name="ChevronRightIcon" className="size-4" />
           </ItemActions>
         </a>
       </Item>
@@ -1039,7 +1143,7 @@ function NotionPromptForm() {
   const hasMentions = mentions.length > 0
 
   return (
-    <form className="[--radius:1.2rem]">
+    <form>
       <Field>
         <FieldLabel htmlFor="notion-prompt" className="sr-only">
           Prompt
@@ -1071,7 +1175,7 @@ function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Mention a person, page, or date</TooltipContent>
               </Tooltip>
-              <PopoverContent className="p-0 [--radius:1.2rem]" align="start">
+              <PopoverContent className="p-0" align="start">
                 <Command>
                   <CommandInput placeholder="Search pages..." />
                   <CommandList>
@@ -1148,22 +1252,16 @@ function NotionPromptForm() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <DropdownMenuTrigger asChild>
-                    <InputGroupButton size="sm" className="rounded-full">
+                    <InputGroupButton size="sm">
                       {selectedModel.name}
                     </InputGroupButton>
                   </DropdownMenuTrigger>
                 </TooltipTrigger>
                 <TooltipContent>Select AI model</TooltipContent>
               </Tooltip>
-              <DropdownMenuContent
-                side="top"
-                align="start"
-                className="[--radius:1rem]"
-              >
-                <DropdownMenuGroup className="w-42">
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
-                    Select Agent Mode
-                  </DropdownMenuLabel>
+              <DropdownMenuContent side="top" align="start" className="w-42">
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Select Agent Mode</DropdownMenuLabel>
                   {SAMPLE_DATA.models.map((model) => (
                     <DropdownMenuCheckboxItem
                       key={model.name}
@@ -1195,11 +1293,7 @@ function NotionPromptForm() {
                   <IconWorld /> All Sources
                 </InputGroupButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side="top"
-                align="end"
-                className="[--radius:1rem]"
-              >
+              <DropdownMenuContent side="top" align="end">
                 <DropdownMenuGroup>
                   <DropdownMenuItem
                     asChild
@@ -1237,7 +1331,7 @@ function NotionPromptForm() {
                       </Avatar>
                       shadcn
                     </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent className="w-72 p-0 [--radius:1rem]">
+                    <DropdownMenuSubContent className="w-72 p-0">
                       <Command>
                         <CommandInput
                           placeholder="Find or use knowledge in..."
@@ -1294,7 +1388,7 @@ function NotionPromptForm() {
               variant="default"
               size="icon-sm"
             >
-              <IconArrowUp />
+              <IconPlaceholder name="ArrowUpIcon" />
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>

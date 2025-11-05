@@ -43,13 +43,15 @@ import {
 
 export default function DropdownMenuDemo() {
   return (
-    <div className="flex flex-wrap items-start gap-4">
-      <DropdownMenuSimple />
-      <DropdownMenuCheckboxes />
-      <DropdownMenuRadioGroupDemo />
-      <DropdownMenuWithAvatar />
-      <DropdownMenuAvatarOnly />
-      <DropdownMenuIconColor />
+    <div className="flex min-h-screen w-full items-start justify-center p-6 pt-12">
+      <div className="flex flex-wrap items-start gap-4">
+        <DropdownMenuSimple />
+        <DropdownMenuCheckboxes />
+        <DropdownMenuRadioGroupDemo />
+        <DropdownMenuWithAvatar />
+        <DropdownMenuAvatarOnly />
+        <DropdownMenuIconColor />
+      </div>
     </div>
   )
 }

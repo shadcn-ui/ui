@@ -140,7 +140,7 @@ export default function ButtonGroupDemo() {
               </DropdownMenuContent>
             </DropdownMenu>
           </ButtonGroup>
-          <ButtonGroup className="[--radius:9999px]">
+          <ButtonGroup>
             <Button variant="outline">Follow</Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -148,7 +148,7 @@ export default function ButtonGroupDemo() {
                   <ChevronDownIcon />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="[--radius:0.95rem]">
+              <DropdownMenuContent align="end">
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
                     <VolumeOffIcon />

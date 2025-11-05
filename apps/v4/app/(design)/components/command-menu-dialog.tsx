@@ -27,10 +27,32 @@ import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function CommandMenuDialog({ items }: { items: RegistryItem[] }) {
   const [open, setOpen] = React.useState(false)
-  const [, setParams] = useQueryStates(designSystemSearchParams, {
+  const [params, setParams] = useQueryStates(designSystemSearchParams, {
     history: "push",
     shallow: true,
   })
+
+  // Track the previously selected item.
+  const currentItem = params.item
+  const [previousItem, setPreviousItem] = React.useState<string | null>(
+    currentItem ?? null
+  )
+
+  // Update the previous item when the current item changes.
+  React.useEffect(() => {
+    if (currentItem) {
+      setPreviousItem(currentItem)
+    }
+  }, [currentItem])
+
+  // Find the item title for the previously selected item.
+  const previousItemTitle = React.useMemo(() => {
+    if (!previousItem) {
+      return null
+    }
+    const item = items.find((item) => item.name === previousItem)
+    return item?.title ?? null
+  }, [items, previousItem])
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -58,17 +80,11 @@ export function CommandMenuDialog({ items }: { items: RegistryItem[] }) {
         <Button
           variant="secondary"
           className={cn(
-            "bg-surface text-foreground dark:bg-card relative ml-auto h-8 justify-start shadow-none sm:pr-14"
+            "bg-surface text-foreground dark:bg-card relative h-8 justify-start shadow-none sm:pr-14"
           )}
           onClick={() => setOpen(true)}
         >
           Search items...
-          <div className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
-            <KbdGroup>
-              <Kbd className="border">⌘</Kbd>
-              <Kbd className="border">K</Kbd>
-            </KbdGroup>
-          </div>
         </Button>
       </DialogTrigger>
       <DialogContent
@@ -79,7 +95,10 @@ export function CommandMenuDialog({ items }: { items: RegistryItem[] }) {
           <DialogTitle>Search documentation...</DialogTitle>
           <DialogDescription>Search for a command to run...</DialogDescription>
         </DialogHeader>
-        <Command className="**:data-[slot=command-input-wrapper]:bg-input/50 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-9 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-9 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border">
+        <Command
+          value={open && previousItemTitle ? previousItemTitle : undefined}
+          className="**:data-[slot=command-input-wrapper]:bg-input/50 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-9 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-9 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border"
+        >
           <div className="relative">
             <CommandInput placeholder="Search documentation..." />
           </div>
@@ -87,7 +106,7 @@ export function CommandMenuDialog({ items }: { items: RegistryItem[] }) {
             <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
               No results found
             </CommandEmpty>
-            <CommandGroup className="p-0">
+            <CommandGroup className="px-0">
               {items.map((item) => (
                 <CommandItem
                   key={item.name}

@@ -6,6 +6,7 @@ import { useDesignSystemSync } from "@/app/(design)/hooks/use-design-system-sync
 import type { DesignSystemStyle } from "@/app/(design)/lib/style"
 
 const MESSAGE_TYPE = "design-system-params"
+const CMD_K_FORWARD_TYPE = "cmd-k-forward"
 
 export function Preview({ style }: { style: DesignSystemStyle["name"] }) {
   const params = useDesignSystemSync()
@@ -50,10 +51,14 @@ export function Preview({ style }: { style: DesignSystemStyle["name"] }) {
   }, [params])
 
   useEffect(() => {
-    if (!hasLoadedRef.current) return
+    if (!hasLoadedRef.current) {
+      return
+    }
 
     const iframe = iframeRef.current
-    if (!iframe?.contentWindow) return
+    if (!iframe?.contentWindow) {
+      return
+    }
 
     iframe.contentWindow.postMessage(
       {
@@ -68,20 +73,40 @@ export function Preview({ style }: { style: DesignSystemStyle["name"] }) {
     )
   }, [params.theme, params.iconLibrary, params.item])
 
+  // Listen for Cmd+K forwarded from iframe and dispatch synthetic keyboard event.
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data.type === CMD_K_FORWARD_TYPE) {
+        // Dispatch a synthetic keyboard event to trigger the command menu.
+        const syntheticEvent = new KeyboardEvent("keydown", {
+          key: "k",
+          metaKey: navigator.platform.includes("Mac"),
+          ctrlKey: !navigator.platform.includes("Mac"),
+          bubbles: true,
+          cancelable: true,
+        })
+        document.dispatchEvent(syntheticEvent)
+      }
+    }
+
+    window.addEventListener("message", handleMessage)
+    return () => {
+      window.removeEventListener("message", handleMessage)
+    }
+  }, [])
+
   if (!iframeSrc) {
     return null
   }
 
   return (
-    <div className="bg-background flex h-full w-full flex-1 flex-col overflow-hidden border">
-      <iframe
-        key={params.item}
-        ref={iframeRef}
-        src={iframeSrc}
-        width="100%"
-        height="100%"
-        className="flex-1 border-0"
-      />
-    </div>
+    <iframe
+      key={params.item}
+      ref={iframeRef}
+      src={iframeSrc}
+      width="100%"
+      height="100%"
+      className="flex-1 border-0"
+    />
   )
 }

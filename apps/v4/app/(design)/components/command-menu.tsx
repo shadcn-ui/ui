@@ -11,7 +11,7 @@ export async function CommandMenu({
   style: DesignSystemStyle["name"]
 }) {
   return (
-    <Suspense fallback={<Skeleton className="ml-auto h-8 w-12" />}>
+    <Suspense fallback={<Skeleton className="h-8 w-12" />}>
       <CommandMenuContent style={style} />
     </Suspense>
   )

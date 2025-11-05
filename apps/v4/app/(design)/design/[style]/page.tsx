@@ -91,25 +91,26 @@ export default async function NewPage({
   ])
 
   return (
-    <div className="bg-background flex h-svh flex-1 flex-col">
+    <div className="bg-muted/50 flex h-svh flex-1 flex-col">
       <header className="sticky top-0 z-50 w-full shrink-0">
-        <div className="container-wrapper 3xl:fixed:px-0 **:data-[slot=separator]:bg-border flex h-12 items-center gap-4 px-4 **:data-[slot=separator]:!h-4">
+        <div className="flex h-12 items-center gap-2 px-4">
           <Button asChild variant="ghost" size="icon" className="size-8">
             <Link href="/">
               <Icons.logo className="size-5" />
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
           </Button>
+          <Separator orientation="vertical" className="h-4!" />
           <CommandMenu style={style.name} />
-          <Separator orientation="vertical" />
-          <ModeSwitcher />
+          <div className="ml-auto flex items-center gap-2">
+            <ConfigForm />
+            <Separator orientation="vertical" className="h-4!" />
+            <ModeSwitcher />
+          </div>
         </div>
       </header>
-      <div className="flex flex-1">
-        <div className="z-10 w-64 shrink-0 p-4">
-          <ConfigForm />
-        </div>
-        <div className="flex-1 p-2">
+      <div className="flex flex-1 p-4 pt-0">
+        <div className="bg-background flex flex-1 rounded-lg border">
           <Preview style={style.name} />
         </div>
       </div>

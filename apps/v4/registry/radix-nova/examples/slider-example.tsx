@@ -7,15 +7,27 @@ import { Slider } from "@/registry/radix-nova/ui/slider"
 
 export default function SliderDemo() {
   return (
-    <div className="flex w-full max-w-sm flex-col flex-wrap gap-6 md:flex-row">
-      <Slider defaultValue={[50]} max={100} step={1} />
-      <Slider defaultValue={[25, 50]} max={100} step={1} />
-      <Slider defaultValue={[10, 20]} max={100} step={10} />
-      <div className="flex w-full items-center gap-6">
-        <Slider defaultValue={[50]} max={100} step={1} orientation="vertical" />
-        <Slider defaultValue={[25]} max={100} step={1} orientation="vertical" />
+    <div className="flex min-h-screen w-full items-center justify-center p-6">
+      <div className="flex w-full max-w-sm flex-col flex-wrap gap-6 md:flex-row">
+        <Slider defaultValue={[50]} max={100} step={1} />
+        <Slider defaultValue={[25, 50]} max={100} step={5} />
+        <Slider defaultValue={[10, 20, 70]} max={100} step={10} />
+        <div className="flex w-full items-center gap-6">
+          <Slider
+            defaultValue={[50]}
+            max={100}
+            step={1}
+            orientation="vertical"
+          />
+          <Slider
+            defaultValue={[25]}
+            max={100}
+            step={1}
+            orientation="vertical"
+          />
+        </div>
+        <SliderControlled />
       </div>
-      <SliderControlled />
     </div>
   )
 }

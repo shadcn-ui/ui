@@ -136,6 +136,18 @@ export default async function BlockPage({
                   window.__DESIGN_SYSTEM_PARAMS__ = event.data.params;
                 }
               });
+
+              // Forward Cmd+K (or Ctrl+K) to parent window.
+              document.addEventListener('keydown', function(e) {
+                if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+                  e.preventDefault();
+                  if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({
+                      type: 'cmd-k-forward'
+                    }, '*');
+                  }
+                }
+              });
             })();
           `,
         }}

@@ -2,10 +2,14 @@
 @import "tw-animate-css";
 
 @import "./themes.css";
-@import "../registry/themes.css";
+@import "../registry/themes/default.css" layer(base);
+@import "../registry/themes/nova.css" layer(base);
+@import "../registry/themes/lyra.css" layer(base);
+
+@custom-variant theme-nova (&:where(.theme-nova *));
+@custom-variant theme-lyra (&:where(.theme-lyra *));
 
 @custom-variant dark (&:is(.dark *));
-
 @custom-variant fixed (&:is(.layout-fixed *));
 
 @theme inline {

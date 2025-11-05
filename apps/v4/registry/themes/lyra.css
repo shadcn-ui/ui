@@ -1,0 +1,166 @@
+.theme-lyra {
+  --primary: var(--color-stone-700) !important;
+  --primary-foreground: var(--color-stone-50) !important;
+
+  @variant dark {
+    --primary: var(--color-stone-700) !important;
+    --primary-foreground: var(--color-stone-50) !important;
+  }
+
+  .x-alert-dialog-content {
+    @apply bg-background gap-2 border p-4;
+  }
+
+  .x-alert-dialog-header {
+    @apply gap-1;
+  }
+
+  .x-alert-dialog-title {
+    @apply text-sm font-medium;
+  }
+
+  .x-alert-dialog-description {
+    @apply text-muted-foreground text-xs;
+  }
+
+  .x-button {
+    @apply border border-transparent text-xs [&_svg:not([class*='size-'])]:size-3.5;
+
+    &[data-variant="default"] {
+      @apply text-primary-foreground bg-primary hover:bg-primary/90;
+    }
+
+    &[data-variant="outline"] {
+      @apply border-border bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50;
+    }
+
+    &[data-variant="secondary"] {
+      @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    }
+
+    &[data-variant="ghost"] {
+      @apply hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50;
+    }
+
+    &[data-variant="destructive"] {
+      @apply bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white;
+    }
+
+    &[data-variant="link"] {
+      @apply text-primary underline-offset-4 hover:underline;
+    }
+
+    &[data-size="sm"] {
+      @apply h-6 gap-1 px-2 has-[>svg:first-child]:pl-1.5 has-[>svg:last-child]:pr-1.5 [&_svg:not([class*='size-'])]:size-3;
+    }
+
+    &[data-size="default"] {
+      @apply h-7 gap-1.5 px-2 has-[>svg:first-child]:pl-1.5 has-[>svg:last-child]:pr-1.5;
+    }
+
+    &[data-size="lg"] {
+      @apply h-8 gap-1.5 px-2.5 has-[>svg:first-child]:pl-2 has-[>svg:last-child]:pr-2 [&_svg:not([class*='size-'])]:size-4;
+    }
+
+    &[data-size="icon-sm"] {
+      @apply size-6;
+    }
+
+    &[data-size="icon"] {
+      @apply size-7;
+    }
+
+    &[data-size="icon-lg"] {
+      @apply size-8;
+    }
+  }
+
+  .x-input {
+    @apply border-input h-7 border px-2 text-base md:text-xs;
+  }
+
+  .x-textarea {
+    @apply border-input border px-2 py-1.5 text-base md:text-xs;
+  }
+}
+
+/* .theme-lyra {
+  --font-sans: var(--font-mono) !important;
+  --primary: var(--color-neutral-700);
+  --primary-foreground: var(--color-neutral-50);
+  --radius: 0 !important;
+  --text-sm: 0.8rem;
+
+  @variant dark {
+    --primary: var(--color-neutral-100);
+    --primary-foreground: var(--color-neutral-900);
+  }
+
+  .x-badge {
+    @apply rounded-none! shadow-none!;
+  }
+
+  .x-button {
+    @apply rounded-none!;
+  }
+
+  .x-button[data-variant="outline"] {
+    @apply shadow-none!;
+  }
+
+  .x-button[data-size="sm"] {
+    @apply h-7!;
+  }
+
+  .x-button[data-size="default"] {
+    @apply h-8;
+  }
+
+  .x-button[data-size="lg"] {
+    @apply h-9!;
+  }
+
+  .x-button[data-size="icon-sm"] {
+    @apply size-7!;
+  }
+
+  .x-button[data-size="icon-lg"] {
+    @apply size-9!;
+  }
+
+  .x-button[data-size="icon"] {
+    @apply size-8!;
+  }
+
+  .x-checkbox {
+    @apply rounded-none! shadow-none!;
+  }
+
+  .x-input {
+    @apply border-input h-8 border px-2;
+  }
+
+  .x-textarea {
+    @apply rounded-none! px-2! shadow-none!;
+  }
+
+  .x-select-trigger {
+    @apply h-8! rounded-none! px-2! shadow-none! data-[size=sm]:h-7!;
+  }
+
+  .x-input-group {
+    @apply h-8! rounded-none! shadow-none! has-[>[data-align=block-end]]:h-auto!;
+  }
+
+  .x-item {
+    @apply rounded-none!;
+  }
+
+  .x-item[data-size="sm"] {
+    @apply gap-2! px-2! py-2!;
+  }
+
+  .x-item[data-size="default"] {
+    @apply gap-2! p-2.5!;
+  }
+} */
