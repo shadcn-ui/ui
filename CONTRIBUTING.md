@@ -70,6 +70,12 @@ git checkout -b my-new-branch
 pnpm install
 ```
 
+### Build Project
+
+```bash
+pnpm build
+```
+
 ### Run a workspace
 
 You can use the `pnpm --filter=[WORKSPACE]` command to start the development process for a workspace.
