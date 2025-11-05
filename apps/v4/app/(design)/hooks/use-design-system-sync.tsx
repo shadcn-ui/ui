@@ -84,7 +84,8 @@ const initializeParamStore = () => {
 
   if (globalParams) {
     paramStore.set("iconLibrary", globalParams.iconLibrary || "lucide")
-    paramStore.set("theme", globalParams.theme || "blue")
+    paramStore.set("theme", globalParams.theme || "neutral")
+    paramStore.set("style", globalParams.style || "default")
     paramStore.set("item", globalParams.item || "cover-example")
     storeReady = true
     return
@@ -93,11 +94,13 @@ const initializeParamStore = () => {
   // Fall back to URL search params.
   const searchParams = new URLSearchParams(window.location.search)
   const iconLibrary = searchParams.get("iconLibrary") || "lucide"
-  const theme = searchParams.get("theme") || "blue"
+  const theme = searchParams.get("theme") || "neutral"
+  const style = searchParams.get("style") || "default"
   const item = searchParams.get("item") || "cover-example"
 
   paramStore.set("iconLibrary", iconLibrary)
   paramStore.set("theme", theme)
+  paramStore.set("style", style)
   paramStore.set("item", item)
 
   // In non-iframe context, we're ready immediately.

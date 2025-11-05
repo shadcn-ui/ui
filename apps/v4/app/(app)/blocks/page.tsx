@@ -1,8 +1,8 @@
 import Link from "next/link"
 
 import { BlockDisplay } from "@/components/block-display"
+import { getActiveStyle } from "@/registry/legacy-styles"
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { getActiveStyle } from "@/registry/styles"
 
 export const dynamic = "force-static"
 export const revalidate = false

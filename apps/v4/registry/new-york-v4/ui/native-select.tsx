@@ -7,7 +7,7 @@ function NativeSelect({
   className,
   size = "default",
   ...props
-}: React.ComponentProps<"select"> & { size?: "sm" | "default" }) {
+}: Omit<React.ComponentProps<"select">, "size"> & { size?: "sm" | "default" }) {
   return (
     <div
       className="group/native-select relative w-fit has-[select:disabled]:opacity-50"

@@ -4,7 +4,7 @@ import * as React from "react"
 import { useQueryStates } from "nuqs"
 
 import { iconLibraries } from "@/registry/icon-libraries"
-import { Field, FieldGroup, FieldLabel } from "@/registry/new-york-v4/ui/field"
+import { Field, FieldLabel } from "@/registry/new-york-v4/ui/field"
 import {
   NativeSelect,
   NativeSelectOption,
@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { style, type Style } from "@/registry/styles"
 import { themes, type Theme } from "@/registry/themes"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
@@ -25,7 +26,27 @@ export function ConfigForm() {
   })
 
   return (
-    <div className="grid w-auto grid-cols-2 gap-2">
+    <div className="grid w-auto grid-cols-3 gap-2">
+      <Field orientation="horizontal">
+        <FieldLabel htmlFor="style" className="sr-only">
+          Style
+        </FieldLabel>
+        <Select
+          value={params.style}
+          onValueChange={(value: Style["name"]) => setParams({ style: value })}
+        >
+          <SelectTrigger id="style" className="w-full" size="sm">
+            <SelectValue placeholder="Select style" />
+          </SelectTrigger>
+          <SelectContent>
+            {style.map((style) => (
+              <SelectItem key={style.name} value={style.name}>
+                {style.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </Field>
       <Field orientation="horizontal">
         <FieldLabel htmlFor="theme" className="sr-only">
           Theme

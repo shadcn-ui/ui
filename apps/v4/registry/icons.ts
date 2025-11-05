@@ -54,7 +54,7 @@ export const icons = {
   SpinnerIcon: {
     lucide: "Loader2Icon",
     tabler: "IconLoader",
-    hugeicons: "Orbit01Icon",
+    hugeicons: "Loading03Icon",
   },
 
   // Other.

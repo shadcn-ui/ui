@@ -1,12 +1,4 @@
-.theme-lyra {
-  --primary: var(--color-stone-700) !important;
-  --primary-foreground: var(--color-stone-50) !important;
-
-  @variant dark {
-    --primary: var(--color-stone-700) !important;
-    --primary-foreground: var(--color-stone-50) !important;
-  }
-
+.style-lyra {
   .x-alert-dialog-content {
     @apply bg-background gap-2 border p-4;
   }

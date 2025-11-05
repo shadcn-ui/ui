@@ -10,7 +10,7 @@ import {
 import { cn } from "@/lib/utils"
 import { BlockViewer } from "@/components/block-viewer"
 import { ComponentPreview } from "@/components/component-preview"
-import { type Style } from "@/registry/styles"
+import { type Style } from "@/registry/legacy-styles"
 
 export async function BlockDisplay({
   name,

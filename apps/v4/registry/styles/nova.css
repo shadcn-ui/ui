@@ -1,12 +1,4 @@
-.theme-nova {
-  --primary: var(--color-blue-700) !important;
-  --primary-foreground: var(--color-blue-50) !important;
-
-  @variant dark {
-    --primary: var(--color-blue-700) !important;
-    --primary-foreground: var(--color-blue-50) !important;
-  }
-
+.style-nova {
   .x-alert-dialog-content {
     @apply bg-background gap-4 rounded-xl border p-6 shadow-lg ring-4 ring-white/40 dark:ring-black/40;
   }

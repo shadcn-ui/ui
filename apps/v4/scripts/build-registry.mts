@@ -5,7 +5,7 @@ import { rimraf } from "rimraf"
 import { registrySchema } from "shadcn/schema"
 
 import { getAllBlocks } from "@/lib/blocks"
-import { STYLES, type Style } from "@/registry/styles"
+import { STYLES, type Style } from "@/registry/legacy-styles"
 
 async function buildRegistryIndex(styles: Style[]) {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */

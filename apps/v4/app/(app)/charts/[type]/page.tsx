@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { ChartDisplay } from "@/components/chart-display"
-import { getActiveStyle } from "@/registry/styles"
+import { getActiveStyle } from "@/registry/legacy-styles"
 import { charts } from "@/app/(app)/charts/charts"
 
 export const revalidate = false

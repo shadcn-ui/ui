@@ -6,7 +6,7 @@ import { notFound } from "next/navigation"
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { getStyle, STYLES, type Style } from "@/registry/styles"
+import { getStyle, STYLES, type Style } from "@/registry/legacy-styles"
 import { ComponentPreview } from "@/app/(design)/components/component-preview"
 
 export const revalidate = false

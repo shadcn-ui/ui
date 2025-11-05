@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
-import { type Style } from "@/registry/styles"
+import { type Style } from "@/registry/legacy-styles"
 
 export async function ComponentSource({
   name,

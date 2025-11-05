@@ -6,7 +6,8 @@ import Script from "next/script"
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl } from "@/lib/utils"
-import { getStyle, STYLES, type Style } from "@/registry/styles"
+import { getStyle, STYLES, type Style } from "@/registry/legacy-styles"
+import { StyleProvider } from "@/app/(design)/components/style-provider"
 import { ThemeProvider } from "@/app/(design)/components/theme-provider"
 
 export const revalidate = false
@@ -152,9 +153,11 @@ export default async function BlockPage({
           `,
         }}
       />
-      <ThemeProvider>
-        <Component />
-      </ThemeProvider>
+      <StyleProvider>
+        <ThemeProvider>
+          <Component />
+        </ThemeProvider>
+      </StyleProvider>
     </>
   )
 }

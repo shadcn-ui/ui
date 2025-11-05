@@ -7,30 +7,30 @@ import {
   useDesignSystemReady,
 } from "@/app/(design)/hooks/use-design-system-sync"
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const theme = useDesignSystemParam("theme")
+export function StyleProvider({ children }: { children: React.ReactNode }) {
+  const style = useDesignSystemParam("style")
   const isReady = useDesignSystemReady()
 
   React.useEffect(() => {
-    if (!isReady || !theme) {
+    if (!isReady || !style) {
       return
     }
 
     const body = document.body
-    const themeClass = `theme-${theme}`
+    const styleClass = `style-${style}`
 
     body.classList.forEach((className) => {
-      if (className.startsWith("theme-")) {
+      if (className.startsWith("style-")) {
         body.classList.remove(className)
       }
     })
 
-    body.classList.add(themeClass)
+    body.classList.add(styleClass)
 
     return () => {
-      body.classList.remove(themeClass)
+      body.classList.remove(styleClass)
     }
-  }, [theme, isReady])
+  }, [style, isReady])
 
   if (!isReady) {
     return null

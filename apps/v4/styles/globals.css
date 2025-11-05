@@ -1,13 +1,17 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@import "./themes.css";
-@import "../registry/themes/default.css" layer(base);
-@import "../registry/themes/nova.css" layer(base);
-@import "../registry/themes/lyra.css" layer(base);
+@import "../registry/styles/default.css" layer(base);
+@import "../registry/styles/nova.css" layer(base);
+@import "../registry/styles/lyra.css" layer(base);
 
-@custom-variant theme-nova (&:where(.theme-nova *));
-@custom-variant theme-lyra (&:where(.theme-lyra *));
+@import "../registry/themes/neutral.css";
+@import "../registry/themes/blue.css";
+@import "../registry/themes/red.css";
+
+@custom-variant style-default (&:where(.style-default *));
+@custom-variant style-nova (&:where(.style-nova *));
+@custom-variant style-lyra (&:where(.style-lyra *));
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant fixed (&:is(.layout-fixed *));

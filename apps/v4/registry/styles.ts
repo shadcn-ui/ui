@@ -1,28 +1,16 @@
-export const STYLES = [
+export const style = [
   {
-    name: "new-york-v4",
-    title: "New York",
-    componentLibrary: "radix",
+    name: "default",
+    title: "Default",
   },
   {
-    name: "radix-nova",
+    name: "nova",
     title: "Nova",
-    componentLibrary: "radix",
   },
   {
-    name: "radix-lyra",
+    name: "lyra",
     title: "Lyra",
-    componentLibrary: "radix",
   },
 ] as const
 
-export type Style = (typeof STYLES)[number]
-
-export async function getActiveStyle() {
-  // In the future, this can read from cookies, session, etc.
-  return STYLES[0]
-}
-
-export function getStyle(name: string) {
-  return STYLES.find((style) => style.name === name)
-}
+export type Style = (typeof style)[number]

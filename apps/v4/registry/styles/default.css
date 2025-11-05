@@ -1,12 +1,4 @@
-.theme-default {
-  --primary: var(--color-neutral-800);
-  --primary-foreground: var(--color-neutral-50);
-
-  @variant dark {
-    --primary: var(--color-neutral-100);
-    --primary-foreground: var(--color-neutral-800);
-  }
-
+.style-default {
   .x-alert-dialog-content {
     @apply bg-background gap-4 rounded-lg border p-6 shadow-lg;
   }

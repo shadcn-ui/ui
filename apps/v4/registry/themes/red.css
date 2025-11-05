@@ -1,0 +1,9 @@
+.theme-red {
+  --primary: var(--color-red-600);
+  --primary-foreground: var(--color-red-50);
+
+  @variant dark {
+    --primary: var(--color-red-100);
+    --primary-foreground: var(--color-red-800);
+  }
+}

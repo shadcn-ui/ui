@@ -3,7 +3,7 @@ import Image from "next/image"
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
 import { ComponentSource } from "@/components/component-source"
 import { Index } from "@/registry/__index__"
-import { type Style } from "@/registry/styles"
+import { type Style } from "@/registry/legacy-styles"
 
 export function ComponentPreview({
   name,

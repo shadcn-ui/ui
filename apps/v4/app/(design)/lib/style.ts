@@ -1,4 +1,4 @@
-import { STYLES } from "@/registry/styles"
+import { STYLES } from "@/registry/legacy-styles"
 
 export const designSystemStyles = STYLES.filter(
   (style) => style.name !== "new-york-v4"

@@ -1,25 +1,15 @@
-import { baseColorsV4 } from "@/registry/base-colors"
-
-export const legacyThemes = Object.keys(baseColorsV4).map((color) => {
-  return {
-    name: `theme-${color}`,
-    type: "registry:theme",
-    cssVars: baseColorsV4[color as keyof typeof baseColorsV4],
-  }
-})
-
 export const themes = [
   {
-    name: "default",
-    title: "Default",
+    name: "neutral",
+    title: "Neutral",
   },
   {
-    name: "nova",
-    title: "Nova",
+    name: "blue",
+    title: "Blue",
   },
   {
-    name: "lyra",
-    title: "Lyra",
+    name: "red",
+    title: "Red",
   },
 ] as const
 
