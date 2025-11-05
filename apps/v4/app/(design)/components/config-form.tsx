@@ -10,13 +10,6 @@ import {
   NativeSelect,
   NativeSelectOption,
 } from "@/registry/new-york-v4/ui/native-select"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/new-york-v4/ui/select"
 import { style, type Style } from "@/registry/styles"
 import { themes, type Theme } from "@/registry/themes"
 import { CommandMenu } from "@/app/(design)/components/command-menu"
@@ -33,43 +26,37 @@ export function ConfigForm({ items }: { items: RegistryItem[] }) {
         <CommandMenu items={items} />
         <Field>
           <FieldLabel htmlFor="style">Style</FieldLabel>
-          <Select
+          <NativeSelect
+            id="style"
             value={params.style}
-            onValueChange={(value: Style["name"]) =>
-              setParams({ style: value })
+            size="sm"
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setParams({ style: e.target.value as Style["name"] })
             }
           >
-            <SelectTrigger id="style" className="w-full" size="sm">
-              <SelectValue placeholder="Select style" />
-            </SelectTrigger>
-            <SelectContent>
-              {style.map((style) => (
-                <SelectItem key={style.name} value={style.name}>
-                  {style.title}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+            {style.map((style) => (
+              <NativeSelectOption key={style.name} value={style.name}>
+                {style.title}
+              </NativeSelectOption>
+            ))}
+          </NativeSelect>
         </Field>
         <Field>
           <FieldLabel htmlFor="theme">Theme</FieldLabel>
-          <Select
+          <NativeSelect
+            id="theme"
             value={params.theme}
-            onValueChange={(value: Theme["name"]) =>
-              setParams({ theme: value })
+            size="sm"
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setParams({ theme: e.target.value as Theme["name"] })
             }
           >
-            <SelectTrigger id="theme" className="w-full" size="sm">
-              <SelectValue placeholder="Select theme" />
-            </SelectTrigger>
-            <SelectContent>
-              {themes.map((theme) => (
-                <SelectItem key={theme.name} value={theme.name}>
-                  {theme.title}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+            {themes.map((theme) => (
+              <NativeSelectOption key={theme.name} value={theme.name}>
+                {theme.title}
+              </NativeSelectOption>
+            ))}
+          </NativeSelect>
         </Field>
         <Field>
           <FieldLabel htmlFor="iconLibrary">Icon Library</FieldLabel>

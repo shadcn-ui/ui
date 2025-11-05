@@ -132,12 +132,7 @@ async function buildRegistryJsonFile(styleName: string) {
   }
 
   // 3. Create the output directory and write registry.json.
-  const outputDir = path.join(
-    process.cwd(),
-    styleName === "new-york-v4"
-      ? `public/r/styles/${styleName}`
-      : `public/r/${styleName}`
-  )
+  const outputDir = path.join(process.cwd(), `public/r/styles/${styleName}`)
   await fs.mkdir(outputDir, { recursive: true })
 
   // 4. Write registry.json to output directory and format it.
@@ -164,10 +159,7 @@ async function buildRegistryJsonFile(styleName: string) {
 async function buildRegistry(styleName: string) {
   return new Promise((resolve, reject) => {
     // Use local shadcn copy.
-    const outputPath =
-      styleName === "new-york-v4"
-        ? `public/r/styles/${styleName}`
-        : `public/r/${styleName}`
+    const outputPath = `public/r/styles/${styleName}`
     const process = exec(
       `node ../../packages/shadcn/dist/index.js build registry-${styleName}.json --output ${outputPath}`
     )

@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react"
 
+import type { ComponentLibrary } from "@/registry/component-libraries"
 import { useDesignSystemSync } from "@/app/(design)/hooks/use-design-system-sync"
-import type { DesignSystemStyle } from "@/app/(design)/lib/style"
 
 const MESSAGE_TYPE = "design-system-params"
 const CMD_K_FORWARD_TYPE = "cmd-k-forward"
 
-export function Preview({ style }: { style: DesignSystemStyle["name"] }) {
+export function Preview({ library }: { library: ComponentLibrary["name"] }) {
   const params = useDesignSystemSync()
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const [initialParams] = useState(params)
@@ -69,7 +69,7 @@ export function Preview({ style }: { style: DesignSystemStyle["name"] }) {
   }
 
   // Use initial params for iframe src to avoid reload on param changes.
-  const iframeSrc = `/design/${style}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}`
+  const iframeSrc = `/design/${library}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}`
 
   return (
     <iframe

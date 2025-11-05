@@ -2,17 +2,10 @@ export const STYLES = [
   {
     name: "new-york-v4",
     title: "New York",
-    componentLibrary: "radix",
   },
   {
-    name: "radix-nova",
-    title: "Nova",
-    componentLibrary: "radix",
-  },
-  {
-    name: "radix-lyra",
-    title: "Lyra",
-    componentLibrary: "radix",
+    name: "radix",
+    title: "Radix",
   },
 ] as const
 

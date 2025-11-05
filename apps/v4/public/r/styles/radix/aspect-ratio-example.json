@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio-example",
+  "type": "registry:example",
+  "title": "Aspect Ratio",
+  "registryDependencies": [
+    "aspect-ratio"
+  ],
+  "files": [
+    {
+      "path": "registry/radix/examples/aspect-ratio-example.tsx",
+      "content": "import Image from \"next/image\"\n\nimport { AspectRatio } from \"@/registry/radix/ui/aspect-ratio\"\n\nexport default function AspectRatioDemo() {\n  return (\n    <div className=\"grid w-full max-w-sm items-start gap-4\">\n      <AspectRatio ratio={16 / 9} className=\"bg-muted rounded-lg\">\n        <Image\n          src=\"https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80\"\n          alt=\"Photo by Drew Beamer\"\n          fill\n          className=\"h-full w-full rounded-lg object-cover dark:brightness-[0.2] dark:grayscale\"\n        />\n      </AspectRatio>\n      <AspectRatio ratio={1 / 1} className=\"bg-muted rounded-lg\">\n        <Image\n          src=\"https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80\"\n          alt=\"Photo by Drew Beamer\"\n          fill\n          className=\"h-full w-full rounded-lg object-cover dark:brightness-[0.2] dark:grayscale\"\n        />\n      </AspectRatio>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,26 +1,20 @@
 "use server"
 
 import { getRegistryItem, getRegistryItems } from "@/lib/registry"
-import type { DesignSystemStyle } from "@/app/(design)/lib/style"
 
 const allowedTypes = ["registry:example"]
 
-export async function getRegistryItemsForStyle(
-  style: DesignSystemStyle["name"]
-) {
+export async function getRegistryItemsForLibrary(library: any) {
   const items = await getRegistryItems(
-    style,
+    library,
     (item) => allowedTypes.includes(item.type) && item !== null
   )
 
   return items
 }
 
-export async function getRegistryItemForStyle(
-  name: string,
-  style: DesignSystemStyle["name"]
-) {
-  const item = await getRegistryItem(name, style)
+export async function getRegistryItemForLibrary(name: string, library: any) {
+  const item = await getRegistryItem(name, library)
 
   console.log(item)
 
