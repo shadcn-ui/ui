@@ -3,6 +3,7 @@ resolver = "2"
 members = [
     "components/button",
     "components/badge",
+    "components/avatar",
 ]
 
 [workspace.package]

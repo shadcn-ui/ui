@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shadcn/ui Avatar - Leptos WASM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(214.3 31.8% 91.4%)",
+                        background: "hsl(0 0% 100%)",
+                        foreground: "hsl(222.2 84% 4.9%)",
+                        muted: { DEFAULT: "hsl(210 40% 96.1%)", foreground: "hsl(215.4 16.3% 46.9%)" },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold mb-2">Avatar Component</h1>
+        <p class="text-muted-foreground text-lg mb-8">Built with Leptos and Rust WASM</p>
+
+        <div class="space-y-8">
+            <section class="border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">With Images</h2>
+                <div class="flex gap-4" id="images-demo"></div>
+            </section>
+
+            <section class="border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">With Fallback (Initials)</h2>
+                <div class="flex gap-4" id="fallback-demo"></div>
+            </section>
+
+            <section class="border rounded-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Sizes</h2>
+                <div class="flex items-center gap-4" id="sizes-demo"></div>
+            </section>
+        </div>
+    </div>
+
+    <script type="module">
+        const wasmAvailable = await fetch('../pkg/avatar.js').then(res => res.ok).catch(() => false);
+
+        if (!wasmAvailable) {
+            console.log('Build WASM: cd rust/components/avatar && wasm-pack build --target web --out-dir pkg');
+            document.querySelectorAll('[id$="-demo"]').forEach(el => {
+                el.innerHTML = '<div class="bg-muted p-4 rounded">Build WASM first</div>';
+            });
+        } else {
+            const { default: init, mount_avatar, mount_avatar_with_fallback, mount_avatar_full } = await import('../pkg/avatar.js');
+            await init();
+
+            // Images
+            mount_avatar('https://github.com/shadcn.png', 'User 1');
+            mount_avatar('https://github.com/vercel.png', 'User 2');
+
+            // Fallback
+            mount_avatar_with_fallback('', 'John Doe', 'JD');
+            mount_avatar_with_fallback('', 'Alice Smith', 'AS');
+            mount_avatar_with_fallback('', 'Bob Johnson', 'BJ');
+
+            // Sizes
+            mount_avatar_full('https://github.com/shadcn.png', 'Small', 'SM', 'sm');
+            mount_avatar_full('https://github.com/shadcn.png', 'Default', 'DF', 'default');
+            mount_avatar_full('https://github.com/shadcn.png', 'Large', 'LG', 'lg');
+
+            console.log('✅ Avatar components loaded!');
+        }
+    </script>
+</body>
+</html>
