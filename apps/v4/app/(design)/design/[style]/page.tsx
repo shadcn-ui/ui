@@ -10,9 +10,9 @@ import { ModeSwitcher } from "@/components/mode-switcher"
 import { getStyle } from "@/registry/legacy-styles"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
-import { CommandMenu } from "@/app/(design)/components/command-menu"
 import { ConfigForm } from "@/app/(design)/components/config-form"
 import { Preview } from "@/app/(design)/components/preview"
+import { getRegistryItemsForStyle } from "@/app/(design)/lib/api"
 import {
   canvaSearchParamsCache,
   designSystemSearchParamsCache,
@@ -85,10 +85,13 @@ export default async function NewPage({
     return notFound()
   }
 
-  await Promise.all([
+  const [, , items] = await Promise.all([
     designSystemSearchParamsCache.parse(searchParams),
     canvaSearchParamsCache.parse(searchParams),
+    getRegistryItemsForStyle(style.name),
   ])
+
+  const filteredItems = items.filter((item) => item !== null)
 
   return (
     <div className="bg-muted/50 flex h-svh flex-1 flex-col">
@@ -100,16 +103,15 @@ export default async function NewPage({
               <span className="sr-only">{siteConfig.name}</span>
             </Link>
           </Button>
-          <Separator orientation="vertical" className="h-4!" />
-          <CommandMenu style={style.name} />
           <div className="ml-auto flex items-center gap-2">
-            <ConfigForm />
-            <Separator orientation="vertical" className="h-4!" />
             <ModeSwitcher />
           </div>
         </div>
       </header>
-      <div className="flex flex-1 p-4 pt-0">
+      <div className="flex-start p-t0 flex flex-1 gap-4 p-4">
+        <div className="w-56">
+          <ConfigForm items={filteredItems} />
+        </div>
         <div className="bg-background flex flex-1 rounded-lg border">
           <Preview style={style.name} />
         </div>

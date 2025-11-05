@@ -2,17 +2,14 @@
 
 import * as React from "react"
 
-import {
-  useDesignSystemParam,
-  useDesignSystemReady,
-} from "@/app/(design)/hooks/use-design-system-sync"
+import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system-sync"
 
 export function StyleProvider({ children }: { children: React.ReactNode }) {
   const style = useDesignSystemParam("style")
-  const isReady = useDesignSystemReady()
+  const [isReady, setIsReady] = React.useState(false)
 
   React.useEffect(() => {
-    if (!isReady || !style) {
+    if (!style) {
       return
     }
 
@@ -26,11 +23,12 @@ export function StyleProvider({ children }: { children: React.ReactNode }) {
     })
 
     body.classList.add(styleClass)
+    setIsReady(true)
 
     return () => {
       body.classList.remove(styleClass)
     }
-  }, [style, isReady])
+  }, [style])
 
   if (!isReady) {
     return null

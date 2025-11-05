@@ -126,30 +126,21 @@ export default async function BlockPage({
   return (
     <>
       <Script
-        id="design-system-params-listener"
+        id="design-system-listener"
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-            (function() {
-              window.__DESIGN_SYSTEM_PARAMS__ = null;
-              window.addEventListener('message', function(event) {
-                if (event.data.type === 'design-system-params' && event.data.params) {
-                  window.__DESIGN_SYSTEM_PARAMS__ = event.data.params;
+            // Forward Cmd+K (or Ctrl+K) to parent window.
+            document.addEventListener('keydown', function(e) {
+              if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault();
+                if (window.parent && window.parent !== window) {
+                  window.parent.postMessage({
+                    type: 'cmd-k-forward'
+                  }, '*');
                 }
-              });
-
-              // Forward Cmd+K (or Ctrl+K) to parent window.
-              document.addEventListener('keydown', function(e) {
-                if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-                  e.preventDefault();
-                  if (window.parent && window.parent !== window) {
-                    window.parent.postMessage({
-                      type: 'cmd-k-forward'
-                    }, '*');
-                  }
-                }
-              });
-            })();
+              }
+            });
           `,
         }}
       />
