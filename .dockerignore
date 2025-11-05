@@ -1,0 +1,39 @@
+# VCS
+.git
+.github
+
+# Node / workspace artifacts
+node_modules
+**/node_modules
+.pnpm-store
+
+# Next.js build output
+.next
+**/.next
+out
+build
+dist
+.turbo
+
+# Tests / coverage
+coverage
+
+# OS / editor
+.DS_Store
+.vscode
+.idea
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files (inject via secrets/CI)
+.env
+.env.*
+!.env.example
+
+# Misc
+*.swp
+*.swm
