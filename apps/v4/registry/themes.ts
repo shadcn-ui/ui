@@ -1,14 +1,22 @@
-import { type Registry } from "shadcn/schema"
-
 import { baseColorsV4 } from "@/registry/base-colors"
 
-// Create a theme for each color in the base colors.
-export const themes: Registry["items"] = Object.keys(baseColorsV4).map(
-  (color) => {
-    return {
-      name: `theme-${color}`,
-      type: "registry:theme",
-      cssVars: baseColorsV4[color as keyof typeof baseColorsV4],
-    }
+export const legacyThemes = Object.keys(baseColorsV4).map((color) => {
+  return {
+    name: `theme-${color}`,
+    type: "registry:theme",
+    cssVars: baseColorsV4[color as keyof typeof baseColorsV4],
   }
-)
+})
+
+export const themes = [
+  {
+    name: "nova",
+    title: "Nova",
+  },
+  {
+    name: "lyra",
+    title: "Lyra",
+  },
+] as const
+
+export type Theme = (typeof themes)[number]

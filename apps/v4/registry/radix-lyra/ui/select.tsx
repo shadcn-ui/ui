@@ -4,7 +4,6 @@ import * as React from "react"
 import { Select as SelectPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { CanvaPortal } from "@/app/(design)/components/canva"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 function Select({
@@ -59,7 +58,7 @@ function SelectContent({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content>) {
   return (
-    <CanvaPortal element={<SelectPrimitive.Portal />}>
+    <SelectPrimitive.Portal>
       <SelectPrimitive.Content
         data-slot="select-content"
         className={cn(
@@ -84,7 +83,7 @@ function SelectContent({
         </SelectPrimitive.Viewport>
         <SelectScrollDownButton />
       </SelectPrimitive.Content>
-    </CanvaPortal>
+    </SelectPrimitive.Portal>
   )
 }
 

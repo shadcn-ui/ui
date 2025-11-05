@@ -67,6 +67,10 @@ export const icons = {
     lucide: "ShieldAlertIcon",
     tabler: "IconShield",
   },
+  SpinnerIcon: {
+    lucide: "Loader2Icon",
+    tabler: "IconLoader",
+  },
 } as const satisfies Record<string, Record<IconLibrary, string>>
 
 export type IconName = keyof typeof icons

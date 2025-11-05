@@ -7,7 +7,7 @@ import {
 } from "nuqs/server"
 
 import { iconLibraries } from "@/registry/icon-libraries"
-import { themes, type Theme } from "@/app/(design)/lib/themes"
+import { themes, type Theme } from "@/registry/themes"
 
 export const parseAsIconLibrary = createParser<keyof typeof iconLibraries>({
   parse(queryValue) {
@@ -47,7 +47,7 @@ export const parseAsTheme = createParser<Theme["name"]>({
 export const designSystemSearchParams = {
   item: parseAsString.withDefault("cover-example"),
   iconLibrary: parseAsIconLibrary.withDefault("lucide"),
-  theme: parseAsTheme.withDefault("blue"),
+  theme: parseAsTheme.withDefault("nova"),
 }
 
 export const canvaSearchParams = {

@@ -1,7 +1,7 @@
 import { registryItemSchema, type Registry } from "shadcn/schema"
 import { z } from "zod"
 
-import { themes } from "../themes"
+import { legacyThemes } from "../themes"
 import { blocks } from "./blocks/_registry"
 import { charts } from "./charts/_registry"
 import { examples } from "./examples/_registry"
@@ -47,7 +47,7 @@ export const registry = {
       ...charts,
       ...lib,
       ...hooks,
-      ...themes,
+      ...legacyThemes,
       ...examples,
       ...internal,
     ]

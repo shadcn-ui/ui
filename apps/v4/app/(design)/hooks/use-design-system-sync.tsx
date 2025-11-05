@@ -81,10 +81,8 @@ const initializeParamStore = () => {
 
   // Check for params from inline script first (set before hydration).
   const globalParams = (window as any).__DESIGN_SYSTEM_PARAMS__
-  console.log("[store] Initializing, globalParams:", globalParams)
 
   if (globalParams) {
-    console.log("[store] Using global params")
     paramStore.set("iconLibrary", globalParams.iconLibrary || "lucide")
     paramStore.set("theme", globalParams.theme || "blue")
     paramStore.set("item", globalParams.item || "cover-example")
@@ -93,7 +91,6 @@ const initializeParamStore = () => {
   }
 
   // Fall back to URL search params.
-  console.log("[store] No global params, using URL or defaults")
   const searchParams = new URLSearchParams(window.location.search)
   const iconLibrary = searchParams.get("iconLibrary") || "lucide"
   const theme = searchParams.get("theme") || "blue"
@@ -116,13 +113,10 @@ initializeParamStore()
 if (typeof window !== "undefined" && isInIframe()) {
   window.addEventListener("message", (event: MessageEvent) => {
     if (event.data.type === MESSAGE_TYPE && event.data.params) {
-      console.log("[store] Received postMessage, updating store")
-
       // On first message, initialize from global params if available.
       if (!storeReady) {
         const globalParams = (window as any).__DESIGN_SYSTEM_PARAMS__
         if (globalParams) {
-          console.log("[store] First message - using global params:", globalParams)
           paramStore.set("iconLibrary", globalParams.iconLibrary || "lucide")
           paramStore.set("theme", globalParams.theme || "blue")
           paramStore.set("item", globalParams.item || "cover-example")
@@ -137,7 +131,6 @@ if (typeof window !== "undefined" && isInIframe()) {
         const oldValue = paramStore.get(key)
 
         if (newValue !== oldValue) {
-          console.log(`[store] Updating ${key}:`, oldValue, "->", newValue)
           paramStore.set(key, newValue)
 
           // Notify all listeners subscribed to this param.
@@ -206,7 +199,8 @@ export function useDesignSystemParam<K extends keyof DesignSystemSearchParams>(
 
   const getServerSnapshot = () => {
     // Return default value on server.
-    return designSystemSearchParams[key].defaultValue as DesignSystemSearchParams[K]
+    return designSystemSearchParams[key]
+      .defaultValue as DesignSystemSearchParams[K]
   }
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)

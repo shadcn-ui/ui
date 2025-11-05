@@ -22,8 +22,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { themes, type Theme } from "@/registry/themes"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
-import { Theme, themes } from "@/app/(design)/lib/themes"
 
 export function ConfigForm() {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
@@ -41,8 +41,8 @@ export function ConfigForm() {
             <FieldLabel htmlFor="theme">Theme</FieldLabel>
             <Select
               value={params.theme}
-              onValueChange={(value) =>
-                setParams({ theme: value as Theme["name"] })
+              onValueChange={(value: Theme["name"]) =>
+                setParams({ theme: value })
               }
             >
               <SelectTrigger id="theme">

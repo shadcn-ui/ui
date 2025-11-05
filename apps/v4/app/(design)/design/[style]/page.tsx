@@ -1,14 +1,7 @@
 import { Metadata } from "next"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { SearchParams } from "nuqs/server"
-
-import { CommandMenu } from "@/app/(design)/components/command-menu"
-import { ConfigForm } from "@/app/(design)/components/config-form"
-import { Preview } from "@/app/(design)/components/preview"
-
-import "@/styles/themes.css"
-
-import Link from "next/link"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
@@ -17,6 +10,9 @@ import { ModeSwitcher } from "@/components/mode-switcher"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { getStyle } from "@/registry/styles"
+import { CommandMenu } from "@/app/(design)/components/command-menu"
+import { ConfigForm } from "@/app/(design)/components/config-form"
+import { Preview } from "@/app/(design)/components/preview"
 import {
   canvaSearchParamsCache,
   designSystemSearchParamsCache,

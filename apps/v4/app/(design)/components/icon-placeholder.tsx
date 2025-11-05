@@ -9,6 +9,7 @@ import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system-syn
 export function IconPlaceholder({
   name,
   className,
+  ...props
 }: {
   name: IconName
   className?: string
@@ -20,6 +21,7 @@ export function IconPlaceholder({
       iconLibrary={iconLibrary}
       name={name}
       className={className}
+      {...props}
     />
   )
 }

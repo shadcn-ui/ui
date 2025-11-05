@@ -1,6 +1,7 @@
 "use client"
 
-import { cn } from "@/lib/utils"
+import * as React from "react"
+
 import {
   useDesignSystemParam,
   useDesignSystemReady,
@@ -10,14 +11,33 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const theme = useDesignSystemParam("theme")
   const isReady = useDesignSystemReady()
 
-  // In iframe context, wait for first postMessage before rendering.
+  React.useEffect(() => {
+    if (!isReady || !theme) {
+      return
+    }
+
+    const body = document.body
+    const themeClass = `theme-${theme}`
+
+    // Remove all existing theme classes.
+    body.classList.forEach((className) => {
+      if (className.startsWith("theme-")) {
+        body.classList.remove(className)
+      }
+    })
+
+    // Add the new theme class.
+    body.classList.add(themeClass)
+
+    return () => {
+      // Cleanup: remove theme class when component unmounts.
+      body.classList.remove(themeClass)
+    }
+  }, [theme, isReady])
+
   if (!isReady) {
     return null
   }
 
-  return (
-    <div className={cn(`theme-${theme}`)}>
-      <div className="theme-container bg-background">{children}</div>
-    </div>
-  )
+  return <>{children}</>
 }

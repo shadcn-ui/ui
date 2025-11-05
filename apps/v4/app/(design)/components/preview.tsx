@@ -12,17 +12,13 @@ export function Preview({ style }: { style: DesignSystemStyle["name"] }) {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const hasLoadedRef = useRef(false)
 
-  // Don't include theme/iconLibrary in URL - they're synced via postMessage.
-  // Only item is in the URL since it determines which component to load.
   const iframeSrc = params.item ? `/design/${style}/${params.item}` : null
 
-  // Send params immediately when iframe loads - use layoutEffect to fire before paint.
   useLayoutEffect(() => {
     const iframe = iframeRef.current
     if (!iframe) return
 
     const sendParams = () => {
-      console.log("[parent] Sending params:", params)
       iframe.contentWindow?.postMessage(
         {
           type: MESSAGE_TYPE,
@@ -38,13 +34,11 @@ export function Preview({ style }: { style: DesignSystemStyle["name"] }) {
 
     const handleLoad = () => {
       hasLoadedRef.current = true
-      console.log("[parent] Iframe loaded, sending params")
       sendParams()
     }
 
-    // Try sending immediately in case iframe is already loaded.
+    // Send immediately if iframe is already loaded.
     if (iframe.contentWindow) {
-      console.log("[parent] Iframe already loaded, sending params immediately")
       sendParams()
     }
 
@@ -53,9 +47,8 @@ export function Preview({ style }: { style: DesignSystemStyle["name"] }) {
       iframe.removeEventListener("load", handleLoad)
       hasLoadedRef.current = false
     }
-  }, [params.item, params.theme, params.iconLibrary]) // Re-attach listener when params change.
+  }, [params])
 
-  // Send postMessage updates when params change (after initial load).
   useEffect(() => {
     if (!hasLoadedRef.current) return
 

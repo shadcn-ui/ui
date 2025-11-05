@@ -7,8 +7,7 @@ export default function ButtonDemo() {
       <div className="flex flex-col gap-6">
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button>
-            <IconPlaceholder name="ButtonSend" />
-            Button
+            <IconPlaceholder name="ButtonSend" /> Button
           </Button>
           <Button variant="outline">Outline</Button>
           <Button variant="ghost">Ghost</Button>
@@ -19,10 +18,10 @@ export default function ButtonDemo() {
             <IconPlaceholder name="ButtonSend" /> Send
           </Button>
           <Button variant="outline">
-            Learn More <IconPlaceholder name="ButtonNext" />
+            Learn More <IconPlaceholder name="ChevronRightIcon" />
           </Button>
           <Button disabled variant="outline">
-            <IconPlaceholder name="ButtonLoading" className="animate-spin" />
+            <IconPlaceholder name="SpinnerIcon" className="animate-spin" />
             Please wait
           </Button>
         </div>
@@ -47,10 +46,10 @@ export default function ButtonDemo() {
             <IconPlaceholder name="ButtonSend" /> Send
           </Button>
           <Button variant="outline" size="sm">
-            Learn More <IconPlaceholder name="ButtonNext" />
+            Learn More <IconPlaceholder name="ChevronRightIcon" />
           </Button>
           <Button disabled size="sm" variant="outline">
-            <IconPlaceholder name="ButtonLoading" className="animate-spin" />
+            <IconPlaceholder name="SpinnerIcon" className="animate-spin" />
             Please wait
           </Button>
         </div>
@@ -75,10 +74,10 @@ export default function ButtonDemo() {
             <IconPlaceholder name="ButtonSend" /> Send
           </Button>
           <Button variant="outline" size="lg">
-            Learn More <IconPlaceholder name="ButtonNext" />
+            Learn More <IconPlaceholder name="ChevronRightIcon" />
           </Button>
           <Button disabled size="lg" variant="outline">
-            <IconPlaceholder name="ButtonLoading" className="animate-spin" />
+            <IconPlaceholder name="SpinnerIcon" className="animate-spin" />
             Please wait
           </Button>
         </div>

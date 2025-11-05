@@ -434,7 +434,7 @@ function ButtonGroupDemo() {
               <MoreHorizontalIcon />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48 [--radius:1rem]">
+          <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <MailCheckIcon />
@@ -1335,9 +1335,12 @@ function SpinnerEmpty() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button variant="outline" size="sm">
-          Cancel
-        </Button>
+        <div className="flex gap-2">
+          <Button size="sm">Submit</Button>
+          <Button variant="outline" size="sm">
+            Cancel
+          </Button>
+        </div>
       </EmptyContent>
     </Empty>
   )
