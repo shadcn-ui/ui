@@ -242,8 +242,8 @@ const options = [
 
 export default function CoverExample() {
   return (
-    <div className="bg-background flex h-full items-center justify-center">
-      <div className="grid w-full max-w-[1500px] grid-cols-4 gap-8 p-8">
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background grid w-full max-w-[1500px] grid-cols-4 gap-8 rounded-[12px] p-8">
         <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
           <FieldDemo />
         </div>

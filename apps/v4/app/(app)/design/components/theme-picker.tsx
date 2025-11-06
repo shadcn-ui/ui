@@ -12,19 +12,19 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/new-york-v4/ui/command"
-import { Style } from "@/registry/styles"
+import { Theme } from "@/registry/themes"
 import { ToolbarItem } from "@/app/(app)/design/components/toolbar"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
-export function StylePicker({ styles }: { styles: readonly Style[] }) {
+export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
   })
 
   const handleSelect = React.useCallback(
-    (styleName: Style["name"]) => {
-      setParams({ style: styleName })
+    (themeName: Theme["name"]) => {
+      setParams({ theme: themeName })
       setOpen(false)
     },
     [setParams]
@@ -32,8 +32,8 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
 
   return (
     <ToolbarItem
-      title="Style"
-      description={styles.find((style) => style.name === params.style)?.title}
+      title="Theme"
+      description={themes.find((theme) => theme.name === params.theme)?.title}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
@@ -47,15 +47,15 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
             No results found
           </CommandEmpty>
           <CommandGroup className="px-0">
-            {styles.map((style) => (
+            {themes.map((theme) => (
               <CommandItem
-                key={style.name}
-                value={style.title}
-                onSelect={() => handleSelect(style.name)}
-                data-active={style.name === params.style}
+                key={theme.name}
+                value={theme.title}
+                onSelect={() => handleSelect(theme.name)}
+                data-active={theme.name === params.theme}
                 className="group/command-item"
               >
-                {style.title}
+                {theme.title}
                 <IconCheck className="ml-auto size-4 opacity-0 transition-opacity group-data-[active=true]/command-item:opacity-100" />
               </CommandItem>
             ))}

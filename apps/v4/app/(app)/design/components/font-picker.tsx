@@ -4,6 +4,7 @@ import * as React from "react"
 import { IconCheck, IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
+import { Font } from "@/registry/fonts"
 import {
   Command,
   CommandEmpty,
@@ -12,19 +13,18 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/new-york-v4/ui/command"
-import { Style } from "@/registry/styles"
 import { ToolbarItem } from "@/app/(app)/design/components/toolbar"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
-export function StylePicker({ styles }: { styles: readonly Style[] }) {
+export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
   })
 
   const handleSelect = React.useCallback(
-    (styleName: Style["name"]) => {
-      setParams({ style: styleName })
+    (fontValue: Font["value"]) => {
+      setParams({ font: fontValue })
       setOpen(false)
     },
     [setParams]
@@ -32,8 +32,8 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
 
   return (
     <ToolbarItem
-      title="Style"
-      description={styles.find((style) => style.name === params.style)?.title}
+      title="Font"
+      description={fonts.find((font) => font.value === params.font)?.name}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
@@ -46,17 +46,27 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
           <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
             No results found
           </CommandEmpty>
-          <CommandGroup className="px-0">
-            {styles.map((style) => (
+          <CommandGroup className="px-0 *:[div]:flex *:[div]:flex-col *:[div]:gap-2">
+            {fonts.map((font) => (
               <CommandItem
-                key={style.name}
-                value={style.title}
-                onSelect={() => handleSelect(style.name)}
-                data-active={style.name === params.style}
-                className="group/command-item"
+                key={font.value}
+                value={font.name}
+                onSelect={() => handleSelect(font.value)}
+                data-active={font.value === params.font}
+                className="group/command-item data-[active=true]:border-primary ring-primary border p-3"
               >
-                {style.title}
-                <IconCheck className="ml-auto size-4 opacity-0 transition-opacity group-data-[active=true]/command-item:opacity-100" />
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-muted-foreground text-xs font-medium">
+                    {font.name}
+                  </span>
+                  <span
+                    className="text-sm"
+                    style={{ fontFamily: font.font.style.fontFamily }}
+                  >
+                    The quick brown fox jumps over the lazy dog
+                  </span>
+                </div>
+                <IconCheck className="ml-auto size-4 self-start opacity-0 transition-opacity group-data-[active=true]/command-item:opacity-100" />
               </CommandItem>
             ))}
           </CommandGroup>

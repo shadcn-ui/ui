@@ -94,7 +94,8 @@ export const Canva = React.memo(function Canva({
   }, [isFormElement])
 
   return (
-    <div ref={containerRef} className="size-full">
+    <div ref={containerRef} className="relative size-full">
+      <div className="absolute inset-x-0 top-0 z-40 h-8 bg-gradient-to-b from-white to-transparent dark:hidden" />
       <InfiniteViewer
         ref={canvaRef}
         className="bg-muted/50 h-screen w-full"
