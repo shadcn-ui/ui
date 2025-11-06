@@ -320,7 +320,7 @@ export default function FormDemo() {
                           <span>Pick a date</span>
                         )}
                         <IconPlaceholder
-                          icon="FormCalendar"
+                          icon="PlaceholderIcon"
                           className="ml-auto h-4 w-4 opacity-50"
                         />
                       </Button>

@@ -34,7 +34,7 @@ export default function TooltipDemo() {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="ghost" size="icon">
-            <IconPlaceholder icon="TooltipInfo" />
+            <IconPlaceholder icon="PlaceholderIcon" />
             <span className="sr-only">Info</span>
           </Button>
         </TooltipTrigger>

@@ -134,11 +134,11 @@ export default async function BlockPage({
         dangerouslySetInnerHTML={{
           __html: `
             document.addEventListener('keydown', function(e) {
-              if (e.key === 'f' && (e.metaKey || e.ctrlKey)) {
+              if (e.key === 'p' && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
                 if (window.parent && window.parent !== window) {
                   window.parent.postMessage({
-                    type: 'cmd-f-forward'
+                    type: 'cmd-p-forward'
                   }, '*');
                 }
               }

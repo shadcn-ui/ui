@@ -1,6 +1,11 @@
 import { type IconLibrary } from "@/registry/icon-libraries"
 
 export const icons = {
+  PlaceholderIcon: {
+    lucide: "CircleDashedIcon",
+    tabler: "IconCircleDashed",
+    hugeicons: "DashedLineCircleIcon",
+  },
   AccordionTrigger: {
     lucide: "ChevronDownIcon",
     tabler: "IconCircleChevronDown",

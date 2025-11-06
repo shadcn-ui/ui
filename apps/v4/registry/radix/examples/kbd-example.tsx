@@ -40,7 +40,7 @@ export default function KbdDemo() {
       </div>
       <KbdGroup>
         <Kbd>
-          <IconPlaceholder icon="KbdCommand" />
+          <IconPlaceholder icon="PlaceholderIcon" />
         </Kbd>
         <Kbd>
           <IconArrowLeft />
@@ -55,7 +55,7 @@ export default function KbdDemo() {
           Left
         </Kbd>
         <Kbd>
-          <IconPlaceholder icon="KbdVoice" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           Voice Enabled
         </Kbd>
       </KbdGroup>

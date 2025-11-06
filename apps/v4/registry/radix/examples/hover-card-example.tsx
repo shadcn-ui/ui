@@ -26,7 +26,7 @@ export default function HoverCardDemo() {
             </p>
             <div className="mt-1 flex items-center gap-2">
               <IconPlaceholder
-                icon="HoverCardCalendar"
+                icon="PlaceholderIcon"
                 className="text-muted-foreground size-4"
               />{" "}
               <span className="text-muted-foreground text-xs">

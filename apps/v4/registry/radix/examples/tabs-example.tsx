@@ -91,11 +91,11 @@ export default function TabsDemo() {
       <Tabs defaultValue="preview">
         <TabsList>
           <TabsTrigger value="preview">
-            <IconPlaceholder icon="TabsPreview" />
+            <IconPlaceholder icon="PlaceholderIcon" />
             Preview
           </TabsTrigger>
           <TabsTrigger value="code">
-            <IconPlaceholder icon="TabsCode" />
+            <IconPlaceholder icon="PlaceholderIcon" />
             Code
           </TabsTrigger>
         </TabsList>

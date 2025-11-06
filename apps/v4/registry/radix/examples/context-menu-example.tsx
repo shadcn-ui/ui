@@ -42,18 +42,18 @@ export default function ContextMenuDemo() {
               <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
             </ContextMenuItem>
             <ContextMenuItem>
-              <IconPlaceholder icon="ContextMenuAdd" />
+              <IconPlaceholder icon="PlaceholderIcon" />
               Create Shortcut...
             </ContextMenuItem>
             <ContextMenuItem inset>Name Window...</ContextMenuItem>
             <ContextMenuSeparator />
             <ContextMenuItem>
-              <IconPlaceholder icon="ContextMenuCode" />
+              <IconPlaceholder icon="PlaceholderIcon" />
               Developer Tools
             </ContextMenuItem>
             <ContextMenuSeparator />
             <ContextMenuItem variant="destructive">
-              <IconPlaceholder icon="ContextMenuDelete" />
+              <IconPlaceholder icon="PlaceholderIcon" />
               Delete
             </ContextMenuItem>
           </ContextMenuSubContent>

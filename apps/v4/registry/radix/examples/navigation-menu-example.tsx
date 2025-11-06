@@ -180,19 +180,19 @@ export default function NavigationMenuDemo() {
                 <li>
                   <NavigationMenuLink asChild>
                     <Link href="#" className="flex-row items-center gap-2">
-                      <IconPlaceholder icon="NavigationMenuBacklog" />
+                      <IconPlaceholder icon="PlaceholderIcon" />
                       Backlog
                     </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link href="#" className="flex-row items-center gap-2">
-                      <IconPlaceholder icon="NavigationMenuTodo" />
+                      <IconPlaceholder icon="PlaceholderIcon" />
                       To Do
                     </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link href="#" className="flex-row items-center gap-2">
-                      <IconPlaceholder icon="NavigationMenuDone" />
+                      <IconPlaceholder icon="PlaceholderIcon" />
                       Done
                     </Link>
                   </NavigationMenuLink>

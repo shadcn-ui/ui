@@ -109,16 +109,16 @@ export default function MenubarDemo() {
         <MenubarContent>
           <MenubarGroup>
             <MenubarItem>
-              <IconPlaceholder icon="MenubarSettings" />
+              <IconPlaceholder icon="PlaceholderIcon" />
               Settings
             </MenubarItem>
             <MenubarItem>
-              <IconPlaceholder icon="MenubarHelp" />
+              <IconPlaceholder icon="PlaceholderIcon" />
               Help
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem variant="destructive">
-              <IconPlaceholder icon="MenubarDelete" />
+              <IconPlaceholder icon="PlaceholderIcon" />
               Delete
             </MenubarItem>
           </MenubarGroup>

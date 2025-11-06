@@ -7,14 +7,14 @@ export default function AlertDemo() {
     <div className="flex min-h-screen w-full items-start justify-center px-6 py-12">
       <div className="grid max-w-xl items-start gap-4">
         <Alert>
-          <IconPlaceholder icon="CheckCircle2Icon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertTitle>Success! Your changes have been saved</AlertTitle>
           <AlertDescription>
             This is an alert with icon, title and description.
           </AlertDescription>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="BookmarkCheckIcon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertDescription>
             This one has an icon and a description only. No title.
           </AlertDescription>
@@ -25,11 +25,11 @@ export default function AlertDemo() {
           </AlertDescription>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="ShoppingBagIcon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertTitle>Let&apos;s try one with icon and title.</AlertTitle>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="ShieldAlertIcon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertTitle>
             This is a very long alert title that demonstrates how the component
             handles extended text content and potentially wraps across multiple
@@ -37,7 +37,7 @@ export default function AlertDemo() {
           </AlertTitle>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="GiftIcon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertDescription>
             This is a very long alert description that demonstrates how the
             component handles extended text content and potentially wraps across
@@ -45,7 +45,7 @@ export default function AlertDemo() {
           </AlertDescription>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="AlertCircleIcon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertTitle>
             This is an extremely long alert title that spans multiple lines to
             demonstrate how the component handles very lengthy headings while
@@ -61,14 +61,14 @@ export default function AlertDemo() {
           </AlertDescription>
         </Alert>
         <Alert variant="destructive">
-          <IconPlaceholder icon="AlertCircleIcon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertTitle>Something went wrong!</AlertTitle>
           <AlertDescription>
             Your session has expired. Please log in again.
           </AlertDescription>
         </Alert>
         <Alert variant="destructive">
-          <IconPlaceholder icon="AlertCircleIcon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertTitle>Unable to process your payment.</AlertTitle>
           <AlertDescription>
             <p>Please verify your billing information and try again.</p>
@@ -80,7 +80,7 @@ export default function AlertDemo() {
           </AlertDescription>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="CheckCircle2Icon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertTitle className="max-w-[calc(100%-4rem)] overflow-ellipsis">
             The selected emails have been marked as spam.
           </AlertTitle>
@@ -93,7 +93,7 @@ export default function AlertDemo() {
           </Button>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="CheckCircle2Icon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           <AlertTitle className="max-w-[calc(100%-4rem)] overflow-ellipsis">
             The selected emails have been marked as spam.
           </AlertTitle>

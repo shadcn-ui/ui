@@ -10,11 +10,11 @@ export default function BadgeDemo() {
         <Badge variant="destructive">Destructive</Badge>
         <Badge variant="outline">Outline</Badge>
         <Badge variant="outline">
-          <IconPlaceholder icon="BadgeCheck" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           Badge
         </Badge>
         <Badge variant="destructive">
-          <IconPlaceholder icon="BadgeAlert" />
+          <IconPlaceholder icon="PlaceholderIcon" />
           Alert
         </Badge>
         <Badge className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
@@ -36,22 +36,22 @@ export default function BadgeDemo() {
       <div className="flex w-full flex-wrap gap-2">
         <Badge asChild>
           <a href="#">
-            Link <IconPlaceholder icon="BadgeLink" />
+            Link <IconPlaceholder icon="PlaceholderIcon" />
           </a>
         </Badge>
         <Badge asChild variant="secondary">
           <a href="#">
-            Link <IconPlaceholder icon="BadgeLink" />
+            Link <IconPlaceholder icon="PlaceholderIcon" />
           </a>
         </Badge>
         <Badge asChild variant="destructive">
           <a href="#">
-            Link <IconPlaceholder icon="BadgeLink" />
+            Link <IconPlaceholder icon="PlaceholderIcon" />
           </a>
         </Badge>
         <Badge asChild variant="outline">
           <a href="#">
-            Link <IconPlaceholder icon="BadgeLink" />
+            Link <IconPlaceholder icon="PlaceholderIcon" />
           </a>
         </Badge>
       </div>

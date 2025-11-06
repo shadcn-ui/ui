@@ -6,7 +6,7 @@ import type { ComponentLibrary } from "@/registry/component-libraries"
 import { useDesignSystemSync } from "@/app/(app)/design/hooks/use-design-system-sync"
 
 const MESSAGE_TYPE = "design-system-params"
-const CMD_F_FORWARD_TYPE = "cmd-f-forward"
+const CMD_P_FORWARD_TYPE = "cmd-p-forward"
 
 export function Preview({ library }: { library: ComponentLibrary["name"] }) {
   const params = useDesignSystemSync()
@@ -44,11 +44,11 @@ export function Preview({ library }: { library: ComponentLibrary["name"] }) {
   }, [params.theme, params.iconLibrary, params.style, params.font, params.item])
 
   const handleMessage = (event: MessageEvent) => {
-    if (event.data.type === CMD_F_FORWARD_TYPE) {
+    if (event.data.type === CMD_P_FORWARD_TYPE) {
       const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent)
 
       const syntheticEvent = new KeyboardEvent("keydown", {
-        key: "f",
+        key: "p",
         metaKey: isMac,
         ctrlKey: !isMac,
         bubbles: true,

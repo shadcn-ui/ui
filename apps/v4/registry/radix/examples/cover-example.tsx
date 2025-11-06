@@ -434,7 +434,7 @@ function ButtonGroupDemo() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon-sm" aria-label="More Options">
-              <IconPlaceholder icon="MoreHorizontalIcon" />
+              <IconPlaceholder icon="PlaceholderIcon" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
@@ -497,10 +497,10 @@ function ButtonGroupDemo() {
       </ButtonGroup>
       <ButtonGroup>
         <Button variant="outline" size="icon-sm" aria-label="Previous">
-          <IconPlaceholder icon="ChevronLeftIcon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
         </Button>
         <Button variant="outline" size="icon-sm" aria-label="Next">
-          <IconPlaceholder icon="ChevronRightIcon" />
+          <IconPlaceholder icon="PlaceholderIcon" />
         </Button>
       </ButtonGroup>
     </ButtonGroup>
@@ -580,15 +580,15 @@ function ButtonGroupPopover() {
             <DropdownMenuGroup>
               <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
               <DropdownMenuItem>
-                <IconPlaceholder icon="VolumeOffIcon" />
+                <IconPlaceholder icon="PlaceholderIcon" />
                 Mute Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="CheckIcon" />
+                <IconPlaceholder icon="PlaceholderIcon" />
                 Mark as Read
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="UserRoundXIcon" />
+                <IconPlaceholder icon="PlaceholderIcon" />
                 Block User
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -596,22 +596,22 @@ function ButtonGroupPopover() {
             <DropdownMenuGroup>
               <DropdownMenuLabel>Conversation</DropdownMenuLabel>
               <DropdownMenuItem>
-                <IconPlaceholder icon="ShareIcon" />
+                <IconPlaceholder icon="PlaceholderIcon" />
                 Share Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="CopyIcon" />
+                <IconPlaceholder icon="PlaceholderIcon" />
                 Copy Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="AlertTriangleIcon" />
+                <IconPlaceholder icon="PlaceholderIcon" />
                 Report Conversation
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem variant="destructive">
-                <IconPlaceholder icon="TrashIcon" />
+                <IconPlaceholder icon="PlaceholderIcon" />
                 Delete Conversation
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -1093,13 +1093,13 @@ function ItemDemo() {
       <Item variant="outline" size="sm" asChild>
         <a href="#">
           <ItemMedia>
-            <IconPlaceholder icon="BadgeCheckIcon" className="size-5" />
+            <IconPlaceholder icon="PlaceholderIcon" className="size-5" />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>Your profile has been verified.</ItemTitle>
           </ItemContent>
           <ItemActions>
-            <IconPlaceholder icon="ChevronRightIcon" className="size-4" />
+            <IconPlaceholder icon="PlaceholderIcon" className="size-4" />
           </ItemActions>
         </a>
       </Item>
@@ -1381,7 +1381,7 @@ function NotionPromptForm() {
               variant="default"
               size="icon-sm"
             >
-              <IconPlaceholder icon="ArrowUpIcon" />
+              <IconPlaceholder icon="PlaceholderIcon" />
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>

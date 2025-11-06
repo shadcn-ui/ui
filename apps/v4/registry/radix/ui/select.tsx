@@ -122,7 +122,7 @@ function SelectItem({
     >
       <span className="absolute right-2 flex size-3.5 items-center justify-center">
         <SelectPrimitive.ItemIndicator>
-          <IconPlaceholder icon="SelectItemCheck" className="size-4" />
+          <IconPlaceholder icon="PlaceholderIcon" className="size-4" />
         </SelectPrimitive.ItemIndicator>
       </span>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -159,7 +159,7 @@ function SelectScrollUpButton({
       )}
       {...props}
     >
-      <IconPlaceholder icon="SelectScrollUpButton" className="size-4" />
+      <IconPlaceholder icon="PlaceholderIcon" className="size-4" />
     </SelectPrimitive.ScrollUpButton>
   )
 }
@@ -177,7 +177,7 @@ function SelectScrollDownButton({
       )}
       {...props}
     >
-      <IconPlaceholder icon="SelectScrollDownButton" className="size-4" />
+      <IconPlaceholder icon="PlaceholderIcon" className="size-4" />
     </SelectPrimitive.ScrollDownButton>
   )
 }

@@ -87,7 +87,7 @@ export default function EmptyDemo() {
           <InputGroup className="w-3/4">
             <InputGroupInput placeholder="Try searching for pages..." />
             <InputGroupAddon>
-              <IconPlaceholder icon="EmptySearch" />
+              <IconPlaceholder icon="PlaceholderIcon" />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
               <Kbd>/</Kbd>
@@ -109,7 +109,7 @@ export default function EmptyDemo() {
         </EmptyHeader>
         <EmptyContent>
           <Button variant="outline">
-            <IconPlaceholder icon="EmptyAdd" />
+            <IconPlaceholder icon="PlaceholderIcon" />
             New Post
           </Button>
         </EmptyContent>
@@ -129,7 +129,7 @@ export default function EmptyDemo() {
                 <InputGroup className="w-3/4">
                   <InputGroupInput placeholder="Try searching for pages..." />
                   <InputGroupAddon>
-                    <IconPlaceholder icon="EmptySearch" />
+                    <IconPlaceholder icon="PlaceholderIcon" />
                   </InputGroupAddon>
                   <InputGroupAddon align="inline-end">
                     <Kbd>/</Kbd>
@@ -236,7 +236,7 @@ export default function EmptyDemo() {
                 </EmptyHeader>
                 <EmptyContent>
                   <Button variant="outline">
-                    <IconPlaceholder icon="EmptyAdd" />
+                    <IconPlaceholder icon="PlaceholderIcon" />
                     New Post
                   </Button>
                 </EmptyContent>

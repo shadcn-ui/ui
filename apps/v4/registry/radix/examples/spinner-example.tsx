@@ -96,7 +96,7 @@ export default function SpinnerDemo() {
             </div>
             <Button variant="link" asChild className="text-muted-foreground">
               <a href="#">
-                Learn more <IconPlaceholder icon="SpinnerIcon" />
+                Learn more <IconPlaceholder icon="PlaceholderIcon" />
               </a>
             </Button>
           </EmptyContent>

@@ -75,7 +75,7 @@ function BreadcrumbSeparator({
       className={cn("[&>svg]:size-3.5", className)}
       {...props}
     >
-      {children ?? <IconPlaceholder icon="BreadcrumbSeparator" />}
+      {children ?? <IconPlaceholder icon="PlaceholderIcon" />}
     </li>
   )
 }
@@ -92,7 +92,7 @@ function BreadcrumbEllipsis({
       className={cn("flex size-9 items-center justify-center", className)}
       {...props}
     >
-      <IconPlaceholder icon="BreadcrumbEllipsis" className="size-4" />
+      <IconPlaceholder icon="PlaceholderIcon" className="size-4" />
       <span className="sr-only">More</span>
     </span>
   )

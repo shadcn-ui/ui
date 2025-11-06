@@ -52,7 +52,7 @@ export function CommandMenu({ items }: { items: RegistryItem[] }) {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "f" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === "p" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }

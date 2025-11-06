@@ -196,7 +196,7 @@ export default function ItemDemo() {
           </Item>
           <Item variant="outline">
             <ItemMedia variant="icon">
-              <IconPlaceholder icon="ItemTicket" />
+              <IconPlaceholder icon="PlaceholderIcon" />
             </ItemMedia>
             <ItemContent>
               <ItemTitle>Item Title</ItemTitle>
@@ -207,7 +207,7 @@ export default function ItemDemo() {
           </Item>
           <Item variant="muted">
             <ItemMedia variant="icon">
-              <IconPlaceholder icon="ItemTicket" />
+              <IconPlaceholder icon="PlaceholderIcon" />
             </ItemMedia>
             <ItemContent>
               <ItemTitle>Item Title</ItemTitle>
@@ -250,7 +250,7 @@ export default function ItemDemo() {
                       size="icon"
                       className="size-8 rounded-full"
                     >
-                      <IconPlaceholder icon="ItemAdd" />
+                      <IconPlaceholder icon="PlaceholderIcon" />
                     </Button>
                   </ItemActions>
                 </Item>
