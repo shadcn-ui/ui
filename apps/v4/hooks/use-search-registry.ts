@@ -1,17 +1,17 @@
-import { useQueryState } from "nuqs"
+import { debounce, useQueryState } from "nuqs"
 
 import globalRegistries from "@/registry/directory.json"
 
-const normilizeQuery = (query: string) =>
+const normalizeQuery = (query: string) =>
   query.toLowerCase().replaceAll(" ", "").replaceAll("@", "")
 
 function finderFn<T extends (typeof globalRegistries)[0]>(
   registry: T,
   query: string
 ) {
-  const normilizedName = normilizeQuery(registry.name)
-  const normilizedDecription = normilizeQuery(registry.description)
-  const normilizedQuery = normilizeQuery(query)
+  const normilizedName = normalizeQuery(registry.name)
+  const normilizedDecription = normalizeQuery(registry.description)
+  const normilizedQuery = normalizeQuery(query)
 
   return (
     normilizedName.includes(normilizedQuery) ||
@@ -26,7 +26,10 @@ const searchDirectory = (query: string | null) => {
 }
 
 export const useSearchRegistry = () => {
-  const [query, setQuery] = useQueryState("q")
+  const [query, setQuery] = useQueryState("q", {
+    defaultValue: "",
+    limitUrlUpdates: debounce(250),
+  })
 
   return {
     query,
