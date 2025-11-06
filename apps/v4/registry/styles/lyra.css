@@ -1,4 +1,6 @@
 .style-lyra {
+  --text-sm: 0.75rem;
+
   .x-alert-dialog-content {
     @apply bg-background gap-2 border p-4;
   }
@@ -12,11 +14,11 @@
   }
 
   .x-alert-dialog-description {
-    @apply text-muted-foreground text-xs;
+    @apply text-muted-foreground text-sm;
   }
 
   .x-button {
-    @apply border border-transparent text-xs [&_svg:not([class*='size-'])]:size-3.5;
+    @apply border border-transparent text-sm [&_svg:not([class*='size-'])]:size-3.5;
 
     &[data-variant="default"] {
       @apply text-primary-foreground bg-primary hover:bg-primary/90;
@@ -68,11 +70,11 @@
   }
 
   .x-input {
-    @apply border-input h-7 border px-2 text-base md:text-xs;
+    @apply border-input h-7 border px-2 text-base md:text-sm;
   }
 
   .x-textarea {
-    @apply border-input border px-2 py-1.5 text-base md:text-xs;
+    @apply border-input border px-2 py-1.5 text-base md:text-sm;
   }
 }
 

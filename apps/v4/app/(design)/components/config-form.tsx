@@ -4,6 +4,7 @@ import * as React from "react"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
+import { fonts, type Font } from "@/registry/fonts"
 import { iconLibraries } from "@/registry/icon-libraries"
 import { Field, FieldGroup, FieldLabel } from "@/registry/new-york-v4/ui/field"
 import {
@@ -83,6 +84,23 @@ export function ConfigForm({ items }: { items: RegistryItem[] }) {
                 </NativeSelectOption>
               )
             })}
+          </NativeSelect>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="font">Font</FieldLabel>
+          <NativeSelect
+            id="font"
+            value={params.font}
+            size="sm"
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setParams({ font: e.target.value as Font["value"] })
+            }
+          >
+            {fonts.map((font) => (
+              <NativeSelectOption key={font.value} value={font.value}>
+                {font.name}
+              </NativeSelectOption>
+            ))}
           </NativeSelect>
         </Field>
       </FieldGroup>

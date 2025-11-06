@@ -26,11 +26,13 @@ if (typeof window !== "undefined") {
   const iconLibrary = searchParams.get("iconLibrary") || "lucide"
   const theme = searchParams.get("theme") || "neutral"
   const style = searchParams.get("style") || "default"
+  const font = searchParams.get("font") || "inter"
   const item = searchParams.get("item") || "cover-example"
 
   paramStore.set("iconLibrary", iconLibrary)
   paramStore.set("theme", theme)
   paramStore.set("style", style)
+  paramStore.set("font", font)
   paramStore.set("item", item)
 }
 
@@ -102,6 +104,7 @@ export function useDesignSystemSync() {
       iconLibrary: paramStore.get("iconLibrary"),
       theme: paramStore.get("theme"),
       style: paramStore.get("style"),
+      font: paramStore.get("font"),
       item: paramStore.get("item"),
     } as DesignSystemSearchParams
   }

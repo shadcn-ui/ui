@@ -6,6 +6,7 @@ import {
   parseAsStringLiteral,
 } from "nuqs/server"
 
+import { fonts, type Font } from "@/registry/fonts"
 import { iconLibraries, type IconLibrary } from "@/registry/icon-libraries"
 import { style, type Style } from "@/registry/styles"
 import { themes, type Theme } from "@/registry/themes"
@@ -21,6 +22,9 @@ export const designSystemSearchParams = {
   theme: parseAsStringLiteral<Theme["name"]>(
     themes.map((t) => t.name)
   ).withDefault("neutral"),
+  font: parseAsStringLiteral<Font["value"]>(
+    fonts.map((f) => f.value)
+  ).withDefault("inter"),
 }
 
 export const canvaSearchParams = {

@@ -11,6 +11,10 @@ export const style = [
     name: "lyra",
     title: "Lyra",
   },
+  {
+    name: "maia",
+    title: "Maia",
+  },
 ] as const
 
 export type Style = (typeof style)[number]

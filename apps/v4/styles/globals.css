@@ -4,14 +4,16 @@
 @import "../registry/styles/default.css" layer(base);
 @import "../registry/styles/nova.css" layer(base);
 @import "../registry/styles/lyra.css" layer(base);
-
-@import "../registry/themes/neutral.css";
-@import "../registry/themes/blue.css";
-@import "../registry/themes/red.css";
+@import "../registry/styles/maia.css" layer(base);
 
 @custom-variant style-default (&:where(.style-default *));
 @custom-variant style-nova (&:where(.style-nova *));
 @custom-variant style-lyra (&:where(.style-lyra *));
+@custom-variant style-maia (&:where(.style-maia *));
+
+@import "../registry/themes/neutral.css";
+@import "../registry/themes/blue.css";
+@import "../registry/themes/red.css";
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant fixed (&:is(.layout-fixed *));

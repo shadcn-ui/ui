@@ -8,6 +8,7 @@ import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl } from "@/lib/utils"
 import { COMPONENT_LIBRARIES } from "@/registry/component-libraries"
 import { getStyle, STYLES, type Style } from "@/registry/legacy-styles"
+import { FontProvider } from "@/app/(design)/components/font-provider"
 import { StyleProvider } from "@/app/(design)/components/style-provider"
 import { ThemeProvider } from "@/app/(design)/components/theme-provider"
 
@@ -149,7 +150,9 @@ export default async function BlockPage({
       />
       <StyleProvider>
         <ThemeProvider>
-          <Component />
+          <FontProvider>
+            <Component />
+          </FontProvider>
         </ThemeProvider>
       </StyleProvider>
     </>
