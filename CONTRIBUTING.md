@@ -76,6 +76,14 @@ pnpm install
 pnpm build
 ```
 
+### Setup environment variables
+
+Create a `.env` file inside the `/apps/v4` directory based on `.env.example`:
+
+```bash
+cp apps/v4/.env.example apps/v4/.env
+```
+
 ### Run a workspace
 
 You can use the `pnpm --filter=[WORKSPACE]` command to start the development process for a workspace.
