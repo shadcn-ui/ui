@@ -50,14 +50,14 @@ type IconPromise =
   | ReturnType<typeof getHugeiconsIcon>
 export function IconForIconLibrary({
   iconLibrary,
-  name,
+  icon,
   className,
 }: {
   iconLibrary: IconLibrary
-  name: IconName
+  icon: IconName
   className?: string
 }) {
-  const iconName = icons[name]?.[iconLibrary]
+  const iconName = icons[icon]?.[iconLibrary]
   if (!iconName) {
     return null
   }

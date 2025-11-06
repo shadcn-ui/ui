@@ -1,5 +1,5 @@
 import { Badge } from "@/registry/radix/ui/badge"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function BadgeDemo() {
   return (
@@ -10,11 +10,11 @@ export default function BadgeDemo() {
         <Badge variant="destructive">Destructive</Badge>
         <Badge variant="outline">Outline</Badge>
         <Badge variant="outline">
-          <IconPlaceholder name="BadgeCheck" />
+          <IconPlaceholder icon="BadgeCheck" />
           Badge
         </Badge>
         <Badge variant="destructive">
-          <IconPlaceholder name="BadgeAlert" />
+          <IconPlaceholder icon="BadgeAlert" />
           Alert
         </Badge>
         <Badge className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
@@ -36,22 +36,22 @@ export default function BadgeDemo() {
       <div className="flex w-full flex-wrap gap-2">
         <Badge asChild>
           <a href="#">
-            Link <IconPlaceholder name="BadgeLink" />
+            Link <IconPlaceholder icon="BadgeLink" />
           </a>
         </Badge>
         <Badge asChild variant="secondary">
           <a href="#">
-            Link <IconPlaceholder name="BadgeLink" />
+            Link <IconPlaceholder icon="BadgeLink" />
           </a>
         </Badge>
         <Badge asChild variant="destructive">
           <a href="#">
-            Link <IconPlaceholder name="BadgeLink" />
+            Link <IconPlaceholder icon="BadgeLink" />
           </a>
         </Badge>
         <Badge asChild variant="outline">
           <a href="#">
-            Link <IconPlaceholder name="BadgeLink" />
+            Link <IconPlaceholder icon="BadgeLink" />
           </a>
         </Badge>
       </div>

@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/registry/new-york-v4/ui/dialog"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function Command({
   className,
@@ -70,7 +70,7 @@ function CommandInput({
       className="flex h-9 items-center gap-2 border-b px-3"
     >
       <IconPlaceholder
-        name="CommandSearch"
+        icon="CommandSearch"
         className="size-4 shrink-0 opacity-50"
       />
       <CommandPrimitive.Input

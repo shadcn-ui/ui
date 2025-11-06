@@ -1,19 +1,19 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import * as React from "react"
 
 import type { ComponentLibrary } from "@/registry/component-libraries"
-import { useDesignSystemSync } from "@/app/(design)/hooks/use-design-system-sync"
+import { useDesignSystemSync } from "@/app/(app)/design/hooks/use-design-system-sync"
 
 const MESSAGE_TYPE = "design-system-params"
-const CMD_K_FORWARD_TYPE = "cmd-k-forward"
+const CMD_F_FORWARD_TYPE = "cmd-f-forward"
 
 export function Preview({ library }: { library: ComponentLibrary["name"] }) {
   const params = useDesignSystemSync()
-  const iframeRef = useRef<HTMLIFrameElement>(null)
-  const [initialParams] = useState(params)
+  const iframeRef = React.useRef<HTMLIFrameElement>(null)
+  const [initialParams] = React.useState(params)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const iframe = iframeRef.current
     if (!iframe) return
 
@@ -44,11 +44,11 @@ export function Preview({ library }: { library: ComponentLibrary["name"] }) {
   }, [params.theme, params.iconLibrary, params.style, params.font, params.item])
 
   const handleMessage = (event: MessageEvent) => {
-    if (event.data.type === CMD_K_FORWARD_TYPE) {
+    if (event.data.type === CMD_F_FORWARD_TYPE) {
       const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent)
 
       const syntheticEvent = new KeyboardEvent("keydown", {
-        key: "k",
+        key: "f",
         metaKey: isMac,
         ctrlKey: !isMac,
         bubbles: true,
@@ -58,7 +58,7 @@ export function Preview({ library }: { library: ComponentLibrary["name"] }) {
     }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.addEventListener("message", handleMessage)
     return () => {
       window.removeEventListener("message", handleMessage)
@@ -69,17 +69,18 @@ export function Preview({ library }: { library: ComponentLibrary["name"] }) {
     return null
   }
 
-  // Use initial params for iframe src to avoid reload on param changes.
-  const iframeSrc = `/design/${library}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}&font=${initialParams.font ?? "inter"}`
+  const iframeSrc = `/preview/${library}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}&font=${initialParams.font ?? "inter"}`
 
   return (
-    <iframe
-      key={params.item}
-      ref={iframeRef}
-      src={iframeSrc}
-      width="100%"
-      height="100%"
-      className="flex-1 border-0"
-    />
+    <div className="bg-background flex flex-1 overflow-hidden rounded-lg border">
+      <iframe
+        key={params.item}
+        ref={iframeRef}
+        src={iframeSrc}
+        width="100%"
+        height="100%"
+        className="flex-1 border-0"
+      />
+    </div>
   )
 }

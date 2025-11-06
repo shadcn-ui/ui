@@ -13,7 +13,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix/ui/tooltip"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function KbdDemo() {
   return (
@@ -40,7 +40,7 @@ export default function KbdDemo() {
       </div>
       <KbdGroup>
         <Kbd>
-          <IconPlaceholder name="KbdCommand" />
+          <IconPlaceholder icon="KbdCommand" />
         </Kbd>
         <Kbd>
           <IconArrowLeft />
@@ -55,7 +55,7 @@ export default function KbdDemo() {
           Left
         </Kbd>
         <Kbd>
-          <IconPlaceholder name="KbdVoice" />
+          <IconPlaceholder icon="KbdVoice" />
           Voice Enabled
         </Kbd>
       </KbdGroup>

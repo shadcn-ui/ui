@@ -7,10 +7,9 @@ import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl } from "@/lib/utils"
 import { COMPONENT_LIBRARIES } from "@/registry/component-libraries"
-import { getStyle, STYLES, type Style } from "@/registry/legacy-styles"
-import { FontProvider } from "@/app/(design)/components/font-provider"
-import { StyleProvider } from "@/app/(design)/components/style-provider"
-import { ThemeProvider } from "@/app/(design)/components/theme-provider"
+import { FontProvider } from "@/app/(app)/design/components/font-provider"
+import { StyleProvider } from "@/app/(app)/design/components/style-provider"
+import { ThemeProvider } from "@/app/(app)/design/components/theme-provider"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -58,7 +57,7 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      url: absoluteUrl(`/new/${library.name}/${item.name}`),
+      url: absoluteUrl(`/preview/${library.name}/${item.name}`),
       images: [
         {
           url: siteConfig.ogImage,
@@ -134,13 +133,12 @@ export default async function BlockPage({
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-            // Forward Cmd+K (or Ctrl+K) to parent window.
             document.addEventListener('keydown', function(e) {
-              if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+              if (e.key === 'f' && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
                 if (window.parent && window.parent !== window) {
                   window.parent.postMessage({
-                    type: 'cmd-k-forward'
+                    type: 'cmd-f-forward'
                   }, '*');
                 }
               }

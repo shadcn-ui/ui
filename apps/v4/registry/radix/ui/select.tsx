@@ -4,7 +4,7 @@ import * as React from "react"
 import { Select as SelectPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function Select({
   ...props
@@ -45,7 +45,7 @@ function SelectTrigger({
       {children}
       <SelectPrimitive.Icon asChild>
         <IconPlaceholder
-          name="SelectTriggerArrow"
+          icon="SelectTriggerArrow"
           className="size-4 opacity-50"
         />
       </SelectPrimitive.Icon>
@@ -122,7 +122,7 @@ function SelectItem({
     >
       <span className="absolute right-2 flex size-3.5 items-center justify-center">
         <SelectPrimitive.ItemIndicator>
-          <IconPlaceholder name="SelectItemCheck" className="size-4" />
+          <IconPlaceholder icon="SelectItemCheck" className="size-4" />
         </SelectPrimitive.ItemIndicator>
       </span>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -159,7 +159,7 @@ function SelectScrollUpButton({
       )}
       {...props}
     >
-      <IconPlaceholder name="SelectScrollUpButton" className="size-4" />
+      <IconPlaceholder icon="SelectScrollUpButton" className="size-4" />
     </SelectPrimitive.ScrollUpButton>
   )
 }
@@ -177,7 +177,7 @@ function SelectScrollDownButton({
       )}
       {...props}
     >
-      <IconPlaceholder name="SelectScrollDownButton" className="size-4" />
+      <IconPlaceholder icon="SelectScrollDownButton" className="size-4" />
     </SelectPrimitive.ScrollDownButton>
   )
 }

@@ -5,7 +5,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/registry/radix/ui/hover-card"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function HoverCardDemo() {
   return (
@@ -26,7 +26,7 @@ export default function HoverCardDemo() {
             </p>
             <div className="mt-1 flex items-center gap-2">
               <IconPlaceholder
-                name="HoverCardCalendar"
+                icon="HoverCardCalendar"
                 className="text-muted-foreground size-4"
               />{" "}
               <span className="text-muted-foreground text-xs">

@@ -6,7 +6,7 @@ import { useQueryStates } from "nuqs"
 import {
   designSystemSearchParams,
   type DesignSystemSearchParams,
-} from "@/app/(design)/lib/search-params"
+} from "@/app/(app)/design/lib/search-params"
 
 const MESSAGE_TYPE = "design-system-params"
 

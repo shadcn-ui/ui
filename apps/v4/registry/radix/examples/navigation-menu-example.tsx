@@ -10,7 +10,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/registry/radix/ui/navigation-menu"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -180,19 +180,19 @@ export default function NavigationMenuDemo() {
                 <li>
                   <NavigationMenuLink asChild>
                     <Link href="#" className="flex-row items-center gap-2">
-                      <IconPlaceholder name="NavigationMenuBacklog" />
+                      <IconPlaceholder icon="NavigationMenuBacklog" />
                       Backlog
                     </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link href="#" className="flex-row items-center gap-2">
-                      <IconPlaceholder name="NavigationMenuTodo" />
+                      <IconPlaceholder icon="NavigationMenuTodo" />
                       To Do
                     </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link href="#" className="flex-row items-center gap-2">
-                      <IconPlaceholder name="NavigationMenuDone" />
+                      <IconPlaceholder icon="NavigationMenuDone" />
                       Done
                     </Link>
                   </NavigationMenuLink>

@@ -15,7 +15,7 @@ import {
   InputGroupInput,
 } from "@/registry/radix/ui/input-group"
 import { Spinner } from "@/registry/radix/ui/spinner"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function SpinnerDemo() {
   return (
@@ -96,7 +96,7 @@ export default function SpinnerDemo() {
             </div>
             <Button variant="link" asChild className="text-muted-foreground">
               <a href="#">
-                Learn more <IconPlaceholder name="SpinnerIcon" />
+                Learn more <IconPlaceholder icon="SpinnerIcon" />
               </a>
             </Button>
           </EmptyContent>

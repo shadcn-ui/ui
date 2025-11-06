@@ -1,5 +1,5 @@
 import { Button } from "@/registry/radix/ui/button"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function ButtonDemo() {
   return (
@@ -54,62 +54,62 @@ export default function ButtonDemo() {
       <div className="flex w-full max-w-2xl flex-col gap-6">
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button size="sm">
-            Default <IconPlaceholder name="ArrowRightIcon" />
+            Default <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="sm" variant="outline">
-            Outline <IconPlaceholder name="ArrowRightIcon" />
+            Outline <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="sm" variant="ghost">
-            Ghost <IconPlaceholder name="ArrowRightIcon" />
+            Ghost <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="sm" variant="destructive">
-            Destructive <IconPlaceholder name="ArrowRightIcon" />
+            Destructive <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="sm" variant="secondary">
-            Secondary <IconPlaceholder name="ArrowRightIcon" />
+            Secondary <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="sm" variant="link">
-            Link <IconPlaceholder name="ArrowRightIcon" />
+            Link <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
         </div>
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button>
-            Default <IconPlaceholder name="ArrowRightIcon" />
+            Default <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button variant="outline">
-            Outline <IconPlaceholder name="ArrowRightIcon" />
+            Outline <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button variant="ghost">
-            Ghost <IconPlaceholder name="ArrowRightIcon" />
+            Ghost <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button variant="destructive">
-            Destructive <IconPlaceholder name="ArrowRightIcon" />
+            Destructive <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button variant="secondary">
-            Secondary <IconPlaceholder name="ArrowRightIcon" />
+            Secondary <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button variant="link">
-            Link <IconPlaceholder name="ArrowRightIcon" />
+            Link <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
         </div>
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button size="lg">
-            Default <IconPlaceholder name="ArrowRightIcon" />
+            Default <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="lg" variant="outline">
-            Outline <IconPlaceholder name="ArrowRightIcon" />
+            Outline <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="lg" variant="ghost">
-            Ghost <IconPlaceholder name="ArrowRightIcon" />
+            Ghost <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="lg" variant="destructive">
-            Destructive <IconPlaceholder name="ArrowRightIcon" />
+            Destructive <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="lg" variant="secondary">
-            Secondary <IconPlaceholder name="ArrowRightIcon" />
+            Secondary <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="lg" variant="link">
-            Link <IconPlaceholder name="ArrowRightIcon" />
+            Link <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
         </div>
       </div>
@@ -117,62 +117,62 @@ export default function ButtonDemo() {
       <div className="flex w-full max-w-2xl flex-col gap-6">
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button size="sm">
-            <IconPlaceholder name="ShareIcon" /> Default
+            <IconPlaceholder icon="ShareIcon" /> Default
           </Button>
           <Button size="sm" variant="outline">
-            <IconPlaceholder name="ShareIcon" /> Outline
+            <IconPlaceholder icon="ShareIcon" /> Outline
           </Button>
           <Button size="sm" variant="ghost">
-            <IconPlaceholder name="ShareIcon" /> Ghost
+            <IconPlaceholder icon="ShareIcon" /> Ghost
           </Button>
           <Button size="sm" variant="destructive">
-            <IconPlaceholder name="ShareIcon" /> Destructive
+            <IconPlaceholder icon="ShareIcon" /> Destructive
           </Button>
           <Button size="sm" variant="secondary">
-            <IconPlaceholder name="ShareIcon" /> Secondary
+            <IconPlaceholder icon="ShareIcon" /> Secondary
           </Button>
           <Button size="sm" variant="link">
-            <IconPlaceholder name="ShareIcon" /> Link
+            <IconPlaceholder icon="ShareIcon" /> Link
           </Button>
         </div>
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button>
-            <IconPlaceholder name="ShareIcon" /> Default
+            <IconPlaceholder icon="ShareIcon" /> Default
           </Button>
           <Button variant="outline">
-            <IconPlaceholder name="ShareIcon" /> Outline
+            <IconPlaceholder icon="ShareIcon" /> Outline
           </Button>
           <Button variant="ghost">
-            <IconPlaceholder name="ShareIcon" /> Ghost
+            <IconPlaceholder icon="ShareIcon" /> Ghost
           </Button>
           <Button variant="destructive">
-            <IconPlaceholder name="ShareIcon" /> Destructive
+            <IconPlaceholder icon="ShareIcon" /> Destructive
           </Button>
           <Button variant="secondary">
-            <IconPlaceholder name="ShareIcon" /> Secondary
+            <IconPlaceholder icon="ShareIcon" /> Secondary
           </Button>
           <Button variant="link">
-            <IconPlaceholder name="ShareIcon" /> Link
+            <IconPlaceholder icon="ShareIcon" /> Link
           </Button>
         </div>
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button size="lg">
-            <IconPlaceholder name="ShareIcon" /> Default
+            <IconPlaceholder icon="ShareIcon" /> Default
           </Button>
           <Button size="lg" variant="outline">
-            <IconPlaceholder name="ShareIcon" /> Outline
+            <IconPlaceholder icon="ShareIcon" /> Outline
           </Button>
           <Button size="lg" variant="ghost">
-            <IconPlaceholder name="ShareIcon" /> Ghost
+            <IconPlaceholder icon="ShareIcon" /> Ghost
           </Button>
           <Button size="lg" variant="destructive">
-            <IconPlaceholder name="ShareIcon" /> Destructive
+            <IconPlaceholder icon="ShareIcon" /> Destructive
           </Button>
           <Button size="lg" variant="secondary">
-            <IconPlaceholder name="ShareIcon" /> Secondary
+            <IconPlaceholder icon="ShareIcon" /> Secondary
           </Button>
           <Button size="lg" variant="link">
-            <IconPlaceholder name="ShareIcon" /> Link
+            <IconPlaceholder icon="ShareIcon" /> Link
           </Button>
         </div>
       </div>
@@ -180,62 +180,62 @@ export default function ButtonDemo() {
       <div className="flex w-full max-w-2xl flex-col gap-6">
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button size="icon-sm">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-sm" variant="outline">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-sm" variant="ghost">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-sm" variant="destructive">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-sm" variant="secondary">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-sm" variant="link">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
         </div>
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button size="icon">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon" variant="outline">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon" variant="ghost">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon" variant="destructive">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon" variant="secondary">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon" variant="link">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
         </div>
         <div className="flex flex-wrap items-center gap-2 md:flex-row">
           <Button size="icon-lg">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-lg" variant="outline">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-lg" variant="ghost">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-lg" variant="destructive">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-lg" variant="secondary">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
           <Button size="icon-lg" variant="link">
-            <IconPlaceholder name="ArrowRightIcon" />
+            <IconPlaceholder icon="ArrowRightIcon" />
           </Button>
         </div>
       </div>
@@ -244,13 +244,13 @@ export default function ButtonDemo() {
           <div className="flex items-center gap-2">
             <Button variant="outline">Cancel</Button>
             <Button>
-              Submit <IconPlaceholder name="ArrowRightIcon" />
+              Submit <IconPlaceholder icon="ArrowRightIcon" />
             </Button>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="destructive">Delete</Button>
             <Button size="icon">
-              <IconPlaceholder name="ArrowRightIcon" />
+              <IconPlaceholder icon="ArrowRightIcon" />
             </Button>
           </div>
         </div>

@@ -25,7 +25,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/radix/ui/popover"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function CalendarDemo() {
   return (
@@ -171,7 +171,7 @@ function CalendarWithTime() {
             <Label htmlFor="time-from">Start Time</Label>
             <div className="relative flex w-full items-center gap-2">
               <IconPlaceholder
-                name="CalendarClock"
+                icon="CalendarClock"
                 className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
               />
               <Input
@@ -187,7 +187,7 @@ function CalendarWithTime() {
             <Label htmlFor="time-to">End Time</Label>
             <div className="relative flex w-full items-center gap-2">
               <IconPlaceholder
-                name="CalendarClock"
+                icon="CalendarClock"
                 className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
               />
               <Input
@@ -317,7 +317,7 @@ function DatePickerSimple() {
             )}
           >
             <IconPlaceholder
-              name="DatePickerCalendar"
+              icon="DatePickerCalendar"
               className="text-muted-foreground"
             />
             {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -351,7 +351,7 @@ function DatePickerWithRange() {
             )}
           >
             <IconPlaceholder
-              name="DatePickerCalendar"
+              icon="DatePickerCalendar"
               className="text-muted-foreground"
             />
             {date?.from ? (
@@ -402,7 +402,7 @@ function DataPickerWithDropdowns() {
             >
               {date ? format(date, "PPP") : <span>Pick a date</span>}
               <IconPlaceholder
-                name="DatePickerCalendar"
+                icon="DatePickerCalendar"
                 className="text-muted-foreground ml-auto"
               />
             </Button>
@@ -436,7 +436,7 @@ function DataPickerWithDropdowns() {
             >
               {date ? format(date, "PPP") : <span>Pick a date</span>}
               <IconPlaceholder
-                name="DatePickerCalendar"
+                icon="DatePickerCalendar"
                 className="text-muted-foreground ml-auto"
               />
             </Button>

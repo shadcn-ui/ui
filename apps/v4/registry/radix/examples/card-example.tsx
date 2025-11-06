@@ -13,7 +13,7 @@ import {
 } from "@/registry/radix/ui/card"
 import { Input } from "@/registry/radix/ui/input"
 import { Label } from "@/registry/radix/ui/label"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function CardDemo() {
   return (
@@ -126,13 +126,13 @@ export default function CardDemo() {
         </CardContent>
         <CardFooter className="flex items-center gap-2">
           <Badge variant="outline">
-            <IconPlaceholder name="CardBedrooms" /> 4
+            <IconPlaceholder icon="CardBedrooms" /> 4
           </Badge>
           <Badge variant="outline">
-            <IconPlaceholder name="CardBathrooms" /> 2
+            <IconPlaceholder icon="CardBathrooms" /> 2
           </Badge>
           <Badge variant="outline">
-            <IconPlaceholder name="CardArea" /> 350m²
+            <IconPlaceholder icon="CardArea" /> 350m²
           </Badge>
           <div className="ml-auto font-medium tabular-nums">$135,000</div>
         </CardFooter>

@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function NativeSelect({ className, ...props }: React.ComponentProps<"select">) {
   return (
@@ -20,7 +20,7 @@ function NativeSelect({ className, ...props }: React.ComponentProps<"select">) {
         {...props}
       />
       <IconPlaceholder
-        name="NativeSelectArrow"
+        icon="NativeSelectArrow"
         className="text-muted-foreground pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 opacity-50 select-none"
         aria-hidden="true"
         data-slot="native-select-icon"

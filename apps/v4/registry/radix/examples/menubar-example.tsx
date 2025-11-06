@@ -14,7 +14,7 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/registry/radix/ui/menubar"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function MenubarDemo() {
   return (
@@ -109,16 +109,16 @@ export default function MenubarDemo() {
         <MenubarContent>
           <MenubarGroup>
             <MenubarItem>
-              <IconPlaceholder name="MenubarSettings" />
+              <IconPlaceholder icon="MenubarSettings" />
               Settings
             </MenubarItem>
             <MenubarItem>
-              <IconPlaceholder name="MenubarHelp" />
+              <IconPlaceholder icon="MenubarHelp" />
               Help
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem variant="destructive">
-              <IconPlaceholder name="MenubarDelete" />
+              <IconPlaceholder icon="MenubarDelete" />
               Delete
             </MenubarItem>
           </MenubarGroup>

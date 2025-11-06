@@ -14,7 +14,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/registry/radix/ui/drawer"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 const data = [
   {
@@ -95,7 +95,7 @@ function DrawerBottom() {
                 onClick={() => onClick(-10)}
                 disabled={goal <= 200}
               >
-                <IconPlaceholder name="DrawerMinus" />
+                <IconPlaceholder icon="DrawerMinus" />
                 <span className="sr-only">Decrease</span>
               </Button>
               <div className="flex-1 text-center">
@@ -113,7 +113,7 @@ function DrawerBottom() {
                 onClick={() => onClick(10)}
                 disabled={goal >= 400}
               >
-                <IconPlaceholder name="DrawerPlus" />
+                <IconPlaceholder icon="DrawerPlus" />
                 <span className="sr-only">Increase</span>
               </Button>
             </div>

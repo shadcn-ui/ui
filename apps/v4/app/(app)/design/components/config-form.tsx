@@ -4,6 +4,7 @@ import * as React from "react"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
+import { cn } from "@/lib/utils"
 import { fonts, type Font } from "@/registry/fonts"
 import { iconLibraries } from "@/registry/icon-libraries"
 import { Field, FieldGroup, FieldLabel } from "@/registry/new-york-v4/ui/field"
@@ -13,16 +14,23 @@ import {
 } from "@/registry/new-york-v4/ui/native-select"
 import { style, type Style } from "@/registry/styles"
 import { themes, type Theme } from "@/registry/themes"
-import { CommandMenu } from "@/app/(design)/components/command-menu"
-import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
+import { CommandMenu } from "@/app/(app)/design/components/command-menu"
+import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
-export function ConfigForm({ items }: { items: RegistryItem[] }) {
+export function ConfigForm({
+  items,
+  className,
+  ...props
+}: { items: RegistryItem[] } & React.ComponentProps<"div">) {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
   })
 
   return (
-    <div className="bg-background rounded-lg border p-4">
+    <div
+      className={cn("bg-background rounded-lg border p-4", className)}
+      {...props}
+    >
       <FieldGroup>
         <CommandMenu items={items} />
         <Field>

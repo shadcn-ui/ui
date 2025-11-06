@@ -23,7 +23,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -273,7 +273,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <IconPlaceholder name="SidebarTrigger" />
+      <IconPlaceholder icon="SidebarTrigger" />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )

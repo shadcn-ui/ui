@@ -1,21 +1,17 @@
 import { Metadata } from "next"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
-import { Icons } from "@/components/icons"
-import { ModeSwitcher } from "@/components/mode-switcher"
 import { COMPONENT_LIBRARIES } from "@/registry/component-libraries"
-import { Button } from "@/registry/new-york-v4/ui/button"
-import { ConfigForm } from "@/app/(design)/components/config-form"
-import { Preview } from "@/app/(design)/components/preview"
-import { getRegistryItemsForLibrary } from "@/app/(design)/lib/api"
+import { ConfigForm } from "@/app/(app)/design/components/config-form"
+import { Preview } from "@/app/(app)/design/components/preview"
+import { getRegistryItemsForLibrary } from "@/app/(app)/design/lib/api"
 import {
   canvaSearchParamsCache,
   designSystemSearchParamsCache,
-} from "@/app/(design)/lib/search-params"
+} from "@/app/(app)/design/lib/search-params"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -33,7 +29,7 @@ export async function generateMetadata({
     return notFound()
   }
 
-  const title = library.title
+  const title = "Design"
   const description = "Design your custom components."
 
   return {
@@ -43,7 +39,7 @@ export async function generateMetadata({
       title,
       description,
       type: "website",
-      url: absoluteUrl(`/new/${library.name}`),
+      url: absoluteUrl(`/design/${library.name}`),
       images: [
         {
           url: siteConfig.ogImage,
@@ -92,26 +88,18 @@ export default async function NewPage({
   const filteredItems = items.filter((item) => item !== null)
 
   return (
-    <div className="bg-background flex h-svh flex-1 flex-col">
-      <header className="sticky top-0 z-50 w-full shrink-0">
-        <div className="flex h-12 items-center gap-2 px-4">
-          <Button asChild variant="ghost" size="icon" className="size-8">
-            <Link href="/">
-              <Icons.logo className="size-5" />
-              <span className="sr-only">{siteConfig.name}</span>
-            </Link>
-          </Button>
-          <div className="ml-auto flex items-center gap-2">
-            <ModeSwitcher />
+    <div
+      data-slot="designer"
+      className="container-wrapper section-soft fixed:px-0 flex flex-1 flex-col px-2"
+    >
+      <div className="3xl:fixed:container 3xl:pt-2 3xl:fixed:pt-0 flex flex-1 flex-col px-6 pb-6">
+        <div className="flex-start flex flex-1 gap-4">
+          <div className="w-56">
+            <ConfigForm items={filteredItems} />
           </div>
-        </div>
-      </header>
-      <div className="flex-start flex flex-1 gap-4 p-4 pt-0">
-        <div className="w-56">
-          <ConfigForm items={filteredItems} />
-        </div>
-        <div className="bg-background flex flex-1">
-          <Preview library={library.name} />
+          <div className="bg-background flex flex-1">
+            <Preview library={library.name} />
+          </div>
         </div>
       </div>
     </div>

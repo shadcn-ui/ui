@@ -13,7 +13,7 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/registry/radix/ui/context-menu"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function ContextMenuDemo() {
   return (
@@ -42,18 +42,18 @@ export default function ContextMenuDemo() {
               <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
             </ContextMenuItem>
             <ContextMenuItem>
-              <IconPlaceholder name="ContextMenuAdd" />
+              <IconPlaceholder icon="ContextMenuAdd" />
               Create Shortcut...
             </ContextMenuItem>
             <ContextMenuItem inset>Name Window...</ContextMenuItem>
             <ContextMenuSeparator />
             <ContextMenuItem>
-              <IconPlaceholder name="ContextMenuCode" />
+              <IconPlaceholder icon="ContextMenuCode" />
               Developer Tools
             </ContextMenuItem>
             <ContextMenuSeparator />
             <ContextMenuItem variant="destructive">
-              <IconPlaceholder name="ContextMenuDelete" />
+              <IconPlaceholder icon="ContextMenuDelete" />
               Delete
             </ContextMenuItem>
           </ContextMenuSubContent>

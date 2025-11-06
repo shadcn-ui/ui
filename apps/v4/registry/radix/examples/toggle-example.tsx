@@ -1,27 +1,27 @@
 import { Toggle } from "@/registry/radix/ui/toggle"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function ToggleDemo() {
   return (
     <div className="flex flex-wrap items-center gap-6">
       <Toggle aria-label="Toggle italic">
-        <IconPlaceholder name="ToggleBold" />
+        <IconPlaceholder icon="ToggleBold" />
       </Toggle>
       <Toggle aria-label="Toggle italic" variant="default">
-        <IconPlaceholder name="ToggleUnderline" />
+        <IconPlaceholder icon="ToggleUnderline" />
       </Toggle>
       <Toggle aria-label="Toggle italic" variant="default" disabled>
         Disabled
       </Toggle>
       <Toggle variant="outline" aria-label="Toggle italic">
-        <IconPlaceholder name="ToggleItalic" />
+        <IconPlaceholder icon="ToggleItalic" />
         Italic
       </Toggle>
       <Toggle
         aria-label="Toggle book"
         className="data-[state=on]:[&_svg]:fill-accent-foreground"
       >
-        <IconPlaceholder name="ToggleBookmark" />
+        <IconPlaceholder icon="ToggleBookmark" />
       </Toggle>
       <Toggle variant="outline" aria-label="Toggle italic" size="sm">
         Small

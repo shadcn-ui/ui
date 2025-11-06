@@ -4,14 +4,14 @@ import * as React from "react"
 
 import { IconForIconLibrary, type IconLibrary } from "@/registry/icon-libraries"
 import type { IconName } from "@/registry/icons"
-import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system-sync"
+import { useDesignSystemParam } from "@/app/(app)/design/hooks/use-design-system-sync"
 
 export function IconPlaceholder({
-  name,
+  icon,
   className,
   ...props
 }: {
-  name: IconName
+  icon: IconName
   className?: string
 }) {
   const iconLibrary = useDesignSystemParam("iconLibrary")
@@ -19,7 +19,7 @@ export function IconPlaceholder({
   return (
     <IconForIconLibrary
       iconLibrary={iconLibrary}
-      name={name}
+      icon={icon}
       className={className}
       {...props}
     />
@@ -29,17 +29,17 @@ export function IconPlaceholder({
 const IconPlaceholderMemoized = React.memo(
   ({
     iconLibrary,
-    name,
+    icon,
     className,
   }: {
     iconLibrary: IconLibrary
-    name: IconName
+    icon: IconName
     className?: string
   }) => {
     return (
       <IconForIconLibrary
         iconLibrary={iconLibrary}
-        name={name}
+        icon={icon}
         className={className}
       />
     )

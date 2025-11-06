@@ -5,7 +5,6 @@ import { IconSearch } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Command,
@@ -23,7 +22,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/new-york-v4/ui/dialog"
-import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
+import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export function CommandMenu({ items }: { items: RegistryItem[] }) {
   const [open, setOpen] = React.useState(false)
@@ -53,7 +52,7 @@ export function CommandMenu({ items }: { items: RegistryItem[] }) {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === "f" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }

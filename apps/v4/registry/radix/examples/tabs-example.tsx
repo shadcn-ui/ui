@@ -15,7 +15,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/radix/ui/tabs"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function TabsDemo() {
   return (
@@ -91,11 +91,11 @@ export default function TabsDemo() {
       <Tabs defaultValue="preview">
         <TabsList>
           <TabsTrigger value="preview">
-            <IconPlaceholder name="TabsPreview" />
+            <IconPlaceholder icon="TabsPreview" />
             Preview
           </TabsTrigger>
           <TabsTrigger value="code">
-            <IconPlaceholder name="TabsCode" />
+            <IconPlaceholder icon="TabsCode" />
             Code
           </TabsTrigger>
         </TabsList>

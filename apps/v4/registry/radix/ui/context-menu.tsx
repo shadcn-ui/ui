@@ -4,7 +4,7 @@ import * as React from "react"
 import { ContextMenu as ContextMenuPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function ContextMenu({
   ...props
@@ -73,7 +73,7 @@ function ContextMenuSubTrigger({
     >
       {children}
       <IconPlaceholder
-        name="ContextMenuSubTriggerChevron"
+        icon="ContextMenuSubTriggerChevron"
         className="ml-auto"
       />
     </ContextMenuPrimitive.SubTrigger>
@@ -155,7 +155,7 @@ function ContextMenuCheckboxItem({
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
-          <IconPlaceholder name="ContextMenuCheck" className="size-4" />
+          <IconPlaceholder icon="ContextMenuCheck" className="size-4" />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -180,7 +180,7 @@ function ContextMenuRadioItem({
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <ContextMenuPrimitive.ItemIndicator>
           <IconPlaceholder
-            name="ContextMenuRadioIndicator"
+            icon="ContextMenuRadioIndicator"
             className="size-2 fill-current"
           />
         </ContextMenuPrimitive.ItemIndicator>

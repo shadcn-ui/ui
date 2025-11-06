@@ -5,5 +5,6 @@ export const themes = Object.keys(baseColorsV4).map((color) => {
     name: `theme-${color}`,
     type: "registry:theme",
     cssVars: baseColorsV4[color as keyof typeof baseColorsV4],
+    dependencies: [],
   }
 })

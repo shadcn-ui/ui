@@ -29,7 +29,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/radix/ui/popover"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function EmptyDemo() {
   return (
@@ -87,7 +87,7 @@ export default function EmptyDemo() {
           <InputGroup className="w-3/4">
             <InputGroupInput placeholder="Try searching for pages..." />
             <InputGroupAddon>
-              <IconPlaceholder name="EmptySearch" />
+              <IconPlaceholder icon="EmptySearch" />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
               <Kbd>/</Kbd>
@@ -109,7 +109,7 @@ export default function EmptyDemo() {
         </EmptyHeader>
         <EmptyContent>
           <Button variant="outline">
-            <IconPlaceholder name="EmptyAdd" />
+            <IconPlaceholder icon="EmptyAdd" />
             New Post
           </Button>
         </EmptyContent>
@@ -129,7 +129,7 @@ export default function EmptyDemo() {
                 <InputGroup className="w-3/4">
                   <InputGroupInput placeholder="Try searching for pages..." />
                   <InputGroupAddon>
-                    <IconPlaceholder name="EmptySearch" />
+                    <IconPlaceholder icon="EmptySearch" />
                   </InputGroupAddon>
                   <InputGroupAddon align="inline-end">
                     <Kbd>/</Kbd>
@@ -236,7 +236,7 @@ export default function EmptyDemo() {
                 </EmptyHeader>
                 <EmptyContent>
                   <Button variant="outline">
-                    <IconPlaceholder name="EmptyAdd" />
+                    <IconPlaceholder icon="EmptyAdd" />
                     New Post
                   </Button>
                 </EmptyContent>

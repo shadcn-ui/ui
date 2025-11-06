@@ -136,7 +136,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix/ui/tooltip"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 const SAMPLE_DATA = {
   mentionable: [
@@ -434,7 +434,7 @@ function ButtonGroupDemo() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon-sm" aria-label="More Options">
-              <IconPlaceholder name="MoreHorizontalIcon" />
+              <IconPlaceholder icon="MoreHorizontalIcon" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
@@ -497,10 +497,10 @@ function ButtonGroupDemo() {
       </ButtonGroup>
       <ButtonGroup>
         <Button variant="outline" size="icon-sm" aria-label="Previous">
-          <IconPlaceholder name="ChevronLeftIcon" />
+          <IconPlaceholder icon="ChevronLeftIcon" />
         </Button>
         <Button variant="outline" size="icon-sm" aria-label="Next">
-          <IconPlaceholder name="ChevronRightIcon" />
+          <IconPlaceholder icon="ChevronRightIcon" />
         </Button>
       </ButtonGroup>
     </ButtonGroup>
@@ -580,15 +580,15 @@ function ButtonGroupPopover() {
             <DropdownMenuGroup>
               <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
               <DropdownMenuItem>
-                <IconPlaceholder name="VolumeOffIcon" />
+                <IconPlaceholder icon="VolumeOffIcon" />
                 Mute Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder name="CheckIcon" />
+                <IconPlaceholder icon="CheckIcon" />
                 Mark as Read
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder name="UserRoundXIcon" />
+                <IconPlaceholder icon="UserRoundXIcon" />
                 Block User
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -596,22 +596,22 @@ function ButtonGroupPopover() {
             <DropdownMenuGroup>
               <DropdownMenuLabel>Conversation</DropdownMenuLabel>
               <DropdownMenuItem>
-                <IconPlaceholder name="ShareIcon" />
+                <IconPlaceholder icon="ShareIcon" />
                 Share Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder name="CopyIcon" />
+                <IconPlaceholder icon="CopyIcon" />
                 Copy Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder name="AlertTriangleIcon" />
+                <IconPlaceholder icon="AlertTriangleIcon" />
                 Report Conversation
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem variant="destructive">
-                <IconPlaceholder name="TrashIcon" />
+                <IconPlaceholder icon="TrashIcon" />
                 Delete Conversation
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -709,7 +709,7 @@ function EmptyAvatarGroup() {
             <AlertDialogContent className="theme-lyra:gap-4 gap-6 sm:max-w-xs">
               <div className="bg-muted theme-lyra:size-10 mx-auto flex size-16 items-center justify-center rounded-full">
                 <IconPlaceholder
-                  name="BluetoothIcon"
+                  icon="BluetoothIcon"
                   className="theme-lyra:size-6 size-8"
                 />
               </div>
@@ -1093,13 +1093,13 @@ function ItemDemo() {
       <Item variant="outline" size="sm" asChild>
         <a href="#">
           <ItemMedia>
-            <IconPlaceholder name="BadgeCheckIcon" className="size-5" />
+            <IconPlaceholder icon="BadgeCheckIcon" className="size-5" />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>Your profile has been verified.</ItemTitle>
           </ItemContent>
           <ItemActions>
-            <IconPlaceholder name="ChevronRightIcon" className="size-4" />
+            <IconPlaceholder icon="ChevronRightIcon" className="size-4" />
           </ItemActions>
         </a>
       </Item>
@@ -1381,7 +1381,7 @@ function NotionPromptForm() {
               variant="default"
               size="icon-sm"
             >
-              <IconPlaceholder name="ArrowUpIcon" />
+              <IconPlaceholder icon="ArrowUpIcon" />
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>

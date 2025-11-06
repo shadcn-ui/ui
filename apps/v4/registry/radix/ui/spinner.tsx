@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
   return (
     <IconPlaceholder
-      name="SpinnerIcon"
+      icon="SpinnerIcon"
       role="status"
       aria-label="Loading"
       className={cn("size-4 animate-spin", className)}

@@ -25,7 +25,7 @@ import {
 } from "@/registry/radix/ui/item"
 import { Progress } from "@/registry/radix/ui/progress"
 import { Spinner } from "@/registry/radix/ui/spinner"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 const people = [
   {
@@ -196,7 +196,7 @@ export default function ItemDemo() {
           </Item>
           <Item variant="outline">
             <ItemMedia variant="icon">
-              <IconPlaceholder name="ItemTicket" />
+              <IconPlaceholder icon="ItemTicket" />
             </ItemMedia>
             <ItemContent>
               <ItemTitle>Item Title</ItemTitle>
@@ -207,7 +207,7 @@ export default function ItemDemo() {
           </Item>
           <Item variant="muted">
             <ItemMedia variant="icon">
-              <IconPlaceholder name="ItemTicket" />
+              <IconPlaceholder icon="ItemTicket" />
             </ItemMedia>
             <ItemContent>
               <ItemTitle>Item Title</ItemTitle>
@@ -250,7 +250,7 @@ export default function ItemDemo() {
                       size="icon"
                       className="size-8 rounded-full"
                     >
-                      <IconPlaceholder name="ItemAdd" />
+                      <IconPlaceholder icon="ItemAdd" />
                     </Button>
                   </ItemActions>
                 </Item>

@@ -2,8 +2,8 @@
 
 import * as React from "react"
 
-import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system-sync"
 import { fontMap } from "@/registry/fonts"
+import { useDesignSystemParam } from "@/app/(app)/design/hooks/use-design-system-sync"
 
 export function FontProvider({ children }: { children: React.ReactNode }) {
   const font = useDesignSystemParam("font")

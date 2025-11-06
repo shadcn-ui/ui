@@ -4,7 +4,7 @@ import * as React from "react"
 import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function RadioGroup({
   className,
@@ -37,7 +37,7 @@ function RadioGroupItem({
         className="x-radio-group-indicator relative flex items-center justify-center"
       >
         <IconPlaceholder
-          name="RadioGroupIndicator"
+          icon="RadioGroupIndicator"
           className="x-radio-group-indicator-icon fill-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2"
         />
       </RadioGroupPrimitive.Indicator>

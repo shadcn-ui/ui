@@ -4,7 +4,7 @@ import * as React from "react"
 import { Menubar as MenubarPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function Menubar({
   className,
@@ -129,7 +129,7 @@ function MenubarCheckboxItem({
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <IconPlaceholder name="MenubarCheck" className="size-4" />
+          <IconPlaceholder icon="MenubarCheck" className="size-4" />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -154,7 +154,7 @@ function MenubarRadioItem({
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
           <IconPlaceholder
-            name="MenubarRadioIndicator"
+            icon="MenubarRadioIndicator"
             className="size-2 fill-current"
           />
         </MenubarPrimitive.ItemIndicator>
@@ -239,7 +239,7 @@ function MenubarSubTrigger({
     >
       {children}
       <IconPlaceholder
-        name="MenubarSubTriggerChevron"
+        icon="MenubarSubTriggerChevron"
         className="ml-auto h-4 w-4"
       />
     </MenubarPrimitive.SubTrigger>

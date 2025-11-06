@@ -8,7 +8,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/registry/radix/ui/collapsible"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function CollapsibleDemo() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -25,7 +25,7 @@ export default function CollapsibleDemo() {
         </h4>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="sm">
-            <IconPlaceholder name="CollapsibleToggle" className="h-4 w-4" />
+            <IconPlaceholder icon="CollapsibleToggle" className="h-4 w-4" />
             <span className="sr-only">Toggle</span>
           </Button>
         </CollapsibleTrigger>

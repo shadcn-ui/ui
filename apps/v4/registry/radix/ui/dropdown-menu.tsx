@@ -4,7 +4,7 @@ import * as React from "react"
 import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function DropdownMenu({
   ...props
@@ -101,7 +101,7 @@ function DropdownMenuCheckboxItem({
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
           <IconPlaceholder
-            name="DropdownMenuCheckIndicator"
+            icon="DropdownMenuCheckIndicator"
             className="size-4"
           />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -139,7 +139,7 @@ function DropdownMenuRadioItem({
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
           <IconPlaceholder
-            name="DropdownMenuRadioIndicator"
+            icon="DropdownMenuRadioIndicator"
             className="size-2 fill-current"
           />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -227,7 +227,7 @@ function DropdownMenuSubTrigger({
     >
       {children}
       <IconPlaceholder
-        name="DropdownMenuSubTriggerIcon"
+        icon="DropdownMenuSubTriggerIcon"
         className="ml-auto size-4"
       />
     </DropdownMenuPrimitive.SubTrigger>

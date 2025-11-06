@@ -2,7 +2,7 @@ import * as React from "react"
 import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function Breadcrumb({ ...props }: React.ComponentProps<"nav">) {
   return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />
@@ -75,7 +75,7 @@ function BreadcrumbSeparator({
       className={cn("[&>svg]:size-3.5", className)}
       {...props}
     >
-      {children ?? <IconPlaceholder name="BreadcrumbSeparator" />}
+      {children ?? <IconPlaceholder icon="BreadcrumbSeparator" />}
     </li>
   )
 }
@@ -92,7 +92,7 @@ function BreadcrumbEllipsis({
       className={cn("flex size-9 items-center justify-center", className)}
       {...props}
     >
-      <IconPlaceholder name="BreadcrumbEllipsis" className="size-4" />
+      <IconPlaceholder icon="BreadcrumbEllipsis" className="size-4" />
       <span className="sr-only">More</span>
     </span>
   )

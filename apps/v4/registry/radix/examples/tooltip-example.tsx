@@ -4,7 +4,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix/ui/tooltip"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function TooltipDemo() {
   return (
@@ -34,7 +34,7 @@ export default function TooltipDemo() {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="ghost" size="icon">
-            <IconPlaceholder name="TooltipInfo" />
+            <IconPlaceholder icon="TooltipInfo" />
             <span className="sr-only">Info</span>
           </Button>
         </TooltipTrigger>

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system-sync"
+import { useDesignSystemParam } from "@/app/(app)/design/hooks/use-design-system-sync"
 
 export function StyleProvider({ children }: { children: React.ReactNode }) {
   const style = useDesignSystemParam("style")

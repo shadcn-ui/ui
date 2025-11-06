@@ -4,7 +4,7 @@ import * as React from "react"
 import { Accordion as AccordionPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function Accordion({
   ...props
@@ -42,7 +42,7 @@ function AccordionTrigger({
       >
         {children}
         <IconPlaceholder
-          name="AccordionTrigger"
+          icon="AccordionTrigger"
           className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
         />
       </AccordionPrimitive.Trigger>

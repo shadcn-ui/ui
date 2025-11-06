@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority"
 import { NavigationMenu as NavigationMenuPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 function NavigationMenu({
   className,
@@ -75,7 +75,7 @@ function NavigationMenuTrigger({
     >
       {children}{" "}
       <IconPlaceholder
-        name="NavigationMenuTriggerChevron"
+        icon="NavigationMenuTriggerChevron"
         className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
         aria-hidden="true"
       />

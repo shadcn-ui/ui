@@ -25,7 +25,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/radix/ui/chart"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 const areaChartData = [
   { month: "January", desktop: 186 },
@@ -129,7 +129,7 @@ function ChartAreaExample() {
           <div className="grid gap-2">
             <div className="flex items-center gap-2 leading-none font-medium">
               Trending up by 5.2% this month{" "}
-              <IconPlaceholder name="ChartTrending" className="h-4 w-4" />
+              <IconPlaceholder icon="ChartTrending" className="h-4 w-4" />
             </div>
             <div className="text-muted-foreground flex items-center gap-2 leading-none">
               January - June 2024
@@ -171,7 +171,7 @@ function ChartBarExample() {
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 leading-none font-medium">
           Trending up by 5.2% this month{" "}
-          <IconPlaceholder name="ChartTrending" className="h-4 w-4" />
+          <IconPlaceholder icon="ChartTrending" className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
           Showing total visitors for the last 6 months
@@ -229,7 +229,7 @@ function ChartLineExample() {
           <div className="grid gap-2">
             <div className="flex items-center gap-2 leading-none font-medium">
               Trending up by 5.2% this month{" "}
-              <IconPlaceholder name="ChartTrending" className="h-4 w-4" />
+              <IconPlaceholder icon="ChartTrending" className="h-4 w-4" />
             </div>
             <div className="text-muted-foreground flex items-center gap-2 leading-none">
               Showing total visitors for the last 6 months

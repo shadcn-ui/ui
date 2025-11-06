@@ -35,7 +35,7 @@ import {
 } from "@/registry/radix/ui/select"
 import { Switch } from "@/registry/radix/ui/switch"
 import { Textarea } from "@/registry/radix/ui/textarea"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 const items = [
   {
@@ -320,7 +320,7 @@ export default function FormDemo() {
                           <span>Pick a date</span>
                         )}
                         <IconPlaceholder
-                          name="FormCalendar"
+                          icon="FormCalendar"
                           className="ml-auto h-4 w-4 opacity-50"
                         />
                       </Button>
