@@ -45,7 +45,7 @@
     "name": "@assistant-ui",
     "homepage": "https://www.assistant-ui.com",
     "url": "https://r.assistant-ui.com/{name}.json",
-    "description": "The TypeScript/React library for AI Chat. Built on shadcn/ui and Tailwind.",
+    "description": "Radix-style React primitives for AI chat with adapters for AI SDK, LangGraph, and custom backends.",
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" fill=\"var(--foreground)\" /><g transform=\"translate(4,4)\" fill=\"var(--foreground)\" stroke=\"var(--background)\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z\" /><path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\" /></g></svg>"
   },
   {
