@@ -1,12 +1,14 @@
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import Script from "next/script"
+import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl } from "@/lib/utils"
 import { COMPONENT_LIBRARIES } from "@/registry/component-libraries"
+import { Canva } from "@/app/(app)/design/components/canva"
+import { CommandMenuScript } from "@/app/(app)/design/components/command-menu"
 import { FontProvider } from "@/app/(app)/design/components/font-provider"
 import { StyleProvider } from "@/app/(app)/design/components/style-provider"
 import { ThemeProvider } from "@/app/(app)/design/components/theme-provider"
@@ -103,11 +105,13 @@ export async function generateStaticParams() {
 
 export default async function BlockPage({
   params,
+  searchParams,
 }: {
   params: Promise<{
     library: string
     name: string
   }>
+  searchParams: Promise<SearchParams>
 }) {
   const paramBag = await params
   const library = COMPONENT_LIBRARIES.find((l) => l.name === paramBag.library)
@@ -128,28 +132,13 @@ export default async function BlockPage({
 
   return (
     <>
-      <Script
-        id="design-system-listener"
-        strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            document.addEventListener('keydown', function(e) {
-              if (e.key === 'p' && (e.metaKey || e.ctrlKey)) {
-                e.preventDefault();
-                if (window.parent && window.parent !== window) {
-                  window.parent.postMessage({
-                    type: 'cmd-p-forward'
-                  }, '*');
-                }
-              }
-            });
-          `,
-        }}
-      />
+      <CommandMenuScript />
       <StyleProvider>
         <ThemeProvider>
           <FontProvider>
-            <Component />
+            <Canva>
+              <Component />
+            </Canva>
           </FontProvider>
         </ThemeProvider>
       </StyleProvider>

@@ -93,14 +93,10 @@ export default async function NewPage({
       className="container-wrapper section-soft fixed:px-0 flex flex-1 flex-col px-2"
     >
       <div className="3xl:fixed:container 3xl:pt-2 3xl:fixed:pt-0 flex flex-1 flex-col px-6 pb-6">
-        <div className="flex-start flex flex-1 gap-4">
-          <div className="w-56">
-            <ConfigForm items={filteredItems} />
-          </div>
-          <div className="bg-background flex flex-1">
-            <Preview library={library.name} />
-          </div>
+        <div className="fixed top-20 left-14 z-10 w-56">
+          <ConfigForm items={filteredItems} />
         </div>
+        <Preview library={library.name} />
       </div>
     </div>
   )

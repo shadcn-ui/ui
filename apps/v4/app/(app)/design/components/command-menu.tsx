@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Script from "next/script"
 import { IconSearch } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
@@ -23,6 +24,8 @@ import {
   DialogTrigger,
 } from "@/registry/new-york-v4/ui/dialog"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
+
+export const CMD_P_FORWARD_TYPE = "cmd-p-forward"
 
 export function CommandMenu({ items }: { items: RegistryItem[] }) {
   const [open, setOpen] = React.useState(false)
@@ -117,5 +120,32 @@ export function CommandMenu({ items }: { items: RegistryItem[] }) {
         </Command>
       </DialogContent>
     </Dialog>
+  )
+}
+
+export function CommandMenuScript() {
+  return (
+    <Script
+      id="design-system-listener"
+      strategy="beforeInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
+            (function() {
+              // Forward Cmd/Ctrl + P
+              document.addEventListener('keydown', function(e) {
+                if (e.key === 'p' && (e.metaKey || e.ctrlKey)) {
+                  e.preventDefault();
+                  if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({
+                      type: '${CMD_P_FORWARD_TYPE}'
+                    }, '*');
+                  }
+                }
+              });
+
+            })();
+          `,
+      }}
+    />
   )
 }
