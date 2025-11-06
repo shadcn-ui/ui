@@ -2,6 +2,7 @@
   "@8bitcn": "https://8bitcn.com/r/{name}.json",
   "@97cn": "https://97cn.itzik.co/r/{name}.json",
   "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
+  "@aevr": "https://ui.aevr.space/r/{name}.json",
   "@ai-elements": "https://registry.ai-sdk.dev/{name}.json",
   "@alexcarpenter": "https://ui.alexcarpenter.me/r/{name}.json",
   "@algolia": "https://sitesearch.algolia.com/r/{name}.json",
