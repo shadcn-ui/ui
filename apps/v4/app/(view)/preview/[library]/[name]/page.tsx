@@ -8,7 +8,7 @@ import { absoluteUrl } from "@/lib/utils"
 import { COMPONENT_LIBRARIES } from "@/registry/component-libraries"
 import { Canva } from "@/app/(app)/design/components/canva"
 import { DesignSystemProvider } from "@/app/(app)/design/components/design-system-provider"
-import { CommandMenuScript } from "@/app/(app)/design/components/item-browser"
+import { ItemPickerScript } from "@/app/(app)/design/components/item-picker"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -127,7 +127,7 @@ export default async function BlockPage({
 
   return (
     <>
-      <CommandMenuScript />
+      <ItemPickerScript />
       <DesignSystemProvider>
         <Canva>
           <Component />

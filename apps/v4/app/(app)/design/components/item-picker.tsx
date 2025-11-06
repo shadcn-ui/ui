@@ -19,7 +19,7 @@ import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export const CMD_P_FORWARD_TYPE = "cmd-p-forward"
 
-export function ItemBrowser({ items }: { items: RegistryItem[] }) {
+export function ItemPicker({ items }: { items: RegistryItem[] }) {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     history: "push",
@@ -107,7 +107,7 @@ export function ItemBrowser({ items }: { items: RegistryItem[] }) {
   )
 }
 
-export function CommandMenuScript() {
+export function ItemPickerScript() {
   return (
     <Script
       id="design-system-listener"

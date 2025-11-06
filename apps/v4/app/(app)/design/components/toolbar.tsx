@@ -33,7 +33,7 @@ import {
 } from "@/registry/new-york-v4/ui/popover"
 import { styles, type Style } from "@/registry/styles"
 import { themes, type Theme } from "@/registry/themes"
-import { ItemBrowser } from "@/app/(app)/design/components/item-browser"
+import { ItemPicker } from "@/app/(app)/design/components/item-picker"
 import { StylePicker } from "@/app/(app)/design/components/style-picker"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
@@ -50,7 +50,7 @@ export function Toolbar({ items }: { items: RegistryItem[] }) {
         </CardHeader>
         <CardContent className="p-4">
           <FieldGroup className="flex flex-col gap-4">
-            <ItemBrowser items={items} />
+            <ItemPicker items={items} />
             <StylePicker styles={styles} />
             <Field>
               <FieldLabel htmlFor="style">Style</FieldLabel>
