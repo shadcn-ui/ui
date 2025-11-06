@@ -88,16 +88,11 @@ export default async function NewPage({
   const filteredItems = items.filter((item) => item !== null)
 
   return (
-    <div
-      data-slot="designer"
-      className="container-wrapper section-soft fixed:px-0 flex flex-1 flex-col px-2"
-    >
-      <div className="3xl:fixed:container 3xl:pt-2 3xl:fixed:pt-0 flex flex-1 flex-col px-6 pb-6">
-        <div className="fixed top-20 left-14 z-10 w-56">
-          <ConfigForm items={filteredItems} />
-        </div>
-        <Preview library={library.name} />
+    <div data-slot="designer" className="bg-muted/50 flex flex-1 flex-col">
+      <div className="fixed top-20 left-14 z-10 w-56">
+        <ConfigForm items={filteredItems} />
       </div>
+      <Preview library={library.name} />
     </div>
   )
 }

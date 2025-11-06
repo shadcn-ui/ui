@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
@@ -105,13 +104,11 @@ export async function generateStaticParams() {
 
 export default async function BlockPage({
   params,
-  searchParams,
 }: {
   params: Promise<{
     library: string
     name: string
   }>
-  searchParams: Promise<SearchParams>
 }) {
   const paramBag = await params
   const library = COMPONENT_LIBRARIES.find((l) => l.name === paramBag.library)

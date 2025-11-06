@@ -1,21 +1,21 @@
 .style-default {
-  .x-alert-dialog-content {
+  .cn-alert-dialog-content {
     @apply bg-background gap-4 rounded-lg border p-6 shadow-lg;
   }
 
-  .x-alert-dialog-header {
+  .cn-alert-dialog-header {
     @apply gap-2;
   }
 
-  .x-alert-dialog-title {
+  .cn-alert-dialog-title {
     @apply text-lg font-semibold;
   }
 
-  .x-alert-dialog-description {
+  .cn-alert-dialog-description {
     @apply text-muted-foreground text-sm;
   }
 
-  .x-button {
+  .cn-button {
     @apply gap-2 rounded-md border border-transparent text-sm font-medium [&_svg:not([class*='size-'])]:size-4;
 
     &[data-variant="default"] {
@@ -67,11 +67,11 @@
     }
   }
 
-  .x-input {
+  .cn-input {
     @apply dark:bg-input/30 border-input h-9 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] file:h-7 file:text-sm file:font-medium md:text-sm;
   }
 
-  .x-textarea {
+  .cn-textarea {
     @apply dark:bg-input/30 border-input rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] md:text-sm;
   }
 }

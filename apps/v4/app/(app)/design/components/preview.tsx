@@ -74,7 +74,7 @@ export function Preview({ library }: { library: ComponentLibrary["name"] }) {
   const iframeSrc = `/preview/${library}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}&font=${initialParams.font ?? "inter"}`
 
   return (
-    <div className="bg-background relative flex flex-1 flex-col overflow-hidden rounded-lg border">
+    <div className="relative flex flex-1 flex-col overflow-hidden">
       <iframe
         key={params.item}
         ref={iframeRef}

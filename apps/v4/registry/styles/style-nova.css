@@ -1,21 +1,21 @@
 .style-nova {
-  .x-alert-dialog-content {
+  .cn-alert-dialog-content {
     @apply bg-background gap-4 rounded-xl border p-6 shadow-lg ring-4 ring-white/40 dark:ring-black/40;
   }
 
-  .x-alert-dialog-header {
+  .cn-alert-dialog-header {
     @apply gap-2;
   }
 
-  .x-alert-dialog-title {
+  .cn-alert-dialog-title {
     @apply text-sm font-medium;
   }
 
-  .x-alert-dialog-description {
+  .cn-alert-dialog-description {
     @apply text-muted-foreground text-sm;
   }
 
-  .x-button {
+  .cn-button {
     @apply rounded-lg border border-transparent text-sm inset-shadow-2xs inset-shadow-white/25 [&_svg:not([class*='size-'])]:size-4;
 
     &[data-variant="default"] {
@@ -67,101 +67,101 @@
     }
   }
 
-  .x-input {
+  .cn-input {
     @apply bg-input/30 h-8 rounded-lg px-2.5 text-base transition-colors file:h-7 file:text-sm file:font-medium md:text-sm;
   }
 
-  .x-textarea {
+  .cn-textarea {
     @apply bg-input/30 rounded-lg px-3 py-2 text-base transition-colors md:text-sm;
   }
 }
 
 /*
-.x-alert-dialog-overlay {
+.cn-alert-dialog-overlay {
   @apply bg-black/50! duration-100!;
 }
 
-.x-alert-dialog-content {
+.cn-alert-dialog-content {
   @apply bg-popover! border-border/40! rounded-xl! p-6! shadow-lg! ring-4 ring-white/40 duration-100! dark:ring-black/40;
 }
 
-.x-checkbox {
+.cn-checkbox {
   --from: color-mix(in oklch, var(--primary) 85%, white);
   --to: var(--primary);
   @apply data-[state=checked]:bg-linear-to-b data-[state=checked]:from-(--from) data-[state=checked]:to-(--to);
 }
 
-.x-dropdown-menu-content,
-.x-dropdown-menu-sub-content {
+.cn-dropdown-menu-content,
+.cn-dropdown-menu-sub-content {
   @apply border-border/40 rounded-xl! border! p-1.5! shadow-2xl!;
 }
 
-.x-dropdown-menu-label {
+.cn-dropdown-menu-label {
   @apply text-muted-foreground! px-3! py-1.5! text-sm! font-normal!;
 }
 
-.x-dropdown-menu-item,
-.x-dropdown-menu-sub-trigger,
-.x-dropdown-menu-checkbox-item,
-.x-dropdown-menu-radio-item {
+.cn-dropdown-menu-item,
+.cn-dropdown-menu-sub-trigger,
+.cn-dropdown-menu-checkbox-item,
+.cn-dropdown-menu-radio-item {
   @apply gap-3! rounded-lg! px-3! py-2.5! text-sm!;
 }
 
-.x-dropdown-menu-radio-item {
+.cn-dropdown-menu-radio-item {
   @apply pl-8!;
 }
 
-.x-dropdown-menu-separator {
+.cn-dropdown-menu-separator {
   @apply bg-border/80! -mx-1.5! my-1.5!;
 }
 
 
-.x-textarea,
-.x-select-trigger,
-.x-input-group {
+.cn-textarea,
+.cn-select-trigger,
+.cn-input-group {
   @apply bg-input/30! border-transparent! shadow-none!;
 }
 
-.x-input-group-input {
+.cn-input-group-input {
   @apply bg-transparent!;
 }
 
-.x-input-group-textarea {
+.cn-input-group-textarea {
   @apply bg-transparent!;
 }
 
-.x-slider {
+.cn-slider {
   @apply rounded-full data-[orientation=horizontal]:h-3 data-[orientation=vertical]:w-3;
 }
 
-.x-slider-thumb {
+.cn-slider-thumb {
   @apply h-6 w-2;
 }
 
-.x-popover-content {
+.cn-popover-content {
   @apply border-border/40 rounded-2xl border p-4 shadow-2xl;
 }
 
-.x-select-content {
+.cn-select-content {
   @apply rounded-xl! border! shadow-2xl!;
 }
 
-.x-select-label {
+.cn-select-label {
   @apply px-3! text-sm! font-normal!;
 }
 
-.x-select-item {
+.cn-select-item {
   @apply rounded-lg! px-2.5! py-2.5! text-sm!;
 }
 
-.x-popover-content {
+.cn-popover-content {
   @apply border-border/40! rounded-2xl! border! shadow-2xl!;
 }
 
-.x-radio-group-item {
+.cn-radio-group-item {
   @apply data-[state=checked]:border-primary! data-[state=checked]:bg-primary!;
 }
 
-.x-radio-group-indicator-icon {
+.cn-radio-group-indicator-icon {
   @apply size-2.5! fill-white!;
 } */

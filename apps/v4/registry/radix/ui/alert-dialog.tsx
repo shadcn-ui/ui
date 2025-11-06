@@ -36,7 +36,7 @@ function AlertDialogOverlay({
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       className={cn(
-        "x-alert-dialog-overlay data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50 duration-100",
+        "cn-alert-dialog-overlay data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50 duration-100",
         className
       )}
       {...props}
@@ -54,7 +54,7 @@ function AlertDialogContent({
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         className={cn(
-          "x-alert-dialog-content data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] duration-100 sm:max-w-lg",
+          "cn-alert-dialog-content data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] duration-100 sm:max-w-lg",
           className
         )}
         {...props}
@@ -71,7 +71,7 @@ function AlertDialogHeader({
     <div
       data-slot="alert-dialog-header"
       className={cn(
-        "x-alert-dialog-header flex flex-col text-center sm:text-left",
+        "cn-alert-dialog-header flex flex-col text-center sm:text-left",
         className
       )}
       {...props}
@@ -87,7 +87,7 @@ function AlertDialogFooter({
     <div
       data-slot="alert-dialog-footer"
       className={cn(
-        "x-alert-dialog-footer flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        "cn-alert-dialog-footer flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
         className
       )}
       {...props}
@@ -102,7 +102,7 @@ function AlertDialogTitle({
   return (
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
-      className={cn("x-alert-dialog-title", className)}
+      className={cn("cn-alert-dialog-title", className)}
       {...props}
     />
   )
@@ -115,7 +115,7 @@ function AlertDialogDescription({
   return (
     <AlertDialogPrimitive.Description
       data-slot="alert-dialog-description"
-      className={cn("x-alert-dialog-description", className)}
+      className={cn("cn-alert-dialog-description", className)}
       {...props}
     />
   )
@@ -128,7 +128,7 @@ function AlertDialogAction({
   return (
     <Button asChild>
       <AlertDialogPrimitive.Action
-        className={cn("x-alert-dialog-action", className)}
+        className={cn("cn-alert-dialog-action", className)}
         {...props}
       />
     </Button>
@@ -142,7 +142,7 @@ function AlertDialogCancel({
   return (
     <Button variant="outline" asChild>
       <AlertDialogPrimitive.Cancel
-        className={cn("x-alert-dialog-cancel", className)}
+        className={cn("cn-alert-dialog-cancel", className)}
         {...props}
       />
     </Button>

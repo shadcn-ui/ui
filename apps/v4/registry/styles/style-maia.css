@@ -1,5 +1,5 @@
 .style-maia {
-  .x-button {
+  .cn-button {
     @apply gap-2 rounded-md border border-transparent text-sm font-medium [&_svg:not([class*='size-'])]:size-4;
 
     &[data-variant="default"] {

@@ -21,15 +21,12 @@ import {
   ArrowLeftIcon,
   ArrowUpIcon,
   AudioLinesIcon,
-  BadgeCheckIcon,
   BotIcon,
   CalendarPlusIcon,
   ChevronDownIcon,
-  ChevronRightIcon,
   ClockIcon,
   ListFilterPlusIcon,
   MailCheckIcon,
-  MoreHorizontalIcon,
   PlusIcon,
   Search,
   TagIcon,
@@ -245,35 +242,33 @@ const options = [
 
 export default function CoverExample() {
   return (
-    <div className="flex min-h-screen w-full items-center justify-center p-8">
-      <div className="mx-auto grid w-full max-w-screen-2xl gap-8 py-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6 2xl:gap-8">
-        <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-          <FieldDemo />
+    <div className="bg-background mx-auto grid w-full max-w-[1500px] grid-cols-4 gap-8 p-8">
+      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
+        <FieldDemo />
+      </div>
+      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
+        <EmptyAvatarGroup />
+        <SpinnerBadge />
+        <ButtonGroupInputGroup />
+        <FieldSlider />
+        <InputGroupDemo />
+      </div>
+      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
+        <InputGroupButtonExample />
+        <ItemDemo />
+        <FieldSeparator className="my-4">Appearance Settings</FieldSeparator>
+        <AppearanceSettings />
+      </div>
+      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
+        <NotionPromptForm />
+        <ButtonGroupDemo />
+        <FieldCheckbox />
+        <div className="flex justify-between gap-4">
+          <ButtonGroupNested />
+          <ButtonGroupPopover />
         </div>
-        <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-          <EmptyAvatarGroup />
-          <SpinnerBadge />
-          <ButtonGroupInputGroup />
-          <FieldSlider />
-          <InputGroupDemo />
-        </div>
-        <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-          <InputGroupButtonExample />
-          <ItemDemo />
-          <FieldSeparator className="my-4">Appearance Settings</FieldSeparator>
-          <AppearanceSettings />
-        </div>
-        <div className="order-first flex flex-col gap-6 lg:hidden xl:order-last xl:flex *:[div]:w-full *:[div]:max-w-full">
-          <NotionPromptForm />
-          <ButtonGroupDemo />
-          <FieldCheckbox />
-          <div className="flex justify-between gap-4">
-            <ButtonGroupNested />
-            <ButtonGroupPopover />
-          </div>
-          <FieldHear />
-          <SpinnerEmpty />
-        </div>
+        <FieldHear />
+        <SpinnerEmpty />
       </div>
     </div>
   )
@@ -573,22 +568,22 @@ function ButtonGroupPopover() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="!pl-2">
-              <ChevronDownIcon />
+              <IconPlaceholder icon="ChevronDownIcon" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuGroup>
               <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
               <DropdownMenuItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder icon="VolumeOffIcon" />
                 Mute Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder icon="CheckIcon" />
                 Mark as Read
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder icon="UserRoundXIcon" />
                 Block User
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -596,22 +591,22 @@ function ButtonGroupPopover() {
             <DropdownMenuGroup>
               <DropdownMenuLabel>Conversation</DropdownMenuLabel>
               <DropdownMenuItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder icon="ShareIcon" />
                 Share Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder icon="CopyIcon" />
                 Copy Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder icon="AlertTriangleIcon" />
                 Report Conversation
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem variant="destructive">
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder icon="TrashIcon" />
                 Delete Conversation
               </DropdownMenuItem>
             </DropdownMenuGroup>

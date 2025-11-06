@@ -97,7 +97,7 @@ export const Canva = React.memo(function Canva({
     <div ref={containerRef} className="size-full">
       <InfiniteViewer
         ref={canvaRef}
-        className="bg-background text-foreground h-screen w-full"
+        className="bg-muted/50 h-screen w-full"
         margin={0}
         threshold={0}
         displayVerticalScroll={false}

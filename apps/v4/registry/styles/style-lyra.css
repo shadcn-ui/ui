@@ -1,23 +1,23 @@
 .style-lyra {
   --text-sm: 0.75rem;
 
-  .x-alert-dialog-content {
+  .cn-alert-dialog-content {
     @apply bg-background gap-2 border p-4;
   }
 
-  .x-alert-dialog-header {
+  .cn-alert-dialog-header {
     @apply gap-1;
   }
 
-  .x-alert-dialog-title {
+  .cn-alert-dialog-title {
     @apply text-sm font-medium;
   }
 
-  .x-alert-dialog-description {
+  .cn-alert-dialog-description {
     @apply text-muted-foreground text-sm;
   }
 
-  .x-button {
+  .cn-button {
     @apply border border-transparent text-sm [&_svg:not([class*='size-'])]:size-3.5;
 
     &[data-variant="default"] {
@@ -69,11 +69,11 @@
     }
   }
 
-  .x-input {
+  .cn-input {
     @apply border-input h-7 border px-2 text-base md:text-sm;
   }
 
-  .x-textarea {
+  .cn-textarea {
     @apply border-input border px-2 py-1.5 text-base md:text-sm;
   }
 }
@@ -90,71 +90,71 @@
     --primary-foreground: var(--color-neutral-900);
   }
 
-  .x-badge {
+  .cn-badge {
     @apply rounded-none! shadow-none!;
   }
 
-  .x-button {
+  .cn-button {
     @apply rounded-none!;
   }
 
-  .x-button[data-variant="outline"] {
+  .cn-button[data-variant="outline"] {
     @apply shadow-none!;
   }
 
-  .x-button[data-size="sm"] {
+  .cn-button[data-size="sm"] {
     @apply h-7!;
   }
 
-  .x-button[data-size="default"] {
+  .cn-button[data-size="default"] {
     @apply h-8;
   }
 
-  .x-button[data-size="lg"] {
+  .cn-button[data-size="lg"] {
     @apply h-9!;
   }
 
-  .x-button[data-size="icon-sm"] {
+  .cn-button[data-size="icon-sm"] {
     @apply size-7!;
   }
 
-  .x-button[data-size="icon-lg"] {
+  .cn-button[data-size="icon-lg"] {
     @apply size-9!;
   }
 
-  .x-button[data-size="icon"] {
+  .cn-button[data-size="icon"] {
     @apply size-8!;
   }
 
-  .x-checkbox {
+  .cn-checkbox {
     @apply rounded-none! shadow-none!;
   }
 
-  .x-input {
+  .cn-input {
     @apply border-input h-8 border px-2;
   }
 
-  .x-textarea {
+  .cn-textarea {
     @apply rounded-none! px-2! shadow-none!;
   }
 
-  .x-select-trigger {
+  .cn-select-trigger {
     @apply h-8! rounded-none! px-2! shadow-none! data-[size=sm]:h-7!;
   }
 
-  .x-input-group {
+  .cn-input-group {
     @apply h-8! rounded-none! shadow-none! has-[>[data-align=block-end]]:h-auto!;
   }
 
-  .x-item {
+  .cn-item {
     @apply rounded-none!;
   }
 
-  .x-item[data-size="sm"] {
+  .cn-item[data-size="sm"] {
     @apply gap-2! px-2! py-2!;
   }
 
-  .x-item[data-size="default"] {
+  .cn-item[data-size="default"] {
     @apply gap-2! p-2.5!;
   }
 } */
