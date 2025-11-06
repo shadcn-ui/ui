@@ -5,15 +5,15 @@ import {
   parseAsString,
   parseAsStringLiteral,
 } from "nuqs/server"
+import { iconLibraries, type IconLibrary } from "shadcn/icons"
 
 import { fonts, type Font } from "@/registry/fonts"
-import { iconLibraries, type IconLibrary } from "@/registry/icon-libraries"
 import { style, type Style } from "@/registry/styles"
 import { themes, type Theme } from "@/registry/themes"
 
 export const designSystemSearchParams = {
   item: parseAsString.withDefault("cover-example"),
-  iconLibrary: parseAsStringLiteral<IconLibrary>(
+  iconLibrary: parseAsStringLiteral<keyof IconLibrary>(
     Object.values(iconLibraries).map((i) => i.name)
   ).withDefault("lucide"),
   style: parseAsStringLiteral<Style["name"]>(

@@ -2,11 +2,11 @@
 
 import * as React from "react"
 import { useQueryStates } from "nuqs"
+import { iconLibraries } from "shadcn/icons"
 import { RegistryItem } from "shadcn/schema"
 
 import { cn } from "@/lib/utils"
 import { fonts, type Font } from "@/registry/fonts"
-import { iconLibraries } from "@/registry/icon-libraries"
 import { Field, FieldGroup, FieldLabel } from "@/registry/new-york-v4/ui/field"
 import {
   NativeSelect,

@@ -2,32 +2,12 @@ import * as React from "react"
 import { Suspense } from "react"
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
 import { SquareIcon } from "lucide-react"
-
-import { icons, type IconName } from "@/registry/icons"
-
-export const iconLibraries = {
-  lucide: {
-    name: "lucide",
-    title: "Lucide",
-    packages: ["lucide-react"],
-    import: "import { [ICON_NAME] } from 'lucide-react'",
-  },
-  tabler: {
-    name: "tabler",
-    title: "Tabler Icons",
-    packages: ["@tabler/icons-react"],
-    import: "import { [ICON_NAME] } from '@tabler/icons-react'",
-  },
-  hugeicons: {
-    name: "hugeicons",
-    title: "HugeIcons",
-    packages: ["@hugeicons/react", "@hugeicons/core-free-icons"],
-    import:
-      "import { HugeiconsIcon } from '@hugeicons/react'\nimport { [ICON_NAME] } from '@hugeicons/core-free-icons';",
-  },
-} as const
-
-export type IconLibrary = keyof typeof iconLibraries
+import {
+  IconLibraryName,
+  IconName,
+  icons,
+  type IconLibrary,
+} from "shadcn/icons"
 
 const getLucideIcon = React.cache(async (iconName: string) => {
   const iconModule = await import("lucide-react")
@@ -53,7 +33,7 @@ export function IconForIconLibrary({
   icon,
   className,
 }: {
-  iconLibrary: IconLibrary
+  iconLibrary: IconLibraryName
   icon: IconName
   className?: string
 }) {
@@ -91,7 +71,7 @@ function IconLoaderComponent({
   iconPromise,
   ...props
 }: {
-  iconLibrary: IconLibrary
+  iconLibrary: keyof IconLibrary
   iconPromise: IconPromise
   [key: string]: any
 }) {
