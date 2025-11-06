@@ -1,6 +1,6 @@
 [
   {
-    "name": "@HextaUI",
+    "name": "@hextaui",
     "homepage": "https://hextaui.com",
     "url": "https://hextaui.com/r/{name}.json",
     "description": "Ready-to-use foundation components/blocks built on top of shadcn/ui.",
