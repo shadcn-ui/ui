@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-picker-demo",
+  "type": "registry:example",
+  "dependencies": [
+    "date-fns"
+  ],
+  "registryDependencies": [
+    "button",
+    "time-picker",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/time-picker-demo.tsx",
+      "content": "\"use client\"\\n\\nimport * as React from \\\"react\\\"\\nimport { format } from \\\"date-fns\\\"\\nimport { Clock3Icon } from \\\"lucide-react\\\"\\n\\nimport { Button } from \\\"@/registry/new-york-v4/ui/button\\\"\\nimport { TimePicker } from \\\"@/registry/new-york-v4/ui/time-picker\\\"\\nimport {\\n  Popover,\\n  PopoverContent,\\n  PopoverTrigger,\\n} from \\\"@/registry/new-york-v4/ui/popover\\\"\\n\\nexport default function TimePickerDemo() {\\n  const [value, setValue] = React.useState<Date | undefined>()\\n\\n  return (\\n    <Popover>\\n      <PopoverTrigger asChild>\\n        <Button\\n          variant=\\\"outline\\\"\\n          className=\\\"w-[220px] justify-start font-normal\\\"\\n          data-empty={!value}\\n        >\\n          <Clock3Icon className=\\\"mr-2 size-4 opacity-50\\\" />\\n          {value ? format(value, \\\"h:mm a\\\") : <span>Pick a time</span>}\\n        </Button>\\n      </PopoverTrigger>\\n      <PopoverContent className=\\\"w-auto\\\" align=\\\"start\\\">\\n        <TimePicker value={value} onValueChange={setValue} />\\n      </PopoverContent>\\n    </Popover>\\n  )\\n}\\n",
+      "type": "registry:example"
+    }
+  ]
+}

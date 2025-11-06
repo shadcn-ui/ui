@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "time-picker-with-presets",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button",
+    "time-picker"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/time-picker-with-presets.tsx",
+      "content": "\"use client\"\\n\\nimport * as React from \\\"react\\\"\\n\\nimport { Button } from \\\"@/registry/new-york-v4/ui/button\\\"\\nimport { TimePicker } from \\\"@/registry/new-york-v4/ui/time-picker\\\"\\n\\nconst PRESETS = [\\n  { label: \\\"08:00\\\", hour: 8, minute: 0 },\\n  { label: \\\"09:30\\\", hour: 9, minute: 30 },\\n  { label: \\\"12:00\\\", hour: 12, minute: 0 },\\n  { label: \\\"14:30\\\", hour: 14, minute: 30 },\\n]\\n\\nexport default function TimePickerWithPresets() {\\n  const [value, setValue] = React.useState<Date>(() => {\\n    const base = new Date()\\n    base.setHours(9, 30, 0, 0)\\n    return base\\n  })\\n\\n  const applyPreset = React.useCallback((preset: (typeof PRESETS)[number]) => {\\n    setValue((previous) => {\\n      const next = previous ? new Date(previous) : new Date()\\n      next.setHours(preset.hour)\\n      next.setMinutes(preset.minute)\\n      next.setSeconds(0)\\n      next.setMilliseconds(0)\\n      return next\\n    })\\n  }, [])\\n\\n  return (\\n    <div className=\\\"flex flex-col gap-4\\\">\\n      <TimePicker\\n        value={value}\\n        onValueChange={setValue}\\n        hourCycle={24}\\n        minuteStep={15}\\n        hideLabels\\n      />\\n      <div className=\\\"flex flex-wrap gap-2\\\">\\n        {PRESETS.map((preset) => {\\n          const isActive =\\n            value.getHours() === preset.hour &&\\n            value.getMinutes() === preset.minute\\n\\n          return (\\n            <Button\\n              key={preset.label}\\n              size=\\\"sm\\\"\\n              variant={isActive ? \\\"default\\\" : \\\"outline\\\"}\\n              onClick={() => applyPreset(preset)}\\n              className=\\\"font-medium\\\"\\n            >\\n              {preset.label}\\n            </Button>\\n          )\\n        })}\\n      </div>\\n    </div>\\n  )\\n}\\n",
+      "type": "registry:example"
+    }
+  ]
+}

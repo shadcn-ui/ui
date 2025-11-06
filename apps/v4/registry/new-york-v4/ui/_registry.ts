@@ -623,6 +623,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "time-picker",
+    type: "registry:ui",
+    registryDependencies: ["select", "label"],
+    files: [
+      {
+        path: "ui/time-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "toast",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-toast"],

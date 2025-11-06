@@ -55,6 +55,7 @@ import { SwitchDemo } from "./components/switch-demo"
 import { TableDemo } from "./components/table-demo"
 import { TabsDemo } from "./components/tabs-demo"
 import { TextareaDemo } from "./components/textarea-demo"
+import { TimePickerDemo } from "./components/time-picker-demo"
 import { ToggleDemo } from "./components/toggle-demo"
 import { ToggleGroupDemo } from "./components/toggle-group-demo"
 import { TooltipDemo } from "./components/tooltip-demo"
@@ -184,6 +185,13 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: DatePickerDemo,
     type: "registry:ui",
     href: "/sink/date-picker",
+  },
+  "time-picker": {
+    name: "Time Picker",
+    component: TimePickerDemo,
+    type: "registry:ui",
+    href: "/sink/time-picker",
+    label: "New",
   },
   dialog: {
     name: "Dialog",
