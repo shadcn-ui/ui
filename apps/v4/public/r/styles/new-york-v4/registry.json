@@ -805,9 +805,9 @@
         "@dnd-kit/modifiers",
         "@dnd-kit/sortable",
         "@dnd-kit/utilities",
+        "@tabler/icons-react",
         "@tanstack/react-table",
-        "zod",
-        "@tabler/icons-react"
+        "zod"
       ],
       "registryDependencies": [
         "sidebar",
@@ -3961,6 +3961,7 @@
     {
       "name": "theme-stone",
       "type": "registry:theme",
+      "dependencies": [],
       "cssVars": {
         "light": {
           "background": "oklch(1 0 0)",
@@ -4034,6 +4035,7 @@
     {
       "name": "theme-zinc",
       "type": "registry:theme",
+      "dependencies": [],
       "cssVars": {
         "light": {
           "background": "oklch(1 0 0)",
@@ -4107,6 +4109,7 @@
     {
       "name": "theme-neutral",
       "type": "registry:theme",
+      "dependencies": [],
       "cssVars": {
         "light": {
           "background": "oklch(1 0 0)",
@@ -4180,6 +4183,7 @@
     {
       "name": "theme-gray",
       "type": "registry:theme",
+      "dependencies": [],
       "cssVars": {
         "light": {
           "background": "oklch(1 0 0)",
@@ -4253,6 +4257,7 @@
     {
       "name": "theme-slate",
       "type": "registry:theme",
+      "dependencies": [],
       "cssVars": {
         "light": {
           "background": "oklch(1 0 0)",

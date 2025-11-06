@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/radix/ui/spinner.tsx",
-      "content": "import { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/app/(design)/components/icon-placeholder\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <IconPlaceholder\n      name=\"SpinnerIcon\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Spinner }\n",
+      "content": "import { cn } from \"@/lib/utils\"\nimport { IconPlaceholder } from \"@/app/(app)/design/components/icon-placeholder\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <IconPlaceholder\n      icon=\"SpinnerIcon\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Spinner }\n",
       "type": "registry:ui"
     }
   ]
