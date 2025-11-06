@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useSyncExternalStore } from "react"
+import * as React from "react"
 import { useQueryStates } from "nuqs"
 
 import {
@@ -10,17 +10,14 @@ import {
 
 const MESSAGE_TYPE = "design-system-params"
 
-// Check if we're in an iframe.
 const isInIframe = () => {
   if (typeof window === "undefined") return false
   return window.self !== window.top
 }
 
-// Store for params in iframe context.
 const paramStore = new Map<string, any>()
 const paramListeners = new Map<string, Set<() => void>>()
 
-// Initialize store with URL params on client.
 if (typeof window !== "undefined") {
   const searchParams = new URLSearchParams(window.location.search)
   const iconLibrary = searchParams.get("iconLibrary") || "lucide"
@@ -36,11 +33,9 @@ if (typeof window !== "undefined") {
   paramStore.set("item", item)
 }
 
-// Listen for postMessage updates in iframe context.
 if (typeof window !== "undefined" && isInIframe()) {
   window.addEventListener("message", (event: MessageEvent) => {
     if (event.data.type === MESSAGE_TYPE && event.data.params) {
-      // Update store and notify listeners for each changed param.
       Object.keys(event.data.params).forEach((key) => {
         const newValue = event.data.params[key]
         const oldValue = paramStore.get(key)
@@ -48,7 +43,6 @@ if (typeof window !== "undefined" && isInIframe()) {
         if (newValue !== oldValue) {
           paramStore.set(key, newValue)
 
-          // Notify all listeners subscribed to this param.
           const listeners = paramListeners.get(key)
           if (listeners) {
             listeners.forEach((listener) => listener())
@@ -69,11 +63,9 @@ export function useDesignSystemSync() {
     shallow: false,
   })
 
-  // In iframe, subscribe to all params.
   const subscribe = (callback: () => void) => {
     if (!isInIframe()) return () => {}
 
-    // Subscribe to all param keys.
     const keys = Object.keys(designSystemSearchParams)
     keys.forEach((key) => {
       if (!paramListeners.has(key)) {
@@ -111,13 +103,9 @@ export function useDesignSystemSync() {
 
   const getServerSnapshot = () => urlParams
 
-  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  return React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
 
-/**
- * Hook to get a specific design system param.
- * Only re-renders when the subscribed param changes.
- */
 export function useDesignSystemParam<K extends keyof DesignSystemSearchParams>(
   key: K
 ) {
@@ -125,7 +113,6 @@ export function useDesignSystemParam<K extends keyof DesignSystemSearchParams>(
     shallow: false,
   })
 
-  // In iframe, subscribe only to this specific param.
   const subscribe = (callback: () => void) => {
     if (!isInIframe()) return () => {}
 
@@ -155,5 +142,5 @@ export function useDesignSystemParam<K extends keyof DesignSystemSearchParams>(
       .defaultValue as DesignSystemSearchParams[K]
   }
 
-  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  return React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }

@@ -7,10 +7,8 @@ import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl } from "@/lib/utils"
 import { COMPONENT_LIBRARIES } from "@/registry/component-libraries"
 import { Canva } from "@/app/(app)/design/components/canva"
-import { CommandMenuScript } from "@/app/(app)/design/components/command-menu"
-import { FontProvider } from "@/app/(app)/design/components/font-provider"
-import { StyleProvider } from "@/app/(app)/design/components/style-provider"
-import { ThemeProvider } from "@/app/(app)/design/components/theme-provider"
+import { DesignSystemProvider } from "@/app/(app)/design/components/design-system-provider"
+import { CommandMenuScript } from "@/app/(app)/design/components/item-browser"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -130,15 +128,11 @@ export default async function BlockPage({
   return (
     <>
       <CommandMenuScript />
-      <StyleProvider>
-        <ThemeProvider>
-          <FontProvider>
-            <Canva>
-              <Component />
-            </Canva>
-          </FontProvider>
-        </ThemeProvider>
-      </StyleProvider>
+      <DesignSystemProvider>
+        <Canva>
+          <Component />
+        </Canva>
+      </DesignSystemProvider>
     </>
   )
 }

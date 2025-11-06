@@ -8,7 +8,7 @@ import {
 import { iconLibraries, type IconLibrary } from "shadcn/icons"
 
 import { fonts, type Font } from "@/registry/fonts"
-import { style, type Style } from "@/registry/styles"
+import { styles, type Style } from "@/registry/styles"
 import { themes, type Theme } from "@/registry/themes"
 
 export const designSystemSearchParams = {
@@ -17,7 +17,7 @@ export const designSystemSearchParams = {
     Object.values(iconLibraries).map((i) => i.name)
   ).withDefault("lucide"),
   style: parseAsStringLiteral<Style["name"]>(
-    style.map((s) => s.name)
+    styles.map((s) => s.name)
   ).withDefault("default"),
   theme: parseAsStringLiteral<Theme["name"]>(
     themes.map((t) => t.name)

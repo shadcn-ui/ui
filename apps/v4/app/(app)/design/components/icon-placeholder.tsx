@@ -4,7 +4,7 @@ import * as React from "react"
 import type { IconLibraryName, IconName } from "shadcn/icons"
 
 import { IconForIconLibrary } from "@/app/(app)/design/components/icon-loader"
-import { useDesignSystemParam } from "@/app/(app)/design/hooks/use-design-system-sync"
+import { useDesignSystemParam } from "@/app/(app)/design/hooks/use-design-system"
 
 export function IconPlaceholder({
   icon,

@@ -1,4 +1,4 @@
-export const style = [
+export const styles = [
   {
     name: "default",
     title: "Default",
@@ -17,4 +17,4 @@ export const style = [
   },
 ] as const
 
-export type Style = (typeof style)[number]
+export type Style = (typeof styles)[number]

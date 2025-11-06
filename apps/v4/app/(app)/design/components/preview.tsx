@@ -3,8 +3,8 @@
 import * as React from "react"
 
 import type { ComponentLibrary } from "@/registry/component-libraries"
-import { CMD_P_FORWARD_TYPE } from "@/app/(app)/design/components/command-menu"
-import { useDesignSystemSync } from "@/app/(app)/design/hooks/use-design-system-sync"
+import { CMD_P_FORWARD_TYPE } from "@/app/(app)/design/components/item-browser"
+import { useDesignSystemSync } from "@/app/(app)/design/hooks/use-design-system"
 
 const MESSAGE_TYPE = "design-system-params"
 
