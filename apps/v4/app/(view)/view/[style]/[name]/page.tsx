@@ -6,7 +6,7 @@ import { notFound } from "next/navigation"
 import { siteConfig } from "@/lib/config"
 import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
 import { absoluteUrl } from "@/lib/utils"
-import { getStyle, STYLES, type Style } from "@/registry/legacy-styles"
+import { getStyle, STYLES, type Style } from "@/registry/_legacy-styles"
 
 import { ComponentPreview } from "./component-preview"
 

@@ -1,4 +1,4 @@
-import { baseColorsV4 } from "@/registry/legacy-base-colors"
+import { baseColorsV4 } from "@/registry/_legacy-base-colors"
 
 export const themes = Object.keys(baseColorsV4).map((color) => {
   return {

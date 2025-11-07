@@ -1,7 +1,7 @@
 import { getAllBlockIds } from "@/lib/blocks"
 import { registryCategories } from "@/lib/categories"
 import { BlockDisplay } from "@/components/block-display"
-import { getActiveStyle } from "@/registry/legacy-styles"
+import { getActiveStyle } from "@/registry/_legacy-styles"
 
 export const revalidate = false
 export const dynamic = "force-static"

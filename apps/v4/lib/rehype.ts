@@ -4,7 +4,7 @@ import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
 import { Index } from "@/registry/__index__"
-import { getActiveStyle } from "@/registry/legacy-styles"
+import { getActiveStyle } from "@/registry/_legacy-styles"
 
 interface UnistNode {
   type: string

@@ -6,7 +6,7 @@ import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { ChartToolbar } from "@/components/chart-toolbar"
-import { type Style } from "@/registry/legacy-styles"
+import { type Style } from "@/registry/_legacy-styles"
 
 export type Chart = z.infer<typeof registryItemSchema> & {
   highlightedCode: string

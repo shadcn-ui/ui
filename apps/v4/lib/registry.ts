@@ -6,7 +6,7 @@ import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
 import { Index } from "@/registry/__index__"
-import { type Style } from "@/registry/legacy-styles"
+import { type Style } from "@/registry/_legacy-styles"
 
 export function getRegistryComponent(name: string, styleName: Style["name"]) {
   return Index[styleName]?.[name]?.component

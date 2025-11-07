@@ -1,7 +1,7 @@
 import fs from "fs"
 
 import { Index } from "@/registry/__index__"
-import { type Style } from "@/registry/legacy-styles"
+import { type Style } from "@/registry/_legacy-styles"
 
 export function processMdxForLLMs(content: string, style: Style["name"]) {
   const componentPreviewRegex =

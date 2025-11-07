@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { BlockDisplay } from "@/components/block-display"
-import { getActiveStyle } from "@/registry/legacy-styles"
+import { getActiveStyle } from "@/registry/_legacy-styles"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 export const dynamic = "force-static"

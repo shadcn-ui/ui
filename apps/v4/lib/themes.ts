@@ -1,4 +1,4 @@
-import { baseColors } from "@/registry/legacy-base-colors"
+import { baseColors } from "@/registry/_legacy-base-colors"
 
 export const THEMES = baseColors
   .filter((theme) => !["slate", "stone", "gray", "zinc"].includes(theme.name))

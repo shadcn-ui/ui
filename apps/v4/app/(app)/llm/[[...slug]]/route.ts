@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server"
 
 import { processMdxForLLMs } from "@/lib/llm"
 import { source } from "@/lib/source"
-import { getActiveStyle } from "@/registry/legacy-styles"
+import { getActiveStyle } from "@/registry/_legacy-styles"
 
 export const revalidate = false
 

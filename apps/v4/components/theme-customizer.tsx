@@ -13,7 +13,7 @@ import {
   BaseColor,
   baseColors,
   baseColorsOKLCH,
-} from "@/registry/legacy-base-colors"
+} from "@/registry/_legacy-base-colors"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
