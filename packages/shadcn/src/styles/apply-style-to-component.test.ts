@@ -46,7 +46,6 @@ function Foo(props: React.ComponentProps<"div">) {
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
-      import { cn } from "@/lib/utils";
 
       function Foo(props: React.ComponentProps<"div">) {
         return <div className="bg-background gap-4 rounded-xl" {...props} />
