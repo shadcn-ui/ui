@@ -2,12 +2,17 @@
 
 import * as React from "react"
 import Script from "next/script"
-import { IconChevronRight } from "@tabler/icons-react"
+import { IconChevronDown } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
+import { Button } from "@/registry/new-york-v4/ui/button"
 import {
-  CustomizerItem,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/registry/new-york-v4/ui/popover"
+import {
   CustomizerPicker,
   CustomizerPickerGroup,
   CustomizerPickerItem,
@@ -16,14 +21,21 @@ import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export const CMD_P_FORWARD_TYPE = "cmd-p-forward"
 
-export function ItemPicker({ items }: { items: RegistryItem[] }) {
+export function ItemPicker({
+  items,
+}: {
+  items: Pick<RegistryItem, "name" | "title">[]
+}) {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     history: "push",
     shallow: true,
   })
 
-  const currentItem = React.useMemo(() => params.item, [params.item])
+  const currentItem = React.useMemo(
+    () => items.find((item) => item.name === params.item) ?? null,
+    [items, params.item]
+  )
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -46,36 +58,37 @@ export function ItemPicker({ items }: { items: RegistryItem[] }) {
   )
 
   return (
-    <CustomizerItem
-      title="Component"
-      description={
-        items.find((item) => item.name === currentItem)?.title ?? "Search"
-      }
-      icon={<IconChevronRight />}
-      open={open}
-      onOpenChange={setOpen}
-    >
-      <CustomizerPicker
-        currentValue={
-          items.find((item) => item.name === currentItem)?.title ?? null
-        }
-        open={open}
-        showSearch
-      >
-        <CustomizerPickerGroup className="pb-3.5">
-          {items.map((item) => (
-            <CustomizerPickerItem
-              key={item.name}
-              value={item.title ?? item.name}
-              onSelect={() => handleSelect(item.name)}
-              isActive={item.name === currentItem}
-            >
-              {item.title}
-            </CustomizerPickerItem>
-          ))}
-        </CustomizerPickerGroup>
-      </CustomizerPicker>
-    </CustomizerItem>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          size="sm"
+          variant="outline"
+          className="justify-between rounded-lg"
+        >
+          {currentItem?.title} <IconChevronDown />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="rounded-xl px-0" side="bottom" align="end">
+        <CustomizerPicker
+          currentValue={currentItem?.title ?? null}
+          open={open}
+          showSearch
+        >
+          <CustomizerPickerGroup className="pb-3.5">
+            {items.map((item) => (
+              <CustomizerPickerItem
+                key={item.name}
+                value={item.title ?? item.name}
+                onSelect={() => handleSelect(item.name)}
+                isActive={item.name === currentItem?.name}
+              >
+                {item.title}
+              </CustomizerPickerItem>
+            ))}
+          </CustomizerPickerGroup>
+        </CustomizerPicker>
+      </PopoverContent>
+    </Popover>
   )
 }
 

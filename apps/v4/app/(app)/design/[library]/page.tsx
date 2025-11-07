@@ -7,6 +7,7 @@ import { absoluteUrl } from "@/lib/utils"
 import { COMPONENT_LIBRARIES } from "@/registry/component-libraries"
 import { Customizer } from "@/app/(app)/design/components/customizer"
 import { Preview } from "@/app/(app)/design/components/preview"
+import { Toolbar } from "@/app/(app)/design/components/toolbar"
 import { getRegistryItemsForLibrary } from "@/app/(app)/design/lib/api"
 import {
   canvaSearchParamsCache,
@@ -85,12 +86,18 @@ export default async function NewPage({
     getRegistryItemsForLibrary(library.name),
   ])
 
-  const filteredItems = items.filter((item) => item !== null)
+  const filteredItems = items
+    .filter((item) => item !== null)
+    .map((item) => ({
+      name: item.name,
+      title: item.title,
+    }))
 
   return (
     <div data-slot="designer" className="bg-muted/50 flex flex-1 flex-col">
       <Preview library={library.name} />
-      <Customizer items={filteredItems} />
+      <Toolbar items={filteredItems} />
+      <Customizer />
     </div>
   )
 }

@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { RegistryItem } from "shadcn/schema"
 
 import { cn } from "@/lib/utils"
 import { fonts } from "@/registry/fonts"
@@ -9,7 +8,6 @@ import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
@@ -39,23 +37,15 @@ import { themes } from "@/registry/themes"
 import { BaseColorPicker } from "@/app/(app)/design/components/base-color-picker"
 import { FontPicker } from "@/app/(app)/design/components/font-picker"
 import { IconLibraryPicker } from "@/app/(app)/design/components/icon-library-picker"
-import { ItemPicker } from "@/app/(app)/design/components/item-picker"
 import { StylePicker } from "@/app/(app)/design/components/style-picker"
 import { ThemePicker } from "@/app/(app)/design/components/theme-picker"
 
-export function Customizer({ items }: { items: RegistryItem[] }) {
+export function Customizer() {
   return (
     <div className="fixed top-20 left-6 z-10 flex flex-col gap-4">
       <Card className="w-64 gap-0 rounded-xl border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-        <CardContent className="p-4">
-          <FieldGroup className="flex flex-col gap-4">
-            <ItemPicker items={items} />
-          </FieldGroup>
-        </CardContent>
-      </Card>
-      <Card className="w-64 gap-0 rounded-xl border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
         <CardHeader className="gap-0 border-b px-4 py-3.5!">
-          <CardTitle className="text-sm font-medium">Design</CardTitle>
+          <CardTitle className="text-sm font-medium">Customize</CardTitle>
         </CardHeader>
         <CardContent className="p-4">
           <FieldGroup className="flex flex-col gap-4">
