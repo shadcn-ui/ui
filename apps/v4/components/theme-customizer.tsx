@@ -9,7 +9,11 @@ import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
-import { BaseColor, baseColors, baseColorsOKLCH } from "@/registry/base-colors"
+import {
+  BaseColor,
+  baseColors,
+  baseColorsOKLCH,
+} from "@/registry/legacy-base-colors"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
