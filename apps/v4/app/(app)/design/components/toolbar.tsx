@@ -128,11 +128,13 @@ export function ToolbarPicker({
   value,
   currentValue,
   open,
+  hideSearchFilter = false,
 }: {
   children: React.ReactNode
   value?: string
   currentValue?: string | null
   open?: boolean
+  hideSearchFilter?: boolean
 }) {
   const [previousValue, setPreviousValue] = React.useState<string | null>(
     currentValue ?? null
@@ -156,18 +158,30 @@ export function ToolbarPicker({
 
   return (
     <Command value={commandValue}>
-      <div className="bg-popover *:data-[slot=command-input-wrapper]:bg-input/40 *:data-[slot=command-input-wrapper]:border-input px-4 pt-4.5 pb-2 *:data-[slot=command-input-wrapper]:rounded-md *:data-[slot=command-input-wrapper]:border">
-        <CommandInput placeholder="Search" />
-      </div>
+      {!hideSearchFilter && (
+        <div className="bg-popover *:data-[slot=command-input-wrapper]:bg-input/40 *:data-[slot=command-input-wrapper]:border-input px-4 pt-4.5 pb-2 *:data-[slot=command-input-wrapper]:rounded-md *:data-[slot=command-input-wrapper]:border">
+          <CommandInput placeholder="Search" />
+        </div>
+      )}
       <CommandList className="no-scrollbar scroll-pt-2 scroll-pb-1.5">
         <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
           No results found
         </CommandEmpty>
-        <CommandGroup className="px-4 *:[div]:flex *:[div]:flex-col">
-          {children}
-        </CommandGroup>
+        {children}
       </CommandList>
     </Command>
+  )
+}
+
+export function ToolbarPickerGroup({
+  className,
+  ...props
+}: React.ComponentProps<typeof CommandGroup>) {
+  return (
+    <CommandGroup
+      className={cn("px-4 *:[div]:flex *:[div]:flex-col", className)}
+      {...props}
+    />
   )
 }
 

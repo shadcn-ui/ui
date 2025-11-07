@@ -9,6 +9,7 @@ import { RegistryItem } from "shadcn/schema"
 import {
   ToolbarItem,
   ToolbarPicker,
+  ToolbarPickerGroup,
   ToolbarPickerItem,
 } from "@/app/(app)/design/components/toolbar"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
@@ -60,16 +61,18 @@ export function ItemPicker({ items }: { items: RegistryItem[] }) {
         }
         open={open}
       >
-        {items.map((item) => (
-          <ToolbarPickerItem
-            key={item.name}
-            value={item.title ?? item.name}
-            onSelect={() => handleSelect(item.name)}
-            isActive={item.name === currentItem}
-          >
-            {item.title}
-          </ToolbarPickerItem>
-        ))}
+        <ToolbarPickerGroup>
+          {items.map((item) => (
+            <ToolbarPickerItem
+              key={item.name}
+              value={item.title ?? item.name}
+              onSelect={() => handleSelect(item.name)}
+              isActive={item.name === currentItem}
+            >
+              {item.title}
+            </ToolbarPickerItem>
+          ))}
+        </ToolbarPickerGroup>
       </ToolbarPicker>
     </ToolbarItem>
   )

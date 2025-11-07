@@ -564,7 +564,8 @@ export function Component() {
       )
     ).rejects.toMatchObject({
       name: "InvalidConfigIconLibraryError",
-      message: 'Invalid icon library "invalid-library". Valid options are: lucide, tabler, hugeicons',
+      message:
+        'Invalid icon library "invalid-library". Valid options are: lucide, tabler, hugeicons',
       code: "INVALID_CONFIG",
     })
   })

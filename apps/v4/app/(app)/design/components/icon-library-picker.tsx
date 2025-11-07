@@ -13,6 +13,7 @@ import {
 import {
   ToolbarItem,
   ToolbarPicker,
+  ToolbarPickerGroup,
   ToolbarPickerItem,
 } from "@/app/(app)/design/components/toolbar"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
@@ -67,16 +68,18 @@ export function IconLibraryPicker() {
         currentValue={currentIconLibrary?.title ?? null}
         open={open}
       >
-        {Object.values(iconLibraries).map((iconLibrary) => (
-          <IconLibraryPickerItem
-            key={iconLibrary.name}
-            iconLibrary={iconLibrary}
-            onSelect={() => handleSelect(iconLibrary.name)}
-            isActive={iconLibrary.name === params.iconLibrary}
-          >
-            {iconLibrary.title}
-          </IconLibraryPickerItem>
-        ))}
+        <ToolbarPickerGroup>
+          {Object.values(iconLibraries).map((iconLibrary) => (
+            <IconLibraryPickerItem
+              key={iconLibrary.name}
+              iconLibrary={iconLibrary}
+              onSelect={() => handleSelect(iconLibrary.name)}
+              isActive={iconLibrary.name === params.iconLibrary}
+            >
+              {iconLibrary.title}
+            </IconLibraryPickerItem>
+          ))}
+        </ToolbarPickerGroup>
       </ToolbarPicker>
     </ToolbarItem>
   )

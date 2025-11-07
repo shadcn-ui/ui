@@ -329,12 +329,16 @@ export class InvalidConfigIconLibraryError extends RegistryError {
     public readonly iconLibrary: string,
     public readonly validOptions: string[]
   ) {
-    const message = `Invalid icon library "${iconLibrary}". Valid options are: ${validOptions.join(", ")}`
+    const message = `Invalid icon library "${iconLibrary}". Valid options are: ${validOptions.join(
+      ", "
+    )}`
 
     super(message, {
       code: RegistryErrorCode.INVALID_CONFIG,
       context: { iconLibrary, validOptions },
-      suggestion: `Update the "iconLibrary" field in your components.json to one of: ${validOptions.join(", ")}`,
+      suggestion: `Update the "iconLibrary" field in your components.json to one of: ${validOptions.join(
+        ", "
+      )}`,
     })
     this.name = "InvalidConfigIconLibraryError"
   }

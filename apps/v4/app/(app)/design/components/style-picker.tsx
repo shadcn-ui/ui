@@ -8,6 +8,7 @@ import { Style } from "@/registry/styles"
 import {
   ToolbarItem,
   ToolbarPicker,
+  ToolbarPickerGroup,
   ToolbarPickerItem,
 } from "@/app/(app)/design/components/toolbar"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
@@ -40,16 +41,18 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
         }
         open={open}
       >
-        {styles.map((style) => (
-          <ToolbarPickerItem
-            key={style.name}
-            value={style.title}
-            onSelect={() => handleSelect(style.name)}
-            isActive={style.name === params.style}
-          >
-            {style.title}
-          </ToolbarPickerItem>
-        ))}
+        <ToolbarPickerGroup>
+          {styles.map((style) => (
+            <ToolbarPickerItem
+              key={style.name}
+              value={style.title}
+              onSelect={() => handleSelect(style.name)}
+              isActive={style.name === params.style}
+            >
+              {style.title}
+            </ToolbarPickerItem>
+          ))}
+        </ToolbarPickerGroup>
       </ToolbarPicker>
     </ToolbarItem>
   )
