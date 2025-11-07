@@ -25,6 +25,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
   redirects() {
     return [
       {
@@ -70,6 +73,11 @@ const nextConfig = {
       {
         source: "/mcp",
         destination: "/docs/mcp",
+        permanent: false,
+      },
+      {
+        source: "/directory",
+        destination: "/docs/directory",
         permanent: false,
       },
     ]

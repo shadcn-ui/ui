@@ -1,6 +1,6 @@
 import { type Registry } from "shadcn/schema"
 
-import { baseColorsV4 } from "@/registry/registry-base-colors"
+import { baseColorsV4 } from "@/registry/base-colors"
 
 // Create a theme for each color in the base colors.
 export const themes: Registry["items"] = Object.keys(baseColorsV4).map(
