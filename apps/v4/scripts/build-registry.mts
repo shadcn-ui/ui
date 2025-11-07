@@ -5,7 +5,7 @@ import { rimraf } from "rimraf"
 import { registrySchema } from "shadcn/schema"
 
 import { getAllBlocks } from "@/lib/blocks"
-import { STYLES, type Style } from "@/registry/_legacy-styles"
+import { legacyStyles, type Style } from "@/registry/_legacy-styles"
 
 async function buildRegistryIndex(styles: Style[]) {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -197,7 +197,7 @@ async function buildBlocksIndex() {
 }
 
 try {
-  const styles = Array.from(STYLES)
+  const styles = Array.from(legacyStyles)
   console.log(
     `🎨 Found ${styles.length} styles: ${styles.map((s) => s.name).join(", ")}`
   )
