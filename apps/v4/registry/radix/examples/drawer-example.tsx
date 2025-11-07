@@ -60,10 +60,14 @@ const data = [
 
 export default function DrawerDemo() {
   return (
-    <div className="flex flex-wrap items-start gap-4">
-      <DrawerBottom />
-      <DrawerScrollableContent />
-      <DrawerDirections />
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+        <div className="flex flex-wrap items-start gap-4">
+          <DrawerBottom />
+          <DrawerScrollableContent />
+          <DrawerDirections />
+        </div>
+      </div>
     </div>
   )
 }

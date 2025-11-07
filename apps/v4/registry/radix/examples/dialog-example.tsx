@@ -14,10 +14,14 @@ import { Label } from "@/registry/radix/ui/label"
 
 export default function DialogDemo() {
   return (
-    <div className="flex flex-col items-start gap-4 md:flex-row">
-      <DialogWithForm />
-      <DialogScrollableContent />
-      <DialogWithStickyFooter />
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+        <div className="flex flex-col items-start gap-4 md:flex-row">
+          <DialogWithForm />
+          <DialogScrollableContent />
+          <DialogWithStickyFooter />
+        </div>
+      </div>
     </div>
   )
 }

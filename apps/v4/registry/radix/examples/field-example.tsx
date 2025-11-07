@@ -21,10 +21,14 @@ import { Textarea } from "@/registry/radix/ui/textarea"
 
 export default function FieldDemo() {
   return (
-    <div className="@container w-full">
-      <div className="bg-muted grid gap-4 p-4 @3xl:grid-cols-2 @5xl:grid-cols-3 @[120rem]:grid-cols-4 @[140rem]:grid-cols-5">
-        <div className="flex flex-col gap-6">
-          <BasicFields />
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+        <div className="@container w-full">
+          <div className="bg-muted grid gap-4 p-4 @3xl:grid-cols-2 @5xl:grid-cols-3 @[120rem]:grid-cols-4 @[140rem]:grid-cols-5">
+            <div className="flex flex-col gap-6">
+              <BasicFields />
+            </div>
+          </div>
         </div>
       </div>
     </div>

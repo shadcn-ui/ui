@@ -96,37 +96,41 @@ toast.promise(promise, {
 export default function SonnerDemo() {
   const [activeType, setActiveType] = React.useState(allTypes[0])
   return (
-    <div className="flex flex-wrap gap-4">
-      <Button onClick={() => toast("My first toast")} variant="outline">
-        Give me a toast
-      </Button>
-      <Button
-        variant="outline"
-        onClick={() =>
-          toast("Event has been created", {
-            description: "Sunday, December 03, 2023 at 9:00 AM",
-            action: {
-              label: "Undo",
-              onClick: () => console.log("Undo"),
-            },
-          })
-        }
-      >
-        Show Toast
-      </Button>
-      {allTypes.map((type) => (
-        <Button
-          variant="ghost"
-          data-active={activeType.name === type.name}
-          onClick={() => {
-            type.action()
-            setActiveType(type)
-          }}
-          key={type.name}
-        >
-          {type.name}
-        </Button>
-      ))}
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+        <div className="flex flex-wrap gap-4">
+          <Button onClick={() => toast("My first toast")} variant="outline">
+            Give me a toast
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() =>
+              toast("Event has been created", {
+                description: "Sunday, December 03, 2023 at 9:00 AM",
+                action: {
+                  label: "Undo",
+                  onClick: () => console.log("Undo"),
+                },
+              })
+            }
+          >
+            Show Toast
+          </Button>
+          {allTypes.map((type) => (
+            <Button
+              variant="ghost"
+              data-active={activeType.name === type.name}
+              onClick={() => {
+                type.action()
+                setActiveType(type)
+              }}
+              key={type.name}
+            >
+              {type.name}
+            </Button>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

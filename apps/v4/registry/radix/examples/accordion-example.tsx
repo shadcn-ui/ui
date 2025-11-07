@@ -7,11 +7,13 @@ import {
 
 export default function AccordionDemo() {
   return (
-    <div className="flex min-h-screen w-full items-start justify-center px-6 py-12">
-      <div className="flex w-full max-w-xl flex-col gap-12">
-        <AccordionExample1 />
-        <AccordionExample2 />
-        <AccordionExample3 />
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+        <div className="flex w-full max-w-xl flex-col gap-12">
+          <AccordionExample1 />
+          <AccordionExample2 />
+          <AccordionExample3 />
+        </div>
       </div>
     </div>
   )

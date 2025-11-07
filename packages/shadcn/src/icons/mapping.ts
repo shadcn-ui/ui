@@ -1,4 +1,4 @@
-import { type IconLibrary } from "./libaries"
+import { IconLibraryName } from "./libaries"
 
 export const icons = {
   PlaceholderIcon: {
@@ -183,7 +183,7 @@ export const icons = {
     tabler: "IconDots",
     hugeicons: "MoreHorizontalIcon",
   },
-} as const satisfies Record<string, Record<keyof IconLibrary, string>>
+} as const satisfies Record<string, Record<IconLibraryName, string>>
 
 export type Icon = typeof icons
 

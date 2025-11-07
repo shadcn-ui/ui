@@ -3,26 +3,30 @@ import { Skeleton } from "@/registry/radix/ui/skeleton"
 
 export default function SkeletonDemo() {
   return (
-    <div className="flex w-full flex-wrap items-start gap-4">
-      <div className="flex items-center gap-4">
-        <Skeleton className="size-10 shrink-0 rounded-full" />
-        <div className="grid gap-2">
-          <Skeleton className="h-4 w-[150px]" />
-          <Skeleton className="h-4 w-[100px]" />
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+        <div className="flex w-full flex-wrap items-start gap-4">
+          <div className="flex items-center gap-4">
+            <Skeleton className="size-10 shrink-0 rounded-full" />
+            <div className="grid gap-2">
+              <Skeleton className="h-4 w-[150px]" />
+              <Skeleton className="h-4 w-[100px]" />
+            </div>
+          </div>
+          <div className="flex w-full flex-wrap items-start gap-4">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <Card key={index} className="w-full @md:w-auto @md:min-w-sm">
+                <CardHeader>
+                  <Skeleton className="h-4 w-2/3" />
+                  <Skeleton className="h-4 w-1/2" />
+                </CardHeader>
+                <CardContent>
+                  <Skeleton className="aspect-square w-full" />
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="flex w-full flex-wrap items-start gap-4">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <Card key={index} className="w-full @md:w-auto @md:min-w-sm">
-            <CardHeader>
-              <Skeleton className="h-4 w-2/3" />
-              <Skeleton className="h-4 w-1/2" />
-            </CardHeader>
-            <CardContent>
-              <Skeleton className="aspect-square w-full" />
-            </CardContent>
-          </Card>
-        ))}
       </div>
     </div>
   )

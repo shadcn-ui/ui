@@ -69,6 +69,30 @@
     }
   }
 
+  .cn-card {
+    @apply border py-4;
+
+    .cn-card-header {
+      @apply gap-1 border-b px-4 pb-4;
+    }
+
+    .cn-card-content {
+      @apply px-4 pt-4;
+    }
+
+    .cn-card-title {
+      @apply text-sm font-medium;
+    }
+
+    .cn-card-description {
+      @apply text-muted-foreground text-xs;
+    }
+
+    .cn-card-footer {
+      @apply px-4 pt-4;
+    }
+  }
+
   .cn-input {
     @apply border-input h-7 border px-2 text-base md:text-sm;
   }

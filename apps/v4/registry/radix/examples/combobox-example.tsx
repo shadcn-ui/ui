@@ -108,14 +108,18 @@ type Timezone = (typeof timezones)[number]
 
 export default function ComboboxDemo() {
   return (
-    <div className="flex w-full flex-wrap items-start gap-4">
-      <FrameworkCombobox frameworks={[...frameworks]} />
-      <UserCombobox users={[...users]} selectedUserId={users[0].id} />
-      <TimezoneCombobox
-        timezones={[...timezones]}
-        selectedTimezone={timezones[0].timezones[0]}
-      />
-      <ComboboxWithCheckbox frameworks={[...frameworks]} />
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+        <div className="flex w-full flex-wrap items-start gap-4">
+          <FrameworkCombobox frameworks={[...frameworks]} />
+          <UserCombobox users={[...users]} selectedUserId={users[0].id} />
+          <TimezoneCombobox
+            timezones={[...timezones]}
+            selectedTimezone={timezones[0].timezones[0]}
+          />
+          <ComboboxWithCheckbox frameworks={[...frameworks]} />
+        </div>
+      </div>
     </div>
   )
 }

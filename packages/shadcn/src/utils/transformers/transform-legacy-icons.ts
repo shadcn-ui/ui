@@ -1,5 +1,5 @@
 import { getRegistryIcons } from "@/src/registry/api"
-import { ICON_LIBRARIES } from "@/src/utils/icon-libraries"
+import { LEGACY_ICON_LIBRARIES } from "@/src/utils/legacy-icon-libraries"
 import { Transformer } from "@/src/utils/transformers"
 import { SourceFile, SyntaxKind } from "ts-morph"
 
@@ -11,7 +11,7 @@ export const transformLegacyIcons: Transformer = async ({
   config,
 }) => {
   // No transform if we cannot read the icon library.
-  if (!config.iconLibrary || !(config.iconLibrary in ICON_LIBRARIES)) {
+  if (!config.iconLibrary || !(config.iconLibrary in LEGACY_ICON_LIBRARIES)) {
     return sourceFile
   }
 
@@ -27,7 +27,7 @@ export const transformLegacyIcons: Transformer = async ({
   for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
     if (
       importDeclaration.getModuleSpecifier()?.getText() !==
-      `"${ICON_LIBRARIES[SOURCE_LIBRARY].import}"`
+      `"${LEGACY_ICON_LIBRARIES[SOURCE_LIBRARY].import}"`
     ) {
       continue
     }
@@ -62,7 +62,9 @@ export const transformLegacyIcons: Transformer = async ({
   if (targetedIcons.length > 0) {
     const iconImportDeclaration = sourceFile.addImportDeclaration({
       moduleSpecifier:
-        ICON_LIBRARIES[targetLibrary as keyof typeof ICON_LIBRARIES]?.import,
+        LEGACY_ICON_LIBRARIES[
+          targetLibrary as keyof typeof LEGACY_ICON_LIBRARIES
+        ]?.import,
       namedImports: targetedIcons.map((icon) => ({
         name: icon,
       })),

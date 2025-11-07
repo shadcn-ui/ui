@@ -1,4 +1,4 @@
-export const ICON_LIBRARIES = {
+export const LEGACY_ICON_LIBRARIES = {
   lucide: {
     name: "lucide-react",
     package: "lucide-react",

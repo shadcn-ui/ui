@@ -19,8 +19,8 @@ import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 export default function SpinnerDemo() {
   return (
-    <div className="flex min-h-screen w-full items-center justify-center p-6">
-      <div className="flex w-full flex-col gap-12">
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background flex w-full max-w-[1500px] flex-col gap-12 rounded-xl p-8">
         <div className="flex items-center gap-6">
           <Spinner />
           <Spinner className="size-8" />
@@ -76,7 +76,7 @@ export default function SpinnerDemo() {
             </InputGroup>
           </Field>
         </div>
-        <Empty className="bg-muted min-h-[20svh] rounded-lg">
+        <Empty className="bg-muted min-h-[50svh] rounded-lg">
           <EmptyHeader>
             <EmptyMedia variant="icon">
               <Spinner />
@@ -96,7 +96,7 @@ export default function SpinnerDemo() {
             </div>
             <Button variant="link" asChild className="text-muted-foreground">
               <a href="#">
-                Learn more <IconPlaceholder icon="PlaceholderIcon" />
+                Learn more <IconPlaceholder icon="ArrowRightIcon" />
               </a>
             </Button>
           </EmptyContent>

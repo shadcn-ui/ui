@@ -2,12 +2,9 @@ import * as React from "react"
 import { Suspense } from "react"
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
 import { SquareIcon } from "lucide-react"
-import {
-  IconLibraryName,
-  IconName,
-  icons,
-  type IconLibrary,
-} from "shadcn/icons"
+import { IconLibraryName, IconName, icons } from "shadcn/icons"
+
+import { cn } from "@/lib/utils"
 
 const getLucideIcon = React.cache(async (iconName: string) => {
   const iconModule = await import("lucide-react")
@@ -24,10 +21,13 @@ const getHugeiconsIcon = React.cache(async (iconName: string) => {
   return iconModule[iconName as keyof typeof iconModule]
 })
 
+const resolvedIconCache = new Map<string, any>()
+
 type IconPromise =
   | ReturnType<typeof getLucideIcon>
   | ReturnType<typeof getTablerIcon>
   | ReturnType<typeof getHugeiconsIcon>
+
 export function IconForIconLibrary({
   iconLibrary,
   icon,
@@ -40,6 +40,22 @@ export function IconForIconLibrary({
   const iconName = icons[icon]?.[iconLibrary]
   if (!iconName) {
     return null
+  }
+
+  const cacheKey = `${iconLibrary}:${iconName}`
+  const cachedComponent = resolvedIconCache.get(cacheKey)
+
+  if (cachedComponent) {
+    if (iconLibrary === "hugeicons") {
+      return (
+        <HugeiconsIcon
+          icon={cachedComponent as unknown as IconSvgElement}
+          strokeWidth={2}
+          className={className}
+        />
+      )
+    }
+    return React.createElement(cachedComponent, { className })
   }
 
   const iconPromise =
@@ -56,10 +72,11 @@ export function IconForIconLibrary({
   }
 
   return (
-    <Suspense fallback={<SquareIcon className="opacity-0" />}>
+    <Suspense fallback={<SquareIcon className={cn("opacity-0", className)} />}>
       <IconLoaderComponent
         iconLibrary={iconLibrary}
         iconPromise={iconPromise}
+        cacheKey={cacheKey}
         className={className}
       />
     </Suspense>
@@ -69,11 +86,13 @@ export function IconForIconLibrary({
 function IconLoaderComponent({
   iconLibrary,
   iconPromise,
-  ...props
+  cacheKey,
+  className,
 }: {
-  iconLibrary: keyof IconLibrary
+  iconLibrary: IconLibraryName
   iconPromise: IconPromise
-  [key: string]: any
+  cacheKey: string
+  className?: string
 }) {
   const IconComponent = React.use(
     iconPromise as React.Usable<Awaited<IconPromise>>
@@ -83,18 +102,21 @@ function IconLoaderComponent({
     return null
   }
 
+  // Cache the resolved component for future renders.
+  resolvedIconCache.set(cacheKey, IconComponent)
+
   if (iconLibrary === "hugeicons") {
     return (
       <HugeiconsIcon
         icon={IconComponent as IconSvgElement}
         strokeWidth={2}
-        {...props}
+        className={className}
       />
     )
   }
 
   return React.createElement(
     IconComponent as unknown as React.ComponentType<any>,
-    props
+    { className }
   )
 }

@@ -13,11 +13,15 @@ import { Label } from "@/registry/radix/ui/label"
 
 export default function InputOTPDemo() {
   return (
-    <div className="flex flex-col flex-wrap gap-6 md:flex-row">
-      <InputOTPSimple />
-      <InputOTPPattern />
-      <InputOTPWithSeparator />
-      <InputOTPWithSpacing />
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+        <div className="flex flex-col flex-wrap gap-6 md:flex-row">
+          <InputOTPSimple />
+          <InputOTPPattern />
+          <InputOTPWithSeparator />
+          <InputOTPWithSpacing />
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,16 +1,27 @@
 "use client"
 
 import * as React from "react"
+import { IconCheck, IconHelpCircle } from "@tabler/icons-react"
 import { RegistryItem } from "shadcn/schema"
 
+import { cn } from "@/lib/utils"
 import { fonts } from "@/registry/fonts"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Card,
   CardContent,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/registry/new-york-v4/ui/command"
 import { FieldGroup } from "@/registry/new-york-v4/ui/field"
 import {
   Item,
@@ -34,22 +45,25 @@ import { ThemePicker } from "@/app/(app)/design/components/theme-picker"
 
 export function Toolbar({ items }: { items: RegistryItem[] }) {
   return (
-    <>
-      <Card className="fixed top-20 left-6 z-10 w-64 gap-0 rounded-[12px] border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-        <CardHeader className="gap-0 border-b px-4 py-3.5!">
-          <CardTitle className="text-sm font-medium">Design</CardTitle>
-        </CardHeader>
-        <CardContent className="p-4">
-          <FieldGroup className="flex flex-col gap-4">
-            <ItemPicker items={items} />
-            <StylePicker styles={styles} />
-            <ThemePicker themes={themes} />
-            <IconLibraryPicker />
-            <FontPicker fonts={fonts} />
-          </FieldGroup>
-        </CardContent>
-      </Card>
-    </>
+    <Card className="fixed top-20 left-6 z-10 w-64 gap-0 rounded-[12px] border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+      <CardHeader className="gap-0 border-b px-4 py-3.5!">
+        <CardTitle className="text-sm font-medium">Design</CardTitle>
+      </CardHeader>
+      <CardContent className="p-4">
+        <FieldGroup className="flex flex-col gap-4">
+          <ItemPicker items={items} />
+          <StylePicker styles={styles} />
+          <ThemePicker themes={themes} />
+          <IconLibraryPicker />
+          <FontPicker fonts={fonts} />
+        </FieldGroup>
+      </CardContent>
+      <CardFooter className="border-t px-4 py-3.5!">
+        <Button size="sm" className="w-full">
+          Install
+        </Button>
+      </CardFooter>
+    </Card>
   )
 }
 
@@ -74,28 +88,30 @@ export function ToolbarItem({
             variant="outline"
             className="data-[state=open]:bg-accent/50 flex h-auto flex-col items-start justify-start p-0 shadow-none"
           >
-            <Item size="sm" className="w-full px-3 py-2.5">
+            <Item size="sm" className="w-full px-2.5 py-2">
               <ItemContent className="items-start gap-0.5">
                 <ItemTitle className="text-xs font-medium">{title}</ItemTitle>
                 {description && (
                   <ItemDescription>{description}</ItemDescription>
                 )}
               </ItemContent>
-              <ItemActions className="justify-end">{icon}</ItemActions>
+              <ItemActions className="text-muted-foreground justify-end">
+                {icon}
+              </ItemActions>
             </Item>
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="rounded-[12px] px-4 py-0 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+          className="rounded-[12px] p-0 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
           side="right"
           align="start"
           sideOffset={24}
           onCloseAutoFocus={(e) => e.preventDefault()}
         >
-          <div className="-mx-4 border-b px-4 py-3.5">
+          <div className="border-b px-4 py-3.5">
             <div className="text-sm font-medium">{title}</div>
           </div>
-          <div>{children}</div>
+          {children}
         </PopoverContent>
       </Popover>
       <div
@@ -104,5 +120,78 @@ export function ToolbarItem({
         onClick={() => onOpenChange?.(false)}
       />
     </>
+  )
+}
+
+export function ToolbarPicker({
+  children,
+  value,
+  currentValue,
+  open,
+}: {
+  children: React.ReactNode
+  value?: string
+  currentValue?: string | null
+  open?: boolean
+}) {
+  const [previousValue, setPreviousValue] = React.useState<string | null>(
+    currentValue ?? null
+  )
+
+  React.useEffect(() => {
+    if (currentValue) {
+      setPreviousValue(currentValue)
+    }
+  }, [currentValue])
+
+  const commandValue = React.useMemo(() => {
+    if (value !== undefined) {
+      return value
+    }
+    if (open && previousValue) {
+      return previousValue
+    }
+    return undefined
+  }, [value, open, previousValue])
+
+  return (
+    <Command value={commandValue}>
+      <div className="bg-popover *:data-[slot=command-input-wrapper]:bg-input/40 *:data-[slot=command-input-wrapper]:border-input px-4 pt-4.5 pb-2 *:data-[slot=command-input-wrapper]:rounded-md *:data-[slot=command-input-wrapper]:border">
+        <CommandInput placeholder="Search" />
+      </div>
+      <CommandList className="no-scrollbar scroll-pt-2 scroll-pb-1.5">
+        <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
+          No results found
+        </CommandEmpty>
+        <CommandGroup className="px-4 *:[div]:flex *:[div]:flex-col">
+          {children}
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  )
+}
+
+export function ToolbarPickerItem({
+  isActive,
+  className,
+  children,
+  ...props
+}: {
+  isActive: boolean
+  className?: string
+  children: React.ReactNode
+} & React.ComponentProps<typeof CommandItem>) {
+  return (
+    <CommandItem
+      data-active={isActive}
+      className={cn(
+        "group/command-item data-[selected=true]:bg-accent/50 data-[selected=true]:text-accent-foreground ring-border px-2 py-1.5 data-[selected=true]:ring-1",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <IconCheck className="ml-auto size-4 opacity-0 transition-opacity group-data-[active=true]/command-item:opacity-100" />
+    </CommandItem>
   )
 }

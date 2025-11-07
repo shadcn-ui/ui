@@ -98,7 +98,7 @@ export const Canva = React.memo(function Canva({
       <div className="absolute inset-x-0 top-0 z-40 h-8 bg-gradient-to-b from-white to-transparent dark:hidden" />
       <InfiniteViewer
         ref={canvaRef}
-        className="bg-muted/50 h-screen w-full"
+        className="bg-muted h-screen w-full"
         margin={0}
         threshold={0}
         displayVerticalScroll={false}

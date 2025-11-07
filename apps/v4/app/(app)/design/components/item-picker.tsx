@@ -2,19 +2,15 @@
 
 import * as React from "react"
 import Script from "next/script"
-import { IconCheck, IconChevronRight } from "@tabler/icons-react"
+import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/registry/new-york-v4/ui/command"
-import { ToolbarItem } from "@/app/(app)/design/components/toolbar"
+  ToolbarItem,
+  ToolbarPicker,
+  ToolbarPickerItem,
+} from "@/app/(app)/design/components/toolbar"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export const CMD_P_FORWARD_TYPE = "cmd-p-forward"
@@ -26,24 +22,7 @@ export function ItemPicker({ items }: { items: RegistryItem[] }) {
     shallow: true,
   })
 
-  const currentItem = params.item
-  const [previousItem, setPreviousItem] = React.useState<string | null>(
-    currentItem ?? null
-  )
-
-  React.useEffect(() => {
-    if (currentItem) {
-      setPreviousItem(currentItem)
-    }
-  }, [currentItem])
-
-  const previousItemTitle = React.useMemo(() => {
-    if (!previousItem) {
-      return null
-    }
-    const item = items.find((item) => item.name === previousItem)
-    return item?.title ?? null
-  }, [items, previousItem])
+  const currentItem = React.useMemo(() => params.item, [params.item])
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -69,40 +48,29 @@ export function ItemPicker({ items }: { items: RegistryItem[] }) {
     <ToolbarItem
       title="Component"
       description={
-        items.find((item) => item.name === currentItem)?.title ??
-        "Search items..."
+        items.find((item) => item.name === currentItem)?.title ?? "Search"
       }
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
     >
-      <Command
-        value={open && previousItemTitle ? previousItemTitle : undefined}
-        className="**:data-[slot=command-input-wrapper]:bg-input/40 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-8 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-8 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border"
+      <ToolbarPicker
+        currentValue={
+          items.find((item) => item.name === currentItem)?.title ?? null
+        }
+        open={open}
       >
-        <div className="border-popover border-b-4">
-          <CommandInput placeholder="Search" />
-        </div>
-        <CommandList className="no-scrollbar min-h-96 scroll-pt-2 scroll-pb-1.5">
-          <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
-            No results found
-          </CommandEmpty>
-          <CommandGroup className="px-0">
-            {items.map((item) => (
-              <CommandItem
-                key={item.name}
-                value={item.title}
-                onSelect={() => handleSelect(item.name)}
-                data-active={item.name === currentItem}
-                className="group/command-item"
-              >
-                {item.title}
-                <IconCheck className="ml-auto size-4 opacity-0 transition-opacity group-data-[active=true]/command-item:opacity-100" />
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </CommandList>
-      </Command>
+        {items.map((item) => (
+          <ToolbarPickerItem
+            key={item.name}
+            value={item.title ?? item.name}
+            onSelect={() => handleSelect(item.name)}
+            isActive={item.name === currentItem}
+          >
+            {item.title}
+          </ToolbarPickerItem>
+        ))}
+      </ToolbarPicker>
     </ToolbarItem>
   )
 }

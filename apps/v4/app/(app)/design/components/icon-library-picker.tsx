@@ -1,20 +1,40 @@
 "use client"
 
 import * as React from "react"
-import { IconCheck, IconChevronRight } from "@tabler/icons-react"
+import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
-import { iconLibraries, type IconLibrary } from "shadcn/icons"
+import {
+  iconLibraries,
+  IconLibraryName,
+  IconName,
+  type IconLibrary,
+} from "shadcn/icons"
 
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/registry/new-york-v4/ui/command"
-import { ToolbarItem } from "@/app/(app)/design/components/toolbar"
+  ToolbarItem,
+  ToolbarPicker,
+  ToolbarPickerItem,
+} from "@/app/(app)/design/components/toolbar"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
+
+import { IconForIconLibrary } from "./icon-loader"
+
+const PREVIEW_ICONS = [
+  "ArrowDownIcon",
+  "ArrowUpIcon",
+  "ArrowRightIcon",
+  "ArrowLeftIcon",
+  "CheckIcon",
+  "ChevronDownIcon",
+  "ChevronRightIcon",
+  "AlertCircleIcon",
+  "CopyIcon",
+  "TrashIcon",
+  "ShareIcon",
+  "ShoppingBagIcon",
+  "MoreHorizontalIcon",
+  "SpinnerIcon",
+] as const
 
 export function IconLibraryPicker() {
   const [open, setOpen] = React.useState(false)
@@ -22,55 +42,84 @@ export function IconLibraryPicker() {
     shallow: false,
   })
 
-  const iconLibraryValues = React.useMemo(
-    () => Object.values(iconLibraries),
-    []
-  )
-
   const handleSelect = React.useCallback(
-    (iconLibraryName: keyof IconLibrary) => {
-      setParams({ iconLibrary: iconLibraryName })
+    (iconLibrary: IconLibraryName) => {
+      setParams({ iconLibrary })
       setOpen(false)
     },
     [setParams]
   )
 
+  const currentIconLibrary = React.useMemo(
+    () => iconLibraries[params.iconLibrary],
+    [params.iconLibrary]
+  )
+
   return (
     <ToolbarItem
       title="Icon Library"
-      description={
-        iconLibraryValues.find((lib) => lib.name === params.iconLibrary)?.title
-      }
+      description={currentIconLibrary?.title ?? null}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
     >
-      <Command className="**:data-[slot=command-input-wrapper]:bg-input/40 **:data-[slot=command-input-wrapper]:border-input rounded-none bg-transparent **:data-[slot=command-input]:!h-8 **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:!h-8 **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border">
-        <div className="border-popover border-b-4">
-          <CommandInput placeholder="Search" />
-        </div>
-        <CommandList className="no-scrollbar min-h-96 scroll-pt-2 scroll-pb-1.5">
-          <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
-            No results found
-          </CommandEmpty>
-          <CommandGroup className="px-0">
-            {iconLibraryValues.map((iconLibrary) => (
-              <CommandItem
-                key={iconLibrary.name}
-                value={iconLibrary.title}
-                onSelect={() =>
-                  handleSelect(iconLibrary.name as keyof IconLibrary)
-                }
-                data-active={iconLibrary.name === params.iconLibrary}
-                className="group/command-item data-[active=true]:border-primary ring-primary border"
-              >
-                {iconLibrary.title}
-                <IconCheck className="ml-auto size-4 opacity-0 transition-opacity group-data-[active=true]/command-item:opacity-100" />
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </CommandList>
-      </Command>
+      <ToolbarPicker
+        currentValue={currentIconLibrary?.title ?? null}
+        open={open}
+      >
+        {Object.values(iconLibraries).map((iconLibrary) => (
+          <IconLibraryPickerItem
+            key={iconLibrary.name}
+            iconLibrary={iconLibrary}
+            onSelect={() => handleSelect(iconLibrary.name)}
+            isActive={iconLibrary.name === params.iconLibrary}
+          >
+            {iconLibrary.title}
+          </IconLibraryPickerItem>
+        ))}
+      </ToolbarPicker>
     </ToolbarItem>
   )
 }
+
+function IconLibraryPickerItem({
+  iconLibrary,
+  ...props
+}: React.ComponentProps<typeof ToolbarPickerItem> & {
+  iconLibrary: IconLibrary
+}) {
+  return (
+    <ToolbarPickerItem
+      key={iconLibrary.name}
+      value={iconLibrary.title}
+      className="ring-border mb-2 ring-1"
+      {...props}
+    >
+      <div className="flex w-full flex-col gap-1 p-1">
+        <span className="text-muted-foreground text-xs font-medium">
+          {iconLibrary.title}
+        </span>
+        <IconLibraryPreview iconLibrary={iconLibrary.name} />
+      </div>
+    </ToolbarPickerItem>
+  )
+}
+
+const IconLibraryPreview = React.cache(function IconLibraryPreview({
+  iconLibrary,
+}: {
+  iconLibrary: IconLibraryName
+}) {
+  return (
+    <div className="grid w-full grid-cols-7 gap-2">
+      {PREVIEW_ICONS.map((iconName) => (
+        <div
+          key={iconName}
+          className="flex size-6 items-center justify-center *:[svg]:size-5"
+        >
+          <IconForIconLibrary iconLibrary={iconLibrary} icon={iconName} />
+        </div>
+      ))}
+    </div>
+  )
+})

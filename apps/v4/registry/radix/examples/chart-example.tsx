@@ -243,11 +243,15 @@ function ChartLineExample() {
 
 export default function ChartExample() {
   return (
-    <div className="grid w-full max-w-screen-2xl gap-4 *:data-[slot=card]:flex-1 @2xl:grid-cols-2 @6xl:grid-cols-3">
-      <ChartAreaExample />
-      <ChartBarExample />
-      <div className="@6xl:hidden">
-        <ChartLineExample />
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+        <div className="grid w-full max-w-screen-2xl gap-4 *:data-[slot=card]:flex-1 @2xl:grid-cols-2 @6xl:grid-cols-3">
+          <ChartAreaExample />
+          <ChartBarExample />
+          <div className="@6xl:hidden">
+            <ChartLineExample />
+          </div>
+        </div>
       </div>
     </div>
   )

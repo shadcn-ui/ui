@@ -67,6 +67,30 @@
     }
   }
 
+  .cn-card {
+    @apply gap-6 rounded-xl border py-6 shadow-sm;
+
+    .cn-card-header {
+      @apply gap-2 px-6 [.border-b]:pb-6;
+    }
+
+    .cn-card-title {
+      @apply leading-none font-semibold;
+    }
+
+    .cn-card-description {
+      @apply text-muted-foreground text-sm;
+    }
+
+    .cn-card-content {
+      @apply px-6;
+    }
+
+    .cn-card-footer {
+      @apply px-6 [.border-t]:pt-6;
+    }
+  }
+
   .cn-input {
     @apply dark:bg-input/30 border-input h-9 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] file:h-7 file:text-sm file:font-medium md:text-sm;
   }

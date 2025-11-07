@@ -48,7 +48,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/registry/radix/ui/avatar"
 import { Badge } from "@/registry/radix/ui/badge"
 import { Button } from "@/registry/radix/ui/button"
 import { ButtonGroup } from "@/registry/radix/ui/button-group"
-import { Card, CardContent } from "@/registry/radix/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/radix/ui/card"
 import { Checkbox } from "@/registry/radix/ui/checkbox"
 import {
   Command,
@@ -243,7 +249,7 @@ const options = [
 export default function CoverExample() {
   return (
     <div className="flex h-full items-center justify-center">
-      <div className="bg-background grid w-full max-w-[1500px] grid-cols-4 gap-8 rounded-[12px] p-8">
+      <div className="bg-background grid w-full max-w-[1500px] grid-cols-4 gap-8 rounded-xl p-8">
         <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
           <FieldDemo />
         </div>
@@ -746,134 +752,138 @@ function FieldCheckbox() {
 
 function FieldDemo() {
   return (
-    <div className="w-full max-w-md rounded-lg border p-6">
-      <form>
-        <FieldGroup>
-          <FieldSet>
-            <FieldLegend>Payment Method</FieldLegend>
-            <FieldDescription>
-              All transactions are secure and encrypted
-            </FieldDescription>
-            <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="checkout-7j9-card-name-43j">
-                  Name on Card
-                </FieldLabel>
-                <Input
-                  id="checkout-7j9-card-name-43j"
-                  placeholder="John Doe"
-                  required
-                />
-              </Field>
-              <div className="grid grid-cols-3 gap-4">
-                <Field className="col-span-2">
-                  <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
-                    Card Number
+    <Card className="w-full max-w-md">
+      <CardHeader>
+        <CardTitle>Payment Method</CardTitle>
+        <CardDescription>
+          All transactions are secure and encrypted
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form>
+          <FieldGroup>
+            <FieldSet>
+              <FieldGroup>
+                <Field>
+                  <FieldLabel htmlFor="checkout-7j9-card-name-43j">
+                    Name on Card
                   </FieldLabel>
                   <Input
-                    id="checkout-7j9-card-number-uw1"
-                    placeholder="1234 5678 9012 3456"
+                    id="checkout-7j9-card-name-43j"
+                    placeholder="John Doe"
                     required
                   />
-                  <FieldDescription>
-                    Enter your 16-digit number.
-                  </FieldDescription>
                 </Field>
-                <Field className="col-span-1">
-                  <FieldLabel htmlFor="checkout-7j9-cvv">CVV</FieldLabel>
-                  <Input id="checkout-7j9-cvv" placeholder="123" required />
-                </Field>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <Field>
-                  <FieldLabel htmlFor="checkout-7j9-exp-month-ts6">
-                    Month
+                <div className="grid grid-cols-3 gap-4">
+                  <Field className="col-span-2">
+                    <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
+                      Card Number
+                    </FieldLabel>
+                    <Input
+                      id="checkout-7j9-card-number-uw1"
+                      placeholder="1234 5678 9012 3456"
+                      required
+                    />
+                    <FieldDescription>
+                      Enter your 16-digit number.
+                    </FieldDescription>
+                  </Field>
+                  <Field className="col-span-1">
+                    <FieldLabel htmlFor="checkout-7j9-cvv">CVV</FieldLabel>
+                    <Input id="checkout-7j9-cvv" placeholder="123" required />
+                  </Field>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <Field>
+                    <FieldLabel htmlFor="checkout-7j9-exp-month-ts6">
+                      Month
+                    </FieldLabel>
+                    <Select defaultValue="">
+                      <SelectTrigger id="checkout-7j9-exp-month-ts6">
+                        <SelectValue placeholder="MM" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="01">01</SelectItem>
+                        <SelectItem value="02">02</SelectItem>
+                        <SelectItem value="03">03</SelectItem>
+                        <SelectItem value="04">04</SelectItem>
+                        <SelectItem value="05">05</SelectItem>
+                        <SelectItem value="06">06</SelectItem>
+                        <SelectItem value="07">07</SelectItem>
+                        <SelectItem value="08">08</SelectItem>
+                        <SelectItem value="09">09</SelectItem>
+                        <SelectItem value="10">10</SelectItem>
+                        <SelectItem value="11">11</SelectItem>
+                        <SelectItem value="12">12</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </Field>
+                  <Field>
+                    <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
+                      Year
+                    </FieldLabel>
+                    <Select defaultValue="">
+                      <SelectTrigger id="checkout-7j9-exp-year-f59">
+                        <SelectValue placeholder="YYYY" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="2024">2024</SelectItem>
+                        <SelectItem value="2025">2025</SelectItem>
+                        <SelectItem value="2026">2026</SelectItem>
+                        <SelectItem value="2027">2027</SelectItem>
+                        <SelectItem value="2028">2028</SelectItem>
+                        <SelectItem value="2029">2029</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </Field>
+                </div>
+              </FieldGroup>
+            </FieldSet>
+            <FieldSeparator />
+            <FieldSet>
+              <FieldLegend>Billing Address</FieldLegend>
+              <FieldDescription>
+                The billing address associated with your payment method
+              </FieldDescription>
+              <FieldGroup>
+                <Field orientation="horizontal">
+                  <Checkbox
+                    id="checkout-7j9-same-as-shipping-wgm"
+                    defaultChecked
+                  />
+                  <FieldLabel
+                    htmlFor="checkout-7j9-same-as-shipping-wgm"
+                    className="font-normal"
+                  >
+                    Same as shipping address
                   </FieldLabel>
-                  <Select defaultValue="">
-                    <SelectTrigger id="checkout-7j9-exp-month-ts6">
-                      <SelectValue placeholder="MM" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="01">01</SelectItem>
-                      <SelectItem value="02">02</SelectItem>
-                      <SelectItem value="03">03</SelectItem>
-                      <SelectItem value="04">04</SelectItem>
-                      <SelectItem value="05">05</SelectItem>
-                      <SelectItem value="06">06</SelectItem>
-                      <SelectItem value="07">07</SelectItem>
-                      <SelectItem value="08">08</SelectItem>
-                      <SelectItem value="09">09</SelectItem>
-                      <SelectItem value="10">10</SelectItem>
-                      <SelectItem value="11">11</SelectItem>
-                      <SelectItem value="12">12</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </Field>
+              </FieldGroup>
+            </FieldSet>
+            <FieldSeparator />
+            <FieldSet>
+              <FieldGroup>
                 <Field>
-                  <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
-                    Year
+                  <FieldLabel htmlFor="checkout-7j9-optional-comments">
+                    Comments
                   </FieldLabel>
-                  <Select defaultValue="">
-                    <SelectTrigger id="checkout-7j9-exp-year-f59">
-                      <SelectValue placeholder="YYYY" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="2024">2024</SelectItem>
-                      <SelectItem value="2025">2025</SelectItem>
-                      <SelectItem value="2026">2026</SelectItem>
-                      <SelectItem value="2027">2027</SelectItem>
-                      <SelectItem value="2028">2028</SelectItem>
-                      <SelectItem value="2029">2029</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <Textarea
+                    id="checkout-7j9-optional-comments"
+                    placeholder="Add any additional comments"
+                  />
                 </Field>
-              </div>
-            </FieldGroup>
-          </FieldSet>
-          <FieldSeparator />
-          <FieldSet>
-            <FieldLegend>Billing Address</FieldLegend>
-            <FieldDescription>
-              The billing address associated with your payment method
-            </FieldDescription>
-            <FieldGroup>
-              <Field orientation="horizontal">
-                <Checkbox
-                  id="checkout-7j9-same-as-shipping-wgm"
-                  defaultChecked
-                />
-                <FieldLabel
-                  htmlFor="checkout-7j9-same-as-shipping-wgm"
-                  className="font-normal"
-                >
-                  Same as shipping address
-                </FieldLabel>
-              </Field>
-            </FieldGroup>
-          </FieldSet>
-          <FieldSeparator />
-          <FieldSet>
-            <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="checkout-7j9-optional-comments">
-                  Comments
-                </FieldLabel>
-                <Textarea
-                  id="checkout-7j9-optional-comments"
-                  placeholder="Add any additional comments"
-                />
-              </Field>
-            </FieldGroup>
-          </FieldSet>
-          <Field orientation="horizontal">
-            <Button type="submit">Submit</Button>
-            <Button variant="outline" type="button">
-              Cancel
-            </Button>
-          </Field>
-        </FieldGroup>
-      </form>
-    </div>
+              </FieldGroup>
+            </FieldSet>
+            <Field orientation="horizontal">
+              <Button type="submit">Submit</Button>
+              <Button variant="outline" type="button">
+                Cancel
+              </Button>
+            </Field>
+          </FieldGroup>
+        </form>
+      </CardContent>
+    </Card>
   )
 }
 

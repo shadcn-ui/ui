@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/radix/examples/progress-example.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Progress } from \"@/registry/radix/ui/progress\"\n\nexport default function ProgressDemo() {\n  const [progress, setProgress] = React.useState(13)\n\n  React.useEffect(() => {\n    const timer = setTimeout(() => setProgress(66), 500)\n    return () => clearTimeout(timer)\n  }, [])\n\n  return <Progress value={progress} className=\"w-[60%]\" />\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Progress } from \"@/registry/radix/ui/progress\"\n\nexport default function ProgressDemo() {\n  const [progress, setProgress] = React.useState(13)\n\n  React.useEffect(() => {\n    const timer = setTimeout(() => setProgress(66), 500)\n    return () => clearTimeout(timer)\n  }, [])\n\n  return (\n    <div className=\"flex h-full items-center justify-center\">\n      <div className=\"bg-background w-full max-w-[1500px] rounded-xl p-8\">\n        <Progress value={progress} className=\"w-[60%]\" />\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

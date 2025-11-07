@@ -23,6 +23,8 @@ export const iconLibraries = {
   },
 } as const
 
-export type IconLibrary = typeof iconLibraries
+export type IconLibraries = typeof iconLibraries
 
-export type IconLibraryName = keyof IconLibrary
+export type IconLibrary = IconLibraries[keyof IconLibraries]
+
+export type IconLibraryName = keyof IconLibraries
