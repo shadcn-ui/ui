@@ -25,12 +25,14 @@ if (typeof window !== "undefined") {
   const style = searchParams.get("style") || "default"
   const font = searchParams.get("font") || "inter"
   const item = searchParams.get("item") || "cover-example"
+  const baseColor = searchParams.get("baseColor") || "neutral"
 
   paramStore.set("iconLibrary", iconLibrary)
   paramStore.set("theme", theme)
   paramStore.set("style", style)
   paramStore.set("font", font)
   paramStore.set("item", item)
+  paramStore.set("baseColor", baseColor)
 }
 
 if (typeof window !== "undefined" && isInIframe()) {
@@ -53,11 +55,6 @@ if (typeof window !== "undefined" && isInIframe()) {
   })
 }
 
-/**
- * Hook to sync design system search params.
- * In parent: returns params from URL.
- * In iframe: returns all params from store.
- */
 export function useDesignSystemSync() {
   const [urlParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
@@ -98,6 +95,7 @@ export function useDesignSystemSync() {
       style: paramStore.get("style"),
       font: paramStore.get("font"),
       item: paramStore.get("item"),
+      baseColor: paramStore.get("baseColor"),
     } as DesignSystemSearchParams
   }
 

@@ -9,7 +9,7 @@ import { iconLibraries, IconLibraryName } from "shadcn/icons"
 
 import { fonts, type Font } from "@/registry/fonts"
 import { styles, type Style } from "@/registry/styles"
-import { themes, type Theme } from "@/registry/themes"
+import { BASE_COLORS, themes, type Theme } from "@/registry/themes"
 
 export const designSystemSearchParams = {
   item: parseAsString.withDefault("cover-example"),
@@ -25,6 +25,9 @@ export const designSystemSearchParams = {
   font: parseAsStringLiteral<Font["value"]>(
     fonts.map((f) => f.value)
   ).withDefault("inter"),
+  baseColor: parseAsStringLiteral<Theme["name"]>(
+    BASE_COLORS.map((b) => b.name)
+  ).withDefault("neutral"),
 }
 
 export const canvaSearchParams = {

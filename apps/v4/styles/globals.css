@@ -11,10 +11,6 @@
 @custom-variant style-lyra (&:where(.style-lyra *));
 @custom-variant style-maia (&:where(.style-maia *));
 
-@import "../registry/themes/theme-neutral.css";
-@import "../registry/themes/theme-blue.css";
-@import "../registry/themes/theme-red.css";
-
 @custom-variant dark (&:is(.dark *));
 @custom-variant fixed (&:is(.layout-fixed *));
 

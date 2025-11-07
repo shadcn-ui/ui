@@ -5,7 +5,7 @@ import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
 import { cn } from "@/lib/utils"
-import { BASE_COLORS, Theme } from "@/registry/themes"
+import { Theme } from "@/registry/themes"
 import {
   ToolbarItem,
   ToolbarPicker,
@@ -21,54 +21,47 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
   })
 
   const handleSelect = React.useCallback(
-    (themeName: Theme["name"]) => {
-      setParams({ theme: themeName })
+    (theme: Theme["name"]) => {
+      setParams({ theme })
       setOpen(false)
     },
     [setParams]
   )
 
+  const currentTheme = React.useMemo(
+    () => themes.find((theme) => theme.name === params.theme),
+    [themes, params.theme]
+  )
+
   return (
     <ToolbarItem
       title="Theme"
-      description={themes.find((theme) => theme.name === params.theme)?.title}
+      description={currentTheme?.title}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
     >
       <ToolbarPicker
-        currentValue={
-          themes.find((theme) => theme.name === params.theme)?.title ?? null
-        }
+        currentValue={currentTheme?.title ?? null}
         open={open}
         hideSearchFilter
       >
-        <ToolbarPickerGroup heading="Base Color">
-          {BASE_COLORS.map((baseColor) => (
-            <ToolbarPickerItem
-              key={`base-color-${baseColor.name}`}
-              value={baseColor.title}
-              onSelect={() => handleSelect(baseColor.name)}
-              isActive={baseColor.name === params.baseColor}
-            >
-              {baseColor.title}
-            </ToolbarPickerItem>
-          ))}
-        </ToolbarPickerGroup>
-        <ToolbarPickerGroup heading="Colors">
+        <ToolbarPickerGroup>
           {themes.map((theme) => (
             <ToolbarPickerItem
               key={`theme-${theme.name}`}
               value={theme.title}
               onSelect={() => handleSelect(theme.name)}
-              isActive={theme.name === params.theme}
+              isActive={theme.name === currentTheme?.name}
             >
               {theme.title}{" "}
               <div
-                className={cn(
-                  "bg-primary size-4 rounded-full border",
-                  `theme-${theme.name}`
-                )}
+                style={
+                  {
+                    "--primary": theme.cssVars?.light?.primary,
+                  } as React.CSSProperties
+                }
+                className={cn("size-4 rounded-full border bg-(--primary)")}
               ></div>
             </ToolbarPickerItem>
           ))}

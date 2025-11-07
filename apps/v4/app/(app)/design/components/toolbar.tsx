@@ -37,6 +37,7 @@ import {
 } from "@/registry/new-york-v4/ui/popover"
 import { styles } from "@/registry/styles"
 import { themes } from "@/registry/themes"
+import { BaseColorPicker } from "@/app/(app)/design/components/base-color-picker"
 import { FontPicker } from "@/app/(app)/design/components/font-picker"
 import { IconLibraryPicker } from "@/app/(app)/design/components/icon-library-picker"
 import { ItemPicker } from "@/app/(app)/design/components/item-picker"
@@ -53,6 +54,7 @@ export function Toolbar({ items }: { items: RegistryItem[] }) {
         <FieldGroup className="flex flex-col gap-4">
           <ItemPicker items={items} />
           <StylePicker styles={styles} />
+          <BaseColorPicker />
           <ThemePicker themes={themes} />
           <IconLibraryPicker />
           <FontPicker fonts={fonts} />

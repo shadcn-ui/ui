@@ -29,6 +29,7 @@ export function Preview({ library }: { library: ComponentLibrary["name"] }) {
             style: params.style,
             font: params.font,
             item: params.item,
+            baseColor: params.baseColor,
           },
         },
         "*"
@@ -43,7 +44,14 @@ export function Preview({ library }: { library: ComponentLibrary["name"] }) {
     return () => {
       iframe.removeEventListener("load", sendParams)
     }
-  }, [params.theme, params.iconLibrary, params.style, params.font, params.item])
+  }, [
+    params.theme,
+    params.iconLibrary,
+    params.style,
+    params.font,
+    params.item,
+    params.baseColor,
+  ])
 
   const handleMessage = (event: MessageEvent) => {
     if (event.data.type === CMD_P_FORWARD_TYPE) {
@@ -71,7 +79,7 @@ export function Preview({ library }: { library: ComponentLibrary["name"] }) {
     return null
   }
 
-  const iframeSrc = `/preview/${library}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}&font=${initialParams.font ?? "inter"}`
+  const iframeSrc = `/preview/${library}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
 
   return (
     <div className="relative flex flex-1 flex-col overflow-hidden">

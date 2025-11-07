@@ -1,9 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { useTheme } from "next-themes"
 
 import { fontMap } from "@/registry/fonts"
 import { useDesignSystemParam } from "@/app/(app)/design/hooks/use-design-system"
+import { buildTheme } from "@/app/(app)/design/lib/merge-theme"
 
 export function DesignSystemProvider({
   children,
@@ -13,10 +15,12 @@ export function DesignSystemProvider({
   const style = useDesignSystemParam("style")
   const theme = useDesignSystemParam("theme")
   const font = useDesignSystemParam("font")
+  const baseColor = useDesignSystemParam("baseColor")
+  const { resolvedTheme } = useTheme()
   const [isReady, setIsReady] = React.useState(false)
 
   React.useEffect(() => {
-    if (!style || !theme || !font) {
+    if (!style || !theme || !font || !baseColor) {
       return
     }
 
@@ -38,6 +42,14 @@ export function DesignSystemProvider({
     })
     body.classList.add(themeClass)
 
+    const baseColorClass = `base-color-${baseColor}`
+    body.classList.forEach((className) => {
+      if (className.startsWith("base-color-")) {
+        body.classList.remove(className)
+      }
+    })
+    body.classList.add(baseColorClass)
+
     const selectedFont = fontMap[font as keyof typeof fontMap]
     let hasFont = false
     if (selectedFont) {
@@ -51,11 +63,49 @@ export function DesignSystemProvider({
     return () => {
       body.classList.remove(styleClass)
       body.classList.remove(themeClass)
+      body.classList.remove(baseColorClass)
       if (hasFont) {
         document.documentElement.style.removeProperty("--font-sans")
       }
     }
-  }, [style, theme, font])
+  }, [style, theme, font, baseColor])
+
+  const mergedTheme = React.useMemo(() => {
+    if (!baseColor || !theme) {
+      return null
+    }
+    return buildTheme(baseColor, theme)
+  }, [baseColor, theme])
+
+  React.useEffect(() => {
+    if (!mergedTheme || !mergedTheme.cssVars || !resolvedTheme) {
+      return
+    }
+
+    const body = document.body
+    const isDark = resolvedTheme === "dark"
+    const cssVars = isDark
+      ? mergedTheme.cssVars.dark
+      : mergedTheme.cssVars.light
+
+    if (!cssVars) {
+      return
+    }
+
+    // Apply CSS variables to body style
+    Object.entries(cssVars).forEach(([key, value]) => {
+      if (value) {
+        body.style.setProperty(`--${key}`, value)
+      }
+    })
+
+    return () => {
+      // Clean up CSS variables on unmount or change
+      Object.keys(cssVars).forEach((key) => {
+        body.style.removeProperty(`--${key}`)
+      })
+    }
+  }, [mergedTheme, resolvedTheme])
 
   if (!isReady) {
     return null
