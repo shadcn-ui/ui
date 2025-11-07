@@ -3,7 +3,7 @@
 import * as React from "react"
 import InfiniteViewer from "react-infinite-viewer"
 
-const ZOOM_MIN = 0.8
+const ZOOM_MIN = 0.5
 const ZOOM_MAX = 2
 
 export const Canva = React.memo(function Canva({
