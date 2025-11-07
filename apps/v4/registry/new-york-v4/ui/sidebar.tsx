@@ -599,6 +599,15 @@ function SidebarMenuBadge({
   )
 }
 
+function getSkeletonWidth(id: string) {
+  let hash = 0
+  for (const char of id) {
+    hash = (hash << 5) - hash + char.charCodeAt(0)
+  }
+
+  return `${50 + (Math.abs(hash) % 41)}%`
+}
+
 function SidebarMenuSkeleton({
   className,
   showIcon = false,
@@ -606,11 +615,9 @@ function SidebarMenuSkeleton({
 }: React.ComponentProps<"div"> & {
   showIcon?: boolean
 }) {
-  // Random width between 50 to 90%.
-  // eslint-disable-next-line react-naming-convention/use-state -- Allow value-only state destructuring for resolving react-hooks/purity problem https://github.com/shadcn-ui/ui/issues/8540
-  const [width] = React.useState(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`
-  })
+  // Deterministic pseudo-random width between 50 to 90%.
+  const id = React.useId()
+  const width = React.useMemo(() => getSkeletonWidth(id), [id])
 
   return (
     <div
