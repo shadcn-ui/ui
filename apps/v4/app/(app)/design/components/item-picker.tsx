@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Script from "next/script"
-import { IconChevronDown } from "@tabler/icons-react"
+import { IconChevronDown, IconSearch } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
@@ -63,9 +63,9 @@ export function ItemPicker({
         <Button
           size="sm"
           variant="outline"
-          className="justify-between rounded-lg"
+          className="dark:bg-input/30 border-input w-72 justify-between rounded-lg border"
         >
-          {currentItem?.title} <IconChevronDown />
+          {currentItem?.title} <IconSearch />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="rounded-xl px-0" side="bottom" align="end">

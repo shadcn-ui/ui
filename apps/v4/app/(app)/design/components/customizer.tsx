@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { IconChevronRight } from "@tabler/icons-react"
+import { useQueryStates } from "nuqs"
 
 import { cn } from "@/lib/utils"
 import { fonts } from "@/registry/fonts"
@@ -32,6 +34,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york-v4/ui/popover"
+import { presets } from "@/registry/presets"
 import { styles } from "@/registry/styles"
 import { themes } from "@/registry/themes"
 import { BaseColorPicker } from "@/app/(app)/design/components/base-color-picker"
@@ -39,10 +42,56 @@ import { FontPicker } from "@/app/(app)/design/components/font-picker"
 import { IconLibraryPicker } from "@/app/(app)/design/components/icon-library-picker"
 import { StylePicker } from "@/app/(app)/design/components/style-picker"
 import { ThemePicker } from "@/app/(app)/design/components/theme-picker"
+import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export function Customizer() {
+  const [params, setParams] = useQueryStates(designSystemSearchParams, {
+    shallow: false,
+  })
+
+  const handleSelectPreset = React.useCallback(
+    (preset: (typeof presets)[number]) => {
+      setParams({
+        style: preset.style,
+        baseColor: preset.baseColor,
+        theme: preset.theme,
+        iconLibrary: preset.iconLibrary,
+        font: preset.font,
+      })
+    },
+    [setParams]
+  )
+
   return (
     <div className="fixed top-20 left-6 z-10 flex flex-col gap-4">
+      <Card className="w-64 gap-0 rounded-xl border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+        <CardHeader className="gap-0 border-b px-4 py-3.5!">
+          <CardTitle className="text-sm font-medium">Presets</CardTitle>
+        </CardHeader>
+        <CardContent className="p-4">
+          <FieldGroup className="flex flex-col gap-4">
+            {presets.map((preset, index) => (
+              <Button
+                key={index}
+                variant="outline"
+                className="data-[state=open]:bg-accent/50 flex h-auto flex-col items-start justify-start p-0 shadow-none"
+                onClick={() => handleSelectPreset(preset)}
+              >
+                <Item size="sm" className="w-full px-2.5 py-2">
+                  <ItemContent className="items-start gap-0.5">
+                    <ItemTitle className="text-xs font-medium">
+                      {preset.title}
+                    </ItemTitle>
+                    <ItemDescription>
+                      {preset.style} / {preset.theme} / {preset.iconLibrary}
+                    </ItemDescription>
+                  </ItemContent>
+                </Item>
+              </Button>
+            ))}
+          </FieldGroup>
+        </CardContent>
+      </Card>
       <Card className="w-64 gap-0 rounded-xl border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
         <CardHeader className="gap-0 border-b px-4 py-3.5!">
           <CardTitle className="text-sm font-medium">Customize</CardTitle>
