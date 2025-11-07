@@ -40,7 +40,11 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
       open={open}
       onOpenChange={setOpen}
     >
-      <ToolbarPicker currentValue={currentFont?.name ?? null} open={open}>
+      <ToolbarPicker
+        currentValue={currentFont?.name ?? null}
+        open={open}
+        showSearch
+      >
         <ToolbarPickerGroup>
           {fonts.map((font) => (
             <ToolbarPickerItem

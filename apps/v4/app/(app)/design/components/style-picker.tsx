@@ -41,7 +41,7 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
         }
         open={open}
       >
-        <ToolbarPickerGroup>
+        <ToolbarPickerGroup className="pb-3.5">
           {styles.map((style) => (
             <ToolbarPickerItem
               key={style.name}

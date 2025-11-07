@@ -21,6 +21,13 @@ import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 import { IconForIconLibrary } from "./icon-loader"
 
 const PREVIEW_ICONS = [
+  "CopyIcon",
+  "AlertCircleIcon",
+  "TrashIcon",
+  "ShareIcon",
+  "ShoppingBagIcon",
+  "MoreHorizontalIcon",
+  "SpinnerIcon",
   "ArrowDownIcon",
   "ArrowUpIcon",
   "ArrowRightIcon",
@@ -28,13 +35,6 @@ const PREVIEW_ICONS = [
   "CheckIcon",
   "ChevronDownIcon",
   "ChevronRightIcon",
-  "AlertCircleIcon",
-  "CopyIcon",
-  "TrashIcon",
-  "ShareIcon",
-  "ShoppingBagIcon",
-  "MoreHorizontalIcon",
-  "SpinnerIcon",
 ] as const
 
 export function IconLibraryPicker() {
@@ -67,6 +67,8 @@ export function IconLibraryPicker() {
       <ToolbarPicker
         currentValue={currentIconLibrary?.title ?? null}
         open={open}
+        showSearch
+        className="**:data-[slot=command-list]:max-h-none"
       >
         <ToolbarPickerGroup>
           {Object.values(iconLibraries).map((iconLibrary) => (
@@ -98,7 +100,7 @@ function IconLibraryPickerItem({
       className="ring-border mb-2 ring-1"
       {...props}
     >
-      <div className="flex w-full flex-col gap-1 p-1">
+      <div className="flex w-full flex-col gap-1.5 p-1">
         <span className="text-muted-foreground text-xs font-medium">
           {iconLibrary.title}
         </span>

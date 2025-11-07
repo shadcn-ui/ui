@@ -41,11 +41,7 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
       open={open}
       onOpenChange={setOpen}
     >
-      <ToolbarPicker
-        currentValue={currentTheme?.title ?? null}
-        open={open}
-        hideSearchFilter
-      >
+      <ToolbarPicker currentValue={currentTheme?.title ?? null} open={open}>
         <ToolbarPickerGroup>
           {themes.map((theme) => (
             <ToolbarPickerItem
@@ -53,16 +49,17 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
               value={theme.title}
               onSelect={() => handleSelect(theme.name)}
               isActive={theme.name === currentTheme?.name}
+              className="mb-2 ring-1"
             >
-              {theme.title}{" "}
               <div
                 style={
                   {
-                    "--primary": theme.cssVars?.light?.primary,
+                    "--color": theme.cssVars?.light?.primary,
                   } as React.CSSProperties
                 }
-                className={cn("size-4 rounded-full border bg-(--primary)")}
-              ></div>
+                className="size-6 translate-x-[-2px] rounded-[4px] bg-(--color)"
+              />
+              {theme.title}{" "}
             </ToolbarPickerItem>
           ))}
         </ToolbarPickerGroup>

@@ -60,8 +60,9 @@ export function ItemPicker({ items }: { items: RegistryItem[] }) {
           items.find((item) => item.name === currentItem)?.title ?? null
         }
         open={open}
+        showSearch
       >
-        <ToolbarPickerGroup>
+        <ToolbarPickerGroup className="pb-3.5">
           {items.map((item) => (
             <ToolbarPickerItem
               key={item.name}

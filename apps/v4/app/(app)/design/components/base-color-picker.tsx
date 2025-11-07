@@ -48,7 +48,16 @@ export function BaseColorPicker() {
               value={baseColor.title}
               onSelect={() => handleSelect(baseColor.name)}
               isActive={baseColor.name === params.baseColor}
+              className="mb-2 ring-1"
             >
+              <div
+                style={
+                  {
+                    "--color": baseColor.cssVars?.light?.["muted-foreground"],
+                  } as React.CSSProperties
+                }
+                className="size-6 translate-x-[-2px] rounded-[4px] bg-(--color)"
+              />
               {baseColor.title}
             </ToolbarPickerItem>
           ))}

@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { IconCheck, IconHelpCircle } from "@tabler/icons-react"
 import { RegistryItem } from "shadcn/schema"
 
 import { cn } from "@/lib/utils"
@@ -113,7 +112,7 @@ export function ToolbarItem({
           <div className="border-b px-4 py-3.5">
             <div className="text-sm font-medium">{title}</div>
           </div>
-          {children}
+          <div className="pt-4 pb-1">{children}</div>
         </PopoverContent>
       </Popover>
       <div
@@ -130,14 +129,15 @@ export function ToolbarPicker({
   value,
   currentValue,
   open,
-  hideSearchFilter = false,
+  showSearch = false,
+  ...props
 }: {
   children: React.ReactNode
   value?: string
   currentValue?: string | null
   open?: boolean
-  hideSearchFilter?: boolean
-}) {
+  showSearch?: boolean
+} & React.ComponentProps<typeof Command>) {
   const [previousValue, setPreviousValue] = React.useState<string | null>(
     currentValue ?? null
   )
@@ -159,9 +159,9 @@ export function ToolbarPicker({
   }, [value, open, previousValue])
 
   return (
-    <Command value={commandValue}>
-      {!hideSearchFilter && (
-        <div className="bg-popover *:data-[slot=command-input-wrapper]:bg-input/40 *:data-[slot=command-input-wrapper]:border-input px-4 pt-4.5 pb-2 *:data-[slot=command-input-wrapper]:rounded-md *:data-[slot=command-input-wrapper]:border">
+    <Command value={commandValue} {...props}>
+      {showSearch && (
+        <div className="bg-popover *:data-[slot=command-input-wrapper]:bg-input/40 *:data-[slot=command-input-wrapper]:border-input px-4 pt-1 pb-2 *:data-[slot=command-input-wrapper]:rounded-md *:data-[slot=command-input-wrapper]:border">
           <CommandInput placeholder="Search" />
         </div>
       )}
@@ -207,7 +207,6 @@ export function ToolbarPickerItem({
       {...props}
     >
       {children}
-      <IconCheck className="ml-auto size-4 opacity-0 transition-opacity group-data-[active=true]/command-item:opacity-100" />
     </CommandItem>
   )
 }
