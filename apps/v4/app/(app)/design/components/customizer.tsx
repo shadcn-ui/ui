@@ -45,26 +45,29 @@ import { ThemePicker } from "@/app/(app)/design/components/theme-picker"
 
 export function Customizer({ items }: { items: RegistryItem[] }) {
   return (
-    <Card className="fixed top-20 left-6 z-10 w-64 gap-0 rounded-[12px] border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
-      <CardHeader className="gap-0 border-b px-4 py-3.5!">
-        <CardTitle className="text-sm font-medium">Design</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4">
-        <FieldGroup className="flex flex-col gap-4">
-          <ItemPicker items={items} />
-          <StylePicker styles={styles} />
-          <BaseColorPicker />
-          <ThemePicker themes={themes} />
-          <IconLibraryPicker />
-          <FontPicker fonts={fonts} />
-        </FieldGroup>
-      </CardContent>
-      <CardFooter className="border-t px-4 py-3.5!">
-        <Button size="sm" className="w-full">
-          Install
-        </Button>
-      </CardFooter>
-    </Card>
+    <div className="fixed top-20 left-6 z-10 flex flex-col gap-4">
+      <Card className="w-64 gap-0 rounded-xl border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+        <CardContent className="p-4">
+          <FieldGroup className="flex flex-col gap-4">
+            <ItemPicker items={items} />
+          </FieldGroup>
+        </CardContent>
+      </Card>
+      <Card className="w-64 gap-0 rounded-xl border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+        <CardHeader className="gap-0 border-b px-4 py-3.5!">
+          <CardTitle className="text-sm font-medium">Design</CardTitle>
+        </CardHeader>
+        <CardContent className="p-4">
+          <FieldGroup className="flex flex-col gap-4">
+            <StylePicker styles={styles} />
+            <BaseColorPicker />
+            <ThemePicker themes={themes} />
+            <IconLibraryPicker />
+            <FontPicker fonts={fonts} />
+          </FieldGroup>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
 
