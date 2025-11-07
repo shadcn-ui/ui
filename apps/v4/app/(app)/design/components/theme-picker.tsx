@@ -7,11 +7,11 @@ import { useQueryStates } from "nuqs"
 import { cn } from "@/lib/utils"
 import { Theme } from "@/registry/themes"
 import {
-  ToolbarItem,
-  ToolbarPicker,
-  ToolbarPickerGroup,
-  ToolbarPickerItem,
-} from "@/app/(app)/design/components/toolbar"
+  CustomizerItem,
+  CustomizerPicker,
+  CustomizerPickerGroup,
+  CustomizerPickerItem,
+} from "@/app/(app)/design/components/customizer"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
@@ -34,17 +34,17 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
   )
 
   return (
-    <ToolbarItem
+    <CustomizerItem
       title="Theme"
       description={currentTheme?.title}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
     >
-      <ToolbarPicker currentValue={currentTheme?.title ?? null} open={open}>
-        <ToolbarPickerGroup>
+      <CustomizerPicker currentValue={currentTheme?.title ?? null} open={open}>
+        <CustomizerPickerGroup>
           {themes.map((theme) => (
-            <ToolbarPickerItem
+            <CustomizerPickerItem
               key={`theme-${theme.name}`}
               value={theme.title}
               onSelect={() => handleSelect(theme.name)}
@@ -60,10 +60,10 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
                 className="size-6 translate-x-[-2px] rounded-[4px] bg-(--color)"
               />
               {theme.title}{" "}
-            </ToolbarPickerItem>
+            </CustomizerPickerItem>
           ))}
-        </ToolbarPickerGroup>
-      </ToolbarPicker>
-    </ToolbarItem>
+        </CustomizerPickerGroup>
+      </CustomizerPicker>
+    </CustomizerItem>
   )
 }

@@ -6,11 +6,11 @@ import { useQueryStates } from "nuqs"
 
 import { BASE_COLORS, Theme } from "@/registry/themes"
 import {
-  ToolbarItem,
-  ToolbarPicker,
-  ToolbarPickerGroup,
-  ToolbarPickerItem,
-} from "@/app/(app)/design/components/toolbar"
+  CustomizerItem,
+  CustomizerPicker,
+  CustomizerPickerGroup,
+  CustomizerPickerItem,
+} from "@/app/(app)/design/components/customizer"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export function BaseColorPicker() {
@@ -33,17 +33,20 @@ export function BaseColorPicker() {
   )
 
   return (
-    <ToolbarItem
+    <CustomizerItem
       title="Base Color"
       description={currentBaseColor?.title}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
     >
-      <ToolbarPicker currentValue={currentBaseColor?.title ?? null} open={open}>
-        <ToolbarPickerGroup>
+      <CustomizerPicker
+        currentValue={currentBaseColor?.title ?? null}
+        open={open}
+      >
+        <CustomizerPickerGroup>
           {BASE_COLORS.map((baseColor) => (
-            <ToolbarPickerItem
+            <CustomizerPickerItem
               key={baseColor.name}
               value={baseColor.title}
               onSelect={() => handleSelect(baseColor.name)}
@@ -59,10 +62,10 @@ export function BaseColorPicker() {
                 className="size-6 translate-x-[-2px] rounded-[4px] bg-(--color)"
               />
               {baseColor.title}
-            </ToolbarPickerItem>
+            </CustomizerPickerItem>
           ))}
-        </ToolbarPickerGroup>
-      </ToolbarPicker>
-    </ToolbarItem>
+        </CustomizerPickerGroup>
+      </CustomizerPicker>
+    </CustomizerItem>
   )
 }

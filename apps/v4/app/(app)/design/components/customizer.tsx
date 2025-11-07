@@ -43,7 +43,7 @@ import { ItemPicker } from "@/app/(app)/design/components/item-picker"
 import { StylePicker } from "@/app/(app)/design/components/style-picker"
 import { ThemePicker } from "@/app/(app)/design/components/theme-picker"
 
-export function Toolbar({ items }: { items: RegistryItem[] }) {
+export function Customizer({ items }: { items: RegistryItem[] }) {
   return (
     <Card className="fixed top-20 left-6 z-10 w-64 gap-0 rounded-[12px] border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
       <CardHeader className="gap-0 border-b px-4 py-3.5!">
@@ -68,7 +68,7 @@ export function Toolbar({ items }: { items: RegistryItem[] }) {
   )
 }
 
-export function ToolbarItem({
+export function CustomizerItem({
   title,
   description,
   icon,
@@ -124,7 +124,7 @@ export function ToolbarItem({
   )
 }
 
-export function ToolbarPicker({
+export function CustomizerPicker({
   children,
   value,
   currentValue,
@@ -175,7 +175,7 @@ export function ToolbarPicker({
   )
 }
 
-export function ToolbarPickerGroup({
+export function CustomizerPickerGroup({
   className,
   ...props
 }: React.ComponentProps<typeof CommandGroup>) {
@@ -187,7 +187,7 @@ export function ToolbarPickerGroup({
   )
 }
 
-export function ToolbarPickerItem({
+export function CustomizerPickerItem({
   isActive,
   className,
   children,

@@ -5,8 +5,8 @@ import type { SearchParams } from "nuqs/server"
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { COMPONENT_LIBRARIES } from "@/registry/component-libraries"
+import { Customizer } from "@/app/(app)/design/components/customizer"
 import { Preview } from "@/app/(app)/design/components/preview"
-import { Toolbar } from "@/app/(app)/design/components/toolbar"
 import { getRegistryItemsForLibrary } from "@/app/(app)/design/lib/api"
 import {
   canvaSearchParamsCache,
@@ -90,7 +90,7 @@ export default async function NewPage({
   return (
     <div data-slot="designer" className="bg-muted/50 flex flex-1 flex-col">
       <Preview library={library.name} />
-      <Toolbar items={filteredItems} />
+      <Customizer items={filteredItems} />
     </div>
   )
 }

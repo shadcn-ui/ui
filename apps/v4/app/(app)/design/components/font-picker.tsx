@@ -6,11 +6,11 @@ import { useQueryStates } from "nuqs"
 
 import { Font } from "@/registry/fonts"
 import {
-  ToolbarItem,
-  ToolbarPicker,
-  ToolbarPickerGroup,
-  ToolbarPickerItem,
-} from "@/app/(app)/design/components/toolbar"
+  CustomizerItem,
+  CustomizerPicker,
+  CustomizerPickerGroup,
+  CustomizerPickerItem,
+} from "@/app/(app)/design/components/customizer"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
@@ -33,21 +33,21 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
   )
 
   return (
-    <ToolbarItem
+    <CustomizerItem
       title="Font"
       description={currentFont?.name}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
     >
-      <ToolbarPicker
+      <CustomizerPicker
         currentValue={currentFont?.name ?? null}
         open={open}
         showSearch
       >
-        <ToolbarPickerGroup>
+        <CustomizerPickerGroup>
           {fonts.map((font) => (
-            <ToolbarPickerItem
+            <CustomizerPickerItem
               key={font.value}
               value={font.name}
               onSelect={() => handleSelect(font.value)}
@@ -65,10 +65,10 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
                   The quick brown fox jumps over the lazy dog.
                 </span>
               </div>
-            </ToolbarPickerItem>
+            </CustomizerPickerItem>
           ))}
-        </ToolbarPickerGroup>
-      </ToolbarPicker>
-    </ToolbarItem>
+        </CustomizerPickerGroup>
+      </CustomizerPicker>
+    </CustomizerItem>
   )
 }

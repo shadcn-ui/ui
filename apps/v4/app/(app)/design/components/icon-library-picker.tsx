@@ -11,11 +11,11 @@ import {
 } from "shadcn/icons"
 
 import {
-  ToolbarItem,
-  ToolbarPicker,
-  ToolbarPickerGroup,
-  ToolbarPickerItem,
-} from "@/app/(app)/design/components/toolbar"
+  CustomizerItem,
+  CustomizerPicker,
+  CustomizerPickerGroup,
+  CustomizerPickerItem,
+} from "@/app/(app)/design/components/customizer"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 import { IconForIconLibrary } from "./icon-loader"
@@ -57,20 +57,20 @@ export function IconLibraryPicker() {
   )
 
   return (
-    <ToolbarItem
+    <CustomizerItem
       title="Icon Library"
       description={currentIconLibrary?.title ?? null}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
     >
-      <ToolbarPicker
+      <CustomizerPicker
         currentValue={currentIconLibrary?.title ?? null}
         open={open}
         showSearch
         className="**:data-[slot=command-list]:max-h-none"
       >
-        <ToolbarPickerGroup>
+        <CustomizerPickerGroup>
           {Object.values(iconLibraries).map((iconLibrary) => (
             <IconLibraryPickerItem
               key={iconLibrary.name}
@@ -81,20 +81,20 @@ export function IconLibraryPicker() {
               {iconLibrary.title}
             </IconLibraryPickerItem>
           ))}
-        </ToolbarPickerGroup>
-      </ToolbarPicker>
-    </ToolbarItem>
+        </CustomizerPickerGroup>
+      </CustomizerPicker>
+    </CustomizerItem>
   )
 }
 
 function IconLibraryPickerItem({
   iconLibrary,
   ...props
-}: React.ComponentProps<typeof ToolbarPickerItem> & {
+}: React.ComponentProps<typeof CustomizerPickerItem> & {
   iconLibrary: IconLibrary
 }) {
   return (
-    <ToolbarPickerItem
+    <CustomizerPickerItem
       key={iconLibrary.name}
       value={iconLibrary.title}
       className="ring-border mb-2 ring-1"
@@ -106,7 +106,7 @@ function IconLibraryPickerItem({
         </span>
         <IconLibraryPreview iconLibrary={iconLibrary.name} />
       </div>
-    </ToolbarPickerItem>
+    </CustomizerPickerItem>
   )
 }
 

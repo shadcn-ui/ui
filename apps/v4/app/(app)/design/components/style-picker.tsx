@@ -6,11 +6,11 @@ import { useQueryStates } from "nuqs"
 
 import { Style } from "@/registry/styles"
 import {
-  ToolbarItem,
-  ToolbarPicker,
-  ToolbarPickerGroup,
-  ToolbarPickerItem,
-} from "@/app/(app)/design/components/toolbar"
+  CustomizerItem,
+  CustomizerPicker,
+  CustomizerPickerGroup,
+  CustomizerPickerItem,
+} from "@/app/(app)/design/components/customizer"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export function StylePicker({ styles }: { styles: readonly Style[] }) {
@@ -28,32 +28,32 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
   )
 
   return (
-    <ToolbarItem
+    <CustomizerItem
       title="Style"
       description={styles.find((style) => style.name === params.style)?.title}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
     >
-      <ToolbarPicker
+      <CustomizerPicker
         currentValue={
           styles.find((style) => style.name === params.style)?.title ?? null
         }
         open={open}
       >
-        <ToolbarPickerGroup className="pb-3.5">
+        <CustomizerPickerGroup className="pb-3.5">
           {styles.map((style) => (
-            <ToolbarPickerItem
+            <CustomizerPickerItem
               key={style.name}
               value={style.title}
               onSelect={() => handleSelect(style.name)}
               isActive={style.name === params.style}
             >
               {style.title}
-            </ToolbarPickerItem>
+            </CustomizerPickerItem>
           ))}
-        </ToolbarPickerGroup>
-      </ToolbarPicker>
-    </ToolbarItem>
+        </CustomizerPickerGroup>
+      </CustomizerPicker>
+    </CustomizerItem>
   )
 }

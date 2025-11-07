@@ -7,11 +7,11 @@ import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
 import {
-  ToolbarItem,
-  ToolbarPicker,
-  ToolbarPickerGroup,
-  ToolbarPickerItem,
-} from "@/app/(app)/design/components/toolbar"
+  CustomizerItem,
+  CustomizerPicker,
+  CustomizerPickerGroup,
+  CustomizerPickerItem,
+} from "@/app/(app)/design/components/customizer"
 import { designSystemSearchParams } from "@/app/(app)/design/lib/search-params"
 
 export const CMD_P_FORWARD_TYPE = "cmd-p-forward"
@@ -46,7 +46,7 @@ export function ItemPicker({ items }: { items: RegistryItem[] }) {
   )
 
   return (
-    <ToolbarItem
+    <CustomizerItem
       title="Component"
       description={
         items.find((item) => item.name === currentItem)?.title ?? "Search"
@@ -55,27 +55,27 @@ export function ItemPicker({ items }: { items: RegistryItem[] }) {
       open={open}
       onOpenChange={setOpen}
     >
-      <ToolbarPicker
+      <CustomizerPicker
         currentValue={
           items.find((item) => item.name === currentItem)?.title ?? null
         }
         open={open}
         showSearch
       >
-        <ToolbarPickerGroup className="pb-3.5">
+        <CustomizerPickerGroup className="pb-3.5">
           {items.map((item) => (
-            <ToolbarPickerItem
+            <CustomizerPickerItem
               key={item.name}
               value={item.title ?? item.name}
               onSelect={() => handleSelect(item.name)}
               isActive={item.name === currentItem}
             >
               {item.title}
-            </ToolbarPickerItem>
+            </CustomizerPickerItem>
           ))}
-        </ToolbarPickerGroup>
-      </ToolbarPicker>
-    </ToolbarItem>
+        </CustomizerPickerGroup>
+      </CustomizerPicker>
+    </CustomizerItem>
   )
 }
 
