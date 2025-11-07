@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link, { LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
@@ -39,6 +39,10 @@ const TOP_LEVEL_SECTIONS = [
   },
 ]
 
+function normalizePath(path: string): string {
+  return path.endsWith('/') && path !== '/' ? path.slice(0, -1) : path
+}
+
 export function MobileNav({
   tree,
   items,
@@ -49,6 +53,13 @@ export function MobileNav({
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
+  const [pendingHref, setPendingHref] = React.useState<string | null>(null)
+  const pathname = usePathname()
+
+  React.useEffect(() => {
+    setOpen(false)
+    setPendingHref(null)
+  }, [pathname])
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -175,14 +186,22 @@ function MobileLink({
   className?: string
 }) {
   const router = useRouter()
+  const pathname = usePathname()
+  
+  const handleClick = () => {
+    const targetHref = normalizePath(href.toString())
+    if (targetHref === pathname) {
+      onOpenChange?.(false)
+      return
+    }
+    router.push(href.toString())
+  }
+  
   return (
     <Link
       href={href}
-      onClick={() => {
-        router.push(href.toString())
-        onOpenChange?.(false)
-      }}
-      className={cn("text-2xl font-medium", className)}
+      onClick={handleClick}
+      className={cn("text-2xl font-medium transition-transform duration-100 active:scale-[0.99]", className)}
       {...props}
     >
       {children}
