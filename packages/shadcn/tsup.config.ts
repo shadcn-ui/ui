@@ -8,6 +8,7 @@ export default defineConfig({
     "src/registry/index.ts",
     "src/schema/index.ts",
     "src/mcp/index.ts",
+    "src/utils/index.ts",
     "src/icons/index.ts",
   ],
   format: ["esm"],

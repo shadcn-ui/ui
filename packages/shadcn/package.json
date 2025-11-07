@@ -43,6 +43,10 @@
       "types": "./dist/mcp/index.d.ts",
       "default": "./dist/mcp/index.js"
     },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    },
     "./icons": {
       "types": "./dist/icons/index.d.ts",
       "default": "./dist/icons/index.js"
@@ -91,6 +95,7 @@
     "node-fetch": "^3.3.2",
     "ora": "^8.2.0",
     "postcss": "^8.5.6",
+    "postcss-selector-parser": "^7.1.0",
     "prompts": "^2.4.2",
     "recast": "^0.23.11",
     "stringify-object": "^5.0.0",

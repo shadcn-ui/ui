@@ -2,51 +2,51 @@
   .cn-button {
     @apply gap-2 rounded-md border border-transparent text-sm font-medium [&_svg:not([class*='size-'])]:size-4;
 
-    &[data-variant="default"] {
+    &.cn-button-variant-default {
       @apply bg-primary text-primary-foreground hover:bg-primary/90 [box-shadow:5px_5px_rgb(82_82_82)] active:translate-x-[3px] active:translate-y-[3px] active:[box-shadow:0px_0px_rgb(82_82_82)];
     }
 
-    &[data-variant="outline"] {
+    &.cn-button-variant-outline {
       @apply border-border bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 [box-shadow:5px_5px_rgb(82_82_82)] active:translate-x-[3px] active:translate-y-[3px] active:[box-shadow:0px_0px_rgb(82_82_82)];
     }
 
-    &[data-variant="secondary"] {
+    &.cn-button-variant-secondary {
       @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
     }
 
-    &[data-variant="ghost"] {
+    &.cn-button-variant-ghost {
       @apply hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50;
     }
 
-    &[data-variant="destructive"] {
+    &.cn-button-variant-destructive {
       @apply bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white;
     }
 
-    &[data-variant="link"] {
+    &.cn-button-variant-link {
       @apply text-primary underline-offset-4 hover:underline;
     }
 
-    &[data-size="sm"] {
+    &.cn-button-size-sm {
       @apply h-8 gap-1.5 px-3 has-[>svg]:px-2.5;
     }
 
-    &[data-size="default"] {
+    &.cn-button-size-default {
       @apply h-9 px-4 py-2 has-[>svg]:px-3;
     }
 
-    &[data-size="lg"] {
+    &.cn-button-size-lg {
       @apply h-10 px-6 has-[>svg]:px-4;
     }
 
-    &[data-size="icon-sm"] {
+    &.cn-button-size-icon-sm {
       @apply size-7;
     }
 
-    &[data-size="icon"] {
+    &.cn-button-size-icon {
       @apply size-8;
     }
 
-    &[data-size="icon-lg"] {
+    &.cn-button-size-icon-lg {
       @apply size-9;
     }
   }

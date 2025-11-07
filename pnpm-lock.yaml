@@ -491,6 +491,9 @@ importers:
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
+      postcss-selector-parser:
+        specifier: ^7.1.0
+        version: 7.1.0
       prompts:
         specifier: ^2.4.2
         version: 2.4.2

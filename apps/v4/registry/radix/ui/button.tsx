@@ -9,20 +9,20 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "",
-        outline: "",
-        secondary: "",
-        ghost: "",
-        destructive: "",
-        link: "",
+        default: "cn-button-variant-default",
+        outline: "cn-button-variant-outline",
+        secondary: "cn-button-variant-secondary",
+        ghost: "cn-button-variant-ghost",
+        destructive: "cn-button-variant-destructive",
+        link: "cn-button-variant-link",
       },
       size: {
-        default: "",
-        sm: "",
-        lg: "",
-        icon: "",
-        "icon-sm": "",
-        "icon-lg": "",
+        default: "cn-button-size-default",
+        sm: "cn-button-size-sm",
+        lg: ".cn-button-size-lg",
+        icon: "cn-button-size-icon",
+        "icon-sm": "cn-button-size-icon-sm",
+        "icon-lg": "cn-button-size-icon-lg",
       },
     },
     defaultVariants: {
