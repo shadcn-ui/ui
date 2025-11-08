@@ -1,14 +1,13 @@
+import { TransformerStyle } from "@/src/styles/transform"
 import {
   Node,
-  Project,
-  ScriptKind,
   type CallExpression,
   type NoSubstitutionTemplateLiteral,
   type SourceFile,
   type StringLiteral,
 } from "ts-morph"
 
-import { type StyleMap } from "./parse-style"
+import { type StyleMap } from "./create-style-map"
 
 function isStringLiteralLike(
   node: Node
@@ -18,28 +17,16 @@ function isStringLiteralLike(
   )
 }
 
-export function applyStyleToComponent({
-  source,
+export const transformStyleMap: TransformerStyle<SourceFile> = async ({
+  sourceFile,
   styleMap,
-}: {
-  source: string
-  styleMap: StyleMap
-}) {
-  const project = new Project({
-    useInMemoryFileSystem: true,
-  })
-
-  const sourceFile = project.createSourceFile("component.tsx", source, {
-    scriptKind: ScriptKind.TSX,
-    overwrite: true,
-  })
-
+}) => {
   const matchedClasses = new Set<string>()
 
   applyToCvaCalls(sourceFile, styleMap, matchedClasses)
   applyToClassNameAttributes(sourceFile, styleMap, matchedClasses)
 
-  return sourceFile.getFullText()
+  return sourceFile
 }
 
 function applyStyleToCvaString(

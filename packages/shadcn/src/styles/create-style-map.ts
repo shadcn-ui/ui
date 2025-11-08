@@ -14,7 +14,7 @@ export const styleMapSchema = z.record(
 
 export type StyleMap = z.infer<typeof styleMapSchema>
 
-export function parseStyle(input: string) {
+export function createStyleMap(input: string) {
   const root = postcss.parse(input)
 
   const result: Record<string, string> = {}

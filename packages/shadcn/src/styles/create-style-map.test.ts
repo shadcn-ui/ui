@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 
-import { parseStyle } from "./parse-style"
+import { createStyleMap } from "./create-style-map"
 
 describe("parseStyle", () => {
   it("extracts tailwind classes from @apply directives", () => {
@@ -12,7 +12,7 @@ describe("parseStyle", () => {
       }
     `
 
-    const result = parseStyle(css)
+    const result = createStyleMap(css)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -29,7 +29,7 @@ describe("parseStyle", () => {
       }
     `
 
-    const result = parseStyle(css)
+    const result = createStyleMap(css)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -45,7 +45,7 @@ describe("parseStyle", () => {
       }
     `
 
-    const result = parseStyle(css)
+    const result = createStyleMap(css)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -65,7 +65,7 @@ describe("parseStyle", () => {
       }
     `
 
-    const result = parseStyle(css)
+    const result = createStyleMap(css)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -82,7 +82,7 @@ describe("parseStyle", () => {
       }
     `
 
-    const result = parseStyle(css)
+    const result = createStyleMap(css)
 
     expect(result).toMatchInlineSnapshot(`{}`)
   })
@@ -94,7 +94,7 @@ describe("parseStyle", () => {
       }
     `
 
-    const result = parseStyle(css)
+    const result = createStyleMap(css)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -114,7 +114,7 @@ describe("parseStyle", () => {
       }
     `
 
-    const result = parseStyle(css)
+    const result = createStyleMap(css)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -134,7 +134,7 @@ describe("parseStyle", () => {
       }
     `
 
-    const result = parseStyle(css)
+    const result = createStyleMap(css)
 
     expect(result).toMatchInlineSnapshot(`
       {
@@ -156,7 +156,7 @@ describe("parseStyle", () => {
       }
     `
 
-    const result = parseStyle(css)
+    const result = createStyleMap(css)
 
     expect(result).toMatchInlineSnapshot(`
       {

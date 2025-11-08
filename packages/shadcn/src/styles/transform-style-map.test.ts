@@ -1,14 +1,30 @@
+import { Project, ScriptKind } from "ts-morph"
 import { describe, expect, it } from "vitest"
 
-import { applyStyleToComponent } from "./apply-style-to-component"
-import { type StyleMap } from "./parse-style"
+import { type StyleMap } from "./create-style-map"
+import { transformStyleMap } from "./transform-style-map"
 
 const baseStyleMap: StyleMap = {
   "cn-foo": "bg-background gap-4 rounded-xl",
 }
 
-describe("applyStyleToComponent", () => {
-  it("adds tailwind classes to existing cn call", () => {
+async function applyTransform(source: string, styleMap: StyleMap) {
+  const project = new Project({
+    useInMemoryFileSystem: true,
+  })
+
+  const sourceFile = project.createSourceFile("component.tsx", source, {
+    scriptKind: ScriptKind.TSX,
+    overwrite: true,
+  })
+
+  await transformStyleMap({ sourceFile, styleMap })
+
+  return sourceFile.getText()
+}
+
+describe("transformStyleMap", () => {
+  it("adds tailwind classes to existing cn call", async () => {
     const source = `import * as React from "react"
 import { cn } from "@/lib/utils"
 
@@ -19,7 +35,7 @@ function Foo({ className, ...props }: { className?: string }) {
 }
 `
 
-    const result = applyStyleToComponent({ source, styleMap: baseStyleMap })
+    const result = await applyTransform(source, baseStyleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -34,7 +50,7 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
-  it("adds tailwind classes to string literal className", () => {
+  it("adds tailwind classes to string literal className", async () => {
     const source = `import * as React from "react"
 
 function Foo(props: React.ComponentProps<"div">) {
@@ -42,7 +58,7 @@ function Foo(props: React.ComponentProps<"div">) {
 }
 `
 
-    const result = applyStyleToComponent({ source, styleMap: baseStyleMap })
+    const result = await applyTransform(source, baseStyleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -54,7 +70,7 @@ function Foo(props: React.ComponentProps<"div">) {
     `)
   })
 
-  it("applies base classes to cva base string", () => {
+  it("applies base classes to cva base string", async () => {
     const source = `import * as React from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
@@ -81,7 +97,7 @@ function Button({ className, ...props }: React.ComponentProps<"button">) {
       "cn-button": "rounded-lg border text-sm",
     }
 
-    const result = applyStyleToComponent({ source, styleMap })
+    const result = await applyTransform(source, styleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -108,7 +124,7 @@ function Button({ className, ...props }: React.ComponentProps<"button">) {
     `)
   })
 
-  it("applies variant classes to cva variant entries", () => {
+  it("applies variant classes to cva variant entries", async () => {
     const source = `import * as React from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
@@ -135,7 +151,7 @@ function Button({ className, variant = "default", ...props }: React.ComponentPro
       "cn-button-variant-default": "text-primary-foreground bg-primary",
     }
 
-    const result = applyStyleToComponent({ source, styleMap })
+    const result = await applyTransform(source, styleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -162,7 +178,7 @@ function Button({ className, variant = "default", ...props }: React.ComponentPro
     `)
   })
 
-  it("handles multiple cn-* classes in one className", () => {
+  it("handles multiple cn-* classes in one className", async () => {
     const source = `import * as React from "react"
 import { cn } from "@/lib/utils"
 
@@ -178,7 +194,7 @@ function Foo({ className, ...props }: { className?: string }) {
       "cn-bar": "rounded-xl border",
     }
 
-    const result = applyStyleToComponent({ source, styleMap })
+    const result = await applyTransform(source, styleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -193,7 +209,7 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
-  it("skips cn-* classes not in styleMap", () => {
+  it("skips cn-* classes not in styleMap", async () => {
     const source = `import * as React from "react"
 import { cn } from "@/lib/utils"
 
@@ -204,7 +220,7 @@ function Foo({ className, ...props }: { className?: string }) {
 }
 `
 
-    const result = applyStyleToComponent({ source, styleMap: baseStyleMap })
+    const result = await applyTransform(source, baseStyleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -219,7 +235,7 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
-  it("handles className with no cn-* classes", () => {
+  it("handles className with no cn-* classes", async () => {
     const source = `import * as React from "react"
 import { cn } from "@/lib/utils"
 
@@ -230,7 +246,7 @@ function Foo({ className, ...props }: { className?: string }) {
 }
 `
 
-    const result = applyStyleToComponent({ source, styleMap: baseStyleMap })
+    const result = await applyTransform(source, baseStyleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -245,7 +261,7 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
-  it("handles multiple cn-* classes in cn() arguments", () => {
+  it("handles multiple cn-* classes in cn() arguments", async () => {
     const source = `import * as React from "react"
 import { cn } from "@/lib/utils"
 
@@ -261,7 +277,7 @@ function Foo({ className, ...props }: { className?: string }) {
       "cn-bar": "rounded-xl",
     }
 
-    const result = applyStyleToComponent({ source, styleMap })
+    const result = await applyTransform(source, styleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -276,7 +292,7 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
-  it("handles size variants in cva", () => {
+  it("handles size variants in cva", async () => {
     const source = `import * as React from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
@@ -305,7 +321,7 @@ function Button({ className, size = "sm", ...props }: React.ComponentProps<"butt
       "cn-button-size-lg": "h-9 px-4",
     }
 
-    const result = applyStyleToComponent({ source, styleMap })
+    const result = await applyTransform(source, styleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -333,7 +349,7 @@ function Button({ className, size = "sm", ...props }: React.ComponentProps<"butt
     `)
   })
 
-  it("handles button with base, variant, and size classes", () => {
+  it("handles button with base, variant, and size classes", async () => {
     const source = `import * as React from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
@@ -375,7 +391,7 @@ function Button({
       "cn-button-size-lg": "h-10 px-6 text-base",
     }
 
-    const result = applyStyleToComponent({ source, styleMap })
+    const result = await applyTransform(source, styleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -412,7 +428,7 @@ function Button({
     `)
   })
 
-  it("removes empty string arguments from cn() calls", () => {
+  it("removes empty string arguments from cn() calls", async () => {
     const source = `import * as React from "react"
 import { cn } from "@/lib/utils"
 
@@ -423,7 +439,7 @@ function Foo({ className, ...props }: { className?: string }) {
 }
 `
 
-    const result = applyStyleToComponent({ source, styleMap: baseStyleMap })
+    const result = await applyTransform(source, baseStyleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
@@ -438,7 +454,7 @@ function Foo({ className, ...props }: { className?: string }) {
     `)
   })
 
-  it("prevents duplicate application when cn-* class is in both cva and className", () => {
+  it("prevents duplicate application when cn-* class is in both cva and className", async () => {
     const source = `import * as React from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
@@ -462,7 +478,7 @@ function Button({ className, ...props }: React.ComponentProps<"button">) {
       "cn-button": "rounded-lg border",
     }
 
-    const result = applyStyleToComponent({ source, styleMap })
+    const result = await applyTransform(source, styleMap)
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"

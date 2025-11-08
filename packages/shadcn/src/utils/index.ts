@@ -1,2 +1,2 @@
-export { parseStyle } from "../styles/parse-style"
-export { applyStyleToComponent } from "../styles/apply-style-to-component"
+export { createStyleMap } from "../styles/create-style-map"
+export { transformStyle } from "../styles/transform"
