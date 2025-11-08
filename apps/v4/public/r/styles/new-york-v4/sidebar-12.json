@@ -31,7 +31,7 @@
     },
     {
       "path": "registry/new-york-v4/blocks/sidebar-12/components/date-picker.tsx",
-      "content": "import { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\nimport {\n  SidebarGroup,\n  SidebarGroupContent,\n} from \"@/registry/new-york-v4/ui/sidebar\"\n\nexport function DatePicker() {\n  return (\n    <SidebarGroup className=\"px-0\">\n      <SidebarGroupContent>\n        <Calendar className=\"[&_[role=gridcell].bg-accent]:bg-sidebar-primary [&_[role=gridcell].bg-accent]:text-sidebar-primary-foreground [&_[role=gridcell]]:w-[33px]\" />\n      </SidebarGroupContent>\n    </SidebarGroup>\n  )\n}\n",
+      "content": "import { Calendar } from \"@/registry/new-york-v4/ui/calendar\"\nimport {\n  SidebarGroup,\n  SidebarGroupContent,\n} from \"@/registry/new-york-v4/ui/sidebar\"\n\nexport function DatePicker() {\n  return (\n    <SidebarGroup className=\"px-0\">\n      <SidebarGroupContent>\n        <Calendar className=\"[&_[role=gridcell].bg-accent]:bg-sidebar-primary [&_[role=gridcell].bg-accent]:text-sidebar-primary-foreground **:[[role=gridcell]]:w-[33px]\" />\n      </SidebarGroupContent>\n    </SidebarGroup>\n  )\n}\n",
       "type": "registry:component"
     },
     {

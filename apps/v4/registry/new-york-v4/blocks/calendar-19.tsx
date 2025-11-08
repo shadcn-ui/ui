@@ -23,7 +23,7 @@ export default function Calendar19() {
           className="bg-transparent p-0 [--cell-size:--spacing(9.5)]"
         />
       </CardContent>
-      <CardFooter className="flex flex-wrap gap-2 border-t px-4 !pt-4">
+      <CardFooter className="flex flex-wrap gap-2 border-t px-4 pt-4!">
         {[
           { label: "Today", value: 0 },
           { label: "Tomorrow", value: 1 },

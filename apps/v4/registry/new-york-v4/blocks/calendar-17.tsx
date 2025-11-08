@@ -22,7 +22,7 @@ export default function Calendar17() {
           className="bg-transparent p-0 [--cell-size:--spacing(10.5)]"
         />
       </CardContent>
-      <CardFooter className="flex gap-2 border-t px-4 !pt-4 *:[div]:w-full">
+      <CardFooter className="flex gap-2 border-t px-4 pt-4! *:[div]:w-full">
         <div>
           <Label htmlFor="time-from" className="sr-only">
             Start Time
