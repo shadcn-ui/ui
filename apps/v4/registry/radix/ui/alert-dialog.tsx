@@ -5,6 +5,7 @@ import { AlertDialog as AlertDialogPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/radix/ui/button"
+import { CanvaPortal } from "@/app/(app)/design/components/canva"
 
 function AlertDialog({
   ...props
@@ -49,7 +50,7 @@ function AlertDialogContent({
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content>) {
   return (
-    <AlertDialogPortal>
+    <CanvaPortal element={<AlertDialogPortal />}>
       <AlertDialogOverlay />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
@@ -59,7 +60,7 @@ function AlertDialogContent({
         )}
         {...props}
       />
-    </AlertDialogPortal>
+    </CanvaPortal>
   )
 }
 

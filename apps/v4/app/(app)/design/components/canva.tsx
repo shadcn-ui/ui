@@ -3,6 +3,8 @@
 import * as React from "react"
 import InfiniteViewer from "react-infinite-viewer"
 
+import { cn } from "@/lib/utils"
+
 const ZOOM_MIN = 0.5
 const ZOOM_MAX = 2
 
@@ -117,3 +119,27 @@ export const Canva = React.memo(function Canva({
     </div>
   )
 })
+
+export function CanvaPortal({
+  children,
+}: {
+  element: React.ReactNode
+  children?: React.ReactNode
+}) {
+  return children
+}
+
+export function CanvaFrame({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "bg-background flex aspect-[1.5/1] max-w-[1500px] items-center justify-center overflow-hidden rounded-xl p-8",
+        className
+      )}
+      {...props}
+    />
+  )
+}

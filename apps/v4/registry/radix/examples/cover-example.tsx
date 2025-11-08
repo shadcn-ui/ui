@@ -139,6 +139,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix/ui/tooltip"
+import { CanvaFrame } from "@/app/(app)/design/components/canva"
 import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
 
 const SAMPLE_DATA = {
@@ -248,8 +249,8 @@ const options = [
 
 export default function CoverExample() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background grid w-full max-w-[1500px] grid-cols-4 gap-8 rounded-xl p-8">
+    <CanvaFrame>
+      <div className="grid grid-cols-4 gap-8">
         <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
           <FieldDemo />
         </div>
@@ -278,7 +279,7 @@ export default function CoverExample() {
           <SpinnerEmpty />
         </div>
       </div>
-    </div>
+    </CanvaFrame>
   )
 }
 

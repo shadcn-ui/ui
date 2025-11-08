@@ -1,3 +1,4 @@
+import { transformPortal } from "@/src/styles/transform-portal"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 
 import { type StyleMap } from "./create-style-map"
@@ -12,7 +13,7 @@ export async function transformStyle(
   source: string,
   {
     styleMap,
-    transformers = [transformStyleMap],
+    transformers = [transformStyleMap, transformPortal],
   }: {
     styleMap: StyleMap
     transformers?: TransformerStyle<SourceFile>[]
