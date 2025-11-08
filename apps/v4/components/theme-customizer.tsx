@@ -709,7 +709,6 @@ const BASE_STYLES_WITH_VARIABLES = `
     --border: <%- colors.light["border"] %>;
     --input: <%- colors.light["input"] %>;
     --ring: <%- colors.light["ring"] %>;
-    --radius: <%- radius %>rem;
     --chart-1: <%- colors.light["chart-1"] %>;
     --chart-2: <%- colors.light["chart-2"] %>;
     --chart-3: <%- colors.light["chart-3"] %>;
