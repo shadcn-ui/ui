@@ -10,7 +10,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/registry/radix/ui/navigation-menu"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -52,9 +53,8 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavigationMenuDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
-        <div className="hidden w-full flex-col items-center justify-center gap-6 @xl:flex">
+    <CanvaFrame>
+      <div className="hidden w-full flex-col items-center justify-center gap-6 @xl:flex">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -209,9 +209,8 @@ export default function NavigationMenuDemo() {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-        </div>
       </div>
-    </div>
+    </CanvaFrame>
   )
 }
 

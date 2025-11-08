@@ -5,7 +5,7 @@ import { AlertDialog as AlertDialogPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/radix/ui/button"
-import { CanvaPortal } from "@/app/(app)/design/components/canva"
+import { CanvaPortal } from "@/app/(design)/design/components/canva"
 
 function AlertDialog({
   ...props

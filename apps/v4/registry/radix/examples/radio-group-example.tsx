@@ -1,5 +1,6 @@
 import { Label } from "@/registry/radix/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/registry/radix/ui/radio-group"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 const plans = [
   {
@@ -19,8 +20,7 @@ const plans = [
 
 export default function RadioGroupDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex flex-col gap-6">
           <RadioGroup defaultValue="comfortable">
             <div className="flex items-center gap-3">
@@ -57,7 +57,6 @@ export default function RadioGroupDemo() {
             ))}
           </RadioGroup>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

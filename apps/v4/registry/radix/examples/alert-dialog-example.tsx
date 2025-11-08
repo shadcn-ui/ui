@@ -10,11 +10,11 @@ import {
   AlertDialogTrigger,
 } from "@/registry/radix/ui/alert-dialog"
 import { Button } from "@/registry/radix/ui/button"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function AlertDialogDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex gap-6">
           <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -55,7 +55,6 @@ export default function AlertDialogDemo() {
             </AlertDialogContent>
           </AlertDialog>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

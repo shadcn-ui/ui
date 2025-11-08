@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/registry/radix/ui/table"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 const invoices = [
   {
@@ -56,8 +57,7 @@ const invoices = [
 
 export default function TableDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <Table>
           <TableCaption>A list of your recent invoices.</TableCaption>
           <TableHeader>
@@ -87,7 +87,6 @@ export default function TableDemo() {
             </TableRow>
           </TableFooter>
         </Table>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

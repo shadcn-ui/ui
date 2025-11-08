@@ -11,18 +11,17 @@ import {
 } from "@/registry/radix/ui/dialog"
 import { Input } from "@/registry/radix/ui/input"
 import { Label } from "@/registry/radix/ui/label"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
-export default function DialogDemo() {
+export default function DialogExample() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
-        <div className="flex flex-col items-start gap-4 md:flex-row">
-          <DialogWithForm />
-          <DialogScrollableContent />
-          <DialogWithStickyFooter />
-        </div>
+    <CanvaFrame>
+      <div className="flex flex-col items-start gap-4 md:flex-row">
+        <DialogWithForm />
+        <DialogScrollableContent />
+        <DialogWithStickyFooter />
       </div>
-    </div>
+    </CanvaFrame>
   )
 }
 

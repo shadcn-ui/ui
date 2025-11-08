@@ -1,11 +1,11 @@
 import Image from "next/image"
 
 import { AspectRatio } from "@/registry/radix/ui/aspect-ratio"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function AspectRatioDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="grid w-full max-w-sm items-start gap-4">
           <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg">
             <Image
@@ -24,7 +24,6 @@ export default function AspectRatioDemo() {
             />
           </AspectRatio>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

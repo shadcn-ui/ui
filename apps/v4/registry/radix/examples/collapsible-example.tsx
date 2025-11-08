@@ -8,14 +8,14 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/registry/radix/ui/collapsible"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function CollapsibleDemo() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <Collapsible
           open={isOpen}
           onOpenChange={setIsOpen}
@@ -44,7 +44,6 @@ export default function CollapsibleDemo() {
             </div>
           </CollapsibleContent>
         </Collapsible>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

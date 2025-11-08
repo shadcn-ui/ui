@@ -1,6 +1,6 @@
 import { Button } from "@/registry/radix/ui/button"
-import { CanvaFrame } from "@/app/(app)/design/components/canva"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ButtonDemo() {
   return (

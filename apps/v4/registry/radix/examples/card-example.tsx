@@ -13,12 +13,12 @@ import {
 } from "@/registry/radix/ui/card"
 import { Field, FieldGroup, FieldLabel } from "@/registry/radix/ui/field"
 import { Input } from "@/registry/radix/ui/input"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function CardDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex items-start gap-4">
           <Card className="w-full max-w-sm">
             <CardHeader>
@@ -143,7 +143,6 @@ export default function CardDemo() {
             </CardFooter>
           </Card>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

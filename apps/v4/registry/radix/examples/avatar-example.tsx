@@ -1,9 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/registry/radix/ui/avatar"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function AvatarDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex flex-row flex-wrap items-center gap-4">
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -84,7 +84,6 @@ export default function AvatarDemo() {
             </Avatar>
           </div>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

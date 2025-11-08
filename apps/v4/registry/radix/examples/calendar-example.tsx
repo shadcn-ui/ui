@@ -25,29 +25,28 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/radix/ui/popover"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function CalendarDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
-        <div className="bg-muted flex flex-col flex-wrap justify-center gap-8 lg:flex-row">
-          <CalendarSingle />
-          <CalendarMultiple />
-          <CalendarRange />
-          <CalendarBookedDates />
-          <CalendarRangeMultipleMonths />
-          <CalendarWithTime />
-          <CalendarWithPresets />
-          <CalendarCustomDays />
-          <div className="flex flex-col items-start gap-4 md:flex-row">
-            <DatePickerSimple />
-            <DataPickerWithDropdowns />
-            <DatePickerWithRange />
-          </div>
+    <CanvaFrame className="aspect-auto overflow-auto">
+      <div className="flex h-full flex-col flex-wrap justify-center gap-8 lg:flex-row">
+        <CalendarSingle />
+        <CalendarMultiple />
+        <CalendarRange />
+        <CalendarBookedDates />
+        <CalendarRangeMultipleMonths />
+        <CalendarWithTime />
+        <CalendarWithPresets />
+        <CalendarCustomDays />
+        <div className="flex flex-col items-start gap-4 md:flex-row">
+          <DatePickerSimple />
+          <DataPickerWithDropdowns />
+          <DatePickerWithRange />
         </div>
       </div>
-    </div>
+    </CanvaFrame>
   )
 }
 

@@ -15,13 +15,13 @@ import {
   InputGroupInput,
 } from "@/registry/radix/ui/input-group"
 import { Spinner } from "@/registry/radix/ui/spinner"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function SpinnerDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background flex w-full max-w-[1500px] flex-col gap-12 rounded-xl p-8">
-        <div className="flex items-center gap-6">
+    <CanvaFrame className="flex-col items-start justify-start gap-12">
+      <div className="flex items-center gap-6">
           <Spinner />
           <Spinner className="size-8" />
         </div>
@@ -100,8 +100,7 @@ export default function SpinnerDemo() {
               </a>
             </Button>
           </EmptyContent>
-        </Empty>
-      </div>
-    </div>
+      </Empty>
+    </CanvaFrame>
   )
 }

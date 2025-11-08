@@ -2,11 +2,11 @@ import { Checkbox } from "@/registry/radix/ui/checkbox"
 import { Input } from "@/registry/radix/ui/input"
 import { Label } from "@/registry/radix/ui/label"
 import { Textarea } from "@/registry/radix/ui/textarea"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function LabelDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="grid w-full max-w-sm gap-6">
           <div className="flex items-center gap-3">
             <Checkbox id="label-demo-terms" />
@@ -27,7 +27,6 @@ export default function LabelDemo() {
             <Textarea id="label-demo-message" placeholder="Message" />
           </div>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

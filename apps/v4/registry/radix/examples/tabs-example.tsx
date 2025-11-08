@@ -15,13 +15,13 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/radix/ui/tabs"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function TabsDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
-        <div className="flex w-full max-w-sm flex-col gap-6">
+    <CanvaFrame>
+      <div className="flex w-full max-w-sm flex-col gap-6">
           <Tabs defaultValue="account">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="account">Account</TabsTrigger>
@@ -102,8 +102,7 @@ export default function TabsDemo() {
               </TabsTrigger>
             </TabsList>
           </Tabs>
-        </div>
       </div>
-    </div>
+    </CanvaFrame>
   )
 }

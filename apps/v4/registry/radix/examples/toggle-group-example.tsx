@@ -8,11 +8,11 @@ import {
 } from "lucide-react"
 
 import { ToggleGroup, ToggleGroupItem } from "@/registry/radix/ui/toggle-group"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function ToggleGroupDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex flex-wrap items-start gap-4">
           <ToggleGroup type="multiple" spacing={2}>
             <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -145,7 +145,6 @@ export default function ToggleGroupDemo() {
             </ToggleGroupItem>
           </ToggleGroup>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

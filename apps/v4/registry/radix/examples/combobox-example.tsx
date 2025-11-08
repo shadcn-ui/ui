@@ -25,6 +25,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/radix/ui/popover"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 const frameworks = [
   {
@@ -108,8 +109,7 @@ type Timezone = (typeof timezones)[number]
 
 export default function ComboboxDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex w-full flex-wrap items-start gap-4">
           <FrameworkCombobox frameworks={[...frameworks]} />
           <UserCombobox users={[...users]} selectedUserId={users[0].id} />
@@ -119,8 +119,7 @@ export default function ComboboxDemo() {
           />
           <ComboboxWithCheckbox frameworks={[...frameworks]} />
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }
 

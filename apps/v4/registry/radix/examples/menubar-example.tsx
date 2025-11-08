@@ -14,13 +14,13 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/registry/radix/ui/menubar"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function MenubarDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
-        <Menubar>
+    <CanvaFrame>
+      <Menubar>
           <MenubarMenu>
             <MenubarTrigger>File</MenubarTrigger>
             <MenubarContent>
@@ -128,8 +128,7 @@ export default function MenubarDemo() {
               </MenubarGroup>
             </MenubarContent>
           </MenubarMenu>
-        </Menubar>
-      </div>
-    </div>
+      </Menubar>
+    </CanvaFrame>
   )
 }

@@ -18,11 +18,11 @@ import { Input } from "@/registry/radix/ui/input"
 import { RadioGroup, RadioGroupItem } from "@/registry/radix/ui/radio-group"
 import { Switch } from "@/registry/radix/ui/switch"
 import { Textarea } from "@/registry/radix/ui/textarea"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function FieldDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="@container w-full">
           <div className="bg-muted grid gap-4 p-4 @3xl:grid-cols-2 @5xl:grid-cols-3 @[120rem]:grid-cols-4 @[140rem]:grid-cols-5">
             <div className="flex flex-col gap-6">
@@ -30,8 +30,7 @@ export default function FieldDemo() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }
 

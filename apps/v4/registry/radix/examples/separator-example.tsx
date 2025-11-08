@@ -1,9 +1,9 @@
 import { Separator } from "@/registry/radix/ui/separator"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function SeparatorDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div>
           <div className="flex flex-col gap-1">
             <div className="text-sm leading-none font-medium">Tailwind CSS</div>
@@ -20,7 +20,6 @@ export default function SeparatorDemo() {
             <div>Source</div>
           </div>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

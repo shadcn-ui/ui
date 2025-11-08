@@ -1,11 +1,11 @@
 import { Alert, AlertDescription, AlertTitle } from "@/registry/radix/ui/alert"
 import { Button } from "@/registry/radix/ui/button"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function AlertDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="grid max-w-xl items-start gap-4">
           <Alert>
             <IconPlaceholder icon="PlaceholderIcon" />
@@ -110,7 +110,6 @@ export default function AlertDemo() {
             </Button>
           </Alert>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/registry/radix/ui/sheet"
-import { CanvaFrame } from "@/app/(app)/design/components/canva"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 

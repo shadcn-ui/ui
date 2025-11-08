@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import { Progress } from "@/registry/radix/ui/progress"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function ProgressDemo() {
   const [progress, setProgress] = React.useState(13)
@@ -13,10 +14,8 @@ export default function ProgressDemo() {
   }, [])
 
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <Progress value={progress} className="w-[60%]" />
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

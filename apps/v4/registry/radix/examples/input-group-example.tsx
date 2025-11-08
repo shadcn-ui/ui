@@ -63,13 +63,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix/ui/tooltip"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function InputGroupDemo() {
   const [country, setCountry] = useState("+1")
 
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex w-full flex-wrap gap-12 pb-72 *:[div]:w-full *:[div]:max-w-sm">
           <div className="flex flex-col gap-10">
             <Field>
@@ -701,7 +701,6 @@ export default function InputGroupDemo() {
             </Field>
           </div>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

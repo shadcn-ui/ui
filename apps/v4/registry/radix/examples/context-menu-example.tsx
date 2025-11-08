@@ -13,72 +13,69 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/registry/radix/ui/context-menu"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ContextMenuDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
-        <ContextMenu>
-          <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
-            Right click here
-          </ContextMenuTrigger>
-          <ContextMenuContent className="w-64">
-            <ContextMenuItem inset>
-              Back
-              <ContextMenuShortcut>⌘[</ContextMenuShortcut>
-            </ContextMenuItem>
-            <ContextMenuItem inset disabled>
-              Forward
-              <ContextMenuShortcut>⌘]</ContextMenuShortcut>
-            </ContextMenuItem>
-            <ContextMenuItem inset>
-              Reload
-              <ContextMenuShortcut>⌘R</ContextMenuShortcut>
-            </ContextMenuItem>
-            <ContextMenuSub>
-              <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
-              <ContextMenuSubContent className="w-48">
-                <ContextMenuItem inset>
-                  Save Page...
-                  <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
-                </ContextMenuItem>
-                <ContextMenuItem>
-                  <IconPlaceholder icon="PlaceholderIcon" />
-                  Create Shortcut...
-                </ContextMenuItem>
-                <ContextMenuItem inset>Name Window...</ContextMenuItem>
-                <ContextMenuSeparator />
-                <ContextMenuItem>
-                  <IconPlaceholder icon="PlaceholderIcon" />
-                  Developer Tools
-                </ContextMenuItem>
-                <ContextMenuSeparator />
-                <ContextMenuItem variant="destructive">
-                  <IconPlaceholder icon="PlaceholderIcon" />
-                  Delete
-                </ContextMenuItem>
-              </ContextMenuSubContent>
-            </ContextMenuSub>
-            <ContextMenuSeparator />
-            <ContextMenuCheckboxItem checked>
-              Show Bookmarks Bar
-              <ContextMenuShortcut>⌘⇧B</ContextMenuShortcut>
-            </ContextMenuCheckboxItem>
-            <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-            <ContextMenuSeparator />
-            <ContextMenuRadioGroup value="pedro">
-              <ContextMenuLabel inset>People</ContextMenuLabel>
-              <ContextMenuRadioItem value="pedro">
-                Pedro Duarte
-              </ContextMenuRadioItem>
-              <ContextMenuRadioItem value="colm">
-                Colm Tuite
-              </ContextMenuRadioItem>
-            </ContextMenuRadioGroup>
-          </ContextMenuContent>
-        </ContextMenu>
-      </div>
-    </div>
+    <CanvaFrame>
+      <ContextMenu>
+        <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+          Right click here
+        </ContextMenuTrigger>
+        <ContextMenuContent className="w-64">
+          <ContextMenuItem inset>
+            Back
+            <ContextMenuShortcut>⌘[</ContextMenuShortcut>
+          </ContextMenuItem>
+          <ContextMenuItem inset disabled>
+            Forward
+            <ContextMenuShortcut>⌘]</ContextMenuShortcut>
+          </ContextMenuItem>
+          <ContextMenuItem inset>
+            Reload
+            <ContextMenuShortcut>⌘R</ContextMenuShortcut>
+          </ContextMenuItem>
+          <ContextMenuSub>
+            <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
+            <ContextMenuSubContent className="w-48">
+              <ContextMenuItem inset>
+                Save Page...
+                <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
+              </ContextMenuItem>
+              <ContextMenuItem>
+                <IconPlaceholder icon="PlaceholderIcon" />
+                Create Shortcut...
+              </ContextMenuItem>
+              <ContextMenuItem inset>Name Window...</ContextMenuItem>
+              <ContextMenuSeparator />
+              <ContextMenuItem>
+                <IconPlaceholder icon="PlaceholderIcon" />
+                Developer Tools
+              </ContextMenuItem>
+              <ContextMenuSeparator />
+              <ContextMenuItem variant="destructive">
+                <IconPlaceholder icon="PlaceholderIcon" />
+                Delete
+              </ContextMenuItem>
+            </ContextMenuSubContent>
+          </ContextMenuSub>
+          <ContextMenuSeparator />
+          <ContextMenuCheckboxItem checked>
+            Show Bookmarks Bar
+            <ContextMenuShortcut>⌘⇧B</ContextMenuShortcut>
+          </ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+          <ContextMenuSeparator />
+          <ContextMenuRadioGroup value="pedro">
+            <ContextMenuLabel inset>People</ContextMenuLabel>
+            <ContextMenuRadioItem value="pedro">
+              Pedro Duarte
+            </ContextMenuRadioItem>
+            <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
+          </ContextMenuRadioGroup>
+        </ContextMenuContent>
+      </ContextMenu>
+    </CanvaFrame>
   )
 }

@@ -10,19 +10,18 @@ import {
   InputOTPSlot,
 } from "@/registry/radix/ui/input-otp"
 import { Label } from "@/registry/radix/ui/label"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function InputOTPDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex flex-col flex-wrap gap-6 md:flex-row">
           <InputOTPSimple />
           <InputOTPPattern />
           <InputOTPWithSeparator />
           <InputOTPWithSpacing />
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }
 

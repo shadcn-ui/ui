@@ -4,18 +4,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/registry/radix/ui/accordion"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function AccordionDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex w-full max-w-xl flex-col gap-12">
           <AccordionExample1 />
           <AccordionExample2 />
           <AccordionExample3 />
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }
 

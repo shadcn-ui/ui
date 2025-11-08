@@ -20,6 +20,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/registry/radix/ui/command"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function CommandDemo() {
   const [open, setOpen] = React.useState(false)
@@ -37,8 +38,7 @@ export default function CommandDemo() {
   }, [])
 
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <p className="text-muted-foreground text-sm">
           Press{" "}
           <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
@@ -83,7 +83,6 @@ export default function CommandDemo() {
             </CommandGroup>
           </CommandList>
         </CommandDialog>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

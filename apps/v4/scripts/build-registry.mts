@@ -3,11 +3,61 @@ import { existsSync, promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
 import { registrySchema } from "shadcn/schema"
+import { createStyleMap, transformStyle } from "shadcn/utils"
 
 import { getAllBlocks } from "@/lib/blocks"
 import { legacyStyles, type Style } from "@/registry/_legacy-styles"
+import {
+  COMPONENT_LIBRARIES,
+  type ComponentLibrary,
+} from "@/registry/component-libraries"
+import { styles } from "@/registry/styles"
 
-async function buildRegistryIndex(styles: Style[]) {
+try {
+  // const styles = Array.from(legacyStyles)
+
+  // // We need to build a bare index for all component libraries as well.
+  // const componentLibraries = Array.from(COMPONENT_LIBRARIES)
+  // const bases = [...styles, ...componentLibraries]
+  // console.log(
+  //   `\n🗂️ Building registry/__index__.tsx for ${bases.length} bases: ${bases.map((b) => b.name).join(", ")}...`
+  // )
+  // await buildRegistryIndex(bases)
+  // console.log(
+  //   `#️⃣  Built registry/__index__.tsx with ${bases.length} bases: ${bases.map((b) => b.name).join(", ")}`
+  // )
+
+  // for (const style of styles) {
+  //   console.log(`\n📦 Processing style: ${style.name}`)
+
+  //   console.log(`💅 Building registry-${style.name}.json...`)
+  //   await buildRegistryJsonFile(style.name)
+
+  //   console.log(`🏗️ Building registry for ${style.name}...`)
+  //   await buildRegistry(style.name)
+  // }
+
+  // console.log("\n🗂️ Building registry/__blocks__.json...")
+  // await buildBlocksIndex()
+
+  // // Clean up intermediate files.
+  // console.log("\n🧹 Cleaning up intermediate files...")
+  // for (const style of styles) {
+  //   if (existsSync(path.join(process.cwd(), `registry-${style.name}.json`))) {
+  //     await fs.unlink(path.join(process.cwd(), `registry-${style.name}.json`))
+  //   }
+  // }
+
+  console.log("\n🏗️ Building bases...")
+  await buildBases()
+
+  console.log("\n✅ Build complete!")
+} catch (error) {
+  console.error(error)
+  process.exit(1)
+}
+
+async function buildRegistryIndex(styles: (Style | ComponentLibrary)[]) {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // @ts-nocheck
@@ -87,10 +137,6 @@ export const Index: Record<string, Record<string, any>> = {`
 
   index += `
 }`
-
-  console.log(
-    `#️⃣  Built multi-style index with ${styles.length} styles: ${styles.map((s) => s.name).join(", ")}`
-  )
 
   // Write unified index.
   rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"))
@@ -196,39 +242,68 @@ async function buildBlocksIndex() {
   await exec(`prettier --write registry/__blocks__.json`)
 }
 
-try {
-  const styles = Array.from(legacyStyles)
-  console.log(
-    `🎨 Found ${styles.length} styles: ${styles.map((s) => s.name).join(", ")}`
-  )
+async function buildBases() {
+  for (const componentLibrary of COMPONENT_LIBRARIES) {
+    // Dynamically import the registry for this style.
+    const { registry: importedRegistry } = await import(
+      `../registry/${componentLibrary.name}/registry.ts`
+    )
 
-  // Build unified multi-style index.
-  console.log("\n🗂️ Building unified multi-style registry/__index__.tsx...")
-  await buildRegistryIndex(styles)
+    // Validate the registry schema.
+    const parseResult = registrySchema.safeParse(importedRegistry)
+    if (!parseResult.success) {
+      console.error(
+        `❌ Registry validation failed for ${componentLibrary.name}:`
+      )
+      console.error(parseResult.error.format())
+      throw new Error(`Invalid registry schema for ${componentLibrary.name}`)
+    }
 
-  for (const style of styles) {
-    console.log(`\n📦 Processing style: ${style.name}`)
+    const registryItems = parseResult.data.items.filter(
+      (item) => item.type === "registry:ui"
+    )
 
-    console.log(`💅 Building registry-${style.name}.json...`)
-    await buildRegistryJsonFile(style.name)
+    for (const style of styles) {
+      console.log(`\n💅 Building ${componentLibrary.name}-${style.name}...`)
 
-    console.log(`🏗️ Building registry for ${style.name}...`)
-    await buildRegistry(style.name)
-  }
+      // Read the content of the style file.
+      const styleContent = await fs.readFile(
+        path.join(process.cwd(), `registry/styles/style-${style.name}.css`),
+        "utf8"
+      )
 
-  console.log("\n🗂️ Building registry/__blocks__.json...")
-  await buildBlocksIndex()
+      const styleMap = createStyleMap(styleContent)
 
-  // Clean up intermediate files.
-  console.log("\n🧹 Cleaning up intermediate files...")
-  for (const style of styles) {
-    if (existsSync(path.join(process.cwd(), `registry-${style.name}.json`))) {
-      await fs.unlink(path.join(process.cwd(), `registry-${style.name}.json`))
+      for (const registryItem of registryItems) {
+        console.log(
+          `👉 Building ${componentLibrary.name}-${style.name}-${registryItem.name}...`
+        )
+
+        // We're only parsing ui for now.
+        // We can assume one file per registry item.
+        const source = await fs.readFile(
+          path.join(
+            process.cwd(),
+            `registry/${componentLibrary.name}/ui/${registryItem.name}.tsx`
+          ),
+          "utf8"
+        )
+
+        const transformedContent = await transformStyle(source, {
+          styleMap: styleMap,
+        })
+
+        // Ensure the output directory exists before writing the file.
+        const outputDir = path.join(
+          process.cwd(),
+          `registry/${componentLibrary.name}-${style.name}/ui`
+        )
+        await fs.mkdir(outputDir, { recursive: true })
+        await fs.writeFile(
+          path.join(outputDir, `${registryItem.name}.tsx`),
+          transformedContent
+        )
+      }
     }
   }
-
-  console.log("\n✅ Build complete!")
-} catch (error) {
-  console.error(error)
-  process.exit(1)
 }

@@ -13,13 +13,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix/ui/tooltip"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function KbdDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
-        <div className="flex max-w-xs flex-col items-start gap-4">
+    <CanvaFrame>
+      <div className="flex max-w-xs flex-col items-start gap-4">
           <div className="flex items-center gap-2">
             <Kbd>Ctrl</Kbd>
             <Kbd>⌘K</Kbd>
@@ -100,8 +100,7 @@ export default function KbdDemo() {
           <Kbd>
             <samp>File</samp>
           </Kbd>
-        </div>
       </div>
-    </div>
+    </CanvaFrame>
   )
 }

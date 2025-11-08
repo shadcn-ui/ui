@@ -5,13 +5,13 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/registry/radix/ui/hover-card"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function HoverCardDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
-        <HoverCard>
+    <CanvaFrame>
+      <HoverCard>
           <HoverCardTrigger asChild>
             <Button variant="link">@nextjs</Button>
           </HoverCardTrigger>
@@ -38,8 +38,7 @@ export default function HoverCardDemo() {
               </div>
             </div>
           </HoverCardContent>
-        </HoverCard>
-      </div>
-    </div>
+      </HoverCard>
+    </CanvaFrame>
   )
 }

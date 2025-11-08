@@ -130,6 +130,16 @@ import {
   SelectValue,
 } from "@/registry/radix/ui/select"
 import { Separator } from "@/registry/radix/ui/separator"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/registry/radix/ui/sheet"
 import { Slider } from "@/registry/radix/ui/slider"
 import { Spinner } from "@/registry/radix/ui/spinner"
 import { Switch } from "@/registry/radix/ui/switch"
@@ -139,8 +149,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/radix/ui/tooltip"
-import { CanvaFrame } from "@/app/(app)/design/components/canva"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const SAMPLE_DATA = {
   mentionable: [
@@ -249,7 +259,7 @@ const options = [
 
 export default function CoverExample() {
   return (
-    <CanvaFrame>
+    <CanvaFrame className="items-start">
       <div className="grid grid-cols-4 gap-8">
         <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
           <FieldDemo />
@@ -259,6 +269,7 @@ export default function CoverExample() {
           <SpinnerBadge />
           <ButtonGroupInputGroup />
           <FieldSlider />
+          <SheetDemo />
           <InputGroupDemo />
         </div>
         <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
@@ -1438,5 +1449,58 @@ function SpinnerEmpty() {
         </div>
       </EmptyContent>
     </Empty>
+  )
+}
+
+const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
+
+function SheetDemo() {
+  return (
+    <div className="flex gap-2">
+      {SHEET_SIDES.map((side) => (
+        <Sheet key={side}>
+          <SheetTrigger asChild>
+            <Button variant="secondary" className="flex-1 capitalize">
+              {side}
+            </Button>
+          </SheetTrigger>
+          <SheetContent
+            side={side}
+            className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
+          >
+            <SheetHeader>
+              <SheetTitle>Edit profile</SheetTitle>
+              <SheetDescription>
+                Make changes to your profile here. Click save when you&apos;re
+                done.
+              </SheetDescription>
+            </SheetHeader>
+            <div className="overflow-y-auto px-4 text-sm">
+              <h4 className="mb-4 text-lg leading-none font-medium">
+                Lorem Ipsum
+              </h4>
+              {Array.from({ length: 10 }).map((_, index) => (
+                <p key={index} className="mb-4 leading-normal">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </p>
+              ))}
+            </div>
+            <SheetFooter>
+              <Button type="submit">Save changes</Button>
+              <SheetClose asChild>
+                <Button variant="outline">Cancel</Button>
+              </SheetClose>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
+      ))}
+    </div>
   )
 }

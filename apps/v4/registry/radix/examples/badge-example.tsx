@@ -1,10 +1,10 @@
 import { Badge } from "@/registry/radix/ui/badge"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function BadgeDemo() {
   return (
-    <div className="flex h-full items-center justify-center">
-      <div className="bg-background w-full max-w-[1500px] rounded-xl p-8">
+    <CanvaFrame>
         <div className="flex flex-col items-center gap-2">
           <div className="flex w-full flex-wrap gap-2">
             <Badge>Badge</Badge>
@@ -58,7 +58,6 @@ export default function BadgeDemo() {
             </Badge>
           </div>
         </div>
-      </div>
-    </div>
+      </CanvaFrame>
   )
 }

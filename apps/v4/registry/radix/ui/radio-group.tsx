@@ -4,7 +4,7 @@ import * as React from "react"
 import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 function RadioGroup({
   className,
