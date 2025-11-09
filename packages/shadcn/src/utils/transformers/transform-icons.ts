@@ -4,9 +4,6 @@ import { InvalidConfigIconLibraryError } from "@/src/registry/errors"
 import { Transformer } from "@/src/utils/transformers"
 import { SourceFile, SyntaxKind } from "ts-morph"
 
-const ICON_PLACEHOLDER_IMPORT_PATH =
-  "@/app/(app)/design/components/icon-placeholder"
-
 export const transformIcons: Transformer = async ({ sourceFile, config }) => {
   const iconLibrary = config.iconLibrary
   if (!iconLibrary) {
@@ -120,7 +117,7 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
 
   for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
     const moduleSpecifier = importDeclaration.getModuleSpecifier()?.getText()
-    if (moduleSpecifier === `"${ICON_PLACEHOLDER_IMPORT_PATH}"`) {
+    if (moduleSpecifier?.includes("icon-placeholder")) {
       const namedImports = importDeclaration.getNamedImports() ?? []
       const iconPlaceholderImport = namedImports.find(
         (specifier) => specifier.getName() === "IconPlaceholder"

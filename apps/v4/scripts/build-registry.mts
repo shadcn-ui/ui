@@ -186,12 +186,19 @@ async function buildBases(bases: Base[]) {
       // Create a registry.ts file in the output directory.
       const styleRegistry = {
         ...baseRegistry,
-        items: registryItems.map((item) => ({
-          ...item,
-          files: item.files?.map((file) => ({
-            ...file,
-          })),
-        })),
+        items: [
+          // We need to add the base and an index.
+          // Index for backward compatibility with CLI.
+          {
+            ...base,
+            name: "index",
+          },
+          {
+            ...base,
+            name: `${base.name}-${style.name}`,
+          },
+          ...registryItems,
+        ],
       }
       const registryTs = `export const registry = ${JSON.stringify(styleRegistry, null, 2)}\n`
       await fs.writeFile(path.join(styleOutputDir, "registry.ts"), registryTs)

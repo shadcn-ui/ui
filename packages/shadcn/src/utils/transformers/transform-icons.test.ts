@@ -38,7 +38,7 @@ describe("transformIconPlaceholder", () => {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <div><IconPlaceholder icon="CheckIcon" /></div>
@@ -66,7 +66,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" className="size-4" aria-label="check" />
@@ -94,7 +94,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return (
@@ -132,7 +132,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react";
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder";
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder";
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" />;
@@ -162,7 +162,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <div><IconPlaceholder icon="CheckIcon" /></div>
@@ -190,7 +190,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" className="size-4" aria-label="check" />
@@ -218,7 +218,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return (
@@ -256,7 +256,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react";
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder";
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder";
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" />;
@@ -286,7 +286,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <div><IconPlaceholder icon="CheckIcon" /></div>
@@ -315,7 +315,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" className="size-4" />
@@ -344,7 +344,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" strokeWidth={4} />
@@ -373,7 +373,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return (
@@ -413,7 +413,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" />
@@ -424,7 +424,7 @@ export function Component() {
       )
     ).toMatchInlineSnapshot(`
       "import * as React from "react"
-      import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+      import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
       export function Component() {
         return <IconPlaceholder icon="CheckIcon" />
@@ -438,7 +438,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="NonExistentIcon" />
@@ -465,7 +465,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" aria-label="check icon here" className="size-4" />
@@ -493,7 +493,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" />
@@ -521,7 +521,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" />
@@ -544,13 +544,41 @@ export function Component() {
     `)
   })
 
+  test("removes IconPlaceholder import after transformation", async () => {
+    const result = await transform(
+      {
+        filename: "test.tsx",
+        raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+
+export function Component() {
+  return <IconPlaceholder icon="CheckIcon" />
+}`,
+        config: {
+          ...testConfig,
+          iconLibrary: "lucide",
+        },
+      },
+      [transformIcons]
+    )
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { CheckIcon } from "lucide-react"
+
+      export function Component() {
+        return <CheckIcon />
+      }"
+    `)
+  })
+
   test("throws InvalidConfigIconLibraryError for invalid icon library", async () => {
     await expect(
       transform(
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(app)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder icon="CheckIcon" />

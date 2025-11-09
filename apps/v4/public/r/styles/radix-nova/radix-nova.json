@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radix-nova",
+  "type": "registry:style",
+  "title": "Radix UI",
+  "description": "Optimized for fast development, easy maintenance, and accessibility.",
+  "dependencies": [
+    "radix-ui"
+  ]
+}

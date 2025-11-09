@@ -3,6 +3,22 @@ export const registry = {
   homepage: "https://ui.shadcn.com",
   items: [
     {
+      name: "index",
+      type: "registry:style",
+      title: "Radix UI",
+      description:
+        "Optimized for fast development, easy maintenance, and accessibility.",
+      dependencies: ["radix-ui"],
+    },
+    {
+      name: "radix-nova",
+      type: "registry:style",
+      title: "Radix UI",
+      description:
+        "Optimized for fast development, easy maintenance, and accessibility.",
+      dependencies: ["radix-ui"],
+    },
+    {
       name: "accordion",
       type: "registry:ui",
       dependencies: ["radix-ui"],
