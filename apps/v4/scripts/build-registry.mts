@@ -174,8 +174,36 @@ async function buildBases(bases: Base[]) {
     )
 
     for (const style of STYLES) {
-      console.log(`\n💅 Building ${base.name}-${style.name}...`)
+      console.log(`  \n💅 Building ${base.name}-${style.name}...`)
 
+      // Create the base-style output directory if it doesn't exist.
+      const styleOutputDir = path.join(
+        process.cwd(),
+        `registry/${base.name}-${style.name}`
+      )
+      console.log(`  👉 Creating output directory: ${styleOutputDir}`)
+      rimraf.sync(styleOutputDir)
+      await fs.mkdir(styleOutputDir, {
+        recursive: true,
+      })
+
+      // Create a registry.ts file in the output directory.
+      console.log(
+        `  👉 Writing registry.ts file: ${styleOutputDir}/registry.ts`
+      )
+      const styleRegistry = {
+        ...baseRegistry,
+        items: registryItems.map((item) => ({
+          ...item,
+          files: item.files?.map((file) => ({
+            ...file,
+          })),
+        })),
+      }
+      const registryTs = `export const registry = ${JSON.stringify(styleRegistry, null, 2)}\n`
+      await fs.writeFile(path.join(styleOutputDir, "registry.ts"), registryTs)
+
+      console.log(`  👉 Creating styleMap for ${style.name}...`)
       const styleContent = await fs.readFile(
         path.join(process.cwd(), `registry/styles/style-${style.name}.css`),
         "utf8"
@@ -183,10 +211,6 @@ async function buildBases(bases: Base[]) {
       const styleMap = createStyleMap(styleContent)
 
       for (const registryItem of registryItems) {
-        console.log(
-          `👉 Building ${base.name}-${style.name}-${registryItem.name}...`
-        )
-
         // We're only parsing ui for now.
         // We can assume one file per registry item.
         const source = await fs.readFile(

@@ -11,5 +11,9 @@
   ],
   "files.exclude": {
     "deprecated": true
+  },
+  "search.exclude": {
+    "apps/v4/registry/radix-*": true,
+    "apps/v4/public/r/*": true
   }
 }
