@@ -5,7 +5,7 @@ import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
 import { cn } from "@/lib/utils"
-import { fonts } from "@/registry/fonts"
+import { FONTS } from "@/registry/fonts"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Card,
@@ -34,9 +34,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york-v4/ui/popover"
-import { presets } from "@/registry/presets"
-import { styles } from "@/registry/styles"
-import { themes } from "@/registry/themes"
+import { PRESETS } from "@/registry/presets"
+import { STYLES } from "@/registry/styles"
+import { THEMES } from "@/registry/themes"
 import { BaseColorPicker } from "@/app/(design)/design/components/base-color-picker"
 import { FontPicker } from "@/app/(design)/design/components/font-picker"
 import { IconLibraryPicker } from "@/app/(design)/design/components/icon-library-picker"
@@ -50,7 +50,7 @@ export function Customizer() {
   })
 
   const handleSelectPreset = React.useCallback(
-    (preset: (typeof presets)[number]) => {
+    (preset: (typeof PRESETS)[number]) => {
       setParams({
         style: preset.style,
         baseColor: preset.baseColor,
@@ -70,7 +70,7 @@ export function Customizer() {
         </CardHeader>
         <CardContent className="p-4">
           <FieldGroup className="flex flex-col gap-4">
-            {presets.map((preset, index) => (
+            {PRESETS.map((preset, index) => (
               <Button
                 key={index}
                 variant="outline"
@@ -98,11 +98,11 @@ export function Customizer() {
         </CardHeader>
         <CardContent className="p-4">
           <FieldGroup className="flex flex-col gap-4">
-            <StylePicker styles={styles} />
+            <StylePicker styles={STYLES} />
             <BaseColorPicker />
-            <ThemePicker themes={themes} />
+            <ThemePicker themes={THEMES} />
             <IconLibraryPicker />
-            <FontPicker fonts={fonts} />
+            <FontPicker fonts={FONTS} />
           </FieldGroup>
         </CardContent>
       </Card>

@@ -2,13 +2,13 @@
 
 import * as React from "react"
 
-import type { ComponentLibrary } from "@/registry/component-libraries"
+import type { Base } from "@/registry/bases"
 import { CMD_K_FORWARD_TYPE } from "@/app/(design)/design/components/item-picker"
 import { useDesignSystemSync } from "@/app/(design)/design/hooks/use-design-system"
 
 const MESSAGE_TYPE = "design-system-params"
 
-export function Preview({ library }: { library: ComponentLibrary["name"] }) {
+export function Preview({ base }: { base: Base["name"] }) {
   const params = useDesignSystemSync()
   const iframeRef = React.useRef<HTMLIFrameElement>(null)
   const [initialParams] = React.useState(params)
@@ -79,7 +79,7 @@ export function Preview({ library }: { library: ComponentLibrary["name"] }) {
     return null
   }
 
-  const iframeSrc = `/preview/${library}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
+  const iframeSrc = `/preview/${base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
 
   return (
     <div className="relative flex flex-1 flex-col overflow-hidden">

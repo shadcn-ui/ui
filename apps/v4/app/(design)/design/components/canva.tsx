@@ -245,7 +245,7 @@ export const Canva = React.memo(function Canva({
     >
       <InfiniteViewer
         ref={canvaRef}
-        className="bg-muted h-screen w-full"
+        className="section-soft h-screen w-full"
         margin={0}
         displayVerticalScroll={false}
         displayHorizontalScroll={false}
@@ -281,7 +281,7 @@ export function CanvaFrame({
     <div
       data-slot="canva-frame"
       className={cn(
-        "bg-background no-scrollbar flex aspect-[1.5/1] max-w-(--canva-frame-width) scroll-pb-8 overflow-hidden rounded-xl p-8",
+        "bg-background no-scrollbar ring-border flex aspect-[1.5/1] max-w-(--canva-frame-width) scroll-pb-8 overflow-hidden rounded-xl p-8 ring-1",
         className
       )}
       {...props}

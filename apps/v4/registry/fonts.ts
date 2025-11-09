@@ -43,7 +43,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 })
 
-export const fonts = [
+export const FONTS = [
   {
     name: "Inter",
     value: "inter",
@@ -81,14 +81,4 @@ export const fonts = [
   },
 ] as const
 
-export type Font = (typeof fonts)[number]
-
-export const fontMap = {
-  inter,
-  "noto-sans": notoSans,
-  "nunito-sans": nunitoSans,
-  figtree,
-  "jetbrains-mono": jetbrainsMono,
-  "geist-sans": geistSans,
-  "geist-mono": geistMono,
-} as const
+export type Font = (typeof FONTS)[number]

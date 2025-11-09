@@ -1,26 +1,40 @@
-"use server"
+import "server-only"
 
-import { getRegistryItem, getRegistryItems } from "@/lib/registry"
+import { registryItemSchema } from "shadcn/schema"
+
+import { Base } from "@/registry/bases"
 
 const allowedTypes = ["registry:example"]
 
-export async function getRegistryItemsForLibrary(library: any) {
-  const items = await getRegistryItems(
-    library,
-    (item) => allowedTypes.includes(item.type) && item !== null
-  )
+export async function getItemsForBase(base: Base["name"]) {
+  const { Index } = await import("@/registry/bases/__index__")
+  const index = Index[base]
 
-  return items
+  if (!index) {
+    return []
+  }
+
+  return Object.values(index).filter((item) => allowedTypes.includes(item.type))
 }
 
-export async function getRegistryItemForLibrary(name: string, library: any) {
-  const item = await getRegistryItem(name, library)
+export async function getBaseItem(name: string, base: Base["name"]) {
+  const { Index } = await import("@/registry/bases/__index__")
+  const index = Index[base]
 
-  console.log(item)
-
-  if (!item || !allowedTypes.includes(item.type)) {
+  if (!index?.[name]) {
     return null
   }
 
-  return item
+  return registryItemSchema.parse(index[name])
+}
+
+export async function getBaseComponent(name: string, base: Base["name"]) {
+  const { Index } = await import("@/registry/bases/__index__")
+  const index = Index[base]
+
+  if (!index?.[name]) {
+    return null
+  }
+
+  return index[name].component
 }

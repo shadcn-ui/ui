@@ -4,7 +4,7 @@ import * as React from "react"
 import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
-import { BASE_COLORS, Theme } from "@/registry/themes"
+import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
 import {
   CustomizerItem,
   CustomizerPicker,
@@ -20,7 +20,7 @@ export function BaseColorPicker() {
   })
 
   const handleSelect = React.useCallback(
-    (baseColor: Theme["name"]) => {
+    (baseColor: BaseColor["name"]) => {
       setParams({ baseColor })
       setOpen(false)
     },

@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useTheme } from "next-themes"
 
-import { fontMap } from "@/registry/fonts"
+import { FONTS } from "@/registry/fonts"
 import { useDesignSystemParam } from "@/app/(design)/design/hooks/use-design-system"
 import { buildTheme } from "@/app/(design)/design/lib/merge-theme"
 
@@ -50,10 +50,10 @@ export function DesignSystemProvider({
     })
     body.classList.add(baseColorClass)
 
-    const selectedFont = fontMap[font as keyof typeof fontMap]
+    const selectedFont = FONTS.find((f) => f.value === font)
     let hasFont = false
     if (selectedFont) {
-      const fontFamily = selectedFont.style.fontFamily
+      const fontFamily = selectedFont.font.style.fontFamily
       document.documentElement.style.setProperty("--font-sans", fontFamily)
       hasFont = true
     }

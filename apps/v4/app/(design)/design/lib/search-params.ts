@@ -6,9 +6,10 @@ import {
 } from "nuqs/server"
 import { iconLibraries, IconLibraryName } from "shadcn/icons"
 
-import { fonts, type Font } from "@/registry/fonts"
-import { styles, type Style } from "@/registry/styles"
-import { BASE_COLORS, themes, type Theme } from "@/registry/themes"
+import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
+import { FONTS, type Font } from "@/registry/fonts"
+import { STYLES, type Style } from "@/registry/styles"
+import { THEMES, type Theme } from "@/registry/themes"
 
 export const designSystemSearchParams = {
   item: parseAsString.withDefault("cover-example"),
@@ -16,15 +17,15 @@ export const designSystemSearchParams = {
     Object.values(iconLibraries).map((i) => i.name)
   ).withDefault("lucide"),
   style: parseAsStringLiteral<Style["name"]>(
-    styles.map((s) => s.name)
+    STYLES.map((s) => s.name)
   ).withDefault("default"),
   theme: parseAsStringLiteral<Theme["name"]>(
-    themes.map((t) => t.name)
+    THEMES.map((t) => t.name)
   ).withDefault("neutral"),
   font: parseAsStringLiteral<Font["value"]>(
-    fonts.map((f) => f.value)
+    FONTS.map((f) => f.value)
   ).withDefault("inter"),
-  baseColor: parseAsStringLiteral<Theme["name"]>(
+  baseColor: parseAsStringLiteral<BaseColor["name"]>(
     BASE_COLORS.map((b) => b.name)
   ).withDefault("neutral"),
 }

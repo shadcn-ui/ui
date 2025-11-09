@@ -1,13 +1,11 @@
 import { RegistryItem, registryItemSchema } from "shadcn/schema"
 
-import { BASE_COLORS, themes } from "@/registry/themes"
+import { BASE_COLORS } from "@/registry/base-colors"
+import { THEMES } from "@/registry/themes"
 
-export function buildTheme(
-  baseColorName: string,
-  themeName: string
-): RegistryItem {
+export function buildTheme(baseColorName: string, themeName: string) {
   const baseColor = BASE_COLORS.find((c) => c.name === baseColorName)
-  const theme = themes.find((t) => t.name === themeName)
+  const theme = THEMES.find((t) => t.name === themeName)
 
   if (!baseColor || !theme) {
     throw new Error(

@@ -6,10 +6,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card"
-      className={cn(
-        "bg-card text-card-foreground flex flex-col",
-        className
-      )}
+      className={cn("bg-card text-card-foreground flex flex-col", className)}
       {...props}
     />
   )
@@ -29,22 +26,12 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-title"
-      className={cn(className)}
-      {...props}
-    />
-  )
+  return <div data-slot="card-title" className={cn(className)} {...props} />
 }
 
 function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
-      data-slot="card-description"
-      className={cn(className)}
-      {...props}
-    />
+    <div data-slot="card-description" className={cn(className)} {...props} />
   )
 }
 
@@ -62,13 +49,7 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function CardContent({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-content"
-      className={cn(className)}
-      {...props}
-    />
-  )
+  return <div data-slot="card-content" className={cn(className)} {...props} />
 }
 
 function CardFooter({ className, ...props }: React.ComponentProps<"div">) {

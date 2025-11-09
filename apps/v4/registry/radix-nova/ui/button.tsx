@@ -9,11 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-primary-foreground bg-linear-to-b from-[color-mix(in_oklch,var(--primary)_85%,var(--background))] to-(--primary) hover:bg-linear-to-t",
-        outline: "border-border bg-linear-to-b from-[color-mix(in_oklch,var(--accent)_25%,var(--background))] to-(--accent) shadow-none hover:bg-linear-to-t",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        destructive: "bg-linear-to-b from-[color-mix(in_oklch,var(--destructive)_85%,var(--background))] to-(--destructive) text-white hover:bg-linear-to-t",
+        default:
+          "text-primary-foreground bg-linear-to-b from-[color-mix(in_oklch,var(--primary)_85%,var(--background))] to-(--primary) hover:bg-linear-to-t",
+        outline:
+          "border-border bg-linear-to-b from-[color-mix(in_oklch,var(--accent)_25%,var(--background))] to-(--accent) shadow-none hover:bg-linear-to-t",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost:
+          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        destructive:
+          "bg-linear-to-b from-[color-mix(in_oklch,var(--destructive)_85%,var(--background))] to-(--destructive) text-white hover:bg-linear-to-t",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

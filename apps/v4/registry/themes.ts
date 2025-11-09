@@ -1,6 +1,6 @@
 import { RegistryItem } from "shadcn/schema"
 
-export const themes: RegistryItem[] = [
+export const THEMES: RegistryItem[] = [
   {
     name: "neutral",
     title: "Neutral",
@@ -531,8 +531,4 @@ export const themes: RegistryItem[] = [
   },
 ] as const satisfies RegistryItem[]
 
-export type Theme = (typeof themes)[number]
-
-export const BASE_COLORS = themes.filter((theme) =>
-  ["zinc", "neutral", "stone", "gray"].includes(theme.name)
-)
+export type Theme = (typeof THEMES)[number]

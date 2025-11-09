@@ -1,4 +1,4 @@
-export const presets = [
+export const PRESETS = [
   {
     title: "Preset One",
     style: "nova",
@@ -25,4 +25,4 @@ export const presets = [
   },
 ] as const
 
-export type Preset = (typeof presets)[number]
+export type Preset = (typeof PRESETS)[number]
