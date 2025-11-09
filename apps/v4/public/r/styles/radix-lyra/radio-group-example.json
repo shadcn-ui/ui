@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group-example",
+  "type": "registry:example",
+  "title": "Radio Group",
+  "registryDependencies": [
+    "radio-group"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-lyra/examples/radio-group-example.tsx",
+      "content": "import { Label } from \"@/registry/bases/radix/ui/label\"\nimport {\n  RadioGroup,\n  RadioGroupItem,\n} from \"@/registry/bases/radix/ui/radio-group\"\nimport { CanvaFrame } from \"@/app/(design)/design/components/canva\"\n\nconst plans = [\n  {\n    id: \"starter\",\n    name: \"Starter Plan\",\n    description:\n      \"Perfect for small businesses getting started with our platform\",\n    price: \"$10\",\n  },\n  {\n    id: \"pro\",\n    name: \"Pro Plan\",\n    description: \"Advanced features for growing businesses with higher demands\",\n    price: \"$20\",\n  },\n] as const\n\nexport default function RadioGroupDemo() {\n  return (\n    <CanvaFrame>\n      <div className=\"flex flex-col gap-6\">\n        <RadioGroup defaultValue=\"comfortable\">\n          <div className=\"flex items-center gap-3\">\n            <RadioGroupItem value=\"default\" id=\"r1\" />\n            <Label htmlFor=\"r1\">Default</Label>\n          </div>\n          <div className=\"flex items-center gap-3\">\n            <RadioGroupItem value=\"comfortable\" id=\"r2\" />\n            <Label htmlFor=\"r2\">Comfortable</Label>\n          </div>\n          <div className=\"flex items-center gap-3\">\n            <RadioGroupItem value=\"compact\" id=\"r3\" />\n            <Label htmlFor=\"r3\">Compact</Label>\n          </div>\n        </RadioGroup>\n        <RadioGroup defaultValue=\"starter\" className=\"max-w-sm\">\n          {plans.map((plan) => (\n            <Label\n              className=\"hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-4 has-[[data-state=checked]]:border-green-600 has-[[data-state=checked]]:bg-green-50 dark:has-[[data-state=checked]]:border-green-900 dark:has-[[data-state=checked]]:bg-green-950\"\n              key={plan.id}\n            >\n              <RadioGroupItem\n                value={plan.id}\n                id={plan.name}\n                className=\"shadow-none data-[state=checked]:border-green-600 data-[state=checked]:bg-green-600 *:data-[slot=radio-group-indicator]:[&>svg]:fill-white *:data-[slot=radio-group-indicator]:[&>svg]:stroke-white\"\n              />\n              <div className=\"grid gap-1 font-normal\">\n                <div className=\"font-medium\">{plan.name}</div>\n                <div className=\"text-muted-foreground leading-snug\">\n                  {plan.description}\n                </div>\n              </div>\n            </Label>\n          ))}\n        </RadioGroup>\n      </div>\n    </CanvaFrame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

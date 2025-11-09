@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton-example",
+  "type": "registry:example",
+  "title": "Skeleton",
+  "registryDependencies": [
+    "skeleton"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-maia/examples/skeleton-example.tsx",
+      "content": "import { Card, CardContent, CardHeader } from \"@/registry/bases/radix/ui/card\"\nimport { Skeleton } from \"@/registry/bases/radix/ui/skeleton\"\nimport { CanvaFrame } from \"@/app/(design)/design/components/canva\"\n\nexport default function SkeletonDemo() {\n  return (\n    <CanvaFrame>\n      <div className=\"flex w-full flex-wrap items-start gap-4\">\n        <div className=\"flex items-center gap-4\">\n          <Skeleton className=\"size-10 shrink-0 rounded-full\" />\n          <div className=\"grid gap-2\">\n            <Skeleton className=\"h-4 w-[150px]\" />\n            <Skeleton className=\"h-4 w-[100px]\" />\n          </div>\n        </div>\n        <div className=\"flex w-full flex-wrap items-start gap-4\">\n          {Array.from({ length: 3 }).map((_, index) => (\n            <Card key={index} className=\"w-full @md:w-auto @md:min-w-sm\">\n              <CardHeader>\n                <Skeleton className=\"h-4 w-2/3\" />\n                <Skeleton className=\"h-4 w-1/2\" />\n              </CardHeader>\n              <CardContent>\n                <Skeleton className=\"aspect-square w-full\" />\n              </CardContent>\n            </Card>\n          ))}\n        </div>\n      </div>\n    </CanvaFrame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

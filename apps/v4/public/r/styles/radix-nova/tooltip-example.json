@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-example",
+  "type": "registry:example",
+  "title": "Tooltip",
+  "registryDependencies": [
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/tooltip-example.tsx",
+      "content": "import { Button } from \"@/registry/bases/radix/ui/button\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/registry/bases/radix/ui/tooltip\"\nimport { CanvaFrame } from \"@/app/(design)/design/components/canva\"\nimport { IconPlaceholder } from \"@/app/(design)/design/components/icon-placeholder\"\n\nexport default function TooltipDemo() {\n  return (\n    <CanvaFrame>\n      <div className=\"flex flex-wrap items-start gap-4\">\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <Button variant=\"outline\">Hover</Button>\n          </TooltipTrigger>\n          <TooltipContent>\n            <p>Add to library</p>\n          </TooltipContent>\n        </Tooltip>\n        <div className=\"flex gap-2\">\n          {[\"top\", \"right\", \"bottom\", \"left\"].map((side) => (\n            <Tooltip key={side}>\n              <TooltipTrigger asChild>\n                <Button variant=\"outline\" className=\"capitalize\">\n                  {side}\n                </Button>\n              </TooltipTrigger>\n              <TooltipContent\n                side={side as \"top\" | \"right\" | \"bottom\" | \"left\"}\n              >\n                <p>Add to library</p>\n              </TooltipContent>\n            </Tooltip>\n          ))}\n        </div>\n        <Tooltip>\n          <TooltipTrigger asChild>\n            <Button variant=\"ghost\" size=\"icon\">\n              <IconPlaceholder icon=\"PlaceholderIcon\" />\n              <span className=\"sr-only\">Info</span>\n            </Button>\n          </TooltipTrigger>\n          <TooltipContent>\n            To learn more about how this works, check out the docs. If you have\n            any questions, please reach out to us.\n          </TooltipContent>\n        </Tooltip>\n      </div>\n    </CanvaFrame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

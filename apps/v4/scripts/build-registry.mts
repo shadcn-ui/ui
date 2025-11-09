@@ -166,9 +166,7 @@ async function buildBases(bases: Base[]) {
       throw new Error(`Invalid registry schema for ${base.name}`)
     }
 
-    const registryItems = result.data.items.filter(
-      (item) => item.type === "registry:ui"
-    )
+    const registryItems = result.data.items
 
     for (const style of STYLES) {
       console.log(`  \n👉 Building ${base.name}-${style.name}...`)
@@ -210,30 +208,38 @@ async function buildBases(bases: Base[]) {
       const styleMap = createStyleMap(styleContent)
 
       for (const registryItem of registryItems) {
-        // We're only parsing ui for now.
-        // We can assume one file per registry item.
-        const source = await fs.readFile(
-          path.join(
+        // Process all files in the registry item.
+        if (!registryItem.files || registryItem.files.length === 0) {
+          continue
+        }
+
+        for (const file of registryItem.files) {
+          const source = await fs.readFile(
+            path.join(
+              process.cwd(),
+              `registry/bases/${base.name}/${file.path}`
+            ),
+            "utf8"
+          )
+
+          // Transform the file if it's a TSX/TS file that needs style transformation.
+          const fileExtension = path.extname(file.path)
+          const shouldTransform =
+            fileExtension === ".tsx" || fileExtension === ".ts"
+          const transformedContent = shouldTransform
+            ? await transformStyle(source, {
+                styleMap: styleMap,
+              })
+            : source
+
+          const outputPath = path.join(
             process.cwd(),
-            `registry/bases/${base.name}/ui/${registryItem.name}.tsx`
-          ),
-          "utf8"
-        )
-
-        const transformedContent = await transformStyle(source, {
-          styleMap: styleMap,
-        })
-
-        // Ensure the output directory exists before writing the file.
-        const outputDir = path.join(
-          process.cwd(),
-          `registry/${base.name}-${style.name}/ui`
-        )
-        await fs.mkdir(outputDir, { recursive: true })
-        await fs.writeFile(
-          path.join(outputDir, `${registryItem.name}.tsx`),
-          transformedContent
-        )
+            `registry/${base.name}-${style.name}/${file.path}`
+          )
+          const outputDir = path.dirname(outputPath)
+          await fs.mkdir(outputDir, { recursive: true })
+          await fs.writeFile(outputPath, transformedContent)
+        }
       }
     }
   }

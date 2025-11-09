@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog-example",
+  "type": "registry:example",
+  "title": "Alert Dialog",
+  "registryDependencies": [
+    "alert-dialog",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-maia/examples/alert-dialog-example.tsx",
+      "content": "import {\n  AlertDialog,\n  AlertDialogAction,\n  AlertDialogCancel,\n  AlertDialogContent,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"@/registry/bases/radix/ui/alert-dialog\"\nimport { Button } from \"@/registry/bases/radix/ui/button\"\nimport { CanvaFrame } from \"@/app/(design)/design/components/canva\"\n\nexport default function AlertDialogDemo() {\n  return (\n    <CanvaFrame>\n      <div className=\"flex gap-6\">\n        <AlertDialog>\n          <AlertDialogTrigger asChild>\n            <Button variant=\"outline\">Show Dialog</Button>\n          </AlertDialogTrigger>\n          <AlertDialogContent>\n            <AlertDialogHeader>\n              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>\n              <AlertDialogDescription>\n                This action cannot be undone. This will permanently delete your\n                account and remove your data from our servers.\n              </AlertDialogDescription>\n            </AlertDialogHeader>\n            <AlertDialogFooter>\n              <AlertDialogCancel>Cancel</AlertDialogCancel>\n              <AlertDialogAction>Continue</AlertDialogAction>\n            </AlertDialogFooter>\n          </AlertDialogContent>\n        </AlertDialog>\n        <AlertDialog>\n          <AlertDialogTrigger asChild>\n            <Button>Connect Mouse</Button>\n          </AlertDialogTrigger>\n          <AlertDialogContent className=\"sm:max-w-xs\">\n            <AlertDialogHeader>\n              <AlertDialogTitle className=\"text-center\">\n                Allow accessory to connect?\n              </AlertDialogTitle>\n              <AlertDialogDescription className=\"text-center\">\n                Do you want to allow the USB accessory to connect to this\n                device?\n              </AlertDialogDescription>\n            </AlertDialogHeader>\n            <AlertDialogFooter className=\"grid grid-cols-2 gap-4\">\n              <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>\n              <AlertDialogAction>Allow</AlertDialogAction>\n            </AlertDialogFooter>\n          </AlertDialogContent>\n        </AlertDialog>\n      </div>\n    </CanvaFrame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

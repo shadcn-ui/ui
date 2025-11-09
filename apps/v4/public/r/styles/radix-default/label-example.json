@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-example",
+  "type": "registry:example",
+  "title": "Label",
+  "registryDependencies": [
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-default/examples/label-example.tsx",
+      "content": "import { Checkbox } from \"@/registry/bases/radix/ui/checkbox\"\nimport { Input } from \"@/registry/bases/radix/ui/input\"\nimport { Label } from \"@/registry/bases/radix/ui/label\"\nimport { Textarea } from \"@/registry/bases/radix/ui/textarea\"\nimport { CanvaFrame } from \"@/app/(design)/design/components/canva\"\n\nexport default function LabelDemo() {\n  return (\n    <CanvaFrame>\n      <div className=\"grid w-full max-w-sm gap-6\">\n        <div className=\"flex items-center gap-3\">\n          <Checkbox id=\"label-demo-terms\" />\n          <Label htmlFor=\"label-demo-terms\">Accept terms and conditions</Label>\n        </div>\n        <div className=\"grid gap-3\">\n          <Label htmlFor=\"label-demo-username\">Username</Label>\n          <Input id=\"label-demo-username\" placeholder=\"Username\" />\n        </div>\n        <div className=\"group grid gap-3\" data-disabled={true}>\n          <Label htmlFor=\"label-demo-disabled\">Disabled</Label>\n          <Input id=\"label-demo-disabled\" placeholder=\"Disabled\" disabled />\n        </div>\n        <div className=\"grid gap-3\">\n          <Label htmlFor=\"label-demo-message\">Message</Label>\n          <Textarea id=\"label-demo-message\" placeholder=\"Message\" />\n        </div>\n      </div>\n    </CanvaFrame>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

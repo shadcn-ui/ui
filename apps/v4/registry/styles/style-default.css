@@ -98,4 +98,8 @@
   .cn-textarea {
     @apply dark:bg-input/30 border-input rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] md:text-sm;
   }
+
+  .cn-foo {
+    @apply bg-red-500;
+  }
 }
