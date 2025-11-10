@@ -2,6 +2,7 @@
   "@8bitcn": "https://8bitcn.com/r/{name}.json",
   "@97cn": "https://97cn.itzik.co/r/{name}.json",
   "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
+  "@aevr": "https://ui.aevr.space/r/{name}.json",
   "@ai-elements": "https://registry.ai-sdk.dev/{name}.json",
   "@alexcarpenter": "https://ui.alexcarpenter.me/r/{name}.json",
   "@algolia": "https://sitesearch.algolia.com/r/{name}.json",
@@ -17,6 +18,7 @@
   "@bucharitesh": "https://bucharitesh.in/r/{name}.json",
   "@clerk": "https://clerk.com/r/{name}.json",
   "@coss": "https://coss.com/ui/r/{name}.json",
+  "@commercn": "https://commercn.com/r/{name}.json",
   "@chisom-ui": "https://chisom-ui.netlify.app/r/{name}.json",
   "@creative-tim": "https://www.creative-tim.com/ui/r/{name}.json",
   "@cult-ui": "https://cult-ui.com/r/{name}.json",
@@ -79,5 +81,6 @@
   "@shadcndesign": "https://shadcndesign-free.vercel.app/r/{name}.json",
   "@ha-components": "https://hacomponents.keshuac.com/r/{name}.json",
   "@shadix-ui": "https://shadix-ui.vercel.app/r/{name}.json",
-  "@utilcn": "https://utilcn.dev/r/{name}.json"
+  "@utilcn": "https://utilcn.dev/r/{name}.json",
+  "@hextaui": "https://hextaui.com/r/{name}.json"
 }

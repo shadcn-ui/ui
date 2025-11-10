@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Search, X, XCircle } from "lucide-react"
+import { Search, X } from "lucide-react"
 
 import { useSearchRegistry } from "@/hooks/use-search-registry"
 import { Field } from "@/registry/new-york-v4/ui/field"
@@ -36,7 +36,7 @@ export const SearchDirectory = () => {
             size="icon-xs"
             onClick={() => setQuery(null)}
           >
-            <XCircle />
+            {query?.length > 0 && <X />}
           </InputGroupButton>
         </InputGroupAddon>
       </InputGroup>
