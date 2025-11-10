@@ -157,7 +157,7 @@
     @apply bg-selection text-selection-foreground;
   }
   html {
-    @apply overscroll-none scroll-smooth;
+    @apply overscroll-y-none scroll-smooth;
   }
   body {
     font-synthesis-weight: none;
