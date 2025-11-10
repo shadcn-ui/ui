@@ -9,13 +9,13 @@ function finderFn<T extends (typeof globalRegistries)[0]>(
   registry: T,
   query: string
 ) {
-  const normilizedName = normalizeQuery(registry.name)
-  const normilizedDecription = normalizeQuery(registry.description)
-  const normilizedQuery = normalizeQuery(query)
+  const normalizedName = normalizeQuery(registry.name)
+  const normalizedDecription = normalizeQuery(registry.description)
+  const normalizedQuery = normalizeQuery(query)
 
   return (
-    normilizedName.includes(normilizedQuery) ||
-    normilizedDecription.includes(normilizedQuery)
+    normalizedName.includes(normalizedQuery) ||
+    normalizedDecription.includes(normalizedQuery)
   )
 }
 
