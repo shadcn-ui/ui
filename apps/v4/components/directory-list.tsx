@@ -38,7 +38,7 @@ export function DirectoryList() {
       <ItemGroup className="my-8">
         {registries.map((registry, index) => (
           <React.Fragment key={index}>
-            <Item className="group/item relative gap-6 px-0 sm:px-4">
+            <Item className="group/item relative gap-6 px-0">
               <ItemMedia
                 variant="image"
                 dangerouslySetInnerHTML={{ __html: registry.logo }}

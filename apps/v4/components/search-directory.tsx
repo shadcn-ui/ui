@@ -25,18 +25,22 @@ export const SearchDirectory = () => {
           <Search />
         </InputGroupAddon>
         <InputGroupInput
-          placeholder="Search directory by name..."
+          placeholder="Search"
           value={query}
           onChange={onQueryChange}
         />
-        <InputGroupAddon align="inline-end">
+        <InputGroupAddon
+          align="inline-end"
+          data-disabled={!query.length}
+          className="data-[disabled=true]:hidden"
+        >
           <InputGroupButton
             aria-label="Clear"
             title="Clear"
             size="icon-xs"
             onClick={() => setQuery(null)}
           >
-            {query.length > 0 && <X />}
+            <X />
           </InputGroupButton>
         </InputGroupAddon>
       </InputGroup>
