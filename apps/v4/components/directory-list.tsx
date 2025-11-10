@@ -16,6 +16,14 @@ import {
   ItemTitle,
 } from "@/registry/new-york-v4/ui/item"
 
+function getHomepageUrl(homepage: string) {
+  const url = new URL(homepage)
+  url.searchParams.set("utm_source", "ui.shadcn.com")
+  url.searchParams.set("utm_medium", "referral")
+  url.searchParams.set("utm_campaign", "directory")
+  return url.toString()
+}
+
 export function DirectoryList() {
   return (
     <ItemGroup className="my-8">
@@ -30,9 +38,9 @@ export function DirectoryList() {
             <ItemContent>
               <ItemTitle>
                 <a
-                  href={registry.homepage}
+                  href={getHomepageUrl(registry.homepage)}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer external"
                 >
                   {registry.name}
                 </a>
@@ -46,9 +54,9 @@ export function DirectoryList() {
             <ItemActions className="relative z-10 hidden self-start sm:flex">
               <Button size="sm" variant="outline" asChild>
                 <a
-                  href={registry.homepage}
+                  href={getHomepageUrl(registry.homepage)}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer external"
                 >
                   View <IconArrowUpRight />
                 </a>
