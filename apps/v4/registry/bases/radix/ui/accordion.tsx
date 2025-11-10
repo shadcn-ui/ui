@@ -42,7 +42,9 @@ function AccordionTrigger({
       >
         {children}
         <IconPlaceholder
-          icon="AccordionTrigger"
+          lucide="ChevronDownIcon"
+          tabler="IconCircleChevronDown"
+          hugeicons="UnfoldMoreIcon"
           className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
         />
       </AccordionPrimitive.Trigger>

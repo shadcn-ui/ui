@@ -186,19 +186,31 @@ export default function NavigationMenuDemo() {
                   <li>
                     <NavigationMenuLink asChild>
                       <Link href="#" className="flex-row items-center gap-2">
-                        <IconPlaceholder icon="PlaceholderIcon" />
+                        <IconPlaceholder
+                          lucide="CircleDashedIcon"
+                          tabler="IconCircleDashed"
+                          hugeicons="DashedLineCircleIcon"
+                        />
                         Backlog
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
                       <Link href="#" className="flex-row items-center gap-2">
-                        <IconPlaceholder icon="PlaceholderIcon" />
+                        <IconPlaceholder
+                          lucide="CircleDashedIcon"
+                          tabler="IconCircleDashed"
+                          hugeicons="DashedLineCircleIcon"
+                        />
                         To Do
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
                       <Link href="#" className="flex-row items-center gap-2">
-                        <IconPlaceholder icon="PlaceholderIcon" />
+                        <IconPlaceholder
+                          lucide="CircleDashedIcon"
+                          tabler="IconCircleDashed"
+                          hugeicons="DashedLineCircleIcon"
+                        />
                         Done
                       </Link>
                     </NavigationMenuLink>

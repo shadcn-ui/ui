@@ -75,7 +75,9 @@ function NavigationMenuTrigger({
     >
       {children}{" "}
       <IconPlaceholder
-        icon="PlaceholderIcon"
+        lucide="CircleDashedIcon"
+        tabler="IconCircleDashed"
+        hugeicons="DashedLineCircleIcon"
         className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
         aria-hidden="true"
       />

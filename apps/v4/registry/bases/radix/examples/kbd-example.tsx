@@ -42,7 +42,11 @@ export default function KbdDemo() {
         </div>
         <KbdGroup>
           <Kbd>
-            <IconPlaceholder icon="PlaceholderIcon" />
+            <IconPlaceholder
+              lucide="CircleDashedIcon"
+              tabler="IconCircleDashed"
+              hugeicons="DashedLineCircleIcon"
+            />
           </Kbd>
           <Kbd>
             <IconArrowLeft />
@@ -57,7 +61,11 @@ export default function KbdDemo() {
             Left
           </Kbd>
           <Kbd>
-            <IconPlaceholder icon="PlaceholderIcon" />
+            <IconPlaceholder
+              lucide="CircleDashedIcon"
+              tabler="IconCircleDashed"
+              hugeicons="DashedLineCircleIcon"
+            />
             Voice Enabled
           </Kbd>
         </KbdGroup>

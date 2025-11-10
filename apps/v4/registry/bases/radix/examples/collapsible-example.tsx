@@ -27,7 +27,12 @@ export default function CollapsibleDemo() {
           </h4>
           <CollapsibleTrigger asChild>
             <Button variant="ghost" size="sm">
-              <IconPlaceholder icon="PlaceholderIcon" className="h-4 w-4" />
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+                className="h-4 w-4"
+              />
               <span className="sr-only">Toggle</span>
             </Button>
           </CollapsibleTrigger>

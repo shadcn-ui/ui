@@ -3,12 +3,7 @@
 import * as React from "react"
 import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
-import {
-  iconLibraries,
-  IconLibraryName,
-  IconName,
-  type IconLibrary,
-} from "shadcn/icons"
+import { iconLibraries, IconLibraryName, type IconLibrary } from "shadcn/icons"
 
 import {
   CustomizerItem,
@@ -20,22 +15,56 @@ import { designSystemSearchParams } from "@/app/(design)/design/lib/search-param
 
 import { IconForIconLibrary } from "./icon-loader"
 
-const PREVIEW_ICONS = [
-  "CopyIcon",
-  "AlertCircleIcon",
-  "TrashIcon",
-  "ShareIcon",
-  "ShoppingBagIcon",
-  "MoreHorizontalIcon",
-  "SpinnerIcon",
-  "ArrowDownIcon",
-  "ArrowUpIcon",
-  "ArrowRightIcon",
-  "ArrowLeftIcon",
-  "CheckIcon",
-  "ChevronDownIcon",
-  "ChevronRightIcon",
-] as const
+const PREVIEW_ICONS = {
+  lucide: [
+    "CopyIcon",
+    "AlertCircleIcon",
+    "TrashIcon",
+    "ShareIcon",
+    "ShoppingBagIcon",
+    "MoreHorizontalIcon",
+    "Loader2Icon",
+    "ArrowDownIcon",
+    "ArrowUpIcon",
+    "ArrowRightIcon",
+    "ArrowLeftIcon",
+    "CheckIcon",
+    "ChevronDownIcon",
+    "ChevronRightIcon",
+  ],
+  tabler: [
+    "IconCopy",
+    "IconAlertCircle",
+    "IconTrash",
+    "IconShare",
+    "IconShoppingBag",
+    "IconDots",
+    "IconLoader",
+    "IconArrowDown",
+    "IconArrowUp",
+    "IconArrowRight",
+    "IconArrowLeft",
+    "IconCheck",
+    "IconChevronDown",
+    "IconChevronRight",
+  ],
+  hugeicons: [
+    "CopyIcon",
+    "AlertCircleIcon",
+    "Delete02Icon",
+    "ShareIcon",
+    "ShoppingBagIcon",
+    "MoreHorizontalIcon",
+    "Loading03Icon",
+    "ArrowDownIcon",
+    "ArrowUpIcon",
+    "ArrowRightIcon",
+    "ArrowLeftIcon",
+    "Tick01Icon",
+    "ArrowDown01Icon",
+    "ArrowRight01Icon",
+  ],
+}
 
 export function IconLibraryPicker() {
   const [open, setOpen] = React.useState(false)
@@ -117,12 +146,12 @@ const IconLibraryPreview = React.cache(function IconLibraryPreview({
 }) {
   return (
     <div className="grid w-full grid-cols-7 gap-2">
-      {PREVIEW_ICONS.map((iconName) => (
+      {PREVIEW_ICONS[iconLibrary].map((iconName) => (
         <div
           key={iconName}
           className="flex size-6 items-center justify-center *:[svg]:size-5"
         >
-          <IconForIconLibrary iconLibrary={iconLibrary} icon={iconName} />
+          <IconForIconLibrary iconLibrary={iconLibrary} iconName={iconName} />
         </div>
       ))}
     </div>

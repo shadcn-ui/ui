@@ -96,7 +96,12 @@ export default function SpinnerDemo() {
           </div>
           <Button variant="link" asChild className="text-muted-foreground">
             <a href="#">
-              Learn more <IconPlaceholder icon="ArrowRightIcon" />
+              Learn more{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </a>
           </Button>
         </EmptyContent>

@@ -101,7 +101,9 @@ function DropdownMenuCheckboxItem({
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
           <IconPlaceholder
-            icon="DropdownMenuCheckIndicator"
+            lucide="CheckIcon"
+            tabler="IconCheck"
+            hugeicons="Tick01Icon"
             className="size-4"
           />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -139,7 +141,9 @@ function DropdownMenuRadioItem({
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
           <IconPlaceholder
-            icon="DropdownMenuRadioIndicator"
+            lucide="CircleIcon"
+            tabler="IconCircle"
+            hugeicons="CircleIcon"
             className="size-2 fill-current"
           />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -227,7 +231,9 @@ function DropdownMenuSubTrigger({
     >
       {children}
       <IconPlaceholder
-        icon="DropdownMenuSubTriggerIcon"
+        lucide="ChevronRightIcon"
+        tabler="IconChevronRight"
+        hugeicons="ArrowRight01Icon"
         className="ml-auto size-4"
       />
     </DropdownMenuPrimitive.SubTrigger>

@@ -135,13 +135,25 @@ export default function CardDemo() {
           </CardContent>
           <CardFooter className="flex items-center gap-2">
             <Badge variant="outline">
-              <IconPlaceholder icon="PlaceholderIcon" /> 4
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              /> 4
             </Badge>
             <Badge variant="outline">
-              <IconPlaceholder icon="PlaceholderIcon" /> 2
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              /> 2
             </Badge>
             <Badge variant="outline">
-              <IconPlaceholder icon="PlaceholderIcon" /> 350m²
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              /> 350m²
             </Badge>
             <div className="ml-auto font-medium tabular-nums">$135,000</div>
           </CardFooter>

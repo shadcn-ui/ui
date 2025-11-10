@@ -129,7 +129,12 @@ function MenubarCheckboxItem({
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
-          <IconPlaceholder icon="PlaceholderIcon" className="size-4" />
+          <IconPlaceholder
+            lucide="CheckIcon"
+            tabler="IconCheck"
+            hugeicons="Tick01Icon"
+            className="size-4"
+          />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -154,7 +159,9 @@ function MenubarRadioItem({
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
           <IconPlaceholder
-            icon="PlaceholderIcon"
+            lucide="CircleIcon"
+            tabler="IconCircle"
+            hugeicons="CircleIcon"
             className="size-2 fill-current"
           />
         </MenubarPrimitive.ItemIndicator>
@@ -238,7 +245,12 @@ function MenubarSubTrigger({
       {...props}
     >
       {children}
-      <IconPlaceholder icon="PlaceholderIcon" className="ml-auto size-4" />
+      <IconPlaceholder
+        lucide="ChevronRightIcon"
+        tabler="IconChevronRight"
+        hugeicons="ArrowRight01Icon"
+        className="ml-auto size-4"
+      />
     </MenubarPrimitive.SubTrigger>
   )
 }

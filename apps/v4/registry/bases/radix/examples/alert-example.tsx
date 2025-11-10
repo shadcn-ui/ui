@@ -12,14 +12,22 @@ export default function AlertDemo() {
     <CanvaFrame>
       <div className="grid max-w-xl items-start gap-4">
         <Alert>
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertTitle>Success! Your changes have been saved</AlertTitle>
           <AlertDescription>
             This is an alert with icon, title and description.
           </AlertDescription>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertDescription>
             This one has an icon and a description only. No title.
           </AlertDescription>
@@ -30,11 +38,19 @@ export default function AlertDemo() {
           </AlertDescription>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertTitle>Let&apos;s try one with icon and title.</AlertTitle>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertTitle>
             This is a very long alert title that demonstrates how the component
             handles extended text content and potentially wraps across multiple
@@ -42,7 +58,11 @@ export default function AlertDemo() {
           </AlertTitle>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertDescription>
             This is a very long alert description that demonstrates how the
             component handles extended text content and potentially wraps across
@@ -50,7 +70,11 @@ export default function AlertDemo() {
           </AlertDescription>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertTitle>
             This is an extremely long alert title that spans multiple lines to
             demonstrate how the component handles very lengthy headings while
@@ -66,14 +90,22 @@ export default function AlertDemo() {
           </AlertDescription>
         </Alert>
         <Alert variant="destructive">
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertTitle>Something went wrong!</AlertTitle>
           <AlertDescription>
             Your session has expired. Please log in again.
           </AlertDescription>
         </Alert>
         <Alert variant="destructive">
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertTitle>Unable to process your payment.</AlertTitle>
           <AlertDescription>
             <p>Please verify your billing information and try again.</p>
@@ -85,7 +117,11 @@ export default function AlertDemo() {
           </AlertDescription>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertTitle className="max-w-[calc(100%-4rem)] overflow-ellipsis">
             The selected emails have been marked as spam.
           </AlertTitle>
@@ -98,7 +134,11 @@ export default function AlertDemo() {
           </Button>
         </Alert>
         <Alert>
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
           <AlertTitle className="max-w-[calc(100%-4rem)] overflow-ellipsis">
             The selected emails have been marked as spam.
           </AlertTitle>

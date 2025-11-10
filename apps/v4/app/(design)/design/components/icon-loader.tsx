@@ -2,7 +2,7 @@ import * as React from "react"
 import { Suspense } from "react"
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
 import { SquareIcon } from "lucide-react"
-import { IconLibraryName, IconName, icons } from "shadcn/icons"
+import { IconLibraryName } from "shadcn/icons"
 
 import { cn } from "@/lib/utils"
 
@@ -30,18 +30,13 @@ type IconPromise =
 
 export function IconForIconLibrary({
   iconLibrary,
-  icon,
+  iconName,
   className,
 }: {
   iconLibrary: IconLibraryName
-  icon: IconName
+  iconName: string
   className?: string
 }) {
-  const iconName = icons[icon]?.[iconLibrary]
-  if (!iconName) {
-    return null
-  }
-
   const cacheKey = `${iconLibrary}:${iconName}`
   const cachedComponent = resolvedIconCache.get(cacheKey)
 

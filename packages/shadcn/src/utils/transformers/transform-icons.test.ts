@@ -41,7 +41,7 @@ describe("transformIconPlaceholder", () => {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <div><IconPlaceholder icon="CheckIcon" /></div>
+  return <div><IconPlaceholder lucide="CheckIcon" /></div>
 }`,
             config: {
               ...testConfig,
@@ -69,7 +69,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" className="size-4" aria-label="check" />
+  return <IconPlaceholder lucide="CheckIcon" className="size-4" aria-label="check" />
 }`,
             config: {
               ...testConfig,
@@ -99,8 +99,8 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 export function Component() {
   return (
     <div>
-      <IconPlaceholder icon="CheckIcon" />
-      <IconPlaceholder icon="ArrowDownIcon" />
+      <IconPlaceholder lucide="CheckIcon" />
+      <IconPlaceholder lucide="ArrowDownIcon" />
     </div>
   )
 }`,
@@ -135,7 +135,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder";
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" />;
+  return <IconPlaceholder lucide="CheckIcon" />;
 }`,
             config: {
               ...testConfig,
@@ -165,7 +165,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <div><IconPlaceholder icon="CheckIcon" /></div>
+  return <div><IconPlaceholder tabler="IconCheck" /></div>
 }`,
             config: {
               ...testConfig,
@@ -193,7 +193,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" className="size-4" aria-label="check" />
+  return <IconPlaceholder tabler="IconCheck" className="size-4" aria-label="check" />
 }`,
             config: {
               ...testConfig,
@@ -223,8 +223,8 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 export function Component() {
   return (
     <div>
-      <IconPlaceholder icon="CheckIcon" />
-      <IconPlaceholder icon="ArrowDownIcon" />
+      <IconPlaceholder tabler="IconCheck" />
+      <IconPlaceholder tabler="IconArrowDown" />
     </div>
   )
 }`,
@@ -259,7 +259,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder";
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" />;
+  return <IconPlaceholder tabler="IconCheck" />;
 }`,
             config: {
               ...testConfig,
@@ -289,7 +289,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <div><IconPlaceholder icon="CheckIcon" /></div>
+  return <div><IconPlaceholder hugeicons="Tick01Icon" /></div>
 }`,
             config: {
               ...testConfig,
@@ -318,7 +318,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" className="size-4" />
+  return <IconPlaceholder hugeicons="Tick01Icon" className="size-4" />
 }`,
             config: {
               ...testConfig,
@@ -347,7 +347,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" strokeWidth={4} />
+  return <IconPlaceholder hugeicons="Tick01Icon" strokeWidth={4} />
 }`,
             config: {
               ...testConfig,
@@ -378,8 +378,8 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 export function Component() {
   return (
     <div>
-      <IconPlaceholder icon="CheckIcon" />
-      <IconPlaceholder icon="ArrowDownIcon" />
+      <IconPlaceholder hugeicons="Tick01Icon" />
+      <IconPlaceholder hugeicons="ArrowDown02Icon" />
     </div>
   )
 }`,
@@ -416,7 +416,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" />
+  return <IconPlaceholder lucide="CheckIcon" />
 }`,
           config: testConfig,
         },
@@ -427,12 +427,12 @@ export function Component() {
       import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
       export function Component() {
-        return <IconPlaceholder icon="CheckIcon" />
+        return <IconPlaceholder lucide="CheckIcon" />
       }"
     `)
   })
 
-  test("skips icons not in mapping", async () => {
+  test("skips icons when library prop is not provided", async () => {
     expect(
       await transform(
         {
@@ -441,7 +441,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="NonExistentIcon" />
+  return <IconPlaceholder tabler="IconCheck" />
 }`,
           config: {
             ...testConfig,
@@ -454,7 +454,7 @@ export function Component() {
       "import * as React from "react"
 
       export function Component() {
-        return <IconPlaceholder icon="NonExistentIcon" />
+        return <IconPlaceholder tabler="IconCheck" />
       }"
     `)
   })
@@ -468,7 +468,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" aria-label="check icon here" className="size-4" />
+  return <IconPlaceholder lucide="CheckIcon" aria-label="check icon here" className="size-4" />
 }`,
           config: {
             ...testConfig,
@@ -496,7 +496,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" />
+  return <IconPlaceholder lucide="CheckIcon" />
 }`,
           config: {
             ...testConfig,
@@ -524,7 +524,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" />
+  return <IconPlaceholder hugeicons="Tick01Icon" />
 }`,
           config: {
             ...testConfig,
@@ -552,7 +552,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" />
+  return <IconPlaceholder lucide="CheckIcon" />
 }`,
         config: {
           ...testConfig,
@@ -581,7 +581,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder icon="CheckIcon" />
+  return <IconPlaceholder lucide="CheckIcon" />
 }`,
           config: {
             ...testConfig,

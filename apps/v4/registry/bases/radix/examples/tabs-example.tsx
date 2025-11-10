@@ -93,11 +93,19 @@ export default function TabsDemo() {
         <Tabs defaultValue="preview">
           <TabsList>
             <TabsTrigger value="preview">
-              <IconPlaceholder icon="PlaceholderIcon" />
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
               Preview
             </TabsTrigger>
             <TabsTrigger value="code">
-              <IconPlaceholder icon="PlaceholderIcon" />
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
               Code
             </TabsTrigger>
           </TabsList>

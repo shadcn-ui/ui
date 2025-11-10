@@ -1,5 +1,4 @@
 import { iconLibraries, type IconLibraryName } from "@/src/icons/libaries"
-import { icons } from "@/src/icons/mapping"
 import { InvalidConfigIconLibraryError } from "@/src/registry/errors"
 import { Transformer } from "@/src/utils/transformers"
 import { SourceFile, SyntaxKind } from "ts-morph"
@@ -28,29 +27,24 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
       continue
     }
 
-    const iconAttr = element.getAttributes().find((attr) => {
+    // Find the library-specific prop (e.g., "lucide", "tabler", "hugeicons")
+    const libraryPropAttr = element.getAttributes().find((attr) => {
       if (attr.getKind() !== SyntaxKind.JsxAttribute) {
         return false
       }
       const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
-      return jsxAttr.getNameNode().getText() === "icon"
+      return jsxAttr.getNameNode().getText() === targetLibrary
     })
 
-    if (!iconAttr) {
-      continue
+    if (!libraryPropAttr) {
+      continue // No icon specified for this library
     }
 
-    const jsxIconAttr = iconAttr.asKindOrThrow(SyntaxKind.JsxAttribute)
-    const iconValue = jsxIconAttr
+    const jsxIconAttr = libraryPropAttr.asKindOrThrow(SyntaxKind.JsxAttribute)
+    const targetIconName = jsxIconAttr
       .getInitializer()
       ?.getText()
       .replace(/^["']|["']$/g, "")
-
-    if (!iconValue || !(iconValue in icons)) {
-      continue
-    }
-
-    const targetIconName = icons[iconValue as keyof typeof icons][targetLibrary]
 
     if (!targetIconName) {
       continue
@@ -63,8 +57,10 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
     const usage = libraryConfig.usage
     const usageMatch = usage.match(/<(\w+)([^>]*)\s*\/>/)
 
+    // Remove the library-specific prop
+    jsxIconAttr.remove()
+
     if (!usageMatch) {
-      jsxIconAttr.remove()
       element.getTagNameNode()?.replaceWithText(targetIconName)
       continue
     }
@@ -72,7 +68,6 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
     const [, componentName, defaultPropsStr] = usageMatch
 
     if (componentName === "ICON") {
-      jsxIconAttr.remove()
       element.getTagNameNode()?.replaceWithText(targetIconName)
     } else {
       const existingPropNames = new Set(
@@ -84,7 +79,10 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
           )
       )
 
-      const defaultPropsToAdd = defaultPropsStr
+      // Replace ICON placeholder in defaultPropsStr with actual icon name
+      const defaultPropsWithIcon = defaultPropsStr.replace(/\{ICON\}/g, `{${targetIconName}}`)
+
+      const defaultPropsToAdd = defaultPropsWithIcon
         .trim()
         .split(/\s+(?=\w+=)/)
         .filter((prop) => prop)
@@ -101,13 +99,14 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
             return true
           }
           const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
-          return jsxAttr.getNameNode().getText() !== "icon"
+          const attrName = jsxAttr.getNameNode().getText()
+          // Filter out library-specific props (lucide, tabler, hugeicons, etc.)
+          return !(attrName in iconLibraries)
         })
         .map((attr) => attr.getText())
         .join(" ")
 
-      const iconProp = `icon={${targetIconName}}`
-      const allProps = [iconProp, ...defaultPropsToAdd, userAttributes]
+      const allProps = [...defaultPropsToAdd, userAttributes]
         .filter(Boolean)
         .join(" ")
 

@@ -70,7 +70,9 @@ function CommandInput({
       className="flex h-9 items-center gap-2 border-b px-3"
     >
       <IconPlaceholder
-        icon="PlaceholderIcon"
+        lucide="CircleDashedIcon"
+        tabler="IconCircleDashed"
+        hugeicons="DashedLineCircleIcon"
         className="size-4 shrink-0 opacity-50"
       />
       <CommandPrimitive.Input

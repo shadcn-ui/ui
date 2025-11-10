@@ -111,16 +111,28 @@ export default function MenubarDemo() {
           <MenubarContent>
             <MenubarGroup>
               <MenubarItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                 Settings
               </MenubarItem>
               <MenubarItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                 Help
               </MenubarItem>
               <MenubarSeparator />
               <MenubarItem variant="destructive">
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                 Delete
               </MenubarItem>
             </MenubarGroup>

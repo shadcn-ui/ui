@@ -55,186 +55,420 @@ export default function ButtonDemo() {
         <div className="flex w-full max-w-2xl flex-col gap-6">
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
             <Button size="sm">
-              Default <IconPlaceholder icon="ArrowRightIcon" />
+              Default{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="sm" variant="secondary">
-              Secondary <IconPlaceholder icon="ArrowRightIcon" />
+              Secondary{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="sm" variant="outline">
-              Outline <IconPlaceholder icon="ArrowRightIcon" />
+              Outline{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="sm" variant="ghost">
-              Ghost <IconPlaceholder icon="ArrowRightIcon" />
+              Ghost{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="sm" variant="destructive">
-              Destructive <IconPlaceholder icon="ArrowRightIcon" />
+              Destructive{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="sm" variant="link">
-              Link <IconPlaceholder icon="ArrowRightIcon" />
+              Link{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
             <Button>
-              Default <IconPlaceholder icon="ArrowRightIcon" />
+              Default{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button variant="secondary">
-              Secondary <IconPlaceholder icon="ArrowRightIcon" />
+              Secondary{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button variant="outline">
-              Outline <IconPlaceholder icon="ArrowRightIcon" />
+              Outline{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button variant="ghost">
-              Ghost <IconPlaceholder icon="ArrowRightIcon" />
+              Ghost{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button variant="destructive">
-              Destructive <IconPlaceholder icon="ArrowRightIcon" />
+              Destructive{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button variant="link">
-              Link <IconPlaceholder icon="ArrowRightIcon" />
+              Link{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
             <Button size="lg">
-              Default <IconPlaceholder icon="ArrowRightIcon" />
+              Default{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="lg" variant="secondary">
-              Secondary <IconPlaceholder icon="ArrowRightIcon" />
+              Secondary{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="lg" variant="outline">
-              Outline <IconPlaceholder icon="ArrowRightIcon" />
+              Outline{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="lg" variant="ghost">
-              Ghost <IconPlaceholder icon="ArrowRightIcon" />
+              Ghost{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="lg" variant="destructive">
-              Destructive <IconPlaceholder icon="ArrowRightIcon" />
+              Destructive{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="lg" variant="link">
-              Link <IconPlaceholder icon="ArrowRightIcon" />
+              Link{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
           </div>
         </div>
         <div className="flex w-full max-w-2xl flex-col gap-6">
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
             <Button size="sm">
-              <IconPlaceholder icon="ArrowRightIcon" /> Default
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Default
             </Button>
             <Button size="sm" variant="secondary">
-              <IconPlaceholder icon="ArrowRightIcon" /> Secondary
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Secondary
             </Button>
             <Button size="sm" variant="outline">
-              <IconPlaceholder icon="ArrowRightIcon" /> Outline
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Outline
             </Button>
             <Button size="sm" variant="ghost">
-              <IconPlaceholder icon="ArrowRightIcon" /> Ghost
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Ghost
             </Button>
             <Button size="sm" variant="destructive">
-              <IconPlaceholder icon="ArrowRightIcon" /> Destructive
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Destructive
             </Button>
             <Button size="sm" variant="link">
-              <IconPlaceholder icon="ArrowRightIcon" /> Link
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Link
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
             <Button>
-              <IconPlaceholder icon="ArrowRightIcon" /> Default
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Default
             </Button>
             <Button variant="secondary">
-              <IconPlaceholder icon="ArrowRightIcon" /> Secondary
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Secondary
             </Button>
             <Button variant="outline">
-              <IconPlaceholder icon="ArrowRightIcon" /> Outline
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Outline
             </Button>
             <Button variant="ghost">
-              <IconPlaceholder icon="ArrowRightIcon" /> Ghost
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Ghost
             </Button>
             <Button variant="destructive">
-              <IconPlaceholder icon="ArrowRightIcon" /> Destructive
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Destructive
             </Button>
             <Button variant="link">
-              <IconPlaceholder icon="ArrowRightIcon" /> Link
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Link
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
             <Button size="lg">
-              <IconPlaceholder icon="ArrowRightIcon" /> Default
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Default
             </Button>
             <Button size="lg" variant="secondary">
-              <IconPlaceholder icon="ArrowRightIcon" /> Secondary
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Secondary
             </Button>
             <Button size="lg" variant="outline">
-              <IconPlaceholder icon="ArrowRightIcon" /> Outline
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Outline
             </Button>
             <Button size="lg" variant="ghost">
-              <IconPlaceholder icon="ArrowRightIcon" /> Ghost
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Ghost
             </Button>
             <Button size="lg" variant="destructive">
-              <IconPlaceholder icon="ArrowRightIcon" /> Destructive
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Destructive
             </Button>
             <Button size="lg" variant="link">
-              <IconPlaceholder icon="ArrowRightIcon" /> Link
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              /> Link
             </Button>
           </div>
         </div>
         <div className="flex w-full max-w-2xl flex-col gap-6">
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
             <Button size="icon-sm">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-sm" variant="secondary">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-sm" variant="outline">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-sm" variant="ghost">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-sm" variant="destructive">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-sm" variant="link">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
             <Button size="icon">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon" variant="secondary">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon" variant="outline">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon" variant="ghost">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon" variant="destructive">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon" variant="link">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
             <Button size="icon-lg">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-lg" variant="secondary">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-lg" variant="outline">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-lg" variant="ghost">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-lg" variant="destructive">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
             <Button size="icon-lg" variant="link">
-              <IconPlaceholder icon="ArrowRightIcon" />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
             </Button>
           </div>
         </div>
@@ -243,13 +477,22 @@ export default function ButtonDemo() {
             <div className="flex items-center gap-2">
               <Button variant="outline">Cancel</Button>
               <Button>
-                Submit <IconPlaceholder icon="ArrowRightIcon" />
+                Submit{" "}
+                <IconPlaceholder
+                  lucide="ArrowRightIcon"
+                  tabler="IconArrowRight"
+                  hugeicons="ArrowRight02Icon"
+                />
               </Button>
             </div>
             <div className="flex items-center gap-2">
               <Button variant="destructive">Delete</Button>
               <Button size="icon">
-                <IconPlaceholder icon="ArrowRightIcon" />
+                <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
               </Button>
             </div>
           </div>

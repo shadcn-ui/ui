@@ -174,7 +174,9 @@ function CalendarWithTime() {
             <Label htmlFor="time-from">Start Time</Label>
             <div className="relative flex w-full items-center gap-2">
               <IconPlaceholder
-                icon="PlaceholderIcon"
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
                 className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
               />
               <Input
@@ -190,7 +192,9 @@ function CalendarWithTime() {
             <Label htmlFor="time-to">End Time</Label>
             <div className="relative flex w-full items-center gap-2">
               <IconPlaceholder
-                icon="PlaceholderIcon"
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
                 className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
               />
               <Input
@@ -320,7 +324,9 @@ function DatePickerSimple() {
             )}
           >
             <IconPlaceholder
-              icon="PlaceholderIcon"
+              lucide="CircleDashedIcon"
+              tabler="IconCircleDashed"
+              hugeicons="DashedLineCircleIcon"
               className="text-muted-foreground"
             />
             {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -354,7 +360,9 @@ function DatePickerWithRange() {
             )}
           >
             <IconPlaceholder
-              icon="PlaceholderIcon"
+              lucide="CircleDashedIcon"
+              tabler="IconCircleDashed"
+              hugeicons="DashedLineCircleIcon"
               className="text-muted-foreground"
             />
             {date?.from ? (
@@ -405,7 +413,9 @@ function DataPickerWithDropdowns() {
             >
               {date ? format(date, "PPP") : <span>Pick a date</span>}
               <IconPlaceholder
-                icon="PlaceholderIcon"
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
                 className="text-muted-foreground ml-auto"
               />
             </Button>
@@ -439,7 +449,9 @@ function DataPickerWithDropdowns() {
             >
               {date ? format(date, "PPP") : <span>Pick a date</span>}
               <IconPlaceholder
-                icon="PlaceholderIcon"
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
                 className="text-muted-foreground ml-auto"
               />
             </Button>

@@ -202,7 +202,11 @@ export default function ItemDemo() {
             </Item>
             <Item variant="outline">
               <ItemMedia variant="icon">
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
               </ItemMedia>
               <ItemContent>
                 <ItemTitle>Item Title</ItemTitle>
@@ -213,7 +217,11 @@ export default function ItemDemo() {
             </Item>
             <Item variant="muted">
               <ItemMedia variant="icon">
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
               </ItemMedia>
               <ItemContent>
                 <ItemTitle>Item Title</ItemTitle>
@@ -256,7 +264,11 @@ export default function ItemDemo() {
                         size="icon"
                         className="size-8 rounded-full"
                       >
-                        <IconPlaceholder icon="PlaceholderIcon" />
+                        <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                       </Button>
                     </ItemActions>
                   </Item>

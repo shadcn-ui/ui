@@ -12,11 +12,19 @@ export default function BadgeDemo() {
           <Badge variant="destructive">Destructive</Badge>
           <Badge variant="outline">Outline</Badge>
           <Badge variant="outline">
-            <IconPlaceholder icon="PlaceholderIcon" />
+            <IconPlaceholder
+              lucide="CircleDashedIcon"
+              tabler="IconCircleDashed"
+              hugeicons="DashedLineCircleIcon"
+            />
             Badge
           </Badge>
           <Badge variant="destructive">
-            <IconPlaceholder icon="PlaceholderIcon" />
+            <IconPlaceholder
+              lucide="CircleDashedIcon"
+              tabler="IconCircleDashed"
+              hugeicons="DashedLineCircleIcon"
+            />
             Alert
           </Badge>
           <Badge className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
@@ -38,22 +46,42 @@ export default function BadgeDemo() {
         <div className="flex w-full flex-wrap gap-2">
           <Badge asChild>
             <a href="#">
-              Link <IconPlaceholder icon="PlaceholderIcon" />
+              Link{" "}
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
             </a>
           </Badge>
           <Badge asChild variant="secondary">
             <a href="#">
-              Link <IconPlaceholder icon="PlaceholderIcon" />
+              Link{" "}
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
             </a>
           </Badge>
           <Badge asChild variant="destructive">
             <a href="#">
-              Link <IconPlaceholder icon="PlaceholderIcon" />
+              Link{" "}
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
             </a>
           </Badge>
           <Badge asChild variant="outline">
             <a href="#">
-              Link <IconPlaceholder icon="PlaceholderIcon" />
+              Link{" "}
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
             </a>
           </Badge>
         </div>

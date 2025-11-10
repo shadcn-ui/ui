@@ -38,7 +38,11 @@ export default function TooltipDemo() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Button variant="ghost" size="icon">
-              <IconPlaceholder icon="PlaceholderIcon" />
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
               <span className="sr-only">Info</span>
             </Button>
           </TooltipTrigger>

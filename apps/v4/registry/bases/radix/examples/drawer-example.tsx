@@ -98,7 +98,11 @@ function DrawerBottom() {
                 onClick={() => onClick(-10)}
                 disabled={goal <= 200}
               >
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                 <span className="sr-only">Decrease</span>
               </Button>
               <div className="flex-1 text-center">
@@ -116,7 +120,11 @@ function DrawerBottom() {
                 onClick={() => onClick(10)}
                 disabled={goal >= 400}
               >
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                 <span className="sr-only">Increase</span>
               </Button>
             </div>

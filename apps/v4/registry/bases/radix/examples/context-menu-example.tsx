@@ -44,18 +44,30 @@ export default function ContextMenuDemo() {
                 <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
               </ContextMenuItem>
               <ContextMenuItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                 Create Shortcut...
               </ContextMenuItem>
               <ContextMenuItem inset>Name Window...</ContextMenuItem>
               <ContextMenuSeparator />
               <ContextMenuItem>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                 Developer Tools
               </ContextMenuItem>
               <ContextMenuSeparator />
               <ContextMenuItem variant="destructive">
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                 Delete
               </ContextMenuItem>
             </ContextMenuSubContent>

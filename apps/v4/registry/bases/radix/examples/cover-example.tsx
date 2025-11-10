@@ -456,7 +456,11 @@ function ButtonGroupDemo() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon-sm" aria-label="More Options">
-              <IconPlaceholder icon="PlaceholderIcon" />
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
@@ -519,10 +523,18 @@ function ButtonGroupDemo() {
       </ButtonGroup>
       <ButtonGroup>
         <Button variant="outline" size="icon-sm" aria-label="Previous">
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
         </Button>
         <Button variant="outline" size="icon-sm" aria-label="Next">
-          <IconPlaceholder icon="PlaceholderIcon" />
+          <IconPlaceholder
+            lucide="CircleDashedIcon"
+            tabler="IconCircleDashed"
+            hugeicons="DashedLineCircleIcon"
+          />
         </Button>
       </ButtonGroup>
     </ButtonGroup>
@@ -595,22 +607,38 @@ function ButtonGroupPopover() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="!pl-2">
-              <IconPlaceholder icon="ChevronDownIcon" />
+              <IconPlaceholder
+                lucide="ChevronDownIcon"
+                tabler="IconChevronDown"
+                hugeicons="ArrowDown01Icon"
+              />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuGroup>
               <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
               <DropdownMenuItem>
-                <IconPlaceholder icon="VolumeOffIcon" />
+                <IconPlaceholder
+                  lucide="VolumeOffIcon"
+                  tabler="IconVolume"
+                  hugeicons="VolumeOffIcon"
+                />
                 Mute Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="CheckIcon" />
+                <IconPlaceholder
+                  lucide="CheckIcon"
+                  tabler="IconCheck"
+                  hugeicons="Tick01Icon"
+                />
                 Mark as Read
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="UserRoundXIcon" />
+                <IconPlaceholder
+                  lucide="UserRoundXIcon"
+                  tabler="IconUserX"
+                  hugeicons="UserRemove01Icon"
+                />
                 Block User
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -618,22 +646,38 @@ function ButtonGroupPopover() {
             <DropdownMenuGroup>
               <DropdownMenuLabel>Conversation</DropdownMenuLabel>
               <DropdownMenuItem>
-                <IconPlaceholder icon="ShareIcon" />
+                <IconPlaceholder
+                  lucide="ShareIcon"
+                  tabler="IconShare"
+                  hugeicons="Share03Icon"
+                />
                 Share Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="CopyIcon" />
+                <IconPlaceholder
+                  lucide="CopyIcon"
+                  tabler="IconCopy"
+                  hugeicons="Copy01Icon"
+                />
                 Copy Conversation
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <IconPlaceholder icon="AlertTriangleIcon" />
+                <IconPlaceholder
+                  lucide="AlertTriangleIcon"
+                  tabler="IconAlertTriangle"
+                  hugeicons="Alert02Icon"
+                />
                 Report Conversation
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem variant="destructive">
-                <IconPlaceholder icon="TrashIcon" />
+                <IconPlaceholder
+                  lucide="TrashIcon"
+                  tabler="IconTrash"
+                  hugeicons="Delete02Icon"
+                />
                 Delete Conversation
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -731,7 +775,9 @@ function EmptyAvatarGroup() {
             <AlertDialogContent className="theme-lyra:gap-4 gap-6 sm:max-w-xs">
               <div className="bg-muted theme-lyra:size-10 mx-auto flex size-16 items-center justify-center rounded-full">
                 <IconPlaceholder
-                  icon="BluetoothIcon"
+                  lucide="BluetoothIcon"
+                  tabler="IconBluetooth"
+                  hugeicons="BluetoothIcon"
                   className="theme-lyra:size-6 size-8"
                 />
               </div>
@@ -1119,13 +1165,23 @@ function ItemDemo() {
       <Item variant="outline" size="sm" asChild>
         <a href="#">
           <ItemMedia>
-            <IconPlaceholder icon="PlaceholderIcon" className="size-5" />
+            <IconPlaceholder
+              lucide="CircleDashedIcon"
+              tabler="IconCircleDashed"
+              hugeicons="DashedLineCircleIcon"
+              className="size-5"
+            />
           </ItemMedia>
           <ItemContent>
             <ItemTitle>Your profile has been verified.</ItemTitle>
           </ItemContent>
           <ItemActions>
-            <IconPlaceholder icon="PlaceholderIcon" className="size-4" />
+            <IconPlaceholder
+              lucide="CircleDashedIcon"
+              tabler="IconCircleDashed"
+              hugeicons="DashedLineCircleIcon"
+              className="size-4"
+            />
           </ItemActions>
         </a>
       </Item>
@@ -1407,7 +1463,11 @@ function NotionPromptForm() {
               variant="default"
               size="icon-sm"
             >
-              <IconPlaceholder icon="PlaceholderIcon" />
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>

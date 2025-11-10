@@ -273,7 +273,11 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <IconPlaceholder icon="PlaceholderIcon" />
+      <IconPlaceholder
+        lucide="CircleDashedIcon"
+        tabler="IconCircleDashed"
+        hugeicons="DashedLineCircleIcon"
+      />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )

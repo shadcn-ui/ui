@@ -324,7 +324,9 @@ export default function FormDemo() {
                           <span>Pick a date</span>
                         )}
                         <IconPlaceholder
-                          icon="PlaceholderIcon"
+                          lucide="CircleDashedIcon"
+                          tabler="IconCircleDashed"
+                          hugeicons="DashedLineCircleIcon"
                           className="ml-auto h-4 w-4 opacity-50"
                         />
                       </Button>

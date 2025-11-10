@@ -89,7 +89,11 @@ export default function EmptyDemo() {
             <InputGroup className="w-3/4">
               <InputGroupInput placeholder="Try searching for pages..." />
               <InputGroupAddon>
-                <IconPlaceholder icon="PlaceholderIcon" />
+                <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
               </InputGroupAddon>
               <InputGroupAddon align="inline-end">
                 <Kbd>/</Kbd>
@@ -111,7 +115,11 @@ export default function EmptyDemo() {
           </EmptyHeader>
           <EmptyContent>
             <Button variant="outline">
-              <IconPlaceholder icon="PlaceholderIcon" />
+              <IconPlaceholder
+                lucide="CircleDashedIcon"
+                tabler="IconCircleDashed"
+                hugeicons="DashedLineCircleIcon"
+              />
               New Post
             </Button>
           </EmptyContent>
@@ -131,7 +139,11 @@ export default function EmptyDemo() {
                   <InputGroup className="w-3/4">
                     <InputGroupInput placeholder="Try searching for pages..." />
                     <InputGroupAddon>
-                      <IconPlaceholder icon="PlaceholderIcon" />
+                      <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                     </InputGroupAddon>
                     <InputGroupAddon align="inline-end">
                       <Kbd>/</Kbd>
@@ -238,7 +250,11 @@ export default function EmptyDemo() {
                   </EmptyHeader>
                   <EmptyContent>
                     <Button variant="outline">
-                      <IconPlaceholder icon="PlaceholderIcon" />
+                      <IconPlaceholder
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
+                />
                       New Post
                     </Button>
                   </EmptyContent>

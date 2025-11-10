@@ -4,7 +4,9 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
   return (
     <IconPlaceholder
-      icon="SpinnerIcon"
+      lucide="Loader2Icon"
+      tabler="IconLoader"
+      hugeicons="Loading03Icon"
       role="status"
       aria-label="Loading"
       className={cn("size-4 animate-spin", className)}

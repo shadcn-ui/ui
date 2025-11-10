@@ -32,7 +32,9 @@ export default function HoverCardDemo() {
               </p>
               <div className="mt-1 flex items-center gap-2">
                 <IconPlaceholder
-                  icon="PlaceholderIcon"
+                  lucide="CircleDashedIcon"
+                  tabler="IconCircleDashed"
+                  hugeicons="DashedLineCircleIcon"
                   className="text-muted-foreground size-4"
                 />{" "}
                 <span className="text-muted-foreground text-xs">
