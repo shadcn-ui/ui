@@ -115,7 +115,9 @@ export const initOptionsSchema = z.object({
         return true
       },
       {
-        message: `Invalid icon library. Please use '${Object.keys(iconLibraries).join("', '")}'`,
+        message: `Invalid icon library. Please use '${Object.keys(
+          iconLibraries
+        ).join("', '")}'`,
       }
     ),
 })
@@ -133,11 +135,7 @@ export const init = new Command()
     "the base color to use. (neutral, gray, zinc, stone, slate)",
     undefined
   )
-  .option(
-    "--style <style>",
-    "the style to use.",
-    "new-york"
-  )
+  .option("--style <style>", "the style to use.", "new-york")
   .option(
     "-i, --icon-library <icon-library>",
     "the icon library to use. (lucide, tabler, hugeicons)",

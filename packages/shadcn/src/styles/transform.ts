@@ -1,3 +1,4 @@
+import { transformCanvaFrame } from "@/src/styles/transform-canva-frame"
 import { transformPortal } from "@/src/styles/transform-portal"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 
@@ -13,7 +14,7 @@ export async function transformStyle(
   source: string,
   {
     styleMap,
-    transformers = [transformStyleMap, transformPortal],
+    transformers = [transformStyleMap, transformPortal, transformCanvaFrame],
   }: {
     styleMap: StyleMap
     transformers?: TransformerStyle<SourceFile>[]

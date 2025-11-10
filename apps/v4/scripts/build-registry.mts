@@ -10,6 +10,10 @@ import { legacyStyles } from "@/registry/_legacy-styles"
 import { BASES, type Base } from "@/registry/bases"
 import { STYLES } from "@/registry/styles"
 
+// This is a list of styles that we want to check into tracking.
+// This is used by the v4 site.
+const WHITELISTED_STYLES = ["new-york-v4"]
+
 function getStylesToBuild() {
   const stylesToBuild: { name: string; title: string }[] = [...legacyStyles]
 
@@ -26,37 +30,29 @@ function getStylesToBuild() {
 }
 
 try {
-  console.log("\n🗂️ Building bases index...")
+  console.log("🏗️ Building bases...")
   await buildBasesIndex(Array.from(BASES))
-
-  console.log("\n🏗️ Building bases...")
   await buildBases(Array.from(BASES))
 
   const stylesToBuild = getStylesToBuild()
 
-  console.log(`\n🗂️ Building registry/__index__.tsx...`)
   // We only need the legacy styles here for backward compatibility.
+  console.log(`📦 Building registry/__index__.tsx...`)
   await buildRegistryIndex([...legacyStyles])
-  console.log(`#️⃣  Built registry/__index__.tsx`)
 
+  console.log("💅 Building styles...")
   for (const style of stylesToBuild) {
-    console.log(`\n📦 Processing style: ${style.name}`)
-
-    console.log(`💅 Building registry-${style.name}.json...`)
     await buildRegistryJsonFile(style.name)
-
-    console.log(`🏗️ Building registry for ${style.name}...`)
     await buildRegistry(style.name)
+    console.log(`   ✅ ${style.name}`)
   }
 
   console.log("\n🗂️ Building registry/__blocks__.json...")
   await buildBlocksIndex()
 
-  // Clean up intermediate files.
+  // Clean up intermediate files and generated base directories.
   console.log("\n🧹 Cleaning up...")
-  for (const style of stylesToBuild) {
-    rimraf.sync(path.join(process.cwd(), `registry-${style.name}.json`))
-  }
+  await cleanUp(stylesToBuild)
 
   console.log("\n✅ Build complete!")
 } catch (error) {
@@ -169,7 +165,7 @@ async function buildBases(bases: Base[]) {
     const registryItems = result.data.items
 
     for (const style of STYLES) {
-      console.log(`  \n👉 Building ${base.name}-${style.name}...`)
+      console.log(`   ✅ ${base.name}-${style.name}...`)
 
       // Create the base-style output directory if it doesn't exist.
       const styleOutputDir = path.join(
@@ -421,4 +417,23 @@ async function buildBlocksIndex() {
   )
 
   await exec(`prettier --write registry/__blocks__.json`)
+}
+
+async function cleanUp(stylesToBuild: { name: string; title: string }[]) {
+  // Clean up intermediate registry JSON files.
+  for (const style of stylesToBuild) {
+    rimraf.sync(path.join(process.cwd(), `registry-${style.name}.json`))
+  }
+
+  // Clean up generated base directories except whitelisted ones.
+  for (const base of BASES) {
+    for (const style of STYLES) {
+      const baseName = `${base.name}-${style.name}`
+      if (!WHITELISTED_STYLES.includes(baseName)) {
+        const baseDir = path.join(process.cwd(), `registry/${baseName}`)
+        console.log(`   🗑️ ${baseName}`)
+        rimraf.sync(baseDir)
+      }
+    }
+  }
 }
