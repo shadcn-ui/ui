@@ -74,19 +74,27 @@ pnpm install
 
 You can use the `pnpm --filter=[WORKSPACE]` command to start the development process for a workspace.
 
+#### Set up environment variables
+
+Before running any workspace, create a local `.env` file from the example:
+
+```bash
+cp .env.example .env
+```
+
 #### Examples
 
 1. To run the `ui.shadcn.com` website:
 
-```bash
-pnpm --filter=v4 dev
-```
+   ```bash
+   pnpm --filter=v4 dev
+   ```
 
 2. To run the `shadcn` package:
 
-```bash
-pnpm --filter=shadcn dev
-```
+   ```bash
+   pnpm --filter=shadcn dev
+   ```
 
 ## Running the CLI Locally
 
