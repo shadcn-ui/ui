@@ -63,6 +63,7 @@
   "@shadcn-map": "http://shadcn-map.vercel.app/r/{name}.json",
   "@shadcn-studio": "https://shadcnstudio.com/r/{name}.json",
   "@shadcnblocks": "https://shadcnblocks.com/r/{name}.json",
+  "@shadcnui-blocks": "https://shadcnui-blocks.com/r/{name}.json",
   "@simple-ai": "https://simple-ai.dev/r/{name}.json",
   "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
   "@skyr": "https://ui-play.skyroc.me/r/{name}.json",
