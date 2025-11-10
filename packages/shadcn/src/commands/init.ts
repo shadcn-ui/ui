@@ -1,5 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
+import { iconLibraries } from "@/src/icons/libaries"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
   getRegistryBaseColors,
@@ -102,6 +103,21 @@ export const initOptionsSchema = z.object({
       }
     ),
   baseStyle: z.boolean(),
+  style: z.string().optional(),
+  iconLibrary: z
+    .string()
+    .optional()
+    .refine(
+      (val) => {
+        if (val) {
+          return Object.keys(iconLibraries).includes(val)
+        }
+        return true
+      },
+      {
+        message: `Invalid icon library. Please use '${Object.keys(iconLibraries).join("', '")}'`,
+      }
+    ),
 })
 
 export const init = new Command()
@@ -116,6 +132,16 @@ export const init = new Command()
     "-b, --base-color <base-color>",
     "the base color to use. (neutral, gray, zinc, stone, slate)",
     undefined
+  )
+  .option(
+    "--style <style>",
+    "the style to use.",
+    "new-york"
+  )
+  .option(
+    "-i, --icon-library <icon-library>",
+    "the icon library to use. (lucide, tabler, hugeicons)",
+    "lucide"
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("-d, --defaults,", "use default configuration.", false)
@@ -474,9 +500,10 @@ async function promptForMinimalConfig(
   defaultConfig: Config,
   opts: z.infer<typeof initOptionsSchema>
 ) {
-  let style = defaultConfig.style
+  let style = opts.style ?? defaultConfig.style
   let baseColor = opts.baseColor
   let cssVariables = defaultConfig.tailwind.cssVariables
+  let iconLibrary = opts.iconLibrary ?? defaultConfig.iconLibrary ?? "lucide"
 
   if (!opts.defaults) {
     const [styles, baseColors, tailwindVersion] = await Promise.all([
@@ -487,7 +514,7 @@ async function promptForMinimalConfig(
 
     const options = await prompts([
       {
-        type: tailwindVersion === "v4" ? null : "select",
+        type: tailwindVersion === "v4" || opts.style ? null : "select",
         name: "style",
         message: `Which ${highlighter.info("style")} would you like to use?`,
         choices: styles.map((style) => ({
@@ -510,7 +537,7 @@ async function promptForMinimalConfig(
       },
     ])
 
-    style = options.style ?? "new-york"
+    style = options.style ?? style ?? "new-york"
     baseColor = options.tailwindBaseColor ?? baseColor
     cssVariables = opts.cssVariables
   }
@@ -525,7 +552,7 @@ async function promptForMinimalConfig(
     },
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
-    iconLibrary: defaultConfig?.iconLibrary,
+    iconLibrary,
     aliases: defaultConfig?.aliases,
   })
 }
