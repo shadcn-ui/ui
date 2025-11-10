@@ -14,6 +14,13 @@
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='256' height='256' fill='var(--foreground)'/><path d='M146 48H106.136L48 208H87.8644L116.932 128C116.932 128 122 114.5 124.4 108L131.466 88L146 48Z' fill='var(--background)'/><path d='M110 48H149.864L168.032 98H127.84L110 48Z' fill='var(--background)'/><path d='M139.587 113.833L171.458 208H208L172.807 113.833H139.587Z' fill='var(--background)'/><path d='M173 114L140.8 208H104L139.545 114H173Z' fill='var(--background)' /></svg>"
   },
   {
+    "name": "@aevr",
+    "homepage": "https://ui.aevr.space",
+    "url": "https://ui.aevr.space/r/{name}.json",
+    "description": "A small collection of focused, production‑ready components and primitives for React/Next.js projects—built on shadcn/ui and complementary libraries.",
+    "logo": "<svg xmlns="http://www.w3.org/2000/svg" width="115" height="105" viewBox="0 0 115 105" fill="none"><path d="M111.78 48.3601C117.803 51.2224 113.769 60.4081 105.635 62.3522L72.9714 70.1593C70.4141 70.7705 67.9525 72.2666 66.2322 74.255L44.2597 99.6532C38.7881 105.978 28.7766 105.329 29.0097 98.6642L29.9457 71.9017C30.019 69.8064 28.9714 68.0828 27.0779 67.1829L2.89121 55.6888C-3.13172 52.8266 0.902578 43.6409 9.03642 41.6967L41.7 33.8896C44.2572 33.2784 46.7189 31.7823 48.4391 29.7939L70.4117 4.3957C75.8832 -1.92893 85.8948 -1.27963 85.6617 5.38474L84.7256 32.1472C84.6524 34.2425 85.6999 35.9662 87.5935 36.866L111.78 48.3601Z" fill="black"/></svg>"
+  },
+  {
     "name": "@ai-elements",
     "homepage": "https://ai-sdk.dev/elements",
     "url": "https://registry.ai-sdk.dev/{name}.json",
