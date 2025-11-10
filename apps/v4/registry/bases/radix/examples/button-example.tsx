@@ -17,13 +17,28 @@ export default function ButtonDemo() {
               />
             </Button>
             <Button size="sm" variant="secondary">
-              Secondary <IconPlaceholder hugeicons="SecurityCheckIcon" />
+              Secondary{" "}
+              <IconPlaceholder
+                lucide="PrinterIcon"
+                tabler="IconPrinter"
+                hugeicons="PrinterIcon"
+              />
             </Button>
             <Button size="sm" variant="outline">
-              Outline <IconPlaceholder hugeicons="CloudIcon" />
+              Outline{" "}
+              <IconPlaceholder
+                lucide="PrinterIcon"
+                tabler="IconPrinter"
+                hugeicons="PrinterIcon"
+              />
             </Button>
             <Button size="sm" variant="ghost">
-              Ghost <IconPlaceholder hugeicons="ShoppingBasket02Icon" />
+              Ghost{" "}
+              <IconPlaceholder
+                lucide="PrinterIcon"
+                tabler="IconShoppingBag"
+                hugeicons="ShoppingBasket02Icon"
+              />
             </Button>
             <Button size="sm" variant="destructive">
               Destructive
