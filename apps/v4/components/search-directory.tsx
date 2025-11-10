@@ -26,7 +26,7 @@ export const SearchDirectory = () => {
         </InputGroupAddon>
         <InputGroupInput
           placeholder="Search directory by name..."
-          value={query ?? ""}
+          value={query}
           onChange={onQueryChange}
         />
         <InputGroupAddon align="inline-end">
@@ -36,7 +36,7 @@ export const SearchDirectory = () => {
             size="icon-xs"
             onClick={() => setQuery(null)}
           >
-            {query?.length > 0 && <X />}
+            {query.length > 0 && <X />}
           </InputGroupButton>
         </InputGroupAddon>
       </InputGroup>
