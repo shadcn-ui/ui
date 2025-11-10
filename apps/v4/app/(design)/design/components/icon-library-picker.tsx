@@ -15,23 +15,21 @@ import {
 import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
 
 const IconLucide = lazy(() =>
-  import("@/app/(design)/design/components/icons/icon-lucide").then((mod) => ({
+  import("@/app/(design)/design/components/icon-lucide").then((mod) => ({
     default: mod.IconLucide,
   }))
 )
 
 const IconTabler = lazy(() =>
-  import("@/app/(design)/design/components/icons/icon-tabler").then((mod) => ({
+  import("@/app/(design)/design/components/icon-tabler").then((mod) => ({
     default: mod.IconTabler,
   }))
 )
 
 const IconHugeicons = lazy(() =>
-  import("@/app/(design)/design/components/icons/icon-hugeicons").then(
-    (mod) => ({
-      default: mod.IconHugeicons,
-    })
-  )
+  import("@/app/(design)/design/components/icon-hugeicons").then((mod) => ({
+    default: mod.IconHugeicons,
+  }))
 )
 
 const PREVIEW_ICONS = {

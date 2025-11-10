@@ -1,28 +1,27 @@
 "use client"
 
 import { lazy, Suspense } from "react"
+import { SquareIcon } from "lucide-react"
 import type { IconLibraryName } from "shadcn/icons"
 
 import { useDesignSystemParam } from "@/app/(design)/design/hooks/use-design-system"
 
 const IconLucide = lazy(() =>
-  import("@/app/(design)/design/components/icons/icon-lucide").then((mod) => ({
+  import("@/app/(design)/design/components/icon-lucide").then((mod) => ({
     default: mod.IconLucide,
   }))
 )
 
 const IconTabler = lazy(() =>
-  import("@/app/(design)/design/components/icons/icon-tabler").then((mod) => ({
+  import("@/app/(design)/design/components/icon-tabler").then((mod) => ({
     default: mod.IconTabler,
   }))
 )
 
 const IconHugeicons = lazy(() =>
-  import("@/app/(design)/design/components/icons/icon-hugeicons").then(
-    (mod) => ({
-      default: mod.IconHugeicons,
-    })
-  )
+  import("@/app/(design)/design/components/icon-hugeicons").then((mod) => ({
+    default: mod.IconHugeicons,
+  }))
 )
 
 export function IconPlaceholder({
@@ -41,7 +40,7 @@ export function IconPlaceholder({
   }
 
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<SquareIcon className={className} />}>
       {iconLibrary === "lucide" && (
         <IconLucide name={iconName} className={className} />
       )}

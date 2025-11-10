@@ -211,42 +211,48 @@ export default function ButtonDemo() {
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Default
+              />{" "}
+              Default
             </Button>
             <Button size="sm" variant="secondary">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Secondary
+              />{" "}
+              Secondary
             </Button>
             <Button size="sm" variant="outline">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Outline
+              />{" "}
+              Outline
             </Button>
             <Button size="sm" variant="ghost">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Ghost
+              />{" "}
+              Ghost
             </Button>
             <Button size="sm" variant="destructive">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Destructive
+              />{" "}
+              Destructive
             </Button>
             <Button size="sm" variant="link">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Link
+              />{" "}
+              Link
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
@@ -255,42 +261,48 @@ export default function ButtonDemo() {
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Default
+              />{" "}
+              Default
             </Button>
             <Button variant="secondary">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Secondary
+              />{" "}
+              Secondary
             </Button>
             <Button variant="outline">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Outline
+              />{" "}
+              Outline
             </Button>
             <Button variant="ghost">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Ghost
+              />{" "}
+              Ghost
             </Button>
             <Button variant="destructive">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Destructive
+              />{" "}
+              Destructive
             </Button>
             <Button variant="link">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Link
+              />{" "}
+              Link
             </Button>
           </div>
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
@@ -299,42 +311,48 @@ export default function ButtonDemo() {
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Default
+              />{" "}
+              Default
             </Button>
             <Button size="lg" variant="secondary">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Secondary
+              />{" "}
+              Secondary
             </Button>
             <Button size="lg" variant="outline">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Outline
+              />{" "}
+              Outline
             </Button>
             <Button size="lg" variant="ghost">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Ghost
+              />{" "}
+              Ghost
             </Button>
             <Button size="lg" variant="destructive">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Destructive
+              />{" "}
+              Destructive
             </Button>
             <Button size="lg" variant="link">
               <IconPlaceholder
                 lucide="ArrowRightIcon"
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight02Icon"
-              /> Link
+              />{" "}
+              Link
             </Button>
           </div>
         </div>
@@ -489,10 +507,10 @@ export default function ButtonDemo() {
               <Button variant="destructive">Delete</Button>
               <Button size="icon">
                 <IconPlaceholder
-                lucide="ArrowRightIcon"
-                tabler="IconArrowRight"
-                hugeicons="ArrowRight02Icon"
-              />
+                  lucide="ArrowRightIcon"
+                  tabler="IconArrowRight"
+                  hugeicons="ArrowRight02Icon"
+                />
               </Button>
             </div>
           </div>

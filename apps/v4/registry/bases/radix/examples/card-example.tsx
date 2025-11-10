@@ -139,21 +139,24 @@ export default function CardDemo() {
                 lucide="CircleDashedIcon"
                 tabler="IconCircleDashed"
                 hugeicons="DashedLineCircleIcon"
-              /> 4
+              />{" "}
+              4
             </Badge>
             <Badge variant="outline">
               <IconPlaceholder
                 lucide="CircleDashedIcon"
                 tabler="IconCircleDashed"
                 hugeicons="DashedLineCircleIcon"
-              /> 2
+              />{" "}
+              2
             </Badge>
             <Badge variant="outline">
               <IconPlaceholder
                 lucide="CircleDashedIcon"
                 tabler="IconCircleDashed"
                 hugeicons="DashedLineCircleIcon"
-              /> 350m²
+              />{" "}
+              350m²
             </Badge>
             <div className="ml-auto font-medium tabular-nums">$135,000</div>
           </CardFooter>

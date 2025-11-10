@@ -140,10 +140,10 @@ export default function EmptyDemo() {
                     <InputGroupInput placeholder="Try searching for pages..." />
                     <InputGroupAddon>
                       <IconPlaceholder
-                  lucide="CircleDashedIcon"
-                  tabler="IconCircleDashed"
-                  hugeicons="DashedLineCircleIcon"
-                />
+                        lucide="CircleDashedIcon"
+                        tabler="IconCircleDashed"
+                        hugeicons="DashedLineCircleIcon"
+                      />
                     </InputGroupAddon>
                     <InputGroupAddon align="inline-end">
                       <Kbd>/</Kbd>
@@ -251,10 +251,10 @@ export default function EmptyDemo() {
                   <EmptyContent>
                     <Button variant="outline">
                       <IconPlaceholder
-                  lucide="CircleDashedIcon"
-                  tabler="IconCircleDashed"
-                  hugeicons="DashedLineCircleIcon"
-                />
+                        lucide="CircleDashedIcon"
+                        tabler="IconCircleDashed"
+                        hugeicons="DashedLineCircleIcon"
+                      />
                       New Post
                     </Button>
                   </EmptyContent>

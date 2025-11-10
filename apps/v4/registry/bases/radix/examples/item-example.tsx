@@ -265,10 +265,10 @@ export default function ItemDemo() {
                         className="size-8 rounded-full"
                       >
                         <IconPlaceholder
-                  lucide="CircleDashedIcon"
-                  tabler="IconCircleDashed"
-                  hugeicons="DashedLineCircleIcon"
-                />
+                          lucide="CircleDashedIcon"
+                          tabler="IconCircleDashed"
+                          hugeicons="DashedLineCircleIcon"
+                        />
                       </Button>
                     </ItemActions>
                   </Item>
