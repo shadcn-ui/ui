@@ -1,5 +1,5 @@
 ---
-title: Index
+title: Add a Registry
 description: Open Source Registry Index
 ---
 
@@ -11,16 +11,9 @@ You can see the full list at [https://ui.shadcn.com/r/registries.json](https://u
 
 ## Adding a Registry
 
-You can submit a PR to add a registry to the index by adding it to the [registries.json](https://github.com/shadcn-ui/ui/blob/main/apps/v4/public/r/registries.json) file.
+You can open an issue to add a registry to the index by filling out the [registry directory issue template](https://github.com/shadcn-ui/ui/issues/new?template=registry_directory.yml).
 
-Here's an example of how to add a registry to the index:
-
-```json title="registries.json" showLineNumbers
-{
-  "@acme": "https://registry.acme.com/r/{name}.json",
-  "@example": "https://example.com/r/{name}"
-}
-```
+Once you have submitted your issue, it will be validated and reviewed by the team.
 
 ### Requirements
 
@@ -65,15 +58,3 @@ Here's an example of a valid registry:
   ]
 }
 ```
-
-### Validation
-
-At the root of the `shadcn/ui` project, you can run the following command to validate the `registries.json` file.
-
-```bash
-pnpm validate:registries
-```
-
-This will validate the registries.json file and output any errors.
-
-Once you have submitted your PR, it will be validated and reviewed by the team.
