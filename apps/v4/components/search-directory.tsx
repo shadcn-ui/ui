@@ -15,7 +15,7 @@ export const SearchDirectory = () => {
 
   const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    setQuery(value === "" ? null : value)
+    setQuery(value)
   }
 
   return (
