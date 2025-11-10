@@ -5,6 +5,7 @@ export const iconLibraries = {
     packages: ["lucide-react"],
     import: "import { ICON } from 'lucide-react'",
     usage: "<ICON />",
+    export: "lucide-react",
   },
   tabler: {
     name: "tabler",
@@ -12,6 +13,7 @@ export const iconLibraries = {
     packages: ["@tabler/icons-react"],
     import: "import { ICON } from '@tabler/icons-react'",
     usage: "<ICON />",
+    export: "@tabler/icons-react",
   },
   hugeicons: {
     name: "hugeicons",
@@ -20,6 +22,7 @@ export const iconLibraries = {
     import:
       "import { HugeiconsIcon } from '@hugeicons/react'\nimport { ICON } from '@hugeicons/core-free-icons';",
     usage: "<HugeiconsIcon icon={ICON} strokeWidth={2} />",
+    export: "@hugeicons/core-free-icons",
   },
 } as const
 

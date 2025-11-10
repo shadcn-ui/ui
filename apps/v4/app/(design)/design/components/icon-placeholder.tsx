@@ -7,19 +7,19 @@ import type { IconLibraryName } from "shadcn/icons"
 import { useDesignSystemParam } from "@/app/(design)/design/hooks/use-design-system"
 
 const IconLucide = lazy(() =>
-  import("@/app/(design)/design/components/icon-lucide").then((mod) => ({
+  import("@/registry/icons/icon-lucide").then((mod) => ({
     default: mod.IconLucide,
   }))
 )
 
 const IconTabler = lazy(() =>
-  import("@/app/(design)/design/components/icon-tabler").then((mod) => ({
+  import("@/registry/icons/icon-tabler").then((mod) => ({
     default: mod.IconTabler,
   }))
 )
 
 const IconHugeicons = lazy(() =>
-  import("@/app/(design)/design/components/icon-hugeicons").then((mod) => ({
+  import("@/registry/icons/icon-hugeicons").then((mod) => ({
     default: mod.IconHugeicons,
   }))
 )

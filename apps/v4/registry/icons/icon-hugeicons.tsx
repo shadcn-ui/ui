@@ -2,7 +2,6 @@
 
 import { use } from "react"
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react"
-import { loadIcon } from "@hugeicons/core-free-icons/loader"
 
 // Cache icon promises at module level to avoid re-loading.
 const iconPromiseCache = new Map<string, Promise<any>>()
@@ -12,9 +11,11 @@ function getIconPromise(name: string) {
     return iconPromiseCache.get(name)!
   }
 
-  const promise = loadIcon(name).catch((error) => {
-    console.warn(`Icon "${name}" not found in @hugeicons/core-free-icons:`, error)
-    return null
+  // Dynamically import from the generated __hugeicons__.ts file.
+  // This enables proper tree-shaking while avoiding expensive template literal imports.
+  const promise = import("./__hugeicons__").then((mod) => {
+    const iconData = mod[name as keyof typeof mod]
+    return iconData || null
   })
 
   iconPromiseCache.set(name, promise)

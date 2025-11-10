@@ -11,12 +11,12 @@ function getIconPromise(name: string) {
     return iconPromiseCache.get(name)!
   }
 
-  const promise = import(`@tabler/icons-react/dist/esm/icons/${name}.mjs`)
-    .then((mod) => mod)
-    .catch((error) => {
-      console.warn(`Icon "${name}" not found in @tabler/icons-react:`, error)
-      return null
-    })
+  // Dynamically import from the generated __tabler__.ts file.
+  // This enables proper tree-shaking while avoiding expensive template literal imports.
+  const promise = import("./__tabler__").then((mod) => {
+    const IconComponent = mod[name as keyof typeof mod]
+    return IconComponent ? { default: IconComponent } : null
+  })
 
   iconPromiseCache.set(name, promise)
   return promise

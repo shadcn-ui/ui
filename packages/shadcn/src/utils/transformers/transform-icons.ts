@@ -80,7 +80,10 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
       )
 
       // Replace ICON placeholder in defaultPropsStr with actual icon name
-      const defaultPropsWithIcon = defaultPropsStr.replace(/\{ICON\}/g, `{${targetIconName}}`)
+      const defaultPropsWithIcon = defaultPropsStr.replace(
+        /\{ICON\}/g,
+        `{${targetIconName}}`
+      )
 
       const defaultPropsToAdd = defaultPropsWithIcon
         .trim()

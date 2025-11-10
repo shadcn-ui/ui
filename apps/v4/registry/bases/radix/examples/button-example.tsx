@@ -8,15 +8,22 @@ export default function ButtonDemo() {
       <div className="flex flex-col gap-20">
         <div className="flex w-full max-w-2xl flex-col gap-6">
           <div className="flex flex-wrap items-center gap-2 md:flex-row">
-            <Button size="sm">Default</Button>
+            <Button size="sm">
+              Default{" "}
+              <IconPlaceholder
+                lucide="PrinterIcon"
+                tabler="IconPrinter"
+                hugeicons="PrinterIcon"
+              />
+            </Button>
             <Button size="sm" variant="secondary">
-              Secondary
+              Secondary <IconPlaceholder hugeicons="SecurityCheckIcon" />
             </Button>
             <Button size="sm" variant="outline">
-              Outline
+              Outline <IconPlaceholder hugeicons="CloudIcon" />
             </Button>
             <Button size="sm" variant="ghost">
-              Ghost
+              Ghost <IconPlaceholder hugeicons="ShoppingBasket02Icon" />
             </Button>
             <Button size="sm" variant="destructive">
               Destructive

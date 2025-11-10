@@ -15,19 +15,19 @@ import {
 import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
 
 const IconLucide = lazy(() =>
-  import("@/app/(design)/design/components/icon-lucide").then((mod) => ({
+  import("@/registry/icons/icon-lucide").then((mod) => ({
     default: mod.IconLucide,
   }))
 )
 
 const IconTabler = lazy(() =>
-  import("@/app/(design)/design/components/icon-tabler").then((mod) => ({
+  import("@/registry/icons/icon-tabler").then((mod) => ({
     default: mod.IconTabler,
   }))
 )
 
 const IconHugeicons = lazy(() =>
-  import("@/app/(design)/design/components/icon-hugeicons").then((mod) => ({
+  import("@/registry/icons/icon-hugeicons").then((mod) => ({
     default: mod.IconHugeicons,
   }))
 )
@@ -166,7 +166,6 @@ const IconLibraryPreview = memo(function IconLibraryPreview({
     return null
   }
 
-  // Only render the icon component for the specific library to avoid loading all icon libraries.
   const IconRenderer =
     iconLibrary === "lucide"
       ? IconLucide

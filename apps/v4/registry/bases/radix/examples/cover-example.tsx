@@ -665,7 +665,7 @@ function ButtonGroupPopover() {
                 <IconPlaceholder
                   lucide="AlertTriangleIcon"
                   tabler="IconAlertTriangle"
-                  hugeicons="Alert02Icon"
+                  hugeicons="AlertCircleIcon"
                 />
                 Report Conversation
               </DropdownMenuItem>
@@ -1168,7 +1168,7 @@ function ItemDemo() {
             <IconPlaceholder
               lucide="CircleDashedIcon"
               tabler="IconCircleDashed"
-              hugeicons="DashedLineCircleIcon"
+              hugeicons="CongruentToCircleIcon"
               className="size-5"
             />
           </ItemMedia>
@@ -1177,9 +1177,9 @@ function ItemDemo() {
           </ItemContent>
           <ItemActions>
             <IconPlaceholder
-              lucide="CircleDashedIcon"
-              tabler="IconCircleDashed"
-              hugeicons="DashedLineCircleIcon"
+              lucide="BicepsFlexed"
+              tabler="IconAdCircleFilled"
+              hugeicons="AbsoluteIcon"
               className="size-4"
             />
           </ItemActions>
