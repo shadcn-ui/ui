@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { lazy, memo, Suspense } from "react"
 import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 import { iconLibraries, IconLibraryName, type IconLibrary } from "shadcn/icons"
@@ -13,7 +14,25 @@ import {
 } from "@/app/(design)/design/components/customizer"
 import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
 
-import { IconForIconLibrary } from "./icon-loader"
+const IconLucide = lazy(() =>
+  import("@/app/(design)/design/components/icons/icon-lucide").then((mod) => ({
+    default: mod.IconLucide,
+  }))
+)
+
+const IconTabler = lazy(() =>
+  import("@/app/(design)/design/components/icons/icon-tabler").then((mod) => ({
+    default: mod.IconTabler,
+  }))
+)
+
+const IconHugeicons = lazy(() =>
+  import("@/app/(design)/design/components/icons/icon-hugeicons").then(
+    (mod) => ({
+      default: mod.IconHugeicons,
+    })
+  )
+)
 
 const PREVIEW_ICONS = {
   lucide: [
@@ -49,17 +68,17 @@ const PREVIEW_ICONS = {
     "IconChevronRight",
   ],
   hugeicons: [
-    "CopyIcon",
+    "Copy01Icon",
     "AlertCircleIcon",
     "Delete02Icon",
-    "ShareIcon",
-    "ShoppingBagIcon",
+    "Share03Icon",
+    "ShoppingBasket02Icon",
     "MoreHorizontalIcon",
     "Loading03Icon",
-    "ArrowDownIcon",
-    "ArrowUpIcon",
-    "ArrowRightIcon",
-    "ArrowLeftIcon",
+    "ArrowDown02Icon",
+    "ArrowUp02Icon",
+    "ArrowRight02Icon",
+    "ArrowLeft02Icon",
     "Tick01Icon",
     "ArrowDown01Icon",
     "ArrowRight01Icon",
@@ -96,7 +115,6 @@ export function IconLibraryPicker() {
       <CustomizerPicker
         currentValue={currentIconLibrary?.title ?? null}
         open={open}
-        showSearch
         className="**:data-[slot=command-list]:max-h-none"
       >
         <CustomizerPickerGroup>
@@ -139,21 +157,48 @@ function IconLibraryPickerItem({
   )
 }
 
-const IconLibraryPreview = React.cache(function IconLibraryPreview({
+const IconLibraryPreview = memo(function IconLibraryPreview({
   iconLibrary,
 }: {
   iconLibrary: IconLibraryName
 }) {
+  const previewIcons = PREVIEW_ICONS[iconLibrary]
+
+  if (!previewIcons) {
+    return null
+  }
+
+  // Only render the icon component for the specific library to avoid loading all icon libraries.
+  const IconRenderer =
+    iconLibrary === "lucide"
+      ? IconLucide
+      : iconLibrary === "tabler"
+        ? IconTabler
+        : IconHugeicons
+
   return (
-    <div className="grid w-full grid-cols-7 gap-2">
-      {PREVIEW_ICONS[iconLibrary].map((iconName) => (
-        <div
-          key={iconName}
-          className="flex size-6 items-center justify-center *:[svg]:size-5"
-        >
-          <IconForIconLibrary iconLibrary={iconLibrary} iconName={iconName} />
+    <Suspense
+      fallback={
+        <div className="grid w-full grid-cols-7 gap-2">
+          {previewIcons.map((iconName) => (
+            <div
+              key={iconName}
+              className="bg-muted size-6 animate-pulse rounded"
+            />
+          ))}
         </div>
-      ))}
-    </div>
+      }
+    >
+      <div className="grid w-full grid-cols-7 gap-2">
+        {previewIcons.map((iconName) => (
+          <div
+            key={iconName}
+            className="flex size-6 items-center justify-center *:[svg]:size-5"
+          >
+            <IconRenderer name={iconName} />
+          </div>
+        ))}
+      </div>
+    </Suspense>
   )
 })

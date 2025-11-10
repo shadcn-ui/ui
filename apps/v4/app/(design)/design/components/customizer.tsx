@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
 import { cn } from "@/lib/utils"
