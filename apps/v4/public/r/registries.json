@@ -83,5 +83,6 @@
   "@shadix-ui": "https://shadix-ui.vercel.app/r/{name}.json",
   "@utilcn": "https://utilcn.dev/r/{name}.json",
   "@hextaui": "https://hextaui.com/r/{name}.json",
-  "@taki": "https://taki-ui.com/r/{name}.json"
+  "@taki": "https://taki-ui.com/r/{name}.json",
+  "@square-ui": "https://square.lndev.me/registry/{name}.json"
 }
