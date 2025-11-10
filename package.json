@@ -45,7 +45,7 @@
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^17.6.3",
+    "@commitlint/config-conventional": "^20.0.0",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",
     "@typescript-eslint/parser": "^5.59.7",

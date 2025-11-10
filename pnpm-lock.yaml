@@ -25,8 +25,8 @@ importers:
         specifier: ^20.1.0
         version: 20.1.0(@types/node@20.19.10)(typescript@5.9.2)
       '@commitlint/config-conventional':
-        specifier: ^17.6.3
-        version: 17.8.1
+        specifier: ^20.0.0
+        version: 20.0.0
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^3.7.2
         version: 3.7.2(prettier@2.8.8)
@@ -779,9 +779,9 @@ packages:
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-conventional@17.8.1':
-    resolution: {integrity: sha512-NxCOHx1kgneig3VLauWJcDWS40DVjg7nKOpBEEK9E5fjJpQqLCilcnKkIIjdBH98kEO1q3NpE5NSrZ2kl/QGJg==}
-    engines: {node: '>=v14'}
+  '@commitlint/config-conventional@20.0.0':
+    resolution: {integrity: sha512-q7JroPIkDBtyOkVe9Bca0p7kAUYxZMxkrBArCfuD3yN4KjRAenP9PmYwnn7rsw8Q+hHq1QB2BRmBh0/Z19ZoJw==}
+    engines: {node: '>=v18'}
 
   '@commitlint/config-validator@20.0.0':
     resolution: {integrity: sha512-BeyLMaRIJDdroJuYM2EGhDMGwVBMZna9UiIqV9hxj+J551Ctc6yoGuGSmghOy/qPhBSuhA6oMtbEiTmxECafsg==}
@@ -3868,9 +3868,9 @@ packages:
     resolution: {integrity: sha512-ROjNchA9LgfNMTTFSIWPzebCwOGFdgkEq45EnvvrmSLvCtAw0HSmrCs7/ty+wAeYUZyNay0YMUNYFTRL72PkBQ==}
     engines: {node: '>=16'}
 
-  conventional-changelog-conventionalcommits@6.1.0:
-    resolution: {integrity: sha512-3cS3GEtR78zTfMzk0AizXKKIdN4OvSh7ibNz6/DPbhWWQu7LqE/8+/GqSodV+sywUR2gpJAdP/1JFf4XtN7Zpw==}
-    engines: {node: '>=14'}
+  conventional-changelog-conventionalcommits@7.0.2:
+    resolution: {integrity: sha512-NKXYmMR/Hr1DevQegFB4MwfM5Vv0m4UIxKZTTYuD98lpTknaZlSRrDOG4X7wIXpGkfsYxZTghUN+Qq+T0YQI7w==}
+    engines: {node: '>=16'}
 
   conventional-commits-parser@5.0.0:
     resolution: {integrity: sha512-ZPMl0ZJbw74iS9LuX9YIAiW8pfM5p3yh2o/NbXHbkFuZzY5jvdi5jFycEOkmBW5H5I7nA+D6f3UcsCLP2vvSEA==}
@@ -8322,9 +8322,10 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/config-conventional@17.8.1':
+  '@commitlint/config-conventional@20.0.0':
     dependencies:
-      conventional-changelog-conventionalcommits: 6.1.0
+      '@commitlint/types': 20.0.0
+      conventional-changelog-conventionalcommits: 7.0.2
 
   '@commitlint/config-validator@20.0.0':
     dependencies:
@@ -11323,7 +11324,7 @@ snapshots:
     dependencies:
       compare-func: 2.0.0
 
-  conventional-changelog-conventionalcommits@6.1.0:
+  conventional-changelog-conventionalcommits@7.0.2:
     dependencies:
       compare-func: 2.0.0
 
