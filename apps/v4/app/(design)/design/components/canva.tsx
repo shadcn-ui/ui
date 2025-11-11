@@ -9,8 +9,9 @@ const ZOOM_MIN = 0.5
 const ZOOM_MAX = 2
 const FIT_PADDING = 200
 const FRAME_WIDTH = 1500
-const SCROLL_LEFT_OFFSET = 280
+const SCROLL_LEFT_OFFSET = 304
 const SCROLL_TOP_OFFSET = 64
+const FIT_ZOOM = false
 
 export const Canva = React.memo(function Canva({
   children,
@@ -89,60 +90,42 @@ export const Canva = React.memo(function Canva({
     }
 
     const setup = () => {
-      // Calculate zoom based on window width and known content width.
       const windowWidth = window.innerWidth
-      const availableWidth = windowWidth - FIT_PADDING * 2
-      const zoom = Math.min(availableWidth / FRAME_WIDTH, 1.0)
-      const finalZoom = Math.max(zoom, ZOOM_MIN)
+      const windowHeight = window.innerHeight
 
-      // Apply zoom.
+      const availableWidth = windowWidth - FIT_PADDING * 2
+      const calculatedZoom = Math.min(availableWidth / FRAME_WIDTH, 1.0)
+      const finalZoom = FIT_ZOOM ? Math.max(calculatedZoom, ZOOM_MIN) : 1.0
       viewer.setZoom(finalZoom)
 
-      // Get the actual frame element to measure.
       const frame = document.querySelector(
         '[data-slot="canva-frame"]'
       ) as HTMLElement
       if (!frame) {
         return
       }
-
-      const windowHeight = window.innerHeight
       const greenAreaHeight = windowHeight - SCROLL_TOP_OFFSET
-
-      // Content center in natural coordinates (before zoom).
-      const contentCenterX = FRAME_WIDTH / 2
-      const contentCenterY = frame.offsetHeight / 2
-
-      // Calculate target screen position.
-      const targetScreenX =
-        SCROLL_LEFT_OFFSET + (windowWidth - SCROLL_LEFT_OFFSET) / 2
-
-      // Calculate frame height at current zoom.
+      const greenAreaWidth = windowWidth - SCROLL_LEFT_OFFSET
+      const frameWidthScaled = FRAME_WIDTH * finalZoom
       const frameHeightScaled = frame.offsetHeight * finalZoom
+      const fitsInSpace =
+        frameWidthScaled <= greenAreaWidth &&
+        frameHeightScaled <= greenAreaHeight
 
-      let targetScreenY: number
-      if (frameHeightScaled <= greenAreaHeight) {
-        // Frame fits in green area - center it vertically.
-        targetScreenY = SCROLL_TOP_OFFSET + greenAreaHeight / 2
-      } else {
-        // Frame too tall for green area - align top of frame to top of green area.
-        // To align top edge, we need to position content so its top is at SCROLL_TOP_OFFSET.
-        // Content top = contentCenterY - frame.offsetHeight / 2
-        // We want: (contentCenterY - frame.offsetHeight / 2) * zoom = SCROLL_TOP_OFFSET
-        targetScreenY = SCROLL_TOP_OFFSET + (frame.offsetHeight / 2) * finalZoom
-      }
-
-      // Convert screen coordinates to scroll coordinates.
-      const scrollLeft = contentCenterX - targetScreenX / finalZoom
-      const scrollTop = contentCenterY - targetScreenY / finalZoom
+      const scrollLeft = fitsInSpace
+        ? FRAME_WIDTH / 2 -
+          (SCROLL_LEFT_OFFSET + greenAreaWidth / 2) / finalZoom
+        : -SCROLL_LEFT_OFFSET / finalZoom
+      const scrollTop = fitsInSpace
+        ? frame.offsetHeight / 2 -
+          (SCROLL_TOP_OFFSET + greenAreaHeight / 2) / finalZoom
+        : -SCROLL_TOP_OFFSET / finalZoom
 
       viewer.scrollTo(scrollLeft, scrollTop)
 
-      // Mark as ready after setup is complete.
       setIsReady(true)
     }
 
-    // Small delay to ensure viewer is ready.
     const timeoutId = setTimeout(setup, 200)
     return () => clearTimeout(timeoutId)
   }, [])
@@ -157,12 +140,9 @@ export const Canva = React.memo(function Canva({
 
       const viewerElement = (viewer as any).getElement?.() || container
 
-      // Ensure form elements can receive focus and clicks.
       const handleMouseDown = (e: MouseEvent) => {
         const target = e.target as HTMLElement
         if (isFormElement(target)) {
-          // For form elements, we need to ensure focus happens.
-          // Stop the event from reaching InfiniteViewer's drag handler.
           e.stopImmediatePropagation()
         }
       }
@@ -173,7 +153,6 @@ export const Canva = React.memo(function Canva({
           return
         }
 
-        // Check if we're on a scrollable element and if it can scroll in the wheel direction.
         let element: HTMLElement | null = target
         while (element && element !== document.body) {
           const style = window.getComputedStyle(element)
@@ -188,7 +167,6 @@ export const Canva = React.memo(function Canva({
             (overflowX === "scroll" || overflowX === "auto") &&
             element.scrollWidth > element.clientWidth
 
-          // Check if scrolling vertically.
           if (isScrollableY && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
             const canScrollDown =
               e.deltaY > 0 &&
@@ -201,7 +179,6 @@ export const Canva = React.memo(function Canva({
             }
           }
 
-          // Check if scrolling horizontally.
           if (isScrollableX && Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
             const canScrollRight =
               e.deltaX > 0 &&
@@ -250,6 +227,8 @@ export const Canva = React.memo(function Canva({
         displayVerticalScroll={false}
         displayHorizontalScroll={false}
         useMouseDrag
+        pinchThreshold={0.5}
+        threshold={10}
         dragCondition={dragCondition}
         useAutoZoom
         zoomRange={[ZOOM_MIN, ZOOM_MAX]}
