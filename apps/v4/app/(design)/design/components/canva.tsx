@@ -1,9 +1,15 @@
 "use client"
 
 import * as React from "react"
+import { atom, useAtom } from "jotai"
+import { RotateCcw, ZoomIn, ZoomOut } from "lucide-react"
 import InfiniteViewer from "react-infinite-viewer"
 
 import { cn } from "@/lib/utils"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import { Slider } from "@/registry/new-york-v4/ui/slider"
+
+const zoomAtom = atom<number>(1)
 
 const ZOOM_MIN = 0.5
 const ZOOM_MAX = 2
@@ -12,6 +18,74 @@ const FRAME_WIDTH = 1500
 const SCROLL_LEFT_OFFSET = 304
 const SCROLL_TOP_OFFSET = 64
 const FIT_ZOOM = false
+const ZOOM_STEP = 0.1
+
+function CanvaControls({ onReset }: { onReset: () => void }) {
+  const [zoom, setZoom] = useAtom(zoomAtom)
+
+  const handleZoomIn = React.useCallback(() => {
+    setZoom((prev) => Math.min(prev + ZOOM_STEP, ZOOM_MAX))
+  }, [setZoom])
+
+  const handleZoomOut = React.useCallback(() => {
+    setZoom((prev) => Math.max(prev - ZOOM_STEP, ZOOM_MIN))
+  }, [setZoom])
+
+  const handleSliderChange = React.useCallback(
+    (value: number[]) => {
+      const next = value[0]
+      if (!Number.isFinite(next)) {
+        return
+      }
+      setZoom(next)
+    },
+    [setZoom]
+  )
+
+  return (
+    <div className="bg-background border-border fixed right-6 bottom-6 z-50 flex items-center gap-2 rounded-lg border p-2 shadow-lg">
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={handleZoomOut}
+        disabled={zoom <= ZOOM_MIN}
+        aria-label="Zoom out"
+      >
+        <ZoomOut className="size-4" />
+      </Button>
+      <div className="flex min-w-[120px] items-center gap-2">
+        <Slider
+          value={[zoom]}
+          onValueChange={handleSliderChange}
+          min={ZOOM_MIN}
+          max={ZOOM_MAX}
+          step={ZOOM_STEP}
+          className="w-full"
+        />
+        <span className="text-muted-foreground text-xs tabular-nums">
+          {Math.round(zoom * 100)}%
+        </span>
+      </div>
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={handleZoomIn}
+        disabled={zoom >= ZOOM_MAX}
+        aria-label="Zoom in"
+      >
+        <ZoomIn className="size-4" />
+      </Button>
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={onReset}
+        aria-label="Reset zoom and position"
+      >
+        <RotateCcw className="size-4" />
+      </Button>
+    </div>
+  )
+}
 
 export const Canva = React.memo(function Canva({
   children,
@@ -21,6 +95,75 @@ export const Canva = React.memo(function Canva({
   const canvaRef = React.useRef<InfiniteViewer>(null)
   const containerRef = React.useRef<HTMLDivElement>(null)
   const [isReady, setIsReady] = React.useState(false)
+  const [zoom, setZoom] = useAtom(zoomAtom)
+
+  const calculateInitialZoom = React.useCallback(() => {
+    const windowWidth = window.innerWidth
+    const availableWidth = windowWidth - FIT_PADDING * 2
+    const calculatedZoom = Math.min(availableWidth / FRAME_WIDTH, 1.0)
+    return FIT_ZOOM ? Math.max(calculatedZoom, ZOOM_MIN) : 1.0
+  }, [])
+
+  const resetZoomAndPosition = React.useCallback(() => {
+    const viewer = canvaRef.current
+    if (!viewer) {
+      return
+    }
+
+    const windowWidth = window.innerWidth
+    const windowHeight = window.innerHeight
+    const finalZoom = calculateInitialZoom()
+
+    const frame = document.querySelector(
+      '[data-slot="canva-frame"]'
+    ) as HTMLElement
+    if (!frame) {
+      return
+    }
+
+    const greenAreaHeight = windowHeight - SCROLL_TOP_OFFSET
+    const greenAreaWidth = windowWidth - SCROLL_LEFT_OFFSET
+    const frameWidthScaled = FRAME_WIDTH * finalZoom
+    const frameHeightScaled = frame.offsetHeight * finalZoom
+    const fitsInSpace =
+      frameWidthScaled <= greenAreaWidth && frameHeightScaled <= greenAreaHeight
+
+    const scrollLeft = fitsInSpace
+      ? FRAME_WIDTH / 2 - (SCROLL_LEFT_OFFSET + greenAreaWidth / 2) / finalZoom
+      : -SCROLL_LEFT_OFFSET / finalZoom
+    const scrollTop = fitsInSpace
+      ? frame.offsetHeight / 2 -
+        (SCROLL_TOP_OFFSET + greenAreaHeight / 2) / finalZoom
+      : -SCROLL_TOP_OFFSET / finalZoom
+
+    viewer.setZoom(finalZoom)
+    viewer.scrollTo(scrollLeft, scrollTop)
+    setZoom(finalZoom)
+  }, [calculateInitialZoom, setZoom])
+
+  const handleReset = React.useCallback(() => {
+    resetZoomAndPosition()
+  }, [resetZoomAndPosition])
+
+  React.useEffect(() => {
+    if (!isReady) {
+      return
+    }
+    const viewer = canvaRef.current
+    if (!viewer) {
+      return
+    }
+    viewer.setZoom(zoom)
+  }, [zoom, isReady])
+
+  const handleZoomChange = React.useCallback(
+    (newZoom: number) => {
+      if (Math.abs(newZoom - zoom) > 0.001) {
+        setZoom(newZoom)
+      }
+    },
+    [zoom, setZoom]
+  )
 
   const isFormElement = React.useCallback(
     (target: HTMLElement | null): boolean => {
@@ -236,9 +379,16 @@ export const Canva = React.memo(function Canva({
         useWheelPinch
         wheelPinchKey="meta"
         usePinch
+        onPinch={(e) => {
+          handleZoomChange(e.zoom)
+        }}
+        onScroll={(e) => {
+          handleZoomChange(e.zoomX)
+        }}
       >
         {children}
       </InfiniteViewer>
+      <CanvaControls onReset={handleReset} />
     </div>
   )
 })
