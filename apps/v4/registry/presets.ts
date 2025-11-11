@@ -1,5 +1,13 @@
 export const PRESETS = [
   {
+    title: "New York",
+    style: "default",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "lucide",
+    font: "geist",
+  },
+  {
     title: "Preset One",
     style: "nova",
     baseColor: "neutral",

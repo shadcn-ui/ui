@@ -19,7 +19,7 @@ function AccordionItem({
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn("border-b last:border-b-0", className)}
+      className={cn("cn-accordion-item", className)}
       {...props}
     />
   )
@@ -35,7 +35,7 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-6 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180",
+          "cn-accordion-trigger focus-visible:border-ring focus-visible:ring-ring/50 group/accordion-trigger flex flex-1 items-start justify-between transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50",
           className
         )}
         {...props}
@@ -44,8 +44,16 @@ function AccordionTrigger({
         <IconPlaceholder
           lucide="ChevronDownIcon"
           tabler="IconCircleChevronDown"
-          hugeicons="UnfoldMoreIcon"
-          className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+          data-slot="accordion-trigger-icon-closed"
+          hugeicons="ArrowDown01Icon"
+          className="cn-accordion-trigger-icon group-data-[state=open]/accordion-trigger:hidden"
+        />
+        <IconPlaceholder
+          lucide="ChevronUpIcon"
+          tabler="IconCircleChevronUp"
+          data-slot="accordion-trigger-icon-open"
+          hugeicons="ArrowUp01Icon"
+          className="cn-accordion-trigger-icon group-data-[state=closed]/accordion-trigger:hidden"
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
@@ -60,10 +68,12 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+      className="cn-accordion-content overflow-hidden"
       {...props}
     >
-      <div className={cn("pt-0 pb-4", className)}>{children}</div>
+      <div className={cn("cn-accordion-content-inner", className)}>
+        {children}
+      </div>
     </AccordionPrimitive.Content>
   )
 }

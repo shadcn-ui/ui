@@ -1,10 +1,40 @@
 .style-default {
+  /* Accordion */
+  .cn-accordion-item {
+    @apply border-b last:border-b-0;
+
+    .cn-accordion-trigger {
+      @apply gap-6 rounded-md py-4 text-left text-sm font-medium;
+    }
+
+    .cn-accordion-trigger-icon {
+      @apply text-muted-foreground pointer-events-none size-4 shrink-0;
+    }
+
+    .cn-accordion-content {
+      @apply data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down text-sm;
+    }
+
+    .cn-accordion-content-inner {
+      @apply pt-0 pb-4;
+    }
+  }
+
+  /* Alert Dialog */
+  .cn-alert-dialog-overlay {
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/50 duration-100;
+  }
+
   .cn-alert-dialog-content {
-    @apply bg-background gap-4 rounded-lg border p-6 shadow-lg;
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 bg-background gap-4 rounded-lg border p-6 shadow-lg duration-100;
   }
 
   .cn-alert-dialog-header {
     @apply gap-2;
+  }
+
+  .cn-alert-dialog-media {
+    @apply bg-muted flex size-10 items-center justify-center rounded-md *:[svg:not([class*='size-'])]:size-6;
   }
 
   .cn-alert-dialog-title {
@@ -15,6 +45,7 @@
     @apply text-muted-foreground text-sm;
   }
 
+  /* Button */
   .cn-button {
     @apply gap-2 rounded-md border border-transparent text-sm font-medium [&_svg:not([class*='size-'])]:size-4;
 
@@ -67,6 +98,7 @@
     }
   }
 
+  /* Card */
   .cn-card {
     @apply gap-6 rounded-xl border py-6 shadow-sm;
 
@@ -91,15 +123,13 @@
     }
   }
 
+  /* Input */
   .cn-input {
     @apply dark:bg-input/30 border-input h-9 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] file:h-7 file:text-sm file:font-medium md:text-sm;
   }
 
+  /* Textarea */
   .cn-textarea {
     @apply dark:bg-input/30 border-input rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] md:text-sm;
-  }
-
-  .cn-foo {
-    @apply bg-red-500;
   }
 }

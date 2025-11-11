@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import type { Base } from "@/registry/bases"
+import { Canva } from "@/app/(design)/design/components/canva"
 import { CMD_K_FORWARD_TYPE } from "@/app/(design)/design/components/item-picker"
 import { useDesignSystemSync } from "@/app/(design)/design/hooks/use-design-system"
 
@@ -23,14 +24,7 @@ export function Preview({ base }: { base: Base["name"] }) {
       iframe.contentWindow?.postMessage(
         {
           type: MESSAGE_TYPE,
-          params: {
-            theme: params.theme,
-            iconLibrary: params.iconLibrary,
-            style: params.style,
-            font: params.font,
-            item: params.item,
-            baseColor: params.baseColor,
-          },
+          params,
         },
         "*"
       )
@@ -44,14 +38,7 @@ export function Preview({ base }: { base: Base["name"] }) {
     return () => {
       iframe.removeEventListener("load", sendParams)
     }
-  }, [
-    params.theme,
-    params.iconLibrary,
-    params.style,
-    params.font,
-    params.item,
-    params.baseColor,
-  ])
+  }, [params])
 
   const handleMessage = (event: MessageEvent) => {
     if (event.data.type === CMD_K_FORWARD_TYPE) {
@@ -82,15 +69,13 @@ export function Preview({ base }: { base: Base["name"] }) {
   const iframeSrc = `/preview/${base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
 
   return (
-    <div className="relative flex flex-1 flex-col overflow-hidden">
+    <Canva>
       <iframe
         key={params.item}
         ref={iframeRef}
         src={iframeSrc}
-        width="100%"
-        height="100%"
-        className="flex-1 border-0"
+        className="w-full flex-1 border-0"
       />
-    </div>
+    </Canva>
   )
 }

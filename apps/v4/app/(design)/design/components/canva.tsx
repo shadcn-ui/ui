@@ -5,10 +5,6 @@ import { atom, useAtom } from "jotai"
 import InfiniteViewer from "react-infinite-viewer"
 
 import { cn } from "@/lib/utils"
-import {
-  sendCanvaZoomUpdate,
-  type ZoomCommand,
-} from "@/app/(design)/design/hooks/use-canva"
 
 const ZOOM_MIN = 0.5
 const ZOOM_MAX = 2
@@ -20,11 +16,24 @@ const SCROLL_LEFT_OFFSET = 304
 const SCROLL_TOP_OFFSET = 64
 const FIT_ZOOM = false
 const SETUP_DELAY = 200
-const EVENT_LISTENER_DELAY = 100
 const ZOOM_APPLY_DELAY = 50
 const WHEEL_SCALE = 0.02
 
-const zoomAtom = atom(ZOOM_INITIAL)
+export const zoomAtom = atom(ZOOM_INITIAL)
+
+type CanvaActions = {
+  zoomToFit: () => void
+  resetZoomAndPosition: () => void
+}
+
+export const canvaActionsAtom = atom<CanvaActions | null>(null)
+
+export const ZOOM_CONSTANTS = {
+  MIN: ZOOM_MIN,
+  MAX: ZOOM_MAX,
+  STEP: ZOOM_STEP,
+  INITIAL: ZOOM_INITIAL,
+} as const
 
 function calculateZoomAndPosition() {
   const windowWidth = window.innerWidth
@@ -63,35 +72,6 @@ function calculateZoomAndPosition() {
   return { zoom: finalZoom, scrollLeft, scrollTop }
 }
 
-function checkElementScrollability(target: HTMLElement | null) {
-  if (!target) {
-    return { isScrollable: false, element: null }
-  }
-
-  let element: HTMLElement | null = target
-  while (element && element !== document.body) {
-    const style = window.getComputedStyle(element)
-    const overflowY = style.overflowY
-    const overflowX = style.overflowX
-
-    const isScrollableY =
-      (overflowY === "scroll" || overflowY === "auto") &&
-      element.scrollHeight > element.clientHeight
-
-    const isScrollableX =
-      (overflowX === "scroll" || overflowX === "auto") &&
-      element.scrollWidth > element.clientWidth
-
-    if (isScrollableY || isScrollableX) {
-      return { isScrollable: true, element }
-    }
-
-    element = element.parentElement
-  }
-
-  return { isScrollable: false, element: null }
-}
-
 const Canva = React.memo(function Canva({
   children,
 }: {
@@ -101,7 +81,11 @@ const Canva = React.memo(function Canva({
   const containerRef = React.useRef<HTMLDivElement>(null)
   const [isReady, setIsReady] = React.useState(false)
   const [zoom, setZoom] = useAtom(zoomAtom)
+  const [, setCanvaActions] = useAtom(canvaActionsAtom)
   const isApplyingZoomRef = React.useRef(false)
+  const [isActive, setIsActive] = React.useState(false)
+  const isDraggingRef = React.useRef(false)
+  const mouseDownPosRef = React.useRef({ x: 0, y: 0 })
 
   const zoomToFit = React.useCallback(() => {
     const viewer = canvaRef.current
@@ -166,37 +150,15 @@ const Canva = React.memo(function Canva({
   }, [setZoom])
 
   React.useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      if (event.data.type === "canva-zoom" && event.data.command) {
-        const command = event.data.command as ZoomCommand
+    setCanvaActions({
+      zoomToFit,
+      resetZoomAndPosition,
+    })
 
-        switch (command.type) {
-          case "ZOOM_IN":
-            setZoom((prev) => Math.min(prev + ZOOM_STEP, ZOOM_MAX))
-            break
-          case "ZOOM_OUT":
-            setZoom((prev) => Math.max(prev - ZOOM_STEP, ZOOM_MIN))
-            break
-          case "ZOOM_SET":
-            setZoom(command.value)
-            break
-          case "ZOOM_FIT":
-            zoomToFit()
-            break
-          case "RESET":
-            resetZoomAndPosition()
-            break
-        }
-      }
+    return () => {
+      setCanvaActions(null)
     }
-
-    window.addEventListener("message", handleMessage)
-    return () => window.removeEventListener("message", handleMessage)
-  }, [setZoom, zoomToFit, resetZoomAndPosition])
-
-  React.useEffect(() => {
-    sendCanvaZoomUpdate(zoom)
-  }, [zoom])
+  }, [zoomToFit, resetZoomAndPosition, setCanvaActions])
 
   React.useEffect(() => {
     if (!isReady) {
@@ -217,39 +179,6 @@ const Canva = React.memo(function Canva({
       setZoom(newZoom)
     },
     [zoom, setZoom]
-  )
-
-  const isFormElement = React.useCallback((target: HTMLElement | null) => {
-    if (!target) {
-      return false
-    }
-
-    return (
-      target.tagName === "INPUT" ||
-      target.tagName === "TEXTAREA" ||
-      target.tagName === "BUTTON" ||
-      target.tagName === "SELECT" ||
-      target.isContentEditable === true ||
-      !!target.closest("input, textarea, button, select, [contenteditable]")
-    )
-  }, [])
-
-  const isScrollableElement = React.useCallback(
-    (target: HTMLElement | null) => {
-      return checkElementScrollability(target).isScrollable
-    },
-    []
-  )
-
-  const dragCondition = React.useCallback(
-    (e: any) => {
-      const originalEvent = e.originalEvent || e
-      const target = (originalEvent.target ||
-        originalEvent.srcElement) as HTMLElement
-
-      return !isFormElement(target) && !isScrollableElement(target)
-    },
-    [isFormElement, isScrollableElement]
   )
 
   React.useEffect(() => {
@@ -275,85 +204,30 @@ const Canva = React.memo(function Canva({
   }, [setZoom])
 
   React.useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      const viewer = canvaRef.current
-      const container = containerRef.current
-      if (!viewer || !container) {
-        return
-      }
-
-      const viewerElement = (viewer as any).getElement?.() || container
-
-      const handleMouseDown = (e: MouseEvent) => {
-        const target = e.target as HTMLElement
-        if (isFormElement(target)) {
-          e.stopImmediatePropagation()
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsActive(false)
+        // Blur any focused elements in the iframe.
+        const iframe = document.querySelector(
+          '[data-slot="canva-frame"] iframe'
+        ) as HTMLIFrameElement
+        if (iframe?.contentWindow?.document.activeElement) {
+          ;(iframe.contentWindow.document.activeElement as HTMLElement)?.blur()
         }
       }
+    }
 
-      const handleWheel = (e: WheelEvent) => {
-        const target = e.target as HTMLElement
-        if (!viewerElement.contains(target) || e.metaKey || e.ctrlKey) {
-          return
-        }
-
-        const { isScrollable, element } = checkElementScrollability(target)
-        if (!isScrollable || !element) {
-          return
-        }
-
-        const style = window.getComputedStyle(element)
-        const overflowY = style.overflowY
-        const overflowX = style.overflowX
-        const isScrollableY =
-          (overflowY === "scroll" || overflowY === "auto") &&
-          element.scrollHeight > element.clientHeight
-        const isScrollableX =
-          (overflowX === "scroll" || overflowX === "auto") &&
-          element.scrollWidth > element.clientWidth
-
-        if (isScrollableY && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-          const canScrollDown =
-            e.deltaY > 0 &&
-            element.scrollTop < element.scrollHeight - element.clientHeight
-          const canScrollUp = e.deltaY < 0 && element.scrollTop > 0
-
-          if (canScrollDown || canScrollUp) {
-            e.stopPropagation()
-            return
-          }
-        }
-
-        if (isScrollableX && Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-          const canScrollRight =
-            e.deltaX > 0 &&
-            element.scrollLeft < element.scrollWidth - element.clientWidth
-          const canScrollLeft = e.deltaX < 0 && element.scrollLeft > 0
-
-          if (canScrollRight || canScrollLeft) {
-            e.stopPropagation()
-            return
-          }
-        }
-      }
-
-      document.addEventListener("mousedown", handleMouseDown, true)
-      document.addEventListener("wheel", handleWheel, true)
-
-      return () => {
-        document.removeEventListener("mousedown", handleMouseDown, true)
-        document.removeEventListener("wheel", handleWheel, true)
-      }
-    }, EVENT_LISTENER_DELAY)
+    window.addEventListener("keydown", handleKeyDown)
 
     return () => {
-      clearTimeout(timeoutId)
+      window.removeEventListener("keydown", handleKeyDown)
     }
-  }, [isFormElement])
+  }, [])
 
   return (
     <div
       ref={containerRef}
+      data-slot="canva-container"
       className="relative size-full opacity-0 data-[ready=true]:opacity-100"
       style={
         {
@@ -361,17 +235,32 @@ const Canva = React.memo(function Canva({
         } as React.CSSProperties
       }
       data-ready={isReady}
+      onClick={(e) => {
+        const target = e.target as HTMLElement
+        const frame = target.closest('[data-slot="canva-frame"]')
+        if (!frame) {
+          setIsActive(false)
+          const iframe = document.querySelector(
+            '[data-slot="canva-frame"] iframe'
+          ) as HTMLIFrameElement
+          if (iframe?.contentWindow?.document.activeElement) {
+            ;(
+              iframe.contentWindow.document.activeElement as HTMLElement
+            )?.blur()
+          }
+        }
+      }}
     >
       <InfiniteViewer
         ref={canvaRef}
         className="section-soft h-screen w-full"
+        data-slot="canva-viewer"
         margin={0}
         displayVerticalScroll={false}
         displayHorizontalScroll={false}
         useMouseDrag
         pinchThreshold={0.5}
         threshold={10}
-        dragCondition={dragCondition}
         useAutoZoom
         zoomRange={[ZOOM_MIN, ZOOM_MAX]}
         useWheelScroll
@@ -383,7 +272,37 @@ const Canva = React.memo(function Canva({
           handleZoomChange(zoom)
         }}
       >
-        {children}
+        <div
+          data-slot="canva-frame"
+          data-active={isActive}
+          className="ring-border relative flex aspect-[1.5/1] max-w-(--canva-frame-width) flex-1 flex-col overflow-hidden rounded-xl ring-1 data-[active=true]:ring-2 data-[active=true]:ring-blue-600"
+        >
+          <div
+            data-slot="canva-overlay"
+            data-active={isActive}
+            className="absolute inset-0 z-10 cursor-grab data-[active=true]:pointer-events-none data-[active=true]:cursor-auto"
+            onMouseDown={(e) => {
+              isDraggingRef.current = false
+              mouseDownPosRef.current = { x: e.clientX, y: e.clientY }
+            }}
+            onMouseMove={(e) => {
+              if (mouseDownPosRef.current) {
+                const deltaX = Math.abs(e.clientX - mouseDownPosRef.current.x)
+                const deltaY = Math.abs(e.clientY - mouseDownPosRef.current.y)
+                if (deltaX > 5 || deltaY > 5) {
+                  isDraggingRef.current = true
+                }
+              }
+            }}
+            onClick={(e) => {
+              if (!isDraggingRef.current) {
+                setIsActive(true)
+                e.stopPropagation()
+              }
+            }}
+          />
+          {children}
+        </div>
       </InfiniteViewer>
     </div>
   )
@@ -401,7 +320,6 @@ function CanvaPortal({
 function CanvaFrame({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      data-slot="canva-frame"
       className={cn(
         "bg-background no-scrollbar ring-border flex aspect-[1.5/1] max-w-(--canva-frame-width) scroll-pb-8 overflow-hidden rounded-xl p-8 ring-1",
         className

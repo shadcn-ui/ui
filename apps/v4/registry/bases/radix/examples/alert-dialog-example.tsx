@@ -6,11 +6,13 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
+  AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/registry/bases/radix/ui/alert-dialog"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { CanvaFrame } from "@/app/(design)/design/components/canva"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function AlertDialogDemo() {
   return (
@@ -22,6 +24,13 @@ export default function AlertDialogDemo() {
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
+              <AlertDialogMedia>
+                <IconPlaceholder
+                  lucide="BluetoothIcon"
+                  tabler="IconBluetooth"
+                  hugeicons="BluetoothIcon"
+                />
+              </AlertDialogMedia>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription>
                 This action cannot be undone. This will permanently delete your
@@ -38,17 +47,22 @@ export default function AlertDialogDemo() {
           <AlertDialogTrigger asChild>
             <Button>Connect Mouse</Button>
           </AlertDialogTrigger>
-          <AlertDialogContent className="sm:max-w-xs">
+          <AlertDialogContent size="sm">
             <AlertDialogHeader>
-              <AlertDialogTitle className="text-center">
-                Allow accessory to connect?
-              </AlertDialogTitle>
-              <AlertDialogDescription className="text-center">
+              <AlertDialogMedia>
+                <IconPlaceholder
+                  lucide="BluetoothIcon"
+                  tabler="IconBluetooth"
+                  hugeicons="BluetoothIcon"
+                />
+              </AlertDialogMedia>
+              <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
+              <AlertDialogDescription>
                 Do you want to allow the USB accessory to connect to this
                 device?
               </AlertDialogDescription>
             </AlertDialogHeader>
-            <AlertDialogFooter className="grid grid-cols-2 gap-4">
+            <AlertDialogFooter>
               <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
               <AlertDialogAction>Allow</AlertDialogAction>
             </AlertDialogFooter>

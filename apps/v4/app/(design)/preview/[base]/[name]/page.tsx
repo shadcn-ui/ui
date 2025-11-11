@@ -5,7 +5,6 @@ import { notFound } from "next/navigation"
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { Base, BASES } from "@/registry/bases"
-import { Canva } from "@/app/(design)/design/components/canva"
 import { DesignSystemProvider } from "@/app/(design)/design/components/design-system-provider"
 import { ItemPickerScript } from "@/app/(design)/design/components/item-picker"
 import { getBaseComponent, getBaseItem } from "@/app/(design)/design/lib/api"
@@ -128,9 +127,7 @@ export default async function BlockPage({
     <>
       <ItemPickerScript />
       <DesignSystemProvider>
-        <Canva>
-          <Component />
-        </Canva>
+        <Component />
       </DesignSystemProvider>
     </>
   )

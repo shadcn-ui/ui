@@ -36,10 +36,7 @@ function AlertDialogOverlay({
   return (
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
-      className={cn(
-        "cn-alert-dialog-overlay data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50 duration-100",
-        className
-      )}
+      className={cn("cn-alert-dialog-overlay fixed inset-0 z-50", className)}
       {...props}
     />
   )
@@ -47,15 +44,19 @@ function AlertDialogOverlay({
 
 function AlertDialogContent({
   className,
+  size = "default",
   ...props
-}: React.ComponentProps<typeof AlertDialogPrimitive.Content>) {
+}: React.ComponentProps<typeof AlertDialogPrimitive.Content> & {
+  size?: "default" | "sm"
+}) {
   return (
     <CanvaPortal element={<AlertDialogPortal />}>
       <AlertDialogOverlay />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
+        data-size={size}
         className={cn(
-          "cn-alert-dialog-content data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] duration-100 sm:max-w-lg",
+          "cn-alert-dialog-content group/alert-dialog-content fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] sm:data-[size=default]:max-w-lg sm:data-[size=sm]:max-w-xs",
           className
         )}
         {...props}
@@ -72,7 +73,9 @@ function AlertDialogHeader({
     <div
       data-slot="alert-dialog-header"
       className={cn(
-        "cn-alert-dialog-header flex flex-col text-center sm:text-left",
+        "cn-alert-dialog-header flex flex-col bg-red-200 text-center sm:bg-blue-200 sm:text-left",
+        "has-data-[slot=alert-dialog-media]:relative has-data-[slot=alert-dialog-media]:pl-14 has-data-[slot=alert-dialog-media]:*:data-[slot=alert-dialog-media]:absolute has-data-[slot=alert-dialog-media]:*:data-[slot=alert-dialog-media]:top-0 has-data-[slot=alert-dialog-media]:*:data-[slot=alert-dialog-media]:left-0",
+        "sm:group-data-[size=sm]/alert-dialog-content:items-center sm:group-data-[size=sm]/alert-dialog-content:text-center",
         className
       )}
       {...props}
@@ -88,9 +91,22 @@ function AlertDialogFooter({
     <div
       data-slot="alert-dialog-footer"
       className={cn(
-        "cn-alert-dialog-footer flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        "cn-alert-dialog-footer flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
         className
       )}
+      {...props}
+    />
+  )
+}
+
+function AlertDialogMedia({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="alert-dialog-media"
+      className={cn("cn-alert-dialog-media", className)}
       {...props}
     />
   )
@@ -158,6 +174,7 @@ export {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
+  AlertDialogMedia,
   AlertDialogOverlay,
   AlertDialogPortal,
   AlertDialogTitle,
