@@ -1,4 +1,4 @@
-import { source } from "@/lib/source"
+import { source } from "@/lib/source/metadata"
 import { DocsSidebar } from "@/components/docs-sidebar"
 import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
 

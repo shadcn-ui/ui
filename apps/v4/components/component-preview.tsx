@@ -2,7 +2,7 @@ import Image from "next/image"
 
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
 import { ComponentSource } from "@/components/component-source"
-import { Index } from "@/registry/__index__"
+import { Loaders } from "@/registry/__loaders__"
 import { type Style } from "@/registry/styles"
 
 export function ComponentPreview({
@@ -23,7 +23,7 @@ export function ComponentPreview({
   type?: "block" | "component" | "example"
   chromeLessOnMobile?: boolean
 }) {
-  const Component = Index[styleName]?.[name]?.component
+  const Component = Loaders[styleName]?.[name]
 
   if (!Component) {
     return (

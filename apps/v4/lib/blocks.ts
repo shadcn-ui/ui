@@ -22,13 +22,13 @@ export async function getAllBlocks(
   ],
   categories: string[] = []
 ) {
-  const { Index } = await import("@/registry/__index__")
+  const { Metadata } = await import("@/registry/__metadata__")
 
   // Collect all blocks from all styles.
   const allBlocks: z.infer<typeof registryItemSchema>[] = []
 
-  for (const style in Index) {
-    const styleIndex = Index[style]
+  for (const style in Metadata) {
+    const styleIndex = Metadata[style]
     if (typeof styleIndex === "object" && styleIndex !== null) {
       for (const itemName in styleIndex) {
         const item = styleIndex[itemName]

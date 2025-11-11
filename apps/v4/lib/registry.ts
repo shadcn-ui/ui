@@ -5,18 +5,19 @@ import { registryItemFileSchema, registryItemSchema } from "shadcn/schema"
 import { Project, ScriptKind } from "ts-morph"
 import { z } from "zod"
 
-import { Index } from "@/registry/__index__"
+import { Loaders } from "@/registry/__loaders__"
+import { Metadata } from "@/registry/__metadata__"
 import { type Style } from "@/registry/styles"
 
 export function getRegistryComponent(name: string, styleName: Style["name"]) {
-  return Index[styleName]?.[name]?.component
+  return Loaders[styleName]?.[name]
 }
 
 export async function getRegistryItems(
   styleName: Style["name"],
   filter?: (item: z.infer<typeof registryItemSchema>) => boolean
 ) {
-  const styleIndex = Index[styleName]
+  const styleIndex = Metadata[styleName]
 
   if (!styleIndex) {
     return []
@@ -27,7 +28,7 @@ export async function getRegistryItems(
   const filteredEntries = filter ? entries.filter(filter) : entries
 
   return await Promise.all(
-    filteredEntries.map(async (entry) => {
+    filteredEntries.map(async (entry: any) => {
       const item = await getRegistryItem(entry.name, styleName)
       return item
     })
@@ -35,7 +36,7 @@ export async function getRegistryItems(
 }
 
 export async function getRegistryItem(name: string, styleName: Style["name"]) {
-  const item = Index[styleName]?.[name]
+  const item = Metadata[styleName]?.[name]
 
   if (!item) {
     return null

@@ -15,7 +15,7 @@ import {
   SquareTerminal,
 } from "lucide-react"
 
-import { Index } from "@/registry/__index__"
+import { Metadata } from "@/registry/__metadata__"
 import { NavUser } from "@/registry/new-york-v4/blocks/sidebar-07/components/nav-user"
 import { TeamSwitcher } from "@/registry/new-york-v4/blocks/sidebar-07/components/team-switcher"
 import {
@@ -158,8 +158,8 @@ const data = {
       ],
     },
   ],
-  components: Object.values(Index)
-    .filter((item) => item.type === "registry:ui")
+  components: Object.values(Metadata["new-york-v4"])
+    .filter((item: any) => item.type === "registry:ui")
     .concat([
       {
         name: "combobox",
