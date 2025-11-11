@@ -2,12 +2,13 @@
 
 import * as React from "react"
 import { atom, useAtom } from "jotai"
-import { Maximize2, RotateCcw, ZoomIn, ZoomOut } from "lucide-react"
 import InfiniteViewer from "react-infinite-viewer"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york-v4/ui/button"
-import { Slider } from "@/registry/new-york-v4/ui/slider"
+import {
+  sendCanvaZoomUpdate,
+  type ZoomCommand,
+} from "@/app/(design)/design/hooks/use-canva"
 
 const ZOOM_MIN = 0.5
 const ZOOM_MAX = 2
@@ -163,6 +164,39 @@ const Canva = React.memo(function Canva({
       isApplyingZoomRef.current = false
     }, ZOOM_APPLY_DELAY)
   }, [setZoom])
+
+  React.useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data.type === "canva-zoom" && event.data.command) {
+        const command = event.data.command as ZoomCommand
+
+        switch (command.type) {
+          case "ZOOM_IN":
+            setZoom((prev) => Math.min(prev + ZOOM_STEP, ZOOM_MAX))
+            break
+          case "ZOOM_OUT":
+            setZoom((prev) => Math.max(prev - ZOOM_STEP, ZOOM_MIN))
+            break
+          case "ZOOM_SET":
+            setZoom(command.value)
+            break
+          case "ZOOM_FIT":
+            zoomToFit()
+            break
+          case "RESET":
+            resetZoomAndPosition()
+            break
+        }
+      }
+    }
+
+    window.addEventListener("message", handleMessage)
+    return () => window.removeEventListener("message", handleMessage)
+  }, [setZoom, zoomToFit, resetZoomAndPosition])
+
+  React.useEffect(() => {
+    sendCanvaZoomUpdate(zoom)
+  }, [zoom])
 
   React.useEffect(() => {
     if (!isReady) {
@@ -351,91 +385,9 @@ const Canva = React.memo(function Canva({
       >
         {children}
       </InfiniteViewer>
-      <CanvaControls onReset={resetZoomAndPosition} onZoomToFit={zoomToFit} />
     </div>
   )
 })
-
-function CanvaControls({
-  onReset,
-  onZoomToFit,
-}: {
-  onReset: () => void
-  onZoomToFit: () => void
-}) {
-  const [zoom, setZoom] = useAtom(zoomAtom)
-
-  const handleZoomIn = React.useCallback(() => {
-    setZoom((prev) => Math.min(prev + ZOOM_STEP, ZOOM_MAX))
-  }, [setZoom])
-
-  const handleZoomOut = React.useCallback(() => {
-    setZoom((prev) => Math.max(prev - ZOOM_STEP, ZOOM_MIN))
-  }, [setZoom])
-
-  const handleSliderChange = React.useCallback(
-    (value: number[]) => {
-      const next = value[0]
-      if (!Number.isFinite(next)) {
-        return
-      }
-      setZoom(next)
-    },
-    [setZoom]
-  )
-
-  return (
-    <div className="bg-background border-border fixed right-6 bottom-6 z-50 flex items-center gap-2 rounded-lg border p-2 shadow-lg">
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={handleZoomOut}
-        disabled={zoom <= ZOOM_MIN}
-        aria-label="Zoom out"
-      >
-        <ZoomOut className="size-4" />
-      </Button>
-      <div className="flex min-w-[120px] items-center gap-2">
-        <Slider
-          value={[zoom]}
-          onValueChange={handleSliderChange}
-          min={ZOOM_MIN}
-          max={ZOOM_MAX}
-          step={ZOOM_STEP}
-          className="w-full"
-        />
-        <span className="text-muted-foreground text-xs tabular-nums">
-          {Math.round(zoom * 100)}%
-        </span>
-      </div>
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={handleZoomIn}
-        disabled={zoom >= ZOOM_MAX}
-        aria-label="Zoom in"
-      >
-        <ZoomIn className="size-4" />
-      </Button>
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={onZoomToFit}
-        aria-label="Zoom to fit"
-      >
-        <Maximize2 className="size-4" />
-      </Button>
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={onReset}
-        aria-label="Reset zoom and position"
-      >
-        <RotateCcw className="size-4" />
-      </Button>
-    </div>
-  )
-}
 
 function CanvaPortal({
   children,
@@ -459,4 +411,4 @@ function CanvaFrame({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-export { Canva, CanvaControls, CanvaPortal, CanvaFrame }
+export { Canva, CanvaPortal, CanvaFrame }

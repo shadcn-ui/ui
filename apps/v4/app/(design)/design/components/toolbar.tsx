@@ -7,6 +7,7 @@ import { MainNav } from "@/components/main-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { CanvaControls } from "@/app/(design)/design/components/canva-controls"
 import { ItemPicker } from "@/app/(design)/design/components/item-picker"
 
 export function Toolbar({
@@ -15,7 +16,7 @@ export function Toolbar({
   items: Pick<RegistryItem, "name" | "title">[]
 }) {
   return (
-    <div className="fixed inset-x-0 top-0 z-10 flex h-14 items-center gap-4 px-6 **:data-[slot=separator]:!h-4">
+    <div className="bg-background fixed inset-x-0 top-0 z-10 flex h-14 items-center gap-4 px-6 **:data-[slot=separator]:!h-4">
       <div className="flex items-center">
         <Button
           asChild
@@ -31,6 +32,8 @@ export function Toolbar({
         <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
       </div>
       <div className="ml-auto flex items-center gap-2">
+        <CanvaControls />
+        <Separator orientation="vertical" />
         <ItemPicker items={items} />
         <Separator orientation="vertical" />
         <ModeSwitcher />
