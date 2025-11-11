@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { atom, useAtom } from "jotai"
-import { RotateCcw, ZoomIn, ZoomOut } from "lucide-react"
+import { Maximize2, RotateCcw, ZoomIn, ZoomOut } from "lucide-react"
 import InfiniteViewer from "react-infinite-viewer"
 
 import { cn } from "@/lib/utils"
@@ -21,6 +21,7 @@ const FIT_ZOOM = false
 const SETUP_DELAY = 200
 const EVENT_LISTENER_DELAY = 100
 const ZOOM_APPLY_DELAY = 50
+const WHEEL_SCALE = 0.02
 
 const zoomAtom = atom(ZOOM_INITIAL)
 
@@ -100,6 +101,47 @@ const Canva = React.memo(function Canva({
   const [isReady, setIsReady] = React.useState(false)
   const [zoom, setZoom] = useAtom(zoomAtom)
   const isApplyingZoomRef = React.useRef(false)
+
+  const zoomToFit = React.useCallback(() => {
+    const viewer = canvaRef.current
+    if (!viewer) {
+      return
+    }
+
+    const frame = document.querySelector(
+      '[data-slot="canva-frame"]'
+    ) as HTMLElement
+    if (!frame) {
+      return
+    }
+
+    const windowWidth = window.innerWidth
+    const windowHeight = window.innerHeight
+    const viewportHeight = windowHeight - SCROLL_TOP_OFFSET
+    const viewportWidth = windowWidth - SCROLL_LEFT_OFFSET
+
+    const frameWidth = FRAME_WIDTH
+    const frameHeight = frame.offsetHeight
+
+    const zoomX = viewportWidth / frameWidth
+    const zoomY = viewportHeight / frameHeight
+    const fitZoom = Math.min(zoomX, zoomY, ZOOM_MAX) * 0.9
+
+    const finalZoom = Math.max(fitZoom, ZOOM_MIN)
+
+    const scrollLeft =
+      frameWidth / 2 - (SCROLL_LEFT_OFFSET + viewportWidth / 2) / finalZoom
+    const scrollTop =
+      frameHeight / 2 - (SCROLL_TOP_OFFSET + viewportHeight / 2) / finalZoom
+
+    isApplyingZoomRef.current = true
+    viewer.setZoom(finalZoom)
+    viewer.scrollTo(scrollLeft, scrollTop)
+    setZoom(finalZoom)
+    setTimeout(() => {
+      isApplyingZoomRef.current = false
+    }, ZOOM_APPLY_DELAY)
+  }, [setZoom])
 
   const resetZoomAndPosition = React.useCallback(() => {
     const viewer = canvaRef.current
@@ -301,22 +343,26 @@ const Canva = React.memo(function Canva({
         useWheelScroll
         useWheelPinch
         wheelPinchKey="meta"
+        wheelScale={WHEEL_SCALE}
         usePinch
-        onPinch={(e) => {
-          handleZoomChange(e.zoom)
-        }}
-        onScroll={(e) => {
-          handleZoomChange(e.zoomX)
+        onPinch={({ zoom }) => {
+          handleZoomChange(zoom)
         }}
       >
         {children}
       </InfiniteViewer>
-      <CanvaControls onReset={resetZoomAndPosition} />
+      <CanvaControls onReset={resetZoomAndPosition} onZoomToFit={zoomToFit} />
     </div>
   )
 })
 
-function CanvaControls({ onReset }: { onReset: () => void }) {
+function CanvaControls({
+  onReset,
+  onZoomToFit,
+}: {
+  onReset: () => void
+  onZoomToFit: () => void
+}) {
   const [zoom, setZoom] = useAtom(zoomAtom)
 
   const handleZoomIn = React.useCallback(() => {
@@ -370,6 +416,14 @@ function CanvaControls({ onReset }: { onReset: () => void }) {
         aria-label="Zoom in"
       >
         <ZoomIn className="size-4" />
+      </Button>
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={onZoomToFit}
+        aria-label="Zoom to fit"
+      >
+        <Maximize2 className="size-4" />
       </Button>
       <Button
         variant="outline"
