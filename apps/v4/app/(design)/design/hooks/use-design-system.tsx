@@ -1,8 +1,12 @@
 "use client"
 
-import * as React from "react"
 import { useQueryStates } from "nuqs"
 
+import {
+  createIframeSyncStore,
+  useIframeSyncAll,
+  useIframeSyncValue,
+} from "@/app/(design)/design/hooks/use-iframe-sync"
 import {
   designSystemSearchParams,
   type DesignSystemSearchParams,
@@ -10,98 +14,49 @@ import {
 
 const MESSAGE_TYPE = "design-system-params"
 
-const isInIframe = () => {
-  if (typeof window === "undefined") return false
-  return window.self !== window.top
-}
-
-const paramStore = new Map<string, any>()
-const paramListeners = new Map<string, Set<() => void>>()
-
-if (typeof window !== "undefined") {
-  const searchParams = new URLSearchParams(window.location.search)
-  const iconLibrary = searchParams.get("iconLibrary") || "lucide"
-  const theme = searchParams.get("theme") || "neutral"
-  const style = searchParams.get("style") || "default"
-  const font = searchParams.get("font") || "inter"
-  const item = searchParams.get("item") || "cover-example"
-  const baseColor = searchParams.get("baseColor") || "neutral"
-
-  paramStore.set("iconLibrary", iconLibrary)
-  paramStore.set("theme", theme)
-  paramStore.set("style", style)
-  paramStore.set("font", font)
-  paramStore.set("item", item)
-  paramStore.set("baseColor", baseColor)
-}
-
-if (typeof window !== "undefined" && isInIframe()) {
-  window.addEventListener("message", (event: MessageEvent) => {
-    if (event.data.type === MESSAGE_TYPE && event.data.params) {
-      Object.keys(event.data.params).forEach((key) => {
-        const newValue = event.data.params[key]
-        const oldValue = paramStore.get(key)
-
-        if (newValue !== oldValue) {
-          paramStore.set(key, newValue)
-
-          const listeners = paramListeners.get(key)
-          if (listeners) {
-            listeners.forEach((listener) => listener())
-          }
-        }
-      })
+const getInitialValues = (): DesignSystemSearchParams => {
+  if (typeof window === "undefined") {
+    return {
+      iconLibrary: "lucide",
+      theme: "neutral",
+      style: "default",
+      font: "inter",
+      item: "cover-example",
+      baseColor: "neutral",
     }
-  })
+  }
+
+  const searchParams = new URLSearchParams(window.location.search)
+  return {
+    iconLibrary: (searchParams.get("iconLibrary") ||
+      "lucide") as DesignSystemSearchParams["iconLibrary"],
+    theme: (searchParams.get("theme") ||
+      "neutral") as DesignSystemSearchParams["theme"],
+    style: (searchParams.get("style") ||
+      "default") as DesignSystemSearchParams["style"],
+    font: (searchParams.get("font") ||
+      "inter") as DesignSystemSearchParams["font"],
+    item: searchParams.get("item") || "cover-example",
+    baseColor: (searchParams.get("baseColor") ||
+      "neutral") as DesignSystemSearchParams["baseColor"],
+  }
 }
+
+const designSystemStore = createIframeSyncStore(
+  MESSAGE_TYPE,
+  getInitialValues()
+)
 
 export function useDesignSystemSync() {
   const [urlParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
   })
 
-  const subscribe = (callback: () => void) => {
-    if (!isInIframe()) return () => {}
+  const keys = Object.keys(
+    designSystemSearchParams
+  ) as (keyof DesignSystemSearchParams)[]
 
-    const keys = Object.keys(designSystemSearchParams)
-    keys.forEach((key) => {
-      if (!paramListeners.has(key)) {
-        paramListeners.set(key, new Set())
-      }
-      paramListeners.get(key)!.add(callback)
-    })
-
-    return () => {
-      keys.forEach((key) => {
-        const listeners = paramListeners.get(key)
-        if (listeners) {
-          listeners.delete(callback)
-          if (listeners.size === 0) {
-            paramListeners.delete(key)
-          }
-        }
-      })
-    }
-  }
-
-  const getSnapshot = () => {
-    if (!isInIframe()) {
-      return urlParams
-    }
-
-    return {
-      iconLibrary: paramStore.get("iconLibrary"),
-      theme: paramStore.get("theme"),
-      style: paramStore.get("style"),
-      font: paramStore.get("font"),
-      item: paramStore.get("item"),
-      baseColor: paramStore.get("baseColor"),
-    } as DesignSystemSearchParams
-  }
-
-  const getServerSnapshot = () => urlParams
-
-  return React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  return useIframeSyncAll(designSystemStore, keys, urlParams)
 }
 
 export function useDesignSystemParam<K extends keyof DesignSystemSearchParams>(
@@ -111,34 +66,5 @@ export function useDesignSystemParam<K extends keyof DesignSystemSearchParams>(
     shallow: false,
   })
 
-  const subscribe = (callback: () => void) => {
-    if (!isInIframe()) return () => {}
-
-    if (!paramListeners.has(key)) {
-      paramListeners.set(key, new Set())
-    }
-    const listeners = paramListeners.get(key)!
-    listeners.add(callback)
-
-    return () => {
-      listeners.delete(callback)
-      if (listeners.size === 0) {
-        paramListeners.delete(key)
-      }
-    }
-  }
-
-  const getSnapshot = () => {
-    if (!isInIframe()) {
-      return urlParams[key]
-    }
-    return paramStore.get(key) as DesignSystemSearchParams[K]
-  }
-
-  const getServerSnapshot = () => {
-    return designSystemSearchParams[key]
-      .defaultValue as DesignSystemSearchParams[K]
-  }
-
-  return React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  return useIframeSyncValue(designSystemStore, key, urlParams[key])
 }
