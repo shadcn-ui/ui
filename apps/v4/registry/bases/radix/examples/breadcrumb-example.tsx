@@ -13,11 +13,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function BreadcrumbDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -47,6 +46,6 @@ export default function BreadcrumbDemo() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-    </CanvaFrame>
+    </div>
   )
 }

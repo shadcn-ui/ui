@@ -11,13 +11,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/registry/bases/radix/ui/sheet"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 
 export default function SheetDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-col gap-6 md:flex-row">
         <Sheet>
           <SheetTrigger asChild>
@@ -96,6 +95,6 @@ export default function SheetDemo() {
           ))}
         </div>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

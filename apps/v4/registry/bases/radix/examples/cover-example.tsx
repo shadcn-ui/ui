@@ -1,20 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import {
-  IconApps,
-  IconAt,
-  IconBook,
   IconCheck,
-  IconCircleDashedPlus,
   IconInfoCircle,
   IconMinus,
-  IconPaperclip,
   IconPlus,
   IconStar,
-  IconWorld,
-  IconX,
 } from "@tabler/icons-react"
 import {
   ArchiveIcon,
@@ -41,6 +34,7 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
+  AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/registry/bases/radix/ui/alert-dialog"
@@ -61,16 +55,7 @@ import {
 } from "@/registry/bases/radix/ui/card"
 import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/registry/bases/radix/ui/command"
-import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
@@ -156,163 +141,37 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/radix/ui/tooltip"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
-
-const SAMPLE_DATA = {
-  mentionable: [
-    {
-      type: "page",
-      title: "Meeting Notes",
-      image: "📝",
-    },
-    {
-      type: "page",
-      title: "Project Dashboard",
-      image: "📊",
-    },
-    {
-      type: "page",
-      title: "Ideas & Brainstorming",
-      image: "💡",
-    },
-    {
-      type: "page",
-      title: "Calendar & Events",
-      image: "📅",
-    },
-    {
-      type: "page",
-      title: "Documentation",
-      image: "📚",
-    },
-    {
-      type: "page",
-      title: "Goals & Objectives",
-      image: "🎯",
-    },
-    {
-      type: "page",
-      title: "Budget Planning",
-      image: "💰",
-    },
-    {
-      type: "page",
-      title: "Team Directory",
-      image: "👥",
-    },
-    {
-      type: "page",
-      title: "Technical Specs",
-      image: "🔧",
-    },
-    {
-      type: "page",
-      title: "Analytics Report",
-      image: "📈",
-    },
-    {
-      type: "user",
-      title: "shadcn",
-      image: "https://github.com/shadcn.png",
-      workspace: "Workspace",
-    },
-    {
-      type: "user",
-      title: "maxleiter",
-      image: "https://github.com/maxleiter.png",
-      workspace: "Workspace",
-    },
-    {
-      type: "user",
-      title: "evilrabbit",
-      image: "https://github.com/evilrabbit.png",
-      workspace: "Workspace",
-    },
-  ],
-  models: [
-    {
-      name: "Auto",
-    },
-    {
-      name: "Agent Mode",
-      badge: "Beta",
-    },
-    {
-      name: "Plan Mode",
-    },
-  ],
-}
-
-const options = [
-  {
-    label: "Social Media",
-    value: "social-media",
-  },
-
-  {
-    label: "Search Engine",
-    value: "search-engine",
-  },
-  {
-    label: "Referral",
-    value: "referral",
-  },
-  {
-    label: "Other",
-    value: "other",
-  },
-]
 
 export default function CoverExample() {
   return (
-    <div className="bg-background grid h-screen grid-cols-4 gap-8 p-8">
-      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-        <FieldDemo />
-      </div>
-      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-        <EmptyAvatarGroup />
-        <SpinnerBadge />
-        <ButtonGroupInputGroup />
-        <FieldSlider />
-        <SheetDemo />
-        <InputGroupDemo />
-      </div>
-      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-        <InputGroupButtonExample />
-        <ItemDemo />
-        <FieldSeparator className="my-4">Appearance Settings</FieldSeparator>
-        <AppearanceSettings />
-      </div>
-      <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
-        <NotionPromptForm />
-        <ButtonGroupDemo />
-        <FieldCheckbox />
-        <div className="flex justify-between gap-4">
-          <ButtonGroupNested />
-          <ButtonGroupPopover />
+    <div className="bg-background flex min-h-screen items-center justify-center p-4">
+      <div className="grid max-w-screen-2xl gap-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        <div className="flex flex-col gap-6">
+          <FieldDemo />
         </div>
-        <FieldHear />
-        <SpinnerEmpty />
+        <div className="flex flex-col gap-6">
+          <EmptyAvatarGroup />
+          <SpinnerBadge />
+          <ButtonGroupInputGroup />
+          <FieldSlider />
+          <SheetDemo />
+          <InputGroupDemo />
+        </div>
+        <div className="flex flex-col gap-6">
+          <InputGroupButtonExample />
+          <ItemDemo />
+          <AppearanceSettings />
+        </div>
+        <div className="flex flex-col gap-6">
+          <ButtonGroupDemo />
+          <FieldCheckbox />
+          <ButtonGroupExample />
+          <FieldHear />
+          <SpinnerEmpty />
+        </div>
       </div>
     </div>
-  )
-}
-
-function MentionableIcon({
-  item,
-}: {
-  item: (typeof SAMPLE_DATA.mentionable)[0]
-}) {
-  return item.type === "page" ? (
-    <span className="flex size-4 items-center justify-center">
-      {item.image}
-    </span>
-  ) : (
-    <Avatar className="size-4">
-      <AvatarImage src={item.image} />
-      <AvatarFallback>{item.title[0]}</AvatarFallback>
-    </Avatar>
   )
 }
 
@@ -579,139 +438,140 @@ function ButtonGroupInputGroup() {
   )
 }
 
-function ButtonGroupNested() {
+function ButtonGroupExample() {
   return (
-    <ButtonGroup>
+    <div className="flex gap-4">
       <ButtonGroup>
-        <Button variant="outline" size="sm">
-          1
-        </Button>
-        <Button variant="outline" size="sm">
-          2
-        </Button>
-        <Button variant="outline" size="sm">
-          3
-        </Button>
-      </ButtonGroup>
-    </ButtonGroup>
-  )
-}
-
-function ButtonGroupPopover() {
-  return (
-    <ButtonGroup>
-      <ButtonGroup>
-        <Button variant="outline">Follow</Button>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="!pl-2">
-              <IconPlaceholder
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-                hugeicons="ArrowDown01Icon"
-              />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuGroup>
-              <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="VolumeOffIcon"
-                  tabler="IconVolume"
-                  hugeicons="VolumeOffIcon"
-                />
-                Mute Conversation
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="CheckIcon"
-                  tabler="IconCheck"
-                  hugeicons="Tick01Icon"
-                />
-                Mark as Read
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="UserRoundXIcon"
-                  tabler="IconUserX"
-                  hugeicons="UserRemove01Icon"
-                />
-                Block User
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuLabel>Conversation</DropdownMenuLabel>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="ShareIcon"
-                  tabler="IconShare"
-                  hugeicons="Share03Icon"
-                />
-                Share Conversation
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="CopyIcon"
-                  tabler="IconCopy"
-                  hugeicons="Copy01Icon"
-                />
-                Copy Conversation
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="AlertTriangleIcon"
-                  tabler="IconAlertTriangle"
-                  hugeicons="AlertCircleIcon"
-                />
-                Report Conversation
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem variant="destructive">
-                <IconPlaceholder
-                  lucide="TrashIcon"
-                  tabler="IconTrash"
-                  hugeicons="Delete02Icon"
-                />
-                Delete Conversation
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <ButtonGroup>
+          <Button variant="outline" size="sm">
+            1
+          </Button>
+          <Button variant="outline" size="sm">
+            2
+          </Button>
+          <Button variant="outline" size="sm">
+            3
+          </Button>
+        </ButtonGroup>
       </ButtonGroup>
       <ButtonGroup>
-        <Button variant="outline" size="sm">
-          <BotIcon /> Copilot
-        </Button>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="outline" size="icon-sm" aria-label="Open Popover">
-              <ChevronDownIcon />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent align="end" className="p-0">
-            <div className="px-4 py-3">
-              <div className="text-sm font-medium">Agent Tasks</div>
-            </div>
-            <Separator />
-            <div className="p-4 text-sm *:[p:not(:last-child)]:mb-2">
-              <Textarea
-                placeholder="Describe your task in natural language."
-                className="mb-4 resize-none"
-              />
-              <p className="font-medium">Start a new task with Copilot</p>
-              <p className="text-muted-foreground">
-                Describe your task in natural language. Copilot will work in the
-                background and open a pull request for your review.
-              </p>
-            </div>
-          </PopoverContent>
-        </Popover>
+        <ButtonGroup>
+          <Button variant="outline">Follow</Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="!pl-2">
+                <IconPlaceholder
+                  lucide="ChevronDownIcon"
+                  tabler="IconChevronDown"
+                  hugeicons="ArrowDown01Icon"
+                />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="VolumeOffIcon"
+                    tabler="IconVolume"
+                    hugeicons="VolumeOffIcon"
+                  />
+                  Mute Conversation
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="CheckIcon"
+                    tabler="IconCheck"
+                    hugeicons="Tick01Icon"
+                  />
+                  Mark as Read
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="UserRoundXIcon"
+                    tabler="IconUserX"
+                    hugeicons="UserRemove01Icon"
+                  />
+                  Block User
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuLabel>Conversation</DropdownMenuLabel>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="ShareIcon"
+                    tabler="IconShare"
+                    hugeicons="Share03Icon"
+                  />
+                  Share Conversation
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="CopyIcon"
+                    tabler="IconCopy"
+                    hugeicons="Copy01Icon"
+                  />
+                  Copy Conversation
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="AlertTriangleIcon"
+                    tabler="IconAlertTriangle"
+                    hugeicons="AlertCircleIcon"
+                  />
+                  Report Conversation
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem variant="destructive">
+                  <IconPlaceholder
+                    lucide="TrashIcon"
+                    tabler="IconTrash"
+                    hugeicons="Delete02Icon"
+                  />
+                  Delete Conversation
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline" size="sm">
+            <BotIcon /> Copilot
+          </Button>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon-sm"
+                aria-label="Open Popover"
+              >
+                <ChevronDownIcon />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent align="end" className="p-0">
+              <div className="px-4 py-3">
+                <div className="text-sm font-medium">Agent Tasks</div>
+              </div>
+              <Separator />
+              <div className="p-4 text-sm *:[p:not(:last-child)]:mb-2">
+                <Textarea
+                  placeholder="Describe your task in natural language."
+                  className="mb-4 resize-none"
+                />
+                <p className="font-medium">Start a new task with Copilot</p>
+                <p className="text-muted-foreground">
+                  Describe your task in natural language. Copilot will work in
+                  the background and open a pull request for your review.
+                </p>
+              </div>
+            </PopoverContent>
+          </Popover>
+        </ButtonGroup>
       </ButtonGroup>
-    </ButtonGroup>
+    </div>
   )
 }
 
@@ -770,25 +630,22 @@ function EmptyAvatarGroup() {
             <AlertDialogTrigger asChild>
               <Button>Connect Mouse</Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="theme-lyra:gap-4 gap-6 sm:max-w-xs">
-              <div className="bg-muted theme-lyra:size-10 mx-auto flex size-16 items-center justify-center rounded-full">
-                <IconPlaceholder
-                  lucide="BluetoothIcon"
-                  tabler="IconBluetooth"
-                  hugeicons="BluetoothIcon"
-                  className="theme-lyra:size-6 size-8"
-                />
-              </div>
+            <AlertDialogContent size="sm">
               <AlertDialogHeader>
-                <AlertDialogTitle className="text-center">
-                  Allow accessory to connect?
-                </AlertDialogTitle>
-                <AlertDialogDescription className="text-center">
+                <AlertDialogMedia>
+                  <IconPlaceholder
+                    lucide="BluetoothIcon"
+                    tabler="IconBluetooth"
+                    hugeicons="BluetoothIcon"
+                  />
+                </AlertDialogMedia>
+                <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
+                <AlertDialogDescription>
                   Do you want to allow the USB accessory to connect to this
                   device?
                 </AlertDialogDescription>
               </AlertDialogHeader>
-              <AlertDialogFooter className="grid grid-cols-2 gap-4">
+              <AlertDialogFooter>
                 <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
                 <AlertDialogAction>Allow</AlertDialogAction>
               </AlertDialogFooter>
@@ -962,7 +819,25 @@ function FieldHear() {
                 Select the option that best describes how you heard about us.
               </FieldDescription>
               <FieldGroup className="flex flex-row flex-wrap gap-2">
-                {options.map((option) => (
+                {[
+                  {
+                    label: "Social Media",
+                    value: "social-media",
+                  },
+
+                  {
+                    label: "Search Engine",
+                    value: "search-engine",
+                  },
+                  {
+                    label: "Referral",
+                    value: "referral",
+                  },
+                  {
+                    label: "Other",
+                    value: "other",
+                  },
+                ].map((option) => (
                   <FieldLabel
                     htmlFor={option.value}
                     key={option.value}
@@ -1187,293 +1062,6 @@ function ItemDemo() {
   )
 }
 
-function NotionPromptForm() {
-  const [mentions, setMentions] = useState<string[]>([])
-  const [mentionPopoverOpen, setMentionPopoverOpen] = useState(false)
-  const [modelPopoverOpen, setModelPopoverOpen] = useState(false)
-  const [selectedModel, setSelectedModel] = useState<
-    (typeof SAMPLE_DATA.models)[0]
-  >(SAMPLE_DATA.models[0])
-  const [scopeMenuOpen, setScopeMenuOpen] = useState(false)
-
-  const grouped = useMemo(() => {
-    return SAMPLE_DATA.mentionable.reduce(
-      (acc, item) => {
-        const isAvailable = !mentions.includes(item.title)
-
-        if (isAvailable) {
-          if (!acc[item.type]) {
-            acc[item.type] = []
-          }
-          acc[item.type].push(item)
-        }
-        return acc
-      },
-      {} as Record<string, typeof SAMPLE_DATA.mentionable>
-    )
-  }, [mentions])
-
-  const hasMentions = mentions.length > 0
-
-  return (
-    <form>
-      <Field>
-        <FieldLabel htmlFor="notion-prompt" className="sr-only">
-          Prompt
-        </FieldLabel>
-        <InputGroup>
-          <InputGroupTextarea
-            id="notion-prompt"
-            placeholder="Ask, search, or make anything..."
-          />
-          <InputGroupAddon align="block-start">
-            <Popover
-              open={mentionPopoverOpen}
-              onOpenChange={setMentionPopoverOpen}
-            >
-              <Tooltip>
-                <TooltipTrigger
-                  asChild
-                  onFocusCapture={(e) => e.stopPropagation()}
-                >
-                  <PopoverTrigger asChild>
-                    <InputGroupButton
-                      variant="outline"
-                      size={!hasMentions ? "sm" : "icon-sm"}
-                      className="rounded-full transition-transform"
-                    >
-                      <IconAt /> {!hasMentions && "Add context"}
-                    </InputGroupButton>
-                  </PopoverTrigger>
-                </TooltipTrigger>
-                <TooltipContent>Mention a person, page, or date</TooltipContent>
-              </Tooltip>
-              <PopoverContent className="p-0" align="start">
-                <Command>
-                  <CommandInput placeholder="Search pages..." />
-                  <CommandList>
-                    <CommandEmpty>No pages found</CommandEmpty>
-                    {Object.entries(grouped).map(([type, items]) => (
-                      <CommandGroup
-                        key={type}
-                        heading={type === "page" ? "Pages" : "Users"}
-                      >
-                        {items.map((item) => (
-                          <CommandItem
-                            key={item.title}
-                            value={item.title}
-                            onSelect={(currentValue) => {
-                              setMentions((prev) => [...prev, currentValue])
-                              setMentionPopoverOpen(false)
-                            }}
-                          >
-                            <MentionableIcon item={item} />
-                            {item.title}
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    ))}
-                  </CommandList>
-                </Command>
-              </PopoverContent>
-            </Popover>
-            <div className="no-scrollbar -m-1.5 flex gap-1 overflow-y-auto p-1.5">
-              {mentions.map((mention) => {
-                const item = SAMPLE_DATA.mentionable.find(
-                  (item) => item.title === mention
-                )
-
-                if (!item) {
-                  return null
-                }
-
-                return (
-                  <InputGroupButton
-                    key={mention}
-                    size="sm"
-                    variant="secondary"
-                    className="rounded-full !pl-2"
-                    onClick={() => {
-                      setMentions((prev) => prev.filter((m) => m !== mention))
-                    }}
-                  >
-                    <MentionableIcon item={item} />
-                    {item.title}
-                    <IconX />
-                  </InputGroupButton>
-                )
-              })}
-            </div>
-          </InputGroupAddon>
-          <InputGroupAddon align="block-end" className="gap-1">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <InputGroupButton
-                  size="icon-sm"
-                  className="rounded-full"
-                  aria-label="Attach file"
-                >
-                  <IconPaperclip />
-                </InputGroupButton>
-              </TooltipTrigger>
-              <TooltipContent>Attach file</TooltipContent>
-            </Tooltip>
-            <DropdownMenu
-              open={modelPopoverOpen}
-              onOpenChange={setModelPopoverOpen}
-            >
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <DropdownMenuTrigger asChild>
-                    <InputGroupButton size="sm">
-                      {selectedModel.name}
-                    </InputGroupButton>
-                  </DropdownMenuTrigger>
-                </TooltipTrigger>
-                <TooltipContent>Select AI model</TooltipContent>
-              </Tooltip>
-              <DropdownMenuContent side="top" align="start" className="w-42">
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Select Agent Mode</DropdownMenuLabel>
-                  {SAMPLE_DATA.models.map((model) => (
-                    <DropdownMenuCheckboxItem
-                      key={model.name}
-                      checked={model.name === selectedModel.name}
-                      onCheckedChange={(checked) => {
-                        if (checked) {
-                          setSelectedModel(model)
-                        }
-                      }}
-                      className="pl-2 *:[span:first-child]:right-2 *:[span:first-child]:left-auto"
-                    >
-                      {model.name}
-                      {model.badge && (
-                        <Badge
-                          variant="secondary"
-                          className="h-5 rounded-sm bg-blue-100 px-1 text-xs text-blue-800 dark:bg-blue-900 dark:text-blue-100"
-                        >
-                          {model.badge}
-                        </Badge>
-                      )}
-                    </DropdownMenuCheckboxItem>
-                  ))}
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <DropdownMenu open={scopeMenuOpen} onOpenChange={setScopeMenuOpen}>
-              <DropdownMenuTrigger asChild>
-                <InputGroupButton size="sm" className="rounded-full">
-                  <IconWorld /> All Sources
-                </InputGroupButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent side="top" align="end">
-                <DropdownMenuGroup>
-                  <DropdownMenuItem
-                    asChild
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    <label htmlFor="web-search">
-                      <IconWorld /> Web Search{" "}
-                      <Switch
-                        id="web-search"
-                        className="ml-auto"
-                        defaultChecked
-                      />
-                    </label>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem
-                    asChild
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    <label htmlFor="apps">
-                      <IconApps /> Apps and Integrations
-                      <Switch id="apps" className="ml-auto" defaultChecked />
-                    </label>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconCircleDashedPlus /> All Sources I can access
-                  </DropdownMenuItem>
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                      <Avatar className="size-4">
-                        <AvatarImage src="https://github.com/shadcn.png" />
-                        <AvatarFallback>CN</AvatarFallback>
-                      </Avatar>
-                      shadcn
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent className="w-72 p-0">
-                      <Command>
-                        <CommandInput
-                          placeholder="Find or use knowledge in..."
-                          autoFocus
-                        />
-                        <CommandList>
-                          <CommandEmpty>No knowledge found</CommandEmpty>
-                          <CommandGroup>
-                            {SAMPLE_DATA.mentionable
-                              .filter((item) => item.type === "user")
-                              .map((user) => (
-                                <CommandItem
-                                  key={user.title}
-                                  value={user.title}
-                                  onSelect={() => {
-                                    console.log("Selected user:", user.title)
-                                  }}
-                                >
-                                  <Avatar className="size-4">
-                                    <AvatarImage src={user.image} />
-                                    <AvatarFallback>
-                                      {user.title[0]}
-                                    </AvatarFallback>
-                                  </Avatar>
-                                  {user.title}{" "}
-                                  <span className="text-muted-foreground">
-                                    - {user.workspace}
-                                  </span>
-                                </CommandItem>
-                              ))}
-                          </CommandGroup>
-                        </CommandList>
-                      </Command>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-                  <DropdownMenuItem>
-                    <IconBook /> Help Center
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>
-                    <IconPlus /> Connect Apps
-                  </DropdownMenuItem>
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
-                    We&apos;ll only search in the sources selected here.
-                  </DropdownMenuLabel>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <InputGroupButton
-              aria-label="Send"
-              className="ml-auto rounded-full"
-              variant="default"
-              size="icon-sm"
-            >
-              <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
-              />
-            </InputGroupButton>
-          </InputGroupAddon>
-        </InputGroup>
-      </Field>
-    </form>
-  )
-}
-
 function SpinnerBadge() {
   return (
     <div className="flex items-center gap-2">
@@ -1495,7 +1083,7 @@ function SpinnerBadge() {
 
 function SpinnerEmpty() {
   return (
-    <Empty className="w-full border md:p-6">
+    <Empty className="w-full flex-0 border md:p-6">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <Spinner />

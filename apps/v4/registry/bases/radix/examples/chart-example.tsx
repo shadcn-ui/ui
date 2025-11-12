@@ -25,7 +25,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/bases/radix/ui/chart"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const areaChartData = [
@@ -259,7 +258,7 @@ function ChartLineExample() {
 
 export default function ChartExample() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="grid w-full max-w-screen-2xl gap-4 *:data-[slot=card]:flex-1 @2xl:grid-cols-2 @6xl:grid-cols-3">
         <ChartAreaExample />
         <ChartBarExample />
@@ -267,6 +266,6 @@ export default function ChartExample() {
           <ChartLineExample />
         </div>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

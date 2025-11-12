@@ -17,6 +17,33 @@
     @apply text-muted-foreground text-sm;
   }
 
+  /* Alert */
+  .cn-alert {
+    @apply grid gap-0.5 border px-3 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2.5 *:[svg]:row-span-2 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4;
+
+    .cn-alert-title {
+      @apply font-medium group-has-[>svg]/alert:col-start-2;
+    }
+
+    .cn-alert-description {
+      @apply text-muted-foreground text-sm text-balance md:text-pretty;
+    }
+
+    .cn-alert-action {
+      @apply absolute top-2.5 right-3;
+    }
+
+    /* Variant */
+    &.cn-alert-variant-default {
+      @apply bg-card text-card-foreground;
+    }
+
+    &.cn-alert-variant-destructive {
+      @apply text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current;
+    }
+  }
+
+  /* Button */
   .cn-button {
     @apply border border-transparent text-sm [&_svg:not([class*='size-'])]:size-3.5;
 

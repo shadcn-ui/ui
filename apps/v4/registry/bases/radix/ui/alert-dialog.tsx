@@ -5,7 +5,6 @@ import { AlertDialog as AlertDialogPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/bases/radix/ui/button"
-import { CanvaPortal } from "@/app/(design)/design/components/canva"
 
 function AlertDialog({
   ...props
@@ -50,18 +49,18 @@ function AlertDialogContent({
   size?: "default" | "sm"
 }) {
   return (
-    <CanvaPortal element={<AlertDialogPortal />}>
+    <AlertDialogPortal>
       <AlertDialogOverlay />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          "cn-alert-dialog-content group/alert-dialog-content fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] sm:data-[size=default]:max-w-lg sm:data-[size=sm]:max-w-xs",
+          "cn-alert-dialog-content group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2",
           className
         )}
         {...props}
       />
-    </CanvaPortal>
+    </AlertDialogPortal>
   )
 }
 
@@ -72,12 +71,7 @@ function AlertDialogHeader({
   return (
     <div
       data-slot="alert-dialog-header"
-      className={cn(
-        "cn-alert-dialog-header flex flex-col bg-red-200 text-center sm:bg-blue-200 sm:text-left",
-        "has-data-[slot=alert-dialog-media]:relative has-data-[slot=alert-dialog-media]:pl-14 has-data-[slot=alert-dialog-media]:*:data-[slot=alert-dialog-media]:absolute has-data-[slot=alert-dialog-media]:*:data-[slot=alert-dialog-media]:top-0 has-data-[slot=alert-dialog-media]:*:data-[slot=alert-dialog-media]:left-0",
-        "sm:group-data-[size=sm]/alert-dialog-content:items-center sm:group-data-[size=sm]/alert-dialog-content:text-center",
-        className
-      )}
+      className={cn("cn-alert-dialog-header", className)}
       {...props}
     />
   )
@@ -132,7 +126,10 @@ function AlertDialogDescription({
   return (
     <AlertDialogPrimitive.Description
       data-slot="alert-dialog-description"
-      className={cn("cn-alert-dialog-description", className)}
+      className={cn(
+        "cn-alert-dialog-description *:[a]:hover:text-foreground *:[a]:underline *:[a]:underline-offset-3",
+        className
+      )}
       {...props}
     />
   )

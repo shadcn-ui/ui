@@ -1,19 +1,23 @@
 import {
   Avatar,
   AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
   AvatarImage,
 } from "@/registry/bases/radix/ui/avatar"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function AvatarDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background flex min-h-screen flex-col items-center justify-center gap-12 p-4">
       <div className="flex flex-row flex-wrap items-center gap-4">
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <Avatar>
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar className="size-12">
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <Avatar className="size-12">
@@ -27,67 +31,101 @@ export default function AvatarDemo() {
           />
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
-        <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/maxleiter.png"
-              alt="@maxleiter"
-            />
-            <AvatarFallback>LR</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/evilrabbit.png"
-              alt="@evilrabbit"
-            />
-            <AvatarFallback>ER</AvatarFallback>
-          </Avatar>
-        </div>
-        <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/maxleiter.png"
-              alt="@maxleiter"
-            />
-            <AvatarFallback>LR</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/evilrabbit.png"
-              alt="@evilrabbit"
-            />
-            <AvatarFallback>ER</AvatarFallback>
-          </Avatar>
-        </div>
-        <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 hover:space-x-1 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale *:data-[slot=avatar]:transition-all *:data-[slot=avatar]:duration-300 *:data-[slot=avatar]:ease-in-out">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/maxleiter.png"
-              alt="@maxleiter"
-            />
-            <AvatarFallback>LR</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/evilrabbit.png"
-              alt="@evilrabbit"
-            />
-            <AvatarFallback>ER</AvatarFallback>
-          </Avatar>
-        </div>
       </div>
-    </CanvaFrame>
+      <div className="flex flex-row flex-wrap items-center gap-4">
+        <AvatarGroup>
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage
+              src="https://github.com/maxleiter.png"
+              alt="@maxleiter"
+            />
+            <AvatarFallback>LR</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage
+              src="https://github.com/evilrabbit.png"
+              alt="@evilrabbit"
+            />
+            <AvatarFallback>ER</AvatarFallback>
+          </Avatar>
+        </AvatarGroup>
+        <AvatarGroup className="grayscale *:data-[slot=avatar]:size-12">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage
+              src="https://github.com/pranathip.png"
+              alt="@pranathip"
+            />
+            <AvatarFallback>LR</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage
+              src="https://github.com/evilrabbit.png"
+              alt="@evilrabbit"
+            />
+            <AvatarFallback>ER</AvatarFallback>
+          </Avatar>
+        </AvatarGroup>
+        <AvatarGroup>
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage
+              src="https://github.com/pranathip.png"
+              alt="@pranathip"
+            />
+            <AvatarFallback>LR</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage
+              src="https://github.com/evilrabbit.png"
+              alt="@evilrabbit"
+            />
+            <AvatarFallback>ER</AvatarFallback>
+          </Avatar>
+          <AvatarGroupCount>+3</AvatarGroupCount>
+        </AvatarGroup>
+        <AvatarGroup className="*:data-[slot=avatar]:size-12 *:data-[slot=avatar-group-count]:size-12">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage
+              src="https://github.com/pranathip.png"
+              alt="@pranathip"
+            />
+            <AvatarFallback>LR</AvatarFallback>
+          </Avatar>
+          <Avatar>
+            <AvatarImage
+              src="https://github.com/evilrabbit.png"
+              alt="@evilrabbit"
+            />
+            <AvatarFallback>ER</AvatarFallback>
+          </Avatar>
+          <AvatarGroupCount>+3</AvatarGroupCount>
+        </AvatarGroup>
+      </div>
+      <div className="flex flex-row flex-wrap items-center gap-4">
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar className="size-12">
+          <AvatarImage src="/avatars/avatar-white.png" alt="White Avatar" />
+          <AvatarFallback>WA</AvatarFallback>
+        </Avatar>
+      </div>
+    </div>
   )
 }

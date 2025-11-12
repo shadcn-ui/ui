@@ -3,16 +3,15 @@ import Image from "next/image"
 
 import { ScrollArea, ScrollBar } from "@/registry/bases/radix/ui/scroll-area"
 import { Separator } from "@/registry/bases/radix/ui/separator"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function ScrollAreaDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-col gap-6">
         <ScrollAreaVertical />
         <ScrollAreaHorizontalDemo />
       </div>
-    </CanvaFrame>
+    </div>
   )
 }
 

@@ -1,10 +1,9 @@
 import { Card, CardContent, CardHeader } from "@/registry/bases/radix/ui/card"
 import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function SkeletonDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex w-full flex-wrap items-start gap-4">
         <div className="flex items-center gap-4">
           <Skeleton className="size-10 shrink-0 rounded-full" />
@@ -27,6 +26,6 @@ export default function SkeletonDemo() {
           ))}
         </div>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

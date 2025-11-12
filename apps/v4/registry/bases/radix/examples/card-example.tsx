@@ -17,12 +17,11 @@ import {
 } from "@/registry/bases/radix/ui/card"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function CardDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex items-start gap-4">
         <Card className="w-full max-w-sm">
           <CardHeader>
@@ -162,6 +161,6 @@ export default function CardDemo() {
           </CardFooter>
         </Card>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

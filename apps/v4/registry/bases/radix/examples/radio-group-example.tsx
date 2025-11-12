@@ -3,7 +3,6 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from "@/registry/bases/radix/ui/radio-group"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 const plans = [
   {
@@ -23,7 +22,7 @@ const plans = [
 
 export default function RadioGroupDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-col gap-6">
         <RadioGroup defaultValue="comfortable">
           <div className="flex items-center gap-3">
@@ -60,6 +59,6 @@ export default function RadioGroupDemo() {
           ))}
         </RadioGroup>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

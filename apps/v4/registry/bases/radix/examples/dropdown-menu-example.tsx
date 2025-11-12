@@ -40,11 +40,10 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function DropdownMenuDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-wrap items-start gap-4">
         <DropdownMenuSimple />
         <DropdownMenuCheckboxes />
@@ -53,7 +52,7 @@ export default function DropdownMenuDemo() {
         <DropdownMenuAvatarOnly />
         <DropdownMenuIconColor />
       </div>
-    </CanvaFrame>
+    </div>
   )
 }
 

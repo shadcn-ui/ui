@@ -1,10 +1,9 @@
 import { Label } from "@/registry/bases/radix/ui/label"
 import { Textarea } from "@/registry/bases/radix/ui/textarea"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function TextareaDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex w-full flex-col gap-10">
         <Textarea placeholder="Type your message here." />
         <Textarea placeholder="Type your message here." aria-invalid="true" />
@@ -38,6 +37,6 @@ export default function TextareaDemo() {
           />
         </div>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

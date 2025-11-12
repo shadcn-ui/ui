@@ -38,7 +38,6 @@ import {
 } from "@/registry/bases/radix/ui/select"
 import { Switch } from "@/registry/bases/radix/ui/switch"
 import { Textarea } from "@/registry/bases/radix/ui/textarea"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const items = [
@@ -119,7 +118,7 @@ export default function FormDemo() {
   }
 
   return (
-    <CanvaFrame className="aspect-auto">
+    <div className="bg-background min-h-screen p-4">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -405,6 +404,6 @@ export default function FormDemo() {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-    </CanvaFrame>
+    </div>
   )
 }

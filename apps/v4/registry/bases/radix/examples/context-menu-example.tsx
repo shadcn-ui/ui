@@ -13,12 +13,11 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/registry/bases/radix/ui/context-menu"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ContextMenuDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <ContextMenu>
         <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
           Right click here
@@ -88,6 +87,6 @@ export default function ContextMenuDemo() {
           </ContextMenuRadioGroup>
         </ContextMenuContent>
       </ContextMenu>
-    </CanvaFrame>
+    </div>
   )
 }

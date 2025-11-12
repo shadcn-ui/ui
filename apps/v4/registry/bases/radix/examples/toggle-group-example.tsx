@@ -11,11 +11,10 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/bases/radix/ui/toggle-group"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function ToggleGroupDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-wrap items-start gap-4">
         <ToggleGroup type="multiple" spacing={2}>
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -142,6 +141,6 @@ export default function ToggleGroupDemo() {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

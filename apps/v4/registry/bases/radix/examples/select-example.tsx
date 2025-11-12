@@ -15,11 +15,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/radix/ui/select"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function SelectDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-wrap items-start gap-4">
         <Select>
           <SelectTrigger className="w-[180px]">
@@ -91,6 +90,6 @@ export default function SelectDemo() {
           </SelectContent>
         </Select>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

@@ -4,11 +4,10 @@ import * as React from "react"
 
 import { Label } from "@/registry/bases/radix/ui/label"
 import { Slider } from "@/registry/bases/radix/ui/slider"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function SliderDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex w-full max-w-sm flex-col flex-wrap gap-6 md:flex-row">
         <Slider defaultValue={[50]} max={100} step={1} />
         <Slider defaultValue={[25, 50]} max={100} step={5} />
@@ -29,7 +28,7 @@ export default function SliderDemo() {
         </div>
         <SliderControlled />
       </div>
-    </CanvaFrame>
+    </div>
   )
 }
 

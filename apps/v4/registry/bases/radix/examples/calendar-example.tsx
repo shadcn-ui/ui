@@ -25,12 +25,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function CalendarDemo() {
   return (
-    <CanvaFrame className="aspect-auto">
+    <div className="bg-background min-h-screen p-4">
       <div className="flex h-full flex-col flex-wrap justify-center gap-8 lg:flex-row">
         <CalendarSingle />
         <CalendarMultiple />
@@ -46,7 +45,7 @@ export default function CalendarDemo() {
           <DatePickerWithRange />
         </div>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }
 

@@ -5,7 +5,7 @@ export const PRESETS = [
     baseColor: "neutral",
     theme: "neutral",
     iconLibrary: "lucide",
-    font: "geist",
+    font: "geist-sans",
   },
   {
     title: "Preset One",

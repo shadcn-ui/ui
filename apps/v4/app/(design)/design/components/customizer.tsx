@@ -62,8 +62,8 @@ export function Customizer() {
   )
 
   return (
-    <div className="fixed top-16 left-6 z-10 flex flex-col gap-4">
-      <Card className="w-64 gap-0 rounded-xl border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+    <div className="z-10 flex flex-col gap-4">
+      <Card className="w-64 gap-0 rounded-xl py-0">
         <CardHeader className="gap-0 border-b px-4 py-3.5!">
           <CardTitle className="text-sm font-medium">Presets</CardTitle>
         </CardHeader>
@@ -91,7 +91,7 @@ export function Customizer() {
           </FieldGroup>
         </CardContent>
       </Card>
-      <Card className="w-64 gap-0 rounded-xl border-none py-0 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+      <Card className="w-64 gap-0 rounded-xl py-0">
         <CardHeader className="gap-0 border-b px-4 py-3.5!">
           <CardTitle className="text-sm font-medium">Customize</CardTitle>
         </CardHeader>

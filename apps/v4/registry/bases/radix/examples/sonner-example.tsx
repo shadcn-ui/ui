@@ -4,7 +4,6 @@ import * as React from "react"
 import { toast } from "sonner"
 
 import { Button } from "@/registry/bases/radix/ui/button"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 const promiseCode = "`${data.name} toast has been added`"
 
@@ -97,7 +96,7 @@ toast.promise(promise, {
 export default function SonnerDemo() {
   const [activeType, setActiveType] = React.useState(allTypes[0])
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-wrap gap-4">
         <Button onClick={() => toast("My first toast")} variant="outline">
           Give me a toast
@@ -130,6 +129,6 @@ export default function SonnerDemo() {
           </Button>
         ))}
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

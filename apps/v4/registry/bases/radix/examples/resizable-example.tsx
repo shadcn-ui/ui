@@ -3,11 +3,10 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/registry/bases/radix/ui/resizable"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function ResizableDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex w-full flex-col gap-6">
         <ResizablePanelGroup
           direction="horizontal"
@@ -68,6 +67,6 @@ export default function ResizableDemo() {
           </ResizablePanel>
         </ResizablePanelGroup>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

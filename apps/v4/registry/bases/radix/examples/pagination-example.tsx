@@ -7,11 +7,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/registry/bases/radix/ui/pagination"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function PaginationDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-col gap-6">
         <Pagination>
           <PaginationContent>
@@ -38,6 +37,6 @@ export default function PaginationDemo() {
           </PaginationContent>
         </Pagination>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

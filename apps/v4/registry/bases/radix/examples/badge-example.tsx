@@ -1,46 +1,116 @@
 import { Badge } from "@/registry/bases/radix/ui/badge"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function BadgeDemo() {
   return (
-    <CanvaFrame>
-      <div className="flex flex-col items-center gap-2">
+    <div className="bg-background flex min-h-screen flex-col items-center justify-center p-4">
+      <div className="flex flex-col items-center gap-6">
         <div className="flex w-full flex-wrap gap-2">
-          <Badge>Badge</Badge>
+          <Badge>Default</Badge>
           <Badge variant="secondary">Secondary</Badge>
           <Badge variant="destructive">Destructive</Badge>
           <Badge variant="outline">Outline</Badge>
-          <Badge variant="outline">
+          <Badge variant="ghost">Ghost</Badge>
+          <Badge variant="link">Link</Badge>
+        </div>
+        <div className="flex w-full flex-wrap gap-2">
+          <Badge>
             <IconPlaceholder
-              lucide="CircleDashedIcon"
-              tabler="IconCircleDashed"
-              hugeicons="DashedLineCircleIcon"
+              lucide="BadgeCheck"
+              tabler="IconRosetteDiscountCheck"
+              hugeicons="CheckmarkBadge02Icon"
             />
-            Badge
+            Default
+          </Badge>
+          <Badge variant="secondary">
+            <IconPlaceholder
+              lucide="BadgeCheck"
+              tabler="IconRosetteDiscountCheck"
+              hugeicons="CheckmarkBadge02Icon"
+            />
+            Secondary
           </Badge>
           <Badge variant="destructive">
             <IconPlaceholder
-              lucide="CircleDashedIcon"
-              tabler="IconCircleDashed"
-              hugeicons="DashedLineCircleIcon"
+              lucide="BadgeCheck"
+              tabler="IconRosetteDiscountCheck"
+              hugeicons="CheckmarkBadge02Icon"
             />
-            Alert
+            Destructive
           </Badge>
-          <Badge className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
-            8
+          <Badge variant="outline">
+            <IconPlaceholder
+              lucide="BadgeCheck"
+              tabler="IconRosetteDiscountCheck"
+              hugeicons="CheckmarkBadge02Icon"
+            />
+            Outline
           </Badge>
-          <Badge
-            className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
-            variant="destructive"
-          >
-            99
+          <Badge variant="ghost">
+            <IconPlaceholder
+              lucide="BadgeCheck"
+              tabler="IconRosetteDiscountCheck"
+              hugeicons="CheckmarkBadge02Icon"
+            />
+            Ghost
           </Badge>
-          <Badge
-            className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
-            variant="outline"
-          >
-            20+
+          <Badge variant="link">
+            <IconPlaceholder
+              lucide="BadgeCheck"
+              tabler="IconRosetteDiscountCheck"
+              hugeicons="CheckmarkBadge02Icon"
+            />
+            Link
+          </Badge>
+        </div>
+        <div className="flex w-full flex-wrap gap-2">
+          <Badge>
+            Default
+            <IconPlaceholder
+              lucide="ArrowRightIcon"
+              tabler="IconArrowRight"
+              hugeicons="ArrowRight02Icon"
+            />
+          </Badge>
+          <Badge variant="secondary">
+            Secondary
+            <IconPlaceholder
+              lucide="ArrowRightIcon"
+              tabler="IconArrowRight"
+              hugeicons="ArrowRight02Icon"
+            />
+          </Badge>
+          <Badge variant="destructive">
+            Destructive
+            <IconPlaceholder
+              lucide="ArrowRightIcon"
+              tabler="IconArrowRight"
+              hugeicons="ArrowRight02Icon"
+            />
+          </Badge>
+          <Badge variant="outline">
+            Outline
+            <IconPlaceholder
+              lucide="ArrowRightIcon"
+              tabler="IconArrowRight"
+              hugeicons="ArrowRight02Icon"
+            />
+          </Badge>
+          <Badge variant="ghost">
+            Ghost
+            <IconPlaceholder
+              lucide="ArrowRightIcon"
+              tabler="IconArrowRight"
+              hugeicons="ArrowRight02Icon"
+            />
+          </Badge>
+          <Badge variant="link">
+            Link
+            <IconPlaceholder
+              lucide="ArrowRightIcon"
+              tabler="IconArrowRight"
+              hugeicons="ArrowRight02Icon"
+            />
           </Badge>
         </div>
         <div className="flex w-full flex-wrap gap-2">
@@ -48,9 +118,9 @@ export default function BadgeDemo() {
             <a href="#">
               Link{" "}
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
+                lucide="ArrowUpRightIcon"
+                tabler="IconArrowUpRight"
+                hugeicons="ArrowUpRightIcon"
               />
             </a>
           </Badge>
@@ -58,9 +128,9 @@ export default function BadgeDemo() {
             <a href="#">
               Link{" "}
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
+                lucide="ArrowUpRightIcon"
+                tabler="IconArrowUpRight"
+                hugeicons="ArrowUpRightIcon"
               />
             </a>
           </Badge>
@@ -68,9 +138,9 @@ export default function BadgeDemo() {
             <a href="#">
               Link{" "}
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
+                lucide="ArrowUpRightIcon"
+                tabler="IconArrowUpRight"
+                hugeicons="ArrowUpRightIcon"
               />
             </a>
           </Badge>
@@ -78,14 +148,68 @@ export default function BadgeDemo() {
             <a href="#">
               Link{" "}
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
+                lucide="ArrowUpRightIcon"
+                tabler="IconArrowUpRight"
+                hugeicons="ArrowUpRightIcon"
+              />
+            </a>
+          </Badge>
+          <Badge asChild variant="ghost">
+            <a href="#">
+              Link{" "}
+              <IconPlaceholder
+                lucide="ArrowUpRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
+            </a>
+          </Badge>
+          <Badge asChild variant="link">
+            <a href="#">
+              Link{" "}
+              <IconPlaceholder
+                lucide="ArrowUpRightIcon"
+                tabler="IconArrowUpRight"
+                hugeicons="ArrowRight02Icon"
               />
             </a>
           </Badge>
         </div>
+        <div className="flex w-full flex-wrap gap-2">
+          <Badge variant="secondary">
+            A badge with a lot of text to see how it wraps
+          </Badge>
+        </div>
+        <div className="flex w-full flex-wrap gap-2">
+          <Badge className="bg-blue-600 text-blue-50 dark:bg-blue-600 dark:text-blue-50">
+            Blue
+          </Badge>
+          <Badge className="bg-green-600 text-green-50 dark:bg-green-600 dark:text-green-50">
+            Green
+          </Badge>
+          <Badge className="bg-sky-600 text-sky-50 dark:bg-sky-600 dark:text-sky-50">
+            Sky
+          </Badge>
+          <Badge className="bg-purple-600 text-purple-50 dark:bg-purple-600 dark:text-purple-50">
+            Purple
+          </Badge>
+          <Badge className="bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+            Blue
+          </Badge>
+          <Badge className="bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300">
+            Green
+          </Badge>
+          <Badge className="bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-300">
+            Sky
+          </Badge>
+          <Badge className="bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300">
+            Purple
+          </Badge>
+          <Badge className="bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300">
+            Red
+          </Badge>
+        </div>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

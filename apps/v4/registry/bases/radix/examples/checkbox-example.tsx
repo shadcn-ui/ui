@@ -2,11 +2,10 @@
 
 import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
 import { Label } from "@/registry/bases/radix/ui/label"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function CheckboxDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-col gap-6">
         <div className="flex items-center gap-3">
           <Checkbox id="terms" />
@@ -41,6 +40,6 @@ export default function CheckboxDemo() {
           </div>
         </Label>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

@@ -1,10 +1,9 @@
 import { Label } from "@/registry/bases/radix/ui/label"
 import { Switch } from "@/registry/bases/radix/ui/switch"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function SwitchDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-col gap-6">
         <div className="flex items-center gap-2">
           <Switch id="switch-demo-airplane-mode" />
@@ -32,6 +31,6 @@ export default function SwitchDemo() {
           />
         </Label>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

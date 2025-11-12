@@ -29,12 +29,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function EmptyDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="grid w-full gap-8">
         <Empty className="min-h-[80svh]">
           <EmptyHeader>
@@ -264,6 +263,6 @@ export default function EmptyDemo() {
           </div>
         </div>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

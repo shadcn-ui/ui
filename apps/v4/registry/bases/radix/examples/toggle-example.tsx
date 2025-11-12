@@ -1,10 +1,9 @@
 import { Toggle } from "@/registry/bases/radix/ui/toggle"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ToggleDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-wrap items-center gap-6">
         <Toggle aria-label="Toggle italic">
           <IconPlaceholder
@@ -48,6 +47,6 @@ export default function ToggleDemo() {
           Large
         </Toggle>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

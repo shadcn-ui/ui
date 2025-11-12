@@ -14,12 +14,11 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/registry/bases/radix/ui/menubar"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function MenubarDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -139,6 +138,6 @@ export default function MenubarDemo() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </div>
   )
 }

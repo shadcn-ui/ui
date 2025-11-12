@@ -11,17 +11,16 @@ import {
 } from "@/registry/bases/radix/ui/dialog"
 import { Input } from "@/registry/bases/radix/ui/input"
 import { Label } from "@/registry/bases/radix/ui/label"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function DialogExample() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-col items-start gap-4 md:flex-row">
         <DialogWithForm />
         <DialogScrollableContent />
         <DialogWithStickyFooter />
       </div>
-    </CanvaFrame>
+    </div>
   )
 }
 

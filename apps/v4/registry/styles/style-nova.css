@@ -1,18 +1,27 @@
 .style-nova {
+  /* Alert Dialog */
+  .cn-alert-dialog-overlay {
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-background/90 dark:bg-background/60 duration-100;
+  }
+
   .cn-alert-dialog-content {
-    @apply bg-background gap-4 rounded-xl border p-6 shadow-lg ring-4 ring-white/40 dark:ring-black/40;
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-bottom-5 data-[state=open]:slide-in-from-top-5 bg-background gap-4 rounded-xl border p-6 shadow-2xl duration-100 data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-lg;
   }
 
   .cn-alert-dialog-header {
-    @apply gap-2;
+    @apply grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-6 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr];
+  }
+
+  .cn-alert-dialog-media {
+    @apply bg-muted mb-2 inline-flex size-16 items-center justify-center rounded-lg sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-8;
   }
 
   .cn-alert-dialog-title {
-    @apply text-sm font-medium;
+    @apply font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2 sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:row-start-1;
   }
 
   .cn-alert-dialog-description {
-    @apply text-muted-foreground text-sm;
+    @apply text-muted-foreground text-sm sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2;
   }
 
   .cn-button {

@@ -35,7 +35,7 @@ const IconHugeicons = lazy(() =>
 const PREVIEW_ICONS = {
   lucide: [
     "CopyIcon",
-    "AlertCircleIcon",
+    "CircleAlertIcon",
     "TrashIcon",
     "ShareIcon",
     "ShoppingBagIcon",
@@ -51,7 +51,7 @@ const PREVIEW_ICONS = {
   ],
   tabler: [
     "IconCopy",
-    "IconAlertCircle",
+    "IconExclamationCircle",
     "IconTrash",
     "IconShare",
     "IconShoppingBag",

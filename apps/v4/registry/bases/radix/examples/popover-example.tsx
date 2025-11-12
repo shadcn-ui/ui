@@ -6,11 +6,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function PopoverDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline">Open popover</Button>
@@ -60,6 +59,6 @@ export default function PopoverDemo() {
           </div>
         </PopoverContent>
       </Popover>
-    </CanvaFrame>
+    </div>
   )
 }

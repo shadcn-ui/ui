@@ -9,10 +9,7 @@ import { Customizer } from "@/app/(design)/design/components/customizer"
 import { Preview } from "@/app/(design)/design/components/preview"
 import { Toolbar } from "@/app/(design)/design/components/toolbar"
 import { getItemsForBase } from "@/app/(design)/design/lib/api"
-import {
-  canvaSearchParamsCache,
-  designSystemSearchParamsCache,
-} from "@/app/(design)/design/lib/search-params"
+import { designSystemSearchParamsCache } from "@/app/(design)/design/lib/search-params"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -80,10 +77,9 @@ export default async function NewPage({
     return notFound()
   }
 
-  const [, , items] = await Promise.all([
-    designSystemSearchParamsCache.parse(searchParams),
-    canvaSearchParamsCache.parse(searchParams),
+  const [items] = await Promise.all([
     getItemsForBase(base.name),
+    designSystemSearchParamsCache.parse(searchParams),
   ])
 
   const filteredItems = items
@@ -96,11 +92,17 @@ export default async function NewPage({
   return (
     <div
       data-slot="designer"
-      className="bg-muted/50 flex h-screen flex-1 flex-col"
+      className="section-soft flex h-screen flex-1 flex-col"
     >
       <Toolbar items={filteredItems} />
-      <Preview base={base.name} />
-      <Customizer />
+      <div className="flex flex-1 gap-6 overflow-hidden p-6 pt-0">
+        <div className="overflow-y-auto">
+          <Customizer />
+        </div>
+        <div className="flex flex-1 flex-col">
+          <Preview base={base.name} />
+        </div>
+      </div>
     </div>
   )
 }

@@ -12,11 +12,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/radix/ui/select"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function NativeSelectDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-3">
           <div className="text-muted-foreground text-sm font-medium">
@@ -139,6 +138,6 @@ export default function NativeSelectDemo() {
           </div>
         </div>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

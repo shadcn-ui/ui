@@ -1,9 +1,8 @@
 import { Input } from "@/registry/bases/radix/ui/input"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function InputDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex max-w-md flex-col flex-wrap gap-4 md:flex-row">
         <Input type="email" placeholder="Email" />
         <Input type="text" placeholder="Error" aria-invalid="true" />
@@ -21,6 +20,6 @@ export default function InputDemo() {
         <Input type="week" placeholder="Week" />
         <Input disabled placeholder="Disabled" />
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

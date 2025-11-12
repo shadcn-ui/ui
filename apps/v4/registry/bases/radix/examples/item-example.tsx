@@ -29,7 +29,6 @@ import {
 } from "@/registry/bases/radix/ui/item"
 import { Progress } from "@/registry/bases/radix/ui/progress"
 import { Spinner } from "@/registry/bases/radix/ui/spinner"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const people = [
@@ -149,7 +148,7 @@ const issues = [
 
 export default function ItemDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="@container w-full">
         <div className="flex flex-wrap gap-6 2xl:gap-12">
           <div className="flex max-w-sm flex-col gap-6">
@@ -407,6 +406,6 @@ export default function ItemDemo() {
           </div>
         </div>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

@@ -1,6 +1,6 @@
 import {
   createSearchParamsCache,
-  parseAsFloat,
+  parseAsInteger,
   parseAsString,
   parseAsStringLiteral,
 } from "nuqs/server"
@@ -28,22 +28,13 @@ export const designSystemSearchParams = {
   baseColor: parseAsStringLiteral<BaseColor["name"]>(
     BASE_COLORS.map((b) => b.name)
   ).withDefault("neutral"),
-}
-
-export const canvaSearchParams = {
-  zoom: parseAsFloat,
+  size: parseAsInteger.withDefault(100),
 }
 
 export const designSystemSearchParamsCache = createSearchParamsCache(
   designSystemSearchParams
 )
 
-export const canvaSearchParamsCache = createSearchParamsCache(canvaSearchParams)
-
 export type DesignSystemSearchParams = Awaited<
   ReturnType<typeof designSystemSearchParamsCache.parse>
->
-
-export type CanvaSearchParams = Awaited<
-  ReturnType<typeof canvaSearchParamsCache.parse>
 >

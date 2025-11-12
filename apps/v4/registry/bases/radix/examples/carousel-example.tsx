@@ -8,11 +8,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/registry/bases/radix/ui/carousel"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 
 export default function CarouselDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="hidden w-full flex-col items-center gap-4 @4xl:flex">
         <Carousel className="max-w-sm *:data-[slot=carousel-next]:hidden *:data-[slot=carousel-previous]:hidden *:data-[slot=carousel-next]:md:inline-flex *:data-[slot=carousel-previous]:md:inline-flex">
           <CarouselContent>
@@ -77,6 +76,6 @@ export default function CarouselDemo() {
           <CarouselNext />
         </Carousel>
       </div>
-    </CanvaFrame>
+    </div>
   )
 }

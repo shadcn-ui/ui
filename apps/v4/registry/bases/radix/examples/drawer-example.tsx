@@ -14,7 +14,6 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/registry/bases/radix/ui/drawer"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const data = [
@@ -61,13 +60,13 @@ const data = [
 
 export default function DrawerDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <div className="flex flex-wrap items-start gap-4">
         <DrawerBottom />
         <DrawerScrollableContent />
         <DrawerDirections />
       </div>
-    </CanvaFrame>
+    </div>
   )
 }
 

@@ -9,12 +9,11 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/registry/bases/radix/ui/hover-card"
-import { CanvaFrame } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function HoverCardDemo() {
   return (
-    <CanvaFrame>
+    <div className="bg-background min-h-screen p-4">
       <HoverCard>
         <HoverCardTrigger asChild>
           <Button variant="link">@nextjs</Button>
@@ -45,6 +44,6 @@ export default function HoverCardDemo() {
           </div>
         </HoverCardContent>
       </HoverCard>
-    </CanvaFrame>
+    </div>
   )
 }

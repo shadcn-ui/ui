@@ -7,9 +7,16 @@ import { cn } from "@/lib/utils"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 function Accordion({
+  className,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
-  return <AccordionPrimitive.Root data-slot="accordion" {...props} />
+  return (
+    <AccordionPrimitive.Root
+      data-slot="accordion"
+      className={cn("cn-accordion flex flex-col", className)}
+      {...props}
+    />
+  )
 }
 
 function AccordionItem({
@@ -35,7 +42,8 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "cn-accordion-trigger focus-visible:border-ring focus-visible:ring-ring/50 group/accordion-trigger flex flex-1 items-start justify-between transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50",
+          "cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none disabled:pointer-events-none disabled:opacity-50",
+          "focus-visible:ring-ring/50 focus-visible:border-ring focus-visible:after:border-ring focus-visible:ring-[3px]",
           className
         )}
         {...props}
@@ -43,14 +51,14 @@ function AccordionTrigger({
         {children}
         <IconPlaceholder
           lucide="ChevronDownIcon"
-          tabler="IconCircleChevronDown"
+          tabler="IconChevronDown"
           data-slot="accordion-trigger-icon-closed"
           hugeicons="ArrowDown01Icon"
           className="cn-accordion-trigger-icon group-data-[state=open]/accordion-trigger:hidden"
         />
         <IconPlaceholder
           lucide="ChevronUpIcon"
-          tabler="IconCircleChevronUp"
+          tabler="IconChevronUp"
           data-slot="accordion-trigger-icon-open"
           hugeicons="ArrowUp01Icon"
           className="cn-accordion-trigger-icon group-data-[state=closed]/accordion-trigger:hidden"
@@ -71,7 +79,12 @@ function AccordionContent({
       className="cn-accordion-content overflow-hidden"
       {...props}
     >
-      <div className={cn("cn-accordion-content-inner", className)}>
+      <div
+        className={cn(
+          "cn-accordion-content-inner [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4",
+          className
+        )}
+      >
         {children}
       </div>
     </AccordionPrimitive.Content>
