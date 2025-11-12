@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
@@ -90,12 +91,14 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <LayoutProvider>
-            <ActiveThemeProvider>
-              {children}
-              <TailwindIndicator />
-              <Toaster position="top-center" />
-              <Analytics />
-            </ActiveThemeProvider>
+            <NuqsAdapter>
+              <ActiveThemeProvider>
+                {children}
+                <TailwindIndicator />
+                <Toaster position="top-center" />
+                <Analytics />
+              </ActiveThemeProvider>
+            </NuqsAdapter>
           </LayoutProvider>
         </ThemeProvider>
       </body>
