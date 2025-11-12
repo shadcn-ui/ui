@@ -1,0 +1,106 @@
+---
+title: Cascader
+description: A cascading city selection component built on top of shadcn/ui.
+---
+
+import CascaderDemo from "@/registry/new-york-v4/examples/cascader-demo"
+
+## Installation
+
+```bash
+npx shadcn-ui@latest add cascader
+```
+
+## Usage
+
+### Basic Example
+
+```tsx
+import { Cascader } from "@/components/ui/cascader"
+
+const cityOptions = [
+  {
+    value: "beijing",
+    label: "北京市",
+    children: [
+      {
+        value: "beijing-dongcheng",
+        label: "东城区",
+        children: [
+          { value: "beijing-dongcheng-1", label: "东华门街道" },
+          { value: "beijing-dongcheng-2", label: "景山街道" }
+        ]
+      }
+    ]
+  },
+  // ... more options
+]
+
+export default function App() {
+  return <Cascader options={cityOptions} placeholder="请选择城市" />
+}
+```
+
+### Single Select Mode
+
+In single select mode, only the last level option can be selected.
+
+```tsx
+<Cascader
+  options={cityOptions}
+  placeholder="请选择城市"
+  onChange={(value) => console.log("Selected:", value)}
+/>
+```
+
+### Multiple Select Mode
+
+In multiple select mode, any level of option can be selected.
+When a parent option is selected, all its descendants are automatically selected.
+
+```tsx
+<Cascader
+  options={cityOptions}
+  placeholder="请选择城市"
+  multiple
+  onChange={(value) => console.log("Selected:", value)}
+/>
+```
+
+## Demo
+
+<CascaderDemo />
+
+## Props
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| options | `CascaderOption[]` | - | The cascading options. |
+| value | `string[] \| string` | - | The selected value(s). |
+| onChange | `(value: string[] \| string) => void` | - | Callback when value changes. |
+| multiple | `boolean` | `false` | Whether to enable multiple selection. |
+| placeholder | `string` | "请选择" | Placeholder text. |
+| maxHeight | `string` | "300px" | Maximum height of the dropdown. |
+
+## Types
+
+```tsx
+export interface CascaderOption {
+  value: string
+  label: string
+  children?: CascaderOption[]
+}
+```
+
+## Performance Considerations
+
+- The component uses React.memo to avoid unnecessary re-renders.
+- The flattened options list is cached using React.useMemo.
+- The search filtering is optimized to only process necessary options.
+- The UI uses virtual scrolling indirectly through the CommandList component.
+
+## Accessibility
+
+- The component uses semantic HTML with proper ARIA attributes.
+- Keyboard navigation is supported through the Command component.
+- Screen readers should announce the selected values correctly.

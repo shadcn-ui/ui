@@ -453,6 +453,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "cascader-demo",
+    type: "registry:example",
+    registryDependencies: ["cascader"],
+    files: [
+      {
+        path: "examples/cascader-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "calendar-form",
     type: "registry:example",
     registryDependencies: ["calendar", "form", "popover"],

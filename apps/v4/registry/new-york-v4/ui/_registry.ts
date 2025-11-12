@@ -135,6 +135,18 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "cascader",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button", "command", "popover", "checkbox"],
+    files: [
+      {
+        path: "ui/cascader.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "card",
     type: "registry:ui",
     files: [
