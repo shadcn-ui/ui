@@ -1,0 +1,16 @@
+{
+  "name": "adaptive-navbar",
+  "type": "components",
+  "category": "navigation",
+  "description": "A responsive navbar that adapts from a top horizontal bar on desktop to a bottom icon-based bar on mobile, built with shadcn/ui primitives.",
+  "author": "shadcn",
+  "dependencies": [
+    "@radix-ui/react-navigation-menu",
+    "class-variance-authority",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": ["AdaptiveNavbar.tsx"],
+  "registryDependencies": ["button", "sheet", "navigation-menu"]
+}
