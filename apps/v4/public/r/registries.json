@@ -43,6 +43,7 @@
   "@motion-primitives": "https://motion-primitives.com/c/{name}.json",
   "@mui-treasury": "https://mui-treasury.com/r/{name}.json",
   "@nativeui": "https://nativeui.io/registry/{name}.json",
+  "@nexus-elements": "https://elements.nexus.availproject.org/r/{name}.json",
   "@ncdai": "https://chanhdai.com/r/{name}.json",
   "@nuqs": "https://nuqs.dev/r/{name}.json",
   "@oui": "https://oui.mw10013.workers.dev/r/{name}.json",
