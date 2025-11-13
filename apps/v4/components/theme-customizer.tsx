@@ -112,6 +112,7 @@ export function CopyCodeButton({
   ...props
 }: React.ComponentProps<typeof Button>) {
   let { activeTheme: activeThemeName = "neutral" } = useThemeConfig()
+  
   activeThemeName = activeThemeName === "default" ? "neutral" : activeThemeName
 
   return (
@@ -169,7 +170,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
   const activeThemeOKLCH = React.useMemo(
     () => baseColorsOKLCH[themeName as keyof typeof baseColorsOKLCH],
     [themeName]
-  )
+  )  
 
   React.useEffect(() => {
     if (hasCopied) {
@@ -235,7 +236,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 <span data-line className="line text-code-foreground">
                   &nbsp;&nbsp;&nbsp;--radius: 0.65rem;
                 </span>
-                {Object.entries(activeThemeOKLCH?.light).map(([key, value]) => (
+                {Object.entries(activeThemeOKLCH?.light ?? {}).map(([key, value]) => (
                   <span
                     data-line
                     className="line text-code-foreground"
@@ -254,7 +255,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 <span data-line className="line text-code-foreground">
                   &nbsp;.dark &#123;
                 </span>
-                {Object.entries(activeThemeOKLCH?.dark).map(([key, value]) => (
+                {Object.entries(activeThemeOKLCH?.dark ?? {}).map(([key, value]) => (
                   <span
                     data-line
                     className="line text-code-foreground"
