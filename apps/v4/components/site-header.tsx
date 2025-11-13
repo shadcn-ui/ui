@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import { getColors } from "@/lib/colors"
 import { siteConfig } from "@/lib/config"
-import { source } from "@/lib/source"
+import { source } from "@/lib/source/metadata"
 import { CommandMenu } from "@/components/command-menu"
 import { GitHubLink } from "@/components/github-link"
 import { Icons } from "@/components/icons"

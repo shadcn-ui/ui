@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
-import type { source } from "@/lib/source"
+import type { source } from "@/lib/source/metadata"
 import {
   Sidebar,
   SidebarContent,

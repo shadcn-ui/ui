@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { PAGES_NEW } from "@/lib/docs"
-import { source } from "@/lib/source"
+import { source } from "@/lib/source/metadata"
 
 export function ComponentsList() {
   const components = source.pageTree.children.find(

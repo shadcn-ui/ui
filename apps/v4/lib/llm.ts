@@ -1,6 +1,6 @@
 import fs from "fs"
 
-import { Index } from "@/registry/__index__"
+import { Metadata } from "@/registry/__metadata__"
 import { type Style } from "@/registry/styles"
 
 export function processMdxForLLMs(content: string, style: Style["name"]) {
@@ -9,7 +9,7 @@ export function processMdxForLLMs(content: string, style: Style["name"]) {
 
   return content.replace(componentPreviewRegex, (match, name) => {
     try {
-      const component = Index[style]?.[name]
+      const component = Metadata[style]?.[name]
       if (!component?.files) {
         return match
       }
