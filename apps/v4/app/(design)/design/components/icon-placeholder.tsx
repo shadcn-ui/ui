@@ -25,13 +25,10 @@ const IconHugeicons = lazy(() =>
 )
 
 export function IconPlaceholder({
-  className,
   ...props
 }: {
   [K in IconLibraryName]: string
-} & {
-  className?: string
-}) {
+} & React.ComponentProps<"svg">) {
   const iconLibrary = useDesignSystemParam("iconLibrary")
   const iconName = props[iconLibrary]
 
@@ -40,15 +37,11 @@ export function IconPlaceholder({
   }
 
   return (
-    <Suspense fallback={<SquareIcon className={className} />}>
-      {iconLibrary === "lucide" && (
-        <IconLucide name={iconName} className={className} />
-      )}
-      {iconLibrary === "tabler" && (
-        <IconTabler name={iconName} className={className} />
-      )}
+    <Suspense fallback={<SquareIcon {...props} />}>
+      {iconLibrary === "lucide" && <IconLucide name={iconName} {...props} />}
+      {iconLibrary === "tabler" && <IconTabler name={iconName} {...props} />}
       {iconLibrary === "hugeicons" && (
-        <IconHugeicons name={iconName} className={className} />
+        <IconHugeicons name={iconName} {...props} />
       )}
     </Suspense>
   )

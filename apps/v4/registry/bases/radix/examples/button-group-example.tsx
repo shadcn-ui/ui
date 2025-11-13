@@ -1,37 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import {
-  IconArrowRight,
-  IconBrandGithubCopilot,
-  IconChevronDown,
-  IconCircleCheck,
-  IconCloudCode,
-  IconHeart,
-  IconMinus,
-  IconPin,
-  IconPlus,
-  IconUserCircle,
-} from "@tabler/icons-react"
-import {
-  AlertTriangleIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  AudioLinesIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  CopyIcon,
-  FlipHorizontalIcon,
-  FlipVerticalIcon,
-  MoreHorizontalIcon,
-  PercentIcon,
-  RotateCwIcon,
-  SearchIcon,
-  ShareIcon,
-  TrashIcon,
-  UserRoundXIcon,
-  VolumeOffIcon,
-} from "lucide-react"
 
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
@@ -68,33 +37,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/radix/ui/select"
-import { Separator } from "@/registry/bases/radix/ui/separator"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/radix/ui/tooltip"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ButtonGroupDemo() {
   const [currency, setCurrency] = useState("$")
+
   return (
-    <div className="bg-background min-h-screen p-4">
-      <div className="flex gap-12">
-        <div className="flex max-w-sm flex-col gap-6">
-          <ButtonGroup>
-            <Button>Button</Button>
-            <Button>
-              Get Started <IconArrowRight />
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button>Button</Button>
-            <ButtonGroupSeparator className="bg-primary/80" />
-            <Button>
-              Get Started <IconArrowRight />
-            </Button>
-          </ButtonGroup>
+    <div className="bg-background flex min-h-screen items-center justify-center p-6">
+      <div className="flex flex-col gap-12 lg:flex-row">
+        <div className="flex max-w-xs flex-col gap-6">
           <ButtonGroup>
             <Button variant="outline">Button</Button>
             <Input placeholder="Type something here..." />
@@ -113,9 +69,7 @@ export default function ButtonGroupDemo() {
           </ButtonGroup>
           <ButtonGroup>
             <ButtonGroupText asChild>
-              <Label htmlFor="input">
-                <IconCloudCode /> GPU Size
-              </Label>
+              <Label htmlFor="input">GPU Size</Label>
             </ButtonGroupText>
             <Input id="input" placeholder="Type something here..." />
           </ButtonGroup>
@@ -129,8 +83,12 @@ export default function ButtonGroupDemo() {
               <Button variant="outline">Update</Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline">
-                    <ChevronDownIcon />
+                  <Button variant="outline" size="icon">
+                    <IconPlaceholder
+                      lucide="ChevronDownIcon"
+                      tabler="IconChevronDown"
+                      hugeicons="ArrowDown01Icon"
+                    />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -145,69 +103,74 @@ export default function ButtonGroupDemo() {
               <Button variant="outline">Follow</Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="!pl-2">
-                    <ChevronDownIcon />
+                  <Button variant="outline" size="icon">
+                    <IconPlaceholder
+                      lucide="ChevronDownIcon"
+                      tabler="IconChevronDown"
+                      hugeicons="ArrowDown01Icon"
+                    />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
-                      <VolumeOffIcon />
+                      <IconPlaceholder
+                        lucide="VolumeOffIcon"
+                        tabler="IconVolume"
+                        hugeicons="VolumeOffIcon"
+                      />
                       Mute Conversation
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <CheckIcon />
+                      <IconPlaceholder
+                        lucide="CheckIcon"
+                        tabler="IconCheck"
+                        hugeicons="Tick01Icon"
+                      />
                       Mark as Read
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <AlertTriangleIcon />
+                      <IconPlaceholder
+                        lucide="AlertTriangleIcon"
+                        tabler="IconAlertTriangle"
+                        hugeicons="AlertCircleIcon"
+                      />
                       Report Conversation
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <UserRoundXIcon />
+                      <IconPlaceholder
+                        lucide="UserRoundXIcon"
+                        tabler="IconUserX"
+                        hugeicons="UserRemove01Icon"
+                      />
                       Block User
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <ShareIcon />
+                      <IconPlaceholder
+                        lucide="ShareIcon"
+                        tabler="IconShare"
+                        hugeicons="Share03Icon"
+                      />
                       Share Conversation
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <CopyIcon />
+                      <IconPlaceholder
+                        lucide="CopyIcon"
+                        tabler="IconCopy"
+                        hugeicons="Copy01Icon"
+                      />
                       Copy Conversation
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
                     <DropdownMenuItem variant="destructive">
-                      <TrashIcon />
+                      <IconPlaceholder
+                        lucide="TrashIcon"
+                        tabler="IconTrash"
+                        hugeicons="Delete02Icon"
+                      />
                       Delete Conversation
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </ButtonGroup>
-            <ButtonGroup className="[--radius:0.9rem]">
-              <Button variant="secondary">Actions</Button>
-              <ButtonGroupSeparator />
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="secondary">
-                    <MoreHorizontalIcon />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="[--radius:0.9rem]">
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <IconCircleCheck />
-                      Select Messages
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <IconPin />
-                      Edit Pins
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <IconUserCircle />
-                      Set Up Name & Photo
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuContent>
@@ -219,7 +182,7 @@ export default function ButtonGroupDemo() {
             <ButtonGroup>
               <Select value={currency} onValueChange={setCurrency}>
                 <SelectTrigger className="font-mono">{currency}</SelectTrigger>
-                <SelectContent>
+                <SelectContent align="start">
                   <SelectItem value="$">$</SelectItem>
                   <SelectItem value="€">€</SelectItem>
                   <SelectItem value="£">£</SelectItem>
@@ -227,21 +190,37 @@ export default function ButtonGroupDemo() {
               </Select>
               <Input placeholder="Enter amount to send" />
               <Button variant="outline">
-                <ArrowRightIcon />
+                <IconPlaceholder
+                  lucide="ArrowRightIcon"
+                  tabler="IconArrowRight"
+                  hugeicons="ArrowRight01Icon"
+                />
               </Button>
             </ButtonGroup>
           </Field>
         </div>
         <div className="flex max-w-xs flex-col gap-6">
-          <ButtonGroup className="[--spacing:0.2rem]">
+          <ButtonGroup>
             <Button variant="outline">
-              <FlipHorizontalIcon />
+              <IconPlaceholder
+                lucide="FlipHorizontalIcon"
+                tabler="IconFlipHorizontal"
+                hugeicons="FlipHorizontalIcon"
+              />
             </Button>
             <Button variant="outline">
-              <FlipVerticalIcon />
+              <IconPlaceholder
+                lucide="FlipVerticalIcon"
+                tabler="IconFlipVertical"
+                hugeicons="FlipVerticalIcon"
+              />
             </Button>
             <Button variant="outline">
-              <RotateCwIcon />
+              <IconPlaceholder
+                lucide="RotateCwIcon"
+                tabler="IconRotateClockwise2"
+                hugeicons="Rotate01Icon"
+              />
             </Button>
             <InputGroup>
               <InputGroupInput placeholder="0.00" />
@@ -249,53 +228,29 @@ export default function ButtonGroupDemo() {
                 align="inline-end"
                 className="text-muted-foreground"
               >
-                <PercentIcon />
+                <IconPlaceholder
+                  lucide="PercentIcon"
+                  tabler="IconPercentage"
+                  hugeicons="PercentIcon"
+                />
               </InputGroupAddon>
             </InputGroup>
           </ButtonGroup>
-          <div className="flex gap-2 [--radius:0.95rem] [--ring:var(--color-blue-300)] [--spacing:0.22rem] **:[.shadow-xs]:shadow-none">
-            <InputGroup>
-              <InputGroupInput placeholder="Type to search..." />
-              <InputGroupAddon
-                align="inline-start"
-                className="text-muted-foreground"
-              >
-                <SearchIcon />
-              </InputGroupAddon>
-            </InputGroup>
-            <ButtonGroup>
-              <Button variant="outline">
-                <IconBrandGithubCopilot />
-              </Button>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline">
-                    <IconCloudCode />
-                    <IconChevronDown />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent align="end" className="rounded-xl p-0 text-sm">
-                  <div className="px-4 py-3">
-                    <div className="text-sm font-medium">Agent Tasks</div>
-                  </div>
-                  <Separator />
-                  <div className="p-4 *:[p:not(:last-child)]:mb-2">
-                    <Textarea
-                      placeholder="Describe your task in natural language."
-                      className="mb-4 resize-none"
-                    />
-                    <p className="font-medium">Start a new task with Copilot</p>
-                    <p className="text-muted-foreground">
-                      Describe your task in natural language. Copilot will work
-                      in the background and open a pull request for your review.
-                    </p>
-                  </div>
-                </PopoverContent>
-              </Popover>
-            </ButtonGroup>
-          </div>
-          <FieldGroup className="grid grid-cols-2 gap-4 [--spacing:0.22rem]">
-            <Field>
+          <InputGroup>
+            <InputGroupInput placeholder="Type to search..." />
+            <InputGroupAddon
+              align="inline-start"
+              className="text-muted-foreground"
+            >
+              <IconPlaceholder
+                lucide="SearchIcon"
+                tabler="IconSearch"
+                hugeicons="Search01Icon"
+              />
+            </InputGroupAddon>
+          </InputGroup>
+          <FieldGroup className="grid grid-cols-3 gap-4">
+            <Field className="col-span-2">
               <Label htmlFor="width">Width</Label>
               <ButtonGroup>
                 <InputGroup>
@@ -311,14 +266,22 @@ export default function ButtonGroupDemo() {
                   </InputGroupAddon>
                 </InputGroup>
                 <Button variant="outline" size="icon">
-                  <IconMinus />
+                  <IconPlaceholder
+                    lucide="MinusIcon"
+                    tabler="IconMinus"
+                    hugeicons="MinusSignIcon"
+                  />
                 </Button>
                 <Button variant="outline" size="icon">
-                  <IconPlus />
+                  <IconPlaceholder
+                    lucide="PlusIcon"
+                    tabler="IconPlus"
+                    hugeicons="PlusSignIcon"
+                  />
                 </Button>
               </ButtonGroup>
             </Field>
-            <Field className="w-full">
+            <Field>
               <Label htmlFor="color">Color</Label>
               <ButtonGroup className="w-full">
                 <InputGroup>
@@ -326,8 +289,8 @@ export default function ButtonGroupDemo() {
                   <InputGroupAddon align="inline-start">
                     <Popover>
                       <PopoverTrigger asChild>
-                        <InputGroupButton>
-                          <span className="size-4 rounded-xs bg-blue-600" />
+                        <InputGroupButton className="px-0">
+                          <span className="bg-primary size-5 rounded-xs" />
                         </InputGroupButton>
                       </PopoverTrigger>
                       <PopoverContent
@@ -338,18 +301,18 @@ export default function ButtonGroupDemo() {
                       >
                         <div className="flex flex-wrap gap-1.5">
                           {[
-                            "#EA4335", // Red
-                            "#FBBC04", // Yellow
-                            "#34A853", // Green
-                            "#4285F4", // Blue
-                            "#9333EA", // Purple
-                            "#EC4899", // Pink
-                            "#10B981", // Emerald
-                            "#F97316", // Orange
-                            "#6366F1", // Indigo
-                            "#14B8A6", // Teal
-                            "#8B5CF6", // Violet
-                            "#F59E0B", // Amber
+                            "#EA4335",
+                            "#FBBC04",
+                            "#34A853",
+                            "#4285F4",
+                            "#9333EA",
+                            "#EC4899",
+                            "#10B981",
+                            "#F97316",
+                            "#6366F1",
+                            "#14B8A6",
+                            "#8B5CF6",
+                            "#F59E0B",
                           ].map((color) => (
                             <div
                               key={color}
@@ -373,13 +336,15 @@ export default function ButtonGroupDemo() {
           </FieldGroup>
           <ButtonGroup>
             <Button variant="outline">
-              <IconHeart /> Like
+              <IconPlaceholder
+                lucide="HeartIcon"
+                tabler="IconBell"
+                hugeicons="Notification02Icon"
+                data-slot="icon-inline-start"
+              />{" "}
+              Like
             </Button>
-            <Button
-              variant="outline"
-              asChild
-              className="text-muted-foreground pointer-events-none px-2"
-            >
+            <Button variant="outline" asChild size="icon" className="w-12">
               <span>1.2K</span>
             </Button>
           </ButtonGroup>
@@ -389,7 +354,7 @@ export default function ButtonGroupDemo() {
               <SelectTrigger id="duration">
                 <SelectValue placeholder="Select duration" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent align="start">
                 <SelectItem value="hours">Hours</SelectItem>
                 <SelectItem value="days">Days</SelectItem>
                 <SelectItem value="weeks">Weeks</SelectItem>
@@ -397,10 +362,14 @@ export default function ButtonGroupDemo() {
             </Select>
             <Input />
           </ButtonGroup>
-          <ButtonGroup className="[--radius:9999rem]">
+          <ButtonGroup>
             <ButtonGroup>
               <Button variant="outline" size="icon">
-                <IconPlus />
+                <IconPlaceholder
+                  lucide="PlusIcon"
+                  tabler="IconPlus"
+                  hugeicons="PlusSignIcon"
+                />
               </Button>
             </ButtonGroup>
             <ButtonGroup>
@@ -409,7 +378,11 @@ export default function ButtonGroupDemo() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <InputGroupAddon align="inline-end">
-                      <AudioLinesIcon />
+                      <IconPlaceholder
+                        lucide="AudioLinesIcon"
+                        tabler="IconHeadphones"
+                        hugeicons="AudioWave01Icon"
+                      />
                     </InputGroupAddon>
                   </TooltipTrigger>
                   <TooltipContent>Voice Mode</TooltipContent>
@@ -419,7 +392,12 @@ export default function ButtonGroupDemo() {
           </ButtonGroup>
           <ButtonGroup>
             <Button variant="outline" size="sm">
-              <ArrowLeftIcon />
+              <IconPlaceholder
+                lucide="ArrowLeftIcon"
+                tabler="IconArrowLeft"
+                hugeicons="ArrowLeft01Icon"
+                data-slot="icon-inline-start"
+              />
               Previous
             </Button>
             <Button variant="outline" size="sm">
@@ -439,38 +417,73 @@ export default function ButtonGroupDemo() {
             </Button>
             <Button variant="outline" size="sm">
               Next
-              <ArrowRightIcon />
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight01Icon"
+                data-slot="icon-inline-end"
+              />
             </Button>
           </ButtonGroup>
-          <ButtonGroup className="[--radius:0.9rem] [--spacing:0.22rem]">
+          <ButtonGroup>
             <ButtonGroup>
-              <Button variant="outline">1</Button>
-              <Button variant="outline">2</Button>
-              <Button variant="outline">3</Button>
-              <Button variant="outline">4</Button>
-              <Button variant="outline">5</Button>
+              <Button variant="outline" size="sm">
+                1
+              </Button>
+              <Button variant="outline" size="sm">
+                2
+              </Button>
+              <Button variant="outline" size="sm">
+                3
+              </Button>
+              <Button variant="outline" size="sm">
+                4
+              </Button>
+              <Button variant="outline" size="sm">
+                5
+              </Button>
             </ButtonGroup>
             <ButtonGroup>
-              <Button variant="outline" size="icon">
-                <ArrowLeftIcon />
+              <Button variant="outline" size="icon-xs">
+                <IconPlaceholder
+                  lucide="ArrowLeftIcon"
+                  tabler="IconArrowLeft"
+                  hugeicons="ArrowLeft01Icon"
+                />
               </Button>
-              <Button variant="outline" size="icon">
-                <ArrowRightIcon />
+              <Button variant="outline" size="icon-xs">
+                <IconPlaceholder
+                  lucide="ArrowRightIcon"
+                  tabler="IconArrowRight"
+                  hugeicons="ArrowRight01Icon"
+                />
               </Button>
             </ButtonGroup>
           </ButtonGroup>
           <ButtonGroup>
             <ButtonGroup>
               <Button variant="outline">
-                <ArrowLeftIcon />
+                <IconPlaceholder
+                  lucide="ArrowLeftIcon"
+                  tabler="IconArrowLeft"
+                  hugeicons="ArrowLeft01Icon"
+                />
               </Button>
               <Button variant="outline">
-                <ArrowRightIcon />
+                <IconPlaceholder
+                  lucide="ArrowRightIcon"
+                  tabler="IconArrowRight"
+                  hugeicons="ArrowRight01Icon"
+                />
               </Button>
             </ButtonGroup>
             <ButtonGroup aria-label="Single navigation button">
               <Button variant="outline" size="icon">
-                <ArrowLeftIcon />
+                <IconPlaceholder
+                  lucide="ArrowLeftIcon"
+                  tabler="IconArrowLeft"
+                  hugeicons="ArrowLeft01Icon"
+                />
               </Button>
             </ButtonGroup>
           </ButtonGroup>
@@ -500,10 +513,18 @@ export default function ButtonGroupDemo() {
               className="h-fit"
             >
               <Button variant="outline" size="icon">
-                <IconPlus />
+                <IconPlaceholder
+                  lucide="PlusIcon"
+                  tabler="IconPlus"
+                  hugeicons="PlusSignIcon"
+                />
               </Button>
               <Button variant="outline" size="icon">
-                <IconMinus />
+                <IconPlaceholder
+                  lucide="MinusIcon"
+                  tabler="IconMinus"
+                  hugeicons="MinusSignIcon"
+                />
               </Button>
             </ButtonGroup>
             <ButtonGroup
@@ -512,49 +533,99 @@ export default function ButtonGroupDemo() {
             >
               <ButtonGroup orientation="vertical">
                 <Button variant="outline" size="icon">
-                  <SearchIcon />
+                  <IconPlaceholder
+                    lucide="SearchIcon"
+                    tabler="IconSearch"
+                    hugeicons="Search01Icon"
+                  />
                 </Button>
                 <Button variant="outline" size="icon">
-                  <CopyIcon />
+                  <IconPlaceholder
+                    lucide="CopyIcon"
+                    tabler="IconCopy"
+                    hugeicons="Copy01Icon"
+                  />
                 </Button>
                 <Button variant="outline" size="icon">
-                  <ShareIcon />
+                  <IconPlaceholder
+                    lucide="ShareIcon"
+                    tabler="IconShare"
+                    hugeicons="Share03Icon"
+                  />
                 </Button>
               </ButtonGroup>
               <ButtonGroup orientation="vertical">
                 <Button variant="outline" size="icon">
-                  <FlipHorizontalIcon />
+                  <IconPlaceholder
+                    lucide="FlipHorizontalIcon"
+                    tabler="IconFlipHorizontal"
+                    hugeicons="FlipHorizontalIcon"
+                  />
                 </Button>
                 <Button variant="outline" size="icon">
-                  <FlipVerticalIcon />
+                  <IconPlaceholder
+                    lucide="FlipVerticalIcon"
+                    tabler="IconFlipVertical"
+                    hugeicons="FlipVerticalIcon"
+                  />
                 </Button>
                 <Button variant="outline" size="icon">
-                  <RotateCwIcon />
+                  <IconPlaceholder
+                    lucide="RotateCwIcon"
+                    tabler="IconRotateClockwise2"
+                    hugeicons="Rotate01Icon"
+                  />
                 </Button>
               </ButtonGroup>
               <ButtonGroup>
                 <Button variant="outline" size="icon">
-                  <TrashIcon />
+                  <IconPlaceholder
+                    lucide="TrashIcon"
+                    tabler="IconTrash"
+                    hugeicons="Delete02Icon"
+                  />
                 </Button>
               </ButtonGroup>
             </ButtonGroup>
-            <ButtonGroup orientation="vertical">
-              <Button variant="outline" size="sm">
-                <IconPlus /> Increase
-              </Button>
-              <Button variant="outline" size="sm">
-                <IconMinus /> Decrease
-              </Button>
-            </ButtonGroup>
-            <ButtonGroup orientation="vertical">
-              <Button variant="secondary" size="sm">
-                <IconPlus /> Increase
-              </Button>
-              <ButtonGroupSeparator orientation="horizontal" />
-              <Button variant="secondary" size="sm">
-                <IconMinus /> Decrease
-              </Button>
-            </ButtonGroup>
+            <div className="flex flex-col gap-4">
+              <ButtonGroup orientation="vertical">
+                <Button variant="outline" size="sm">
+                  <IconPlaceholder
+                    lucide="PlusIcon"
+                    tabler="IconPlus"
+                    hugeicons="PlusSignIcon"
+                  />{" "}
+                  Increase
+                </Button>
+                <Button variant="outline" size="sm">
+                  <IconPlaceholder
+                    lucide="MinusIcon"
+                    tabler="IconMinus"
+                    hugeicons="MinusSignIcon"
+                  />{" "}
+                  Decrease
+                </Button>
+              </ButtonGroup>
+              <ButtonGroup orientation="vertical">
+                <Button variant="secondary" size="sm">
+                  <IconPlaceholder
+                    lucide="PlusIcon"
+                    tabler="IconPlus"
+                    hugeicons="PlusSignIcon"
+                  />{" "}
+                  Increase
+                </Button>
+                <ButtonGroupSeparator orientation="horizontal" />
+                <Button variant="secondary" size="sm">
+                  <IconPlaceholder
+                    lucide="MinusIcon"
+                    tabler="IconMinus"
+                    hugeicons="MinusSignIcon"
+                  />{" "}
+                  Decrease
+                </Button>
+              </ButtonGroup>
+            </div>
           </div>
         </div>
       </div>

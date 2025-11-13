@@ -9,11 +9,21 @@ import {
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/bases/radix/ui/dropdown-menu"
 import {
   Empty,
   EmptyContent,
@@ -25,7 +35,6 @@ import {
 import {
   InputGroup,
   InputGroupAddon,
-  InputGroupButton,
   InputGroupInput,
 } from "@/registry/bases/radix/ui/input-group"
 import {
@@ -50,6 +59,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/radix/ui/select"
+import { CardFooter } from "@/registry/new-york-v4/ui/card"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function AvatarDemo() {
@@ -63,6 +73,8 @@ export default function AvatarDemo() {
           <AvatarExample4 />
           <AvatarExample5 />
           <AvatarExample6 />
+          <AvatarExample11 />
+          <AvatarExample10 />
         </div>
         <div className="flex flex-col gap-6">
           <AvatarExample7 />
@@ -411,13 +423,18 @@ function AvatarExample6() {
       </AvatarGroup>
       <AvatarGroup>
         <Avatar size="lg">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarImage
+            src="https://github.com/shadcn.png"
+            alt="@shadcn"
+            className="grayscale"
+          />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <Avatar size="lg">
           <AvatarImage
             src="https://github.com/maxleiter.png"
             alt="@maxleiter"
+            className="grayscale"
           />
           <AvatarFallback>LR</AvatarFallback>
         </Avatar>
@@ -425,6 +442,7 @@ function AvatarExample6() {
           <AvatarImage
             src="https://github.com/evilrabbit.png"
             alt="@evilrabbit"
+            className="grayscale"
           />
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
@@ -446,21 +464,27 @@ function AvatarExample7() {
       <EmptyHeader>
         <EmptyMedia>
           <AvatarGroup>
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <Avatar size="lg">
+              <AvatarImage
+                src="https://github.com/shadcn.png"
+                alt="@shadcn"
+                className="grayscale"
+              />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
-            <Avatar>
+            <Avatar size="lg">
               <AvatarImage
                 src="https://github.com/maxleiter.png"
                 alt="@maxleiter"
+                className="grayscale"
               />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
-            <Avatar>
+            <Avatar size="lg">
               <AvatarImage
                 src="https://github.com/evilrabbit.png"
                 alt="@evilrabbit"
+                className="grayscale"
               />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
@@ -542,7 +566,11 @@ function AvatarExample8() {
               <Item key={user.email} size="sm" className="px-0 sm:gap-4">
                 <ItemMedia>
                   <Avatar size="lg">
-                    <AvatarImage src={user.avatar} alt={user.name} />
+                    <AvatarImage
+                      src={user.avatar}
+                      alt={user.name}
+                      className="grayscale"
+                    />
                     <AvatarFallback>{user.fallback}</AvatarFallback>
                   </Avatar>
                 </ItemMedia>
@@ -636,7 +664,11 @@ function AvatarExample9() {
                 return (
                   <SelectItem key={user.name} value={user.name}>
                     <Avatar size="sm">
-                      <AvatarImage src={user.avatar} alt={user.name} />
+                      <AvatarImage
+                        src={user.avatar}
+                        alt={user.name}
+                        className="grayscale"
+                      />
                       <AvatarFallback>{user.fallback}</AvatarFallback>
                     </Avatar>
                     {user.name}
@@ -648,5 +680,190 @@ function AvatarExample9() {
         </Select>
       </CardContent>
     </Card>
+  )
+}
+
+function AvatarExample10() {
+  const users = [
+    {
+      name: "shadcn",
+      avatar: "https://github.com/shadcn.png",
+      fallback: "CN",
+    },
+    {
+      name: "Max",
+      avatar: "https://github.com/maxleiter.png",
+      fallback: "ML",
+    },
+    {
+      name: "Jorge",
+      avatar: "https://github.com/jorgezreik.png",
+      fallback: "JZ",
+    },
+    {
+      name: "Evil",
+      avatar: "https://github.com/evilrabbit.png",
+      fallback: "ER",
+    },
+    {
+      name: "Pranathi",
+      avatar: "https://github.com/pranathip.png",
+      fallback: "PP",
+    },
+    {
+      name: "Shu",
+      avatar: "https://github.com/shuding.png",
+      fallback: "SD",
+    },
+  ]
+
+  return (
+    <Card className="gap-4">
+      <CardHeader>
+        <CardTitle>Share File</CardTitle>
+        <CardDescription>Select a user to share the file with.</CardDescription>
+        <CardAction>
+          <Button variant="ghost" size="sm">
+            Option{" "}
+            <IconPlaceholder
+              lucide="ChevronRightIcon"
+              tabler="IconChevronRight"
+              hugeicons="ArrowRight01Icon"
+            />
+          </Button>
+        </CardAction>
+      </CardHeader>
+      <CardContent className="px-5">
+        <div className="no-scrollbar flex flex-row items-center gap-4 overflow-x-auto p-1">
+          {users.map((user) => {
+            return (
+              <button
+                key={user.name}
+                value={user.name}
+                className="group/button flex flex-col items-center gap-2"
+              >
+                <Avatar
+                  size="lg"
+                  className="ring-primary ring-offset-background rounded-lg ring-offset-1 grayscale transition-all group-hover/button:ring-2"
+                >
+                  <AvatarImage
+                    src={user.avatar}
+                    alt={user.name}
+                    className="rounded-lg"
+                  />
+                  <AvatarFallback>{user.fallback}</AvatarFallback>
+                </Avatar>
+                <span className="text-xs font-medium lowercase">
+                  {user.name}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">Send</Button>
+      </CardFooter>
+    </Card>
+  )
+}
+
+function AvatarExample11() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          className="h-12 justify-start px-2 md:max-w-[200px]"
+        >
+          <Avatar>
+            <AvatarImage
+              src="https://github.com/shadcn.png"
+              alt="Shadcn"
+              className="grayscale"
+            />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <div className="grid flex-1 text-left text-sm leading-tight">
+            <span className="truncate font-semibold">shadcn</span>
+            <span className="text-muted-foreground truncate text-xs">
+              shadcn@example.com
+            </span>
+          </div>
+          <IconPlaceholder
+            lucide="ChevronsUpDownIcon"
+            tabler="IconSelector"
+            hugeicons="UnfoldMoreIcon"
+            className="text-muted-foreground ml-auto"
+          />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className="w-(--radix-dropdown-menu-trigger-width) min-w-56"
+        align="start"
+      >
+        <DropdownMenuLabel className="p-0 font-normal">
+          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
+              <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+            </Avatar>
+            <div className="grid flex-1 text-left text-sm leading-tight">
+              <span className="truncate font-semibold">shadcn</span>
+              <span className="text-muted-foreground truncate text-xs">
+                shadcn@example.com
+              </span>
+            </div>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <IconPlaceholder
+              lucide="SparklesIcon"
+              tabler="IconSparkles"
+              hugeicons="SparklesIcon"
+            />
+            Upgrade to Pro
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <IconPlaceholder
+              lucide="BadgeCheckIcon"
+              tabler="IconRosetteDiscountCheck"
+              hugeicons="CheckmarkBadge01Icon"
+            />
+            Account
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <IconPlaceholder
+              lucide="CreditCardIcon"
+              tabler="IconCreditCard"
+              hugeicons="CreditCardIcon"
+            />
+            Billing
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <IconPlaceholder
+              lucide="BellIcon"
+              tabler="IconBell"
+              hugeicons="Notification02Icon"
+            />
+            Notifications
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <IconPlaceholder
+            lucide="LogOutIcon"
+            tabler="IconLogout"
+            hugeicons="Logout05Icon"
+          />
+          Sign Out
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

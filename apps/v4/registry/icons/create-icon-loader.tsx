@@ -21,11 +21,11 @@ export function createIconLoader(libraryName: string) {
 
   return function IconLoader({
     name,
-    className,
+    strokeWidth = 2,
+    ...props
   }: {
     name: string
-    className?: string
-  }) {
+  } & React.ComponentProps<"svg">) {
     if (!cache.has(name)) {
       const promise = import(`./__${libraryName}__`).then((mod) => {
         const icon = mod[name as keyof typeof mod]
@@ -41,12 +41,10 @@ export function createIconLoader(libraryName: string) {
     }
 
     if (isIconData(iconData)) {
-      return (
-        <HugeiconsIcon icon={iconData} strokeWidth={2} className={className} />
-      )
+      return <HugeiconsIcon icon={iconData} strokeWidth={2} {...props} />
     }
 
     const IconComponent = iconData
-    return <IconComponent className={className} />
+    return <IconComponent {...props} />
   }
 }

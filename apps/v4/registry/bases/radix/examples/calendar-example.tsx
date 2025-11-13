@@ -29,20 +29,30 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function CalendarDemo() {
   return (
-    <div className="bg-background min-h-screen p-4">
+    <div className="bg-background flex min-h-screen items-center justify-center p-6">
       <div className="flex h-full flex-col flex-wrap justify-center gap-8 lg:flex-row">
-        <CalendarSingle />
-        <CalendarMultiple />
-        <CalendarRange />
-        <CalendarBookedDates />
-        <CalendarRangeMultipleMonths />
-        <CalendarWithTime />
-        <CalendarWithPresets />
-        <CalendarCustomDays />
-        <div className="flex flex-col items-start gap-4 md:flex-row">
-          <DatePickerSimple />
-          <DataPickerWithDropdowns />
-          <DatePickerWithRange />
+        <div className="flex flex-col gap-8 sm:flex-row md:gap-4">
+          <CalendarSingle />
+          <CalendarMultiple />
+        </div>
+        <div className="flex flex-col gap-8 sm:flex-row md:gap-4">
+          <CalendarRange />
+          <CalendarBookedDates />
+        </div>
+        <div className="flex flex-col gap-8 sm:flex-row md:flex-col md:gap-4">
+          <CalendarRangeMultipleMonths />
+          <div className="flex flex-col gap-8 md:flex-row md:gap-4">
+            <CalendarWithTime />
+            <CalendarWithPresets />
+          </div>
+        </div>
+        <div className="flex flex-col gap-8 md:gap-4 lg:flex-row">
+          <CalendarCustomDays />
+          <div className="flex flex-col items-start gap-8 md:gap-4">
+            <DatePickerSimple />
+            <DataPickerWithDropdowns />
+            <DatePickerWithRange />
+          </div>
         </div>
       </div>
     </div>
@@ -55,7 +65,9 @@ function CalendarSingle() {
   )
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">Single Selection</div>
+      <div className="px-2 text-left text-sm md:text-center">
+        Single Selection
+      </div>
       <Calendar
         mode="single"
         selected={date}
@@ -70,7 +82,9 @@ function CalendarSingle() {
 function CalendarMultiple() {
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">Multiple Selection</div>
+      <div className="px-2 text-left text-sm md:text-center">
+        Multiple Selection
+      </div>
       <Calendar mode="multiple" className="rounded-lg border shadow-sm" />
     </div>
   )
@@ -84,7 +98,9 @@ function CalendarRange() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">Range Selection</div>
+      <div className="px-2 text-left text-sm md:text-center">
+        Range Selection
+      </div>
       <Calendar
         mode="range"
         defaultMonth={dateRange?.from}
@@ -106,7 +122,9 @@ function CalendarRangeMultipleMonths() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">Range Selection + Locale</div>
+      <div className="px-2 text-left text-sm md:text-center">
+        Range Selection + Locale
+      </div>
       <Calendar
         mode="range"
         defaultMonth={range?.from}
@@ -132,7 +150,9 @@ function CalendarBookedDates() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">With booked dates</div>
+      <div className="px-2 text-left text-sm md:text-center">
+        With booked dates
+      </div>
       <Calendar
         mode="single"
         defaultMonth={date}
@@ -158,7 +178,9 @@ function CalendarWithTime() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">With Time Input</div>
+      <div className="px-2 text-left text-sm md:text-center">
+        With Time Input
+      </div>
       <Card className="w-fit py-4">
         <CardContent className="px-4">
           <Calendar
@@ -173,9 +195,9 @@ function CalendarWithTime() {
             <Label htmlFor="time-from">Start Time</Label>
             <div className="relative flex w-full items-center gap-2">
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
+                lucide="Clock2Icon"
+                tabler="IconClockHour2"
+                hugeicons="Clock03Icon"
                 className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
               />
               <Input
@@ -191,9 +213,9 @@ function CalendarWithTime() {
             <Label htmlFor="time-to">End Time</Label>
             <div className="relative flex w-full items-center gap-2">
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
+                lucide="Clock2Icon"
+                tabler="IconClockHour2"
+                hugeicons="Clock03Icon"
                 className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
               />
               <Input
@@ -219,7 +241,7 @@ function CalendarCustomDays() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">
+      <div className="px-2 text-left text-sm md:text-center">
         With Custom Days and Formatters
       </div>
       <Calendar
@@ -264,7 +286,7 @@ function CalendarWithPresets() {
 
   return (
     <div className="flex max-w-[300px] flex-col gap-3">
-      <div className="px-2 text-center text-sm">With Presets</div>
+      <div className="px-2 text-left text-sm md:text-center">With Presets</div>
       <Card className="w-fit py-4">
         <CardContent className="px-4">
           <Calendar
@@ -312,7 +334,7 @@ function DatePickerSimple() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">Date Picker Simple</div>
+      <div className="px-2 text-sm">Date Picker Simple</div>
       <Popover>
         <PopoverTrigger asChild>
           <Button
@@ -323,9 +345,9 @@ function DatePickerSimple() {
             )}
           >
             <IconPlaceholder
-              lucide="CircleDashedIcon"
-              tabler="IconCircleDashed"
-              hugeicons="DashedLineCircleIcon"
+              lucide="CalendarIcon"
+              tabler="IconCalendar"
+              hugeicons="CalendarIcon"
               className="text-muted-foreground"
             />
             {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -347,7 +369,7 @@ function DatePickerWithRange() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">Date Picker Range</div>
+      <div className="px-2 text-sm">Date Picker Range</div>
       <Popover>
         <PopoverTrigger asChild>
           <Button
@@ -399,7 +421,7 @@ function DataPickerWithDropdowns() {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="px-2 text-center text-sm">Date Picker with Dropdowns</div>
+      <div className="px-2 text-sm">Date Picker with Dropdowns</div>
       {isMobile ? (
         <Drawer open={open} onOpenChange={setOpen}>
           <DrawerTrigger asChild>
@@ -412,9 +434,9 @@ function DataPickerWithDropdowns() {
             >
               {date ? format(date, "PPP") : <span>Pick a date</span>}
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
+                lucide="ChevronUpIcon"
+                tabler="IconChevronUp"
+                hugeicons="ArrowUpIcon"
                 className="text-muted-foreground ml-auto"
               />
             </Button>
@@ -448,9 +470,9 @@ function DataPickerWithDropdowns() {
             >
               {date ? format(date, "PPP") : <span>Pick a date</span>}
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
+                lucide="ChevronDownIcon"
+                tabler="IconChevronDown"
+                hugeicons="ArrowDownIcon"
                 className="text-muted-foreground ml-auto"
               />
             </Button>

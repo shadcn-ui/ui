@@ -90,7 +90,7 @@
 
   /* Badge */
   .cn-badge {
-    @apply rounded-full border border-transparent px-2 py-0.5 text-xs font-medium has-[>svg:first-of-type]:pl-1.5 has-[>svg:last-of-type]:pr-1.5;
+    @apply rounded-full border border-transparent px-2 py-0.5 text-xs font-medium;
 
     &.cn-badge-variant-default {
       @apply bg-primary text-primary-foreground [a]:hover:bg-primary/80;
@@ -117,13 +117,40 @@
     }
   }
 
+  /* Breadcrumb */
+  .cn-breadcrumb {
+    .cn-breadcrumb-list {
+      @apply text-muted-foreground gap-1.5 text-sm sm:gap-2.5;
+    }
+
+    .cn-breadcrumb-item {
+      @apply gap-1.5;
+    }
+
+    .cn-breadcrumb-link {
+      @apply hover:text-foreground transition-colors;
+    }
+
+    .cn-breadcrumb-page {
+      @apply text-foreground font-normal;
+    }
+
+    .cn-breadcrumb-separator {
+      @apply [&>svg]:size-3.5;
+    }
+
+    .cn-breadcrumb-ellipsis {
+      @apply size-9 [&>svg]:size-4;
+    }
+  }
+
   /* Button */
   .cn-button {
     @apply gap-2 rounded-lg border border-transparent bg-clip-padding text-sm font-medium [&_svg:not([class*='size-'])]:size-4;
 
     /* Variant */
     &.cn-button-variant-default {
-      @apply bg-primary text-primary-foreground hover:bg-primary/90;
+      @apply bg-primary text-primary-foreground hover:bg-primary/80;
     }
 
     &.cn-button-variant-outline {
@@ -139,7 +166,7 @@
     }
 
     &.cn-button-variant-destructive {
-      @apply bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white;
+      @apply bg-destructive hover:bg-destructive/80 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white;
     }
 
     &.cn-button-variant-link {
@@ -147,38 +174,61 @@
     }
 
     /* Size */
-    &.cn-button-size-default {
-      @apply h-9 px-4 py-2 has-[>svg]:px-3;
-    }
-
     &.cn-button-size-xs {
-      @apply h-6 gap-1 rounded-sm px-2 text-xs has-[>svg]:px-1.5;
+      @apply h-6 gap-1 rounded-md px-2 text-xs has-data-[slot=icon-inline-end]:pr-1.5 has-data-[slot=icon-inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3;
     }
 
     &.cn-button-size-sm {
-      @apply h-8 gap-1.5 px-3 has-[>svg]:px-2.5;
+      @apply h-8 gap-1 px-3 has-data-[slot=icon-inline-end]:pr-2.5 has-data-[slot=icon-inline-start]:pl-2.5;
+    }
+
+    &.cn-button-size-default {
+      @apply h-9 px-4 has-data-[slot=icon-inline-end]:pr-3.5 has-data-[slot=icon-inline-start]:pl-3.5;
     }
 
     &.cn-button-size-lg {
-      @apply h-10 px-6 has-[>svg]:px-4;
+      @apply h-10 px-4 has-data-[slot=icon-inline-end]:pr-3.5 has-data-[slot=icon-inline-start]:pl-3.5;
     }
 
     /* Icon */
-    &.cn-button-size-icon {
-      @apply size-8;
-    }
 
     &.cn-button-size-icon-xs {
-      @apply size-6;
+      @apply size-6 rounded-md [&_svg:not([class*='size-'])]:size-3;
     }
 
     &.cn-button-size-icon-sm {
-      @apply size-7;
+      @apply size-8;
+    }
+
+    &.cn-button-size-icon {
+      @apply size-9;
     }
 
     &.cn-button-size-icon-lg {
-      @apply size-9;
+      @apply size-10;
     }
+  }
+
+  /* Button Group */
+  .cn-button-group {
+    @apply has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-md;
+
+    .cn-button-group-text {
+      @apply bg-muted gap-2 rounded-md border px-4 text-sm font-medium shadow-xs [&_svg:not([class*='size-'])]:size-4;
+    }
+
+    .cn-button-group-separator {
+      @apply bg-input;
+    }
+  }
+
+  /* Calendar */
+  .cn-calendar {
+    @apply p-3 [--cell-size:--spacing(8)];
+  }
+
+  .cn-calendar-day-button {
+    @apply data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md [&>span]:text-xs [&>span]:opacity-70;
   }
 
   /* Card */

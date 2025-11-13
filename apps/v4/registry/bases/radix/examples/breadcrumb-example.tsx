@@ -16,11 +16,11 @@ import {
 
 export default function BreadcrumbDemo() {
   return (
-    <div className="bg-background min-h-screen p-4">
+    <div className="bg-background flex min-h-screen items-center justify-center p-4">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            <BreadcrumbLink href="#">Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -38,7 +38,7 @@ export default function BreadcrumbDemo() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+            <BreadcrumbLink href="#">Components</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
