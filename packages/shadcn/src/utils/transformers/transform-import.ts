@@ -62,7 +62,17 @@ function updateImportAliases(
 
   // This treats the remote as coming from a faux registry.
   if (isRemote && moduleSpecifier.startsWith("@/")) {
-    moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
+    // Check if this is a known alias pattern that should be transformed
+    const isKnownPattern =
+      moduleSpecifier.match(/^@\/(components|ui|lib|hooks)(\/|$)/) !== null
+
+    // Only transform known patterns, preserve others (like @/types, @/config, etc.)
+    if (isKnownPattern) {
+      moduleSpecifier = moduleSpecifier.replace(/^@\//, `@/registry/new-york/`)
+    } else {
+      // For non-standard paths like @/types, @/config, preserve them as-is
+      return moduleSpecifier
+    }
   }
 
   // Not a registry import.
