@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm source:manifest && next dev --turbopack --port 4000",
-    "build": "pnpm --filter=shadcn build && pnpm source:manifest && NODE_OPTIONS='--max-old-space-size=8192' next build",
-    "build:webpack": "pnpm --filter=shadcn build && pnpm source:manifest && NODE_OPTIONS='--max-old-space-size=16384' next build --webpack",
-    "build:analyze": "pnpm --filter=shadcn build && pnpm source:manifest && NODE_OPTIONS='--max-old-space-size=16384' ANALYZE=true next build --webpack",
+    "build": "pnpm --filter=shadcn build && pnpm source:manifest && next build",
+    "build:analyze": "pnpm --filter=shadcn build && pnpm source:manifest && ANALYZE=true next build --webpack",
     "start": "next start --port 4000",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
