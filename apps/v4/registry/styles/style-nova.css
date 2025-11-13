@@ -6,22 +6,38 @@
 
   .cn-alert-dialog-content {
     @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-bottom-5 data-[state=open]:slide-in-from-top-5 bg-background gap-4 rounded-xl border p-6 shadow-2xl duration-100 data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-lg;
+    .cn-alert-dialog-header {
+      @apply grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-6 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr];
+    }
+
+    .cn-alert-dialog-media {
+      @apply bg-muted mb-2 inline-flex size-16 items-center justify-center rounded-lg sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-8;
+    }
+
+    .cn-alert-dialog-title {
+      @apply font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2 sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:row-start-1;
+    }
+
+    .cn-alert-dialog-description {
+      @apply text-muted-foreground text-sm sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2;
+    }
   }
 
-  .cn-alert-dialog-header {
-    @apply grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-6 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr];
+  /* Avatar */
+  .cn-avatar {
+    @apply size-8 data-[size=lg]:size-10 data-[size=sm]:size-6;
+
+    .cn-avatar-fallback {
+      @apply bg-muted text-muted-foreground;
+    }
+
+    .cn-avatar-badge {
+      @apply bg-primary text-primary-foreground ring-background;
+    }
   }
 
-  .cn-alert-dialog-media {
-    @apply bg-muted mb-2 inline-flex size-16 items-center justify-center rounded-lg sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-8;
-  }
-
-  .cn-alert-dialog-title {
-    @apply font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2 sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:row-start-1;
-  }
-
-  .cn-alert-dialog-description {
-    @apply text-muted-foreground text-sm sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2;
+  .cn-avatar-group-count {
+    @apply bg-muted text-muted-foreground size-8 text-sm group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3;
   }
 
   .cn-button {

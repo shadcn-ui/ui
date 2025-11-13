@@ -1,4 +1,5 @@
 import { Badge } from "@/registry/bases/radix/ui/badge"
+import { Spinner } from "@/registry/bases/radix/ui/spinner"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function BadgeDemo() {
@@ -111,6 +112,32 @@ export default function BadgeDemo() {
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
             />
+          </Badge>
+        </div>
+        <div className="flex w-full flex-wrap gap-2">
+          <Badge>
+            <Spinner />
+            Default
+          </Badge>
+          <Badge variant="secondary">
+            <Spinner />
+            Secondary
+          </Badge>
+          <Badge variant="destructive">
+            <Spinner />
+            Destructive
+          </Badge>
+          <Badge variant="outline">
+            <Spinner />
+            Outline
+          </Badge>
+          <Badge variant="ghost">
+            <Spinner />
+            Ghost
+          </Badge>
+          <Badge variant="link">
+            <Spinner />
+            Link
           </Badge>
         </div>
         <div className="flex w-full flex-wrap gap-2">
