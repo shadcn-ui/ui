@@ -385,6 +385,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' class='fill-none!' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-baseline-icon lucide-baseline'><path d='M4 20h16'/><path d='m6 16 6-12 6 12'/><path d='M8 12h8'/></svg>"
   },
   {
+    "name": "@shadcnui-blocks",
+    "homepage": "https://shadcnui-blocks.com",
+    "url": "https://shadcnui-blocks.com/r/{name}.json",
+    "description": "A collection of premium, production-ready shadcn/ui blocks, components and templates.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200' fill='none'><rect width='200' height='200' rx='36' fill='black'/><path d='M100 170.833C139.12 170.833 170.833 139.12 170.833 100C170.833 60.8798 139.12 29.1667 100 29.1667C60.8798 29.1667 29.1666 60.8798 29.1666 100C29.1666 139.12 60.8798 170.833 100 170.833Z' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/><path d='M116.363 71.6667L157.021 142.075' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/><path d='M83.6375 71.6667H164.954' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/><path d='M67.275 100L107.933 29.5917' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/><path d='M83.6375 128.333L42.9791 57.925' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/><path d='M116.362 128.333H35.0458' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/><path d='M132.725 100L92.0667 170.408' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+  },
+  {
     "name": "@spectrumui",
     "homepage": "https://ui.spectrumhq.in",
     "url": "https://ui.spectrumhq.in/r/{name}.json",
