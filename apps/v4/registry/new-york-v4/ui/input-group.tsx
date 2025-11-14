@@ -72,9 +72,9 @@ function InputGroupAddon({
         if ((e.target as HTMLElement).closest("button")) {
           return
         }
-        const input = e.currentTarget.parentElement?.querySelector('input')
+        const input = e.currentTarget.parentElement?.querySelector("input")
         if (document.activeElement === input) {
-          e.preventDefault();
+          e.preventDefault()
           return
         }
         // defer focus to let browser handle native events first
