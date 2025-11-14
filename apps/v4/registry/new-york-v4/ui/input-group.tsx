@@ -68,11 +68,17 @@ function InputGroupAddon({
       data-slot="input-group-addon"
       data-align={align}
       className={cn(inputGroupAddonVariants({ align }), className)}
-      onClick={(e) => {
+      onPointerDown={(e) => {
         if ((e.target as HTMLElement).closest("button")) {
           return
         }
-        e.currentTarget.parentElement?.querySelector("input")?.focus()
+        const input = e.currentTarget.parentElement?.querySelector('input')
+        if (document.activeElement === input) {
+          e.preventDefault();
+          return
+        }
+        // defer focus to let browser handle native events first
+        requestAnimationFrame(() => input?.focus())
       }}
       {...props}
     />
