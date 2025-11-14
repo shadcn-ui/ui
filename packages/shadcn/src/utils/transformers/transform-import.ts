@@ -83,18 +83,18 @@ function updateImportAliases(
   // Match @/registry/[style]/components (with style) or @/registry/components (without style)
   if (
     config.aliases.components &&
-    moduleSpecifier.match(/^@\/registry\/(.*)\/components|^@\/registry\/components/)
+    moduleSpecifier.match(/^@\/registry\/(.+)\/components|^@\/registry\/components/)
   ) {
     return moduleSpecifier.replace(
-      /^@\/registry\/(.*)\/components|^@\/registry\/components/,
+      /^@\/registry\/(.+)\/components|^@\/registry\/components/,
       config.aliases.components
     )
   }
 
   // Match @/registry/[style]/lib (with style) or @/registry/lib (without style)
-  if (config.aliases.lib && moduleSpecifier.match(/^@\/registry\/(.*)\/lib|^@\/registry\/lib/)) {
+  if (config.aliases.lib && moduleSpecifier.match(/^@\/registry\/(.+)\/lib|^@\/registry\/lib/)) {
     return moduleSpecifier.replace(
-      /^@\/registry\/(.*)\/lib|^@\/registry\/lib/,
+      /^@\/registry\/(.+)\/lib|^@\/registry\/lib/,
       config.aliases.lib
     )
   }
@@ -102,10 +102,10 @@ function updateImportAliases(
   // Match @/registry/[style]/hooks (with style) or @/registry/hooks (without style)
   if (
     config.aliases.hooks &&
-    moduleSpecifier.match(/^@\/registry\/(.*)\/hooks|^@\/registry\/hooks/)
+    moduleSpecifier.match(/^@\/registry\/(.+)\/hooks|^@\/registry\/hooks/)
   ) {
     return moduleSpecifier.replace(
-      /^@\/registry\/(.*)\/hooks|^@\/registry\/hooks/,
+      /^@\/registry\/(.+)\/hooks|^@\/registry\/hooks/,
       config.aliases.hooks
     )
   }
