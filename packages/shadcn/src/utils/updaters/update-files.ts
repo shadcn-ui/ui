@@ -716,7 +716,7 @@ export function toAliasedImport(
   // if noExt is empty (i.e. file was exactly at the root), we import the root
   let suffix = noExt === "" ? "" : `/${noExt}`
 
-  // Rremove /src from suffix.
+  // Remove /src from suffix.
   // Alias will handle this.
   suffix = suffix.replace("/src", "")
 
