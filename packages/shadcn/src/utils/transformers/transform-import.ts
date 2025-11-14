@@ -106,7 +106,7 @@ function updateImportAliases(
   ) {
     return moduleSpecifier.replace(
       /^@\/registry\/(.*)\/hooks|^@\/registry\/hooks/,
-      config.aliases.hooks ?? `${config.aliases.components}/hooks`
+      config.aliases.hooks
     )
   }
 
