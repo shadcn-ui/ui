@@ -558,11 +558,13 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
           isLocalHSLValue(value) || isColorValue(value)
             ? `--color-${variable.replace(/^--/, "")}`
             : `--${variable.replace(/^--/, "")}`
+
         if (prop === "--color-sidebar-background") {
           prop = "--color-sidebar"
         }
 
         let propValue = `var(--${variable})`
+
         if (prop === "--color-sidebar") {
           propValue = "var(--sidebar)"
         }
