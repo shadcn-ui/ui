@@ -63,5 +63,5 @@ export async function transform(
     })
   }
 
-  return sourceFile.getText()
+  return sourceFile.getFullText()
 }
