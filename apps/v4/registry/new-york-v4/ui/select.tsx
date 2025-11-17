@@ -151,6 +151,7 @@ function SelectScrollUpButton({
       {...props}
     >
       <ChevronUpIcon className="size-4" />
+      <span className="sr-only">Scroll up</span>
     </SelectPrimitive.ScrollUpButton>
   )
 }
@@ -169,6 +170,7 @@ function SelectScrollDownButton({
       {...props}
     >
       <ChevronDownIcon className="size-4" />
+      <span className="sr-only">Scroll down</span>
     </SelectPrimitive.ScrollDownButton>
   )
 }
