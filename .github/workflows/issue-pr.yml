@@ -1,0 +1,23 @@
+name: Issue to Pull Request
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  start:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9.6.0
+          cache: true  # handles caching automatically
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - run: pnpm install --frozen-lockfile --prefer-offline
+      - run: pnpm exec tsx scripts/actions/loader.ts ${{ github.token }} issue-pr
