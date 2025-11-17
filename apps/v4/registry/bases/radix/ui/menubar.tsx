@@ -132,7 +132,7 @@ function MenubarCheckboxItem({
           <IconPlaceholder
             lucide="CheckIcon"
             tabler="IconCheck"
-            hugeicons="Tick01Icon"
+            hugeicons="Tick02Icon"
             className="size-4"
           />
         </MenubarPrimitive.ItemIndicator>

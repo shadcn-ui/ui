@@ -1,13 +1,24 @@
 "use client"
 
+import * as React from "react"
 import {
   Area,
   AreaChart,
   Bar,
   BarChart,
   CartesianGrid,
+  Label,
   Line,
   LineChart,
+  Pie,
+  PieChart,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  Radar,
+  RadarChart,
+  RadialBar,
+  RadialBarChart,
   XAxis,
 } from "recharts"
 
@@ -43,45 +54,20 @@ const areaChartConfig = {
   },
 } satisfies ChartConfig
 
-const barChartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
-
-const barChartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig
-
-const lineChartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
-
-const lineChartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig
+export default function ChartExample() {
+  return (
+    <div className="bg-background flex min-h-screen items-center justify-center p-4">
+      <div className="grid w-full gap-4 sm:grid-cols-2 md:max-w-3xl xl:max-w-5xl xl:grid-cols-3">
+        <ChartAreaExample />
+        <ChartBarExample />
+        <ChartLineExample />
+        <ChartPieExample />
+        <ChartRadarExample />
+        <ChartRadialExample />
+      </div>
+    </div>
+  )
+}
 
 function ChartAreaExample() {
   return (
@@ -130,10 +116,10 @@ function ChartAreaExample() {
             <div className="flex items-center gap-2 leading-none font-medium">
               Trending up by 5.2% this month{" "}
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
-                className="h-4 w-4"
+                lucide="TrendingUpIcon"
+                tabler="IconTrendingUp"
+                hugeicons="ChartUpIcon"
+                className="size-4"
               />
             </div>
             <div className="text-muted-foreground flex items-center gap-2 leading-none">
@@ -145,6 +131,26 @@ function ChartAreaExample() {
     </Card>
   )
 }
+
+const barChartData = [
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
+]
+
+const barChartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "var(--chart-1)",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "var(--chart-2)",
+  },
+} satisfies ChartConfig
 
 function ChartBarExample() {
   return (
@@ -177,10 +183,10 @@ function ChartBarExample() {
         <div className="flex gap-2 leading-none font-medium">
           Trending up by 5.2% this month{" "}
           <IconPlaceholder
-            lucide="CircleDashedIcon"
-            tabler="IconCircleDashed"
-            hugeicons="DashedLineCircleIcon"
-            className="h-4 w-4"
+            lucide="TrendingUpIcon"
+            tabler="IconTrendingUp"
+            hugeicons="ChartUpIcon"
+            className="size-4"
           />
         </div>
         <div className="text-muted-foreground leading-none">
@@ -190,6 +196,26 @@ function ChartBarExample() {
     </Card>
   )
 }
+
+const lineChartData = [
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
+]
+
+const lineChartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "var(--chart-1)",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "var(--chart-2)",
+  },
+} satisfies ChartConfig
 
 function ChartLineExample() {
   return (
@@ -240,10 +266,10 @@ function ChartLineExample() {
             <div className="flex items-center gap-2 leading-none font-medium">
               Trending up by 5.2% this month{" "}
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
-                className="h-4 w-4"
+                lucide="TrendingUpIcon"
+                tabler="IconTrendingUp"
+                hugeicons="ChartUpIcon"
+                className="size-4"
               />
             </div>
             <div className="text-muted-foreground flex items-center gap-2 leading-none">
@@ -256,16 +282,275 @@ function ChartLineExample() {
   )
 }
 
-export default function ChartExample() {
+const pieChartData = [
+  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
+  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
+  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+]
+
+const pieChartConfig = {
+  visitors: {
+    label: "Visitors",
+  },
+  chrome: {
+    label: "Chrome",
+    color: "var(--chart-1)",
+  },
+  safari: {
+    label: "Safari",
+    color: "var(--chart-2)",
+  },
+  firefox: {
+    label: "Firefox",
+    color: "var(--chart-3)",
+  },
+  edge: {
+    label: "Edge",
+    color: "var(--chart-4)",
+  },
+  other: {
+    label: "Other",
+    color: "var(--chart-5)",
+  },
+} satisfies ChartConfig
+
+function ChartPieExample() {
+  const totalVisitors = React.useMemo(() => {
+    return pieChartData.reduce((acc, curr) => acc + curr.visitors, 0)
+  }, [])
+
   return (
-    <div className="bg-background min-h-screen p-4">
-      <div className="grid w-full max-w-screen-2xl gap-4 *:data-[slot=card]:flex-1 @2xl:grid-cols-2 @6xl:grid-cols-3">
-        <ChartAreaExample />
-        <ChartBarExample />
-        <div className="@6xl:hidden">
-          <ChartLineExample />
+    <Card className="flex flex-col">
+      <CardHeader className="items-center pb-0">
+        <CardTitle>Pie Chart - Donut with Text</CardTitle>
+        <CardDescription>January - June 2024</CardDescription>
+      </CardHeader>
+      <CardContent className="flex-1 pb-0">
+        <ChartContainer
+          config={pieChartConfig}
+          className="mx-auto aspect-square max-h-[250px]"
+        >
+          <PieChart>
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <Pie
+              data={pieChartData}
+              dataKey="visitors"
+              nameKey="browser"
+              innerRadius={60}
+              strokeWidth={5}
+            >
+              <Label
+                content={({ viewBox }) => {
+                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                    return (
+                      <text
+                        x={viewBox.cx}
+                        y={viewBox.cy}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        <tspan
+                          x={viewBox.cx}
+                          y={viewBox.cy}
+                          className="fill-foreground text-3xl font-bold"
+                        >
+                          {totalVisitors.toLocaleString()}
+                        </tspan>
+                        <tspan
+                          x={viewBox.cx}
+                          y={(viewBox.cy || 0) + 24}
+                          className="fill-muted-foreground"
+                        >
+                          Visitors
+                        </tspan>
+                      </text>
+                    )
+                  }
+                }}
+              />
+            </Pie>
+          </PieChart>
+        </ChartContainer>
+      </CardContent>
+      <CardFooter className="flex-col gap-2 text-sm">
+        <div className="flex items-center gap-2 leading-none font-medium">
+          Trending up by 5.2% this month{" "}
+          <IconPlaceholder
+            lucide="TrendingUpIcon"
+            tabler="IconTrendingUp"
+            hugeicons="ChartUpIcon"
+            className="size-4"
+          />
         </div>
-      </div>
-    </div>
+        <div className="text-muted-foreground leading-none">
+          Showing total visitors for the last 6 months
+        </div>
+      </CardFooter>
+    </Card>
+  )
+}
+
+const radarChartData = [
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
+]
+
+const radarChartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "var(--chart-1)",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "var(--chart-2)",
+  },
+} satisfies ChartConfig
+
+function ChartRadarExample() {
+  return (
+    <Card>
+      <CardHeader className="items-center pb-4">
+        <CardTitle>Radar Chart - Multiple</CardTitle>
+        <CardDescription>
+          Showing total visitors for the last 6 months
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="pb-0">
+        <ChartContainer
+          config={radarChartConfig}
+          className="mx-auto aspect-square max-h-[250px]"
+        >
+          <RadarChart data={radarChartData}>
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent indicator="line" />}
+            />
+            <PolarAngleAxis dataKey="month" />
+            <PolarGrid />
+            <Radar
+              dataKey="desktop"
+              fill="var(--color-desktop)"
+              fillOpacity={0.6}
+            />
+            <Radar dataKey="mobile" fill="var(--color-mobile)" />
+          </RadarChart>
+        </ChartContainer>
+      </CardContent>
+      <CardFooter className="flex-col gap-2 text-sm">
+        <div className="flex items-center gap-2 leading-none font-medium">
+          Trending up by 5.2% this month{" "}
+          <IconPlaceholder
+            lucide="TrendingUpIcon"
+            tabler="IconTrendingUp"
+            hugeicons="ChartUpIcon"
+            className="size-4"
+          />
+        </div>
+        <div className="text-muted-foreground flex items-center gap-2 leading-none">
+          January - June 2024
+        </div>
+      </CardFooter>
+    </Card>
+  )
+}
+
+const radialChartData = [
+  { browser: "safari", visitors: 1260, fill: "var(--color-safari)" },
+]
+
+const radialChartConfig = {
+  visitors: {
+    label: "Visitors",
+  },
+  safari: {
+    label: "Safari",
+    color: "var(--chart-2)",
+  },
+} satisfies ChartConfig
+
+function ChartRadialExample() {
+  return (
+    <Card className="flex flex-col">
+      <CardHeader className="items-center pb-0">
+        <CardTitle>Radial Chart - Shape</CardTitle>
+        <CardDescription>January - June 2024</CardDescription>
+      </CardHeader>
+      <CardContent className="flex-1 pb-0">
+        <ChartContainer
+          config={radialChartConfig}
+          className="mx-auto aspect-square max-h-[250px]"
+        >
+          <RadialBarChart
+            data={radialChartData}
+            endAngle={100}
+            innerRadius={80}
+            outerRadius={140}
+          >
+            <PolarGrid
+              gridType="circle"
+              radialLines={false}
+              stroke="none"
+              className="first:fill-muted last:fill-background"
+              polarRadius={[86, 74]}
+            />
+            <RadialBar dataKey="visitors" background />
+            <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+              <Label
+                content={({ viewBox }) => {
+                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                    return (
+                      <text
+                        x={viewBox.cx}
+                        y={viewBox.cy}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        <tspan
+                          x={viewBox.cx}
+                          y={viewBox.cy}
+                          className="fill-foreground text-4xl font-bold"
+                        >
+                          {radialChartData[0].visitors.toLocaleString()}
+                        </tspan>
+                        <tspan
+                          x={viewBox.cx}
+                          y={(viewBox.cy || 0) + 24}
+                          className="fill-muted-foreground"
+                        >
+                          Visitors
+                        </tspan>
+                      </text>
+                    )
+                  }
+                }}
+              />
+            </PolarRadiusAxis>
+          </RadialBarChart>
+        </ChartContainer>
+      </CardContent>
+      <CardFooter className="flex-col gap-2 text-sm">
+        <div className="flex items-center gap-2 leading-none font-medium">
+          Trending up by 5.2% this month{" "}
+          <IconPlaceholder
+            lucide="TrendingUpIcon"
+            tabler="IconTrendingUp"
+            hugeicons="ChartUpIcon"
+            className="size-4"
+          />
+        </div>
+        <div className="text-muted-foreground leading-none">
+          Showing total visitors for the last 6 months
+        </div>
+      </CardFooter>
+    </Card>
   )
 }

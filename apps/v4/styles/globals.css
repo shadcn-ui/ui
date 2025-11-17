@@ -1,12 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@import "../registry/styles/style-default.css" layer(base);
+@import "../registry/styles/style-vega.css" layer(base);
 @import "../registry/styles/style-nova.css" layer(base);
 @import "../registry/styles/style-lyra.css" layer(base);
 @import "../registry/styles/style-maia.css" layer(base);
 
-@custom-variant style-default (&:where(.style-default *));
+@custom-variant style-vega (&:where(.style-vega *));
 @custom-variant style-nova (&:where(.style-nova *));
 @custom-variant style-lyra (&:where(.style-lyra *));
 @custom-variant style-maia (&:where(.style-maia *));
@@ -350,5 +350,11 @@
     padding-block: 0.1rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
+  }
+}
+
+@layer components {
+  .dialog-ring {
+    @apply rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800;
   }
 }

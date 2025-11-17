@@ -1,36 +1,42 @@
+import { type IconLibrary } from "shadcn/icons"
+
+import { BaseColor } from "@/registry/base-colors"
+import { Font } from "@/registry/fonts"
+import { Style } from "@/registry/styles"
+import { Theme } from "@/registry/themes"
+
+type Preset = {
+  title: string
+  style: Style["name"]
+  baseColor: BaseColor["name"]
+  theme: Theme["name"]
+  iconLibrary: IconLibrary["name"]
+  font: Font["value"]
+}
+
 export const PRESETS = [
   {
     title: "New York",
-    style: "default",
+    style: "vega",
     baseColor: "neutral",
     theme: "neutral",
     iconLibrary: "lucide",
-    font: "geist-sans",
+    font: "inter",
   },
   {
-    title: "Preset One",
+    title: "Tokyo",
     style: "nova",
     baseColor: "neutral",
     theme: "blue",
     iconLibrary: "hugeicons",
-    font: "inter",
+    font: "figtree",
   },
   {
-    title: "Preset Two",
+    title: "Oslo",
     style: "lyra",
     baseColor: "stone",
-    theme: "yellow",
+    theme: "stone",
     iconLibrary: "tabler",
     font: "geist-mono",
   },
-  {
-    title: "Preset Three",
-    style: "maia",
-    baseColor: "zinc",
-    theme: "green",
-    iconLibrary: "lucide",
-    font: "noto-sans",
-  },
-] as const
-
-export type Preset = (typeof PRESETS)[number]
+] satisfies Preset[]

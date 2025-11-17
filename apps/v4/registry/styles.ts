@@ -1,7 +1,7 @@
 export const STYLES = [
   {
-    name: "default",
-    title: "Default",
+    name: "vega",
+    title: "Vega",
   },
   {
     name: "nova",

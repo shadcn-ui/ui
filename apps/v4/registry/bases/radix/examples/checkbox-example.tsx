@@ -1,45 +1,242 @@
 "use client"
 
+import * as React from "react"
+
 import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
-import { Label } from "@/registry/bases/radix/ui/label"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FieldTitle,
+} from "@/registry/bases/radix/ui/field"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/bases/radix/ui/table"
 
 export default function CheckboxDemo() {
   return (
-    <div className="bg-background min-h-screen p-4">
-      <div className="flex flex-col gap-6">
-        <div className="flex items-center gap-3">
-          <Checkbox id="terms" />
-          <Label htmlFor="terms">Accept terms and conditions</Label>
-        </div>
-        <div className="flex items-start gap-3">
-          <Checkbox id="terms-2" defaultChecked />
-          <div className="grid gap-2">
-            <Label htmlFor="terms-2">Accept terms and conditions</Label>
-            <p className="text-muted-foreground text-sm">
-              By clicking this checkbox, you agree to the terms and conditions.
-            </p>
-          </div>
-        </div>
-        <div className="flex items-start gap-3">
-          <Checkbox id="toggle" disabled />
-          <Label htmlFor="toggle">Enable notifications</Label>
-        </div>
-        <Label className="hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950">
-          <Checkbox
-            id="toggle-2"
-            defaultChecked
-            className="data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700"
-          />
-          <div className="grid gap-1.5 font-normal">
-            <p className="text-sm leading-none font-medium">
-              Enable notifications
-            </p>
-            <p className="text-muted-foreground text-sm">
-              You can enable or disable notifications at any time.
-            </p>
-          </div>
-        </Label>
+    <div className="bg-background flex min-h-screen items-center justify-center p-4">
+      <div className="flex w-full max-w-2xl min-w-0 flex-col gap-6">
+        <CheckboxExample1 />
+        <CheckboxExample2 />
+        <CheckboxExample3 />
+        <CheckboxExample4 />
+        <CheckboxExample5 />
+        <CheckboxExample6 />
       </div>
     </div>
+  )
+}
+
+function CheckboxExample1() {
+  return (
+    <Field orientation="horizontal">
+      <Checkbox id="terms" />
+      <FieldLabel htmlFor="terms">Accept terms and conditions</FieldLabel>
+    </Field>
+  )
+}
+
+function CheckboxExample2() {
+  return (
+    <FieldGroup>
+      <Field orientation="horizontal">
+        <Checkbox id="terms-2" defaultChecked />
+        <FieldContent>
+          <FieldLabel htmlFor="terms-2">Accept terms and conditions</FieldLabel>
+          <FieldDescription>
+            By clicking this checkbox, you agree to the terms and conditions.
+          </FieldDescription>
+        </FieldContent>
+      </Field>
+      <Field orientation="horizontal" data-invalid>
+        <Checkbox id="terms-3" aria-invalid />
+        <FieldLabel htmlFor="terms-3">Accept terms and conditions</FieldLabel>
+      </Field>
+    </FieldGroup>
+  )
+}
+
+function CheckboxExample3() {
+  return (
+    <Field orientation="horizontal">
+      <Checkbox id="toggle" disabled />
+      <FieldLabel htmlFor="toggle">Enable notifications</FieldLabel>
+    </Field>
+  )
+}
+
+function CheckboxExample4() {
+  return (
+    <FieldGroup>
+      <FieldLabel htmlFor="toggle-2">
+        <Field orientation="horizontal">
+          <Checkbox id="toggle-2" defaultChecked />
+          <FieldContent>
+            <FieldTitle>Enable notifications</FieldTitle>
+            <FieldDescription>
+              You can enable or disable notifications at any time.
+            </FieldDescription>
+          </FieldContent>
+        </Field>
+      </FieldLabel>
+      <FieldLabel htmlFor="toggle-4">
+        <Field orientation="horizontal" data-disabled>
+          <Checkbox id="toggle-4" disabled />
+          <FieldContent>
+            <FieldTitle>Enable notifications</FieldTitle>
+            <FieldDescription>
+              You can enable or disable notifications at any time.
+            </FieldDescription>
+          </FieldContent>
+        </Field>
+      </FieldLabel>
+    </FieldGroup>
+  )
+}
+
+const tableData = [
+  {
+    id: "1",
+    name: "Sarah Chen",
+    email: "sarah.chen@example.com",
+    role: "Admin",
+  },
+  {
+    id: "2",
+    name: "Marcus Rodriguez",
+    email: "marcus.rodriguez@example.com",
+    role: "User",
+  },
+  {
+    id: "3",
+    name: "Priya Patel",
+    email: "priya.patel@example.com",
+    role: "User",
+  },
+  {
+    id: "4",
+    name: "David Kim",
+    email: "david.kim@example.com",
+    role: "Editor",
+  },
+]
+
+function CheckboxExample5() {
+  const [selectedRows, setSelectedRows] = React.useState<Set<string>>(
+    new Set(["1"])
+  )
+
+  const selectAll = selectedRows.size === tableData.length
+
+  const handleSelectAll = (checked: boolean) => {
+    if (checked) {
+      setSelectedRows(new Set(tableData.map((row) => row.id)))
+    } else {
+      setSelectedRows(new Set())
+    }
+  }
+
+  const handleSelectRow = (id: string, checked: boolean) => {
+    const newSelected = new Set(selectedRows)
+    if (checked) {
+      newSelected.add(id)
+    } else {
+      newSelected.delete(id)
+    }
+    setSelectedRows(newSelected)
+  }
+
+  return (
+    <div className="">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-8">
+              <Checkbox
+                id="select-all"
+                checked={selectAll}
+                onCheckedChange={handleSelectAll}
+              />
+            </TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Role</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {tableData.map((row) => (
+            <TableRow
+              key={row.id}
+              data-state={selectedRows.has(row.id) ? "selected" : undefined}
+            >
+              <TableCell>
+                <Checkbox
+                  id={`row-${row.id}`}
+                  checked={selectedRows.has(row.id)}
+                  onCheckedChange={(checked) =>
+                    handleSelectRow(row.id, checked === true)
+                  }
+                />
+              </TableCell>
+              <TableCell className="font-medium">{row.name}</TableCell>
+              <TableCell>{row.email}</TableCell>
+              <TableCell>{row.role}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  )
+}
+
+function CheckboxExample6() {
+  return (
+    <Field>
+      <FieldLabel>Show these items on the desktop:</FieldLabel>
+      <Field orientation="horizontal">
+        <Checkbox id="finder-pref-9k2-hard-disks-ljj" />
+        <FieldLabel
+          htmlFor="finder-pref-9k2-hard-disks-ljj"
+          className="font-normal"
+        >
+          Hard disks
+        </FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
+        <Checkbox id="finder-pref-9k2-external-disks-1yg" />
+        <FieldLabel
+          htmlFor="finder-pref-9k2-external-disks-1yg"
+          className="font-normal"
+        >
+          External disks
+        </FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
+        <Checkbox id="finder-pref-9k2-cds-dvds-fzt" />
+        <FieldLabel
+          htmlFor="finder-pref-9k2-cds-dvds-fzt"
+          className="font-normal"
+        >
+          CDs, DVDs, and iPods
+        </FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
+        <Checkbox id="finder-pref-9k2-connected-servers-6l2" />
+        <FieldLabel
+          htmlFor="finder-pref-9k2-connected-servers-6l2"
+          className="font-normal"
+        >
+          Connected servers
+        </FieldLabel>
+      </Field>
+    </Field>
   )
 }

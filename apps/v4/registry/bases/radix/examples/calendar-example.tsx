@@ -18,6 +18,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/registry/bases/radix/ui/drawer"
+import { Field, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
 import { Label } from "@/registry/bases/radix/ui/label"
 import {
@@ -31,24 +32,30 @@ export default function CalendarDemo() {
   return (
     <div className="bg-background flex min-h-screen items-center justify-center p-6">
       <div className="flex h-full flex-col flex-wrap justify-center gap-8 lg:flex-row">
-        <div className="flex flex-col gap-8 sm:flex-row md:gap-4">
+        <div className="flex flex-col items-center gap-8 sm:flex-row md:flex-col md:gap-4">
           <CalendarSingle />
           <CalendarMultiple />
         </div>
-        <div className="flex flex-col gap-8 sm:flex-row md:gap-4">
-          <CalendarRange />
-          <CalendarBookedDates />
-        </div>
-        <div className="flex flex-col gap-8 sm:flex-row md:flex-col md:gap-4">
+        <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start md:flex-col md:gap-4">
           <CalendarRangeMultipleMonths />
-          <div className="flex flex-col gap-8 md:flex-row md:gap-4">
-            <CalendarWithTime />
-            <CalendarWithPresets />
+          <div className="flex flex-col items-center gap-8 md:flex-row md:gap-4">
+            <CalendarRange />
+            <CalendarBookedDates />
           </div>
         </div>
-        <div className="flex flex-col gap-8 md:gap-4 lg:flex-row">
+        <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start md:gap-4">
+          <div className="flex flex-col items-center gap-8 md:gap-4">
+            <CalendarWithTime />
+            <CalendarWeekNumbers />
+          </div>
+          <div className="flex flex-col items-center gap-8 md:gap-4">
+            <CalendarWithPresets />
+            <CalendarWeekNumbers />
+          </div>
+        </div>
+        <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start md:gap-8">
           <CalendarCustomDays />
-          <div className="flex flex-col items-start gap-8 md:gap-4">
+          <div className="flex flex-col items-center gap-8 md:gap-4">
             <DatePickerSimple />
             <DataPickerWithDropdowns />
             <DatePickerWithRange />
@@ -64,29 +71,26 @@ function CalendarSingle() {
     new Date(new Date().getFullYear(), new Date().getMonth(), 12)
   )
   return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-left text-sm md:text-center">
-        Single Selection
-      </div>
-      <Calendar
-        mode="single"
-        selected={date}
-        onSelect={setDate}
-        className="rounded-lg border shadow-sm"
-        captionLayout="dropdown"
-      />
-    </div>
+    <Card className="w-fit p-0">
+      <CardContent className="p-0">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          captionLayout="dropdown"
+        />
+      </CardContent>
+    </Card>
   )
 }
 
 function CalendarMultiple() {
   return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-left text-sm md:text-center">
-        Multiple Selection
-      </div>
-      <Calendar mode="multiple" className="rounded-lg border shadow-sm" />
-    </div>
+    <Card className="w-fit p-0">
+      <CardContent className="p-0">
+        <Calendar mode="multiple" />
+      </CardContent>
+    </Card>
   )
 }
 
@@ -97,20 +101,20 @@ function CalendarRange() {
   })
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-left text-sm md:text-center">
-        Range Selection
-      </div>
-      <Calendar
-        mode="range"
-        defaultMonth={dateRange?.from}
-        selected={dateRange}
-        onSelect={setDateRange}
-        numberOfMonths={2}
-        disabled={(date) => date > new Date() || date < new Date("1900-01-01")}
-        className="rounded-lg border shadow-sm"
-      />
-    </div>
+    <Card className="w-fit p-0">
+      <CardContent className="p-0">
+        <Calendar
+          mode="range"
+          defaultMonth={dateRange?.from}
+          selected={dateRange}
+          onSelect={setDateRange}
+          numberOfMonths={2}
+          disabled={(date) =>
+            date > new Date() || date < new Date("1900-01-01")
+          }
+        />
+      </CardContent>
+    </Card>
   )
 }
 
@@ -121,21 +125,19 @@ function CalendarRangeMultipleMonths() {
   })
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-left text-sm md:text-center">
-        Range Selection + Locale
-      </div>
-      <Calendar
-        mode="range"
-        defaultMonth={range?.from}
-        selected={range}
-        onSelect={setRange}
-        numberOfMonths={3}
-        locale={es}
-        fixedWeeks
-        className="rounded-lg border shadow-sm"
-      />
-    </div>
+    <Card className="w-fit p-0">
+      <CardContent className="p-0">
+        <Calendar
+          mode="range"
+          defaultMonth={range?.from}
+          selected={range}
+          onSelect={setRange}
+          numberOfMonths={3}
+          locale={es}
+          fixedWeeks
+        />
+      </CardContent>
+    </Card>
   )
 }
 
@@ -149,25 +151,23 @@ function CalendarBookedDates() {
   )
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-left text-sm md:text-center">
-        With booked dates
-      </div>
-      <Calendar
-        mode="single"
-        defaultMonth={date}
-        selected={date}
-        onSelect={setDate}
-        disabled={bookedDates}
-        modifiers={{
-          booked: bookedDates,
-        }}
-        modifiersClassNames={{
-          booked: "[&>button]:line-through opacity-100",
-        }}
-        className="rounded-lg border shadow-sm"
-      />
-    </div>
+    <Card className="w-fit p-0">
+      <CardContent className="p-0">
+        <Calendar
+          mode="single"
+          defaultMonth={date}
+          selected={date}
+          onSelect={setDate}
+          disabled={bookedDates}
+          modifiers={{
+            booked: bookedDates,
+          }}
+          modifiersClassNames={{
+            booked: "[&>button]:line-through opacity-100",
+          }}
+        />
+      </CardContent>
+    </Card>
   )
 }
 
@@ -177,59 +177,54 @@ function CalendarWithTime() {
   )
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-left text-sm md:text-center">
-        With Time Input
-      </div>
-      <Card className="w-fit py-4">
-        <CardContent className="px-4">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            className="p-0"
-          />
-        </CardContent>
-        <CardFooter className="flex flex-col gap-3 border-t px-4 pt-4">
-          <div className="flex w-full flex-col gap-2">
-            <Label htmlFor="time-from">Start Time</Label>
-            <div className="relative flex w-full items-center gap-2">
-              <IconPlaceholder
-                lucide="Clock2Icon"
-                tabler="IconClockHour2"
-                hugeicons="Clock03Icon"
-                className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
-              />
-              <Input
-                id="time-from"
-                type="time"
-                step="1"
-                defaultValue="10:30:00"
-                className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
-              />
-            </div>
+    <Card className="w-fit py-4">
+      <CardContent className="px-4">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          className="p-0"
+        />
+      </CardContent>
+      <CardFooter className="flex flex-col gap-3 border-t px-4 pt-4">
+        <div className="flex w-full flex-col gap-2">
+          <Label htmlFor="time-from">Start Time</Label>
+          <div className="relative flex w-full items-center gap-2">
+            <IconPlaceholder
+              lucide="Clock2Icon"
+              tabler="IconClockHour2"
+              hugeicons="Clock03Icon"
+              className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
+            />
+            <Input
+              id="time-from"
+              type="time"
+              step="1"
+              defaultValue="10:30:00"
+              className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+            />
           </div>
-          <div className="flex w-full flex-col gap-2">
-            <Label htmlFor="time-to">End Time</Label>
-            <div className="relative flex w-full items-center gap-2">
-              <IconPlaceholder
-                lucide="Clock2Icon"
-                tabler="IconClockHour2"
-                hugeicons="Clock03Icon"
-                className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
-              />
-              <Input
-                id="time-to"
-                type="time"
-                step="1"
-                defaultValue="12:30:00"
-                className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
-              />
-            </div>
+        </div>
+        <div className="flex w-full flex-col gap-2">
+          <Label htmlFor="time-to">End Time</Label>
+          <div className="relative flex w-full items-center gap-2">
+            <IconPlaceholder
+              lucide="Clock2Icon"
+              tabler="IconClockHour2"
+              hugeicons="Clock03Icon"
+              className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
+            />
+            <Input
+              id="time-to"
+              type="time"
+              step="1"
+              defaultValue="12:30:00"
+              className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+            />
           </div>
-        </CardFooter>
-      </Card>
-    </div>
+        </div>
+      </CardFooter>
+    </Card>
   )
 }
 
@@ -240,39 +235,39 @@ function CalendarCustomDays() {
   })
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-left text-sm md:text-center">
-        With Custom Days and Formatters
-      </div>
-      <Calendar
-        mode="range"
-        defaultMonth={range?.from}
-        selected={range}
-        onSelect={setRange}
-        numberOfMonths={1}
-        captionLayout="dropdown"
-        className="rounded-lg border shadow-sm [--cell-size:--spacing(12)]"
-        formatters={{
-          formatMonthDropdown: (date) => {
-            return date.toLocaleString("default", { month: "long" })
-          },
-        }}
-        components={{
-          DayButton: ({ children, modifiers, day, ...props }) => {
-            const isWeekend = day.date.getDay() === 0 || day.date.getDay() === 6
+    <Card className="p-0">
+      <CardContent className="p-0">
+        <Calendar
+          mode="range"
+          defaultMonth={range?.from}
+          selected={range}
+          onSelect={setRange}
+          numberOfMonths={1}
+          captionLayout="dropdown"
+          className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
+          formatters={{
+            formatMonthDropdown: (date) => {
+              return date.toLocaleString("default", { month: "long" })
+            },
+          }}
+          components={{
+            DayButton: ({ children, modifiers, day, ...props }) => {
+              const isWeekend =
+                day.date.getDay() === 0 || day.date.getDay() === 6
 
-            return (
-              <CalendarDayButton day={day} modifiers={modifiers} {...props}>
-                {children}
-                {!modifiers.outside && (
-                  <span>{isWeekend ? "$120" : "$100"}</span>
-                )}
-              </CalendarDayButton>
-            )
-          },
-        }}
-      />
-    </div>
+              return (
+                <CalendarDayButton day={day} modifiers={modifiers} {...props}>
+                  {children}
+                  {!modifiers.outside && (
+                    <span>{isWeekend ? "$120" : "$100"}</span>
+                  )}
+                </CalendarDayButton>
+              )
+            },
+          }}
+        />
+      </CardContent>
+    </Card>
   )
 }
 
@@ -285,47 +280,44 @@ function CalendarWithPresets() {
   )
 
   return (
-    <div className="flex max-w-[300px] flex-col gap-3">
-      <div className="px-2 text-left text-sm md:text-center">With Presets</div>
-      <Card className="w-fit py-4">
-        <CardContent className="px-4">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            month={currentMonth}
-            onMonthChange={setCurrentMonth}
-            fixedWeeks
-            className="p-0 [--cell-size:--spacing(9.5)]"
-          />
-        </CardContent>
-        <CardFooter className="flex flex-wrap gap-2 border-t px-4 pt-4">
-          {[
-            { label: "Today", value: 0 },
-            { label: "Tomorrow", value: 1 },
-            { label: "In 3 days", value: 3 },
-            { label: "In a week", value: 7 },
-            { label: "In 2 weeks", value: 14 },
-          ].map((preset) => (
-            <Button
-              key={preset.value}
-              variant="outline"
-              size="sm"
-              className="flex-1"
-              onClick={() => {
-                const newDate = addDays(new Date(), preset.value)
-                setDate(newDate)
-                setCurrentMonth(
-                  new Date(newDate.getFullYear(), newDate.getMonth(), 1)
-                )
-              }}
-            >
-              {preset.label}
-            </Button>
-          ))}
-        </CardFooter>
-      </Card>
-    </div>
+    <Card className="w-fit max-w-[300px] py-4">
+      <CardContent className="px-4">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          month={currentMonth}
+          onMonthChange={setCurrentMonth}
+          fixedWeeks
+          className="p-0 [--cell-size:--spacing(9.5)]"
+        />
+      </CardContent>
+      <CardFooter className="flex flex-wrap gap-2 border-t px-4 pt-4">
+        {[
+          { label: "Today", value: 0 },
+          { label: "Tomorrow", value: 1 },
+          { label: "In 3 days", value: 3 },
+          { label: "In a week", value: 7 },
+          { label: "In 2 weeks", value: 14 },
+        ].map((preset) => (
+          <Button
+            key={preset.value}
+            variant="outline"
+            size="sm"
+            className="flex-1"
+            onClick={() => {
+              const newDate = addDays(new Date(), preset.value)
+              setDate(newDate)
+              setCurrentMonth(
+                new Date(newDate.getFullYear(), newDate.getMonth(), 1)
+              )
+            }}
+          >
+            {preset.label}
+          </Button>
+        ))}
+      </CardFooter>
+    </Card>
   )
 }
 
@@ -333,12 +325,13 @@ function DatePickerSimple() {
   const [date, setDate] = React.useState<Date>()
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-sm">Date Picker Simple</div>
+    <Field>
+      <FieldLabel htmlFor="date-picker-simple">Date Picker Simple</FieldLabel>
       <Popover>
         <PopoverTrigger asChild>
           <Button
             variant={"outline"}
+            id="date-picker-simple"
             className={cn(
               "min-w-[200px] justify-start px-2 font-normal",
               !date && "text-muted-foreground"
@@ -357,7 +350,7 @@ function DatePickerSimple() {
           <Calendar mode="single" selected={date} onSelect={setDate} />
         </PopoverContent>
       </Popover>
-    </div>
+    </Field>
   )
 }
 
@@ -368,12 +361,12 @@ function DatePickerWithRange() {
   })
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-sm">Date Picker Range</div>
+    <Field>
+      <FieldLabel htmlFor="date-picker-range">Date Picker Range</FieldLabel>
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            id="date"
+            id="date-picker-range"
             variant={"outline"}
             className={cn(
               "w-fit justify-start px-2 font-normal",
@@ -410,7 +403,7 @@ function DatePickerWithRange() {
           />
         </PopoverContent>
       </Popover>
-    </div>
+    </Field>
   )
 }
 
@@ -419,13 +412,16 @@ function DataPickerWithDropdowns() {
   const [open, setOpen] = React.useState(false)
   const isMobile = useIsMobile(450)
 
-  return (
-    <div className="flex flex-col gap-3">
-      <div className="px-2 text-sm">Date Picker with Dropdowns</div>
-      {isMobile ? (
+  if (isMobile) {
+    return (
+      <Field>
         <Drawer open={open} onOpenChange={setOpen}>
+          <FieldLabel htmlFor="date-picker-with-dropdowns">
+            Date Picker with Dropdowns
+          </FieldLabel>
           <DrawerTrigger asChild>
             <Button
+              id="date-picker-with-dropdowns"
               variant="outline"
               className={cn(
                 "min-w-[200px] justify-start px-2 font-normal",
@@ -458,45 +454,73 @@ function DataPickerWithDropdowns() {
             />
           </DrawerContent>
         </Drawer>
-      ) : (
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
+      </Field>
+    )
+  }
+
+  return (
+    <Field>
+      <Popover open={open} onOpenChange={setOpen}>
+        <FieldLabel htmlFor="date-picker-with-dropdowns-desktop">
+          Date Picker with Dropdowns
+        </FieldLabel>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            id="date-picker-with-dropdowns-desktop"
+            className={cn(
+              "min-w-[200px] justify-start px-2 font-normal",
+              !date && "text-muted-foreground"
+            )}
+          >
+            {date ? format(date, "PPP") : <span>Pick a date</span>}
+            <IconPlaceholder
+              lucide="ChevronDownIcon"
+              tabler="IconChevronDown"
+              hugeicons="ArrowDownIcon"
+              className="text-muted-foreground ml-auto"
+            />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            captionLayout="dropdown"
+          />
+          <div className="flex gap-2 border-t p-2">
             <Button
               variant="outline"
-              className={cn(
-                "min-w-[200px] justify-start px-2 font-normal",
-                !date && "text-muted-foreground"
-              )}
+              size="sm"
+              className="w-full"
+              onClick={() => setOpen(false)}
             >
-              {date ? format(date, "PPP") : <span>Pick a date</span>}
-              <IconPlaceholder
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-                hugeicons="ArrowDownIcon"
-                className="text-muted-foreground ml-auto"
-              />
+              Done
             </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              captionLayout="dropdown"
-            />
-            <div className="flex gap-2 border-t p-2">
-              <Button
-                variant="outline"
-                size="sm"
-                className="w-full"
-                onClick={() => setOpen(false)}
-              >
-                Done
-              </Button>
-            </div>
-          </PopoverContent>
-        </Popover>
-      )}
-    </div>
+          </div>
+        </PopoverContent>
+      </Popover>
+    </Field>
+  )
+}
+
+function CalendarWeekNumbers() {
+  const [date, setDate] = React.useState<Date | undefined>(
+    new Date(new Date().getFullYear(), 1, 3)
+  )
+
+  return (
+    <Card className="w-fit p-0">
+      <CardContent className="p-0">
+        <Calendar
+          mode="single"
+          defaultMonth={date}
+          selected={date}
+          onSelect={setDate}
+          showWeekNumber
+        />
+      </CardContent>
+    </Card>
   )
 }

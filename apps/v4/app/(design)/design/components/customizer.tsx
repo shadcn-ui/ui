@@ -56,55 +56,87 @@ export function Customizer() {
         theme: preset.theme,
         iconLibrary: preset.iconLibrary,
         font: preset.font,
+        custom: false,
       })
     },
     [setParams]
   )
 
+  const handleSelectCustom = React.useCallback(() => {
+    setParams({
+      custom: true,
+    })
+  }, [setParams])
+
   return (
-    <div className="z-10 flex flex-col gap-4">
-      <Card className="w-64 gap-0 rounded-xl py-0">
-        <CardHeader className="gap-0 border-b px-4 py-3.5!">
+    <div className="z-10 flex w-56 flex-col gap-4 px-1">
+      <Card className="gap-0 rounded-xl py-0">
+        <CardHeader className="gap-0 border-b px-3 py-2.5!">
           <CardTitle className="text-sm font-medium">Presets</CardTitle>
         </CardHeader>
-        <CardContent className="p-4">
-          <FieldGroup className="flex flex-col gap-4">
-            {PRESETS.map((preset, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                className="data-[state=open]:bg-accent/50 flex h-auto flex-col items-start justify-start p-0 shadow-none"
-                onClick={() => handleSelectPreset(preset)}
-              >
-                <Item size="sm" className="w-full px-2.5 py-2">
-                  <ItemContent className="items-start gap-0.5">
-                    <ItemTitle className="text-xs font-medium">
-                      {preset.title}
-                    </ItemTitle>
-                    <ItemDescription>
-                      {preset.style} / {preset.theme} / {preset.iconLibrary}
-                    </ItemDescription>
-                  </ItemContent>
-                </Item>
-              </Button>
-            ))}
+        <CardContent className="p-3">
+          <FieldGroup className="flex flex-col gap-3">
+            {PRESETS.map((preset, index) => {
+              const isActive =
+                !params.custom &&
+                preset.style === params.style &&
+                preset.theme === params.theme &&
+                preset.iconLibrary === params.iconLibrary &&
+                preset.font === params.font
+
+              return (
+                <Button
+                  key={index}
+                  variant="outline"
+                  data-active={isActive}
+                  className="data-[state=open]:bg-accent/50 data-[active=true]:border-primary ring-primary flex h-auto flex-col items-start justify-start p-0 shadow-none data-[active=true]:ring-1"
+                  onClick={() => handleSelectPreset(preset)}
+                >
+                  <Item size="sm" className="w-full px-2.5 py-2">
+                    <ItemContent className="items-start gap-0.5">
+                      <ItemTitle className="text-xs font-medium">
+                        {preset.title}
+                      </ItemTitle>
+                      <ItemDescription>
+                        {preset.style} / {preset.theme} / {preset.iconLibrary}
+                      </ItemDescription>
+                    </ItemContent>
+                  </Item>
+                </Button>
+              )
+            })}
+            <Button
+              variant="outline"
+              data-active={params.custom}
+              className="data-[state=open]:bg-accent/50 data-[active=true]:border-primary ring-primary flex h-auto flex-col items-start justify-start p-0 shadow-none data-[active=true]:ring-1"
+              onClick={handleSelectCustom}
+            >
+              <Item size="sm" className="w-full px-2.5 py-2">
+                <ItemContent className="items-start gap-0.5">
+                  <ItemTitle className="text-xs font-medium">Custom</ItemTitle>
+                  <ItemDescription>Custom configuration</ItemDescription>
+                </ItemContent>
+              </Item>
+            </Button>
           </FieldGroup>
         </CardContent>
       </Card>
-      <Card className="w-64 gap-0 rounded-xl py-0">
-        <CardHeader className="gap-0 border-b px-4 py-3.5!">
-          <CardTitle className="text-sm font-medium">Customize</CardTitle>
-        </CardHeader>
-        <CardContent className="p-4">
-          <FieldGroup className="flex flex-col gap-4">
-            <StylePicker styles={STYLES} />
-            <BaseColorPicker />
-            <ThemePicker themes={THEMES} />
-            <IconLibraryPicker />
-            <FontPicker fonts={FONTS} />
-          </FieldGroup>
-        </CardContent>
-      </Card>
+      {params.custom && (
+        <Card className="gap-0 rounded-xl py-0">
+          <CardHeader className="gap-0 border-b px-3 py-2.5!">
+            <CardTitle className="text-sm font-medium">Customize</CardTitle>
+          </CardHeader>
+          <CardContent className="p-3">
+            <FieldGroup className="flex flex-col gap-3">
+              <StylePicker styles={STYLES} />
+              <BaseColorPicker />
+              <ThemePicker themes={THEMES} />
+              <IconLibraryPicker />
+              <FontPicker fonts={FONTS} />
+            </FieldGroup>
+          </CardContent>
+        </Card>
+      )}
     </div>
   )
 }
@@ -144,22 +176,22 @@ export function CustomizerItem({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="rounded-[12px] p-0 shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+          className="rounded-xl p-0"
           side="right"
           align="start"
-          alignOffset={-16}
+          alignOffset={-24}
           sideOffset={24}
           onCloseAutoFocus={(e) => e.preventDefault()}
         >
-          <div className="border-b px-4 py-3.5">
+          <div className="border-b px-3 py-2.5">
             <div className="text-sm font-medium">{title}</div>
           </div>
-          <div className="pt-4 pb-1">{children}</div>
+          <div className="pt-3 pb-1">{children}</div>
         </PopoverContent>
       </Popover>
       <div
         data-open={open}
-        className="fixed inset-0 hidden bg-transparent data-[open=true]:block"
+        className="fixed inset-0 z-50 hidden bg-transparent data-[open=true]:block"
         onClick={() => onOpenChange?.(false)}
       />
     </>
@@ -203,7 +235,7 @@ export function CustomizerPicker({
   return (
     <Command value={commandValue} {...props}>
       {showSearch && (
-        <div className="bg-popover *:data-[slot=command-input-wrapper]:bg-input/40 *:data-[slot=command-input-wrapper]:border-input px-4 pt-1 pb-2 *:data-[slot=command-input-wrapper]:rounded-md *:data-[slot=command-input-wrapper]:border">
+        <div className="bg-popover *:data-[slot=command-input-wrapper]:bg-input/40 *:data-[slot=command-input-wrapper]:border-input px-3 pt-0 pb-2 *:data-[slot=command-input-wrapper]:h-8 *:data-[slot=command-input-wrapper]:rounded-md *:data-[slot=command-input-wrapper]:border *:data-[slot=command-input-wrapper]:px-2">
           <CommandInput placeholder="Search" />
         </div>
       )}
@@ -223,7 +255,7 @@ export function CustomizerPickerGroup({
 }: React.ComponentProps<typeof CommandGroup>) {
   return (
     <CommandGroup
-      className={cn("px-4 *:[div]:flex *:[div]:flex-col", className)}
+      className={cn("px-3 pt-px *:[div]:flex *:[div]:flex-col", className)}
       {...props}
     />
   )

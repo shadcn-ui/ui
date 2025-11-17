@@ -199,7 +199,7 @@ function AvatarExample3() {
           <IconPlaceholder
             lucide="CheckIcon"
             tabler="IconCheck"
-            hugeicons="Tick01Icon"
+            hugeicons="Tick02Icon"
           />
         </AvatarBadge>
       </Avatar>
@@ -209,7 +209,7 @@ function AvatarExample3() {
           <IconPlaceholder
             lucide="CheckIcon"
             tabler="IconCheck"
-            hugeicons="Tick01Icon"
+            hugeicons="Tick02Icon"
           />
         </AvatarBadge>
       </Avatar>
@@ -219,7 +219,7 @@ function AvatarExample3() {
           <IconPlaceholder
             lucide="CheckIcon"
             tabler="IconCheck"
-            hugeicons="Tick01Icon"
+            hugeicons="Tick02Icon"
           />
         </AvatarBadge>
       </Avatar>

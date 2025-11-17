@@ -40,11 +40,7 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
       open={open}
       onOpenChange={setOpen}
     >
-      <CustomizerPicker
-        currentValue={currentFont?.name ?? null}
-        open={open}
-        showSearch
-      >
+      <CustomizerPicker currentValue={currentFont?.name ?? null} open={open}>
         <CustomizerPickerGroup>
           {fonts.map((font) => (
             <CustomizerPickerItem

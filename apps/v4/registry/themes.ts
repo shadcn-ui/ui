@@ -529,6 +529,36 @@ export const THEMES: RegistryItem[] = [
       },
     },
   },
+  {
+    name: "sketch",
+    title: "Sketch",
+    type: "registry:theme",
+    cssVars: {
+      light: {
+        background: "oklch(0.9721 0.0158 110.5501)",
+        foreground: "oklch(0.5066 0.2501 271.8903)",
+        card: "oklch(0.9721 0.0158 110.5501)",
+        "card-foreground": "oklch(0.5066 0.2501 271.8903)",
+        popover: "oklch(0.9721 0.0158 110.5501)",
+        "popover-foreground": "oklch(0.5066 0.2501 271.8903)",
+        primary: "oklch(0.5066 0.2501 271.8903)",
+        "primary-foreground": "oklch(1 0 0)",
+        secondary: "oklch(1 0 0)",
+        "secondary-foreground": "oklch(0.5066 0.2501 271.8903)",
+        muted: "oklch(0.9189 0.0147 106.6853)",
+        "muted-foreground": "oklch(0.5066 0.2501 271.8903)",
+        accent: "oklch(0.9168 0.0214 109.7161)",
+        "accent-foreground": "oklch(0.4486 0.2266 271.5512)",
+        destructive: "oklch(0.63 0.19 23.03)",
+        "destructive-foreground": "oklch(1 0 0)",
+        border: "oklch(0.5066 0.2501 271.8903)",
+        input: "oklch(0.5066 0.2501 271.8903)",
+        ring: "oklch(0.468 0.2721 279.6007)",
+        "shadow-xs":
+          "4px 4px 0px 0px hsl(238.3146 85.5769% 59.2157% / 0.15),4px 8px 10px -1px hsl(238.3146 85.5769% 59.2157% / 0.15)",
+      },
+    },
+  },
 ] as const satisfies RegistryItem[]
 
 export type Theme = (typeof THEMES)[number]

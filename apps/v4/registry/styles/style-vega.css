@@ -1,4 +1,4 @@
-.style-default {
+.style-vega {
   /* Accordion */
   .cn-accordion-item {
     @apply not-last:border-b;
@@ -73,10 +73,14 @@
 
   /* Avatar */
   .cn-avatar {
-    @apply size-8 data-[size=lg]:size-10 data-[size=sm]:size-6;
+    @apply size-8 rounded-full after:rounded-full data-[size=lg]:size-10 data-[size=sm]:size-6;
 
     .cn-avatar-fallback {
-      @apply bg-muted text-muted-foreground;
+      @apply bg-muted text-muted-foreground rounded-full;
+    }
+
+    .cn-avatar-image {
+      @apply rounded-full;
     }
 
     .cn-avatar-badge {
@@ -85,7 +89,7 @@
   }
 
   .cn-avatar-group-count {
-    @apply bg-muted text-muted-foreground size-8 text-sm group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3;
+    @apply bg-muted text-muted-foreground size-8 rounded-full text-sm group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3;
   }
 
   /* Badge */
@@ -191,7 +195,6 @@
     }
 
     /* Icon */
-
     &.cn-button-size-icon-xs {
       @apply size-6 rounded-md [&_svg:not([class*='size-'])]:size-3;
     }
@@ -227,16 +230,12 @@
     @apply p-3 [--cell-size:--spacing(8)];
   }
 
-  .cn-calendar-day-button {
-    @apply data-[range-end=true]:rounded-md data-[range-end=true]:rounded-r-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md data-[range-start=true]:rounded-l-md [&>span]:text-xs [&>span]:opacity-70;
-  }
-
   /* Card */
   .cn-card {
-    @apply gap-6 rounded-xl border py-6 shadow-sm;
+    @apply bg-card text-card-foreground gap-(--padding) rounded-xl border py-(--padding) shadow-(--shadow-xs) [--padding:--spacing(6)];
 
     .cn-card-header {
-      @apply gap-2 px-6 [.border-b]:pb-6;
+      @apply gap-2 px-(--padding) [.border-b]:pb-(--padding);
     }
 
     .cn-card-title {
@@ -248,11 +247,58 @@
     }
 
     .cn-card-content {
-      @apply px-6;
+      @apply px-(--padding);
     }
 
     .cn-card-footer {
-      @apply px-6 [.border-t]:pt-6;
+      @apply px-(--padding) [.border-t]:pt-(--padding);
+    }
+  }
+
+  /* Chart */
+  .cn-chart-tooltip {
+    @apply border-border/50 bg-background gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl;
+  }
+
+  /* Checkbox */
+  .cn-checkbox {
+    @apply border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary aria-invalid:data-[state=checked]:border-primary aria-invalid:border-destructive size-4 rounded-[4px] border shadow-xs transition-shadow;
+
+    .cn-checkbox-indicator {
+      @apply [&>svg]:size-3.5;
+    }
+  }
+
+  /* Empty */
+  .cn-empty {
+    @apply gap-6 rounded-lg border-dashed p-6;
+
+    .cn-empty-header {
+      @apply gap-2;
+    }
+
+    .cn-empty-media {
+      @apply mb-2;
+
+      &[data-variant="default"] {
+        @apply bg-transparent;
+      }
+
+      &[data-variant="icon"] {
+        @apply bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-6;
+      }
+    }
+
+    .cn-empty-title {
+      @apply text-lg font-medium tracking-tight;
+    }
+
+    .cn-empty-description {
+      @apply text-sm/relaxed;
+    }
+
+    .cn-empty-content {
+      @apply gap-4 text-sm;
     }
   }
 
@@ -264,5 +310,38 @@
   /* Textarea */
   .cn-textarea {
     @apply dark:bg-input/30 border-input rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] md:text-sm;
+  }
+
+  /* Select */
+  .cn-select-trigger {
+    @apply border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 gap-2 rounded-md border bg-transparent px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:gap-2 [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-select-content {
+    @apply bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-md border shadow-md;
+
+    .cn-select-label {
+      @apply text-muted-foreground px-2 py-1.5 text-xs;
+    }
+
+    .cn-select-item {
+      @apply focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4 *:[span]:last:gap-2;
+
+      .cn-select-item-indicator {
+        @apply right-2 size-3.5;
+      }
+    }
+
+    .cn-select-separator {
+      @apply bg-border -mx-1 my-1 h-px;
+    }
+
+    .cn-select-scroll-up-button {
+      @apply py-1 [&_svg:not([class*='size-'])]:size-4;
+    }
+
+    .cn-select-scroll-down-button {
+      @apply py-1 [&_svg:not([class*='size-'])]:size-4;
+    }
   }
 }

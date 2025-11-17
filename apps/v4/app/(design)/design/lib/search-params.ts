@@ -1,5 +1,6 @@
 import {
   createSearchParamsCache,
+  parseAsBoolean,
   parseAsInteger,
   parseAsString,
   parseAsStringLiteral,
@@ -18,7 +19,7 @@ export const designSystemSearchParams = {
   ).withDefault("lucide"),
   style: parseAsStringLiteral<Style["name"]>(
     STYLES.map((s) => s.name)
-  ).withDefault("default"),
+  ).withDefault("vega"),
   theme: parseAsStringLiteral<Theme["name"]>(
     THEMES.map((t) => t.name)
   ).withDefault("neutral"),
@@ -29,6 +30,7 @@ export const designSystemSearchParams = {
     BASE_COLORS.map((b) => b.name)
   ).withDefault("neutral"),
   size: parseAsInteger.withDefault(100),
+  custom: parseAsBoolean.withDefault(false),
 }
 
 export const designSystemSearchParamsCache = createSearchParamsCache(

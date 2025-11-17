@@ -41,10 +41,10 @@ const PREVIEW_ICONS = {
     "ShoppingBagIcon",
     "MoreHorizontalIcon",
     "Loader2Icon",
-    "ArrowDownIcon",
-    "ArrowUpIcon",
-    "ArrowRightIcon",
+    "PlusIcon",
+    "MinusIcon",
     "ArrowLeftIcon",
+    "ArrowRightIcon",
     "CheckIcon",
     "ChevronDownIcon",
     "ChevronRightIcon",
@@ -57,10 +57,10 @@ const PREVIEW_ICONS = {
     "IconShoppingBag",
     "IconDots",
     "IconLoader",
-    "IconArrowDown",
-    "IconArrowUp",
-    "IconArrowRight",
+    "IconPlus",
+    "IconMinus",
     "IconArrowLeft",
+    "IconArrowRight",
     "IconCheck",
     "IconChevronDown",
     "IconChevronRight",
@@ -73,11 +73,11 @@ const PREVIEW_ICONS = {
     "ShoppingBasket02Icon",
     "MoreHorizontalIcon",
     "Loading03Icon",
-    "ArrowDown02Icon",
-    "ArrowUp02Icon",
-    "ArrowRight02Icon",
+    "PlusSignIcon",
+    "MinusSignIcon",
     "ArrowLeft02Icon",
-    "Tick01Icon",
+    "ArrowRight02Icon",
+    "Tick02Icon",
     "ArrowDown01Icon",
     "ArrowRight01Icon",
   ],
@@ -142,7 +142,7 @@ function IconLibraryPickerItem({
     <CustomizerPickerItem
       key={iconLibrary.name}
       value={iconLibrary.title}
-      className="ring-border mb-2 ring-1"
+      className="ring-border ring-1 not-last:mb-2"
       {...props}
     >
       <div className="flex w-full flex-col gap-1.5 p-1">

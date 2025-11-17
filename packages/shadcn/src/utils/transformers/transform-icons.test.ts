@@ -289,7 +289,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <div><IconPlaceholder hugeicons="Tick01Icon" /></div>
+  return <div><IconPlaceholder hugeicons="Tick02Icon" /></div>
 }`,
             config: {
               ...testConfig,
@@ -301,10 +301,10 @@ export function Component() {
       ).toMatchInlineSnapshot(`
         "import * as React from "react"
         import { HugeiconsIcon } from "@hugeicons/react"
-        import { Tick01Icon } from "@hugeicons/core-free-icons"
+        import { Tick02Icon } from "@hugeicons/core-free-icons"
 
         export function Component() {
-          return <div><HugeiconsIcon icon={Tick01Icon} strokeWidth={2} /></div>
+          return <div><HugeiconsIcon icon={Tick02Icon} strokeWidth={2} /></div>
         }"
       `)
     })
@@ -318,7 +318,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder hugeicons="Tick01Icon" className="size-4" />
+  return <IconPlaceholder hugeicons="Tick02Icon" className="size-4" />
 }`,
             config: {
               ...testConfig,
@@ -330,10 +330,10 @@ export function Component() {
       ).toMatchInlineSnapshot(`
         "import * as React from "react"
         import { HugeiconsIcon } from "@hugeicons/react"
-        import { Tick01Icon } from "@hugeicons/core-free-icons"
+        import { Tick02Icon } from "@hugeicons/core-free-icons"
 
         export function Component() {
-          return <HugeiconsIcon icon={Tick01Icon} strokeWidth={2} className="size-4" />
+          return <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} className="size-4" />
         }"
       `)
     })
@@ -347,7 +347,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder hugeicons="Tick01Icon" strokeWidth={4} />
+  return <IconPlaceholder hugeicons="Tick02Icon" strokeWidth={4} />
 }`,
             config: {
               ...testConfig,
@@ -359,10 +359,10 @@ export function Component() {
       ).toMatchInlineSnapshot(`
         "import * as React from "react"
         import { HugeiconsIcon } from "@hugeicons/react"
-        import { Tick01Icon } from "@hugeicons/core-free-icons"
+        import { Tick02Icon } from "@hugeicons/core-free-icons"
 
         export function Component() {
-          return <HugeiconsIcon icon={Tick01Icon} strokeWidth={4} />
+          return <HugeiconsIcon icon={Tick02Icon} strokeWidth={4} />
         }"
       `)
     })
@@ -378,7 +378,7 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 export function Component() {
   return (
     <div>
-      <IconPlaceholder hugeicons="Tick01Icon" />
+      <IconPlaceholder hugeicons="Tick02Icon" />
       <IconPlaceholder hugeicons="ArrowDown02Icon" />
     </div>
   )
@@ -393,12 +393,12 @@ export function Component() {
       ).toMatchInlineSnapshot(`
         "import * as React from "react"
         import { HugeiconsIcon } from "@hugeicons/react"
-        import { Tick01Icon, ArrowDown02Icon } from "@hugeicons/core-free-icons"
+        import { Tick02Icon, ArrowDown02Icon } from "@hugeicons/core-free-icons"
 
         export function Component() {
           return (
             <div>
-              <HugeiconsIcon icon={Tick01Icon} strokeWidth={2} />
+              <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} />
               <HugeiconsIcon icon={ArrowDown02Icon} strokeWidth={2} />
             </div>
           )
@@ -524,7 +524,7 @@ export function Component() {
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export function Component() {
-  return <IconPlaceholder hugeicons="Tick01Icon" />
+  return <IconPlaceholder hugeicons="Tick02Icon" />
 }`,
           config: {
             ...testConfig,
@@ -536,10 +536,10 @@ export function Component() {
     ).toMatchInlineSnapshot(`
       "import * as React from "react"
       import { HugeiconsIcon } from "@hugeicons/react"
-      import { Tick01Icon } from "@hugeicons/core-free-icons"
+      import { Tick02Icon } from "@hugeicons/core-free-icons"
 
       export function Component() {
-        return <HugeiconsIcon icon={Tick01Icon} strokeWidth={2} />
+        return <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} />
       }"
     `)
   })

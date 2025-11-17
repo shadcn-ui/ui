@@ -1,20 +1,50 @@
 .style-lyra {
   --text-sm: 0.75rem;
 
+  /* Accordion */
+  .cn-accordion-item {
+    @apply not-last:border-b;
+
+    .cn-accordion-trigger {
+      @apply gap-6 rounded-md py-4 text-left text-sm font-medium hover:underline;
+    }
+
+    .cn-accordion-trigger-icon {
+      @apply text-muted-foreground pointer-events-none size-4 shrink-0;
+    }
+
+    .cn-accordion-content {
+      @apply data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down text-sm;
+    }
+
+    .cn-accordion-content-inner {
+      @apply pt-0 pb-4;
+    }
+  }
+
+  /* Alert Dialog */
+  .cn-alert-dialog-overlay {
+    @apply bg-black/80;
+  }
+
   .cn-alert-dialog-content {
-    @apply bg-background gap-2 border p-4;
-  }
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 bg-background gap-4 border p-4 duration-100 data-[size=default]:max-w-xs data-[size=sm]:max-w-[280px] data-[size=default]:sm:max-w-lg;
 
-  .cn-alert-dialog-header {
-    @apply gap-1;
-  }
+    .cn-alert-dialog-header {
+      @apply grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-6 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr];
+    }
 
-  .cn-alert-dialog-title {
-    @apply text-sm font-medium;
-  }
+    .cn-alert-dialog-media {
+      @apply bg-muted mb-2 inline-flex size-8 items-center justify-center sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-4;
+    }
 
-  .cn-alert-dialog-description {
-    @apply text-muted-foreground text-sm;
+    .cn-alert-dialog-title {
+      @apply text-sm font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2;
+    }
+
+    .cn-alert-dialog-description {
+      @apply text-muted-foreground text-sm text-balance md:text-pretty;
+    }
   }
 
   /* Alert */
@@ -40,6 +70,79 @@
 
     &.cn-alert-variant-destructive {
       @apply text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current;
+    }
+  }
+
+  /* Avatar */
+  .cn-avatar {
+    @apply size-8 data-[size=lg]:size-10 data-[size=sm]:size-6;
+
+    .cn-avatar-fallback {
+      @apply bg-muted text-muted-foreground;
+    }
+
+    .cn-avatar-badge {
+      @apply bg-primary text-primary-foreground ring-background;
+    }
+  }
+
+  .cn-avatar-group-count {
+    @apply bg-muted text-muted-foreground size-8 text-sm group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3;
+  }
+
+  /* Badge */
+  .cn-badge {
+    @apply rounded-full border border-transparent px-2 py-0.5 text-xs font-medium;
+
+    &.cn-badge-variant-default {
+      @apply bg-primary text-primary-foreground [a]:hover:bg-primary/80;
+    }
+
+    &.cn-badge-variant-secondary {
+      @apply bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80;
+    }
+
+    &.cn-badge-variant-outline {
+      @apply border-border text-foreground [a]:hover:bg-accent [a]:hover:text-accent-foreground;
+    }
+
+    &.cn-badge-variant-destructive {
+      @apply bg-destructive [a]:hover:bg-destructive/80 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white;
+    }
+
+    &.cn-badge-variant-ghost {
+      @apply hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50;
+    }
+
+    &.cn-badge-variant-link {
+      @apply text-primary underline-offset-4 hover:underline;
+    }
+  }
+
+  /* Breadcrumb */
+  .cn-breadcrumb {
+    .cn-breadcrumb-list {
+      @apply text-muted-foreground gap-1.5 text-sm sm:gap-2.5;
+    }
+
+    .cn-breadcrumb-item {
+      @apply gap-1.5;
+    }
+
+    .cn-breadcrumb-link {
+      @apply hover:text-foreground transition-colors;
+    }
+
+    .cn-breadcrumb-page {
+      @apply text-foreground font-normal;
+    }
+
+    .cn-breadcrumb-separator {
+      @apply [&>svg]:size-3.5;
+    }
+
+    .cn-breadcrumb-ellipsis {
+      @apply size-9 [&>svg]:size-4;
     }
   }
 
@@ -96,27 +199,60 @@
     }
   }
 
-  .cn-card {
-    @apply border py-4;
+  /* Button Group */
+  .cn-button-group {
+    @apply has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-md;
 
-    .cn-card-header {
-      @apply gap-1 border-b px-4 pb-4;
+    .cn-button-group-text {
+      @apply bg-muted gap-2 rounded-md border px-4 text-sm font-medium shadow-xs [&_svg:not([class*='size-'])]:size-4;
     }
 
-    .cn-card-content {
-      @apply px-4 pt-4;
+    .cn-button-group-separator {
+      @apply bg-input;
+    }
+  }
+
+  /* Calendar */
+  .cn-calendar {
+    @apply p-3 [--cell-size:--spacing(8)];
+  }
+
+  /* Card */
+  .cn-card {
+    @apply bg-card text-card-foreground gap-(--padding) border py-(--padding) [--padding:--spacing(4)];
+
+    .cn-card-header {
+      @apply gap-2 px-(--padding) [.border-b]:pb-(--padding);
     }
 
     .cn-card-title {
-      @apply text-sm font-medium;
+      @apply text-sm leading-none font-medium;
     }
 
     .cn-card-description {
       @apply text-muted-foreground text-xs;
     }
 
+    .cn-card-content {
+      @apply px-(--padding);
+    }
+
     .cn-card-footer {
-      @apply px-4 pt-4;
+      @apply px-(--padding) [.border-t]:pt-(--padding);
+    }
+  }
+
+  /* Chart */
+  .cn-chart-tooltip {
+    @apply border-border/50 bg-background gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl;
+  }
+
+  /* Checkbox */
+  .cn-checkbox {
+    @apply border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary aria-invalid:data-[state=checked]:border-primary aria-invalid:border-destructive size-4 border;
+
+    .cn-checkbox-indicator {
+      @apply [&>svg]:size-3.5;
     }
   }
 
@@ -126,5 +262,71 @@
 
   .cn-textarea {
     @apply border-input border px-2 py-1.5 text-base md:text-sm;
+  }
+
+  /* Empty */
+  .cn-empty {
+    @apply gap-4 border-dashed p-4;
+
+    .cn-empty-header {
+      @apply gap-2;
+    }
+
+    .cn-empty-media {
+      @apply mb-2;
+
+      &[data-variant="default"] {
+        @apply bg-transparent;
+      }
+
+      &[data-variant="icon"] {
+        @apply bg-muted text-foreground flex size-8 shrink-0 items-center justify-center [&_svg:not([class*='size-'])]:size-4;
+      }
+    }
+
+    .cn-empty-title {
+      @apply text-xs font-medium;
+    }
+
+    .cn-empty-description {
+      @apply text-xs/relaxed;
+    }
+
+    .cn-empty-content {
+      @apply gap-2 text-sm;
+    }
+  }
+
+  /* Select */
+  .cn-select-trigger {
+    @apply border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground gap-2 border bg-transparent px-2 py-2 text-sm data-[size=default]:h-7 data-[size=sm]:h-7 *:data-[slot=select-value]:gap-2 [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-select-content {
+    @apply bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 border;
+
+    .cn-select-label {
+      @apply text-muted-foreground px-2 py-1.5 text-xs;
+    }
+
+    .cn-select-item {
+      @apply focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground gap-2 py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4 *:[span]:last:gap-2;
+
+      .cn-select-item-indicator {
+        @apply right-2 size-3.5;
+      }
+    }
+
+    .cn-select-separator {
+      @apply bg-border -mx-1 my-1 h-px;
+    }
+
+    .cn-select-scroll-up-button {
+      @apply py-1 [&_svg:not([class*='size-'])]:size-4;
+    }
+
+    .cn-select-scroll-down-button {
+      @apply py-1 [&_svg:not([class*='size-'])]:size-4;
+    }
   }
 }

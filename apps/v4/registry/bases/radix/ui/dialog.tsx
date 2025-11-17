@@ -4,7 +4,6 @@ import * as React from "react"
 import { Dialog as DialogPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { CanvaPortal } from "@/app/(design)/design/components/canva"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 function Dialog({
@@ -56,7 +55,7 @@ function DialogContent({
   showCloseButton?: boolean
 }) {
   return (
-    <CanvaPortal element={<DialogPortal />}>
+    <DialogPortal>
       <DialogOverlay />
       <DialogPrimitive.Content
         data-slot="dialog-content"
@@ -81,7 +80,7 @@ function DialogContent({
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Content>
-    </CanvaPortal>
+    </DialogPortal>
   )
 }
 

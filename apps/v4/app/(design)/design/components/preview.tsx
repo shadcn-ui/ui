@@ -10,9 +10,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/registry/new-york-v4/ui/resizable"
-import { Canva } from "@/app/(design)/design/components/canva"
 import { CMD_K_FORWARD_TYPE } from "@/app/(design)/design/components/item-picker"
-import { PreviewControls } from "@/app/(design)/design/components/preview-controls"
 import { useDesignSystemSync } from "@/app/(design)/design/hooks/use-design-system"
 import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
 
@@ -87,10 +85,10 @@ export function Preview({ base }: { base: Base["name"] }) {
     return null
   }
 
-  const iframeSrc = `/preview/${base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "default"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
+  const iframeSrc = `/preview/${base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "vega"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
 
   return (
-    <div className="relative flex flex-1 flex-col">
+    <div className="relative -z-0 flex flex-1 flex-col">
       <div className="absolute inset-0 [background-image:radial-gradient(#d4d4d4_1px,transparent_1px)] [background-size:20px_20px] dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"></div>
       <ResizablePanelGroup
         direction="horizontal"

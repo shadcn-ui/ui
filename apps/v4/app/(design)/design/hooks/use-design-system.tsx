@@ -19,11 +19,12 @@ const getInitialValues = (): DesignSystemSearchParams => {
     return {
       iconLibrary: "lucide",
       theme: "neutral",
-      style: "default",
+      style: "vega",
       font: "inter",
       item: "cover-example",
       baseColor: "neutral",
       size: 100,
+      custom: false,
     }
   }
 
@@ -34,13 +35,14 @@ const getInitialValues = (): DesignSystemSearchParams => {
     theme: (searchParams.get("theme") ||
       "neutral") as DesignSystemSearchParams["theme"],
     style: (searchParams.get("style") ||
-      "default") as DesignSystemSearchParams["style"],
+      "vega") as DesignSystemSearchParams["style"],
     font: (searchParams.get("font") ||
       "inter") as DesignSystemSearchParams["font"],
     item: searchParams.get("item") || "cover-example",
     baseColor: (searchParams.get("baseColor") ||
       "neutral") as DesignSystemSearchParams["baseColor"],
     size: parseInt(searchParams.get("size") || "100"),
+    custom: (searchParams.get("custom") || "false") === "true",
   }
 }
 

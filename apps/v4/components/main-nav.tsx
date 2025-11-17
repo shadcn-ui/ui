@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { PAGES_NEW } from "@/lib/docs"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
@@ -21,9 +22,19 @@ export function MainNav({
         <Button key={item.href} variant="ghost" asChild size="sm">
           <Link
             href={item.href}
-            className={cn(pathname === item.href && "text-primary")}
+            data-active={pathname === item.href}
+            className={cn(
+              "relative items-center",
+              "data-[active=true]:text-primary"
+            )}
           >
             {item.label}
+            {PAGES_NEW.includes(item.href) && (
+              <span
+                className="flex size-2 rounded-full bg-blue-500"
+                title="New"
+              />
+            )}
           </Link>
         </Button>
       ))}

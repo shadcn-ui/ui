@@ -2,29 +2,6 @@
 
 import * as React from "react"
 import { useState } from "react"
-import {
-  IconCheck,
-  IconInfoCircle,
-  IconMinus,
-  IconPlus,
-  IconStar,
-} from "@tabler/icons-react"
-import {
-  ArchiveIcon,
-  ArrowLeftIcon,
-  ArrowUpIcon,
-  AudioLinesIcon,
-  BotIcon,
-  CalendarPlusIcon,
-  ChevronDownIcon,
-  ClockIcon,
-  ListFilterPlusIcon,
-  MailCheckIcon,
-  PlusIcon,
-  Search,
-  TagIcon,
-  Trash2Icon,
-} from "lucide-react"
 
 import {
   AlertDialog,
@@ -41,6 +18,7 @@ import {
 import {
   Avatar,
   AvatarFallback,
+  AvatarGroup,
   AvatarImage,
 } from "@/registry/bases/radix/ui/avatar"
 import { Badge } from "@/registry/bases/radix/ui/badge"
@@ -145,31 +123,23 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function CoverExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-4">
-      <div className="grid max-w-screen-2xl gap-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-        <div className="flex flex-col gap-6">
-          <FieldDemo />
-        </div>
-        <div className="flex flex-col gap-6">
-          <EmptyAvatarGroup />
-          <SpinnerBadge />
-          <ButtonGroupInputGroup />
-          <FieldSlider />
-          <SheetDemo />
-          <InputGroupDemo />
-        </div>
-        <div className="flex flex-col gap-6">
-          <InputGroupButtonExample />
-          <ItemDemo />
-          <AppearanceSettings />
-        </div>
-        <div className="flex flex-col gap-6">
-          <ButtonGroupDemo />
-          <FieldCheckbox />
-          <ButtonGroupExample />
-          <FieldHear />
-          <SpinnerEmpty />
-        </div>
+    <div className="bg-background flex min-h-screen items-center justify-center p-6">
+      <div className="w-full max-w-screen-2xl columns-1 gap-8 md:columns-2 lg:columns-3 2xl:columns-4 [&>*]:mb-8 [&>*]:break-inside-avoid">
+        <FieldDemo />
+        <SpinnerEmpty />
+        <EmptyAvatarGroup />
+        <FieldSlider />
+        <SheetDemo />
+        <SpinnerBadge />
+        <InputGroupDemo />
+        <InputGroupButtonExample />
+        <ButtonGroupInputGroup />
+        <ItemDemo />
+        <FieldHear />
+        <AppearanceSettings />
+        <ButtonGroupDemo />
+        <FieldCheckbox />
+        <ButtonGroupExample />
       </div>
     </div>
   )
@@ -259,7 +229,11 @@ function AppearanceSettings() {
               onClick={() => handleGpuAdjustment(-1)}
               disabled={gpuCount <= 1}
             >
-              <IconMinus />
+              <IconPlaceholder
+                lucide="MinusIcon"
+                tabler="IconMinus"
+                hugeicons="MinusSignIcon"
+              />
             </Button>
             <Button
               variant="outline"
@@ -269,7 +243,11 @@ function AppearanceSettings() {
               onClick={() => handleGpuAdjustment(1)}
               disabled={gpuCount >= 99}
             >
-              <IconPlus />
+              <IconPlaceholder
+                lucide="PlusIcon"
+                tabler="IconPlus"
+                hugeicons="PlusSignIcon"
+              />
             </Button>
           </ButtonGroup>
         </Field>
@@ -295,7 +273,11 @@ function ButtonGroupDemo() {
     <ButtonGroup>
       <ButtonGroup className="hidden sm:flex">
         <Button variant="outline" size="icon-sm" aria-label="Go Back">
-          <ArrowLeftIcon />
+          <IconPlaceholder
+            lucide="ArrowLeftIcon"
+            tabler="IconArrowLeft"
+            hugeicons="ArrowLeft01Icon"
+          />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
@@ -314,40 +296,64 @@ function ButtonGroupDemo() {
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon-sm" aria-label="More Options">
               <IconPlaceholder
-                lucide="CircleDashedIcon"
-                tabler="IconCircleDashed"
-                hugeicons="DashedLineCircleIcon"
+                lucide="ChevronDownIcon"
+                tabler="IconChevronDown"
+                hugeicons="ArrowDown01Icon"
               />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <MailCheckIcon />
+                <IconPlaceholder
+                  lucide="MailCheckIcon"
+                  tabler="IconMailCheck"
+                  hugeicons="MailValidation01Icon"
+                />
                 Mark as Read
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <ArchiveIcon />
+                <IconPlaceholder
+                  lucide="ArchiveIcon"
+                  tabler="IconArchive"
+                  hugeicons="ArchiveIcon"
+                />
                 Archive
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <ClockIcon />
+                <IconPlaceholder
+                  lucide="ClockIcon"
+                  tabler="IconClock"
+                  hugeicons="ClockIcon"
+                />
                 Snooze
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <CalendarPlusIcon />
+                <IconPlaceholder
+                  lucide="CalendarPlusIcon"
+                  tabler="IconCalendarPlus"
+                  hugeicons="CalendarAdd01Icon"
+                />
                 Add to Calendar
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <ListFilterPlusIcon />
+                <IconPlaceholder
+                  lucide="ListFilterPlusIcon"
+                  tabler="IconFilterPlus"
+                  hugeicons="AddToListIcon"
+                />
                 Add to List
               </DropdownMenuItem>
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>
-                  <TagIcon />
+                  <IconPlaceholder
+                    lucide="TagIcon"
+                    tabler="IconTag"
+                    hugeicons="TagIcon"
+                  />
                   Label As...
                 </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>
@@ -371,7 +377,11 @@ function ButtonGroupDemo() {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem variant="destructive">
-                <Trash2Icon />
+                <IconPlaceholder
+                  lucide="Trash2Icon"
+                  tabler="IconTrash"
+                  hugeicons="Delete02Icon"
+                />
                 Trash
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -381,16 +391,16 @@ function ButtonGroupDemo() {
       <ButtonGroup>
         <Button variant="outline" size="icon-sm" aria-label="Previous">
           <IconPlaceholder
-            lucide="CircleDashedIcon"
-            tabler="IconCircleDashed"
-            hugeicons="DashedLineCircleIcon"
+            lucide="ArrowLeftIcon"
+            tabler="IconArrowLeft"
+            hugeicons="ArrowLeft01Icon"
           />
         </Button>
         <Button variant="outline" size="icon-sm" aria-label="Next">
           <IconPlaceholder
-            lucide="CircleDashedIcon"
-            tabler="IconCircleDashed"
-            hugeicons="DashedLineCircleIcon"
+            lucide="ArrowRightIcon"
+            tabler="IconArrowRight"
+            hugeicons="ArrowRight01Icon"
           />
         </Button>
       </ButtonGroup>
@@ -400,11 +410,16 @@ function ButtonGroupDemo() {
 
 function ButtonGroupInputGroup() {
   const [voiceEnabled, setVoiceEnabled] = React.useState(false)
+
   return (
-    <ButtonGroup>
+    <ButtonGroup className="w-full">
       <ButtonGroup>
         <Button variant="outline" size="icon" aria-label="Add">
-          <PlusIcon />
+          <IconPlaceholder
+            lucide="PlusIcon"
+            tabler="IconPlus"
+            hugeicons="PlusSignIcon"
+          />
         </Button>
       </ButtonGroup>
       <ButtonGroup className="flex-1">
@@ -426,7 +441,11 @@ function ButtonGroupInputGroup() {
                   size="icon-xs"
                   aria-label="Voice Mode"
                 >
-                  <AudioLinesIcon />
+                  <IconPlaceholder
+                    lucide="AudioLinesIcon"
+                    tabler="IconWaveSine"
+                    hugeicons="AudioWave01Icon"
+                  />
                 </InputGroupButton>
               </TooltipTrigger>
               <TooltipContent>Voice Mode</TooltipContent>
@@ -482,7 +501,7 @@ function ButtonGroupExample() {
                   <IconPlaceholder
                     lucide="CheckIcon"
                     tabler="IconCheck"
-                    hugeicons="Tick01Icon"
+                    hugeicons="Tick02Icon"
                   />
                   Mark as Read
                 </DropdownMenuItem>
@@ -539,7 +558,12 @@ function ButtonGroupExample() {
         </ButtonGroup>
         <ButtonGroup>
           <Button variant="outline" size="sm">
-            <BotIcon /> Copilot
+            <IconPlaceholder
+              lucide="BotIcon"
+              tabler="IconRobot"
+              hugeicons="BotIcon"
+            />{" "}
+            Copilot
           </Button>
           <Popover>
             <PopoverTrigger asChild>
@@ -548,7 +572,11 @@ function ButtonGroupExample() {
                 size="icon-sm"
                 aria-label="Open Popover"
               >
-                <ChevronDownIcon />
+                <IconPlaceholder
+                  lucide="ChevronDownIcon"
+                  tabler="IconChevronDown"
+                  hugeicons="ArrowDown01Icon"
+                />
               </Button>
             </PopoverTrigger>
             <PopoverContent align="end" className="p-0">
@@ -580,26 +608,26 @@ function EmptyAvatarGroup() {
     <Empty className="flex-none border">
       <EmptyHeader>
         <EmptyMedia>
-          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
-            <Avatar>
+          <AvatarGroup className="grayscale">
+            <Avatar size="lg">
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
-            <Avatar>
+            <Avatar size="lg">
               <AvatarImage
                 src="https://github.com/maxleiter.png"
                 alt="@maxleiter"
               />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
-            <Avatar>
+            <Avatar size="lg">
               <AvatarImage
                 src="https://github.com/evilrabbit.png"
                 alt="@evilrabbit"
               />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
-          </div>
+          </AvatarGroup>
         </EmptyMedia>
         <EmptyTitle>No Team Members</EmptyTitle>
         <EmptyDescription>
@@ -895,7 +923,7 @@ function InputGroupButtonExample() {
   const [isFavorite, setIsFavorite] = React.useState(false)
 
   return (
-    <div className="grid w-full max-w-sm gap-6">
+    <Field>
       <Label htmlFor="input-secure-19" className="sr-only">
         Input Secure
       </Label>
@@ -909,7 +937,11 @@ function InputGroupButtonExample() {
                 size="icon-xs"
                 aria-label="Info"
               >
-                <IconInfoCircle />
+                <IconPlaceholder
+                  lucide="InfoIcon"
+                  tabler="IconInfoCircle"
+                  hugeicons="AlertCircleIcon"
+                />
               </InputGroupButton>
             </InputGroupAddon>
           </PopoverTrigger>
@@ -931,14 +963,17 @@ function InputGroupButtonExample() {
             size="icon-xs"
             aria-label="Favorite"
           >
-            <IconStar
+            <IconPlaceholder
+              lucide="StarIcon"
+              tabler="IconStar"
+              hugeicons="StarIcon"
               data-favorite={isFavorite}
               className="data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"
             />
           </InputGroupButton>
         </InputGroupAddon>
       </InputGroup>
-    </div>
+    </Field>
   )
 }
 
@@ -948,7 +983,11 @@ function InputGroupDemo() {
       <InputGroup>
         <InputGroupInput placeholder="Search..." />
         <InputGroupAddon>
-          <Search />
+          <IconPlaceholder
+            lucide="SearchIcon"
+            tabler="IconSearch"
+            hugeicons="Search01Icon"
+          />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
       </InputGroup>
@@ -965,7 +1004,11 @@ function InputGroupDemo() {
                 size="icon-xs"
                 aria-label="Info"
               >
-                <IconInfoCircle />
+                <IconPlaceholder
+                  lucide="InfoIcon"
+                  tabler="IconInfoCircle"
+                  hugeicons="AlertCircleIcon"
+                />
               </InputGroupButton>
             </TooltipTrigger>
             <TooltipContent>This is content in a tooltip.</TooltipContent>
@@ -981,7 +1024,11 @@ function InputGroupDemo() {
             size="icon-xs"
             aria-label="Add"
           >
-            <IconPlus />
+            <IconPlaceholder
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+            />
           </InputGroupButton>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -1004,7 +1051,11 @@ function InputGroupDemo() {
             className="rounded-full"
             size="icon-xs"
           >
-            <ArrowUpIcon />
+            <IconPlaceholder
+              lucide="ArrowUpIcon"
+              tabler="IconArrowUp"
+              hugeicons="ArrowUp01Icon"
+            />
             <span className="sr-only">Send</span>
           </InputGroupButton>
         </InputGroupAddon>
@@ -1013,7 +1064,12 @@ function InputGroupDemo() {
         <InputGroupInput placeholder="@shadcn" />
         <InputGroupAddon align="inline-end">
           <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
-            <IconCheck className="size-3 text-white" />
+            <IconPlaceholder
+              lucide="CheckIcon"
+              tabler="IconCheck"
+              hugeicons="Tick02Icon"
+              className="size-3 text-white"
+            />
           </div>
         </InputGroupAddon>
       </InputGroup>
@@ -1032,16 +1088,18 @@ function ItemDemo() {
           </ItemDescription>
         </ItemContent>
         <ItemActions>
-          <Button size="sm">Enable</Button>
+          <Button size="sm" variant="secondary">
+            Enable
+          </Button>
         </ItemActions>
       </Item>
       <Item variant="outline" size="sm" asChild>
         <a href="#">
           <ItemMedia>
             <IconPlaceholder
-              lucide="CircleDashedIcon"
-              tabler="IconCircleDashed"
-              hugeicons="CongruentToCircleIcon"
+              lucide="ShoppingBagIcon"
+              tabler="IconShoppingBag"
+              hugeicons="ShoppingBasket01Icon"
               className="size-5"
             />
           </ItemMedia>
@@ -1077,13 +1135,17 @@ function SpinnerBadge() {
         <Spinner />
         Loading
       </Badge>
+      <Badge variant="link">
+        <Spinner />
+        Error
+      </Badge>
     </div>
   )
 }
 
 function SpinnerEmpty() {
   return (
-    <Empty className="w-full flex-0 border md:p-6">
+    <Empty className="w-full border">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <Spinner />

@@ -92,10 +92,10 @@ export default async function NewPage({
   return (
     <div
       data-slot="designer"
-      className="section-soft flex h-screen flex-1 flex-col"
+      className="bg-muted/50 flex h-screen flex-1 flex-col"
     >
       <Toolbar items={filteredItems} />
-      <div className="flex flex-1 gap-6 overflow-hidden p-6 pt-0">
+      <div className="flex flex-1 gap-5 overflow-hidden px-5 pb-4">
         <div className="overflow-y-auto">
           <Customizer />
         </div>

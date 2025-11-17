@@ -7,7 +7,6 @@ import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { Kbd, KbdGroup } from "@/registry/new-york-v4/ui/kbd"
 import {
   Popover,
   PopoverContent,
@@ -66,11 +65,8 @@ export function ItemPicker({
           variant="outline"
           className="w-72 justify-start rounded-lg border shadow-none"
         >
+          <IconSearch className="text-muted-foreground" />
           {currentItem?.title}
-          <KbdGroup className="ml-auto translate-x-1.5">
-            <Kbd className="border">⌘</Kbd>
-            <Kbd className="border">K</Kbd>
-          </KbdGroup>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="rounded-xl px-0" side="bottom" align="end">
@@ -79,7 +75,7 @@ export function ItemPicker({
           open={open}
           showSearch
         >
-          <CustomizerPickerGroup className="pb-3.5">
+          <CustomizerPickerGroup className="pb-px">
             {items.map((item) => (
               <CustomizerPickerItem
                 key={item.name}
@@ -93,6 +89,11 @@ export function ItemPicker({
           </CustomizerPickerGroup>
         </CustomizerPicker>
       </PopoverContent>
+      <div
+        data-open={open}
+        className="fixed inset-0 z-50 hidden bg-transparent data-[open=true]:block"
+        onClick={() => setOpen(false)}
+      />
     </Popover>
   )
 }
