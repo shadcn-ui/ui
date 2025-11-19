@@ -30,9 +30,33 @@ export const server = new Server(
   }
 )
 
+// Add error handler to catch and log server-level errors
+server.onerror = (error) => {
+  console.error("[MCP Server Error]:", error)
+  process.stderr.write(
+    `[MCP Server Error]: ${error instanceof Error ? error.message : String(error)}\n`
+  )
+}
+
+// Add handler for uncaught errors
+process.on("uncaughtException", (error) => {
+  console.error("[MCP Uncaught Exception]:", error)
+  process.stderr.write(
+    `[MCP Uncaught Exception]: ${error.message}\n`
+  )
+})
+
+process.on("unhandledRejection", (reason) => {
+  console.error("[MCP Unhandled Rejection]:", reason)
+  process.stderr.write(
+    `[MCP Unhandled Rejection]: ${reason instanceof Error ? reason.message : String(reason)}\n`
+  )
+})
+
 server.setRequestHandler(ListToolsRequestSchema, async () => {
-  return {
-    tools: [
+  try {
+    // Define tools array with proper validation
+    const tools = [
       {
         name: "get_project_registries",
         description:
@@ -141,15 +165,50 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           "After creating new components or generating new code files, use this tool for a quick checklist to verify that everything is working as expected. Make sure to run the tool after all required steps have been completed.",
         inputSchema: zodToJsonSchema(z.object({})),
       },
-    ],
+    ]
+
+    // Validate tools array
+    if (!Array.isArray(tools) || tools.length === 0) {
+      console.error("[MCP Error]: Tools array is empty or invalid")
+      throw new Error("Failed to register tools: tools array is empty")
+    }
+
+    // Validate each tool has required fields
+    for (const tool of tools) {
+      if (!tool.name || !tool.description || !tool.inputSchema) {
+        console.error(`[MCP Error]: Invalid tool definition: ${JSON.stringify(tool)}`)
+        throw new Error(`Invalid tool definition: missing required fields for tool ${tool.name || "unknown"}`)
+      }
+    }
+
+    console.error(`[MCP Debug]: Successfully registered ${tools.length} tools`)
+    
+    return {
+      tools,
+    }
+  } catch (error) {
+    console.error("[MCP Error]: Failed to list tools:", error)
+    process.stderr.write(
+      `[MCP Error]: Failed to list tools: ${error instanceof Error ? error.message : String(error)}\n`
+    )
+    // Return empty tools array on error to prevent server crash
+    // but log the error so it can be diagnosed
+    return {
+      tools: [],
+    }
   }
 })
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   try {
+    console.error(`[MCP Debug]: Tool call requested: ${request.params.name}`)
+    
     if (!request.params.arguments) {
+      console.error("[MCP Debug]: No tool arguments provided")
       throw new Error("No tool arguments provided.")
     }
+
+    console.error(`[MCP Debug]: Tool arguments: ${JSON.stringify(request.params.arguments)}`)
 
     switch (request.params.name) {
       case "get_project_registries": {
@@ -408,9 +467,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       default:
+        console.error(`[MCP Error]: Unknown tool: ${request.params.name}`)
         throw new Error(`Tool ${request.params.name} not found`)
     }
   } catch (error) {
+    console.error(`[MCP Error]: Tool execution failed for ${request.params?.name || "unknown"}:`, error)
     if (error instanceof z.ZodError) {
       return {
         content: [
