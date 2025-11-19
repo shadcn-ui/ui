@@ -1526,6 +1526,111 @@ DATABASE_URL=postgres://localhost:5432/mydb`,
       }
     `)
   })
+
+  test("should preserve 'use client' directive for universal item files (registry:file)", async () => {
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+    const result = await updateFiles(
+      [
+        {
+          path: "custom-component.tsx",
+          type: "registry:file",
+          target: "~/custom-component.tsx",
+          content: `"use client"
+
+export function CustomComponent() {
+  return <div>Custom Component</div>
+}`,
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    // Verify that the file was created
+    expect(result.filesCreated).toContain("custom-component.tsx")
+
+    // Read the written file and check if 'use client' is preserved
+    const writtenContent = (fs.writeFile as any).mock.calls.find((call: any) =>
+      call[0].endsWith("custom-component.tsx")
+    )?.[1]
+
+    expect(writtenContent).toContain('"use client"')
+  })
+
+  test("should preserve 'use client' directive for universal item files (registry:item)", async () => {
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+    const result = await updateFiles(
+      [
+        {
+          path: "universal-widget.tsx",
+          type: "registry:item",
+          target: "~/universal-widget.tsx",
+          content: `'use client'
+
+export function UniversalWidget() {
+  return <div>Universal Widget</div>
+}`,
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    // Verify that the file was created
+    expect(result.filesCreated).toContain("universal-widget.tsx")
+
+    // Read the written file and check if 'use client' is preserved
+    const writtenContent = (fs.writeFile as any).mock.calls.find((call: any) =>
+      call[0].endsWith("universal-widget.tsx")
+    )?.[1]
+
+    expect(writtenContent).toContain("'use client'")
+  })
+
+  test("should remove 'use client' directive for non-universal item files when rsc is false", async () => {
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+    const result = await updateFiles(
+      [
+        {
+          path: "registry/default/ui/regular-component.tsx",
+          type: "registry:ui",
+          content: `"use client"
+
+export function RegularComponent() {
+  return <div>Regular Component</div>
+}`,
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+
+    // Verify that the file was created (filesCreated contains relative paths)
+    expect(result.filesCreated.length).toBeGreaterThan(0)
+
+    // Read the written file and check if 'use client' was removed
+    const writtenContent = (fs.writeFile as any).mock.calls.find((call: any) =>
+      call[0].endsWith("regular-component.tsx")
+    )?.[1]
+
+    // The 'use client' should be removed by the RSC transformer
+    expect(writtenContent).not.toContain('"use client"')
+  })
 })
 
 describe("resolveModuleByProbablePath", () => {
