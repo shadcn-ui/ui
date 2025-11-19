@@ -116,7 +116,7 @@ export function ProductsTable({
       <div className="rounded-lg">
         <Table>
           <TableHeader className="bg-muted/50">
-            <TableRow className="!border-0">
+            <TableRow className="border-0!">
               <TableHead className="w-12 rounded-l-lg px-4">
                 <Checkbox />
               </TableHead>

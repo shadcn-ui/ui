@@ -22,7 +22,7 @@ export default function InputGroupTextExample() {
         <InputGroupAddon>
           <InputGroupText>https://</InputGroupText>
         </InputGroupAddon>
-        <InputGroupInput placeholder="example.com" className="!pl-0.5" />
+        <InputGroupInput placeholder="example.com" className="pl-0.5!" />
         <InputGroupAddon align="inline-end">
           <InputGroupText>.com</InputGroupText>
         </InputGroupAddon>
