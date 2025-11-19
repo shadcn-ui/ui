@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.5.1
+
+### Patch Changes
+
+- [#7557](https://github.com/shadcn-ui/ui/pull/7557) [`ad6a3c63678bb31dbfb94536ee1d4aa4f06a8b8d`](https://github.com/shadcn-ui/ui/commit/ad6a3c63678bb31dbfb94536ee1d4aa4f06a8b8d) Thanks [@remorses](https://github.com/remorses)! - Fix utils import transform when workspace alias does not start with @
+
 ## 3.5.0
 
 ### Minor Changes
