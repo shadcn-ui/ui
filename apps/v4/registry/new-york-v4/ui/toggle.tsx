@@ -38,6 +38,7 @@ function Toggle({
   return (
     <TogglePrimitive.Root
       data-slot="toggle"
+      tabIndex={0}
       className={cn(toggleVariants({ variant, size, className }))}
       {...props}
     />
