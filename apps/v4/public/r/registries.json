@@ -87,5 +87,6 @@
   "@hextaui": "https://hextaui.com/r/{name}.json",
   "@taki": "https://taki-ui.com/r/{name}.json",
   "@square-ui": "https://square.lndev.me/registry/{name}.json",
+  "@uicapsule": "https://uicapsule.com/r/{name}.json",
   "@uitripled": "https://ui.tripled.work/r/{name}.json"
 }
