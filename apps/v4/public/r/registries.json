@@ -29,6 +29,7 @@
   "@elevenlabs-ui": "https://ui.elevenlabs.io/r/{name}.json",
   "@fancy": "https://fancycomponents.dev/r/{name}.json",
   "@formcn": "https://formcn.dev/r/{name}.json",
+  "@gaia": "https://ui.heygaia.io/r/{name}.json",
   "@glass-ui": "https://glass-ui.crenspire.com/r/{name}.json",
   "@heseui": "https://www.heseui.com/r/{name}.json",
   "@hooks": "https://shadcn-hooks.vercel.app/r/{name}.json",
