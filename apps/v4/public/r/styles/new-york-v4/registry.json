@@ -284,8 +284,7 @@
       "name": "drawer",
       "type": "registry:ui",
       "dependencies": [
-        "vaul",
-        "@radix-ui/react-dialog"
+        "vaul"
       ],
       "files": [
         {
