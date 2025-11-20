@@ -46,3 +46,7 @@ next-env.d.ts
 .contentlayer
 .content-collections
 .source
+
+stories
+*storybook.log
+storybook-static
