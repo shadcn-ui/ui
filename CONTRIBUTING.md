@@ -68,6 +68,7 @@ git checkout -b my-new-branch
 
 ```bash
 pnpm install
+cp apps/v4/.env.example apps/v4/.env
 ```
 
 ### Run a workspace
@@ -79,7 +80,14 @@ You can use the `pnpm --filter=[WORKSPACE]` command to start the development pro
 1. To run the `ui.shadcn.com` website:
 
 ```bash
-pnpm --filter=v4 dev
+(
+  trap 'kill -9 0' SIGINT
+
+  pnpm --filter=shadcn dev &
+  pnpm --filter=v4 dev &
+
+  wait
+)
 ```
 
 2. To run the `shadcn` package:
