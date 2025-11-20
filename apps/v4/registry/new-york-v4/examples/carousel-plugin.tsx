@@ -14,7 +14,7 @@ import {
 
 export default function CarouselPlugin() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false })
+    Autoplay({ delay: 2000, stopOnInteraction: false, stopOnMouseEnter: true })
   )
 
   return (
