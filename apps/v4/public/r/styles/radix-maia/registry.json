@@ -365,29 +365,6 @@
       ]
     },
     {
-      "name": "form-example",
-      "type": "registry:example",
-      "title": "Form",
-      "registryDependencies": [
-        "button",
-        "calendar",
-        "checkbox",
-        "form",
-        "input",
-        "popover",
-        "radio-group",
-        "select",
-        "switch",
-        "textarea"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-maia/examples/form-example.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
       "name": "hover-card-example",
       "type": "registry:example",
       "title": "Hover Card",
@@ -1046,6 +1023,9 @@
       "dependencies": [
         "radix-ui"
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/radix-maia/ui/dialog.tsx",
@@ -1100,26 +1080,6 @@
       "files": [
         {
           "path": "registry/radix-maia/ui/field.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "form",
-      "type": "registry:ui",
-      "dependencies": [
-        "radix-ui",
-        "@hookform/resolvers",
-        "zod",
-        "react-hook-form"
-      ],
-      "registryDependencies": [
-        "button",
-        "label"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-maia/ui/form.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1336,6 +1296,9 @@
       "type": "registry:ui",
       "dependencies": [
         "radix-ui"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "files": [
         {

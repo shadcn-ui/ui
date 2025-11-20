@@ -16,6 +16,18 @@ import {
 } from "@/registry/bases/radix/ui/drawer"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
+export default function DrawerExample() {
+  return (
+    <div className="bg-background flex min-h-screen items-center justify-center p-4">
+      <div className="flex flex-wrap items-start gap-4">
+        <DrawerBottom />
+        <DrawerScrollableContent />
+        <DrawerDirections />
+      </div>
+    </div>
+  )
+}
+
 const data = [
   {
     goal: 400,
@@ -57,18 +69,6 @@ const data = [
     goal: 349,
   },
 ]
-
-export default function DrawerDemo() {
-  return (
-    <div className="bg-background min-h-screen p-4">
-      <div className="flex flex-wrap items-start gap-4">
-        <DrawerBottom />
-        <DrawerScrollableContent />
-        <DrawerDirections />
-      </div>
-    </div>
-  )
-}
 
 function DrawerBottom() {
   const [goal, setGoal] = React.useState(350)

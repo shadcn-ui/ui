@@ -66,6 +66,7 @@ export default function DialogExample() {
         <DialogWithForm />
         <DialogScrollableContent />
         <DialogWithStickyFooter />
+        <DialogNoCloseButton />
         <DialogChatSettings />
       </div>
     </div>
@@ -168,6 +169,30 @@ function DialogWithStickyFooter() {
             </p>
           ))}
         </div>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button variant="outline">Close</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+function DialogNoCloseButton() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">No Close Button</Button>
+      </DialogTrigger>
+      <DialogContent showCloseButton={false}>
+        <DialogHeader>
+          <DialogTitle>No Close Button</DialogTitle>
+          <DialogDescription>
+            This dialog doesn&apos;t have a close button in the top-right
+            corner. You can only close it using the button below.
+          </DialogDescription>
+        </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
             <Button variant="outline">Close</Button>

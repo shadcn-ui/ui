@@ -195,6 +195,7 @@ export const ui: Registry["items"] = [
     name: "dialog",
     type: "registry:ui",
     dependencies: ["radix-ui"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "ui/dialog.tsx",
@@ -241,18 +242,6 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/field.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "form",
-    type: "registry:ui",
-    dependencies: ["radix-ui", "@hookform/resolvers", "zod", "react-hook-form"],
-    registryDependencies: ["button", "label"],
-    files: [
-      {
-        path: "ui/form.tsx",
         type: "registry:ui",
       },
     ],
@@ -436,6 +425,7 @@ export const ui: Registry["items"] = [
     name: "sheet",
     type: "registry:ui",
     dependencies: ["radix-ui"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "ui/sheet.tsx",

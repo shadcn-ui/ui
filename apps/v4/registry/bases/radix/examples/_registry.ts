@@ -297,29 +297,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "form-example",
-    title: "Form",
-    type: "registry:example",
-    registryDependencies: [
-      "button",
-      "calendar",
-      "checkbox",
-      "form",
-      "input",
-      "popover",
-      "radio-group",
-      "select",
-      "switch",
-      "textarea",
-    ],
-    files: [
-      {
-        path: "examples/form-example.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "hover-card-example",
     title: "Hover Card",
     type: "registry:example",

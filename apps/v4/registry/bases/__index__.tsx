@@ -663,44 +663,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "form-example": {
-      name: "form-example",
-      title: "Form",
-      description: "",
-      type: "registry:example",
-      registryDependencies: [
-        "button",
-        "calendar",
-        "checkbox",
-        "form",
-        "input",
-        "popover",
-        "radio-group",
-        "select",
-        "switch",
-        "textarea",
-      ],
-      files: [
-        {
-          path: "registry/bases/radix/examples/form-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/radix/examples/form-example.tsx"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     "hover-card-example": {
       name: "hover-card-example",
       title: "Hover Card",
@@ -1941,7 +1903,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button"],
       files: [
         {
           path: "registry/bases/radix/ui/dialog.tsx",
@@ -2051,31 +2013,6 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/radix/ui/field.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    form: {
-      name: "form",
-      title: "undefined",
-      description: "",
-      type: "registry:ui",
-      registryDependencies: ["button", "label"],
-      files: [
-        {
-          path: "registry/bases/radix/ui/form.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/radix/ui/form.tsx")
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -2493,7 +2430,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button"],
       files: [
         {
           path: "registry/bases/radix/ui/sheet.tsx",
