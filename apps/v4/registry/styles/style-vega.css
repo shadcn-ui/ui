@@ -269,6 +269,35 @@
     }
   }
 
+  /* Dialog */
+  .cn-dialog-overlay {
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/50 duration-100 dark:bg-black/80;
+  }
+
+  .cn-dialog-content {
+    @apply bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 grid max-w-[calc(100%-2rem)] gap-4 rounded-lg border p-6 shadow-lg duration-100 sm:max-w-md;
+
+    .cn-dialog-close {
+      @apply absolute top-4 right-4;
+    }
+
+    .cn-dialog-header {
+      @apply gap-2 text-center sm:text-left;
+    }
+
+    .cn-dialog-footer {
+      @apply gap-2;
+    }
+
+    .cn-dialog-title {
+      @apply text-lg leading-none font-semibold;
+    }
+
+    .cn-dialog-description {
+      @apply text-muted-foreground text-sm;
+    }
+  }
+
   /* Empty */
   .cn-empty {
     @apply gap-6 rounded-lg border-dashed p-6;
