@@ -7,27 +7,23 @@ export const transformImport: Transformer = async ({
   config,
   isRemote,
 }) => {
-  const utilsAlias = config.aliases?.utils
-  const workspaceAlias =
-    typeof utilsAlias === "string" && utilsAlias.includes("/")
-      ? utilsAlias.split("/")[0]
-      : "@"
-  const utilsImport = `${workspaceAlias}/lib/utils`
-
   if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
     return sourceFile
   }
 
   for (const specifier of sourceFile.getImportStringLiterals()) {
-    const updated = updateImportAliases(
-      specifier.getLiteralValue(),
-      config,
-      isRemote
-    )
+    const original = specifier.getLiteralValue()
+    const updated = updateImportAliases(original, config, isRemote)
     specifier.setLiteralValue(updated)
 
-    // Replace `import { cn } from "@/lib/utils"`
-    if (utilsImport === updated || updated === "@/lib/utils") {
+    // Replace `import { cn } from "@/lib/utils"` or registry lib/utils imports
+    // with the configured utils alias.
+    // We check if the original import was from a utils location that should be transformed.
+    const isUtilsImport =
+      original === "@/lib/utils" ||
+      original.match(/^@\/registry\/(.+)\/lib\/utils$/)
+
+    if (isUtilsImport) {
       const importDeclaration = specifier.getFirstAncestorByKind(
         SyntaxKind.ImportDeclaration
       )
@@ -39,11 +35,7 @@ export const transformImport: Transformer = async ({
         continue
       }
 
-      specifier.setLiteralValue(
-        utilsImport === updated
-          ? updated.replace(utilsImport, config.aliases.utils)
-          : config.aliases.utils
-      )
+      specifier.setLiteralValue(config.aliases.utils)
     }
   }
 
