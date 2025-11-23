@@ -8,5 +8,8 @@
     "<node_internals>/**",
     "**/node_modules/**",
     "**/fixtures/**"
-  ]
+  ],
+  "files.exclude": {
+    "deprecated": true
+  }
 }

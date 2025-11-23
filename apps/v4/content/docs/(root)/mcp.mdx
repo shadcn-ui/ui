@@ -28,6 +28,7 @@ Select your MCP client and follow the instructions to configure the shadcn MCP s
     <TabsTrigger value="claude">Claude Code</TabsTrigger>
     <TabsTrigger value="cursor">Cursor</TabsTrigger>
     <TabsTrigger value="vscode">VS Code</TabsTrigger>
+    <TabsTrigger value="codex">Codex</TabsTrigger>
   </TabsList>
   <TabsContent value="claude" className="mt-4">
     **Run the following command** in your project:
@@ -64,6 +65,31 @@ Select your MCP client and follow the instructions to configure the shadcn MCP s
        ```
 
     Open `.vscode/mcp.json` and click **Start** next to the shadcn server. Then try the following prompts with GitHub Copilot:
+       - Show me all available components in the shadcn registry
+       - Add the button, dialog and card components to my project
+       - Create a contact form using components from the shadcn registry
+
+  </TabsContent>
+
+  <TabsContent value="codex" className="mt-4">
+    <Callout className="mt-0">
+      **Note:** The `shadcn` CLI cannot automatically update `~/.codex/config.toml`.
+      You'll need to add the configuration manually for Codex.
+    </Callout>
+
+    **Run the following command** in your project:
+       ```bash
+       npx shadcn@latest mcp init --client codex
+       ```
+
+    **Then, add the following configuration** to `~/.codex/config.toml`:
+       ```toml
+       [mcp_servers.shadcn]
+       command = "npx"
+       args = ["shadcn@latest", "mcp"]
+       ```
+
+    **Restart Codex** and try the following prompts:
        - Show me all available components in the shadcn registry
        - Add the button, dialog and card components to my project
        - Create a contact form using components from the shadcn registry
@@ -168,6 +194,23 @@ To configure MCP in VS Code with GitHub Copilot, add the shadcn server to your p
 After adding the configuration, open `.vscode/mcp.json` and click **Start** next to the shadcn server.
 
 See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for more details.
+
+### Codex
+
+<Callout>
+  **Note:** The `shadcn` CLI cannot automatically update `~/.codex/config.toml`.
+  You'll need to add the configuration manually.
+</Callout>
+
+To configure MCP in Codex, add the shadcn server to `~/.codex/config.toml`:
+
+```toml title="~/.codex/config.toml" showLineNumbers
+[mcp_servers.shadcn]
+command = "npx"
+args = ["shadcn@latest", "mcp"]
+```
+
+After adding the configuration, restart Codex to load the MCP server.
 
 ---
 

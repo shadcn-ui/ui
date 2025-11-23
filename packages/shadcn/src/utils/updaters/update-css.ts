@@ -338,6 +338,10 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
                 }
               }
             }
+          }
+          // Handle at-property as regular CSS rules
+          else if (name === "property") {
+            processRule(root, selector, properties)
           } else {
             // Handle other at-rules normally
             processAtRule(root, name, params, properties)

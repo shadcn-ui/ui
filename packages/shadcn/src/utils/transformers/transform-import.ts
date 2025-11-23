@@ -7,8 +7,12 @@ export const transformImport: Transformer = async ({
   config,
   isRemote,
 }) => {
-  const workspaceAlias = config.aliases?.utils?.split("/")[0]?.slice(1)
-  const utilsImport = `@${workspaceAlias}/lib/utils`
+  const utilsAlias = config.aliases?.utils
+  const workspaceAlias =
+    typeof utilsAlias === "string" && utilsAlias.includes("/")
+      ? utilsAlias.split("/")[0]
+      : "@"
+  const utilsImport = `${workspaceAlias}/lib/utils`
 
   if (![".tsx", ".ts", ".jsx", ".js"].includes(sourceFile.getExtension())) {
     return sourceFile
@@ -31,7 +35,9 @@ export const transformImport: Transformer = async ({
         ?.getNamedImports()
         .some((namedImport) => namedImport.getName() === "cn")
 
-      if (!isCnImport) continue
+      if (!isCnImport || !config.aliases.utils) {
+        continue
+      }
 
       specifier.setLiteralValue(
         utilsImport === updated

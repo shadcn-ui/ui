@@ -3,7 +3,6 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
-import { CardsDemo } from "@/components/cards"
 import { ExamplesNav } from "@/components/examples-nav"
 import {
   PageActions,
@@ -14,6 +13,8 @@ import {
 import { PageNav } from "@/components/page-nav"
 import { ThemeSelector } from "@/components/theme-selector"
 import { Button } from "@/registry/new-york-v4/ui/button"
+
+import { RootComponents } from "./components"
 
 const title = "The Foundation for your Design System"
 const description =
@@ -87,7 +88,7 @@ export default function IndexPage() {
             />
           </section>
           <section className="theme-container hidden md:block">
-            <CardsDemo />
+            <RootComponents />
           </section>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
+import { type Style } from "@/registry/styles"
 
 export async function ComponentSource({
   name,
@@ -16,12 +17,14 @@ export async function ComponentSource({
   language,
   collapsible = true,
   className,
+  styleName = "new-york-v4",
 }: React.ComponentProps<"div"> & {
   name?: string
   src?: string
   title?: string
   language?: string
   collapsible?: boolean
+  styleName?: Style["name"]
 }) {
   if (!name && !src) {
     return null
@@ -30,7 +33,7 @@ export async function ComponentSource({
   let code: string | undefined
 
   if (name) {
-    const item = await getRegistryItem(name)
+    const item = await getRegistryItem(name, styleName)
     code = item?.files?.[0]?.content
   }
 
@@ -42,6 +45,14 @@ export async function ComponentSource({
   if (!code) {
     return null
   }
+
+  // Fix imports.
+  // Replace @/registry/${style}/ with @/components/.
+  code = code.replaceAll(`@/registry/${styleName}/`, "@/components/")
+
+  // Replace export default with export.
+  code = code.replaceAll("export default", "export")
+  code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
 
   const lang = language ?? title?.split(".").pop() ?? "tsx"
   const highlightedCode = await highlightCode(code, lang)
