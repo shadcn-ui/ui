@@ -17,12 +17,14 @@ import { CopyCodeButton } from "./theme-customizer"
 export function ThemeSelector({ className }: React.ComponentProps<"div">) {
   const { activeTheme, setActiveTheme } = useThemeConfig()
 
+  const value = activeTheme === "default" ? "neutral" : activeTheme
+
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <Label htmlFor="theme-selector" className="sr-only">
         Theme
       </Label>
-      <Select value={activeTheme} onValueChange={setActiveTheme}>
+      <Select value={value} onValueChange={setActiveTheme}>
         <SelectTrigger
           id="theme-selector"
           size="sm"
@@ -38,12 +40,12 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
               value={theme.name}
               className="data-[state=checked]:opacity-50"
             >
-              {theme.label === "Neutral" ? "Default" : theme.label}
+              {theme.label}
             </SelectItem>
           ))}
         </SelectContent>
       </Select>
-      <CopyCodeButton variant="secondary" size="sm" />
+      <CopyCodeButton variant="secondary" size="icon-sm" />
     </div>
   )
 }
