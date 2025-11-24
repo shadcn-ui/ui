@@ -22,8 +22,8 @@ COPY apps/v4/package.json apps/v4/
 # If you have other apps/packages with postinstall/build hooks required for dependency graph,
 # add their package.json similarly above to warm the install cache.
 
-RUN pnpm fetch \
-    && pnpm install --no-frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+    pnpm install --frozen-lockfile
 
 # 2) Build the app
 FROM base AS builder
