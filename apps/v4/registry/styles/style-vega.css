@@ -564,7 +564,7 @@
   }
 
   .cn-field-label {
-    @apply gap-2 group-data-[disabled=true]/field:opacity-50;
+    @apply gap-2 whitespace-nowrap group-data-[disabled=true]/field:opacity-50;
     @apply has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-4;
     @apply has-data-[state=checked]:bg-primary/5 has-data-[state=checked]:border-primary dark:has-data-[state=checked]:bg-primary/10;
   }
@@ -742,12 +742,12 @@
     @apply bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 rounded-md px-4 py-2 text-sm font-medium transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:opacity-50;
   }
 
-  .cn-navigation-menu-content {
-    @apply data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 p-2 pr-2.5 group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-md group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:duration-200;
+  .cn-navigation-menu-trigger-icon {
+    @apply relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180;
+  }
 
-    [data-slot="navigation-menu-link"] {
-      @apply group-data-[viewport=false]/navigation-menu:focus:ring-0 group-data-[viewport=false]/navigation-menu:focus:outline-none;
-    }
+  .cn-navigation-menu-content {
+    @apply data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 p-2 pr-2.5 group-data-[viewport=false]/navigation-menu:rounded-md group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:duration-200;
   }
 
   .cn-navigation-menu-viewport {
@@ -764,5 +764,43 @@
 
   .cn-navigation-menu-indicator-arrow {
     @apply bg-border rounded-tl-sm shadow-md;
+  }
+
+  /* Pagination */
+  .cn-pagination {
+    @apply mx-auto flex w-full justify-center;
+  }
+
+  .cn-pagination-content {
+    @apply flex flex-row items-center gap-1;
+  }
+
+  .cn-pagination-previous {
+    @apply gap-1 px-2.5 sm:pl-2.5;
+  }
+
+  .cn-pagination-previous-text {
+    @apply hidden sm:block;
+  }
+
+  .cn-pagination-next {
+    @apply gap-1 px-2.5 sm:pr-2.5;
+  }
+
+  .cn-pagination-next-text {
+    @apply hidden sm:block;
+  }
+
+  .cn-pagination-ellipsis {
+    @apply flex size-9 items-center justify-center;
+  }
+
+  .cn-pagination-ellipsis-icon {
+    @apply size-4;
+  }
+
+  /* Popover */
+  .cn-popover-content {
+    @apply bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden;
   }
 }

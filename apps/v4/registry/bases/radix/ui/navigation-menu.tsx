@@ -75,10 +75,10 @@ function NavigationMenuTrigger({
     >
       {children}{" "}
       <IconPlaceholder
-        lucide="CircleDashedIcon"
-        tabler="IconCircleDashed"
-        hugeicons="DashedLineCircleIcon"
-        className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+        lucide="ChevronDownIcon"
+        tabler="IconChevronDown"
+        hugeicons="ArrowDown01Icon"
+        className="cn-navigation-menu-trigger-icon"
         aria-hidden="true"
       />
     </NavigationMenuPrimitive.Trigger>
@@ -93,7 +93,7 @@ function NavigationMenuContent({
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
       className={cn(
-        "cn-navigation-menu-content top-0 left-0 w-full md:absolute md:w-auto",
+        "cn-navigation-menu-content top-0 left-0 w-full group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none md:absolute md:w-auto",
         className
       )}
       {...props}
