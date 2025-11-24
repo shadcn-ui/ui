@@ -94,7 +94,7 @@
 
   /* Button */
   .cn-button {
-    @apply gap-2 rounded-xl border border-transparent bg-clip-padding text-sm font-medium inset-shadow-2xs inset-shadow-white/25 [&_svg:not([class*='size-'])]:size-4;
+    @apply gap-2 rounded-lg border border-transparent bg-clip-padding text-sm font-medium inset-shadow-2xs inset-shadow-white/25 [&_svg:not([class*='size-'])]:size-4;
 
     /* Variant */
     &.cn-button-variant-default {
@@ -337,12 +337,191 @@
     }
   }
 
+  /* Field */
+  .cn-field-set {
+    @apply gap-6 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3;
+  }
+
+  .cn-field-legend {
+    @apply mb-3 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base;
+  }
+
+  .cn-field-group {
+    @apply gap-5 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-4;
+  }
+
+  .cn-field {
+    @apply data-[invalid=true]:text-destructive gap-3;
+  }
+
+  .cn-field-content {
+    @apply gap-1.5;
+  }
+
+  .cn-field-label {
+    @apply has-data-[state=checked]:bg-primary/5 has-data-[state=checked]:border-primary dark:has-data-[state=checked]:bg-primary/10 gap-2 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-2;
+  }
+
+  .cn-field-title {
+    @apply gap-2 text-sm font-medium group-data-[disabled=true]/field:opacity-50;
+  }
+
+  .cn-field-description {
+    @apply text-muted-foreground text-sm [[data-variant=legend]+&]:-mt-1.5;
+  }
+
+  .cn-field-separator {
+    @apply -my-2 h-5 text-sm group-data-[variant=outline]/field-group:-mb-2;
+  }
+
+  .cn-field-separator-content {
+    @apply text-muted-foreground px-2;
+  }
+
+  .cn-field-error {
+    @apply text-destructive text-sm;
+  }
+
+  /* Input */
   .cn-input {
     @apply bg-input/30 border-input h-9 rounded-lg border px-2.5 text-base transition-colors file:h-7 file:text-sm file:font-medium md:text-sm;
   }
 
+  /* Item */
+  .cn-item {
+    @apply rounded-md border text-sm;
+
+    /* Variant */
+    &.cn-item-variant-default {
+      @apply border-transparent;
+    }
+
+    &.cn-item-variant-outline {
+      @apply border-border;
+    }
+
+    &.cn-item-variant-muted {
+      @apply bg-muted/50;
+    }
+
+    /* Size */
+    &.cn-item-size-default {
+      @apply gap-4 p-4;
+    }
+
+    &.cn-item-size-sm {
+      @apply gap-2.5 px-4 py-3;
+    }
+
+    .cn-item-media {
+      @apply gap-2 group-has-[[data-slot=item-description]]/item:translate-y-0.5 group-has-[[data-slot=item-description]]/item:self-start;
+
+      &.cn-item-media-variant-default {
+        @apply bg-transparent;
+      }
+
+      &.cn-item-media-variant-icon {
+        @apply bg-muted size-8 rounded-sm border [&_svg:not([class*='size-'])]:size-4;
+      }
+
+      &.cn-item-media-variant-image {
+        @apply size-10 overflow-hidden rounded-sm [&_img]:size-full [&_img]:object-cover;
+      }
+    }
+
+    .cn-item-content {
+      @apply gap-1;
+    }
+
+    .cn-item-title {
+      @apply gap-2 text-sm leading-snug font-medium;
+    }
+
+    .cn-item-description {
+      @apply text-muted-foreground [&>a:hover]:text-primary text-sm leading-normal [&>a]:underline [&>a]:underline-offset-4;
+    }
+
+    .cn-item-actions {
+      @apply gap-2;
+    }
+
+    .cn-item-header {
+      @apply gap-2;
+    }
+
+    .cn-item-footer {
+      @apply gap-2;
+    }
+  }
+
+  .cn-item-group {
+    @apply gap-6;
+  }
+
+  .cn-item-separator {
+    @apply -my-2;
+  }
+
+  /* Textarea */
   .cn-textarea {
     @apply bg-input/30 border-input rounded-lg border px-3 py-2 text-base transition-colors md:text-sm;
+  }
+
+  /* Input Group */
+  .cn-input-group {
+    @apply border-input bg-input/30 has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 h-9 rounded-lg border transition-colors has-[[class*=cn-input-group-addon-align-block-end]]:h-auto has-[[class*=cn-input-group-addon-align-block-start]]:h-auto has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[>textarea]:h-auto has-[[class*=cn-input-group-addon-align-block-end]]:[&>input]:pt-3 has-[[class*=cn-input-group-addon-align-block-start]]:[&>input]:pb-3 has-[[class*=cn-input-group-addon-align-inline-end]]:[&>input]:pr-2 has-[[class*=cn-input-group-addon-align-inline-start]]:[&>input]:pl-2;
+
+    .cn-input-group-addon {
+      @apply text-muted-foreground h-auto gap-2 py-1.5 text-sm font-medium group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4;
+
+      &.cn-input-group-addon-align-inline-start {
+        @apply pl-3 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem];
+      }
+
+      &.cn-input-group-addon-align-inline-end {
+        @apply pr-3 has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem];
+      }
+
+      &.cn-input-group-addon-align-block-start {
+        @apply px-3 pt-3 group-has-[>input]/input-group:pt-2.5 [.border-b]:pb-3;
+      }
+
+      &.cn-input-group-addon-align-block-end {
+        @apply px-3 pb-3 group-has-[>input]/input-group:pb-2.5 [.border-t]:pt-3;
+      }
+    }
+
+    .cn-input-group-button {
+      @apply gap-2 text-sm inset-shadow-none;
+
+      &.cn-input-group-button-size-xs {
+        @apply h-6 gap-1 rounded-[calc(var(--radius)-3px)] px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5;
+      }
+
+      &.cn-input-group-button-size-sm {
+        @apply h-8 gap-1.5 rounded-md px-2.5 has-[>svg]:px-2.5;
+      }
+
+      &.cn-input-group-button-size-icon-xs {
+        @apply size-6 rounded-[calc(var(--radius)-3px)] p-0 has-[>svg]:p-0;
+      }
+
+      &.cn-input-group-button-size-icon-sm {
+        @apply size-8 p-0 has-[>svg]:p-0;
+      }
+    }
+
+    .cn-input-group-text {
+      @apply text-muted-foreground gap-2 text-sm [&_svg:not([class*='size-'])]:size-4;
+    }
+
+    .cn-input-group-input {
+      @apply bg-transparent dark:bg-transparent;
+    }
+
+    .cn-input-group-textarea {
+      @apply bg-transparent dark:bg-transparent;
+    }
   }
 
   /* Select */

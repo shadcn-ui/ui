@@ -1,20 +1,6 @@
-import * as React from "react"
 import Image from "next/image"
-import { IconChevronRight, IconDownload } from "@tabler/icons-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
 import { Button } from "@/registry/bases/radix/ui/button"
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldLabel,
-  FieldTitle,
-} from "@/registry/bases/radix/ui/field"
 import {
   Item,
   ItemActions,
@@ -27,385 +13,1403 @@ import {
   ItemSeparator,
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
-import { Progress } from "@/registry/bases/radix/ui/progress"
-import { Spinner } from "@/registry/bases/radix/ui/spinner"
+import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-const people = [
-  {
-    username: "shadcn",
-    avatar: "https://github.com/shadcn.png",
-    message: "Just shipped a component that fixes itself",
-  },
-  {
-    username: "pranathip",
-    avatar: "https://github.com/pranathip.png",
-    message: "My code is so clean, it does its own laundry",
-  },
-  {
-    username: "evilrabbit",
-    avatar: "https://github.com/evilrabbit.png",
-    message:
-      "Debugging is like being a detective in a crime movie where you're also the murderer",
-  },
-  {
-    username: "maxleiter",
-    avatar: "https://github.com/maxleiter.png",
-    message:
-      "I don't always test my code, but when I do, I test it in production",
-  },
-]
-
-const music = [
-  {
-    title: "Midnight City Lights",
-    artist: "Neon Dreams",
-    album: "Electric Nights",
-    duration: "3:45",
-  },
-  {
-    title: "Coffee Shop Conversations",
-    artist: "The Morning Brew",
-    album: "Urban Stories",
-    duration: "4:05",
-  },
-  {
-    title: "Digital Rain",
-    artist: "Cyber Symphony",
-    album: "Binary Beats",
-    duration: "3:30",
-  },
-  {
-    title: "Sunset Boulevard",
-    artist: "Golden Hour",
-    album: "California Dreams",
-    duration: "3:55",
-  },
-  {
-    title: "Neon Sign Romance",
-    artist: "Retro Wave",
-    album: "80s Forever",
-    duration: "4:10",
-  },
-  {
-    title: "Ocean Depths",
-    artist: "Deep Blue",
-    album: "Underwater Symphony",
-    duration: "3:40",
-  },
-  {
-    title: "Space Station Alpha",
-    artist: "Cosmic Explorers",
-    album: "Galactic Journey",
-    duration: "3:50",
-  },
-  {
-    title: "Forest Whispers",
-    artist: "Nature's Choir",
-    album: "Woodland Tales",
-    duration: "3:35",
-  },
-]
-
-const issues = [
-  {
-    number: 1247,
-    date: "March 15, 2024",
-    title:
-      "Button component doesn't respect disabled state when using custom variants",
-    description:
-      "When applying custom variants to the Button component, the disabled prop is ignored and the button remains clickable. This affects accessibility and user experience.",
-  },
-  {
-    number: 892,
-    date: "February 8, 2024",
-    title: "Dialog component causes scroll lock on mobile devices",
-    description:
-      "The Dialog component prevents scrolling on the background content but doesn't restore scroll position properly on mobile Safari and Chrome, causing layout shifts.",
-  },
-  {
-    number: 1156,
-    date: "January 22, 2024",
-    title: "TypeScript errors with Select component in strict mode",
-    description:
-      "Using the Select component with TypeScript strict mode enabled throws type errors related to generic constraints and value prop typing.",
-  },
-  {
-    number: 734,
-    date: "December 3, 2023",
-    title: "Dark mode toggle causes flash of unstyled content",
-    description:
-      "When switching between light and dark themes, there's a brief moment where components render with incorrect styling before the theme transition completes.",
-  },
-  {
-    number: 1389,
-    date: "April 2, 2024",
-    title: "Form validation messages overlap with floating labels",
-    description:
-      "Error messages in Form components with floating labels appear underneath the label text, making them difficult to read. Need better positioning logic for validation feedback.",
-  },
-]
-
-export default function ItemDemo() {
+export default function ItemExample() {
   return (
-    <div className="bg-background min-h-screen p-4">
-      <div className="@container w-full">
-        <div className="flex flex-wrap gap-6 2xl:gap-12">
-          <div className="flex max-w-sm flex-col gap-6">
-            <Item>
-              <ItemContent>
-                <ItemTitle>Item Title</ItemTitle>
-              </ItemContent>
-              <ItemActions>
-                <Button variant="outline">Button</Button>
-              </ItemActions>
-            </Item>
-            <Item variant="outline">
-              <ItemContent>
-                <ItemTitle>Item Title</ItemTitle>
-              </ItemContent>
-              <ItemActions>
-                <Button variant="outline">Button</Button>
-              </ItemActions>
-            </Item>
-            <Item>
-              <ItemContent>
-                <ItemTitle>Item Title</ItemTitle>
-                <ItemDescription>Item Description</ItemDescription>
-              </ItemContent>
-              <ItemActions>
-                <Button variant="outline">Button</Button>
-              </ItemActions>
-            </Item>
-            <Item variant="outline">
-              <ItemContent>
-                <ItemTitle>Item Title</ItemTitle>
-                <ItemDescription>Item Description</ItemDescription>
-              </ItemContent>
-            </Item>
-            <Item variant="muted">
-              <ItemContent>
-                <ItemTitle>Item Title</ItemTitle>
-                <ItemDescription>Item Description</ItemDescription>
-              </ItemContent>
-            </Item>
-            <Item variant="muted">
-              <ItemContent>
-                <ItemTitle>Item Title</ItemTitle>
-                <ItemDescription>Item Description</ItemDescription>
-              </ItemContent>
-              <ItemActions>
-                <Button variant="outline">Button</Button>
-                <Button variant="outline">Button</Button>
-              </ItemActions>
-            </Item>
-            <Item variant="outline">
-              <ItemMedia variant="icon">
-                <IconPlaceholder
-                  lucide="CircleDashedIcon"
-                  tabler="IconCircleDashed"
-                  hugeicons="DashedLineCircleIcon"
-                />
-              </ItemMedia>
-              <ItemContent>
-                <ItemTitle>Item Title</ItemTitle>
-              </ItemContent>
-              <ItemActions>
-                <Button size="sm">Purchase</Button>
-              </ItemActions>
-            </Item>
-            <Item variant="muted">
-              <ItemMedia variant="icon">
-                <IconPlaceholder
-                  lucide="CircleDashedIcon"
-                  tabler="IconCircleDashed"
-                  hugeicons="DashedLineCircleIcon"
-                />
-              </ItemMedia>
-              <ItemContent>
-                <ItemTitle>Item Title</ItemTitle>
-                <ItemDescription>Item Description</ItemDescription>
-              </ItemContent>
-              <ItemActions>
-                <Button size="sm">Upgrade</Button>
-              </ItemActions>
-            </Item>
-            <FieldLabel>
-              <Field orientation="horizontal">
-                <FieldContent>
-                  <FieldTitle>Field Title</FieldTitle>
-                  <FieldDescription>Field Description</FieldDescription>
-                </FieldContent>
-                <Button variant="outline">Button</Button>
-              </Field>
-            </FieldLabel>
-          </div>
-          <div className="flex max-w-sm flex-col gap-6">
-            <ItemGroup>
-              {people.map((person, index) => (
-                <React.Fragment key={person.username}>
-                  <Item>
-                    <ItemMedia>
-                      <Avatar>
-                        <AvatarImage src={person.avatar} />
-                        <AvatarFallback>
-                          {person.username.charAt(0)}
-                        </AvatarFallback>
-                      </Avatar>
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>{person.username}</ItemTitle>
-                      <ItemDescription>{person.message}</ItemDescription>
-                    </ItemContent>
-                    <ItemActions>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="size-8 rounded-full"
-                      >
-                        <IconPlaceholder
-                          lucide="CircleDashedIcon"
-                          tabler="IconCircleDashed"
-                          hugeicons="DashedLineCircleIcon"
-                        />
-                      </Button>
-                    </ItemActions>
-                  </Item>
-                  {index !== people.length - 1 && <ItemSeparator />}
-                </React.Fragment>
-              ))}
-            </ItemGroup>
-            <Item variant="outline">
-              <ItemMedia>
-                <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
-                  <Avatar>
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="@shadcn"
-                    />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                  <Avatar>
-                    <AvatarImage
-                      src="https://github.com/maxleiter.png"
-                      alt="@maxleiter"
-                    />
-                    <AvatarFallback>LR</AvatarFallback>
-                  </Avatar>
-                  <Avatar>
-                    <AvatarImage
-                      src="https://github.com/evilrabbit.png"
-                      alt="@evilrabbit"
-                    />
-                    <AvatarFallback>ER</AvatarFallback>
-                  </Avatar>
-                </div>
-              </ItemMedia>
-              <ItemContent>
-                <ItemTitle>Design Department</ItemTitle>
-                <ItemDescription>
-                  Meet our team of designers, engineers, and researchers.
-                </ItemDescription>
-              </ItemContent>
-              <ItemActions className="self-start">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="size-8 rounded-full"
-                >
-                  <IconChevronRight />
-                </Button>
-              </ItemActions>
-            </Item>
-            <Item variant="outline">
-              <ItemHeader>Your download has started.</ItemHeader>
-              <ItemMedia variant="icon">
-                <Spinner />
-              </ItemMedia>
-              <ItemContent>
-                <ItemTitle>Downloading...</ItemTitle>
-                <ItemDescription>129 MB / 1000 MB</ItemDescription>
-              </ItemContent>
-              <ItemActions>
-                <Button variant="outline" size="sm">
-                  Cancel
-                </Button>
-              </ItemActions>
-              <ItemFooter>
-                <Progress value={50} />
-              </ItemFooter>
-            </Item>
-          </div>
-          <div className="flex max-w-lg flex-col gap-6">
-            <ItemGroup className="gap-4">
-              {music.map((song) => (
-                <Item
-                  key={song.title}
-                  variant="outline"
-                  asChild
-                  role="listitem"
-                >
-                  <a href="#">
-                    <ItemMedia variant="image">
-                      <Image
-                        src={`https://avatar.vercel.sh/${song.title}`}
-                        alt={song.title}
-                        width={32}
-                        height={32}
-                        className="grayscale"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle className="line-clamp-1">
-                        {song.title} -{" "}
-                        <span className="text-muted-foreground">
-                          {song.album}
-                        </span>
-                      </ItemTitle>
-                      <ItemDescription>{song.artist}</ItemDescription>
-                    </ItemContent>
-                    <ItemContent className="flex-none text-center">
-                      <ItemDescription>{song.duration}</ItemDescription>
-                    </ItemContent>
-                    <ItemActions>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="size-8 rounded-full"
-                        aria-label="Download"
-                      >
-                        <IconDownload />
-                      </Button>
-                    </ItemActions>
-                  </a>
-                </Item>
-              ))}
-            </ItemGroup>
-          </div>
-          <div className="flex max-w-lg flex-col gap-6">
-            <ItemGroup>
-              {issues.map((issue) => (
-                <React.Fragment key={issue.number}>
-                  <Item asChild className="rounded-none">
-                    <a href="#">
-                      <ItemContent>
-                        <ItemTitle className="line-clamp-1">
-                          {issue.title}
-                        </ItemTitle>
-                        <ItemDescription>{issue.description}</ItemDescription>
-                      </ItemContent>
-                      <ItemContent className="self-start">
-                        #{issue.number}
-                      </ItemContent>
-                    </a>
-                  </Item>
-                  <ItemSeparator />
-                </React.Fragment>
-              ))}
-            </ItemGroup>
-          </div>
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="w-full">
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
+          <DefaultVariantItems />
+          <OutlineVariantItems />
+          <MutedVariantItems />
+          <DefaultVariantItemsSmall />
+          <OutlineVariantItemsSmall />
+          <MutedVariantItemsSmall />
+          <DefaultLinkItems />
+          <OutlineLinkItems />
+          <MutedLinkItems />
+          <DefaultItemGroup />
+          <OutlineItemGroup />
+          <MutedItemGroup />
+          <ItemHeaderExamples />
+          <ItemFooterExamples />
+          <ItemHeaderAndFooterExamples />
+          <DefaultVariantItemsWithImage />
+          <OutlineVariantItemsWithImage />
+          <MutedVariantItemsWithImage />
         </div>
       </div>
     </div>
+  )
+}
+
+function DefaultVariantItems() {
+  return (
+    <Frame title="variant=default">
+      <Item>
+        <ItemContent>
+          <ItemTitle>Title Only</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item>
+        <ItemContent>
+          <ItemTitle>Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item>
+        <ItemContent>
+          <ItemTitle>Title + Description</ItemTitle>
+          <ItemDescription>
+            This is a description that provides additional context.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item>
+        <ItemContent>
+          <ItemTitle>Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            This item includes a title, description, and action button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item>
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item>
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item>
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description</ItemTitle>
+          <ItemDescription>
+            This item includes media, title, and description.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item>
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            Complete item with all components: media, title, description, and
+            button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item>
+        <ItemContent>
+          <ItemTitle>Multiple Actions</ItemTitle>
+          <ItemDescription>
+            Item with multiple action buttons in the actions area.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Cancel
+          </Button>
+          <Button size="sm">Confirm</Button>
+        </ItemActions>
+      </Item>
+    </Frame>
+  )
+}
+
+function OutlineVariantItems() {
+  return (
+    <Frame title="variant=outline">
+      <Item variant="outline">
+        <ItemContent>
+          <ItemTitle>Title Only</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item variant="outline">
+        <ItemContent>
+          <ItemTitle>Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline">
+        <ItemContent>
+          <ItemTitle>Title + Description</ItemTitle>
+          <ItemDescription>
+            This is a description that provides additional context.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="outline">
+        <ItemContent>
+          <ItemTitle>Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            This item includes a title, description, and action button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item variant="outline">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description</ItemTitle>
+          <ItemDescription>
+            This item includes media, title, and description.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="outline">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            Complete item with all components: media, title, description, and
+            button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline">
+        <ItemContent>
+          <ItemTitle>Multiple Actions</ItemTitle>
+          <ItemDescription>
+            Item with multiple action buttons in the actions area.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Cancel
+          </Button>
+          <Button size="sm">Confirm</Button>
+        </ItemActions>
+      </Item>
+    </Frame>
+  )
+}
+
+function MutedVariantItems() {
+  return (
+    <Frame title="variant=muted">
+      <Item variant="muted">
+        <ItemContent>
+          <ItemTitle>Title Only</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item variant="muted">
+        <ItemContent>
+          <ItemTitle>Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="muted">
+        <ItemContent>
+          <ItemTitle>Title + Description</ItemTitle>
+          <ItemDescription>
+            This is a description that provides additional context.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="muted">
+        <ItemContent>
+          <ItemTitle>Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            This item includes a title, description, and action button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="muted">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item variant="muted">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="muted">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description</ItemTitle>
+          <ItemDescription>
+            This item includes media, title, and description.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="muted">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            Complete item with all components: media, title, description, and
+            button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="muted">
+        <ItemContent>
+          <ItemTitle>Multiple Actions</ItemTitle>
+          <ItemDescription>
+            Item with multiple action buttons in the actions area.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Cancel
+          </Button>
+          <Button size="sm">Confirm</Button>
+        </ItemActions>
+      </Item>
+    </Frame>
+  )
+}
+
+function DefaultVariantItemsSmall() {
+  return (
+    <Frame title="size=sm">
+      <Item size="sm">
+        <ItemContent>
+          <ItemTitle>Title Only</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item size="sm">
+        <ItemContent>
+          <ItemTitle>Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Action
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item size="sm">
+        <ItemContent>
+          <ItemTitle>Title + Description</ItemTitle>
+          <ItemDescription>
+            This is a description that provides additional context.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item size="sm">
+        <ItemContent>
+          <ItemTitle>Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            This item includes a title, description, and action button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Action
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description</ItemTitle>
+          <ItemDescription>
+            This item includes media, title, and description.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            Complete item with all components: media, title, description, and
+            button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item size="sm">
+        <ItemContent>
+          <ItemTitle>Multiple Actions</ItemTitle>
+          <ItemDescription>
+            Item with multiple action buttons in the actions area.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Cancel
+          </Button>
+          <Button size="sm">Confirm</Button>
+        </ItemActions>
+      </Item>
+    </Frame>
+  )
+}
+
+function OutlineVariantItemsSmall() {
+  return (
+    <Frame title="variant=outline size=sm">
+      <Item variant="outline" size="sm">
+        <ItemContent>
+          <ItemTitle>Title Only</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item variant="outline" size="sm">
+        <ItemContent>
+          <ItemTitle>Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Action
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline" size="sm">
+        <ItemContent>
+          <ItemTitle>Title + Description</ItemTitle>
+          <ItemDescription>
+            This is a description that provides additional context.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="outline" size="sm">
+        <ItemContent>
+          <ItemTitle>Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            This item includes a title, description, and action button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Action
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline" size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item variant="outline" size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline" size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description</ItemTitle>
+          <ItemDescription>
+            This item includes media, title, and description.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="outline" size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            Complete item with all components: media, title, description, and
+            button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline" size="sm">
+        <ItemContent>
+          <ItemTitle>Multiple Actions</ItemTitle>
+          <ItemDescription>
+            Item with multiple action buttons in the actions area.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Cancel
+          </Button>
+          <Button size="sm">Confirm</Button>
+        </ItemActions>
+      </Item>
+    </Frame>
+  )
+}
+
+function MutedVariantItemsSmall() {
+  return (
+    <Frame title="variant=muted size=sm">
+      <Item variant="muted" size="sm">
+        <ItemContent>
+          <ItemTitle>Title Only</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item variant="muted" size="sm">
+        <ItemContent>
+          <ItemTitle>Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Action
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item variant="muted" size="sm">
+        <ItemContent>
+          <ItemTitle>Title + Description</ItemTitle>
+          <ItemDescription>
+            This is a description that provides additional context.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="muted" size="sm">
+        <ItemContent>
+          <ItemTitle>Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            This item includes a title, description, and action button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Action
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item variant="muted" size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title</ItemTitle>
+        </ItemContent>
+      </Item>
+      <Item variant="muted" size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Button</ItemTitle>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="muted" size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description</ItemTitle>
+          <ItemDescription>
+            This item includes media, title, and description.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="muted" size="sm">
+        <ItemMedia variant="icon">
+          <IconPlaceholder
+            lucide="InboxIcon"
+            tabler="IconArchive"
+            hugeicons="Archive02Icon"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Media + Title + Description + Button</ItemTitle>
+          <ItemDescription>
+            Complete item with all components: media, title, description, and
+            button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Action</Button>
+        </ItemActions>
+      </Item>
+      <Item variant="muted" size="sm">
+        <ItemContent>
+          <ItemTitle>Multiple Actions</ItemTitle>
+          <ItemDescription>
+            Item with multiple action buttons in the actions area.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Cancel
+          </Button>
+          <Button size="sm">Confirm</Button>
+        </ItemActions>
+      </Item>
+    </Frame>
+  )
+}
+
+function DefaultLinkItems() {
+  return (
+    <Frame title="asChild">
+      <ItemGroup>
+        <Item asChild>
+          <a href="#">
+            <ItemContent>
+              <ItemTitle>Title Only (Link)</ItemTitle>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item asChild>
+          <a href="#">
+            <ItemContent>
+              <ItemTitle>Title + Description (Link)</ItemTitle>
+              <ItemDescription>
+                Clickable item with title and description.
+              </ItemDescription>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item asChild>
+          <a href="#">
+            <ItemMedia variant="icon">
+              <IconPlaceholder
+                lucide="InboxIcon"
+                tabler="IconArchive"
+                hugeicons="Archive02Icon"
+              />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Media + Title (Link)</ItemTitle>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item asChild>
+          <a href="#">
+            <ItemMedia variant="icon">
+              <IconPlaceholder
+                lucide="InboxIcon"
+                tabler="IconArchive"
+                hugeicons="Archive02Icon"
+              />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Media + Title + Description (Link)</ItemTitle>
+              <ItemDescription>
+                Complete link item with media, title, and description.
+              </ItemDescription>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item asChild>
+          <a href="#">
+            <ItemContent>
+              <ItemTitle>With Actions (Link)</ItemTitle>
+              <ItemDescription>
+                Link item that also has action buttons.
+              </ItemDescription>
+            </ItemContent>
+            <ItemActions>
+              <Button variant="outline" size="sm">
+                Share
+              </Button>
+            </ItemActions>
+          </a>
+        </Item>
+      </ItemGroup>
+    </Frame>
+  )
+}
+
+function OutlineLinkItems() {
+  return (
+    <Frame title="variant=outline asChild">
+      <ItemGroup>
+        <Item variant="outline" asChild>
+          <a href="#">
+            <ItemContent>
+              <ItemTitle>Title Only (Link)</ItemTitle>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item variant="outline" asChild>
+          <a href="#">
+            <ItemContent>
+              <ItemTitle>Title + Description (Link)</ItemTitle>
+              <ItemDescription>
+                Clickable item with title and description.
+              </ItemDescription>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item variant="outline" asChild>
+          <a href="#">
+            <ItemMedia variant="icon">
+              <IconPlaceholder
+                lucide="InboxIcon"
+                tabler="IconArchive"
+                hugeicons="Archive02Icon"
+              />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Media + Title (Link)</ItemTitle>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item variant="outline" asChild>
+          <a href="#">
+            <ItemMedia variant="icon">
+              <IconPlaceholder
+                lucide="InboxIcon"
+                tabler="IconArchive"
+                hugeicons="Archive02Icon"
+              />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Media + Title + Description (Link)</ItemTitle>
+              <ItemDescription>
+                Complete link item with media, title, and description.
+              </ItemDescription>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item variant="outline" asChild>
+          <a href="#">
+            <ItemContent>
+              <ItemTitle>With Actions (Link)</ItemTitle>
+              <ItemDescription>
+                Link item that also has action buttons.
+              </ItemDescription>
+            </ItemContent>
+            <ItemActions>
+              <Button variant="outline" size="sm">
+                Share
+              </Button>
+            </ItemActions>
+          </a>
+        </Item>
+      </ItemGroup>
+    </Frame>
+  )
+}
+
+function MutedLinkItems() {
+  return (
+    <Frame title="variant=muted asChild">
+      <ItemGroup>
+        <Item variant="muted" asChild>
+          <a href="#">
+            <ItemContent>
+              <ItemTitle>Title Only (Link)</ItemTitle>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item variant="muted" asChild>
+          <a href="#">
+            <ItemContent>
+              <ItemTitle>Title + Description (Link)</ItemTitle>
+              <ItemDescription>
+                Clickable item with title and description.
+              </ItemDescription>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item variant="muted" asChild>
+          <a href="#">
+            <ItemMedia variant="icon">
+              <IconPlaceholder
+                lucide="InboxIcon"
+                tabler="IconArchive"
+                hugeicons="Archive02Icon"
+              />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Media + Title (Link)</ItemTitle>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item variant="muted" asChild>
+          <a href="#">
+            <ItemMedia variant="icon">
+              <IconPlaceholder
+                lucide="InboxIcon"
+                tabler="IconArchive"
+                hugeicons="Archive02Icon"
+              />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>Media + Title + Description (Link)</ItemTitle>
+              <ItemDescription>
+                Complete link item with media, title, and description.
+              </ItemDescription>
+            </ItemContent>
+          </a>
+        </Item>
+        <Item variant="muted" asChild>
+          <a href="#">
+            <ItemContent>
+              <ItemTitle>With Actions (Link)</ItemTitle>
+              <ItemDescription>
+                Link item that also has action buttons.
+              </ItemDescription>
+            </ItemContent>
+            <ItemActions>
+              <Button variant="outline" size="sm">
+                Share
+              </Button>
+            </ItemActions>
+          </a>
+        </Item>
+      </ItemGroup>
+    </Frame>
+  )
+}
+
+function DefaultItemGroup() {
+  return (
+    <Frame title="ItemGroup">
+      <ItemGroup>
+        <Item>
+          <ItemContent>
+            <ItemTitle>Item 1</ItemTitle>
+            <ItemDescription>First item in the group.</ItemDescription>
+          </ItemContent>
+        </Item>
+        <Item>
+          <ItemContent>
+            <ItemTitle>Item 2</ItemTitle>
+            <ItemDescription>Second item in the group.</ItemDescription>
+          </ItemContent>
+        </Item>
+        <Item>
+          <ItemContent>
+            <ItemTitle>Item 3</ItemTitle>
+            <ItemDescription>Third item in the group.</ItemDescription>
+          </ItemContent>
+        </Item>
+      </ItemGroup>
+    </Frame>
+  )
+}
+
+function OutlineItemGroup() {
+  return (
+    <Frame title="variant=outline ItemGroup">
+      <ItemGroup>
+        <Item variant="outline">
+          <ItemMedia variant="icon">
+            <IconPlaceholder
+              lucide="InboxIcon"
+              tabler="IconArchive"
+              hugeicons="Archive02Icon"
+            />
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle>Item 1</ItemTitle>
+            <ItemDescription>First item with icon.</ItemDescription>
+          </ItemContent>
+        </Item>
+        <Item variant="outline">
+          <ItemMedia variant="icon">
+            <IconPlaceholder
+              lucide="InboxIcon"
+              tabler="IconArchive"
+              hugeicons="Archive02Icon"
+            />
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle>Item 2</ItemTitle>
+            <ItemDescription>Second item with icon.</ItemDescription>
+          </ItemContent>
+        </Item>
+        <Item variant="outline">
+          <ItemMedia variant="icon">
+            <IconPlaceholder
+              lucide="InboxIcon"
+              tabler="IconArchive"
+              hugeicons="Archive02Icon"
+            />
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle>Item 3</ItemTitle>
+            <ItemDescription>Third item with icon.</ItemDescription>
+          </ItemContent>
+        </Item>
+      </ItemGroup>
+    </Frame>
+  )
+}
+
+function MutedItemGroup() {
+  return (
+    <Frame title="variant=muted ItemGroup">
+      <ItemGroup>
+        <Item variant="muted">
+          <ItemContent>
+            <ItemTitle>Item 1</ItemTitle>
+            <ItemDescription>First item in muted group.</ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <Button variant="outline" size="sm">
+              Action
+            </Button>
+          </ItemActions>
+        </Item>
+        <Item variant="muted">
+          <ItemContent>
+            <ItemTitle>Item 2</ItemTitle>
+            <ItemDescription>Second item in muted group.</ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <Button variant="outline" size="sm">
+              Action
+            </Button>
+          </ItemActions>
+        </Item>
+        <Item variant="muted">
+          <ItemContent>
+            <ItemTitle>Item 3</ItemTitle>
+            <ItemDescription>Third item in muted group.</ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <Button variant="outline" size="sm">
+              Action
+            </Button>
+          </ItemActions>
+        </Item>
+      </ItemGroup>
+    </Frame>
+  )
+}
+
+function ItemHeaderExamples() {
+  return (
+    <Frame title="ItemHeader">
+      <Item>
+        <ItemHeader>
+          <span className="text-sm font-medium">Design System</span>
+        </ItemHeader>
+        <ItemContent>
+          <ItemTitle>Component Library</ItemTitle>
+          <ItemDescription>
+            A comprehensive collection of reusable UI components for building
+            consistent interfaces.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="outline">
+        <ItemHeader>
+          <span className="text-sm font-medium">Marketing</span>
+        </ItemHeader>
+        <ItemContent>
+          <ItemTitle>Campaign Analytics</ItemTitle>
+          <ItemDescription>
+            Track performance metrics and engagement rates across all marketing
+            channels.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="muted">
+        <ItemHeader>
+          <span className="text-sm font-medium">Engineering</span>
+        </ItemHeader>
+        <ItemContent>
+          <ItemTitle>API Documentation</ItemTitle>
+          <ItemDescription>
+            Complete reference guide for all available endpoints and
+            authentication methods.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+    </Frame>
+  )
+}
+
+function ItemFooterExamples() {
+  return (
+    <Frame title="ItemFooter">
+      <Item>
+        <ItemContent>
+          <ItemTitle>Quarterly Report Q4 2024</ItemTitle>
+          <ItemDescription>
+            Financial overview including revenue, expenses, and growth metrics
+            for the fourth quarter.
+          </ItemDescription>
+        </ItemContent>
+        <ItemFooter>
+          <span className="text-muted-foreground text-sm">
+            Last updated 2 hours ago
+          </span>
+        </ItemFooter>
+      </Item>
+      <Item variant="outline">
+        <ItemContent>
+          <ItemTitle>User Research Findings</ItemTitle>
+          <ItemDescription>
+            Insights from interviews and surveys conducted with 50+ users across
+            different demographics.
+          </ItemDescription>
+        </ItemContent>
+        <ItemFooter>
+          <span className="text-muted-foreground text-sm">
+            Created by Sarah Chen
+          </span>
+        </ItemFooter>
+      </Item>
+      <Item variant="muted">
+        <ItemContent>
+          <ItemTitle>Product Roadmap</ItemTitle>
+          <ItemDescription>
+            Planned features and improvements scheduled for the next three
+            months.
+          </ItemDescription>
+        </ItemContent>
+        <ItemFooter>
+          <span className="text-muted-foreground text-sm">12 comments</span>
+        </ItemFooter>
+      </Item>
+    </Frame>
+  )
+}
+
+function ItemHeaderAndFooterExamples() {
+  return (
+    <Frame title="ItemHeader + ItemFooter">
+      <Item>
+        <ItemHeader>
+          <span className="text-sm font-medium">Team Project</span>
+        </ItemHeader>
+        <ItemContent>
+          <ItemTitle>Website Redesign</ItemTitle>
+          <ItemDescription>
+            Complete overhaul of the company website with modern design
+            principles and improved user experience.
+          </ItemDescription>
+        </ItemContent>
+        <ItemFooter>
+          <span className="text-muted-foreground text-sm">
+            Updated 5 minutes ago
+          </span>
+        </ItemFooter>
+      </Item>
+      <Item variant="outline">
+        <ItemHeader>
+          <span className="text-sm font-medium">Client Work</span>
+        </ItemHeader>
+        <ItemContent>
+          <ItemTitle>Mobile App Development</ItemTitle>
+          <ItemDescription>
+            Building a cross-platform mobile application for iOS and Android
+            with React Native.
+          </ItemDescription>
+        </ItemContent>
+        <ItemFooter>
+          <span className="text-muted-foreground text-sm">
+            Status: In Progress
+          </span>
+        </ItemFooter>
+      </Item>
+      <Item variant="muted">
+        <ItemHeader>
+          <span className="text-sm font-medium">Documentation</span>
+        </ItemHeader>
+        <ItemContent>
+          <ItemTitle>API Integration Guide</ItemTitle>
+          <ItemDescription>
+            Step-by-step instructions for integrating third-party APIs with
+            authentication and error handling.
+          </ItemDescription>
+        </ItemContent>
+        <ItemFooter>
+          <span className="text-muted-foreground text-sm">
+            Category: Technical • 3 attachments
+          </span>
+        </ItemFooter>
+      </Item>
+    </Frame>
+  )
+}
+
+function DefaultVariantItemsWithImage() {
+  return (
+    <Frame title="variant=default ItemMedia image">
+      <Item>
+        <ItemMedia variant="image">
+          <Image
+            src="https://avatar.vercel.sh/Project"
+            alt="Project"
+            width={40}
+            height={40}
+            className="object-cover"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Project Dashboard</ItemTitle>
+          <ItemDescription>
+            Overview of project settings and configuration.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item>
+        <ItemMedia variant="image">
+          <Image
+            src="https://avatar.vercel.sh/Document"
+            alt="Document"
+            width={40}
+            height={40}
+            className="object-cover"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Document</ItemTitle>
+          <ItemDescription>A document with metadata displayed.</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            View
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item>
+        <ItemMedia variant="image">
+          <Image
+            src="https://avatar.vercel.sh/File"
+            alt="File"
+            width={40}
+            height={40}
+            className="object-cover"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>File Attachment</ItemTitle>
+          <ItemDescription>
+            Complete file with image, title, description, and action button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Download</Button>
+        </ItemActions>
+      </Item>
+    </Frame>
+  )
+}
+
+function OutlineVariantItemsWithImage() {
+  return (
+    <Frame title="variant=outline ItemMedia image">
+      <Item variant="outline">
+        <ItemMedia variant="image">
+          <Image
+            src="https://avatar.vercel.sh/Project"
+            alt="Project"
+            width={40}
+            height={40}
+            className="object-cover"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Project Dashboard</ItemTitle>
+          <ItemDescription>
+            Overview of project settings and configuration.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="outline">
+        <ItemMedia variant="image">
+          <Image
+            src="https://avatar.vercel.sh/Document"
+            alt="Document"
+            width={40}
+            height={40}
+            className="object-cover"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Document</ItemTitle>
+          <ItemDescription>A document with metadata displayed.</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            View
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item variant="outline">
+        <ItemMedia variant="image">
+          <Image
+            src="https://avatar.vercel.sh/File"
+            alt="File"
+            width={40}
+            height={40}
+            className="object-cover"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>File Attachment</ItemTitle>
+          <ItemDescription>
+            Complete file with image, title, description, and action button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Download</Button>
+        </ItemActions>
+      </Item>
+    </Frame>
+  )
+}
+
+function MutedVariantItemsWithImage() {
+  return (
+    <Frame title="variant=muted ItemMedia image">
+      <Item variant="muted">
+        <ItemMedia variant="image">
+          <Image
+            src="https://avatar.vercel.sh/Project"
+            alt="Project"
+            width={40}
+            height={40}
+            className="object-cover"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Project Dashboard</ItemTitle>
+          <ItemDescription>
+            Overview of project settings and configuration.
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+      <Item variant="muted">
+        <ItemMedia variant="image">
+          <Image
+            src="https://avatar.vercel.sh/Document"
+            alt="Document"
+            width={40}
+            height={40}
+            className="object-cover"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Document</ItemTitle>
+          <ItemDescription>A document with metadata displayed.</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            View
+          </Button>
+        </ItemActions>
+      </Item>
+      <Item variant="muted">
+        <ItemMedia variant="image">
+          <Image
+            src="https://avatar.vercel.sh/File"
+            alt="File"
+            width={40}
+            height={40}
+            className="object-cover"
+          />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>File Attachment</ItemTitle>
+          <ItemDescription>
+            Complete file with image, title, description, and action button.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="sm">Download</Button>
+        </ItemActions>
+      </Item>
+    </Frame>
   )
 }

@@ -1,4 +1,5 @@
 import { Button } from "@/registry/bases/radix/ui/button"
+import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ButtonDemo() {
@@ -17,7 +18,7 @@ export default function ButtonDemo() {
 
 function ButtonExample1() {
   return (
-    <div className="flex flex-col gap-6 rounded-lg border p-6">
+    <Frame title="Variants & Sizes">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">Default</Button>
         <Button size="xs" variant="secondary">
@@ -80,13 +81,13 @@ function ButtonExample1() {
           Link
         </Button>
       </div>
-    </div>
+    </Frame>
   )
 }
 
 function ButtonExample2() {
   return (
-    <div className="flex flex-col gap-6 rounded-lg border p-6">
+    <Frame title="Icon Right">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">
           Default{" "}
@@ -310,13 +311,13 @@ function ButtonExample2() {
           />
         </Button>
       </div>
-    </div>
+    </Frame>
   )
 }
 
 function ButtonExample3() {
   return (
-    <div className="flex flex-col gap-6 rounded-lg border p-6">
+    <Frame title="Icon Left">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">
           <IconPlaceholder
@@ -541,13 +542,13 @@ function ButtonExample3() {
           Link
         </Button>
       </div>
-    </div>
+    </Frame>
   )
 }
 
 function ButtonExample4() {
   return (
-    <div className="flex flex-col gap-6 rounded-lg border p-6">
+    <Frame title="Icon Only">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="icon-xs">
           <IconPlaceholder
@@ -724,13 +725,13 @@ function ButtonExample4() {
           />
         </Button>
       </div>
-    </div>
+    </Frame>
   )
 }
 
 function ButtonExample5() {
   return (
-    <div className="flex flex-col gap-6 rounded-lg border p-6">
+    <Frame title="Examples">
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
           <Button variant="outline">Cancel</Button>
@@ -754,6 +755,6 @@ function ButtonExample5() {
           </Button>
         </div>
       </div>
-    </div>
+    </Frame>
   )
 }

@@ -60,6 +60,7 @@ import {
   SelectValue,
 } from "@/registry/bases/radix/ui/select"
 import { CardFooter } from "@/registry/new-york-v4/ui/card"
+import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function AvatarDemo() {
@@ -88,7 +89,7 @@ export default function AvatarDemo() {
 
 function AvatarExample1() {
   return (
-    <div className="flex flex-row flex-wrap items-center gap-4 rounded-lg border p-6">
+    <Frame title="Sizes">
       <Avatar size="sm">
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>
@@ -110,13 +111,13 @@ function AvatarExample1() {
       <Avatar size="lg">
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-    </div>
+    </Frame>
   )
 }
 
 function AvatarExample2() {
   return (
-    <div className="flex flex-row flex-wrap items-center gap-4 rounded-lg border p-6">
+    <Frame title="Badge">
       <Avatar size="sm">
         <AvatarImage
           src="https://github.com/jorgezreik.png"
@@ -153,13 +154,13 @@ function AvatarExample2() {
         <AvatarFallback>JZ</AvatarFallback>
         <AvatarBadge />
       </Avatar>
-    </div>
+    </Frame>
   )
 }
 
 function AvatarExample3() {
   return (
-    <div className="flex flex-row flex-wrap items-center gap-4 rounded-lg border p-6">
+    <Frame title="Badge with Icon">
       <Avatar size="sm">
         <AvatarImage src="https://github.com/pranathip.png" alt="@pranathip" />
         <AvatarFallback>PP</AvatarFallback>
@@ -223,13 +224,13 @@ function AvatarExample3() {
           />
         </AvatarBadge>
       </Avatar>
-    </div>
+    </Frame>
   )
 }
 
 function AvatarExample4() {
   return (
-    <div className="flex flex-row flex-wrap items-center gap-4 rounded-lg border p-6">
+    <Frame title="Group">
       <AvatarGroup>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -290,13 +291,13 @@ function AvatarExample4() {
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
       </AvatarGroup>
-    </div>
+    </Frame>
   )
 }
 
 function AvatarExample5() {
   return (
-    <div className="flex flex-row flex-wrap items-center gap-4 rounded-lg border p-6">
+    <Frame title="Group with Count">
       <AvatarGroup>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -360,13 +361,13 @@ function AvatarExample5() {
         </Avatar>
         <AvatarGroupCount>+3</AvatarGroupCount>
       </AvatarGroup>
-    </div>
+    </Frame>
   )
 }
 
 function AvatarExample6() {
   return (
-    <div className="flex flex-row flex-wrap items-center gap-4 rounded-lg border p-6">
+    <Frame title="Group with Icon Count">
       <AvatarGroup>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -454,7 +455,7 @@ function AvatarExample6() {
           />
         </AvatarGroupCount>
       </AvatarGroup>
-    </div>
+    </Frame>
   )
 }
 

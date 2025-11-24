@@ -2,7 +2,7 @@ import { Input } from "@/registry/bases/radix/ui/input"
 
 export default function InputDemo() {
   return (
-    <div className="bg-background min-h-screen p-4">
+    <div className="bg-background flex min-h-screen items-center justify-center p-4">
       <div className="flex max-w-md flex-col flex-wrap gap-4 md:flex-row">
         <Input type="email" placeholder="Email" />
         <Input type="text" placeholder="Error" aria-invalid="true" />

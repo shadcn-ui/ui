@@ -92,7 +92,7 @@
 
   /* Badge */
   .cn-badge {
-    @apply rounded-full border border-transparent px-2 py-0.5 text-xs font-medium;
+    @apply border border-transparent px-1 py-0.5 text-xs font-medium;
 
     &.cn-badge-variant-default {
       @apply bg-primary text-primary-foreground [a]:hover:bg-primary/80;
@@ -328,5 +328,80 @@
     .cn-select-scroll-down-button {
       @apply py-1 [&_svg:not([class*='size-'])]:size-4;
     }
+  }
+
+  /* Item */
+  .cn-item {
+    @apply border text-xs;
+
+    /* Variant */
+    &.cn-item-variant-default {
+      @apply border-transparent;
+    }
+
+    &.cn-item-variant-outline {
+      @apply border-border;
+    }
+
+    &.cn-item-variant-muted {
+      @apply bg-muted/50 border-transparent;
+    }
+
+    /* Size */
+    &.cn-item-size-default {
+      @apply gap-3 p-3;
+    }
+
+    &.cn-item-size-sm {
+      @apply gap-2 p-2;
+    }
+
+    .cn-item-media {
+      @apply gap-2 group-has-[[data-slot=item-description]]/item:translate-y-0.5 group-has-[[data-slot=item-description]]/item:self-start;
+
+      &.cn-item-media-variant-default {
+        @apply bg-transparent;
+      }
+
+      &.cn-item-media-variant-icon {
+        @apply bg-muted size-6 [&_svg:not([class*='size-'])]:size-4;
+      }
+
+      &.cn-item-media-variant-image {
+        @apply size-10 overflow-hidden [&_img]:size-full [&_img]:object-cover;
+      }
+    }
+
+    .cn-item-content {
+      @apply gap-1;
+    }
+
+    .cn-item-title {
+      @apply gap-2 text-xs leading-snug font-medium underline-offset-4;
+    }
+
+    .cn-item-description {
+      @apply text-muted-foreground text-xs leading-normal;
+    }
+
+    .cn-item-actions {
+      @apply gap-2;
+    }
+
+    .cn-item-header {
+      @apply gap-2;
+    }
+
+    .cn-item-footer {
+      @apply gap-2;
+    }
+  }
+
+  .cn-item-group {
+    @apply gap-2;
+  }
+
+  .cn-item-separator {
+    @apply -my-2;
   }
 }

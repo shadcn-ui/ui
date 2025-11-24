@@ -164,7 +164,7 @@ function SelectScrollUpButton({
       <IconPlaceholder
         lucide="ChevronUpIcon"
         tabler="IconChevronUp"
-        hugeicons="ArrowRight01Icon"
+        hugeicons="ArrowUp01Icon"
       />
     </SelectPrimitive.ScrollUpButton>
   )
@@ -186,7 +186,7 @@ function SelectScrollDownButton({
       <IconPlaceholder
         lucide="ChevronDownIcon"
         tabler="IconChevronDown"
-        hugeicons="ArrowRight01Icon"
+        hugeicons="ArrowDown01Icon"
       />
     </SelectPrimitive.ScrollDownButton>
   )

@@ -15,7 +15,7 @@ export function PreviewControls() {
   })
 
   return (
-    <div className="flex h-8 items-center gap-1.5 rounded-md border p-1 shadow-none">
+    <div className="flex h-8 items-center gap-1.5 rounded-md border p-1">
       <ToggleGroup
         type="single"
         value={(urlParams.size ?? 100).toString()}

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { Base, BASES } from "@/registry/bases"
 import { DesignSystemProvider } from "@/app/(design)/design/components/design-system-provider"
 import { ItemPickerScript } from "@/app/(design)/design/components/item-picker"
@@ -129,6 +130,7 @@ export default async function BlockPage({
       <DesignSystemProvider>
         <Component />
       </DesignSystemProvider>
+      <TailwindIndicator forceMount />
     </>
   )
 }

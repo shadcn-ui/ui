@@ -63,13 +63,17 @@ export function ItemPicker({
         <Button
           size="sm"
           variant="outline"
-          className="w-72 justify-start rounded-lg border shadow-none"
+          className="w-full max-w-[500px] justify-start rounded-lg shadow-none"
         >
           <IconSearch className="text-muted-foreground" />
           {currentItem?.title}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="rounded-xl px-0" side="bottom" align="end">
+      <PopoverContent
+        className="w-(--radix-popover-trigger-width) rounded-xl px-0 duration-100 data-[state=closed]:animate-none data-[state=open]:animate-none"
+        side="bottom"
+        align="center"
+      >
         <CustomizerPicker
           currentValue={currentItem?.title ?? null}
           open={open}
