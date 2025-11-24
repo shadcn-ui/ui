@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
+import { IconCheck, IconCopy } from "@tabler/icons-react"
 
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
@@ -24,11 +24,13 @@ export function CopyButton({
   className,
   variant = "ghost",
   event,
+  tooltip = "Copy to Clipboard",
   ...props
 }: React.ComponentProps<typeof Button> & {
   value: string
   src?: string
   event?: Event["name"]
+  tooltip?: string
 }) {
   const [hasCopied, setHasCopied] = React.useState(false)
 
@@ -43,6 +45,7 @@ export function CopyButton({
       <TooltipTrigger asChild>
         <Button
           data-slot="copy-button"
+          data-copied={hasCopied}
           size="icon"
           variant={variant}
           className={cn(
@@ -66,12 +69,10 @@ export function CopyButton({
           {...props}
         >
           <span className="sr-only">Copy</span>
-          {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+          {hasCopied ? <IconCheck /> : <IconCopy />}
         </Button>
       </TooltipTrigger>
-      <TooltipContent>
-        {hasCopied ? "Copied" : "Copy to Clipboard"}
-      </TooltipContent>
+      <TooltipContent>{hasCopied ? "Copied" : tooltip}</TooltipContent>
     </Tooltip>
   )
 }
