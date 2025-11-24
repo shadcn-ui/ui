@@ -1,27 +1,13 @@
-# VCS
-.git
-.github
-
-# Node / workspace artifacts
+# Dependencies
 node_modules
-**/node_modules
 .pnpm-store
+.pnp.*
 
-# Next.js build output
+# Builds and caches
 .next
-**/.next
 out
-build
 dist
-.turbo
-
-# Tests / coverage
-coverage
-
-# OS / editor
-.DS_Store
-.vscode
-.idea
+build
 
 # Logs
 npm-debug.log*
@@ -29,11 +15,18 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Env files (inject via secrets/CI)
+# VCS
+.git
+.gitignore
+
+# Env
 .env
 .env.*
 !.env.example
 
-# Misc
+# OS/editor
+.DS_Store
 *.swp
-*.swm
+*.swo
+.vscode
+.idea
