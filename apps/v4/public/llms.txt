@@ -9,7 +9,6 @@
 - [components.json](https://ui.shadcn.com/docs/components-json.md): Configuration file for customizing the CLI and component installation.
 - [Theming](https://ui.shadcn.com/docs/theming.md): Guide to customizing colors, typography, and design tokens.
 - [Changelog](https://ui.shadcn.com/docs/changelog.md): Release notes and version history.
-- [About](https://ui.shadcn.com/docs/about.md): Credits and project information.
 
 ## Installation
 
