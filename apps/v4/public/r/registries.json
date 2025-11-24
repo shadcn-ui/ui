@@ -29,6 +29,8 @@
   "@elevenlabs-ui": "https://ui.elevenlabs.io/r/{name}.json",
   "@fancy": "https://fancycomponents.dev/r/{name}.json",
   "@formcn": "https://formcn.dev/r/{name}.json",
+  "@gaia": "https://ui.heygaia.io/r/{name}.json",
+  "@glass-ui": "https://glass-ui.crenspire.com/r/{name}.json",
   "@heseui": "https://www.heseui.com/r/{name}.json",
   "@hooks": "https://shadcn-hooks.vercel.app/r/{name}.json",
   "@intentui": "https://intentui.com/r/{name}",
@@ -51,6 +53,7 @@
   "@plate": "https://platejs.org/r/{name}.json",
   "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
   "@prosekit": "https://prosekit.dev/r/{name}.json",
+  "@phucbm": "https://ui.phucbm.com/r/{name}.json",
   "@react-bits": "https://reactbits.dev/r/{name}.json",
   "@react-market": "https://www.react-market.com/get/{name}.json",
   "@retroui": "https://retroui.dev/r/{name}.json",
@@ -86,5 +89,8 @@
   "@utilcn": "https://utilcn.dev/r/{name}.json",
   "@hextaui": "https://hextaui.com/r/{name}.json",
   "@taki": "https://taki-ui.com/r/{name}.json",
-  "@square-ui": "https://square.lndev.me/registry/{name}.json"
+  "@square-ui": "https://square.lndev.me/registry/{name}.json",
+  "@moleculeui": "https://moleculeui.design/r/{name}.json",
+  "@uicapsule": "https://uicapsule.com/r/{name}.json",
+  "@uitripled": "https://ui.tripled.work/r/{name}.json"
 }
