@@ -596,17 +596,17 @@
   }
 
   .cn-select-content {
-    @apply bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-md border shadow-md;
+    @apply bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 min-w-32 rounded-md border shadow-md;
 
     .cn-select-label {
       @apply text-muted-foreground px-2 py-1.5 text-xs;
     }
 
     .cn-select-item {
-      @apply focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4 *:[span]:last:gap-2;
+      @apply focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2;
 
       .cn-select-item-indicator {
-        @apply right-2 size-3.5;
+        @apply pointer-events-none absolute right-2 flex size-3.5 items-center justify-center;
       }
     }
 
@@ -615,11 +615,11 @@
     }
 
     .cn-select-scroll-up-button {
-      @apply py-1 [&_svg:not([class*='size-'])]:size-4;
+      @apply flex cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4;
     }
 
     .cn-select-scroll-down-button {
-      @apply py-1 [&_svg:not([class*='size-'])]:size-4;
+      @apply flex cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4;
     }
   }
 
@@ -727,7 +727,7 @@
   }
 
   .cn-menubar-sub-content {
-    @apply bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 min-w-[8rem] rounded-md border p-1 shadow-lg;
+    @apply bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 min-w-32 rounded-md border p-1 shadow-lg;
   }
 
   .cn-navigation-menu {
@@ -957,5 +957,154 @@
 
   .cn-tooltip-arrow {
     @apply size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px];
+  }
+
+  /* Context Menu */
+  .cn-context-menu-content {
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 min-w-32 rounded-md border p-1 shadow-md;
+  }
+
+  .cn-context-menu-item {
+    @apply gap-2 rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-context-menu-sub-trigger {
+    @apply rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-context-menu-sub-content {
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 min-w-32 rounded-md border p-1 shadow-lg;
+  }
+
+  .cn-context-menu-checkbox-item {
+    @apply gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-context-menu-radio-item {
+    @apply gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm;
+  }
+
+  .cn-context-menu-item-indicator {
+    @apply left-2 size-3.5;
+  }
+
+  .cn-context-menu-item-indicator-icon {
+    @apply size-2 fill-current;
+  }
+
+  .cn-context-menu-label {
+    @apply text-muted-foreground px-2 py-1.5 text-xs font-medium;
+  }
+
+  .cn-context-menu-separator {
+    @apply bg-border -mx-1 my-1 h-px;
+  }
+
+  .cn-context-menu-shortcut {
+    @apply text-muted-foreground ml-auto text-xs tracking-widest;
+  }
+
+  /* Dropdown Menu */
+  .cn-dropdown-menu-content {
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 min-w-32 rounded-md border p-1 shadow-md;
+  }
+
+  .cn-dropdown-menu-item {
+    @apply gap-2 rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-dropdown-menu-sub-trigger {
+    @apply gap-2 rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-dropdown-menu-sub-content {
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 min-w-32 rounded-md border p-1 shadow-lg;
+  }
+
+  .cn-dropdown-menu-checkbox-item {
+    @apply gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-dropdown-menu-radio-item {
+    @apply gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm;
+  }
+
+  .cn-dropdown-menu-item-indicator {
+    @apply pointer-events-none absolute left-2 flex size-3.5 items-center justify-center;
+  }
+
+  .cn-dropdown-menu-item-indicator-icon {
+    @apply size-2 fill-current;
+  }
+
+  .cn-dropdown-menu-label {
+    @apply text-muted-foreground px-2 py-1.5 text-xs font-medium;
+  }
+
+  .cn-dropdown-menu-separator {
+    @apply bg-border -mx-1 my-1 h-px;
+  }
+
+  .cn-dropdown-menu-shortcut {
+    @apply text-muted-foreground ml-auto text-xs tracking-widest;
+  }
+
+  /* Native Select */
+
+  .cn-native-select {
+    @apply border-input placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 dark:hover:bg-input/50 h-9 w-full min-w-0 appearance-none rounded-md border bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow];
+  }
+
+  .cn-native-select-icon {
+    @apply text-muted-foreground top-1/2 right-3.5 size-4 -translate-y-1/2 opacity-50;
+  }
+
+  /* Command */
+  .cn-command {
+    @apply rounded-lg;
+  }
+
+  .cn-command-dialog {
+    @apply rounded-lg;
+  }
+
+  .cn-command-input-wrapper {
+    @apply p-1 pb-0;
+  }
+
+  .cn-command-input-group {
+    @apply bg-input/30 border-input/30 h-8 shadow-none *:data-[slot=input-group-addon]:pl-2!;
+  }
+
+  .cn-command-input-icon {
+    @apply size-4 shrink-0 opacity-50;
+  }
+
+  .cn-command-input {
+    @apply w-full text-sm;
+  }
+
+  .cn-command-list {
+    @apply max-h-72 scroll-py-1;
+  }
+
+  .cn-command-empty {
+    @apply py-6 text-center text-sm;
+  }
+
+  .cn-command-group {
+    @apply text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium;
+  }
+
+  .cn-command-separator {
+    @apply bg-border -mx-1 h-px;
+  }
+
+  .cn-command-item {
+    @apply [&_svg:not([class*='text-'])]:text-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none [&_svg:last-child]:ml-auto [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-command-shortcut {
+    @apply text-muted-foreground ml-auto text-xs tracking-widest;
   }
 }

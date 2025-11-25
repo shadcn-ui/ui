@@ -46,6 +46,7 @@ import { designSystemSearchParams } from "@/app/(design)/design/lib/search-param
 export function Customizer() {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
+    history: "push",
   })
 
   const handleSelectPreset = React.useCallback(
