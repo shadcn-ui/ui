@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { Separator } from "@/registry/bases/radix/ui/separator"
 
 const buttonGroupVariants = cva(
   "cn-button-group flex w-fit items-stretch [&>*]:focus-visible:z-10 [&>*]:focus-visible:relative [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1 ",

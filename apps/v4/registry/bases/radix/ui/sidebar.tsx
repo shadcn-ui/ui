@@ -4,25 +4,25 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
-import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
-import { cn } from "@/registry/new-york-v4/lib/utils"
-import { Button } from "@/registry/new-york-v4/ui/button"
-import { Input } from "@/registry/new-york-v4/ui/input"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/bases/radix/ui/button"
+import { Input } from "@/registry/bases/radix/ui/input"
+import { Separator } from "@/registry/bases/radix/ui/separator"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/registry/new-york-v4/ui/sheet"
-import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
+} from "@/registry/bases/radix/ui/sheet"
+import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
+} from "@/registry/bases/radix/ui/tooltip"
+import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"

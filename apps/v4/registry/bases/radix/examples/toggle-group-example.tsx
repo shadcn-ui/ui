@@ -1,3 +1,11 @@
+import { Input } from "@/registry/bases/radix/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/bases/radix/ui/select"
 import {
   ToggleGroup,
   ToggleGroupItem,
@@ -18,6 +26,7 @@ export default function ToggleGroupExample() {
         <ToggleGroupFilter />
         <ToggleGroupDateRange />
         <ToggleGroupSort />
+        <ToggleGroupWithInputAndSelect />
         <ToggleGroupVertical />
         <ToggleGroupVerticalOutline />
         <ToggleGroupVerticalOutlineWithIcons />
@@ -298,6 +307,34 @@ function ToggleGroupSort() {
           Popular
         </ToggleGroupItem>
       </ToggleGroup>
+    </Frame>
+  )
+}
+
+function ToggleGroupWithInputAndSelect() {
+  return (
+    <Frame title="With Input and Select">
+      <div className="flex items-center gap-2">
+        <Input type="search" placeholder="Search..." className="flex-1" />
+        <Select defaultValue="all">
+          <SelectTrigger className="w-32">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All</SelectItem>
+            <SelectItem value="active">Active</SelectItem>
+            <SelectItem value="archived">Archived</SelectItem>
+          </SelectContent>
+        </Select>
+        <ToggleGroup type="single" defaultValue="grid" variant="outline">
+          <ToggleGroupItem value="grid" aria-label="Grid view">
+            Grid
+          </ToggleGroupItem>
+          <ToggleGroupItem value="list" aria-label="List view">
+            List
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </div>
     </Frame>
   )
 }

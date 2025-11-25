@@ -10,7 +10,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/registry/new-york-v4/ui/dialog"
+} from "@/registry/bases/radix/ui/dialog"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 function Command({

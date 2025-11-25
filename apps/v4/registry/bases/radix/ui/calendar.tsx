@@ -4,7 +4,7 @@ import * as React from "react"
 import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/registry/new-york-v4/ui/button"
+import { Button, buttonVariants } from "@/registry/bases/radix/ui/button"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 function Calendar({
