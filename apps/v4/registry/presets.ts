@@ -16,7 +16,7 @@ type Preset = {
 
 export const PRESETS = [
   {
-    title: "New York",
+    title: "Vega",
     style: "vega",
     baseColor: "neutral",
     theme: "neutral",
@@ -24,7 +24,7 @@ export const PRESETS = [
     font: "inter",
   },
   {
-    title: "Tokyo",
+    title: "Nova",
     style: "nova",
     baseColor: "neutral",
     theme: "blue",
@@ -32,7 +32,7 @@ export const PRESETS = [
     font: "figtree",
   },
   {
-    title: "Oslo",
+    title: "Lyra",
     style: "lyra",
     baseColor: "stone",
     theme: "stone",

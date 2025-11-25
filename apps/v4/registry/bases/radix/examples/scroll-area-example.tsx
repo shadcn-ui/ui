@@ -3,41 +3,13 @@ import Image from "next/image"
 
 import { ScrollArea, ScrollBar } from "@/registry/bases/radix/ui/scroll-area"
 import { Separator } from "@/registry/bases/radix/ui/separator"
-
-export default function ScrollAreaDemo() {
-  return (
-    <div className="bg-background min-h-screen p-4">
-      <div className="flex flex-col gap-6">
-        <ScrollAreaVertical />
-        <ScrollAreaHorizontalDemo />
-      </div>
-    </div>
-  )
-}
+import Frame from "@/app/(design)/design/components/frame"
 
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`
 )
 
-function ScrollAreaVertical() {
-  return (
-    <div className="flex flex-col gap-6">
-      <ScrollArea className="h-72 w-48 rounded-md border">
-        <div className="p-4">
-          <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
-          {tags.map((tag) => (
-            <React.Fragment key={tag}>
-              <div className="text-sm">{tag}</div>
-              <Separator className="my-2" />
-            </React.Fragment>
-          ))}
-        </div>
-      </ScrollArea>
-    </div>
-  )
-}
-
-export const works = [
+const works = [
   {
     artist: "Ornella Binni",
     art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
@@ -52,31 +24,62 @@ export const works = [
   },
 ] as const
 
-function ScrollAreaHorizontalDemo() {
+export default function ScrollAreaExample() {
   return (
-    <ScrollArea className="w-full max-w-96 rounded-md border p-4">
-      <div className="flex gap-4">
-        {works.map((artwork) => (
-          <figure key={artwork.artist} className="shrink-0">
-            <div className="overflow-hidden rounded-md">
-              <Image
-                src={artwork.art}
-                alt={`Photo by ${artwork.artist}`}
-                className="aspect-[3/4] h-fit w-fit object-cover"
-                width={300}
-                height={400}
-              />
-            </div>
-            <figcaption className="text-muted-foreground pt-2 text-xs">
-              Photo by{" "}
-              <span className="text-foreground font-semibold">
-                {artwork.artist}
-              </span>
-            </figcaption>
-          </figure>
-        ))}
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
+        <ScrollAreaVertical />
+        <ScrollAreaHorizontal />
       </div>
-      <ScrollBar orientation="horizontal" />
-    </ScrollArea>
+    </div>
+  )
+}
+
+function ScrollAreaVertical() {
+  return (
+    <Frame title="Vertical">
+      <ScrollArea className="mx-auto h-72 w-48 rounded-md border">
+        <div className="p-4">
+          <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
+          {tags.map((tag) => (
+            <React.Fragment key={tag}>
+              <div className="text-sm">{tag}</div>
+              <Separator className="my-2" />
+            </React.Fragment>
+          ))}
+        </div>
+      </ScrollArea>
+    </Frame>
+  )
+}
+
+function ScrollAreaHorizontal() {
+  return (
+    <Frame title="Horizontal">
+      <ScrollArea className="mx-auto w-full max-w-96 rounded-md border p-4">
+        <div className="flex gap-4">
+          {works.map((artwork) => (
+            <figure key={artwork.artist} className="shrink-0">
+              <div className="overflow-hidden rounded-md">
+                <Image
+                  src={artwork.art}
+                  alt={`Photo by ${artwork.artist}`}
+                  className="aspect-[3/4] h-fit w-fit object-cover"
+                  width={300}
+                  height={400}
+                />
+              </div>
+              <figcaption className="text-muted-foreground pt-2 text-xs">
+                Photo by{" "}
+                <span className="text-foreground font-semibold">
+                  {artwork.artist}
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
+    </Frame>
   )
 }

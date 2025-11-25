@@ -1,36 +1,82 @@
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldLabel,
+  FieldTitle,
+} from "@/registry/bases/radix/ui/field"
 import { Label } from "@/registry/bases/radix/ui/label"
 import { Switch } from "@/registry/bases/radix/ui/switch"
+import Frame from "@/app/(design)/design/components/frame"
 
-export default function SwitchDemo() {
+export default function SwitchExample() {
   return (
-    <div className="bg-background min-h-screen p-4">
-      <div className="flex flex-col gap-6">
-        <div className="flex items-center gap-2">
-          <Switch id="switch-demo-airplane-mode" />
-          <Label htmlFor="switch-demo-airplane-mode">Airplane Mode</Label>
-        </div>
-        <div className="flex items-center gap-2">
-          <Switch
-            id="switch-demo-bluetooth"
-            className="data-[state=checked]:bg-blue-500 dark:data-[state=checked]:bg-blue-600"
-            defaultChecked
-          />
-          <Label htmlFor="switch-demo-bluetooth">Bluetooth</Label>
-        </div>
-        <Label className="flex items-center gap-6 rounded-lg border p-4 has-[[data-state=checked]]:border-blue-600">
-          <div className="flex flex-col gap-1">
-            <div className="font-medium">Share across devices</div>
-            <div className="text-muted-foreground text-sm font-normal">
-              Focus is shared across devices, and turns off when you leave the
-              app.
-            </div>
-          </div>
-          <Switch
-            id="switch-demo-focus-mode"
-            className="data-[state=checked]:bg-blue-500 dark:data-[state=checked]:bg-blue-600"
-          />
-        </Label>
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
+        <SwitchBasic />
+        <SwitchWithDescription />
+        <SwitchDisabled />
       </div>
     </div>
+  )
+}
+
+function SwitchBasic() {
+  return (
+    <Frame title="Basic">
+      <Field orientation="horizontal">
+        <Switch id="switch-basic" />
+        <FieldLabel htmlFor="switch-basic">Airplane Mode</FieldLabel>
+      </Field>
+    </Frame>
+  )
+}
+
+function SwitchWithLabel() {
+  return (
+    <Frame title="With Label">
+      <div className="flex items-center gap-2">
+        <Switch id="switch-bluetooth" defaultChecked />
+        <Label htmlFor="switch-bluetooth">Bluetooth</Label>
+      </div>
+    </Frame>
+  )
+}
+
+function SwitchWithDescription() {
+  return (
+    <Frame title="With Description">
+      <FieldLabel htmlFor="switch-focus-mode">
+        <Field orientation="horizontal">
+          <FieldContent>
+            <FieldTitle>Share across devices</FieldTitle>
+            <FieldDescription>
+              Focus is shared across devices, and turns off when you leave the
+              app.
+            </FieldDescription>
+          </FieldContent>
+          <Switch id="switch-focus-mode" />
+        </Field>
+      </FieldLabel>
+    </Frame>
+  )
+}
+
+function SwitchDisabled() {
+  return (
+    <Frame title="Disabled">
+      <div className="flex flex-col gap-12">
+        <div className="flex items-center gap-2">
+          <Switch id="switch-disabled-unchecked" disabled />
+          <Label htmlFor="switch-disabled-unchecked">
+            Disabled (Unchecked)
+          </Label>
+        </div>
+        <div className="flex items-center gap-2">
+          <Switch id="switch-disabled-checked" defaultChecked disabled />
+          <Label htmlFor="switch-disabled-checked">Disabled (Checked)</Label>
+        </div>
+      </div>
+    </Frame>
   )
 }

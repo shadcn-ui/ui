@@ -1,64 +1,221 @@
-import { Label } from "@/registry/bases/radix/ui/label"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+} from "@/registry/bases/radix/ui/field"
 import {
   RadioGroup,
   RadioGroupItem,
 } from "@/registry/bases/radix/ui/radio-group"
+import Frame from "@/app/(design)/design/components/frame"
 
-const plans = [
-  {
-    id: "starter",
-    name: "Starter Plan",
-    description:
-      "Perfect for small businesses getting started with our platform",
-    price: "$10",
-  },
-  {
-    id: "pro",
-    name: "Pro Plan",
-    description: "Advanced features for growing businesses with higher demands",
-    price: "$20",
-  },
-] as const
-
-export default function RadioGroupDemo() {
+export default function RadioGroupExample() {
   return (
-    <div className="bg-background min-h-screen p-4">
-      <div className="flex flex-col gap-6">
-        <RadioGroup defaultValue="comfortable">
-          <div className="flex items-center gap-3">
-            <RadioGroupItem value="default" id="r1" />
-            <Label htmlFor="r1">Default</Label>
-          </div>
-          <div className="flex items-center gap-3">
-            <RadioGroupItem value="comfortable" id="r2" />
-            <Label htmlFor="r2">Comfortable</Label>
-          </div>
-          <div className="flex items-center gap-3">
-            <RadioGroupItem value="compact" id="r3" />
-            <Label htmlFor="r3">Compact</Label>
-          </div>
-        </RadioGroup>
-        <RadioGroup defaultValue="starter" className="max-w-sm">
-          {plans.map((plan) => (
-            <Label
-              className="hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-4 has-[[data-state=checked]]:border-green-600 has-[[data-state=checked]]:bg-green-50 dark:has-[[data-state=checked]]:border-green-900 dark:has-[[data-state=checked]]:bg-green-950"
-              key={plan.id}
-            >
-              <RadioGroupItem
-                value={plan.id}
-                id={plan.name}
-                className="shadow-none data-[state=checked]:border-green-600 data-[state=checked]:bg-green-600 *:data-[slot=radio-group-indicator]:[&>svg]:fill-white *:data-[slot=radio-group-indicator]:[&>svg]:stroke-white"
-              />
-              <div className="grid gap-1 font-normal">
-                <div className="font-medium">{plan.name}</div>
-                <div className="text-muted-foreground leading-snug">
-                  {plan.description}
-                </div>
-              </div>
-            </Label>
-          ))}
-        </RadioGroup>
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-md flex-col gap-12">
+        <RadioGroupBasic />
+        <RadioGroupWithDescriptions />
+        <RadioGroupWithFieldSet />
+        <RadioGroupGrid />
+        <RadioGroupDisabled />
+        <RadioGroupInvalid />
       </div>
     </div>
+  )
+}
+
+function RadioGroupBasic() {
+  return (
+    <Frame title="Basic">
+      <RadioGroup defaultValue="comfortable">
+        <Field orientation="horizontal">
+          <RadioGroupItem value="default" id="r1" />
+          <FieldLabel htmlFor="r1" className="font-normal">
+            Default
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem value="comfortable" id="r2" />
+          <FieldLabel htmlFor="r2" className="font-normal">
+            Comfortable
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem value="compact" id="r3" />
+          <FieldLabel htmlFor="r3" className="font-normal">
+            Compact
+          </FieldLabel>
+        </Field>
+      </RadioGroup>
+    </Frame>
+  )
+}
+
+function RadioGroupWithDescriptions() {
+  return (
+    <Frame title="With Descriptions">
+      <RadioGroup defaultValue="plus">
+        <FieldLabel htmlFor="plus-plan">
+          <Field orientation="horizontal">
+            <FieldContent>
+              <div className="font-medium">Plus</div>
+              <FieldDescription>
+                For individuals and small teams
+              </FieldDescription>
+            </FieldContent>
+            <RadioGroupItem value="plus" id="plus-plan" />
+          </Field>
+        </FieldLabel>
+        <FieldLabel htmlFor="pro-plan">
+          <Field orientation="horizontal">
+            <FieldContent>
+              <div className="font-medium">Pro</div>
+              <FieldDescription>For growing businesses</FieldDescription>
+            </FieldContent>
+            <RadioGroupItem value="pro" id="pro-plan" />
+          </Field>
+        </FieldLabel>
+        <FieldLabel htmlFor="enterprise-plan">
+          <Field orientation="horizontal">
+            <FieldContent>
+              <div className="font-medium">Enterprise</div>
+              <FieldDescription>
+                For large teams and enterprises
+              </FieldDescription>
+            </FieldContent>
+            <RadioGroupItem value="enterprise" id="enterprise-plan" />
+          </Field>
+        </FieldLabel>
+      </RadioGroup>
+    </Frame>
+  )
+}
+
+function RadioGroupWithFieldSet() {
+  return (
+    <Frame title="With FieldSet">
+      <FieldSet>
+        <FieldLegend>Battery Level</FieldLegend>
+        <FieldDescription>
+          Choose your preferred battery level.
+        </FieldDescription>
+        <RadioGroup defaultValue="medium">
+          <Field orientation="horizontal">
+            <RadioGroupItem value="high" id="battery-high" />
+            <FieldLabel htmlFor="battery-high" className="font-normal">
+              High
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal">
+            <RadioGroupItem value="medium" id="battery-medium" />
+            <FieldLabel htmlFor="battery-medium" className="font-normal">
+              Medium
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal">
+            <RadioGroupItem value="low" id="battery-low" />
+            <FieldLabel htmlFor="battery-low" className="font-normal">
+              Low
+            </FieldLabel>
+          </Field>
+        </RadioGroup>
+      </FieldSet>
+    </Frame>
+  )
+}
+
+function RadioGroupGrid() {
+  return (
+    <Frame title="Grid Layout">
+      <RadioGroup defaultValue="medium" className="grid grid-cols-2 gap-2">
+        <FieldLabel htmlFor="size-small">
+          <Field orientation="horizontal">
+            <RadioGroupItem value="small" id="size-small" />
+            <div className="font-medium">Small</div>
+          </Field>
+        </FieldLabel>
+        <FieldLabel htmlFor="size-medium">
+          <Field orientation="horizontal">
+            <RadioGroupItem value="medium" id="size-medium" />
+            <div className="font-medium">Medium</div>
+          </Field>
+        </FieldLabel>
+        <FieldLabel htmlFor="size-large">
+          <Field orientation="horizontal">
+            <RadioGroupItem value="large" id="size-large" />
+            <div className="font-medium">Large</div>
+          </Field>
+        </FieldLabel>
+        <FieldLabel htmlFor="size-xlarge">
+          <Field orientation="horizontal">
+            <RadioGroupItem value="xlarge" id="size-xlarge" />
+            <div className="font-medium">X-Large</div>
+          </Field>
+        </FieldLabel>
+      </RadioGroup>
+    </Frame>
+  )
+}
+
+function RadioGroupDisabled() {
+  return (
+    <Frame title="Disabled">
+      <RadioGroup defaultValue="option2" disabled>
+        <Field orientation="horizontal">
+          <RadioGroupItem value="option1" id="disabled-1" />
+          <FieldLabel htmlFor="disabled-1" className="font-normal">
+            Option 1
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem value="option2" id="disabled-2" />
+          <FieldLabel htmlFor="disabled-2" className="font-normal">
+            Option 2
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem value="option3" id="disabled-3" />
+          <FieldLabel htmlFor="disabled-3" className="font-normal">
+            Option 3
+          </FieldLabel>
+        </Field>
+      </RadioGroup>
+    </Frame>
+  )
+}
+
+function RadioGroupInvalid() {
+  return (
+    <Frame title="Invalid">
+      <FieldSet>
+        <FieldLegend>Notification Preferences</FieldLegend>
+        <FieldDescription>
+          Choose how you want to receive notifications.
+        </FieldDescription>
+        <RadioGroup defaultValue="email">
+          <Field orientation="horizontal" data-invalid>
+            <RadioGroupItem value="email" id="invalid-email" aria-invalid />
+            <FieldLabel htmlFor="invalid-email" className="font-normal">
+              Email only
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal" data-invalid>
+            <RadioGroupItem value="sms" id="invalid-sms" aria-invalid />
+            <FieldLabel htmlFor="invalid-sms" className="font-normal">
+              SMS only
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal" data-invalid>
+            <RadioGroupItem value="both" id="invalid-both" aria-invalid />
+            <FieldLabel htmlFor="invalid-both" className="font-normal">
+              Both Email & SMS
+            </FieldLabel>
+          </Field>
+        </RadioGroup>
+      </FieldSet>
+    </Frame>
   )
 }

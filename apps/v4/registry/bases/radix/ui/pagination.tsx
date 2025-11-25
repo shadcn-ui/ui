@@ -1,12 +1,8 @@
 import * as React from "react"
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  MoreHorizontalIcon,
-} from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/registry/new-york-v4/ui/button"
+import { Button } from "@/registry/bases/radix/ui/button"
+import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
@@ -14,7 +10,10 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
       role="navigation"
       aria-label="pagination"
       data-slot="pagination"
-      className={cn("cn-pagination", className)}
+      className={cn(
+        "cn-pagination mx-auto flex w-full justify-center",
+        className
+      )}
       {...props}
     />
   )
@@ -27,7 +26,7 @@ function PaginationContent({
   return (
     <ul
       data-slot="pagination-content"
-      className={cn("cn-pagination-content", className)}
+      className={cn("cn-pagination-content flex items-center", className)}
       {...props}
     />
   )
@@ -49,19 +48,19 @@ function PaginationLink({
   ...props
 }: PaginationLinkProps) {
   return (
-    <a
-      aria-current={isActive ? "page" : undefined}
-      data-slot="pagination-link"
-      data-active={isActive}
-      className={cn(
-        buttonVariants({
-          variant: isActive ? "outline" : "ghost",
-          size,
-        }),
-        className
-      )}
-      {...props}
-    />
+    <Button
+      asChild
+      variant={isActive ? "outline" : "ghost"}
+      size={size}
+      className={cn("cn-pagination-link", className)}
+    >
+      <a
+        aria-current={isActive ? "page" : undefined}
+        data-slot="pagination-link"
+        data-active={isActive}
+        {...props}
+      />
+    </Button>
   )
 }
 
@@ -76,8 +75,15 @@ function PaginationPrevious({
       className={cn("cn-pagination-previous", className)}
       {...props}
     >
-      <ChevronLeftIcon />
-      <span className="cn-pagination-previous-text">Previous</span>
+      <IconPlaceholder
+        lucide="ChevronLeftIcon"
+        tabler="IconChevronLeft"
+        hugeicons="ArrowLeft01Icon"
+        data-slot="icon-inline-start"
+      />
+      <span className="cn-pagination-previous-text hidden sm:block">
+        Previous
+      </span>
     </PaginationLink>
   )
 }
@@ -93,8 +99,13 @@ function PaginationNext({
       className={cn("cn-pagination-next", className)}
       {...props}
     >
-      <span className="cn-pagination-next-text">Next</span>
-      <ChevronRightIcon />
+      <span className="cn-pagination-next-text hidden sm:block">Next</span>
+      <IconPlaceholder
+        lucide="ChevronRightIcon"
+        tabler="IconChevronRight"
+        hugeicons="ArrowRight01Icon"
+        data-slot="icon-inline-end"
+      />
     </PaginationLink>
   )
 }
@@ -107,10 +118,17 @@ function PaginationEllipsis({
     <span
       aria-hidden
       data-slot="pagination-ellipsis"
-      className={cn("cn-pagination-ellipsis", className)}
+      className={cn(
+        "cn-pagination-ellipsis flex items-center justify-center",
+        className
+      )}
       {...props}
     >
-      <MoreHorizontalIcon className="cn-pagination-ellipsis-icon" />
+      <IconPlaceholder
+        lucide="MoreHorizontalIcon"
+        tabler="IconDots"
+        hugeicons="MoreHorizontalIcon"
+      />
       <span className="sr-only">More pages</span>
     </span>
   )
@@ -119,9 +137,9 @@ function PaginationEllipsis({
 export {
   Pagination,
   PaginationContent,
-  PaginationLink,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
   PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
 }

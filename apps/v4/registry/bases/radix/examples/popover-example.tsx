@@ -1,23 +1,20 @@
-import Frame from "@/app/(design)/design/components/frame"
 import { Button } from "@/registry/bases/radix/ui/button"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
-import { Label } from "@/registry/bases/radix/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
+import Frame from "@/app/(design)/design/components/frame"
 
 export default function PopoverExample() {
   return (
     <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="w-full">
-        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-12">
-          <PopoverBasic />
-          <PopoverWithForm />
-          <PopoverWithActions />
-          <PopoverAlignments />
-        </div>
+      <div className="flex flex-col gap-12">
+        <PopoverBasic />
+        <PopoverWithForm />
+        <PopoverAlignments />
       </div>
     </div>
   )
@@ -28,9 +25,11 @@ function PopoverBasic() {
     <Frame title="Basic">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline">Open popover</Button>
+          <Button variant="outline" className="w-fit">
+            Open Popover
+          </Button>
         </PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent align="start">
           <div className="grid gap-2">
             <h4 className="text-sm font-medium">Dimensions</h4>
             <p className="text-muted-foreground text-sm">
@@ -48,7 +47,9 @@ function PopoverWithForm() {
     <Frame title="With Form">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline">Open popover</Button>
+          <Button variant="outline" className="w-fit">
+            Open Popover
+          </Button>
         </PopoverTrigger>
         <PopoverContent className="w-80" align="start">
           <div className="grid gap-4">
@@ -58,70 +59,24 @@ function PopoverWithForm() {
                 Set the dimensions for the layer.
               </p>
             </div>
-            <div className="grid gap-2">
-              <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="width">Width</Label>
-                <Input
-                  id="width"
-                  defaultValue="100%"
-                  className="col-span-2 h-8"
-                />
-              </div>
-              <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="maxWidth">Max. width</Label>
-                <Input
-                  id="maxWidth"
-                  defaultValue="300px"
-                  className="col-span-2 h-8"
-                />
-              </div>
-              <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="height">Height</Label>
-                <Input
-                  id="height"
-                  defaultValue="25px"
-                  className="col-span-2 h-8"
-                />
-              </div>
-              <div className="grid grid-cols-3 items-center gap-4">
-                <Label htmlFor="maxHeight">Max. height</Label>
-                <Input
-                  id="maxHeight"
-                  defaultValue="none"
-                  className="col-span-2 h-8"
-                />
-              </div>
-            </div>
-          </div>
-        </PopoverContent>
-      </Popover>
-    </Frame>
-  )
-}
-
-function PopoverWithActions() {
-  return (
-    <Frame title="With Actions">
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button variant="outline">Open popover</Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-56">
-          <div className="grid gap-4">
-            <div className="grid gap-2">
-              <h4 className="text-sm font-medium">Are you sure?</h4>
-              <p className="text-muted-foreground text-sm">
-                This action cannot be undone.
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" className="flex-1">
-                Cancel
-              </Button>
-              <Button size="sm" className="flex-1">
-                Confirm
-              </Button>
-            </div>
+            <FieldGroup className="gap-2">
+              <Field orientation="horizontal">
+                <FieldLabel htmlFor="width">Width</FieldLabel>
+                <Input id="width" defaultValue="100%" className="h-8" />
+              </Field>
+              <Field orientation="horizontal">
+                <FieldLabel htmlFor="maxWidth">Max. width</FieldLabel>
+                <Input id="maxWidth" defaultValue="300px" className="h-8" />
+              </Field>
+              <Field orientation="horizontal">
+                <FieldLabel htmlFor="height">Height</FieldLabel>
+                <Input id="height" defaultValue="25px" className="h-8" />
+              </Field>
+              <Field orientation="horizontal">
+                <FieldLabel htmlFor="maxHeight">Max. height</FieldLabel>
+                <Input id="maxHeight" defaultValue="none" className="h-8" />
+              </Field>
+            </FieldGroup>
           </div>
         </PopoverContent>
       </Popover>
@@ -132,7 +87,7 @@ function PopoverWithActions() {
 function PopoverAlignments() {
   return (
     <Frame title="Alignments">
-      <div className="flex flex-col gap-4">
+      <div className="flex gap-6">
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="outline" size="sm">

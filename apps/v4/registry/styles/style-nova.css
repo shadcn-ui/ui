@@ -94,7 +94,7 @@
 
   /* Button */
   .cn-button {
-    @apply gap-2 rounded-lg border border-transparent bg-clip-padding text-sm font-medium inset-shadow-2xs inset-shadow-white/25 [&_svg:not([class*='size-'])]:size-4;
+    @apply gap-2 rounded-lg border border-transparent bg-clip-padding text-sm font-medium inset-shadow-2xs inset-shadow-white/25 disabled:grayscale [&_svg:not([class*='size-'])]:size-4;
 
     /* Variant */
     &.cn-button-variant-default {

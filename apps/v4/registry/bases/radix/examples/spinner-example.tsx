@@ -15,38 +15,60 @@ import {
   InputGroupInput,
 } from "@/registry/bases/radix/ui/input-group"
 import { Spinner } from "@/registry/bases/radix/ui/spinner"
+import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function SpinnerDemo() {
+export default function SpinnerExample() {
   return (
-    <div className="bg-background min-h-screen p-4">
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
+        <SpinnerBasic />
+        <SpinnerInButtons />
+        <SpinnerInBadges />
+        <SpinnerInInputGroup />
+        <SpinnerInEmpty />
+      </div>
+    </div>
+  )
+}
+
+function SpinnerBasic() {
+  return (
+    <Frame title="Basic">
       <div className="flex items-center gap-6">
         <Spinner />
         <Spinner className="size-8" />
       </div>
-      <div className="flex items-center gap-6">
+    </Frame>
+  )
+}
+
+function SpinnerInButtons() {
+  return (
+    <Frame title="In Buttons">
+      <div className="flex flex-wrap items-center gap-4">
         <Button>
-          <Spinner /> Submit
+          <Spinner data-slot="icon-align" /> Submit
         </Button>
         <Button disabled>
-          <Spinner /> Disabled
-        </Button>
-        <Button size="sm">
-          <Spinner /> Small
+          <Spinner data-slot="icon-align" /> Disabled
         </Button>
         <Button variant="outline" disabled>
-          <Spinner /> Outline
+          <Spinner data-slot="icon-align" /> Outline
         </Button>
         <Button variant="outline" size="icon" disabled>
-          <Spinner />
+          <Spinner data-slot="icon-align" />
           <span className="sr-only">Loading...</span>
         </Button>
-        <Button variant="destructive" disabled>
-          <Spinner />
-          Remove
-        </Button>
       </div>
-      <div className="flex items-center gap-6">
+    </Frame>
+  )
+}
+
+function SpinnerInBadges() {
+  return (
+    <Frame title="In Badges">
+      <div className="flex flex-wrap items-center gap-4">
         <Badge>
           <Spinner />
           Badge
@@ -64,18 +86,30 @@ export default function SpinnerDemo() {
           Badge
         </Badge>
       </div>
-      <div className="flex max-w-xs items-center gap-6">
-        <Field>
-          <FieldLabel htmlFor="input-group-spinner">Input Group</FieldLabel>
-          <InputGroup>
-            <InputGroupInput id="input-group-spinner" />
-            <InputGroupAddon>
-              <Spinner />
-            </InputGroupAddon>
-          </InputGroup>
-        </Field>
-      </div>
-      <Empty className="bg-muted min-h-[50svh] rounded-lg">
+    </Frame>
+  )
+}
+
+function SpinnerInInputGroup() {
+  return (
+    <Frame title="In Input Group">
+      <Field>
+        <FieldLabel htmlFor="input-group-spinner">Input Group</FieldLabel>
+        <InputGroup>
+          <InputGroupInput id="input-group-spinner" />
+          <InputGroupAddon>
+            <Spinner />
+          </InputGroupAddon>
+        </InputGroup>
+      </Field>
+    </Frame>
+  )
+}
+
+function SpinnerInEmpty() {
+  return (
+    <Frame title="In Empty State">
+      <Empty className="min-h-[300px]">
         <EmptyHeader>
           <EmptyMedia variant="icon">
             <Spinner />
@@ -105,6 +139,6 @@ export default function SpinnerDemo() {
           </Button>
         </EmptyContent>
       </Empty>
-    </div>
+    </Frame>
   )
 }

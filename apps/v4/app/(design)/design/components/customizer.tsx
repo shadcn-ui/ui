@@ -97,8 +97,8 @@ export function Customizer() {
                       <ItemTitle className="text-xs font-medium">
                         {preset.title}
                       </ItemTitle>
-                      <ItemDescription>
-                        {preset.style} / {preset.theme} / {preset.iconLibrary}
+                      <ItemDescription className="line-clamp-1 text-pretty">
+                        {preset.iconLibrary} / {preset.font}
                       </ItemDescription>
                     </ItemContent>
                   </Item>

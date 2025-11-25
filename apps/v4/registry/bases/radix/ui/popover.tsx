@@ -29,7 +29,10 @@ function PopoverContent({
         data-slot="popover-content"
         align={align}
         sideOffset={sideOffset}
-        className={cn("cn-popover-content", className)}
+        className={cn(
+          "cn-popover-content z-50 w-72 origin-(--radix-popover-content-transform-origin) outline-hidden",
+          className
+        )}
         {...props}
       />
     </PopoverPrimitive.Portal>

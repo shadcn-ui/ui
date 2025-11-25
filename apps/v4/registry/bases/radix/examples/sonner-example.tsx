@@ -4,131 +4,188 @@ import * as React from "react"
 import { toast } from "sonner"
 
 import { Button } from "@/registry/bases/radix/ui/button"
+import { Toaster } from "@/registry/bases/radix/ui/sonner"
+import Frame from "@/app/(design)/design/components/frame"
 
-const promiseCode = "`${data.name} toast has been added`"
-
-const allTypes = [
-  {
-    name: "Default",
-    snippet: `toast('Event has been created')`,
-    action: () => toast("Event has been created"),
-  },
-  {
-    name: "Description",
-    snippet: `toast.message('Event has been created', {
-  description: 'Monday, January 3rd at 6:00pm',
-})`,
-    action: () =>
-      toast("Event has been created", {
-        description: "Monday, January 3rd at 6:00pm",
-      }),
-  },
-  {
-    name: "Success",
-    snippet: `toast.success('Event has been created')`,
-    action: () => toast.success("Event has been created"),
-  },
-  {
-    name: "Info",
-    snippet: `toast.info('Be at the area 10 minutes before the event time')`,
-    action: () => toast.info("Be at the area 10 minutes before the event time"),
-  },
-  {
-    name: "Warning",
-    snippet: `toast.warning('Event start time cannot be earlier than 8am')`,
-    action: () => toast.warning("Event start time cannot be earlier than 8am"),
-  },
-  {
-    name: "Error",
-    snippet: `toast.error('Event has not been created')`,
-    action: () => toast.error("Event has not been created"),
-  },
-  {
-    name: "Action",
-    action: () =>
-      toast.message("Event has been created", {
-        action: {
-          label: "Undo",
-          onClick: () => console.log("Undo"),
-        },
-      }),
-  },
-  {
-    name: "Cancel",
-    action: () =>
-      toast.message("Event has been created", {
-        cancel: {
-          label: "Cancel",
-          onClick: () => console.log("Cancel"),
-        },
-      }),
-  },
-  {
-    name: "Promise",
-    snippet: `const promise = () => new Promise((resolve) => setTimeout(() => resolve({ name: 'Sonner' }), 2000));
-
-toast.promise(promise, {
-  loading: 'Loading...',
-  success: (data) => {
-    return ${promiseCode};
-  },
-  error: 'Error',
-});`,
-    action: () =>
-      toast.promise<{ name: string }>(
-        () =>
-          new Promise((resolve) => {
-            setTimeout(() => {
-              resolve({ name: "Sonner" })
-            }, 2000)
-          }),
-        {
-          loading: "Loading...",
-          success: (data) => {
-            return `${data.name} toast has been added`
-          },
-          error: "Error",
-        }
-      ),
-  },
-]
-
-export default function SonnerDemo() {
-  const [activeType, setActiveType] = React.useState(allTypes[0])
+export default function SonnerExample() {
   return (
-    <div className="bg-background min-h-screen p-4">
-      <div className="flex flex-wrap gap-4">
-        <Button onClick={() => toast("My first toast")} variant="outline">
-          Give me a toast
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() =>
-            toast("Event has been created", {
-              description: "Sunday, December 03, 2023 at 9:00 AM",
-              action: {
-                label: "Undo",
-                onClick: () => console.log("Undo"),
-              },
-            })
-          }
-        >
-          Show Toast
-        </Button>
-        {allTypes.map((type) => (
-          <Button
-            variant="ghost"
-            data-active={activeType.name === type.name}
-            onClick={() => {
-              type.action()
-              setActiveType(type)
-            }}
-            key={type.name}
-          >
-            {type.name}
-          </Button>
-        ))}
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
+        <SonnerBasic />
+        <SonnerWithDescription />
+        <SonnerSuccess />
+        <SonnerInfo />
+        <SonnerWarning />
+        <SonnerError />
+        <SonnerWithAction />
+        <SonnerWithCancel />
+        <SonnerPromise />
+        <Toaster position="top-center" />
       </div>
     </div>
+  )
+}
+
+function SonnerBasic() {
+  return (
+    <Frame title="Basic">
+      <Button
+        onClick={() => toast("Event has been created")}
+        variant="outline"
+        className="w-fit"
+      >
+        Show Toast
+      </Button>
+    </Frame>
+  )
+}
+
+function SonnerWithDescription() {
+  return (
+    <Frame title="With Description">
+      <Button
+        onClick={() =>
+          toast("Event has been created", {
+            description: "Monday, January 3rd at 6:00pm",
+          })
+        }
+        variant="outline"
+        className="w-fit"
+      >
+        Show Toast
+      </Button>
+    </Frame>
+  )
+}
+
+function SonnerSuccess() {
+  return (
+    <Frame title="Success">
+      <Button
+        onClick={() => toast.success("Event has been created")}
+        variant="outline"
+        className="w-fit"
+      >
+        Show Toast
+      </Button>
+    </Frame>
+  )
+}
+
+function SonnerInfo() {
+  return (
+    <Frame title="Info">
+      <Button
+        onClick={() =>
+          toast.info("Be at the area 10 minutes before the event time")
+        }
+        variant="outline"
+        className="w-fit"
+      >
+        Show Toast
+      </Button>
+    </Frame>
+  )
+}
+
+function SonnerWarning() {
+  return (
+    <Frame title="Warning">
+      <Button
+        onClick={() =>
+          toast.warning("Event start time cannot be earlier than 8am")
+        }
+        variant="outline"
+        className="w-fit"
+      >
+        Show Toast
+      </Button>
+    </Frame>
+  )
+}
+
+function SonnerError() {
+  return (
+    <Frame title="Error">
+      <Button
+        onClick={() => toast.error("Event has not been created")}
+        variant="outline"
+        className="w-fit"
+      >
+        Show Toast
+      </Button>
+    </Frame>
+  )
+}
+
+function SonnerWithAction() {
+  return (
+    <Frame title="With Action">
+      <Button
+        onClick={() =>
+          toast("Event has been created", {
+            action: {
+              label: "Undo",
+              onClick: () => console.log("Undo"),
+            },
+          })
+        }
+        variant="outline"
+        className="w-fit"
+      >
+        Show Toast
+      </Button>
+    </Frame>
+  )
+}
+
+function SonnerWithCancel() {
+  return (
+    <Frame title="With Cancel">
+      <Button
+        onClick={() =>
+          toast("Event has been created", {
+            cancel: {
+              label: "Cancel",
+              onClick: () => console.log("Cancel"),
+            },
+          })
+        }
+        variant="outline"
+        className="w-fit"
+      >
+        Show Toast
+      </Button>
+    </Frame>
+  )
+}
+
+function SonnerPromise() {
+  return (
+    <Frame title="Promise">
+      <Button
+        onClick={() =>
+          toast.promise<{ name: string }>(
+            () =>
+              new Promise((resolve) => {
+                setTimeout(() => {
+                  resolve({ name: "Sonner" })
+                }, 2000)
+              }),
+            {
+              loading: "Loading...",
+              success: (data) => {
+                return `${data.name} toast has been added`
+              },
+              error: "Error",
+            }
+          )
+        }
+        variant="outline"
+        className="w-fit"
+      >
+        Show Toast
+      </Button>
+    </Frame>
   )
 }
