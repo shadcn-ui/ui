@@ -20,28 +20,25 @@ This repository is structured as follows:
 
 ```
 apps
-└── www
+└── v4
     ├── app
     ├── components
     ├── content
     └── registry
-        ├── default
-        │   ├── example
-        │   └── ui
-        └── new-york
+        └── new-york-v4
             ├── example
             └── ui
 packages
-└── cli
+└── shadcn
 ```
 
-| Path                  | Description                              |
-| --------------------- | ---------------------------------------- |
-| `apps/www/app`        | The Next.js application for the website. |
-| `apps/www/components` | The React components for the website.    |
-| `apps/www/content`    | The content for the website.             |
-| `apps/www/registry`   | The registry for the components.         |
-| `packages/cli`        | The `shadcn-ui` package.                 |
+| Path                 | Description                              |
+| -------------------- | ---------------------------------------- |
+| `apps/v4/app`        | The Next.js application for the website. |
+| `apps/v4/components` | The React components for the website.    |
+| `apps/v4/content`    | The content for the website.             |
+| `apps/v4/registry`   | The registry for the components.         |
+| `packages/shadcn`    | The `shadcn` package.                    |
 
 ## Development
 
@@ -82,32 +79,26 @@ You can use the `pnpm --filter=[WORKSPACE]` command to start the development pro
 1. To run the `ui.shadcn.com` website:
 
 ```bash
-pnpm --filter=www dev
+pnpm --filter=v4 dev
 ```
 
-2. To run the `shadcn-ui` package:
+2. To run the `shadcn` package:
 
 ```bash
-pnpm --filter=shadcn-ui dev
+pnpm --filter=shadcn dev
 ```
 
 ## Running the CLI Locally
 
 To run the CLI locally, you can follow the workflow:
 
-1. Start by running the registry (main site) to make sure the components are up to date:
+1. Start by running the dev server:
 
    ```bash
-   pnpm v4:dev
+   pnpm dev
    ```
 
-2. Run the development script for the CLI:
-
-   ```bash
-   pnpm shadcn:dev
-   ```
-
-3. In another terminal tab, test the CLI by running:
+2. In another terminal tab, test the CLI by running:
 
    ```bash
    pnpm shadcn
@@ -119,36 +110,27 @@ To run the CLI locally, you can follow the workflow:
    pnpm shadcn <init | add | ...> -c ~/Desktop/my-app
    ```
 
-4. To run the tests for the CLI:
-
-   ```bash
-   pnpm --filter=shadcn test
-   ```
-
 This workflow ensures that you are running the most recent version of the registry and testing the CLI properly in your local environment.
 
 ## Documentation
 
-The documentation for this project is located in the `www` workspace. You can run the documentation locally by running the following command:
+The documentation for this project is located in the `v4` workspace. You can run the documentation locally by running the following command:
 
 ```bash
-pnpm --filter=www dev
+pnpm --filter=v4 dev
 ```
 
-Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/www/content/docs` directory.
+Documentation is written using [MDX](https://mdxjs.com). You can find the documentation files in the `apps/v4/content/docs` directory.
 
 ## Components
 
-We use a registry system for developing components. You can find the source code for the components under `apps/www/registry`. The components are organized by styles.
+We use a registry system for developing components. You can find the source code for the components under `apps/v4/registry`. The components are organized by styles.
 
 ```bash
 apps
-└── www
+└── v4
     └── registry
-        ├── default
-        │   ├── example
-        │   └── ui
-        └── new-york
+        └── new-york-v4
             ├── example
             └── ui
 ```
@@ -157,7 +139,7 @@ When adding or modifying components, please ensure that:
 
 1. You make the changes for every style.
 2. You update the documentation.
-3. You run `pnpm build:registry` to update the registry.
+3. You run `pnpm registry:build` to update the registry.
 
 ## Commit Convention
 
@@ -196,9 +178,9 @@ If you have a request for a new component, please open a discussion on GitHub. W
 
 ## CLI
 
-The `shadcn-ui` package is a CLI for adding components to your project. You can find the documentation for the CLI [here](https://ui.shadcn.com/docs/cli).
+The `shadcn` package is a CLI for adding components to your project. You can find the documentation for the CLI [here](https://ui.shadcn.com/docs/cli).
 
-Any changes to the CLI should be made in the `packages/cli` directory. If you can, it would be great if you could add tests for your changes.
+Any changes to the CLI should be made in the `packages/shadcn` directory. If you can, it would be great if you could add tests for your changes.
 
 ## Testing
 

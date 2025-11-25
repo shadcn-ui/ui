@@ -121,7 +121,33 @@ describe("createProject", () => {
 
     expect(execa).toHaveBeenCalledWith(
       "npx",
-      expect.arrayContaining(["create-next-app@latest", "/test/my-app"]),
+      expect.arrayContaining(["create-next-app@15", "/test/my-app"]),
+      expect.any(Object)
+    )
+  })
+
+  it("should create a Next.js 16 project when next-16 template is selected", async () => {
+    vi.mocked(prompts).mockResolvedValue({ type: "next-16", name: "my-app" })
+
+    const result = await createProject({
+      cwd: "/test",
+      force: false,
+      srcDir: false,
+    })
+
+    expect(result).toEqual({
+      projectPath: "/test/my-app",
+      projectName: "my-app",
+      template: TEMPLATES["next-16"],
+    })
+
+    expect(execa).toHaveBeenCalledWith(
+      "npx",
+      expect.arrayContaining([
+        "create-next-app@latest",
+        "/test/my-app",
+        "--no-react-compiler",
+      ]),
       expect.any(Object)
     )
   })
@@ -194,5 +220,39 @@ describe("createProject", () => {
     })
 
     expect(mockExit).toHaveBeenCalledWith(1)
+  })
+
+  it("should include --no-react-compiler flag for Next.js 16 (latest)", async () => {
+    vi.mocked(prompts).mockResolvedValue({ type: "next-16", name: "my-app" })
+
+    await createProject({
+      cwd: "/test",
+      force: false,
+      srcDir: false,
+    })
+
+    expect(execa).toHaveBeenCalledWith(
+      "npx",
+      expect.arrayContaining(["--no-react-compiler"]),
+      expect.any(Object)
+    )
+  })
+
+  it("should not include --no-react-compiler flag for Next.js 15", async () => {
+    vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
+
+    await createProject({
+      cwd: "/test",
+      force: false,
+      srcDir: false,
+    })
+
+    const execaCalls = vi.mocked(execa).mock.calls
+    const createNextCall = execaCalls.find(
+      (call) => Array.isArray(call[1]) && call[1].includes("create-next-app@15")
+    )
+
+    expect(createNextCall).toBeDefined()
+    expect(createNextCall?.[1]).not.toContain("--no-react-compiler")
   })
 })
