@@ -516,5 +516,12 @@
     "url": "https://uicapsule.com/r/{name}.json",
     "description": "A curated collection of components that spark joy. Featuring interactive concepts, design experiments, and components in the intersection of AI/UI.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='1026' height='1026' viewBox='0 0 1026 1026'><g fill='none' fill-rule='evenodd'><rect width='1026' height='1026' fill='#111827' rx='180'/><path fill='#FFF' d='M737.064151,576.072011 L737.064151,384.064123 L679.928739,351.133373 L679.928739,674.874909 L810,599.89418 L809.996445,683.985857 L607,801 L607,225 L809.996445,342.167965 L809.99289,534.035047 L737.064151,576.072011 M477,192.025199 L477,833.972434 L513.500593,855 L550,833.972434 L550,192.025199 L513.500593,171 L477,192.025199 M347.067706,674.877164 L289.932294,641.940159 L289.932294,299.97795 L217,342.015345 L217,683.988204 L420,801 L420,225 L347.067706,267.035029 L347.067706,674.877164'/></g></svg>"
+  },
+  {
+    "name": "@ui-layouts",
+    "homepage": "https://ui-layouts.com/",
+    "url": "https://ui-layouts.com/r/{name}.json",
+    "description": "UI Layouts offers components, effects, design tools, and ready-made blocks that make building modern interfaces more efficient—built with React, Next.js, Tailwind CSS, and shadcn/ui.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'><rect width='500' height='500' fill='var(--foreground)'/><path d='M150 100 C150 100, 170 80, 200 90 C230 100, 250 120, 250 120 C250 120, 270 100, 300 110 C330 120, 350 100, 350 100 L360 150 C360 150, 380 130, 400 140 C420 150, 400 170, 400 170 L400 330 C400 330, 420 310, 400 320 C380 330, 360 310, 360 310 L350 360 C350 360, 330 340, 300 350 C270 360, 250 340, 250 340 C250 340, 230 360, 200 350 C170 340, 150 360, 150 360 L140 310 C140 310, 120 330, 100 320 C80 310, 100 290, 100 290 L100 170 C100 170, 80 190, 100 180 C120 170, 140 190, 140 190 Z' fill='var(--background)'/><rect x='280' y='180' width='60' height='140' fill='var(--foreground)'/></svg>"
   }
 ]
