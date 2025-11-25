@@ -4,6 +4,7 @@ import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
 import { Index } from "@/registry/__index__"
+import { getActiveStyle } from "@/registry/styles"
 
 interface UnistNode {
   type: string
@@ -26,6 +27,8 @@ export interface UnistTree {
 
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
+    const activeStyle = await getActiveStyle()
+
     visit(tree, (node: UnistNode) => {
       // src prop overrides both name and fileName.
       const { value: srcPath } =
@@ -111,7 +114,7 @@ export function rehypeComponent() {
         }
 
         try {
-          const component = Index[name]
+          const component = Index[activeStyle.name]?.[name]
           const src = component.files[0]?.path
 
           // Read the source file.

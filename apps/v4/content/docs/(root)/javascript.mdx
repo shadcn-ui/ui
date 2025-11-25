@@ -9,20 +9,24 @@ However we provide a JavaScript version of the components as well. The JavaScrip
 
 To opt-out of TypeScript, you can use the `tsx` flag in your `components.json` file.
 
-```json {10} title="components.json" showLineNumbers
+```json {4} title="components.json" showLineNumbers
 {
-  "style": "default",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": false,
   "tailwind": {
-    "config": "tailwind.config.js",
+    "config": "",
     "css": "src/app/globals.css",
     "baseColor": "zinc",
     "cssVariables": true
   },
-  "rsc": false,
-  "tsx": false,
+  "iconLibrary": "lucide",
   "aliases": {
-    "utils": "~/lib/utils",
-    "components": "~/components"
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   }
 }
 ```

@@ -80,7 +80,8 @@ export const initOptionsSchema = z.object({
         return true
       },
       {
-        message: "Invalid template. Please use 'next' or 'next-monorepo'.",
+        message:
+          "Invalid template. Please use 'next', 'next-16' or 'next-monorepo'.",
       }
     ),
   baseColor: z
@@ -109,7 +110,7 @@ export const init = new Command()
   .argument("[components...]", "names, url or local path to component")
   .option(
     "-t, --template <template>",
-    "the template to use. (next, next-monorepo)"
+    "the template to use. (next, next-16, next-monorepo)"
   )
   .option(
     "-b, --base-color <base-color>",

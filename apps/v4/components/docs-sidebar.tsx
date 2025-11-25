@@ -24,8 +24,8 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/components",
   },
   {
-    name: "Registry",
-    href: "/docs/registry",
+    name: "Directory",
+    href: "/docs/directory",
   },
   {
     name: "MCP Server",
@@ -51,12 +51,12 @@ export function DocsSidebar({
 
   return (
     <Sidebar
-      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)+2rem)] bg-transparent lg:flex"
+      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)-4rem)] overscroll-none bg-transparent lg:flex"
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="no-scrollbar overflow-x-hidden px-2 pb-12">
-        <div className="h-(--top-spacing) shrink-0" />
+      <SidebarContent className="no-scrollbar overflow-x-hidden px-2">
+        <div className="from-background via-background/80 to-background/50 sticky -top-1 z-10 h-8 shrink-0 bg-gradient-to-b blur-xs" />
         <SidebarGroup>
           <SidebarGroupLabel className="text-muted-foreground font-medium">
             Sections
@@ -141,6 +141,7 @@ export function DocsSidebar({
             </SidebarGroup>
           )
         })}
+        <div className="from-background via-background/80 to-background/50 sticky -bottom-1 z-10 h-16 shrink-0 bg-gradient-to-t blur-xs" />
       </SidebarContent>
     </Sidebar>
   )

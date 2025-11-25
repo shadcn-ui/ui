@@ -7,10 +7,7 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/toggle-group#api-reference
 ---
 
-<ComponentPreview
-  name="toggle-group-demo"
-  description="A toggle group with three items."
-/>
+<ComponentPreview name="toggle-group-spacing" />
 
 ## Installation
 
@@ -66,13 +63,6 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 ## Examples
 
-### Default
-
-<ComponentPreview
-  name="toggle-group-demo"
-  description="A toggle group with three items."
-/>
-
 ### Outline
 
 <ComponentPreview
@@ -107,3 +97,42 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
   name="toggle-group-disabled"
   description="A disabled toggle group."
 />
+
+### Spacing
+
+Use `spacing={2}` to add spacing between toggle group items.
+
+<ComponentPreview
+  name="toggle-group-spacing"
+  description="A toggle group with spacing."
+/>
+
+## API Reference
+
+### ToggleGroup
+
+The main component that wraps toggle group items.
+
+| Prop        | Type                        | Default     |
+| ----------- | --------------------------- | ----------- |
+| `type`      | `"single" \| "multiple"`    | `"single"`  |
+| `variant`   | `"default" \| "outline"`    | `"default"` |
+| `size`      | `"default" \| "sm" \| "lg"` | `"default"` |
+| `spacing`   | `number`                    | `0`         |
+| `className` | `string`                    |             |
+
+```tsx
+<ToggleGroup type="single" variant="outline" size="sm">
+  <ToggleGroupItem value="a">A</ToggleGroupItem>
+  <ToggleGroupItem value="b">B</ToggleGroupItem>
+</ToggleGroup>
+```
+
+### ToggleGroupItem
+
+Individual toggle items within a toggle group. Remember to add an `aria-label` to each item for accessibility.
+
+| Prop        | Type     | Default  |
+| ----------- | -------- | -------- |
+| `value`     | `string` | Required |
+| `className` | `string` |          |

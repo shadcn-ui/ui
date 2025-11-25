@@ -1,14 +1,15 @@
 import fs from "fs"
 
 import { Index } from "@/registry/__index__"
+import { type Style } from "@/registry/styles"
 
-export function processMdxForLLMs(content: string) {
+export function processMdxForLLMs(content: string, style: Style["name"]) {
   const componentPreviewRegex =
-    /<ComponentPreview\s+[^>]*name="([^"]+)"[^>]*\/>/g
+    /<ComponentPreview[\s\S]*?name="([^"]+)"[\s\S]*?\/>/g
 
   return content.replace(componentPreviewRegex, (match, name) => {
     try {
-      const component = Index[name]
+      const component = Index[style]?.[name]
       if (!component?.files) {
         return match
       }

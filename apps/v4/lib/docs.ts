@@ -6,6 +6,7 @@ export const PAGES_NEW = [
   "/docs/components/item",
   "/docs/components/kbd",
   "/docs/components/spinner",
+  "/docs/components/native-select",
 ]
 
 export const PAGES_UPDATED = ["/docs/components/button"]

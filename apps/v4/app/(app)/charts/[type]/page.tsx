@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { ChartDisplay } from "@/components/chart-display"
+import { getActiveStyle } from "@/registry/styles"
 import { charts } from "@/app/(app)/charts/charts"
 
 export const revalidate = false
@@ -41,6 +42,7 @@ export default async function ChartPage({ params }: ChartPageProps) {
 
   const chartType = type as ChartType
   const chartList = charts[chartType]
+  const activeStyle = await getActiveStyle()
 
   return (
     <div className="grid flex-1 gap-12 lg:gap-24">
@@ -54,6 +56,7 @@ export default async function ChartPage({ params }: ChartPageProps) {
             <ChartDisplay
               key={chart.id}
               name={chart.id}
+              styleName={activeStyle.name}
               className={cn(chart.fullWidth && "md:col-span-2 lg:col-span-3")}
             >
               <chart.component />

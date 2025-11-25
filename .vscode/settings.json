@@ -10,6 +10,6 @@
     "**/fixtures/**"
   ],
   "files.exclude": {
-    "apps/www": true
+    "deprecated": true
   }
 }

@@ -31,7 +31,7 @@ We designed the `chart` component with composition in mind. **You build your cha
 ```tsx showLineNumbers /ChartContainer/ /ChartTooltipContent/
 import { Bar, BarChart } from "recharts"
 
-import { ChartContainer, ChartTooltipContent } from "@/components/ui/charts"
+import { ChartContainer, ChartTooltipContent } from "@/components/ui/chart"
 
 export function MyChart() {
   return (
@@ -193,7 +193,7 @@ You can now build your chart using Recharts components.
 
 <Callout className="mt-4 bg-amber-50 border-amber-200 dark:bg-amber-950/50 dark:border-amber-950">
 
-**Important:** Remember to set a `min-h-[VALUE]` on the `ChartContainer` component. This is required for the chart be responsive.
+**Important:** Remember to set a `min-h-[VALUE]` on the `ChartContainer` component. This is required for the chart to be responsive.
 
 </Callout>
 
@@ -370,7 +370,7 @@ The chart config is where you define the labels, icons and colors for a chart.
 
 It is intentionally decoupled from chart data.
 
-This allows you to share config and color tokens between charts. It can also works independently for cases where your data or color tokens live remotely or in a different format.
+This allows you to share config and color tokens between charts. It can also work independently for cases where your data or color tokens live remotely or in a different format.
 
 ```tsx showLineNumbers /ChartConfig/
 import { Monitor } from "lucide-react"
@@ -394,7 +394,7 @@ const chartConfig = {
 
 ## Theming
 
-Charts has built-in support for theming. You can use css variables (recommended) or color values in any color format, such as hex, hsl or oklch.
+Charts have built-in support for theming. You can use css variables (recommended) or color values in any color format, such as hex, hsl or oklch.
 
 ### CSS Variables
 

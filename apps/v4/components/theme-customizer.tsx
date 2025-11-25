@@ -1,13 +1,15 @@
 "use client"
 
 import * as React from "react"
+import { IconCheck, IconCopy } from "@tabler/icons-react"
 import template from "lodash/template"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
 
+import { THEMES } from "@/lib/themes"
 import { cn } from "@/lib/utils"
 import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
+import { BaseColor, baseColors, baseColorsOKLCH } from "@/registry/base-colors"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
@@ -41,20 +43,11 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
-import {
-  BaseColor,
-  baseColors,
-  baseColorsOKLCH,
-} from "@/registry/registry-base-colors"
 
 interface BaseColorOKLCH {
   light: Record<string, string>
   dark: Record<string, string>
 }
-
-const THEMES = baseColors.filter(
-  (theme) => !["slate", "stone", "gray", "zinc"].includes(theme.name)
-)
 
 export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
   const { activeTheme = "neutral", setActiveTheme } = useThemeConfig()
@@ -131,9 +124,7 @@ export function CopyCodeButton({
         </DrawerTrigger>
         <DrawerContent className="h-auto">
           <DrawerHeader>
-            <DrawerTitle className="capitalize">
-              {activeThemeName === "neutral" ? "Default" : activeThemeName}
-            </DrawerTitle>
+            <DrawerTitle className="capitalize">{activeThemeName}</DrawerTitle>
             <DrawerDescription>
               Copy and paste the following code into your CSS file.
             </DrawerDescription>
@@ -143,15 +134,20 @@ export function CopyCodeButton({
       </Drawer>
       <Dialog>
         <DialogTrigger asChild>
-          <Button className={cn("hidden sm:flex", className)} {...props}>
-            Copy Code
+          <Button
+            data-size={props.size}
+            className={cn("group/button hidden sm:flex", className)}
+            {...props}
+          >
+            <IconCopy />
+            <span className="group-data-[size=icon-sm]/button:sr-only">
+              Copy Code
+            </span>
           </Button>
         </DialogTrigger>
-        <DialogContent className="outline-none md:max-w-3xl">
+        <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
           <DialogHeader>
-            <DialogTitle className="capitalize">
-              {activeThemeName === "neutral" ? "Default" : activeThemeName}
-            </DialogTitle>
+            <DialogTitle className="capitalize">{activeThemeName}</DialogTitle>
             <DialogDescription>
               Copy and paste the following code into your CSS file.
             </DialogDescription>
@@ -165,7 +161,7 @@ export function CopyCodeButton({
 
 function CustomizerCode({ themeName }: { themeName: string }) {
   const [hasCopied, setHasCopied] = React.useState(false)
-  const [tailwindVersion, setTailwindVersion] = React.useState("v4")
+  const [tailwindVersion, setTailwindVersion] = React.useState("v4-oklch")
   const activeTheme = React.useMemo(
     () => baseColors.find((theme) => theme.name === themeName),
     [themeName]
@@ -191,10 +187,11 @@ function CustomizerCode({ themeName }: { themeName: string }) {
         className="min-w-0 px-4 pb-4 md:p-0"
       >
         <TabsList>
-          <TabsTrigger value="v4">Tailwind v4</TabsTrigger>
+          <TabsTrigger value="v4-oklch">OKLCH</TabsTrigger>
+          <TabsTrigger value="v4-hsl">HSL</TabsTrigger>
           <TabsTrigger value="v3">Tailwind v3</TabsTrigger>
         </TabsList>
-        <TabsContent value="v4">
+        <TabsContent value="v4-oklch">
           <figure
             data-rehype-pretty-code-figure
             className="!mx-0 mt-0 rounded-lg"
@@ -216,14 +213,12 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
                 onClick={() => {
                   copyToClipboardWithMeta(
-                    tailwindVersion === "v3"
-                      ? getThemeCode(activeTheme, 0.65)
-                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
+                    getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
                     {
                       name: "copy_theme_code",
                       properties: {
                         theme: themeName,
-                        radius: 0.5,
+                        radius: 0.65,
                       },
                     }
                   )
@@ -231,7 +226,7 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 }}
               >
                 <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                {hasCopied ? <IconCheck /> : <IconCopy />}
               </Button>
               <code data-line-numbers data-language="css">
                 <span data-line className="line text-code-foreground">
@@ -246,7 +241,8 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     className="line text-code-foreground"
                     key={key}
                   >
-                    &nbsp;&nbsp;&nbsp;--{key}: {value};
+                    &nbsp;&nbsp;&nbsp;--{key}: <ColorIndicator color={value} />{" "}
+                    {value};
                   </span>
                 ))}
                 <span data-line className="line text-code-foreground">
@@ -264,9 +260,94 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     className="line text-code-foreground"
                     key={key}
                   >
-                    &nbsp;&nbsp;&nbsp;--{key}: {value};
+                    &nbsp;&nbsp;&nbsp;--{key}: <ColorIndicator color={value} />{" "}
+                    {value};
                   </span>
                 ))}
+                <span data-line className="line text-code-foreground">
+                  &nbsp;&#125;
+                </span>
+              </code>
+            </pre>
+          </figure>
+        </TabsContent>
+        <TabsContent value="v4-hsl">
+          <figure
+            data-rehype-pretty-code-figure
+            className="!mx-0 mt-0 rounded-lg"
+          >
+            <figcaption
+              className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+              data-rehype-pretty-code-title=""
+              data-language="css"
+              data-theme="github-dark github-light-default"
+            >
+              <Icons.css className="fill-foreground" />
+              app/globals.css
+            </figcaption>
+            <pre className="no-scrollbar max-h-[300px] min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 md:max-h-[450px]">
+              <Button
+                data-slot="copy-button"
+                size="icon"
+                variant="ghost"
+                className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
+                onClick={() => {
+                  copyToClipboardWithMeta(
+                    getThemeCodeHSLV4(activeTheme, 0.65),
+                    {
+                      name: "copy_theme_code",
+                      properties: {
+                        theme: themeName,
+                        radius: 0.65,
+                      },
+                    }
+                  )
+                  setHasCopied(true)
+                }}
+              >
+                <span className="sr-only">Copy</span>
+                {hasCopied ? <IconCheck /> : <IconCopy />}
+              </Button>
+              <code data-line-numbers data-language="css">
+                <span data-line className="line text-code-foreground">
+                  &nbsp;:root &#123;
+                </span>
+                <span data-line className="line text-code-foreground">
+                  &nbsp;&nbsp;&nbsp;--radius: 0.65rem;
+                </span>
+                {Object.entries(activeTheme?.cssVars.light || {}).map(
+                  ([key, value]) => (
+                    <span
+                      data-line
+                      className="line text-code-foreground"
+                      key={key}
+                    >
+                      &nbsp;&nbsp;&nbsp;--{key}:{" "}
+                      <ColorIndicator color={`hsl(${value})`} /> hsl({value});
+                    </span>
+                  )
+                )}
+                <span data-line className="line text-code-foreground">
+                  &nbsp;&#125;
+                </span>
+                <span data-line className="line text-code-foreground">
+                  &nbsp;
+                </span>
+                <span data-line className="line text-code-foreground">
+                  &nbsp;.dark &#123;
+                </span>
+                {Object.entries(activeTheme?.cssVars.dark || {}).map(
+                  ([key, value]) => (
+                    <span
+                      data-line
+                      className="line text-code-foreground"
+                      key={key}
+                    >
+                      &nbsp;&nbsp;&nbsp;--{key}:{" "}
+                      <ColorIndicator color={`hsl(${value})`} /> hsl({value});
+                    </span>
+                  )
+                )}
                 <span data-line className="line text-code-foreground">
                   &nbsp;&#125;
                 </span>
@@ -295,23 +376,18 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 variant="ghost"
                 className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
                 onClick={() => {
-                  copyToClipboardWithMeta(
-                    tailwindVersion === "v3"
-                      ? getThemeCode(activeTheme, 0.65)
-                      : getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
-                    {
-                      name: "copy_theme_code",
-                      properties: {
-                        theme: themeName,
-                        radius: 0.5,
-                      },
-                    }
-                  )
+                  copyToClipboardWithMeta(getThemeCode(activeTheme, 0.5), {
+                    name: "copy_theme_code",
+                    properties: {
+                      theme: themeName,
+                      radius: 0.5,
+                    },
+                  })
                   setHasCopied(true)
                 }}
               >
                 <span className="sr-only">Copy</span>
-                {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+                {hasCopied ? <IconCheck /> : <IconCopy />}
               </Button>
               <code data-line-numbers data-language="css">
                 <span data-line className="line">
@@ -322,10 +398,16 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["background"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.light["background"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["foreground"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.light["foreground"]};
                 </span>
                 {[
@@ -340,6 +422,13 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                   <React.Fragment key={prefix}>
                     <span data-line className="line">
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                      <ColorIndicator
+                        color={`hsl(${
+                          activeTheme?.cssVars.light[
+                            prefix as keyof typeof activeTheme.cssVars.light
+                          ]
+                        })`}
+                      />{" "}
                       {
                         activeTheme?.cssVars.light[
                           prefix as keyof typeof activeTheme.cssVars.light
@@ -349,6 +438,13 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     </span>
                     <span data-line className="line">
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                      <ColorIndicator
+                        color={`hsl(${
+                          activeTheme?.cssVars.light[
+                            `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
+                          ]
+                        })`}
+                      />{" "}
                       {
                         activeTheme?.cssVars.light[
                           `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
@@ -360,14 +456,23 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 ))}
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["border"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.light["border"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["input"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.light["input"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["ring"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.light["ring"]};
                 </span>
                 <span data-line className="line">
@@ -378,6 +483,13 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     <React.Fragment key={prefix}>
                       <span data-line className="line">
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                        <ColorIndicator
+                          color={`hsl(${
+                            activeTheme?.cssVars.light[
+                              prefix as keyof typeof activeTheme.cssVars.light
+                            ]
+                          })`}
+                        />{" "}
                         {
                           activeTheme?.cssVars.light[
                             prefix as keyof typeof activeTheme.cssVars.light
@@ -399,10 +511,16 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["background"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.dark["background"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["foreground"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.dark["foreground"]};
                 </span>
                 {[
@@ -417,6 +535,13 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                   <React.Fragment key={prefix}>
                     <span data-line className="line">
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                      <ColorIndicator
+                        color={`hsl(${
+                          activeTheme?.cssVars.dark[
+                            prefix as keyof typeof activeTheme.cssVars.dark
+                          ]
+                        })`}
+                      />{" "}
                       {
                         activeTheme?.cssVars.dark[
                           prefix as keyof typeof activeTheme.cssVars.dark
@@ -426,6 +551,13 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     </span>
                     <span data-line className="line">
                       &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                      <ColorIndicator
+                        color={`hsl(${
+                          activeTheme?.cssVars.dark[
+                            `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
+                          ]
+                        })`}
+                      />{" "}
                       {
                         activeTheme?.cssVars.dark[
                           `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
@@ -437,14 +569,23 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                 ))}
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["border"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.dark["border"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["input"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.dark["input"]};
                 </span>
                 <span data-line className="line">
                   &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["ring"]})`}
+                  />{" "}
                   {activeTheme?.cssVars.dark["ring"]};
                 </span>
                 {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
@@ -452,6 +593,13 @@ function CustomizerCode({ themeName }: { themeName: string }) {
                     <React.Fragment key={prefix}>
                       <span data-line className="line">
                         &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                        <ColorIndicator
+                          color={`hsl(${
+                            activeTheme?.cssVars.dark[
+                              prefix as keyof typeof activeTheme.cssVars.dark
+                            ]
+                          })`}
+                        />{" "}
                         {
                           activeTheme?.cssVars.dark[
                             prefix as keyof typeof activeTheme.cssVars.dark
@@ -474,6 +622,15 @@ function CustomizerCode({ themeName }: { themeName: string }) {
         </TabsContent>
       </Tabs>
     </>
+  )
+}
+
+function ColorIndicator({ color }: { color: string }) {
+  return (
+    <span
+      className="border-border/50 inline-block size-3 border"
+      style={{ backgroundColor: color }}
+    />
   )
 }
 
@@ -507,6 +664,27 @@ function getThemeCode(theme: BaseColor | undefined, radius: number) {
     colors: theme.cssVars,
     radius: radius.toString(),
   })
+}
+
+function getThemeCodeHSLV4(theme: BaseColor | undefined, radius: number) {
+  if (!theme) {
+    return ""
+  }
+
+  const rootSection =
+    ":root {\n  --radius: " +
+    radius +
+    "rem;\n" +
+    Object.entries(theme.cssVars.light)
+      .map((entry) => "  --" + entry[0] + ": hsl(" + entry[1] + ");")
+      .join("\n") +
+    "\n}\n\n.dark {\n" +
+    Object.entries(theme.cssVars.dark)
+      .map((entry) => "  --" + entry[0] + ": hsl(" + entry[1] + ");")
+      .join("\n") +
+    "\n}\n"
+
+  return rootSection
 }
 
 const BASE_STYLES_WITH_VARIABLES = `

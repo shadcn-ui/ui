@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ClipboardIcon } from "lucide-react"
+import { IconCheck, IconCopy } from "@tabler/icons-react"
 
 import { Event, trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
@@ -54,7 +54,7 @@ export function ChartCopyButton({
           {...props}
         >
           <span className="sr-only">Copy</span>
-          {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
+          {hasCopied ? <IconCheck /> : <IconCopy />}
         </Button>
       </TooltipTrigger>
       <TooltipContent className="bg-black text-white">Copy code</TooltipContent>
