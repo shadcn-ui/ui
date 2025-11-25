@@ -128,58 +128,55 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
 
   return (
     <Frame title="Basic">
-      <div className="flex flex-col gap-4">
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              role="combobox"
-              aria-expanded={open}
-              className="w-full justify-between md:max-w-[200px]"
-            >
-              {value
-                ? frameworks.find((framework) => framework.value === value)
-                    ?.label
-                : "Select framework..."}
-              <IconPlaceholder
-                lucide="ChevronsUpDownIcon"
-                tabler="IconSelector"
-                hugeicons="UnfoldMoreIcon"
-                className="text-muted-foreground"
-              />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-(--radix-popover-trigger-width) p-0">
-            <Command>
-              <CommandInput placeholder="Search framework..." />
-              <CommandList>
-                <CommandEmpty>No framework found.</CommandEmpty>
-                <CommandGroup>
-                  {frameworks.map((framework) => (
-                    <CommandItem
-                      key={framework.value}
-                      value={framework.value}
-                      data-current={value === framework.value}
-                      onSelect={(currentValue) => {
-                        setValue(currentValue === value ? "" : currentValue)
-                        setOpen(false)
-                      }}
-                    >
-                      <IconPlaceholder
-                        lucide="CheckIcon"
-                        tabler="IconCheck"
-                        hugeicons="Tick02Icon"
-                        className="opacity-0 group-data-[current=true]/command-item:opacity-100"
-                      />
-                      {framework.label}
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
-      </div>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="w-full justify-between md:max-w-[200px]"
+          >
+            {value
+              ? frameworks.find((framework) => framework.value === value)?.label
+              : "Select framework..."}
+            <IconPlaceholder
+              lucide="ChevronsUpDownIcon"
+              tabler="IconSelector"
+              hugeicons="UnfoldMoreIcon"
+              className="text-muted-foreground"
+            />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-(--radix-popover-trigger-width) p-0">
+          <Command>
+            <CommandInput placeholder="Search framework..." />
+            <CommandList>
+              <CommandEmpty>No framework found.</CommandEmpty>
+              <CommandGroup>
+                {frameworks.map((framework) => (
+                  <CommandItem
+                    key={framework.value}
+                    value={framework.value}
+                    data-current={value === framework.value}
+                    onSelect={(currentValue) => {
+                      setValue(currentValue === value ? "" : currentValue)
+                      setOpen(false)
+                    }}
+                  >
+                    <IconPlaceholder
+                      lucide="CheckIcon"
+                      tabler="IconCheck"
+                      hugeicons="Tick02Icon"
+                      className="opacity-0 group-data-[current=true]/command-item:opacity-100"
+                    />
+                    {framework.label}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
     </Frame>
   )
 }
@@ -195,92 +192,88 @@ function UserCombobox({
   const [value, setValue] = React.useState(selectedUserId)
 
   const selectedUser = React.useMemo(
-    () => users.find((user) => user.id === value),
+    () => users.find((user) => user.username === value),
     [value, users]
   )
 
   return (
     <Frame title="With Avatar">
-      <div className="flex flex-col gap-4">
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              role="combobox"
-              aria-expanded={open}
-              className="w-full justify-between px-2 md:max-w-[200px]"
-            >
-              {selectedUser ? (
-                <div className="flex items-center gap-2">
-                  <Avatar className="size-5">
-                    <AvatarImage
-                      src={`https://github.com/${selectedUser.username}.png`}
-                    />
-                    <AvatarFallback>{selectedUser.username[0]}</AvatarFallback>
-                  </Avatar>
-                  {selectedUser.username}
-                </div>
-              ) : (
-                "Select user..."
-              )}
-              <IconPlaceholder
-                lucide="ChevronsUpDownIcon"
-                tabler="IconSelector"
-                hugeicons="UnfoldMoreIcon"
-                className="text-muted-foreground"
-              />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-(--radix-popover-trigger-width) p-0">
-            <Command>
-              <CommandInput placeholder="Search user..." />
-              <CommandList>
-                <CommandEmpty>No user found.</CommandEmpty>
-                <CommandGroup>
-                  {users.map((user) => (
-                    <CommandItem
-                      key={user.id}
-                      value={user.id}
-                      onSelect={(currentValue) => {
-                        setValue(currentValue === value ? "" : currentValue)
-                        setOpen(false)
-                      }}
-                    >
-                      <Avatar className="size-5">
-                        <AvatarImage
-                          src={`https://github.com/${user.username}.png`}
-                        />
-                        <AvatarFallback>{user.username[0]}</AvatarFallback>
-                      </Avatar>
-                      {user.username}
-                      <IconPlaceholder
-                        lucide="CheckIcon"
-                        tabler="IconCheck"
-                        hugeicons="Tick02Icon"
-                        className={cn(
-                          "ml-auto",
-                          value === user.id ? "opacity-100" : "opacity-0"
-                        )}
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="w-full justify-between px-2 md:max-w-[200px]"
+          >
+            {selectedUser ? (
+              <div className="flex items-center gap-2">
+                <Avatar className="size-5">
+                  <AvatarImage
+                    src={`https://github.com/${selectedUser.username}.png`}
+                  />
+                  <AvatarFallback>{selectedUser.username[0]}</AvatarFallback>
+                </Avatar>
+                {selectedUser.username}
+              </div>
+            ) : (
+              "Select user..."
+            )}
+            <IconPlaceholder
+              lucide="ChevronsUpDownIcon"
+              tabler="IconSelector"
+              hugeicons="UnfoldMoreIcon"
+              className="text-muted-foreground"
+            />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-(--radix-popover-trigger-width) p-0">
+          <Command>
+            <CommandInput placeholder="Search user..." />
+            <CommandList>
+              <CommandEmpty>No user found.</CommandEmpty>
+              <CommandGroup>
+                {users.map((user) => (
+                  <CommandItem
+                    key={user.id}
+                    value={user.username}
+                    data-current={value === user.username}
+                    onSelect={(currentValue) => {
+                      setValue(currentValue === value ? "" : currentValue)
+                      setOpen(false)
+                    }}
+                  >
+                    <Avatar className="size-5">
+                      <AvatarImage
+                        src={`https://github.com/${user.username}.png`}
                       />
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-                <CommandSeparator />
-                <CommandGroup>
-                  <CommandItem>
+                      <AvatarFallback>{user.username[0]}</AvatarFallback>
+                    </Avatar>
+                    {user.username}
                     <IconPlaceholder
-                      lucide="PlusCircleIcon"
-                      tabler="IconCirclePlus"
-                      hugeicons="AddCircleIcon"
+                      lucide="CheckIcon"
+                      tabler="IconCheck"
+                      hugeicons="Tick02Icon"
+                      className="ml-auto opacity-0 group-data-[current=true]/command-item:opacity-100"
                     />
-                    Create user
                   </CommandItem>
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
-      </div>
+                ))}
+              </CommandGroup>
+              <CommandSeparator />
+              <CommandGroup>
+                <CommandItem>
+                  <IconPlaceholder
+                    lucide="PlusCircleIcon"
+                    tabler="IconCirclePlus"
+                    hugeicons="AddCircleIcon"
+                  />
+                  Create user
+                </CommandItem>
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
     </Frame>
   )
 }
@@ -310,77 +303,75 @@ function TimezoneCombobox({
 
   return (
     <Frame title="With Groups">
-      <div className="flex flex-col gap-4">
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              className="h-12 w-full justify-between px-2.5 md:max-w-[200px]"
-            >
-              {selectedTimezone ? (
-                <div className="flex flex-col items-start gap-0.5">
-                  <span className="text-muted-foreground text-xs font-normal">
-                    {selectedGroup?.label}
-                  </span>
-                  <span>{selectedTimezoneLabel}</span>
-                </div>
-              ) : (
-                "Select timezone"
-              )}
-              <IconPlaceholder
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-                hugeicons="ArrowDownIcon"
-                className="text-muted-foreground"
-              />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="p-0" align="start">
-            <Command>
-              <CommandInput placeholder="Search timezone..." />
-              <CommandList className="scroll-pb-12">
-                <CommandEmpty>No timezone found.</CommandEmpty>
-                {timezones.map((region) => (
-                  <CommandGroup key={region.label} heading={region.label}>
-                    {region.timezones.map((timezone) => (
-                      <CommandItem
-                        key={timezone.value}
-                        value={timezone.value}
-                        onSelect={(currentValue) => {
-                          setValue(
-                            currentValue as Timezone["timezones"][number]["value"]
-                          )
-                          setOpen(false)
-                        }}
-                      >
-                        {timezone.label}
-                        <IconPlaceholder
-                          lucide="CheckIcon"
-                          tabler="IconCheck"
-                          hugeicons="Tick02Icon"
-                          className="ml-auto opacity-0 data-[selected=true]:opacity-100"
-                          data-selected={value === timezone.value}
-                        />
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                ))}
-                <CommandSeparator className="sticky bottom-10" />
-                <CommandGroup className="bg-popover sticky bottom-0">
-                  <CommandItem>
-                    <IconPlaceholder
-                      lucide="PlusCircleIcon"
-                      tabler="IconCirclePlus"
-                      hugeicons="AddCircleIcon"
-                    />
-                    Create timezone
-                  </CommandItem>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            className="h-12 w-full justify-between px-2.5 md:max-w-[200px]"
+          >
+            {selectedTimezone ? (
+              <div className="flex flex-col items-start gap-0.5">
+                <span className="text-muted-foreground text-xs font-normal">
+                  {selectedGroup?.label}
+                </span>
+                <span>{selectedTimezoneLabel}</span>
+              </div>
+            ) : (
+              "Select timezone"
+            )}
+            <IconPlaceholder
+              lucide="ChevronDownIcon"
+              tabler="IconChevronDown"
+              hugeicons="ArrowDownIcon"
+              className="text-muted-foreground"
+            />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="p-0" align="start">
+          <Command>
+            <CommandInput placeholder="Search timezone..." />
+            <CommandList className="scroll-pb-12">
+              <CommandEmpty>No timezone found.</CommandEmpty>
+              {timezones.map((region) => (
+                <CommandGroup key={region.label} heading={region.label}>
+                  {region.timezones.map((timezone) => (
+                    <CommandItem
+                      key={timezone.value}
+                      value={timezone.value}
+                      onSelect={(currentValue) => {
+                        setValue(
+                          currentValue as Timezone["timezones"][number]["value"]
+                        )
+                        setOpen(false)
+                      }}
+                    >
+                      {timezone.label}
+                      <IconPlaceholder
+                        lucide="CheckIcon"
+                        tabler="IconCheck"
+                        hugeicons="Tick02Icon"
+                        className="ml-auto opacity-0 data-[selected=true]:opacity-100"
+                        data-selected={value === timezone.value}
+                      />
+                    </CommandItem>
+                  ))}
                 </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
-      </div>
+              ))}
+              <CommandSeparator className="sticky bottom-10" />
+              <CommandGroup className="bg-popover sticky bottom-0">
+                <CommandItem>
+                  <IconPlaceholder
+                    lucide="PlusCircleIcon"
+                    tabler="IconCirclePlus"
+                    hugeicons="AddCircleIcon"
+                  />
+                  Create timezone
+                </CommandItem>
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
     </Frame>
   )
 }
@@ -393,68 +384,64 @@ function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
 
   return (
     <Frame title="Multi-Select">
-      <div className="flex flex-col gap-4">
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              role="combobox"
-              aria-expanded={open}
-              className="w-fit min-w-[280px] justify-between"
-            >
-              {selectedFrameworks.length > 0
-                ? selectedFrameworks
-                    .map((framework) => framework.label)
-                    .join(", ")
-                : "Select frameworks (multi-select)..."}
-              <IconPlaceholder
-                lucide="ChevronsUpDownIcon"
-                tabler="IconSelector"
-                hugeicons="UnfoldMoreIcon"
-                className="text-muted-foreground"
-              />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-[300px] p-0" align="start">
-            <Command>
-              <CommandInput placeholder="Search framework..." />
-              <CommandList>
-                <CommandEmpty>No framework found.</CommandEmpty>
-                <CommandGroup>
-                  {frameworks.map((framework) => (
-                    <CommandItem
-                      key={framework.value}
-                      value={framework.value}
-                      data-current={selectedFrameworks.some(
-                        (f) => f.value === framework.value
-                      )}
-                      onSelect={(currentValue) => {
-                        setSelectedFrameworks(
-                          selectedFrameworks.some(
-                            (f) => f.value === currentValue
-                          )
-                            ? selectedFrameworks.filter(
-                                (f) => f.value !== currentValue
-                              )
-                            : [...selectedFrameworks, framework]
-                        )
-                      }}
-                    >
-                      {framework.label}
-                      <IconPlaceholder
-                        lucide="CheckIcon"
-                        tabler="IconCheck"
-                        hugeicons="Tick02Icon"
-                        className="opacity-0 group-data-[current=true]/command-item:opacity-100"
-                      />
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
-      </div>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="w-fit min-w-[280px] justify-between"
+          >
+            {selectedFrameworks.length > 0
+              ? selectedFrameworks
+                  .map((framework) => framework.label)
+                  .join(", ")
+              : "Select frameworks (multi-select)..."}
+            <IconPlaceholder
+              lucide="ChevronsUpDownIcon"
+              tabler="IconSelector"
+              hugeicons="UnfoldMoreIcon"
+              className="text-muted-foreground"
+            />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-[300px] p-0" align="start">
+          <Command>
+            <CommandInput placeholder="Search framework..." />
+            <CommandList>
+              <CommandEmpty>No framework found.</CommandEmpty>
+              <CommandGroup>
+                {frameworks.map((framework) => (
+                  <CommandItem
+                    key={framework.value}
+                    value={framework.value}
+                    data-current={selectedFrameworks.some(
+                      (f) => f.value === framework.value
+                    )}
+                    onSelect={(currentValue) => {
+                      setSelectedFrameworks(
+                        selectedFrameworks.some((f) => f.value === currentValue)
+                          ? selectedFrameworks.filter(
+                              (f) => f.value !== currentValue
+                            )
+                          : [...selectedFrameworks, framework]
+                      )
+                    }}
+                  >
+                    {framework.label}
+                    <IconPlaceholder
+                      lucide="CheckIcon"
+                      tabler="IconCheck"
+                      hugeicons="Tick02Icon"
+                      className="ml-auto opacity-0 group-data-[current=true]/command-item:opacity-100"
+                    />
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
     </Frame>
   )
 }

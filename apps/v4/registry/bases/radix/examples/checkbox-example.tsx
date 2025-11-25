@@ -54,9 +54,7 @@ function CheckboxWithDescription() {
       <Field orientation="horizontal">
         <Checkbox id="terms-2" defaultChecked />
         <FieldContent>
-          <FieldLabel htmlFor="terms-2">
-            Accept terms and conditions
-          </FieldLabel>
+          <FieldLabel htmlFor="terms-2">Accept terms and conditions</FieldLabel>
           <FieldDescription>
             By clicking this checkbox, you agree to the terms and conditions.
           </FieldDescription>
@@ -71,9 +69,7 @@ function CheckboxInvalid() {
     <Frame title="Invalid">
       <Field orientation="horizontal" data-invalid>
         <Checkbox id="terms-3" aria-invalid />
-        <FieldLabel htmlFor="terms-3">
-          Accept terms and conditions
-        </FieldLabel>
+        <FieldLabel htmlFor="terms-3">Accept terms and conditions</FieldLabel>
       </Field>
     </Frame>
   )

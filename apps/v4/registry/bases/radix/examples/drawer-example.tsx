@@ -172,9 +172,7 @@ function DrawerScrollableContent() {
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>
-              Set your daily activity goal.
-            </DrawerDescription>
+            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
           </DrawerHeader>
           <div className="overflow-y-auto px-4 text-sm">
             <h4 className="mb-4 text-lg leading-none font-medium">
@@ -214,9 +212,7 @@ function DrawerTop() {
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>
-              Set your daily activity goal.
-            </DrawerDescription>
+            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
           </DrawerHeader>
           <div className="overflow-y-auto px-4 text-sm">
             {Array.from({ length: 10 }).map((_, index) => (
@@ -253,9 +249,7 @@ function DrawerRight() {
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>
-              Set your daily activity goal.
-            </DrawerDescription>
+            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
           </DrawerHeader>
           <div className="overflow-y-auto px-4 text-sm">
             {Array.from({ length: 10 }).map((_, index) => (
@@ -292,9 +286,7 @@ function DrawerLeft() {
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>
-              Set your daily activity goal.
-            </DrawerDescription>
+            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
           </DrawerHeader>
           <div className="overflow-y-auto px-4 text-sm">
             {Array.from({ length: 10 }).map((_, index) => (

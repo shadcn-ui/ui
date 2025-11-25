@@ -15,7 +15,6 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/registry/bases/radix/ui/input-otp"
-
 import Frame from "@/app/(design)/design/components/frame"
 
 export default function InputOTPExample() {
@@ -198,21 +197,43 @@ function InputOTPError() {
         <FieldLabel htmlFor="error">With Validation</FieldLabel>
         <InputOTP id="error" maxLength={6} value={value} onChange={setValue}>
           <InputOTPGroup>
-            <InputOTPSlot index={0} aria-invalid={error && value.length === 6} />
-            <InputOTPSlot index={1} aria-invalid={error && value.length === 6} />
-            <InputOTPSlot index={2} aria-invalid={error && value.length === 6} />
+            <InputOTPSlot
+              index={0}
+              aria-invalid={error && value.length === 6}
+            />
+            <InputOTPSlot
+              index={1}
+              aria-invalid={error && value.length === 6}
+            />
+            <InputOTPSlot
+              index={2}
+              aria-invalid={error && value.length === 6}
+            />
           </InputOTPGroup>
           <InputOTPSeparator />
           <InputOTPGroup>
-            <InputOTPSlot index={3} aria-invalid={error && value.length === 6} />
-            <InputOTPSlot index={4} aria-invalid={error && value.length === 6} />
-            <InputOTPSlot index={5} aria-invalid={error && value.length === 6} />
+            <InputOTPSlot
+              index={3}
+              aria-invalid={error && value.length === 6}
+            />
+            <InputOTPSlot
+              index={4}
+              aria-invalid={error && value.length === 6}
+            />
+            <InputOTPSlot
+              index={5}
+              aria-invalid={error && value.length === 6}
+            />
           </InputOTPGroup>
         </InputOTP>
         {error ? (
-          <FieldError errors={[{ message: "Invalid code. Please try again." }]} />
+          <FieldError
+            errors={[{ message: "Invalid code. Please try again." }]}
+          />
         ) : (
-          <FieldDescription>Enter 123456 to see success state.</FieldDescription>
+          <FieldDescription>
+            Enter 123456 to see success state.
+          </FieldDescription>
         )}
       </Field>
     </Frame>

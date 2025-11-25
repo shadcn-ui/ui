@@ -686,10 +686,7 @@ function ButtonGroupVertical() {
 function ButtonGroupVerticalNested() {
   return (
     <Frame title="Vertical Nested">
-      <ButtonGroup
-        orientation="vertical"
-        aria-label="Design tools palette"
-      >
+      <ButtonGroup orientation="vertical" aria-label="Design tools palette">
         <ButtonGroup orientation="vertical">
           <Button variant="outline" size="icon">
             <IconPlaceholder
