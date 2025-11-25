@@ -2,22 +2,22 @@
   /* Accordion */
   .cn-accordion-item {
     @apply not-last:border-b;
+  }
 
-    .cn-accordion-trigger {
-      @apply gap-6 rounded-md py-4 text-left text-sm font-medium hover:underline;
-    }
+  .cn-accordion-trigger {
+    @apply gap-6 rounded-md py-4 text-left text-sm font-medium hover:underline;
+  }
 
-    .cn-accordion-trigger-icon {
-      @apply text-muted-foreground pointer-events-none size-4 shrink-0;
-    }
+  .cn-accordion-trigger-icon {
+    @apply text-muted-foreground pointer-events-none size-4 shrink-0;
+  }
 
-    .cn-accordion-content {
-      @apply data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down text-sm;
-    }
+  .cn-accordion-content {
+    @apply data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down text-sm;
+  }
 
-    .cn-accordion-content-inner {
-      @apply pt-0 pb-4;
-    }
+  .cn-accordion-content-inner {
+    @apply pt-0 pb-4;
   }
 
   /* Alert Dialog */
@@ -350,7 +350,7 @@
 
   /* Empty */
   .cn-empty {
-    @apply gap-6 rounded-lg border-dashed p-6;
+    @apply gap-6 rounded-lg border-dashed p-12;
 
     .cn-empty-header {
       @apply gap-2;

@@ -106,7 +106,7 @@ function InputDisabled() {
 function InputTypes() {
   return (
     <Frame title="Input Types">
-      <div className="flex flex-col gap-6">
+      <div className="flex w-full flex-col gap-6">
         <Field>
           <FieldLabel htmlFor="input-demo-password">Password</FieldLabel>
           <Input
@@ -159,7 +159,7 @@ function InputTypes() {
 function InputWithSelect() {
   return (
     <Frame title="With Select">
-      <div className="flex gap-2">
+      <div className="flex w-full gap-2">
         <Input type="text" placeholder="Enter amount" className="flex-1" />
         <Select defaultValue="usd">
           <SelectTrigger className="w-32">
@@ -179,7 +179,7 @@ function InputWithSelect() {
 function InputWithButton() {
   return (
     <Frame title="With Button">
-      <div className="flex gap-2">
+      <div className="flex w-full gap-2">
         <Input type="search" placeholder="Search..." className="flex-1" />
         <Button>Search</Button>
       </div>
@@ -190,7 +190,7 @@ function InputWithButton() {
 function InputWithNativeSelect() {
   return (
     <Frame title="With Native Select">
-      <div className="flex gap-2">
+      <div className="flex w-full gap-2">
         <Input type="tel" placeholder="(555) 123-4567" className="flex-1" />
         <NativeSelect defaultValue="+1">
           <NativeSelectOption value="+1">+1</NativeSelectOption>
@@ -205,7 +205,7 @@ function InputWithNativeSelect() {
 function InputForm() {
   return (
     <Frame title="Form">
-      <form>
+      <form className="w-full">
         <FieldGroup>
           <Field>
             <FieldLabel htmlFor="form-name">Name</FieldLabel>

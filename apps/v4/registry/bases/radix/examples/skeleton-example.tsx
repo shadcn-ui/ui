@@ -19,7 +19,7 @@ export default function SkeletonExample() {
 function SkeletonAvatar() {
   return (
     <Frame title="Avatar">
-      <div className="flex items-center gap-4">
+      <div className="flex w-full items-center gap-4">
         <Skeleton className="size-10 shrink-0 rounded-full" />
         <div className="grid gap-2">
           <Skeleton className="h-4 w-[150px]" />
@@ -33,7 +33,7 @@ function SkeletonAvatar() {
 function SkeletonCard() {
   return (
     <Frame title="Card">
-      <Card className="mx-auto w-full max-w-sm">
+      <Card className="w-full">
         <CardHeader>
           <Skeleton className="h-4 w-2/3" />
           <Skeleton className="h-4 w-1/2" />
@@ -49,7 +49,7 @@ function SkeletonCard() {
 function SkeletonText() {
   return (
     <Frame title="Text">
-      <div className="flex flex-col gap-2">
+      <div className="flex w-full flex-col gap-2">
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-3/4" />
@@ -61,7 +61,7 @@ function SkeletonText() {
 function SkeletonForm() {
   return (
     <Frame title="Form">
-      <div className="flex flex-col gap-7">
+      <div className="flex w-full flex-col gap-7">
         <div className="flex flex-col gap-3">
           <Skeleton className="h-4 w-20" />
           <Skeleton className="h-10 w-full" />
@@ -79,7 +79,7 @@ function SkeletonForm() {
 function SkeletonTable() {
   return (
     <Frame title="Table">
-      <div className="flex flex-col gap-2">
+      <div className="flex w-full flex-col gap-2">
         <div className="flex gap-4">
           <Skeleton className="h-4 flex-1" />
           <Skeleton className="h-4 w-24" />

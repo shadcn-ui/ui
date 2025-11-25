@@ -6,18 +6,9 @@ import { type DateRange } from "react-day-picker"
 import { es } from "react-day-picker/locale"
 
 import { cn } from "@/lib/utils"
-import { useIsMobile } from "@/hooks/use-mobile"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Calendar, CalendarDayButton } from "@/registry/bases/radix/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/registry/bases/radix/ui/card"
-import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/registry/bases/radix/ui/drawer"
 import { Field, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
 import { Label } from "@/registry/bases/radix/ui/label"
@@ -26,41 +17,25 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
+import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function CalendarDemo() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6">
-      <div className="flex h-full flex-col flex-wrap justify-center gap-8 lg:flex-row">
-        <div className="flex flex-col items-center gap-8 sm:flex-row md:flex-col md:gap-4">
-          <CalendarSingle />
-          <CalendarMultiple />
-        </div>
-        <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start md:flex-col md:gap-4">
-          <CalendarRangeMultipleMonths />
-          <div className="flex flex-col items-center gap-8 md:flex-row md:gap-4">
-            <CalendarRange />
-            <CalendarBookedDates />
-          </div>
-        </div>
-        <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start md:gap-4">
-          <div className="flex flex-col items-center gap-8 md:gap-4">
-            <CalendarWithTime />
-            <CalendarWeekNumbers />
-          </div>
-          <div className="flex flex-col items-center gap-8 md:gap-4">
-            <CalendarWithPresets />
-            <CalendarWeekNumbers />
-          </div>
-        </div>
-        <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start md:gap-8">
-          <CalendarCustomDays />
-          <div className="flex flex-col items-center gap-8 md:gap-4">
-            <DatePickerSimple />
-            <DataPickerWithDropdowns />
-            <DatePickerWithRange />
-          </div>
-        </div>
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex flex-col gap-12">
+        <CalendarSingle />
+        <CalendarMultiple />
+        <CalendarRange />
+        <CalendarRangeMultipleMonths />
+        <CalendarBookedDates />
+        <CalendarWithTime />
+        <CalendarWeekNumbers />
+        <CalendarWithPresets />
+        <CalendarCustomDays />
+        <DatePickerSimple />
+        <DataPickerWithDropdowns />
+        <DatePickerWithRange />
       </div>
     </div>
   )
@@ -71,26 +46,30 @@ function CalendarSingle() {
     new Date(new Date().getFullYear(), new Date().getMonth(), 12)
   )
   return (
-    <Card className="w-fit p-0">
-      <CardContent className="p-0">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          captionLayout="dropdown"
-        />
-      </CardContent>
-    </Card>
+    <Frame title="Single" className="max-w-lg">
+      <Card className="w-fit p-0">
+        <CardContent className="p-0">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            captionLayout="dropdown"
+          />
+        </CardContent>
+      </Card>
+    </Frame>
   )
 }
 
 function CalendarMultiple() {
   return (
-    <Card className="w-fit p-0">
-      <CardContent className="p-0">
-        <Calendar mode="multiple" />
-      </CardContent>
-    </Card>
+    <Frame title="Multiple" className="max-w-lg">
+      <Card className="w-fit p-0">
+        <CardContent className="p-0">
+          <Calendar mode="multiple" />
+        </CardContent>
+      </Card>
+    </Frame>
   )
 }
 
@@ -101,20 +80,22 @@ function CalendarRange() {
   })
 
   return (
-    <Card className="w-fit p-0">
-      <CardContent className="p-0">
-        <Calendar
-          mode="range"
-          defaultMonth={dateRange?.from}
-          selected={dateRange}
-          onSelect={setDateRange}
-          numberOfMonths={2}
-          disabled={(date) =>
-            date > new Date() || date < new Date("1900-01-01")
-          }
-        />
-      </CardContent>
-    </Card>
+    <Frame title="Range" className="max-w-lg">
+      <Card className="w-fit p-0">
+        <CardContent className="p-0">
+          <Calendar
+            mode="range"
+            defaultMonth={dateRange?.from}
+            selected={dateRange}
+            onSelect={setDateRange}
+            numberOfMonths={2}
+            disabled={(date) =>
+              date > new Date() || date < new Date("1900-01-01")
+            }
+          />
+        </CardContent>
+      </Card>
+    </Frame>
   )
 }
 
@@ -125,19 +106,21 @@ function CalendarRangeMultipleMonths() {
   })
 
   return (
-    <Card className="w-fit p-0">
-      <CardContent className="p-0">
-        <Calendar
-          mode="range"
-          defaultMonth={range?.from}
-          selected={range}
-          onSelect={setRange}
-          numberOfMonths={3}
-          locale={es}
-          fixedWeeks
-        />
-      </CardContent>
-    </Card>
+    <Frame title="Range Multiple Months" className="max-w-3xl">
+      <Card className="w-fit p-0">
+        <CardContent className="p-0">
+          <Calendar
+            mode="range"
+            defaultMonth={range?.from}
+            selected={range}
+            onSelect={setRange}
+            numberOfMonths={3}
+            locale={es}
+            fixedWeeks
+          />
+        </CardContent>
+      </Card>
+    </Frame>
   )
 }
 
@@ -151,23 +134,25 @@ function CalendarBookedDates() {
   )
 
   return (
-    <Card className="w-fit p-0">
-      <CardContent className="p-0">
-        <Calendar
-          mode="single"
-          defaultMonth={date}
-          selected={date}
-          onSelect={setDate}
-          disabled={bookedDates}
-          modifiers={{
-            booked: bookedDates,
-          }}
-          modifiersClassNames={{
-            booked: "[&>button]:line-through opacity-100",
-          }}
-        />
-      </CardContent>
-    </Card>
+    <Frame title="Booked Dates" className="max-w-lg">
+      <Card className="w-fit p-0">
+        <CardContent className="p-0">
+          <Calendar
+            mode="single"
+            defaultMonth={date}
+            selected={date}
+            onSelect={setDate}
+            disabled={bookedDates}
+            modifiers={{
+              booked: bookedDates,
+            }}
+            modifiersClassNames={{
+              booked: "[&>button]:line-through opacity-100",
+            }}
+          />
+        </CardContent>
+      </Card>
+    </Frame>
   )
 }
 
@@ -177,54 +162,56 @@ function CalendarWithTime() {
   )
 
   return (
-    <Card className="w-fit py-4">
-      <CardContent className="px-4">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          className="p-0"
-        />
-      </CardContent>
-      <CardFooter className="flex flex-col gap-3 border-t px-4 pt-4">
-        <div className="flex w-full flex-col gap-2">
-          <Label htmlFor="time-from">Start Time</Label>
-          <div className="relative flex w-full items-center gap-2">
-            <IconPlaceholder
-              lucide="Clock2Icon"
-              tabler="IconClockHour2"
-              hugeicons="Clock03Icon"
-              className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
-            />
-            <Input
-              id="time-from"
-              type="time"
-              step="1"
-              defaultValue="10:30:00"
-              className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
-            />
+    <Frame title="With Time" className="max-w-lg">
+      <Card className="w-fit py-4">
+        <CardContent className="px-4">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            className="p-0"
+          />
+        </CardContent>
+        <CardFooter className="flex flex-col gap-3 border-t px-4 pt-4">
+          <div className="flex w-full flex-col gap-2">
+            <Label htmlFor="time-from">Start Time</Label>
+            <div className="relative flex w-full items-center gap-2">
+              <IconPlaceholder
+                lucide="Clock2Icon"
+                tabler="IconClockHour2"
+                hugeicons="Clock03Icon"
+                className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
+              />
+              <Input
+                id="time-from"
+                type="time"
+                step="1"
+                defaultValue="10:30:00"
+                className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+              />
+            </div>
           </div>
-        </div>
-        <div className="flex w-full flex-col gap-2">
-          <Label htmlFor="time-to">End Time</Label>
-          <div className="relative flex w-full items-center gap-2">
-            <IconPlaceholder
-              lucide="Clock2Icon"
-              tabler="IconClockHour2"
-              hugeicons="Clock03Icon"
-              className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
-            />
-            <Input
-              id="time-to"
-              type="time"
-              step="1"
-              defaultValue="12:30:00"
-              className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
-            />
+          <div className="flex w-full flex-col gap-2">
+            <Label htmlFor="time-to">End Time</Label>
+            <div className="relative flex w-full items-center gap-2">
+              <IconPlaceholder
+                lucide="Clock2Icon"
+                tabler="IconClockHour2"
+                hugeicons="Clock03Icon"
+                className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
+              />
+              <Input
+                id="time-to"
+                type="time"
+                step="1"
+                defaultValue="12:30:00"
+                className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+              />
+            </div>
           </div>
-        </div>
-      </CardFooter>
-    </Card>
+        </CardFooter>
+      </Card>
+    </Frame>
   )
 }
 
@@ -235,39 +222,41 @@ function CalendarCustomDays() {
   })
 
   return (
-    <Card className="p-0">
-      <CardContent className="p-0">
-        <Calendar
-          mode="range"
-          defaultMonth={range?.from}
-          selected={range}
-          onSelect={setRange}
-          numberOfMonths={1}
-          captionLayout="dropdown"
-          className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
-          formatters={{
-            formatMonthDropdown: (date) => {
-              return date.toLocaleString("default", { month: "long" })
-            },
-          }}
-          components={{
-            DayButton: ({ children, modifiers, day, ...props }) => {
-              const isWeekend =
-                day.date.getDay() === 0 || day.date.getDay() === 6
+    <Frame title="Custom Days" className="max-w-lg">
+      <Card className="p-0">
+        <CardContent className="p-0">
+          <Calendar
+            mode="range"
+            defaultMonth={range?.from}
+            selected={range}
+            onSelect={setRange}
+            numberOfMonths={1}
+            captionLayout="dropdown"
+            className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
+            formatters={{
+              formatMonthDropdown: (date) => {
+                return date.toLocaleString("default", { month: "long" })
+              },
+            }}
+            components={{
+              DayButton: ({ children, modifiers, day, ...props }) => {
+                const isWeekend =
+                  day.date.getDay() === 0 || day.date.getDay() === 6
 
-              return (
-                <CalendarDayButton day={day} modifiers={modifiers} {...props}>
-                  {children}
-                  {!modifiers.outside && (
-                    <span>{isWeekend ? "$120" : "$100"}</span>
-                  )}
-                </CalendarDayButton>
-              )
-            },
-          }}
-        />
-      </CardContent>
-    </Card>
+                return (
+                  <CalendarDayButton day={day} modifiers={modifiers} {...props}>
+                    {children}
+                    {!modifiers.outside && (
+                      <span>{isWeekend ? "$120" : "$100"}</span>
+                    )}
+                  </CalendarDayButton>
+                )
+              },
+            }}
+          />
+        </CardContent>
+      </Card>
+    </Frame>
   )
 }
 
@@ -280,44 +269,46 @@ function CalendarWithPresets() {
   )
 
   return (
-    <Card className="w-fit max-w-[300px] py-4">
-      <CardContent className="px-4">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
-          month={currentMonth}
-          onMonthChange={setCurrentMonth}
-          fixedWeeks
-          className="p-0 [--cell-size:--spacing(9.5)]"
-        />
-      </CardContent>
-      <CardFooter className="flex flex-wrap gap-2 border-t px-4 pt-4">
-        {[
-          { label: "Today", value: 0 },
-          { label: "Tomorrow", value: 1 },
-          { label: "In 3 days", value: 3 },
-          { label: "In a week", value: 7 },
-          { label: "In 2 weeks", value: 14 },
-        ].map((preset) => (
-          <Button
-            key={preset.value}
-            variant="outline"
-            size="sm"
-            className="flex-1"
-            onClick={() => {
-              const newDate = addDays(new Date(), preset.value)
-              setDate(newDate)
-              setCurrentMonth(
-                new Date(newDate.getFullYear(), newDate.getMonth(), 1)
-              )
-            }}
-          >
-            {preset.label}
-          </Button>
-        ))}
-      </CardFooter>
-    </Card>
+    <Frame title="With Presets" className="max-w-lg">
+      <Card className="w-fit max-w-[300px] py-4">
+        <CardContent className="px-4">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            month={currentMonth}
+            onMonthChange={setCurrentMonth}
+            fixedWeeks
+            className="p-0 [--cell-size:--spacing(9.5)]"
+          />
+        </CardContent>
+        <CardFooter className="flex flex-wrap gap-2 border-t px-4 pt-4">
+          {[
+            { label: "Today", value: 0 },
+            { label: "Tomorrow", value: 1 },
+            { label: "In 3 days", value: 3 },
+            { label: "In a week", value: 7 },
+            { label: "In 2 weeks", value: 14 },
+          ].map((preset) => (
+            <Button
+              key={preset.value}
+              variant="outline"
+              size="sm"
+              className="flex-1"
+              onClick={() => {
+                const newDate = addDays(new Date(), preset.value)
+                setDate(newDate)
+                setCurrentMonth(
+                  new Date(newDate.getFullYear(), newDate.getMonth(), 1)
+                )
+              }}
+            >
+              {preset.label}
+            </Button>
+          ))}
+        </CardFooter>
+      </Card>
+    </Frame>
   )
 }
 
@@ -325,32 +316,31 @@ function DatePickerSimple() {
   const [date, setDate] = React.useState<Date>()
 
   return (
-    <Field>
-      <FieldLabel htmlFor="date-picker-simple">Date Picker Simple</FieldLabel>
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button
-            variant={"outline"}
-            id="date-picker-simple"
-            className={cn(
-              "min-w-[200px] justify-start px-2 font-normal",
-              !date && "text-muted-foreground"
-            )}
-          >
-            <IconPlaceholder
-              lucide="CalendarIcon"
-              tabler="IconCalendar"
-              hugeicons="CalendarIcon"
-              className="text-muted-foreground"
-            />
-            {date ? format(date, "PPP") : <span>Pick a date</span>}
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
-          <Calendar mode="single" selected={date} onSelect={setDate} />
-        </PopoverContent>
-      </Popover>
-    </Field>
+    <Frame title="Date Picker Simple" className="max-w-lg">
+      <Field>
+        <FieldLabel htmlFor="date-picker-simple">Date</FieldLabel>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              id="date-picker-simple"
+              className="justify-start px-2.5 font-normal"
+            >
+              <IconPlaceholder
+                lucide="CalendarIcon"
+                tabler="IconCalendar"
+                hugeicons="CalendarIcon"
+                data-slot="icon-inline-start"
+              />
+              {date ? format(date, "PPP") : <span>Pick a date</span>}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0" align="start">
+            <Calendar mode="single" selected={date} onSelect={setDate} />
+          </PopoverContent>
+        </Popover>
+      </Field>
+    </Frame>
   )
 }
 
@@ -361,147 +351,99 @@ function DatePickerWithRange() {
   })
 
   return (
-    <Field>
-      <FieldLabel htmlFor="date-picker-range">Date Picker Range</FieldLabel>
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button
-            id="date-picker-range"
-            variant={"outline"}
-            className={cn(
-              "w-fit justify-start px-2 font-normal",
-              !date && "text-muted-foreground"
-            )}
-          >
-            <IconPlaceholder
-              lucide="CircleDashedIcon"
-              tabler="IconCircleDashed"
-              hugeicons="DashedLineCircleIcon"
-              className="text-muted-foreground"
-            />
-            {date?.from ? (
-              date.to ? (
-                <>
-                  {format(date.from, "LLL dd, y")} -{" "}
-                  {format(date.to, "LLL dd, y")}
-                </>
+    <Frame title="Date Picker Range" className="max-w-lg">
+      <Field>
+        <FieldLabel htmlFor="date-picker-range">Date Picker Range</FieldLabel>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button
+              id="date-picker-range"
+              variant="outline"
+              className="justify-start px-2.5 font-normal"
+            >
+              <IconPlaceholder
+                lucide="CalendarIcon"
+                tabler="IconCalendar"
+                hugeicons="CalendarIcon"
+                data-slot="icon-inline-start"
+              />
+              {date?.from ? (
+                date.to ? (
+                  <>
+                    {format(date.from, "LLL dd, y")} -{" "}
+                    {format(date.to, "LLL dd, y")}
+                  </>
+                ) : (
+                  format(date.from, "LLL dd, y")
+                )
               ) : (
-                format(date.from, "LLL dd, y")
-              )
-            ) : (
-              <span>Pick a date</span>
-            )}
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
-          <Calendar
-            mode="range"
-            defaultMonth={date?.from}
-            selected={date}
-            onSelect={setDate}
-            numberOfMonths={2}
-          />
-        </PopoverContent>
-      </Popover>
-    </Field>
+                <span>Pick a date</span>
+              )}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0" align="start">
+            <Calendar
+              mode="range"
+              defaultMonth={date?.from}
+              selected={date}
+              onSelect={setDate}
+              numberOfMonths={2}
+            />
+          </PopoverContent>
+        </Popover>
+      </Field>
+    </Frame>
   )
 }
 
 function DataPickerWithDropdowns() {
   const [date, setDate] = React.useState<Date>()
   const [open, setOpen] = React.useState(false)
-  const isMobile = useIsMobile(450)
 
-  if (isMobile) {
-    return (
+  return (
+    <Frame title="Date Picker with Dropdowns">
       <Field>
-        <Drawer open={open} onOpenChange={setOpen}>
-          <FieldLabel htmlFor="date-picker-with-dropdowns">
-            Date Picker with Dropdowns
+        <Popover open={open} onOpenChange={setOpen}>
+          <FieldLabel htmlFor="date-picker-with-dropdowns-desktop">
+            Date
           </FieldLabel>
-          <DrawerTrigger asChild>
+          <PopoverTrigger asChild>
             <Button
-              id="date-picker-with-dropdowns"
               variant="outline"
-              className={cn(
-                "min-w-[200px] justify-start px-2 font-normal",
-                !date && "text-muted-foreground"
-              )}
+              id="date-picker-with-dropdowns-desktop"
+              className="justify-start px-2.5 font-normal"
             >
               {date ? format(date, "PPP") : <span>Pick a date</span>}
               <IconPlaceholder
-                lucide="ChevronUpIcon"
-                tabler="IconChevronUp"
-                hugeicons="ArrowUpIcon"
-                className="text-muted-foreground ml-auto"
+                lucide="ChevronDownIcon"
+                tabler="IconChevronDown"
+                hugeicons="ArrowDownIcon"
+                data-slot="icon-inline-start"
+                className="ml-auto"
               />
             </Button>
-          </DrawerTrigger>
-          <DrawerContent>
-            <DrawerHeader className="sr-only">
-              <DrawerTitle>Select a date</DrawerTitle>
-              <DrawerDescription>
-                Pick a date for your appointment.
-              </DrawerDescription>
-            </DrawerHeader>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0" align="start">
             <Calendar
               mode="single"
               selected={date}
-              onSelect={(day) => {
-                setDate(day)
-                setOpen(false)
-              }}
+              onSelect={setDate}
+              captionLayout="dropdown"
             />
-          </DrawerContent>
-        </Drawer>
+            <div className="flex gap-2 border-t p-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full"
+                onClick={() => setOpen(false)}
+              >
+                Done
+              </Button>
+            </div>
+          </PopoverContent>
+        </Popover>
       </Field>
-    )
-  }
-
-  return (
-    <Field>
-      <Popover open={open} onOpenChange={setOpen}>
-        <FieldLabel htmlFor="date-picker-with-dropdowns-desktop">
-          Date Picker with Dropdowns
-        </FieldLabel>
-        <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            id="date-picker-with-dropdowns-desktop"
-            className={cn(
-              "min-w-[200px] justify-start px-2 font-normal",
-              !date && "text-muted-foreground"
-            )}
-          >
-            {date ? format(date, "PPP") : <span>Pick a date</span>}
-            <IconPlaceholder
-              lucide="ChevronDownIcon"
-              tabler="IconChevronDown"
-              hugeicons="ArrowDownIcon"
-              className="text-muted-foreground ml-auto"
-            />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            captionLayout="dropdown"
-          />
-          <div className="flex gap-2 border-t p-2">
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-full"
-              onClick={() => setOpen(false)}
-            >
-              Done
-            </Button>
-          </div>
-        </PopoverContent>
-      </Popover>
-    </Field>
+    </Frame>
   )
 }
 
@@ -511,16 +453,18 @@ function CalendarWeekNumbers() {
   )
 
   return (
-    <Card className="w-fit p-0">
-      <CardContent className="p-0">
-        <Calendar
-          mode="single"
-          defaultMonth={date}
-          selected={date}
-          onSelect={setDate}
-          showWeekNumber
-        />
-      </CardContent>
-    </Card>
+    <Frame title="Week Numbers">
+      <Card className="w-fit p-0">
+        <CardContent className="p-0">
+          <Calendar
+            mode="single"
+            defaultMonth={date}
+            selected={date}
+            onSelect={setDate}
+            showWeekNumber
+          />
+        </CardContent>
+      </Card>
+    </Frame>
   )
 }

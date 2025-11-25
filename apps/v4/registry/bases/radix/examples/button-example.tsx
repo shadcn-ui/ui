@@ -4,19 +4,19 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function ButtonDemo() {
   return (
-    <div className="bg-background flex min-h-screen flex-col items-center justify-center gap-6 p-4">
-      <div className="flex flex-col gap-6">
-        <ButtonExample1 />
-        <ButtonExample2 />
-        <ButtonExample3 />
-        <ButtonExample4 />
-        <ButtonExample5 />
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
+        <ButtonVariantsAndSizes />
+        <ButtonIconRight />
+        <ButtonIconLeft />
+        <ButtonIconOnly />
+        <ButtonExamples />
       </div>
     </div>
   )
 }
 
-function ButtonExample1() {
+function ButtonVariantsAndSizes() {
   return (
     <Frame title="Variants & Sizes">
       <div className="flex flex-wrap items-center gap-2">
@@ -85,7 +85,7 @@ function ButtonExample1() {
   )
 }
 
-function ButtonExample2() {
+function ButtonIconRight() {
   return (
     <Frame title="Icon Right">
       <div className="flex flex-wrap items-center gap-2">
@@ -315,7 +315,7 @@ function ButtonExample2() {
   )
 }
 
-function ButtonExample3() {
+function ButtonIconLeft() {
   return (
     <Frame title="Icon Left">
       <div className="flex flex-wrap items-center gap-2">
@@ -546,7 +546,7 @@ function ButtonExample3() {
   )
 }
 
-function ButtonExample4() {
+function ButtonIconOnly() {
   return (
     <Frame title="Icon Only">
       <div className="flex flex-wrap items-center gap-2">
@@ -729,7 +729,7 @@ function ButtonExample4() {
   )
 }
 
-function ButtonExample5() {
+function ButtonExamples() {
   return (
     <Frame title="Examples">
       <div className="flex flex-wrap items-center gap-4">

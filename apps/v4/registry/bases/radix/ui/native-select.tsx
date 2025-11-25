@@ -6,15 +6,15 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 function NativeSelect({ className, ...props }: React.ComponentProps<"select">) {
   return (
     <div
-      className="cn-native-select-wrapper group/native-select relative w-fit has-[select:disabled]:opacity-50"
+      className={cn(
+        "cn-native-select-wrapper group/native-select relative w-fit has-[select:disabled]:opacity-50",
+        className
+      )}
       data-slot="native-select-wrapper"
     >
       <select
         data-slot="native-select"
-        className={cn(
-          "cn-native-select focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed",
-          className
-        )}
+        className="cn-native-select focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed"
         {...props}
       />
       <IconPlaceholder

@@ -19,12 +19,13 @@ import {
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
 import { Tabs, TabsList, TabsTrigger } from "@/registry/bases/radix/ui/tabs"
+import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function CollapsibleExample() {
   return (
-    <div className="bg-background flex min-h-screen flex-col items-center justify-center gap-8 p-4">
-      <div className="flex min-h-[50vh] w-full max-w-4xl min-w-0 flex-col items-start gap-6 md:flex-row">
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
         <CollapsibleFileTree />
         <CollapsibleSettings />
         <CollapsibleNavigation />
@@ -138,21 +139,23 @@ function CollapsibleFileTree() {
   }
 
   return (
-    <Card className="w-[16rem] gap-2">
-      <CardHeader>
-        <Tabs defaultValue="explorer">
-          <TabsList className="w-full">
-            <TabsTrigger value="explorer">Explorer</TabsTrigger>
-            <TabsTrigger value="settings">Outline</TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </CardHeader>
-      <CardContent>
-        <div className="flex flex-col gap-1">
-          {fileTree.map((item) => renderItem(item))}
-        </div>
-      </CardContent>
-    </Card>
+    <Frame title="File Tree">
+      <Card className="w-[16rem] gap-2">
+        <CardHeader>
+          <Tabs defaultValue="explorer">
+            <TabsList className="w-full">
+              <TabsTrigger value="explorer">Explorer</TabsTrigger>
+              <TabsTrigger value="settings">Outline</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-col gap-1">
+            {fileTree.map((item) => renderItem(item))}
+          </div>
+        </CardContent>
+      </Card>
+    </Frame>
   )
 }
 
@@ -160,31 +163,21 @@ function CollapsibleSettings() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <Card className="w-full max-w-xs [--padding:--spacing(4)]">
-      <CardHeader>
-        <CardTitle>Radius</CardTitle>
-        <CardDescription>Set the corner radius of the element.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Collapsible
-          open={isOpen}
-          onOpenChange={setIsOpen}
-          className="flex items-start gap-2"
-        >
-          <FieldGroup className="grid w-full grid-cols-2 gap-2">
-            <Field>
-              <FieldLabel htmlFor="radius-x" className="sr-only">
-                Radius X
-              </FieldLabel>
-              <Input id="radius" placeholder="0" defaultValue={0} />
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="radius-y" className="sr-only">
-                Radius Y
-              </FieldLabel>
-              <Input id="radius" placeholder="0" defaultValue={0} />
-            </Field>
-            <CollapsibleContent className="col-span-full grid grid-cols-subgrid gap-2">
+    <Frame title="Settings">
+      <Card className="w-full max-w-xs [--padding:--spacing(4)]">
+        <CardHeader>
+          <CardTitle>Radius</CardTitle>
+          <CardDescription>
+            Set the corner radius of the element.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Collapsible
+            open={isOpen}
+            onOpenChange={setIsOpen}
+            className="flex items-start gap-2"
+          >
+            <FieldGroup className="grid w-full grid-cols-2 gap-2">
               <Field>
                 <FieldLabel htmlFor="radius-x" className="sr-only">
                   Radius X
@@ -197,28 +190,42 @@ function CollapsibleSettings() {
                 </FieldLabel>
                 <Input id="radius" placeholder="0" defaultValue={0} />
               </Field>
-            </CollapsibleContent>
-          </FieldGroup>
-          <CollapsibleTrigger asChild>
-            <Button variant="outline" size="icon">
-              {isOpen ? (
-                <IconPlaceholder
-                  lucide="MaximizeIcon"
-                  tabler="IconMaximize"
-                  hugeicons="PlusSignIcon"
-                />
-              ) : (
-                <IconPlaceholder
-                  lucide="MaximizeIcon"
-                  tabler="IconMaximize"
-                  hugeicons="PlusSignIcon"
-                />
-              )}
-            </Button>
-          </CollapsibleTrigger>
-        </Collapsible>
-      </CardContent>
-    </Card>
+              <CollapsibleContent className="col-span-full grid grid-cols-subgrid gap-2">
+                <Field>
+                  <FieldLabel htmlFor="radius-x" className="sr-only">
+                    Radius X
+                  </FieldLabel>
+                  <Input id="radius" placeholder="0" defaultValue={0} />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="radius-y" className="sr-only">
+                    Radius Y
+                  </FieldLabel>
+                  <Input id="radius" placeholder="0" defaultValue={0} />
+                </Field>
+              </CollapsibleContent>
+            </FieldGroup>
+            <CollapsibleTrigger asChild>
+              <Button variant="outline" size="icon">
+                {isOpen ? (
+                  <IconPlaceholder
+                    lucide="MaximizeIcon"
+                    tabler="IconMaximize"
+                    hugeicons="PlusSignIcon"
+                  />
+                ) : (
+                  <IconPlaceholder
+                    lucide="MaximizeIcon"
+                    tabler="IconMaximize"
+                    hugeicons="PlusSignIcon"
+                  />
+                )}
+              </Button>
+            </CollapsibleTrigger>
+          </Collapsible>
+        </CardContent>
+      </Card>
+    </Frame>
   )
 }
 
@@ -281,56 +288,58 @@ function CollapsibleNavigation() {
   ]
 
   return (
-    <Card className="w-full max-w-[16rem] [--padding:--spacing(2)]">
-      <CardContent>
-        <nav className="flex flex-col gap-1">
-          {navItems.map((item) => (
-            <Collapsible key={item.name}>
-              <CollapsibleTrigger asChild>
-                <Button variant="ghost" className="w-full justify-between">
-                  <div className="flex items-center gap-2">
-                    {item.icon}
-                    <span>{item.name}</span>
+    <Frame title="Navigation">
+      <Card className="w-full max-w-[16rem] [--padding:--spacing(2)]">
+        <CardContent>
+          <nav className="flex flex-col gap-1">
+            {navItems.map((item) => (
+              <Collapsible key={item.name}>
+                <CollapsibleTrigger asChild>
+                  <Button variant="ghost" className="w-full justify-between">
+                    <div className="flex items-center gap-2">
+                      {item.icon}
+                      <span>{item.name}</span>
+                    </div>
+                    <IconPlaceholder
+                      lucide="ChevronDownIcon"
+                      tabler="IconChevronDown"
+                      hugeicons="ArrowDown01Icon"
+                      data-slot="icon-inline-end"
+                      className="transition-transform data-[state=open]:rotate-180"
+                    />
+                  </Button>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <div className="flex flex-col gap-1">
+                    {item.items.map((subItem) => (
+                      <Button
+                        key={subItem}
+                        variant="ghost"
+                        asChild
+                        className="w-full justify-start"
+                      >
+                        <a href="#">
+                          <IconPlaceholder
+                            lucide="CircleDashedIcon"
+                            tabler="IconCircleDashed"
+                            hugeicons="DashedLineCircleIcon"
+                            data-slot="icon-inline-start"
+                            className="invisible"
+                          />
+                          {subItem}
+                        </a>
+                      </Button>
+                    ))}
                   </div>
-                  <IconPlaceholder
-                    lucide="ChevronDownIcon"
-                    tabler="IconChevronDown"
-                    hugeicons="ArrowDown01Icon"
-                    data-slot="icon-inline-end"
-                    className="transition-transform data-[state=open]:rotate-180"
-                  />
-                </Button>
-              </CollapsibleTrigger>
-              <CollapsibleContent>
-                <div className="flex flex-col gap-1">
-                  {item.items.map((subItem) => (
-                    <Button
-                      key={subItem}
-                      variant="ghost"
-                      asChild
-                      className="w-full justify-start"
-                    >
-                      <a href="#">
-                        <IconPlaceholder
-                          lucide="CircleDashedIcon"
-                          tabler="IconCircleDashed"
-                          hugeicons="DashedLineCircleIcon"
-                          data-slot="icon-inline-start"
-                          className="invisible"
-                        />
-                        {subItem}
-                      </a>
-                    </Button>
-                  ))}
-                </div>
-              </CollapsibleContent>
-            </Collapsible>
-          ))}
-        </nav>
-      </CardContent>
-      <CardFooter className="border-t">
-        <Button className="w-full">Button</Button>
-      </CardFooter>
-    </Card>
+                </CollapsibleContent>
+              </Collapsible>
+            ))}
+          </nav>
+        </CardContent>
+        <CardFooter className="border-t">
+          <Button className="w-full">Button</Button>
+        </CardFooter>
+      </Card>
+    </Frame>
   )
 }

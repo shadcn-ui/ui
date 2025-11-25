@@ -34,6 +34,11 @@ import {
   EmptyTitle,
 } from "@/registry/bases/radix/ui/empty"
 import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/registry/bases/radix/ui/field"
+import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
@@ -65,170 +70,184 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function AvatarDemo() {
   return (
-    <div className="bg-background flex min-h-screen flex-col items-center justify-center gap-6 p-4">
-      <div className="flex flex-col gap-6 md:flex-row">
-        <div className="flex flex-col gap-6">
-          <AvatarExample1 />
-          <AvatarExample2 />
-          <AvatarExample3 />
-          <AvatarExample4 />
-          <AvatarExample5 />
-          <AvatarExample6 />
-          <AvatarExample11 />
-          <AvatarExample10 />
-        </div>
-        <div className="flex flex-col gap-6">
-          <AvatarExample7 />
-          <AvatarExample9 />
-          <AvatarExample8 />
-        </div>
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
+        <AvatarSizes />
+        <AvatarWithBadge />
+        <AvatarWithBadgeIcon />
+        <AvatarGroupExample />
+        <AvatarGroupWithCount />
+        <AvatarGroupWithIconCount />
+        <AvatarInEmpty />
+        <AvatarInSelect />
       </div>
     </div>
   )
 }
 
-function AvatarExample1() {
+function AvatarSizes() {
   return (
     <Frame title="Sizes">
-      <Avatar size="sm">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Avatar size="lg">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Avatar size="sm">
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Avatar size="lg">
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
+      <div className="flex flex-wrap items-center gap-2">
+        <Avatar size="sm">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <Avatar size="sm">
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+      </div>
     </Frame>
   )
 }
 
-function AvatarExample2() {
+function AvatarWithBadge() {
   return (
     <Frame title="Badge">
-      <Avatar size="sm">
-        <AvatarImage
-          src="https://github.com/jorgezreik.png"
-          alt="@jorgezreik"
-        />
-        <AvatarFallback>JZ</AvatarFallback>
-        <AvatarBadge />
-      </Avatar>
-      <Avatar>
-        <AvatarImage
-          src="https://github.com/jorgezreik.png"
-          alt="@jorgezreik"
-        />
-        <AvatarFallback>JZ</AvatarFallback>
-        <AvatarBadge />
-      </Avatar>
-      <Avatar size="lg">
-        <AvatarImage
-          src="https://github.com/jorgezreik.png"
-          alt="@jorgezreik"
-        />
-        <AvatarFallback>JZ</AvatarFallback>
-        <AvatarBadge />
-      </Avatar>
-      <Avatar size="sm">
-        <AvatarFallback>JZ</AvatarFallback>
-        <AvatarBadge />
-      </Avatar>
-      <Avatar>
-        <AvatarFallback>JZ</AvatarFallback>
-        <AvatarBadge />
-      </Avatar>
-      <Avatar size="lg">
-        <AvatarFallback>JZ</AvatarFallback>
-        <AvatarBadge />
-      </Avatar>
+      <div className="flex flex-wrap items-center gap-2">
+        <Avatar size="sm">
+          <AvatarImage
+            src="https://github.com/jorgezreik.png"
+            alt="@jorgezreik"
+          />
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+        <Avatar>
+          <AvatarImage
+            src="https://github.com/jorgezreik.png"
+            alt="@jorgezreik"
+          />
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarImage
+            src="https://github.com/jorgezreik.png"
+            alt="@jorgezreik"
+          />
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <Avatar size="sm">
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+      </div>
     </Frame>
   )
 }
 
-function AvatarExample3() {
+function AvatarWithBadgeIcon() {
   return (
     <Frame title="Badge with Icon">
-      <Avatar size="sm">
-        <AvatarImage src="https://github.com/pranathip.png" alt="@pranathip" />
-        <AvatarFallback>PP</AvatarFallback>
-        <AvatarBadge>
-          <IconPlaceholder
-            lucide="PlusIcon"
-            tabler="IconPlus"
-            hugeicons="PlusSignIcon"
+      <div className="flex flex-wrap items-center gap-2">
+        <Avatar size="sm">
+          <AvatarImage
+            src="https://github.com/pranathip.png"
+            alt="@pranathip"
           />
-        </AvatarBadge>
-      </Avatar>
-      <Avatar>
-        <AvatarImage src="https://github.com/pranathip.png" alt="@pranathip" />
-        <AvatarFallback>PP</AvatarFallback>
-        <AvatarBadge>
-          <IconPlaceholder
-            lucide="PlusIcon"
-            tabler="IconPlus"
-            hugeicons="PlusSignIcon"
+          <AvatarFallback>PP</AvatarFallback>
+          <AvatarBadge>
+            <IconPlaceholder
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+            />
+          </AvatarBadge>
+        </Avatar>
+        <Avatar>
+          <AvatarImage
+            src="https://github.com/pranathip.png"
+            alt="@pranathip"
           />
-        </AvatarBadge>
-      </Avatar>
-      <Avatar size="lg">
-        <AvatarImage src="https://github.com/pranathip.png" alt="@pranathip" />
-        <AvatarFallback>PP</AvatarFallback>
-        <AvatarBadge>
-          <IconPlaceholder
-            lucide="PlusIcon"
-            tabler="IconPlus"
-            hugeicons="PlusSignIcon"
+          <AvatarFallback>PP</AvatarFallback>
+          <AvatarBadge>
+            <IconPlaceholder
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+            />
+          </AvatarBadge>
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarImage
+            src="https://github.com/pranathip.png"
+            alt="@pranathip"
           />
-        </AvatarBadge>
-      </Avatar>
-      <Avatar size="sm">
-        <AvatarFallback>PP</AvatarFallback>
-        <AvatarBadge>
-          <IconPlaceholder
-            lucide="CheckIcon"
-            tabler="IconCheck"
-            hugeicons="Tick02Icon"
-          />
-        </AvatarBadge>
-      </Avatar>
-      <Avatar>
-        <AvatarFallback>PP</AvatarFallback>
-        <AvatarBadge>
-          <IconPlaceholder
-            lucide="CheckIcon"
-            tabler="IconCheck"
-            hugeicons="Tick02Icon"
-          />
-        </AvatarBadge>
-      </Avatar>
-      <Avatar size="lg">
-        <AvatarFallback>PP</AvatarFallback>
-        <AvatarBadge>
-          <IconPlaceholder
-            lucide="CheckIcon"
-            tabler="IconCheck"
-            hugeicons="Tick02Icon"
-          />
-        </AvatarBadge>
-      </Avatar>
+          <AvatarFallback>PP</AvatarFallback>
+          <AvatarBadge>
+            <IconPlaceholder
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+            />
+          </AvatarBadge>
+        </Avatar>
+      </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <Avatar size="sm">
+          <AvatarFallback>PP</AvatarFallback>
+          <AvatarBadge>
+            <IconPlaceholder
+              lucide="CheckIcon"
+              tabler="IconCheck"
+              hugeicons="Tick02Icon"
+            />
+          </AvatarBadge>
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>PP</AvatarFallback>
+          <AvatarBadge>
+            <IconPlaceholder
+              lucide="CheckIcon"
+              tabler="IconCheck"
+              hugeicons="Tick02Icon"
+            />
+          </AvatarBadge>
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarFallback>PP</AvatarFallback>
+          <AvatarBadge>
+            <IconPlaceholder
+              lucide="CheckIcon"
+              tabler="IconCheck"
+              hugeicons="Tick02Icon"
+            />
+          </AvatarBadge>
+        </Avatar>
+      </div>
     </Frame>
   )
 }
 
-function AvatarExample4() {
+function AvatarGroupExample() {
   return (
     <Frame title="Group">
       <AvatarGroup>
@@ -295,7 +314,7 @@ function AvatarExample4() {
   )
 }
 
-function AvatarExample5() {
+function AvatarGroupWithCount() {
   return (
     <Frame title="Group with Count">
       <AvatarGroup>
@@ -365,7 +384,7 @@ function AvatarExample5() {
   )
 }
 
-function AvatarExample6() {
+function AvatarGroupWithIconCount() {
   return (
     <Frame title="Group with Icon Count">
       <AvatarGroup>
@@ -459,166 +478,67 @@ function AvatarExample6() {
   )
 }
 
-function AvatarExample7() {
+function AvatarInEmpty() {
   return (
-    <Empty className="flex-none border">
-      <EmptyHeader>
-        <EmptyMedia>
-          <AvatarGroup>
-            <Avatar size="lg">
-              <AvatarImage
-                src="https://github.com/shadcn.png"
-                alt="@shadcn"
-                className="grayscale"
-              />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Avatar size="lg">
-              <AvatarImage
-                src="https://github.com/maxleiter.png"
-                alt="@maxleiter"
-                className="grayscale"
-              />
-              <AvatarFallback>LR</AvatarFallback>
-            </Avatar>
-            <Avatar size="lg">
-              <AvatarImage
-                src="https://github.com/evilrabbit.png"
-                alt="@evilrabbit"
-                className="grayscale"
-              />
-              <AvatarFallback>ER</AvatarFallback>
-            </Avatar>
-            <AvatarGroupCount>
-              <IconPlaceholder
-                lucide="PlusIcon"
-                tabler="IconPlus"
-                hugeicons="PlusSignIcon"
-              />
-            </AvatarGroupCount>
-          </AvatarGroup>
-        </EmptyMedia>
-        <EmptyTitle>No Team Members</EmptyTitle>
-        <EmptyDescription>
-          Invite your team to collaborate on this project.
-        </EmptyDescription>
-      </EmptyHeader>
-      <EmptyContent>
-        <Button>
-          <IconPlaceholder
-            lucide="PlusIcon"
-            tabler="IconPlus"
-            hugeicons="PlusSignIcon"
-          />
-          Invite Members
-        </Button>
-      </EmptyContent>
-    </Empty>
-  )
-}
-
-function AvatarExample8() {
-  const users = [
-    {
-      name: "Max Leiter",
-      email: "max@example.com",
-      avatar: "https://github.com/maxleiter.png",
-      fallback: "ML",
-      role: "member",
-    },
-    {
-      name: "Jorge Zreik",
-      email: "jorge@example.com",
-      avatar: "https://github.com/jorgezreik.png",
-      fallback: "JZ",
-      role: "member",
-    },
-    {
-      name: "Pranathi Peri",
-      email: "pranathi@example.com",
-      avatar: "https://github.com/pranathip.png",
-      fallback: "PP",
-      role: "viewer",
-    },
-  ]
-
-  return (
-    <Card className="gap-4">
-      <CardHeader>
-        <CardTitle>Team Members</CardTitle>
-        <CardDescription>
-          View and manage your team members in this project.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-2">
-        <InputGroup>
-          <InputGroupInput placeholder="Search" />
-          <InputGroupAddon align="inline-start">
+    <Frame title="In Empty">
+      <Empty className="w-full flex-none border">
+        <EmptyHeader>
+          <EmptyMedia>
+            <AvatarGroup>
+              <Avatar size="lg">
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                  className="grayscale"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar size="lg">
+                <AvatarImage
+                  src="https://github.com/maxleiter.png"
+                  alt="@maxleiter"
+                  className="grayscale"
+                />
+                <AvatarFallback>LR</AvatarFallback>
+              </Avatar>
+              <Avatar size="lg">
+                <AvatarImage
+                  src="https://github.com/evilrabbit.png"
+                  alt="@evilrabbit"
+                  className="grayscale"
+                />
+                <AvatarFallback>ER</AvatarFallback>
+              </Avatar>
+              <AvatarGroupCount>
+                <IconPlaceholder
+                  lucide="PlusIcon"
+                  tabler="IconPlus"
+                  hugeicons="PlusSignIcon"
+                />
+              </AvatarGroupCount>
+            </AvatarGroup>
+          </EmptyMedia>
+          <EmptyTitle>No Team Members</EmptyTitle>
+          <EmptyDescription>
+            Invite your team to collaborate on this project.
+          </EmptyDescription>
+        </EmptyHeader>
+        <EmptyContent>
+          <Button>
             <IconPlaceholder
-              lucide="SearchIcon"
-              tabler="IconSearch"
-              hugeicons="Search01Icon"
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
             />
-          </InputGroupAddon>
-        </InputGroup>
-        <ItemGroup>
-          {users.map((user) => {
-            return (
-              <Item key={user.email} size="sm" className="px-0 sm:gap-4">
-                <ItemMedia>
-                  <Avatar size="lg">
-                    <AvatarImage
-                      src={user.avatar}
-                      alt={user.name}
-                      className="grayscale"
-                    />
-                    <AvatarFallback>{user.fallback}</AvatarFallback>
-                  </Avatar>
-                </ItemMedia>
-                <ItemContent className="gap-0.5">
-                  <ItemTitle>{user.name}</ItemTitle>
-                  <ItemDescription>{user.email}</ItemDescription>
-                </ItemContent>
-                <ItemActions>
-                  <Button variant="outline" size="icon" className="sm:hidden">
-                    <IconPlaceholder
-                      lucide="EllipsisIcon"
-                      tabler="IconDots"
-                      hugeicons="MoreHorizontalIcon"
-                    />
-                    <span className="sr-only">More options</span>
-                  </Button>
-                  <NativeSelect
-                    defaultValue={user.role}
-                    className="hidden sm:flex"
-                  >
-                    <NativeSelectOption value="admin">Admin</NativeSelectOption>
-                    <NativeSelectOption value="member">
-                      Member
-                    </NativeSelectOption>
-                    <NativeSelectOption value="viewer">
-                      Viewer
-                    </NativeSelectOption>
-                  </NativeSelect>
-                </ItemActions>
-              </Item>
-            )
-          })}
-        </ItemGroup>
-        <Button className="mt-4 w-full">
-          <IconPlaceholder
-            lucide="PlusIcon"
-            tabler="IconPlus"
-            hugeicons="PlusSignIcon"
-          />
-          Add Member
-        </Button>
-      </CardContent>
-    </Card>
+            Invite Members
+          </Button>
+        </EmptyContent>
+      </Empty>
+    </Frame>
   )
 }
 
-function AvatarExample9() {
+function AvatarInSelect() {
   const users = [
     {
       name: "shadcn",
@@ -648,12 +568,10 @@ function AvatarExample9() {
   ]
 
   return (
-    <Card className="gap-4">
-      <CardHeader>
-        <CardTitle>Select User</CardTitle>
-        <CardDescription>Choose a user from the dropdown.</CardDescription>
-      </CardHeader>
-      <CardContent>
+    <Frame title="In Select">
+      <Field>
+        <FieldLabel>Select User</FieldLabel>
+
         <Select>
           <SelectTrigger className="w-full pl-2">
             <SelectValue placeholder="Select a user" />
@@ -679,192 +597,8 @@ function AvatarExample9() {
             </SelectGroup>
           </SelectContent>
         </Select>
-      </CardContent>
-    </Card>
-  )
-}
-
-function AvatarExample10() {
-  const users = [
-    {
-      name: "shadcn",
-      avatar: "https://github.com/shadcn.png",
-      fallback: "CN",
-    },
-    {
-      name: "Max",
-      avatar: "https://github.com/maxleiter.png",
-      fallback: "ML",
-    },
-    {
-      name: "Jorge",
-      avatar: "https://github.com/jorgezreik.png",
-      fallback: "JZ",
-    },
-    {
-      name: "Evil",
-      avatar: "https://github.com/evilrabbit.png",
-      fallback: "ER",
-    },
-    {
-      name: "Pranathi",
-      avatar: "https://github.com/pranathip.png",
-      fallback: "PP",
-    },
-    {
-      name: "Shu",
-      avatar: "https://github.com/shuding.png",
-      fallback: "SD",
-    },
-  ]
-
-  return (
-    <Card className="gap-4">
-      <CardHeader>
-        <CardTitle>Share File</CardTitle>
-        <CardDescription>Select a user to share the file with.</CardDescription>
-        <CardAction>
-          <Button variant="ghost" size="sm">
-            Option{" "}
-            <IconPlaceholder
-              lucide="ChevronRightIcon"
-              tabler="IconChevronRight"
-              hugeicons="ArrowRight01Icon"
-            />
-          </Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent className="px-5">
-        <div className="no-scrollbar flex flex-row items-center gap-4 overflow-x-auto p-1">
-          {users.map((user) => {
-            return (
-              <button
-                key={user.name}
-                value={user.name}
-                className="group/button flex flex-col items-center gap-2"
-              >
-                <Avatar
-                  size="lg"
-                  className="ring-primary ring-offset-background rounded-lg ring-offset-1 grayscale transition-all group-hover/button:ring-2"
-                >
-                  <AvatarImage
-                    src={user.avatar}
-                    alt={user.name}
-                    className="rounded-lg"
-                  />
-                  <AvatarFallback>{user.fallback}</AvatarFallback>
-                </Avatar>
-                <span className="text-xs font-medium lowercase">
-                  {user.name}
-                </span>
-              </button>
-            )
-          })}
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Send</Button>
-      </CardFooter>
-    </Card>
-  )
-}
-
-function AvatarExample11() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          className="h-12 justify-start px-2 md:max-w-[200px]"
-        >
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/shadcn.png"
-              alt="Shadcn"
-              className="grayscale"
-            />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-semibold">shadcn</span>
-            <span className="text-muted-foreground truncate text-xs">
-              shadcn@example.com
-            </span>
-          </div>
-          <IconPlaceholder
-            lucide="ChevronsUpDownIcon"
-            tabler="IconSelector"
-            hugeicons="UnfoldMoreIcon"
-            className="text-muted-foreground ml-auto"
-          />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="w-(--radix-dropdown-menu-trigger-width) min-w-56"
-        align="start"
-      >
-        <DropdownMenuLabel className="p-0 font-normal">
-          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
-              <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-            </Avatar>
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-semibold">shadcn</span>
-              <span className="text-muted-foreground truncate text-xs">
-                shadcn@example.com
-              </span>
-            </div>
-          </div>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="SparklesIcon"
-              tabler="IconSparkles"
-              hugeicons="SparklesIcon"
-            />
-            Upgrade to Pro
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="BadgeCheckIcon"
-              tabler="IconRosetteDiscountCheck"
-              hugeicons="CheckmarkBadge01Icon"
-            />
-            Account
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="CreditCardIcon"
-              tabler="IconCreditCard"
-              hugeicons="CreditCardIcon"
-            />
-            Billing
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="BellIcon"
-              tabler="IconBell"
-              hugeicons="Notification02Icon"
-            />
-            Notifications
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <IconPlaceholder
-            lucide="LogOutIcon"
-            tabler="IconLogout"
-            hugeicons="Logout05Icon"
-          />
-          Sign Out
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        <FieldDescription>Choose a user from the dropdown.</FieldDescription>
+      </Field>
+    </Frame>
   )
 }

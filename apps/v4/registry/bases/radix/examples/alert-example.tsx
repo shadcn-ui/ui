@@ -14,12 +14,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
+import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function AlertDemo() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-4">
-      <div className="flex max-w-2xl min-w-0 flex-col gap-12">
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
         <AlertExample1 />
         <AlertExample2 />
         <AlertExample3 />
@@ -32,7 +33,7 @@ export default function AlertDemo() {
 
 function AlertExample1() {
   return (
-    <div className="grid gap-4">
+    <Frame title="Basic">
       <Alert>
         <AlertTitle>Success! Your changes have been saved.</AlertTitle>
       </Alert>
@@ -47,184 +48,109 @@ function AlertExample1() {
           This one has a description only. No title. No icon.
         </AlertDescription>
       </Alert>
-    </div>
+    </Frame>
   )
 }
 
 function AlertExample2() {
   return (
-    <div className="grid gap-4">
-      <Alert>
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertTitle>
-          Let&apos;s try one with icon, title and a <a href="#">link</a>.
-        </AlertTitle>
-      </Alert>
-      <Alert>
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertDescription>
-          This one has an icon and a description only. No title.{" "}
-          <a href="#">But it has a link</a> and a <a href="#">second link</a>.
-        </AlertDescription>
-      </Alert>
-
-      <Alert>
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertTitle>Success! Your changes have been saved</AlertTitle>
-        <AlertDescription>
-          This is an alert with icon, title and description.
-        </AlertDescription>
-      </Alert>
-      <Alert>
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertTitle>
-          This is a very long alert title that demonstrates how the component
-          handles extended text content and potentially wraps across multiple
-          lines
-        </AlertTitle>
-      </Alert>
-      <Alert>
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertDescription>
-          This is a very long alert description that demonstrates how the
-          component handles extended text content and potentially wraps across
-          multiple lines
-        </AlertDescription>
-      </Alert>
-      <Alert>
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertTitle>
-          This is an extremely long alert title that spans multiple lines to
-          demonstrate how the component handles very lengthy headings while
-          maintaining readability and proper text wrapping behavior
-        </AlertTitle>
-        <AlertDescription>
-          This is an equally long description that contains detailed information
-          about the alert. It shows how the component can accommodate extensive
-          content while preserving proper spacing, alignment, and readability
-          across different screen sizes and viewport widths. This helps ensure
-          the user experience remains consistent regardless of the content
-          length.
-        </AlertDescription>
-      </Alert>
-    </div>
-  )
-}
-
-function AlertExample3() {
-  return (
-    <div className="grid gap-4">
-      <Alert variant="destructive">
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertTitle>Something went wrong!</AlertTitle>
-        <AlertDescription>
-          Your session has expired. Please log in again.
-        </AlertDescription>
-      </Alert>
-      <Alert variant="destructive">
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertTitle>Unable to process your payment.</AlertTitle>
-        <AlertDescription>
-          <p>
-            Please verify your <a href="#">billing information</a> and try
-            again.
-          </p>
-          <ul className="list-inside list-disc text-sm">
-            <li>Check your card details</li>
-            <li>Ensure sufficient funds</li>
-            <li>Verify billing address</li>
-          </ul>
-        </AlertDescription>
-      </Alert>
-    </div>
-  )
-}
-
-function AlertExample4() {
-  return (
-    <div className="grid gap-4">
-      <Alert>
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
-        <AlertAction>
-          <Button size="xs">Undo</Button>
-        </AlertAction>
-      </Alert>
-      <Alert>
-        <IconPlaceholder
-          lucide="CircleAlertIcon"
-          tabler="IconExclamationCircle"
-          hugeicons="AlertCircleIcon"
-        />
-        <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
-        <AlertDescription>
-          This is a very long alert title that demonstrates how the component
-          handles extended text content.
-        </AlertDescription>
-        <AlertAction>
-          <Badge variant="secondary">Badge</Badge>
-        </AlertAction>
-      </Alert>
-    </div>
-  )
-}
-
-function AlertExample5() {
-  return (
-    <Card className="max-w-xs">
-      <CardHeader>
-        <CardTitle>Payment Settings</CardTitle>
-        <CardDescription>
-          Update your payment method and billing information.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="grid gap-4">
+    <Frame title="With Icons">
+      <div className="flex flex-col gap-4">
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
           />
-          <AlertTitle>Your trial is ending soon</AlertTitle>
+          <AlertTitle>
+            Let&apos;s try one with icon, title and a <a href="#">link</a>.
+          </AlertTitle>
+        </Alert>
+        <Alert>
+          <IconPlaceholder
+            lucide="CircleAlertIcon"
+            tabler="IconExclamationCircle"
+            hugeicons="AlertCircleIcon"
+          />
           <AlertDescription>
-            Your free trial will expire in 7 days. Add a payment method to
-            continue using our service.
+            This one has an icon and a description only. No title.{" "}
+            <a href="#">But it has a link</a> and a <a href="#">second link</a>.
+          </AlertDescription>
+        </Alert>
+
+        <Alert>
+          <IconPlaceholder
+            lucide="CircleAlertIcon"
+            tabler="IconExclamationCircle"
+            hugeicons="AlertCircleIcon"
+          />
+          <AlertTitle>Success! Your changes have been saved</AlertTitle>
+          <AlertDescription>
+            This is an alert with icon, title and description.
+          </AlertDescription>
+        </Alert>
+        <Alert>
+          <IconPlaceholder
+            lucide="CircleAlertIcon"
+            tabler="IconExclamationCircle"
+            hugeicons="AlertCircleIcon"
+          />
+          <AlertTitle>
+            This is a very long alert title that demonstrates how the component
+            handles extended text content and potentially wraps across multiple
+            lines
+          </AlertTitle>
+        </Alert>
+        <Alert>
+          <IconPlaceholder
+            lucide="CircleAlertIcon"
+            tabler="IconExclamationCircle"
+            hugeicons="AlertCircleIcon"
+          />
+          <AlertDescription>
+            This is a very long alert description that demonstrates how the
+            component handles extended text content and potentially wraps across
+            multiple lines
+          </AlertDescription>
+        </Alert>
+        <Alert>
+          <IconPlaceholder
+            lucide="CircleAlertIcon"
+            tabler="IconExclamationCircle"
+            hugeicons="AlertCircleIcon"
+          />
+          <AlertTitle>
+            This is an extremely long alert title that spans multiple lines to
+            demonstrate how the component handles very lengthy headings while
+            maintaining readability and proper text wrapping behavior
+          </AlertTitle>
+          <AlertDescription>
+            This is an equally long description that contains detailed
+            information about the alert. It shows how the component can
+            accommodate extensive content while preserving proper spacing,
+            alignment, and readability across different screen sizes and
+            viewport widths. This helps ensure the user experience remains
+            consistent regardless of the content length.
+          </AlertDescription>
+        </Alert>
+      </div>
+    </Frame>
+  )
+}
+
+function AlertExample3() {
+  return (
+    <Frame title="Destructive">
+      <div className="flex w-full flex-col gap-4">
+        <Alert variant="destructive">
+          <IconPlaceholder
+            lucide="CircleAlertIcon"
+            tabler="IconExclamationCircle"
+            hugeicons="AlertCircleIcon"
+          />
+          <AlertTitle>Something went wrong!</AlertTitle>
+          <AlertDescription>
+            Your session has expired. Please log in again.
           </AlertDescription>
         </Alert>
         <Alert variant="destructive">
@@ -233,15 +159,98 @@ function AlertExample5() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
           />
-          <AlertTitle>Payment method required</AlertTitle>
+          <AlertTitle>Unable to process your payment.</AlertTitle>
           <AlertDescription>
-            Please add a valid payment method to avoid service interruption.
+            <p>
+              Please verify your <a href="#">billing information</a> and try
+              again.
+            </p>
+            <ul className="list-inside list-disc text-sm">
+              <li>Check your card details</li>
+              <li>Ensure sufficient funds</li>
+              <li>Verify billing address</li>
+            </ul>
           </AlertDescription>
         </Alert>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Update Payment Method</Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </Frame>
+  )
+}
+
+function AlertExample4() {
+  return (
+    <Frame title="With Actions">
+      <div className="flex w-full flex-col gap-4">
+        <Alert>
+          <IconPlaceholder
+            lucide="CircleAlertIcon"
+            tabler="IconExclamationCircle"
+            hugeicons="AlertCircleIcon"
+          />
+          <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
+          <AlertAction>
+            <Button size="xs">Undo</Button>
+          </AlertAction>
+        </Alert>
+        <Alert>
+          <IconPlaceholder
+            lucide="CircleAlertIcon"
+            tabler="IconExclamationCircle"
+            hugeicons="AlertCircleIcon"
+          />
+          <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
+          <AlertDescription>
+            This is a very long alert title that demonstrates how the component
+            handles extended text content.
+          </AlertDescription>
+          <AlertAction>
+            <Badge variant="secondary">Badge</Badge>
+          </AlertAction>
+        </Alert>
+      </div>
+    </Frame>
+  )
+}
+
+function AlertExample5() {
+  return (
+    <Frame title="In Card">
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle>Payment Settings</CardTitle>
+          <CardDescription>
+            Update your payment method and billing information.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          <Alert>
+            <IconPlaceholder
+              lucide="CircleAlertIcon"
+              tabler="IconExclamationCircle"
+              hugeicons="AlertCircleIcon"
+            />
+            <AlertTitle>Your trial is ending soon</AlertTitle>
+            <AlertDescription>
+              Your free trial will expire in 7 days. Add a payment method to
+              continue using our service.
+            </AlertDescription>
+          </Alert>
+          <Alert variant="destructive">
+            <IconPlaceholder
+              lucide="CircleAlertIcon"
+              tabler="IconExclamationCircle"
+              hugeicons="AlertCircleIcon"
+            />
+            <AlertTitle>Payment method required</AlertTitle>
+            <AlertDescription>
+              Please add a valid payment method to avoid service interruption.
+            </AlertDescription>
+          </Alert>
+        </CardContent>
+        <CardFooter>
+          <Button className="w-full">Update Payment Method</Button>
+        </CardFooter>
+      </Card>
+    </Frame>
   )
 }

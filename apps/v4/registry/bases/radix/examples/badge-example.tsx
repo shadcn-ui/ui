@@ -5,8 +5,8 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function BadgeDemo() {
   return (
-    <div className="bg-background flex min-h-screen flex-col items-center justify-center gap-6 p-4">
-      <div className="flex flex-col gap-6">
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
         <BadgeVariants />
         <BadgeWithIconLeft />
         <BadgeWithIconRight />

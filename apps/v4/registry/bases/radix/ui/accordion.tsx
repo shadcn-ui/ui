@@ -13,7 +13,7 @@ function Accordion({
   return (
     <AccordionPrimitive.Root
       data-slot="accordion"
-      className={cn("cn-accordion flex flex-col", className)}
+      className={cn("cn-accordion flex w-full flex-col", className)}
       {...props}
     />
   )

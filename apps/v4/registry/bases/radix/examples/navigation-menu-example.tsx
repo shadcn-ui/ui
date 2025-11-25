@@ -56,11 +56,9 @@ const components: { title: string; href: string; description: string }[] = [
 export default function NavigationMenuExample() {
   return (
     <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="w-full">
-        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-12">
-          <NavigationMenuWithViewport />
-          <NavigationMenuWithoutViewport />
-        </div>
+      <div className="flex w-full max-w-lg flex-col gap-12">
+        <NavigationMenuWithViewport />
+        <NavigationMenuWithoutViewport />
       </div>
     </div>
   )

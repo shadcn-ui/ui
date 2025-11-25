@@ -19,10 +19,12 @@ import Frame from "@/app/(design)/design/components/frame"
 
 export default function PaginationExample() {
   return (
-    <div className="bg-background flex min-h-screen min-w-0 flex-col items-center justify-center gap-12 p-6 lg:p-12 *:[div]:w-full *:[div]:max-w-lg">
-      <PaginationBasic />
-      <PaginationSimple />
-      <PaginationIconsOnly />
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
+        <PaginationBasic />
+        <PaginationSimple />
+        <PaginationIconsOnly />
+      </div>
     </div>
   )
 }

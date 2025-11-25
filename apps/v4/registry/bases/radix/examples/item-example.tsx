@@ -19,27 +19,25 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 export default function ItemExample() {
   return (
     <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="w-full">
-        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
-          <DefaultVariantItems />
-          <OutlineVariantItems />
-          <MutedVariantItems />
-          <DefaultVariantItemsSmall />
-          <OutlineVariantItemsSmall />
-          <MutedVariantItemsSmall />
-          <DefaultLinkItems />
-          <OutlineLinkItems />
-          <MutedLinkItems />
-          <DefaultItemGroup />
-          <OutlineItemGroup />
-          <MutedItemGroup />
-          <ItemHeaderExamples />
-          <ItemFooterExamples />
-          <ItemHeaderAndFooterExamples />
-          <DefaultVariantItemsWithImage />
-          <OutlineVariantItemsWithImage />
-          <MutedVariantItemsWithImage />
-        </div>
+      <div className="flex w-full max-w-lg flex-col gap-12 *:[div]:w-full">
+        <DefaultVariantItems />
+        <OutlineVariantItems />
+        <MutedVariantItems />
+        <DefaultVariantItemsSmall />
+        <OutlineVariantItemsSmall />
+        <MutedVariantItemsSmall />
+        <DefaultLinkItems />
+        <OutlineLinkItems />
+        <MutedLinkItems />
+        <DefaultItemGroup />
+        <OutlineItemGroup />
+        <MutedItemGroup />
+        <ItemHeaderExamples />
+        <ItemFooterExamples />
+        <ItemHeaderAndFooterExamples />
+        <DefaultVariantItemsWithImage />
+        <OutlineVariantItemsWithImage />
+        <MutedVariantItemsWithImage />
       </div>
     </div>
   )
@@ -47,7 +45,7 @@ export default function ItemExample() {
 
 function DefaultVariantItems() {
   return (
-    <Frame title="variant=default">
+    <Frame title="Default">
       <Item>
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -161,7 +159,7 @@ function DefaultVariantItems() {
 
 function OutlineVariantItems() {
   return (
-    <Frame title="variant=outline">
+    <Frame title="Outline">
       <Item variant="outline">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -275,7 +273,7 @@ function OutlineVariantItems() {
 
 function MutedVariantItems() {
   return (
-    <Frame title="variant=muted">
+    <Frame title="Muted">
       <Item variant="muted">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -389,7 +387,7 @@ function MutedVariantItems() {
 
 function DefaultVariantItemsSmall() {
   return (
-    <Frame title="size=sm">
+    <Frame title="Small">
       <Item size="sm">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -507,7 +505,7 @@ function DefaultVariantItemsSmall() {
 
 function OutlineVariantItemsSmall() {
   return (
-    <Frame title="variant=outline size=sm">
+    <Frame title="Outline - Small">
       <Item variant="outline" size="sm">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -625,7 +623,7 @@ function OutlineVariantItemsSmall() {
 
 function MutedVariantItemsSmall() {
   return (
-    <Frame title="variant=muted size=sm">
+    <Frame title="Muted - Small">
       <Item variant="muted" size="sm">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -815,7 +813,7 @@ function DefaultLinkItems() {
 
 function OutlineLinkItems() {
   return (
-    <Frame title="variant=outline asChild">
+    <Frame title="Outline - asChild">
       <ItemGroup>
         <Item variant="outline" asChild>
           <a href="#">
@@ -887,7 +885,7 @@ function OutlineLinkItems() {
 
 function MutedLinkItems() {
   return (
-    <Frame title="variant=muted asChild">
+    <Frame title="Muted - asChild">
       <ItemGroup>
         <Item variant="muted" asChild>
           <a href="#">
@@ -986,7 +984,7 @@ function DefaultItemGroup() {
 
 function OutlineItemGroup() {
   return (
-    <Frame title="variant=outline ItemGroup">
+    <Frame title="Outline - ItemGroup">
       <ItemGroup>
         <Item variant="outline">
           <ItemMedia variant="icon">
@@ -1034,7 +1032,7 @@ function OutlineItemGroup() {
 
 function MutedItemGroup() {
   return (
-    <Frame title="variant=muted ItemGroup">
+    <Frame title="Muted - ItemGroup">
       <ItemGroup>
         <Item variant="muted">
           <ItemContent>
@@ -1224,7 +1222,7 @@ function ItemHeaderAndFooterExamples() {
 
 function DefaultVariantItemsWithImage() {
   return (
-    <Frame title="variant=default ItemMedia image">
+    <Frame title="Default - ItemMedia image">
       <Item>
         <ItemMedia variant="image">
           <Image
@@ -1232,7 +1230,7 @@ function DefaultVariantItemsWithImage() {
             alt="Project"
             width={40}
             height={40}
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </ItemMedia>
         <ItemContent>
@@ -1249,7 +1247,7 @@ function DefaultVariantItemsWithImage() {
             alt="Document"
             width={40}
             height={40}
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </ItemMedia>
         <ItemContent>
@@ -1269,7 +1267,7 @@ function DefaultVariantItemsWithImage() {
             alt="File"
             width={40}
             height={40}
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </ItemMedia>
         <ItemContent>
@@ -1288,7 +1286,7 @@ function DefaultVariantItemsWithImage() {
 
 function OutlineVariantItemsWithImage() {
   return (
-    <Frame title="variant=outline ItemMedia image">
+    <Frame title="Outline - ItemMedia image">
       <Item variant="outline">
         <ItemMedia variant="image">
           <Image
@@ -1296,7 +1294,7 @@ function OutlineVariantItemsWithImage() {
             alt="Project"
             width={40}
             height={40}
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </ItemMedia>
         <ItemContent>
@@ -1313,7 +1311,7 @@ function OutlineVariantItemsWithImage() {
             alt="Document"
             width={40}
             height={40}
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </ItemMedia>
         <ItemContent>
@@ -1333,7 +1331,7 @@ function OutlineVariantItemsWithImage() {
             alt="File"
             width={40}
             height={40}
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </ItemMedia>
         <ItemContent>
@@ -1352,7 +1350,7 @@ function OutlineVariantItemsWithImage() {
 
 function MutedVariantItemsWithImage() {
   return (
-    <Frame title="variant=muted ItemMedia image">
+    <Frame title="Muted - ItemMedia image">
       <Item variant="muted">
         <ItemMedia variant="image">
           <Image
@@ -1360,7 +1358,7 @@ function MutedVariantItemsWithImage() {
             alt="Project"
             width={40}
             height={40}
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </ItemMedia>
         <ItemContent>
@@ -1377,7 +1375,7 @@ function MutedVariantItemsWithImage() {
             alt="Document"
             width={40}
             height={40}
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </ItemMedia>
         <ItemContent>
@@ -1397,7 +1395,7 @@ function MutedVariantItemsWithImage() {
             alt="File"
             width={40}
             height={40}
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </ItemMedia>
         <ItemContent>

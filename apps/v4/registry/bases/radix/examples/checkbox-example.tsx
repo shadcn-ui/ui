@@ -19,86 +19,105 @@ import {
   TableHeader,
   TableRow,
 } from "@/registry/bases/radix/ui/table"
+import Frame from "@/app/(design)/design/components/frame"
 
 export default function CheckboxDemo() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-4">
-      <div className="flex w-full max-w-2xl min-w-0 flex-col gap-6">
-        <CheckboxExample1 />
-        <CheckboxExample2 />
-        <CheckboxExample3 />
-        <CheckboxExample4 />
-        <CheckboxExample5 />
-        <CheckboxExample6 />
+    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
+      <div className="flex w-full max-w-lg flex-col gap-12">
+        <CheckboxBasic />
+        <CheckboxWithDescription />
+        <CheckboxInvalid />
+        <CheckboxDisabled />
+        <CheckboxWithTitle />
+        <CheckboxInTable />
+        <CheckboxGroup />
       </div>
     </div>
   )
 }
 
-function CheckboxExample1() {
+function CheckboxBasic() {
   return (
-    <Field orientation="horizontal">
-      <Checkbox id="terms" />
-      <FieldLabel htmlFor="terms">Accept terms and conditions</FieldLabel>
-    </Field>
+    <Frame title="Basic">
+      <Field orientation="horizontal">
+        <Checkbox id="terms" />
+        <FieldLabel htmlFor="terms">Accept terms and conditions</FieldLabel>
+      </Field>
+    </Frame>
   )
 }
 
-function CheckboxExample2() {
+function CheckboxWithDescription() {
   return (
-    <FieldGroup>
+    <Frame title="With Description">
       <Field orientation="horizontal">
         <Checkbox id="terms-2" defaultChecked />
         <FieldContent>
-          <FieldLabel htmlFor="terms-2">Accept terms and conditions</FieldLabel>
+          <FieldLabel htmlFor="terms-2">
+            Accept terms and conditions
+          </FieldLabel>
           <FieldDescription>
             By clicking this checkbox, you agree to the terms and conditions.
           </FieldDescription>
         </FieldContent>
       </Field>
+    </Frame>
+  )
+}
+
+function CheckboxInvalid() {
+  return (
+    <Frame title="Invalid">
       <Field orientation="horizontal" data-invalid>
         <Checkbox id="terms-3" aria-invalid />
-        <FieldLabel htmlFor="terms-3">Accept terms and conditions</FieldLabel>
+        <FieldLabel htmlFor="terms-3">
+          Accept terms and conditions
+        </FieldLabel>
       </Field>
-    </FieldGroup>
+    </Frame>
   )
 }
 
-function CheckboxExample3() {
+function CheckboxDisabled() {
   return (
-    <Field orientation="horizontal">
-      <Checkbox id="toggle" disabled />
-      <FieldLabel htmlFor="toggle">Enable notifications</FieldLabel>
-    </Field>
+    <Frame title="Disabled">
+      <Field orientation="horizontal">
+        <Checkbox id="toggle" disabled />
+        <FieldLabel htmlFor="toggle">Enable notifications</FieldLabel>
+      </Field>
+    </Frame>
   )
 }
 
-function CheckboxExample4() {
+function CheckboxWithTitle() {
   return (
-    <FieldGroup>
-      <FieldLabel htmlFor="toggle-2">
-        <Field orientation="horizontal">
-          <Checkbox id="toggle-2" defaultChecked />
-          <FieldContent>
-            <FieldTitle>Enable notifications</FieldTitle>
-            <FieldDescription>
-              You can enable or disable notifications at any time.
-            </FieldDescription>
-          </FieldContent>
-        </Field>
-      </FieldLabel>
-      <FieldLabel htmlFor="toggle-4">
-        <Field orientation="horizontal" data-disabled>
-          <Checkbox id="toggle-4" disabled />
-          <FieldContent>
-            <FieldTitle>Enable notifications</FieldTitle>
-            <FieldDescription>
-              You can enable or disable notifications at any time.
-            </FieldDescription>
-          </FieldContent>
-        </Field>
-      </FieldLabel>
-    </FieldGroup>
+    <Frame title="With Title">
+      <FieldGroup>
+        <FieldLabel htmlFor="toggle-2">
+          <Field orientation="horizontal">
+            <Checkbox id="toggle-2" defaultChecked />
+            <FieldContent>
+              <FieldTitle>Enable notifications</FieldTitle>
+              <FieldDescription>
+                You can enable or disable notifications at any time.
+              </FieldDescription>
+            </FieldContent>
+          </Field>
+        </FieldLabel>
+        <FieldLabel htmlFor="toggle-4">
+          <Field orientation="horizontal" data-disabled>
+            <Checkbox id="toggle-4" disabled />
+            <FieldContent>
+              <FieldTitle>Enable notifications</FieldTitle>
+              <FieldDescription>
+                You can enable or disable notifications at any time.
+              </FieldDescription>
+            </FieldContent>
+          </Field>
+        </FieldLabel>
+      </FieldGroup>
+    </Frame>
   )
 }
 
@@ -129,7 +148,7 @@ const tableData = [
   },
 ]
 
-function CheckboxExample5() {
+function CheckboxInTable() {
   const [selectedRows, setSelectedRows] = React.useState<Set<string>>(
     new Set(["1"])
   )
@@ -155,7 +174,7 @@ function CheckboxExample5() {
   }
 
   return (
-    <div className="">
+    <Frame title="In Table">
       <Table>
         <TableHeader>
           <TableRow>
@@ -193,50 +212,52 @@ function CheckboxExample5() {
           ))}
         </TableBody>
       </Table>
-    </div>
+    </Frame>
   )
 }
 
-function CheckboxExample6() {
+function CheckboxGroup() {
   return (
-    <Field>
-      <FieldLabel>Show these items on the desktop:</FieldLabel>
-      <Field orientation="horizontal">
-        <Checkbox id="finder-pref-9k2-hard-disks-ljj" />
-        <FieldLabel
-          htmlFor="finder-pref-9k2-hard-disks-ljj"
-          className="font-normal"
-        >
-          Hard disks
-        </FieldLabel>
+    <Frame title="Group">
+      <Field>
+        <FieldLabel>Show these items on the desktop:</FieldLabel>
+        <Field orientation="horizontal">
+          <Checkbox id="finder-pref-9k2-hard-disks-ljj" />
+          <FieldLabel
+            htmlFor="finder-pref-9k2-hard-disks-ljj"
+            className="font-normal"
+          >
+            Hard disks
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <Checkbox id="finder-pref-9k2-external-disks-1yg" />
+          <FieldLabel
+            htmlFor="finder-pref-9k2-external-disks-1yg"
+            className="font-normal"
+          >
+            External disks
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <Checkbox id="finder-pref-9k2-cds-dvds-fzt" />
+          <FieldLabel
+            htmlFor="finder-pref-9k2-cds-dvds-fzt"
+            className="font-normal"
+          >
+            CDs, DVDs, and iPods
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <Checkbox id="finder-pref-9k2-connected-servers-6l2" />
+          <FieldLabel
+            htmlFor="finder-pref-9k2-connected-servers-6l2"
+            className="font-normal"
+          >
+            Connected servers
+          </FieldLabel>
+        </Field>
       </Field>
-      <Field orientation="horizontal">
-        <Checkbox id="finder-pref-9k2-external-disks-1yg" />
-        <FieldLabel
-          htmlFor="finder-pref-9k2-external-disks-1yg"
-          className="font-normal"
-        >
-          External disks
-        </FieldLabel>
-      </Field>
-      <Field orientation="horizontal">
-        <Checkbox id="finder-pref-9k2-cds-dvds-fzt" />
-        <FieldLabel
-          htmlFor="finder-pref-9k2-cds-dvds-fzt"
-          className="font-normal"
-        >
-          CDs, DVDs, and iPods
-        </FieldLabel>
-      </Field>
-      <Field orientation="horizontal">
-        <Checkbox id="finder-pref-9k2-connected-servers-6l2" />
-        <FieldLabel
-          htmlFor="finder-pref-9k2-connected-servers-6l2"
-          className="font-normal"
-        >
-          Connected servers
-        </FieldLabel>
-      </Field>
-    </Field>
+    </Frame>
   )
 }
