@@ -12,10 +12,12 @@ export default function TabsExample() {
     <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
       <div className="flex w-full max-w-lg flex-col gap-12">
         <TabsBasic />
-        <TabsDisabled />
-        <TabsWithIcons />
         <TabsMultiple />
         <TabsWithContent />
+        <TabsDisabled />
+        <TabsWithIcons />
+        <TabsIconOnly />
+        <TabsVertical />
       </div>
     </div>
   )
@@ -76,6 +78,38 @@ function TabsWithIcons() {
   )
 }
 
+function TabsIconOnly() {
+  return (
+    <Frame title="Icon Only">
+      <Tabs defaultValue="home">
+        <TabsList>
+          <TabsTrigger value="home">
+            <IconPlaceholder
+              lucide="HomeIcon"
+              tabler="IconHome"
+              hugeicons="HomeIcon"
+            />
+          </TabsTrigger>
+          <TabsTrigger value="search">
+            <IconPlaceholder
+              lucide="SearchIcon"
+              tabler="IconSearch"
+              hugeicons="SearchIcon"
+            />
+          </TabsTrigger>
+          <TabsTrigger value="settings">
+            <IconPlaceholder
+              lucide="SettingsIcon"
+              tabler="IconSettings"
+              hugeicons="SettingsIcon"
+            />
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
+    </Frame>
+  )
+}
+
 function TabsMultiple() {
   return (
     <Frame title="Multiple">
@@ -122,6 +156,141 @@ function TabsWithContent() {
             <p className="text-muted-foreground text-sm">
               Configure how you receive notifications and alerts.
             </p>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </Frame>
+  )
+}
+
+function TabsVertical() {
+  return (
+    <Frame title="Vertical">
+      <Tabs defaultValue="account" orientation="vertical">
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+          <TabsTrigger value="notifications">Notifications</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">
+          <div className="rounded-lg border p-6">
+            <h3 className="mb-4 text-base font-semibold">Account Settings</h3>
+            <p className="text-muted-foreground mb-6 text-sm">
+              Manage your account preferences and profile information.
+            </p>
+            <div className="flex flex-col gap-4">
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Display Name
+                </label>
+                <p className="text-muted-foreground text-sm">
+                  Your display name appears on your profile and in comments.
+                </p>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium">Email</label>
+                <p className="text-muted-foreground text-sm">
+                  Your email address is used for account recovery and
+                  notifications.
+                </p>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Timezone
+                </label>
+                <p className="text-muted-foreground text-sm">
+                  Set your timezone to ensure accurate timestamps across the
+                  platform.
+                </p>
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+        <TabsContent value="password">
+          <div className="rounded-lg border p-6">
+            <h3 className="mb-4 text-base font-semibold">Password Settings</h3>
+            <p className="text-muted-foreground mb-6 text-sm">
+              Update your password to keep your account secure. Use a strong
+              password with a mix of letters, numbers, and symbols.
+            </p>
+            <div className="flex flex-col gap-4">
+              <div>
+                <h4 className="mb-2 text-sm font-medium">
+                  Password Requirements
+                </h4>
+                <ul className="text-muted-foreground ml-4 list-disc space-y-1 text-sm">
+                  <li>At least 8 characters long</li>
+                  <li>Contains uppercase and lowercase letters</li>
+                  <li>Includes at least one number</li>
+                  <li>Contains at least one special character</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-2 text-sm font-medium">Security Tips</h4>
+                <ul className="text-muted-foreground ml-4 list-disc space-y-1 text-sm">
+                  <li>Never share your password with anyone</li>
+                  <li>Use a unique password for this account</li>
+                  <li>Change your password regularly</li>
+                  <li>Enable two-factor authentication for extra security</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+        <TabsContent value="notifications">
+          <div className="rounded-lg border p-6">
+            <h3 className="mb-4 text-base font-semibold">
+              Notification Settings
+            </h3>
+            <p className="text-muted-foreground mb-6 text-sm">
+              Configure how you receive notifications and alerts. Choose which
+              types of notifications you want to receive and how you want to
+              receive them.
+            </p>
+            <div className="flex flex-col gap-6">
+              <div>
+                <h4 className="mb-3 text-sm font-medium">
+                  Email Notifications
+                </h4>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">New comments</span>
+                    <span className="text-muted-foreground text-xs">
+                      Enabled
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Weekly digest</span>
+                    <span className="text-muted-foreground text-xs">
+                      Enabled
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Security alerts</span>
+                    <span className="text-muted-foreground text-xs">
+                      Enabled
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 className="mb-3 text-sm font-medium">Push Notifications</h4>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Mentions</span>
+                    <span className="text-muted-foreground text-xs">
+                      Enabled
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Direct messages</span>
+                    <span className="text-muted-foreground text-xs">
+                      Enabled
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </TabsContent>
       </Tabs>
