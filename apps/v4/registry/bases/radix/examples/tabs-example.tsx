@@ -1,3 +1,11 @@
+import { Button } from "@/registry/bases/radix/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/bases/radix/ui/dropdown-menu"
 import {
   Tabs,
   TabsContent,
@@ -12,8 +20,13 @@ export default function TabsExample() {
     <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
       <div className="flex w-full max-w-lg flex-col gap-12">
         <TabsBasic />
+        <TabsLine />
+        <TabsVariantsComparison />
         <TabsMultiple />
         <TabsWithContent />
+        <TabsLineWithContent />
+        <TabsLineDisabled />
+        <TabsWithDropdown />
         <TabsDisabled />
         <TabsWithIcons />
         <TabsIconOnly />
@@ -32,6 +45,41 @@ function TabsBasic() {
           <TabsTrigger value="settings">Settings</TabsTrigger>
         </TabsList>
       </Tabs>
+    </Frame>
+  )
+}
+
+function TabsLine() {
+  return (
+    <Frame title="Line">
+      <Tabs defaultValue="overview" variant="line">
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsTrigger value="reports">Reports</TabsTrigger>
+        </TabsList>
+      </Tabs>
+    </Frame>
+  )
+}
+
+function TabsVariantsComparison() {
+  return (
+    <Frame title="Variants Alignment">
+      <div className="flex gap-4">
+        <Tabs defaultValue="overview">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          </TabsList>
+        </Tabs>
+        <Tabs defaultValue="overview" variant="line">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
     </Frame>
   )
 }
@@ -163,6 +211,118 @@ function TabsWithContent() {
   )
 }
 
+function TabsLineWithContent() {
+  return (
+    <Frame title="Line With Content">
+      <Tabs defaultValue="account" variant="line">
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+          <TabsTrigger value="notifications">Notifications</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Account Settings</h3>
+            <p className="text-muted-foreground text-sm">
+              Manage your account preferences and profile information.
+            </p>
+          </div>
+        </TabsContent>
+        <TabsContent value="password">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Password Settings</h3>
+            <p className="text-muted-foreground text-sm">
+              Update your password to keep your account secure.
+            </p>
+          </div>
+        </TabsContent>
+        <TabsContent value="notifications">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Notification Settings</h3>
+            <p className="text-muted-foreground text-sm">
+              Configure how you receive notifications and alerts.
+            </p>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </Frame>
+  )
+}
+
+function TabsLineDisabled() {
+  return (
+    <Frame title="Line Disabled">
+      <Tabs defaultValue="overview" variant="line">
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsTrigger value="reports" disabled>
+            Reports
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
+    </Frame>
+  )
+}
+
+function TabsWithDropdown() {
+  return (
+    <Frame title="With Dropdown">
+      <Tabs defaultValue="overview">
+        <div className="flex items-center justify-between">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="reports">Reports</TabsTrigger>
+          </TabsList>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="size-8">
+                <IconPlaceholder
+                  lucide="MoreHorizontalIcon"
+                  tabler="IconDots"
+                  hugeicons="MoreHorizontalIcon"
+                />
+                <span className="sr-only">More options</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem>Settings</DropdownMenuItem>
+              <DropdownMenuItem>Export</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Archive</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <TabsContent value="overview">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Overview</h3>
+            <p className="text-muted-foreground text-sm">
+              View your dashboard metrics and key performance indicators.
+            </p>
+          </div>
+        </TabsContent>
+        <TabsContent value="analytics">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Analytics</h3>
+            <p className="text-muted-foreground text-sm">
+              Detailed analytics and insights about your data.
+            </p>
+          </div>
+        </TabsContent>
+        <TabsContent value="reports">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Reports</h3>
+            <p className="text-muted-foreground text-sm">
+              Generate and view custom reports.
+            </p>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </Frame>
+  )
+}
+
 function TabsVertical() {
   return (
     <Frame title="Vertical">
@@ -187,22 +347,6 @@ function TabsVertical() {
                   Your display name appears on your profile and in comments.
                 </p>
               </div>
-              <div>
-                <label className="mb-2 block text-sm font-medium">Email</label>
-                <p className="text-muted-foreground text-sm">
-                  Your email address is used for account recovery and
-                  notifications.
-                </p>
-              </div>
-              <div>
-                <label className="mb-2 block text-sm font-medium">
-                  Timezone
-                </label>
-                <p className="text-muted-foreground text-sm">
-                  Set your timezone to ensure accurate timestamps across the
-                  platform.
-                </p>
-              </div>
             </div>
           </div>
         </TabsContent>
@@ -225,15 +369,6 @@ function TabsVertical() {
                   <li>Contains at least one special character</li>
                 </ul>
               </div>
-              <div>
-                <h4 className="mb-2 text-sm font-medium">Security Tips</h4>
-                <ul className="text-muted-foreground ml-4 list-disc space-y-1 text-sm">
-                  <li>Never share your password with anyone</li>
-                  <li>Use a unique password for this account</li>
-                  <li>Change your password regularly</li>
-                  <li>Enable two-factor authentication for extra security</li>
-                </ul>
-              </div>
             </div>
           </div>
         </TabsContent>
@@ -252,7 +387,7 @@ function TabsVertical() {
                 <h4 className="mb-3 text-sm font-medium">
                   Email Notifications
                 </h4>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-4">
                   <div className="flex items-center justify-between">
                     <span className="text-sm">New comments</span>
                     <span className="text-muted-foreground text-xs">
@@ -267,23 +402,6 @@ function TabsVertical() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">Security alerts</span>
-                    <span className="text-muted-foreground text-xs">
-                      Enabled
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 className="mb-3 text-sm font-medium">Push Notifications</h4>
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Mentions</span>
-                    <span className="text-muted-foreground text-xs">
-                      Enabled
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Direct messages</span>
                     <span className="text-muted-foreground text-xs">
                       Enabled
                     </span>

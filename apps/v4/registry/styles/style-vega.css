@@ -909,14 +909,10 @@
   }
 
   .cn-tabs-list {
-    @apply bg-muted text-muted-foreground h-9 rounded-lg p-[3px];
+    @apply rounded-lg p-[3px] group-data-[orientation=horizontal]/tabs:h-9;
   }
 
   .cn-tabs-trigger {
-    @apply data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium transition-[color,box-shadow] data-[state=active]:shadow-sm;
-  }
-
-  .cn-tabs-content {
-    @apply flex-1 outline-none;
+    @apply gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium transition-all group-data-[variant=line]/tabs:bg-transparent data-[state=active]:shadow-sm group-data-[variant=line]/tabs:data-[state=active]:bg-transparent group-data-[variant=line]/tabs:data-[state=active]:shadow-none dark:group-data-[variant=line]/tabs:data-[state=active]:bg-transparent;
   }
 }
