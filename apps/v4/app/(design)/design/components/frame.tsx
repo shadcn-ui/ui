@@ -15,7 +15,7 @@ export default function Frame({
       <div className="text-muted-foreground px-1.5 py-2 text-xs font-medium">
         {title}
       </div>
-      <div className="flex flex-col gap-4 rounded-xl border border-dashed p-4">
+      <div className="bg-background text-foreground flex flex-col gap-4 rounded-xl border border-dashed p-4">
         {children}
       </div>
     </div>

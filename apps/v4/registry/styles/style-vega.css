@@ -150,7 +150,7 @@
 
   /* Button */
   .cn-button {
-    @apply gap-2 rounded-lg border border-transparent bg-clip-padding text-sm font-medium [&_svg:not([class*='size-'])]:size-4;
+    @apply gap-2 rounded-md border border-transparent bg-clip-padding text-sm font-medium [&_svg:not([class*='size-'])]:size-4;
 
     /* Variant */
     &.cn-button-variant-default {
@@ -480,7 +480,7 @@
 
   /* Textarea */
   .cn-textarea {
-    @apply dark:bg-input/30 border-input rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] md:text-sm;
+    @apply border-input dark:bg-input/30 rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] md:text-sm;
   }
 
   /* Input Group */
@@ -913,6 +913,40 @@
   }
 
   .cn-tabs-trigger {
-    @apply gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium transition-all group-data-[variant=line]/tabs:bg-transparent data-[state=active]:shadow-sm group-data-[variant=line]/tabs:data-[state=active]:bg-transparent group-data-[variant=line]/tabs:data-[state=active]:shadow-none dark:group-data-[variant=line]/tabs:data-[state=active]:bg-transparent;
+    @apply gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium group-data-[variant=default]/tabs:data-[state=active]:shadow-sm;
+  }
+
+  /* Toggle */
+  .cn-toggle {
+    @apply gap-1 rounded-md text-sm font-medium transition-[color,box-shadow] [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-toggle-variant-default {
+    @apply bg-transparent;
+  }
+
+  .cn-toggle-variant-outline {
+    @apply border-input hover:bg-accent hover:text-accent-foreground border bg-transparent shadow-xs;
+  }
+
+  .cn-toggle-size-default {
+    @apply h-9 min-w-9 px-2;
+  }
+
+  .cn-toggle-size-sm {
+    @apply h-8 min-w-8 px-1.5;
+  }
+
+  .cn-toggle-size-lg {
+    @apply h-10 min-w-10 px-2.5;
+  }
+
+  /* Toggle Group */
+  .cn-toggle-group {
+    @apply rounded-md data-[spacing=0]:data-[variant=outline]:shadow-xs;
+  }
+
+  .cn-toggle-group-item {
+    @apply group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 group-data-[spacing=0]/toggle-group:shadow-none group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:first:rounded-l-md group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:first:rounded-t-md group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:last:rounded-r-md group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:last:rounded-b-md;
   }
 }
