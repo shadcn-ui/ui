@@ -17,6 +17,7 @@ export function BaseColorPicker() {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
+    history: "push",
   })
 
   const handleSelect = React.useCallback(

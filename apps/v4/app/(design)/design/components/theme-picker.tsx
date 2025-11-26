@@ -4,7 +4,6 @@ import * as React from "react"
 import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
-import { cn } from "@/lib/utils"
 import { Theme } from "@/registry/themes"
 import {
   CustomizerItem,
@@ -18,6 +17,7 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
+    history: "push",
   })
 
   const handleSelect = React.useCallback(
