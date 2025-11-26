@@ -1,0 +1,9 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "extends": "none",
+  "name": "index",
+  "type": "registry:style",
+  "dependencies": [
+    "radix-ui"
+  ]
+}
