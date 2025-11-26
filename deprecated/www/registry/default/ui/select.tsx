@@ -15,13 +15,46 @@ const SelectValue = SelectPrimitive.Value
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => {
-  const handleTouchStart = React.useCallback((event: React.TouchEvent) => {
-    const target = event.currentTarget as HTMLElement
-    if (target.getAttribute('data-state') === 'open') {
-      event.preventDefault()
-    }
-  }, [])
+>(({ className, children, onPointerDown, onClick, ...props }, ref) => {
+  const preventClickRef = React.useRef(false)
+
+  const handlePointerDown = React.useCallback(
+    (event: React.PointerEvent<HTMLButtonElement>) => {
+      onPointerDown?.(event)
+      if (event.defaultPrevented) {
+        preventClickRef.current = false
+        return
+      }
+
+      const target = event.currentTarget as HTMLElement
+      if (
+        event.pointerType === "touch" &&
+        target.getAttribute("data-state") === "open"
+      ) {
+        preventClickRef.current = true
+      } else {
+        preventClickRef.current = false
+      }
+    },
+    [onPointerDown]
+  )
+
+  const handleClick = React.useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      onClick?.(event)
+      if (event.defaultPrevented) {
+        return
+      }
+
+      if (preventClickRef.current) {
+        event.preventDefault()
+        event.stopPropagation()
+        preventClickRef.current = false
+        return
+      }
+    },
+    [onClick]
+  )
 
   return (
     <SelectPrimitive.Trigger
@@ -30,7 +63,8 @@ const SelectTrigger = React.forwardRef<
         "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background data-[placeholder]:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
         className
       )}
-      onTouchStart={handleTouchStart}
+      onPointerDown={handlePointerDown}
+      onClick={handleClick}
       {...props}
     >
       {children}
