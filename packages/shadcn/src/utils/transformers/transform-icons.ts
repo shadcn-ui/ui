@@ -1,4 +1,4 @@
-import { iconLibraries, type IconLibraryName } from "@/src/icons/libaries"
+import { iconLibraries, type IconLibraryName } from "@/src/icons/libraries"
 import { InvalidConfigIconLibraryError } from "@/src/registry/errors"
 import { Transformer } from "@/src/utils/transformers"
 import { SourceFile, SyntaxKind } from "ts-morph"

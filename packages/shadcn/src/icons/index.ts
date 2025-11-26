@@ -1,1 +1,1 @@
-export * from "./libaries"
+export * from "./libraries"

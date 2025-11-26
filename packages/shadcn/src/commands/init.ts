@@ -1,6 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { iconLibraries } from "@/src/icons/libaries"
+import { iconLibraries } from "@/src/icons/libraries"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
   getRegistryBaseColors,
