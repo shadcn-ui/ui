@@ -172,8 +172,6 @@ function applyToClassNameAttributes(
     } else {
       cleanCnClassesFromAttribute(initializer)
     }
-
-    unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
   })
 }
 

@@ -501,4 +501,38 @@ function Button({ className, ...props }: React.ComponentProps<"button">) {
       "
     `)
   })
+
+  it("applies styles to multiple occurrences of the same cn-* class", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Foo() {
+  return (
+    <section>
+      <div className="cn-foo" />
+      <div className={cn("cn-foo", "extra")} />
+    </section>
+  )
+}
+`
+
+    const result = await applyTransform(source, {
+      "cn-foo": "bg-background gap-4 rounded-xl",
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Foo() {
+        return (
+          <section>
+            <div className="bg-background gap-4 rounded-xl" />
+            <div className={cn("bg-background gap-4 rounded-xl", "extra")} />
+          </section>
+        )
+      }
+      "
+    `)
+  })
 })

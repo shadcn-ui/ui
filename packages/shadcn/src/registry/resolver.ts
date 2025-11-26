@@ -21,7 +21,9 @@ import {
   isUrl,
 } from "@/src/registry/utils"
 import {
+  registryItemCommonSchema,
   registryItemSchema,
+  registryItemTypeSchema,
   registryResolvedItemsTreeSchema,
 } from "@/src/schema"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
@@ -105,10 +107,13 @@ export async function fetchRegistryItems(
   return results
 }
 
-// Helper schema for items with source tracking
-const registryItemWithSourceSchema = registryItemSchema.extend({
-  _source: z.string().optional(),
-})
+// Helper schema for items with source tracking.
+const registryItemWithSourceSchema = registryItemCommonSchema
+  .extend({
+    type: registryItemTypeSchema,
+    _source: z.string().optional(),
+  })
+  .passthrough()
 
 // Resolves a list of registry items with all their dependencies and returns
 // a complete installation bundle with merged configuration.

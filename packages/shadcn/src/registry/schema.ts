@@ -14,8 +14,9 @@ export const registryItemTypeSchema = z.enum([
   "registry:theme",
   "registry:style",
   "registry:item",
+  "registry:base",
 
-  // Internal use only
+  // Internal use only.
   "registry:example",
   "registry:internal",
 ])
@@ -65,11 +66,11 @@ export const registryItemCssSchema = z.record(z.string(), cssValueSchema)
 
 export const registryItemEnvVarsSchema = z.record(z.string(), z.string())
 
-export const registryItemSchema = z.object({
+// Common fields shared by all registry items.
+export const registryItemCommonSchema = z.object({
   $schema: z.string().optional(),
   extends: z.string().optional(),
   name: z.string(),
-  type: registryItemTypeSchema,
   title: z.string().optional(),
   author: z.string().min(2).optional(),
   description: z.string().optional(),
@@ -86,7 +87,25 @@ export const registryItemSchema = z.object({
   categories: z.array(z.string()).optional(),
 })
 
+// registry:base has additional fields for configuration.
+export const registryItemSchema = z.discriminatedUnion("type", [
+  registryItemCommonSchema.extend({
+    type: z.literal("registry:base"),
+    style: z.string().optional(),
+    iconLibrary: z.string().optional(),
+    baseColor: z.string().optional(),
+    theme: z.string().optional(),
+    font: z.string().optional(),
+  }),
+  registryItemCommonSchema.extend({
+    type: registryItemTypeSchema.exclude(["registry:base"]),
+  }),
+])
+
 export type RegistryItem = z.infer<typeof registryItemSchema>
+
+// Helper type for registry:base items specifically.
+export type RegistryBaseItem = Extract<RegistryItem, { type: "registry:base" }>
 
 export const registrySchema = z.object({
   name: z.string(),
@@ -121,7 +140,7 @@ export const registryBaseColorSchema = z.object({
   cssVarsTemplate: z.string(),
 })
 
-export const registryResolvedItemsTreeSchema = registryItemSchema.pick({
+export const registryResolvedItemsTreeSchema = registryItemCommonSchema.pick({
   dependencies: true,
   devDependencies: true,
   files: true,

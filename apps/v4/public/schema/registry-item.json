@@ -18,6 +18,7 @@
         "registry:page",
         "registry:file",
         "registry:style",
+        "registry:base",
         "registry:item"
       ],
       "description": "The type of the item. This is used to determine the type and target path of the item when resolved for a project."
@@ -81,6 +82,7 @@
               "registry:page",
               "registry:file",
               "registry:style",
+              "registry:base",
               "registry:item"
             ],
             "description": "The type of the file. This is used to determine the type of the file when resolved for a project."
@@ -192,9 +194,47 @@
     "extends": {
       "type": "string",
       "description": "The name of the registry item to extend. This is used to extend the base shadcn/ui style. Set to none to start fresh. This is available for registry:style items only."
+    },
+    "style": {
+      "type": "string",
+      "description": "The style configuration for the base. This is available for registry:base items only."
+    },
+    "iconLibrary": {
+      "type": "string",
+      "description": "The icon library to use for the base. This is available for registry:base items only."
+    },
+    "baseColor": {
+      "type": "string",
+      "description": "The base color configuration. This is available for registry:base items only."
+    },
+    "theme": {
+      "type": "string",
+      "description": "The theme configuration. This is available for registry:base items only."
+    },
+    "font": {
+      "type": "string",
+      "description": "The font configuration. This is available for registry:base items only."
     }
   },
   "required": ["name", "type"],
+  "if": {
+    "not": {
+      "properties": {
+        "type": {
+          "const": "registry:base"
+        }
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "style": false,
+      "iconLibrary": false,
+      "baseColor": false,
+      "theme": false,
+      "font": false
+    }
+  },
   "definitions": {
     "cssValue": {
       "oneOf": [

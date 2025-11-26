@@ -217,7 +217,17 @@ export const init = new Command()
         const [item] = await getRegistryItems([components[0]], {
           config: shadowConfig,
         })
-        if (item?.type === "registry:style") {
+
+        // Set options from registry:base.
+        if (item?.type === "registry:base") {
+          options.baseColor = item.baseColor
+          options.style = item.style
+          options.iconLibrary = item.iconLibrary
+          options.baseStyle =
+            item.extends === "none" ? false : options.baseStyle
+        }
+
+        if (item?.type === "registry:style" && !options.baseStyle) {
           // Set a default base color so we're not prompted.
           // The style will extend or override it.
           options.baseColor = "neutral"
