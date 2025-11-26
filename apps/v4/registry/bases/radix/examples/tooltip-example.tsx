@@ -1,5 +1,6 @@
 "use client"
 
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Kbd } from "@/registry/bases/radix/ui/kbd"
 import {
@@ -7,7 +8,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/radix/ui/tooltip"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function TooltipExample() {
@@ -29,7 +29,7 @@ export default function TooltipExample() {
 
 function TooltipBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -40,13 +40,13 @@ function TooltipBasic() {
           <p>Add to library</p>
         </TooltipContent>
       </Tooltip>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TooltipSides() {
   return (
-    <Frame title="Sides">
+    <CanvaFrame title="Sides">
       <div className="flex flex-wrap gap-2">
         {(["top", "right", "bottom", "left"] as const).map((side) => (
           <Tooltip key={side}>
@@ -61,13 +61,13 @@ function TooltipSides() {
           </Tooltip>
         ))}
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TooltipWithIcon() {
   return (
-    <Frame title="With Icon">
+    <CanvaFrame title="With Icon">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="ghost" size="icon">
@@ -83,13 +83,13 @@ function TooltipWithIcon() {
           <p>Additional information</p>
         </TooltipContent>
       </Tooltip>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TooltipLongContent() {
   return (
-    <Frame title="Long Content">
+    <CanvaFrame title="Long Content">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -101,13 +101,13 @@ function TooltipLongContent() {
           any questions, please reach out to us.
         </TooltipContent>
       </Tooltip>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TooltipDisabled() {
   return (
-    <Frame title="Disabled">
+    <CanvaFrame title="Disabled">
       <Tooltip>
         <TooltipTrigger asChild>
           <span className="inline-block w-fit">
@@ -120,13 +120,13 @@ function TooltipDisabled() {
           <p>This feature is currently unavailable</p>
         </TooltipContent>
       </Tooltip>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TooltipWithKeyboard() {
   return (
-    <Frame title="With Keyboard Shortcut">
+    <CanvaFrame title="With Keyboard Shortcut">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline" size="icon-sm">
@@ -143,13 +143,13 @@ function TooltipWithKeyboard() {
           </div>
         </TooltipContent>
       </Tooltip>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TooltipOnLink() {
   return (
-    <Frame title="On Link">
+    <CanvaFrame title="On Link">
       <Tooltip>
         <TooltipTrigger asChild>
           <a
@@ -164,13 +164,13 @@ function TooltipOnLink() {
           <p>Click to read the documentation</p>
         </TooltipContent>
       </Tooltip>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TooltipFormatted() {
   return (
-    <Frame title="Formatted Content">
+    <CanvaFrame title="Formatted Content">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -184,6 +184,6 @@ function TooltipFormatted() {
           </div>
         </TooltipContent>
       </Tooltip>
-    </Frame>
+    </CanvaFrame>
   )
 }

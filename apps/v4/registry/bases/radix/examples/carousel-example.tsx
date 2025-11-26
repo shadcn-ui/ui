@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import { Card, CardContent } from "@/registry/bases/radix/ui/card"
 import {
   Carousel,
@@ -6,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/registry/bases/radix/ui/carousel"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function CarouselDemo() {
   return (
@@ -22,7 +22,7 @@ export default function CarouselDemo() {
 
 function CarouselBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Carousel className="mx-auto max-w-xs sm:max-w-sm">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
@@ -40,13 +40,13 @@ function CarouselBasic() {
         <CarouselPrevious className="hidden sm:inline-flex" />
         <CarouselNext className="hidden sm:inline-flex" />
       </Carousel>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function CarouselMultiple() {
   return (
-    <Frame title="Multiple">
+    <CanvaFrame title="Multiple">
       <Carousel
         className="mx-auto max-w-xs sm:max-w-sm"
         opts={{
@@ -69,13 +69,13 @@ function CarouselMultiple() {
         <CarouselPrevious className="hidden sm:inline-flex" />
         <CarouselNext className="hidden sm:inline-flex" />
       </Carousel>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function CarouselWithGap() {
   return (
-    <Frame title="With Gap">
+    <CanvaFrame title="With Gap">
       <Carousel className="mx-auto max-w-xs sm:max-w-sm">
         <CarouselContent className="-ml-1">
           {Array.from({ length: 5 }).map((_, index) => (
@@ -93,6 +93,6 @@ function CarouselWithGap() {
         <CarouselPrevious className="hidden sm:inline-flex" />
         <CarouselNext className="hidden sm:inline-flex" />
       </Carousel>
-    </Frame>
+    </CanvaFrame>
   )
 }

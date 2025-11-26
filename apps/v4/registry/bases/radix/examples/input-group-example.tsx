@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { toast } from "sonner"
 
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   ButtonGroup,
@@ -50,7 +51,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/radix/ui/tooltip"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function InputGroupExample() {
@@ -74,7 +74,7 @@ export default function InputGroupExample() {
 
 function InputGroupBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="input-default-01">
@@ -109,13 +109,13 @@ function InputGroupBasic() {
           </InputGroup>
         </Field>
       </FieldGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputGroupWithAddons() {
   return (
-    <Frame title="With Addons">
+    <CanvaFrame title="With Addons">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="input-icon-left-05">
@@ -265,13 +265,13 @@ function InputGroupWithAddons() {
           </InputGroup>
         </Field>
       </FieldGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputGroupWithButtons() {
   return (
-    <Frame title="With Buttons">
+    <CanvaFrame title="With Buttons">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="input-button-13">Button</FieldLabel>
@@ -325,7 +325,7 @@ function InputGroupWithButtons() {
           </InputGroup>
         </Field>
       </FieldGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -337,7 +337,7 @@ function InputGroupWithTooltip({
   setCountry: (value: string) => void
 }) {
   return (
-    <Frame title="With Tooltip, Dropdown, Popover">
+    <CanvaFrame title="With Tooltip, Dropdown, Popover">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="input-tooltip-20">Tooltip</FieldLabel>
@@ -439,13 +439,13 @@ function InputGroupWithTooltip({
           </InputGroup>
         </Field>
       </FieldGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputGroupWithKbd() {
   return (
-    <Frame title="With Kbd">
+    <CanvaFrame title="With Kbd">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="input-kbd-22">Input Group with Kbd</FieldLabel>
@@ -586,13 +586,13 @@ function InputGroupWithKbd() {
           </FieldDescription>
         </Field>
       </FieldGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputGroupWithButtonGroup() {
   return (
-    <Frame title="With Button Group">
+    <CanvaFrame title="With Button Group">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="url">With Button Group</FieldLabel>
@@ -615,13 +615,13 @@ function InputGroupWithButtonGroup() {
           </FieldDescription>
         </Field>
       </FieldGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputGroupInCard() {
   return (
-    <Frame title="In Card">
+    <CanvaFrame title="In Card">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Card with Input Group</CardTitle>
@@ -684,13 +684,13 @@ function InputGroupInCard() {
           <Button>Submit</Button>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputGroupTextareaExamples() {
   return (
-    <Frame title="Textarea">
+    <CanvaFrame title="Textarea">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="textarea-header-footer-12">
@@ -842,6 +842,6 @@ function InputGroupTextareaExamples() {
           </InputGroup>
         </Field>
       </FieldGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }

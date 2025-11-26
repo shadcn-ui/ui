@@ -2,9 +2,9 @@
 
 import * as React from "react"
 
+import { CanvaFrame } from "@/components/canva"
 import { Label } from "@/registry/bases/radix/ui/label"
 import { Slider } from "@/registry/bases/radix/ui/slider"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function SliderExample() {
   return (
@@ -23,31 +23,31 @@ export default function SliderExample() {
 
 function SliderBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Slider defaultValue={[50]} max={100} step={1} />
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SliderRange() {
   return (
-    <Frame title="Range">
+    <CanvaFrame title="Range">
       <Slider defaultValue={[25, 50]} max={100} step={5} />
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SliderMultiple() {
   return (
-    <Frame title="Multiple Thumbs">
+    <CanvaFrame title="Multiple Thumbs">
       <Slider defaultValue={[10, 20, 70]} max={100} step={10} />
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SliderVertical() {
   return (
-    <Frame title="Vertical">
+    <CanvaFrame title="Vertical">
       <div className="flex items-center gap-6">
         <Slider
           defaultValue={[50]}
@@ -64,7 +64,7 @@ function SliderVertical() {
           className="h-40"
         />
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -72,7 +72,7 @@ function SliderControlled() {
   const [value, setValue] = React.useState([0.3, 0.7])
 
   return (
-    <Frame title="Controlled">
+    <CanvaFrame title="Controlled">
       <div className="grid w-full gap-3">
         <div className="flex items-center justify-between gap-2">
           <Label htmlFor="slider-demo-temperature">Temperature</Label>
@@ -89,14 +89,14 @@ function SliderControlled() {
           step={0.1}
         />
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SliderDisabled() {
   return (
-    <Frame title="Disabled">
+    <CanvaFrame title="Disabled">
       <Slider defaultValue={[50]} max={100} step={1} disabled />
-    </Frame>
+    </CanvaFrame>
   )
 }

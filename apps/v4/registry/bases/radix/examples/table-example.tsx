@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   DropdownMenu,
@@ -24,7 +25,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/registry/bases/radix/ui/table"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const invoices = [
@@ -90,7 +90,7 @@ export default function TableExample() {
 
 function TableBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -114,13 +114,13 @@ function TableBasic() {
           ))}
         </TableBody>
       </Table>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TableWithFooter() {
   return (
-    <Frame title="With Footer">
+    <CanvaFrame title="With Footer">
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -150,13 +150,13 @@ function TableWithFooter() {
           </TableRow>
         </TableFooter>
       </Table>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TableSimple() {
   return (
-    <Frame title="Simple">
+    <CanvaFrame title="Simple">
       <Table>
         <TableHeader>
           <TableRow>
@@ -183,13 +183,13 @@ function TableSimple() {
           </TableRow>
         </TableBody>
       </Table>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TableWithBadges() {
   return (
-    <Frame title="With Badges">
+    <CanvaFrame title="With Badges">
       <Table>
         <TableHeader>
           <TableRow>
@@ -240,13 +240,13 @@ function TableWithBadges() {
           </TableRow>
         </TableBody>
       </Table>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TableWithActions() {
   return (
-    <Frame title="With Actions">
+    <CanvaFrame title="With Actions">
       <Table>
         <TableHeader>
           <TableRow>
@@ -336,13 +336,13 @@ function TableWithActions() {
           </TableRow>
         </TableBody>
       </Table>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TableWithSelect() {
   return (
-    <Frame title="With Select">
+    <CanvaFrame title="With Select">
       <Table>
         <TableHeader>
           <TableRow>
@@ -405,13 +405,13 @@ function TableWithSelect() {
           </TableRow>
         </TableBody>
       </Table>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TableWithInput() {
   return (
-    <Frame title="With Input">
+    <CanvaFrame title="With Input">
       <Table>
         <TableHeader>
           <TableRow>
@@ -459,6 +459,6 @@ function TableWithInput() {
           </TableRow>
         </TableBody>
       </Table>
-    </Frame>
+    </CanvaFrame>
   )
 }

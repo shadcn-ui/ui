@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   ButtonGroup,
@@ -42,7 +43,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/radix/ui/tooltip"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ButtonGroupDemo() {
@@ -77,20 +77,20 @@ export default function ButtonGroupDemo() {
 
 function ButtonGroupBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <div className="flex flex-col gap-4">
         <ButtonGroup>
           <Button variant="outline">Button</Button>
           <Button variant="outline">Another Button</Button>
         </ButtonGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupWithInput() {
   return (
-    <Frame title="With Input">
+    <CanvaFrame title="With Input">
       <div className="flex flex-col gap-4">
         <ButtonGroup>
           <Button variant="outline">Button</Button>
@@ -101,13 +101,13 @@ function ButtonGroupWithInput() {
           <Button variant="outline">Button</Button>
         </ButtonGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupWithText() {
   return (
-    <Frame title="With Text">
+    <CanvaFrame title="With Text">
       <div className="flex flex-col gap-4">
         <ButtonGroup>
           <ButtonGroupText>Text</ButtonGroupText>
@@ -125,13 +125,13 @@ function ButtonGroupWithText() {
           <ButtonGroupText>Suffix</ButtonGroupText>
         </ButtonGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupWithDropdown() {
   return (
-    <Frame title="With Dropdown">
+    <CanvaFrame title="With Dropdown">
       <div className="flex flex-col gap-4">
         <ButtonGroup>
           <Button variant="outline">Update</Button>
@@ -231,7 +231,7 @@ function ButtonGroupWithDropdown() {
           </DropdownMenu>
         </ButtonGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -239,7 +239,7 @@ function ButtonGroupWithSelect() {
   const [currency, setCurrency] = useState("$")
 
   return (
-    <Frame title="With Select">
+    <CanvaFrame title="With Select">
       <Field>
         <Label htmlFor="amount">Amount</Label>
         <ButtonGroup>
@@ -261,13 +261,13 @@ function ButtonGroupWithSelect() {
           </Button>
         </ButtonGroup>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupWithIcons() {
   return (
-    <Frame title="With Icons">
+    <CanvaFrame title="With Icons">
       <div className="flex flex-col gap-4">
         <ButtonGroup>
           <Button variant="outline">
@@ -293,13 +293,13 @@ function ButtonGroupWithIcons() {
           </Button>
         </ButtonGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupWithInputGroup() {
   return (
-    <Frame title="With Input Group">
+    <CanvaFrame title="With Input Group">
       <div className="flex flex-col gap-4">
         <InputGroup>
           <InputGroupInput placeholder="Type to search..." />
@@ -315,13 +315,13 @@ function ButtonGroupWithInputGroup() {
           </InputGroupAddon>
         </InputGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupWithFields() {
   return (
-    <Frame title="With Fields">
+    <CanvaFrame title="With Fields">
       <FieldGroup className="grid grid-cols-3 gap-4">
         <Field className="col-span-2">
           <Label htmlFor="width">Width</Label>
@@ -407,13 +407,13 @@ function ButtonGroupWithFields() {
           </ButtonGroup>
         </Field>
       </FieldGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupWithLike() {
   return (
-    <Frame title="With Like">
+    <CanvaFrame title="With Like">
       <ButtonGroup>
         <Button variant="outline">
           <IconPlaceholder
@@ -428,7 +428,7 @@ function ButtonGroupWithLike() {
           <span>1.2K</span>
         </Button>
       </ButtonGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -436,7 +436,7 @@ function ButtonGroupExport() {
   const [exportType, setExportType] = useState("pdf")
 
   return (
-    <Frame title="Export">
+    <CanvaFrame title="Export">
       <ButtonGroup>
         <Input />
         <Select value={exportType} onValueChange={setExportType}>
@@ -453,13 +453,13 @@ function ButtonGroupExport() {
           </SelectContent>
         </Select>
       </ButtonGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupWithSelectAndInput() {
   return (
-    <Frame title="With Select and Input">
+    <CanvaFrame title="With Select and Input">
       <ButtonGroup>
         <Select defaultValue="hours">
           <SelectTrigger id="duration">
@@ -473,13 +473,13 @@ function ButtonGroupWithSelectAndInput() {
         </Select>
         <Input />
       </ButtonGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupNested() {
   return (
-    <Frame title="Nested">
+    <CanvaFrame title="Nested">
       <ButtonGroup>
         <ButtonGroup>
           <Button variant="outline" size="icon">
@@ -508,13 +508,13 @@ function ButtonGroupNested() {
           </InputGroup>
         </ButtonGroup>
       </ButtonGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupPagination() {
   return (
-    <Frame title="Pagination">
+    <CanvaFrame title="Pagination">
       <ButtonGroup>
         <Button variant="outline" size="sm">
           <IconPlaceholder
@@ -550,13 +550,13 @@ function ButtonGroupPagination() {
           />
         </Button>
       </ButtonGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupPaginationSplit() {
   return (
-    <Frame title="Pagination Split">
+    <CanvaFrame title="Pagination Split">
       <ButtonGroup>
         <ButtonGroup>
           <Button variant="outline" size="sm">
@@ -592,13 +592,13 @@ function ButtonGroupPaginationSplit() {
           </Button>
         </ButtonGroup>
       </ButtonGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupNavigation() {
   return (
-    <Frame title="Navigation">
+    <CanvaFrame title="Navigation">
       <ButtonGroup>
         <ButtonGroup>
           <Button variant="outline">
@@ -626,13 +626,13 @@ function ButtonGroupNavigation() {
           </Button>
         </ButtonGroup>
       </ButtonGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupTextAlignment() {
   return (
-    <Frame title="Text Alignment">
+    <CanvaFrame title="Text Alignment">
       <Field>
         <Label id="alignment-label">Text Alignment</Label>
         <ButtonGroup aria-labelledby="alignment-label">
@@ -650,13 +650,13 @@ function ButtonGroupTextAlignment() {
           </Button>
         </ButtonGroup>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupVertical() {
   return (
-    <Frame title="Vertical">
+    <CanvaFrame title="Vertical">
       <div className="flex gap-6">
         <ButtonGroup
           orientation="vertical"
@@ -679,13 +679,13 @@ function ButtonGroupVertical() {
           </Button>
         </ButtonGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupVerticalNested() {
   return (
-    <Frame title="Vertical Nested">
+    <CanvaFrame title="Vertical Nested">
       <ButtonGroup orientation="vertical" aria-label="Design tools palette">
         <ButtonGroup orientation="vertical">
           <Button variant="outline" size="icon">
@@ -743,13 +743,13 @@ function ButtonGroupVerticalNested() {
           </Button>
         </ButtonGroup>
       </ButtonGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonGroupVerticalWithSeparator() {
   return (
-    <Frame title="Vertical With Separator">
+    <CanvaFrame title="Vertical With Separator">
       <div className="flex flex-col gap-4">
         <ButtonGroup orientation="vertical">
           <Button variant="outline" size="sm">
@@ -789,6 +789,6 @@ function ButtonGroupVerticalWithSeparator() {
           </Button>
         </ButtonGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }

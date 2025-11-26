@@ -6,6 +6,7 @@ import { type DateRange } from "react-day-picker"
 import { es } from "react-day-picker/locale"
 
 import { cn } from "@/lib/utils"
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Calendar, CalendarDayButton } from "@/registry/bases/radix/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/registry/bases/radix/ui/card"
@@ -17,7 +18,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function CalendarDemo() {
@@ -46,7 +46,7 @@ function CalendarSingle() {
     new Date(new Date().getFullYear(), new Date().getMonth(), 12)
   )
   return (
-    <Frame title="Single" className="max-w-lg">
+    <CanvaFrame title="Single" className="max-w-lg">
       <Card className="w-fit p-0">
         <CardContent className="p-0">
           <Calendar
@@ -57,19 +57,19 @@ function CalendarSingle() {
           />
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function CalendarMultiple() {
   return (
-    <Frame title="Multiple" className="max-w-lg">
+    <CanvaFrame title="Multiple" className="max-w-lg">
       <Card className="w-fit p-0">
         <CardContent className="p-0">
           <Calendar mode="multiple" />
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -80,7 +80,7 @@ function CalendarRange() {
   })
 
   return (
-    <Frame title="Range" className="max-w-lg">
+    <CanvaFrame title="Range" className="max-w-lg">
       <Card className="w-fit p-0">
         <CardContent className="p-0">
           <Calendar
@@ -95,7 +95,7 @@ function CalendarRange() {
           />
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -106,7 +106,7 @@ function CalendarRangeMultipleMonths() {
   })
 
   return (
-    <Frame title="Range Multiple Months" className="max-w-3xl">
+    <CanvaFrame title="Range Multiple Months" className="max-w-3xl">
       <Card className="w-fit p-0">
         <CardContent className="p-0">
           <Calendar
@@ -120,7 +120,7 @@ function CalendarRangeMultipleMonths() {
           />
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -134,7 +134,7 @@ function CalendarBookedDates() {
   )
 
   return (
-    <Frame title="Booked Dates" className="max-w-lg">
+    <CanvaFrame title="Booked Dates" className="max-w-lg">
       <Card className="w-fit p-0">
         <CardContent className="p-0">
           <Calendar
@@ -152,7 +152,7 @@ function CalendarBookedDates() {
           />
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -162,7 +162,7 @@ function CalendarWithTime() {
   )
 
   return (
-    <Frame title="With Time" className="max-w-lg">
+    <CanvaFrame title="With Time" className="max-w-lg">
       <Card className="w-fit py-4">
         <CardContent className="px-4">
           <Calendar
@@ -211,7 +211,7 @@ function CalendarWithTime() {
           </div>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -222,7 +222,7 @@ function CalendarCustomDays() {
   })
 
   return (
-    <Frame title="Custom Days" className="max-w-lg">
+    <CanvaFrame title="Custom Days" className="max-w-lg">
       <Card className="p-0">
         <CardContent className="p-0">
           <Calendar
@@ -256,7 +256,7 @@ function CalendarCustomDays() {
           />
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -269,7 +269,7 @@ function CalendarWithPresets() {
   )
 
   return (
-    <Frame title="With Presets" className="max-w-lg">
+    <CanvaFrame title="With Presets" className="max-w-lg">
       <Card className="w-fit max-w-[300px] py-4">
         <CardContent className="px-4">
           <Calendar
@@ -308,7 +308,7 @@ function CalendarWithPresets() {
           ))}
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -316,7 +316,7 @@ function DatePickerSimple() {
   const [date, setDate] = React.useState<Date>()
 
   return (
-    <Frame title="Date Picker Simple" className="max-w-lg">
+    <CanvaFrame title="Date Picker Simple" className="max-w-lg">
       <Field>
         <FieldLabel htmlFor="date-picker-simple">Date</FieldLabel>
         <Popover>
@@ -340,7 +340,7 @@ function DatePickerSimple() {
           </PopoverContent>
         </Popover>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -351,7 +351,7 @@ function DatePickerWithRange() {
   })
 
   return (
-    <Frame title="Date Picker Range" className="max-w-lg">
+    <CanvaFrame title="Date Picker Range" className="max-w-lg">
       <Field>
         <FieldLabel htmlFor="date-picker-range">Date Picker Range</FieldLabel>
         <Popover>
@@ -392,7 +392,7 @@ function DatePickerWithRange() {
           </PopoverContent>
         </Popover>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -401,7 +401,7 @@ function DataPickerWithDropdowns() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <Frame title="Date Picker with Dropdowns">
+    <CanvaFrame title="Date Picker with Dropdowns">
       <Field>
         <Popover open={open} onOpenChange={setOpen}>
           <FieldLabel htmlFor="date-picker-with-dropdowns-desktop">
@@ -443,7 +443,7 @@ function DataPickerWithDropdowns() {
           </PopoverContent>
         </Popover>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -453,7 +453,7 @@ function CalendarWeekNumbers() {
   )
 
   return (
-    <Frame title="Week Numbers">
+    <CanvaFrame title="Week Numbers">
       <Card className="w-fit p-0">
         <CardContent className="p-0">
           <Calendar
@@ -465,6 +465,6 @@ function CalendarWeekNumbers() {
           />
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "login-05",
-  "type": "registry:block",
   "description": "A simple email-only login page.",
   "registryDependencies": [
     "button",
@@ -25,5 +24,6 @@
   "categories": [
     "authentication",
     "login"
-  ]
+  ],
+  "type": "registry:block"
 }

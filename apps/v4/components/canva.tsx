@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 
-export default function Frame({
+function CanvaFrame({
   title,
   children,
   className,
@@ -24,3 +24,5 @@ export default function Frame({
     </div>
   )
 }
+
+export { CanvaFrame }

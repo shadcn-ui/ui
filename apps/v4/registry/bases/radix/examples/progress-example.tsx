@@ -2,9 +2,9 @@
 
 import * as React from "react"
 
+import { CanvaFrame } from "@/components/canva"
 import { Field, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Progress } from "@/registry/bases/radix/ui/progress"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function ProgressExample() {
   const [progress, setProgress] = React.useState(13)
@@ -26,7 +26,7 @@ export default function ProgressExample() {
 
 function ProgressValues() {
   return (
-    <Frame title="Progress Bar">
+    <CanvaFrame title="Progress Bar">
       <div className="flex w-full flex-col gap-4">
         <Progress value={0} className="w-full" />
         <Progress value={25} className="w-full" />
@@ -34,13 +34,13 @@ function ProgressValues() {
         <Progress value={75} className="w-full" />
         <Progress value={100} className="w-full" />
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ProgressWithLabel() {
   return (
-    <Frame title="With Label">
+    <CanvaFrame title="With Label">
       <Field>
         <FieldLabel htmlFor="progress-upload">
           <span>Upload progress</span>
@@ -48,6 +48,6 @@ function ProgressWithLabel() {
         </FieldLabel>
         <Progress value={66} className="w-full" id="progress-upload" />
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }

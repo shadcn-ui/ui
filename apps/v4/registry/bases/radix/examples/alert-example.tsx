@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import {
   Alert,
   AlertAction,
@@ -14,7 +15,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function AlertDemo() {
@@ -33,7 +33,7 @@ export default function AlertDemo() {
 
 function AlertExample1() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Alert>
         <AlertTitle>Success! Your changes have been saved.</AlertTitle>
       </Alert>
@@ -48,13 +48,13 @@ function AlertExample1() {
           This one has a description only. No title. No icon.
         </AlertDescription>
       </Alert>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AlertExample2() {
   return (
-    <Frame title="With Icons">
+    <CanvaFrame title="With Icons">
       <div className="flex flex-col gap-4">
         <Alert>
           <IconPlaceholder
@@ -134,13 +134,13 @@ function AlertExample2() {
           </AlertDescription>
         </Alert>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AlertExample3() {
   return (
-    <Frame title="Destructive">
+    <CanvaFrame title="Destructive">
       <div className="flex w-full flex-col gap-4">
         <Alert variant="destructive">
           <IconPlaceholder
@@ -173,13 +173,13 @@ function AlertExample3() {
           </AlertDescription>
         </Alert>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AlertExample4() {
   return (
-    <Frame title="With Actions">
+    <CanvaFrame title="With Actions">
       <div className="flex w-full flex-col gap-4">
         <Alert>
           <IconPlaceholder
@@ -208,13 +208,13 @@ function AlertExample4() {
           </AlertAction>
         </Alert>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AlertExample5() {
   return (
-    <Frame title="In Card">
+    <CanvaFrame title="In Card">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Payment Settings</CardTitle>
@@ -251,6 +251,6 @@ function AlertExample5() {
           <Button className="w-full">Update Payment Method</Button>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }

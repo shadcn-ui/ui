@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
@@ -6,7 +7,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function PopoverExample() {
   return (
@@ -22,7 +22,7 @@ export default function PopoverExample() {
 
 function PopoverBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -38,13 +38,13 @@ function PopoverBasic() {
           </div>
         </PopoverContent>
       </Popover>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function PopoverWithForm() {
   return (
-    <Frame title="With Form">
+    <CanvaFrame title="With Form">
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -80,13 +80,13 @@ function PopoverWithForm() {
           </div>
         </PopoverContent>
       </Popover>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function PopoverAlignments() {
   return (
-    <Frame title="Alignments">
+    <CanvaFrame title="Alignments">
       <div className="flex gap-6">
         <Popover>
           <PopoverTrigger asChild>
@@ -119,6 +119,6 @@ function PopoverAlignments() {
           </PopoverContent>
         </Popover>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }

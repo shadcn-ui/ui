@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Bar, BarChart, ResponsiveContainer } from "recharts"
 
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Drawer,
@@ -14,7 +15,6 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/registry/bases/radix/ui/drawer"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function DrawerExample() {
@@ -81,7 +81,7 @@ function DrawerBottom() {
   }, [])
 
   return (
-    <Frame title="Bottom">
+    <CanvaFrame title="Bottom">
       <Drawer>
         <DrawerTrigger asChild>
           <Button variant="outline">Open Drawer</Button>
@@ -158,13 +158,13 @@ function DrawerBottom() {
           </div>
         </DrawerContent>
       </Drawer>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DrawerScrollableContent() {
   return (
-    <Frame title="Scrollable Content">
+    <CanvaFrame title="Scrollable Content">
       <Drawer direction="right">
         <DrawerTrigger asChild>
           <Button variant="outline">Scrollable Content</Button>
@@ -198,13 +198,13 @@ function DrawerScrollableContent() {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DrawerTop() {
   return (
-    <Frame title="Top">
+    <CanvaFrame title="Top">
       <Drawer direction="top">
         <DrawerTrigger asChild>
           <Button variant="outline">Top</Button>
@@ -235,13 +235,13 @@ function DrawerTop() {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DrawerRight() {
   return (
-    <Frame title="Right">
+    <CanvaFrame title="Right">
       <Drawer direction="right">
         <DrawerTrigger asChild>
           <Button variant="outline">Right</Button>
@@ -272,13 +272,13 @@ function DrawerRight() {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DrawerLeft() {
   return (
-    <Frame title="Left">
+    <CanvaFrame title="Left">
       <Drawer direction="left">
         <DrawerTrigger asChild>
           <Button variant="outline">Left</Button>
@@ -309,6 +309,6 @@ function DrawerLeft() {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </Frame>
+    </CanvaFrame>
   )
 }

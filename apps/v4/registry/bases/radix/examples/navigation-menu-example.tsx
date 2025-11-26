@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 
+import { CanvaFrame } from "@/components/canva"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,7 +14,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/registry/bases/radix/ui/navigation-menu"
-import Frame from "@/app/(design)/design/components/frame"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -66,7 +66,7 @@ export default function NavigationMenuExample() {
 
 function NavigationMenuWithViewport() {
   return (
-    <Frame title="With Viewport">
+    <CanvaFrame title="With Viewport">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -126,13 +126,13 @@ function NavigationMenuWithViewport() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function NavigationMenuWithoutViewport() {
   return (
-    <Frame title="Without Viewport">
+    <CanvaFrame title="Without Viewport">
       <NavigationMenu viewport={false}>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -223,7 +223,7 @@ function NavigationMenuWithoutViewport() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }
 

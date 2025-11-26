@@ -7,5 +7,5 @@ import { ui } from "./ui/_registry"
 export const registry = {
   name: "shadcn/ui",
   homepage: "https://ui.shadcn.com",
-  items: z.array(registryItemSchema).parse([...examples, ...ui]),
+  items: z.array(registryItemSchema).parse([...ui, ...examples]),
 } satisfies Registry

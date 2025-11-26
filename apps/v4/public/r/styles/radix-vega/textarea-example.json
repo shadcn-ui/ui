@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-example",
+  "title": "Textarea",
+  "registryDependencies": [
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-vega/examples/textarea-example.tsx",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/bases/radix/ui/field\"\nimport { Textarea } from \"@/registry/bases/radix/ui/textarea\"\n\nexport default function TextareaExample() {\n  return (\n    <div className=\"bg-background flex min-h-screen items-center justify-center p-6 lg:p-12\">\n      <div className=\"flex w-full max-w-lg flex-col gap-12\">\n        <TextareaBasic />\n        <TextareaInvalid />\n        <TextareaWithLabel />\n        <TextareaWithDescription />\n        <TextareaDisabled />\n      </div>\n    </div>\n  )\n}\n\nfunction TextareaBasic() {\n  return (\n    <div className=\"bg-background border flex overflow-hidden rounded-xl p-8\" title=\"Basic\"><Textarea placeholder=\"Type your message here.\" /></div>\n  )\n}\n\nfunction TextareaInvalid() {\n  return (\n    <div className=\"bg-background border flex overflow-hidden rounded-xl p-8\" title=\"Invalid\"><Textarea placeholder=\"Type your message here.\" aria-invalid=\"true\" /></div>\n  )\n}\n\nfunction TextareaWithLabel() {\n  return (\n    <div className=\"bg-background border flex overflow-hidden rounded-xl p-8\" title=\"With Label\"><Field>\n              <FieldLabel htmlFor=\"textarea-demo-message\">Message</FieldLabel>\n              <Textarea\n                id=\"textarea-demo-message\"\n                placeholder=\"Type your message here.\"\n                rows={6}\n              />\n            </Field></div>\n  )\n}\n\nfunction TextareaWithDescription() {\n  return (\n    <div className=\"bg-background border flex overflow-hidden rounded-xl p-8\" title=\"With Description\"><Field>\n              <FieldLabel htmlFor=\"textarea-demo-message-2\">Message</FieldLabel>\n              <Textarea\n                id=\"textarea-demo-message-2\"\n                placeholder=\"Type your message here.\"\n                rows={6}\n              />\n              <FieldDescription>\n                Type your message and press enter to send.\n              </FieldDescription>\n            </Field></div>\n  )\n}\n\nfunction TextareaDisabled() {\n  return (\n    <div className=\"bg-background border flex overflow-hidden rounded-xl p-8\" title=\"Disabled\"><Field>\n              <FieldLabel htmlFor=\"textarea-demo-disabled\">Message</FieldLabel>\n              <Textarea\n                id=\"textarea-demo-disabled\"\n                placeholder=\"Type your message here.\"\n                disabled\n              />\n            </Field></div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

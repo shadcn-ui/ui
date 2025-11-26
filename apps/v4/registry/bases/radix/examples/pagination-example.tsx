@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import { Field, FieldLabel } from "@/registry/bases/radix/ui/field"
 import {
   Pagination,
@@ -15,7 +16,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/radix/ui/select"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function PaginationExample() {
   return (
@@ -31,7 +31,7 @@ export default function PaginationExample() {
 
 function PaginationBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Pagination>
         <PaginationContent>
           <PaginationItem>
@@ -56,13 +56,13 @@ function PaginationBasic() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function PaginationSimple() {
   return (
-    <Frame title="Simple">
+    <CanvaFrame title="Simple">
       <Pagination>
         <PaginationContent>
           <PaginationItem>
@@ -84,13 +84,13 @@ function PaginationSimple() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function PaginationIconsOnly() {
   return (
-    <Frame title="With Select">
+    <CanvaFrame title="With Select">
       <div className="flex items-center justify-between gap-4">
         <Field orientation="horizontal" className="w-fit">
           <FieldLabel htmlFor="select-rows-per-page">Rows per page</FieldLabel>
@@ -117,6 +117,6 @@ function PaginationIconsOnly() {
           </PaginationContent>
         </Pagination>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }

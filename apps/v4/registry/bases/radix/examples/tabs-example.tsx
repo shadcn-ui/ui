@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   DropdownMenu,
@@ -12,7 +13,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/bases/radix/ui/tabs"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function TabsExample() {
@@ -38,20 +38,20 @@ export default function TabsExample() {
 
 function TabsBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Tabs defaultValue="home">
         <TabsList>
           <TabsTrigger value="home">Home</TabsTrigger>
           <TabsTrigger value="settings">Settings</TabsTrigger>
         </TabsList>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsLine() {
   return (
-    <Frame title="Line">
+    <CanvaFrame title="Line">
       <Tabs defaultValue="overview" variant="line">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -59,13 +59,13 @@ function TabsLine() {
           <TabsTrigger value="reports">Reports</TabsTrigger>
         </TabsList>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsVariantsComparison() {
   return (
-    <Frame title="Variants Alignment">
+    <CanvaFrame title="Variants Alignment">
       <div className="flex gap-4">
         <Tabs defaultValue="overview">
           <TabsList>
@@ -80,13 +80,13 @@ function TabsVariantsComparison() {
           </TabsList>
         </Tabs>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsDisabled() {
   return (
-    <Frame title="Disabled">
+    <CanvaFrame title="Disabled">
       <Tabs defaultValue="home">
         <TabsList>
           <TabsTrigger value="home">Home</TabsTrigger>
@@ -95,13 +95,13 @@ function TabsDisabled() {
           </TabsTrigger>
         </TabsList>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsWithIcons() {
   return (
-    <Frame title="With Icons">
+    <CanvaFrame title="With Icons">
       <Tabs defaultValue="preview">
         <TabsList>
           <TabsTrigger value="preview">
@@ -122,13 +122,13 @@ function TabsWithIcons() {
           </TabsTrigger>
         </TabsList>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsIconOnly() {
   return (
-    <Frame title="Icon Only">
+    <CanvaFrame title="Icon Only">
       <Tabs defaultValue="home">
         <TabsList>
           <TabsTrigger value="home">
@@ -154,13 +154,13 @@ function TabsIconOnly() {
           </TabsTrigger>
         </TabsList>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsMultiple() {
   return (
-    <Frame title="Multiple">
+    <CanvaFrame title="Multiple">
       <Tabs defaultValue="overview">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -169,13 +169,13 @@ function TabsMultiple() {
           <TabsTrigger value="settings">Settings</TabsTrigger>
         </TabsList>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsWithContent() {
   return (
-    <Frame title="With Content">
+    <CanvaFrame title="With Content">
       <Tabs defaultValue="account">
         <TabsList>
           <TabsTrigger value="account">Account</TabsTrigger>
@@ -207,13 +207,13 @@ function TabsWithContent() {
           </div>
         </TabsContent>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsLineWithContent() {
   return (
-    <Frame title="Line With Content">
+    <CanvaFrame title="Line With Content">
       <Tabs defaultValue="account" variant="line">
         <TabsList>
           <TabsTrigger value="account">Account</TabsTrigger>
@@ -245,13 +245,13 @@ function TabsLineWithContent() {
           </div>
         </TabsContent>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsLineDisabled() {
   return (
-    <Frame title="Line Disabled">
+    <CanvaFrame title="Line Disabled">
       <Tabs defaultValue="overview" variant="line">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -261,13 +261,13 @@ function TabsLineDisabled() {
           </TabsTrigger>
         </TabsList>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsWithDropdown() {
   return (
-    <Frame title="With Dropdown">
+    <CanvaFrame title="With Dropdown">
       <Tabs defaultValue="overview">
         <div className="flex items-center justify-between">
           <TabsList>
@@ -319,13 +319,13 @@ function TabsWithDropdown() {
           </div>
         </TabsContent>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function TabsVertical() {
   return (
-    <Frame title="Vertical">
+    <CanvaFrame title="Vertical">
       <Tabs defaultValue="account" orientation="vertical">
         <TabsList>
           <TabsTrigger value="account">Account</TabsTrigger>
@@ -412,6 +412,6 @@ function TabsVertical() {
           </div>
         </TabsContent>
       </Tabs>
-    </Frame>
+    </CanvaFrame>
   )
 }

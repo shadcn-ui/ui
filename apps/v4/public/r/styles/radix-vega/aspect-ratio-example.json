@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio-example",
+  "title": "Aspect Ratio",
+  "registryDependencies": [
+    "aspect-ratio"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-vega/examples/aspect-ratio-example.tsx",
+      "content": "import Image from \"next/image\"\nimport { AspectRatio } from \"@/registry/bases/radix/ui/aspect-ratio\"\n\nexport default function AspectRatioDemo() {\n  return (\n    <div className=\"bg-background flex min-h-screen items-center justify-center p-6 lg:p-12\">\n      <div className=\"flex w-full max-w-lg flex-col gap-12\">\n        <AspectRatio16x9 />\n        <AspectRatio1x1 />\n        <AspectRatio9x16 />\n      </div>\n    </div>\n  )\n}\n\nfunction AspectRatio16x9() {\n  return (\n    <div className=\"bg-background border flex overflow-hidden rounded-xl p-8\" title=\"16:9\"><AspectRatio ratio={16 / 9} className=\"bg-muted rounded-lg\">\n              <Image\n                src=\"https://avatar.vercel.sh/shadcn1\"\n                alt=\"Photo\"\n                fill\n                className=\"h-full w-full rounded-lg object-cover grayscale dark:brightness-20\"\n              />\n            </AspectRatio></div>\n  )\n}\n\nfunction AspectRatio1x1() {\n  return (\n    <div className=\"bg-background border flex overflow-hidden rounded-xl p-8\" title=\"1:1\"><AspectRatio ratio={1 / 1} className=\"bg-muted rounded-lg\">\n              <Image\n                src=\"https://avatar.vercel.sh/shadcn1\"\n                alt=\"Photo\"\n                fill\n                className=\"h-full w-full rounded-lg object-cover grayscale dark:brightness-20\"\n              />\n            </AspectRatio></div>\n  )\n}\n\nfunction AspectRatio9x16() {\n  return (\n    <div className=\"bg-background border flex overflow-hidden rounded-xl p-8\" title=\"9:16\"><AspectRatio ratio={9 / 16} className=\"bg-muted rounded-lg\">\n              <Image\n                src=\"https://avatar.vercel.sh/shadcn1\"\n                alt=\"Photo\"\n                fill\n                className=\"h-full w-full rounded-lg object-cover grayscale dark:brightness-20\"\n              />\n            </AspectRatio></div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

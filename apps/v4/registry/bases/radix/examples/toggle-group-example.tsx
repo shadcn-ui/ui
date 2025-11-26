@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import { Input } from "@/registry/bases/radix/ui/input"
 import {
   Select,
@@ -10,7 +11,6 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/bases/radix/ui/toggle-group"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ToggleGroupExample() {
@@ -38,7 +38,7 @@ export default function ToggleGroupExample() {
 
 function ToggleGroupBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <ToggleGroup type="multiple" spacing={2}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
@@ -62,13 +62,13 @@ function ToggleGroupBasic() {
           />
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupOutline() {
   return (
-    <Frame title="Outline">
+    <CanvaFrame title="Outline">
       <ToggleGroup variant="outline" type="single" defaultValue="all">
         <ToggleGroupItem value="all" aria-label="Toggle all">
           All
@@ -77,13 +77,13 @@ function ToggleGroupOutline() {
           Missed
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupOutlineWithIcons() {
   return (
-    <Frame title="Outline With Icons">
+    <CanvaFrame title="Outline With Icons">
       <ToggleGroup variant="outline" type="multiple" size="sm">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
@@ -107,13 +107,13 @@ function ToggleGroupOutlineWithIcons() {
           />
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupSizes() {
   return (
-    <Frame title="Sizes">
+    <CanvaFrame title="Sizes">
       <div className="flex flex-col gap-4">
         <ToggleGroup
           type="single"
@@ -149,13 +149,13 @@ function ToggleGroupSizes() {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupSpacing() {
   return (
-    <Frame title="With Spacing">
+    <CanvaFrame title="With Spacing">
       <ToggleGroup
         type="single"
         size="sm"
@@ -176,13 +176,13 @@ function ToggleGroupSpacing() {
           Right
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupWithIcons() {
   return (
-    <Frame title="With Icons">
+    <CanvaFrame title="With Icons">
       <ToggleGroup type="multiple" variant="outline" spacing={2} size="sm">
         <ToggleGroupItem
           value="star"
@@ -221,13 +221,13 @@ function ToggleGroupWithIcons() {
           Bookmark
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupFilter() {
   return (
-    <Frame title="Filter">
+    <CanvaFrame title="Filter">
       <ToggleGroup type="single" defaultValue="all" variant="outline" size="sm">
         <ToggleGroupItem value="all" aria-label="All">
           All
@@ -242,13 +242,13 @@ function ToggleGroupFilter() {
           Archived
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupDateRange() {
   return (
-    <Frame title="Date Range">
+    <CanvaFrame title="Date Range">
       <ToggleGroup
         type="single"
         defaultValue="today"
@@ -269,13 +269,13 @@ function ToggleGroupDateRange() {
           This Year
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupSort() {
   return (
-    <Frame title="Sort">
+    <CanvaFrame title="Sort">
       <ToggleGroup
         type="single"
         defaultValue="newest"
@@ -307,13 +307,13 @@ function ToggleGroupSort() {
           Popular
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupWithInputAndSelect() {
   return (
-    <Frame title="With Input and Select">
+    <CanvaFrame title="With Input and Select">
       <div className="flex items-center gap-2">
         <Input type="search" placeholder="Search..." className="flex-1" />
         <Select defaultValue="all">
@@ -335,13 +335,13 @@ function ToggleGroupWithInputAndSelect() {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupVertical() {
   return (
-    <Frame title="Vertical">
+    <CanvaFrame title="Vertical">
       <ToggleGroup type="multiple" orientation="vertical" spacing={2}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
@@ -365,13 +365,13 @@ function ToggleGroupVertical() {
           />
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupVerticalOutline() {
   return (
-    <Frame title="Vertical Outline">
+    <CanvaFrame title="Vertical Outline">
       <ToggleGroup
         variant="outline"
         type="single"
@@ -392,13 +392,13 @@ function ToggleGroupVerticalOutline() {
           Archived
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupVerticalOutlineWithIcons() {
   return (
-    <Frame title="Vertical Outline With Icons">
+    <CanvaFrame title="Vertical Outline With Icons">
       <ToggleGroup
         variant="outline"
         type="multiple"
@@ -427,13 +427,13 @@ function ToggleGroupVerticalOutlineWithIcons() {
           />
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ToggleGroupVerticalWithSpacing() {
   return (
-    <Frame title="Vertical With Spacing">
+    <CanvaFrame title="Vertical With Spacing">
       <ToggleGroup
         type="single"
         size="sm"
@@ -455,6 +455,6 @@ function ToggleGroupVerticalWithSpacing() {
           Right
         </ToggleGroupItem>
       </ToggleGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }

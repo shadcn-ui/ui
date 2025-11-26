@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
 import {
@@ -57,7 +58,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/radix/ui/tooltip"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function DialogExample() {
@@ -76,7 +76,7 @@ export default function DialogExample() {
 
 function DialogWithForm() {
   return (
-    <Frame title="With Form">
+    <CanvaFrame title="With Form">
       <Dialog>
         <form>
           <DialogTrigger asChild>
@@ -113,13 +113,13 @@ function DialogWithForm() {
           </DialogContent>
         </form>
       </Dialog>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DialogScrollableContent() {
   return (
-    <Frame title="Scrollable Content">
+    <CanvaFrame title="Scrollable Content">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Scrollable Content</Button>
@@ -149,13 +149,13 @@ function DialogScrollableContent() {
           </div>
         </DialogContent>
       </Dialog>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DialogWithStickyFooter() {
   return (
-    <Frame title="With Sticky Footer">
+    <CanvaFrame title="With Sticky Footer">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Sticky Footer</Button>
@@ -190,13 +190,13 @@ function DialogWithStickyFooter() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DialogNoCloseButton() {
   return (
-    <Frame title="No Close Button">
+    <CanvaFrame title="No Close Button">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">No Close Button</Button>
@@ -216,7 +216,7 @@ function DialogNoCloseButton() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -259,7 +259,7 @@ function DialogChatSettings() {
   const [voice, setVoice] = React.useState("samantha")
 
   return (
-    <Frame title="Chat Settings">
+    <CanvaFrame title="Chat Settings">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Chat Settings</Button>
@@ -564,6 +564,6 @@ function DialogChatSettings() {
           </div>
         </DialogContent>
       </Dialog>
-    </Frame>
+    </CanvaFrame>
   )
 }

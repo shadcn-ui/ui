@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chart-area-stacked-expand",
-  "type": "registry:block",
   "registryDependencies": [
     "card",
     "chart"
@@ -16,5 +15,6 @@
   "categories": [
     "charts",
     "charts-area"
-  ]
+  ],
+  "type": "registry:block"
 }

@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import {
   Accordion,
   AccordionContent,
@@ -12,7 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function AccordionDemo() {
@@ -31,7 +31,7 @@ export default function AccordionDemo() {
 
 function AccordionBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -54,13 +54,13 @@ function AccordionBasic() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AccordionMultiple() {
   return (
-    <Frame title="Multiple">
+    <CanvaFrame title="Multiple">
       <Accordion type="multiple">
         <AccordionItem value="item-1">
           <AccordionTrigger>
@@ -98,13 +98,13 @@ function AccordionMultiple() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AccordionWithBorders() {
   return (
-    <Frame title="With Borders">
+    <CanvaFrame title="With Borders">
       <Accordion type="single" collapsible className="gap-4">
         <AccordionItem value="billing" className="rounded-lg border">
           <AccordionTrigger className="px-4 text-base font-medium">
@@ -146,13 +146,13 @@ function AccordionWithBorders() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AccordionInCard() {
   return (
-    <Frame title="In Card">
+    <CanvaFrame title="In Card">
       <Card className="gap-4">
         <CardHeader>
           <CardTitle>Subscription & Billing</CardTitle>
@@ -261,13 +261,13 @@ function AccordionInCard() {
           </Accordion>
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AccordionWithDisabled() {
   return (
-    <Frame title="With Disabled">
+    <CanvaFrame title="With Disabled">
       <Accordion
         type="single"
         collapsible
@@ -310,6 +310,6 @@ function AccordionWithDisabled() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </Frame>
+    </CanvaFrame>
   )
 }

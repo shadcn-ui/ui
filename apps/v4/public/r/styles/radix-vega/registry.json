@@ -728,6 +728,770 @@
         }
       ],
       "type": "registry:ui"
+    },
+    {
+      "name": "cover-example",
+      "title": "Cover",
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/cover-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "accordion-example",
+      "title": "Accordion",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/accordion-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-example",
+      "title": "Alert",
+      "registryDependencies": [
+        "alert"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/alert-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-dialog-example",
+      "title": "Alert Dialog",
+      "registryDependencies": [
+        "alert-dialog",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/alert-dialog-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "aspect-ratio-example",
+      "title": "Aspect Ratio",
+      "registryDependencies": [
+        "aspect-ratio"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/aspect-ratio-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "avatar-example",
+      "title": "Avatar",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/avatar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-example",
+      "title": "Badge",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/badge-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-example",
+      "title": "Breadcrumb",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/breadcrumb-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-example",
+      "title": "Button",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/button-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-example",
+      "title": "Button Group",
+      "registryDependencies": [
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/button-group-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "calendar-example",
+      "title": "Calendar",
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "card",
+        "drawer",
+        "input",
+        "label",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/calendar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "card-example",
+      "title": "Card",
+      "registryDependencies": [
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/card-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-example",
+      "title": "Carousel",
+      "registryDependencies": [
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/carousel-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-example",
+      "title": "Chart",
+      "registryDependencies": [
+        "chart",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/chart-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-example",
+      "title": "Checkbox",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/checkbox-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "collapsible-example",
+      "title": "Collapsible",
+      "registryDependencies": [
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/collapsible-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-example",
+      "title": "Combobox",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "command",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/combobox-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "command-example",
+      "title": "Command",
+      "registryDependencies": [
+        "command"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/command-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "context-menu-example",
+      "title": "Context Menu",
+      "registryDependencies": [
+        "context-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/context-menu-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dialog-example",
+      "title": "Dialog",
+      "registryDependencies": [
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/dialog-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "drawer-example",
+      "title": "Drawer",
+      "registryDependencies": [
+        "drawer"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/drawer-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-example",
+      "title": "Dropdown Menu",
+      "registryDependencies": [
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/dropdown-menu-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-example",
+      "title": "Empty",
+      "registryDependencies": [
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/empty-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-example",
+      "title": "Field",
+      "registryDependencies": [
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/field-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "hover-card-example",
+      "title": "Hover Card",
+      "registryDependencies": [
+        "hover-card"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/hover-card-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-example",
+      "title": "Input",
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/input-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-example",
+      "title": "Input Group",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/input-group-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-example",
+      "title": "Input OTP",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/input-otp-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-example",
+      "title": "Item",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/item-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-example",
+      "title": "Kbd",
+      "registryDependencies": [
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/kbd-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "label-example",
+      "title": "Label",
+      "registryDependencies": [
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/label-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "menubar-example",
+      "title": "Menubar",
+      "registryDependencies": [
+        "menubar"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/menubar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-example",
+      "title": "Native Select",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/native-select-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "navigation-menu-example",
+      "title": "Navigation Menu",
+      "registryDependencies": [
+        "navigation-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/navigation-menu-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "pagination-example",
+      "title": "Pagination",
+      "registryDependencies": [
+        "pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/pagination-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "popover-example",
+      "title": "Popover",
+      "registryDependencies": [
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/popover-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "progress-example",
+      "title": "Progress",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/progress-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "radio-group-example",
+      "title": "Radio Group",
+      "registryDependencies": [
+        "radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/radio-group-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-example",
+      "title": "Resizable",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/resizable-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-example",
+      "title": "Scroll Area",
+      "registryDependencies": [
+        "scroll-area"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/scroll-area-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-example",
+      "title": "Select",
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/select-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "separator-example",
+      "title": "Separator",
+      "registryDependencies": [
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/separator-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-example",
+      "title": "Sheet",
+      "registryDependencies": [
+        "sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/sheet-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-example",
+      "title": "Skeleton",
+      "registryDependencies": [
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/skeleton-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slider-example",
+      "title": "Slider",
+      "registryDependencies": [
+        "slider"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/slider-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-example",
+      "title": "Sonner",
+      "registryDependencies": [
+        "sonner"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/sonner-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-example",
+      "title": "Spinner",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/spinner-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "switch-example",
+      "title": "Switch",
+      "registryDependencies": [
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/switch-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "table-example",
+      "title": "Table",
+      "registryDependencies": [
+        "table"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/table-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tabs-example",
+      "title": "Tabs",
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/tabs-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-example",
+      "title": "Textarea",
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/textarea-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-example",
+      "title": "Toggle",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/toggle-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-example",
+      "title": "Toggle Group",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/toggle-group-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tooltip-example",
+      "title": "Tooltip",
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/tooltip-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
     }
   ]
 }

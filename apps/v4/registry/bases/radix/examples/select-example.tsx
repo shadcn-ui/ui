@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Field,
@@ -19,7 +20,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/radix/ui/select"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function SelectExample() {
@@ -43,7 +43,7 @@ export default function SelectExample() {
 
 function SelectBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Select>
         <SelectTrigger>
           <SelectValue placeholder="Select a fruit" />
@@ -58,13 +58,13 @@ function SelectBasic() {
           <SelectItem value="pineapple">Pineapple</SelectItem>
         </SelectContent>
       </Select>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SelectWithIcons() {
   return (
-    <Frame title="With Icons">
+    <CanvaFrame title="With Icons">
       <div className="flex flex-col gap-4">
         <Select>
           <SelectTrigger size="sm">
@@ -151,13 +151,13 @@ function SelectWithIcons() {
           </SelectContent>
         </Select>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SelectWithGroups() {
   return (
-    <Frame title="With Groups & Labels">
+    <CanvaFrame title="With Groups & Labels">
       <Select>
         <SelectTrigger>
           <SelectValue placeholder="Select a fruit" />
@@ -178,13 +178,13 @@ function SelectWithGroups() {
           </SelectGroup>
         </SelectContent>
       </Select>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SelectLargeList() {
   return (
-    <Frame title="Large List">
+    <CanvaFrame title="Large List">
       <Select>
         <SelectTrigger>
           <SelectValue placeholder="Select an item" />
@@ -197,13 +197,13 @@ function SelectLargeList() {
           ))}
         </SelectContent>
       </Select>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SelectSizes() {
   return (
-    <Frame title="Sizes">
+    <CanvaFrame title="Sizes">
       <div className="flex flex-col gap-4">
         <Select>
           <SelectTrigger size="sm">
@@ -226,13 +226,13 @@ function SelectSizes() {
           </SelectContent>
         </Select>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SelectWithButton() {
   return (
-    <Frame title="With Button">
+    <CanvaFrame title="With Button">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2">
           <Select>
@@ -263,13 +263,13 @@ function SelectWithButton() {
           <Button variant="outline">Submit</Button>
         </div>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SelectItemAligned() {
   return (
-    <Frame title="Item Aligned">
+    <CanvaFrame title="Item Aligned">
       <Select>
         <SelectTrigger>
           <SelectValue placeholder="Select a fruit" />
@@ -284,13 +284,13 @@ function SelectItemAligned() {
           <SelectItem value="pineapple">Pineapple</SelectItem>
         </SelectContent>
       </Select>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SelectWithField() {
   return (
-    <Frame title="With Field">
+    <CanvaFrame title="With Field">
       <Field>
         <FieldLabel htmlFor="select-fruit">Favorite Fruit</FieldLabel>
         <Select>
@@ -309,13 +309,13 @@ function SelectWithField() {
           Choose your favorite fruit from the list.
         </FieldDescription>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SelectInline() {
   return (
-    <Frame title="Inline with Input & NativeSelect">
+    <CanvaFrame title="Inline with Input & NativeSelect">
       <div className="flex items-center gap-2">
         <Input placeholder="Search..." className="flex-1" />
         <Select>
@@ -335,13 +335,13 @@ function SelectInline() {
           <NativeSelectOption value="status">Status</NativeSelectOption>
         </NativeSelect>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SelectDisabled() {
   return (
-    <Frame title="Disabled">
+    <CanvaFrame title="Disabled">
       <Select disabled>
         <SelectTrigger>
           <SelectValue placeholder="Disabled" />
@@ -356,6 +356,6 @@ function SelectDisabled() {
           <SelectItem value="pineapple">Pineapple</SelectItem>
         </SelectContent>
       </Select>
-    </Frame>
+    </CanvaFrame>
   )
 }

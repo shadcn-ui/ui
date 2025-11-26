@@ -1,4 +1,4 @@
-import { transformCanvaFrame } from "@/src/styles/transform-canva-frame"
+import { transformCanvaFrame } from "@/src/styles/transform-canva"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 
 import { type StyleMap } from "./create-style-map"

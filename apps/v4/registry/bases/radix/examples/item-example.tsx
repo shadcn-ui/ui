@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Item,
@@ -13,7 +14,6 @@ import {
   ItemSeparator,
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ItemExample() {
@@ -45,7 +45,7 @@ export default function ItemExample() {
 
 function DefaultVariantItems() {
   return (
-    <Frame title="Default">
+    <CanvaFrame title="Default">
       <Item>
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -153,13 +153,13 @@ function DefaultVariantItems() {
           <Button size="sm">Confirm</Button>
         </ItemActions>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function OutlineVariantItems() {
   return (
-    <Frame title="Outline">
+    <CanvaFrame title="Outline">
       <Item variant="outline">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -267,13 +267,13 @@ function OutlineVariantItems() {
           <Button size="sm">Confirm</Button>
         </ItemActions>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function MutedVariantItems() {
   return (
-    <Frame title="Muted">
+    <CanvaFrame title="Muted">
       <Item variant="muted">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -381,13 +381,13 @@ function MutedVariantItems() {
           <Button size="sm">Confirm</Button>
         </ItemActions>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DefaultVariantItemsSmall() {
   return (
-    <Frame title="Small">
+    <CanvaFrame title="Small">
       <Item size="sm">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -499,13 +499,13 @@ function DefaultVariantItemsSmall() {
           <Button size="sm">Confirm</Button>
         </ItemActions>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function OutlineVariantItemsSmall() {
   return (
-    <Frame title="Outline - Small">
+    <CanvaFrame title="Outline - Small">
       <Item variant="outline" size="sm">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -617,13 +617,13 @@ function OutlineVariantItemsSmall() {
           <Button size="sm">Confirm</Button>
         </ItemActions>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function MutedVariantItemsSmall() {
   return (
-    <Frame title="Muted - Small">
+    <CanvaFrame title="Muted - Small">
       <Item variant="muted" size="sm">
         <ItemContent>
           <ItemTitle>Title Only</ItemTitle>
@@ -735,13 +735,13 @@ function MutedVariantItemsSmall() {
           <Button size="sm">Confirm</Button>
         </ItemActions>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DefaultLinkItems() {
   return (
-    <Frame title="asChild">
+    <CanvaFrame title="asChild">
       <ItemGroup>
         <Item asChild>
           <a href="#">
@@ -807,13 +807,13 @@ function DefaultLinkItems() {
           </a>
         </Item>
       </ItemGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function OutlineLinkItems() {
   return (
-    <Frame title="Outline - asChild">
+    <CanvaFrame title="Outline - asChild">
       <ItemGroup>
         <Item variant="outline" asChild>
           <a href="#">
@@ -879,13 +879,13 @@ function OutlineLinkItems() {
           </a>
         </Item>
       </ItemGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function MutedLinkItems() {
   return (
-    <Frame title="Muted - asChild">
+    <CanvaFrame title="Muted - asChild">
       <ItemGroup>
         <Item variant="muted" asChild>
           <a href="#">
@@ -951,13 +951,13 @@ function MutedLinkItems() {
           </a>
         </Item>
       </ItemGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DefaultItemGroup() {
   return (
-    <Frame title="ItemGroup">
+    <CanvaFrame title="ItemGroup">
       <ItemGroup>
         <Item>
           <ItemContent>
@@ -978,13 +978,13 @@ function DefaultItemGroup() {
           </ItemContent>
         </Item>
       </ItemGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function OutlineItemGroup() {
   return (
-    <Frame title="Outline - ItemGroup">
+    <CanvaFrame title="Outline - ItemGroup">
       <ItemGroup>
         <Item variant="outline">
           <ItemMedia variant="icon">
@@ -1026,13 +1026,13 @@ function OutlineItemGroup() {
           </ItemContent>
         </Item>
       </ItemGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function MutedItemGroup() {
   return (
-    <Frame title="Muted - ItemGroup">
+    <CanvaFrame title="Muted - ItemGroup">
       <ItemGroup>
         <Item variant="muted">
           <ItemContent>
@@ -1068,13 +1068,13 @@ function MutedItemGroup() {
           </ItemActions>
         </Item>
       </ItemGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ItemHeaderExamples() {
   return (
-    <Frame title="ItemHeader">
+    <CanvaFrame title="ItemHeader">
       <Item>
         <ItemHeader>
           <span className="text-sm font-medium">Design System</span>
@@ -1111,13 +1111,13 @@ function ItemHeaderExamples() {
           </ItemDescription>
         </ItemContent>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ItemFooterExamples() {
   return (
-    <Frame title="ItemFooter">
+    <CanvaFrame title="ItemFooter">
       <Item>
         <ItemContent>
           <ItemTitle>Quarterly Report Q4 2024</ItemTitle>
@@ -1158,13 +1158,13 @@ function ItemFooterExamples() {
           <span className="text-muted-foreground text-sm">12 comments</span>
         </ItemFooter>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ItemHeaderAndFooterExamples() {
   return (
-    <Frame title="ItemHeader + ItemFooter">
+    <CanvaFrame title="ItemHeader + ItemFooter">
       <Item>
         <ItemHeader>
           <span className="text-sm font-medium">Team Project</span>
@@ -1216,13 +1216,13 @@ function ItemHeaderAndFooterExamples() {
           </span>
         </ItemFooter>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DefaultVariantItemsWithImage() {
   return (
-    <Frame title="Default - ItemMedia image">
+    <CanvaFrame title="Default - ItemMedia image">
       <Item>
         <ItemMedia variant="image">
           <Image
@@ -1280,13 +1280,13 @@ function DefaultVariantItemsWithImage() {
           <Button size="sm">Download</Button>
         </ItemActions>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function OutlineVariantItemsWithImage() {
   return (
-    <Frame title="Outline - ItemMedia image">
+    <CanvaFrame title="Outline - ItemMedia image">
       <Item variant="outline">
         <ItemMedia variant="image">
           <Image
@@ -1344,13 +1344,13 @@ function OutlineVariantItemsWithImage() {
           <Button size="sm">Download</Button>
         </ItemActions>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function MutedVariantItemsWithImage() {
   return (
-    <Frame title="Muted - ItemMedia image">
+    <CanvaFrame title="Muted - ItemMedia image">
       <Item variant="muted">
         <ItemMedia variant="image">
           <Image
@@ -1408,6 +1408,6 @@ function MutedVariantItemsWithImage() {
           <Button size="sm">Download</Button>
         </ItemActions>
       </Item>
-    </Frame>
+    </CanvaFrame>
   )
 }

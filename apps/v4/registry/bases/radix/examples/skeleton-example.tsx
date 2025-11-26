@@ -1,6 +1,6 @@
+import { CanvaFrame } from "@/components/canva"
 import { Card, CardContent, CardHeader } from "@/registry/bases/radix/ui/card"
 import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function SkeletonExample() {
   return (
@@ -18,7 +18,7 @@ export default function SkeletonExample() {
 
 function SkeletonAvatar() {
   return (
-    <Frame title="Avatar">
+    <CanvaFrame title="Avatar">
       <div className="flex w-full items-center gap-4">
         <Skeleton className="size-10 shrink-0 rounded-full" />
         <div className="grid gap-2">
@@ -26,13 +26,13 @@ function SkeletonAvatar() {
           <Skeleton className="h-4 w-[100px]" />
         </div>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SkeletonCard() {
   return (
-    <Frame title="Card">
+    <CanvaFrame title="Card">
       <Card className="w-full">
         <CardHeader>
           <Skeleton className="h-4 w-2/3" />
@@ -42,25 +42,25 @@ function SkeletonCard() {
           <Skeleton className="aspect-square w-full" />
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SkeletonText() {
   return (
-    <Frame title="Text">
+    <CanvaFrame title="Text">
       <div className="flex w-full flex-col gap-2">
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-3/4" />
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SkeletonForm() {
   return (
-    <Frame title="Form">
+    <CanvaFrame title="Form">
       <div className="flex w-full flex-col gap-7">
         <div className="flex flex-col gap-3">
           <Skeleton className="h-4 w-20" />
@@ -72,13 +72,13 @@ function SkeletonForm() {
         </div>
         <Skeleton className="h-9 w-24" />
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SkeletonTable() {
   return (
-    <Frame title="Table">
+    <CanvaFrame title="Table">
       <div className="flex w-full flex-col gap-2">
         <div className="flex gap-4">
           <Skeleton className="h-4 flex-1" />
@@ -96,6 +96,6 @@ function SkeletonTable() {
           <Skeleton className="h-4 w-20" />
         </div>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }

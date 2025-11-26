@@ -22,6 +22,7 @@ import {
   XAxis,
 } from "recharts"
 
+import { CanvaFrame } from "@/components/canva"
 import {
   Card,
   CardContent,
@@ -36,7 +37,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/bases/radix/ui/chart"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const areaChartData = [
@@ -72,7 +72,7 @@ export default function ChartExample() {
 
 function ChartAreaExample() {
   return (
-    <Frame title="Area Chart">
+    <CanvaFrame title="Area Chart">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Area Chart</CardTitle>
@@ -131,7 +131,7 @@ function ChartAreaExample() {
           </div>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -157,7 +157,7 @@ const barChartConfig = {
 
 function ChartBarExample() {
   return (
-    <Frame title="Bar Chart">
+    <CanvaFrame title="Bar Chart">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Bar Chart - Multiple</CardTitle>
@@ -198,7 +198,7 @@ function ChartBarExample() {
           </div>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -224,7 +224,7 @@ const lineChartConfig = {
 
 function ChartLineExample() {
   return (
-    <Frame title="Line Chart">
+    <CanvaFrame title="Line Chart">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Line Chart - Multiple</CardTitle>
@@ -285,7 +285,7 @@ function ChartLineExample() {
           </div>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -329,7 +329,7 @@ function ChartPieExample() {
   }, [])
 
   return (
-    <Frame title="Pie Chart">
+    <CanvaFrame title="Pie Chart">
       <Card className="w-full">
         <CardHeader className="items-center pb-0">
           <CardTitle>Pie Chart - Donut with Text</CardTitle>
@@ -400,7 +400,7 @@ function ChartPieExample() {
           </div>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -426,7 +426,7 @@ const radarChartConfig = {
 
 function ChartRadarExample() {
   return (
-    <Frame title="Radar Chart">
+    <CanvaFrame title="Radar Chart">
       <Card className="w-full">
         <CardHeader className="items-center pb-4">
           <CardTitle>Radar Chart - Multiple</CardTitle>
@@ -470,7 +470,7 @@ function ChartRadarExample() {
           </div>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -490,7 +490,7 @@ const radialChartConfig = {
 
 function ChartRadialExample() {
   return (
-    <Frame title="Radial Chart">
+    <CanvaFrame title="Radial Chart">
       <Card className="w-full">
         <CardHeader className="items-center pb-0">
           <CardTitle>Radial Chart - Shape</CardTitle>
@@ -564,6 +564,6 @@ function ChartRadialExample() {
           </div>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }

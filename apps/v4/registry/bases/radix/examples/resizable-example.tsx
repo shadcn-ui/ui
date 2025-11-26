@@ -2,12 +2,12 @@
 
 import * as React from "react"
 
+import { CanvaFrame } from "@/components/canva"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/registry/bases/radix/ui/resizable"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function ResizableExample() {
   return (
@@ -25,7 +25,7 @@ export default function ResizableExample() {
 
 function ResizableHorizontal() {
   return (
-    <Frame title="Horizontal">
+    <CanvaFrame title="Horizontal">
       <ResizablePanelGroup
         direction="horizontal"
         className="min-h-[200px] rounded-lg border"
@@ -42,13 +42,13 @@ function ResizableHorizontal() {
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ResizableVertical() {
   return (
-    <Frame title="Vertical">
+    <CanvaFrame title="Vertical">
       <ResizablePanelGroup
         direction="vertical"
         className="min-h-[200px] rounded-lg border"
@@ -65,13 +65,13 @@ function ResizableVertical() {
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ResizableWithHandle() {
   return (
-    <Frame title="With Handle">
+    <CanvaFrame title="With Handle">
       <ResizablePanelGroup
         direction="horizontal"
         className="min-h-[200px] rounded-lg border"
@@ -88,13 +88,13 @@ function ResizableWithHandle() {
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ResizableNested() {
   return (
-    <Frame title="Nested">
+    <CanvaFrame title="Nested">
       <ResizablePanelGroup direction="horizontal" className="rounded-lg border">
         <ResizablePanel defaultSize={50}>
           <div className="flex h-[200px] items-center justify-center p-6">
@@ -118,7 +118,7 @@ function ResizableNested() {
           </ResizablePanelGroup>
         </ResizablePanel>
       </ResizablePanelGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -126,7 +126,7 @@ function ResizableControlled() {
   const [sizes, setSizes] = React.useState([30, 70])
 
   return (
-    <Frame title="Controlled">
+    <CanvaFrame title="Controlled">
       <ResizablePanelGroup
         direction="horizontal"
         className="min-h-[200px] rounded-lg border"
@@ -146,6 +146,6 @@ function ResizableControlled() {
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
-    </Frame>
+    </CanvaFrame>
   )
 }

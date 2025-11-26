@@ -1,7 +1,7 @@
 import Image from "next/image"
 
+import { CanvaFrame } from "@/components/canva"
 import { AspectRatio } from "@/registry/bases/radix/ui/aspect-ratio"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function AspectRatioDemo() {
   return (
@@ -17,7 +17,7 @@ export default function AspectRatioDemo() {
 
 function AspectRatio16x9() {
   return (
-    <Frame title="16:9">
+    <CanvaFrame title="16:9">
       <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg">
         <Image
           src="https://avatar.vercel.sh/shadcn1"
@@ -26,13 +26,13 @@ function AspectRatio16x9() {
           className="h-full w-full rounded-lg object-cover grayscale dark:brightness-20"
         />
       </AspectRatio>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AspectRatio1x1() {
   return (
-    <Frame title="1:1">
+    <CanvaFrame title="1:1">
       <AspectRatio ratio={1 / 1} className="bg-muted rounded-lg">
         <Image
           src="https://avatar.vercel.sh/shadcn1"
@@ -41,13 +41,13 @@ function AspectRatio1x1() {
           className="h-full w-full rounded-lg object-cover grayscale dark:brightness-20"
         />
       </AspectRatio>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function AspectRatio9x16() {
   return (
-    <Frame title="9:16">
+    <CanvaFrame title="9:16">
       <AspectRatio ratio={9 / 16} className="bg-muted rounded-lg">
         <Image
           src="https://avatar.vercel.sh/shadcn1"
@@ -56,6 +56,6 @@ function AspectRatio9x16() {
           className="h-full w-full rounded-lg object-cover grayscale dark:brightness-20"
         />
       </AspectRatio>
-    </Frame>
+    </CanvaFrame>
   )
 }

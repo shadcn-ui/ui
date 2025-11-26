@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar-hijri",
-  "type": "registry:example",
   "description": "A Persian calendar.",
   "registryDependencies": [
     "calendar"
@@ -21,5 +20,6 @@
   "categories": [
     "calendar",
     "date"
-  ]
+  ],
+  "type": "registry:example"
 }

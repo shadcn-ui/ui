@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { CanvaFrame } from "@/components/canva"
 import {
   Avatar,
   AvatarFallback,
@@ -23,7 +24,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 const frameworks = [
@@ -127,7 +127,7 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
   const [value, setValue] = React.useState("")
 
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -177,7 +177,7 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
           </Command>
         </PopoverContent>
       </Popover>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -197,7 +197,7 @@ function UserCombobox({
   )
 
   return (
-    <Frame title="With Avatar">
+    <CanvaFrame title="With Avatar">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -274,7 +274,7 @@ function UserCombobox({
           </Command>
         </PopoverContent>
       </Popover>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -302,7 +302,7 @@ function TimezoneCombobox({
   )
 
   return (
-    <Frame title="With Groups">
+    <CanvaFrame title="With Groups">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -372,7 +372,7 @@ function TimezoneCombobox({
           </Command>
         </PopoverContent>
       </Popover>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -383,7 +383,7 @@ function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
   >([])
 
   return (
-    <Frame title="Multi-Select">
+    <CanvaFrame title="Multi-Select">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -442,6 +442,6 @@ function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
           </Command>
         </PopoverContent>
       </Popover>
-    </Frame>
+    </CanvaFrame>
   )
 }

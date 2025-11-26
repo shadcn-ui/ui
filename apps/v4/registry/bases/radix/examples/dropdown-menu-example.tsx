@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { CanvaFrame } from "@/components/canva"
 import {
   Avatar,
   AvatarFallback,
@@ -25,7 +26,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function DropdownMenuExample() {
@@ -47,7 +47,7 @@ export default function DropdownMenuExample() {
 
 function DropdownMenuBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -67,13 +67,13 @@ function DropdownMenuBasic() {
           <DropdownMenuItem disabled>API</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DropdownMenuWithIcons() {
   return (
-    <Frame title="With Icons">
+    <CanvaFrame title="With Icons">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -116,13 +116,13 @@ function DropdownMenuWithIcons() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DropdownMenuWithShortcuts() {
   return (
-    <Frame title="With Shortcuts">
+    <CanvaFrame title="With Shortcuts">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -156,13 +156,13 @@ function DropdownMenuWithShortcuts() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DropdownMenuWithSubmenu() {
   return (
-    <Frame title="With Submenu">
+    <CanvaFrame title="With Submenu">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -190,7 +190,7 @@ function DropdownMenuWithSubmenu() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -200,7 +200,7 @@ function DropdownMenuWithCheckboxes() {
   const [showPanel, setShowPanel] = React.useState(false)
 
   return (
-    <Frame title="With Checkboxes">
+    <CanvaFrame title="With Checkboxes">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -232,7 +232,7 @@ function DropdownMenuWithCheckboxes() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -240,7 +240,7 @@ function DropdownMenuWithRadio() {
   const [position, setPosition] = React.useState("bottom")
 
   return (
-    <Frame title="With Radio Group">
+    <CanvaFrame title="With Radio Group">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -265,13 +265,13 @@ function DropdownMenuWithRadio() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DropdownMenuWithAvatar() {
   return (
-    <Frame title="With Avatar">
+    <CanvaFrame title="With Avatar">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -363,13 +363,13 @@ function DropdownMenuWithAvatar() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function DropdownMenuAvatarOnly() {
   return (
-    <Frame title="Avatar Only">
+    <CanvaFrame title="Avatar Only">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className="rounded-full">
@@ -428,6 +428,6 @@ function DropdownMenuAvatarOnly() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </Frame>
+    </CanvaFrame>
   )
 }

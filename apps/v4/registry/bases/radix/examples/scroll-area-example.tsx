@@ -1,9 +1,9 @@
 import * as React from "react"
 import Image from "next/image"
 
+import { CanvaFrame } from "@/components/canva"
 import { ScrollArea, ScrollBar } from "@/registry/bases/radix/ui/scroll-area"
 import { Separator } from "@/registry/bases/radix/ui/separator"
-import Frame from "@/app/(design)/design/components/frame"
 
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`
@@ -37,7 +37,7 @@ export default function ScrollAreaExample() {
 
 function ScrollAreaVertical() {
   return (
-    <Frame title="Vertical">
+    <CanvaFrame title="Vertical">
       <ScrollArea className="mx-auto h-72 w-48 rounded-md border">
         <div className="p-4">
           <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
@@ -49,13 +49,13 @@ function ScrollAreaVertical() {
           ))}
         </div>
       </ScrollArea>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ScrollAreaHorizontal() {
   return (
-    <Frame title="Horizontal">
+    <CanvaFrame title="Horizontal">
       <ScrollArea className="mx-auto w-full max-w-96 rounded-md border p-4">
         <div className="flex gap-4">
           {works.map((artwork) => (
@@ -80,6 +80,6 @@ function ScrollAreaHorizontal() {
         </div>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-    </Frame>
+    </CanvaFrame>
   )
 }

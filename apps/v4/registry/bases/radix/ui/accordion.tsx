@@ -54,14 +54,14 @@ function AccordionTrigger({
           tabler="IconChevronDown"
           data-slot="accordion-trigger-icon-closed"
           hugeicons="ArrowDown01Icon"
-          className="cn-accordion-trigger-icon group-data-[state=open]/accordion-trigger:hidden"
+          className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-data-[state=open]/accordion-trigger:hidden"
         />
         <IconPlaceholder
           lucide="ChevronUpIcon"
           tabler="IconChevronUp"
           data-slot="accordion-trigger-icon-open"
           hugeicons="ArrowUp01Icon"
-          className="cn-accordion-trigger-icon group-data-[state=closed]/accordion-trigger:hidden"
+          className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-data-[state=closed]/accordion-trigger:hidden"
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>

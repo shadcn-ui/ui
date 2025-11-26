@@ -9,7 +9,7 @@
   }
 
   .cn-accordion-trigger-icon {
-    @apply text-muted-foreground pointer-events-none size-4 shrink-0;
+    @apply text-muted-foreground size-4;
   }
 
   .cn-accordion-content {
@@ -226,7 +226,7 @@
 
   /* MARK: Card */
   .cn-card {
-    @apply bg-card text-card-foreground gap-(--padding) rounded-xl border py-(--padding) shadow-(--shadow-xs) [--padding:--spacing(6)];
+    @apply gap-(--padding) rounded-xl border py-(--padding) shadow-(--shadow-xs) [--padding:--spacing(6)];
   }
 
   .cn-card-header {

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sidebar-16",
-  "type": "registry:block",
   "description": "A sidebar with a sticky site header.",
   "registryDependencies": [
     "sidebar",
@@ -59,5 +58,6 @@
   "categories": [
     "sidebar",
     "dashboard"
-  ]
+  ],
+  "type": "registry:block"
 }

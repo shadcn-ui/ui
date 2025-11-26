@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import {
   Field,
   FieldContent,
@@ -7,7 +8,6 @@ import {
 } from "@/registry/bases/radix/ui/field"
 import { Label } from "@/registry/bases/radix/ui/label"
 import { Switch } from "@/registry/bases/radix/ui/switch"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function SwitchExample() {
   return (
@@ -23,29 +23,29 @@ export default function SwitchExample() {
 
 function SwitchBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Field orientation="horizontal">
         <Switch id="switch-basic" />
         <FieldLabel htmlFor="switch-basic">Airplane Mode</FieldLabel>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SwitchWithLabel() {
   return (
-    <Frame title="With Label">
+    <CanvaFrame title="With Label">
       <div className="flex items-center gap-2">
         <Switch id="switch-bluetooth" defaultChecked />
         <Label htmlFor="switch-bluetooth">Bluetooth</Label>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SwitchWithDescription() {
   return (
-    <Frame title="With Description">
+    <CanvaFrame title="With Description">
       <FieldLabel htmlFor="switch-focus-mode">
         <Field orientation="horizontal">
           <FieldContent>
@@ -58,13 +58,13 @@ function SwitchWithDescription() {
           <Switch id="switch-focus-mode" />
         </Field>
       </FieldLabel>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function SwitchDisabled() {
   return (
-    <Frame title="Disabled">
+    <CanvaFrame title="Disabled">
       <div className="flex flex-col gap-12">
         <div className="flex items-center gap-2">
           <Switch id="switch-disabled-unchecked" disabled />
@@ -77,6 +77,6 @@ function SwitchDisabled() {
           <Label htmlFor="switch-disabled-checked">Disabled (Checked)</Label>
         </div>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }

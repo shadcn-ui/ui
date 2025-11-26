@@ -2,7 +2,7 @@ import { Project, ScriptKind } from "ts-morph"
 import { describe, expect, it } from "vitest"
 
 import { type StyleMap } from "./create-style-map"
-import { transformCanvaFrame } from "./transform-canva-frame"
+import { transformCanvaFrame } from "./transform-canva"
 
 async function applyTransform(source: string, styleMap: StyleMap) {
   const project = new Project({

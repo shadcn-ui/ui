@@ -1,10 +1,10 @@
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/registry/bases/radix/ui/hover-card"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function HoverCardExample() {
   return (
@@ -20,7 +20,7 @@ const HOVER_CARD_SIDES = ["top", "right", "bottom", "left"] as const
 
 function HoverCardSides() {
   return (
-    <Frame title="Sides">
+    <CanvaFrame title="Sides">
       <div className="flex flex-wrap items-center justify-center gap-4">
         {HOVER_CARD_SIDES.map((side) => (
           <HoverCard key={side} openDelay={100} closeDelay={100}>
@@ -40,6 +40,6 @@ function HoverCardSides() {
           </HoverCard>
         ))}
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }

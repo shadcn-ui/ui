@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+import { CanvaFrame } from "@/components/canva"
 import {
   Avatar,
   AvatarFallback,
@@ -20,7 +21,6 @@ import {
 } from "@/registry/bases/radix/ui/card"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function CardDemo() {
@@ -39,7 +39,7 @@ export default function CardDemo() {
 
 function CardLogin() {
   return (
-    <Frame title="Login">
+    <CanvaFrame title="Login">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
@@ -89,13 +89,13 @@ function CardLogin() {
           </div>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function CardMeetingNotes() {
   return (
-    <Frame title="Meeting Notes">
+    <CanvaFrame title="Meeting Notes">
       <Card>
         <CardHeader>
           <CardTitle>Meeting Notes</CardTitle>
@@ -151,13 +151,13 @@ function CardMeetingNotes() {
           </AvatarGroup>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function CardWithImage() {
   return (
-    <Frame title="With Image">
+    <CanvaFrame title="With Image">
       <Card>
         <CardHeader>
           <CardTitle>Is this an image?</CardTitle>
@@ -185,13 +185,13 @@ function CardWithImage() {
           </Button>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function CardHeaderWithBorder() {
   return (
-    <Frame title="Header with Border">
+    <CanvaFrame title="Header with Border">
       <Card>
         <CardHeader className="border-b">
           <CardTitle>Header with Border</CardTitle>
@@ -206,13 +206,13 @@ function CardHeaderWithBorder() {
           </p>
         </CardContent>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function CardFooterWithBorder() {
   return (
-    <Frame title="Footer with Border">
+    <CanvaFrame title="Footer with Border">
       <Card>
         <CardContent className="text-sm">
           <p>
@@ -226,6 +226,6 @@ function CardFooterWithBorder() {
           </Button>
         </CardFooter>
       </Card>
-    </Frame>
+    </CanvaFrame>
   )
 }

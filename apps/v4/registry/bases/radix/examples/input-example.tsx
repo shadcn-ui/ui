@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Field,
@@ -17,7 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/radix/ui/select"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function InputExample() {
   return (
@@ -40,23 +40,23 @@ export default function InputExample() {
 
 function InputBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Input type="email" placeholder="Email" />
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputInvalid() {
   return (
-    <Frame title="Invalid">
+    <CanvaFrame title="Invalid">
       <Input type="text" placeholder="Error" aria-invalid="true" />
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputWithLabel() {
   return (
-    <Frame title="With Label">
+    <CanvaFrame title="With Label">
       <Field>
         <FieldLabel htmlFor="input-demo-email">Email</FieldLabel>
         <Input
@@ -65,13 +65,13 @@ function InputWithLabel() {
           placeholder="name@example.com"
         />
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputWithDescription() {
   return (
-    <Frame title="With Description">
+    <CanvaFrame title="With Description">
       <Field>
         <FieldLabel htmlFor="input-demo-username">Username</FieldLabel>
         <Input
@@ -83,13 +83,13 @@ function InputWithDescription() {
           Choose a unique username for your account.
         </FieldDescription>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputDisabled() {
   return (
-    <Frame title="Disabled">
+    <CanvaFrame title="Disabled">
       <Field>
         <FieldLabel htmlFor="input-demo-disabled">Email</FieldLabel>
         <Input
@@ -99,13 +99,13 @@ function InputDisabled() {
           disabled
         />
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputTypes() {
   return (
-    <Frame title="Input Types">
+    <CanvaFrame title="Input Types">
       <div className="flex w-full flex-col gap-6">
         <Field>
           <FieldLabel htmlFor="input-demo-password">Password</FieldLabel>
@@ -152,13 +152,13 @@ function InputTypes() {
           <Input id="input-demo-file" type="file" />
         </Field>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputWithSelect() {
   return (
-    <Frame title="With Select">
+    <CanvaFrame title="With Select">
       <div className="flex w-full gap-2">
         <Input type="text" placeholder="Enter amount" className="flex-1" />
         <Select defaultValue="usd">
@@ -172,24 +172,24 @@ function InputWithSelect() {
           </SelectContent>
         </Select>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputWithButton() {
   return (
-    <Frame title="With Button">
+    <CanvaFrame title="With Button">
       <div className="flex w-full gap-2">
         <Input type="search" placeholder="Search..." className="flex-1" />
         <Button>Search</Button>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputWithNativeSelect() {
   return (
-    <Frame title="With Native Select">
+    <CanvaFrame title="With Native Select">
       <div className="flex w-full gap-2">
         <Input type="tel" placeholder="(555) 123-4567" className="flex-1" />
         <NativeSelect defaultValue="+1">
@@ -198,13 +198,13 @@ function InputWithNativeSelect() {
           <NativeSelectOption value="+46">+46</NativeSelectOption>
         </NativeSelect>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputForm() {
   return (
-    <Frame title="Form">
+    <CanvaFrame title="Form">
       <form className="w-full">
         <FieldGroup>
           <Field>
@@ -257,6 +257,6 @@ function InputForm() {
           </Field>
         </FieldGroup>
       </form>
-    </Frame>
+    </CanvaFrame>
   )
 }

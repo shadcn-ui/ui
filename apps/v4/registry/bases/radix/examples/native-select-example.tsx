@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import {
   Field,
   FieldDescription,
@@ -8,7 +9,6 @@ import {
   NativeSelectOptGroup,
   NativeSelectOption,
 } from "@/registry/bases/radix/ui/native-select"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function NativeSelectExample() {
   return (
@@ -26,7 +26,7 @@ export default function NativeSelectExample() {
 
 function NativeSelectBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <NativeSelect>
         <NativeSelectOption value="">Select a fruit</NativeSelectOption>
         <NativeSelectOption value="apple">Apple</NativeSelectOption>
@@ -37,13 +37,13 @@ function NativeSelectBasic() {
         </NativeSelectOption>
         <NativeSelectOption value="pineapple">Pineapple</NativeSelectOption>
       </NativeSelect>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function NativeSelectWithGroups() {
   return (
-    <Frame title="With Groups">
+    <CanvaFrame title="With Groups">
       <NativeSelect>
         <NativeSelectOption value="">Select a food</NativeSelectOption>
         <NativeSelectOptGroup label="Fruits">
@@ -57,13 +57,13 @@ function NativeSelectWithGroups() {
           <NativeSelectOption value="spinach">Spinach</NativeSelectOption>
         </NativeSelectOptGroup>
       </NativeSelect>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function NativeSelectWithField() {
   return (
-    <Frame title="With Field">
+    <CanvaFrame title="With Field">
       <Field>
         <FieldLabel htmlFor="native-select-country">Country</FieldLabel>
         <NativeSelect id="native-select-country">
@@ -75,32 +75,32 @@ function NativeSelectWithField() {
         </NativeSelect>
         <FieldDescription>Select your country of residence.</FieldDescription>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function NativeSelectDisabled() {
   return (
-    <Frame title="Disabled">
+    <CanvaFrame title="Disabled">
       <NativeSelect disabled>
         <NativeSelectOption value="">Disabled</NativeSelectOption>
         <NativeSelectOption value="apple">Apple</NativeSelectOption>
         <NativeSelectOption value="banana">Banana</NativeSelectOption>
         <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
       </NativeSelect>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function NativeSelectInvalid() {
   return (
-    <Frame title="Invalid">
+    <CanvaFrame title="Invalid">
       <NativeSelect aria-invalid="true">
         <NativeSelectOption value="">Error state</NativeSelectOption>
         <NativeSelectOption value="apple">Apple</NativeSelectOption>
         <NativeSelectOption value="banana">Banana</NativeSelectOption>
         <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
       </NativeSelect>
-    </Frame>
+    </CanvaFrame>
   )
 }

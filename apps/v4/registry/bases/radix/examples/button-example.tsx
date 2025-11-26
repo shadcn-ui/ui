@@ -1,5 +1,5 @@
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ButtonDemo() {
@@ -18,7 +18,7 @@ export default function ButtonDemo() {
 
 function ButtonVariantsAndSizes() {
   return (
-    <Frame title="Variants & Sizes">
+    <CanvaFrame title="Variants & Sizes">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">Default</Button>
         <Button size="xs" variant="secondary">
@@ -81,13 +81,13 @@ function ButtonVariantsAndSizes() {
           Link
         </Button>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonIconRight() {
   return (
-    <Frame title="Icon Right">
+    <CanvaFrame title="Icon Right">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">
           Default{" "}
@@ -311,13 +311,13 @@ function ButtonIconRight() {
           />
         </Button>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonIconLeft() {
   return (
-    <Frame title="Icon Left">
+    <CanvaFrame title="Icon Left">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">
           <IconPlaceholder
@@ -542,13 +542,13 @@ function ButtonIconLeft() {
           Link
         </Button>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonIconOnly() {
   return (
-    <Frame title="Icon Only">
+    <CanvaFrame title="Icon Only">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="icon-xs">
           <IconPlaceholder
@@ -725,13 +725,13 @@ function ButtonIconOnly() {
           />
         </Button>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function ButtonExamples() {
   return (
-    <Frame title="Examples">
+    <CanvaFrame title="Examples">
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
           <Button variant="outline">Cancel</Button>
@@ -755,6 +755,6 @@ function ButtonExamples() {
           </Button>
         </div>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }

@@ -3,6 +3,7 @@
 import * as React from "react"
 import { REGEXP_ONLY_DIGITS, REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 
+import { CanvaFrame } from "@/components/canva"
 import {
   Field,
   FieldDescription,
@@ -15,7 +16,6 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/registry/bases/radix/ui/input-otp"
-import Frame from "@/app/(design)/design/components/frame"
 
 export default function InputOTPExample() {
   return (
@@ -36,7 +36,7 @@ export default function InputOTPExample() {
 
 function InputOTPSimple() {
   return (
-    <Frame title="Simple">
+    <CanvaFrame title="Simple">
       <Field>
         <FieldLabel htmlFor="simple">Simple</FieldLabel>
         <InputOTP id="simple" maxLength={6}>
@@ -53,13 +53,13 @@ function InputOTPSimple() {
           </InputOTPGroup>
         </InputOTP>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputOTPPattern() {
   return (
-    <Frame title="Digits Only">
+    <CanvaFrame title="Digits Only">
       <Field>
         <FieldLabel htmlFor="digits-only">Digits Only</FieldLabel>
         <InputOTP id="digits-only" maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
@@ -73,7 +73,7 @@ function InputOTPPattern() {
           </InputOTPGroup>
         </InputOTP>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -81,7 +81,7 @@ function InputOTPWithSeparator() {
   const [value, setValue] = React.useState("123456")
 
   return (
-    <Frame title="With Separator">
+    <CanvaFrame title="With Separator">
       <Field>
         <FieldLabel htmlFor="with-separator">With Separator</FieldLabel>
         <InputOTP
@@ -106,13 +106,13 @@ function InputOTPWithSeparator() {
           </InputOTPGroup>
         </InputOTP>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputOTPWithSpacing() {
   return (
-    <Frame title="With Spacing">
+    <CanvaFrame title="With Spacing">
       <Field>
         <FieldLabel htmlFor="with-spacing">With Spacing</FieldLabel>
         <InputOTP id="with-spacing" maxLength={6}>
@@ -124,13 +124,13 @@ function InputOTPWithSpacing() {
           </InputOTPGroup>
         </InputOTP>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputOTPAlphanumeric() {
   return (
-    <Frame title="Alphanumeric">
+    <CanvaFrame title="Alphanumeric">
       <Field>
         <FieldLabel htmlFor="alphanumeric">Alphanumeric</FieldLabel>
         <FieldDescription>Accepts both letters and numbers.</FieldDescription>
@@ -152,13 +152,13 @@ function InputOTPAlphanumeric() {
           </InputOTPGroup>
         </InputOTP>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputOTPDisabled() {
   return (
-    <Frame title="Disabled">
+    <CanvaFrame title="Disabled">
       <Field>
         <FieldLabel htmlFor="disabled">Disabled</FieldLabel>
         <InputOTP id="disabled" maxLength={6} disabled value="123456">
@@ -175,7 +175,7 @@ function InputOTPDisabled() {
           </InputOTPGroup>
         </InputOTP>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
@@ -192,7 +192,7 @@ function InputOTPError() {
   }, [value])
 
   return (
-    <Frame title="With Validation">
+    <CanvaFrame title="With Validation">
       <Field>
         <FieldLabel htmlFor="error">With Validation</FieldLabel>
         <InputOTP id="error" maxLength={6} value={value} onChange={setValue}>
@@ -236,13 +236,13 @@ function InputOTPError() {
           </FieldDescription>
         )}
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function InputOTPFourDigits() {
   return (
-    <Frame title="4 Digits">
+    <CanvaFrame title="4 Digits">
       <Field>
         <FieldLabel htmlFor="four-digits">4 Digits</FieldLabel>
         <FieldDescription>Common pattern for PIN codes.</FieldDescription>
@@ -255,6 +255,6 @@ function InputOTPFourDigits() {
           </InputOTPGroup>
         </InputOTP>
       </Field>
-    </Frame>
+    </CanvaFrame>
   )
 }

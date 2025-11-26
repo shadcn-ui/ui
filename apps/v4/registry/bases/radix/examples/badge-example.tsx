@@ -1,6 +1,6 @@
+import { CanvaFrame } from "@/components/canva"
 import { Badge } from "@/registry/bases/radix/ui/badge"
 import { Spinner } from "@/registry/bases/radix/ui/spinner"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function BadgeDemo() {
@@ -21,7 +21,7 @@ export default function BadgeDemo() {
 
 function BadgeVariants() {
   return (
-    <Frame title="Variants">
+    <CanvaFrame title="Variants">
       <div className="flex flex-wrap gap-2">
         <Badge>Default</Badge>
         <Badge variant="secondary">Secondary</Badge>
@@ -30,13 +30,13 @@ function BadgeVariants() {
         <Badge variant="ghost">Ghost</Badge>
         <Badge variant="link">Link</Badge>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function BadgeWithIconLeft() {
   return (
-    <Frame title="Icon Left">
+    <CanvaFrame title="Icon Left">
       <div className="flex flex-wrap gap-2">
         <Badge>
           <IconPlaceholder
@@ -87,13 +87,13 @@ function BadgeWithIconLeft() {
           Link
         </Badge>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function BadgeWithIconRight() {
   return (
-    <Frame title="Icon Right">
+    <CanvaFrame title="Icon Right">
       <div className="flex flex-wrap gap-2">
         <Badge>
           Default
@@ -144,13 +144,13 @@ function BadgeWithIconRight() {
           />
         </Badge>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function BadgeWithSpinner() {
   return (
-    <Frame title="With Spinner">
+    <CanvaFrame title="With Spinner">
       <div className="flex flex-wrap gap-2">
         <Badge>
           <Spinner />
@@ -177,13 +177,13 @@ function BadgeWithSpinner() {
           Link
         </Badge>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function BadgeAsLink() {
   return (
-    <Frame title="asChild">
+    <CanvaFrame title="asChild">
       <div className="flex flex-wrap gap-2">
         <Badge asChild>
           <a href="#">
@@ -246,25 +246,25 @@ function BadgeAsLink() {
           </a>
         </Badge>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function BadgeLongText() {
   return (
-    <Frame title="Long Text">
+    <CanvaFrame title="Long Text">
       <div className="flex flex-wrap gap-2">
         <Badge variant="secondary">
           A badge with a lot of text to see how it wraps
         </Badge>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function BadgeCustomColors() {
   return (
-    <Frame title="Custom Colors">
+    <CanvaFrame title="Custom Colors">
       <div className="flex flex-wrap gap-2">
         <Badge className="bg-blue-600 text-blue-50 dark:bg-blue-600 dark:text-blue-50">
           Blue
@@ -294,6 +294,6 @@ function BadgeCustomColors() {
           Red
         </Badge>
       </div>
-    </Frame>
+    </CanvaFrame>
   )
 }

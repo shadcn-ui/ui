@@ -1,3 +1,4 @@
+import { CanvaFrame } from "@/components/canva"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Empty,
@@ -13,7 +14,6 @@ import {
   InputGroupInput,
 } from "@/registry/bases/radix/ui/input-group"
 import { Kbd } from "@/registry/bases/radix/ui/kbd"
-import Frame from "@/app/(design)/design/components/frame"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function EmptyDemo() {
@@ -33,7 +33,7 @@ export default function EmptyDemo() {
 
 function EmptyBasic() {
   return (
-    <Frame title="Basic">
+    <CanvaFrame title="Basic">
       <Empty>
         <EmptyHeader>
           <EmptyTitle>No projects yet</EmptyTitle>
@@ -61,13 +61,13 @@ function EmptyBasic() {
           </Button>
         </EmptyContent>
       </Empty>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function EmptyWithMutedBackground() {
   return (
-    <Frame title="With Muted Background">
+    <CanvaFrame title="With Muted Background">
       <Empty className="bg-muted">
         <EmptyHeader>
           <EmptyTitle>No results found</EmptyTitle>
@@ -89,13 +89,13 @@ function EmptyWithMutedBackground() {
           </Button>
         </EmptyContent>
       </Empty>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function EmptyWithBorder() {
   return (
-    <Frame title="With Border">
+    <CanvaFrame title="With Border">
       <Empty className="border">
         <EmptyHeader>
           <EmptyTitle>404 - Not Found</EmptyTitle>
@@ -123,13 +123,13 @@ function EmptyWithBorder() {
           </EmptyDescription>
         </EmptyContent>
       </Empty>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function EmptyWithIcon() {
   return (
-    <Frame title="With Icon">
+    <CanvaFrame title="With Icon">
       <Empty className="border">
         <EmptyHeader>
           <EmptyMedia variant="icon">
@@ -157,13 +157,13 @@ function EmptyWithIcon() {
           </Button>
         </EmptyContent>
       </Empty>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function EmptyWithMutedBackgroundAlt() {
   return (
-    <Frame title="With Muted Background Alt">
+    <CanvaFrame title="With Muted Background Alt">
       <Empty className="bg-muted/50">
         <EmptyHeader>
           <EmptyTitle>404 - Not Found</EmptyTitle>
@@ -191,13 +191,13 @@ function EmptyWithMutedBackgroundAlt() {
           </EmptyDescription>
         </EmptyContent>
       </Empty>
-    </Frame>
+    </CanvaFrame>
   )
 }
 
 function EmptyInCard() {
   return (
-    <Frame title="In Card">
+    <CanvaFrame title="In Card">
       <Empty>
         <EmptyHeader>
           <EmptyMedia variant="icon">
@@ -232,6 +232,6 @@ function EmptyInCard() {
           </Button>
         </EmptyContent>
       </Empty>
-    </Frame>
+    </CanvaFrame>
   )
 }
