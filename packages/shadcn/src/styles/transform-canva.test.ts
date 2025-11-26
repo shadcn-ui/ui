@@ -2,7 +2,7 @@ import { Project, ScriptKind } from "ts-morph"
 import { describe, expect, it } from "vitest"
 
 import { type StyleMap } from "./create-style-map"
-import { transformCanvaFrame } from "./transform-canva"
+import { transformCanva } from "./transform-canva"
 
 async function applyTransform(source: string, styleMap: StyleMap) {
   const project = new Project({
@@ -14,7 +14,7 @@ async function applyTransform(source: string, styleMap: StyleMap) {
     overwrite: true,
   })
 
-  await transformCanvaFrame({ sourceFile, styleMap })
+  await transformCanva({ sourceFile, styleMap })
 
   return sourceFile.getText()
 }
@@ -40,7 +40,7 @@ function Test() {
 
       function Test() {
         return (
-          <div className="bg-background border flex overflow-hidden rounded-xl p-8"><div>Content</div></div>
+          <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4"><div>Content</div></div>
         )
       }
       "
@@ -67,7 +67,7 @@ function Test() {
 
       function Test() {
         return (
-          <div className="bg-background border flex overflow-hidden rounded-xl p-8" id="test" data-state="open"><div>Content</div></div>
+          <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4" id="test" data-state="open"><div>Content</div></div>
         )
       }
       "
@@ -94,7 +94,7 @@ function Test() {
 
       function Test() {
         return (
-          <div className="bg-background border flex overflow-hidden rounded-xl p-8"><div>Content</div></div>
+          <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4"><div>Content</div></div>
         )
       }
       "
@@ -121,7 +121,7 @@ function Test() {
 
       function Test() {
         return (
-          <div className="bg-background border flex overflow-hidden rounded-xl p-8" {...props}><div>Content</div></div>
+          <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4" {...props}><div>Content</div></div>
         )
       }
       "
@@ -148,7 +148,7 @@ function Test() {
 
       function Test() {
         return (
-          <div className="bg-background border flex overflow-hidden rounded-xl p-8"><div>Content</div></div>
+          <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4"><div>Content</div></div>
         )
       }
       "
@@ -176,7 +176,7 @@ function Test() {
 
       function Test() {
         return (
-          <div className="bg-background border flex overflow-hidden rounded-xl p-8"><div>Content</div></div>
+          <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4"><div>Content</div></div>
         )
       }
       "
@@ -209,8 +209,8 @@ function Test() {
       function Test() {
         return (
           <div>
-            <div className="bg-background border flex overflow-hidden rounded-xl p-8"><div>First</div></div>
-            <div className="bg-background border flex overflow-hidden rounded-xl p-8"><div>Second</div></div>
+            <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4"><div>First</div></div>
+            <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4"><div>Second</div></div>
           </div>
         )
       }
@@ -244,7 +244,7 @@ function Test() {
 
       function Test() {
         return (
-          <div className="bg-background border flex overflow-hidden rounded-xl p-8"><div className="header">
+          <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4"><div className="header">
                     <h1>Title</h1>
                     <p>Description</p>
                   </div>
@@ -276,7 +276,7 @@ function Test() {
 
       function Test() {
         return (
-          <div className="bg-background border flex overflow-hidden rounded-xl p-8"></div>
+          <div className="bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4"></div>
         )
       }
       "
