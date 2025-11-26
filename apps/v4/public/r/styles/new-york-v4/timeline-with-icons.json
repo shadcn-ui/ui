@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-with-icons",
+  "type": "registry:example",
+  "registryDependencies": [
+    "timeline"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/timeline-with-icons.tsx",
+      "content": "import { Check, Circle, Package, Truck } from \"lucide-react\"\n\nimport {\n  Timeline,\n  TimelineConnector,\n  TimelineContent,\n  TimelineDescription,\n  TimelineHeader,\n  TimelineIcon,\n  TimelineItem,\n  TimelineTime,\n  TimelineTitle,\n} from \"@/registry/new-york-v4/ui/timeline\"\n\nexport default function TimelineWithIcons() {\n  return (\n    <Timeline>\n      <TimelineItem status=\"completed\">\n        <TimelineConnector status=\"completed\" />\n        <TimelineHeader>\n          <TimelineIcon variant=\"primary\">\n            <Check />\n          </TimelineIcon>\n          <TimelineTitle>Order confirmed</TimelineTitle>\n        </TimelineHeader>\n        <TimelineContent>\n          <TimelineDescription>\n            Your order and payment have been received.\n          </TimelineDescription>\n          <TimelineTime>2 days ago</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem status=\"completed\">\n        <TimelineConnector status=\"completed\" />\n        <TimelineHeader>\n          <TimelineIcon variant=\"primary\">\n            <Package />\n          </TimelineIcon>\n          <TimelineTitle>Packed</TimelineTitle>\n        </TimelineHeader>\n        <TimelineContent>\n          <TimelineDescription>\n            Your items have been packed and labeled.\n          </TimelineDescription>\n          <TimelineTime>1 day ago</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem status=\"current\">\n        <TimelineConnector status=\"current\" />\n        <TimelineHeader>\n          <TimelineIcon variant=\"primary\">\n            <Truck />\n          </TimelineIcon>\n          <TimelineTitle>In transit</TimelineTitle>\n        </TimelineHeader>\n        <TimelineContent>\n          <TimelineDescription>\n            Your package is on its way to you.\n          </TimelineDescription>\n          <TimelineTime>Now</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem status=\"upcoming\">\n        <TimelineHeader>\n          <TimelineIcon variant=\"outline\">\n            <Circle />\n          </TimelineIcon>\n          <TimelineTitle>Delivered</TimelineTitle>\n        </TimelineHeader>\n        <TimelineContent>\n          <TimelineDescription>\n            Estimated delivery tomorrow.\n          </TimelineDescription>\n        </TimelineContent>\n      </TimelineItem>\n    </Timeline>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
