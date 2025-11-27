@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clone-repo",
+  "title": "Clone Repo",
+  "files": [
+    {
+      "path": "registry/radix-vega/blocks/clone-repo.tsx",
+      "content": "export default function CloneRepo() {\n  return (\n    <div>\n      <h1>Clone Repo</h1>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

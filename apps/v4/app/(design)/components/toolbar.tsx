@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { IconArrowLeft } from "@tabler/icons-react"
 import { RegistryItem } from "shadcn/schema"
 
 import { siteConfig } from "@/lib/config"
@@ -15,7 +14,7 @@ import { PreviewControls } from "@/app/(design)/components/preview-controls"
 export function Toolbar({
   items,
 }: {
-  items: Pick<RegistryItem, "name" | "title">[]
+  items: Pick<RegistryItem, "name" | "title" | "type">[]
 }) {
   return (
     <div className="z-10 flex h-14 shrink-0 items-center justify-between gap-4 px-6 **:data-[slot=separator]:!h-4">

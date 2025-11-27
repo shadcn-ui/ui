@@ -5,10 +5,20 @@ export const blocks: Registry["items"] = [
     name: "cover",
     title: "Cover",
     type: "registry:block",
-    registryDependencies: ["example"],
     files: [
       {
         path: "blocks/cover.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "github",
+    title: "GitHub",
+    type: "registry:block",
+    files: [
+      {
+        path: "blocks/github.tsx",
         type: "registry:block",
       },
     ],

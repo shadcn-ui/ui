@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "github",
+  "title": "GitHub",
+  "files": [
+    {
+      "path": "registry/radix-vega/blocks/github.tsx",
+      "content": "import {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/bases/radix/components/example\"\nimport { Card, CardHeader, CardTitle } from \"@/registry/bases/radix/ui/card\"\n\nexport default function GithubBlock() {\n  return (\n    <ExampleWrapper>\n      <CodeCard />\n    </ExampleWrapper>\n  )\n}\n\nfunction CodeCard() {\n  return (\n    <Example title=\"Code Card\">\n      <Card>\n        <CardHeader>\n          <CardTitle>Code Card</CardTitle>\n        </CardHeader>\n      </Card>\n    </Example>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

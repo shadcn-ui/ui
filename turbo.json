@@ -55,6 +55,9 @@
     "registry:build": {
       "cache": false,
       "outputs": []
+    },
+    "registry": {
+      "outputs": []
     }
   }
 }

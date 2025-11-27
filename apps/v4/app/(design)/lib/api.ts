@@ -1,6 +1,6 @@
 import "server-only"
 
-import { registryItemSchema } from "shadcn/schema"
+import { RegistryItem, registryItemSchema } from "shadcn/schema"
 
 import { Base } from "@/registry/bases"
 import { ALLOWED_ITEM_TYPES } from "@/app/(design)/lib/constants"
@@ -38,4 +38,16 @@ export async function getBaseComponent(name: string, base: Base["name"]) {
   }
 
   return index[name].component
+}
+
+export function groupItemsByType(
+  items: Pick<RegistryItem, "name" | "title" | "type">[]
+) {
+  return items.reduce(
+    (acc, item) => {
+      acc[item.type] = [...(acc[item.type] || []), item]
+      return acc
+    },
+    {} as Record<string, RegistryItem[]>
+  )
 }

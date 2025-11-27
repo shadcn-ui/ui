@@ -89,6 +89,7 @@ export default async function NewPage({
     .map((item) => ({
       name: item.name,
       title: item.title,
+      type: item.type,
     }))
 
   return (

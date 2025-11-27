@@ -2,9 +2,6 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "cover",
   "title": "Cover",
-  "registryDependencies": [
-    "example"
-  ],
   "files": [
     {
       "path": "registry/radix-vega/blocks/cover.tsx",

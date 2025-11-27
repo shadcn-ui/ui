@@ -1631,12 +1631,20 @@
     {
       "name": "cover",
       "title": "Cover",
-      "registryDependencies": [
-        "example"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/blocks/cover.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "github",
+      "title": "GitHub",
+      "files": [
+        {
+          "path": "registry/radix-vega/blocks/github.tsx",
           "type": "registry:block"
         }
       ],

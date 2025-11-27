@@ -18,19 +18,30 @@ import {
   CustomizerPickerItem,
 } from "@/app/(design)/components/customizer"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
+import { groupItemsByType } from "@/app/(design)/lib/utils"
 
 export const CMD_K_FORWARD_TYPE = "cmd-k-forward"
+
+const cachedGroupedItems = React.cache(
+  (items: Pick<RegistryItem, "name" | "title" | "type">[]) => {
+    return groupItemsByType(items)
+  }
+)
 
 export function ItemPicker({
   items,
 }: {
-  items: Pick<RegistryItem, "name" | "title">[]
+  items: Pick<RegistryItem, "name" | "title" | "type">[]
 }) {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     history: "push",
     shallow: true,
   })
+
+  console.log(items)
+
+  const groupedItems = React.useMemo(() => cachedGroupedItems(items), [items])
 
   const currentItem = React.useMemo(
     () => items.find((item) => item.name === params.item) ?? null,
@@ -79,18 +90,20 @@ export function ItemPicker({
           open={open}
           showSearch
         >
-          <CustomizerPickerGroup className="pb-px">
-            {items.map((item) => (
-              <CustomizerPickerItem
-                key={item.name}
-                value={item.title ?? item.name}
-                onSelect={() => handleSelect(item.name)}
-                isActive={item.name === currentItem?.name}
-              >
-                {item.title}
-              </CustomizerPickerItem>
-            ))}
-          </CustomizerPickerGroup>
+          {groupedItems.map((group) => (
+            <CustomizerPickerGroup key={group.type} heading={group.title}>
+              {group.items.map((item) => (
+                <CustomizerPickerItem
+                  key={item.name}
+                  value={item.title ?? item.name}
+                  onSelect={() => handleSelect(item.name)}
+                  isActive={item.name === currentItem?.name}
+                >
+                  {item.title}
+                </CustomizerPickerItem>
+              ))}
+            </CustomizerPickerGroup>
+          ))}
         </CustomizerPicker>
       </PopoverContent>
       <div

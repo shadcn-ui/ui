@@ -12,7 +12,7 @@ import { ItemExplorer } from "@/app/(design)/components/item-explorer"
 export function Panel({
   items,
 }: {
-  items: Pick<RegistryItem, "name" | "title">[]
+  items: Pick<RegistryItem, "name" | "title" | "type">[]
 }) {
   return (
     <Tabs
