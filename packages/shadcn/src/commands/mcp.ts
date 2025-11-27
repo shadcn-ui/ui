@@ -82,12 +82,26 @@ export const mcp = new Command()
   )
   .action(async (options) => {
     try {
+      console.error("[MCP Debug]: Starting MCP server...")
       await loadEnvFiles(options.cwd)
+      console.error("[MCP Debug]: Environment files loaded")
+      
       const transport = new StdioServerTransport()
+      console.error("[MCP Debug]: Transport created, connecting server...")
+      
       await server.connect(transport)
+      console.error("[MCP Debug]: Server connected successfully")
     } catch (error) {
+      console.error("[MCP Error]: Failed to start MCP server:", error)
+      process.stderr.write(
+        `[MCP Error]: Failed to start MCP server: ${error instanceof Error ? error.message : String(error)}\n`
+      )
+      if (error instanceof Error && error.stack) {
+        process.stderr.write(`[MCP Error Stack]: ${error.stack}\n`)
+      }
       logger.break()
       handleError(error)
+      process.exit(1)
     }
   })
 
