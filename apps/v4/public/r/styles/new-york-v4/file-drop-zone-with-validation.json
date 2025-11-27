@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-drop-zone-with-validation",
+  "type": "registry:example",
+  "registryDependencies": [
+    "file-drop-zone"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/file-drop-zone-with-validation.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport {\n  FileDropZone,\n  FileDropZoneArea,\n  FileDropZoneContent,\n  FileDropZoneError,\n  FileDropZoneList,\n  type FileWithMeta,\n} from \"@/registry/new-york-v4/ui/file-drop-zone\"\n\nexport default function FileDropZoneWithValidation() {\n  const [files, setFiles] = React.useState<FileWithMeta[]>([])\n\n  const errors = React.useMemo(() => {\n    return files\n      .filter((f) => f.status === \"error\" && f.error)\n      .map((f) => ({ message: `${f.file.name}: ${f.error}` }))\n  }, [files])\n\n  const hasErrors = errors.length > 0\n\n  return (\n    <FileDropZone\n      files={files}\n      onFilesChange={setFiles}\n      maxFiles={3}\n      maxSize={1 * 1024 * 1024}\n      accept=\"image/png,image/jpeg\"\n      aria-invalid={hasErrors}\n      className=\"w-full max-w-md\"\n    >\n      <FileDropZoneArea>\n        <FileDropZoneContent />\n      </FileDropZoneArea>\n      <FileDropZoneList />\n      <FileDropZoneError errors={errors} />\n    </FileDropZone>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

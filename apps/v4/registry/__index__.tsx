@@ -385,6 +385,24 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "file-drop-zone": {
+      name: "file-drop-zone",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["progress"],
+      files: [{
+        path: "registry/new-york-v4/ui/file-drop-zone.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/file-drop-zone.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "field": {
       name: "field",
       description: "",
@@ -5167,6 +5185,78 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/new-york-v4/examples/empty-background.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "file-drop-zone-demo": {
+      name: "file-drop-zone-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["file-drop-zone"],
+      files: [{
+        path: "registry/new-york-v4/examples/file-drop-zone-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/file-drop-zone-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "file-drop-zone-single": {
+      name: "file-drop-zone-single",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["file-drop-zone"],
+      files: [{
+        path: "registry/new-york-v4/examples/file-drop-zone-single.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/file-drop-zone-single.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "file-drop-zone-disabled": {
+      name: "file-drop-zone-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["file-drop-zone"],
+      files: [{
+        path: "registry/new-york-v4/examples/file-drop-zone-disabled.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/file-drop-zone-disabled.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "file-drop-zone-with-validation": {
+      name: "file-drop-zone-with-validation",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["file-drop-zone"],
+      files: [{
+        path: "registry/new-york-v4/examples/file-drop-zone-with-validation.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/file-drop-zone-with-validation.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
