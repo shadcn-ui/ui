@@ -2,7 +2,10 @@
 
 import * as React from "react"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
 import {
@@ -62,21 +65,19 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function DialogExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <DialogWithForm />
-        <DialogScrollableContent />
-        <DialogWithStickyFooter />
-        <DialogNoCloseButton />
-        <DialogChatSettings />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <DialogWithForm />
+      <DialogScrollableContent />
+      <DialogWithStickyFooter />
+      <DialogNoCloseButton />
+      <DialogChatSettings />
+    </ExampleWrapper>
   )
 }
 
 function DialogWithForm() {
   return (
-    <CanvaFrame title="With Form">
+    <Example title="With Form">
       <Dialog>
         <form>
           <DialogTrigger asChild>
@@ -113,13 +114,13 @@ function DialogWithForm() {
           </DialogContent>
         </form>
       </Dialog>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function DialogScrollableContent() {
   return (
-    <CanvaFrame title="Scrollable Content">
+    <Example title="Scrollable Content">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Scrollable Content</Button>
@@ -149,13 +150,13 @@ function DialogScrollableContent() {
           </div>
         </DialogContent>
       </Dialog>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function DialogWithStickyFooter() {
   return (
-    <CanvaFrame title="With Sticky Footer">
+    <Example title="With Sticky Footer">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Sticky Footer</Button>
@@ -190,13 +191,13 @@ function DialogWithStickyFooter() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function DialogNoCloseButton() {
   return (
-    <CanvaFrame title="No Close Button">
+    <Example title="No Close Button">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">No Close Button</Button>
@@ -216,7 +217,7 @@ function DialogNoCloseButton() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -259,7 +260,7 @@ function DialogChatSettings() {
   const [voice, setVoice] = React.useState("samantha")
 
   return (
-    <CanvaFrame title="Chat Settings">
+    <Example title="Chat Settings">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Chat Settings</Button>
@@ -564,6 +565,6 @@ function DialogChatSettings() {
           </div>
         </DialogContent>
       </Dialog>
-    </CanvaFrame>
+    </Example>
   )
 }

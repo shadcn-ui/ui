@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
 import { Field } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
@@ -7,57 +10,55 @@ import { Textarea } from "@/registry/bases/radix/ui/textarea"
 
 export default function LabelExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <LabelWithInput />
-        <LabelDisabled />
-        <LabelWithCheckbox />
-        <LabelWithTextarea />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <LabelWithCheckbox />
+      <LabelWithInput />
+      <LabelDisabled />
+      <LabelWithTextarea />
+    </ExampleWrapper>
   )
 }
 
 function LabelWithCheckbox() {
   return (
-    <CanvaFrame title="With Checkbox">
+    <Example title="With Checkbox">
       <div className="flex items-center gap-3">
         <Checkbox id="label-demo-terms" />
         <Label htmlFor="label-demo-terms">Accept terms and conditions</Label>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function LabelWithInput() {
   return (
-    <CanvaFrame title="With Input">
+    <Example title="With Input">
       <Field>
         <Label htmlFor="label-demo-username">Username</Label>
         <Input id="label-demo-username" placeholder="Username" />
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function LabelDisabled() {
   return (
-    <CanvaFrame title="Disabled">
+    <Example title="Disabled">
       <Field data-disabled={true}>
         <Label htmlFor="label-demo-disabled">Disabled</Label>
         <Input id="label-demo-disabled" placeholder="Disabled" disabled />
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function LabelWithTextarea() {
   return (
-    <CanvaFrame title="With Textarea">
+    <Example title="With Textarea">
       <Field>
         <Label htmlFor="label-demo-message">Message</Label>
         <Textarea id="label-demo-message" placeholder="Message" />
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }

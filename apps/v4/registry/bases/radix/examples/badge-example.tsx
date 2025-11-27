@@ -1,27 +1,28 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Badge } from "@/registry/bases/radix/ui/badge"
 import { Spinner } from "@/registry/bases/radix/ui/spinner"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function BadgeDemo() {
+export default function BadgeExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <BadgeVariants />
-        <BadgeWithIconLeft />
-        <BadgeWithIconRight />
-        <BadgeWithSpinner />
-        <BadgeAsLink />
-        <BadgeLongText />
-        <BadgeCustomColors />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <BadgeVariants />
+      <BadgeWithIconLeft />
+      <BadgeWithIconRight />
+      <BadgeWithSpinner />
+      <BadgeAsLink />
+      <BadgeLongText />
+      <BadgeCustomColors />
+    </ExampleWrapper>
   )
 }
 
 function BadgeVariants() {
   return (
-    <CanvaFrame title="Variants">
+    <Example title="Variants">
       <div className="flex flex-wrap gap-2">
         <Badge>Default</Badge>
         <Badge variant="secondary">Secondary</Badge>
@@ -30,13 +31,13 @@ function BadgeVariants() {
         <Badge variant="ghost">Ghost</Badge>
         <Badge variant="link">Link</Badge>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function BadgeWithIconLeft() {
   return (
-    <CanvaFrame title="Icon Left">
+    <Example title="Icon Left" className="max-w-fit">
       <div className="flex flex-wrap gap-2">
         <Badge>
           <IconPlaceholder
@@ -87,13 +88,13 @@ function BadgeWithIconLeft() {
           Link
         </Badge>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function BadgeWithIconRight() {
   return (
-    <CanvaFrame title="Icon Right">
+    <Example title="Icon Right" className="max-w-fit">
       <div className="flex flex-wrap gap-2">
         <Badge>
           Default
@@ -144,13 +145,13 @@ function BadgeWithIconRight() {
           />
         </Badge>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function BadgeWithSpinner() {
   return (
-    <CanvaFrame title="With Spinner">
+    <Example title="With Spinner" className="max-w-fit">
       <div className="flex flex-wrap gap-2">
         <Badge>
           <Spinner />
@@ -177,13 +178,13 @@ function BadgeWithSpinner() {
           Link
         </Badge>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function BadgeAsLink() {
   return (
-    <CanvaFrame title="asChild">
+    <Example title="asChild">
       <div className="flex flex-wrap gap-2">
         <Badge asChild>
           <a href="#">
@@ -246,25 +247,25 @@ function BadgeAsLink() {
           </a>
         </Badge>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function BadgeLongText() {
   return (
-    <CanvaFrame title="Long Text">
+    <Example title="Long Text">
       <div className="flex flex-wrap gap-2">
         <Badge variant="secondary">
           A badge with a lot of text to see how it wraps
         </Badge>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function BadgeCustomColors() {
   return (
-    <CanvaFrame title="Custom Colors">
+    <Example title="Custom Colors" className="max-w-fit">
       <div className="flex flex-wrap gap-2">
         <Badge className="bg-blue-600 text-blue-50 dark:bg-blue-600 dark:text-blue-50">
           Blue
@@ -294,6 +295,6 @@ function BadgeCustomColors() {
           Red
         </Badge>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }

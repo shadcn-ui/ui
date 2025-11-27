@@ -63,7 +63,7 @@ export function ItemPicker({
         <Button
           size="sm"
           variant="outline"
-          className="w-full max-w-[500px] justify-start rounded-lg shadow-none"
+          className="w-full max-w-xs justify-start rounded-lg shadow-none"
         >
           <IconSearch className="text-muted-foreground" />
           {currentItem?.title}

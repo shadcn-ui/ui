@@ -2,7 +2,10 @@
 
 import * as React from "react"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
 import {
   Field,
@@ -21,36 +24,34 @@ import {
   TableRow,
 } from "@/registry/bases/radix/ui/table"
 
-export default function CheckboxDemo() {
+export default function CheckboxExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <CheckboxBasic />
-        <CheckboxWithDescription />
-        <CheckboxInvalid />
-        <CheckboxDisabled />
-        <CheckboxWithTitle />
-        <CheckboxInTable />
-        <CheckboxGroup />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <CheckboxBasic />
+      <CheckboxWithDescription />
+      <CheckboxInvalid />
+      <CheckboxDisabled />
+      <CheckboxWithTitle />
+      <CheckboxInTable />
+      <CheckboxGroup />
+    </ExampleWrapper>
   )
 }
 
 function CheckboxBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Field orientation="horizontal">
         <Checkbox id="terms" />
         <FieldLabel htmlFor="terms">Accept terms and conditions</FieldLabel>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CheckboxWithDescription() {
   return (
-    <CanvaFrame title="With Description">
+    <Example title="With Description">
       <Field orientation="horizontal">
         <Checkbox id="terms-2" defaultChecked />
         <FieldContent>
@@ -60,35 +61,35 @@ function CheckboxWithDescription() {
           </FieldDescription>
         </FieldContent>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CheckboxInvalid() {
   return (
-    <CanvaFrame title="Invalid">
+    <Example title="Invalid">
       <Field orientation="horizontal" data-invalid>
         <Checkbox id="terms-3" aria-invalid />
         <FieldLabel htmlFor="terms-3">Accept terms and conditions</FieldLabel>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CheckboxDisabled() {
   return (
-    <CanvaFrame title="Disabled">
+    <Example title="Disabled">
       <Field orientation="horizontal">
         <Checkbox id="toggle" disabled />
         <FieldLabel htmlFor="toggle">Enable notifications</FieldLabel>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CheckboxWithTitle() {
   return (
-    <CanvaFrame title="With Title">
+    <Example title="With Title">
       <FieldGroup>
         <FieldLabel htmlFor="toggle-2">
           <Field orientation="horizontal">
@@ -113,7 +114,7 @@ function CheckboxWithTitle() {
           </Field>
         </FieldLabel>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -170,7 +171,7 @@ function CheckboxInTable() {
   }
 
   return (
-    <CanvaFrame title="In Table">
+    <Example title="In Table">
       <Table>
         <TableHeader>
           <TableRow>
@@ -208,13 +209,13 @@ function CheckboxInTable() {
           ))}
         </TableBody>
       </Table>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CheckboxGroup() {
   return (
-    <CanvaFrame title="Group">
+    <Example title="Group">
       <Field>
         <FieldLabel>Show these items on the desktop:</FieldLabel>
         <Field orientation="horizontal">
@@ -254,6 +255,6 @@ function CheckboxGroup() {
           </FieldLabel>
         </Field>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }

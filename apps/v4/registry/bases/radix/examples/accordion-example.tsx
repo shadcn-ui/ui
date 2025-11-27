@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Accordion,
   AccordionContent,
@@ -15,23 +18,21 @@ import {
 } from "@/registry/bases/radix/ui/card"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function AccordionDemo() {
+export default function AccordionExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <AccordionBasic />
-        <AccordionMultiple />
-        <AccordionWithBorders />
-        <AccordionInCard />
-        <AccordionWithDisabled />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <AccordionBasic />
+      <AccordionMultiple />
+      <AccordionWithBorders />
+      <AccordionInCard />
+      <AccordionWithDisabled />
+    </ExampleWrapper>
   )
 }
 
 function AccordionBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -54,13 +55,13 @@ function AccordionBasic() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AccordionMultiple() {
   return (
-    <CanvaFrame title="Multiple">
+    <Example title="Multiple">
       <Accordion type="multiple">
         <AccordionItem value="item-1">
           <AccordionTrigger>
@@ -98,13 +99,13 @@ function AccordionMultiple() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AccordionWithBorders() {
   return (
-    <CanvaFrame title="With Borders">
+    <Example title="With Borders">
       <Accordion type="single" collapsible className="gap-4">
         <AccordionItem value="billing" className="rounded-lg border">
           <AccordionTrigger className="px-4 text-base font-medium">
@@ -146,13 +147,13 @@ function AccordionWithBorders() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AccordionInCard() {
   return (
-    <CanvaFrame title="In Card">
+    <Example title="In Card">
       <Card className="gap-4">
         <CardHeader>
           <CardTitle>Subscription & Billing</CardTitle>
@@ -261,13 +262,13 @@ function AccordionInCard() {
           </Accordion>
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AccordionWithDisabled() {
   return (
-    <CanvaFrame title="With Disabled">
+    <Example title="With Disabled">
       <Accordion
         type="single"
         collapsible
@@ -289,7 +290,7 @@ function AccordionWithDisabled() {
         <AccordionItem
           value="item-2"
           disabled
-          className="data-[state=open]:bg-muted/50"
+          className="data-[state=open]:bg-muted/50 p-1"
         >
           <AccordionTrigger className="px-4">
             Premium feature information
@@ -299,7 +300,10 @@ function AccordionWithDisabled() {
             your plan to access this content.
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-3" className="data-[state=open]:bg-muted/50">
+        <AccordionItem
+          value="item-3"
+          className="data-[state=open]:bg-muted/50 p-1"
+        >
           <AccordionTrigger className="px-4">
             How do I update my email address?
           </AccordionTrigger>
@@ -310,6 +314,6 @@ function AccordionWithDisabled() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </CanvaFrame>
+    </Example>
   )
 }

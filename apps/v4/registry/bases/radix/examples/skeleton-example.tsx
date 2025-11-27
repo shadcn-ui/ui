@@ -1,24 +1,25 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Card, CardContent, CardHeader } from "@/registry/bases/radix/ui/card"
 import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
 
 export default function SkeletonExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <SkeletonAvatar />
-        <SkeletonCard />
-        <SkeletonText />
-        <SkeletonForm />
-        <SkeletonTable />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <SkeletonAvatar />
+      <SkeletonCard />
+      <SkeletonText />
+      <SkeletonForm />
+      <SkeletonTable />
+    </ExampleWrapper>
   )
 }
 
 function SkeletonAvatar() {
   return (
-    <CanvaFrame title="Avatar">
+    <Example title="Avatar">
       <div className="flex w-full items-center gap-4">
         <Skeleton className="size-10 shrink-0 rounded-full" />
         <div className="grid gap-2">
@@ -26,13 +27,13 @@ function SkeletonAvatar() {
           <Skeleton className="h-4 w-[100px]" />
         </div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SkeletonCard() {
   return (
-    <CanvaFrame title="Card">
+    <Example title="Card">
       <Card className="w-full">
         <CardHeader>
           <Skeleton className="h-4 w-2/3" />
@@ -42,25 +43,25 @@ function SkeletonCard() {
           <Skeleton className="aspect-square w-full" />
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SkeletonText() {
   return (
-    <CanvaFrame title="Text">
+    <Example title="Text">
       <div className="flex w-full flex-col gap-2">
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-3/4" />
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SkeletonForm() {
   return (
-    <CanvaFrame title="Form">
+    <Example title="Form">
       <div className="flex w-full flex-col gap-7">
         <div className="flex flex-col gap-3">
           <Skeleton className="h-4 w-20" />
@@ -72,13 +73,13 @@ function SkeletonForm() {
         </div>
         <Skeleton className="h-9 w-24" />
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SkeletonTable() {
   return (
-    <CanvaFrame title="Table">
+    <Example title="Table">
       <div className="flex w-full flex-col gap-2">
         <div className="flex gap-4">
           <Skeleton className="h-4 flex-1" />
@@ -96,6 +97,6 @@ function SkeletonTable() {
           <Skeleton className="h-4 w-20" />
         </div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }

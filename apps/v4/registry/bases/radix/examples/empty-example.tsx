@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Empty,
@@ -16,24 +19,22 @@ import {
 import { Kbd } from "@/registry/bases/radix/ui/kbd"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function EmptyDemo() {
+export default function EmptyExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <EmptyBasic />
-        <EmptyWithMutedBackground />
-        <EmptyWithBorder />
-        <EmptyWithMutedBackgroundAlt />
-        <EmptyWithIcon />
-        <EmptyInCard />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <EmptyBasic />
+      <EmptyWithMutedBackground />
+      <EmptyWithBorder />
+      <EmptyWithIcon />
+      <EmptyWithMutedBackgroundAlt />
+      <EmptyInCard />
+    </ExampleWrapper>
   )
 }
 
 function EmptyBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Empty>
         <EmptyHeader>
           <EmptyTitle>No projects yet</EmptyTitle>
@@ -61,13 +62,13 @@ function EmptyBasic() {
           </Button>
         </EmptyContent>
       </Empty>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function EmptyWithMutedBackground() {
   return (
-    <CanvaFrame title="With Muted Background">
+    <Example title="With Muted Background">
       <Empty className="bg-muted">
         <EmptyHeader>
           <EmptyTitle>No results found</EmptyTitle>
@@ -89,13 +90,13 @@ function EmptyWithMutedBackground() {
           </Button>
         </EmptyContent>
       </Empty>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function EmptyWithBorder() {
   return (
-    <CanvaFrame title="With Border">
+    <Example title="With Border">
       <Empty className="border">
         <EmptyHeader>
           <EmptyTitle>404 - Not Found</EmptyTitle>
@@ -123,13 +124,13 @@ function EmptyWithBorder() {
           </EmptyDescription>
         </EmptyContent>
       </Empty>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function EmptyWithIcon() {
   return (
-    <CanvaFrame title="With Icon">
+    <Example title="With Icon">
       <Empty className="border">
         <EmptyHeader>
           <EmptyMedia variant="icon">
@@ -157,13 +158,13 @@ function EmptyWithIcon() {
           </Button>
         </EmptyContent>
       </Empty>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function EmptyWithMutedBackgroundAlt() {
   return (
-    <CanvaFrame title="With Muted Background Alt">
+    <Example title="With Muted Background Alt">
       <Empty className="bg-muted/50">
         <EmptyHeader>
           <EmptyTitle>404 - Not Found</EmptyTitle>
@@ -191,13 +192,13 @@ function EmptyWithMutedBackgroundAlt() {
           </EmptyDescription>
         </EmptyContent>
       </Empty>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function EmptyInCard() {
   return (
-    <CanvaFrame title="In Card">
+    <Example title="In Card">
       <Empty>
         <EmptyHeader>
           <EmptyMedia variant="icon">
@@ -232,6 +233,6 @@ function EmptyInCard() {
           </Button>
         </EmptyContent>
       </Empty>
-    </CanvaFrame>
+    </Example>
   )
 }

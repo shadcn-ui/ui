@@ -3,7 +3,7 @@
 import * as React from "react"
 import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/registry/bases/radix/lib/cn"
 import { Button, buttonVariants } from "@/registry/bases/radix/ui/button"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 

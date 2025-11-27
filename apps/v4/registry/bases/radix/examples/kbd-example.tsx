@@ -1,8 +1,8 @@
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
-
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
-import { ButtonGroup } from "@/registry/bases/radix/ui/button-group"
 import {
   InputGroup,
   InputGroupAddon,
@@ -18,73 +18,71 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function KbdExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <KbdBasic />
-        <KbdModifierKeys />
-        <KbdGroupExample />
-        <KbdArrowKeys />
-        <KbdWithIcons />
-        <KbdWithIconsAndText />
-        <KbdInInputGroup />
-        <KbdInTooltip />
-        <KbdWithSamp />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <KbdBasic />
+      <KbdModifierKeys />
+      <KbdGroupExample />
+      <KbdArrowKeys />
+      <KbdWithIcons />
+      <KbdWithIconsAndText />
+      <KbdInInputGroup />
+      <KbdInTooltip />
+      <KbdWithSamp />
+    </ExampleWrapper>
   )
 }
 
 function KbdBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <div className="flex items-center gap-2">
         <Kbd>Ctrl</Kbd>
         <Kbd>⌘K</Kbd>
         <Kbd>Ctrl + B</Kbd>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function KbdModifierKeys() {
   return (
-    <CanvaFrame title="Modifier Keys">
+    <Example title="Modifier Keys">
       <div className="flex items-center gap-2">
         <Kbd>⌘</Kbd>
         <Kbd>C</Kbd>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function KbdGroupExample() {
   return (
-    <CanvaFrame title="KbdGroup">
+    <Example title="KbdGroup">
       <KbdGroup>
         <Kbd>Ctrl</Kbd>
         <Kbd>Shift</Kbd>
         <Kbd>P</Kbd>
       </KbdGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function KbdArrowKeys() {
   return (
-    <CanvaFrame title="Arrow Keys">
+    <Example title="Arrow Keys">
       <div className="flex items-center gap-2">
         <Kbd>↑</Kbd>
         <Kbd>↓</Kbd>
         <Kbd>←</Kbd>
         <Kbd>→</Kbd>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function KbdWithIcons() {
   return (
-    <CanvaFrame title="With Icons">
+    <Example title="With Icons">
       <KbdGroup>
         <Kbd>
           <IconPlaceholder
@@ -94,22 +92,34 @@ function KbdWithIcons() {
           />
         </Kbd>
         <Kbd>
-          <IconArrowLeft />
+          <IconPlaceholder
+            lucide="ArrowLeftIcon"
+            tabler="IconArrowLeft"
+            hugeicons="ArrowLeft01Icon"
+          />
         </Kbd>
         <Kbd>
-          <IconArrowRight />
+          <IconPlaceholder
+            lucide="ArrowRightIcon"
+            tabler="IconArrowRight"
+            hugeicons="ArrowRight01Icon"
+          />
         </Kbd>
       </KbdGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function KbdWithIconsAndText() {
   return (
-    <CanvaFrame title="With Icons and Text">
+    <Example title="With Icons and Text">
       <KbdGroup>
         <Kbd>
-          <IconArrowLeft />
+          <IconPlaceholder
+            lucide="ArrowLeftIcon"
+            tabler="IconArrowLeft"
+            hugeicons="ArrowLeft01Icon"
+          />
           Left
         </Kbd>
         <Kbd>
@@ -121,26 +131,26 @@ function KbdWithIconsAndText() {
           Voice Enabled
         </Kbd>
       </KbdGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function KbdInInputGroup() {
   return (
-    <CanvaFrame title="InputGroup">
+    <Example title="InputGroup">
       <InputGroup>
         <InputGroupInput />
         <InputGroupAddon>
           <Kbd>Space</Kbd>
         </InputGroupAddon>
       </InputGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function KbdInTooltip() {
   return (
-    <CanvaFrame title="Tooltip">
+    <Example title="Tooltip">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button size="icon-sm" variant="outline">
@@ -157,16 +167,16 @@ function KbdInTooltip() {
           </div>
         </TooltipContent>
       </Tooltip>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function KbdWithSamp() {
   return (
-    <CanvaFrame title="With samp">
+    <Example title="With samp">
       <Kbd>
         <samp>File</samp>
       </Kbd>
-    </CanvaFrame>
+    </Example>
   )
 }

@@ -1,4 +1,3 @@
-import { transformCanva } from "@/src/styles/transform-canva"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 
 import { type StyleMap } from "./create-style-map"
@@ -13,7 +12,7 @@ export async function transformStyle(
   source: string,
   {
     styleMap,
-    transformers = [transformStyleMap, transformCanva],
+    transformers = [transformStyleMap],
   }: {
     styleMap: StyleMap
     transformers?: TransformerStyle<SourceFile>[]

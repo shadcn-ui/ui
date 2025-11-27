@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -19,23 +22,21 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function ContextMenuExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <ContextMenuBasic />
-        <ContextMenuWithIcons />
-        <ContextMenuWithShortcuts />
-        <ContextMenuWithSubmenu />
-        <ContextMenuWithGroups />
-        <ContextMenuWithCheckboxes />
-        <ContextMenuWithRadio />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <ContextMenuBasic />
+      <ContextMenuWithIcons />
+      <ContextMenuWithShortcuts />
+      <ContextMenuWithSubmenu />
+      <ContextMenuWithGroups />
+      <ContextMenuWithCheckboxes />
+      <ContextMenuWithRadio />
+    </ExampleWrapper>
   )
 }
 
 function ContextMenuBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <ContextMenu>
         <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
           Right click here
@@ -46,13 +47,13 @@ function ContextMenuBasic() {
           <ContextMenuItem>Reload</ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ContextMenuWithIcons() {
   return (
-    <CanvaFrame title="With Icons">
+    <Example title="With Icons">
       <ContextMenu>
         <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
           Right click here
@@ -93,13 +94,13 @@ function ContextMenuWithIcons() {
           </ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ContextMenuWithShortcuts() {
   return (
-    <CanvaFrame title="With Shortcuts">
+    <Example title="With Shortcuts">
       <ContextMenu>
         <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
           Right click here
@@ -128,13 +129,13 @@ function ContextMenuWithShortcuts() {
           </ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ContextMenuWithSubmenu() {
   return (
-    <CanvaFrame title="With Submenu">
+    <Example title="With Submenu">
       <ContextMenu>
         <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
           Right click here
@@ -162,13 +163,13 @@ function ContextMenuWithSubmenu() {
           </ContextMenuSub>
         </ContextMenuContent>
       </ContextMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ContextMenuWithGroups() {
   return (
-    <CanvaFrame title="With Groups, Labels & Separators">
+    <Example title="With Groups, Labels & Separators">
       <ContextMenu>
         <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
           Right click here
@@ -223,13 +224,13 @@ function ContextMenuWithGroups() {
           </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ContextMenuWithCheckboxes() {
   return (
-    <CanvaFrame title="With Checkboxes">
+    <Example title="With Checkboxes">
       <ContextMenu>
         <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
           Right click here
@@ -244,13 +245,13 @@ function ContextMenuWithCheckboxes() {
           </ContextMenuCheckboxItem>
         </ContextMenuContent>
       </ContextMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ContextMenuWithRadio() {
   return (
-    <CanvaFrame title="With Radio Group">
+    <Example title="With Radio Group">
       <ContextMenu>
         <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
           Right click here
@@ -272,6 +273,6 @@ function ContextMenuWithRadio() {
           </ContextMenuRadioGroup>
         </ContextMenuContent>
       </ContextMenu>
-    </CanvaFrame>
+    </Example>
   )
 }

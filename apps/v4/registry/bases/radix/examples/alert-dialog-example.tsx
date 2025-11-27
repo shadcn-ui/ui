@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,24 +17,22 @@ import {
 import { Button } from "@/registry/bases/radix/ui/button"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function AlertDialogDemo() {
+export default function AlertDialogExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <AlertDialogBasic />
-        <AlertDialogSmall />
-        <AlertDialogWithMedia />
-        <AlertDialogSmallWithMedia />
-        <AlertDialogDestructive />
-        <AlertDialogWithIconTrigger />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <AlertDialogBasic />
+      <AlertDialogSmall />
+      <AlertDialogWithMedia />
+      <AlertDialogSmallWithMedia />
+      <AlertDialogDestructive />
+      <AlertDialogWithIconTrigger />
+    </ExampleWrapper>
   )
 }
 
 function AlertDialogBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <Button variant="outline">Default</Button>
@@ -50,13 +51,13 @@ function AlertDialogBasic() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AlertDialogSmall() {
   return (
-    <CanvaFrame title="Small">
+    <Example title="Small">
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <Button variant="outline">Small</Button>
@@ -74,13 +75,13 @@ function AlertDialogSmall() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AlertDialogWithMedia() {
   return (
-    <CanvaFrame title="With Media">
+    <Example title="With Media">
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <Button variant="outline">Default (Media)</Button>
@@ -106,13 +107,13 @@ function AlertDialogWithMedia() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AlertDialogSmallWithMedia() {
   return (
-    <CanvaFrame title="Small With Media">
+    <Example title="Small With Media">
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <Button variant="outline">Small (Media)</Button>
@@ -137,13 +138,13 @@ function AlertDialogSmallWithMedia() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AlertDialogDestructive() {
   return (
-    <CanvaFrame title="Destructive">
+    <Example title="Destructive">
       <AlertDialog>
         <AlertDialogTrigger asChild>
           <Button variant="destructive">Delete Chat</Button>
@@ -172,16 +173,16 @@ function AlertDialogDestructive() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AlertDialogWithIconTrigger() {
   return (
-    <CanvaFrame title="With Icon Trigger">
+    <Example title="With Icon Trigger">
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="secondary">
+          <Button>
             <IconPlaceholder
               lucide="HeadphonesIcon"
               tabler="IconHeadphones"
@@ -207,6 +208,6 @@ function AlertDialogWithIconTrigger() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </CanvaFrame>
+    </Example>
   )
 }

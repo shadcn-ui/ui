@@ -3,7 +3,10 @@
 import { useState } from "react"
 import { REGEXP_ONLY_DIGITS } from "input-otp"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Badge } from "@/registry/bases/radix/ui/badge"
 import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
 import {
@@ -45,25 +48,23 @@ import { Textarea } from "@/registry/bases/radix/ui/textarea"
 
 export default function FieldExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12 **:data-[slot=frame-content]:p-6">
-        <InputFields />
-        <TextareaFields />
-        <SelectFields />
-        <CheckboxFields />
-        <RadioFields />
-        <SwitchFields />
-        <SliderFields />
-        <NativeSelectFields />
-        <InputOTPFields />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <InputFields />
+      <TextareaFields />
+      <SelectFields />
+      <CheckboxFields />
+      <RadioFields />
+      <SwitchFields />
+      <SliderFields />
+      <NativeSelectFields />
+      <InputOTPFields />
+    </ExampleWrapper>
   )
 }
 
 function InputFields() {
   return (
-    <CanvaFrame title="Input Fields">
+    <Example title="Input Fields">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="input-basic">Basic Input</FieldLabel>
@@ -131,13 +132,13 @@ function InputFields() {
           <FieldDescription>This field is currently disabled.</FieldDescription>
         </Field>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function TextareaFields() {
   return (
-    <CanvaFrame title="Textarea Fields">
+    <Example title="Textarea Fields">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="textarea-basic">Basic Textarea</FieldLabel>
@@ -193,13 +194,13 @@ function TextareaFields() {
           <FieldDescription>This field is currently disabled.</FieldDescription>
         </Field>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SelectFields() {
   return (
-    <CanvaFrame title="Select Fields">
+    <Example title="Select Fields">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="select-basic">Basic Select</FieldLabel>
@@ -279,13 +280,13 @@ function SelectFields() {
           <FieldDescription>This field is currently disabled.</FieldDescription>
         </Field>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function NativeSelectFields() {
   return (
-    <CanvaFrame title="Native Select Fields">
+    <Example title="Native Select Fields">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="native-select-basic">
@@ -374,13 +375,13 @@ function NativeSelectFields() {
           <FieldDescription>This field is currently disabled.</FieldDescription>
         </Field>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CheckboxFields() {
   return (
-    <CanvaFrame title="Checkbox Fields">
+    <Example title="Checkbox Fields">
       <FieldGroup>
         <Field orientation="horizontal">
           <Checkbox id="checkbox-basic" defaultChecked />
@@ -455,13 +456,13 @@ function CheckboxFields() {
           </FieldLabel>
         </Field>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function RadioFields() {
   return (
-    <CanvaFrame title="Radio Fields">
+    <Example title="Radio Fields">
       <FieldGroup>
         <FieldSet>
           <FieldLegend variant="label">Subscription Plan</FieldLegend>
@@ -607,13 +608,13 @@ function RadioFields() {
           </RadioGroup>
         </FieldSet>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SwitchFields() {
   return (
-    <CanvaFrame title="Switch Fields">
+    <Example title="Switch Fields">
       <FieldGroup>
         <Field orientation="horizontal">
           <FieldContent>
@@ -678,7 +679,7 @@ function SwitchFields() {
           <Switch id="switch-disabled-field" disabled />
         </Field>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -690,7 +691,7 @@ function SliderFields() {
   const [colorBalance, setColorBalance] = useState([10, 20, 70])
 
   return (
-    <CanvaFrame title="Slider Fields">
+    <Example title="Slider Fields">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="slider-volume">Volume</FieldLabel>
@@ -826,7 +827,7 @@ function SliderFields() {
           </FieldDescription>
         </Field>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -835,7 +836,7 @@ function InputOTPFields() {
   const [pinValue, setPinValue] = useState("")
 
   return (
-    <CanvaFrame title="OTP Input Fields">
+    <Example title="OTP Input Fields">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="otp-basic">Verification Code</FieldLabel>
@@ -945,6 +946,6 @@ function InputOTPFields() {
           </FieldDescription>
         </Field>
       </FieldGroup>
-    </CanvaFrame>
+    </Example>
   )
 }

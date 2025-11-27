@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
@@ -15,19 +18,17 @@ import {
 
 export default function SheetExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <SheetWithForm />
-        <SheetNoCloseButton />
-        <SheetWithSides />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <SheetWithForm />
+      <SheetNoCloseButton />
+      <SheetWithSides />
+    </ExampleWrapper>
   )
 }
 
 function SheetWithForm() {
   return (
-    <CanvaFrame title="With Form">
+    <Example title="With Form">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline">Open</Button>
@@ -60,13 +61,13 @@ function SheetWithForm() {
           </SheetFooter>
         </SheetContent>
       </Sheet>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SheetNoCloseButton() {
   return (
-    <CanvaFrame title="No Close Button">
+    <Example title="No Close Button">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline">No Close Button</Button>
@@ -86,7 +87,7 @@ function SheetNoCloseButton() {
           </SheetFooter>
         </SheetContent>
       </Sheet>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -94,7 +95,7 @@ const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 
 function SheetWithSides() {
   return (
-    <CanvaFrame title="Sides">
+    <Example title="Sides">
       <div className="flex flex-wrap gap-2">
         {SHEET_SIDES.map((side) => (
           <Sheet key={side}>
@@ -141,6 +142,6 @@ function SheetWithSides() {
           </Sheet>
         ))}
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }

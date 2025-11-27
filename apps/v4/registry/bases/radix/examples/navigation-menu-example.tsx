@@ -4,7 +4,10 @@ import * as React from "react"
 import Link from "next/link"
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -55,18 +58,16 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavigationMenuExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <NavigationMenuWithViewport />
-        <NavigationMenuWithoutViewport />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <NavigationMenuWithViewport />
+      <NavigationMenuWithoutViewport />
+    </ExampleWrapper>
   )
 }
 
 function NavigationMenuWithViewport() {
   return (
-    <CanvaFrame title="With Viewport">
+    <Example title="With Viewport">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -126,13 +127,13 @@ function NavigationMenuWithViewport() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function NavigationMenuWithoutViewport() {
   return (
-    <CanvaFrame title="Without Viewport">
+    <Example title="Without Viewport">
       <NavigationMenu viewport={false}>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -223,7 +224,7 @@ function NavigationMenuWithoutViewport() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 

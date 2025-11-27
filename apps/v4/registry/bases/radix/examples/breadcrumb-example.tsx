@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -15,20 +18,18 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
 
-export default function BreadcrumbDemo() {
+export default function BreadcrumbExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <BreadcrumbBasic />
-        <BreadcrumbWithDropdown />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <BreadcrumbBasic />
+      <BreadcrumbWithDropdown />
+    </ExampleWrapper>
   )
 }
 
 function BreadcrumbBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -44,13 +45,13 @@ function BreadcrumbBasic() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function BreadcrumbWithDropdown() {
   return (
-    <CanvaFrame title="With Dropdown">
+    <Example title="With Dropdown">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -80,6 +81,6 @@ function BreadcrumbWithDropdown() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-    </CanvaFrame>
+    </Example>
   )
 }

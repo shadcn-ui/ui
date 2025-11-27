@@ -2,7 +2,10 @@
 
 import * as React from "react"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Avatar,
   AvatarFallback,
@@ -30,24 +33,22 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function DropdownMenuExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <DropdownMenuBasic />
-        <DropdownMenuWithIcons />
-        <DropdownMenuWithShortcuts />
-        <DropdownMenuWithSubmenu />
-        <DropdownMenuWithCheckboxes />
-        <DropdownMenuWithRadio />
-        <DropdownMenuWithAvatar />
-        <DropdownMenuAvatarOnly />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <DropdownMenuBasic />
+      <DropdownMenuWithIcons />
+      <DropdownMenuWithShortcuts />
+      <DropdownMenuWithSubmenu />
+      <DropdownMenuWithCheckboxes />
+      <DropdownMenuWithRadio />
+      <DropdownMenuWithAvatar />
+      <DropdownMenuAvatarOnly />
+    </ExampleWrapper>
   )
 }
 
 function DropdownMenuBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -67,13 +68,13 @@ function DropdownMenuBasic() {
           <DropdownMenuItem disabled>API</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function DropdownMenuWithIcons() {
   return (
-    <CanvaFrame title="With Icons">
+    <Example title="With Icons">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -116,13 +117,13 @@ function DropdownMenuWithIcons() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function DropdownMenuWithShortcuts() {
   return (
-    <CanvaFrame title="With Shortcuts">
+    <Example title="With Shortcuts">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -156,13 +157,13 @@ function DropdownMenuWithShortcuts() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function DropdownMenuWithSubmenu() {
   return (
-    <CanvaFrame title="With Submenu">
+    <Example title="With Submenu">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -190,7 +191,7 @@ function DropdownMenuWithSubmenu() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -200,7 +201,7 @@ function DropdownMenuWithCheckboxes() {
   const [showPanel, setShowPanel] = React.useState(false)
 
   return (
-    <CanvaFrame title="With Checkboxes">
+    <Example title="With Checkboxes">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -232,7 +233,7 @@ function DropdownMenuWithCheckboxes() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -240,7 +241,7 @@ function DropdownMenuWithRadio() {
   const [position, setPosition] = React.useState("bottom")
 
   return (
-    <CanvaFrame title="With Radio Group">
+    <Example title="With Radio Group">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="w-fit">
@@ -265,13 +266,13 @@ function DropdownMenuWithRadio() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function DropdownMenuWithAvatar() {
   return (
-    <CanvaFrame title="With Avatar">
+    <Example title="With Avatar">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -363,13 +364,13 @@ function DropdownMenuWithAvatar() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function DropdownMenuAvatarOnly() {
   return (
-    <CanvaFrame title="Avatar Only">
+    <Example title="Avatar Only">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon" className="rounded-full">
@@ -428,6 +429,6 @@ function DropdownMenuAvatarOnly() {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    </CanvaFrame>
+    </Example>
   )
 }

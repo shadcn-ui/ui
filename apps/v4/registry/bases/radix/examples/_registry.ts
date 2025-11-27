@@ -5,6 +5,7 @@ export const examples: Registry["items"] = [
     name: "cover-example",
     title: "Cover",
     type: "registry:example",
+    registryDependencies: ["example"],
     files: [
       {
         path: "examples/cover-example.tsx",
@@ -16,7 +17,7 @@ export const examples: Registry["items"] = [
     name: "accordion-example",
     title: "Accordion",
     type: "registry:example",
-    registryDependencies: ["accordion"],
+    registryDependencies: ["accordion", "button", "card", "example"],
     files: [
       {
         path: "examples/accordion-example.tsx",
@@ -28,7 +29,7 @@ export const examples: Registry["items"] = [
     name: "alert-example",
     title: "Alert",
     type: "registry:example",
-    registryDependencies: ["alert"],
+    registryDependencies: ["alert", "example"],
     files: [
       {
         path: "examples/alert-example.tsx",
@@ -40,7 +41,7 @@ export const examples: Registry["items"] = [
     name: "alert-dialog-example",
     title: "Alert Dialog",
     type: "registry:example",
-    registryDependencies: ["alert-dialog", "button"],
+    registryDependencies: ["alert-dialog", "button", "example"],
     files: [
       {
         path: "examples/alert-dialog-example.tsx",
@@ -52,7 +53,7 @@ export const examples: Registry["items"] = [
     name: "aspect-ratio-example",
     title: "Aspect Ratio",
     type: "registry:example",
-    registryDependencies: ["aspect-ratio"],
+    registryDependencies: ["aspect-ratio", "example"],
     files: [
       {
         path: "examples/aspect-ratio-example.tsx",
@@ -64,7 +65,7 @@ export const examples: Registry["items"] = [
     name: "avatar-example",
     title: "Avatar",
     type: "registry:example",
-    registryDependencies: ["avatar"],
+    registryDependencies: ["avatar", "example"],
     files: [
       {
         path: "examples/avatar-example.tsx",
@@ -76,7 +77,7 @@ export const examples: Registry["items"] = [
     name: "badge-example",
     title: "Badge",
     type: "registry:example",
-    registryDependencies: ["badge"],
+    registryDependencies: ["badge", "example"],
     files: [
       {
         path: "examples/badge-example.tsx",
@@ -88,7 +89,7 @@ export const examples: Registry["items"] = [
     name: "breadcrumb-example",
     title: "Breadcrumb",
     type: "registry:example",
-    registryDependencies: ["breadcrumb"],
+    registryDependencies: ["breadcrumb", "example"],
     files: [
       {
         path: "examples/breadcrumb-example.tsx",
@@ -100,7 +101,7 @@ export const examples: Registry["items"] = [
     name: "button-example",
     title: "Button",
     type: "registry:example",
-    registryDependencies: ["button"],
+    registryDependencies: ["button", "example"],
     files: [
       {
         path: "examples/button-example.tsx",
@@ -112,7 +113,7 @@ export const examples: Registry["items"] = [
     name: "button-group-example",
     title: "Button Group",
     type: "registry:example",
-    registryDependencies: ["button-group"],
+    registryDependencies: ["button-group", "example"],
     files: [
       {
         path: "examples/button-group-example.tsx",
@@ -132,6 +133,7 @@ export const examples: Registry["items"] = [
       "input",
       "label",
       "popover",
+      "example",
     ],
     files: [
       {
@@ -144,7 +146,7 @@ export const examples: Registry["items"] = [
     name: "card-example",
     title: "Card",
     type: "registry:example",
-    registryDependencies: ["card"],
+    registryDependencies: ["card", "example"],
     files: [
       {
         path: "examples/card-example.tsx",
@@ -156,7 +158,7 @@ export const examples: Registry["items"] = [
     name: "carousel-example",
     title: "Carousel",
     type: "registry:example",
-    registryDependencies: ["carousel"],
+    registryDependencies: ["carousel", "example"],
     files: [
       {
         path: "examples/carousel-example.tsx",
@@ -168,7 +170,7 @@ export const examples: Registry["items"] = [
     name: "chart-example",
     title: "Chart",
     type: "registry:example",
-    registryDependencies: ["chart", "card"],
+    registryDependencies: ["chart", "card", "example"],
     files: [
       {
         path: "examples/chart-example.tsx",
@@ -180,7 +182,7 @@ export const examples: Registry["items"] = [
     name: "checkbox-example",
     title: "Checkbox",
     type: "registry:example",
-    registryDependencies: ["checkbox"],
+    registryDependencies: ["checkbox", "example"],
     files: [
       {
         path: "examples/checkbox-example.tsx",
@@ -192,7 +194,7 @@ export const examples: Registry["items"] = [
     name: "collapsible-example",
     title: "Collapsible",
     type: "registry:example",
-    registryDependencies: ["collapsible"],
+    registryDependencies: ["collapsible", "example"],
     files: [
       {
         path: "examples/collapsible-example.tsx",
@@ -204,7 +206,7 @@ export const examples: Registry["items"] = [
     name: "combobox-example",
     title: "Combobox",
     type: "registry:example",
-    registryDependencies: ["avatar", "button", "command", "popover"],
+    registryDependencies: ["avatar", "button", "command", "popover", "example"],
     files: [
       {
         path: "examples/combobox-example.tsx",
@@ -216,7 +218,7 @@ export const examples: Registry["items"] = [
     name: "command-example",
     title: "Command",
     type: "registry:example",
-    registryDependencies: ["command"],
+    registryDependencies: ["command", "example"],
     files: [
       {
         path: "examples/command-example.tsx",
@@ -228,7 +230,7 @@ export const examples: Registry["items"] = [
     name: "context-menu-example",
     title: "Context Menu",
     type: "registry:example",
-    registryDependencies: ["context-menu"],
+    registryDependencies: ["context-menu", "example"],
     files: [
       {
         path: "examples/context-menu-example.tsx",
@@ -240,7 +242,7 @@ export const examples: Registry["items"] = [
     name: "dialog-example",
     title: "Dialog",
     type: "registry:example",
-    registryDependencies: ["dialog"],
+    registryDependencies: ["dialog", "example"],
     files: [
       {
         path: "examples/dialog-example.tsx",
@@ -252,7 +254,7 @@ export const examples: Registry["items"] = [
     name: "drawer-example",
     title: "Drawer",
     type: "registry:example",
-    registryDependencies: ["drawer"],
+    registryDependencies: ["drawer", "example"],
     files: [
       {
         path: "examples/drawer-example.tsx",
@@ -264,7 +266,7 @@ export const examples: Registry["items"] = [
     name: "dropdown-menu-example",
     title: "Dropdown Menu",
     type: "registry:example",
-    registryDependencies: ["dropdown-menu"],
+    registryDependencies: ["dropdown-menu", "example"],
     files: [
       {
         path: "examples/dropdown-menu-example.tsx",
@@ -276,7 +278,7 @@ export const examples: Registry["items"] = [
     name: "empty-example",
     title: "Empty",
     type: "registry:example",
-    registryDependencies: ["empty"],
+    registryDependencies: ["empty", "example"],
     files: [
       {
         path: "examples/empty-example.tsx",
@@ -288,7 +290,7 @@ export const examples: Registry["items"] = [
     name: "field-example",
     title: "Field",
     type: "registry:example",
-    registryDependencies: ["field"],
+    registryDependencies: ["field", "example"],
     files: [
       {
         path: "examples/field-example.tsx",
@@ -300,7 +302,7 @@ export const examples: Registry["items"] = [
     name: "hover-card-example",
     title: "Hover Card",
     type: "registry:example",
-    registryDependencies: ["hover-card"],
+    registryDependencies: ["hover-card", "example"],
     files: [
       {
         path: "examples/hover-card-example.tsx",
@@ -312,7 +314,7 @@ export const examples: Registry["items"] = [
     name: "input-example",
     title: "Input",
     type: "registry:example",
-    registryDependencies: ["input"],
+    registryDependencies: ["input", "example"],
     files: [
       {
         path: "examples/input-example.tsx",
@@ -324,7 +326,7 @@ export const examples: Registry["items"] = [
     name: "input-group-example",
     title: "Input Group",
     type: "registry:example",
-    registryDependencies: ["input-group"],
+    registryDependencies: ["input-group", "example"],
     files: [
       {
         path: "examples/input-group-example.tsx",
@@ -336,7 +338,7 @@ export const examples: Registry["items"] = [
     name: "input-otp-example",
     title: "Input OTP",
     type: "registry:example",
-    registryDependencies: ["input-otp"],
+    registryDependencies: ["input-otp", "example"],
     files: [
       {
         path: "examples/input-otp-example.tsx",
@@ -348,7 +350,7 @@ export const examples: Registry["items"] = [
     name: "item-example",
     title: "Item",
     type: "registry:example",
-    registryDependencies: ["item"],
+    registryDependencies: ["item", "example"],
     files: [
       {
         path: "examples/item-example.tsx",
@@ -360,7 +362,7 @@ export const examples: Registry["items"] = [
     name: "kbd-example",
     title: "Kbd",
     type: "registry:example",
-    registryDependencies: ["kbd"],
+    registryDependencies: ["kbd", "example"],
     files: [
       {
         path: "examples/kbd-example.tsx",
@@ -372,7 +374,7 @@ export const examples: Registry["items"] = [
     name: "label-example",
     title: "Label",
     type: "registry:example",
-    registryDependencies: ["label"],
+    registryDependencies: ["label", "example"],
     files: [
       {
         path: "examples/label-example.tsx",
@@ -384,7 +386,7 @@ export const examples: Registry["items"] = [
     name: "menubar-example",
     title: "Menubar",
     type: "registry:example",
-    registryDependencies: ["menubar"],
+    registryDependencies: ["menubar", "example"],
     files: [
       {
         path: "examples/menubar-example.tsx",
@@ -396,7 +398,7 @@ export const examples: Registry["items"] = [
     name: "native-select-example",
     title: "Native Select",
     type: "registry:example",
-    registryDependencies: ["native-select"],
+    registryDependencies: ["native-select", "example"],
     files: [
       {
         path: "examples/native-select-example.tsx",
@@ -408,7 +410,7 @@ export const examples: Registry["items"] = [
     name: "navigation-menu-example",
     title: "Navigation Menu",
     type: "registry:example",
-    registryDependencies: ["navigation-menu"],
+    registryDependencies: ["navigation-menu", "example"],
     files: [
       {
         path: "examples/navigation-menu-example.tsx",
@@ -420,7 +422,7 @@ export const examples: Registry["items"] = [
     name: "pagination-example",
     title: "Pagination",
     type: "registry:example",
-    registryDependencies: ["pagination"],
+    registryDependencies: ["pagination", "example"],
     files: [
       {
         path: "examples/pagination-example.tsx",
@@ -432,7 +434,7 @@ export const examples: Registry["items"] = [
     name: "popover-example",
     title: "Popover",
     type: "registry:example",
-    registryDependencies: ["popover"],
+    registryDependencies: ["popover", "example"],
     files: [
       {
         path: "examples/popover-example.tsx",
@@ -444,7 +446,7 @@ export const examples: Registry["items"] = [
     name: "progress-example",
     title: "Progress",
     type: "registry:example",
-    registryDependencies: ["progress"],
+    registryDependencies: ["progress", "example"],
     files: [
       {
         path: "examples/progress-example.tsx",
@@ -456,7 +458,7 @@ export const examples: Registry["items"] = [
     name: "radio-group-example",
     title: "Radio Group",
     type: "registry:example",
-    registryDependencies: ["radio-group"],
+    registryDependencies: ["radio-group", "example"],
     files: [
       {
         path: "examples/radio-group-example.tsx",
@@ -468,7 +470,7 @@ export const examples: Registry["items"] = [
     name: "resizable-example",
     title: "Resizable",
     type: "registry:example",
-    registryDependencies: ["resizable"],
+    registryDependencies: ["resizable", "example"],
     files: [
       {
         path: "examples/resizable-example.tsx",
@@ -480,7 +482,7 @@ export const examples: Registry["items"] = [
     name: "scroll-area-example",
     title: "Scroll Area",
     type: "registry:example",
-    registryDependencies: ["scroll-area"],
+    registryDependencies: ["scroll-area", "example"],
     files: [
       {
         path: "examples/scroll-area-example.tsx",
@@ -492,7 +494,7 @@ export const examples: Registry["items"] = [
     name: "select-example",
     title: "Select",
     type: "registry:example",
-    registryDependencies: ["select"],
+    registryDependencies: ["select", "example"],
     files: [
       {
         path: "examples/select-example.tsx",
@@ -504,7 +506,7 @@ export const examples: Registry["items"] = [
     name: "separator-example",
     title: "Separator",
     type: "registry:example",
-    registryDependencies: ["separator"],
+    registryDependencies: ["separator", "example"],
     files: [
       {
         path: "examples/separator-example.tsx",
@@ -516,7 +518,7 @@ export const examples: Registry["items"] = [
     name: "sheet-example",
     title: "Sheet",
     type: "registry:example",
-    registryDependencies: ["sheet"],
+    registryDependencies: ["sheet", "example"],
     files: [
       {
         path: "examples/sheet-example.tsx",
@@ -528,7 +530,7 @@ export const examples: Registry["items"] = [
     name: "skeleton-example",
     title: "Skeleton",
     type: "registry:example",
-    registryDependencies: ["skeleton"],
+    registryDependencies: ["skeleton", "example"],
     files: [
       {
         path: "examples/skeleton-example.tsx",
@@ -540,7 +542,7 @@ export const examples: Registry["items"] = [
     name: "slider-example",
     title: "Slider",
     type: "registry:example",
-    registryDependencies: ["slider"],
+    registryDependencies: ["slider", "example"],
     files: [
       {
         path: "examples/slider-example.tsx",
@@ -552,7 +554,7 @@ export const examples: Registry["items"] = [
     name: "sonner-example",
     title: "Sonner",
     type: "registry:example",
-    registryDependencies: ["sonner"],
+    registryDependencies: ["sonner", "example"],
     files: [
       {
         path: "examples/sonner-example.tsx",
@@ -564,7 +566,7 @@ export const examples: Registry["items"] = [
     name: "spinner-example",
     title: "Spinner",
     type: "registry:example",
-    registryDependencies: ["spinner"],
+    registryDependencies: ["spinner", "example"],
     files: [
       {
         path: "examples/spinner-example.tsx",
@@ -576,7 +578,7 @@ export const examples: Registry["items"] = [
     name: "switch-example",
     title: "Switch",
     type: "registry:example",
-    registryDependencies: ["switch"],
+    registryDependencies: ["switch", "example"],
     files: [
       {
         path: "examples/switch-example.tsx",
@@ -588,7 +590,7 @@ export const examples: Registry["items"] = [
     name: "table-example",
     title: "Table",
     type: "registry:example",
-    registryDependencies: ["table"],
+    registryDependencies: ["table", "example"],
     files: [
       {
         path: "examples/table-example.tsx",
@@ -600,7 +602,7 @@ export const examples: Registry["items"] = [
     name: "tabs-example",
     title: "Tabs",
     type: "registry:example",
-    registryDependencies: ["tabs"],
+    registryDependencies: ["tabs", "example"],
     files: [
       {
         path: "examples/tabs-example.tsx",
@@ -612,7 +614,7 @@ export const examples: Registry["items"] = [
     name: "textarea-example",
     title: "Textarea",
     type: "registry:example",
-    registryDependencies: ["textarea"],
+    registryDependencies: ["textarea", "example"],
     files: [
       {
         path: "examples/textarea-example.tsx",
@@ -624,7 +626,7 @@ export const examples: Registry["items"] = [
     name: "toggle-example",
     title: "Toggle",
     type: "registry:example",
-    registryDependencies: ["toggle"],
+    registryDependencies: ["toggle", "example"],
     files: [
       {
         path: "examples/toggle-example.tsx",
@@ -636,7 +638,7 @@ export const examples: Registry["items"] = [
     name: "toggle-group-example",
     title: "Toggle Group",
     type: "registry:example",
-    registryDependencies: ["toggle-group"],
+    registryDependencies: ["toggle-group", "example"],
     files: [
       {
         path: "examples/toggle-group-example.tsx",
@@ -648,7 +650,7 @@ export const examples: Registry["items"] = [
     name: "tooltip-example",
     title: "Tooltip",
     type: "registry:example",
-    registryDependencies: ["tooltip"],
+    registryDependencies: ["tooltip", "example"],
     files: [
       {
         path: "examples/tooltip-example.tsx",

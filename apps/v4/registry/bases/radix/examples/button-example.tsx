@@ -1,24 +1,25 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function ButtonDemo() {
+export default function ButtonExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <ButtonVariantsAndSizes />
-        <ButtonIconRight />
-        <ButtonIconLeft />
-        <ButtonIconOnly />
-        <ButtonExamples />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <ButtonVariantsAndSizes />
+      <ButtonIconRight />
+      <ButtonIconLeft />
+      <ButtonIconOnly />
+      <ButtonExamples />
+    </ExampleWrapper>
   )
 }
 
 function ButtonVariantsAndSizes() {
   return (
-    <CanvaFrame title="Variants & Sizes">
+    <Example title="Variants & Sizes">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">Default</Button>
         <Button size="xs" variant="secondary">
@@ -81,13 +82,13 @@ function ButtonVariantsAndSizes() {
           Link
         </Button>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ButtonIconRight() {
   return (
-    <CanvaFrame title="Icon Right">
+    <Example title="Icon Right">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">
           Default{" "}
@@ -311,13 +312,13 @@ function ButtonIconRight() {
           />
         </Button>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ButtonIconLeft() {
   return (
-    <CanvaFrame title="Icon Left">
+    <Example title="Icon Left">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">
           <IconPlaceholder
@@ -542,13 +543,13 @@ function ButtonIconLeft() {
           Link
         </Button>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ButtonIconOnly() {
   return (
-    <CanvaFrame title="Icon Only">
+    <Example title="Icon Only">
       <div className="flex flex-wrap items-center gap-2">
         <Button size="icon-xs">
           <IconPlaceholder
@@ -725,13 +726,13 @@ function ButtonIconOnly() {
           />
         </Button>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ButtonExamples() {
   return (
-    <CanvaFrame title="Examples">
+    <Example title="Examples">
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
           <Button variant="outline">Cancel</Button>
@@ -755,6 +756,6 @@ function ButtonExamples() {
           </Button>
         </div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }

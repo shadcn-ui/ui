@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Field,
   FieldDescription,
@@ -12,21 +15,19 @@ import {
 
 export default function NativeSelectExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <NativeSelectBasic />
-        <NativeSelectWithGroups />
-        <NativeSelectWithField />
-        <NativeSelectDisabled />
-        <NativeSelectInvalid />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <NativeSelectBasic />
+      <NativeSelectWithGroups />
+      <NativeSelectWithField />
+      <NativeSelectDisabled />
+      <NativeSelectInvalid />
+    </ExampleWrapper>
   )
 }
 
 function NativeSelectBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <NativeSelect>
         <NativeSelectOption value="">Select a fruit</NativeSelectOption>
         <NativeSelectOption value="apple">Apple</NativeSelectOption>
@@ -37,13 +38,13 @@ function NativeSelectBasic() {
         </NativeSelectOption>
         <NativeSelectOption value="pineapple">Pineapple</NativeSelectOption>
       </NativeSelect>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function NativeSelectWithGroups() {
   return (
-    <CanvaFrame title="With Groups">
+    <Example title="With Groups">
       <NativeSelect>
         <NativeSelectOption value="">Select a food</NativeSelectOption>
         <NativeSelectOptGroup label="Fruits">
@@ -57,13 +58,13 @@ function NativeSelectWithGroups() {
           <NativeSelectOption value="spinach">Spinach</NativeSelectOption>
         </NativeSelectOptGroup>
       </NativeSelect>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function NativeSelectWithField() {
   return (
-    <CanvaFrame title="With Field">
+    <Example title="With Field">
       <Field>
         <FieldLabel htmlFor="native-select-country">Country</FieldLabel>
         <NativeSelect id="native-select-country">
@@ -75,32 +76,32 @@ function NativeSelectWithField() {
         </NativeSelect>
         <FieldDescription>Select your country of residence.</FieldDescription>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function NativeSelectDisabled() {
   return (
-    <CanvaFrame title="Disabled">
+    <Example title="Disabled">
       <NativeSelect disabled>
         <NativeSelectOption value="">Disabled</NativeSelectOption>
         <NativeSelectOption value="apple">Apple</NativeSelectOption>
         <NativeSelectOption value="banana">Banana</NativeSelectOption>
         <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
       </NativeSelect>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function NativeSelectInvalid() {
   return (
-    <CanvaFrame title="Invalid">
+    <Example title="Invalid">
       <NativeSelect aria-invalid="true">
         <NativeSelectOption value="">Error state</NativeSelectOption>
         <NativeSelectOption value="apple">Apple</NativeSelectOption>
         <NativeSelectOption value="banana">Banana</NativeSelectOption>
         <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
       </NativeSelect>
-    </CanvaFrame>
+    </Example>
   )
 }

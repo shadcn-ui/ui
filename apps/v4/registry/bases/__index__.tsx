@@ -1347,7 +1347,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Cover",
       description: "",
       type: "registry:example",
-      registryDependencies: undefined,
+      registryDependencies: ["example"],
       files: [
         {
           path: "registry/bases/radix/examples/cover-example.tsx",
@@ -1374,7 +1374,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Accordion",
       description: "",
       type: "registry:example",
-      registryDependencies: ["accordion"],
+      registryDependencies: ["accordion", "button", "card", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/accordion-example.tsx",
@@ -1401,7 +1401,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Alert",
       description: "",
       type: "registry:example",
-      registryDependencies: ["alert"],
+      registryDependencies: ["alert", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/alert-example.tsx",
@@ -1428,7 +1428,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Alert Dialog",
       description: "",
       type: "registry:example",
-      registryDependencies: ["alert-dialog", "button"],
+      registryDependencies: ["alert-dialog", "button", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/alert-dialog-example.tsx",
@@ -1455,7 +1455,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Aspect Ratio",
       description: "",
       type: "registry:example",
-      registryDependencies: ["aspect-ratio"],
+      registryDependencies: ["aspect-ratio", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/aspect-ratio-example.tsx",
@@ -1482,7 +1482,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Avatar",
       description: "",
       type: "registry:example",
-      registryDependencies: ["avatar"],
+      registryDependencies: ["avatar", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/avatar-example.tsx",
@@ -1509,7 +1509,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Badge",
       description: "",
       type: "registry:example",
-      registryDependencies: ["badge"],
+      registryDependencies: ["badge", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/badge-example.tsx",
@@ -1536,7 +1536,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Breadcrumb",
       description: "",
       type: "registry:example",
-      registryDependencies: ["breadcrumb"],
+      registryDependencies: ["breadcrumb", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/breadcrumb-example.tsx",
@@ -1563,7 +1563,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Button",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button"],
+      registryDependencies: ["button", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/button-example.tsx",
@@ -1590,7 +1590,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Button Group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button-group"],
+      registryDependencies: ["button-group", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/button-group-example.tsx",
@@ -1625,6 +1625,7 @@ export const Index: Record<string, Record<string, any>> = {
         "input",
         "label",
         "popover",
+        "example",
       ],
       files: [
         {
@@ -1652,7 +1653,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Card",
       description: "",
       type: "registry:example",
-      registryDependencies: ["card"],
+      registryDependencies: ["card", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/card-example.tsx",
@@ -1679,7 +1680,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Carousel",
       description: "",
       type: "registry:example",
-      registryDependencies: ["carousel"],
+      registryDependencies: ["carousel", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/carousel-example.tsx",
@@ -1706,7 +1707,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Chart",
       description: "",
       type: "registry:example",
-      registryDependencies: ["chart", "card"],
+      registryDependencies: ["chart", "card", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/chart-example.tsx",
@@ -1733,7 +1734,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Checkbox",
       description: "",
       type: "registry:example",
-      registryDependencies: ["checkbox"],
+      registryDependencies: ["checkbox", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/checkbox-example.tsx",
@@ -1760,7 +1761,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Collapsible",
       description: "",
       type: "registry:example",
-      registryDependencies: ["collapsible"],
+      registryDependencies: ["collapsible", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/collapsible-example.tsx",
@@ -1787,7 +1788,13 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Combobox",
       description: "",
       type: "registry:example",
-      registryDependencies: ["avatar", "button", "command", "popover"],
+      registryDependencies: [
+        "avatar",
+        "button",
+        "command",
+        "popover",
+        "example",
+      ],
       files: [
         {
           path: "registry/bases/radix/examples/combobox-example.tsx",
@@ -1814,7 +1821,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Command",
       description: "",
       type: "registry:example",
-      registryDependencies: ["command"],
+      registryDependencies: ["command", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/command-example.tsx",
@@ -1841,7 +1848,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Context Menu",
       description: "",
       type: "registry:example",
-      registryDependencies: ["context-menu"],
+      registryDependencies: ["context-menu", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/context-menu-example.tsx",
@@ -1868,7 +1875,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Dialog",
       description: "",
       type: "registry:example",
-      registryDependencies: ["dialog"],
+      registryDependencies: ["dialog", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/dialog-example.tsx",
@@ -1895,7 +1902,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Drawer",
       description: "",
       type: "registry:example",
-      registryDependencies: ["drawer"],
+      registryDependencies: ["drawer", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/drawer-example.tsx",
@@ -1922,7 +1929,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Dropdown Menu",
       description: "",
       type: "registry:example",
-      registryDependencies: ["dropdown-menu"],
+      registryDependencies: ["dropdown-menu", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/dropdown-menu-example.tsx",
@@ -1949,7 +1956,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Empty",
       description: "",
       type: "registry:example",
-      registryDependencies: ["empty"],
+      registryDependencies: ["empty", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/empty-example.tsx",
@@ -1976,7 +1983,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Field",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field"],
+      registryDependencies: ["field", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/field-example.tsx",
@@ -2003,7 +2010,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Hover Card",
       description: "",
       type: "registry:example",
-      registryDependencies: ["hover-card"],
+      registryDependencies: ["hover-card", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/hover-card-example.tsx",
@@ -2030,7 +2037,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Input",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input"],
+      registryDependencies: ["input", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/input-example.tsx",
@@ -2057,7 +2064,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Input Group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input-group"],
+      registryDependencies: ["input-group", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/input-group-example.tsx",
@@ -2084,7 +2091,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Input OTP",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input-otp"],
+      registryDependencies: ["input-otp", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/input-otp-example.tsx",
@@ -2111,7 +2118,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Item",
       description: "",
       type: "registry:example",
-      registryDependencies: ["item"],
+      registryDependencies: ["item", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/item-example.tsx",
@@ -2138,7 +2145,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Kbd",
       description: "",
       type: "registry:example",
-      registryDependencies: ["kbd"],
+      registryDependencies: ["kbd", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/kbd-example.tsx",
@@ -2165,7 +2172,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Label",
       description: "",
       type: "registry:example",
-      registryDependencies: ["label"],
+      registryDependencies: ["label", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/label-example.tsx",
@@ -2192,7 +2199,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Menubar",
       description: "",
       type: "registry:example",
-      registryDependencies: ["menubar"],
+      registryDependencies: ["menubar", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/menubar-example.tsx",
@@ -2219,7 +2226,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Native Select",
       description: "",
       type: "registry:example",
-      registryDependencies: ["native-select"],
+      registryDependencies: ["native-select", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/native-select-example.tsx",
@@ -2246,7 +2253,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Navigation Menu",
       description: "",
       type: "registry:example",
-      registryDependencies: ["navigation-menu"],
+      registryDependencies: ["navigation-menu", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/navigation-menu-example.tsx",
@@ -2273,7 +2280,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Pagination",
       description: "",
       type: "registry:example",
-      registryDependencies: ["pagination"],
+      registryDependencies: ["pagination", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/pagination-example.tsx",
@@ -2300,7 +2307,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Popover",
       description: "",
       type: "registry:example",
-      registryDependencies: ["popover"],
+      registryDependencies: ["popover", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/popover-example.tsx",
@@ -2327,7 +2334,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Progress",
       description: "",
       type: "registry:example",
-      registryDependencies: ["progress"],
+      registryDependencies: ["progress", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/progress-example.tsx",
@@ -2354,7 +2361,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Radio Group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["radio-group"],
+      registryDependencies: ["radio-group", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/radio-group-example.tsx",
@@ -2381,7 +2388,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Resizable",
       description: "",
       type: "registry:example",
-      registryDependencies: ["resizable"],
+      registryDependencies: ["resizable", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/resizable-example.tsx",
@@ -2408,7 +2415,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Scroll Area",
       description: "",
       type: "registry:example",
-      registryDependencies: ["scroll-area"],
+      registryDependencies: ["scroll-area", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/scroll-area-example.tsx",
@@ -2435,7 +2442,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Select",
       description: "",
       type: "registry:example",
-      registryDependencies: ["select"],
+      registryDependencies: ["select", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/select-example.tsx",
@@ -2462,7 +2469,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Separator",
       description: "",
       type: "registry:example",
-      registryDependencies: ["separator"],
+      registryDependencies: ["separator", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/separator-example.tsx",
@@ -2489,7 +2496,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sheet",
       description: "",
       type: "registry:example",
-      registryDependencies: ["sheet"],
+      registryDependencies: ["sheet", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/sheet-example.tsx",
@@ -2516,7 +2523,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Skeleton",
       description: "",
       type: "registry:example",
-      registryDependencies: ["skeleton"],
+      registryDependencies: ["skeleton", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/skeleton-example.tsx",
@@ -2543,7 +2550,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Slider",
       description: "",
       type: "registry:example",
-      registryDependencies: ["slider"],
+      registryDependencies: ["slider", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/slider-example.tsx",
@@ -2570,7 +2577,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sonner",
       description: "",
       type: "registry:example",
-      registryDependencies: ["sonner"],
+      registryDependencies: ["sonner", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/sonner-example.tsx",
@@ -2597,7 +2604,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Spinner",
       description: "",
       type: "registry:example",
-      registryDependencies: ["spinner"],
+      registryDependencies: ["spinner", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/spinner-example.tsx",
@@ -2624,7 +2631,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Switch",
       description: "",
       type: "registry:example",
-      registryDependencies: ["switch"],
+      registryDependencies: ["switch", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/switch-example.tsx",
@@ -2651,7 +2658,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Table",
       description: "",
       type: "registry:example",
-      registryDependencies: ["table"],
+      registryDependencies: ["table", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/table-example.tsx",
@@ -2678,7 +2685,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Tabs",
       description: "",
       type: "registry:example",
-      registryDependencies: ["tabs"],
+      registryDependencies: ["tabs", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/tabs-example.tsx",
@@ -2705,7 +2712,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Textarea",
       description: "",
       type: "registry:example",
-      registryDependencies: ["textarea"],
+      registryDependencies: ["textarea", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/textarea-example.tsx",
@@ -2732,7 +2739,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Toggle",
       description: "",
       type: "registry:example",
-      registryDependencies: ["toggle"],
+      registryDependencies: ["toggle", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/toggle-example.tsx",
@@ -2759,7 +2766,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Toggle Group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["toggle-group"],
+      registryDependencies: ["toggle-group", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/toggle-group-example.tsx",
@@ -2786,7 +2793,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Tooltip",
       description: "",
       type: "registry:example",
-      registryDependencies: ["tooltip"],
+      registryDependencies: ["tooltip", "example"],
       files: [
         {
           path: "registry/bases/radix/examples/tooltip-example.tsx",
@@ -2798,6 +2805,137 @@ export const Index: Record<string, Record<string, any>> = {
         const mod = await import(
           "@/registry/bases/radix/examples/tooltip-example.tsx"
         )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    cn: {
+      name: "cn",
+      title: "undefined",
+      description: "",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/lib/cn.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/lib/cn.ts")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    example: {
+      name: "example",
+      title: "Example",
+      description: "",
+      type: "registry:component",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/components/example.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import(
+          "@/registry/bases/radix/components/example.tsx"
+        )
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    sink: {
+      name: "sink",
+      title: "undefined",
+      description: "",
+      type: "registry:internal",
+      registryDependencies: [
+        "accordion-example",
+        "alert-dialog-example",
+        "alert-example",
+        "aspect-ratio-example",
+        "avatar-example",
+        "badge-example",
+        "breadcrumb-example",
+        "button-example",
+        "button-group-example",
+        "calendar-example",
+        "card-example",
+        "carousel-example",
+        "chart-example",
+        "checkbox-example",
+        "collapsible-example",
+        "combobox-example",
+        "command-example",
+        "context-menu-example",
+        "dialog-example",
+        "drawer-example",
+        "dropdown-menu-example",
+        "empty-example",
+        "field-example",
+        "hover-card-example",
+        "input-example",
+        "input-group-example",
+        "input-otp-example",
+        "item-example",
+        "kbd-example",
+        "label-example",
+        "menubar-example",
+        "native-select-example",
+        "navigation-menu-example",
+        "pagination-example",
+        "popover-example",
+        "progress-example",
+        "radio-group-example",
+        "resizable-example",
+        "scroll-area-example",
+        "select-example",
+        "separator-example",
+        "sheet-example",
+        "skeleton-example",
+        "slider-example",
+        "sonner-example",
+        "spinner-example",
+        "switch-example",
+        "table-example",
+        "tabs-example",
+        "textarea-example",
+        "toggle-example",
+        "toggle-group-example",
+        "tooltip-example",
+      ],
+      files: [
+        {
+          path: "registry/bases/radix/internal/sink.tsx",
+          type: "registry:page",
+          target: "app/sink/page.tsx",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/internal/sink.tsx")
         const exportName =
           Object.keys(mod).find(
             (key) =>

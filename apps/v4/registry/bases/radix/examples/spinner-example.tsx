@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Badge } from "@/registry/bases/radix/ui/badge"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
@@ -20,32 +23,30 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function SpinnerExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <SpinnerBasic />
-        <SpinnerInButtons />
-        <SpinnerInBadges />
-        <SpinnerInInputGroup />
-        <SpinnerInEmpty />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <SpinnerBasic />
+      <SpinnerInButtons />
+      <SpinnerInBadges />
+      <SpinnerInInputGroup />
+      <SpinnerInEmpty />
+    </ExampleWrapper>
   )
 }
 
 function SpinnerBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <div className="flex items-center gap-6">
         <Spinner />
         <Spinner className="size-8" />
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SpinnerInButtons() {
   return (
-    <CanvaFrame title="In Buttons">
+    <Example title="In Buttons">
       <div className="flex flex-wrap items-center gap-4">
         <Button>
           <Spinner data-slot="icon-align" /> Submit
@@ -61,13 +62,13 @@ function SpinnerInButtons() {
           <span className="sr-only">Loading...</span>
         </Button>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SpinnerInBadges() {
   return (
-    <CanvaFrame title="In Badges">
+    <Example title="In Badges">
       <div className="flex flex-wrap items-center gap-4">
         <Badge>
           <Spinner />
@@ -86,13 +87,13 @@ function SpinnerInBadges() {
           Badge
         </Badge>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SpinnerInInputGroup() {
   return (
-    <CanvaFrame title="In Input Group">
+    <Example title="In Input Group">
       <Field>
         <FieldLabel htmlFor="input-group-spinner">Input Group</FieldLabel>
         <InputGroup>
@@ -102,13 +103,13 @@ function SpinnerInInputGroup() {
           </InputGroupAddon>
         </InputGroup>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SpinnerInEmpty() {
   return (
-    <CanvaFrame title="In Empty State">
+    <Example title="In Empty State">
       <Empty className="min-h-[300px]">
         <EmptyHeader>
           <EmptyMedia variant="icon">
@@ -139,6 +140,6 @@ function SpinnerInEmpty() {
           </Button>
         </EmptyContent>
       </Empty>
-    </CanvaFrame>
+    </Example>
   )
 }

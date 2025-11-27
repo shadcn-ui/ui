@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Card, CardContent } from "@/registry/bases/radix/ui/card"
 import {
   Carousel,
@@ -8,21 +11,19 @@ import {
   CarouselPrevious,
 } from "@/registry/bases/radix/ui/carousel"
 
-export default function CarouselDemo() {
+export default function CarouselExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <CarouselBasic />
-        <CarouselMultiple />
-        <CarouselWithGap />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <CarouselBasic />
+      <CarouselMultiple />
+      <CarouselWithGap />
+    </ExampleWrapper>
   )
 }
 
 function CarouselBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Carousel className="mx-auto max-w-xs sm:max-w-sm">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
@@ -40,13 +41,13 @@ function CarouselBasic() {
         <CarouselPrevious className="hidden sm:inline-flex" />
         <CarouselNext className="hidden sm:inline-flex" />
       </Carousel>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CarouselMultiple() {
   return (
-    <CanvaFrame title="Multiple">
+    <Example title="Multiple">
       <Carousel
         className="mx-auto max-w-xs sm:max-w-sm"
         opts={{
@@ -69,13 +70,13 @@ function CarouselMultiple() {
         <CarouselPrevious className="hidden sm:inline-flex" />
         <CarouselNext className="hidden sm:inline-flex" />
       </Carousel>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CarouselWithGap() {
   return (
-    <CanvaFrame title="With Gap">
+    <Example title="With Gap">
       <Carousel className="mx-auto max-w-xs sm:max-w-sm">
         <CarouselContent className="-ml-1">
           {Array.from({ length: 5 }).map((_, index) => (
@@ -93,6 +94,6 @@ function CarouselWithGap() {
         <CarouselPrevious className="hidden sm:inline-flex" />
         <CarouselNext className="hidden sm:inline-flex" />
       </Carousel>
-    </CanvaFrame>
+    </Example>
   )
 }

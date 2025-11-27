@@ -2,7 +2,10 @@
 
 import * as React from "react"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Command,
@@ -19,14 +22,12 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function CommandExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <CommandBasic />
-        <CommandWithShortcuts />
-        <CommandWithGroups />
-        <CommandManyItems />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <CommandBasic />
+      <CommandWithShortcuts />
+      <CommandWithGroups />
+      <CommandManyItems />
+    </ExampleWrapper>
   )
 }
 
@@ -34,7 +35,7 @@ function CommandBasic() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <div className="flex flex-col gap-4">
         <Button
           onClick={() => setOpen(true)}
@@ -57,7 +58,7 @@ function CommandBasic() {
           </Command>
         </CommandDialog>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -65,7 +66,7 @@ function CommandWithShortcuts() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <CanvaFrame title="With Shortcuts">
+    <Example title="With Shortcuts">
       <div className="flex flex-col gap-4">
         <Button
           onClick={() => setOpen(true)}
@@ -112,7 +113,7 @@ function CommandWithShortcuts() {
           </Command>
         </CommandDialog>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -120,7 +121,7 @@ function CommandWithGroups() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <CanvaFrame title="With Groups">
+    <Example title="With Groups">
       <div className="flex flex-col gap-4">
         <Button
           onClick={() => setOpen(true)}
@@ -194,7 +195,7 @@ function CommandWithGroups() {
           </Command>
         </CommandDialog>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -202,7 +203,7 @@ function CommandManyItems() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <CanvaFrame title="Many Groups & Items">
+    <Example title="Many Groups & Items">
       <div className="flex flex-col gap-4">
         <Button
           onClick={() => setOpen(true)}
@@ -433,6 +434,6 @@ function CommandManyItems() {
           </Command>
         </CommandDialog>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }

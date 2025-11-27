@@ -125,21 +125,21 @@ export default function CoverExample() {
   return (
     <div className="bg-background flex min-h-screen items-center justify-center p-6">
       <div className="w-full max-w-screen-2xl columns-1 gap-8 md:columns-2 lg:columns-3 2xl:columns-4 [&>*]:mb-8 [&>*]:break-inside-avoid">
-        <FieldDemo />
+        <FieldExample />
         <SpinnerEmpty />
         <EmptyAvatarGroup />
         <FieldSlider />
-        <SheetDemo />
+        <SheetExample />
         <SpinnerBadge />
-        <InputGroupDemo />
+        <InputGroupExample />
         <InputGroupButtonExample />
         <ButtonGroupInputGroup />
-        <ItemDemo />
+        <ItemExample />
         <FieldHear />
         <AppearanceSettings />
-        <ButtonGroupDemo />
-        <FieldCheckbox />
         <ButtonGroupExample />
+        <FieldCheckbox />
+        <ButtonGroupExample2 />
       </div>
     </div>
   )
@@ -266,7 +266,7 @@ function AppearanceSettings() {
   )
 }
 
-function ButtonGroupDemo() {
+function ButtonGroupExample() {
   const [label, setLabel] = React.useState("personal")
 
   return (
@@ -457,7 +457,7 @@ function ButtonGroupInputGroup() {
   )
 }
 
-function ButtonGroupExample() {
+function ButtonGroupExample2() {
   return (
     <div className="flex gap-4">
       <ButtonGroup>
@@ -698,7 +698,7 @@ function FieldCheckbox() {
   )
 }
 
-function FieldDemo() {
+function FieldExample() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
@@ -977,7 +977,7 @@ function InputGroupButtonExample() {
   )
 }
 
-function InputGroupDemo() {
+function InputGroupExample() {
   return (
     <div className="grid w-full max-w-sm gap-6">
       <InputGroup>
@@ -1077,7 +1077,7 @@ function InputGroupDemo() {
   )
 }
 
-function ItemDemo() {
+function ItemExample() {
   return (
     <div className="flex w-full max-w-md flex-col gap-6">
       <Item variant="outline">
@@ -1169,7 +1169,7 @@ function SpinnerEmpty() {
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 
-function SheetDemo() {
+function SheetExample() {
   return (
     <div className="flex gap-2">
       {SHEET_SIDES.map((side) => (

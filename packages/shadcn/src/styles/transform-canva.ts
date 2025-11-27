@@ -1,6 +1,9 @@
 import { TransformerStyle } from "@/src/styles/transform"
 import { Node, SyntaxKind, type SourceFile } from "ts-morph"
 
+const CANVA_FRAME_CLASSNAME =
+  "bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4 w-full"
+
 export const transformCanva: TransformerStyle<SourceFile> = async ({
   sourceFile,
 }) => {
@@ -33,11 +36,9 @@ export const transformCanva: TransformerStyle<SourceFile> = async ({
     const endPos = closingElement?.getStart() ?? canvaFrame.getEnd()
     const children = sourceFile.getFullText().slice(startPos, endPos).trim()
 
-    const newClassName =
-      "bg-background text-foreground flex min-w-0 flex-col items-start gap-4 rounded-xl border border-dashed p-4"
     const otherAttrsText =
       otherAttrs.length > 0 ? ` ${otherAttrs.join(" ")}` : ""
-    const replacement = `<div className="${newClassName}"${otherAttrsText}>${children}</div>`
+    const replacement = `<div className="${CANVA_FRAME_CLASSNAME}"${otherAttrsText}>${children}</div>`
 
     canvaFrame.replaceWithText(replacement)
   }

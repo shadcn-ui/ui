@@ -70,8 +70,8 @@ export function Customizer() {
   }, [setParams])
 
   return (
-    <div className="z-10 flex w-56 flex-col gap-4 px-1">
-      <Card className="gap-0 rounded-xl py-0">
+    <div className="flex flex-col gap-2">
+      <Card className="gap-0 rounded-lg py-0 shadow-none">
         <CardHeader className="gap-0 border-b px-3 py-2.5!">
           <CardTitle className="text-sm font-medium">Presets</CardTitle>
         </CardHeader>
@@ -106,38 +106,16 @@ export function Customizer() {
                 </Button>
               )
             })}
-            <Button
-              variant="outline"
-              data-active={params.custom}
-              className="data-[state=open]:bg-accent/50 data-[active=true]:border-primary ring-primary flex h-auto flex-col items-start justify-start p-0 shadow-none data-[active=true]:ring-1"
-              onClick={handleSelectCustom}
-            >
-              <Item size="sm" className="w-full px-2.5 py-2">
-                <ItemContent className="items-start gap-0.5">
-                  <ItemTitle className="text-xs font-medium">Custom</ItemTitle>
-                  <ItemDescription>Custom configuration</ItemDescription>
-                </ItemContent>
-              </Item>
-            </Button>
           </FieldGroup>
         </CardContent>
       </Card>
-      {params.custom && (
-        <Card className="gap-0 rounded-xl py-0">
-          <CardHeader className="gap-0 border-b px-3 py-2.5!">
-            <CardTitle className="text-sm font-medium">Customize</CardTitle>
-          </CardHeader>
-          <CardContent className="p-3">
-            <FieldGroup className="flex flex-col gap-3">
-              <StylePicker styles={STYLES} />
-              <BaseColorPicker />
-              <ThemePicker themes={THEMES} />
-              <IconLibraryPicker />
-              <FontPicker fonts={FONTS} />
-            </FieldGroup>
-          </CardContent>
-        </Card>
-      )}
+      <FieldGroup className="flex flex-col gap-3">
+        <StylePicker styles={STYLES} />
+        <BaseColorPicker />
+        <ThemePicker themes={THEMES} />
+        <IconLibraryPicker />
+        <FontPicker fonts={FONTS} />
+      </FieldGroup>
     </div>
   )
 }
@@ -181,7 +159,7 @@ export function CustomizerItem({
           side="right"
           align="start"
           alignOffset={-24}
-          sideOffset={24}
+          sideOffset={16}
           onCloseAutoFocus={(e) => e.preventDefault()}
         >
           <div className="border-b px-3 py-2.5">

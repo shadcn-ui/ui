@@ -2,52 +2,53 @@
 
 import * as React from "react"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Label } from "@/registry/bases/radix/ui/label"
 import { Slider } from "@/registry/bases/radix/ui/slider"
 
 export default function SliderExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <SliderBasic />
-        <SliderRange />
-        <SliderMultiple />
-        <SliderVertical />
-        <SliderControlled />
-        <SliderDisabled />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <SliderBasic />
+      <SliderRange />
+      <SliderMultiple />
+      <SliderVertical />
+      <SliderControlled />
+      <SliderDisabled />
+    </ExampleWrapper>
   )
 }
 
 function SliderBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Slider defaultValue={[50]} max={100} step={1} />
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SliderRange() {
   return (
-    <CanvaFrame title="Range">
+    <Example title="Range">
       <Slider defaultValue={[25, 50]} max={100} step={5} />
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SliderMultiple() {
   return (
-    <CanvaFrame title="Multiple Thumbs">
+    <Example title="Multiple Thumbs">
       <Slider defaultValue={[10, 20, 70]} max={100} step={10} />
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SliderVertical() {
   return (
-    <CanvaFrame title="Vertical">
+    <Example title="Vertical">
       <div className="flex items-center gap-6">
         <Slider
           defaultValue={[50]}
@@ -64,7 +65,7 @@ function SliderVertical() {
           className="h-40"
         />
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -72,7 +73,7 @@ function SliderControlled() {
   const [value, setValue] = React.useState([0.3, 0.7])
 
   return (
-    <CanvaFrame title="Controlled">
+    <Example title="Controlled">
       <div className="grid w-full gap-3">
         <div className="flex items-center justify-between gap-2">
           <Label htmlFor="slider-demo-temperature">Temperature</Label>
@@ -89,14 +90,14 @@ function SliderControlled() {
           step={0.1}
         />
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SliderDisabled() {
   return (
-    <CanvaFrame title="Disabled">
+    <Example title="Disabled">
       <Slider defaultValue={[50]} max={100} step={1} disabled />
-    </CanvaFrame>
+    </Example>
   )
 }

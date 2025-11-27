@@ -2,8 +2,11 @@
 
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
+import { cn } from "@/registry/bases/radix/lib/cn"
 import {
   Avatar,
   AvatarFallback,
@@ -106,19 +109,17 @@ const timezones = [
 
 type Timezone = (typeof timezones)[number]
 
-export default function ComboboxDemo() {
+export default function ComboboxExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <FrameworkCombobox frameworks={[...frameworks]} />
-        <UserCombobox users={[...users]} selectedUserId={users[0].id} />
-        <TimezoneCombobox
-          timezones={[...timezones]}
-          selectedTimezone={timezones[0].timezones[0]}
-        />
-        <ComboboxWithCheckbox frameworks={[...frameworks]} />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <FrameworkCombobox frameworks={[...frameworks]} />
+      <UserCombobox users={[...users]} selectedUserId={users[0].id} />
+      <TimezoneCombobox
+        timezones={[...timezones]}
+        selectedTimezone={timezones[0].timezones[0]}
+      />
+      <ComboboxWithCheckbox frameworks={[...frameworks]} />
+    </ExampleWrapper>
   )
 }
 
@@ -127,7 +128,7 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
   const [value, setValue] = React.useState("")
 
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -177,7 +178,7 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
           </Command>
         </PopoverContent>
       </Popover>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -197,7 +198,7 @@ function UserCombobox({
   )
 
   return (
-    <CanvaFrame title="With Avatar">
+    <Example title="With Avatar">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -274,7 +275,7 @@ function UserCombobox({
           </Command>
         </PopoverContent>
       </Popover>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -302,7 +303,7 @@ function TimezoneCombobox({
   )
 
   return (
-    <CanvaFrame title="With Groups">
+    <Example title="With Groups">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -372,7 +373,7 @@ function TimezoneCombobox({
           </Command>
         </PopoverContent>
       </Popover>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -383,7 +384,7 @@ function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
   >([])
 
   return (
-    <CanvaFrame title="Multi-Select">
+    <Example title="Multi-Select">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -442,6 +443,6 @@ function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
           </Command>
         </PopoverContent>
       </Popover>
-    </CanvaFrame>
+    </Example>
   )
 }

@@ -1,28 +1,29 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Toggle } from "@/registry/bases/radix/ui/toggle"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 export default function ToggleExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <ToggleBasic />
-        <ToggleOutline />
-        <ToggleSizes />
-        <ToggleWithButtonText />
-        <ToggleWithButtonIcon />
-        <ToggleWithButtonIconText />
-        <ToggleDisabled />
-        <ToggleWithIcon />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <ToggleBasic />
+      <ToggleOutline />
+      <ToggleSizes />
+      <ToggleWithButtonText />
+      <ToggleWithButtonIcon />
+      <ToggleWithButtonIconText />
+      <ToggleDisabled />
+      <ToggleWithIcon />
+    </ExampleWrapper>
   )
 }
 
 function ToggleBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <div className="flex flex-wrap items-center gap-2">
         <Toggle aria-label="Toggle bold" defaultPressed>
           <IconPlaceholder
@@ -46,13 +47,13 @@ function ToggleBasic() {
           />
         </Toggle>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleOutline() {
   return (
-    <CanvaFrame title="Outline">
+    <Example title="Outline">
       <div className="flex flex-wrap items-center gap-2">
         <Toggle variant="outline" aria-label="Toggle italic">
           <IconPlaceholder
@@ -71,13 +72,13 @@ function ToggleOutline() {
           Bold
         </Toggle>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleSizes() {
   return (
-    <CanvaFrame title="Sizes">
+    <Example title="Sizes">
       <div className="flex flex-wrap items-center gap-2">
         <Toggle variant="outline" aria-label="Toggle small" size="sm">
           Small
@@ -89,13 +90,13 @@ function ToggleSizes() {
           Large
         </Toggle>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleWithButtonText() {
   return (
-    <CanvaFrame title="With Button Text">
+    <Example title="With Button Text">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2">
           <Button size="sm" variant="outline">
@@ -122,13 +123,13 @@ function ToggleWithButtonText() {
           </Toggle>
         </div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleWithButtonIcon() {
   return (
-    <CanvaFrame title="With Button Icon">
+    <Example title="With Button Icon">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2">
           <Button variant="outline" size="icon-sm">
@@ -183,13 +184,13 @@ function ToggleWithButtonIcon() {
           </Toggle>
         </div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleWithButtonIconText() {
   return (
-    <CanvaFrame title="With Button Icon + Text">
+    <Example title="With Button Icon + Text">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2">
           <Button size="sm" variant="outline">
@@ -253,13 +254,13 @@ function ToggleWithButtonIconText() {
           </Toggle>
         </div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleDisabled() {
   return (
-    <CanvaFrame title="Disabled">
+    <Example title="Disabled">
       <div className="flex flex-wrap items-center gap-2">
         <Toggle aria-label="Toggle disabled" disabled>
           Disabled
@@ -268,13 +269,13 @@ function ToggleDisabled() {
           Disabled
         </Toggle>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleWithIcon() {
   return (
-    <CanvaFrame title="With Icon">
+    <Example title="With Icon">
       <div className="flex flex-wrap items-center gap-2">
         <Toggle aria-label="Toggle bookmark" defaultPressed>
           <IconPlaceholder
@@ -294,6 +295,6 @@ function ToggleWithIcon() {
           Bookmark
         </Toggle>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }

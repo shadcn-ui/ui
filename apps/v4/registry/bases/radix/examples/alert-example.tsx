@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Alert,
   AlertAction,
@@ -17,23 +20,21 @@ import {
 } from "@/registry/bases/radix/ui/card"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function AlertDemo() {
+export default function AlertExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <AlertExample1 />
-        <AlertExample2 />
-        <AlertExample3 />
-        <AlertExample4 />
-        <AlertExample5 />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <AlertExample1 />
+      <AlertExample2 />
+      <AlertExample3 />
+      <AlertExample4 />
+      <AlertExample5 />
+    </ExampleWrapper>
   )
 }
 
 function AlertExample1() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Alert>
         <AlertTitle>Success! Your changes have been saved.</AlertTitle>
       </Alert>
@@ -48,13 +49,13 @@ function AlertExample1() {
           This one has a description only. No title. No icon.
         </AlertDescription>
       </Alert>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AlertExample2() {
   return (
-    <CanvaFrame title="With Icons">
+    <Example title="With Icons">
       <div className="flex flex-col gap-4">
         <Alert>
           <IconPlaceholder
@@ -134,13 +135,13 @@ function AlertExample2() {
           </AlertDescription>
         </Alert>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AlertExample3() {
   return (
-    <CanvaFrame title="Destructive">
+    <Example title="Destructive">
       <div className="flex w-full flex-col gap-4">
         <Alert variant="destructive">
           <IconPlaceholder
@@ -173,13 +174,13 @@ function AlertExample3() {
           </AlertDescription>
         </Alert>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AlertExample4() {
   return (
-    <CanvaFrame title="With Actions">
+    <Example title="With Actions">
       <div className="flex w-full flex-col gap-4">
         <Alert>
           <IconPlaceholder
@@ -208,13 +209,13 @@ function AlertExample4() {
           </AlertAction>
         </Alert>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AlertExample5() {
   return (
-    <CanvaFrame title="In Card">
+    <Example title="In Card">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Payment Settings</CardTitle>
@@ -251,6 +252,6 @@ function AlertExample5() {
           <Button className="w-full">Update Payment Method</Button>
         </CardFooter>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }

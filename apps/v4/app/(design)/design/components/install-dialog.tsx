@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useParams, useSearchParams } from "next/navigation"
 import { IconCheck, IconCopy } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
@@ -20,6 +21,7 @@ import { designSystemSearchParams } from "@/app/(design)/design/lib/search-param
 
 export function InstallDialog() {
   const [open, setOpen] = React.useState(false)
+  const { base } = useParams()
   const [params] = useQueryStates(designSystemSearchParams, {
     shallow: false,
   })
@@ -62,36 +64,50 @@ export function InstallDialog() {
   }, [command, setOpen])
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button size="sm" className="h-[31px] rounded-lg">
-          Create Project
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="dialog-ring sm:max-w-[600px]">
-        <DialogHeader>
-          <DialogTitle>Install shadcn/ui</DialogTitle>
-          <DialogDescription>
-            Run this command to start a new shadcn/ui project with your selected
-            configuration.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="bg-surface text-surface-foreground relative overflow-hidden rounded-lg p-4">
-          <div className="no-scrollbar overflow-x-auto pr-10">
-            <code className="font-mono text-sm whitespace-nowrap">
-              {command}
-            </code>
+    <>
+      <Button asChild size="sm" variant="outline">
+        <a
+          href={`/init?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}`}
+          target="_blank"
+        >
+          View
+        </a>
+      </Button>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogTrigger asChild>
+          <Button size="sm" className="h-[31px] rounded-lg">
+            Create Project
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="dialog-ring sm:max-w-[600px]">
+          <DialogHeader>
+            <DialogTitle>Install shadcn/ui</DialogTitle>
+            <DialogDescription>
+              Run this command to start a new shadcn/ui project with your
+              selected configuration.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="bg-surface text-surface-foreground relative overflow-hidden rounded-lg p-4">
+            <div className="no-scrollbar overflow-x-auto pr-10">
+              <code className="font-mono text-sm whitespace-nowrap">
+                {command}
+              </code>
+            </div>
           </div>
-        </div>
-        <DialogFooter>
-          <Button size="sm" variant="secondary" onClick={() => setOpen(false)}>
-            Open in <Icons.v0 className="size-5" />
-          </Button>
-          <Button size="sm" onClick={handleCopy}>
-            Copy Command
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+          <DialogFooter>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => setOpen(false)}
+            >
+              Open in <Icons.v0 className="size-5" />
+            </Button>
+            <Button size="sm" onClick={handleCopy}>
+              Copy Command
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
   )
 }

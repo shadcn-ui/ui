@@ -6,6 +6,8 @@ import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { BASES } from "@/registry/bases"
 import { Customizer } from "@/app/(design)/design/components/customizer"
+import { ItemExplorer } from "@/app/(design)/design/components/item-explorer"
+import { Panel } from "@/app/(design)/design/components/panel"
 import { Preview } from "@/app/(design)/design/components/preview"
 import { Toolbar } from "@/app/(design)/design/components/toolbar"
 import { getItemsForBase } from "@/app/(design)/design/lib/api"
@@ -95,10 +97,8 @@ export default async function NewPage({
       className="section-soft flex h-screen flex-1 flex-col"
     >
       <Toolbar items={filteredItems} />
-      <div className="flex flex-1 gap-5 overflow-hidden px-5 pb-4">
-        <div className="overflow-y-auto">
-          <Customizer />
-        </div>
+      <div className="flex flex-1 gap-4 overflow-hidden px-6 pb-4">
+        <Panel items={filteredItems} />
         <div className="flex flex-1 flex-col">
           <Preview base={base.name} />
         </div>

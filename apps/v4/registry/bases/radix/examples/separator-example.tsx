@@ -1,22 +1,23 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Separator } from "@/registry/bases/radix/ui/separator"
 
 export default function SeparatorExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <SeparatorHorizontal />
-        <SeparatorVertical />
-        <SeparatorVerticalMenu />
-        <SeparatorInList />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <SeparatorHorizontal />
+      <SeparatorVertical />
+      <SeparatorVerticalMenu />
+      <SeparatorInList />
+    </ExampleWrapper>
   )
 }
 
 function SeparatorHorizontal() {
   return (
-    <CanvaFrame title="Horizontal">
+    <Example title="Horizontal">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
           <div className="text-sm leading-none font-medium">shadcn/ui</div>
@@ -30,13 +31,13 @@ function SeparatorHorizontal() {
           extend, and build on.
         </div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SeparatorVertical() {
   return (
-    <CanvaFrame title="Vertical">
+    <Example title="Vertical">
       <div className="flex h-5 items-center gap-4 text-sm">
         <div>Blog</div>
         <Separator orientation="vertical" />
@@ -44,13 +45,13 @@ function SeparatorVertical() {
         <Separator orientation="vertical" />
         <div>Source</div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SeparatorVerticalMenu() {
   return (
-    <CanvaFrame title="Vertical Menu">
+    <Example title="Vertical Menu">
       <div className="flex items-center gap-2 md:gap-4">
         <div className="flex flex-col gap-1 text-sm">
           <span className="font-medium">Settings</span>
@@ -71,13 +72,13 @@ function SeparatorVerticalMenu() {
           <span className="text-muted-foreground text-xs">Support & docs</span>
         </div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SeparatorInList() {
   return (
-    <CanvaFrame title="In List">
+    <Example title="In List">
       <div className="flex flex-col gap-2">
         <dl className="flex items-center justify-between text-sm">
           <dt>Item 1</dt>
@@ -94,6 +95,6 @@ function SeparatorInList() {
           <dd className="text-muted-foreground">Value 3</dd>
         </dl>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }

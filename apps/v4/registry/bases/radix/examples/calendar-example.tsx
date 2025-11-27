@@ -5,8 +5,10 @@ import { addDays, format } from "date-fns"
 import { type DateRange } from "react-day-picker"
 import { es } from "react-day-picker/locale"
 
-import { cn } from "@/lib/utils"
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Calendar, CalendarDayButton } from "@/registry/bases/radix/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/registry/bases/radix/ui/card"
@@ -20,24 +22,22 @@ import {
 } from "@/registry/bases/radix/ui/popover"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function CalendarDemo() {
+export default function CalendarExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex flex-col gap-12">
-        <CalendarSingle />
-        <CalendarMultiple />
-        <CalendarRange />
-        <CalendarRangeMultipleMonths />
-        <CalendarBookedDates />
-        <CalendarWithTime />
-        <CalendarWeekNumbers />
-        <CalendarWithPresets />
-        <CalendarCustomDays />
-        <DatePickerSimple />
-        <DataPickerWithDropdowns />
-        <DatePickerWithRange />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <CalendarSingle />
+      <CalendarMultiple />
+      <CalendarRange />
+      <CalendarRangeMultipleMonths />
+      <CalendarBookedDates />
+      <CalendarWithTime />
+      <CalendarWeekNumbers />
+      <CalendarWithPresets />
+      <CalendarCustomDays />
+      <DatePickerSimple />
+      <DataPickerWithDropdowns />
+      <DatePickerWithRange />
+    </ExampleWrapper>
   )
 }
 
@@ -46,8 +46,8 @@ function CalendarSingle() {
     new Date(new Date().getFullYear(), new Date().getMonth(), 12)
   )
   return (
-    <CanvaFrame title="Single" className="max-w-lg">
-      <Card className="w-fit p-0">
+    <Example title="Single">
+      <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar
             mode="single"
@@ -57,19 +57,19 @@ function CalendarSingle() {
           />
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CalendarMultiple() {
   return (
-    <CanvaFrame title="Multiple" className="max-w-lg">
-      <Card className="w-fit p-0">
+    <Example title="Multiple">
+      <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar mode="multiple" />
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -80,8 +80,8 @@ function CalendarRange() {
   })
 
   return (
-    <CanvaFrame title="Range" className="max-w-lg">
-      <Card className="w-fit p-0">
+    <Example title="Range" className="max-w-fit">
+      <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar
             mode="range"
@@ -95,7 +95,7 @@ function CalendarRange() {
           />
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -106,8 +106,8 @@ function CalendarRangeMultipleMonths() {
   })
 
   return (
-    <CanvaFrame title="Range Multiple Months" className="max-w-3xl">
-      <Card className="w-fit p-0">
+    <Example title="Range Multiple Months" className="max-w-3xl">
+      <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar
             mode="range"
@@ -120,7 +120,7 @@ function CalendarRangeMultipleMonths() {
           />
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -134,8 +134,8 @@ function CalendarBookedDates() {
   )
 
   return (
-    <CanvaFrame title="Booked Dates" className="max-w-lg">
-      <Card className="w-fit p-0">
+    <Example title="Booked Dates">
+      <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar
             mode="single"
@@ -152,7 +152,7 @@ function CalendarBookedDates() {
           />
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -162,8 +162,8 @@ function CalendarWithTime() {
   )
 
   return (
-    <CanvaFrame title="With Time" className="max-w-lg">
-      <Card className="w-fit py-4">
+    <Example title="With Time">
+      <Card className="mx-auto w-fit py-4">
         <CardContent className="px-4">
           <Calendar
             mode="single"
@@ -211,7 +211,7 @@ function CalendarWithTime() {
           </div>
         </CardFooter>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -222,8 +222,8 @@ function CalendarCustomDays() {
   })
 
   return (
-    <CanvaFrame title="Custom Days" className="max-w-lg">
-      <Card className="p-0">
+    <Example title="Custom Days">
+      <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar
             mode="range"
@@ -256,7 +256,7 @@ function CalendarCustomDays() {
           />
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -269,8 +269,8 @@ function CalendarWithPresets() {
   )
 
   return (
-    <CanvaFrame title="With Presets" className="max-w-lg">
-      <Card className="w-fit max-w-[300px] py-4">
+    <Example title="With Presets">
+      <Card className="mx-auto w-fit max-w-[300px] py-4">
         <CardContent className="px-4">
           <Calendar
             mode="single"
@@ -308,7 +308,7 @@ function CalendarWithPresets() {
           ))}
         </CardFooter>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -316,8 +316,8 @@ function DatePickerSimple() {
   const [date, setDate] = React.useState<Date>()
 
   return (
-    <CanvaFrame title="Date Picker Simple" className="max-w-lg">
-      <Field>
+    <Example title="Date Picker Simple">
+      <Field className="mx-auto w-72">
         <FieldLabel htmlFor="date-picker-simple">Date</FieldLabel>
         <Popover>
           <PopoverTrigger asChild>
@@ -340,7 +340,7 @@ function DatePickerSimple() {
           </PopoverContent>
         </Popover>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -351,8 +351,8 @@ function DatePickerWithRange() {
   })
 
   return (
-    <CanvaFrame title="Date Picker Range" className="max-w-lg">
-      <Field>
+    <Example title="Date Picker Range">
+      <Field className="mx-auto w-72">
         <FieldLabel htmlFor="date-picker-range">Date Picker Range</FieldLabel>
         <Popover>
           <PopoverTrigger asChild>
@@ -392,7 +392,7 @@ function DatePickerWithRange() {
           </PopoverContent>
         </Popover>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -401,8 +401,8 @@ function DataPickerWithDropdowns() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <CanvaFrame title="Date Picker with Dropdowns">
-      <Field>
+    <Example title="Date Picker with Dropdowns">
+      <Field className="mx-auto w-72">
         <Popover open={open} onOpenChange={setOpen}>
           <FieldLabel htmlFor="date-picker-with-dropdowns-desktop">
             Date
@@ -443,7 +443,7 @@ function DataPickerWithDropdowns() {
           </PopoverContent>
         </Popover>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -453,8 +453,8 @@ function CalendarWeekNumbers() {
   )
 
   return (
-    <CanvaFrame title="Week Numbers">
-      <Card className="w-fit p-0">
+    <Example title="Week Numbers">
+      <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar
             mode="single"
@@ -465,6 +465,6 @@ function CalendarWeekNumbers() {
           />
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }

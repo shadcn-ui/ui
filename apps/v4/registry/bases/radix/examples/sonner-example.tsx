@@ -3,32 +3,32 @@
 import * as React from "react"
 import { toast } from "sonner"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Toaster } from "@/registry/bases/radix/ui/sonner"
 
 export default function SonnerExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <SonnerBasic />
-        <SonnerWithDescription />
-        <SonnerSuccess />
-        <SonnerInfo />
-        <SonnerWarning />
-        <SonnerError />
-        <SonnerWithAction />
-        <SonnerWithCancel />
-        <SonnerPromise />
-        <Toaster position="top-center" />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <SonnerBasic />
+      <SonnerWithDescription />
+      <SonnerSuccess />
+      <SonnerInfo />
+      <SonnerWarning />
+      <SonnerError />
+      <SonnerWithAction />
+      <SonnerWithCancel />
+      <SonnerPromise />
+    </ExampleWrapper>
   )
 }
 
 function SonnerBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Button
         onClick={() => toast("Event has been created")}
         variant="outline"
@@ -36,13 +36,13 @@ function SonnerBasic() {
       >
         Show Toast
       </Button>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SonnerWithDescription() {
   return (
-    <CanvaFrame title="With Description">
+    <Example title="With Description">
       <Button
         onClick={() =>
           toast("Event has been created", {
@@ -54,13 +54,13 @@ function SonnerWithDescription() {
       >
         Show Toast
       </Button>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SonnerSuccess() {
   return (
-    <CanvaFrame title="Success">
+    <Example title="Success">
       <Button
         onClick={() => toast.success("Event has been created")}
         variant="outline"
@@ -68,13 +68,13 @@ function SonnerSuccess() {
       >
         Show Toast
       </Button>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SonnerInfo() {
   return (
-    <CanvaFrame title="Info">
+    <Example title="Info">
       <Button
         onClick={() =>
           toast.info("Be at the area 10 minutes before the event time")
@@ -84,13 +84,13 @@ function SonnerInfo() {
       >
         Show Toast
       </Button>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SonnerWarning() {
   return (
-    <CanvaFrame title="Warning">
+    <Example title="Warning">
       <Button
         onClick={() =>
           toast.warning("Event start time cannot be earlier than 8am")
@@ -100,13 +100,13 @@ function SonnerWarning() {
       >
         Show Toast
       </Button>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SonnerError() {
   return (
-    <CanvaFrame title="Error">
+    <Example title="Error">
       <Button
         onClick={() => toast.error("Event has not been created")}
         variant="outline"
@@ -114,13 +114,13 @@ function SonnerError() {
       >
         Show Toast
       </Button>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SonnerWithAction() {
   return (
-    <CanvaFrame title="With Action">
+    <Example title="With Action">
       <Button
         onClick={() =>
           toast("Event has been created", {
@@ -135,13 +135,13 @@ function SonnerWithAction() {
       >
         Show Toast
       </Button>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SonnerWithCancel() {
   return (
-    <CanvaFrame title="With Cancel">
+    <Example title="With Cancel">
       <Button
         onClick={() =>
           toast("Event has been created", {
@@ -156,13 +156,13 @@ function SonnerWithCancel() {
       >
         Show Toast
       </Button>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SonnerPromise() {
   return (
-    <CanvaFrame title="Promise">
+    <Example title="Promise">
       <Button
         onClick={() =>
           toast.promise<{ name: string }>(
@@ -186,6 +186,6 @@ function SonnerPromise() {
       >
         Show Toast
       </Button>
-    </CanvaFrame>
+    </Example>
   )
 }

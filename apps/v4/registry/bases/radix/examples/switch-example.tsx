@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Field,
   FieldContent,
@@ -11,41 +14,39 @@ import { Switch } from "@/registry/bases/radix/ui/switch"
 
 export default function SwitchExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <SwitchBasic />
-        <SwitchWithDescription />
-        <SwitchDisabled />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <SwitchBasic />
+      <SwitchWithDescription />
+      <SwitchDisabled />
+    </ExampleWrapper>
   )
 }
 
 function SwitchBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Field orientation="horizontal">
         <Switch id="switch-basic" />
         <FieldLabel htmlFor="switch-basic">Airplane Mode</FieldLabel>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SwitchWithLabel() {
   return (
-    <CanvaFrame title="With Label">
+    <Example title="With Label">
       <div className="flex items-center gap-2">
         <Switch id="switch-bluetooth" defaultChecked />
         <Label htmlFor="switch-bluetooth">Bluetooth</Label>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SwitchWithDescription() {
   return (
-    <CanvaFrame title="With Description">
+    <Example title="With Description">
       <FieldLabel htmlFor="switch-focus-mode">
         <Field orientation="horizontal">
           <FieldContent>
@@ -58,13 +59,13 @@ function SwitchWithDescription() {
           <Switch id="switch-focus-mode" />
         </Field>
       </FieldLabel>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function SwitchDisabled() {
   return (
-    <CanvaFrame title="Disabled">
+    <Example title="Disabled">
       <div className="flex flex-col gap-12">
         <div className="flex items-center gap-2">
           <Switch id="switch-disabled-unchecked" disabled />
@@ -77,6 +78,6 @@ function SwitchDisabled() {
           <Label htmlFor="switch-disabled-checked">Disabled (Checked)</Label>
         </div>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }

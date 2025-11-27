@@ -1,7 +1,10 @@
 import * as React from "react"
 import Image from "next/image"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { ScrollArea, ScrollBar } from "@/registry/bases/radix/ui/scroll-area"
 import { Separator } from "@/registry/bases/radix/ui/separator"
 
@@ -26,18 +29,16 @@ const works = [
 
 export default function ScrollAreaExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <ScrollAreaVertical />
-        <ScrollAreaHorizontal />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <ScrollAreaVertical />
+      <ScrollAreaHorizontal />
+    </ExampleWrapper>
   )
 }
 
 function ScrollAreaVertical() {
   return (
-    <CanvaFrame title="Vertical">
+    <Example title="Vertical">
       <ScrollArea className="mx-auto h-72 w-48 rounded-md border">
         <div className="p-4">
           <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
@@ -49,13 +50,13 @@ function ScrollAreaVertical() {
           ))}
         </div>
       </ScrollArea>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ScrollAreaHorizontal() {
   return (
-    <CanvaFrame title="Horizontal">
+    <Example title="Horizontal">
       <ScrollArea className="mx-auto w-full max-w-96 rounded-md border p-4">
         <div className="flex gap-4">
           {works.map((artwork) => (
@@ -80,6 +81,6 @@ function ScrollAreaHorizontal() {
         </div>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-    </CanvaFrame>
+    </Example>
   )
 }

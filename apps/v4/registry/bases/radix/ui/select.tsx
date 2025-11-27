@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Select as SelectPrimitive } from "radix-ui"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/registry/bases/radix/lib/cn"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 function Select({

@@ -2,7 +2,10 @@
 
 import * as React from "react"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Card,
@@ -24,13 +27,9 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function CollapsibleExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <CollapsibleFileTree />
-        <CollapsibleSettings />
-        <CollapsibleNavigation />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <CollapsibleSettings />
+    </ExampleWrapper>
   )
 }
 
@@ -139,7 +138,7 @@ function CollapsibleFileTree() {
   }
 
   return (
-    <CanvaFrame title="File Tree">
+    <Example title="File Tree">
       <Card className="w-[16rem] gap-2">
         <CardHeader>
           <Tabs defaultValue="explorer">
@@ -155,7 +154,7 @@ function CollapsibleFileTree() {
           </div>
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -163,7 +162,7 @@ function CollapsibleSettings() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <CanvaFrame title="Settings">
+    <Example title="Settings">
       <Card className="w-full max-w-xs [--padding:--spacing(4)]">
         <CardHeader>
           <CardTitle>Radius</CardTitle>
@@ -225,7 +224,7 @@ function CollapsibleSettings() {
           </Collapsible>
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -288,7 +287,7 @@ function CollapsibleNavigation() {
   ]
 
   return (
-    <CanvaFrame title="Navigation">
+    <Example title="Navigation">
       <Card className="w-full max-w-[16rem] [--padding:--spacing(2)]">
         <CardContent>
           <nav className="flex flex-col gap-1">
@@ -340,6 +339,6 @@ function CollapsibleNavigation() {
           <Button className="w-full">Button</Button>
         </CardFooter>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }

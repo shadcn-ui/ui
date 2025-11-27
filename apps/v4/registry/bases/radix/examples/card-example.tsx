@@ -1,6 +1,9 @@
 import Image from "next/image"
 
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Avatar,
   AvatarFallback,
@@ -23,23 +26,21 @@ import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function CardDemo() {
+export default function CardExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <CardLogin />
-        <CardMeetingNotes />
-        <CardWithImage />
-        <CardHeaderWithBorder />
-        <CardFooterWithBorder />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <CardLogin />
+      <CardMeetingNotes />
+      <CardWithImage />
+      <CardHeaderWithBorder />
+      <CardFooterWithBorder />
+    </ExampleWrapper>
   )
 }
 
 function CardLogin() {
   return (
-    <CanvaFrame title="Login">
+    <Example title="Login">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
@@ -89,13 +90,13 @@ function CardLogin() {
           </div>
         </CardFooter>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CardMeetingNotes() {
   return (
-    <CanvaFrame title="Meeting Notes">
+    <Example title="Meeting Notes">
       <Card>
         <CardHeader>
           <CardTitle>Meeting Notes</CardTitle>
@@ -151,13 +152,13 @@ function CardMeetingNotes() {
           </AvatarGroup>
         </CardFooter>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CardWithImage() {
   return (
-    <CanvaFrame title="With Image">
+    <Example title="With Image">
       <Card>
         <CardHeader>
           <CardTitle>Is this an image?</CardTitle>
@@ -185,13 +186,13 @@ function CardWithImage() {
           </Button>
         </CardFooter>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CardHeaderWithBorder() {
   return (
-    <CanvaFrame title="Header with Border">
+    <Example title="Header with Border">
       <Card>
         <CardHeader className="border-b">
           <CardTitle>Header with Border</CardTitle>
@@ -206,13 +207,13 @@ function CardHeaderWithBorder() {
           </p>
         </CardContent>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function CardFooterWithBorder() {
   return (
-    <CanvaFrame title="Footer with Border">
+    <Example title="Footer with Border">
       <Card>
         <CardContent className="text-sm">
           <p>
@@ -226,6 +227,6 @@ function CardFooterWithBorder() {
           </Button>
         </CardFooter>
       </Card>
-    </CanvaFrame>
+    </Example>
   )
 }

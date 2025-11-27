@@ -3,7 +3,7 @@
 import * as React from "react"
 import { OTPInput, OTPInputContext } from "input-otp"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/registry/bases/radix/lib/cn"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
 function InputOTP({
@@ -63,7 +63,7 @@ function InputOTPSlot({
       {char}
       {hasFakeCaret && (
         <div className="cn-input-otp-caret pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="cn-input-otp-caret-line animate-caret-blink bg-foreground h-4 w-px duration-1000" />
+          <div className="cn-input-otp-caret-line bg-foreground h-4 w-px" />
         </div>
       )}
     </div>

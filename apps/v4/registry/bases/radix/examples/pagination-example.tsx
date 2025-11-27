@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Field, FieldLabel } from "@/registry/bases/radix/ui/field"
 import {
   Pagination,
@@ -19,19 +22,17 @@ import {
 
 export default function PaginationExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <PaginationBasic />
-        <PaginationSimple />
-        <PaginationIconsOnly />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <PaginationBasic />
+      <PaginationSimple />
+      <PaginationIconsOnly />
+    </ExampleWrapper>
   )
 }
 
 function PaginationBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Pagination>
         <PaginationContent>
           <PaginationItem>
@@ -56,13 +57,13 @@ function PaginationBasic() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function PaginationSimple() {
   return (
-    <CanvaFrame title="Simple">
+    <Example title="Simple">
       <Pagination>
         <PaginationContent>
           <PaginationItem>
@@ -84,13 +85,13 @@ function PaginationSimple() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function PaginationIconsOnly() {
   return (
-    <CanvaFrame title="With Select">
+    <Example title="With Select">
       <div className="flex items-center justify-between gap-4">
         <Field orientation="horizontal" className="w-fit">
           <FieldLabel htmlFor="select-rows-per-page">Rows per page</FieldLabel>
@@ -117,6 +118,6 @@ function PaginationIconsOnly() {
           </PaginationContent>
         </Pagination>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }

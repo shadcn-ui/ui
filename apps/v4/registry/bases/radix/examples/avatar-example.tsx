@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Avatar,
   AvatarBadge,
@@ -68,26 +71,23 @@ import {
 } from "@/registry/bases/radix/ui/select"
 import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
 
-export default function AvatarDemo() {
+export default function AvatarExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <AvatarSizes />
-        <AvatarWithBadge />
-        <AvatarWithBadgeIcon />
-        <AvatarGroupExample />
-        <AvatarGroupWithCount />
-        <AvatarGroupWithIconCount />
-        <AvatarInEmpty />
-        <AvatarInSelect />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <AvatarSizes />
+      <AvatarWithBadge />
+      <AvatarWithBadgeIcon />
+      <AvatarGroupExample />
+      <AvatarGroupWithCount />
+      <AvatarGroupWithIconCount />
+      <AvatarInEmpty />
+    </ExampleWrapper>
   )
 }
 
 function AvatarSizes() {
   return (
-    <CanvaFrame title="Sizes">
+    <Example title="Sizes">
       <div className="flex flex-wrap items-center gap-2">
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -113,13 +113,13 @@ function AvatarSizes() {
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AvatarWithBadge() {
   return (
-    <CanvaFrame title="Badge">
+    <Example title="Badge">
       <div className="flex flex-wrap items-center gap-2">
         <Avatar size="sm">
           <AvatarImage
@@ -160,13 +160,13 @@ function AvatarWithBadge() {
           <AvatarBadge />
         </Avatar>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AvatarWithBadgeIcon() {
   return (
-    <CanvaFrame title="Badge with Icon">
+    <Example title="Badge with Icon">
       <div className="flex flex-wrap items-center gap-2">
         <Avatar size="sm">
           <AvatarImage
@@ -243,13 +243,13 @@ function AvatarWithBadgeIcon() {
           </AvatarBadge>
         </Avatar>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AvatarGroupExample() {
   return (
-    <CanvaFrame title="Group">
+    <Example title="Group">
       <AvatarGroup>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -310,13 +310,13 @@ function AvatarGroupExample() {
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
       </AvatarGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AvatarGroupWithCount() {
   return (
-    <CanvaFrame title="Group with Count">
+    <Example title="Group with Count">
       <AvatarGroup>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -380,13 +380,13 @@ function AvatarGroupWithCount() {
         </Avatar>
         <AvatarGroupCount>+3</AvatarGroupCount>
       </AvatarGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AvatarGroupWithIconCount() {
   return (
-    <CanvaFrame title="Group with Icon Count">
+    <Example title="Group with Icon Count">
       <AvatarGroup>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -474,13 +474,13 @@ function AvatarGroupWithIconCount() {
           />
         </AvatarGroupCount>
       </AvatarGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function AvatarInEmpty() {
   return (
-    <CanvaFrame title="In Empty">
+    <Example title="In Empty">
       <Empty className="w-full flex-none border">
         <EmptyHeader>
           <EmptyMedia>
@@ -534,7 +534,7 @@ function AvatarInEmpty() {
           </Button>
         </EmptyContent>
       </Empty>
-    </CanvaFrame>
+    </Example>
   )
 }
 
@@ -568,7 +568,7 @@ function AvatarInSelect() {
   ]
 
   return (
-    <CanvaFrame title="In Select">
+    <Example title="In Select">
       <Field>
         <FieldLabel>Select User</FieldLabel>
 
@@ -599,6 +599,6 @@ function AvatarInSelect() {
         </Select>
         <FieldDescription>Choose a user from the dropdown.</FieldDescription>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }

@@ -548,6 +548,63 @@
     @apply dark:bg-input/30 border-input h-9 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] file:h-7 file:text-sm file:font-medium md:text-sm;
   }
 
+  /* MARK: Input Group */
+  .cn-input-group {
+    @apply border-input dark:bg-input/30 h-9 rounded-md border shadow-xs transition-[color,box-shadow] has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-2 has-[>[data-align=inline-start]]:[&>input]:pl-2;
+  }
+
+  .cn-input-group-addon {
+    @apply text-muted-foreground h-auto gap-2 py-1.5 text-sm font-medium group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-input-group-addon-align-inline-start {
+    @apply pl-3 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem];
+  }
+
+  .cn-input-group-addon-align-inline-end {
+    @apply pr-3 has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem];
+  }
+
+  .cn-input-group-addon-align-block-start {
+    @apply px-3 pt-3 group-has-[>input]/input-group:pt-2.5 [.border-b]:pb-3;
+  }
+
+  .cn-input-group-addon-align-block-end {
+    @apply px-3 pb-3 group-has-[>input]/input-group:pb-2.5 [.border-t]:pt-3;
+  }
+
+  .cn-input-group-button {
+    @apply gap-2 text-sm;
+  }
+
+  .cn-input-group-button-size-xs {
+    @apply h-6 gap-1 rounded-[calc(var(--radius)-5px)] px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5;
+  }
+
+  .cn-input-group-button-size-sm {
+    @apply h-8 gap-1.5 rounded-md px-2.5 has-[>svg]:px-2.5;
+  }
+
+  .cn-input-group-button-size-icon-xs {
+    @apply size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0;
+  }
+
+  .cn-input-group-button-size-icon-sm {
+    @apply size-8 p-0 has-[>svg]:p-0;
+  }
+
+  .cn-input-group-text {
+    @apply text-muted-foreground gap-2 text-sm [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-input-group-input {
+    @apply bg-transparent dark:bg-transparent;
+  }
+
+  .cn-input-group-textarea {
+    @apply bg-transparent dark:bg-transparent;
+  }
+
   /* MARK: Input OTP */
   .cn-input-otp {
     @apply gap-2;
@@ -636,63 +693,6 @@
 
   .cn-item-separator {
     @apply -my-2;
-  }
-
-  /* MARK: Input Group */
-  .cn-input-group {
-    @apply border-input dark:bg-input/30 has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 h-9 rounded-md border shadow-xs transition-[color,box-shadow] has-[[class*=cn-input-group-addon-align-block-end]]:h-auto has-[[class*=cn-input-group-addon-align-block-start]]:h-auto has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[>textarea]:h-auto has-[[class*=cn-input-group-addon-align-block-end]]:[&>input]:pt-3 has-[[class*=cn-input-group-addon-align-block-start]]:[&>input]:pb-3 has-[[class*=cn-input-group-addon-align-inline-end]]:[&>input]:pr-2 has-[[class*=cn-input-group-addon-align-inline-start]]:[&>input]:pl-2;
-  }
-
-  .cn-input-group-addon {
-    @apply text-muted-foreground h-auto gap-2 py-1.5 text-sm font-medium group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4;
-  }
-
-  .cn-input-group-addon-align-inline-start {
-    @apply pl-3 has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem];
-  }
-
-  .cn-input-group-addon-align-inline-end {
-    @apply pr-3 has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem];
-  }
-
-  .cn-input-group-addon-align-block-start {
-    @apply px-3 pt-3 group-has-[>input]/input-group:pt-2.5 [.border-b]:pb-3;
-  }
-
-  .cn-input-group-addon-align-block-end {
-    @apply px-3 pb-3 group-has-[>input]/input-group:pb-2.5 [.border-t]:pt-3;
-  }
-
-  .cn-input-group-button {
-    @apply gap-2 text-sm;
-  }
-
-  .cn-input-group-button-size-xs {
-    @apply h-6 gap-1 rounded-[calc(var(--radius)-5px)] px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5;
-  }
-
-  .cn-input-group-button-size-sm {
-    @apply h-8 gap-1.5 rounded-md px-2.5 has-[>svg]:px-2.5;
-  }
-
-  .cn-input-group-button-size-icon-xs {
-    @apply size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0;
-  }
-
-  .cn-input-group-button-size-icon-sm {
-    @apply size-8 p-0 has-[>svg]:p-0;
-  }
-
-  .cn-input-group-text {
-    @apply text-muted-foreground gap-2 text-sm [&_svg:not([class*='size-'])]:size-4;
-  }
-
-  .cn-input-group-input {
-    @apply bg-transparent dark:bg-transparent;
-  }
-
-  .cn-input-group-textarea {
-    @apply bg-transparent dark:bg-transparent;
   }
 
   /* MARK: Kbd */

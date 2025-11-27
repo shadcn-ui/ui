@@ -3,7 +3,7 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/registry/bases/radix/lib/cn"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Input } from "@/registry/bases/radix/ui/input"
 import { Textarea } from "@/registry/bases/radix/ui/textarea"
@@ -14,8 +14,9 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="input-group"
       role="group"
       className={cn(
-        "cn-input-group group/input-group relative flex w-full min-w-0 items-center outline-none",
-        "has-[[class*=cn-input-group-addon-align-block-end]]:flex-col has-[[class*=cn-input-group-addon-align-block-start]]:flex-col",
+        "group/input-group cn-input-group relative flex w-full min-w-0 items-center outline-none has-[>textarea]:h-auto",
+        "has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]",
+        "has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
         className
       )}
       {...props}

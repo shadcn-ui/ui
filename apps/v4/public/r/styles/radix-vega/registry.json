@@ -732,6 +732,9 @@
     {
       "name": "cover-example",
       "title": "Cover",
+      "registryDependencies": [
+        "example"
+      ],
       "files": [
         {
           "path": "registry/radix-vega/examples/cover-example.tsx",
@@ -744,7 +747,10 @@
       "name": "accordion-example",
       "title": "Accordion",
       "registryDependencies": [
-        "accordion"
+        "accordion",
+        "button",
+        "card",
+        "example"
       ],
       "files": [
         {
@@ -758,7 +764,8 @@
       "name": "alert-example",
       "title": "Alert",
       "registryDependencies": [
-        "alert"
+        "alert",
+        "example"
       ],
       "files": [
         {
@@ -773,7 +780,8 @@
       "title": "Alert Dialog",
       "registryDependencies": [
         "alert-dialog",
-        "button"
+        "button",
+        "example"
       ],
       "files": [
         {
@@ -787,7 +795,8 @@
       "name": "aspect-ratio-example",
       "title": "Aspect Ratio",
       "registryDependencies": [
-        "aspect-ratio"
+        "aspect-ratio",
+        "example"
       ],
       "files": [
         {
@@ -801,7 +810,8 @@
       "name": "avatar-example",
       "title": "Avatar",
       "registryDependencies": [
-        "avatar"
+        "avatar",
+        "example"
       ],
       "files": [
         {
@@ -815,7 +825,8 @@
       "name": "badge-example",
       "title": "Badge",
       "registryDependencies": [
-        "badge"
+        "badge",
+        "example"
       ],
       "files": [
         {
@@ -829,7 +840,8 @@
       "name": "breadcrumb-example",
       "title": "Breadcrumb",
       "registryDependencies": [
-        "breadcrumb"
+        "breadcrumb",
+        "example"
       ],
       "files": [
         {
@@ -843,7 +855,8 @@
       "name": "button-example",
       "title": "Button",
       "registryDependencies": [
-        "button"
+        "button",
+        "example"
       ],
       "files": [
         {
@@ -857,7 +870,8 @@
       "name": "button-group-example",
       "title": "Button Group",
       "registryDependencies": [
-        "button-group"
+        "button-group",
+        "example"
       ],
       "files": [
         {
@@ -877,7 +891,8 @@
         "drawer",
         "input",
         "label",
-        "popover"
+        "popover",
+        "example"
       ],
       "files": [
         {
@@ -891,7 +906,8 @@
       "name": "card-example",
       "title": "Card",
       "registryDependencies": [
-        "card"
+        "card",
+        "example"
       ],
       "files": [
         {
@@ -905,7 +921,8 @@
       "name": "carousel-example",
       "title": "Carousel",
       "registryDependencies": [
-        "carousel"
+        "carousel",
+        "example"
       ],
       "files": [
         {
@@ -920,7 +937,8 @@
       "title": "Chart",
       "registryDependencies": [
         "chart",
-        "card"
+        "card",
+        "example"
       ],
       "files": [
         {
@@ -934,7 +952,8 @@
       "name": "checkbox-example",
       "title": "Checkbox",
       "registryDependencies": [
-        "checkbox"
+        "checkbox",
+        "example"
       ],
       "files": [
         {
@@ -948,7 +967,8 @@
       "name": "collapsible-example",
       "title": "Collapsible",
       "registryDependencies": [
-        "collapsible"
+        "collapsible",
+        "example"
       ],
       "files": [
         {
@@ -965,7 +985,8 @@
         "avatar",
         "button",
         "command",
-        "popover"
+        "popover",
+        "example"
       ],
       "files": [
         {
@@ -979,7 +1000,8 @@
       "name": "command-example",
       "title": "Command",
       "registryDependencies": [
-        "command"
+        "command",
+        "example"
       ],
       "files": [
         {
@@ -993,7 +1015,8 @@
       "name": "context-menu-example",
       "title": "Context Menu",
       "registryDependencies": [
-        "context-menu"
+        "context-menu",
+        "example"
       ],
       "files": [
         {
@@ -1007,7 +1030,8 @@
       "name": "dialog-example",
       "title": "Dialog",
       "registryDependencies": [
-        "dialog"
+        "dialog",
+        "example"
       ],
       "files": [
         {
@@ -1021,7 +1045,8 @@
       "name": "drawer-example",
       "title": "Drawer",
       "registryDependencies": [
-        "drawer"
+        "drawer",
+        "example"
       ],
       "files": [
         {
@@ -1035,7 +1060,8 @@
       "name": "dropdown-menu-example",
       "title": "Dropdown Menu",
       "registryDependencies": [
-        "dropdown-menu"
+        "dropdown-menu",
+        "example"
       ],
       "files": [
         {
@@ -1049,7 +1075,8 @@
       "name": "empty-example",
       "title": "Empty",
       "registryDependencies": [
-        "empty"
+        "empty",
+        "example"
       ],
       "files": [
         {
@@ -1063,7 +1090,8 @@
       "name": "field-example",
       "title": "Field",
       "registryDependencies": [
-        "field"
+        "field",
+        "example"
       ],
       "files": [
         {
@@ -1077,7 +1105,8 @@
       "name": "hover-card-example",
       "title": "Hover Card",
       "registryDependencies": [
-        "hover-card"
+        "hover-card",
+        "example"
       ],
       "files": [
         {
@@ -1091,7 +1120,8 @@
       "name": "input-example",
       "title": "Input",
       "registryDependencies": [
-        "input"
+        "input",
+        "example"
       ],
       "files": [
         {
@@ -1105,7 +1135,8 @@
       "name": "input-group-example",
       "title": "Input Group",
       "registryDependencies": [
-        "input-group"
+        "input-group",
+        "example"
       ],
       "files": [
         {
@@ -1119,7 +1150,8 @@
       "name": "input-otp-example",
       "title": "Input OTP",
       "registryDependencies": [
-        "input-otp"
+        "input-otp",
+        "example"
       ],
       "files": [
         {
@@ -1133,7 +1165,8 @@
       "name": "item-example",
       "title": "Item",
       "registryDependencies": [
-        "item"
+        "item",
+        "example"
       ],
       "files": [
         {
@@ -1147,7 +1180,8 @@
       "name": "kbd-example",
       "title": "Kbd",
       "registryDependencies": [
-        "kbd"
+        "kbd",
+        "example"
       ],
       "files": [
         {
@@ -1161,7 +1195,8 @@
       "name": "label-example",
       "title": "Label",
       "registryDependencies": [
-        "label"
+        "label",
+        "example"
       ],
       "files": [
         {
@@ -1175,7 +1210,8 @@
       "name": "menubar-example",
       "title": "Menubar",
       "registryDependencies": [
-        "menubar"
+        "menubar",
+        "example"
       ],
       "files": [
         {
@@ -1189,7 +1225,8 @@
       "name": "native-select-example",
       "title": "Native Select",
       "registryDependencies": [
-        "native-select"
+        "native-select",
+        "example"
       ],
       "files": [
         {
@@ -1203,7 +1240,8 @@
       "name": "navigation-menu-example",
       "title": "Navigation Menu",
       "registryDependencies": [
-        "navigation-menu"
+        "navigation-menu",
+        "example"
       ],
       "files": [
         {
@@ -1217,7 +1255,8 @@
       "name": "pagination-example",
       "title": "Pagination",
       "registryDependencies": [
-        "pagination"
+        "pagination",
+        "example"
       ],
       "files": [
         {
@@ -1231,7 +1270,8 @@
       "name": "popover-example",
       "title": "Popover",
       "registryDependencies": [
-        "popover"
+        "popover",
+        "example"
       ],
       "files": [
         {
@@ -1245,7 +1285,8 @@
       "name": "progress-example",
       "title": "Progress",
       "registryDependencies": [
-        "progress"
+        "progress",
+        "example"
       ],
       "files": [
         {
@@ -1259,7 +1300,8 @@
       "name": "radio-group-example",
       "title": "Radio Group",
       "registryDependencies": [
-        "radio-group"
+        "radio-group",
+        "example"
       ],
       "files": [
         {
@@ -1273,7 +1315,8 @@
       "name": "resizable-example",
       "title": "Resizable",
       "registryDependencies": [
-        "resizable"
+        "resizable",
+        "example"
       ],
       "files": [
         {
@@ -1287,7 +1330,8 @@
       "name": "scroll-area-example",
       "title": "Scroll Area",
       "registryDependencies": [
-        "scroll-area"
+        "scroll-area",
+        "example"
       ],
       "files": [
         {
@@ -1301,7 +1345,8 @@
       "name": "select-example",
       "title": "Select",
       "registryDependencies": [
-        "select"
+        "select",
+        "example"
       ],
       "files": [
         {
@@ -1315,7 +1360,8 @@
       "name": "separator-example",
       "title": "Separator",
       "registryDependencies": [
-        "separator"
+        "separator",
+        "example"
       ],
       "files": [
         {
@@ -1329,7 +1375,8 @@
       "name": "sheet-example",
       "title": "Sheet",
       "registryDependencies": [
-        "sheet"
+        "sheet",
+        "example"
       ],
       "files": [
         {
@@ -1343,7 +1390,8 @@
       "name": "skeleton-example",
       "title": "Skeleton",
       "registryDependencies": [
-        "skeleton"
+        "skeleton",
+        "example"
       ],
       "files": [
         {
@@ -1357,7 +1405,8 @@
       "name": "slider-example",
       "title": "Slider",
       "registryDependencies": [
-        "slider"
+        "slider",
+        "example"
       ],
       "files": [
         {
@@ -1371,7 +1420,8 @@
       "name": "sonner-example",
       "title": "Sonner",
       "registryDependencies": [
-        "sonner"
+        "sonner",
+        "example"
       ],
       "files": [
         {
@@ -1385,7 +1435,8 @@
       "name": "spinner-example",
       "title": "Spinner",
       "registryDependencies": [
-        "spinner"
+        "spinner",
+        "example"
       ],
       "files": [
         {
@@ -1399,7 +1450,8 @@
       "name": "switch-example",
       "title": "Switch",
       "registryDependencies": [
-        "switch"
+        "switch",
+        "example"
       ],
       "files": [
         {
@@ -1413,7 +1465,8 @@
       "name": "table-example",
       "title": "Table",
       "registryDependencies": [
-        "table"
+        "table",
+        "example"
       ],
       "files": [
         {
@@ -1427,7 +1480,8 @@
       "name": "tabs-example",
       "title": "Tabs",
       "registryDependencies": [
-        "tabs"
+        "tabs",
+        "example"
       ],
       "files": [
         {
@@ -1441,7 +1495,8 @@
       "name": "textarea-example",
       "title": "Textarea",
       "registryDependencies": [
-        "textarea"
+        "textarea",
+        "example"
       ],
       "files": [
         {
@@ -1455,7 +1510,8 @@
       "name": "toggle-example",
       "title": "Toggle",
       "registryDependencies": [
-        "toggle"
+        "toggle",
+        "example"
       ],
       "files": [
         {
@@ -1469,7 +1525,8 @@
       "name": "toggle-group-example",
       "title": "Toggle Group",
       "registryDependencies": [
-        "toggle-group"
+        "toggle-group",
+        "example"
       ],
       "files": [
         {
@@ -1483,7 +1540,8 @@
       "name": "tooltip-example",
       "title": "Tooltip",
       "registryDependencies": [
-        "tooltip"
+        "tooltip",
+        "example"
       ],
       "files": [
         {
@@ -1492,6 +1550,97 @@
         }
       ],
       "type": "registry:example"
+    },
+    {
+      "name": "cn",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/lib/cn.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "type": "registry:lib"
+    },
+    {
+      "name": "example",
+      "title": "Example",
+      "files": [
+        {
+          "path": "registry/radix-vega/components/example.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "sink",
+      "registryDependencies": [
+        "accordion-example",
+        "alert-dialog-example",
+        "alert-example",
+        "aspect-ratio-example",
+        "avatar-example",
+        "badge-example",
+        "breadcrumb-example",
+        "button-example",
+        "button-group-example",
+        "calendar-example",
+        "card-example",
+        "carousel-example",
+        "chart-example",
+        "checkbox-example",
+        "collapsible-example",
+        "combobox-example",
+        "command-example",
+        "context-menu-example",
+        "dialog-example",
+        "drawer-example",
+        "dropdown-menu-example",
+        "empty-example",
+        "field-example",
+        "hover-card-example",
+        "input-example",
+        "input-group-example",
+        "input-otp-example",
+        "item-example",
+        "kbd-example",
+        "label-example",
+        "menubar-example",
+        "native-select-example",
+        "navigation-menu-example",
+        "pagination-example",
+        "popover-example",
+        "progress-example",
+        "radio-group-example",
+        "resizable-example",
+        "scroll-area-example",
+        "select-example",
+        "separator-example",
+        "sheet-example",
+        "skeleton-example",
+        "slider-example",
+        "sonner-example",
+        "spinner-example",
+        "switch-example",
+        "table-example",
+        "tabs-example",
+        "textarea-example",
+        "toggle-example",
+        "toggle-group-example",
+        "tooltip-example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/internal/sink.tsx",
+          "type": "registry:page",
+          "target": "app/sink/page.tsx"
+        }
+      ],
+      "type": "registry:internal"
     }
   ]
 }

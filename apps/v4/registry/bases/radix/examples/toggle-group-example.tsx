@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Input } from "@/registry/bases/radix/ui/input"
 import {
   Select,
@@ -15,30 +18,28 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function ToggleGroupExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <ToggleGroupBasic />
-        <ToggleGroupOutline />
-        <ToggleGroupOutlineWithIcons />
-        <ToggleGroupSizes />
-        <ToggleGroupSpacing />
-        <ToggleGroupWithIcons />
-        <ToggleGroupFilter />
-        <ToggleGroupDateRange />
-        <ToggleGroupSort />
-        <ToggleGroupWithInputAndSelect />
-        <ToggleGroupVertical />
-        <ToggleGroupVerticalOutline />
-        <ToggleGroupVerticalOutlineWithIcons />
-        <ToggleGroupVerticalWithSpacing />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <ToggleGroupBasic />
+      <ToggleGroupOutline />
+      <ToggleGroupOutlineWithIcons />
+      <ToggleGroupSizes />
+      <ToggleGroupSpacing />
+      <ToggleGroupWithIcons />
+      <ToggleGroupFilter />
+      <ToggleGroupDateRange />
+      <ToggleGroupSort />
+      <ToggleGroupWithInputAndSelect />
+      <ToggleGroupVertical />
+      <ToggleGroupVerticalOutline />
+      <ToggleGroupVerticalOutlineWithIcons />
+      <ToggleGroupVerticalWithSpacing />
+    </ExampleWrapper>
   )
 }
 
 function ToggleGroupBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <ToggleGroup type="multiple" spacing={2}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
@@ -62,13 +63,13 @@ function ToggleGroupBasic() {
           />
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupOutline() {
   return (
-    <CanvaFrame title="Outline">
+    <Example title="Outline">
       <ToggleGroup variant="outline" type="single" defaultValue="all">
         <ToggleGroupItem value="all" aria-label="Toggle all">
           All
@@ -77,13 +78,13 @@ function ToggleGroupOutline() {
           Missed
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupOutlineWithIcons() {
   return (
-    <CanvaFrame title="Outline With Icons">
+    <Example title="Outline With Icons">
       <ToggleGroup variant="outline" type="multiple" size="sm">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
@@ -107,13 +108,13 @@ function ToggleGroupOutlineWithIcons() {
           />
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupSizes() {
   return (
-    <CanvaFrame title="Sizes">
+    <Example title="Sizes">
       <div className="flex flex-col gap-4">
         <ToggleGroup
           type="single"
@@ -149,13 +150,13 @@ function ToggleGroupSizes() {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupSpacing() {
   return (
-    <CanvaFrame title="With Spacing">
+    <Example title="With Spacing">
       <ToggleGroup
         type="single"
         size="sm"
@@ -176,13 +177,13 @@ function ToggleGroupSpacing() {
           Right
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupWithIcons() {
   return (
-    <CanvaFrame title="With Icons">
+    <Example title="With Icons">
       <ToggleGroup type="multiple" variant="outline" spacing={2} size="sm">
         <ToggleGroupItem
           value="star"
@@ -221,13 +222,13 @@ function ToggleGroupWithIcons() {
           Bookmark
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupFilter() {
   return (
-    <CanvaFrame title="Filter">
+    <Example title="Filter">
       <ToggleGroup type="single" defaultValue="all" variant="outline" size="sm">
         <ToggleGroupItem value="all" aria-label="All">
           All
@@ -242,13 +243,13 @@ function ToggleGroupFilter() {
           Archived
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupDateRange() {
   return (
-    <CanvaFrame title="Date Range">
+    <Example title="Date Range">
       <ToggleGroup
         type="single"
         defaultValue="today"
@@ -269,13 +270,13 @@ function ToggleGroupDateRange() {
           This Year
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupSort() {
   return (
-    <CanvaFrame title="Sort">
+    <Example title="Sort">
       <ToggleGroup
         type="single"
         defaultValue="newest"
@@ -307,13 +308,13 @@ function ToggleGroupSort() {
           Popular
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupWithInputAndSelect() {
   return (
-    <CanvaFrame title="With Input and Select">
+    <Example title="With Input and Select">
       <div className="flex items-center gap-2">
         <Input type="search" placeholder="Search..." className="flex-1" />
         <Select defaultValue="all">
@@ -335,13 +336,13 @@ function ToggleGroupWithInputAndSelect() {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupVertical() {
   return (
-    <CanvaFrame title="Vertical">
+    <Example title="Vertical">
       <ToggleGroup type="multiple" orientation="vertical" spacing={2}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
@@ -365,13 +366,13 @@ function ToggleGroupVertical() {
           />
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupVerticalOutline() {
   return (
-    <CanvaFrame title="Vertical Outline">
+    <Example title="Vertical Outline">
       <ToggleGroup
         variant="outline"
         type="single"
@@ -392,13 +393,13 @@ function ToggleGroupVerticalOutline() {
           Archived
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupVerticalOutlineWithIcons() {
   return (
-    <CanvaFrame title="Vertical Outline With Icons">
+    <Example title="Vertical Outline With Icons">
       <ToggleGroup
         variant="outline"
         type="multiple"
@@ -427,13 +428,13 @@ function ToggleGroupVerticalOutlineWithIcons() {
           />
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function ToggleGroupVerticalWithSpacing() {
   return (
-    <CanvaFrame title="Vertical With Spacing">
+    <Example title="Vertical With Spacing">
       <ToggleGroup
         type="single"
         size="sm"
@@ -455,6 +456,6 @@ function ToggleGroupVerticalWithSpacing() {
           Right
         </ToggleGroupItem>
       </ToggleGroup>
-    </CanvaFrame>
+    </Example>
   )
 }

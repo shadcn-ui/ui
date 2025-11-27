@@ -3,7 +3,7 @@
 import * as React from "react"
 import { ScrollArea as ScrollAreaPrimitive } from "radix-ui"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/registry/bases/radix/lib/cn"
 
 function ScrollArea({
   className,
@@ -37,6 +37,7 @@ function ScrollBar({
     <ScrollAreaPrimitive.ScrollAreaScrollbar
       data-slot="scroll-area-scrollbar"
       data-orientation={orientation}
+      orientation={orientation}
       className="cn-scroll-area-scrollbar flex touch-none p-px transition-colors select-none"
       {...props}
     >

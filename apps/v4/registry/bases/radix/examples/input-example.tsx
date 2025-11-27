@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Field,
@@ -21,42 +24,40 @@ import {
 
 export default function InputExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <InputBasic />
-        <InputInvalid />
-        <InputWithLabel />
-        <InputWithDescription />
-        <InputDisabled />
-        <InputTypes />
-        <InputWithSelect />
-        <InputWithButton />
-        <InputWithNativeSelect />
-        <InputForm />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <InputBasic />
+      <InputInvalid />
+      <InputWithLabel />
+      <InputWithDescription />
+      <InputDisabled />
+      <InputTypes />
+      <InputWithSelect />
+      <InputWithButton />
+      <InputWithNativeSelect />
+      <InputForm />
+    </ExampleWrapper>
   )
 }
 
 function InputBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Input type="email" placeholder="Email" />
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function InputInvalid() {
   return (
-    <CanvaFrame title="Invalid">
+    <Example title="Invalid">
       <Input type="text" placeholder="Error" aria-invalid="true" />
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function InputWithLabel() {
   return (
-    <CanvaFrame title="With Label">
+    <Example title="With Label">
       <Field>
         <FieldLabel htmlFor="input-demo-email">Email</FieldLabel>
         <Input
@@ -65,13 +66,13 @@ function InputWithLabel() {
           placeholder="name@example.com"
         />
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function InputWithDescription() {
   return (
-    <CanvaFrame title="With Description">
+    <Example title="With Description">
       <Field>
         <FieldLabel htmlFor="input-demo-username">Username</FieldLabel>
         <Input
@@ -83,13 +84,13 @@ function InputWithDescription() {
           Choose a unique username for your account.
         </FieldDescription>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function InputDisabled() {
   return (
-    <CanvaFrame title="Disabled">
+    <Example title="Disabled">
       <Field>
         <FieldLabel htmlFor="input-demo-disabled">Email</FieldLabel>
         <Input
@@ -99,13 +100,13 @@ function InputDisabled() {
           disabled
         />
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function InputTypes() {
   return (
-    <CanvaFrame title="Input Types">
+    <Example title="Input Types">
       <div className="flex w-full flex-col gap-6">
         <Field>
           <FieldLabel htmlFor="input-demo-password">Password</FieldLabel>
@@ -152,13 +153,13 @@ function InputTypes() {
           <Input id="input-demo-file" type="file" />
         </Field>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function InputWithSelect() {
   return (
-    <CanvaFrame title="With Select">
+    <Example title="With Select">
       <div className="flex w-full gap-2">
         <Input type="text" placeholder="Enter amount" className="flex-1" />
         <Select defaultValue="usd">
@@ -172,24 +173,24 @@ function InputWithSelect() {
           </SelectContent>
         </Select>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function InputWithButton() {
   return (
-    <CanvaFrame title="With Button">
+    <Example title="With Button">
       <div className="flex w-full gap-2">
         <Input type="search" placeholder="Search..." className="flex-1" />
         <Button>Search</Button>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function InputWithNativeSelect() {
   return (
-    <CanvaFrame title="With Native Select">
+    <Example title="With Native Select">
       <div className="flex w-full gap-2">
         <Input type="tel" placeholder="(555) 123-4567" className="flex-1" />
         <NativeSelect defaultValue="+1">
@@ -198,13 +199,13 @@ function InputWithNativeSelect() {
           <NativeSelectOption value="+46">+46</NativeSelectOption>
         </NativeSelect>
       </div>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function InputForm() {
   return (
-    <CanvaFrame title="Form">
+    <Example title="Form">
       <form className="w-full">
         <FieldGroup>
           <Field>
@@ -257,6 +258,6 @@ function InputForm() {
           </Field>
         </FieldGroup>
       </form>
-    </CanvaFrame>
+    </Example>
   )
 }

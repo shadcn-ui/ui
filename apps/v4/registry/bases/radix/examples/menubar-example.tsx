@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -19,25 +22,23 @@ import { IconPlaceholder } from "@/app/(design)/design/components/icon-placehold
 
 export default function MenubarExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <MenubarBasic />
-        <MenubarWithSubmenu />
-        <MenubarWithCheckboxes />
-        <MenubarWithRadio />
-        <MenubarWithIcons />
-        <MenubarWithShortcuts />
-        <MenubarFormat />
-        <MenubarInsert />
-        <MenubarDestructive />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <MenubarBasic />
+      <MenubarWithSubmenu />
+      <MenubarWithCheckboxes />
+      <MenubarWithRadio />
+      <MenubarWithIcons />
+      <MenubarWithShortcuts />
+      <MenubarFormat />
+      <MenubarInsert />
+      <MenubarDestructive />
+    </ExampleWrapper>
   )
 }
 
 function MenubarBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -71,13 +72,13 @@ function MenubarBasic() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function MenubarWithSubmenu() {
   return (
-    <CanvaFrame title="With Submenu">
+    <Example title="With Submenu">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -121,13 +122,13 @@ function MenubarWithSubmenu() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function MenubarWithCheckboxes() {
   return (
-    <CanvaFrame title="With Checkboxes">
+    <Example title="With Checkboxes">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>View</MenubarTrigger>
@@ -154,13 +155,13 @@ function MenubarWithCheckboxes() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function MenubarWithRadio() {
   return (
-    <CanvaFrame title="With Radio">
+    <Example title="With Radio">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>Profiles</MenubarTrigger>
@@ -186,13 +187,13 @@ function MenubarWithRadio() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function MenubarWithIcons() {
   return (
-    <CanvaFrame title="With Icons">
+    <Example title="With Icons">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -257,13 +258,13 @@ function MenubarWithIcons() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function MenubarWithShortcuts() {
   return (
-    <CanvaFrame title="With Shortcuts">
+    <Example title="With Shortcuts">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -301,13 +302,13 @@ function MenubarWithShortcuts() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function MenubarFormat() {
   return (
-    <CanvaFrame title="Format">
+    <Example title="Format">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>Format</MenubarTrigger>
@@ -352,13 +353,13 @@ function MenubarFormat() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function MenubarInsert() {
   return (
-    <CanvaFrame title="Insert">
+    <Example title="Insert">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>Insert</MenubarTrigger>
@@ -419,13 +420,13 @@ function MenubarInsert() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function MenubarDestructive() {
   return (
-    <CanvaFrame title="Destructive">
+    <Example title="Destructive">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -497,6 +498,6 @@ function MenubarDestructive() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
-    </CanvaFrame>
+    </Example>
   )
 }

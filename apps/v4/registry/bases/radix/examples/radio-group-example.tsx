@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Field,
   FieldContent,
@@ -14,22 +17,20 @@ import {
 
 export default function RadioGroupExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-md flex-col gap-12">
-        <RadioGroupBasic />
-        <RadioGroupWithDescriptions />
-        <RadioGroupWithFieldSet />
-        <RadioGroupGrid />
-        <RadioGroupDisabled />
-        <RadioGroupInvalid />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <RadioGroupBasic />
+      <RadioGroupWithDescriptions />
+      <RadioGroupWithFieldSet />
+      <RadioGroupGrid />
+      <RadioGroupDisabled />
+      <RadioGroupInvalid />
+    </ExampleWrapper>
   )
 }
 
 function RadioGroupBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <RadioGroup defaultValue="comfortable">
         <Field orientation="horizontal">
           <RadioGroupItem value="default" id="r1" />
@@ -50,13 +51,13 @@ function RadioGroupBasic() {
           </FieldLabel>
         </Field>
       </RadioGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function RadioGroupWithDescriptions() {
   return (
-    <CanvaFrame title="With Descriptions">
+    <Example title="With Descriptions">
       <RadioGroup defaultValue="plus">
         <FieldLabel htmlFor="plus-plan">
           <Field orientation="horizontal">
@@ -90,13 +91,13 @@ function RadioGroupWithDescriptions() {
           </Field>
         </FieldLabel>
       </RadioGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function RadioGroupWithFieldSet() {
   return (
-    <CanvaFrame title="With FieldSet">
+    <Example title="With FieldSet">
       <FieldSet>
         <FieldLegend>Battery Level</FieldLegend>
         <FieldDescription>
@@ -123,13 +124,13 @@ function RadioGroupWithFieldSet() {
           </Field>
         </RadioGroup>
       </FieldSet>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function RadioGroupGrid() {
   return (
-    <CanvaFrame title="Grid Layout">
+    <Example title="Grid Layout">
       <RadioGroup defaultValue="medium" className="grid grid-cols-2 gap-2">
         <FieldLabel htmlFor="size-small">
           <Field orientation="horizontal">
@@ -156,13 +157,13 @@ function RadioGroupGrid() {
           </Field>
         </FieldLabel>
       </RadioGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function RadioGroupDisabled() {
   return (
-    <CanvaFrame title="Disabled">
+    <Example title="Disabled">
       <RadioGroup defaultValue="option2" disabled>
         <Field orientation="horizontal">
           <RadioGroupItem value="option1" id="disabled-1" />
@@ -183,13 +184,13 @@ function RadioGroupDisabled() {
           </FieldLabel>
         </Field>
       </RadioGroup>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function RadioGroupInvalid() {
   return (
-    <CanvaFrame title="Invalid">
+    <Example title="Invalid">
       <FieldSet>
         <FieldLegend>Notification Preferences</FieldLegend>
         <FieldDescription>
@@ -216,6 +217,6 @@ function RadioGroupInvalid() {
           </Field>
         </RadioGroup>
       </FieldSet>
-    </CanvaFrame>
+    </Example>
   )
 }

@@ -1,4 +1,7 @@
-import { CanvaFrame } from "@/components/canva"
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/radix/components/example"
 import {
   Field,
   FieldDescription,
@@ -8,37 +11,35 @@ import { Textarea } from "@/registry/bases/radix/ui/textarea"
 
 export default function TextareaExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6 lg:p-12">
-      <div className="flex w-full max-w-lg flex-col gap-12">
-        <TextareaBasic />
-        <TextareaInvalid />
-        <TextareaWithLabel />
-        <TextareaWithDescription />
-        <TextareaDisabled />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <TextareaBasic />
+      <TextareaInvalid />
+      <TextareaWithLabel />
+      <TextareaWithDescription />
+      <TextareaDisabled />
+    </ExampleWrapper>
   )
 }
 
 function TextareaBasic() {
   return (
-    <CanvaFrame title="Basic">
+    <Example title="Basic">
       <Textarea placeholder="Type your message here." />
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function TextareaInvalid() {
   return (
-    <CanvaFrame title="Invalid">
+    <Example title="Invalid">
       <Textarea placeholder="Type your message here." aria-invalid="true" />
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function TextareaWithLabel() {
   return (
-    <CanvaFrame title="With Label">
+    <Example title="With Label">
       <Field>
         <FieldLabel htmlFor="textarea-demo-message">Message</FieldLabel>
         <Textarea
@@ -47,13 +48,13 @@ function TextareaWithLabel() {
           rows={6}
         />
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function TextareaWithDescription() {
   return (
-    <CanvaFrame title="With Description">
+    <Example title="With Description">
       <Field>
         <FieldLabel htmlFor="textarea-demo-message-2">Message</FieldLabel>
         <Textarea
@@ -65,13 +66,13 @@ function TextareaWithDescription() {
           Type your message and press enter to send.
         </FieldDescription>
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
 
 function TextareaDisabled() {
   return (
-    <CanvaFrame title="Disabled">
+    <Example title="Disabled">
       <Field>
         <FieldLabel htmlFor="textarea-demo-disabled">Message</FieldLabel>
         <Textarea
@@ -80,6 +81,6 @@ function TextareaDisabled() {
           disabled
         />
       </Field>
-    </CanvaFrame>
+    </Example>
   )
 }
