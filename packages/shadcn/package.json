@@ -74,7 +74,7 @@
     "browserslist": "^4.26.2",
     "commander": "^14.0.0",
     "cosmiconfig": "^9.0.0",
-    "dedent": "^1.6.0",
+    "dedent": "^1.7.0",
     "deepmerge": "^4.3.1",
     "diff": "^8.0.2",
     "execa": "^9.6.0",
