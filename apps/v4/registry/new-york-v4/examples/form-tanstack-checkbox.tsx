@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 "use client"
 
 import { useForm } from "@tanstack/react-form"
@@ -92,9 +91,8 @@ export default function FormTanstackCheckbox() {
           }}
         >
           <FieldGroup>
-            <form.Field
-              name="responses"
-              children={(field) => {
+            <form.Field name="responses">
+              {(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
@@ -129,12 +127,10 @@ export default function FormTanstackCheckbox() {
                   </FieldSet>
                 )
               }}
-            />
+            </form.Field>
             <FieldSeparator />
-            <form.Field
-              name="tasks"
-              mode="array"
-              children={(field) => {
+            <form.Field name="tasks" mode="array">
+              {(field) => {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
@@ -181,7 +177,7 @@ export default function FormTanstackCheckbox() {
                   </FieldSet>
                 )
               }}
-            />
+            </form.Field>
           </FieldGroup>
         </form>
       </CardContent>
