@@ -28,7 +28,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/registry/bases/radix/ui/table"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const invoices = [
   {

@@ -16,7 +16,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function AccordionExample() {
   return (

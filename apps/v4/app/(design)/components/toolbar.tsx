@@ -8,9 +8,9 @@ import { MainNav } from "@/components/main-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
-import { InstallDialog } from "@/app/(design)/design/components/install-dialog"
-import { ItemPicker } from "@/app/(design)/design/components/item-picker"
-import { PreviewControls } from "@/app/(design)/design/components/preview-controls"
+import { InstallDialog } from "@/app/(design)/components/install-dialog"
+import { ItemPicker } from "@/app/(design)/components/item-picker"
+import { PreviewControls } from "@/app/(design)/components/preview-controls"
 
 export function Toolbar({
   items,

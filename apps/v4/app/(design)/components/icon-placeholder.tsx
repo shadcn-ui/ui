@@ -4,7 +4,7 @@ import { lazy, Suspense } from "react"
 import { SquareIcon } from "lucide-react"
 import type { IconLibraryName } from "shadcn/icons"
 
-import { useDesignSystemParam } from "@/app/(design)/design/hooks/use-design-system"
+import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system"
 
 const IconLucide = lazy(() =>
   import("@/registry/icons/icon-lucide").then((mod) => ({

@@ -4,7 +4,7 @@ import {
 } from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Toggle } from "@/registry/bases/radix/ui/toggle"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function ToggleExample() {
   return (

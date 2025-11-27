@@ -7,7 +7,7 @@ import useEmblaCarousel, {
 
 import { cn } from "@/registry/bases/radix/lib/cn"
 import { Button } from "@/registry/bases/radix/ui/button"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>

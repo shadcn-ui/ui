@@ -15,7 +15,7 @@ import {
   AlertDialogTrigger,
 } from "@/registry/bases/radix/ui/alert-dialog"
 import { Button } from "@/registry/bases/radix/ui/button"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function AlertDialogExample() {
   return (

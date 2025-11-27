@@ -6,7 +6,7 @@ import {
   sendToIframe,
   sendToParent,
   useParentMessageListener,
-} from "@/app/(design)/design/hooks/use-iframe-sync"
+} from "@/app/(design)/hooks/use-iframe-sync"
 
 const MESSAGE_TYPE = "canva-zoom"
 

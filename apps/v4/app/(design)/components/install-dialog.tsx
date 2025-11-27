@@ -17,7 +17,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/new-york-v4/ui/dialog"
-import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function InstallDialog() {
   const [open, setOpen] = React.useState(false)

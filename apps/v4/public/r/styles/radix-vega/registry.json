@@ -730,20 +730,6 @@
       "type": "registry:ui"
     },
     {
-      "name": "cover-example",
-      "title": "Cover",
-      "registryDependencies": [
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-vega/examples/cover-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "accordion-example",
       "title": "Accordion",
       "registryDependencies": [
@@ -1641,6 +1627,20 @@
         }
       ],
       "type": "registry:internal"
+    },
+    {
+      "name": "cover",
+      "title": "Cover",
+      "registryDependencies": [
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/blocks/cover.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
     }
   ]
 }

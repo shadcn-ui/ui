@@ -11,8 +11,8 @@ import {
   CustomizerPicker,
   CustomizerPickerGroup,
   CustomizerPickerItem,
-} from "@/app/(design)/design/components/customizer"
-import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
+} from "@/app/(design)/components/customizer"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 const IconLucide = lazy(() =>
   import("@/registry/icons/icon-lucide").then((mod) => ({

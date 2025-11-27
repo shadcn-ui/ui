@@ -40,7 +40,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/registry/bases/radix/ui/chart"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const areaChartData = [
   { month: "January", desktop: 186 },

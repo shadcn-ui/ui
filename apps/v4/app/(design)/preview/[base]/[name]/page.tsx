@@ -6,9 +6,10 @@ import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { Base, BASES } from "@/registry/bases"
-import { DesignSystemProvider } from "@/app/(design)/design/components/design-system-provider"
-import { ItemPickerScript } from "@/app/(design)/design/components/item-picker"
-import { getBaseComponent, getBaseItem } from "@/app/(design)/design/lib/api"
+import { DesignSystemProvider } from "@/app/(design)/components/design-system-provider"
+import { ItemPickerScript } from "@/app/(design)/components/item-picker"
+import { getBaseComponent, getBaseItem } from "@/app/(design)/lib/api"
+import { ALLOWED_ITEM_TYPES } from "@/app/(design)/lib/constants"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -88,7 +89,7 @@ export async function generateStaticParams() {
     const styleIndex = Index[base.name]
     for (const itemName in styleIndex) {
       const item = styleIndex[itemName]
-      if (["registry:example"].includes(item.type)) {
+      if (ALLOWED_ITEM_TYPES.includes(item.type)) {
         params.push({
           base: base.name,
           name: item.name,

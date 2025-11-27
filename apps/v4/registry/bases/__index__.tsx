@@ -1342,33 +1342,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "cover-example": {
-      name: "cover-example",
-      title: "Cover",
-      description: "",
-      type: "registry:example",
-      registryDependencies: ["example"],
-      files: [
-        {
-          path: "registry/bases/radix/examples/cover-example.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import(
-          "@/registry/bases/radix/examples/cover-example.tsx"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -2936,6 +2909,31 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/radix/internal/sink.tsx")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    cover: {
+      name: "cover",
+      title: "Cover",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["example"],
+      files: [
+        {
+          path: "registry/bases/radix/blocks/cover.tsx",
+          type: "registry:block",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/blocks/cover.tsx")
         const exportName =
           Object.keys(mod).find(
             (key) =>

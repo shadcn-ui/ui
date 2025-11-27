@@ -10,8 +10,8 @@ import {
   CustomizerPicker,
   CustomizerPickerGroup,
   CustomizerPickerItem,
-} from "@/app/(design)/design/components/customizer"
-import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
+} from "@/app/(design)/components/customizer"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
   const [open, setOpen] = React.useState(false)

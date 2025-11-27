@@ -17,7 +17,7 @@ import {
   ItemSeparator,
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function ItemExample() {
   return (

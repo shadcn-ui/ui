@@ -10,9 +10,9 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/registry/new-york-v4/ui/resizable"
-import { CMD_K_FORWARD_TYPE } from "@/app/(design)/design/components/item-picker"
-import { useDesignSystemSync } from "@/app/(design)/design/hooks/use-design-system"
-import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
+import { CMD_K_FORWARD_TYPE } from "@/app/(design)/components/item-picker"
+import { useDesignSystemSync } from "@/app/(design)/hooks/use-design-system"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 const MESSAGE_TYPE = "design-system-params"
 

@@ -6,8 +6,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
-import { Customizer } from "@/app/(design)/design/components/customizer"
-import { ItemExplorer } from "@/app/(design)/design/components/item-explorer"
+import { Customizer } from "@/app/(design)/components/customizer"
+import { ItemExplorer } from "@/app/(design)/components/item-explorer"
 
 export function Panel({
   items,

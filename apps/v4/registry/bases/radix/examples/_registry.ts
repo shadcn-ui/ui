@@ -2,18 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "cover-example",
-    title: "Cover",
-    type: "registry:example",
-    registryDependencies: ["example"],
-    files: [
-      {
-        path: "examples/cover-example.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "accordion-example",
     title: "Accordion",
     type: "registry:example",

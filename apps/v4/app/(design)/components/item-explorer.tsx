@@ -5,7 +5,7 @@ import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function ItemExplorer({
   items,

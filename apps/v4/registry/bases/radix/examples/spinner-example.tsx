@@ -19,7 +19,7 @@ import {
   InputGroupInput,
 } from "@/registry/bases/radix/ui/input-group"
 import { Spinner } from "@/registry/bases/radix/ui/spinner"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function SpinnerExample() {
   return (

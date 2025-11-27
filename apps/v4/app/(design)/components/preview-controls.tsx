@@ -7,7 +7,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/new-york-v4/ui/toggle-group"
-import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function PreviewControls() {
   const [urlParams, setUrlParams] = useQueryStates(designSystemSearchParams, {

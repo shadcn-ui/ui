@@ -17,7 +17,7 @@ import {
   InputGroupInput,
 } from "@/registry/bases/radix/ui/input-group"
 import { Kbd } from "@/registry/bases/radix/ui/kbd"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function EmptyExample() {
   return (

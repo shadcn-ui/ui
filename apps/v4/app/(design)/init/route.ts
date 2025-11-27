@@ -5,7 +5,7 @@ import { RegistryBaseItem, registryItemSchema } from "shadcn/schema"
 import { BASE_COLORS } from "@/registry/base-colors"
 import { BASES } from "@/registry/bases"
 import { THEMES } from "@/registry/themes"
-import { buildTheme } from "@/app/(design)/design/lib/merge-theme"
+import { buildTheme } from "@/app/(design)/lib/merge-theme"
 
 export async function GET(request: NextRequest) {
   try {

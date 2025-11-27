@@ -36,12 +36,12 @@ import {
 import { PRESETS } from "@/registry/presets"
 import { STYLES } from "@/registry/styles"
 import { THEMES } from "@/registry/themes"
-import { BaseColorPicker } from "@/app/(design)/design/components/base-color-picker"
-import { FontPicker } from "@/app/(design)/design/components/font-picker"
-import { IconLibraryPicker } from "@/app/(design)/design/components/icon-library-picker"
-import { StylePicker } from "@/app/(design)/design/components/style-picker"
-import { ThemePicker } from "@/app/(design)/design/components/theme-picker"
-import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
+import { BaseColorPicker } from "@/app/(design)/components/base-color-picker"
+import { FontPicker } from "@/app/(design)/components/font-picker"
+import { IconLibraryPicker } from "@/app/(design)/components/icon-library-picker"
+import { StylePicker } from "@/app/(design)/components/style-picker"
+import { ThemePicker } from "@/app/(design)/components/theme-picker"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function Customizer() {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {

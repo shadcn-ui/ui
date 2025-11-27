@@ -4,8 +4,8 @@ import * as React from "react"
 import { useTheme } from "next-themes"
 
 import { FONTS } from "@/registry/fonts"
-import { useDesignSystemParam } from "@/app/(design)/design/hooks/use-design-system"
-import { buildTheme } from "@/app/(design)/design/lib/merge-theme"
+import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system"
+import { buildTheme } from "@/app/(design)/lib/merge-theme"
 
 export function DesignSystemProvider({
   children,

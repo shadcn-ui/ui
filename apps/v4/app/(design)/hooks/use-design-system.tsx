@@ -6,11 +6,11 @@ import {
   createIframeSyncStore,
   useIframeSyncAll,
   useIframeSyncValue,
-} from "@/app/(design)/design/hooks/use-iframe-sync"
+} from "@/app/(design)/hooks/use-iframe-sync"
 import {
   designSystemSearchParams,
   type DesignSystemSearchParams,
-} from "@/app/(design)/design/lib/search-params"
+} from "@/app/(design)/lib/search-params"
 
 const MESSAGE_TYPE = "design-system-params"
 

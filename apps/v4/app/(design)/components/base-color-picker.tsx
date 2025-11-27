@@ -4,16 +4,16 @@ import * as React from "react"
 import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
-import { Theme } from "@/registry/themes"
+import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
 import {
   CustomizerItem,
   CustomizerPicker,
   CustomizerPickerGroup,
   CustomizerPickerItem,
-} from "@/app/(design)/design/components/customizer"
-import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
+} from "@/app/(design)/components/customizer"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
-export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
+export function BaseColorPicker() {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
@@ -21,45 +21,48 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
   })
 
   const handleSelect = React.useCallback(
-    (theme: Theme["name"]) => {
-      setParams({ theme })
+    (baseColor: BaseColor["name"]) => {
+      setParams({ baseColor })
       setOpen(false)
     },
     [setParams]
   )
 
-  const currentTheme = React.useMemo(
-    () => themes.find((theme) => theme.name === params.theme),
-    [themes, params.theme]
+  const currentBaseColor = React.useMemo(
+    () => BASE_COLORS.find((baseColor) => baseColor.name === params.baseColor),
+    [params.baseColor]
   )
 
   return (
     <CustomizerItem
-      title="Theme"
-      description={currentTheme?.title}
+      title="Base Color"
+      description={currentBaseColor?.title}
       icon={<IconChevronRight />}
       open={open}
       onOpenChange={setOpen}
     >
-      <CustomizerPicker currentValue={currentTheme?.title ?? null} open={open}>
+      <CustomizerPicker
+        currentValue={currentBaseColor?.title ?? null}
+        open={open}
+      >
         <CustomizerPickerGroup>
-          {themes.map((theme) => (
+          {BASE_COLORS.map((baseColor) => (
             <CustomizerPickerItem
-              key={`theme-${theme.name}`}
-              value={theme.title}
-              onSelect={() => handleSelect(theme.name)}
-              isActive={theme.name === currentTheme?.name}
+              key={baseColor.name}
+              value={baseColor.title}
+              onSelect={() => handleSelect(baseColor.name)}
+              isActive={baseColor.name === params.baseColor}
               className="mb-2 ring-1"
             >
               <div
                 style={
                   {
-                    "--color": theme.cssVars?.light?.primary,
+                    "--color": baseColor.cssVars?.light?.["muted-foreground"],
                   } as React.CSSProperties
                 }
                 className="size-6 translate-x-[-2px] rounded-[4px] bg-(--color)"
               />
-              {theme.title}{" "}
+              {baseColor.title}
             </CustomizerPickerItem>
           ))}
         </CustomizerPickerGroup>

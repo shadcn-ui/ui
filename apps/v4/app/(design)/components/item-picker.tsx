@@ -16,8 +16,8 @@ import {
   CustomizerPicker,
   CustomizerPickerGroup,
   CustomizerPickerItem,
-} from "@/app/(design)/design/components/customizer"
-import { designSystemSearchParams } from "@/app/(design)/design/lib/search-params"
+} from "@/app/(design)/components/customizer"
+import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export const CMD_K_FORWARD_TYPE = "cmd-k-forward"
 
