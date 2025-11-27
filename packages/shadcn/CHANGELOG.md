@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 3.5.1
+
+### Patch Changes
+
+- [#7557](https://github.com/shadcn-ui/ui/pull/7557) [`ad6a3c63678bb31dbfb94536ee1d4aa4f06a8b8d`](https://github.com/shadcn-ui/ui/commit/ad6a3c63678bb31dbfb94536ee1d4aa4f06a8b8d) Thanks [@remorses](https://github.com/remorses)! - Fix utils import transform when workspace alias does not start with @
+
+- [#8901](https://github.com/shadcn-ui/ui/pull/8901) [`62218c1c0c79195bda49a36817a13392cae7b4f2`](https://github.com/shadcn-ui/ui/commit/62218c1c0c79195bda49a36817a13392cae7b4f2) Thanks [@shadcn](https://github.com/shadcn)! - update color value detection for cssVars
+
 ## 3.5.0
 
 ### Minor Changes
