@@ -40,7 +40,7 @@ This form leverages TanStack Form for powerful, headless form handling. We'll bu
 
 Here's a basic example of a form using TanStack Form with the `<Field />` component.
 
-```tsx showLineNumbers {15-31}
+```tsx showLineNumbers {13-29}
 <form
   onSubmit={(e) => {
     e.preventDefault()
@@ -48,9 +48,8 @@ Here's a basic example of a form using TanStack Form with the `<Field />` compon
   }}
 >
   <FieldGroup>
-    <form.Field
-      name="title"
-      children={(field) => {
+    <form.Field name="title">
+      {(field) => {
         const isInvalid =
           field.state.meta.isTouched && !field.state.meta.isValid
         return (
@@ -73,7 +72,7 @@ Here's a basic example of a form using TanStack Form with the `<Field />` compon
           </Field>
         )
       }}
-    />
+    </form.Field>
   </FieldGroup>
   <Button type="submit">Submit</Button>
 </form>
@@ -225,10 +224,9 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
 - Add the `data-invalid` prop to the `<Field />` component.
 - Add the `aria-invalid` prop to the form control such as `<Input />`, `<SelectTrigger />`, `<Checkbox />`, etc.
 
-```tsx showLineNumbers title="form.tsx" {4,18}
-<form.Field
-  name="email"
-  children={(field) => {
+```tsx showLineNumbers title="form.tsx" {3,17}
+<form.Field name="email">
+  {(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
 
     return (
@@ -247,7 +245,7 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
       </Field>
     )
   }}
-/>
+</form.Field>
 ```
 
 ## Working with Different Field Types
@@ -263,10 +261,9 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {6,11-14,22}
-<form.Field
-  name="username"
-  children={(field) => {
+```tsx showLineNumbers title="form.tsx" {5,10-13,21}
+<form.Field name="username">
+  {(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
       <Field data-invalid={isInvalid}>
@@ -289,7 +286,7 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
       </Field>
     )
   }}
-/>
+</form.Field>
 ```
 
 ### Textarea
@@ -303,10 +300,9 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {6,13-16,24}
-<form.Field
-  name="about"
-  children={(field) => {
+```tsx showLineNumbers title="form.tsx" {5,12-15,23}
+<form.Field name="about">
+  {(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
       <Field data-invalid={isInvalid}>
@@ -331,7 +327,7 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
       </Field>
     )
   }}
-/>
+</form.Field>
 ```
 
 ### Select
@@ -345,10 +341,9 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {6,18-19,23}
-<form.Field
-  name="language"
-  children={(field) => {
+```tsx showLineNumbers title="form.tsx" {5,17-18,22}
+<form.Field name="language">
+  {(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
       <Field orientation="responsive" data-invalid={isInvalid}>
@@ -381,7 +376,7 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
       </Field>
     )
   }}
-/>
+</form.Field>
 ```
 
 ### Checkbox
@@ -397,11 +392,9 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {12,17,22-24,44}
-<form.Field
-  name="tasks"
-  mode="array"
-  children={(field) => {
+```tsx showLineNumbers title="form.tsx" {10,15,20-22,42}
+<form.Field name="tasks" mode="array">
+  {(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
       <FieldSet>
@@ -445,7 +438,7 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
       </FieldSet>
     )
   }}
-/>
+</form.Field>
 ```
 
 ### Radio Group
@@ -459,10 +452,9 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {21,29,35}
-<form.Field
-  name="plan"
-  children={(field) => {
+```tsx showLineNumbers title="form.tsx" {20,28,34}
+<form.Field name="plan">
+  {(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
       <FieldSet>
@@ -498,7 +490,7 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
       </FieldSet>
     )
   }}
-/>
+</form.Field>
 ```
 
 ### Switch
@@ -512,10 +504,9 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
   chromeLessOnMobile
 />
 
-```tsx showLineNumbers title="form.tsx" {6,14,19-21}
-<form.Field
-  name="twoFactor"
-  children={(field) => {
+```tsx showLineNumbers title="form.tsx" {5,13,18-20}
+<form.Field name="twoFactor">
+  {(field) => {
     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
     return (
       <Field orientation="horizontal" data-invalid={isInvalid}>
@@ -538,7 +529,7 @@ Display errors next to the field using `<FieldError />`. For styling and accessi
       </Field>
     )
   }}
-/>
+</form.Field>
 ```
 
 ### Complex Forms
@@ -580,8 +571,8 @@ Use `mode="array"` on the parent field to enable array field management.
 ```tsx showLineNumbers title="form.tsx" {3,12-14}
 <form.Field
   name="emails"
-  mode="array"
-  children={(field) => {
+  mode="array">
+  {(field) => {
     return (
       <FieldSet>
         <FieldLegend variant="label">Email Addresses</FieldLegend>
@@ -596,7 +587,7 @@ Use `mode="array"` on the parent field to enable array field management.
       </FieldSet>
     )
   }}
-/>
+</form.Field>
 ```
 
 ### Nested Fields
@@ -604,9 +595,8 @@ Use `mode="array"` on the parent field to enable array field management.
 Access individual array items using bracket notation: `fieldName[index].propertyName`. This example uses `InputGroup` to display the remove button inline with the input.
 
 ```tsx showLineNumbers title="form.tsx"
-<form.Field
-  name={`emails[${index}].address`}
-  children={(subField) => {
+<form.Field name={`emails[${index}].address`}>
+  {(subField) => {
     const isSubFieldInvalid =
       subField.state.meta.isTouched && !subField.state.meta.isValid
     return (
@@ -644,7 +634,7 @@ Access individual array items using bracket notation: `fieldName[index].property
       </Field>
     )
   }}
-/>
+</form.Field>
 ```
 
 ### Adding Items
