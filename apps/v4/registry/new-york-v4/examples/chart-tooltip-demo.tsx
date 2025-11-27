@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 export default function Component() {
   return (
-    <div className="text-foreground grid aspect-video w-full max-w-md justify-center md:grid-cols-2 [&>div]:relative [&>div]:flex [&>div]:h-[137px] [&>div]:w-[224px] [&>div]:items-center [&>div]:justify-center [&>div]:p-4">
+    <div className="text-foreground grid aspect-video w-full max-w-md justify-center md:grid-cols-2 [&>div]:relative [&>div]:flex [&>div]:h-[137px] [&>div]:w-56 [&>div]:items-center [&>div]:justify-center [&>div]:p-4">
       <div>
         <div className="absolute top-[45px] left-[-35px] z-10 text-sm font-medium">
           Label
@@ -37,11 +37,11 @@ export default function Component() {
             { name: "Desktop", value: 186, fill: "hsl(var(--chart-1))" },
             { name: "Mobile", value: 80, fill: "hsl(var(--chart-2))" },
           ]}
-          className="w-[8rem]"
+          className="w-32"
         />
       </div>
       <div className="items-end">
-        <div className="absolute top-[0px] left-[122px] z-10 text-sm font-medium">
+        <div className="absolute top-0 left-[122px] z-10 text-sm font-medium">
           Name
         </div>
         <svg
@@ -50,7 +50,7 @@ export default function Component() {
           height="42"
           fill="none"
           viewBox="0 0 122 148"
-          className="absolute top-[10px] left-[85px] z-10 -scale-x-100"
+          className="absolute top-2.5 left-[85px] z-10 -scale-x-100"
         >
           <g clipPath="url(#ab)">
             <path
@@ -72,20 +72,20 @@ export default function Component() {
             { name: "Firefox", value: 1000, fill: "hsl(var(--chart-4))" },
           ]}
           indicator="dashed"
-          className="w-[8rem]"
+          className="w-32"
         />
       </div>
-      <div className="!hidden md:!flex">
+      <div className="hidden! md:flex!">
         <TooltipDemo
           label="Page Views"
           payload={[
             { name: "Desktop", value: 12486, fill: "hsl(var(--chart-3))" },
           ]}
-          className="w-[9rem]"
+          className="w-36"
           indicator="line"
         />
       </div>
-      <div className="!items-start !justify-start">
+      <div className="items-start! justify-start!">
         <div className="absolute top-[60px] left-[50px] z-10 text-sm font-medium">
           Indicator
         </div>
@@ -96,7 +96,7 @@ export default function Component() {
             { name: "Chrome", value: 1286, fill: "hsl(var(--chart-1))" },
           ]}
           indicator="dot"
-          className="w-[8rem]"
+          className="w-32"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +156,7 @@ function TooltipDemo({
   return (
     <div
       className={cn(
-        "border-border/50 bg-background grid min-w-[8rem] items-start gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl transition-all ease-in-out hover:-translate-y-0.5",
+        "border-border/50 bg-background grid min-w-32 items-start gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl transition-all ease-in-out hover:-translate-y-0.5",
         className
       )}
     >

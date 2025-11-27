@@ -69,7 +69,7 @@ export default function AppSidebar() {
                   <SidebarMenuItem key={project.name}>
                     <SidebarMenuButton
                       asChild
-                      className="group-has-[[data-state=open]]/menu-item:bg-sidebar-accent"
+                      className="group-has-data-[state=open]/menu-item:bg-sidebar-accent"
                     >
                       <a href={project.url}>
                         <project.icon />
