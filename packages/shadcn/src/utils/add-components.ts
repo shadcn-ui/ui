@@ -2,6 +2,7 @@ import path from "path"
 import { getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
 import { resolveRegistryTree } from "@/src/registry/resolver"
+import { isUrl } from "@/src/registry/utils"
 import {
   configSchema,
   registryItemFileSchema,
@@ -126,10 +127,14 @@ async function addProjectComponents(
   await updateDependencies(tree.dependencies, tree.devDependencies, config, {
     silent: options.silent,
   })
+
+  const isRemote = components.some((component) => isUrl(component))
+
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,
     silent: options.silent,
     path: options.path,
+    isRemote,
   })
 
   if (tree.docs) {
