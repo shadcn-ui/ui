@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "timeline"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/timeline-demo.tsx",
+      "content": "import {\n  Timeline,\n  TimelineConnector,\n  TimelineContent,\n  TimelineDescription,\n  TimelineHeader,\n  TimelineIcon,\n  TimelineItem,\n  TimelineTime,\n  TimelineTitle,\n} from \"@/registry/new-york-v4/ui/timeline\"\n\nexport default function TimelineDemo() {\n  return (\n    <Timeline>\n      <TimelineItem>\n        <TimelineConnector />\n        <TimelineHeader>\n          <TimelineIcon />\n          <TimelineTitle>Order placed</TimelineTitle>\n        </TimelineHeader>\n        <TimelineContent>\n          <TimelineDescription>\n            Your order #12345 has been confirmed.\n          </TimelineDescription>\n          <TimelineTime dateTime=\"2024-01-15T10:00:00\">\n            Jan 15, 2024 at 10:00 AM\n          </TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem>\n        <TimelineConnector />\n        <TimelineHeader>\n          <TimelineIcon />\n          <TimelineTitle>Processing</TimelineTitle>\n        </TimelineHeader>\n        <TimelineContent>\n          <TimelineDescription>\n            Your items are being prepared for shipment.\n          </TimelineDescription>\n          <TimelineTime dateTime=\"2024-01-16T14:30:00\">\n            Jan 16, 2024 at 2:30 PM\n          </TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem>\n        <TimelineConnector />\n        <TimelineHeader>\n          <TimelineIcon />\n          <TimelineTitle>Shipped</TimelineTitle>\n        </TimelineHeader>\n        <TimelineContent>\n          <TimelineDescription>Your package is on its way.</TimelineDescription>\n          <TimelineTime dateTime=\"2024-01-17T09:15:00\">\n            Jan 17, 2024 at 9:15 AM\n          </TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n    </Timeline>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
