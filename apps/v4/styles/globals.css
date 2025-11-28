@@ -344,4 +344,137 @@
     font-family: var(--font-mono);
     font-size: 0.8rem;
   }
+
+  /* React DayPicker animations */
+  /* Animation keyframes for calendar month transitions */
+  @keyframes rdp-slide_in_left {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes rdp-slide_in_right {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes rdp-slide_out_left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes rdp-slide_out_right {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes rdp-fade_in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes rdp-fade_out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* Animation classes for weeks */
+  .rdp-weeks_before_enter {
+    animation: rdp-slide_in_left var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  .rdp-weeks_before_exit {
+    animation: rdp-slide_out_left var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  .rdp-weeks_after_enter {
+    animation: rdp-slide_in_right var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  .rdp-weeks_after_exit {
+    animation: rdp-slide_out_right var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  /* RTL support */
+  .rdp-root[dir="rtl"] .rdp-weeks_after_enter {
+    animation: rdp-slide_in_left var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  .rdp-root[dir="rtl"] .rdp-weeks_before_exit {
+    animation: rdp-slide_out_right var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  .rdp-root[dir="rtl"] .rdp-weeks_before_enter {
+    animation: rdp-slide_in_right var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  .rdp-root[dir="rtl"] .rdp-weeks_after_exit {
+    animation: rdp-slide_out_left var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  /* Animation classes for captions */
+  .rdp-caption_after_enter {
+    animation: rdp-fade_in var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  .rdp-caption_after_exit {
+    animation: rdp-fade_out var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  .rdp-caption_before_enter {
+    animation: rdp-fade_in var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  .rdp-caption_before_exit {
+    animation: rdp-fade_out var(--rdp-animation_duration, 0.3s)
+      var(--rdp-animation_timing, cubic-bezier(0.4, 0, 0.2, 1)) forwards;
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .rdp-weeks_before_enter,
+    .rdp-weeks_before_exit,
+    .rdp-weeks_after_enter,
+    .rdp-weeks_after_exit,
+    .rdp-caption_after_enter,
+    .rdp-caption_after_exit,
+    .rdp-caption_before_enter,
+    .rdp-caption_before_exit {
+      animation: none;
+    }
+  }
 }
