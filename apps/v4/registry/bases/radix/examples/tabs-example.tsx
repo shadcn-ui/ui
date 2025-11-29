@@ -33,6 +33,8 @@ export default function TabsExample() {
       <TabsLineDisabled />
       <TabsWithDropdown />
       <TabsVertical />
+      <TabsNestedLineInDefault />
+      <TabsNestedDefaultInLine />
     </ExampleWrapper>
   )
 }
@@ -53,8 +55,8 @@ function TabsBasic() {
 function TabsLine() {
   return (
     <Example title="Line">
-      <Tabs defaultValue="overview" variant="line">
-        <TabsList>
+      <Tabs defaultValue="overview">
+        <TabsList variant="line">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="analytics">Analytics</TabsTrigger>
           <TabsTrigger value="reports">Reports</TabsTrigger>
@@ -74,8 +76,8 @@ function TabsVariantsComparison() {
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
           </TabsList>
         </Tabs>
-        <Tabs defaultValue="overview" variant="line">
-          <TabsList>
+        <Tabs defaultValue="overview">
+          <TabsList variant="line">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
           </TabsList>
@@ -215,8 +217,8 @@ function TabsWithContent() {
 function TabsLineWithContent() {
   return (
     <Example title="Line With Content">
-      <Tabs defaultValue="account" variant="line">
-        <TabsList>
+      <Tabs defaultValue="account">
+        <TabsList variant="line">
           <TabsTrigger value="account">Account</TabsTrigger>
           <TabsTrigger value="password">Password</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
@@ -253,8 +255,8 @@ function TabsLineWithContent() {
 function TabsLineDisabled() {
   return (
     <Example title="Line Disabled">
-      <Tabs defaultValue="overview" variant="line">
-        <TabsList>
+      <Tabs defaultValue="overview">
+        <TabsList variant="line">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="analytics">Analytics</TabsTrigger>
           <TabsTrigger value="reports" disabled>
@@ -410,6 +412,106 @@ function TabsVertical() {
                 </div>
               </div>
             </div>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </Example>
+  )
+}
+
+function TabsNestedLineInDefault() {
+  return (
+    <Example title="Nested Line in Default">
+      <Tabs defaultValue="overview">
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsTrigger value="settings">Settings</TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview">
+          <div className="rounded-lg border p-4">
+            <Tabs defaultValue="dashboard">
+              <TabsList variant="line">
+                <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+                <TabsTrigger value="reports">Reports</TabsTrigger>
+              </TabsList>
+              <TabsContent value="dashboard">
+                <p className="text-muted-foreground text-sm">
+                  Dashboard content goes here.
+                </p>
+              </TabsContent>
+              <TabsContent value="reports">
+                <p className="text-muted-foreground text-sm">
+                  Reports content goes here.
+                </p>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </TabsContent>
+        <TabsContent value="analytics">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Analytics</h3>
+            <p className="text-muted-foreground text-sm">
+              View your analytics data here.
+            </p>
+          </div>
+        </TabsContent>
+        <TabsContent value="settings">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Settings</h3>
+            <p className="text-muted-foreground text-sm">
+              Configure your settings here.
+            </p>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </Example>
+  )
+}
+
+function TabsNestedDefaultInLine() {
+  return (
+    <Example title="Nested Default in Line">
+      <Tabs defaultValue="overview">
+        <TabsList variant="line">
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsTrigger value="settings">Settings</TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview">
+          <div className="rounded-lg border p-4">
+            <Tabs defaultValue="dashboard">
+              <TabsList>
+                <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+                <TabsTrigger value="reports">Reports</TabsTrigger>
+              </TabsList>
+              <TabsContent value="dashboard">
+                <p className="text-muted-foreground text-sm">
+                  Dashboard content goes here.
+                </p>
+              </TabsContent>
+              <TabsContent value="reports">
+                <p className="text-muted-foreground text-sm">
+                  Reports content goes here.
+                </p>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </TabsContent>
+        <TabsContent value="analytics">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Analytics</h3>
+            <p className="text-muted-foreground text-sm">
+              View your analytics data here.
+            </p>
+          </div>
+        </TabsContent>
+        <TabsContent value="settings">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Settings</h3>
+            <p className="text-muted-foreground text-sm">
+              Configure your settings here.
+            </p>
           </div>
         </TabsContent>
       </Tabs>

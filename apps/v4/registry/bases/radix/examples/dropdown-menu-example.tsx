@@ -40,8 +40,8 @@ export default function DropdownMenuExample() {
       <DropdownMenuWithSubmenu />
       <DropdownMenuWithCheckboxes />
       <DropdownMenuWithRadio />
+      <DropdownMenuWithDestructive />
       <DropdownMenuWithAvatar />
-      <DropdownMenuAvatarOnly />
     </ExampleWrapper>
   )
 }
@@ -270,39 +270,131 @@ function DropdownMenuWithRadio() {
   )
 }
 
-function DropdownMenuWithAvatar() {
+function DropdownMenuWithDestructive() {
   return (
-    <Example title="With Avatar">
+    <Example title="With Destructive Items">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            className="h-12 justify-start px-2 md:max-w-[200px]"
-          >
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
-              <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-            </Avatar>
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-semibold">shadcn</span>
-              <span className="text-muted-foreground truncate text-xs">
-                shadcn@example.com
-              </span>
-            </div>
-            <IconPlaceholder
-              lucide="ChevronsUpDownIcon"
-              tabler="IconSelector"
-              hugeicons="UnfoldMoreIcon"
-              className="text-muted-foreground ml-auto"
-            />
+          <Button variant="outline" className="w-fit">
+            Actions
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent
-          className="w-(--radix-dropdown-menu-trigger-width) min-w-56"
-          align="start"
-        >
-          <DropdownMenuLabel className="p-0 font-normal">
-            <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+        <DropdownMenuContent align="start">
+          <DropdownMenuItem>
+            <IconPlaceholder
+              lucide="PencilIcon"
+              tabler="IconPencil"
+              hugeicons="EditIcon"
+            />
+            Edit
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <IconPlaceholder
+              lucide="ShareIcon"
+              tabler="IconShare"
+              hugeicons="ShareIcon"
+            />
+            Share
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <IconPlaceholder
+              lucide="ArchiveIcon"
+              tabler="IconArchive"
+              hugeicons="Archive02Icon"
+            />
+            Archive
+          </DropdownMenuItem>
+          <DropdownMenuItem variant="destructive">
+            <IconPlaceholder
+              lucide="TrashIcon"
+              tabler="IconTrash"
+              hugeicons="DeleteIcon"
+            />
+            Delete
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </Example>
+  )
+}
+
+function DropdownMenuWithAvatar() {
+  const menuContent = (
+    <>
+      <DropdownMenuLabel className="p-0 font-normal">
+        <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
+            <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+          </Avatar>
+          <div className="grid flex-1 text-left text-sm leading-tight">
+            <span className="truncate font-semibold">shadcn</span>
+            <span className="text-muted-foreground truncate text-xs">
+              shadcn@example.com
+            </span>
+          </div>
+        </div>
+      </DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuGroup>
+        <DropdownMenuItem>
+          <IconPlaceholder
+            lucide="SparklesIcon"
+            tabler="IconSparkles"
+            hugeicons="SparklesIcon"
+          />
+          Upgrade to Pro
+        </DropdownMenuItem>
+      </DropdownMenuGroup>
+      <DropdownMenuSeparator />
+      <DropdownMenuGroup>
+        <DropdownMenuItem>
+          <IconPlaceholder
+            lucide="BadgeCheckIcon"
+            tabler="IconRosetteDiscountCheck"
+            hugeicons="CheckmarkBadgeIcon"
+          />
+          Account
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <IconPlaceholder
+            lucide="CreditCardIcon"
+            tabler="IconCreditCard"
+            hugeicons="CreditCardIcon"
+          />
+          Billing
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <IconPlaceholder
+            lucide="BellIcon"
+            tabler="IconBell"
+            hugeicons="NotificationIcon"
+          />
+          Notifications
+        </DropdownMenuItem>
+      </DropdownMenuGroup>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>
+        <IconPlaceholder
+          lucide="LogOutIcon"
+          tabler="IconLogout"
+          hugeicons="LogoutIcon"
+        />
+        Sign Out
+      </DropdownMenuItem>
+    </>
+  )
+
+  return (
+    <Example title="With Avatar">
+      <div className="flex items-center justify-between gap-4">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="outline"
+              className="h-12 justify-start px-2 md:max-w-[200px]"
+            >
               <Avatar>
                 <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
@@ -313,122 +405,35 @@ function DropdownMenuWithAvatar() {
                   shadcn@example.com
                 </span>
               </div>
-            </div>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
               <IconPlaceholder
-                lucide="SparklesIcon"
-                tabler="IconSparkles"
-                hugeicons="SparklesIcon"
+                lucide="ChevronsUpDownIcon"
+                tabler="IconSelector"
+                hugeicons="UnfoldMoreIcon"
+                className="text-muted-foreground ml-auto"
               />
-              Upgrade to Pro
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="BadgeCheckIcon"
-                tabler="IconRosetteDiscountCheck"
-                hugeicons="CheckmarkBadgeIcon"
-              />
-              Account
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="CreditCardIcon"
-                tabler="IconCreditCard"
-                hugeicons="CreditCardIcon"
-              />
-              Billing
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="BellIcon"
-                tabler="IconBell"
-                hugeicons="NotificationIcon"
-              />
-              Notifications
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="LogOutIcon"
-              tabler="IconLogout"
-              hugeicons="LogoutIcon"
-            />
-            Sign Out
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </Example>
-  )
-}
-
-function DropdownMenuAvatarOnly() {
-  return (
-    <Example title="Avatar Only">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-              <AvatarFallback>LR</AvatarFallback>
-            </Avatar>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="SparklesIcon"
-                tabler="IconSparkles"
-                hugeicons="SparklesIcon"
-              />
-              Upgrade to Pro
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="BadgeCheckIcon"
-                tabler="IconRosetteDiscountCheck"
-                hugeicons="CheckmarkBadgeIcon"
-              />
-              Account
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="CreditCardIcon"
-                tabler="IconCreditCard"
-                hugeicons="CreditCardIcon"
-              />
-              Billing
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="BellIcon"
-                tabler="IconBell"
-                hugeicons="NotificationIcon"
-              />
-              Notifications
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="LogOutIcon"
-              tabler="IconLogout"
-              hugeicons="LogoutIcon"
-            />
-            Sign Out
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56"
+            align="start"
+          >
+            {menuContent}
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+                <AvatarFallback>LR</AvatarFallback>
+              </Avatar>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" side="top">
+            {menuContent}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </Example>
   )
 }

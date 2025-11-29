@@ -6,6 +6,7 @@ import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Field,
   FieldDescription,
+  FieldError,
   FieldLabel,
 } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
@@ -36,6 +37,7 @@ export default function SelectExample() {
       <SelectWithButton />
       <SelectItemAligned />
       <SelectWithField />
+      <SelectInvalid />
       <SelectInline />
       <SelectDisabled />
     </ExampleWrapper>
@@ -310,6 +312,43 @@ function SelectWithField() {
           Choose your favorite fruit from the list.
         </FieldDescription>
       </Field>
+    </Example>
+  )
+}
+
+function SelectInvalid() {
+  return (
+    <Example title="Invalid">
+      <div className="flex flex-col gap-4">
+        <Select>
+          <SelectTrigger aria-invalid="true">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes">Grapes</SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </SelectContent>
+        </Select>
+        <Field data-invalid>
+          <FieldLabel htmlFor="select-fruit-invalid">Favorite Fruit</FieldLabel>
+          <Select>
+            <SelectTrigger id="select-fruit-invalid" aria-invalid>
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="blueberry">Blueberry</SelectItem>
+              <SelectItem value="grapes">Grapes</SelectItem>
+              <SelectItem value="pineapple">Pineapple</SelectItem>
+            </SelectContent>
+          </Select>
+          <FieldError errors={[{ message: "Please select a valid fruit." }]} />
+        </Field>
+      </div>
     </Example>
   )
 }

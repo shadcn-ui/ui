@@ -8,7 +8,7 @@ import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function BadgeExample() {
   return (
-    <ExampleWrapper>
+    <ExampleWrapper className="lg:grid-cols-1">
       <BadgeVariants />
       <BadgeWithIconLeft />
       <BadgeWithIconRight />
@@ -44,6 +44,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            data-icon="inline-start"
           />
           Default
         </Badge>
@@ -52,6 +53,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            data-icon="inline-start"
           />
           Secondary
         </Badge>
@@ -60,6 +62,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            data-icon="inline-start"
           />
           Destructive
         </Badge>
@@ -68,6 +71,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            data-icon="inline-start"
           />
           Outline
         </Badge>
@@ -76,6 +80,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            data-icon="inline-start"
           />
           Ghost
         </Badge>
@@ -84,6 +89,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            data-icon="inline-start"
           />
           Link
         </Badge>
@@ -102,6 +108,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            data-icon="inline-end"
           />
         </Badge>
         <Badge variant="secondary">
@@ -110,6 +117,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            data-icon="inline-end"
           />
         </Badge>
         <Badge variant="destructive">
@@ -118,6 +126,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            data-icon="inline-end"
           />
         </Badge>
         <Badge variant="outline">
@@ -126,6 +135,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            data-icon="inline-end"
           />
         </Badge>
         <Badge variant="ghost">
@@ -134,6 +144,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            data-icon="inline-end"
           />
         </Badge>
         <Badge variant="link">
@@ -142,6 +153,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            data-icon="inline-end"
           />
         </Badge>
       </div>
@@ -154,27 +166,27 @@ function BadgeWithSpinner() {
     <Example title="With Spinner" className="max-w-fit">
       <div className="flex flex-wrap gap-2">
         <Badge>
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Default
         </Badge>
         <Badge variant="secondary">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Secondary
         </Badge>
         <Badge variant="destructive">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Destructive
         </Badge>
         <Badge variant="outline">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Outline
         </Badge>
         <Badge variant="ghost">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Ghost
         </Badge>
         <Badge variant="link">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Link
         </Badge>
       </div>
@@ -193,6 +205,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
+              data-icon="inline-end"
             />
           </a>
         </Badge>
@@ -203,6 +216,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
+              data-icon="inline-end"
             />
           </a>
         </Badge>
@@ -213,6 +227,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
+              data-icon="inline-end"
             />
           </a>
         </Badge>
@@ -223,6 +238,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
+              data-icon="inline-end"
             />
           </a>
         </Badge>
@@ -233,6 +249,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
+              data-icon="inline-end"
             />
           </a>
         </Badge>
@@ -243,6 +260,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowRight02Icon"
+              data-icon="inline-end"
             />
           </a>
         </Badge>

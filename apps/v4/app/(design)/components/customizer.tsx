@@ -35,19 +35,24 @@ import {
 } from "@/registry/new-york-v4/ui/popover"
 import { PRESETS } from "@/registry/presets"
 import { STYLES } from "@/registry/styles"
-import { THEMES } from "@/registry/themes"
 import { BaseColorPicker } from "@/app/(design)/components/base-color-picker"
 import { FontPicker } from "@/app/(design)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(design)/components/icon-library-picker"
 import { StylePicker } from "@/app/(design)/components/style-picker"
 import { ThemePicker } from "@/app/(design)/components/theme-picker"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
+import { getThemesForBaseColor } from "@/app/(design)/lib/utils"
 
 export function Customizer() {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
   })
+
+  const availableThemes = React.useMemo(
+    () => getThemesForBaseColor(params.baseColor),
+    [params.baseColor]
+  )
 
   const handleSelectPreset = React.useCallback(
     (preset: (typeof PRESETS)[number]) => {
@@ -106,16 +111,14 @@ export function Customizer() {
                 </Button>
               )
             })}
+            <StylePicker styles={STYLES} />
+            <BaseColorPicker />
+            <ThemePicker themes={availableThemes} />
+            <IconLibraryPicker />
+            <FontPicker fonts={FONTS} />
           </FieldGroup>
         </CardContent>
       </Card>
-      <FieldGroup className="flex flex-col gap-3">
-        <StylePicker styles={STYLES} />
-        <BaseColorPicker />
-        <ThemePicker themes={THEMES} />
-        <IconLibraryPicker />
-        <FontPicker fonts={FONTS} />
-      </FieldGroup>
     </div>
   )
 }

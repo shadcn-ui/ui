@@ -730,20 +730,6 @@
       "type": "registry:ui"
     },
     {
-      "name": "cover-example",
-      "title": "Cover",
-      "registryDependencies": [
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/examples/cover-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "accordion-example",
       "title": "Accordion",
       "registryDependencies": [
@@ -1641,6 +1627,39 @@
         }
       ],
       "type": "registry:internal"
+    },
+    {
+      "name": "cover",
+      "title": "Cover",
+      "files": [
+        {
+          "path": "registry/radix-nova/blocks/cover.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "vercel",
+      "title": "Vercel",
+      "files": [
+        {
+          "path": "registry/radix-nova/blocks/vercel.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "github",
+      "title": "GitHub",
+      "files": [
+        {
+          "path": "registry/radix-nova/blocks/github.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
     }
   ]
 }

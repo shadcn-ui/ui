@@ -8,6 +8,9 @@ import { Input } from "@/registry/bases/radix/ui/input"
 import {
   Popover,
   PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
 
@@ -31,12 +34,12 @@ function PopoverBasic() {
           </Button>
         </PopoverTrigger>
         <PopoverContent align="start">
-          <div className="grid gap-2">
-            <h4 className="text-sm font-medium">Dimensions</h4>
-            <p className="text-muted-foreground text-sm">
+          <PopoverHeader>
+            <PopoverTitle>Dimensions</PopoverTitle>
+            <PopoverDescription>
               Set the dimensions for the layer.
-            </p>
-          </div>
+            </PopoverDescription>
+          </PopoverHeader>
         </PopoverContent>
       </Popover>
     </Example>
@@ -53,32 +56,26 @@ function PopoverWithForm() {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-80" align="start">
-          <div className="grid gap-4">
-            <div className="grid gap-1.5">
-              <h4 className="leading-none font-medium">Dimensions</h4>
-              <p className="text-muted-foreground text-sm">
-                Set the dimensions for the layer.
-              </p>
-            </div>
-            <FieldGroup className="gap-2">
-              <Field orientation="horizontal">
-                <FieldLabel htmlFor="width">Width</FieldLabel>
-                <Input id="width" defaultValue="100%" className="h-8" />
-              </Field>
-              <Field orientation="horizontal">
-                <FieldLabel htmlFor="maxWidth">Max. width</FieldLabel>
-                <Input id="maxWidth" defaultValue="300px" className="h-8" />
-              </Field>
-              <Field orientation="horizontal">
-                <FieldLabel htmlFor="height">Height</FieldLabel>
-                <Input id="height" defaultValue="25px" className="h-8" />
-              </Field>
-              <Field orientation="horizontal">
-                <FieldLabel htmlFor="maxHeight">Max. height</FieldLabel>
-                <Input id="maxHeight" defaultValue="none" className="h-8" />
-              </Field>
-            </FieldGroup>
-          </div>
+          <PopoverHeader>
+            <PopoverTitle>Dimensions</PopoverTitle>
+            <PopoverDescription>
+              Set the dimensions for the layer.
+            </PopoverDescription>
+          </PopoverHeader>
+          <FieldGroup className="gap-2">
+            <Field orientation="horizontal">
+              <FieldLabel htmlFor="width" className="w-1/2">
+                Width
+              </FieldLabel>
+              <Input id="width" defaultValue="100%" />
+            </Field>
+            <Field orientation="horizontal">
+              <FieldLabel htmlFor="height" className="w-1/2">
+                Height
+              </FieldLabel>
+              <Input id="height" defaultValue="25px" />
+            </Field>
+          </FieldGroup>
         </PopoverContent>
       </Popover>
     </Example>

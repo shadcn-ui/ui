@@ -34,7 +34,7 @@ function ItemSeparator({
 }
 
 const itemVariants = cva(
-  "cn-item w-full group/item [a]:hover:bg-accent/50 focus-visible:border-ring focus-visible:ring-ring/50 flex items-center flex-wrap outline-none transition-colors duration-100 focus-visible:ring-[3px] [a]:transition-colors",
+  "cn-item w-full group/item focus-visible:border-ring focus-visible:ring-ring/50 flex items-center flex-wrap outline-none transition-colors duration-100 focus-visible:ring-[3px] [a]:transition-colors",
   {
     variants: {
       variant: {
@@ -45,6 +45,7 @@ const itemVariants = cva(
       size: {
         default: "cn-item-size-default",
         sm: "cn-item-size-sm",
+        xs: "cn-item-size-xs",
       },
     },
     defaultVariants: {

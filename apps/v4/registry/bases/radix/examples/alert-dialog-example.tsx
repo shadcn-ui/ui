@@ -151,7 +151,7 @@ function AlertDialogDestructive() {
         </AlertDialogTrigger>
         <AlertDialogContent size="sm">
           <AlertDialogHeader>
-            <AlertDialogMedia className="bg-red-50 text-red-500 dark:bg-red-950 dark:text-red-400">
+            <AlertDialogMedia className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
               <IconPlaceholder
                 lucide="Trash2Icon"
                 tabler="IconTrash"
@@ -187,7 +187,7 @@ function AlertDialogWithIconTrigger() {
               lucide="HeadphonesIcon"
               tabler="IconHeadphones"
               hugeicons="HeadphonesIcon"
-              data-slot="icon-inline-start"
+              data-icon="inline-start"
             />
             Connect
           </Button>

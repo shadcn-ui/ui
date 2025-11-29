@@ -3,14 +3,14 @@ export const STYLES = [
     name: "vega",
     title: "Vega",
   },
-  // {
-  //   name: "nova",
-  //   title: "Nova",
-  // },
-  // {
-  //   name: "lyra",
-  //   title: "Lyra",
-  // },
+  {
+    name: "nova",
+    title: "Nova",
+  },
+  {
+    name: "lyra",
+    title: "Lyra",
+  },
   // {
   //   name: "maia",
   //   title: "Maia",

@@ -8,6 +8,7 @@ import { ModeSwitcher } from "@/components/mode-switcher"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { InstallDialog } from "@/app/(design)/components/install-dialog"
+import { ItemNav } from "@/app/(design)/components/item-nav"
 import { ItemPicker } from "@/app/(design)/components/item-picker"
 import { PreviewControls } from "@/app/(design)/components/preview-controls"
 
@@ -34,6 +35,7 @@ export function Toolbar({
       </div>
       <div className="flex flex-1 items-center justify-end gap-2">
         <ItemPicker items={items} />
+        <ItemNav items={items} />
         <Separator orientation="vertical" />
         <PreviewControls />
         <Separator orientation="vertical" />

@@ -1640,6 +1640,17 @@
       "type": "registry:block"
     },
     {
+      "name": "vercel",
+      "title": "Vercel",
+      "files": [
+        {
+          "path": "registry/radix-vega/blocks/vercel.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
       "name": "github",
       "title": "GitHub",
       "files": [

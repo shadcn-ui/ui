@@ -86,6 +86,9 @@ import { Label } from "@/registry/bases/radix/ui/label"
 import {
   Popover,
   PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
 import {
@@ -579,21 +582,19 @@ function ButtonGroupExample2() {
                 />
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="end" className="p-0">
-              <div className="px-4 py-3">
-                <div className="text-sm font-medium">Agent Tasks</div>
-              </div>
-              <Separator />
-              <div className="p-4 text-sm *:[p:not(:last-child)]:mb-2">
+            <PopoverContent align="end" className="w-96">
+              <PopoverHeader>
+                <PopoverTitle>Agent Tasks</PopoverTitle>
+                <PopoverDescription>
+                  Describe your task in natural language. Copilot will work in
+                  the background and open a pull request.
+                </PopoverDescription>
+              </PopoverHeader>
+              <div className="text-sm *:[p:not(:last-child)]:mb-2">
                 <Textarea
                   placeholder="Describe your task in natural language."
-                  className="mb-4 resize-none"
+                  className="min-h-32 resize-none"
                 />
-                <p className="font-medium">Start a new task with Copilot</p>
-                <p className="text-muted-foreground">
-                  Describe your task in natural language. Copilot will work in
-                  the background and open a pull request for your review.
-                </p>
               </div>
             </PopoverContent>
           </Popover>

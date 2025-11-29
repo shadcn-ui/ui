@@ -5,7 +5,7 @@ function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="example-wrapper"
       className={cn(
-        "flex min-h-screen w-full min-w-0 flex-col items-center justify-center gap-12 bg-neutral-50 p-6 lg:p-12 dark:bg-neutral-950",
+        "mx-auto grid min-h-screen w-full max-w-7xl min-w-0 content-center items-start gap-12 bg-neutral-50 p-6 lg:grid-cols-2 lg:gap-8 lg:p-12 2xl:max-w-screen-2xl 2xl:grid-cols-3 dark:bg-neutral-950",
         className
       )}
       {...props}
@@ -17,12 +17,19 @@ function Example({
   title,
   children,
   className,
+  containerClassName,
   ...props
-}: React.ComponentProps<"div"> & { title: string }) {
+}: React.ComponentProps<"div"> & {
+  title: string
+  containerClassName?: string
+}) {
   return (
     <div
       data-slot="example"
-      className={cn("flex w-full max-w-lg min-w-0 flex-col gap-1", className)}
+      className={cn(
+        "mx-auto flex w-full max-w-lg min-w-0 flex-col gap-1 self-stretch lg:max-w-none",
+        containerClassName
+      )}
       {...props}
     >
       <div className="text-muted-foreground px-1.5 py-2 text-xs font-medium">
@@ -30,7 +37,10 @@ function Example({
       </div>
       <div
         data-slot="example-content"
-        className="bg-background text-foreground flex min-w-0 flex-col items-start gap-6 rounded-xl border border-dashed p-6 *:[div:not([class*='w-'])]:w-full"
+        className={cn(
+          "bg-background text-foreground flex min-w-0 flex-1 flex-col items-start gap-6 border border-dashed p-6 *:[div:not([class*='w-'])]:w-full",
+          className
+        )}
       >
         {children}
       </div>

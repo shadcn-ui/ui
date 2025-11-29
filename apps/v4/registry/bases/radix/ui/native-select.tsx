@@ -14,7 +14,7 @@ function NativeSelect({ className, ...props }: React.ComponentProps<"select">) {
     >
       <select
         data-slot="native-select"
-        className="cn-native-select focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed"
+        className="cn-native-select outline-none disabled:pointer-events-none disabled:cursor-not-allowed"
         {...props}
       />
       <IconPlaceholder

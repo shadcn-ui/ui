@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vercel",
+  "title": "Vercel",
+  "files": [
+    {
+      "path": "registry/radix-lyra/blocks/vercel.tsx",
+      "content": "import {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/bases/radix/components/example\"\nimport { Card, CardContent } from \"@/registry/bases/radix/ui/card\"\n\nexport default function VercelBlock() {\n  return (\n    <ExampleWrapper>\n      <VercelCard />\n    </ExampleWrapper>\n  )\n}\n\nfunction VercelCard() {\n  return (\n    <Example title=\"Vercel Card\">\n      <Card>\n        <CardContent>foo</CardContent>\n      </Card>\n    </Example>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "type": "registry:block"
+}

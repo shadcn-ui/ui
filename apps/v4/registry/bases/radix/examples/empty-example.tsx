@@ -152,7 +152,7 @@ function EmptyWithIcon() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
-              data-slot="icon-inline-start"
+              data-icon="inline-start"
             />
             New Post
           </Button>

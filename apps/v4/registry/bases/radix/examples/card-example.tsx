@@ -109,7 +109,7 @@ function CardMeetingNotes() {
                 lucide="CaptionsIcon"
                 tabler="IconTextCaption"
                 hugeicons="TextCheckIcon"
-                data-slot="icon-inline-start"
+                data-icon="inline-start"
               />
               Transcribe
             </Button>
@@ -180,7 +180,7 @@ function CardWithImage() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="Add01Icon"
-              data-slot="icon-inline-start"
+              data-icon="inline-start"
             />
             Add to cart
           </Button>

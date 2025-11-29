@@ -79,7 +79,7 @@ function PaginationPrevious({
         lucide="ChevronLeftIcon"
         tabler="IconChevronLeft"
         hugeicons="ArrowLeft01Icon"
-        data-slot="icon-inline-start"
+        data-icon="inline-start"
       />
       <span className="cn-pagination-previous-text hidden sm:block">
         Previous
@@ -104,7 +104,7 @@ function PaginationNext({
         lucide="ChevronRightIcon"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
-        data-slot="icon-inline-end"
+        data-icon="inline-end"
       />
     </PaginationLink>
   )

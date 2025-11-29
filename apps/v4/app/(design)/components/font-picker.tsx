@@ -1,32 +1,23 @@
 "use client"
 
 import * as React from "react"
-import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
 import { type Font } from "@/registry/fonts"
 import {
-  CustomizerItem,
-  CustomizerPicker,
-  CustomizerPickerGroup,
-  CustomizerPickerItem,
-} from "@/app/(design)/components/customizer"
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
-  const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
   })
-
-  const handleSelect = React.useCallback(
-    (fontValue: Font["value"]) => {
-      setParams({ font: fontValue })
-      setOpen(false)
-    },
-    [setParams]
-  )
 
   const currentFont = React.useMemo(
     () => fonts.find((font) => font.value === params.font),
@@ -34,38 +25,34 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
   )
 
   return (
-    <CustomizerItem
-      title="Font"
-      description={currentFont?.name}
-      icon={<IconChevronRight />}
-      open={open}
-      onOpenChange={setOpen}
+    <Select
+      value={currentFont?.value}
+      onValueChange={(value) => {
+        setParams({ font: value as Font["value"] })
+      }}
     >
-      <CustomizerPicker currentValue={currentFont?.name ?? null} open={open}>
-        <CustomizerPickerGroup>
-          {fonts.map((font) => (
-            <CustomizerPickerItem
-              key={font.value}
-              value={font.name}
-              onSelect={() => handleSelect(font.value)}
-              isActive={font.value === params.font}
-              className="ring-border mb-2 ring-1"
-            >
-              <div className="flex flex-col gap-0.5 p-1">
-                <span className="text-muted-foreground text-xs font-medium">
-                  {font.name}
-                </span>
-                <span
-                  className="text-sm"
-                  style={{ fontFamily: font.font.style.fontFamily }}
-                >
-                  The quick brown fox jumps over the lazy dog.
-                </span>
-              </div>
-            </CustomizerPickerItem>
-          ))}
-        </CustomizerPickerGroup>
-      </CustomizerPicker>
-    </CustomizerItem>
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder="Select a font">
+          {currentFont?.name}
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent position="item-aligned" className="w-64">
+        {fonts.map((font) => (
+          <SelectItem key={font.value} value={font.value}>
+            <div className="flex flex-col gap-0.5">
+              <span className="text-muted-foreground text-xs font-medium">
+                {font.name}
+              </span>
+              <span
+                className="text-sm"
+                style={{ fontFamily: font.font.style.fontFamily }}
+              >
+                The quick brown fox jumps over the lazy dog.
+              </span>
+            </div>
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   )
 }

@@ -30,6 +30,7 @@ export default function ContextMenuExample() {
       <ContextMenuWithGroups />
       <ContextMenuWithCheckboxes />
       <ContextMenuWithRadio />
+      <ContextMenuWithDestructive />
     </ExampleWrapper>
   )
 }
@@ -38,7 +39,7 @@ function ContextMenuBasic() {
   return (
     <Example title="Basic">
       <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
@@ -55,7 +56,7 @@ function ContextMenuWithIcons() {
   return (
     <Example title="With Icons">
       <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
@@ -102,7 +103,7 @@ function ContextMenuWithShortcuts() {
   return (
     <Example title="With Shortcuts">
       <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
@@ -137,7 +138,7 @@ function ContextMenuWithSubmenu() {
   return (
     <Example title="With Submenu">
       <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
@@ -171,7 +172,7 @@ function ContextMenuWithGroups() {
   return (
     <Example title="With Groups, Labels & Separators">
       <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
@@ -232,7 +233,7 @@ function ContextMenuWithCheckboxes() {
   return (
     <Example title="With Checkboxes">
       <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
@@ -253,7 +254,7 @@ function ContextMenuWithRadio() {
   return (
     <Example title="With Radio Group">
       <ContextMenu>
-        <ContextMenuTrigger className="flex aspect-video w-full items-center justify-center text-sm">
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
@@ -271,6 +272,53 @@ function ContextMenuWithRadio() {
             <ContextMenuRadioItem value="dark">Dark</ContextMenuRadioItem>
             <ContextMenuRadioItem value="system">System</ContextMenuRadioItem>
           </ContextMenuRadioGroup>
+        </ContextMenuContent>
+      </ContextMenu>
+    </Example>
+  )
+}
+
+function ContextMenuWithDestructive() {
+  return (
+    <Example title="With Destructive Items">
+      <ContextMenu>
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
+          Right click here
+        </ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem>
+            <IconPlaceholder
+              lucide="PencilIcon"
+              tabler="IconPencil"
+              hugeicons="EditIcon"
+            />
+            Edit
+          </ContextMenuItem>
+          <ContextMenuItem>
+            <IconPlaceholder
+              lucide="ShareIcon"
+              tabler="IconShare"
+              hugeicons="ShareIcon"
+            />
+            Share
+          </ContextMenuItem>
+          <ContextMenuSeparator />
+          <ContextMenuItem>
+            <IconPlaceholder
+              lucide="ArchiveIcon"
+              tabler="IconArchive"
+              hugeicons="Archive02Icon"
+            />
+            Archive
+          </ContextMenuItem>
+          <ContextMenuItem variant="destructive">
+            <IconPlaceholder
+              lucide="TrashIcon"
+              tabler="IconTrash"
+              hugeicons="DeleteIcon"
+            />
+            Delete
+          </ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
     </Example>

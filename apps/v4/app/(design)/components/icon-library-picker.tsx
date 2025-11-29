@@ -2,16 +2,16 @@
 
 import * as React from "react"
 import { lazy, memo, Suspense } from "react"
-import { IconChevronRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 import { iconLibraries, IconLibraryName, type IconLibrary } from "shadcn/icons"
 
 import {
-  CustomizerItem,
-  CustomizerPicker,
-  CustomizerPickerGroup,
-  CustomizerPickerItem,
-} from "@/app/(design)/components/customizer"
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 const IconLucide = lazy(() =>
@@ -84,19 +84,10 @@ const PREVIEW_ICONS = {
 }
 
 export function IconLibraryPicker() {
-  const [open, setOpen] = React.useState(false)
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
   })
-
-  const handleSelect = React.useCallback(
-    (iconLibrary: IconLibraryName) => {
-      setParams({ iconLibrary })
-      setOpen(false)
-    },
-    [setParams]
-  )
 
   const currentIconLibrary = React.useMemo(
     () => iconLibraries[params.iconLibrary],
@@ -104,55 +95,46 @@ export function IconLibraryPicker() {
   )
 
   return (
-    <CustomizerItem
-      title="Icon Library"
-      description={currentIconLibrary?.title ?? null}
-      icon={<IconChevronRight />}
-      open={open}
-      onOpenChange={setOpen}
+    <Select
+      value={currentIconLibrary?.name}
+      onValueChange={(value) => {
+        setParams({ iconLibrary: value as IconLibraryName })
+      }}
     >
-      <CustomizerPicker
-        currentValue={currentIconLibrary?.title ?? null}
-        open={open}
-        className="**:data-[slot=command-list]:max-h-none"
-      >
-        <CustomizerPickerGroup>
-          {Object.values(iconLibraries).map((iconLibrary) => (
-            <IconLibraryPickerItem
-              key={iconLibrary.name}
-              iconLibrary={iconLibrary}
-              onSelect={() => handleSelect(iconLibrary.name)}
-              isActive={iconLibrary.name === params.iconLibrary}
-            >
-              {iconLibrary.title}
-            </IconLibraryPickerItem>
-          ))}
-        </CustomizerPickerGroup>
-      </CustomizerPicker>
-    </CustomizerItem>
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder="Select an icon library">
+          {currentIconLibrary?.title}
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent position="item-aligned" className="w-64">
+        {Object.values(iconLibraries).map((iconLibrary) => (
+          <IconLibraryPickerItem
+            key={iconLibrary.name}
+            iconLibrary={iconLibrary}
+            value={iconLibrary.name}
+          />
+        ))}
+      </SelectContent>
+    </Select>
   )
 }
 
 function IconLibraryPickerItem({
   iconLibrary,
-  ...props
-}: React.ComponentProps<typeof CustomizerPickerItem> & {
+  value,
+}: {
   iconLibrary: IconLibrary
+  value: string
 }) {
   return (
-    <CustomizerPickerItem
-      key={iconLibrary.name}
-      value={iconLibrary.title}
-      className="ring-border ring-1 not-last:mb-2"
-      {...props}
-    >
+    <SelectItem value={value} className="ring-border ring-1 not-last:mb-2">
       <div className="flex w-full flex-col gap-1.5 p-1">
         <span className="text-muted-foreground text-xs font-medium">
           {iconLibrary.title}
         </span>
         <IconLibraryPreview iconLibrary={iconLibrary.name} />
       </div>
-    </CustomizerPickerItem>
+    </SelectItem>
   )
 }
 

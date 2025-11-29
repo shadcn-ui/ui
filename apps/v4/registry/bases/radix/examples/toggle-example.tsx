@@ -198,7 +198,7 @@ function ToggleWithButtonIconText() {
               lucide="BoldIcon"
               tabler="IconBold"
               hugeicons="TextBoldIcon"
-              data-slot="icon-inline-start"
+              data-icon="inline-start"
             />
             Button
           </Button>
@@ -217,7 +217,7 @@ function ToggleWithButtonIconText() {
               lucide="ItalicIcon"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
-              data-slot="icon-inline-start"
+              data-icon="inline-start"
             />
             Button
           </Button>
@@ -240,7 +240,7 @@ function ToggleWithButtonIconText() {
               lucide="UnderlineIcon"
               tabler="IconUnderline"
               hugeicons="TextUnderlineIcon"
-              data-slot="icon-inline-start"
+              data-icon="inline-start"
             />
             Button
           </Button>

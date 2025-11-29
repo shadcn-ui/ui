@@ -4,8 +4,8 @@ import { RegistryBaseItem, registryItemSchema } from "shadcn/schema"
 
 import { BASE_COLORS } from "@/registry/base-colors"
 import { BASES } from "@/registry/bases"
-import { THEMES } from "@/registry/themes"
 import { buildTheme } from "@/app/(design)/lib/merge-theme"
+import { getThemesForBaseColor } from "@/app/(design)/lib/api"
 
 export async function GET(request: NextRequest) {
   try {
@@ -48,10 +48,13 @@ export async function GET(request: NextRequest) {
     }
 
     // Validate the theme.
-    const themeItem = THEMES.find((t) => t.name === theme)
+    const availableThemes = getThemesForBaseColor(baseColor)
+    const themeItem = availableThemes.find((t) => t.name === theme)
     if (!themeItem) {
       return NextResponse.json(
-        { error: `Theme "${theme}" not found` },
+        {
+          error: `Theme "${theme}" is not available for base color "${baseColor}". Available themes: ${availableThemes.map((t) => t.name).join(", ")}`,
+        },
         { status: 400 }
       )
     }

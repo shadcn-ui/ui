@@ -419,7 +419,7 @@ function ButtonGroupWithLike() {
             lucide="HeartIcon"
             tabler="IconBell"
             hugeicons="Notification02Icon"
-            data-slot="icon-inline-start"
+            data-icon="inline-start"
           />{" "}
           Like
         </Button>
@@ -520,7 +520,7 @@ function ButtonGroupPagination() {
             lucide="ArrowLeftIcon"
             tabler="IconArrowLeft"
             hugeicons="ArrowLeft01Icon"
-            data-slot="icon-inline-start"
+            data-icon="inline-start"
           />
           Previous
         </Button>
@@ -545,7 +545,7 @@ function ButtonGroupPagination() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight01Icon"
-            data-slot="icon-inline-end"
+            data-icon="inline-end"
           />
         </Button>
       </ButtonGroup>

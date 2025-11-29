@@ -45,6 +45,9 @@ import { Kbd, KbdGroup } from "@/registry/bases/radix/ui/kbd"
 import {
   Popover,
   PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
 import { Spinner } from "@/registry/bases/radix/ui/spinner"
@@ -66,7 +69,6 @@ export default function InputGroupExample() {
       <InputGroupWithButtons />
       <InputGroupWithTooltip country={country} setCountry={setCountry} />
       <InputGroupWithKbd />
-      <InputGroupWithButtonGroup />
       <InputGroupInCard />
       <InputGroupTextareaExamples />
     </ExampleWrapper>
@@ -359,6 +361,9 @@ function InputGroupWithTooltip({
               </Tooltip>
             </InputGroupAddon>
           </InputGroup>
+          <FieldDescription>
+            This is a description of the input group.
+          </FieldDescription>
         </Field>
         <Field>
           <FieldLabel htmlFor="input-dropdown-21">Dropdown</FieldLabel>
@@ -395,6 +400,9 @@ function InputGroupWithTooltip({
               </DropdownMenu>
             </InputGroupAddon>
           </InputGroup>
+          <FieldDescription>
+            This is a description of the input group.
+          </FieldDescription>
         </Field>
         <Field>
           <FieldLabel htmlFor="input-secure-19">Popover</FieldLabel>
@@ -411,14 +419,13 @@ function InputGroupWithTooltip({
                   </InputGroupButton>
                 </InputGroupAddon>
               </PopoverTrigger>
-              <PopoverContent
-                align="start"
-                className="flex flex-col gap-1 rounded-xl text-sm"
-              >
-                <p className="font-medium">Your connection is not secure.</p>
-                <p>
-                  You should not enter any sensitive information on this site.
-                </p>
+              <PopoverContent align="start">
+                <PopoverHeader>
+                  <PopoverTitle>Your connection is not secure.</PopoverTitle>
+                  <PopoverDescription>
+                    You should not enter any sensitive information on this site.
+                  </PopoverDescription>
+                </PopoverHeader>
               </PopoverContent>
             </Popover>
             <InputGroupAddon className="text-muted-foreground pl-1">
@@ -438,6 +445,29 @@ function InputGroupWithTooltip({
               </InputGroupButton>
             </InputGroupAddon>
           </InputGroup>
+          <FieldDescription>
+            This is a description of the input group.
+          </FieldDescription>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="url">Button Group</FieldLabel>
+          <ButtonGroup>
+            <ButtonGroupText>https://</ButtonGroupText>
+            <InputGroup>
+              <InputGroupInput id="url" />
+              <InputGroupAddon align="inline-end">
+                <IconPlaceholder
+                  lucide="InfoIcon"
+                  tabler="IconInfoCircle"
+                  hugeicons="AlertCircleIcon"
+                />
+              </InputGroupAddon>
+            </InputGroup>
+            <ButtonGroupText>.com</ButtonGroupText>
+          </ButtonGroup>
+          <FieldDescription>
+            This is a description of the input group.
+          </FieldDescription>
         </Field>
       </FieldGroup>
     </Example>
@@ -582,35 +612,6 @@ function InputGroupWithKbd() {
               <Spinner />
             </InputGroupAddon>
           </InputGroup>
-          <FieldDescription>
-            This is a description of the input group.
-          </FieldDescription>
-        </Field>
-      </FieldGroup>
-    </Example>
-  )
-}
-
-function InputGroupWithButtonGroup() {
-  return (
-    <Example title="With Button Group">
-      <FieldGroup>
-        <Field>
-          <FieldLabel htmlFor="url">With Button Group</FieldLabel>
-          <ButtonGroup>
-            <ButtonGroupText>https://</ButtonGroupText>
-            <InputGroup>
-              <InputGroupInput id="url" />
-              <InputGroupAddon align="inline-end">
-                <IconPlaceholder
-                  lucide="InfoIcon"
-                  tabler="IconInfoCircle"
-                  hugeicons="AlertCircleIcon"
-                />
-              </InputGroupAddon>
-            </InputGroup>
-            <ButtonGroupText>.com</ButtonGroupText>
-          </ButtonGroup>
           <FieldDescription>
             This is a description of the input group.
           </FieldDescription>

@@ -27,11 +27,11 @@ export default function CalendarExample() {
     <ExampleWrapper>
       <CalendarSingle />
       <CalendarMultiple />
+      <CalendarWeekNumbers />
       <CalendarRange />
       <CalendarRangeMultipleMonths />
       <CalendarBookedDates />
       <CalendarWithTime />
-      <CalendarWeekNumbers />
       <CalendarWithPresets />
       <CalendarCustomDays />
       <DatePickerSimple />
@@ -80,7 +80,11 @@ function CalendarRange() {
   })
 
   return (
-    <Example title="Range" className="max-w-fit">
+    <Example
+      title="Range"
+      containerClassName="lg:col-span-full 2xl:col-span-full"
+      className="p-12"
+    >
       <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar
@@ -106,7 +110,11 @@ function CalendarRangeMultipleMonths() {
   })
 
   return (
-    <Example title="Range Multiple Months" className="max-w-3xl">
+    <Example
+      title="Range Multiple Months"
+      containerClassName="lg:col-span-full 2xl:col-span-full"
+      className="p-12"
+    >
       <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar
@@ -130,7 +138,7 @@ function CalendarBookedDates() {
   )
   const bookedDates = Array.from(
     { length: 15 },
-    (_, i) => new Date(new Date().getFullYear(), new Date().getMonth(), 12 + i)
+    (_, i) => new Date(new Date().getFullYear(), 1, 12 + i)
   )
 
   return (
@@ -330,7 +338,7 @@ function DatePickerSimple() {
                 lucide="CalendarIcon"
                 tabler="IconCalendar"
                 hugeicons="CalendarIcon"
-                data-slot="icon-inline-start"
+                data-icon="inline-start"
               />
               {date ? format(date, "PPP") : <span>Pick a date</span>}
             </Button>
@@ -365,7 +373,7 @@ function DatePickerWithRange() {
                 lucide="CalendarIcon"
                 tabler="IconCalendar"
                 hugeicons="CalendarIcon"
-                data-slot="icon-inline-start"
+                data-icon="inline-start"
               />
               {date?.from ? (
                 date.to ? (
@@ -418,7 +426,7 @@ function DataPickerWithDropdowns() {
                 lucide="ChevronDownIcon"
                 tabler="IconChevronDown"
                 hugeicons="ArrowDownIcon"
-                data-slot="icon-inline-start"
+                data-icon="inline-start"
                 className="ml-auto"
               />
             </Button>
@@ -453,7 +461,7 @@ function CalendarWeekNumbers() {
   )
 
   return (
-    <Example title="Week Numbers">
+    <Example title="Week Numbers" className="justify-center">
       <Card className="mx-auto w-fit p-0">
         <CardContent className="p-0">
           <Calendar

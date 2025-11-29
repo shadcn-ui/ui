@@ -243,7 +243,7 @@ function CollapsibleNavigation() {
           lucide="HomeIcon"
           tabler="IconHome"
           hugeicons="Home01Icon"
-          data-slot="icon-inline-start"
+          data-icon="inline-start"
         />
       ),
       items: ["Dashboard", "Overview", "Recent Activity"],
@@ -255,7 +255,7 @@ function CollapsibleNavigation() {
           lucide="BoxIcon"
           tabler="IconBox"
           hugeicons="PackageIcon"
-          data-slot="icon-inline-start"
+          data-icon="inline-start"
         />
       ),
       items: ["Button", "Card", "Dialog"],
@@ -267,7 +267,7 @@ function CollapsibleNavigation() {
           lucide="BookOpenIcon"
           tabler="IconBook"
           hugeicons="Book01Icon"
-          data-slot="icon-inline-start"
+          data-icon="inline-start"
         />
       ),
       items: ["Getting Started", "Installation", "Examples"],
@@ -279,7 +279,7 @@ function CollapsibleNavigation() {
           lucide="SettingsIcon"
           tabler="IconSettings"
           hugeicons="Settings01Icon"
-          data-slot="icon-inline-start"
+          data-icon="inline-start"
         />
       ),
       items: ["General", "Privacy", "Notifications"],
@@ -303,7 +303,7 @@ function CollapsibleNavigation() {
                       lucide="ChevronDownIcon"
                       tabler="IconChevronDown"
                       hugeicons="ArrowDown01Icon"
-                      data-slot="icon-inline-end"
+                      data-icon="inline-end"
                       className="transition-transform data-[state=open]:rotate-180"
                     />
                   </Button>
@@ -322,7 +322,7 @@ function CollapsibleNavigation() {
                             lucide="CircleDashedIcon"
                             tabler="IconCircleDashed"
                             hugeicons="DashedLineCircleIcon"
-                            data-slot="icon-inline-start"
+                            data-icon="inline-start"
                             className="invisible"
                           />
                           {subItem}

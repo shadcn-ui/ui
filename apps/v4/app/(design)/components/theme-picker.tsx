@@ -1,69 +1,73 @@
 "use client"
 
 import * as React from "react"
-import { IconChevronRight } from "@tabler/icons-react"
+import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
-import { Theme } from "@/registry/themes"
+import { BASE_COLORS } from "@/registry/base-colors"
 import {
-  CustomizerItem,
-  CustomizerPicker,
-  CustomizerPickerGroup,
-  CustomizerPickerItem,
-} from "@/app/(design)/components/customizer"
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
+import { Theme } from "@/registry/themes"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
-  const [open, setOpen] = React.useState(false)
+  const { resolvedTheme } = useTheme()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
   })
-
-  const handleSelect = React.useCallback(
-    (theme: Theme["name"]) => {
-      setParams({ theme })
-      setOpen(false)
-    },
-    [setParams]
-  )
 
   const currentTheme = React.useMemo(
     () => themes.find((theme) => theme.name === params.theme),
     [themes, params.theme]
   )
 
+  React.useEffect(() => {
+    if (!currentTheme && themes.length > 0) {
+      setParams({ theme: themes[0].name })
+    }
+  }, [currentTheme, themes, setParams])
+
   return (
-    <CustomizerItem
-      title="Theme"
-      description={currentTheme?.title}
-      icon={<IconChevronRight />}
-      open={open}
-      onOpenChange={setOpen}
+    <Select
+      value={currentTheme?.name}
+      onValueChange={(value) => {
+        setParams({ theme: value as Theme["name"] })
+      }}
     >
-      <CustomizerPicker currentValue={currentTheme?.title ?? null} open={open}>
-        <CustomizerPickerGroup>
-          {themes.map((theme) => (
-            <CustomizerPickerItem
-              key={`theme-${theme.name}`}
-              value={theme.title}
-              onSelect={() => handleSelect(theme.name)}
-              isActive={theme.name === currentTheme?.name}
-              className="mb-2 ring-1"
-            >
-              <div
-                style={
-                  {
-                    "--color": theme.cssVars?.light?.primary,
-                  } as React.CSSProperties
-                }
-                className="size-6 translate-x-[-2px] rounded-[4px] bg-(--color)"
-              />
-              {theme.title}{" "}
-            </CustomizerPickerItem>
-          ))}
-        </CustomizerPickerGroup>
-      </CustomizerPicker>
-    </CustomizerItem>
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder="Select a theme" />
+      </SelectTrigger>
+      <SelectContent position="item-aligned">
+        {themes.map((theme) => {
+          const isBaseColor = BASE_COLORS.find(
+            (baseColor) => baseColor.name === theme.name
+          )
+          return (
+            <SelectItem key={theme.name} value={theme.name}>
+              <div className="flex items-center gap-2">
+                <div
+                  style={
+                    {
+                      "--color":
+                        theme.cssVars?.[resolvedTheme as "light" | "dark"]?.[
+                          isBaseColor ? "muted-foreground" : "primary"
+                        ],
+                    } as React.CSSProperties
+                  }
+                  className="size-4 rounded-[4px] bg-(--color)"
+                />
+                {theme.title}
+              </div>
+            </SelectItem>
+          )
+        })}
+      </SelectContent>
+    </Select>
   )
 }

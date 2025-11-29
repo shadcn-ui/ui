@@ -39,8 +39,6 @@ export function ItemPicker({
     shallow: true,
   })
 
-  console.log(items)
-
   const groupedItems = React.useMemo(() => cachedGroupedItems(items), [items])
 
   const currentItem = React.useMemo(

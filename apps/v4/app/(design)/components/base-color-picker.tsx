@@ -1,32 +1,25 @@
 "use client"
 
 import * as React from "react"
-import { IconChevronRight } from "@tabler/icons-react"
+import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
 import {
-  CustomizerItem,
-  CustomizerPicker,
-  CustomizerPickerGroup,
-  CustomizerPickerItem,
-} from "@/app/(design)/components/customizer"
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function BaseColorPicker() {
-  const [open, setOpen] = React.useState(false)
+  const { resolvedTheme } = useTheme()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
   })
-
-  const handleSelect = React.useCallback(
-    (baseColor: BaseColor["name"]) => {
-      setParams({ baseColor })
-      setOpen(false)
-    },
-    [setParams]
-  )
 
   const currentBaseColor = React.useMemo(
     () => BASE_COLORS.find((baseColor) => baseColor.name === params.baseColor),
@@ -34,39 +27,35 @@ export function BaseColorPicker() {
   )
 
   return (
-    <CustomizerItem
-      title="Base Color"
-      description={currentBaseColor?.title}
-      icon={<IconChevronRight />}
-      open={open}
-      onOpenChange={setOpen}
+    <Select
+      value={currentBaseColor?.name}
+      onValueChange={(value) => {
+        setParams({ baseColor: value as BaseColor["name"] })
+      }}
     >
-      <CustomizerPicker
-        currentValue={currentBaseColor?.title ?? null}
-        open={open}
-      >
-        <CustomizerPickerGroup>
-          {BASE_COLORS.map((baseColor) => (
-            <CustomizerPickerItem
-              key={baseColor.name}
-              value={baseColor.title}
-              onSelect={() => handleSelect(baseColor.name)}
-              isActive={baseColor.name === params.baseColor}
-              className="mb-2 ring-1"
-            >
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder="Select a base color" />
+      </SelectTrigger>
+      <SelectContent position="item-aligned">
+        {BASE_COLORS.map((baseColor) => (
+          <SelectItem key={baseColor.name} value={baseColor.name}>
+            <div className="flex items-center gap-2">
               <div
                 style={
                   {
-                    "--color": baseColor.cssVars?.light?.["muted-foreground"],
+                    "--color":
+                      baseColor.cssVars?.[resolvedTheme as "light" | "dark"]?.[
+                        "muted-foreground"
+                      ],
                   } as React.CSSProperties
                 }
-                className="size-6 translate-x-[-2px] rounded-[4px] bg-(--color)"
+                className="size-4 rounded-[4px] bg-(--color)"
               />
               {baseColor.title}
-            </CustomizerPickerItem>
-          ))}
-        </CustomizerPickerGroup>
-      </CustomizerPicker>
-    </CustomizerItem>
+            </div>
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   )
 }
