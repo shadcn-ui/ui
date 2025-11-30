@@ -70,15 +70,15 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const { Index } = await import("@/registry/__index__")
+  const { Metadata } = await import("@/registry/__metadata__")
   const params: Array<{ style: string; name: string }> = []
 
   for (const style of STYLES) {
-    if (!Index[style.name]) {
+    if (!Metadata[style.name]) {
       continue
     }
 
-    const styleIndex = Index[style.name]
+    const styleIndex = Metadata[style.name]
     for (const itemName in styleIndex) {
       const item = styleIndex[itemName]
       if (

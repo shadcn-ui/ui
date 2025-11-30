@@ -3,7 +3,7 @@ import path from "path"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
-import { Index } from "@/registry/__index__"
+import { Metadata } from "@/registry/__metadata__"
 import { getActiveStyle } from "@/registry/styles"
 
 interface UnistNode {
@@ -54,7 +54,7 @@ export function rehypeComponent() {
           if (srcPath) {
             src = path.join(process.cwd(), srcPath)
           } else {
-            const component = Index[name]
+            const component = Metadata[activeStyle.name]?.[name]
             src = fileName
               ? component.files.find((file: unknown) => {
                   if (typeof file === "string") {
@@ -114,7 +114,7 @@ export function rehypeComponent() {
         }
 
         try {
-          const component = Index[activeStyle.name]?.[name]
+          const component = Metadata[activeStyle.name]?.[name]
           const src = component.files[0]?.path
 
           // Read the source file.

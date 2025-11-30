@@ -4,18 +4,19 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack --port 4000",
-    "build": "pnpm --filter=shadcn build && next build",
+    "dev": "pnpm source:manifest && next dev --turbopack --port 4000",
+    "build": "pnpm --filter=shadcn build && pnpm source:manifest && next build",
+    "build:analyze": "pnpm --filter=shadcn build && pnpm source:manifest && ANALYZE=true next build --webpack",
     "start": "next start --port 4000",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "source:manifest": "tsx --tsconfig ./tsconfig.scripts.json scripts/build-source-manifest.ts",
     "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --log-level silent --write \"registry/**/*.{ts,tsx,json,mdx}\" --cache",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
-    "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",
-    "postinstall": "fumadocs-mdx"
+    "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -101,6 +102,7 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@next/bundle-analyzer": "^16.0.1",
     "@tailwindcss/postcss": "^4",
     "@types/lodash": "^4.17.7",
     "@types/mdx": "^2.0.13",
