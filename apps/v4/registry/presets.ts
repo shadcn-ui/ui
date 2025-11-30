@@ -18,7 +18,7 @@ export type Preset = {
 export const PRESETS = [
   {
     title: "Vega",
-    description: "Lucide / Inter",
+    description: "Vega / Lucide / Inter",
     style: "vega",
     baseColor: "neutral",
     theme: "neutral",
@@ -27,7 +27,7 @@ export const PRESETS = [
   },
   {
     title: "Nova",
-    description: "Hugeicons / Figtree",
+    description: "Nova / Hugeicons / Figtree",
     style: "nova",
     baseColor: "neutral",
     theme: "blue",

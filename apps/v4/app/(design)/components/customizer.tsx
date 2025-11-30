@@ -8,6 +8,7 @@ import { FONTS } from "@/registry/fonts"
 import { FieldGroup, FieldSeparator } from "@/registry/new-york-v4/ui/field"
 import { PRESETS } from "@/registry/presets"
 import { STYLES } from "@/registry/styles"
+import { AccentPicker } from "@/app/(design)/components/accent-picker"
 import { BaseColorPicker } from "@/app/(design)/components/base-color-picker"
 import { FontPicker } from "@/app/(design)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(design)/components/icon-library-picker"
@@ -43,6 +44,8 @@ export function Customizer({
         <ThemePicker themes={availableThemes} />
         <IconLibraryPicker />
         <FontPicker fonts={FONTS} />
+        <FieldSeparator className="opacity-0" />
+        <AccentPicker />
         <FieldSeparator className="opacity-0" />
         <InstallDialog />
       </FieldGroup>

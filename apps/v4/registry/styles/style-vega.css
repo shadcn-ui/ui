@@ -309,7 +309,7 @@
   }
 
   .cn-command-shortcut {
-    @apply text-muted-foreground ml-auto text-xs tracking-widest;
+    @apply text-muted-foreground group-data-[selected=true]/command-item:text-accent-foreground ml-auto text-xs tracking-widest;
   }
 
   /* MARK: Context Menu */
@@ -322,7 +322,7 @@
   }
 
   .cn-context-menu-sub-trigger {
-    @apply focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
+    @apply focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-context-menu-sub-content {
@@ -350,7 +350,7 @@
   }
 
   .cn-context-menu-shortcut {
-    @apply text-muted-foreground ml-auto text-xs tracking-widest;
+    @apply text-muted-foreground group-focus/context-menu-item:text-accent-foreground ml-auto text-xs tracking-widest;
   }
 
   /* MARK: Dialog */
@@ -449,7 +449,7 @@
   }
 
   .cn-dropdown-menu-shortcut {
-    @apply text-muted-foreground ml-auto text-xs tracking-widest;
+    @apply text-muted-foreground group-focus/dropdown-menu-item:text-accent-foreground ml-auto text-xs tracking-widest;
   }
 
   /* MARK: Empty */
@@ -662,15 +662,15 @@
   }
 
   .cn-menubar-item {
-    @apply focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground gap-2 rounded-sm px-2 py-1.5 text-sm data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg:not([class*='size-'])]:size-4;
+    @apply focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive gap-2 rounded-sm px-2 py-1.5 text-sm data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-menubar-checkbox-item {
-    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-xs py-1.5 pr-2 pl-8 text-sm data-[disabled]:opacity-50 [&_svg:not([class*='size-'])]:size-4;
+    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm data-[disabled]:opacity-50 [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-menubar-radio-item {
-    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-xs py-1.5 pr-2 pl-8 text-sm data-[disabled]:opacity-50 [&_svg:not([class*='size-'])]:size-4;
+    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm data-[disabled]:opacity-50 [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-menubar-label {
@@ -682,11 +682,11 @@
   }
 
   .cn-menubar-shortcut {
-    @apply text-muted-foreground text-xs tracking-widest;
+    @apply text-muted-foreground group-focus/menubar-item:text-accent-foreground text-xs tracking-widest;
   }
 
   .cn-menubar-sub-trigger {
-    @apply focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground gap-2 rounded-sm px-2 py-1.5 text-sm data-[inset]:pl-8 [&_svg:not([class*='size-'])]:size-4;
+    @apply focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground gap-2 rounded-sm px-2 py-1.5 text-sm data-[inset]:pl-8 [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-menubar-sub-content {
@@ -703,7 +703,7 @@
   }
 
   .cn-navigation-menu-trigger {
-    @apply bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 rounded-md px-4 py-2 text-sm font-medium transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:opacity-50;
+    @apply bg-background hover:bg-muted focus:bg-muted data-[state=open]:hover:bg-muted data-[state=open]:focus:bg-muted data-[state=open]:bg-muted/50 focus-visible:ring-ring/50 rounded-md px-4 py-2 text-sm font-medium transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:opacity-50;
   }
 
   .cn-navigation-menu-trigger-icon {
@@ -719,7 +719,7 @@
   }
 
   .cn-navigation-menu-link {
-    @apply data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground rounded-sm p-2 text-sm transition-all focus-visible:ring-[3px] focus-visible:outline-1;
+    @apply data-[active=true]:focus:bg-muted data-[active=true]:hover:bg-muted data-[active=true]:bg-muted/50 focus-visible:ring-ring/50 hover:bg-muted focus:bg-muted rounded-sm p-2 text-sm transition-all focus-visible:ring-[3px] focus-visible:outline-1;
   }
 
   .cn-navigation-menu-indicator {

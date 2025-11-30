@@ -23,6 +23,7 @@ const getInitialValues = (): DesignSystemSearchParams => {
       font: "inter",
       item: "cover-example",
       baseColor: "neutral",
+      accent: "subtle",
       size: 100,
       custom: false,
     }
@@ -41,6 +42,8 @@ const getInitialValues = (): DesignSystemSearchParams => {
     item: searchParams.get("item") || "cover-example",
     baseColor: (searchParams.get("baseColor") ||
       "neutral") as DesignSystemSearchParams["baseColor"],
+    accent: (searchParams.get("accent") ||
+      "subtle") as DesignSystemSearchParams["accent"],
     size: parseInt(searchParams.get("size") || "100"),
     custom: (searchParams.get("custom") || "false") === "true",
   }

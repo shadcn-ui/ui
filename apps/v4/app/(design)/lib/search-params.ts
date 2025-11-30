@@ -29,6 +29,10 @@ export const designSystemSearchParams = {
   baseColor: parseAsStringLiteral<BaseColor["name"]>(
     BASE_COLORS.map((b) => b.name)
   ).withDefault("neutral"),
+  accent: parseAsStringLiteral<"subtle" | "bold">([
+    "subtle",
+    "bold",
+  ]).withDefault("subtle"),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }

@@ -16,6 +16,7 @@ export function DesignSystemProvider({
   const theme = useDesignSystemParam("theme")
   const font = useDesignSystemParam("font")
   const baseColor = useDesignSystemParam("baseColor")
+  const accent = useDesignSystemParam("accent")
   const { resolvedTheme } = useTheme()
   const [isReady, setIsReady] = React.useState(false)
 
@@ -83,8 +84,24 @@ export function DesignSystemProvider({
       document.head.appendChild(styleElement)
     }
 
-    const lightVars = mergedTheme.cssVars.light
-    const darkVars = mergedTheme.cssVars.dark
+    const lightVars = { ...mergedTheme.cssVars.light }
+    const darkVars = { ...mergedTheme.cssVars.dark }
+
+    // If accent is bold, use primary/primary-foreground for accent/accent-foreground.
+    if (accent === "bold") {
+      if (lightVars.primary) {
+        lightVars.accent = lightVars.primary
+      }
+      if (lightVars["primary-foreground"]) {
+        lightVars["accent-foreground"] = lightVars["primary-foreground"]
+      }
+      if (darkVars.primary) {
+        darkVars.accent = darkVars.primary
+      }
+      if (darkVars["primary-foreground"]) {
+        darkVars["accent-foreground"] = darkVars["primary-foreground"]
+      }
+    }
 
     let cssText = ":root {\n"
     if (lightVars) {
@@ -114,7 +131,7 @@ export function DesignSystemProvider({
         element.remove()
       }
     }
-  }, [mergedTheme])
+  }, [mergedTheme, accent])
 
   if (!isReady) {
     return null
