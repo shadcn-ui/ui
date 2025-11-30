@@ -12,10 +12,8 @@ import { BaseColorPicker } from "@/app/(design)/components/base-color-picker"
 import { FontPicker } from "@/app/(design)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(design)/components/icon-library-picker"
 import { InstallDialog } from "@/app/(design)/components/install-dialog"
-import { ItemNav } from "@/app/(design)/components/item-nav"
 import { ItemPicker } from "@/app/(design)/components/item-picker"
 import { PresetPicker } from "@/app/(design)/components/preset-picker"
-import { PreviewControls } from "@/app/(design)/components/preview-controls"
 import { StylePicker } from "@/app/(design)/components/style-picker"
 import { ThemePicker } from "@/app/(design)/components/theme-picker"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
@@ -36,11 +34,6 @@ export function Customizer({
   return (
     <div className="no-scrollbar flex h-[calc(100svh-var(--header-height)-4rem)] w-54 flex-col gap-4 px-1">
       <FieldGroup className="**:data-[slot=select-trigger]:data-[state=open]:bg-muted/30 **:data-[slot=select-trigger]:dark:data-[state=open]:bg-muted **:[[data-slot=select-trigger]]:hover:bg-muted/30 flex flex-col gap-3 **:data-[slot=select-trigger]:w-full **:data-[slot=select-trigger]:rounded-lg **:data-[slot=select-trigger]:text-left **:data-[slot=select-trigger]:shadow-none **:data-[slot=select-trigger]:data-[size=default]:h-14 **:[[data-slot=select-trigger]>svg]:hidden">
-        <div className="flex items-center gap-2">
-          <PreviewControls />
-          <ItemNav items={items} className="ml-auto" />
-        </div>
-        <FieldSeparator className="opacity-0" />
         <ItemPicker items={items} />
         <FieldSeparator className="opacity-0" />
         <PresetPicker presets={PRESETS} />

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { cn } from "@/lib/utils"
+import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 export function MainNav({
@@ -23,17 +24,17 @@ export function MainNav({
           <Link
             href={item.href}
             data-active={pathname === item.href}
-            className={cn(
-              "relative items-center",
-              "data-[active=true]:text-primary"
-            )}
+            data-new={PAGES_NEW.includes(item.href)}
+            className="data-[active=true]:text-primary relative items-center"
           >
             {item.label}
             {PAGES_NEW.includes(item.href) && (
-              <span
-                className="flex size-2 rounded-full bg-blue-500"
-                title="New"
-              />
+              <Badge
+                variant="secondary"
+                className="h-4 bg-blue-600 px-1 text-[0.625rem] text-white"
+              >
+                New
+              </Badge>
             )}
           </Link>
         </Button>
