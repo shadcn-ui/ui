@@ -11,7 +11,6 @@ import {
   AvatarGroupCount,
   AvatarImage,
 } from "@/registry/bases/radix/ui/avatar"
-import { Badge } from "@/registry/bases/radix/ui/badge"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Card,
@@ -29,11 +28,16 @@ import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 export default function CardExample() {
   return (
     <ExampleWrapper>
-      <CardLogin />
-      <CardMeetingNotes />
-      <CardWithImage />
+      <CardDefault />
+      <CardSmall />
       <CardHeaderWithBorder />
       <CardFooterWithBorder />
+      <CardHeaderWithBorderSmall />
+      <CardFooterWithBorderSmall />
+      <CardWithImage />
+      <CardWithImageSmall />
+      <CardLogin />
+      <CardMeetingNotes />
     </ExampleWrapper>
   )
 }
@@ -41,7 +45,7 @@ export default function CardExample() {
 function CardLogin() {
   return (
     <Example title="Login">
-      <Card className="w-full">
+      <Card className="mx-auto w-full max-w-sm">
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
           <CardDescription>
@@ -97,7 +101,7 @@ function CardLogin() {
 function CardMeetingNotes() {
   return (
     <Example title="Meeting Notes">
-      <Card>
+      <Card className="mx-auto w-full max-w-sm">
         <CardHeader>
           <CardTitle>Meeting Notes</CardTitle>
           <CardDescription>
@@ -159,30 +163,62 @@ function CardMeetingNotes() {
 function CardWithImage() {
   return (
     <Example title="With Image">
-      <Card>
+      <Card size="default" className="mx-auto w-full max-w-sm">
+        <img
+          src="https://images.unsplash.com/photo-1521459467264-802e2ef3141f?q=80&w=2235&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Photo by Yan Ots on Unsplash"
+          className="aspect-video object-cover dark:brightness-50 dark:grayscale"
+          width={500}
+          height={500}
+        />
         <CardHeader>
-          <CardTitle>Is this an image?</CardTitle>
-          <CardDescription>This is a card with an image.</CardDescription>
+          <CardTitle>Beautiful Landscape</CardTitle>
+          <CardDescription>
+            A stunning view that captures the essence of natural beauty.
+          </CardDescription>
         </CardHeader>
-        <CardContent className="px-0">
-          <Image
-            src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-            alt="Photo by Drew Beamer"
-            className="aspect-video object-cover dark:brightness-50 dark:grayscale"
-            width={500}
-            height={500}
-          />
-        </CardContent>
-        <CardFooter className="flex items-center justify-between gap-2">
-          <div className="font-medium tabular-nums">$135,000</div>
-          <Button variant="outline">
+        <CardFooter>
+          <Button className="w-full">
             <IconPlaceholder
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="Add01Icon"
               data-icon="inline-start"
             />
-            Add to cart
+            Button
+          </Button>
+        </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+function CardWithImageSmall() {
+  return (
+    <Example title="With Image (Small)">
+      <Card size="sm" className="mx-auto w-full max-w-sm">
+        <img
+          src="https://images.unsplash.com/photo-1521459467264-802e2ef3141f?q=80&w=2235&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Photo by Yan Ots on Unsplash"
+          className="aspect-video object-cover dark:brightness-50 dark:grayscale"
+          width={500}
+          height={500}
+        />
+        <CardHeader>
+          <CardTitle>Beautiful Landscape</CardTitle>
+          <CardDescription>
+            A stunning view that captures the essence of natural beauty.
+          </CardDescription>
+        </CardHeader>
+        <CardFooter>
+          <Button size="sm" className="w-full">
+            <IconPlaceholder
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="Add01Icon"
+              data-icon="inline-start"
+            />
+            Button
           </Button>
         </CardFooter>
       </Card>
@@ -193,7 +229,7 @@ function CardWithImage() {
 function CardHeaderWithBorder() {
   return (
     <Example title="Header with Border">
-      <Card>
+      <Card className="mx-auto w-full max-w-sm">
         <CardHeader className="border-b">
           <CardTitle>Header with Border</CardTitle>
           <CardDescription>
@@ -214,7 +250,7 @@ function CardHeaderWithBorder() {
 function CardFooterWithBorder() {
   return (
     <Example title="Footer with Border">
-      <Card>
+      <Card className="mx-auto w-full max-w-sm">
         <CardContent className="text-sm">
           <p>
             The footer has a border-t class applied, creating a visual
@@ -223,6 +259,99 @@ function CardFooterWithBorder() {
         </CardContent>
         <CardFooter className="border-t">
           <Button variant="outline" className="w-full">
+            Footer with Border
+          </Button>
+        </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+function CardDefault() {
+  return (
+    <Example title="Default Size">
+      <Card size="default" className="mx-auto w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Default Card</CardTitle>
+          <CardDescription>
+            This card uses the default size variant.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="text-sm">
+          <p>
+            The card component supports a size prop that defaults to
+            &quot;default&quot; for standard spacing and sizing.
+          </p>
+        </CardContent>
+        <CardFooter>
+          <Button variant="outline" className="w-full">
+            Action
+          </Button>
+        </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+function CardSmall() {
+  return (
+    <Example title="Small Size">
+      <Card size="sm" className="mx-auto w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Small Card</CardTitle>
+          <CardDescription>
+            This card uses the small size variant.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="text-sm">
+          <p>
+            The card component supports a size prop that can be set to
+            &quot;sm&quot; for a more compact appearance.
+          </p>
+        </CardContent>
+        <CardFooter>
+          <Button variant="outline" size="sm" className="w-full">
+            Action
+          </Button>
+        </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+function CardHeaderWithBorderSmall() {
+  return (
+    <Example title="Header with Border (Small)">
+      <Card size="sm" className="mx-auto w-full max-w-sm">
+        <CardHeader className="border-b">
+          <CardTitle>Header with Border</CardTitle>
+          <CardDescription>
+            This is a small card with a header that has a bottom border.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="text-sm">
+          <p>
+            The header has a border-b class applied, creating a visual
+            separation between the header and content sections.
+          </p>
+        </CardContent>
+      </Card>
+    </Example>
+  )
+}
+
+function CardFooterWithBorderSmall() {
+  return (
+    <Example title="Footer with Border (Small)">
+      <Card size="sm" className="mx-auto w-full max-w-sm">
+        <CardContent className="text-sm">
+          <p>
+            The footer has a border-t class applied, creating a visual
+            separation between the content and footer sections.
+          </p>
+        </CardContent>
+        <CardFooter className="border-t">
+          <Button variant="outline" size="sm" className="w-full">
             Footer with Border
           </Button>
         </CardFooter>

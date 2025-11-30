@@ -33,10 +33,17 @@ export function BaseColorPicker() {
         setParams({ baseColor: value as BaseColor["name"] })
       }}
     >
-      <SelectTrigger className="w-full">
-        <SelectValue placeholder="Select a base color" />
+      <SelectTrigger className="w-full text-left data-[size=default]:h-14">
+        <SelectValue>
+          <div className="flex flex-col justify-start">
+            <div className="text-muted-foreground text-xs font-medium">
+              Base Color
+            </div>
+            {currentBaseColor?.title}
+          </div>
+        </SelectValue>
       </SelectTrigger>
-      <SelectContent position="item-aligned">
+      <SelectContent position="popper" side="right" align="start">
         {BASE_COLORS.map((baseColor) => (
           <SelectItem key={baseColor.name} value={baseColor.name}>
             <div className="flex items-center gap-2">
@@ -49,7 +56,7 @@ export function BaseColorPicker() {
                       ],
                   } as React.CSSProperties
                 }
-                className="size-4 rounded-[4px] bg-(--color)"
+                className="size-4 rounded-full bg-(--color)"
               />
               {baseColor.title}
             </div>

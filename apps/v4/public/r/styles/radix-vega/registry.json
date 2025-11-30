@@ -1660,6 +1660,17 @@
         }
       ],
       "type": "registry:block"
+    },
+    {
+      "name": "chatgpt",
+      "title": "ChatGPT",
+      "files": [
+        {
+          "path": "registry/radix-vega/blocks/chatgpt.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
     }
   ]
 }

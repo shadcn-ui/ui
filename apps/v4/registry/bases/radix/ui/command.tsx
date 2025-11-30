@@ -147,6 +147,7 @@ function CommandSeparator({
 
 function CommandItem({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Item>) {
   return (
@@ -157,7 +158,15 @@ function CommandItem({
         className
       )}
       {...props}
-    />
+    >
+      {children}
+      <IconPlaceholder
+        lucide="CheckIcon"
+        tabler="IconCheck"
+        hugeicons="Tick02Icon"
+        className="cn-command-item-indicator ml-auto opacity-0 group-has-[[data-slot=command-shortcut]]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
+      />
+    </CommandPrimitive.Item>
   )
 }
 

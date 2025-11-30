@@ -1079,8 +1079,8 @@ function Contributors() {
 
 function Profile() {
   return (
-    <Example title="Profile">
-      <Card>
+    <Example title="Profile" className="justify-center lg:p-16">
+      <Card className="mx-auto w-full max-w-md">
         <CardHeader>
           <CardTitle>Profile</CardTitle>
           <CardDescription>Manage your profile information.</CardDescription>
@@ -1131,8 +1131,8 @@ function Profile() {
 
 function ContributionsActivity() {
   return (
-    <Example title="Contributions Activity">
-      <Card>
+    <Example title="Contributions Activity" className="justify-center">
+      <Card className="mx-auto w-full max-w-md">
         <CardHeader>
           <CardTitle>Contributions & Activity</CardTitle>
           <CardDescription>
@@ -1190,15 +1190,6 @@ function ContributionsActivity() {
         </CardFooter>
       </Card>
     </Example>
-  )
-}
-
-function ProfileSettings() {
-  return (
-    <>
-      <Profile />
-      <ContributionsActivity />
-    </>
   )
 }
 
@@ -1261,12 +1252,12 @@ function AssignIssue() {
                       }
                     }}
                   >
-                    <div className="border-border group-data-[active=true]/command-item:bg-primary group-data-[active=true]/command-item:border-primary flex size-4 shrink-0 items-center justify-center rounded-sm border">
+                    <div className="border-border group-data-[active=true]/command-item:bg-accent-foreground group-data-[active=true]/command-item:border-accent-foreground flex size-4 shrink-0 items-center justify-center rounded-sm border">
                       <IconPlaceholder
                         lucide="CheckIcon"
                         tabler="IconCheck"
                         hugeicons="Tick02Icon"
-                        className="text-primary-foreground ml-auto size-3.5 opacity-0 group-data-[active=true]/command-item:opacity-100"
+                        className="text-primary-foreground group-data-[selected=true]/command-item:text-accent ml-auto size-3.5 opacity-0 group-data-[active=true]/command-item:opacity-100"
                       />
                     </div>
                     <Avatar className="size-5">

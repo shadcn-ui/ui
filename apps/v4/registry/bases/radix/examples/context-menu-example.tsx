@@ -259,7 +259,7 @@ function ContextMenuWithRadio() {
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuRadioGroup value="pedro">
-            <ContextMenuLabel inset>People</ContextMenuLabel>
+            <ContextMenuLabel>People</ContextMenuLabel>
             <ContextMenuRadioItem value="pedro">
               Pedro Duarte
             </ContextMenuRadioItem>
@@ -267,7 +267,7 @@ function ContextMenuWithRadio() {
           </ContextMenuRadioGroup>
           <ContextMenuSeparator />
           <ContextMenuRadioGroup value="light">
-            <ContextMenuLabel inset>Theme</ContextMenuLabel>
+            <ContextMenuLabel>Theme</ContextMenuLabel>
             <ContextMenuRadioItem value="light">Light</ContextMenuRadioItem>
             <ContextMenuRadioItem value="dark">Dark</ContextMenuRadioItem>
             <ContextMenuRadioItem value="system">System</ContextMenuRadioItem>

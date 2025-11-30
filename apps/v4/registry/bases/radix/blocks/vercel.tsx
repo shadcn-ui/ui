@@ -3,6 +3,7 @@
 import * as React from "react"
 import { format } from "date-fns"
 import { type DateRange } from "react-day-picker"
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 import {
   Example,
@@ -14,10 +15,19 @@ import { Button } from "@/registry/bases/radix/ui/button"
 import { Calendar } from "@/registry/bases/radix/ui/calendar"
 import {
   Card,
+  CardAction,
   CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/registry/bases/radix/ui/chart"
 import {
   Dialog,
   DialogClose,
@@ -42,6 +52,7 @@ import {
   EmptyHeader,
   EmptyTitle,
 } from "@/registry/bases/radix/ui/empty"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -59,20 +70,29 @@ import {
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
 import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/registry/bases/radix/ui/native-select"
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
+import { Textarea } from "@/registry/bases/radix/ui/textarea"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function VercelBlock() {
   return (
     <ExampleWrapper>
       <DeploymentFilter />
+
       <UsageCard />
-      <AnomalyAlert />
+      <ObservabilityCard />
       <BillingList />
+      <AnomalyAlert />
       <ActivateAgentDialog />
+      <FeedbackForm />
+      <AnalyticsCard />
     </ExampleWrapper>
   )
 }
@@ -235,7 +255,7 @@ function DeploymentFilter() {
   }
 
   return (
-    <Example title="Deployment Filter" containerClassName="lg:col-span-full">
+    <Example title="Deployment Filter" containerClassName="col-span-full">
       <div className="flex w-full flex-wrap items-center gap-2 *:w-full lg:*:w-auto">
         <Popover>
           <PopoverTrigger asChild>
@@ -578,7 +598,7 @@ const agentFeatures = [
 
 function ActivateAgentDialog() {
   return (
-    <Example title="Activate Agent" className="items-center lg:p-16">
+    <Example title="Activate Agent" className="items-center justify-center">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Activate Agent</Button>
@@ -629,6 +649,168 @@ function ActivateAgentDialog() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+    </Example>
+  )
+}
+
+function ObservabilityCard() {
+  return (
+    <Example title="Observability" className="items-center lg:p-16">
+      <Card className="w-full max-w-sm pt-0">
+        <img
+          src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Photo by mymind on Unsplash"
+          title="Photo by mymind on Unsplash"
+          className="aspect-video w-full object-cover dark:brightness-60"
+        />
+        <CardHeader>
+          <CardTitle>Observability Plus is replacing Monitoring</CardTitle>
+          <CardDescription>
+            Switch to the improved way to explore your data, with natural
+            language. Monitoring will no longer be available on the Pro plan in
+            November, 2025
+          </CardDescription>
+        </CardHeader>
+        <CardFooter>
+          <Button>
+            Create Query{" "}
+            <IconPlaceholder
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+              data-icon="inline-end"
+            />
+          </Button>
+          <Badge variant="secondary" className="ml-auto">
+            Warning
+          </Badge>
+        </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+function FeedbackForm() {
+  return (
+    <Example title="Feedback Form" className="items-center justify-center">
+      <Card className="w-full max-w-sm pb-0" size="sm">
+        <CardContent>
+          <form id="feedback-form">
+            <FieldGroup>
+              <Field>
+                <FieldLabel htmlFor="topic">Topic</FieldLabel>
+                <NativeSelect id="topic">
+                  <NativeSelectOption value="">
+                    Select a topic
+                  </NativeSelectOption>
+                  <NativeSelectOption value="ai">AI</NativeSelectOption>
+                  <NativeSelectOption value="accounts-and-access-controls">
+                    Accounts and Access Controls
+                  </NativeSelectOption>
+                  <NativeSelectOption value="billing">
+                    Billing
+                  </NativeSelectOption>
+                  <NativeSelectOption value="cdn">
+                    CDN (Firewall, Caching)
+                  </NativeSelectOption>
+                  <NativeSelectOption value="ci-cd">
+                    CI/CD (Builds, Deployments, Environment Variables)
+                  </NativeSelectOption>
+                  <NativeSelectOption value="dashboard-interface">
+                    Dashboard Interface (Navigation, UI Issues)
+                  </NativeSelectOption>
+                  <NativeSelectOption value="domains">
+                    Domains
+                  </NativeSelectOption>
+                  <NativeSelectOption value="frameworks">
+                    Frameworks
+                  </NativeSelectOption>
+                  <NativeSelectOption value="marketplace-and-integrations">
+                    Marketplace and Integrations
+                  </NativeSelectOption>
+                  <NativeSelectOption value="observability">
+                    Observability (Observability, Logs, Monitoring)
+                  </NativeSelectOption>
+                  <NativeSelectOption value="storage">
+                    Storage
+                  </NativeSelectOption>
+                </NativeSelect>
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="feedback">Feedback</FieldLabel>
+                <Textarea
+                  id="feedback"
+                  placeholder="Your feedback helps us improve..."
+                />
+              </Field>
+            </FieldGroup>
+          </form>
+        </CardContent>
+        <CardFooter className="bg-muted border-t p-4">
+          <Button type="submit" form="feedback-form">
+            Submit
+          </Button>
+        </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+const chartData = [
+  { month: "January", visitors: 186 },
+  { month: "February", visitors: 305 },
+  { month: "March", visitors: 237 },
+  { month: "April", visitors: 73 },
+  { month: "May", visitors: 209 },
+  { month: "June", visitors: 214 },
+]
+
+const chartConfig = {
+  visitors: {
+    label: "Visitors",
+    color: "var(--chart-1)",
+  },
+} satisfies ChartConfig
+
+function AnalyticsCard() {
+  return (
+    <Example title="Analytics Card" className="justify-center">
+      <Card className="mx-auto w-full max-w-sm pb-0" size="sm">
+        <CardHeader>
+          <CardTitle>Analytics</CardTitle>
+          <CardDescription>
+            418.2K Visitors <Badge>+10%</Badge>
+          </CardDescription>
+          <CardAction>
+            <Button variant="outline" size="sm">
+              View Analytics
+            </Button>
+          </CardAction>
+        </CardHeader>
+        <ChartContainer config={chartConfig} className="aspect-[1/0.35]">
+          <AreaChart
+            accessibilityLayer
+            data={chartData}
+            margin={{
+              left: 0,
+              right: 0,
+            }}
+          >
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent indicator="line" hideLabel />}
+              defaultIndex={2}
+            />
+            <Area
+              dataKey="visitors"
+              type="linear"
+              fill="var(--color-visitors)"
+              fillOpacity={0.4}
+              stroke="var(--color-visitors)"
+            />
+          </AreaChart>
+        </ChartContainer>
+      </Card>
     </Example>
   )
 }

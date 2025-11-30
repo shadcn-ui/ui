@@ -158,18 +158,12 @@ function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
                   <CommandItem
                     key={framework.value}
                     value={framework.value}
-                    data-current={value === framework.value}
+                    data-checked={value === framework.value}
                     onSelect={(currentValue) => {
                       setValue(currentValue === value ? "" : currentValue)
                       setOpen(false)
                     }}
                   >
-                    <IconPlaceholder
-                      lucide="CheckIcon"
-                      tabler="IconCheck"
-                      hugeicons="Tick02Icon"
-                      className="opacity-0 group-data-[current=true]/command-item:opacity-100"
-                    />
                     {framework.label}
                   </CommandItem>
                 ))}
@@ -238,7 +232,7 @@ function UserCombobox({
                   <CommandItem
                     key={user.id}
                     value={user.username}
-                    data-current={value === user.username}
+                    data-checked={value === user.username}
                     onSelect={(currentValue) => {
                       setValue(currentValue === value ? "" : currentValue)
                       setOpen(false)
@@ -251,12 +245,6 @@ function UserCombobox({
                       <AvatarFallback>{user.username[0]}</AvatarFallback>
                     </Avatar>
                     {user.username}
-                    <IconPlaceholder
-                      lucide="CheckIcon"
-                      tabler="IconCheck"
-                      hugeicons="Tick02Icon"
-                      className="ml-auto opacity-0 group-data-[current=true]/command-item:opacity-100"
-                    />
                   </CommandItem>
                 ))}
               </CommandGroup>
@@ -339,6 +327,7 @@ function TimezoneCombobox({
                     <CommandItem
                       key={timezone.value}
                       value={timezone.value}
+                      data-checked={value === timezone.value}
                       onSelect={(currentValue) => {
                         setValue(
                           currentValue as Timezone["timezones"][number]["value"]
@@ -347,13 +336,6 @@ function TimezoneCombobox({
                       }}
                     >
                       {timezone.label}
-                      <IconPlaceholder
-                        lucide="CheckIcon"
-                        tabler="IconCheck"
-                        hugeicons="Tick02Icon"
-                        className="ml-auto opacity-0 data-[selected=true]:opacity-100"
-                        data-selected={value === timezone.value}
-                      />
                     </CommandItem>
                   ))}
                 </CommandGroup>
@@ -416,7 +398,7 @@ function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
                   <CommandItem
                     key={framework.value}
                     value={framework.value}
-                    data-current={selectedFrameworks.some(
+                    data-checked={selectedFrameworks.some(
                       (f) => f.value === framework.value
                     )}
                     onSelect={(currentValue) => {
@@ -430,12 +412,6 @@ function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
                     }}
                   >
                     {framework.label}
-                    <IconPlaceholder
-                      lucide="CheckIcon"
-                      tabler="IconCheck"
-                      hugeicons="Tick02Icon"
-                      className="ml-auto opacity-0 group-data-[current=true]/command-item:opacity-100"
-                    />
                   </CommandItem>
                 ))}
               </CommandGroup>

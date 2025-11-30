@@ -22,7 +22,7 @@
 
   /* MARK: Alert Dialog */
   .cn-alert-dialog-overlay {
-    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/50 duration-100;
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs;
   }
 
   .cn-alert-dialog-content {
@@ -93,7 +93,7 @@
 
   /* MARK: Badge */
   .cn-badge {
-    @apply h-5 gap-1 rounded-full border border-transparent px-2 py-0.5 text-xs font-medium has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3!;
+    @apply h-5 gap-1 rounded-full border border-transparent px-2 py-0.5 text-xs font-medium transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3!;
   }
 
   .cn-badge-variant-default {
@@ -226,15 +226,15 @@
 
   /* MARK: Card */
   .cn-card {
-    @apply ring-foreground/10 bg-card text-card-foreground gap-(--padding) rounded-xl py-(--padding) shadow-xs ring-1 [--padding:--spacing(6)];
+    @apply ring-foreground/10 bg-card text-card-foreground gap-6 rounded-xl py-6 shadow-xs ring-1 has-[>img:first-child]:pt-0 data-[size=sm]:gap-4 data-[size=sm]:py-4 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl;
   }
 
   .cn-card-header {
-    @apply gap-2 px-(--padding) [.border-b]:pb-(--padding);
+    @apply gap-2 rounded-t-xl px-6 group-data-[size=sm]/card:px-4 [.border-b]:pb-6 group-data-[size=sm]/card:[.border-b]:pb-4;
   }
 
   .cn-card-title {
-    @apply leading-none font-semibold;
+    @apply leading-none font-semibold group-data-[size=sm]/card:text-sm;
   }
 
   .cn-card-description {
@@ -242,11 +242,11 @@
   }
 
   .cn-card-content {
-    @apply px-(--padding);
+    @apply px-6 group-data-[size=sm]/card:px-4;
   }
 
   .cn-card-footer {
-    @apply px-(--padding) [.border-t]:pt-(--padding);
+    @apply rounded-b-xl px-6 group-data-[size=sm]/card:px-4 [.border-t]:pt-6 group-data-[size=sm]/card:[.border-t]:pt-4;
   }
 
   /* MARK: Chart */
@@ -305,7 +305,7 @@
   }
 
   .cn-command-item {
-    @apply [&_svg:not([class*='text-'])]:text-foreground data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground data-[selected=true]:*:[svg]:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none [&_svg:not([class*='size-'])]:size-4 [[data-slot=dialog-content]_&]:rounded-lg!;
+    @apply data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground data-[selected=true]:*:[svg]:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none [&_svg:not([class*='size-'])]:size-4 [[data-slot=dialog-content]_&]:rounded-lg!;
   }
 
   .cn-command-shortcut {
@@ -314,11 +314,11 @@
 
   /* MARK: Context Menu */
   .cn-context-menu-content {
-    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 bg-popover text-popover-foreground min-w-32 rounded-md p-1 shadow-md ring-1;
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 bg-popover text-popover-foreground min-w-36 rounded-md p-1 shadow-md ring-1;
   }
 
   .cn-context-menu-item {
-    @apply [&_svg:not([class*='text-'])]:text-foreground/60 focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive focus:*:[svg]:text-accent-foreground gap-2 rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
+    @apply focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive focus:*:[svg]:text-accent-foreground gap-2 rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-context-menu-sub-trigger {
@@ -330,19 +330,15 @@
   }
 
   .cn-context-menu-checkbox-item {
-    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm [&_svg:not([class*='size-'])]:size-4;
+    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-context-menu-radio-item {
-    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm;
+    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-context-menu-item-indicator {
-    @apply absolute left-2 size-3.5;
-  }
-
-  .cn-context-menu-item-indicator-icon {
-    @apply size-2 fill-current;
+    @apply absolute right-2;
   }
 
   .cn-context-menu-label {
@@ -359,7 +355,7 @@
 
   /* MARK: Dialog */
   .cn-dialog-overlay {
-    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/50 duration-100 dark:bg-black/80;
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs;
   }
 
   .cn-dialog-content {
@@ -388,7 +384,7 @@
 
   /* MARK: Drawer */
   .cn-drawer-overlay {
-    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/50;
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/10 supports-backdrop-filter:backdrop-blur-xs;
   }
 
   .cn-drawer-content {
@@ -417,11 +413,11 @@
 
   /* MARK: Dropdown Menu */
   .cn-dropdown-menu-content {
-    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 bg-popover text-popover-foreground min-w-32 rounded-md p-1 shadow-md ring-1;
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 bg-popover text-popover-foreground min-w-36 rounded-md p-1 shadow-md ring-1;
   }
 
   .cn-dropdown-menu-item {
-    @apply [&_svg:not([class*='text-'])]:text-foreground/60 focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive focus:*:[svg]:text-accent-foreground gap-2 rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
+    @apply focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:text-destructive focus:*:[svg]:text-accent-foreground gap-2 rounded-sm px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-dropdown-menu-sub-trigger {
@@ -433,19 +429,15 @@
   }
 
   .cn-dropdown-menu-checkbox-item {
-    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm [&_svg:not([class*='size-'])]:size-4;
+    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-dropdown-menu-radio-item {
-    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm;
+    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-dropdown-menu-item-indicator {
-    @apply pointer-events-none absolute left-2 flex size-3.5 items-center justify-center;
-  }
-
-  .cn-dropdown-menu-item-indicator-icon {
-    @apply size-2 fill-current;
+    @apply pointer-events-none absolute right-2 flex items-center justify-center;
   }
 
   .cn-dropdown-menu-label {
@@ -591,7 +583,7 @@
   }
 
   .cn-item-size-xs {
-    @apply gap-2 px-2.5 py-2;
+    @apply gap-2 px-2.5 py-2 [[data-slot=dropdown-menu-content]_&]:p-0;
   }
 
   .cn-item-media {
@@ -811,11 +803,11 @@
 
   /* MARK: Select */
   .cn-select-trigger {
-    @apply border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 gap-2 rounded-md border bg-transparent px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] aria-invalid:ring-[3px] data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:gap-2 [&_svg:not([class*='size-'])]:size-4;
+    @apply border-input data-[placeholder]:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 gap-2 rounded-md border bg-transparent px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] aria-invalid:ring-[3px] data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:gap-2 [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-select-content {
-    @apply bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-32 rounded-md shadow-md ring-1;
+    @apply bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 min-w-36 rounded-md shadow-md ring-1;
   }
 
   .cn-select-label {
@@ -823,11 +815,11 @@
   }
 
   .cn-select-item {
-    @apply focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2;
+    @apply focus:bg-accent focus:text-accent-foreground gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2;
   }
 
   .cn-select-item-indicator {
-    @apply pointer-events-none absolute right-2 flex size-3.5 items-center justify-center;
+    @apply pointer-events-none absolute right-2 flex size-4 items-center justify-center;
   }
 
   .cn-select-separator {
@@ -857,7 +849,7 @@
 
   /* MARK: Sheet */
   .cn-sheet-overlay {
-    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/50;
+    @apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-black/10 supports-backdrop-filter:backdrop-blur-xs;
   }
 
   .cn-sheet-content {

@@ -40,10 +40,17 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
         setParams({ theme: value as Theme["name"] })
       }}
     >
-      <SelectTrigger className="w-full">
-        <SelectValue placeholder="Select a theme" />
+      <SelectTrigger className="w-full text-left data-[size=default]:h-14">
+        <SelectValue>
+          <div className="flex flex-col justify-start">
+            <div className="text-muted-foreground text-xs font-medium">
+              Theme
+            </div>
+            {currentTheme?.title}
+          </div>
+        </SelectValue>
       </SelectTrigger>
-      <SelectContent position="item-aligned">
+      <SelectContent position="popper" side="right" align="start">
         {themes.map((theme) => {
           const isBaseColor = BASE_COLORS.find(
             (baseColor) => baseColor.name === theme.name
@@ -60,7 +67,7 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
                         ],
                     } as React.CSSProperties
                   }
-                  className="size-4 rounded-[4px] bg-(--color)"
+                  className="size-4 rounded-full bg-(--color)"
                 />
                 {theme.title}
               </div>

@@ -2,11 +2,16 @@ import * as React from "react"
 
 import { cn } from "@/registry/bases/radix/lib/cn"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+function Card({
+  className,
+  size = "default",
+  ...props
+}: React.ComponentProps<"div"> & { size?: "default" | "sm" }) {
   return (
     <div
       data-slot="card"
-      className={cn("cn-card flex flex-col", className)}
+      data-size={size}
+      className={cn("cn-card group/card flex flex-col", className)}
       {...props}
     />
   )

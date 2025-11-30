@@ -32,7 +32,7 @@ export function ItemExplorer({
   )
 
   return (
-    <div className="flex flex-1 flex-col gap-px p-2">
+    <div className="flex flex-1 flex-col p-1">
       {groupedItems.map((group) => (
         <div key={group.type} className="flex flex-col gap-px">
           <h3 className="text-muted-foreground text-sm font-medium">
@@ -44,7 +44,7 @@ export function ItemExplorer({
               key={item.name}
               variant="ghost"
               onClick={() => setParams({ item: item.name })}
-              className="justify-start font-normal data-[active=true]:font-medium"
+              className="w-fit justify-start font-normal data-[active=true]:font-medium"
               data-active={item.name === currentItem?.name}
             >
               {item.title}

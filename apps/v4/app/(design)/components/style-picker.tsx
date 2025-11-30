@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { useQueryStates } from "nuqs"
 
 import {
@@ -28,10 +27,17 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
         setParams({ style: value as Style["name"] })
       }}
     >
-      <SelectTrigger className="w-full">
-        <SelectValue placeholder="Select a style" />
+      <SelectTrigger className="w-full text-left data-[size=default]:h-14">
+        <SelectValue>
+          <div className="flex flex-col justify-start">
+            <div className="text-muted-foreground text-xs font-medium">
+              Style
+            </div>
+            {currentStyle?.title}
+          </div>
+        </SelectValue>
       </SelectTrigger>
-      <SelectContent position="item-aligned">
+      <SelectContent position="popper" side="right" align="start">
         {styles.map((style) => (
           <SelectItem key={style.name} value={style.name}>
             {style.title}

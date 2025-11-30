@@ -155,7 +155,7 @@ function ContextMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="cn-context-menu-item-indicator">
+      <span className="cn-context-menu-item-indicator pointer-events-none">
         <ContextMenuPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
@@ -183,13 +183,12 @@ function ContextMenuRadioItem({
       )}
       {...props}
     >
-      <span className="cn-context-menu-item-indicator pointer-events-none absolute flex items-center justify-center">
+      <span className="cn-context-menu-item-indicator pointer-events-none">
         <ContextMenuPrimitive.ItemIndicator>
           <IconPlaceholder
-            lucide="CircleIcon"
-            tabler="IconCircle"
-            hugeicons="CircleIcon"
-            className="cn-context-menu-item-indicator-icon"
+            lucide="CheckIcon"
+            tabler="IconCheck"
+            hugeicons="Tick02Icon"
           />
         </ContextMenuPrimitive.ItemIndicator>
       </span>

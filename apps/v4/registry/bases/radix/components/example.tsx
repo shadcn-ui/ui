@@ -2,14 +2,16 @@ import { cn } from "@/registry/bases/radix/lib/cn"
 
 function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
-      data-slot="example-wrapper"
-      className={cn(
-        "mx-auto grid min-h-screen w-full max-w-7xl min-w-0 content-center items-start gap-12 bg-neutral-50 p-6 lg:grid-cols-2 lg:gap-8 lg:p-12 2xl:max-w-screen-2xl 2xl:grid-cols-3 dark:bg-neutral-950",
-        className
-      )}
-      {...props}
-    />
+    <div className="bg-background w-full">
+      <div
+        data-slot="example-wrapper"
+        className={cn(
+          "mx-auto grid min-h-screen w-full max-w-7xl min-w-0 content-center items-start gap-12 p-6 lg:grid-cols-2 lg:gap-8 lg:p-12 2xl:max-w-screen-2xl",
+          className
+        )}
+        {...props}
+      />
+    </div>
   )
 }
 

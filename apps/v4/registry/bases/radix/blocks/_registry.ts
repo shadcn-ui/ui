@@ -34,4 +34,15 @@ export const blocks: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "chatgpt",
+    title: "ChatGPT",
+    type: "registry:block",
+    files: [
+      {
+        path: "blocks/chatgpt.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
 ]

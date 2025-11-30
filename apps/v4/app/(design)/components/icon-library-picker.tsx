@@ -101,12 +101,17 @@ export function IconLibraryPicker() {
         setParams({ iconLibrary: value as IconLibraryName })
       }}
     >
-      <SelectTrigger className="w-full">
-        <SelectValue placeholder="Select an icon library">
-          {currentIconLibrary?.title}
+      <SelectTrigger className="w-full text-left data-[size=default]:h-14">
+        <SelectValue>
+          <div className="flex flex-col justify-start">
+            <div className="text-muted-foreground text-xs font-medium">
+              Icon Library
+            </div>
+            {currentIconLibrary?.title}
+          </div>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent position="item-aligned" className="w-64">
+      <SelectContent position="popper" side="right" align="start">
         {Object.values(iconLibraries).map((iconLibrary) => (
           <IconLibraryPickerItem
             key={iconLibrary.name}
@@ -127,8 +132,11 @@ function IconLibraryPickerItem({
   value: string
 }) {
   return (
-    <SelectItem value={value} className="ring-border ring-1 not-last:mb-2">
-      <div className="flex w-full flex-col gap-1.5 p-1">
+    <SelectItem
+      value={value}
+      className="pr-2 *:data-[slot=select-item-indicator]:hidden"
+    >
+      <div className="flex w-full flex-col gap-1.5 py-1">
         <span className="text-muted-foreground text-xs font-medium">
           {iconLibrary.title}
         </span>

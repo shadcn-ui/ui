@@ -39,7 +39,9 @@ export default function DropdownMenuExample() {
       <DropdownMenuWithShortcuts />
       <DropdownMenuWithSubmenu />
       <DropdownMenuWithCheckboxes />
+      <DropdownMenuWithCheckboxesIcons />
       <DropdownMenuWithRadio />
+      <DropdownMenuWithRadioIcons />
       <DropdownMenuWithDestructive />
       <DropdownMenuWithAvatar />
     </ExampleWrapper>
@@ -55,7 +57,7 @@ function DropdownMenuBasic() {
             Open
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -81,7 +83,7 @@ function DropdownMenuWithIcons() {
             Open
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent>
           <DropdownMenuItem>
             <IconPlaceholder
               lucide="UserIcon"
@@ -130,7 +132,7 @@ function DropdownMenuWithShortcuts() {
             Open
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuItem>
@@ -170,7 +172,7 @@ function DropdownMenuWithSubmenu() {
             Open
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent>
           <DropdownMenuGroup>
             <DropdownMenuItem>Team</DropdownMenuItem>
             <DropdownMenuSub>
@@ -208,13 +210,18 @@ function DropdownMenuWithCheckboxes() {
             Checkboxes
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent>
           <DropdownMenuGroup>
             <DropdownMenuLabel>Appearance</DropdownMenuLabel>
             <DropdownMenuCheckboxItem
               checked={showStatusBar}
               onCheckedChange={setShowStatusBar}
             >
+              <IconPlaceholder
+                lucide="LayoutIcon"
+                tabler="IconLayout"
+                hugeicons="LayoutIcon"
+              />
               Status Bar
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
@@ -222,12 +229,22 @@ function DropdownMenuWithCheckboxes() {
               onCheckedChange={setShowActivityBar}
               disabled
             >
+              <IconPlaceholder
+                lucide="ActivityIcon"
+                tabler="IconActivity"
+                hugeicons="ActivityIcon"
+              />
               Activity Bar
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
               checked={showPanel}
               onCheckedChange={setShowPanel}
             >
+              <IconPlaceholder
+                lucide="PanelLeftIcon"
+                tabler="IconLayoutSidebar"
+                hugeicons="LayoutLeftIcon"
+              />
               Panel
             </DropdownMenuCheckboxItem>
           </DropdownMenuGroup>
@@ -248,19 +265,148 @@ function DropdownMenuWithRadio() {
             Radio Group
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent>
           <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuRadioGroup
               value={position}
               onValueChange={setPosition}
             >
-              <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="top">
+                <IconPlaceholder
+                  lucide="ArrowUpIcon"
+                  tabler="IconArrowUp"
+                  hugeicons="ArrowUp01Icon"
+                />
+                Top
+              </DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="bottom">
+                <IconPlaceholder
+                  lucide="ArrowDownIcon"
+                  tabler="IconArrowDown"
+                  hugeicons="ArrowDown01Icon"
+                />
                 Bottom
               </DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="right" disabled>
+                <IconPlaceholder
+                  lucide="ArrowRightIcon"
+                  tabler="IconArrowRight"
+                  hugeicons="ArrowRight01Icon"
+                />
                 Right
+              </DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </Example>
+  )
+}
+
+function DropdownMenuWithCheckboxesIcons() {
+  const [notifications, setNotifications] = React.useState({
+    email: true,
+    sms: false,
+    push: true,
+  })
+
+  return (
+    <Example title="Checkboxes with Icons">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="w-fit">
+            Notifications
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="min-w-56">
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>
+            <DropdownMenuCheckboxItem
+              checked={notifications.email}
+              onCheckedChange={(checked) =>
+                setNotifications({ ...notifications, email: checked === true })
+              }
+            >
+              <IconPlaceholder
+                lucide="MailIcon"
+                tabler="IconMail"
+                hugeicons="MailIcon"
+              />
+              Email notifications
+            </DropdownMenuCheckboxItem>
+            <DropdownMenuCheckboxItem
+              checked={notifications.sms}
+              onCheckedChange={(checked) =>
+                setNotifications({ ...notifications, sms: checked === true })
+              }
+            >
+              <IconPlaceholder
+                lucide="MessageSquareIcon"
+                tabler="IconMessage"
+                hugeicons="MessageIcon"
+              />
+              SMS notifications
+            </DropdownMenuCheckboxItem>
+            <DropdownMenuCheckboxItem
+              checked={notifications.push}
+              onCheckedChange={(checked) =>
+                setNotifications({ ...notifications, push: checked === true })
+              }
+            >
+              <IconPlaceholder
+                lucide="BellIcon"
+                tabler="IconBell"
+                hugeicons="NotificationIcon"
+              />
+              Push notifications
+            </DropdownMenuCheckboxItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </Example>
+  )
+}
+
+function DropdownMenuWithRadioIcons() {
+  const [paymentMethod, setPaymentMethod] = React.useState("card")
+
+  return (
+    <Example title="Radio with Icons">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline">Payment Method</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="min-w-56">
+          <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
+          <DropdownMenuGroup>
+            <DropdownMenuRadioGroup
+              value={paymentMethod}
+              onValueChange={setPaymentMethod}
+            >
+              <DropdownMenuRadioItem value="card">
+                <IconPlaceholder
+                  lucide="CreditCardIcon"
+                  tabler="IconCreditCard"
+                  hugeicons="CreditCardIcon"
+                />
+                Credit Card
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="paypal">
+                <IconPlaceholder
+                  lucide="WalletIcon"
+                  tabler="IconWallet"
+                  hugeicons="WalletIcon"
+                />
+                PayPal
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="bank">
+                <IconPlaceholder
+                  lucide="Building2Icon"
+                  tabler="IconBuildingBank"
+                  hugeicons="BankIcon"
+                />
+                Bank Transfer
               </DropdownMenuRadioItem>
             </DropdownMenuRadioGroup>
           </DropdownMenuGroup>
@@ -279,7 +425,7 @@ function DropdownMenuWithDestructive() {
             Actions
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent>
           <DropdownMenuItem>
             <IconPlaceholder
               lucide="PencilIcon"
@@ -413,10 +559,7 @@ function DropdownMenuWithAvatar() {
               />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56"
-            align="start"
-          >
+          <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
             {menuContent}
           </DropdownMenuContent>
         </DropdownMenu>

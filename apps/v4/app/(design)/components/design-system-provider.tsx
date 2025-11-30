@@ -34,14 +34,6 @@ export function DesignSystemProvider({
     })
     body.classList.add(styleClass)
 
-    const themeClass = `theme-${theme}`
-    body.classList.forEach((className) => {
-      if (className.startsWith("theme-")) {
-        body.classList.remove(className)
-      }
-    })
-    body.classList.add(themeClass)
-
     const baseColorClass = `base-color-${baseColor}`
     body.classList.forEach((className) => {
       if (className.startsWith("base-color-")) {
@@ -62,8 +54,6 @@ export function DesignSystemProvider({
 
     return () => {
       body.classList.remove(styleClass)
-      body.classList.remove(themeClass)
-      body.classList.remove(baseColorClass)
       if (hasFont) {
         document.documentElement.style.removeProperty("--font-sans")
       }
@@ -78,32 +68,53 @@ export function DesignSystemProvider({
   }, [baseColor, theme])
 
   React.useEffect(() => {
-    if (!mergedTheme || !mergedTheme.cssVars || !resolvedTheme) {
+    if (!mergedTheme || !mergedTheme.cssVars) {
       return
     }
 
-    const body = document.body
-    const isDark = resolvedTheme === "dark"
-    const cssVars = isDark
-      ? mergedTheme.cssVars.dark
-      : mergedTheme.cssVars.light
+    const styleId = "design-system-theme-vars"
+    let styleElement = document.getElementById(
+      styleId
+    ) as HTMLStyleElement | null
 
-    if (!cssVars) {
-      return
+    if (!styleElement) {
+      styleElement = document.createElement("style")
+      styleElement.id = styleId
+      document.head.appendChild(styleElement)
     }
 
-    Object.entries(cssVars).forEach(([key, value]) => {
-      if (value) {
-        body.style.setProperty(`--${key}`, value)
-      }
-    })
+    const lightVars = mergedTheme.cssVars.light
+    const darkVars = mergedTheme.cssVars.dark
 
-    return () => {
-      Object.keys(cssVars).forEach((key) => {
-        body.style.removeProperty(`--${key}`)
+    let cssText = ":root {\n"
+    if (lightVars) {
+      Object.entries(lightVars).forEach(([key, value]) => {
+        if (value) {
+          cssText += `  --${key}: ${value};\n`
+        }
       })
     }
-  }, [mergedTheme, resolvedTheme])
+    cssText += "}\n\n"
+
+    cssText += ".dark {\n"
+    if (darkVars) {
+      Object.entries(darkVars).forEach(([key, value]) => {
+        if (value) {
+          cssText += `  --${key}: ${value};\n`
+        }
+      })
+    }
+    cssText += "}\n"
+
+    styleElement.textContent = cssText
+
+    return () => {
+      const element = document.getElementById(styleId)
+      if (element) {
+        element.remove()
+      }
+    }
+  }, [mergedTheme])
 
   if (!isReady) {
     return null

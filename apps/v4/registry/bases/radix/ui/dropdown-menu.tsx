@@ -33,6 +33,7 @@ function DropdownMenuTrigger({
 
 function DropdownMenuContent({
   className,
+  align = "start",
   sideOffset = 4,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {
@@ -41,8 +42,9 @@ function DropdownMenuContent({
       <DropdownMenuPrimitive.Content
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
+        align={align}
         className={cn(
-          "cn-dropdown-menu-content dark z-50 max-h-(--radix-dropdown-menu-content-available-height) origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto data-[state=closed]:overflow-hidden",
+          "cn-dropdown-menu-content z-50 max-h-(--radix-dropdown-menu-content-available-height) origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto data-[state=closed]:overflow-hidden",
           className
         )}
         {...props}
@@ -98,13 +100,12 @@ function DropdownMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="cn-dropdown-menu-item-indicator">
+      <span className="cn-dropdown-menu-item-indicator pointer-events-none">
         <DropdownMenuPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
-            className="size-4"
           />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
@@ -138,13 +139,12 @@ function DropdownMenuRadioItem({
       )}
       {...props}
     >
-      <span className="cn-dropdown-menu-item-indicator">
+      <span className="cn-dropdown-menu-item-indicator pointer-events-none">
         <DropdownMenuPrimitive.ItemIndicator>
           <IconPlaceholder
-            lucide="CircleIcon"
-            tabler="IconCircle"
-            hugeicons="CircleIcon"
-            className="cn-dropdown-menu-item-indicator-icon"
+            lucide="CheckIcon"
+            tabler="IconCheck"
+            hugeicons="Tick02Icon"
           />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>

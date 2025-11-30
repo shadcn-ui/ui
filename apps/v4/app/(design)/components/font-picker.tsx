@@ -31,12 +31,22 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
         setParams({ font: value as Font["value"] })
       }}
     >
-      <SelectTrigger className="w-full">
-        <SelectValue placeholder="Select a font">
-          {currentFont?.name}
+      <SelectTrigger className="w-full text-left data-[size=default]:h-14">
+        <SelectValue>
+          <div className="flex flex-col justify-start">
+            <div className="text-muted-foreground text-xs font-medium">
+              Font
+            </div>
+            {currentFont?.name}
+          </div>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent position="item-aligned" className="w-64">
+      <SelectContent
+        position="popper"
+        side="right"
+        align="start"
+        className="w-64"
+      >
         {fonts.map((font) => (
           <SelectItem key={font.value} value={font.value}>
             <div className="flex flex-col gap-0.5">

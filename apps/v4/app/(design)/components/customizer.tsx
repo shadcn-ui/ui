@@ -68,57 +68,46 @@ export function Customizer() {
     [setParams]
   )
 
-  const handleSelectCustom = React.useCallback(() => {
-    setParams({
-      custom: true,
-    })
-  }, [setParams])
-
   return (
-    <div className="flex flex-col gap-2">
-      <Card className="gap-0 rounded-lg py-0 shadow-none">
-        <CardHeader className="gap-0 border-b px-3 py-2.5!">
-          <CardTitle className="text-sm font-medium">Presets</CardTitle>
-        </CardHeader>
-        <CardContent className="p-3">
-          <FieldGroup className="flex flex-col gap-3">
-            {PRESETS.map((preset, index) => {
-              const isActive =
-                !params.custom &&
-                preset.style === params.style &&
-                preset.theme === params.theme &&
-                preset.iconLibrary === params.iconLibrary &&
-                preset.font === params.font
+    <div className="flex flex-col gap-4 p-1">
+      <FieldGroup className="flex flex-col gap-3">
+        {PRESETS.map((preset, index) => {
+          const isActive =
+            !params.custom &&
+            preset.style === params.style &&
+            preset.theme === params.theme &&
+            preset.iconLibrary === params.iconLibrary &&
+            preset.font === params.font
 
-              return (
-                <Button
-                  key={index}
-                  variant="outline"
-                  data-active={isActive}
-                  className="data-[state=open]:bg-accent/50 data-[active=true]:border-primary ring-primary flex h-auto flex-col items-start justify-start p-0 shadow-none data-[active=true]:ring-1"
-                  onClick={() => handleSelectPreset(preset)}
-                >
-                  <Item size="sm" className="w-full px-2.5 py-2">
-                    <ItemContent className="items-start gap-0.5">
-                      <ItemTitle className="text-xs font-medium">
-                        {preset.title}
-                      </ItemTitle>
-                      <ItemDescription className="line-clamp-1 text-pretty">
-                        {preset.iconLibrary} / {preset.font}
-                      </ItemDescription>
-                    </ItemContent>
-                  </Item>
-                </Button>
-              )
-            })}
-            <StylePicker styles={STYLES} />
-            <BaseColorPicker />
-            <ThemePicker themes={availableThemes} />
-            <IconLibraryPicker />
-            <FontPicker fonts={FONTS} />
-          </FieldGroup>
-        </CardContent>
-      </Card>
+          return (
+            <Button
+              key={index}
+              variant="outline"
+              data-active={isActive}
+              className="data-[state=open]:bg-accent/50 ring-foreground/10 flex h-auto flex-col items-start justify-start border-0 p-0 shadow-none ring-1 data-[active=true]:ring-2 data-[active=true]:ring-blue-600"
+              onClick={() => handleSelectPreset(preset)}
+            >
+              <Item size="sm" className="w-full px-2.5 py-2">
+                <ItemContent className="items-start gap-0.5">
+                  <ItemTitle className="text-xs font-medium">
+                    {preset.title}
+                  </ItemTitle>
+                  <ItemDescription className="line-clamp-1 text-pretty">
+                    {preset.iconLibrary} / {preset.font}
+                  </ItemDescription>
+                </ItemContent>
+              </Item>
+            </Button>
+          )
+        })}
+      </FieldGroup>
+      <FieldGroup className="flex flex-col gap-3">
+        <StylePicker styles={STYLES} />
+        <BaseColorPicker />
+        <ThemePicker themes={availableThemes} />
+        <IconLibraryPicker />
+        <FontPicker fonts={FONTS} />
+      </FieldGroup>
     </div>
   )
 }

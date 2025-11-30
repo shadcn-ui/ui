@@ -17,7 +17,7 @@ export function Panel({
   return (
     <Tabs
       defaultValue="customizer"
-      className="flex w-56 flex-col gap-2 overflow-hidden rounded-xl border p-2"
+      className="flex w-56 flex-col gap-2 overflow-hidden"
     >
       <TabsList className="w-full">
         <TabsTrigger value="customizer">Customizer</TabsTrigger>
@@ -32,7 +32,7 @@ export function Panel({
         </TabsContent>
         <TabsContent
           value="explorer"
-          className="no-scrollbar flex flex-1 flex-col overflow-y-auto rounded-lg border"
+          className="no-scrollbar flex flex-1 flex-col overflow-y-auto"
         >
           <ItemExplorer items={items} />
         </TabsContent>
