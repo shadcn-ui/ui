@@ -27,7 +27,7 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
         setParams({ style: value as Style["name"] })
       }}
     >
-      <SelectTrigger className="w-full text-left data-[size=default]:h-14">
+      <SelectTrigger className="data-[state=open]:bg-muted/30 dark:data-[state=open]:bg-muted w-full text-left data-[size=default]:h-14">
         <SelectValue>
           <div className="flex flex-col justify-start">
             <div className="text-muted-foreground text-xs font-medium">
@@ -37,7 +37,12 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
           </div>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent position="popper" side="right" align="start">
+      <SelectContent
+        position="popper"
+        side="right"
+        align="start"
+        className="data-[state=closed]:animate-none data-[state=open]:animate-none"
+      >
         {styles.map((style) => (
           <SelectItem key={style.name} value={style.name}>
             {style.title}

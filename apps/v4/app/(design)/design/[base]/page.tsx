@@ -6,7 +6,6 @@ import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { BASES } from "@/registry/bases"
 import { Customizer } from "@/app/(design)/components/customizer"
-import { Panel } from "@/app/(design)/components/panel"
 import { Preview } from "@/app/(design)/components/preview"
 import { Toolbar } from "@/app/(design)/components/toolbar"
 import { getItemsForBase } from "@/app/(design)/lib/api"
@@ -92,12 +91,15 @@ export default async function NewPage({
     }))
 
   return (
-    <>
+    <div
+      data-slot="layout"
+      className="bg-background relative z-10 flex h-svh flex-col overflow-hidden"
+    >
       <Toolbar items={filteredItems} />
-      <main className="3xl:fixed:container flex flex-1 gap-6 p-6">
-        <Customizer />
+      <main className="3xl:fixed:container flex flex-1 gap-6 p-6 pt-2">
         <Preview base={base.name} />
+        <Customizer items={filteredItems} />
       </main>
-    </>
+    </div>
   )
 }

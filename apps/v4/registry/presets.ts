@@ -5,8 +5,9 @@ import { Font } from "@/registry/fonts"
 import { Style } from "@/registry/styles"
 import { Theme } from "@/registry/themes"
 
-type Preset = {
+export type Preset = {
   title: string
+  description: string
   style: Style["name"]
   baseColor: BaseColor["name"]
   theme: Theme["name"]
@@ -17,6 +18,7 @@ type Preset = {
 export const PRESETS = [
   {
     title: "Vega",
+    description: "Lucide / Inter",
     style: "vega",
     baseColor: "neutral",
     theme: "neutral",
@@ -25,6 +27,7 @@ export const PRESETS = [
   },
   {
     title: "Nova",
+    description: "Hugeicons / Figtree",
     style: "nova",
     baseColor: "neutral",
     theme: "blue",

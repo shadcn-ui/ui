@@ -33,7 +33,7 @@ export function BaseColorPicker() {
         setParams({ baseColor: value as BaseColor["name"] })
       }}
     >
-      <SelectTrigger className="w-full text-left data-[size=default]:h-14">
+      <SelectTrigger className="data-[state=open]:bg-muted/30 dark:data-[state=open]:bg-muted w-full text-left data-[size=default]:h-14">
         <SelectValue>
           <div className="flex flex-col justify-start">
             <div className="text-muted-foreground text-xs font-medium">
@@ -43,7 +43,12 @@ export function BaseColorPicker() {
           </div>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent position="popper" side="right" align="start">
+      <SelectContent
+        position="popper"
+        side="right"
+        align="start"
+        className="data-[state=closed]:animate-none data-[state=open]:animate-none"
+      >
         {BASE_COLORS.map((baseColor) => (
           <SelectItem key={baseColor.name} value={baseColor.name}>
             <div className="flex items-center gap-2">

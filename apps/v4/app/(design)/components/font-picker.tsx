@@ -3,11 +3,18 @@
 import * as React from "react"
 import { useQueryStates } from "nuqs"
 
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemTitle,
+} from "@/registry/bases/radix/ui/item"
 import { type Font } from "@/registry/fonts"
 import {
   Select,
   SelectContent,
   SelectItem,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
@@ -31,7 +38,7 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
         setParams({ font: value as Font["value"] })
       }}
     >
-      <SelectTrigger className="w-full text-left data-[size=default]:h-14">
+      <SelectTrigger className="data-[state=open]:bg-muted/30 dark:data-[state=open]:bg-muted w-full text-left data-[size=default]:h-14">
         <SelectValue>
           <div className="flex flex-col justify-start">
             <div className="text-muted-foreground text-xs font-medium">
@@ -45,22 +52,24 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
         position="popper"
         side="right"
         align="start"
-        className="w-64"
+        className="w-64 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
         {fonts.map((font) => (
-          <SelectItem key={font.value} value={font.value}>
-            <div className="flex flex-col gap-0.5">
-              <span className="text-muted-foreground text-xs font-medium">
-                {font.name}
-              </span>
-              <span
-                className="text-sm"
-                style={{ fontFamily: font.font.style.fontFamily }}
-              >
-                The quick brown fox jumps over the lazy dog.
-              </span>
-            </div>
-          </SelectItem>
+          <React.Fragment key={font.value}>
+            <SelectItem value={font.value}>
+              <Item size="xs">
+                <ItemContent className="gap-1">
+                  <ItemTitle className="text-muted-foreground text-xs font-medium">
+                    {font.name}
+                  </ItemTitle>
+                  <ItemDescription>
+                    The quick brown fox jumps over the lazy dog.
+                  </ItemDescription>
+                </ItemContent>
+              </Item>
+            </SelectItem>
+            <SelectSeparator className="last:hidden" />
+          </React.Fragment>
         ))}
       </SelectContent>
     </Select>

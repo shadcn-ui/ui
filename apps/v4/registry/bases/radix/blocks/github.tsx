@@ -1208,8 +1208,8 @@ function AssignIssue() {
 
   return (
     <Example title="User Select" className="items-center justify-center">
-      <Card className="w-full max-w-xs gap-0 [--padding:--spacing(1)]">
-        <CardHeader className="border-b p-4 pb-3">
+      <Card className="w-full max-w-xs gap-0" size="sm">
+        <CardHeader className="border-b">
           <CardTitle className="text-sm">Assign Issue</CardTitle>
           <CardDescription className="text-sm">
             Select users to assign to this issue.
@@ -1274,7 +1274,7 @@ function AssignIssue() {
             </CommandList>
           </Command>
         </CardContent>
-        <CardFooter className="h-10 border-t px-2.5 py-2">
+        <CardFooter className="h-8 border-t">
           {selectedUsers.length ? (
             <AvatarGroup>
               {selectedUsers.slice(0, 3).map((username) => (

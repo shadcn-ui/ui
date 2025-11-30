@@ -5,10 +5,12 @@ import { lazy, memo, Suspense } from "react"
 import { useQueryStates } from "nuqs"
 import { iconLibraries, IconLibraryName, type IconLibrary } from "shadcn/icons"
 
+import { Item, ItemContent, ItemTitle } from "@/registry/bases/radix/ui/item"
 import {
   Select,
   SelectContent,
   SelectItem,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
@@ -101,7 +103,7 @@ export function IconLibraryPicker() {
         setParams({ iconLibrary: value as IconLibraryName })
       }}
     >
-      <SelectTrigger className="w-full text-left data-[size=default]:h-14">
+      <SelectTrigger className="data-[state=open]:bg-muted/30 dark:data-[state=open]:bg-muted w-full text-left data-[size=default]:h-14">
         <SelectValue>
           <div className="flex flex-col justify-start">
             <div className="text-muted-foreground text-xs font-medium">
@@ -111,13 +113,20 @@ export function IconLibraryPicker() {
           </div>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent position="popper" side="right" align="start">
+      <SelectContent
+        position="popper"
+        side="right"
+        align="start"
+        className="data-[state=closed]:animate-none data-[state=open]:animate-none"
+      >
         {Object.values(iconLibraries).map((iconLibrary) => (
-          <IconLibraryPickerItem
-            key={iconLibrary.name}
-            iconLibrary={iconLibrary}
-            value={iconLibrary.name}
-          />
+          <React.Fragment key={iconLibrary.name}>
+            <IconLibraryPickerItem
+              iconLibrary={iconLibrary}
+              value={iconLibrary.name}
+            />
+            <SelectSeparator className="last:hidden" />
+          </React.Fragment>
         ))}
       </SelectContent>
     </Select>
@@ -136,12 +145,14 @@ function IconLibraryPickerItem({
       value={value}
       className="pr-2 *:data-[slot=select-item-indicator]:hidden"
     >
-      <div className="flex w-full flex-col gap-1.5 py-1">
-        <span className="text-muted-foreground text-xs font-medium">
-          {iconLibrary.title}
-        </span>
-        <IconLibraryPreview iconLibrary={iconLibrary.name} />
-      </div>
+      <Item size="xs">
+        <ItemContent className="gap-1">
+          <ItemTitle className="text-muted-foreground text-xs font-medium">
+            {iconLibrary.title}
+          </ItemTitle>
+          <IconLibraryPreview iconLibrary={iconLibrary.name} />
+        </ItemContent>
+      </Item>
     </SelectItem>
   )
 }
