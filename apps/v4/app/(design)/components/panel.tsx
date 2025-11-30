@@ -17,7 +17,7 @@ export function Panel({
   return (
     <Tabs
       defaultValue="customizer"
-      className="flex w-56 flex-col gap-2 overflow-hidden"
+      className="flex w-56 flex-col gap-2 overflow-y-auto"
     >
       <TabsList className="w-full">
         <TabsTrigger value="customizer">Customizer</TabsTrigger>

@@ -92,11 +92,11 @@ export function Preview({ base }: { base: Base["name"] }) {
       <div className="absolute inset-0 [background-image:radial-gradient(#d4d4d4_1px,transparent_1px)] [background-size:20px_20px] dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"></div>
       <ResizablePanelGroup
         direction="horizontal"
-        className="after:bg-surface/50 relative z-10 after:absolute after:inset-0 after:-z-10 after:rounded-xl"
+        className="after:bg-surface/50 relative z-10 p-px after:absolute after:inset-0 after:-z-10 after:rounded-xl"
       >
         <ResizablePanel
           ref={resizablePanelRef}
-          className="relative z-20 overflow-hidden rounded-lg border md:rounded-xl"
+          className="ring-foreground/10 relative z-20 overflow-hidden rounded-2xl ring-1"
           defaultSize={100}
           minSize={30}
           onResize={(size) => setUrlParams({ size: Math.round(size) })}

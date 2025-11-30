@@ -69,7 +69,7 @@ export function Customizer() {
   )
 
   return (
-    <div className="flex flex-col gap-4 p-1">
+    <div className="no-scrollbar flex h-[calc(100svh-var(--header-height)-4rem)] w-54 flex-col gap-4 overflow-y-auto p-1">
       <FieldGroup className="flex flex-col gap-3">
         {PRESETS.map((preset, index) => {
           const isActive =

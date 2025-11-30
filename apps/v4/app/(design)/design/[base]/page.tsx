@@ -5,6 +5,7 @@ import type { SearchParams } from "nuqs/server"
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { BASES } from "@/registry/bases"
+import { Customizer } from "@/app/(design)/components/customizer"
 import { Panel } from "@/app/(design)/components/panel"
 import { Preview } from "@/app/(design)/components/preview"
 import { Toolbar } from "@/app/(design)/components/toolbar"
@@ -93,13 +94,9 @@ export default async function NewPage({
   return (
     <>
       <Toolbar items={filteredItems} />
-      <main className="flex flex-1 flex-col">
-        <div className="3xl:fixed:container flex flex-1 gap-6 p-6">
-          <Panel items={filteredItems} />
-          <div className="flex flex-1 flex-col">
-            <Preview base={base.name} />
-          </div>
-        </div>
+      <main className="3xl:fixed:container flex flex-1 gap-6 p-6">
+        <Customizer />
+        <Preview base={base.name} />
       </main>
     </>
   )

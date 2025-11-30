@@ -31,12 +31,4 @@ export const PRESETS = [
     iconLibrary: "hugeicons",
     font: "figtree",
   },
-  {
-    title: "Lyra",
-    style: "lyra",
-    baseColor: "stone",
-    theme: "stone",
-    iconLibrary: "tabler",
-    font: "geist-mono",
-  },
 ] satisfies Preset[]
