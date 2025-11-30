@@ -22,9 +22,7 @@ export function MenuPicker() {
     history: "push",
   })
 
-  const currentMenu = MENU_OPTIONS.find(
-    (menu) => menu.value === params.menu
-  )
+  const currentMenu = MENU_OPTIONS.find((menu) => menu.value === params.menu)
 
   return (
     <Select
@@ -62,4 +60,3 @@ export function MenuPicker() {
     </Select>
   )
 }
-
