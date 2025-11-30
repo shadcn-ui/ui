@@ -40,7 +40,7 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
         setParams({ theme: value as Theme["name"] })
       }}
     >
-      <SelectTrigger className="data-[state=open]:bg-muted/30 dark:data-[state=open]:bg-muted w-full text-left data-[size=default]:h-14">
+      <SelectTrigger>
         <SelectValue>
           <div className="flex flex-col justify-start">
             <div className="text-muted-foreground text-xs font-medium">
@@ -54,14 +54,18 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
         position="popper"
         side="right"
         align="start"
-        className="data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="rounded-xl data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
         {themes.map((theme) => {
           const isBaseColor = BASE_COLORS.find(
             (baseColor) => baseColor.name === theme.name
           )
           return (
-            <SelectItem key={theme.name} value={theme.name}>
+            <SelectItem
+              key={theme.name}
+              value={theme.name}
+              className="rounded-lg"
+            >
               <div className="flex items-center gap-2">
                 <div
                   style={

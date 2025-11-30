@@ -35,20 +35,22 @@ export function Customizer({
 
   return (
     <div className="no-scrollbar flex h-[calc(100svh-var(--header-height)-4rem)] w-54 flex-col gap-4 px-1">
-      <FieldGroup className="flex flex-col gap-3 **:data-[slot=select-trigger]:shadow-none **:[[data-slot=select-trigger]>svg]:hidden">
+      <FieldGroup className="**:data-[slot=select-trigger]:data-[state=open]:bg-muted/30 **:data-[slot=select-trigger]:dark:data-[state=open]:bg-muted **:[[data-slot=select-trigger]]:hover:bg-muted/30 flex flex-col gap-3 **:data-[slot=select-trigger]:w-full **:data-[slot=select-trigger]:rounded-lg **:data-[slot=select-trigger]:text-left **:data-[slot=select-trigger]:shadow-none **:data-[slot=select-trigger]:data-[size=default]:h-14 **:[[data-slot=select-trigger]>svg]:hidden">
         <div className="flex items-center gap-2">
           <PreviewControls />
-          <ItemNav items={items} />
+          <ItemNav items={items} className="ml-auto" />
         </div>
-        <FieldSeparator className="mx-1 opacity-50" />
+        <FieldSeparator className="opacity-0" />
+        <ItemPicker items={items} />
+        <FieldSeparator className="opacity-0" />
         <PresetPicker presets={PRESETS} />
-        <FieldSeparator className="mx-1 opacity-50" />
+        <FieldSeparator className="opacity-0" />
         <StylePicker styles={STYLES} />
         <BaseColorPicker />
         <ThemePicker themes={availableThemes} />
         <IconLibraryPicker />
         <FontPicker fonts={FONTS} />
-        <FieldSeparator className="mx-1 opacity-50" />
+        <FieldSeparator className="opacity-0" />
         <InstallDialog />
       </FieldGroup>
     </div>

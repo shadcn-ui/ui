@@ -5,13 +5,16 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 import { type RegistryItem } from "shadcn/schema"
 
+import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function ItemNav({
   items,
+  className,
 }: {
   items: Pick<RegistryItem, "name" | "title" | "type">[]
+  className?: string
 }) {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     history: "push",
@@ -21,10 +24,6 @@ export function ItemNav({
   const currentIndex = React.useMemo(() => {
     return items.findIndex((item) => item.name === params.item)
   }, [items, params.item])
-
-  const currentItem = React.useMemo(() => {
-    return items[currentIndex] ?? null
-  }, [items, currentIndex])
 
   const prevItem = React.useMemo(() => {
     if (currentIndex <= 0) {
@@ -53,22 +52,22 @@ export function ItemNav({
   }, [nextItem, setParams])
 
   return (
-    <div className="flex items-center gap-2">
+    <div className={cn("flex items-center gap-2", className)}>
       <Button
         variant="outline"
         size="icon-sm"
-        className="rounded-lg"
         onClick={handlePrev}
         disabled={!prevItem}
+        className="rounded-lg shadow-none"
       >
         <IconArrowLeft />
       </Button>
       <Button
         variant="outline"
         size="icon-sm"
-        className="rounded-lg"
         onClick={handleNext}
         disabled={!nextItem}
+        className="rounded-lg shadow-none"
       >
         <IconArrowRight />
       </Button>

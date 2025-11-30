@@ -52,7 +52,7 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
         position="popper"
         side="right"
         align="start"
-        className="w-64 data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="h-96 w-64 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
         {fonts.map((font) => (
           <React.Fragment key={font.value}>

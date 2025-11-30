@@ -60,7 +60,7 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
         }
       }}
     >
-      <SelectTrigger className="data-[state=open]:bg-muted/30 dark:data-[state=open]:bg-muted w-full text-left data-[size=default]:h-14">
+      <SelectTrigger>
         <SelectValue
           placeholder={
             <div className="flex flex-col justify-start">
@@ -83,10 +83,14 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
         position="popper"
         side="right"
         align="start"
-        className="data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="rounded-xl data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
         {presets.map((preset) => (
-          <SelectItem key={preset.title} value={preset.title}>
+          <SelectItem
+            key={preset.title}
+            value={preset.title}
+            className="rounded-lg"
+          >
             <Item size="xs">
               <ItemContent>
                 <ItemTitle className="text-muted-foreground text-xs font-medium">

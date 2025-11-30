@@ -103,7 +103,7 @@ export function IconLibraryPicker() {
         setParams({ iconLibrary: value as IconLibraryName })
       }}
     >
-      <SelectTrigger className="data-[state=open]:bg-muted/30 dark:data-[state=open]:bg-muted w-full text-left data-[size=default]:h-14">
+      <SelectTrigger>
         <SelectValue>
           <div className="flex flex-col justify-start">
             <div className="text-muted-foreground text-xs font-medium">
@@ -117,7 +117,7 @@ export function IconLibraryPicker() {
         position="popper"
         side="right"
         align="start"
-        className="data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="rounded-xl data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
         {Object.values(iconLibraries).map((iconLibrary) => (
           <React.Fragment key={iconLibrary.name}>
@@ -143,7 +143,7 @@ function IconLibraryPickerItem({
   return (
     <SelectItem
       value={value}
-      className="pr-2 *:data-[slot=select-item-indicator]:hidden"
+      className="rounded-lg pr-2 *:data-[slot=select-item-indicator]:hidden"
     >
       <Item size="xs">
         <ItemContent className="gap-1">
@@ -178,7 +178,7 @@ const IconLibraryPreview = memo(function IconLibraryPreview({
   return (
     <Suspense
       fallback={
-        <div className="grid w-full grid-cols-7 gap-2">
+        <div className="-mx-1 grid w-full grid-cols-7 gap-2">
           {previewIcons.map((iconName) => (
             <div
               key={iconName}
@@ -188,7 +188,7 @@ const IconLibraryPreview = memo(function IconLibraryPreview({
         </div>
       }
     >
-      <div className="grid w-full grid-cols-7 gap-2">
+      <div className="-mx-1 grid w-full grid-cols-7 gap-2">
         {previewIcons.map((iconName) => (
           <div
             key={iconName}

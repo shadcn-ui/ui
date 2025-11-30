@@ -193,9 +193,9 @@ export function CommandMenu({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
-          variant="secondary"
+          variant="outline"
           className={cn(
-            "bg-surface text-foreground dark:bg-card relative h-8 w-full justify-start pl-3 font-medium shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64"
+            "text-foreground dark:bg-card hover:bg-muted/50 relative h-8 w-full justify-start pl-3 font-normal shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64"
           )}
           onClick={() => setOpen(true)}
           {...props}
@@ -203,10 +203,7 @@ export function CommandMenu({
           <span className="hidden lg:inline-flex">Search documentation...</span>
           <span className="inline-flex lg:hidden">Search...</span>
           <div className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
-            <KbdGroup>
-              <Kbd className="border">⌘</Kbd>
-              <Kbd className="border">K</Kbd>
-            </KbdGroup>
+            <Kbd>⌘K</Kbd>
           </div>
         </Button>
       </DialogTrigger>

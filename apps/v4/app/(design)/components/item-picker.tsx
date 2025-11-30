@@ -16,6 +16,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/new-york-v4/ui/command"
+import { Kbd } from "@/registry/new-york-v4/ui/kbd"
 import {
   Popover,
   PopoverContent,
@@ -52,7 +53,7 @@ export function ItemPicker({
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === "p" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }
@@ -75,14 +76,19 @@ export function ItemPicker({
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className="flex-1 justify-start px-3 font-normal shadow-none"
+          className="hover:bg-muted/30 flex-1 justify-start gap-1 rounded-lg px-3 text-left font-normal shadow-none"
         >
-          {currentItem?.title}
-          <IconSearch className="text-muted-foreground ml-auto" />
+          <div className="flex flex-col gap-0.5">
+            <div className="text-muted-foreground text-xs font-medium">
+              Preview
+            </div>
+            <div className="text-foreground text-sm">{currentItem?.title}</div>
+          </div>
+          <Kbd className="ml-auto">⌘P</Kbd>
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-(--radix-popover-trigger-width) overflow-hidden p-0 data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="w-(--radix-popover-trigger-width) overflow-hidden rounded-xl p-0 data-[state=closed]:animate-none data-[state=open]:animate-none"
         side="right"
         align="start"
       >
@@ -97,7 +103,7 @@ export function ItemPicker({
                     value={item.title ?? item.name}
                     onSelect={() => handleSelect(item.name)}
                     data-checked={item.name === currentItem?.name}
-                    className="group/command-item"
+                    className="group/command-item rounded-lg"
                   >
                     {item.title}
                     <span className="text-muted-foreground ml-auto text-xs opacity-0 group-data-[selected=true]/command-item:opacity-100">

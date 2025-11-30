@@ -64,7 +64,7 @@ export function Preview({ base }: { base: Base["name"] }) {
       const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent)
 
       const syntheticEvent = new KeyboardEvent("keydown", {
-        key: "k",
+        key: "p",
         metaKey: isMac,
         ctrlKey: !isMac,
         bubbles: true,
@@ -89,7 +89,7 @@ export function Preview({ base }: { base: Base["name"] }) {
 
   return (
     <div className="relative -z-0 flex flex-1 flex-col">
-      <div className="absolute inset-0 [background-image:radial-gradient(#d4d4d4_1px,transparent_1px)] [background-size:20px_20px] dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"></div>
+      <div className="bg-muted dark:bg-muted/30 absolute inset-0 rounded-2xl" />
       <ResizablePanelGroup
         direction="horizontal"
         className="after:bg-surface/50 relative z-10 p-px after:absolute after:inset-0 after:-z-10 after:rounded-xl"
