@@ -105,7 +105,7 @@
   }
 
   .cn-badge-variant-outline {
-    @apply border-border text-foreground [a]:hover:bg-accent [a]:hover:text-accent-foreground;
+    @apply border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground;
   }
 
   .cn-badge-variant-destructive {
@@ -113,7 +113,7 @@
   }
 
   .cn-badge-variant-ghost {
-    @apply hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50;
+    @apply hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50;
   }
 
   .cn-badge-variant-link {
