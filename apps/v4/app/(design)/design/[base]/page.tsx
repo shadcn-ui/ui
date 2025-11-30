@@ -92,7 +92,7 @@ export default async function NewPage({
   return (
     <div
       data-slot="designer"
-      className="3xl:fixed:container flex flex-1 gap-6 p-6 pt-2"
+      className="3xl:fixed:container section-soft flex flex-1 gap-6 p-6 pt-2"
     >
       <Preview base={base.name} />
       <Customizer items={filteredItems} />

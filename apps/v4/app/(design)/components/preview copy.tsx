@@ -88,14 +88,29 @@ export function Preview({ base }: { base: Base["name"] }) {
   const iframeSrc = `/preview/${base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "vega"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
 
   return (
-    <div className="ring-foreground/10 relative -z-0 flex flex-1 flex-col overflow-hidden rounded-2xl ring-1">
+    <div className="relative -z-0 flex flex-1 flex-col">
       <div className="bg-muted dark:bg-muted/30 absolute inset-0 rounded-2xl" />
-      <iframe
-        key={`${params.item}-${iframeKey}`}
-        ref={iframeRef}
-        src={iframeSrc}
-        className="z-10 size-full"
-      />
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="after:bg-surface/50 relative z-10 p-px after:absolute after:inset-0 after:-z-10 after:rounded-xl"
+      >
+        <ResizablePanel
+          ref={resizablePanelRef}
+          className="ring-foreground/10 relative z-20 overflow-hidden rounded-2xl ring-1"
+          defaultSize={100}
+          minSize={30}
+          onResize={(size) => setUrlParams({ size: Math.round(size) })}
+        >
+          <iframe
+            key={`${params.item}-${iframeKey}`}
+            ref={iframeRef}
+            src={iframeSrc}
+            className="size-full"
+          />
+        </ResizablePanel>
+        <ResizableHandle className="after:bg-border relative z-50 -mr-3 hidden w-3 bg-transparent p-0 after:absolute after:top-1/2 after:h-8 after:w-[6px] after:rounded-full after:transition-all after:hover:h-10 md:block" />
+        <ResizablePanel defaultSize={0} minSize={0} />
+      </ResizablePanelGroup>
     </div>
   )
 }

@@ -332,8 +332,8 @@ importers:
         specifier: ^7.62.0
         version: 7.62.0(react@19.2.0)
       react-resizable-panels:
-        specifier: ^2.1.7
-        version: 2.1.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: ^3.0.6
+        version: 3.0.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react-textarea-autosize:
         specifier: ^8.5.9
         version: 8.5.9(@types/react@19.2.2)(react@19.2.0)
@@ -570,7 +570,7 @@ importers:
         version: 5.9.2
       vite-tsconfig-paths:
         specifier: ^4.2.0
-        version: 4.3.2(typescript@5.9.2)(vite@5.4.19(@types/node@20.19.10)(lightningcss@1.30.1))
+        version: 4.3.2(typescript@5.9.2)(vite@7.1.12(@types/node@20.19.10)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1))
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@20.19.10)(lightningcss@1.30.1)(msw@2.10.4(@types/node@20.19.10)(typescript@5.9.2))
@@ -6934,8 +6934,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-resizable-panels@2.1.9:
-    resolution: {integrity: sha512-z77+X08YDIrgAes4jl8xhnUu1LNIRp4+E7cv4xHmLOxxUPO/ML7PSrE813b90vj7xvQ1lcf7g2uA9GeMZonjhQ==}
+  react-resizable-panels@3.0.6:
+    resolution: {integrity: sha512-b3qKHQ3MLqOgSS+FRYKapNkJZf5EQzuf6+RLiq1/IlTHw99YrZ2NJZLk4hQIzTnnIkRg2LUqyVinu6YWWpUYew==}
     peerDependencies:
       react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
       react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
@@ -15349,7 +15349,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.2
 
-  react-resizable-panels@2.1.9(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  react-resizable-panels@3.0.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
@@ -16647,17 +16647,6 @@ snapshots:
       - supports-color
       - terser
 
-  vite-tsconfig-paths@4.3.2(typescript@5.9.2)(vite@5.4.19(@types/node@20.19.10)(lightningcss@1.30.1)):
-    dependencies:
-      debug: 4.4.1
-      globrex: 0.1.2
-      tsconfck: 3.1.6(typescript@5.9.2)
-    optionalDependencies:
-      vite: 5.4.19(@types/node@20.19.10)(lightningcss@1.30.1)
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-
   vite-tsconfig-paths@4.3.2(typescript@5.9.2)(vite@7.1.12(@types/node@20.19.10)(jiti@1.21.7)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1)):
     dependencies:
       debug: 4.4.1
@@ -16665,6 +16654,17 @@ snapshots:
       tsconfck: 3.1.6(typescript@5.9.2)
     optionalDependencies:
       vite: 7.1.12(@types/node@20.19.10)(jiti@1.21.7)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  vite-tsconfig-paths@4.3.2(typescript@5.9.2)(vite@7.1.12(@types/node@20.19.10)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1)):
+    dependencies:
+      debug: 4.4.1
+      globrex: 0.1.2
+      tsconfck: 3.1.6(typescript@5.9.2)
+    optionalDependencies:
+      vite: 7.1.12(@types/node@20.19.10)(jiti@2.6.1)(lightningcss@1.30.1)(tsx@4.20.3)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
       - typescript
