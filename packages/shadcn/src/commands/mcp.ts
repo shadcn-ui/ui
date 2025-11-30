@@ -60,6 +60,21 @@ const CLIENTS = [
     },
   },
   {
+    name: "kiro",
+    label: "Kiro",
+    configPath: ".kiro/settings/mcp.json",
+    config: {
+      mcpServers: {
+        shadcn: {
+          disabled: false,
+          type: "stdio",
+          command: "npx",
+          args: [`shadcn@${SHADCN_MCP_VERSION}`, "mcp"],
+        },
+      },
+    },
+  },
+  {
     name: "codex",
     label: "Codex",
     configPath: ".codex/config.toml",
@@ -92,7 +107,7 @@ export const mcp = new Command()
   })
 
 const mcpInitOptionsSchema = z.object({
-  client: z.enum(["claude", "cursor", "vscode", "codex"]),
+  client: z.enum(["claude", "cursor", "vscode", "kiro", "codex"]),
   cwd: z.string(),
 })
 
