@@ -11,7 +11,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
@@ -28,6 +27,7 @@ import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 export default function CollapsibleExample() {
   return (
     <ExampleWrapper>
+      <CollapsibleFileTree />
       <CollapsibleSettings />
     </ExampleWrapper>
   )
@@ -96,7 +96,7 @@ function CollapsibleFileTree() {
             <Button
               variant="ghost"
               size="sm"
-              className="group w-full justify-start"
+              className="group hover:bg-accent hover:text-accent-foreground w-full justify-start transition-none"
             >
               <IconPlaceholder
                 lucide="ChevronRightIcon"
@@ -138,8 +138,8 @@ function CollapsibleFileTree() {
   }
 
   return (
-    <Example title="File Tree">
-      <Card className="w-[16rem] gap-2">
+    <Example title="File Tree" className="items-center justify-center lg:p-16">
+      <Card className="mx-auto w-full max-w-[16rem] gap-2" size="sm">
         <CardHeader>
           <Tabs defaultValue="explorer">
             <TabsList className="w-full">
@@ -162,8 +162,8 @@ function CollapsibleSettings() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <Example title="Settings">
-      <Card className="w-full max-w-xs [--padding:--spacing(4)]">
+    <Example title="Settings" className="items-center justify-center">
+      <Card className="mx-auto w-full max-w-xs gap-4">
         <CardHeader>
           <CardTitle>Radius</CardTitle>
           <CardDescription>
@@ -223,121 +223,6 @@ function CollapsibleSettings() {
             </CollapsibleTrigger>
           </Collapsible>
         </CardContent>
-      </Card>
-    </Example>
-  )
-}
-
-type NavItem = {
-  name: string
-  items: string[]
-  icon: React.ReactNode
-}
-
-function CollapsibleNavigation() {
-  const navItems: NavItem[] = [
-    {
-      name: "Home",
-      icon: (
-        <IconPlaceholder
-          lucide="HomeIcon"
-          tabler="IconHome"
-          hugeicons="Home01Icon"
-          data-icon="inline-start"
-        />
-      ),
-      items: ["Dashboard", "Overview", "Recent Activity"],
-    },
-    {
-      name: "Components",
-      icon: (
-        <IconPlaceholder
-          lucide="BoxIcon"
-          tabler="IconBox"
-          hugeicons="PackageIcon"
-          data-icon="inline-start"
-        />
-      ),
-      items: ["Button", "Card", "Dialog"],
-    },
-    {
-      name: "Documentation",
-      icon: (
-        <IconPlaceholder
-          lucide="BookOpenIcon"
-          tabler="IconBook"
-          hugeicons="Book01Icon"
-          data-icon="inline-start"
-        />
-      ),
-      items: ["Getting Started", "Installation", "Examples"],
-    },
-    {
-      name: "Settings",
-      icon: (
-        <IconPlaceholder
-          lucide="SettingsIcon"
-          tabler="IconSettings"
-          hugeicons="Settings01Icon"
-          data-icon="inline-start"
-        />
-      ),
-      items: ["General", "Privacy", "Notifications"],
-    },
-  ]
-
-  return (
-    <Example title="Navigation">
-      <Card className="w-full max-w-[16rem] [--padding:--spacing(2)]">
-        <CardContent>
-          <nav className="flex flex-col gap-1">
-            {navItems.map((item) => (
-              <Collapsible key={item.name}>
-                <CollapsibleTrigger asChild>
-                  <Button variant="ghost" className="w-full justify-between">
-                    <div className="flex items-center gap-2">
-                      {item.icon}
-                      <span>{item.name}</span>
-                    </div>
-                    <IconPlaceholder
-                      lucide="ChevronDownIcon"
-                      tabler="IconChevronDown"
-                      hugeicons="ArrowDown01Icon"
-                      data-icon="inline-end"
-                      className="transition-transform data-[state=open]:rotate-180"
-                    />
-                  </Button>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <div className="flex flex-col gap-1">
-                    {item.items.map((subItem) => (
-                      <Button
-                        key={subItem}
-                        variant="ghost"
-                        asChild
-                        className="w-full justify-start"
-                      >
-                        <a href="#">
-                          <IconPlaceholder
-                            lucide="CircleDashedIcon"
-                            tabler="IconCircleDashed"
-                            hugeicons="DashedLineCircleIcon"
-                            data-icon="inline-start"
-                            className="invisible"
-                          />
-                          {subItem}
-                        </a>
-                      </Button>
-                    ))}
-                  </div>
-                </CollapsibleContent>
-              </Collapsible>
-            ))}
-          </nav>
-        </CardContent>
-        <CardFooter className="border-t">
-          <Button className="w-full">Button</Button>
-        </CardFooter>
       </Card>
     </Example>
   )

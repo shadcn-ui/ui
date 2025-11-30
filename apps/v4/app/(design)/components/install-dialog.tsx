@@ -64,10 +64,10 @@ export function InstallDialog() {
   }, [command, setOpen])
 
   return (
-    <>
+    <div className="bg-background sticky bottom-0 flex gap-2">
       <Button asChild size="sm" variant="outline">
         <a
-          href={`/init?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}`}
+          href={`/init?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&accent=${params.accent}&menu=${params.menu}`}
           target="_blank"
         >
           View
@@ -75,7 +75,7 @@ export function InstallDialog() {
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button size="sm" className="h-[31px] rounded-lg">
+          <Button size="sm" className="h-[31px] flex-1 rounded-lg">
             Create Project
           </Button>
         </DialogTrigger>
@@ -108,6 +108,6 @@ export function InstallDialog() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   )
 }

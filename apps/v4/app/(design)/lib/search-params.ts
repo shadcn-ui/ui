@@ -33,6 +33,10 @@ export const designSystemSearchParams = {
     "subtle",
     "bold",
   ]).withDefault("subtle"),
+  menu: parseAsStringLiteral<"default" | "inverted">([
+    "default",
+    "inverted",
+  ]).withDefault("default"),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }

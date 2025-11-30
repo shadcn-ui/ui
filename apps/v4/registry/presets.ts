@@ -13,6 +13,8 @@ export type Preset = {
   theme: Theme["name"]
   iconLibrary: IconLibrary["name"]
   font: Font["value"]
+  accent: "subtle" | "bold"
+  menu: "default" | "inverted"
 }
 
 export const PRESETS = [
@@ -24,6 +26,19 @@ export const PRESETS = [
     theme: "neutral",
     iconLibrary: "lucide",
     font: "inter",
+    accent: "subtle",
+    menu: "default",
+  },
+  {
+    title: "One",
+    description: "One / Lucide / Inter",
+    style: "vega",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "lucide",
+    font: "inter",
+    accent: "bold",
+    menu: "inverted",
   },
   {
     title: "Nova",
@@ -33,5 +48,7 @@ export const PRESETS = [
     theme: "blue",
     iconLibrary: "hugeicons",
     font: "figtree",
+    accent: "subtle",
+    menu: "default",
   },
 ] satisfies Preset[]

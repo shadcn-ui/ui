@@ -32,7 +32,9 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
         preset.baseColor === params.baseColor &&
         preset.theme === params.theme &&
         preset.iconLibrary === params.iconLibrary &&
-        preset.font === params.font
+        preset.font === params.font &&
+        preset.accent === params.accent &&
+        preset.menu === params.menu
     )
   }, [
     presets,
@@ -41,6 +43,8 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
     params.theme,
     params.iconLibrary,
     params.font,
+    params.accent,
+    params.menu,
   ])
 
   return (
@@ -55,6 +59,8 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
             theme: preset.theme,
             iconLibrary: preset.iconLibrary,
             font: preset.font,
+            accent: preset.accent,
+            menu: preset.menu,
             custom: false,
           })
         }

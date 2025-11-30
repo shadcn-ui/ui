@@ -128,7 +128,7 @@ function CodespacesCard() {
 
   return (
     <Example title="Codespaces" className="min-h-[550px] lg:p-12">
-      <Card className="mx-auto w-full max-w-sm [--padding:--spacing(2)]">
+      <Card className="mx-auto w-full max-w-sm" size="sm">
         <CardContent>
           <Tabs defaultValue="codespaces">
             <TabsList className="w-full">
@@ -577,15 +577,9 @@ function RepositoryToolbar() {
                                   key={branch}
                                   value={branch}
                                   onSelect={() => setSelectedBranch(branch)}
-                                  data-current={selectedBranch === branch}
+                                  data-checked={selectedBranch === branch}
                                 >
                                   {branch}
-                                  <IconPlaceholder
-                                    lucide="CheckIcon"
-                                    tabler="IconCheck"
-                                    hugeicons="Tick02Icon"
-                                    className="ml-auto opacity-0 group-data-[current=true]/command-item:opacity-100"
-                                  />
                                 </CommandItem>
                               ))}
                             </CommandGroup>
@@ -1241,7 +1235,7 @@ function AssignIssue() {
                   <CommandItem
                     key={username}
                     value={username}
-                    data-active={selectedUsers.includes(username)}
+                    data-checked={selectedUsers.includes(username)}
                     onSelect={() => {
                       if (selectedUsers.includes(username)) {
                         setSelectedUsers(
@@ -1252,14 +1246,6 @@ function AssignIssue() {
                       }
                     }}
                   >
-                    <div className="border-border group-data-[active=true]/command-item:bg-accent-foreground group-data-[active=true]/command-item:border-accent-foreground flex size-4 shrink-0 items-center justify-center rounded-sm border">
-                      <IconPlaceholder
-                        lucide="CheckIcon"
-                        tabler="IconCheck"
-                        hugeicons="Tick02Icon"
-                        className="text-primary-foreground group-data-[selected=true]/command-item:text-accent ml-auto size-3.5 opacity-0 group-data-[active=true]/command-item:opacity-100"
-                      />
-                    </div>
                     <Avatar className="size-5">
                       <AvatarImage
                         src={`https://github.com/${username}.png`}
@@ -1274,7 +1260,7 @@ function AssignIssue() {
             </CommandList>
           </Command>
         </CardContent>
-        <CardFooter className="h-8 border-t">
+        <CardFooter className="h-8 border-t px-3">
           {selectedUsers.length ? (
             <AvatarGroup>
               {selectedUsers.slice(0, 3).map((username) => (

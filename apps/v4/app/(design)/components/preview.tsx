@@ -5,11 +5,6 @@ import { useQueryStates } from "nuqs"
 import { ImperativePanelHandle } from "react-resizable-panels"
 
 import type { Base } from "@/registry/bases"
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/registry/new-york-v4/ui/resizable"
 import { CMD_K_FORWARD_TYPE } from "@/app/(design)/components/item-picker"
 import { useDesignSystemSync } from "@/app/(design)/hooks/use-design-system"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"

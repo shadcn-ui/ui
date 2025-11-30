@@ -316,7 +316,7 @@ export const THEMES: RegistryItem[] = [
         "sidebar-primary-foreground": "oklch(0.97 0.014 254.604)",
       },
       dark: {
-        primary: "oklch(0.488 0.243 264.376)",
+        primary: "oklch(0.42 0.18 266)",
         "primary-foreground": "oklch(0.97 0.014 254.604)",
         secondary: "oklch(0.274 0.006 286.033)",
         "secondary-foreground": "oklch(0.985 0 0)",

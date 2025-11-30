@@ -3,7 +3,7 @@
 import * as React from "react"
 import { format } from "date-fns"
 import { type DateRange } from "react-day-picker"
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { Area, AreaChart } from "recharts"
 
 import {
   Example,
@@ -85,7 +85,6 @@ export default function VercelBlock() {
   return (
     <ExampleWrapper>
       <DeploymentFilter />
-
       <UsageCard />
       <ObservabilityCard />
       <BillingList />
@@ -153,18 +152,18 @@ const items = [
 function UsageCard() {
   return (
     <Example title="Usage" className="items-center lg:p-16">
-      <Card className="w-full max-w-sm [--padding:--spacing(2)]">
-        <CardHeader className="px-6 pt-4 pb-2">
+      <Card className="w-full max-w-sm gap-4">
+        <CardHeader>
           <CardTitle className="text-sm">5 days remaining in cycle</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-5">
           <ItemGroup className="gap-0">
             {items.map((item) => (
               <Item
                 key={item.name}
                 size="xs"
                 asChild
-                className="group-hover/item-group:bg-transparent"
+                className="px-0 group-hover/item-group:bg-transparent"
               >
                 <a href="#">
                   <ItemMedia variant="icon" className="text-primary">

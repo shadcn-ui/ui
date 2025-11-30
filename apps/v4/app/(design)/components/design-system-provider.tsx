@@ -17,6 +17,7 @@ export function DesignSystemProvider({
   const font = useDesignSystemParam("font")
   const baseColor = useDesignSystemParam("baseColor")
   const accent = useDesignSystemParam("accent")
+  const menu = useDesignSystemParam("menu")
   const { resolvedTheme } = useTheme()
   const [isReady, setIsReady] = React.useState(false)
 
@@ -89,18 +90,10 @@ export function DesignSystemProvider({
 
     // If accent is bold, use primary/primary-foreground for accent/accent-foreground.
     if (accent === "bold") {
-      if (lightVars.primary) {
-        lightVars.accent = lightVars.primary
-      }
-      if (lightVars["primary-foreground"]) {
-        lightVars["accent-foreground"] = lightVars["primary-foreground"]
-      }
-      if (darkVars.primary) {
-        darkVars.accent = darkVars.primary
-      }
-      if (darkVars["primary-foreground"]) {
-        darkVars["accent-foreground"] = darkVars["primary-foreground"]
-      }
+      lightVars.accent = lightVars.primary
+      lightVars["accent-foreground"] = lightVars["primary-foreground"]
+      darkVars.accent = darkVars.primary
+      darkVars["accent-foreground"] = darkVars["primary-foreground"]
     }
 
     let cssText = ":root {\n"
@@ -132,6 +125,43 @@ export function DesignSystemProvider({
       }
     }
   }, [mergedTheme, accent])
+
+  // Handle menu inversion by adding/removing dark class to Radix menu content and select content.
+  React.useEffect(() => {
+    if (!menu) {
+      return
+    }
+
+    const updateMenuElements = () => {
+      const menuElements = document.querySelectorAll(
+        "[data-radix-menu-content], [data-slot=select-content]"
+      )
+      menuElements.forEach((element) => {
+        if (menu === "inverted") {
+          element.classList.add("dark")
+        } else {
+          element.classList.remove("dark")
+        }
+      })
+    }
+
+    // Update existing menu elements.
+    updateMenuElements()
+
+    // Watch for new menu elements being added to the DOM.
+    const observer = new MutationObserver(() => {
+      updateMenuElements()
+    })
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    })
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [menu])
 
   if (!isReady) {
     return null

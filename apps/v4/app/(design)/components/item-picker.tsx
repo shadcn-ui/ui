@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Script from "next/script"
-import { IconSearch } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
@@ -135,7 +134,7 @@ export function ItemPickerScript() {
             (function() {
               // Forward Cmd/Ctrl + K
               document.addEventListener('keydown', function(e) {
-                if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+                if (e.key === 'p' && (e.metaKey || e.ctrlKey)) {
                   e.preventDefault();
                   if (window.parent && window.parent !== window) {
                     window.parent.postMessage({
