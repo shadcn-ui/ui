@@ -4,6 +4,7 @@ import * as React from "react"
 import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
+import { useMounted } from "@/hooks/use-mounted"
 import { BASE_COLORS } from "@/registry/base-colors"
 import {
   Select,
@@ -17,6 +18,7 @@ import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
   const { resolvedTheme } = useTheme()
+  const mounted = useMounted()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -25,6 +27,11 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
   const currentTheme = React.useMemo(
     () => themes.find((theme) => theme.name === params.theme),
     [themes, params.theme]
+  )
+
+  const currentThemeIsBaseColor = React.useMemo(
+    () => BASE_COLORS.find((baseColor) => baseColor.name === params.theme),
+    [params.theme]
   )
 
   React.useEffect(() => {
@@ -40,13 +47,28 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
         setParams({ theme: value as Theme["name"] })
       }}
     >
-      <SelectTrigger>
+      <SelectTrigger className="relative">
         <SelectValue>
           <div className="flex flex-col justify-start">
             <div className="text-muted-foreground text-xs font-medium">
               Theme
             </div>
             {currentTheme?.title}
+            {mounted && resolvedTheme && (
+              <div
+                style={
+                  {
+                    "--color":
+                      currentTheme?.cssVars?.[
+                        resolvedTheme as "light" | "dark"
+                      ]?.[
+                        currentThemeIsBaseColor ? "muted-foreground" : "primary"
+                      ],
+                  } as React.CSSProperties
+                }
+                className="absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color)"
+              />
+            )}
           </div>
         </SelectValue>
       </SelectTrigger>
@@ -67,17 +89,19 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
               className="rounded-lg"
             >
               <div className="flex items-center gap-2">
-                <div
-                  style={
-                    {
-                      "--color":
-                        theme.cssVars?.[resolvedTheme as "light" | "dark"]?.[
-                          isBaseColor ? "muted-foreground" : "primary"
-                        ],
-                    } as React.CSSProperties
-                  }
-                  className="size-4 rounded-full bg-(--color)"
-                />
+                {mounted && resolvedTheme && (
+                  <div
+                    style={
+                      {
+                        "--color":
+                          theme.cssVars?.[resolvedTheme as "light" | "dark"]?.[
+                            isBaseColor ? "muted-foreground" : "primary"
+                          ],
+                      } as React.CSSProperties
+                    }
+                    className="size-4 rounded-full bg-(--color)"
+                  />
+                )}
                 {theme.title}
               </div>
             </SelectItem>

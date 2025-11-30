@@ -8,6 +8,7 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { Base, BASES } from "@/registry/bases"
 import { DesignSystemProvider } from "@/app/(design)/components/design-system-provider"
 import { ItemPickerScript } from "@/app/(design)/components/item-picker"
+import { PreviewStyle } from "@/app/(design)/components/preview-style"
 import { getBaseComponent, getBaseItem } from "@/app/(design)/lib/api"
 import { ALLOWED_ITEM_TYPES } from "@/app/(design)/lib/constants"
 
@@ -127,6 +128,7 @@ export default async function BlockPage({
 
   return (
     <>
+      <PreviewStyle />
       <ItemPickerScript />
       <DesignSystemProvider>
         <Component />
