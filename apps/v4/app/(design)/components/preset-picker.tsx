@@ -13,6 +13,7 @@ import {
   Select,
   SelectContent,
   SelectItem,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
@@ -89,23 +90,26 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
         position="popper"
         side="right"
         align="start"
-        className="rounded-xl data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
-        {presets.map((preset) => (
-          <SelectItem
-            key={preset.title}
-            value={preset.title}
-            className="rounded-lg"
-          >
-            <Item size="xs">
-              <ItemContent>
-                <ItemTitle className="text-muted-foreground text-xs font-medium">
-                  {preset.title}
-                </ItemTitle>
-                <ItemDescription>{preset.description}</ItemDescription>
-              </ItemContent>
-            </Item>
-          </SelectItem>
+        {presets.map((preset, index) => (
+          <React.Fragment key={index}>
+            <SelectItem
+              key={preset.title}
+              value={preset.title}
+              className="rounded-lg"
+            >
+              <Item size="xs">
+                <ItemContent>
+                  <ItemTitle className="text-muted-foreground text-xs font-medium">
+                    {preset.title}
+                  </ItemTitle>
+                  <ItemDescription>{preset.description}</ItemDescription>
+                </ItemContent>
+              </Item>
+            </SelectItem>
+            <SelectSeparator className="opacity-50 last:hidden" />
+          </React.Fragment>
         ))}
       </SelectContent>
     </Select>

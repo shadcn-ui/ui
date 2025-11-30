@@ -52,11 +52,11 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
         position="popper"
         side="right"
         align="start"
-        className="h-96 w-64 data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="ring-foreground/10 h-96 w-64 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
         {fonts.map((font) => (
           <React.Fragment key={font.value}>
-            <SelectItem value={font.value}>
+            <SelectItem value={font.value} className="rounded-lg">
               <Item size="xs">
                 <ItemContent className="gap-1">
                   <ItemTitle className="text-muted-foreground text-xs font-medium">
@@ -68,7 +68,7 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
                 </ItemContent>
               </Item>
             </SelectItem>
-            <SelectSeparator className="last:hidden" />
+            <SelectSeparator className="opacity-50 last:hidden" />
           </React.Fragment>
         ))}
       </SelectContent>

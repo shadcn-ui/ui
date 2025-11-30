@@ -34,7 +34,7 @@ export const PRESETS = [
     description: "One / Lucide / Inter",
     style: "vega",
     baseColor: "neutral",
-    theme: "neutral",
+    theme: "blue",
     iconLibrary: "lucide",
     font: "inter",
     accent: "bold",

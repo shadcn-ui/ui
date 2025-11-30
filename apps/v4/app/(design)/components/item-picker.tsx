@@ -5,11 +5,9 @@ import Script from "next/script"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Command,
-  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
@@ -87,7 +85,7 @@ export function ItemPicker({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-(--radix-popover-trigger-width) overflow-hidden rounded-xl p-0 data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="ring-foreground/10 w-64 overflow-hidden rounded-xl border-0 p-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
         side="right"
         align="start"
       >
@@ -148,92 +146,5 @@ export function ItemPickerScript() {
           `,
       }}
     />
-  )
-}
-
-export function CustomizerPicker({
-  children,
-  value,
-  currentValue,
-  open,
-  showSearch = false,
-  ...props
-}: {
-  children: React.ReactNode
-  value?: string
-  currentValue?: string | null
-  open?: boolean
-  showSearch?: boolean
-} & React.ComponentProps<typeof Command>) {
-  const [previousValue, setPreviousValue] = React.useState<string | null>(
-    currentValue ?? null
-  )
-
-  React.useEffect(() => {
-    if (currentValue) {
-      setPreviousValue(currentValue)
-    }
-  }, [currentValue])
-
-  const commandValue = React.useMemo(() => {
-    if (value !== undefined) {
-      return value
-    }
-    if (open && previousValue) {
-      return previousValue
-    }
-    return undefined
-  }, [value, open, previousValue])
-
-  return (
-    <Command value={commandValue} {...props}>
-      {showSearch && (
-        <div className="bg-popover *:data-[slot=command-input-wrapper]:bg-input/40 *:data-[slot=command-input-wrapper]:border-input px-3 pt-0 pb-2 *:data-[slot=command-input-wrapper]:h-8 *:data-[slot=command-input-wrapper]:rounded-md *:data-[slot=command-input-wrapper]:border *:data-[slot=command-input-wrapper]:px-2">
-          <CommandInput placeholder="Search" />
-        </div>
-      )}
-      <CommandList className="no-scrollbar scroll-pt-2 scroll-pb-1.5">
-        <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
-          No results found
-        </CommandEmpty>
-        {children}
-      </CommandList>
-    </Command>
-  )
-}
-
-export function CustomizerPickerGroup({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandGroup>) {
-  return (
-    <CommandGroup
-      className={cn("px-3 pt-px *:[div]:flex *:[div]:flex-col", className)}
-      {...props}
-    />
-  )
-}
-
-export function CustomizerPickerItem({
-  isActive,
-  className,
-  children,
-  ...props
-}: {
-  isActive: boolean
-  className?: string
-  children: React.ReactNode
-} & React.ComponentProps<typeof CommandItem>) {
-  return (
-    <CommandItem
-      data-active={isActive}
-      className={cn(
-        "group/command-item data-[selected=true]:bg-accent/50 data-[selected=true]:text-accent-foreground ring-border px-2 py-1.5 data-[selected=true]:ring-1",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </CommandItem>
   )
 }

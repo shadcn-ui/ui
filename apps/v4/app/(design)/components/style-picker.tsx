@@ -41,7 +41,7 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
         position="popper"
         side="right"
         align="start"
-        className="rounded-xl data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
         {styles.map((style) => (
           <SelectItem

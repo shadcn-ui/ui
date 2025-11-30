@@ -117,7 +117,7 @@ export function IconLibraryPicker() {
         position="popper"
         side="right"
         align="start"
-        className="rounded-xl data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
         {Object.values(iconLibraries).map((iconLibrary) => (
           <React.Fragment key={iconLibrary.name}>
@@ -125,7 +125,7 @@ export function IconLibraryPicker() {
               iconLibrary={iconLibrary}
               value={iconLibrary.name}
             />
-            <SelectSeparator className="last:hidden" />
+            <SelectSeparator className="opacity-50 last:hidden" />
           </React.Fragment>
         ))}
       </SelectContent>
