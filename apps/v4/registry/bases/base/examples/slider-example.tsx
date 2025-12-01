@@ -25,7 +25,7 @@ export default function SliderExample() {
 function SliderBasic() {
   return (
     <Example title="Basic">
-      <Slider defaultValue={[50]} max={100} step={1} />
+      <Slider defaultValue={50} max={100} step={1} />
     </Example>
   )
 }
@@ -84,7 +84,7 @@ function SliderControlled() {
         <Slider
           id="slider-demo-temperature"
           value={value}
-          onValueChange={setValue}
+          onValueChange={(value) => setValue(value as number[])}
           min={0}
           max={1}
           step={0.1}

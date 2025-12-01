@@ -34,13 +34,13 @@ function RadioGroupItem({
     >
       <RadioGroupPrimitive.Indicator
         data-slot="radio-group-indicator"
-        className="cn-radio-group-indicator relative flex items-center justify-center"
+        className="cn-radio-group-indicator"
       >
         <IconPlaceholder
           lucide="CircleIcon"
           tabler="IconCircle"
           hugeicons="CircleIcon"
-          className="cn-radio-group-indicator-icon fill-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2"
+          className="cn-radio-group-indicator-icon"
         />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>

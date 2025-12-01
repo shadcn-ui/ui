@@ -409,6 +409,13 @@
   }
 }
 
+@custom-variant data-unchecked {
+  &:where([data-state="unchecked"]),
+  &:where([data-unchecked]) {
+    @slot;
+  }
+}
+
 @custom-variant data-selected {
   &:where([data-selected="true"]) {
     @slot;
@@ -418,6 +425,25 @@
 @custom-variant data-disabled {
   &:where([data-disabled="true"]),
   &:where([data-disabled]) {
+    @slot;
+  }
+}
+
+@custom-variant data-active {
+  &:where([data-state="active"]),
+  &:where([data-active]) {
+    @slot;
+  }
+}
+
+@custom-variant data-horizontal {
+  &:where([data-orientation="horizontal"]) {
+    @slot;
+  }
+}
+
+@custom-variant data-vertical {
+  &:where([data-orientation="vertical"]) {
     @slot;
   }
 }

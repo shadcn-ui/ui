@@ -188,7 +188,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="star"
           aria-label="Toggle star"
-          className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-500 data-[state=on]:*:[svg]:stroke-yellow-500"
+          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-yellow-500 aria-pressed:*:[svg]:stroke-yellow-500"
         >
           <IconPlaceholder
             lucide="StarIcon"
@@ -200,7 +200,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="heart"
           aria-label="Toggle heart"
-          className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
+          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-red-500 aria-pressed:*:[svg]:stroke-red-500"
         >
           <IconPlaceholder
             lucide="HeartIcon"
@@ -212,7 +212,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="bookmark"
           aria-label="Toggle bookmark"
-          className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-blue-500 aria-pressed:*:[svg]:stroke-blue-500"
         >
           <IconPlaceholder
             lucide="BookmarkIcon"

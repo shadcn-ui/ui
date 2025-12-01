@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useTheme } from "next-themes"
 
 import { FONTS } from "@/registry/fonts"
 import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system"
@@ -18,7 +17,6 @@ export function DesignSystemProvider({
   const baseColor = useDesignSystemParam("baseColor")
   const accent = useDesignSystemParam("accent")
   const menu = useDesignSystemParam("menu")
-  const { resolvedTheme } = useTheme()
   const [isReady, setIsReady] = React.useState(false)
 
   React.useEffect(() => {
@@ -134,7 +132,7 @@ export function DesignSystemProvider({
 
     const updateMenuElements = () => {
       const menuElements = document.querySelectorAll(
-        "[data-radix-menu-content], [data-slot=select-content]"
+        "[data-radix-menu-content], [data-slot=select-content], [data-slot=dropdown-menu-content], [data-slot=dropdown-menu-sub-content], [data-slot=context-menu-content], [data-slot=context-menu-sub-content], [data-slot=menubar-content], [data-slot=menubar-sub-content]"
       )
       menuElements.forEach((element) => {
         if (menu === "inverted") {

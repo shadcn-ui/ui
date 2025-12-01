@@ -360,10 +360,10 @@ function ButtonGroupWithFields() {
               <InputGroupInput id="color" />
               <InputGroupAddon align="inline-start">
                 <Popover>
-                  <PopoverTrigger asChild>
-                    <InputGroupButton className="px-0">
-                      <span className="bg-primary size-5 rounded-xs" />
-                    </InputGroupButton>
+                  <PopoverTrigger
+                    render={<InputGroupButton className="px-0" />}
+                  >
+                    <span className="bg-primary size-5 rounded-xs" />
                   </PopoverTrigger>
                   <PopoverContent
                     align="start"

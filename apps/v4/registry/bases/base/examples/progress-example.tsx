@@ -6,7 +6,6 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/base/components/example"
-import { Field, FieldLabel } from "@/registry/bases/base/ui/field"
 import {
   Item,
   ItemActions,
@@ -15,7 +14,11 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/registry/bases/base/ui/item"
-import { Progress } from "@/registry/bases/base/ui/progress"
+import {
+  Progress,
+  ProgressLabel,
+  ProgressValue,
+} from "@/registry/bases/base/ui/progress"
 import { Slider } from "@/registry/bases/base/ui/slider"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
@@ -47,13 +50,10 @@ function ProgressValues() {
 function ProgressWithLabel() {
   return (
     <Example title="With Label">
-      <Field>
-        <FieldLabel htmlFor="progress-upload">
-          <span>Upload progress</span>
-          <span className="ml-auto">66%</span>
-        </FieldLabel>
-        <Progress value={66} className="w-full" id="progress-upload" />
-      </Field>
+      <Progress value={56}>
+        <ProgressLabel>Upload progress</ProgressLabel>
+        <ProgressValue />
+      </Progress>
     </Example>
   )
 }

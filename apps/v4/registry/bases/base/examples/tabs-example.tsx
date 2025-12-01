@@ -279,15 +279,15 @@ function TabsWithDropdown() {
             <TabsTrigger value="reports">Reports</TabsTrigger>
           </TabsList>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="size-8">
-                <IconPlaceholder
-                  lucide="MoreHorizontalIcon"
-                  tabler="IconDots"
-                  hugeicons="MoreHorizontalIcon"
-                />
-                <span className="sr-only">More options</span>
-              </Button>
+            <DropdownMenuTrigger
+              render={<Button variant="ghost" size="icon" className="size-8" />}
+            >
+              <IconPlaceholder
+                lucide="MoreHorizontalIcon"
+                tabler="IconDots"
+                hugeicons="MoreHorizontalIcon"
+              />
+              <span className="sr-only">More options</span>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem>Settings</DropdownMenuItem>

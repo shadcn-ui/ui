@@ -40,7 +40,7 @@ export default function ToggleGroupExample() {
 function ToggleGroupBasic() {
   return (
     <Example title="Basic">
-      <ToggleGroup type="multiple" spacing={2}>
+      <ToggleGroup multiple spacing={2}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -70,7 +70,7 @@ function ToggleGroupBasic() {
 function ToggleGroupOutline() {
   return (
     <Example title="Outline">
-      <ToggleGroup variant="outline" type="single" defaultValue="all">
+      <ToggleGroup variant="outline" defaultValue={["all"]}>
         <ToggleGroupItem value="all" aria-label="Toggle all">
           All
         </ToggleGroupItem>
@@ -85,7 +85,7 @@ function ToggleGroupOutline() {
 function ToggleGroupOutlineWithIcons() {
   return (
     <Example title="Outline With Icons">
-      <ToggleGroup variant="outline" type="multiple" size="sm">
+      <ToggleGroup variant="outline" multiple size="sm">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -116,12 +116,7 @@ function ToggleGroupSizes() {
   return (
     <Example title="Sizes">
       <div className="flex flex-col gap-4">
-        <ToggleGroup
-          type="single"
-          size="sm"
-          defaultValue="top"
-          variant="outline"
-        >
+        <ToggleGroup size="sm" defaultValue={["top"]} variant="outline">
           <ToggleGroupItem value="top" aria-label="Toggle top">
             Top
           </ToggleGroupItem>
@@ -135,7 +130,7 @@ function ToggleGroupSizes() {
             Right
           </ToggleGroupItem>
         </ToggleGroup>
-        <ToggleGroup type="single" defaultValue="top" variant="outline">
+        <ToggleGroup defaultValue={["top"]} variant="outline">
           <ToggleGroupItem value="top" aria-label="Toggle top">
             Top
           </ToggleGroupItem>
@@ -158,9 +153,8 @@ function ToggleGroupSpacing() {
   return (
     <Example title="With Spacing">
       <ToggleGroup
-        type="single"
         size="sm"
-        defaultValue="top"
+        defaultValue={["top"]}
         variant="outline"
         spacing={2}
       >
@@ -184,11 +178,11 @@ function ToggleGroupSpacing() {
 function ToggleGroupWithIcons() {
   return (
     <Example title="With Icons">
-      <ToggleGroup type="multiple" variant="outline" spacing={2} size="sm">
+      <ToggleGroup multiple variant="outline" spacing={2} size="sm">
         <ToggleGroupItem
           value="star"
           aria-label="Toggle star"
-          className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-500 data-[state=on]:*:[svg]:stroke-yellow-500"
+          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-yellow-500 aria-pressed:*:[svg]:stroke-yellow-500"
         >
           <IconPlaceholder
             lucide="StarIcon"
@@ -200,7 +194,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="heart"
           aria-label="Toggle heart"
-          className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500"
+          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-red-500 aria-pressed:*:[svg]:stroke-red-500"
         >
           <IconPlaceholder
             lucide="HeartIcon"
@@ -212,7 +206,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="bookmark"
           aria-label="Toggle bookmark"
-          className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-blue-500 aria-pressed:*:[svg]:stroke-blue-500"
         >
           <IconPlaceholder
             lucide="BookmarkIcon"
@@ -229,7 +223,7 @@ function ToggleGroupWithIcons() {
 function ToggleGroupFilter() {
   return (
     <Example title="Filter">
-      <ToggleGroup type="single" defaultValue="all" variant="outline" size="sm">
+      <ToggleGroup defaultValue={["all"]} variant="outline" size="sm">
         <ToggleGroupItem value="all" aria-label="All">
           All
         </ToggleGroupItem>
@@ -251,8 +245,7 @@ function ToggleGroupDateRange() {
   return (
     <Example title="Date Range">
       <ToggleGroup
-        type="single"
-        defaultValue="today"
+        defaultValue={["today"]}
         variant="outline"
         size="sm"
         spacing={2}
@@ -277,12 +270,7 @@ function ToggleGroupDateRange() {
 function ToggleGroupSort() {
   return (
     <Example title="Sort">
-      <ToggleGroup
-        type="single"
-        defaultValue="newest"
-        variant="outline"
-        size="sm"
-      >
+      <ToggleGroup defaultValue={["newest"]} variant="outline" size="sm">
         <ToggleGroupItem value="newest" aria-label="Newest">
           <IconPlaceholder
             lucide="ArrowDownIcon"
@@ -327,7 +315,7 @@ function ToggleGroupWithInputAndSelect() {
             <SelectItem value="archived">Archived</SelectItem>
           </SelectContent>
         </Select>
-        <ToggleGroup type="single" defaultValue="grid" variant="outline">
+        <ToggleGroup defaultValue={["grid"]} variant="outline">
           <ToggleGroupItem value="grid" aria-label="Grid view">
             Grid
           </ToggleGroupItem>
@@ -343,7 +331,7 @@ function ToggleGroupWithInputAndSelect() {
 function ToggleGroupVertical() {
   return (
     <Example title="Vertical">
-      <ToggleGroup type="multiple" orientation="vertical" spacing={2}>
+      <ToggleGroup multiple orientation="vertical" spacing={2}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -375,8 +363,7 @@ function ToggleGroupVerticalOutline() {
     <Example title="Vertical Outline">
       <ToggleGroup
         variant="outline"
-        type="single"
-        defaultValue="all"
+        defaultValue={["all"]}
         orientation="vertical"
         size="sm"
       >
@@ -400,12 +387,7 @@ function ToggleGroupVerticalOutline() {
 function ToggleGroupVerticalOutlineWithIcons() {
   return (
     <Example title="Vertical Outline With Icons">
-      <ToggleGroup
-        variant="outline"
-        type="multiple"
-        orientation="vertical"
-        size="sm"
-      >
+      <ToggleGroup variant="outline" multiple orientation="vertical" size="sm">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -436,9 +418,8 @@ function ToggleGroupVerticalWithSpacing() {
   return (
     <Example title="Vertical With Spacing">
       <ToggleGroup
-        type="single"
         size="sm"
-        defaultValue="top"
+        defaultValue={["top"]}
         variant="outline"
         orientation="vertical"
         spacing={2}

@@ -790,8 +790,20 @@
     @apply bg-primary/20 h-1.5 rounded-full;
   }
 
+  .cn-progress-track {
+    @apply bg-primary/20 h-1.5 rounded-full;
+  }
+
   .cn-progress-indicator {
     @apply bg-primary;
+  }
+
+  .cn-progress-label {
+    @apply text-sm font-medium;
+  }
+
+  .cn-progress-value {
+    @apply text-muted-foreground ml-auto text-sm tabular-nums;
   }
 
   /* MARK: Radio Group */
@@ -800,7 +812,11 @@
   }
 
   .cn-radio-group-item {
-    @apply border-input text-primary dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 size-4 rounded-full shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] aria-invalid:ring-[3px];
+    @apply border-input text-primary dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 flex size-4 rounded-full shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] aria-invalid:ring-[3px];
+  }
+
+  .cn-radio-group-indicator {
+    @apply flex size-4 items-center justify-center;
   }
 
   .cn-radio-group-indicator-icon {
@@ -814,7 +830,7 @@
 
   /* MARK: Scroll Area */
   .cn-scroll-area-scrollbar {
-    @apply data-[orientation=horizontal]:h-2.5 data-[orientation=horizontal]:flex-col data-[orientation=horizontal]:border-t data-[orientation=horizontal]:border-t-transparent data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2.5 data-[orientation=vertical]:border-l data-[orientation=vertical]:border-l-transparent;
+    @apply data-horizontal:h-2.5 data-horizontal:flex-col data-horizontal:border-t data-horizontal:border-t-transparent data-vertical:h-full data-vertical:w-2.5 data-vertical:border-l data-vertical:border-l-transparent;
   }
 
   .cn-scroll-area-thumb {
@@ -903,11 +919,11 @@
 
   /* MARK: Slider */
   .cn-slider {
-    @apply data-[orientation=vertical]:min-h-40;
+    @apply data-vertical:min-h-40;
   }
 
   .cn-slider-track {
-    @apply rounded-full data-[orientation=horizontal]:h-1.5 data-[orientation=vertical]:w-1.5;
+    @apply bg-muted rounded-full data-horizontal:h-1.5 data-horizontal:w-full data-vertical:h-full data-vertical:w-1.5;
   }
 
   .cn-slider-range {
@@ -925,11 +941,11 @@
 
   /* MARK: Switch */
   .cn-switch {
-    @apply data-[state=checked]:bg-primary data-[state=unchecked]:bg-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-[1.15rem] w-8 shrink-0 rounded-full border border-transparent shadow-xs focus-visible:ring-[3px] aria-invalid:ring-[3px];
+    @apply data-checked:bg-primary data-unchecked:bg-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 dark:data-unchecked:bg-input/80 h-[1.15rem] w-8 shrink-0 rounded-full border border-transparent shadow-xs focus-visible:ring-[3px] aria-invalid:ring-[3px];
   }
 
   .cn-switch-thumb {
-    @apply bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground size-4 rounded-full data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0;
+    @apply bg-background dark:data-unchecked:bg-foreground dark:data-checked:bg-primary-foreground size-4 rounded-full data-checked:translate-x-[calc(100%-2px)] data-unchecked:translate-x-0;
   }
 
   /* MARK: Table */
@@ -975,11 +991,11 @@
   }
 
   .cn-tabs-list {
-    @apply rounded-lg p-[3px] group-data-[orientation=horizontal]/tabs:h-9 data-[variant=line]:rounded-none;
+    @apply rounded-lg p-[3px] group-data-horizontal/tabs:h-9 data-[variant=line]:rounded-none;
   }
 
   .cn-tabs-trigger {
-    @apply gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none;
+    @apply gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium group-data-[variant=default]/tabs-list:data-active:shadow-sm group-data-[variant=line]/tabs-list:data-active:shadow-none;
   }
 
   /* MARK: Textarea */
@@ -989,7 +1005,7 @@
 
   /* MARK: Toggle */
   .cn-toggle {
-    @apply hover:text-foreground data-[state=on]:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive gap-1 rounded-md text-sm font-medium transition-[color,box-shadow] [&_svg:not([class*='size-'])]:size-4;
+    @apply hover:text-foreground aria-pressed:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive gap-1 rounded-md text-sm font-medium transition-[color,box-shadow] [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-toggle-variant-default {
@@ -1018,7 +1034,7 @@
   }
 
   .cn-toggle-group-item {
-    @apply group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 group-data-[spacing=0]/toggle-group:shadow-none group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:first:rounded-l-md group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:first:rounded-t-md group-data-[orientation=horizontal]/toggle-group:data-[spacing=0]:last:rounded-r-md group-data-[orientation=vertical]/toggle-group:data-[spacing=0]:last:rounded-b-md;
+    @apply group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 group-data-[spacing=0]/toggle-group:shadow-none group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-l-md group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-t-md group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-r-md group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-b-md;
   }
 
   /* MARK: Tooltip */

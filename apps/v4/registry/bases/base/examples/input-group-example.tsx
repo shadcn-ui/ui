@@ -410,16 +410,14 @@ function InputGroupWithTooltip({
           <FieldLabel htmlFor="input-secure-19">Popover</FieldLabel>
           <InputGroup>
             <Popover>
-              <PopoverTrigger asChild>
-                <InputGroupAddon>
-                  <InputGroupButton variant="secondary" size="icon-xs">
-                    <IconPlaceholder
-                      lucide="InfoIcon"
-                      tabler="IconInfoCircle"
-                      hugeicons="AlertCircleIcon"
-                    />
-                  </InputGroupButton>
-                </InputGroupAddon>
+              <PopoverTrigger render={<InputGroupAddon />} nativeButton={false}>
+                <InputGroupButton variant="secondary" size="icon-xs">
+                  <IconPlaceholder
+                    lucide="InfoIcon"
+                    tabler="IconInfoCircle"
+                    hugeicons="AlertCircleIcon"
+                  />
+                </InputGroupButton>
               </PopoverTrigger>
               <PopoverContent align="start">
                 <PopoverHeader>
