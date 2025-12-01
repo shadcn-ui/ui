@@ -10,14 +10,6 @@ import {
 } from "@/registry/bases/radix/ui/alert"
 import { Badge } from "@/registry/bases/radix/ui/badge"
 import { Button } from "@/registry/bases/radix/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/registry/bases/radix/ui/card"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function AlertExample() {
@@ -27,7 +19,6 @@ export default function AlertExample() {
       <AlertExample2 />
       <AlertExample3 />
       <AlertExample4 />
-      <AlertExample5 />
     </ExampleWrapper>
   )
 }
@@ -209,49 +200,6 @@ function AlertExample4() {
           </AlertAction>
         </Alert>
       </div>
-    </Example>
-  )
-}
-
-function AlertExample5() {
-  return (
-    <Example title="In Card">
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle>Payment Settings</CardTitle>
-          <CardDescription>
-            Update your payment method and billing information.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-4">
-          <Alert>
-            <IconPlaceholder
-              lucide="CircleAlertIcon"
-              tabler="IconExclamationCircle"
-              hugeicons="AlertCircleIcon"
-            />
-            <AlertTitle>Your trial is ending soon</AlertTitle>
-            <AlertDescription>
-              Your free trial will expire in 7 days. Add a payment method to
-              continue using our service.
-            </AlertDescription>
-          </Alert>
-          <Alert variant="destructive">
-            <IconPlaceholder
-              lucide="CircleAlertIcon"
-              tabler="IconExclamationCircle"
-              hugeicons="AlertCircleIcon"
-            />
-            <AlertTitle>Payment method required</AlertTitle>
-            <AlertDescription>
-              Please add a valid payment method to avoid service interruption.
-            </AlertDescription>
-          </Alert>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full">Update Payment Method</Button>
-        </CardFooter>
-      </Card>
     </Example>
   )
 }

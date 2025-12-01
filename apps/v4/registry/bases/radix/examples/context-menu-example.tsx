@@ -1,3 +1,7 @@
+"use client"
+
+import * as React from "react"
+
 import {
   Example,
   ExampleWrapper,
@@ -24,6 +28,7 @@ export default function ContextMenuExample() {
   return (
     <ExampleWrapper>
       <ContextMenuBasic />
+      <ContextMenuWithSides />
       <ContextMenuWithIcons />
       <ContextMenuWithShortcuts />
       <ContextMenuWithSubmenu />
@@ -237,11 +242,11 @@ function ContextMenuWithCheckboxes() {
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuCheckboxItem checked>
+          <ContextMenuCheckboxItem defaultChecked>
             Show Bookmarks Bar
           </ContextMenuCheckboxItem>
           <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem checked>
+          <ContextMenuCheckboxItem defaultChecked>
             Show Developer Tools
           </ContextMenuCheckboxItem>
         </ContextMenuContent>
@@ -251,6 +256,9 @@ function ContextMenuWithCheckboxes() {
 }
 
 function ContextMenuWithRadio() {
+  const [user, setUser] = React.useState("pedro")
+  const [theme, setTheme] = React.useState("light")
+
   return (
     <Example title="With Radio Group">
       <ContextMenu>
@@ -258,20 +266,26 @@ function ContextMenuWithRadio() {
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuRadioGroup value="pedro">
+          <ContextMenuGroup>
             <ContextMenuLabel>People</ContextMenuLabel>
-            <ContextMenuRadioItem value="pedro">
-              Pedro Duarte
-            </ContextMenuRadioItem>
-            <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
-          </ContextMenuRadioGroup>
+            <ContextMenuRadioGroup value={user} onValueChange={setUser}>
+              <ContextMenuRadioItem value="pedro">
+                Pedro Duarte
+              </ContextMenuRadioItem>
+              <ContextMenuRadioItem value="colm">
+                Colm Tuite
+              </ContextMenuRadioItem>
+            </ContextMenuRadioGroup>
+          </ContextMenuGroup>
           <ContextMenuSeparator />
-          <ContextMenuRadioGroup value="light">
+          <ContextMenuGroup>
             <ContextMenuLabel>Theme</ContextMenuLabel>
-            <ContextMenuRadioItem value="light">Light</ContextMenuRadioItem>
-            <ContextMenuRadioItem value="dark">Dark</ContextMenuRadioItem>
-            <ContextMenuRadioItem value="system">System</ContextMenuRadioItem>
-          </ContextMenuRadioGroup>
+            <ContextMenuRadioGroup value={theme} onValueChange={setTheme}>
+              <ContextMenuRadioItem value="light">Light</ContextMenuRadioItem>
+              <ContextMenuRadioItem value="dark">Dark</ContextMenuRadioItem>
+              <ContextMenuRadioItem value="system">System</ContextMenuRadioItem>
+            </ContextMenuRadioGroup>
+          </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
     </Example>
@@ -321,6 +335,55 @@ function ContextMenuWithDestructive() {
           </ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
+    </Example>
+  )
+}
+
+function ContextMenuWithSides() {
+  return (
+    <Example title="With Sides">
+      <div className="grid grid-cols-2 gap-6">
+        <ContextMenu>
+          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
+            Right click (top)
+          </ContextMenuTrigger>
+          <ContextMenuContent side="top">
+            <ContextMenuItem>Back</ContextMenuItem>
+            <ContextMenuItem>Forward</ContextMenuItem>
+            <ContextMenuItem>Reload</ContextMenuItem>
+          </ContextMenuContent>
+        </ContextMenu>
+        <ContextMenu>
+          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
+            Right click (right)
+          </ContextMenuTrigger>
+          <ContextMenuContent side="right">
+            <ContextMenuItem>Back</ContextMenuItem>
+            <ContextMenuItem>Forward</ContextMenuItem>
+            <ContextMenuItem>Reload</ContextMenuItem>
+          </ContextMenuContent>
+        </ContextMenu>
+        <ContextMenu>
+          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
+            Right click (bottom)
+          </ContextMenuTrigger>
+          <ContextMenuContent side="bottom">
+            <ContextMenuItem>Back</ContextMenuItem>
+            <ContextMenuItem>Forward</ContextMenuItem>
+            <ContextMenuItem>Reload</ContextMenuItem>
+          </ContextMenuContent>
+        </ContextMenu>
+        <ContextMenu>
+          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
+            Right click (left)
+          </ContextMenuTrigger>
+          <ContextMenuContent side="left">
+            <ContextMenuItem>Back</ContextMenuItem>
+            <ContextMenuItem>Forward</ContextMenuItem>
+            <ContextMenuItem>Reload</ContextMenuItem>
+          </ContextMenuContent>
+        </ContextMenu>
+      </div>
     </Example>
   )
 }

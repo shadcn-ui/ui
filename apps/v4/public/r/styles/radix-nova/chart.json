@@ -2,8 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chart",
   "dependencies": [
-    "recharts@2.15.4",
-    "lucide-react"
+    "recharts@2.15.4"
   ],
   "registryDependencies": [
     "card"

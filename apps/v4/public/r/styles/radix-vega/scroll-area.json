@@ -1,9 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-area",
-  "dependencies": [
-    "radix-ui"
-  ],
   "files": [
     {
       "path": "registry/radix-vega/ui/scroll-area.tsx",

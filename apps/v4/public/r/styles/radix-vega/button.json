@@ -1,9 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button",
-  "dependencies": [
-    "radix-ui"
-  ],
   "files": [
     {
       "path": "registry/radix-vega/ui/button.tsx",

@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import {
   Example,
   ExampleWrapper,
@@ -23,6 +25,7 @@ export default function BreadcrumbExample() {
     <ExampleWrapper>
       <BreadcrumbBasic />
       <BreadcrumbWithDropdown />
+      <BreadcrumbWithLink />
     </ExampleWrapper>
   )
 }
@@ -61,7 +64,7 @@ function BreadcrumbWithDropdown() {
           <BreadcrumbItem>
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1">
-                <BreadcrumbEllipsis className="h-4 w-4" />
+                <BreadcrumbEllipsis />
                 <span className="sr-only">Toggle menu</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
@@ -74,6 +77,36 @@ function BreadcrumbWithDropdown() {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink href="#">Components</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+    </Example>
+  )
+}
+
+function BreadcrumbWithLink() {
+  return (
+    <Example title="With Link">
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href="/">Home</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbEllipsis />
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href="/docs/components">Components</Link>
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>

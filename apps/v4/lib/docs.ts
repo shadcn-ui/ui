@@ -1,5 +1,5 @@
 export const PAGES_NEW = [
-  "/design/radix",
+  "/design",
   "/docs/components/button-group",
   "/docs/components/empty",
   "/docs/components/field",

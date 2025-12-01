@@ -72,18 +72,20 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
           placeholder={
             <div className="flex flex-col justify-start">
               <div className="text-muted-foreground text-xs">Preset</div>
-              <div className="text-foreground text-sm font-medium">
-                {currentPreset?.description ?? "Custom"}
+              <div className="text-foreground text-sm">
+                <div className="font-medium">
+                  {currentPreset?.description ?? "Custom"}
+                </div>
               </div>
             </div>
           }
         >
           <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs font-medium">
-              Preset
-            </div>
+            <div className="text-muted-foreground text-xs">Preset</div>
             <div className="text-foreground text-sm">
-              {currentPreset?.description ?? "Custom"}
+              <div className="font-medium">
+                {currentPreset?.description ?? "Custom"}
+              </div>
             </div>
           </div>
         </SelectValue>

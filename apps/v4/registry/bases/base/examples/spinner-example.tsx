@@ -1,0 +1,145 @@
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/base/components/example"
+import { Badge } from "@/registry/bases/base/ui/badge"
+import { Button } from "@/registry/bases/base/ui/button"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/registry/bases/base/ui/empty"
+import { Field, FieldLabel } from "@/registry/bases/base/ui/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/registry/bases/base/ui/input-group"
+import { Spinner } from "@/registry/bases/base/ui/spinner"
+import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+
+export default function SpinnerExample() {
+  return (
+    <ExampleWrapper>
+      <SpinnerBasic />
+      <SpinnerInButtons />
+      <SpinnerInBadges />
+      <SpinnerInInputGroup />
+      <SpinnerInEmpty />
+    </ExampleWrapper>
+  )
+}
+
+function SpinnerBasic() {
+  return (
+    <Example title="Basic">
+      <div className="flex items-center gap-6">
+        <Spinner />
+        <Spinner className="size-8" />
+      </div>
+    </Example>
+  )
+}
+
+function SpinnerInButtons() {
+  return (
+    <Example title="In Buttons">
+      <div className="flex flex-wrap items-center gap-4">
+        <Button>
+          <Spinner data-slot="icon-align" /> Submit
+        </Button>
+        <Button disabled>
+          <Spinner data-slot="icon-align" /> Disabled
+        </Button>
+        <Button variant="outline" disabled>
+          <Spinner data-slot="icon-align" /> Outline
+        </Button>
+        <Button variant="outline" size="icon" disabled>
+          <Spinner data-slot="icon-align" />
+          <span className="sr-only">Loading...</span>
+        </Button>
+      </div>
+    </Example>
+  )
+}
+
+function SpinnerInBadges() {
+  return (
+    <Example title="In Badges">
+      <div className="flex flex-wrap items-center gap-4">
+        <Badge>
+          <Spinner />
+          Badge
+        </Badge>
+        <Badge variant="secondary">
+          <Spinner />
+          Badge
+        </Badge>
+        <Badge variant="destructive">
+          <Spinner />
+          Badge
+        </Badge>
+        <Badge variant="outline">
+          <Spinner />
+          Badge
+        </Badge>
+      </div>
+    </Example>
+  )
+}
+
+function SpinnerInInputGroup() {
+  return (
+    <Example title="In Input Group">
+      <Field>
+        <FieldLabel htmlFor="input-group-spinner">Input Group</FieldLabel>
+        <InputGroup>
+          <InputGroupInput id="input-group-spinner" />
+          <InputGroupAddon>
+            <Spinner />
+          </InputGroupAddon>
+        </InputGroup>
+      </Field>
+    </Example>
+  )
+}
+
+function SpinnerInEmpty() {
+  return (
+    <Example title="In Empty State">
+      <Empty className="min-h-[300px]">
+        <EmptyHeader>
+          <EmptyMedia variant="icon">
+            <Spinner />
+          </EmptyMedia>
+          <EmptyTitle>No projects yet</EmptyTitle>
+          <EmptyDescription>
+            You haven&apos;t created any projects yet. Get started by creating
+            your first project.
+          </EmptyDescription>
+        </EmptyHeader>
+        <EmptyContent>
+          <div className="flex gap-2">
+            <Button asChild>
+              <a href="#">Create project</a>
+            </Button>
+            <Button variant="outline">Import project</Button>
+          </div>
+          <Button variant="link" asChild className="text-muted-foreground">
+            <a href="#">
+              Learn more{" "}
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight02Icon"
+              />
+            </a>
+          </Button>
+        </EmptyContent>
+      </Empty>
+    </Example>
+  )
+}

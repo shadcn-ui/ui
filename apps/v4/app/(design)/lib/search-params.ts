@@ -13,7 +13,7 @@ import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
 
 export const designSystemSearchParams = {
-  item: parseAsString.withDefault("cover"),
+  item: parseAsString.withDefault("accordion-example"),
   iconLibrary: parseAsStringLiteral<IconLibraryName>(
     Object.values(iconLibraries).map((i) => i.name)
   ).withDefault("lucide"),

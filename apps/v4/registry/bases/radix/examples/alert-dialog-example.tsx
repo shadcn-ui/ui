@@ -25,7 +25,6 @@ export default function AlertDialogExample() {
       <AlertDialogWithMedia />
       <AlertDialogSmallWithMedia />
       <AlertDialogDestructive />
-      <AlertDialogWithIconTrigger />
     </ExampleWrapper>
   )
 }
@@ -166,45 +165,8 @@ function AlertDialogDestructive() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction asChild>
-              <Button variant="destructive">Delete</Button>
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </Example>
-  )
-}
-
-function AlertDialogWithIconTrigger() {
-  return (
-    <Example title="With Icon Trigger">
-      <AlertDialog>
-        <AlertDialogTrigger asChild>
-          <Button>
-            <IconPlaceholder
-              lucide="HeadphonesIcon"
-              tabler="IconHeadphones"
-              hugeicons="HeadphonesIcon"
-              data-icon="inline-start"
-            />
-            Connect
-          </Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent size="sm">
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              Are you connecting a pair of headphones?
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              If you switch devices, you can update this selection in the{" "}
-              <a href="#">Sounds & Haptics</a> section of Settings.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Other Device</AlertDialogCancel>
-            <AlertDialogAction>Headphones</AlertDialogAction>
+            <AlertDialogCancel variant="ghost">Cancel</AlertDialogCancel>
+            <AlertDialogAction variant="destructive">Delete</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

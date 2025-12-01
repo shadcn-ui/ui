@@ -1,9 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tooltip",
-  "dependencies": [
-    "radix-ui"
-  ],
   "files": [
     {
       "path": "registry/radix-vega/ui/tooltip.tsx",

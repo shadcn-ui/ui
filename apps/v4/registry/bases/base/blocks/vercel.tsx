@@ -8,11 +8,11 @@ import { Area, AreaChart } from "recharts"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Alert, AlertDescription } from "@/registry/bases/radix/ui/alert"
-import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Button } from "@/registry/bases/radix/ui/button"
-import { Calendar } from "@/registry/bases/radix/ui/calendar"
+} from "@/registry/bases/base/components/example"
+import { Alert, AlertDescription } from "@/registry/bases/base/ui/alert"
+import { Badge } from "@/registry/bases/base/ui/badge"
+import { Button } from "@/registry/bases/base/ui/button"
+import { Calendar } from "@/registry/bases/base/ui/calendar"
 import {
   Card,
   CardAction,
@@ -21,13 +21,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
+} from "@/registry/bases/base/ui/card"
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/registry/bases/radix/ui/chart"
+} from "@/registry/bases/base/ui/chart"
 import {
   Dialog,
   DialogClose,
@@ -37,27 +37,27 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
+} from "@/registry/bases/base/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/bases/base/ui/dropdown-menu"
 import {
   Empty,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyTitle,
-} from "@/registry/bases/radix/ui/empty"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
+} from "@/registry/bases/base/ui/empty"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/radix/ui/input-group"
+} from "@/registry/bases/base/ui/input-group"
 import {
   Item,
   ItemActions,
@@ -68,17 +68,17 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
+} from "@/registry/bases/base/ui/item"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/bases/radix/ui/native-select"
+} from "@/registry/bases/base/ui/native-select"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/radix/ui/popover"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
+} from "@/registry/bases/base/ui/popover"
+import { Textarea } from "@/registry/bases/base/ui/textarea"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function VercelBlock() {

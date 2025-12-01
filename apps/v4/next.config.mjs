@@ -80,6 +80,11 @@ const nextConfig = {
         destination: "/docs/directory",
         permanent: false,
       },
+      {
+        source: "/design",
+        destination: "/design/radix",
+        permanent: false,
+      },
     ]
   },
   rewrites() {

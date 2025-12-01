@@ -4,9 +4,6 @@
   "items": [
     {
       "name": "accordion",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/accordion.tsx",
@@ -27,9 +24,6 @@
     },
     {
       "name": "alert-dialog",
-      "dependencies": [
-        "radix-ui"
-      ],
       "registryDependencies": [
         "button"
       ],
@@ -43,9 +37,6 @@
     },
     {
       "name": "aspect-ratio",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/aspect-ratio.tsx",
@@ -56,9 +47,6 @@
     },
     {
       "name": "avatar",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/avatar.tsx",
@@ -69,9 +57,6 @@
     },
     {
       "name": "badge",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/badge.tsx",
@@ -82,9 +67,6 @@
     },
     {
       "name": "breadcrumb",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/breadcrumb.tsx",
@@ -95,9 +77,6 @@
     },
     {
       "name": "button",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/button.tsx",
@@ -166,8 +145,7 @@
     {
       "name": "chart",
       "dependencies": [
-        "recharts@2.15.4",
-        "lucide-react"
+        "recharts@2.15.4"
       ],
       "registryDependencies": [
         "card"
@@ -182,9 +160,6 @@
     },
     {
       "name": "checkbox",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/checkbox.tsx",
@@ -195,9 +170,6 @@
     },
     {
       "name": "collapsible",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/collapsible.tsx",
@@ -224,9 +196,6 @@
     },
     {
       "name": "context-menu",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/context-menu.tsx",
@@ -237,9 +206,6 @@
     },
     {
       "name": "dialog",
-      "dependencies": [
-        "radix-ui"
-      ],
       "registryDependencies": [
         "button"
       ],
@@ -254,8 +220,7 @@
     {
       "name": "drawer",
       "dependencies": [
-        "vaul",
-        "radix-ui"
+        "vaul"
       ],
       "files": [
         {
@@ -267,9 +232,6 @@
     },
     {
       "name": "dropdown-menu",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/dropdown-menu.tsx",
@@ -304,9 +266,6 @@
     },
     {
       "name": "hover-card",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/hover-card.tsx",
@@ -368,9 +327,6 @@
     },
     {
       "name": "label",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/label.tsx",
@@ -381,9 +337,6 @@
     },
     {
       "name": "menubar",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/menubar.tsx",
@@ -394,9 +347,6 @@
     },
     {
       "name": "navigation-menu",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/navigation-menu.tsx",
@@ -420,9 +370,6 @@
     },
     {
       "name": "popover",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/popover.tsx",
@@ -433,9 +380,6 @@
     },
     {
       "name": "progress",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/progress.tsx",
@@ -446,9 +390,6 @@
     },
     {
       "name": "radio-group",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/radio-group.tsx",
@@ -472,9 +413,6 @@
     },
     {
       "name": "scroll-area",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/scroll-area.tsx",
@@ -485,9 +423,6 @@
     },
     {
       "name": "select",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/select.tsx",
@@ -498,9 +433,6 @@
     },
     {
       "name": "separator",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/separator.tsx",
@@ -511,9 +443,6 @@
     },
     {
       "name": "sheet",
-      "dependencies": [
-        "radix-ui"
-      ],
       "registryDependencies": [
         "button"
       ],
@@ -527,11 +456,6 @@
     },
     {
       "name": "sidebar",
-      "dependencies": [
-        "radix-ui",
-        "class-variance-authority",
-        "lucide-react"
-      ],
       "registryDependencies": [
         "button",
         "separator",
@@ -547,28 +471,6 @@
           "type": "registry:ui"
         }
       ],
-      "cssVars": {
-        "light": {
-          "sidebar-background": "0 0% 98%",
-          "sidebar-foreground": "240 5.3% 26.1%",
-          "sidebar-primary": "240 5.9% 10%",
-          "sidebar-primary-foreground": "0 0% 98%",
-          "sidebar-accent": "240 4.8% 95.9%",
-          "sidebar-accent-foreground": "240 5.9% 10%",
-          "sidebar-border": "220 13% 91%",
-          "sidebar-ring": "217.2 91.2% 59.8%"
-        },
-        "dark": {
-          "sidebar-background": "240 5.9% 10%",
-          "sidebar-foreground": "240 4.8% 95.9%",
-          "sidebar-primary": "224.3 76.3% 48%",
-          "sidebar-primary-foreground": "0 0% 100%",
-          "sidebar-accent": "240 3.7% 15.9%",
-          "sidebar-accent-foreground": "240 4.8% 95.9%",
-          "sidebar-border": "240 3.7% 15.9%",
-          "sidebar-ring": "217.2 91.2% 59.8%"
-        }
-      },
       "type": "registry:ui"
     },
     {
@@ -583,9 +485,6 @@
     },
     {
       "name": "slider",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/slider.tsx",
@@ -610,9 +509,6 @@
     },
     {
       "name": "spinner",
-      "dependencies": [
-        "class-variance-authority"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/spinner.tsx",
@@ -623,9 +519,6 @@
     },
     {
       "name": "switch",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/switch.tsx",
@@ -646,9 +539,6 @@
     },
     {
       "name": "tabs",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/tabs.tsx",
@@ -669,9 +559,6 @@
     },
     {
       "name": "toggle",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/toggle.tsx",
@@ -682,9 +569,6 @@
     },
     {
       "name": "toggle-group",
-      "dependencies": [
-        "radix-ui"
-      ],
       "registryDependencies": [
         "toggle"
       ],
@@ -698,9 +582,6 @@
     },
     {
       "name": "tooltip",
-      "dependencies": [
-        "radix-ui"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/tooltip.tsx",

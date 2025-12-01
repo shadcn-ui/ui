@@ -1,9 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hover-card",
-  "dependencies": [
-    "radix-ui"
-  ],
   "files": [
     {
       "path": "registry/radix-nova/ui/hover-card.tsx",

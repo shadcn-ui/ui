@@ -10,6 +10,7 @@ import { PRESETS } from "@/registry/presets"
 import { STYLES } from "@/registry/styles"
 import { AccentPicker } from "@/app/(design)/components/accent-picker"
 import { BaseColorPicker } from "@/app/(design)/components/base-color-picker"
+import { BasePicker } from "@/app/(design)/components/base-picker"
 import { FontPicker } from "@/app/(design)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(design)/components/icon-library-picker"
 import { InstallDialog } from "@/app/(design)/components/install-dialog"
@@ -36,6 +37,8 @@ export function Customizer({
   return (
     <div className="no-scrollbar flex h-[calc(100svh-var(--header-height)-2rem)] w-48 flex-col gap-4 overflow-y-auto p-1">
       <FieldGroup className="**:data-[slot=select-trigger]:hover:bg-muted **:data-[slot=select-trigger]:ring-foreground/10 dark:**:data-[slot=select-trigger]:hover:bg-muted/50 **:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 dark:**:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 flex flex-1 flex-col gap-1 **:data-[slot=select-trigger]:w-full **:data-[slot=select-trigger]:rounded-lg **:data-[slot=select-trigger]:border-0 **:data-[slot=select-trigger]:bg-transparent **:data-[slot=select-trigger]:text-left **:data-[slot=select-trigger]:shadow-none **:data-[slot=select-trigger]:data-[size=default]:h-12 **:data-[slot=select-trigger]:data-[size=default]:px-2 dark:**:data-[slot=select-trigger]:bg-transparent **:[[data-slot=select-trigger]>svg]:hidden">
+        <BasePicker />
+        <FieldSeparator className="opacity-0" />
         <ItemPicker items={items} />
         <FieldSeparator className="opacity-0" />
         <PresetPicker presets={PRESETS} />

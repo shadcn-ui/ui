@@ -43,7 +43,6 @@ function AccordionTrigger({
         data-slot="accordion-trigger"
         className={cn(
           "cn-accordion-trigger group/accordion-trigger relative flex flex-1 items-start justify-between border border-transparent transition-all outline-none disabled:pointer-events-none disabled:opacity-50",
-          "focus-visible:ring-ring/50 focus-visible:border-ring focus-visible:after:border-ring focus-visible:ring-[3px]",
           className
         )}
         {...props}
@@ -52,16 +51,16 @@ function AccordionTrigger({
         <IconPlaceholder
           lucide="ChevronDownIcon"
           tabler="IconChevronDown"
-          data-slot="accordion-trigger-icon-closed"
+          data-slot="accordion-trigger-icon"
           hugeicons="ArrowDown01Icon"
-          className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-data-[state=open]/accordion-trigger:hidden"
+          className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
         />
         <IconPlaceholder
           lucide="ChevronUpIcon"
           tabler="IconChevronUp"
-          data-slot="accordion-trigger-icon-open"
+          data-slot="accordion-trigger-icon"
           hugeicons="ArrowUp01Icon"
-          className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-data-[state=closed]/accordion-trigger:hidden"
+          className="cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
@@ -81,7 +80,7 @@ function AccordionContent({
     >
       <div
         className={cn(
-          "cn-accordion-content-inner [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4",
+          "cn-accordion-content-inner [&_a]:hover:text-foreground h-(--radix-accordion-content-height) [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4",
           className
         )}
       >

@@ -89,7 +89,10 @@ export function ItemPicker({
         side="right"
         align="start"
       >
-        <Command className="**:[[data-slot=command-input-wrapper]>svg]:hidden">
+        <Command
+          className="**:[[data-slot=command-input-wrapper]>svg]:hidden"
+          defaultValue={params.item ?? ""}
+        >
           <CommandInput placeholder="Search" />
           <CommandList>
             <CommandGroup>

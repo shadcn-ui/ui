@@ -1,9 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinner",
-  "dependencies": [
-    "class-variance-authority"
-  ],
   "files": [
     {
       "path": "registry/radix-vega/ui/spinner.tsx",

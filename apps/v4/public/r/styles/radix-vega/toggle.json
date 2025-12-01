@@ -1,9 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toggle",
-  "dependencies": [
-    "radix-ui"
-  ],
   "files": [
     {
       "path": "registry/radix-vega/ui/toggle.tsx",

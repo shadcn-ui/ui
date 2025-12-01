@@ -30,7 +30,7 @@ export const siteConfig = {
       label: "Directory",
     },
     {
-      href: "/design/radix",
+      href: "/design",
       label: "Design",
     },
   ],

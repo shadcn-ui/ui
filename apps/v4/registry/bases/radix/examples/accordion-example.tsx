@@ -20,7 +20,7 @@ import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function AccordionExample() {
   return (
-    <ExampleWrapper>
+    <ExampleWrapper className="w-full max-w-4xl lg:grid-cols-1 2xl:max-w-4xl 2xl:grid-cols-1">
       <AccordionBasic />
       <AccordionMultiple />
       <AccordionWithBorders />
@@ -33,7 +33,7 @@ export default function AccordionExample() {
 function AccordionBasic() {
   return (
     <Example title="Basic">
-      <Accordion type="single" collapsible>
+      <Accordion type="single" collapsible className="mx-auto max-w-lg">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
           <AccordionContent>
@@ -62,7 +62,7 @@ function AccordionBasic() {
 function AccordionMultiple() {
   return (
     <Example title="Multiple">
-      <Accordion type="multiple">
+      <Accordion type="multiple" className="mx-auto max-w-lg">
         <AccordionItem value="item-1">
           <AccordionTrigger>
             What are the key considerations when implementing a comprehensive
@@ -106,7 +106,7 @@ function AccordionMultiple() {
 function AccordionWithBorders() {
   return (
     <Example title="With Borders">
-      <Accordion type="single" collapsible className="gap-4">
+      <Accordion type="single" collapsible className="mx-auto max-w-lg gap-4">
         <AccordionItem value="billing" className="rounded-lg border">
           <AccordionTrigger className="px-4 text-base font-medium">
             How does billing work?
@@ -154,7 +154,7 @@ function AccordionWithBorders() {
 function AccordionInCard() {
   return (
     <Example title="In Card">
-      <Card className="gap-4">
+      <Card className="mx-auto w-full max-w-lg gap-4">
         <CardHeader>
           <CardTitle>Subscription & Billing</CardTitle>
           <CardDescription>
@@ -272,12 +272,9 @@ function AccordionWithDisabled() {
       <Accordion
         type="single"
         collapsible
-        className="overflow-hidden rounded-lg border"
+        className="mx-auto max-w-lg overflow-hidden rounded-lg border"
       >
-        <AccordionItem
-          value="item-1"
-          className="data-[state=open]:bg-muted/50 p-1"
-        >
+        <AccordionItem value="item-1" className="data-open:bg-muted/50 p-1">
           <AccordionTrigger className="px-4">
             Can I access my account history?
           </AccordionTrigger>
@@ -290,7 +287,7 @@ function AccordionWithDisabled() {
         <AccordionItem
           value="item-2"
           disabled
-          className="data-[state=open]:bg-muted/50 p-1"
+          className="data-open:bg-muted/50 p-1"
         >
           <AccordionTrigger className="px-4">
             Premium feature information
@@ -300,10 +297,7 @@ function AccordionWithDisabled() {
             your plan to access this content.
           </AccordionContent>
         </AccordionItem>
-        <AccordionItem
-          value="item-3"
-          className="data-[state=open]:bg-muted/50 p-1"
-        >
+        <AccordionItem value="item-3" className="data-open:bg-muted/50 p-1">
           <AccordionTrigger className="px-4">
             How do I update my email address?
           </AccordionTrigger>

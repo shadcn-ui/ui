@@ -1,9 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toggle-group",
-  "dependencies": [
-    "radix-ui"
-  ],
   "registryDependencies": [
     "toggle"
   ],

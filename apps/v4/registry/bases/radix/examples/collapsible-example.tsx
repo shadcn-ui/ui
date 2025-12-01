@@ -138,7 +138,7 @@ function CollapsibleFileTree() {
   }
 
   return (
-    <Example title="File Tree" className="items-center justify-center lg:p-16">
+    <Example title="File Tree" className="items-center lg:p-16">
       <Card className="mx-auto w-full max-w-[16rem] gap-2" size="sm">
         <CardHeader>
           <Tabs defaultValue="explorer">
@@ -162,7 +162,7 @@ function CollapsibleSettings() {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <Example title="Settings" className="items-center justify-center">
+    <Example title="Settings" className="items-center lg:p-16">
       <Card className="mx-auto w-full max-w-xs gap-4">
         <CardHeader>
           <CardTitle>Radius</CardTitle>
@@ -208,9 +208,9 @@ function CollapsibleSettings() {
               <Button variant="outline" size="icon">
                 {isOpen ? (
                   <IconPlaceholder
-                    lucide="MaximizeIcon"
-                    tabler="IconMaximize"
-                    hugeicons="PlusSignIcon"
+                    lucide="MinimizeIcon"
+                    tabler="IconMinimize"
+                    hugeicons="MinusSignIcon"
                   />
                 ) : (
                   <IconPlaceholder

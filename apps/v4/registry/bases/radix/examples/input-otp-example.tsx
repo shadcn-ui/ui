@@ -10,7 +10,6 @@ import {
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,

@@ -58,8 +58,8 @@ function DropdownMenuBasic() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuGroup>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Billing</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
@@ -133,8 +133,8 @@ function DropdownMenuWithShortcuts() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuGroup>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuItem>
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -266,8 +266,8 @@ function DropdownMenuWithRadio() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
           <DropdownMenuGroup>
+            <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
             <DropdownMenuRadioGroup
               value={position}
               onValueChange={setPosition}
@@ -378,8 +378,8 @@ function DropdownMenuWithRadioIcons() {
           <Button variant="outline">Payment Method</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="min-w-56">
-          <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
           <DropdownMenuGroup>
+            <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
             <DropdownMenuRadioGroup
               value={paymentMethod}
               onValueChange={setPaymentMethod}
@@ -468,20 +468,22 @@ function DropdownMenuWithDestructive() {
 function DropdownMenuWithAvatar() {
   const menuContent = (
     <>
-      <DropdownMenuLabel className="p-0 font-normal">
-        <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
-            <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-          </Avatar>
-          <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-semibold">shadcn</span>
-            <span className="text-muted-foreground truncate text-xs">
-              shadcn@example.com
-            </span>
+      <DropdownMenuGroup>
+        <DropdownMenuLabel className="p-0 font-normal">
+          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
+              <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+            </Avatar>
+            <div className="grid flex-1 text-left text-sm leading-tight">
+              <span className="truncate font-semibold">shadcn</span>
+              <span className="text-muted-foreground truncate text-xs">
+                shadcn@example.com
+              </span>
+            </div>
           </div>
-        </div>
-      </DropdownMenuLabel>
+        </DropdownMenuLabel>
+      </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
         <DropdownMenuItem>
