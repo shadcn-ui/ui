@@ -118,19 +118,18 @@ function MenubarCheckboxItem({
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
       className={cn(
-        "cn-menubar-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-menubar-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       checked={checked}
       {...props}
     >
-      <span className="cn-menubar-checkbox-item-indicator pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span className="cn-menubar-checkbox-item-indicator pointer-events-none absolute flex items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
-            className="size-4"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -148,18 +147,18 @@ function MenubarRadioItem({
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
       className={cn(
-        "cn-menubar-radio-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-menubar-radio-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
     >
-      <span className="cn-menubar-radio-item-indicator pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
+      <span className="cn-menubar-radio-item-indicator pointer-events-none absolute flex items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CircleIcon"
             tabler="IconCircle"
             hugeicons="CircleIcon"
-            className="size-2 fill-current"
+            className="fill-current"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>

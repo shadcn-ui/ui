@@ -75,18 +75,20 @@ function NavigationMenuWithViewport() {
             <NavigationMenuContent>
               <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
-                      href="/"
-                    >
-                      <div className="mt-4 mb-2 text-lg font-medium">
-                        shadcn/ui
-                      </div>
-                      <p className="text-muted-foreground text-sm leading-tight">
-                        Beautifully designed components built with Tailwind CSS.
-                      </p>
-                    </a>
+                  <NavigationMenuLink
+                    render={
+                      <a
+                        className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
+                        href="/"
+                      />
+                    }
+                  >
+                    <div className="mt-4 mb-2 text-lg font-medium">
+                      shadcn/ui
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-tight">
+                      Beautifully designed components built with Tailwind CSS.
+                    </p>
                   </NavigationMenuLink>
                 </li>
                 <ListItem href="/docs" title="Introduction">
@@ -119,10 +121,10 @@ function NavigationMenuWithViewport() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink
-              asChild
+              render={<Link href="/docs" />}
               className={navigationMenuTriggerStyle()}
             >
-              <Link href="/docs">Documentation</Link>
+              Documentation
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
@@ -134,14 +136,14 @@ function NavigationMenuWithViewport() {
 function NavigationMenuWithoutViewport() {
   return (
     <Example title="Without Viewport">
-      <NavigationMenu viewport={false}>
+      <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuLink
-              asChild
+              render={<Link href="/docs" />}
               className={navigationMenuTriggerStyle()}
             >
-              <Link href="/docs">Documentation</Link>
+              Documentation
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
@@ -149,29 +151,23 @@ function NavigationMenuWithoutViewport() {
             <NavigationMenuContent>
               <ul className="grid w-[300px] gap-4">
                 <li>
-                  <NavigationMenuLink asChild>
-                    <Link href="#">
-                      <div className="font-medium">Components</div>
-                      <div className="text-muted-foreground">
-                        Browse all components in the library.
-                      </div>
-                    </Link>
+                  <NavigationMenuLink render={<Link href="#" />}>
+                    <div className="font-medium">Components</div>
+                    <div className="text-muted-foreground">
+                      Browse all components in the library.
+                    </div>
                   </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="#">
-                      <div className="font-medium">Documentation</div>
-                      <div className="text-muted-foreground">
-                        Learn how to use the library.
-                      </div>
-                    </Link>
+                  <NavigationMenuLink render={<Link href="#" />}>
+                    <div className="font-medium">Documentation</div>
+                    <div className="text-muted-foreground">
+                      Learn how to use the library.
+                    </div>
                   </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="#">
-                      <div className="font-medium">Blog</div>
-                      <div className="text-muted-foreground">
-                        Read our latest blog posts.
-                      </div>
-                    </Link>
+                  <NavigationMenuLink render={<Link href="#" />}>
+                    <div className="font-medium">Blog</div>
+                    <div className="text-muted-foreground">
+                      Read our latest blog posts.
+                    </div>
                   </NavigationMenuLink>
                 </li>
               </ul>
@@ -182,14 +178,14 @@ function NavigationMenuWithoutViewport() {
             <NavigationMenuContent>
               <ul className="grid w-[200px] gap-4">
                 <li>
-                  <NavigationMenuLink asChild>
-                    <Link href="#">Components</Link>
+                  <NavigationMenuLink render={<Link href="#" />}>
+                    Components
                   </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="#">Documentation</Link>
+                  <NavigationMenuLink render={<Link href="#" />}>
+                    Documentation
                   </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="#">Blocks</Link>
+                  <NavigationMenuLink render={<Link href="#" />}>
+                    Blocks
                   </NavigationMenuLink>
                 </li>
               </ul>
@@ -200,23 +196,29 @@ function NavigationMenuWithoutViewport() {
             <NavigationMenuContent>
               <ul className="grid w-[200px] gap-4">
                 <li>
-                  <NavigationMenuLink asChild>
-                    <Link href="#" className="flex-row items-center gap-2">
-                      <CircleHelpIcon />
-                      Backlog
-                    </Link>
+                  <NavigationMenuLink
+                    render={
+                      <Link href="#" className="flex-row items-center gap-2" />
+                    }
+                  >
+                    <CircleHelpIcon />
+                    Backlog
                   </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="#" className="flex-row items-center gap-2">
-                      <CircleIcon />
-                      To Do
-                    </Link>
+                  <NavigationMenuLink
+                    render={
+                      <Link href="#" className="flex-row items-center gap-2" />
+                    }
+                  >
+                    <CircleIcon />
+                    To Do
                   </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="#" className="flex-row items-center gap-2">
-                      <CircleCheckIcon />
-                      Done
-                    </Link>
+                  <NavigationMenuLink
+                    render={
+                      <Link href="#" className="flex-row items-center gap-2" />
+                    }
+                  >
+                    <CircleCheckIcon />
+                    Done
                   </NavigationMenuLink>
                 </li>
               </ul>
@@ -236,13 +238,11 @@ function ListItem({
 }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
   return (
     <li {...props}>
-      <NavigationMenuLink asChild>
-        <Link href={href}>
-          <div className="text-sm leading-none font-medium">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-            {children}
-          </p>
-        </Link>
+      <NavigationMenuLink render={<Link href={href} />}>
+        <div className="text-sm leading-none font-medium">{title}</div>
+        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+          {children}
+        </p>
       </NavigationMenuLink>
     </li>
   )

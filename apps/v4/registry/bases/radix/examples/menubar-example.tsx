@@ -1,3 +1,7 @@
+"use client"
+
+import * as React from "react"
+
 import {
   Example,
   ExampleWrapper,
@@ -160,16 +164,19 @@ function MenubarWithCheckboxes() {
 }
 
 function MenubarWithRadio() {
+  const [user, setUser] = React.useState("benoit")
+  const [theme, setTheme] = React.useState("system")
+
   return (
     <Example title="With Radio">
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>Profiles</MenubarTrigger>
           <MenubarContent>
-            <MenubarRadioGroup value="benoit">
+            <MenubarRadioGroup value={user} onValueChange={setUser}>
               <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
               <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
-              <MenubarRadioItem value="Luis">Luis</MenubarRadioItem>
+              <MenubarRadioItem value="luis">Luis</MenubarRadioItem>
             </MenubarRadioGroup>
             <MenubarSeparator />
             <MenubarItem inset>Edit...</MenubarItem>
@@ -179,7 +186,7 @@ function MenubarWithRadio() {
         <MenubarMenu>
           <MenubarTrigger>Theme</MenubarTrigger>
           <MenubarContent>
-            <MenubarRadioGroup value="system">
+            <MenubarRadioGroup value={theme} onValueChange={setTheme}>
               <MenubarRadioItem value="light">Light</MenubarRadioItem>
               <MenubarRadioItem value="dark">Dark</MenubarRadioItem>
               <MenubarRadioItem value="system">System</MenubarRadioItem>

@@ -1,17 +1,30 @@
 "use client"
 
 import * as React from "react"
-import { Menubar as MenubarPrimitive } from "radix-ui"
+import { Menu as MenuPrimitive } from "@base-ui-components/react/menu"
+import { Menubar as MenubarPrimitive } from "@base-ui-components/react/menubar"
 
 import { cn } from "@/registry/bases/base/lib/cn"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/registry/bases/base/ui/dropdown-menu"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
-function Menubar({
-  className,
-  ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Root>) {
+function Menubar({ className, ...props }: MenubarPrimitive.Props) {
   return (
-    <MenubarPrimitive.Root
+    <MenubarPrimitive
       data-slot="menubar"
       className={cn("cn-menubar flex items-center", className)}
       {...props}
@@ -19,38 +32,28 @@ function Menubar({
   )
 }
 
-function MenubarMenu({
-  ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Menu>) {
-  return <MenubarPrimitive.Menu data-slot="menubar-menu" {...props} />
+function MenubarMenu({ ...props }: React.ComponentProps<typeof DropdownMenu>) {
+  return <DropdownMenu data-slot="menubar-menu" {...props} />
 }
 
 function MenubarGroup({
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Group>) {
-  return <MenubarPrimitive.Group data-slot="menubar-group" {...props} />
+}: React.ComponentProps<typeof DropdownMenuGroup>) {
+  return <DropdownMenuGroup data-slot="menubar-group" {...props} />
 }
 
 function MenubarPortal({
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Portal>) {
-  return <MenubarPrimitive.Portal data-slot="menubar-portal" {...props} />
-}
-
-function MenubarRadioGroup({
-  ...props
-}: React.ComponentProps<typeof MenubarPrimitive.RadioGroup>) {
-  return (
-    <MenubarPrimitive.RadioGroup data-slot="menubar-radio-group" {...props} />
-  )
+}: React.ComponentProps<typeof DropdownMenuPortal>) {
+  return <DropdownMenuPortal data-slot="menubar-portal" {...props} />
 }
 
 function MenubarTrigger({
   className,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Trigger>) {
+}: React.ComponentProps<typeof DropdownMenuTrigger>) {
   return (
-    <MenubarPrimitive.Trigger
+    <DropdownMenuTrigger
       data-slot="menubar-trigger"
       className={cn(
         "cn-menubar-trigger flex items-center outline-hidden select-none",
@@ -67,21 +70,16 @@ function MenubarContent({
   alignOffset = -4,
   sideOffset = 8,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Content>) {
+}: React.ComponentProps<typeof DropdownMenuContent>) {
   return (
-    <MenubarPortal>
-      <MenubarPrimitive.Content
-        data-slot="menubar-content"
-        align={align}
-        alignOffset={alignOffset}
-        sideOffset={sideOffset}
-        className={cn(
-          "cn-menubar-content z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
-          className
-        )}
-        {...props}
-      />
-    </MenubarPortal>
+    <DropdownMenuContent
+      data-slot="menubar-content"
+      align={align}
+      alignOffset={alignOffset}
+      sideOffset={sideOffset}
+      className={cn("cn-menubar-content", className)}
+      {...props}
+    />
   )
 }
 
@@ -90,19 +88,13 @@ function MenubarItem({
   inset,
   variant = "default",
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Item> & {
-  inset?: boolean
-  variant?: "default" | "destructive"
-}) {
+}: React.ComponentProps<typeof DropdownMenuItem>) {
   return (
-    <MenubarPrimitive.Item
+    <DropdownMenuItem
       data-slot="menubar-item"
       data-inset={inset}
       data-variant={variant}
-      className={cn(
-        "cn-menubar-item group/menubar-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
-        className
-      )}
+      className={cn("cn-menubar-item group/menubar-item", className)}
       {...props}
     />
   )
@@ -113,58 +105,63 @@ function MenubarCheckboxItem({
   children,
   checked,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.CheckboxItem>) {
+}: MenuPrimitive.CheckboxItem.Props) {
   return (
-    <MenubarPrimitive.CheckboxItem
+    <MenuPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
       className={cn(
-        "cn-menubar-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-menubar-checkbox-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       checked={checked}
       {...props}
     >
-      <span className="cn-menubar-checkbox-item-indicator pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <MenubarPrimitive.ItemIndicator>
+      <span className="cn-menubar-checkbox-item-indicator pointer-events-none absolute flex items-center justify-center">
+        <MenuPrimitive.CheckboxItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
-            className="size-4"
           />
-        </MenubarPrimitive.ItemIndicator>
+        </MenuPrimitive.CheckboxItemIndicator>
       </span>
       {children}
-    </MenubarPrimitive.CheckboxItem>
+    </MenuPrimitive.CheckboxItem>
   )
+}
+
+function MenubarRadioGroup({
+  ...props
+}: React.ComponentProps<typeof DropdownMenuRadioGroup>) {
+  return <DropdownMenuRadioGroup data-slot="menubar-radio-group" {...props} />
 }
 
 function MenubarRadioItem({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.RadioItem>) {
+}: MenuPrimitive.RadioItem.Props) {
   return (
-    <MenubarPrimitive.RadioItem
+    <MenuPrimitive.RadioItem
       data-slot="menubar-radio-item"
       className={cn(
-        "cn-menubar-radio-item relative flex cursor-default items-center outline-hidden select-none data-[disabled]:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-menubar-radio-item relative flex cursor-default items-center outline-hidden select-none data-disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
     >
-      <span className="cn-menubar-radio-item-indicator pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <MenubarPrimitive.ItemIndicator>
+      <span className="cn-menubar-radio-item-indicator pointer-events-none absolute flex items-center justify-center">
+        <MenuPrimitive.RadioItemIndicator>
           <IconPlaceholder
             lucide="CircleIcon"
             tabler="IconCircle"
             hugeicons="CircleIcon"
-            className="size-2 fill-current"
+            className="fill-current"
           />
-        </MenubarPrimitive.ItemIndicator>
+        </MenuPrimitive.RadioItemIndicator>
       </span>
       {children}
-    </MenubarPrimitive.RadioItem>
+    </MenuPrimitive.RadioItem>
   )
 }
 
@@ -172,11 +169,9 @@ function MenubarLabel({
   className,
   inset,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Label> & {
-  inset?: boolean
-}) {
+}: React.ComponentProps<typeof DropdownMenuLabel>) {
   return (
-    <MenubarPrimitive.Label
+    <DropdownMenuLabel
       data-slot="menubar-label"
       data-inset={inset}
       className={cn("cn-menubar-label", className)}
@@ -188,9 +183,9 @@ function MenubarLabel({
 function MenubarSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Separator>) {
+}: React.ComponentProps<typeof DropdownMenuSeparator>) {
   return (
-    <MenubarPrimitive.Separator
+    <DropdownMenuSeparator
       data-slot="menubar-separator"
       className={cn("cn-menubar-separator -mx-1 my-1 h-px", className)}
       {...props}
@@ -201,9 +196,9 @@ function MenubarSeparator({
 function MenubarShortcut({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: React.ComponentProps<typeof DropdownMenuShortcut>) {
   return (
-    <span
+    <DropdownMenuShortcut
       data-slot="menubar-shortcut"
       className={cn("cn-menubar-shortcut ml-auto", className)}
       {...props}
@@ -213,50 +208,35 @@ function MenubarShortcut({
 
 function MenubarSub({
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.Sub>) {
-  return <MenubarPrimitive.Sub data-slot="menubar-sub" {...props} />
+}: React.ComponentProps<typeof DropdownMenuSub>) {
+  return <DropdownMenuSub data-slot="menubar-sub" {...props} />
 }
 
 function MenubarSubTrigger({
   className,
   inset,
-  children,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.SubTrigger> & {
+}: React.ComponentProps<typeof DropdownMenuSubTrigger> & {
   inset?: boolean
 }) {
   return (
-    <MenubarPrimitive.SubTrigger
+    <DropdownMenuSubTrigger
       data-slot="menubar-sub-trigger"
       data-inset={inset}
-      className={cn(
-        "cn-menubar-sub-trigger flex cursor-default items-center outline-none select-none",
-        className
-      )}
+      className={cn("cn-menubar-sub-trigger", className)}
       {...props}
-    >
-      {children}
-      <IconPlaceholder
-        lucide="ChevronRightIcon"
-        tabler="IconChevronRight"
-        hugeicons="ArrowRight01Icon"
-        className="ml-auto size-4"
-      />
-    </MenubarPrimitive.SubTrigger>
+    />
   )
 }
 
 function MenubarSubContent({
   className,
   ...props
-}: React.ComponentProps<typeof MenubarPrimitive.SubContent>) {
+}: React.ComponentProps<typeof DropdownMenuSubContent>) {
   return (
-    <MenubarPrimitive.SubContent
+    <DropdownMenuSubContent
       data-slot="menubar-sub-content"
-      className={cn(
-        "cn-menubar-sub-content z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
-        className
-      )}
+      className={cn("cn-menubar-sub-content", className)}
       {...props}
     />
   )

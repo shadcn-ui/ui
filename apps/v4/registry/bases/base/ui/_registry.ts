@@ -300,6 +300,7 @@ export const ui: Registry["items"] = [
   {
     name: "menubar",
     type: "registry:ui",
+    registryDependencies: ["dropdown-menu"],
     files: [
       {
         path: "ui/menubar.tsx",
