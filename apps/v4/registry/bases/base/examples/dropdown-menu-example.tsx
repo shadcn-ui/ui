@@ -565,7 +565,7 @@ function DropdownMenuWithAvatar() {
               className="text-muted-foreground ml-auto"
             />
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
+          <DropdownMenuContent className="w-(--anchor-width) min-w-56">
             {menuContent}
           </DropdownMenuContent>
         </DropdownMenu>

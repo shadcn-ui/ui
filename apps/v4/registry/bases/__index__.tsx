@@ -2692,7 +2692,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "undefined",
       description: "",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["dropdown-menu"],
       files: [{
         path: "registry/bases/base/ui/menubar.tsx",
         type: "registry:ui",
