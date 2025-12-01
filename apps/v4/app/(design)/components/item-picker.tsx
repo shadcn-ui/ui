@@ -73,13 +73,13 @@ export function ItemPicker({
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className="hover:bg-muted/30 flex-1 justify-start gap-1 rounded-lg px-3 text-left font-normal shadow-none"
+          className="hover:bg-muted ring-foreground/10 dark:hover:bg-muted/50 data-[state=open]:bg-muted/50 dark:data-[state=open]:bg-muted/50 h-12 flex-0 justify-start gap-1 rounded-lg border-0 px-2 py-1.5 text-left font-normal shadow-none dark:bg-transparent"
         >
           <div className="flex flex-col gap-0.5">
-            <div className="text-muted-foreground text-xs font-medium">
-              Preview
+            <div className="text-muted-foreground text-xs">Preview</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentItem?.title}
             </div>
-            <div className="text-foreground text-sm">{currentItem?.title}</div>
           </div>
           <Kbd className="ml-auto">⌘P</Kbd>
         </Button>

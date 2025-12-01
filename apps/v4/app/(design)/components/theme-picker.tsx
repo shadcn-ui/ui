@@ -50,10 +50,10 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
       <SelectTrigger className="relative">
         <SelectValue>
           <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs font-medium">
-              Theme
+            <div className="text-muted-foreground text-xs">Theme</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentTheme?.title}
             </div>
-            {currentTheme?.title}
             {mounted && resolvedTheme && (
               <div
                 style={

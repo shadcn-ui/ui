@@ -106,10 +106,10 @@ export function IconLibraryPicker() {
       <SelectTrigger>
         <SelectValue>
           <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs font-medium">
-              Icon Library
+            <div className="text-muted-foreground text-xs">Icon Library</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentIconLibrary?.title}
             </div>
-            {currentIconLibrary?.title}
           </div>
         </SelectValue>
       </SelectTrigger>

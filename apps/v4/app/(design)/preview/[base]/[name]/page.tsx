@@ -134,7 +134,6 @@ export default async function BlockPage({
         <Component />
       </DesignSystemProvider>
       <TailwindIndicator forceMount />
-      <div className="to-background via-background/80 fixed inset-x-0 bottom-0 z-50 h-6 bg-gradient-to-b from-transparent supports-backdrop-filter:backdrop-blur-xs" />
     </div>
   )
 }

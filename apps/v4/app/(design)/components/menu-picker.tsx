@@ -34,10 +34,10 @@ export function MenuPicker() {
       <SelectTrigger>
         <SelectValue>
           <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs font-medium">
-              Menu
+            <div className="text-muted-foreground text-xs">Menu</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentMenu?.label}
             </div>
-            {currentMenu?.label}
           </div>
         </SelectValue>
       </SelectTrigger>

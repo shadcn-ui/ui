@@ -38,13 +38,13 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
         setParams({ font: value as Font["value"] })
       }}
     >
-      <SelectTrigger className="data-[state=open]:bg-muted/30 dark:data-[state=open]:bg-muted w-full text-left data-[size=default]:h-14">
+      <SelectTrigger>
         <SelectValue>
           <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs font-medium">
-              Font
+            <div className="text-muted-foreground text-xs">Font</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentFont?.name}
             </div>
-            {currentFont?.name}
           </div>
         </SelectValue>
       </SelectTrigger>

@@ -38,10 +38,10 @@ export function BaseColorPicker({}) {
       <SelectTrigger className="relative">
         <SelectValue>
           <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs font-medium">
-              Base Color
+            <div className="text-muted-foreground text-xs">Base Color</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentBaseColor?.title}
             </div>
-            {currentBaseColor?.title}
             {mounted && resolvedTheme && (
               <div
                 style={

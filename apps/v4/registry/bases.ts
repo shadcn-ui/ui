@@ -10,6 +10,14 @@ export const BASES: z.infer<typeof registryItemSchema>[] = [
       "Optimized for fast development, easy maintenance, and accessibility.",
     dependencies: ["radix-ui"],
   },
+  {
+    name: "base",
+    type: "registry:style",
+    title: "Base UI",
+    description:
+      "Components for building accessible web apps and design systems.",
+    dependencies: [],
+  },
 ]
 
 export type Base = (typeof BASES)[number]

@@ -1,0 +1,17 @@
+{
+  "name": "shadcn/ui",
+  "homepage": "https://ui.shadcn.com",
+  "items": [
+    {
+      "name": "vercel",
+      "title": "Vercel",
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/vercel.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    }
+  ]
+}

@@ -36,10 +36,10 @@ export function AccentPicker() {
       <SelectTrigger>
         <SelectValue>
           <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs font-medium">
-              Accent
+            <div className="text-muted-foreground text-xs">Accent</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentAccent?.label}
             </div>
-            {currentAccent?.label}
           </div>
         </SelectValue>
       </SelectTrigger>

@@ -30,10 +30,10 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
       <SelectTrigger>
         <SelectValue>
           <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs font-medium">
-              Style
+            <div className="text-muted-foreground text-xs">Style</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentStyle?.title}
             </div>
-            {currentStyle?.title}
           </div>
         </SelectValue>
       </SelectTrigger>
