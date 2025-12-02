@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wireframe",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/timeline.tsx",
+      "content": "import {\n  Wireframe,\n  WireframeSidebar,\n} from \"@/registry/new-york-v4/ui/wireframe\"\n\nexport default function WireframeDemo() {\n  return (\n    <Wireframe>\n      <WireframeSidebar position=\"right\">\n        {/* Right sidebar content */}\n      </WireframeSidebar>\n",
+      "type": "registry:ui"
+    }
+  ]
+}

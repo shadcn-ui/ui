@@ -58,6 +58,7 @@ import { TextareaDemo } from "./components/textarea-demo"
 import { ToggleDemo } from "./components/toggle-demo"
 import { ToggleGroupDemo } from "./components/toggle-group-demo"
 import { TooltipDemo } from "./components/tooltip-demo"
+import { WireframeDemo } from "./components/wireframe-demo"
 
 type ComponentConfig = {
   name: string
@@ -431,6 +432,13 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: ReactHookFormPage,
     type: "registry:page",
     href: "/sink/react-hook-form",
+  },
+  wireframe: {
+    name: "Wireframe",
+    component: WireframeDemo,
+    type: "registry:ui",
+    href: "/sink/wireframe",
+    label: "New",
   },
 }
 
