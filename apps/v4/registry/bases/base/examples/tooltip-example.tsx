@@ -32,10 +32,8 @@ function TooltipBasic() {
   return (
     <Example title="Basic">
       <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline" className="w-fit">
-            Show Tooltip
-          </Button>
+        <TooltipTrigger render={<Button variant="outline" className="w-fit" />}>
+          Show Tooltip
         </TooltipTrigger>
         <TooltipContent>
           <p>Add to library</p>
@@ -51,10 +49,10 @@ function TooltipSides() {
       <div className="flex flex-wrap gap-2">
         {(["top", "right", "bottom", "left"] as const).map((side) => (
           <Tooltip key={side}>
-            <TooltipTrigger asChild>
-              <Button variant="outline" className="w-fit capitalize">
-                {side}
-              </Button>
+            <TooltipTrigger
+              render={<Button variant="outline" className="w-fit capitalize" />}
+            >
+              {side}
             </TooltipTrigger>
             <TooltipContent side={side}>
               <p>Add to library</p>
@@ -70,15 +68,13 @@ function TooltipWithIcon() {
   return (
     <Example title="With Icon">
       <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="ghost" size="icon">
-            <IconPlaceholder
-              lucide="InfoIcon"
-              tabler="IconInfoCircle"
-              hugeicons="AlertCircleIcon"
-            />
-            <span className="sr-only">Info</span>
-          </Button>
+        <TooltipTrigger render={<Button variant="ghost" size="icon" />}>
+          <IconPlaceholder
+            lucide="InfoIcon"
+            tabler="IconInfoCircle"
+            hugeicons="AlertCircleIcon"
+          />
+          <span className="sr-only">Info</span>
         </TooltipTrigger>
         <TooltipContent>
           <p>Additional information</p>
@@ -92,10 +88,8 @@ function TooltipLongContent() {
   return (
     <Example title="Long Content">
       <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline" className="w-fit">
-            Show Tooltip
-          </Button>
+        <TooltipTrigger render={<Button variant="outline" className="w-fit" />}>
+          Show Tooltip
         </TooltipTrigger>
         <TooltipContent>
           To learn more about how this works, check out the docs. If you have
@@ -110,12 +104,10 @@ function TooltipDisabled() {
   return (
     <Example title="Disabled">
       <Tooltip>
-        <TooltipTrigger asChild>
-          <span className="inline-block w-fit">
-            <Button variant="outline" disabled>
-              Disabled
-            </Button>
-          </span>
+        <TooltipTrigger render={<span className="inline-block w-fit" />}>
+          <Button variant="outline" disabled>
+            Disabled
+          </Button>
         </TooltipTrigger>
         <TooltipContent>
           <p>This feature is currently unavailable</p>
@@ -129,16 +121,14 @@ function TooltipWithKeyboard() {
   return (
     <Example title="With Keyboard Shortcut">
       <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline" size="icon-sm">
-            <IconPlaceholder
-              lucide="SaveIcon"
-              tabler="IconDeviceFloppy"
-              hugeicons="FloppyDiskIcon"
-            />
-          </Button>
+        <TooltipTrigger render={<Button variant="outline" size="icon-sm" />}>
+          <IconPlaceholder
+            lucide="SaveIcon"
+            tabler="IconDeviceFloppy"
+            hugeicons="FloppyDiskIcon"
+          />
         </TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent className="pr-1.5">
           <div className="flex items-center gap-2">
             Save Changes <Kbd>S</Kbd>
           </div>
@@ -152,14 +142,16 @@ function TooltipOnLink() {
   return (
     <Example title="On Link">
       <Tooltip>
-        <TooltipTrigger asChild>
-          <a
-            href="#"
-            className="text-primary w-fit text-sm underline-offset-4 hover:underline"
-            onClick={(e) => e.preventDefault()}
-          >
-            Learn more
-          </a>
+        <TooltipTrigger
+          render={
+            <a
+              href="#"
+              className="text-primary w-fit text-sm underline-offset-4 hover:underline"
+              onClick={(e) => e.preventDefault()}
+            />
+          }
+        >
+          Learn more
         </TooltipTrigger>
         <TooltipContent>
           <p>Click to read the documentation</p>
@@ -173,10 +165,8 @@ function TooltipFormatted() {
   return (
     <Example title="Formatted Content">
       <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline" className="w-fit">
-            Status
-          </Button>
+        <TooltipTrigger render={<Button variant="outline" className="w-fit" />}>
+          Status
         </TooltipTrigger>
         <TooltipContent>
           <div className="flex flex-col gap-1">

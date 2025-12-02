@@ -33,6 +33,7 @@ function HoverCardContent({
         alignOffset={alignOffset}
         side={side}
         sideOffset={sideOffset}
+        className="isolate z-50"
       >
         <PreviewCardPrimitive.Popup
           data-slot="hover-card-content"

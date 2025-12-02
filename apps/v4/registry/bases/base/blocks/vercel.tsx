@@ -162,22 +162,20 @@ function UsageCard() {
               <Item
                 key={item.name}
                 size="xs"
-                asChild
                 className="px-0 group-hover/item-group:bg-transparent"
+                render={<a href="#" />}
               >
-                <a href="#">
-                  <ItemMedia variant="icon" className="text-primary">
-                    <CircularGauge percentage={item.percentage} />
-                  </ItemMedia>
-                  <ItemContent className="inline-block truncate">
-                    <ItemTitle className="inline">{item.name}</ItemTitle>
-                  </ItemContent>
-                  <ItemActions>
-                    <span className="text-muted-foreground font-mono text-xs font-medium tabular-nums">
-                      {item.value}
-                    </span>
-                  </ItemActions>
-                </a>
+                <ItemMedia variant="icon" className="text-primary">
+                  <CircularGauge percentage={item.percentage} />
+                </ItemMedia>
+                <ItemContent className="inline-block truncate">
+                  <ItemTitle className="inline">{item.name}</ItemTitle>
+                </ItemContent>
+                <ItemActions>
+                  <span className="text-muted-foreground font-mono text-xs font-medium tabular-nums">
+                    {item.value}
+                  </span>
+                </ItemActions>
               </Item>
             ))}
           </ItemGroup>
@@ -257,28 +255,28 @@ function DeploymentFilter() {
     <Example title="Deployment Filter" containerClassName="col-span-full">
       <div className="flex w-full flex-wrap items-center gap-2 *:w-full lg:*:w-auto">
         <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="outline" className="justify-start">
-              <IconPlaceholder
-                lucide="CalendarIcon"
-                tabler="IconCalendar"
-                hugeicons="Calendar01Icon"
-                data-icon="inline-start"
-                className="text-muted-foreground"
-              />
-              {dateRange?.from ? (
-                dateRange.to ? (
-                  <>
-                    {format(dateRange.from, "LLL dd, y")} -{" "}
-                    {format(dateRange.to, "LLL dd, y")}
-                  </>
-                ) : (
-                  format(dateRange.from, "LLL dd, y")
-                )
+          <PopoverTrigger
+            render={<Button variant="outline" className="justify-start" />}
+          >
+            <IconPlaceholder
+              lucide="CalendarIcon"
+              tabler="IconCalendar"
+              hugeicons="Calendar01Icon"
+              data-icon="inline-start"
+              className="text-muted-foreground"
+            />
+            {dateRange?.from ? (
+              dateRange.to ? (
+                <>
+                  {format(dateRange.from, "LLL dd, y")} -{" "}
+                  {format(dateRange.to, "LLL dd, y")}
+                </>
               ) : (
-                "Select Date Range"
-              )}
-            </Button>
+                format(dateRange.from, "LLL dd, y")
+              )
+            ) : (
+              "Select Date Range"
+            )}
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0" align="start">
             <Calendar
@@ -309,17 +307,17 @@ function DeploymentFilter() {
           </InputGroupAddon>
         </InputGroup>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="justify-between">
-              {selectedEnvironment}
-              <IconPlaceholder
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-                hugeicons="ArrowDown01Icon"
-                data-icon="inline-end"
-                className="text-muted-foreground"
-              />
-            </Button>
+          <DropdownMenuTrigger
+            render={<Button variant="outline" className="justify-between" />}
+          >
+            {selectedEnvironment}
+            <IconPlaceholder
+              lucide="ChevronDownIcon"
+              tabler="IconChevronDown"
+              hugeicons="ArrowDown01Icon"
+              data-icon="inline-end"
+              className="text-muted-foreground"
+            />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end">
             {environments.map((environment) => (
@@ -340,31 +338,31 @@ function DeploymentFilter() {
           </DropdownMenuContent>
         </DropdownMenu>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="justify-between">
-              <div className="flex items-center space-x-[-2px]">
-                {statuses.map((status) => (
-                  <div
-                    key={status.name}
-                    style={
-                      {
-                        "--color": status.color,
-                      } as React.CSSProperties
-                    }
-                    className="size-2.5 shrink-0 rounded-full border grayscale transition-all data-[active=true]:border-(--color) data-[active=true]:bg-(--color) data-[active=true]:grayscale-0"
-                    data-active={selectedStatuses.has(status.name)}
-                  />
-                ))}
-              </div>
-              Status {selectedStatuses.size}/{statuses.length}
-              <IconPlaceholder
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-                hugeicons="ArrowDown01Icon"
-                data-icon="inline-end"
-                className="text-muted-foreground ml-auto"
-              />
-            </Button>
+          <DropdownMenuTrigger
+            render={<Button variant="outline" className="justify-between" />}
+          >
+            <div className="flex items-center space-x-[-2px]">
+              {statuses.map((status) => (
+                <div
+                  key={status.name}
+                  style={
+                    {
+                      "--color": status.color,
+                    } as React.CSSProperties
+                  }
+                  className="size-2.5 shrink-0 rounded-full border grayscale transition-all data-[active=true]:border-(--color) data-[active=true]:bg-(--color) data-[active=true]:grayscale-0"
+                  data-active={selectedStatuses.has(status.name)}
+                />
+              ))}
+            </div>
+            Status {selectedStatuses.size}/{statuses.length}
+            <IconPlaceholder
+              lucide="ChevronDownIcon"
+              tabler="IconChevronDown"
+              hugeicons="ArrowDown01Icon"
+              data-icon="inline-end"
+              className="text-muted-foreground ml-auto"
+            />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end">
             {statuses.map((status) => {
@@ -457,15 +455,15 @@ function BillingList() {
               </ItemContent>
               <ItemActions>
                 <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <IconPlaceholder
-                        lucide="MoreHorizontalIcon"
-                        tabler="IconDots"
-                        hugeicons="MoreHorizontalIcon"
-                      />
-                      <span className="sr-only">More options</span>
-                    </Button>
+                  <DropdownMenuTrigger
+                    render={<Button variant="ghost" size="icon" />}
+                  >
+                    <IconPlaceholder
+                      lucide="MoreHorizontalIcon"
+                      tabler="IconDots"
+                      hugeicons="MoreHorizontalIcon"
+                    />
+                    <span className="sr-only">More options</span>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem>View invoice</DropdownMenuItem>
@@ -599,8 +597,8 @@ function ActivateAgentDialog() {
   return (
     <Example title="Activate Agent" className="items-center justify-center">
       <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="outline">Activate Agent</Button>
+        <DialogTrigger render={<Button variant="outline" />}>
+          Activate Agent
         </DialogTrigger>
         <DialogContent showCloseButton={false}>
           <DialogHeader>
@@ -641,8 +639,8 @@ function ActivateAgentDialog() {
             </AlertDescription>
           </Alert>
           <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+            <DialogClose render={<Button variant="outline" />}>
+              Cancel
             </DialogClose>
             <Button>Enable with $100 credits</Button>
           </DialogFooter>

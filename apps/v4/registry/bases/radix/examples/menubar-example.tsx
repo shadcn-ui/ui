@@ -22,6 +22,15 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/registry/bases/radix/ui/menubar"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/radix/ui/dialog"
+import { Button } from "@/registry/bases/radix/ui/button"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function MenubarExample() {
@@ -36,6 +45,7 @@ export default function MenubarExample() {
       <MenubarFormat />
       <MenubarInsert />
       <MenubarDestructive />
+      <MenubarInDialog />
     </ExampleWrapper>
   )
 }
@@ -505,6 +515,88 @@ function MenubarDestructive() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
+    </Example>
+  )
+}
+
+function MenubarInDialog() {
+  return (
+    <Example title="In Dialog">
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline">Open Dialog</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Menubar Example</DialogTitle>
+            <DialogDescription>
+              Use the menubar below to see the menu options.
+            </DialogDescription>
+          </DialogHeader>
+          <Menubar>
+            <MenubarMenu>
+              <MenubarTrigger>File</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>
+                  <IconPlaceholder
+                    lucide="CopyIcon"
+                    tabler="IconCopy"
+                    hugeicons="CopyIcon"
+                  />
+                  Copy
+                </MenubarItem>
+                <MenubarItem>
+                  <IconPlaceholder
+                    lucide="ScissorsIcon"
+                    tabler="IconCut"
+                    hugeicons="ScissorIcon"
+                  />
+                  Cut
+                </MenubarItem>
+                <MenubarItem>
+                  <IconPlaceholder
+                    lucide="ClipboardPasteIcon"
+                    tabler="IconClipboard"
+                    hugeicons="ClipboardIcon"
+                  />
+                  Paste
+                </MenubarItem>
+                <MenubarSeparator />
+                <MenubarSub>
+                  <MenubarSubTrigger>More Options</MenubarSubTrigger>
+                  <MenubarSubContent>
+                    <MenubarItem>Save Page...</MenubarItem>
+                    <MenubarItem>Create Shortcut...</MenubarItem>
+                    <MenubarItem>Name Window...</MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>Developer Tools</MenubarItem>
+                  </MenubarSubContent>
+                </MenubarSub>
+                <MenubarSeparator />
+                <MenubarItem variant="destructive">
+                  <IconPlaceholder
+                    lucide="TrashIcon"
+                    tabler="IconTrash"
+                    hugeicons="DeleteIcon"
+                  />
+                  Delete
+                </MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Edit</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>
+                  Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+                </MenubarItem>
+                <MenubarItem>
+                  Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+                </MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+          </Menubar>
+        </DialogContent>
+      </Dialog>
     </Example>
   )
 }

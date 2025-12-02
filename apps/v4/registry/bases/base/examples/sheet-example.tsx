@@ -30,9 +30,7 @@ function SheetWithForm() {
   return (
     <Example title="With Form">
       <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline">Open</Button>
-        </SheetTrigger>
+        <SheetTrigger render={<Button variant="outline" />}>Open</SheetTrigger>
         <SheetContent>
           <SheetHeader>
             <SheetTitle>Edit profile</SheetTitle>
@@ -55,9 +53,7 @@ function SheetWithForm() {
           </div>
           <SheetFooter>
             <Button type="submit">Save changes</Button>
-            <SheetClose asChild>
-              <Button variant="outline">Close</Button>
-            </SheetClose>
+            <SheetClose render={<Button variant="outline" />}>Close</SheetClose>
           </SheetFooter>
         </SheetContent>
       </Sheet>
@@ -69,8 +65,8 @@ function SheetNoCloseButton() {
   return (
     <Example title="No Close Button">
       <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline">No Close Button</Button>
+        <SheetTrigger render={<Button variant="outline" />}>
+          No Close Button
         </SheetTrigger>
         <SheetContent showCloseButton={false}>
           <SheetHeader>
@@ -80,11 +76,6 @@ function SheetNoCloseButton() {
               corner. You can only close it using the button below.
             </SheetDescription>
           </SheetHeader>
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button variant="outline">Close</Button>
-            </SheetClose>
-          </SheetFooter>
         </SheetContent>
       </Sheet>
     </Example>
@@ -99,10 +90,10 @@ function SheetWithSides() {
       <div className="flex flex-wrap gap-2">
         {SHEET_SIDES.map((side) => (
           <Sheet key={side}>
-            <SheetTrigger asChild>
-              <Button variant="outline" className="capitalize">
-                {side}
-              </Button>
+            <SheetTrigger
+              render={<Button variant="outline" className="capitalize" />}
+            >
+              {side}
             </SheetTrigger>
             <SheetContent
               side={side}
@@ -134,8 +125,8 @@ function SheetWithSides() {
               </div>
               <SheetFooter>
                 <Button type="submit">Save changes</Button>
-                <SheetClose asChild>
-                  <Button variant="outline">Cancel</Button>
+                <SheetClose render={<Button variant="outline" />}>
+                  Cancel
                 </SheetClose>
               </SheetFooter>
             </SheetContent>

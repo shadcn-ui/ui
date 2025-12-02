@@ -48,7 +48,7 @@ function SelectTrigger({
           lucide="ChevronDownIcon"
           tabler="IconSelector"
           hugeicons="UnfoldMoreIcon"
-          className="size-4 opacity-50"
+          className="cn-select-trigger-icon pointer-events-none"
         />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
@@ -58,7 +58,7 @@ function SelectTrigger({
 function SelectContent({
   className,
   children,
-  position = "popper",
+  position = "item-aligned",
   align = "center",
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content>) {
@@ -125,6 +125,7 @@ function SelectItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            className="cn-select-item-indicator-icon pointer-events-none"
           />
         </SelectPrimitive.ItemIndicator>
       </span>

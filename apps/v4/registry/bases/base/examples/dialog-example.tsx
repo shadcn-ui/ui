@@ -43,6 +43,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectSeparator,
   SelectTrigger,
@@ -222,6 +223,7 @@ function DialogNoCloseButton() {
 }
 
 const spokenLanguages = [
+  { label: "Auto", value: "auto" },
   { label: "English", value: "en" },
   { label: "Spanish", value: "es" },
   { label: "French", value: "fr" },
@@ -250,6 +252,21 @@ const voices = [
   { label: "Karen", value: "karen" },
   { label: "Sam", value: "sam" },
   { label: "Daniel", value: "daniel" },
+]
+
+const themes = [
+  { label: "Light", value: "light" },
+  { label: "Dark", value: "dark" },
+  { label: "System", value: "system" },
+]
+
+const accents = [
+  { label: "Default", value: "default" },
+  { label: "Red", value: "red" },
+  { label: "Blue", value: "blue" },
+  { label: "Green", value: "green" },
+  { label: "Purple", value: "purple" },
+  { label: "Pink", value: "pink" },
 ]
 
 function DialogChatSettings() {
@@ -303,14 +320,25 @@ function DialogChatSettings() {
                     <FieldGroup>
                       <Field orientation="horizontal">
                         <FieldLabel htmlFor="theme">Theme</FieldLabel>
-                        <Select value={theme} onValueChange={setTheme}>
+                        <Select
+                          items={themes}
+                          value={theme}
+                          onValueChange={(value) => setTheme(value as string)}
+                        >
                           <SelectTrigger id="theme">
-                            <SelectValue placeholder="Select" />
+                            <SelectValue />
                           </SelectTrigger>
                           <SelectContent align="end">
-                            <SelectItem value="light">Light</SelectItem>
-                            <SelectItem value="dark">Dark</SelectItem>
-                            <SelectItem value="system">System</SelectItem>
+                            <SelectGroup>
+                              {themes.map((theme) => (
+                                <SelectItem
+                                  key={theme.value}
+                                  value={theme.value}
+                                >
+                                  {theme.label}
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -320,37 +348,26 @@ function DialogChatSettings() {
                           Accent Color
                         </FieldLabel>
                         <Select
+                          items={accents}
                           value={accentColor}
-                          onValueChange={setAccentColor}
+                          onValueChange={(value) =>
+                            setAccentColor(value as string)
+                          }
                         >
                           <SelectTrigger id="accent-color">
-                            <SelectValue placeholder="Select" />
+                            <SelectValue />
                           </SelectTrigger>
                           <SelectContent align="end">
-                            <SelectItem value="default">
-                              <div className="size-3 rounded-full bg-neutral-500 dark:bg-neutral-400" />
-                              Default
-                            </SelectItem>
-                            <SelectItem value="red">
-                              <div className="size-3 rounded-full bg-red-500 dark:bg-red-400" />
-                              Red
-                            </SelectItem>
-                            <SelectItem value="blue">
-                              <div className="size-3 rounded-full bg-blue-500 dark:bg-blue-400" />
-                              Blue
-                            </SelectItem>
-                            <SelectItem value="green">
-                              <div className="size-3 rounded-full bg-green-500 dark:bg-green-400" />
-                              Green
-                            </SelectItem>
-                            <SelectItem value="purple">
-                              <div className="size-3 rounded-full bg-purple-500 dark:bg-purple-400" />
-                              Purple
-                            </SelectItem>
-                            <SelectItem value="pink">
-                              <div className="size-3 rounded-full bg-pink-500 dark:bg-pink-400" />
-                              Pink
-                            </SelectItem>
+                            <SelectGroup>
+                              {accents.map((accent) => (
+                                <SelectItem
+                                  key={accent.value}
+                                  value={accent.value}
+                                >
+                                  {accent.label}
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -367,39 +384,51 @@ function DialogChatSettings() {
                           </FieldDescription>
                         </FieldContent>
                         <Select
+                          items={spokenLanguages}
                           value={spokenLanguage}
-                          onValueChange={setSpokenLanguage}
+                          onValueChange={(value) =>
+                            setSpokenLanguage(value as string)
+                          }
                         >
                           <SelectTrigger id="spoken-language">
-                            <SelectValue placeholder="Select" />
+                            <SelectValue />
                           </SelectTrigger>
-                          <SelectContent align="end" position="item-aligned">
-                            <SelectItem value="auto">Auto</SelectItem>
-                            <SelectSeparator />
-                            {spokenLanguages.map((language) => (
-                              <SelectItem
-                                key={language.value}
-                                value={language.value}
-                              >
-                                {language.label}
-                              </SelectItem>
-                            ))}
+                          <SelectContent align="end">
+                            <SelectGroup>
+                              {spokenLanguages.map((language) => (
+                                <SelectItem
+                                  key={language.value}
+                                  value={language.value}
+                                >
+                                  {language.label}
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
                       <FieldSeparator />
                       <Field orientation="horizontal">
                         <FieldLabel htmlFor="voice">Voice</FieldLabel>
-                        <Select value={voice} onValueChange={setVoice}>
+                        <Select
+                          items={voices}
+                          value={voice}
+                          onValueChange={(value) => setVoice(value as string)}
+                        >
                           <SelectTrigger id="voice">
-                            <SelectValue placeholder="Select" />
+                            <SelectValue />
                           </SelectTrigger>
-                          <SelectContent align="end" position="item-aligned">
-                            {voices.map((voice) => (
-                              <SelectItem key={voice.value} value={voice.value}>
-                                {voice.label}
-                              </SelectItem>
-                            ))}
+                          <SelectContent align="end">
+                            <SelectGroup>
+                              {voices.map((voice) => (
+                                <SelectItem
+                                  key={voice.value}
+                                  value={voice.value}
+                                >
+                                  {voice.label}
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -465,14 +494,14 @@ function DialogChatSettings() {
                         />
                         <InputGroupAddon align="inline-end">
                           <Tooltip>
-                            <TooltipTrigger asChild>
-                              <InputGroupButton size="icon-xs">
-                                <IconPlaceholder
-                                  lucide="InfoIcon"
-                                  tabler="IconInfoCircle"
-                                  hugeicons="AlertCircleIcon"
-                                />
-                              </InputGroupButton>
+                            <TooltipTrigger
+                              render={<InputGroupButton size="icon-xs" />}
+                            >
+                              <IconPlaceholder
+                                lucide="InfoIcon"
+                                tabler="IconInfoCircle"
+                                hugeicons="AlertCircleIcon"
+                              />
                             </TooltipTrigger>
                             <TooltipContent className="flex items-center gap-2">
                               Used to identify you in the chat. <Kbd>N</Kbd>

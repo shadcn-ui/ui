@@ -6,6 +6,7 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/radix/components/example"
+import { Button } from "@/registry/bases/radix/ui/button"
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -22,6 +23,14 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/registry/bases/radix/ui/context-menu"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/radix/ui/dialog"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function ContextMenuExample() {
@@ -36,6 +45,7 @@ export default function ContextMenuExample() {
       <ContextMenuWithCheckboxes />
       <ContextMenuWithRadio />
       <ContextMenuWithDestructive />
+      <ContextMenuInDialog />
     </ExampleWrapper>
   )
 }
@@ -384,6 +394,77 @@ function ContextMenuWithSides() {
           </ContextMenuContent>
         </ContextMenu>
       </div>
+    </Example>
+  )
+}
+
+function ContextMenuInDialog() {
+  return (
+    <Example title="In Dialog">
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline" />}>
+          Open Dialog
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Context Menu Example</DialogTitle>
+            <DialogDescription>
+              Right click on the area below to see the context menu.
+            </DialogDescription>
+          </DialogHeader>
+          <ContextMenu>
+            <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
+              Right click here
+            </ContextMenuTrigger>
+            <ContextMenuContent>
+              <ContextMenuItem>
+                <IconPlaceholder
+                  lucide="CopyIcon"
+                  tabler="IconCopy"
+                  hugeicons="CopyIcon"
+                />
+                Copy
+              </ContextMenuItem>
+              <ContextMenuItem>
+                <IconPlaceholder
+                  lucide="ScissorsIcon"
+                  tabler="IconCut"
+                  hugeicons="ScissorIcon"
+                />
+                Cut
+              </ContextMenuItem>
+              <ContextMenuItem>
+                <IconPlaceholder
+                  lucide="ClipboardPasteIcon"
+                  tabler="IconClipboard"
+                  hugeicons="ClipboardIcon"
+                />
+                Paste
+              </ContextMenuItem>
+              <ContextMenuSeparator />
+              <ContextMenuSub>
+                <ContextMenuSubTrigger>More Options</ContextMenuSubTrigger>
+                <ContextMenuSubContent>
+                  <ContextMenuItem>Save Page...</ContextMenuItem>
+                  <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+                  <ContextMenuItem>Name Window...</ContextMenuItem>
+                  <ContextMenuSeparator />
+                  <ContextMenuItem>Developer Tools</ContextMenuItem>
+                </ContextMenuSubContent>
+              </ContextMenuSub>
+              <ContextMenuSeparator />
+              <ContextMenuItem variant="destructive">
+                <IconPlaceholder
+                  lucide="TrashIcon"
+                  tabler="IconTrash"
+                  hugeicons="DeleteIcon"
+                />
+                Delete
+              </ContextMenuItem>
+            </ContextMenuContent>
+          </ContextMenu>
+        </DialogContent>
+      </Dialog>
     </Example>
   )
 }

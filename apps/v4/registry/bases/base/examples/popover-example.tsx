@@ -13,6 +13,14 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/registry/bases/base/ui/popover"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/base/ui/dialog"
 
 export default function PopoverExample() {
   return (
@@ -20,6 +28,7 @@ export default function PopoverExample() {
       <PopoverBasic />
       <PopoverWithForm />
       <PopoverAlignments />
+      <PopoverInDialog />
     </ExampleWrapper>
   )
 }
@@ -107,6 +116,40 @@ function PopoverAlignments() {
           </PopoverContent>
         </Popover>
       </div>
+    </Example>
+  )
+}
+
+function PopoverInDialog() {
+  return (
+    <Example title="In Dialog">
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline" />}>
+          Open Dialog
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Popover Example</DialogTitle>
+            <DialogDescription>
+              Click the button below to see the popover.
+            </DialogDescription>
+          </DialogHeader>
+          <Popover>
+            <PopoverTrigger render={<Button variant="outline" className="w-fit" />}>
+              Open Popover
+            </PopoverTrigger>
+            <PopoverContent align="start">
+              <PopoverHeader>
+                <PopoverTitle>Popover in Dialog</PopoverTitle>
+                <PopoverDescription>
+                  This popover appears inside a dialog. Click the button to open
+                  it.
+                </PopoverDescription>
+              </PopoverHeader>
+            </PopoverContent>
+          </Popover>
+        </DialogContent>
+      </Dialog>
     </Example>
   )
 }

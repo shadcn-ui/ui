@@ -14,6 +14,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/registry/bases/radix/ui/alert-dialog"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/radix/ui/dialog"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
@@ -25,6 +33,7 @@ export default function AlertDialogExample() {
       <AlertDialogWithMedia />
       <AlertDialogSmallWithMedia />
       <AlertDialogDestructive />
+      <AlertDialogInDialog />
     </ExampleWrapper>
   )
 }
@@ -170,6 +179,46 @@ function AlertDialogDestructive() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+    </Example>
+  )
+}
+
+function AlertDialogInDialog() {
+  return (
+    <Example title="In Dialog">
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline">Open Dialog</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Alert Dialog Example</DialogTitle>
+            <DialogDescription>
+              Click the button below to open an alert dialog.
+            </DialogDescription>
+          </DialogHeader>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="outline" className="w-fit">
+                Open Alert Dialog
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent size="sm">
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete your
+                  account and remove your data from our servers.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction>Continue</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </DialogContent>
+      </Dialog>
     </Example>
   )
 }

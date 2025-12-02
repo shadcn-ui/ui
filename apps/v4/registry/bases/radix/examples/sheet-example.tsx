@@ -80,11 +80,6 @@ function SheetNoCloseButton() {
               corner. You can only close it using the button below.
             </SheetDescription>
           </SheetHeader>
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button variant="outline">Close</Button>
-            </SheetClose>
-          </SheetFooter>
         </SheetContent>
       </Sheet>
     </Example>

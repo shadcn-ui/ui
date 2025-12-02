@@ -29,6 +29,14 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/bases/base/ui/dropdown-menu"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/base/ui/dialog"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function DropdownMenuExample() {
@@ -44,6 +52,7 @@ export default function DropdownMenuExample() {
       <DropdownMenuWithRadioIcons />
       <DropdownMenuWithDestructive />
       <DropdownMenuWithAvatar />
+      <DropdownMenuInDialog />
     </ExampleWrapper>
   )
 }
@@ -585,6 +594,81 @@ function DropdownMenuWithAvatar() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+    </Example>
+  )
+}
+
+function DropdownMenuInDialog() {
+  return (
+    <Example title="In Dialog">
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline" />}>
+          Open Dialog
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Dropdown Menu Example</DialogTitle>
+            <DialogDescription>
+              Click the button below to see the dropdown menu.
+            </DialogDescription>
+          </DialogHeader>
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={<Button variant="outline" className="w-fit" />}
+            >
+              Open Menu
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <IconPlaceholder
+                  lucide="CopyIcon"
+                  tabler="IconCopy"
+                  hugeicons="CopyIcon"
+                />
+                Copy
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <IconPlaceholder
+                  lucide="ScissorsIcon"
+                  tabler="IconCut"
+                  hugeicons="ScissorIcon"
+                />
+                Cut
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <IconPlaceholder
+                  lucide="ClipboardPasteIcon"
+                  tabler="IconClipboard"
+                  hugeicons="ClipboardIcon"
+                />
+                Paste
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>More Options</DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem>Save Page...</DropdownMenuItem>
+                    <DropdownMenuItem>Create Shortcut...</DropdownMenuItem>
+                    <DropdownMenuItem>Name Window...</DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>Developer Tools</DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem variant="destructive">
+                <IconPlaceholder
+                  lucide="TrashIcon"
+                  tabler="IconTrash"
+                  hugeicons="DeleteIcon"
+                />
+                Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </DialogContent>
+      </Dialog>
     </Example>
   )
 }

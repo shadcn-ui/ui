@@ -499,14 +499,12 @@ function ButtonGroupNested() {
           <InputGroup>
             <InputGroupInput placeholder="Send a message..." />
             <Tooltip>
-              <TooltipTrigger asChild>
-                <InputGroupAddon align="inline-end">
-                  <IconPlaceholder
-                    lucide="AudioLinesIcon"
-                    tabler="IconHeadphones"
-                    hugeicons="AudioWave01Icon"
-                  />
-                </InputGroupAddon>
+              <TooltipTrigger render={<InputGroupAddon align="inline-end" />}>
+                <IconPlaceholder
+                  lucide="AudioLinesIcon"
+                  tabler="IconHeadphones"
+                  hugeicons="AudioWave01Icon"
+                />
               </TooltipTrigger>
               <TooltipContent>Voice Mode</TooltipContent>
             </Tooltip>

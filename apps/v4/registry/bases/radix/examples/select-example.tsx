@@ -1,3 +1,7 @@
+"use client"
+
+import * as React from "react"
+
 import {
   Example,
   ExampleWrapper,
@@ -10,6 +14,12 @@ import {
   FieldLabel,
 } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemTitle,
+} from "@/registry/bases/radix/ui/item"
 import {
   NativeSelect,
   NativeSelectOption,
@@ -34,6 +44,7 @@ export default function SelectExample() {
       <SelectWithGroups />
       <SelectLargeList />
       <SelectSizes />
+      <SelectPlan />
       <SelectWithButton />
       <SelectItemAligned />
       <SelectWithField />
@@ -52,13 +63,15 @@ function SelectBasic() {
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes" disabled>
-            Grapes
-          </SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
+          <SelectGroup>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes" disabled>
+              Grapes
+            </SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </SelectGroup>
         </SelectContent>
       </Select>
     </Example>
@@ -85,30 +98,32 @@ function SelectWithIcons() {
             />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="line">
-              <IconPlaceholder
-                lucide="ChartLineIcon"
-                tabler="IconChartLine"
-                hugeicons="Chart03Icon"
-              />
-              Line
-            </SelectItem>
-            <SelectItem value="bar">
-              <IconPlaceholder
-                lucide="ChartBarIcon"
-                tabler="IconChartBar"
-                hugeicons="Chart03Icon"
-              />
-              Bar
-            </SelectItem>
-            <SelectItem value="pie">
-              <IconPlaceholder
-                lucide="ChartPieIcon"
-                tabler="IconChartPie"
-                hugeicons="Chart03Icon"
-              />
-              Pie
-            </SelectItem>
+            <SelectGroup>
+              <SelectItem value="line">
+                <IconPlaceholder
+                  lucide="ChartLineIcon"
+                  tabler="IconChartLine"
+                  hugeicons="Chart03Icon"
+                />
+                Line
+              </SelectItem>
+              <SelectItem value="bar">
+                <IconPlaceholder
+                  lucide="ChartBarIcon"
+                  tabler="IconChartBar"
+                  hugeicons="Chart03Icon"
+                />
+                Bar
+              </SelectItem>
+              <SelectItem value="pie">
+                <IconPlaceholder
+                  lucide="ChartPieIcon"
+                  tabler="IconChartPie"
+                  hugeicons="Chart03Icon"
+                />
+                Pie
+              </SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <Select>
@@ -127,30 +142,32 @@ function SelectWithIcons() {
             />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="line">
-              <IconPlaceholder
-                lucide="ChartLineIcon"
-                tabler="IconChartLine"
-                hugeicons="Chart03Icon"
-              />
-              Line
-            </SelectItem>
-            <SelectItem value="bar">
-              <IconPlaceholder
-                lucide="ChartBarIcon"
-                tabler="IconChartBar"
-                hugeicons="Chart03Icon"
-              />
-              Bar
-            </SelectItem>
-            <SelectItem value="pie">
-              <IconPlaceholder
-                lucide="ChartPieIcon"
-                tabler="IconChartPie"
-                hugeicons="Chart03Icon"
-              />
-              Pie
-            </SelectItem>
+            <SelectGroup>
+              <SelectItem value="line">
+                <IconPlaceholder
+                  lucide="ChartLineIcon"
+                  tabler="IconChartLine"
+                  hugeicons="Chart03Icon"
+                />
+                Line
+              </SelectItem>
+              <SelectItem value="bar">
+                <IconPlaceholder
+                  lucide="ChartBarIcon"
+                  tabler="IconChartBar"
+                  hugeicons="Chart03Icon"
+                />
+                Bar
+              </SelectItem>
+              <SelectItem value="pie">
+                <IconPlaceholder
+                  lucide="ChartPieIcon"
+                  tabler="IconChartPie"
+                  hugeicons="Chart03Icon"
+                />
+                Pie
+              </SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
       </div>
@@ -193,11 +210,13 @@ function SelectLargeList() {
           <SelectValue placeholder="Select an item" />
         </SelectTrigger>
         <SelectContent>
-          {Array.from({ length: 100 }).map((_, i) => (
-            <SelectItem key={i} value={`item-${i}`}>
-              Item {i}
-            </SelectItem>
-          ))}
+          <SelectGroup>
+            {Array.from({ length: 100 }).map((_, i) => (
+              <SelectItem key={i} value={`item-${i}`}>
+                Item {i}
+              </SelectItem>
+            ))}
+          </SelectGroup>
         </SelectContent>
       </Select>
     </Example>
@@ -213,9 +232,11 @@ function SelectSizes() {
             <SelectValue placeholder="Small size" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectGroup>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="blueberry">Blueberry</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <Select>
@@ -223,9 +244,11 @@ function SelectSizes() {
             <SelectValue placeholder="Default size" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectGroup>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="blueberry">Blueberry</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
       </div>
@@ -243,9 +266,11 @@ function SelectWithButton() {
               <SelectValue placeholder="Small" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="apple">Apple</SelectItem>
-              <SelectItem value="banana">Banana</SelectItem>
-              <SelectItem value="blueberry">Blueberry</SelectItem>
+              <SelectGroup>
+                <SelectItem value="apple">Apple</SelectItem>
+                <SelectItem value="banana">Banana</SelectItem>
+                <SelectItem value="blueberry">Blueberry</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
           <Button variant="outline" size="sm">
@@ -258,9 +283,11 @@ function SelectWithButton() {
               <SelectValue placeholder="Default" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="apple">Apple</SelectItem>
-              <SelectItem value="banana">Banana</SelectItem>
-              <SelectItem value="blueberry">Blueberry</SelectItem>
+              <SelectGroup>
+                <SelectItem value="apple">Apple</SelectItem>
+                <SelectItem value="banana">Banana</SelectItem>
+                <SelectItem value="blueberry">Blueberry</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
           <Button variant="outline">Submit</Button>
@@ -278,13 +305,15 @@ function SelectItemAligned() {
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent position="item-aligned">
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes" disabled>
-            Grapes
-          </SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
+          <SelectGroup>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes" disabled>
+              Grapes
+            </SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </SelectGroup>
         </SelectContent>
       </Select>
     </Example>
@@ -301,11 +330,13 @@ function SelectWithField() {
             <SelectValue placeholder="Select a fruit" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
-            <SelectItem value="grapes">Grapes</SelectItem>
-            <SelectItem value="pineapple">Pineapple</SelectItem>
+            <SelectGroup>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="blueberry">Blueberry</SelectItem>
+              <SelectItem value="grapes">Grapes</SelectItem>
+              <SelectItem value="pineapple">Pineapple</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <FieldDescription>
@@ -325,11 +356,13 @@ function SelectInvalid() {
             <SelectValue placeholder="Select a fruit" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
-            <SelectItem value="grapes">Grapes</SelectItem>
-            <SelectItem value="pineapple">Pineapple</SelectItem>
+            <SelectGroup>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="blueberry">Blueberry</SelectItem>
+              <SelectItem value="grapes">Grapes</SelectItem>
+              <SelectItem value="pineapple">Pineapple</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <Field data-invalid>
@@ -339,11 +372,13 @@ function SelectInvalid() {
               <SelectValue placeholder="Select a fruit" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="apple">Apple</SelectItem>
-              <SelectItem value="banana">Banana</SelectItem>
-              <SelectItem value="blueberry">Blueberry</SelectItem>
-              <SelectItem value="grapes">Grapes</SelectItem>
-              <SelectItem value="pineapple">Pineapple</SelectItem>
+              <SelectGroup>
+                <SelectItem value="apple">Apple</SelectItem>
+                <SelectItem value="banana">Banana</SelectItem>
+                <SelectItem value="blueberry">Blueberry</SelectItem>
+                <SelectItem value="grapes">Grapes</SelectItem>
+                <SelectItem value="pineapple">Pineapple</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
           <FieldError errors={[{ message: "Please select a valid fruit." }]} />
@@ -363,9 +398,11 @@ function SelectInline() {
             <SelectValue placeholder="Filter" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            <SelectItem value="active">Active</SelectItem>
-            <SelectItem value="inactive">Inactive</SelectItem>
+            <SelectGroup>
+              <SelectItem value="all">All</SelectItem>
+              <SelectItem value="active">Active</SelectItem>
+              <SelectItem value="inactive">Inactive</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <NativeSelect className="w-[140px]">
@@ -387,15 +424,72 @@ function SelectDisabled() {
           <SelectValue placeholder="Disabled" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes" disabled>
-            Grapes
-          </SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
+          <SelectGroup>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes" disabled>
+              Grapes
+            </SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </SelectGroup>
         </SelectContent>
       </Select>
     </Example>
+  )
+}
+
+const plans = [
+  {
+    name: "Starter",
+    description: "Perfect for individuals getting started.",
+  },
+  {
+    name: "Professional",
+    description: "Ideal for growing teams and businesses.",
+  },
+  {
+    name: "Enterprise",
+    description: "Advanced features for large organizations.",
+  },
+]
+
+function SelectPlan() {
+  const [plan, setPlan] = React.useState<string>(plans[0].name)
+
+  const selectedPlan = plans.find((p) => p.name === plan)
+
+  return (
+    <Example title="Subscription Plan">
+      <Select value={plan} onValueChange={setPlan}>
+        <SelectTrigger className="h-auto! w-72">
+          <SelectValue>
+            {selectedPlan && <SelectPlanItem plan={selectedPlan} />}
+          </SelectValue>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {plans.map((plan) => (
+              <SelectItem key={plan.name} value={plan.name}>
+                <SelectPlanItem plan={plan} />
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </Example>
+  )
+}
+
+function SelectPlanItem({ plan }: { plan: (typeof plans)[number] }) {
+  return (
+    <Item size="xs" className="w-full p-0">
+      <ItemContent className="gap-0">
+        <ItemTitle>{plan.name}</ItemTitle>
+        <ItemDescription className="text-xs">
+          {plan.description}
+        </ItemDescription>
+      </ItemContent>
+    </Item>
   )
 }
