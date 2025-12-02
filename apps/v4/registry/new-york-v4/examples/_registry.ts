@@ -875,6 +875,50 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "file-drop-zone-demo",
+    type: "registry:example",
+    registryDependencies: ["file-drop-zone"],
+    files: [
+      {
+        path: "examples/file-drop-zone-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "file-drop-zone-single",
+    type: "registry:example",
+    registryDependencies: ["file-drop-zone"],
+    files: [
+      {
+        path: "examples/file-drop-zone-single.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "file-drop-zone-disabled",
+    type: "registry:example",
+    registryDependencies: ["file-drop-zone"],
+    files: [
+      {
+        path: "examples/file-drop-zone-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "file-drop-zone-with-validation",
+    type: "registry:example",
+    registryDependencies: ["file-drop-zone"],
+    files: [
+      {
+        path: "examples/file-drop-zone-with-validation.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "field-demo",
     type: "registry:example",
     registryDependencies: ["field"],

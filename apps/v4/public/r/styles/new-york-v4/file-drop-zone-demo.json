@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-drop-zone-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "file-drop-zone"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/file-drop-zone-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport {\n  FileDropZone,\n  FileDropZoneArea,\n  FileDropZoneContent,\n  FileDropZoneList,\n  type FileWithMeta,\n} from \"@/registry/new-york-v4/ui/file-drop-zone\"\n\nexport default function FileDropZoneDemo() {\n  const [files, setFiles] = React.useState<FileWithMeta[]>([])\n\n  // Simulate upload progress\n  React.useEffect(() => {\n    const pendingFiles = files.filter((f) => f.status === \"pending\")\n    if (pendingFiles.length === 0) return\n\n    // Start uploading pending files\n    setFiles((prev) =>\n      prev.map((f) =>\n        f.status === \"pending\" ? { ...f, status: \"uploading\" as const } : f\n      )\n    )\n\n    // Simulate progress\n    const interval = setInterval(() => {\n      setFiles((prev) =>\n        prev.map((f) => {\n          if (f.status !== \"uploading\") return f\n          const newProgress = Math.min(f.progress + 10, 100)\n          if (newProgress === 100) {\n            return { ...f, status: \"complete\" as const, progress: 100 }\n          }\n          return { ...f, progress: newProgress }\n        })\n      )\n    }, 200)\n\n    return () => clearInterval(interval)\n  }, [files])\n\n  return (\n    <FileDropZone\n      files={files}\n      onFilesChange={setFiles}\n      className=\"w-full max-w-md\"\n    >\n      <FileDropZoneArea>\n        <FileDropZoneContent />\n      </FileDropZoneArea>\n      <FileDropZoneList />\n    </FileDropZone>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

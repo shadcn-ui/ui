@@ -257,6 +257,40 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "file-drop-zone",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["progress"],
+    files: [
+      {
+        path: "ui/file-drop-zone.tsx",
+        type: "registry:ui",
+      },
+    ],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            keyframes: {
+              "fade-in": {
+                from: { opacity: "0" },
+                to: { opacity: "1" },
+              },
+              "slide-in-from-bottom": {
+                from: { transform: "translateY(0.5rem)" },
+                to: { transform: "translateY(0)" },
+              },
+            },
+            animation: {
+              "fade-in": "fade-in 0.2s ease-out",
+              "slide-in-from-bottom": "slide-in-from-bottom 0.2s ease-out",
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     name: "field",
     type: "registry:ui",
     registryDependencies: ["label", "separator"],

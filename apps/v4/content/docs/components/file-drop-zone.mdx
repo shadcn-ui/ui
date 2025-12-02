@@ -1,0 +1,282 @@
+---
+title: File Drop Zone
+description: A drag-and-drop file upload component with progress indicators, file type icons, and validation support.
+component: true
+---
+
+<ComponentPreview name="file-drop-zone-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add file-drop-zone
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="file-drop-zone"
+  title="components/ui/file-drop-zone.tsx"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  FileDropZone,
+  FileDropZoneArea,
+  FileDropZoneContent,
+  FileDropZoneError,
+  FileDropZoneList,
+  type FileWithMeta,
+} from "@/components/ui/file-drop-zone"
+```
+
+```tsx
+const [files, setFiles] = React.useState<FileWithMeta[]>([])
+
+<FileDropZone files={files} onFilesChange={setFiles}>
+  <FileDropZoneArea>
+    <FileDropZoneContent />
+  </FileDropZoneArea>
+  <FileDropZoneList />
+</FileDropZone>
+```
+
+## Examples
+
+### Single File
+
+Use `multiple={false}` to allow only a single file to be uploaded at a time.
+
+<ComponentPreview name="file-drop-zone-single" />
+
+### Disabled
+
+Use the `disabled` prop to disable the drop zone.
+
+<ComponentPreview name="file-drop-zone-disabled" />
+
+### With Validation
+
+Use the `maxSize`, `maxFiles`, and `accept` props to validate files. Display errors using `FileDropZoneError`.
+
+<ComponentPreview name="file-drop-zone-with-validation" />
+
+## Handling Uploads
+
+The FileDropZone component manages the file list UI but does not handle actual uploads. You control the upload logic and update file status accordingly:
+
+```tsx
+const [files, setFiles] = React.useState<FileWithMeta[]>([])
+
+// When files change, start uploading pending files
+React.useEffect(() => {
+  const pendingFiles = files.filter((f) => f.status === "pending")
+
+  pendingFiles.forEach(async (fileItem) => {
+    // Mark as uploading
+    setFiles((prev) =>
+      prev.map((f) =>
+        f.id === fileItem.id ? { ...f, status: "uploading" } : f
+      )
+    )
+
+    try {
+      // Your upload logic here
+      await uploadFile(fileItem.file, (progress) => {
+        setFiles((prev) =>
+          prev.map((f) => (f.id === fileItem.id ? { ...f, progress } : f))
+        )
+      })
+
+      // Mark as complete
+      setFiles((prev) =>
+        prev.map((f) =>
+          f.id === fileItem.id ? { ...f, status: "complete", progress: 100 } : f
+        )
+      )
+    } catch (error) {
+      // Mark as error
+      setFiles((prev) =>
+        prev.map((f) =>
+          f.id === fileItem.id
+            ? { ...f, status: "error", error: "Upload failed" }
+            : f
+        )
+      )
+    }
+  })
+}, [files])
+```
+
+## Custom Thumbnails
+
+For image files, you can generate thumbnails using `URL.createObjectURL()`:
+
+```tsx
+const handleFilesChange = (newFiles: FileWithMeta[]) => {
+  const filesWithThumbnails = newFiles.map((f) => {
+    if (f.file.type.startsWith("image/") && !f.thumbnail) {
+      return { ...f, thumbnail: URL.createObjectURL(f.file) }
+    }
+    return f
+  })
+  setFiles(filesWithThumbnails)
+}
+
+// Remember to revoke object URLs when files are removed
+const handleRemove = (id: string) => {
+  const file = files.find((f) => f.id === id)
+  if (file?.thumbnail) {
+    URL.revokeObjectURL(file.thumbnail)
+  }
+  setFiles((prev) => prev.filter((f) => f.id !== id))
+}
+```
+
+## API Reference
+
+### FileDropZone
+
+The root component that provides context and handles drag-and-drop events.
+
+| Prop            | Type                              | Default    | Description                                             |
+| --------------- | --------------------------------- | ---------- | ------------------------------------------------------- |
+| `files`         | `FileWithMeta[]`                  |            | Controlled files array                                  |
+| `onFilesChange` | `(files: FileWithMeta[]) => void` |            | Callback when files change                              |
+| `multiple`      | `boolean`                         | `true`     | Allow multiple files                                    |
+| `maxFiles`      | `number`                          | `Infinity` | Maximum number of files                                 |
+| `maxSize`       | `number`                          | `Infinity` | Maximum file size in bytes                              |
+| `accept`        | `string`                          |            | Accepted file types (e.g., `"image/*,application/pdf"`) |
+| `disabled`      | `boolean`                         | `false`    | Disable the drop zone                                   |
+| `aria-invalid`  | `boolean`                         | `false`    | Show error styling                                      |
+
+### FileWithMeta
+
+The file object type used in the `files` array.
+
+```tsx
+interface FileWithMeta {
+  id: string // Unique identifier
+  file: File // The actual File object
+  status: FileStatus // "pending" | "uploading" | "complete" | "error"
+  progress: number // Upload progress (0-100)
+  error?: string // Error message
+  thumbnail?: string // Optional thumbnail URL
+}
+```
+
+### FileDropZoneArea
+
+The drop zone area with dashed border styling.
+
+| Prop        | Type                   | Default     | Description            |
+| ----------- | ---------------------- | ----------- | ---------------------- |
+| `variant`   | `"default" \| "ghost"` | `"default"` | Visual variant         |
+| `className` | `string`               |             | Additional CSS classes |
+
+```tsx
+<FileDropZoneArea variant="default">
+  <FileDropZoneContent />
+</FileDropZoneArea>
+```
+
+### FileDropZoneContent
+
+Default content for the drop zone (icon and text). Can be replaced with custom content.
+
+```tsx
+// Default content
+<FileDropZoneContent />
+
+// Custom content
+<FileDropZoneContent>
+  <MyCustomIcon />
+  <p>Drop your files here</p>
+</FileDropZoneContent>
+```
+
+### FileDropZoneList
+
+Renders the list of files. Automatically renders `FileDropZoneItem` for each file, or accepts custom children.
+
+```tsx
+// Auto-render items
+<FileDropZoneList />
+
+// Custom rendering
+<FileDropZoneList>
+  {files.map((file) => (
+    <FileDropZoneItem key={file.id} file={file} />
+  ))}
+</FileDropZoneList>
+```
+
+### FileDropZoneItem
+
+Individual file item with icon, progress, and remove button.
+
+| Prop        | Type                   | Default  | Description            |
+| ----------- | ---------------------- | -------- | ---------------------- |
+| `file`      | `FileWithMeta`         | Required | The file to display    |
+| `onRemove`  | `(id: string) => void` |          | Custom remove handler  |
+| `className` | `string`               |          | Additional CSS classes |
+
+### FileDropZoneError
+
+Displays validation errors following the Field error pattern.
+
+| Prop       | Type                          | Default | Description            |
+| ---------- | ----------------------------- | ------- | ---------------------- |
+| `errors`   | `Array<{ message?: string }>` |         | Array of error objects |
+| `children` | `React.ReactNode`             |         | Custom error content   |
+
+```tsx
+<FileDropZoneError errors={[{ message: "File too large" }]} />
+```
+
+## Keyboard Navigation
+
+| Key                    | Action                      |
+| ---------------------- | --------------------------- |
+| `Tab`                  | Focus the drop zone         |
+| `Enter` / `Space`      | Open file browser           |
+| `Tab`                  | Focus individual file items |
+| `Delete` / `Backspace` | Remove focused file         |
+
+## Accessibility
+
+- The drop zone has `role="button"` and is keyboard accessible
+- File items have `role="listitem"` within a `role="list"` container
+- Remove buttons have descriptive `aria-label`
+- Error messages use `role="alert"`
+- Disabled state is indicated via `aria-disabled`

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-drop-zone-disabled",
+  "type": "registry:example",
+  "registryDependencies": [
+    "file-drop-zone"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/file-drop-zone-disabled.tsx",
+      "content": "import {\n  FileDropZone,\n  FileDropZoneArea,\n  FileDropZoneContent,\n} from \"@/registry/new-york-v4/ui/file-drop-zone\"\n\nexport default function FileDropZoneDisabled() {\n  return (\n    <FileDropZone disabled className=\"w-full max-w-md\">\n      <FileDropZoneArea>\n        <FileDropZoneContent />\n      </FileDropZoneArea>\n    </FileDropZone>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
