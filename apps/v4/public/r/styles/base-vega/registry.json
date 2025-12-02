@@ -1473,6 +1473,28 @@
         }
       ],
       "type": "registry:block"
+    },
+    {
+      "name": "github",
+      "title": "GitHub",
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/github.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chatgpt",
+      "title": "ChatGPT",
+      "files": [
+        {
+          "path": "registry/base-vega/blocks/chatgpt.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
     }
   ]
 }

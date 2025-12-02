@@ -3,6 +3,27 @@
 import * as React from "react"
 
 import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/base/components/example"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/bases/base/ui/avatar"
+import { Badge } from "@/registry/bases/base/ui/badge"
+import { Button } from "@/registry/bases/base/ui/button"
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/registry/bases/base/ui/card"
+import { Checkbox } from "@/registry/bases/base/ui/checkbox"
+import {
   Combobox,
   ComboboxChip,
   ComboboxChips,
@@ -15,34 +36,13 @@ import {
   useComboboxAnchor,
 } from "@/registry/bases/base/ui/combobox"
 import {
-  Example,
-  ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
-import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Button } from "@/registry/bases/radix/ui/button"
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/registry/bases/radix/ui/card"
-import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
-import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/bases/radix/ui/command"
+} from "@/registry/bases/base/ui/command"
 import {
   Drawer,
   DrawerClose,
@@ -50,7 +50,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/bases/radix/ui/drawer"
+} from "@/registry/bases/base/ui/drawer"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -59,7 +59,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/bases/base/ui/dropdown-menu"
 import {
   Empty,
   EmptyContent,
@@ -67,7 +67,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/radix/ui/empty"
+} from "@/registry/bases/base/ui/empty"
 import {
   Field,
   FieldContent,
@@ -76,15 +76,15 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/bases/base/ui/field"
+import { Input } from "@/registry/bases/base/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/registry/bases/radix/ui/input-group"
+} from "@/registry/bases/base/ui/input-group"
 import {
   Item,
   ItemActions,
@@ -94,28 +94,31 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
-import { Kbd } from "@/registry/bases/radix/ui/kbd"
+} from "@/registry/bases/base/ui/item"
+import { Kbd } from "@/registry/bases/base/ui/kbd"
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/registry/bases/base/ui/native-select"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/radix/ui/popover"
-import { Separator } from "@/registry/bases/radix/ui/separator"
-import { Spinner } from "@/registry/bases/radix/ui/spinner"
+} from "@/registry/bases/base/ui/popover"
+import { Separator } from "@/registry/bases/base/ui/separator"
+import { Spinner } from "@/registry/bases/base/ui/spinner"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/bases/radix/ui/tabs"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
+} from "@/registry/bases/base/ui/tabs"
+import { Textarea } from "@/registry/bases/base/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/radix/ui/tooltip"
-import { NativeSelect } from "@/registry/new-york-v4/ui/native-select"
+} from "@/registry/bases/base/ui/tooltip"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function GithubBlock() {
@@ -154,14 +157,14 @@ function CodespacesCard() {
                 </ItemContent>
                 <ItemActions>
                   <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button variant="ghost" size="icon-sm">
-                        <IconPlaceholder
-                          lucide="PlusIcon"
-                          tabler="IconPlus"
-                          hugeicons="PlusSignIcon"
-                        />
-                      </Button>
+                    <TooltipTrigger
+                      render={<Button variant="ghost" size="icon-sm" />}
+                    >
+                      <IconPlaceholder
+                        lucide="PlusIcon"
+                        tabler="IconPlus"
+                        hugeicons="PlusSignIcon"
+                      />
                     </TooltipTrigger>
                     <TooltipContent side="bottom">
                       Create a codespace on main
@@ -169,74 +172,77 @@ function CodespacesCard() {
                   </Tooltip>
                   <DropdownMenu>
                     <Tooltip>
-                      <TooltipTrigger asChild>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon-sm">
-                            <IconPlaceholder
-                              lucide="MoreHorizontalIcon"
-                              tabler="IconDots"
-                              hugeicons="MoreHorizontalIcon"
-                            />
-                          </Button>
-                        </DropdownMenuTrigger>
+                      <TooltipTrigger
+                        render={
+                          <DropdownMenuTrigger
+                            render={<Button variant="ghost" size="icon-sm" />}
+                          />
+                        }
+                      >
+                        <IconPlaceholder
+                          lucide="MoreHorizontalIcon"
+                          tabler="IconDots"
+                          hugeicons="MoreHorizontalIcon"
+                        />
                       </TooltipTrigger>
                       <TooltipContent side="bottom">
                         Codespace repository configuration
                       </TooltipContent>
                     </Tooltip>
-                    <DropdownMenuContent
-                      align="end"
-                      onCloseAutoFocus={(e) => e.preventDefault()}
-                    >
-                      <DropdownMenuItem>
-                        <IconPlaceholder
-                          lucide="PlusIcon"
-                          tabler="IconPlus"
-                          hugeicons="PlusSignIcon"
-                        />
-                        New with options...
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <IconPlaceholder
-                          lucide="ContainerIcon"
-                          tabler="IconBox"
-                          hugeicons="CubeIcon"
-                        />
-                        Configure dev container
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <IconPlaceholder
-                          lucide="ZapIcon"
-                          tabler="IconBolt"
-                          hugeicons="ZapIcon"
-                        />
-                        Set up prebuilds
-                      </DropdownMenuItem>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuGroup>
+                        <DropdownMenuItem>
+                          <IconPlaceholder
+                            lucide="PlusIcon"
+                            tabler="IconPlus"
+                            hugeicons="PlusSignIcon"
+                          />
+                          New with options...
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <IconPlaceholder
+                            lucide="ContainerIcon"
+                            tabler="IconBox"
+                            hugeicons="CubeIcon"
+                          />
+                          Configure dev container
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <IconPlaceholder
+                            lucide="ZapIcon"
+                            tabler="IconBolt"
+                            hugeicons="ZapIcon"
+                          />
+                          Set up prebuilds
+                        </DropdownMenuItem>
+                      </DropdownMenuGroup>
                       <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <IconPlaceholder
-                          lucide="ServerIcon"
-                          tabler="IconServer"
-                          hugeicons="ServerStackIcon"
-                        />
-                        Manage codespaces
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <IconPlaceholder
-                          lucide="ShareIcon"
-                          tabler="IconShare2"
-                          hugeicons="Share03Icon"
-                        />
-                        Share deep link
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <IconPlaceholder
-                          lucide="InfoIcon"
-                          tabler="IconInfoCircle"
-                          hugeicons="AlertCircleIcon"
-                        />
-                        What are codespaces?
-                      </DropdownMenuItem>
+                      <DropdownMenuGroup>
+                        <DropdownMenuItem>
+                          <IconPlaceholder
+                            lucide="ServerIcon"
+                            tabler="IconServer"
+                            hugeicons="ServerStackIcon"
+                          />
+                          Manage codespaces
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <IconPlaceholder
+                            lucide="ShareIcon"
+                            tabler="IconShare2"
+                            hugeicons="Share03Icon"
+                          />
+                          Share deep link
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <IconPlaceholder
+                            lucide="InfoIcon"
+                            tabler="IconInfoCircle"
+                            hugeicons="AlertCircleIcon"
+                          />
+                          What are codespaces?
+                        </DropdownMenuItem>
+                      </DropdownMenuGroup>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </ItemActions>
@@ -304,14 +310,14 @@ function CodespacesCard() {
                 </ItemContent>
                 <ItemActions>
                   <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button variant="ghost" size="icon">
-                        <IconPlaceholder
-                          lucide="InfoIcon"
-                          tabler="IconInfoCircle"
-                          hugeicons="AlertCircleIcon"
-                        />
-                      </Button>
+                    <TooltipTrigger
+                      render={<Button variant="ghost" size="icon" />}
+                    >
+                      <IconPlaceholder
+                        lucide="InfoIcon"
+                        tabler="IconInfoCircle"
+                        hugeicons="AlertCircleIcon"
+                      />
                     </TooltipTrigger>
                     <TooltipContent side="left">
                       Which remote URL should I use?
@@ -468,57 +474,54 @@ function RepositoryToolbar() {
           </InputGroupAddon>
         </InputGroup>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline">
-              Add File
-              <IconPlaceholder
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-                hugeicons="ArrowDown01Icon"
-                data-icon="inline-end"
-              />
-            </Button>
+          <DropdownMenuTrigger render={<Button variant="outline" />}>
+            Add File
+            <IconPlaceholder
+              lucide="ChevronDownIcon"
+              tabler="IconChevronDown"
+              hugeicons="ArrowDown01Icon"
+              data-icon="inline-end"
+            />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="PlusIcon"
-                tabler="IconPlus"
-                hugeicons="PlusSignIcon"
-              />
-              Create new file
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="UploadIcon"
-                hugeicons="Upload01Icon"
-                tabler="IconUpload"
-              />
-              Upload files
-            </DropdownMenuItem>
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <IconPlaceholder
+                  lucide="PlusIcon"
+                  tabler="IconPlus"
+                  hugeicons="PlusSignIcon"
+                />
+                Create new file
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <IconPlaceholder
+                  lucide="UploadIcon"
+                  hugeicons="Upload01Icon"
+                  tabler="IconUpload"
+                />
+                Upload files
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
         <Popover>
           <Tooltip>
-            <TooltipTrigger asChild>
-              <PopoverTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <IconPlaceholder
-                    lucide="CloudCogIcon"
-                    hugeicons="AiCloud01Icon"
-                    tabler="IconCloudCog"
-                  />
-                </Button>
-              </PopoverTrigger>
+            <TooltipTrigger
+              render={
+                <PopoverTrigger
+                  render={<Button variant="outline" size="icon" />}
+                />
+              }
+            >
+              <IconPlaceholder
+                lucide="CloudCogIcon"
+                hugeicons="AiCloud01Icon"
+                tabler="IconCloudCog"
+              />
             </TooltipTrigger>
             <TooltipContent>New Agent Task</TooltipContent>
           </Tooltip>
-          <PopoverContent
-            side="bottom"
-            align="end"
-            className="w-96"
-            onCloseAutoFocus={(e) => e.preventDefault()}
-          >
+          <PopoverContent side="bottom" align="end" className="w-96">
             <Field>
               <FieldLabel htmlFor="new-agent-task">New Agent Task</FieldLabel>
               <InputGroup>
@@ -526,25 +529,27 @@ function RepositoryToolbar() {
                 <InputGroupAddon align="block-end">
                   <Popover>
                     <Tooltip>
-                      <PopoverTrigger asChild>
-                        <TooltipTrigger asChild>
-                          <InputGroupButton variant="outline" size="icon-sm">
-                            <IconPlaceholder
-                              lucide="GitBranchIcon"
-                              hugeicons="GitBranchIcon"
-                              tabler="IconGitBranch"
-                            />
-                          </InputGroupButton>
-                        </TooltipTrigger>
+                      <PopoverTrigger
+                        render={
+                          <TooltipTrigger
+                            render={
+                              <InputGroupButton
+                                variant="outline"
+                                size="icon-sm"
+                              />
+                            }
+                          />
+                        }
+                      >
+                        <IconPlaceholder
+                          lucide="GitBranchIcon"
+                          hugeicons="GitBranchIcon"
+                          tabler="IconGitBranch"
+                        />
                       </PopoverTrigger>
                       <TooltipContent>Select a branch</TooltipContent>
                     </Tooltip>
-                    <PopoverContent
-                      side="bottom"
-                      align="start"
-                      className="p-1"
-                      onCloseAutoFocus={(e) => e.preventDefault()}
-                    >
+                    <PopoverContent side="bottom" align="start" className="p-1">
                       <Field>
                         <FieldLabel htmlFor="select-branch" className="sr-only">
                           Select a Branch
@@ -599,16 +604,23 @@ function RepositoryToolbar() {
                   </Popover>
                   <Popover>
                     <Tooltip>
-                      <PopoverTrigger asChild>
-                        <TooltipTrigger asChild>
-                          <InputGroupButton variant="outline" size="icon-sm">
-                            <IconPlaceholder
-                              lucide="BotIcon"
-                              hugeicons="RoboticIcon"
-                              tabler="IconRobot"
-                            />
-                          </InputGroupButton>
-                        </TooltipTrigger>
+                      <PopoverTrigger
+                        render={
+                          <TooltipTrigger
+                            render={
+                              <InputGroupButton
+                                variant="outline"
+                                size="icon-sm"
+                              />
+                            }
+                          />
+                        }
+                      >
+                        <IconPlaceholder
+                          lucide="BotIcon"
+                          hugeicons="RoboticIcon"
+                          tabler="IconRobot"
+                        />
                       </PopoverTrigger>
                       <TooltipContent>Select Agent</TooltipContent>
                     </Tooltip>
@@ -632,18 +644,20 @@ function RepositoryToolbar() {
                     </PopoverContent>
                   </Popover>
                   <Tooltip>
-                    <TooltipTrigger asChild>
-                      <InputGroupButton
-                        variant="ghost"
-                        size="icon-sm"
-                        className="ml-auto"
-                      >
-                        <IconPlaceholder
-                          lucide="SendIcon"
-                          hugeicons="SentIcon"
-                          tabler="IconSend"
+                    <TooltipTrigger
+                      render={
+                        <InputGroupButton
+                          variant="ghost"
+                          size="icon-sm"
+                          className="ml-auto"
                         />
-                      </InputGroupButton>
+                      }
+                    >
+                      <IconPlaceholder
+                        lucide="SendIcon"
+                        hugeicons="SentIcon"
+                        tabler="IconSend"
+                      />
                     </TooltipTrigger>
                     <TooltipContent className="flex items-center gap-2 pr-2">
                       Start Task <Kbd>⏎</Kbd>
@@ -690,200 +704,182 @@ function Navbar() {
             </DrawerHeader>
             <div className="p-2">
               <ItemGroup className="gap-px">
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="HomeIcon"
-                        tabler="IconHome"
-                        hugeicons="HomeIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Home</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="HomeIcon"
+                      tabler="IconHome"
+                      hugeicons="HomeIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Home</ItemTitle>
+                  </ItemContent>
                 </Item>
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="CircleIcon"
-                        tabler="IconCircle"
-                        hugeicons="CircleIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Issues</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="CircleIcon"
+                      tabler="IconCircle"
+                      hugeicons="CircleIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Issues</ItemTitle>
+                  </ItemContent>
                 </Item>
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="GitBranchIcon"
-                        tabler="IconGitBranch"
-                        hugeicons="GitBranchIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Pull requests</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="GitBranchIcon"
+                      tabler="IconGitBranch"
+                      hugeicons="GitBranchIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Pull requests</ItemTitle>
+                  </ItemContent>
                 </Item>
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="LayoutGridIcon"
-                        tabler="IconLayoutGrid"
-                        hugeicons="GridIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Projects</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="LayoutGridIcon"
+                      tabler="IconLayoutGrid"
+                      hugeicons="GridIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Projects</ItemTitle>
+                  </ItemContent>
                 </Item>
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="MailIcon"
-                        tabler="IconMail"
-                        hugeicons="MailIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Discussions</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="MailIcon"
+                      tabler="IconMail"
+                      hugeicons="MailIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Discussions</ItemTitle>
+                  </ItemContent>
                 </Item>
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="ServerIcon"
-                        tabler="IconServer"
-                        hugeicons="ServerStackIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Codespaces</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="ServerIcon"
+                      tabler="IconServer"
+                      hugeicons="ServerStackIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Codespaces</ItemTitle>
+                  </ItemContent>
                 </Item>
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="BotIcon"
-                        tabler="IconRobot"
-                        hugeicons="RoboticIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Copilot</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="BotIcon"
+                      tabler="IconRobot"
+                      hugeicons="RoboticIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Copilot</ItemTitle>
+                  </ItemContent>
                 </Item>
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="SparklesIcon"
-                        tabler="IconSparkles"
-                        hugeicons="SparklesIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Spark</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="SparklesIcon"
+                      tabler="IconSparkles"
+                      hugeicons="SparklesIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Spark</ItemTitle>
+                  </ItemContent>
                 </Item>
                 <ItemSeparator />
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="SearchIcon"
-                        tabler="IconSearch"
-                        hugeicons="SearchIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Explore</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="SearchIcon"
+                      tabler="IconSearch"
+                      hugeicons="SearchIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Explore</ItemTitle>
+                  </ItemContent>
                 </Item>
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="ShoppingBagIcon"
-                        tabler="IconShoppingBag"
-                        hugeicons="ShoppingBasket01Icon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Marketplace</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="ShoppingBagIcon"
+                      tabler="IconShoppingBag"
+                      hugeicons="ShoppingBasket01Icon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Marketplace</ItemTitle>
+                  </ItemContent>
                 </Item>
-                <Item asChild size="xs">
-                  <a href="#">
-                    <ItemMedia variant="icon">
-                      <IconPlaceholder
-                        lucide="LinkIcon"
-                        tabler="IconLink"
-                        hugeicons="LinkIcon"
-                      />
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>MCP registry</ItemTitle>
-                    </ItemContent>
-                  </a>
+                <Item render={<a href="#" />} size="xs">
+                  <ItemMedia variant="icon">
+                    <IconPlaceholder
+                      lucide="LinkIcon"
+                      tabler="IconLink"
+                      hugeicons="LinkIcon"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>MCP registry</ItemTitle>
+                  </ItemContent>
                 </Item>
               </ItemGroup>
             </div>
           </DrawerContent>
         </Drawer>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="ml-auto rounded-full"
-            >
-              <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-                <AvatarFallback>SC</AvatarFallback>
-              </Avatar>
-            </Button>
+          <DropdownMenuTrigger
+            render={
+              <Button
+                variant="ghost"
+                size="icon"
+                className="ml-auto rounded-full"
+              />
+            }
+          >
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+              <AvatarFallback>SC</AvatarFallback>
+            </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end">
-            <DropdownMenuLabel className="p-0 font-normal">
-              <Item className="px-2 py-1 pb-0.5" size="sm">
-                <ItemMedia>
-                  <Avatar>
-                    <AvatarImage
-                      src="https://github.com/shadcn.png"
-                      alt="shadcn"
-                    />
-                    <AvatarFallback>SC</AvatarFallback>
-                  </Avatar>
-                </ItemMedia>
-                <ItemContent className="gap-0">
-                  <ItemTitle className="text-foreground text-sm">
-                    shadcn
-                  </ItemTitle>
-                  <ItemDescription className="text-xs">
-                    shadcn@example.com
-                  </ItemDescription>
-                </ItemContent>
-              </Item>
-            </DropdownMenuLabel>
+            <DropdownMenuGroup>
+              <DropdownMenuLabel className="p-0 font-normal">
+                <Item className="px-2 py-1 pb-0.5" size="sm">
+                  <ItemMedia>
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="shadcn"
+                      />
+                      <AvatarFallback>SC</AvatarFallback>
+                    </Avatar>
+                  </ItemMedia>
+                  <ItemContent className="gap-0">
+                    <ItemTitle className="text-foreground text-sm">
+                      shadcn
+                    </ItemTitle>
+                    <ItemDescription className="text-xs">
+                      shadcn@example.com
+                    </ItemDescription>
+                  </ItemContent>
+                </Item>
+              </DropdownMenuLabel>
+            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
@@ -1014,14 +1010,16 @@ function Navbar() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="LogOutIcon"
-                tabler="IconLogout"
-                hugeicons="LogoutIcon"
-              />
-              Sign out
-            </DropdownMenuItem>
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <IconPlaceholder
+                  lucide="LogOutIcon"
+                  tabler="IconLogout"
+                  hugeicons="LogoutIcon"
+                />
+                Sign out
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       </header>
@@ -1102,8 +1100,12 @@ function Profile() {
               <Field>
                 <FieldLabel htmlFor="email">Public Email</FieldLabel>
                 <NativeSelect id="email">
-                  <option value="m@shadcn.com">m@shadcn.com</option>
-                  <option value="m@gmail.com">m@gmail.com</option>
+                  <NativeSelectOption value="m@shadcn.com">
+                    m@shadcn.com
+                  </NativeSelectOption>
+                  <NativeSelectOption value="m@gmail.com">
+                    m@gmail.com
+                  </NativeSelectOption>
                 </NativeSelect>
                 <FieldDescription>
                   You can manage verified email addresses in your{" "}
@@ -1219,14 +1221,14 @@ function AssignIssue() {
           </CardDescription>
           <CardAction>
             <Tooltip>
-              <TooltipTrigger asChild>
-                <Button variant="outline" size="icon-xs">
-                  <IconPlaceholder
-                    lucide="PlusIcon"
-                    tabler="IconPlus"
-                    hugeicons="PlusSignIcon"
-                  />
-                </Button>
+              <TooltipTrigger
+                render={<Button variant="outline" size="icon-xs" />}
+              >
+                <IconPlaceholder
+                  lucide="PlusIcon"
+                  tabler="IconPlus"
+                  hugeicons="PlusSignIcon"
+                />
               </TooltipTrigger>
               <TooltipContent>Add user</TooltipContent>
             </Tooltip>

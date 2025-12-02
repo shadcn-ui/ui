@@ -100,7 +100,7 @@ function NavigationMenuWithViewport() {
                   </NavigationMenuLink>
                 </li>
                 <ListItem href="/docs" title="Introduction">
-                  Re-usable components built using Radix UI and Tailwind CSS.
+                  Re-usable components built with Tailwind CSS.
                 </ListItem>
                 <ListItem href="/docs/installation" title="Installation">
                   How to install dependencies and structure your app.
@@ -295,8 +295,7 @@ function NavigationMenuInDialog() {
                       </NavigationMenuLink>
                     </li>
                     <ListItem href="/docs" title="Introduction">
-                      Re-usable components built using Radix UI and Tailwind
-                      CSS.
+                      Re-usable components built with Tailwind CSS.
                     </ListItem>
                     <ListItem href="/docs/installation" title="Installation">
                       How to install dependencies and structure your app.

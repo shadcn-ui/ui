@@ -36,7 +36,7 @@ export const PRESETS = [
     baseColor: "neutral",
     theme: "blue",
     iconLibrary: "lucide",
-    font: "inter",
+    font: "nunito-sans",
     accent: "bold",
     menu: "inverted",
   },

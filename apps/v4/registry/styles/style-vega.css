@@ -301,11 +301,11 @@
   }
 
   .cn-combobox-chip {
-    @apply bg-muted text-foreground flex h-[calc(--spacing(5.5))] w-fit items-center justify-center rounded-[3px] px-1.5 text-xs font-medium has-data-[slot=combobox-chip-remove]:pr-0;
+    @apply bg-muted text-foreground flex h-[calc(--spacing(5.5))] w-fit items-center justify-center gap-1 rounded-[3px] px-1.5 text-xs font-medium has-data-[slot=combobox-chip-remove]:pr-0;
   }
 
   .cn-combobox-chip-remove {
-    @apply opacity-50 hover:opacity-100;
+    @apply -ml-1 opacity-50 hover:opacity-100;
   }
 
   /* MARK: Command */
