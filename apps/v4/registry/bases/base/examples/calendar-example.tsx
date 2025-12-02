@@ -328,20 +328,22 @@ function DatePickerSimple() {
       <Field className="mx-auto w-72">
         <FieldLabel htmlFor="date-picker-simple">Date</FieldLabel>
         <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              id="date-picker-simple"
-              className="justify-start px-2.5 font-normal"
-            >
-              <IconPlaceholder
-                lucide="CalendarIcon"
-                tabler="IconCalendar"
-                hugeicons="CalendarIcon"
-                data-icon="inline-start"
+          <PopoverTrigger
+            render={
+              <Button
+                variant="outline"
+                id="date-picker-simple"
+                className="justify-start px-2.5 font-normal"
               />
-              {date ? format(date, "PPP") : <span>Pick a date</span>}
-            </Button>
+            }
+          >
+            <IconPlaceholder
+              lucide="CalendarIcon"
+              tabler="IconCalendar"
+              hugeicons="CalendarIcon"
+              data-icon="inline-start"
+            />
+            {date ? format(date, "PPP") : <span>Pick a date</span>}
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0" align="start">
             <Calendar mode="single" selected={date} onSelect={setDate} />
@@ -363,31 +365,33 @@ function DatePickerWithRange() {
       <Field className="mx-auto w-72">
         <FieldLabel htmlFor="date-picker-range">Date Picker Range</FieldLabel>
         <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              id="date-picker-range"
-              variant="outline"
-              className="justify-start px-2.5 font-normal"
-            >
-              <IconPlaceholder
-                lucide="CalendarIcon"
-                tabler="IconCalendar"
-                hugeicons="CalendarIcon"
-                data-icon="inline-start"
+          <PopoverTrigger
+            render={
+              <Button
+                variant="outline"
+                id="date-picker-range"
+                className="justify-start px-2.5 font-normal"
               />
-              {date?.from ? (
-                date.to ? (
-                  <>
-                    {format(date.from, "LLL dd, y")} -{" "}
-                    {format(date.to, "LLL dd, y")}
-                  </>
-                ) : (
-                  format(date.from, "LLL dd, y")
-                )
+            }
+          >
+            <IconPlaceholder
+              lucide="CalendarIcon"
+              tabler="IconCalendar"
+              hugeicons="CalendarIcon"
+              data-icon="inline-start"
+            />
+            {date?.from ? (
+              date.to ? (
+                <>
+                  {format(date.from, "LLL dd, y")} -{" "}
+                  {format(date.to, "LLL dd, y")}
+                </>
               ) : (
-                <span>Pick a date</span>
-              )}
-            </Button>
+                format(date.from, "LLL dd, y")
+              )
+            ) : (
+              <span>Pick a date</span>
+            )}
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0" align="start">
             <Calendar
@@ -415,21 +419,23 @@ function DataPickerWithDropdowns() {
           <FieldLabel htmlFor="date-picker-with-dropdowns-desktop">
             Date
           </FieldLabel>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              id="date-picker-with-dropdowns-desktop"
-              className="justify-start px-2.5 font-normal"
-            >
-              {date ? format(date, "PPP") : <span>Pick a date</span>}
-              <IconPlaceholder
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-                hugeicons="ArrowDownIcon"
-                data-icon="inline-start"
-                className="ml-auto"
+          <PopoverTrigger
+            render={
+              <Button
+                variant="outline"
+                id="date-picker-with-dropdowns-desktop"
+                className="justify-start px-2.5 font-normal"
               />
-            </Button>
+            }
+          >
+            <IconPlaceholder
+              lucide="ChevronDownIcon"
+              tabler="IconChevronDown"
+              hugeicons="ArrowDownIcon"
+              data-icon="inline-start"
+              className="ml-auto"
+            />
+            {date ? format(date, "PPP") : <span>Pick a date</span>}
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0" align="start">
             <Calendar

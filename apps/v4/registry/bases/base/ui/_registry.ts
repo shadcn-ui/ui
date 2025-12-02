@@ -162,6 +162,8 @@ export const ui: Registry["items"] = [
   {
     name: "combobox",
     type: "registry:ui",
+    registryDependencies: ["button", "input-group"],
+    dependencies: ["@base-ui-components/react"],
     files: [
       {
         path: "ui/combobox.tsx",

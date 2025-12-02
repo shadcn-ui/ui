@@ -8,6 +8,14 @@ import {
 } from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/radix/ui/dialog"
+import {
   Field,
   FieldDescription,
   FieldError,
@@ -51,6 +59,7 @@ export default function SelectExample() {
       <SelectInvalid />
       <SelectInline />
       <SelectDisabled />
+      <SelectInDialog />
     </ExampleWrapper>
   )
 }
@@ -491,5 +500,39 @@ function SelectPlanItem({ plan }: { plan: (typeof plans)[number] }) {
         </ItemDescription>
       </ItemContent>
     </Item>
+  )
+}
+
+function SelectInDialog() {
+  return (
+    <Example title="In Dialog">
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline">Open Dialog</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Select Example</DialogTitle>
+            <DialogDescription>
+              Use the select below to choose a fruit.
+            </DialogDescription>
+          </DialogHeader>
+          <Select>
+            <SelectTrigger>
+              <SelectValue placeholder="Select a fruit" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="apple">Apple</SelectItem>
+                <SelectItem value="banana">Banana</SelectItem>
+                <SelectItem value="blueberry">Blueberry</SelectItem>
+                <SelectItem value="grapes">Grapes</SelectItem>
+                <SelectItem value="pineapple">Pineapple</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </DialogContent>
+      </Dialog>
+    </Example>
   )
 }

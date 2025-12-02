@@ -3,14 +3,14 @@
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui-components/react"
 
-import { cn } from "@/registry/bases/base/lib/cn"
-import { Button } from "@/registry/bases/base/ui/button"
+import { cn } from "@/registry/bases/radix/lib/cn"
+import { Button } from "@/registry/bases/radix/ui/button"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/bases/radix/ui/input-group"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const Combobox = ComboboxPrimitive.Root
@@ -81,11 +81,13 @@ function ComboboxInput({
           <InputGroupButton
             size="icon-xs"
             variant="ghost"
-            render={<ComboboxTrigger />}
+            asChild
             data-slot="input-group-button"
             className="group-has-data-[slot=combobox-clear]/input-group:hidden data-pressed:bg-transparent"
             disabled={disabled}
-          />
+          >
+            <ComboboxTrigger />
+          </InputGroupButton>
         )}
         {showClear && <ComboboxClear disabled={disabled} />}
       </InputGroupAddon>

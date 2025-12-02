@@ -6,6 +6,15 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/radix/components/example"
+import { Button } from "@/registry/bases/radix/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/radix/ui/dialog"
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -22,15 +31,6 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/registry/bases/radix/ui/menubar"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
-import { Button } from "@/registry/bases/radix/ui/button"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function MenubarExample() {

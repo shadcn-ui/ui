@@ -86,7 +86,7 @@ export function ItemPicker({
       </PopoverTrigger>
       <PopoverContent
         className="ring-foreground/10 w-64 overflow-hidden rounded-xl border-0 p-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
-        side="right"
+        side="left"
         align="start"
       >
         <Command

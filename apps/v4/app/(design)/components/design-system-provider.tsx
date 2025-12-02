@@ -132,7 +132,7 @@ export function DesignSystemProvider({
 
     const updateMenuElements = () => {
       const menuElements = document.querySelectorAll(
-        "[data-radix-menu-content], [data-slot=select-content], [data-slot=dropdown-menu-content], [data-slot=dropdown-menu-sub-content], [data-slot=context-menu-content], [data-slot=context-menu-sub-content], [data-slot=menubar-content], [data-slot=menubar-sub-content]"
+        "[data-radix-menu-content], [data-slot=select-content], [data-slot=dropdown-menu-content], [data-slot=dropdown-menu-sub-content], [data-slot=context-menu-content], [data-slot=context-menu-sub-content], [data-slot=menubar-content], [data-slot=menubar-sub-content],[data-slot=combobox-content]"
       )
       menuElements.forEach((element) => {
         if (menu === "inverted") {

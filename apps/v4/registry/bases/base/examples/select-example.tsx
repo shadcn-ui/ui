@@ -6,6 +6,14 @@ import {
 } from "@/registry/bases/base/components/example"
 import { Button } from "@/registry/bases/base/ui/button"
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/base/ui/dialog"
+import {
   Field,
   FieldDescription,
   FieldError,
@@ -50,6 +58,7 @@ export default function SelectExample() {
       <SelectInvalid />
       <SelectInline />
       <SelectDisabled />
+      <SelectInDialog />
     </ExampleWrapper>
   )
 }
@@ -618,6 +627,48 @@ function SelectMultiple() {
           </SelectGroup>
         </SelectContent>
       </Select>
+    </Example>
+  )
+}
+
+function SelectInDialog() {
+  const items = [
+    { label: "Select a fruit", value: null },
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Blueberry", value: "blueberry" },
+    { label: "Grapes", value: "grapes" },
+    { label: "Pineapple", value: "pineapple" },
+  ]
+  return (
+    <Example title="In Dialog">
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline" />}>
+          Open Dialog
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Select Example</DialogTitle>
+            <DialogDescription>
+              Use the select below to choose a fruit.
+            </DialogDescription>
+          </DialogHeader>
+          <Select items={items}>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {items.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </DialogContent>
+      </Dialog>
     </Example>
   )
 }

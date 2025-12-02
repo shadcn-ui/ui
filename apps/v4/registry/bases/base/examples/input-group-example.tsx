@@ -348,14 +348,16 @@ function InputGroupWithTooltip({
             <InputGroupInput id="input-tooltip-20" />
             <InputGroupAddon align="inline-end">
               <Tooltip>
-                <TooltipTrigger asChild>
-                  <InputGroupButton className="rounded-full" size="icon-xs">
-                    <IconPlaceholder
-                      lucide="InfoIcon"
-                      tabler="IconInfoCircle"
-                      hugeicons="AlertCircleIcon"
-                    />
-                  </InputGroupButton>
+                <TooltipTrigger
+                  render={
+                    <InputGroupButton className="rounded-full" size="icon-xs" />
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="InfoIcon"
+                    tabler="IconInfoCircle"
+                    hugeicons="AlertCircleIcon"
+                  />
                 </TooltipTrigger>
                 <TooltipContent>This is content in a tooltip.</TooltipContent>
               </Tooltip>

@@ -14,6 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/registry/bases/base/ui/alert-dialog"
+import { Button } from "@/registry/bases/base/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -22,7 +23,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/bases/base/ui/dialog"
-import { Button } from "@/registry/bases/base/ui/button"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function AlertDialogExample() {
@@ -206,8 +206,8 @@ function AlertDialogInDialog() {
               <AlertDialogHeader>
                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete your
-                  account and remove your data from our servers.
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>

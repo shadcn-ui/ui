@@ -13,6 +13,14 @@ import {
 } from "@/registry/bases/base/ui/avatar"
 import { Button } from "@/registry/bases/base/ui/button"
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/base/ui/dialog"
+import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -29,14 +37,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/bases/base/ui/dropdown-menu"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function DropdownMenuExample() {

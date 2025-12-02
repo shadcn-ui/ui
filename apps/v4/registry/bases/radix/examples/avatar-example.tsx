@@ -19,20 +19,6 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/registry/bases/radix/ui/empty"
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/registry/bases/radix/ui/field"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/bases/radix/ui/select"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function AvatarExample() {
@@ -498,71 +484,6 @@ function AvatarInEmpty() {
           </Button>
         </EmptyContent>
       </Empty>
-    </Example>
-  )
-}
-
-function AvatarInSelect() {
-  const users = [
-    {
-      name: "shadcn",
-      avatar: "https://github.com/shadcn.png",
-      fallback: "CN",
-    },
-    {
-      name: "Max Leiter",
-      avatar: "https://github.com/maxleiter.png",
-      fallback: "ML",
-    },
-    {
-      name: "Jorge Zreik",
-      avatar: "https://github.com/jorgezreik.png",
-      fallback: "JZ",
-    },
-    {
-      name: "Evil Rabbit",
-      avatar: "https://github.com/evilrabbit.png",
-      fallback: "ER",
-    },
-    {
-      name: "Pranathi Peri",
-      avatar: "https://github.com/pranathip.png",
-      fallback: "PP",
-    },
-  ]
-
-  return (
-    <Example title="In Select">
-      <Field>
-        <FieldLabel>Select User</FieldLabel>
-
-        <Select>
-          <SelectTrigger className="w-full pl-2">
-            <SelectValue placeholder="Select a user" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Users</SelectLabel>
-              {users.map((user) => {
-                return (
-                  <SelectItem key={user.name} value={user.name}>
-                    <Avatar size="sm">
-                      <AvatarImage
-                        src={user.avatar}
-                        alt={user.name}
-                        className="grayscale"
-                      />
-                      <AvatarFallback>{user.fallback}</AvatarFallback>
-                    </Avatar>
-                    {user.name}
-                  </SelectItem>
-                )
-              })}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <FieldDescription>Choose a user from the dropdown.</FieldDescription>
-      </Field>
     </Example>
   )
 }

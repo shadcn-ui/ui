@@ -8,6 +8,15 @@ import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/base/components/example"
+import { Button } from "@/registry/bases/base/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/base/ui/dialog"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,15 +26,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/registry/bases/base/ui/navigation-menu"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
-import { Button } from "@/registry/bases/base/ui/button"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -291,12 +291,14 @@ function NavigationMenuInDialog() {
                           shadcn/ui
                         </div>
                         <p className="text-muted-foreground text-sm leading-tight">
-                          Beautifully designed components built with Tailwind CSS.
+                          Beautifully designed components built with Tailwind
+                          CSS.
                         </p>
                       </NavigationMenuLink>
                     </li>
                     <ListItem href="/docs" title="Introduction">
-                      Re-usable components built using Radix UI and Tailwind CSS.
+                      Re-usable components built using Radix UI and Tailwind
+                      CSS.
                     </ListItem>
                     <ListItem href="/docs/installation" title="Installation">
                       How to install dependencies and structure your app.

@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Combobox as ComboboxPrimitive } from "@base-ui-components/react"
 import { toast } from "sonner"
 
 import {
@@ -12,6 +11,9 @@ import { Button } from "@/registry/bases/base/ui/button"
 import { Card, CardContent, CardFooter } from "@/registry/bases/base/ui/card"
 import {
   Combobox,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
   ComboboxCollection,
   ComboboxContent,
   ComboboxEmpty,
@@ -20,23 +22,56 @@ import {
   ComboboxItem,
   ComboboxLabel,
   ComboboxList,
+  ComboboxSeparator,
   ComboboxTrigger,
   ComboboxValue,
+  useComboboxAnchor,
 } from "@/registry/bases/base/ui/combobox"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/base/ui/dialog"
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/bases/base/ui/field"
 import { InputGroupAddon } from "@/registry/bases/base/ui/input-group"
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemTitle,
+} from "@/registry/bases/base/ui/item"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function ComboboxExample() {
   return (
     <ExampleWrapper>
-      <FrameworkCombobox />
-      <TimezoneCombobox />
-      <FormWithCombobox />
-      <LargeListCombobox />
-      <AutoHighlightCombobox />
-      <TimezoneComboboxWithIconAddon />
+      <ComboboxBasic />
+      <ComboboxDisabled />
+      <ComboboxInvalid />
+      <ComboboxWithClear />
+      <ComboboxAutoHighlight />
+      <ComboboxWithGroups />
+      <ComboboxWithGroupsAndSeparator />
+      <ComboboxLargeList />
+      <ComboxboxInputAddon />
       <ComboboxInPopup />
+      <ComboboxWithForm />
+      <ComboboxMultiple />
+      <ComboboxMultipleDisabled />
+      <ComboboxMultipleInvalid />
+      <ComboboxMultipleNoRemove />
+      <ComboboxWithCustomItems />
+      <ComboboxInDialog />
     </ExampleWrapper>
   )
 }
@@ -48,237 +83,6 @@ const frameworks = [
   "Remix",
   "Astro",
 ] as const
-
-function FrameworkCombobox() {
-  return (
-    <Example title="Basic">
-      <Combobox items={frameworks}>
-        <ComboboxInput placeholder="Select a framework" />
-        <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
-                {item}
-              </ComboboxItem>
-            )}
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
-    </Example>
-  )
-}
-
-const timezones = [
-  {
-    value: "Americas",
-    items: [
-      "(GMT-5) New York",
-      "(GMT-8) Los Angeles",
-      "(GMT-6) Chicago",
-      "(GMT-5) Toronto",
-      "(GMT-8) Vancouver",
-      "(GMT-3) São Paulo",
-    ],
-  },
-  {
-    value: "Europe",
-    items: [
-      "(GMT+0) London",
-      "(GMT+1) Paris",
-      "(GMT+1) Berlin",
-      "(GMT+1) Rome",
-      "(GMT+1) Madrid",
-      "(GMT+1) Amsterdam",
-    ],
-  },
-  {
-    value: "Asia/Pacific",
-    items: [
-      "(GMT+9) Tokyo",
-      "(GMT+8) Shanghai",
-      "(GMT+8) Singapore",
-      "(GMT+4) Dubai",
-      "(GMT+11) Sydney",
-      "(GMT+9) Seoul",
-    ],
-  },
-] as const
-
-function TimezoneCombobox() {
-  return (
-    <Example title="With Groups">
-      <Combobox items={timezones}>
-        <ComboboxInput placeholder="Select a timezone" />
-        <ComboboxContent>
-          <ComboboxEmpty>No timezones found.</ComboboxEmpty>
-          <ComboboxList>
-            {(group) => (
-              <ComboboxGroup key={group.value} items={group.items}>
-                <ComboboxLabel>{group.value}</ComboboxLabel>
-                <ComboboxCollection>
-                  {(item) => (
-                    <ComboboxItem key={item} value={item}>
-                      {item}
-                    </ComboboxItem>
-                  )}
-                </ComboboxCollection>
-              </ComboboxGroup>
-            )}
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
-    </Example>
-  )
-}
-
-function FormWithCombobox() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const formData = new FormData(event.target as HTMLFormElement)
-    const framework = formData.get("framework") as string
-    toast(`You selected ${framework} as your framework.`)
-  }
-
-  return (
-    <Example title="Form with Combobox">
-      <Card className="w-full max-w-sm" size="sm">
-        <CardContent>
-          <form
-            id="form-with-combobox"
-            className="w-full"
-            onSubmit={handleSubmit}
-          >
-            <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="framework">Framework</FieldLabel>
-                <Combobox items={frameworks}>
-                  <ComboboxInput
-                    id="framework"
-                    name="framework"
-                    placeholder="Select a framework"
-                    required
-                  />
-                  <ComboboxContent>
-                    <ComboboxEmpty>No items found.</ComboboxEmpty>
-                    <ComboboxList>
-                      {(item) => (
-                        <ComboboxItem key={item} value={item}>
-                          {item}
-                        </ComboboxItem>
-                      )}
-                    </ComboboxList>
-                  </ComboboxContent>
-                </Combobox>
-              </Field>
-            </FieldGroup>
-          </form>
-        </CardContent>
-        <CardFooter>
-          <Button type="submit" form="form-with-combobox">
-            Submit
-          </Button>
-        </CardFooter>
-      </Card>
-    </Example>
-  )
-}
-
-const largeListItems = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`)
-
-function LargeListCombobox() {
-  const [value, setValue] = React.useState("")
-
-  return (
-    <Example title="Large List (100 items)">
-      <Combobox
-        items={largeListItems}
-        value={value}
-        onValueChange={(value) => setValue(value || "")}
-      >
-        <ComboboxInput placeholder="Search from 100 items" />
-        <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
-                {item}
-              </ComboboxItem>
-            )}
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
-    </Example>
-  )
-}
-
-function AutoHighlightCombobox() {
-  const [value, setValue] = React.useState("")
-
-  return (
-    <Example title="With Auto Highlight">
-      <Combobox
-        items={frameworks}
-        value={value}
-        onValueChange={(value) => setValue(value || "")}
-        autoHighlight
-      >
-        <ComboboxInput placeholder="Select a framework" />
-        <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item) => (
-              <ComboboxItem key={item} value={item}>
-                {item}
-              </ComboboxItem>
-            )}
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
-    </Example>
-  )
-}
-
-function TimezoneComboboxWithIconAddon() {
-  const [value, setValue] = React.useState("")
-
-  return (
-    <Example title="With Icon Addon">
-      <Combobox
-        items={timezones}
-        value={value}
-        onValueChange={(value) => setValue(value || "")}
-      >
-        <ComboboxInput placeholder="Select a timezone">
-          <InputGroupAddon>
-            <IconPlaceholder
-              lucide="GlobeIcon"
-              tabler="IconGlobe"
-              hugeicons="Globe02Icon"
-            />
-          </InputGroupAddon>
-        </ComboboxInput>
-        <ComboboxContent alignOffset={-28} className="w-60">
-          <ComboboxEmpty>No timezones found.</ComboboxEmpty>
-          <ComboboxList>
-            {(group) => (
-              <ComboboxGroup key={group.value} items={group.items}>
-                <ComboboxLabel>{group.value}</ComboboxLabel>
-                <ComboboxCollection>
-                  {(item) => (
-                    <ComboboxItem key={item} value={item}>
-                      {item}
-                    </ComboboxItem>
-                  )}
-                </ComboboxCollection>
-              </ComboboxGroup>
-            )}
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
-    </Example>
-  )
-}
 
 const countries = [
   { code: "", value: "", continent: "", label: "Select country" },
@@ -691,6 +495,332 @@ const countries = [
   { code: "zw", value: "zimbabwe", label: "Zimbabwe", continent: "Africa" },
 ]
 
+const timezones = [
+  {
+    value: "Americas",
+    items: [
+      "(GMT-5) New York",
+      "(GMT-8) Los Angeles",
+      "(GMT-6) Chicago",
+      "(GMT-5) Toronto",
+      "(GMT-8) Vancouver",
+      "(GMT-3) São Paulo",
+    ],
+  },
+  {
+    value: "Europe",
+    items: [
+      "(GMT+0) London",
+      "(GMT+1) Paris",
+      "(GMT+1) Berlin",
+      "(GMT+1) Rome",
+      "(GMT+1) Madrid",
+      "(GMT+1) Amsterdam",
+    ],
+  },
+  {
+    value: "Asia/Pacific",
+    items: [
+      "(GMT+9) Tokyo",
+      "(GMT+8) Shanghai",
+      "(GMT+8) Singapore",
+      "(GMT+4) Dubai",
+      "(GMT+11) Sydney",
+      "(GMT+9) Seoul",
+    ],
+  },
+] as const
+
+function ComboboxBasic() {
+  return (
+    <Example title="Basic">
+      <Combobox items={frameworks}>
+        <ComboboxInput placeholder="Select a framework" />
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxDisabled() {
+  return (
+    <Example title="Disabled">
+      <Combobox items={frameworks}>
+        <ComboboxInput placeholder="Select a framework" disabled />
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxInvalid() {
+  return (
+    <Example title="Invalid">
+      <div className="flex flex-col gap-4">
+        <Combobox items={frameworks}>
+          <ComboboxInput placeholder="Select a framework" aria-invalid="true" />
+          <ComboboxContent>
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+            <ComboboxList>
+              {(item) => (
+                <ComboboxItem key={item} value={item}>
+                  {item}
+                </ComboboxItem>
+              )}
+            </ComboboxList>
+          </ComboboxContent>
+        </Combobox>
+        <Field data-invalid>
+          <FieldLabel htmlFor="combobox-framework-invalid">
+            Framework
+          </FieldLabel>
+          <Combobox items={frameworks}>
+            <ComboboxInput
+              id="combobox-framework-invalid"
+              placeholder="Select a framework"
+              aria-invalid
+            />
+            <ComboboxContent>
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem key={item} value={item}>
+                    {item}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
+          <FieldDescription>Please select a valid framework.</FieldDescription>
+          <FieldError errors={[{ message: "This field is required." }]} />
+        </Field>
+      </div>
+    </Example>
+  )
+}
+
+function ComboboxWithClear() {
+  return (
+    <Example title="With Clear Button">
+      <Combobox items={frameworks} defaultValue={frameworks[0]}>
+        <ComboboxInput placeholder="Select a framework" showClear />
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxWithGroups() {
+  return (
+    <Example title="With Groups">
+      <Combobox items={timezones}>
+        <ComboboxInput placeholder="Select a timezone" />
+        <ComboboxContent>
+          <ComboboxEmpty>No timezones found.</ComboboxEmpty>
+          <ComboboxList>
+            {(group) => (
+              <ComboboxGroup key={group.value} items={group.items}>
+                <ComboboxLabel>{group.value}</ComboboxLabel>
+                <ComboboxCollection>
+                  {(item) => (
+                    <ComboboxItem key={item} value={item}>
+                      {item}
+                    </ComboboxItem>
+                  )}
+                </ComboboxCollection>
+              </ComboboxGroup>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxWithGroupsAndSeparator() {
+  return (
+    <Example title="With Groups and Separator">
+      <Combobox items={timezones}>
+        <ComboboxInput placeholder="Select a timezone" />
+        <ComboboxContent>
+          <ComboboxEmpty>No timezones found.</ComboboxEmpty>
+          <ComboboxList>
+            {(group) => (
+              <ComboboxGroup key={group.value} items={group.items}>
+                <ComboboxLabel>{group.value}</ComboboxLabel>
+                <ComboboxCollection>
+                  {(item) => (
+                    <ComboboxItem key={item} value={item}>
+                      {item}
+                    </ComboboxItem>
+                  )}
+                </ComboboxCollection>
+                <ComboboxSeparator />
+              </ComboboxGroup>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxWithForm() {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const formData = new FormData(event.target as HTMLFormElement)
+    const framework = formData.get("framework") as string
+    toast(`You selected ${framework} as your framework.`)
+  }
+
+  return (
+    <Example title="Form with Combobox">
+      <Card className="w-full max-w-sm" size="sm">
+        <CardContent>
+          <form
+            id="form-with-combobox"
+            className="w-full"
+            onSubmit={handleSubmit}
+          >
+            <FieldGroup>
+              <Field>
+                <FieldLabel htmlFor="framework">Framework</FieldLabel>
+                <Combobox items={frameworks}>
+                  <ComboboxInput
+                    id="framework"
+                    name="framework"
+                    placeholder="Select a framework"
+                    required
+                  />
+                  <ComboboxContent>
+                    <ComboboxEmpty>No items found.</ComboboxEmpty>
+                    <ComboboxList>
+                      {(item) => (
+                        <ComboboxItem key={item} value={item}>
+                          {item}
+                        </ComboboxItem>
+                      )}
+                    </ComboboxList>
+                  </ComboboxContent>
+                </Combobox>
+              </Field>
+            </FieldGroup>
+          </form>
+        </CardContent>
+        <CardFooter>
+          <Button type="submit" form="form-with-combobox">
+            Submit
+          </Button>
+        </CardFooter>
+      </Card>
+    </Example>
+  )
+}
+
+const largeListItems = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`)
+
+function ComboboxLargeList() {
+  return (
+    <Example title="Large List (100 items)">
+      <Combobox items={largeListItems}>
+        <ComboboxInput placeholder="Search from 100 items" />
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxAutoHighlight() {
+  return (
+    <Example title="With Auto Highlight">
+      <Combobox items={frameworks} autoHighlight>
+        <ComboboxInput placeholder="Select a framework" />
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboxboxInputAddon() {
+  return (
+    <Example title="With Icon Addon">
+      <Combobox items={timezones}>
+        <ComboboxInput placeholder="Select a timezone">
+          <InputGroupAddon>
+            <IconPlaceholder
+              lucide="GlobeIcon"
+              tabler="IconGlobe"
+              hugeicons="Globe02Icon"
+            />
+          </InputGroupAddon>
+        </ComboboxInput>
+        <ComboboxContent alignOffset={-28} className="w-60">
+          <ComboboxEmpty>No timezones found.</ComboboxEmpty>
+          <ComboboxList>
+            {(group) => (
+              <ComboboxGroup key={group.value} items={group.items}>
+                <ComboboxLabel>{group.value}</ComboboxLabel>
+                <ComboboxCollection>
+                  {(item) => (
+                    <ComboboxItem key={item} value={item}>
+                      {item}
+                    </ComboboxItem>
+                  )}
+                </ComboboxCollection>
+              </ComboboxGroup>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
 function ComboboxInPopup() {
   return (
     <Example title="Combobox in Popup">
@@ -717,6 +847,300 @@ function ComboboxInPopup() {
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxMultiple() {
+  const anchor = useComboboxAnchor()
+
+  return (
+    <Example title="Combobox Multiple">
+      <Combobox
+        multiple
+        autoHighlight
+        items={frameworks}
+        defaultValue={[frameworks[0]]}
+      >
+        <ComboboxChips ref={anchor}>
+          <ComboboxValue>
+            {(values) => (
+              <React.Fragment>
+                {values.map((value: string) => (
+                  <ComboboxChip key={value}>{value}</ComboboxChip>
+                ))}
+                <ComboboxChipsInput />
+              </React.Fragment>
+            )}
+          </ComboboxValue>
+        </ComboboxChips>
+        <ComboboxContent anchor={anchor}>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxMultipleDisabled() {
+  const anchor = useComboboxAnchor()
+
+  return (
+    <Example title="Combobox Multiple Disabled">
+      <Combobox
+        multiple
+        autoHighlight
+        items={frameworks}
+        defaultValue={[frameworks[0], frameworks[1]]}
+        disabled
+      >
+        <ComboboxChips ref={anchor}>
+          <ComboboxValue>
+            {(values) => (
+              <React.Fragment>
+                {values.map((value: string) => (
+                  <ComboboxChip key={value}>{value}</ComboboxChip>
+                ))}
+                <ComboboxChipsInput disabled />
+              </React.Fragment>
+            )}
+          </ComboboxValue>
+        </ComboboxChips>
+        <ComboboxContent anchor={anchor}>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxMultipleInvalid() {
+  const anchor1 = useComboboxAnchor()
+  const anchor2 = useComboboxAnchor()
+
+  return (
+    <Example title="Combobox Multiple Invalid">
+      <div className="flex flex-col gap-4">
+        <Combobox
+          multiple
+          autoHighlight
+          items={frameworks}
+          defaultValue={[frameworks[0], frameworks[1]]}
+        >
+          <ComboboxChips ref={anchor1}>
+            <ComboboxValue>
+              {(values) => (
+                <React.Fragment>
+                  {values.map((value: string) => (
+                    <ComboboxChip key={value}>{value}</ComboboxChip>
+                  ))}
+                  <ComboboxChipsInput aria-invalid="true" />
+                </React.Fragment>
+              )}
+            </ComboboxValue>
+          </ComboboxChips>
+          <ComboboxContent anchor={anchor1}>
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+            <ComboboxList>
+              {(item) => (
+                <ComboboxItem key={item} value={item}>
+                  {item}
+                </ComboboxItem>
+              )}
+            </ComboboxList>
+          </ComboboxContent>
+        </Combobox>
+        <Field data-invalid>
+          <FieldLabel htmlFor="combobox-multiple-invalid">
+            Frameworks
+          </FieldLabel>
+          <Combobox
+            multiple
+            autoHighlight
+            items={frameworks}
+            defaultValue={[frameworks[0], frameworks[1], frameworks[2]]}
+          >
+            <ComboboxChips ref={anchor2}>
+              <ComboboxValue>
+                {(values) => (
+                  <React.Fragment>
+                    {values.map((value: string) => (
+                      <ComboboxChip key={value}>{value}</ComboboxChip>
+                    ))}
+                    <ComboboxChipsInput
+                      id="combobox-multiple-invalid"
+                      aria-invalid
+                    />
+                  </React.Fragment>
+                )}
+              </ComboboxValue>
+            </ComboboxChips>
+            <ComboboxContent anchor={anchor2}>
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem key={item} value={item}>
+                    {item}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
+          <FieldDescription>
+            Please select at least one framework.
+          </FieldDescription>
+          <FieldError errors={[{ message: "This field is required." }]} />
+        </Field>
+      </div>
+    </Example>
+  )
+}
+
+function ComboboxMultipleNoRemove() {
+  const anchor = useComboboxAnchor()
+
+  return (
+    <Example title="Combobox Multiple (No Remove)">
+      <Combobox
+        multiple
+        autoHighlight
+        items={frameworks}
+        defaultValue={[frameworks[0], frameworks[1]]}
+      >
+        <ComboboxChips ref={anchor}>
+          <ComboboxValue>
+            {(values) => (
+              <React.Fragment>
+                {values.map((value: string) => (
+                  <ComboboxChip key={value} showRemove={false}>
+                    {value}
+                  </ComboboxChip>
+                ))}
+                <ComboboxChipsInput />
+              </React.Fragment>
+            )}
+          </ComboboxValue>
+        </ComboboxChips>
+        <ComboboxContent anchor={anchor}>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxWithCustomItems() {
+  return (
+    <Example title="With Custom Item Rendering">
+      <Combobox
+        items={countries.filter((country) => country.code !== "")}
+        itemToStringValue={(country: (typeof countries)[number]) =>
+          country.label
+        }
+      >
+        <ComboboxInput placeholder="Search countries..." />
+        <ComboboxContent>
+          <ComboboxEmpty>No countries found.</ComboboxEmpty>
+          <ComboboxList>
+            {(country) => (
+              <ComboboxItem key={country.code} value={country}>
+                <Item size="xs" className="p-0">
+                  <ItemContent>
+                    <ItemTitle className="whitespace-nowrap">
+                      {country.label}
+                    </ItemTitle>
+                    <ItemDescription>
+                      {country.continent} ({country.code})
+                    </ItemDescription>
+                  </ItemContent>
+                </Item>
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxInDialog() {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <Example title="Combobox in Dialog">
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogTrigger render={<Button variant="outline" />}>
+          Open Dialog
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Select Framework</DialogTitle>
+            <DialogDescription>
+              Choose your preferred framework from the list below.
+            </DialogDescription>
+          </DialogHeader>
+          <Field>
+            <FieldLabel htmlFor="framework-dialog" className="sr-only">
+              Framework
+            </FieldLabel>
+            <Combobox items={frameworks}>
+              <ComboboxInput
+                id="framework-dialog"
+                placeholder="Select a framework"
+              />
+              <ComboboxContent>
+                <ComboboxEmpty>No items found.</ComboboxEmpty>
+                <ComboboxList>
+                  {(item) => (
+                    <ComboboxItem key={item} value={item}>
+                      {item}
+                    </ComboboxItem>
+                  )}
+                </ComboboxList>
+              </ComboboxContent>
+            </Combobox>
+          </Field>
+          <DialogFooter>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="button"
+              onClick={() => {
+                toast("Framework selected.")
+                setOpen(false)
+              }}
+            >
+              Confirm
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </Example>
   )
 }

@@ -161,7 +161,7 @@ function KbdInTooltip() {
             />
           </Button>
         </TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent className="pr-1.5">
           <div className="flex items-center gap-2">
             Save Changes <Kbd>S</Kbd>
           </div>

@@ -281,7 +281,7 @@
   }
 
   .cn-combobox-list {
-    @apply max-h-72 scroll-py-1 overflow-y-auto p-1 data-empty:p-0;
+    @apply max-h-[min(var(--available-height),--spacing(72))] scroll-py-1 overflow-y-auto p-1 data-empty:p-0;
   }
 
   .cn-combobox-item-text {
@@ -290,6 +290,22 @@
 
   .cn-combobox-separator {
     @apply bg-border -mx-1 my-1 h-px;
+  }
+
+  .cn-combobox-trigger {
+    @apply [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-combobox-chips {
+    @apply dark:bg-input/30 border-input focus-within:border-ring focus-within:ring-ring/50 has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive dark:has-aria-invalid:border-destructive/50 flex min-h-9 flex-wrap gap-1.5 rounded-md border bg-transparent bg-clip-padding px-2.5 py-1.5 text-sm shadow-xs transition-[color,box-shadow] focus-within:ring-[3px] has-aria-invalid:ring-[3px] has-data-[slot=combobox-chip]:px-1.5;
+  }
+
+  .cn-combobox-chip {
+    @apply bg-muted text-foreground flex h-[calc(--spacing(5.5))] w-fit items-center justify-center rounded-[3px] px-1.5 text-xs font-medium has-data-[slot=combobox-chip-remove]:pr-0;
+  }
+
+  .cn-combobox-chip-remove {
+    @apply opacity-50 hover:opacity-100;
   }
 
   /* MARK: Command */
@@ -580,6 +596,10 @@
   /* MARK: Input OTP */
   .cn-input-otp {
     @apply gap-2;
+  }
+
+  .cn-input-otp-group {
+    @apply has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:border-destructive rounded-md has-aria-invalid:ring-[3px];
   }
 
   .cn-input-otp-slot {

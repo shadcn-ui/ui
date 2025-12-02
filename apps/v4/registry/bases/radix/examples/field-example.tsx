@@ -772,34 +772,6 @@ function SliderFields() {
             {colorBalance[2]}%
           </FieldDescription>
         </Field>
-        <Field>
-          <FieldLabel>Vertical Sliders</FieldLabel>
-          <FieldDescription>
-            Adjust volume and brightness vertically.
-          </FieldDescription>
-          <div className="flex items-center gap-6">
-            <div className="flex flex-col items-center gap-2">
-              <Slider
-                defaultValue={[50]}
-                max={100}
-                step={1}
-                orientation="vertical"
-                className="h-32"
-              />
-              <span className="text-muted-foreground text-xs">Volume</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <Slider
-                defaultValue={[75]}
-                max={100}
-                step={1}
-                orientation="vertical"
-                className="h-32"
-              />
-              <span className="text-muted-foreground text-xs">Brightness</span>
-            </div>
-          </div>
-        </Field>
         <Field data-invalid>
           <FieldLabel htmlFor="slider-invalid">Invalid Slider</FieldLabel>
           <Slider

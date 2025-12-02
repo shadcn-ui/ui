@@ -38,6 +38,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -199,32 +200,71 @@ function TextareaFields() {
 }
 
 function SelectFields() {
+  const basicItems = [
+    { label: "Choose an option", value: null },
+    { label: "Option 1", value: "option1" },
+    { label: "Option 2", value: "option2" },
+    { label: "Option 3", value: "option3" },
+  ]
+  const countryItems = [
+    { label: "Select your country", value: null },
+    { label: "United States", value: "us" },
+    { label: "United Kingdom", value: "uk" },
+    { label: "Canada", value: "ca" },
+  ]
+  const timezoneItems = [
+    { label: "Select timezone", value: null },
+    { label: "UTC", value: "utc" },
+    { label: "Eastern Time", value: "est" },
+    { label: "Pacific Time", value: "pst" },
+  ]
+  const invalidItems = [
+    { label: "This field has an error", value: null },
+    { label: "Option 1", value: "option1" },
+    { label: "Option 2", value: "option2" },
+    { label: "Option 3", value: "option3" },
+  ]
+  const disabledItems = [
+    { label: "Cannot select", value: null },
+    { label: "Option 1", value: "option1" },
+    { label: "Option 2", value: "option2" },
+    { label: "Option 3", value: "option3" },
+  ]
+
   return (
     <Example title="Select Fields">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="select-basic">Basic Select</FieldLabel>
-          <Select>
+          <Select items={basicItems}>
             <SelectTrigger id="select-basic">
-              <SelectValue placeholder="Choose an option" />
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="option1">Option 1</SelectItem>
-              <SelectItem value="option2">Option 2</SelectItem>
-              <SelectItem value="option3">Option 3</SelectItem>
+              <SelectGroup>
+                {basicItems.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
             </SelectContent>
           </Select>
         </Field>
         <Field>
           <FieldLabel htmlFor="select-country">Country</FieldLabel>
-          <Select>
+          <Select items={countryItems}>
             <SelectTrigger id="select-country">
-              <SelectValue placeholder="Select your country" />
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="us">United States</SelectItem>
-              <SelectItem value="uk">United Kingdom</SelectItem>
-              <SelectItem value="ca">Canada</SelectItem>
+              <SelectGroup>
+                {countryItems.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
             </SelectContent>
           </Select>
           <FieldDescription>
@@ -236,27 +276,35 @@ function SelectFields() {
           <FieldDescription>
             Choose your local timezone for accurate scheduling.
           </FieldDescription>
-          <Select>
+          <Select items={timezoneItems}>
             <SelectTrigger id="select-timezone">
-              <SelectValue placeholder="Select timezone" />
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="utc">UTC</SelectItem>
-              <SelectItem value="est">Eastern Time</SelectItem>
-              <SelectItem value="pst">Pacific Time</SelectItem>
+              <SelectGroup>
+                {timezoneItems.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
             </SelectContent>
           </Select>
         </Field>
         <Field data-invalid>
           <FieldLabel htmlFor="select-invalid">Invalid Select</FieldLabel>
-          <Select>
+          <Select items={invalidItems}>
             <SelectTrigger id="select-invalid" aria-invalid>
-              <SelectValue placeholder="This field has an error" />
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="option1">Option 1</SelectItem>
-              <SelectItem value="option2">Option 2</SelectItem>
-              <SelectItem value="option3">Option 3</SelectItem>
+              <SelectGroup>
+                {invalidItems.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
             </SelectContent>
           </Select>
           <FieldDescription>
@@ -267,14 +315,18 @@ function SelectFields() {
           <FieldLabel htmlFor="select-disabled-field">
             Disabled Field
           </FieldLabel>
-          <Select disabled>
+          <Select items={disabledItems} disabled>
             <SelectTrigger id="select-disabled-field">
-              <SelectValue placeholder="Cannot select" />
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="option1">Option 1</SelectItem>
-              <SelectItem value="option2">Option 2</SelectItem>
-              <SelectItem value="option3">Option 3</SelectItem>
+              <SelectGroup>
+                {disabledItems.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
             </SelectContent>
           </Select>
           <FieldDescription>This field is currently disabled.</FieldDescription>
@@ -698,7 +750,7 @@ function SliderFields() {
           <Slider
             id="slider-volume"
             value={volume}
-            onValueChange={setVolume}
+            onValueChange={(value) => setVolume(value as number[])}
             max={100}
             step={1}
           />
@@ -708,7 +760,7 @@ function SliderFields() {
           <Slider
             id="slider-brightness"
             value={brightness}
-            onValueChange={setBrightness}
+            onValueChange={(value) => setBrightness(value as number[])}
             max={100}
             step={5}
           />
@@ -736,7 +788,7 @@ function SliderFields() {
           <Slider
             id="slider-temperature"
             value={temperature}
-            onValueChange={setTemperature}
+            onValueChange={(value) => setTemperature(value as number[])}
             min={0}
             max={1}
             step={0.1}
@@ -750,7 +802,7 @@ function SliderFields() {
           <Slider
             id="slider-price-range"
             value={priceRange}
-            onValueChange={setPriceRange}
+            onValueChange={(value) => setPriceRange(value as number[])}
             max={100}
             step={5}
           />
@@ -763,7 +815,7 @@ function SliderFields() {
           <Slider
             id="slider-color-balance"
             value={colorBalance}
-            onValueChange={setColorBalance}
+            onValueChange={(value) => setColorBalance(value as number[])}
             max={100}
             step={10}
           />
@@ -771,34 +823,6 @@ function SliderFields() {
             Red: {colorBalance[0]}%, Green: {colorBalance[1]}%, Blue:{" "}
             {colorBalance[2]}%
           </FieldDescription>
-        </Field>
-        <Field>
-          <FieldLabel>Vertical Sliders</FieldLabel>
-          <FieldDescription>
-            Adjust volume and brightness vertically.
-          </FieldDescription>
-          <div className="flex items-center gap-6">
-            <div className="flex flex-col items-center gap-2">
-              <Slider
-                defaultValue={[50]}
-                max={100}
-                step={1}
-                orientation="vertical"
-                className="h-32"
-              />
-              <span className="text-muted-foreground text-xs">Volume</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <Slider
-                defaultValue={[75]}
-                max={100}
-                step={1}
-                orientation="vertical"
-                className="h-32"
-              />
-              <span className="text-muted-foreground text-xs">Brightness</span>
-            </div>
-          </div>
         </Field>
         <Field data-invalid>
           <FieldLabel htmlFor="slider-invalid">Invalid Slider</FieldLabel>

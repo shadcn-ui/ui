@@ -152,16 +152,14 @@ function KbdInTooltip() {
   return (
     <Example title="Tooltip">
       <Tooltip>
-        <TooltipTrigger asChild>
-          <Button size="icon-sm" variant="outline">
-            <IconPlaceholder
-              lucide="SaveIcon"
-              tabler="IconDeviceFloppy"
-              hugeicons="FloppyDiskIcon"
-            />
-          </Button>
+        <TooltipTrigger render={<Button size="icon-sm" variant="outline" />}>
+          <IconPlaceholder
+            lucide="SaveIcon"
+            tabler="IconDeviceFloppy"
+            hugeicons="FloppyDiskIcon"
+          />
         </TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent className="pr-1.5">
           <div className="flex items-center gap-2">
             Save Changes <Kbd>S</Kbd>
           </div>

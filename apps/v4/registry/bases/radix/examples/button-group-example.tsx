@@ -60,7 +60,6 @@ export default function ButtonGroupExample() {
       <ButtonGroupWithInputGroup />
       <ButtonGroupWithFields />
       <ButtonGroupWithLike />
-      <ButtonGroupExport />
       <ButtonGroupWithSelectAndInput />
       <ButtonGroupNested />
       <ButtonGroupPagination />
@@ -243,7 +242,9 @@ function ButtonGroupWithSelect() {
         <Label htmlFor="amount">Amount</Label>
         <ButtonGroup>
           <Select value={currency} onValueChange={setCurrency}>
-            <SelectTrigger className="font-mono">{currency}</SelectTrigger>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
             <SelectContent align="start">
               <SelectItem value="$">$</SelectItem>
               <SelectItem value="€">€</SelectItem>
@@ -426,31 +427,6 @@ function ButtonGroupWithLike() {
         <Button variant="outline" asChild size="icon" className="w-12">
           <span>1.2K</span>
         </Button>
-      </ButtonGroup>
-    </Example>
-  )
-}
-
-function ButtonGroupExport() {
-  const [exportType, setExportType] = useState("pdf")
-
-  return (
-    <Example title="Export">
-      <ButtonGroup>
-        <Input />
-        <Select value={exportType} onValueChange={setExportType}>
-          <SelectTrigger>
-            <SelectValue asChild>
-              <span>{exportType}</span>
-            </SelectValue>
-          </SelectTrigger>
-          <SelectContent align="end">
-            <SelectItem value="pdf">pdf</SelectItem>
-            <SelectItem value="xlsx">xlsx</SelectItem>
-            <SelectItem value="csv">csv</SelectItem>
-            <SelectItem value="json">json</SelectItem>
-          </SelectContent>
-        </Select>
       </ButtonGroup>
     </Example>
   )

@@ -59,15 +59,15 @@ function ProgressWithLabel() {
 }
 
 function ProgressControlled() {
-  const [value, setValue] = React.useState([50])
+  const [value, setValue] = React.useState(50)
 
   return (
     <Example title="Controlled">
       <div className="flex w-full flex-col gap-4">
-        <Progress value={value[0]} className="w-full" />
+        <Progress value={value} className="w-full" />
         <Slider
           value={value}
-          onValueChange={setValue}
+          onValueChange={(value) => setValue(value as number)}
           min={0}
           max={100}
           step={1}

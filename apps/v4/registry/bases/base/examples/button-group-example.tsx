@@ -1,7 +1,5 @@
 "use client"
 
-import { useState } from "react"
-
 import {
   Example,
   ExampleWrapper,
@@ -37,6 +35,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -60,7 +59,6 @@ export default function ButtonGroupExample() {
       <ButtonGroupWithInputGroup />
       <ButtonGroupWithFields />
       <ButtonGroupWithLike />
-      <ButtonGroupExport />
       <ButtonGroupWithSelectAndInput />
       <ButtonGroupNested />
       <ButtonGroupPagination />
@@ -234,20 +232,30 @@ function ButtonGroupWithDropdown() {
   )
 }
 
-function ButtonGroupWithSelect() {
-  const [currency, setCurrency] = useState("$")
+const currencyItems = [
+  { label: "$", value: "$" },
+  { label: "€", value: "€" },
+  { label: "£", value: "£" },
+]
 
+function ButtonGroupWithSelect() {
   return (
     <Example title="With Select">
       <Field>
         <Label htmlFor="amount">Amount</Label>
         <ButtonGroup>
-          <Select value={currency} onValueChange={setCurrency}>
-            <SelectTrigger className="font-mono">{currency}</SelectTrigger>
-            <SelectContent align="start">
-              <SelectItem value="$">$</SelectItem>
-              <SelectItem value="€">€</SelectItem>
-              <SelectItem value="£">£</SelectItem>
+          <Select items={currencyItems} defaultValue={currencyItems[0]}>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {currencyItems.map((item) => (
+                  <SelectItem key={item.value} value={item}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
             </SelectContent>
           </Select>
           <Input placeholder="Enter amount to send" />
@@ -437,43 +445,26 @@ function ButtonGroupWithLike() {
   )
 }
 
-function ButtonGroupExport() {
-  const [exportType, setExportType] = useState("pdf")
-
-  return (
-    <Example title="Export">
-      <ButtonGroup>
-        <Input />
-        <Select value={exportType} onValueChange={setExportType}>
-          <SelectTrigger>
-            <SelectValue asChild>
-              <span>{exportType}</span>
-            </SelectValue>
-          </SelectTrigger>
-          <SelectContent align="end">
-            <SelectItem value="pdf">pdf</SelectItem>
-            <SelectItem value="xlsx">xlsx</SelectItem>
-            <SelectItem value="csv">csv</SelectItem>
-            <SelectItem value="json">json</SelectItem>
-          </SelectContent>
-        </Select>
-      </ButtonGroup>
-    </Example>
-  )
-}
+const durationItems = [
+  { label: "Hours", value: "hours" },
+  { label: "Days", value: "days" },
+  { label: "Weeks", value: "weeks" },
+]
 
 function ButtonGroupWithSelectAndInput() {
   return (
     <Example title="With Select and Input">
       <ButtonGroup>
-        <Select defaultValue="hours">
+        <Select items={durationItems}>
           <SelectTrigger id="duration">
-            <SelectValue placeholder="Select duration" />
+            <SelectValue />
           </SelectTrigger>
           <SelectContent align="start">
-            <SelectItem value="hours">Hours</SelectItem>
-            <SelectItem value="days">Days</SelectItem>
-            <SelectItem value="weeks">Weeks</SelectItem>
+            {durationItems.map((item) => (
+              <SelectItem key={item.value} value={item.value}>
+                {item.label}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
         <Input />

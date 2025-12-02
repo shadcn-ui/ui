@@ -2,7 +2,6 @@
 export { AbsoluteIcon } from "@hugeicons/core-free-icons"
 export { ActivityIcon } from "@hugeicons/core-free-icons"
 export { Add01Icon } from "@hugeicons/core-free-icons"
-export { AddCircleIcon } from "@hugeicons/core-free-icons"
 export { AddToListIcon } from "@hugeicons/core-free-icons"
 export { AiCloud01Icon } from "@hugeicons/core-free-icons"
 export { Alert02Icon } from "@hugeicons/core-free-icons"

@@ -6,7 +6,7 @@ import { cn } from "@/registry/bases/base/lib/cn"
 import { Separator } from "@/registry/bases/base/ui/separator"
 
 const buttonGroupVariants = cva(
-  "cn-button-group flex w-fit items-stretch [&>*]:focus-visible:z-10 [&>*]:focus-visible:relative [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1 ",
+  "cn-button-group flex w-fit items-stretch [&>*]:focus-visible:z-10 [&>*]:focus-visible:relative [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1",
   {
     variants: {
       orientation: {

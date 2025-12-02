@@ -291,6 +291,25 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "registry/bases/radix/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/ui/combobox.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "command": {
       name: "command",
       title: "undefined",
@@ -2434,6 +2453,25 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/base/ui/collapsible.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "registry/bases/base/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/ui/combobox.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),

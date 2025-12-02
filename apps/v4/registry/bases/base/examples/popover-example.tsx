@@ -3,6 +3,14 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/base/components/example"
 import { Button } from "@/registry/bases/base/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/base/ui/dialog"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
 import { Input } from "@/registry/bases/base/ui/input"
 import {
@@ -13,14 +21,6 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/registry/bases/base/ui/popover"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
 
 export default function PopoverExample() {
   return (
@@ -135,7 +135,9 @@ function PopoverInDialog() {
             </DialogDescription>
           </DialogHeader>
           <Popover>
-            <PopoverTrigger render={<Button variant="outline" className="w-fit" />}>
+            <PopoverTrigger
+              render={<Button variant="outline" className="w-fit" />}
+            >
               Open Popover
             </PopoverTrigger>
             <PopoverContent align="start">

@@ -3,6 +3,14 @@ import {
   ExampleWrapper,
 } from "@/registry/bases/radix/components/example"
 import { Button } from "@/registry/bases/radix/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/radix/ui/dialog"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
 import { Input } from "@/registry/bases/radix/ui/input"
 import {
@@ -13,14 +21,6 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/registry/bases/radix/ui/popover"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
 
 export default function PopoverExample() {
   return (

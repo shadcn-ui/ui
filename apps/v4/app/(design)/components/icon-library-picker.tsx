@@ -115,7 +115,7 @@ export function IconLibraryPicker() {
       </SelectTrigger>
       <SelectContent
         position="popper"
-        side="right"
+        side="left"
         align="start"
         className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >

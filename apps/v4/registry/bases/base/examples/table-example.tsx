@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Example,
   ExampleWrapper,
@@ -14,6 +16,7 @@ import { Input } from "@/registry/bases/base/ui/input"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -262,15 +265,17 @@ function TableWithActions() {
             <TableCell>$29.99</TableCell>
             <TableCell className="text-right">
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8">
-                    <IconPlaceholder
-                      lucide="MoreHorizontalIcon"
-                      tabler="IconDots"
-                      hugeicons="MoreHorizontalIcon"
-                    />
-                    <span className="sr-only">Open menu</span>
-                  </Button>
+                <DropdownMenuTrigger
+                  render={
+                    <Button variant="ghost" size="icon" className="size-8" />
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="MoreHorizontalIcon"
+                    tabler="IconDots"
+                    hugeicons="MoreHorizontalIcon"
+                  />
+                  <span className="sr-only">Open menu</span>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem>Edit</DropdownMenuItem>
@@ -288,15 +293,17 @@ function TableWithActions() {
             <TableCell>$129.99</TableCell>
             <TableCell className="text-right">
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8">
-                    <IconPlaceholder
-                      lucide="MoreHorizontalIcon"
-                      tabler="IconDots"
-                      hugeicons="MoreHorizontalIcon"
-                    />
-                    <span className="sr-only">Open menu</span>
-                  </Button>
+                <DropdownMenuTrigger
+                  render={
+                    <Button variant="ghost" size="icon" className="size-8" />
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="MoreHorizontalIcon"
+                    tabler="IconDots"
+                    hugeicons="MoreHorizontalIcon"
+                  />
+                  <span className="sr-only">Open menu</span>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem>Edit</DropdownMenuItem>
@@ -314,15 +321,17 @@ function TableWithActions() {
             <TableCell>$49.99</TableCell>
             <TableCell className="text-right">
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="size-8">
-                    <IconPlaceholder
-                      lucide="MoreHorizontalIcon"
-                      tabler="IconDots"
-                      hugeicons="MoreHorizontalIcon"
-                    />
-                    <span className="sr-only">Open menu</span>
-                  </Button>
+                <DropdownMenuTrigger
+                  render={
+                    <Button variant="ghost" size="icon" className="size-8" />
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="MoreHorizontalIcon"
+                    tabler="IconDots"
+                    hugeicons="MoreHorizontalIcon"
+                  />
+                  <span className="sr-only">Open menu</span>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem>Edit</DropdownMenuItem>
@@ -341,6 +350,31 @@ function TableWithActions() {
   )
 }
 
+const people = [
+  { value: "sarah", label: "Sarah Chen" },
+  { value: "marcus", label: "Marc Rodriguez" },
+  { value: "emily", label: "Emily Watson" },
+  { value: "david", label: "David Kim" },
+]
+
+const tasks = [
+  {
+    task: "Design homepage",
+    assignee: "sarah",
+    status: "In Progress",
+  },
+  {
+    task: "Implement API",
+    assignee: "marcus",
+    status: "Pending",
+  },
+  {
+    task: "Write tests",
+    assignee: "emily",
+    status: "Not Started",
+  },
+]
+
 function TableWithSelect() {
   return (
     <Example title="With Select">
@@ -353,57 +387,36 @@ function TableWithSelect() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="font-medium">Design homepage</TableCell>
-            <TableCell>
-              <Select defaultValue="sarah">
-                <SelectTrigger className="h-8 w-40">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="sarah">Sarah Chen</SelectItem>
-                  <SelectItem value="marcus">Marc Rodriguez</SelectItem>
-                  <SelectItem value="emily">Emily Watson</SelectItem>
-                  <SelectItem value="david">David Kim</SelectItem>
-                </SelectContent>
-              </Select>
-            </TableCell>
-            <TableCell>In Progress</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className="font-medium">Implement API</TableCell>
-            <TableCell>
-              <Select defaultValue="marcus">
-                <SelectTrigger className="h-8 w-40">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="sarah">Sarah Chen</SelectItem>
-                  <SelectItem value="marcus">Marc Rodriguez</SelectItem>
-                  <SelectItem value="emily">Emily Watson</SelectItem>
-                  <SelectItem value="david">David Kim</SelectItem>
-                </SelectContent>
-              </Select>
-            </TableCell>
-            <TableCell>Pending</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell className="font-medium">Write tests</TableCell>
-            <TableCell>
-              <Select defaultValue="emily">
-                <SelectTrigger className="h-8 w-40">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="sarah">Sarah Chen</SelectItem>
-                  <SelectItem value="marcus">Marc Rodriguez</SelectItem>
-                  <SelectItem value="emily">Emily Watson</SelectItem>
-                  <SelectItem value="david">David Kim</SelectItem>
-                </SelectContent>
-              </Select>
-            </TableCell>
-            <TableCell>Not Started</TableCell>
-          </TableRow>
+          {tasks.map((item) => (
+            <TableRow key={item.task}>
+              <TableCell className="font-medium">{item.task}</TableCell>
+              <TableCell>
+                <Select
+                  items={people}
+                  defaultValue={people.find(
+                    (person) => person.value === item.assignee
+                  )}
+                  itemToStringValue={(item) => {
+                    return item.value
+                  }}
+                >
+                  <SelectTrigger className="w-40" size="sm">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      {people.map((person) => (
+                        <SelectItem key={person.value} value={person}>
+                          {person.label}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </TableCell>
+              <TableCell>{item.status}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </Example>

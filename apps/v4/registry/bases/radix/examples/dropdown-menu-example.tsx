@@ -13,6 +13,14 @@ import {
 } from "@/registry/bases/radix/ui/avatar"
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/registry/bases/radix/ui/dialog"
+import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -29,14 +37,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function DropdownMenuExample() {

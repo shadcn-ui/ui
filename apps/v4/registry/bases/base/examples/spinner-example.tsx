@@ -123,20 +123,23 @@ function SpinnerInEmpty() {
         </EmptyHeader>
         <EmptyContent>
           <div className="flex gap-2">
-            <Button asChild>
-              <a href="#">Create project</a>
+            <Button render={<a href="#" />} nativeButton={false}>
+              Create project
             </Button>
             <Button variant="outline">Import project</Button>
           </div>
-          <Button variant="link" asChild className="text-muted-foreground">
-            <a href="#">
-              Learn more{" "}
-              <IconPlaceholder
-                lucide="ArrowRightIcon"
-                tabler="IconArrowRight"
-                hugeicons="ArrowRight02Icon"
-              />
-            </a>
+          <Button
+            variant="link"
+            render={<a href="#" />}
+            nativeButton={false}
+            className="text-muted-foreground"
+          >
+            Learn more{" "}
+            <IconPlaceholder
+              lucide="ArrowRightIcon"
+              tabler="IconArrowRight"
+              hugeicons="ArrowRight02Icon"
+            />
           </Button>
         </EmptyContent>
       </Empty>
