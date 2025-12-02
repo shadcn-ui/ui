@@ -1,6 +1,4 @@
-import {
-  Wireframe,
-} from "@/registry/new-york-v4/ui/wireframe"
+import { Wireframe } from "@/registry/new-york-v4/ui/wireframe"
 
 export function WireframeDemo() {
   return (
