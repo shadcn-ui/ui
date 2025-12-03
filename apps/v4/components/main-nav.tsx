@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { cn } from "@/lib/utils"
-import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 export function MainNav({
@@ -18,24 +17,22 @@ export function MainNav({
   const pathname = usePathname()
 
   return (
-    <nav className={cn("items-center", className)} {...props}>
+    <nav className={cn("items-center gap-0", className)} {...props}>
       {items.map((item) => (
-        <Button key={item.href} variant="ghost" asChild size="sm">
+        <Button
+          key={item.href}
+          variant="ghost"
+          asChild
+          size="sm"
+          className="px-2.5"
+        >
           <Link
             href={item.href}
             data-active={pathname === item.href}
             data-new={PAGES_NEW.includes(item.href)}
-            className="data-[active=true]:text-primary relative items-center"
+            className="relative items-center"
           >
             {item.label}
-            {PAGES_NEW.includes(item.href) && (
-              <Badge
-                variant="secondary"
-                className="h-4 bg-blue-600 px-1 text-[0.625rem] text-white"
-              >
-                New
-              </Badge>
-            )}
           </Link>
         </Button>
       ))}

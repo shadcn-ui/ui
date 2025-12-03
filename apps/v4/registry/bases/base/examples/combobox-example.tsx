@@ -43,13 +43,26 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/registry/bases/base/ui/field"
-import { InputGroupAddon } from "@/registry/bases/base/ui/input-group"
+import { Input } from "@/registry/bases/base/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/registry/bases/base/ui/input-group"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
 } from "@/registry/bases/base/ui/item"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/bases/base/ui/select"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function ComboboxExample() {
@@ -72,6 +85,7 @@ export default function ComboboxExample() {
       <ComboboxMultipleNoRemove />
       <ComboboxWithCustomItems />
       <ComboboxInDialog />
+      <ComboboxWithOtherInputs />
     </ExampleWrapper>
   )
 }
@@ -1141,6 +1155,98 @@ function ComboboxInDialog() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+    </Example>
+  )
+}
+
+const items = [
+  {
+    label: "Select a framework",
+    value: null,
+  },
+  {
+    label: "React",
+    value: "react",
+  },
+  {
+    label: "Vue",
+    value: "vue",
+  },
+  {
+    label: "Angular",
+    value: "angular",
+  },
+  {
+    label: "Svelte",
+    value: "svelte",
+  },
+  {
+    label: "Solid",
+    value: "solid",
+  },
+  {
+    label: "Preact",
+    value: "preact",
+  },
+  {
+    label: "Next.js",
+    value: "next.js",
+  },
+]
+
+function ComboboxWithOtherInputs() {
+  return (
+    <Example title="With Other Inputs">
+      <Combobox items={frameworks}>
+        <ComboboxInput placeholder="Select a framework" className="w-52" />
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+      <Select items={items}>
+        <SelectTrigger className="w-52">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {items.map((item) => (
+              <SelectItem key={item.value} value={item.value}>
+                {item.label}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <Button
+        variant="outline"
+        className="text-muted-foreground w-52 justify-between font-normal"
+      >
+        Select a framework
+        <IconPlaceholder
+          lucide="ChevronDownIcon"
+          tabler="IconSelector"
+          hugeicons="UnfoldMoreIcon"
+          data-icon="inline-end"
+        />
+      </Button>
+      <Input placeholder="Select a framework" className="w-52" />
+      <InputGroup className="w-52">
+        <InputGroupInput placeholder="Select a framework" />
+        <InputGroupAddon align="inline-end">
+          <IconPlaceholder
+            lucide="ChevronDownIcon"
+            tabler="IconSelector"
+            hugeicons="UnfoldMoreIcon"
+          />
+        </InputGroupAddon>
+      </InputGroup>
     </Example>
   )
 }

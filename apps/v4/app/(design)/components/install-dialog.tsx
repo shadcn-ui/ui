@@ -28,21 +28,18 @@ export function InstallDialog() {
   const [hasCopied, setHasCopied] = React.useState(false)
 
   const command = React.useMemo(() => {
-    const parts = [
-      "npx shadcn init",
-      `--style=${params.style}`,
-      `--baseColor=${params.baseColor}`,
-      `--theme=${params.theme}`,
-      `--iconLibrary=${params.iconLibrary}`,
-      `--font=${params.font}`,
-    ]
-    return parts.join(" ")
+    const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
+    const url = `${origin}/init?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&accent=${params.accent}&menu=${params.menu}`
+    return `npx shadcn init ${url}`
   }, [
+    base,
     params.style,
     params.baseColor,
     params.theme,
     params.iconLibrary,
     params.font,
+    params.accent,
+    params.menu,
   ])
 
   React.useEffect(() => {
@@ -65,14 +62,6 @@ export function InstallDialog() {
 
   return (
     <div className="bg-background sticky bottom-0 flex gap-2">
-      <Button asChild size="sm" variant="outline">
-        <a
-          href={`/init?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&accent=${params.accent}&menu=${params.menu}`}
-          target="_blank"
-        >
-          View
-        </a>
-      </Button>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button size="sm" className="h-[31px] flex-1 rounded-lg">

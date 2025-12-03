@@ -1211,6 +1211,21 @@
       "type": "registry:example"
     },
     {
+      "name": "sidebar-example",
+      "title": "Sidebar",
+      "registryDependencies": [
+        "sidebar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/sidebar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "scroll-area-example",
       "title": "Scroll Area",
       "registryDependencies": [

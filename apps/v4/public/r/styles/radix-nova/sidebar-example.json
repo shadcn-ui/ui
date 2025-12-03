@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-example",
+  "title": "Sidebar",
+  "registryDependencies": [
+    "sidebar",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/examples/sidebar-example.tsx",
+      "content": "import { ExampleWrapper } from \"@/registry/bases/radix/components/example\"\n\nexport default function SidebarExample() {\n  return <ExampleWrapper>sdsd</ExampleWrapper>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
