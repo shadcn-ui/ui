@@ -202,7 +202,7 @@ export function CommandMenu({
         >
           <span className="hidden lg:inline-flex">Search documentation...</span>
           <span className="inline-flex lg:hidden">Search...</span>
-          <div className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
+          <div className="absolute top-1.5 right-1.5 hidden gap-1 group-has-[[data-slot=designer]]/body:hidden sm:flex">
             <Kbd>⌘K</Kbd>
           </div>
         </Button>
