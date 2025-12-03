@@ -64,6 +64,18 @@ export default function ComboboxForm() {
       ),
     })
   }
+  // Autofocus fix
+    const [open, setOpen] = React.useState(false)
+    const inputRef = React.useRef<HTMLInputElement>(null)
+
+    React.useEffect(() => {
+      if (open && inputRef.current) {
+        setTimeout(() => {
+          inputRef.current?.focus()
+        }, 10)
+      }
+    }, [open])
+
 
   return (
     <Form {...form}>
@@ -74,7 +86,8 @@ export default function ComboboxForm() {
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Language</FormLabel>
-              <Popover>
+                <Popover open={open} onOpenChange={setOpen}>
+
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
@@ -97,7 +110,8 @@ export default function ComboboxForm() {
                 <PopoverContent className="w-[200px] p-0">
                   <Command>
                     <CommandInput
-                      placeholder="Search framework..."
+                      ref={inputRef}
+                      placeholder="Search language..."
                       className="h-9"
                     />
                     <CommandList>
