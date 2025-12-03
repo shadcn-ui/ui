@@ -30,8 +30,10 @@ import {
 export function WireframeDemo() {
   return (
     <Wireframe
-      navCorners={{
-        bottomLeft: "navbar",
+      config={{
+        corners: {
+          bottomLeft: "navbar",
+        },
       }}
     >
       {/* Top Navigation Bar */}
