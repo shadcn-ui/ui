@@ -1289,6 +1289,21 @@
       "type": "registry:example"
     },
     {
+      "name": "sidebar-example",
+      "title": "Sidebar",
+      "registryDependencies": [
+        "sidebar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/examples/sidebar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "slider-example",
       "title": "Slider",
       "registryDependencies": [

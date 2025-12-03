@@ -74,9 +74,11 @@ function DropdownMenuBasic() {
             <DropdownMenuItem>Settings</DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>GitHub</DropdownMenuItem>
-          <DropdownMenuItem>Support</DropdownMenuItem>
-          <DropdownMenuItem disabled>API</DropdownMenuItem>
+          <DropdownMenuGroup>
+            <DropdownMenuItem>GitHub</DropdownMenuItem>
+            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuItem disabled>API</DropdownMenuItem>
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
     </Example>
@@ -93,39 +95,43 @@ function DropdownMenuWithIcons() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="UserIcon"
-              tabler="IconUser"
-              hugeicons="UserIcon"
-            />
-            Profile
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="CreditCardIcon"
-              tabler="IconCreditCard"
-              hugeicons="CreditCardIcon"
-            />
-            Billing
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="SettingsIcon"
-              tabler="IconSettings"
-              hugeicons="SettingsIcon"
-            />
-            Settings
-          </DropdownMenuItem>
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="UserIcon"
+                tabler="IconUser"
+                hugeicons="UserIcon"
+              />
+              Profile
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="CreditCardIcon"
+                tabler="IconCreditCard"
+                hugeicons="CreditCardIcon"
+              />
+              Billing
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="SettingsIcon"
+                tabler="IconSettings"
+                hugeicons="SettingsIcon"
+              />
+              Settings
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem variant="destructive">
-            <IconPlaceholder
-              lucide="LogOutIcon"
-              tabler="IconLogout"
-              hugeicons="LogoutIcon"
-            />
-            Log out
-          </DropdownMenuItem>
+          <DropdownMenuGroup>
+            <DropdownMenuItem variant="destructive">
+              <IconPlaceholder
+                lucide="LogOutIcon"
+                tabler="IconLogout"
+                hugeicons="LogoutIcon"
+              />
+              Log out
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
     </Example>
@@ -162,10 +168,12 @@ function DropdownMenuWithShortcuts() {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            Log out
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem>
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              Log out
+              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
     </Example>
@@ -188,10 +196,14 @@ function DropdownMenuWithSubmenu() {
               <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
-                  <DropdownMenuItem>Email</DropdownMenuItem>
-                  <DropdownMenuItem>Message</DropdownMenuItem>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>Email</DropdownMenuItem>
+                    <DropdownMenuItem>Message</DropdownMenuItem>
+                  </DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>More...</DropdownMenuItem>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>More...</DropdownMenuItem>
+                  </DropdownMenuGroup>
                 </DropdownMenuSubContent>
               </DropdownMenuPortal>
             </DropdownMenuSub>
@@ -435,39 +447,43 @@ function DropdownMenuWithDestructive() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="PencilIcon"
-              tabler="IconPencil"
-              hugeicons="EditIcon"
-            />
-            Edit
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="ShareIcon"
-              tabler="IconShare"
-              hugeicons="ShareIcon"
-            />
-            Share
-          </DropdownMenuItem>
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="PencilIcon"
+                tabler="IconPencil"
+                hugeicons="EditIcon"
+              />
+              Edit
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="ShareIcon"
+                tabler="IconShare"
+                hugeicons="ShareIcon"
+              />
+              Share
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <IconPlaceholder
-              lucide="ArchiveIcon"
-              tabler="IconArchive"
-              hugeicons="Archive02Icon"
-            />
-            Archive
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="destructive">
-            <IconPlaceholder
-              lucide="TrashIcon"
-              tabler="IconTrash"
-              hugeicons="DeleteIcon"
-            />
-            Delete
-          </DropdownMenuItem>
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <IconPlaceholder
+                lucide="ArchiveIcon"
+                tabler="IconArchive"
+                hugeicons="Archive02Icon"
+              />
+              Archive
+            </DropdownMenuItem>
+            <DropdownMenuItem variant="destructive">
+              <IconPlaceholder
+                lucide="TrashIcon"
+                tabler="IconTrash"
+                hugeicons="DeleteIcon"
+              />
+              Delete
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
     </Example>
@@ -532,14 +548,16 @@ function DropdownMenuWithAvatar() {
         </DropdownMenuItem>
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>
-        <IconPlaceholder
-          lucide="LogOutIcon"
-          tabler="IconLogout"
-          hugeicons="LogoutIcon"
-        />
-        Sign Out
-      </DropdownMenuItem>
+      <DropdownMenuGroup>
+        <DropdownMenuItem>
+          <IconPlaceholder
+            lucide="LogOutIcon"
+            tabler="IconLogout"
+            hugeicons="LogoutIcon"
+          />
+          Sign Out
+        </DropdownMenuItem>
+      </DropdownMenuGroup>
     </>
   )
 
@@ -613,52 +631,60 @@ function DropdownMenuInDialog() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="CopyIcon"
-                  tabler="IconCopy"
-                  hugeicons="CopyIcon"
-                />
-                Copy
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="ScissorsIcon"
-                  tabler="IconCut"
-                  hugeicons="ScissorIcon"
-                />
-                Cut
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="ClipboardPasteIcon"
-                  tabler="IconClipboard"
-                  hugeicons="ClipboardIcon"
-                />
-                Paste
-              </DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="CopyIcon"
+                    tabler="IconCopy"
+                    hugeicons="CopyIcon"
+                  />
+                  Copy
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="ScissorsIcon"
+                    tabler="IconCut"
+                    hugeicons="ScissorIcon"
+                  />
+                  Cut
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="ClipboardPasteIcon"
+                    tabler="IconClipboard"
+                    hugeicons="ClipboardIcon"
+                  />
+                  Paste
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger>More Options</DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent>
-                    <DropdownMenuItem>Save Page...</DropdownMenuItem>
-                    <DropdownMenuItem>Create Shortcut...</DropdownMenuItem>
-                    <DropdownMenuItem>Name Window...</DropdownMenuItem>
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem>Save Page...</DropdownMenuItem>
+                      <DropdownMenuItem>Create Shortcut...</DropdownMenuItem>
+                      <DropdownMenuItem>Name Window...</DropdownMenuItem>
+                    </DropdownMenuGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Developer Tools</DropdownMenuItem>
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem>Developer Tools</DropdownMenuItem>
+                    </DropdownMenuGroup>
                   </DropdownMenuSubContent>
                 </DropdownMenuPortal>
               </DropdownMenuSub>
               <DropdownMenuSeparator />
-              <DropdownMenuItem variant="destructive">
-                <IconPlaceholder
-                  lucide="TrashIcon"
-                  tabler="IconTrash"
-                  hugeicons="DeleteIcon"
-                />
-                Delete
-              </DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem variant="destructive">
+                  <IconPlaceholder
+                    lucide="TrashIcon"
+                    tabler="IconTrash"
+                    hugeicons="DeleteIcon"
+                  />
+                  Delete
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </DialogContent>

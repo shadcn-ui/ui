@@ -6,20 +6,20 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/bases/base/ui/avatar"
+import { Button } from "@/registry/bases/base/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
+} from "@/registry/bases/base/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/bases/radix/ui/collapsible"
+} from "@/registry/bases/base/ui/collapsible"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,8 +28,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
-import { Field } from "@/registry/bases/radix/ui/field"
+} from "@/registry/bases/base/ui/dropdown-menu"
+import { Field } from "@/registry/bases/base/ui/field"
 import {
   Item,
   ItemActions,
@@ -37,8 +37,8 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
-import { Label } from "@/registry/bases/radix/ui/label"
+} from "@/registry/bases/base/ui/item"
+import { Label } from "@/registry/bases/base/ui/label"
 import {
   Select,
   SelectContent,
@@ -46,7 +46,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
+} from "@/registry/bases/base/ui/select"
 import {
   Sidebar,
   SidebarContent,
@@ -67,7 +67,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/registry/bases/radix/ui/sidebar"
+} from "@/registry/bases/base/ui/sidebar"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 const sidebars = {
@@ -97,6 +97,10 @@ export default function SidebarExample() {
   return (
     <div className="flex min-h-screen flex-col">
       <Select
+        items={Object.entries(sidebars).map(([key, value]) => ({
+          label: value.title,
+          value: key,
+        }))}
         value={sidebar}
         onValueChange={(value) => setSidebar(value as keyof typeof sidebars)}
       >
@@ -104,9 +108,9 @@ export default function SidebarExample() {
           className="bg-background fixed right-4 bottom-4 isolate z-10"
           size="sm"
         >
-          <SelectValue placeholder="Select a sidebar" />
+          <SelectValue />
         </SelectTrigger>
-        <SelectContent side="top" align="center" position="popper">
+        <SelectContent side="top" align="center">
           <SelectGroup>
             {Object.entries(sidebars).map(([key, value]) => (
               <SelectItem key={key} value={key}>
@@ -262,79 +266,81 @@ function SidebarBasic() {
           <SidebarMenu>
             <SidebarMenuItem>
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton
-                    size="lg"
-                    className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                  >
-                    <Item className="p-0" size="xs">
-                      <ItemMedia variant="icon">
-                        <Button size="icon-sm" asChild>
-                          <span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 256 256"
-                            >
-                              <rect width="256" height="256" fill="none"></rect>
-                              <line
-                                x1="208"
-                                y1="128"
-                                x2="128"
-                                y2="208"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="32"
-                              ></line>
-                              <line
-                                x1="192"
-                                y1="40"
-                                x2="40"
-                                y2="192"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="32"
-                              ></line>
-                            </svg>
-                          </span>
-                        </Button>
-                      </ItemMedia>
-                      <ItemContent>
-                        <ItemTitle>Documentation</ItemTitle>
-                        <ItemDescription>v{selectedVersion}</ItemDescription>
-                      </ItemContent>
-                      <ItemActions>
-                        <IconPlaceholder
-                          lucide="ChevronsUpDownIcon"
-                          tabler="IconSelector"
-                          hugeicons="UnfoldMoreIcon"
-                        />
-                      </ItemActions>
-                    </Item>
-                  </SidebarMenuButton>
+                <DropdownMenuTrigger
+                  render={
+                    <SidebarMenuButton
+                      size="lg"
+                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                    />
+                  }
+                >
+                  <Item className="p-0" size="xs">
+                    <ItemMedia variant="icon">
+                      <Button
+                        size="icon-sm"
+                        render={<span />}
+                        nativeButton={false}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 256 256"
+                        >
+                          <rect width="256" height="256" fill="none"></rect>
+                          <line
+                            x1="208"
+                            y1="128"
+                            x2="128"
+                            y2="208"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="32"
+                          ></line>
+                          <line
+                            x1="192"
+                            y1="40"
+                            x2="40"
+                            y2="192"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="32"
+                          ></line>
+                        </svg>
+                      </Button>
+                    </ItemMedia>
+                    <ItemContent>
+                      <ItemTitle>Documentation</ItemTitle>
+                      <ItemDescription>v{selectedVersion}</ItemDescription>
+                    </ItemContent>
+                    <ItemActions>
+                      <IconPlaceholder
+                        lucide="ChevronsUpDownIcon"
+                        tabler="IconSelector"
+                        hugeicons="UnfoldMoreIcon"
+                      />
+                    </ItemActions>
+                  </Item>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  <DropdownMenuGroup>
-                    {data.versions.map((version) => (
-                      <DropdownMenuItem
-                        key={version}
-                        onSelect={() => setSelectedVersion(version)}
-                      >
-                        v{version}{" "}
-                        {version === selectedVersion && (
-                          <IconPlaceholder
-                            lucide="CheckIcon"
-                            tabler="IconCheck"
-                            hugeicons="Tick02Icon"
-                            className="ml-auto"
-                          />
-                        )}
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuGroup>
+                  {data.versions.map((version) => (
+                    <DropdownMenuItem
+                      key={version}
+                      onSelect={() => setSelectedVersion(version)}
+                    >
+                      v{version}{" "}
+                      {version === selectedVersion && (
+                        <IconPlaceholder
+                          lucide="CheckIcon"
+                          tabler="IconCheck"
+                          hugeicons="Tick02Icon"
+                          className="ml-auto"
+                        />
+                      )}
+                    </DropdownMenuItem>
+                  ))}
                 </DropdownMenuContent>
               </DropdownMenu>
             </SidebarMenuItem>
@@ -368,8 +374,11 @@ function SidebarBasic() {
                 <SidebarMenu>
                   {item.items.map((subItem) => (
                     <SidebarMenuItem key={subItem.title}>
-                      <SidebarMenuButton asChild isActive={subItem.isActive}>
-                        <a href={subItem.url}>{subItem.title}</a>
+                      <SidebarMenuButton
+                        render={<a href={subItem.url} />}
+                        isActive={subItem.isActive}
+                      >
+                        {subItem.title}
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}
@@ -381,7 +390,7 @@ function SidebarBasic() {
         <SidebarRail />
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+        <header className="flex h-16 shrink-0 items-center gap-2 px-4">
           <SidebarTrigger className="-ml-1" />
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
@@ -575,61 +584,66 @@ function SidebarIcons() {
           <SidebarMenu>
             <SidebarMenuItem>
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton
-                    size="lg"
-                    className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                  >
-                    <Button size="icon-sm" asChild className="rounded-lg">
-                      <span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 256 256"
-                        >
-                          <rect width="256" height="256" fill="none"></rect>
-                          <line
-                            x1="208"
-                            y1="128"
-                            x2="128"
-                            y2="208"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="32"
-                          ></line>
-                          <line
-                            x1="192"
-                            y1="40"
-                            x2="40"
-                            y2="192"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="32"
-                          ></line>
-                        </svg>
-                      </span>
-                    </Button>
-                    <div className="grid flex-1 text-left text-sm leading-tight">
-                      <span className="truncate font-medium">
-                        {activeTeam.name}
-                      </span>
-                      <span className="truncate text-xs">
-                        {activeTeam.plan}
-                      </span>
-                    </div>
-                    <IconPlaceholder
-                      lucide="ChevronsUpDownIcon"
-                      tabler="IconSelector"
-                      hugeicons="UnfoldMoreIcon"
+                <DropdownMenuTrigger
+                  render={
+                    <SidebarMenuButton
+                      size="lg"
+                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
                     />
-                  </SidebarMenuButton>
+                  }
+                >
+                  <Button
+                    size="icon-sm"
+                    render={<span />}
+                    nativeButton={false}
+                    className="rounded-lg"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 256 256"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <line
+                        x1="208"
+                        y1="128"
+                        x2="128"
+                        y2="208"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="32"
+                      ></line>
+                      <line
+                        x1="192"
+                        y1="40"
+                        x2="40"
+                        y2="192"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="32"
+                      ></line>
+                    </svg>
+                  </Button>
+                  <div className="grid flex-1 text-left text-sm leading-tight">
+                    <span className="truncate font-medium">
+                      {activeTeam.name}
+                    </span>
+                    <span className="truncate text-xs">{activeTeam.plan}</span>
+                  </div>
+                  <IconPlaceholder
+                    lucide="ChevronsUpDownIcon"
+                    tabler="IconSelector"
+                    hugeicons="UnfoldMoreIcon"
+                  />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
                     <DropdownMenuLabel>Teams</DropdownMenuLabel>
+                  </DropdownMenuGroup>
+                  <DropdownMenuGroup>
                     {data.teams.map((team) => (
                       <DropdownMenuItem
                         key={team.name}
@@ -651,35 +665,33 @@ function SidebarIcons() {
               {data.navMain.map((item) => (
                 <Collapsible
                   key={item.title}
-                  asChild
                   defaultOpen={item.isActive}
                   className="group/collapsible"
+                  render={<SidebarMenuItem />}
                 >
-                  <SidebarMenuItem>
-                    <CollapsibleTrigger asChild>
-                      <SidebarMenuButton tooltip={item.title}>
-                        {item.icon}
-                        <span>{item.title}</span>
-                        <IconPlaceholder
-                          lucide="ChevronRightIcon"
-                          tabler="IconChevronRight"
-                          hugeicons="ArrowRight01Icon"
-                          className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
-                        />
-                      </SidebarMenuButton>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent>
-                      <SidebarMenuSub>
-                        {item.items?.map((subItem) => (
-                          <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton asChild>
-                              <a href={subItem.url}>{subItem.title}</a>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        ))}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
-                  </SidebarMenuItem>
+                  <CollapsibleTrigger render={<SidebarMenuButton />}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                    <IconPlaceholder
+                      lucide="ChevronRightIcon"
+                      tabler="IconChevronRight"
+                      hugeicons="ArrowRight01Icon"
+                      className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
+                    />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      {item.items?.map((subItem) => (
+                        <SidebarMenuSubItem key={subItem.title}>
+                          <SidebarMenuSubButton
+                            render={<a href={subItem.url} />}
+                          >
+                            {subItem.title}
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      ))}
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
                 </Collapsible>
               ))}
             </SidebarMenu>
@@ -689,11 +701,9 @@ function SidebarIcons() {
             <SidebarMenu>
               {data.projects.map((item) => (
                 <SidebarMenuItem key={item.name}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      {item.icon}
-                      {item.name}
-                    </a>
+                  <SidebarMenuButton render={<a href={item.url} />}>
+                    {item.icon}
+                    {item.name}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -704,32 +714,29 @@ function SidebarIcons() {
           <SidebarMenu>
             <SidebarMenuItem>
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton
-                    size="lg"
-                    className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                  >
-                    <Avatar>
-                      <AvatarImage
-                        src={data.user.avatar}
-                        alt={data.user.name}
-                      />
-                      <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-                    </Avatar>
-                    <div className="grid flex-1 text-left text-sm leading-tight">
-                      <span className="truncate font-medium">
-                        {data.user.name}
-                      </span>
-                      <span className="truncate text-xs">
-                        {data.user.email}
-                      </span>
-                    </div>
-                    <IconPlaceholder
-                      lucide="ChevronsUpDownIcon"
-                      tabler="IconSelector"
-                      hugeicons="UnfoldMoreIcon"
+                <DropdownMenuTrigger
+                  render={
+                    <SidebarMenuButton
+                      size="lg"
+                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
                     />
-                  </SidebarMenuButton>
+                  }
+                >
+                  <Avatar>
+                    <AvatarImage src={data.user.avatar} alt={data.user.name} />
+                    <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  </Avatar>
+                  <div className="grid flex-1 text-left text-sm leading-tight">
+                    <span className="truncate font-medium">
+                      {data.user.name}
+                    </span>
+                    <span className="truncate text-xs">{data.user.email}</span>
+                  </div>
+                  <IconPlaceholder
+                    lucide="ChevronsUpDownIcon"
+                    tabler="IconSelector"
+                    hugeicons="UnfoldMoreIcon"
+                  />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
@@ -774,7 +781,7 @@ function SidebarIcons() {
             <SidebarTrigger className="-ml-1" />
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
+        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <div className="bg-muted/50 aspect-video rounded-xl" />
             <div className="bg-muted/50 aspect-video rounded-xl" />
@@ -949,48 +956,46 @@ function SidebarWithSubMenus() {
               {data.navMain.map((item) => (
                 <Collapsible
                   key={item.title}
-                  asChild
                   defaultOpen={item.isActive}
+                  render={<SidebarMenuItem />}
                 >
-                  <SidebarMenuItem>
-                    <SidebarMenuButton
-                      asChild
-                      tooltip={item.title}
-                      isActive={item.isActive}
-                    >
-                      <a href={item.url}>
-                        {item.icon}
-                        <span>{item.title}</span>
-                      </a>
-                    </SidebarMenuButton>
-                    {item.items?.length ? (
-                      <>
-                        <CollapsibleTrigger asChild>
-                          <SidebarMenuAction className="data-[state=open]:rotate-90">
-                            <IconPlaceholder
-                              lucide="ChevronRightIcon"
-                              tabler="IconChevronRight"
-                              hugeicons="ArrowRight01Icon"
-                            />
-                            <span className="sr-only">Toggle</span>
-                          </SidebarMenuAction>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent>
-                          <SidebarMenuSub>
-                            {item.items.map((subItem) => (
-                              <SidebarMenuSubItem key={subItem.title}>
-                                <SidebarMenuSubButton asChild>
-                                  <a href={subItem.url}>
-                                    <span>{subItem.title}</span>
-                                  </a>
-                                </SidebarMenuSubButton>
-                              </SidebarMenuSubItem>
-                            ))}
-                          </SidebarMenuSub>
-                        </CollapsibleContent>
-                      </>
-                    ) : null}
-                  </SidebarMenuItem>
+                  <SidebarMenuButton
+                    render={<a href={item.url} />}
+                    tooltip={item.title}
+                    isActive={item.isActive}
+                  >
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </SidebarMenuButton>
+                  {item.items?.length ? (
+                    <>
+                      <CollapsibleTrigger
+                        render={
+                          <SidebarMenuAction className="data-open:rotate-90" />
+                        }
+                      >
+                        <IconPlaceholder
+                          lucide="ChevronRightIcon"
+                          tabler="IconChevronRight"
+                          hugeicons="ArrowRight01Icon"
+                        />
+                        <span className="sr-only">Toggle</span>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {item.items.map((subItem) => (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton
+                                render={<a href={subItem.url} />}
+                              >
+                                {subItem.title}
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                    </>
+                  ) : null}
                 </Collapsible>
               ))}
             </SidebarMenu>
@@ -1000,11 +1005,9 @@ function SidebarWithSubMenus() {
               <SidebarMenu>
                 {data.navSecondary.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild size="sm">
-                      <a href={item.url}>
-                        {item.icon}
-                        <span>{item.title}</span>
-                      </a>
+                    <SidebarMenuButton render={<a href={item.url} />} size="sm">
+                      {item.icon}
+                      <span>{item.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -1168,49 +1171,49 @@ function SidebarWithDropdowns() {
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild>
-                <a href="#">
-                  <Item className="p-0" size="xs">
-                    <ItemMedia variant="icon">
-                      <Button size="icon-sm" asChild>
-                        <span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 256 256"
-                          >
-                            <rect width="256" height="256" fill="none"></rect>
-                            <line
-                              x1="208"
-                              y1="128"
-                              x2="128"
-                              y2="208"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="32"
-                            ></line>
-                            <line
-                              x1="192"
-                              y1="40"
-                              x2="40"
-                              y2="192"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="32"
-                            ></line>
-                          </svg>
-                        </span>
-                      </Button>
-                    </ItemMedia>
-                    <ItemContent>
-                      <ItemTitle>Documentation</ItemTitle>
-                      <ItemDescription>v1.0.0</ItemDescription>
-                    </ItemContent>
-                  </Item>
-                </a>
+              <SidebarMenuButton size="lg" render={<a href="#" />}>
+                <Item className="p-0" size="xs">
+                  <ItemMedia variant="icon">
+                    <Button
+                      size="icon-sm"
+                      render={<span />}
+                      nativeButton={false}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256"
+                      >
+                        <rect width="256" height="256" fill="none"></rect>
+                        <line
+                          x1="208"
+                          y1="128"
+                          x2="128"
+                          y2="208"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="32"
+                        ></line>
+                        <line
+                          x1="192"
+                          y1="40"
+                          x2="40"
+                          y2="192"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="32"
+                        ></line>
+                      </svg>
+                    </Button>
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle>Documentation</ItemTitle>
+                    <ItemDescription>v1.0.0</ItemDescription>
+                  </ItemContent>
+                </Item>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -1221,23 +1224,28 @@ function SidebarWithDropdowns() {
               {data.navMain.map((item) => (
                 <DropdownMenu key={item.title}>
                   <SidebarMenuItem>
-                    <DropdownMenuTrigger asChild>
-                      <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-                        {item.title}{" "}
-                        <IconPlaceholder
-                          lucide="MoreHorizontalIcon"
-                          tabler="IconDots"
-                          hugeicons="MoreHorizontalIcon"
-                          className="ml-auto"
-                        />
-                      </SidebarMenuButton>
+                    <DropdownMenuTrigger
+                      render={
+                        <SidebarMenuButton className="data-popup-open:bg-sidebar-accent data-popup-open:text-sidebar-accent-foreground" />
+                      }
+                    >
+                      {item.title}{" "}
+                      <IconPlaceholder
+                        lucide="MoreHorizontalIcon"
+                        tabler="IconDots"
+                        hugeicons="MoreHorizontalIcon"
+                        className="ml-auto"
+                      />
                     </DropdownMenuTrigger>
                     {item.items?.length ? (
                       <DropdownMenuContent side="right" align="start">
                         <DropdownMenuGroup>
                           {item.items.map((subItem) => (
-                            <DropdownMenuItem asChild key={subItem.title}>
-                              <a href={subItem.url}>{subItem.title}</a>
+                            <DropdownMenuItem
+                              render={<a href={subItem.url} />}
+                              key={subItem.title}
+                            >
+                              {subItem.title}
                             </DropdownMenuItem>
                           ))}
                         </DropdownMenuGroup>
@@ -1279,10 +1287,10 @@ function SidebarWithDropdowns() {
         <SidebarRail />
       </Sidebar>
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 px-4">
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+        <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <div className="bg-muted/50 aspect-video rounded-xl" />
             <div className="bg-muted/50 aspect-video rounded-xl" />
