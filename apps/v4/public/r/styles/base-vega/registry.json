@@ -1292,12 +1292,72 @@
       "name": "sidebar-example",
       "title": "Sidebar",
       "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "item",
+        "label",
         "sidebar",
         "example"
       ],
       "files": [
         {
           "path": "registry/base-vega/examples/sidebar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-icon-example",
+      "title": "Sidebar (Icon)",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "collapsible",
+        "dropdown-menu",
+        "item",
+        "sidebar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/examples/sidebar-icon-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-inset-example",
+      "title": "Sidebar (Inset)",
+      "registryDependencies": [
+        "collapsible",
+        "sidebar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/examples/sidebar-inset-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-floating-example",
+      "title": "Sidebar (Floating)",
+      "registryDependencies": [
+        "button",
+        "card",
+        "dropdown-menu",
+        "field",
+        "item",
+        "sidebar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/examples/sidebar-floating-example.tsx",
           "type": "registry:example"
         }
       ],

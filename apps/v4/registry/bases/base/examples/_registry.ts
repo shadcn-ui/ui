@@ -530,10 +530,69 @@ export const examples: Registry["items"] = [
     name: "sidebar-example",
     title: "Sidebar",
     type: "registry:example",
-    registryDependencies: ["sidebar", "example"],
+    registryDependencies: [
+      "button",
+      "dropdown-menu",
+      "item",
+      "label",
+      "sidebar",
+      "example",
+    ],
     files: [
       {
         path: "examples/sidebar-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "sidebar-icon-example",
+    title: "Sidebar (Icon)",
+    type: "registry:example",
+    registryDependencies: [
+      "avatar",
+      "button",
+      "collapsible",
+      "dropdown-menu",
+      "item",
+      "sidebar",
+      "example",
+    ],
+    files: [
+      {
+        path: "examples/sidebar-icon-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "sidebar-inset-example",
+    title: "Sidebar (Inset)",
+    type: "registry:example",
+    registryDependencies: ["collapsible", "sidebar", "example"],
+    files: [
+      {
+        path: "examples/sidebar-inset-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "sidebar-floating-example",
+    title: "Sidebar (Floating)",
+    type: "registry:example",
+    registryDependencies: [
+      "button",
+      "card",
+      "dropdown-menu",
+      "field",
+      "item",
+      "sidebar",
+      "example",
+    ],
+    files: [
+      {
+        path: "examples/sidebar-floating-example.tsx",
         type: "registry:example",
       },
     ],

@@ -20,7 +20,6 @@ import { Skeleton } from "@/registry/bases/base/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/registry/bases/base/ui/tooltip"
 import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
@@ -129,25 +128,23 @@ function SidebarProvider({
 
   return (
     <SidebarContext.Provider value={contextValue}>
-      <TooltipProvider>
-        <div
-          data-slot="sidebar-wrapper"
-          style={
-            {
-              "--sidebar-width": SIDEBAR_WIDTH,
-              "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
-              ...style,
-            } as React.CSSProperties
-          }
-          className={cn(
-            "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
-            className
-          )}
-          {...props}
-        >
-          {children}
-        </div>
-      </TooltipProvider>
+      <div
+        data-slot="sidebar-wrapper"
+        style={
+          {
+            "--sidebar-width": SIDEBAR_WIDTH,
+            "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
+            ...style,
+          } as React.CSSProperties
+        }
+        className={cn(
+          "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </div>
     </SidebarContext.Provider>
   )
 }
@@ -530,7 +527,7 @@ function SidebarMenuButton({
       },
       props
     ),
-    render,
+    render: !tooltip ? render : TooltipTrigger,
     state: {
       slot: "sidebar-menu-button",
       sidebar: "menu-button",
@@ -551,9 +548,7 @@ function SidebarMenuButton({
 
   return (
     <Tooltip>
-      <TooltipTrigger
-        render={comp as React.ReactElement<Record<string, unknown>>}
-      />
+      {comp}
       <TooltipContent
         side="right"
         align="center"

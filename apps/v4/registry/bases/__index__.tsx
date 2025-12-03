@@ -1759,7 +1759,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar",
       description: "",
       type: "registry:example",
-      registryDependencies: ["sidebar","example"],
+      registryDependencies: ["button","dropdown-menu","item","label","sidebar","example"],
       files: [{
         path: "registry/bases/radix/examples/sidebar-example.tsx",
         type: "registry:example",
@@ -1767,6 +1767,63 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/radix/examples/sidebar-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-icon-example": {
+      name: "sidebar-icon-example",
+      title: "Sidebar (Icon)",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar","button","collapsible","dropdown-menu","item","sidebar","example"],
+      files: [{
+        path: "registry/bases/radix/examples/sidebar-icon-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/examples/sidebar-icon-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-inset-example": {
+      name: "sidebar-inset-example",
+      title: "Sidebar (Inset)",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["collapsible","sidebar","example"],
+      files: [{
+        path: "registry/bases/radix/examples/sidebar-inset-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/examples/sidebar-inset-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-floating-example": {
+      name: "sidebar-floating-example",
+      title: "Sidebar (Floating)",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button","card","dropdown-menu","field","item","sidebar","example"],
+      files: [{
+        path: "registry/bases/radix/examples/sidebar-floating-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/examples/sidebar-floating-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
@@ -4041,7 +4098,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Sidebar",
       description: "",
       type: "registry:example",
-      registryDependencies: ["sidebar","example"],
+      registryDependencies: ["button","dropdown-menu","item","label","sidebar","example"],
       files: [{
         path: "registry/bases/base/examples/sidebar-example.tsx",
         type: "registry:example",
@@ -4049,6 +4106,63 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/base/examples/sidebar-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-icon-example": {
+      name: "sidebar-icon-example",
+      title: "Sidebar (Icon)",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar","button","collapsible","dropdown-menu","item","sidebar","example"],
+      files: [{
+        path: "registry/bases/base/examples/sidebar-icon-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/examples/sidebar-icon-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-inset-example": {
+      name: "sidebar-inset-example",
+      title: "Sidebar (Inset)",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["collapsible","sidebar","example"],
+      files: [{
+        path: "registry/bases/base/examples/sidebar-inset-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/examples/sidebar-inset-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "sidebar-floating-example": {
+      name: "sidebar-floating-example",
+      title: "Sidebar (Floating)",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button","card","dropdown-menu","field","item","sidebar","example"],
+      files: [{
+        path: "registry/bases/base/examples/sidebar-floating-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/examples/sidebar-floating-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),

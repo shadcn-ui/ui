@@ -78,7 +78,7 @@ export function ItemPicker({
           <div className="flex flex-col gap-0.5">
             <div className="text-muted-foreground text-xs">Preview</div>
             <div className="text-foreground text-sm font-medium">
-              {currentItem?.title}
+              {currentItem?.title || "Not Found"}
             </div>
           </div>
           <Kbd className="ml-auto">⌘P</Kbd>
@@ -107,7 +107,7 @@ export function ItemPicker({
                   >
                     {item.title}
                     <span className="text-muted-foreground ml-auto text-xs opacity-0 group-data-[selected=true]/command-item:opacity-100">
-                      {group.title}
+                      {group.type}
                     </span>
                   </CommandItem>
                 ))

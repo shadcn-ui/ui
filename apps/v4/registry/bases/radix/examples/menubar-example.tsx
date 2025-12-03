@@ -166,7 +166,9 @@ function MenubarWithCheckboxes() {
           <MenubarTrigger>View</MenubarTrigger>
           <MenubarContent>
             <MenubarGroup>
-              <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
+              <MenubarCheckboxItem>
+                Always Show Bookmarks Bar
+              </MenubarCheckboxItem>
               <MenubarCheckboxItem checked>
                 Always Show Full URLs
               </MenubarCheckboxItem>
