@@ -76,42 +76,6 @@ const wireframeCssVariables = [
 
 export type WireframeCSSVariables = (typeof wireframeCssVariables)[number]
 
-const defaultVars = {
-  // STICKY NAV
-  "--sticky-nav-height": "calc(var(--spacing) * 12)",
-  "--sticky-nav-top-offset": "calc(var(--spacing) * 0)",
-
-  // TOP NAV
-  "--top-nav-height": "calc(var(--spacing) * 16)",
-  "--top-nav-left-offset": "calc(var(--spacing) * 0)",
-  "--top-nav-right-offset": "calc(var(--spacing) * 0)",
-  "--top-nav-top-offset": "calc(var(--spacing) * 0)",
-  "--top-nav-bottom-offset": "calc(var(--spacing) * 0)",
-
-  // BOTTOM NAV
-  "--bottom-nav-height": "calc(var(--spacing) * 8)",
-  "--bottom-nav-left-offset": "calc(var(--spacing) * 0)",
-  "--bottom-nav-right-offset": "calc(var(--spacing) * 0)",
-  "--bottom-nav-top-offset": "calc(var(--spacing) * 0)",
-  "--bottom-nav-bottom-offset": "calc(var(--spacing) * 0)",
-
-  // LEFT SIDEBAR
-  "--left-sidebar-width-collapsed": "calc(var(--spacing) * 16)",
-  "--left-sidebar-width-expanded": "calc(var(--spacing) * 52)",
-  "--left-sidebar-left-offset": "calc(var(--spacing) * 0)",
-  "--left-sidebar-right-offset": "calc(var(--spacing) * 0)",
-  "--left-sidebar-top-offset": "calc(var(--spacing) * 0)",
-  "--left-sidebar-bottom-offset": "calc(var(--spacing) * 0)",
-
-  // RIGHT SIDEBAR
-  "--right-sidebar-width-expanded": "calc(var(--spacing) * 52)",
-  "--right-sidebar-width-collapsed": "calc(var(--spacing) * 16)",
-  "--right-sidebar-left-offset": "calc(var(--spacing) * 0)",
-  "--right-sidebar-right-offset": "calc(var(--spacing) * 0)",
-  "--right-sidebar-top-offset": "calc(var(--spacing) * 0)",
-  "--right-sidebar-bottom-offset": "calc(var(--spacing) * 0)",
-} satisfies Record<WireframeCSSVariables, string> as React.CSSProperties
-
 const responsiveNavCornersConfig = {
   navbar: {
     left: [
@@ -192,6 +156,21 @@ const navCornersConfig = {
 
 type WireframeCornerOptions = "navbar" | "sidebar"
 
+function tailwindSpacing(value: number) {
+  return `calc(var(--spacing) * ${value})`
+}
+
+function parseCssVariable(
+  value?: string | number,
+  defaultValue: string = "0px"
+) {
+  if (typeof value === "number") {
+    return tailwindSpacing(value)
+  }
+
+  return value ?? defaultValue
+}
+
 function Wireframe({
   className,
   children,
@@ -202,7 +181,7 @@ function Wireframe({
   ...props
 }: React.ComponentProps<"div"> & {
   config?: ClassValue[]
-  cssVariables?: Record<WireframeCSSVariables, string>
+  cssVariables?: Partial<Record<WireframeCSSVariables, string | number>>
   navCorners?: {
     topLeft?: WireframeCornerOptions
     topRight?: WireframeCornerOptions
@@ -228,7 +207,98 @@ function Wireframe({
           .right,
         className
       )}
-      style={{ ...((cssVariables as React.CSSProperties) ?? defaultVars) }}
+      style={
+        {
+          // STICKY NAV
+          "--sticky-nav-height": parseCssVariable(
+            cssVariables?.["--sticky-nav-height"],
+            tailwindSpacing(12)
+          ),
+          "--sticky-nav-top-offset": parseCssVariable(
+            cssVariables?.["--sticky-nav-top-offset"]
+          ),
+
+          // TOP NAV
+          "--top-nav-height": parseCssVariable(
+            cssVariables?.["--top-nav-height"],
+            tailwindSpacing(16)
+          ),
+          "--top-nav-left-offset": parseCssVariable(
+            cssVariables?.["--top-nav-left-offset"]
+          ),
+          "--top-nav-right-offset": parseCssVariable(
+            cssVariables?.["--top-nav-right-offset"]
+          ),
+          "--top-nav-top-offset": parseCssVariable(
+            cssVariables?.["--top-nav-top-offset"]
+          ),
+          "--top-nav-bottom-offset": parseCssVariable(
+            cssVariables?.["--top-nav-bottom-offset"]
+          ),
+
+          // BOTTOM NAV
+          "--bottom-nav-height": parseCssVariable(
+            cssVariables?.["--bottom-nav-height"],
+            tailwindSpacing(8)
+          ),
+          "--bottom-nav-left-offset": parseCssVariable(
+            cssVariables?.["--bottom-nav-left-offset"]
+          ),
+          "--bottom-nav-right-offset": parseCssVariable(
+            cssVariables?.["--bottom-nav-right-offset"]
+          ),
+          "--bottom-nav-top-offset": parseCssVariable(
+            cssVariables?.["--bottom-nav-top-offset"]
+          ),
+          "--bottom-nav-bottom-offset": parseCssVariable(
+            cssVariables?.["--bottom-nav-bottom-offset"]
+          ),
+
+          // LEFT SIDEBAR
+          "--left-sidebar-width-collapsed": parseCssVariable(
+            cssVariables?.["--left-sidebar-width-collapsed"],
+            tailwindSpacing(16)
+          ),
+          "--left-sidebar-width-expanded": parseCssVariable(
+            cssVariables?.["--left-sidebar-width-expanded"],
+            tailwindSpacing(52)
+          ),
+          "--left-sidebar-left-offset": parseCssVariable(
+            cssVariables?.["--left-sidebar-left-offset"]
+          ),
+          "--left-sidebar-right-offset": parseCssVariable(
+            cssVariables?.["--left-sidebar-right-offset"]
+          ),
+          "--left-sidebar-top-offset": parseCssVariable(
+            cssVariables?.["--left-sidebar-top-offset"]
+          ),
+          "--left-sidebar-bottom-offset": parseCssVariable(
+            cssVariables?.["--left-sidebar-bottom-offset"]
+          ),
+
+          // RIGHT SIDEBAR
+          "--right-sidebar-width-expanded": parseCssVariable(
+            cssVariables?.["--right-sidebar-width-expanded"],
+            tailwindSpacing(52)
+          ),
+          "--right-sidebar-width-collapsed": parseCssVariable(
+            cssVariables?.["--right-sidebar-width-collapsed"],
+            tailwindSpacing(16)
+          ),
+          "--right-sidebar-left-offset": parseCssVariable(
+            cssVariables?.["--right-sidebar-left-offset"]
+          ),
+          "--right-sidebar-right-offset": parseCssVariable(
+            cssVariables?.["--right-sidebar-right-offset"]
+          ),
+          "--right-sidebar-top-offset": parseCssVariable(
+            cssVariables?.["--right-sidebar-top-offset"]
+          ),
+          "--right-sidebar-bottom-offset": parseCssVariable(
+            cssVariables?.["--right-sidebar-bottom-offset"]
+          ),
+        } satisfies Record<WireframeCSSVariables, string> as React.CSSProperties
+      }
       {...props}
     >
       {children}
