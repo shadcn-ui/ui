@@ -38,13 +38,19 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
         setParams({ font: value as Font["value"] })
       }}
     >
-      <SelectTrigger>
+      <SelectTrigger className="relative">
         <SelectValue>
           <div className="flex flex-col justify-start">
             <div className="text-muted-foreground text-xs">Font</div>
             <div className="text-foreground text-sm font-medium">
               {currentFont?.name}
             </div>
+          </div>
+          <div
+            className="text-foreground absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 items-center justify-center text-base"
+            style={{ fontFamily: currentFont?.font.style.fontFamily }}
+          >
+            Aa
           </div>
         </SelectValue>
       </SelectTrigger>
@@ -62,7 +68,9 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
                   <ItemTitle className="text-muted-foreground text-xs font-medium">
                     {font.name}
                   </ItemTitle>
-                  <ItemDescription>
+                  <ItemDescription
+                    style={{ fontFamily: font.font.style.fontFamily }}
+                  >
                     The quick brown fox jumps over the lazy dog.
                   </ItemDescription>
                 </ItemContent>

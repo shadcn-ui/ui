@@ -25,6 +25,8 @@ const getInitialValues = (): DesignSystemSearchParams => {
       baseColor: "neutral",
       accent: "subtle",
       menu: "default",
+      spacing: "default",
+      radius: "default",
       size: 100,
       custom: false,
     }
@@ -47,6 +49,10 @@ const getInitialValues = (): DesignSystemSearchParams => {
       "subtle") as DesignSystemSearchParams["accent"],
     menu: (searchParams.get("menu") ||
       "default") as DesignSystemSearchParams["menu"],
+    spacing: (searchParams.get("spacing") ||
+      "default") as DesignSystemSearchParams["spacing"],
+    radius: (searchParams.get("radius") ||
+      "default") as DesignSystemSearchParams["radius"],
     size: parseInt(searchParams.get("size") || "100"),
     custom: (searchParams.get("custom") || "false") === "true",
   }

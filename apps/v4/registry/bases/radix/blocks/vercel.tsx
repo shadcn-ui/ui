@@ -151,7 +151,7 @@ const items = [
 
 function UsageCard() {
   return (
-    <Example title="Usage" className="items-center lg:p-16">
+    <Example title="Usage" className="items-center">
       <Card className="w-full max-w-sm gap-4">
         <CardHeader>
           <CardTitle className="text-sm">5 days remaining in cycle</CardTitle>
@@ -189,10 +189,7 @@ function UsageCard() {
 
 function AnomalyAlert() {
   return (
-    <Example
-      title="Anomaly Alert"
-      className="items-center justify-center lg:p-16"
-    >
+    <Example title="Anomaly Alert" className="items-center justify-center">
       <Card className="w-full max-w-xs">
         <CardContent className="p-6">
           <Empty className="mx-auto p-0">

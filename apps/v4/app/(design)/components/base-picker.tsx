@@ -53,15 +53,15 @@ export function BasePicker() {
             <div className="text-foreground text-sm font-medium">
               {currentBase?.title}
             </div>
-            {currentBase?.meta?.logo && (
-              <div
-                className="text-foreground absolute top-1/2 right-4 size-4 -translate-y-1/2"
-                dangerouslySetInnerHTML={{
-                  __html: currentBase.meta.logo,
-                }}
-              />
-            )}
           </div>
+          {currentBase?.meta?.logo && (
+            <div
+              className="text-foreground *:[svg]:text-foreground! absolute top-1/2 right-4 size-4 -translate-y-1/2"
+              dangerouslySetInnerHTML={{
+                __html: currentBase.meta.logo,
+              }}
+            />
+          )}
         </SelectValue>
       </SelectTrigger>
       <SelectContent
@@ -75,7 +75,7 @@ export function BasePicker() {
             <div className="flex items-center gap-2">
               {base.meta?.logo && (
                 <div
-                  className="text-foreground size-4 shrink-0 [&_svg]:size-4"
+                  className="text-foreground *:[svg]:text-foreground! size-4 shrink-0 [&_svg]:size-4"
                   dangerouslySetInnerHTML={{
                     __html: base.meta.logo,
                   }}

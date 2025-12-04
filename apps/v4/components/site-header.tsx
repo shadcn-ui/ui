@@ -56,8 +56,15 @@ export function SiteHeader() {
             <SiteConfig className="3xl:flex hidden" />
             <Separator orientation="vertical" />
             <ModeSwitcher />
-            <Separator orientation="vertical" />
-            <Button size="sm" className="h-[30px]" asChild>
+            <Separator
+              orientation="vertical"
+              className="group-has-[[data-slot=designer]]/body:hidden"
+            />
+            <Button
+              size="sm"
+              className="h-[30px] group-has-[[data-slot=designer]]/body:hidden"
+              asChild
+            >
               <Link href="/design/radix">New Project</Link>
             </Button>
           </div>

@@ -17,6 +17,8 @@ import { InstallDialog } from "@/app/(design)/components/install-dialog"
 import { ItemPicker } from "@/app/(design)/components/item-picker"
 import { MenuPicker } from "@/app/(design)/components/menu-picker"
 import { PresetPicker } from "@/app/(design)/components/preset-picker"
+import { RadiusPicker } from "@/app/(design)/components/radius-picker"
+import { SpacingPicker } from "@/app/(design)/components/spacing-picker"
 import { StylePicker } from "@/app/(design)/components/style-picker"
 import { ThemePicker } from "@/app/(design)/components/theme-picker"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
@@ -36,8 +38,9 @@ export function Customizer({
 
   return (
     <div className="no-scrollbar flex h-[calc(100svh-var(--header-height)-2rem)] w-48 flex-col gap-4 overflow-y-auto p-1">
-      <FieldGroup className="**:data-[slot=select-trigger]:hover:bg-muted **:data-[slot=select-trigger]:ring-foreground/10 dark:**:data-[slot=select-trigger]:hover:bg-muted/50 **:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 dark:**:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 flex flex-1 flex-col gap-1 **:data-[slot=select-trigger]:w-full **:data-[slot=select-trigger]:rounded-lg **:data-[slot=select-trigger]:border-0 **:data-[slot=select-trigger]:bg-transparent **:data-[slot=select-trigger]:text-left **:data-[slot=select-trigger]:shadow-none **:data-[slot=select-trigger]:data-[size=default]:h-12 **:data-[slot=select-trigger]:data-[size=default]:px-2 dark:**:data-[slot=select-trigger]:bg-transparent **:[[data-slot=select-trigger]>svg]:hidden">
+      <FieldGroup className="**:data-[slot=select-trigger]:hover:bg-muted **:data-[slot=select-trigger]:ring-foreground/10 dark:**:data-[slot=select-trigger]:hover:bg-muted/50 **:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 dark:**:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 flex flex-1 flex-col gap-2 **:data-[slot=select-trigger]:w-full **:data-[slot=select-trigger]:rounded-lg **:data-[slot=select-trigger]:border-0 **:data-[slot=select-trigger]:bg-transparent **:data-[slot=select-trigger]:text-left **:data-[slot=select-trigger]:shadow-none **:data-[slot=select-trigger]:data-[size=default]:h-12 **:data-[slot=select-trigger]:data-[size=default]:px-2 dark:**:data-[slot=select-trigger]:bg-transparent **:[[data-slot=select-trigger]>svg]:hidden">
         <ItemPicker items={items} />
+        <FieldSeparator className="opacity-0" />
         <PresetPicker presets={PRESETS} />
         <FieldSeparator className="opacity-0" />
         <BasePicker />
@@ -46,8 +49,11 @@ export function Customizer({
         <ThemePicker themes={availableThemes} />
         <IconLibraryPicker />
         <FontPicker fonts={FONTS} />
-        <AccentPicker />
+        <FieldSeparator className="opacity-0" />
+        <SpacingPicker />
+        <RadiusPicker />
         <MenuPicker />
+        <AccentPicker />
         <div className="mt-auto">
           <InstallDialog />
         </div>

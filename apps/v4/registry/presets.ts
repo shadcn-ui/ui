@@ -15,6 +15,8 @@ export type Preset = {
   font: Font["value"]
   accent: "subtle" | "bold"
   menu: "default" | "inverted"
+  spacing: "default" | "compact"
+  radius: "none" | "small" | "default" | "large"
 }
 
 export const PRESETS = [
@@ -28,17 +30,21 @@ export const PRESETS = [
     font: "inter",
     accent: "subtle",
     menu: "default",
+    spacing: "default",
+    radius: "default",
   },
   {
-    title: "One",
-    description: "One / Lucide / Inter",
+    title: "Vega (Compact)",
+    description: "Vega / Lucide / Inter",
     style: "vega",
     baseColor: "neutral",
-    theme: "blue",
-    iconLibrary: "lucide",
-    font: "nunito-sans",
+    theme: "neutral",
+    iconLibrary: "hugeicons",
+    font: "geist-sans",
     accent: "bold",
     menu: "inverted",
+    spacing: "compact",
+    radius: "default",
   },
   {
     title: "Nova",
@@ -50,5 +56,7 @@ export const PRESETS = [
     font: "figtree",
     accent: "subtle",
     menu: "default",
+    spacing: "default",
+    radius: "default",
   },
 ] satisfies Preset[]

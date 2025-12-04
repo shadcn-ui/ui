@@ -17,6 +17,8 @@ export function DesignSystemProvider({
   const baseColor = useDesignSystemParam("baseColor")
   const accent = useDesignSystemParam("accent")
   const menu = useDesignSystemParam("menu")
+  const spacing = useDesignSystemParam("spacing")
+  const radius = useDesignSystemParam("radius")
   const [isReady, setIsReady] = React.useState(false)
 
   React.useEffect(() => {
@@ -102,6 +104,32 @@ export function DesignSystemProvider({
         }
       })
     }
+    // If spacing is compact, add spacing CSS variable.
+    if (spacing === "compact") {
+      cssText += "  --spacing: 0.20835rem;\n"
+      cssText += "  --text-xs: 11px;\n"
+      cssText += "  --text-sm: 13px;\n"
+      cssText += "  --text-base: 15px;\n"
+      cssText += "  --text-lg: 17px;\n"
+      cssText += "  --text-xl: 19px;\n"
+      cssText += "  --text-xs--line-height: calc(1 / var(--text-xs));\n"
+      cssText += "  --text-sm--line-height: calc(1.25 / var(--text-sm));\n"
+      cssText += "  --text-base--line-height: calc(1.5 / var(--text-base));\n"
+      cssText += "  --text-lg--line-height: calc(1.75 / var(--text-lg));\n"
+      cssText += "  --text-xl--line-height: calc(1.75 / var(--text-xl));\n"
+    }
+
+    // Add radius CSS variable based on radius value.
+    if (radius === "none") {
+      cssText += "  --radius: 0;\n"
+    } else if (radius === "small") {
+      cssText += "  --radius: 0.45rem;\n"
+    } else if (radius === "default") {
+      cssText += "  --radius: 0.625rem;\n"
+    } else if (radius === "large") {
+      cssText += "  --radius: 0.875rem;\n"
+    }
+
     cssText += "}\n\n"
 
     cssText += ".dark {\n"
@@ -122,7 +150,7 @@ export function DesignSystemProvider({
         element.remove()
       }
     }
-  }, [mergedTheme, accent])
+  }, [mergedTheme, accent, spacing, radius])
 
   // Handle menu inversion by adding/removing dark class to Radix menu content and select content.
   React.useEffect(() => {

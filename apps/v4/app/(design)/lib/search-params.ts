@@ -37,6 +37,16 @@ export const designSystemSearchParams = {
     "default",
     "inverted",
   ]).withDefault("default"),
+  spacing: parseAsStringLiteral<"default" | "compact">([
+    "default",
+    "compact",
+  ]).withDefault("default"),
+  radius: parseAsStringLiteral<"none" | "small" | "default" | "large">([
+    "none",
+    "small",
+    "default",
+    "large",
+  ]).withDefault("default"),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }

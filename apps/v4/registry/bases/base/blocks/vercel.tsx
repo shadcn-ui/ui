@@ -151,7 +151,7 @@ const items = [
 
 function UsageCard() {
   return (
-    <Example title="Usage" className="items-center lg:p-16">
+    <Example title="Usage" className="items-center">
       <Card className="w-full max-w-sm gap-4">
         <CardHeader>
           <CardTitle className="text-sm">5 days remaining in cycle</CardTitle>
@@ -189,7 +189,7 @@ function AnomalyAlert() {
   return (
     <Example
       title="Anomaly Alert"
-      className="items-center justify-center lg:p-16"
+      className="aspect-square items-center justify-center"
     >
       <Card className="w-full max-w-xs">
         <CardContent className="p-6">
@@ -652,7 +652,7 @@ function ActivateAgentDialog() {
 
 function ObservabilityCard() {
   return (
-    <Example title="Observability" className="items-center lg:p-16">
+    <Example title="Observability" className="items-center justify-center">
       <Card className="w-full max-w-sm pt-0">
         <img
           src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

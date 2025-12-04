@@ -35,7 +35,9 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
         preset.iconLibrary === params.iconLibrary &&
         preset.font === params.font &&
         preset.accent === params.accent &&
-        preset.menu === params.menu
+        preset.menu === params.menu &&
+        preset.spacing === params.spacing &&
+        preset.radius === params.radius
     )
   }, [
     presets,
@@ -46,11 +48,13 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
     params.font,
     params.accent,
     params.menu,
+    params.spacing,
+    params.radius,
   ])
 
   return (
     <Select
-      value={currentPreset?.title}
+      value={currentPreset?.title ?? ""}
       onValueChange={(value) => {
         const preset = presets.find((p) => p.title === value)
         if (preset) {
@@ -62,6 +66,8 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
             font: preset.font,
             accent: preset.accent,
             menu: preset.menu,
+            spacing: preset.spacing,
+            radius: preset.radius,
             custom: false,
           })
         }

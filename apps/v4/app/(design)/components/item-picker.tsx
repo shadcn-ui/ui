@@ -75,6 +75,7 @@ export function ItemPicker({
 
   return (
     <Combobox
+      autoHighlight
       items={groupedItems}
       value={comboboxValue}
       onValueChange={(value) => {

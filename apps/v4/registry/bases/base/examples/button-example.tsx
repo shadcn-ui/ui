@@ -758,7 +758,9 @@ function ButtonExamples() {
             />
           </Button>
         </div>
-        <Button render={<a href="#" />}>Link</Button>
+        <Button render={<a href="#" />} nativeButton={false}>
+          Link
+        </Button>
       </div>
     </Example>
   )

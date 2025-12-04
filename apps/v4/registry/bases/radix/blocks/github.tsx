@@ -96,6 +96,7 @@ import {
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
 import { Kbd } from "@/registry/bases/radix/ui/kbd"
+import { NativeSelect } from "@/registry/bases/radix/ui/native-select"
 import {
   Popover,
   PopoverContent,
@@ -115,7 +116,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/radix/ui/tooltip"
-import { NativeSelect } from "@/registry/new-york-v4/ui/native-select"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 export default function GithubBlock() {
@@ -187,6 +187,7 @@ function CodespacesCard() {
                     <DropdownMenuContent
                       align="end"
                       onCloseAutoFocus={(e) => e.preventDefault()}
+                      className="w-64"
                     >
                       <DropdownMenuItem>
                         <IconPlaceholder
