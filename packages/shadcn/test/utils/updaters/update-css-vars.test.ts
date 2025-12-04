@@ -1417,6 +1417,8 @@ describe("isColorValue", () => {
     ["oklch(0.5 0.2 180)", true],
     ["var(--color-background)", true],
     ["var(--color-blue-500)", true],
+    ["--alpha(var(--color-black) / 10%)", true],
+    ["--alpha(var(--color-black) / 4%)", true],
     ["var(--radius)", false],
     ["var(--spacing)", false],
     ["0.5rem", false],
