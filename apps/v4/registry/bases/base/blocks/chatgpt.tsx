@@ -124,7 +124,7 @@ function PromptForm() {
                   Add files and more <Kbd>/</Kbd>
                 </TooltipContent>
               </Tooltip>
-              <DropdownMenuContent>
+              <DropdownMenuContent className="w-56">
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
                     <IconPlaceholder
@@ -284,7 +284,7 @@ function ModelSelector() {
             className="text-muted-foreground size-4"
           />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-64" align="start">
+        <DropdownMenuContent className="w-96" align="start">
           <DropdownMenuGroup>
             <DropdownMenuLabel className="text-muted-foreground text-xs font-normal">
               GPT-5.1

@@ -440,4 +440,3 @@ export default function SidebarIconExample() {
     </SidebarProvider>
   )
 }
-

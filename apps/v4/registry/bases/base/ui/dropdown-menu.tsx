@@ -19,11 +19,11 @@ function DropdownMenuTrigger({ ...props }: MenuPrimitive.Trigger.Props) {
 }
 
 function DropdownMenuContent({
-  className,
   align = "start",
   alignOffset = 4,
   side = "bottom",
   sideOffset = 4,
+  className,
   ...props
 }: MenuPrimitive.Popup.Props &
   Pick<

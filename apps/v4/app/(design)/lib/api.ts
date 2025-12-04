@@ -1,6 +1,6 @@
 import "server-only"
 
-import { RegistryItem, registryItemSchema } from "shadcn/schema"
+import { registryItemSchema } from "shadcn/schema"
 
 import { Base } from "@/registry/bases"
 import { ALLOWED_ITEM_TYPES } from "@/app/(design)/lib/constants"

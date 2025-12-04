@@ -118,7 +118,10 @@ function PromptForm() {
                   Add files and more <Kbd>/</Kbd>
                 </TooltipContent>
               </Tooltip>
-              <DropdownMenuContent onCloseAutoFocus={(e) => e.preventDefault()}>
+              <DropdownMenuContent
+                className="w-56"
+                onCloseAutoFocus={(e) => e.preventDefault()}
+              >
                 <DropdownMenuItem>
                   <IconPlaceholder
                     lucide="PaperclipIcon"

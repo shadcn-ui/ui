@@ -5,7 +5,9 @@ import type { SearchParams } from "nuqs/server"
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { BASES } from "@/registry/bases"
+import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
 import { Customizer } from "@/app/(design)/components/customizer"
+import { ItemExplorer } from "@/app/(design)/components/item-explorer"
 import { Preview } from "@/app/(design)/components/preview"
 import { getItemsForBase } from "@/app/(design)/lib/api"
 import { designSystemSearchParamsCache } from "@/app/(design)/lib/search-params"
@@ -90,12 +92,15 @@ export default async function NewPage({
     }))
 
   return (
-    <div
-      data-slot="designer"
-      className="3xl:fixed:container section-soft flex flex-1 gap-6 p-6 pt-2"
-    >
-      <Preview base={base.name} />
-      <Customizer items={filteredItems} />
-    </div>
+    <SidebarProvider className="h-auto min-h-min flex-1 items-start overflow-hidden px-0">
+      <div
+        data-slot="designer"
+        className="3xl:fixed:container section-soft flex flex-1 gap-6 p-6 pt-2 [--sidebar-width:--spacing(48)]"
+      >
+        <ItemExplorer items={filteredItems} />
+        <Preview base={base.name} />
+        <Customizer items={filteredItems} />
+      </div>
+    </SidebarProvider>
   )
 }
