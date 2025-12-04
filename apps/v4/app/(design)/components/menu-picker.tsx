@@ -118,7 +118,7 @@ export function MenuPicker() {
       <SelectTrigger className="relative" disabled={resolvedTheme === "dark"}>
         <SelectValue>
           <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs">Menu</div>
+            <div className="text-muted-foreground text-xs">Menu Color</div>
             <div className="text-foreground text-sm font-medium">
               {currentMenu?.label}
             </div>

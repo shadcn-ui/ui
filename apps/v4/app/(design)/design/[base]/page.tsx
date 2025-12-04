@@ -95,7 +95,7 @@ export default async function NewPage({
     <SidebarProvider className="h-auto min-h-min flex-1 items-start overflow-hidden px-0">
       <div
         data-slot="designer"
-        className="3xl:fixed:container section-soft flex flex-1 gap-6 p-6 pt-2 [--sidebar-width:--spacing(48)]"
+        className="3xl:fixed:container section-soft flex flex-1 gap-4 p-6 pt-2 [--sidebar-width:--spacing(40)] 2xl:gap-6"
       >
         <ItemExplorer items={filteredItems} />
         <Preview base={base.name} />

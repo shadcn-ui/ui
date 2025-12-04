@@ -38,7 +38,7 @@ export const PRESETS = [
     description: "Vega / Lucide / Inter",
     style: "vega",
     baseColor: "neutral",
-    theme: "neutral",
+    theme: "blue",
     iconLibrary: "hugeicons",
     font: "geist-sans",
     accent: "bold",

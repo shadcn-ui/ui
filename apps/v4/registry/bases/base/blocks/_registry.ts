@@ -2,6 +2,17 @@ import { type Registry } from "shadcn/schema"
 
 export const blocks: Registry["items"] = [
   {
+    name: "cover",
+    title: "Cover",
+    type: "registry:block",
+    files: [
+      {
+        path: "blocks/cover.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
     name: "vercel",
     title: "Vercel",
     type: "registry:block",

@@ -42,13 +42,13 @@ export function ItemExplorer({
 
   return (
     <Sidebar
-      className="3xl:flex sticky top-[calc(var(--header-height)---spacing(4))] z-30 hidden h-[calc(100svh-var(--header-height)-2rem)] overscroll-none bg-transparent"
+      className="sticky z-30 flex h-[calc(100svh-var(--header-height)-2rem)] overscroll-none bg-transparent"
       collapsible="none"
     >
       <SidebarContent className="no-scrollbar overflow-x-hidden">
         <div className="from-background via-background/80 to-background/50 sticky -top-1 z-10 h-6 shrink-0 bg-gradient-to-b blur-xs" />
         {groupedItems.map((group) => (
-          <SidebarGroup key={group.type} className="px-0">
+          <SidebarGroup key={group.type} className="-mt-7 px-0">
             <SidebarGroupLabel className="text-muted-foreground font-medium">
               {group.title}
             </SidebarGroupLabel>

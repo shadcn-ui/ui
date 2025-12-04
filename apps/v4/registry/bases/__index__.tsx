@@ -4397,6 +4397,25 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "cover": {
+      name: "cover",
+      title: "Cover",
+      description: "",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/bases/base/blocks/cover.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/blocks/cover.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "vercel": {
       name: "vercel",
       title: "Vercel",

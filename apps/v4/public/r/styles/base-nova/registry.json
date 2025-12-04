@@ -1539,6 +1539,17 @@
       "type": "registry:component"
     },
     {
+      "name": "cover",
+      "title": "Cover",
+      "files": [
+        {
+          "path": "registry/base-nova/blocks/cover.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
       "name": "vercel",
       "title": "Vercel",
       "files": [

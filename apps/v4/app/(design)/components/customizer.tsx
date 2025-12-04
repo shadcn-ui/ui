@@ -54,7 +54,7 @@ export function Customizer({
         <RadiusPicker />
         <MenuPicker />
         <AccentPicker />
-        <div className="mt-auto">
+        <div className="sticky bottom-0 mt-auto">
           <InstallDialog />
         </div>
       </FieldGroup>
