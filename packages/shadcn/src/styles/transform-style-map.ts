@@ -9,6 +9,13 @@ import {
 
 import { type StyleMap } from "./create-style-map"
 
+/**
+ * Classes that should never be removed during transformation.
+ * These are typically used as CSS selectors or for other purposes
+ * that require the class name to remain in the code.
+ */
+const ALLOWLIST = new Set(["cn-menu-target"])
+
 function isStringLiteralLike(
   node: Node
 ): node is StringLiteral | NoSubstitutionTemplateLiteral {
@@ -36,18 +43,35 @@ function applyStyleToCvaString(
   matchedClasses: Set<string>
 ) {
   const stringValue = stringNode.getLiteralText()
-  const cnClass = extractCnClass(stringValue)
-  if (!cnClass) {
+  const cnClasses = extractCnClasses(stringValue)
+
+  if (cnClasses.length === 0) {
     return
   }
 
-  if (styleMap[cnClass]) {
-    const updated = removeCnClasses(
-      mergeClasses(styleMap[cnClass], stringValue)
-    )
+  // Process all cn-* classes, not just the first one
+  const unmatchedClasses = cnClasses.filter(
+    (cnClass) => !matchedClasses.has(cnClass)
+  )
+
+  if (unmatchedClasses.length === 0) {
+    // All classes already matched, just clean up non-allowlisted ones
+    const updated = removeCnClasses(stringValue)
     stringNode.setLiteralValue(updated)
-    matchedClasses.add(cnClass)
+    return
+  }
+
+  const tailwindClassesToApply = unmatchedClasses
+    .map((cnClass) => styleMap[cnClass])
+    .filter((classes): classes is string => Boolean(classes))
+
+  if (tailwindClassesToApply.length > 0) {
+    const mergedClasses = tailwindClassesToApply.join(" ")
+    const updated = removeCnClasses(mergeClasses(mergedClasses, stringValue))
+    stringNode.setLiteralValue(updated)
+    unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
   } else {
+    // No styles to apply, but still need to clean up non-allowlisted classes
     const updated = removeCnClasses(stringValue)
     stringNode.setLiteralValue(updated)
   }
@@ -253,7 +277,13 @@ function extractCnClass(str: string) {
 
 function removeCnClasses(str: string) {
   return str
-    .replace(/\bcn-[\w-]+\b/g, "")
+    .replace(/\bcn-[\w-]+\b/g, (match) => {
+      // Preserve allowlisted classes
+      if (ALLOWLIST.has(match)) {
+        return match
+      }
+      return ""
+    })
     .replace(/\s+/g, " ")
     .trim()
 }

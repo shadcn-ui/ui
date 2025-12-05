@@ -603,4 +603,186 @@ function ButtonGroupText({
       "
     `)
   })
+
+  it("preserves allowlisted classes even when not in styleMap", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Menu({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div className={cn("cn-menu-target cn-foo", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-foo": "bg-background rounded-lg",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Menu({ className, ...props }: React.ComponentProps<"div">) {
+        return (
+          <div className={cn("bg-background rounded-lg cn-menu-target", className)} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
+  it("preserves allowlisted classes even when in styleMap", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Menu({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div className={cn("cn-menu-target", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-menu-target": "z-50 origin-top",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Menu({ className, ...props }: React.ComponentProps<"div">) {
+        return (
+          <div className={cn("z-50 origin-top cn-menu-target", className)} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
+  it("preserves allowlisted classes in mergeProps within useRender", async () => {
+    const source = `import * as React from "react"
+import { mergeProps } from "@base-ui-components/react/merge-props"
+import { useRender } from "@base-ui-components/react/use-render"
+import { cn } from "@/lib/utils"
+
+function MenuContent({
+  className,
+  render,
+  ...props
+}: useRender.ComponentProps<"div">) {
+  return useRender({
+    defaultTagName: "div",
+    props: mergeProps<"div">(
+      {
+        className: cn(
+          "cn-menu-target cn-menu-content flex items-center",
+          className
+        ),
+      },
+      props
+    ),
+    render,
+    state: {
+      slot: "menu-content",
+    },
+  })
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-menu-content": "bg-background rounded-md",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { mergeProps } from "@base-ui-components/react/merge-props"
+      import { useRender } from "@base-ui-components/react/use-render"
+      import { cn } from "@/lib/utils"
+
+      function MenuContent({
+        className,
+        render,
+        ...props
+      }: useRender.ComponentProps<"div">) {
+        return useRender({
+          defaultTagName: "div",
+          props: mergeProps<"div">(
+            {
+              className: cn(
+                "bg-background rounded-md cn-menu-target flex items-center",
+                className
+              ),
+            },
+            props
+          ),
+          render,
+          state: {
+            slot: "menu-content",
+          },
+        })
+      }
+      "
+    `)
+  })
+
+  it("preserves allowlisted classes in cva base string", async () => {
+    const source = `import * as React from "react"
+import { cva } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const menuVariants = cva(
+  "cn-menu-target cn-menu inline-flex items-center",
+  {
+    variants: {
+      variant: {
+        default: "",
+      },
+    },
+  }
+)
+
+function Menu({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div className={cn(menuVariants({ className }))} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-menu": "bg-background rounded-lg",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cva } from "class-variance-authority"
+      import { cn } from "@/lib/utils"
+
+      const menuVariants = cva(
+        "bg-background rounded-lg cn-menu-target inline-flex items-center",
+        {
+          variants: {
+            variant: {
+              default: "",
+            },
+          },
+        }
+      )
+
+      function Menu({ className, ...props }: React.ComponentProps<"div">) {
+        return (
+          <div className={cn(menuVariants({ className }))} {...props} />
+        )
+      }
+      "
+    `)
+  })
 })
