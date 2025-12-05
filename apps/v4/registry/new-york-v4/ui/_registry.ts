@@ -227,7 +227,7 @@ export const ui: Registry["items"] = [
   {
     name: "drawer",
     type: "registry:ui",
-    dependencies: ["vaul", "@radix-ui/react-dialog"],
+    dependencies: ["vaul"],
     files: [
       {
         path: "ui/drawer.tsx",
