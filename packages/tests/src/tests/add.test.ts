@@ -22,6 +22,26 @@ describe("shadcn add", () => {
     ).toBe(true)
   })
 
+  it("should add icon button sizes when using the default style", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    const componentsJson = await fs.readJson(componentsJsonPath)
+    componentsJson.style = "default"
+    await fs.writeJson(componentsJsonPath, componentsJson, { spaces: 2 })
+
+    await npxShadcn(fixturePath, ["add", "button"])
+
+    const buttonContent = await fs.readFile(
+      path.join(fixturePath, "components/ui/button.tsx"),
+      "utf-8"
+    )
+
+    expect(buttonContent).toContain('"icon-sm": "h-9 w-9"')
+    expect(buttonContent).toContain('"icon-lg": "h-11 w-11"')
+  })
+
   it("should add multiple items to project", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
