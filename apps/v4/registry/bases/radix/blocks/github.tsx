@@ -515,8 +515,6 @@ function RepositoryToolbar() {
             <TooltipContent>New Agent Task</TooltipContent>
           </Tooltip>
           <PopoverContent
-            side="bottom"
-            align="end"
             className="w-80"
             onCloseAutoFocus={(e) => e.preventDefault()}
           >
@@ -613,7 +611,7 @@ function RepositoryToolbar() {
                       </PopoverTrigger>
                       <TooltipContent>Select Agent</TooltipContent>
                     </Tooltip>
-                    <PopoverContent side="bottom" align="start">
+                    <PopoverContent side="top" align="start">
                       <Empty className="gap-4 p-0">
                         <EmptyHeader>
                           <EmptyTitle className="text-sm">
@@ -1083,7 +1081,7 @@ function Contributors() {
 
 function Profile() {
   return (
-    <Example title="Profile" className="justify-center lg:p-16">
+    <Example title="Profile" className="items-center justify-center">
       <Card className="mx-auto w-full max-w-md">
         <CardHeader>
           <CardTitle>Profile</CardTitle>

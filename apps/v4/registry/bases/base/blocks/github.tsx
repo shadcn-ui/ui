@@ -1080,7 +1080,7 @@ function Contributors() {
 
 function Profile() {
   return (
-    <Example title="Profile" className="justify-center lg:p-16">
+    <Example title="Profile" className="items-center justify-center">
       <Card className="mx-auto w-full max-w-md">
         <CardHeader>
           <CardTitle>Profile</CardTitle>
