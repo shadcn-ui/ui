@@ -2,6 +2,23 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "vercel",
   "title": "Vercel",
+  "registryDependencies": [
+    "alert",
+    "badge",
+    "button",
+    "calendar",
+    "card",
+    "chart",
+    "dialog",
+    "dropdown-menu",
+    "empty",
+    "field",
+    "input-group",
+    "item",
+    "native-select",
+    "popover",
+    "textarea"
+  ],
   "files": [
     {
       "path": "registry/base-nova/blocks/vercel.tsx",

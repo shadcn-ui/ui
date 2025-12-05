@@ -72,7 +72,7 @@ function ItemPicker({
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "p" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }
@@ -125,7 +125,7 @@ function ItemPicker({
             </div>
           )}
         </ComboboxValue>
-        <Kbd className="ml-auto">⌘P</Kbd>
+        <Kbd className="ml-auto">⌘K</Kbd>
       </ComboboxTrigger>
       <ComboboxContent
         className="ring-foreground/10 w-64 rounded-xl border-0 ring-1 data-closed:animate-none data-open:animate-none"
@@ -180,7 +180,7 @@ export function ItemPickerScript() {
             (function() {
               // Forward Cmd/Ctrl + K
               document.addEventListener('keydown', function(e) {
-                if (e.key === 'p' && (e.metaKey || e.ctrlKey)) {
+                if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
                   e.preventDefault();
                   if (window.parent && window.parent !== window) {
                     window.parent.postMessage({

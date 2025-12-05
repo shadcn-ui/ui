@@ -3,6 +3,9 @@
   "name": "sheet-example",
   "title": "Sheet",
   "registryDependencies": [
+    "button",
+    "field",
+    "input",
     "sheet",
     "example"
   ],

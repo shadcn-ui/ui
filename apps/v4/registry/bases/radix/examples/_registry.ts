@@ -17,7 +17,7 @@ export const examples: Registry["items"] = [
     name: "alert-example",
     title: "Alert",
     type: "registry:example",
-    registryDependencies: ["alert", "example"],
+    registryDependencies: ["alert", "badge", "button", "example"],
     files: [
       {
         path: "examples/alert-example.tsx",
@@ -29,7 +29,7 @@ export const examples: Registry["items"] = [
     name: "alert-dialog-example",
     title: "Alert Dialog",
     type: "registry:example",
-    registryDependencies: ["alert-dialog", "button", "example"],
+    registryDependencies: ["alert-dialog", "button", "dialog", "example"],
     files: [
       {
         path: "examples/alert-dialog-example.tsx",
@@ -53,7 +53,7 @@ export const examples: Registry["items"] = [
     name: "avatar-example",
     title: "Avatar",
     type: "registry:example",
-    registryDependencies: ["avatar", "example"],
+    registryDependencies: ["avatar", "button", "empty", "example"],
     files: [
       {
         path: "examples/avatar-example.tsx",
@@ -65,7 +65,7 @@ export const examples: Registry["items"] = [
     name: "badge-example",
     title: "Badge",
     type: "registry:example",
-    registryDependencies: ["badge", "example"],
+    registryDependencies: ["badge", "spinner", "example"],
     files: [
       {
         path: "examples/badge-example.tsx",
@@ -77,7 +77,7 @@ export const examples: Registry["items"] = [
     name: "breadcrumb-example",
     title: "Breadcrumb",
     type: "registry:example",
-    registryDependencies: ["breadcrumb", "example"],
+    registryDependencies: ["breadcrumb", "dropdown-menu", "example"],
     files: [
       {
         path: "examples/breadcrumb-example.tsx",
@@ -101,7 +101,19 @@ export const examples: Registry["items"] = [
     name: "button-group-example",
     title: "Button Group",
     type: "registry:example",
-    registryDependencies: ["button-group", "example"],
+    registryDependencies: [
+      "button",
+      "button-group",
+      "dropdown-menu",
+      "field",
+      "input",
+      "input-group",
+      "label",
+      "popover",
+      "select",
+      "tooltip",
+      "example",
+    ],
     files: [
       {
         path: "examples/button-group-example.tsx",
@@ -117,7 +129,7 @@ export const examples: Registry["items"] = [
       "button",
       "calendar",
       "card",
-      "drawer",
+      "field",
       "input",
       "label",
       "popover",
@@ -134,7 +146,14 @@ export const examples: Registry["items"] = [
     name: "card-example",
     title: "Card",
     type: "registry:example",
-    registryDependencies: ["card", "example"],
+    registryDependencies: [
+      "avatar",
+      "button",
+      "card",
+      "field",
+      "input",
+      "example",
+    ],
     files: [
       {
         path: "examples/card-example.tsx",
@@ -146,7 +165,7 @@ export const examples: Registry["items"] = [
     name: "carousel-example",
     title: "Carousel",
     type: "registry:example",
-    registryDependencies: ["carousel", "example"],
+    registryDependencies: ["card", "carousel", "example"],
     files: [
       {
         path: "examples/carousel-example.tsx",
@@ -170,7 +189,7 @@ export const examples: Registry["items"] = [
     name: "checkbox-example",
     title: "Checkbox",
     type: "registry:example",
-    registryDependencies: ["checkbox", "example"],
+    registryDependencies: ["checkbox", "field", "table", "example"],
     files: [
       {
         path: "examples/checkbox-example.tsx",
@@ -182,7 +201,15 @@ export const examples: Registry["items"] = [
     name: "collapsible-example",
     title: "Collapsible",
     type: "registry:example",
-    registryDependencies: ["collapsible", "example"],
+    registryDependencies: [
+      "button",
+      "card",
+      "collapsible",
+      "field",
+      "input",
+      "tabs",
+      "example",
+    ],
     files: [
       {
         path: "examples/collapsible-example.tsx",
@@ -194,7 +221,18 @@ export const examples: Registry["items"] = [
     name: "combobox-example",
     title: "Combobox",
     type: "registry:example",
-    registryDependencies: ["avatar", "button", "command", "popover", "example"],
+    registryDependencies: [
+      "button",
+      "card",
+      "combobox",
+      "dialog",
+      "field",
+      "input",
+      "input-group",
+      "item",
+      "select",
+      "example",
+    ],
     files: [
       {
         path: "examples/combobox-example.tsx",
@@ -206,7 +244,7 @@ export const examples: Registry["items"] = [
     name: "command-example",
     title: "Command",
     type: "registry:example",
-    registryDependencies: ["command", "example"],
+    registryDependencies: ["button", "command", "example"],
     files: [
       {
         path: "examples/command-example.tsx",
@@ -218,7 +256,7 @@ export const examples: Registry["items"] = [
     name: "context-menu-example",
     title: "Context Menu",
     type: "registry:example",
-    registryDependencies: ["context-menu", "example"],
+    registryDependencies: ["button", "context-menu", "dialog", "example"],
     files: [
       {
         path: "examples/context-menu-example.tsx",
@@ -230,7 +268,22 @@ export const examples: Registry["items"] = [
     name: "dialog-example",
     title: "Dialog",
     type: "registry:example",
-    registryDependencies: ["dialog", "example"],
+    registryDependencies: [
+      "button",
+      "checkbox",
+      "dialog",
+      "field",
+      "input",
+      "input-group",
+      "kbd",
+      "native-select",
+      "select",
+      "switch",
+      "tabs",
+      "textarea",
+      "tooltip",
+      "example",
+    ],
     files: [
       {
         path: "examples/dialog-example.tsx",
@@ -254,7 +307,13 @@ export const examples: Registry["items"] = [
     name: "dropdown-menu-example",
     title: "Dropdown Menu",
     type: "registry:example",
-    registryDependencies: ["dropdown-menu", "example"],
+    registryDependencies: [
+      "avatar",
+      "button",
+      "dialog",
+      "dropdown-menu",
+      "example",
+    ],
     files: [
       {
         path: "examples/dropdown-menu-example.tsx",
@@ -266,7 +325,7 @@ export const examples: Registry["items"] = [
     name: "empty-example",
     title: "Empty",
     type: "registry:example",
-    registryDependencies: ["empty", "example"],
+    registryDependencies: ["button", "empty", "input-group", "kbd", "example"],
     files: [
       {
         path: "examples/empty-example.tsx",
@@ -278,7 +337,20 @@ export const examples: Registry["items"] = [
     name: "field-example",
     title: "Field",
     type: "registry:example",
-    registryDependencies: ["field", "example"],
+    registryDependencies: [
+      "badge",
+      "checkbox",
+      "field",
+      "input",
+      "input-otp",
+      "native-select",
+      "radio-group",
+      "select",
+      "slider",
+      "switch",
+      "textarea",
+      "example",
+    ],
     files: [
       {
         path: "examples/field-example.tsx",
@@ -290,7 +362,7 @@ export const examples: Registry["items"] = [
     name: "hover-card-example",
     title: "Hover Card",
     type: "registry:example",
-    registryDependencies: ["hover-card", "example"],
+    registryDependencies: ["button", "dialog", "hover-card", "example"],
     files: [
       {
         path: "examples/hover-card-example.tsx",
@@ -302,7 +374,14 @@ export const examples: Registry["items"] = [
     name: "input-example",
     title: "Input",
     type: "registry:example",
-    registryDependencies: ["input", "example"],
+    registryDependencies: [
+      "button",
+      "field",
+      "input",
+      "native-select",
+      "select",
+      "example",
+    ],
     files: [
       {
         path: "examples/input-example.tsx",
@@ -314,7 +393,21 @@ export const examples: Registry["items"] = [
     name: "input-group-example",
     title: "Input Group",
     type: "registry:example",
-    registryDependencies: ["input-group", "example"],
+    registryDependencies: [
+      "button",
+      "button-group",
+      "card",
+      "dropdown-menu",
+      "field",
+      "input",
+      "input-group",
+      "kbd",
+      "popover",
+      "spinner",
+      "textarea",
+      "tooltip",
+      "example",
+    ],
     files: [
       {
         path: "examples/input-group-example.tsx",
@@ -326,7 +419,7 @@ export const examples: Registry["items"] = [
     name: "input-otp-example",
     title: "Input OTP",
     type: "registry:example",
-    registryDependencies: ["input-otp", "example"],
+    registryDependencies: ["button", "card", "field", "input-otp", "example"],
     files: [
       {
         path: "examples/input-otp-example.tsx",
@@ -338,7 +431,7 @@ export const examples: Registry["items"] = [
     name: "item-example",
     title: "Item",
     type: "registry:example",
-    registryDependencies: ["item", "example"],
+    registryDependencies: ["button", "item", "example"],
     files: [
       {
         path: "examples/item-example.tsx",
@@ -350,7 +443,13 @@ export const examples: Registry["items"] = [
     name: "kbd-example",
     title: "Kbd",
     type: "registry:example",
-    registryDependencies: ["kbd", "example"],
+    registryDependencies: [
+      "button",
+      "input-group",
+      "kbd",
+      "tooltip",
+      "example",
+    ],
     files: [
       {
         path: "examples/kbd-example.tsx",
@@ -362,7 +461,14 @@ export const examples: Registry["items"] = [
     name: "label-example",
     title: "Label",
     type: "registry:example",
-    registryDependencies: ["label", "example"],
+    registryDependencies: [
+      "checkbox",
+      "field",
+      "input",
+      "label",
+      "textarea",
+      "example",
+    ],
     files: [
       {
         path: "examples/label-example.tsx",
@@ -374,7 +480,7 @@ export const examples: Registry["items"] = [
     name: "menubar-example",
     title: "Menubar",
     type: "registry:example",
-    registryDependencies: ["menubar", "example"],
+    registryDependencies: ["button", "dialog", "menubar", "example"],
     files: [
       {
         path: "examples/menubar-example.tsx",
@@ -386,7 +492,7 @@ export const examples: Registry["items"] = [
     name: "native-select-example",
     title: "Native Select",
     type: "registry:example",
-    registryDependencies: ["native-select", "example"],
+    registryDependencies: ["field", "native-select", "example"],
     files: [
       {
         path: "examples/native-select-example.tsx",
@@ -398,7 +504,7 @@ export const examples: Registry["items"] = [
     name: "navigation-menu-example",
     title: "Navigation Menu",
     type: "registry:example",
-    registryDependencies: ["navigation-menu", "example"],
+    registryDependencies: ["button", "dialog", "navigation-menu", "example"],
     files: [
       {
         path: "examples/navigation-menu-example.tsx",
@@ -410,7 +516,7 @@ export const examples: Registry["items"] = [
     name: "pagination-example",
     title: "Pagination",
     type: "registry:example",
-    registryDependencies: ["pagination", "example"],
+    registryDependencies: ["field", "pagination", "select", "example"],
     files: [
       {
         path: "examples/pagination-example.tsx",
@@ -422,7 +528,14 @@ export const examples: Registry["items"] = [
     name: "popover-example",
     title: "Popover",
     type: "registry:example",
-    registryDependencies: ["popover", "example"],
+    registryDependencies: [
+      "button",
+      "dialog",
+      "field",
+      "input",
+      "popover",
+      "example",
+    ],
     files: [
       {
         path: "examples/popover-example.tsx",
@@ -434,7 +547,7 @@ export const examples: Registry["items"] = [
     name: "progress-example",
     title: "Progress",
     type: "registry:example",
-    registryDependencies: ["progress", "example"],
+    registryDependencies: ["field", "item", "progress", "slider", "example"],
     files: [
       {
         path: "examples/progress-example.tsx",
@@ -446,7 +559,7 @@ export const examples: Registry["items"] = [
     name: "radio-group-example",
     title: "Radio Group",
     type: "registry:example",
-    registryDependencies: ["radio-group", "example"],
+    registryDependencies: ["field", "radio-group", "example"],
     files: [
       {
         path: "examples/radio-group-example.tsx",
@@ -541,7 +654,7 @@ export const examples: Registry["items"] = [
     name: "scroll-area-example",
     title: "Scroll Area",
     type: "registry:example",
-    registryDependencies: ["scroll-area", "example"],
+    registryDependencies: ["scroll-area", "separator", "example"],
     files: [
       {
         path: "examples/scroll-area-example.tsx",
@@ -553,7 +666,16 @@ export const examples: Registry["items"] = [
     name: "select-example",
     title: "Select",
     type: "registry:example",
-    registryDependencies: ["select", "example"],
+    registryDependencies: [
+      "button",
+      "dialog",
+      "field",
+      "input",
+      "item",
+      "native-select",
+      "select",
+      "example",
+    ],
     files: [
       {
         path: "examples/select-example.tsx",
@@ -577,7 +699,7 @@ export const examples: Registry["items"] = [
     name: "sheet-example",
     title: "Sheet",
     type: "registry:example",
-    registryDependencies: ["sheet", "example"],
+    registryDependencies: ["button", "field", "input", "sheet", "example"],
     files: [
       {
         path: "examples/sheet-example.tsx",
@@ -601,7 +723,7 @@ export const examples: Registry["items"] = [
     name: "slider-example",
     title: "Slider",
     type: "registry:example",
-    registryDependencies: ["slider", "example"],
+    registryDependencies: ["label", "slider", "example"],
     files: [
       {
         path: "examples/slider-example.tsx",
@@ -625,7 +747,15 @@ export const examples: Registry["items"] = [
     name: "spinner-example",
     title: "Spinner",
     type: "registry:example",
-    registryDependencies: ["spinner", "example"],
+    registryDependencies: [
+      "badge",
+      "button",
+      "empty",
+      "field",
+      "input-group",
+      "spinner",
+      "example",
+    ],
     files: [
       {
         path: "examples/spinner-example.tsx",
@@ -637,7 +767,7 @@ export const examples: Registry["items"] = [
     name: "switch-example",
     title: "Switch",
     type: "registry:example",
-    registryDependencies: ["switch", "example"],
+    registryDependencies: ["field", "label", "switch", "example"],
     files: [
       {
         path: "examples/switch-example.tsx",
@@ -649,7 +779,14 @@ export const examples: Registry["items"] = [
     name: "table-example",
     title: "Table",
     type: "registry:example",
-    registryDependencies: ["table", "example"],
+    registryDependencies: [
+      "button",
+      "dropdown-menu",
+      "input",
+      "select",
+      "table",
+      "example",
+    ],
     files: [
       {
         path: "examples/table-example.tsx",
@@ -661,7 +798,7 @@ export const examples: Registry["items"] = [
     name: "tabs-example",
     title: "Tabs",
     type: "registry:example",
-    registryDependencies: ["tabs", "example"],
+    registryDependencies: ["button", "dropdown-menu", "tabs", "example"],
     files: [
       {
         path: "examples/tabs-example.tsx",
@@ -673,7 +810,7 @@ export const examples: Registry["items"] = [
     name: "textarea-example",
     title: "Textarea",
     type: "registry:example",
-    registryDependencies: ["textarea", "example"],
+    registryDependencies: ["field", "textarea", "example"],
     files: [
       {
         path: "examples/textarea-example.tsx",
@@ -697,7 +834,7 @@ export const examples: Registry["items"] = [
     name: "toggle-group-example",
     title: "Toggle Group",
     type: "registry:example",
-    registryDependencies: ["toggle-group", "example"],
+    registryDependencies: ["input", "select", "toggle-group", "example"],
     files: [
       {
         path: "examples/toggle-group-example.tsx",
@@ -709,7 +846,7 @@ export const examples: Registry["items"] = [
     name: "tooltip-example",
     title: "Tooltip",
     type: "registry:example",
-    registryDependencies: ["tooltip", "example"],
+    registryDependencies: ["button", "kbd", "tooltip", "example"],
     files: [
       {
         path: "examples/tooltip-example.tsx",

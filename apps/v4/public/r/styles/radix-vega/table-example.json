@@ -3,6 +3,10 @@
   "name": "table-example",
   "title": "Table",
   "registryDependencies": [
+    "button",
+    "dropdown-menu",
+    "input",
+    "select",
     "table",
     "example"
   ],

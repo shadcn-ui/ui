@@ -3,10 +3,15 @@
   "name": "combobox-example",
   "title": "Combobox",
   "registryDependencies": [
-    "avatar",
     "button",
-    "command",
-    "popover",
+    "card",
+    "combobox",
+    "dialog",
+    "field",
+    "input",
+    "input-group",
+    "item",
+    "select",
     "example"
   ],
   "files": [

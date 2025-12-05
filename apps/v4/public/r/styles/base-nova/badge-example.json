@@ -4,6 +4,7 @@
   "title": "Badge",
   "registryDependencies": [
     "badge",
+    "spinner",
     "example"
   ],
   "files": [

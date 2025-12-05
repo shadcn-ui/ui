@@ -3,6 +3,72 @@ import { z } from "zod"
 // Note: if you edit the schema here, you must also edit the schema in the
 // apps/v4/public/schema/registry-item.json file.
 
+export const registryConfigItemSchema = z.union([
+  // Simple string format: "https://example.com/{name}.json"
+  z.string().refine((s) => s.includes("{name}"), {
+    message: "Registry URL must include {name} placeholder",
+  }),
+  // Advanced object format with auth options
+  z.object({
+    url: z.string().refine((s) => s.includes("{name}"), {
+      message: "Registry URL must include {name} placeholder",
+    }),
+    params: z.record(z.string(), z.string()).optional(),
+    headers: z.record(z.string(), z.string()).optional(),
+  }),
+])
+
+export const registryConfigSchema = z.record(
+  z.string().refine((key) => key.startsWith("@"), {
+    message: "Registry names must start with @ (e.g., @v0, @acme)",
+  }),
+  registryConfigItemSchema
+)
+
+export const rawConfigSchema = z
+  .object({
+    $schema: z.string().optional(),
+    style: z.string(),
+    rsc: z.coerce.boolean().default(false),
+    tsx: z.coerce.boolean().default(true),
+    tailwind: z.object({
+      config: z.string().optional(),
+      css: z.string(),
+      baseColor: z.string(),
+      cssVariables: z.boolean().default(true),
+      prefix: z.string().default("").optional(),
+    }),
+    iconLibrary: z.string().optional(),
+    menuColor: z.enum(["default", "inverted"]).default("default").optional(),
+    menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
+    aliases: z.object({
+      components: z.string(),
+      utils: z.string(),
+      ui: z.string().optional(),
+      lib: z.string().optional(),
+      hooks: z.string().optional(),
+    }),
+    registries: registryConfigSchema.optional(),
+  })
+  .strict()
+
+export const configSchema = rawConfigSchema.extend({
+  resolvedPaths: z.object({
+    cwd: z.string(),
+    tailwindConfig: z.string(),
+    tailwindCss: z.string(),
+    utils: z.string(),
+    components: z.string(),
+    lib: z.string(),
+    hooks: z.string(),
+    ui: z.string(),
+  }),
+})
+
+// TODO: type the key.
+// Okay for now since I don't want a breaking change.
+export const workspaceConfigSchema = z.record(configSchema)
+
 export const registryItemTypeSchema = z.enum([
   "registry:lib",
   "registry:block",
@@ -87,15 +153,11 @@ export const registryItemCommonSchema = z.object({
   categories: z.array(z.string()).optional(),
 })
 
-// registry:base has additional fields for configuration.
+// registry:base has a config field for configuration values.
 export const registryItemSchema = z.discriminatedUnion("type", [
   registryItemCommonSchema.extend({
     type: z.literal("registry:base"),
-    style: z.string().optional(),
-    iconLibrary: z.string().optional(),
-    baseColor: z.string().optional(),
-    theme: z.string().optional(),
-    font: z.string().optional(),
+    config: rawConfigSchema.deepPartial().optional(),
   }),
   registryItemCommonSchema.extend({
     type: registryItemTypeSchema.exclude(["registry:base"]),
@@ -150,70 +212,6 @@ export const registryResolvedItemsTreeSchema = registryItemCommonSchema.pick({
   envVars: true,
   docs: true,
 })
-
-export const registryConfigItemSchema = z.union([
-  // Simple string format: "https://example.com/{name}.json"
-  z.string().refine((s) => s.includes("{name}"), {
-    message: "Registry URL must include {name} placeholder",
-  }),
-  // Advanced object format with auth options
-  z.object({
-    url: z.string().refine((s) => s.includes("{name}"), {
-      message: "Registry URL must include {name} placeholder",
-    }),
-    params: z.record(z.string(), z.string()).optional(),
-    headers: z.record(z.string(), z.string()).optional(),
-  }),
-])
-
-export const registryConfigSchema = z.record(
-  z.string().refine((key) => key.startsWith("@"), {
-    message: "Registry names must start with @ (e.g., @v0, @acme)",
-  }),
-  registryConfigItemSchema
-)
-
-export const rawConfigSchema = z
-  .object({
-    $schema: z.string().optional(),
-    style: z.string(),
-    rsc: z.coerce.boolean().default(false),
-    tsx: z.coerce.boolean().default(true),
-    tailwind: z.object({
-      config: z.string().optional(),
-      css: z.string(),
-      baseColor: z.string(),
-      cssVariables: z.boolean().default(true),
-      prefix: z.string().default("").optional(),
-    }),
-    iconLibrary: z.string().optional(),
-    aliases: z.object({
-      components: z.string(),
-      utils: z.string(),
-      ui: z.string().optional(),
-      lib: z.string().optional(),
-      hooks: z.string().optional(),
-    }),
-    registries: registryConfigSchema.optional(),
-  })
-  .strict()
-
-export const configSchema = rawConfigSchema.extend({
-  resolvedPaths: z.object({
-    cwd: z.string(),
-    tailwindConfig: z.string(),
-    tailwindCss: z.string(),
-    utils: z.string(),
-    components: z.string(),
-    lib: z.string(),
-    hooks: z.string(),
-    ui: z.string(),
-  }),
-})
-
-// TODO: type the key.
-// Okay for now since I don't want a breaking change.
-export const workspaceConfigSchema = z.record(configSchema)
 
 export const searchResultItemSchema = z.object({
   name: z.string(),

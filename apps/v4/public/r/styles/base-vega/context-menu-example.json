@@ -3,7 +3,9 @@
   "name": "context-menu-example",
   "title": "Context Menu",
   "registryDependencies": [
+    "button",
     "context-menu",
+    "dialog",
     "example"
   ],
   "files": [

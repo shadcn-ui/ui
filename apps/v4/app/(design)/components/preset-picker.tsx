@@ -34,8 +34,8 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
         preset.theme === params.theme &&
         preset.iconLibrary === params.iconLibrary &&
         preset.font === params.font &&
-        preset.accent === params.accent &&
-        preset.menu === params.menu &&
+        preset.menuAccent === params.menuAccent &&
+        preset.menuColor === params.menuColor &&
         preset.spacing === params.spacing &&
         preset.radius === params.radius
     )
@@ -46,8 +46,8 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
     params.theme,
     params.iconLibrary,
     params.font,
-    params.accent,
-    params.menu,
+    params.menuAccent,
+    params.menuColor,
     params.spacing,
     params.radius,
   ])
@@ -64,8 +64,8 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
             theme: preset.theme,
             iconLibrary: preset.iconLibrary,
             font: preset.font,
-            accent: preset.accent,
-            menu: preset.menu,
+            menuAccent: preset.menuAccent,
+            menuColor: preset.menuColor,
             spacing: preset.spacing,
             radius: preset.radius,
             custom: false,

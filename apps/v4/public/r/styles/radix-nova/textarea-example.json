@@ -3,6 +3,7 @@
   "name": "textarea-example",
   "title": "Textarea",
   "registryDependencies": [
+    "field",
     "textarea",
     "example"
   ],

@@ -3,6 +3,7 @@
   "name": "native-select-example",
   "title": "Native Select",
   "registryDependencies": [
+    "field",
     "native-select",
     "example"
   ],

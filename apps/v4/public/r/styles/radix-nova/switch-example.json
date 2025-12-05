@@ -3,6 +3,8 @@
   "name": "switch-example",
   "title": "Switch",
   "registryDependencies": [
+    "field",
+    "label",
     "switch",
     "example"
   ],

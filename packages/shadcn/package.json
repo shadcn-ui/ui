@@ -50,6 +50,9 @@
     "./icons": {
       "types": "./dist/icons/index.d.ts",
       "default": "./dist/icons/index.js"
+    },
+    "./tailwind.css": {
+      "style": "./dist/tailwind.css"
     }
   },
   "bin": "./dist/index.js",

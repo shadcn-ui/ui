@@ -25,6 +25,7 @@ export const transformStyleMap: TransformerStyle<SourceFile> = async ({
 
   applyToCvaCalls(sourceFile, styleMap, matchedClasses)
   applyToClassNameAttributes(sourceFile, styleMap, matchedClasses)
+  applyToMergePropsCalls(sourceFile, styleMap, matchedClasses)
 
   return sourceFile
 }
@@ -392,4 +393,166 @@ function mergeClasses(newClasses: string, existing: string) {
 function isCnCall(call: CallExpression) {
   const expression = call.getExpression()
   return Node.isIdentifier(expression) && expression.getText() === "cn"
+}
+
+function applyToMergePropsCalls(
+  sourceFile: SourceFile,
+  styleMap: StyleMap,
+  matchedClasses: Set<string>
+) {
+  sourceFile.forEachDescendant((node) => {
+    if (!Node.isCallExpression(node)) {
+      return
+    }
+
+    const expression = node.getExpression()
+    if (
+      !Node.isIdentifier(expression) ||
+      expression.getText() !== "mergeProps"
+    ) {
+      return
+    }
+
+    // Look for object literals in mergeProps arguments
+    for (const arg of node.getArguments()) {
+      if (!Node.isObjectLiteralExpression(arg)) {
+        continue
+      }
+
+      // Find className property in the object literal
+      const classNameProp = arg
+        .getProperties()
+        .find(
+          (prop) =>
+            Node.isPropertyAssignment(prop) &&
+            Node.isIdentifier(prop.getNameNode()) &&
+            prop.getNameNode().getText() === "className"
+        )
+
+      if (!classNameProp || !Node.isPropertyAssignment(classNameProp)) {
+        continue
+      }
+
+      const classNameInitializer = classNameProp.getInitializer()
+      if (!classNameInitializer) {
+        continue
+      }
+
+      // Handle cn() calls in className
+      if (
+        Node.isCallExpression(classNameInitializer) &&
+        isCnCall(classNameInitializer)
+      ) {
+        const cnClasses = extractCnClassesFromCnCall(classNameInitializer)
+
+        if (cnClasses.length === 0) {
+          continue
+        }
+
+        const unmatchedClasses = cnClasses.filter(
+          (cnClass) => !matchedClasses.has(cnClass)
+        )
+
+        if (unmatchedClasses.length === 0) {
+          // Clean up cn-* classes even if already matched
+          cleanCnClassesFromCnCall(classNameInitializer)
+          continue
+        }
+
+        const tailwindClassesToApply = unmatchedClasses
+          .map((cnClass) => styleMap[cnClass])
+          .filter((classes): classes is string => Boolean(classes))
+
+        if (tailwindClassesToApply.length > 0) {
+          const mergedClasses = tailwindClassesToApply.join(" ")
+          applyClassesToCnCall(
+            classNameInitializer,
+            mergedClasses,
+            matchedClasses,
+            unmatchedClasses
+          )
+        } else {
+          cleanCnClassesFromCnCall(classNameInitializer)
+        }
+      }
+    }
+  })
+}
+
+function extractCnClassesFromCnCall(cnCall: CallExpression): string[] {
+  const classes: string[] = []
+
+  for (const argument of cnCall.getArguments()) {
+    if (isStringLiteralLike(argument)) {
+      classes.push(...extractCnClasses(argument.getLiteralText()))
+    }
+  }
+
+  return classes
+}
+
+function cleanCnClassesFromCnCall(cnCall: CallExpression) {
+  for (const argument of cnCall.getArguments()) {
+    if (isStringLiteralLike(argument)) {
+      const cleaned = removeCnClasses(argument.getLiteralText())
+      argument.setLiteralValue(cleaned)
+    }
+  }
+
+  removeEmptyArgumentsFromCnCall(cnCall)
+}
+
+function applyClassesToCnCall(
+  cnCall: CallExpression,
+  tailwindClasses: string,
+  matchedClasses: Set<string>,
+  unmatchedClasses: string[]
+) {
+  const firstArg = cnCall.getArguments()[0]
+
+  if (isStringLiteralLike(firstArg)) {
+    const existing = firstArg.getLiteralText()
+    const updated = removeCnClasses(mergeClasses(tailwindClasses, existing))
+    firstArg.setLiteralValue(updated)
+
+    // Mark classes as matched
+    unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
+
+    // Clean up cn-* classes from remaining arguments
+    for (let i = 1; i < cnCall.getArguments().length; i++) {
+      const arg = cnCall.getArguments()[i]
+      if (isStringLiteralLike(arg)) {
+        const argText = arg.getLiteralText()
+        const cleaned = removeCnClasses(argText)
+        if (cleaned !== argText) {
+          arg.setLiteralValue(cleaned)
+        }
+      }
+    }
+
+    removeEmptyArgumentsFromCnCall(cnCall)
+    return
+  }
+
+  // If first arg is not a string literal, prepend tailwind classes
+  const argumentTexts = cnCall
+    .getArguments()
+    .map((argument) => {
+      if (isStringLiteralLike(argument)) {
+        const cleaned = removeCnClasses(argument.getLiteralText())
+        return cleaned ? JSON.stringify(cleaned) : null
+      }
+      return argument.getText()
+    })
+    .filter((arg): arg is string => arg !== null)
+
+  const updatedArguments = [JSON.stringify(tailwindClasses), ...argumentTexts]
+
+  // Mark classes as matched
+  unmatchedClasses.forEach((cnClass) => matchedClasses.add(cnClass))
+
+  const parent = cnCall.getParent()
+  if (parent) {
+    cnCall.replaceWithText(`cn(${updatedArguments.join(", ")})`)
+  }
 }

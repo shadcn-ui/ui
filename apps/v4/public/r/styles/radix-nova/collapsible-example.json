@@ -3,7 +3,12 @@
   "name": "collapsible-example",
   "title": "Collapsible",
   "registryDependencies": [
+    "button",
+    "card",
     "collapsible",
+    "field",
+    "input",
+    "tabs",
     "example"
   ],
   "files": [

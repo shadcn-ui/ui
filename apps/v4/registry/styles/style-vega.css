@@ -89,7 +89,7 @@
 
   /* MARK: Badge */
   .cn-badge {
-    @apply h-[max(18px,--spacing(5))] gap-1 rounded-full border border-transparent px-2 py-0.5 text-xs font-medium transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3!;
+    @apply h-5 gap-1 rounded-full border border-transparent px-2 py-0.5 text-xs font-medium transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3!;
   }
 
   .cn-badge-variant-default {
@@ -252,7 +252,7 @@
 
   /* MARK: Checkbox */
   .cn-checkbox {
-    @apply border-input dark:bg-input/30 data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary aria-invalid:aria-checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-[max(16px,--spacing(4))] items-center justify-center rounded-[4px] border shadow-xs transition-shadow focus-visible:ring-[3px] aria-invalid:ring-[3px];
+    @apply border-input dark:bg-input/30 data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary data-checked:border-primary aria-invalid:aria-checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border shadow-xs transition-shadow focus-visible:ring-[3px] aria-invalid:ring-[3px];
   }
 
   .cn-checkbox-indicator {
@@ -869,7 +869,7 @@
   }
 
   .cn-radio-group-item {
-    @apply border-input text-primary dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 flex size-[max(16px,--spacing(4))] rounded-full shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] aria-invalid:ring-[3px];
+    @apply border-input text-primary dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 flex size-4 rounded-full shadow-xs transition-[color,box-shadow] focus-visible:ring-[3px] aria-invalid:ring-[3px];
   }
 
   .cn-radio-group-indicator {

@@ -4,6 +4,8 @@
   "title": "Avatar",
   "registryDependencies": [
     "avatar",
+    "button",
+    "empty",
     "example"
   ],
   "files": [

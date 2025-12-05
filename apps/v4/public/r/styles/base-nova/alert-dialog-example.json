@@ -5,6 +5,7 @@
   "registryDependencies": [
     "alert-dialog",
     "button",
+    "dialog",
     "example"
   ],
   "files": [

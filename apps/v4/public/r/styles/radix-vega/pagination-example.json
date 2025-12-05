@@ -3,7 +3,9 @@
   "name": "pagination-example",
   "title": "Pagination",
   "registryDependencies": [
+    "field",
     "pagination",
+    "select",
     "example"
   ],
   "files": [

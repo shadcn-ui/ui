@@ -6,6 +6,7 @@ import { Input } from "@/registry/bases/base/ui/input"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -301,18 +302,27 @@ function ToggleGroupSort() {
 }
 
 function ToggleGroupWithInputAndSelect() {
+  const items = [
+    { label: "All", value: "all" },
+    { label: "Active", value: "active" },
+    { label: "Archived", value: "archived" },
+  ]
   return (
     <Example title="With Input and Select">
       <div className="flex items-center gap-2">
         <Input type="search" placeholder="Search..." className="flex-1" />
-        <Select defaultValue="all">
+        <Select items={items} defaultValue={items[0]}>
           <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            <SelectItem value="active">Active</SelectItem>
-            <SelectItem value="archived">Archived</SelectItem>
+            <SelectGroup>
+              {items.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectGroup>
           </SelectContent>
         </Select>
         <ToggleGroup defaultValue={["grid"]} variant="outline">

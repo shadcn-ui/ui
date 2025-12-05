@@ -3,6 +3,9 @@
   "name": "input-otp-example",
   "title": "Input OTP",
   "registryDependencies": [
+    "button",
+    "card",
+    "field",
     "input-otp",
     "example"
   ],

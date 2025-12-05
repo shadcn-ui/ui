@@ -4,9 +4,6 @@
   "dependencies": [
     "recharts@2.15.4"
   ],
-  "registryDependencies": [
-    "card"
-  ],
   "files": [
     {
       "path": "registry/radix-vega/ui/chart.tsx",

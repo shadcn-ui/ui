@@ -88,7 +88,6 @@
     {
       "name": "button-group",
       "registryDependencies": [
-        "button",
         "separator"
       ],
       "files": [
@@ -147,9 +146,6 @@
       "dependencies": [
         "recharts@2.15.4"
       ],
-      "registryDependencies": [
-        "card"
-      ],
       "files": [
         {
           "path": "registry/radix-vega/ui/chart.tsx",
@@ -201,7 +197,8 @@
         "cmdk"
       ],
       "registryDependencies": [
-        "dialog"
+        "dialog",
+        "input-group"
       ],
       "files": [
         {
@@ -649,6 +646,8 @@
       "title": "Alert",
       "registryDependencies": [
         "alert",
+        "badge",
+        "button",
         "example"
       ],
       "files": [
@@ -665,6 +664,7 @@
       "registryDependencies": [
         "alert-dialog",
         "button",
+        "dialog",
         "example"
       ],
       "files": [
@@ -695,6 +695,8 @@
       "title": "Avatar",
       "registryDependencies": [
         "avatar",
+        "button",
+        "empty",
         "example"
       ],
       "files": [
@@ -710,6 +712,7 @@
       "title": "Badge",
       "registryDependencies": [
         "badge",
+        "spinner",
         "example"
       ],
       "files": [
@@ -725,6 +728,7 @@
       "title": "Breadcrumb",
       "registryDependencies": [
         "breadcrumb",
+        "dropdown-menu",
         "example"
       ],
       "files": [
@@ -754,7 +758,16 @@
       "name": "button-group-example",
       "title": "Button Group",
       "registryDependencies": [
+        "button",
         "button-group",
+        "dropdown-menu",
+        "field",
+        "input",
+        "input-group",
+        "label",
+        "popover",
+        "select",
+        "tooltip",
         "example"
       ],
       "files": [
@@ -772,7 +785,7 @@
         "button",
         "calendar",
         "card",
-        "drawer",
+        "field",
         "input",
         "label",
         "popover",
@@ -790,7 +803,11 @@
       "name": "card-example",
       "title": "Card",
       "registryDependencies": [
+        "avatar",
+        "button",
         "card",
+        "field",
+        "input",
         "example"
       ],
       "files": [
@@ -805,6 +822,7 @@
       "name": "carousel-example",
       "title": "Carousel",
       "registryDependencies": [
+        "card",
         "carousel",
         "example"
       ],
@@ -837,6 +855,8 @@
       "title": "Checkbox",
       "registryDependencies": [
         "checkbox",
+        "field",
+        "table",
         "example"
       ],
       "files": [
@@ -851,7 +871,12 @@
       "name": "collapsible-example",
       "title": "Collapsible",
       "registryDependencies": [
+        "button",
+        "card",
         "collapsible",
+        "field",
+        "input",
+        "tabs",
         "example"
       ],
       "files": [
@@ -866,10 +891,15 @@
       "name": "combobox-example",
       "title": "Combobox",
       "registryDependencies": [
-        "avatar",
         "button",
-        "command",
-        "popover",
+        "card",
+        "combobox",
+        "dialog",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "select",
         "example"
       ],
       "files": [
@@ -884,6 +914,7 @@
       "name": "command-example",
       "title": "Command",
       "registryDependencies": [
+        "button",
         "command",
         "example"
       ],
@@ -899,7 +930,9 @@
       "name": "context-menu-example",
       "title": "Context Menu",
       "registryDependencies": [
+        "button",
         "context-menu",
+        "dialog",
         "example"
       ],
       "files": [
@@ -914,7 +947,19 @@
       "name": "dialog-example",
       "title": "Dialog",
       "registryDependencies": [
+        "button",
+        "checkbox",
         "dialog",
+        "field",
+        "input",
+        "input-group",
+        "kbd",
+        "native-select",
+        "select",
+        "switch",
+        "tabs",
+        "textarea",
+        "tooltip",
         "example"
       ],
       "files": [
@@ -944,6 +989,9 @@
       "name": "dropdown-menu-example",
       "title": "Dropdown Menu",
       "registryDependencies": [
+        "avatar",
+        "button",
+        "dialog",
         "dropdown-menu",
         "example"
       ],
@@ -959,7 +1007,10 @@
       "name": "empty-example",
       "title": "Empty",
       "registryDependencies": [
+        "button",
         "empty",
+        "input-group",
+        "kbd",
         "example"
       ],
       "files": [
@@ -974,7 +1025,17 @@
       "name": "field-example",
       "title": "Field",
       "registryDependencies": [
+        "badge",
+        "checkbox",
         "field",
+        "input",
+        "input-otp",
+        "native-select",
+        "radio-group",
+        "select",
+        "slider",
+        "switch",
+        "textarea",
         "example"
       ],
       "files": [
@@ -989,6 +1050,8 @@
       "name": "hover-card-example",
       "title": "Hover Card",
       "registryDependencies": [
+        "button",
+        "dialog",
         "hover-card",
         "example"
       ],
@@ -1004,7 +1067,11 @@
       "name": "input-example",
       "title": "Input",
       "registryDependencies": [
+        "button",
+        "field",
         "input",
+        "native-select",
+        "select",
         "example"
       ],
       "files": [
@@ -1019,7 +1086,18 @@
       "name": "input-group-example",
       "title": "Input Group",
       "registryDependencies": [
+        "button",
+        "button-group",
+        "card",
+        "dropdown-menu",
+        "field",
+        "input",
         "input-group",
+        "kbd",
+        "popover",
+        "spinner",
+        "textarea",
+        "tooltip",
         "example"
       ],
       "files": [
@@ -1034,6 +1112,9 @@
       "name": "input-otp-example",
       "title": "Input OTP",
       "registryDependencies": [
+        "button",
+        "card",
+        "field",
         "input-otp",
         "example"
       ],
@@ -1049,6 +1130,7 @@
       "name": "item-example",
       "title": "Item",
       "registryDependencies": [
+        "button",
         "item",
         "example"
       ],
@@ -1064,7 +1146,10 @@
       "name": "kbd-example",
       "title": "Kbd",
       "registryDependencies": [
+        "button",
+        "input-group",
         "kbd",
+        "tooltip",
         "example"
       ],
       "files": [
@@ -1079,7 +1164,11 @@
       "name": "label-example",
       "title": "Label",
       "registryDependencies": [
+        "checkbox",
+        "field",
+        "input",
         "label",
+        "textarea",
         "example"
       ],
       "files": [
@@ -1094,6 +1183,8 @@
       "name": "menubar-example",
       "title": "Menubar",
       "registryDependencies": [
+        "button",
+        "dialog",
         "menubar",
         "example"
       ],
@@ -1109,6 +1200,7 @@
       "name": "native-select-example",
       "title": "Native Select",
       "registryDependencies": [
+        "field",
         "native-select",
         "example"
       ],
@@ -1124,6 +1216,8 @@
       "name": "navigation-menu-example",
       "title": "Navigation Menu",
       "registryDependencies": [
+        "button",
+        "dialog",
         "navigation-menu",
         "example"
       ],
@@ -1139,7 +1233,9 @@
       "name": "pagination-example",
       "title": "Pagination",
       "registryDependencies": [
+        "field",
         "pagination",
+        "select",
         "example"
       ],
       "files": [
@@ -1154,6 +1250,10 @@
       "name": "popover-example",
       "title": "Popover",
       "registryDependencies": [
+        "button",
+        "dialog",
+        "field",
+        "input",
         "popover",
         "example"
       ],
@@ -1169,7 +1269,10 @@
       "name": "progress-example",
       "title": "Progress",
       "registryDependencies": [
+        "field",
+        "item",
         "progress",
+        "slider",
         "example"
       ],
       "files": [
@@ -1184,6 +1287,7 @@
       "name": "radio-group-example",
       "title": "Radio Group",
       "registryDependencies": [
+        "field",
         "radio-group",
         "example"
       ],
@@ -1290,6 +1394,7 @@
       "title": "Scroll Area",
       "registryDependencies": [
         "scroll-area",
+        "separator",
         "example"
       ],
       "files": [
@@ -1304,6 +1409,12 @@
       "name": "select-example",
       "title": "Select",
       "registryDependencies": [
+        "button",
+        "dialog",
+        "field",
+        "input",
+        "item",
+        "native-select",
         "select",
         "example"
       ],
@@ -1334,6 +1445,9 @@
       "name": "sheet-example",
       "title": "Sheet",
       "registryDependencies": [
+        "button",
+        "field",
+        "input",
         "sheet",
         "example"
       ],
@@ -1364,6 +1478,7 @@
       "name": "slider-example",
       "title": "Slider",
       "registryDependencies": [
+        "label",
         "slider",
         "example"
       ],
@@ -1394,6 +1509,11 @@
       "name": "spinner-example",
       "title": "Spinner",
       "registryDependencies": [
+        "badge",
+        "button",
+        "empty",
+        "field",
+        "input-group",
         "spinner",
         "example"
       ],
@@ -1409,6 +1529,8 @@
       "name": "switch-example",
       "title": "Switch",
       "registryDependencies": [
+        "field",
+        "label",
         "switch",
         "example"
       ],
@@ -1424,6 +1546,10 @@
       "name": "table-example",
       "title": "Table",
       "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "input",
+        "select",
         "table",
         "example"
       ],
@@ -1439,6 +1565,8 @@
       "name": "tabs-example",
       "title": "Tabs",
       "registryDependencies": [
+        "button",
+        "dropdown-menu",
         "tabs",
         "example"
       ],
@@ -1454,6 +1582,7 @@
       "name": "textarea-example",
       "title": "Textarea",
       "registryDependencies": [
+        "field",
         "textarea",
         "example"
       ],
@@ -1484,6 +1613,8 @@
       "name": "toggle-group-example",
       "title": "Toggle Group",
       "registryDependencies": [
+        "input",
+        "select",
         "toggle-group",
         "example"
       ],
@@ -1499,6 +1630,8 @@
       "name": "tooltip-example",
       "title": "Tooltip",
       "registryDependencies": [
+        "button",
+        "kbd",
         "tooltip",
         "example"
       ],

@@ -23,8 +23,8 @@ const getInitialValues = (): DesignSystemSearchParams => {
       font: "inter",
       item: "cover-example",
       baseColor: "neutral",
-      accent: "subtle",
-      menu: "default",
+      menuAccent: "subtle",
+      menuColor: "default",
       spacing: "default",
       radius: "default",
       size: 100,
@@ -45,10 +45,10 @@ const getInitialValues = (): DesignSystemSearchParams => {
     item: searchParams.get("item") || "cover-example",
     baseColor: (searchParams.get("baseColor") ||
       "neutral") as DesignSystemSearchParams["baseColor"],
-    accent: (searchParams.get("accent") ||
-      "subtle") as DesignSystemSearchParams["accent"],
-    menu: (searchParams.get("menu") ||
-      "default") as DesignSystemSearchParams["menu"],
+    menuAccent: (searchParams.get("menuAccent") ||
+      "subtle") as DesignSystemSearchParams["menuAccent"],
+    menuColor: (searchParams.get("menuColor") ||
+      "default") as DesignSystemSearchParams["menuColor"],
     spacing: (searchParams.get("spacing") ||
       "default") as DesignSystemSearchParams["spacing"],
     radius: (searchParams.get("radius") ||

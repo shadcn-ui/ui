@@ -3,7 +3,11 @@
   "name": "card-example",
   "title": "Card",
   "registryDependencies": [
+    "avatar",
+    "button",
     "card",
+    "field",
+    "input",
     "example"
   ],
   "files": [

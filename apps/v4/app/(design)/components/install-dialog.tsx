@@ -29,7 +29,7 @@ export function InstallDialog() {
 
   const command = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-    const url = `${origin}/init?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&accent=${params.accent}&menu=${params.menu}&spacing=${params.spacing}&radius=${params.radius}`
+    const url = `${origin}/init?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&spacing=${params.spacing}&radius=${params.radius}`
     return `npx shadcn init ${url}`
   }, [
     base,
@@ -38,8 +38,8 @@ export function InstallDialog() {
     params.theme,
     params.iconLibrary,
     params.font,
-    params.accent,
-    params.menu,
+    params.menuAccent,
+    params.menuColor,
     params.spacing,
     params.radius,
   ])

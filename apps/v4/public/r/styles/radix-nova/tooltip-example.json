@@ -3,6 +3,8 @@
   "name": "tooltip-example",
   "title": "Tooltip",
   "registryDependencies": [
+    "button",
+    "kbd",
     "tooltip",
     "example"
   ],

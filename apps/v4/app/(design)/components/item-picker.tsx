@@ -2,8 +2,6 @@
 
 import * as React from "react"
 import Script from "next/script"
-import { Search01Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 import { useQueryStates } from "nuqs"
 import { RegistryItem } from "shadcn/schema"
 
@@ -21,7 +19,6 @@ import {
   ComboboxTrigger,
   ComboboxValue,
 } from "@/registry/new-york-v4/ui/combobox"
-import { Kbd, KbdGroup } from "@/registry/new-york-v4/ui/kbd"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 import { groupItemsByType } from "@/app/(design)/lib/utils"
 
@@ -53,7 +50,7 @@ export function ItemPicker({
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "p" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }
@@ -103,27 +100,20 @@ export function ItemPicker({
           <Button
             variant="outline"
             size="sm"
-            className="w-full max-w-lg justify-start gap-2 bg-transparent pr-1! pl-2.5 text-left font-normal shadow-none *:data-[slot=combobox-trigger-icon]:hidden dark:bg-transparent"
+            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 w-full max-w-xs justify-between gap-2 bg-transparent pr-2! pl-2.5 text-left shadow-none dark:bg-transparent"
           />
         }
       >
-        <HugeiconsIcon icon={Search01Icon} />
         <ComboboxValue>
           {(value) => (
-            <div className="text-foreground text-sm">
-              {value?.title || "Not Found"}
-            </div>
+            <div className="text-muted-foreground text-sm">Go to Preview</div>
           )}
         </ComboboxValue>
-        <KbdGroup className="ml-auto">
-          <Kbd>⌘</Kbd>
-          <Kbd>P</Kbd>
-        </KbdGroup>
       </ComboboxTrigger>
       <ComboboxContent
         className="ring-foreground/10 w-64 animate-none rounded-xl border-0 ring-1 data-open:animate-none"
         side="bottom"
-        align="center"
+        align="end"
       >
         <ComboboxInput
           showTrigger={false}
@@ -172,7 +162,7 @@ export function ItemPickerScript() {
             (function() {
               // Forward Cmd/Ctrl + K
               document.addEventListener('keydown', function(e) {
-                if (e.key === 'p' && (e.metaKey || e.ctrlKey)) {
+                if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
                   e.preventDefault();
                   if (window.parent && window.parent !== window) {
                     window.parent.postMessage({

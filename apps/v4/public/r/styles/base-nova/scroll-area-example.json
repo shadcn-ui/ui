@@ -4,6 +4,7 @@
   "title": "Scroll Area",
   "registryDependencies": [
     "scroll-area",
+    "separator",
     "example"
   ],
   "files": [

@@ -1,6 +1,5 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { iconLibraries } from "@/src/icons/libraries"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
   getRegistryBaseColors,
@@ -103,23 +102,8 @@ export const initOptionsSchema = z.object({
       }
     ),
   baseStyle: z.boolean(),
-  style: z.string().optional(),
-  iconLibrary: z
-    .string()
-    .optional()
-    .refine(
-      (val) => {
-        if (val) {
-          return Object.keys(iconLibraries).includes(val)
-        }
-        return true
-      },
-      {
-        message: `Invalid icon library. Please use '${Object.keys(
-          iconLibraries
-        ).join("', '")}'`,
-      }
-    ),
+  // Config from registry:base item to merge into components.json.
+  registryBaseConfig: rawConfigSchema.deepPartial().optional(),
 })
 
 export const init = new Command()
@@ -134,12 +118,6 @@ export const init = new Command()
     "-b, --base-color <base-color>",
     "the base color to use. (neutral, gray, zinc, stone, slate)",
     undefined
-  )
-  .option("--style <style>", "the style to use.", "new-york")
-  .option(
-    "-i, --icon-library <icon-library>",
-    "the icon library to use. (lucide, tabler, hugeicons)",
-    "lucide"
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("-d, --defaults,", "use default configuration.", false)
@@ -220,9 +198,14 @@ export const init = new Command()
 
         // Set options from registry:base.
         if (item?.type === "registry:base") {
-          options.baseColor = item.baseColor
-          options.style = item.style
-          options.iconLibrary = item.iconLibrary
+          if (item.config) {
+            // Merge config values into shadowConfig.
+            shadowConfig = configWithDefaults(
+              deepmerge(shadowConfig, item.config)
+            )
+            // Store config to be merged into components.json later.
+            options.registryBaseConfig = item.config
+          }
           options.baseStyle =
             item.extends === "none" ? false : options.baseStyle
         }
@@ -341,13 +324,21 @@ export async function runInit(
   const targetPath = path.resolve(options.cwd, "components.json")
   const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
 
-  // Merge with backup config if it exists and not using --force
+  // Merge and keep registries at the end.
+  const mergeConfig = (base: typeof config, override: object) => {
+    const { registries, ...merged } = deepmerge(base, override)
+    return { ...merged, registries } as typeof config
+  }
+
+  // Merge with backup config if it exists and not using --force.
   if (!options.force && fsExtra.existsSync(backupPath)) {
     const existingConfig = await fsExtra.readJson(backupPath)
+    config = mergeConfig(existingConfig, config)
+  }
 
-    // Move registries at the end of the config.
-    const { registries, ...merged } = deepmerge(existingConfig, config)
-    config = { ...merged, registries }
+  // Merge config from registry:base item.
+  if (options.registryBaseConfig) {
+    config = mergeConfig(config, options.registryBaseConfig)
   }
 
   // Make sure to filter out built-in registries.
@@ -508,10 +499,10 @@ async function promptForMinimalConfig(
   defaultConfig: Config,
   opts: z.infer<typeof initOptionsSchema>
 ) {
-  let style = opts.style ?? defaultConfig.style
+  let style = defaultConfig.style
   let baseColor = opts.baseColor
   let cssVariables = defaultConfig.tailwind.cssVariables
-  let iconLibrary = opts.iconLibrary ?? defaultConfig.iconLibrary ?? "lucide"
+  let iconLibrary = defaultConfig.iconLibrary ?? "lucide"
 
   if (!opts.defaults) {
     const [styles, baseColors, tailwindVersion] = await Promise.all([
@@ -522,7 +513,8 @@ async function promptForMinimalConfig(
 
     const options = await prompts([
       {
-        type: tailwindVersion === "v4" || opts.style ? null : "select",
+        // Skip style prompt if using Tailwind v4 or style is already set in config.
+        type: tailwindVersion === "v4" || style ? null : "select",
         name: "style",
         message: `Which ${highlighter.info("style")} would you like to use?`,
         choices: styles.map((style) => ({

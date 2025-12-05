@@ -3,6 +3,7 @@
   "name": "item-example",
   "title": "Item",
   "registryDependencies": [
+    "button",
     "item",
     "example"
   ],

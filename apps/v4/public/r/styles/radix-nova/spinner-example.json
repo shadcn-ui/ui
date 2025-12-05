@@ -3,6 +3,11 @@
   "name": "spinner-example",
   "title": "Spinner",
   "registryDependencies": [
+    "badge",
+    "button",
+    "empty",
+    "field",
+    "input-group",
     "spinner",
     "example"
   ],

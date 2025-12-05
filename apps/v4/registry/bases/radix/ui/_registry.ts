@@ -85,7 +85,7 @@ export const ui: Registry["items"] = [
   {
     name: "button-group",
     type: "registry:ui",
-    registryDependencies: ["button", "separator"],
+    registryDependencies: ["separator"],
     files: [
       {
         path: "ui/button-group.tsx",
@@ -136,7 +136,6 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-    registryDependencies: ["card"],
     dependencies: ["recharts@2.15.4"],
   },
   {
@@ -175,7 +174,7 @@ export const ui: Registry["items"] = [
     name: "command",
     type: "registry:ui",
     dependencies: ["cmdk"],
-    registryDependencies: ["dialog"],
+    registryDependencies: ["dialog", "input-group"],
     files: [
       {
         path: "ui/command.tsx",

@@ -3,7 +3,11 @@
   "name": "label-example",
   "title": "Label",
   "registryDependencies": [
+    "checkbox",
+    "field",
+    "input",
     "label",
+    "textarea",
     "example"
   ],
   "files": [

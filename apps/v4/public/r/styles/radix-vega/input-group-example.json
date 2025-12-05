@@ -3,7 +3,18 @@
   "name": "input-group-example",
   "title": "Input Group",
   "registryDependencies": [
+    "button",
+    "button-group",
+    "card",
+    "dropdown-menu",
+    "field",
+    "input",
     "input-group",
+    "kbd",
+    "popover",
+    "spinner",
+    "textarea",
+    "tooltip",
     "example"
   ],
   "files": [

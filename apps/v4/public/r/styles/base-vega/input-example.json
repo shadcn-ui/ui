@@ -3,7 +3,11 @@
   "name": "input-example",
   "title": "Input",
   "registryDependencies": [
+    "button",
+    "field",
     "input",
+    "native-select",
+    "select",
     "example"
   ],
   "files": [

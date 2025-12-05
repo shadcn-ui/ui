@@ -3,6 +3,7 @@
   "name": "command-example",
   "title": "Command",
   "registryDependencies": [
+    "button",
     "command",
     "example"
   ],

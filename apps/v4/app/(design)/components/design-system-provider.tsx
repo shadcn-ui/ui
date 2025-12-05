@@ -19,8 +19,8 @@ export function DesignSystemProvider({
   const theme = useDesignSystemParam("theme")
   const font = useDesignSystemParam("font")
   const baseColor = useDesignSystemParam("baseColor")
-  const accent = useDesignSystemParam("accent")
-  const menu = useDesignSystemParam("menu")
+  const menuAccent = useDesignSystemParam("menuAccent")
+  const menuColor = useDesignSystemParam("menuColor")
   const spacing = useDesignSystemParam("spacing")
   const radius = useDesignSystemParam("radius")
   const [isReady, setIsReady] = React.useState(false)
@@ -67,7 +67,7 @@ export function DesignSystemProvider({
   }, [style, theme, font, baseColor])
 
   const registryTheme = React.useMemo(() => {
-    if (!baseColor || !theme || !accent || !spacing || !radius) {
+    if (!baseColor || !theme || !menuAccent || !spacing || !radius) {
       return null
     }
 
@@ -75,13 +75,13 @@ export function DesignSystemProvider({
       ...DEFAULT_CONFIG,
       baseColor,
       theme,
-      accent,
+      menuAccent,
       spacing,
       radius,
     }
 
     return buildRegistryTheme(config)
-  }, [baseColor, theme, accent, spacing, radius])
+  }, [baseColor, theme, menuAccent, spacing, radius])
 
   React.useEffect(() => {
     if (!registryTheme || !registryTheme.cssVars) {
@@ -144,18 +144,16 @@ export function DesignSystemProvider({
     }
   }, [registryTheme])
 
-  // Handle menu inversion by adding/removing dark class to Radix menu content and select content.
+  // Handle menu color inversion by adding/removing dark class to elements with cn-menu-target.
   React.useEffect(() => {
-    if (!menu) {
+    if (!menuColor) {
       return
     }
 
     const updateMenuElements = () => {
-      const menuElements = document.querySelectorAll(
-        "[data-radix-menu-content], [data-slot=select-content], [data-slot=dropdown-menu-content], [data-slot=dropdown-menu-sub-content], [data-slot=context-menu-content], [data-slot=context-menu-sub-content], [data-slot=menubar-content], [data-slot=menubar-sub-content],[data-slot=combobox-content]"
-      )
+      const menuElements = document.querySelectorAll(".cn-menu-target")
       menuElements.forEach((element) => {
-        if (menu === "inverted") {
+        if (menuColor === "inverted") {
           element.classList.add("dark")
         } else {
           element.classList.remove("dark")
@@ -179,7 +177,7 @@ export function DesignSystemProvider({
     return () => {
       observer.disconnect()
     }
-  }, [menu])
+  }, [menuColor])
 
   if (!isReady) {
     return null

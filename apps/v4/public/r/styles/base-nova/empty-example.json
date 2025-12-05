@@ -3,7 +3,10 @@
   "name": "empty-example",
   "title": "Empty",
   "registryDependencies": [
+    "button",
     "empty",
+    "input-group",
+    "kbd",
     "example"
   ],
   "files": [

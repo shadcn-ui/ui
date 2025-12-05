@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { type MenuValue } from "@/app/(design)/lib/config"
+import { type MenuColorValue } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 const MENU_OPTIONS = [
@@ -101,19 +101,21 @@ const MENU_OPTIONS = [
   },
 ] as const
 
-export function MenuPicker() {
+export function MenuColorPicker() {
   const { resolvedTheme } = useTheme()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
   })
-  const currentMenu = MENU_OPTIONS.find((menu) => menu.value === params.menu)
+  const currentMenu = MENU_OPTIONS.find(
+    (menu) => menu.value === params.menuColor
+  )
 
   return (
     <Select
       value={currentMenu?.value}
       onValueChange={(value) => {
-        setParams({ menu: value as MenuValue })
+        setParams({ menuColor: value as MenuColorValue })
       }}
     >
       <SelectTrigger className="relative" disabled={resolvedTheme === "dark"}>

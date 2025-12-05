@@ -4,6 +4,7 @@
   "title": "Breadcrumb",
   "registryDependencies": [
     "breadcrumb",
+    "dropdown-menu",
     "example"
   ],
   "files": [

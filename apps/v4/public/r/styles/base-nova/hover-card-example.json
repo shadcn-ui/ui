@@ -3,6 +3,8 @@
   "name": "hover-card-example",
   "title": "Hover Card",
   "registryDependencies": [
+    "button",
+    "dialog",
     "hover-card",
     "example"
   ],

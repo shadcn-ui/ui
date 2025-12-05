@@ -3,7 +3,10 @@
   "name": "kbd-example",
   "title": "Kbd",
   "registryDependencies": [
+    "button",
+    "input-group",
     "kbd",
+    "tooltip",
     "example"
   ],
   "files": [

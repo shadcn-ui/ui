@@ -3,12 +3,16 @@ import {
   type IconLibrary,
   type IconLibraryName,
 } from "shadcn/icons"
+import { z } from "zod"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
 import { BASES, type Base } from "@/registry/bases"
 import { FONTS, type Font } from "@/registry/fonts"
 import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
+
+// 🚨 Remove before merging to main.
+const SHADCN_VERSION = "file:~/Code/shadcn/ui/packages/shadcn"
 
 export { BASES, type Base }
 export { STYLES, type Style }
@@ -23,22 +27,22 @@ export type ThemeName = Theme["name"]
 export type BaseColorName = BaseColor["name"]
 export type FontValue = Font["value"]
 
-export const ACCENTS = [
+export const MENU_ACCENTS = [
   { value: "subtle", label: "Subtle" },
   { value: "bold", label: "Bold" },
 ] as const
 
-export type Accent = (typeof ACCENTS)[number]
-export type AccentValue = Accent["value"]
+export type MenuAccent = (typeof MENU_ACCENTS)[number]
+export type MenuAccentValue = MenuAccent["value"]
 
-export const MENUS = [
+export const MENU_COLORS = [
   { value: "default", label: "Default" },
   { value: "inverted", label: "Inverted" },
 ] as const
 
-export type Menu = (typeof MENUS)[number]
+export type MenuColor = (typeof MENU_COLORS)[number]
 
-export type MenuValue = Menu["value"]
+export type MenuColorValue = MenuColor["value"]
 
 export const SPACINGS = [
   { value: "default", label: "Default" },
@@ -60,18 +64,54 @@ export type Radius = (typeof RADII)[number]
 
 export type RadiusValue = Radius["value"]
 
-export type DesignSystemConfig = {
-  base: BaseName
-  style: StyleName
-  baseColor: BaseColorName
-  theme: ThemeName
-  iconLibrary: IconLibraryName
-  font: FontValue
-  accent: AccentValue
-  menu: MenuValue
-  spacing: SpacingValue
-  radius: RadiusValue
-}
+export const designSystemConfigSchema = z
+  .object({
+    base: z.enum(BASES.map((b) => b.name) as [BaseName, ...BaseName[]]),
+    style: z.enum(STYLES.map((s) => s.name) as [StyleName, ...StyleName[]]),
+    iconLibrary: z.enum(
+      Object.keys(iconLibraries) as [IconLibraryName, ...IconLibraryName[]]
+    ),
+    baseColor: z
+      .enum(
+        BASE_COLORS.map((c) => c.name) as [BaseColorName, ...BaseColorName[]]
+      )
+      .default("neutral"),
+    theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
+    font: z
+      .enum(FONTS.map((f) => f.value) as [FontValue, ...FontValue[]])
+      .default("inter"),
+    menuAccent: z
+      .enum(
+        MENU_ACCENTS.map((a) => a.value) as [
+          MenuAccentValue,
+          ...MenuAccentValue[],
+        ]
+      )
+      .default("subtle"),
+    menuColor: z
+      .enum(
+        MENU_COLORS.map((m) => m.value) as [MenuColorValue, ...MenuColorValue[]]
+      )
+      .default("default"),
+    spacing: z
+      .enum(SPACINGS.map((s) => s.value) as [SpacingValue, ...SpacingValue[]])
+      .default("default"),
+    radius: z
+      .enum(RADII.map((r) => r.value) as [RadiusValue, ...RadiusValue[]])
+      .default("default"),
+  })
+  .refine(
+    (data) => {
+      const availableThemes = getThemesForBaseColor(data.baseColor)
+      return availableThemes.some((t) => t.name === data.theme)
+    },
+    (data) => ({
+      message: `Theme "${data.theme}" is not available for base color "${data.baseColor}"`,
+      path: ["theme"],
+    })
+  )
+
+export type DesignSystemConfig = z.infer<typeof designSystemConfigSchema>
 
 export const DEFAULT_CONFIG: DesignSystemConfig = {
   base: "radix",
@@ -80,8 +120,8 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   theme: "neutral",
   iconLibrary: "lucide",
   font: "inter",
-  accent: "subtle",
-  menu: "default",
+  menuAccent: "subtle",
+  menuColor: "default",
   spacing: "default",
   radius: "default",
 }
@@ -101,8 +141,8 @@ export const PRESETS: Preset[] = [
     theme: "neutral",
     iconLibrary: "lucide",
     font: "inter",
-    accent: "subtle",
-    menu: "default",
+    menuAccent: "subtle",
+    menuColor: "default",
     spacing: "default",
     radius: "default",
   },
@@ -115,8 +155,8 @@ export const PRESETS: Preset[] = [
     theme: "blue",
     iconLibrary: "hugeicons",
     font: "geist-sans",
-    accent: "bold",
-    menu: "inverted",
+    menuAccent: "bold",
+    menuColor: "inverted",
     spacing: "compact",
     radius: "default",
   },
@@ -129,8 +169,8 @@ export const PRESETS: Preset[] = [
     theme: "blue",
     iconLibrary: "hugeicons",
     font: "figtree",
-    accent: "subtle",
-    menu: "default",
+    menuAccent: "subtle",
+    menuColor: "default",
     spacing: "default",
     radius: "default",
   },
@@ -193,8 +233,8 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
   }
   const themeVars: Record<string, string> = {}
 
-  // Apply accent transformation.
-  if (config.accent === "bold") {
+  // Apply menu accent transformation.
+  if (config.menuAccent === "bold") {
     lightVars.accent = lightVars.primary
     lightVars["accent-foreground"] = lightVars["primary-foreground"]
     darkVars.accent = darkVars.primary
@@ -232,6 +272,55 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
       theme: Object.keys(themeVars).length > 0 ? themeVars : undefined,
       light: lightVars,
       dark: darkVars,
+    },
+  }
+}
+
+// Builds a registry:base item from a design system config.
+export function buildRegistryBase(config: DesignSystemConfig) {
+  const baseItem = getBase(config.base)
+  const iconLibraryItem = getIconLibrary(config.iconLibrary)
+
+  if (!baseItem || !iconLibraryItem) {
+    throw new Error(
+      `Base "${config.base}" or icon library "${config.iconLibrary}" not found`
+    )
+  }
+
+  const registryTheme = buildRegistryTheme(config)
+
+  // Build dependencies.
+  const dependencies = [
+    `shadcn@${SHADCN_VERSION}`,
+    "class-variance-authority",
+    "tw-animate-css",
+    ...(baseItem.dependencies ?? []),
+    ...iconLibraryItem.packages,
+  ]
+
+  return {
+    name: `${config.base}-${config.style}`,
+    extends: "none",
+    type: "registry:base" as const,
+    config: {
+      style: `${config.base}-${config.style}`,
+      iconLibrary: iconLibraryItem.name,
+      menuColor: config.menuColor,
+      menuAccent: config.menuAccent,
+      tailwind: {
+        baseColor: config.baseColor,
+      },
+    },
+    dependencies,
+    registryDependencies: ["cn"],
+    cssVars: registryTheme.cssVars,
+    css: {
+      '@import "tw-animate-css"': {},
+      '@import "shadcn/tailwind.css"': {},
+      "@layer base": {
+        "*": { "@apply border-border outline-ring/50": {} },
+        body: { "@apply bg-background text-foreground": {} },
+      },
     },
   }
 }

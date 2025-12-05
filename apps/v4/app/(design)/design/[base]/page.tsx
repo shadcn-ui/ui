@@ -111,7 +111,7 @@ export default async function NewPage({
       <header className="bg-background sticky top-0 z-50 w-full">
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
           <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
-            <div className="flex w-72 items-center gap-2">
+            <div className="flex items-center">
               <Button
                 asChild
                 variant="ghost"
@@ -123,14 +123,11 @@ export default async function NewPage({
                   <span className="sr-only">{siteConfig.name}</span>
                 </Link>
               </Button>
-              <div className="text-foreground text-sm font-medium">
-                Design your own shadcn/ui.
-              </div>
+              <MainNav items={siteConfig.navItems} />
             </div>
-            <div className="flex flex-1 justify-center">
+            <div className="flex flex-1 items-center gap-2 md:justify-end">
               <ItemPicker items={filteredItems} />
-            </div>
-            <div className="flex w-72 items-center gap-2 md:justify-end">
+              <Separator orientation="vertical" className="mx-2" />
               <GitHubLink />
               <Separator orientation="vertical" className="3xl:flex hidden" />
               <SiteConfig className="3xl:flex hidden" />

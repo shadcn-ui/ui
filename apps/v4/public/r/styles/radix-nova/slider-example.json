@@ -3,6 +3,7 @@
   "name": "slider-example",
   "title": "Slider",
   "registryDependencies": [
+    "label",
     "slider",
     "example"
   ],

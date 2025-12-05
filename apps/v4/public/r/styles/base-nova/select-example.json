@@ -3,6 +3,12 @@
   "name": "select-example",
   "title": "Select",
   "registryDependencies": [
+    "button",
+    "dialog",
+    "field",
+    "input",
+    "item",
+    "native-select",
     "select",
     "example"
   ],

@@ -535,4 +535,72 @@ function Foo() {
       "
     `)
   })
+
+  it("applies styles to cn-* classes inside mergeProps within useRender", async () => {
+    const source = `import * as React from "react"
+import { mergeProps } from "@base-ui-components/react/merge-props"
+import { useRender } from "@base-ui-components/react/use-render"
+import { cn } from "@/lib/utils"
+
+function ButtonGroupText({
+  className,
+  render,
+  ...props
+}: useRender.ComponentProps<"div">) {
+  return useRender({
+    defaultTagName: "div",
+    props: mergeProps<"div">(
+      {
+        className: cn(
+          "cn-button-group-text flex items-center [&_svg]:pointer-events-none",
+          className
+        ),
+      },
+      props
+    ),
+    render,
+    state: {
+      slot: "button-group-text",
+    },
+  })
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-button-group-text": "text-sm font-medium",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { mergeProps } from "@base-ui-components/react/merge-props"
+      import { useRender } from "@base-ui-components/react/use-render"
+      import { cn } from "@/lib/utils"
+
+      function ButtonGroupText({
+        className,
+        render,
+        ...props
+      }: useRender.ComponentProps<"div">) {
+        return useRender({
+          defaultTagName: "div",
+          props: mergeProps<"div">(
+            {
+              className: cn(
+                "text-sm font-medium flex items-center [&_svg]:pointer-events-none",
+                className
+              ),
+            },
+            props
+          ),
+          render,
+          state: {
+            slot: "button-group-text",
+          },
+        })
+      }
+      "
+    `)
+  })
 })

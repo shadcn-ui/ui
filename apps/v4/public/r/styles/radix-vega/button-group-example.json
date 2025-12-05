@@ -3,7 +3,16 @@
   "name": "button-group-example",
   "title": "Button Group",
   "registryDependencies": [
+    "button",
     "button-group",
+    "dropdown-menu",
+    "field",
+    "input",
+    "input-group",
+    "label",
+    "popover",
+    "select",
+    "tooltip",
     "example"
   ],
   "files": [

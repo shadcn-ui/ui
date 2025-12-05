@@ -3,6 +3,8 @@
   "name": "tabs-example",
   "title": "Tabs",
   "registryDependencies": [
+    "button",
+    "dropdown-menu",
     "tabs",
     "example"
   ],

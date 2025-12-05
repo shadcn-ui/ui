@@ -3,6 +3,8 @@
   "name": "toggle-group-example",
   "title": "Toggle Group",
   "registryDependencies": [
+    "input",
+    "select",
     "toggle-group",
     "example"
   ],

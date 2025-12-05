@@ -7,21 +7,21 @@ import {
 } from "nuqs/server"
 
 import {
-  ACCENTS,
   BASE_COLORS,
   DEFAULT_CONFIG,
   FONTS,
   iconLibraries,
-  MENUS,
+  MENU_ACCENTS,
+  MENU_COLORS,
   RADII,
   SPACINGS,
   STYLES,
   THEMES,
-  type AccentValue,
   type BaseColorName,
   type FontValue,
   type IconLibraryName,
-  type MenuValue,
+  type MenuAccentValue,
+  type MenuColorValue,
   type RadiusValue,
   type SpacingValue,
   type StyleName,
@@ -45,12 +45,12 @@ export const designSystemSearchParams = {
   baseColor: parseAsStringLiteral<BaseColorName>(
     BASE_COLORS.map((b) => b.name)
   ).withDefault(DEFAULT_CONFIG.baseColor),
-  accent: parseAsStringLiteral<AccentValue>(
-    ACCENTS.map((a) => a.value)
-  ).withDefault(DEFAULT_CONFIG.accent),
-  menu: parseAsStringLiteral<MenuValue>(
-    MENUS.map((m) => m.value)
-  ).withDefault(DEFAULT_CONFIG.menu),
+  menuAccent: parseAsStringLiteral<MenuAccentValue>(
+    MENU_ACCENTS.map((a) => a.value)
+  ).withDefault(DEFAULT_CONFIG.menuAccent),
+  menuColor: parseAsStringLiteral<MenuColorValue>(
+    MENU_COLORS.map((m) => m.value)
+  ).withDefault(DEFAULT_CONFIG.menuColor),
   spacing: parseAsStringLiteral<SpacingValue>(
     SPACINGS.map((s) => s.value)
   ).withDefault(DEFAULT_CONFIG.spacing),

@@ -3,6 +3,8 @@
   "name": "menubar-example",
   "title": "Menubar",
   "registryDependencies": [
+    "button",
+    "dialog",
     "menubar",
     "example"
   ],

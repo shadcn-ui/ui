@@ -3,6 +3,8 @@
   "name": "navigation-menu-example",
   "title": "Navigation Menu",
   "registryDependencies": [
+    "button",
+    "dialog",
     "navigation-menu",
     "example"
   ],

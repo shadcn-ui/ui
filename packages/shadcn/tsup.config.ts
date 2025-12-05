@@ -1,3 +1,4 @@
+import { copyFileSync } from "fs"
 import { defineConfig } from "tsup"
 
 export default defineConfig({
@@ -17,4 +18,7 @@ export default defineConfig({
   target: "esnext",
   outDir: "dist",
   treeshake: true,
+  onSuccess: async () => {
+    copyFileSync("src/tailwind.css", "dist/tailwind.css")
+  },
 })

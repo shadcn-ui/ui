@@ -3,6 +3,10 @@
   "name": "popover-example",
   "title": "Popover",
   "registryDependencies": [
+    "button",
+    "dialog",
+    "field",
+    "input",
     "popover",
     "example"
   ],

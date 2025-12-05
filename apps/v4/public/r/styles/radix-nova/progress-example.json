@@ -3,7 +3,10 @@
   "name": "progress-example",
   "title": "Progress",
   "registryDependencies": [
+    "field",
+    "item",
     "progress",
+    "slider",
     "example"
   ],
   "files": [

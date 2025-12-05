@@ -3,6 +3,7 @@
   "name": "radio-group-example",
   "title": "Radio Group",
   "registryDependencies": [
+    "field",
     "radio-group",
     "example"
   ],

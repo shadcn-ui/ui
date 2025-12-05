@@ -4,6 +4,8 @@
   "title": "Alert",
   "registryDependencies": [
     "alert",
+    "badge",
+    "button",
     "example"
   ],
   "files": [

@@ -3,7 +3,19 @@
   "name": "dialog-example",
   "title": "Dialog",
   "registryDependencies": [
+    "button",
+    "checkbox",
     "dialog",
+    "field",
+    "input",
+    "input-group",
+    "kbd",
+    "native-select",
+    "select",
+    "switch",
+    "tabs",
+    "textarea",
+    "tooltip",
     "example"
   ],
   "files": [

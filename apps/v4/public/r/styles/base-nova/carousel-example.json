@@ -3,6 +3,7 @@
   "name": "carousel-example",
   "title": "Carousel",
   "registryDependencies": [
+    "card",
     "carousel",
     "example"
   ],

@@ -4,6 +4,8 @@
   "title": "Checkbox",
   "registryDependencies": [
     "checkbox",
+    "field",
+    "table",
     "example"
   ],
   "files": [

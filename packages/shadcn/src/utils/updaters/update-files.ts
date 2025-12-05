@@ -24,6 +24,7 @@ import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformNext } from "@/src/utils/transformers/transform-next"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
+import { transformMenu } from "@/src/utils/transformers/transform-menu"
 import prompts from "prompts"
 import { Project, ScriptKind } from "ts-morph"
 import { loadConfig } from "tsconfig-paths"
@@ -139,6 +140,7 @@ export async function updateFiles(
             transformCssVars,
             transformTwPrefixes,
             transformIcons,
+            transformMenu,
             ...(_isNext16Middleware(filePath, projectInfo, config)
               ? [transformNext]
               : []),

@@ -5,7 +5,8 @@
     "cmdk"
   ],
   "registryDependencies": [
-    "dialog"
+    "dialog",
+    "input-group"
   ],
   "files": [
     {

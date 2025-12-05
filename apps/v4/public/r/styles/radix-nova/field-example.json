@@ -3,7 +3,17 @@
   "name": "field-example",
   "title": "Field",
   "registryDependencies": [
+    "badge",
+    "checkbox",
     "field",
+    "input",
+    "input-otp",
+    "native-select",
+    "radio-group",
+    "select",
+    "slider",
+    "switch",
+    "textarea",
     "example"
   ],
   "files": [

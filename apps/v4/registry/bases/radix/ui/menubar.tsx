@@ -76,7 +76,7 @@ function MenubarContent({
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "cn-menubar-content z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
+          "cn-menubar-content cn-menu-target z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
           className
         )}
         {...props}
@@ -253,7 +253,7 @@ function MenubarSubContent({
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
       className={cn(
-        "cn-menubar-sub-content z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
+        "cn-menubar-sub-content cn-menu-target z-50 origin-(--radix-menubar-content-transform-origin) overflow-hidden",
         className
       )}
       {...props}

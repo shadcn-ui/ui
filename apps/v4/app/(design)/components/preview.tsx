@@ -54,7 +54,7 @@ export function Preview({ base }: { base: Base["name"] }) {
       const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent)
 
       const syntheticEvent = new KeyboardEvent("keydown", {
-        key: "p",
+        key: "k",
         metaKey: isMac,
         ctrlKey: !isMac,
         bubbles: true,

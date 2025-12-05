@@ -3,6 +3,9 @@
   "name": "dropdown-menu-example",
   "title": "Dropdown Menu",
   "registryDependencies": [
+    "avatar",
+    "button",
+    "dialog",
     "dropdown-menu",
     "example"
   ],
