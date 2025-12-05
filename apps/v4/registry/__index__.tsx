@@ -889,6 +889,24 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "time-picker": {
+      name: "time-picker",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["select","label"],
+      files: [{
+        path: "registry/new-york-v4/ui/time-picker.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/time-picker.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "toggle": {
       name: "toggle",
       description: "",
@@ -7399,6 +7417,43 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/new-york-v4/examples/textarea-with-text.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "time-picker-demo": {
+      name: "time-picker-demo",
+      description: "",
+      type: "registry:example",
+      dependencies: ["date-fns"],
+      registryDependencies: ["button","time-picker","popover"],
+      files: [{
+        path: "registry/new-york-v4/examples/time-picker-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/time-picker-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "time-picker-with-presets": {
+      name: "time-picker-with-presets",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["button","time-picker"],
+      files: [{
+        path: "registry/new-york-v4/examples/time-picker-with-presets.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/time-picker-with-presets.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
