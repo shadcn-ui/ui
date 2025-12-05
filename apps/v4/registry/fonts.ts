@@ -8,14 +8,9 @@ export const fonts = [
     font: {
       family: "Inter",
       provider: "google",
-      variable: "--font-inter",
+      variable: "--font-sans",
       subsets: ["latin"],
       import: "Inter",
-    },
-    cssVars: {
-      theme: {
-        "--font-sans": "var(--font-inter)",
-      },
     },
   },
   {
@@ -25,14 +20,9 @@ export const fonts = [
     font: {
       family: "Geist Sans",
       provider: "google",
-      variable: "--font-geist-sans",
+      variable: "--font-sans",
       subsets: ["latin"],
       import: "Geist",
-    },
-    cssVars: {
-      theme: {
-        "--font-sans": "var(--font-geist-sans)",
-      },
     },
   },
   {
@@ -42,13 +32,8 @@ export const fonts = [
     font: {
       family: "Noto Sans",
       provider: "google",
-      variable: "--font-noto-sans",
-      import: "Noto Sans",
-    },
-    cssVars: {
-      theme: {
-        "--font-sans": "var(--font-noto-sans)",
-      },
+      variable: "--font-sans",
+      import: "Noto_Sans",
     },
   },
   {
@@ -58,13 +43,8 @@ export const fonts = [
     font: {
       family: "Nunito Sans",
       provider: "google",
-      variable: "--font-nunito-sans",
+      variable: "--font-sans",
       import: "Nunito_Sans",
-    },
-    cssVars: {
-      theme: {
-        "--font-sans": "var(--font-nunito-sans)",
-      },
     },
   },
   {
@@ -74,14 +54,9 @@ export const fonts = [
     font: {
       family: "Figtree",
       provider: "google",
-      variable: "--font-figtree",
+      variable: "--font-sans",
       subsets: ["latin"],
       import: "Figtree",
-    },
-    cssVars: {
-      theme: {
-        "--font-sans": "var(--font-figtree)",
-      },
     },
   },
   {
@@ -91,14 +66,9 @@ export const fonts = [
     font: {
       family: "JetBrains Mono",
       provider: "google",
-      variable: "--font-jetbrains-mono",
+      variable: "--font-sans",
       subsets: ["latin"],
       import: "JetBrains_Mono",
-    },
-    cssVars: {
-      theme: {
-        "--font-sans": "var(--font-jetbrains-mono)",
-      },
     },
   },
   {
@@ -108,14 +78,9 @@ export const fonts = [
     font: {
       family: "Geist Mono",
       provider: "google",
-      variable: "--font-geist-mono",
+      variable: "--font-sans",
       subsets: ["latin"],
       import: "Geist_Mono",
-    },
-    cssVars: {
-      theme: {
-        "--font-sans": "var(--font-geist-mono)",
-      },
     },
   },
 ] satisfies RegistryItem[]

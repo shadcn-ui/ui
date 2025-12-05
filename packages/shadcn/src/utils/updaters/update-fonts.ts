@@ -1,10 +1,9 @@
 import { existsSync, promises as fs } from "fs"
 import path from "path"
-import { RegistryFontItem } from "@/src/schema"
+import { RegistryFontItem, registryResolvedItemsTreeSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { spinner } from "@/src/utils/spinner"
-import { updateCss } from "@/src/utils/updaters/update-css"
 import {
   CallExpression,
   Project,
@@ -12,6 +11,55 @@ import {
   SyntaxKind,
   VariableDeclarationKind,
 } from "ts-morph"
+import z from "zod"
+
+export async function massageTreeForFonts(
+  tree: z.infer<typeof registryResolvedItemsTreeSchema>,
+  config: Config
+) {
+  if (!tree.fonts?.length) {
+    return tree
+  }
+
+  const projectInfo = await getProjectInfo(config.resolvedPaths.cwd)
+
+  if (!projectInfo) {
+    return tree
+  }
+
+  const [fontSans] = tree.fonts
+  tree.cssVars ??= {}
+  tree.cssVars.theme ??= {}
+
+  if (
+    projectInfo.framework.name === "next-app" ||
+    projectInfo.framework.name === "next-pages"
+  ) {
+    tree.cssVars.theme[
+      fontSans.font.variable
+    ] = `var(${fontSans.font.variable})`
+  } else {
+    // const fontSourceDependency = `@fontsource-variable/${fontSans.name}`
+    // tree.dependencies ??= []
+    // tree.dependencies.push(fontSourceDependency)
+    // tree.css ??= {}
+    // tree.css[`@import ${fontSourceDependency}`] = {}
+    // tree.cssVars.theme["--font-sans"] = fontSans.font.family
+    // TODO (shadcn): Wrap this up when you have time.
+    tree.docs += `## Fonts
+
+To add the ${tree.fonts
+      .map((f) => f.font.family)
+      .join(
+        ", "
+      )} fonts to your project, please follow the instructions for your framework (${
+      projectInfo.framework.label
+    }).
+    `
+  }
+
+  return tree
+}
 
 export async function updateFonts(
   fonts: RegistryFontItem[] | undefined,
@@ -30,7 +78,6 @@ export async function updateFonts(
     return
   }
 
-  // Only support Next.js for now.
   if (
     projectInfo.framework.name !== "next-app" &&
     projectInfo.framework.name !== "next-pages"

@@ -2,17 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "font-jetbrains-mono",
   "title": "JetBrains Mono",
-  "cssVars": {
-    "theme": {
-      "--font-sans": "var(--font-jetbrains-mono)"
-    }
-  },
   "type": "registry:font",
   "font": {
     "family": "JetBrains Mono",
     "provider": "google",
     "import": "JetBrains_Mono",
-    "variable": "--font-jetbrains-mono",
+    "variable": "--font-sans",
     "subsets": [
       "latin"
     ]

@@ -21,16 +21,15 @@ import {
   isUrl,
 } from "@/src/registry/utils"
 import {
+  RegistryFontItem,
   registryItemCommonSchema,
   registryItemFontSchema,
   registryItemSchema,
   registryItemTypeSchema,
-  RegistryFontItem,
   registryResolvedItemsTreeSchema,
 } from "@/src/schema"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
 import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
 import deepmerge from "deepmerge"
 import { z } from "zod"

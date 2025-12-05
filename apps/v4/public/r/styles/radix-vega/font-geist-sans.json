@@ -2,17 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "font-geist-sans",
   "title": "Geist Sans",
-  "cssVars": {
-    "theme": {
-      "--font-sans": "var(--font-geist-sans)"
-    }
-  },
   "type": "registry:font",
   "font": {
     "family": "Geist Sans",
     "provider": "google",
     "import": "Geist",
-    "variable": "--font-geist-sans",
+    "variable": "--font-sans",
     "subsets": [
       "latin"
     ]

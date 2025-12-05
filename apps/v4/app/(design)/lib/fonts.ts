@@ -7,7 +7,6 @@ import {
   Noto_Sans,
   Nunito_Sans,
 } from "next/font/google"
-import { RegistryItem } from "shadcn/schema"
 
 const inter = Inter({
   subsets: ["latin"],

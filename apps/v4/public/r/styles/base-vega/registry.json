@@ -1870,17 +1870,12 @@
     {
       "name": "font-inter",
       "title": "Inter",
-      "cssVars": {
-        "theme": {
-          "--font-sans": "var(--font-inter)"
-        }
-      },
       "type": "registry:font",
       "font": {
         "family": "Inter",
         "provider": "google",
         "import": "Inter",
-        "variable": "--font-inter",
+        "variable": "--font-sans",
         "subsets": [
           "latin"
         ]
@@ -1889,17 +1884,12 @@
     {
       "name": "font-geist-sans",
       "title": "Geist Sans",
-      "cssVars": {
-        "theme": {
-          "--font-sans": "var(--font-geist-sans)"
-        }
-      },
       "type": "registry:font",
       "font": {
         "family": "Geist Sans",
         "provider": "google",
         "import": "Geist",
-        "variable": "--font-geist-sans",
+        "variable": "--font-sans",
         "subsets": [
           "latin"
         ]
@@ -1908,49 +1898,34 @@
     {
       "name": "font-noto-sans",
       "title": "Noto Sans",
-      "cssVars": {
-        "theme": {
-          "--font-sans": "var(--font-noto-sans)"
-        }
-      },
       "type": "registry:font",
       "font": {
         "family": "Noto Sans",
         "provider": "google",
-        "import": "Noto Sans",
-        "variable": "--font-noto-sans"
+        "import": "Noto_Sans",
+        "variable": "--font-sans"
       }
     },
     {
       "name": "font-nunito-sans",
       "title": "Nunito Sans",
-      "cssVars": {
-        "theme": {
-          "--font-sans": "var(--font-nunito-sans)"
-        }
-      },
       "type": "registry:font",
       "font": {
         "family": "Nunito Sans",
         "provider": "google",
         "import": "Nunito_Sans",
-        "variable": "--font-nunito-sans"
+        "variable": "--font-sans"
       }
     },
     {
       "name": "font-figtree",
       "title": "Figtree",
-      "cssVars": {
-        "theme": {
-          "--font-sans": "var(--font-figtree)"
-        }
-      },
       "type": "registry:font",
       "font": {
         "family": "Figtree",
         "provider": "google",
         "import": "Figtree",
-        "variable": "--font-figtree",
+        "variable": "--font-sans",
         "subsets": [
           "latin"
         ]
@@ -1959,17 +1934,12 @@
     {
       "name": "font-jetbrains-mono",
       "title": "JetBrains Mono",
-      "cssVars": {
-        "theme": {
-          "--font-sans": "var(--font-jetbrains-mono)"
-        }
-      },
       "type": "registry:font",
       "font": {
         "family": "JetBrains Mono",
         "provider": "google",
         "import": "JetBrains_Mono",
-        "variable": "--font-jetbrains-mono",
+        "variable": "--font-sans",
         "subsets": [
           "latin"
         ]
@@ -1978,17 +1948,12 @@
     {
       "name": "font-geist-mono",
       "title": "Geist Mono",
-      "cssVars": {
-        "theme": {
-          "--font-sans": "var(--font-geist-mono)"
-        }
-      },
       "type": "registry:font",
       "font": {
         "family": "Geist Mono",
         "provider": "google",
         "import": "Geist_Mono",
-        "variable": "--font-geist-mono",
+        "variable": "--font-sans",
         "subsets": [
           "latin"
         ]

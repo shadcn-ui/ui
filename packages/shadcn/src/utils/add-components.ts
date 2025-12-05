@@ -24,7 +24,10 @@ import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateEnvVars } from "@/src/utils/updaters/update-env-vars"
 import { updateFiles } from "@/src/utils/updaters/update-files"
-import { updateFonts } from "@/src/utils/updaters/update-fonts"
+import {
+  massageTreeForFonts,
+  updateFonts,
+} from "@/src/utils/updaters/update-fonts"
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
 import { z } from "zod"
 
@@ -82,7 +85,7 @@ async function addProjectComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  const tree = await resolveRegistryTree(components, configWithDefaults(config))
+  let tree = await resolveRegistryTree(components, configWithDefaults(config))
 
   if (!tree) {
     registrySpinner?.fail()
@@ -99,6 +102,8 @@ async function addProjectComponents(
   registrySpinner?.succeed()
 
   const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
+
+  tree = await massageTreeForFonts(tree, config)
 
   await updateTailwindConfig(tree.tailwind?.config, config, {
     silent: options.silent,
