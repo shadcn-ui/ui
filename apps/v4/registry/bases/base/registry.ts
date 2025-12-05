@@ -1,6 +1,8 @@
 import { registryItemSchema, type Registry } from "shadcn/schema"
 import { z } from "zod"
 
+import { fonts } from "@/registry/fonts"
+
 import { blocks } from "./blocks/_registry"
 import { components } from "./components/_registry"
 import { examples } from "./examples/_registry"
@@ -13,5 +15,13 @@ export const registry = {
   homepage: "https://ui.shadcn.com",
   items: z
     .array(registryItemSchema)
-    .parse([...ui, ...examples, ...lib, ...components, ...blocks, ...internal]),
+    .parse([
+      ...ui,
+      ...examples,
+      ...lib,
+      ...components,
+      ...blocks,
+      ...internal,
+      ...fonts,
+    ]),
 } satisfies Registry

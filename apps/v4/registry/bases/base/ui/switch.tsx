@@ -2,7 +2,7 @@
 
 import { Switch as SwitchPrimitive } from "@base-ui-components/react/switch"
 
-import { cn } from "@/registry/bases/base/lib/cn"
+import { cn } from "@/registry/bases/base/lib/utils"
 
 function Switch({ className, ...props }: SwitchPrimitive.Root.Props) {
   return (

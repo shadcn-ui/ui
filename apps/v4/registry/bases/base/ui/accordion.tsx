@@ -2,7 +2,7 @@
 
 import { Accordion as AccordionPrimitive } from "@base-ui-components/react/accordion"
 
-import { cn } from "@/registry/bases/base/lib/cn"
+import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {

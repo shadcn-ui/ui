@@ -5,7 +5,7 @@ import { mergeProps } from "@base-ui-components/react/merge-props"
 import { useRender } from "@base-ui-components/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn } from "@/registry/bases/base/lib/cn"
+import { cn } from "@/registry/bases/base/lib/utils"
 import { Button } from "@/registry/bases/base/ui/button"
 import { Input } from "@/registry/bases/base/ui/input"
 import { Separator } from "@/registry/bases/base/ui/separator"

@@ -1,7 +1,7 @@
 import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui-components/react/navigation-menu"
 import { cva } from "class-variance-authority"
 
-import { cn } from "@/registry/bases/base/lib/cn"
+import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 
 function NavigationMenu({

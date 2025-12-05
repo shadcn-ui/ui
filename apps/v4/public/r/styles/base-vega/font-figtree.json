@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-figtree",
+  "title": "Figtree",
+  "cssVars": {
+    "theme": {
+      "--font-sans": "var(--font-figtree)"
+    }
+  },
+  "type": "registry:font",
+  "font": {
+    "family": "Figtree",
+    "provider": "google",
+    "import": "Figtree",
+    "variable": "--font-figtree",
+    "subsets": [
+      "latin"
+    ]
+  }
+}

@@ -30,6 +30,7 @@ export const blocks: Registry["items"] = [
       "switch",
       "textarea",
       "tooltip",
+      "example",
     ],
     files: [
       {
@@ -58,6 +59,7 @@ export const blocks: Registry["items"] = [
       "native-select",
       "popover",
       "textarea",
+      "example",
     ],
     files: [
       {
@@ -93,6 +95,7 @@ export const blocks: Registry["items"] = [
       "tabs",
       "textarea",
       "tooltip",
+      "example",
     ],
     files: [
       {
@@ -118,6 +121,7 @@ export const blocks: Registry["items"] = [
       "kbd",
       "popover",
       "tooltip",
+      "example",
     ],
     files: [
       {

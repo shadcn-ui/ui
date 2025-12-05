@@ -4,7 +4,7 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
-import { cn } from "@/registry/bases/radix/lib/cn"
+import { cn } from "@/registry/bases/radix/lib/utils"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Input } from "@/registry/bases/radix/ui/input"
 import { Separator } from "@/registry/bases/radix/ui/separator"

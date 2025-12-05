@@ -2115,19 +2115,19 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "cn": {
-      name: "cn",
+    "utils": {
+      name: "utils",
       title: "undefined",
       description: "",
       type: "registry:lib",
       registryDependencies: undefined,
       files: [{
-        path: "registry/bases/radix/lib/cn.ts",
+        path: "registry/bases/radix/lib/utils.ts",
         type: "registry:lib",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/radix/lib/cn.ts")
+        const mod = await import("@/registry/bases/radix/lib/utils.ts")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
@@ -2177,7 +2177,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Cover",
       description: "",
       type: "registry:block",
-      registryDependencies: undefined,
+      registryDependencies: ["alert-dialog","avatar","badge","button","button-group","card","checkbox","dropdown-menu","empty","field","input","input-group","item","label","popover","radio-group","select","separator","sheet","slider","spinner","switch","textarea","tooltip","example"],
       files: [{
         path: "registry/bases/radix/blocks/cover.tsx",
         type: "registry:block",
@@ -2196,7 +2196,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Vercel",
       description: "",
       type: "registry:block",
-      registryDependencies: undefined,
+      registryDependencies: ["alert","badge","button","calendar","card","chart","dialog","dropdown-menu","empty","field","input-group","item","native-select","popover","textarea","example"],
       files: [{
         path: "registry/bases/radix/blocks/vercel.tsx",
         type: "registry:block",
@@ -2215,7 +2215,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "GitHub",
       description: "",
       type: "registry:block",
-      registryDependencies: undefined,
+      registryDependencies: ["avatar","badge","button","card","checkbox","combobox","command","drawer","dropdown-menu","empty","field","input","input-group","item","kbd","native-select","popover","separator","spinner","tabs","textarea","tooltip","example"],
       files: [{
         path: "registry/bases/radix/blocks/github.tsx",
         type: "registry:block",
@@ -2234,7 +2234,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "ChatGPT",
       description: "",
       type: "registry:block",
-      registryDependencies: undefined,
+      registryDependencies: ["alert","alert-dialog","badge","button","card","dropdown-menu","field","input-group","item","kbd","popover","tooltip","example"],
       files: [{
         path: "registry/bases/radix/blocks/chatgpt.tsx",
         type: "registry:block",
@@ -4359,19 +4359,19 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    "cn": {
-      name: "cn",
+    "utils": {
+      name: "utils",
       title: "undefined",
       description: "",
       type: "registry:lib",
       registryDependencies: undefined,
       files: [{
-        path: "registry/bases/base/lib/cn.ts",
+        path: "registry/bases/base/lib/utils.ts",
         type: "registry:lib",
         target: ""
       }],
       component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/base/lib/cn.ts")
+        const mod = await import("@/registry/bases/base/lib/utils.ts")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
@@ -4402,7 +4402,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Cover",
       description: "",
       type: "registry:block",
-      registryDependencies: ["alert-dialog","avatar","badge","button","button-group","card","checkbox","dropdown-menu","empty","field","input","input-group","item","label","popover","radio-group","select","separator","sheet","slider","spinner","switch","textarea","tooltip"],
+      registryDependencies: ["alert-dialog","avatar","badge","button","button-group","card","checkbox","dropdown-menu","empty","field","input","input-group","item","label","popover","radio-group","select","separator","sheet","slider","spinner","switch","textarea","tooltip","example"],
       files: [{
         path: "registry/bases/base/blocks/cover.tsx",
         type: "registry:block",
@@ -4421,7 +4421,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "Vercel",
       description: "",
       type: "registry:block",
-      registryDependencies: ["alert","badge","button","calendar","card","chart","dialog","dropdown-menu","empty","field","input-group","item","native-select","popover","textarea"],
+      registryDependencies: ["alert","badge","button","calendar","card","chart","dialog","dropdown-menu","empty","field","input-group","item","native-select","popover","textarea","example"],
       files: [{
         path: "registry/bases/base/blocks/vercel.tsx",
         type: "registry:block",
@@ -4440,7 +4440,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "GitHub",
       description: "",
       type: "registry:block",
-      registryDependencies: ["avatar","badge","button","card","checkbox","combobox","command","drawer","dropdown-menu","empty","field","input","input-group","item","kbd","native-select","popover","separator","spinner","tabs","textarea","tooltip"],
+      registryDependencies: ["avatar","badge","button","card","checkbox","combobox","command","drawer","dropdown-menu","empty","field","input","input-group","item","kbd","native-select","popover","separator","spinner","tabs","textarea","tooltip","example"],
       files: [{
         path: "registry/bases/base/blocks/github.tsx",
         type: "registry:block",
@@ -4459,7 +4459,7 @@ export const Index: Record<string, Record<string, any>> = {
       title: "ChatGPT",
       description: "",
       type: "registry:block",
-      registryDependencies: ["alert","alert-dialog","badge","button","card","dropdown-menu","field","input-group","item","kbd","popover","tooltip"],
+      registryDependencies: ["alert","alert-dialog","badge","button","card","dropdown-menu","field","input-group","item","kbd","popover","tooltip","example"],
       files: [{
         path: "registry/bases/base/blocks/chatgpt.tsx",
         type: "registry:block",

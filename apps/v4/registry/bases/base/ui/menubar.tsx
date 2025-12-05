@@ -4,7 +4,7 @@ import * as React from "react"
 import { Menu as MenuPrimitive } from "@base-ui-components/react/menu"
 import { Menubar as MenubarPrimitive } from "@base-ui-components/react/menubar"
 
-import { cn } from "@/registry/bases/base/lib/cn"
+import { cn } from "@/registry/bases/base/lib/utils"
 import {
   DropdownMenu,
   DropdownMenuContent,

@@ -7,9 +7,9 @@ import { z } from "zod"
 
 import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
 import { BASES, type Base } from "@/registry/bases"
-import { FONTS, type Font } from "@/registry/fonts"
 import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
+import { FONTS, type Font } from "@/app/(design)/lib/fonts"
 
 // 🚨 Remove before merging to main.
 const SHADCN_VERSION = "file:~/Code/shadcn/ui/packages/shadcn"
@@ -298,6 +298,12 @@ export function buildRegistryBase(config: DesignSystemConfig) {
     ...iconLibraryItem.packages,
   ]
 
+  const registryDependencies = ["utils"]
+
+  if (config.font) {
+    registryDependencies.push(`font-${config.font}`)
+  }
+
   return {
     name: `${config.base}-${config.style}`,
     extends: "none",
@@ -312,7 +318,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       },
     },
     dependencies,
-    registryDependencies: ["cn"],
+    registryDependencies,
     cssVars: registryTheme.cssVars,
     css: {
       '@import "tw-animate-css"': {},

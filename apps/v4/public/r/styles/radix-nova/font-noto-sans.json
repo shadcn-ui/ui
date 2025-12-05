@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-noto-sans",
+  "title": "Noto Sans",
+  "cssVars": {
+    "theme": {
+      "--font-sans": "var(--font-noto-sans)"
+    }
+  },
+  "type": "registry:font",
+  "font": {
+    "family": "Noto Sans",
+    "provider": "google",
+    "import": "Noto Sans",
+    "variable": "--font-noto-sans"
+  }
+}

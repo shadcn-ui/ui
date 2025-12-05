@@ -2,6 +2,21 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "chatgpt",
   "title": "ChatGPT",
+  "registryDependencies": [
+    "alert",
+    "alert-dialog",
+    "badge",
+    "button",
+    "card",
+    "dropdown-menu",
+    "field",
+    "input-group",
+    "item",
+    "kbd",
+    "popover",
+    "tooltip",
+    "example"
+  ],
   "files": [
     {
       "path": "registry/radix-vega/blocks/chatgpt.tsx",

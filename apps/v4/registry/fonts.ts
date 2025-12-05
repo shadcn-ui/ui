@@ -1,84 +1,121 @@
-import {
-  Figtree,
-  Geist,
-  Geist_Mono,
-  Inter,
-  JetBrains_Mono,
-  Noto_Sans,
-  Nunito_Sans,
-} from "next/font/google"
+import { RegistryItem } from "shadcn/schema"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-})
-
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  variable: "--font-noto-sans",
-})
-
-const nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
-  variable: "--font-nunito-sans",
-})
-
-const figtree = Figtree({
-  subsets: ["latin"],
-  variable: "--font-figtree",
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-})
-
-const geistSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-})
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-})
-
-export const FONTS = [
+export const fonts = [
   {
-    name: "Inter",
-    value: "inter",
-    font: inter,
+    name: "font-inter",
+    title: "Inter",
+    type: "registry:font",
+    font: {
+      family: "Inter",
+      provider: "google",
+      variable: "--font-inter",
+      subsets: ["latin"],
+      import: "Inter",
+    },
+    cssVars: {
+      theme: {
+        "--font-sans": "var(--font-inter)",
+      },
+    },
   },
   {
-    name: "Noto Sans",
-    value: "noto-sans",
-    font: notoSans,
+    name: "font-geist-sans",
+    title: "Geist Sans",
+    type: "registry:font",
+    font: {
+      family: "Geist Sans",
+      provider: "google",
+      variable: "--font-geist-sans",
+      subsets: ["latin"],
+      import: "Geist",
+    },
+    cssVars: {
+      theme: {
+        "--font-sans": "var(--font-geist-sans)",
+      },
+    },
   },
   {
-    name: "Nunito Sans",
-    value: "nunito-sans",
-    font: nunitoSans,
+    name: "font-noto-sans",
+    title: "Noto Sans",
+    type: "registry:font",
+    font: {
+      family: "Noto Sans",
+      provider: "google",
+      variable: "--font-noto-sans",
+      import: "Noto Sans",
+    },
+    cssVars: {
+      theme: {
+        "--font-sans": "var(--font-noto-sans)",
+      },
+    },
   },
   {
-    name: "Figtree",
-    value: "figtree",
-    font: figtree,
+    name: "font-nunito-sans",
+    title: "Nunito Sans",
+    type: "registry:font",
+    font: {
+      family: "Nunito Sans",
+      provider: "google",
+      variable: "--font-nunito-sans",
+      import: "Nunito_Sans",
+    },
+    cssVars: {
+      theme: {
+        "--font-sans": "var(--font-nunito-sans)",
+      },
+    },
   },
   {
-    name: "JetBrains Mono",
-    value: "jetbrains-mono",
-    font: jetbrainsMono,
+    name: "font-figtree",
+    title: "Figtree",
+    type: "registry:font",
+    font: {
+      family: "Figtree",
+      provider: "google",
+      variable: "--font-figtree",
+      subsets: ["latin"],
+      import: "Figtree",
+    },
+    cssVars: {
+      theme: {
+        "--font-sans": "var(--font-figtree)",
+      },
+    },
   },
   {
-    name: "Geist Sans",
-    value: "geist-sans",
-    font: geistSans,
+    name: "font-jetbrains-mono",
+    title: "JetBrains Mono",
+    type: "registry:font",
+    font: {
+      family: "JetBrains Mono",
+      provider: "google",
+      variable: "--font-jetbrains-mono",
+      subsets: ["latin"],
+      import: "JetBrains_Mono",
+    },
+    cssVars: {
+      theme: {
+        "--font-sans": "var(--font-jetbrains-mono)",
+      },
+    },
   },
   {
-    name: "Geist Mono",
-    value: "geist-mono",
-    font: geistMono,
+    name: "font-geist-mono",
+    title: "Geist Mono",
+    type: "registry:font",
+    font: {
+      family: "Geist Mono",
+      provider: "google",
+      variable: "--font-geist-mono",
+      subsets: ["latin"],
+      import: "Geist_Mono",
+    },
+    cssVars: {
+      theme: {
+        "--font-sans": "var(--font-geist-mono)",
+      },
+    },
   },
-] as const
-
-export type Font = (typeof FONTS)[number]
+] satisfies RegistryItem[]

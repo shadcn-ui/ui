@@ -1,4 +1,4 @@
-import { cn } from "@/registry/bases/radix/lib/cn"
+import { cn } from "@/registry/bases/radix/lib/utils"
 
 function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
   return (

@@ -77,7 +77,7 @@ export async function transformCssVars(
     tailwindVersion: "v3",
     tailwindConfig: undefined,
     overwriteCssVars: false,
-    initIndex: true,
+    initIndex: false,
   }
 ) {
   options = {
@@ -85,7 +85,7 @@ export async function transformCssVars(
     tailwindVersion: "v3",
     tailwindConfig: undefined,
     overwriteCssVars: false,
-    initIndex: true,
+    initIndex: false,
     ...options,
   }
 

@@ -14,7 +14,8 @@
     "item",
     "kbd",
     "popover",
-    "tooltip"
+    "tooltip",
+    "example"
   ],
   "files": [
     {

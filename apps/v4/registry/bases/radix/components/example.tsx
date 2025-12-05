@@ -1,4 +1,4 @@
-import { cn } from "@/registry/bases/radix/lib/cn"
+import { cn } from "@/registry/bases/radix/lib/utils"
 
 function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
   return (

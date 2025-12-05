@@ -24,7 +24,8 @@
     "spinner",
     "tabs",
     "textarea",
-    "tooltip"
+    "tooltip",
+    "example"
   ],
   "files": [
     {

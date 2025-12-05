@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/registry/bases/base/lib/cn"
+import { cn } from "@/registry/bases/base/lib/utils"
 import { Button } from "@/registry/bases/base/ui/button"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 

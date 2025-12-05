@@ -17,7 +17,8 @@
     "item",
     "native-select",
     "popover",
-    "textarea"
+    "textarea",
+    "example"
   ],
   "files": [
     {

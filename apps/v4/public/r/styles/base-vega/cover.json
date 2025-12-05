@@ -26,7 +26,8 @@
     "spinner",
     "switch",
     "textarea",
-    "tooltip"
+    "tooltip",
+    "example"
   ],
   "files": [
     {

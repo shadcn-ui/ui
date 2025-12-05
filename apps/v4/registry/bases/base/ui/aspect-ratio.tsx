@@ -1,4 +1,4 @@
-import { cn } from "@/registry/bases/base/lib/cn"
+import { cn } from "@/registry/bases/base/lib/utils"
 
 function AspectRatio({
   ratio,

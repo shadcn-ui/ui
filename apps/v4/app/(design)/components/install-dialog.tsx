@@ -30,7 +30,7 @@ export function InstallDialog() {
   const command = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
     const url = `${origin}/init?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&spacing=${params.spacing}&radius=${params.radius}`
-    return `npx shadcn init ${url}`
+    return `pnpm shadcn init ${url} -c ~/Playground`
   }, [
     base,
     params.style,

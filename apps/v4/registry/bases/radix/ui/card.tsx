@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/registry/bases/radix/lib/cn"
+import { cn } from "@/registry/bases/radix/lib/utils"
 
 function Card({
   className,

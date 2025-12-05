@@ -5,7 +5,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 
-import { cn } from "@/registry/bases/radix/lib/cn"
+import { cn } from "@/registry/bases/radix/lib/utils"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 

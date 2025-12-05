@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Dialog as DialogPrimitive } from "@base-ui-components/react/dialog"
 
-import { cn } from "@/registry/bases/base/lib/cn"
+import { cn } from "@/registry/bases/base/lib/utils"
 import { Button } from "@/registry/bases/base/ui/button"
 import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
 

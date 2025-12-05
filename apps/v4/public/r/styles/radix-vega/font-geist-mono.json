@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-geist-mono",
+  "title": "Geist Mono",
+  "cssVars": {
+    "theme": {
+      "--font-sans": "var(--font-geist-mono)"
+    }
+  },
+  "type": "registry:font",
+  "font": {
+    "family": "Geist Mono",
+    "provider": "google",
+    "import": "Geist_Mono",
+    "variable": "--font-geist-mono",
+    "subsets": [
+      "latin"
+    ]
+  }
+}

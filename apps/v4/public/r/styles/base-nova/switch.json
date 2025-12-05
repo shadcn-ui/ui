@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "registry/base-nova/ui/switch.tsx",
-      "content": "\"use client\"\n\nimport { Switch as SwitchPrimitive } from \"@base-ui-components/react/switch\"\n\nimport { cn } from \"@/registry/bases/base/lib/cn\"\n\nfunction Switch({ className, ...props }: SwitchPrimitive.Root.Props) {\n  return (\n    <SwitchPrimitive.Root\n      data-slot=\"switch\"\n      className={cn(\n        \"peer relative inline-flex items-center transition-all outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        data-slot=\"switch-thumb\"\n        className=\"pointer-events-none block ring-0 transition-transform\"\n      />\n    </SwitchPrimitive.Root>\n  )\n}\n\nexport { Switch }\n",
+      "content": "\"use client\"\n\nimport { Switch as SwitchPrimitive } from \"@base-ui-components/react/switch\"\n\nimport { cn } from \"@/registry/bases/base/lib/utils\"\n\nfunction Switch({ className, ...props }: SwitchPrimitive.Root.Props) {\n  return (\n    <SwitchPrimitive.Root\n      data-slot=\"switch\"\n      className={cn(\n        \"peer relative inline-flex items-center transition-all outline-none after:absolute after:-inset-x-3 after:-inset-y-2 data-disabled:cursor-not-allowed data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        data-slot=\"switch-thumb\"\n        className=\"pointer-events-none block ring-0 transition-transform\"\n      />\n    </SwitchPrimitive.Root>\n  )\n}\n\nexport { Switch }\n",
       "type": "registry:ui"
     }
   ],

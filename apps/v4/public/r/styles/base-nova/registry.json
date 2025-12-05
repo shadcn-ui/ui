@@ -1648,14 +1648,14 @@
       "type": "registry:example"
     },
     {
-      "name": "cn",
+      "name": "utils",
       "dependencies": [
         "clsx",
         "tailwind-merge"
       ],
       "files": [
         {
-          "path": "registry/base-nova/lib/cn.ts",
+          "path": "registry/base-nova/lib/utils.ts",
           "type": "registry:lib"
         }
       ],
@@ -1699,7 +1699,8 @@
         "spinner",
         "switch",
         "textarea",
-        "tooltip"
+        "tooltip",
+        "example"
       ],
       "files": [
         {
@@ -1727,7 +1728,8 @@
         "item",
         "native-select",
         "popover",
-        "textarea"
+        "textarea",
+        "example"
       ],
       "files": [
         {
@@ -1762,7 +1764,8 @@
         "spinner",
         "tabs",
         "textarea",
-        "tooltip"
+        "tooltip",
+        "example"
       ],
       "files": [
         {
@@ -1787,7 +1790,8 @@
         "item",
         "kbd",
         "popover",
-        "tooltip"
+        "tooltip",
+        "example"
       ],
       "files": [
         {
@@ -1862,6 +1866,133 @@
         }
       ],
       "type": "registry:internal"
+    },
+    {
+      "name": "font-inter",
+      "title": "Inter",
+      "cssVars": {
+        "theme": {
+          "--font-sans": "var(--font-inter)"
+        }
+      },
+      "type": "registry:font",
+      "font": {
+        "family": "Inter",
+        "provider": "google",
+        "import": "Inter",
+        "variable": "--font-inter",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-geist-sans",
+      "title": "Geist Sans",
+      "cssVars": {
+        "theme": {
+          "--font-sans": "var(--font-geist-sans)"
+        }
+      },
+      "type": "registry:font",
+      "font": {
+        "family": "Geist Sans",
+        "provider": "google",
+        "import": "Geist",
+        "variable": "--font-geist-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-noto-sans",
+      "title": "Noto Sans",
+      "cssVars": {
+        "theme": {
+          "--font-sans": "var(--font-noto-sans)"
+        }
+      },
+      "type": "registry:font",
+      "font": {
+        "family": "Noto Sans",
+        "provider": "google",
+        "import": "Noto Sans",
+        "variable": "--font-noto-sans"
+      }
+    },
+    {
+      "name": "font-nunito-sans",
+      "title": "Nunito Sans",
+      "cssVars": {
+        "theme": {
+          "--font-sans": "var(--font-nunito-sans)"
+        }
+      },
+      "type": "registry:font",
+      "font": {
+        "family": "Nunito Sans",
+        "provider": "google",
+        "import": "Nunito_Sans",
+        "variable": "--font-nunito-sans"
+      }
+    },
+    {
+      "name": "font-figtree",
+      "title": "Figtree",
+      "cssVars": {
+        "theme": {
+          "--font-sans": "var(--font-figtree)"
+        }
+      },
+      "type": "registry:font",
+      "font": {
+        "family": "Figtree",
+        "provider": "google",
+        "import": "Figtree",
+        "variable": "--font-figtree",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-jetbrains-mono",
+      "title": "JetBrains Mono",
+      "cssVars": {
+        "theme": {
+          "--font-sans": "var(--font-jetbrains-mono)"
+        }
+      },
+      "type": "registry:font",
+      "font": {
+        "family": "JetBrains Mono",
+        "provider": "google",
+        "import": "JetBrains_Mono",
+        "variable": "--font-jetbrains-mono",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-geist-mono",
+      "title": "Geist Mono",
+      "cssVars": {
+        "theme": {
+          "--font-sans": "var(--font-geist-mono)"
+        }
+      },
+      "type": "registry:font",
+      "font": {
+        "family": "Geist Mono",
+        "provider": "google",
+        "import": "Geist_Mono",
+        "variable": "--font-geist-mono",
+        "subsets": [
+          "latin"
+        ]
+      }
     }
   ]
 }
