@@ -18,6 +18,7 @@ export type ProjectInfo = {
   tailwindConfigFile: string | null
   tailwindCssFile: string | null
   tailwindVersion: TailwindVersion
+  frameworkVersion: string | null
   aliasPrefix: string | null
 }
 
@@ -75,6 +76,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     tailwindVersion,
+    frameworkVersion: null,
     aliasPrefix,
   }
 
@@ -84,6 +86,10 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
       ? FRAMEWORKS["next-app"]
       : FRAMEWORKS["next-pages"]
     type.isRSC = isUsingAppDir
+    type.frameworkVersion = await getFrameworkVersion(
+      type.framework,
+      packageJson
+    )
     return type
   }
 
@@ -163,6 +169,42 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   }
 
   return type
+}
+
+export async function getFrameworkVersion(
+  framework: Framework,
+  packageJson: ReturnType<typeof getPackageInfo>
+) {
+  if (!packageJson) {
+    return null
+  }
+
+  // Only detect Next.js version for now.
+  if (!["next-app", "next-pages"].includes(framework.name)) {
+    return null
+  }
+
+  const version =
+    packageJson.dependencies?.next || packageJson.devDependencies?.next
+
+  if (!version) {
+    return null
+  }
+
+  // Extract full semver (major.minor.patch), handling ^, ~, etc.
+  const versionMatch = version.match(/^[\^~]?(\d+\.\d+\.\d+)/)
+  if (versionMatch) {
+    return versionMatch[1] // e.g., "16.0.0"
+  }
+
+  // For ranges like ">=15.0.0 <16.0.0", extract the first version.
+  const rangeMatch = version.match(/(\d+\.\d+\.\d+)/)
+  if (rangeMatch) {
+    return rangeMatch[1]
+  }
+
+  // For "latest", "canary", "rc", etc., return the tag as-is.
+  return version
 }
 
 export async function getTailwindVersion(

@@ -1,5 +1,23 @@
 # @shadcn/ui
 
+## 3.5.1
+
+### Patch Changes
+
+- [#8900](https://github.com/shadcn-ui/ui/pull/8900) [`d0fb73ac0e4e7f6d02768586c5232bbc6b33a3c3`](https://github.com/shadcn-ui/ui/commit/d0fb73ac0e4e7f6d02768586c5232bbc6b33a3c3) Thanks [@shadcn](https://github.com/shadcn)! - do not install base style when adding themes
+
+- [#7557](https://github.com/shadcn-ui/ui/pull/7557) [`ad6a3c63678bb31dbfb94536ee1d4aa4f06a8b8d`](https://github.com/shadcn-ui/ui/commit/ad6a3c63678bb31dbfb94536ee1d4aa4f06a8b8d) Thanks [@remorses](https://github.com/remorses)! - Fix utils import transform when workspace alias does not start with @
+
+- [#8901](https://github.com/shadcn-ui/ui/pull/8901) [`62218c1c0c79195bda49a36817a13392cae7b4f2`](https://github.com/shadcn-ui/ui/commit/62218c1c0c79195bda49a36817a13392cae7b4f2) Thanks [@shadcn](https://github.com/shadcn)! - update color value detection for cssVars
+
+## 3.5.0
+
+### Minor Changes
+
+- [#8555](https://github.com/shadcn-ui/ui/pull/8555) [`d7e0dc3ec81676d47351e8f7134639e0dd0c3e3c`](https://github.com/shadcn-ui/ui/commit/d7e0dc3ec81676d47351e8f7134639e0dd0c3e3c) Thanks [@shadcn](https://github.com/shadcn)! - rename middleware to proxy for Next.js 16
+
+- [#8550](https://github.com/shadcn-ui/ui/pull/8550) [`6bddba986d75da35e18343dbb6254fed4537b7d7`](https://github.com/shadcn-ui/ui/commit/6bddba986d75da35e18343dbb6254fed4537b7d7) Thanks [@shadcn](https://github.com/shadcn)! - add Next.js 16 support for init command
+
 ## 3.4.2
 
 ### Patch Changes
