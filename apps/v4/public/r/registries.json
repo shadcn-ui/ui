@@ -1,6 +1,7 @@
 {
   "@8bitcn": "https://8bitcn.com/r/{name}.json",
   "@97cn": "https://97cn.itzik.co/r/{name}.json",
+  "@abui": "https://abui.io/r/{name}.json",
   "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
   "@aevr": "https://ui.aevr.space/r/{name}.json",
   "@ai-elements": "https://registry.ai-sdk.dev/{name}.json",
@@ -68,6 +69,7 @@
   "@shadcn-studio": "https://shadcnstudio.com/r/{name}.json",
   "@shadcnblocks": "https://shadcnblocks.com/r/{name}.json",
   "@shadcnui-blocks": "https://shadcnui-blocks.com/r/{name}.json",
+  "@shadcraft": "https://shadcraft-free.vercel.app/r/{name}.json",
   "@simple-ai": "https://simple-ai.dev/r/{name}.json",
   "@skiper-ui": "https://skiper-ui.com/registry/{name}.json",
   "@skyr": "https://ui-play.skyroc.me/r/{name}.json",
@@ -94,5 +96,7 @@
   "@uicapsule": "https://uicapsule.com/r/{name}.json",
   "@uitripled": "https://ui.tripled.work/r/{name}.json",
   "@ui-layouts": "https://ui-layouts.com/r/{name}.json",
-  "@tour": "https://onboarding-tour.vercel.app/r/{name}.json"
+  "@tour": "https://onboarding-tour.vercel.app/r/{name}.json",
+  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json",
+  "@ui-layouts": "https://ui-layouts.com/r/{name}.json"
 }
