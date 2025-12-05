@@ -40,6 +40,17 @@ export default function ComboboxDropdownMenu() {
   const [label, setLabel] = React.useState("feature")
   const [open, setOpen] = React.useState(false)
 
+  //  Autofocus fix (added)
+  const inputRef = React.useRef<HTMLInputElement>(null)
+
+  React.useEffect(() => {
+    if (open && inputRef.current) {
+      setTimeout(() => {
+        inputRef.current?.focus()
+      }, 10)
+    }
+  }, [open])
+
   return (
     <div className="flex w-full flex-col items-start justify-between rounded-md border px-4 py-3 sm:flex-row sm:items-center">
       <p className="text-sm font-medium leading-none">
@@ -74,9 +85,9 @@ export default function ComboboxDropdownMenu() {
               <DropdownMenuSubContent className="p-0">
                 <Command>
                   <CommandInput
-                    placeholder="Filter label..."
-                    autoFocus={true}
-                  />
+                      ref={inputRef}
+                      placeholder="Filter label..."
+                    />
                   <CommandList>
                     <CommandEmpty>No label found.</CommandEmpty>
                     <CommandGroup>
