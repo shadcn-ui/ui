@@ -89,6 +89,30 @@ The `Calendar` component is built on top of [React DayPicker](https://react-day-
 
 See the [React DayPicker](https://react-day-picker.js.org/docs/customization) documentation for more information on how to customize the `Calendar` component.
 
+## Animations
+
+The `Calendar` component supports smooth animations when navigating between months using the `animate` prop from React DayPicker.
+
+```tsx showLineNumbers
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  animate
+/>
+```
+
+You can customize the animation duration and timing function using CSS variables:
+
+```css
+.my-calendar {
+  --rdp-animation_duration: 0.5s;
+  --rdp-animation_timing: ease-in-out;
+}
+```
+
+**Accessibility:** The animations automatically respect the user's `prefers-reduced-motion` setting.
+
 ## Date Picker
 
 You can use the `<Calendar>` component to build a date picker. See the [Date Picker](/docs/components/date-picker) page for more information.
