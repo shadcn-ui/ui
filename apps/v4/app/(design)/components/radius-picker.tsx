@@ -9,14 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { RADII, type RadiusValue } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
-
-const RADIUS_OPTIONS = [
-  { value: "none" as const, label: "None" },
-  { value: "small" as const, label: "Small" },
-  { value: "default" as const, label: "Default" },
-  { value: "large" as const, label: "Large" },
-] as const
 
 export function RadiusPicker() {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
@@ -24,15 +18,13 @@ export function RadiusPicker() {
     history: "push",
   })
 
-  const currentRadius = RADIUS_OPTIONS.find(
-    (radius) => radius.value === params.radius
-  )
+  const currentRadius = RADII.find((radius) => radius.value === params.radius)
 
   return (
     <Select
       value={currentRadius?.value}
       onValueChange={(value) => {
-        setParams({ radius: value as "none" | "small" | "default" | "large" })
+        setParams({ radius: value as RadiusValue })
       }}
     >
       <SelectTrigger className="relative">
@@ -69,7 +61,7 @@ export function RadiusPicker() {
         align="start"
         className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
-        {RADIUS_OPTIONS.map((radius) => (
+        {RADII.map((radius) => (
           <SelectItem
             key={radius.value}
             value={radius.value}

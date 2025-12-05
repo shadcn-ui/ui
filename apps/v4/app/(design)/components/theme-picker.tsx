@@ -5,7 +5,6 @@ import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
 import { useMounted } from "@/hooks/use-mounted"
-import { BASE_COLORS } from "@/registry/base-colors"
 import {
   Select,
   SelectContent,
@@ -13,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { Theme } from "@/registry/themes"
+import { BASE_COLORS, type Theme, type ThemeName } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
@@ -44,7 +43,7 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
     <Select
       value={currentTheme?.name}
       onValueChange={(value) => {
-        setParams({ theme: value as Theme["name"] })
+        setParams({ theme: value as ThemeName })
       }}
     >
       <SelectTrigger className="relative">

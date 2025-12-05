@@ -5,7 +5,6 @@ import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
 import { useMounted } from "@/hooks/use-mounted"
-import { BASE_COLORS, type BaseColor } from "@/registry/base-colors"
 import {
   Select,
   SelectContent,
@@ -13,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { BASE_COLORS, type BaseColorName } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function BaseColorPicker({}) {
@@ -32,7 +32,7 @@ export function BaseColorPicker({}) {
     <Select
       value={currentBaseColor?.name}
       onValueChange={(value) => {
-        setParams({ baseColor: value as BaseColor["name"] })
+        setParams({ baseColor: value as BaseColorName })
       }}
     >
       <SelectTrigger className="relative">

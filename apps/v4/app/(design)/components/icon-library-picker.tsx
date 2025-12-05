@@ -3,7 +3,11 @@
 import * as React from "react"
 import { lazy, memo, Suspense } from "react"
 import { useQueryStates } from "nuqs"
-import { iconLibraries, IconLibraryName, type IconLibrary } from "shadcn/icons"
+import {
+  iconLibraries,
+  type IconLibrary,
+  type IconLibraryName,
+} from "@/app/(design)/lib/config"
 
 import { Item, ItemContent, ItemTitle } from "@/registry/bases/radix/ui/item"
 import {

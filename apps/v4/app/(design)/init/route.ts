@@ -1,11 +1,21 @@
 import { NextRequest, NextResponse } from "next/server"
-import { iconLibraries } from "shadcn/icons"
 import { RegistryBaseItem, registryItemSchema } from "shadcn/schema"
 
-import { BASE_COLORS } from "@/registry/base-colors"
-import { BASES } from "@/registry/bases"
-import { getThemesForBaseColor } from "@/app/(design)/lib/api"
-import { buildTheme } from "@/app/(design)/lib/merge-theme"
+import {
+  ACCENTS,
+  BASE_COLORS,
+  BASES,
+  buildRegistryTheme,
+  DEFAULT_CONFIG,
+  getThemesForBaseColor,
+  iconLibraries,
+  RADII,
+  SPACINGS,
+  type AccentValue,
+  type DesignSystemConfig,
+  type RadiusValue,
+  type SpacingValue,
+} from "@/app/(design)/lib/config"
 
 export async function GET(request: NextRequest) {
   try {
@@ -17,6 +27,9 @@ export async function GET(request: NextRequest) {
     const theme = searchParams.get("theme")
     const font = searchParams.get("font") ?? "inter"
     const baseColor = searchParams.get("baseColor") ?? "neutral"
+    const accent = (searchParams.get("accent") ?? "subtle") as AccentValue
+    const spacing = (searchParams.get("spacing") ?? "default") as SpacingValue
+    const radius = (searchParams.get("radius") ?? "default") as RadiusValue
 
     // Validate the base.
     const baseItem = BASES.find((b) => b.name === base)
@@ -59,7 +72,36 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const mergedTheme = buildTheme(baseColorItem.name, themeItem.name)
+    // Validate accent, spacing, and radius.
+    if (!ACCENTS.some((a) => a.value === accent)) {
+      return NextResponse.json(
+        { error: `Invalid accent value "${accent}"` },
+        { status: 400 }
+      )
+    }
+    if (!SPACINGS.some((s) => s.value === spacing)) {
+      return NextResponse.json(
+        { error: `Invalid spacing value "${spacing}"` },
+        { status: 400 }
+      )
+    }
+    if (!RADII.some((r) => r.value === radius)) {
+      return NextResponse.json(
+        { error: `Invalid radius value "${radius}"` },
+        { status: 400 }
+      )
+    }
+
+    // Build the registry theme with all transformations applied.
+    const config: DesignSystemConfig = {
+      ...DEFAULT_CONFIG,
+      baseColor: baseColorItem.name,
+      theme: themeItem.name,
+      accent,
+      spacing,
+      radius,
+    }
+    const registryTheme = buildRegistryTheme(config)
 
     // Build the dependencies.
     const dependencies = [
@@ -89,7 +131,7 @@ export async function GET(request: NextRequest) {
       font,
       dependencies,
       registryDependencies,
-      cssVars: mergedTheme.cssVars,
+      cssVars: registryTheme.cssVars,
       css: {
         '@import "tw-animate-css"': {},
         "@layer base": {

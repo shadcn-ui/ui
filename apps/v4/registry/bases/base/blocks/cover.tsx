@@ -28,6 +28,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/bases/base/ui/card"
@@ -140,7 +141,7 @@ export default function CoverExample() {
         <InputGroupButtonExample />
         <ButtonGroupInputGroup />
         <ItemExample />
-        <FieldHear />
+        <ObservabilityCard />
         <AppearanceSettings />
         <ButtonGroupExample />
         <FieldCheckbox />
@@ -874,61 +875,38 @@ function FieldExample() {
   )
 }
 
-function FieldHear() {
+function ObservabilityCard() {
   return (
-    <Card className="py-4 shadow-none">
-      <CardContent className="px-4">
-        <form>
-          <FieldGroup>
-            <FieldSet className="gap-4">
-              <FieldLegend>How did you hear about us?</FieldLegend>
-              <FieldDescription className="line-clamp-1">
-                Select the option that best describes how you heard about us.
-              </FieldDescription>
-              <FieldGroup className="flex flex-row flex-wrap gap-2">
-                {[
-                  {
-                    label: "Social Media",
-                    value: "social-media",
-                  },
-
-                  {
-                    label: "Search Engine",
-                    value: "search-engine",
-                  },
-                  {
-                    label: "Referral",
-                    value: "referral",
-                  },
-                  {
-                    label: "Other",
-                    value: "other",
-                  },
-                ].map((option) => (
-                  <FieldLabel
-                    htmlFor={option.value}
-                    key={option.value}
-                    className="!w-fit"
-                  >
-                    <Field
-                      orientation="horizontal"
-                      className="gap-1.5 overflow-hidden !px-3 !py-1.5 transition-all duration-100 ease-linear group-has-data-[state=checked]/field-label:!px-2"
-                    >
-                      <Checkbox
-                        value={option.value}
-                        id={option.value}
-                        defaultChecked={option.value === "social-media"}
-                        className="-ml-6 -translate-x-1 rounded-full transition-all duration-100 ease-linear data-[state=checked]:ml-0 data-[state=checked]:translate-x-0"
-                      />
-                      <FieldTitle>{option.label}</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                ))}
-              </FieldGroup>
-            </FieldSet>
-          </FieldGroup>
-        </form>
-      </CardContent>
+    <Card className="w-full max-w-sm overflow-hidden pt-0">
+      <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
+      <img
+        src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Photo by mymind on Unsplash"
+        title="Photo by mymind on Unsplash"
+        className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale"
+      />
+      <CardHeader>
+        <CardTitle>Observability Plus is replacing Monitoring</CardTitle>
+        <CardDescription>
+          Switch to the improved way to explore your data, with natural
+          language. Monitoring will no longer be available on the Pro plan in
+          November, 2025
+        </CardDescription>
+      </CardHeader>
+      <CardFooter>
+        <Button>
+          Create Query{" "}
+          <IconPlaceholder
+            lucide="PlusIcon"
+            tabler="IconPlus"
+            hugeicons="PlusSignIcon"
+            data-icon="inline-end"
+          />
+        </Button>
+        <Badge variant="secondary" className="ml-auto">
+          Warning
+        </Badge>
+      </CardFooter>
     </Card>
   )
 }

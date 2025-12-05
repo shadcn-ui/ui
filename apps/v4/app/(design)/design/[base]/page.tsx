@@ -1,15 +1,27 @@
 import { Metadata } from "next"
+import Link from "next/link"
 import { notFound } from "next/navigation"
+import { ArrowLeft02Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
-import { BASES } from "@/registry/bases"
+import { GitHubLink } from "@/components/github-link"
+import { Icons } from "@/components/icons"
+import { MainNav } from "@/components/main-nav"
+import { ModeSwitcher } from "@/components/mode-switcher"
+import { SiteConfig } from "@/components/site-config"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
 import { Customizer } from "@/app/(design)/components/customizer"
+import { InstallDialog } from "@/app/(design)/components/install-dialog"
 import { ItemExplorer } from "@/app/(design)/components/item-explorer"
+import { ItemPicker } from "@/app/(design)/components/item-picker"
 import { Preview } from "@/app/(design)/components/preview"
 import { getItemsForBase } from "@/app/(design)/lib/api"
+import { BASES } from "@/app/(design)/lib/config"
 import { designSystemSearchParamsCache } from "@/app/(design)/lib/search-params"
 
 export const revalidate = false
@@ -92,15 +104,54 @@ export default async function NewPage({
     }))
 
   return (
-    <SidebarProvider className="h-auto min-h-min flex-1 items-start overflow-hidden px-0">
-      <div
-        data-slot="designer"
-        className="3xl:fixed:container section-soft flex flex-1 gap-4 p-6 pt-2 [--sidebar-width:--spacing(40)] 2xl:gap-6"
-      >
-        <ItemExplorer items={filteredItems} />
-        <Preview base={base.name} />
-        <Customizer items={filteredItems} />
-      </div>
-    </SidebarProvider>
+    <div
+      data-slot="layout"
+      className="bg-background relative z-10 flex min-h-svh flex-col"
+    >
+      <header className="bg-background sticky top-0 z-50 w-full">
+        <div className="container-wrapper 3xl:fixed:px-0 px-6">
+          <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
+            <div className="flex w-72 items-center gap-2">
+              <Button
+                asChild
+                variant="ghost"
+                size="icon"
+                className="hidden size-8 lg:flex"
+              >
+                <Link href="/">
+                  <Icons.logo className="size-5" />
+                  <span className="sr-only">{siteConfig.name}</span>
+                </Link>
+              </Button>
+              <div className="text-foreground text-sm font-medium">
+                Design your own shadcn/ui.
+              </div>
+            </div>
+            <div className="flex flex-1 justify-center">
+              <ItemPicker items={filteredItems} />
+            </div>
+            <div className="flex w-72 items-center gap-2 md:justify-end">
+              <GitHubLink />
+              <Separator orientation="vertical" className="3xl:flex hidden" />
+              <SiteConfig className="3xl:flex hidden" />
+              <Separator orientation="vertical" />
+              <ModeSwitcher />
+            </div>
+          </div>
+        </div>
+      </header>
+      <main className="flex flex-1 flex-col">
+        <SidebarProvider className="h-auto min-h-min flex-1 items-start overflow-hidden px-0">
+          <div
+            data-slot="designer"
+            className="3xl:fixed:container section-soft flex flex-1 gap-4 p-6 pt-2 [--sidebar-width:--spacing(40)] 2xl:gap-6"
+          >
+            <ItemExplorer items={filteredItems} />
+            <Preview base={base.name} />
+            <Customizer items={filteredItems} />
+          </div>
+        </SidebarProvider>
+      </main>
+    </div>
   )
 }

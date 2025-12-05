@@ -187,7 +187,7 @@ function CodespacesCard() {
                     <DropdownMenuContent
                       align="end"
                       onCloseAutoFocus={(e) => e.preventDefault()}
-                      className="w-64"
+                      className="w-56"
                     >
                       <DropdownMenuItem>
                         <IconPlaceholder
@@ -517,7 +517,7 @@ function RepositoryToolbar() {
           <PopoverContent
             side="bottom"
             align="end"
-            className="w-96"
+            className="w-80"
             onCloseAutoFocus={(e) => e.preventDefault()}
           >
             <Field>

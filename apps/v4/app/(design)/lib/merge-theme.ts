@@ -1,7 +1,6 @@
 import { RegistryItem, registryItemSchema } from "shadcn/schema"
 
-import { BASE_COLORS } from "@/registry/base-colors"
-import { THEMES } from "@/registry/themes"
+import { BASE_COLORS, THEMES } from "@/app/(design)/lib/config"
 
 export function buildTheme(baseColorName: string, themeName: string) {
   const baseColor = BASE_COLORS.find((c) => c.name === baseColorName)

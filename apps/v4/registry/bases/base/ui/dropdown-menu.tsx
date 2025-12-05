@@ -130,13 +130,21 @@ function DropdownMenuSubTrigger({
 }
 
 function DropdownMenuSubContent({
+  align = "start",
+  alignOffset = -3,
+  side = "right",
+  sideOffset = 0,
+  className,
   ...props
 }: React.ComponentProps<typeof DropdownMenuContent>) {
   return (
     <DropdownMenuContent
       data-slot="dropdown-menu-sub-content"
-      className="cn-dropdown-menu-subcontent"
-      side="right"
+      className={cn("cn-dropdown-menu-sub-content w-auto", className)}
+      align={align}
+      alignOffset={alignOffset}
+      side={side}
+      sideOffset={sideOffset}
       {...props}
     />
   )

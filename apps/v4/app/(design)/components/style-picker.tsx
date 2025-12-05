@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { Style } from "@/registry/styles"
+import { type Style, type StyleName } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function StylePicker({ styles }: { styles: readonly Style[] }) {
@@ -24,7 +24,7 @@ export function StylePicker({ styles }: { styles: readonly Style[] }) {
     <Select
       value={currentStyle?.name}
       onValueChange={(value) => {
-        setParams({ style: value as Style["name"] })
+        setParams({ style: value as StyleName })
       }}
     >
       <SelectTrigger>

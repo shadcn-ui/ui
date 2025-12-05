@@ -9,7 +9,6 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
-import { type Font } from "@/registry/fonts"
 import {
   Select,
   SelectContent,
@@ -18,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { type Font, type FontValue } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
@@ -35,7 +35,7 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
     <Select
       value={currentFont?.value}
       onValueChange={(value) => {
-        setParams({ font: value as Font["value"] })
+        setParams({ font: value as FontValue })
       }}
     >
       <SelectTrigger className="relative">

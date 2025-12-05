@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { type MenuValue } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 const MENU_OPTIONS = [
@@ -112,7 +113,7 @@ export function MenuPicker() {
     <Select
       value={currentMenu?.value}
       onValueChange={(value) => {
-        setParams({ menu: value as "default" | "inverted" })
+        setParams({ menu: value as MenuValue })
       }}
     >
       <SelectTrigger className="relative" disabled={resolvedTheme === "dark"}>

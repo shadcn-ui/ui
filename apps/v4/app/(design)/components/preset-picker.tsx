@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { type Preset } from "@/registry/presets"
+import { type Preset } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function PresetPicker({ presets }: { presets: readonly Preset[] }) {

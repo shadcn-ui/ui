@@ -2,11 +2,10 @@ import "server-only"
 
 import { registryItemSchema } from "shadcn/schema"
 
-import { Base } from "@/registry/bases"
+import { type BaseName, getThemesForBaseColor } from "@/app/(design)/lib/config"
 import { ALLOWED_ITEM_TYPES } from "@/app/(design)/lib/constants"
-import { getThemesForBaseColor } from "@/app/(design)/lib/utils"
 
-export async function getItemsForBase(base: Base["name"]) {
+export async function getItemsForBase(base: BaseName) {
   const { Index } = await import("@/registry/bases/__index__")
   const index = Index[base]
 
@@ -19,7 +18,7 @@ export async function getItemsForBase(base: Base["name"]) {
   )
 }
 
-export async function getBaseItem(name: string, base: Base["name"]) {
+export async function getBaseItem(name: string, base: BaseName) {
   const { Index } = await import("@/registry/bases/__index__")
   const index = Index[base]
 
@@ -30,7 +29,7 @@ export async function getBaseItem(name: string, base: Base["name"]) {
   return registryItemSchema.parse(index[name])
 }
 
-export async function getBaseComponent(name: string, base: Base["name"]) {
+export async function getBaseComponent(name: string, base: BaseName) {
   const { Index } = await import("@/registry/bases/__index__")
   const index = Index[base]
 

@@ -162,7 +162,7 @@ function ButtonGroupWithDropdown() {
                 hugeicons="ArrowDown01Icon"
               />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="w-50">
               <DropdownMenuGroup>
                 <DropdownMenuItem>
                   <IconPlaceholder

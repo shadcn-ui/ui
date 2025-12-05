@@ -2,9 +2,13 @@
 
 import * as React from "react"
 
-import { FONTS } from "@/registry/fonts"
 import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system"
-import { buildTheme } from "@/app/(design)/lib/merge-theme"
+import {
+  buildRegistryTheme,
+  DEFAULT_CONFIG,
+  FONTS,
+  type DesignSystemConfig,
+} from "@/app/(design)/lib/config"
 
 export function DesignSystemProvider({
   children,
@@ -62,15 +66,25 @@ export function DesignSystemProvider({
     }
   }, [style, theme, font, baseColor])
 
-  const mergedTheme = React.useMemo(() => {
-    if (!baseColor || !theme) {
+  const registryTheme = React.useMemo(() => {
+    if (!baseColor || !theme || !accent || !spacing || !radius) {
       return null
     }
-    return buildTheme(baseColor, theme)
-  }, [baseColor, theme])
+
+    const config: DesignSystemConfig = {
+      ...DEFAULT_CONFIG,
+      baseColor,
+      theme,
+      accent,
+      spacing,
+      radius,
+    }
+
+    return buildRegistryTheme(config)
+  }, [baseColor, theme, accent, spacing, radius])
 
   React.useEffect(() => {
-    if (!mergedTheme || !mergedTheme.cssVars) {
+    if (!registryTheme || !registryTheme.cssVars) {
       return
     }
 
@@ -85,18 +99,22 @@ export function DesignSystemProvider({
       document.head.appendChild(styleElement)
     }
 
-    const lightVars = { ...mergedTheme.cssVars.light }
-    const darkVars = { ...mergedTheme.cssVars.dark }
-
-    // If accent is bold, use primary/primary-foreground for accent/accent-foreground.
-    if (accent === "bold") {
-      lightVars.accent = lightVars.primary
-      lightVars["accent-foreground"] = lightVars["primary-foreground"]
-      darkVars.accent = darkVars.primary
-      darkVars["accent-foreground"] = darkVars["primary-foreground"]
-    }
+    const {
+      light: lightVars,
+      dark: darkVars,
+      theme: themeVars,
+    } = registryTheme.cssVars
 
     let cssText = ":root {\n"
+    // Add theme vars (shared across light/dark).
+    if (themeVars) {
+      Object.entries(themeVars).forEach(([key, value]) => {
+        if (value) {
+          cssText += `  --${key}: ${value};\n`
+        }
+      })
+    }
+    // Add light mode vars.
     if (lightVars) {
       Object.entries(lightVars).forEach(([key, value]) => {
         if (value) {
@@ -104,32 +122,6 @@ export function DesignSystemProvider({
         }
       })
     }
-    // If spacing is compact, add spacing CSS variable.
-    if (spacing === "compact") {
-      cssText += "  --spacing: 0.20835rem;\n"
-      cssText += "  --text-xs: 11px;\n"
-      cssText += "  --text-sm: 13px;\n"
-      cssText += "  --text-base: 15px;\n"
-      cssText += "  --text-lg: 17px;\n"
-      cssText += "  --text-xl: 19px;\n"
-      cssText += "  --text-xs--line-height: calc(1 / var(--text-xs));\n"
-      cssText += "  --text-sm--line-height: calc(1.25 / var(--text-sm));\n"
-      cssText += "  --text-base--line-height: calc(1.5 / var(--text-base));\n"
-      cssText += "  --text-lg--line-height: calc(1.75 / var(--text-lg));\n"
-      cssText += "  --text-xl--line-height: calc(1.75 / var(--text-xl));\n"
-    }
-
-    // Add radius CSS variable based on radius value.
-    if (radius === "none") {
-      cssText += "  --radius: 0;\n"
-    } else if (radius === "small") {
-      cssText += "  --radius: 0.45rem;\n"
-    } else if (radius === "default") {
-      cssText += "  --radius: 0.625rem;\n"
-    } else if (radius === "large") {
-      cssText += "  --radius: 0.875rem;\n"
-    }
-
     cssText += "}\n\n"
 
     cssText += ".dark {\n"
@@ -150,7 +142,7 @@ export function DesignSystemProvider({
         element.remove()
       }
     }
-  }, [mergedTheme, accent, spacing, radius])
+  }, [registryTheme])
 
   // Handle menu inversion by adding/removing dark class to Radix menu content and select content.
   React.useEffect(() => {

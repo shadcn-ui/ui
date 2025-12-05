@@ -11,12 +11,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { SPACINGS, type SpacingValue } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
-
-const SPACING_OPTIONS = [
-  { value: "default" as const, label: "Default" },
-  { value: "compact" as const, label: "Compact" },
-] as const
 
 export function SpacingPicker() {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
@@ -24,7 +20,7 @@ export function SpacingPicker() {
     history: "push",
   })
 
-  const currentSpacing = SPACING_OPTIONS.find(
+  const currentSpacing = SPACINGS.find(
     (spacing) => spacing.value === params.spacing
   )
 
@@ -32,7 +28,7 @@ export function SpacingPicker() {
     <Select
       value={currentSpacing?.value}
       onValueChange={(value) => {
-        setParams({ spacing: value as "default" | "compact" })
+        setParams({ spacing: value as SpacingValue })
       }}
     >
       <SelectTrigger className="relative">
@@ -57,7 +53,7 @@ export function SpacingPicker() {
         align="start"
         className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
-        {SPACING_OPTIONS.map((spacing) => (
+        {SPACINGS.map((spacing) => (
           <SelectItem
             key={spacing.value}
             value={spacing.value}

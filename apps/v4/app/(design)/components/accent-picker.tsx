@@ -9,12 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import { ACCENTS, type AccentValue } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
-
-const ACCENT_OPTIONS = [
-  { value: "subtle" as const, label: "Subtle" },
-  { value: "bold" as const, label: "Bold" },
-] as const
 
 export function AccentPicker() {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
@@ -22,7 +18,7 @@ export function AccentPicker() {
     history: "push",
   })
 
-  const currentAccent = ACCENT_OPTIONS.find(
+  const currentAccent = ACCENTS.find(
     (accent) => accent.value === params.accent
   )
 
@@ -30,7 +26,7 @@ export function AccentPicker() {
     <Select
       value={currentAccent?.value}
       onValueChange={(value) => {
-        setParams({ accent: value as "subtle" | "bold" })
+        setParams({ accent: value as AccentValue })
       }}
     >
       <SelectTrigger className="relative">
@@ -78,7 +74,7 @@ export function AccentPicker() {
         align="start"
         className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
-        {ACCENT_OPTIONS.map((accent) => (
+        {ACCENTS.map((accent) => (
           <SelectItem
             key={accent.value}
             value={accent.value}

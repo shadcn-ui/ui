@@ -3,9 +3,9 @@
 import * as React from "react"
 import { ImperativePanelHandle } from "react-resizable-panels"
 
-import type { Base } from "@/registry/bases"
 import { CMD_K_FORWARD_TYPE } from "@/app/(design)/components/item-picker"
 import { useDesignSystemSync } from "@/app/(design)/hooks/use-design-system"
+import type { Base } from "@/app/(design)/lib/config"
 
 const MESSAGE_TYPE = "design-system-params"
 

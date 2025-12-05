@@ -284,7 +284,7 @@ function ModelSelector() {
             className="text-muted-foreground size-4"
           />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-96" align="start">
+        <DropdownMenuContent className="w-60" align="start">
           <DropdownMenuGroup>
             <DropdownMenuLabel className="text-muted-foreground text-xs font-normal">
               GPT-5.1
@@ -422,7 +422,11 @@ function CreateProjectDialog() {
   )
 
   return (
-    <Example title="Create Project" className="justify-center lg:p-16">
+    <Example
+      title="Create Project"
+      className="justify-center"
+      containerClassName="aspect-square"
+    >
       <Card>
         <CardHeader>
           <CardTitle>Create Project</CardTitle>

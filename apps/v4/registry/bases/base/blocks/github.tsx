@@ -189,7 +189,7 @@ function CodespacesCard() {
                         Codespace repository configuration
                       </TooltipContent>
                     </Tooltip>
-                    <DropdownMenuContent align="end" className="w-64">
+                    <DropdownMenuContent align="end" className="w-56">
                       <DropdownMenuGroup>
                         <DropdownMenuItem>
                           <IconPlaceholder
