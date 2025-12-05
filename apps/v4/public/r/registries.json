@@ -19,6 +19,7 @@
   "@billingsdk": "https://billingsdk.com/r/{name}.json",
   "@blocks": "https://blocks.so/r/{name}.json",
   "@bucharitesh": "https://bucharitesh.in/r/{name}.json",
+  "@cardcn": "https://cardcn.dev/r/{name}.json",
   "@clerk": "https://clerk.com/r/{name}.json",
   "@coss": "https://coss.com/ui/r/{name}.json",
   "@commercn": "https://commercn.com/r/{name}.json",
