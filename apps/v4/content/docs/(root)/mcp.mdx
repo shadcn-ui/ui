@@ -28,6 +28,7 @@ Select your MCP client and follow the instructions to configure the shadcn MCP s
     <TabsTrigger value="claude">Claude Code</TabsTrigger>
     <TabsTrigger value="cursor">Cursor</TabsTrigger>
     <TabsTrigger value="vscode">VS Code</TabsTrigger>
+    <TabsTrigger value="kiro">Kiro</TabsTrigger>
     <TabsTrigger value="codex">Codex</TabsTrigger>
   </TabsList>
   <TabsContent value="claude" className="mt-4">
@@ -68,6 +69,21 @@ Select your MCP client and follow the instructions to configure the shadcn MCP s
        - Show me all available components in the shadcn registry
        - Add the button, dialog and card components to my project
        - Create a contact form using components from the shadcn registry
+
+  </TabsContent>
+
+  <TabsContent value="kiro" className="mt-4">
+    **Run the following command** in your project:
+       ```bash
+       npx shadcn@latest mcp init --client kiro
+       ```
+
+    **Restart Kiro IDE** and try the following prompts:
+       - Show me all available components in the shadcn registry
+       - Add the button, dialog and card components to my project
+       - Create a contact form using components from the shadcn registry
+
+    **Note:** You can check the MCP Server view in the Kiro feature panel to verify the connection.
 
   </TabsContent>
 
@@ -194,6 +210,29 @@ To configure MCP in VS Code with GitHub Copilot, add the shadcn server to your p
 After adding the configuration, open `.vscode/mcp.json` and click **Start** next to the shadcn server.
 
 See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for more details.
+
+### Kiro
+
+To configure MCP in Kiro IDE, add the shadcn server to your project's `.kiro/settings/mcp.json` configuration file:
+
+```json title=".kiro/settings/mcp.json" showLineNumbers
+{
+  "mcpServers": {
+    "shadcn": {
+      "disabled": false,
+      "type": "stdio",
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
+    }
+  }
+}
+```
+
+After adding the configuration, restart Kiro IDE to load the MCP server.
+
+Once loaded, you should see the shadcn server in the MCP Server view in the Kiro feature panel with a list of available tools.
+
+See the [Kiro MCP documentation](https://kiro.dev/docs/cli/mcp/) for more details.
 
 ### Codex
 
