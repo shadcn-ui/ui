@@ -695,4 +695,25 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "wireframe",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/wireframe.tsx",
+        type: "registry:ui",
+      },
+    ],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            screens: {
+              "wf-nav": "40rem",
+            },
+          },
+        },
+      },
+    },
+  },
 ]
