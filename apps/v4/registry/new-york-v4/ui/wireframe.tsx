@@ -3,36 +3,45 @@ import type { ClassValue } from "clsx"
 import { cn } from "@/lib/utils"
 
 const defaultConfig: ClassValue[] = [
+  // NO BOTTOM NAV, ADD BOTTOM SAFE AREA INSET
+  "not-has-data-wf-bottom-nav:mb-[env(safe-area-inset-bottom)]",
+  // NO BOTTOM NAV, ADD BOTTOM SAFE AREA INSET
+  "not-has-data-wf-top-nav:mt-[env(safe-area-inset-top)]",
+  // NO RIGHT SIDEBAR, ADD RIGHT SAFE AREA INSET
+  "not-has-data-wf-right-sidebar:mr-[env(safe-area-inset-right)]",
+  // NO LEFT SIDEBAR, ADD LEFT SAFE AREA INSET
+  "not-has-data-wf-left-sidebar:ml-[env(safe-area-inset-left)]",
+
   // HAS TOP NAV, ADD TOP MARGIN WIREFRAME ROOT
-  "has-data-wf-top-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset))]",
+  "has-data-wf-top-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset)+env(safe-area-inset-top))]",
 
   // HAS BOTTOM NAV, ADD BOTTOM MARGIN WIREFRAME CONTENT
-  "has-data-wf-bottom-nav:mb-[calc(var(--bottom-nav-height)+var(--bottom-nav-bottom-offset)+var(--bottom-nav-top-offset))]",
+  "has-data-wf-bottom-nav:mb-[calc(var(--bottom-nav-height)+var(--bottom-nav-bottom-offset)+var(--bottom-nav-top-offset)+env(safe-area-inset-bottom))]",
 
   // HAS LEFT SIDEBAR=EXPANDED, ADD LEFT MARGIN WIREFRAME CONTENT
-  "has-data-[wf-left-sidebar=expanded]:ml-[calc(var(--left-sidebar-width-expanded)+var(--left-sidebar-left-offset)+var(--left-sidebar-right-offset))]",
+  "has-data-[wf-left-sidebar=expanded]:ml-[calc(var(--left-sidebar-width-expanded)+var(--left-sidebar-left-offset)+var(--left-sidebar-right-offset)+env(safe-area-inset-left))]",
   // HAS RIGHT SIDEBAR=EXPANDED, ADD RIGHT MARGIN WIREFRAME CONTENT
-  "has-data-[wf-right-sidebar=expanded]:mr-[calc(var(--right-sidebar-width-expanded)+var(--right-sidebar-right-offset)+var(--right-sidebar-left-offset))]",
+  "has-data-[wf-right-sidebar=expanded]:mr-[calc(var(--right-sidebar-width-expanded)+var(--right-sidebar-right-offset)+var(--right-sidebar-left-offset)+env(safe-area-inset-right))]",
   // HAS LEFT SIDEBAR=COLLAPSED, ADD LEFT MARGIN WIREFRAME CONTENT
-  "has-data-[wf-left-sidebar=collapsed]:ml-[calc(var(--left-sidebar-width-collapsed)+var(--left-sidebar-left-offset)+var(--left-sidebar-right-offset))]",
+  "has-data-[wf-left-sidebar=collapsed]:ml-[calc(var(--left-sidebar-width-collapsed)+var(--left-sidebar-left-offset)+var(--left-sidebar-right-offset)+env(safe-area-inset-left))]",
   // HAS RIGHT SIDEBAR=COLLAPSED, ADD RIGHT MARGIN WIREFRAME CONTENT
-  "has-data-[wf-right-sidebar=collapsed]:mr-[calc(var(--right-sidebar-width-collapsed)+var(--right-sidebar-right-offset)+var(--right-sidebar-left-offset))]",
+  "has-data-[wf-right-sidebar=collapsed]:mr-[calc(var(--right-sidebar-width-collapsed)+var(--right-sidebar-right-offset)+var(--right-sidebar-left-offset)+env(safe-area-inset-right))]",
 
   // HAS RESPONSIVE NAV, AND VIEWPORT IS MOBILE, ADD BOTTOM MARGINS
-  "has-data-wf-responsive-nav:mb-[calc(var(--bottom-nav-height)+var(--bottom-nav-bottom-offset)+var(--bottom-nav-top-offset))]",
+  "has-data-wf-responsive-nav:mb-[calc(var(--bottom-nav-height)+var(--bottom-nav-bottom-offset)+var(--bottom-nav-top-offset)+env(safe-area-inset-bottom))] mt-[env(safe-area-inset-top)]",
   // HAS RESPONSIVE NAV, AND VIEWPORT IS DESKTOP, ADD TOP MARGINS
-  "min-wf-nav:has-data-wf-responsive-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset))] min-wf-nav:has-data-wf-responsive-nav:mb-0",
+  "min-wf-nav:has-data-wf-responsive-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset)+env(safe-area-inset-top))] min-wf-nav:has-data-wf-responsive-nav:mb-[env(safe-area-inset-bottom)]",
 
   // HAS TOP AND BOTTOM NAV, SET WIREFRAME CONTENT MIN HEIGHT
-  "has-data-wf-top-nav:has-data-wf-bottom-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--bottom-nav-height)-var(--top-nav-top-offset)-var(--bottom-nav-bottom-offset)-var(--top-nav-bottom-offset)-var(--bottom-nav-top-offset))]",
+  "has-data-wf-top-nav:has-data-wf-bottom-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--bottom-nav-height)-var(--top-nav-top-offset)-var(--bottom-nav-bottom-offset)-var(--top-nav-bottom-offset)-var(--bottom-nav-top-offset)-env(safe-area-inset-top)-env(safe-area-inset-bottom))]",
   // HAS ONLY TOP NAV, SET WIREFRAME CONTENT MIN HEIGHT
-  "has-data-wf-top-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset))]",
+  "has-data-wf-top-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset)-env(safe-area-inset-top))]",
   // HAS ONLY BOTTOM NAV, SET WIREFRAME CONTENT MIN HEIGHT
-  "has-data-wf-bottom-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset))]",
+  "has-data-wf-bottom-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset)-env(safe-area-inset-bottom))]",
   // HAS RESPONSIVE NAV, AND VIEWPORT IS MOBILE, SET WIREFRAME CONTENT MIN HEIGHT
-  "has-data-wf-responsive-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset))]",
+  "has-data-wf-responsive-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset)-env(safe-area-inset-bottom)-env(safe-area-inset-top))]",
   // HAS RESPONSIVE NAV, AND VIEWPORT IS DESKTOP, SET WIREFRAME CONTENT MIN HEIGHT
-  "min-wf-nav:has-data-wf-responsive-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset))]",
+  "min-wf-nav:has-data-wf-responsive-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset)-env(safe-area-inset-top)-env(safe-area-inset-bottom))]",
 
   // MAKE THE WIREFRAME ROOT RELATIVE TO ALLOW CHILDREN TO BE ABSOLUTE POSITIONED IF NEEDED
   "relative",
@@ -171,6 +180,66 @@ function parseCssVariable(
   return value ?? defaultValue
 }
 
+function SafeAreaInsetTop({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "bg-background pointer-events-none fixed inset-x-0 top-0 z-99999 h-[env(safe-area-inset-top)]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function SafeAreaInsetBottom({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "bg-background pointer-events-none fixed inset-x-0 bottom-0 z-99999 h-[env(safe-area-inset-bottom)]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function SafeAreaInsetLeft({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "bg-background pointer-events-none fixed inset-y-0 left-0 z-99999 w-[env(safe-area-inset-left)]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function SafeAreaInsetRight({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      className={cn(
+        "bg-background pointer-events-none fixed inset-y-0 right-0 z-99999 w-[env(safe-area-inset-right)]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 function Wireframe({
   className,
   children,
@@ -178,6 +247,7 @@ function Wireframe({
   ...props
 }: React.ComponentProps<"div"> & {
   config?: {
+    safeAreas?: boolean
     cssVariables?: Partial<Record<WireframeCSSVariables, string | number>>
     corners?: {
       topLeft?: WireframeCornerOptions
@@ -299,6 +369,15 @@ function Wireframe({
       }
       {...props}
     >
+      {config?.safeAreas && (
+        <>
+          <SafeAreaInsetTop />
+          <SafeAreaInsetBottom />
+          <SafeAreaInsetLeft />
+          <SafeAreaInsetRight />
+        </>
+      )}
+
       {children}
     </div>
   )
@@ -312,7 +391,7 @@ function WireframeStickyNav({
   return (
     <div
       className={cn(
-        "sticky top-(--sticky-nav-top-offset) z-50 h-(--sticky-nav-height) w-full",
+        "sticky top-[calc(var(--sticky-nav-top-offset)+env(safe-area-inset-top))] z-50 h-(--sticky-nav-height) w-full",
         className
       )}
       data-wf-sticky-nav
@@ -335,7 +414,18 @@ function WireframeNav({
     return (
       <div
         className={cn(
-          "min-wf-nav:top-(--top-nav-top-offset) min-wf-nav:right-(--top-nav-right-offset) min-wf-nav:bottom-auto min-wf-nav:left-(--top-nav-left-offset) min-wf-nav:h-(--top-nav-height) fixed right-(--bottom-nav-right-offset) bottom-(--bottom-nav-bottom-offset) left-(--bottom-nav-left-offset) z-50 h-(--bottom-nav-height)",
+          "fixed z-50",
+          // FOR MOBILE VIEWPORTS
+          "right-[calc(var(--bottom-nav-right-offset)+env(safe-area-inset-right))]",
+          "bottom-[calc(var(--bottom-nav-bottom-offset)+env(safe-area-inset-bottom))]",
+          "left-[calc(var(--bottom-nav-left-offset)+env(safe-area-inset-left))]",
+          "h-(--bottom-nav-height)",
+          // FOR DESKTOP VIEWPORTS
+          "min-wf-nav:top-[calc(var(--top-nav-top-offset)+env(safe-area-inset-top))]",
+          "min-wf-nav:right-[calc(var(--top-nav-right-offset)+env(safe-area-inset-right))]",
+          "min-wf-nav:left-[calc(var(--top-nav-left-offset)+env(safe-area-inset-left))]",
+          "min-wf-nav:h-(--top-nav-height)",
+          "min-wf-nav:bottom-auto",
           className
         )}
         data-wf-responsive-nav
@@ -351,8 +441,18 @@ function WireframeNav({
       className={cn(
         "fixed z-50",
         position === "top"
-          ? "top-(--top-nav-top-offset) right-(--top-nav-right-offset) left-(--top-nav-left-offset) h-(--top-nav-height)"
-          : "right-(--bottom-nav-right-offset) bottom-(--bottom-nav-bottom-offset) left-(--bottom-nav-left-offset) h-(--bottom-nav-height)",
+          ? [
+              "top-[calc(var(--top-nav-top-offset)+env(safe-area-inset-top))]",
+              "right-[calc(var(--top-nav-right-offset)+env(safe-area-inset-right))]",
+              "left-[calc(var(--top-nav-left-offset)+env(safe-area-inset-left))]",
+              "h-(--top-nav-height)",
+            ]
+          : [
+              "right-[calc(var(--bottom-nav-right-offset)+env(safe-area-inset-right))]",
+              "bottom-[calc(var(--bottom-nav-bottom-offset)+env(safe-area-inset-bottom))]",
+              "left-[calc(var(--bottom-nav-left-offset)+env(safe-area-inset-left))]",
+              "h-(--bottom-nav-height)",
+            ],
         className
       )}
       {...{
@@ -383,13 +483,21 @@ function WireframeSidebar({
         "fixed z-50 overflow-scroll [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
         position === "left"
           ? [
-              "top-(--left-sidebar-top-offset) bottom-(--left-sidebar-bottom-offset) left-(--left-sidebar-left-offset)",
+              [
+                "top-[calc(var(--left-sidebar-top-offset)+env(safe-area-inset-top))]",
+                "bottom-[calc(var(--left-sidebar-bottom-offset)+env(safe-area-inset-bottom))]",
+                "left-[calc(var(--left-sidebar-left-offset)+env(safe-area-inset-left))]",
+              ],
               collapsed
                 ? "w-(--left-sidebar-width-collapsed)"
                 : "w-(--left-sidebar-width-expanded)",
             ]
           : [
-              "top-(--right-sidebar-top-offset) right-(--right-sidebar-right-offset) bottom-(--right-sidebar-bottom-offset)",
+              [
+                "top-[calc(var(--right-sidebar-top-offset)+env(safe-area-inset-top))]",
+                "right-[calc(var(--right-sidebar-right-offset)+env(safe-area-inset-right))]",
+                "bottom-[calc(var(--right-sidebar-bottom-offset)+env(safe-area-inset-bottom))]",
+              ],
               collapsed
                 ? "w-(--right-sidebar-width-collapsed)"
                 : "w-(--right-sidebar-width-expanded)",
@@ -408,6 +516,10 @@ function WireframeSidebar({
 
 export {
   Wireframe,
+  SafeAreaInsetTop,
+  SafeAreaInsetBottom,
+  SafeAreaInsetLeft,
+  SafeAreaInsetRight,
   WireframeNav,
   WireframeSidebar,
   WireframeStickyNav,
