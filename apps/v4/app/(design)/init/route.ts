@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { registryItemSchema } from "shadcn/schema"
 
+import { trackEvent } from "@/lib/events"
 import { buildRegistryBase, designSystemConfigSchema } from "@/registry/config"
 
 export async function GET(request: NextRequest) {
@@ -38,6 +39,21 @@ export async function GET(request: NextRequest) {
         { status: 500 }
       )
     }
+
+    trackEvent({
+      name: "create_app",
+      properties: {
+        base: result.data.base ?? null,
+        style: result.data.style ?? null,
+        iconLibrary: result.data.iconLibrary ?? null,
+        baseColor: result.data.baseColor ?? null,
+        theme: result.data.theme ?? null,
+        font: result.data.font ?? null,
+        menuAccent: result.data.menuAccent ?? null,
+        menuColor: result.data.menuColor ?? null,
+        radius: result.data.radius ?? null,
+      },
+    })
 
     return NextResponse.json(parseResult.data)
   } catch (error) {

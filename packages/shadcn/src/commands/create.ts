@@ -8,6 +8,7 @@ import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { Command } from "commander"
+import open from "open"
 import prompts from "prompts"
 
 import { initOptionsSchema, runInit } from "./init"
@@ -16,8 +17,8 @@ const CREATE_TEMPLATES = {
   next: "next",
 } as const
 
-function getShadcnDesignSystemUrl() {
-  return `${process.env.REGISTRY_URL!.replace("/r", "")}/design`
+function getShadcnCreateUrl() {
+  return `${process.env.REGISTRY_URL!.replace("/r", "")}/create`
 }
 
 function getShadcnInitUrl() {
@@ -187,7 +188,7 @@ async function handlePresetOption(presetArg: string | boolean) {
         })),
         {
           title: "Custom",
-          description: "Open the design system builder in your browser",
+          description: "Build your own on https://ui.shadcn.com",
           value: "custom",
         },
       ],
@@ -198,11 +199,9 @@ async function handlePresetOption(presetArg: string | boolean) {
     }
 
     if (selectedPreset === "custom") {
-      logger.info(
-        `\nVisit ${highlighter.info(
-          getShadcnDesignSystemUrl()
-        )} to build your custom shadcn/ui design system.\n`
-      )
+      const url = getShadcnCreateUrl()
+      logger.info(`\nOpening ${highlighter.info(url)} in your browser...\n`)
+      await open(url)
       return null
     }
 

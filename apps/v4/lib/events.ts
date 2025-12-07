@@ -17,6 +17,7 @@ const eventSchema = z.object({
     "copy_color",
     "set_layout",
     "search_query",
+    "create_app",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z

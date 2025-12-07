@@ -196,8 +196,8 @@ describe("createProject", () => {
     expect(mockExit).toHaveBeenCalledWith(1)
   })
 
-  it("should include --no-react-compiler flag for Next.js 16 (latest)", async () => {
-    vi.mocked(prompts).mockResolvedValue({ type: "next-16", name: "my-app" })
+  it("should include --no-react-compiler flag for Next.js (latest)", async () => {
+    vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
 
     await createProject({
       cwd: "/test",
@@ -210,23 +210,5 @@ describe("createProject", () => {
       expect.arrayContaining(["--no-react-compiler"]),
       expect.any(Object)
     )
-  })
-
-  it("should not include --no-react-compiler flag for Next.js 15", async () => {
-    vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
-
-    await createProject({
-      cwd: "/test",
-      force: false,
-      srcDir: false,
-    })
-
-    const execaCalls = vi.mocked(execa).mock.calls
-    const createNextCall = execaCalls.find(
-      (call) => Array.isArray(call[1]) && call[1].includes("create-next-app@15")
-    )
-
-    expect(createNextCall).toBeDefined()
-    expect(createNextCall?.[1]).not.toContain("--no-react-compiler")
   })
 })
