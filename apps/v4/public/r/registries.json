@@ -1,8 +1,11 @@
 {
   "@8bitcn": "https://8bitcn.com/r/{name}.json",
   "@97cn": "https://97cn.itzik.co/r/{name}.json",
+  "@abstract": "https://build.abs.xyz/r/{name}/json",
+  "@abui": "https://abui.io/r/{name}.json",
   "@aceternity": "https://ui.aceternity.com/registry/{name}.json",
   "@aevr": "https://ui.aevr.space/r/{name}.json",
+  "@ai-blocks": "https://webllm.org/r/{name}.json",
   "@ai-elements": "https://registry.ai-sdk.dev/{name}.json",
   "@alexcarpenter": "https://ui.alexcarpenter.me/r/{name}.json",
   "@algolia": "https://sitesearch.algolia.com/r/{name}.json",
@@ -39,6 +42,7 @@
   "@kokonutui": "https://kokonutui.com/r/{name}.json",
   "@lens-blocks": "https://lensblocks.com/r/{name}.json",
   "@limeplay": "https://limeplay.winoffrg.dev/r/{name}.json",
+  "@lucide-animated": "https://lucide-animated.com/r/{name}.json",
   "@lytenyte": "https://www.1771technologies.com/r/{name}.json",
   "@magicui": "https://magicui.design/r/{name}.json",
   "@magicui-pro": "https://pro.magicui.design/registry/{name}",
@@ -94,5 +98,8 @@
   "@moleculeui": "https://moleculeui.design/r/{name}.json",
   "@uicapsule": "https://uicapsule.com/r/{name}.json",
   "@uitripled": "https://ui.tripled.work/r/{name}.json",
+  "@ui-layouts": "https://ui-layouts.com/r/{name}.json",
+  "@tour": "https://onboarding-tour.vercel.app/r/{name}.json",
+  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json",
   "@ui-layouts": "https://ui-layouts.com/r/{name}.json"
 }
