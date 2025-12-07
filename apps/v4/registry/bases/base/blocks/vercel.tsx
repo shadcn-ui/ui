@@ -100,51 +100,51 @@ const items = [
   {
     name: "Edge Requests",
     value: "$1.83K",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 67.34,
   },
   {
     name: "Fast Data Transfer",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 52.18,
     value: "$952.51",
   },
   {
     name: "Monitoring data points",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 89.42,
     value: "$901.20",
   },
   {
     name: "Web Analytics Events",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 45.67,
     value: "$603.71",
   },
   {
     name: "Edge Request CPU Duration",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 23.91,
     value: "$4.65",
   },
   {
     name: "Fast Origin Transfer",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 38.75,
     value: "$3.85",
   },
   {
     name: "ISR Reads",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 71.24,
     value: "$2.86",
   },
   {
     name: "Function Invocations",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 15.83,
     value: "$0.60",
   },
   {
     name: "ISR Writes",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 26.23,
     value: "524.52K / 2M",
   },
   {
     name: "Function Duration",
-    percentage: Math.round(Math.random() * 100 * 100) / 100,
+    percentage: 5.11,
     value: "5.11 GB Hrs / 1K GB Hrs",
   },
 ]
@@ -152,7 +152,7 @@ const items = [
 function UsageCard() {
   return (
     <Example title="Usage" className="items-center">
-      <Card className="w-full max-w-sm gap-4">
+      <Card className="w-full max-w-sm rotate-[-90deg] gap-4">
         <CardHeader>
           <CardTitle className="text-sm">5 days remaining in cycle</CardTitle>
         </CardHeader>
@@ -341,7 +341,7 @@ function DeploymentFilter() {
           <DropdownMenuTrigger
             render={<Button variant="outline" className="justify-between" />}
           >
-            <div className="flex items-center space-x-[-2px]">
+            <div className="flex items-center -space-x-0.5">
               {statuses.map((status) => (
                 <div
                   key={status.name}
@@ -508,7 +508,7 @@ function CircularGauge({ percentage }: { percentage: number }) {
       width="16"
       strokeWidth="2"
       viewBox="0 0 100 100"
-      className="rotate-[-90deg]"
+      className="-rotate-90"
     >
       <circle
         cx="50"

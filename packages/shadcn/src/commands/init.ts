@@ -61,6 +61,7 @@ process.on("exit", (code) => {
 
 export const initOptionsSchema = z.object({
   cwd: z.string(),
+  name: z.string().optional(),
   components: z.array(z.string()).optional(),
   yes: z.boolean(),
   defaults: z.boolean(),
@@ -263,8 +264,11 @@ export async function runInit(
       options.cwd = projectPath
       options.isNewProject = true
       newProjectTemplate = template
+      // Re-get project info for the newly created project.
+      projectInfo = await getProjectInfo(options.cwd)
+    } else {
+      projectInfo = preflight.projectInfo
     }
-    projectInfo = preflight.projectInfo
   } else {
     projectInfo = await getProjectInfo(options.cwd)
   }

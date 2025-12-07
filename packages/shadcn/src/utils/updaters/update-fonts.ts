@@ -39,7 +39,7 @@ export async function massageTreeForFonts(
     tree.cssVars.theme[
       fontSans.font.variable
     ] = `var(${fontSans.font.variable})`
-    return
+    return tree
   }
 
   // Other frameworks will use fontsource for now.

@@ -264,3 +264,26 @@ export const registriesIndexSchema = z.record(
   z.string().regex(/^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/),
   z.string()
 )
+
+export const presetSchema = z.object({
+  name: z.string(),
+  title: z.string(),
+  description: z.string(),
+  base: z.string(),
+  style: z.string(),
+  baseColor: z.string(),
+  theme: z.string(),
+  iconLibrary: z.string(),
+  font: z.string(),
+  menuAccent: z.enum(["subtle", "bold"]),
+  menuColor: z.enum(["default", "inverted"]),
+  radius: z.string(),
+})
+
+export type Preset = z.infer<typeof presetSchema>
+
+export const configJsonSchema = z.object({
+  presets: z.array(presetSchema),
+})
+
+export type ConfigJson = z.infer<typeof configJsonSchema>

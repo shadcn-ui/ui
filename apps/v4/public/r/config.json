@@ -1,0 +1,32 @@
+{
+  "presets": [
+    {
+      "name": "radix-vega",
+      "title": "Vega (Radix)",
+      "description": "Vega / Lucide / Inter",
+      "base": "radix",
+      "style": "vega",
+      "baseColor": "neutral",
+      "theme": "neutral",
+      "iconLibrary": "lucide",
+      "font": "inter",
+      "menuAccent": "subtle",
+      "menuColor": "default",
+      "radius": "default"
+    },
+    {
+      "name": "base-vega",
+      "title": "Vega (Base)",
+      "description": "Vega / Hugeicons / Figtree",
+      "base": "base",
+      "style": "vega",
+      "baseColor": "neutral",
+      "theme": "blue",
+      "iconLibrary": "hugeicons",
+      "font": "figtree",
+      "menuAccent": "bold",
+      "menuColor": "inverted",
+      "radius": "large"
+    }
+  ]
+}
