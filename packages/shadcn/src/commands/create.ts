@@ -16,12 +16,13 @@ const CREATE_TEMPLATES = {
   next: "next",
 } as const
 
-const SHADCN_DESIGN_SYSTEM_URL = `${process.env.REGISTRY_URL!.replace(
-  "/r",
-  ""
-)}/design`
+function getShadcnDesignSystemUrl() {
+  return `${process.env.REGISTRY_URL!.replace("/r", "")}/design`
+}
 
-const SHADCN_INIT_URL = `${process.env.REGISTRY_URL!.replace("/r", "")}/init`
+function getShadcnInitUrl() {
+  return `${process.env.REGISTRY_URL!.replace("/r", "")}/init`
+}
 
 export const create = new Command()
   .name("create")
@@ -166,7 +167,7 @@ function buildInitUrl(preset: Preset) {
     radius: preset.radius,
   })
 
-  return `${SHADCN_INIT_URL}?${params.toString()}`
+  return `${getShadcnInitUrl()}?${params.toString()}`
 }
 
 async function handlePresetOption(presetArg: string | boolean) {
@@ -199,7 +200,7 @@ async function handlePresetOption(presetArg: string | boolean) {
     if (selectedPreset === "custom") {
       logger.info(
         `\nVisit ${highlighter.info(
-          SHADCN_DESIGN_SYSTEM_URL
+          getShadcnDesignSystemUrl()
         )} to build your custom shadcn/ui design system.\n`
       )
       return null

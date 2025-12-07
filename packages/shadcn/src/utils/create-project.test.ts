@@ -121,33 +121,7 @@ describe("createProject", () => {
 
     expect(execa).toHaveBeenCalledWith(
       "npx",
-      expect.arrayContaining(["create-next-app@15", "/test/my-app"]),
-      expect.any(Object)
-    )
-  })
-
-  it("should create a Next.js 16 project when next-16 template is selected", async () => {
-    vi.mocked(prompts).mockResolvedValue({ type: "next-16", name: "my-app" })
-
-    const result = await createProject({
-      cwd: "/test",
-      force: false,
-      srcDir: false,
-    })
-
-    expect(result).toEqual({
-      projectPath: "/test/my-app",
-      projectName: "my-app",
-      template: TEMPLATES["next-16"],
-    })
-
-    expect(execa).toHaveBeenCalledWith(
-      "npx",
-      expect.arrayContaining([
-        "create-next-app@latest",
-        "/test/my-app",
-        "--no-react-compiler",
-      ]),
+      expect.arrayContaining(["create-next-app@latest", "/test/my-app"]),
       expect.any(Object)
     )
   })

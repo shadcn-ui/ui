@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
+import { type MenuColorValue } from "@/registry/config"
 import {
   Select,
   SelectContent,
@@ -10,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { type MenuColorValue } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 const MENU_OPTIONS = [
