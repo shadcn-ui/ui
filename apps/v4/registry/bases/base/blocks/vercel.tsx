@@ -202,7 +202,7 @@ function AnomalyAlert() {
               </EmptyDescription>
             </EmptyHeader>
             <EmptyContent>
-              <Button className="w-full">Upgrade to Observability Plus</Button>
+              <Button>Upgrade to Observability Plus</Button>
             </EmptyContent>
           </Empty>
         </CardContent>

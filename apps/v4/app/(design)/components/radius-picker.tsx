@@ -1,11 +1,14 @@
 "use client"
 
+import * as React from "react"
 import { useQueryStates } from "nuqs"
 
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
@@ -19,6 +22,8 @@ export function RadiusPicker() {
   })
 
   const currentRadius = RADII.find((radius) => radius.value === params.radius)
+  const defaultRadius = RADII.find((radius) => radius.value === "default")
+  const otherRadii = RADII.filter((radius) => radius.value !== "default")
 
   return (
     <Select
@@ -61,15 +66,34 @@ export function RadiusPicker() {
         align="start"
         className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
-        {RADII.map((radius) => (
-          <SelectItem
-            key={radius.value}
-            value={radius.value}
-            className="rounded-lg"
-          >
-            {radius.label}
-          </SelectItem>
-        ))}
+        <SelectGroup>
+          {defaultRadius && (
+            <SelectItem
+              key={defaultRadius.value}
+              value={defaultRadius.value}
+              className="rounded-lg"
+            >
+              <div className="flex flex-col justify-start">
+                <div>{defaultRadius.label}</div>
+                <div className="text-muted-foreground text-xs">
+                  Use radius from style
+                </div>
+              </div>
+            </SelectItem>
+          )}
+        </SelectGroup>
+        <SelectSeparator />
+        <SelectGroup>
+          {otherRadii.map((radius) => (
+            <SelectItem
+              key={radius.value}
+              value={radius.value}
+              className="rounded-lg"
+            >
+              {radius.label}
+            </SelectItem>
+          ))}
+        </SelectGroup>
       </SelectContent>
     </Select>
   )

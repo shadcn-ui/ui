@@ -234,9 +234,9 @@ export async function transformLayoutFonts(
     fontVariableNames.push(varName)
   }
 
-  // Update body className to include font variables.
+  // Update html className to include font variables.
   if (fontVariableNames.length > 0) {
-    updateBodyClassName(sourceFile, fontVariableNames)
+    updateHtmlClassName(sourceFile, fontVariableNames)
   }
 
   return sourceFile.getFullText()
@@ -315,18 +315,18 @@ function findInsertPosition(
   return 0
 }
 
-function updateBodyClassName(
+function updateHtmlClassName(
   sourceFile: ReturnType<Project["createSourceFile"]>,
   fontVariableNames: string[]
 ) {
-  // Find the <body> or <html> JSX element.
+  // Find the <html> JSX element.
   const jsxElements = sourceFile.getDescendantsOfKind(
     SyntaxKind.JsxOpeningElement
   )
 
   for (const element of jsxElements) {
     const tagName = element.getTagNameNode().getText()
-    if (tagName !== "body") continue
+    if (tagName !== "html") continue
 
     const classNameAttr = element.getAttribute("className")
     if (!classNameAttr) {

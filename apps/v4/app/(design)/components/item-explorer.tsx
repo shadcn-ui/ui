@@ -47,7 +47,7 @@ export function ItemExplorer({
       collapsible="none"
     >
       <SidebarContent className="no-scrollbar overflow-x-hidden">
-        <div className="from-background via-background/80 to-background/50 sticky -top-1 z-10 -mb-7 h-6 shrink-0 bg-gradient-to-b blur-xs" />
+        <div className="from-background via-background/80 to-background/50 sticky -top-1 z-10 -mb-6 h-6 shrink-0 bg-gradient-to-b blur-xs" />
         {groupedItems.map((group) => (
           <SidebarGroup key={group.type} className="px-0">
             <SidebarGroupLabel className="text-muted-foreground font-medium">

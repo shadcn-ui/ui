@@ -33,15 +33,15 @@ export const designSystemSearchParams = {
   iconLibrary: parseAsStringLiteral<IconLibraryName>(
     Object.values(iconLibraries).map((i) => i.name)
   ).withDefault(DEFAULT_CONFIG.iconLibrary),
-  style: parseAsStringLiteral<StyleName>(
-    STYLES.map((s) => s.name)
-  ).withDefault(DEFAULT_CONFIG.style),
-  theme: parseAsStringLiteral<ThemeName>(
-    THEMES.map((t) => t.name)
-  ).withDefault(DEFAULT_CONFIG.theme),
-  font: parseAsStringLiteral<FontValue>(
-    FONTS.map((f) => f.value)
-  ).withDefault(DEFAULT_CONFIG.font),
+  style: parseAsStringLiteral<StyleName>(STYLES.map((s) => s.name)).withDefault(
+    DEFAULT_CONFIG.style
+  ),
+  theme: parseAsStringLiteral<ThemeName>(THEMES.map((t) => t.name)).withDefault(
+    DEFAULT_CONFIG.theme
+  ),
+  font: parseAsStringLiteral<FontValue>(FONTS.map((f) => f.value)).withDefault(
+    DEFAULT_CONFIG.font
+  ),
   baseColor: parseAsStringLiteral<BaseColorName>(
     BASE_COLORS.map((b) => b.name)
   ).withDefault(DEFAULT_CONFIG.baseColor),
@@ -56,7 +56,7 @@ export const designSystemSearchParams = {
   ).withDefault(DEFAULT_CONFIG.spacing),
   radius: parseAsStringLiteral<RadiusValue>(
     RADII.map((r) => r.value)
-  ).withDefault(DEFAULT_CONFIG.radius),
+  ).withDefault("default"),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }

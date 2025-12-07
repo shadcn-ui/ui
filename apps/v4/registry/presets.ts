@@ -16,7 +16,7 @@ export type Preset = {
   accent: "subtle" | "bold"
   menu: "default" | "inverted"
   spacing: "default" | "compact"
-  radius: "none" | "small" | "default" | "large"
+  radius: "none" | "small" | "medium" | "large"
 }
 
 export const PRESETS = [
@@ -31,7 +31,7 @@ export const PRESETS = [
     accent: "subtle",
     menu: "default",
     spacing: "default",
-    radius: "default",
+    radius: "medium",
   },
   {
     title: "Vega (Compact)",
@@ -44,7 +44,7 @@ export const PRESETS = [
     accent: "bold",
     menu: "inverted",
     spacing: "compact",
-    radius: "default",
+    radius: "medium",
   },
   {
     title: "Nova",
@@ -57,6 +57,6 @@ export const PRESETS = [
     accent: "subtle",
     menu: "default",
     spacing: "default",
-    radius: "default",
+    radius: "medium",
   },
 ] satisfies Preset[]

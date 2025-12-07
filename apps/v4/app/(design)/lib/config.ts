@@ -54,9 +54,10 @@ export type Spacing = (typeof SPACINGS)[number]
 export type SpacingValue = Spacing["value"]
 
 export const RADII = [
+  { value: "default", label: "Default" },
   { value: "none", label: "None" },
   { value: "small", label: "Small" },
-  { value: "default", label: "Default" },
+  { value: "medium", label: "Medium" },
   { value: "large", label: "Large" },
 ] as const
 
@@ -144,7 +145,7 @@ export const PRESETS: Preset[] = [
     menuAccent: "subtle",
     menuColor: "default",
     spacing: "default",
-    radius: "default",
+    radius: "medium",
   },
   {
     title: "Vega (Compact)",
@@ -158,7 +159,7 @@ export const PRESETS: Preset[] = [
     menuAccent: "bold",
     menuColor: "inverted",
     spacing: "compact",
-    radius: "default",
+    radius: "medium",
   },
   {
     title: "Nova",
@@ -172,7 +173,7 @@ export const PRESETS: Preset[] = [
     menuAccent: "subtle",
     menuColor: "default",
     spacing: "default",
-    radius: "default",
+    radius: "medium",
   },
 ]
 
@@ -257,13 +258,15 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
   }
 
   // Apply radius transformation.
-  const radiusValues: Record<RadiusValue, string> = {
-    none: "0",
-    small: "0.45rem",
-    default: "0.625rem",
-    large: "0.875rem",
+  if (config.radius && config.radius !== "default") {
+    const radiusValues: Record<Exclude<RadiusValue, "default">, string> = {
+      none: "0",
+      small: "0.45rem",
+      medium: "0.625rem",
+      large: "0.875rem",
+    }
+    lightVars.radius = radiusValues[config.radius]
   }
-  lightVars.radius = radiusValues[config.radius]
 
   return {
     name: `${config.baseColor}-${config.theme}`,

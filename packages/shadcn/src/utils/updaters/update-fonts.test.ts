@@ -87,8 +87,8 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
-            <body className={inter.variable}>{children}</body>
+          <html lang="en" className={inter.variable}>
+            <body>{children}</body>
           </html>
         )
       }
@@ -158,8 +158,8 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
-            <body className={cn(inter.variable, jetbrainsMono.variable)}>{children}</body>
+          <html lang="en" className={cn(inter.variable, jetbrainsMono.variable)}>
+            <body>{children}</body>
           </html>
         )
       }
@@ -203,7 +203,6 @@ export default function RootLayout({
       "
       import type { Metadata } from "next"
       import { Inter } from "next/font/google";
-      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -214,8 +213,8 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
-            <body className={cn("antialiased", inter.variable)}>{children}</body>
+          <html lang="en" className={inter.variable}>
+            <body className="antialiased">{children}</body>
           </html>
         )
       }
@@ -269,7 +268,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
+          <html lang="en" className={inter.variable}>
             <body className={inter.variable}>{children}</body>
           </html>
         )
@@ -326,7 +325,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
+          <html lang="en" className={inter.variable}>
             <body className={cn("antialiased", inter.variable)}>{children}</body>
           </html>
         )
@@ -378,8 +377,8 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
-            <body className={inter.variable}>{children}</body>
+          <html lang="en" className={inter.variable}>
+            <body>{children}</body>
           </html>
         )
       }
@@ -433,7 +432,7 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
+          <html lang="en" className={inter.variable}>
             <body className={inter.variable}>{children}</body>
           </html>
         )
@@ -490,8 +489,8 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
-            <body className={inter.variable}>{children}</body>
+          <html lang="en" className={inter.variable}>
+            <body className={roboto.variable}>{children}</body>
           </html>
         )
       }
@@ -531,7 +530,6 @@ export default function RootLayout({
 
     expect(result).toMatchInlineSnapshot(`
       "import { Inter } from "next/font/google";
-      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -542,8 +540,8 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
-            <body className={cn(someVariable, inter.variable)}>{children}</body>
+          <html lang="en" className={inter.variable}>
+            <body className={someVariable}>{children}</body>
           </html>
         )
       }
@@ -589,7 +587,6 @@ export default function RootLayout({
       import { GeistSans } from "geist/font/sans"
       import { GeistMono } from "geist/font/mono"
       import { Inter } from "next/font/google";
-      import { cn } from "@/lib/utils";
 
       const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -600,8 +597,8 @@ export default function RootLayout({
         children: React.ReactNode
       }) {
         return (
-          <html lang="en">
-            <body className={cn("antialiased", GeistSans.variable, GeistMono.variable, inter.variable)}>{children}</body>
+          <html lang="en" className={inter.variable}>
+            <body className={\`\${GeistSans.variable} \${GeistMono.variable} antialiased\`}>{children}</body>
           </html>
         )
       }
