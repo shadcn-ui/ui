@@ -3,6 +3,7 @@ import path from "path"
 import { RegistryFontItem, registryResolvedItemsTreeSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
+import { highlighter } from "@/src/utils/highlighter"
 import { spinner } from "@/src/utils/spinner"
 import {
   CallExpression,
@@ -38,25 +39,38 @@ export async function massageTreeForFonts(
     tree.cssVars.theme[
       fontSans.font.variable
     ] = `var(${fontSans.font.variable})`
-  } else {
-    // const fontSourceDependency = `@fontsource-variable/${fontSans.name}`
-    // tree.dependencies ??= []
-    // tree.dependencies.push(fontSourceDependency)
-    // tree.css ??= {}
-    // tree.css[`@import ${fontSourceDependency}`] = {}
-    // tree.cssVars.theme["--font-sans"] = fontSans.font.family
-    // TODO (shadcn): Wrap this up when you have time.
-    tree.docs += `## Fonts
-
-To add the ${tree.fonts
-      .map((f) => f.font.family)
-      .join(
-        ", "
-      )} fonts to your project, please follow the instructions for your framework (${
-      projectInfo.framework.label
-    }).
-    `
+    return
   }
+
+  // Other frameworks will use fontsource for now.
+  const fontName = fontSans.name.replace("font-", "")
+  const fontSourceDependency = `@fontsource-variable/${fontName}`
+  tree.dependencies ??= []
+  tree.dependencies.push(fontSourceDependency)
+  tree.css ??= {}
+  tree.css[`@import "${fontSourceDependency}"`] = {}
+  tree.css["@layer base"] ??= {}
+  tree.css["@layer base"].html = {
+    "@apply font-sans": {},
+  }
+  tree.css["@layer base"].body = {
+    "@apply font-sans bg-background text-foreground": {},
+  }
+  tree.cssVars.theme[fontSans.font.variable] = fontSans.font.family
+
+  tree.docs += `## Fonts
+The ${highlighter.info(
+    fontSans.title ?? ""
+  )} font has been added to your project.
+
+If you have existing font-family declarations, you may need to update them to use the new ${highlighter.info(
+    fontSans.font.variable
+  )} variable.
+
+@theme inline {
+  ${fontSans.font.variable}: ${fontSans.font.family};
+}
+  `
 
   return tree
 }

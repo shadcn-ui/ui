@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { useQueryStates } from "nuqs"
-import { RegistryItem } from "shadcn/schema"
 
 import { FieldGroup, FieldSeparator } from "@/registry/new-york-v4/ui/field"
 import { MenuAccentPicker } from "@/app/(design)/components/accent-picker"
@@ -24,11 +23,7 @@ import {
 } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
-export function Customizer({
-  items,
-}: {
-  items: Pick<RegistryItem, "name" | "title" | "type">[]
-}) {
+export function Customizer() {
   const [params] = useQueryStates(designSystemSearchParams)
 
   const availableThemes = React.useMemo(

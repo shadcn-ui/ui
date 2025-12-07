@@ -3,11 +3,6 @@
 import * as React from "react"
 import { lazy, memo, Suspense } from "react"
 import { useQueryStates } from "nuqs"
-import {
-  iconLibraries,
-  type IconLibrary,
-  type IconLibraryName,
-} from "@/app/(design)/lib/config"
 
 import { Item, ItemContent, ItemTitle } from "@/registry/bases/radix/ui/item"
 import {
@@ -18,6 +13,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
+import {
+  iconLibraries,
+  type IconLibrary,
+  type IconLibraryName,
+} from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 const IconLucide = lazy(() =>
@@ -76,7 +76,7 @@ const PREVIEW_ICONS = {
     "AlertCircleIcon",
     "Delete02Icon",
     "Share03Icon",
-    "ShoppingBasket02Icon",
+    "ShoppingBag01Icon",
     "MoreHorizontalIcon",
     "Loading03Icon",
     "PlusSignIcon",

@@ -8,11 +8,17 @@ import { useMounted } from "@/hooks/use-mounted"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { BASE_COLORS, type Theme, type ThemeName } from "@/app/(design)/lib/config"
+import {
+  BASE_COLORS,
+  type Theme,
+  type ThemeName,
+} from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
@@ -77,35 +83,78 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
         align="start"
         className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
-        {themes.map((theme) => {
-          const isBaseColor = BASE_COLORS.find(
-            (baseColor) => baseColor.name === theme.name
+        <SelectGroup>
+          {themes
+            .filter((theme) =>
+              BASE_COLORS.find((baseColor) => baseColor.name === theme.name)
+            )
+            .map((theme) => {
+              const isBaseColor = BASE_COLORS.find(
+                (baseColor) => baseColor.name === theme.name
+              )
+              return (
+                <SelectItem
+                  key={theme.name}
+                  value={theme.name}
+                  className="rounded-lg"
+                >
+                  <div className="flex items-start gap-2">
+                    {mounted && resolvedTheme && (
+                      <div
+                        style={
+                          {
+                            "--color":
+                              theme.cssVars?.[
+                                resolvedTheme as "light" | "dark"
+                              ]?.[isBaseColor ? "muted-foreground" : "primary"],
+                          } as React.CSSProperties
+                        }
+                        className="size-4 translate-y-1 rounded-full bg-(--color)"
+                      />
+                    )}
+                    <div className="flex flex-col justify-start">
+                      <div>{theme.title}</div>
+                      <div className="text-muted-foreground text-xs">
+                        Match base color
+                      </div>
+                    </div>
+                  </div>
+                </SelectItem>
+              )
+            })}
+        </SelectGroup>
+        <SelectSeparator />
+        {themes
+          .filter(
+            (theme) =>
+              !BASE_COLORS.find((baseColor) => baseColor.name === theme.name)
           )
-          return (
-            <SelectItem
-              key={theme.name}
-              value={theme.name}
-              className="rounded-lg"
-            >
-              <div className="flex items-center gap-2">
-                {mounted && resolvedTheme && (
-                  <div
-                    style={
-                      {
-                        "--color":
-                          theme.cssVars?.[resolvedTheme as "light" | "dark"]?.[
-                            isBaseColor ? "muted-foreground" : "primary"
-                          ],
-                      } as React.CSSProperties
-                    }
-                    className="size-4 rounded-full bg-(--color)"
-                  />
-                )}
-                {theme.title}
-              </div>
-            </SelectItem>
-          )
-        })}
+          .map((theme) => {
+            return (
+              <SelectItem
+                key={theme.name}
+                value={theme.name}
+                className="rounded-lg"
+              >
+                <div className="flex items-center gap-2">
+                  {mounted && resolvedTheme && (
+                    <div
+                      style={
+                        {
+                          "--color":
+                            theme.cssVars?.[
+                              resolvedTheme as "light" | "dark"
+                            ]?.["primary"],
+                        } as React.CSSProperties
+                      }
+                      className="size-4 rounded-full bg-(--color)"
+                    />
+                  )}
+                  {theme.title}
+                </div>
+              </SelectItem>
+            )
+          })}
       </SelectContent>
     </Select>
   )

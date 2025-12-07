@@ -48,36 +48,43 @@ export const FONTS = [
     name: "Inter",
     value: "inter",
     font: inter,
+    type: "sans",
   },
   {
     name: "Noto Sans",
     value: "noto-sans",
     font: notoSans,
+    type: "sans",
   },
   {
     name: "Nunito Sans",
     value: "nunito-sans",
     font: nunitoSans,
+    type: "sans",
   },
   {
     name: "Figtree",
     value: "figtree",
     font: figtree,
-  },
-  {
-    name: "JetBrains Mono",
-    value: "jetbrains-mono",
-    font: jetbrainsMono,
+    type: "sans",
   },
   {
     name: "Geist Sans",
     value: "geist-sans",
     font: geistSans,
+    type: "sans",
+  },
+  {
+    name: "JetBrains Mono",
+    value: "jetbrains-mono",
+    font: jetbrainsMono,
+    type: "mono",
   },
   {
     name: "Geist Mono",
     value: "geist-mono",
     font: geistMono,
+    type: "mono",
   },
 ] as const
 

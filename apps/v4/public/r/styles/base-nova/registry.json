@@ -1872,7 +1872,7 @@
       "title": "Inter",
       "type": "registry:font",
       "font": {
-        "family": "Inter",
+        "family": "'Inter Variable', sans-serif",
         "provider": "google",
         "import": "Inter",
         "variable": "--font-sans",
@@ -1886,7 +1886,7 @@
       "title": "Geist Sans",
       "type": "registry:font",
       "font": {
-        "family": "Geist Sans",
+        "family": "'Geist Variable', sans-serif",
         "provider": "google",
         "import": "Geist",
         "variable": "--font-sans",
@@ -1900,7 +1900,7 @@
       "title": "Noto Sans",
       "type": "registry:font",
       "font": {
-        "family": "Noto Sans",
+        "family": "'Noto Sans Variable', sans-serif",
         "provider": "google",
         "import": "Noto_Sans",
         "variable": "--font-sans"
@@ -1911,7 +1911,7 @@
       "title": "Nunito Sans",
       "type": "registry:font",
       "font": {
-        "family": "Nunito Sans",
+        "family": "'Nunito Sans Variable', sans-serif",
         "provider": "google",
         "import": "Nunito_Sans",
         "variable": "--font-sans"
@@ -1922,7 +1922,7 @@
       "title": "Figtree",
       "type": "registry:font",
       "font": {
-        "family": "Figtree",
+        "family": "'Figtree Variable', sans-serif",
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-sans",
@@ -1936,7 +1936,7 @@
       "title": "JetBrains Mono",
       "type": "registry:font",
       "font": {
-        "family": "JetBrains Mono",
+        "family": "'JetBrains Mono Variable', monospace",
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-sans",
@@ -1950,7 +1950,7 @@
       "title": "Geist Mono",
       "type": "registry:font",
       "font": {
-        "family": "Geist Mono",
+        "family": "'Geist Mono Variable', monospace",
         "provider": "google",
         "import": "Geist_Mono",
         "variable": "--font-sans",

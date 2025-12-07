@@ -100,13 +100,15 @@ export function ItemPicker({
           <Button
             variant="outline"
             size="sm"
-            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 w-full max-w-xs justify-between gap-2 bg-transparent pr-2! pl-2.5 text-left shadow-none dark:bg-transparent"
+            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 w-full max-w-lg justify-between gap-2 bg-transparent pr-2! pl-2.5 text-left shadow-none dark:bg-transparent"
           />
         }
       >
         <ComboboxValue>
           {(value) => (
-            <div className="text-muted-foreground text-sm">Go to Preview</div>
+            <div className="text-foreground text-sm">
+              {value?.title || "Not Found"}
+            </div>
           )}
         </ComboboxValue>
       </ComboboxTrigger>

@@ -4,7 +4,7 @@
   "title": "Geist Mono",
   "type": "registry:font",
   "font": {
-    "family": "Geist Mono",
+    "family": "'Geist Mono Variable', monospace",
     "provider": "google",
     "import": "Geist_Mono",
     "variable": "--font-sans",

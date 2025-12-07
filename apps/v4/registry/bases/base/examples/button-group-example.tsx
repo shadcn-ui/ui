@@ -514,7 +514,7 @@ function ButtonGroupPagination() {
           <IconPlaceholder
             lucide="ArrowLeftIcon"
             tabler="IconArrowLeft"
-            hugeicons="ArrowLeft01Icon"
+            hugeicons="ArrowLeft02Icon"
             data-icon="inline-start"
           />
           Previous
@@ -539,7 +539,7 @@ function ButtonGroupPagination() {
           <IconPlaceholder
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
-            hugeicons="ArrowRight01Icon"
+            hugeicons="ArrowRight02Icon"
             data-icon="inline-end"
           />
         </Button>

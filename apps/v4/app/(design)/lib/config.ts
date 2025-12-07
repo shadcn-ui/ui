@@ -135,9 +135,9 @@ export const PRESETS: Preset[] = [
   },
   {
     title: "Nova",
-    description: "Nova / Hugeicons / Figtree",
+    description: "Vega / Hugeicons / Figtree",
     base: "base",
-    style: "nova",
+    style: "vega",
     baseColor: "neutral",
     theme: "blue",
     iconLibrary: "hugeicons",

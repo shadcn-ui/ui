@@ -572,7 +572,7 @@
   }
 
   .cn-field-description {
-    @apply text-muted-foreground text-sm [[data-variant=legend]+&]:-mt-1.5;
+    @apply text-muted-foreground text-left text-sm [[data-variant=legend]+&]:-mt-1.5;
   }
 
   .cn-field-separator {
@@ -672,7 +672,7 @@
   }
 
   .cn-item-description {
-    @apply text-muted-foreground text-sm leading-normal group-data-[size=xs]/item:text-xs;
+    @apply text-muted-foreground text-left text-sm leading-normal group-data-[size=xs]/item:text-xs;
   }
 
   .cn-item-actions {

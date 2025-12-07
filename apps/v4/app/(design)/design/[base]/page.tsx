@@ -111,7 +111,7 @@ export default async function NewPage({
       <header className="bg-background sticky top-0 z-50 w-full">
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
           <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
-            <div className="flex items-center">
+            <div className="flex w-1/3 items-center">
               <Button
                 asChild
                 variant="ghost"
@@ -125,8 +125,10 @@ export default async function NewPage({
               </Button>
               <MainNav items={siteConfig.navItems} />
             </div>
-            <div className="flex flex-1 items-center gap-2 md:justify-end">
+            <div className="flex flex-1 items-center justify-center gap-2">
               <ItemPicker items={filteredItems} />
+            </div>
+            <div className="flex w-1/3 items-center gap-2 md:justify-end">
               <Separator orientation="vertical" className="mx-2" />
               <GitHubLink />
               <Separator orientation="vertical" className="3xl:flex hidden" />
@@ -145,7 +147,7 @@ export default async function NewPage({
           >
             <ItemExplorer items={filteredItems} />
             <Preview base={base.name} />
-            <Customizer items={filteredItems} />
+            <Customizer />
           </div>
         </SidebarProvider>
       </main>

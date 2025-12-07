@@ -12,6 +12,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectSeparator,
   SelectTrigger,
@@ -60,25 +61,27 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
         align="start"
         className="ring-foreground/10 h-96 w-64 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
-        {fonts.map((font) => (
-          <React.Fragment key={font.value}>
-            <SelectItem value={font.value} className="rounded-lg">
-              <Item size="xs">
-                <ItemContent className="gap-1">
-                  <ItemTitle className="text-muted-foreground text-xs font-medium">
-                    {font.name}
-                  </ItemTitle>
-                  <ItemDescription
-                    style={{ fontFamily: font.font.style.fontFamily }}
-                  >
-                    The quick brown fox jumps over the lazy dog.
-                  </ItemDescription>
-                </ItemContent>
-              </Item>
-            </SelectItem>
-            <SelectSeparator className="opacity-50 last:hidden" />
-          </React.Fragment>
-        ))}
+        <SelectGroup>
+          {fonts.map((font) => (
+            <React.Fragment key={font.value}>
+              <SelectItem value={font.value} className="rounded-lg">
+                <Item size="xs">
+                  <ItemContent className="gap-1">
+                    <ItemTitle className="text-muted-foreground text-xs font-medium">
+                      {font.name}
+                    </ItemTitle>
+                    <ItemDescription
+                      style={{ fontFamily: font.font.style.fontFamily }}
+                    >
+                      Designers love packing quirky glyphs into test phrases.
+                    </ItemDescription>
+                  </ItemContent>
+                </Item>
+              </SelectItem>
+              <SelectSeparator className="opacity-50 last:hidden" />
+            </React.Fragment>
+          ))}
+        </SelectGroup>
       </SelectContent>
     </Select>
   )

@@ -29,10 +29,6 @@ export const siteConfig = {
       href: "/docs/directory",
       label: "Directory",
     },
-    {
-      href: "/design",
-      label: "Design",
-    },
   ],
 }
 

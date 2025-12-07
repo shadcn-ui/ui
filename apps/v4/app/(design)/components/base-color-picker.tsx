@@ -8,7 +8,9 @@ import { useMounted } from "@/hooks/use-mounted"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
@@ -16,7 +18,7 @@ import { BASE_COLORS, type BaseColorName } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function BaseColorPicker({}) {
-  const { resolvedTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const mounted = useMounted()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
@@ -32,6 +34,11 @@ export function BaseColorPicker({}) {
     <Select
       value={currentBaseColor?.name}
       onValueChange={(value) => {
+        if (value === "dark") {
+          setTheme(resolvedTheme === "dark" ? "light" : "dark")
+          return
+        }
+
         setParams({ baseColor: value as BaseColorName })
       }}
     >
@@ -62,32 +69,47 @@ export function BaseColorPicker({}) {
         position="popper"
         side="left"
         align="start"
-        className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="ring-foreground/10 w-48 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
       >
-        {BASE_COLORS.map((baseColor) => (
-          <SelectItem
-            key={baseColor.name}
-            value={baseColor.name}
-            className="rounded-lg"
-          >
-            <div className="flex items-center gap-2">
-              {mounted && resolvedTheme && (
-                <div
-                  style={
-                    {
-                      "--color":
-                        baseColor.cssVars?.[
-                          resolvedTheme as "light" | "dark"
-                        ]?.["muted-foreground"],
-                    } as React.CSSProperties
-                  }
-                  className="size-4 rounded-full bg-(--color)"
-                />
-              )}
-              {baseColor.title}
+        <SelectGroup>
+          {BASE_COLORS.map((baseColor) => (
+            <SelectItem
+              key={baseColor.name}
+              value={baseColor.name}
+              className="rounded-lg"
+            >
+              <div className="flex items-center gap-2">
+                {mounted && resolvedTheme && (
+                  <div
+                    style={
+                      {
+                        "--color":
+                          baseColor.cssVars?.[
+                            resolvedTheme as "light" | "dark"
+                          ]?.["muted-foreground"],
+                      } as React.CSSProperties
+                    }
+                    className="size-4 rounded-full bg-(--color)"
+                  />
+                )}
+                {baseColor.title}
+              </div>
+            </SelectItem>
+          ))}
+        </SelectGroup>
+        <SelectSeparator />
+        <SelectGroup>
+          <SelectItem value="dark" className="rounded-lg">
+            <div className="flex flex-col justify-start">
+              <div>
+                Switch to {resolvedTheme === "dark" ? "Light" : "Dark"} Mode
+              </div>
+              <div className="text-muted-foreground text-xs">
+                Base colors are easier to see in dark mode.
+              </div>
             </div>
           </SelectItem>
-        ))}
+        </SelectGroup>
       </SelectContent>
     </Select>
   )

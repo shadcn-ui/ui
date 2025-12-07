@@ -6,7 +6,7 @@ export const fonts = [
     title: "Inter",
     type: "registry:font",
     font: {
-      family: "Inter",
+      family: "'Inter Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -18,7 +18,7 @@ export const fonts = [
     title: "Geist Sans",
     type: "registry:font",
     font: {
-      family: "Geist Sans",
+      family: "'Geist Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -30,7 +30,7 @@ export const fonts = [
     title: "Noto Sans",
     type: "registry:font",
     font: {
-      family: "Noto Sans",
+      family: "'Noto Sans Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       import: "Noto_Sans",
@@ -41,7 +41,7 @@ export const fonts = [
     title: "Nunito Sans",
     type: "registry:font",
     font: {
-      family: "Nunito Sans",
+      family: "'Nunito Sans Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       import: "Nunito_Sans",
@@ -52,7 +52,7 @@ export const fonts = [
     title: "Figtree",
     type: "registry:font",
     font: {
-      family: "Figtree",
+      family: "'Figtree Variable', sans-serif",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -64,7 +64,7 @@ export const fonts = [
     title: "JetBrains Mono",
     type: "registry:font",
     font: {
-      family: "JetBrains Mono",
+      family: "'JetBrains Mono Variable', monospace",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],
@@ -76,7 +76,7 @@ export const fonts = [
     title: "Geist Mono",
     type: "registry:font",
     font: {
-      family: "Geist Mono",
+      family: "'Geist Mono Variable', monospace",
       provider: "google",
       variable: "--font-sans",
       subsets: ["latin"],

@@ -4,7 +4,7 @@
   "title": "JetBrains Mono",
   "type": "registry:font",
   "font": {
-    "family": "JetBrains Mono",
+    "family": "'JetBrains Mono Variable', monospace",
     "provider": "google",
     "import": "JetBrains_Mono",
     "variable": "--font-sans",
