@@ -1,8 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft02Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
@@ -12,16 +10,15 @@ import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { SiteConfig } from "@/components/site-config"
+import { BASES } from "@/registry/config"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
 import { Customizer } from "@/app/(design)/components/customizer"
-import { InstallDialog } from "@/app/(design)/components/install-dialog"
 import { ItemExplorer } from "@/app/(design)/components/item-explorer"
 import { ItemPicker } from "@/app/(design)/components/item-picker"
 import { Preview } from "@/app/(design)/components/preview"
 import { getItemsForBase } from "@/app/(design)/lib/api"
-import { BASES } from "@/app/(design)/lib/config"
 import { designSystemSearchParamsCache } from "@/app/(design)/lib/search-params"
 
 export const revalidate = false
@@ -147,7 +144,7 @@ export default async function NewPage({
           >
             <ItemExplorer items={filteredItems} />
             <Preview base={base.name} />
-            <Customizer />
+            <Customizer base={base.name} />
           </div>
         </SidebarProvider>
       </main>

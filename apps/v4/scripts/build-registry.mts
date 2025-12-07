@@ -8,6 +8,7 @@ import { createStyleMap, transformStyle } from "shadcn/utils"
 import { getAllBlocks } from "@/lib/blocks"
 import { legacyStyles } from "@/registry/_legacy-styles"
 import { BASES, type Base } from "@/registry/bases"
+import { PRESETS } from "@/registry/config"
 import { STYLES } from "@/registry/styles"
 
 // This is a list of styles that we want to check into tracking.
@@ -49,6 +50,9 @@ try {
 
   console.log("\n🗂️ Building registry/__blocks__.json...")
   await buildBlocksIndex()
+
+  console.log("\n⚙️ Building public/r/config.json...")
+  await buildConfig()
 
   // Clean up intermediate files and generated base directories.
   console.log("\n🧹 Cleaning up...")
@@ -426,4 +430,24 @@ async function cleanUp(stylesToBuild: { name: string; title: string }[]) {
       }
     }
   }
+}
+
+async function buildConfig() {
+  const config = {
+    presets: PRESETS,
+  }
+
+  const outputPath = path.join(process.cwd(), "public/r/config.json")
+  await fs.writeFile(outputPath, JSON.stringify(config, null, 2))
+
+  // Format with prettier.
+  await new Promise<void>((resolve, reject) => {
+    execFile("prettier", ["--write", outputPath], (error) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/navigation"
 import { useQueryStates } from "nuqs"
 
 import {
@@ -9,6 +10,7 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
+import { type Preset } from "@/registry/config"
 import {
   Select,
   SelectContent,
@@ -17,10 +19,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { type Preset } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
-export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
+export function PresetPicker({
+  presets,
+  base,
+}: {
+  presets: readonly Preset[]
+  base: string
+}) {
+  const router = useRouter()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -29,6 +37,7 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
   const currentPreset = React.useMemo(() => {
     return presets.find(
       (preset) =>
+        preset.base === base &&
         preset.style === params.style &&
         preset.baseColor === params.baseColor &&
         preset.theme === params.theme &&
@@ -40,6 +49,7 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
     )
   }, [
     presets,
+    base,
     params.style,
     params.baseColor,
     params.theme,
@@ -55,19 +65,42 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
       value={currentPreset?.title ?? ""}
       onValueChange={(value) => {
         const preset = presets.find((p) => p.title === value)
-        if (preset) {
-          setParams({
-            style: preset.style,
-            baseColor: preset.baseColor,
-            theme: preset.theme,
-            iconLibrary: preset.iconLibrary,
-            font: preset.font,
-            menuAccent: preset.menuAccent,
-            menuColor: preset.menuColor,
-            radius: preset.radius,
-            custom: false,
-          })
+        if (!preset) {
+          return
         }
+
+        // Build search params for the preset.
+        const searchParams = new URLSearchParams({
+          item: params.item,
+          style: preset.style,
+          baseColor: preset.baseColor,
+          theme: preset.theme,
+          iconLibrary: preset.iconLibrary,
+          font: preset.font,
+          menuAccent: preset.menuAccent,
+          menuColor: preset.menuColor,
+          radius: preset.radius,
+          custom: "false",
+        })
+
+        // If base is different, navigate to the new base URL.
+        if (preset.base !== base) {
+          router.push(`/design/${preset.base}?${searchParams.toString()}`)
+          return
+        }
+
+        // Same base, just update query params.
+        setParams({
+          style: preset.style,
+          baseColor: preset.baseColor,
+          theme: preset.theme,
+          iconLibrary: preset.iconLibrary,
+          font: preset.font,
+          menuAccent: preset.menuAccent,
+          menuColor: preset.menuColor,
+          radius: preset.radius,
+          custom: false,
+        })
       }}
     >
       <SelectTrigger>
@@ -77,7 +110,7 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
               <div className="text-muted-foreground text-xs">Preset</div>
               <div className="text-foreground text-sm">
                 <div className="font-medium">
-                  {currentPreset?.description ?? "Custom"}
+                  {currentPreset?.title ?? "Custom"}
                 </div>
               </div>
             </div>
@@ -87,7 +120,7 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
             <div className="text-muted-foreground text-xs">Preset</div>
             <div className="text-foreground text-sm">
               <div className="font-medium">
-                {currentPreset?.description ?? "Custom"}
+                {currentPreset?.title ?? "Custom"}
               </div>
             </div>
           </div>

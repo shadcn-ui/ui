@@ -18,6 +18,7 @@ export default function SwitchExample() {
       <SwitchBasic />
       <SwitchWithDescription />
       <SwitchDisabled />
+      <SwitchSizes />
     </ExampleWrapper>
   )
 }
@@ -76,6 +77,23 @@ function SwitchDisabled() {
         <div className="flex items-center gap-2">
           <Switch id="switch-disabled-checked" defaultChecked disabled />
           <Label htmlFor="switch-disabled-checked">Disabled (Checked)</Label>
+        </div>
+      </div>
+    </Example>
+  )
+}
+
+function SwitchSizes() {
+  return (
+    <Example title="Sizes">
+      <div className="flex flex-col gap-12">
+        <div className="flex items-center gap-2">
+          <Switch id="switch-size-sm" size="sm" />
+          <Label htmlFor="switch-size-sm">Small</Label>
+        </div>
+        <div className="flex items-center gap-2">
+          <Switch id="switch-size-default" size="default" />
+          <Label htmlFor="switch-size-default">Default</Label>
         </div>
       </div>
     </Example>

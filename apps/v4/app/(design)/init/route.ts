@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { registryItemSchema } from "shadcn/schema"
 
-import {
-  buildRegistryBase,
-  designSystemConfigSchema,
-} from "@/app/(design)/lib/config"
+import { buildRegistryBase, designSystemConfigSchema } from "@/registry/config"
 
 export async function GET(request: NextRequest) {
   try {

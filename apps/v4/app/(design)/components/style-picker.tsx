@@ -2,6 +2,7 @@
 
 import { useQueryStates } from "nuqs"
 
+import { type Style, type StyleName } from "@/registry/config"
 import {
   Select,
   SelectContent,
@@ -9,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { type Style, type StyleName } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function StylePicker({ styles }: { styles: readonly Style[] }) {

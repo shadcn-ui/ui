@@ -2,7 +2,7 @@ import "server-only"
 
 import { registryItemSchema } from "shadcn/schema"
 
-import { type BaseName, getThemesForBaseColor } from "@/app/(design)/lib/config"
+import { getThemesForBaseColor, type BaseName } from "@/registry/config"
 import { ALLOWED_ITEM_TYPES } from "@/app/(design)/lib/constants"
 
 export async function getItemsForBase(base: BaseName) {

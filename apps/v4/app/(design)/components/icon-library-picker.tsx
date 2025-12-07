@@ -6,6 +6,11 @@ import { useQueryStates } from "nuqs"
 
 import { Item, ItemContent, ItemTitle } from "@/registry/bases/radix/ui/item"
 import {
+  iconLibraries,
+  type IconLibrary,
+  type IconLibraryName,
+} from "@/registry/config"
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -13,11 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import {
-  iconLibraries,
-  type IconLibrary,
-  type IconLibraryName,
-} from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 const IconLucide = lazy(() =>
@@ -162,7 +162,7 @@ export function IconLibraryPicker() {
   })
 
   const currentIconLibrary = React.useMemo(
-    () => iconLibraries[params.iconLibrary],
+    () => iconLibraries[params.iconLibrary as keyof typeof iconLibraries],
     [params.iconLibrary]
   )
 

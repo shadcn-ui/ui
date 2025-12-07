@@ -9,7 +9,6 @@ import {
 import {
   BASE_COLORS,
   DEFAULT_CONFIG,
-  FONTS,
   iconLibraries,
   MENU_ACCENTS,
   MENU_COLORS,
@@ -24,7 +23,8 @@ import {
   type RadiusValue,
   type StyleName,
   type ThemeName,
-} from "@/app/(design)/lib/config"
+} from "@/registry/config"
+import { FONTS } from "@/app/(design)/lib/fonts"
 
 export const designSystemSearchParams = {
   item: parseAsString.withDefault("cover"),

@@ -2,6 +2,7 @@
 
 import { useQueryStates } from "nuqs"
 
+import { MENU_ACCENTS, type MenuAccentValue } from "@/registry/config"
 import {
   Select,
   SelectContent,
@@ -9,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { MENU_ACCENTS, type MenuAccentValue } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function MenuAccentPicker() {

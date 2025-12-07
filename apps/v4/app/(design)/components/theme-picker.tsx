@@ -5,6 +5,7 @@ import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
 import { useMounted } from "@/hooks/use-mounted"
+import { BASE_COLORS, type Theme, type ThemeName } from "@/registry/config"
 import {
   Select,
   SelectContent,
@@ -14,11 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import {
-  BASE_COLORS,
-  type Theme,
-  type ThemeName,
-} from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function ThemePicker({ themes }: { themes: readonly Theme[] }) {

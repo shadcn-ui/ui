@@ -3,6 +3,7 @@
 import * as React from "react"
 import { useParams, useRouter, useSearchParams } from "next/navigation"
 
+import { BASES } from "@/registry/config"
 import {
   Select,
   SelectContent,
@@ -10,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { BASES, type Base } from "@/app/(design)/lib/config"
 
 export function BasePicker() {
   const params = useParams()

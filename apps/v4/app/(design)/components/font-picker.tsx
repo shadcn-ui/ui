@@ -9,6 +9,7 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
+import { type FontValue } from "@/registry/config"
 import {
   Select,
   SelectContent,
@@ -18,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { type Font, type FontValue } from "@/app/(design)/lib/config"
+import { type Font } from "@/app/(design)/lib/fonts"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function FontPicker({ fonts }: { fonts: readonly Font[] }) {

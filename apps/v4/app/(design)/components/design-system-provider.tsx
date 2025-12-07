@@ -2,13 +2,13 @@
 
 import * as React from "react"
 
-import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system"
 import {
   buildRegistryTheme,
   DEFAULT_CONFIG,
-  FONTS,
   type DesignSystemConfig,
-} from "@/app/(design)/lib/config"
+} from "@/registry/config"
+import { useDesignSystemParam } from "@/app/(design)/hooks/use-design-system"
+import { FONTS } from "@/app/(design)/lib/fonts"
 
 export function DesignSystemProvider({
   children,

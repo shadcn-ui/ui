@@ -1,8 +1,8 @@
 "use client"
 
-import * as React from "react"
 import { useQueryStates } from "nuqs"
 
+import { RADII, type RadiusValue } from "@/registry/config"
 import {
   Select,
   SelectContent,
@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york-v4/ui/select"
-import { RADII, type RadiusValue } from "@/app/(design)/lib/config"
 import { designSystemSearchParams } from "@/app/(design)/lib/search-params"
 
 export function RadiusPicker() {
