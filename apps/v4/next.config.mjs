@@ -81,8 +81,8 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: "/design",
-        destination: "/design/radix",
+        source: "/create",
+        destination: "/create/radix",
         permanent: false,
       },
     ]

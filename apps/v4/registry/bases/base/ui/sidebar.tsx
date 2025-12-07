@@ -23,7 +23,7 @@ import {
   TooltipTrigger,
 } from "@/registry/bases/base/ui/tooltip"
 import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7

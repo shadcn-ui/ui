@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { cn } from "@/registry/bases/base/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function NativeSelect({ className, ...props }: React.ComponentProps<"select">) {
   return (

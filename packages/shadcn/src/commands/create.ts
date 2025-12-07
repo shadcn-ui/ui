@@ -2,6 +2,7 @@ import path from "path"
 import { getPreset, getPresets, getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
 import { clearRegistryContext } from "@/src/registry/context"
+import { isUrl } from "@/src/registry/utils"
 import { Preset } from "@/src/schema"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -93,14 +94,26 @@ export const create = new Command()
       }
 
       // Handle preset selection.
-      const preset = await handlePresetOption(opts.preset ?? true)
+      const presetResult = await handlePresetOption(opts.preset ?? true)
 
-      if (!preset) {
+      if (!presetResult) {
         process.exit(0)
       }
 
-      // Build the init URL from preset.
-      const initUrl = buildInitUrl(preset)
+      // Determine initUrl and baseColor based on preset type.
+      let initUrl: string
+      let baseColor: string
+
+      if ("_isUrl" in presetResult) {
+        // User provided a URL directly.
+        initUrl = presetResult.url
+        const url = new URL(presetResult.url)
+        baseColor = url.searchParams.get("baseColor") ?? "neutral"
+      } else {
+        // User selected a preset by name.
+        initUrl = buildInitUrl(presetResult)
+        baseColor = presetResult.baseColor
+      }
 
       // Fetch the registry:base item to get its config.
       let shadowConfig = configWithDefaults({})
@@ -133,7 +146,7 @@ export const create = new Command()
         srcDir: opts.srcDir,
         cssVariables: true,
         template,
-        baseColor: preset.baseColor,
+        baseColor,
         baseStyle: false,
         registryBaseConfig,
         skipPreflight: false,
@@ -208,8 +221,14 @@ async function handlePresetOption(presetArg: string | boolean) {
     return presets.find((p) => p.name === selectedPreset) ?? null
   }
 
-  // If --preset NAME is provided, fetch that preset.
+  // If --preset NAME or URL is provided.
   if (typeof presetArg === "string") {
+    // Check if it's a URL.
+    if (isUrl(presetArg)) {
+      return { _isUrl: true, url: presetArg } as const
+    }
+
+    // Otherwise, fetch that preset by name.
     const preset = await getPreset(presetArg)
 
     if (!preset) {

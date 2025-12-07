@@ -4,7 +4,7 @@ import { Radio as RadioPrimitive } from "@base-ui-components/react/radio"
 import { RadioGroup as RadioGroupPrimitive } from "@base-ui-components/react/radio-group"
 
 import { cn } from "@/registry/bases/base/lib/utils"
-import { IconPlaceholder } from "@/app/(design)/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {
   return (

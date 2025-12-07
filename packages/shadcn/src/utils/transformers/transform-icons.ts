@@ -60,6 +60,19 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
     // Remove the library-specific prop
     jsxIconAttr.remove()
 
+    // Remove all other library-specific props
+    for (const attr of element.getAttributes()) {
+      if (attr.getKind() !== SyntaxKind.JsxAttribute) {
+        continue
+      }
+      const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
+      const attrName = jsxAttr.getNameNode().getText()
+      // Filter out library-specific props (lucide, tabler, hugeicons, etc.)
+      if (attrName in iconLibraries) {
+        jsxAttr.remove()
+      }
+    }
+
     if (!usageMatch) {
       element.getTagNameNode()?.replaceWithText(targetIconName)
       continue
@@ -68,7 +81,26 @@ export const transformIcons: Transformer = async ({ sourceFile, config }) => {
     const [, componentName, defaultPropsStr] = usageMatch
 
     if (componentName === "ICON") {
-      element.getTagNameNode()?.replaceWithText(targetIconName)
+      // Get remaining user attributes (non-library props)
+      const userAttributes = element
+        .getAttributes()
+        .filter((attr) => {
+          if (attr.getKind() !== SyntaxKind.JsxAttribute) {
+            return true
+          }
+          const jsxAttr = attr.asKindOrThrow(SyntaxKind.JsxAttribute)
+          const attrName = jsxAttr.getNameNode().getText()
+          // Filter out library-specific props (lucide, tabler, hugeicons, etc.)
+          return !(attrName in iconLibraries)
+        })
+        .map((attr) => attr.getText())
+        .join(" ")
+
+      if (userAttributes.trim()) {
+        element.replaceWithText(`<${targetIconName} ${userAttributes} />`)
+      } else {
+        element.getTagNameNode()?.replaceWithText(targetIconName)
+      }
     } else {
       const existingPropNames = new Set(
         element

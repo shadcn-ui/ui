@@ -38,7 +38,7 @@ describe("transformIconPlaceholder", () => {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <div><IconPlaceholder lucide="CheckIcon" /></div>
@@ -66,7 +66,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder lucide="CheckIcon" className="size-4" aria-label="check" />
@@ -94,7 +94,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return (
@@ -132,7 +132,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react";
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder";
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder";
 
 export function Component() {
   return <IconPlaceholder lucide="CheckIcon" />;
@@ -162,7 +162,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <div><IconPlaceholder tabler="IconCheck" /></div>
@@ -190,7 +190,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder tabler="IconCheck" className="size-4" aria-label="check" />
@@ -218,7 +218,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return (
@@ -256,7 +256,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react";
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder";
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder";
 
 export function Component() {
   return <IconPlaceholder tabler="IconCheck" />;
@@ -286,7 +286,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <div><IconPlaceholder hugeicons="Tick02Icon" /></div>
@@ -315,7 +315,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder hugeicons="Tick02Icon" className="size-4" />
@@ -344,7 +344,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder hugeicons="Tick02Icon" strokeWidth={4} />
@@ -373,7 +373,7 @@ export function Component() {
           {
             filename: "test.tsx",
             raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return (
@@ -413,7 +413,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder lucide="CheckIcon" />
@@ -424,7 +424,7 @@ export function Component() {
       )
     ).toMatchInlineSnapshot(`
       "import * as React from "react"
-      import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+      import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
       export function Component() {
         return <IconPlaceholder lucide="CheckIcon" />
@@ -438,7 +438,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder tabler="IconCheck" />
@@ -465,7 +465,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder lucide="CheckIcon" aria-label="check icon here" className="size-4" />
@@ -493,7 +493,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder lucide="CheckIcon" />
@@ -521,7 +521,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder hugeicons="Tick02Icon" />
@@ -549,7 +549,7 @@ export function Component() {
       {
         filename: "test.tsx",
         raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder lucide="CheckIcon" />
@@ -578,7 +578,7 @@ export function Component() {
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
-import { IconPlaceholder } from "@/app/(design)/design/components/icon-placeholder"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
 
 export function Component() {
   return <IconPlaceholder lucide="CheckIcon" />
@@ -596,5 +596,90 @@ export function Component() {
         'Invalid icon library "invalid-library". Valid options are: lucide, tabler, hugeicons',
       code: "INVALID_CONFIG",
     })
+  })
+
+  test("does not forward library-specific props (lucide)", async () => {
+    expect(
+      await transform(
+        {
+          filename: "test.tsx",
+          raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <IconPlaceholder lucide="CheckIcon" tabler="IconCheck" hugeicons="Tick02Icon" className="size-4" />
+}`,
+          config: {
+            ...testConfig,
+            iconLibrary: "lucide",
+          },
+        },
+        [transformIcons]
+      )
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { CheckIcon } from "lucide-react"
+
+      export function Component() {
+        return <CheckIcon className="size-4" />
+      }"
+    `)
+  })
+
+  test("does not forward library-specific props (tabler)", async () => {
+    expect(
+      await transform(
+        {
+          filename: "test.tsx",
+          raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <IconPlaceholder tabler="IconCheck" lucide="CheckIcon" hugeicons="Tick02Icon" className="size-4" />
+}`,
+          config: {
+            ...testConfig,
+            iconLibrary: "tabler",
+          },
+        },
+        [transformIcons]
+      )
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { IconCheck } from "@tabler/icons-react"
+
+      export function Component() {
+        return <IconCheck className="size-4" />
+      }"
+    `)
+  })
+
+  test("does not forward library-specific props (hugeicons)", async () => {
+    expect(
+      await transform(
+        {
+          filename: "test.tsx",
+          raw: `import * as React from "react"
+import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+export function Component() {
+  return <IconPlaceholder hugeicons="Tick02Icon" lucide="CheckIcon" tabler="IconCheck" className="size-4" />
+}`,
+          config: {
+            ...testConfig,
+            iconLibrary: "hugeicons",
+          },
+        },
+        [transformIcons]
+      )
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { HugeiconsIcon } from "@hugeicons/react"
+      import { Tick02Icon } from "@hugeicons/core-free-icons"
+
+      export function Component() {
+        return <HugeiconsIcon icon={Tick02Icon} strokeWidth={2} className="size-4" />
+      }"
+    `)
   })
 })

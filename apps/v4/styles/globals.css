@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "./legacy-themes.css";
 
 @import "../registry/styles/style-vega.css" layer(base);
 @import "../registry/styles/style-nova.css" layer(base);
