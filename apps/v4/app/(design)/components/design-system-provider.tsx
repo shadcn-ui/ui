@@ -21,7 +21,6 @@ export function DesignSystemProvider({
   const baseColor = useDesignSystemParam("baseColor")
   const menuAccent = useDesignSystemParam("menuAccent")
   const menuColor = useDesignSystemParam("menuColor")
-  const spacing = useDesignSystemParam("spacing")
   const radius = useDesignSystemParam("radius")
   const [isReady, setIsReady] = React.useState(false)
 
@@ -67,7 +66,7 @@ export function DesignSystemProvider({
   }, [style, theme, font, baseColor])
 
   const registryTheme = React.useMemo(() => {
-    if (!baseColor || !theme || !menuAccent || !spacing || !radius) {
+    if (!baseColor || !theme || !menuAccent || !radius) {
       return null
     }
 
@@ -76,12 +75,11 @@ export function DesignSystemProvider({
       baseColor,
       theme,
       menuAccent,
-      spacing,
       radius,
     }
 
     return buildRegistryTheme(config)
-  }, [baseColor, theme, menuAccent, spacing, radius])
+  }, [baseColor, theme, menuAccent, radius])
 
   React.useEffect(() => {
     if (!registryTheme || !registryTheme.cssVars) {

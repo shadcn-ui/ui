@@ -44,26 +44,17 @@ export type MenuColor = (typeof MENU_COLORS)[number]
 
 export type MenuColorValue = MenuColor["value"]
 
-export const SPACINGS = [
-  { value: "default", label: "Default" },
-  { value: "compact", label: "Compact" },
-] as const
-
-export type Spacing = (typeof SPACINGS)[number]
-
-export type SpacingValue = Spacing["value"]
-
 export const RADII = [
-  { value: "default", label: "Default" },
-  { value: "none", label: "None" },
-  { value: "small", label: "Small" },
-  { value: "medium", label: "Medium" },
-  { value: "large", label: "Large" },
+  { name: "default", label: "Default", value: "" },
+  { name: "none", label: "None", value: "0" },
+  { name: "small", label: "Small", value: "0.45rem" },
+  { name: "medium", label: "Medium", value: "0.625rem" },
+  { name: "large", label: "Large", value: "0.875rem" },
 ] as const
 
 export type Radius = (typeof RADII)[number]
 
-export type RadiusValue = Radius["value"]
+export type RadiusValue = Radius["name"]
 
 export const designSystemConfigSchema = z
   .object({
@@ -94,11 +85,8 @@ export const designSystemConfigSchema = z
         MENU_COLORS.map((m) => m.value) as [MenuColorValue, ...MenuColorValue[]]
       )
       .default("default"),
-    spacing: z
-      .enum(SPACINGS.map((s) => s.value) as [SpacingValue, ...SpacingValue[]])
-      .default("default"),
     radius: z
-      .enum(RADII.map((r) => r.value) as [RadiusValue, ...RadiusValue[]])
+      .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
   })
   .refine(
@@ -123,7 +111,6 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   font: "inter",
   menuAccent: "subtle",
   menuColor: "default",
-  spacing: "default",
   radius: "default",
 }
 
@@ -144,35 +131,19 @@ export const PRESETS: Preset[] = [
     font: "inter",
     menuAccent: "subtle",
     menuColor: "default",
-    spacing: "default",
-    radius: "medium",
-  },
-  {
-    title: "Vega (Compact)",
-    description: "Vega / Lucide / Inter",
-    base: "radix",
-    style: "vega",
-    baseColor: "neutral",
-    theme: "blue",
-    iconLibrary: "hugeicons",
-    font: "geist-sans",
-    menuAccent: "bold",
-    menuColor: "inverted",
-    spacing: "compact",
     radius: "medium",
   },
   {
     title: "Nova",
     description: "Nova / Hugeicons / Figtree",
-    base: "radix",
+    base: "base",
     style: "nova",
     baseColor: "neutral",
     theme: "blue",
     iconLibrary: "hugeicons",
     font: "figtree",
-    menuAccent: "subtle",
-    menuColor: "default",
-    spacing: "default",
+    menuAccent: "bold",
+    menuColor: "inverted",
     radius: "medium",
   },
 ]
@@ -242,30 +213,12 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
     darkVars["accent-foreground"] = darkVars["primary-foreground"]
   }
 
-  // Apply spacing transformation.
-  if (config.spacing === "compact") {
-    themeVars.spacing = "0.20835rem"
-    themeVars["text-xs"] = "11px"
-    themeVars["text-sm"] = "13px"
-    themeVars["text-base"] = "15px"
-    themeVars["text-lg"] = "17px"
-    themeVars["text-xl"] = "19px"
-    themeVars["text-xs--line-height"] = "calc(1 / 0.6875rem)"
-    themeVars["text-sm--line-height"] = "calc(1.25 / 0.8125rem)"
-    themeVars["text-base--line-height"] = "calc(1.5 / 0.9375rem)"
-    themeVars["text-lg--line-height"] = "calc(1.75 / 1.0625rem)"
-    themeVars["text-xl--line-height"] = "calc(1.75 / 1.1875rem)"
-  }
-
   // Apply radius transformation.
   if (config.radius && config.radius !== "default") {
-    const radiusValues: Record<Exclude<RadiusValue, "default">, string> = {
-      none: "0",
-      small: "0.45rem",
-      medium: "0.625rem",
-      large: "0.875rem",
+    const radius = RADII.find((r) => r.name === config.radius)
+    if (radius && radius.value) {
+      lightVars.radius = radius.value
     }
-    lightVars.radius = radiusValues[config.radius]
   }
 
   return {

@@ -14,7 +14,6 @@ import { InstallDialog } from "@/app/(design)/components/install-dialog"
 import { MenuColorPicker } from "@/app/(design)/components/menu-picker"
 import { PresetPicker } from "@/app/(design)/components/preset-picker"
 import { RadiusPicker } from "@/app/(design)/components/radius-picker"
-import { SpacingPicker } from "@/app/(design)/components/spacing-picker"
 import { StylePicker } from "@/app/(design)/components/style-picker"
 import { ThemePicker } from "@/app/(design)/components/theme-picker"
 import {
@@ -41,7 +40,7 @@ export function Customizer({
     <div className="no-scrollbar flex h-[calc(100svh-var(--header-height)-2rem)] w-48 flex-col gap-4 overflow-y-auto p-1">
       <FieldGroup className="**:data-[slot=select-trigger]:hover:bg-muted **:data-[slot=select-trigger]:ring-foreground/10 dark:**:data-[slot=select-trigger]:hover:bg-muted/50 **:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 dark:**:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 flex flex-1 flex-col gap-0.5 **:data-[slot=select-trigger]:w-full **:data-[slot=select-trigger]:rounded-lg **:data-[slot=select-trigger]:border-0 **:data-[slot=select-trigger]:bg-transparent **:data-[slot=select-trigger]:text-left **:data-[slot=select-trigger]:shadow-none **:data-[slot=select-trigger]:data-[size=default]:h-12 **:data-[slot=select-trigger]:data-[size=default]:px-2 dark:**:data-[slot=select-trigger]:bg-transparent **:[[data-slot=select-trigger]>svg]:hidden">
         <PresetPicker presets={PRESETS} />
-        <FieldSeparator className="opacity-0" />
+        <FieldSeparator className="my-px opacity-0" />
         <BasePicker />
         <StylePicker styles={STYLES} />
         <BaseColorPicker />
@@ -49,7 +48,6 @@ export function Customizer({
         <IconLibraryPicker />
         <FontPicker fonts={FONTS} />
         <FieldSeparator className="opacity-0" />
-        <SpacingPicker />
         <RadiusPicker />
         <MenuColorPicker />
         <MenuAccentPicker />

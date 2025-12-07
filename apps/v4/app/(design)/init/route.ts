@@ -19,7 +19,6 @@ export async function GET(request: NextRequest) {
       font: searchParams.get("font"),
       menuAccent: searchParams.get("menuAccent"),
       menuColor: searchParams.get("menuColor"),
-      spacing: searchParams.get("spacing"),
       radius: searchParams.get("radius"),
     })
 

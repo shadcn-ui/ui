@@ -36,7 +36,6 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
         preset.font === params.font &&
         preset.menuAccent === params.menuAccent &&
         preset.menuColor === params.menuColor &&
-        preset.spacing === params.spacing &&
         preset.radius === params.radius
     )
   }, [
@@ -48,7 +47,6 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
     params.font,
     params.menuAccent,
     params.menuColor,
-    params.spacing,
     params.radius,
   ])
 
@@ -66,7 +64,6 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
             font: preset.font,
             menuAccent: preset.menuAccent,
             menuColor: preset.menuColor,
-            spacing: preset.spacing,
             radius: preset.radius,
             custom: false,
           })

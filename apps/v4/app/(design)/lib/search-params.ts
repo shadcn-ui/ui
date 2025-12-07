@@ -14,7 +14,6 @@ import {
   MENU_ACCENTS,
   MENU_COLORS,
   RADII,
-  SPACINGS,
   STYLES,
   THEMES,
   type BaseColorName,
@@ -23,7 +22,6 @@ import {
   type MenuAccentValue,
   type MenuColorValue,
   type RadiusValue,
-  type SpacingValue,
   type StyleName,
   type ThemeName,
 } from "@/app/(design)/lib/config"
@@ -51,11 +49,8 @@ export const designSystemSearchParams = {
   menuColor: parseAsStringLiteral<MenuColorValue>(
     MENU_COLORS.map((m) => m.value)
   ).withDefault(DEFAULT_CONFIG.menuColor),
-  spacing: parseAsStringLiteral<SpacingValue>(
-    SPACINGS.map((s) => s.value)
-  ).withDefault(DEFAULT_CONFIG.spacing),
   radius: parseAsStringLiteral<RadiusValue>(
-    RADII.map((r) => r.value)
+    RADII.map((r) => r.name)
   ).withDefault("default"),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),

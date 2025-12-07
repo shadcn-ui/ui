@@ -21,13 +21,13 @@ export function RadiusPicker() {
     history: "push",
   })
 
-  const currentRadius = RADII.find((radius) => radius.value === params.radius)
-  const defaultRadius = RADII.find((radius) => radius.value === "default")
-  const otherRadii = RADII.filter((radius) => radius.value !== "default")
+  const currentRadius = RADII.find((radius) => radius.name === params.radius)
+  const defaultRadius = RADII.find((radius) => radius.name === "default")
+  const otherRadii = RADII.filter((radius) => radius.name !== "default")
 
   return (
     <Select
-      value={currentRadius?.value}
+      value={currentRadius?.name}
       onValueChange={(value) => {
         setParams({ radius: value as RadiusValue })
       }}
@@ -69,8 +69,8 @@ export function RadiusPicker() {
         <SelectGroup>
           {defaultRadius && (
             <SelectItem
-              key={defaultRadius.value}
-              value={defaultRadius.value}
+              key={defaultRadius.name}
+              value={defaultRadius.name}
               className="rounded-lg"
             >
               <div className="flex flex-col justify-start">
@@ -86,8 +86,8 @@ export function RadiusPicker() {
         <SelectGroup>
           {otherRadii.map((radius) => (
             <SelectItem
-              key={radius.value}
-              value={radius.value}
+              key={radius.name}
+              value={radius.name}
               className="rounded-lg"
             >
               {radius.label}
