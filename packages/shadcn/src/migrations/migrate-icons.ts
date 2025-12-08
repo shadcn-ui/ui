@@ -148,6 +148,15 @@ export async function migrateIconsFile(
     scriptKind: ScriptKind.TSX,
   })
 
+  const sourceToTargetMap = new Map<string, string>()
+  for (const iconEntry of Object.values(iconsMapping)) {
+    const sourceIconName = iconEntry[sourceLibrary]
+    const targetIconName = iconEntry[targetLibrary]
+    if (sourceIconName && targetIconName) {
+      sourceToTargetMap.set(sourceIconName, targetIconName)
+    }
+  }
+
   // Find all sourceLibrary imports.
   let targetedIcons: string[] = []
   for (const importDeclaration of sourceFile.getImportDeclarations() ?? []) {
@@ -161,10 +170,7 @@ export async function migrateIconsFile(
     for (const specifier of importDeclaration.getNamedImports() ?? []) {
       const iconName = specifier.getName()
 
-      // TODO: this is O(n^2) but okay for now.
-      const targetedIcon = Object.values(iconsMapping).find(
-        (icon) => icon[sourceLibrary] === iconName
-      )?.[targetLibrary]
+      const targetedIcon = sourceToTargetMap.get(iconName)
 
       if (!targetedIcon || targetedIcons.includes(targetedIcon)) {
         continue
