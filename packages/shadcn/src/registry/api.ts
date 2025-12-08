@@ -316,7 +316,14 @@ export async function getPresets(options?: { useCache?: boolean }) {
   return result.presets
 }
 
-export async function getPreset(name: string, options?: { useCache?: boolean }) {
+export async function getPreset(
+  name: string,
+  options?: { useCache?: boolean }
+) {
   const presets = await getPresets(options)
-  return presets.find((preset) => preset.name.toLowerCase() === name.toLowerCase()) ?? null
+  return (
+    presets.find(
+      (preset) => preset.name.toLowerCase() === name.toLowerCase()
+    ) ?? null
+  )
 }

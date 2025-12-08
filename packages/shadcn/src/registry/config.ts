@@ -1,6 +1,6 @@
 import { BUILTIN_REGISTRIES, FALLBACK_STYLE } from "@/src/registry/constants"
 import { configSchema } from "@/src/schema"
-import { Config, createConfig, DeepPartial } from "@/src/utils/get-config"
+import { Config, DeepPartial, createConfig } from "@/src/utils/get-config"
 import deepmerge from "deepmerge"
 
 function resolveStyleFromConfig(config: DeepPartial<Config>) {

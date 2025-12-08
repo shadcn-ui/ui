@@ -134,9 +134,7 @@ export const transformAsChild: Transformer = async ({ sourceFile, config }) => {
     }
 
     // Build the new element text.
-    const newChildren = info.childChildren.trim()
-      ? `${info.childChildren}`
-      : ""
+    const newChildren = info.childChildren.trim() ? `${info.childChildren}` : ""
 
     const newElementText = `<${info.parentTagName} ${newAttrs}>${newChildren}</${info.parentTagName}>`
 

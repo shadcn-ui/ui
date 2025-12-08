@@ -56,7 +56,7 @@ export function BasePicker() {
           </div>
           {currentBase?.meta?.logo && (
             <div
-              className="text-foreground *:[svg]:text-foreground! absolute right-4 top-1/2 size-4 -translate-y-1/2"
+              className="text-foreground *:[svg]:text-foreground! absolute top-1/2 right-4 size-4 -translate-y-1/2"
               dangerouslySetInnerHTML={{
                 __html: currentBase.meta.logo,
               }}
