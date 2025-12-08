@@ -98,7 +98,6 @@
   "@moleculeui": "https://moleculeui.design/r/{name}.json",
   "@uicapsule": "https://uicapsule.com/r/{name}.json",
   "@uitripled": "https://ui.tripled.work/r/{name}.json",
-  "@ui-layouts": "https://ui-layouts.com/r/{name}.json",
   "@tour": "https://onboarding-tour.vercel.app/r/{name}.json",
   "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json",
   "@ui-layouts": "https://ui-layouts.com/r/{name}.json"

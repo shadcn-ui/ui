@@ -10,7 +10,12 @@
   },
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "!**/test/**",
+    "!**/fixtures/**",
+    "!**/temp/**",
+    "!packages/tests/temp/**",
+    "!deprecated/**"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -77,10 +82,8 @@
     "start-server-and-test": "^2.0.12",
     "typescript": "^5.5.3"
   },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.2"
-    }
+  "overrides": {
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2"
   }
 }
