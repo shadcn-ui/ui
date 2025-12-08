@@ -4863,21 +4863,6 @@
       "type": "registry:example"
     },
     {
-      "name": "calendar-form",
-      "registryDependencies": [
-        "calendar",
-        "form",
-        "popover"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/calendar-form.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "card-demo",
       "registryDependencies": [
         "card",
@@ -5014,34 +4999,6 @@
       "type": "registry:example"
     },
     {
-      "name": "checkbox-form-multiple",
-      "registryDependencies": [
-        "checkbox",
-        "form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/checkbox-form-multiple.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "checkbox-form-single",
-      "registryDependencies": [
-        "checkbox",
-        "form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/checkbox-form-single.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "checkbox-with-text",
       "registryDependencies": [
         "checkbox"
@@ -5090,20 +5047,6 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/combobox-dropdown-menu.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "combobox-form",
-      "registryDependencies": [
-        "command",
-        "form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/combobox-form.tsx",
           "type": "registry:example"
         }
       ],
@@ -5204,25 +5147,6 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/date-picker-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "date-picker-form",
-      "dependencies": [
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "button",
-        "calendar",
-        "form",
-        "popover"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/date-picker-form.tsx",
           "type": "registry:example"
         }
       ],
@@ -6086,21 +6010,6 @@
       "type": "registry:example"
     },
     {
-      "name": "input-form",
-      "registryDependencies": [
-        "input",
-        "button",
-        "form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/input-form.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "input-with-button",
       "registryDependencies": [
         "input",
@@ -6345,20 +6254,6 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/input-otp-controlled.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "input-otp-form",
-      "registryDependencies": [
-        "input-otp",
-        "form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/input-otp-form.tsx",
           "type": "registry:example"
         }
       ],
@@ -6709,20 +6604,6 @@
       "type": "registry:example"
     },
     {
-      "name": "radio-group-form",
-      "registryDependencies": [
-        "radio-group",
-        "form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/radio-group-form.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "resizable-demo",
       "registryDependencies": [
         "resizable"
@@ -6821,19 +6702,6 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/select-scrollable.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "select-form",
-      "registryDependencies": [
-        "select"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/select-form.tsx",
           "type": "registry:example"
         }
       ],
@@ -7092,20 +6960,6 @@
       "type": "registry:example"
     },
     {
-      "name": "switch-form",
-      "registryDependencies": [
-        "switch",
-        "form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/switch-form.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "table-demo",
       "registryDependencies": [
         "table"
@@ -7152,20 +7006,6 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/textarea-disabled.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "textarea-form",
-      "registryDependencies": [
-        "textarea",
-        "form"
-      ],
-      "files": [
-        {
-          "path": "registry/new-york-v4/examples/textarea-form.tsx",
           "type": "registry:example"
         }
       ],
