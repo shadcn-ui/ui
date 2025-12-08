@@ -15,7 +15,8 @@ import prompts from "prompts"
 import { initOptionsSchema, runInit } from "./init"
 
 const CREATE_TEMPLATES = {
-  next: "next",
+  next: "Next.js",
+  vite: "Vite",
 } as const
 
 function getShadcnCreateUrl() {
@@ -80,8 +81,8 @@ export const create = new Command()
           message: `Which ${highlighter.info(
             "template"
           )} would you like to use?`,
-          choices: Object.keys(CREATE_TEMPLATES).map((key) => ({
-            title: key,
+          choices: Object.entries(CREATE_TEMPLATES).map(([key, value]) => ({
+            title: value,
             value: key,
           })),
         })

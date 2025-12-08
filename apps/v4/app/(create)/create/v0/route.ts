@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 import { track } from "@vercel/analytics/server"
 import dedent from "dedent"
 import {
-  configSchema,
-  RegistryItem,
+  type configSchema,
+  type RegistryItem,
   registryItemFileSchema,
   registryItemSchema,
 } from "shadcn/schema"

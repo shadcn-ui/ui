@@ -58,19 +58,19 @@ export async function massageTreeForFonts(
   }
   tree.cssVars.theme[fontSans.font.variable] = fontSans.font.family
 
-  tree.docs += `## Fonts
-The ${highlighter.info(
-    fontSans.title ?? ""
-  )} font has been added to your project.
+  //   tree.docs += `## Fonts
+  // The ${highlighter.info(
+  //     fontSans.title ?? ""
+  //   )} font has been added to your project.
 
-If you have existing font-family declarations, you may need to update them to use the new ${highlighter.info(
-    fontSans.font.variable
-  )} variable.
+  // If you have existing font-family declarations, you may need to update them to use the new ${highlighter.info(
+  //     fontSans.font.variable
+  //   )} variable.
 
-@theme inline {
-  ${fontSans.font.variable}: ${fontSans.font.family};
-}
-  `
+  // @theme inline {
+  //   ${fontSans.font.variable}: ${fontSans.font.family};
+  // }
+  //   `
 
   return tree
 }

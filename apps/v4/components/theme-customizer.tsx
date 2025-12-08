@@ -10,7 +10,7 @@ import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
 import {
-  BaseColor,
+  type BaseColor,
   baseColors,
   baseColorsOKLCH,
 } from "@/registry/_legacy-base-colors"

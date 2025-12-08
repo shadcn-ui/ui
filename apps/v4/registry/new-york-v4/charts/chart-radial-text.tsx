@@ -17,7 +17,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
-import { ChartConfig, ChartContainer } from "@/registry/new-york-v4/ui/chart"
+import { type ChartConfig, ChartContainer } from "@/registry/new-york-v4/ui/chart"
 
 export const description = "A radial chart with text"
 

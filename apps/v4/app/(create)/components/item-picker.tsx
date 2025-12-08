@@ -3,7 +3,7 @@
 import * as React from "react"
 import Script from "next/script"
 import { useQueryStates } from "nuqs"
-import { RegistryItem } from "shadcn/schema"
+import { type RegistryItem } from "shadcn/schema"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {

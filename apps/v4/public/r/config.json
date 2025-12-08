@@ -10,6 +10,7 @@
       "theme": "neutral",
       "iconLibrary": "lucide",
       "font": "inter",
+      "item": "Item",
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -24,6 +25,7 @@
       "theme": "blue",
       "iconLibrary": "hugeicons",
       "font": "figtree",
+      "item": "Item",
       "menuAccent": "bold",
       "menuColor": "inverted",
       "radius": "large"

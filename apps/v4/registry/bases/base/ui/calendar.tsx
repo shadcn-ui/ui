@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker"
+import { type DayButton, DayPicker, getDefaultClassNames } from "react-day-picker"
 
 import { cn } from "@/registry/bases/base/lib/utils"
 import { Button, buttonVariants } from "@/registry/bases/base/ui/button"

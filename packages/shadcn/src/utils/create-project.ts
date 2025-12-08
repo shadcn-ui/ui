@@ -12,12 +12,13 @@ import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
-const MONOREPO_TEMPLATE_URL =
+const GITHUB_TEMPLATE_URL =
   "https://codeload.github.com/shadcn-ui/ui/tar.gz/main"
 
 export const TEMPLATES = {
   next: "next",
   "next-monorepo": "next-monorepo",
+  vite: "vite",
 } as const
 
 export async function createProject(
@@ -36,7 +37,10 @@ export async function createProject(
       ? (options.template as keyof typeof TEMPLATES)
       : "next"
   let projectName: string =
-    options.name ?? (template === TEMPLATES.next ? "my-app" : "my-monorepo")
+    options.name ??
+    (template === TEMPLATES.next || template === TEMPLATES.vite
+      ? "my-app"
+      : "my-monorepo")
   let nextVersion = "latest"
 
   const isRemoteComponent =
@@ -74,6 +78,7 @@ export async function createProject(
         choices: [
           { title: "Next.js", value: "next" },
           { title: "Next.js (Monorepo)", value: "next-monorepo" },
+          { title: "Vite", value: "vite" },
         ],
         initial: 0,
       },
@@ -136,6 +141,12 @@ export async function createProject(
 
   if (template === TEMPLATES["next-monorepo"]) {
     await createMonorepoProject(projectPath, {
+      packageManager,
+    })
+  }
+
+  if (template === TEMPLATES.vite) {
+    await createViteProject(projectPath, {
       packageManager,
     })
   }
@@ -219,7 +230,7 @@ async function createMonorepoProject(
     // Get the template.
     const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
     await fs.ensureDir(templatePath)
-    const response = await fetch(MONOREPO_TEMPLATE_URL)
+    const response = await fetch(GITHUB_TEMPLATE_URL)
     if (!response.ok) {
       throw new Error(`Failed to download template: ${response.statusText}`)
     }
@@ -266,6 +277,77 @@ async function createMonorepoProject(
     createSpinner?.succeed("Creating a new Next.js monorepo.")
   } catch (error) {
     createSpinner?.fail("Something went wrong creating a new Next.js monorepo.")
+    handleError(error)
+  }
+}
+
+async function createViteProject(
+  projectPath: string,
+  options: {
+    packageManager: string
+  }
+) {
+  const createSpinner = spinner(
+    `Creating a new Vite project. This may take a few minutes.`
+  ).start()
+
+  try {
+    // Get the template.
+    const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
+    await fs.ensureDir(templatePath)
+    const response = await fetch(GITHUB_TEMPLATE_URL)
+    if (!response.ok) {
+      throw new Error(`Failed to download template: ${response.statusText}`)
+    }
+
+    // Write the tar file.
+    const tarPath = path.resolve(templatePath, "template.tar.gz")
+    await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
+    await execa("tar", [
+      "-xzf",
+      tarPath,
+      "-C",
+      templatePath,
+      "--strip-components=2",
+      "ui-main/templates/vite-app",
+    ])
+    const extractedPath = path.resolve(templatePath, "vite-app")
+    await fs.move(extractedPath, projectPath)
+    await fs.remove(templatePath)
+
+    // Remove pnpm-lock.yaml if using a different package manager.
+    if (options.packageManager !== "pnpm") {
+      const lockFilePath = path.join(projectPath, "pnpm-lock.yaml")
+      if (fs.existsSync(lockFilePath)) {
+        await fs.remove(lockFilePath)
+      }
+    }
+
+    // Run install.
+    await execa(options.packageManager, ["install"], {
+      cwd: projectPath,
+    })
+
+    // Write project name to the package.json.
+    const packageJsonPath = path.join(projectPath, "package.json")
+    if (fs.existsSync(packageJsonPath)) {
+      const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+      const packageJson = JSON.parse(packageJsonContent)
+      packageJson.name = projectPath.split("/").pop()
+      await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
+    }
+
+    // Try git init.
+    await execa("git", ["--version"], { cwd: projectPath })
+    await execa("git", ["init"], { cwd: projectPath })
+    await execa("git", ["add", "-A"], { cwd: projectPath })
+    await execa("git", ["commit", "-m", "Initial commit"], {
+      cwd: projectPath,
+    })
+
+    createSpinner?.succeed("Creating a new Vite project.")
+  } catch (error) {
+    createSpinner?.fail("Something went wrong creating a new Vite project.")
     handleError(error)
   }
 }

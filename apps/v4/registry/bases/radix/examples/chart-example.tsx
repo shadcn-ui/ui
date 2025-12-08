@@ -35,7 +35,7 @@ import {
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,

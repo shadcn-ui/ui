@@ -23,7 +23,7 @@ import {
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
@@ -690,7 +690,7 @@ function ObservabilityCard() {
 function FeedbackForm() {
   return (
     <Example title="Feedback Form" className="items-center justify-center">
-      <Card className="w-full max-w-sm pb-0" size="sm">
+      <Card className="w-full max-w-sm data-[size=sm]:pb-0" size="sm">
         <CardContent>
           <form id="feedback-form">
             <FieldGroup>
@@ -772,7 +772,7 @@ const chartConfig = {
 function AnalyticsCard() {
   return (
     <Example title="Analytics Card" className="justify-center">
-      <Card className="mx-auto w-full max-w-sm pb-0" size="sm">
+      <Card className="mx-auto w-full max-w-sm data-[size=sm]:pb-0" size="sm">
         <CardHeader>
           <CardTitle>Analytics</CardTitle>
           <CardDescription>

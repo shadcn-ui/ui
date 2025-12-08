@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { CalendarIcon } from "lucide-react"
-import { DateRange } from "react-day-picker"
+import { type DateRange } from "react-day-picker"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -17,7 +17,7 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,

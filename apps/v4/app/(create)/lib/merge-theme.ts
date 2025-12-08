@@ -1,4 +1,4 @@
-import { RegistryItem, registryItemSchema } from "shadcn/schema"
+import { type RegistryItem, registryItemSchema } from "shadcn/schema"
 
 import { BASE_COLORS, THEMES } from "@/registry/config"
 

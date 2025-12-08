@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ImperativePanelHandle } from "react-resizable-panels"
+import { type ImperativePanelHandle } from "react-resizable-panels"
 
 import type { Base } from "@/registry/config"
 import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/item-picker"

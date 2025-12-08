@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useQueryStates } from "nuqs"
-import { RegistryItem } from "shadcn/schema"
+import { type RegistryItem } from "shadcn/schema"
 
 import {
   Sidebar,

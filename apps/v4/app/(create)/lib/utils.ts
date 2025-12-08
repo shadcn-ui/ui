@@ -1,4 +1,4 @@
-import { RegistryItem } from "shadcn/schema"
+import { type RegistryItem } from "shadcn/schema"
 
 const mapping = {
   "registry:block": "Blocks",
