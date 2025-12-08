@@ -17,6 +17,7 @@ import { initOptionsSchema, runInit } from "./init"
 const CREATE_TEMPLATES = {
   next: "Next.js",
   vite: "Vite",
+  start: "TanStack Start",
 } as const
 
 function getShadcnCreateUrl() {

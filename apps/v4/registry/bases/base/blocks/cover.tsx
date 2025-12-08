@@ -137,20 +137,15 @@ export default function CoverExample() {
       <ObservabilityCard />
       <SpinnerEmpty />
       <EmptyAvatarGroup />
-
+      <InputGroupExamples />
       <FieldExample />
+      <AppearanceSettings />
+      <ButtonGroupExamples />
+      <ItemExample />
       <SheetExample />
       <SpinnerBadge />
-      <InputGroupExample />
-      <InputGroupButtonExample />
-      <ButtonGroupInputGroup />
-      <ItemExample />
       <FieldSlider />
-
-      <AppearanceSettings />
-      <ButtonGroupExample />
       <FieldCheckbox />
-      <ButtonGroupExample2 />
     </ExampleWrapper>
   )
 }
@@ -280,329 +275,41 @@ function AppearanceSettings() {
   )
 }
 
-function ButtonGroupExample() {
+function ButtonGroupExamples() {
   const [label, setLabel] = React.useState("personal")
 
   return (
     <Example title="Button Group">
-      <ButtonGroup>
-        <ButtonGroup className="hidden sm:flex">
-          <Button variant="outline" size="icon-sm" aria-label="Go Back">
-            <IconPlaceholder
-              lucide="ArrowLeftIcon"
-              tabler="IconArrowLeft"
-              hugeicons="ArrowLeft01Icon"
-            />
-          </Button>
-        </ButtonGroup>
+      <div className="flex flex-col gap-6">
         <ButtonGroup>
-          <Button variant="outline" size="sm">
-            Archive
-          </Button>
-          <Button variant="outline" size="sm">
-            Report
-          </Button>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button variant="outline" size="sm">
-            Snooze
-          </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={
-                <Button
-                  variant="outline"
-                  size="icon-sm"
-                  aria-label="More Options"
-                />
-              }
-            >
+          <ButtonGroup className="hidden sm:flex">
+            <Button variant="outline" size="icon-sm" aria-label="Go Back">
               <IconPlaceholder
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-                hugeicons="ArrowDown01Icon"
+                lucide="ArrowLeftIcon"
+                tabler="IconArrowLeft"
+                hugeicons="ArrowLeft01Icon"
               />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="MailCheckIcon"
-                    tabler="IconMailCheck"
-                    hugeicons="MailValidation01Icon"
-                  />
-                  Mark as Read
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="ArchiveIcon"
-                    tabler="IconArchive"
-                    hugeicons="ArchiveIcon"
-                  />
-                  Archive
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="ClockIcon"
-                    tabler="IconClock"
-                    hugeicons="ClockIcon"
-                  />
-                  Snooze
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="CalendarPlusIcon"
-                    tabler="IconCalendarPlus"
-                    hugeicons="CalendarAdd01Icon"
-                  />
-                  Add to Calendar
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="ListFilterPlusIcon"
-                    tabler="IconFilterPlus"
-                    hugeicons="AddToListIcon"
-                  />
-                  Add to List
-                </DropdownMenuItem>
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>
-                    <IconPlaceholder
-                      lucide="TagIcon"
-                      tabler="IconTag"
-                      hugeicons="TagIcon"
-                    />
-                    Label As...
-                  </DropdownMenuSubTrigger>
-                  <DropdownMenuPortal>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuGroup>
-                        <DropdownMenuRadioGroup
-                          value={label}
-                          onValueChange={setLabel}
-                        >
-                          <DropdownMenuRadioItem value="personal">
-                            Personal
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="work">
-                            Work
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="other">
-                            Other
-                          </DropdownMenuRadioItem>
-                        </DropdownMenuRadioGroup>
-                      </DropdownMenuGroup>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuPortal>
-                </DropdownMenuSub>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem variant="destructive">
-                  <IconPlaceholder
-                    lucide="Trash2Icon"
-                    tabler="IconTrash"
-                    hugeicons="Delete02Icon"
-                  />
-                  Trash
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button variant="outline" size="icon-sm" aria-label="Previous">
-            <IconPlaceholder
-              lucide="ArrowLeftIcon"
-              tabler="IconArrowLeft"
-              hugeicons="ArrowLeft01Icon"
-            />
-          </Button>
-          <Button variant="outline" size="icon-sm" aria-label="Next">
-            <IconPlaceholder
-              lucide="ArrowRightIcon"
-              tabler="IconArrowRight"
-              hugeicons="ArrowRight01Icon"
-            />
-          </Button>
-        </ButtonGroup>
-      </ButtonGroup>
-    </Example>
-  )
-}
-
-function ButtonGroupInputGroup() {
-  const [voiceEnabled, setVoiceEnabled] = React.useState(false)
-
-  return (
-    <Example title="Button Group Input Group">
-      <ButtonGroup className="w-full">
-        <ButtonGroup>
-          <Button variant="outline" size="icon" aria-label="Add">
-            <IconPlaceholder
-              lucide="PlusIcon"
-              tabler="IconPlus"
-              hugeicons="PlusSignIcon"
-            />
-          </Button>
-        </ButtonGroup>
-        <ButtonGroup className="flex-1">
-          <InputGroup>
-            <InputGroupInput
-              placeholder={
-                voiceEnabled ? "Record and send audio..." : "Send a message..."
-              }
-              disabled={voiceEnabled}
-            />
-            <InputGroupAddon align="inline-end">
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <InputGroupButton
-                      onClick={() => setVoiceEnabled(!voiceEnabled)}
-                      data-active={voiceEnabled}
-                      className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
-                      aria-pressed={voiceEnabled}
-                      size="icon-xs"
-                      aria-label="Voice Mode"
-                    />
-                  }
-                >
-                  <IconPlaceholder
-                    lucide="AudioLinesIcon"
-                    tabler="IconWaveSine"
-                    hugeicons="AudioWave01Icon"
-                  />
-                </TooltipTrigger>
-                <TooltipContent>Voice Mode</TooltipContent>
-              </Tooltip>
-            </InputGroupAddon>
-          </InputGroup>
-        </ButtonGroup>
-      </ButtonGroup>
-    </Example>
-  )
-}
-
-function ButtonGroupExample2() {
-  return (
-    <Example title="Button Group 2">
-      <div className="flex gap-4">
-        <ButtonGroup>
-          <ButtonGroup>
-            <Button variant="outline" size="sm">
-              1
-            </Button>
-            <Button variant="outline" size="sm">
-              2
-            </Button>
-            <Button variant="outline" size="sm">
-              3
             </Button>
           </ButtonGroup>
-        </ButtonGroup>
-        <ButtonGroup>
           <ButtonGroup>
-            <Button variant="outline">Follow</Button>
+            <Button variant="outline" size="sm">
+              Archive
+            </Button>
+            <Button variant="outline" size="sm">
+              Report
+            </Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button variant="outline" size="sm">
+              Snooze
+            </Button>
             <DropdownMenu>
               <DropdownMenuTrigger
-                render={<Button variant="outline" className="!pl-2" />}
-              >
-                <IconPlaceholder
-                  lucide="ChevronDownIcon"
-                  tabler="IconChevronDown"
-                  hugeicons="ArrowDown01Icon"
-                />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
-                  <DropdownMenuItem>
-                    <IconPlaceholder
-                      lucide="VolumeOffIcon"
-                      tabler="IconVolume"
-                      hugeicons="VolumeOffIcon"
-                    />
-                    Mute Conversation
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconPlaceholder
-                      lucide="CheckIcon"
-                      tabler="IconCheck"
-                      hugeicons="Tick02Icon"
-                    />
-                    Mark as Read
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconPlaceholder
-                      lucide="UserRoundXIcon"
-                      tabler="IconUserX"
-                      hugeicons="UserRemove01Icon"
-                    />
-                    Block User
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuLabel>Conversation</DropdownMenuLabel>
-                  <DropdownMenuItem>
-                    <IconPlaceholder
-                      lucide="ShareIcon"
-                      tabler="IconShare"
-                      hugeicons="Share03Icon"
-                    />
-                    Share Conversation
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconPlaceholder
-                      lucide="CopyIcon"
-                      tabler="IconCopy"
-                      hugeicons="Copy01Icon"
-                    />
-                    Copy Conversation
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconPlaceholder
-                      lucide="AlertTriangleIcon"
-                      tabler="IconAlertTriangle"
-                      hugeicons="AlertCircleIcon"
-                    />
-                    Report Conversation
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem variant="destructive">
-                    <IconPlaceholder
-                      lucide="TrashIcon"
-                      tabler="IconTrash"
-                      hugeicons="Delete02Icon"
-                    />
-                    Delete Conversation
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button variant="outline" size="sm">
-              <IconPlaceholder
-                lucide="BotIcon"
-                tabler="IconRobot"
-                hugeicons="BotIcon"
-              />{" "}
-              Copilot
-            </Button>
-            <Popover>
-              <PopoverTrigger
                 render={
                   <Button
                     variant="outline"
                     size="icon-sm"
-                    aria-label="Open Popover"
+                    aria-label="More Options"
                   />
                 }
               >
@@ -611,23 +318,467 @@ function ButtonGroupExample2() {
                   tabler="IconChevronDown"
                   hugeicons="ArrowDown01Icon"
                 />
-              </PopoverTrigger>
-              <PopoverContent align="end" className="w-96">
-                <PopoverHeader>
-                  <PopoverTitle>Agent Tasks</PopoverTitle>
-                  <PopoverDescription>
-                    Describe your task in natural language. Copilot will work in
-                    the background and open a pull request.
-                  </PopoverDescription>
-                </PopoverHeader>
-                <div className="text-sm *:[p:not(:last-child)]:mb-2">
-                  <Textarea
-                    placeholder="Describe your task in natural language."
-                    className="min-h-32 resize-none"
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="MailCheckIcon"
+                      tabler="IconMailCheck"
+                      hugeicons="MailValidation01Icon"
+                    />
+                    Mark as Read
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="ArchiveIcon"
+                      tabler="IconArchive"
+                      hugeicons="ArchiveIcon"
+                    />
+                    Archive
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="ClockIcon"
+                      tabler="IconClock"
+                      hugeicons="ClockIcon"
+                    />
+                    Snooze
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="CalendarPlusIcon"
+                      tabler="IconCalendarPlus"
+                      hugeicons="CalendarAdd01Icon"
+                    />
+                    Add to Calendar
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="ListFilterPlusIcon"
+                      tabler="IconFilterPlus"
+                      hugeicons="AddToListIcon"
+                    />
+                    Add to List
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <IconPlaceholder
+                        lucide="TagIcon"
+                        tabler="IconTag"
+                        hugeicons="TagIcon"
+                      />
+                      Label As...
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuGroup>
+                          <DropdownMenuRadioGroup
+                            value={label}
+                            onValueChange={setLabel}
+                          >
+                            <DropdownMenuRadioItem value="personal">
+                              Personal
+                            </DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="work">
+                              Work
+                            </DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="other">
+                              Other
+                            </DropdownMenuRadioItem>
+                          </DropdownMenuRadioGroup>
+                        </DropdownMenuGroup>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem variant="destructive">
+                    <IconPlaceholder
+                      lucide="Trash2Icon"
+                      tabler="IconTrash"
+                      hugeicons="Delete02Icon"
+                    />
+                    Trash
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button variant="outline" size="icon-sm" aria-label="Previous">
+              <IconPlaceholder
+                lucide="ArrowLeftIcon"
+                tabler="IconArrowLeft"
+                hugeicons="ArrowLeft01Icon"
+              />
+            </Button>
+            <Button variant="outline" size="icon-sm" aria-label="Next">
+              <IconPlaceholder
+                lucide="ArrowRightIcon"
+                tabler="IconArrowRight"
+                hugeicons="ArrowRight01Icon"
+              />
+            </Button>
+          </ButtonGroup>
+        </ButtonGroup>
+        <div className="flex gap-4">
+          <ButtonGroup>
+            <ButtonGroup>
+              <Button variant="outline" size="sm">
+                1
+              </Button>
+              <Button variant="outline" size="sm">
+                2
+              </Button>
+              <Button variant="outline" size="sm">
+                3
+              </Button>
+            </ButtonGroup>
+          </ButtonGroup>
+          <ButtonGroup>
+            <ButtonGroup>
+              <Button variant="outline">Follow</Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  render={<Button variant="outline" size="icon" />}
+                >
+                  <IconPlaceholder
+                    lucide="ChevronDownIcon"
+                    tabler="IconChevronDown"
+                    hugeicons="ArrowDown01Icon"
                   />
-                </div>
-              </PopoverContent>
-            </Popover>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuGroup>
+                    <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
+                    <DropdownMenuItem>
+                      <IconPlaceholder
+                        lucide="VolumeOffIcon"
+                        tabler="IconVolume"
+                        hugeicons="VolumeOffIcon"
+                      />
+                      Mute Conversation
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <IconPlaceholder
+                        lucide="CheckIcon"
+                        tabler="IconCheck"
+                        hugeicons="Tick02Icon"
+                      />
+                      Mark as Read
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <IconPlaceholder
+                        lucide="UserRoundXIcon"
+                        tabler="IconUserX"
+                        hugeicons="UserRemove01Icon"
+                      />
+                      Block User
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuLabel>Conversation</DropdownMenuLabel>
+                    <DropdownMenuItem>
+                      <IconPlaceholder
+                        lucide="ShareIcon"
+                        tabler="IconShare"
+                        hugeicons="Share03Icon"
+                      />
+                      Share Conversation
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <IconPlaceholder
+                        lucide="CopyIcon"
+                        tabler="IconCopy"
+                        hugeicons="Copy01Icon"
+                      />
+                      Copy Conversation
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <IconPlaceholder
+                        lucide="AlertTriangleIcon"
+                        tabler="IconAlertTriangle"
+                        hugeicons="AlertCircleIcon"
+                      />
+                      Report Conversation
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem variant="destructive">
+                      <IconPlaceholder
+                        lucide="TrashIcon"
+                        tabler="IconTrash"
+                        hugeicons="Delete02Icon"
+                      />
+                      Delete Conversation
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button variant="outline" size="sm">
+                <IconPlaceholder
+                  lucide="BotIcon"
+                  tabler="IconRobot"
+                  hugeicons="BotIcon"
+                />{" "}
+                Copilot
+              </Button>
+              <Popover>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant="outline"
+                      size="icon-sm"
+                      aria-label="Open Popover"
+                    />
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="ChevronDownIcon"
+                    tabler="IconChevronDown"
+                    hugeicons="ArrowDown01Icon"
+                  />
+                </PopoverTrigger>
+                <PopoverContent align="end" className="w-96">
+                  <PopoverHeader>
+                    <PopoverTitle>Agent Tasks</PopoverTitle>
+                    <PopoverDescription>
+                      Describe your task in natural language. Copilot will work
+                      in the background and open a pull request.
+                    </PopoverDescription>
+                  </PopoverHeader>
+                  <div className="text-sm *:[p:not(:last-child)]:mb-2">
+                    <Textarea
+                      placeholder="Describe your task in natural language."
+                      className="min-h-32 resize-none"
+                    />
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </ButtonGroup>
+          </ButtonGroup>
+        </div>
+      </div>
+    </Example>
+  )
+}
+
+function InputGroupExamples() {
+  const [isFavorite, setIsFavorite] = React.useState(false)
+  const [voiceEnabled, setVoiceEnabled] = React.useState(false)
+
+  return (
+    <Example title="Input Group">
+      <div className="flex flex-col gap-6">
+        <div className="grid w-full max-w-sm gap-6">
+          <InputGroup>
+            <InputGroupInput placeholder="Search..." />
+            <InputGroupAddon>
+              <IconPlaceholder
+                lucide="SearchIcon"
+                tabler="IconSearch"
+                hugeicons="Search01Icon"
+              />
+            </InputGroupAddon>
+            <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
+          </InputGroup>
+          <InputGroup>
+            <InputGroupInput placeholder="example.com" className="!pl-1" />
+            <InputGroupAddon>
+              <InputGroupText>https://</InputGroupText>
+            </InputGroupAddon>
+            <InputGroupAddon align="inline-end">
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <InputGroupButton
+                      className="rounded-full"
+                      size="icon-xs"
+                      aria-label="Info"
+                    />
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="InfoIcon"
+                    tabler="IconInfoCircle"
+                    hugeicons="AlertCircleIcon"
+                  />
+                </TooltipTrigger>
+                <TooltipContent>This is content in a tooltip.</TooltipContent>
+              </Tooltip>
+            </InputGroupAddon>
+          </InputGroup>
+          <InputGroup>
+            <InputGroupTextarea placeholder="Ask, Search or Chat..." />
+            <InputGroupAddon align="block-end">
+              <InputGroupButton
+                variant="outline"
+                className="rounded-full"
+                size="icon-xs"
+                aria-label="Add"
+              >
+                <IconPlaceholder
+                  lucide="PlusIcon"
+                  tabler="IconPlus"
+                  hugeicons="PlusSignIcon"
+                />
+              </InputGroupButton>
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  render={<InputGroupButton variant="ghost" />}
+                >
+                  Auto
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  side="top"
+                  align="start"
+                  className="[--radius:0.95rem]"
+                >
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>Auto</DropdownMenuItem>
+                    <DropdownMenuItem>Agent</DropdownMenuItem>
+                    <DropdownMenuItem>Manual</DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <InputGroupText className="ml-auto">52% used</InputGroupText>
+              <Separator orientation="vertical" className="!h-4" />
+              <InputGroupButton
+                variant="default"
+                className="rounded-full"
+                size="icon-xs"
+              >
+                <IconPlaceholder
+                  lucide="ArrowUpIcon"
+                  tabler="IconArrowUp"
+                  hugeicons="ArrowUp01Icon"
+                />
+                <span className="sr-only">Send</span>
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+          <InputGroup>
+            <InputGroupInput placeholder="@shadcn" />
+            <InputGroupAddon align="inline-end">
+              <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
+                <IconPlaceholder
+                  lucide="CheckIcon"
+                  tabler="IconCheck"
+                  hugeicons="Tick02Icon"
+                  className="size-3 text-white"
+                />
+              </div>
+            </InputGroupAddon>
+          </InputGroup>
+        </div>
+        <Field>
+          <Label htmlFor="input-secure-19" className="sr-only">
+            Input Secure
+          </Label>
+          <InputGroup>
+            <InputGroupInput id="input-secure-19" className="!pl-0.5" />
+            <InputGroupAddon>
+              <Popover>
+                <PopoverTrigger
+                  render={
+                    <InputGroupButton
+                      variant="secondary"
+                      size="icon-xs"
+                      aria-label="Info"
+                    />
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="InfoIcon"
+                    tabler="IconInfoCircle"
+                    hugeicons="AlertCircleIcon"
+                  />
+                </PopoverTrigger>
+                <PopoverContent
+                  align="start"
+                  alignOffset={10}
+                  className="flex flex-col gap-1 rounded-xl text-sm"
+                >
+                  <p className="font-medium">Your connection is not secure.</p>
+                  <p>
+                    You should not enter any sensitive information on this site.
+                  </p>
+                </PopoverContent>
+              </Popover>
+            </InputGroupAddon>
+            <InputGroupAddon className="text-muted-foreground !pl-1">
+              https://
+            </InputGroupAddon>
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton
+                onClick={() => setIsFavorite(!isFavorite)}
+                size="icon-xs"
+                aria-label="Favorite"
+              >
+                <IconPlaceholder
+                  lucide="StarIcon"
+                  tabler="IconStar"
+                  hugeicons="StarIcon"
+                  data-favorite={isFavorite}
+                  className="data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"
+                />
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+        </Field>
+        <ButtonGroup className="w-full">
+          <ButtonGroup>
+            <Button variant="outline" size="icon" aria-label="Add">
+              <IconPlaceholder
+                lucide="PlusIcon"
+                tabler="IconPlus"
+                hugeicons="PlusSignIcon"
+              />
+            </Button>
+          </ButtonGroup>
+          <ButtonGroup className="flex-1">
+            <InputGroup>
+              <InputGroupInput
+                placeholder={
+                  voiceEnabled
+                    ? "Record and send audio..."
+                    : "Send a message..."
+                }
+                disabled={voiceEnabled}
+              />
+              <InputGroupAddon align="inline-end">
+                <Tooltip>
+                  <TooltipTrigger
+                    render={
+                      <InputGroupButton
+                        onClick={() => setVoiceEnabled(!voiceEnabled)}
+                        data-active={voiceEnabled}
+                        className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
+                        aria-pressed={voiceEnabled}
+                        size="icon-xs"
+                        aria-label="Voice Mode"
+                      />
+                    }
+                  >
+                    <IconPlaceholder
+                      lucide="AudioLinesIcon"
+                      tabler="IconWaveSine"
+                      hugeicons="AudioWave01Icon"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>Voice Mode</TooltipContent>
+                </Tooltip>
+              </InputGroupAddon>
+            </InputGroup>
           </ButtonGroup>
         </ButtonGroup>
       </div>
@@ -960,178 +1111,6 @@ function FieldSlider() {
             aria-label="Price Range"
           />
         </Field>
-      </div>
-    </Example>
-  )
-}
-
-function InputGroupButtonExample() {
-  const [isFavorite, setIsFavorite] = React.useState(false)
-
-  return (
-    <Example title="Input Group Button">
-      <Field>
-        <Label htmlFor="input-secure-19" className="sr-only">
-          Input Secure
-        </Label>
-        <InputGroup>
-          <InputGroupInput id="input-secure-19" className="!pl-0.5" />
-          <InputGroupAddon>
-            <Popover>
-              <PopoverTrigger
-                render={
-                  <InputGroupButton
-                    variant="secondary"
-                    size="icon-xs"
-                    aria-label="Info"
-                  />
-                }
-              >
-                <IconPlaceholder
-                  lucide="InfoIcon"
-                  tabler="IconInfoCircle"
-                  hugeicons="AlertCircleIcon"
-                />
-              </PopoverTrigger>
-              <PopoverContent
-                align="start"
-                alignOffset={10}
-                className="flex flex-col gap-1 rounded-xl text-sm"
-              >
-                <p className="font-medium">Your connection is not secure.</p>
-                <p>
-                  You should not enter any sensitive information on this site.
-                </p>
-              </PopoverContent>
-            </Popover>
-          </InputGroupAddon>
-          <InputGroupAddon className="text-muted-foreground !pl-1">
-            https://
-          </InputGroupAddon>
-          <InputGroupAddon align="inline-end">
-            <InputGroupButton
-              onClick={() => setIsFavorite(!isFavorite)}
-              size="icon-xs"
-              aria-label="Favorite"
-            >
-              <IconPlaceholder
-                lucide="StarIcon"
-                tabler="IconStar"
-                hugeicons="StarIcon"
-                data-favorite={isFavorite}
-                className="data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"
-              />
-            </InputGroupButton>
-          </InputGroupAddon>
-        </InputGroup>
-      </Field>
-    </Example>
-  )
-}
-
-function InputGroupExample() {
-  return (
-    <Example title="Input Group">
-      <div className="grid w-full max-w-sm gap-6">
-        <InputGroup>
-          <InputGroupInput placeholder="Search..." />
-          <InputGroupAddon>
-            <IconPlaceholder
-              lucide="SearchIcon"
-              tabler="IconSearch"
-              hugeicons="Search01Icon"
-            />
-          </InputGroupAddon>
-          <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
-        </InputGroup>
-        <InputGroup>
-          <InputGroupInput placeholder="example.com" className="!pl-1" />
-          <InputGroupAddon>
-            <InputGroupText>https://</InputGroupText>
-          </InputGroupAddon>
-          <InputGroupAddon align="inline-end">
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <InputGroupButton
-                    className="rounded-full"
-                    size="icon-xs"
-                    aria-label="Info"
-                  />
-                }
-              >
-                <IconPlaceholder
-                  lucide="InfoIcon"
-                  tabler="IconInfoCircle"
-                  hugeicons="AlertCircleIcon"
-                />
-              </TooltipTrigger>
-              <TooltipContent>This is content in a tooltip.</TooltipContent>
-            </Tooltip>
-          </InputGroupAddon>
-        </InputGroup>
-        <InputGroup>
-          <InputGroupTextarea placeholder="Ask, Search or Chat..." />
-          <InputGroupAddon align="block-end">
-            <InputGroupButton
-              variant="outline"
-              className="rounded-full"
-              size="icon-xs"
-              aria-label="Add"
-            >
-              <IconPlaceholder
-                lucide="PlusIcon"
-                tabler="IconPlus"
-                hugeicons="PlusSignIcon"
-              />
-            </InputGroupButton>
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={<InputGroupButton variant="ghost" />}
-              >
-                Auto
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side="top"
-                align="start"
-                className="[--radius:0.95rem]"
-              >
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>Auto</DropdownMenuItem>
-                  <DropdownMenuItem>Agent</DropdownMenuItem>
-                  <DropdownMenuItem>Manual</DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <InputGroupText className="ml-auto">52% used</InputGroupText>
-            <Separator orientation="vertical" className="!h-4" />
-            <InputGroupButton
-              variant="default"
-              className="rounded-full"
-              size="icon-xs"
-            >
-              <IconPlaceholder
-                lucide="ArrowUpIcon"
-                tabler="IconArrowUp"
-                hugeicons="ArrowUp01Icon"
-              />
-              <span className="sr-only">Send</span>
-            </InputGroupButton>
-          </InputGroupAddon>
-        </InputGroup>
-        <InputGroup>
-          <InputGroupInput placeholder="@shadcn" />
-          <InputGroupAddon align="inline-end">
-            <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
-              <IconPlaceholder
-                lucide="CheckIcon"
-                tabler="IconCheck"
-                hugeicons="Tick02Icon"
-                className="size-3 text-white"
-              />
-            </div>
-          </InputGroupAddon>
-        </InputGroup>
       </div>
     </Example>
   )
