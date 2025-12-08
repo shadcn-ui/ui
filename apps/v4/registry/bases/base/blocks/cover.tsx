@@ -4,6 +4,10 @@ import * as React from "react"
 import { useState } from "react"
 
 import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/base/components/example"
+import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -129,25 +133,25 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CoverExample() {
   return (
-    <div className="bg-background flex min-h-screen items-center justify-center p-6">
-      <div className="w-full max-w-screen-2xl columns-1 gap-8 md:columns-2 lg:columns-3 2xl:columns-4 [&>*]:mb-8 [&>*]:break-inside-avoid">
-        <FieldExample />
-        <SpinnerEmpty />
-        <EmptyAvatarGroup />
-        <FieldSlider />
-        <SheetExample />
-        <SpinnerBadge />
-        <InputGroupExample />
-        <InputGroupButtonExample />
-        <ButtonGroupInputGroup />
-        <ItemExample />
-        <ObservabilityCard />
-        <AppearanceSettings />
-        <ButtonGroupExample />
-        <FieldCheckbox />
-        <ButtonGroupExample2 />
-      </div>
-    </div>
+    <ExampleWrapper>
+      <ObservabilityCard />
+      <SpinnerEmpty />
+      <EmptyAvatarGroup />
+
+      <FieldExample />
+      <SheetExample />
+      <SpinnerBadge />
+      <InputGroupExample />
+      <InputGroupButtonExample />
+      <ButtonGroupInputGroup />
+      <ItemExample />
+      <FieldSlider />
+
+      <AppearanceSettings />
+      <ButtonGroupExample />
+      <FieldCheckbox />
+      <ButtonGroupExample2 />
+    </ExampleWrapper>
   )
 }
 
@@ -171,104 +175,108 @@ function AppearanceSettings() {
   )
 
   return (
-    <FieldSet>
-      <FieldGroup>
-        <FieldSet>
-          <FieldLegend>Compute Environment</FieldLegend>
-          <FieldDescription>
-            Select the compute environment for your cluster.
-          </FieldDescription>
-          <RadioGroup defaultValue="kubernetes">
-            <FieldLabel htmlFor="kubernetes-r2h">
-              <Field orientation="horizontal">
-                <FieldContent>
-                  <FieldTitle>Kubernetes</FieldTitle>
-                  <FieldDescription>
-                    Run GPU workloads on a K8s configured cluster. This is the
-                    default.
-                  </FieldDescription>
-                </FieldContent>
-                <RadioGroupItem
-                  value="kubernetes"
-                  id="kubernetes-r2h"
-                  aria-label="Kubernetes"
-                />
-              </Field>
-            </FieldLabel>
-            <FieldLabel htmlFor="vm-z4k">
-              <Field orientation="horizontal">
-                <FieldContent>
-                  <FieldTitle>Virtual Machine</FieldTitle>
-                  <FieldDescription>
-                    Access a VM configured cluster to run workloads. (Coming
-                    soon)
-                  </FieldDescription>
-                </FieldContent>
-                <RadioGroupItem
-                  value="vm"
-                  id="vm-z4k"
-                  aria-label="Virtual Machine"
-                />
-              </Field>
-            </FieldLabel>
-          </RadioGroup>
-        </FieldSet>
-        <FieldSeparator />
-        <Field orientation="horizontal">
-          <FieldContent>
-            <FieldLabel htmlFor="number-of-gpus-f6l">Number of GPUs</FieldLabel>
-            <FieldDescription>You can add more later.</FieldDescription>
-          </FieldContent>
-          <ButtonGroup>
-            <Input
-              id="number-of-gpus-f6l"
-              value={gpuCount}
-              onChange={handleGpuInputChange}
-              size={3}
-              maxLength={3}
-            />
-            <Button
-              variant="outline"
-              size="icon"
-              type="button"
-              aria-label="Decrement"
-              onClick={() => handleGpuAdjustment(-1)}
-              disabled={gpuCount <= 1}
-            >
-              <IconPlaceholder
-                lucide="MinusIcon"
-                tabler="IconMinus"
-                hugeicons="MinusSignIcon"
-              />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              type="button"
-              aria-label="Increment"
-              onClick={() => handleGpuAdjustment(1)}
-              disabled={gpuCount >= 99}
-            >
-              <IconPlaceholder
-                lucide="PlusIcon"
-                tabler="IconPlus"
-                hugeicons="PlusSignIcon"
-              />
-            </Button>
-          </ButtonGroup>
-        </Field>
-        <FieldSeparator />
-        <Field orientation="horizontal">
-          <FieldContent>
-            <FieldLabel htmlFor="tinting">Wallpaper Tinting</FieldLabel>
+    <Example title="Appearance Settings">
+      <FieldSet className="w-full max-w-md">
+        <FieldGroup>
+          <FieldSet>
+            <FieldLegend>Compute Environment</FieldLegend>
             <FieldDescription>
-              Allow the wallpaper to be tinted.
+              Select the compute environment for your cluster.
             </FieldDescription>
-          </FieldContent>
-          <Switch id="tinting" defaultChecked />
-        </Field>
-      </FieldGroup>
-    </FieldSet>
+            <RadioGroup defaultValue="kubernetes">
+              <FieldLabel htmlFor="kubernetes-r2h">
+                <Field orientation="horizontal">
+                  <FieldContent>
+                    <FieldTitle>Kubernetes</FieldTitle>
+                    <FieldDescription>
+                      Run GPU workloads on a K8s configured cluster. This is the
+                      default.
+                    </FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem
+                    value="kubernetes"
+                    id="kubernetes-r2h"
+                    aria-label="Kubernetes"
+                  />
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="vm-z4k">
+                <Field orientation="horizontal">
+                  <FieldContent>
+                    <FieldTitle>Virtual Machine</FieldTitle>
+                    <FieldDescription>
+                      Access a VM configured cluster to run workloads. (Coming
+                      soon)
+                    </FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem
+                    value="vm"
+                    id="vm-z4k"
+                    aria-label="Virtual Machine"
+                  />
+                </Field>
+              </FieldLabel>
+            </RadioGroup>
+          </FieldSet>
+          <FieldSeparator />
+          <Field orientation="horizontal">
+            <FieldContent>
+              <FieldLabel htmlFor="number-of-gpus-f6l">
+                Number of GPUs
+              </FieldLabel>
+              <FieldDescription>You can add more later.</FieldDescription>
+            </FieldContent>
+            <ButtonGroup>
+              <Input
+                id="number-of-gpus-f6l"
+                value={gpuCount}
+                onChange={handleGpuInputChange}
+                size={3}
+                maxLength={3}
+              />
+              <Button
+                variant="outline"
+                size="icon"
+                type="button"
+                aria-label="Decrement"
+                onClick={() => handleGpuAdjustment(-1)}
+                disabled={gpuCount <= 1}
+              >
+                <IconPlaceholder
+                  lucide="MinusIcon"
+                  tabler="IconMinus"
+                  hugeicons="MinusSignIcon"
+                />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                type="button"
+                aria-label="Increment"
+                onClick={() => handleGpuAdjustment(1)}
+                disabled={gpuCount >= 99}
+              >
+                <IconPlaceholder
+                  lucide="PlusIcon"
+                  tabler="IconPlus"
+                  hugeicons="PlusSignIcon"
+                />
+              </Button>
+            </ButtonGroup>
+          </Field>
+          <FieldSeparator />
+          <Field orientation="horizontal">
+            <FieldContent>
+              <FieldLabel htmlFor="tinting">Wallpaper Tinting</FieldLabel>
+              <FieldDescription>
+                Allow the wallpaper to be tinted.
+              </FieldDescription>
+            </FieldContent>
+            <Switch id="tinting" defaultChecked />
+          </Field>
+        </FieldGroup>
+      </FieldSet>
+    </Example>
   )
 }
 
@@ -276,320 +284,36 @@ function ButtonGroupExample() {
   const [label, setLabel] = React.useState("personal")
 
   return (
-    <ButtonGroup>
-      <ButtonGroup className="hidden sm:flex">
-        <Button variant="outline" size="icon-sm" aria-label="Go Back">
-          <IconPlaceholder
-            lucide="ArrowLeftIcon"
-            tabler="IconArrowLeft"
-            hugeicons="ArrowLeft01Icon"
-          />
-        </Button>
-      </ButtonGroup>
+    <Example title="Button Group">
       <ButtonGroup>
-        <Button variant="outline" size="sm">
-          Archive
-        </Button>
-        <Button variant="outline" size="sm">
-          Report
-        </Button>
-      </ButtonGroup>
-      <ButtonGroup>
-        <Button variant="outline" size="sm">
-          Snooze
-        </Button>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            render={
-              <Button
-                variant="outline"
-                size="icon-sm"
-                aria-label="More Options"
-              />
-            }
-          >
+        <ButtonGroup className="hidden sm:flex">
+          <Button variant="outline" size="icon-sm" aria-label="Go Back">
             <IconPlaceholder
-              lucide="ChevronDownIcon"
-              tabler="IconChevronDown"
-              hugeicons="ArrowDown01Icon"
+              lucide="ArrowLeftIcon"
+              tabler="IconArrowLeft"
+              hugeicons="ArrowLeft01Icon"
             />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="MailCheckIcon"
-                  tabler="IconMailCheck"
-                  hugeicons="MailValidation01Icon"
-                />
-                Mark as Read
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="ArchiveIcon"
-                  tabler="IconArchive"
-                  hugeicons="ArchiveIcon"
-                />
-                Archive
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="ClockIcon"
-                  tabler="IconClock"
-                  hugeicons="ClockIcon"
-                />
-                Snooze
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="CalendarPlusIcon"
-                  tabler="IconCalendarPlus"
-                  hugeicons="CalendarAdd01Icon"
-                />
-                Add to Calendar
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconPlaceholder
-                  lucide="ListFilterPlusIcon"
-                  tabler="IconFilterPlus"
-                  hugeicons="AddToListIcon"
-                />
-                Add to List
-              </DropdownMenuItem>
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger>
-                  <IconPlaceholder
-                    lucide="TagIcon"
-                    tabler="IconTag"
-                    hugeicons="TagIcon"
-                  />
-                  Label As...
-                </DropdownMenuSubTrigger>
-                <DropdownMenuPortal>
-                  <DropdownMenuSubContent>
-                    <DropdownMenuGroup>
-                      <DropdownMenuRadioGroup
-                        value={label}
-                        onValueChange={setLabel}
-                      >
-                        <DropdownMenuRadioItem value="personal">
-                          Personal
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="work">
-                          Work
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="other">
-                          Other
-                        </DropdownMenuRadioItem>
-                      </DropdownMenuRadioGroup>
-                    </DropdownMenuGroup>
-                  </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-              </DropdownMenuSub>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem variant="destructive">
-                <IconPlaceholder
-                  lucide="Trash2Icon"
-                  tabler="IconTrash"
-                  hugeicons="Delete02Icon"
-                />
-                Trash
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </ButtonGroup>
-      <ButtonGroup>
-        <Button variant="outline" size="icon-sm" aria-label="Previous">
-          <IconPlaceholder
-            lucide="ArrowLeftIcon"
-            tabler="IconArrowLeft"
-            hugeicons="ArrowLeft01Icon"
-          />
-        </Button>
-        <Button variant="outline" size="icon-sm" aria-label="Next">
-          <IconPlaceholder
-            lucide="ArrowRightIcon"
-            tabler="IconArrowRight"
-            hugeicons="ArrowRight01Icon"
-          />
-        </Button>
-      </ButtonGroup>
-    </ButtonGroup>
-  )
-}
-
-function ButtonGroupInputGroup() {
-  const [voiceEnabled, setVoiceEnabled] = React.useState(false)
-
-  return (
-    <ButtonGroup className="w-full">
-      <ButtonGroup>
-        <Button variant="outline" size="icon" aria-label="Add">
-          <IconPlaceholder
-            lucide="PlusIcon"
-            tabler="IconPlus"
-            hugeicons="PlusSignIcon"
-          />
-        </Button>
-      </ButtonGroup>
-      <ButtonGroup className="flex-1">
-        <InputGroup>
-          <InputGroupInput
-            placeholder={
-              voiceEnabled ? "Record and send audio..." : "Send a message..."
-            }
-            disabled={voiceEnabled}
-          />
-          <InputGroupAddon align="inline-end">
-            <Tooltip>
-              <TooltipTrigger
-                render={
-                  <InputGroupButton
-                    onClick={() => setVoiceEnabled(!voiceEnabled)}
-                    data-active={voiceEnabled}
-                    className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
-                    aria-pressed={voiceEnabled}
-                    size="icon-xs"
-                    aria-label="Voice Mode"
-                  />
-                }
-              >
-                <IconPlaceholder
-                  lucide="AudioLinesIcon"
-                  tabler="IconWaveSine"
-                  hugeicons="AudioWave01Icon"
-                />
-              </TooltipTrigger>
-              <TooltipContent>Voice Mode</TooltipContent>
-            </Tooltip>
-          </InputGroupAddon>
-        </InputGroup>
-      </ButtonGroup>
-    </ButtonGroup>
-  )
-}
-
-function ButtonGroupExample2() {
-  return (
-    <div className="flex gap-4">
-      <ButtonGroup>
-        <ButtonGroup>
-          <Button variant="outline" size="sm">
-            1
-          </Button>
-          <Button variant="outline" size="sm">
-            2
-          </Button>
-          <Button variant="outline" size="sm">
-            3
           </Button>
         </ButtonGroup>
-      </ButtonGroup>
-      <ButtonGroup>
         <ButtonGroup>
-          <Button variant="outline">Follow</Button>
+          <Button variant="outline" size="sm">
+            Archive
+          </Button>
+          <Button variant="outline" size="sm">
+            Report
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline" size="sm">
+            Snooze
+          </Button>
           <DropdownMenu>
             <DropdownMenuTrigger
-              render={<Button variant="outline" className="!pl-2" />}
-            >
-              <IconPlaceholder
-                lucide="ChevronDownIcon"
-                tabler="IconChevronDown"
-                hugeicons="ArrowDown01Icon"
-              />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuGroup>
-                <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="VolumeOffIcon"
-                    tabler="IconVolume"
-                    hugeicons="VolumeOffIcon"
-                  />
-                  Mute Conversation
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="CheckIcon"
-                    tabler="IconCheck"
-                    hugeicons="Tick02Icon"
-                  />
-                  Mark as Read
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="UserRoundXIcon"
-                    tabler="IconUserX"
-                    hugeicons="UserRemove01Icon"
-                  />
-                  Block User
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuLabel>Conversation</DropdownMenuLabel>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="ShareIcon"
-                    tabler="IconShare"
-                    hugeicons="Share03Icon"
-                  />
-                  Share Conversation
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="CopyIcon"
-                    tabler="IconCopy"
-                    hugeicons="Copy01Icon"
-                  />
-                  Copy Conversation
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <IconPlaceholder
-                    lucide="AlertTriangleIcon"
-                    tabler="IconAlertTriangle"
-                    hugeicons="AlertCircleIcon"
-                  />
-                  Report Conversation
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem variant="destructive">
-                  <IconPlaceholder
-                    lucide="TrashIcon"
-                    tabler="IconTrash"
-                    hugeicons="Delete02Icon"
-                  />
-                  Delete Conversation
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Button variant="outline" size="sm">
-            <IconPlaceholder
-              lucide="BotIcon"
-              tabler="IconRobot"
-              hugeicons="BotIcon"
-            />{" "}
-            Copilot
-          </Button>
-          <Popover>
-            <PopoverTrigger
               render={
                 <Button
                   variant="outline"
                   size="icon-sm"
-                  aria-label="Open Popover"
+                  aria-label="More Options"
                 />
               }
             >
@@ -598,121 +322,420 @@ function ButtonGroupExample2() {
                 tabler="IconChevronDown"
                 hugeicons="ArrowDown01Icon"
               />
-            </PopoverTrigger>
-            <PopoverContent align="end" className="w-96">
-              <PopoverHeader>
-                <PopoverTitle>Agent Tasks</PopoverTitle>
-                <PopoverDescription>
-                  Describe your task in natural language. Copilot will work in
-                  the background and open a pull request.
-                </PopoverDescription>
-              </PopoverHeader>
-              <div className="text-sm *:[p:not(:last-child)]:mb-2">
-                <Textarea
-                  placeholder="Describe your task in natural language."
-                  className="min-h-32 resize-none"
-                />
-              </div>
-            </PopoverContent>
-          </Popover>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="MailCheckIcon"
+                    tabler="IconMailCheck"
+                    hugeicons="MailValidation01Icon"
+                  />
+                  Mark as Read
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="ArchiveIcon"
+                    tabler="IconArchive"
+                    hugeicons="ArchiveIcon"
+                  />
+                  Archive
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="ClockIcon"
+                    tabler="IconClock"
+                    hugeicons="ClockIcon"
+                  />
+                  Snooze
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="CalendarPlusIcon"
+                    tabler="IconCalendarPlus"
+                    hugeicons="CalendarAdd01Icon"
+                  />
+                  Add to Calendar
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <IconPlaceholder
+                    lucide="ListFilterPlusIcon"
+                    tabler="IconFilterPlus"
+                    hugeicons="AddToListIcon"
+                  />
+                  Add to List
+                </DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    <IconPlaceholder
+                      lucide="TagIcon"
+                      tabler="IconTag"
+                      hugeicons="TagIcon"
+                    />
+                    Label As...
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuPortal>
+                    <DropdownMenuSubContent>
+                      <DropdownMenuGroup>
+                        <DropdownMenuRadioGroup
+                          value={label}
+                          onValueChange={setLabel}
+                        >
+                          <DropdownMenuRadioItem value="personal">
+                            Personal
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="work">
+                            Work
+                          </DropdownMenuRadioItem>
+                          <DropdownMenuRadioItem value="other">
+                            Other
+                          </DropdownMenuRadioItem>
+                        </DropdownMenuRadioGroup>
+                      </DropdownMenuGroup>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuPortal>
+                </DropdownMenuSub>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem variant="destructive">
+                  <IconPlaceholder
+                    lucide="Trash2Icon"
+                    tabler="IconTrash"
+                    hugeicons="Delete02Icon"
+                  />
+                  Trash
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline" size="icon-sm" aria-label="Previous">
+            <IconPlaceholder
+              lucide="ArrowLeftIcon"
+              tabler="IconArrowLeft"
+              hugeicons="ArrowLeft01Icon"
+            />
+          </Button>
+          <Button variant="outline" size="icon-sm" aria-label="Next">
+            <IconPlaceholder
+              lucide="ArrowRightIcon"
+              tabler="IconArrowRight"
+              hugeicons="ArrowRight01Icon"
+            />
+          </Button>
         </ButtonGroup>
       </ButtonGroup>
-    </div>
+    </Example>
+  )
+}
+
+function ButtonGroupInputGroup() {
+  const [voiceEnabled, setVoiceEnabled] = React.useState(false)
+
+  return (
+    <Example title="Button Group Input Group">
+      <ButtonGroup className="w-full">
+        <ButtonGroup>
+          <Button variant="outline" size="icon" aria-label="Add">
+            <IconPlaceholder
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+            />
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup className="flex-1">
+          <InputGroup>
+            <InputGroupInput
+              placeholder={
+                voiceEnabled ? "Record and send audio..." : "Send a message..."
+              }
+              disabled={voiceEnabled}
+            />
+            <InputGroupAddon align="inline-end">
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <InputGroupButton
+                      onClick={() => setVoiceEnabled(!voiceEnabled)}
+                      data-active={voiceEnabled}
+                      className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
+                      aria-pressed={voiceEnabled}
+                      size="icon-xs"
+                      aria-label="Voice Mode"
+                    />
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="AudioLinesIcon"
+                    tabler="IconWaveSine"
+                    hugeicons="AudioWave01Icon"
+                  />
+                </TooltipTrigger>
+                <TooltipContent>Voice Mode</TooltipContent>
+              </Tooltip>
+            </InputGroupAddon>
+          </InputGroup>
+        </ButtonGroup>
+      </ButtonGroup>
+    </Example>
+  )
+}
+
+function ButtonGroupExample2() {
+  return (
+    <Example title="Button Group 2">
+      <div className="flex gap-4">
+        <ButtonGroup>
+          <ButtonGroup>
+            <Button variant="outline" size="sm">
+              1
+            </Button>
+            <Button variant="outline" size="sm">
+              2
+            </Button>
+            <Button variant="outline" size="sm">
+              3
+            </Button>
+          </ButtonGroup>
+        </ButtonGroup>
+        <ButtonGroup>
+          <ButtonGroup>
+            <Button variant="outline">Follow</Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={<Button variant="outline" className="!pl-2" />}
+              >
+                <IconPlaceholder
+                  lucide="ChevronDownIcon"
+                  tabler="IconChevronDown"
+                  hugeicons="ArrowDown01Icon"
+                />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="VolumeOffIcon"
+                      tabler="IconVolume"
+                      hugeicons="VolumeOffIcon"
+                    />
+                    Mute Conversation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="CheckIcon"
+                      tabler="IconCheck"
+                      hugeicons="Tick02Icon"
+                    />
+                    Mark as Read
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="UserRoundXIcon"
+                      tabler="IconUserX"
+                      hugeicons="UserRemove01Icon"
+                    />
+                    Block User
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Conversation</DropdownMenuLabel>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="ShareIcon"
+                      tabler="IconShare"
+                      hugeicons="Share03Icon"
+                    />
+                    Share Conversation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="CopyIcon"
+                      tabler="IconCopy"
+                      hugeicons="Copy01Icon"
+                    />
+                    Copy Conversation
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="AlertTriangleIcon"
+                      tabler="IconAlertTriangle"
+                      hugeicons="AlertCircleIcon"
+                    />
+                    Report Conversation
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem variant="destructive">
+                    <IconPlaceholder
+                      lucide="TrashIcon"
+                      tabler="IconTrash"
+                      hugeicons="Delete02Icon"
+                    />
+                    Delete Conversation
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button variant="outline" size="sm">
+              <IconPlaceholder
+                lucide="BotIcon"
+                tabler="IconRobot"
+                hugeicons="BotIcon"
+              />{" "}
+              Copilot
+            </Button>
+            <Popover>
+              <PopoverTrigger
+                render={
+                  <Button
+                    variant="outline"
+                    size="icon-sm"
+                    aria-label="Open Popover"
+                  />
+                }
+              >
+                <IconPlaceholder
+                  lucide="ChevronDownIcon"
+                  tabler="IconChevronDown"
+                  hugeicons="ArrowDown01Icon"
+                />
+              </PopoverTrigger>
+              <PopoverContent align="end" className="w-96">
+                <PopoverHeader>
+                  <PopoverTitle>Agent Tasks</PopoverTitle>
+                  <PopoverDescription>
+                    Describe your task in natural language. Copilot will work in
+                    the background and open a pull request.
+                  </PopoverDescription>
+                </PopoverHeader>
+                <div className="text-sm *:[p:not(:last-child)]:mb-2">
+                  <Textarea
+                    placeholder="Describe your task in natural language."
+                    className="min-h-32 resize-none"
+                  />
+                </div>
+              </PopoverContent>
+            </Popover>
+          </ButtonGroup>
+        </ButtonGroup>
+      </div>
+    </Example>
   )
 }
 
 function EmptyAvatarGroup() {
   return (
-    <Empty className="flex-none border">
-      <EmptyHeader>
-        <EmptyMedia>
-          <AvatarGroup className="grayscale">
-            <Avatar size="lg">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Avatar size="lg">
-              <AvatarImage
-                src="https://github.com/maxleiter.png"
-                alt="@maxleiter"
-              />
-              <AvatarFallback>LR</AvatarFallback>
-            </Avatar>
-            <Avatar size="lg">
-              <AvatarImage
-                src="https://github.com/evilrabbit.png"
-                alt="@evilrabbit"
-              />
-              <AvatarFallback>ER</AvatarFallback>
-            </Avatar>
-          </AvatarGroup>
-        </EmptyMedia>
-        <EmptyTitle>No Team Members</EmptyTitle>
-        <EmptyDescription>
-          Invite your team to collaborate on this project.
-        </EmptyDescription>
-      </EmptyHeader>
-      <EmptyContent>
-        <div className="flex gap-2">
-          <AlertDialog>
-            <AlertDialogTrigger render={<Button variant="outline" />}>
-              Show Dialog
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Continue</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-          <AlertDialog>
-            <AlertDialogTrigger render={<Button />}>
-              Connect Mouse
-            </AlertDialogTrigger>
-            <AlertDialogContent size="sm">
-              <AlertDialogHeader>
-                <AlertDialogMedia>
-                  <IconPlaceholder
-                    lucide="BluetoothIcon"
-                    tabler="IconBluetooth"
-                    hugeicons="BluetoothIcon"
-                  />
-                </AlertDialogMedia>
-                <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Do you want to allow the USB accessory to connect to this
-                  device?
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
-                <AlertDialogAction>Allow</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
-      </EmptyContent>
-    </Empty>
+    <Example title="Empty Avatar Group">
+      <Empty className="flex-none border">
+        <EmptyHeader>
+          <EmptyMedia>
+            <AvatarGroup className="grayscale">
+              <Avatar size="lg">
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar size="lg">
+                <AvatarImage
+                  src="https://github.com/maxleiter.png"
+                  alt="@maxleiter"
+                />
+                <AvatarFallback>LR</AvatarFallback>
+              </Avatar>
+              <Avatar size="lg">
+                <AvatarImage
+                  src="https://github.com/evilrabbit.png"
+                  alt="@evilrabbit"
+                />
+                <AvatarFallback>ER</AvatarFallback>
+              </Avatar>
+            </AvatarGroup>
+          </EmptyMedia>
+          <EmptyTitle>No Team Members</EmptyTitle>
+          <EmptyDescription>
+            Invite your team to collaborate on this project.
+          </EmptyDescription>
+        </EmptyHeader>
+        <EmptyContent>
+          <div className="flex gap-2">
+            <AlertDialog>
+              <AlertDialogTrigger render={<Button variant="outline" />}>
+                Show Dialog
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete
+                    your account and remove your data from our servers.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction>Continue</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+            <AlertDialog>
+              <AlertDialogTrigger render={<Button />}>
+                Connect Mouse
+              </AlertDialogTrigger>
+              <AlertDialogContent size="sm">
+                <AlertDialogHeader>
+                  <AlertDialogMedia>
+                    <IconPlaceholder
+                      lucide="BluetoothIcon"
+                      tabler="IconBluetooth"
+                      hugeicons="BluetoothIcon"
+                    />
+                  </AlertDialogMedia>
+                  <AlertDialogTitle>
+                    Allow accessory to connect?
+                  </AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Do you want to allow the USB accessory to connect to this
+                    device?
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
+                  <AlertDialogAction>Allow</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
+        </EmptyContent>
+      </Empty>
+    </Example>
   )
 }
 
 function FieldCheckbox() {
   return (
-    <FieldLabel htmlFor="checkbox-demo">
-      <Field orientation="horizontal">
-        <Checkbox id="checkbox-demo" defaultChecked />
-        <FieldLabel htmlFor="checkbox-demo" className="line-clamp-1">
-          I agree to the terms and conditions
-        </FieldLabel>
-      </Field>
-    </FieldLabel>
+    <Example title="Field Checkbox">
+      <FieldLabel htmlFor="checkbox-demo">
+        <Field orientation="horizontal">
+          <Checkbox id="checkbox-demo" defaultChecked />
+          <FieldLabel htmlFor="checkbox-demo" className="line-clamp-1">
+            I agree to the terms and conditions
+          </FieldLabel>
+        </Field>
+      </FieldLabel>
+    </Example>
   )
 }
 
@@ -744,195 +767,201 @@ function FieldExample() {
   ]
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader>
-        <CardTitle>Payment Method</CardTitle>
-        <CardDescription>
-          All transactions are secure and encrypted
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form>
-          <FieldGroup>
-            <FieldSet>
-              <FieldGroup>
-                <Field>
-                  <FieldLabel htmlFor="checkout-7j9-card-name-43j">
-                    Name on Card
-                  </FieldLabel>
-                  <Input
-                    id="checkout-7j9-card-name-43j"
-                    placeholder="John Doe"
-                    required
-                  />
-                </Field>
-                <div className="grid grid-cols-3 gap-4">
-                  <Field className="col-span-2">
-                    <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
-                      Card Number
+    <Example title="Field">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>Payment Method</CardTitle>
+          <CardDescription>
+            All transactions are secure and encrypted
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form>
+            <FieldGroup>
+              <FieldSet>
+                <FieldGroup>
+                  <Field>
+                    <FieldLabel htmlFor="checkout-7j9-card-name-43j">
+                      Name on Card
                     </FieldLabel>
                     <Input
-                      id="checkout-7j9-card-number-uw1"
-                      placeholder="1234 5678 9012 3456"
+                      id="checkout-7j9-card-name-43j"
+                      placeholder="John Doe"
                       required
                     />
-                    <FieldDescription>
-                      Enter your 16-digit number.
-                    </FieldDescription>
                   </Field>
-                  <Field className="col-span-1">
-                    <FieldLabel htmlFor="checkout-7j9-cvv">CVV</FieldLabel>
-                    <Input id="checkout-7j9-cvv" placeholder="123" required />
-                  </Field>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <Field>
-                    <FieldLabel htmlFor="checkout-7j9-exp-month-ts6">
-                      Month
+                  <div className="grid grid-cols-3 gap-4">
+                    <Field className="col-span-2">
+                      <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
+                        Card Number
+                      </FieldLabel>
+                      <Input
+                        id="checkout-7j9-card-number-uw1"
+                        placeholder="1234 5678 9012 3456"
+                        required
+                      />
+                      <FieldDescription>
+                        Enter your 16-digit number.
+                      </FieldDescription>
+                    </Field>
+                    <Field className="col-span-1">
+                      <FieldLabel htmlFor="checkout-7j9-cvv">CVV</FieldLabel>
+                      <Input id="checkout-7j9-cvv" placeholder="123" required />
+                    </Field>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <Field>
+                      <FieldLabel htmlFor="checkout-7j9-exp-month-ts6">
+                        Month
+                      </FieldLabel>
+                      <Select items={monthItems} defaultValue={null}>
+                        <SelectTrigger id="checkout-7j9-exp-month-ts6">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectGroup>
+                            {monthItems.map((item) => (
+                              <SelectItem key={item.value} value={item.value}>
+                                {item.label}
+                              </SelectItem>
+                            ))}
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
+                    </Field>
+                    <Field>
+                      <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
+                        Year
+                      </FieldLabel>
+                      <Select items={yearItems} defaultValue={null}>
+                        <SelectTrigger id="checkout-7j9-exp-year-f59">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectGroup>
+                            {yearItems.map((item) => (
+                              <SelectItem key={item.value} value={item.value}>
+                                {item.label}
+                              </SelectItem>
+                            ))}
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
+                    </Field>
+                  </div>
+                </FieldGroup>
+              </FieldSet>
+              <FieldSeparator />
+              <FieldSet>
+                <FieldLegend>Billing Address</FieldLegend>
+                <FieldDescription>
+                  The billing address associated with your payment method
+                </FieldDescription>
+                <FieldGroup>
+                  <Field orientation="horizontal">
+                    <Checkbox
+                      id="checkout-7j9-same-as-shipping-wgm"
+                      defaultChecked
+                    />
+                    <FieldLabel
+                      htmlFor="checkout-7j9-same-as-shipping-wgm"
+                      className="font-normal"
+                    >
+                      Same as shipping address
                     </FieldLabel>
-                    <Select items={monthItems} defaultValue={null}>
-                      <SelectTrigger id="checkout-7j9-exp-month-ts6">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          {monthItems.map((item) => (
-                            <SelectItem key={item.value} value={item.value}>
-                              {item.label}
-                            </SelectItem>
-                          ))}
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
                   </Field>
+                </FieldGroup>
+              </FieldSet>
+              <FieldSeparator />
+              <FieldSet>
+                <FieldGroup>
                   <Field>
-                    <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
-                      Year
+                    <FieldLabel htmlFor="checkout-7j9-optional-comments">
+                      Comments
                     </FieldLabel>
-                    <Select items={yearItems} defaultValue={null}>
-                      <SelectTrigger id="checkout-7j9-exp-year-f59">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          {yearItems.map((item) => (
-                            <SelectItem key={item.value} value={item.value}>
-                              {item.label}
-                            </SelectItem>
-                          ))}
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
+                    <Textarea
+                      id="checkout-7j9-optional-comments"
+                      placeholder="Add any additional comments"
+                    />
                   </Field>
-                </div>
-              </FieldGroup>
-            </FieldSet>
-            <FieldSeparator />
-            <FieldSet>
-              <FieldLegend>Billing Address</FieldLegend>
-              <FieldDescription>
-                The billing address associated with your payment method
-              </FieldDescription>
-              <FieldGroup>
-                <Field orientation="horizontal">
-                  <Checkbox
-                    id="checkout-7j9-same-as-shipping-wgm"
-                    defaultChecked
-                  />
-                  <FieldLabel
-                    htmlFor="checkout-7j9-same-as-shipping-wgm"
-                    className="font-normal"
-                  >
-                    Same as shipping address
-                  </FieldLabel>
-                </Field>
-              </FieldGroup>
-            </FieldSet>
-            <FieldSeparator />
-            <FieldSet>
-              <FieldGroup>
-                <Field>
-                  <FieldLabel htmlFor="checkout-7j9-optional-comments">
-                    Comments
-                  </FieldLabel>
-                  <Textarea
-                    id="checkout-7j9-optional-comments"
-                    placeholder="Add any additional comments"
-                  />
-                </Field>
-              </FieldGroup>
-            </FieldSet>
-            <Field orientation="horizontal">
-              <Button type="submit">Submit</Button>
-              <Button variant="outline" type="button">
-                Cancel
-              </Button>
-            </Field>
-          </FieldGroup>
-        </form>
-      </CardContent>
-    </Card>
+                </FieldGroup>
+              </FieldSet>
+              <Field orientation="horizontal">
+                <Button type="submit">Submit</Button>
+                <Button variant="outline" type="button">
+                  Cancel
+                </Button>
+              </Field>
+            </FieldGroup>
+          </form>
+        </CardContent>
+      </Card>
+    </Example>
   )
 }
 
 function ObservabilityCard() {
   return (
-    <Card className="relative w-full max-w-sm overflow-hidden pt-0">
-      <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
-      <img
-        src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="Photo by mymind on Unsplash"
-        title="Photo by mymind on Unsplash"
-        className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale"
-      />
-      <CardHeader>
-        <CardTitle>Observability Plus is replacing Monitoring</CardTitle>
-        <CardDescription>
-          Switch to the improved way to explore your data, with natural
-          language. Monitoring will no longer be available on the Pro plan in
-          November, 2025
-        </CardDescription>
-      </CardHeader>
-      <CardFooter>
-        <Button>
-          Create Query{" "}
-          <IconPlaceholder
-            lucide="PlusIcon"
-            tabler="IconPlus"
-            hugeicons="PlusSignIcon"
-            data-icon="inline-end"
-          />
-        </Button>
-        <Badge variant="secondary" className="ml-auto">
-          Warning
-        </Badge>
-      </CardFooter>
-    </Card>
+    <Example title="Observability Card">
+      <Card className="relative w-full max-w-sm overflow-hidden pt-0">
+        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
+        <img
+          src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Photo by mymind on Unsplash"
+          title="Photo by mymind on Unsplash"
+          className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale"
+        />
+        <CardHeader>
+          <CardTitle>Observability Plus is replacing Monitoring</CardTitle>
+          <CardDescription>
+            Switch to the improved way to explore your data, with natural
+            language. Monitoring will no longer be available on the Pro plan in
+            November, 2025
+          </CardDescription>
+        </CardHeader>
+        <CardFooter>
+          <Button>
+            Create Query{" "}
+            <IconPlaceholder
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+              data-icon="inline-end"
+            />
+          </Button>
+          <Badge variant="secondary" className="ml-auto">
+            Warning
+          </Badge>
+        </CardFooter>
+      </Card>
+    </Example>
   )
 }
 
 function FieldSlider() {
   const [value, setValue] = useState([200, 800])
   return (
-    <div className="w-full max-w-md">
-      <Field>
-        <FieldTitle>Price Range</FieldTitle>
-        <FieldDescription>
-          Set your budget range ($
-          <span className="font-medium tabular-nums">{value[0]}</span> -{" "}
-          <span className="font-medium tabular-nums">{value[1]}</span>).
-        </FieldDescription>
-        <Slider
-          value={value}
-          onValueChange={(val) => setValue(val as number[])}
-          max={1000}
-          min={0}
-          step={10}
-          className="mt-2 w-full"
-          aria-label="Price Range"
-        />
-      </Field>
-    </div>
+    <Example title="Field Slider">
+      <div className="w-full max-w-md">
+        <Field>
+          <FieldTitle>Price Range</FieldTitle>
+          <FieldDescription>
+            Set your budget range ($
+            <span className="font-medium tabular-nums">{value[0]}</span> -{" "}
+            <span className="font-medium tabular-nums">{value[1]}</span>).
+          </FieldDescription>
+          <Slider
+            value={value}
+            onValueChange={(val) => setValue(val as number[])}
+            max={1000}
+            min={0}
+            step={10}
+            className="mt-2 w-full"
+            aria-label="Price Range"
+          />
+        </Field>
+      </div>
+    </Example>
   )
 }
 
@@ -940,253 +969,265 @@ function InputGroupButtonExample() {
   const [isFavorite, setIsFavorite] = React.useState(false)
 
   return (
-    <Field>
-      <Label htmlFor="input-secure-19" className="sr-only">
-        Input Secure
-      </Label>
-      <InputGroup>
-        <InputGroupInput id="input-secure-19" className="!pl-0.5" />
-        <InputGroupAddon>
-          <Popover>
-            <PopoverTrigger
-              render={
-                <InputGroupButton
-                  variant="secondary"
-                  size="icon-xs"
-                  aria-label="Info"
+    <Example title="Input Group Button">
+      <Field>
+        <Label htmlFor="input-secure-19" className="sr-only">
+          Input Secure
+        </Label>
+        <InputGroup>
+          <InputGroupInput id="input-secure-19" className="!pl-0.5" />
+          <InputGroupAddon>
+            <Popover>
+              <PopoverTrigger
+                render={
+                  <InputGroupButton
+                    variant="secondary"
+                    size="icon-xs"
+                    aria-label="Info"
+                  />
+                }
+              >
+                <IconPlaceholder
+                  lucide="InfoIcon"
+                  tabler="IconInfoCircle"
+                  hugeicons="AlertCircleIcon"
                 />
-              }
+              </PopoverTrigger>
+              <PopoverContent
+                align="start"
+                alignOffset={10}
+                className="flex flex-col gap-1 rounded-xl text-sm"
+              >
+                <p className="font-medium">Your connection is not secure.</p>
+                <p>
+                  You should not enter any sensitive information on this site.
+                </p>
+              </PopoverContent>
+            </Popover>
+          </InputGroupAddon>
+          <InputGroupAddon className="text-muted-foreground !pl-1">
+            https://
+          </InputGroupAddon>
+          <InputGroupAddon align="inline-end">
+            <InputGroupButton
+              onClick={() => setIsFavorite(!isFavorite)}
+              size="icon-xs"
+              aria-label="Favorite"
             >
               <IconPlaceholder
-                lucide="InfoIcon"
-                tabler="IconInfoCircle"
-                hugeicons="AlertCircleIcon"
+                lucide="StarIcon"
+                tabler="IconStar"
+                hugeicons="StarIcon"
+                data-favorite={isFavorite}
+                className="data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"
               />
-            </PopoverTrigger>
-            <PopoverContent
-              align="start"
-              alignOffset={10}
-              className="flex flex-col gap-1 rounded-xl text-sm"
-            >
-              <p className="font-medium">Your connection is not secure.</p>
-              <p>
-                You should not enter any sensitive information on this site.
-              </p>
-            </PopoverContent>
-          </Popover>
-        </InputGroupAddon>
-        <InputGroupAddon className="text-muted-foreground !pl-1">
-          https://
-        </InputGroupAddon>
-        <InputGroupAddon align="inline-end">
-          <InputGroupButton
-            onClick={() => setIsFavorite(!isFavorite)}
-            size="icon-xs"
-            aria-label="Favorite"
-          >
-            <IconPlaceholder
-              lucide="StarIcon"
-              tabler="IconStar"
-              hugeicons="StarIcon"
-              data-favorite={isFavorite}
-              className="data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"
-            />
-          </InputGroupButton>
-        </InputGroupAddon>
-      </InputGroup>
-    </Field>
+            </InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
+      </Field>
+    </Example>
   )
 }
 
 function InputGroupExample() {
   return (
-    <div className="grid w-full max-w-sm gap-6">
-      <InputGroup>
-        <InputGroupInput placeholder="Search..." />
-        <InputGroupAddon>
-          <IconPlaceholder
-            lucide="SearchIcon"
-            tabler="IconSearch"
-            hugeicons="Search01Icon"
-          />
-        </InputGroupAddon>
-        <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
-      </InputGroup>
-      <InputGroup>
-        <InputGroupInput placeholder="example.com" className="!pl-1" />
-        <InputGroupAddon>
-          <InputGroupText>https://</InputGroupText>
-        </InputGroupAddon>
-        <InputGroupAddon align="inline-end">
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <InputGroupButton
-                  className="rounded-full"
-                  size="icon-xs"
-                  aria-label="Info"
+    <Example title="Input Group">
+      <div className="grid w-full max-w-sm gap-6">
+        <InputGroup>
+          <InputGroupInput placeholder="Search..." />
+          <InputGroupAddon>
+            <IconPlaceholder
+              lucide="SearchIcon"
+              tabler="IconSearch"
+              hugeicons="Search01Icon"
+            />
+          </InputGroupAddon>
+          <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <InputGroupInput placeholder="example.com" className="!pl-1" />
+          <InputGroupAddon>
+            <InputGroupText>https://</InputGroupText>
+          </InputGroupAddon>
+          <InputGroupAddon align="inline-end">
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <InputGroupButton
+                    className="rounded-full"
+                    size="icon-xs"
+                    aria-label="Info"
+                  />
+                }
+              >
+                <IconPlaceholder
+                  lucide="InfoIcon"
+                  tabler="IconInfoCircle"
+                  hugeicons="AlertCircleIcon"
                 />
-              }
+              </TooltipTrigger>
+              <TooltipContent>This is content in a tooltip.</TooltipContent>
+            </Tooltip>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <InputGroupTextarea placeholder="Ask, Search or Chat..." />
+          <InputGroupAddon align="block-end">
+            <InputGroupButton
+              variant="outline"
+              className="rounded-full"
+              size="icon-xs"
+              aria-label="Add"
             >
               <IconPlaceholder
-                lucide="InfoIcon"
-                tabler="IconInfoCircle"
-                hugeicons="AlertCircleIcon"
+                lucide="PlusIcon"
+                tabler="IconPlus"
+                hugeicons="PlusSignIcon"
               />
-            </TooltipTrigger>
-            <TooltipContent>This is content in a tooltip.</TooltipContent>
-          </Tooltip>
-        </InputGroupAddon>
-      </InputGroup>
-      <InputGroup>
-        <InputGroupTextarea placeholder="Ask, Search or Chat..." />
-        <InputGroupAddon align="block-end">
-          <InputGroupButton
-            variant="outline"
-            className="rounded-full"
-            size="icon-xs"
-            aria-label="Add"
-          >
-            <IconPlaceholder
-              lucide="PlusIcon"
-              tabler="IconPlus"
-              hugeicons="PlusSignIcon"
-            />
-          </InputGroupButton>
-          <DropdownMenu>
-            <DropdownMenuTrigger render={<InputGroupButton variant="ghost" />}>
-              Auto
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              side="top"
-              align="start"
-              className="[--radius:0.95rem]"
+            </InputGroupButton>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={<InputGroupButton variant="ghost" />}
+              >
+                Auto
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                side="top"
+                align="start"
+                className="[--radius:0.95rem]"
+              >
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>Auto</DropdownMenuItem>
+                  <DropdownMenuItem>Agent</DropdownMenuItem>
+                  <DropdownMenuItem>Manual</DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <InputGroupText className="ml-auto">52% used</InputGroupText>
+            <Separator orientation="vertical" className="!h-4" />
+            <InputGroupButton
+              variant="default"
+              className="rounded-full"
+              size="icon-xs"
             >
-              <DropdownMenuGroup>
-                <DropdownMenuItem>Auto</DropdownMenuItem>
-                <DropdownMenuItem>Agent</DropdownMenuItem>
-                <DropdownMenuItem>Manual</DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <InputGroupText className="ml-auto">52% used</InputGroupText>
-          <Separator orientation="vertical" className="!h-4" />
-          <InputGroupButton
-            variant="default"
-            className="rounded-full"
-            size="icon-xs"
-          >
-            <IconPlaceholder
-              lucide="ArrowUpIcon"
-              tabler="IconArrowUp"
-              hugeicons="ArrowUp01Icon"
-            />
-            <span className="sr-only">Send</span>
-          </InputGroupButton>
-        </InputGroupAddon>
-      </InputGroup>
-      <InputGroup>
-        <InputGroupInput placeholder="@shadcn" />
-        <InputGroupAddon align="inline-end">
-          <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
-            <IconPlaceholder
-              lucide="CheckIcon"
-              tabler="IconCheck"
-              hugeicons="Tick02Icon"
-              className="size-3 text-white"
-            />
-          </div>
-        </InputGroupAddon>
-      </InputGroup>
-    </div>
+              <IconPlaceholder
+                lucide="ArrowUpIcon"
+                tabler="IconArrowUp"
+                hugeicons="ArrowUp01Icon"
+              />
+              <span className="sr-only">Send</span>
+            </InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <InputGroupInput placeholder="@shadcn" />
+          <InputGroupAddon align="inline-end">
+            <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
+              <IconPlaceholder
+                lucide="CheckIcon"
+                tabler="IconCheck"
+                hugeicons="Tick02Icon"
+                className="size-3 text-white"
+              />
+            </div>
+          </InputGroupAddon>
+        </InputGroup>
+      </div>
+    </Example>
   )
 }
 
 function ItemExample() {
   return (
-    <div className="flex w-full max-w-md flex-col gap-6">
-      <Item variant="outline">
-        <ItemContent>
-          <ItemTitle>Two-factor authentication</ItemTitle>
-          <ItemDescription className="text-pretty xl:hidden 2xl:block">
-            Verify via email or phone number.
-          </ItemDescription>
-        </ItemContent>
-        <ItemActions>
-          <Button size="sm" variant="secondary">
-            Enable
-          </Button>
-        </ItemActions>
-      </Item>
-      <Item variant="outline" size="sm" render={<a href="#" />}>
-        <ItemMedia>
-          <IconPlaceholder
-            lucide="ShoppingBagIcon"
-            tabler="IconShoppingBag"
-            hugeicons="ShoppingBasket01Icon"
-            className="size-5"
-          />
-        </ItemMedia>
-        <ItemContent>
-          <ItemTitle>Your profile has been verified.</ItemTitle>
-        </ItemContent>
-        <ItemActions>
-          <IconPlaceholder
-            lucide="BicepsFlexed"
-            tabler="IconAdCircleFilled"
-            hugeicons="AbsoluteIcon"
-            className="size-4"
-          />
-        </ItemActions>
-      </Item>
-    </div>
+    <Example title="Item">
+      <div className="flex w-full max-w-md flex-col gap-6">
+        <Item variant="outline">
+          <ItemContent>
+            <ItemTitle>Two-factor authentication</ItemTitle>
+            <ItemDescription className="text-pretty xl:hidden 2xl:block">
+              Verify via email or phone number.
+            </ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <Button size="sm" variant="secondary">
+              Enable
+            </Button>
+          </ItemActions>
+        </Item>
+        <Item variant="outline" size="sm" render={<a href="#" />}>
+          <ItemMedia>
+            <IconPlaceholder
+              lucide="ShoppingBagIcon"
+              tabler="IconShoppingBag"
+              hugeicons="ShoppingBasket01Icon"
+              className="size-5"
+            />
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle>Your profile has been verified.</ItemTitle>
+          </ItemContent>
+          <ItemActions>
+            <IconPlaceholder
+              lucide="BicepsFlexed"
+              tabler="IconAdCircleFilled"
+              hugeicons="AbsoluteIcon"
+              className="size-4"
+            />
+          </ItemActions>
+        </Item>
+      </div>
+    </Example>
   )
 }
 
 function SpinnerBadge() {
   return (
-    <div className="flex items-center gap-2">
-      <Badge>
-        <Spinner />
-        Syncing
-      </Badge>
-      <Badge variant="secondary">
-        <Spinner />
-        Updating
-      </Badge>
-      <Badge variant="outline">
-        <Spinner />
-        Loading
-      </Badge>
-      <Badge variant="link">
-        <Spinner />
-        Error
-      </Badge>
-    </div>
+    <Example title="Spinner Badge">
+      <div className="flex items-center gap-2">
+        <Badge>
+          <Spinner />
+          Syncing
+        </Badge>
+        <Badge variant="secondary">
+          <Spinner />
+          Updating
+        </Badge>
+        <Badge variant="outline">
+          <Spinner />
+          Loading
+        </Badge>
+        <Badge variant="link">
+          <Spinner />
+          Error
+        </Badge>
+      </div>
+    </Example>
   )
 }
 
 function SpinnerEmpty() {
   return (
-    <Empty className="w-full border">
-      <EmptyHeader>
-        <EmptyMedia variant="icon">
-          <Spinner />
-        </EmptyMedia>
-        <EmptyTitle>Processing your request</EmptyTitle>
-        <EmptyDescription>
-          Please wait while we process your request. Do not refresh the page.
-        </EmptyDescription>
-      </EmptyHeader>
-      <EmptyContent>
-        <div className="flex gap-2">
-          <Button size="sm">Submit</Button>
-          <Button variant="outline" size="sm">
-            Cancel
-          </Button>
-        </div>
-      </EmptyContent>
-    </Empty>
+    <Example title="Spinner Empty">
+      <Empty className="w-full border">
+        <EmptyHeader>
+          <EmptyMedia variant="icon">
+            <Spinner />
+          </EmptyMedia>
+          <EmptyTitle>Processing your request</EmptyTitle>
+          <EmptyDescription>
+            Please wait while we process your request. Do not refresh the page.
+          </EmptyDescription>
+        </EmptyHeader>
+        <EmptyContent>
+          <div className="flex gap-2">
+            <Button size="sm">Submit</Button>
+            <Button variant="outline" size="sm">
+              Cancel
+            </Button>
+          </div>
+        </EmptyContent>
+      </Empty>
+    </Example>
   )
 }
 
@@ -1194,53 +1235,55 @@ const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 
 function SheetExample() {
   return (
-    <div className="flex gap-2">
-      {SHEET_SIDES.map((side) => (
-        <Sheet key={side}>
-          <SheetTrigger
-            render={
-              <Button variant="secondary" className="flex-1 capitalize" />
-            }
-          >
-            {side}
-          </SheetTrigger>
-          <SheetContent
-            side={side}
-            className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
-          >
-            <SheetHeader>
-              <SheetTitle>Edit profile</SheetTitle>
-              <SheetDescription>
-                Make changes to your profile here. Click save when you&apos;re
-                done.
-              </SheetDescription>
-            </SheetHeader>
-            <div className="overflow-y-auto px-4 text-sm">
-              <h4 className="mb-4 text-lg leading-none font-medium">
-                Lorem Ipsum
-              </h4>
-              {Array.from({ length: 10 }).map((_, index) => (
-                <p key={index} className="mb-4 leading-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </p>
-              ))}
-            </div>
-            <SheetFooter>
-              <Button type="submit">Save changes</Button>
-              <SheetClose render={<Button variant="outline" />}>
-                Cancel
-              </SheetClose>
-            </SheetFooter>
-          </SheetContent>
-        </Sheet>
-      ))}
-    </div>
+    <Example title="Sheet">
+      <div className="flex gap-2">
+        {SHEET_SIDES.map((side) => (
+          <Sheet key={side}>
+            <SheetTrigger
+              render={
+                <Button variant="secondary" className="flex-1 capitalize" />
+              }
+            >
+              {side}
+            </SheetTrigger>
+            <SheetContent
+              side={side}
+              className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
+            >
+              <SheetHeader>
+                <SheetTitle>Edit profile</SheetTitle>
+                <SheetDescription>
+                  Make changes to your profile here. Click save when you&apos;re
+                  done.
+                </SheetDescription>
+              </SheetHeader>
+              <div className="overflow-y-auto px-4 text-sm">
+                <h4 className="mb-4 text-lg leading-none font-medium">
+                  Lorem Ipsum
+                </h4>
+                {Array.from({ length: 10 }).map((_, index) => (
+                  <p key={index} className="mb-4 leading-normal">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                  </p>
+                ))}
+              </div>
+              <SheetFooter>
+                <Button type="submit">Save changes</Button>
+                <SheetClose render={<Button variant="outline" />}>
+                  Cancel
+                </SheetClose>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
+        ))}
+      </div>
+    </Example>
   )
 }

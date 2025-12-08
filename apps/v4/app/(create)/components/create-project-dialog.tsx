@@ -7,6 +7,7 @@ import { useQueryStates } from "nuqs"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
+import { DEFAULT_CONFIG } from "@/registry/config"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
@@ -19,10 +20,10 @@ import {
 } from "@/registry/new-york-v4/ui/dialog"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function CreateProjectDialog() {
+export function ToolbarControls() {
   const [open, setOpen] = React.useState(false)
   const { base } = useParams()
-  const [params] = useQueryStates(designSystemSearchParams, {
+  const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
   })
   const [hasCopied, setHasCopied] = React.useState(false)
@@ -61,8 +62,32 @@ export function CreateProjectDialog() {
     setHasCopied(true)
   }, [command, setOpen])
 
+  const handleReset = React.useCallback(() => {
+    setParams({
+      item: "cover",
+      iconLibrary: DEFAULT_CONFIG.iconLibrary,
+      style: DEFAULT_CONFIG.style,
+      theme: DEFAULT_CONFIG.theme,
+      font: DEFAULT_CONFIG.font,
+      baseColor: DEFAULT_CONFIG.baseColor,
+      menuAccent: DEFAULT_CONFIG.menuAccent,
+      menuColor: DEFAULT_CONFIG.menuColor,
+      radius: DEFAULT_CONFIG.radius,
+      size: 100,
+      custom: false,
+    })
+  }, [setParams])
+
   return (
     <div className="bg-background sticky bottom-0 flex gap-2">
+      <Button
+        size="sm"
+        variant="outline"
+        className="h-[31px] rounded-lg"
+        onClick={handleReset}
+      >
+        Reset
+      </Button>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button size="sm" className="h-[31px] flex-1 rounded-lg">

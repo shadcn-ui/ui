@@ -77,6 +77,7 @@ export const designSystemConfigSchema = z
       .default("neutral"),
     theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
     font: z.enum(fontValues).default("inter"),
+    item: z.string().optional(),
     menuAccent: z
       .enum(
         MENU_ACCENTS.map((a) => a.value) as [
@@ -114,6 +115,7 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   theme: "neutral",
   iconLibrary: "lucide",
   font: "inter",
+  item: "Item",
   menuAccent: "subtle",
   menuColor: "default",
   radius: "default",
@@ -136,6 +138,7 @@ export const PRESETS: Preset[] = [
     theme: "neutral",
     iconLibrary: "lucide",
     font: "inter",
+    item: "Item",
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -150,6 +153,7 @@ export const PRESETS: Preset[] = [
     theme: "blue",
     iconLibrary: "hugeicons",
     font: "figtree",
+    item: "Item",
     menuAccent: "bold",
     menuColor: "inverted",
     radius: "large",

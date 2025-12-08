@@ -1,6 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { Settings05Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 import { useQueryStates } from "nuqs"
 
 import { getThemesForBaseColor, PRESETS, STYLES } from "@/registry/config"
@@ -28,9 +30,20 @@ export function Customizer({ base }: { base: string }) {
 
   return (
     <div className="no-scrollbar flex h-[calc(100svh-var(--header-height)-2rem)] w-48 flex-col gap-4 overflow-y-auto p-1">
-      <FieldGroup className="**:data-[slot=select-trigger]:hover:bg-muted **:data-[slot=select-trigger]:ring-foreground/10 dark:**:data-[slot=select-trigger]:hover:bg-muted/50 **:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 dark:**:data-[slot=select-trigger]:data-[state=open]:bg-muted/50 flex flex-1 flex-col gap-1 **:data-[slot=select-trigger]:w-full **:data-[slot=select-trigger]:rounded-lg **:data-[slot=select-trigger]:border-0 **:data-[slot=select-trigger]:bg-transparent **:data-[slot=select-trigger]:text-left **:data-[slot=select-trigger]:shadow-none **:data-[slot=select-trigger]:data-[size=default]:h-12 **:data-[slot=select-trigger]:data-[size=default]:px-2 dark:**:data-[slot=select-trigger]:bg-transparent **:[[data-slot=select-trigger]>svg]:hidden">
+      <div className="mt-auto flex flex-col gap-2 p-2">
+        <HugeiconsIcon icon={Settings05Icon} className="size-5" />
+        <div className="relative flex flex-col gap-1 rounded-lg text-[13px]/snug">
+          <div className="flex items-center gap-1 font-medium text-balance">
+            Build your own shadcn/ui
+          </div>
+          <div>
+            When you&apos;re done, click Create Project to start a new project.
+          </div>
+        </div>
+      </div>
+      <FieldGroup className="**:data-[slot=select-trigger]:hover:bg-muted **:data-[slot=select-trigger]:ring-foreground/10 dark:**:data-[slot=select-trigger]:hover:bg-muted **:data-[slot=select-trigger]:data-[state=open]:bg-muted dark:**:data-[slot=select-trigger]:data-[state=open]:bg-muted flex flex-1 flex-col gap-1 **:data-[slot=select-trigger]:w-full **:data-[slot=select-trigger]:rounded-lg **:data-[slot=select-trigger]:border-0 **:data-[slot=select-trigger]:bg-transparent **:data-[slot=select-trigger]:text-left **:data-[slot=select-trigger]:shadow-none **:data-[slot=select-trigger]:data-[size=default]:h-12 **:data-[slot=select-trigger]:data-[size=default]:px-2 dark:**:data-[slot=select-trigger]:bg-transparent **:[[data-slot=select-trigger]>svg]:hidden">
         <PresetPicker presets={PRESETS} base={base} />
-        <FieldSeparator className="my-px opacity-0" />
+        <FieldSeparator className="opacity-0" />
         <BasePicker />
         <StylePicker styles={STYLES} />
         <BaseColorPicker />

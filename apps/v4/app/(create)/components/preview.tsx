@@ -52,9 +52,10 @@ export function Preview({ base }: { base: Base["name"] }) {
   const handleMessage = (event: MessageEvent) => {
     if (event.data.type === CMD_K_FORWARD_TYPE) {
       const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent)
+      const key = event.data.key || "k"
 
       const syntheticEvent = new KeyboardEvent("keydown", {
-        key: "k",
+        key,
         metaKey: isMac,
         ctrlKey: !isMac,
         bubbles: true,
@@ -78,7 +79,7 @@ export function Preview({ base }: { base: Base["name"] }) {
   const iframeSrc = `/preview/${base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "vega"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
 
   return (
-    <div className="ring-foreground/10 relative -z-0 flex flex-1 flex-col overflow-hidden rounded-2xl ring-1">
+    <div className="ring-foreground/15 relative -z-0 flex flex-1 flex-col overflow-hidden rounded-xl ring-1">
       <div className="bg-muted dark:bg-muted/30 absolute inset-0 rounded-2xl" />
       <iframe
         key={`${params.item}-${iframeKey}`}

@@ -50,7 +50,7 @@ export function ItemPicker({
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      if ((e.key === "k" || e.key === "p") && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }
@@ -100,7 +100,7 @@ export function ItemPicker({
           <Button
             variant="outline"
             size="sm"
-            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 w-full max-w-lg justify-between gap-2 bg-transparent pr-2! pl-2.5 text-left shadow-none dark:bg-transparent"
+            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-background dark:bg-background w-full max-w-lg justify-between gap-2 rounded-lg pr-2! pl-2.5 text-left shadow-none"
           />
         }
       >
@@ -115,7 +115,7 @@ export function ItemPicker({
       <ComboboxContent
         className="ring-foreground/10 w-64 animate-none rounded-xl border-0 ring-1 data-open:animate-none"
         side="bottom"
-        align="end"
+        align="center"
       >
         <ComboboxInput
           showTrigger={false}
@@ -162,13 +162,14 @@ export function ItemPickerScript() {
       dangerouslySetInnerHTML={{
         __html: `
             (function() {
-              // Forward Cmd/Ctrl + K
+              // Forward Cmd/Ctrl + K and Cmd/Ctrl + P
               document.addEventListener('keydown', function(e) {
-                if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+                if ((e.key === 'k' || e.key === 'p') && (e.metaKey || e.ctrlKey)) {
                   e.preventDefault();
                   if (window.parent && window.parent !== window) {
                     window.parent.postMessage({
-                      type: '${CMD_K_FORWARD_TYPE}'
+                      type: '${CMD_K_FORWARD_TYPE}',
+                      key: e.key
                     }, '*');
                   }
                 }

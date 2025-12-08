@@ -43,7 +43,7 @@ export function ItemExplorer({
 
   return (
     <Sidebar
-      className="sticky z-30 flex h-[calc(100svh-var(--header-height)-2rem)] overscroll-none bg-transparent"
+      className="sticky z-30 hidden h-[calc(100svh-var(--header-height)-2rem)] overscroll-none bg-transparent"
       collapsible="none"
     >
       <SidebarContent className="no-scrollbar overflow-x-hidden">
