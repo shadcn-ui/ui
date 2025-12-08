@@ -82,6 +82,8 @@
   "@supabase": "https://supabase.com/ui/r/{name}.json",
   "@svgl": "https://svgl.app/r/{name}.json",
   "@tailark": "https://tailark.com/r/{name}.json",
+  "@tailwind-admin": "https://tailwind-admin.com/r/{name}.json",
+  "@tailwind-builder": "https://tailwindbuilder.ai/r/{name}.json",
   "@tweakcn": "https://tweakcn.com/r/themes/{name}.json",
   "@wds": "https://wds-shadcn-registry.netlify.app/r/{name}.json",
   "@wandry-ui": "https://ui.wandry.com.ua/r/{name}.json",
