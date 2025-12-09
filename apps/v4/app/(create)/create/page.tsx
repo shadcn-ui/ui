@@ -1,6 +1,5 @@
 import { type Metadata } from "next"
 import Link from "next/link"
-import { notFound } from "next/navigation"
 import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
@@ -26,74 +25,42 @@ import { designSystemSearchParamsCache } from "@/app/(create)/lib/search-params"
 
 export const revalidate = false
 export const dynamic = "force-static"
-export const dynamicParams = false
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ base: string }>
-}): Promise<Metadata> {
-  const paramBag = await params
-  const base = BASES.find((l) => l.name === paramBag.base)
-
-  if (!base) {
-    return notFound()
-  }
-
-  const title = "Create Project"
-  const description = "Design your own shadcn/ui."
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: absoluteUrl(`/create/${base.name}`),
-      images: [
-        {
-          url: siteConfig.ogImage,
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [siteConfig.ogImage],
-      creator: "@shadcn",
-    },
-  }
+export const metadata: Metadata = {
+  title: "Create Project",
+  description: "Design your own shadcn/ui.",
+  openGraph: {
+    title: "Create Project",
+    description: "Design your own shadcn/ui.",
+    type: "website",
+    url: absoluteUrl("/create"),
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Create Project",
+    description: "Design your own shadcn/ui.",
+    images: [siteConfig.ogImage],
+    creator: "@shadcn",
+  },
 }
 
-export async function generateStaticParams() {
-  return BASES.map((base) => ({
-    base: base.name,
-  }))
-}
-
-export default async function NewPage({
-  params,
+export default async function CreatePage({
   searchParams,
 }: {
-  params: Promise<{ base: string }>
   searchParams: Promise<SearchParams>
 }) {
-  const paramBag = await params
-  const base = BASES.find((l) => l.name === paramBag.base)
+  const params = await designSystemSearchParamsCache.parse(searchParams)
+  const base = BASES.find((b) => b.name === params.base) ?? BASES[0]
 
-  if (!base) {
-    return notFound()
-  }
-
-  const [items] = await Promise.all([
-    getItemsForBase(base.name),
-    designSystemSearchParamsCache.parse(searchParams),
-  ])
+  const items = await getItemsForBase(base.name)
 
   const filteredItems = items
     .filter((item) => item !== null)
@@ -138,7 +105,7 @@ export default async function NewPage({
               <Separator orientation="vertical" className="3xl:flex hidden" />
               <ModeSwitcher />
               <Separator orientation="vertical" />
-              <V0Button base={base.name} />
+              <V0Button />
               <Separator orientation="vertical" />
 
               <ToolbarControls />
@@ -153,8 +120,8 @@ export default async function NewPage({
             className="3xl:fixed:container flex flex-1 gap-4 p-6 pt-2 [--sidebar-width:--spacing(40)] 2xl:gap-6"
           >
             <ItemExplorer items={filteredItems} />
-            <Preview base={base.name} />
-            <Customizer base={base.name} />
+            <Preview />
+            <Customizer />
           </div>
         </SidebarProvider>
       </main>

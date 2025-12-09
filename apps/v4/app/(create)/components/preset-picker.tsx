@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useRouter } from "next/navigation"
 import { useQueryStates } from "nuqs"
 
 import {
@@ -22,14 +21,7 @@ import {
 } from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function PresetPicker({
-  presets,
-  base,
-}: {
-  presets: readonly Preset[]
-  base: string
-}) {
-  const router = useRouter()
+export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -38,7 +30,7 @@ export function PresetPicker({
   const currentPreset = React.useMemo(() => {
     return presets.find(
       (preset) =>
-        preset.base === base &&
+        preset.base === params.base &&
         preset.style === params.style &&
         preset.baseColor === params.baseColor &&
         preset.theme === params.theme &&
@@ -50,7 +42,7 @@ export function PresetPicker({
     )
   }, [
     presets,
-    base,
+    params.base,
     params.style,
     params.baseColor,
     params.theme,
@@ -67,28 +59,9 @@ export function PresetPicker({
       return
     }
 
-    // Build search params for the preset.
-    const searchParams = new URLSearchParams({
-      item: params.item,
-      style: preset.style,
-      baseColor: preset.baseColor,
-      theme: preset.theme,
-      iconLibrary: preset.iconLibrary,
-      font: preset.font,
-      menuAccent: preset.menuAccent,
-      menuColor: preset.menuColor,
-      radius: preset.radius,
-      custom: "false",
-    })
-
-    // If base is different, navigate to the new base URL.
-    if (preset.base !== base) {
-      router.push(`/create/${preset.base}?${searchParams.toString()}`)
-      return
-    }
-
-    // Same base, just update query params.
+    // Update all params including base.
     setParams({
+      base: preset.base,
       style: preset.style,
       baseColor: preset.baseColor,
       theme: preset.theme,

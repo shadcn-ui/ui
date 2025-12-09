@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { useParams, useRouter, useSearchParams } from "next/navigation"
+import { useQueryStates } from "nuqs"
 
 import { BASES } from "@/registry/config"
 import {
@@ -12,18 +12,17 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
+import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function BasePicker() {
-  const params = useParams()
-  const router = useRouter()
-  const searchParams = useSearchParams()
-
-  const currentBaseName =
-    typeof params.base === "string" ? params.base : undefined
+  const [params, setParams] = useQueryStates(designSystemSearchParams, {
+    shallow: false,
+    history: "push",
+  })
 
   const currentBase = React.useMemo(
-    () => BASES.find((base) => base.name === currentBaseName),
-    [currentBaseName]
+    () => BASES.find((base) => base.name === params.base),
+    [params.base]
   )
 
   const handleValueChange = React.useCallback(
@@ -33,14 +32,9 @@ export function BasePicker() {
         return
       }
 
-      // Preserve search params when navigating to a new base.
-      const currentSearchParams = searchParams.toString()
-      const url = `/create/${newBase.name}${
-        currentSearchParams ? `?${currentSearchParams}` : ""
-      }`
-      router.push(url)
+      setParams({ base: newBase.name })
     },
-    [router, searchParams]
+    [setParams]
   )
 
   return (

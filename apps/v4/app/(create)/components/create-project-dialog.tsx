@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useParams, useSearchParams } from "next/navigation"
 import { IconCheck, IconCopy } from "@tabler/icons-react"
 import { useQueryStates } from "nuqs"
 
@@ -22,7 +21,6 @@ import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function ToolbarControls() {
   const [open, setOpen] = React.useState(false)
-  const { base } = useParams()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
   })
@@ -30,10 +28,10 @@ export function ToolbarControls() {
 
   const command = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-    const url = `${origin}/init?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}`
+    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}`
     return `pnpm shadcn create --preset ${url} -c ~/Playground`
   }, [
-    base,
+    params.base,
     params.style,
     params.baseColor,
     params.theme,

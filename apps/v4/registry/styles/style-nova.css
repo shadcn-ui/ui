@@ -242,7 +242,7 @@
   }
 
   .cn-card-title {
-    @apply text-sm leading-snug font-semibold;
+    @apply text-base leading-snug font-semibold group-data-[size=sm]/card:text-sm;
   }
 
   .cn-card-description {
@@ -560,11 +560,11 @@
   }
 
   .cn-field-legend {
-    @apply mb-3 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base;
+    @apply mb-1.5 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base;
   }
 
   .cn-field-group {
-    @apply gap-6 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-4;
+    @apply gap-5 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-4;
   }
 
   .cn-field {
@@ -572,11 +572,11 @@
   }
 
   .cn-field-content {
-    @apply gap-1;
+    @apply gap-0.5;
   }
 
   .cn-field-label {
-    @apply has-data-checked:bg-primary/5 has-data-checked:border-primary dark:has-data-checked:bg-primary/10 gap-2 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-2.5;
+    @apply has-data-checked:bg-primary/5 has-data-checked:border-primary dark:has-data-checked:bg-primary/10 gap-2 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-lg has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-2.5;
   }
 
   .cn-field-title {

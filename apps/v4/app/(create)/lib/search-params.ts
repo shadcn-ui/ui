@@ -8,6 +8,7 @@ import {
 
 import {
   BASE_COLORS,
+  BASES,
   DEFAULT_CONFIG,
   iconLibraries,
   MENU_ACCENTS,
@@ -16,6 +17,7 @@ import {
   STYLES,
   THEMES,
   type BaseColorName,
+  type BaseName,
   type FontValue,
   type IconLibraryName,
   type MenuAccentValue,
@@ -27,6 +29,9 @@ import {
 import { FONTS } from "@/app/(create)/lib/fonts"
 
 export const designSystemSearchParams = {
+  base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
+    DEFAULT_CONFIG.base
+  ),
   item: parseAsString.withDefault("cover"),
   iconLibrary: parseAsStringLiteral<IconLibraryName>(
     Object.values(iconLibraries).map((i) => i.name)

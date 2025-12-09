@@ -6,15 +6,13 @@ import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function V0Button({ base }: { base: string }) {
+export function V0Button() {
   const [params] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
   })
 
-  const url = `${process.env.NEXT_PUBLIC_APP_URL}/create/v0?base=${base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&item=${params.item}`
-
-  console.log(url)
+  const url = `${process.env.NEXT_PUBLIC_APP_URL}/create/v0?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&item=${params.item}`
 
   return (
     <Button

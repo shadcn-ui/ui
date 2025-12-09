@@ -133,24 +133,22 @@ export default function CoverExample() {
   return (
     <ExampleWrapper>
       <ObservabilityCard />
-      <SpinnerEmpty />
+      <EmptyWithSpinner />
+      <FormExample />
+      <FieldExamples />
+      <ButtonGroupExamples />
       <EmptyAvatarGroup />
       <InputGroupExamples />
-      <FieldExample />
-      <AppearanceSettings />
-      <ButtonGroupExamples />
       <ItemExample />
       <SheetExample />
       <SpinnerBadge />
-      <FieldSlider />
-      <FieldCheckbox />
     </ExampleWrapper>
   )
 }
 
-function AppearanceSettings() {
+function FieldExamples() {
   const [gpuCount, setGpuCount] = React.useState(8)
-
+  const [value, setValue] = useState([200, 800])
   const handleGpuAdjustment = React.useCallback((adjustment: number) => {
     setGpuCount((prevCount) =>
       Math.max(1, Math.min(99, prevCount + adjustment))
@@ -168,7 +166,7 @@ function AppearanceSettings() {
   )
 
   return (
-    <Example title="Appearance Settings">
+    <Example title="Field Examples">
       <FieldSet className="w-full max-w-md">
         <FieldGroup>
           <FieldSet>
@@ -267,6 +265,41 @@ function AppearanceSettings() {
             </FieldContent>
             <Switch id="tinting" defaultChecked />
           </Field>
+          <FieldSeparator />
+          <FieldLabel htmlFor="checkbox-demo">
+            <Field orientation="horizontal">
+              <Checkbox id="checkbox-demo" defaultChecked />
+              <FieldLabel htmlFor="checkbox-demo" className="line-clamp-1">
+                I agree to the terms and conditions
+              </FieldLabel>
+            </Field>
+          </FieldLabel>
+          <FieldSeparator />
+          <Field>
+            <FieldTitle>Price Range</FieldTitle>
+            <FieldDescription>
+              Set your budget range ($
+              <span className="font-medium tabular-nums">
+                {value[0]}
+              </span> -{" "}
+              <span className="font-medium tabular-nums">{value[1]}</span>).
+            </FieldDescription>
+            <Slider
+              value={value}
+              onValueChange={(val) => setValue(val as number[])}
+              max={1000}
+              min={0}
+              step={10}
+              className="mt-2 w-full"
+              aria-label="Price Range"
+            />
+          </Field>
+          <Field orientation="horizontal">
+            <Button type="submit">Submit</Button>
+            <Button variant="outline" type="button">
+              Cancel
+            </Button>
+          </Field>
         </FieldGroup>
       </FieldSet>
     </Example>
@@ -277,7 +310,7 @@ function ButtonGroupExamples() {
   const [label, setLabel] = React.useState("personal")
 
   return (
-    <Example title="Button Group">
+    <Example title="Button Group" className="items-center justify-center">
       <div className="flex flex-col gap-6">
         <ButtonGroup>
           <ButtonGroup className="hidden sm:flex">
@@ -421,15 +454,9 @@ function ButtonGroupExamples() {
         <div className="flex gap-4">
           <ButtonGroup>
             <ButtonGroup>
-              <Button variant="outline" size="sm">
-                1
-              </Button>
-              <Button variant="outline" size="sm">
-                2
-              </Button>
-              <Button variant="outline" size="sm">
-                3
-              </Button>
+              <Button variant="outline">1</Button>
+              <Button variant="outline">2</Button>
+              <Button variant="outline">3</Button>
             </ButtonGroup>
           </ButtonGroup>
           <ButtonGroup>
@@ -516,7 +543,7 @@ function ButtonGroupExamples() {
               </DropdownMenu>
             </ButtonGroup>
             <ButtonGroup>
-              <Button variant="outline" size="sm">
+              <Button variant="outline">
                 <IconPlaceholder
                   lucide="BotIcon"
                   tabler="IconRobot"
@@ -528,7 +555,7 @@ function ButtonGroupExamples() {
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
-                    size="icon-sm"
+                    size="icon"
                     aria-label="Open Popover"
                   >
                     <IconPlaceholder
@@ -769,7 +796,7 @@ function InputGroupExamples() {
 function EmptyAvatarGroup() {
   return (
     <Example title="Empty Avatar Group">
-      <Empty className="flex-none border">
+      <Empty className="h-full flex-none border">
         <EmptyHeader>
           <EmptyMedia>
             <AvatarGroup className="grayscale">
@@ -855,24 +882,9 @@ function EmptyAvatarGroup() {
   )
 }
 
-function FieldCheckbox() {
+function FormExample() {
   return (
-    <Example title="Field Checkbox">
-      <FieldLabel htmlFor="checkbox-demo">
-        <Field orientation="horizontal">
-          <Checkbox id="checkbox-demo" defaultChecked />
-          <FieldLabel htmlFor="checkbox-demo" className="line-clamp-1">
-            I agree to the terms and conditions
-          </FieldLabel>
-        </Field>
-      </FieldLabel>
-    </Example>
-  )
-}
-
-function FieldExample() {
-  return (
-    <Example title="Field">
+    <Example title="Form Example">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Payment Method</CardTitle>
@@ -964,7 +976,7 @@ function FieldExample() {
               <FieldSet>
                 <FieldLegend>Billing Address</FieldLegend>
                 <FieldDescription>
-                  The billing address associated with your payment method
+                  The billing address associated with your payment.
                 </FieldDescription>
                 <FieldGroup>
                   <Field orientation="horizontal">
@@ -1093,25 +1105,16 @@ function ItemExample() {
         </Item>
         <Item variant="outline" size="sm" asChild>
           <a href="#">
-            <ItemMedia>
+            <ItemMedia variant="icon">
               <IconPlaceholder
                 lucide="ShoppingBagIcon"
                 tabler="IconShoppingBag"
                 hugeicons="ShoppingBasket01Icon"
-                className="size-5"
               />
             </ItemMedia>
             <ItemContent>
-              <ItemTitle>Your profile has been verified.</ItemTitle>
+              <ItemTitle>Your order has been shipped.</ItemTitle>
             </ItemContent>
-            <ItemActions>
-              <IconPlaceholder
-                lucide="BicepsFlexed"
-                tabler="IconAdCircleFilled"
-                hugeicons="AbsoluteIcon"
-                className="size-4"
-              />
-            </ItemActions>
           </a>
         </Item>
       </div>
@@ -1121,32 +1124,32 @@ function ItemExample() {
 
 function SpinnerBadge() {
   return (
-    <Example title="Spinner Badge">
+    <Example title="Spinner Badge" className="items-center justify-center">
       <div className="flex items-center gap-2">
         <Badge>
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Syncing
         </Badge>
         <Badge variant="secondary">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Updating
         </Badge>
         <Badge variant="outline">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Loading
         </Badge>
         <Badge variant="link">
-          <Spinner />
-          Error
+          <Spinner data-icon="inline-start" />
+          Link
         </Badge>
       </div>
     </Example>
   )
 }
 
-function SpinnerEmpty() {
+function EmptyWithSpinner() {
   return (
-    <Example title="Spinner Empty">
+    <Example title="Empty with Spinner">
       <Empty className="w-full border">
         <EmptyHeader>
           <EmptyMedia variant="icon">

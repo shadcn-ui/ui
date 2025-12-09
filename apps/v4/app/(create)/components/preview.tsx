@@ -3,13 +3,12 @@
 import * as React from "react"
 import { type ImperativePanelHandle } from "react-resizable-panels"
 
-import type { Base } from "@/registry/config"
 import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/item-picker"
 import { useDesignSystemSync } from "@/app/(create)/hooks/use-design-system"
 
 const MESSAGE_TYPE = "design-system-params"
 
-export function Preview({ base }: { base: Base["name"] }) {
+export function Preview() {
   const params = useDesignSystemSync()
   const iframeRef = React.useRef<HTMLIFrameElement>(null)
   const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
@@ -72,11 +71,11 @@ export function Preview({ base }: { base: Base["name"] }) {
     }
   }, [])
 
-  if (!params.item) {
+  if (!params.item || !params.base) {
     return null
   }
 
-  const iframeSrc = `/preview/${base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "vega"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
+  const iframeSrc = `/preview/${params.base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "vega"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
 
   return (
     <div className="ring-foreground/15 relative -z-0 flex flex-1 flex-col overflow-hidden rounded-xl ring-1">

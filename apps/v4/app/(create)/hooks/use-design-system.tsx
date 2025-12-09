@@ -17,6 +17,7 @@ const MESSAGE_TYPE = "design-system-params"
 const getInitialValues = (): DesignSystemSearchParams => {
   if (typeof window === "undefined") {
     return {
+      base: "radix",
       iconLibrary: "lucide",
       theme: "neutral",
       style: "vega",
@@ -33,6 +34,8 @@ const getInitialValues = (): DesignSystemSearchParams => {
 
   const searchParams = new URLSearchParams(window.location.search)
   return {
+    base: (searchParams.get("base") ||
+      "radix") as DesignSystemSearchParams["base"],
     iconLibrary: (searchParams.get("iconLibrary") ||
       "lucide") as DesignSystemSearchParams["iconLibrary"],
     theme: (searchParams.get("theme") ||
