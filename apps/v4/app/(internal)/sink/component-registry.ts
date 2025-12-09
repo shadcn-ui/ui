@@ -1,72 +1,73 @@
-import FormsPage from "@/app/(internal)/sink/(pages)/forms/page"
+import FormsPage from "@/app/(internal)/sink/(pages)/forms/page";
 
-import NextFormPage from "./(pages)/next-form/page"
-import ReactHookFormPage from "./(pages)/react-hook-form/page"
-import TanstackFormPage from "./(pages)/tanstack-form/page"
-import { AccordionDemo } from "./components/accordion-demo"
-import { AlertDemo } from "./components/alert-demo"
-import { AlertDialogDemo } from "./components/alert-dialog-demo"
-import { AspectRatioDemo } from "./components/aspect-ratio-demo"
-import { AvatarDemo } from "./components/avatar-demo"
-import { BadgeDemo } from "./components/badge-demo"
-import { BreadcrumbDemo } from "./components/breadcrumb-demo"
-import { ButtonDemo } from "./components/button-demo"
-import { ButtonGroupDemo } from "./components/button-group-demo"
-import { CalendarDemo } from "./components/calendar-demo"
-import { CardDemo } from "./components/card-demo"
-import { CarouselDemo } from "./components/carousel-demo"
-import { ChartDemo } from "./components/chart-demo"
-import { CheckboxDemo } from "./components/checkbox-demo"
-import { CollapsibleDemo } from "./components/collapsible-demo"
-import { ComboboxDemo } from "./components/combobox-demo"
-import { CommandDemo } from "./components/command-demo"
-import { ContextMenuDemo } from "./components/context-menu-demo"
-import { DatePickerDemo } from "./components/date-picker-demo"
-import { DialogDemo } from "./components/dialog-demo"
-import { DrawerDemo } from "./components/drawer-demo"
-import { DropdownMenuDemo } from "./components/dropdown-menu-demo"
-import { EmptyDemo } from "./components/empty-demo"
-import { FieldDemo } from "./components/field-demo"
-import { FormDemo } from "./components/form-demo"
-import { HoverCardDemo } from "./components/hover-card-demo"
-import { InputDemo } from "./components/input-demo"
-import { InputGroupDemo } from "./components/input-group-demo"
-import { InputOTPDemo } from "./components/input-otp-demo"
-import { ItemDemo } from "./components/item-demo"
-import { KbdDemo } from "./components/kbd-demo"
-import { LabelDemo } from "./components/label-demo"
-import { MenubarDemo } from "./components/menubar-demo"
-import { NativeSelectDemo } from "./components/native-select-demo"
-import { NavigationMenuDemo } from "./components/navigation-menu-demo"
-import { PaginationDemo } from "./components/pagination-demo"
-import { PopoverDemo } from "./components/popover-demo"
-import { ProgressDemo } from "./components/progress-demo"
-import { RadioGroupDemo } from "./components/radio-group-demo"
-import { ResizableDemo } from "./components/resizable-demo"
-import { ScrollAreaDemo } from "./components/scroll-area-demo"
-import { SelectDemo } from "./components/select-demo"
-import { SeparatorDemo } from "./components/separator-demo"
-import { SheetDemo } from "./components/sheet-demo"
-import { SkeletonDemo } from "./components/skeleton-demo"
-import { SliderDemo } from "./components/slider-demo"
-import { SonnerDemo } from "./components/sonner-demo"
-import { SpinnerDemo } from "./components/spinner-demo"
-import { SwitchDemo } from "./components/switch-demo"
-import { TableDemo } from "./components/table-demo"
-import { TabsDemo } from "./components/tabs-demo"
-import { TextareaDemo } from "./components/textarea-demo"
-import { ToggleDemo } from "./components/toggle-demo"
-import { ToggleGroupDemo } from "./components/toggle-group-demo"
-import { TooltipDemo } from "./components/tooltip-demo"
+import NextFormPage from "./(pages)/next-form/page";
+import ReactHookFormPage from "./(pages)/react-hook-form/page";
+import TanstackFormPage from "./(pages)/tanstack-form/page";
+import { AccordionDemo } from "./components/accordion-demo";
+import { AlertDemo } from "./components/alert-demo";
+import { AlertDialogDemo } from "./components/alert-dialog-demo";
+import { AspectRatioDemo } from "./components/aspect-ratio-demo";
+import { AvatarDemo } from "./components/avatar-demo";
+import { BadgeDemo } from "./components/badge-demo";
+import { BreadcrumbDemo } from "./components/breadcrumb-demo";
+import { ButtonDemo } from "./components/button-demo";
+import { ButtonGroupDemo } from "./components/button-group-demo";
+import { CalendarDemo } from "./components/calendar-demo";
+import { CardDemo } from "./components/card-demo";
+import { CarouselDemo } from "./components/carousel-demo";
+import { ChartDemo } from "./components/chart-demo";
+import { CheckboxDemo } from "./components/checkbox-demo";
+import { CollapsibleDemo } from "./components/collapsible-demo";
+import { ComboboxDemo } from "./components/combobox-demo";
+import { CommandDemo } from "./components/command-demo";
+import { ContextMenuDemo } from "./components/context-menu-demo";
+import { DatePickerDemo } from "./components/date-picker-demo";
+import { DialogDemo } from "./components/dialog-demo";
+import { DrawerDemo } from "./components/drawer-demo";
+import { DropdownMenuDemo } from "./components/dropdown-menu-demo";
+import { EmptyDemo } from "./components/empty-demo";
+import { FieldDemo } from "./components/field-demo";
+import { FormDemo } from "./components/form-demo";
+import { HoverCardDemo } from "./components/hover-card-demo";
+import { InputDemo } from "./components/input-demo";
+import { InputGroupDemo } from "./components/input-group-demo";
+import { InputOTPDemo } from "./components/input-otp-demo";
+import { ItemDemo } from "./components/item-demo";
+import { KbdDemo } from "./components/kbd-demo";
+import { LabelDemo } from "./components/label-demo";
+import { MenubarDemo } from "./components/menubar-demo";
+import { NativeSelectDemo } from "./components/native-select-demo";
+import { NavigationMenuDemo } from "./components/navigation-menu-demo";
+import { PaginationDemo } from "./components/pagination-demo";
+import { PopoverDemo } from "./components/popover-demo";
+import { ProgressDemo } from "./components/progress-demo";
+import { RadioGroupDemo } from "./components/radio-group-demo";
+import { ResizableDemo } from "./components/resizable-demo";
+import { ScrollAreaDemo } from "./components/scroll-area-demo";
+import { SelectDemo } from "./components/select-demo";
+import { SeparatorDemo } from "./components/separator-demo";
+import { SheetDemo } from "./components/sheet-demo";
+import { SkeletonDemo } from "./components/skeleton-demo";
+import { SliderDemo } from "./components/slider-demo";
+import { SonnerDemo } from "./components/sonner-demo";
+import { SpinnerDemo } from "./components/spinner-demo";
+import { SwitchDemo } from "./components/switch-demo";
+import { TableDemo } from "./components/table-demo";
+import { TabsDemo } from "./components/tabs-demo";
+import { TextareaDemo } from "./components/textarea-demo";
+import { ToggleDemo } from "./components/toggle-demo";
+import { ToggleGroupDemo } from "./components/toggle-group-demo";
+import { TooltipDemo } from "./components/tooltip-demo";
+import { ToolbarDemo } from "./components/toolbar-demo";
 
 type ComponentConfig = {
-  name: string
-  component: React.ComponentType
-  className?: string
-  type: "registry:ui" | "registry:page" | "registry:block"
-  href: string
-  label?: string
-}
+  name: string;
+  component: React.ComponentType;
+  className?: string;
+  type: "registry:ui" | "registry:page" | "registry:block";
+  href: string;
+  label?: string;
+};
 
 export const componentRegistry: Record<string, ComponentConfig> = {
   accordion: {
@@ -402,6 +403,13 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     type: "registry:ui",
     href: "/sink/toggle-group",
   },
+  toolbar: {
+    name: "Toolbar",
+    component: ToolbarDemo,
+    type: "registry:ui",
+    href: "/sink/toolbar",
+    label: "New",
+  },
   tooltip: {
     name: "Tooltip",
     component: TooltipDemo,
@@ -432,6 +440,6 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     type: "registry:page",
     href: "/sink/react-hook-form",
   },
-}
+};
 
-export type ComponentKey = keyof typeof componentRegistry
+export type ComponentKey = keyof typeof componentRegistry;

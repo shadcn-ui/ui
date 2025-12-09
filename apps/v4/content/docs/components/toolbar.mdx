@@ -1,0 +1,134 @@
+---
+title: Toolbar
+description: A container for grouping a collection of action buttons together.
+component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/toolbar
+  api: https://www.radix-ui.com/docs/primitives/components/toolbar#api-reference
+---
+
+<ComponentPreview
+  name="toolbar-demo"
+  description="A toolbar with grouped buttons and separators."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add toolbar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-toolbar
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="toolbar" title="components/ui/toolbar.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarGroup,
+  ToolbarLink,
+  ToolbarSeparator,
+  ToolbarToggleGroup,
+  ToolbarToggleItem,
+} from "@/components/ui/toolbar"
+```
+
+```tsx showLineNumbers
+<Toolbar aria-label="Formatting options">
+  <ToolbarGroup>
+    <ToolbarButton variant="outline">Bold</ToolbarButton>
+    <ToolbarButton variant="outline">Italic</ToolbarButton>
+  </ToolbarGroup>
+  <ToolbarSeparator />
+  <ToolbarGroup>
+    <ToolbarButton variant="outline">Undo</ToolbarButton>
+    <ToolbarButton variant="outline">Redo</ToolbarButton>
+  </ToolbarGroup>
+  <ToolbarSeparator />
+  <TooolbarToggleGroup type="single" defaultValue="center">
+    <ToolbarToggle value="start" variant="outline">Align Start</ToolbarToggle>
+    <ToolbarToggle value="center" variant="outline">Align Center</ToolbarToggle>
+    <ToolbarToggle value="end" variant="outline">Align End</ToolbarToggle>
+  </TooolbarToggleGroup>
+  <ToolbarSeparator />
+  <ToolbarLink>
+  	Edited 2 hours ago
+  </ToolbarLink>
+</Toolbar>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview
+  name="toolbar-basic"
+  description="A basic toolbar with buttons and separators."
+/>
+
+### Vertical
+
+<ComponentPreview
+  name="toolbar-vertical"
+  description="A vertical toolbar."
+/>
+
+### Toggle
+
+<ComponentPreview
+  name="toolbar-toggle"
+  description="A toolbar with toggle buttons."
+/>
+
+### Prompt
+
+<ComponentPreview
+  name="toolbar-prompt"
+  description="A toolbar in a prompt interface."
+/>
+
+### Editor
+
+<ComponentPreview
+  name="toolbar-editor"
+  description="A vertical toolbar for text editing."
+/>
+
+### Audio Player
+
+<ComponentPreview
+  name="toolbar-audio-player"
+  description="A toolbar for audio player controls."
+/>

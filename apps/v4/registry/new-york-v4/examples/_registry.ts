@@ -1,4 +1,4 @@
-import { type Registry } from "shadcn/schema"
+import { type Registry } from "shadcn/schema";
 
 export const examples: Registry["items"] = [
   {
@@ -2490,6 +2490,83 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "toolbar-demo",
+    type: "registry:example",
+    registryDependencies: ["toolbar"],
+    files: [
+      {
+        path: "examples/toolbar-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toolbar-prompt",
+    type: "registry:example",
+    registryDependencies: ["toolbar", "textarea", "select"],
+    files: [
+      {
+        path: "examples/toolbar-prompt.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toolbar-editor",
+    type: "registry:example",
+    registryDependencies: ["toolbar", "dropdown-menu"],
+    files: [
+      {
+        path: "examples/toolbar-editor.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toolbar-basic",
+    type: "registry:example",
+    registryDependencies: ["toolbar"],
+    files: [
+      {
+        path: "examples/toolbar-basic.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toolbar-vertical",
+    type: "registry:example",
+    registryDependencies: ["toolbar"],
+    files: [
+      {
+        path: "examples/toolbar-vertical.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toolbar-toggle",
+    type: "registry:example",
+    registryDependencies: ["toolbar"],
+    files: [
+      {
+        path: "examples/toolbar-toggle.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toolbar-audio-player",
+    type: "registry:example",
+    registryDependencies: ["toolbar", "slider", "tooltip", "popover"],
+    files: [
+      {
+        path: "examples/toolbar-audio-player.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "tooltip-demo",
     type: "registry:example",
     registryDependencies: ["tooltip"],
@@ -2729,4 +2806,4 @@ export const examples: Registry["items"] = [
       mobile: "component",
     },
   },
-]
+];
