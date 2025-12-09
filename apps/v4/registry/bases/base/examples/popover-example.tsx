@@ -57,17 +57,17 @@ function PopoverWithForm() {
   return (
     <Example title="With Form">
       <Popover>
-        <PopoverTrigger render={<Button variant="outline" className="w-fit" />}>
+        <PopoverTrigger render={<Button variant="outline" />}>
           Open Popover
         </PopoverTrigger>
-        <PopoverContent className="w-80" align="start">
+        <PopoverContent className="w-64" align="start">
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
             <PopoverDescription>
               Set the dimensions for the layer.
             </PopoverDescription>
           </PopoverHeader>
-          <FieldGroup className="gap-2">
+          <FieldGroup className="gap-4">
             <Field orientation="horizontal">
               <FieldLabel htmlFor="width" className="w-1/2">
                 Width

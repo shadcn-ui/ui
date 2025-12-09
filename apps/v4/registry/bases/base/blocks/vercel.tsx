@@ -744,7 +744,7 @@ function FeedbackForm() {
             </FieldGroup>
           </form>
         </CardContent>
-        <CardFooter className="bg-muted border-t p-4">
+        <CardFooter>
           <Button type="submit" form="feedback-form">
             Submit
           </Button>

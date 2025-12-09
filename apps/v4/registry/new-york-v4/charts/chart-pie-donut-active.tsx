@@ -13,10 +13,10 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
-  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 
 export const description = "A donut chart with an active sector"

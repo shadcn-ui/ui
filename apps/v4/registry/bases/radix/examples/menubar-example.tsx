@@ -164,7 +164,7 @@ function MenubarWithCheckboxes() {
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>View</MenubarTrigger>
-          <MenubarContent>
+          <MenubarContent className="w-64">
             <MenubarGroup>
               <MenubarCheckboxItem>
                 Always Show Bookmarks Bar
@@ -463,7 +463,7 @@ function MenubarInsert() {
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>Tools</MenubarTrigger>
-          <MenubarContent>
+          <MenubarContent className="w-44">
             <MenubarGroup>
               <MenubarItem>
                 <IconPlaceholder
@@ -495,7 +495,7 @@ function MenubarDestructive() {
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
-          <MenubarContent>
+          <MenubarContent className="w-40">
             <MenubarGroup>
               <MenubarItem>
                 <IconPlaceholder

@@ -132,10 +132,7 @@ function NavigationMenuLink({
   return (
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
-      className={cn(
-        "cn-navigation-menu-link flex flex-col gap-1 outline-none [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
+      className={cn("cn-navigation-menu-link", className)}
       {...props}
     />
   )

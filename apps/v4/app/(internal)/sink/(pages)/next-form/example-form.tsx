@@ -48,7 +48,10 @@ import {
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 import { Switch } from "@/registry/new-york-v4/ui/switch"
 import { Textarea } from "@/registry/new-york-v4/ui/textarea"
-import { addons, type exampleFormSchema } from "@/app/(internal)/sink/(pages)/schema"
+import {
+  addons,
+  type exampleFormSchema,
+} from "@/app/(internal)/sink/(pages)/schema"
 
 import { subscriptionAction } from "./actions"
 

@@ -7,14 +7,15 @@ import { useQueryStates } from "nuqs"
 import { useMounted } from "@/hooks/use-mounted"
 import { BASE_COLORS, type Theme, type ThemeName } from "@/registry/config"
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/new-york-v4/ui/select"
+  Picker,
+  PickerContent,
+  PickerGroup,
+  PickerLabel,
+  PickerRadioGroup,
+  PickerRadioItem,
+  PickerSeparator,
+  PickerTrigger,
+} from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
@@ -42,116 +43,121 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
   }, [currentTheme, themes, setParams])
 
   return (
-    <Select
-      value={currentTheme?.name}
-      onValueChange={(value) => {
-        setParams({ theme: value as ThemeName })
-      }}
-    >
-      <SelectTrigger className="relative">
-        <SelectValue>
-          <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs">Theme</div>
-            <div className="text-foreground text-sm font-medium">
-              {currentTheme?.title}
-            </div>
-            {mounted && resolvedTheme && (
-              <div
-                style={
-                  {
-                    "--color":
-                      currentTheme?.cssVars?.[
-                        resolvedTheme as "light" | "dark"
-                      ]?.[
-                        currentThemeIsBaseColor ? "muted-foreground" : "primary"
-                      ],
-                  } as React.CSSProperties
-                }
-                className="absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color)"
-              />
-            )}
+    <Picker>
+      <PickerTrigger className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2">
+        <div className="flex flex-col justify-start text-left">
+          <div className="text-muted-foreground text-xs">Theme</div>
+          <div className="text-foreground text-sm font-medium">
+            {currentTheme?.title}
           </div>
-        </SelectValue>
-      </SelectTrigger>
-      <SelectContent
-        position="popper"
+          {mounted && resolvedTheme && (
+            <div
+              style={
+                {
+                  "--color":
+                    currentTheme?.cssVars?.[
+                      resolvedTheme as "light" | "dark"
+                    ]?.[
+                      currentThemeIsBaseColor ? "muted-foreground" : "primary"
+                    ],
+                } as React.CSSProperties
+              }
+              className="absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color)"
+            />
+          )}
+        </div>
+      </PickerTrigger>
+      <PickerContent
         side="left"
         align="start"
-        className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="ring-foreground/10 rounded-xl border-0 ring-1"
       >
-        <SelectGroup>
-          {themes
-            .filter((theme) =>
-              BASE_COLORS.find((baseColor) => baseColor.name === theme.name)
-            )
-            .map((theme) => {
-              const isBaseColor = BASE_COLORS.find(
-                (baseColor) => baseColor.name === theme.name
+        <PickerRadioGroup
+          value={currentTheme?.name}
+          onValueChange={(value) => {
+            setParams({ theme: value as ThemeName })
+          }}
+        >
+          <PickerGroup>
+            {themes
+              .filter((theme) =>
+                BASE_COLORS.find((baseColor) => baseColor.name === theme.name)
               )
-              return (
-                <SelectItem
-                  key={theme.name}
-                  value={theme.name}
-                  className="rounded-lg"
-                >
-                  <div className="flex items-start gap-2">
-                    {mounted && resolvedTheme && (
-                      <div
-                        style={
-                          {
-                            "--color":
-                              theme.cssVars?.[
-                                resolvedTheme as "light" | "dark"
-                              ]?.[isBaseColor ? "muted-foreground" : "primary"],
-                          } as React.CSSProperties
-                        }
-                        className="size-4 translate-y-1 rounded-full bg-(--color)"
-                      />
-                    )}
-                    <div className="flex flex-col justify-start">
-                      <div>{theme.title}</div>
-                      <div className="text-muted-foreground text-xs">
-                        Match base color
+              .map((theme) => {
+                const isBaseColor = BASE_COLORS.find(
+                  (baseColor) => baseColor.name === theme.name
+                )
+                return (
+                  <PickerRadioItem
+                    key={theme.name}
+                    value={theme.name}
+                    className="rounded-lg"
+                  >
+                    <div className="flex items-start gap-2">
+                      {mounted && resolvedTheme && (
+                        <div
+                          style={
+                            {
+                              "--color":
+                                theme.cssVars?.[
+                                  resolvedTheme as "light" | "dark"
+                                ]?.[
+                                  isBaseColor ? "muted-foreground" : "primary"
+                                ],
+                            } as React.CSSProperties
+                          }
+                          className="size-4 translate-y-1 rounded-full bg-(--color)"
+                        />
+                      )}
+                      <div className="flex flex-col justify-start">
+                        <div>{theme.title}</div>
+                        <div className="text-muted-foreground text-xs">
+                          Match base color
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </SelectItem>
+                  </PickerRadioItem>
+                )
+              })}
+          </PickerGroup>
+          <PickerSeparator />
+          <PickerGroup>
+            {themes
+              .filter(
+                (theme) =>
+                  !BASE_COLORS.find(
+                    (baseColor) => baseColor.name === theme.name
+                  )
               )
-            })}
-        </SelectGroup>
-        <SelectSeparator />
-        {themes
-          .filter(
-            (theme) =>
-              !BASE_COLORS.find((baseColor) => baseColor.name === theme.name)
-          )
-          .map((theme) => {
-            return (
-              <SelectItem
-                key={theme.name}
-                value={theme.name}
-                className="rounded-lg"
-              >
-                <div className="flex items-center gap-2">
-                  {mounted && resolvedTheme && (
-                    <div
-                      style={
-                        {
-                          "--color":
-                            theme.cssVars?.[
-                              resolvedTheme as "light" | "dark"
-                            ]?.["primary"],
-                        } as React.CSSProperties
-                      }
-                      className="size-4 rounded-full bg-(--color)"
-                    />
-                  )}
-                  {theme.title}
-                </div>
-              </SelectItem>
-            )
-          })}
-      </SelectContent>
-    </Select>
+              .map((theme) => {
+                return (
+                  <PickerRadioItem
+                    key={theme.name}
+                    value={theme.name}
+                    className="rounded-lg"
+                  >
+                    <div className="flex items-center gap-2">
+                      {mounted && resolvedTheme && (
+                        <div
+                          style={
+                            {
+                              "--color":
+                                theme.cssVars?.[
+                                  resolvedTheme as "light" | "dark"
+                                ]?.["primary"],
+                            } as React.CSSProperties
+                          }
+                          className="size-4 rounded-full bg-(--color)"
+                        />
+                      )}
+                      {theme.title}
+                    </div>
+                  </PickerRadioItem>
+                )
+              })}
+          </PickerGroup>
+        </PickerRadioGroup>
+      </PickerContent>
+    </Picker>
   )
 }

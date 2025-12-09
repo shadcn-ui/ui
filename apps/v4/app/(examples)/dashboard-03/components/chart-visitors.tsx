@@ -13,11 +13,11 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
-  type ChartConfig,
   ChartContainer,
   ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 import {
   Select,

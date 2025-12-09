@@ -3,7 +3,15 @@ import * as React from "react"
 import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function NativeSelect({ className, ...props }: React.ComponentProps<"select">) {
+type NativeSelectProps = Omit<React.ComponentProps<"select">, "size"> & {
+  size?: "sm" | "default"
+}
+
+function NativeSelect({
+  className,
+  size = "default",
+  ...props
+}: NativeSelectProps) {
   return (
     <div
       className={cn(
@@ -11,9 +19,11 @@ function NativeSelect({ className, ...props }: React.ComponentProps<"select">) {
         className
       )}
       data-slot="native-select-wrapper"
+      data-size={size}
     >
       <select
         data-slot="native-select"
+        data-size={size}
         className="cn-native-select outline-none disabled:pointer-events-none disabled:cursor-not-allowed"
         {...props}
       />

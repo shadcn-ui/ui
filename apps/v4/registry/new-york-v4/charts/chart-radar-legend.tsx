@@ -12,12 +12,12 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
-  type ChartConfig,
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 
 export const description = "A radar chart with a legend"

@@ -17,11 +17,17 @@ import {
   Terminal,
 } from "lucide-react"
 import { type ImperativePanelHandle } from "react-resizable-panels"
-import { type registryItemFileSchema, type registryItemSchema } from "shadcn/schema"
+import {
+  type registryItemFileSchema,
+  type registryItemSchema,
+} from "shadcn/schema"
 import { type z } from "zod"
 
 import { trackEvent } from "@/lib/events"
-import { type createFileTreeForRegistryItemFiles, type FileTree } from "@/lib/registry"
+import {
+  type createFileTreeForRegistryItemFiles,
+  type FileTree,
+} from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { getIconForLanguageExtension } from "@/components/icons"

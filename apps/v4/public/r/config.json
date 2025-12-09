@@ -29,6 +29,36 @@
       "menuAccent": "bold",
       "menuColor": "inverted",
       "radius": "large"
+    },
+    {
+      "name": "radix-nova",
+      "title": "Nova (Radix)",
+      "description": "Nova / Lucide / Inter",
+      "base": "radix",
+      "style": "nova",
+      "baseColor": "neutral",
+      "theme": "neutral",
+      "iconLibrary": "lucide",
+      "font": "inter",
+      "item": "Item",
+      "menuAccent": "subtle",
+      "menuColor": "default",
+      "radius": "default"
+    },
+    {
+      "name": "base-nova",
+      "title": "Nova (Base)",
+      "description": "Nova / Hugeicons / Figtree",
+      "base": "base",
+      "style": "nova",
+      "baseColor": "neutral",
+      "theme": "blue",
+      "iconLibrary": "hugeicons",
+      "font": "figtree",
+      "item": "Item",
+      "menuAccent": "bold",
+      "menuColor": "inverted",
+      "radius": "large"
     }
   ]
 }

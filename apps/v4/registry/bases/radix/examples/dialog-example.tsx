@@ -77,7 +77,7 @@ export default function DialogExample() {
 
 function DialogWithForm() {
   return (
-    <Example title="With Form">
+    <Example title="With Form" className="items-center justify-center">
       <Dialog>
         <form>
           <DialogTrigger asChild>
@@ -120,7 +120,7 @@ function DialogWithForm() {
 
 function DialogScrollableContent() {
   return (
-    <Example title="Scrollable Content">
+    <Example title="Scrollable Content" className="items-center justify-center">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Scrollable Content</Button>
@@ -132,8 +132,8 @@ function DialogScrollableContent() {
               This is a dialog with scrollable content.
             </DialogDescription>
           </DialogHeader>
-          <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
-            <h4 className="mb-4 text-lg leading-none font-medium">
+          <div className="style-nova:-mx-4 style-nova:px-4 no-scrollbar -mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
+            <h4 className="mb-4 text-base leading-none font-medium">
               Lorem Ipsum
             </h4>
             {Array.from({ length: 10 }).map((_, index) => (
@@ -156,7 +156,7 @@ function DialogScrollableContent() {
 
 function DialogWithStickyFooter() {
   return (
-    <Example title="With Sticky Footer">
+    <Example title="With Sticky Footer" className="items-center justify-center">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Sticky Footer</Button>
@@ -168,8 +168,8 @@ function DialogWithStickyFooter() {
               This is a dialog with scrollable content.
             </DialogDescription>
           </DialogHeader>
-          <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
-            <h4 className="mb-4 text-lg leading-none font-medium">
+          <div className="style-nova:-mx-4 style-nova:px-4 no-scrollbar -mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
+            <h4 className="mb-4 text-base leading-none font-medium">
               Lorem Ipsum
             </h4>
             {Array.from({ length: 10 }).map((_, index) => (
@@ -197,7 +197,7 @@ function DialogWithStickyFooter() {
 
 function DialogNoCloseButton() {
   return (
-    <Example title="No Close Button">
+    <Example title="No Close Button" className="items-center justify-center">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">No Close Button</Button>
@@ -207,7 +207,7 @@ function DialogNoCloseButton() {
             <DialogTitle>No Close Button</DialogTitle>
             <DialogDescription>
               This dialog doesn&apos;t have a close button in the top-right
-              corner. You can only close it using the button below.
+              corner.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -260,12 +260,12 @@ function DialogChatSettings() {
   const [voice, setVoice] = React.useState("samantha")
 
   return (
-    <Example title="Chat Settings">
+    <Example title="Chat Settings" className="items-center justify-center">
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline">Chat Settings</Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="min-w-md">
           <DialogHeader>
             <DialogTitle>Chat Settings</DialogTitle>
             <DialogDescription>
@@ -297,7 +297,7 @@ function DialogChatSettings() {
                 </TabsTrigger>
                 <TabsTrigger value="security">Security</TabsTrigger>
               </TabsList>
-              <div className="min-h-[550px] rounded-lg border p-6 [&_[data-slot=select-trigger]]:min-w-[125px]">
+              <div className="style-nova:p-4 min-h-[550px] rounded-lg border p-6 [&_[data-slot=select-trigger]]:min-w-[125px]">
                 <TabsContent value="general">
                   <FieldSet>
                     <FieldGroup>

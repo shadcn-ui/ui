@@ -40,8 +40,8 @@ function HoverCardSides() {
               </Button>
             </HoverCardTrigger>
             <HoverCardContent side={side} className="w-64">
-              <div className="flex flex-col gap-2">
-                <h4 className="text-sm font-semibold">Hover Card</h4>
+              <div className="style-nova:gap-1.5 flex flex-col gap-2">
+                <h4 className="text-sm font-medium">Hover Card</h4>
                 <p className="text-sm">
                   This hover card appears on the {side} side of the trigger.
                 </p>

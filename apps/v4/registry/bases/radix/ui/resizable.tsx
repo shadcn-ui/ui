@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { GripVertical } from "lucide-react"
 import * as ResizablePrimitive from "react-resizable-panels"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
@@ -45,9 +44,7 @@ function ResizableHandle({
       {...props}
     >
       {withHandle && (
-        <div className="cn-resizable-handle-icon bg-border z-10 flex items-center justify-center">
-          <GripVertical />
-        </div>
+        <div className="cn-resizable-handle-icon z-10 flex shrink-0" />
       )}
     </ResizablePrimitive.PanelResizeHandle>
   )

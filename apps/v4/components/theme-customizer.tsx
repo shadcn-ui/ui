@@ -10,9 +10,9 @@ import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Icons } from "@/components/icons"
 import {
-  type BaseColor,
   baseColors,
   baseColorsOKLCH,
+  type BaseColor,
 } from "@/registry/_legacy-base-colors"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {

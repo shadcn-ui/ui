@@ -38,9 +38,7 @@ function PopoverBasic() {
     <Example title="Basic">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="w-fit">
-            Open Popover
-          </Button>
+          <Button variant="outline">Open Popover</Button>
         </PopoverTrigger>
         <PopoverContent align="start">
           <PopoverHeader>
@@ -60,18 +58,16 @@ function PopoverWithForm() {
     <Example title="With Form">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="w-fit">
-            Open Popover
-          </Button>
+          <Button variant="outline">Open Popover</Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80" align="start">
+        <PopoverContent className="w-64" align="start">
           <PopoverHeader>
             <PopoverTitle>Dimensions</PopoverTitle>
             <PopoverDescription>
               Set the dimensions for the layer.
             </PopoverDescription>
           </PopoverHeader>
-          <FieldGroup className="gap-2">
+          <FieldGroup className="gap-4">
             <Field orientation="horizontal">
               <FieldLabel htmlFor="width" className="w-1/2">
                 Width

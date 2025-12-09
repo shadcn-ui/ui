@@ -2,21 +2,11 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 
 import {
   Example,
   ExampleWrapper,
 } from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -26,6 +16,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/registry/bases/base/ui/navigation-menu"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -67,40 +58,21 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function NavigationMenuExample() {
   return (
-    <ExampleWrapper>
-      <NavigationMenuWithViewport />
-      <NavigationMenuWithoutViewport />
-      <NavigationMenuInDialog />
+    <ExampleWrapper className="lg:grid-cols-1">
+      <NavigationMenuBasic />
     </ExampleWrapper>
   )
 }
 
-function NavigationMenuWithViewport() {
+function NavigationMenuBasic() {
   return (
-    <Example title="With Viewport">
+    <Example title="Basic">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <li className="row-span-3">
-                  <NavigationMenuLink
-                    render={
-                      <a
-                        className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
-                        href="/"
-                      />
-                    }
-                  >
-                    <div className="mt-4 mb-2 text-lg font-medium">
-                      shadcn/ui
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-tight">
-                      Beautifully designed components built with Tailwind CSS.
-                    </p>
-                  </NavigationMenuLink>
-                </li>
+              <ul className="w-96">
                 <ListItem href="/docs" title="Introduction">
                   Re-usable components built with Tailwind CSS.
                 </ListItem>
@@ -130,88 +102,20 @@ function NavigationMenuWithViewport() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink
-              render={<Link href="/docs" />}
-              className={navigationMenuTriggerStyle()}
-            >
-              Documentation
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-    </Example>
-  )
-}
-
-function NavigationMenuWithoutViewport() {
-  return (
-    <Example title="Without Viewport">
-      <NavigationMenu>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              render={<Link href="/docs" />}
-              className={navigationMenuTriggerStyle()}
-            >
-              Documentation
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>List</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[300px] gap-4">
-                <li>
-                  <NavigationMenuLink render={<Link href="#" />}>
-                    <div className="font-medium">Components</div>
-                    <div className="text-muted-foreground">
-                      Browse all components in the library.
-                    </div>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink render={<Link href="#" />}>
-                    <div className="font-medium">Documentation</div>
-                    <div className="text-muted-foreground">
-                      Learn how to use the library.
-                    </div>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink render={<Link href="#" />}>
-                    <div className="font-medium">Blog</div>
-                    <div className="text-muted-foreground">
-                      Read our latest blog posts.
-                    </div>
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Simple List</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[200px] gap-4">
-                <li>
-                  <NavigationMenuLink render={<Link href="#" />}>
-                    Components
-                  </NavigationMenuLink>
-                  <NavigationMenuLink render={<Link href="#" />}>
-                    Documentation
-                  </NavigationMenuLink>
-                  <NavigationMenuLink render={<Link href="#" />}>
-                    Blocks
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
             <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-[200px] gap-4">
+              <ul className="grid w-[200px]">
                 <li>
                   <NavigationMenuLink
                     render={
                       <Link href="#" className="flex-row items-center gap-2" />
                     }
                   >
-                    <CircleHelpIcon />
+                    <IconPlaceholder
+                      lucide="CircleAlertIcon"
+                      tabler="IconExclamationCircle"
+                      hugeicons="AlertCircleIcon"
+                    />
                     Backlog
                   </NavigationMenuLink>
                   <NavigationMenuLink
@@ -219,7 +123,11 @@ function NavigationMenuWithoutViewport() {
                       <Link href="#" className="flex-row items-center gap-2" />
                     }
                   >
-                    <CircleIcon />
+                    <IconPlaceholder
+                      lucide="CircleAlertIcon"
+                      tabler="IconExclamationCircle"
+                      hugeicons="AlertCircleIcon"
+                    />
                     To Do
                   </NavigationMenuLink>
                   <NavigationMenuLink
@@ -227,12 +135,24 @@ function NavigationMenuWithoutViewport() {
                       <Link href="#" className="flex-row items-center gap-2" />
                     }
                   >
-                    <CircleCheckIcon />
+                    <IconPlaceholder
+                      lucide="CircleAlertIcon"
+                      tabler="IconExclamationCircle"
+                      hugeicons="AlertCircleIcon"
+                    />
                     Done
                   </NavigationMenuLink>
                 </li>
               </ul>
             </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              render={<Link href="/docs" />}
+              className={navigationMenuTriggerStyle()}
+            >
+              Documentation
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
@@ -249,90 +169,13 @@ function ListItem({
   return (
     <li {...props}>
       <NavigationMenuLink render={<Link href={href} />}>
-        <div className="text-sm leading-none font-medium">{title}</div>
-        <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-          {children}
-        </p>
+        <div className="flex flex-col gap-1">
+          <div className="text-sm leading-none font-medium">{title}</div>
+          <div className="text-muted-foreground line-clamp-2 text-sm">
+            {children}
+          </div>
+        </div>
       </NavigationMenuLink>
     </li>
-  )
-}
-
-function NavigationMenuInDialog() {
-  return (
-    <Example title="In Dialog">
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
-          Open Dialog
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Navigation Menu Example</DialogTitle>
-            <DialogDescription>
-              Use the navigation menu below to see the menu options.
-            </DialogDescription>
-          </DialogHeader>
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                    <li className="row-span-3">
-                      <NavigationMenuLink
-                        render={
-                          <a
-                            className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
-                            href="/"
-                          />
-                        }
-                      >
-                        <div className="mt-4 mb-2 text-lg font-medium">
-                          shadcn/ui
-                        </div>
-                        <p className="text-muted-foreground text-sm leading-tight">
-                          Beautifully designed components built with Tailwind
-                          CSS.
-                        </p>
-                      </NavigationMenuLink>
-                    </li>
-                    <ListItem href="/docs" title="Introduction">
-                      Re-usable components built with Tailwind CSS.
-                    </ListItem>
-                    <ListItem href="/docs/installation" title="Installation">
-                      How to install dependencies and structure your app.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {components.slice(0, 4).map((component) => (
-                      <ListItem
-                        key={component.title}
-                        title={component.title}
-                        href={component.href}
-                      >
-                        {component.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  render={<Link href="/docs" />}
-                  className={navigationMenuTriggerStyle()}
-                >
-                  Documentation
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </DialogContent>
-      </Dialog>
-    </Example>
   )
 }

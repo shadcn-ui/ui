@@ -263,6 +263,10 @@ function ContextMenuWithGroups() {
 }
 
 function ContextMenuWithCheckboxes() {
+  const [showBookmarksBar, setShowBookmarksBar] = React.useState(true)
+  const [showFullUrls, setShowFullUrls] = React.useState(false)
+  const [showDeveloperTools, setShowDeveloperTools] = React.useState(false)
+
   return (
     <Example title="With Checkboxes">
       <ContextMenu>
@@ -271,11 +275,22 @@ function ContextMenuWithCheckboxes() {
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuGroup>
-            <ContextMenuCheckboxItem defaultChecked>
+            <ContextMenuCheckboxItem
+              checked={showBookmarksBar}
+              onCheckedChange={setShowBookmarksBar}
+            >
               Show Bookmarks Bar
             </ContextMenuCheckboxItem>
-            <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-            <ContextMenuCheckboxItem defaultChecked>
+            <ContextMenuCheckboxItem
+              checked={showFullUrls}
+              onCheckedChange={setShowFullUrls}
+            >
+              Show Full URLs
+            </ContextMenuCheckboxItem>
+            <ContextMenuCheckboxItem
+              checked={showDeveloperTools}
+              onCheckedChange={setShowDeveloperTools}
+            >
               Show Developer Tools
             </ContextMenuCheckboxItem>
           </ContextMenuGroup>

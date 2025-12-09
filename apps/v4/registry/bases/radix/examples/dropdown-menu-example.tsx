@@ -231,7 +231,7 @@ function DropdownMenuWithCheckboxes() {
             Checkboxes
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="min-w-40">
           <DropdownMenuGroup>
             <DropdownMenuLabel>Appearance</DropdownMenuLabel>
             <DropdownMenuCheckboxItem
@@ -493,34 +493,6 @@ function DropdownMenuWithDestructive() {
 function DropdownMenuWithAvatar() {
   const menuContent = (
     <>
-      <DropdownMenuGroup>
-        <DropdownMenuLabel className="p-0 font-normal">
-          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="Shadcn" />
-              <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-            </Avatar>
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-semibold">shadcn</span>
-              <span className="text-muted-foreground truncate text-xs">
-                shadcn@example.com
-              </span>
-            </div>
-          </div>
-        </DropdownMenuLabel>
-      </DropdownMenuGroup>
-      <DropdownMenuSeparator />
-      <DropdownMenuGroup>
-        <DropdownMenuItem>
-          <IconPlaceholder
-            lucide="SparklesIcon"
-            tabler="IconSparkles"
-            hugeicons="SparklesIcon"
-          />
-          Upgrade to Pro
-        </DropdownMenuItem>
-      </DropdownMenuGroup>
-      <DropdownMenuSeparator />
       <DropdownMenuGroup>
         <DropdownMenuItem>
           <IconPlaceholder

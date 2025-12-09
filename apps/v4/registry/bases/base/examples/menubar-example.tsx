@@ -146,7 +146,7 @@ function MenubarWithCheckboxes() {
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>View</MenubarTrigger>
-          <MenubarContent>
+          <MenubarContent className="w-64">
             <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
             <MenubarCheckboxItem checked>
               Always Show Full URLs
@@ -417,7 +417,7 @@ function MenubarInsert() {
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>Tools</MenubarTrigger>
-          <MenubarContent>
+          <MenubarContent className="w-44">
             <MenubarItem>
               <IconPlaceholder
                 lucide="SearchIcon"
@@ -447,7 +447,7 @@ function MenubarDestructive() {
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
-          <MenubarContent>
+          <MenubarContent className="w-40">
             <MenubarItem>
               <IconPlaceholder
                 lucide="FileIcon"

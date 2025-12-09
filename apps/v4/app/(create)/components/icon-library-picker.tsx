@@ -11,13 +11,14 @@ import {
   type IconLibraryName,
 } from "@/registry/config"
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/new-york-v4/ui/select"
+  Picker,
+  PickerContent,
+  PickerGroup,
+  PickerRadioGroup,
+  PickerRadioItem,
+  PickerSeparator,
+  PickerTrigger,
+} from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const IconLucide = lazy(() =>
@@ -167,42 +168,45 @@ export function IconLibraryPicker() {
   )
 
   return (
-    <Select
-      value={currentIconLibrary?.name}
-      onValueChange={(value) => {
-        setParams({ iconLibrary: value as IconLibraryName })
-      }}
-    >
-      <SelectTrigger className="relative">
-        <SelectValue>
-          <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs">Icon Library</div>
-            <div className="text-foreground text-sm font-medium">
-              {currentIconLibrary?.title}
-            </div>
+    <Picker>
+      <PickerTrigger className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2">
+        <div className="flex flex-col justify-start text-left">
+          <div className="text-muted-foreground text-xs">Icon Library</div>
+          <div className="text-foreground text-sm font-medium">
+            {currentIconLibrary?.title}
           </div>
-          <div className="text-foreground *:[svg]:text-foreground! absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 items-center justify-center text-base">
-            {logos[currentIconLibrary?.name as keyof typeof logos]}
-          </div>
-        </SelectValue>
-      </SelectTrigger>
-      <SelectContent
-        position="popper"
+        </div>
+        <div className="text-foreground *:[svg]:text-foreground! absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 items-center justify-center text-base">
+          {logos[currentIconLibrary?.name as keyof typeof logos]}
+        </div>
+      </PickerTrigger>
+      <PickerContent
         side="left"
         align="start"
-        className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="ring-foreground/10 rounded-xl border-0 ring-1"
       >
-        {Object.values(iconLibraries).map((iconLibrary) => (
-          <React.Fragment key={iconLibrary.name}>
-            <IconLibraryPickerItem
-              iconLibrary={iconLibrary}
-              value={iconLibrary.name}
-            />
-            <SelectSeparator className="opacity-50 last:hidden" />
-          </React.Fragment>
-        ))}
-      </SelectContent>
-    </Select>
+        <PickerRadioGroup
+          value={currentIconLibrary?.name}
+          onValueChange={(value) => {
+            setParams({ iconLibrary: value as IconLibraryName })
+          }}
+        >
+          <PickerGroup>
+            {Object.values(iconLibraries).map((iconLibrary, index) => (
+              <React.Fragment key={iconLibrary.name}>
+                <IconLibraryPickerItem
+                  iconLibrary={iconLibrary}
+                  value={iconLibrary.name}
+                />
+                {index < Object.values(iconLibraries).length - 1 && (
+                  <PickerSeparator className="opacity-50" />
+                )}
+              </React.Fragment>
+            ))}
+          </PickerGroup>
+        </PickerRadioGroup>
+      </PickerContent>
+    </Picker>
   )
 }
 
@@ -214,9 +218,9 @@ function IconLibraryPickerItem({
   value: string
 }) {
   return (
-    <SelectItem
+    <PickerRadioItem
       value={value}
-      className="rounded-lg pr-2 *:data-[slot=select-item-indicator]:hidden"
+      className="rounded-lg pr-2 *:data-[slot=dropdown-menu-radio-item-indicator]:hidden"
     >
       <Item size="xs">
         <ItemContent className="gap-1">
@@ -226,7 +230,7 @@ function IconLibraryPickerItem({
           <IconLibraryPreview iconLibrary={iconLibrary.name} />
         </ItemContent>
       </Item>
-    </SelectItem>
+    </PickerRadioItem>
   )
 }
 

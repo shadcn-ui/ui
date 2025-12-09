@@ -155,10 +155,9 @@ function MenubarRadioItem({
       <span className="cn-menubar-radio-item-indicator pointer-events-none absolute flex items-center justify-center">
         <MenubarPrimitive.ItemIndicator>
           <IconPlaceholder
-            lucide="CircleIcon"
-            tabler="IconCircle"
-            hugeicons="CircleIcon"
-            className="fill-current"
+            lucide="CheckIcon"
+            tabler="IconCheck"
+            hugeicons="Tick02Icon"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>

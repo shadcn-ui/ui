@@ -22,10 +22,10 @@ export default function LabelExample() {
 function LabelWithCheckbox() {
   return (
     <Example title="With Checkbox">
-      <div className="flex items-center gap-3">
+      <Field orientation="horizontal">
         <Checkbox id="label-demo-terms" />
         <Label htmlFor="label-demo-terms">Accept terms and conditions</Label>
-      </div>
+      </Field>
     </Example>
   )
 }

@@ -23,10 +23,10 @@ import {
   CardTitle,
 } from "@/registry/bases/radix/ui/card"
 import {
-  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/registry/bases/radix/ui/chart"
 import {
   Dialog,
@@ -743,7 +743,7 @@ function FeedbackForm() {
             </FieldGroup>
           </form>
         </CardContent>
-        <CardFooter className="bg-muted border-t p-4">
+        <CardFooter>
           <Button type="submit" form="feedback-form">
             Submit
           </Button>

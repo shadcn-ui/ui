@@ -1,11 +1,11 @@
-import { type NextRequest, NextResponse } from "next/server"
+import { NextResponse, type NextRequest } from "next/server"
 import { track } from "@vercel/analytics/server"
 import dedent from "dedent"
 import {
-  type configSchema,
-  type RegistryItem,
   registryItemFileSchema,
   registryItemSchema,
+  type configSchema,
+  type RegistryItem,
 } from "shadcn/schema"
 import { transformIcons, transformMenu, transformRender } from "shadcn/utils"
 import { Project, ScriptKind } from "ts-morph"

@@ -7,12 +7,13 @@ import { useQueryStates } from "nuqs"
 import { useMounted } from "@/hooks/use-mounted"
 import { type MenuColorValue } from "@/registry/config"
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/new-york-v4/ui/select"
+  Picker,
+  PickerContent,
+  PickerGroup,
+  PickerRadioGroup,
+  PickerRadioItem,
+  PickerTrigger,
+} from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const MENU_OPTIONS = [
@@ -115,45 +116,46 @@ export function MenuColorPicker() {
   )
 
   return (
-    <Select
-      value={currentMenu?.value}
-      onValueChange={(value) => {
-        setParams({ menuColor: value as MenuColorValue })
-      }}
-    >
-      <SelectTrigger
-        className="relative"
+    <Picker>
+      <PickerTrigger
+        className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2"
         disabled={mounted && resolvedTheme === "dark"}
       >
-        <SelectValue>
-          <div className="flex flex-col justify-start">
-            <div className="text-muted-foreground text-xs">Menu Color</div>
-            <div className="text-foreground text-sm font-medium">
-              {currentMenu?.label}
-            </div>
+        <div className="flex flex-col justify-start text-left">
+          <div className="text-muted-foreground text-xs">Menu Color</div>
+          <div className="text-foreground text-sm font-medium">
+            {currentMenu?.label}
           </div>
-          <div className="text-foreground absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 items-center justify-center text-base">
-            {currentMenu?.icon}
-          </div>
-        </SelectValue>
-      </SelectTrigger>
-      <SelectContent
-        position="popper"
+        </div>
+        <div className="text-foreground absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 items-center justify-center text-base">
+          {currentMenu?.icon}
+        </div>
+      </PickerTrigger>
+      <PickerContent
         side="left"
         align="start"
-        className="ring-foreground/10 rounded-xl border-0 ring-1 data-[state=closed]:animate-none data-[state=open]:animate-none"
+        className="ring-foreground/10 rounded-xl border-0 ring-1"
       >
-        {MENU_OPTIONS.map((menu) => (
-          <SelectItem
-            key={menu.value}
-            value={menu.value}
-            className="rounded-lg"
-          >
-            {menu.icon}
-            {menu.label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+        <PickerRadioGroup
+          value={currentMenu?.value}
+          onValueChange={(value) => {
+            setParams({ menuColor: value as MenuColorValue })
+          }}
+        >
+          <PickerGroup>
+            {MENU_OPTIONS.map((menu) => (
+              <PickerRadioItem
+                key={menu.value}
+                value={menu.value}
+                className="rounded-lg"
+              >
+                {menu.icon}
+                {menu.label}
+              </PickerRadioItem>
+            ))}
+          </PickerGroup>
+        </PickerRadioGroup>
+      </PickerContent>
+    </Picker>
   )
 }

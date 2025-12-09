@@ -10,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
+import { Input } from "@/registry/bases/radix/ui/input"
 import {
   Tabs,
   TabsContent,
@@ -35,6 +36,7 @@ export default function TabsExample() {
       <TabsVertical />
       <TabsNestedLineInDefault />
       <TabsNestedDefaultInLine />
+      <TabsWithInputAndButton />
     </ExampleWrapper>
   )
 }
@@ -511,6 +513,49 @@ function TabsNestedDefaultInLine() {
             <h3 className="mb-2 text-sm font-medium">Settings</h3>
             <p className="text-muted-foreground text-sm">
               Configure your settings here.
+            </p>
+          </div>
+        </TabsContent>
+      </Tabs>
+    </Example>
+  )
+}
+
+function TabsWithInputAndButton() {
+  return (
+    <Example title="With Input and Button" containerClassName="col-span-full">
+      <Tabs defaultValue="overview" className="mx-auto w-full max-w-lg">
+        <div className="flex items-center gap-4">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          </TabsList>
+          <div className="ml-auto flex items-center gap-2">
+            <Input placeholder="Search..." className="w-44" />
+            <Button>Action</Button>
+          </div>
+        </div>
+        <TabsContent value="overview">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Overview</h3>
+            <p className="text-muted-foreground text-sm">
+              View your dashboard metrics and key performance indicators.
+            </p>
+          </div>
+        </TabsContent>
+        <TabsContent value="analytics">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Analytics</h3>
+            <p className="text-muted-foreground text-sm">
+              Detailed analytics and insights about your data.
+            </p>
+          </div>
+        </TabsContent>
+        <TabsContent value="reports">
+          <div className="rounded-lg border p-4">
+            <h3 className="mb-2 text-sm font-medium">Reports</h3>
+            <p className="text-muted-foreground text-sm">
+              Generate and view custom reports.
             </p>
           </div>
         </TabsContent>
