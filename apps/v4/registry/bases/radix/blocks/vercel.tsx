@@ -690,7 +690,7 @@ function ObservabilityCard() {
 function FeedbackForm() {
   return (
     <Example title="Feedback Form" className="items-center justify-center">
-      <Card className="w-full max-w-sm data-[size=sm]:pb-0" size="sm">
+      <Card className="w-full max-w-sm" size="sm">
         <CardContent>
           <form id="feedback-form">
             <FieldGroup>

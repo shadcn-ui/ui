@@ -15,6 +15,7 @@ import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
 import { Customizer } from "@/app/(create)/components/customizer"
+import { CustomizerControls } from "@/app/(create)/components/customizer-controls"
 import { ItemExplorer } from "@/app/(create)/components/item-explorer"
 import { ItemPicker } from "@/app/(create)/components/item-picker"
 import { Preview } from "@/app/(create)/components/preview"
@@ -99,6 +100,7 @@ export default async function CreatePage({
             </div>
             <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center gap-2 px-3 pb-4 sm:static sm:justify-end sm:p-0 lg:ml-0 xl:justify-center">
               <ItemPicker items={filteredItems} />
+              <CustomizerControls className="sm:hidden" />
               <Separator
                 orientation="vertical"
                 className="mr-2 hidden sm:flex xl:hidden"
@@ -116,7 +118,7 @@ export default async function CreatePage({
           </div>
         </div>
       </header>
-      <main className="flex flex-1 flex-col pb-15 sm:pb-0">
+      <main className="flex flex-1 flex-col pb-16 sm:pb-0">
         <SidebarProvider className="flex h-auto min-h-min flex-1 flex-col items-start overflow-hidden px-0">
           <div
             data-slot="designer"

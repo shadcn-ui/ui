@@ -72,7 +72,7 @@ export function Customizer() {
           <RadiusPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
-          <CustomizerControls />
+          <CustomizerControls className="mt-auto flex w-full" />
         </FieldGroup>
       </div>
     </div>

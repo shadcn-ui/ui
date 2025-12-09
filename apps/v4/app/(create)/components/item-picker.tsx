@@ -102,7 +102,7 @@ export function ItemPicker({
           <Button
             variant="outline"
             size="sm"
-            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-muted sm:bg-background dark:bg-background border-foreground/10 h-[calc(--spacing(13.5))] w-full justify-between gap-2 rounded-xl pr-4! pl-2.5 text-left shadow-none *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:max-w-56 sm:rounded-lg sm:pr-2! xl:max-w-md"
+            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-muted/50 sm:bg-background dark:bg-background border-foreground/10 h-[calc(--spacing(13.5))] flex-1 justify-between gap-2 rounded-xl pr-4! pl-2.5 text-left shadow-none *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:max-w-56 sm:rounded-lg sm:pr-2! xl:max-w-md"
           />
         }
       >
@@ -110,7 +110,9 @@ export function ItemPicker({
           {(value) => (
             <>
               <div className="flex flex-col justify-start text-left sm:hidden">
-                <div className="text-muted-foreground text-xs">Search</div>
+                <div className="text-muted-foreground text-xs font-normal">
+                  Preview
+                </div>
                 <div className="text-foreground text-sm font-medium">
                   {value?.title || "Not Found"}
                 </div>

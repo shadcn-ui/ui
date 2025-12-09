@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { useQueryStates } from "nuqs"
 
+import { cn } from "@/lib/utils"
 import {
   BASE_COLORS,
   getThemesForBaseColor,
@@ -21,7 +22,7 @@ function randomItem<T>(array: readonly T[]): T {
   return array[Math.floor(Math.random() * array.length)]
 }
 
-export function CustomizerControls() {
+export function CustomizerControls({ className }: { className?: string }) {
   const router = useRouter()
   const [, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
@@ -45,12 +46,12 @@ export function CustomizerControls() {
   }
 
   return (
-    <div className="mt-auto hidden w-full items-center gap-1 md:flex">
+    <div className={cn("items-center gap-1", className)}>
       <Button
         variant="ghost"
         size="sm"
         onClick={handleRandomize}
-        className="rounded-lg"
+        className="border-foreground/10 bg-muted/50 h-[calc(--spacing(13.5))] rounded-xl border sm:h-8 sm:rounded-lg md:rounded-lg md:border-transparent md:bg-transparent"
       >
         Randomize
       </Button>
@@ -58,7 +59,7 @@ export function CustomizerControls() {
         variant="secondary"
         size="sm"
         onClick={() => router.push("/create")}
-        className="ml-auto rounded-lg"
+        className="ml-auto hidden rounded-lg md:flex"
       >
         Reset
       </Button>

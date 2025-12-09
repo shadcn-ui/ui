@@ -73,17 +73,15 @@ export function BasePicker({
           <PickerGroup>
             {BASES.map((base) => (
               <PickerRadioItem key={base.name} value={base.name}>
-                <div className="flex items-center gap-2">
-                  {base.meta?.logo && (
-                    <div
-                      className="text-foreground *:[svg]:text-foreground! size-4 shrink-0 [&_svg]:size-4"
-                      dangerouslySetInnerHTML={{
-                        __html: base.meta.logo,
-                      }}
-                    />
-                  )}
-                  {base.title}
-                </div>
+                {base.meta?.logo && (
+                  <div
+                    className="text-foreground *:[svg]:text-foreground! size-4 shrink-0 [&_svg]:size-4"
+                    dangerouslySetInnerHTML={{
+                      __html: base.meta.logo,
+                    }}
+                  />
+                )}
+                {base.title}
               </PickerRadioItem>
             ))}
           </PickerGroup>

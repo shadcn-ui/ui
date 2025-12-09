@@ -19,7 +19,7 @@ function PickerTrigger({ className, ...props }: MenuPrimitive.Trigger.Props) {
     <MenuPrimitive.Trigger
       data-slot="dropdown-menu-trigger"
       className={cn(
-        "hover:bg-muted data-popup-open:bg-muted border-foreground/10 bg-muted relative w-[160px] shrink-0 rounded-xl border p-2 sm:rounded-lg sm:bg-transparent md:w-full md:border-transparent",
+        "hover:bg-muted data-popup-open:bg-muted border-foreground/10 bg-muted/50 relative w-[160px] shrink-0 rounded-xl border p-2 md:w-full md:rounded-lg md:border-transparent md:bg-transparent",
         className
       )}
       {...props}
@@ -216,7 +216,7 @@ function PickerRadioItem({
     <MenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-lg py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 pointer-coarse:[&_svg:not([class*='size-'])]:size-5",
+        "focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-lg py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 pointer-coarse:gap-3 pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -230,6 +230,7 @@ function PickerRadioItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            className="size-4 pointer-coarse:size-5"
           />
         </MenuPrimitive.RadioItemIndicator>
       </span>
