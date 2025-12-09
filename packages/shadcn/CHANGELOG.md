@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 3.5.2
+
+### Patch Changes
+
+- [#8997](https://github.com/shadcn-ui/ui/pull/8997) [`6699158a22e376a6abc91693843a64cdb0b496da`](https://github.com/shadcn-ui/ui/commit/6699158a22e376a6abc91693843a64cdb0b496da) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of base styles for add command
+
+- [#8993](https://github.com/shadcn-ui/ui/pull/8993) [`142cd8ef13a0ff691a94bbd73dba9d7a62428ffa`](https://github.com/shadcn-ui/ui/commit/142cd8ef13a0ff691a94bbd73dba9d7a62428ffa) Thanks [@pasqualevitiello](https://github.com/pasqualevitiello)! - Prevent duplicate keyframes when adding components
+
 ## 3.5.1
 
 ### Patch Changes
