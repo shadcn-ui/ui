@@ -13,6 +13,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/registry/bases/base/ui/breadcrumb"
+import { Button } from "@/registry/bases/base/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,7 +33,7 @@ export default function BreadcrumbExample() {
 
 function BreadcrumbBasic() {
   return (
-    <Example title="Basic">
+    <Example title="Basic" className="items-center justify-center">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -54,7 +55,7 @@ function BreadcrumbBasic() {
 
 function BreadcrumbWithDropdown() {
   return (
-    <Example title="With Dropdown">
+    <Example title="With Dropdown" className="items-center justify-center">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -63,7 +64,9 @@ function BreadcrumbWithDropdown() {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1">
+              <DropdownMenuTrigger
+                render={<Button size="icon-sm" variant="ghost" />}
+              >
                 <BreadcrumbEllipsis />
                 <span className="sr-only">Toggle menu</span>
               </DropdownMenuTrigger>
@@ -90,11 +93,11 @@ function BreadcrumbWithDropdown() {
 
 function BreadcrumbWithLink() {
   return (
-    <Example title="With Link">
+    <Example title="With Link" className="items-center justify-center">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link href="/">Home</Link>} />
+            <BreadcrumbLink render={<Link href="#">Home</Link>} />
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -102,9 +105,7 @@ function BreadcrumbWithLink() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink
-              render={<Link href="/docs/components">Components</Link>}
-            />
+            <BreadcrumbLink render={<Link href="#">Components</Link>} />
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>

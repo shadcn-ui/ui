@@ -14,7 +14,7 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function AlertExample() {
   return (
-    <ExampleWrapper>
+    <ExampleWrapper className="lg:grid-cols-1">
       <AlertExample1 />
       <AlertExample2 />
       <AlertExample3 />
@@ -26,20 +26,22 @@ export default function AlertExample() {
 function AlertExample1() {
   return (
     <Example title="Basic">
-      <Alert>
-        <AlertTitle>Success! Your changes have been saved.</AlertTitle>
-      </Alert>
-      <Alert>
-        <AlertTitle>Success! Your changes have been saved.</AlertTitle>
-        <AlertDescription>
-          This is an alert with title and description.
-        </AlertDescription>
-      </Alert>
-      <Alert>
-        <AlertDescription>
-          This one has a description only. No title. No icon.
-        </AlertDescription>
-      </Alert>
+      <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
+        <Alert>
+          <AlertTitle>Success! Your changes have been saved.</AlertTitle>
+        </Alert>
+        <Alert>
+          <AlertTitle>Success! Your changes have been saved.</AlertTitle>
+          <AlertDescription>
+            This is an alert with title and description.
+          </AlertDescription>
+        </Alert>
+        <Alert>
+          <AlertDescription>
+            This one has a description only. No title. No icon.
+          </AlertDescription>
+        </Alert>
+      </div>
     </Example>
   )
 }
@@ -47,7 +49,7 @@ function AlertExample1() {
 function AlertExample2() {
   return (
     <Example title="With Icons">
-      <div className="flex flex-col gap-4">
+      <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"
@@ -133,7 +135,7 @@ function AlertExample2() {
 function AlertExample3() {
   return (
     <Example title="Destructive">
-      <div className="flex w-full flex-col gap-4">
+      <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert variant="destructive">
           <IconPlaceholder
             lucide="CircleAlertIcon"
@@ -172,7 +174,7 @@ function AlertExample3() {
 function AlertExample4() {
   return (
     <Example title="With Actions">
-      <div className="flex w-full flex-col gap-4">
+      <div className="mx-auto flex w-full max-w-lg flex-col gap-4">
         <Alert>
           <IconPlaceholder
             lucide="CircleAlertIcon"

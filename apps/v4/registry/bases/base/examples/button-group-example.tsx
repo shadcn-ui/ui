@@ -455,16 +455,18 @@ function ButtonGroupWithSelectAndInput() {
   return (
     <Example title="With Select and Input">
       <ButtonGroup>
-        <Select items={durationItems}>
+        <Select items={durationItems} defaultValue={durationItems[0]}>
           <SelectTrigger id="duration">
             <SelectValue />
           </SelectTrigger>
           <SelectContent align="start">
-            {durationItems.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
-                {item.label}
-              </SelectItem>
-            ))}
+            <SelectGroup>
+              {durationItems.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectGroup>
           </SelectContent>
         </Select>
         <Input />

@@ -12,9 +12,12 @@ import {
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Calendar, CalendarDayButton } from "@/registry/bases/radix/ui/calendar"
 import { Card, CardContent, CardFooter } from "@/registry/bases/radix/ui/card"
-import { Field, FieldLabel } from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
-import { Label } from "@/registry/bases/radix/ui/label"
+import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/registry/bases/radix/ui/input-group"
 import {
   Popover,
   PopoverContent,
@@ -28,9 +31,9 @@ export default function CalendarExample() {
       <CalendarSingle />
       <CalendarMultiple />
       <CalendarWeekNumbers />
+      <CalendarBookedDates />
       <CalendarRange />
       <CalendarRangeMultipleMonths />
-      <CalendarBookedDates />
       <CalendarWithTime />
       <CalendarWithPresets />
       <CalendarCustomDays />
@@ -171,8 +174,8 @@ function CalendarWithTime() {
 
   return (
     <Example title="With Time">
-      <Card className="mx-auto w-fit py-4">
-        <CardContent className="px-4">
+      <Card size="sm" className="mx-auto w-fit">
+        <CardContent>
           <Calendar
             mode="single"
             selected={date}
@@ -180,43 +183,49 @@ function CalendarWithTime() {
             className="p-0"
           />
         </CardContent>
-        <CardFooter className="flex flex-col gap-3 border-t px-4 pt-4">
-          <div className="flex w-full flex-col gap-2">
-            <Label htmlFor="time-from">Start Time</Label>
-            <div className="relative flex w-full items-center gap-2">
-              <IconPlaceholder
-                lucide="Clock2Icon"
-                tabler="IconClockHour2"
-                hugeicons="Clock03Icon"
-                className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
-              />
-              <Input
-                id="time-from"
-                type="time"
-                step="1"
-                defaultValue="10:30:00"
-                className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
-              />
-            </div>
-          </div>
-          <div className="flex w-full flex-col gap-2">
-            <Label htmlFor="time-to">End Time</Label>
-            <div className="relative flex w-full items-center gap-2">
-              <IconPlaceholder
-                lucide="Clock2Icon"
-                tabler="IconClockHour2"
-                hugeicons="Clock03Icon"
-                className="text-muted-foreground pointer-events-none absolute left-2.5 size-4 select-none"
-              />
-              <Input
-                id="time-to"
-                type="time"
-                step="1"
-                defaultValue="12:30:00"
-                className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
-              />
-            </div>
-          </div>
+        <CardFooter className="bg-card border-t">
+          <FieldGroup>
+            <Field>
+              <FieldLabel htmlFor="time-from">Start Time</FieldLabel>
+              <InputGroup>
+                <InputGroupInput
+                  id="time-from"
+                  type="time"
+                  step="1"
+                  defaultValue="10:30:00"
+                  className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+                />
+                <InputGroupAddon>
+                  <IconPlaceholder
+                    lucide="Clock2Icon"
+                    tabler="IconClockHour2"
+                    hugeicons="Clock03Icon"
+                    className="text-muted-foreground"
+                  />
+                </InputGroupAddon>
+              </InputGroup>
+            </Field>
+            <Field>
+              <FieldLabel htmlFor="time-to">End Time</FieldLabel>
+              <InputGroup>
+                <InputGroupInput
+                  id="time-to"
+                  type="time"
+                  step="1"
+                  defaultValue="12:30:00"
+                  className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+                />
+                <InputGroupAddon>
+                  <IconPlaceholder
+                    lucide="Clock2Icon"
+                    tabler="IconClockHour2"
+                    hugeicons="Clock03Icon"
+                    className="text-muted-foreground"
+                  />
+                </InputGroupAddon>
+              </InputGroup>
+            </Field>
+          </FieldGroup>
         </CardFooter>
       </Card>
     </Example>
@@ -278,7 +287,7 @@ function CalendarWithPresets() {
 
   return (
     <Example title="With Presets">
-      <Card className="mx-auto w-fit max-w-[300px] py-4">
+      <Card className="mx-auto w-fit max-w-[300px]" size="sm">
         <CardContent className="px-4">
           <Calendar
             mode="single"
@@ -290,7 +299,7 @@ function CalendarWithPresets() {
             className="p-0 [--cell-size:--spacing(9.5)]"
           />
         </CardContent>
-        <CardFooter className="flex flex-wrap gap-2 border-t px-4 pt-4">
+        <CardFooter className="flex flex-wrap gap-2 border-t">
           {[
             { label: "Today", value: 0 },
             { label: "Tomorrow", value: 1 },

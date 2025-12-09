@@ -13,7 +13,7 @@ import {
 
 export default function CarouselExample() {
   return (
-    <ExampleWrapper>
+    <ExampleWrapper className="lg:grid-cols-1">
       <CarouselBasic />
       <CarouselMultiple />
       <CarouselWithGap />

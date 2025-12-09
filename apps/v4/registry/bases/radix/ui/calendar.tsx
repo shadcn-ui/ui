@@ -1,7 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { type DayButton, DayPicker, getDefaultClassNames } from "react-day-picker"
+import {
+  DayPicker,
+  getDefaultClassNames,
+  type DayButton,
+} from "react-day-picker"
 
 import { cn } from "@/registry/bases/radix/lib/utils"
 import { Button, buttonVariants } from "@/registry/bases/radix/ui/button"
@@ -66,7 +70,7 @@ function Calendar({
           defaultClassNames.dropdowns
         ),
         dropdown_root: cn(
-          "relative has-focus:border-ring border border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] rounded-md",
+          "relative cn-calendar-dropdown-root",
           defaultClassNames.dropdown_root
         ),
         dropdown: cn(
@@ -77,7 +81,7 @@ function Calendar({
           "select-none font-medium",
           captionLayout === "label"
             ? "text-sm"
-            : "rounded-md pl-2 pr-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5",
+            : "cn-calendar-caption-label flex items-center gap-1 text-sm  [&>svg]:text-muted-foreground [&>svg]:size-3.5",
           defaultClassNames.caption_label
         ),
         table: "w-full border-collapse",

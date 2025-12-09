@@ -35,10 +35,10 @@ import {
   CardTitle,
 } from "@/registry/bases/base/ui/card"
 import {
-  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/registry/bases/base/ui/chart"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
@@ -64,8 +64,8 @@ export default function ChartExample() {
       <ChartAreaExample />
       <ChartBarExample />
       <ChartLineExample />
-      <ChartRadarExample />
       <ChartRadialExample />
+      <ChartRadarExample />
     </ExampleWrapper>
   )
 }
@@ -492,14 +492,14 @@ function ChartRadialExample() {
   return (
     <Example title="Radial Chart">
       <Card className="w-full">
-        <CardHeader className="items-center pb-0">
+        <CardHeader>
           <CardTitle>Radial Chart - Shape</CardTitle>
           <CardDescription>January - June 2024</CardDescription>
         </CardHeader>
         <CardContent className="flex-1 pb-0">
           <ChartContainer
             config={radialChartConfig}
-            className="mx-auto aspect-square max-h-[250px]"
+            className="mx-auto aspect-square max-h-[210px]"
           >
             <RadialBarChart
               data={radialChartData}

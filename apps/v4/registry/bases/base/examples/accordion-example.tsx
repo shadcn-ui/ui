@@ -108,10 +108,10 @@ function AccordionWithBorders() {
     <Example title="With Borders">
       <Accordion className="mx-auto max-w-lg gap-4">
         <AccordionItem value="billing" className="rounded-lg border">
-          <AccordionTrigger className="px-4 text-base font-medium">
+          <AccordionTrigger className="style-nova:px-2.5 style-nova:text-sm px-4 text-base font-medium">
             How does billing work?
           </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground px-4">
+          <AccordionContent className="text-muted-foreground style-nova:px-2.5 style-nova:text-sm px-4">
             We offer monthly and annual subscription plans. Billing is charged
             at the beginning of each cycle, and you can cancel anytime. All
             plans include automatic backups, 24/7 support, and unlimited team
@@ -119,10 +119,10 @@ function AccordionWithBorders() {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="security" className="rounded-lg border">
-          <AccordionTrigger className="px-4 text-base font-medium">
+          <AccordionTrigger className="style-nova:px-2.5 style-nova:text-sm px-4 text-base font-medium">
             Is my data secure?
           </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground px-4">
+          <AccordionContent className="text-muted-foreground style-nova:px-2.5 style-nova:text-sm px-4">
             Yes. We use end-to-end encryption, SOC 2 Type II compliance, and
             regular third-party security audits. All data is encrypted at rest
             and in transit using industry-standard protocols. We also offer
@@ -131,10 +131,10 @@ function AccordionWithBorders() {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="integration" className="rounded-lg border!">
-          <AccordionTrigger className="px-4 text-base font-medium">
+          <AccordionTrigger className="style-nova:px-2.5 style-nova:text-sm px-4 text-base font-medium">
             What integrations do you support?
           </AccordionTrigger>
-          <AccordionContent className="text-muted-foreground px-4">
+          <AccordionContent className="text-muted-foreground style-nova:px-2.5 style-nova:text-sm px-4">
             <p>
               We integrate with 500+ popular tools including Slack, Zapier,
               Salesforce, HubSpot, and more. You can also build custom
@@ -271,10 +271,10 @@ function AccordionWithDisabled() {
     <Example title="With Disabled">
       <Accordion className="mx-auto max-w-lg overflow-hidden rounded-lg border">
         <AccordionItem value="item-1" className="data-open:bg-muted/50 p-1">
-          <AccordionTrigger className="px-4">
+          <AccordionTrigger className="style-nova:px-2.5 px-4">
             Can I access my account history?
           </AccordionTrigger>
-          <AccordionContent className="px-4">
+          <AccordionContent className="style-nova:px-2.5 px-4">
             Yes, you can view your complete account history including all
             transactions, plan changes, and support tickets in the Account
             History section of your dashboard.
@@ -285,19 +285,19 @@ function AccordionWithDisabled() {
           disabled
           className="data-open:bg-muted/50 p-1"
         >
-          <AccordionTrigger className="px-4">
+          <AccordionTrigger className="style-nova:px-2.5 px-4">
             Premium feature information
           </AccordionTrigger>
-          <AccordionContent className="px-4">
+          <AccordionContent className="style-nova:px-2.5 px-4">
             This section contains information about premium features. Upgrade
             your plan to access this content.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3" className="data-open:bg-muted/50 p-1">
-          <AccordionTrigger className="px-4">
+          <AccordionTrigger className="style-nova:px-2.5 px-4">
             How do I update my email address?
           </AccordionTrigger>
-          <AccordionContent className="px-4">
+          <AccordionContent className="style-nova:px-2.5 px-4">
             You can update your email address in your account settings.
             You&apos;ll receive a verification email at your new address to
             confirm the change.

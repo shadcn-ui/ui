@@ -13,6 +13,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/registry/bases/radix/ui/breadcrumb"
+import { Button } from "@/registry/bases/radix/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,7 +33,7 @@ export default function BreadcrumbExample() {
 
 function BreadcrumbBasic() {
   return (
-    <Example title="Basic">
+    <Example title="Basic" className="items-center justify-center">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -54,7 +55,7 @@ function BreadcrumbBasic() {
 
 function BreadcrumbWithDropdown() {
   return (
-    <Example title="With Dropdown">
+    <Example title="With Dropdown" className="items-center justify-center">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -63,9 +64,11 @@ function BreadcrumbWithDropdown() {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1">
-                <BreadcrumbEllipsis />
-                <span className="sr-only">Toggle menu</span>
+              <DropdownMenuTrigger asChild>
+                <Button size="icon-sm" variant="ghost">
+                  <BreadcrumbEllipsis />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
@@ -90,12 +93,12 @@ function BreadcrumbWithDropdown() {
 
 function BreadcrumbWithLink() {
   return (
-    <Example title="With Link">
+    <Example title="With Link" className="items-center justify-center">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/">Home</Link>
+              <Link href="#">Home</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
@@ -105,7 +108,7 @@ function BreadcrumbWithLink() {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/docs/components">Components</Link>
+              <Link href="#">Components</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />

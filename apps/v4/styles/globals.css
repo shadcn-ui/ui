@@ -6,7 +6,7 @@
 @import "../registry/styles/style-vega.css" layer(base);
 @import "../registry/styles/style-nova.css" layer(base);
 
-@custom-variant style-vega (&: where(.style-vega *));
+@custom-variant style-vega (&:where(.style-vega *));
 @custom-variant style-nova (&:where(.style-nova *));
 
 @custom-variant dark (&:is(.dark *));

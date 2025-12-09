@@ -159,7 +159,7 @@
   }
 
   .cn-button-variant-ghost {
-    @apply hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 aria-expanded:bg-muted aria-expanded:text-foreground inset-shadow-none;
+    @apply hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 aria-expanded:bg-muted aria-expanded:text-foreground;
   }
 
   .cn-button-variant-destructive {
@@ -218,6 +218,14 @@
   /* MARK: Calendar */
   .cn-calendar {
     @apply p-3 [--cell-size:--spacing(8)];
+  }
+
+  .cn-calendar-dropdown-root {
+    @apply has-focus:border-ring border-input has-focus:ring-ring/50 rounded-md border shadow-xs has-focus:ring-[3px];
+  }
+
+  .cn-calendar-caption-label {
+    @apply h-8 rounded-md pr-1 pl-2;
   }
 
   /* MARK: Card */

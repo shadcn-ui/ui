@@ -19,6 +19,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -40,7 +41,7 @@ export default function AlertDialogExample() {
 
 function AlertDialogBasic() {
   return (
-    <Example title="Basic">
+    <Example title="Basic" className="items-center">
       <AlertDialog>
         <AlertDialogTrigger
           render={<Button variant="outline">Default</Button>}
@@ -65,7 +66,7 @@ function AlertDialogBasic() {
 
 function AlertDialogSmall() {
   return (
-    <Example title="Small">
+    <Example title="Small" className="items-center">
       <AlertDialog>
         <AlertDialogTrigger render={<Button variant="outline">Small</Button>} />
         <AlertDialogContent size="sm">
@@ -87,7 +88,7 @@ function AlertDialogSmall() {
 
 function AlertDialogWithMedia() {
   return (
-    <Example title="With Media">
+    <Example title="With Media" className="items-center">
       <AlertDialog>
         <AlertDialogTrigger
           render={<Button variant="outline">Default (Media)</Button>}
@@ -119,7 +120,7 @@ function AlertDialogWithMedia() {
 
 function AlertDialogSmallWithMedia() {
   return (
-    <Example title="Small With Media">
+    <Example title="Small With Media" className="items-center">
       <AlertDialog>
         <AlertDialogTrigger
           render={<Button variant="outline">Small (Media)</Button>}
@@ -151,7 +152,7 @@ function AlertDialogSmallWithMedia() {
 
 function AlertDialogDestructive() {
   return (
-    <Example title="Destructive">
+    <Example title="Destructive" className="items-center">
       <AlertDialog>
         <AlertDialogTrigger
           render={<Button variant="destructive">Delete Chat</Button>}
@@ -184,7 +185,7 @@ function AlertDialogDestructive() {
 
 function AlertDialogInDialog() {
   return (
-    <Example title="In Dialog">
+    <Example title="In Dialog" className="items-center">
       <Dialog>
         <DialogTrigger render={<Button variant="outline" />}>
           Open Dialog
@@ -196,26 +197,26 @@ function AlertDialogInDialog() {
               Click the button below to open an alert dialog.
             </DialogDescription>
           </DialogHeader>
-          <AlertDialog>
-            <AlertDialogTrigger
-              render={<Button variant="outline" className="w-fit" />}
-            >
-              Open Alert Dialog
-            </AlertDialogTrigger>
-            <AlertDialogContent size="sm">
-              <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Continue</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+          <DialogFooter>
+            <AlertDialog>
+              <AlertDialogTrigger render={<Button />}>
+                Open Alert Dialog
+              </AlertDialogTrigger>
+              <AlertDialogContent size="sm">
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete
+                    your account and remove your data from our servers.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction>Continue</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </Example>
