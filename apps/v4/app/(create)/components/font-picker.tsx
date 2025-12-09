@@ -22,7 +22,15 @@ import {
 import { type Font } from "@/app/(create)/lib/fonts"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
+export function FontPicker({
+  fonts,
+  isMobile,
+  anchorRef,
+}: {
+  fonts: readonly Font[]
+  isMobile: boolean
+  anchorRef: React.RefObject<HTMLDivElement | null>
+}) {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -35,7 +43,7 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
 
   return (
     <Picker>
-      <PickerTrigger className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2">
+      <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Font</div>
           <div className="text-foreground text-sm font-medium">
@@ -50,9 +58,10 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
         </div>
       </PickerTrigger>
       <PickerContent
-        side="left"
-        align="start"
-        className="ring-foreground/10 h-96 w-64 rounded-xl border-0 ring-1"
+        anchor={isMobile ? anchorRef : undefined}
+        side={isMobile ? "top" : "right"}
+        align={isMobile ? "center" : "start"}
+        className="max-h-80 md:w-72"
       >
         <PickerRadioGroup
           value={currentFont?.value}
@@ -63,7 +72,7 @@ export function FontPicker({ fonts }: { fonts: readonly Font[] }) {
           <PickerGroup>
             {fonts.map((font, index) => (
               <React.Fragment key={font.value}>
-                <PickerRadioItem value={font.value} className="rounded-lg">
+                <PickerRadioItem value={font.value}>
                   <Item size="xs">
                     <ItemContent className="gap-1">
                       <ItemTitle className="text-muted-foreground text-xs font-medium">

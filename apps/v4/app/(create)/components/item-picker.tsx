@@ -2,6 +2,8 @@
 
 import * as React from "react"
 import Script from "next/script"
+import { Search01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 import { useQueryStates } from "nuqs"
 import { type RegistryItem } from "shadcn/schema"
 
@@ -100,27 +102,36 @@ export function ItemPicker({
           <Button
             variant="outline"
             size="sm"
-            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-background dark:bg-background w-full max-w-lg justify-between gap-2 rounded-lg pr-2! pl-2.5 text-left shadow-none"
+            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-muted sm:bg-background dark:bg-background border-foreground/10 h-[calc(--spacing(13.5))] w-full justify-between gap-2 rounded-xl pr-4! pl-2.5 text-left shadow-none *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:max-w-56 sm:rounded-lg sm:pr-2! xl:max-w-md"
           />
         }
       >
         <ComboboxValue>
           {(value) => (
-            <div className="text-foreground text-sm">
-              {value?.title || "Not Found"}
-            </div>
+            <>
+              <div className="flex flex-col justify-start text-left sm:hidden">
+                <div className="text-muted-foreground text-xs">Search</div>
+                <div className="text-foreground text-sm font-medium">
+                  {value?.title || "Not Found"}
+                </div>
+              </div>
+              <div className="text-foreground hidden flex-1 text-sm sm:flex">
+                {value?.title || "Not Found"}
+              </div>
+            </>
           )}
         </ComboboxValue>
+        <HugeiconsIcon icon={Search01Icon} />
       </ComboboxTrigger>
       <ComboboxContent
-        className="ring-foreground/10 w-64 animate-none rounded-xl border-0 ring-1 data-open:animate-none"
+        className="ring-foreground/10 min-w-[calc(var(--available-width)---spacing(2))] animate-none rounded-xl border-0 ring-1 data-open:animate-none sm:min-w-[calc(var(--anchor-width)+--spacing(7))]"
         side="bottom"
         align="center"
       >
         <ComboboxInput
           showTrigger={false}
           placeholder="Search"
-          className="bg-muted h-8 rounded-lg shadow-none has-focus-visible:border-inherit! has-focus-visible:ring-0!"
+          className="bg-muted h-8 rounded-lg shadow-none has-focus-visible:border-inherit! has-focus-visible:ring-0! pointer-coarse:h-10!"
         />
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList className="no-scrollbar scroll-my-1 pb-1">
@@ -132,7 +143,7 @@ export function ItemPicker({
                   <ComboboxItem
                     key={item.name}
                     value={item}
-                    className="group/combobox-item rounded-lg"
+                    className="group/combobox-item rounded-lg pointer-coarse:py-2.5 pointer-coarse:pl-3 pointer-coarse:text-base"
                   >
                     {item.title}
                     <span className="text-muted-foreground ml-auto text-xs opacity-0 group-data-[selected=true]/combobox-item:opacity-100">

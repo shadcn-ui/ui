@@ -141,7 +141,7 @@ export default function CoverExample() {
       <InputGroupExamples />
       <ItemExample />
       <SheetExample />
-      <SpinnerBadge />
+      <BadgeExamples />
     </ExampleWrapper>
   )
 }
@@ -434,7 +434,7 @@ function ButtonGroupExamples() {
               </DropdownMenuContent>
             </DropdownMenu>
           </ButtonGroup>
-          <ButtonGroup>
+          <ButtonGroup className="hidden sm:flex">
             <Button variant="outline" size="icon-sm" aria-label="Previous">
               <IconPlaceholder
                 lucide="ArrowLeftIcon"
@@ -452,7 +452,7 @@ function ButtonGroupExamples() {
           </ButtonGroup>
         </ButtonGroup>
         <div className="flex gap-4">
-          <ButtonGroup>
+          <ButtonGroup className="hidden sm:flex">
             <ButtonGroup>
               <Button variant="outline">1</Button>
               <Button variant="outline">2</Button>
@@ -1122,9 +1122,9 @@ function ItemExample() {
   )
 }
 
-function SpinnerBadge() {
+function BadgeExamples() {
   return (
-    <Example title="Spinner Badge" className="items-center justify-center">
+    <Example title="Badge Examples" className="items-center justify-center">
       <div className="flex items-center gap-2">
         <Badge>
           <Spinner data-icon="inline-start" />
@@ -1138,7 +1138,7 @@ function SpinnerBadge() {
           <Spinner data-icon="inline-start" />
           Loading
         </Badge>
-        <Badge variant="link">
+        <Badge variant="link" className="hidden sm:flex">
           <Spinner data-icon="inline-start" />
           Link
         </Badge>

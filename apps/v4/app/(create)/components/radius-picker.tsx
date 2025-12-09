@@ -14,7 +14,13 @@ import {
 } from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function RadiusPicker() {
+export function RadiusPicker({
+  isMobile,
+  anchorRef,
+}: {
+  isMobile: boolean
+  anchorRef: React.RefObject<HTMLDivElement | null>
+}) {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -26,7 +32,7 @@ export function RadiusPicker() {
 
   return (
     <Picker>
-      <PickerTrigger className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2">
+      <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Radius</div>
           <div className="text-foreground text-sm font-medium">
@@ -53,9 +59,9 @@ export function RadiusPicker() {
         </div>
       </PickerTrigger>
       <PickerContent
-        side="left"
-        align="start"
-        className="ring-foreground/10 rounded-xl border-0 ring-1"
+        anchor={isMobile ? anchorRef : undefined}
+        side={isMobile ? "top" : "right"}
+        align={isMobile ? "center" : "start"}
       >
         <PickerRadioGroup
           value={currentRadius?.name}
@@ -68,11 +74,10 @@ export function RadiusPicker() {
               <PickerRadioItem
                 key={defaultRadius.name}
                 value={defaultRadius.name}
-                className="rounded-lg"
               >
-                <div className="flex flex-col justify-start">
+                <div className="flex flex-col justify-start pointer-coarse:gap-1">
                   <div>{defaultRadius.label}</div>
-                  <div className="text-muted-foreground text-xs">
+                  <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
                     Use radius from style
                   </div>
                 </div>
@@ -82,11 +87,7 @@ export function RadiusPicker() {
           <PickerSeparator />
           <PickerGroup>
             {otherRadii.map((radius) => (
-              <PickerRadioItem
-                key={radius.name}
-                value={radius.name}
-                className="rounded-lg"
-              >
+              <PickerRadioItem key={radius.name} value={radius.name}>
                 {radius.label}
               </PickerRadioItem>
             ))}

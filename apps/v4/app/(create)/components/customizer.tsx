@@ -5,8 +5,9 @@ import { Settings05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { useQueryStates } from "nuqs"
 
+import { useIsMobile } from "@/hooks/use-mobile"
 import { getThemesForBaseColor, PRESETS, STYLES } from "@/registry/config"
-import { FieldGroup, FieldSeparator } from "@/registry/new-york-v4/ui/field"
+import { FieldGroup } from "@/registry/new-york-v4/ui/field"
 import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"
 import { BasePicker } from "@/app/(create)/components/base-picker"
@@ -23,6 +24,8 @@ import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function Customizer() {
   const [params] = useQueryStates(designSystemSearchParams)
+  const isMobile = useIsMobile()
+  const anchorRef = React.useRef<HTMLDivElement | null>(null)
 
   const availableThemes = React.useMemo(
     () => getThemesForBaseColor(params.baseColor),
@@ -30,35 +33,48 @@ export function Customizer() {
   )
 
   return (
-    <div className="no-scrollbar flex h-[calc(100svh-var(--header-height)-2rem)] w-48 flex-col gap-4 overflow-y-auto p-1">
-      <div className="mt-auto flex flex-col gap-2 p-2">
+    <div
+      className="no-scrollbar -mx-4 flex flex-col overflow-y-auto p-1 sm:-mx-2 md:mx-0 md:h-[calc(100svh-var(--header-height)-2rem)] md:w-48 md:gap-4"
+      ref={anchorRef}
+    >
+      <div className="hidden items-center gap-2 p-2 md:flex md:flex-col md:items-start">
         <HugeiconsIcon icon={Settings05Icon} className="size-5" />
         <div className="relative flex flex-col gap-1 rounded-lg text-[13px]/snug">
           <div className="flex items-center gap-1 font-medium text-balance">
             Build your own shadcn/ui
           </div>
-          <div>
+          <div className="hidden md:flex">
             When you&apos;re done, click Create Project to start a new project.
           </div>
         </div>
       </div>
-      <FieldGroup className="**:data-[slot=select-trigger]:hover:bg-muted **:data-[slot=select-trigger]:ring-foreground/10 dark:**:data-[slot=select-trigger]:hover:bg-muted **:data-[slot=select-trigger]:data-[state=open]:bg-muted dark:**:data-[slot=select-trigger]:data-[state=open]:bg-muted flex flex-1 flex-col gap-1 **:data-[slot=select-trigger]:w-full **:data-[slot=select-trigger]:rounded-lg **:data-[slot=select-trigger]:border-0 **:data-[slot=select-trigger]:bg-transparent **:data-[slot=select-trigger]:text-left **:data-[slot=select-trigger]:shadow-none **:data-[slot=select-trigger]:data-[size=default]:h-12 **:data-[slot=select-trigger]:data-[size=default]:px-2 dark:**:data-[slot=select-trigger]:bg-transparent **:[[data-slot=select-trigger]>svg]:hidden">
-        <PresetPicker presets={PRESETS} />
-        <FieldSeparator className="opacity-0" />
-        <BasePicker />
-        <StylePicker styles={STYLES} />
-        <BaseColorPicker />
-        <ThemePicker themes={availableThemes} />
-        <IconLibraryPicker />
-        <FontPicker fonts={FONTS} />
-        <FieldSeparator className="opacity-0" />
-        <RadiusPicker />
-        <MenuColorPicker />
-        <MenuAccentPicker />
-        <div className="mt-auto">
+      <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full">
+        <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-1">
+          <PresetPicker
+            presets={PRESETS}
+            isMobile={isMobile}
+            anchorRef={anchorRef}
+          />
+          <BasePicker isMobile={isMobile} anchorRef={anchorRef} />
+          <StylePicker
+            styles={STYLES}
+            isMobile={isMobile}
+            anchorRef={anchorRef}
+          />
+          <BaseColorPicker isMobile={isMobile} anchorRef={anchorRef} />
+          <ThemePicker
+            themes={availableThemes}
+            isMobile={isMobile}
+            anchorRef={anchorRef}
+          />
+          <IconLibraryPicker isMobile={isMobile} anchorRef={anchorRef} />
+          <FontPicker fonts={FONTS} isMobile={isMobile} anchorRef={anchorRef} />
+          <RadiusPicker isMobile={isMobile} anchorRef={anchorRef} />
+          <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
+          <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
           <CustomizerControls />
-        </div>
-      </FieldGroup>
+        </FieldGroup>
+      </div>
     </div>
   )
 }

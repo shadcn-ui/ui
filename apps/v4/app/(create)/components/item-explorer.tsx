@@ -1,9 +1,11 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { useQueryStates } from "nuqs"
 import { type RegistryItem } from "shadcn/schema"
 
+import { type Base } from "@/registry/bases"
 import {
   Sidebar,
   SidebarContent,
@@ -14,7 +16,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/registry/new-york-v4/ui/sidebar"
-import { ItemPicker } from "@/app/(create)/components/item-picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 import { groupItemsByType } from "@/app/(create)/lib/utils"
 
@@ -25,8 +26,10 @@ const cachedGroupedItems = React.cache(
 )
 
 export function ItemExplorer({
+  base,
   items,
 }: {
+  base: Base["name"]
   items: Pick<RegistryItem, "name" | "title" | "type">[]
 }) {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
@@ -43,11 +46,10 @@ export function ItemExplorer({
 
   return (
     <Sidebar
-      className="sticky z-30 hidden h-[calc(100svh-var(--header-height)-2rem)] overscroll-none bg-transparent"
+      className="sticky z-30 hidden h-[calc(100svh-var(--header-height)-2rem)] overscroll-none bg-transparent xl:flex"
       collapsible="none"
     >
       <SidebarContent className="no-scrollbar overflow-x-hidden">
-        <div className="from-background via-background/80 to-background/50 sticky -top-1 z-10 -mb-6 h-6 shrink-0 bg-gradient-to-b blur-xs" />
         {groupedItems.map((group) => (
           <SidebarGroup key={group.type} className="px-0">
             <SidebarGroupLabel className="text-muted-foreground font-medium">
@@ -66,13 +68,19 @@ export function ItemExplorer({
                       {item.title}
                       <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                     </SidebarMenuButton>
+                    <Link
+                      href={`/preview/${base}/${item.name}`}
+                      prefetch
+                      className="sr-only"
+                    >
+                      {item.title}
+                    </Link>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
         ))}
-        <div className="from-background via-background/80 to-background/50 sticky -bottom-1 z-10 h-16 shrink-0 bg-gradient-to-t blur-xs"></div>
       </SidebarContent>
     </Sidebar>
   )

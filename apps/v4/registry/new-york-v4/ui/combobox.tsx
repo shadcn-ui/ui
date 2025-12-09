@@ -155,11 +155,12 @@ function ComboboxItem({
     >
       {children}
       <ComboboxPrimitive.ItemIndicator
+        data-slot="combobox-item-indicator"
         render={
           <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />
         }
       >
-        <IconCheck className="pointer-events-none" />
+        <IconCheck className="pointer-events-none size-4 pointer-coarse:size-5" />
       </ComboboxPrimitive.ItemIndicator>
     </ComboboxPrimitive.Item>
   )

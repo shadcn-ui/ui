@@ -73,7 +73,7 @@ export default async function CreatePage({
   return (
     <div
       data-slot="layout"
-      className="bg-muted/50 dark:bg-muted/20 relative z-10 flex min-h-svh flex-col"
+      className="md:bg-muted/30 dark:md:bg-muted/20 relative z-10 flex min-h-svh flex-col"
     >
       <header className="sticky top-0 z-50 w-full">
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
@@ -97,29 +97,32 @@ export default async function CreatePage({
               </Button>
               <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
             </div>
-            <div className="hidden flex-1 items-center justify-center gap-2 xl:flex">
+            <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center gap-2 px-3 pb-4 sm:static sm:justify-end sm:p-0 lg:ml-0 xl:justify-center">
               <ItemPicker items={filteredItems} />
+              <Separator
+                orientation="vertical"
+                className="mr-2 hidden sm:flex xl:hidden"
+              />
             </div>
-            <div className="ml-auto flex items-center gap-2 md:justify-end xl:w-1/3">
+            <div className="ml-auto flex items-center gap-2 sm:ml-0 md:justify-end xl:ml-auto xl:w-1/3">
               <SiteConfig className="3xl:flex hidden" />
               <Separator orientation="vertical" className="3xl:flex hidden" />
               <ModeSwitcher />
-              <Separator orientation="vertical" />
+              <Separator orientation="vertical" className="mr-2 md:mr-0" />
               <V0Button />
-              <Separator orientation="vertical" />
-
+              <Separator orientation="vertical" className="hidden md:flex" />
               <ToolbarControls />
             </div>
           </div>
         </div>
       </header>
-      <main className="flex flex-1 flex-col">
-        <SidebarProvider className="h-auto min-h-min flex-1 items-start overflow-hidden px-0">
+      <main className="flex flex-1 flex-col pb-15 sm:pb-0">
+        <SidebarProvider className="flex h-auto min-h-min flex-1 flex-col items-start overflow-hidden px-0">
           <div
             data-slot="designer"
-            className="3xl:fixed:container flex flex-1 gap-4 p-6 pt-2 [--sidebar-width:--spacing(40)] 2xl:gap-6"
+            className="3xl:fixed:container flex w-full flex-1 flex-col gap-4 p-6 pt-2 pb-4 [--sidebar-width:--spacing(40)] md:flex-row md:pb-6 2xl:gap-6"
           >
-            <ItemExplorer items={filteredItems} />
+            <ItemExplorer base={base.name} items={filteredItems} />
             <Preview />
             <Customizer />
           </div>

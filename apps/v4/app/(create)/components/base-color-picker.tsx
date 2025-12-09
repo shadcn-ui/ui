@@ -18,7 +18,13 @@ import {
 } from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function BaseColorPicker({}) {
+export function BaseColorPicker({
+  isMobile,
+  anchorRef,
+}: {
+  isMobile: boolean
+  anchorRef: React.RefObject<HTMLDivElement | null>
+}) {
   const { resolvedTheme, setTheme } = useTheme()
   const mounted = useMounted()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
@@ -33,7 +39,7 @@ export function BaseColorPicker({}) {
 
   return (
     <Picker>
-      <PickerTrigger className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2">
+      <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Base Color</div>
           <div className="text-foreground text-sm font-medium">
@@ -55,9 +61,9 @@ export function BaseColorPicker({}) {
         )}
       </PickerTrigger>
       <PickerContent
-        side="left"
-        align="start"
-        className="ring-foreground/10 w-48 rounded-xl border-0 ring-1"
+        anchor={isMobile ? anchorRef : undefined}
+        side={isMobile ? "top" : "right"}
+        align={isMobile ? "center" : "start"}
       >
         <PickerRadioGroup
           value={currentBaseColor?.name}
@@ -72,11 +78,7 @@ export function BaseColorPicker({}) {
         >
           <PickerGroup>
             {BASE_COLORS.map((baseColor) => (
-              <PickerRadioItem
-                key={baseColor.name}
-                value={baseColor.name}
-                className="rounded-lg"
-              >
+              <PickerRadioItem key={baseColor.name} value={baseColor.name}>
                 <div className="flex items-center gap-2">
                   {mounted && resolvedTheme && (
                     <div
@@ -99,16 +101,15 @@ export function BaseColorPicker({}) {
           <PickerSeparator />
           <PickerGroup>
             <PickerItem
-              className="rounded-lg"
               onClick={() => {
                 setTheme(resolvedTheme === "dark" ? "light" : "dark")
               }}
             >
-              <div className="flex flex-col justify-start">
+              <div className="flex flex-col justify-start pointer-coarse:gap-1">
                 <div>
                   Switch to {resolvedTheme === "dark" ? "Light" : "Dark"} Mode
                 </div>
-                <div className="text-muted-foreground text-xs">
+                <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
                   Base colors are easier to see in dark mode.
                 </div>
               </div>

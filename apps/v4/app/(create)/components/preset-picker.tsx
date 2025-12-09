@@ -21,7 +21,15 @@ import {
 } from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
+export function PresetPicker({
+  presets,
+  isMobile,
+  anchorRef,
+}: {
+  presets: readonly Preset[]
+  isMobile: boolean
+  anchorRef: React.RefObject<HTMLDivElement | null>
+}) {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -76,7 +84,7 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
 
   return (
     <Picker>
-      <PickerTrigger className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2">
+      <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Preset</div>
           <div className="text-foreground text-sm font-medium">
@@ -85,9 +93,9 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
         </div>
       </PickerTrigger>
       <PickerContent
-        side="left"
-        align="start"
-        className="ring-foreground/10 w-56 rounded-xl border-0 ring-1"
+        anchor={isMobile ? anchorRef : undefined}
+        side={isMobile ? "top" : "right"}
+        align={isMobile ? "center" : "start"}
       >
         <PickerRadioGroup
           value={currentPreset?.title ?? ""}
@@ -96,11 +104,7 @@ export function PresetPicker({ presets }: { presets: readonly Preset[] }) {
           <PickerGroup>
             {presets.map((preset, index) => (
               <React.Fragment key={index}>
-                <PickerRadioItem
-                  key={preset.title}
-                  value={preset.title}
-                  className="rounded-lg"
-                >
+                <PickerRadioItem key={preset.title} value={preset.title}>
                   <Item size="xs">
                     <ItemContent>
                       <ItemTitle className="text-muted-foreground text-xs font-medium">

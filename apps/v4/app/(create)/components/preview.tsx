@@ -78,13 +78,13 @@ export function Preview() {
   const iframeSrc = `/preview/${params.base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "vega"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
 
   return (
-    <div className="ring-foreground/15 relative -z-0 flex flex-1 flex-col overflow-hidden rounded-xl ring-1">
+    <div className="ring-foreground/15 relative -z-0 -mx-2 flex flex-1 flex-col overflow-hidden rounded-lg ring-1 sm:mx-0 md:rounded-xl">
       <div className="bg-muted dark:bg-muted/30 absolute inset-0 rounded-2xl" />
       <iframe
         key={`${params.item}-${iframeKey}`}
         ref={iframeRef}
         src={iframeSrc}
-        className="z-10 size-full"
+        className="z-10 size-full flex-1"
       />
     </div>
   )

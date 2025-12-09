@@ -64,8 +64,11 @@ export function ToolbarControls() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" className="h-[31px] rounded-lg pl-2">
-          <HugeiconsIcon icon={ComputerTerminal01Icon} />
+        <Button size="sm" className="hidden h-[31px] rounded-lg pl-2 md:flex">
+          <HugeiconsIcon
+            icon={ComputerTerminal01Icon}
+            className="hidden xl:flex"
+          />
           Create Project
         </Button>
       </DialogTrigger>

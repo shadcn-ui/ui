@@ -100,7 +100,10 @@ function DropdownMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="cn-dropdown-menu-item-indicator pointer-events-none">
+      <span
+        className="cn-dropdown-menu-item-indicator pointer-events-none"
+        data-slot="dropdown-menu-checkbox-item-indicator"
+      >
         <DropdownMenuPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"
@@ -139,7 +142,10 @@ function DropdownMenuRadioItem({
       )}
       {...props}
     >
-      <span className="cn-dropdown-menu-item-indicator pointer-events-none">
+      <span
+        className="cn-dropdown-menu-item-indicator pointer-events-none"
+        data-slot="dropdown-menu-radio-item-indicator"
+      >
         <DropdownMenuPrimitive.ItemIndicator>
           <IconPlaceholder
             lucide="CheckIcon"

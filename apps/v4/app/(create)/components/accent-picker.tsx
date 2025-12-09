@@ -13,7 +13,13 @@ import {
 } from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function MenuAccentPicker() {
+export function MenuAccentPicker({
+  isMobile,
+  anchorRef,
+}: {
+  isMobile: boolean
+  anchorRef: React.RefObject<HTMLDivElement | null>
+}) {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -25,7 +31,7 @@ export function MenuAccentPicker() {
 
   return (
     <Picker>
-      <PickerTrigger className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2">
+      <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Menu Accent</div>
           <div className="text-foreground text-sm font-medium">
@@ -63,9 +69,9 @@ export function MenuAccentPicker() {
         </div>
       </PickerTrigger>
       <PickerContent
-        side="left"
-        align="start"
-        className="ring-foreground/10 rounded-xl border-0 ring-1"
+        anchor={isMobile ? anchorRef : undefined}
+        side={isMobile ? "top" : "right"}
+        align={isMobile ? "center" : "start"}
       >
         <PickerRadioGroup
           value={currentAccent?.value}
@@ -75,11 +81,7 @@ export function MenuAccentPicker() {
         >
           <PickerGroup>
             {MENU_ACCENTS.map((accent) => (
-              <PickerRadioItem
-                key={accent.value}
-                value={accent.value}
-                className="rounded-lg"
-              >
+              <PickerRadioItem key={accent.value} value={accent.value}>
                 {accent.label}
               </PickerRadioItem>
             ))}

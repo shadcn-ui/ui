@@ -45,7 +45,7 @@ export function CustomizerControls() {
   }
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="mt-auto hidden w-full items-center gap-1 md:flex">
       <Button
         variant="ghost"
         size="sm"

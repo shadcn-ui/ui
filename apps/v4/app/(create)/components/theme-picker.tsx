@@ -18,7 +18,15 @@ import {
 } from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
+export function ThemePicker({
+  themes,
+  isMobile,
+  anchorRef,
+}: {
+  themes: readonly Theme[]
+  isMobile: boolean
+  anchorRef: React.RefObject<HTMLDivElement | null>
+}) {
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
@@ -44,7 +52,7 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
 
   return (
     <Picker>
-      <PickerTrigger className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2">
+      <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Theme</div>
           <div className="text-foreground text-sm font-medium">
@@ -68,9 +76,10 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
         </div>
       </PickerTrigger>
       <PickerContent
-        side="left"
-        align="start"
-        className="ring-foreground/10 rounded-xl border-0 ring-1"
+        anchor={isMobile ? anchorRef : undefined}
+        side={isMobile ? "top" : "right"}
+        align={isMobile ? "center" : "start"}
+        className="max-h-96"
       >
         <PickerRadioGroup
           value={currentTheme?.name}
@@ -88,11 +97,7 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
                   (baseColor) => baseColor.name === theme.name
                 )
                 return (
-                  <PickerRadioItem
-                    key={theme.name}
-                    value={theme.name}
-                    className="rounded-lg"
-                  >
+                  <PickerRadioItem key={theme.name} value={theme.name}>
                     <div className="flex items-start gap-2">
                       {mounted && resolvedTheme && (
                         <div
@@ -109,9 +114,9 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
                           className="size-4 translate-y-1 rounded-full bg-(--color)"
                         />
                       )}
-                      <div className="flex flex-col justify-start">
+                      <div className="flex flex-col justify-start pointer-coarse:gap-1">
                         <div>{theme.title}</div>
-                        <div className="text-muted-foreground text-xs">
+                        <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
                           Match base color
                         </div>
                       </div>
@@ -131,11 +136,7 @@ export function ThemePicker({ themes }: { themes: readonly Theme[] }) {
               )
               .map((theme) => {
                 return (
-                  <PickerRadioItem
-                    key={theme.name}
-                    value={theme.name}
-                    className="rounded-lg"
-                  >
+                  <PickerRadioItem key={theme.name} value={theme.name}>
                     <div className="flex items-center gap-2">
                       {mounted && resolvedTheme && (
                         <div

@@ -14,7 +14,13 @@ import {
 } from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
-export function BasePicker() {
+export function BasePicker({
+  isMobile,
+  anchorRef,
+}: {
+  isMobile: boolean
+  anchorRef: React.RefObject<HTMLDivElement | null>
+}) {
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -39,7 +45,7 @@ export function BasePicker() {
 
   return (
     <Picker>
-      <PickerTrigger className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2">
+      <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Component Library</div>
           <div className="text-foreground text-sm font-medium">
@@ -56,9 +62,9 @@ export function BasePicker() {
         )}
       </PickerTrigger>
       <PickerContent
-        side="left"
-        align="start"
-        className="ring-foreground/10 rounded-xl border-0 ring-1"
+        anchor={isMobile ? anchorRef : undefined}
+        side={isMobile ? "top" : "right"}
+        align={isMobile ? "center" : "start"}
       >
         <PickerRadioGroup
           value={currentBase?.name}
@@ -66,11 +72,7 @@ export function BasePicker() {
         >
           <PickerGroup>
             {BASES.map((base) => (
-              <PickerRadioItem
-                key={base.name}
-                value={base.name}
-                className="rounded-lg"
-              >
+              <PickerRadioItem key={base.name} value={base.name}>
                 <div className="flex items-center gap-2">
                   {base.meta?.logo && (
                     <div

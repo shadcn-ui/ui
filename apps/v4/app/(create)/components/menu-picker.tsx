@@ -104,7 +104,13 @@ const MENU_OPTIONS = [
   },
 ] as const
 
-export function MenuColorPicker() {
+export function MenuColorPicker({
+  isMobile,
+  anchorRef,
+}: {
+  isMobile: boolean
+  anchorRef: React.RefObject<HTMLDivElement | null>
+}) {
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
@@ -117,10 +123,7 @@ export function MenuColorPicker() {
 
   return (
     <Picker>
-      <PickerTrigger
-        className="hover:bg-muted data-popup-open:bg-muted relative rounded-lg p-2"
-        disabled={mounted && resolvedTheme === "dark"}
-      >
+      <PickerTrigger disabled={mounted && resolvedTheme === "dark"}>
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Menu Color</div>
           <div className="text-foreground text-sm font-medium">
@@ -132,9 +135,9 @@ export function MenuColorPicker() {
         </div>
       </PickerTrigger>
       <PickerContent
-        side="left"
-        align="start"
-        className="ring-foreground/10 rounded-xl border-0 ring-1"
+        anchor={isMobile ? anchorRef : undefined}
+        side={isMobile ? "top" : "right"}
+        align={isMobile ? "center" : "start"}
       >
         <PickerRadioGroup
           value={currentMenu?.value}
@@ -144,11 +147,7 @@ export function MenuColorPicker() {
         >
           <PickerGroup>
             {MENU_OPTIONS.map((menu) => (
-              <PickerRadioItem
-                key={menu.value}
-                value={menu.value}
-                className="rounded-lg"
-              >
+              <PickerRadioItem key={menu.value} value={menu.value}>
                 {menu.icon}
                 {menu.label}
               </PickerRadioItem>
