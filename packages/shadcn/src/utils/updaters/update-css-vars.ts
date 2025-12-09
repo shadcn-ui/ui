@@ -898,6 +898,6 @@ export function isColorValue(value: string) {
     value.startsWith("rgb") ||
     value.startsWith("#") ||
     value.startsWith("oklch") ||
-    value.startsWith("var(--color-")
+    value.includes("--color-")
   )
 }
