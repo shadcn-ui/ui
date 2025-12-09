@@ -1,8 +1,10 @@
 "use client"
 
+import * as React from "react"
 import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
+import { useMounted } from "@/hooks/use-mounted"
 import { type MenuColorValue } from "@/registry/config"
 import {
   Select,
@@ -103,6 +105,7 @@ const MENU_OPTIONS = [
 
 export function MenuColorPicker() {
   const { resolvedTheme } = useTheme()
+  const mounted = useMounted()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -118,7 +121,10 @@ export function MenuColorPicker() {
         setParams({ menuColor: value as MenuColorValue })
       }}
     >
-      <SelectTrigger className="relative" disabled={resolvedTheme === "dark"}>
+      <SelectTrigger
+        className="relative"
+        disabled={mounted && resolvedTheme === "dark"}
+      >
         <SelectValue>
           <div className="flex flex-col justify-start">
             <div className="text-muted-foreground text-xs">Menu Color</div>
