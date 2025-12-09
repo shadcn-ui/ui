@@ -102,7 +102,7 @@ export function ItemPicker({
           <Button
             variant="outline"
             size="sm"
-            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-muted/50 sm:bg-background dark:bg-background border-foreground/10 h-[calc(--spacing(13.5))] flex-1 justify-between gap-2 rounded-xl pr-4! pl-2.5 text-left shadow-none *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:max-w-56 sm:rounded-lg sm:pr-2! xl:max-w-md"
+            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-muted/50 sm:bg-background dark:bg-background border-foreground/10 h-[calc(--spacing(13.5))] flex-1 touch-manipulation justify-between gap-2 rounded-xl pr-4! pl-2.5 text-left shadow-none select-none *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:max-w-56 sm:rounded-lg sm:pr-2! xl:max-w-md"
           />
         }
       >
@@ -126,14 +126,14 @@ export function ItemPicker({
         <HugeiconsIcon icon={Search01Icon} />
       </ComboboxTrigger>
       <ComboboxContent
-        className="ring-foreground/10 min-w-[calc(var(--available-width)---spacing(2))] animate-none rounded-xl border-0 ring-1 data-open:animate-none sm:min-w-[calc(var(--anchor-width)+--spacing(7))]"
+        className="ring-foreground/10 min-w-[calc(var(--available-width)---spacing(4))] translate-x-2 animate-none rounded-xl border-0 ring-1 data-open:animate-none sm:min-w-[calc(var(--anchor-width)+--spacing(7))] sm:translate-x-0"
         side="bottom"
         align="center"
       >
         <ComboboxInput
           showTrigger={false}
           placeholder="Search"
-          className="bg-muted h-8 rounded-lg shadow-none has-focus-visible:border-inherit! has-focus-visible:ring-0! pointer-coarse:h-10!"
+          className="bg-muted h-8 rounded-lg shadow-none has-focus-visible:border-inherit! has-focus-visible:ring-0! pointer-coarse:hidden"
         />
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList className="no-scrollbar scroll-my-1 pb-1">

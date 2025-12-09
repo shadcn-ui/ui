@@ -163,13 +163,13 @@ function CardMeetingNotes() {
 function CardWithImage() {
   return (
     <Example title="With Image">
-      <Card size="default" className="mx-auto w-full max-w-sm">
+      <Card size="default" className="relative mx-auto w-full max-w-sm pt-0">
+        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
         <img
-          src="https://images.unsplash.com/photo-1521459467264-802e2ef3141f?q=80&w=2235&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Photo by Yan Ots on Unsplash"
-          className="aspect-video object-cover dark:brightness-50 dark:grayscale"
-          width={500}
-          height={500}
+          src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Photo by mymind on Unsplash"
+          title="Photo by mymind on Unsplash"
+          className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale"
         />
         <CardHeader>
           <CardTitle>Beautiful Landscape</CardTitle>
@@ -196,13 +196,13 @@ function CardWithImage() {
 function CardWithImageSmall() {
   return (
     <Example title="With Image (Small)">
-      <Card size="sm" className="mx-auto w-full max-w-sm">
+      <Card size="sm" className="relative mx-auto w-full max-w-sm pt-0">
+        <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
         <img
-          src="https://images.unsplash.com/photo-1521459467264-802e2ef3141f?q=80&w=2235&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Photo by Yan Ots on Unsplash"
-          className="aspect-video object-cover dark:brightness-50 dark:grayscale"
-          width={500}
-          height={500}
+          src="https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Photo by mymind on Unsplash"
+          title="Photo by mymind on Unsplash"
+          className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale"
         />
         <CardHeader>
           <CardTitle>Beautiful Landscape</CardTitle>

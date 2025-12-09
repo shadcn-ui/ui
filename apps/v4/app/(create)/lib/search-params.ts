@@ -57,6 +57,11 @@ export const designSystemSearchParams = {
   radius: parseAsStringLiteral<RadiusValue>(
     RADII.map((r) => r.name)
   ).withDefault("default"),
+  template: parseAsStringLiteral<"next" | "start-app" | "vite-app">([
+    "next",
+    "start-app",
+    "vite-app",
+  ]).withDefault("next"),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }

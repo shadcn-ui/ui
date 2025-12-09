@@ -575,21 +575,6 @@ const agentFeatures = [
       </>
     ),
   },
-  {
-    id: "remediation",
-    content: (
-      <>
-        <strong>Actionable remediation steps</strong> for faster incident
-        resolution.{" "}
-        <Badge
-          variant="secondary"
-          className="bg-blue-100 text-blue-700 hover:bg-blue-100"
-        >
-          Requires Observability Plus
-        </Badge>
-      </>
-    ),
-  },
 ]
 
 function ActivateAgentDialog() {
@@ -608,35 +593,37 @@ function ActivateAgentDialog() {
               <a href="#">AI Product Terms</a>.
             </DialogDescription>
           </DialogHeader>
-          <ItemGroup className="gap-0 pr-2">
-            {agentFeatures.map((feature) => (
-              <Item key={feature.id} size="xs" className="px-0">
-                <ItemMedia variant="icon" className="self-start">
-                  <IconPlaceholder
-                    lucide="CheckCircle2Icon"
-                    tabler="IconCircleCheckFilled"
-                    hugeicons="CheckmarkCircle02Icon"
-                    className="fill-primary text-primary-foreground size-5"
-                  />
-                </ItemMedia>
-                <ItemContent>
-                  <ItemTitle className="text-muted-foreground *:[strong]:text-foreground inline leading-relaxed font-normal *:[strong]:font-medium">
-                    {feature.content}
-                  </ItemTitle>
-                </ItemContent>
-              </Item>
-            ))}
-          </ItemGroup>
-          <Alert>
-            <IconPlaceholder
-              lucide="CircleDollarSignIcon"
-              hugeicons="DollarCircleIcon"
-              tabler="IconCoin"
-            />
-            <AlertDescription>
-              Pro teams get $100 in Vercel Agent trial credit for 2 weeks.
-            </AlertDescription>
-          </Alert>
+          <div className="no-scrollbar flex max-h-[50vh] flex-col gap-4 overflow-y-auto">
+            <ItemGroup className="gap-0 pr-2">
+              {agentFeatures.map((feature) => (
+                <Item key={feature.id} size="xs" className="px-0">
+                  <ItemMedia variant="icon" className="self-start">
+                    <IconPlaceholder
+                      lucide="CheckCircle2Icon"
+                      tabler="IconCircleCheckFilled"
+                      hugeicons="CheckmarkCircle02Icon"
+                      className="fill-primary text-primary-foreground size-5"
+                    />
+                  </ItemMedia>
+                  <ItemContent>
+                    <ItemTitle className="text-muted-foreground *:[strong]:text-foreground inline leading-relaxed font-normal *:[strong]:font-medium">
+                      {feature.content}
+                    </ItemTitle>
+                  </ItemContent>
+                </Item>
+              ))}
+            </ItemGroup>
+            <Alert className="hidden sm:grid">
+              <IconPlaceholder
+                lucide="CircleDollarSignIcon"
+                hugeicons="DollarCircleIcon"
+                tabler="IconCoin"
+              />
+              <AlertDescription>
+                Pro teams get $100 in Vercel Agent trial credit for 2 weeks.
+              </AlertDescription>
+            </Alert>
+          </div>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>

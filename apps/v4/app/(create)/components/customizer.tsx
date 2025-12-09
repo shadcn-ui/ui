@@ -18,6 +18,7 @@ import { MenuColorPicker } from "@/app/(create)/components/menu-picker"
 import { PresetPicker } from "@/app/(create)/components/preset-picker"
 import { RadiusPicker } from "@/app/(create)/components/radius-picker"
 import { StylePicker } from "@/app/(create)/components/style-picker"
+import { TemplatePicker } from "@/app/(create)/components/template-picker"
 import { ThemePicker } from "@/app/(create)/components/theme-picker"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
@@ -34,7 +35,7 @@ export function Customizer() {
 
   return (
     <div
-      className="no-scrollbar -mx-4 flex flex-col overflow-y-auto p-1 sm:-mx-2 md:mx-0 md:h-[calc(100svh-var(--header-height)-2rem)] md:w-48 md:gap-4"
+      className="no-scrollbar -mx-4 flex flex-col overflow-y-auto p-1 sm:-mx-2 md:mx-0 md:h-[calc(100svh-var(--header-height)-2rem)] md:w-48 md:gap-0"
       ref={anchorRef}
     >
       <div className="hidden items-center gap-2 p-2 md:flex md:flex-col md:items-start">
@@ -48,8 +49,9 @@ export function Customizer() {
           </div>
         </div>
       </div>
-      <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full">
-        <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-1">
+      <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full md:overflow-x-hidden md:overflow-y-auto">
+        <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-0">
+          <TemplatePicker isMobile={isMobile} anchorRef={anchorRef} />
           <PresetPicker
             presets={PRESETS}
             isMobile={isMobile}
@@ -72,7 +74,7 @@ export function Customizer() {
           <RadiusPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
-          <CustomizerControls className="mt-auto flex w-full" />
+          <CustomizerControls className="mt-auto flex w-full flex-col gap-2" />
         </FieldGroup>
       </div>
     </div>

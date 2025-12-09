@@ -1,6 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
+import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { useQueryStates } from "nuqs"
 
@@ -51,15 +52,19 @@ export function CustomizerControls({ className }: { className?: string }) {
         variant="ghost"
         size="sm"
         onClick={handleRandomize}
-        className="border-foreground/10 bg-muted/50 h-[calc(--spacing(13.5))] rounded-xl border sm:h-8 sm:rounded-lg md:rounded-lg md:border-transparent md:bg-transparent"
+        className="border-foreground/10 bg-muted/50 h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none sm:h-8 sm:rounded-lg md:h-9 md:w-full md:rounded-lg md:border-transparent md:bg-transparent md:px-2"
       >
-        Randomize
+        Randomize{" "}
+        <HugeiconsIcon
+          icon={DiceFaces05Icon}
+          className="mr-1.5 size-5 md:size-4"
+        />
       </Button>
       <Button
         variant="secondary"
         size="sm"
         onClick={() => router.push("/create")}
-        className="ml-auto hidden rounded-lg md:flex"
+        className="hidden w-full rounded-lg"
       >
         Reset
       </Button>
