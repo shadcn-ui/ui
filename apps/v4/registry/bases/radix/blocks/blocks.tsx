@@ -103,6 +103,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -136,10 +137,10 @@ export default function CoverExample() {
       <EmptyWithSpinner />
       <FormExample />
       <FieldExamples />
+      <ItemExample />
       <ButtonGroupExamples />
       <EmptyAvatarGroup />
       <InputGroupExamples />
-      <ItemExample />
       <SheetExample />
       <BadgeExamples />
     </ExampleWrapper>
@@ -472,12 +473,12 @@ function ButtonGroupExamples() {
                     />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuContent align="end" className="w-52">
                   <DropdownMenuGroup>
                     <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
                     <DropdownMenuItem>
                       <IconPlaceholder
-                        lucide="VolumeOffIcon"
+                        lucide="VolumeX"
                         tabler="IconVolume"
                         hugeicons="VolumeOffIcon"
                       />
@@ -921,18 +922,20 @@ function FormExample() {
                           <SelectValue placeholder="MM" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="01">01</SelectItem>
-                          <SelectItem value="02">02</SelectItem>
-                          <SelectItem value="03">03</SelectItem>
-                          <SelectItem value="04">04</SelectItem>
-                          <SelectItem value="05">05</SelectItem>
-                          <SelectItem value="06">06</SelectItem>
-                          <SelectItem value="07">07</SelectItem>
-                          <SelectItem value="08">08</SelectItem>
-                          <SelectItem value="09">09</SelectItem>
-                          <SelectItem value="10">10</SelectItem>
-                          <SelectItem value="11">11</SelectItem>
-                          <SelectItem value="12">12</SelectItem>
+                          <SelectGroup>
+                            <SelectItem value="01">01</SelectItem>
+                            <SelectItem value="02">02</SelectItem>
+                            <SelectItem value="03">03</SelectItem>
+                            <SelectItem value="04">04</SelectItem>
+                            <SelectItem value="05">05</SelectItem>
+                            <SelectItem value="06">06</SelectItem>
+                            <SelectItem value="07">07</SelectItem>
+                            <SelectItem value="08">08</SelectItem>
+                            <SelectItem value="09">09</SelectItem>
+                            <SelectItem value="10">10</SelectItem>
+                            <SelectItem value="11">11</SelectItem>
+                            <SelectItem value="12">12</SelectItem>
+                          </SelectGroup>
                         </SelectContent>
                       </Select>
                     </Field>
@@ -945,12 +948,14 @@ function FormExample() {
                           <SelectValue placeholder="YYYY" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="2024">2024</SelectItem>
-                          <SelectItem value="2025">2025</SelectItem>
-                          <SelectItem value="2026">2026</SelectItem>
-                          <SelectItem value="2027">2027</SelectItem>
-                          <SelectItem value="2028">2028</SelectItem>
-                          <SelectItem value="2029">2029</SelectItem>
+                          <SelectGroup>
+                            <SelectItem value="2024">2024</SelectItem>
+                            <SelectItem value="2025">2025</SelectItem>
+                            <SelectItem value="2026">2026</SelectItem>
+                            <SelectItem value="2027">2027</SelectItem>
+                            <SelectItem value="2028">2028</SelectItem>
+                            <SelectItem value="2029">2029</SelectItem>
+                          </SelectGroup>
                         </SelectContent>
                       </Select>
                     </Field>

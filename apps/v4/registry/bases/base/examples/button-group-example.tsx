@@ -153,7 +153,7 @@ function ButtonGroupWithDropdown() {
               <DropdownMenuGroup>
                 <DropdownMenuItem>
                   <IconPlaceholder
-                    lucide="VolumeOffIcon"
+                    lucide="VolumeX"
                     tabler="IconVolume"
                     hugeicons="VolumeOffIcon"
                   />

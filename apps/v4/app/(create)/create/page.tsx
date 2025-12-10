@@ -6,11 +6,7 @@ import { ArrowLeftIcon } from "lucide-react"
 import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
-import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
-import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
-import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { SiteConfig } from "@/components/site-config"
 import { BASES } from "@/registry/config"
@@ -83,11 +79,6 @@ export default async function CreatePage({
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
           <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
             <div className="flex items-center xl:w-1/3">
-              {/* <MobileNav
-                tree={source.pageTree}
-                items={siteConfig.navItems}
-                className="flex lg:hidden"
-              /> */}
               <Button
                 asChild
                 variant="outline"
@@ -99,12 +90,10 @@ export default async function CreatePage({
                   Back
                 </Link>
               </Button>
-              <Separator
-                orientation="vertical"
-                className="mx-4 hidden md:flex"
-              />
-              <div className="text-sm font-medium">New Project</div>
-              {/* <MainNav items={siteConfig.navItems} className="hidden lg:flex" /> */}
+              <Separator orientation="vertical" className="mx-2 flex sm:mx-4" />
+              <div className="text-muted-foreground text-sm font-medium">
+                New Project
+              </div>
             </div>
             <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center gap-2 px-4.5 pb-4 sm:static sm:justify-end sm:p-0 lg:ml-0 xl:justify-center">
               <ItemPicker items={filteredItems} />
@@ -118,7 +107,10 @@ export default async function CreatePage({
               <SiteConfig className="3xl:flex hidden" />
               <Separator orientation="vertical" className="3xl:flex hidden" />
               <ModeSwitcher />
-              <Separator orientation="vertical" className="mr-2 md:mr-0" />
+              <Separator
+                orientation="vertical"
+                className="mr-0 -ml-2 sm:ml-0"
+              />
               <V0Button />
               <Separator orientation="vertical" className="hidden md:flex" />
               <ToolbarControls />

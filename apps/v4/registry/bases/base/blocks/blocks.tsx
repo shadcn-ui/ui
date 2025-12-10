@@ -138,10 +138,10 @@ export default function CoverExample() {
       <EmptyWithSpinner />
       <FormExample />
       <FieldExamples />
+      <ItemExample />
+      <ButtonGroupExamples />
       <EmptyAvatarGroup />
       <InputGroupExamples />
-      <ButtonGroupExamples />
-      <ItemExample />
       <SheetExample />
       <BadgeExamples />
     </ExampleWrapper>
@@ -480,12 +480,12 @@ function ButtonGroupExamples() {
                     hugeicons="ArrowDown01Icon"
                   />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuContent align="end" className="w-52">
                   <DropdownMenuGroup>
                     <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
                     <DropdownMenuItem>
                       <IconPlaceholder
-                        lucide="VolumeOffIcon"
+                        lucide="VolumeX"
                         tabler="IconVolume"
                         hugeicons="VolumeOffIcon"
                       />
