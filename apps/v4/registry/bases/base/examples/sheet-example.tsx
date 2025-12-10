@@ -39,7 +39,7 @@ function SheetWithForm() {
               done.
             </SheetDescription>
           </SheetHeader>
-          <div className="px-4">
+          <div className="style-vega:px-4 style-maia:px-6 style-lyra:px-4 style-nova:px-4">
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="sheet-demo-name">Name</FieldLabel>
@@ -106,7 +106,7 @@ function SheetWithSides() {
                   done.
                 </SheetDescription>
               </SheetHeader>
-              <div className="overflow-y-auto px-4">
+              <div className="no-scrollbar style-vega:px-4 style-maia:px-6 style-lyra:px-4 style-nova:px-4 overflow-y-auto">
                 {Array.from({ length: 10 }).map((_, index) => (
                   <p
                     key={index}

@@ -58,9 +58,11 @@ function ContextMenuBasic() {
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuItem>Back</ContextMenuItem>
-          <ContextMenuItem disabled>Forward</ContextMenuItem>
-          <ContextMenuItem>Reload</ContextMenuItem>
+          <ContextMenuGroup>
+            <ContextMenuItem>Back</ContextMenuItem>
+            <ContextMenuItem disabled>Forward</ContextMenuItem>
+            <ContextMenuItem>Reload</ContextMenuItem>
+          </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
     </Example>
@@ -75,39 +77,43 @@ function ContextMenuWithIcons() {
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuItem>
-            <IconPlaceholder
-              lucide="CopyIcon"
-              tabler="IconCopy"
-              hugeicons="CopyIcon"
-            />
-            Copy
-          </ContextMenuItem>
-          <ContextMenuItem>
-            <IconPlaceholder
-              lucide="ScissorsIcon"
-              tabler="IconCut"
-              hugeicons="ScissorIcon"
-            />
-            Cut
-          </ContextMenuItem>
-          <ContextMenuItem>
-            <IconPlaceholder
-              lucide="ClipboardPasteIcon"
-              tabler="IconClipboard"
-              hugeicons="ClipboardIcon"
-            />
-            Paste
-          </ContextMenuItem>
+          <ContextMenuGroup>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="CopyIcon"
+                tabler="IconCopy"
+                hugeicons="CopyIcon"
+              />
+              Copy
+            </ContextMenuItem>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="ScissorsIcon"
+                tabler="IconCut"
+                hugeicons="ScissorIcon"
+              />
+              Cut
+            </ContextMenuItem>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="ClipboardPasteIcon"
+                tabler="IconClipboard"
+                hugeicons="ClipboardIcon"
+              />
+              Paste
+            </ContextMenuItem>
+          </ContextMenuGroup>
           <ContextMenuSeparator />
-          <ContextMenuItem variant="destructive">
-            <IconPlaceholder
-              lucide="TrashIcon"
-              tabler="IconTrash"
-              hugeicons="DeleteIcon"
-            />
-            Delete
-          </ContextMenuItem>
+          <ContextMenuGroup>
+            <ContextMenuItem variant="destructive">
+              <IconPlaceholder
+                lucide="TrashIcon"
+                tabler="IconTrash"
+                hugeicons="DeleteIcon"
+              />
+              Delete
+            </ContextMenuItem>
+          </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
     </Example>
@@ -122,27 +128,31 @@ function ContextMenuWithShortcuts() {
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuItem>
-            Back
-            <ContextMenuShortcut>⌘[</ContextMenuShortcut>
-          </ContextMenuItem>
-          <ContextMenuItem disabled>
-            Forward
-            <ContextMenuShortcut>⌘]</ContextMenuShortcut>
-          </ContextMenuItem>
-          <ContextMenuItem>
-            Reload
-            <ContextMenuShortcut>⌘R</ContextMenuShortcut>
-          </ContextMenuItem>
+          <ContextMenuGroup>
+            <ContextMenuItem>
+              Back
+              <ContextMenuShortcut>⌘[</ContextMenuShortcut>
+            </ContextMenuItem>
+            <ContextMenuItem disabled>
+              Forward
+              <ContextMenuShortcut>⌘]</ContextMenuShortcut>
+            </ContextMenuItem>
+            <ContextMenuItem>
+              Reload
+              <ContextMenuShortcut>⌘R</ContextMenuShortcut>
+            </ContextMenuItem>
+          </ContextMenuGroup>
           <ContextMenuSeparator />
-          <ContextMenuItem>
-            Save
-            <ContextMenuShortcut>⌘S</ContextMenuShortcut>
-          </ContextMenuItem>
-          <ContextMenuItem>
-            Save As...
-            <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
-          </ContextMenuItem>
+          <ContextMenuGroup>
+            <ContextMenuItem>
+              Save
+              <ContextMenuShortcut>⌘S</ContextMenuShortcut>
+            </ContextMenuItem>
+            <ContextMenuItem>
+              Save As...
+              <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
+            </ContextMenuItem>
+          </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
     </Example>
@@ -157,24 +167,32 @@ function ContextMenuWithSubmenu() {
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuItem>
-            Copy
-            <ContextMenuShortcut>⌘C</ContextMenuShortcut>
-          </ContextMenuItem>
-          <ContextMenuItem>
-            Cut
-            <ContextMenuShortcut>⌘X</ContextMenuShortcut>
-          </ContextMenuItem>
+          <ContextMenuGroup>
+            <ContextMenuItem>
+              Copy
+              <ContextMenuShortcut>⌘C</ContextMenuShortcut>
+            </ContextMenuItem>
+            <ContextMenuItem>
+              Cut
+              <ContextMenuShortcut>⌘X</ContextMenuShortcut>
+            </ContextMenuItem>
+          </ContextMenuGroup>
           <ContextMenuSub>
             <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
             <ContextMenuSubContent>
-              <ContextMenuItem>Save Page...</ContextMenuItem>
-              <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-              <ContextMenuItem>Name Window...</ContextMenuItem>
+              <ContextMenuGroup>
+                <ContextMenuItem>Save Page...</ContextMenuItem>
+                <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+                <ContextMenuItem>Name Window...</ContextMenuItem>
+              </ContextMenuGroup>
               <ContextMenuSeparator />
-              <ContextMenuItem>Developer Tools</ContextMenuItem>
+              <ContextMenuGroup>
+                <ContextMenuItem>Developer Tools</ContextMenuItem>
+              </ContextMenuGroup>
               <ContextMenuSeparator />
-              <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+              <ContextMenuGroup>
+                <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+              </ContextMenuGroup>
             </ContextMenuSubContent>
           </ContextMenuSub>
         </ContextMenuContent>
@@ -217,7 +235,9 @@ function ContextMenuWithGroups() {
               Redo
               <ContextMenuShortcut>⇧⌘Z</ContextMenuShortcut>
             </ContextMenuItem>
-            <ContextMenuSeparator />
+          </ContextMenuGroup>
+          <ContextMenuSeparator />
+          <ContextMenuGroup>
             <ContextMenuItem>
               Cut
               <ContextMenuShortcut>⌘X</ContextMenuShortcut>
@@ -252,13 +272,15 @@ function ContextMenuWithCheckboxes() {
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuCheckboxItem defaultChecked>
-            Show Bookmarks Bar
-          </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem defaultChecked>
-            Show Developer Tools
-          </ContextMenuCheckboxItem>
+          <ContextMenuGroup>
+            <ContextMenuCheckboxItem defaultChecked>
+              Show Bookmarks Bar
+            </ContextMenuCheckboxItem>
+            <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+            <ContextMenuCheckboxItem defaultChecked>
+              Show Developer Tools
+            </ContextMenuCheckboxItem>
+          </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
     </Example>
@@ -310,39 +332,43 @@ function ContextMenuWithDestructive() {
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuItem>
-            <IconPlaceholder
-              lucide="PencilIcon"
-              tabler="IconPencil"
-              hugeicons="EditIcon"
-            />
-            Edit
-          </ContextMenuItem>
-          <ContextMenuItem>
-            <IconPlaceholder
-              lucide="ShareIcon"
-              tabler="IconShare"
-              hugeicons="ShareIcon"
-            />
-            Share
-          </ContextMenuItem>
+          <ContextMenuGroup>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="PencilIcon"
+                tabler="IconPencil"
+                hugeicons="EditIcon"
+              />
+              Edit
+            </ContextMenuItem>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="ShareIcon"
+                tabler="IconShare"
+                hugeicons="ShareIcon"
+              />
+              Share
+            </ContextMenuItem>
+          </ContextMenuGroup>
           <ContextMenuSeparator />
-          <ContextMenuItem>
-            <IconPlaceholder
-              lucide="ArchiveIcon"
-              tabler="IconArchive"
-              hugeicons="Archive02Icon"
-            />
-            Archive
-          </ContextMenuItem>
-          <ContextMenuItem variant="destructive">
-            <IconPlaceholder
-              lucide="TrashIcon"
-              tabler="IconTrash"
-              hugeicons="DeleteIcon"
-            />
-            Delete
-          </ContextMenuItem>
+          <ContextMenuGroup>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="ArchiveIcon"
+                tabler="IconArchive"
+                hugeicons="Archive02Icon"
+              />
+              Archive
+            </ContextMenuItem>
+            <ContextMenuItem variant="destructive">
+              <IconPlaceholder
+                lucide="TrashIcon"
+                tabler="IconTrash"
+                hugeicons="DeleteIcon"
+              />
+              Delete
+            </ContextMenuItem>
+          </ContextMenuGroup>
         </ContextMenuContent>
       </ContextMenu>
     </Example>
@@ -358,9 +384,11 @@ function ContextMenuWithSides() {
             Right click (top)
           </ContextMenuTrigger>
           <ContextMenuContent side="top">
-            <ContextMenuItem>Back</ContextMenuItem>
-            <ContextMenuItem>Forward</ContextMenuItem>
-            <ContextMenuItem>Reload</ContextMenuItem>
+            <ContextMenuGroup>
+              <ContextMenuItem>Back</ContextMenuItem>
+              <ContextMenuItem>Forward</ContextMenuItem>
+              <ContextMenuItem>Reload</ContextMenuItem>
+            </ContextMenuGroup>
           </ContextMenuContent>
         </ContextMenu>
         <ContextMenu>
@@ -368,9 +396,11 @@ function ContextMenuWithSides() {
             Right click (right)
           </ContextMenuTrigger>
           <ContextMenuContent side="right">
-            <ContextMenuItem>Back</ContextMenuItem>
-            <ContextMenuItem>Forward</ContextMenuItem>
-            <ContextMenuItem>Reload</ContextMenuItem>
+            <ContextMenuGroup>
+              <ContextMenuItem>Back</ContextMenuItem>
+              <ContextMenuItem>Forward</ContextMenuItem>
+              <ContextMenuItem>Reload</ContextMenuItem>
+            </ContextMenuGroup>
           </ContextMenuContent>
         </ContextMenu>
         <ContextMenu>
@@ -378,9 +408,11 @@ function ContextMenuWithSides() {
             Right click (bottom)
           </ContextMenuTrigger>
           <ContextMenuContent side="bottom">
-            <ContextMenuItem>Back</ContextMenuItem>
-            <ContextMenuItem>Forward</ContextMenuItem>
-            <ContextMenuItem>Reload</ContextMenuItem>
+            <ContextMenuGroup>
+              <ContextMenuItem>Back</ContextMenuItem>
+              <ContextMenuItem>Forward</ContextMenuItem>
+              <ContextMenuItem>Reload</ContextMenuItem>
+            </ContextMenuGroup>
           </ContextMenuContent>
         </ContextMenu>
         <ContextMenu>
@@ -388,9 +420,11 @@ function ContextMenuWithSides() {
             Right click (left)
           </ContextMenuTrigger>
           <ContextMenuContent side="left">
-            <ContextMenuItem>Back</ContextMenuItem>
-            <ContextMenuItem>Forward</ContextMenuItem>
-            <ContextMenuItem>Reload</ContextMenuItem>
+            <ContextMenuGroup>
+              <ContextMenuItem>Back</ContextMenuItem>
+              <ContextMenuItem>Forward</ContextMenuItem>
+              <ContextMenuItem>Reload</ContextMenuItem>
+            </ContextMenuGroup>
           </ContextMenuContent>
         </ContextMenu>
       </div>
@@ -417,50 +451,58 @@ function ContextMenuInDialog() {
               Right click here
             </ContextMenuTrigger>
             <ContextMenuContent>
-              <ContextMenuItem>
-                <IconPlaceholder
-                  lucide="CopyIcon"
-                  tabler="IconCopy"
-                  hugeicons="CopyIcon"
-                />
-                Copy
-              </ContextMenuItem>
-              <ContextMenuItem>
-                <IconPlaceholder
-                  lucide="ScissorsIcon"
-                  tabler="IconCut"
-                  hugeicons="ScissorIcon"
-                />
-                Cut
-              </ContextMenuItem>
-              <ContextMenuItem>
-                <IconPlaceholder
-                  lucide="ClipboardPasteIcon"
-                  tabler="IconClipboard"
-                  hugeicons="ClipboardIcon"
-                />
-                Paste
-              </ContextMenuItem>
+              <ContextMenuGroup>
+                <ContextMenuItem>
+                  <IconPlaceholder
+                    lucide="CopyIcon"
+                    tabler="IconCopy"
+                    hugeicons="CopyIcon"
+                  />
+                  Copy
+                </ContextMenuItem>
+                <ContextMenuItem>
+                  <IconPlaceholder
+                    lucide="ScissorsIcon"
+                    tabler="IconCut"
+                    hugeicons="ScissorIcon"
+                  />
+                  Cut
+                </ContextMenuItem>
+                <ContextMenuItem>
+                  <IconPlaceholder
+                    lucide="ClipboardPasteIcon"
+                    tabler="IconClipboard"
+                    hugeicons="ClipboardIcon"
+                  />
+                  Paste
+                </ContextMenuItem>
+              </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuSub>
                 <ContextMenuSubTrigger>More Options</ContextMenuSubTrigger>
                 <ContextMenuSubContent>
-                  <ContextMenuItem>Save Page...</ContextMenuItem>
-                  <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-                  <ContextMenuItem>Name Window...</ContextMenuItem>
+                  <ContextMenuGroup>
+                    <ContextMenuItem>Save Page...</ContextMenuItem>
+                    <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+                    <ContextMenuItem>Name Window...</ContextMenuItem>
+                  </ContextMenuGroup>
                   <ContextMenuSeparator />
-                  <ContextMenuItem>Developer Tools</ContextMenuItem>
+                  <ContextMenuGroup>
+                    <ContextMenuItem>Developer Tools</ContextMenuItem>
+                  </ContextMenuGroup>
                 </ContextMenuSubContent>
               </ContextMenuSub>
               <ContextMenuSeparator />
-              <ContextMenuItem variant="destructive">
-                <IconPlaceholder
-                  lucide="TrashIcon"
-                  tabler="IconTrash"
-                  hugeicons="DeleteIcon"
-                />
-                Delete
-              </ContextMenuItem>
+              <ContextMenuGroup>
+                <ContextMenuItem variant="destructive">
+                  <IconPlaceholder
+                    lucide="TrashIcon"
+                    tabler="IconTrash"
+                    hugeicons="DeleteIcon"
+                  />
+                  Delete
+                </ContextMenuItem>
+              </ContextMenuGroup>
             </ContextMenuContent>
           </ContextMenu>
         </DialogContent>

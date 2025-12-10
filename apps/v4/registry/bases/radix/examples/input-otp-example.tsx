@@ -36,7 +36,6 @@ export default function InputOTPExample() {
       <InputOTPSimple />
       <InputOTPPattern />
       <InputOTPWithSeparator />
-      <InputOTPWithSpacing />
       <InputOTPAlphanumeric />
       <InputOTPDisabled />
       <InputOTPFourDigits />
@@ -115,24 +114,6 @@ function InputOTPWithSeparator() {
           <InputOTPGroup>
             <InputOTPSlot index={4} />
             <InputOTPSlot index={5} />
-          </InputOTPGroup>
-        </InputOTP>
-      </Field>
-    </Example>
-  )
-}
-
-function InputOTPWithSpacing() {
-  return (
-    <Example title="With Spacing">
-      <Field>
-        <FieldLabel htmlFor="with-spacing">With Spacing</FieldLabel>
-        <InputOTP id="with-spacing" maxLength={6}>
-          <InputOTPGroup className="gap-2 *:data-[slot=input-otp-slot]:rounded-md *:data-[slot=input-otp-slot]:border">
-            <InputOTPSlot index={0} />
-            <InputOTPSlot index={1} />
-            <InputOTPSlot index={2} />
-            <InputOTPSlot index={3} />
           </InputOTPGroup>
         </InputOTP>
       </Field>

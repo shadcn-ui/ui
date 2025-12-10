@@ -50,7 +50,7 @@ function DrawerWithSides() {
                   Set your daily activity goal.
                 </DrawerDescription>
               </DrawerHeader>
-              <div className="overflow-y-auto px-4">
+              <div className="no-scrollbar overflow-y-auto px-4">
                 {Array.from({ length: 10 }).map((_, index) => (
                   <p
                     key={index}
@@ -93,7 +93,7 @@ function DrawerScrollableContent() {
             <DrawerTitle>Move Goal</DrawerTitle>
             <DrawerDescription>Set your daily activity goal.</DrawerDescription>
           </DrawerHeader>
-          <div className="overflow-y-auto px-4">
+          <div className="no-scrollbar overflow-y-auto px-4">
             {Array.from({ length: 10 }).map((_, index) => (
               <p
                 key={index}

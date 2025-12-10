@@ -32,7 +32,7 @@ function HoverCardContent({
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          "cn-hover-card-content z-50 w-64 outline-hidden",
+          "cn-hover-card-content z-50 origin-(--radix-hover-card-content-transform-origin) outline-hidden",
           className
         )}
         {...props}

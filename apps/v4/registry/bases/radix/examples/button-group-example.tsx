@@ -9,7 +9,6 @@ import {
 import { Button } from "@/registry/bases/radix/ui/button"
 import {
   ButtonGroup,
-  ButtonGroupSeparator,
   ButtonGroupText,
 } from "@/registry/bases/radix/ui/button-group"
 import {
@@ -25,15 +24,9 @@ import { Input } from "@/registry/bases/radix/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
-  InputGroupButton,
   InputGroupInput,
 } from "@/registry/bases/radix/ui/input-group"
 import { Label } from "@/registry/bases/radix/ui/label"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/bases/radix/ui/popover"
 import {
   Select,
   SelectContent,
@@ -68,7 +61,6 @@ export default function ButtonGroupExample() {
       <ButtonGroupTextAlignment />
       <ButtonGroupVertical />
       <ButtonGroupVerticalNested />
-      <ButtonGroupVerticalWithSeparator />
     </ExampleWrapper>
   )
 }
@@ -116,11 +108,6 @@ function ButtonGroupWithText() {
             <Label htmlFor="input-text">GPU Size</Label>
           </ButtonGroupText>
           <Input id="input-text" placeholder="Type something here..." />
-        </ButtonGroup>
-        <ButtonGroup>
-          <ButtonGroupText>Prefix</ButtonGroupText>
-          <Input placeholder="Type something here..." />
-          <ButtonGroupText>Suffix</ButtonGroupText>
         </ButtonGroup>
       </div>
     </Example>
@@ -352,58 +339,6 @@ function ButtonGroupWithFields() {
                 hugeicons="PlusSignIcon"
               />
             </Button>
-          </ButtonGroup>
-        </Field>
-        <Field>
-          <Label htmlFor="color">Color</Label>
-          <ButtonGroup className="w-full">
-            <InputGroup>
-              <InputGroupInput id="color" />
-              <InputGroupAddon align="inline-start">
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <InputGroupButton className="px-0">
-                      <span className="bg-primary size-5 rounded-xs" />
-                    </InputGroupButton>
-                  </PopoverTrigger>
-                  <PopoverContent
-                    align="start"
-                    className="max-w-48 rounded-lg p-2"
-                    alignOffset={-8}
-                    sideOffset={8}
-                  >
-                    <div className="flex flex-wrap gap-1.5">
-                      {[
-                        "#EA4335",
-                        "#FBBC04",
-                        "#34A853",
-                        "#4285F4",
-                        "#9333EA",
-                        "#EC4899",
-                        "#10B981",
-                        "#F97316",
-                        "#6366F1",
-                        "#14B8A6",
-                        "#8B5CF6",
-                        "#F59E0B",
-                      ].map((color) => (
-                        <div
-                          key={color}
-                          className="size-6 cursor-pointer rounded-sm transition-transform hover:scale-110"
-                          style={{ backgroundColor: color }}
-                        />
-                      ))}
-                    </div>
-                  </PopoverContent>
-                </Popover>
-              </InputGroupAddon>
-              <InputGroupAddon
-                align="inline-end"
-                className="text-muted-foreground"
-              >
-                %
-              </InputGroupAddon>
-            </InputGroup>
           </ButtonGroup>
         </Field>
       </FieldGroup>
@@ -718,52 +653,6 @@ function ButtonGroupVerticalNested() {
           </Button>
         </ButtonGroup>
       </ButtonGroup>
-    </Example>
-  )
-}
-
-function ButtonGroupVerticalWithSeparator() {
-  return (
-    <Example title="Vertical With Separator">
-      <div className="flex flex-col gap-4">
-        <ButtonGroup orientation="vertical">
-          <Button variant="outline" size="sm">
-            <IconPlaceholder
-              lucide="PlusIcon"
-              tabler="IconPlus"
-              hugeicons="PlusSignIcon"
-            />{" "}
-            Increase
-          </Button>
-          <Button variant="outline" size="sm">
-            <IconPlaceholder
-              lucide="MinusIcon"
-              tabler="IconMinus"
-              hugeicons="MinusSignIcon"
-            />{" "}
-            Decrease
-          </Button>
-        </ButtonGroup>
-        <ButtonGroup orientation="vertical">
-          <Button variant="secondary" size="sm">
-            <IconPlaceholder
-              lucide="PlusIcon"
-              tabler="IconPlus"
-              hugeicons="PlusSignIcon"
-            />{" "}
-            Increase
-          </Button>
-          <ButtonGroupSeparator orientation="horizontal" />
-          <Button variant="secondary" size="sm">
-            <IconPlaceholder
-              lucide="MinusIcon"
-              tabler="IconMinus"
-              hugeicons="MinusSignIcon"
-            />{" "}
-            Decrease
-          </Button>
-        </ButtonGroup>
-      </div>
     </Example>
   )
 }

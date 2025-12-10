@@ -208,6 +208,21 @@ export const PRESETS: Preset[] = [
     menuColor: "default",
     radius: "default",
   },
+  {
+    name: "base-maia",
+    title: "Maia (Base)",
+    description: "Maia / Hugeicons / Figtree",
+    base: "base",
+    style: "maia",
+    baseColor: "stone",
+    theme: "stone",
+    iconLibrary: "hugeicons",
+    font: "figtree",
+    item: "Item",
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
 ]
 
 export function getThemesForBaseColor(baseColorName: string) {

@@ -28,7 +28,7 @@ export default function ElevenlabsBlocks() {
 }
 
 function BarVisualizerDemo() {
-  const [state, setState] = useState<AgentState>("listening")
+  const [state, setState] = useState<AgentState>("speaking")
 
   return (
     <Example title="Bar Visualizer">
@@ -71,13 +71,6 @@ function BarVisualizerDemo() {
             onClick={() => setState("speaking")}
           >
             Speaking
-          </Button>
-          <Button
-            size="sm"
-            variant={state === "thinking" ? "default" : "outline"}
-            onClick={() => setState("thinking")}
-          >
-            Thinking
           </Button>
         </CardFooter>
       </Card>

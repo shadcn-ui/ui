@@ -8,6 +8,10 @@ export const STYLES = [
     title: "Nova",
   },
   {
+    name: "maia",
+    title: "Maia",
+  },
+  {
     name: "lyra",
     title: "Lyra",
   },
