@@ -1880,20 +1880,6 @@
       "type": "registry:block"
     },
     {
-      "name": "font-inter",
-      "title": "Inter",
-      "type": "registry:font",
-      "font": {
-        "family": "'Inter Variable', sans-serif",
-        "provider": "google",
-        "import": "Inter",
-        "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
-      }
-    },
-    {
       "name": "font-geist-sans",
       "title": "Geist Sans",
       "type": "registry:font",
@@ -1901,6 +1887,20 @@
         "family": "'Geist Variable', sans-serif",
         "provider": "google",
         "import": "Geist",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-inter",
+      "title": "Inter",
+      "type": "registry:font",
+      "font": {
+        "family": "'Inter Variable', sans-serif",
+        "provider": "google",
+        "import": "Inter",
         "variable": "--font-sans",
         "subsets": [
           "latin"
@@ -1937,6 +1937,62 @@
         "family": "'Figtree Variable', sans-serif",
         "provider": "google",
         "import": "Figtree",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-roboto",
+      "title": "Roboto",
+      "type": "registry:font",
+      "font": {
+        "family": "'Roboto', sans-serif",
+        "provider": "google",
+        "import": "Roboto",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-raleway",
+      "title": "Raleway",
+      "type": "registry:font",
+      "font": {
+        "family": "'Raleway', sans-serif",
+        "provider": "google",
+        "import": "Raleway",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-dm-sans",
+      "title": "DM Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'DM Sans', sans-serif",
+        "provider": "google",
+        "import": "DM_Sans",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-public-sans",
+      "title": "Public Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Public Sans', sans-serif",
+        "provider": "google",
+        "import": "Public_Sans",
         "variable": "--font-sans",
         "subsets": [
           "latin"
