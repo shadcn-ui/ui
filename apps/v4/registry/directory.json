@@ -596,7 +596,7 @@
   {
     "name": "@skiper-ui",
     "homepage": "https://skiper-ui.com/",
-    "url": "https://skiper-ui.com/r/{name}.json",
+    "url": "https://skiper-ui.com/registry/{name}.json",
     "description": "Brand new uncommon components for your Next.js project. Use with ease through shadcn CLI 3.0, featuring fast-growing components and collections that are easy to edit and use.",
     "logo": "<svg width='55' height='55' viewBox='0 0 55 55' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='54.2938' height='54.0121' rx='27.006' fill='url(#paint0_radial_46_2)'/><defs><radialGradient id='paint0_radial_46_2' cx='0' cy='0' r='1' gradientTransform='matrix(54.2938 54.0121 -54.2938 54.0121 0 0)' gradientUnits='userSpaceOnUse'><stop offset='0.352001' stop-color='#090909'/><stop offset='0.591494' stop-color='#2770EA'/><stop offset='0.793825' stop-color='#06C4F8'/><stop offset='0.972489' stop-color='#0CBFF9'/></radialGradient></defs></svg>"
   }
