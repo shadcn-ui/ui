@@ -6,7 +6,7 @@ import type {
 } from "@/registry/config"
 import { RADII } from "@/registry/config"
 
-import { FONTS } from "./fonts"
+import { type FONTS } from "./fonts"
 
 export type RandomizeContext = {
   style?: StyleName
