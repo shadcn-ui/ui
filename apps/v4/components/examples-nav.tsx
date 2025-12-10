@@ -41,8 +41,8 @@ export function ExamplesNav({
 
   return (
     <div className={cn("flex items-center", className)} {...props}>
-      <ScrollArea className="max-w-[96%] md:max-w-[600px] lg:max-w-none">
-        <div className="flex items-center">
+      <ScrollArea className="max-w-[96%] md:max-w-[600px] lg:w-full">
+        <div className="flex items-center p-2">
           <ExampleLink
             example={{ name: "Examples", href: "/", code: "", hidden: false }}
             isActive={pathname === "/"}
@@ -72,11 +72,12 @@ function ExampleLink({
     return null
   }
 
+  // TODO: use focus-visible:ring-inset which makes the ring render inside the border box instead of outside.
   return (
     <Link
       href={example.href}
       key={example.href}
-      className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center px-4 text-center text-base font-medium transition-colors"
+      className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center px-4 text-center text-base font-medium transition-colors outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive rounded-md"
       data-active={isActive}
     >
       {example.name}
