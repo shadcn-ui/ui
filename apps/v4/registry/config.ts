@@ -94,6 +94,7 @@ export const designSystemConfigSchema = z
     radius: z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
+    template: z.enum(["next", "start-app", "vite-app"]).default("next"),
   })
   .refine(
     (data) => {
@@ -119,6 +120,7 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   menuAccent: "subtle",
   menuColor: "default",
   radius: "default",
+  template: "next",
 }
 
 export type Preset = {
@@ -144,34 +146,34 @@ export const PRESETS: Preset[] = [
     radius: "default",
   },
   {
-    name: "base-vega",
-    title: "Vega (Base)",
-    description: "Vega / Hugeicons / Figtree",
-    base: "base",
-    style: "vega",
-    baseColor: "neutral",
-    theme: "blue",
-    iconLibrary: "hugeicons",
-    font: "figtree",
-    item: "Item",
-    menuAccent: "bold",
-    menuColor: "inverted",
-    radius: "large",
-  },
-  {
     name: "radix-nova",
     title: "Nova (Radix)",
-    description: "Nova / Lucide / Inter",
+    description: "Nova / Hugeicons / Nunito Sans",
     base: "radix",
     style: "nova",
     baseColor: "neutral",
     theme: "neutral",
-    iconLibrary: "lucide",
-    font: "inter",
+    iconLibrary: "hugeicons",
+    font: "nunito-sans",
     item: "Item",
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
+  },
+  {
+    name: "base-vega",
+    title: "Vega (Base)",
+    description: "Vega / Lucide / Geist Sans",
+    base: "base",
+    style: "vega",
+    baseColor: "neutral",
+    theme: "blue",
+    iconLibrary: "lucide",
+    font: "geist-sans",
+    item: "Item",
+    menuAccent: "bold",
+    menuColor: "inverted",
+    radius: "large",
   },
   {
     name: "base-nova",

@@ -18,7 +18,6 @@ import { MenuColorPicker } from "@/app/(create)/components/menu-picker"
 import { PresetPicker } from "@/app/(create)/components/preset-picker"
 import { RadiusPicker } from "@/app/(create)/components/radius-picker"
 import { StylePicker } from "@/app/(create)/components/style-picker"
-import { TemplatePicker } from "@/app/(create)/components/template-picker"
 import { ThemePicker } from "@/app/(create)/components/theme-picker"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
@@ -51,7 +50,6 @@ export function Customizer() {
       </div>
       <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full md:overflow-x-hidden md:overflow-y-auto">
         <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-0">
-          <TemplatePicker isMobile={isMobile} anchorRef={anchorRef} />
           <PresetPicker
             presets={PRESETS}
             isMobile={isMobile}

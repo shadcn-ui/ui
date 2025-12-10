@@ -1,19 +1,16 @@
 "use client"
 
 import * as React from "react"
+import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-  ItemTitle,
-} from "@/registry/bases/radix/ui/item"
-import { type Preset } from "@/registry/config"
+import { useMounted } from "@/hooks/use-mounted"
+import { BASE_COLORS, THEMES, type Preset } from "@/registry/config"
 import {
   Picker,
   PickerContent,
   PickerGroup,
+  PickerLabel,
   PickerRadioGroup,
   PickerRadioItem,
   PickerSeparator,
@@ -30,6 +27,8 @@ export function PresetPicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
+  const { resolvedTheme } = useTheme()
+  const mounted = useMounted()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -60,6 +59,21 @@ export function PresetPicker({
     params.menuColor,
     params.radius,
   ])
+
+  const groupedPresets = React.useMemo(() => {
+    const groups = new Map<string, Preset[]>()
+    for (const preset of presets) {
+      const base = preset.base
+      if (!groups.has(base)) {
+        groups.set(base, [])
+      }
+      groups.get(base)!.push(preset)
+    }
+    return Array.from(groups.entries()).map(([base, presets]) => ({
+      base,
+      presets,
+    }))
+  }, [presets])
 
   const handlePresetChange = (value: string) => {
     const preset = presets.find((p) => p.title === value)
@@ -96,28 +110,52 @@ export function PresetPicker({
         anchor={isMobile ? anchorRef : undefined}
         side={isMobile ? "top" : "right"}
         align={isMobile ? "center" : "start"}
+        className="md:w-72"
       >
         <PickerRadioGroup
           value={currentPreset?.title ?? ""}
           onValueChange={handlePresetChange}
         >
-          <PickerGroup>
-            {presets.map((preset, index) => (
-              <React.Fragment key={index}>
-                <PickerRadioItem key={preset.title} value={preset.title}>
-                  <Item size="xs">
-                    <ItemContent>
-                      <ItemTitle className="text-muted-foreground text-xs font-medium">
-                        {preset.title}
-                      </ItemTitle>
-                      <ItemDescription>{preset.description}</ItemDescription>
-                    </ItemContent>
-                  </Item>
-                </PickerRadioItem>
-                <PickerSeparator className="opacity-50 last:hidden" />
-              </React.Fragment>
-            ))}
-          </PickerGroup>
+          {groupedPresets.map((group, groupIndex) => (
+            <React.Fragment key={group.base}>
+              <PickerGroup>
+                <PickerLabel>
+                  {group.base.charAt(0).toUpperCase() + group.base.slice(1)}
+                </PickerLabel>
+                {group.presets.map((preset) => {
+                  const theme = THEMES.find((t) => t.name === preset.theme)
+                  const isBaseColor = BASE_COLORS.find(
+                    (baseColor) => baseColor.name === preset.theme
+                  )
+                  return (
+                    <PickerRadioItem key={preset.title} value={preset.title}>
+                      <div className="flex items-center gap-2">
+                        {mounted && resolvedTheme && theme && (
+                          <div
+                            style={
+                              {
+                                "--color":
+                                  theme.cssVars?.[
+                                    resolvedTheme as "light" | "dark"
+                                  ]?.[
+                                    isBaseColor ? "muted-foreground" : "primary"
+                                  ],
+                              } as React.CSSProperties
+                            }
+                            className="size-4 shrink-0 rounded-full bg-(--color)"
+                          />
+                        )}
+                        {preset.description}
+                      </div>
+                    </PickerRadioItem>
+                  )
+                })}
+              </PickerGroup>
+              {groupIndex < groupedPresets.length - 1 && (
+                <PickerSeparator className="opacity-50" />
+              )}
+            </React.Fragment>
+          ))}
         </PickerRadioGroup>
       </PickerContent>
     </Picker>

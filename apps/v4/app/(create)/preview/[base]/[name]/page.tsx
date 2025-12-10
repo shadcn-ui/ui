@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { BASES, type Base } from "@/registry/config"
+import { RandomizeScript } from "@/app/(create)/components/customizer-controls"
 import { DesignSystemProvider } from "@/app/(create)/components/design-system-provider"
 import { ItemPickerScript } from "@/app/(create)/components/item-picker"
 import { PreviewStyle } from "@/app/(create)/components/preview-style"
@@ -130,6 +131,7 @@ export default async function BlockPage({
     <div className="relative">
       <PreviewStyle />
       <ItemPickerScript />
+      <RandomizeScript />
       <DesignSystemProvider>
         <Component />
       </DesignSystemProvider>

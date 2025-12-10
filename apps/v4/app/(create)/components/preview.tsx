@@ -3,6 +3,7 @@
 import * as React from "react"
 import { type ImperativePanelHandle } from "react-resizable-panels"
 
+import { RANDOMIZE_FORWARD_TYPE } from "@/app/(create)/components/customizer-controls"
 import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/item-picker"
 import { useDesignSystemSync } from "@/app/(create)/hooks/use-design-system"
 
@@ -57,6 +58,17 @@ export function Preview() {
         key,
         metaKey: isMac,
         ctrlKey: !isMac,
+        bubbles: true,
+        cancelable: true,
+      })
+      document.dispatchEvent(syntheticEvent)
+    }
+
+    if (event.data.type === RANDOMIZE_FORWARD_TYPE) {
+      const key = event.data.key || "r"
+
+      const syntheticEvent = new KeyboardEvent("keydown", {
+        key,
         bubbles: true,
         cancelable: true,
       })
