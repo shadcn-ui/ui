@@ -242,11 +242,11 @@
   }
 
   .cn-card-header {
-    @apply gap-2 rounded-t-xl px-6 group-data-[size=sm]/card:px-4 [.border-b]:pb-6 group-data-[size=sm]/card:[.border-b]:pb-4;
+    @apply gap-1 rounded-t-xl px-6 group-data-[size=sm]/card:px-4 [.border-b]:pb-6 group-data-[size=sm]/card:[.border-b]:pb-4;
   }
 
   .cn-card-title {
-    @apply text-base leading-snug font-medium group-data-[size=sm]/card:text-sm;
+    @apply text-base leading-normal font-medium group-data-[size=sm]/card:text-sm;
   }
 
   .cn-card-description {

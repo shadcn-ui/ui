@@ -1,4 +1,5 @@
 import {
+  DM_Sans,
   Figtree,
   Geist,
   Geist_Mono,
@@ -6,6 +7,9 @@ import {
   JetBrains_Mono,
   Noto_Sans,
   Nunito_Sans,
+  Public_Sans,
+  Raleway,
+  Roboto,
 } from "next/font/google"
 
 const inter = Inter({
@@ -43,7 +47,33 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 })
 
+const roboto = Roboto({
+  subsets: ["latin"],
+  variable: "--font-roboto",
+})
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  variable: "--font-raleway",
+})
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+})
+
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  variable: "--font-public-sans",
+})
+
 export const FONTS = [
+  {
+    name: "Geist Sans",
+    value: "geist-sans",
+    font: geistSans,
+    type: "sans",
+  },
   {
     name: "Inter",
     value: "inter",
@@ -69,9 +99,27 @@ export const FONTS = [
     type: "sans",
   },
   {
-    name: "Geist Sans",
-    value: "geist-sans",
-    font: geistSans,
+    name: "Roboto",
+    value: "roboto",
+    font: roboto,
+    type: "sans",
+  },
+  {
+    name: "Raleway",
+    value: "raleway",
+    font: raleway,
+    type: "sans",
+  },
+  {
+    name: "DM Sans",
+    value: "dm-sans",
+    font: dmSans,
+    type: "sans",
+  },
+  {
+    name: "Public Sans",
+    value: "public-sans",
+    font: publicSans,
     type: "sans",
   },
   {

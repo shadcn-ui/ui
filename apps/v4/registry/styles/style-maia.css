@@ -250,7 +250,7 @@
   }
 
   .cn-card-title {
-    @apply text-base leading-snug font-medium;
+    @apply text-base font-medium;
   }
 
   .cn-card-description {

@@ -8,6 +8,11 @@ import { useMounted } from "@/hooks/use-mounted"
 import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Skeleton } from "@/registry/new-york-v4/ui/skeleton"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/new-york-v4/ui/tooltip"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function V0Button({ className }: { className?: string }) {
@@ -28,22 +33,29 @@ export function V0Button({ className }: { className?: string }) {
 
   return (
     <>
-      <Button
-        size="sm"
-        variant={isMobile ? "default" : "outline"}
-        className={cn(
-          "w-24 rounded-lg shadow-none data-[variant=default]:h-[31px]",
-          className
-        )}
-        asChild
-      >
-        <a
-          href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${encodeURIComponent(url)}`}
-          target="_blank"
-        >
-          Open in <Icons.v0 className="size-5" />
-        </a>
-      </Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            size="sm"
+            variant={isMobile ? "default" : "outline"}
+            className={cn(
+              "w-24 rounded-lg shadow-none data-[variant=default]:h-[31px]",
+              className
+            )}
+            asChild
+          >
+            <a
+              href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${encodeURIComponent(url)}`}
+              target="_blank"
+            >
+              Open in <Icons.v0 className="size-5" />
+            </a>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Open current design in v0</p>
+        </TooltipContent>
+      </Tooltip>
     </>
   )
 }

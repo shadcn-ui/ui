@@ -3,6 +3,7 @@
 import * as React from "react"
 import { type ImperativePanelHandle } from "react-resizable-panels"
 
+import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { RANDOMIZE_FORWARD_TYPE } from "@/app/(create)/components/customizer-controls"
 import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/item-picker"
 import { useDesignSystemSync } from "@/app/(create)/hooks/use-design-system"
@@ -90,7 +91,7 @@ export function Preview() {
   const iframeSrc = `/preview/${params.base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "vega"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
 
   return (
-    <div className="-mx-1 flex flex-1 flex-col justify-center sm:mx-0">
+    <div className="relative -mx-1 flex flex-1 flex-col justify-center sm:mx-0">
       <div className="ring-foreground/15 3xl:max-h-[1200px] 3xl:max-w-[1800px] relative -z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden rounded-xl ring-1">
         <div className="bg-muted dark:bg-muted/30 absolute inset-0 rounded-2xl" />
         <iframe
@@ -100,6 +101,9 @@ export function Preview() {
           className="z-10 size-full flex-1"
         />
       </div>
+      <Badge className="absolute right-2 bottom-2" variant="secondary">
+        Preview
+      </Badge>
     </div>
   )
 }

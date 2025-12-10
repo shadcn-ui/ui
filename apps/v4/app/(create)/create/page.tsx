@@ -2,6 +2,7 @@ import { type Metadata } from "next"
 import Link from "next/link"
 import { Settings05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
+import { ArrowLeftIcon } from "lucide-react"
 import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
@@ -82,23 +83,28 @@ export default async function CreatePage({
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
           <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
             <div className="flex items-center xl:w-1/3">
-              <MobileNav
+              {/* <MobileNav
                 tree={source.pageTree}
                 items={siteConfig.navItems}
                 className="flex lg:hidden"
-              />
+              /> */}
               <Button
                 asChild
-                variant="ghost"
-                size="icon"
-                className="hidden size-8 lg:flex"
+                variant="outline"
+                size="sm"
+                className="rounded-lg shadow-none"
               >
                 <Link href="/">
-                  <Icons.logo className="size-5" />
-                  <span className="sr-only">{siteConfig.name}</span>
+                  <ArrowLeftIcon />
+                  Back
                 </Link>
               </Button>
-              <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
+              <Separator
+                orientation="vertical"
+                className="mx-4 hidden md:flex"
+              />
+              <div className="text-sm font-medium">New Project</div>
+              {/* <MainNav items={siteConfig.navItems} className="hidden lg:flex" /> */}
             </div>
             <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center gap-2 px-4.5 pb-4 sm:static sm:justify-end sm:p-0 lg:ml-0 xl:justify-center">
               <ItemPicker items={filteredItems} />

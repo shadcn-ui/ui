@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import { useQueryStates } from "nuqs"
 
 import { type Style, type StyleName } from "@/registry/config"
@@ -38,6 +39,13 @@ export function StylePicker({
             {currentStyle?.title}
           </div>
         </div>
+        {currentStyle?.icon && (
+          <div className="absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 items-center justify-center">
+            {React.cloneElement(currentStyle.icon, {
+              className: "size-4",
+            })}
+          </div>
+        )}
       </PickerTrigger>
       <PickerContent
         anchor={isMobile ? anchorRef : undefined}
@@ -53,7 +61,16 @@ export function StylePicker({
           <PickerGroup>
             {styles.map((style) => (
               <PickerRadioItem key={style.name} value={style.name}>
-                {style.title}
+                <div className="flex items-center gap-2">
+                  {style.icon && (
+                    <div className="flex size-4 items-center justify-center">
+                      {React.cloneElement(style.icon, {
+                        className: "size-4",
+                      })}
+                    </div>
+                  )}
+                  <span>{style.title}</span>
+                </div>
               </PickerRadioItem>
             ))}
           </PickerGroup>

@@ -2,18 +2,6 @@ import { type RegistryItem } from "shadcn/schema"
 
 export const fonts = [
   {
-    name: "font-inter",
-    title: "Inter",
-    type: "registry:font",
-    font: {
-      family: "'Inter Variable', sans-serif",
-      provider: "google",
-      variable: "--font-sans",
-      subsets: ["latin"],
-      import: "Inter",
-    },
-  },
-  {
     name: "font-geist-sans",
     title: "Geist Sans",
     type: "registry:font",
@@ -23,6 +11,18 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Geist",
+    },
+  },
+  {
+    name: "font-inter",
+    title: "Inter",
+    type: "registry:font",
+    font: {
+      family: "'Inter Variable', sans-serif",
+      provider: "google",
+      variable: "--font-sans",
+      subsets: ["latin"],
+      import: "Inter",
     },
   },
   {
@@ -57,6 +57,54 @@ export const fonts = [
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Figtree",
+    },
+  },
+  {
+    name: "font-roboto",
+    title: "Roboto",
+    type: "registry:font",
+    font: {
+      family: "'Roboto', sans-serif",
+      provider: "google",
+      variable: "--font-sans",
+      subsets: ["latin"],
+      import: "Roboto",
+    },
+  },
+  {
+    name: "font-raleway",
+    title: "Raleway",
+    type: "registry:font",
+    font: {
+      family: "'Raleway', sans-serif",
+      provider: "google",
+      variable: "--font-sans",
+      subsets: ["latin"],
+      import: "Raleway",
+    },
+  },
+  {
+    name: "font-dm-sans",
+    title: "DM Sans",
+    type: "registry:font",
+    font: {
+      family: "'DM Sans', sans-serif",
+      provider: "google",
+      variable: "--font-sans",
+      subsets: ["latin"],
+      import: "DM_Sans",
+    },
+  },
+  {
+    name: "font-public-sans",
+    title: "Public Sans",
+    type: "registry:font",
+    font: {
+      family: "'Public Sans', sans-serif",
+      provider: "google",
+      variable: "--font-sans",
+      subsets: ["latin"],
+      import: "Public_Sans",
     },
   },
   {

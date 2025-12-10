@@ -1,11 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { useTheme } from "next-themes"
 import { useQueryStates } from "nuqs"
 
-import { useMounted } from "@/hooks/use-mounted"
-import { BASE_COLORS, THEMES, type Preset } from "@/registry/config"
+import { STYLES, type Preset } from "@/registry/config"
 import {
   Picker,
   PickerContent,
@@ -27,8 +25,6 @@ export function PresetPicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const { resolvedTheme } = useTheme()
-  const mounted = useMounted()
   const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
@@ -101,8 +97,8 @@ export function PresetPicker({
       <PickerTrigger>
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Preset</div>
-          <div className="text-foreground text-sm font-medium">
-            {currentPreset?.title ?? "Custom"}
+          <div className="text-foreground line-clamp-1 text-sm font-medium">
+            {currentPreset?.description ?? "Custom"}
           </div>
         </div>
       </PickerTrigger>
@@ -123,27 +119,16 @@ export function PresetPicker({
                   {group.base.charAt(0).toUpperCase() + group.base.slice(1)}
                 </PickerLabel>
                 {group.presets.map((preset) => {
-                  const theme = THEMES.find((t) => t.name === preset.theme)
-                  const isBaseColor = BASE_COLORS.find(
-                    (baseColor) => baseColor.name === preset.theme
-                  )
+                  const style = STYLES.find((s) => s.name === preset.style)
                   return (
                     <PickerRadioItem key={preset.title} value={preset.title}>
                       <div className="flex items-center gap-2">
-                        {mounted && resolvedTheme && theme && (
-                          <div
-                            style={
-                              {
-                                "--color":
-                                  theme.cssVars?.[
-                                    resolvedTheme as "light" | "dark"
-                                  ]?.[
-                                    isBaseColor ? "muted-foreground" : "primary"
-                                  ],
-                              } as React.CSSProperties
-                            }
-                            className="size-4 shrink-0 rounded-full bg-(--color)"
-                          />
+                        {style?.icon && (
+                          <div className="flex size-4 shrink-0 items-center justify-center">
+                            {React.cloneElement(style.icon, {
+                              className: "size-4",
+                            })}
+                          </div>
                         )}
                         {preset.description}
                       </div>
