@@ -58,7 +58,7 @@ export function CustomizerControls({ className }: { className?: string }) {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "r" || e.key === "R") {
+      if ((e.key === "r" || e.key === "R") && !e.metaKey && !e.ctrlKey) {
         if (
           (e.target instanceof HTMLElement && e.target.isContentEditable) ||
           e.target instanceof HTMLInputElement ||
@@ -123,7 +123,7 @@ export function RandomizeScript() {
             (function() {
               // Forward R key
               document.addEventListener('keydown', function(e) {
-                if (e.key === 'r' || e.key === 'R') {
+                if ((e.key === 'r' || e.key === 'R') && !e.metaKey && !e.ctrlKey) {
                   if (
                     (e.target instanceof HTMLElement && e.target.isContentEditable) ||
                     e.target instanceof HTMLInputElement ||

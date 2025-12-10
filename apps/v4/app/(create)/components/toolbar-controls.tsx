@@ -35,6 +35,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
+import { V0Button } from "@/app/(create)/components/v0-button"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const TEMPLATES = [
@@ -129,7 +130,7 @@ export function ToolbarControls() {
           Create Project
         </Button>
       </DialogTrigger>
-      <DialogContent className="dialog-ring min-w-0 rounded-xl sm:max-w-md">
+      <DialogContent className="dialog-ring min-w-0 overflow-hidden rounded-xl sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Create Project</DialogTitle>
           <DialogDescription className="text-balance">
@@ -209,8 +210,13 @@ export function ToolbarControls() {
             )
           })}
         </Tabs>
-        <DialogFooter>
-          <Button size="sm" onClick={handleCopy} className="w-full">
+        <DialogFooter className="bg-muted/50 -mx-6 mt-4 -mb-6 flex flex-col gap-2 border-t p-6 sm:flex-col">
+          <V0Button className="h-9 w-full" />
+          <Button
+            size="sm"
+            onClick={handleCopy}
+            className="h-9 w-full rounded-lg"
+          >
             Copy Command
           </Button>
         </DialogFooter>
