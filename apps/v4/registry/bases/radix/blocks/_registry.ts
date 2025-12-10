@@ -2,8 +2,8 @@ import { type Registry } from "shadcn/schema"
 
 export const blocks: Registry["items"] = [
   {
-    name: "cover",
-    title: "Cover",
+    name: "blocks",
+    title: "Blocks",
     type: "registry:block",
     registryDependencies: [
       "alert-dialog",
@@ -34,7 +34,7 @@ export const blocks: Registry["items"] = [
     ],
     files: [
       {
-        path: "blocks/cover.tsx",
+        path: "blocks/blocks.tsx",
         type: "registry:block",
       },
     ],
@@ -126,6 +126,36 @@ export const blocks: Registry["items"] = [
     files: [
       {
         path: "blocks/chatgpt.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "dashboard-01",
+    title: "Dashboard 01",
+    type: "registry:block",
+    registryDependencies: [
+      "avatar",
+      "badge",
+      "button",
+      "card",
+      "chart",
+      "checkbox",
+      "drawer",
+      "dropdown-menu",
+      "input",
+      "label",
+      "select",
+      "separator",
+      "sidebar",
+      "table",
+      "tabs",
+      "toggle-group",
+      "example",
+    ],
+    files: [
+      {
+        path: "blocks/dashboard-01.tsx",
         type: "registry:block",
       },
     ],

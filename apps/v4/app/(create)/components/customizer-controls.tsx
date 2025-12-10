@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import { useRouter } from "next/navigation"
 import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
@@ -16,6 +17,7 @@ import {
   STYLES,
 } from "@/registry/config"
 import { Button } from "@/registry/new-york-v4/ui/button"
+import { Kbd } from "@/registry/new-york-v4/ui/kbd"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
@@ -30,7 +32,7 @@ export function CustomizerControls({ className }: { className?: string }) {
     history: "push",
   })
 
-  const handleRandomize = () => {
+  const handleRandomize = React.useCallback(() => {
     const baseColor = randomItem(BASE_COLORS).name
     const availableThemes = getThemesForBaseColor(baseColor)
 
@@ -44,7 +46,28 @@ export function CustomizerControls({ className }: { className?: string }) {
       menuColor: randomItem(MENU_COLORS).value,
       radius: randomItem(RADII).name,
     })
-  }
+  }, [setParams])
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "r" || e.key === "R") {
+        if (
+          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+          e.target instanceof HTMLInputElement ||
+          e.target instanceof HTMLTextAreaElement ||
+          e.target instanceof HTMLSelectElement
+        ) {
+          return
+        }
+
+        e.preventDefault()
+        handleRandomize()
+      }
+    }
+
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+  }, [handleRandomize])
 
   return (
     <div className={cn("items-center gap-1", className)}>
@@ -52,13 +75,11 @@ export function CustomizerControls({ className }: { className?: string }) {
         variant="ghost"
         size="sm"
         onClick={handleRandomize}
-        className="border-foreground/10 bg-muted/50 h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none sm:h-8 sm:rounded-lg md:h-9 md:w-full md:rounded-lg md:border-transparent md:bg-transparent md:px-2"
+        className="border-foreground/10 bg-muted/50 h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none focus-visible:border-transparent focus-visible:ring-1 sm:h-8 sm:rounded-lg md:h-9 md:w-full md:rounded-lg md:border-transparent md:bg-transparent md:pr-3.5! md:pl-2!"
       >
         Randomize{" "}
-        <HugeiconsIcon
-          icon={DiceFaces05Icon}
-          className="mr-1.5 size-5 md:size-4"
-        />
+        <HugeiconsIcon icon={DiceFaces05Icon} className="size-5 md:hidden" />
+        <Kbd className="bg-foreground/10 text-foreground hidden md:flex">R</Kbd>
       </Button>
       <Button
         variant="secondary"

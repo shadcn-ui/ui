@@ -49,12 +49,9 @@ export function ItemExplorer({
       className="sticky z-30 hidden h-[calc(100svh-var(--header-height)-2rem)] overscroll-none bg-transparent xl:flex"
       collapsible="none"
     >
-      <SidebarContent className="no-scrollbar overflow-x-hidden">
+      <SidebarContent className="no-scrollbar -mx-1 overflow-x-hidden">
         {groupedItems.map((group) => (
-          <SidebarGroup key={group.type} className="px-0">
-            <SidebarGroupLabel className="text-muted-foreground font-medium">
-              {group.title}
-            </SidebarGroupLabel>
+          <SidebarGroup key={group.type} className="px-1">
             <SidebarGroupContent>
               <SidebarMenu>
                 {group.items.map((item) => (
@@ -72,6 +69,7 @@ export function ItemExplorer({
                       href={`/preview/${base}/${item.name}`}
                       prefetch
                       className="sr-only"
+                      tabIndex={-1}
                     >
                       {item.title}
                     </Link>

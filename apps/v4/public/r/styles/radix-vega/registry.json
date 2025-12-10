@@ -1735,8 +1735,8 @@
       "type": "registry:internal"
     },
     {
-      "name": "cover",
-      "title": "Cover",
+      "name": "blocks",
+      "title": "Blocks",
       "registryDependencies": [
         "alert-dialog",
         "avatar",
@@ -1766,7 +1766,7 @@
       ],
       "files": [
         {
-          "path": "registry/radix-vega/blocks/cover.tsx",
+          "path": "registry/radix-vega/blocks/blocks.tsx",
           "type": "registry:block"
         }
       ],
@@ -1858,6 +1858,36 @@
       "files": [
         {
           "path": "registry/radix-vega/blocks/chatgpt.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "dashboard-01",
+      "title": "Dashboard 01",
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "button",
+        "card",
+        "chart",
+        "checkbox",
+        "drawer",
+        "dropdown-menu",
+        "input",
+        "label",
+        "select",
+        "separator",
+        "sidebar",
+        "table",
+        "tabs",
+        "toggle-group",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/blocks/dashboard-01.tsx",
           "type": "registry:block"
         }
       ],

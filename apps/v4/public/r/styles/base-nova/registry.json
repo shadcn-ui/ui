@@ -1673,8 +1673,8 @@
       "type": "registry:component"
     },
     {
-      "name": "cover",
-      "title": "Cover",
+      "name": "blocks",
+      "title": "Blocks",
       "registryDependencies": [
         "alert-dialog",
         "avatar",
@@ -1704,7 +1704,7 @@
       ],
       "files": [
         {
-          "path": "registry/base-nova/blocks/cover.tsx",
+          "path": "registry/base-nova/blocks/blocks.tsx",
           "type": "registry:block"
         }
       ],
@@ -1796,6 +1796,36 @@
       "files": [
         {
           "path": "registry/base-nova/blocks/chatgpt.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "dashboard-01",
+      "title": "Dashboard 01",
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "button",
+        "card",
+        "chart",
+        "checkbox",
+        "drawer",
+        "dropdown-menu",
+        "input",
+        "label",
+        "select",
+        "separator",
+        "sidebar",
+        "table",
+        "tabs",
+        "toggle-group",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/blocks/dashboard-01.tsx",
           "type": "registry:block"
         }
       ],
