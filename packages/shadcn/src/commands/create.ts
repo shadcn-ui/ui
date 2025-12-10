@@ -14,6 +14,8 @@ import prompts from "prompts"
 
 import { initOptionsSchema, runInit } from "./init"
 
+const SHADCN_URL = "https://u-1-day.vercel.app"
+
 const CREATE_TEMPLATES = {
   next: "Next.js",
   vite: "Vite",
@@ -21,11 +23,11 @@ const CREATE_TEMPLATES = {
 } as const
 
 function getShadcnCreateUrl() {
-  return `${process.env.REGISTRY_URL!.replace("/r", "")}/create`
+  return `${SHADCN_URL}/create`
 }
 
 function getShadcnInitUrl() {
-  return `${process.env.REGISTRY_URL!.replace("/r", "")}/init`
+  return `${SHADCN_URL}/init`
 }
 
 export const create = new Command()
@@ -51,6 +53,32 @@ export const create = new Command()
   .option("-y, --yes", "skip confirmation prompt.", true)
   .action(async (name, opts) => {
     try {
+      // If no arguments or options provided, show initial prompt.
+      const hasNoArgs = !name && !opts.template && !opts.preset
+      if (hasNoArgs) {
+        const createUrl = getShadcnCreateUrl()
+        logger.log("Build your own shadcn/ui.")
+        logger.log(
+          `You will be taken to ${highlighter.info(
+            createUrl
+          )} to build your custom design system.`
+        )
+        logger.break()
+
+        const { proceed } = await prompts({
+          type: "confirm",
+          name: "proceed",
+          message: "Open in browser?",
+          initial: true,
+        })
+
+        if (proceed) {
+          await open(createUrl)
+        }
+
+        process.exit(0)
+      }
+
       // Prompt for project name if not provided.
       let projectName = name
       if (!projectName) {

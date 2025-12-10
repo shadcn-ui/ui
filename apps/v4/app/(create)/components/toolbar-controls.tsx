@@ -8,7 +8,6 @@ import { toast } from "sonner"
 
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
@@ -69,13 +68,13 @@ export function ToolbarControls() {
 
   const commands = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}`
+    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}`
     const templateFlag = params.template ? ` --template ${params.template}` : ""
     return {
-      pnpm: `pnpm dlx shadcn create ${url}${templateFlag} -c ~/Playground`,
-      npm: `npx shadcn create ${url}${templateFlag} -c ~/Playground`,
-      yarn: `yarn dlx shadcn create ${url}${templateFlag} -c ~/Playground`,
-      bun: `bunx --bun shadcn create ${url}${templateFlag} -c ~/Playground`,
+      pnpm: `pnpm dlx shadcn create --preset ${url}${templateFlag}`,
+      npm: `npx shadcn create --preset ${url}${templateFlag}`,
+      yarn: `yarn dlx shadcn create --preset ${url}${templateFlag}`,
+      bun: `bunx --bun shadcn create --preset ${url}${templateFlag}`,
     }
   }, [
     params.base,
@@ -112,7 +111,16 @@ export function ToolbarControls() {
     })
     setOpen(false)
     setHasCopied(true)
-    toast("Command copied to clipboard.")
+    toast("Command copied to clipboard.", {
+      description:
+        "Paste and run the command in your terminal to create a new shadcn/ui project.",
+      position: "bottom-center",
+      classNames: {
+        content: "rounded-xl",
+        toast: "rounded-xl!",
+        description: "text-sm/leading-normal!",
+      },
+    })
   }, [command, params.template, setOpen])
 
   const selectedTemplate = TEMPLATES.find(
@@ -211,7 +219,6 @@ export function ToolbarControls() {
           })}
         </Tabs>
         <DialogFooter className="bg-muted/50 -mx-6 mt-2 -mb-6 flex flex-col gap-2 border-t p-6 sm:flex-col">
-          <V0Button className="h-9 w-full" />
           <Button
             size="sm"
             onClick={handleCopy}

@@ -82,7 +82,7 @@ export const initOptionsSchema = z.object({
       },
       {
         message:
-          "Invalid template. Please use 'next', 'next-16' or 'next-monorepo'.",
+          "Invalid template. Please use 'next', 'vite', 'start' or 'next-monorepo'.",
       }
     ),
   baseColor: z
