@@ -495,6 +495,22 @@
       ]
     },
     {
+      "name": "profile-card",
+      "type": "registry:ui",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/profilecard.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "registry:ui",
       "dependencies": [
@@ -6686,6 +6702,19 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/progress-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "profile-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "profile-card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/profile-card-demo.tsx",
           "type": "registry:example"
         }
       ]
