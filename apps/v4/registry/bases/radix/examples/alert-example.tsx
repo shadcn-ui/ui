@@ -159,7 +159,7 @@ function AlertExample3() {
               Please verify your <a href="#">billing information</a> and try
               again.
             </p>
-            <ul className="list-inside list-disc text-sm">
+            <ul className="list-inside list-disc">
               <li>Check your card details</li>
               <li>Ensure sufficient funds</li>
               <li>Verify billing address</li>

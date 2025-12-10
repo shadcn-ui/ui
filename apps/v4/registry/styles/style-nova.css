@@ -34,7 +34,7 @@
   }
 
   .cn-alert-description {
-    @apply text-muted-foreground text-sm text-balance md:text-pretty;
+    @apply text-muted-foreground text-sm text-balance md:text-pretty [&_p:not(:last-child)]:mb-4;
   }
 
   .cn-alert-action {

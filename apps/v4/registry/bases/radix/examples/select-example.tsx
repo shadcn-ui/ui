@@ -308,12 +308,12 @@ function SelectWithButton() {
 
 function SelectItemAligned() {
   return (
-    <Example title="Item Aligned">
+    <Example title="Popper">
       <Select>
         <SelectTrigger>
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
-        <SelectContent position="item-aligned">
+        <SelectContent position="popper">
           <SelectGroup>
             <SelectItem value="apple">Apple</SelectItem>
             <SelectItem value="banana">Banana</SelectItem>

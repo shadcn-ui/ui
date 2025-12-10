@@ -51,7 +51,7 @@ function AlertDescription({
     <div
       data-slot="alert-description"
       className={cn(
-        "cn-alert-description [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4",
+        "cn-alert-description [&_a]:hover:text-foreground [&_a]:underline [&_a]:underline-offset-3",
         className
       )}
       {...props}

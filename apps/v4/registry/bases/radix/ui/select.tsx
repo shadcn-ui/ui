@@ -13,9 +13,16 @@ function Select({
 }
 
 function SelectGroup({
+  className,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Group>) {
-  return <SelectPrimitive.Group data-slot="select-group" {...props} />
+  return (
+    <SelectPrimitive.Group
+      data-slot="select-group"
+      className={cn("cn-select-group", className)}
+      {...props}
+    />
+  )
 }
 
 function SelectValue({
@@ -78,10 +85,10 @@ function SelectContent({
       >
         <SelectScrollUpButton />
         <SelectPrimitive.Viewport
+          data-position={position}
           className={cn(
-            "p-1",
-            position === "popper" &&
-              "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)] scroll-my-1"
+            "cn-select-viewport data-[position=popper]:h-[var(--radix-select-trigger-height)] data-[position=popper]:w-full data-[position=popper]:min-w-[var(--radix-select-trigger-width)]",
+            position === "popper" && ""
           )}
         >
           {children}
