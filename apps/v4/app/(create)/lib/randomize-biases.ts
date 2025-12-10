@@ -4,7 +4,6 @@ import type {
   StyleName,
   ThemeName,
 } from "@/registry/config"
-import { RADII } from "@/registry/config"
 
 import { type FONTS } from "./fonts"
 

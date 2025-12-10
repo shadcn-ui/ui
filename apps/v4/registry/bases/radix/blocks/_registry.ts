@@ -3,7 +3,7 @@ import { type Registry } from "shadcn/schema"
 export const blocks: Registry["items"] = [
   {
     name: "blocks",
-    title: "Blocks",
+    title: "Components",
     type: "registry:block",
     registryDependencies: [
       "alert-dialog",
@@ -70,7 +70,7 @@ export const blocks: Registry["items"] = [
   },
   {
     name: "github",
-    title: "GitHub",
+    title: "GitHub Blocks",
     type: "registry:block",
     registryDependencies: [
       "avatar",
@@ -100,6 +100,18 @@ export const blocks: Registry["items"] = [
     files: [
       {
         path: "blocks/github.tsx",
+        type: "registry:block",
+      },
+    ],
+  },
+  {
+    name: "elevenlabs",
+    title: "Elevenlabs",
+    type: "registry:block",
+    registryDependencies: ["example", "button", "card"],
+    files: [
+      {
+        path: "blocks/elevenlabs.tsx",
         type: "registry:block",
       },
     ],

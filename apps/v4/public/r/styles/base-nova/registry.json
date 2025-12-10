@@ -1674,7 +1674,7 @@
     },
     {
       "name": "blocks",
-      "title": "Blocks",
+      "title": "Components",
       "registryDependencies": [
         "alert-dialog",
         "avatar",
@@ -1741,7 +1741,7 @@
     },
     {
       "name": "github",
-      "title": "GitHub",
+      "title": "GitHub Blocks",
       "registryDependencies": [
         "avatar",
         "badge",
@@ -1770,6 +1770,22 @@
       "files": [
         {
           "path": "registry/base-nova/blocks/github.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "elevenlabs",
+      "title": "Elevenlabs",
+      "registryDependencies": [
+        "example",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/blocks/elevenlabs.tsx",
           "type": "registry:block"
         }
       ],

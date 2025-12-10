@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "github",
-  "title": "GitHub",
+  "title": "GitHub Blocks",
   "registryDependencies": [
     "avatar",
     "badge",
