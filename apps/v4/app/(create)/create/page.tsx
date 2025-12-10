@@ -1,7 +1,5 @@
 import { type Metadata } from "next"
 import Link from "next/link"
-import { Settings05Icon } from "@hugeicons/core-free-icons"
-import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowLeftIcon } from "lucide-react"
 import type { SearchParams } from "nuqs/server"
 
@@ -122,17 +120,10 @@ export default async function CreatePage({
         <SidebarProvider className="flex h-auto min-h-min flex-1 flex-col items-start overflow-hidden px-0">
           <div
             data-slot="designer"
-            className="3xl:fixed:container flex w-full flex-1 flex-col gap-2 p-6 pt-2 pb-4 [--sidebar-width:--spacing(40)] md:flex-row md:pb-6 2xl:gap-6"
+            className="3xl:fixed:container flex w-full flex-1 flex-col gap-2 p-6 pt-1 pb-4 [--sidebar-width:--spacing(40)] sm:gap-2 sm:pt-2 md:flex-row md:pb-6 2xl:gap-6"
           >
             <ItemExplorer base={base.name} items={filteredItems} />
             <Preview />
-            <div className="mt-4 flex items-center gap-2 py-0 font-medium md:hidden">
-              <HugeiconsIcon
-                icon={Settings05Icon}
-                className="size-5 -translate-x-px"
-              />{" "}
-              Build your own shadcn/ui
-            </div>
             <Customizer />
           </div>
         </SidebarProvider>
