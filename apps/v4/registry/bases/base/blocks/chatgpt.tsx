@@ -81,7 +81,7 @@ export default function ChatGPTBlock() {
       <PromptForm />
       <ModelSelector />
       <GroupChatDialog />
-      <CreateProjectDialog />
+      <CreateProjectForm />
     </ExampleWrapper>
   )
 }
@@ -108,7 +108,7 @@ function PromptForm() {
                           variant="ghost"
                           size="icon-sm"
                           onClick={() => setDictateEnabled(!dictateEnabled)}
-                          className="rounded-full"
+                          className="rounded-4xl"
                         />
                       }
                     />
@@ -236,7 +236,7 @@ function PromptForm() {
                     variant="ghost"
                     size="icon-sm"
                     onClick={() => setDictateEnabled(!dictateEnabled)}
-                    className="ml-auto rounded-full"
+                    className="ml-auto rounded-4xl"
                   />
                 }
               >
@@ -251,7 +251,7 @@ function PromptForm() {
             <InputGroupButton
               size="icon-sm"
               variant="default"
-              className="rounded-full"
+              className="rounded-4xl"
             >
               <IconPlaceholder
                 lucide="ArrowUpIcon"
@@ -405,7 +405,7 @@ const categories = [
   },
 ]
 
-function CreateProjectDialog() {
+function CreateProjectForm() {
   const [projectName, setProjectName] = React.useState("")
   const [selectedCategory, setSelectedCategory] = React.useState<string | null>(
     categories[0].id
@@ -418,11 +418,7 @@ function CreateProjectDialog() {
   )
 
   return (
-    <Example
-      title="Create Project"
-      className="justify-center"
-      containerClassName="aspect-square"
-    >
+    <Example title="Create Project" className="items-center justify-center">
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>Create Project</CardTitle>

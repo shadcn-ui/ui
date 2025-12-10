@@ -132,12 +132,12 @@ function DialogScrollableContent() {
               This is a dialog with scrollable content.
             </DialogDescription>
           </DialogHeader>
-          <div className="style-nova:-mx-4 style-nova:px-4 no-scrollbar -mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
-            <h4 className="mb-4 text-base leading-none font-medium">
-              Lorem Ipsum
-            </h4>
+          <div className="style-nova:-mx-4 style-nova:px-4 no-scrollbar -mx-6 max-h-[500px] overflow-y-auto px-6">
             {Array.from({ length: 10 }).map((_, index) => (
-              <p key={index} className="mb-4 leading-normal">
+              <p
+                key={index}
+                className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
+              >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -168,12 +168,12 @@ function DialogWithStickyFooter() {
               This is a dialog with scrollable content.
             </DialogDescription>
           </DialogHeader>
-          <div className="style-nova:-mx-4 style-nova:px-4 no-scrollbar -mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
-            <h4 className="mb-4 text-base leading-none font-medium">
-              Lorem Ipsum
-            </h4>
+          <div className="style-nova:-mx-4 style-nova:px-4 no-scrollbar -mx-6 max-h-[500px] overflow-y-auto px-6">
             {Array.from({ length: 10 }).map((_, index) => (
-              <p key={index} className="mb-4 leading-normal">
+              <p
+                key={index}
+                className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
+              >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris

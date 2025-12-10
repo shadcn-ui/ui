@@ -38,7 +38,7 @@ function SpinnerBasic() {
     <Example title="Basic">
       <div className="flex items-center gap-6">
         <Spinner />
-        <Spinner className="size-8" />
+        <Spinner className="size-6" />
       </div>
     </Example>
   )
@@ -49,16 +49,16 @@ function SpinnerInButtons() {
     <Example title="In Buttons">
       <div className="flex flex-wrap items-center gap-4">
         <Button>
-          <Spinner data-slot="icon-align" /> Submit
+          <Spinner data-icon="inline-start" /> Submit
         </Button>
         <Button disabled>
-          <Spinner data-slot="icon-align" /> Disabled
+          <Spinner data-icon="inline-start" /> Disabled
         </Button>
         <Button variant="outline" disabled>
-          <Spinner data-slot="icon-align" /> Outline
+          <Spinner data-icon="inline-start" /> Outline
         </Button>
         <Button variant="outline" size="icon" disabled>
-          <Spinner data-slot="icon-align" />
+          <Spinner data-icon="inline-start" />
           <span className="sr-only">Loading...</span>
         </Button>
       </div>
@@ -68,22 +68,22 @@ function SpinnerInButtons() {
 
 function SpinnerInBadges() {
   return (
-    <Example title="In Badges">
-      <div className="flex flex-wrap items-center gap-4">
+    <Example title="In Badges" className="items-center justify-center">
+      <div className="flex flex-wrap items-center justify-center gap-4">
         <Badge>
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Badge
         </Badge>
         <Badge variant="secondary">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Badge
         </Badge>
         <Badge variant="destructive">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Badge
         </Badge>
         <Badge variant="outline">
-          <Spinner />
+          <Spinner data-icon="inline-start" />
           Badge
         </Badge>
       </div>
@@ -109,7 +109,7 @@ function SpinnerInInputGroup() {
 
 function SpinnerInEmpty() {
   return (
-    <Example title="In Empty State">
+    <Example title="In Empty State" containerClassName="lg:col-span-full">
       <Empty className="min-h-[300px]">
         <EmptyHeader>
           <EmptyMedia variant="icon">

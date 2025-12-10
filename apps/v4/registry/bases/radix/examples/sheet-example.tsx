@@ -110,12 +110,12 @@ function SheetWithSides() {
                   done.
                 </SheetDescription>
               </SheetHeader>
-              <div className="overflow-y-auto px-4 text-sm">
-                <h4 className="mb-4 text-lg leading-none font-medium">
-                  Lorem Ipsum
-                </h4>
+              <div className="overflow-y-auto px-4">
                 {Array.from({ length: 10 }).map((_, index) => (
-                  <p key={index} className="mb-4 leading-normal">
+                  <p
+                    key={index}
+                    className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
+                  >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation

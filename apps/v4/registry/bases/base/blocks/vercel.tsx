@@ -641,7 +641,7 @@ function ActivateAgentDialog() {
 
 function ObservabilityCard() {
   return (
-    <Example title="Observability" className="items-center">
+    <Example title="Observability" className="items-center justify-center">
       <Card className="relative w-full max-w-md overflow-hidden pt-0">
         <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
         <img

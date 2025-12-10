@@ -357,7 +357,7 @@ function TableWithSelect() {
             <TableCell className="font-medium">Design homepage</TableCell>
             <TableCell>
               <Select defaultValue="sarah">
-                <SelectTrigger className="h-8 w-40">
+                <SelectTrigger className="w-40" size="sm">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -374,7 +374,7 @@ function TableWithSelect() {
             <TableCell className="font-medium">Implement API</TableCell>
             <TableCell>
               <Select defaultValue="marcus">
-                <SelectTrigger className="h-8 w-40">
+                <SelectTrigger className="w-40" size="sm">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -391,7 +391,7 @@ function TableWithSelect() {
             <TableCell className="font-medium">Write tests</TableCell>
             <TableCell>
               <Select defaultValue="emily">
-                <SelectTrigger className="h-8 w-40">
+                <SelectTrigger className="w-40" size="sm">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

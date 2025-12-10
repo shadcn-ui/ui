@@ -193,6 +193,21 @@ export const PRESETS: Preset[] = [
     menuColor: "inverted",
     radius: "large",
   },
+  {
+    name: "base-lyra",
+    title: "Lyra (Base)",
+    description: "Lyra / Tabler / Geist Mono",
+    base: "base",
+    style: "lyra",
+    baseColor: "neutral",
+    theme: "blue",
+    iconLibrary: "tabler",
+    font: "geist-mono",
+    item: "Item",
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+  },
 ]
 
 export function getThemesForBaseColor(baseColorName: string) {

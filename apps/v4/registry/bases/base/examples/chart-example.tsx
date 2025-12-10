@@ -113,7 +113,7 @@ function ChartAreaExample() {
           </ChartContainer>
         </CardContent>
         <CardFooter>
-          <div className="flex w-full items-start gap-2 text-sm">
+          <div className="flex w-full items-start gap-2">
             <div className="grid gap-2">
               <div className="flex items-center gap-2 leading-none font-medium">
                 Trending up by 5.2% this month{" "}
@@ -183,7 +183,7 @@ function ChartBarExample() {
             </BarChart>
           </ChartContainer>
         </CardContent>
-        <CardFooter className="flex-col items-start gap-2 text-sm">
+        <CardFooter className="flex-col items-start gap-2">
           <div className="flex gap-2 leading-none font-medium">
             Trending up by 5.2% this month{" "}
             <IconPlaceholder
@@ -267,7 +267,7 @@ function ChartLineExample() {
           </ChartContainer>
         </CardContent>
         <CardFooter>
-          <div className="flex w-full items-start gap-2 text-sm">
+          <div className="flex w-full items-start gap-2">
             <div className="grid gap-2">
               <div className="flex items-center gap-2 leading-none font-medium">
                 Trending up by 5.2% this month{" "}
@@ -385,7 +385,7 @@ function ChartPieExample() {
             </PieChart>
           </ChartContainer>
         </CardContent>
-        <CardFooter className="flex-col gap-2 text-sm">
+        <CardFooter className="flex-col gap-2">
           <div className="flex items-center gap-2 leading-none font-medium">
             Trending up by 5.2% this month{" "}
             <IconPlaceholder
@@ -455,7 +455,7 @@ function ChartRadarExample() {
             </RadarChart>
           </ChartContainer>
         </CardContent>
-        <CardFooter className="flex-col gap-2 text-sm">
+        <CardFooter className="flex-col gap-2">
           <div className="flex items-center gap-2 leading-none font-medium">
             Trending up by 5.2% this month{" "}
             <IconPlaceholder
@@ -549,7 +549,7 @@ function ChartRadialExample() {
             </RadialBarChart>
           </ChartContainer>
         </CardContent>
-        <CardFooter className="flex-col gap-2 text-sm">
+        <CardFooter className="flex-col gap-2">
           <div className="flex items-center gap-2 leading-none font-medium">
             Trending up by 5.2% this month{" "}
             <IconPlaceholder

@@ -42,9 +42,9 @@ function HoverCardSides() {
               {side}
             </HoverCardTrigger>
             <HoverCardContent side={side}>
-              <div className="style-nova:gap-1.5 flex flex-col gap-2">
-                <h4 className="text-sm font-medium">Hover Card</h4>
-                <p className="text-sm">
+              <div className="style-lyra:gap-1 style-nova:gap-1.5 flex flex-col gap-2">
+                <h4 className="font-medium">Hover Card</h4>
+                <p>
                   This hover card appears on the {side} side of the trigger.
                 </p>
               </div>
@@ -79,9 +79,9 @@ function HoverCardInDialog() {
               Hover me
             </HoverCardTrigger>
             <HoverCardContent>
-              <div className="flex flex-col gap-2">
-                <h4 className="text-sm font-semibold">Hover Card</h4>
-                <p className="text-sm">
+              <div className="style-lyra:gap-1 style-nova:gap-1.5 flex flex-col gap-2">
+                <h4 className="font-semibold">Hover Card</h4>
+                <p>
                   This hover card appears inside a dialog. Hover over the button
                   to see it.
                 </p>

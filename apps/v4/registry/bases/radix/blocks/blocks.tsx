@@ -1008,7 +1008,7 @@ function FormExample() {
 
 function ObservabilityCard() {
   return (
-    <Example title="Observability Card">
+    <Example title="Observability Card" className="items-center justify-center">
       <Card className="relative w-full max-w-sm overflow-hidden pt-0">
         <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
         <img
@@ -1110,7 +1110,7 @@ function ItemExample() {
 function BadgeExamples() {
   return (
     <Example title="Badge Examples" className="items-center justify-center">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center justify-center gap-2">
         <Badge>
           <Spinner data-icon="inline-start" />
           Syncing
@@ -1183,11 +1183,11 @@ function SheetExample() {
                 </SheetDescription>
               </SheetHeader>
               <div className="overflow-y-auto px-4 text-sm">
-                <h4 className="mb-4 text-lg leading-none font-medium">
-                  Lorem Ipsum
-                </h4>
                 {Array.from({ length: 10 }).map((_, index) => (
-                  <p key={index} className="mb-4 leading-normal">
+                  <p
+                    key={index}
+                    className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
+                  >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation

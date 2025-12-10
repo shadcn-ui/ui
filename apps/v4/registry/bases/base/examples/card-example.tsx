@@ -69,7 +69,7 @@ function CardLogin() {
                   <FieldLabel htmlFor="password">Password</FieldLabel>
                   <a
                     href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                    className="ml-auto inline-block underline-offset-4 hover:underline"
                   >
                     Forgot your password?
                   </a>
@@ -86,7 +86,7 @@ function CardLogin() {
           <Button variant="outline" className="w-full">
             Login with Google
           </Button>
-          <div className="mt-4 text-center text-sm">
+          <div className="mt-4 text-center">
             Don&apos;t have an account?{" "}
             <a href="#" className="underline underline-offset-4">
               Sign up
@@ -119,7 +119,7 @@ function CardMeetingNotes() {
             </Button>
           </CardAction>
         </CardHeader>
-        <CardContent className="text-sm">
+        <CardContent>
           <p>
             Client requested dashboard redesign with focus on mobile
             responsiveness.
@@ -236,7 +236,7 @@ function CardHeaderWithBorder() {
             This is a card with a header that has a bottom border.
           </CardDescription>
         </CardHeader>
-        <CardContent className="text-sm">
+        <CardContent>
           <p>
             The header has a border-b class applied, creating a visual
             separation between the header and content sections.
@@ -251,7 +251,7 @@ function CardFooterWithBorder() {
   return (
     <Example title="Footer with Border">
       <Card className="mx-auto w-full max-w-sm">
-        <CardContent className="text-sm">
+        <CardContent>
           <p>
             The footer has a border-t class applied, creating a visual
             separation between the content and footer sections.
@@ -277,7 +277,7 @@ function CardDefault() {
             This card uses the default size variant.
           </CardDescription>
         </CardHeader>
-        <CardContent className="text-sm">
+        <CardContent>
           <p>
             The card component supports a size prop that defaults to
             &quot;default&quot; for standard spacing and sizing.
@@ -303,7 +303,7 @@ function CardSmall() {
             This card uses the small size variant.
           </CardDescription>
         </CardHeader>
-        <CardContent className="text-sm">
+        <CardContent>
           <p>
             The card component supports a size prop that can be set to
             &quot;sm&quot; for a more compact appearance.
@@ -329,7 +329,7 @@ function CardHeaderWithBorderSmall() {
             This is a small card with a header that has a bottom border.
           </CardDescription>
         </CardHeader>
-        <CardContent className="text-sm">
+        <CardContent>
           <p>
             The header has a border-b class applied, creating a visual
             separation between the header and content sections.
@@ -344,7 +344,7 @@ function CardFooterWithBorderSmall() {
   return (
     <Example title="Footer with Border (Small)">
       <Card size="sm" className="mx-auto w-full max-w-sm">
-        <CardContent className="text-sm">
+        <CardContent>
           <p>
             The footer has a border-t class applied, creating a visual
             separation between the content and footer sections.
