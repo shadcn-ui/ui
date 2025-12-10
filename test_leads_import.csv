@@ -1,0 +1,6 @@
+firstName,lastName,email,phone,company,jobTitle,website,address,city,state,zipCode,country,source,status,assignedTo,estimatedValue,notes
+Alice,Williams,alice.williams@techstart.com,+1-555-1001,TechStart Solutions,CEO,https://techstart.com,101 Innovation Drive,Austin,TX,78701,US,Website,New,Admin User,75000,Very interested in our enterprise solution
+Robert,Davis,robert.davis@growthcorp.io,+1-555-1002,GrowthCorp,CTO,https://growthcorp.io,202 Business Ave,Denver,CO,80202,US,Referral,Qualified,Sarah Johnson,120000,Referred by existing customer - high priority
+Maria,Garcia,maria.garcia@futuretech.net,+1-555-1003,FutureTech Industries,VP of Operations,https://futuretech.net,303 Future Blvd,Seattle,WA,98101,US,Cold Call,New,Mike Wilson,50000,Responded positively to cold outreach
+James,Johnson,james.j@innovate.biz,+1-555-1004,Innovate Business Solutions,Director of IT,https://innovate.biz,404 Innovation St,San Francisco,CA,94105,US,Trade Show,Contacted,Emma Davis,85000,Met at TechExpo 2024 - very engaged
+Jennifer,Brown,jennifer.brown@enterprise.org,+1-555-1005,Enterprise Solutions Ltd,CFO,https://enterprise.org,505 Corporate Way,Chicago,IL,60601,US,Email Campaign,Qualified,John Smith,150000,Opened all emails and downloaded whitepapers

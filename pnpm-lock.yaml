@@ -58,10 +58,13 @@ importers:
         version: 7.37.5(eslint@8.57.1)
       eslint-plugin-tailwindcss:
         specifier: 3.13.1
-        version: 3.13.1(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2)))
+        version: 3.13.1(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2)))
       motion:
         specifier: ^12.12.1
-        version: 12.23.12(@emotion/is-prop-valid@1.3.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 12.23.12(@emotion/is-prop-valid@1.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      pg:
+        specifier: ^8.16.3
+        version: 8.16.3
       postcss:
         specifier: ^8.4.24
         version: 8.5.6
@@ -76,10 +79,10 @@ importers:
         version: 23.11.1(typescript@5.9.2)
       tailwindcss:
         specifier: 3.4.6
-        version: 3.4.6(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))
+        version: 3.4.6(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2))
       tailwindcss-animate:
         specifier: ^1.0.5
-        version: 1.0.7(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2)))
+        version: 1.0.7(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2)))
       tsx:
         specifier: ^4.1.4
         version: 4.20.3
@@ -237,6 +240,9 @@ importers:
       '@tanstack/react-table':
         specifier: ^8.9.1
         version: 8.21.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@types/pg':
+        specifier: ^8.15.5
+        version: 8.15.5
       '@vercel/analytics':
         specifier: ^1.4.1
         version: 1.5.0(next@15.3.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
@@ -300,6 +306,9 @@ importers:
       next-themes:
         specifier: 0.4.6
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      pg:
+        specifier: ^8.16.3
+        version: 8.16.3
       postcss:
         specifier: ^8.5.1
         version: 8.5.6
@@ -3864,6 +3873,9 @@ packages:
 
   '@types/parse5@6.0.3':
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
+
+  '@types/pg@8.15.5':
+    resolution: {integrity: sha512-LF7lF6zWEKxuT3/OR8wAZGzkg4ENGXFNyiV/JeOt9z5B+0ZVwbql9McqX5c/WStFq1GaGso7H1AzP/qSzmlCKQ==}
 
   '@types/prompts@2.4.9':
     resolution: {integrity: sha512-qTxFi6Buiu8+50/+3DGIWLHM6QuWsEKugJnnP6iv2Mc4ncxE4A/OJkjuVOA+5X0X1S/nq5VJRa8Lu+nwcvbrKA==}
@@ -7538,6 +7550,40 @@ packages:
   pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
 
+  pg-cloudflare@1.2.7:
+    resolution: {integrity: sha512-YgCtzMH0ptvZJslLM1ffsY4EuGaU0cx4XSdXLRFae8bPP4dS5xL1tNB3k2o/N64cHJpwU7dxKli/nZ2lUa5fLg==}
+
+  pg-connection-string@2.9.1:
+    resolution: {integrity: sha512-nkc6NpDcvPVpZXxrreI/FOtX3XemeLl8E0qFr6F2Lrm/I8WOnaWNhIPK2Z7OHpw7gh5XJThi6j6ppgNoaT1w4w==}
+
+  pg-int8@1.0.1:
+    resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
+    engines: {node: '>=4.0.0'}
+
+  pg-pool@3.10.1:
+    resolution: {integrity: sha512-Tu8jMlcX+9d8+QVzKIvM/uJtp07PKr82IUOYEphaWcoBhIYkoHpLXN3qO59nAI11ripznDsEzEv8nUxBVWajGg==}
+    peerDependencies:
+      pg: '>=8.0'
+
+  pg-protocol@1.10.3:
+    resolution: {integrity: sha512-6DIBgBQaTKDJyxnXaLiLR8wBpQQcGWuAESkRBX/t6OwA8YsqP+iVSiond2EDy6Y/dsGk8rh/jtax3js5NeV7JQ==}
+
+  pg-types@2.2.0:
+    resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
+    engines: {node: '>=4'}
+
+  pg@8.16.3:
+    resolution: {integrity: sha512-enxc1h0jA/aq5oSDMvqyW3q89ra6XIIDZgCX9vkMrnz5DFTw/Ny3Li2lFQ+pt3L6MCgm/5o2o8HW9hiJji+xvw==}
+    engines: {node: '>= 16.0.0'}
+    peerDependencies:
+      pg-native: '>=3.0.1'
+    peerDependenciesMeta:
+      pg-native:
+        optional: true
+
+  pgpass@1.0.5:
+    resolution: {integrity: sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==}
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -7642,6 +7688,22 @@ packages:
   postcss@8.5.6:
     resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
+
+  postgres-array@2.0.0:
+    resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
+    engines: {node: '>=4'}
+
+  postgres-bytea@1.0.0:
+    resolution: {integrity: sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w==}
+    engines: {node: '>=0.10.0'}
+
+  postgres-date@1.0.7:
+    resolution: {integrity: sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q==}
+    engines: {node: '>=0.10.0'}
+
+  postgres-interval@1.2.0:
+    resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
+    engines: {node: '>=0.10.0'}
 
   prebuild-install@7.1.3:
     resolution: {integrity: sha512-8Mf2cbV7x1cXPUILADGI3wuhfqWvtiLA1iclTDbFRZkgRQS0NqsPZphna9V+HyTEadheuPmjaJMsbzKQFOzLug==}
@@ -8415,6 +8477,10 @@ packages:
 
   split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
+
+  split2@4.2.0:
+    resolution: {integrity: sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==}
+    engines: {node: '>= 10.x'}
 
   split@0.3.3:
     resolution: {integrity: sha512-wD2AeVmxXRBoX44wAycgjVpMhvbwdI2aZjCkvfNcH1YqHQvJVa1duWc73OyVGJUc05fhFaTZeQ/PYsrmyH0JVA==}
@@ -9337,6 +9403,10 @@ packages:
       utf-8-validate:
         optional: true
 
+  xtend@4.0.2:
+    resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
+    engines: {node: '>=0.4'}
+
   y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
     engines: {node: '>=10'}
@@ -9854,7 +9924,7 @@ snapshots:
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
       resolve-from: 5.0.0
-      ts-node: 10.9.2(@types/node@20.5.1)(typescript@5.9.2)
+      ts-node: 10.9.2(@types/node@20.19.10)(typescript@5.9.2)
       typescript: 5.9.2
     transitivePeerDependencies:
       - '@swc/core'
@@ -13238,6 +13308,12 @@ snapshots:
 
   '@types/parse5@6.0.3': {}
 
+  '@types/pg@8.15.5':
+    dependencies:
+      '@types/node': 20.19.10
+      pg-protocol: 1.10.3
+      pg-types: 2.2.0
+
   '@types/prompts@2.4.9':
     dependencies:
       '@types/node': 20.19.10
@@ -14157,7 +14233,7 @@ snapshots:
     dependencies:
       '@types/node': 20.5.1
       cosmiconfig: 8.3.6(typescript@5.9.2)
-      ts-node: 10.9.2(@types/node@20.5.1)(typescript@5.9.2)
+      ts-node: 10.9.2(@types/node@20.19.10)(typescript@5.9.2)
       typescript: 5.9.2
 
   cosmiconfig@8.3.6(typescript@5.9.2):
@@ -14802,7 +14878,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -14813,7 +14889,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.39.0(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.33.0(jiti@2.5.1)):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.39.0(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.33.0(jiti@2.5.1)))(eslint@9.33.0(jiti@2.5.1)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -14835,7 +14911,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.1))(eslint@8.57.1)
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -14864,7 +14940,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.33.0(jiti@2.5.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.39.0(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.33.0(jiti@2.5.1))
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.39.0(eslint@9.33.0(jiti@2.5.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.33.0(jiti@2.5.1)))(eslint@9.33.0(jiti@2.5.1))
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -14972,11 +15048,11 @@ snapshots:
       string.prototype.matchall: 4.0.12
       string.prototype.repeat: 1.0.0
 
-  eslint-plugin-tailwindcss@3.13.1(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))):
+  eslint-plugin-tailwindcss@3.13.1(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2))):
     dependencies:
       fast-glob: 3.3.3
       postcss: 8.5.6
-      tailwindcss: 3.4.6(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))
+      tailwindcss: 3.4.6(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2))
 
   eslint-plugin-turbo@1.13.4(eslint@8.57.1):
     dependencies:
@@ -15422,6 +15498,16 @@ snapshots:
     dependencies:
       motion-dom: 11.18.1
       motion-utils: 11.18.1
+      tslib: 2.8.1
+    optionalDependencies:
+      '@emotion/is-prop-valid': 1.3.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
+  framer-motion@12.23.12(@emotion/is-prop-valid@1.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      motion-dom: 12.23.12
+      motion-utils: 12.23.6
       tslib: 2.8.1
     optionalDependencies:
       '@emotion/is-prop-valid': 1.3.1
@@ -17311,6 +17397,15 @@ snapshots:
 
   motion-utils@12.23.6: {}
 
+  motion@12.23.12(@emotion/is-prop-valid@1.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      framer-motion: 12.23.12(@emotion/is-prop-valid@1.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      tslib: 2.8.1
+    optionalDependencies:
+      '@emotion/is-prop-valid': 1.3.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   motion@12.23.12(@emotion/is-prop-valid@1.3.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       framer-motion: 12.23.12(@emotion/is-prop-valid@1.3.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -17773,6 +17868,41 @@ snapshots:
 
   pend@1.2.0: {}
 
+  pg-cloudflare@1.2.7:
+    optional: true
+
+  pg-connection-string@2.9.1: {}
+
+  pg-int8@1.0.1: {}
+
+  pg-pool@3.10.1(pg@8.16.3):
+    dependencies:
+      pg: 8.16.3
+
+  pg-protocol@1.10.3: {}
+
+  pg-types@2.2.0:
+    dependencies:
+      pg-int8: 1.0.1
+      postgres-array: 2.0.0
+      postgres-bytea: 1.0.0
+      postgres-date: 1.0.7
+      postgres-interval: 1.2.0
+
+  pg@8.16.3:
+    dependencies:
+      pg-connection-string: 2.9.1
+      pg-pool: 3.10.1(pg@8.16.3)
+      pg-protocol: 1.10.3
+      pg-types: 2.2.0
+      pgpass: 1.0.5
+    optionalDependencies:
+      pg-cloudflare: 1.2.7
+
+  pgpass@1.0.5:
+    dependencies:
+      split2: 4.2.0
+
   picocolors@1.1.1: {}
 
   picomatch@2.3.1: {}
@@ -17817,13 +17947,13 @@ snapshots:
       postcss: 8.5.6
       ts-node: 10.9.2(@types/node@17.0.45)(typescript@5.9.2)
 
-  postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2)):
+  postcss-load-config@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2)):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.8.1
     optionalDependencies:
       postcss: 8.5.6
-      ts-node: 10.9.2(@types/node@20.5.1)(typescript@5.9.2)
+      ts-node: 10.9.2(@types/node@20.19.10)(typescript@5.9.2)
 
   postcss-load-config@6.0.1(jiti@2.5.1)(postcss@8.5.6)(tsx@4.20.3)(yaml@2.8.1):
     dependencies:
@@ -17862,6 +17992,16 @@ snapshots:
       nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  postgres-array@2.0.0: {}
+
+  postgres-bytea@1.0.0: {}
+
+  postgres-date@1.0.7: {}
+
+  postgres-interval@1.2.0:
+    dependencies:
+      xtend: 4.0.2
 
   prebuild-install@7.1.3:
     dependencies:
@@ -18967,6 +19107,8 @@ snapshots:
     dependencies:
       readable-stream: 3.6.2
 
+  split2@4.2.0: {}
+
   split@0.3.3:
     dependencies:
       through: 2.3.8
@@ -19190,9 +19332,9 @@ snapshots:
 
   tailwind-merge@3.3.1: {}
 
-  tailwindcss-animate@1.0.7(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))):
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2))):
     dependencies:
-      tailwindcss: 3.4.6(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))
+      tailwindcss: 3.4.6(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2))
 
   tailwindcss@3.4.6(ts-node@10.9.2(@types/node@17.0.45)(typescript@5.9.2)):
     dependencies:
@@ -19221,7 +19363,7 @@ snapshots:
     transitivePeerDependencies:
       - ts-node
 
-  tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2)):
+  tailwindcss@3.4.6(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -19240,7 +19382,7 @@ snapshots:
       postcss: 8.5.6
       postcss-import: 15.1.0(postcss@8.5.6)
       postcss-js: 4.0.1(postcss@8.5.6)
-      postcss-load-config: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2))
+      postcss-load-config: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2))
       postcss-nested: 6.2.0(postcss@8.5.6)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.10
@@ -19427,14 +19569,14 @@ snapshots:
       yn: 3.1.1
     optional: true
 
-  ts-node@10.9.2(@types/node@20.5.1)(typescript@5.9.2):
+  ts-node@10.9.2(@types/node@20.19.10)(typescript@5.9.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.5.1
+      '@types/node': 20.19.10
       acorn: 8.15.0
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -20095,6 +20237,8 @@ snapshots:
   wrappy@1.0.2: {}
 
   ws@8.18.3: {}
+
+  xtend@4.0.2: {}
 
   y18n@5.0.8: {}
 
