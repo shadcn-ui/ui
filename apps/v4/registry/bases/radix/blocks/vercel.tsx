@@ -154,9 +154,11 @@ function UsageCard() {
     <Example title="Usage" className="items-center">
       <Card className="w-full max-w-sm gap-4">
         <CardHeader>
-          <CardTitle className="text-sm">5 days remaining in cycle</CardTitle>
+          <CardTitle className="px-1 text-sm">
+            5 days remaining in cycle
+          </CardTitle>
         </CardHeader>
-        <CardContent className="px-5">
+        <CardContent>
           <ItemGroup className="gap-0">
             {items.map((item) => (
               <Item

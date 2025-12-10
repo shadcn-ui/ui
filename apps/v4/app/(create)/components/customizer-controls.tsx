@@ -25,6 +25,11 @@ import {
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
 import { FONTS } from "@/app/(create)/lib/fonts"
+import {
+  applyBias,
+  RANDOMIZE_BIASES,
+  type RandomizeContext,
+} from "@/app/(create)/lib/randomize-biases"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export const RANDOMIZE_FORWARD_TYPE = "randomize-forward"
@@ -43,16 +48,38 @@ export function CustomizerControls({ className }: { className?: string }) {
   const handleRandomize = React.useCallback(() => {
     const baseColor = randomItem(BASE_COLORS).name
     const availableThemes = getThemesForBaseColor(baseColor)
+    const selectedStyle = randomItem(STYLES).name
+
+    // Build context for bias application
+    const context: RandomizeContext = {
+      style: selectedStyle,
+      baseColor,
+    }
+
+    // Apply font bias based on context
+    const availableFonts = applyBias(FONTS, context, RANDOMIZE_BIASES.fonts)
+
+    // Apply radius bias based on context
+    const availableRadii = applyBias(RADII, context, RANDOMIZE_BIASES.radius)
+
+    const selectedTheme = randomItem(availableThemes).name
+    const selectedFont = randomItem(availableFonts).value
+    const selectedRadius = randomItem(availableRadii).name
+
+    // Update context with selected values for potential future biases
+    context.theme = selectedTheme
+    context.font = selectedFont
+    context.radius = selectedRadius
 
     setParams({
-      style: randomItem(STYLES).name,
+      style: selectedStyle,
       baseColor,
-      theme: randomItem(availableThemes).name,
+      theme: selectedTheme,
       iconLibrary: randomItem(Object.values(iconLibraries)).name,
-      font: randomItem(FONTS).value,
+      font: selectedFont,
       menuAccent: randomItem(MENU_ACCENTS).value,
       menuColor: randomItem(MENU_COLORS).value,
-      radius: randomItem(RADII).name,
+      radius: selectedRadius,
     })
   }, [setParams])
 

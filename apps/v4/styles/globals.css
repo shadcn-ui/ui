@@ -5,9 +5,11 @@
 
 @import "../registry/styles/style-vega.css" layer(base);
 @import "../registry/styles/style-nova.css" layer(base);
+@import "../registry/styles/style-lyra.css" layer(base);
 
 @custom-variant style-vega (&:where(.style-vega *));
 @custom-variant style-nova (&:where(.style-nova *));
+@custom-variant style-lyra (&:where(.style-lyra *));
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant fixed (&:is(.layout-fixed *));

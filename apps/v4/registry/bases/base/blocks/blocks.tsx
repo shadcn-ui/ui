@@ -391,7 +391,7 @@ function ButtonGroupExamples() {
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <IconPlaceholder
-                      lucide="ListFilterPlusIcon"
+                      lucide="ListFilterIcon"
                       tabler="IconFilterPlus"
                       hugeicons="AddToListIcon"
                     />
@@ -606,107 +606,43 @@ function InputGroupExamples() {
   return (
     <Example title="Input Group">
       <div className="flex flex-col gap-6">
-        <div className="grid w-full max-w-sm gap-6">
-          <InputGroup>
-            <InputGroupInput placeholder="Search..." />
-            <InputGroupAddon>
-              <IconPlaceholder
-                lucide="SearchIcon"
-                tabler="IconSearch"
-                hugeicons="Search01Icon"
-              />
-            </InputGroupAddon>
-            <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
-          </InputGroup>
-          <InputGroup>
-            <InputGroupInput placeholder="example.com" className="!pl-1" />
-            <InputGroupAddon>
-              <InputGroupText>https://</InputGroupText>
-            </InputGroupAddon>
-            <InputGroupAddon align="inline-end">
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <InputGroupButton
-                      className="rounded-full"
-                      size="icon-xs"
-                      aria-label="Info"
-                    />
-                  }
-                >
-                  <IconPlaceholder
-                    lucide="InfoIcon"
-                    tabler="IconInfoCircle"
-                    hugeicons="AlertCircleIcon"
+        <InputGroup>
+          <InputGroupInput placeholder="Search..." />
+          <InputGroupAddon>
+            <IconPlaceholder
+              lucide="SearchIcon"
+              tabler="IconSearch"
+              hugeicons="Search01Icon"
+            />
+          </InputGroupAddon>
+          <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <InputGroupInput placeholder="example.com" className="!pl-1" />
+          <InputGroupAddon>
+            <InputGroupText>https://</InputGroupText>
+          </InputGroupAddon>
+          <InputGroupAddon align="inline-end">
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <InputGroupButton
+                    className="rounded-full"
+                    size="icon-xs"
+                    aria-label="Info"
                   />
-                </TooltipTrigger>
-                <TooltipContent>This is content in a tooltip.</TooltipContent>
-              </Tooltip>
-            </InputGroupAddon>
-          </InputGroup>
-          <InputGroup>
-            <InputGroupTextarea placeholder="Ask, Search or Chat..." />
-            <InputGroupAddon align="block-end">
-              <InputGroupButton
-                variant="outline"
-                className="rounded-full"
-                size="icon-xs"
-                aria-label="Add"
+                }
               >
                 <IconPlaceholder
-                  lucide="PlusIcon"
-                  tabler="IconPlus"
-                  hugeicons="PlusSignIcon"
+                  lucide="InfoIcon"
+                  tabler="IconInfoCircle"
+                  hugeicons="AlertCircleIcon"
                 />
-              </InputGroupButton>
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={<InputGroupButton variant="ghost" />}
-                >
-                  Auto
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  side="top"
-                  align="start"
-                  className="[--radius:0.95rem]"
-                >
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>Auto</DropdownMenuItem>
-                    <DropdownMenuItem>Agent</DropdownMenuItem>
-                    <DropdownMenuItem>Manual</DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <InputGroupText className="ml-auto">52% used</InputGroupText>
-              <Separator orientation="vertical" className="!h-4" />
-              <InputGroupButton
-                variant="default"
-                className="rounded-full"
-                size="icon-xs"
-              >
-                <IconPlaceholder
-                  lucide="ArrowUpIcon"
-                  tabler="IconArrowUp"
-                  hugeicons="ArrowUp01Icon"
-                />
-                <span className="sr-only">Send</span>
-              </InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-          <InputGroup>
-            <InputGroupInput placeholder="@shadcn" />
-            <InputGroupAddon align="inline-end">
-              <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
-                <IconPlaceholder
-                  lucide="CheckIcon"
-                  tabler="IconCheck"
-                  hugeicons="Tick02Icon"
-                  className="size-3 text-white"
-                />
-              </div>
-            </InputGroupAddon>
-          </InputGroup>
-        </div>
+              </TooltipTrigger>
+              <TooltipContent>This is content in a tooltip.</TooltipContent>
+            </Tooltip>
+          </InputGroupAddon>
+        </InputGroup>
         <Field>
           <Label htmlFor="input-secure-19" className="sr-only">
             Input Secure
@@ -808,6 +744,55 @@ function InputGroupExamples() {
             </InputGroup>
           </ButtonGroup>
         </ButtonGroup>
+        <InputGroup>
+          <InputGroupTextarea placeholder="Ask, Search or Chat..." />
+          <InputGroupAddon align="block-end">
+            <InputGroupButton
+              variant="outline"
+              className="style-lyra:rounded-none rounded-full"
+              size="icon-xs"
+              aria-label="Add"
+            >
+              <IconPlaceholder
+                lucide="PlusIcon"
+                tabler="IconPlus"
+                hugeicons="PlusSignIcon"
+              />
+            </InputGroupButton>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={<InputGroupButton variant="ghost" />}
+              >
+                Auto
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                side="top"
+                align="start"
+                className="[--radius:0.95rem]"
+              >
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>Auto</DropdownMenuItem>
+                  <DropdownMenuItem>Agent</DropdownMenuItem>
+                  <DropdownMenuItem>Manual</DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <InputGroupText className="ml-auto">52% used</InputGroupText>
+            <Separator orientation="vertical" className="!h-4" />
+            <InputGroupButton
+              variant="default"
+              className="style-lyra:rounded-none rounded-full"
+              size="icon-xs"
+            >
+              <IconPlaceholder
+                lucide="ArrowUpIcon"
+                tabler="IconArrowUp"
+                hugeicons="ArrowUp01Icon"
+              />
+              <span className="sr-only">Send</span>
+            </InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
       </div>
     </Example>
   )

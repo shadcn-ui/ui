@@ -210,7 +210,7 @@ export function ToolbarControls() {
             )
           })}
         </Tabs>
-        <DialogFooter className="bg-muted/50 -mx-6 mt-4 -mb-6 flex flex-col gap-2 border-t p-6 sm:flex-col">
+        <DialogFooter className="bg-muted/50 -mx-6 mt-2 -mb-6 flex flex-col gap-2 border-t p-6 sm:flex-col">
           <V0Button className="h-9 w-full" />
           <Button
             size="sm"
