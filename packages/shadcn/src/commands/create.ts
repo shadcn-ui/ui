@@ -14,6 +14,7 @@ import prompts from "prompts"
 
 import { initOptionsSchema, runInit } from "./init"
 
+// 🚨 Replace with https://ui.shadcn.com.
 const SHADCN_URL = "https://u-1-day.vercel.app"
 
 const CREATE_TEMPLATES = {
