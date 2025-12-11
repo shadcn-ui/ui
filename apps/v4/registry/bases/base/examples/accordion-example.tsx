@@ -139,10 +139,10 @@ function AccordionWithBorders() {
             value={item.value}
             className="style-vega:border style-nova:border style-lyra:border style-vega:rounded-lg style-nova:rounded-lg"
           >
-            <AccordionTrigger className="style-nova:px-2.5 style-nova:text-sm style-vega:text-sm style-maia:text-sm style-lyra:px-2 style-lyra:text-xs style-vega:px-4 font-medium">
+            <AccordionTrigger className="style-nova:px-2.5 style-nova:text-sm style-vega:text-sm style-maia:text-sm style-mira:text-xs style-lyra:px-2 style-lyra:text-xs style-vega:px-4 font-medium">
               {item.trigger}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-vega:px-4 style-maia:px-0">
+            <AccordionContent className="text-muted-foreground style-nova:px-2.5 style-nova:text-sm style-lyra:px-2 style-lyra:text-xs style-vega:px-4 style-maia:px-0 style-mira:px-0">
               {item.content}
             </AccordionContent>
           </AccordionItem>
@@ -270,7 +270,7 @@ function AccordionInCard() {
           <Accordion
             multiple
             defaultValue={["plans"]}
-            className="style-maia:rounded-md"
+            className="style-maia:rounded-md style-mira:rounded-md"
           >
             {items.map((item) => (
               <AccordionItem key={item.value} value={item.value}>
@@ -312,7 +312,7 @@ function AccordionWithDisabled() {
 
   return (
     <Example title="With Disabled">
-      <Accordion className="style-lyra:rounded-none style-vega:rounded-lg style-nova:rounded-lg style-maia:rounded-lg mx-auto max-w-lg overflow-hidden border">
+      <Accordion className="style-lyra:rounded-none style-vega:rounded-lg style-nova:rounded-lg style-maia:rounded-lg style-mira:rounded-lg mx-auto max-w-lg overflow-hidden border">
         {items.map((item) => (
           <AccordionItem
             key={item.value}
