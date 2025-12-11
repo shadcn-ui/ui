@@ -56,6 +56,10 @@ export const create = new Command()
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .action(async (name, opts) => {
+    // eslint-disable-next-line turbo/no-undeclared-env-vars
+    if (!process.env.SHADCN_BETA) {
+      process.exit(1)
+    }
     try {
       // If no arguments or options provided, show initial prompt.
       const hasNoArgs = !name && !opts.template && !opts.preset

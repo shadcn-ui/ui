@@ -30,7 +30,10 @@ async function main() {
 
   program
     .addCommand(init)
-    .addCommand(create)
+    .addCommand(create, {
+      // 🚨 Remove before stable.
+      hidden: true,
+    })
     .addCommand(add)
     .addCommand(diff)
     .addCommand(view)
