@@ -7,6 +7,7 @@ import {
   JetBrains_Mono,
   Noto_Sans,
   Nunito_Sans,
+  Outfit,
   Public_Sans,
   Raleway,
   Roboto,
@@ -67,6 +68,11 @@ const publicSans = Public_Sans({
   variable: "--font-public-sans",
 })
 
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+})
+
 export const FONTS = [
   // {
   //   name: "Geist Sans",
@@ -120,6 +126,12 @@ export const FONTS = [
     name: "Public Sans",
     value: "public-sans",
     font: publicSans,
+    type: "sans",
+  },
+  {
+    name: "Outfit",
+    value: "outfit",
+    font: outfit,
     type: "sans",
   },
   {

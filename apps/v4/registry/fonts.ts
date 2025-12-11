@@ -108,6 +108,18 @@ export const fonts = [
     },
   },
   {
+    name: "font-outfit",
+    title: "Outfit",
+    type: "registry:font",
+    font: {
+      family: "'Outfit', sans-serif",
+      provider: "google",
+      variable: "--font-sans",
+      subsets: ["latin"],
+      import: "Outfit",
+    },
+  },
+  {
     name: "font-jetbrains-mono",
     title: "JetBrains Mono",
     type: "registry:font",

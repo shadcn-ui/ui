@@ -2029,13 +2029,13 @@
       }
     },
     {
-      "name": "font-jetbrains-mono",
-      "title": "JetBrains Mono",
+      "name": "font-outfit",
+      "title": "Outfit",
       "type": "registry:font",
       "font": {
-        "family": "'JetBrains Mono Variable', monospace",
+        "family": "'Outfit', sans-serif",
         "provider": "google",
-        "import": "JetBrains_Mono",
+        "import": "Outfit",
         "variable": "--font-sans",
         "subsets": [
           "latin"
@@ -2043,13 +2043,13 @@
       }
     },
     {
-      "name": "font-geist-mono",
-      "title": "Geist Mono",
+      "name": "font-jetbrains-mono",
+      "title": "JetBrains Mono",
       "type": "registry:font",
       "font": {
-        "family": "'Geist Mono Variable', monospace",
+        "family": "'JetBrains Mono Variable', monospace",
         "provider": "google",
-        "import": "Geist_Mono",
+        "import": "JetBrains_Mono",
         "variable": "--font-sans",
         "subsets": [
           "latin"
