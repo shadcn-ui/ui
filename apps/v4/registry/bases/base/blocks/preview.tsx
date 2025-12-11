@@ -6,7 +6,7 @@ import { useState } from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/bases/base/components/example"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,31 +18,41 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/bases/radix/ui/alert-dialog"
+} from "@/registry/bases/base/ui/alert-dialog"
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
-import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Button } from "@/registry/bases/radix/ui/button"
-import { ButtonGroup } from "@/registry/bases/radix/ui/button-group"
+} from "@/registry/bases/base/ui/avatar"
+import { Badge } from "@/registry/bases/base/ui/badge"
+import { Button } from "@/registry/bases/base/ui/button"
+import { ButtonGroup } from "@/registry/bases/base/ui/button-group"
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
-import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
+} from "@/registry/bases/base/ui/card"
+import { Checkbox } from "@/registry/bases/base/ui/checkbox"
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/registry/bases/base/ui/combobox"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
@@ -50,7 +60,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/bases/base/ui/dropdown-menu"
 import {
   Empty,
   EmptyContent,
@@ -58,7 +68,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/radix/ui/empty"
+} from "@/registry/bases/base/ui/empty"
 import {
   Field,
   FieldContent,
@@ -69,8 +79,8 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/bases/base/ui/field"
+import { Input } from "@/registry/bases/base/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
@@ -78,7 +88,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/bases/radix/ui/input-group"
+} from "@/registry/bases/base/ui/input-group"
 import {
   Item,
   ItemActions,
@@ -86,8 +96,8 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
-import { Label } from "@/registry/bases/radix/ui/label"
+} from "@/registry/bases/base/ui/item"
+import { Label } from "@/registry/bases/base/ui/label"
 import {
   Popover,
   PopoverContent,
@@ -95,11 +105,11 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/registry/bases/radix/ui/popover"
+} from "@/registry/bases/base/ui/popover"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/registry/bases/radix/ui/radio-group"
+} from "@/registry/bases/base/ui/radio-group"
 import {
   Select,
   SelectContent,
@@ -107,8 +117,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
-import { Separator } from "@/registry/bases/radix/ui/separator"
+} from "@/registry/bases/base/ui/select"
+import { Separator } from "@/registry/bases/base/ui/separator"
 import {
   Sheet,
   SheetClose,
@@ -118,23 +128,23 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/bases/radix/ui/sheet"
-import { Slider } from "@/registry/bases/radix/ui/slider"
-import { Spinner } from "@/registry/bases/radix/ui/spinner"
-import { Switch } from "@/registry/bases/radix/ui/switch"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
+} from "@/registry/bases/base/ui/sheet"
+import { Slider } from "@/registry/bases/base/ui/slider"
+import { Spinner } from "@/registry/bases/base/ui/spinner"
+import { Switch } from "@/registry/bases/base/ui/switch"
+import { Textarea } from "@/registry/bases/base/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/radix/ui/tooltip"
+} from "@/registry/bases/base/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CoverExample() {
   return (
     <ExampleWrapper>
       <ObservabilityCard />
-      <EmptyWithSpinner />
+      <SmallFormExample />
       <FormExample />
       <FieldExamples />
       <ItemExample />
@@ -150,6 +160,7 @@ export default function CoverExample() {
 function FieldExamples() {
   const [gpuCount, setGpuCount] = React.useState(8)
   const [value, setValue] = useState([200, 800])
+
   const handleGpuAdjustment = React.useCallback((adjustment: number) => {
     setGpuCount((prevCount) =>
       Math.max(1, Math.min(99, prevCount + adjustment))
@@ -167,7 +178,7 @@ function FieldExamples() {
   )
 
   return (
-    <Example title="Field Examples">
+    <Example title="Fields">
       <FieldSet className="w-full max-w-md">
         <FieldGroup>
           <FieldSet>
@@ -275,7 +286,6 @@ function FieldExamples() {
               </FieldLabel>
             </Field>
           </FieldLabel>
-          <FieldSeparator />
           <Field>
             <FieldTitle>Price Range</FieldTitle>
             <FieldDescription>
@@ -336,18 +346,20 @@ function ButtonGroupExamples() {
               Snooze
             </Button>
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="icon-sm"
-                  aria-label="More Options"
-                >
-                  <IconPlaceholder
-                    lucide="ChevronDownIcon"
-                    tabler="IconChevronDown"
-                    hugeicons="ArrowDown01Icon"
+              <DropdownMenuTrigger
+                render={
+                  <Button
+                    variant="outline"
+                    size="icon-sm"
+                    aria-label="More Options"
                   />
-                </Button>
+                }
+              >
+                <IconPlaceholder
+                  lucide="ChevronDownIcon"
+                  tabler="IconChevronDown"
+                  hugeicons="ArrowDown01Icon"
+                />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuGroup>
@@ -403,22 +415,26 @@ function ButtonGroupExamples() {
                       />
                       Label As...
                     </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent>
-                      <DropdownMenuRadioGroup
-                        value={label}
-                        onValueChange={setLabel}
-                      >
-                        <DropdownMenuRadioItem value="personal">
-                          Personal
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="work">
-                          Work
-                        </DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="other">
-                          Other
-                        </DropdownMenuRadioItem>
-                      </DropdownMenuRadioGroup>
-                    </DropdownMenuSubContent>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuGroup>
+                          <DropdownMenuRadioGroup
+                            value={label}
+                            onValueChange={setLabel}
+                          >
+                            <DropdownMenuRadioItem value="personal">
+                              Personal
+                            </DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="work">
+                              Work
+                            </DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="other">
+                              Other
+                            </DropdownMenuRadioItem>
+                          </DropdownMenuRadioGroup>
+                        </DropdownMenuGroup>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
                   </DropdownMenuSub>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
@@ -464,14 +480,14 @@ function ButtonGroupExamples() {
             <ButtonGroup>
               <Button variant="outline">Follow</Button>
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="icon">
-                    <IconPlaceholder
-                      lucide="ChevronDownIcon"
-                      tabler="IconChevronDown"
-                      hugeicons="ArrowDown01Icon"
-                    />
-                  </Button>
+                <DropdownMenuTrigger
+                  render={<Button variant="outline" size="icon" />}
+                >
+                  <IconPlaceholder
+                    lucide="ChevronDownIcon"
+                    tabler="IconChevronDown"
+                    hugeicons="ArrowDown01Icon"
+                  />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-52">
                   <DropdownMenuGroup>
@@ -553,18 +569,20 @@ function ButtonGroupExamples() {
                 Copilot
               </Button>
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    aria-label="Open Popover"
-                  >
-                    <IconPlaceholder
-                      lucide="ChevronDownIcon"
-                      tabler="IconChevronDown"
-                      hugeicons="ArrowDown01Icon"
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      aria-label="Open Popover"
                     />
-                  </Button>
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="ChevronDownIcon"
+                    tabler="IconChevronDown"
+                    hugeicons="ArrowDown01Icon"
+                  />
                 </PopoverTrigger>
                 <PopoverContent align="end" className="w-96">
                   <PopoverHeader>
@@ -615,18 +633,20 @@ function InputGroupExamples() {
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">
             <Tooltip>
-              <TooltipTrigger asChild>
-                <InputGroupButton
-                  className="rounded-full"
-                  size="icon-xs"
-                  aria-label="Info"
-                >
-                  <IconPlaceholder
-                    lucide="InfoIcon"
-                    tabler="IconInfoCircle"
-                    hugeicons="AlertCircleIcon"
+              <TooltipTrigger
+                render={
+                  <InputGroupButton
+                    className="rounded-full"
+                    size="icon-xs"
+                    aria-label="Info"
                   />
-                </InputGroupButton>
+                }
+              >
+                <IconPlaceholder
+                  lucide="InfoIcon"
+                  tabler="IconInfoCircle"
+                  hugeicons="AlertCircleIcon"
+                />
               </TooltipTrigger>
               <TooltipContent>This is content in a tooltip.</TooltipContent>
             </Tooltip>
@@ -638,33 +658,35 @@ function InputGroupExamples() {
           </Label>
           <InputGroup>
             <InputGroupInput id="input-secure-19" className="!pl-0.5" />
-            <Popover>
-              <PopoverTrigger asChild>
-                <InputGroupAddon>
-                  <InputGroupButton
-                    variant="secondary"
-                    size="icon-xs"
-                    aria-label="Info"
-                  >
-                    <IconPlaceholder
-                      lucide="InfoIcon"
-                      tabler="IconInfoCircle"
-                      hugeicons="AlertCircleIcon"
+            <InputGroupAddon>
+              <Popover>
+                <PopoverTrigger
+                  render={
+                    <InputGroupButton
+                      variant="secondary"
+                      size="icon-xs"
+                      aria-label="Info"
                     />
-                  </InputGroupButton>
-                </InputGroupAddon>
-              </PopoverTrigger>
-              <PopoverContent
-                align="start"
-                alignOffset={10}
-                className="flex flex-col gap-1 rounded-xl text-sm"
-              >
-                <p className="font-medium">Your connection is not secure.</p>
-                <p>
-                  You should not enter any sensitive information on this site.
-                </p>
-              </PopoverContent>
-            </Popover>
+                  }
+                >
+                  <IconPlaceholder
+                    lucide="InfoIcon"
+                    tabler="IconInfoCircle"
+                    hugeicons="AlertCircleIcon"
+                  />
+                </PopoverTrigger>
+                <PopoverContent
+                  align="start"
+                  alignOffset={10}
+                  className="flex flex-col gap-1 rounded-xl text-sm"
+                >
+                  <p className="font-medium">Your connection is not secure.</p>
+                  <p>
+                    You should not enter any sensitive information on this site.
+                  </p>
+                </PopoverContent>
+              </Popover>
+            </InputGroupAddon>
             <InputGroupAddon className="text-muted-foreground !pl-1">
               https://
             </InputGroupAddon>
@@ -707,21 +729,23 @@ function InputGroupExamples() {
               />
               <InputGroupAddon align="inline-end">
                 <Tooltip>
-                  <TooltipTrigger asChild>
-                    <InputGroupButton
-                      onClick={() => setVoiceEnabled(!voiceEnabled)}
-                      data-active={voiceEnabled}
-                      className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
-                      aria-pressed={voiceEnabled}
-                      size="icon-xs"
-                      aria-label="Voice Mode"
-                    >
-                      <IconPlaceholder
-                        lucide="AudioLinesIcon"
-                        tabler="IconWaveSine"
-                        hugeicons="AudioWave01Icon"
+                  <TooltipTrigger
+                    render={
+                      <InputGroupButton
+                        onClick={() => setVoiceEnabled(!voiceEnabled)}
+                        data-active={voiceEnabled}
+                        className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
+                        aria-pressed={voiceEnabled}
+                        size="icon-xs"
+                        aria-label="Voice Mode"
                       />
-                    </InputGroupButton>
+                    }
+                  >
+                    <IconPlaceholder
+                      lucide="AudioLinesIcon"
+                      tabler="IconWaveSine"
+                      hugeicons="AudioWave01Icon"
+                    />
                   </TooltipTrigger>
                   <TooltipContent>Voice Mode</TooltipContent>
                 </Tooltip>
@@ -745,17 +769,21 @@ function InputGroupExamples() {
               />
             </InputGroupButton>
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <InputGroupButton variant="ghost">Auto</InputGroupButton>
+              <DropdownMenuTrigger
+                render={<InputGroupButton variant="ghost" />}
+              >
+                Auto
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 side="top"
                 align="start"
                 className="[--radius:0.95rem]"
               >
-                <DropdownMenuItem>Auto</DropdownMenuItem>
-                <DropdownMenuItem>Agent</DropdownMenuItem>
-                <DropdownMenuItem>Manual</DropdownMenuItem>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>Auto</DropdownMenuItem>
+                  <DropdownMenuItem>Agent</DropdownMenuItem>
+                  <DropdownMenuItem>Manual</DropdownMenuItem>
+                </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
             <InputGroupText className="ml-auto">52% used</InputGroupText>
@@ -781,7 +809,7 @@ function InputGroupExamples() {
 
 function EmptyAvatarGroup() {
   return (
-    <Example title="Empty Avatar Group">
+    <Example title="Empty">
       <Empty className="h-full flex-none border">
         <EmptyHeader>
           <EmptyMedia>
@@ -817,8 +845,8 @@ function EmptyAvatarGroup() {
         <EmptyContent>
           <div className="flex gap-2">
             <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="outline">Show Dialog</Button>
+              <AlertDialogTrigger render={<Button variant="outline" />}>
+                Show Dialog
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -835,8 +863,8 @@ function EmptyAvatarGroup() {
               </AlertDialogContent>
             </AlertDialog>
             <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button>Connect Mouse</Button>
+              <AlertDialogTrigger render={<Button />}>
+                Connect Mouse
               </AlertDialogTrigger>
               <AlertDialogContent size="sm">
                 <AlertDialogHeader>
@@ -869,8 +897,34 @@ function EmptyAvatarGroup() {
 }
 
 function FormExample() {
+  const monthItems = [
+    { label: "MM", value: null },
+    { label: "01", value: "01" },
+    { label: "02", value: "02" },
+    { label: "03", value: "03" },
+    { label: "04", value: "04" },
+    { label: "05", value: "05" },
+    { label: "06", value: "06" },
+    { label: "07", value: "07" },
+    { label: "08", value: "08" },
+    { label: "09", value: "09" },
+    { label: "10", value: "10" },
+    { label: "11", value: "11" },
+    { label: "12", value: "12" },
+  ]
+
+  const yearItems = [
+    { label: "YYYY", value: null },
+    { label: "2024", value: "2024" },
+    { label: "2025", value: "2025" },
+    { label: "2026", value: "2026" },
+    { label: "2027", value: "2027" },
+    { label: "2028", value: "2028" },
+    { label: "2029", value: "2029" },
+  ]
+
   return (
-    <Example title="Form Example">
+    <Example title="Complex Form">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Payment Method</CardTitle>
@@ -917,24 +971,17 @@ function FormExample() {
                       <FieldLabel htmlFor="checkout-7j9-exp-month-ts6">
                         Month
                       </FieldLabel>
-                      <Select defaultValue="">
+                      <Select items={monthItems} defaultValue={null}>
                         <SelectTrigger id="checkout-7j9-exp-month-ts6">
-                          <SelectValue placeholder="MM" />
+                          <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectGroup>
-                            <SelectItem value="01">01</SelectItem>
-                            <SelectItem value="02">02</SelectItem>
-                            <SelectItem value="03">03</SelectItem>
-                            <SelectItem value="04">04</SelectItem>
-                            <SelectItem value="05">05</SelectItem>
-                            <SelectItem value="06">06</SelectItem>
-                            <SelectItem value="07">07</SelectItem>
-                            <SelectItem value="08">08</SelectItem>
-                            <SelectItem value="09">09</SelectItem>
-                            <SelectItem value="10">10</SelectItem>
-                            <SelectItem value="11">11</SelectItem>
-                            <SelectItem value="12">12</SelectItem>
+                            {monthItems.map((item) => (
+                              <SelectItem key={item.value} value={item.value}>
+                                {item.label}
+                              </SelectItem>
+                            ))}
                           </SelectGroup>
                         </SelectContent>
                       </Select>
@@ -943,18 +990,17 @@ function FormExample() {
                       <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
                         Year
                       </FieldLabel>
-                      <Select defaultValue="">
+                      <Select items={yearItems} defaultValue={null}>
                         <SelectTrigger id="checkout-7j9-exp-year-f59">
-                          <SelectValue placeholder="YYYY" />
+                          <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectGroup>
-                            <SelectItem value="2024">2024</SelectItem>
-                            <SelectItem value="2025">2025</SelectItem>
-                            <SelectItem value="2026">2026</SelectItem>
-                            <SelectItem value="2027">2027</SelectItem>
-                            <SelectItem value="2028">2028</SelectItem>
-                            <SelectItem value="2029">2029</SelectItem>
+                            {yearItems.map((item) => (
+                              <SelectItem key={item.value} value={item.value}>
+                                {item.label}
+                              </SelectItem>
+                            ))}
                           </SelectGroup>
                         </SelectContent>
                       </Select>
@@ -1011,9 +1057,158 @@ function FormExample() {
   )
 }
 
+const frameworks = [
+  "Next.js",
+  "SvelteKit",
+  "Nuxt.js",
+  "Remix",
+  "Astro",
+] as const
+
+const roleItems = [
+  { label: "Developer", value: "developer" },
+  { label: "Designer", value: "designer" },
+  { label: "Manager", value: "manager" },
+  { label: "Other", value: "other" },
+]
+
+function SmallFormExample() {
+  return (
+    <Example title="Form">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>User Information</CardTitle>
+          <CardDescription>Please fill in your details below</CardDescription>
+          <CardAction>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={<Button variant="ghost" size="icon" />}
+              >
+                <IconPlaceholder
+                  lucide="MoreVerticalIcon"
+                  tabler="IconDotsVertical"
+                  hugeicons="MoreVerticalCircle01Icon"
+                />
+                <span className="sr-only">More options</span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="EditIcon"
+                      tabler="IconEdit"
+                      hugeicons="Edit01Icon"
+                    />
+                    Edit
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="CopyIcon"
+                      tabler="IconCopy"
+                      hugeicons="Copy01Icon"
+                    />
+                    Duplicate
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="ShareIcon"
+                      tabler="IconShare"
+                      hugeicons="Share03Icon"
+                    />
+                    Share
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem variant="destructive">
+                    <IconPlaceholder
+                      lucide="Trash2Icon"
+                      tabler="IconTrash"
+                      hugeicons="Delete02Icon"
+                    />
+                    Delete
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </CardAction>
+        </CardHeader>
+        <CardContent>
+          <form>
+            <FieldGroup>
+              <div className="grid grid-cols-2 gap-4">
+                <Field>
+                  <FieldLabel htmlFor="small-form-name">Name</FieldLabel>
+                  <Input
+                    id="small-form-name"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </Field>
+                <Field>
+                  <FieldLabel htmlFor="small-form-role">Role</FieldLabel>
+                  <Select items={roleItems} defaultValue={null}>
+                    <SelectTrigger id="small-form-role">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {roleItems.map((item) => (
+                          <SelectItem key={item.value} value={item.value}>
+                            {item.label}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </Field>
+              </div>
+              <Field>
+                <FieldLabel htmlFor="small-form-framework">
+                  Framework
+                </FieldLabel>
+                <Combobox items={frameworks}>
+                  <ComboboxInput
+                    id="small-form-framework"
+                    placeholder="Select a framework"
+                    required
+                  />
+                  <ComboboxContent>
+                    <ComboboxEmpty>No frameworks found.</ComboboxEmpty>
+                    <ComboboxList>
+                      {(item) => (
+                        <ComboboxItem key={item} value={item}>
+                          {item}
+                        </ComboboxItem>
+                      )}
+                    </ComboboxList>
+                  </ComboboxContent>
+                </Combobox>
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="small-form-comments">Comments</FieldLabel>
+                <Textarea
+                  id="small-form-comments"
+                  placeholder="Add any additional comments"
+                />
+              </Field>
+              <Field orientation="horizontal">
+                <Button type="submit">Submit</Button>
+                <Button variant="outline" type="button">
+                  Cancel
+                </Button>
+              </Field>
+            </FieldGroup>
+          </form>
+        </CardContent>
+      </Card>
+    </Example>
+  )
+}
+
 function ObservabilityCard() {
   return (
-    <Example title="Observability Card" className="items-center justify-center">
+    <Example title="Card" className="items-center justify-center">
       <Card className="relative w-full max-w-sm overflow-hidden pt-0">
         <div className="bg-primary absolute inset-0 z-30 aspect-video opacity-50 mix-blend-color" />
         <img
@@ -1049,33 +1244,6 @@ function ObservabilityCard() {
   )
 }
 
-function FieldSlider() {
-  const [value, setValue] = useState([200, 800])
-  return (
-    <Example title="Field Slider">
-      <div className="w-full max-w-md">
-        <Field>
-          <FieldTitle>Price Range</FieldTitle>
-          <FieldDescription>
-            Set your budget range ($
-            <span className="font-medium tabular-nums">{value[0]}</span> -{" "}
-            <span className="font-medium tabular-nums">{value[1]}</span>).
-          </FieldDescription>
-          <Slider
-            value={value}
-            onValueChange={setValue}
-            max={1000}
-            min={0}
-            step={10}
-            className="mt-2 w-full"
-            aria-label="Price Range"
-          />
-        </Field>
-      </div>
-    </Example>
-  )
-}
-
 function ItemExample() {
   return (
     <Example title="Item">
@@ -1093,19 +1261,17 @@ function ItemExample() {
             </Button>
           </ItemActions>
         </Item>
-        <Item variant="outline" size="sm" asChild>
-          <a href="#">
-            <ItemMedia variant="icon">
-              <IconPlaceholder
-                lucide="ShoppingBagIcon"
-                tabler="IconShoppingBag"
-                hugeicons="ShoppingBasket01Icon"
-              />
-            </ItemMedia>
-            <ItemContent>
-              <ItemTitle>Your order has been shipped.</ItemTitle>
-            </ItemContent>
-          </a>
+        <Item variant="outline" size="sm" render={<a href="#" />}>
+          <ItemMedia variant="icon">
+            <IconPlaceholder
+              lucide="ShoppingBagIcon"
+              tabler="IconShoppingBag"
+              hugeicons="ShoppingBasket01Icon"
+            />
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle>Your order has been shipped.</ItemTitle>
+          </ItemContent>
         </Item>
       </div>
     </Example>
@@ -1114,7 +1280,7 @@ function ItemExample() {
 
 function BadgeExamples() {
   return (
-    <Example title="Badge Examples" className="items-center justify-center">
+    <Example title="Badge" className="items-center justify-center">
       <div className="flex items-center justify-center gap-2">
         <Badge>
           <Spinner data-icon="inline-start" />
@@ -1171,10 +1337,12 @@ function SheetExample() {
       <div className="flex gap-2">
         {SHEET_SIDES.map((side) => (
           <Sheet key={side}>
-            <SheetTrigger asChild>
-              <Button variant="secondary" className="flex-1 capitalize">
-                {side}
-              </Button>
+            <SheetTrigger
+              render={
+                <Button variant="secondary" className="flex-1 capitalize" />
+              }
+            >
+              {side}
             </SheetTrigger>
             <SheetContent
               side={side}
@@ -1206,8 +1374,8 @@ function SheetExample() {
               </div>
               <SheetFooter>
                 <Button type="submit">Save changes</Button>
-                <SheetClose asChild>
-                  <Button variant="outline">Cancel</Button>
+                <SheetClose render={<Button variant="outline" />}>
+                  Cancel
                 </SheetClose>
               </SheetFooter>
             </SheetContent>

@@ -1673,8 +1673,8 @@
       "type": "registry:component"
     },
     {
-      "name": "blocks",
-      "title": "Components",
+      "name": "preview",
+      "title": "Home",
       "registryDependencies": [
         "alert-dialog",
         "avatar",
@@ -1683,6 +1683,7 @@
         "button-group",
         "card",
         "checkbox",
+        "combobox",
         "dropdown-menu",
         "empty",
         "field",
@@ -1704,36 +1705,23 @@
       ],
       "files": [
         {
-          "path": "registry/base-maia/blocks/blocks.tsx",
+          "path": "registry/base-maia/blocks/preview.tsx",
           "type": "registry:block"
         }
       ],
       "type": "registry:block"
     },
     {
-      "name": "vercel",
-      "title": "Vercel",
+      "name": "elevenlabs",
+      "title": "Elevenlabs",
       "registryDependencies": [
-        "alert",
-        "badge",
+        "example",
         "button",
-        "calendar",
-        "card",
-        "chart",
-        "dialog",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input-group",
-        "item",
-        "native-select",
-        "popover",
-        "textarea",
-        "example"
+        "card"
       ],
       "files": [
         {
-          "path": "registry/base-maia/blocks/vercel.tsx",
+          "path": "registry/base-maia/blocks/elevenlabs.tsx",
           "type": "registry:block"
         }
       ],
@@ -1741,7 +1729,7 @@
     },
     {
       "name": "github",
-      "title": "GitHub Blocks",
+      "title": "GitHub",
       "registryDependencies": [
         "avatar",
         "badge",
@@ -1776,16 +1764,29 @@
       "type": "registry:block"
     },
     {
-      "name": "elevenlabs",
-      "title": "Elevenlabs",
+      "name": "vercel",
+      "title": "Vercel",
       "registryDependencies": [
-        "example",
+        "alert",
+        "badge",
         "button",
-        "card"
+        "calendar",
+        "card",
+        "chart",
+        "dialog",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input-group",
+        "item",
+        "native-select",
+        "popover",
+        "textarea",
+        "example"
       ],
       "files": [
         {
-          "path": "registry/base-maia/blocks/elevenlabs.tsx",
+          "path": "registry/base-maia/blocks/vercel.tsx",
           "type": "registry:block"
         }
       ],

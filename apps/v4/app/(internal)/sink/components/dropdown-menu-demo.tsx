@@ -394,7 +394,7 @@ function DropdownMenuIconColor() {
           <IconPlaceholder
             lucide="MoreHorizontalIcon"
             tabler="IconDots"
-            hugeicons="MoreHorizontalIcon"
+            hugeicons="MoreHorizontalCircle01Icon"
           />
           <span className="sr-only">Toggle menu</span>
         </Button>

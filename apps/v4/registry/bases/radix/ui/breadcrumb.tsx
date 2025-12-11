@@ -111,7 +111,7 @@ function BreadcrumbEllipsis({
       <IconPlaceholder
         lucide="MoreHorizontalIcon"
         tabler="IconDots"
-        hugeicons="MoreHorizontalIcon"
+        hugeicons="MoreHorizontalCircle01Icon"
       />
       <span className="sr-only">More</span>
     </span>

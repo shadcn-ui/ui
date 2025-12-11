@@ -461,7 +461,7 @@ function BillingList() {
                       <IconPlaceholder
                         lucide="MoreHorizontalIcon"
                         tabler="IconDots"
-                        hugeicons="MoreHorizontalIcon"
+                        hugeicons="MoreHorizontalCircle01Icon"
                       />
                       <span className="sr-only">More options</span>
                     </Button>

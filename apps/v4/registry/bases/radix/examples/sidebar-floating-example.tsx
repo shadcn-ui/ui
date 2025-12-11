@@ -204,7 +204,7 @@ export default function SidebarFloatingExample() {
                         <IconPlaceholder
                           lucide="MoreHorizontalIcon"
                           tabler="IconDots"
-                          hugeicons="MoreHorizontalIcon"
+                          hugeicons="MoreHorizontalCircle01Icon"
                           className="ml-auto"
                         />
                       </SidebarMenuButton>

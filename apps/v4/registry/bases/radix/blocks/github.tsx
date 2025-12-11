@@ -175,7 +175,7 @@ function CodespacesCard() {
                             <IconPlaceholder
                               lucide="MoreHorizontalIcon"
                               tabler="IconDots"
-                              hugeicons="MoreHorizontalIcon"
+                              hugeicons="MoreHorizontalCircle01Icon"
                             />
                           </Button>
                         </DropdownMenuTrigger>

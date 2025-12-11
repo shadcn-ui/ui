@@ -717,7 +717,7 @@ function DropdownMenuComplex() {
                         <IconPlaceholder
                           lucide="MoreHorizontalIcon"
                           tabler="IconDots"
-                          hugeicons="MoreHorizontalIcon"
+                          hugeicons="MoreHorizontalCircle01Icon"
                         />
                         More Projects
                       </DropdownMenuSubTrigger>

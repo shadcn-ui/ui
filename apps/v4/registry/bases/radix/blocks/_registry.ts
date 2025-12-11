@@ -2,8 +2,8 @@ import { type Registry } from "shadcn/schema"
 
 export const blocks: Registry["items"] = [
   {
-    name: "blocks",
-    title: "Components",
+    name: "preview",
+    title: "Home",
     type: "registry:block",
     registryDependencies: [
       "alert-dialog",
@@ -13,6 +13,7 @@ export const blocks: Registry["items"] = [
       "button-group",
       "card",
       "checkbox",
+      "combobox",
       "dropdown-menu",
       "empty",
       "field",
@@ -34,43 +35,26 @@ export const blocks: Registry["items"] = [
     ],
     files: [
       {
-        path: "blocks/blocks.tsx",
+        path: "blocks/preview.tsx",
         type: "registry:block",
       },
     ],
   },
   {
-    name: "vercel",
-    title: "Vercel",
+    name: "elevenlabs",
+    title: "Elevenlabs",
     type: "registry:block",
-    registryDependencies: [
-      "alert",
-      "badge",
-      "button",
-      "calendar",
-      "card",
-      "chart",
-      "dialog",
-      "dropdown-menu",
-      "empty",
-      "field",
-      "input-group",
-      "item",
-      "native-select",
-      "popover",
-      "textarea",
-      "example",
-    ],
+    registryDependencies: ["example", "button", "card"],
     files: [
       {
-        path: "blocks/vercel.tsx",
+        path: "blocks/elevenlabs.tsx",
         type: "registry:block",
       },
     ],
   },
   {
     name: "github",
-    title: "GitHub Blocks",
+    title: "GitHub",
     type: "registry:block",
     registryDependencies: [
       "avatar",
@@ -105,13 +89,30 @@ export const blocks: Registry["items"] = [
     ],
   },
   {
-    name: "elevenlabs",
-    title: "Elevenlabs",
+    name: "vercel",
+    title: "Vercel",
     type: "registry:block",
-    registryDependencies: ["example", "button", "card"],
+    registryDependencies: [
+      "alert",
+      "badge",
+      "button",
+      "calendar",
+      "card",
+      "chart",
+      "dialog",
+      "dropdown-menu",
+      "empty",
+      "field",
+      "input-group",
+      "item",
+      "native-select",
+      "popover",
+      "textarea",
+      "example",
+    ],
     files: [
       {
-        path: "blocks/elevenlabs.tsx",
+        path: "blocks/vercel.tsx",
         type: "registry:block",
       },
     ],

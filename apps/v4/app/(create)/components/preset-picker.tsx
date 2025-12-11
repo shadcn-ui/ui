@@ -3,15 +3,13 @@
 import * as React from "react"
 import { useQueryStates } from "nuqs"
 
-import { STYLES, type Preset } from "@/registry/config"
+import { BASES, STYLES, type Preset } from "@/registry/config"
 import {
   Picker,
   PickerContent,
   PickerGroup,
-  PickerLabel,
   PickerRadioGroup,
   PickerRadioItem,
-  PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
@@ -56,20 +54,10 @@ export function PresetPicker({
     params.radius,
   ])
 
-  const groupedPresets = React.useMemo(() => {
-    const groups = new Map<string, Preset[]>()
-    for (const preset of presets) {
-      const base = preset.base
-      if (!groups.has(base)) {
-        groups.set(base, [])
-      }
-      groups.get(base)!.push(preset)
-    }
-    return Array.from(groups.entries()).map(([base, presets]) => ({
-      base,
-      presets,
-    }))
-  }, [presets])
+  // Filter presets for current base only
+  const currentBasePresets = React.useMemo(() => {
+    return presets.filter((preset) => preset.base === params.base)
+  }, [presets, params.base])
 
   const handlePresetChange = (value: string) => {
     const preset = presets.find((p) => p.title === value)
@@ -112,35 +100,25 @@ export function PresetPicker({
           value={currentPreset?.title ?? ""}
           onValueChange={handlePresetChange}
         >
-          {groupedPresets.map((group, groupIndex) => (
-            <React.Fragment key={group.base}>
-              <PickerGroup>
-                <PickerLabel>
-                  {group.base.charAt(0).toUpperCase() + group.base.slice(1)}
-                </PickerLabel>
-                {group.presets.map((preset) => {
-                  const style = STYLES.find((s) => s.name === preset.style)
-                  return (
-                    <PickerRadioItem key={preset.title} value={preset.title}>
-                      <div className="flex items-center gap-2">
-                        {style?.icon && (
-                          <div className="flex size-4 shrink-0 items-center justify-center">
-                            {React.cloneElement(style.icon, {
-                              className: "size-4",
-                            })}
-                          </div>
-                        )}
-                        {preset.description}
+          <PickerGroup>
+            {currentBasePresets.map((preset) => {
+              const style = STYLES.find((s) => s.name === preset.style)
+              return (
+                <PickerRadioItem key={preset.title} value={preset.title}>
+                  <div className="flex items-center gap-2">
+                    {style?.icon && (
+                      <div className="flex size-4 shrink-0 items-center justify-center">
+                        {React.cloneElement(style.icon, {
+                          className: "size-4",
+                        })}
                       </div>
-                    </PickerRadioItem>
-                  )
-                })}
-              </PickerGroup>
-              {groupIndex < groupedPresets.length - 1 && (
-                <PickerSeparator className="opacity-50" />
-              )}
-            </React.Fragment>
-          ))}
+                    )}
+                    {preset.description}
+                  </div>
+                </PickerRadioItem>
+              )
+            })}
+          </PickerGroup>
         </PickerRadioGroup>
       </PickerContent>
     </Picker>
