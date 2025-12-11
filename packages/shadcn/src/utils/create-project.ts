@@ -17,6 +17,7 @@ const MONOREPO_TEMPLATE_URL =
 
 export const TEMPLATES = {
   next: "next",
+  "next-16": "next-16",
   "next-monorepo": "next-monorepo",
 } as const
 
@@ -37,7 +38,7 @@ export async function createProject(
       : "next"
   let projectName: string =
     template === TEMPLATES.next ? "my-app" : "my-monorepo"
-  let nextVersion = "latest"
+  let nextVersion = "15"
 
   const isRemoteComponent =
     options.components?.length === 1 &&
@@ -72,7 +73,8 @@ export async function createProject(
           options.cwd
         )} does not contain a package.json file.\n  Would you like to start a new project?`,
         choices: [
-          { title: "Next.js", value: "next" },
+          { title: "Next.js 15", value: "next" },
+          { title: "Next.js 16", value: "next-16" },
           { title: "Next.js (Monorepo)", value: "next-monorepo" },
         ],
         initial: 0,
@@ -92,6 +94,10 @@ export async function createProject(
 
     template = type ?? template
     projectName = name
+
+    if (type === "next-16") {
+      nextVersion = "latest"
+    }
   }
 
   const packageManager = await getPackageManager(options.cwd, {
@@ -125,7 +131,7 @@ export async function createProject(
     process.exit(1)
   }
 
-  if (template === TEMPLATES.next) {
+  if (template === TEMPLATES.next || template === TEMPLATES["next-16"]) {
     await createNextProject(projectPath, {
       version: nextVersion,
       cwd: options.cwd,
@@ -157,7 +163,9 @@ async function createNextProject(
   }
 ) {
   const createSpinner = spinner(
-    `Creating a new Next.js project. This may take a few minutes.`
+    `Creating a new Next.js ${
+      options.version.startsWith("latest") ? "16" : "15"
+    } project. This may take a few minutes.`
   ).start()
 
   // Note: pnpm fails here. Fallback to npx with --use-PACKAGE-MANAGER.
@@ -179,6 +187,13 @@ async function createNextProject(
     args.push("--turbopack")
   }
 
+  if (
+    options.version.startsWith("latest") ||
+    options.version.startsWith("canary")
+  ) {
+    args.push("--no-react-compiler")
+  }
+
   try {
     await execa(
       "npx",
@@ -195,7 +210,11 @@ async function createNextProject(
     process.exit(1)
   }
 
-  createSpinner?.succeed("Creating a new Next.js project.")
+  createSpinner?.succeed(
+    `Creating a new Next.js ${
+      options.version.startsWith("latest") ? "16" : "15"
+    } project.`
+  )
 }
 
 async function createMonorepoProject(
@@ -236,6 +255,16 @@ async function createMonorepoProject(
     await execa(options.packageManager, ["install"], {
       cwd: projectPath,
     })
+    // await execa("cd", [cwd])
+
+    // Write project name to the package.json
+    const packageJsonPath = path.join(projectPath, "package.json")
+    if (fs.existsSync(packageJsonPath)) {
+      const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+      const packageJson = JSON.parse(packageJsonContent)
+      packageJson.name = projectPath.split("/").pop()
+      await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
+    }
 
     // Try git init.
     const cwd = process.cwd()
@@ -245,7 +274,6 @@ async function createMonorepoProject(
     await execa("git", ["commit", "-m", "Initial commit"], {
       cwd: projectPath,
     })
-    // await execa("cd", [cwd])
 
     createSpinner?.succeed("Creating a new Next.js monorepo.")
   } catch (error) {

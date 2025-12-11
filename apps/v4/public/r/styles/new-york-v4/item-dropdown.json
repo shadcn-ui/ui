@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-dropdown",
+  "type": "registry:example",
+  "registryDependencies": [
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/item-dropdown.tsx",
+      "content": "\"use client\"\n\nimport { ChevronDownIcon } from \"lucide-react\"\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/new-york-v4/ui/avatar\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuTrigger,\n} from \"@/registry/new-york-v4/ui/dropdown-menu\"\nimport {\n  Item,\n  ItemContent,\n  ItemDescription,\n  ItemMedia,\n  ItemTitle,\n} from \"@/registry/new-york-v4/ui/item\"\n\nconst people = [\n  {\n    username: \"shadcn\",\n    avatar: \"https://github.com/shadcn.png\",\n    email: \"shadcn@vercel.com\",\n  },\n  {\n    username: \"maxleiter\",\n    avatar: \"https://github.com/maxleiter.png\",\n    email: \"maxleiter@vercel.com\",\n  },\n  {\n    username: \"evilrabbit\",\n    avatar: \"https://github.com/evilrabbit.png\",\n    email: \"evilrabbit@vercel.com\",\n  },\n]\n\nexport default function ItemDropdown() {\n  return (\n    <div className=\"flex min-h-64 w-full max-w-md flex-col items-center gap-6\">\n      <DropdownMenu>\n        <DropdownMenuTrigger asChild>\n          <Button variant=\"outline\" size=\"sm\" className=\"w-fit\">\n            Select <ChevronDownIcon />\n          </Button>\n        </DropdownMenuTrigger>\n        <DropdownMenuContent className=\"w-72 [--radius:0.65rem]\" align=\"end\">\n          {people.map((person) => (\n            <DropdownMenuItem key={person.username} className=\"p-0\">\n              <Item size=\"sm\" className=\"w-full p-2\">\n                <ItemMedia>\n                  <Avatar className=\"size-8\">\n                    <AvatarImage src={person.avatar} className=\"grayscale\" />\n                    <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>\n                  </Avatar>\n                </ItemMedia>\n                <ItemContent className=\"gap-0.5\">\n                  <ItemTitle>{person.username}</ItemTitle>\n                  <ItemDescription>{person.email}</ItemDescription>\n                </ItemContent>\n              </Item>\n            </DropdownMenuItem>\n          ))}\n        </DropdownMenuContent>\n      </DropdownMenu>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

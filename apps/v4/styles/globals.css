@@ -150,11 +150,15 @@
     @apply bg-selection text-selection-foreground;
   }
   html {
-    @apply scroll-smooth;
+    @apply overscroll-y-none scroll-smooth;
   }
   body {
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+  }
+
+  [data-slot="layout"] {
+    @apply overscroll-none;
   }
 
   @supports (font: -apple-system-body) and (-webkit-appearance: none) {

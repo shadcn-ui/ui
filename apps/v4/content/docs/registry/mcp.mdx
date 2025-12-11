@@ -26,6 +26,7 @@ Ask your registry consumers to configure your registry in their `components.json
     <TabsTrigger value="claude">Claude Code</TabsTrigger>
     <TabsTrigger value="cursor">Cursor</TabsTrigger>
     <TabsTrigger value="vscode">VS Code</TabsTrigger>
+    <TabsTrigger value="codex">Codex</TabsTrigger>
   </TabsList>
   <TabsContent value="claude" className="mt-4">
     **Configure your registry** in your `components.json` file:
@@ -89,6 +90,30 @@ Ask your registry consumers to configure your registry in their `components.json
        ```
 
     Open `.vscode/mcp.json` and click **Start** next to the shadcn server. Then try the following prompts with GitHub Copilot:
+       - Show me the components in the acme registry
+       - Create a landing page using items from the acme registry
+
+  </TabsContent>
+
+  <TabsContent value="codex" className="mt-4">
+    **Configure your registry** in your `components.json` file:
+
+    ```json title="components.json" showLineNumbers
+    {
+      "registries": {
+        "@acme": "https://acme.com/r/{name}.json"
+      }
+    }
+    ```
+
+    **Add the following configuration** to `~/.codex/config.toml`:
+       ```toml
+       [mcp_servers.shadcn]
+       command = "npx"
+       args = ["shadcn@latest", "mcp"]
+       ```
+
+    **Restart Codex** and try the following prompts:
        - Show me the components in the acme registry
        - Create a landing page using items from the acme registry
 

@@ -4,6 +4,7 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/registry/new-york-v4/ui/button"
+import { FieldDescription } from "@/registry/new-york-v4/ui/field"
 import { UserAuthForm } from "@/app/(app)/examples/authentication/components/user-auth-form"
 
 export const metadata: Metadata = {
@@ -78,23 +79,11 @@ export default function AuthenticationPage() {
               </p>
             </div>
             <UserAuthForm />
-            <p className="text-muted-foreground px-8 text-center text-sm">
+            <FieldDescription className="px-6 text-center">
               By clicking continue, you agree to our{" "}
-              <Link
-                href="/terms"
-                className="hover:text-primary underline underline-offset-4"
-              >
-                Terms of Service
-              </Link>{" "}
-              and{" "}
-              <Link
-                href="/privacy"
-                className="hover:text-primary underline underline-offset-4"
-              >
-                Privacy Policy
-              </Link>
-              .
-            </p>
+              <Link href="/terms">Terms of Service</Link> and{" "}
+              <Link href="/privacy">Privacy Policy</Link>.
+            </FieldDescription>
           </div>
         </div>
       </div>

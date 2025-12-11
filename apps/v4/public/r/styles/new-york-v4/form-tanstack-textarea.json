@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-tanstack-textarea",
+  "type": "registry:example",
+  "dependencies": [
+    "@tanstack/react-form",
+    "zod"
+  ],
+  "registryDependencies": [
+    "field",
+    "textarea",
+    "button",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/form-tanstack-textarea.tsx",
+      "content": "/* eslint-disable react/no-children-prop */\n\"use client\"\n\nimport { useForm } from \"@tanstack/react-form\"\nimport { toast } from \"sonner\"\nimport * as z from \"zod\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport {\n  Field,\n  FieldDescription,\n  FieldError,\n  FieldGroup,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Textarea } from \"@/registry/new-york-v4/ui/textarea\"\n\nconst formSchema = z.object({\n  about: z\n    .string()\n    .min(10, \"Please provide at least 10 characters.\")\n    .max(200, \"Please keep it under 200 characters.\"),\n})\n\nexport default function FormTanstackTextarea() {\n  const form = useForm({\n    defaultValues: {\n      about: \"\",\n    },\n    validators: {\n      onSubmit: formSchema,\n    },\n    onSubmit: async ({ value }) => {\n      toast(\"You submitted the following values:\", {\n        description: (\n          <pre className=\"bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4\">\n            <code>{JSON.stringify(value, null, 2)}</code>\n          </pre>\n        ),\n        position: \"bottom-right\",\n        classNames: {\n          content: \"flex flex-col gap-2\",\n        },\n        style: {\n          \"--border-radius\": \"calc(var(--radius)  + 4px)\",\n        } as React.CSSProperties,\n      })\n    },\n  })\n\n  return (\n    <Card className=\"w-full sm:max-w-md\">\n      <CardHeader>\n        <CardTitle>Personalization</CardTitle>\n        <CardDescription>\n          Customize your experience by telling us more about yourself.\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <form\n          id=\"form-tanstack-textarea\"\n          onSubmit={(e) => {\n            e.preventDefault()\n            form.handleSubmit()\n          }}\n        >\n          <FieldGroup>\n            <form.Field\n              name=\"about\"\n              children={(field) => {\n                const isInvalid =\n                  field.state.meta.isTouched && !field.state.meta.isValid\n                return (\n                  <Field data-invalid={isInvalid}>\n                    <FieldLabel htmlFor=\"form-tanstack-textarea-about\">\n                      More about you\n                    </FieldLabel>\n                    <Textarea\n                      id=\"form-tanstack-textarea-about\"\n                      name={field.name}\n                      value={field.state.value}\n                      onBlur={field.handleBlur}\n                      onChange={(e) => field.handleChange(e.target.value)}\n                      aria-invalid={isInvalid}\n                      placeholder=\"I'm a software engineer...\"\n                      className=\"min-h-[120px]\"\n                    />\n                    <FieldDescription>\n                      Tell us more about yourself. This will be used to help us\n                      personalize your experience.\n                    </FieldDescription>\n                    {isInvalid && (\n                      <FieldError errors={field.state.meta.errors} />\n                    )}\n                  </Field>\n                )\n              }}\n            />\n          </FieldGroup>\n        </form>\n      </CardContent>\n      <CardFooter>\n        <Field orientation=\"horizontal\">\n          <Button type=\"button\" variant=\"outline\" onClick={() => form.reset()}>\n            Reset\n          </Button>\n          <Button type=\"submit\" form=\"form-tanstack-textarea\">\n            Save\n          </Button>\n        </Field>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

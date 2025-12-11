@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-icon",
+  "type": "registry:example",
+  "registryDependencies": [
+    "empty"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/empty-icon.tsx",
+      "content": "import {\n  IconBookmark,\n  IconHeart,\n  IconInbox,\n  IconStar,\n} from \"@tabler/icons-react\"\n\nimport {\n  Empty,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/new-york-v4/ui/empty\"\n\nexport default function EmptyIcon() {\n  return (\n    <div className=\"grid gap-8 md:grid-cols-2\">\n      <Empty>\n        <EmptyHeader>\n          <EmptyMedia variant=\"icon\">\n            <IconInbox />\n          </EmptyMedia>\n          <EmptyTitle>No messages</EmptyTitle>\n          <EmptyDescription>\n            Your inbox is empty. New messages will appear here.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n\n      <Empty>\n        <EmptyHeader>\n          <EmptyMedia variant=\"icon\">\n            <IconStar />\n          </EmptyMedia>\n          <EmptyTitle>No favorites</EmptyTitle>\n          <EmptyDescription>\n            Items you mark as favorites will appear here.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n\n      <Empty>\n        <EmptyHeader>\n          <EmptyMedia variant=\"icon\">\n            <IconHeart />\n          </EmptyMedia>\n          <EmptyTitle>No likes yet</EmptyTitle>\n          <EmptyDescription>\n            Content you like will be saved here for easy access.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n\n      <Empty>\n        <EmptyHeader>\n          <EmptyMedia variant=\"icon\">\n            <IconBookmark />\n          </EmptyMedia>\n          <EmptyTitle>No bookmarks</EmptyTitle>\n          <EmptyDescription>\n            Save interesting content by bookmarking it.\n          </EmptyDescription>\n        </EmptyHeader>\n      </Empty>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

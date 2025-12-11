@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-button-group",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-button-group.tsx",
+      "content": "import { Link2Icon } from \"lucide-react\"\n\nimport {\n  ButtonGroup,\n  ButtonGroupText,\n} from \"@/registry/new-york-v4/ui/button-group\"\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupInput,\n} from \"@/registry/new-york-v4/ui/input-group\"\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\n\nexport default function InputGroupButtonGroup() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-6\">\n      <ButtonGroup>\n        <ButtonGroupText asChild>\n          <Label htmlFor=\"url\">https://</Label>\n        </ButtonGroupText>\n        <InputGroup>\n          <InputGroupInput id=\"url\" />\n          <InputGroupAddon align=\"inline-end\">\n            <Link2Icon />\n          </InputGroupAddon>\n        </InputGroup>\n        <ButtonGroupText>.com</ButtonGroupText>\n      </ButtonGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,9 +1,17 @@
 ---
-title: React Hook Form
+title: Form
 description: Building forms with React Hook Form and Zod.
 links:
   doc: https://react-hook-form.com
 ---
+
+import { InfoIcon } from "lucide-react"
+
+<Callout icon={<InfoIcon />} title="We are not actively developing this component anymore.">
+
+The Form component is an abstraction over the `react-hook-form` library. Going forward, we recommend using the [`<Field />`](/docs/components/field) component to build forms. See the [Form](/docs/forms) documentation for more information.
+
+</Callout>
 
 Forms are tricky. They are one of the most common things you'll build in a web application, but also one of the most complex.
 
@@ -119,8 +127,6 @@ npm install @radix-ui/react-label @radix-ui/react-slot react-hook-form @hookform
 
 ## Usage
 
-<Steps>
-
 ### Create a form schema
 
 Define the shape of your form using a Zod schema. You can read more about using Zod in the [Zod documentation](https://zod.dev).
@@ -233,23 +239,3 @@ export function ProfileForm() {
 ### Done
 
 That's it. You now have a fully accessible form that is type-safe with client-side validation.
-
-<ComponentPreview
-  name="input-form"
-  className="[&_[role=tablist]]:hidden [&>div>div:first-child]:hidden"
-/>
-
-</Steps>
-
-## Examples
-
-See the following links for more examples on how to use the `<Form />` component with other components:
-
-- [Checkbox](/docs/components/checkbox#form)
-- [Date Picker](/docs/components/date-picker#form)
-- [Input](/docs/components/input#form)
-- [Radio Group](/docs/components/radio-group#form)
-- [Select](/docs/components/select#form)
-- [Switch](/docs/components/switch#form)
-- [Textarea](/docs/components/textarea#form)
-- [Combobox](/docs/components/combobox#form)
