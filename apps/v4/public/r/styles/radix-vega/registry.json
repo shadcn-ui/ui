@@ -1644,6 +1644,30 @@
       "type": "registry:example"
     },
     {
+      "name": "component-example",
+      "title": "Example",
+      "registryDependencies": [
+        "alert-dialog",
+        "badge",
+        "button",
+        "card",
+        "combobox",
+        "dropdown-menu",
+        "field",
+        "input",
+        "select",
+        "textarea",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-vega/examples/component-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "utils",
       "dependencies": [
         "clsx",

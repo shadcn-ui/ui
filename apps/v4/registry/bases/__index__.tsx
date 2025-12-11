@@ -2115,6 +2115,25 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "component-example": {
+      name: "component-example",
+      title: "Example",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert-dialog","badge","button","card","combobox","dropdown-menu","field","input","select","textarea","example"],
+      files: [{
+        path: "registry/bases/radix/examples/component-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/examples/component-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "utils": {
       name: "utils",
       title: "undefined",
@@ -4372,6 +4391,25 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/base/examples/tooltip-example.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "component-example": {
+      name: "component-example",
+      title: "Example",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert-dialog","badge","button","card","combobox","dropdown-menu","field","input","select","textarea","example"],
+      files: [{
+        path: "registry/bases/base/examples/component-example.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/examples/component-example.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),

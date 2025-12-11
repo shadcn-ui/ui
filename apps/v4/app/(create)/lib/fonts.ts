@@ -70,7 +70,7 @@ const publicSans = Public_Sans({
 export const FONTS = [
   {
     name: "Geist Sans",
-    value: "geist-sans",
+    value: "geist",
     font: geistSans,
     type: "sans",
   },

@@ -854,4 +854,28 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "component-example",
+    title: "Example",
+    type: "registry:example",
+    registryDependencies: [
+      "alert-dialog",
+      "badge",
+      "button",
+      "card",
+      "combobox",
+      "dropdown-menu",
+      "field",
+      "input",
+      "select",
+      "textarea",
+      "example",
+    ],
+    files: [
+      {
+        path: "examples/component-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
