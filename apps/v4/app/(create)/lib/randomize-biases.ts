@@ -39,11 +39,9 @@ export type RandomizeBiases = {
  */
 export const RANDOMIZE_BIASES: RandomizeBiases = {
   fonts: (fonts, context) => {
-    // When style is lyra, only use jetbrains-mono or geist-mono
+    // When style is lyra, only use mono fonts.
     if (context.style === "lyra") {
-      return fonts.filter(
-        (font) => font.value === "jetbrains-mono" || font.value === "geist-mono"
-      )
+      return fonts.filter((font) => font.value === "jetbrains-mono")
     }
 
     return fonts
