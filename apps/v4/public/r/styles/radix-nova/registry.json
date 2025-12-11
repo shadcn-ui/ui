@@ -1315,6 +1315,76 @@
       "type": "registry:example"
     },
     {
+      "name": "scroll-area-example",
+      "title": "Scroll Area",
+      "registryDependencies": [
+        "scroll-area",
+        "separator",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-nova/examples/scroll-area-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-example",
+      "title": "Select",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "field",
+        "input",
+        "item",
+        "native-select",
+        "select",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-nova/examples/select-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "separator-example",
+      "title": "Separator",
+      "registryDependencies": [
+        "separator",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-nova/examples/separator-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-example",
+      "title": "Sheet",
+      "registryDependencies": [
+        "button",
+        "field",
+        "input",
+        "sheet",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-nova/examples/sheet-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "sidebar-example",
       "title": "Sidebar",
       "registryDependencies": [
@@ -1384,76 +1454,6 @@
       "files": [
         {
           "path": "registry/radix-nova/examples/sidebar-floating-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "scroll-area-example",
-      "title": "Scroll Area",
-      "registryDependencies": [
-        "scroll-area",
-        "separator",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/examples/scroll-area-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "select-example",
-      "title": "Select",
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "field",
-        "input",
-        "item",
-        "native-select",
-        "select",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/examples/select-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "separator-example",
-      "title": "Separator",
-      "registryDependencies": [
-        "separator",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/examples/separator-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "sheet-example",
-      "title": "Sheet",
-      "registryDependencies": [
-        "button",
-        "field",
-        "input",
-        "sheet",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/examples/sheet-example.tsx",
           "type": "registry:example"
         }
       ],

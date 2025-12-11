@@ -241,11 +241,9 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="flex flex-col gap-1">
-            <div className="text-sm leading-none font-medium">{title}</div>
-            <div className="text-muted-foreground line-clamp-2 text-sm">
-              {children}
-            </div>
+          <div className="style-vega:text-sm style-maia:text-sm style-nova:text-sm style-lyra:text-xs style-mira:text-xs flex flex-col gap-1">
+            <div className="leading-none font-medium">{title}</div>
+            <div className="text-muted-foreground line-clamp-2">{children}</div>
           </div>
         </Link>
       </NavigationMenuLink>

@@ -1389,21 +1389,6 @@
       "type": "registry:example"
     },
     {
-      "name": "skeleton-example",
-      "title": "Skeleton",
-      "registryDependencies": [
-        "skeleton",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/base-maia/examples/skeleton-example.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "sidebar-example",
       "title": "Sidebar",
       "registryDependencies": [
@@ -1473,6 +1458,21 @@
       "files": [
         {
           "path": "registry/base-maia/examples/sidebar-floating-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-example",
+      "title": "Skeleton",
+      "registryDependencies": [
+        "skeleton",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-maia/examples/skeleton-example.tsx",
           "type": "registry:example"
         }
       ],

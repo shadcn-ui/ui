@@ -96,7 +96,7 @@ function PopoverAlignments() {
             Start
           </PopoverTrigger>
           <PopoverContent align="start" className="w-40">
-            <div className="text-sm">Aligned to start</div>
+            Aligned to start
           </PopoverContent>
         </Popover>
         <Popover>
@@ -104,7 +104,7 @@ function PopoverAlignments() {
             Center
           </PopoverTrigger>
           <PopoverContent align="center" className="w-40">
-            <div className="text-sm">Aligned to center</div>
+            Aligned to center
           </PopoverContent>
         </Popover>
         <Popover>
@@ -112,7 +112,7 @@ function PopoverAlignments() {
             End
           </PopoverTrigger>
           <PopoverContent align="end" className="w-40">
-            <div className="text-sm">Aligned to end</div>
+            Aligned to end
           </PopoverContent>
         </Popover>
       </div>

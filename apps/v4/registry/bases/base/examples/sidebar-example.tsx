@@ -2,7 +2,6 @@
 
 import * as React from "react"
 
-import { Button } from "@/registry/bases/base/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,7 +13,6 @@ import {
   ItemActions,
   ItemContent,
   ItemDescription,
-  ItemMedia,
   ItemTitle,
 } from "@/registry/bases/base/ui/item"
 import { Label } from "@/registry/bases/base/ui/label"
@@ -186,44 +184,8 @@ export default function SidebarExample() {
                   }
                 >
                   <Item className="p-0" size="xs">
-                    <ItemMedia variant="icon">
-                      <Button
-                        size="icon-sm"
-                        render={<span />}
-                        nativeButton={false}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 256 256"
-                        >
-                          <rect width="256" height="256" fill="none"></rect>
-                          <line
-                            x1="208"
-                            y1="128"
-                            x2="128"
-                            y2="208"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="32"
-                          ></line>
-                          <line
-                            x1="192"
-                            y1="40"
-                            x2="40"
-                            y2="192"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="32"
-                          ></line>
-                        </svg>
-                      </Button>
-                    </ItemMedia>
                     <ItemContent>
-                      <ItemTitle>Documentation</ItemTitle>
+                      <ItemTitle className="text-sm">Documentation</ItemTitle>
                       <ItemDescription>v{selectedVersion}</ItemDescription>
                     </ItemContent>
                     <ItemActions>

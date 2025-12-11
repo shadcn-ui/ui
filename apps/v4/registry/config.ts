@@ -316,6 +316,10 @@ export function buildRegistryTheme(config: DesignSystemConfig) {
     lightVars["accent-foreground"] = lightVars["primary-foreground"]
     darkVars.accent = darkVars.primary
     darkVars["accent-foreground"] = darkVars["primary-foreground"]
+    lightVars["sidebar-accent"] = lightVars.primary
+    lightVars["sidebar-accent-foreground"] = lightVars["primary-foreground"]
+    darkVars["sidebar-accent"] = darkVars.primary
+    darkVars["sidebar-accent-foreground"] = darkVars["primary-foreground"]
   }
 
   // Apply radius transformation.

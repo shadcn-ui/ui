@@ -580,6 +580,63 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-area-example",
+    title: "Scroll Area",
+    type: "registry:example",
+    registryDependencies: ["scroll-area", "separator", "example"],
+    files: [
+      {
+        path: "examples/scroll-area-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "select-example",
+    title: "Select",
+    type: "registry:example",
+    registryDependencies: [
+      "button",
+      "dialog",
+      "field",
+      "input",
+      "item",
+      "native-select",
+      "select",
+      "example",
+    ],
+    files: [
+      {
+        path: "examples/select-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "separator-example",
+    title: "Separator",
+    type: "registry:example",
+    registryDependencies: ["separator", "example"],
+    files: [
+      {
+        path: "examples/separator-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "sheet-example",
+    title: "Sheet",
+    type: "registry:example",
+    registryDependencies: ["button", "field", "input", "sheet", "example"],
+    files: [
+      {
+        path: "examples/sheet-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "sidebar-example",
     title: "Sidebar",
     type: "registry:example",
@@ -646,63 +703,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/sidebar-floating-example.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "scroll-area-example",
-    title: "Scroll Area",
-    type: "registry:example",
-    registryDependencies: ["scroll-area", "separator", "example"],
-    files: [
-      {
-        path: "examples/scroll-area-example.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "select-example",
-    title: "Select",
-    type: "registry:example",
-    registryDependencies: [
-      "button",
-      "dialog",
-      "field",
-      "input",
-      "item",
-      "native-select",
-      "select",
-      "example",
-    ],
-    files: [
-      {
-        path: "examples/select-example.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "separator-example",
-    title: "Separator",
-    type: "registry:example",
-    registryDependencies: ["separator", "example"],
-    files: [
-      {
-        path: "examples/separator-example.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "sheet-example",
-    title: "Sheet",
-    type: "registry:example",
-    registryDependencies: ["button", "field", "input", "sheet", "example"],
-    files: [
-      {
-        path: "examples/sheet-example.tsx",
         type: "registry:example",
       },
     ],

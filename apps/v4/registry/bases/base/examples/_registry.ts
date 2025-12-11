@@ -637,18 +637,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "skeleton-example",
-    title: "Skeleton",
-    type: "registry:example",
-    registryDependencies: ["skeleton", "example"],
-    files: [
-      {
-        path: "examples/skeleton-example.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "sidebar-example",
     title: "Sidebar",
     type: "registry:example",
@@ -715,6 +703,18 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/sidebar-floating-example.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "skeleton-example",
+    title: "Skeleton",
+    type: "registry:example",
+    registryDependencies: ["skeleton", "example"],
+    files: [
+      {
+        path: "examples/skeleton-example.tsx",
         type: "registry:example",
       },
     ],

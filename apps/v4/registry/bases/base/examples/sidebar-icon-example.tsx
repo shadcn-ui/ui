@@ -34,7 +34,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
   SidebarInset,
@@ -240,7 +239,7 @@ export default function SidebarIconExample() {
                     size="icon-sm"
                     render={<span />}
                     nativeButton={false}
-                    className="rounded-lg"
+                    className="size-8 rounded-[calc(var(--radius-sm)+2px)] group-hover/menu-button:bg-red-100"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
