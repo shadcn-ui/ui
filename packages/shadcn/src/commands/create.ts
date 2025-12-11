@@ -4,11 +4,14 @@ import { configWithDefaults } from "@/src/registry/config"
 import { clearRegistryContext } from "@/src/registry/context"
 import { isUrl } from "@/src/registry/utils"
 import { Preset } from "@/src/schema"
+import { addComponents } from "@/src/utils/add-components"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { updateFiles } from "@/src/utils/updaters/update-files"
 import { Command } from "commander"
+import dedent from "dedent"
 import open from "open"
 import prompts from "prompts"
 
@@ -23,13 +26,7 @@ const CREATE_TEMPLATES = {
   start: "TanStack Start",
 } as const
 
-function getShadcnCreateUrl() {
-  return `${SHADCN_URL}/create`
-}
-
-function getShadcnInitUrl() {
-  return `${SHADCN_URL}/init`
-}
+type Template = keyof typeof CREATE_TEMPLATES
 
 export const create = new Command()
   .name("create")
@@ -94,7 +91,7 @@ export const create = new Command()
           type: "text",
           name: "enteredName",
           message: "What is your project named?",
-          initial: "my-app",
+          initial: opts.template ? `${opts.template}-app` : "my-app",
           format: (value: string) => value.trim(),
           validate: (value: string) =>
             value.length > 128
@@ -190,7 +187,24 @@ export const create = new Command()
         skipPreflight: false,
       })
 
-      await runInit(options)
+      const config = await runInit(options)
+
+      // Add component example.
+      if (config) {
+        await addComponents(["component-example"], config, {
+          baseStyle: false,
+          silent: true,
+          overwrite: true,
+        })
+
+        const templateFiles = getTemplateFiles(template as Template)
+        if (templateFiles.length > 0) {
+          await updateFiles(templateFiles, config, {
+            overwrite: true,
+            silent: true,
+          })
+        }
+      }
 
       logger.log(
         `${highlighter.success(
@@ -282,4 +296,68 @@ async function handlePresetOption(presetArg: string | boolean) {
   }
 
   return null
+}
+
+function getTemplateFiles(template: Template) {
+  switch (template) {
+    case "vite":
+      return [
+        {
+          type: "registry:file" as const,
+          path: "src/App.tsx",
+          target: "src/App.tsx",
+          content: dedent`import { ComponentExample } from "@/components/component-example";
+
+export function App() {
+  return <ComponentExample />;
+}
+
+export default App;
+`,
+        },
+      ]
+    case "next":
+      return [
+        {
+          type: "registry:page" as const,
+          path: "app/page.tsx",
+          target: "app/page.tsx",
+          content: dedent`import { ComponentExample } from "@/components/component-example";
+
+export default function Page() {
+  return <ComponentExample />;
+}
+`,
+        },
+      ]
+    case "start":
+      return [
+        {
+          type: "registry:file" as const,
+          path: "src/routes/index.tsx",
+          target: "src/routes/index.tsx",
+          content: dedent`import { createFileRoute } from "@tanstack/react-router";
+import { ComponentExample } from "@/components/component-example";
+
+export const Route = createFileRoute("/")({ component: App });
+
+function App() {
+  return (
+    <ComponentExample />
+  );
+}
+`,
+        },
+      ]
+    default:
+      return []
+  }
+}
+
+function getShadcnCreateUrl() {
+  return `${SHADCN_URL}/create`
+}
+
+function getShadcnInitUrl() {
+  return `${SHADCN_URL}/init`
 }
