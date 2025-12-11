@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Combobox as ComboboxPrimitive } from "@base-ui-components/react"
+import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 import { IconCheck, IconChevronDown, IconX } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"

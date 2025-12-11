@@ -29,6 +29,7 @@ const getInitialValues = (): DesignSystemSearchParams => {
       radius: "default",
       size: 100,
       custom: false,
+      template: "next",
     }
   }
 
@@ -55,6 +56,8 @@ const getInitialValues = (): DesignSystemSearchParams => {
       "default") as DesignSystemSearchParams["radius"],
     size: parseInt(searchParams.get("size") || "100"),
     custom: (searchParams.get("custom") || "false") === "true",
+    template: (searchParams.get("template") ||
+      "next") as DesignSystemSearchParams["template"],
   }
 }
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { Switch as SwitchPrimitive } from "@base-ui-components/react/switch"
+import { Switch as SwitchPrimitive } from "@base-ui/react/switch"
 
 import { cn } from "@/registry/bases/base/lib/utils"
 

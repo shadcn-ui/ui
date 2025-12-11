@@ -177,7 +177,7 @@
     {
       "name": "combobox",
       "dependencies": [
-        "@base-ui-components/react"
+        "@base-ui/react"
       ],
       "registryDependencies": [
         "button",
