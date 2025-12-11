@@ -662,7 +662,7 @@ function DropdownMenuComplex() {
         >
           Complex Menu
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="style-maia:w-56 style-mira:w-56 w-48">
+        <DropdownMenuContent className="style-maia:w-56 style-mira:w-48 style-nova:w-48 style-vega:w-56 style-lyra:w-48">
           <DropdownMenuGroup>
             <DropdownMenuLabel>File</DropdownMenuLabel>
             <DropdownMenuItem>

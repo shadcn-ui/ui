@@ -470,7 +470,7 @@
   }
 
   .cn-drawer-content {
-    @apply before:bg-background relative flex h-auto flex-col bg-transparent p-4 text-xs/relaxed before:absolute before:inset-2 before:-z-10 before:rounded-md data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=left]:sm:max-w-sm data-[vaul-drawer-direction=right]:sm:max-w-sm;
+    @apply before:bg-background relative flex h-auto flex-col bg-transparent p-2 text-xs/relaxed before:absolute before:inset-2 before:-z-10 before:rounded-xl data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=left]:sm:max-w-sm data-[vaul-drawer-direction=right]:sm:max-w-sm;
   }
 
   .cn-drawer-handle {
@@ -478,7 +478,7 @@
   }
 
   .cn-drawer-header {
-    @apply gap-0.5 p-4 group-data-[vaul-drawer-direction=bottom]/drawer-content:text-center group-data-[vaul-drawer-direction=top]/drawer-content:text-center md:gap-1.5 md:text-left;
+    @apply gap-1 p-4 group-data-[vaul-drawer-direction=bottom]/drawer-content:text-center group-data-[vaul-drawer-direction=top]/drawer-content:text-center md:text-left;
   }
 
   .cn-drawer-title {
@@ -540,11 +540,11 @@
 
   /* MARK: Empty */
   .cn-empty {
-    @apply gap-4 rounded-lg border-dashed p-12;
+    @apply gap-4 rounded-xl border-dashed p-6;
   }
 
   .cn-empty-header {
-    @apply gap-2;
+    @apply gap-1;
   }
 
   .cn-empty-media {
@@ -556,11 +556,11 @@
   }
 
   .cn-empty-media-icon {
-    @apply bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-6;
+    @apply bg-muted text-foreground flex size-8 shrink-0 items-center justify-center rounded-md [&_svg:not([class*='size-'])]:size-4;
   }
 
   .cn-empty-title {
-    @apply text-lg font-medium tracking-tight;
+    @apply text-sm font-medium tracking-tight;
   }
 
   .cn-empty-description {
@@ -568,7 +568,7 @@
   }
 
   .cn-empty-content {
-    @apply gap-4 text-xs/relaxed;
+    @apply gap-2 text-xs/relaxed;
   }
 
   /* MARK: Field */
@@ -618,7 +618,7 @@
 
   /* MARK: Hover Card */
   .cn-hover-card-content {
-    @apply data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 bg-popover text-popover-foreground w-72 rounded-md p-4 text-xs/relaxed shadow-md ring-1 duration-100;
+    @apply data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 bg-popover text-popover-foreground w-72 rounded-lg p-2.5 text-xs/relaxed shadow-md ring-1 duration-100;
   }
 
   /* MARK: Input */
@@ -636,7 +636,7 @@
   }
 
   .cn-input-otp-slot {
-    @apply bg-input/20 dark:bg-input/30 border-input data-[active=true]:border-ring data-[active=true]:ring-ring/30 data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive size-9 border-y border-r text-xs/relaxed transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md data-[active=true]:ring-[2px];
+    @apply bg-input/20 dark:bg-input/30 border-input data-[active=true]:border-ring data-[active=true]:ring-ring/30 data-[active=true]:aria-invalid:ring-destructive/20 dark:data-[active=true]:aria-invalid:ring-destructive/40 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive size-7 border-y border-r text-xs/relaxed transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md data-[active=true]:ring-[2px];
   }
 
   .cn-input-otp-caret-line {
@@ -652,28 +652,16 @@
     @apply [a]:hover:bg-muted rounded-md border text-xs/relaxed;
   }
 
-  .cn-item-variant-default {
-    @apply border-transparent;
-  }
-
-  .cn-item-variant-outline {
-    @apply border-border;
-  }
-
-  .cn-item-variant-muted {
-    @apply bg-muted/50 border-transparent;
-  }
-
   .cn-item-size-default {
-    @apply gap-3.5 px-4 py-3.5;
+    @apply gap-2.5 px-3 py-2.5;
   }
 
   .cn-item-size-sm {
-    @apply gap-3.5 px-3.5 py-3;
+    @apply gap-2.5 px-3 py-2.5;
   }
 
   .cn-item-size-xs {
-    @apply gap-2.5 px-3 py-2.5 [[data-slot=dropdown-menu-content]_&]:p-0;
+    @apply gap-2.5 px-2.5 py-2 [[data-slot=dropdown-menu-content]_&]:p-0;
   }
 
   .cn-item-media {
@@ -689,7 +677,7 @@
   }
 
   .cn-item-media-variant-image {
-    @apply size-10 overflow-hidden rounded-lg group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6 group-data-[size=xs]/item:rounded-md [&_img]:size-full [&_img]:object-cover;
+    @apply size-8 overflow-hidden rounded-sm group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6 [&_img]:size-full [&_img]:object-cover;
   }
 
   .cn-item-content {
@@ -726,7 +714,7 @@
 
   /* MARK: Kbd */
   .cn-kbd {
-    @apply bg-muted text-muted-foreground [[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10 h-5 w-fit min-w-5 gap-1 rounded-sm px-1 font-sans text-xs/relaxed font-medium [&_svg:not([class*='size-'])]:size-3;
+    @apply bg-muted text-muted-foreground [[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10 h-5 w-fit min-w-5 gap-1 rounded-xs px-1 font-sans text-[0.625rem] font-medium [&_svg:not([class*='size-'])]:size-3;
   }
 
   .cn-kbd-group {

@@ -33,6 +33,7 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 export default function InputOTPExample() {
   return (
     <ExampleWrapper>
+      <InputOTPForm />
       <InputOTPSimple />
       <InputOTPPattern />
       <InputOTPWithSeparator />
@@ -40,7 +41,6 @@ export default function InputOTPExample() {
       <InputOTPDisabled />
       <InputOTPFourDigits />
       <InputOTPInvalid />
-      <InputOTPForm />
     </ExampleWrapper>
   )
 }
@@ -172,67 +172,6 @@ function InputOTPDisabled() {
   )
 }
 
-function InputOTPError() {
-  const [value, setValue] = React.useState("")
-  const [error, setError] = React.useState(false)
-
-  React.useEffect(() => {
-    if (value.length === 6) {
-      setError(value !== "123456")
-    } else {
-      setError(false)
-    }
-  }, [value])
-
-  return (
-    <Example title="With Validation">
-      <Field>
-        <FieldLabel htmlFor="error">With Validation</FieldLabel>
-        <InputOTP id="error" maxLength={6} value={value} onChange={setValue}>
-          <InputOTPGroup>
-            <InputOTPSlot
-              index={0}
-              aria-invalid={error && value.length === 6}
-            />
-            <InputOTPSlot
-              index={1}
-              aria-invalid={error && value.length === 6}
-            />
-            <InputOTPSlot
-              index={2}
-              aria-invalid={error && value.length === 6}
-            />
-          </InputOTPGroup>
-          <InputOTPSeparator />
-          <InputOTPGroup>
-            <InputOTPSlot
-              index={3}
-              aria-invalid={error && value.length === 6}
-            />
-            <InputOTPSlot
-              index={4}
-              aria-invalid={error && value.length === 6}
-            />
-            <InputOTPSlot
-              index={5}
-              aria-invalid={error && value.length === 6}
-            />
-          </InputOTPGroup>
-        </InputOTP>
-        {error ? (
-          <FieldError
-            errors={[{ message: "Invalid code. Please try again." }]}
-          />
-        ) : (
-          <FieldDescription>
-            Enter 123456 to see success state.
-          </FieldDescription>
-        )}
-      </Field>
-    </Example>
-  )
-}
-
 function InputOTPFourDigits() {
   return (
     <Example title="4 Digits">
@@ -313,13 +252,13 @@ function InputOTPForm() {
                 </Button>
               </div>
               <InputOTP maxLength={6} id="otp-verification" required>
-                <InputOTPGroup className="style-nova:*:data-[slot=input-otp-slot]:h-12 style-nova:*:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:h-16 *:data-[slot=input-otp-slot]:w-12 *:data-[slot=input-otp-slot]:text-xl">
+                <InputOTPGroup className="style-nova:*:data-[slot=input-otp-slot]:h-12 style-nova:*:data-[slot=input-otp-slot]:w-11 style-vega:*:data-[slot=input-otp-slot]:h-16 style-maia:*:data-[slot=input-otp-slot]:h-16 style-vega:*:data-[slot=input-otp-slot]:w-12 style-maia:*:data-[slot=input-otp-slot]:w-12 style-mira:*:data-[slot=input-otp-slot]:h-12 style-lyra:*:data-[slot=input-otp-slot]:h-12 style-lyra:*:data-[slot=input-otp-slot]:w-11 style-mira:*:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
                   <InputOTPSlot index={0} />
                   <InputOTPSlot index={1} />
                   <InputOTPSlot index={2} />
                 </InputOTPGroup>
                 <InputOTPSeparator />
-                <InputOTPGroup className="style-nova:*:data-[slot=input-otp-slot]:h-12 style-nova:*:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:h-16 *:data-[slot=input-otp-slot]:w-12 *:data-[slot=input-otp-slot]:text-xl">
+                <InputOTPGroup className="style-nova:*:data-[slot=input-otp-slot]:h-12 style-nova:*:data-[slot=input-otp-slot]:w-11 style-vega:*:data-[slot=input-otp-slot]:h-16 style-maia:*:data-[slot=input-otp-slot]:h-16 style-vega:*:data-[slot=input-otp-slot]:w-12 style-maia:*:data-[slot=input-otp-slot]:w-12 style-mira:*:data-[slot=input-otp-slot]:h-12 style-lyra:*:data-[slot=input-otp-slot]:h-12 style-lyra:*:data-[slot=input-otp-slot]:w-11 style-mira:*:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
                   <InputOTPSlot index={3} />
                   <InputOTPSlot index={4} />
                   <InputOTPSlot index={5} />
