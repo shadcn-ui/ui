@@ -53,8 +53,7 @@ export const create = new Command()
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .action(async (name, opts) => {
-    // eslint-disable-next-line turbo/no-undeclared-env-vars
-    if (!process.env.SHADCN_BETA) {
+    if (process.env.REGISTRY_URL !== `${SHADCN_URL}/r`) {
       process.exit(1)
     }
     try {
