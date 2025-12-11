@@ -1,5 +1,6 @@
 {
-  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ui.shadcn.com/schema/registry-item.json",
   "type": "object",
   "properties": {
     "name": {
@@ -18,7 +19,9 @@
         "registry:page",
         "registry:file",
         "registry:style",
-        "registry:item"
+        "registry:item",
+        "registry:example",
+        "registry:internal"
       ],
       "description": "The type of the item. This is used to determine the type and target path of the item when resolved for a project."
     },
@@ -81,7 +84,9 @@
               "registry:page",
               "registry:file",
               "registry:style",
-              "registry:item"
+              "registry:item",
+              "registry:example",
+              "registry:internal"
             ],
             "description": "The type of the file. This is used to determine the type of the file when resolved for a project."
           },
