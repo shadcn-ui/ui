@@ -158,7 +158,7 @@
   }
 
   [data-slot="layout"] {
-    @apply 3xl:p-2 3xl:fixed:p-0 overscroll-none;
+    @apply overscroll-none;
   }
 
   @supports (font: -apple-system-body) and (-webkit-appearance: none) {

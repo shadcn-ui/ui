@@ -26,6 +26,7 @@ import {
   DEFAULT_TAILWIND_CONFIG,
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
+  createConfig,
   getConfig,
   resolveConfigPaths,
   type Config,
@@ -161,7 +162,13 @@ export const init = new Command()
       if (components.length > 0) {
         // We don't know the full config at this point.
         // So we'll use a shadow config to fetch the first item.
-        let shadowConfig = configWithDefaults({})
+        let shadowConfig = configWithDefaults(
+          createConfig({
+            resolvedPaths: {
+              cwd: options.cwd,
+            },
+          })
+        )
 
         // Check if there's a components.json file.
         // If so, we'll merge with our shadow config.
@@ -169,7 +176,18 @@ export const init = new Command()
         if (fsExtra.existsSync(componentsJsonPath)) {
           const existingConfig = await fsExtra.readJson(componentsJsonPath)
           const config = rawConfigSchema.partial().parse(existingConfig)
-          shadowConfig = configWithDefaults(config)
+          const baseConfig = createConfig({
+            resolvedPaths: {
+              cwd: options.cwd,
+            },
+          })
+          shadowConfig = configWithDefaults({
+            ...config,
+            resolvedPaths: {
+              ...baseConfig.resolvedPaths,
+              cwd: options.cwd,
+            },
+          })
 
           // Since components.json might not be valid at this point.
           // Temporarily rename components.json to allow preflight to run.
@@ -183,6 +201,7 @@ export const init = new Command()
           shadowConfig,
           {
             silent: true,
+            writeFile: false,
           }
         )
         shadowConfig = updatedConfig
@@ -218,7 +237,7 @@ export const init = new Command()
         )} Project initialization completed.\nYou may now add components.`
       )
 
-      // We need when runninng with custom cwd.
+      // We need when running with custom cwd.
       deleteFileBackup(path.resolve(options.cwd, "components.json"))
       logger.break()
     } catch (error) {
