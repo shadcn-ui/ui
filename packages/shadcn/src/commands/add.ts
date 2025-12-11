@@ -134,14 +134,20 @@ export const add = new Command()
       }
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
+      let shouldInstallBaseStyle = true
       if (components.length > 0) {
         const [registryItem] = await getRegistryItems([components[0]], {
           config: initialConfig,
         })
         itemType = registryItem?.type
+        shouldInstallBaseStyle =
+          itemType !== "registry:theme" && itemType !== "registry:style"
 
         if (isUniversalRegistryItem(registryItem)) {
-          await addComponents(components, initialConfig, options)
+          await addComponents(components, initialConfig, {
+            ...options,
+            baseStyle: shouldInstallBaseStyle,
+          })
           return
         }
 
@@ -214,11 +220,12 @@ export const add = new Command()
           force: true,
           defaults: false,
           skipPreflight: false,
-          silent: options.silent || !hasNewRegistries,
+          silent: options.silent && !hasNewRegistries,
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
-          baseStyle: itemType !== "registry:theme",
+          baseStyle: shouldInstallBaseStyle,
+          baseColor: shouldInstallBaseStyle ? undefined : "neutral",
           components: options.components,
         })
         initHasRun = true
@@ -253,7 +260,8 @@ export const add = new Command()
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
-            baseStyle: itemType !== "registry:theme",
+            baseStyle: shouldInstallBaseStyle,
+            baseColor: shouldInstallBaseStyle ? undefined : "neutral",
             components: options.components,
           })
           initHasRun = true
@@ -282,7 +290,7 @@ export const add = new Command()
       if (!initHasRun) {
         await addComponents(options.components, config, {
           ...options,
-          baseStyle: itemType !== "registry:theme",
+          baseStyle: shouldInstallBaseStyle,
         })
       }
 
