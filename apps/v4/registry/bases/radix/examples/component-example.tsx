@@ -56,7 +56,7 @@ import {
 import { Textarea } from "@/registry/bases/radix/ui/textarea"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-export default function CoverExample() {
+export function ComponentExample() {
   return (
     <ExampleWrapper>
       <CardExample />
@@ -87,7 +87,15 @@ function CardExample() {
         <CardFooter>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button>Connect Mouse</Button>
+              <Button>
+                <IconPlaceholder
+                  lucide="PlusIcon"
+                  tabler="IconPlus"
+                  hugeicons="PlusSignIcon"
+                  data-icon="inline-start"
+                />
+                Show Dialog
+              </Button>
             </AlertDialogTrigger>
             <AlertDialogContent size="sm">
               <AlertDialogHeader>
