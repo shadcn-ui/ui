@@ -41,7 +41,7 @@ export default function ToggleGroupExample() {
 function ToggleGroupBasic() {
   return (
     <Example title="Basic">
-      <ToggleGroup multiple spacing={2}>
+      <ToggleGroup multiple spacing={1}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -183,7 +183,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="star"
           aria-label="Toggle star"
-          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-yellow-500 aria-pressed:*:[svg]:stroke-yellow-500"
+          className="aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foreground aria-pressed:bg-transparent"
         >
           <IconPlaceholder
             lucide="StarIcon"
@@ -195,7 +195,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="heart"
           aria-label="Toggle heart"
-          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-red-500 aria-pressed:*:[svg]:stroke-red-500"
+          className="aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foreground aria-pressed:bg-transparent"
         >
           <IconPlaceholder
             lucide="HeartIcon"
@@ -207,7 +207,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="bookmark"
           aria-label="Toggle bookmark"
-          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-blue-500 aria-pressed:*:[svg]:stroke-blue-500"
+          className="aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foreground aria-pressed:bg-transparent"
         >
           <IconPlaceholder
             lucide="BookmarkIcon"
@@ -341,7 +341,7 @@ function ToggleGroupWithInputAndSelect() {
 function ToggleGroupVertical() {
   return (
     <Example title="Vertical">
-      <ToggleGroup multiple orientation="vertical" spacing={2}>
+      <ToggleGroup multiple orientation="vertical" spacing={1}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -432,7 +432,7 @@ function ToggleGroupVerticalWithSpacing() {
         defaultValue={["top"]}
         variant="outline"
         orientation="vertical"
-        spacing={2}
+        spacing={1}
       >
         <ToggleGroupItem value="top" aria-label="Toggle top">
           Top

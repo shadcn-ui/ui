@@ -6,6 +6,7 @@ import { Input } from "@/registry/bases/radix/ui/input"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -40,7 +41,7 @@ export default function ToggleGroupExample() {
 function ToggleGroupBasic() {
   return (
     <Example title="Basic">
-      <ToggleGroup type="multiple" spacing={2}>
+      <ToggleGroup type="multiple" spacing={1}>
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <IconPlaceholder
             lucide="BoldIcon"
@@ -184,11 +185,11 @@ function ToggleGroupSpacing() {
 function ToggleGroupWithIcons() {
   return (
     <Example title="With Icons">
-      <ToggleGroup type="multiple" variant="outline" spacing={2} size="sm">
+      <ToggleGroup type="multiple" variant="outline" spacing={1} size="sm">
         <ToggleGroupItem
           value="star"
           aria-label="Toggle star"
-          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-yellow-500 aria-pressed:*:[svg]:stroke-yellow-500"
+          className="aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foregfill-foreground aria-pressed:bg-transparent"
         >
           <IconPlaceholder
             lucide="StarIcon"
@@ -200,7 +201,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="heart"
           aria-label="Toggle heart"
-          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-red-500 aria-pressed:*:[svg]:stroke-red-500"
+          className="aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foreground aria-pressed:bg-transparent"
         >
           <IconPlaceholder
             lucide="HeartIcon"
@@ -212,7 +213,7 @@ function ToggleGroupWithIcons() {
         <ToggleGroupItem
           value="bookmark"
           aria-label="Toggle bookmark"
-          className="aria-pressed:bg-transparent aria-pressed:*:[svg]:fill-blue-500 aria-pressed:*:[svg]:stroke-blue-500"
+          className="aria-pressed:*:[svg]:fill-foreground aria-pressed:*:[svg]:stroke-foreground aria-pressed:bg-transparent"
         >
           <IconPlaceholder
             lucide="BookmarkIcon"
@@ -322,9 +323,11 @@ function ToggleGroupWithInputAndSelect() {
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            <SelectItem value="active">Active</SelectItem>
-            <SelectItem value="archived">Archived</SelectItem>
+            <SelectGroup>
+              <SelectItem value="all">All</SelectItem>
+              <SelectItem value="active">Active</SelectItem>
+              <SelectItem value="archived">Archived</SelectItem>
+            </SelectGroup>
           </SelectContent>
         </Select>
         <ToggleGroup type="single" defaultValue="grid" variant="outline">

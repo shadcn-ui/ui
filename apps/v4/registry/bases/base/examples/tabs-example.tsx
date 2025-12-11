@@ -34,8 +34,6 @@ export default function TabsExample() {
       <TabsLineDisabled />
       <TabsWithDropdown />
       <TabsVertical />
-      <TabsNestedLineInDefault />
-      <TabsNestedDefaultInLine />
       <TabsWithInputAndButton />
     </ExampleWrapper>
   )
@@ -187,30 +185,17 @@ function TabsWithContent() {
           <TabsTrigger value="password">Password</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
-        <TabsContent value="account">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Account Settings</h3>
-            <p className="text-muted-foreground text-sm">
-              Manage your account preferences and profile information.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="password">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Password Settings</h3>
-            <p className="text-muted-foreground text-sm">
-              Update your password to keep your account secure.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="notifications">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Notification Settings</h3>
-            <p className="text-muted-foreground text-sm">
-              Configure how you receive notifications and alerts.
-            </p>
-          </div>
-        </TabsContent>
+        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+          <TabsContent value="account">
+            Manage your account preferences and profile information.
+          </TabsContent>
+          <TabsContent value="password">
+            Update your password to keep your account secure.
+          </TabsContent>
+          <TabsContent value="notifications">
+            Configure how you receive notifications and alerts.
+          </TabsContent>
+        </div>
       </Tabs>
     </Example>
   )
@@ -225,30 +210,17 @@ function TabsLineWithContent() {
           <TabsTrigger value="password">Password</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
-        <TabsContent value="account">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Account Settings</h3>
-            <p className="text-muted-foreground text-sm">
-              Manage your account preferences and profile information.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="password">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Password Settings</h3>
-            <p className="text-muted-foreground text-sm">
-              Update your password to keep your account secure.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="notifications">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Notification Settings</h3>
-            <p className="text-muted-foreground text-sm">
-              Configure how you receive notifications and alerts.
-            </p>
-          </div>
-        </TabsContent>
+        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+          <TabsContent value="account">
+            Manage your account preferences and profile information.
+          </TabsContent>
+          <TabsContent value="password">
+            Update your password to keep your account secure.
+          </TabsContent>
+          <TabsContent value="notifications">
+            Configure how you receive notifications and alerts.
+          </TabsContent>
+        </div>
       </Tabs>
     </Example>
   )
@@ -299,30 +271,18 @@ function TabsWithDropdown() {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <TabsContent value="overview">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Overview</h3>
-            <p className="text-muted-foreground text-sm">
-              View your dashboard metrics and key performance indicators.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="analytics">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Analytics</h3>
-            <p className="text-muted-foreground text-sm">
-              Detailed analytics and insights about your data.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="reports">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Reports</h3>
-            <p className="text-muted-foreground text-sm">
-              Generate and view custom reports.
-            </p>
-          </div>
-        </TabsContent>
+
+        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+          <TabsContent value="overview">
+            View your dashboard metrics and key performance indicators.
+          </TabsContent>
+          <TabsContent value="analytics">
+            Detailed analytics and insights about your data.
+          </TabsContent>
+          <TabsContent value="reports">
+            Generate and view custom reports.
+          </TabsContent>
+        </div>
       </Tabs>
     </Example>
   )
@@ -337,185 +297,20 @@ function TabsVertical() {
           <TabsTrigger value="password">Password</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
-        <TabsContent value="account">
-          <div className="rounded-lg border p-6">
-            <h3 className="mb-4 text-base font-semibold">Account Settings</h3>
-            <p className="text-muted-foreground mb-6 text-sm">
-              Manage your account preferences and profile information.
-            </p>
-            <div className="flex flex-col gap-4">
-              <div>
-                <label className="mb-2 block text-sm font-medium">
-                  Display Name
-                </label>
-                <p className="text-muted-foreground text-sm">
-                  Your display name appears on your profile and in comments.
-                </p>
-              </div>
-            </div>
-          </div>
-        </TabsContent>
-        <TabsContent value="password">
-          <div className="rounded-lg border p-6">
-            <h3 className="mb-4 text-base font-semibold">Password Settings</h3>
-            <p className="text-muted-foreground mb-6 text-sm">
-              Update your password to keep your account secure. Use a strong
-              password with a mix of letters, numbers, and symbols.
-            </p>
-            <div className="flex flex-col gap-4">
-              <div>
-                <h4 className="mb-2 text-sm font-medium">
-                  Password Requirements
-                </h4>
-                <ul className="text-muted-foreground ml-4 list-disc space-y-1 text-sm">
-                  <li>At least 8 characters long</li>
-                  <li>Contains uppercase and lowercase letters</li>
-                  <li>Includes at least one number</li>
-                  <li>Contains at least one special character</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </TabsContent>
-        <TabsContent value="notifications">
-          <div className="rounded-lg border p-6">
-            <h3 className="mb-4 text-base font-semibold">
-              Notification Settings
-            </h3>
-            <p className="text-muted-foreground mb-6 text-sm">
-              Configure how you receive notifications and alerts. Choose which
-              types of notifications you want to receive and how you want to
-              receive them.
-            </p>
-            <div className="flex flex-col gap-6">
-              <div>
-                <h4 className="mb-3 text-sm font-medium">
-                  Email Notifications
-                </h4>
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">New comments</span>
-                    <span className="text-muted-foreground text-xs">
-                      Enabled
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Weekly digest</span>
-                    <span className="text-muted-foreground text-xs">
-                      Enabled
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">Security alerts</span>
-                    <span className="text-muted-foreground text-xs">
-                      Enabled
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </TabsContent>
-      </Tabs>
-    </Example>
-  )
-}
-
-function TabsNestedLineInDefault() {
-  return (
-    <Example title="Nested Line in Default">
-      <Tabs defaultValue="overview">
-        <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
-        </TabsList>
-        <TabsContent value="overview">
-          <div className="rounded-lg border p-4">
-            <Tabs defaultValue="dashboard">
-              <TabsList variant="line">
-                <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
-                <TabsTrigger value="reports">Reports</TabsTrigger>
-              </TabsList>
-              <TabsContent value="dashboard">
-                <p className="text-muted-foreground text-sm">
-                  Dashboard content goes here.
-                </p>
-              </TabsContent>
-              <TabsContent value="reports">
-                <p className="text-muted-foreground text-sm">
-                  Reports content goes here.
-                </p>
-              </TabsContent>
-            </Tabs>
-          </div>
-        </TabsContent>
-        <TabsContent value="analytics">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Analytics</h3>
-            <p className="text-muted-foreground text-sm">
-              View your analytics data here.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="settings">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Settings</h3>
-            <p className="text-muted-foreground text-sm">
-              Configure your settings here.
-            </p>
-          </div>
-        </TabsContent>
-      </Tabs>
-    </Example>
-  )
-}
-
-function TabsNestedDefaultInLine() {
-  return (
-    <Example title="Nested Default in Line">
-      <Tabs defaultValue="overview">
-        <TabsList variant="line">
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
-        </TabsList>
-        <TabsContent value="overview">
-          <div className="rounded-lg border p-4">
-            <Tabs defaultValue="dashboard">
-              <TabsList>
-                <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
-                <TabsTrigger value="reports">Reports</TabsTrigger>
-              </TabsList>
-              <TabsContent value="dashboard">
-                <p className="text-muted-foreground text-sm">
-                  Dashboard content goes here.
-                </p>
-              </TabsContent>
-              <TabsContent value="reports">
-                <p className="text-muted-foreground text-sm">
-                  Reports content goes here.
-                </p>
-              </TabsContent>
-            </Tabs>
-          </div>
-        </TabsContent>
-        <TabsContent value="analytics">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Analytics</h3>
-            <p className="text-muted-foreground text-sm">
-              View your analytics data here.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="settings">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Settings</h3>
-            <p className="text-muted-foreground text-sm">
-              Configure your settings here.
-            </p>
-          </div>
-        </TabsContent>
+        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+          <TabsContent value="account">
+            Manage your account preferences and profile information.
+          </TabsContent>
+          <TabsContent value="password">
+            Update your password to keep your account secure. Use a strong
+            password with a mix of letters, numbers, and symbols.
+          </TabsContent>
+          <TabsContent value="notifications">
+            Configure how you receive notifications and alerts. Choose which
+            types of notifications you want to receive and how you want to
+            receive them.
+          </TabsContent>
+        </div>
       </Tabs>
     </Example>
   )
@@ -535,30 +330,17 @@ function TabsWithInputAndButton() {
             <Button>Action</Button>
           </div>
         </div>
-        <TabsContent value="overview">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Overview</h3>
-            <p className="text-muted-foreground text-sm">
-              View your dashboard metrics and key performance indicators.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="analytics">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Analytics</h3>
-            <p className="text-muted-foreground text-sm">
-              Detailed analytics and insights about your data.
-            </p>
-          </div>
-        </TabsContent>
-        <TabsContent value="reports">
-          <div className="rounded-lg border p-4">
-            <h3 className="mb-2 text-sm font-medium">Reports</h3>
-            <p className="text-muted-foreground text-sm">
-              Generate and view custom reports.
-            </p>
-          </div>
-        </TabsContent>
+        <div className="style-nova:p-4 style-vega:p-6 style-maia:p-6 style-mira:p-4 style-lyra:p-4 style-nova:rounded-lg style-vega:rounded-lg style-maia:rounded-xl style-mira:rounded-md style-lyra:rounded-none border">
+          <TabsContent value="overview">
+            View your dashboard metrics and key performance indicators.
+          </TabsContent>
+          <TabsContent value="analytics">
+            Detailed analytics and insights about your data.
+          </TabsContent>
+          <TabsContent value="reports">
+            Generate and view custom reports.
+          </TabsContent>
+        </div>
       </Tabs>
     </Example>
   )

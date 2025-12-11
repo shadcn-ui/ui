@@ -239,7 +239,7 @@ export default function SidebarIconExample() {
                     size="icon-sm"
                     render={<span />}
                     nativeButton={false}
-                    className="size-8 rounded-[calc(var(--radius-sm)+2px)] group-hover/menu-button:bg-red-100"
+                    className="size-8"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

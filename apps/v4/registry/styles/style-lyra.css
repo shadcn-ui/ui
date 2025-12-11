@@ -1189,7 +1189,11 @@
   }
 
   .cn-tabs-trigger {
-    @apply gap-1.5 rounded-none border border-transparent px-1.5 py-0.5 text-xs font-medium group-data-vertical/tabs:py-[calc(--spacing(1.25))];
+    @apply gap-1.5 rounded-none border border-transparent px-1.5 py-0.5 text-xs font-medium group-data-vertical/tabs:py-[calc(--spacing(1.25))] [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-tabs-content {
+    @apply text-xs/relaxed;
   }
 
   /* MARK: Textarea */

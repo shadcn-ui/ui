@@ -233,11 +233,7 @@ export default function SidebarIconExample() {
                     size="lg"
                     className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
                   >
-                    <Button
-                      size="icon-sm"
-                      asChild
-                      className="size-8 rounded-[calc(var(--radius-sm)+2px)]"
-                    >
+                    <Button size="icon-sm" asChild className="size-8">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

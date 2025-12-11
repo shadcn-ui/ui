@@ -14,6 +14,7 @@ import { Input } from "@/registry/bases/radix/ui/input"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -361,10 +362,12 @@ function TableWithSelect() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="sarah">Sarah Chen</SelectItem>
-                  <SelectItem value="marcus">Marc Rodriguez</SelectItem>
-                  <SelectItem value="emily">Emily Watson</SelectItem>
-                  <SelectItem value="david">David Kim</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="sarah">Sarah Chen</SelectItem>
+                    <SelectItem value="marcus">Marc Rodriguez</SelectItem>
+                    <SelectItem value="emily">Emily Watson</SelectItem>
+                    <SelectItem value="david">David Kim</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </TableCell>
@@ -378,10 +381,12 @@ function TableWithSelect() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="sarah">Sarah Chen</SelectItem>
-                  <SelectItem value="marcus">Marc Rodriguez</SelectItem>
-                  <SelectItem value="emily">Emily Watson</SelectItem>
-                  <SelectItem value="david">David Kim</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="sarah">Sarah Chen</SelectItem>
+                    <SelectItem value="marcus">Marc Rodriguez</SelectItem>
+                    <SelectItem value="emily">Emily Watson</SelectItem>
+                    <SelectItem value="david">David Kim</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </TableCell>
@@ -395,10 +400,12 @@ function TableWithSelect() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="sarah">Sarah Chen</SelectItem>
-                  <SelectItem value="marcus">Marc Rodriguez</SelectItem>
-                  <SelectItem value="emily">Emily Watson</SelectItem>
-                  <SelectItem value="david">David Kim</SelectItem>
+                  <SelectGroup>
+                    <SelectItem value="sarah">Sarah Chen</SelectItem>
+                    <SelectItem value="marcus">Marc Rodriguez</SelectItem>
+                    <SelectItem value="emily">Emily Watson</SelectItem>
+                    <SelectItem value="david">David Kim</SelectItem>
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </TableCell>

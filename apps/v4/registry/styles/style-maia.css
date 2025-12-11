@@ -1214,7 +1214,11 @@
   }
 
   .cn-tabs-trigger {
-    @apply gap-1.5 rounded-xl border border-transparent px-2 py-1 text-sm font-medium group-data-vertical/tabs:px-2.5 group-data-vertical/tabs:py-1.5;
+    @apply gap-1.5 rounded-xl border border-transparent px-2 py-1 text-sm font-medium group-data-vertical/tabs:px-2.5 group-data-vertical/tabs:py-1.5 [&_svg:not([class*='size-'])]:size-4;
+  }
+
+  .cn-tabs-content {
+    @apply text-sm;
   }
 
   /* MARK: Textarea */
@@ -1236,11 +1240,11 @@
   }
 
   .cn-toggle-size-default {
-    @apply h-9 min-w-9 px-[calc(--spacing(2.25))];
+    @apply h-9 min-w-9 rounded-[min(var(--radius-2xl),12px)] px-2.5;
   }
 
   .cn-toggle-size-sm {
-    @apply h-8 min-w-8 px-[calc(--spacing(1.7))];
+    @apply h-8 min-w-8 px-3;
   }
 
   .cn-toggle-size-lg {
@@ -1253,7 +1257,7 @@
   }
 
   .cn-toggle-group-item {
-    @apply data-[state=on]:bg-muted group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 group-data-[spacing=0]/toggle-group:shadow-none group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-l-md group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-t-md group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-r-md group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-b-md;
+    @apply data-[state=on]:bg-muted group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-3 group-data-[spacing=0]/toggle-group:shadow-none group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-l-4xl group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-t-xl group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-r-4xl group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-b-xl;
   }
 
   /* MARK: Tooltip */
