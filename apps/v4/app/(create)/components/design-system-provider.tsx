@@ -26,6 +26,7 @@ export function DesignSystemProvider({
 
   React.useEffect(() => {
     if (!style || !theme || !font || !baseColor) {
+      setIsReady(false)
       return
     }
 
