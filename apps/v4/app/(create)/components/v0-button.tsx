@@ -45,7 +45,7 @@ export function V0Button({ className }: { className?: string }) {
             asChild
           >
             <a
-              href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${encodeURIComponent(url)}`}
+              href={`${process.env.NEXT_PUBLIC_V0_URL}/chat/api/open?url=${encodeURIComponent(url)}&title=${params.item}`}
               target="_blank"
             >
               Open in <Icons.v0 className="size-5" />

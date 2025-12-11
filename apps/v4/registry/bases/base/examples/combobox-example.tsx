@@ -1233,7 +1233,6 @@ function ComboboxWithOtherInputs() {
           lucide="ChevronDownIcon"
           tabler="IconSelector"
           hugeicons="UnfoldMoreIcon"
-          data-icon="inline-end"
         />
       </Button>
       <Input placeholder="Select a framework" className="w-52" />
