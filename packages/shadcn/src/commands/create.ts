@@ -34,7 +34,10 @@ export const create = new Command()
   .name("create")
   .description("create a new project with shadcn/ui")
   .argument("[name]", "the name of your project")
-  .option("-t, --template <template>", "the template to use. e.g. next")
+  .option(
+    "-t, --template <template>",
+    "the template to use. e.g. next, start or vite"
+  )
   .option("-p, --preset [name]", "use a preset configuration")
   .option(
     "-c, --cwd <cwd>",
