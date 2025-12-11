@@ -567,7 +567,7 @@ function MenubarDestructive() {
                   tabler="IconTrash"
                   hugeicons="DeleteIcon"
                 />
-                Delete Account
+                Delete
               </MenubarItem>
             </MenubarGroup>
           </MenubarContent>
