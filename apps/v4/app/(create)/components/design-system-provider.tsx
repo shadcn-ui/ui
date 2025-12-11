@@ -24,46 +24,38 @@ export function DesignSystemProvider({
   const radius = useDesignSystemParam("radius")
   const [isReady, setIsReady] = React.useState(false)
 
-  React.useEffect(() => {
+  // Use useLayoutEffect for synchronous style updates to prevent flash.
+  React.useLayoutEffect(() => {
     if (!style || !theme || !font || !baseColor) {
-      setIsReady(false)
       return
     }
 
     const body = document.body
 
-    const styleClass = `style-${style}`
+    // Update style class in place (remove old, add new).
     body.classList.forEach((className) => {
       if (className.startsWith("style-")) {
         body.classList.remove(className)
       }
     })
-    body.classList.add(styleClass)
+    body.classList.add(`style-${style}`)
 
-    const baseColorClass = `base-color-${baseColor}`
+    // Update base color class in place.
     body.classList.forEach((className) => {
       if (className.startsWith("base-color-")) {
         body.classList.remove(className)
       }
     })
-    body.classList.add(baseColorClass)
+    body.classList.add(`base-color-${baseColor}`)
 
+    // Update font.
     const selectedFont = FONTS.find((f) => f.value === font)
-    let hasFont = false
     if (selectedFont) {
       const fontFamily = selectedFont.font.style.fontFamily
       document.documentElement.style.setProperty("--font-sans", fontFamily)
-      hasFont = true
     }
 
     setIsReady(true)
-
-    return () => {
-      body.classList.remove(styleClass)
-      if (hasFont) {
-        document.documentElement.style.removeProperty("--font-sans")
-      }
-    }
   }, [style, theme, font, baseColor])
 
   const registryTheme = React.useMemo(() => {
@@ -82,7 +74,8 @@ export function DesignSystemProvider({
     return buildRegistryTheme(config)
   }, [baseColor, theme, menuAccent, radius])
 
-  React.useEffect(() => {
+  // Use useLayoutEffect for synchronous CSS var updates.
+  React.useLayoutEffect(() => {
     if (!registryTheme || !registryTheme.cssVars) {
       return
     }
@@ -134,13 +127,6 @@ export function DesignSystemProvider({
     cssText += "}\n"
 
     styleElement.textContent = cssText
-
-    return () => {
-      const element = document.getElementById(styleId)
-      if (element) {
-        element.remove()
-      }
-    }
   }, [registryTheme])
 
   // Handle menu color inversion by adding/removing dark class to elements with cn-menu-target.
