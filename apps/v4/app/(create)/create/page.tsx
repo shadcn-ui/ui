@@ -18,6 +18,7 @@ import { ItemPicker } from "@/app/(create)/components/item-picker"
 import { Preview } from "@/app/(create)/components/preview"
 import { ToolbarControls } from "@/app/(create)/components/toolbar-controls"
 import { V0Button } from "@/app/(create)/components/v0-button"
+import { WelcomeDialog } from "@/app/(create)/components/welcome-dialog"
 import { getItemsForBase } from "@/app/(create)/lib/api"
 import { designSystemSearchParamsCache } from "@/app/(create)/lib/search-params"
 
@@ -127,6 +128,7 @@ export default async function CreatePage({
             <Customizer />
           </div>
         </SidebarProvider>
+        <WelcomeDialog />
       </main>
     </div>
   )
