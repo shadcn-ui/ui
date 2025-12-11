@@ -94,10 +94,7 @@ export const designSystemConfigSchema = z
     radius: z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
-    template: z
-      .enum(["next", "start-app", "vite-app"])
-      .default("next")
-      .optional(),
+    template: z.enum(["next", "start", "vite"]).default("next").optional(),
   })
   .refine(
     (data) => {

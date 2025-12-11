@@ -155,7 +155,7 @@ export function ToolbarControls() {
               value={params.template}
               onValueChange={(value) => {
                 setParams({
-                  template: value as "next" | "start-app" | "vite-app",
+                  template: value as "next" | "start" | "vite",
                 })
               }}
               className="grid grid-cols-3 gap-2"
