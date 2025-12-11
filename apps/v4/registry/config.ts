@@ -12,7 +12,7 @@ import { STYLES, type Style } from "@/registry/styles"
 import { THEMES, type Theme } from "@/registry/themes"
 
 // 🚨 Remove before merging to main.
-const SHADCN_VERSION = "file:~/Code/shadcn/ui/packages/shadcn"
+const SHADCN_VERSION = "rc"
 
 export { BASES, type Base }
 export { STYLES, type Style }
