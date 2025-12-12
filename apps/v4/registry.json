@@ -735,6 +735,20 @@
       ]
     },
     {
+      "name": "time-picker",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "select",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/time-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "toggle",
       "type": "registry:ui",
       "dependencies": [
@@ -7204,6 +7218,38 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/textarea-with-text.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "time-picker-demo",
+      "type": "registry:example",
+      "dependencies": [
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button",
+        "time-picker",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/time-picker-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "time-picker-with-presets",
+      "type": "registry:example",
+      "registryDependencies": [
+        "button",
+        "time-picker"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/time-picker-with-presets.tsx",
           "type": "registry:example"
         }
       ]
