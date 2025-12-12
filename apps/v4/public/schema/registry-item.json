@@ -20,7 +20,7 @@
         "registry:file",
         "registry:style",
         "registry:example",
-        "registry:internal"
+        "registry:internal",
         "registry:base",
         "registry:font",
         "registry:item"
@@ -87,7 +87,7 @@
               "registry:file",
               "registry:style",
               "registry:example",
-              "registry:internal"
+              "registry:internal",
               "registry:base",
               "registry:item"
             ],
