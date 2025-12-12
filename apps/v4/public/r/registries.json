@@ -45,6 +45,7 @@
   "@limeplay": "https://limeplay.winoffrg.dev/r/{name}.json",
   "@lucide-animated": "https://lucide-animated.com/r/{name}.json",
   "@lytenyte": "https://www.1771technologies.com/r/{name}.json",
+  "@marmelab": "https://marmelab.com/shadcn-admin-kit/r/{name}.json",
   "@magicui": "https://magicui.design/r/{name}.json",
   "@magicui-pro": "https://pro.magicui.design/registry/{name}",
   "@motion-primitives": "https://motion-primitives.com/c/{name}.json",
