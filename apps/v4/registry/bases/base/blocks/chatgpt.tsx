@@ -118,6 +118,7 @@ function PromptForm() {
                     lucide="PlusIcon"
                     tabler="IconPlus"
                     hugeicons="PlusSignIcon"
+                    phosphor="PlusIcon"
                   />
                 </TooltipTrigger>
                 <TooltipContent>
@@ -131,6 +132,7 @@ function PromptForm() {
                       lucide="PaperclipIcon"
                       tabler="IconPaperclip"
                       hugeicons="AttachmentIcon"
+                      phosphor="PaperclipIcon"
                     />
                     Add photos & files
                   </DropdownMenuItem>
@@ -139,6 +141,7 @@ function PromptForm() {
                       lucide="SparklesIcon"
                       tabler="IconSparkles"
                       hugeicons="SparklesIcon"
+                      phosphor="SparkleIcon"
                     />
                     Deep research
                   </DropdownMenuItem>
@@ -147,6 +150,7 @@ function PromptForm() {
                       lucide="ShoppingBagIcon"
                       tabler="IconShoppingBag"
                       hugeicons="ShoppingBag01Icon"
+                      phosphor="BagIcon"
                     />
                     Shopping research
                   </DropdownMenuItem>
@@ -155,6 +159,7 @@ function PromptForm() {
                       lucide="WandIcon"
                       tabler="IconWand"
                       hugeicons="MagicWand05Icon"
+                      phosphor="MagicWandIcon"
                     />
                     Create image
                   </DropdownMenuItem>
@@ -166,6 +171,7 @@ function PromptForm() {
                             lucide="MousePointerIcon"
                             tabler="IconPointer"
                             hugeicons="Cursor01Icon"
+                            phosphor="HandPointingIcon"
                           />
                           Agent mode
                         </DropdownMenuItem>

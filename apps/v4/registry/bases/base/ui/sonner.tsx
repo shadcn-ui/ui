@@ -18,6 +18,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             lucide="CircleCheckIcon"
             tabler="IconCircleCheck"
             hugeicons="CheckmarkCircle02Icon"
+            phosphor="CheckCircleIcon"
             className="size-4"
           />
         ),
@@ -26,6 +27,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             lucide="InfoIcon"
             tabler="IconInfoCircle"
             hugeicons="InformationCircleIcon"
+            phosphor="InfoIcon"
             className="size-4"
           />
         ),
@@ -34,6 +36,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             lucide="TriangleAlertIcon"
             tabler="IconAlertTriangle"
             hugeicons="Alert02Icon"
+            phosphor="WarningIcon"
             className="size-4"
           />
         ),
@@ -42,6 +45,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             lucide="OctagonXIcon"
             tabler="IconAlertOctagon"
             hugeicons="MultiplicationSignCircleIcon"
+            phosphor="XCircleIcon"
             className="size-4"
           />
         ),
@@ -50,6 +54,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             lucide="Loader2Icon"
             tabler="IconLoader"
             hugeicons="Loading03Icon"
+            phosphor="SpinnerIcon"
             className="size-4 animate-spin"
           />
         ),
