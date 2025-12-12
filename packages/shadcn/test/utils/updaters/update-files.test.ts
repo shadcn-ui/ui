@@ -114,7 +114,7 @@ describe("resolveFilePath", () => {
         type: "registry:ui",
         target: "design-system/ui/button.tsx",
       },
-      resolvedPath: "/foo/bar/src/design-system/ui/button.tsx",
+      resolvedPath: "/foo/bar/src/create-system/ui/button.tsx",
       projectInfo: {
         isSrcDir: true,
       },
@@ -436,7 +436,7 @@ describe("resolveFilePath", () => {
     expect(
       resolveFilePath(
         {
-          path: "hello-world/design-system/primitives/button.tsx",
+          path: "hello-world/create-system/primitives/button.tsx",
           type: "registry:ui",
         },
         {

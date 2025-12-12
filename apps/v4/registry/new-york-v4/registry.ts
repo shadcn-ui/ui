@@ -1,7 +1,7 @@
 import { registryItemSchema, type Registry } from "shadcn/schema"
 import { z } from "zod"
 
-import { themes } from "../themes"
+import { themes } from "../_legacy-themes"
 import { blocks } from "./blocks/_registry"
 import { charts } from "./charts/_registry"
 import { examples } from "./examples/_registry"
@@ -50,21 +50,8 @@ export const registry = {
       ...themes,
       ...examples,
       ...internal,
-    ]
-      .filter((item) => {
-        return !DEPRECATED_ITEMS.includes(item.name)
-      })
-      .map((item) => {
-        // Temporary fix for dashboard-01.
-        if (item.name === "dashboard-01") {
-          item.dependencies?.push("@tabler/icons-react")
-        }
-
-        if (item.name === "accordion" && "tailwind" in item) {
-          delete item.tailwind
-        }
-
-        return item
-      })
+    ].filter((item) => {
+      return !DEPRECATED_ITEMS.includes(item.name)
+    })
   ),
 } satisfies Registry

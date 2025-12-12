@@ -18,10 +18,10 @@ export function buildUrlAndHeadersForRegistryItem(
   name: string,
   config?: Config
 ) {
-  const { registry, item } = parseRegistryAndItemFromString(name)
+  let { registry, item } = parseRegistryAndItemFromString(name)
 
   if (!registry) {
-    return null
+    registry = "@shadcn"
   }
 
   const registries = config?.registries || {}
