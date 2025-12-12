@@ -787,6 +787,23 @@
       ]
     },
     {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "badge",
+        "button",
+        "checkbox",
+        "command",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/multi-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "native-select",
       "type": "registry:ui",
       "files": [
@@ -6791,6 +6808,19 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/scroll-area-horizontal-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "multi-select-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "multi-select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/multi-select-demo.tsx",
           "type": "registry:example"
         }
       ]
