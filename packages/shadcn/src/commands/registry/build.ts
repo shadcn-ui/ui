@@ -212,6 +212,13 @@ async function resolveRegistryItems(
           ? item.dependencies.concat(results.dependencies)
           : results.dependencies
       }
+
+      // remove files resolved from results.removeFiles paths
+     if (results.removeFiles && results.removeFiles.length > 0) {
+        item.files = item.files.filter(
+          (f) => !results?.removeFiles?.includes(f.path)
+        )
+      }
     }
   }
 
