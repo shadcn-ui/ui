@@ -160,6 +160,7 @@ function CodespacesCard() {
                           lucide="PlusIcon"
                           tabler="IconPlus"
                           hugeicons="PlusSignIcon"
+                          phosphor="PlusIcon"
                         />
                       </Button>
                     </TooltipTrigger>
@@ -176,6 +177,7 @@ function CodespacesCard() {
                               lucide="MoreHorizontalIcon"
                               tabler="IconDots"
                               hugeicons="MoreHorizontalCircle01Icon"
+                              phosphor="DotsThreeOutlineIcon"
                             />
                           </Button>
                         </DropdownMenuTrigger>
@@ -194,6 +196,7 @@ function CodespacesCard() {
                           lucide="PlusIcon"
                           tabler="IconPlus"
                           hugeicons="PlusSignIcon"
+                          phosphor="PlusIcon"
                         />
                         New with options...
                       </DropdownMenuItem>
@@ -202,6 +205,7 @@ function CodespacesCard() {
                           lucide="ContainerIcon"
                           tabler="IconBox"
                           hugeicons="CubeIcon"
+                          phosphor="CubeIcon"
                         />
                         Configure dev container
                       </DropdownMenuItem>
@@ -210,6 +214,7 @@ function CodespacesCard() {
                           lucide="ZapIcon"
                           tabler="IconBolt"
                           hugeicons="ZapIcon"
+                          phosphor="LightningIcon"
                         />
                         Set up prebuilds
                       </DropdownMenuItem>
@@ -219,6 +224,7 @@ function CodespacesCard() {
                           lucide="ServerIcon"
                           tabler="IconServer"
                           hugeicons="ServerStackIcon"
+                          phosphor="HardDrivesIcon"
                         />
                         Manage codespaces
                       </DropdownMenuItem>
@@ -227,6 +233,7 @@ function CodespacesCard() {
                           lucide="ShareIcon"
                           tabler="IconShare2"
                           hugeicons="Share03Icon"
+                          phosphor="ShareIcon"
                         />
                         Share deep link
                       </DropdownMenuItem>
@@ -235,6 +242,7 @@ function CodespacesCard() {
                           lucide="InfoIcon"
                           tabler="IconInfoCircle"
                           hugeicons="AlertCircleIcon"
+                          phosphor="InfoIcon"
                         />
                         What are codespaces?
                       </DropdownMenuItem>
@@ -250,6 +258,7 @@ function CodespacesCard() {
                       lucide="ServerIcon"
                       tabler="IconServer"
                       hugeicons="ServerStackIcon"
+                      phosphor="HardDrivesIcon"
                     />
                   </EmptyMedia>
                   <EmptyTitle>No codespaces</EmptyTitle>
@@ -298,6 +307,7 @@ function CodespacesCard() {
                       lucide="TerminalIcon"
                       tabler="IconTerminal"
                       hugeicons="ComputerTerminal01Icon"
+                      phosphor="TerminalIcon"
                       className="size-4"
                     />
                     Clone
@@ -311,6 +321,7 @@ function CodespacesCard() {
                           lucide="InfoIcon"
                           tabler="IconInfoCircle"
                           hugeicons="AlertCircleIcon"
+                          phosphor="InfoIcon"
                         />
                       </Button>
                     </TooltipTrigger>
@@ -342,6 +353,7 @@ function CodespacesCard() {
                               lucide="CopyIcon"
                               tabler="IconCopy"
                               hugeicons="Copy01Icon"
+                              phosphor="CopyIcon"
                             />
                           </InputGroupButton>
                         </InputGroupAddon>
@@ -368,6 +380,7 @@ function CodespacesCard() {
                               lucide="CopyIcon"
                               tabler="IconCopy"
                               hugeicons="Copy01Icon"
+                              phosphor="CopyIcon"
                             />
                           </InputGroupButton>
                         </InputGroupAddon>
@@ -394,6 +407,7 @@ function CodespacesCard() {
                               lucide="CopyIcon"
                               tabler="IconCopy"
                               hugeicons="Copy01Icon"
+                              phosphor="CopyIcon"
                             />
                           </InputGroupButton>
                         </InputGroupAddon>
@@ -422,6 +436,7 @@ function CodespacesCard() {
                     lucide="MonitorIcon"
                     tabler="IconDeviceDesktop"
                     hugeicons="ComputerIcon"
+                    phosphor="MonitorIcon"
                     data-icon="inline-start"
                   />
                   Open with GitHub Desktop
@@ -435,6 +450,7 @@ function CodespacesCard() {
                     lucide="DownloadIcon"
                     tabler="IconDownload"
                     hugeicons="DownloadIcon"
+                    phosphor="DownloadIcon"
                     data-icon="inline-start"
                   />
                   Download ZIP
@@ -461,6 +477,7 @@ function RepositoryToolbar() {
                 lucide="SearchIcon"
                 tabler="IconSearch"
                 hugeicons="SearchIcon"
+                phosphor="MagnifyingGlassIcon"
               />
             </InputGroupButton>
           </InputGroupAddon>
@@ -476,6 +493,7 @@ function RepositoryToolbar() {
                 lucide="ChevronDownIcon"
                 tabler="IconChevronDown"
                 hugeicons="ArrowDown01Icon"
+                phosphor="CaretDownIcon"
                 data-icon="inline-end"
               />
             </Button>
@@ -494,6 +512,7 @@ function RepositoryToolbar() {
                 lucide="UploadIcon"
                 hugeicons="Upload01Icon"
                 tabler="IconUpload"
+                phosphor="UploadIcon"
               />
               Upload files
             </DropdownMenuItem>
@@ -508,6 +527,7 @@ function RepositoryToolbar() {
                     lucide="CloudCogIcon"
                     hugeicons="AiCloud01Icon"
                     tabler="IconCloudCog"
+                    phosphor="CloudArrowUpIcon"
                   />
                 </Button>
               </PopoverTrigger>
@@ -532,6 +552,7 @@ function RepositoryToolbar() {
                               lucide="GitBranchIcon"
                               hugeicons="GitBranchIcon"
                               tabler="IconGitBranch"
+                              phosphor="GitBranchIcon"
                             />
                           </InputGroupButton>
                         </TooltipTrigger>
@@ -605,6 +626,7 @@ function RepositoryToolbar() {
                               lucide="BotIcon"
                               hugeicons="RoboticIcon"
                               tabler="IconRobot"
+                              phosphor="RobotIcon"
                             />
                           </InputGroupButton>
                         </TooltipTrigger>
@@ -641,6 +663,7 @@ function RepositoryToolbar() {
                           lucide="SendIcon"
                           hugeicons="SentIcon"
                           tabler="IconSend"
+                          phosphor="PaperPlaneTiltIcon"
                         />
                       </InputGroupButton>
                     </TooltipTrigger>
@@ -669,6 +692,7 @@ function Navbar() {
                 lucide="MenuIcon"
                 hugeicons="Menu09Icon"
                 tabler="IconMenu"
+                phosphor="ListIcon"
               />
               <span className="sr-only">Open menu</span>
             </Button>
@@ -682,6 +706,7 @@ function Navbar() {
                     lucide="XIcon"
                     tabler="IconX"
                     hugeicons="Cancel01Icon"
+                    phosphor="XIcon"
                   />
                   <span className="sr-only">Close</span>
                 </Button>
@@ -696,6 +721,7 @@ function Navbar() {
                         lucide="HomeIcon"
                         tabler="IconHome"
                         hugeicons="HomeIcon"
+                        phosphor="HouseIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -710,6 +736,7 @@ function Navbar() {
                         lucide="CircleIcon"
                         tabler="IconCircle"
                         hugeicons="CircleIcon"
+                        phosphor="CircleIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -738,6 +765,7 @@ function Navbar() {
                         lucide="LayoutGridIcon"
                         tabler="IconLayoutGrid"
                         hugeicons="GridIcon"
+                        phosphor="GridFourIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -752,6 +780,7 @@ function Navbar() {
                         lucide="MailIcon"
                         tabler="IconMail"
                         hugeicons="MailIcon"
+                        phosphor="EnvelopeIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -794,6 +823,7 @@ function Navbar() {
                         lucide="SparklesIcon"
                         tabler="IconSparkles"
                         hugeicons="SparklesIcon"
+                        phosphor="SparkleIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -823,6 +853,7 @@ function Navbar() {
                         lucide="ShoppingBagIcon"
                         tabler="IconShoppingBag"
                         hugeicons="ShoppingBasket01Icon"
+                        phosphor="ShoppingBagIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -837,6 +868,7 @@ function Navbar() {
                         lucide="LinkIcon"
                         tabler="IconLink"
                         hugeicons="LinkIcon"
+                        phosphor="LinkIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -890,6 +922,7 @@ function Navbar() {
                   lucide="SmileIcon"
                   tabler="IconMoodSmile"
                   hugeicons="SmileIcon"
+                  phosphor="SmileyIcon"
                 />
                 Set status
               </DropdownMenuItem>
@@ -898,6 +931,7 @@ function Navbar() {
                   lucide="CircleAlertIcon"
                   tabler="IconExclamationCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="WarningCircleIcon"
                 />
                 Single sign-on
               </DropdownMenuItem>
@@ -917,6 +951,7 @@ function Navbar() {
                   lucide="FolderIcon"
                   tabler="IconFolder"
                   hugeicons="FolderIcon"
+                  phosphor="FolderIcon"
                 />
                 Repositories
               </DropdownMenuItem>
@@ -925,6 +960,7 @@ function Navbar() {
                   lucide="StarIcon"
                   tabler="IconStar"
                   hugeicons="StarIcon"
+                  phosphor="StarIcon"
                 />
                 Stars
               </DropdownMenuItem>
@@ -933,6 +969,7 @@ function Navbar() {
                   lucide="CodeIcon"
                   tabler="IconCode"
                   hugeicons="CodeIcon"
+                  phosphor="CodeIcon"
                 />
                 Gists
               </DropdownMenuItem>
@@ -941,6 +978,7 @@ function Navbar() {
                   lucide="FolderIcon"
                   tabler="IconFolder"
                   hugeicons="FolderIcon"
+                  phosphor="FolderIcon"
                 />
                 Organizations
               </DropdownMenuItem>
