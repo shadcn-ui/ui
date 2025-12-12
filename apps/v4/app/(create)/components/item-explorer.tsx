@@ -57,7 +57,11 @@ export function ItemExplorer({
     >
       <SidebarContent className="no-scrollbar -mx-1 overflow-x-hidden">
         {groupedItems.map((group) => (
-          <Collapsible key={group.type} defaultOpen className="group/collapsible">
+          <Collapsible
+            key={group.type}
+            defaultOpen
+            className="group/collapsible"
+          >
             <SidebarGroup className="px-1 py-0">
               <CollapsibleTrigger className="flex w-full items-center gap-1 py-1.5 text-[0.8rem] font-medium [&[data-state=open]>svg]:rotate-90">
                 <ChevronRightIcon className="text-muted-foreground size-3.5 transition-transform" />
@@ -65,17 +69,17 @@ export function ItemExplorer({
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarGroupContent>
-                  <SidebarMenu className="relative ml-1.5 border-l border-border/50 pl-2">
+                  <SidebarMenu className="border-border/50 relative ml-1.5 border-l pl-2">
                     {group.items.map((item, index) => (
                       <SidebarMenuItem key={item.name} className="relative">
                         <div
                           className={cn(
-                            "border-border/50 absolute -left-2 top-1/2 h-px w-2 border-t",
+                            "border-border/50 absolute top-1/2 -left-2 h-px w-2 border-t",
                             index === group.items.length - 1 && "bg-sidebar"
                           )}
                         />
                         {index === group.items.length - 1 && (
-                          <div className="bg-sidebar absolute -bottom-1 -left-2.5 top-1/2 w-1" />
+                          <div className="bg-sidebar absolute top-1/2 -bottom-1 -left-2.5 w-1" />
                         )}
                         <SidebarMenuButton
                           onClick={() => setParams({ item: item.name })}
