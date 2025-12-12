@@ -16,6 +16,7 @@ import { CustomizerControls } from "@/app/(create)/components/customizer-control
 import { ItemExplorer } from "@/app/(create)/components/item-explorer"
 import { ItemPicker } from "@/app/(create)/components/item-picker"
 import { Preview } from "@/app/(create)/components/preview"
+import { ShareButton } from "@/app/(create)/components/share-button"
 import { ToolbarControls } from "@/app/(create)/components/toolbar-controls"
 import { V0Button } from "@/app/(create)/components/v0-button"
 import { WelcomeDialog } from "@/app/(create)/components/welcome-dialog"
@@ -70,7 +71,10 @@ export default async function CreatePage({
     }))
 
   return (
-    <div data-slot="layout" className="relative z-10 flex min-h-svh flex-col">
+    <div
+      data-slot="layout"
+      className="section-soft relative z-10 flex min-h-svh flex-col"
+    >
       <header className="sticky top-0 z-50 w-full">
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
           <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
@@ -86,8 +90,11 @@ export default async function CreatePage({
                   Back
                 </Link>
               </Button>
-              <Separator orientation="vertical" className="mx-2 flex sm:mx-4" />
-              <div className="text-muted-foreground text-sm font-medium">
+              <Separator
+                orientation="vertical"
+                className="mx-2 hidden sm:mx-4 lg:flex"
+              />
+              <div className="text-muted-foreground hidden text-sm font-medium lg:flex">
                 New Project
               </div>
             </div>
@@ -107,8 +114,8 @@ export default async function CreatePage({
                 orientation="vertical"
                 className="mr-0 -ml-2 sm:ml-0"
               />
+              <ShareButton />
               <V0Button />
-              <Separator orientation="vertical" className="hidden md:flex" />
               <ToolbarControls />
             </div>
           </div>

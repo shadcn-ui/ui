@@ -1,7 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { ComputerTerminal01Icon } from "@hugeicons/core-free-icons"
+import {
+  ComputerTerminal01Icon,
+  Copy01Icon,
+  Tick02Icon,
+} from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { useQueryStates } from "nuqs"
 import { toast } from "sonner"
@@ -34,6 +38,11 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/new-york-v4/ui/tooltip"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const TEMPLATES = [
@@ -122,6 +131,20 @@ export function ToolbarControls() {
     })
   }, [command, params.template, setOpen])
 
+  const handleCopyFromTabs = React.useCallback(() => {
+    const properties: Record<string, string> = {
+      command,
+    }
+    if (params.template) {
+      properties.template = params.template
+    }
+    copyToClipboardWithMeta(command, {
+      name: "copy_npm_command",
+      properties,
+    })
+    setHasCopied(true)
+  }, [command, params.template])
+
   const selectedTemplate = TEMPLATES.find(
     (template) => template.value === params.template
   )
@@ -197,12 +220,34 @@ export function ToolbarControls() {
           }}
           className="bg-surface min-w-0 gap-0 overflow-hidden rounded-lg border"
         >
-          <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-2 font-mono *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none!">
-            <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-            <TabsTrigger value="npm">npm</TabsTrigger>
-            <TabsTrigger value="yarn">yarn</TabsTrigger>
-            <TabsTrigger value="bun">bun</TabsTrigger>
-          </TabsList>
+          <div className="flex items-center gap-2 p-2">
+            <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-0 font-mono *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none!">
+              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+              <TabsTrigger value="npm">npm</TabsTrigger>
+              <TabsTrigger value="yarn">yarn</TabsTrigger>
+              <TabsTrigger value="bun">bun</TabsTrigger>
+            </TabsList>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  size="icon-sm"
+                  variant="ghost"
+                  className="ml-auto size-7 rounded-lg"
+                  onClick={handleCopyFromTabs}
+                >
+                  {hasCopied ? (
+                    <HugeiconsIcon icon={Tick02Icon} className="size-4" />
+                  ) : (
+                    <HugeiconsIcon icon={Copy01Icon} className="size-4" />
+                  )}
+                  <span className="sr-only">Copy command</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                {hasCopied ? "Copied!" : "Copy command"}
+              </TooltipContent>
+            </Tooltip>
+          </div>
           {Object.entries(commands).map(([key, cmd]) => {
             return (
               <TabsContent key={key} value={key}>

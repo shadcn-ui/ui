@@ -1,5 +1,7 @@
 "use client"
 
+import * as React from "react"
+
 import {
   Example,
   ExampleWrapper,
@@ -37,10 +39,19 @@ import {
 } from "@/registry/bases/base/ui/combobox"
 import {
   DropdownMenu,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/bases/base/ui/dropdown-menu"
 import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
@@ -141,6 +152,13 @@ const roleItems = [
 ]
 
 function FormExample() {
+  const [notifications, setNotifications] = React.useState({
+    email: true,
+    sms: false,
+    push: true,
+  })
+  const [theme, setTheme] = React.useState("light")
+
   return (
     <Example title="Form">
       <Card className="w-full max-w-md">
@@ -159,42 +177,351 @@ function FormExample() {
                 />
                 <span className="sr-only">More options</span>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent
+                align="end"
+                className="style-maia:w-56 style-mira:w-48 style-nova:w-48 style-vega:w-56 style-lyra:w-48"
+              >
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>File</DropdownMenuLabel>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="FileIcon"
+                      tabler="IconFile"
+                      hugeicons="FileIcon"
+                    />
+                    New File
+                    <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="FolderIcon"
+                      tabler="IconFolder"
+                      hugeicons="FolderIcon"
+                    />
+                    New Folder
+                    <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <IconPlaceholder
+                        lucide="FolderOpenIcon"
+                        tabler="IconFolderOpen"
+                        hugeicons="FolderOpenIcon"
+                      />
+                      Open Recent
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuGroup>
+                          <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
+                          <DropdownMenuItem>
+                            <IconPlaceholder
+                              lucide="FileCodeIcon"
+                              tabler="IconFileCode"
+                              hugeicons="CodeIcon"
+                            />
+                            Project Alpha
+                          </DropdownMenuItem>
+                          <DropdownMenuItem>
+                            <IconPlaceholder
+                              lucide="FileCodeIcon"
+                              tabler="IconFileCode"
+                              hugeicons="CodeIcon"
+                            />
+                            Project Beta
+                          </DropdownMenuItem>
+                          <DropdownMenuSub>
+                            <DropdownMenuSubTrigger>
+                              <IconPlaceholder
+                                lucide="MoreHorizontalIcon"
+                                tabler="IconDots"
+                                hugeicons="MoreHorizontalCircle01Icon"
+                              />
+                              More Projects
+                            </DropdownMenuSubTrigger>
+                            <DropdownMenuPortal>
+                              <DropdownMenuSubContent>
+                                <DropdownMenuItem>
+                                  <IconPlaceholder
+                                    lucide="FileCodeIcon"
+                                    tabler="IconFileCode"
+                                    hugeicons="CodeIcon"
+                                  />
+                                  Project Gamma
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                  <IconPlaceholder
+                                    lucide="FileCodeIcon"
+                                    tabler="IconFileCode"
+                                    hugeicons="CodeIcon"
+                                  />
+                                  Project Delta
+                                </DropdownMenuItem>
+                              </DropdownMenuSubContent>
+                            </DropdownMenuPortal>
+                          </DropdownMenuSub>
+                        </DropdownMenuGroup>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuGroup>
+                          <DropdownMenuItem>
+                            <IconPlaceholder
+                              lucide="FolderSearchIcon"
+                              tabler="IconFolderSearch"
+                              hugeicons="SearchIcon"
+                            />
+                            Browse...
+                          </DropdownMenuItem>
+                        </DropdownMenuGroup>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="SaveIcon"
+                      tabler="IconDeviceFloppy"
+                      hugeicons="FloppyDiskIcon"
+                    />
+                    Save
+                    <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="DownloadIcon"
+                      tabler="IconDownload"
+                      hugeicons="DownloadIcon"
+                    />
+                    Export
+                    <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>View</DropdownMenuLabel>
+                  <DropdownMenuCheckboxItem
+                    checked={notifications.email}
+                    onCheckedChange={(checked) =>
+                      setNotifications({
+                        ...notifications,
+                        email: checked === true,
+                      })
+                    }
+                  >
+                    <IconPlaceholder
+                      lucide="EyeIcon"
+                      tabler="IconEye"
+                      hugeicons="EyeIcon"
+                    />
+                    Show Sidebar
+                  </DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem
+                    checked={notifications.sms}
+                    onCheckedChange={(checked) =>
+                      setNotifications({
+                        ...notifications,
+                        sms: checked === true,
+                      })
+                    }
+                  >
+                    <IconPlaceholder
+                      lucide="LayoutIcon"
+                      tabler="IconLayout"
+                      hugeicons="LayoutIcon"
+                    />
+                    Show Status Bar
+                  </DropdownMenuCheckboxItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <IconPlaceholder
+                        lucide="PaletteIcon"
+                        tabler="IconPalette"
+                        hugeicons="PaintBoardIcon"
+                      />
+                      Theme
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuGroup>
+                          <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+                          <DropdownMenuRadioGroup
+                            value={theme}
+                            onValueChange={setTheme}
+                          >
+                            <DropdownMenuRadioItem value="light">
+                              <IconPlaceholder
+                                lucide="SunIcon"
+                                tabler="IconSun"
+                                hugeicons="SunIcon"
+                              />
+                              Light
+                            </DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="dark">
+                              <IconPlaceholder
+                                lucide="MoonIcon"
+                                tabler="IconMoon"
+                                hugeicons="MoonIcon"
+                              />
+                              Dark
+                            </DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="system">
+                              <IconPlaceholder
+                                lucide="MonitorIcon"
+                                tabler="IconDeviceDesktop"
+                                hugeicons="ComputerIcon"
+                              />
+                              System
+                            </DropdownMenuRadioItem>
+                          </DropdownMenuRadioGroup>
+                        </DropdownMenuGroup>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Account</DropdownMenuLabel>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="UserIcon"
+                      tabler="IconUser"
+                      hugeicons="UserIcon"
+                    />
+                    Profile
+                    <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <IconPlaceholder
+                      lucide="CreditCardIcon"
+                      tabler="IconCreditCard"
+                      hugeicons="CreditCardIcon"
+                    />
+                    Billing
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <IconPlaceholder
+                        lucide="SettingsIcon"
+                        tabler="IconSettings"
+                        hugeicons="SettingsIcon"
+                      />
+                      Settings
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent>
+                        <DropdownMenuGroup>
+                          <DropdownMenuLabel>Preferences</DropdownMenuLabel>
+                          <DropdownMenuItem>
+                            <IconPlaceholder
+                              lucide="KeyboardIcon"
+                              tabler="IconKeyboard"
+                              hugeicons="KeyboardIcon"
+                            />
+                            Keyboard Shortcuts
+                          </DropdownMenuItem>
+                          <DropdownMenuItem>
+                            <IconPlaceholder
+                              lucide="LanguagesIcon"
+                              tabler="IconLanguage"
+                              hugeicons="LanguageCircleIcon"
+                            />
+                            Language
+                          </DropdownMenuItem>
+                          <DropdownMenuSub>
+                            <DropdownMenuSubTrigger>
+                              <IconPlaceholder
+                                lucide="BellIcon"
+                                tabler="IconBell"
+                                hugeicons="NotificationIcon"
+                              />
+                              Notifications
+                            </DropdownMenuSubTrigger>
+                            <DropdownMenuPortal>
+                              <DropdownMenuSubContent>
+                                <DropdownMenuGroup>
+                                  <DropdownMenuLabel>
+                                    Notification Types
+                                  </DropdownMenuLabel>
+                                  <DropdownMenuCheckboxItem
+                                    checked={notifications.push}
+                                    onCheckedChange={(checked) =>
+                                      setNotifications({
+                                        ...notifications,
+                                        push: checked === true,
+                                      })
+                                    }
+                                  >
+                                    <IconPlaceholder
+                                      lucide="BellIcon"
+                                      tabler="IconBell"
+                                      hugeicons="NotificationIcon"
+                                    />
+                                    Push Notifications
+                                  </DropdownMenuCheckboxItem>
+                                  <DropdownMenuCheckboxItem
+                                    checked={notifications.email}
+                                    onCheckedChange={(checked) =>
+                                      setNotifications({
+                                        ...notifications,
+                                        email: checked === true,
+                                      })
+                                    }
+                                  >
+                                    <IconPlaceholder
+                                      lucide="MailIcon"
+                                      tabler="IconMail"
+                                      hugeicons="MailIcon"
+                                    />
+                                    Email Notifications
+                                  </DropdownMenuCheckboxItem>
+                                </DropdownMenuGroup>
+                              </DropdownMenuSubContent>
+                            </DropdownMenuPortal>
+                          </DropdownMenuSub>
+                        </DropdownMenuGroup>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuGroup>
+                          <DropdownMenuItem>
+                            <IconPlaceholder
+                              lucide="ShieldIcon"
+                              tabler="IconShield"
+                              hugeicons="ShieldIcon"
+                            />
+                            Privacy & Security
+                          </DropdownMenuItem>
+                        </DropdownMenuGroup>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
                     <IconPlaceholder
-                      lucide="EditIcon"
-                      tabler="IconEdit"
-                      hugeicons="Edit01Icon"
+                      lucide="HelpCircleIcon"
+                      tabler="IconHelpCircle"
+                      hugeicons="HelpCircleIcon"
                     />
-                    Edit
+                    Help & Support
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <IconPlaceholder
-                      lucide="CopyIcon"
-                      tabler="IconCopy"
-                      hugeicons="Copy01Icon"
+                      lucide="FileTextIcon"
+                      tabler="IconFileText"
+                      hugeicons="File01Icon"
                     />
-                    Duplicate
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconPlaceholder
-                      lucide="ShareIcon"
-                      tabler="IconShare"
-                      hugeicons="Share03Icon"
-                    />
-                    Share
+                    Documentation
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem variant="destructive">
                     <IconPlaceholder
-                      lucide="Trash2Icon"
-                      tabler="IconTrash"
-                      hugeicons="Delete02Icon"
+                      lucide="LogOutIcon"
+                      tabler="IconLogout"
+                      hugeicons="LogoutIcon"
                     />
-                    Delete
+                    Sign Out
+                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuContent>

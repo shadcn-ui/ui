@@ -3,13 +3,14 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import Script from "next/script"
-import { DiceFaces05Icon } from "@hugeicons/core-free-icons"
+import { DiceFaces05Icon, Undo02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { useQueryStates } from "nuqs"
 
 import { cn } from "@/lib/utils"
 import {
   BASE_COLORS,
+  DEFAULT_CONFIG,
   getThemesForBaseColor,
   iconLibraries,
   MENU_ACCENTS,
@@ -24,13 +25,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
+import { useLocks } from "@/app/(create)/hooks/use-locks"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import {
   applyBias,
   RANDOMIZE_BIASES,
   type RandomizeContext,
 } from "@/app/(create)/lib/randomize-biases"
-import { useLocks } from "@/app/(create)/hooks/use-locks"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export const RANDOMIZE_FORWARD_TYPE = "randomize-forward"
@@ -46,6 +47,22 @@ export function CustomizerControls({ className }: { className?: string }) {
     shallow: false,
     history: "push",
   })
+
+  const handleReset = React.useCallback(() => {
+    setParams({
+      base: params.base, // Keep the current base value
+      style: DEFAULT_CONFIG.style,
+      baseColor: DEFAULT_CONFIG.baseColor,
+      theme: DEFAULT_CONFIG.theme,
+      iconLibrary: DEFAULT_CONFIG.iconLibrary,
+      font: DEFAULT_CONFIG.font,
+      menuAccent: DEFAULT_CONFIG.menuAccent,
+      menuColor: DEFAULT_CONFIG.menuColor,
+      radius: DEFAULT_CONFIG.radius,
+      template: DEFAULT_CONFIG.template,
+      item: "preview",
+    })
+  }, [setParams, params.base])
 
   const handleRandomize = React.useCallback(() => {
     // Use current value if locked, otherwise randomize.
@@ -124,36 +141,31 @@ export function CustomizerControls({ className }: { className?: string }) {
   }, [handleRandomize])
 
   return (
-    <div className={cn("items-center gap-1", className)}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleRandomize}
-            className="border-foreground/10 bg-muted/50 h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none focus-visible:border-transparent focus-visible:ring-1 sm:h-8 sm:rounded-lg md:h-9 md:w-full md:rounded-lg md:border-transparent md:bg-transparent md:pr-3.5! md:pl-2!"
-          >
-            Randomize{" "}
-            <HugeiconsIcon
-              icon={DiceFaces05Icon}
-              className="size-5 md:hidden"
-            />
-            <Kbd className="bg-foreground/10 text-foreground hidden md:flex">
-              R
-            </Kbd>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent className="w-(--radix-tooltip-trigger-width)">
-          <p>Use browser back/forward buttons to navigate history.</p>
-        </TooltipContent>
-      </Tooltip>
+    <div className={cn("items-center gap-0", className)}>
       <Button
-        variant="secondary"
+        variant="ghost"
         size="sm"
-        onClick={() => router.push("/create")}
-        className="hidden w-full rounded-lg"
+        onClick={handleRandomize}
+        className="border-foreground/10 bg-muted/50 h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none focus-visible:border-transparent focus-visible:ring-1 sm:rounded-lg md:w-full md:rounded-lg md:border-transparent md:bg-transparent md:pr-3.5! md:pl-2!"
       >
-        Reset
+        <div className="flex flex-col justify-start text-left">
+          <div className="text-muted-foreground text-xs">Shuffle</div>
+          <div className="text-foreground text-sm font-medium">Try random</div>
+        </div>
+        <HugeiconsIcon icon={DiceFaces05Icon} className="size-5 md:hidden" />
+        <Kbd className="bg-foreground/10 text-foreground hidden md:flex">R</Kbd>
+      </Button>
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={handleReset}
+        className="border-foreground/10 bg-muted/50 hidden h-[calc(--spacing(13.5))] w-[140px] touch-manipulation justify-between rounded-xl border select-none focus-visible:border-transparent focus-visible:ring-1 sm:rounded-lg md:flex md:w-full md:rounded-lg md:border-transparent md:bg-transparent md:pr-3.5! md:pl-2!"
+      >
+        <div className="flex flex-col justify-start text-left">
+          <div className="text-muted-foreground text-xs">Reset</div>
+          <div className="text-foreground text-sm font-medium">Start Over</div>
+        </div>
+        <HugeiconsIcon icon={Undo02Icon} className="-translate-x-0.5" />
       </Button>
     </div>
   )
