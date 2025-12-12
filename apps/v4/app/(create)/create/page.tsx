@@ -27,11 +27,13 @@ export const revalidate = false
 export const dynamic = "force-static"
 
 export const metadata: Metadata = {
-  title: "Create Project",
-  description: "Design your own shadcn/ui.",
+  title: "New Project",
+  description:
+    "Customize everything. Pick your component library, icons, base color, theme, fonts and create your own version of shadcn/ui.",
   openGraph: {
-    title: "Create Project",
-    description: "Design your own shadcn/ui.",
+    title: "New Project",
+    description:
+      "Customize everything. Pick your component library, icons, base color, theme, fonts and create your own version of shadcn/ui.",
     type: "website",
     url: absoluteUrl("/create"),
     images: [
@@ -45,8 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Create Project",
-    description: "Design your own shadcn/ui.",
+    title: "New Project",
+    description:
+      "Customize everything. Pick your component library, icons, base color, theme, fonts and create your own version of shadcn/ui.",
     images: [siteConfig.ogImage],
     creator: "@shadcn",
   },
