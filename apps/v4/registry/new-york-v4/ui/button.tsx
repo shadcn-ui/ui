@@ -54,6 +54,7 @@ function Button({
       data-variant={variant}
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
+      tabIndex={0}
       {...props}
     />
   )
