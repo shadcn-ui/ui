@@ -79,10 +79,10 @@ export function ToolbarControls() {
     const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}`
     const templateFlag = params.template ? ` --template ${params.template}` : ""
     return {
-      pnpm: `pnpm dlx shadcn@rc create --preset ${url}${templateFlag}`,
-      npm: `npx shadcn@rc create --preset ${url}${templateFlag}`,
-      yarn: `yarn dlx shadcn@rc create --preset ${url}${templateFlag}`,
-      bun: `bunx --bun shadcn@rc create --preset ${url}${templateFlag}`,
+      pnpm: `pnpm dlx shadcn@latest create --preset ${url}${templateFlag}`,
+      npm: `npx shadcn@latest create --preset ${url}${templateFlag}`,
+      yarn: `yarn dlx shadcn@latest create --preset ${url}${templateFlag}`,
+      bun: `bunx --bun shadcn@latest create --preset ${url}${templateFlag}`,
     }
   }, [
     params.base,
