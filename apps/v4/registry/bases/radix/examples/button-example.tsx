@@ -97,6 +97,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -106,6 +107,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -115,6 +117,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -124,6 +127,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -133,6 +137,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -142,6 +147,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -153,6 +159,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -162,6 +169,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -179,6 +187,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -188,6 +197,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -197,6 +207,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -208,6 +219,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -217,6 +229,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -226,6 +239,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -235,6 +249,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -244,6 +259,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -253,6 +269,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -264,6 +281,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -273,6 +291,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -282,6 +301,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -291,6 +311,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -300,6 +321,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -309,6 +331,7 @@ function ButtonIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Button>
@@ -326,6 +349,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Default
@@ -335,6 +359,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Secondary
@@ -344,6 +369,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Outline
@@ -353,6 +379,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Ghost
@@ -362,6 +389,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Destructive
@@ -371,6 +399,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Link
@@ -382,6 +411,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Default
@@ -391,6 +421,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Secondary
@@ -400,6 +431,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Outline
@@ -409,6 +441,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Ghost
@@ -418,6 +451,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Destructive
@@ -427,6 +461,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Link
@@ -438,6 +473,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Default
@@ -447,6 +483,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Secondary
@@ -456,6 +493,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Outline
@@ -465,6 +503,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Ghost
@@ -474,6 +513,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Destructive
@@ -483,6 +523,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Link
@@ -494,6 +535,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Default
@@ -503,6 +545,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Secondary
@@ -512,6 +555,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Outline
@@ -521,6 +565,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Ghost
@@ -530,6 +575,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Destructive
@@ -539,6 +585,7 @@ function ButtonIconLeft() {
             lucide="ArrowLeftCircleIcon"
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
+            phosphor="ArrowCircleLeftIcon"
             data-icon="inline-start"
           />{" "}
           Link

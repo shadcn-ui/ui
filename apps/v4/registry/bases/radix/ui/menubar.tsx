@@ -130,6 +130,7 @@ function MenubarCheckboxItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -158,6 +159,7 @@ function MenubarRadioItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -238,6 +240,7 @@ function MenubarSubTrigger({
         lucide="ChevronRightIcon"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
+        phosphor="CaretRightIcon"
         className="ml-auto size-4"
       />
     </MenubarPrimitive.SubTrigger>
