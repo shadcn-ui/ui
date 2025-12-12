@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 
 import { siteConfig } from "@/lib/config"
 import { absoluteUrl } from "@/lib/utils"
+import { DarkModeScript } from "@/components/mode-switcher"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { BASES, type Base } from "@/registry/config"
 import { RandomizeScript } from "@/app/(create)/components/customizer-controls"
@@ -132,6 +133,7 @@ export default async function BlockPage({
       <PreviewStyle />
       <ItemPickerScript />
       <RandomizeScript />
+      <DarkModeScript />
       <DesignSystemProvider>
         <Component />
       </DesignSystemProvider>

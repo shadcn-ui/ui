@@ -30,6 +30,7 @@ import {
   RANDOMIZE_BIASES,
   type RandomizeContext,
 } from "@/app/(create)/lib/randomize-biases"
+import { useLocks } from "@/app/(create)/hooks/use-locks"
 import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export const RANDOMIZE_FORWARD_TYPE = "randomize-forward"
@@ -40,33 +41,51 @@ function randomItem<T>(array: readonly T[]): T {
 
 export function CustomizerControls({ className }: { className?: string }) {
   const router = useRouter()
-  const [, setParams] = useQueryStates(designSystemSearchParams, {
+  const { locks } = useLocks()
+  const [params, setParams] = useQueryStates(designSystemSearchParams, {
     shallow: false,
     history: "push",
   })
 
   const handleRandomize = React.useCallback(() => {
-    const baseColor = randomItem(BASE_COLORS).name
-    const availableThemes = getThemesForBaseColor(baseColor)
-    const selectedStyle = randomItem(STYLES).name
+    // Use current value if locked, otherwise randomize.
+    const baseColor = locks.has("baseColor")
+      ? params.baseColor
+      : randomItem(BASE_COLORS).name
+    const selectedStyle = locks.has("style")
+      ? params.style
+      : randomItem(STYLES).name
 
-    // Build context for bias application
+    // Build context for bias application.
     const context: RandomizeContext = {
       style: selectedStyle,
       baseColor,
     }
 
-    // Apply font bias based on context
+    const availableThemes = getThemesForBaseColor(baseColor)
     const availableFonts = applyBias(FONTS, context, RANDOMIZE_BIASES.fonts)
-
-    // Apply radius bias based on context
     const availableRadii = applyBias(RADII, context, RANDOMIZE_BIASES.radius)
 
-    const selectedTheme = randomItem(availableThemes).name
-    const selectedFont = randomItem(availableFonts).value
-    const selectedRadius = randomItem(availableRadii).name
+    const selectedTheme = locks.has("theme")
+      ? params.theme
+      : randomItem(availableThemes).name
+    const selectedFont = locks.has("font")
+      ? params.font
+      : randomItem(availableFonts).value
+    const selectedRadius = locks.has("radius")
+      ? params.radius
+      : randomItem(availableRadii).name
+    const selectedIconLibrary = locks.has("iconLibrary")
+      ? params.iconLibrary
+      : randomItem(Object.values(iconLibraries)).name
+    const selectedMenuAccent = locks.has("menuAccent")
+      ? params.menuAccent
+      : randomItem(MENU_ACCENTS).value
+    const selectedMenuColor = locks.has("menuColor")
+      ? params.menuColor
+      : randomItem(MENU_COLORS).value
 
-    // Update context with selected values for potential future biases
+    // Update context with selected values for potential future biases.
     context.theme = selectedTheme
     context.font = selectedFont
     context.radius = selectedRadius
@@ -75,13 +94,13 @@ export function CustomizerControls({ className }: { className?: string }) {
       style: selectedStyle,
       baseColor,
       theme: selectedTheme,
-      iconLibrary: randomItem(Object.values(iconLibraries)).name,
+      iconLibrary: selectedIconLibrary,
       font: selectedFont,
-      menuAccent: randomItem(MENU_ACCENTS).value,
-      menuColor: randomItem(MENU_COLORS).value,
+      menuAccent: selectedMenuAccent,
+      menuColor: selectedMenuColor,
       radius: selectedRadius,
     })
-  }, [setParams])
+  }, [setParams, locks, params])
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {

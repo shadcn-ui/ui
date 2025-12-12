@@ -10,6 +10,7 @@ import {
   type IconLibrary,
   type IconLibraryName,
 } from "@/registry/config"
+import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
   PickerContent,
@@ -175,17 +176,23 @@ export function IconLibraryPicker({
 
   return (
     <Picker>
-      <PickerTrigger>
-        <div className="flex flex-col justify-start text-left">
-          <div className="text-muted-foreground text-xs">Icon Library</div>
-          <div className="text-foreground text-sm font-medium">
-            {currentIconLibrary?.title}
+      <div className="group/picker relative">
+        <PickerTrigger>
+          <div className="flex flex-col justify-start text-left">
+            <div className="text-muted-foreground text-xs">Icon Library</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentIconLibrary?.title}
+            </div>
           </div>
-        </div>
-        <div className="text-foreground *:[svg]:text-foreground! absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 items-center justify-center text-base">
-          {logos[currentIconLibrary?.name as keyof typeof logos]}
-        </div>
-      </PickerTrigger>
+          <div className="text-foreground *:[svg]:text-foreground! absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base">
+            {logos[currentIconLibrary?.name as keyof typeof logos]}
+          </div>
+        </PickerTrigger>
+        <LockButton
+          param="iconLibrary"
+          className="absolute top-1/2 right-10 -translate-y-1/2"
+        />
+      </div>
       <PickerContent
         anchor={isMobile ? anchorRef : undefined}
         side={isMobile ? "top" : "right"}

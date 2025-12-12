@@ -70,10 +70,7 @@ export default async function CreatePage({
     }))
 
   return (
-    <div
-      data-slot="layout"
-      className="md:bg-muted/30 dark:md:bg-muted/20 relative z-10 flex min-h-svh flex-col"
-    >
+    <div data-slot="layout" className="relative z-10 flex min-h-svh flex-col">
       <header className="sticky top-0 z-50 w-full">
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
           <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">

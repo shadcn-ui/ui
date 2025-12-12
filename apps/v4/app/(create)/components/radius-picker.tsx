@@ -3,6 +3,7 @@
 import { useQueryStates } from "nuqs"
 
 import { RADII, type RadiusValue } from "@/registry/config"
+import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
   PickerContent,
@@ -32,32 +33,38 @@ export function RadiusPicker({
 
   return (
     <Picker>
-      <PickerTrigger>
-        <div className="flex flex-col justify-start text-left">
-          <div className="text-muted-foreground text-xs">Radius</div>
-          <div className="text-foreground text-sm font-medium">
-            {currentRadius?.label}
+      <div className="group/picker relative">
+        <PickerTrigger>
+          <div className="flex flex-col justify-start text-left">
+            <div className="text-muted-foreground text-xs">Radius</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentRadius?.label}
+            </div>
           </div>
-        </div>
-        <div className="text-foreground absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            className="text-foreground"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 20v-5C4 8.925 8.925 4 15 4h5"
-            />
-          </svg>
-        </div>
-      </PickerTrigger>
+          <div className="text-foreground absolute top-1/2 right-4 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              className="text-foreground"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 20v-5C4 8.925 8.925 4 15 4h5"
+              />
+            </svg>
+          </div>
+        </PickerTrigger>
+        <LockButton
+          param="radius"
+          className="absolute top-1/2 right-10 -translate-y-1/2"
+        />
+      </div>
       <PickerContent
         anchor={isMobile ? anchorRef : undefined}
         side={isMobile ? "top" : "right"}

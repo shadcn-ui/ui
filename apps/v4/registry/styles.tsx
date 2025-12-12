@@ -4,6 +4,7 @@ export const STYLES = [
   {
     name: "vega",
     title: "Vega",
+    description: "The classic shadcn/ui look. Clean, neutral, and familiar.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -25,6 +26,7 @@ export const STYLES = [
   {
     name: "nova",
     title: "Nova",
+    description: "Reduced padding and margins for compact layouts.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +49,7 @@ export const STYLES = [
   {
     name: "maia",
     title: "Maia",
+    description: "Rounded and soft. Generous padding and spacing.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -71,6 +74,7 @@ export const STYLES = [
   {
     name: "lyra",
     title: "Lyra",
+    description: "Boxy and sharp. Pairs well with mono fonts.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -92,6 +96,7 @@ export const STYLES = [
   {
     name: "mira",
     title: "Mira",
+    description: "Compact. Made for dense interfaces.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

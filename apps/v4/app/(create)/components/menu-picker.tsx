@@ -6,6 +6,7 @@ import { useQueryStates } from "nuqs"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { type MenuColorValue } from "@/registry/config"
+import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
   PickerContent,
@@ -123,17 +124,23 @@ export function MenuColorPicker({
 
   return (
     <Picker>
-      <PickerTrigger disabled={mounted && resolvedTheme === "dark"}>
-        <div className="flex flex-col justify-start text-left">
-          <div className="text-muted-foreground text-xs">Menu Color</div>
-          <div className="text-foreground text-sm font-medium">
-            {currentMenu?.label}
+      <div className="group/picker relative">
+        <PickerTrigger disabled={mounted && resolvedTheme === "dark"}>
+          <div className="flex flex-col justify-start text-left">
+            <div className="text-muted-foreground text-xs">Menu Color</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentMenu?.label}
+            </div>
           </div>
-        </div>
-        <div className="text-foreground absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 items-center justify-center text-base">
-          {currentMenu?.icon}
-        </div>
-      </PickerTrigger>
+          <div className="text-foreground absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base">
+            {currentMenu?.icon}
+          </div>
+        </PickerTrigger>
+        <LockButton
+          param="menuColor"
+          className="absolute top-1/2 right-10 -translate-y-1/2"
+        />
+      </div>
       <PickerContent
         anchor={isMobile ? anchorRef : undefined}
         side={isMobile ? "top" : "right"}

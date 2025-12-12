@@ -10,6 +10,7 @@ import {
   ItemTitle,
 } from "@/registry/bases/radix/ui/item"
 import { type FontValue } from "@/registry/config"
+import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
   PickerContent,
@@ -43,20 +44,26 @@ export function FontPicker({
 
   return (
     <Picker>
-      <PickerTrigger>
-        <div className="flex flex-col justify-start text-left">
-          <div className="text-muted-foreground text-xs">Font</div>
-          <div className="text-foreground text-sm font-medium">
-            {currentFont?.name}
+      <div className="group/picker relative">
+        <PickerTrigger>
+          <div className="flex flex-col justify-start text-left">
+            <div className="text-muted-foreground text-xs">Font</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentFont?.name}
+            </div>
           </div>
-        </div>
-        <div
-          className="text-foreground absolute top-1/2 right-4 ml-auto flex size-4 -translate-y-1/2 items-center justify-center text-base"
-          style={{ fontFamily: currentFont?.font.style.fontFamily }}
-        >
-          Aa
-        </div>
-      </PickerTrigger>
+          <div
+            className="text-foreground absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base"
+            style={{ fontFamily: currentFont?.font.style.fontFamily }}
+          >
+            Aa
+          </div>
+        </PickerTrigger>
+        <LockButton
+          param="font"
+          className="absolute top-1/2 right-10 -translate-y-1/2"
+        />
+      </div>
       <PickerContent
         anchor={isMobile ? anchorRef : undefined}
         side={isMobile ? "top" : "right"}

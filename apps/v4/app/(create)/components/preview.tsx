@@ -3,6 +3,7 @@
 import * as React from "react"
 import { type ImperativePanelHandle } from "react-resizable-panels"
 
+import { DARK_MODE_FORWARD_TYPE } from "@/components/mode-switcher"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { RANDOMIZE_FORWARD_TYPE } from "@/app/(create)/components/customizer-controls"
 import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/item-picker"
@@ -75,6 +76,17 @@ export function Preview() {
       })
       document.dispatchEvent(syntheticEvent)
     }
+
+    if (event.data.type === DARK_MODE_FORWARD_TYPE) {
+      const key = event.data.key || "d"
+
+      const syntheticEvent = new KeyboardEvent("keydown", {
+        key,
+        bubbles: true,
+        cancelable: true,
+      })
+      document.dispatchEvent(syntheticEvent)
+    }
   }
 
   React.useEffect(() => {
@@ -100,10 +112,13 @@ export function Preview() {
           src={iframeSrc}
           className="z-10 size-full flex-1"
         />
+        <Badge
+          className="absolute right-2 bottom-2 isolate z-10"
+          variant="secondary"
+        >
+          Preview
+        </Badge>
       </div>
-      <Badge className="absolute right-2 bottom-2" variant="secondary">
-        Preview
-      </Badge>
     </div>
   )
 }

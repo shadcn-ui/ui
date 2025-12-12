@@ -6,6 +6,7 @@ import { useQueryStates } from "nuqs"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { BASE_COLORS, type BaseColorName } from "@/registry/config"
+import { LockButton } from "@/app/(create)/components/lock-button"
 import {
   Picker,
   PickerContent,
@@ -39,27 +40,33 @@ export function BaseColorPicker({
 
   return (
     <Picker>
-      <PickerTrigger>
-        <div className="flex flex-col justify-start text-left">
-          <div className="text-muted-foreground text-xs">Base Color</div>
-          <div className="text-foreground text-sm font-medium">
-            {currentBaseColor?.title}
+      <div className="group/picker relative">
+        <PickerTrigger>
+          <div className="flex flex-col justify-start text-left">
+            <div className="text-muted-foreground text-xs">Base Color</div>
+            <div className="text-foreground text-sm font-medium">
+              {currentBaseColor?.title}
+            </div>
           </div>
-        </div>
-        {mounted && resolvedTheme && (
-          <div
-            style={
-              {
-                "--color":
-                  currentBaseColor?.cssVars?.[
-                    resolvedTheme as "light" | "dark"
-                  ]?.["muted-foreground"],
-              } as React.CSSProperties
-            }
-            className="absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color)"
-          />
-        )}
-      </PickerTrigger>
+          {mounted && resolvedTheme && (
+            <div
+              style={
+                {
+                  "--color":
+                    currentBaseColor?.cssVars?.[
+                      resolvedTheme as "light" | "dark"
+                    ]?.["muted-foreground"],
+                } as React.CSSProperties
+              }
+              className="absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color)"
+            />
+          )}
+        </PickerTrigger>
+        <LockButton
+          param="baseColor"
+          className="absolute top-1/2 right-10 -translate-y-1/2"
+        />
+      </div>
       <PickerContent
         anchor={isMobile ? anchorRef : undefined}
         side={isMobile ? "top" : "right"}
