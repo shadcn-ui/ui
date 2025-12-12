@@ -3458,6 +3458,31 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "use-mobile": {
+      name: "use-mobile",
+      title: "undefined",
+      description: "",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/hooks/use-mobile.ts",
+          type: "registry:hook",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/hooks/use-mobile.ts")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
   },
   base: {
     accordion: {
@@ -6817,6 +6842,31 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/base/blocks/chatgpt.tsx")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "use-mobile": {
+      name: "use-mobile",
+      title: "undefined",
+      description: "",
+      type: "registry:hook",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/hooks/use-mobile.ts",
+          type: "registry:hook",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/hooks/use-mobile.ts")
         const exportName =
           Object.keys(mod).find(
             (key) =>

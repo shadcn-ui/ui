@@ -279,6 +279,10 @@
       "type": "registry:ui"
     },
     {
+      "name": "form",
+      "type": "registry:ui"
+    },
+    {
       "name": "hover-card",
       "files": [
         {
@@ -1903,6 +1907,16 @@
         }
       ],
       "type": "registry:block"
+    },
+    {
+      "name": "use-mobile",
+      "files": [
+        {
+          "path": "registry/radix-mira/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "type": "registry:hook"
     },
     {
       "name": "font-geist-sans",

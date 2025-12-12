@@ -282,6 +282,10 @@
       "type": "registry:ui"
     },
     {
+      "name": "form",
+      "type": "registry:ui"
+    },
+    {
       "name": "hover-card",
       "files": [
         {
@@ -1841,6 +1845,16 @@
         }
       ],
       "type": "registry:block"
+    },
+    {
+      "name": "use-mobile",
+      "files": [
+        {
+          "path": "registry/base-lyra/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "type": "registry:hook"
     },
     {
       "name": "sink",
