@@ -189,6 +189,7 @@ function ToggleGroupWithIcons() {
             lucide="StarIcon"
             tabler="IconStar"
             hugeicons="StarIcon"
+            phosphor="StarIcon"
           />
           Star
         </ToggleGroupItem>
@@ -201,6 +202,7 @@ function ToggleGroupWithIcons() {
             lucide="HeartIcon"
             tabler="IconHeart"
             hugeicons="FavouriteIcon"
+            phosphor="HeartIcon"
           />
           Heart
         </ToggleGroupItem>
@@ -213,6 +215,7 @@ function ToggleGroupWithIcons() {
             lucide="BookmarkIcon"
             tabler="IconBookmark"
             hugeicons="BookmarkIcon"
+            phosphor="BookmarkIcon"
           />
           Bookmark
         </ToggleGroupItem>
@@ -277,6 +280,7 @@ function ToggleGroupSort() {
             lucide="ArrowDownIcon"
             tabler="IconArrowDown"
             hugeicons="ArrowDownIcon"
+            phosphor="ArrowDownIcon"
           />
           Newest
         </ToggleGroupItem>
@@ -285,6 +289,7 @@ function ToggleGroupSort() {
             lucide="ArrowUpIcon"
             tabler="IconArrowUp"
             hugeicons="ArrowUpIcon"
+            phosphor="ArrowUpIcon"
           />
           Oldest
         </ToggleGroupItem>
@@ -293,6 +298,7 @@ function ToggleGroupSort() {
             lucide="TrendingUpIcon"
             tabler="IconTrendingUp"
             hugeicons="TradeUpIcon"
+            phosphor="TrendUpIcon"
           />
           Popular
         </ToggleGroupItem>

@@ -191,6 +191,7 @@ function PromptForm() {
                       lucide="MoreHorizontalIcon"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
+                      phosphor="DotsThreeOutlineIcon"
                     />
                     More
                   </DropdownMenuSubTrigger>
@@ -202,6 +203,7 @@ function PromptForm() {
                             lucide="ShareIcon"
                             tabler="IconShare"
                             hugeicons="Share03Icon"
+                            phosphor="ShareIcon"
                           />
                           Add sources
                         </DropdownMenuItem>
@@ -210,6 +212,7 @@ function PromptForm() {
                             lucide="BookOpenIcon"
                             tabler="IconBook"
                             hugeicons="BookIcon"
+                            phosphor="BookOpenIcon"
                           />
                           Study and learn
                         </DropdownMenuItem>
@@ -218,6 +221,7 @@ function PromptForm() {
                             lucide="GlobeIcon"
                             tabler="IconWorld"
                             hugeicons="GlobalIcon"
+                            phosphor="GlobeIcon"
                           />
                           Web search
                         </DropdownMenuItem>
@@ -226,6 +230,7 @@ function PromptForm() {
                             lucide="PenToolIcon"
                             tabler="IconPencil"
                             hugeicons="PenIcon"
+                            phosphor="PencilIcon"
                           />
                           Canvas
                         </DropdownMenuItem>
@@ -250,6 +255,7 @@ function PromptForm() {
                   lucide="AudioLinesIcon"
                   tabler="IconMicrophone"
                   hugeicons="AudioWave01Icon"
+                  phosphor="MicrophoneIcon"
                 />
               </TooltipTrigger>
               <TooltipContent>Dictate</TooltipContent>
@@ -263,6 +269,7 @@ function PromptForm() {
                 lucide="ArrowUpIcon"
                 tabler="IconArrowUp"
                 hugeicons="ArrowUp02Icon"
+                phosphor="ArrowUpIcon"
               />
             </InputGroupButton>
           </InputGroupAddon>
@@ -287,6 +294,7 @@ function ModelSelector() {
             lucide="ChevronDownIcon"
             tabler="IconChevronDown"
             hugeicons="ArrowDown01Icon"
+            phosphor="CaretDownIcon"
             className="text-muted-foreground size-4"
           />
         </DropdownMenuTrigger>
@@ -441,6 +449,7 @@ function CreateProjectForm() {
                   lucide="SettingsIcon"
                   tabler="IconSettings"
                   hugeicons="Settings01Icon"
+                  phosphor="GearIcon"
                 />
                 <span className="sr-only">Memory</span>
               </DropdownMenuTrigger>
@@ -515,6 +524,7 @@ function CreateProjectForm() {
                         lucide="FolderIcon"
                         tabler="IconFolder"
                         hugeicons="FolderIcon"
+                        phosphor="FolderIcon"
                         className="text-(--color)"
                       />
                     </PopoverTrigger>
@@ -576,6 +586,7 @@ function CreateProjectForm() {
                       lucide="CircleCheckIcon"
                       tabler="IconCircleCheck"
                       hugeicons="CheckmarkCircle02Icon"
+                      phosphor="CheckCircleIcon"
                       data-icon="inline-start"
                       className="hidden group-data-[checked=true]/badge:inline"
                     />
@@ -590,6 +601,7 @@ function CreateProjectForm() {
                   lucide="LightbulbIcon"
                   tabler="IconBulb"
                   hugeicons="BulbIcon"
+                  phosphor="LightbulbIcon"
                 />
                 <AlertDescription className="text-xs">
                   Projects keep chats, files, and custom instructions in one

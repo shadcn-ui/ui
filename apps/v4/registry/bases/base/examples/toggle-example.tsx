@@ -30,6 +30,7 @@ function ToggleBasic() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
           />
         </Toggle>
         <Toggle aria-label="Toggle italic">
@@ -37,6 +38,7 @@ function ToggleBasic() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
           />
         </Toggle>
         <Toggle aria-label="Toggle underline">
@@ -44,6 +46,7 @@ function ToggleBasic() {
             lucide="UnderlineIcon"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
+            phosphor="TextUnderlineIcon"
           />
         </Toggle>
       </div>
@@ -60,6 +63,7 @@ function ToggleOutline() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
           />
           Italic
         </Toggle>
@@ -68,6 +72,7 @@ function ToggleOutline() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
           />
           Bold
         </Toggle>
@@ -282,6 +287,7 @@ function ToggleWithIcon() {
             lucide="BookmarkIcon"
             tabler="IconBookmark"
             hugeicons="BookmarkIcon"
+            phosphor="BookmarkIcon"
             className="group-data-[state=on]/toggle:fill-accent-foreground"
           />
         </Toggle>
@@ -290,6 +296,7 @@ function ToggleWithIcon() {
             lucide="BookmarkIcon"
             tabler="IconBookmark"
             hugeicons="BookmarkIcon"
+            phosphor="BookmarkIcon"
             className="group-data-[state=on]/toggle:fill-accent-foreground"
           />
           Bookmark

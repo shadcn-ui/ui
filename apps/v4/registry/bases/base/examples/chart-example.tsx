@@ -121,6 +121,7 @@ function ChartAreaExample() {
                   lucide="TrendingUpIcon"
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
+                  phosphor="TrendUpIcon"
                   className="size-4"
                 />
               </div>
@@ -275,6 +276,7 @@ function ChartLineExample() {
                   lucide="TrendingUpIcon"
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
+                  phosphor="TrendUpIcon"
                   className="size-4"
                 />
               </div>

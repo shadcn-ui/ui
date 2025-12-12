@@ -129,6 +129,7 @@ function AvatarWithBadgeIcon() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -143,6 +144,7 @@ function AvatarWithBadgeIcon() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -157,6 +159,7 @@ function AvatarWithBadgeIcon() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -169,6 +172,7 @@ function AvatarWithBadgeIcon() {
               lucide="CheckIcon"
               tabler="IconCheck"
               hugeicons="Tick02Icon"
+              phosphor="CheckIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -179,6 +183,7 @@ function AvatarWithBadgeIcon() {
               lucide="CheckIcon"
               tabler="IconCheck"
               hugeicons="Tick02Icon"
+              phosphor="CheckIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -189,6 +194,7 @@ function AvatarWithBadgeIcon() {
               lucide="CheckIcon"
               tabler="IconCheck"
               hugeicons="Tick02Icon"
+              phosphor="CheckIcon"
             />
           </AvatarBadge>
         </Avatar>
@@ -479,6 +485,7 @@ function AvatarInEmpty() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
             />
             Invite Members
           </Button>

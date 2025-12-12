@@ -83,6 +83,7 @@ function ContextMenuWithIcons() {
                 lucide="CopyIcon"
                 tabler="IconCopy"
                 hugeicons="CopyIcon"
+                phosphor="CopyIcon"
               />
               Copy
             </ContextMenuItem>
@@ -91,6 +92,7 @@ function ContextMenuWithIcons() {
                 lucide="ScissorsIcon"
                 tabler="IconCut"
                 hugeicons="ScissorIcon"
+                phosphor="ScissorsIcon"
               />
               Cut
             </ContextMenuItem>
@@ -99,6 +101,7 @@ function ContextMenuWithIcons() {
                 lucide="ClipboardPasteIcon"
                 tabler="IconClipboard"
                 hugeicons="ClipboardIcon"
+                phosphor="ClipboardIcon"
               />
               Paste
             </ContextMenuItem>
