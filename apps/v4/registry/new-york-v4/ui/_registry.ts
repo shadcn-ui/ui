@@ -673,4 +673,14 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "timeline",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/timeline.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

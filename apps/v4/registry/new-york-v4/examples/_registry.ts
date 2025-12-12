@@ -2607,4 +2607,48 @@ export const examples: Registry["items"] = [
       mobile: "component",
     },
   },
+  {
+    name: "timeline-demo",
+    type: "registry:example",
+    registryDependencies: ["timeline"],
+    files: [
+      {
+        path: "examples/timeline-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "timeline-with-icons",
+    type: "registry:example",
+    registryDependencies: ["timeline"],
+    files: [
+      {
+        path: "examples/timeline-with-icons.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "timeline-activity-feed",
+    type: "registry:example",
+    registryDependencies: ["timeline", "avatar"],
+    files: [
+      {
+        path: "examples/timeline-activity-feed.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "timeline-horizontal",
+    type: "registry:example",
+    registryDependencies: ["timeline"],
+    files: [
+      {
+        path: "examples/timeline-horizontal.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
