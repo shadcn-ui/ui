@@ -122,28 +122,33 @@ export async function updateFiles(
 
     // Run our transformers.
     // Skip transformers for .env files to preserve exact content
-    const content = isEnvFile(filePath)
-      ? file.content
-      : await transform(
-          {
-            filename: file.path,
-            raw: file.content,
-            config,
-            baseColor,
-            transformJsx: !config.tsx,
-            isRemote: options.isRemote,
-          },
-          [
-            transformImport,
-            transformRsc,
-            transformCssVars,
-            transformTwPrefixes,
-            transformIcons,
-            ...(_isNext16Middleware(filePath, projectInfo, config)
-              ? [transformNext]
-              : []),
-          ]
-        )
+    // Skip transformers for universal item files (registry:file and registry:item)
+    // to preserve their original content as they're meant to be framework-agnostic
+    const isUniversalItemFile =
+      file.type === "registry:file" || file.type === "registry:item"
+    const content =
+      isEnvFile(filePath) || isUniversalItemFile
+        ? file.content
+        : await transform(
+            {
+              filename: file.path,
+              raw: file.content,
+              config,
+              baseColor,
+              transformJsx: !config.tsx,
+              isRemote: options.isRemote,
+            },
+            [
+              transformImport,
+              transformRsc,
+              transformCssVars,
+              transformTwPrefixes,
+              transformIcons,
+              ...(_isNext16Middleware(filePath, projectInfo, config)
+                ? [transformNext]
+                : []),
+            ]
+          )
 
     // Skip the file if it already exists and the content is the same.
     // Exception: Don't skip .env files as we merge content instead of replacing
