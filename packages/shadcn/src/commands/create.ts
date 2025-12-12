@@ -17,8 +17,7 @@ import prompts from "prompts"
 
 import { initOptionsSchema, runInit } from "./init"
 
-// 🚨 Replace with https://ui.shadcn.com.
-const SHADCN_URL = "https://u-1-day.vercel.app"
+const SHADCN_URL = "https://ui.shadcn.com"
 
 const CREATE_TEMPLATES = {
   next: "Next.js",
@@ -53,9 +52,6 @@ export const create = new Command()
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .action(async (name, opts) => {
-    if (process.env.REGISTRY_URL !== `${SHADCN_URL}/r`) {
-      process.exit(1)
-    }
     try {
       // If no arguments or options provided, show initial prompt.
       const hasNoArgs = !name && !opts.template && !opts.preset

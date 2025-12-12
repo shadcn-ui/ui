@@ -49,7 +49,7 @@ export const STYLES = [
   {
     name: "maia",
     title: "Maia",
-    description: "Rounded and soft. Generous padding and spacing.",
+    description: "Soft and rounded, with generous spacing.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
