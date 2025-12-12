@@ -581,6 +581,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'><rect width='500' height='500' fill='var(--foreground)'/><path d='M150 100 C150 100, 170 80, 200 90 C230 100, 250 120, 250 120 C250 120, 270 100, 300 110 C330 120, 350 100, 350 100 L360 150 C360 150, 380 130, 400 140 C420 150, 400 170, 400 170 L400 330 C400 330, 420 310, 400 320 C380 330, 360 310, 360 310 L350 360 C350 360, 330 340, 300 350 C270 360, 250 340, 250 340 C250 340, 230 360, 200 350 C170 340, 150 360, 150 360 L140 310 C140 310, 120 330, 100 320 C80 310, 100 290, 100 290 L100 170 C100 170, 80 190, 100 180 C120 170, 140 190, 140 190 Z' fill='var(--background)'/><rect x='280' y='180' width='60' height='140' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@pureui",
+    "homepage": "https://pure.kam-ui.com/",
+    "url": "https://pure.kam-ui.com/r/{name}.json",
+    "description": "Pure UI is a curated collection of refined, animated, and accessible components built with Base UI, Tailwind CSS, Motion, and other high-quality open source libraries.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 24 24'><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M5.061 20.045C6.375 21 8.251 21 12 21s5.625 0 6.939-.955a5 5 0 0 0 1.106-1.106C21 17.625 21 15.749 21 12s0-5.625-.955-6.939a5 5 0 0 0-1.106-1.106C17.625 3 15.749 3 12 3s-5.625 0-6.939.955A5 5 0 0 0 3.955 5.06C3 6.375 3 8.251 3 12s0 5.625.955 6.939a5 5 0 0 0 1.106 1.106M17 18l1-1m-5 1l5-5m-9 5l9-9'/></svg>"
+  },
+  {
     "name": "@tailwind-builder",
     "homepage": "https://tailwindbuilder.ai/",
     "url": "https://tailwindbuilder.ai/r/{name}.json",
