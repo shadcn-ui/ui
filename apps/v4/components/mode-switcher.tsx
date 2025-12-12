@@ -79,10 +79,8 @@ export function ModeSwitcher() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </TooltipTrigger>
-      <TooltipContent>
-        <div className="flex items-center gap-2">
-          Toggle Mode <Kbd>D</Kbd>
-        </div>
+      <TooltipContent className="flex items-center gap-2 pr-1">
+        Toggle Mode <Kbd>D</Kbd>
       </TooltipContent>
     </Tooltip>
   )

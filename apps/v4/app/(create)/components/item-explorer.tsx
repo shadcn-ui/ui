@@ -2,16 +2,22 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { ChevronRightIcon } from "lucide-react"
 import { useQueryStates } from "nuqs"
 import { type RegistryItem } from "shadcn/schema"
 
+import { cn } from "@/lib/utils"
 import { type Base } from "@/registry/bases"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/registry/new-york-v4/ui/collapsible"
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -51,33 +57,50 @@ export function ItemExplorer({
     >
       <SidebarContent className="no-scrollbar -mx-1 overflow-x-hidden">
         {groupedItems.map((group) => (
-          <SidebarGroup key={group.type} className="px-1">
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {group.items.map((item) => (
-                  <SidebarMenuItem key={item.name}>
-                    <SidebarMenuButton
-                      onClick={() => setParams({ item: item.name })}
-                      className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit cursor-pointer overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:-z-0 after:rounded-md"
-                      data-active={item.name === currentItem?.name}
-                      isActive={item.name === currentItem?.name}
-                    >
-                      {item.title}
-                      <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
-                    </SidebarMenuButton>
-                    <Link
-                      href={`/preview/${base}/${item.name}`}
-                      prefetch
-                      className="sr-only"
-                      tabIndex={-1}
-                    >
-                      {item.title}
-                    </Link>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+          <Collapsible key={group.type} defaultOpen className="group/collapsible">
+            <SidebarGroup className="px-1 py-0">
+              <CollapsibleTrigger className="flex w-full items-center gap-1 py-1.5 text-[0.8rem] font-medium [&[data-state=open]>svg]:rotate-90">
+                <ChevronRightIcon className="text-muted-foreground size-3.5 transition-transform" />
+                <span>{group.title}</span>
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <SidebarGroupContent>
+                  <SidebarMenu className="relative ml-1.5 border-l border-border/50 pl-2">
+                    {group.items.map((item, index) => (
+                      <SidebarMenuItem key={item.name} className="relative">
+                        <div
+                          className={cn(
+                            "border-border/50 absolute -left-2 top-1/2 h-px w-2 border-t",
+                            index === group.items.length - 1 && "bg-sidebar"
+                          )}
+                        />
+                        {index === group.items.length - 1 && (
+                          <div className="bg-sidebar absolute -bottom-1 -left-2.5 top-1/2 w-1" />
+                        )}
+                        <SidebarMenuButton
+                          onClick={() => setParams({ item: item.name })}
+                          className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[26px] w-fit cursor-pointer overflow-visible border border-transparent text-[0.8rem] font-normal after:absolute after:inset-x-0 after:-inset-y-1 after:-z-0 after:rounded-md"
+                          data-active={item.name === currentItem?.name}
+                          isActive={item.name === currentItem?.name}
+                        >
+                          {item.title}
+                          <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
+                        </SidebarMenuButton>
+                        <Link
+                          href={`/preview/${base}/${item.name}`}
+                          prefetch
+                          className="sr-only"
+                          tabIndex={-1}
+                        >
+                          {item.title}
+                        </Link>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </CollapsibleContent>
+            </SidebarGroup>
+          </Collapsible>
         ))}
       </SidebarContent>
     </Sidebar>
