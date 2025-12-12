@@ -1064,6 +1064,7 @@ describe("resolveRegistryTree - potential target conflicts", async () => {
             "type": "registry:ui",
           },
         ],
+        "fonts": undefined,
         "tailwind": {},
       }
     `)
@@ -1100,6 +1101,7 @@ describe("resolveRegistryTree - potential target conflicts", async () => {
             "type": "registry:ui",
           },
         ],
+        "fonts": undefined,
         "tailwind": {},
       }
     `)
@@ -1139,6 +1141,7 @@ describe("resolveRegistryTree - potential target conflicts", async () => {
             "type": "registry:ui",
           },
         ],
+        "fonts": undefined,
         "tailwind": {},
       }
     `)
@@ -1169,6 +1172,7 @@ describe("resolveRegistryTree - potential target conflicts", async () => {
             "type": "registry:ui",
           },
         ],
+        "fonts": undefined,
         "tailwind": {},
       }
     `)
@@ -1250,6 +1254,7 @@ describe("resolveRegistryTree - potential target conflicts", async () => {
             "type": "registry:ui",
           },
         ],
+        "fonts": undefined,
         "tailwind": {},
       }
     `)
@@ -1325,6 +1330,7 @@ describe("resolveRegistryTree - potential target conflicts", async () => {
             "type": "registry:ui",
           },
         ],
+        "fonts": undefined,
         "tailwind": {},
       }
     `)
@@ -1384,6 +1390,7 @@ describe("resolveRegistryTree - potential target conflicts", async () => {
             "type": "registry:ui",
           },
         ],
+        "fonts": undefined,
         "tailwind": {},
       }
     `)
@@ -1570,6 +1577,7 @@ describe("resolveRegistryTree - cross-registry dependencies", async () => {
             "type": "registry:block",
           },
         ],
+        "fonts": undefined,
         "tailwind": {},
       }
     `)
@@ -1625,6 +1633,7 @@ describe("resolveRegistryTree - cross-registry dependencies", async () => {
             "type": "registry:component",
           },
         ],
+        "fonts": undefined,
         "tailwind": {},
       }
     `)
@@ -1922,6 +1931,7 @@ describe("resolveRegistryTree - comprehensive cross-registry tests", async () =>
             "type": "registry:block",
           },
         ],
+        "fonts": undefined,
         "tailwind": {
           "config": {
             "plugins": [
@@ -2051,6 +2061,7 @@ describe("resolveRegistryTree - comprehensive cross-registry tests", async () =>
             "type": "registry:lib",
           },
         ],
+        "fonts": undefined,
         "tailwind": {
           "config": {
             "plugins": [

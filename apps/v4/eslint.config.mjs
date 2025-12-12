@@ -1,8 +1,10 @@
-import { defineConfig, globalIgnores } from "eslint/config"
 import nextVitals from "eslint-config-next/core-web-vitals"
+import { defineConfig, globalIgnores } from "eslint/config"
+import tseslint from "typescript-eslint"
 
 const eslintConfig = defineConfig([
   ...nextVitals,
+  ...tseslint.configs.recommended,
   globalIgnores([
     "node_modules/**",
     ".next/**",
@@ -10,6 +12,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     ".source/**",
+    "**/__index__.tsx",
   ]),
   {
     rules: {
@@ -18,6 +21,13 @@ const eslintConfig = defineConfig([
       "@next/next/no-html-link-for-pages": "off",
       "@next/next/no-img-element": "off",
       "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          prefer: "type-imports",
+          fixStyle: "inline-type-imports",
+        },
+      ],
     },
   },
 ])
