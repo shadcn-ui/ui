@@ -4,6 +4,37 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## November 2025 - Fixes
+
+### Default style button icons
+
+We shipped the `icon-sm` and `icon-lg` sizes for the **New York** button back
+in September, but the `default` style was still missing those variants. This
+release adds both icon sizes to the default style so that icon-only buttons
+look consistent regardless of the style you pick.
+
+Run the following command to update your project:
+
+```bash
+npx shadcn@latest add button --overwrite
+```
+
+Or manually add the new variants under `size` in `buttonVariants`:
+
+```tsx showLineNumbers title="components/ui/button.tsx"
+const buttonVariants = cva("...", {
+  variants: {
+    size: {
+      icon: "h-10 w-10",
+      "icon-sm": "h-9 w-9",
+      "icon-lg": "h-11 w-11",
+    },
+  },
+})
+```
+
+Fixes: [#8757](https://github.com/shadcn-ui/ui/issues/8757)
+
 ## October 2025 - New Components
 
 For this round of components, I looked at what we build every day, the boring stuff we rebuild over and over, and made reusable abstractions you can actually use.
