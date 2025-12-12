@@ -6,6 +6,7 @@ import { fonts } from "@/registry/fonts"
 import { blocks } from "./blocks/_registry"
 import { components } from "./components/_registry"
 import { examples } from "./examples/_registry"
+import { hooks } from "./hooks/_registry"
 import { internal } from "./internal/_registry"
 import { lib } from "./lib/_registry"
 import { ui } from "./ui/_registry"
@@ -21,6 +22,7 @@ export const registry = {
       ...lib,
       ...components,
       ...blocks,
+      ...hooks,
       ...internal,
       ...fonts,
     ]),
