@@ -1031,6 +1031,24 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "wireframe": {
+      name: "wireframe",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york-v4/ui/wireframe.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/wireframe.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "dashboard-01": {
       name: "dashboard-01",
       title: "undefined",
@@ -8270,6 +8288,24 @@ export const Index: Record<string, Record<string, any>> = {
       }),
       categories: ["calendar","date"],
       meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    },
+    "wireframe-demo": {
+      name: "wireframe-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["wireframe"],
+      files: [{
+        path: "registry/new-york-v4/examples/wireframe-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/wireframe-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
     },
     "sidebar-demo": {
       name: "sidebar-demo",
