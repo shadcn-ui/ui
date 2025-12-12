@@ -1,5 +1,6 @@
 {
   "@8bitcn": "https://8bitcn.com/r/{name}.json",
+  "@8starlabs-ui": "https://ui.8starlabs.com/r/{name}.json",
   "@97cn": "https://97cn.itzik.co/r/{name}.json",
   "@abstract": "https://build.abs.xyz/r/{name}/json",
   "@abui": "https://abui.io/r/{name}.json",
