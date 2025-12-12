@@ -39,8 +39,8 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 
 type PaginationLinkProps = {
   isActive?: boolean
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">
+  size?: React.ComponentProps<typeof Button>["size"] // 👈 Mark as optional here
+} & React.ComponentProps<"a">
 
 function PaginationLink({
   className,
