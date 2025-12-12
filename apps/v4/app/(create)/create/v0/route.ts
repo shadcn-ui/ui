@@ -107,7 +107,7 @@ function buildGlobalsCss(designSystemConfig: DesignSystemConfig) {
 
   const content = dedent`@import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+/* @import "shadcn/tailwind.css"; */
 
 @custom-variant dark (&:is(.dark *));
 

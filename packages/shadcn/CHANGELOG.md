@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 3.6.0
+
+### Minor Changes
+
+- [#9022](https://github.com/shadcn-ui/ui/pull/9022) [`86d9b00084affa7010e6c7c7bd410ec62525caac`](https://github.com/shadcn-ui/ui/commit/86d9b00084affa7010e6c7c7bd410ec62525caac) Thanks [@shadcn](https://github.com/shadcn)! - add registry:base item type
+
+- [#9022](https://github.com/shadcn-ui/ui/pull/9022) [`86d9b00084affa7010e6c7c7bd410ec62525caac`](https://github.com/shadcn-ui/ui/commit/86d9b00084affa7010e6c7c7bd410ec62525caac) Thanks [@shadcn](https://github.com/shadcn)! - add npx shadcn create
+
 ## 3.5.2
 
 ### Patch Changes
