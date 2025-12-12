@@ -150,7 +150,7 @@ export function CustomizerControls({ className }: { className?: string }) {
       >
         <div className="flex flex-col justify-start text-left">
           <div className="text-muted-foreground text-xs">Shuffle</div>
-          <div className="text-foreground text-sm font-medium">Try random</div>
+          <div className="text-foreground text-sm font-medium">Try Random</div>
         </div>
         <HugeiconsIcon icon={DiceFaces05Icon} className="size-5 md:hidden" />
         <Kbd className="bg-foreground/10 text-foreground hidden md:flex">R</Kbd>
