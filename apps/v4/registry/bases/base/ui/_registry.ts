@@ -247,6 +247,10 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "form",
+    type: "registry:ui",
+  },
+  {
     name: "hover-card",
     type: "registry:ui",
     files: [
