@@ -414,6 +414,7 @@ function DropdownMenuWithRadioIcons() {
                   lucide="CreditCardIcon"
                   tabler="IconCreditCard"
                   hugeicons="CreditCardIcon"
+                  phosphor="CreditCardIcon"
                 />
                 Credit Card
               </DropdownMenuRadioItem>
@@ -514,6 +515,7 @@ function DropdownMenuWithAvatar() {
             lucide="CreditCardIcon"
             tabler="IconCreditCard"
             hugeicons="CreditCardIcon"
+            phosphor="CreditCardIcon"
           />
           Billing
         </DropdownMenuItem>
@@ -522,6 +524,7 @@ function DropdownMenuWithAvatar() {
             lucide="BellIcon"
             tabler="IconBell"
             hugeicons="NotificationIcon"
+            phosphor="BellIcon"
           />
           Notifications
         </DropdownMenuItem>
@@ -532,6 +535,7 @@ function DropdownMenuWithAvatar() {
           lucide="LogOutIcon"
           tabler="IconLogout"
           hugeicons="LogoutIcon"
+          phosphor="SignOutIcon"
         />
         Sign Out
       </DropdownMenuItem>
@@ -659,6 +663,7 @@ function DropdownMenuInDialog() {
                   lucide="TrashIcon"
                   tabler="IconTrash"
                   hugeicons="DeleteIcon"
+                  phosphor="TrashIcon"
                 />
                 Delete
               </DropdownMenuItem>
@@ -758,6 +763,7 @@ function DropdownMenuComplex() {
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
+                              phosphor="FileCodeIcon"
                             />
                             Project Gamma
                           </DropdownMenuItem>
@@ -766,6 +772,7 @@ function DropdownMenuComplex() {
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
+                              phosphor="FileCodeIcon"
                             />
                             Project Delta
                           </DropdownMenuItem>
@@ -900,6 +907,7 @@ function DropdownMenuComplex() {
                 lucide="UserIcon"
                 tabler="IconUser"
                 hugeicons="UserIcon"
+                phosphor="UserIcon"
               />
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -909,6 +917,7 @@ function DropdownMenuComplex() {
                 lucide="CreditCardIcon"
                 tabler="IconCreditCard"
                 hugeicons="CreditCardIcon"
+                phosphor="CreditCardIcon"
               />
               Billing
             </DropdownMenuItem>
@@ -918,6 +927,7 @@ function DropdownMenuComplex() {
                   lucide="SettingsIcon"
                   tabler="IconSettings"
                   hugeicons="SettingsIcon"
+                  phosphor="GearIcon"
                 />
                 Settings
               </DropdownMenuSubTrigger>
@@ -949,6 +959,7 @@ function DropdownMenuComplex() {
                           lucide="BellIcon"
                           tabler="IconBell"
                           hugeicons="NotificationIcon"
+                          phosphor="BellIcon"
                         />
                         Notifications
                       </DropdownMenuSubTrigger>
@@ -971,6 +982,7 @@ function DropdownMenuComplex() {
                                 lucide="BellIcon"
                                 tabler="IconBell"
                                 hugeicons="NotificationIcon"
+                                phosphor="BellIcon"
                               />
                               Push Notifications
                             </DropdownMenuCheckboxItem>
@@ -987,6 +999,7 @@ function DropdownMenuComplex() {
                                 lucide="MailIcon"
                                 tabler="IconMail"
                                 hugeicons="MailIcon"
+                                phosphor="EnvelopeIcon"
                               />
                               Email Notifications
                             </DropdownMenuCheckboxItem>
@@ -1039,6 +1052,7 @@ function DropdownMenuComplex() {
                 lucide="LogOutIcon"
                 tabler="IconLogout"
                 hugeicons="LogoutIcon"
+                phosphor="SignOutIcon"
               />
               Sign Out
               <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

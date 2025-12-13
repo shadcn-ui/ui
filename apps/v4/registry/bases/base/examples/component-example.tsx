@@ -252,6 +252,7 @@ function FormExample() {
                                     lucide="FileCodeIcon"
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
+                                    phosphor="CodeIcon"
                                   />
                                   Project Gamma
                                 </DropdownMenuItem>
@@ -260,6 +261,7 @@ function FormExample() {
                                     lucide="FileCodeIcon"
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
+                                    phosphor="CodeIcon"
                                   />
                                   Project Delta
                                 </DropdownMenuItem>
@@ -475,6 +477,7 @@ function FormExample() {
                                       lucide="BellIcon"
                                       tabler="IconBell"
                                       hugeicons="NotificationIcon"
+                                      phosphor="BellIcon"
                                     />
                                     Push Notifications
                                   </DropdownMenuCheckboxItem>

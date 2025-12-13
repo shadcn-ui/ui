@@ -191,6 +191,7 @@ function ChartBarExample() {
               lucide="TrendingUpIcon"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
+              phosphor="TrendUpIcon"
               className="size-4"
             />
           </div>
@@ -394,6 +395,7 @@ function ChartPieExample() {
               lucide="TrendingUpIcon"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
+              phosphor="TrendUpIcon"
               className="size-4"
             />
           </div>
@@ -464,6 +466,7 @@ function ChartRadarExample() {
               lucide="TrendingUpIcon"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
+              phosphor="TrendUpIcon"
               className="size-4"
             />
           </div>
@@ -558,6 +561,7 @@ function ChartRadialExample() {
               lucide="TrendingUpIcon"
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
+              phosphor="TrendUpIcon"
               className="size-4"
             />
           </div>

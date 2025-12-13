@@ -602,6 +602,7 @@ function MenubarInDialog() {
                     lucide="TrashIcon"
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
+                    phosphor="TrashIcon"
                   />
                   Delete
                 </MenubarItem>

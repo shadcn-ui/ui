@@ -367,6 +367,7 @@ function AvatarGroupWithIconCount() {
             lucide="PlusIcon"
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
+            phosphor="PlusIcon"
           />
         </AvatarGroupCount>
       </AvatarGroup>
@@ -394,6 +395,7 @@ function AvatarGroupWithIconCount() {
             lucide="PlusIcon"
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
+            phosphor="PlusIcon"
           />
         </AvatarGroupCount>
       </AvatarGroup>
@@ -427,6 +429,7 @@ function AvatarGroupWithIconCount() {
             lucide="PlusIcon"
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
+            phosphor="PlusIcon"
           />
         </AvatarGroupCount>
       </AvatarGroup>
@@ -470,6 +473,7 @@ function AvatarInEmpty() {
                   lucide="PlusIcon"
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
+                  phosphor="PlusIcon"
                 />
               </AvatarGroupCount>
             </AvatarGroup>
