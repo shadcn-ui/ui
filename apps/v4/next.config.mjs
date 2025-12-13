@@ -6,6 +6,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Produce a self-contained server output that doesn't need pnpm/npm at runtime
+  output: "standalone",
   outputFileTracingIncludes: {
     "/*": ["./registry/**/*"],
   },

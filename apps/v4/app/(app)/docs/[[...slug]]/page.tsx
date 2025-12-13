@@ -19,7 +19,7 @@ import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 export const revalidate = false
-export const dynamic = "force-static"
+export const dynamic = "force-dynamic"
 export const dynamicParams = false
 
 export function generateStaticParams() {
