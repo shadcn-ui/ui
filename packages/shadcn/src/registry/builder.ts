@@ -2,7 +2,7 @@ import { REGISTRY_URL } from "@/src/registry/constants"
 import { expandEnvVars } from "@/src/registry/env"
 import { RegistryNotConfiguredError } from "@/src/registry/errors"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
-import { isUrl } from "@/src/registry/utils"
+import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { validateRegistryConfig } from "@/src/registry/validator"
 import { registryConfigItemSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
@@ -21,7 +21,7 @@ export function buildUrlAndHeadersForRegistryItem(
   let { registry, item } = parseRegistryAndItemFromString(name)
 
   if (!registry) {
-    registry = "@shadcn"
+    return null
   }
 
   const registries = config?.registries || {}
