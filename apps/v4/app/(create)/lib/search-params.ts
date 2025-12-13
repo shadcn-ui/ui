@@ -1,3 +1,4 @@
+import { useQueryStates } from "nuqs"
 import {
   createLoader,
   parseAsBoolean,
@@ -5,6 +6,7 @@ import {
   parseAsString,
   parseAsStringLiteral,
   type inferParserType,
+  type Options,
 } from "nuqs/server"
 
 import {
@@ -70,6 +72,13 @@ export const designSystemSearchParams = {
 export const loadDesignSystemSearchParams = createLoader(
   designSystemSearchParams
 )
+
+export const useDesignSystemSearchParams = (options: Options = {}) =>
+  useQueryStates(designSystemSearchParams, {
+    shallow: false,
+    history: "push",
+    ...options,
+  })
 
 export type DesignSystemSearchParams = inferParserType<
   typeof designSystemSearchParams

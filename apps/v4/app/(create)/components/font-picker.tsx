@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useQueryStates } from "nuqs"
 
 import {
   Item,
@@ -21,7 +20,7 @@ import {
   PickerTrigger,
 } from "@/app/(create)/components/picker"
 import { type Font } from "@/app/(create)/lib/fonts"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function FontPicker({
   fonts,
@@ -32,10 +31,7 @@ export function FontPicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentFont = React.useMemo(
     () => fonts.find((font) => font.value === params.font),

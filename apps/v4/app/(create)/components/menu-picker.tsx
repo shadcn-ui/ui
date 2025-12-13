@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
-import { useQueryStates } from "nuqs"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { type MenuColorValue } from "@/registry/config"
@@ -15,7 +14,7 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const MENU_OPTIONS = [
   {
@@ -114,10 +113,7 @@ export function MenuColorPicker({
 }) {
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
   const currentMenu = MENU_OPTIONS.find(
     (menu) => menu.value === params.menuColor
   )

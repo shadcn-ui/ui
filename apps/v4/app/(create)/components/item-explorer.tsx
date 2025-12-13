@@ -3,7 +3,6 @@
 import * as React from "react"
 import Link from "next/link"
 import { ChevronRightIcon } from "lucide-react"
-import { useQueryStates } from "nuqs"
 import { type RegistryItem } from "shadcn/schema"
 
 import { cn } from "@/lib/utils"
@@ -22,7 +21,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/registry/new-york-v4/ui/sidebar"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 import { groupItemsByType } from "@/app/(create)/lib/utils"
 
 const cachedGroupedItems = React.cache(
@@ -38,8 +37,7 @@ export function ItemExplorer({
   base: Base["name"]
   items: Pick<RegistryItem, "name" | "title" | "type">[]
 }) {
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    history: "push",
+  const [params, setParams] = useDesignSystemSearchParams({
     shallow: true,
   })
 

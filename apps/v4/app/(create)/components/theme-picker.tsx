@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
-import { useQueryStates } from "nuqs"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { BASE_COLORS, type Theme, type ThemeName } from "@/registry/config"
@@ -17,7 +16,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function ThemePicker({
   themes,
@@ -30,10 +29,7 @@ export function ThemePicker({
 }) {
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentTheme = React.useMemo(
     () => themes.find((theme) => theme.name === params.theme),

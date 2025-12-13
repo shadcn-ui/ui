@@ -1,7 +1,5 @@
 "use client"
 
-import { useQueryStates } from "nuqs"
-
 import { RADII, type RadiusValue } from "@/registry/config"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
@@ -13,7 +11,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function RadiusPicker({
   isMobile,
@@ -22,10 +20,7 @@ export function RadiusPicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentRadius = RADII.find((radius) => radius.name === params.radius)
   const defaultRadius = RADII.find((radius) => radius.name === "default")
