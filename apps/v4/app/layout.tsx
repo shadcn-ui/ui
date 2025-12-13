@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={fontVariables}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -91,14 +91,12 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <LayoutProvider>
-            <NuqsAdapter>
-              <ActiveThemeProvider>
-                {children}
-                <TailwindIndicator />
-                <Toaster position="top-center" />
-                <Analytics />
-              </ActiveThemeProvider>
-            </NuqsAdapter>
+            <ActiveThemeProvider>
+              <NuqsAdapter>{children}</NuqsAdapter>
+              <TailwindIndicator />
+              <Toaster position="top-center" />
+              <Analytics />
+            </ActiveThemeProvider>
           </LayoutProvider>
         </ThemeProvider>
       </body>
