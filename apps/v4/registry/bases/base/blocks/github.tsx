@@ -854,7 +854,7 @@ function Navbar() {
                       lucide="ShoppingBagIcon"
                       tabler="IconShoppingBag"
                       hugeicons="ShoppingBasket01Icon"
-                      phosphor="ShoppingBagIcon"
+                      phosphor="BagIcon"
                     />
                   </ItemMedia>
                   <ItemContent>

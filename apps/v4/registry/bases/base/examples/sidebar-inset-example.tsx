@@ -83,7 +83,7 @@ export default function SidebarInsetExample() {
             lucide="ShoppingBagIcon"
             tabler="IconShoppingBag"
             hugeicons="ShoppingBag01Icon"
-            phosphor="ShoppingBagIcon"
+            phosphor="BagIcon"
           />
         ),
         items: [

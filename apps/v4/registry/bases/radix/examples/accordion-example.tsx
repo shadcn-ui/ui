@@ -179,7 +179,7 @@ function AccordionInCard() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRight01Icon"
-              phosphor="ArrowUpIcon"
+              phosphor="ArrowUpRightIcon"
             />
           </Button>
         </>

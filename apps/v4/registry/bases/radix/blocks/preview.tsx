@@ -1443,6 +1443,7 @@ function ObservabilityCard() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
               data-icon="inline-end"
             />
           </Button>
@@ -1506,6 +1507,7 @@ function ItemExample() {
                 lucide="ShoppingBagIcon"
                 tabler="IconShoppingBag"
                 hugeicons="ShoppingBasket01Icon"
+                phosphor="BagIcon"
               />
             </ItemMedia>
             <ItemContent>

@@ -269,6 +269,7 @@ function TableWithActions() {
                       lucide="MoreHorizontalIcon"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
+                      phosphor="DotsThreeOutlineIcon"
                     />
                     <span className="sr-only">Open menu</span>
                   </Button>
@@ -295,6 +296,7 @@ function TableWithActions() {
                       lucide="MoreHorizontalIcon"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
+                      phosphor="DotsThreeOutlineIcon"
                     />
                     <span className="sr-only">Open menu</span>
                   </Button>
@@ -321,6 +323,7 @@ function TableWithActions() {
                       lucide="MoreHorizontalIcon"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
+                      phosphor="DotsThreeOutlineIcon"
                     />
                     <span className="sr-only">Open menu</span>
                   </Button>
