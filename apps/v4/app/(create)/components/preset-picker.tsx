@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { BASES, STYLES, type Preset } from "@/registry/config"
+import { STYLES, type Preset } from "@/registry/config"
 import {
   Picker,
   PickerContent,

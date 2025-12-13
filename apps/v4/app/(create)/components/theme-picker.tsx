@@ -10,7 +10,6 @@ import {
   Picker,
   PickerContent,
   PickerGroup,
-  PickerLabel,
   PickerRadioGroup,
   PickerRadioItem,
   PickerSeparator,
