@@ -91,10 +91,12 @@ export default function RootLayout({
         <ThemeProvider>
           <LayoutProvider>
             <ActiveThemeProvider>
-              <NuqsAdapter>{children}</NuqsAdapter>
+              <NuqsAdapter>
+              {children}
               <TailwindIndicator />
               <Toaster position="top-center" />
               <Analytics />
+            </NuqsAdapter>
             </ActiveThemeProvider>
           </LayoutProvider>
         </ThemeProvider>
