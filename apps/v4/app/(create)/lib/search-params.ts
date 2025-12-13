@@ -31,7 +31,7 @@ import {
 } from "@/registry/config"
 import { FONTS } from "@/app/(create)/lib/fonts"
 
-export const designSystemSearchParams = {
+const designSystemSearchParams = {
   base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
     DEFAULT_CONFIG.base
   ),
