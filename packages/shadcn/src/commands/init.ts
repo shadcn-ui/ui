@@ -230,7 +230,7 @@ export const init = new Command()
             item.extends === "none" ? false : options.baseStyle
         }
 
-        if (item?.type === "registry:style" && !options.baseStyle) {
+        if (item?.type === "registry:style") {
           // Set a default base color so we're not prompted.
           // The style will extend or override it.
           options.baseColor = "neutral"

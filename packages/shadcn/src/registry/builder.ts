@@ -1,8 +1,8 @@
-import { REGISTRY_URL } from "@/src/registry/constants"
+import { BUILTIN_REGISTRIES, REGISTRY_URL } from "@/src/registry/constants"
 import { expandEnvVars } from "@/src/registry/env"
 import { RegistryNotConfiguredError } from "@/src/registry/errors"
 import { parseRegistryAndItemFromString } from "@/src/registry/parser"
-import { isUrl } from "@/src/registry/utils"
+import { isLocalFile, isUrl } from "@/src/registry/utils"
 import { validateRegistryConfig } from "@/src/registry/validator"
 import { registryConfigItemSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
@@ -14,17 +14,26 @@ const ENV_VAR_PATTERN = /\${(\w+)}/g
 const QUERY_PARAM_SEPARATOR = "?"
 const QUERY_PARAM_DELIMITER = "&"
 
+function isLocalPath(path: string) {
+  return path.startsWith("./") || path.startsWith("/")
+}
+
 export function buildUrlAndHeadersForRegistryItem(
   name: string,
   config?: Config
 ) {
   let { registry, item } = parseRegistryAndItemFromString(name)
 
+  // If no registry prefix, check if it's a URL or local path.
+  // These should be handled directly, not through a registry.
   if (!registry) {
+    if (isUrl(name) || isLocalFile(name) || isLocalPath(name)) {
+      return null
+    }
     registry = "@shadcn"
   }
 
-  const registries = config?.registries || {}
+  const registries = { ...BUILTIN_REGISTRIES, ...config?.registries }
   const registryConfig = registries[registry]
   if (!registryConfig) {
     throw new RegistryNotConfiguredError(registry)

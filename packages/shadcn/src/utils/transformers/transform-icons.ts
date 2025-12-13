@@ -1,19 +1,14 @@
 import { iconLibraries, type IconLibraryName } from "@/src/icons/libraries"
-import { InvalidConfigIconLibraryError } from "@/src/registry/errors"
 import { Transformer } from "@/src/utils/transformers"
 import { SourceFile, SyntaxKind } from "ts-morph"
 
 export const transformIcons: Transformer = async ({ sourceFile, config }) => {
   const iconLibrary = config.iconLibrary
-  if (!iconLibrary) {
-    return sourceFile
-  }
 
-  if (!(iconLibrary in iconLibraries)) {
-    throw new InvalidConfigIconLibraryError(
-      iconLibrary,
-      Object.keys(iconLibraries)
-    )
+  // Fail silently if the icon library is not supported.
+  // This is for legacy icon libraries.
+  if (!iconLibrary || !(iconLibrary in iconLibraries)) {
+    return sourceFile
   }
 
   const targetLibrary = iconLibrary as IconLibraryName
