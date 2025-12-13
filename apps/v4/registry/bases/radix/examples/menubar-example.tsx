@@ -378,7 +378,7 @@ function MenubarFormat() {
                   lucide="BoldIcon"
                   tabler="IconBold"
                   hugeicons="TextBoldIcon"
-                  phosphor="BoldIcon"
+                  phosphor="TextBIcon"
                 />
                 Bold <MenubarShortcut>⌘B</MenubarShortcut>
               </MenubarItem>
@@ -387,7 +387,7 @@ function MenubarFormat() {
                   lucide="ItalicIcon"
                   tabler="IconItalic"
                   hugeicons="TextItalicIcon"
-                  phosphor="ItalicIcon"
+                  phosphor="TextItalicIcon"
                 />
                 Italic <MenubarShortcut>⌘I</MenubarShortcut>
               </MenubarItem>
@@ -396,7 +396,7 @@ function MenubarFormat() {
                   lucide="UnderlineIcon"
                   tabler="IconUnderline"
                   hugeicons="TextUnderlineIcon"
-                  phosphor="UnderlineIcon"
+                  phosphor="TextUnderlineIcon"
                 />
                 Underline <MenubarShortcut>⌘U</MenubarShortcut>
               </MenubarItem>
