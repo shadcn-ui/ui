@@ -3,12 +3,12 @@
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 import {
-  ChartConfig,
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 
 const chartData = [
