@@ -17,7 +17,7 @@ export function PreviewControls() {
     <div className="flex h-8 items-center gap-1.5 rounded-md border p-1">
       <ToggleGroup
         type="single"
-        value={(params.size ?? 100).toString()}
+        value={params.size.toString()}
         onValueChange={(newValue) => {
           if (newValue) {
             setParams({ size: parseInt(newValue) })
