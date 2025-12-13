@@ -501,6 +501,7 @@ function DialogChatSettings() {
                                 lucide="InfoIcon"
                                 tabler="IconInfoCircle"
                                 hugeicons="AlertCircleIcon"
+                                phosphor="InfoIcon"
                               />
                             </TooltipTrigger>
                             <TooltipContent className="flex items-center gap-2">

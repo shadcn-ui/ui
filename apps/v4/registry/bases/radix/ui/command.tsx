@@ -82,6 +82,7 @@ function CommandInput({
             lucide="SearchIcon"
             tabler="IconSearch"
             hugeicons="SearchIcon"
+            phosphor="MagnifyingGlassIcon"
             className="cn-command-input-icon"
           />
         </InputGroupAddon>
@@ -164,6 +165,7 @@ function CommandItem({
         lucide="CheckIcon"
         tabler="IconCheck"
         hugeicons="Tick02Icon"
+        phosphor="CheckIcon"
         className="cn-command-item-indicator ml-auto opacity-0 group-has-[[data-slot=command-shortcut]]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
       />
     </CommandPrimitive.Item>

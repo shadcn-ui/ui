@@ -115,6 +115,7 @@ function NavigationMenuBasic() {
                       lucide="CircleAlertIcon"
                       tabler="IconExclamationCircle"
                       hugeicons="AlertCircleIcon"
+                      phosphor="WarningCircleIcon"
                     />
                     Backlog
                   </NavigationMenuLink>
@@ -127,6 +128,7 @@ function NavigationMenuBasic() {
                       lucide="CircleAlertIcon"
                       tabler="IconExclamationCircle"
                       hugeicons="AlertCircleIcon"
+                      phosphor="WarningCircleIcon"
                     />
                     To Do
                   </NavigationMenuLink>
@@ -139,6 +141,7 @@ function NavigationMenuBasic() {
                       lucide="CircleAlertIcon"
                       tabler="IconExclamationCircle"
                       hugeicons="AlertCircleIcon"
+                      phosphor="WarningCircleIcon"
                     />
                     Done
                   </NavigationMenuLink>

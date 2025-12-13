@@ -38,6 +38,7 @@ export default function SidebarInsetExample() {
             lucide="HomeIcon"
             tabler="IconHome"
             hugeicons="Home01Icon"
+            phosphor="HouseIcon"
           />
         ),
         isActive: true,
@@ -60,6 +61,7 @@ export default function SidebarInsetExample() {
             lucide="ChartLineIcon"
             tabler="IconChartLine"
             hugeicons="ChartIcon"
+            phosphor="ChartLineIcon"
           />
         ),
         items: [
@@ -81,6 +83,7 @@ export default function SidebarInsetExample() {
             lucide="ShoppingBagIcon"
             tabler="IconShoppingBag"
             hugeicons="ShoppingBag01Icon"
+            phosphor="BagIcon"
           />
         ),
         items: [
@@ -106,6 +109,7 @@ export default function SidebarInsetExample() {
             lucide="ShoppingCartIcon"
             tabler="IconShoppingCart"
             hugeicons="ShoppingCart01Icon"
+            phosphor="ShoppingCartIcon"
           />
         ),
         items: [
@@ -127,6 +131,7 @@ export default function SidebarInsetExample() {
             lucide="FileIcon"
             tabler="IconFile"
             hugeicons="File01Icon"
+            phosphor="FileIcon"
           />
         ),
       },
@@ -138,6 +143,7 @@ export default function SidebarInsetExample() {
             lucide="UserIcon"
             tabler="IconUser"
             hugeicons="UserIcon"
+            phosphor="UserIcon"
           />
         ),
       },
@@ -149,6 +155,7 @@ export default function SidebarInsetExample() {
             lucide="Settings2Icon"
             tabler="IconSettings"
             hugeicons="Settings05Icon"
+            phosphor="GearIcon"
           />
         ),
       },
@@ -162,6 +169,7 @@ export default function SidebarInsetExample() {
             lucide="LifeBuoy"
             tabler="IconLifebuoy"
             hugeicons="ChartRingIcon"
+            phosphor="LifebuoyIcon"
           />
         ),
       },
@@ -173,6 +181,7 @@ export default function SidebarInsetExample() {
             lucide="Send"
             tabler="IconSend"
             hugeicons="SentIcon"
+            phosphor="PaperPlaneTiltIcon"
           />
         ),
       },
@@ -210,6 +219,7 @@ export default function SidebarInsetExample() {
                           lucide="ChevronRightIcon"
                           tabler="IconChevronRight"
                           hugeicons="ArrowRight01Icon"
+                          phosphor="CaretRightIcon"
                         />
                         <span className="sr-only">Toggle</span>
                       </CollapsibleTrigger>

@@ -80,6 +80,7 @@ export default function SidebarIconExample() {
             lucide="TerminalSquareIcon"
             tabler="IconTerminal2"
             hugeicons="ComputerTerminalIcon"
+            phosphor="TerminalIcon"
           />
         ),
         isActive: true,
@@ -106,6 +107,7 @@ export default function SidebarIconExample() {
             lucide="BotIcon"
             tabler="IconRobot"
             hugeicons="RoboticIcon"
+            phosphor="RobotIcon"
           />
         ),
         items: [
@@ -131,6 +133,7 @@ export default function SidebarIconExample() {
             lucide="BookOpen"
             tabler="IconBook"
             hugeicons="BookOpen02Icon"
+            phosphor="BookOpenIcon"
           />
         ),
         items: [
@@ -160,6 +163,7 @@ export default function SidebarIconExample() {
             lucide="Settings2Icon"
             tabler="IconSettings"
             hugeicons="Settings05Icon"
+            phosphor="GearIcon"
           />
         ),
         items: [
@@ -191,6 +195,7 @@ export default function SidebarIconExample() {
             lucide="FrameIcon"
             tabler="IconFrame"
             hugeicons="CropIcon"
+            phosphor="CropIcon"
           />
         ),
       },
@@ -202,6 +207,7 @@ export default function SidebarIconExample() {
             lucide="PieChartIcon"
             tabler="IconChartPie"
             hugeicons="PieChartIcon"
+            phosphor="ChartPieIcon"
           />
         ),
       },
@@ -213,6 +219,7 @@ export default function SidebarIconExample() {
             lucide="MapIcon"
             tabler="IconMap"
             hugeicons="MapsIcon"
+            phosphor="MapTrifoldIcon"
           />
         ),
       },
@@ -277,6 +284,7 @@ export default function SidebarIconExample() {
                       lucide="ChevronsUpDownIcon"
                       tabler="IconSelector"
                       hugeicons="UnfoldMoreIcon"
+                      phosphor="CaretUpDownIcon"
                     />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
@@ -317,6 +325,7 @@ export default function SidebarIconExample() {
                           lucide="ChevronRightIcon"
                           tabler="IconChevronRight"
                           hugeicons="ArrowRight01Icon"
+                          phosphor="CaretRightIcon"
                           className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
                         />
                       </CollapsibleTrigger>
@@ -381,6 +390,7 @@ export default function SidebarIconExample() {
                       lucide="ChevronsUpDownIcon"
                       tabler="IconSelector"
                       hugeicons="UnfoldMoreIcon"
+                      phosphor="CaretUpDownIcon"
                     />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>

@@ -73,6 +73,7 @@ function TooltipWithIcon() {
             lucide="InfoIcon"
             tabler="IconInfoCircle"
             hugeicons="AlertCircleIcon"
+            phosphor="InfoIcon"
           />
           <span className="sr-only">Info</span>
         </TooltipTrigger>
@@ -126,6 +127,7 @@ function TooltipWithKeyboard() {
             lucide="SaveIcon"
             tabler="IconDeviceFloppy"
             hugeicons="FloppyDiskIcon"
+            phosphor="FloppyDiskIcon"
           />
         </TooltipTrigger>
         <TooltipContent className="pr-1.5">

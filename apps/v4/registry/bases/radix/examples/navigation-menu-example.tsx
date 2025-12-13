@@ -197,6 +197,7 @@ function NavigationMenuWithoutViewport() {
                         lucide="CircleAlertIcon"
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
+                        phosphor="WarningCircleIcon"
                       />
                       Backlog
                     </Link>
@@ -207,6 +208,7 @@ function NavigationMenuWithoutViewport() {
                         lucide="CircleAlertIcon"
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
+                        phosphor="WarningCircleIcon"
                       />
                       To Do
                     </Link>
@@ -217,6 +219,7 @@ function NavigationMenuWithoutViewport() {
                         lucide="CircleAlertIcon"
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
+                        phosphor="WarningCircleIcon"
                       />
                       Done
                     </Link>

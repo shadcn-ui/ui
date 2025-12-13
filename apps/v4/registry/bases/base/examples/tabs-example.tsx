@@ -112,6 +112,7 @@ function TabsWithIcons() {
               lucide="AppWindowIcon"
               tabler="IconAppWindow"
               hugeicons="CursorInWindowIcon"
+              phosphor="AppWindowIcon"
             />
             Preview
           </TabsTrigger>
@@ -120,6 +121,7 @@ function TabsWithIcons() {
               lucide="CodeIcon"
               tabler="IconCode"
               hugeicons="CodeIcon"
+              phosphor="CodeIcon"
             />
             Code
           </TabsTrigger>
@@ -139,6 +141,7 @@ function TabsIconOnly() {
               lucide="HomeIcon"
               tabler="IconHome"
               hugeicons="HomeIcon"
+              phosphor="HouseIcon"
             />
           </TabsTrigger>
           <TabsTrigger value="search">
@@ -146,6 +149,7 @@ function TabsIconOnly() {
               lucide="SearchIcon"
               tabler="IconSearch"
               hugeicons="SearchIcon"
+              phosphor="MagnifyingGlassIcon"
             />
           </TabsTrigger>
           <TabsTrigger value="settings">
@@ -153,6 +157,7 @@ function TabsIconOnly() {
               lucide="SettingsIcon"
               tabler="IconSettings"
               hugeicons="SettingsIcon"
+              phosphor="GearIcon"
             />
           </TabsTrigger>
         </TabsList>
@@ -260,6 +265,7 @@ function TabsWithDropdown() {
                 lucide="MoreHorizontalIcon"
                 tabler="IconDots"
                 hugeicons="MoreHorizontalCircle01Icon"
+                phosphor="DotsThreeOutlineIcon"
               />
               <span className="sr-only">More options</span>
             </DropdownMenuTrigger>

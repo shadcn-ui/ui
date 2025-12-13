@@ -148,6 +148,7 @@ function Calendar({
                 lucide="ChevronLeftIcon"
                 tabler="IconChevronLeft"
                 hugeicons="ArrowLeftIcon"
+                phosphor="CaretLeftIcon"
                 className={cn("size-4", className)}
                 {...props}
               />
@@ -160,6 +161,7 @@ function Calendar({
                 lucide="ChevronRightIcon"
                 tabler="IconChevronRight"
                 hugeicons="ArrowRightIcon"
+                phosphor="CaretRightIcon"
                 className={cn("size-4", className)}
                 {...props}
               />
@@ -171,6 +173,7 @@ function Calendar({
               lucide="ChevronDownIcon"
               tabler="IconChevronDown"
               hugeicons="ArrowDownIcon"
+              phosphor="CaretDownIcon"
               className={cn("size-4", className)}
               {...props}
             />

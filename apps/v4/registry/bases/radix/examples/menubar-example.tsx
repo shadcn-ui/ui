@@ -247,6 +247,7 @@ function MenubarWithIcons() {
                   lucide="FileIcon"
                   tabler="IconFile"
                   hugeicons="FileIcon"
+                  phosphor="FileIcon"
                 />
                 New File <MenubarShortcut>⌘N</MenubarShortcut>
               </MenubarItem>
@@ -255,6 +256,7 @@ function MenubarWithIcons() {
                   lucide="FolderIcon"
                   tabler="IconFolder"
                   hugeicons="FolderIcon"
+                  phosphor="FolderIcon"
                 />
                 Open Folder
               </MenubarItem>
@@ -266,6 +268,7 @@ function MenubarWithIcons() {
                   lucide="SaveIcon"
                   tabler="IconDeviceFloppy"
                   hugeicons="FloppyDiskIcon"
+                  phosphor="FloppyDiskIcon"
                 />
                 Save <MenubarShortcut>⌘S</MenubarShortcut>
               </MenubarItem>
@@ -281,6 +284,7 @@ function MenubarWithIcons() {
                   lucide="CircleDashedIcon"
                   tabler="IconCircleDashed"
                   hugeicons="DashedLineCircleIcon"
+                  phosphor="CircleDashedIcon"
                 />
                 Settings
               </MenubarItem>
@@ -289,6 +293,7 @@ function MenubarWithIcons() {
                   lucide="CircleDashedIcon"
                   tabler="IconCircleDashed"
                   hugeicons="DashedLineCircleIcon"
+                  phosphor="CircleDashedIcon"
                 />
                 Help
               </MenubarItem>
@@ -298,6 +303,7 @@ function MenubarWithIcons() {
                   lucide="CircleDashedIcon"
                   tabler="IconCircleDashed"
                   hugeicons="DashedLineCircleIcon"
+                  phosphor="CircleDashedIcon"
                 />
                 Delete
               </MenubarItem>
@@ -372,6 +378,7 @@ function MenubarFormat() {
                   lucide="BoldIcon"
                   tabler="IconBold"
                   hugeicons="TextBoldIcon"
+                  phosphor="TextBIcon"
                 />
                 Bold <MenubarShortcut>⌘B</MenubarShortcut>
               </MenubarItem>
@@ -380,6 +387,7 @@ function MenubarFormat() {
                   lucide="ItalicIcon"
                   tabler="IconItalic"
                   hugeicons="TextItalicIcon"
+                  phosphor="TextItalicIcon"
                 />
                 Italic <MenubarShortcut>⌘I</MenubarShortcut>
               </MenubarItem>
@@ -388,6 +396,7 @@ function MenubarFormat() {
                   lucide="UnderlineIcon"
                   tabler="IconUnderline"
                   hugeicons="TextUnderlineIcon"
+                  phosphor="TextUnderlineIcon"
                 />
                 Underline <MenubarShortcut>⌘U</MenubarShortcut>
               </MenubarItem>
@@ -429,6 +438,7 @@ function MenubarInsert() {
                   lucide="ImageIcon"
                   tabler="IconPhoto"
                   hugeicons="ImageIcon"
+                  phosphor="ImageIcon"
                 />
                 Media
               </MenubarSubTrigger>
@@ -447,6 +457,7 @@ function MenubarInsert() {
                   lucide="LinkIcon"
                   tabler="IconLink"
                   hugeicons="LinkIcon"
+                  phosphor="LinkIcon"
                 />
                 Link <MenubarShortcut>⌘K</MenubarShortcut>
               </MenubarItem>
@@ -455,6 +466,7 @@ function MenubarInsert() {
                   lucide="TableIcon"
                   tabler="IconTable"
                   hugeicons="TableIcon"
+                  phosphor="TableIcon"
                 />
                 Table
               </MenubarItem>
@@ -470,6 +482,7 @@ function MenubarInsert() {
                   lucide="SearchIcon"
                   tabler="IconSearch"
                   hugeicons="SearchIcon"
+                  phosphor="MagnifyingGlassIcon"
                 />
                 Find & Replace <MenubarShortcut>⌘F</MenubarShortcut>
               </MenubarItem>
@@ -478,6 +491,7 @@ function MenubarInsert() {
                   lucide="CheckIcon"
                   tabler="IconCheck"
                   hugeicons="Tick02Icon"
+                  phosphor="CheckIcon"
                 />
                 Spell Check
               </MenubarItem>
@@ -502,6 +516,7 @@ function MenubarDestructive() {
                   lucide="FileIcon"
                   tabler="IconFile"
                   hugeicons="FileIcon"
+                  phosphor="FileIcon"
                 />
                 New File <MenubarShortcut>⌘N</MenubarShortcut>
               </MenubarItem>
@@ -510,6 +525,7 @@ function MenubarDestructive() {
                   lucide="FolderIcon"
                   tabler="IconFolder"
                   hugeicons="FolderIcon"
+                  phosphor="FolderIcon"
                 />
                 Open Folder
               </MenubarItem>
@@ -521,6 +537,7 @@ function MenubarDestructive() {
                   lucide="TrashIcon"
                   tabler="IconTrash"
                   hugeicons="DeleteIcon"
+                  phosphor="TrashIcon"
                 />
                 Delete File <MenubarShortcut>⌘⌫</MenubarShortcut>
               </MenubarItem>
@@ -536,6 +553,7 @@ function MenubarDestructive() {
                   lucide="UserIcon"
                   tabler="IconUser"
                   hugeicons="UserIcon"
+                  phosphor="UserIcon"
                 />
                 Profile
               </MenubarItem>
@@ -544,6 +562,7 @@ function MenubarDestructive() {
                   lucide="SettingsIcon"
                   tabler="IconSettings"
                   hugeicons="SettingsIcon"
+                  phosphor="GearIcon"
                 />
                 Settings
               </MenubarItem>
@@ -555,6 +574,7 @@ function MenubarDestructive() {
                   lucide="LogOutIcon"
                   tabler="IconLogout"
                   hugeicons="LogoutIcon"
+                  phosphor="SignOutIcon"
                 />
                 Sign out
               </MenubarItem>
@@ -566,6 +586,7 @@ function MenubarDestructive() {
                   lucide="TrashIcon"
                   tabler="IconTrash"
                   hugeicons="DeleteIcon"
+                  phosphor="TrashIcon"
                 />
                 Delete
               </MenubarItem>
@@ -601,6 +622,7 @@ function MenubarInDialog() {
                       lucide="CopyIcon"
                       tabler="IconCopy"
                       hugeicons="CopyIcon"
+                      phosphor="CopyIcon"
                     />
                     Copy
                   </MenubarItem>
@@ -609,6 +631,7 @@ function MenubarInDialog() {
                       lucide="ScissorsIcon"
                       tabler="IconCut"
                       hugeicons="ScissorIcon"
+                      phosphor="ScissorsIcon"
                     />
                     Cut
                   </MenubarItem>
@@ -617,6 +640,7 @@ function MenubarInDialog() {
                       lucide="ClipboardPasteIcon"
                       tabler="IconClipboard"
                       hugeicons="ClipboardIcon"
+                      phosphor="ClipboardIcon"
                     />
                     Paste
                   </MenubarItem>
@@ -643,6 +667,7 @@ function MenubarInDialog() {
                       lucide="TrashIcon"
                       tabler="IconTrash"
                       hugeicons="DeleteIcon"
+                      phosphor="TrashIcon"
                     />
                     Delete
                   </MenubarItem>

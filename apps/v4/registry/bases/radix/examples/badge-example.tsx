@@ -44,6 +44,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            phosphor="CheckCircleIcon"
             data-icon="inline-start"
           />
           Default
@@ -53,6 +54,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            phosphor="CheckCircleIcon"
             data-icon="inline-start"
           />
           Secondary
@@ -62,6 +64,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            phosphor="CheckCircleIcon"
             data-icon="inline-start"
           />
           Destructive
@@ -71,6 +74,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            phosphor="CheckCircleIcon"
             data-icon="inline-start"
           />
           Outline
@@ -80,6 +84,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            phosphor="CheckCircleIcon"
             data-icon="inline-start"
           />
           Ghost
@@ -89,6 +94,7 @@ function BadgeWithIconLeft() {
             lucide="BadgeCheck"
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadge02Icon"
+            phosphor="CheckCircleIcon"
             data-icon="inline-start"
           />
           Link
@@ -108,6 +114,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Badge>
@@ -117,6 +124,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Badge>
@@ -126,6 +134,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Badge>
@@ -135,6 +144,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Badge>
@@ -144,6 +154,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Badge>
@@ -153,6 +164,7 @@ function BadgeWithIconRight() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
+            phosphor="ArrowRightIcon"
             data-icon="inline-end"
           />
         </Badge>
@@ -205,6 +217,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
+              phosphor="ArrowUpRightIcon"
               data-icon="inline-end"
             />
           </a>
@@ -216,6 +229,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
+              phosphor="ArrowUpRightIcon"
               data-icon="inline-end"
             />
           </a>
@@ -227,6 +241,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
+              phosphor="ArrowUpRightIcon"
               data-icon="inline-end"
             />
           </a>
@@ -238,6 +253,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRightIcon"
+              phosphor="ArrowUpRightIcon"
               data-icon="inline-end"
             />
           </a>
@@ -249,6 +265,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
+              phosphor="ArrowUpRightIcon"
               data-icon="inline-end"
             />
           </a>
@@ -260,6 +277,7 @@ function BadgeAsLink() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowRight02Icon"
+              phosphor="ArrowUpRightIcon"
               data-icon="inline-end"
             />
           </a>

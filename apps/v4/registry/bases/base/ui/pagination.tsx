@@ -80,6 +80,7 @@ function PaginationPrevious({
         lucide="ChevronLeftIcon"
         tabler="IconChevronLeft"
         hugeicons="ArrowLeft01Icon"
+        phosphor="CaretLeftIcon"
         data-icon="inline-start"
       />
       <span className="cn-pagination-previous-text hidden sm:block">
@@ -105,6 +106,7 @@ function PaginationNext({
         lucide="ChevronRightIcon"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
+        phosphor="CaretRightIcon"
         data-icon="inline-end"
       />
     </PaginationLink>
@@ -129,6 +131,7 @@ function PaginationEllipsis({
         lucide="MoreHorizontalIcon"
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
+        phosphor="DotsThreeIcon"
       />
       <span className="sr-only">More pages</span>
     </span>

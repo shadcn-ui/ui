@@ -78,6 +78,7 @@ function NavigationMenuTrigger({
         lucide="ChevronDownIcon"
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
+        phosphor="CaretDownIcon"
         className="cn-navigation-menu-trigger-icon"
         aria-hidden="true"
       />

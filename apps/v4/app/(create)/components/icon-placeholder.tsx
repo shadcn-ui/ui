@@ -24,6 +24,12 @@ const IconHugeicons = lazy(() =>
   }))
 )
 
+const IconPhosphor = lazy(() =>
+  import("@/registry/icons/icon-phosphor").then((mod) => ({
+    default: mod.IconPhosphor,
+  }))
+)
+
 export function IconPlaceholder({
   ...props
 }: {
@@ -42,6 +48,9 @@ export function IconPlaceholder({
       {iconLibrary === "tabler" && <IconTabler name={iconName} {...props} />}
       {iconLibrary === "hugeicons" && (
         <IconHugeicons name={iconName} {...props} />
+      )}
+      {iconLibrary === "phosphor" && (
+        <IconPhosphor name={iconName} {...props} />
       )}
     </Suspense>
   )

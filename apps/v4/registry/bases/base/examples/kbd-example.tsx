@@ -89,6 +89,7 @@ function KbdWithIcons() {
             lucide="CircleDashedIcon"
             tabler="IconCircleDashed"
             hugeicons="DashedLineCircleIcon"
+            phosphor="CircleDashedIcon"
           />
         </Kbd>
         <Kbd>
@@ -96,6 +97,7 @@ function KbdWithIcons() {
             lucide="ArrowLeftIcon"
             tabler="IconArrowLeft"
             hugeicons="ArrowLeft01Icon"
+            phosphor="ArrowLeftIcon"
           />
         </Kbd>
         <Kbd>
@@ -103,6 +105,7 @@ function KbdWithIcons() {
             lucide="ArrowRightIcon"
             tabler="IconArrowRight"
             hugeicons="ArrowRight01Icon"
+            phosphor="ArrowRightIcon"
           />
         </Kbd>
       </KbdGroup>
@@ -119,6 +122,7 @@ function KbdWithIconsAndText() {
             lucide="ArrowLeftIcon"
             tabler="IconArrowLeft"
             hugeicons="ArrowLeft01Icon"
+            phosphor="ArrowLeftIcon"
           />
           Left
         </Kbd>
@@ -127,6 +131,7 @@ function KbdWithIconsAndText() {
             lucide="CircleDashedIcon"
             tabler="IconCircleDashed"
             hugeicons="DashedLineCircleIcon"
+            phosphor="CircleDashedIcon"
           />
           Voice Enabled
         </Kbd>
@@ -157,6 +162,7 @@ function KbdInTooltip() {
             lucide="SaveIcon"
             tabler="IconDeviceFloppy"
             hugeicons="FloppyDiskIcon"
+            phosphor="FloppyDiskIcon"
           />
         </TooltipTrigger>
         <TooltipContent className="pr-1.5">

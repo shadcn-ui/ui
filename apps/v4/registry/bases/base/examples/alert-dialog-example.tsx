@@ -100,6 +100,7 @@ function AlertDialogWithMedia() {
                 lucide="BluetoothIcon"
                 tabler="IconBluetooth"
                 hugeicons="BluetoothIcon"
+                phosphor="BluetoothIcon"
               />
             </AlertDialogMedia>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -133,6 +134,7 @@ function AlertDialogSmallWithMedia() {
                 lucide="BluetoothIcon"
                 tabler="IconBluetooth"
                 hugeicons="BluetoothIcon"
+                phosphor="BluetoothIcon"
               />
             </AlertDialogMedia>
             <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
@@ -164,6 +166,7 @@ function AlertDialogDestructive() {
                 lucide="Trash2Icon"
                 tabler="IconTrash"
                 hugeicons="Delete02Icon"
+                phosphor="TrashIcon"
               />
             </AlertDialogMedia>
             <AlertDialogTitle>Delete chat?</AlertDialogTitle>

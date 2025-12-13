@@ -69,6 +69,7 @@ function SheetContent({
                 lucide="XIcon"
                 tabler="IconX"
                 hugeicons="Cancel01Icon"
+                phosphor="XIcon"
               />
               <span className="sr-only">Close</span>
             </Button>
