@@ -1,9 +1,10 @@
 import {
-  createSearchParamsCache,
+  createLoader,
   parseAsBoolean,
   parseAsInteger,
   parseAsString,
   parseAsStringLiteral,
+  type inferParserType,
 } from "nuqs/server"
 
 import {
@@ -57,19 +58,19 @@ export const designSystemSearchParams = {
   radius: parseAsStringLiteral<RadiusValue>(
     RADII.map((r) => r.name)
   ).withDefault("default"),
-  template: parseAsStringLiteral<"next" | "start" | "vite">([
+  template: parseAsStringLiteral([
     "next",
     "start",
     "vite",
-  ]).withDefault("next"),
+  ] as const).withDefault("next"),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }
 
-export const designSystemSearchParamsCache = createSearchParamsCache(
+export const loadDesignSystemSearchParams = createLoader(
   designSystemSearchParams
 )
 
-export type DesignSystemSearchParams = Awaited<
-  ReturnType<typeof designSystemSearchParamsCache.parse>
+export type DesignSystemSearchParams = inferParserType<
+  typeof designSystemSearchParams
 >
