@@ -57,6 +57,14 @@
       },
       "required": ["utils", "components"]
     },
+    "menuColor": {
+      "type": "string",
+      "enum": ["default", "inverted"]
+    },
+    "menuAccent": {
+      "type": "string",
+      "enum": ["subtle", "bold"]
+    },
     "registries": {
       "type": "object",
       "patternProperties": {
