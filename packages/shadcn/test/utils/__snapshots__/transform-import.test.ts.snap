@@ -1,5 +1,57 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`transform async/dynamic imports 1`] = `
+"import * as React from "react"
+import { Button } from "@/components/ui/button"
+
+async function loadComponent() {
+  const { cn } = await import("@/lib/utils")
+  const module = await import("@/components/ui/card")
+  return module
+}
+
+function lazyLoad() {
+  return import("@/components/ui/dialog").then(module => module)
+}
+    "
+`;
+
+exports[`transform async/dynamic imports 2`] = `
+"import { Button } from "~/components/ui/button"
+
+async function loadUtils() {
+  const utils = await import("~/lib/utils")
+  const { cn } = await import("~/lib/utils")
+  return { utils, cn }
+}
+
+const dialogPromise = import("~/components/ui/dialog")
+const cardModule = import("~/components/ui/card")
+    "
+`;
+
+exports[`transform dynamic imports with cn utility 1`] = `
+"async function loadCn() {
+  const { cn } = await import("@/lib/utils")
+  return cn
+}
+
+async function loadMultiple() {
+  const utils1 = await import("@/lib/utils")
+  const { cn, twMerge } = await import("@/lib/utils")
+  const other = await import("@/lib/other")
+}
+    "
+`;
+
+exports[`transform dynamic imports with cn utility 2`] = `
+"async function loadWorkspaceCn() {
+  const { cn } = await import("@workspace/lib/utils")
+  return cn
+}
+    "
+`;
+
 exports[`transform import 1`] = `
 "import * as React from "react"
 import { Foo } from "bar"
@@ -18,7 +70,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn, foo, bar } from "~/lib/utils"
+    import { cn, foo, bar } from "~/lib"
     import { bar } from "~/lib/utils/bar"
     "
 `;
@@ -30,7 +82,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn } from "~/lib/utils"
+    import { cn } from "~/src/utils"
     import { bar } from "~/lib/utils/bar"
     "
 `;
@@ -42,7 +94,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn } from "~/lib/utils"
+    import { cn } from "~/src/utils"
     import { bar } from "~/lib/utils/bar"
     "
 `;
@@ -54,7 +106,7 @@ import { Foo } from "bar"
     import { Label} from "ui/label"
     import { Box } from "~/src/components/box"
 
-    import { cn } from "~/lib/utils"
+    import { cn } from "~/src/utils"
     import { bar } from "~/lib/utils/bar"
     "
 `;
@@ -89,5 +141,16 @@ import { Foo } from "bar"
     import { Box } from "@repo/ui/components/box"
 
     import { cn } from "@repo/ui/lib/utils"
+    "
+`;
+
+exports[`transform re-exports with dynamic imports 1`] = `
+"export { cn } from "@/lib/utils"
+export { Button } from "@/components/ui/button"
+
+async function load() {
+  const module = await import("@/components/ui/card")
+  return module
+}
     "
 `;

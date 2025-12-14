@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-switch",
+  "type": "registry:example",
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/field-switch.tsx",
+      "content": "import {\n  Field,\n  FieldContent,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Switch } from \"@/registry/new-york-v4/ui/switch\"\n\nexport default function FieldSwitch() {\n  return (\n    <div className=\"w-full max-w-md\">\n      <Field orientation=\"horizontal\">\n        <FieldContent>\n          <FieldLabel htmlFor=\"2fa\">Multi-factor authentication</FieldLabel>\n          <FieldDescription>\n            Enable multi-factor authentication. If you do not have a two-factor\n            device, you can use a one-time code sent to your email.\n          </FieldDescription>\n        </FieldContent>\n        <Switch id=\"2fa\" />\n      </Field>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

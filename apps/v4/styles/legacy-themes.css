@@ -1,0 +1,396 @@
+.theme-default .theme-container,
+.theme-default [data-radix-popper-content-wrapper] {
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+}
+
+.theme-mono .theme-container,
+.theme-mono [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-mono);
+  --primary: var(--color-stone-600);
+  --primary-foreground: var(--color-stone-50);
+  --chart-1: var(--color-stone-300);
+  --chart-2: var(--color-stone-500);
+  --chart-3: var(--color-stone-600);
+  --chart-4: var(--color-stone-700);
+  --chart-5: var(--color-stone-800);
+  --sidebar-primary: var(--color-stone-600);
+  --sidebar-primary-foreground: var(--color-stone-50);
+  --sidebar-ring: var(--color-stone-400);
+
+  @variant dark {
+    --primary: var(--color-stone-500);
+    --primary-foreground: var(--color-stone-50);
+    --sidebar-primary: var(--color-stone-500);
+    --sidebar-primary-foreground: var(--color-stone-50);
+    --sidebar-ring: var(--color-stone-900);
+  }
+
+  @media (min-width: 1024px) {
+    --font-sans: var(--font-mono);
+    --radius: 0.45em;
+    --text-lg: 1rem;
+    --text-xl: 1.1rem;
+    --text-2xl: 1.2rem;
+    --text-3xl: 1.3rem;
+    --text-4xl: 1.4rem;
+    --text-5xl: 1.5rem;
+    --text-6xl: 1.6rem;
+    --text-7xl: 1.7rem;
+    --text-8xl: 1.8rem;
+    --text-base: 0.85rem;
+    --text-sm: 0.8rem;
+    --spacing: 0.222222rem;
+  }
+
+  .rounded-xs,
+  .rounded-sm,
+  .rounded-md,
+  .rounded-lg,
+  .rounded-xl {
+    border-radius: 0;
+  }
+
+  .shadow-xs,
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl {
+    box-shadow: none;
+  }
+
+  [data-slot="toggle-group"],
+  [data-slot="toggle-group-item"],
+  [data-slot="checkbox"],
+  [data-slot="radio"],
+  [data-slot="switch"],
+  [data-slot="switch-thumb"] {
+    @apply !rounded-none !shadow-none;
+  }
+}
+
+.theme-scaled .theme-container,
+.theme-scaled [data-radix-popper-content-wrapper] {
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+
+  @media (min-width: 1024px) {
+    --radius: 0.45em;
+    --text-lg: 1rem;
+    --text-xl: 1.1rem;
+    --text-2xl: 1.2rem;
+    --text-3xl: 1.3rem;
+    --text-4xl: 1.4rem;
+    --text-5xl: 1.5rem;
+    --text-6xl: 1.6rem;
+    --text-7xl: 1.7rem;
+    --text-8xl: 1.8rem;
+    --text-base: 0.85rem;
+    --text-sm: 0.8rem;
+    --spacing: 0.2rem;
+  }
+
+  [data-slot="select-trigger"],
+  [data-slot="toggle-group-item"] {
+    --spacing: 0.2rem;
+  }
+
+  [data-slot="card"] {
+    border-radius: var(--radius);
+    padding-block: calc(var(--spacing) * 4);
+    gap: calc(var(--spacing) * 2);
+  }
+
+  [data-slot="card"].pb-0 {
+    padding-bottom: 0;
+  }
+}
+
+.theme-rounded-none .theme-container,
+.theme-rounded-none [data-radix-popper-content-wrapper] {
+  --radius: 0;
+}
+
+.theme-rounded-small .theme-container,
+.theme-rounded-small [data-radix-popper-content-wrapper] {
+  --radius: 0.4rem;
+}
+
+.theme-rounded-medium .theme-container,
+.theme-rounded-medium [data-radix-popper-content-wrapper] {
+  --radius: 0.65rem;
+}
+
+.theme-rounded-large .theme-container,
+.theme-rounded-large [data-radix-popper-content-wrapper] {
+  --radius: 1rem;
+}
+
+.theme-rounded-full .theme-container,
+.theme-rounded-full [data-radix-popper-content-wrapper] {
+  --radius: 1.2rem;
+}
+
+.theme-inter .theme-container,
+.theme-inter [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-inter);
+}
+
+.theme-noto-sans .theme-container,
+.theme-noto-sans [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-noto-sans);
+}
+
+.theme-nunito-sans .theme-container,
+.theme-nunito-sans [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-nunito-sans);
+}
+
+.theme-figtree .theme-container,
+.theme-figtree [data-radix-popper-content-wrapper] {
+  --font-sans: var(--font-figtree);
+}
+
+.theme-blue .theme-container,
+.theme-blue [data-radix-popper-content-wrapper] {
+  --primary: var(--color-blue-700);
+  --primary-foreground: var(--color-blue-50);
+  /* --ring: var(--color-blue-100); */
+  --sidebar-primary: var(--color-blue-600);
+  --sidebar-primary-foreground: var(--color-blue-50);
+  /* --sidebar-ring: var(--color-blue-400); */
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+
+  @variant dark {
+    --primary: var(--color-blue-700);
+    --primary-foreground: var(--color-blue-50);
+    /* --ring: var(--color-blue-900); */
+    --sidebar-primary: var(--color-blue-500);
+    --sidebar-primary-foreground: var(--color-blue-50);
+    /* --sidebar-ring: var(--color-blue-900); */
+  }
+}
+
+.theme-green .theme-container,
+.theme-green [data-radix-popper-content-wrapper] {
+  --primary: var(--color-lime-600);
+  --primary-foreground: var(--color-lime-50);
+  --ring: var(--color-lime-400);
+  --chart-1: var(--color-green-300);
+  --chart-2: var(--color-green-500);
+  --chart-3: var(--color-green-600);
+  --chart-4: var(--color-green-700);
+  --chart-5: var(--color-green-800);
+  --sidebar-primary: var(--color-lime-600);
+  --sidebar-primary-foreground: var(--color-lime-50);
+  --sidebar-ring: var(--color-lime-400);
+
+  @variant dark {
+    --primary: var(--color-lime-600);
+    --primary-foreground: var(--color-lime-50);
+    --ring: var(--color-lime-900);
+    --sidebar-primary: var(--color-lime-500);
+    --sidebar-primary-foreground: var(--color-lime-50);
+    --sidebar-ring: var(--color-lime-900);
+  }
+}
+
+.theme-amber .theme-container,
+.theme-amber [data-radix-popper-content-wrapper] {
+  --primary: var(--color-amber-600);
+  --primary-foreground: var(--color-amber-50);
+  --ring: var(--color-amber-400);
+  --chart-1: var(--color-amber-300);
+  --chart-2: var(--color-amber-500);
+  --chart-3: var(--color-amber-600);
+  --chart-4: var(--color-amber-700);
+  --chart-5: var(--color-amber-800);
+  --sidebar-primary: var(--color-amber-600);
+  --sidebar-primary-foreground: var(--color-amber-50);
+  --sidebar-ring: var(--color-amber-400);
+
+  @variant dark {
+    --primary: var(--color-amber-500);
+    --primary-foreground: var(--color-amber-50);
+    --ring: var(--color-amber-900);
+    --sidebar-primary: var(--color-amber-500);
+    --sidebar-primary-foreground: var(--color-amber-50);
+    --sidebar-ring: var(--color-amber-900);
+  }
+}
+
+.theme-rose .theme-container,
+.theme-rose [data-radix-popper-content-wrapper] {
+  --primary: var(--color-rose-600);
+  --primary-foreground: var(--color-rose-50);
+  --ring: var(--color-rose-400);
+  --chart-1: var(--color-rose-300);
+  --chart-2: var(--color-rose-500);
+  --chart-3: var(--color-rose-600);
+  --chart-4: var(--color-rose-700);
+  --chart-5: var(--color-rose-800);
+  --sidebar-primary: var(--color-rose-600);
+  --sidebar-primary-foreground: var(--color-rose-50);
+  --sidebar-ring: var(--color-rose-400);
+
+  @variant dark {
+    --primary: var(--color-rose-500);
+    --primary-foreground: var(--color-rose-50);
+    --ring: var(--color-rose-900);
+    --sidebar-primary: var(--color-rose-500);
+    --sidebar-primary-foreground: var(--color-rose-50);
+    --sidebar-ring: var(--color-rose-900);
+  }
+}
+
+.theme-purple .theme-container,
+.theme-purple [data-radix-popper-content-wrapper] {
+  --primary: var(--color-purple-600);
+  --primary-foreground: var(--color-purple-50);
+  --ring: var(--color-purple-400);
+  --chart-1: var(--color-purple-300);
+  --chart-2: var(--color-purple-500);
+  --chart-3: var(--color-purple-600);
+  --chart-4: var(--color-purple-700);
+  --chart-5: var(--color-purple-800);
+  --sidebar-primary: var(--color-purple-600);
+  --sidebar-primary-foreground: var(--color-purple-50);
+  --sidebar-ring: var(--color-purple-400);
+
+  @variant dark {
+    --primary: var(--color-purple-500);
+    --primary-foreground: var(--color-purple-50);
+    --ring: var(--color-purple-900);
+    --sidebar-primary: var(--color-purple-500);
+    --sidebar-primary-foreground: var(--color-purple-50);
+    --sidebar-ring: var(--color-purple-900);
+  }
+}
+
+.theme-orange .theme-container,
+.theme-orange [data-radix-popper-content-wrapper] {
+  --primary: var(--color-orange-600);
+  --primary-foreground: var(--color-orange-50);
+  --ring: var(--color-orange-400);
+  --chart-1: var(--color-orange-300);
+  --chart-2: var(--color-orange-500);
+  --chart-3: var(--color-orange-600);
+  --chart-4: var(--color-orange-700);
+  --chart-5: var(--color-orange-800);
+  --sidebar-primary: var(--color-orange-600);
+  --sidebar-primary-foreground: var(--color-orange-50);
+  --sidebar-ring: var(--color-orange-400);
+
+  @variant dark {
+    --primary: var(--color-orange-500);
+    --primary-foreground: var(--color-orange-50);
+    --ring: var(--color-orange-900);
+    --sidebar-primary: var(--color-orange-500);
+    --sidebar-primary-foreground: var(--color-orange-50);
+    --sidebar-ring: var(--color-orange-900);
+  }
+}
+
+.theme-teal .theme-container,
+.theme-teal [data-radix-popper-content-wrapper] {
+  --primary: var(--color-teal-600);
+  --primary-foreground: var(--color-teal-50);
+  --chart-1: var(--color-teal-300);
+  --chart-2: var(--color-teal-500);
+  --chart-3: var(--color-teal-600);
+  --chart-4: var(--color-teal-700);
+  --chart-5: var(--color-teal-800);
+  --sidebar-primary: var(--color-teal-600);
+  --sidebar-primary-foreground: var(--color-teal-50);
+  --sidebar-ring: var(--color-teal-400);
+
+  @variant dark {
+    --primary: var(--color-teal-500);
+    --primary-foreground: var(--color-teal-50);
+    --sidebar-primary: var(--color-teal-500);
+    --sidebar-primary-foreground: var(--color-teal-50);
+    --sidebar-ring: var(--color-teal-900);
+  }
+}
+
+.theme-red .theme-container,
+.theme-red [data-radix-popper-content-wrapper] {
+  --primary: var(--color-red-600);
+  --primary-foreground: var(--color-red-50);
+  --ring: var(--color-red-400);
+  --chart-1: var(--color-red-300);
+  --chart-2: var(--color-red-500);
+  --chart-3: var(--color-red-600);
+  --chart-4: var(--color-red-700);
+  --chart-5: var(--color-red-800);
+  --sidebar-primary: var(--color-red-600);
+  --sidebar-primary-foreground: var(--color-red-50);
+  --sidebar-ring: var(--color-red-400);
+
+  @variant dark {
+    --primary: var(--color-red-500);
+    --primary-foreground: var(--color-red-50);
+    --ring: var(--color-red-900);
+    --sidebar-primary: var(--color-red-500);
+    --sidebar-primary-foreground: var(--color-red-50);
+    --sidebar-ring: var(--color-red-900);
+  }
+}
+
+.theme-yellow .theme-container,
+.theme-yellow [data-radix-popper-content-wrapper] {
+  --primary: var(--color-yellow-400);
+  --primary-foreground: var(--color-yellow-900);
+  --ring: var(--color-yellow-400);
+  --chart-1: var(--color-yellow-300);
+  --chart-2: var(--color-yellow-500);
+  --chart-3: var(--color-yellow-600);
+  --chart-4: var(--color-yellow-700);
+  --chart-5: var(--color-yellow-800);
+  --sidebar-primary: var(--color-yellow-600);
+  --sidebar-primary-foreground: var(--color-yellow-50);
+  --sidebar-ring: var(--color-yellow-400);
+
+  @variant dark {
+    --primary: var(--color-yellow-500);
+    --primary-foreground: var(--color-yellow-900);
+    --ring: var(--color-yellow-900);
+    --sidebar-primary: var(--color-yellow-500);
+    --sidebar-primary-foreground: var(--color-yellow-50);
+    --sidebar-ring: var(--color-yellow-900);
+  }
+}
+
+.theme-violet .theme-container,
+.theme-violet [data-radix-popper-content-wrapper] {
+  --primary: var(--color-violet-600);
+  --primary-foreground: var(--color-violet-50);
+  --ring: var(--color-violet-400);
+  --chart-1: var(--color-violet-300);
+  --chart-2: var(--color-violet-500);
+  --chart-3: var(--color-violet-600);
+  --chart-4: var(--color-violet-700);
+  --chart-5: var(--color-violet-800);
+  --sidebar-primary: var(--color-violet-600);
+  --sidebar-primary-foreground: var(--color-violet-50);
+  --sidebar-ring: var(--color-violet-400);
+
+  @variant dark {
+    --primary: var(--color-violet-500);
+    --primary-foreground: var(--color-violet-50);
+    --ring: var(--color-violet-900);
+    --sidebar-primary: var(--color-violet-500);
+    --sidebar-primary-foreground: var(--color-violet-50);
+    --sidebar-ring: var(--color-violet-900);
+  }
+}

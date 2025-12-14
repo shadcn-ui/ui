@@ -1,7 +1,7 @@
 import os from "os"
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
-import { fetchRegistry } from "@/src/registry/api"
+import { fetchRegistry } from "@/src/registry/fetcher"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -12,18 +12,20 @@ import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
-const MONOREPO_TEMPLATE_URL =
+const GITHUB_TEMPLATE_URL =
   "https://codeload.github.com/shadcn-ui/ui/tar.gz/main"
 
 export const TEMPLATES = {
   next: "next",
   "next-monorepo": "next-monorepo",
+  vite: "vite",
+  start: "start",
 } as const
 
 export async function createProject(
   options: Pick<
     z.infer<typeof initOptionsSchema>,
-    "cwd" | "force" | "srcDir" | "components" | "template"
+    "cwd" | "name" | "force" | "srcDir" | "components" | "template"
   >
 ) {
   options = {
@@ -36,7 +38,12 @@ export async function createProject(
       ? (options.template as keyof typeof TEMPLATES)
       : "next"
   let projectName: string =
-    template === TEMPLATES.next ? "my-app" : "my-monorepo"
+    options.name ??
+    (template === TEMPLATES.next ||
+    template === TEMPLATES.vite ||
+    template === TEMPLATES.start
+      ? "my-app"
+      : "my-monorepo")
   let nextVersion = "latest"
 
   const isRemoteComponent =
@@ -74,11 +81,13 @@ export async function createProject(
         choices: [
           { title: "Next.js", value: "next" },
           { title: "Next.js (Monorepo)", value: "next-monorepo" },
+          { title: "Vite", value: "vite" },
+          { title: "TanStack Start", value: "start" },
         ],
         initial: 0,
       },
       {
-        type: "text",
+        type: options.name ? null : "text",
         name: "name",
         message: "What is your project named?",
         initial: projectName,
@@ -91,7 +100,7 @@ export async function createProject(
     ])
 
     template = type ?? template
-    projectName = name
+    projectName = name ?? projectName
   }
 
   const packageManager = await getPackageManager(options.cwd, {
@@ -140,6 +149,18 @@ export async function createProject(
     })
   }
 
+  if (template === TEMPLATES.vite) {
+    await createViteProject(projectPath, {
+      packageManager,
+    })
+  }
+
+  if (template === TEMPLATES.start) {
+    await createStartProject(projectPath, {
+      packageManager,
+    })
+  }
+
   return {
     projectPath,
     projectName,
@@ -179,6 +200,13 @@ async function createNextProject(
     args.push("--turbopack")
   }
 
+  if (
+    options.version.startsWith("latest") ||
+    options.version.startsWith("canary")
+  ) {
+    args.push("--no-react-compiler")
+  }
+
   try {
     await execa(
       "npx",
@@ -212,7 +240,7 @@ async function createMonorepoProject(
     // Get the template.
     const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
     await fs.ensureDir(templatePath)
-    const response = await fetch(MONOREPO_TEMPLATE_URL)
+    const response = await fetch(GITHUB_TEMPLATE_URL)
     if (!response.ok) {
       throw new Error(`Failed to download template: ${response.statusText}`)
     }
@@ -236,6 +264,16 @@ async function createMonorepoProject(
     await execa(options.packageManager, ["install"], {
       cwd: projectPath,
     })
+    // await execa("cd", [cwd])
+
+    // Write project name to the package.json
+    const packageJsonPath = path.join(projectPath, "package.json")
+    if (fs.existsSync(packageJsonPath)) {
+      const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+      const packageJson = JSON.parse(packageJsonContent)
+      packageJson.name = projectPath.split("/").pop()
+      await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
+    }
 
     // Try git init.
     const cwd = process.cwd()
@@ -245,11 +283,154 @@ async function createMonorepoProject(
     await execa("git", ["commit", "-m", "Initial commit"], {
       cwd: projectPath,
     })
-    await execa("cd", [cwd])
 
     createSpinner?.succeed("Creating a new Next.js monorepo.")
   } catch (error) {
     createSpinner?.fail("Something went wrong creating a new Next.js monorepo.")
+    handleError(error)
+  }
+}
+
+async function createViteProject(
+  projectPath: string,
+  options: {
+    packageManager: string
+  }
+) {
+  const createSpinner = spinner(
+    `Creating a new Vite project. This may take a few minutes.`
+  ).start()
+
+  try {
+    // Get the template.
+    const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
+    await fs.ensureDir(templatePath)
+    const response = await fetch(GITHUB_TEMPLATE_URL)
+    if (!response.ok) {
+      throw new Error(`Failed to download template: ${response.statusText}`)
+    }
+
+    // Write the tar file.
+    const tarPath = path.resolve(templatePath, "template.tar.gz")
+    await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
+    await execa("tar", [
+      "-xzf",
+      tarPath,
+      "-C",
+      templatePath,
+      "--strip-components=2",
+      "ui-main/templates/vite-app",
+    ])
+    const extractedPath = path.resolve(templatePath, "vite-app")
+    await fs.move(extractedPath, projectPath)
+    await fs.remove(templatePath)
+
+    // Remove pnpm-lock.yaml if using a different package manager.
+    if (options.packageManager !== "pnpm") {
+      const lockFilePath = path.join(projectPath, "pnpm-lock.yaml")
+      if (fs.existsSync(lockFilePath)) {
+        await fs.remove(lockFilePath)
+      }
+    }
+
+    // Run install.
+    await execa(options.packageManager, ["install"], {
+      cwd: projectPath,
+    })
+
+    // Write project name to the package.json.
+    const packageJsonPath = path.join(projectPath, "package.json")
+    if (fs.existsSync(packageJsonPath)) {
+      const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+      const packageJson = JSON.parse(packageJsonContent)
+      packageJson.name = projectPath.split("/").pop()
+      await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
+    }
+
+    // Try git init.
+    await execa("git", ["--version"], { cwd: projectPath })
+    await execa("git", ["init"], { cwd: projectPath })
+    await execa("git", ["add", "-A"], { cwd: projectPath })
+    await execa("git", ["commit", "-m", "Initial commit"], {
+      cwd: projectPath,
+    })
+
+    createSpinner?.succeed("Creating a new Vite project.")
+  } catch (error) {
+    createSpinner?.fail("Something went wrong creating a new Vite project.")
+    handleError(error)
+  }
+}
+
+async function createStartProject(
+  projectPath: string,
+  options: {
+    packageManager: string
+  }
+) {
+  const createSpinner = spinner(
+    `Creating a new TanStack Start project. This may take a few minutes.`
+  ).start()
+
+  try {
+    // Get the template.
+    const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
+    await fs.ensureDir(templatePath)
+    const response = await fetch(GITHUB_TEMPLATE_URL)
+    if (!response.ok) {
+      throw new Error(`Failed to download template: ${response.statusText}`)
+    }
+
+    // Write the tar file.
+    const tarPath = path.resolve(templatePath, "template.tar.gz")
+    await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
+    await execa("tar", [
+      "-xzf",
+      tarPath,
+      "-C",
+      templatePath,
+      "--strip-components=2",
+      "ui-main/templates/start-app",
+    ])
+    const extractedPath = path.resolve(templatePath, "start-app")
+    await fs.move(extractedPath, projectPath)
+    await fs.remove(templatePath)
+
+    // Remove pnpm-lock.yaml if using a different package manager.
+    if (options.packageManager !== "pnpm") {
+      const lockFilePath = path.join(projectPath, "pnpm-lock.yaml")
+      if (fs.existsSync(lockFilePath)) {
+        await fs.remove(lockFilePath)
+      }
+    }
+
+    // Run install.
+    await execa(options.packageManager, ["install"], {
+      cwd: projectPath,
+    })
+
+    // Write project name to the package.json.
+    const packageJsonPath = path.join(projectPath, "package.json")
+    if (fs.existsSync(packageJsonPath)) {
+      const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
+      const packageJson = JSON.parse(packageJsonContent)
+      packageJson.name = projectPath.split("/").pop()
+      await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2))
+    }
+
+    // Try git init.
+    await execa("git", ["--version"], { cwd: projectPath })
+    await execa("git", ["init"], { cwd: projectPath })
+    await execa("git", ["add", "-A"], { cwd: projectPath })
+    await execa("git", ["commit", "-m", "Initial commit"], {
+      cwd: projectPath,
+    })
+
+    createSpinner?.succeed("Creating a new TanStack Start project.")
+  } catch (error) {
+    createSpinner?.fail(
+      "Something went wrong creating a new TanStack Start project."
+    )
     handleError(error)
   }
 }

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-raleway",
+  "title": "Raleway",
+  "type": "registry:font",
+  "font": {
+    "family": "'Raleway', sans-serif",
+    "provider": "google",
+    "import": "Raleway",
+    "variable": "--font-sans",
+    "subsets": [
+      "latin"
+    ]
+  }
+}

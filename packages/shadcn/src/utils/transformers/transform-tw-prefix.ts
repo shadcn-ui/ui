@@ -65,7 +65,7 @@ export const transformTwPrefixes: Transformer = async ({
 
   // Find all jsx attributes with the name className.
   sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
-    if (node.getName() === "className") {
+    if (node.getNameNode().getText() === "className") {
       // className="..."
       if (node.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
         const value = node.getInitializer()
@@ -122,7 +122,7 @@ export const transformTwPrefixes: Transformer = async ({
     }
 
     // classNames={...}
-    if (node.getName() === "classNames") {
+    if (node.getNameNode().getText() === "classNames") {
       if (node.getInitializer()?.isKind(SyntaxKind.JsxExpression)) {
         node
           .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
@@ -162,7 +162,7 @@ export const transformTwPrefixes: Transformer = async ({
             }
 
             if (node.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
-              if (node.getName() !== "variant") {
+              if (node.getNameNode().getText() !== "variant") {
                 const classNames = node.getInitializer()
                 if (classNames) {
                   classNames.replaceWithText(

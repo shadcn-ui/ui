@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { PlusSignIcon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 import { getColors } from "@/lib/colors"
 import { siteConfig } from "@/lib/config"
@@ -21,7 +23,7 @@ export function SiteHeader() {
   return (
     <header className="bg-background sticky top-0 z-50 w-full">
       <div className="container-wrapper 3xl:fixed:px-0 px-6">
-        <div className="3xl:fixed:container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-4">
+        <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
           <MobileNav
             tree={pageTree}
             items={siteConfig.navItems}
@@ -56,6 +58,23 @@ export function SiteHeader() {
             <SiteConfig className="3xl:flex hidden" />
             <Separator orientation="vertical" />
             <ModeSwitcher />
+            <Separator orientation="vertical" className="mr-2" />
+            <Button
+              asChild
+              size="sm"
+              className="hidden h-[31px] rounded-lg sm:flex"
+            >
+              <Link href="/create">
+                <HugeiconsIcon icon={PlusSignIcon} />
+                New Project
+              </Link>
+            </Button>
+            <Button asChild size="sm" className="h-[31px] rounded-lg sm:hidden">
+              <Link href="/create">
+                <HugeiconsIcon icon={PlusSignIcon} />
+                New
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

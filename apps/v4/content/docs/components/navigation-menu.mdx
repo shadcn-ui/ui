@@ -7,7 +7,10 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/navigation-menu#api-reference
 ---
 
-<ComponentPreview name="navigation-menu-demo" />
+<ComponentPreview
+  name="navigation-menu-demo"
+  className="[&_.preview]:!items-start [&_.preview]:p-4 [&_.preview]:pt-8 md:[&_.preview]:pt-16"
+/>
 
 ## Installation
 
@@ -83,7 +86,7 @@ import {
 You can use the `asChild` prop to make another component look like a navigation menu trigger. Here's an example of a link that looks like a navigation menu trigger.
 
 ```tsx showLineNumbers title="components/example-navigation-menu.tsx"
-import { Link } from "next/link"
+import Link from "next/link"
 
 export function NavigationMenuDemo() {
   return (

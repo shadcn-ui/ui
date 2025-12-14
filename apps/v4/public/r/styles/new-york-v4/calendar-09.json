@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar-09",
-  "type": "registry:block",
   "description": "Calendar with disabled weekends",
   "registryDependencies": [
     "calendar"
@@ -21,5 +20,6 @@
   "categories": [
     "calendar",
     "date"
-  ]
+  ],
+  "type": "registry:block"
 }

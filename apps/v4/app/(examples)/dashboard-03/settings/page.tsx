@@ -1,4 +1,4 @@
-import { Metadata } from "next"
+import { type Metadata } from "next"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"

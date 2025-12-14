@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest"
 
 import {
+  isColorValue,
   isLocalHSLValue,
   transformCssVars,
 } from "../../../src/utils/updaters/update-css-vars"
@@ -42,15 +43,6 @@ describe("transformCssVars", () => {
         .dark {
           --background: black;
           --foreground: white
-        }
-      }
-
-      @layer base {
-        * {
-          @apply border-border;
-        }
-        body {
-          @apply bg-background text-foreground;
         }
       }
         "
@@ -103,17 +95,6 @@ describe("transformCssVars", () => {
         .dark{
           --background: 222.2 84% 4.9%;
           --foreground: 60 9.1% 97.8%;
-        }
-      }
-
-
-
-      @layer base {
-        * {
-          @apply border-border;
-        }
-        body {
-          @apply bg-background text-foreground;
         }
       }
         "
@@ -206,27 +187,18 @@ describe("transformCssVarsV4", () => {
       @custom-variant dark (&:is(.dark *));
 
       :root {
-        --background: hsl(0 0% 100%);
-        --foreground: hsl(240 10% 3.9%);
+          --background: hsl(0 0% 100%);
+          --foreground: hsl(240 10% 3.9%);
       }
 
       .dark {
-        --background: hsl(240 10% 3.9%);
-        --foreground: hsl(0 0% 98%);
+          --background: hsl(240 10% 3.9%);
+          --foreground: hsl(0 0% 98%);
       }
 
       @theme inline {
-        --color-background: var(--background);
-        --color-foreground: var(--foreground);
-      }
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
+          --color-background: var(--background);
+          --color-foreground: var(--foreground);
       }
               "
     `)
@@ -278,15 +250,6 @@ describe("transformCssVarsV4", () => {
                 --color-background: var(--background);
                 --color-foreground: var(--foreground);
                 --color-primary: var(--primary);
-      }
-
-              @layer base {
-        * {
-          @apply border-border outline-ring/50;
-                }
-        body {
-          @apply bg-background text-foreground;
-                }
       }
               "
     `)
@@ -353,15 +316,6 @@ describe("transformCssVarsV4", () => {
                 --color-primary: var(--primary);
                 --color-foreground: var(--foreground);
               }
-
-              @layer base {
-        * {
-          @apply border-border outline-ring/50;
-                }
-        body {
-          @apply bg-background text-foreground;
-                }
-      }
               "
     `)
   })
@@ -424,15 +378,6 @@ describe("transformCssVarsV4", () => {
                 --color-primary: var(--primary);
                 --color-foreground: var(--foreground);
               }
-
-              @layer base {
-        * {
-          @apply border-border outline-ring/50;
-                }
-        body {
-          @apply bg-background text-foreground;
-                }
-      }
               "
     `)
   })
@@ -495,15 +440,6 @@ describe("transformCssVarsV4", () => {
                 --color-primary: var(--primary);
                 --color-foreground: var(--foreground);
               }
-
-              @layer base {
-        * {
-          @apply border-border outline-ring/50;
-                }
-        body {
-          @apply bg-background text-foreground;
-                }
-      }
               "
     `)
   })
@@ -562,15 +498,6 @@ describe("transformCssVarsV4", () => {
                 --color-primary: var(--primary);
                 --color-foreground: var(--foreground);
               }
-
-              @layer base {
-        * {
-          @apply border-border outline-ring/50;
-                }
-        body {
-          @apply bg-background text-foreground;
-                }
-      }
               "
     `)
   })
@@ -644,15 +571,6 @@ describe("transformCssVarsV4", () => {
                   @apply bg-background text-foreground;
                 }
               }
-
-              @layer base {
-        * {
-          @apply border-border outline-ring/50;
-                }
-        body {
-          @apply bg-background text-foreground;
-                }
-      }
               "
     `)
   })
@@ -681,27 +599,18 @@ describe("transformCssVarsV4", () => {
       @custom-variant dark (&:is(.dark *));
 
       :root {
-        --background: hsl(0 0% 100%);
-        --foreground: hsl(240 10% 3.9%);
+          --background: hsl(0 0% 100%);
+          --foreground: hsl(240 10% 3.9%);
       }
 
       .dark {
-        --background: hsl(240 10% 3.9%);
-        --foreground: hsl(0 0% 98%);
+          --background: hsl(240 10% 3.9%);
+          --foreground: hsl(0 0% 98%);
       }
 
       @theme inline {
-        --color-background: var(--background);
-        --color-foreground: var(--foreground);
-      }
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
+          --color-background: var(--background);
+          --color-foreground: var(--foreground);
       }
               "
     `)
@@ -731,27 +640,18 @@ describe("transformCssVarsV4", () => {
       @custom-variant dark (&:is(.dark *));
 
       :root {
-        --background: hsl(0 0% 100%);
-        --foreground: hsl(240 10% 3.9%);
+          --background: hsl(0 0% 100%);
+          --foreground: hsl(240 10% 3.9%);
       }
 
       .dark {
-        --background: hsl(240 10% 3.9%);
-        --foreground: hsl(0 0% 98%);
+          --background: hsl(240 10% 3.9%);
+          --foreground: hsl(0 0% 98%);
       }
 
       @theme inline {
-        --color-background: var(--background);
-        --color-foreground: var(--foreground);
-      }
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
+          --color-background: var(--background);
+          --color-foreground: var(--foreground);
       }
               "
     `)
@@ -781,27 +681,18 @@ describe("transformCssVarsV4", () => {
       @custom-variant dark (&:is(.dark *));
 
       :root {
-        --background: rgb(255, 255, 255);
-        --foreground: hsl(240 10% 3.9%);
+          --background: rgb(255, 255, 255);
+          --foreground: hsl(240 10% 3.9%);
       }
 
       .dark {
-        --background: hsl(240 10% 3.9%);
-        --foreground: #000fff;
+          --background: hsl(240 10% 3.9%);
+          --foreground: #000fff;
       }
 
       @theme inline {
-        --color-background: var(--background);
-        --color-foreground: var(--foreground);
-      }
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
+          --color-background: var(--background);
+          --color-foreground: var(--foreground);
       }
               "
     `)
@@ -829,27 +720,21 @@ describe("transformCssVarsV4", () => {
       @custom-variant dark (&:is(.dark *));
 
       :root {
-        --radius: 0.125rem;
+          --radius: 0.125rem;
       }
 
       .dark {
-        --radius: 0.5rem;
+          --radius: 0.5rem;
       }
 
       @theme inline {
-        --radius-sm: calc(var(--radius) - 4px);
-        --radius-md: calc(var(--radius) - 2px);
-        --radius-lg: var(--radius);
-        --radius-xl: calc(var(--radius) + 4px);
-      }
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
+          --radius-sm: calc(var(--radius) - 4px);
+          --radius-md: calc(var(--radius) - 2px);
+          --radius-lg: var(--radius);
+          --radius-xl: calc(var(--radius) + 4px);
+          --radius-2xl: calc(var(--radius) + 8px);
+          --radius-3xl: calc(var(--radius) + 12px);
+          --radius-4xl: calc(var(--radius) + 16px);
       }
               "
     `)
@@ -889,16 +774,10 @@ describe("transformCssVarsV4", () => {
               --radius-md: calc(var(--radius) - 2px);
               --radius-lg: var(--radius);
               --radius-xl: calc(var(--radius) + 4px);
+              --radius-2xl: calc(var(--radius) + 8px);
+              --radius-3xl: calc(var(--radius) + 12px);
+              --radius-4xl: calc(var(--radius) + 16px);
             }
-
-            @layer base {
-        * {
-          @apply border-border outline-ring/50;
-              }
-        body {
-          @apply bg-background text-foreground;
-              }
-      }
               "
     `)
   })
@@ -925,24 +804,15 @@ describe("transformCssVarsV4", () => {
       @custom-variant dark (&:is(.dark *));
 
       :root {
-        --sidebar: hsl(0 0% 98%);
+          --sidebar: hsl(0 0% 98%);
       }
 
       .dark {
-        --sidebar: hsl(0 0% 10%);
+          --sidebar: hsl(0 0% 10%);
       }
 
       @theme inline {
-        --color-sidebar: var(--sidebar);
-      }
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
+          --color-sidebar: var(--sidebar);
       }
               "
     `)
@@ -966,15 +836,6 @@ describe("transformCssVarsV4", () => {
       @plugin "tailwindcss-animate";
 
       @custom-variant dark (&:is(.dark *));
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
-      }
               "
     `)
   })
@@ -1004,15 +865,6 @@ describe("transformCssVarsV4", () => {
               @plugin "tailwindcss-animate";
 
               @plugin "@tailwindcss/typography";
-
-              @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
-      }
               "
     `)
   })
@@ -1042,15 +894,6 @@ describe("transformCssVarsV4", () => {
       @plugin 'tailwindcss-animate';
 
       @custom-variant dark (&:is(.dark *));
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
-        }
-      }
               "
     `)
   })
@@ -1105,15 +948,6 @@ describe("transformCssVarsV4", () => {
           to {
             height: 0;
           }
-        }
-      }
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
         }
       }
               "
@@ -1182,15 +1016,6 @@ describe("transformCssVarsV4", () => {
                           }
                 }
               }
-
-              @layer base {
-        * {
-          @apply border-border outline-ring/50;
-                }
-        body {
-          @apply bg-background text-foreground;
-                }
-      }
               "
     `)
   })
@@ -1251,15 +1076,6 @@ describe("transformCssVarsV4", () => {
           to {
             height: 0;
           }
-        }
-      }
-
-      @layer base {
-        * {
-          @apply border-border outline-ring/50;
-        }
-        body {
-          @apply bg-background text-foreground;
         }
       }
               "
@@ -1326,14 +1142,52 @@ describe("transformCssVarsV4", () => {
                           }
                 }
               }
+              "
+    `)
+  })
 
-              @layer base {
-        * {
-          @apply border-border outline-ring/50;
-                }
-        body {
-          @apply bg-background text-foreground;
-                }
+  test("should handle var(--color-*) references as colors", async () => {
+    expect(
+      await transformCssVars(
+        `@import "tailwindcss";
+        `,
+        {
+          light: {
+            background: "var(--color-background)",
+            foreground: "var(--color-foreground)",
+            primary: "var(--color-blue-500)",
+            spacing: "var(--spacing-md)",
+          },
+          dark: {
+            background: "var(--color-background-dark)",
+            foreground: "var(--color-foreground-dark)",
+          },
+        },
+        { tailwind: { cssVariables: true } },
+        { tailwindVersion: "v4" }
+      )
+    ).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @custom-variant dark (&:is(.dark *));
+
+      :root {
+          --background: var(--color-background);
+          --foreground: var(--color-foreground);
+          --primary: var(--color-blue-500);
+          --spacing: var(--spacing-md);
+      }
+
+      .dark {
+          --background: var(--color-background-dark);
+          --foreground: var(--color-foreground-dark);
+      }
+
+      @theme inline {
+          --color-background: var(--background);
+          --color-foreground: var(--foreground);
+          --color-primary: var(--primary);
+          --spacing: var(--spacing);
       }
               "
     `)
@@ -1349,5 +1203,24 @@ describe("isLocalHSLValue", () => {
     ["hsl(210 40% 98% / 0.5)", false],
   ])("%s -> %s", (value, expected) => {
     expect(isLocalHSLValue(value)).toBe(expected)
+  })
+})
+
+describe("isColorValue", () => {
+  test.each([
+    ["hsl(0 0% 100%)", true],
+    ["rgb(255 255 255)", true],
+    ["#ffffff", true],
+    ["oklch(0.5 0.2 180)", true],
+    ["var(--color-background)", true],
+    ["var(--color-blue-500)", true],
+    ["--alpha(var(--color-black) / 10%)", true],
+    ["--alpha(var(--color-black) / 4%)", true],
+    ["var(--radius)", false],
+    ["var(--spacing)", false],
+    ["0.5rem", false],
+    ["16px", false],
+  ])("%s -> %s", (value, expected) => {
+    expect(isColorValue(value)).toBe(expected)
   })
 })

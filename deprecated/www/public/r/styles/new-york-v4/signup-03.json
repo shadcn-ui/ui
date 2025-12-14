@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "signup-03",
+  "type": "registry:block",
+  "description": "A signup page with a muted background color.",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label",
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/blocks/signup-03/page.tsx",
+      "content": "import { GalleryVerticalEnd } from \"lucide-react\"\n\nimport { SignupForm } from \"@/registry/new-york-v4/blocks/signup-03/components/signup-form\"\n\nexport default function SignupPage() {\n  return (\n    <div className=\"bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10\">\n      <div className=\"flex w-full max-w-sm flex-col gap-6\">\n        <a href=\"#\" className=\"flex items-center gap-2 self-center font-medium\">\n          <div className=\"bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md\">\n            <GalleryVerticalEnd className=\"size-4\" />\n          </div>\n          Acme Inc.\n        </a>\n        <SignupForm />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:page",
+      "target": "app/signup/page.tsx"
+    },
+    {
+      "path": "registry/new-york-v4/blocks/signup-03/components/signup-form.tsx",
+      "content": "import { cn } from \"@/registry/new-york-v4/lib/utils\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport {\n  Field,\n  FieldDescription,\n  FieldGroup,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport { Input } from \"@/registry/new-york-v4/ui/input\"\n\nexport function SignupForm({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div className={cn(\"flex flex-col gap-6\", className)} {...props}>\n      <Card>\n        <CardHeader className=\"text-center\">\n          <CardTitle className=\"text-xl\">Create your account</CardTitle>\n          <CardDescription>\n            Enter your email below to create your account\n          </CardDescription>\n        </CardHeader>\n        <CardContent>\n          <form>\n            <FieldGroup>\n              <Field>\n                <FieldLabel htmlFor=\"name\">Full Name</FieldLabel>\n                <Input id=\"name\" type=\"text\" placeholder=\"John Doe\" required />\n              </Field>\n              <Field>\n                <FieldLabel htmlFor=\"email\">Email</FieldLabel>\n                <Input\n                  id=\"email\"\n                  type=\"email\"\n                  placeholder=\"m@example.com\"\n                  required\n                />\n              </Field>\n              <Field>\n                <Field className=\"grid grid-cols-2 gap-4\">\n                  <Field>\n                    <FieldLabel htmlFor=\"password\">Password</FieldLabel>\n                    <Input id=\"password\" type=\"password\" required />\n                  </Field>\n                  <Field>\n                    <FieldLabel htmlFor=\"confirm-password\">\n                      Confirm Password\n                    </FieldLabel>\n                    <Input id=\"confirm-password\" type=\"password\" required />\n                  </Field>\n                </Field>\n                <FieldDescription>\n                  Must be at least 8 characters long.\n                </FieldDescription>\n              </Field>\n              <Field>\n                <Button type=\"submit\">Create Account</Button>\n                <FieldDescription className=\"text-center\">\n                  Already have an account? <a href=\"#\">Sign in</a>\n                </FieldDescription>\n              </Field>\n            </FieldGroup>\n          </form>\n        </CardContent>\n      </Card>\n      <FieldDescription className=\"px-6 text-center\">\n        By clicking continue, you agree to our <a href=\"#\">Terms of Service</a>{\" \"}\n        and <a href=\"#\">Privacy Policy</a>.\n      </FieldDescription>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "categories": [
+    "authentication",
+    "signup"
+  ]
+}

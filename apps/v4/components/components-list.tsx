@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { PAGES_NEW } from "@/lib/docs"
 import { source } from "@/lib/source"
 
 export function ComponentsList() {
@@ -21,9 +22,15 @@ export function ComponentsList() {
         <Link
           key={component.$id}
           href={component.url}
-          className="text-lg font-medium underline-offset-4 hover:underline md:text-base"
+          className="inline-flex items-center gap-2 text-lg font-medium underline-offset-4 hover:underline md:text-base"
         >
           {component.name}
+          {PAGES_NEW.includes(component.url) && (
+            <span
+              className="flex size-2 rounded-full bg-blue-500"
+              title="New"
+            />
+          )}
         </Link>
       ))}
     </div>

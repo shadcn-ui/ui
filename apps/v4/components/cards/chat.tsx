@@ -32,7 +32,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/registry/new-york-v4/ui/dialog"
-import { Input } from "@/registry/new-york-v4/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/registry/new-york-v4/ui/input-group"
 import {
   Tooltip,
   TooltipContent,
@@ -159,23 +164,25 @@ export function CardsChat() {
             }}
             className="relative w-full"
           >
-            <Input
-              id="message"
-              placeholder="Type your message..."
-              className="flex-1 pr-10"
-              autoComplete="off"
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-            />
-            <Button
-              type="submit"
-              size="icon"
-              className="absolute top-1/2 right-2 size-6 -translate-y-1/2 rounded-full"
-              disabled={inputLength === 0}
-            >
-              <ArrowUpIcon className="size-3.5" />
-              <span className="sr-only">Send</span>
-            </Button>
+            <InputGroup>
+              <InputGroupInput
+                id="message"
+                placeholder="Type your message..."
+                autoComplete="off"
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+              />
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton
+                  type="submit"
+                  size="icon-xs"
+                  className="rounded-full"
+                >
+                  <ArrowUpIcon />
+                  <span className="sr-only">Send</span>
+                </InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
           </form>
         </CardFooter>
       </Card>

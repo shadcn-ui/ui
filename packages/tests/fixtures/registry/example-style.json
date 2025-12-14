@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-style",
+  "type": "registry:style",
+  "dependencies": ["@tabler/icons-react"],
+  "cssVars": {
+    "theme": {
+      "font-sans": "Inter, sans-serif"
+    },
+    "light": {
+      "brand": "oklch(20 14.3% 4.1%)",
+      "brand-foreground": "oklch(24 1.3% 10%)"
+    },
+    "dark": {
+      "brand": "oklch(24 1.3% 10%)"
+    }
+  }
+}

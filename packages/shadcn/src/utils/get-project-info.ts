@@ -1,11 +1,7 @@
 import path from "path"
+import { rawConfigSchema } from "@/src/schema"
 import { FRAMEWORKS, Framework } from "@/src/utils/frameworks"
-import {
-  Config,
-  RawConfig,
-  getConfig,
-  resolveConfigPaths,
-} from "@/src/utils/get-config"
+import { Config, getConfig, resolveConfigPaths } from "@/src/utils/get-config"
 import { getPackageInfo } from "@/src/utils/get-package-info"
 import fg from "fast-glob"
 import fs from "fs-extra"
@@ -22,6 +18,7 @@ export type ProjectInfo = {
   tailwindConfigFile: string | null
   tailwindCssFile: string | null
   tailwindVersion: TailwindVersion
+  frameworkVersion: string | null
   aliasPrefix: string | null
 }
 
@@ -79,6 +76,7 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
     tailwindConfigFile,
     tailwindCssFile,
     tailwindVersion,
+    frameworkVersion: null,
     aliasPrefix,
   }
 
@@ -88,6 +86,10 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
       ? FRAMEWORKS["next-app"]
       : FRAMEWORKS["next-pages"]
     type.isRSC = isUsingAppDir
+    type.frameworkVersion = await getFrameworkVersion(
+      type.framework,
+      packageJson
+    )
     return type
   }
 
@@ -167,6 +169,42 @@ export async function getProjectInfo(cwd: string): Promise<ProjectInfo | null> {
   }
 
   return type
+}
+
+export async function getFrameworkVersion(
+  framework: Framework,
+  packageJson: ReturnType<typeof getPackageInfo>
+) {
+  if (!packageJson) {
+    return null
+  }
+
+  // Only detect Next.js version for now.
+  if (!["next-app", "next-pages"].includes(framework.name)) {
+    return null
+  }
+
+  const version =
+    packageJson.dependencies?.next || packageJson.devDependencies?.next
+
+  if (!version) {
+    return null
+  }
+
+  // Extract full semver (major.minor.patch), handling ^, ~, etc.
+  const versionMatch = version.match(/^[\^~]?(\d+\.\d+\.\d+)/)
+  if (versionMatch) {
+    return versionMatch[1] // e.g., "16.0.0"
+  }
+
+  // For ranges like ">=15.0.0 <16.0.0", extract the first version.
+  const rangeMatch = version.match(/(\d+\.\d+\.\d+)/)
+  if (rangeMatch) {
+    return rangeMatch[1]
+  }
+
+  // For "latest", "canary", "rc", etc., return the tag as-is.
+  return version
 }
 
 export async function getTailwindVersion(
@@ -332,7 +370,7 @@ export async function getProjectConfig(
     return null
   }
 
-  const config: RawConfig = {
+  const config: z.infer<typeof rawConfigSchema> = {
     $schema: "https://ui.shadcn.com/schema.json",
     rsc: projectInfo.isRSC,
     tsx: projectInfo.isTsx,
@@ -357,9 +395,9 @@ export async function getProjectConfig(
   return await resolveConfigPaths(cwd, config)
 }
 
-export async function getProjectTailwindVersionFromConfig(
-  config: Config
-): Promise<TailwindVersion> {
+export async function getProjectTailwindVersionFromConfig(config: {
+  resolvedPaths: Pick<Config["resolvedPaths"], "cwd">
+}): Promise<TailwindVersion> {
   if (!config.resolvedPaths?.cwd) {
     return "v3"
   }

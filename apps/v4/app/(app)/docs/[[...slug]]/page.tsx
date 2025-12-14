@@ -6,10 +6,13 @@ import {
   IconArrowRight,
   IconArrowUpRight,
 } from "@tabler/icons-react"
-import { findNeighbour } from "fumadocs-core/server"
+import fm from "front-matter"
+import { findNeighbour } from "fumadocs-core/page-tree"
+import z from "zod"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
+import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
@@ -24,7 +27,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>
+  params: Promise<{ slug: string[] }>
 }) {
   const params = await props.params
   const page = source.getPage(params.slug)
@@ -72,7 +75,7 @@ export async function generateMetadata(props: {
 }
 
 export default async function Page(props: {
-  params: Promise<{ slug?: string[] }>
+  params: Promise<{ slug: string[] }>
 }) {
   const params = await props.params
   const page = source.getPage(params.slug)
@@ -81,18 +84,24 @@ export default async function Page(props: {
   }
 
   const doc = page.data
-  // @ts-expect-error - revisit fumadocs types.
   const MDX = doc.body
-  const neighbours = await findNeighbour(source.pageTree, page.url)
+  const neighbours = findNeighbour(source.pageTree, page.url)
 
-  // @ts-expect-error - revisit fumadocs types.
-  const links = doc.links
+  const raw = await page.data.getText("raw")
+  const { attributes } = fm(raw)
+  const { links } = z
+    .object({
+      links: z
+        .object({
+          doc: z.string().optional(),
+          api: z.string().optional(),
+        })
+        .optional(),
+    })
+    .parse(attributes)
 
   return (
-    <div
-      data-slot="docs"
-      className="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full"
-    >
+    <div className="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full">
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
         <div className="mx-auto flex w-full max-w-2xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
@@ -102,12 +111,13 @@ export default async function Page(props: {
                 <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
                   {doc.title}
                 </h1>
-                <div className="flex items-center gap-2 pt-1.5">
+                <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
+                  <DocsCopyPage page={raw} url={absoluteUrl(page.url)} />
                   {neighbours.previous && (
                     <Button
                       variant="secondary"
                       size="icon"
-                      className="extend-touch-target size-8 shadow-none md:size-7"
+                      className="extend-touch-target ml-auto size-8 shadow-none md:size-7"
                       asChild
                     >
                       <Link href={neighbours.previous.url}>
@@ -138,19 +148,19 @@ export default async function Page(props: {
               )}
             </div>
             {links ? (
-              <div className="flex items-center space-x-2 pt-4">
+              <div className="flex items-center gap-2 pt-4">
                 {links?.doc && (
-                  <Badge asChild variant="secondary">
-                    <Link href={links.doc} target="_blank" rel="noreferrer">
+                  <Badge asChild variant="secondary" className="rounded-full">
+                    <a href={links.doc} target="_blank" rel="noreferrer">
                       Docs <IconArrowUpRight />
-                    </Link>
+                    </a>
                   </Badge>
                 )}
                 {links?.api && (
-                  <Badge asChild variant="secondary">
-                    <Link href={links.api} target="_blank" rel="noreferrer">
+                  <Badge asChild variant="secondary" className="rounded-full">
+                    <a href={links.api} target="_blank" rel="noreferrer">
                       API Reference <IconArrowUpRight />
-                    </Link>
+                    </a>
                   </Badge>
                 )}
               </div>
@@ -160,7 +170,7 @@ export default async function Page(props: {
             <MDX components={mdxComponents} />
           </div>
         </div>
-        <div className="mx-auto flex h-16 w-full max-w-2xl items-center gap-2 px-4 md:px-0">
+        <div className="mx-auto hidden h-16 w-full max-w-2xl items-center gap-2 px-4 sm:flex md:px-0">
           {neighbours.previous && (
             <Button
               variant="secondary"
@@ -187,12 +197,10 @@ export default async function Page(props: {
           )}
         </div>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
-        {/* @ts-expect-error - revisit fumadocs types. */}
         {doc.toc?.length ? (
           <div className="no-scrollbar overflow-y-auto px-8">
-            {/* @ts-expect-error - revisit fumadocs types. */}
             <DocsTableOfContents toc={doc.toc} />
             <div className="h-12" />
           </div>
