@@ -21,12 +21,15 @@ import {
   isUrl,
 } from "@/src/registry/utils"
 import {
+  RegistryFontItem,
+  registryItemCommonSchema,
+  registryItemFontSchema,
   registryItemSchema,
+  registryItemTypeSchema,
   registryResolvedItemsTreeSchema,
 } from "@/src/schema"
 import { Config, getTargetStyleFromConfig } from "@/src/utils/get-config"
 import { getProjectTailwindVersionFromConfig } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
 import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
 import deepmerge from "deepmerge"
 import { z } from "zod"
@@ -105,10 +108,16 @@ export async function fetchRegistryItems(
   return results
 }
 
-// Helper schema for items with source tracking
-const registryItemWithSourceSchema = registryItemSchema.extend({
-  _source: z.string().optional(),
-})
+// Helper schema for items with source tracking.
+const registryItemWithSourceSchema = registryItemCommonSchema
+  .extend({
+    type: registryItemTypeSchema,
+    _source: z.string().optional(),
+    // Optional fields for specific item types.
+    font: registryItemFontSchema.optional(),
+    config: z.any().optional(),
+  })
+  .passthrough()
 
 // Resolves a list of registry items with all their dependencies and returns
 // a complete installation bundle with merged configuration.
@@ -266,15 +275,18 @@ export async function resolveRegistryTree(
     }
   }
 
-  // Build source map for topological sort
-  const sourceMap = new Map<z.infer<typeof registryItemSchema>, string>()
+  // Build source map for topological sort.
+  const sourceMap = new Map<
+    z.infer<typeof registryItemWithSourceSchema>,
+    string
+  >()
   payload.forEach((item) => {
-    // Use the _source property if it was added, otherwise use the name
+    // Use the _source property if it was added, otherwise use the name.
     const source = item._source || item.name
     sourceMap.set(item, source)
   })
 
-  // Apply topological sort to ensure dependencies come before dependents
+  // Apply topological sort to ensure dependencies come before dependents.
   payload = topologicalSortRegistryItems(payload, sourceMap)
 
   // Sort the payload so that registry:theme items come first,
@@ -322,6 +334,15 @@ export async function resolveRegistryTree(
     config
   )
 
+  // Collect font items.
+  const fonts: RegistryFontItem[] = payload
+    .filter((item) => item.type === "registry:font" && item.font)
+    .map((item) => ({
+      ...item,
+      type: "registry:font" as const,
+      font: item.font!,
+    }))
+
   const parsed = registryResolvedItemsTreeSchema.parse({
     dependencies: deepmerge.all(payload.map((item) => item.dependencies ?? [])),
     devDependencies: deepmerge.all(
@@ -332,6 +353,7 @@ export async function resolveRegistryTree(
     cssVars,
     css,
     docs,
+    fonts: fonts.length > 0 ? fonts : undefined,
   })
 
   if (Object.keys(envVars).length > 0) {
@@ -598,11 +620,17 @@ function extractItemIdentifierFromDependency(dependency: string) {
 }
 
 function topologicalSortRegistryItems(
-  items: z.infer<typeof registryItemSchema>[],
-  sourceMap: Map<z.infer<typeof registryItemSchema>, string>
+  items: z.infer<typeof registryItemWithSourceSchema>[],
+  sourceMap: Map<z.infer<typeof registryItemWithSourceSchema>, string>
 ) {
-  const itemMap = new Map<string, z.infer<typeof registryItemSchema>>()
-  const hashToItem = new Map<string, z.infer<typeof registryItemSchema>>()
+  const itemMap = new Map<
+    string,
+    z.infer<typeof registryItemWithSourceSchema>
+  >()
+  const hashToItem = new Map<
+    string,
+    z.infer<typeof registryItemWithSourceSchema>
+  >()
   const inDegree = new Map<string, number>()
   const adjacencyList = new Map<string, string[]>()
 
@@ -668,7 +696,7 @@ function topologicalSortRegistryItems(
 
   // Implements Kahn's algorithm.
   const queue: string[] = []
-  const sorted: z.infer<typeof registryItemSchema>[] = []
+  const sorted: z.infer<typeof registryItemWithSourceSchema>[] = []
 
   inDegree.forEach((degree, hash) => {
     if (degree === 0) {
