@@ -262,13 +262,32 @@ function updateCssPlugin(css: z.infer<typeof registryItemCssSchema>) {
               )
             }
 
-            const keyframesRule = postcss.atRule({
-              name: "keyframes",
-              params,
-              raws: { semicolon: true, between: " ", before: "\n  " },
-            })
+            // Check if a keyframe with the same name already exists
+            const existingKeyframesRule = themeInline.nodes?.find(
+              (node): node is AtRule =>
+                node.type === "atrule" &&
+                node.name === "keyframes" &&
+                node.params === params
+            )
 
-            themeInline.append(keyframesRule)
+            let keyframesRule: AtRule
+            if (existingKeyframesRule) {
+              // Replace existing keyframe
+              keyframesRule = postcss.atRule({
+                name: "keyframes",
+                params,
+                raws: { semicolon: true, between: " ", before: "\n  " },
+              })
+              existingKeyframesRule.replaceWith(keyframesRule)
+            } else {
+              // Create new keyframe
+              keyframesRule = postcss.atRule({
+                name: "keyframes",
+                params,
+                raws: { semicolon: true, between: " ", before: "\n  " },
+              })
+              themeInline.append(keyframesRule)
+            }
 
             if (typeof properties === "object") {
               for (const [step, stepProps] of Object.entries(properties)) {

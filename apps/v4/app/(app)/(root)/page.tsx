@@ -1,6 +1,8 @@
-import { Metadata } from "next"
+import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { PlusSignIcon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 import { Announcement } from "@/components/announcement"
 import { ExamplesNav } from "@/components/examples-nav"
@@ -55,10 +57,13 @@ export default function IndexPage() {
         <PageHeaderHeading className="max-w-4xl">{title}</PageHeaderHeading>
         <PageHeaderDescription>{description}</PageHeaderDescription>
         <PageActions>
-          <Button asChild size="sm">
-            <Link href="/docs/installation">Get Started</Link>
+          <Button asChild size="sm" className="h-[31px] rounded-lg">
+            <Link href="/create">
+              <HugeiconsIcon icon={PlusSignIcon} />
+              New Project
+            </Link>
           </Button>
-          <Button asChild size="sm" variant="ghost">
+          <Button asChild size="sm" variant="ghost" className="rounded-lg">
             <Link href="/docs/components">View Components</Link>
           </Button>
         </PageActions>
