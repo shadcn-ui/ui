@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-custom",
+  "type": "registry:example",
+  "registryDependencies": [
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/spinner-custom.tsx",
+      "content": "import { LoaderIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <LoaderIcon\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  )\n}\n\nexport default function SpinnerCustom() {\n  return (\n    <div className=\"flex items-center gap-4\">\n      <Spinner />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

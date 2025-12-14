@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "kbd"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/kbd-demo.tsx",
+      "content": "import { Kbd, KbdGroup } from \"@/registry/new-york-v4/ui/kbd\"\n\nexport default function KbdDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <KbdGroup>\n        <Kbd>⌘</Kbd>\n        <Kbd>⇧</Kbd>\n        <Kbd>⌥</Kbd>\n        <Kbd>⌃</Kbd>\n      </KbdGroup>\n      <KbdGroup>\n        <Kbd>Ctrl</Kbd>\n        <span>+</span>\n        <Kbd>B</Kbd>\n      </KbdGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { loadEnvFiles } from "@/src/utils/env-loader"
 import { getConfig } from "@/src/utils/get-config"
 import { getPackageManager } from "@/src/utils/get-package-manager"
 import { handleError } from "@/src/utils/handle-error"
+import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
@@ -58,6 +59,15 @@ const CLIENTS = [
       },
     },
   },
+  {
+    name: "codex",
+    label: "Codex",
+    configPath: ".codex/config.toml",
+    config: `[mcp_servers.shadcn]
+command = "npx"
+args = ["shadcn@${SHADCN_MCP_VERSION}", "mcp"]
+`,
+  },
 ] as const
 
 const DEPENDENCIES = [`shadcn@${SHADCN_MCP_VERSION}`]
@@ -82,7 +92,7 @@ export const mcp = new Command()
   })
 
 const mcpInitOptionsSchema = z.object({
-  client: z.enum(["claude", "cursor", "vscode"]),
+  client: z.enum(["claude", "cursor", "vscode", "codex"]),
   cwd: z.string(),
 })
 
@@ -125,11 +135,52 @@ mcp
         cwd,
       })
 
+      const config = await getConfig(options.cwd)
+
+      if (options.client === "codex") {
+        if (config) {
+          await updateDependencies([], DEPENDENCIES, config, {
+            silent: false,
+          })
+        } else {
+          const packageManager = await getPackageManager(options.cwd)
+          const installCommand = packageManager === "npm" ? "install" : "add"
+          const devFlag = packageManager === "npm" ? "--save-dev" : "-D"
+
+          const installSpinner = spinner("Installing dependencies...").start()
+          await execa(
+            packageManager,
+            [installCommand, devFlag, ...DEPENDENCIES],
+            {
+              cwd: options.cwd,
+            }
+          )
+          installSpinner.succeed("Installing dependencies.")
+        }
+
+        logger.break()
+        logger.log("To configure the shadcn MCP server in Codex:")
+        logger.break()
+        logger.log(
+          `1. Open or create the file ${highlighter.info(
+            "~/.codex/config.toml"
+          )}`
+        )
+        logger.log("2. Add the following configuration:")
+        logger.log()
+        logger.info(`[mcp_servers.shadcn]
+command = "npx"
+args = ["shadcn@${SHADCN_MCP_VERSION}", "mcp"]`)
+        logger.break()
+        logger.info("3. Restart Codex to load the MCP server")
+        logger.break()
+        process.exit(0)
+      }
+
       const configSpinner = spinner("Configuring MCP server...").start()
       const configPath = await runMcpInit(options)
       configSpinner.succeed("Configuring MCP server.")
 
-      const config = await getConfig(options.cwd)
       if (config) {
         await updateDependencies([], DEPENDENCIES, config, {
           silent: false,
@@ -173,7 +224,10 @@ async function runMcpInit(options: z.infer<typeof mcpInitOptionsSchema>) {
   }
 
   const configPath = path.join(cwd, clientInfo.configPath)
+  const dir = path.dirname(configPath)
+  await fsExtra.ensureDir(dir)
 
+  // Handle JSON format.
   let existingConfig = {}
   try {
     const content = await fs.readFile(configPath, "utf-8")
@@ -186,8 +240,6 @@ async function runMcpInit(options: z.infer<typeof mcpInitOptionsSchema>) {
     { arrayMerge: overwriteMerge }
   )
 
-  const dir = path.dirname(configPath)
-  await fsExtra.ensureDir(dir)
   await fs.writeFile(
     configPath,
     JSON.stringify(mergedConfig, null, 2) + "\n",

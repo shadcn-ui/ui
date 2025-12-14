@@ -27,7 +27,13 @@ import {
 } from "vitest"
 import { z } from "zod"
 
-import { getRegistriesConfig, getRegistry, getRegistryItems } from "./api"
+import {
+  getRegistriesConfig,
+  getRegistriesIndex,
+  getRegistry,
+  getRegistryItems,
+} from "./api"
+import { RegistriesIndexParseError } from "./errors"
 
 vi.mock("@/src/utils/handle-error", () => ({
   handleError: vi.fn(),
@@ -95,6 +101,13 @@ const server = setupServer(
           type: "registry:ui",
         },
       ],
+    })
+  }),
+  http.get(`${REGISTRY_URL}/registries.json`, () => {
+    return HttpResponse.json({
+      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+      "@example": "https://example.com/registry/styles/{style}/{name}.json",
+      "@test": "https://test.com/registry/{name}.json",
     })
   })
 )
@@ -1648,6 +1661,77 @@ describe("getRegistriesConfig", () => {
         await fs.unlink(configFile)
         await fs.rmdir(tempDir)
       }
+    })
+  })
+
+  describe("getRegistriesIndex", () => {
+    it("should fetch and parse the registries index successfully", async () => {
+      const result = await getRegistriesIndex()
+
+      expect(result).toEqual({
+        "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+        "@example": "https://example.com/registry/styles/{style}/{name}.json",
+        "@test": "https://test.com/registry/{name}.json",
+      })
+    })
+
+    it("should respect cache options", async () => {
+      // Test with cache disabled
+      const result1 = await getRegistriesIndex({ useCache: false })
+      expect(result1).toBeDefined()
+
+      // Test with cache enabled
+      const result2 = await getRegistriesIndex({ useCache: true })
+      expect(result2).toBeDefined()
+
+      // Results should be the same
+      expect(result1).toEqual(result2)
+    })
+
+    it("should use default cache behavior when no options provided", async () => {
+      const result = await getRegistriesIndex()
+      expect(result).toBeDefined()
+      expect(typeof result).toBe("object")
+    })
+
+    it("should handle network errors properly", async () => {
+      server.use(
+        http.get(`${REGISTRY_URL}/registries.json`, () => {
+          return new HttpResponse(null, { status: 500 })
+        })
+      )
+
+      await expect(getRegistriesIndex({ useCache: false })).rejects.toThrow()
+
+      try {
+        await getRegistriesIndex({ useCache: false })
+      } catch (error) {
+        expect(error).not.toBeInstanceOf(RegistriesIndexParseError)
+      }
+    })
+
+    it("should handle invalid JSON response", async () => {
+      server.use(
+        http.get(`${REGISTRY_URL}/registries.json`, () => {
+          return HttpResponse.json({
+            "invalid-namespace": "some-url",
+          })
+        })
+      )
+
+      await expect(getRegistriesIndex({ useCache: false })).rejects.toThrow(
+        RegistriesIndexParseError
+      )
+    })
+
+    it("should handle network timeout", async () => {
+      server.use(
+        http.get(`${REGISTRY_URL}/registries.json`, () => {
+          return HttpResponse.error()
+        })
+      )
+
+      await expect(getRegistriesIndex({ useCache: false })).rejects.toThrow()
     })
   })
 })

@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
 import type { source } from "@/lib/source"
 import {
@@ -23,16 +24,24 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/components",
   },
   {
-    name: "Registry",
-    href: "/docs/registry",
+    name: "Directory",
+    href: "/docs/directory",
   },
   {
     name: "MCP Server",
     href: "/docs/mcp",
   },
+  {
+    name: "Forms",
+    href: "/docs/forms",
+  },
+  {
+    name: "Changelog",
+    href: "/docs/changelog",
+  },
 ]
 const EXCLUDED_SECTIONS = ["installation", "dark-mode"]
-const EXCLUDED_PAGES = ["/docs"]
+const EXCLUDED_PAGES = ["/docs", "/docs/changelog"]
 
 export function DocsSidebar({
   tree,
@@ -42,12 +51,12 @@ export function DocsSidebar({
 
   return (
     <Sidebar
-      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)+2rem)] bg-transparent lg:flex"
+      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--footer-height)-4rem)] overscroll-none bg-transparent lg:flex"
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="no-scrollbar overflow-x-hidden px-2 pb-12">
-        <div className="h-(--top-spacing) shrink-0" />
+      <SidebarContent className="no-scrollbar overflow-x-hidden px-2">
+        <div className="from-background via-background/80 to-background/50 sticky -top-1 z-10 h-8 shrink-0 bg-gradient-to-b blur-xs" />
         <SidebarGroup>
           <SidebarGroupLabel className="text-muted-foreground font-medium">
             Sections
@@ -114,6 +123,12 @@ export function DocsSidebar({
                               <Link href={item.url}>
                                 <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                                 {item.name}
+                                {PAGES_NEW.includes(item.url) && (
+                                  <span
+                                    className="flex size-2 rounded-full bg-blue-500"
+                                    title="New"
+                                  />
+                                )}
                               </Link>
                             </SidebarMenuButton>
                           </SidebarMenuItem>
@@ -126,6 +141,7 @@ export function DocsSidebar({
             </SidebarGroup>
           )
         })}
+        <div className="from-background via-background/80 to-background/50 sticky -bottom-1 z-10 h-16 shrink-0 bg-gradient-to-t blur-xs" />
       </SidebarContent>
     </Sidebar>
   )

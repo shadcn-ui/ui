@@ -1,9 +1,9 @@
 import { BUILTIN_REGISTRIES, FALLBACK_STYLE } from "@/src/registry/constants"
 import { configSchema } from "@/src/schema"
-import { Config, createConfig } from "@/src/utils/get-config"
+import { Config, DeepPartial, createConfig } from "@/src/utils/get-config"
 import deepmerge from "deepmerge"
 
-function resolveStyleFromConfig(config: Partial<Config> | Config) {
+function resolveStyleFromConfig(config: DeepPartial<Config>) {
   if (!config.style) {
     return FALLBACK_STYLE
   }
@@ -17,7 +17,7 @@ function resolveStyleFromConfig(config: Partial<Config> | Config) {
   return config.style
 }
 
-export function configWithDefaults(config?: Partial<Config> | Config) {
+export function configWithDefaults(config?: DeepPartial<Config>) {
   const baseConfig = createConfig({
     style: FALLBACK_STYLE,
     registries: BUILTIN_REGISTRIES,

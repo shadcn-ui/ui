@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "index",
-  "type": "registry:style",
   "dependencies": [
     "class-variance-authority",
     "lucide-react"
@@ -13,5 +12,6 @@
     "utils"
   ],
   "files": [],
-  "cssVars": {}
+  "cssVars": {},
+  "type": "registry:style"
 }

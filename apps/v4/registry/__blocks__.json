@@ -268,5 +268,55 @@
     "name": "calendar-32",
     "description": "Date picker in a drawer",
     "categories": ["calendar", "date"]
+  },
+  {
+    "name": "signup-01",
+    "description": "A simple signup form.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "signup-02",
+    "description": "A two column signup page with a cover image.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "signup-03",
+    "description": "A signup page with a muted background color.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "signup-04",
+    "description": "A signup page with form and image.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "signup-05",
+    "description": "A simple signup form with social providers.",
+    "categories": ["authentication", "signup"]
+  },
+  {
+    "name": "otp-01",
+    "description": "A simple OTP verification form.",
+    "categories": ["authentication", "otp"]
+  },
+  {
+    "name": "otp-02",
+    "description": "A two column OTP page with a cover image.",
+    "categories": ["authentication", "otp"]
+  },
+  {
+    "name": "otp-03",
+    "description": "An OTP page with a muted background color.",
+    "categories": ["authentication", "otp"]
+  },
+  {
+    "name": "otp-04",
+    "description": "An OTP page with form and image.",
+    "categories": ["authentication", "otp"]
+  },
+  {
+    "name": "otp-05",
+    "description": "A simple OTP form with social providers.",
+    "categories": ["authentication", "otp"]
   }
 ]

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-badge",
+  "type": "registry:example",
+  "registryDependencies": [
+    "spinner",
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/spinner-badge.tsx",
+      "content": "import { Badge } from \"@/registry/new-york-v4/ui/badge\"\nimport { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\n\nexport default function SpinnerBadge() {\n  return (\n    <div className=\"flex items-center gap-4 [--radius:1.2rem]\">\n      <Badge>\n        <Spinner />\n        Syncing\n      </Badge>\n      <Badge variant=\"secondary\">\n        <Spinner />\n        Updating\n      </Badge>\n      <Badge variant=\"outline\">\n        <Spinner />\n        Processing\n      </Badge>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
