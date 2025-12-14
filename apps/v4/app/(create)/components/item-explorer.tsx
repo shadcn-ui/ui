@@ -37,9 +37,7 @@ export function ItemExplorer({
   base: Base["name"]
   items: Pick<RegistryItem, "name" | "title" | "type">[]
 }) {
-  const [params, setParams] = useDesignSystemSearchParams({
-    shallow: true,
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const groupedItems = React.useMemo(() => cachedGroupedItems(items), [items])
 

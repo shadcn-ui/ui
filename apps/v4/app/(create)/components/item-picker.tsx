@@ -37,9 +37,7 @@ export function ItemPicker({
   items: Pick<RegistryItem, "name" | "title" | "type">[]
 }) {
   const [open, setOpen] = React.useState(false)
-  const [params, setParams] = useDesignSystemSearchParams({
-    shallow: true,
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const groupedItems = React.useMemo(() => cachedGroupedItems(items), [items])
 
