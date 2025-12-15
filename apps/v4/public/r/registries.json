@@ -56,6 +56,7 @@
   "@nexus-elements": "https://elements.nexus.availproject.org/r/{name}.json",
   "@ncdai": "https://chanhdai.com/r/{name}.json",
   "@nuqs": "https://nuqs.dev/r/{name}.json",
+  "@optics": "https://optics.agusmayol.com.ar/r/{name}.json",
   "@oui": "https://oui.mw10013.workers.dev/r/{name}.json",
   "@paceui": "https://ui.paceui.com/r/{name}.json",
   "@plate": "https://platejs.org/r/{name}.json",
