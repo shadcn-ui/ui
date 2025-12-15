@@ -3,7 +3,6 @@
 import * as React from "react"
 import { Share03Icon, Tick02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { useQueryStates } from "nuqs"
 
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -12,12 +11,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function ShareButton() {
-  const [params] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-  })
+  const [params] = useDesignSystemSearchParams()
   const [hasCopied, setHasCopied] = React.useState(false)
 
   const shareUrl = React.useMemo(() => {

@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { lazy, memo, Suspense } from "react"
-import { useQueryStates } from "nuqs"
 
 import { Item, ItemContent, ItemTitle } from "@/registry/bases/radix/ui/item"
 import {
@@ -20,7 +19,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const IconLucide = lazy(() =>
   import("@/registry/icons/icon-lucide").then((mod) => ({
@@ -79,7 +78,7 @@ const PREVIEW_ICONS = {
     "Delete02Icon",
     "Share03Icon",
     "ShoppingBag01Icon",
-    "MoreHorizontalIcon",
+    "MoreHorizontalCircle01Icon",
     "Loading03Icon",
     "PlusSignIcon",
     "MinusSignIcon",
@@ -164,10 +163,7 @@ export function IconLibraryPicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentIconLibrary = React.useMemo(
     () => iconLibraries[params.iconLibrary as keyof typeof iconLibraries],

@@ -1,7 +1,5 @@
 "use client"
 
-import { useQueryStates } from "nuqs"
-
 import {
   Picker,
   PickerContent,
@@ -10,7 +8,7 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const TEMPLATES = [
   {
@@ -37,10 +35,7 @@ export function TemplatePicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentTemplate = TEMPLATES.find(
     (template) => template.value === params.template
