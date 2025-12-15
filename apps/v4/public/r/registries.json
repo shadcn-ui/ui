@@ -93,6 +93,7 @@
   "@tailwind-builder": "https://tailwindbuilder.ai/r/{name}.json",
   "@tweakcn": "https://tweakcn.com/r/themes/{name}.json",
   "@wds": "https://wds-shadcn-registry.netlify.app/r/{name}.json",
+  "@animbits": "https://animbits.dev/r/{name}.json",
   "@wandry-ui": "https://ui.wandry.com.ua/r/{name}.json",
   "@wigggle-ui": "https://wigggle-ui.vercel.app/r/{name}.json",
   "@paykit-sdk": "https://www.usepaykit.dev/r/{name}.json",
