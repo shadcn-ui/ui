@@ -118,9 +118,11 @@ export function MenuColorPicker({
     (menu) => menu.value === params.menuColor
   )
 
+  console.log("rendered")
+
   return (
-    <Picker>
-      <div className="group/picker relative">
+    <div className="group/picker relative">
+      <Picker>
         <PickerTrigger disabled={mounted && resolvedTheme === "dark"}>
           <div className="flex flex-col justify-start text-left">
             <div className="text-muted-foreground text-xs">Menu Color</div>
@@ -128,36 +130,36 @@ export function MenuColorPicker({
               {currentMenu?.label}
             </div>
           </div>
-          <div className="text-foreground absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base">
+          <div className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
             {currentMenu?.icon}
           </div>
         </PickerTrigger>
-        <LockButton
-          param="menuColor"
-          className="absolute top-1/2 right-10 -translate-y-1/2"
-        />
-      </div>
-      <PickerContent
-        anchor={isMobile ? anchorRef : undefined}
-        side={isMobile ? "top" : "right"}
-        align={isMobile ? "center" : "start"}
-      >
-        <PickerRadioGroup
-          value={currentMenu?.value}
-          onValueChange={(value) => {
-            setParams({ menuColor: value as MenuColorValue })
-          }}
+        <PickerContent
+          anchor={isMobile ? anchorRef : undefined}
+          side={isMobile ? "top" : "right"}
+          align={isMobile ? "center" : "start"}
         >
-          <PickerGroup>
-            {MENU_OPTIONS.map((menu) => (
-              <PickerRadioItem key={menu.value} value={menu.value}>
-                {menu.icon}
-                {menu.label}
-              </PickerRadioItem>
-            ))}
-          </PickerGroup>
-        </PickerRadioGroup>
-      </PickerContent>
-    </Picker>
+          <PickerRadioGroup
+            value={currentMenu?.value}
+            onValueChange={(value) => {
+              setParams({ menuColor: value as MenuColorValue })
+            }}
+          >
+            <PickerGroup>
+              {MENU_OPTIONS.map((menu) => (
+                <PickerRadioItem key={menu.value} value={menu.value}>
+                  {menu.icon}
+                  {menu.label}
+                </PickerRadioItem>
+              ))}
+            </PickerGroup>
+          </PickerRadioGroup>
+        </PickerContent>
+      </Picker>
+      <LockButton
+        param="menuColor"
+        className="absolute top-1/2 right-10 -translate-y-1/2"
+      />
+    </div>
   )
 }
