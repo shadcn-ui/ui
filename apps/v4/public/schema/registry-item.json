@@ -18,6 +18,8 @@
         "registry:page",
         "registry:file",
         "registry:style",
+        "registry:base",
+        "registry:font",
         "registry:item"
       ],
       "description": "The type of the item. This is used to determine the type and target path of the item when resolved for a project."
@@ -81,6 +83,7 @@
               "registry:page",
               "registry:file",
               "registry:style",
+              "registry:base",
               "registry:item"
             ],
             "description": "The type of the file. This is used to determine the type of the file when resolved for a project."
@@ -192,9 +195,101 @@
     "extends": {
       "type": "string",
       "description": "The name of the registry item to extend. This is used to extend the base shadcn/ui style. Set to none to start fresh. This is available for registry:style items only."
+    },
+    "style": {
+      "type": "string",
+      "description": "The style configuration for the base. This is available for registry:base items only."
+    },
+    "iconLibrary": {
+      "type": "string",
+      "description": "The icon library to use for the base. This is available for registry:base items only."
+    },
+    "baseColor": {
+      "type": "string",
+      "description": "The base color configuration. This is available for registry:base items only."
+    },
+    "theme": {
+      "type": "string",
+      "description": "The theme configuration. This is available for registry:base items only."
+    },
+    "font": {
+      "type": "object",
+      "description": "Font metadata for registry:font items. Required for registry:font type.",
+      "properties": {
+        "family": {
+          "type": "string",
+          "description": "The font family name (e.g., 'Inter', 'JetBrains Mono')."
+        },
+        "provider": {
+          "type": "string",
+          "enum": ["google"],
+          "description": "The font provider. Currently only 'google' is supported."
+        },
+        "import": {
+          "type": "string",
+          "description": "The import name for the font from next/font/google (e.g., 'Inter', 'JetBrains_Mono')."
+        },
+        "variable": {
+          "type": "string",
+          "description": "The CSS variable name for the font (e.g., '--font-sans', '--font-mono')."
+        },
+        "weight": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of font weights to include (e.g., ['400', '500', '600', '700'])."
+        },
+        "subsets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of font subsets to include (e.g., ['latin', 'latin-ext'])."
+        }
+      },
+      "required": ["family", "provider", "import", "variable"]
     }
   },
   "required": ["name", "type"],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "registry:font"
+          }
+        }
+      },
+      "then": {
+        "required": ["name", "type", "font"]
+      },
+      "else": {
+        "properties": {
+          "font": false
+        }
+      }
+    },
+    {
+      "if": {
+        "not": {
+          "properties": {
+            "type": {
+              "const": "registry:base"
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "style": false,
+          "iconLibrary": false,
+          "baseColor": false,
+          "theme": false
+        }
+      }
+    }
+  ],
   "definitions": {
     "cssValue": {
       "oneOf": [

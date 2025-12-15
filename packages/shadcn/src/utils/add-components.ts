@@ -24,6 +24,10 @@ import { updateCssVars } from "@/src/utils/updaters/update-css-vars"
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies"
 import { updateEnvVars } from "@/src/utils/updaters/update-env-vars"
 import { updateFiles } from "@/src/utils/updaters/update-files"
+import {
+  massageTreeForFonts,
+  updateFonts,
+} from "@/src/utils/updaters/update-fonts"
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config"
 import { z } from "zod"
 
@@ -81,7 +85,7 @@ async function addProjectComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start()
-  const tree = await resolveRegistryTree(components, configWithDefaults(config))
+  let tree = await resolveRegistryTree(components, configWithDefaults(config))
 
   if (!tree) {
     registrySpinner?.fail()
@@ -98,6 +102,8 @@ async function addProjectComponents(
   registrySpinner?.succeed()
 
   const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
+
+  tree = await massageTreeForFonts(tree, config)
 
   await updateTailwindConfig(tree.tailwind?.config, config, {
     silent: options.silent,
@@ -126,6 +132,11 @@ async function addProjectComponents(
   await updateDependencies(tree.dependencies, tree.devDependencies, config, {
     silent: options.silent,
   })
+
+  await updateFonts(tree.fonts, config, {
+    silent: options.silent,
+  })
+
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,
     silent: options.silent,
@@ -245,7 +256,12 @@ async function addWorkspaceComponents(
     }
   )
 
-  // 6. Group files by their type to determine target config and update files.
+  // 6. Update fonts.
+  await updateFonts(tree.fonts, mainTargetConfig, {
+    silent: true,
+  })
+
+  // 7. Group files by their type to determine target config and update files.
   const filesByType = new Map<string, typeof tree.files>()
 
   for (const file of tree.files ?? []) {
@@ -369,7 +385,10 @@ async function shouldOverwriteCssVars(
 
   return payload.some(
     (component) =>
-      component.type === "registry:theme" || component.type === "registry:style"
+      component.type === "registry:theme" ||
+      component.type === "registry:style" ||
+      component.type === "registry:font" ||
+      component.type === "registry:base"
   )
 }
 
