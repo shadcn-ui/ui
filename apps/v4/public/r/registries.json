@@ -48,6 +48,7 @@
   "@magicui": "https://magicui.design/r/{name}.json",
   "@magicui-pro": "https://pro.magicui.design/registry/{name}",
   "@motion-primitives": "https://motion-primitives.com/c/{name}.json",
+  "@manifest": "https://ui.manifest.build/r/{name}.json",
   "@mui-treasury": "https://mui-treasury.com/r/{name}.json",
   "@nativeui": "https://nativeui.io/registry/{name}.json",
   "@nexus-elements": "https://elements.nexus.availproject.org/r/{name}.json",
