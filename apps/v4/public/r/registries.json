@@ -30,6 +30,7 @@
   "@diceui": "https://diceui.com/r/{name}.json",
   "@doras-ui": "https://ui.doras.to/r/{name}.json",
   "@efferd": "https://efferd.com/r/{name}.json",
+  "@einui": "https://ui.eindev.ir/r/{name}.json",
   "@eldoraui": "https://eldoraui.site/r/{name}.json",
   "@elements": "https://tryelements.dev/r/{name}.json",
   "@elevenlabs-ui": "https://ui.elevenlabs.io/r/{name}.json",
