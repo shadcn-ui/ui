@@ -78,7 +78,7 @@ const PREVIEW_ICONS = {
     "Delete02Icon",
     "Share03Icon",
     "ShoppingBag01Icon",
-    "MoreHorizontalIcon",
+    "MoreHorizontalCircle01Icon",
     "Loading03Icon",
     "PlusSignIcon",
     "MinusSignIcon",
