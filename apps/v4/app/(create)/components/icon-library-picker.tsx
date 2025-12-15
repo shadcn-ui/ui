@@ -171,8 +171,8 @@ export function IconLibraryPicker({
   )
 
   return (
-    <Picker>
-      <div className="group/picker relative">
+    <div className="group/picker relative">
+      <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-muted-foreground text-xs">Icon Library</div>
@@ -180,42 +180,42 @@ export function IconLibraryPicker({
               {currentIconLibrary?.title}
             </div>
           </div>
-          <div className="text-foreground *:[svg]:text-foreground! absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base">
+          <div className="text-foreground *:[svg]:text-foreground! pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
             {logos[currentIconLibrary?.name as keyof typeof logos]}
           </div>
         </PickerTrigger>
-        <LockButton
-          param="iconLibrary"
-          className="absolute top-1/2 right-10 -translate-y-1/2"
-        />
-      </div>
-      <PickerContent
-        anchor={isMobile ? anchorRef : undefined}
-        side={isMobile ? "top" : "right"}
-        align={isMobile ? "center" : "start"}
-      >
-        <PickerRadioGroup
-          value={currentIconLibrary?.name}
-          onValueChange={(value) => {
-            setParams({ iconLibrary: value as IconLibraryName })
-          }}
+        <PickerContent
+          anchor={isMobile ? anchorRef : undefined}
+          side={isMobile ? "top" : "right"}
+          align={isMobile ? "center" : "start"}
         >
-          <PickerGroup>
-            {Object.values(iconLibraries).map((iconLibrary, index) => (
-              <React.Fragment key={iconLibrary.name}>
-                <IconLibraryPickerItem
-                  iconLibrary={iconLibrary}
-                  value={iconLibrary.name}
-                />
-                {index < Object.values(iconLibraries).length - 1 && (
-                  <PickerSeparator className="opacity-50" />
-                )}
-              </React.Fragment>
-            ))}
-          </PickerGroup>
-        </PickerRadioGroup>
-      </PickerContent>
-    </Picker>
+          <PickerRadioGroup
+            value={currentIconLibrary?.name}
+            onValueChange={(value) => {
+              setParams({ iconLibrary: value as IconLibraryName })
+            }}
+          >
+            <PickerGroup>
+              {Object.values(iconLibraries).map((iconLibrary, index) => (
+                <React.Fragment key={iconLibrary.name}>
+                  <IconLibraryPickerItem
+                    iconLibrary={iconLibrary}
+                    value={iconLibrary.name}
+                  />
+                  {index < Object.values(iconLibraries).length - 1 && (
+                    <PickerSeparator className="opacity-50" />
+                  )}
+                </React.Fragment>
+              ))}
+            </PickerGroup>
+          </PickerRadioGroup>
+        </PickerContent>
+      </Picker>
+      <LockButton
+        param="iconLibrary"
+        className="absolute top-1/2 right-10 -translate-y-1/2"
+      />
+    </div>
   )
 }
 

@@ -26,8 +26,8 @@ export function MenuAccentPicker({
   )
 
   return (
-    <Picker>
-      <div className="group/picker relative">
+    <div className="group/picker relative">
+      <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-muted-foreground text-xs">Menu Accent</div>
@@ -35,7 +35,7 @@ export function MenuAccentPicker({
               {currentAccent?.label}
             </div>
           </div>
-          <div className="text-foreground absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base">
+          <div className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="128"
@@ -65,31 +65,31 @@ export function MenuAccentPicker({
             </svg>
           </div>
         </PickerTrigger>
-        <LockButton
-          param="menuAccent"
-          className="absolute top-1/2 right-10 -translate-y-1/2"
-        />
-      </div>
-      <PickerContent
-        anchor={isMobile ? anchorRef : undefined}
-        side={isMobile ? "top" : "right"}
-        align={isMobile ? "center" : "start"}
-      >
-        <PickerRadioGroup
-          value={currentAccent?.value}
-          onValueChange={(value) => {
-            setParams({ menuAccent: value as MenuAccentValue })
-          }}
+        <PickerContent
+          anchor={isMobile ? anchorRef : undefined}
+          side={isMobile ? "top" : "right"}
+          align={isMobile ? "center" : "start"}
         >
-          <PickerGroup>
-            {MENU_ACCENTS.map((accent) => (
-              <PickerRadioItem key={accent.value} value={accent.value}>
-                {accent.label}
-              </PickerRadioItem>
-            ))}
-          </PickerGroup>
-        </PickerRadioGroup>
-      </PickerContent>
-    </Picker>
+          <PickerRadioGroup
+            value={currentAccent?.value}
+            onValueChange={(value) => {
+              setParams({ menuAccent: value as MenuAccentValue })
+            }}
+          >
+            <PickerGroup>
+              {MENU_ACCENTS.map((accent) => (
+                <PickerRadioItem key={accent.value} value={accent.value}>
+                  {accent.label}
+                </PickerRadioItem>
+              ))}
+            </PickerGroup>
+          </PickerRadioGroup>
+        </PickerContent>
+      </Picker>
+      <LockButton
+        param="menuAccent"
+        className="absolute top-1/2 right-10 -translate-y-1/2"
+      />
+    </div>
   )
 }

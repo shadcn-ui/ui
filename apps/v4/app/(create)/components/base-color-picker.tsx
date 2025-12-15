@@ -35,8 +35,8 @@ export function BaseColorPicker({
   )
 
   return (
-    <Picker>
-      <div className="group/picker relative">
+    <div className="group/picker relative">
+      <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-muted-foreground text-xs">Base Color</div>
@@ -54,72 +54,72 @@ export function BaseColorPicker({
                     ]?.["muted-foreground"],
                 } as React.CSSProperties
               }
-              className="absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color)"
+              className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color) select-none"
             />
           )}
         </PickerTrigger>
-        <LockButton
-          param="baseColor"
-          className="absolute top-1/2 right-10 -translate-y-1/2"
-        />
-      </div>
-      <PickerContent
-        anchor={isMobile ? anchorRef : undefined}
-        side={isMobile ? "top" : "right"}
-        align={isMobile ? "center" : "start"}
-      >
-        <PickerRadioGroup
-          value={currentBaseColor?.name}
-          onValueChange={(value) => {
-            if (value === "dark") {
-              setTheme(resolvedTheme === "dark" ? "light" : "dark")
-              return
-            }
-
-            setParams({ baseColor: value as BaseColorName })
-          }}
+        <PickerContent
+          anchor={isMobile ? anchorRef : undefined}
+          side={isMobile ? "top" : "right"}
+          align={isMobile ? "center" : "start"}
         >
-          <PickerGroup>
-            {BASE_COLORS.map((baseColor) => (
-              <PickerRadioItem key={baseColor.name} value={baseColor.name}>
-                <div className="flex items-center gap-2">
-                  {mounted && resolvedTheme && (
-                    <div
-                      style={
-                        {
-                          "--color":
-                            baseColor.cssVars?.[
-                              resolvedTheme as "light" | "dark"
-                            ]?.["muted-foreground"],
-                        } as React.CSSProperties
-                      }
-                      className="size-4 rounded-full bg-(--color)"
-                    />
-                  )}
-                  {baseColor.title}
-                </div>
-              </PickerRadioItem>
-            ))}
-          </PickerGroup>
-          <PickerSeparator />
-          <PickerGroup>
-            <PickerItem
-              onClick={() => {
+          <PickerRadioGroup
+            value={currentBaseColor?.name}
+            onValueChange={(value) => {
+              if (value === "dark") {
                 setTheme(resolvedTheme === "dark" ? "light" : "dark")
-              }}
-            >
-              <div className="flex flex-col justify-start pointer-coarse:gap-1">
-                <div>
-                  Switch to {resolvedTheme === "dark" ? "Light" : "Dark"} Mode
+                return
+              }
+
+              setParams({ baseColor: value as BaseColorName })
+            }}
+          >
+            <PickerGroup>
+              {BASE_COLORS.map((baseColor) => (
+                <PickerRadioItem key={baseColor.name} value={baseColor.name}>
+                  <div className="flex items-center gap-2">
+                    {mounted && resolvedTheme && (
+                      <div
+                        style={
+                          {
+                            "--color":
+                              baseColor.cssVars?.[
+                                resolvedTheme as "light" | "dark"
+                              ]?.["muted-foreground"],
+                          } as React.CSSProperties
+                        }
+                        className="size-4 rounded-full bg-(--color)"
+                      />
+                    )}
+                    {baseColor.title}
+                  </div>
+                </PickerRadioItem>
+              ))}
+            </PickerGroup>
+            <PickerSeparator />
+            <PickerGroup>
+              <PickerItem
+                onClick={() => {
+                  setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                }}
+              >
+                <div className="flex flex-col justify-start pointer-coarse:gap-1">
+                  <div>
+                    Switch to {resolvedTheme === "dark" ? "Light" : "Dark"} Mode
+                  </div>
+                  <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
+                    Base colors are easier to see in dark mode.
+                  </div>
                 </div>
-                <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
-                  Base colors are easier to see in dark mode.
-                </div>
-              </div>
-            </PickerItem>
-          </PickerGroup>
-        </PickerRadioGroup>
-      </PickerContent>
-    </Picker>
+              </PickerItem>
+            </PickerGroup>
+          </PickerRadioGroup>
+        </PickerContent>
+      </Picker>
+      <LockButton
+        param="baseColor"
+        className="absolute top-1/2 right-10 -translate-y-1/2"
+      />
+    </div>
   )
 }
