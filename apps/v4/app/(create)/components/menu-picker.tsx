@@ -119,8 +119,8 @@ export function MenuColorPicker({
   )
 
   return (
-    <Picker>
-      <div className="group/picker relative">
+    <div className="group/picker relative">
+      <Picker>
         <PickerTrigger disabled={mounted && resolvedTheme === "dark"}>
           <div className="flex flex-col justify-start text-left">
             <div className="text-muted-foreground text-xs">Menu Color</div>
@@ -132,32 +132,32 @@ export function MenuColorPicker({
             {currentMenu?.icon}
           </div>
         </PickerTrigger>
-        <LockButton
-          param="menuColor"
-          className="absolute top-1/2 right-10 -translate-y-1/2"
-        />
-      </div>
-      <PickerContent
-        anchor={isMobile ? anchorRef : undefined}
-        side={isMobile ? "top" : "right"}
-        align={isMobile ? "center" : "start"}
-      >
-        <PickerRadioGroup
-          value={currentMenu?.value}
-          onValueChange={(value) => {
-            setParams({ menuColor: value as MenuColorValue })
-          }}
+        <PickerContent
+          anchor={isMobile ? anchorRef : undefined}
+          side={isMobile ? "top" : "right"}
+          align={isMobile ? "center" : "start"}
         >
-          <PickerGroup>
-            {MENU_OPTIONS.map((menu) => (
-              <PickerRadioItem key={menu.value} value={menu.value}>
-                {menu.icon}
-                {menu.label}
-              </PickerRadioItem>
-            ))}
-          </PickerGroup>
-        </PickerRadioGroup>
-      </PickerContent>
-    </Picker>
+          <PickerRadioGroup
+            value={currentMenu?.value}
+            onValueChange={(value) => {
+              setParams({ menuColor: value as MenuColorValue })
+            }}
+          >
+            <PickerGroup>
+              {MENU_OPTIONS.map((menu) => (
+                <PickerRadioItem key={menu.value} value={menu.value}>
+                  {menu.icon}
+                  {menu.label}
+                </PickerRadioItem>
+              ))}
+            </PickerGroup>
+          </PickerRadioGroup>
+        </PickerContent>
+      </Picker>
+      <LockButton
+        param="menuColor"
+        className="absolute top-1/2 right-10 -translate-y-1/2"
+      />
+    </div>
   )
 }

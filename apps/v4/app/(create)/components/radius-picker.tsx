@@ -27,8 +27,8 @@ export function RadiusPicker({
   const otherRadii = RADII.filter((radius) => radius.name !== "default")
 
   return (
-    <Picker>
-      <div className="group/picker relative">
+    <div className="group/picker relative">
+      <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-muted-foreground text-xs">Radius</div>
@@ -55,47 +55,47 @@ export function RadiusPicker({
             </svg>
           </div>
         </PickerTrigger>
-        <LockButton
-          param="radius"
-          className="absolute top-1/2 right-10 -translate-y-1/2"
-        />
-      </div>
-      <PickerContent
-        anchor={isMobile ? anchorRef : undefined}
-        side={isMobile ? "top" : "right"}
-        align={isMobile ? "center" : "start"}
-      >
-        <PickerRadioGroup
-          value={currentRadius?.name}
-          onValueChange={(value) => {
-            setParams({ radius: value as RadiusValue })
-          }}
+        <PickerContent
+          anchor={isMobile ? anchorRef : undefined}
+          side={isMobile ? "top" : "right"}
+          align={isMobile ? "center" : "start"}
         >
-          <PickerGroup>
-            {defaultRadius && (
-              <PickerRadioItem
-                key={defaultRadius.name}
-                value={defaultRadius.name}
-              >
-                <div className="flex flex-col justify-start pointer-coarse:gap-1">
-                  <div>{defaultRadius.label}</div>
-                  <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
-                    Use radius from style
+          <PickerRadioGroup
+            value={currentRadius?.name}
+            onValueChange={(value) => {
+              setParams({ radius: value as RadiusValue })
+            }}
+          >
+            <PickerGroup>
+              {defaultRadius && (
+                <PickerRadioItem
+                  key={defaultRadius.name}
+                  value={defaultRadius.name}
+                >
+                  <div className="flex flex-col justify-start pointer-coarse:gap-1">
+                    <div>{defaultRadius.label}</div>
+                    <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
+                      Use radius from style
+                    </div>
                   </div>
-                </div>
-              </PickerRadioItem>
-            )}
-          </PickerGroup>
-          <PickerSeparator />
-          <PickerGroup>
-            {otherRadii.map((radius) => (
-              <PickerRadioItem key={radius.name} value={radius.name}>
-                {radius.label}
-              </PickerRadioItem>
-            ))}
-          </PickerGroup>
-        </PickerRadioGroup>
-      </PickerContent>
-    </Picker>
+                </PickerRadioItem>
+              )}
+            </PickerGroup>
+            <PickerSeparator />
+            <PickerGroup>
+              {otherRadii.map((radius) => (
+                <PickerRadioItem key={radius.name} value={radius.name}>
+                  {radius.label}
+                </PickerRadioItem>
+              ))}
+            </PickerGroup>
+          </PickerRadioGroup>
+        </PickerContent>
+      </Picker>
+      <LockButton
+        param="radius"
+        className="absolute top-1/2 right-10 -translate-y-1/2"
+      />
+    </div>
   )
 }

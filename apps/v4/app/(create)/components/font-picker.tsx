@@ -39,8 +39,8 @@ export function FontPicker({
   )
 
   return (
-    <Picker>
-      <div className="group/picker relative">
+    <div className="group/picker relative">
+      <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-muted-foreground text-xs">Font</div>
@@ -55,48 +55,49 @@ export function FontPicker({
             Aa
           </div>
         </PickerTrigger>
-        <LockButton
-          param="font"
-          className="absolute top-1/2 right-10 -translate-y-1/2"
-        />
-      </div>
-      <PickerContent
-        anchor={isMobile ? anchorRef : undefined}
-        side={isMobile ? "top" : "right"}
-        align={isMobile ? "center" : "start"}
-        className="max-h-80 md:w-72"
-      >
-        <PickerRadioGroup
-          value={currentFont?.value}
-          onValueChange={(value) => {
-            setParams({ font: value as FontValue })
-          }}
+        <PickerContent
+          anchor={isMobile ? anchorRef : undefined}
+          side={isMobile ? "top" : "right"}
+          align={isMobile ? "center" : "start"}
+          className="max-h-80 md:w-72"
         >
-          <PickerGroup>
-            {fonts.map((font, index) => (
-              <React.Fragment key={font.value}>
-                <PickerRadioItem value={font.value}>
-                  <Item size="xs">
-                    <ItemContent className="gap-1">
-                      <ItemTitle className="text-muted-foreground text-xs font-medium">
-                        {font.name}
-                      </ItemTitle>
-                      <ItemDescription
-                        style={{ fontFamily: font.font.style.fontFamily }}
-                      >
-                        Designers love packing quirky glyphs into test phrases.
-                      </ItemDescription>
-                    </ItemContent>
-                  </Item>
-                </PickerRadioItem>
-                {index < fonts.length - 1 && (
-                  <PickerSeparator className="opacity-50" />
-                )}
-              </React.Fragment>
-            ))}
-          </PickerGroup>
-        </PickerRadioGroup>
-      </PickerContent>
-    </Picker>
+          <PickerRadioGroup
+            value={currentFont?.value}
+            onValueChange={(value) => {
+              setParams({ font: value as FontValue })
+            }}
+          >
+            <PickerGroup>
+              {fonts.map((font, index) => (
+                <React.Fragment key={font.value}>
+                  <PickerRadioItem value={font.value}>
+                    <Item size="xs">
+                      <ItemContent className="gap-1">
+                        <ItemTitle className="text-muted-foreground text-xs font-medium">
+                          {font.name}
+                        </ItemTitle>
+                        <ItemDescription
+                          style={{ fontFamily: font.font.style.fontFamily }}
+                        >
+                          Designers love packing quirky glyphs into test
+                          phrases.
+                        </ItemDescription>
+                      </ItemContent>
+                    </Item>
+                  </PickerRadioItem>
+                  {index < fonts.length - 1 && (
+                    <PickerSeparator className="opacity-50" />
+                  )}
+                </React.Fragment>
+              ))}
+            </PickerGroup>
+          </PickerRadioGroup>
+        </PickerContent>
+      </Picker>
+      <LockButton
+        param="font"
+        className="absolute top-1/2 right-10 -translate-y-1/2"
+      />
+    </div>
   )
 }
