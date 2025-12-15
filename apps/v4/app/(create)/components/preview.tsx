@@ -108,6 +108,7 @@ export function Preview() {
       <div className="ring-foreground/15 3xl:max-h-[1200px] 3xl:max-w-[1800px] relative -z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden rounded-2xl ring-1">
         <div className="bg-muted dark:bg-muted/30 absolute inset-0 rounded-2xl" />
         <iframe
+          key={params.base + params.item}
           ref={iframeRef}
           src={iframeSrc}
           className="z-10 size-full flex-1"
