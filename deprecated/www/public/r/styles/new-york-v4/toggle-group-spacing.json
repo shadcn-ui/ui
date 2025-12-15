@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group-spacing",
+  "type": "registry:example",
+  "registryDependencies": [
+    "toggle-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/toggle-group-spacing.tsx",
+      "content": "import { BookmarkIcon, HeartIcon, StarIcon } from \"lucide-react\"\n\nimport {\n  ToggleGroup,\n  ToggleGroupItem,\n} from \"@/registry/new-york-v4/ui/toggle-group\"\n\nexport default function ToggleGroupSpacing() {\n  return (\n    <ToggleGroup type=\"multiple\" variant=\"outline\" spacing={2} size=\"sm\">\n      <ToggleGroupItem\n        value=\"star\"\n        aria-label=\"Toggle star\"\n        className=\"data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-500 data-[state=on]:*:[svg]:stroke-yellow-500\"\n      >\n        <StarIcon />\n        Star\n      </ToggleGroupItem>\n      <ToggleGroupItem\n        value=\"heart\"\n        aria-label=\"Toggle heart\"\n        className=\"data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-red-500 data-[state=on]:*:[svg]:stroke-red-500\"\n      >\n        <HeartIcon />\n        Heart\n      </ToggleGroupItem>\n      <ToggleGroupItem\n        value=\"bookmark\"\n        aria-label=\"Toggle bookmark\"\n        className=\"data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500\"\n      >\n        <BookmarkIcon />\n        Bookmark\n      </ToggleGroupItem>\n    </ToggleGroup>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -36,6 +36,7 @@ import { ItemDemo } from "./components/item-demo"
 import { KbdDemo } from "./components/kbd-demo"
 import { LabelDemo } from "./components/label-demo"
 import { MenubarDemo } from "./components/menubar-demo"
+import { NativeSelectDemo } from "./components/native-select-demo"
 import { NavigationMenuDemo } from "./components/navigation-menu-demo"
 import { PaginationDemo } from "./components/pagination-demo"
 import { PopoverDemo } from "./components/popover-demo"
@@ -278,6 +279,13 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: NavigationMenuDemo,
     type: "registry:ui",
     href: "/sink/navigation-menu",
+  },
+  "native-select": {
+    name: "Native Select",
+    component: NativeSelectDemo,
+    type: "registry:ui",
+    href: "/sink/native-select",
+    label: "New",
   },
   pagination: {
     name: "Pagination",

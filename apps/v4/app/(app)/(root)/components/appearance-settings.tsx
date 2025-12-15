@@ -1,9 +1,8 @@
 "use client"
 
+import * as React from "react"
 import { IconMinus, IconPlus } from "@tabler/icons-react"
-import { CheckIcon } from "lucide-react"
 
-import { useThemeConfig } from "@/components/active-theme"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
 import {
@@ -18,34 +17,31 @@ import {
   FieldTitle,
 } from "@/registry/new-york-v4/ui/field"
 import { Input } from "@/registry/new-york-v4/ui/input"
-import { Label } from "@/registry/new-york-v4/ui/label"
 import {
   RadioGroup,
   RadioGroupItem,
 } from "@/registry/new-york-v4/ui/radio-group"
 import { Switch } from "@/registry/new-york-v4/ui/switch"
 
-const accents = [
-  {
-    name: "Blue",
-    value: "blue",
-  },
-  {
-    name: "Amber",
-    value: "amber",
-  },
-  {
-    name: "Green",
-    value: "green",
-  },
-  {
-    name: "Rose",
-    value: "rose",
-  },
-]
-
 export function AppearanceSettings() {
-  const { activeTheme, setActiveTheme } = useThemeConfig()
+  const [gpuCount, setGpuCount] = React.useState(8)
+
+  const handleGpuAdjustment = React.useCallback((adjustment: number) => {
+    setGpuCount((prevCount) =>
+      Math.max(1, Math.min(99, prevCount + adjustment))
+    )
+  }, [])
+
+  const handleGpuInputChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = parseInt(e.target.value, 10)
+      if (!isNaN(value) && value >= 1 && value <= 99) {
+        setGpuCount(value)
+      }
+    },
+    []
+  )
+
   return (
     <FieldSet>
       <FieldGroup>
@@ -92,44 +88,14 @@ export function AppearanceSettings() {
         <FieldSeparator />
         <Field orientation="horizontal">
           <FieldContent>
-            <FieldTitle>Accent</FieldTitle>
-            <FieldDescription>Select the accent color.</FieldDescription>
-          </FieldContent>
-          <FieldSet aria-label="Accent">
-            <RadioGroup
-              className="flex flex-wrap gap-2"
-              value={activeTheme}
-              onValueChange={setActiveTheme}
-            >
-              {accents.map((accent) => (
-                <Label
-                  htmlFor={accent.value}
-                  key={accent.value}
-                  data-theme={accent.value}
-                  className="flex size-6 items-center justify-center rounded-full data-[theme=amber]:bg-amber-600 data-[theme=blue]:bg-blue-700 data-[theme=green]:bg-green-600 data-[theme=rose]:bg-rose-600"
-                >
-                  <RadioGroupItem
-                    id={accent.value}
-                    value={accent.value}
-                    aria-label={accent.name}
-                    className="peer sr-only"
-                  />
-                  <CheckIcon className="hidden size-4 stroke-white peer-data-[state=checked]:block" />
-                </Label>
-              ))}
-            </RadioGroup>
-          </FieldSet>
-        </Field>
-        <FieldSeparator />
-        <Field orientation="horizontal">
-          <FieldContent>
             <FieldLabel htmlFor="number-of-gpus-f6l">Number of GPUs</FieldLabel>
             <FieldDescription>You can add more later.</FieldDescription>
           </FieldContent>
           <ButtonGroup>
             <Input
               id="number-of-gpus-f6l"
-              placeholder="8"
+              value={gpuCount}
+              onChange={handleGpuInputChange}
               size={3}
               className="h-8 !w-14 font-mono"
               maxLength={3}
@@ -139,6 +105,8 @@ export function AppearanceSettings() {
               size="icon-sm"
               type="button"
               aria-label="Decrement"
+              onClick={() => handleGpuAdjustment(-1)}
+              disabled={gpuCount <= 1}
             >
               <IconMinus />
             </Button>
@@ -147,6 +115,8 @@ export function AppearanceSettings() {
               size="icon-sm"
               type="button"
               aria-label="Increment"
+              onClick={() => handleGpuAdjustment(1)}
+              disabled={gpuCount >= 99}
             >
               <IconPlus />
             </Button>
