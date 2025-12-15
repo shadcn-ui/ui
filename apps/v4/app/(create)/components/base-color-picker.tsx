@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
-import { useQueryStates } from "nuqs"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { BASE_COLORS, type BaseColorName } from "@/registry/config"
@@ -17,7 +16,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function BaseColorPicker({
   isMobile,
@@ -28,10 +27,7 @@ export function BaseColorPicker({
 }) {
   const { resolvedTheme, setTheme } = useTheme()
   const mounted = useMounted()
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentBaseColor = React.useMemo(
     () => BASE_COLORS.find((baseColor) => baseColor.name === params.baseColor),

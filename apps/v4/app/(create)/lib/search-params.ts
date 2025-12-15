@@ -1,9 +1,12 @@
+import { useQueryStates } from "nuqs"
 import {
-  createSearchParamsCache,
+  createLoader,
   parseAsBoolean,
   parseAsInteger,
   parseAsString,
   parseAsStringLiteral,
+  type inferParserType,
+  type Options,
 } from "nuqs/server"
 
 import {
@@ -28,11 +31,11 @@ import {
 } from "@/registry/config"
 import { FONTS } from "@/app/(create)/lib/fonts"
 
-export const designSystemSearchParams = {
+const designSystemSearchParams = {
   base: parseAsStringLiteral<BaseName>(BASES.map((b) => b.name)).withDefault(
     DEFAULT_CONFIG.base
   ),
-  item: parseAsString.withDefault("preview"),
+  item: parseAsString.withDefault("preview").withOptions({ shallow: true }),
   iconLibrary: parseAsStringLiteral<IconLibraryName>(
     Object.values(iconLibraries).map((i) => i.name)
   ).withDefault(DEFAULT_CONFIG.iconLibrary),
@@ -57,19 +60,26 @@ export const designSystemSearchParams = {
   radius: parseAsStringLiteral<RadiusValue>(
     RADII.map((r) => r.name)
   ).withDefault("default"),
-  template: parseAsStringLiteral<"next" | "start" | "vite">([
+  template: parseAsStringLiteral([
     "next",
     "start",
     "vite",
-  ]).withDefault("next"),
+  ] as const).withDefault("next"),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }
 
-export const designSystemSearchParamsCache = createSearchParamsCache(
+export const loadDesignSystemSearchParams = createLoader(
   designSystemSearchParams
 )
 
-export type DesignSystemSearchParams = Awaited<
-  ReturnType<typeof designSystemSearchParamsCache.parse>
+export const useDesignSystemSearchParams = (options: Options = {}) =>
+  useQueryStates(designSystemSearchParams, {
+    shallow: false,
+    history: "push",
+    ...options,
+  })
+
+export type DesignSystemSearchParams = inferParserType<
+  typeof designSystemSearchParams
 >
