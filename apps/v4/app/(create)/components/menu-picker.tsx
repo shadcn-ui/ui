@@ -118,8 +118,6 @@ export function MenuColorPicker({
     (menu) => menu.value === params.menuColor
   )
 
-  console.log("rendered")
-
   return (
     <div className="group/picker relative">
       <Picker>
