@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useQueryStates } from "nuqs"
 
 import { type Style, type StyleName } from "@/registry/config"
 import { LockButton } from "@/app/(create)/components/lock-button"
@@ -14,7 +13,7 @@ import {
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function StylePicker({
   styles,
@@ -25,10 +24,7 @@ export function StylePicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentStyle = styles.find((style) => style.name === params.style)
 

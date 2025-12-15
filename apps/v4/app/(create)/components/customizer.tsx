@@ -3,7 +3,6 @@
 import * as React from "react"
 import { Settings05Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { useQueryStates } from "nuqs"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { getThemesForBaseColor, PRESETS, STYLES } from "@/registry/config"
@@ -20,10 +19,10 @@ import { RadiusPicker } from "@/app/(create)/components/radius-picker"
 import { StylePicker } from "@/app/(create)/components/style-picker"
 import { ThemePicker } from "@/app/(create)/components/theme-picker"
 import { FONTS } from "@/app/(create)/lib/fonts"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function Customizer() {
-  const [params] = useQueryStates(designSystemSearchParams)
+  const [params] = useDesignSystemSearchParams()
   const isMobile = useIsMobile()
   const anchorRef = React.useRef<HTMLDivElement | null>(null)
 

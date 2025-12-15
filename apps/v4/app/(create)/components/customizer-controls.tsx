@@ -1,11 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { useRouter } from "next/navigation"
 import Script from "next/script"
 import { DiceFaces05Icon, Undo02Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { useQueryStates } from "nuqs"
 
 import { cn } from "@/lib/utils"
 import {
@@ -20,11 +18,6 @@ import {
 } from "@/registry/config"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Kbd } from "@/registry/new-york-v4/ui/kbd"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
 import { useLocks } from "@/app/(create)/hooks/use-locks"
 import { FONTS } from "@/app/(create)/lib/fonts"
 import {
@@ -32,7 +25,7 @@ import {
   RANDOMIZE_BIASES,
   type RandomizeContext,
 } from "@/app/(create)/lib/randomize-biases"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export const RANDOMIZE_FORWARD_TYPE = "randomize-forward"
 
@@ -41,12 +34,8 @@ function randomItem<T>(array: readonly T[]): T {
 }
 
 export function CustomizerControls({ className }: { className?: string }) {
-  const router = useRouter()
   const { locks } = useLocks()
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const handleReset = React.useCallback(() => {
     setParams({

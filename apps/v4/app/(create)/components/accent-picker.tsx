@@ -1,7 +1,5 @@
 "use client"
 
-import { useQueryStates } from "nuqs"
-
 import { MENU_ACCENTS, type MenuAccentValue } from "@/registry/config"
 import { LockButton } from "@/app/(create)/components/lock-button"
 import {
@@ -12,7 +10,7 @@ import {
   PickerRadioItem,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function MenuAccentPicker({
   isMobile,
@@ -21,10 +19,7 @@ export function MenuAccentPicker({
   isMobile: boolean
   anchorRef: React.RefObject<HTMLDivElement | null>
 }) {
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentAccent = MENU_ACCENTS.find(
     (accent) => accent.value === params.menuAccent
