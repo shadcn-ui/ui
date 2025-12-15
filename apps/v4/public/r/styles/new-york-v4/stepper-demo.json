@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "stepper"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stepper-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport { Stepper } from \"@/registry/new-york-v4/ui/stepper\"\r\nimport { StepperItem } from \"@/registry/new-york-v4/ui/stepper-item\"\r\n\r\nexport default function StepperDemo() {\r\n  return (\r\n    <div className=\"w-full max-w-xl space-y-8\">\r\n      <Stepper currentStep={1}>\r\n        <StepperItem title=\"Account\" description=\"Create your account\" />\r\n        <StepperItem title=\"Profile\" description=\"Complete your profile\" />\r\n        <StepperItem title=\"Review\" description=\"Verify your details\" />\r\n      </Stepper>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:example"
+    }
+  ]
+}
