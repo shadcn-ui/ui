@@ -20,8 +20,6 @@ export function V0Button({ className }: { className?: string }) {
 
   const url = `${process.env.NEXT_PUBLIC_APP_URL}/create/v0?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&item=${params.item}`
 
-  console.log(url)
-
   if (!isMounted) {
     return <Skeleton className="h-8 w-24 rounded-lg" />
   }
