@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import Link, { LinkProps } from "next/link"
+import Link, { type LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
-import { source } from "@/lib/source"
+import { type source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -22,8 +22,8 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/components",
   },
   {
-    name: "Registry",
-    href: "/docs/registry",
+    name: "Directory",
+    href: "/docs/directory",
   },
   {
     name: "MCP Server",

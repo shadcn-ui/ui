@@ -26,6 +26,7 @@ import {
   DEFAULT_TAILWIND_CONFIG,
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
+  createConfig,
   getConfig,
   resolveConfigPaths,
   type Config,
@@ -61,6 +62,7 @@ process.on("exit", (code) => {
 
 export const initOptionsSchema = z.object({
   cwd: z.string(),
+  name: z.string().optional(),
   components: z.array(z.string()).optional(),
   yes: z.boolean(),
   defaults: z.boolean(),
@@ -80,7 +82,8 @@ export const initOptionsSchema = z.object({
         return true
       },
       {
-        message: "Invalid template. Please use 'next' or 'next-monorepo'.",
+        message:
+          "Invalid template. Please use 'next', 'vite', 'start' or 'next-monorepo'.",
       }
     ),
   baseColor: z
@@ -101,6 +104,8 @@ export const initOptionsSchema = z.object({
       }
     ),
   baseStyle: z.boolean(),
+  // Config from registry:base item to merge into components.json.
+  registryBaseConfig: rawConfigSchema.deepPartial().optional(),
 })
 
 export const init = new Command()
@@ -109,7 +114,7 @@ export const init = new Command()
   .argument("[components...]", "names, url or local path to component")
   .option(
     "-t, --template <template>",
-    "the template to use. (next, next-monorepo)"
+    "the template to use. (next, start, vite, next-monorepo)"
   )
   .option(
     "-b, --base-color <base-color>",
@@ -160,7 +165,13 @@ export const init = new Command()
       if (components.length > 0) {
         // We don't know the full config at this point.
         // So we'll use a shadow config to fetch the first item.
-        let shadowConfig = configWithDefaults({})
+        let shadowConfig = configWithDefaults(
+          createConfig({
+            resolvedPaths: {
+              cwd: options.cwd,
+            },
+          })
+        )
 
         // Check if there's a components.json file.
         // If so, we'll merge with our shadow config.
@@ -168,7 +179,18 @@ export const init = new Command()
         if (fsExtra.existsSync(componentsJsonPath)) {
           const existingConfig = await fsExtra.readJson(componentsJsonPath)
           const config = rawConfigSchema.partial().parse(existingConfig)
-          shadowConfig = configWithDefaults(config)
+          const baseConfig = createConfig({
+            resolvedPaths: {
+              cwd: options.cwd,
+            },
+          })
+          shadowConfig = configWithDefaults({
+            ...config,
+            resolvedPaths: {
+              ...baseConfig.resolvedPaths,
+              cwd: options.cwd,
+            },
+          })
 
           // Since components.json might not be valid at this point.
           // Temporarily rename components.json to allow preflight to run.
@@ -182,6 +204,7 @@ export const init = new Command()
           shadowConfig,
           {
             silent: true,
+            writeFile: false,
           }
         )
         shadowConfig = updatedConfig
@@ -192,6 +215,21 @@ export const init = new Command()
         const [item] = await getRegistryItems([components[0]], {
           config: shadowConfig,
         })
+
+        // Set options from registry:base.
+        if (item?.type === "registry:base") {
+          if (item.config) {
+            // Merge config values into shadowConfig.
+            shadowConfig = configWithDefaults(
+              deepmerge(shadowConfig, item.config)
+            )
+            // Store config to be merged into components.json later.
+            options.registryBaseConfig = item.config
+          }
+          options.baseStyle =
+            item.extends === "none" ? false : options.baseStyle
+        }
+
         if (item?.type === "registry:style") {
           // Set a default base color so we're not prompted.
           // The style will extend or override it.
@@ -217,7 +255,7 @@ export const init = new Command()
         )} Project initialization completed.\nYou may now add components.`
       )
 
-      // We need when runninng with custom cwd.
+      // We need when running with custom cwd.
       deleteFileBackup(path.resolve(options.cwd, "components.json"))
       logger.break()
     } catch (error) {
@@ -245,8 +283,11 @@ export async function runInit(
       options.cwd = projectPath
       options.isNewProject = true
       newProjectTemplate = template
+      // Re-get project info for the newly created project.
+      projectInfo = await getProjectInfo(options.cwd)
+    } else {
+      projectInfo = preflight.projectInfo
     }
-    projectInfo = preflight.projectInfo
   } else {
     projectInfo = await getProjectInfo(options.cwd)
   }
@@ -306,13 +347,21 @@ export async function runInit(
   const targetPath = path.resolve(options.cwd, "components.json")
   const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
 
-  // Merge with backup config if it exists and not using --force
+  // Merge and keep registries at the end.
+  const mergeConfig = (base: typeof config, override: object) => {
+    const { registries, ...merged } = deepmerge(base, override)
+    return { ...merged, registries } as typeof config
+  }
+
+  // Merge with backup config if it exists and not using --force.
   if (!options.force && fsExtra.existsSync(backupPath)) {
     const existingConfig = await fsExtra.readJson(backupPath)
+    config = mergeConfig(existingConfig, config)
+  }
 
-    // Move registries at the end of the config.
-    const { registries, ...merged } = deepmerge(existingConfig, config)
-    config = { ...merged, registries }
+  // Merge config from registry:base item.
+  if (options.registryBaseConfig) {
+    config = mergeConfig(config, options.registryBaseConfig)
   }
 
   // Make sure to filter out built-in registries.
@@ -476,6 +525,7 @@ async function promptForMinimalConfig(
   let style = defaultConfig.style
   let baseColor = opts.baseColor
   let cssVariables = defaultConfig.tailwind.cssVariables
+  let iconLibrary = defaultConfig.iconLibrary ?? "lucide"
 
   if (!opts.defaults) {
     const [styles, baseColors, tailwindVersion] = await Promise.all([
@@ -486,7 +536,8 @@ async function promptForMinimalConfig(
 
     const options = await prompts([
       {
-        type: tailwindVersion === "v4" ? null : "select",
+        // Skip style prompt if using Tailwind v4 or style is already set in config.
+        type: tailwindVersion === "v4" || style ? null : "select",
         name: "style",
         message: `Which ${highlighter.info("style")} would you like to use?`,
         choices: styles.map((style) => ({
@@ -509,7 +560,7 @@ async function promptForMinimalConfig(
       },
     ])
 
-    style = options.style ?? "new-york"
+    style = options.style ?? style ?? "new-york"
     baseColor = options.tailwindBaseColor ?? baseColor
     cssVariables = opts.cssVariables
   }
@@ -524,7 +575,7 @@ async function promptForMinimalConfig(
     },
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
-    iconLibrary: defaultConfig?.iconLibrary,
+    iconLibrary,
     aliases: defaultConfig?.aliases,
   })
 }
