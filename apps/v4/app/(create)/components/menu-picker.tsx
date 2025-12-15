@@ -118,6 +118,8 @@ export function MenuColorPicker({
     (menu) => menu.value === params.menuColor
   )
 
+  console.log("rendered")
+
   return (
     <div className="group/picker relative">
       <Picker>
@@ -128,7 +130,7 @@ export function MenuColorPicker({
               {currentMenu?.label}
             </div>
           </div>
-          <div className="text-foreground absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base">
+          <div className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
             {currentMenu?.icon}
           </div>
         </PickerTrigger>

@@ -49,7 +49,7 @@ export function FontPicker({
             </div>
           </div>
           <div
-            className="text-foreground absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base"
+            className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none"
             style={{ fontFamily: currentFont?.font.style.fontFamily }}
           >
             Aa

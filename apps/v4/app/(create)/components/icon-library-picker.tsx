@@ -180,7 +180,7 @@ export function IconLibraryPicker({
               {currentIconLibrary?.title}
             </div>
           </div>
-          <div className="text-foreground *:[svg]:text-foreground! absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base">
+          <div className="text-foreground *:[svg]:text-foreground! pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 items-center justify-center text-base select-none">
             {logos[currentIconLibrary?.name as keyof typeof logos]}
           </div>
         </PickerTrigger>

@@ -36,7 +36,7 @@ export function RadiusPicker({
               {currentRadius?.label}
             </div>
           </div>
-          <div className="text-foreground absolute top-1/2 right-4 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base">
+          <div className="text-foreground pointer-events-none absolute top-1/2 right-4 flex size-4 -translate-y-1/2 rotate-90 items-center justify-center text-base select-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
