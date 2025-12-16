@@ -78,11 +78,7 @@ function SelectBasic() {
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
-        <SelectContent
-          alignItemWithTrigger={false}
-          sideOffset={8}
-          className="max-h-80"
-        >
+        <SelectContent alignItemWithTrigger={false} sideOffset={8}>
           <SelectGroup>
             {items.map((item) => (
               <SelectItem key={item.value} value={item.value}>
