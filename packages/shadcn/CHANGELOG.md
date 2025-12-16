@@ -1,5 +1,69 @@
 # @shadcn/ui
 
+## 3.6.1
+
+### Patch Changes
+
+- [#9054](https://github.com/shadcn-ui/ui/pull/9054) [`d3156c09ae1df2321c0505db6b2e637374e320f7`](https://github.com/shadcn-ui/ui/commit/d3156c09ae1df2321c0505db6b2e637374e320f7) Thanks [@shadcn](https://github.com/shadcn)! - fix resolver for url
+
+## 3.6.0
+
+### Minor Changes
+
+- [#9022](https://github.com/shadcn-ui/ui/pull/9022) [`86d9b00084affa7010e6c7c7bd410ec62525caac`](https://github.com/shadcn-ui/ui/commit/86d9b00084affa7010e6c7c7bd410ec62525caac) Thanks [@shadcn](https://github.com/shadcn)! - add registry:base item type
+
+- [#9022](https://github.com/shadcn-ui/ui/pull/9022) [`86d9b00084affa7010e6c7c7bd410ec62525caac`](https://github.com/shadcn-ui/ui/commit/86d9b00084affa7010e6c7c7bd410ec62525caac) Thanks [@shadcn](https://github.com/shadcn)! - add npx shadcn create
+
+## 3.5.2
+
+### Patch Changes
+
+- [#8997](https://github.com/shadcn-ui/ui/pull/8997) [`6699158a22e376a6abc91693843a64cdb0b496da`](https://github.com/shadcn-ui/ui/commit/6699158a22e376a6abc91693843a64cdb0b496da) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of base styles for add command
+
+- [#8993](https://github.com/shadcn-ui/ui/pull/8993) [`142cd8ef13a0ff691a94bbd73dba9d7a62428ffa`](https://github.com/shadcn-ui/ui/commit/142cd8ef13a0ff691a94bbd73dba9d7a62428ffa) Thanks [@pasqualevitiello](https://github.com/pasqualevitiello)! - Prevent duplicate keyframes when adding components
+
+## 3.5.1
+
+### Patch Changes
+
+- [#8900](https://github.com/shadcn-ui/ui/pull/8900) [`d0fb73ac0e4e7f6d02768586c5232bbc6b33a3c3`](https://github.com/shadcn-ui/ui/commit/d0fb73ac0e4e7f6d02768586c5232bbc6b33a3c3) Thanks [@shadcn](https://github.com/shadcn)! - do not install base style when adding themes
+
+- [#7557](https://github.com/shadcn-ui/ui/pull/7557) [`ad6a3c63678bb31dbfb94536ee1d4aa4f06a8b8d`](https://github.com/shadcn-ui/ui/commit/ad6a3c63678bb31dbfb94536ee1d4aa4f06a8b8d) Thanks [@remorses](https://github.com/remorses)! - Fix utils import transform when workspace alias does not start with @
+
+- [#8901](https://github.com/shadcn-ui/ui/pull/8901) [`62218c1c0c79195bda49a36817a13392cae7b4f2`](https://github.com/shadcn-ui/ui/commit/62218c1c0c79195bda49a36817a13392cae7b4f2) Thanks [@shadcn](https://github.com/shadcn)! - update color value detection for cssVars
+
+## 3.5.0
+
+### Minor Changes
+
+- [#8555](https://github.com/shadcn-ui/ui/pull/8555) [`d7e0dc3ec81676d47351e8f7134639e0dd0c3e3c`](https://github.com/shadcn-ui/ui/commit/d7e0dc3ec81676d47351e8f7134639e0dd0c3e3c) Thanks [@shadcn](https://github.com/shadcn)! - rename middleware to proxy for Next.js 16
+
+- [#8550](https://github.com/shadcn-ui/ui/pull/8550) [`6bddba986d75da35e18343dbb6254fed4537b7d7`](https://github.com/shadcn-ui/ui/commit/6bddba986d75da35e18343dbb6254fed4537b7d7) Thanks [@shadcn](https://github.com/shadcn)! - add Next.js 16 support for init command
+
+## 3.4.2
+
+### Patch Changes
+
+- [#8478](https://github.com/shadcn-ui/ui/pull/8478) [`b52ec12f1e22cf89270bf3d931f5b7544e4b80b4`](https://github.com/shadcn-ui/ui/commit/b52ec12f1e22cf89270bf3d931f5b7544e4b80b4) Thanks [@shadcn](https://github.com/shadcn)! - fix regression with universal item detection
+
+## 3.4.1
+
+### Patch Changes
+
+- [#8420](https://github.com/shadcn-ui/ui/pull/8420) [`40c3ff513a88ca8e6f02bf798a7cf73b88401024`](https://github.com/shadcn-ui/ui/commit/40c3ff513a88ca8e6f02bf798a7cf73b88401024) Thanks [@zbeyens](https://github.com/zbeyens)! - Fix support for universal registry items that only have dependencies without files
+
+- [#8459](https://github.com/shadcn-ui/ui/pull/8459) [`7cd019ad3652a0e98770b89032b7a161edfda805`](https://github.com/shadcn-ui/ui/commit/7cd019ad3652a0e98770b89032b7a161edfda805) Thanks [@shadcn](https://github.com/shadcn)! - add support for color as var
+
+- [#8451](https://github.com/shadcn-ui/ui/pull/8451) [`b83023034a301b41fa18045af0d9bd787e415aa5`](https://github.com/shadcn-ui/ui/commit/b83023034a301b41fa18045af0d9bd787e415aa5) Thanks [@diegohaz](https://github.com/diegohaz)! - fix adding registry item with CSS at-property
+
+## 3.4.0
+
+### Minor Changes
+
+- [#7742](https://github.com/shadcn-ui/ui/pull/7742) [`da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad`](https://github.com/shadcn-ui/ui/commit/da8fa6aacdf58191bfd4eb6bc65f2fb02ec137ad) Thanks [@sirldev](https://github.com/sirldev)! - rename monorepo project on init
+
+- [#8348](https://github.com/shadcn-ui/ui/pull/8348) [`e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e`](https://github.com/shadcn-ui/ui/commit/e96f9edf027c8f97dc565b6e6c2fbd6f258bfa1e) Thanks [@shadcn](https://github.com/shadcn)! - add mcp support for codex
+
 ## 3.3.1
 
 ### Patch Changes

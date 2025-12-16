@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-nested",
+  "type": "registry:example",
+  "registryDependencies": [
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/button-group-nested.tsx",
+      "content": "\"use client\"\n\nimport { ArrowLeftIcon, ArrowRightIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport { ButtonGroup } from \"@/registry/new-york-v4/ui/button-group\"\n\nexport default function ButtonGroupNested() {\n  return (\n    <ButtonGroup>\n      <ButtonGroup>\n        <Button variant=\"outline\" size=\"sm\">\n          1\n        </Button>\n        <Button variant=\"outline\" size=\"sm\">\n          2\n        </Button>\n        <Button variant=\"outline\" size=\"sm\">\n          3\n        </Button>\n        <Button variant=\"outline\" size=\"sm\">\n          4\n        </Button>\n        <Button variant=\"outline\" size=\"sm\">\n          5\n        </Button>\n      </ButtonGroup>\n      <ButtonGroup>\n        <Button variant=\"outline\" size=\"icon-sm\" aria-label=\"Previous\">\n          <ArrowLeftIcon />\n        </Button>\n        <Button variant=\"outline\" size=\"icon-sm\" aria-label=\"Next\">\n          <ArrowRightIcon />\n        </Button>\n      </ButtonGroup>\n    </ButtonGroup>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

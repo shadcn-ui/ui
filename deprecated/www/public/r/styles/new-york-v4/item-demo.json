@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/item-demo.tsx",
+      "content": "import { BadgeCheckIcon, ChevronRightIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemMedia,\n  ItemTitle,\n} from \"@/registry/new-york-v4/ui/item\"\n\nexport default function ItemDemo() {\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-6\">\n      <Item variant=\"outline\">\n        <ItemContent>\n          <ItemTitle>Basic Item</ItemTitle>\n          <ItemDescription>\n            A simple item with title and description.\n          </ItemDescription>\n        </ItemContent>\n        <ItemActions>\n          <Button variant=\"outline\" size=\"sm\">\n            Action\n          </Button>\n        </ItemActions>\n      </Item>\n      <Item variant=\"outline\" size=\"sm\" asChild>\n        <a href=\"#\">\n          <ItemMedia>\n            <BadgeCheckIcon className=\"size-5\" />\n          </ItemMedia>\n          <ItemContent>\n            <ItemTitle>Your profile has been verified.</ItemTitle>\n          </ItemContent>\n          <ItemActions>\n            <ChevronRightIcon className=\"size-4\" />\n          </ItemActions>\n        </a>\n      </Item>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

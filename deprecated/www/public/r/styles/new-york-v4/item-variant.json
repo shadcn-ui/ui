@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-variant",
+  "type": "registry:example",
+  "registryDependencies": [
+    "item"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/item-variant.tsx",
+      "content": "import { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemTitle,\n} from \"@/registry/new-york-v4/ui/item\"\n\nexport default function ItemVariant() {\n  return (\n    <div className=\"flex flex-col gap-6\">\n      <Item>\n        <ItemContent>\n          <ItemTitle>Default Variant</ItemTitle>\n          <ItemDescription>\n            Standard styling with subtle background and borders.\n          </ItemDescription>\n        </ItemContent>\n        <ItemActions>\n          <Button variant=\"outline\" size=\"sm\">\n            Open\n          </Button>\n        </ItemActions>\n      </Item>\n      <Item variant=\"outline\">\n        <ItemContent>\n          <ItemTitle>Outline Variant</ItemTitle>\n          <ItemDescription>\n            Outlined style with clear borders and transparent background.\n          </ItemDescription>\n        </ItemContent>\n        <ItemActions>\n          <Button variant=\"outline\" size=\"sm\">\n            Open\n          </Button>\n        </ItemActions>\n      </Item>\n      <Item variant=\"muted\">\n        <ItemContent>\n          <ItemTitle>Muted Variant</ItemTitle>\n          <ItemDescription>\n            Subdued appearance with muted colors for secondary content.\n          </ItemDescription>\n        </ItemContent>\n        <ItemActions>\n          <Button variant=\"outline\" size=\"sm\">\n            Open\n          </Button>\n        </ItemActions>\n      </Item>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

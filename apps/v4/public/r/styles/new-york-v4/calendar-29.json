@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "calendar-29",
-  "type": "registry:block",
   "description": "Natural language date picker",
   "dependencies": [
     "chrono-node"
@@ -28,5 +27,6 @@
   "categories": [
     "calendar",
     "date"
-  ]
+  ],
+  "type": "registry:block"
 }

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-label",
+  "type": "registry:example",
+  "registryDependencies": [
+    "input-group",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/input-group-label.tsx",
+      "content": "import { InfoIcon } from \"lucide-react\"\n\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n} from \"@/registry/new-york-v4/ui/input-group\"\nimport { Label } from \"@/registry/new-york-v4/ui/label\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/registry/new-york-v4/ui/tooltip\"\n\nexport default function InputGroupLabel() {\n  return (\n    <div className=\"grid w-full max-w-sm gap-4\">\n      <InputGroup>\n        <InputGroupInput id=\"email\" placeholder=\"shadcn\" />\n        <InputGroupAddon>\n          <Label htmlFor=\"email\">@</Label>\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupInput id=\"email-2\" placeholder=\"shadcn@vercel.com\" />\n        <InputGroupAddon align=\"block-start\">\n          <Label htmlFor=\"email-2\" className=\"text-foreground\">\n            Email\n          </Label>\n          <Tooltip>\n            <TooltipTrigger asChild>\n              <InputGroupButton\n                variant=\"ghost\"\n                aria-label=\"Help\"\n                className=\"ml-auto rounded-full\"\n                size=\"icon-xs\"\n              >\n                <InfoIcon />\n              </InputGroupButton>\n            </TooltipTrigger>\n            <TooltipContent>\n              <p>We&apos;ll use this to send you notifications</p>\n            </TooltipContent>\n          </Tooltip>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

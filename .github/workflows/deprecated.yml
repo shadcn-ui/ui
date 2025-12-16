@@ -1,0 +1,78 @@
+name: Deprecated
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+permissions:
+  issues: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  deprecated:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v46
+        with:
+          files: |
+            apps/www/**
+          files_ignore: |
+            apps/www/public/r/**
+          base_sha: ${{ github.event.pull_request.base.sha }}
+          sha: ${{ github.event.pull_request.head.sha }}
+
+      - name: Comment on PR if www files changed
+        if: steps.changed-files.outputs.any_changed == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const changedFiles = `${{ steps.changed-files.outputs.all_changed_files }}`.split(' ');
+            const wwwFiles = changedFiles.filter(file =>
+              file.startsWith('apps/www/') &&
+              !file.startsWith('apps/www/public/r/') &&
+              file !== 'apps/www/package.json'
+            );
+
+            if (wwwFiles.length > 0) {
+              const comment = `Looks like this PR modifies files in \`apps/www\`, which is deprecated.
+
+              Consider applying the change to \`apps/v4\` if relevant.`;
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment
+              });
+
+              // Add deprecated label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['deprecated']
+              });
+            } else {
+              // Remove deprecated label if no www files are changed
+              try {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  name: 'deprecated'
+                });
+              } catch (error) {
+                // Label doesn't exist, which is fine
+                console.log('Deprecated label not found, skipping removal');
+              }
+            }

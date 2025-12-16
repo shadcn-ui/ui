@@ -195,4 +195,20 @@ describe("createProject", () => {
 
     expect(mockExit).toHaveBeenCalledWith(1)
   })
+
+  it("should include --no-react-compiler flag for Next.js (latest)", async () => {
+    vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
+
+    await createProject({
+      cwd: "/test",
+      force: false,
+      srcDir: false,
+    })
+
+    expect(execa).toHaveBeenCalledWith(
+      "npx",
+      expect.arrayContaining(["--no-react-compiler"]),
+      expect.any(Object)
+    )
+  })
 })

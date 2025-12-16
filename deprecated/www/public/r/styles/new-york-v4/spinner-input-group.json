@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-input-group",
+  "type": "registry:example",
+  "registryDependencies": [
+    "spinner",
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/spinner-input-group.tsx",
+      "content": "import { ArrowUpIcon } from \"lucide-react\"\n\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupButton,\n  InputGroupInput,\n  InputGroupTextarea,\n} from \"@/registry/new-york-v4/ui/input-group\"\nimport { Spinner } from \"@/registry/new-york-v4/ui/spinner\"\n\nexport default function SpinnerInputGroup() {\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-4\">\n      <InputGroup>\n        <InputGroupInput placeholder=\"Send a message...\" disabled />\n        <InputGroupAddon align=\"inline-end\">\n          <Spinner />\n        </InputGroupAddon>\n      </InputGroup>\n      <InputGroup>\n        <InputGroupTextarea placeholder=\"Send a message...\" disabled />\n        <InputGroupAddon align=\"block-end\">\n          <Spinner /> Validating...\n          <InputGroupButton className=\"ml-auto\" variant=\"default\">\n            <ArrowUpIcon />\n            <span className=\"sr-only\">Send</span>\n          </InputGroupButton>\n        </InputGroupAddon>\n      </InputGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
