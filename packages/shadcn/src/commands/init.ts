@@ -62,6 +62,7 @@ process.on("exit", (code) => {
 
 export const initOptionsSchema = z.object({
   cwd: z.string(),
+  name: z.string().optional(),
   components: z.array(z.string()).optional(),
   yes: z.boolean(),
   defaults: z.boolean(),
@@ -82,7 +83,7 @@ export const initOptionsSchema = z.object({
       },
       {
         message:
-          "Invalid template. Please use 'next', 'next-16' or 'next-monorepo'.",
+          "Invalid template. Please use 'next', 'vite', 'start' or 'next-monorepo'.",
       }
     ),
   baseColor: z
@@ -103,6 +104,8 @@ export const initOptionsSchema = z.object({
       }
     ),
   baseStyle: z.boolean(),
+  // Config from registry:base item to merge into components.json.
+  registryBaseConfig: rawConfigSchema.deepPartial().optional(),
 })
 
 export const init = new Command()
@@ -111,7 +114,7 @@ export const init = new Command()
   .argument("[components...]", "names, url or local path to component")
   .option(
     "-t, --template <template>",
-    "the template to use. (next, next-16, next-monorepo)"
+    "the template to use. (next, start, vite, next-monorepo)"
   )
   .option(
     "-b, --base-color <base-color>",
@@ -212,6 +215,21 @@ export const init = new Command()
         const [item] = await getRegistryItems([components[0]], {
           config: shadowConfig,
         })
+
+        // Set options from registry:base.
+        if (item?.type === "registry:base") {
+          if (item.config) {
+            // Merge config values into shadowConfig.
+            shadowConfig = configWithDefaults(
+              deepmerge(shadowConfig, item.config)
+            )
+            // Store config to be merged into components.json later.
+            options.registryBaseConfig = item.config
+          }
+          options.baseStyle =
+            item.extends === "none" ? false : options.baseStyle
+        }
+
         if (item?.type === "registry:style") {
           // Set a default base color so we're not prompted.
           // The style will extend or override it.
@@ -265,8 +283,11 @@ export async function runInit(
       options.cwd = projectPath
       options.isNewProject = true
       newProjectTemplate = template
+      // Re-get project info for the newly created project.
+      projectInfo = await getProjectInfo(options.cwd)
+    } else {
+      projectInfo = preflight.projectInfo
     }
-    projectInfo = preflight.projectInfo
   } else {
     projectInfo = await getProjectInfo(options.cwd)
   }
@@ -326,13 +347,21 @@ export async function runInit(
   const targetPath = path.resolve(options.cwd, "components.json")
   const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
 
-  // Merge with backup config if it exists and not using --force
+  // Merge and keep registries at the end.
+  const mergeConfig = (base: typeof config, override: object) => {
+    const { registries, ...merged } = deepmerge(base, override)
+    return { ...merged, registries } as typeof config
+  }
+
+  // Merge with backup config if it exists and not using --force.
   if (!options.force && fsExtra.existsSync(backupPath)) {
     const existingConfig = await fsExtra.readJson(backupPath)
+    config = mergeConfig(existingConfig, config)
+  }
 
-    // Move registries at the end of the config.
-    const { registries, ...merged } = deepmerge(existingConfig, config)
-    config = { ...merged, registries }
+  // Merge config from registry:base item.
+  if (options.registryBaseConfig) {
+    config = mergeConfig(config, options.registryBaseConfig)
   }
 
   // Make sure to filter out built-in registries.
@@ -496,6 +525,7 @@ async function promptForMinimalConfig(
   let style = defaultConfig.style
   let baseColor = opts.baseColor
   let cssVariables = defaultConfig.tailwind.cssVariables
+  let iconLibrary = defaultConfig.iconLibrary ?? "lucide"
 
   if (!opts.defaults) {
     const [styles, baseColors, tailwindVersion] = await Promise.all([
@@ -506,7 +536,8 @@ async function promptForMinimalConfig(
 
     const options = await prompts([
       {
-        type: tailwindVersion === "v4" ? null : "select",
+        // Skip style prompt if using Tailwind v4 or style is already set in config.
+        type: tailwindVersion === "v4" || style ? null : "select",
         name: "style",
         message: `Which ${highlighter.info("style")} would you like to use?`,
         choices: styles.map((style) => ({
@@ -529,7 +560,7 @@ async function promptForMinimalConfig(
       },
     ])
 
-    style = options.style ?? "new-york"
+    style = options.style ?? style ?? "new-york"
     baseColor = options.tailwindBaseColor ?? baseColor
     cssVariables = opts.cssVariables
   }
@@ -544,7 +575,7 @@ async function promptForMinimalConfig(
     },
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
-    iconLibrary: defaultConfig?.iconLibrary,
+    iconLibrary,
     aliases: defaultConfig?.aliases,
   })
 }
