@@ -196,13 +196,6 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><rect width='24' height='24' rx='4' fill='url(#glass-gradient)'/><defs><linearGradient id='glass-gradient' x1='0' y1='0' x2='24' y2='24'><stop offset='0%' stop-color='var(--foreground)' stop-opacity='0.8'/><stop offset='100%' stop-color='var(--foreground)' stop-opacity='0.8'/></linearGradient></defs><path d='M7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h6v2H7v-2z' fill='white' opacity='0.9'/></svg>"
   },
   {
-    "name": "@einui",
-    "homepage": "https://ui.eindev.ir",
-    "url": "https://ui.eindev.ir/r/{name}.json",
-    "description": "Beautiful, responsive Shadcn components with frosted glass morphism. Built for modern web applications with full dark mode support.",
-    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><rect width='24' height='24' rx='4' fill='url(#glass-gradient)'/><defs><linearGradient id='glass-gradient' x1='0' y1='0' x2='24' y2='24'><stop offset='0%' stop-color='#60a5fa' stop-opacity='0.8'/><stop offset='100%' stop-color='#a78bfa' stop-opacity='0.8'/></linearGradient></defs><path d='M7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h6v2H7v-2z' fill='white' opacity='0.9'/></svg>"
-  },
-  {
     "name": "@eldoraui",
     "homepage": "https://eldoraui.site",
     "url": "https://eldoraui.site/r/{name}.json",
