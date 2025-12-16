@@ -15,6 +15,7 @@
   "scripts": {
     "build": "turbo run build",
     "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
+    "registry": "turbo run registry",
     "registry:capture": "pnpm --filter=v4 registry:capture",
     "dev": "turbo run dev --parallel",
     "shadcn:dev": "turbo --filter=shadcn dev",
@@ -48,8 +49,10 @@
     "@commitlint/config-conventional": "^17.6.3",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^5.59.7",
     "autoprefixer": "^10.4.14",
+    "chokidar": "^4.0.3",
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.41.0",

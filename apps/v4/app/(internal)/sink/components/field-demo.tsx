@@ -20,7 +20,7 @@ import {
   FolderIcon,
   MonitorIcon,
 } from "lucide-react"
-import { DateRange } from "react-day-picker"
+import { type DateRange } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import {
