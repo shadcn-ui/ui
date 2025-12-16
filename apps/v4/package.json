@@ -94,7 +94,7 @@
     "react-day-picker": "^9.7.0",
     "react-dom": "19.2.3",
     "react-hook-form": "^7.62.0",
-    "react-resizable-panels": "^3.0.6",
+    "react-resizable-panels": "^4.0.0",
     "react-textarea-autosize": "^8.5.9",
     "recharts": "2.15.1",
     "rehype-pretty-code": "^0.14.1",
