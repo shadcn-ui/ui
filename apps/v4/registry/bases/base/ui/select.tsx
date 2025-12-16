@@ -68,13 +68,18 @@ function SelectContent({
   sideOffset = 4,
   align = "center",
   alignOffset = 0,
-  alignItemWithTrigger = true,
+  alignItemWithTrigger = false,
+  style,
   ...props
 }: SelectPrimitive.Popup.Props &
   Pick<
     SelectPrimitive.Positioner.Props,
     "align" | "alignOffset" | "side" | "sideOffset" | "alignItemWithTrigger"
   >) {
+  const mergedStyle = {
+    maxHeight: "min(var(--available-height), 20rem)",
+    ...style,
+  }
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Positioner
@@ -88,9 +93,10 @@ function SelectContent({
         <SelectPrimitive.Popup
           data-slot="select-content"
           className={cn(
-            "cn-select-content cn-menu-target relative isolate z-50 max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto",
+            "cn-select-content cn-menu-target relative isolate z-50 max-h-80 w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto no-scrollbar data-[side=bottom]:mt-1 data-[side=top]:mb-1",
             className
           )}
+          style={mergedStyle}
           {...props}
         >
           <SelectScrollUpButton />
