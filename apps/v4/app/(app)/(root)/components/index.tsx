@@ -10,6 +10,7 @@ import { FieldCheckbox } from "./field-checkbox"
 import { FieldDemo } from "./field-demo"
 import { FieldHear } from "./field-hear"
 import { FieldSlider } from "./field-slider"
+import { InputFormatDemo } from "./input-format-demo"
 import { InputGroupButtonExample } from "./input-group-button"
 import { InputGroupDemo } from "./input-group-demo"
 import { ItemDemo } from "./item-demo"
@@ -29,6 +30,7 @@ export function RootComponents() {
         <ButtonGroupInputGroup />
         <FieldSlider />
         <InputGroupDemo />
+        <InputFormatDemo />
       </div>
       <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
         <InputGroupButtonExample />
