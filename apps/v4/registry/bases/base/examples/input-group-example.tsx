@@ -369,6 +369,7 @@ function InputGroupWithTooltip({
                     lucide="InfoIcon"
                     tabler="IconInfoCircle"
                     hugeicons="AlertCircleIcon"
+                    phosphor="InfoIcon"
                   />
                 </TooltipTrigger>
                 <TooltipContent>This is content in a tooltip.</TooltipContent>
@@ -431,6 +432,7 @@ function InputGroupWithTooltip({
                     lucide="InfoIcon"
                     tabler="IconInfoCircle"
                     hugeicons="AlertCircleIcon"
+                    phosphor="InfoIcon"
                   />
                 </InputGroupButton>
               </PopoverTrigger>
@@ -456,6 +458,7 @@ function InputGroupWithTooltip({
                   lucide="StarIcon"
                   tabler="IconStar"
                   hugeicons="StarIcon"
+                  phosphor="StarIcon"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -475,6 +478,7 @@ function InputGroupWithTooltip({
                   lucide="InfoIcon"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="InfoIcon"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -599,6 +603,7 @@ function InputGroupWithKbd() {
                   lucide="InfoIcon"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="InfoIcon"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -612,6 +617,7 @@ function InputGroupWithKbd() {
                   lucide="InfoIcon"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="InfoIcon"
                 />
               </InputGroupAddon>
             </InputGroup>

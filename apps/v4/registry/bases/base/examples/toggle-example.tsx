@@ -142,6 +142,7 @@ function ToggleWithButtonIcon() {
               lucide="BoldIcon"
               tabler="IconBold"
               hugeicons="TextBoldIcon"
+              phosphor="TextBIcon"
             />
           </Button>
           <Toggle variant="outline" aria-label="Toggle sm icon" size="sm">
@@ -149,6 +150,7 @@ function ToggleWithButtonIcon() {
               lucide="BoldIcon"
               tabler="IconBold"
               hugeicons="TextBoldIcon"
+              phosphor="TextBIcon"
             />
           </Toggle>
         </div>
@@ -158,6 +160,7 @@ function ToggleWithButtonIcon() {
               lucide="ItalicIcon"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
+              phosphor="TextItalicIcon"
             />
           </Button>
           <Toggle
@@ -169,6 +172,7 @@ function ToggleWithButtonIcon() {
               lucide="ItalicIcon"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
+              phosphor="TextItalicIcon"
             />
           </Toggle>
         </div>
@@ -178,6 +182,7 @@ function ToggleWithButtonIcon() {
               lucide="UnderlineIcon"
               tabler="IconUnderline"
               hugeicons="TextUnderlineIcon"
+              phosphor="TextUnderlineIcon"
             />
           </Button>
           <Toggle variant="outline" aria-label="Toggle lg icon" size="lg">
@@ -185,6 +190,7 @@ function ToggleWithButtonIcon() {
               lucide="UnderlineIcon"
               tabler="IconUnderline"
               hugeicons="TextUnderlineIcon"
+              phosphor="TextUnderlineIcon"
             />
           </Toggle>
         </div>
@@ -203,6 +209,7 @@ function ToggleWithButtonIconText() {
               lucide="BoldIcon"
               tabler="IconBold"
               hugeicons="TextBoldIcon"
+              phosphor="TextBIcon"
               data-icon="inline-start"
             />
             Button
@@ -212,6 +219,7 @@ function ToggleWithButtonIconText() {
               lucide="BoldIcon"
               tabler="IconBold"
               hugeicons="TextBoldIcon"
+              phosphor="TextBIcon"
             />
             Toggle
           </Toggle>
@@ -222,6 +230,7 @@ function ToggleWithButtonIconText() {
               lucide="ItalicIcon"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
+              phosphor="TextItalicIcon"
               data-icon="inline-start"
             />
             Button
@@ -235,6 +244,7 @@ function ToggleWithButtonIconText() {
               lucide="ItalicIcon"
               tabler="IconItalic"
               hugeicons="TextItalicIcon"
+              phosphor="TextItalicIcon"
             />
             Toggle
           </Toggle>
@@ -245,6 +255,7 @@ function ToggleWithButtonIconText() {
               lucide="UnderlineIcon"
               tabler="IconUnderline"
               hugeicons="TextUnderlineIcon"
+              phosphor="TextUnderlineIcon"
               data-icon="inline-start"
             />
             Button
@@ -254,6 +265,7 @@ function ToggleWithButtonIconText() {
               lucide="UnderlineIcon"
               tabler="IconUnderline"
               hugeicons="TextUnderlineIcon"
+              phosphor="TextUnderlineIcon"
             />
             Toggle
           </Toggle>

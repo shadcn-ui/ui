@@ -47,6 +47,7 @@ function ToggleGroupBasic() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -54,6 +55,7 @@ function ToggleGroupBasic() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -61,6 +63,7 @@ function ToggleGroupBasic() {
             lucide="UnderlineIcon"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
+            phosphor="TextUnderlineIcon"
           />
         </ToggleGroupItem>
       </ToggleGroup>
@@ -92,6 +95,7 @@ function ToggleGroupOutlineWithIcons() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -99,6 +103,7 @@ function ToggleGroupOutlineWithIcons() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -106,6 +111,7 @@ function ToggleGroupOutlineWithIcons() {
             lucide="UnderlineIcon"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
+            phosphor="TextUnderlineIcon"
           />
         </ToggleGroupItem>
       </ToggleGroup>
@@ -353,6 +359,7 @@ function ToggleGroupVertical() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -360,6 +367,7 @@ function ToggleGroupVertical() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -367,6 +375,7 @@ function ToggleGroupVertical() {
             lucide="UnderlineIcon"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
+            phosphor="TextUnderlineIcon"
           />
         </ToggleGroupItem>
       </ToggleGroup>
@@ -409,6 +418,7 @@ function ToggleGroupVerticalOutlineWithIcons() {
             lucide="BoldIcon"
             tabler="IconBold"
             hugeicons="TextBoldIcon"
+            phosphor="TextBIcon"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="italic" aria-label="Toggle italic">
@@ -416,6 +426,7 @@ function ToggleGroupVerticalOutlineWithIcons() {
             lucide="ItalicIcon"
             tabler="IconItalic"
             hugeicons="TextItalicIcon"
+            phosphor="TextItalicIcon"
           />
         </ToggleGroupItem>
         <ToggleGroupItem value="underline" aria-label="Toggle underline">
@@ -423,6 +434,7 @@ function ToggleGroupVerticalOutlineWithIcons() {
             lucide="UnderlineIcon"
             tabler="IconUnderline"
             hugeicons="TextUnderlineIcon"
+            phosphor="TextUnderlineIcon"
           />
         </ToggleGroupItem>
       </ToggleGroup>
