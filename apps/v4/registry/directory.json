@@ -35,6 +35,13 @@
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='256' height='256' fill='var(--foreground)'/><path d='M146 48H106.136L48 208H87.8644L116.932 128C116.932 128 122 114.5 124.4 108L131.466 88L146 48Z' fill='var(--background)'/><path d='M110 48H149.864L168.032 98H127.84L110 48Z' fill='var(--background)'/><path d='M139.587 113.833L171.458 208H208L172.807 113.833H139.587Z' fill='var(--background)'/><path d='M173 114L140.8 208H104L139.545 114H173Z' fill='var(--background)' /></svg>"
   },
   {
+    "name": "@agents-ui",
+    "homepage": "https://livekit.io/ui",
+    "url": "https://livekit.io/ui/r/{name}.json",
+    "description": "This is a shadcn/ui component registry that distributes copy-paste React components for building LiveKit AI Agent interfaces.",
+    "logo": "<svg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>LiveKit</title><path d='M0 0v24h14.4v-4.799h4.8V24H24v-4.8h-4.799v-4.8h-4.8v4.8H4.8V0H0zm14.4 14.4V9.602h4.801V4.8H24V0h-4.8v4.8h-4.8v4.8H9.6v4.8h4.8z'/></svg>"
+  },
+  {
     "name": "@aevr",
     "homepage": "https://ui.aevr.space",
     "url": "https://ui.aevr.space/r/{name}.json",
