@@ -24,6 +24,14 @@ export const iconLibraries = {
     usage: "<HugeiconsIcon icon={ICON} strokeWidth={2} />",
     export: "@hugeicons/core-free-icons",
   },
+  phosphor: {
+    name: "phosphor",
+    title: "Phosphor Icons",
+    packages: ["@phosphor-icons/react"],
+    import: "import { ICON } from '@phosphor-icons/react'",
+    usage: "<ICON strokeWidth={2} />",
+    export: "@phosphor-icons/react",
+  },
 } as const
 
 export type IconLibraries = typeof iconLibraries

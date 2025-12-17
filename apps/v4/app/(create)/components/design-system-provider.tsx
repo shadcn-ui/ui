@@ -7,21 +7,23 @@ import {
   DEFAULT_CONFIG,
   type DesignSystemConfig,
 } from "@/registry/config"
-import { useDesignSystemParam } from "@/app/(create)/hooks/use-design-system"
+import { useIframeMessageListener } from "@/app/(create)/hooks/use-iframe-sync"
 import { FONTS } from "@/app/(create)/lib/fonts"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function DesignSystemProvider({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const style = useDesignSystemParam("style")
-  const theme = useDesignSystemParam("theme")
-  const font = useDesignSystemParam("font")
-  const baseColor = useDesignSystemParam("baseColor")
-  const menuAccent = useDesignSystemParam("menuAccent")
-  const menuColor = useDesignSystemParam("menuColor")
-  const radius = useDesignSystemParam("radius")
+  const [
+    { style, theme, font, baseColor, menuAccent, menuColor, radius },
+    setSearchParams,
+  ] = useDesignSystemSearchParams({
+    shallow: true, // No need to go through the server…
+    history: "replace", // …or push updates into the iframe history.
+  })
+  useIframeMessageListener("design-system-params", setSearchParams)
   const [isReady, setIsReady] = React.useState(false)
 
   // Use useLayoutEffect for synchronous style updates to prevent flash.
