@@ -1159,6 +1159,7 @@ function DefaultLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1171,6 +1172,7 @@ function DefaultLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1221,6 +1223,7 @@ function OutlineLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1233,6 +1236,7 @@ function OutlineLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1283,6 +1287,7 @@ function MutedLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1295,6 +1300,7 @@ function MutedLinkItems() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1359,6 +1365,7 @@ function OutlineItemGroup() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1372,6 +1379,7 @@ function OutlineItemGroup() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1385,6 +1393,7 @@ function OutlineItemGroup() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1449,6 +1458,7 @@ function ItemSeparatorExample() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1463,6 +1473,7 @@ function ItemSeparatorExample() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1477,6 +1488,7 @@ function ItemSeparatorExample() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>
@@ -1491,6 +1503,7 @@ function ItemSeparatorExample() {
               lucide="InboxIcon"
               tabler="IconArchive"
               hugeicons="Archive02Icon"
+              phosphor="ArchiveIcon"
             />
           </ItemMedia>
           <ItemContent>

@@ -365,6 +365,7 @@ function DeploymentFilter() {
                 lucide="ChevronDownIcon"
                 tabler="IconChevronDown"
                 hugeicons="ArrowDown01Icon"
+                phosphor="CaretDownIcon"
                 data-icon="inline-end"
                 className="text-muted-foreground ml-auto"
               />
@@ -392,6 +393,7 @@ function DeploymentFilter() {
                     lucide="CheckIcon"
                     tabler="IconCheck"
                     hugeicons="Tick02Icon"
+                    phosphor="CheckIcon"
                     className="ml-auto opacity-0 group-data-[active=true]/dropdown-menu-item:opacity-100"
                   />
                 </DropdownMenuItem>

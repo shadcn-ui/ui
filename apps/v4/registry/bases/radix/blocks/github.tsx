@@ -504,6 +504,7 @@ function RepositoryToolbar() {
                 lucide="PlusIcon"
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
+                phosphor="PlusIcon"
               />
               Create new file
             </DropdownMenuItem>
@@ -751,6 +752,7 @@ function Navbar() {
                         lucide="GitBranchIcon"
                         tabler="IconGitBranch"
                         hugeicons="GitBranchIcon"
+                        phosphor="GitBranchIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -795,6 +797,7 @@ function Navbar() {
                         lucide="ServerIcon"
                         tabler="IconServer"
                         hugeicons="ServerStackIcon"
+                        phosphor="HardDrivesIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -809,6 +812,7 @@ function Navbar() {
                         lucide="BotIcon"
                         tabler="IconRobot"
                         hugeicons="RoboticIcon"
+                        phosphor="RobotIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -839,6 +843,7 @@ function Navbar() {
                         lucide="SearchIcon"
                         tabler="IconSearch"
                         hugeicons="SearchIcon"
+                        phosphor="MagnifyingGlassIcon"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -943,6 +948,7 @@ function Navbar() {
                   lucide="UserIcon"
                   tabler="IconUser"
                   hugeicons="UserIcon"
+                  phosphor="UserIcon"
                 />
                 Profile
               </DropdownMenuItem>
@@ -987,6 +993,7 @@ function Navbar() {
                   lucide="ServerIcon"
                   tabler="IconServer"
                   hugeicons="ServerStackIcon"
+                  phosphor="HardDrivesIcon"
                 />
                 Enterprises
               </DropdownMenuItem>
@@ -995,6 +1002,7 @@ function Navbar() {
                   lucide="HeartIcon"
                   tabler="IconHeart"
                   hugeicons="FavouriteIcon"
+                  phosphor="HeartIcon"
                 />
                 Sponsors
               </DropdownMenuItem>
@@ -1006,6 +1014,7 @@ function Navbar() {
                   lucide="SettingsIcon"
                   tabler="IconSettings"
                   hugeicons="SettingsIcon"
+                  phosphor="GearIcon"
                 />
                 Settings
               </DropdownMenuItem>
@@ -1014,6 +1023,7 @@ function Navbar() {
                   lucide="BotIcon"
                   tabler="IconRobot"
                   hugeicons="RoboticIcon"
+                  phosphor="RobotIcon"
                 />
                 Copilot settings
               </DropdownMenuItem>
@@ -1022,6 +1032,7 @@ function Navbar() {
                   lucide="SparklesIcon"
                   tabler="IconSparkles"
                   hugeicons="SparklesIcon"
+                  phosphor="SparkleIcon"
                 />
                 Feature preview
               </DropdownMenuItem>
@@ -1030,6 +1041,7 @@ function Navbar() {
                   lucide="MonitorIcon"
                   tabler="IconDeviceDesktop"
                   hugeicons="ComputerIcon"
+                  phosphor="MonitorIcon"
                 />
                 Appearance
               </DropdownMenuItem>
@@ -1038,6 +1050,7 @@ function Navbar() {
                   lucide="UserIcon"
                   tabler="IconUser"
                   hugeicons="UserIcon"
+                  phosphor="UserIcon"
                 />
                 Accessibility
               </DropdownMenuItem>
@@ -1046,6 +1059,7 @@ function Navbar() {
                   lucide="ArrowUpIcon"
                   tabler="IconArrowUp"
                   hugeicons="ArrowUpIcon"
+                  phosphor="ArrowUpIcon"
                 />
                 Upgrade
               </DropdownMenuItem>
@@ -1056,6 +1070,7 @@ function Navbar() {
                 lucide="LogOutIcon"
                 tabler="IconLogout"
                 hugeicons="LogoutIcon"
+                phosphor="SignOutIcon"
               />
               Sign out
             </DropdownMenuItem>
@@ -1262,6 +1277,7 @@ function AssignIssue() {
                     lucide="PlusIcon"
                     tabler="IconPlus"
                     hugeicons="PlusSignIcon"
+                    phosphor="PlusIcon"
                   />
                 </Button>
               </TooltipTrigger>
