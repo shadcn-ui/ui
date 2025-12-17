@@ -27,6 +27,7 @@ function Checkbox({
           lucide="CheckIcon"
           tabler="IconCheck"
           hugeicons="Tick02Icon"
+          phosphor="CheckIcon"
         />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

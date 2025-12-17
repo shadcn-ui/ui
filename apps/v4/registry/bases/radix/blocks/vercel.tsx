@@ -262,6 +262,7 @@ function DeploymentFilter() {
                 lucide="CalendarIcon"
                 tabler="IconCalendar"
                 hugeicons="Calendar01Icon"
+                phosphor="CalendarIcon"
                 data-icon="inline-start"
                 className="text-muted-foreground"
               />
@@ -295,6 +296,7 @@ function DeploymentFilter() {
               lucide="Search"
               tabler="IconSearch"
               hugeicons="Search01Icon"
+              phosphor="MagnifyingGlassIcon"
             />
           </InputGroupAddon>
           <InputGroupInput placeholder="All Authors..." />
@@ -303,6 +305,7 @@ function DeploymentFilter() {
               lucide="ChevronDownIcon"
               tabler="IconChevronDown"
               hugeicons="ArrowDown01Icon"
+              phosphor="CaretDownIcon"
               className="text-muted-foreground"
             />
           </InputGroupAddon>
@@ -315,6 +318,7 @@ function DeploymentFilter() {
                 lucide="ChevronDownIcon"
                 tabler="IconChevronDown"
                 hugeicons="ArrowDown01Icon"
+                phosphor="CaretDownIcon"
                 data-icon="inline-end"
                 className="text-muted-foreground"
               />
@@ -332,6 +336,7 @@ function DeploymentFilter() {
                   lucide="CheckIcon"
                   tabler="IconCheck"
                   hugeicons="Tick02Icon"
+                  phosphor="CheckIcon"
                   className="ml-auto opacity-0 group-data-[active=true]/dropdown-menu-item:opacity-100"
                 />
               </DropdownMenuItem>
@@ -360,6 +365,7 @@ function DeploymentFilter() {
                 lucide="ChevronDownIcon"
                 tabler="IconChevronDown"
                 hugeicons="ArrowDown01Icon"
+                phosphor="CaretDownIcon"
                 data-icon="inline-end"
                 className="text-muted-foreground ml-auto"
               />
@@ -387,6 +393,7 @@ function DeploymentFilter() {
                     lucide="CheckIcon"
                     tabler="IconCheck"
                     hugeicons="Tick02Icon"
+                    phosphor="CheckIcon"
                     className="ml-auto opacity-0 group-data-[active=true]/dropdown-menu-item:opacity-100"
                   />
                 </DropdownMenuItem>
@@ -462,6 +469,7 @@ function BillingList() {
                         lucide="MoreHorizontalIcon"
                         tabler="IconDots"
                         hugeicons="MoreHorizontalCircle01Icon"
+                        phosphor="DotsThreeOutlineIcon"
                       />
                       <span className="sr-only">More options</span>
                     </Button>
@@ -604,6 +612,7 @@ function ActivateAgentDialog() {
                       lucide="CheckCircle2Icon"
                       tabler="IconCircleCheckFilled"
                       hugeicons="CheckmarkCircle02Icon"
+                      phosphor="CheckCircleIcon"
                       className="fill-primary text-primary-foreground size-5"
                     />
                   </ItemMedia>
@@ -620,6 +629,7 @@ function ActivateAgentDialog() {
                 lucide="CircleDollarSignIcon"
                 hugeicons="DollarCircleIcon"
                 tabler="IconCoin"
+                phosphor="CurrencyCircleDollarIcon"
               />
               <AlertDescription>
                 Pro teams get $100 in Vercel Agent trial credit for 2 weeks.
@@ -664,6 +674,7 @@ function ObservabilityCard() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
               data-icon="inline-end"
             />
           </Button>

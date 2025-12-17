@@ -200,6 +200,7 @@ function CalendarWithTime() {
                     lucide="Clock2Icon"
                     tabler="IconClockHour2"
                     hugeicons="Clock03Icon"
+                    phosphor="ClockIcon"
                     className="text-muted-foreground"
                   />
                 </InputGroupAddon>
@@ -220,6 +221,7 @@ function CalendarWithTime() {
                     lucide="Clock2Icon"
                     tabler="IconClockHour2"
                     hugeicons="Clock03Icon"
+                    phosphor="ClockIcon"
                     className="text-muted-foreground"
                   />
                 </InputGroupAddon>
@@ -347,6 +349,7 @@ function DatePickerSimple() {
                 lucide="CalendarIcon"
                 tabler="IconCalendar"
                 hugeicons="CalendarIcon"
+                phosphor="CalendarBlankIcon"
                 data-icon="inline-start"
               />
               {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -382,6 +385,7 @@ function DatePickerWithRange() {
                 lucide="CalendarIcon"
                 tabler="IconCalendar"
                 hugeicons="CalendarIcon"
+                phosphor="CalendarBlankIcon"
                 data-icon="inline-start"
               />
               {date?.from ? (
@@ -435,6 +439,7 @@ function DataPickerWithDropdowns() {
                 lucide="ChevronDownIcon"
                 tabler="IconChevronDown"
                 hugeicons="ArrowDownIcon"
+                phosphor="CaretDownIcon"
                 data-icon="inline-start"
                 className="ml-auto"
               />
