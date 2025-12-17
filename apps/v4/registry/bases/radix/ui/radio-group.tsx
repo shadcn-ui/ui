@@ -40,6 +40,7 @@ function RadioGroupItem({
           lucide="CircleIcon"
           tabler="IconCircle"
           hugeicons="CircleIcon"
+          phosphor="CircleIcon"
           className="cn-radio-group-indicator-icon"
         />
       </RadioGroupPrimitive.Indicator>
