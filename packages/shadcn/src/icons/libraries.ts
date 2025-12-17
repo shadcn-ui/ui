@@ -28,8 +28,7 @@ export const iconLibraries = {
     name: "phosphor",
     title: "Phosphor Icons",
     packages: ["@phosphor-icons/react"],
-    import:
-      "import { ICON } from '@phosphor-icons/react'",
+    import: "import { ICON } from '@phosphor-icons/react'",
     usage: "<ICON strokeWidth={2} />",
     export: "@phosphor-icons/react",
   },
