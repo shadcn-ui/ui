@@ -1,16 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import {
-  Example,
-  ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/registry/bases/base/ui/resizable"
+
+
+import { Example, ExampleWrapper } from "@/registry/bases/base/components/example";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/registry/bases/base/ui/resizable";
+
+
+
+
 
 export default function ResizableExample() {
   return (
@@ -28,7 +27,7 @@ function ResizableHorizontal() {
   return (
     <Example title="Horizontal">
       <ResizablePanelGroup
-        direction="horizontal"
+        orientation="horizontal"
         className="min-h-[200px] rounded-lg border"
       >
         <ResizablePanel defaultSize={25}>
@@ -51,7 +50,7 @@ function ResizableVertical() {
   return (
     <Example title="Vertical">
       <ResizablePanelGroup
-        direction="vertical"
+        orientation="vertical"
         className="min-h-[200px] rounded-lg border"
       >
         <ResizablePanel defaultSize={25}>
@@ -74,7 +73,7 @@ function ResizableWithHandle() {
   return (
     <Example title="With Handle">
       <ResizablePanelGroup
-        direction="horizontal"
+        orientation="horizontal"
         className="min-h-[200px] rounded-lg border"
       >
         <ResizablePanel defaultSize={25}>
@@ -96,7 +95,10 @@ function ResizableWithHandle() {
 function ResizableNested() {
   return (
     <Example title="Nested">
-      <ResizablePanelGroup direction="horizontal" className="rounded-lg border">
+      <ResizablePanelGroup
+        orientation="horizontal"
+        className="rounded-lg border"
+      >
         <ResizablePanel defaultSize={50}>
           <div className="flex h-[200px] items-center justify-center p-6">
             <span className="font-semibold">One</span>
@@ -104,7 +106,7 @@ function ResizableNested() {
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel defaultSize={50}>
-          <ResizablePanelGroup direction="vertical">
+          <ResizablePanelGroup orientation="vertical">
             <ResizablePanel defaultSize={25}>
               <div className="flex h-full items-center justify-center p-6">
                 <span className="font-semibold">Two</span>
@@ -129,9 +131,9 @@ function ResizableControlled() {
   return (
     <Example title="Controlled">
       <ResizablePanelGroup
-        direction="horizontal"
+        orientation="horizontal"
         className="min-h-[200px] rounded-lg border"
-        onLayout={(newSizes) => {
+        onLayoutChange={(newSizes) => {
           setSizes(newSizes)
         }}
       >
