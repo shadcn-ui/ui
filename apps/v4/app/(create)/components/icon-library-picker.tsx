@@ -39,6 +39,12 @@ const IconHugeicons = lazy(() =>
   }))
 )
 
+const IconPhosphor = lazy(() =>
+  import("@/registry/icons/icon-phosphor").then((mod) => ({
+    default: mod.IconPhosphor,
+  }))
+)
+
 const PREVIEW_ICONS = {
   lucide: [
     "CopyIcon",
@@ -87,6 +93,22 @@ const PREVIEW_ICONS = {
     "Tick02Icon",
     "ArrowDown01Icon",
     "ArrowRight01Icon",
+  ],
+  phosphor: [
+    "CopyIcon",
+    "WarningCircleIcon",
+    "TrashIcon",
+    "ShareIcon",
+    "BagIcon",
+    "DotsThreeIcon",
+    "SpinnerIcon",
+    "PlusIcon",
+    "MinusIcon",
+    "ArrowLeftIcon",
+    "ArrowRightIcon",
+    "CheckIcon",
+    "CaretDownIcon",
+    "CaretRightIcon",
   ],
 }
 
@@ -152,6 +174,24 @@ const logos = {
         d="M5 9C5 5.41015 8.13401 2.5 12 2.5C15.866 2.5 19 5.41015 19 9"
         stroke="currentColor"
       ></path>
+    </svg>
+  ),
+  phosphor: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width="32"
+      height="32"
+    >
+      <path fill="none" d="M0 0h32v32H0z" />
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M9 5h9v16H9zm9 16v9a9 9 0 0 1-9-9M9 5l9 16m0 0h1a8 8 0 0 0 0-16h-1"
+      />
     </svg>
   ),
 }
@@ -259,7 +299,9 @@ const IconLibraryPreview = memo(function IconLibraryPreview({
       ? IconLucide
       : iconLibrary === "tabler"
         ? IconTabler
-        : IconHugeicons
+        : iconLibrary === "hugeicons"
+          ? IconHugeicons
+          : IconPhosphor
 
   return (
     <Suspense

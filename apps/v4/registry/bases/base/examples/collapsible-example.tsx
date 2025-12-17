@@ -105,12 +105,14 @@ function CollapsibleFileTree() {
               lucide="ChevronRightIcon"
               tabler="IconChevronRight"
               hugeicons="ArrowRight01Icon"
+              phosphor="CaretRightIcon"
               className="transition-transform group-data-[state=open]:rotate-90"
             />
             <IconPlaceholder
               lucide="FolderIcon"
               tabler="IconFolder"
               hugeicons="Folder01Icon"
+              phosphor="FolderIcon"
             />
             {fileItem.name}
           </CollapsibleTrigger>
@@ -133,6 +135,7 @@ function CollapsibleFileTree() {
           lucide="FileIcon"
           tabler="IconFile"
           hugeicons="File01Icon"
+          phosphor="FileIcon"
         />
         <span>{fileItem.name}</span>
       </Button>
@@ -214,12 +217,14 @@ function CollapsibleSettings() {
                   lucide="MinimizeIcon"
                   tabler="IconMinimize"
                   hugeicons="MinusSignIcon"
+                  phosphor="MinusIcon"
                 />
               ) : (
                 <IconPlaceholder
                   lucide="MaximizeIcon"
                   tabler="IconMaximize"
                   hugeicons="PlusSignIcon"
+                  phosphor="PlusIcon"
                 />
               )}
             </CollapsibleTrigger>
