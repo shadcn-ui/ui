@@ -1,7 +1,5 @@
 "use client"
 
-import { useQueryStates } from "nuqs"
-
 import { cn } from "@/lib/utils"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useMounted } from "@/hooks/use-mounted"
@@ -13,19 +11,14 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function V0Button({ className }: { className?: string }) {
-  const [params] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
   const isMobile = useIsMobile()
   const isMounted = useMounted()
 
   const url = `${process.env.NEXT_PUBLIC_APP_URL}/create/v0?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&item=${params.item}`
-
-  console.log(url)
 
   if (!isMounted) {
     return <Skeleton className="h-8 w-24 rounded-lg" />

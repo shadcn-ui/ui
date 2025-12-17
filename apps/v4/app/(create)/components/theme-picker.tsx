@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
-import { useQueryStates } from "nuqs"
 
 import { useMounted } from "@/hooks/use-mounted"
 import { BASE_COLORS, type Theme, type ThemeName } from "@/registry/config"
@@ -11,13 +10,12 @@ import {
   Picker,
   PickerContent,
   PickerGroup,
-  PickerLabel,
   PickerRadioGroup,
   PickerRadioItem,
   PickerSeparator,
   PickerTrigger,
 } from "@/app/(create)/components/picker"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export function ThemePicker({
   themes,
@@ -30,10 +28,7 @@ export function ThemePicker({
 }) {
   const { resolvedTheme } = useTheme()
   const mounted = useMounted()
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const currentTheme = React.useMemo(
     () => themes.find((theme) => theme.name === params.theme),
@@ -52,8 +47,8 @@ export function ThemePicker({
   }, [currentTheme, themes, setParams])
 
   return (
-    <Picker>
-      <div className="group/picker relative">
+    <div className="group/picker relative">
+      <Picker>
         <PickerTrigger>
           <div className="flex flex-col justify-start text-left">
             <div className="text-muted-foreground text-xs">Theme</div>
@@ -73,99 +68,99 @@ export function ThemePicker({
                     ],
                 } as React.CSSProperties
               }
-              className="absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color)"
+              className="pointer-events-none absolute top-1/2 right-4 size-4 -translate-y-1/2 rounded-full bg-(--color) select-none"
             />
           )}
         </PickerTrigger>
-        <LockButton
-          param="theme"
-          className="absolute top-1/2 right-10 -translate-y-1/2"
-        />
-      </div>
-      <PickerContent
-        anchor={isMobile ? anchorRef : undefined}
-        side={isMobile ? "top" : "right"}
-        align={isMobile ? "center" : "start"}
-        className="max-h-96"
-      >
-        <PickerRadioGroup
-          value={currentTheme?.name}
-          onValueChange={(value) => {
-            setParams({ theme: value as ThemeName })
-          }}
+        <PickerContent
+          anchor={isMobile ? anchorRef : undefined}
+          side={isMobile ? "top" : "right"}
+          align={isMobile ? "center" : "start"}
+          className="max-h-96"
         >
-          <PickerGroup>
-            {themes
-              .filter((theme) =>
-                BASE_COLORS.find((baseColor) => baseColor.name === theme.name)
-              )
-              .map((theme) => {
-                const isBaseColor = BASE_COLORS.find(
-                  (baseColor) => baseColor.name === theme.name
+          <PickerRadioGroup
+            value={currentTheme?.name}
+            onValueChange={(value) => {
+              setParams({ theme: value as ThemeName })
+            }}
+          >
+            <PickerGroup>
+              {themes
+                .filter((theme) =>
+                  BASE_COLORS.find((baseColor) => baseColor.name === theme.name)
                 )
-                return (
-                  <PickerRadioItem key={theme.name} value={theme.name}>
-                    <div className="flex items-start gap-2">
-                      {mounted && resolvedTheme && (
-                        <div
-                          style={
-                            {
-                              "--color":
-                                theme.cssVars?.[
-                                  resolvedTheme as "light" | "dark"
-                                ]?.[
-                                  isBaseColor ? "muted-foreground" : "primary"
-                                ],
-                            } as React.CSSProperties
-                          }
-                          className="size-4 translate-y-1 rounded-full bg-(--color)"
-                        />
-                      )}
-                      <div className="flex flex-col justify-start pointer-coarse:gap-1">
-                        <div>{theme.title}</div>
-                        <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
-                          Match base color
-                        </div>
-                      </div>
-                    </div>
-                  </PickerRadioItem>
-                )
-              })}
-          </PickerGroup>
-          <PickerSeparator />
-          <PickerGroup>
-            {themes
-              .filter(
-                (theme) =>
-                  !BASE_COLORS.find(
+                .map((theme) => {
+                  const isBaseColor = BASE_COLORS.find(
                     (baseColor) => baseColor.name === theme.name
                   )
-              )
-              .map((theme) => {
-                return (
-                  <PickerRadioItem key={theme.name} value={theme.name}>
-                    <div className="flex items-center gap-2">
-                      {mounted && resolvedTheme && (
-                        <div
-                          style={
-                            {
-                              "--color":
-                                theme.cssVars?.[
-                                  resolvedTheme as "light" | "dark"
-                                ]?.["primary"],
-                            } as React.CSSProperties
-                          }
-                          className="size-4 rounded-full bg-(--color)"
-                        />
-                      )}
-                      {theme.title}
-                    </div>
-                  </PickerRadioItem>
+                  return (
+                    <PickerRadioItem key={theme.name} value={theme.name}>
+                      <div className="flex items-start gap-2">
+                        {mounted && resolvedTheme && (
+                          <div
+                            style={
+                              {
+                                "--color":
+                                  theme.cssVars?.[
+                                    resolvedTheme as "light" | "dark"
+                                  ]?.[
+                                    isBaseColor ? "muted-foreground" : "primary"
+                                  ],
+                              } as React.CSSProperties
+                            }
+                            className="size-4 translate-y-1 rounded-full bg-(--color)"
+                          />
+                        )}
+                        <div className="flex flex-col justify-start pointer-coarse:gap-1">
+                          <div>{theme.title}</div>
+                          <div className="text-muted-foreground text-xs pointer-coarse:text-sm">
+                            Match base color
+                          </div>
+                        </div>
+                      </div>
+                    </PickerRadioItem>
+                  )
+                })}
+            </PickerGroup>
+            <PickerSeparator />
+            <PickerGroup>
+              {themes
+                .filter(
+                  (theme) =>
+                    !BASE_COLORS.find(
+                      (baseColor) => baseColor.name === theme.name
+                    )
                 )
-              })}
-          </PickerGroup>
-        </PickerRadioGroup>
-      </PickerContent>
-    </Picker>
+                .map((theme) => {
+                  return (
+                    <PickerRadioItem key={theme.name} value={theme.name}>
+                      <div className="flex items-center gap-2">
+                        {mounted && resolvedTheme && (
+                          <div
+                            style={
+                              {
+                                "--color":
+                                  theme.cssVars?.[
+                                    resolvedTheme as "light" | "dark"
+                                  ]?.["primary"],
+                              } as React.CSSProperties
+                            }
+                            className="size-4 rounded-full bg-(--color)"
+                          />
+                        )}
+                        {theme.title}
+                      </div>
+                    </PickerRadioItem>
+                  )
+                })}
+            </PickerGroup>
+          </PickerRadioGroup>
+        </PickerContent>
+      </Picker>
+      <LockButton
+        param="theme"
+        className="absolute top-1/2 right-10 -translate-y-1/2"
+      />
+    </div>
   )
 }

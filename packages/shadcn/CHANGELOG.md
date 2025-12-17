@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.6.1
+
+### Patch Changes
+
+- [#9054](https://github.com/shadcn-ui/ui/pull/9054) [`d3156c09ae1df2321c0505db6b2e637374e320f7`](https://github.com/shadcn-ui/ui/commit/d3156c09ae1df2321c0505db6b2e637374e320f7) Thanks [@shadcn](https://github.com/shadcn)! - fix resolver for url
+
 ## 3.6.0
 
 ### Minor Changes

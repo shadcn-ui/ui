@@ -342,16 +342,12 @@ describe("buildHeadersFromRegistryConfig", () => {
 })
 
 describe("buildUrlAndHeadersForRegistryItem", () => {
-  it("should default to @shadcn registry for non-registry items", () => {
+  it("should resolve non-registry items through @shadcn registry", () => {
     const input = "button"
-    const config = {
-      registries: {
-        "@shadcn": "https://ui.shadcn.com/r/{name}.json",
-      },
-    } as any
-    const result = buildUrlAndHeadersForRegistryItem(input, config)
-    expect(result).toEqual({
-      url: "https://ui.shadcn.com/r/button.json",
+    const config = {} as any
+    // Non-prefixed items are resolved through the built-in @shadcn registry
+    expect(buildUrlAndHeadersForRegistryItem(input, config)).toEqual({
+      url: "https://ui.shadcn.com/r/styles/{style}/button.json",
       headers: {},
     })
   })
@@ -360,14 +356,6 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
     expect(() => {
       buildUrlAndHeadersForRegistryItem("@unknown/button", {} as any)
     }).toThrow('Unknown registry "@unknown"')
-  })
-
-  it("should throw error when @shadcn is not configured for non-registry items", () => {
-    const input = "button"
-    const config = {} as any
-    expect(() => {
-      buildUrlAndHeadersForRegistryItem(input, config)
-    }).toThrow('Unknown registry "@shadcn"')
   })
 
   it("should resolve registry items with string config", () => {
@@ -452,46 +440,18 @@ describe("buildUrlAndHeadersForRegistryItem", () => {
     })
   })
 
-  it("should default to @shadcn registry for URLs and local files", () => {
-    const config = {
-      registries: {
-        "@shadcn": "https://ui.shadcn.com/r/{name}.json",
-      },
-    } as any
-
-    // URLs default to @shadcn registry
-    const urlResult = buildUrlAndHeadersForRegistryItem(
-      "https://example.com/button",
-      config
-    )
-    expect(urlResult).toEqual({
-      url: "https://ui.shadcn.com/r/https://example.com/button.json",
-      headers: {},
-    })
-
-    // Local files default to @shadcn registry
-    const localResult = buildUrlAndHeadersForRegistryItem(
-      "./local/button",
-      config
-    )
-    expect(localResult).toEqual({
-      url: "https://ui.shadcn.com/r/./local/button.json",
-      headers: {},
-    })
-  })
-
-  it("should throw error when @shadcn is not configured for URLs and local files", () => {
+  it("should handle URLs and local files", () => {
     const config = { registries: {} } as any
 
-    // URLs should throw error when @shadcn is not configured
-    expect(() => {
+    // URLs should return null (not registry items)
+    expect(
       buildUrlAndHeadersForRegistryItem("https://example.com/button", config)
-    }).toThrow('Unknown registry "@shadcn"')
+    ).toBeNull()
 
-    // Local files should throw error when @shadcn is not configured
-    expect(() => {
+    // Local files should return null (not registry items)
+    expect(
       buildUrlAndHeadersForRegistryItem("./local/button", config)
-    }).toThrow('Unknown registry "@shadcn"')
+    ).toBeNull()
   })
 })
 
