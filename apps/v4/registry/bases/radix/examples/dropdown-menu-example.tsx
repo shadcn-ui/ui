@@ -546,13 +546,13 @@ function DropdownMenuWithAvatar() {
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
         <DropdownMenuItem>
-        <IconPlaceholder
-          lucide="LogOutIcon"
-          tabler="IconLogout"
-          hugeicons="LogoutIcon"
-          phosphor="SignOutIcon"
-        />
-        Sign Out
+          <IconPlaceholder
+            lucide="LogOutIcon"
+            tabler="IconLogout"
+            hugeicons="LogoutIcon"
+            phosphor="SignOutIcon"
+          />
+          Sign Out
         </DropdownMenuItem>
       </DropdownMenuGroup>
     </>
@@ -577,13 +577,13 @@ function DropdownMenuWithAvatar() {
                   shadcn@example.com
                 </span>
               </div>
-            <IconPlaceholder
-              lucide="ChevronsUpDownIcon"
-              tabler="IconSelector"
-              hugeicons="UnfoldMoreIcon"
-              phosphor="CaretUpDownIcon"
-              className="text-muted-foreground ml-auto"
-            />
+              <IconPlaceholder
+                lucide="ChevronsUpDownIcon"
+                tabler="IconSelector"
+                hugeicons="UnfoldMoreIcon"
+                phosphor="CaretUpDownIcon"
+                className="text-muted-foreground ml-auto"
+              />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width) min-w-56">
@@ -943,13 +943,13 @@ function DropdownMenuComplex() {
             </DropdownMenuItem>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
-              <IconPlaceholder
-                lucide="SettingsIcon"
-                tabler="IconSettings"
-                hugeicons="SettingsIcon"
-                phosphor="GearIcon"
-              />
-              Settings
+                <IconPlaceholder
+                  lucide="SettingsIcon"
+                  tabler="IconSettings"
+                  hugeicons="SettingsIcon"
+                  phosphor="GearIcon"
+                />
+                Settings
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>

@@ -166,12 +166,12 @@ function FormExample() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
-                    <IconPlaceholder
-                      lucide="MoreVerticalIcon"
-                      tabler="IconDotsVertical"
-                      hugeicons="MoreVerticalCircle01Icon"
-                      phosphor="DotsThreeVerticalIcon"
-                    />
+                  <IconPlaceholder
+                    lucide="MoreVerticalIcon"
+                    tabler="IconDotsVertical"
+                    hugeicons="MoreVerticalCircle01Icon"
+                    phosphor="DotsThreeVerticalIcon"
+                  />
                   <span className="sr-only">More options</span>
                 </Button>
               </DropdownMenuTrigger>

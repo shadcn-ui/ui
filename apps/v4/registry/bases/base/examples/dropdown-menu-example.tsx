@@ -1011,12 +1011,12 @@ function DropdownMenuComplex() {
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
-              <IconPlaceholder
-                lucide="ShieldIcon"
-                tabler="IconShield"
-                hugeicons="ShieldIcon"
-                phosphor="ShieldIcon"
-              />
+                      <IconPlaceholder
+                        lucide="ShieldIcon"
+                        tabler="IconShield"
+                        hugeicons="ShieldIcon"
+                        phosphor="ShieldIcon"
+                      />
                       Privacy & Security
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
