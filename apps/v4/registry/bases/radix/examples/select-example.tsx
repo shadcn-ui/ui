@@ -100,6 +100,7 @@ function SelectWithIcons() {
                     lucide="ChartLineIcon"
                     tabler="IconChartLine"
                     hugeicons="Chart03Icon"
+                    phosphor="ChartLineIcon"
                   />
                   Chart Type
                 </>
@@ -113,6 +114,7 @@ function SelectWithIcons() {
                   lucide="ChartLineIcon"
                   tabler="IconChartLine"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartBarIcon"
                 />
                 Line
               </SelectItem>
@@ -121,6 +123,7 @@ function SelectWithIcons() {
                   lucide="ChartBarIcon"
                   tabler="IconChartBar"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartBarIcon"
                 />
                 Bar
               </SelectItem>
@@ -129,6 +132,7 @@ function SelectWithIcons() {
                   lucide="ChartPieIcon"
                   tabler="IconChartPie"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartPieIcon"
                 />
                 Pie
               </SelectItem>
@@ -144,6 +148,7 @@ function SelectWithIcons() {
                     lucide="ChartLineIcon"
                     tabler="IconChartLine"
                     hugeicons="Chart03Icon"
+                    phosphor="ChartLineIcon"
                   />
                   Chart Type
                 </>
@@ -157,6 +162,7 @@ function SelectWithIcons() {
                   lucide="ChartLineIcon"
                   tabler="IconChartLine"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartLineIcon"
                 />
                 Line
               </SelectItem>
@@ -165,6 +171,7 @@ function SelectWithIcons() {
                   lucide="ChartBarIcon"
                   tabler="IconChartBar"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartBarIcon"
                 />
                 Bar
               </SelectItem>
@@ -173,6 +180,7 @@ function SelectWithIcons() {
                   lucide="ChartPieIcon"
                   tabler="IconChartPie"
                   hugeicons="Chart03Icon"
+                  phosphor="ChartPieIcon"
                 />
                 Pie
               </SelectItem>
