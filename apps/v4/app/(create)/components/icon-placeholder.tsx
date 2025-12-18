@@ -4,7 +4,7 @@ import { lazy, Suspense } from "react"
 import { SquareIcon } from "lucide-react"
 import type { IconLibraryName } from "shadcn/icons"
 
-import { useDesignSystemParam } from "@/app/(create)/hooks/use-design-system"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const IconLucide = lazy(() =>
   import("@/registry/icons/icon-lucide").then((mod) => ({
@@ -24,12 +24,18 @@ const IconHugeicons = lazy(() =>
   }))
 )
 
+const IconPhosphor = lazy(() =>
+  import("@/registry/icons/icon-phosphor").then((mod) => ({
+    default: mod.IconPhosphor,
+  }))
+)
+
 export function IconPlaceholder({
   ...props
 }: {
   [K in IconLibraryName]: string
 } & React.ComponentProps<"svg">) {
-  const iconLibrary = useDesignSystemParam("iconLibrary")
+  const [{ iconLibrary }] = useDesignSystemSearchParams()
   const iconName = props[iconLibrary]
 
   if (!iconName) {
@@ -42,6 +48,9 @@ export function IconPlaceholder({
       {iconLibrary === "tabler" && <IconTabler name={iconName} {...props} />}
       {iconLibrary === "hugeicons" && (
         <IconHugeicons name={iconName} {...props} />
+      )}
+      {iconLibrary === "phosphor" && (
+        <IconPhosphor name={iconName} {...props} />
       )}
     </Suspense>
   )

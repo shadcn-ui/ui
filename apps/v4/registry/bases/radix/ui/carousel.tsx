@@ -199,6 +199,7 @@ function CarouselPrevious({
         lucide="ChevronLeftIcon"
         tabler="IconChevronLeft"
         hugeicons="ArrowLeft01Icon"
+        phosphor="CaretLeftIcon"
       />
       <span className="sr-only">Previous slide</span>
     </Button>
@@ -233,6 +234,7 @@ function CarouselNext({
         lucide="ChevronRightIcon"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
+        phosphor="CaretRightIcon"
       />
       <span className="sr-only">Next slide</span>
     </Button>

@@ -189,6 +189,7 @@ function PickerSubTrigger({
         lucide="ChevronRightIcon"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
+        phosphor="CaretRightIcon"
         className="ml-auto"
       />
     </MenuPrimitive.SubmenuTrigger>
@@ -241,6 +242,7 @@ function PickerCheckboxItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -281,6 +283,7 @@ function PickerRadioItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
             className="size-4 pointer-coarse:size-5"
           />
         </MenuPrimitive.RadioItemIndicator>

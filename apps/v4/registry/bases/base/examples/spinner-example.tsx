@@ -139,6 +139,7 @@ function SpinnerInEmpty() {
               lucide="ArrowRightIcon"
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
+              phosphor="ArrowRightIcon"
             />
           </Button>
         </EmptyContent>
