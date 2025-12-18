@@ -1,6 +1,7 @@
 import { useQueryStates } from "nuqs"
 import {
   createLoader,
+  createSerializer,
   parseAsBoolean,
   parseAsInteger,
   parseAsString,
@@ -70,6 +71,10 @@ const designSystemSearchParams = {
 }
 
 export const loadDesignSystemSearchParams = createLoader(
+  designSystemSearchParams
+)
+
+export const serializeDesignSystemSearchParams = createSerializer(
   designSystemSearchParams
 )
 

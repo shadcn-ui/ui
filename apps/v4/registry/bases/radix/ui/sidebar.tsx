@@ -274,6 +274,7 @@ function SidebarTrigger({
         lucide="PanelLeftIcon"
         tabler="IconLayoutSidebar"
         hugeicons="SidebarLeftIcon"
+        phosphor="SidebarIcon"
       />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>

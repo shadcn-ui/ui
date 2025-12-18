@@ -23,6 +23,7 @@ function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {
           lucide="CheckIcon"
           tabler="IconCheck"
           hugeicons="Tick02Icon"
+          phosphor="CheckIcon"
         />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

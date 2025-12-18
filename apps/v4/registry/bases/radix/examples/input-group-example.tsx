@@ -131,6 +131,7 @@ function InputGroupWithAddons() {
                 lucide="SearchIcon"
                 tabler="IconSearch"
                 hugeicons="SearchIcon"
+                phosphor="MagnifyingGlassIcon"
                 className="text-muted-foreground"
               />
             </InputGroupAddon>
@@ -147,6 +148,7 @@ function InputGroupWithAddons() {
                 lucide="EyeOffIcon"
                 tabler="IconEyeClosed"
                 hugeicons="ViewOffIcon"
+                phosphor="EyeSlashIcon"
               />
             </InputGroupAddon>
           </InputGroup>
@@ -162,6 +164,7 @@ function InputGroupWithAddons() {
                 lucide="MicIcon"
                 tabler="IconMicrophone"
                 hugeicons="VoiceIcon"
+                phosphor="MicrophoneIcon"
                 className="text-muted-foreground"
               />
             </InputGroupAddon>
@@ -170,6 +173,7 @@ function InputGroupWithAddons() {
                 lucide="RadioIcon"
                 tabler="IconPlayerRecordFilled"
                 hugeicons="RecordIcon"
+                phosphor="RecordIcon"
                 className="animate-pulse text-red-500"
               />
             </InputGroupAddon>
@@ -185,6 +189,7 @@ function InputGroupWithAddons() {
                 lucide="InfoIcon"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
+                phosphor="InfoIcon"
                 className="text-muted-foreground ml-auto"
               />
             </InputGroupAddon>
@@ -200,6 +205,7 @@ function InputGroupWithAddons() {
                 lucide="InfoIcon"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
+                phosphor="InfoIcon"
                 className="text-muted-foreground ml-auto"
               />
             </InputGroupAddon>
@@ -214,6 +220,7 @@ function InputGroupWithAddons() {
                 lucide="StarIcon"
                 tabler="IconStar"
                 hugeicons="StarIcon"
+                phosphor="StarIcon"
               />
               <InputGroupButton
                 size="icon-xs"
@@ -223,6 +230,7 @@ function InputGroupWithAddons() {
                   lucide="CopyIcon"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
+                  phosphor="CopyIcon"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -231,6 +239,7 @@ function InputGroupWithAddons() {
                 lucide="RadioIcon"
                 tabler="IconPlayerRecordFilled"
                 hugeicons="RecordIcon"
+                phosphor="RecordIcon"
                 className="animate-pulse text-red-500"
               />
             </InputGroupAddon>
@@ -245,6 +254,7 @@ function InputGroupWithAddons() {
                 lucide="InfoIcon"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
+                phosphor="InfoIcon"
               />
             </InputGroupAddon>
           </InputGroup>
@@ -310,6 +320,7 @@ function InputGroupWithButtons() {
                   lucide="CopyIcon"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
+                  phosphor="CopyIcon"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -322,6 +333,7 @@ function InputGroupWithButtons() {
                   lucide="TrashIcon"
                   tabler="IconTrash"
                   hugeicons="DeleteIcon"
+                  phosphor="TrashIcon"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -354,6 +366,7 @@ function InputGroupWithTooltip({
                       lucide="InfoIcon"
                       tabler="IconInfoCircle"
                       hugeicons="AlertCircleIcon"
+                      phosphor="InfoIcon"
                     />
                   </InputGroupButton>
                 </TooltipTrigger>
@@ -378,6 +391,7 @@ function InputGroupWithTooltip({
                       lucide="ChevronDownIcon"
                       tabler="IconChevronDown"
                       hugeicons="ArrowDownIcon"
+                      phosphor="CaretDownIcon"
                     />
                   </InputGroupButton>
                 </DropdownMenuTrigger>
@@ -415,6 +429,7 @@ function InputGroupWithTooltip({
                       lucide="InfoIcon"
                       tabler="IconInfoCircle"
                       hugeicons="AlertCircleIcon"
+                      phosphor="InfoIcon"
                     />
                   </InputGroupButton>
                 </InputGroupAddon>
@@ -441,6 +456,7 @@ function InputGroupWithTooltip({
                   lucide="StarIcon"
                   tabler="IconStar"
                   hugeicons="StarIcon"
+                  phosphor="StarIcon"
                 />
               </InputGroupButton>
             </InputGroupAddon>
@@ -460,6 +476,7 @@ function InputGroupWithTooltip({
                   lucide="InfoIcon"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="InfoIcon"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -512,6 +529,7 @@ function InputGroupWithKbd() {
                 lucide="SparklesIcon"
                 tabler="IconServerSpark"
                 hugeicons="SparklesIcon"
+                phosphor="SparkleIcon"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -532,6 +550,7 @@ function InputGroupWithKbd() {
                   lucide="CheckIcon"
                   tabler="IconCheck"
                   hugeicons="Tick02Icon"
+                  phosphor="CheckIcon"
                   className="size-3 text-white"
                 />
               </div>
@@ -551,6 +570,7 @@ function InputGroupWithKbd() {
               lucide="SearchIcon"
               tabler="IconSearch"
               hugeicons="SearchIcon"
+              phosphor="MagnifyingGlassIcon"
             />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
@@ -566,6 +586,7 @@ function InputGroupWithKbd() {
               lucide="SearchIcon"
               tabler="IconSearch"
               hugeicons="SearchIcon"
+              phosphor="MagnifyingGlassIcon"
             />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">Disabled</InputGroupAddon>
@@ -580,6 +601,7 @@ function InputGroupWithKbd() {
                   lucide="InfoIcon"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="InfoIcon"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -593,6 +615,7 @@ function InputGroupWithKbd() {
                   lucide="InfoIcon"
                   tabler="IconInfoCircle"
                   hugeicons="AlertCircleIcon"
+                  phosphor="InfoIcon"
                 />
               </InputGroupAddon>
             </InputGroup>
@@ -644,6 +667,7 @@ function InputGroupInCard() {
                     lucide="MailIcon"
                     tabler="IconMail"
                     hugeicons="MailIcon"
+                    phosphor="EnvelopeIcon"
                   />
                 </InputGroupAddon>
               </InputGroup>
@@ -660,6 +684,7 @@ function InputGroupInCard() {
                     lucide="ExternalLinkIcon"
                     tabler="IconExternalLink"
                     hugeicons="LinkSquare02Icon"
+                    phosphor="ArrowSquareOutIcon"
                   />
                 </InputGroupAddon>
               </InputGroup>
@@ -753,6 +778,7 @@ function InputGroupTextareaExamples() {
                 lucide="InfoIcon"
                 tabler="IconInfoCircle"
                 hugeicons="AlertCircleIcon"
+                phosphor="InfoIcon"
                 className="text-muted-foreground ml-auto"
               />
             </InputGroupAddon>
@@ -781,6 +807,7 @@ function InputGroupTextareaExamples() {
                   lucide="ArrowUpIcon"
                   tabler="IconArrowUp"
                   hugeicons="ArrowUpIcon"
+                  phosphor="ArrowUpIcon"
                 />
                 <span className="sr-only">Send</span>
               </InputGroupButton>
@@ -819,6 +846,7 @@ function InputGroupTextareaExamples() {
                   lucide="CodeIcon"
                   tabler="IconBrandJavascript"
                   hugeicons="CodeIcon"
+                  phosphor="CodeIcon"
                 />
                 script.js
               </InputGroupText>
@@ -827,6 +855,7 @@ function InputGroupTextareaExamples() {
                   lucide="RefreshCwIcon"
                   tabler="IconRefresh"
                   hugeicons="RefreshIcon"
+                  phosphor="ArrowClockwiseIcon"
                 />
               </InputGroupButton>
               <InputGroupButton size="icon-xs" variant="ghost">
@@ -834,6 +863,7 @@ function InputGroupTextareaExamples() {
                   lucide="CopyIcon"
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
+                  phosphor="CopyIcon"
                 />
               </InputGroupButton>
             </InputGroupAddon>
