@@ -126,27 +126,35 @@ function ResizableNested() {
   )
 }
 
+interface ControlledLayout {
+  left: number
+  right: number
+}
+
 function ResizableControlled() {
-  const [sizes, setSizes] = React.useState([30, 70])
+  const [layout, setLayout] = React.useState<ControlledLayout>({
+    left: 30,
+    right: 70,
+  })
 
   return (
     <Example title="Controlled">
       <ResizablePanelGroup
         orientation="horizontal"
         className="min-h-[200px] rounded-lg border"
-        onLayoutChange={(newSizes) => {
-          setSizes(newSizes)
+        onLayoutChange={(newLayout) => {
+          setLayout(newLayout as unknown as ControlledLayout)
         }}
       >
-        <ResizablePanel defaultSize={30} minSize={20}>
+        <ResizablePanel id="left" defaultSize={30} minSize={20}>
           <div className="flex h-full flex-col items-center justify-center gap-2 p-6">
-            <span className="font-semibold">{Math.round(sizes[0] ?? 30)}%</span>
+            <span className="font-semibold">{Math.round(layout.left)}%</span>
           </div>
         </ResizablePanel>
         <ResizableHandle />
-        <ResizablePanel defaultSize={70} minSize={30}>
+        <ResizablePanel id="right" defaultSize={70} minSize={30}>
           <div className="flex h-full flex-col items-center justify-center gap-2 p-6">
-            <span className="font-semibold">{Math.round(sizes[1] ?? 70)}%</span>
+            <span className="font-semibold">{Math.round(layout.right)}%</span>
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
