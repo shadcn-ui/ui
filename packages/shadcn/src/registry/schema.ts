@@ -104,6 +104,8 @@ export const registryItemFileSchema = z.discriminatedUnion("type", [
   }),
 ])
 
+export type RegistryItemFile = z.infer<typeof registryItemFileSchema>
+
 export const registryItemTailwindSchema = z.object({
   config: z
     .object({
