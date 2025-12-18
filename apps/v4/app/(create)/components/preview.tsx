@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { type ImperativePanelHandle } from "react-resizable-panels"
 
 import { DARK_MODE_FORWARD_TYPE } from "@/components/mode-switcher"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
@@ -14,16 +13,8 @@ const MESSAGE_TYPE = "design-system-params"
 export function Preview() {
   const params = useDesignSystemSync()
   const iframeRef = React.useRef<HTMLIFrameElement>(null)
-  const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
   const [initialParams] = React.useState(params)
-  const [iframeKey, setIframeKey] = React.useState(0)
-
-  // Sync resizable panel with URL param changes.
-  React.useEffect(() => {
-    if (resizablePanelRef.current && params.size) {
-      resizablePanelRef.current.resize(params.size)
-    }
-  }, [params.size])
+  const [iframeKey] = React.useState(0)
 
   React.useEffect(() => {
     const iframe = iframeRef.current
