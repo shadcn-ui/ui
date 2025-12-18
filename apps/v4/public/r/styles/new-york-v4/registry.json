@@ -797,6 +797,27 @@
       "type": "registry:ui"
     },
     {
+      "name": "wireframe",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/wireframe.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "tailwind": {
+        "config": {
+          "theme": {
+            "extend": {
+              "screens": {
+                "wf-nav": "40rem"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "name": "dashboard-01",
       "description": "A dashboard with sidebar, charts and data table.",
       "dependencies": [
@@ -7467,6 +7488,19 @@
         "date"
       ],
       "type": "registry:example"
+    },
+    {
+      "name": "wireframe-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "wireframe"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/wireframe-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
     },
     {
       "name": "sidebar-demo",

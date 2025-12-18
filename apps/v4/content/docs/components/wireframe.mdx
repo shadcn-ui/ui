@@ -1,0 +1,82 @@
+---
+title: Wireframe
+description: A component system for building fixed/sticky navigation layouts with automatic content spacing.
+component: true
+links:
+  doc: https://zdiego.com/wireframe
+---
+
+<figure className="flex flex-col gap-4">
+  <ComponentPreview
+    name="wireframe-demo"
+    title="Wireframe"
+    type="block"
+    description="A component system for building fixed/sticky navigation layouts with automatic content spacing."
+    className="w-full"
+  />
+  <figcaption className="text-center text-sm text-gray-500">
+    Navbars and sidebars, solved.
+  </figcaption>
+</figure>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add wireframe
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="wireframe" title="components/ui/wireframe.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Wireframe,
+  WireframeNav,
+  WireframeSidebar,
+  WireframeStickyNav,
+} from "@/components/ui/wireframe"
+```
+
+```tsx showLineNumbers
+<Wireframe>
+  <WireframeStickyNav>
+    <div>My Sticky Navbar</div>
+  </WireframeStickyNav>
+  <WireframeNav position="top | bottom | responsive">
+    <div>My Navbar</div>
+  </WireframeNav>
+  <WireframeSidebar collapsed="true | false" position="left | right">
+    <div>My Sidebar</div>
+  </WireframeSidebar>
+  <main>Lorem Ipsum</main>
+</Wireframe>
+```
+
+Note: If you have a responsive navbar, you must not have other navbars because responsive navbars ocuppy both top and bottom navbar spaces based on the screen width.
+
+Sticky navbars can only be placed at the top so you can either have a sticky navbar or a fixed top navbar.
