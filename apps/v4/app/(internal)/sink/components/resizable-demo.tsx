@@ -8,7 +8,7 @@ export function ResizableDemo() {
   return (
     <div className="flex w-full flex-col gap-6">
       <ResizablePanelGroup
-        direction="horizontal"
+        orientation="horizontal"
         className="max-w-md rounded-lg border md:min-w-[450px]"
       >
         <ResizablePanel defaultSize={50}>
@@ -18,7 +18,7 @@ export function ResizableDemo() {
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel defaultSize={50}>
-          <ResizablePanelGroup direction="vertical">
+          <ResizablePanelGroup orientation="vertical">
             <ResizablePanel defaultSize={25}>
               <div className="flex h-full items-center justify-center p-6">
                 <span className="font-semibold">Two</span>
@@ -34,7 +34,7 @@ export function ResizableDemo() {
         </ResizablePanel>
       </ResizablePanelGroup>
       <ResizablePanelGroup
-        direction="horizontal"
+        orientation="horizontal"
         className="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"
       >
         <ResizablePanel defaultSize={25}>
@@ -50,7 +50,7 @@ export function ResizableDemo() {
         </ResizablePanel>
       </ResizablePanelGroup>
       <ResizablePanelGroup
-        direction="vertical"
+        orientation="vertical"
         className="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"
       >
         <ResizablePanel defaultSize={25}>

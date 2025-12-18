@@ -65,7 +65,7 @@ import {
 ```
 
 ```tsx showLineNumbers
-<ResizablePanelGroup direction="horizontal">
+<ResizablePanelGroup orientation="horizontal">
   <ResizablePanel>One</ResizablePanel>
   <ResizableHandle />
   <ResizablePanel>Two</ResizablePanel>
@@ -76,7 +76,7 @@ import {
 
 ### Vertical
 
-Use the `direction` prop to set the direction of the resizable panels.
+Use the `orientation` prop to set the orientation of the resizable panels.
 
 <ComponentPreview
   name="resizable-vertical"
@@ -92,7 +92,7 @@ import {
 
 export default function Example() {
   return (
-    <ResizablePanelGroup direction="vertical">
+    <ResizablePanelGroup orientation="vertical">
       <ResizablePanel>One</ResizablePanel>
       <ResizableHandle />
       <ResizablePanel>Two</ResizablePanel>
@@ -119,7 +119,7 @@ import {
 
 export default function Example() {
   return (
-    <ResizablePanelGroup direction="horizontal">
+    <ResizablePanelGroup orientation="horizontal">
       <ResizablePanel>One</ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel>Two</ResizablePanel>

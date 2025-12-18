@@ -28,7 +28,7 @@ function ResizableHorizontal() {
   return (
     <Example title="Horizontal">
       <ResizablePanelGroup
-        direction="horizontal"
+        orientation="horizontal"
         className="min-h-[200px] rounded-lg border"
       >
         <ResizablePanel defaultSize={25}>
@@ -51,7 +51,7 @@ function ResizableVertical() {
   return (
     <Example title="Vertical">
       <ResizablePanelGroup
-        direction="vertical"
+        orientation="vertical"
         className="min-h-[200px] rounded-lg border"
       >
         <ResizablePanel defaultSize={25}>
@@ -74,7 +74,7 @@ function ResizableWithHandle() {
   return (
     <Example title="With Handle">
       <ResizablePanelGroup
-        direction="horizontal"
+        orientation="horizontal"
         className="min-h-[200px] rounded-lg border"
       >
         <ResizablePanel defaultSize={25}>
@@ -96,7 +96,10 @@ function ResizableWithHandle() {
 function ResizableNested() {
   return (
     <Example title="Nested">
-      <ResizablePanelGroup direction="horizontal" className="rounded-lg border">
+      <ResizablePanelGroup
+        orientation="horizontal"
+        className="rounded-lg border"
+      >
         <ResizablePanel defaultSize={50}>
           <div className="flex h-[200px] items-center justify-center p-6">
             <span className="font-semibold">One</span>
@@ -104,7 +107,7 @@ function ResizableNested() {
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel defaultSize={50}>
-          <ResizablePanelGroup direction="vertical">
+          <ResizablePanelGroup orientation="vertical">
             <ResizablePanel defaultSize={25}>
               <div className="flex h-full items-center justify-center p-6">
                 <span className="font-semibold">Two</span>
@@ -124,15 +127,15 @@ function ResizableNested() {
 }
 
 function ResizableControlled() {
-  const [sizes, setSizes] = React.useState([30, 70])
+  const [sizes, setSizes] = React.useState<number[]>([30, 70])
 
   return (
     <Example title="Controlled">
       <ResizablePanelGroup
-        direction="horizontal"
+        orientation="horizontal"
         className="min-h-[200px] rounded-lg border"
-        onLayout={(newSizes) => {
-          setSizes(newSizes)
+        onLayoutChange={(layouts) => {
+          setSizes(Object.values(layouts))
         }}
       >
         <ResizablePanel defaultSize={30} minSize={20}>
