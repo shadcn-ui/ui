@@ -39,6 +39,7 @@
 - [Checkbox](https://ui.shadcn.com/docs/components/checkbox): Checkbox input component.
 - [Radio Group](https://ui.shadcn.com/docs/components/radio-group): Radio button group component.
 - [Select](https://ui.shadcn.com/docs/components/select): Select dropdown component.
+- [Multi-select](https://ui.shadcn.com/docs/components/multi-select): Searchable multi-select component with badges.
 - [Switch](https://ui.shadcn.com/docs/components/switch): Toggle switch component.
 - [Slider](https://ui.shadcn.com/docs/components/slider): Slider input component.
 - [Calendar](https://ui.shadcn.com/docs/components/calendar): Calendar component for date selection.
@@ -142,4 +143,3 @@
 
 - [Registry Schema](https://ui.shadcn.com/schema/registry.json): JSON Schema for registry index files. Defines the structure for a collection of components, hooks, pages, etc. Requires name, homepage, and items array.
 - [Registry Item Schema](https://ui.shadcn.com/schema/registry-item.json): JSON Schema for individual registry items. Defines components, hooks, themes, and other distributable code with properties for dependencies, files, Tailwind config, CSS variables, and more.
-
