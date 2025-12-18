@@ -1,15 +1,16 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-
-
-import { Example, ExampleWrapper } from "@/registry/bases/base/components/example";
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/registry/bases/base/ui/resizable";
-
-
-
-
+import {
+  Example,
+  ExampleWrapper,
+} from "@/registry/bases/base/components/example"
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/registry/bases/base/ui/resizable"
 
 export default function ResizableExample() {
   return (
