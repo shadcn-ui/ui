@@ -24,7 +24,7 @@ export default function CardDemo() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <form>
+        <form id="form-card-demo">
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -51,7 +51,7 @@ export default function CardDemo() {
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
+        <Button type="submit" form="form-card-demo" className="w-full">
           Login
         </Button>
         <Button variant="outline" className="w-full">
