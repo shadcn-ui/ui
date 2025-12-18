@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-horizontal",
+  "type": "registry:example",
+  "registryDependencies": [
+    "timeline"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/timeline-horizontal.tsx",
+      "content": "import {\n  Timeline,\n  TimelineConnector,\n  TimelineContent,\n  TimelineDescription,\n  TimelineIcon,\n  TimelineItem,\n  TimelineTitle,\n} from \"@/registry/new-york-v4/ui/timeline\"\n\nexport default function TimelineHorizontal() {\n  return (\n    <Timeline orientation=\"horizontal\" className=\"w-full\">\n      <TimelineItem orientation=\"horizontal\">\n        <TimelineConnector orientation=\"horizontal\" />\n        <TimelineIcon size=\"sm\" />\n        <TimelineContent className=\"ms-0 items-center text-center\">\n          <TimelineTitle>Step 1</TimelineTitle>\n          <TimelineDescription>Create account</TimelineDescription>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem orientation=\"horizontal\">\n        <TimelineConnector orientation=\"horizontal\" />\n        <TimelineIcon size=\"sm\" />\n        <TimelineContent className=\"ms-0 items-center text-center\">\n          <TimelineTitle>Step 2</TimelineTitle>\n          <TimelineDescription>Verify email</TimelineDescription>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem orientation=\"horizontal\">\n        <TimelineConnector orientation=\"horizontal\" />\n        <TimelineIcon size=\"sm\" />\n        <TimelineContent className=\"ms-0 items-center text-center\">\n          <TimelineTitle>Step 3</TimelineTitle>\n          <TimelineDescription>Complete profile</TimelineDescription>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem orientation=\"horizontal\">\n        <TimelineIcon size=\"sm\" />\n        <TimelineContent className=\"ms-0 items-center text-center\">\n          <TimelineTitle>Step 4</TimelineTitle>\n          <TimelineDescription>Get started</TimelineDescription>\n        </TimelineContent>\n      </TimelineItem>\n    </Timeline>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
