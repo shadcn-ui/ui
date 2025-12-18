@@ -69,6 +69,7 @@ export const initOptionsSchema = z.object({
   force: z.boolean(),
   silent: z.boolean(),
   isNewProject: z.boolean(),
+  configPath: z.string(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
   template: z
@@ -131,6 +132,11 @@ export const init = new Command()
   )
   .option("-s, --silent", "mute output.", false)
   .option(
+    "--config-path <path>",
+    "the path to the components.json file. (default: \"components.json\")",
+    "components.json"
+  )
+  .option(
     "--src-dir",
     "use the src directory when creating a new project.",
     false
@@ -175,7 +181,7 @@ export const init = new Command()
 
         // Check if there's a components.json file.
         // If so, we'll merge with our shadow config.
-        const componentsJsonPath = path.resolve(options.cwd, "components.json")
+        const componentsJsonPath = path.resolve(options.cwd, options.configPath)
         if (fsExtra.existsSync(componentsJsonPath)) {
           const existingConfig = await fsExtra.readJson(componentsJsonPath)
           const config = rawConfigSchema.partial().parse(existingConfig)
@@ -256,7 +262,7 @@ export const init = new Command()
       )
 
       // We need when running with custom cwd.
-      deleteFileBackup(path.resolve(options.cwd, "components.json"))
+      deleteFileBackup(path.resolve(options.cwd, options.configPath))
       logger.break()
     } catch (error) {
       logger.break()
@@ -308,7 +314,7 @@ export async function runInit(
       type: "confirm",
       name: "proceed",
       message: `Write configuration to ${highlighter.info(
-        "components.json"
+        options.configPath
       )}. Proceed?`,
       initial: true,
     })
@@ -343,8 +349,8 @@ export async function runInit(
     config.registries = configWithRegistries.registries
   }
 
-  const componentSpinner = spinner(`Writing components.json.`).start()
-  const targetPath = path.resolve(options.cwd, "components.json")
+  const componentSpinner = spinner(`Writing ${options.configPath}.`).start()
+  const targetPath = path.resolve(options.cwd, options.configPath)
   const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
 
   // Merge and keep registries at the end.

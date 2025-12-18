@@ -29,6 +29,7 @@ export const addOptionsSchema = z.object({
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
+  configPath: z.string(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
 })
@@ -47,6 +48,11 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
+  .option(
+    "--config-path <path>",
+    "the path to the components.json file. (default: \"components.json\")",
+    "components.json"
+  )
   .option(
     "--src-dir",
     "use the src directory when creating a new project.",
@@ -222,6 +228,7 @@ export const add = new Command()
           skipPreflight: false,
           silent: options.silent && !hasNewRegistries,
           isNewProject: false,
+          configPath: options.configPath,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
           baseStyle: shouldInstallBaseStyle,
@@ -258,6 +265,7 @@ export const add = new Command()
             skipPreflight: true,
             silent: !hasNewRegistries && options.silent,
             isNewProject: true,
+            configPath: options.configPath,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
             baseStyle: shouldInstallBaseStyle,
