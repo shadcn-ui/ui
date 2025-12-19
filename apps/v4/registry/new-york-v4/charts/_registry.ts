@@ -744,6 +744,80 @@ export const charts: Registry["items"] = [
     ],
     categories: ["charts", "charts-radial"],
   },
+
+  // Scatter Charts
+  {
+    name: "chart-scatter-default",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-scatter-default.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-scatter"],
+  },
+  {
+    name: "chart-scatter-bubble",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-scatter-bubble.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-scatter"],
+  },
+  {
+    name: "chart-scatter-multiple",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-scatter-multiple.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-scatter"],
+  },
+  {
+    name: "chart-scatter-shape",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-scatter-shape.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-scatter"],
+  },
+  {
+    name: "chart-scatter-label",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-scatter-label.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-scatter"],
+  },
+  {
+    name: "chart-scatter-legend",
+    type: "registry:block",
+    registryDependencies: ["card", "chart"],
+    files: [
+      {
+        path: "charts/chart-scatter-legend.tsx",
+        type: "registry:block",
+      },
+    ],
+    categories: ["charts", "charts-scatter"],
+  },
   {
     name: "chart-tooltip-default",
     type: "registry:block",

@@ -8,6 +8,7 @@ import {
   MousePointer2Icon,
   PieChartIcon,
   RadarIcon,
+  ScatterChartIcon,
 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -90,6 +91,14 @@ function ChartTitle({ chart }: { chart: Chart }) {
     return (
       <>
         <RadarIcon /> Radial Chart
+      </>
+    )
+  }
+
+  if (chart.name.includes("chart-scatter")) {
+    return (
+      <>
+        <ScatterChartIcon /> Scatter Chart
       </>
     )
   }
