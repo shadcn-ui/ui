@@ -31,7 +31,12 @@ export function ChartCodeViewer({
 }: {
   chart: Chart
 } & React.ComponentProps<"div">) {
+  const [mounted, setMounted] = React.useState(false)
   const isDesktop = useMediaQuery("(min-width: 768px)")
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const button = (
     <Button
@@ -78,6 +83,28 @@ export function ChartCodeViewer({
       </div>
     </div>
   )
+
+  // Prevent hydration mismatch by rendering a default state during SSR
+  if (!mounted) {
+    return (
+      <Sheet>
+        <SheetTrigger asChild>{button}</SheetTrigger>
+        <SheetContent
+          side="right"
+          className={cn(
+            "flex flex-col gap-0 border-l-0 p-0 sm:max-w-sm md:w-[700px] md:max-w-[700px] dark:border-l",
+            className
+          )}
+        >
+          <SheetHeader className="sr-only">
+            <SheetTitle>Code</SheetTitle>
+            <SheetDescription>View the code for the chart.</SheetDescription>
+          </SheetHeader>
+          {content}
+        </SheetContent>
+      </Sheet>
+    )
+  }
 
   if (!isDesktop) {
     return (
