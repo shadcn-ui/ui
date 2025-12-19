@@ -242,7 +242,7 @@ importers:
         specifier: ^1.2.8
         version: 1.2.8(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@remixicon/react':
-        specifier: ^4.5.0
+        specifier: ^4.7.0
         version: 4.7.0(react@19.2.3)
       '@tabler/icons-react':
         specifier: ^3.31.0
