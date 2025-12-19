@@ -1,19 +1,37 @@
-"use client"
+"use client";
 
-import { useMemo } from "react"
+import { Children, isValidElement, useMemo } from "react";
 import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/registry/bases/base/lib/utils";
+import { Label } from "@/registry/bases/base/ui/label";
+import { Separator } from "@/registry/bases/base/ui/separator";
 
-import { cn } from "@/registry/bases/base/lib/utils"
-import { Label } from "@/registry/bases/base/ui/label"
-import { Separator } from "@/registry/bases/base/ui/separator"
+function FieldSet({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"fieldset">) {
+  const childArray = Children.toArray(children)
+  const legend = childArray.find(
+    (child) =>
+      isValidElement(child) &&
+      (child.type === "legend" ||
+        (child.props as { "data-slot"?: string })?.["data-slot"] ===
+          "field-legend")
+  )
+  const otherChildren = childArray.filter((child) => child !== legend)
 
-function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   return (
     <fieldset
       data-slot="field-set"
-      className={cn("cn-field-set flex flex-col", className)}
+      className={cn("cn-field-set min-w-0", className)}
       {...props}
-    />
+    >
+      {legend}
+      <div className="flex flex-col">
+        {otherChildren}
+      </div>
+    </fieldset>
   )
 }
 
