@@ -83,6 +83,7 @@ function CommandInput({
             tabler="IconSearch"
             hugeicons="SearchIcon"
             phosphor="MagnifyingGlassIcon"
+            remixicon="RiSearchLine"
             className="cn-command-input-icon"
           />
         </InputGroupAddon>
@@ -166,6 +167,7 @@ function CommandItem({
         tabler="IconCheck"
         hugeicons="Tick02Icon"
         phosphor="CheckIcon"
+        remixicon="RiCheckLine"
         className="cn-command-item-indicator ml-auto opacity-0 group-has-[[data-slot=command-shortcut]]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
       />
     </CommandPrimitive.Item>

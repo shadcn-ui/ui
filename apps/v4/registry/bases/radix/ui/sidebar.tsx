@@ -275,6 +275,7 @@ function SidebarTrigger({
         tabler="IconLayoutSidebar"
         hugeicons="SidebarLeftIcon"
         phosphor="SidebarIcon"
+        remixicon="RiSideBarLine"
       />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>

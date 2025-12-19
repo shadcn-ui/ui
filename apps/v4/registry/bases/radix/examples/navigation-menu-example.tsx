@@ -198,6 +198,7 @@ function NavigationMenuWithoutViewport() {
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningCircleIcon"
+                        remixicon="RiErrorWarningLine"
                       />
                       Backlog
                     </Link>
@@ -209,6 +210,7 @@ function NavigationMenuWithoutViewport() {
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningCircleIcon"
+                        remixicon="RiErrorWarningLine"
                       />
                       To Do
                     </Link>
@@ -220,6 +222,7 @@ function NavigationMenuWithoutViewport() {
                         tabler="IconExclamationCircle"
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningCircleIcon"
+                        remixicon="RiErrorWarningLine"
                       />
                       Done
                     </Link>

@@ -69,6 +69,7 @@ function SheetContent({
               tabler="IconX"
               hugeicons="Cancel01Icon"
               phosphor="XIcon"
+              remixicon="RiCloseLine"
             />
             <span className="sr-only">Close</span>
           </SheetPrimitive.Close>

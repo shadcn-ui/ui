@@ -100,6 +100,7 @@ function DropdownMenuWithIcons() {
               tabler="IconUser"
               hugeicons="UserIcon"
               phosphor="UserIcon"
+              remixicon="RiUserLine"
             />
             Profile
           </DropdownMenuItem>
@@ -109,6 +110,7 @@ function DropdownMenuWithIcons() {
               tabler="IconCreditCard"
               hugeicons="CreditCardIcon"
               phosphor="CreditCardIcon"
+              remixicon="RiBankCardLine"
             />
             Billing
           </DropdownMenuItem>
@@ -118,6 +120,7 @@ function DropdownMenuWithIcons() {
               tabler="IconSettings"
               hugeicons="SettingsIcon"
               phosphor="GearIcon"
+              remixicon="RiSettingsLine"
             />
             Settings
           </DropdownMenuItem>
@@ -128,6 +131,7 @@ function DropdownMenuWithIcons() {
               tabler="IconLogout"
               hugeicons="LogoutIcon"
               phosphor="SignOutIcon"
+              remixicon="RiLogoutBoxLine"
             />
             Log out
           </DropdownMenuItem>
@@ -236,6 +240,7 @@ function DropdownMenuWithCheckboxes() {
                 tabler="IconLayout"
                 hugeicons="LayoutIcon"
                 phosphor="LayoutIcon"
+                remixicon="RiLayoutLine"
               />
               Status Bar
             </DropdownMenuCheckboxItem>
@@ -249,6 +254,7 @@ function DropdownMenuWithCheckboxes() {
                 tabler="IconActivity"
                 hugeicons="ActivityIcon"
                 phosphor="ActivityIcon"
+                remixicon="RiPulseLine"
               />
               Activity Bar
             </DropdownMenuCheckboxItem>
@@ -261,6 +267,7 @@ function DropdownMenuWithCheckboxes() {
                 tabler="IconLayoutSidebar"
                 hugeicons="LayoutLeftIcon"
                 phosphor="SidebarIcon"
+                remixicon="RiSideBarLine"
               />
               Panel
             </DropdownMenuCheckboxItem>
@@ -295,6 +302,7 @@ function DropdownMenuWithRadio() {
                   tabler="IconArrowUp"
                   hugeicons="ArrowUp01Icon"
                   phosphor="ArrowUpIcon"
+                  remixicon="RiArrowUpLine"
                 />
                 Top
               </DropdownMenuRadioItem>
@@ -304,6 +312,7 @@ function DropdownMenuWithRadio() {
                   tabler="IconArrowDown"
                   hugeicons="ArrowDown01Icon"
                   phosphor="ArrowDownIcon"
+                  remixicon="RiArrowDownLine"
                 />
                 Bottom
               </DropdownMenuRadioItem>
@@ -313,6 +322,7 @@ function DropdownMenuWithRadio() {
                   tabler="IconArrowRight"
                   hugeicons="ArrowRight01Icon"
                   phosphor="ArrowRightIcon"
+                  remixicon="RiArrowRightLine"
                 />
                 Right
               </DropdownMenuRadioItem>
@@ -353,6 +363,7 @@ function DropdownMenuWithCheckboxesIcons() {
                 tabler="IconMail"
                 hugeicons="MailIcon"
                 phosphor="EnvelopeIcon"
+                remixicon="RiMailLine"
               />
               Email notifications
             </DropdownMenuCheckboxItem>
@@ -367,6 +378,7 @@ function DropdownMenuWithCheckboxesIcons() {
                 tabler="IconMessage"
                 hugeicons="MessageIcon"
                 phosphor="ChatCircleIcon"
+                remixicon="RiChat1Line"
               />
               SMS notifications
             </DropdownMenuCheckboxItem>
@@ -381,6 +393,7 @@ function DropdownMenuWithCheckboxesIcons() {
                 tabler="IconBell"
                 hugeicons="NotificationIcon"
                 phosphor="BellIcon"
+                remixicon="RiNotificationLine"
               />
               Push notifications
             </DropdownMenuCheckboxItem>
@@ -415,6 +428,7 @@ function DropdownMenuWithRadioIcons() {
                   tabler="IconCreditCard"
                   hugeicons="CreditCardIcon"
                   phosphor="CreditCardIcon"
+                  remixicon="RiBankCardLine"
                 />
                 Credit Card
               </DropdownMenuRadioItem>
@@ -424,6 +438,7 @@ function DropdownMenuWithRadioIcons() {
                   tabler="IconWallet"
                   hugeicons="WalletIcon"
                   phosphor="WalletIcon"
+                  remixicon="RiWalletLine"
                 />
                 PayPal
               </DropdownMenuRadioItem>
@@ -433,6 +448,7 @@ function DropdownMenuWithRadioIcons() {
                   tabler="IconBuildingBank"
                   hugeicons="BankIcon"
                   phosphor="BankIcon"
+                  remixicon="RiBankLine"
                 />
                 Bank Transfer
               </DropdownMenuRadioItem>
@@ -460,6 +476,7 @@ function DropdownMenuWithDestructive() {
               tabler="IconPencil"
               hugeicons="EditIcon"
               phosphor="PencilIcon"
+              remixicon="RiPencilLine"
             />
             Edit
           </DropdownMenuItem>
@@ -469,6 +486,7 @@ function DropdownMenuWithDestructive() {
               tabler="IconShare"
               hugeicons="ShareIcon"
               phosphor="ShareIcon"
+              remixicon="RiShareLine"
             />
             Share
           </DropdownMenuItem>
@@ -479,6 +497,7 @@ function DropdownMenuWithDestructive() {
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="ArchiveIcon"
+              remixicon="RiArchiveLine"
             />
             Archive
           </DropdownMenuItem>
@@ -488,6 +507,7 @@ function DropdownMenuWithDestructive() {
               tabler="IconTrash"
               hugeicons="DeleteIcon"
               phosphor="TrashIcon"
+              remixicon="RiDeleteBinLine"
             />
             Delete
           </DropdownMenuItem>
@@ -507,6 +527,7 @@ function DropdownMenuWithAvatar() {
             tabler="IconRosetteDiscountCheck"
             hugeicons="CheckmarkBadgeIcon"
             phosphor="CheckCircleIcon"
+            remixicon="RiCheckboxCircleLine"
           />
           Account
         </DropdownMenuItem>
@@ -516,6 +537,7 @@ function DropdownMenuWithAvatar() {
             tabler="IconCreditCard"
             hugeicons="CreditCardIcon"
             phosphor="CreditCardIcon"
+            remixicon="RiBankCardLine"
           />
           Billing
         </DropdownMenuItem>
@@ -525,6 +547,7 @@ function DropdownMenuWithAvatar() {
             tabler="IconBell"
             hugeicons="NotificationIcon"
             phosphor="BellIcon"
+            remixicon="RiNotificationLine"
           />
           Notifications
         </DropdownMenuItem>
@@ -536,6 +559,7 @@ function DropdownMenuWithAvatar() {
           tabler="IconLogout"
           hugeicons="LogoutIcon"
           phosphor="SignOutIcon"
+          remixicon="RiLogoutBoxLine"
         />
         Sign Out
       </DropdownMenuItem>
@@ -569,6 +593,7 @@ function DropdownMenuWithAvatar() {
               tabler="IconSelector"
               hugeicons="UnfoldMoreIcon"
               phosphor="CaretUpDownIcon"
+              remixicon="RiArrowUpDownLine"
               className="text-muted-foreground ml-auto"
             />
           </DropdownMenuTrigger>
@@ -623,6 +648,7 @@ function DropdownMenuInDialog() {
                   tabler="IconCopy"
                   hugeicons="CopyIcon"
                   phosphor="CopyIcon"
+                  remixicon="RiFileCopyLine"
                 />
                 Copy
               </DropdownMenuItem>
@@ -632,6 +658,7 @@ function DropdownMenuInDialog() {
                   tabler="IconCut"
                   hugeicons="ScissorIcon"
                   phosphor="ScissorsIcon"
+                  remixicon="RiScissorsLine"
                 />
                 Cut
               </DropdownMenuItem>
@@ -641,6 +668,7 @@ function DropdownMenuInDialog() {
                   tabler="IconClipboard"
                   hugeicons="ClipboardIcon"
                   phosphor="ClipboardIcon"
+                  remixicon="RiClipboardLine"
                 />
                 Paste
               </DropdownMenuItem>
@@ -664,6 +692,7 @@ function DropdownMenuInDialog() {
                   tabler="IconTrash"
                   hugeicons="DeleteIcon"
                   phosphor="TrashIcon"
+                  remixicon="RiDeleteBinLine"
                 />
                 Delete
               </DropdownMenuItem>
@@ -700,6 +729,7 @@ function DropdownMenuComplex() {
                 tabler="IconFile"
                 hugeicons="FileIcon"
                 phosphor="FileIcon"
+                remixicon="RiFileLine"
               />
               New File
               <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
@@ -710,6 +740,7 @@ function DropdownMenuComplex() {
                 tabler="IconFolder"
                 hugeicons="FolderIcon"
                 phosphor="FolderIcon"
+                remixicon="RiFolderLine"
               />
               New Folder
               <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
@@ -721,6 +752,7 @@ function DropdownMenuComplex() {
                   tabler="IconFolderOpen"
                   hugeicons="FolderOpenIcon"
                   phosphor="FolderOpenIcon"
+                  remixicon="RiFolderOpenLine"
                 />
                 Open Recent
               </DropdownMenuSubTrigger>
@@ -734,6 +766,7 @@ function DropdownMenuComplex() {
                         tabler="IconFileCode"
                         hugeicons="CodeIcon"
                         phosphor="CodeIcon"
+                        remixicon="RiCodeLine"
                       />
                       Project Alpha
                     </DropdownMenuItem>
@@ -743,6 +776,7 @@ function DropdownMenuComplex() {
                         tabler="IconFileCode"
                         hugeicons="CodeIcon"
                         phosphor="CodeIcon"
+                        remixicon="RiCodeLine"
                       />
                       Project Beta
                     </DropdownMenuItem>
@@ -753,6 +787,7 @@ function DropdownMenuComplex() {
                           tabler="IconDots"
                           hugeicons="MoreHorizontalCircle01Icon"
                           phosphor="DotsThreeOutlineIcon"
+                          remixicon="RiMoreLine"
                         />
                         More Projects
                       </DropdownMenuSubTrigger>
@@ -764,6 +799,7 @@ function DropdownMenuComplex() {
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
                               phosphor="FileCodeIcon"
+                              remixicon="RiFileCodeLine"
                             />
                             Project Gamma
                           </DropdownMenuItem>
@@ -773,6 +809,7 @@ function DropdownMenuComplex() {
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
                               phosphor="FileCodeIcon"
+                              remixicon="RiFileCodeLine"
                             />
                             Project Delta
                           </DropdownMenuItem>
@@ -788,6 +825,7 @@ function DropdownMenuComplex() {
                         tabler="IconFolderSearch"
                         hugeicons="SearchIcon"
                         phosphor="MagnifyingGlassIcon"
+                        remixicon="RiSearchLine"
                       />
                       Browse...
                     </DropdownMenuItem>
@@ -802,6 +840,7 @@ function DropdownMenuComplex() {
                 tabler="IconDeviceFloppy"
                 hugeicons="FloppyDiskIcon"
                 phosphor="FloppyDiskIcon"
+                remixicon="RiSaveLine"
               />
               Save
               <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
@@ -812,6 +851,7 @@ function DropdownMenuComplex() {
                 tabler="IconDownload"
                 hugeicons="DownloadIcon"
                 phosphor="DownloadIcon"
+                remixicon="RiDownloadLine"
               />
               Export
               <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
@@ -831,6 +871,7 @@ function DropdownMenuComplex() {
                 tabler="IconEye"
                 hugeicons="EyeIcon"
                 phosphor="EyeIcon"
+                remixicon="RiEyeLine"
               />
               Show Sidebar
             </DropdownMenuCheckboxItem>
@@ -845,6 +886,7 @@ function DropdownMenuComplex() {
                 tabler="IconLayout"
                 hugeicons="LayoutIcon"
                 phosphor="LayoutIcon"
+                remixicon="RiLayoutLine"
               />
               Show Status Bar
             </DropdownMenuCheckboxItem>
@@ -855,6 +897,7 @@ function DropdownMenuComplex() {
                   tabler="IconPalette"
                   hugeicons="PaintBoardIcon"
                   phosphor="PaletteIcon"
+                  remixicon="RiPaletteLine"
                 />
                 Theme
               </DropdownMenuSubTrigger>
@@ -872,6 +915,7 @@ function DropdownMenuComplex() {
                           tabler="IconSun"
                           hugeicons="SunIcon"
                           phosphor="SunIcon"
+                          remixicon="RiSunLine"
                         />
                         Light
                       </DropdownMenuRadioItem>
@@ -881,6 +925,7 @@ function DropdownMenuComplex() {
                           tabler="IconMoon"
                           hugeicons="MoonIcon"
                           phosphor="MoonIcon"
+                          remixicon="RiMoonLine"
                         />
                         Dark
                       </DropdownMenuRadioItem>
@@ -890,6 +935,7 @@ function DropdownMenuComplex() {
                           tabler="IconDeviceDesktop"
                           hugeicons="ComputerIcon"
                           phosphor="MonitorIcon"
+                          remixicon="RiComputerLine"
                         />
                         System
                       </DropdownMenuRadioItem>
@@ -908,6 +954,7 @@ function DropdownMenuComplex() {
                 tabler="IconUser"
                 hugeicons="UserIcon"
                 phosphor="UserIcon"
+                remixicon="RiUserLine"
               />
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -918,6 +965,7 @@ function DropdownMenuComplex() {
                 tabler="IconCreditCard"
                 hugeicons="CreditCardIcon"
                 phosphor="CreditCardIcon"
+                remixicon="RiBankCardLine"
               />
               Billing
             </DropdownMenuItem>
@@ -928,6 +976,7 @@ function DropdownMenuComplex() {
                   tabler="IconSettings"
                   hugeicons="SettingsIcon"
                   phosphor="GearIcon"
+                  remixicon="RiSettingsLine"
                 />
                 Settings
               </DropdownMenuSubTrigger>
@@ -941,6 +990,7 @@ function DropdownMenuComplex() {
                         tabler="IconKeyboard"
                         hugeicons="KeyboardIcon"
                         phosphor="KeyboardIcon"
+                        remixicon="RiKeyboardLine"
                       />
                       Keyboard Shortcuts
                     </DropdownMenuItem>
@@ -950,6 +1000,7 @@ function DropdownMenuComplex() {
                         tabler="IconLanguage"
                         hugeicons="LanguageCircleIcon"
                         phosphor="TranslateIcon"
+                        remixicon="RiTranslate"
                       />
                       Language
                     </DropdownMenuItem>
@@ -960,6 +1011,7 @@ function DropdownMenuComplex() {
                           tabler="IconBell"
                           hugeicons="NotificationIcon"
                           phosphor="BellIcon"
+                          remixicon="RiNotificationLine"
                         />
                         Notifications
                       </DropdownMenuSubTrigger>
@@ -983,6 +1035,7 @@ function DropdownMenuComplex() {
                                 tabler="IconBell"
                                 hugeicons="NotificationIcon"
                                 phosphor="BellIcon"
+                                remixicon="RiNotificationLine"
                               />
                               Push Notifications
                             </DropdownMenuCheckboxItem>
@@ -1000,6 +1053,7 @@ function DropdownMenuComplex() {
                                 tabler="IconMail"
                                 hugeicons="MailIcon"
                                 phosphor="EnvelopeIcon"
+                                remixicon="RiMailLine"
                               />
                               Email Notifications
                             </DropdownMenuCheckboxItem>
@@ -1016,6 +1070,7 @@ function DropdownMenuComplex() {
                         tabler="IconShield"
                         hugeicons="ShieldIcon"
                         phosphor="ShieldIcon"
+                        remixicon="RiShieldLine"
                       />
                       Privacy & Security
                     </DropdownMenuItem>
@@ -1032,6 +1087,7 @@ function DropdownMenuComplex() {
                 tabler="IconHelpCircle"
                 hugeicons="HelpCircleIcon"
                 phosphor="QuestionIcon"
+                remixicon="RiQuestionLine"
               />
               Help & Support
             </DropdownMenuItem>
@@ -1041,6 +1097,7 @@ function DropdownMenuComplex() {
                 tabler="IconFileText"
                 hugeicons="File01Icon"
                 phosphor="FileTextIcon"
+                remixicon="RiFileTextLine"
               />
               Documentation
             </DropdownMenuItem>
@@ -1053,6 +1110,7 @@ function DropdownMenuComplex() {
                 tabler="IconLogout"
                 hugeicons="LogoutIcon"
                 phosphor="SignOutIcon"
+                remixicon="RiLogoutBoxLine"
               />
               Sign Out
               <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
