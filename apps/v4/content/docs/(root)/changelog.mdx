@@ -4,6 +4,61 @@ description: Latest updates and announcements.
 toc: false
 ---
 
+## December 2025 - npx shadcn create
+
+From the very first commit, the goal of shadcn/ui was to make it customizable.
+
+The idea is to give you solid defaults, spacing, color tokens, animations, accessibility, and then let you take it from there. Tweak the code. Add new components. Change the colors. Build your own version.
+
+But somewhere along the way, all apps started looking the same. I guess the defaults were a little _too_ good. My bad.
+
+Today, we're changing that: **npx shadcn create**.
+
+Customize Everything. Pick your component library, icons, base color, theme, fonts and create your own version of shadcn/ui.
+
+We're starting with **5 new visual styles,** designed to help your UI actually feel like _your_ UI.
+
+- **Vega** – The classic shadcn/ui look.
+- **Nova** – Reduced padding and margins for compact layouts.
+- **Maia** – Soft and rounded, with generous spacing.
+- **Lyra** – Boxy and sharp. Pairs well with mono fonts.
+- **Mira** – Compact. Made for dense interfaces.
+
+**This goes beyond theming**.
+
+Your config doesn’t just change colors, it rewrites the component code to match your setup. Fonts, spacing, structure, even the libraries you use, everything adapts to your preferences.
+
+The new CLI takes care of it all.
+
+Start with a component library. Choose between Radix or Base UI.
+
+We rebuilt every component for Base UI, keeping the same abstraction.
+They are fully compatible with your existing components, even those pulled from remote registries.
+
+When you pull down components, we auto-detect your library and apply the right transformations.
+
+**It's time to build something that doesn't look like everything else.**
+
+Now available for Next.js, Vite, TanStack Start and v0.
+
+<Button asChild>
+  <Link href="/create" className="mt-6 no-underline!">
+    Get Started
+  </Link>
+</Button>
+
+---
+
+## November 2025 - Registry directory
+
+We just published the Registry Directory: a list of code registries you can browse and pull code and components from.
+
+https://ui.shadcn.com/docs/directory
+
+Built into the CLI. No config required.
+
+---
+
 ## October 2025 - New Components
 
 For this round of components, I looked at what we build every day, the boring stuff we rebuild over and over, and made reusable abstractions you can actually use.
@@ -467,7 +522,7 @@ It's completely decentralized. There's no central registrar. Create any namespac
 ```json title="components.json" showLineNumbers
 {
   "registries": {
-    "@design": "https://registry.company.com/design/{name}.json",
+    "@design": "https://registry.company.com/create/{name}.json",
     "@engineering": "https://registry.company.com/eng/{name}.json",
     "@marketing": "https://registry.company.com/marketing/{name}.json"
   }
