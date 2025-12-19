@@ -139,7 +139,7 @@ export const PRESETS: Preset[] = [
     baseColor: "neutral",
     theme: "neutral",
     iconLibrary: "lucide",
-    font: "geist",
+    font: "geist-sans",
     item: "Item",
     menuAccent: "subtle",
     menuColor: "default",
