@@ -30,6 +30,12 @@ const IconPhosphor = lazy(() =>
   }))
 )
 
+const IconRemixicon = lazy(() =>
+  import("@/registry/icons/icon-remixicon").then((mod) => ({
+    default: mod.IconRemixicon,
+  }))
+)
+
 export function IconPlaceholder({
   ...props
 }: {
@@ -51,6 +57,9 @@ export function IconPlaceholder({
       )}
       {iconLibrary === "phosphor" && (
         <IconPhosphor name={iconName} {...props} />
+      )}
+      {iconLibrary === "remixicon" && (
+        <IconRemixicon name={iconName} {...props} />
       )}
     </Suspense>
   )

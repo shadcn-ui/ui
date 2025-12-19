@@ -36,6 +36,7 @@ function ComboboxTrigger({
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
+        remixicon="RiArrowDownSLine"
         className="cn-combobox-trigger-icon pointer-events-none"
       />
     </ComboboxPrimitive.Trigger>
@@ -55,6 +56,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
         tabler="IconX"
         hugeicons="Cancel01Icon"
         phosphor="XIcon"
+        remixicon="RiCloseLine"
         className="cn-combobox-clear-icon pointer-events-none"
       />
     </ComboboxPrimitive.Clear>
@@ -169,6 +171,7 @@ function ComboboxItem({
           tabler="IconCheck"
           hugeicons="Tick02Icon"
           phosphor="CheckIcon"
+          remixicon="RiCheckLine"
           className="cn-combobox-item-indicator-icon pointer-events-none"
         />
       </ComboboxPrimitive.ItemIndicator>
@@ -271,6 +274,7 @@ function ComboboxChip({
             tabler="IconX"
             hugeicons="Cancel01Icon"
             phosphor="XIcon"
+            remixicon="RiCloseLine"
             className="cn-combobox-chip-indicator-icon pointer-events-none"
           />
         </ComboboxPrimitive.ChipRemove>

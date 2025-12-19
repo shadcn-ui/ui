@@ -45,6 +45,12 @@ const IconPhosphor = lazy(() =>
   }))
 )
 
+const IconRemixicon = lazy(() =>
+  import("@/registry/icons/icon-remixicon").then((mod) => ({
+    default: mod.IconRemixicon,
+  }))
+)
+
 const PREVIEW_ICONS = {
   lucide: [
     "CopyIcon",
@@ -109,6 +115,22 @@ const PREVIEW_ICONS = {
     "CheckIcon",
     "CaretDownIcon",
     "CaretRightIcon",
+  ],
+  remixicon: [
+    "RiFileCopyLine",
+    "RiErrorWarningLine",
+    "RiDeleteBinLine",
+    "RiShareLine",
+    "RiShoppingBagLine",
+    "RiMoreLine",
+    "RiLoaderLine",
+    "RiAddLine",
+    "RiSubtractLine",
+    "RiArrowLeftLine",
+    "RiArrowRightLine",
+    "RiCheckLine",
+    "RiArrowDownSLine",
+    "RiArrowRightSLine",
   ],
 }
 
@@ -192,6 +214,17 @@ const logos = {
         strokeWidth="2"
         d="M9 5h9v16H9zm9 16v9a9 9 0 0 1-9-9M9 5l9 16m0 0h1a8 8 0 0 0 0-16h-1"
       />
+    </svg>
+  ),
+  remixicon: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      fill="currentColor"
+    >
+      <path d="M13.508 2.001c-3.121 0-5.507 2.504-5.507 5.573 0 2.482 1.566 4.595 3.758 5.41l-2.11 2.11a1 1 0 0 0 1.414 1.414l2.886-2.886a7.003 7.003 0 0 0 5.837-6.93c0-3.14-2.415-5.691-5.278-5.691zm-.492 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
     </svg>
   ),
 }
@@ -301,7 +334,9 @@ const IconLibraryPreview = memo(function IconLibraryPreview({
         ? IconTabler
         : iconLibrary === "hugeicons"
           ? IconHugeicons
-          : IconPhosphor
+          : iconLibrary === "phosphor"
+            ? IconPhosphor
+            : IconRemixicon
 
   return (
     <Suspense

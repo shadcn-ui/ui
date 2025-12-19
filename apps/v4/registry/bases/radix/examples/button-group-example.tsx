@@ -128,6 +128,7 @@ function ButtonGroupWithDropdown() {
                   tabler="IconChevronDown"
                   hugeicons="ArrowDown01Icon"
                   phosphor="CaretDownIcon"
+                  remixicon="RiArrowDownSLine"
                 />
               </Button>
             </DropdownMenuTrigger>
@@ -149,6 +150,7 @@ function ButtonGroupWithDropdown() {
                   tabler="IconChevronDown"
                   hugeicons="ArrowDown01Icon"
                   phosphor="CaretDownIcon"
+                  remixicon="RiArrowDownSLine"
                 />
               </Button>
             </DropdownMenuTrigger>
@@ -160,6 +162,7 @@ function ButtonGroupWithDropdown() {
                     tabler="IconVolume"
                     hugeicons="VolumeOffIcon"
                     phosphor="SpeakerSlashIcon"
+                    remixicon="RiVolumeMuteLine"
                   />
                   Mute Conversation
                 </DropdownMenuItem>
@@ -169,6 +172,7 @@ function ButtonGroupWithDropdown() {
                     tabler="IconCheck"
                     hugeicons="Tick02Icon"
                     phosphor="CheckIcon"
+                    remixicon="RiCheckLine"
                   />
                   Mark as Read
                 </DropdownMenuItem>
@@ -178,6 +182,7 @@ function ButtonGroupWithDropdown() {
                     tabler="IconAlertTriangle"
                     hugeicons="AlertCircleIcon"
                     phosphor="WarningIcon"
+                    remixicon="RiErrorWarningLine"
                   />
                   Report Conversation
                 </DropdownMenuItem>
@@ -187,6 +192,7 @@ function ButtonGroupWithDropdown() {
                     tabler="IconUserX"
                     hugeicons="UserRemove01Icon"
                     phosphor="UserMinusIcon"
+                    remixicon="RiUserUnfollowLine"
                   />
                   Block User
                 </DropdownMenuItem>
@@ -196,6 +202,7 @@ function ButtonGroupWithDropdown() {
                     tabler="IconShare"
                     hugeicons="Share03Icon"
                     phosphor="ShareIcon"
+                    remixicon="RiShareLine"
                   />
                   Share Conversation
                 </DropdownMenuItem>
@@ -205,6 +212,7 @@ function ButtonGroupWithDropdown() {
                     tabler="IconCopy"
                     hugeicons="Copy01Icon"
                     phosphor="CopyIcon"
+                    remixicon="RiFileCopyLine"
                   />
                   Copy Conversation
                 </DropdownMenuItem>
@@ -217,6 +225,7 @@ function ButtonGroupWithDropdown() {
                     tabler="IconTrash"
                     hugeicons="Delete02Icon"
                     phosphor="TrashIcon"
+                    remixicon="RiDeleteBinLine"
                   />
                   Delete Conversation
                 </DropdownMenuItem>
@@ -254,6 +263,7 @@ function ButtonGroupWithSelect() {
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
+              remixicon="RiArrowRightLine"
             />
           </Button>
         </ButtonGroup>
@@ -273,6 +283,7 @@ function ButtonGroupWithIcons() {
               tabler="IconFlipHorizontal"
               hugeicons="FlipHorizontalIcon"
               phosphor="ArrowsHorizontalIcon"
+              remixicon="RiArrowLeftRightLine"
             />
           </Button>
           <Button variant="outline">
@@ -281,6 +292,7 @@ function ButtonGroupWithIcons() {
               tabler="IconFlipVertical"
               hugeicons="FlipVerticalIcon"
               phosphor="ArrowsVerticalIcon"
+              remixicon="RiArrowUpDownLine"
             />
           </Button>
           <Button variant="outline">
@@ -289,6 +301,7 @@ function ButtonGroupWithIcons() {
               tabler="IconRotateClockwise2"
               hugeicons="Rotate01Icon"
               phosphor="ArrowClockwiseIcon"
+              remixicon="RiRefreshLine"
             />
           </Button>
         </ButtonGroup>
@@ -312,6 +325,7 @@ function ButtonGroupWithInputGroup() {
               tabler="IconSearch"
               hugeicons="Search01Icon"
               phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </InputGroupAddon>
         </InputGroup>
@@ -345,6 +359,7 @@ function ButtonGroupWithFields() {
                 tabler="IconMinus"
                 hugeicons="MinusSignIcon"
                 phosphor="MinusIcon"
+                remixicon="RiSubtractLine"
               />
             </Button>
             <Button variant="outline" size="icon">
@@ -353,6 +368,7 @@ function ButtonGroupWithFields() {
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
+                remixicon="RiAddLine"
               />
             </Button>
           </ButtonGroup>
@@ -372,6 +388,7 @@ function ButtonGroupWithLike() {
             tabler="IconBell"
             hugeicons="Notification02Icon"
             phosphor="HeartIcon"
+            remixicon="RiHeartLine"
             data-icon="inline-start"
           />{" "}
           Like
@@ -415,6 +432,7 @@ function ButtonGroupNested() {
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
             />
           </Button>
         </ButtonGroup>
@@ -429,6 +447,7 @@ function ButtonGroupNested() {
                     tabler="IconHeadphones"
                     hugeicons="AudioWave01Icon"
                     phosphor="MicrophoneIcon"
+                    remixicon="RiMicLine"
                   />
                 </InputGroupAddon>
               </TooltipTrigger>
@@ -451,6 +470,7 @@ function ButtonGroupPagination() {
             tabler="IconArrowLeft"
             hugeicons="ArrowLeft01Icon"
             phosphor="ArrowLeftIcon"
+            remixicon="RiArrowLeftLine"
             data-icon="inline-start"
           />
           Previous
@@ -477,6 +497,7 @@ function ButtonGroupPagination() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight01Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -513,6 +534,7 @@ function ButtonGroupPaginationSplit() {
               tabler="IconArrowLeft"
               hugeicons="ArrowLeft01Icon"
               phosphor="ArrowLeftIcon"
+              remixicon="RiArrowLeftLine"
             />
           </Button>
           <Button variant="outline" size="icon-xs">
@@ -521,6 +543,7 @@ function ButtonGroupPaginationSplit() {
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
+              remixicon="RiArrowRightLine"
             />
           </Button>
         </ButtonGroup>
@@ -540,6 +563,7 @@ function ButtonGroupNavigation() {
               tabler="IconArrowLeft"
               hugeicons="ArrowLeft01Icon"
               phosphor="ArrowLeftIcon"
+              remixicon="RiArrowLeftLine"
             />
           </Button>
           <Button variant="outline">
@@ -548,6 +572,7 @@ function ButtonGroupNavigation() {
               tabler="IconArrowRight"
               hugeicons="ArrowRight01Icon"
               phosphor="ArrowRightIcon"
+              remixicon="RiArrowRightLine"
             />
           </Button>
         </ButtonGroup>
@@ -558,6 +583,7 @@ function ButtonGroupNavigation() {
               tabler="IconArrowLeft"
               hugeicons="ArrowLeft01Icon"
               phosphor="ArrowLeftIcon"
+              remixicon="RiArrowLeftLine"
             />
           </Button>
         </ButtonGroup>
@@ -605,6 +631,7 @@ function ButtonGroupVertical() {
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -613,6 +640,7 @@ function ButtonGroupVertical() {
               tabler="IconMinus"
               hugeicons="MinusSignIcon"
               phosphor="MinusIcon"
+              remixicon="RiSubtractLine"
             />
           </Button>
         </ButtonGroup>
@@ -632,6 +660,7 @@ function ButtonGroupVerticalNested() {
               tabler="IconSearch"
               hugeicons="Search01Icon"
               phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -640,6 +669,7 @@ function ButtonGroupVerticalNested() {
               tabler="IconCopy"
               hugeicons="Copy01Icon"
               phosphor="CopyIcon"
+              remixicon="RiFileCopyLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -648,6 +678,7 @@ function ButtonGroupVerticalNested() {
               tabler="IconShare"
               hugeicons="Share03Icon"
               phosphor="ShareIcon"
+              remixicon="RiShareLine"
             />
           </Button>
         </ButtonGroup>
@@ -658,6 +689,7 @@ function ButtonGroupVerticalNested() {
               tabler="IconFlipHorizontal"
               hugeicons="FlipHorizontalIcon"
               phosphor="ArrowsHorizontalIcon"
+              remixicon="RiArrowLeftRightLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -666,6 +698,7 @@ function ButtonGroupVerticalNested() {
               tabler="IconFlipVertical"
               hugeicons="FlipVerticalIcon"
               phosphor="ArrowsVerticalIcon"
+              remixicon="RiArrowUpDownLine"
             />
           </Button>
           <Button variant="outline" size="icon">
@@ -674,6 +707,7 @@ function ButtonGroupVerticalNested() {
               tabler="IconRotateClockwise2"
               hugeicons="Rotate01Icon"
               phosphor="ArrowClockwiseIcon"
+              remixicon="RiRefreshLine"
             />
           </Button>
         </ButtonGroup>
@@ -684,6 +718,7 @@ function ButtonGroupVerticalNested() {
               tabler="IconTrash"
               hugeicons="Delete02Icon"
               phosphor="TrashIcon"
+              remixicon="RiDeleteBinLine"
             />
           </Button>
         </ButtonGroup>
