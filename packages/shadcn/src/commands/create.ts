@@ -1,3 +1,4 @@
+import { basename, resolve } from "node:path"
 import path from "path"
 import { getPreset, getPresets, getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
@@ -15,6 +16,7 @@ import dedent from "dedent"
 import open from "open"
 import prompts from "prompts"
 
+import { validateNpmName } from "../utils/validate-pkg"
 import { initOptionsSchema, runInit } from "./init"
 
 const SHADCN_URL = "https://ui.shadcn.com"
@@ -88,10 +90,13 @@ export const create = new Command()
           message: "What is your project named?",
           initial: opts.template ? `${opts.template}-app` : "my-app",
           format: (value: string) => value.trim(),
-          validate: (value: string) =>
-            value.length > 128
-              ? `Name should be less than 128 characters.`
-              : true,
+          validate: (name) => {
+            const validation = validateNpmName(basename(resolve(name)))
+            if (validation.valid) {
+              return true
+            }
+            return "Invalid project name: " + validation.problems[0]
+          },
         })
 
         if (!enteredName) {
