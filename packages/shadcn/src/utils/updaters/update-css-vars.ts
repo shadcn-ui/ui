@@ -77,7 +77,7 @@ export async function transformCssVars(
     tailwindVersion: "v3",
     tailwindConfig: undefined,
     overwriteCssVars: false,
-    initIndex: true,
+    initIndex: false,
   }
 ) {
   options = {
@@ -85,7 +85,7 @@ export async function transformCssVars(
     tailwindVersion: "v3",
     tailwindConfig: undefined,
     overwriteCssVars: false,
-    initIndex: true,
+    initIndex: false,
     ...options,
   }
 
@@ -624,6 +624,9 @@ function updateThemePlugin(cssVars: z.infer<typeof registryItemCssVarsSchema>) {
             md: "calc(var(--radius) - 2px)",
             lg: "var(--radius)",
             xl: "calc(var(--radius) + 4px)",
+            "2xl": "calc(var(--radius) + 8px)",
+            "3xl": "calc(var(--radius) + 12px)",
+            "4xl": "calc(var(--radius) + 16px)",
           }
           for (const [key, value] of Object.entries(radiusVariables)) {
             const cssVarNode = postcss.decl({
@@ -988,6 +991,6 @@ export function isColorValue(value: string) {
     value.startsWith("rgb") ||
     value.startsWith("#") ||
     value.startsWith("oklch") ||
-    value.startsWith("var(--color-")
+    value.includes("--color-")
   )
 }

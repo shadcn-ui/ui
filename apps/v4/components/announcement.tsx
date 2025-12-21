@@ -8,7 +8,7 @@ export function Announcement() {
     <Badge asChild variant="secondary" className="bg-transparent">
       <Link href="/docs/changelog">
         <span className="flex size-2 rounded-full bg-blue-500" title="New" />
-        New Components: Field, Input Group, Item and more <ArrowRightIcon />
+        npx shadcn create <ArrowRightIcon />
       </Link>
     </Badge>
   )
