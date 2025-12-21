@@ -177,9 +177,10 @@ function CustomizerCode({ themeName }: { themeName: string }) {
 
   React.useEffect(() => {
     if (hasCopied) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setHasCopied(false)
       }, 2000)
+      return () => clearTimeout(timer)
     }
   }, [hasCopied])
 

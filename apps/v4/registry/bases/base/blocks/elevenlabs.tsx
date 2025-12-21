@@ -294,11 +294,11 @@ export function useMultibandVolume(
   useEffect(() => {
     if (!mediaStream) {
       const emptyBands = new Array(opts.bands).fill(0)
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setFrequencyBands(emptyBands)
       }, 0)
       bandsRef.current = emptyBands
-      return
+      return () => clearTimeout(timer)
     }
 
     const { analyser, cleanup } = createAudioAnalyser(
@@ -402,9 +402,10 @@ export const useBarAnimator = (
 
   useEffect(() => {
     indexRef.current = 0
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setCurrentFrame(sequence[0] || [])
     }, 0)
+    return () => clearTimeout(timer)
   }, [sequence])
 
   useEffect(() => {
@@ -513,10 +514,10 @@ const BarVisualizerComponent = React.forwardRef<
       if (state !== "speaking" && state !== "listening") {
         const bands = new Array(barCount).fill(0.2)
         fakeVolumeBandsRef.current = bands
-        setTimeout(() => {
+        const timer = setTimeout(() => {
           setFakeVolumeBands(bands)
         }, 0)
-        return
+        return () => clearTimeout(timer)
       }
 
       let lastUpdate = 0

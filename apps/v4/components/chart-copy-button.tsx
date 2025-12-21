@@ -26,9 +26,12 @@ export function ChartCopyButton({
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
-    setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
+    if (hasCopied) {
+      const timer = setTimeout(() => {
+        setHasCopied(false)
+      }, 2000)
+      return () => clearTimeout(timer)
+    }
   }, [hasCopied])
 
   return (
