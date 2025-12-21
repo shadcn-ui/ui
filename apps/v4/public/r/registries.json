@@ -58,6 +58,7 @@
   "@nativeui": "https://nativeui.io/registry/{name}.json",
   "@nexus-elements": "https://elements.nexus.availproject.org/r/{name}.json",
   "@ncdai": "https://chanhdai.com/r/{name}.json",
+  "@neobrutalism": "https://www.neobrutalism.dev/r/{name}.json",
   "@nuqs": "https://nuqs.dev/r/{name}.json",
   "@optics": "https://optics.agusmayol.com.ar/r/{name}.json",
   "@oui": "https://oui.mw10013.workers.dev/r/{name}.json",
