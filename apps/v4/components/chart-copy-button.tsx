@@ -31,43 +31,67 @@ export function ChartCopyButton({
     }, 2000)
   }, [hasCopied])
 
-  const copyToClipboard = async (text: string) => {
-    try {
-      // Try using the modern clipboard API first
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text)
-      } else {
-        // Fallback for older browsers or non-secure contexts
-        const textArea = document.createElement("textarea")
-        textArea.value = text
-        textArea.style.position = "fixed"
-        textArea.style.left = "-999999px"
-        textArea.style.top = "-999999px"
-        document.body.appendChild(textArea)
-        textArea.focus()
-        textArea.select()
+  /**
+   * Copies text to clipboard using the modern Clipboard API with fallback support.
+  
+   * Modern approach (preferred):
+   * - Uses `navigator.clipboard.writeText()` which is async and secure
+   * - Only available in secure contexts (HTTPS, localhost, or file://)
+   * - Supported in all modern browsers (Chrome 63+, Firefox 53+, Safari 13.1+, Edge 79+)
+   
+   * Fallback approach (legacy):
+   * - Uses `document.execCommand('copy')` for older browsers
+   * - Works in non-secure contexts (HTTP)
+   * - Note: This method is deprecated and may be removed in future browser versions
+   * - Used as a best-effort compatibility layer for legacy environments
+   * - Required for: IE 11, older Android browsers, and HTTP-served pages
+   */
+  const copyToClipboard = React.useCallback(
+    async (text: string) => {
+      try {
+        // Prefer the modern async clipboard API when available in secure contexts (HTTPS)
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text)
+        } else {
+          // Fallback for older browsers or non-secure contexts (e.g., HTTP, some iframes)
+          // This path handles:
+          // 1. Older browsers that don't support navigator.clipboard
+          // 2. Non-secure contexts (HTTP instead of HTTPS)
+          // 3. Browsers with clipboard API disabled
+          const textArea = document.createElement("textarea")
+          textArea.value = text
+          // Position off-screen to avoid visual flash
+          textArea.style.position = "fixed"
+          textArea.style.left = "-999999px"
+          textArea.style.top = "-999999px"
+          document.body.appendChild(textArea)
+          textArea.focus()
+          textArea.select()
 
-        try {
-          document.execCommand("copy")
-          textArea.remove()
-        } catch (err) {
-          console.error("Fallback: Could not copy text", err)
-          textArea.remove()
-          throw err
+          try {
+            // Note: execCommand is deprecated but remains the only option for non-secure contexts
+            document.execCommand("copy")
+            textArea.remove()
+          } catch (err) {
+            console.error("Fallback: Could not copy text", err)
+            textArea.remove()
+            throw err
+          }
         }
-      }
 
-      trackEvent({
-        name: event,
-        properties: {
-          name,
-        },
-      })
-      setHasCopied(true)
-    } catch (err) {
-      console.error("Failed to copy text: ", err)
-    }
-  }
+        trackEvent({
+          name: event,
+          properties: {
+            name,
+          },
+        })
+        setHasCopied(true)
+      } catch (err) {
+        console.error("Failed to copy text: ", err)
+      }
+    },
+    [event, name]
+  )
 
   return (
     <Tooltip>
