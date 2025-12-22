@@ -38,10 +38,10 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 })
 
-// const geistSans = Geist({
-//   subsets: ["latin"],
-//   variable: "--font-geist-sans",
-// })
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+})
 
 // const geistMono = Geist_Mono({
 //   subsets: ["latin"],
@@ -74,12 +74,12 @@ const outfit = Outfit({
 })
 
 export const FONTS = [
-  // {
-  //   name: "Geist Sans",
-  //   value: "geist",
-  //   font: geistSans,
-  //   type: "sans",
-  // },
+  {
+    name: "Geist Sans",
+    value: "geist",
+    font: geistSans,
+    type: "sans",
+  },
   {
     name: "Inter",
     value: "inter",
