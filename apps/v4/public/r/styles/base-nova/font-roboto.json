@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-roboto",
+  "title": "Roboto",
+  "type": "registry:font",
+  "font": {
+    "family": "'Roboto', sans-serif",
+    "provider": "google",
+    "import": "Roboto",
+    "variable": "--font-sans",
+    "subsets": [
+      "latin"
+    ]
+  }
+}
