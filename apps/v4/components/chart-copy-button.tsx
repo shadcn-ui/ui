@@ -26,9 +26,12 @@ export function ChartCopyButton({
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {
-    setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
+    if (hasCopied) {
+      const timer = setTimeout(() => {
+        setHasCopied(false)
+      }, 2000)
+      return () => clearTimeout(timer)
+    }
   }, [hasCopied])
 
   /**
@@ -55,14 +58,14 @@ export function ChartCopyButton({
         } else {
           // Fallback for older browsers or non-secure contexts (e.g., HTTP, some iframes)
           // This path handles:
-          // 1. Older browsers that don't support navigator.clipboard
+          // 1. Older browsers that don't support navigator. clipboard
           // 2. Non-secure contexts (HTTP instead of HTTPS)
           // 3. Browsers with clipboard API disabled
           const textArea = document.createElement("textarea")
           textArea.value = text
           // Position off-screen to avoid visual flash
           textArea.style.position = "fixed"
-          textArea.style.left = "-999999px"
+          textArea.style. left = "-999999px"
           textArea.style.top = "-999999px"
           document.body.appendChild(textArea)
           textArea.focus()
@@ -80,7 +83,7 @@ export function ChartCopyButton({
         }
 
         trackEvent({
-          name: event,
+          name:  event,
           properties: {
             name,
           },
