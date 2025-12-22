@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-scatter-bubble",
+  "registryDependencies": [
+    "card",
+    "chart"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/charts/chart-scatter-bubble.tsx",
+      "content": "\"use client\"\n\nimport { TrendingUp } from \"lucide-react\"\nimport {\n  CartesianGrid,\n  Scatter,\n  ScatterChart,\n  XAxis,\n  YAxis,\n  ZAxis,\n} from \"recharts\"\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/new-york-v4/ui/card\"\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  type ChartConfig,\n} from \"@/registry/new-york-v4/ui/chart\"\n\nexport const description = \"A bubble chart with three dimensions\"\n\nconst chartData = [\n  { x: 10, y: 20, z: 200 },\n  { x: 30, y: 45, z: 300 },\n  { x: 50, y: 28, z: 150 },\n  { x: 70, y: 60, z: 400 },\n  { x: 90, y: 82, z: 500 },\n  { x: 110, y: 55, z: 250 },\n  { x: 130, y: 72, z: 350 },\n  { x: 150, y: 95, z: 600 },\n]\n\nconst chartConfig = {\n  x: {\n    label: \"X Value\",\n    color: \"var(--chart-1)\",\n  },\n  y: {\n    label: \"Y Value\",\n  },\n  z: {\n    label: \"Size\",\n  },\n} satisfies ChartConfig\n\nexport function ChartScatterBubble() {\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>Bubble Chart</CardTitle>\n        <CardDescription>\n          Showing three-dimensional data relationships\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <ChartContainer config={chartConfig}>\n          <ScatterChart\n            accessibilityLayer\n            margin={{\n              left: 12,\n              right: 12,\n              top: 12,\n              bottom: 12,\n            }}\n          >\n            <CartesianGrid strokeDasharray=\"3 3\" />\n            <XAxis\n              type=\"number\"\n              dataKey=\"x\"\n              name=\"X Value\"\n              tickLine={false}\n              axisLine={false}\n              tickMargin={8}\n            />\n            <YAxis\n              type=\"number\"\n              dataKey=\"y\"\n              name=\"Y Value\"\n              tickLine={false}\n              axisLine={false}\n              tickMargin={8}\n            />\n            <ZAxis type=\"number\" dataKey=\"z\" range={[50, 250]} name=\"Size\" />\n            <ChartTooltip\n              cursor={{ strokeDasharray: \"3 3\" }}\n              content={<ChartTooltipContent />}\n            />\n            <Scatter data={chartData} fill=\"var(--color-x)\" shape=\"circle\" />\n          </ScatterChart>\n        </ChartContainer>\n      </CardContent>\n      <CardFooter className=\"flex-col items-start gap-2 text-sm\">\n        <div className=\"flex gap-2 leading-none font-medium\">\n          Bubble size represents the third dimension{\" \"}\n          <TrendingUp className=\"h-4 w-4\" />\n        </div>\n        <div className=\"text-muted-foreground leading-none\">\n          Displaying three-dimensional data in a two-dimensional chart\n        </div>\n      </CardFooter>\n    </Card>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "categories": [
+    "charts",
+    "charts-scatter"
+  ],
+  "type": "registry:block"
+}
