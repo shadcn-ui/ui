@@ -76,7 +76,7 @@ const outfit = Outfit({
 export const FONTS = [
   {
     name: "Geist Sans",
-    value: "geist",
+    value: "geist-sans",
     font: geistSans,
     type: "sans",
   },
