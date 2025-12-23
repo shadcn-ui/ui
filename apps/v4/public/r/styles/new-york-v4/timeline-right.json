@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-right",
+  "registryDependencies": [
+    "timeline"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/timeline-right.tsx",
+      "content": "import {\n  Timeline,\n  TimelineContent,\n  TimelineDescription,\n  TimelineItem,\n  TimelineMarker,\n  TimelineTime,\n  TimelineTitle,\n} from \"@/registry/new-york-v4/ui/timeline\"\n\nexport default function TimelineRightDemo() {\n  return (\n    <Timeline position=\"right\">\n      <TimelineItem>\n        <TimelineMarker />\n        <TimelineContent>\n          <TimelineTitle>Order Placed</TimelineTitle>\n          <TimelineDescription>\n            Your order has been placed successfully\n          </TimelineDescription>\n          <TimelineTime>January 15, 2024 at 9:00 AM</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem>\n        <TimelineMarker variant=\"primary\" />\n        <TimelineContent>\n          <TimelineTitle>Order Confirmed</TimelineTitle>\n          <TimelineDescription>\n            Your order has been confirmed and is being prepared\n          </TimelineDescription>\n          <TimelineTime>January 15, 2024 at 10:30 AM</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem>\n        <TimelineMarker variant=\"success\" />\n        <TimelineContent>\n          <TimelineTitle>Out for Delivery</TimelineTitle>\n          <TimelineDescription>\n            Your order is out for delivery\n          </TimelineDescription>\n          <TimelineTime>January 16, 2024 at 2:00 PM</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem>\n        <TimelineMarker />\n        <TimelineContent>\n          <TimelineTitle>Delivered</TimelineTitle>\n          <TimelineDescription>\n            Your order has been delivered successfully\n          </TimelineDescription>\n          <TimelineTime>January 16, 2024 at 4:30 PM</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n    </Timeline>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

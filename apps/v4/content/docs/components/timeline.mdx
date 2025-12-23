@@ -1,0 +1,250 @@
+---
+title: Timeline
+description: Display a timeline of events in chronological order.
+component: true
+---
+
+<ComponentPreview
+  name="timeline-demo"
+  title="Timeline"
+  description="A vertical timeline showing events in chronological order"
+  align="start"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add timeline
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="timeline" title="components/ui/timeline.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Timeline,
+  TimelineContent,
+  TimelineDescription,
+  TimelineItem,
+  TimelineMarker,
+  TimelineTime,
+  TimelineTitle,
+} from "@/components/ui/timeline"
+```
+
+```tsx
+<Timeline>
+  <TimelineItem>
+    <TimelineMarker />
+    <TimelineContent>
+      <TimelineTitle>Event Title</TimelineTitle>
+      <TimelineDescription>Event description goes here</TimelineDescription>
+      <TimelineTime>2024-01-15 10:30 AM</TimelineTime>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+## Examples
+
+### With Icons
+
+You can add custom icons to timeline markers using the `icon` prop.
+
+<ComponentPreview
+  name="timeline-with-icons"
+  title="Timeline with Icons"
+  description="Timeline with custom icons in markers"
+  align="start"
+/>
+
+```tsx
+import { CheckCircle2Icon } from "lucide-react"
+
+;<Timeline>
+  <TimelineItem>
+    <TimelineMarker
+      variant="success"
+      icon={<CheckCircle2Icon className="size-3" />}
+    />
+    <TimelineContent>
+      <TimelineTitle>Order Confirmed</TimelineTitle>
+      <TimelineDescription>Your order has been confirmed</TimelineDescription>
+      <TimelineTime>January 15, 2024 at 10:30 AM</TimelineTime>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+### Right Position
+
+Timeline can be positioned on the right side with markers on the right and content on the left.
+
+<ComponentPreview
+  name="timeline-right"
+  title="Right Position Timeline"
+  description="Timeline with right-aligned markers"
+  align="start"
+/>
+
+```tsx
+<Timeline position="right">
+  <TimelineItem>
+    <TimelineMarker />
+    <TimelineContent>
+      <TimelineTitle>Event Title</TimelineTitle>
+      <TimelineDescription>Event description</TimelineDescription>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+### Alternate Position
+
+Timeline can alternate between left and right positions, perfect for roadmaps or project milestones.
+
+<ComponentPreview
+  name="timeline-alternate"
+  title="Alternate Position Timeline"
+  description="Timeline with alternating left and right positions"
+  align="start"
+/>
+
+```tsx
+<Timeline position="alternate">
+  <TimelineItem>
+    <TimelineMarker />
+    <TimelineContent>
+      <TimelineTitle>First Event</TimelineTitle>
+      <TimelineDescription>This appears on the left</TimelineDescription>
+    </TimelineContent>
+  </TimelineItem>
+  <TimelineItem>
+    <TimelineMarker variant="primary" />
+    <TimelineContent>
+      <TimelineTitle>Second Event</TimelineTitle>
+      <TimelineDescription>This appears on the right</TimelineDescription>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+### Center Position
+
+Timeline with a centered vertical line and content alternating on both sides. Perfect for project roadmaps and process flows.
+
+<ComponentPreview
+  name="timeline-center"
+  title="Center Position Timeline"
+  description="Timeline with centered line and alternating content"
+  align="start"
+/>
+
+```tsx
+import { TimelineSpacer } from "@/components/ui/timeline"
+
+;<Timeline position="center">
+  {/* Left side content */}
+  <TimelineItem>
+    <TimelineContent>
+      <TimelineTitle>Step 1</TimelineTitle>
+      <TimelineDescription>Content on the left</TimelineDescription>
+    </TimelineContent>
+    <TimelineMarker />
+    <TimelineSpacer />
+  </TimelineItem>
+
+  {/* Right side content */}
+  <TimelineItem>
+    <TimelineSpacer />
+    <TimelineMarker />
+    <TimelineContent>
+      <TimelineTitle>Step 2</TimelineTitle>
+      <TimelineDescription>Content on the right</TimelineDescription>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+### Variants
+
+The `TimelineMarker` component supports different variants for different states.
+
+```tsx
+<Timeline>
+  <TimelineItem>
+    <TimelineMarker variant="default" />
+    <TimelineContent>
+      <TimelineTitle>Default</TimelineTitle>
+    </TimelineContent>
+  </TimelineItem>
+  <TimelineItem>
+    <TimelineMarker variant="primary" />
+    <TimelineContent>
+      <TimelineTitle>Primary</TimelineTitle>
+    </TimelineContent>
+  </TimelineItem>
+  <TimelineItem>
+    <TimelineMarker variant="success" />
+    <TimelineContent>
+      <TimelineTitle>Success</TimelineTitle>
+    </TimelineContent>
+  </TimelineItem>
+  <TimelineItem>
+    <TimelineMarker variant="warning" />
+    <TimelineContent>
+      <TimelineTitle>Warning</TimelineTitle>
+    </TimelineContent>
+  </TimelineItem>
+  <TimelineItem>
+    <TimelineMarker variant="destructive" />
+    <TimelineContent>
+      <TimelineTitle>Destructive</TimelineTitle>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+## Components
+
+The Timeline component is composed of several sub-components:
+
+- `Timeline` - The root container component
+- `TimelineItem` - Individual timeline entry
+- `TimelineMarker` - Visual indicator (dot or icon) with variant support
+- `TimelineContent` - Content wrapper for each timeline item
+- `TimelineSpacer` - Spacer element for center position layout
+- `TimelineTitle` - Title/heading for the event
+- `TimelineDescription` - Description text for the event
+- `TimelineTime` - Time display element

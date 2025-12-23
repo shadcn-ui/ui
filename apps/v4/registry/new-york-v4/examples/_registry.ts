@@ -2170,6 +2170,61 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "timeline-demo",
+    type: "registry:example",
+    registryDependencies: ["timeline"],
+    files: [
+      {
+        path: "examples/timeline-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "timeline-with-icons",
+    type: "registry:example",
+    registryDependencies: ["timeline"],
+    files: [
+      {
+        path: "examples/timeline-with-icons.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "timeline-right",
+    type: "registry:example",
+    registryDependencies: ["timeline"],
+    files: [
+      {
+        path: "examples/timeline-right.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "timeline-alternate",
+    type: "registry:example",
+    registryDependencies: ["timeline"],
+    files: [
+      {
+        path: "examples/timeline-alternate.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "timeline-center",
+    type: "registry:example",
+    registryDependencies: ["timeline"],
+    files: [
+      {
+        path: "examples/timeline-center.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "toast-demo",
     type: "registry:example",
     registryDependencies: ["toast"],

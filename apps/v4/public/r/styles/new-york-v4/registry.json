@@ -735,6 +735,19 @@
       "type": "registry:ui"
     },
     {
+      "name": "timeline",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/timeline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "toggle",
       "dependencies": [
         "@radix-ui/react-toggle"
@@ -7048,6 +7061,71 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/textarea-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "timeline-demo",
+      "registryDependencies": [
+        "timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/timeline-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "timeline-with-icons",
+      "registryDependencies": [
+        "timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/timeline-with-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "timeline-right",
+      "registryDependencies": [
+        "timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/timeline-right.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "timeline-alternate",
+      "registryDependencies": [
+        "timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/timeline-alternate.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "timeline-center",
+      "registryDependencies": [
+        "timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/timeline-center.tsx",
           "type": "registry:example"
         }
       ],

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-demo",
+  "registryDependencies": [
+    "timeline"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/timeline-demo.tsx",
+      "content": "import {\n  Timeline,\n  TimelineContent,\n  TimelineDescription,\n  TimelineItem,\n  TimelineMarker,\n  TimelineTime,\n  TimelineTitle,\n} from \"@/registry/new-york-v4/ui/timeline\"\n\nexport default function TimelineDemo() {\n  return (\n    <Timeline>\n      <TimelineItem>\n        <TimelineMarker />\n        <TimelineContent>\n          <TimelineTitle>Order Placed</TimelineTitle>\n          <TimelineDescription>\n            Your order has been confirmed and is being processed.\n          </TimelineDescription>\n          <TimelineTime>2024-01-15 10:30 AM</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n\n      <TimelineItem>\n        <TimelineMarker variant=\"success\" />\n        <TimelineContent>\n          <TimelineTitle>Shipped</TimelineTitle>\n          <TimelineDescription>\n            Your package has been shipped and is on its way.\n          </TimelineDescription>\n          <TimelineTime>2024-01-16 02:20 PM</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n\n      <TimelineItem>\n        <TimelineMarker variant=\"primary\" />\n        <TimelineContent>\n          <TimelineTitle>Out for Delivery</TimelineTitle>\n          <TimelineDescription>\n            Your package is out for delivery and will arrive soon.\n          </TimelineDescription>\n          <TimelineTime>2024-01-17 09:15 AM</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n\n      <TimelineItem>\n        <TimelineMarker />\n        <TimelineContent>\n          <TimelineTitle>Delivered</TimelineTitle>\n          <TimelineDescription>\n            Your package has been successfully delivered.\n          </TimelineDescription>\n        </TimelineContent>\n      </TimelineItem>\n    </Timeline>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
