@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { type ImperativePanelHandle } from "react-resizable-panels"
+import { usePanelRef } from "react-resizable-panels"
 
 import { DARK_MODE_FORWARD_TYPE } from "@/components/mode-switcher"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
@@ -16,7 +16,7 @@ import {
 export function Preview() {
   const [params] = useDesignSystemSearchParams()
   const iframeRef = React.useRef<HTMLIFrameElement>(null)
-  const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
+  const resizablePanelRef = usePanelRef()
 
   // Sync resizable panel with URL param changes.
   React.useEffect(() => {
