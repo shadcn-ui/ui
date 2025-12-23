@@ -114,7 +114,7 @@ describe("resolveFilePath", () => {
         type: "registry:ui",
         target: "design-system/ui/button.tsx",
       },
-      resolvedPath: "/foo/bar/src/create-system/ui/button.tsx",
+      resolvedPath: "/foo/bar/src/design-system/ui/button.tsx",
       projectInfo: {
         isSrcDir: true,
       },

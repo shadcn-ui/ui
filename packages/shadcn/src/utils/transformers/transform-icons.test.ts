@@ -11,7 +11,7 @@ const testConfig: Config = {
   tailwind: {
     baseColor: "neutral",
     cssVariables: true,
-    config: "tailwind.config.ts",
+    config: "",
     css: "tailwind.css",
   },
   aliases: {
@@ -25,7 +25,7 @@ const testConfig: Config = {
     ui: "/ui",
     lib: "/lib",
     hooks: "/hooks",
-    tailwindConfig: "tailwind.config.ts",
+    tailwindConfig: "",
     tailwindCss: "tailwind.css",
   },
 }
@@ -572,9 +572,9 @@ export function Component() {
     `)
   })
 
-  test("throws InvalidConfigIconLibraryError for invalid icon library", async () => {
-    await expect(
-      transform(
+  test("does not transform for invalid icon library", async () => {
+    expect(
+      await transform(
         {
           filename: "test.tsx",
           raw: `import * as React from "react"
@@ -590,12 +590,14 @@ export function Component() {
         },
         [transformIcons]
       )
-    ).rejects.toMatchObject({
-      name: "InvalidConfigIconLibraryError",
-      message:
-        'Invalid icon library "invalid-library". Valid options are: lucide, tabler, hugeicons',
-      code: "INVALID_CONFIG",
-    })
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { IconPlaceholder } from "@/app/(create)/create/components/icon-placeholder"
+
+      export function Component() {
+        return <IconPlaceholder lucide="CheckIcon" />
+      }"
+    `)
   })
 
   test("does not forward library-specific props (lucide)", async () => {

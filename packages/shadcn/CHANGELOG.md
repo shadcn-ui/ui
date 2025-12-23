@@ -1,5 +1,19 @@
 # @shadcn/ui
 
+## 3.6.2
+
+### Patch Changes
+
+- [#9126](https://github.com/shadcn-ui/ui/pull/9126) [`df67e49aac8c87da59a4257164f55ef0f53b55de`](https://github.com/shadcn-ui/ui/commit/df67e49aac8c87da59a4257164f55ef0f53b55de) Thanks [@shadcn](https://github.com/shadcn)! - add create command to readme
+
+- [#9044](https://github.com/shadcn-ui/ui/pull/9044) [`137b1c12b7bde1318c8781680b41ae449e40df8f`](https://github.com/shadcn-ui/ui/commit/137b1c12b7bde1318c8781680b41ae449e40df8f) Thanks [@mezotv](https://github.com/mezotv)! - add phosphor icons
+
+## 3.6.1
+
+### Patch Changes
+
+- [#9054](https://github.com/shadcn-ui/ui/pull/9054) [`d3156c09ae1df2321c0505db6b2e637374e320f7`](https://github.com/shadcn-ui/ui/commit/d3156c09ae1df2321c0505db6b2e637374e320f7) Thanks [@shadcn](https://github.com/shadcn)! - fix resolver for url
+
 ## 3.6.0
 
 ### Minor Changes
