@@ -155,7 +155,7 @@
   }
 
   .cn-button-variant-outline {
-    @apply border-border dark:bg-input/20 dark:bg-input/30 hover:bg-input/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground;
+    @apply border-border dark:bg-input/30 dark:hover:bg-input/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground;
   }
 
   .cn-button-variant-secondary {
