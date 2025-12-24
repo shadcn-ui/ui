@@ -164,6 +164,8 @@ Timeline can alternate between left and right positions, perfect for roadmaps or
 
 Timeline with a centered vertical line and content alternating on both sides. Perfect for project roadmaps and process flows.
 
+In center position, manually arrange `TimelineContent`, `TimelineMarker`, and `TimelineSpacer` to control which side content appears on. Place content before the marker for left-side display, or after the marker (with `TimelineSpacer` first) for right-side display.
+
 <ComponentPreview
   name="timeline-center"
   title="Center Position Timeline"
@@ -175,7 +177,7 @@ Timeline with a centered vertical line and content alternating on both sides. Pe
 import { TimelineSpacer } from "@/components/ui/timeline"
 
 ;<Timeline position="center">
-  {/* Left side content */}
+  {/* Left column - text is right-aligned towards the center line */}
   <TimelineItem>
     <TimelineContent>
       <TimelineTitle>Step 1</TimelineTitle>
@@ -185,7 +187,7 @@ import { TimelineSpacer } from "@/components/ui/timeline"
     <TimelineSpacer />
   </TimelineItem>
 
-  {/* Right side content */}
+  {/* Right column - text is left-aligned towards the center line */}
   <TimelineItem>
     <TimelineSpacer />
     <TimelineMarker />

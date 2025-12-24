@@ -42,6 +42,7 @@ const Timeline = React.forwardRef<HTMLOListElement, TimelineProps>(
     const timelinePosition = position ?? "left"
 
     // Wrap children to inject index for each TimelineItem
+    // Non-element children (null, strings, etc.) are passed through unchanged
     const childrenWithIndex = React.Children.map(children, (child, index) => {
       if (React.isValidElement(child)) {
         return (
@@ -169,7 +170,7 @@ interface TimelineMarkerProps
 const TimelineMarker = React.forwardRef<HTMLDivElement, TimelineMarkerProps>(
   ({ className, variant, icon, ...props }, ref) => {
     const { position } = React.useContext(TimelineContext)
-    const ariaLabel = variantLabels[variant || "default"]
+    const ariaLabel = variantLabels[variant ?? "default"]
 
     return (
       <div
@@ -198,7 +199,6 @@ const TimelineMarker = React.forwardRef<HTMLDivElement, TimelineMarkerProps>(
               )}
             />
           )}
-          <span className="sr-only">{variantLabels[variant ?? "default"]}</span>
         </div>
         <div
           className="bg-border absolute top-6 h-full w-px [li:last-child_&]:hidden"
