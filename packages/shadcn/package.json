@@ -83,6 +83,7 @@
     "@dotenvx/dotenvx": "^1.48.4",
     "@modelcontextprotocol/sdk": "^1.17.2",
     "browserslist": "^4.26.2",
+    "change-case": "^5.4.4",
     "commander": "^14.0.0",
     "cosmiconfig": "^9.0.0",
     "dedent": "^1.6.0",
