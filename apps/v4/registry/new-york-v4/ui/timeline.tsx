@@ -3,7 +3,7 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn } from "@/registry/new-york-v4/lib/utils"
+import { cn } from "@/lib/utils"
 
 // ============================================
 // Context for position and index
@@ -57,6 +57,7 @@ const Timeline = React.forwardRef<HTMLOListElement, TimelineProps>(
       <TimelineContext.Provider value={{ position: timelinePosition }}>
         <ol
           ref={ref}
+          role="list"
           data-slot="timeline"
           data-position={timelinePosition}
           className={cn(
@@ -93,6 +94,7 @@ const TimelineItem = React.forwardRef<
     return (
       <li
         ref={ref}
+        role="listitem"
         data-slot="timeline-item"
         data-position={isEven ? "left" : "right"}
         className={cn(
@@ -109,6 +111,7 @@ const TimelineItem = React.forwardRef<
   return (
     <li
       ref={ref}
+      role="listitem"
       data-slot="timeline-item"
       data-position={isRight ? "right" : "left"}
       className={cn(
@@ -139,7 +142,8 @@ const timelineMarkerVariants = cva(
           "border-green-500 bg-green-500 dark:border-green-600 dark:bg-green-600",
         warning:
           "border-yellow-500 bg-yellow-500 dark:border-yellow-600 dark:bg-yellow-600",
-        destructive: "border-destructive bg-destructive",
+        destructive:
+          "border-destructive bg-destructive text-destructive-foreground",
       },
     },
     defaultVariants: {
@@ -147,6 +151,14 @@ const timelineMarkerVariants = cva(
     },
   }
 )
+
+const variantLabels = {
+  default: "Event",
+  primary: "Important",
+  success: "Completed",
+  warning: "Warning",
+  destructive: "Error",
+}
 
 interface TimelineMarkerProps
   extends React.ComponentProps<"div">,
@@ -157,6 +169,7 @@ interface TimelineMarkerProps
 const TimelineMarker = React.forwardRef<HTMLDivElement, TimelineMarkerProps>(
   ({ className, variant, icon, ...props }, ref) => {
     const { position } = React.useContext(TimelineContext)
+    const ariaLabel = variantLabels[variant || "default"]
 
     return (
       <div
@@ -169,20 +182,23 @@ const TimelineMarker = React.forwardRef<HTMLDivElement, TimelineMarkerProps>(
           ref={ref}
           data-slot="timeline-marker"
           className={cn(timelineMarkerVariants({ variant }), className)}
+          aria-label={ariaLabel}
+          role="status"
           {...props}
         >
           {icon ? (
-            <div className="text-background flex size-3 items-center justify-center">
+            <div className="flex size-3 items-center justify-center text-current">
               {icon}
             </div>
           ) : (
             <div
               className={cn(
                 "size-2 rounded-full",
-                variant === "default" ? "bg-muted-foreground" : "bg-background"
+                variant === "default" ? "bg-muted-foreground" : "bg-current"
               )}
             />
           )}
+          <span className="sr-only">{variantLabels[variant ?? "default"]}</span>
         </div>
         <div
           className="bg-border absolute top-6 h-full w-px [li:last-child_&]:hidden"
@@ -251,7 +267,7 @@ const TimelineSpacer = React.forwardRef<
     <div
       ref={ref}
       data-slot="timeline-spacer"
-      className={cn("", className)}
+      className={cn("min-w-0 flex-1", className)}
       {...props}
     />
   )
