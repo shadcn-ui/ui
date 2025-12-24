@@ -525,8 +525,8 @@ importers:
         specifier: ^26.0.0
         version: 26.0.0
       ts-morph-react:
-        specifier: ^1.0.4
-        version: 1.0.4(jiti@2.6.1)(typescript@5.9.2)
+        specifier: ^1.0.5
+        version: 1.0.5(jiti@2.6.1)(typescript@5.9.2)
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -7889,8 +7889,8 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  ts-morph-react@1.0.4:
-    resolution: {integrity: sha512-RkrNprnHSuKEVAjVmpypQqxvRGCM1f3cW4loS4c4TG8HoaIPECNF+PSH6WGdliXq/Ud6kPJvkCPgEMVo9KdVaw==}
+  ts-morph-react@1.0.5:
+    resolution: {integrity: sha512-xKdZCmBLsMY2a5ohBw+5cZeBvtWD+zlJjYk18jPwOzvR+gTWcnDBu0Yhw7P30IgzUJbXMsUHtoHHllBb9GvmKA==}
 
   ts-morph@26.0.0:
     resolution: {integrity: sha512-ztMO++owQnz8c/gIENcM9XfCEzgoGphTv+nKpYNM1bgsdOVC/jRZuEBf6N+mLLDNg68Kl+GgUZfOySaRiG1/Ug==}
@@ -16919,7 +16919,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-morph-react@1.0.4(jiti@2.6.1)(typescript@5.9.2):
+  ts-morph-react@1.0.5(jiti@2.6.1)(typescript@5.9.2):
     dependencies:
       '@eslint/core': 1.0.0
       '@eslint/js': 9.39.2
