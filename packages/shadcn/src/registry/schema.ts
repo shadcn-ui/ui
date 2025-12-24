@@ -49,6 +49,7 @@ export const rawConfigSchema = z
         enforceFormat: z.boolean().default(false).optional(),
         enforceEslint: z.boolean().default(false).optional(),
         enforcePrettier: z.boolean().default(false).optional(),
+        enforceLineSeparation: z.boolean().default(false).optional(),
         format: z.any(),
         eslint: z.any(),
         prettier: z.any(),

@@ -525,8 +525,8 @@ importers:
         specifier: ^26.0.0
         version: 26.0.0
       ts-morph-react:
-        specifier: ^1.0.3
-        version: 1.0.3(jiti@2.6.1)(typescript@5.9.2)
+        specifier: ^1.0.4
+        version: 1.0.4(jiti@2.6.1)(typescript@5.9.2)
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -7889,8 +7889,8 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  ts-morph-react@1.0.3:
-    resolution: {integrity: sha512-GudOt0Qq7wO43fiO29MW0KznPFpGlCf0VWwNrMWLVJ7yKikU5YMYq9D1VAXYZVzvhTCVIyLIBSvnmdZ6uThtcw==}
+  ts-morph-react@1.0.4:
+    resolution: {integrity: sha512-RkrNprnHSuKEVAjVmpypQqxvRGCM1f3cW4loS4c4TG8HoaIPECNF+PSH6WGdliXq/Ud6kPJvkCPgEMVo9KdVaw==}
 
   ts-morph@26.0.0:
     resolution: {integrity: sha512-ztMO++owQnz8c/gIENcM9XfCEzgoGphTv+nKpYNM1bgsdOVC/jRZuEBf6N+mLLDNg68Kl+GgUZfOySaRiG1/Ug==}
@@ -9311,11 +9311,6 @@ snapshots:
   '@eslint-community/eslint-utils@4.7.0(eslint@9.33.0(jiti@2.6.1))':
     dependencies:
       eslint: 9.33.0(jiti@2.6.1)
-      eslint-visitor-keys: 3.4.3
-
-  '@eslint-community/eslint-utils@4.7.0(eslint@9.39.2(jiti@2.6.1))':
-    dependencies:
-      eslint: 9.39.2(jiti@2.6.1)
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/eslint-utils@4.9.0(eslint@9.39.2(jiti@2.6.1))':
@@ -11210,7 +11205,7 @@ snapshots:
   '@stylistic/eslint-plugin@5.6.1(eslint@9.39.2(jiti@2.6.1))':
     dependencies:
       '@eslint-community/eslint-utils': 4.9.0(eslint@9.39.2(jiti@2.6.1))
-      '@typescript-eslint/types': 8.49.0
+      '@typescript-eslint/types': 8.50.1
       eslint: 9.39.2(jiti@2.6.1)
       eslint-visitor-keys: 4.2.1
       espree: 10.4.0
@@ -11807,7 +11802,7 @@ snapshots:
 
   '@typescript-eslint/utils@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.2)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.7.0(eslint@9.39.2(jiti@2.6.1))
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.39.2(jiti@2.6.1))
       '@typescript-eslint/scope-manager': 8.50.1
       '@typescript-eslint/types': 8.50.1
       '@typescript-eslint/typescript-estree': 8.50.1(typescript@5.9.2)
@@ -16924,7 +16919,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-morph-react@1.0.3(jiti@2.6.1)(typescript@5.9.2):
+  ts-morph-react@1.0.4(jiti@2.6.1)(typescript@5.9.2):
     dependencies:
       '@eslint/core': 1.0.0
       '@eslint/js': 9.39.2

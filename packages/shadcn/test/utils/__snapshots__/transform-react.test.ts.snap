@@ -3,21 +3,20 @@
 exports[`combined 1`] = `
 "'use client'
 
-import { cn } from '@/lib/utils'
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { type FunctionComponent, type PropsWithChildren, createContext } from 'react'
+
+import { cn } from '@/lib/utils'
 
 type ExampleContextProps = { content: string }
 
 const ExampleContext = createContext<ExampleContextProps | null>(null)
-
 export const ExampleProvider: FunctionComponent<PropsWithChildren<{ value: ExampleContextProps }>> = ({
   value,
   ...props
 }) => {
   return <ExampleContext.Provider value={value}>{props.children}</ExampleContext.Provider>
 }
-
 export const Example: FunctionComponent<ButtonPrimitive.Props & { content: string }> = ({
   content,
   className,
@@ -35,9 +34,10 @@ export const Example: FunctionComponent<ButtonPrimitive.Props & { content: strin
 exports[`enforceDirectExports 1`] = `
 "'use client'
 
-import { cn } from '@/lib/utils'
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import * as React from 'react'
+
+import { cn } from '@/lib/utils'
 
 type ExampleContextProps = { content: string }
 
@@ -60,21 +60,20 @@ export function Example({ content, className, ...props }: ButtonPrimitive.Props 
 exports[`enforceFunctionComponent 1`] = `
 "'use client'
 
-import { cn } from '@/lib/utils'
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import * as React from 'react'
+
+import { cn } from '@/lib/utils'
 
 type ExampleContextProps = { content: string }
 
 const ExampleContext = React.createContext<ExampleContextProps | null>(null)
-
 const ExampleProvider: React.FunctionComponent<React.PropsWithChildren<{ value: ExampleContextProps }>> = ({
   value,
   ...props
 }) => {
   return <ExampleContext.Provider value={value}>{props.children}</ExampleContext.Provider>
 }
-
 const Example: React.FunctionComponent<ButtonPrimitive.Props & { content: string }> = ({
   content,
   className,
@@ -86,7 +85,6 @@ const Example: React.FunctionComponent<ButtonPrimitive.Props & { content: string
     </ExampleProvider>
   )
 }
-
 export { Example, ExampleProvider }
 "
 `;
@@ -94,9 +92,10 @@ export { Example, ExampleProvider }
 exports[`enforceNamedImports 1`] = `
 "'use client'
 
-import { cn } from '@/lib/utils'
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { type PropsWithChildren, createContext } from 'react'
+
+import { cn } from '@/lib/utils'
 
 type ExampleContextProps = { content: string }
 
