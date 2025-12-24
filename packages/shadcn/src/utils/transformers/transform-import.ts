@@ -1,3 +1,4 @@
+import { formatFileName } from "@/src/utils/format"
 import { Config } from "@/src/utils/get-config"
 import { Transformer } from "@/src/utils/transformers"
 import { SyntaxKind } from "ts-morph"
@@ -73,9 +74,12 @@ function updateImportAliases(
   }
 
   if (moduleSpecifier.match(/^@\/registry\/(.+)\/ui/)) {
-    return moduleSpecifier.replace(
-      /^@\/registry\/(.+)\/ui/,
-      config.aliases.ui ?? `${config.aliases.components}/ui`
+    return formatFileName(
+      moduleSpecifier.replace(
+        /^@\/registry\/(.+)\/ui/,
+        config.aliases.ui ?? `${config.aliases.components}/ui`
+      ),
+      config.fileCase
     )
   }
 
@@ -83,9 +87,12 @@ function updateImportAliases(
     config.aliases.components &&
     moduleSpecifier.match(/^@\/registry\/(.+)\/components/)
   ) {
-    return moduleSpecifier.replace(
-      /^@\/registry\/(.+)\/components/,
-      config.aliases.components
+    return formatFileName(
+      moduleSpecifier.replace(
+        /^@\/registry\/(.+)\/components/,
+        config.aliases.components
+      ),
+      config.fileCase
     )
   }
 
