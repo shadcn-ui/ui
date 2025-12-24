@@ -17,8 +17,11 @@ export const ExampleProvider: FunctionComponent<PropsWithChildren<{ value: Examp
 }) => {
   return <ExampleContext.Provider value={value}>{props.children}</ExampleContext.Provider>
 }
-
-export function Example({ content, className, ...props }: ButtonPrimitive.Props & { content: string }) {
+export const Example: FunctionComponent<ButtonPrimitive.Props & { content: string }> = ({
+  content,
+  className,
+  ...props
+}) => {
   return (
     <ExampleProvider value={{ content }}>
       <ButtonPrimitive className={cn('p-2', className)} {...props} />
@@ -71,15 +74,17 @@ const ExampleProvider: React.FunctionComponent<React.PropsWithChildren<{ value: 
 }) => {
   return <ExampleContext.Provider value={value}>{props.children}</ExampleContext.Provider>
 }
-
-function Example({ content, className, ...props }: ButtonPrimitive.Props & { content: string }) {
+const Example: React.FunctionComponent<ButtonPrimitive.Props & { content: string }> = ({
+  content,
+  className,
+  ...props
+}) => {
   return (
     <ExampleProvider value={{ content }}>
       <ButtonPrimitive className={cn('p-2', className)} {...props} />
     </ExampleProvider>
   )
 }
-
 export { Example, ExampleProvider }
 "
 `;
