@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-alternate",
+  "registryDependencies": [
+    "timeline"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/timeline-alternate.tsx",
+      "content": "import {\n  Timeline,\n  TimelineContent,\n  TimelineDescription,\n  TimelineItem,\n  TimelineMarker,\n  TimelineTime,\n  TimelineTitle,\n} from \"@/registry/new-york-v4/ui/timeline\"\n\nexport default function TimelineAlternateDemo() {\n  return (\n    <Timeline position=\"alternate\">\n      <TimelineItem>\n        <TimelineMarker />\n        <TimelineContent>\n          <TimelineTitle>Project Started</TimelineTitle>\n          <TimelineDescription>\n            Initial project setup and planning phase completed.\n          </TimelineDescription>\n          <TimelineTime>January 2024</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n\n      <TimelineItem>\n        <TimelineMarker variant=\"primary\" />\n        <TimelineContent>\n          <TimelineTitle>Design Phase</TimelineTitle>\n          <TimelineDescription>\n            UI/UX design completed with stakeholder approval.\n          </TimelineDescription>\n          <TimelineTime>February 2024</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n\n      <TimelineItem>\n        <TimelineMarker variant=\"success\" />\n        <TimelineContent>\n          <TimelineTitle>Development</TimelineTitle>\n          <TimelineDescription>\n            Core features implemented and tested.\n          </TimelineDescription>\n          <TimelineTime>March 2024</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n\n      <TimelineItem>\n        <TimelineMarker variant=\"warning\" />\n        <TimelineContent>\n          <TimelineTitle>Beta Release</TimelineTitle>\n          <TimelineDescription>\n            Beta version released to early adopters for feedback.\n          </TimelineDescription>\n          <TimelineTime>April 2024</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n\n      <TimelineItem>\n        <TimelineMarker variant=\"primary\" />\n        <TimelineContent>\n          <TimelineTitle>Launch</TimelineTitle>\n          <TimelineDescription>\n            Official product launch to the public.\n          </TimelineDescription>\n          <TimelineTime>May 2024</TimelineTime>\n        </TimelineContent>\n      </TimelineItem>\n    </Timeline>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
