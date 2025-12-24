@@ -41,6 +41,20 @@ export const rawConfigSchema = z
     iconLibrary: z.string().optional(),
     menuColor: z.enum(["default", "inverted"]).default("default").optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
+    transform: z
+      .object({
+        enforceDirectExports: z.boolean().default(false).optional(),
+        enforceFunctionComponent: z.boolean().default(false).optional(),
+        enforceNamedImports: z.boolean().default(false).optional(),
+        enforceFormat: z.boolean().default(false).optional(),
+        enforceEslint: z.boolean().default(false).optional(),
+        enforcePrettier: z.boolean().default(false).optional(),
+        enforceLineSeparation: z.boolean().default(false).optional(),
+        format: z.any(),
+        eslint: z.any(),
+        prettier: z.any(),
+      })
+      .optional(),
     aliases: z.object({
       components: z.string(),
       utils: z.string(),
