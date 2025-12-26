@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "3.5.2",
+  "version": "3.6.2",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shadcn/ui.git",
+    "url": "https://github.com/shadcn-ui/ui.git",
     "directory": "packages/shadcn"
   },
   "files": [
@@ -42,6 +42,17 @@
     "./mcp": {
       "types": "./dist/mcp/index.d.ts",
       "default": "./dist/mcp/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "default": "./dist/icons/index.js"
+    },
+    "./tailwind.css": {
+      "style": "./dist/tailwind.css"
     }
   },
   "bin": "./dist/index.js",
@@ -85,8 +96,10 @@
     "kleur": "^4.1.5",
     "msw": "^2.10.4",
     "node-fetch": "^3.3.2",
+    "open": "^11.0.0",
     "ora": "^8.2.0",
     "postcss": "^8.5.6",
+    "postcss-selector-parser": "^7.1.0",
     "prompts": "^2.4.2",
     "recast": "^0.23.11",
     "stringify-object": "^5.0.0",

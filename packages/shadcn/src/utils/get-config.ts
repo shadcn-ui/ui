@@ -216,7 +216,7 @@ export async function getTargetStyleFromConfig(cwd: string, fallback: string) {
   return projectInfo?.tailwindVersion === "v4" ? "new-york-v4" : fallback
 }
 
-type DeepPartial<T> = {
+export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
 }
 

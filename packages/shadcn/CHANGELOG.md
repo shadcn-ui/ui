@@ -1,5 +1,27 @@
 # @shadcn/ui
 
+## 3.6.2
+
+### Patch Changes
+
+- [#9126](https://github.com/shadcn-ui/ui/pull/9126) [`df67e49aac8c87da59a4257164f55ef0f53b55de`](https://github.com/shadcn-ui/ui/commit/df67e49aac8c87da59a4257164f55ef0f53b55de) Thanks [@shadcn](https://github.com/shadcn)! - add create command to readme
+
+- [#9044](https://github.com/shadcn-ui/ui/pull/9044) [`137b1c12b7bde1318c8781680b41ae449e40df8f`](https://github.com/shadcn-ui/ui/commit/137b1c12b7bde1318c8781680b41ae449e40df8f) Thanks [@mezotv](https://github.com/mezotv)! - add phosphor icons
+
+## 3.6.1
+
+### Patch Changes
+
+- [#9054](https://github.com/shadcn-ui/ui/pull/9054) [`d3156c09ae1df2321c0505db6b2e637374e320f7`](https://github.com/shadcn-ui/ui/commit/d3156c09ae1df2321c0505db6b2e637374e320f7) Thanks [@shadcn](https://github.com/shadcn)! - fix resolver for url
+
+## 3.6.0
+
+### Minor Changes
+
+- [#9022](https://github.com/shadcn-ui/ui/pull/9022) [`86d9b00084affa7010e6c7c7bd410ec62525caac`](https://github.com/shadcn-ui/ui/commit/86d9b00084affa7010e6c7c7bd410ec62525caac) Thanks [@shadcn](https://github.com/shadcn)! - add registry:base item type
+
+- [#9022](https://github.com/shadcn-ui/ui/pull/9022) [`86d9b00084affa7010e6c7c7bd410ec62525caac`](https://github.com/shadcn-ui/ui/commit/86d9b00084affa7010e6c7c7bd410ec62525caac) Thanks [@shadcn](https://github.com/shadcn)! - add npx shadcn create
+
 ## 3.5.2
 
 ### Patch Changes
