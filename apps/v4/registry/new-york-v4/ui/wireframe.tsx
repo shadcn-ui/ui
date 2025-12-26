@@ -2,6 +2,8 @@ import type { ClassValue } from "clsx"
 
 import { cn } from "@/lib/utils"
 
+const SAFE_AREA_INSETS_ENABLED_BY_DEFAULT = false
+
 const defaultConfig: ClassValue[] = [
   // NO BOTTOM NAV, ADD BOTTOM SAFE AREA INSET
   "not-has-data-wf-bottom-nav:mb-[env(safe-area-inset-bottom)]",
@@ -33,15 +35,15 @@ const defaultConfig: ClassValue[] = [
   "min-wf-nav:has-data-wf-responsive-nav:mt-[calc(var(--top-nav-height)+var(--top-nav-top-offset)+var(--top-nav-bottom-offset)+env(safe-area-inset-top))] min-wf-nav:has-data-wf-responsive-nav:mb-[env(safe-area-inset-bottom)]",
 
   // HAS TOP AND BOTTOM NAV, SET WIREFRAME CONTENT MIN HEIGHT
-  "has-data-wf-top-nav:has-data-wf-bottom-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--bottom-nav-height)-var(--top-nav-top-offset)-var(--bottom-nav-bottom-offset)-var(--top-nav-bottom-offset)-var(--bottom-nav-top-offset)-env(safe-area-inset-top)-env(safe-area-inset-bottom))]",
+  "has-data-wf-top-nav:has-data-wf-bottom-nav:min-h-[calc(100dvh-var(--top-nav-height)-var(--bottom-nav-height)-var(--top-nav-top-offset)-var(--bottom-nav-bottom-offset)-var(--top-nav-bottom-offset)-var(--bottom-nav-top-offset)-env(safe-area-inset-top)-env(safe-area-inset-bottom))]",
   // HAS ONLY TOP NAV, SET WIREFRAME CONTENT MIN HEIGHT
-  "has-data-wf-top-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset)-env(safe-area-inset-top))]",
+  "has-data-wf-top-nav:min-h-[calc(100dvh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset)-env(safe-area-inset-top))]",
   // HAS ONLY BOTTOM NAV, SET WIREFRAME CONTENT MIN HEIGHT
-  "has-data-wf-bottom-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset)-env(safe-area-inset-bottom))]",
+  "has-data-wf-bottom-nav:min-h-[calc(100dvh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset)-env(safe-area-inset-bottom))]",
   // HAS RESPONSIVE NAV, AND VIEWPORT IS MOBILE, SET WIREFRAME CONTENT MIN HEIGHT
-  "has-data-wf-responsive-nav:min-h-[calc(100vh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset)-env(safe-area-inset-bottom)-env(safe-area-inset-top))]",
+  "has-data-wf-responsive-nav:min-h-[calc(100dvh-var(--bottom-nav-height)-var(--bottom-nav-bottom-offset)-var(--bottom-nav-top-offset)-env(safe-area-inset-bottom)-env(safe-area-inset-top))]",
   // HAS RESPONSIVE NAV, AND VIEWPORT IS DESKTOP, SET WIREFRAME CONTENT MIN HEIGHT
-  "min-wf-nav:has-data-wf-responsive-nav:min-h-[calc(100vh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset)-env(safe-area-inset-top)-env(safe-area-inset-bottom))]",
+  "min-wf-nav:has-data-wf-responsive-nav:min-h-[calc(100dvh-var(--top-nav-height)-var(--top-nav-top-offset)-var(--top-nav-bottom-offset)-env(safe-area-inset-top)-env(safe-area-inset-bottom))]",
 
   // MAKE THE WIREFRAME ROOT RELATIVE TO ALLOW CHILDREN TO BE ABSOLUTE POSITIONED IF NEEDED
   "relative",
@@ -169,10 +171,7 @@ function tailwindSpacing(value: number) {
   return `calc(var(--spacing) * ${value})`
 }
 
-function parseCssVariable(
-  value?: string | number,
-  defaultValue: string = "0px"
-) {
+function parseCssVariable(value?: string | number, defaultValue = "0px") {
   if (typeof value === "number") {
     return tailwindSpacing(value)
   }
@@ -261,6 +260,9 @@ function Wireframe({
     }
   }
 }) {
+  const safeAreasEnabled =
+    config?.safeAreas ?? SAFE_AREA_INSETS_ENABLED_BY_DEFAULT
+
   return (
     <div
       className={cn(
@@ -307,7 +309,7 @@ function Wireframe({
           // BOTTOM NAV
           "--bottom-nav-height": parseCssVariable(
             config?.cssVariables?.["--bottom-nav-height"],
-            tailwindSpacing(8)
+            tailwindSpacing(14)
           ),
           "--bottom-nav-left-offset": parseCssVariable(
             config?.cssVariables?.["--bottom-nav-left-offset"]
@@ -369,7 +371,7 @@ function Wireframe({
       }
       {...props}
     >
-      {config?.safeAreas && (
+      {safeAreasEnabled === true && (
         <>
           <SafeAreaInsetTop />
           <SafeAreaInsetBottom />
