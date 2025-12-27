@@ -212,7 +212,7 @@ export default function SidebarInsetExample() {
                     <>
                       <CollapsibleTrigger
                         render={
-                          <SidebarMenuAction className="data-open:rotate-90" />
+                          <SidebarMenuAction className="data-panel-open:rotate-90" />
                         }
                       >
                         <IconPlaceholder
