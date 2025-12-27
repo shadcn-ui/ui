@@ -275,6 +275,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "inline-edit",
+    type: "registry:ui",
+    registryDependencies: ["button", "input"],
+    files: [
+      {
+        path: "ui/inline-edit.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "input",
     type: "registry:ui",
     files: [
