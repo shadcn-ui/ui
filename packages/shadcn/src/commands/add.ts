@@ -70,6 +70,16 @@ export const add = new Command()
 
       await loadEnvFiles(options.cwd)
 
+      // Validate --name option is only used with a single component
+      if (options.name && options.components && options.components.length > 1) {
+        logger.error(
+          `The ${highlighter.info(
+            "--name"
+          )} option can only be used when adding a single component.`
+        )
+        process.exit(1)
+      }
+
       let initialConfig = await getConfig(options.cwd)
       if (!initialConfig) {
         initialConfig = createConfig({
