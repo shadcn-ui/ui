@@ -31,6 +31,7 @@ export const addOptionsSchema = z.object({
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
+  name: z.string().optional(),
 })
 
 export const add = new Command()
@@ -58,6 +59,7 @@ export const add = new Command()
   )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
+  .option("-n, --name <name>", "override the component name.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
