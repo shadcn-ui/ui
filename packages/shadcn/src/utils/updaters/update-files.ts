@@ -82,6 +82,15 @@ export async function updateFiles(
   let envVarsAdded: string[] = []
   let envFile: string | null = null
 
+  // Build rename map once before the loop
+  const renameMap =
+    options.name && options.sourceComponentName
+      ? createRenameMapFromComponentName(
+          options.sourceComponentName,
+          options.name
+        )
+      : undefined
+
   for (let index = 0; index < files.length; index++) {
     const file = files[index]
     if (!file.content) {
@@ -138,15 +147,6 @@ export async function updateFiles(
         `Cannot write to ${filePath}: path exists and is a directory. Please provide a file path instead.`
       )
     }
-
-    // Build rename map if --name option is provided
-    const renameMap =
-      options.name && options.sourceComponentName
-        ? createRenameMapFromComponentName(
-            options.sourceComponentName,
-            options.name
-          )
-        : undefined
 
     // Run our transformers.
     // Skip transformers for .env files to preserve exact content
