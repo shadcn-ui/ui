@@ -47,7 +47,7 @@ export async function updateFiles(
     isWorkspace?: boolean
     path?: string
     name?: string
-    originalComponentName?: string
+    sourceComponentName?: string
   }
 ) {
   if (!files?.length) {
@@ -113,8 +113,8 @@ export async function updateFiles(
     }
 
     // Rename the file if --name option is provided
-    if (options.name && options.originalComponentName) {
-      const oldName = options.originalComponentName.toLowerCase()
+    if (options.name && options.sourceComponentName) {
+      const oldName = options.sourceComponentName.toLowerCase()
       const newName = options.name.toLowerCase()
       const fileBaseName = path.basename(filePath)
       if (fileBaseName.startsWith(oldName)) {
@@ -141,9 +141,9 @@ export async function updateFiles(
 
     // Build rename map if --name option is provided
     const renameMap =
-      options.name && options.originalComponentName
+      options.name && options.sourceComponentName
         ? createRenameMapFromComponentName(
-            options.originalComponentName,
+            options.sourceComponentName,
             options.name
           )
         : undefined

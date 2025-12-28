@@ -144,7 +144,7 @@ async function addProjectComponents(
     silent: options.silent,
     path: options.path,
     name: options.name,
-    originalComponentName: components.length === 1 ? components[0] : undefined,
+    sourceComponentName: components.length === 1 ? components[0] : undefined,
   })
 
   if (tree.docs) {
