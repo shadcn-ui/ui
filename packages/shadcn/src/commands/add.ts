@@ -80,6 +80,16 @@ export const add = new Command()
         process.exit(1)
       }
 
+      // Validate --name option is a valid component name
+      if (options.name && !/^[a-zA-Z][a-zA-Z0-9_-]*$/.test(options.name)) {
+        logger.error(
+          `The ${highlighter.info(
+            "--name"
+          )} option must be a valid component name (alphanumeric, hyphens, underscores, cannot start with a number).`
+        )
+        process.exit(1)
+      }
+
       let initialConfig = await getConfig(options.cwd)
       if (!initialConfig) {
         initialConfig = createConfig({
