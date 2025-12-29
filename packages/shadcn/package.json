@@ -81,7 +81,7 @@
     "@babel/plugin-transform-typescript": "^7.28.0",
     "@babel/preset-typescript": "^7.27.1",
     "@dotenvx/dotenvx": "^1.48.4",
-    "@modelcontextprotocol/sdk": "^1.17.2",
+    "@modelcontextprotocol/sdk": "^1.24.0",
     "browserslist": "^4.26.2",
     "commander": "^14.0.0",
     "cosmiconfig": "^9.0.0",
