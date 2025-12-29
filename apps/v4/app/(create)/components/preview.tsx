@@ -7,16 +7,16 @@ import { DARK_MODE_FORWARD_TYPE } from "@/components/mode-switcher"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { RANDOMIZE_FORWARD_TYPE } from "@/app/(create)/components/customizer-controls"
 import { CMD_K_FORWARD_TYPE } from "@/app/(create)/components/item-picker"
-import { useDesignSystemSync } from "@/app/(create)/hooks/use-design-system"
-
-const MESSAGE_TYPE = "design-system-params"
+import { sendToIframe } from "@/app/(create)/hooks/use-iframe-sync"
+import {
+  serializeDesignSystemSearchParams,
+  useDesignSystemSearchParams,
+} from "@/app/(create)/lib/search-params"
 
 export function Preview() {
-  const params = useDesignSystemSync()
+  const [params] = useDesignSystemSearchParams()
   const iframeRef = React.useRef<HTMLIFrameElement>(null)
   const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
-  const [initialParams] = React.useState(params)
-  const [iframeKey, setIframeKey] = React.useState(0)
 
   // Sync resizable panel with URL param changes.
   React.useEffect(() => {
@@ -32,13 +32,7 @@ export function Preview() {
     }
 
     const sendParams = () => {
-      iframe.contentWindow?.postMessage(
-        {
-          type: MESSAGE_TYPE,
-          params,
-        },
-        "*"
-      )
+      sendToIframe(iframe, "design-system-params", params)
     }
 
     if (iframe.contentWindow) {
@@ -96,18 +90,25 @@ export function Preview() {
     }
   }, [])
 
-  if (!params.item || !params.base) {
-    return null
-  }
-
-  const iframeSrc = `/preview/${params.base}/${params.item}?theme=${initialParams.theme ?? "neutral"}&iconLibrary=${initialParams.iconLibrary ?? "lucide"}&style=${initialParams.style ?? "vega"}&font=${initialParams.font ?? "inter"}&baseColor=${initialParams.baseColor ?? "neutral"}`
+  const iframeSrc = React.useMemo(() => {
+    // The iframe src needs to include the serialized design system params
+    // for the initial load, but not be reactive to them as it would cause
+    // full-iframe reloads on every param change (flashes & loss of state).
+    // Further updates of the search params will be sent to the iframe
+    // via a postMessage channel, for it to sync its own history onto the host's.
+    return serializeDesignSystemSearchParams(
+      `/preview/${params.base}/${params.item}`,
+      params
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.base, params.item])
 
   return (
     <div className="relative -mx-1 flex flex-1 flex-col justify-center sm:mx-0">
       <div className="ring-foreground/15 3xl:max-h-[1200px] 3xl:max-w-[1800px] relative -z-0 mx-auto flex w-full flex-1 flex-col overflow-hidden rounded-2xl ring-1">
         <div className="bg-muted dark:bg-muted/30 absolute inset-0 rounded-2xl" />
         <iframe
-          key={`${params.item}-${iframeKey}`}
+          key={params.base + params.item}
           ref={iframeRef}
           src={iframeSrc}
           className="z-10 size-full flex-1"

@@ -21,7 +21,7 @@ import { ToolbarControls } from "@/app/(create)/components/toolbar-controls"
 import { V0Button } from "@/app/(create)/components/v0-button"
 import { WelcomeDialog } from "@/app/(create)/components/welcome-dialog"
 import { getItemsForBase } from "@/app/(create)/lib/api"
-import { designSystemSearchParamsCache } from "@/app/(create)/lib/search-params"
+import { loadDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -60,7 +60,7 @@ export default async function CreatePage({
 }: {
   searchParams: Promise<SearchParams>
 }) {
-  const params = await designSystemSearchParamsCache.parse(searchParams)
+  const params = await loadDesignSystemSearchParams(searchParams)
   const base = BASES.find((b) => b.name === params.base) ?? BASES[0]
 
   const items = await getItemsForBase(base.name)

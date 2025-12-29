@@ -53,6 +53,7 @@ function AccordionTrigger({
           tabler="IconChevronDown"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowDown01Icon"
+          phosphor="CaretDownIcon"
           className="cn-accordion-trigger-icon pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
         />
         <IconPlaceholder
@@ -60,6 +61,7 @@ function AccordionTrigger({
           tabler="IconChevronUp"
           data-slot="accordion-trigger-icon"
           hugeicons="ArrowUp01Icon"
+          phosphor="CaretUpIcon"
           className="cn-accordion-trigger-icon pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
         />
       </AccordionPrimitive.Trigger>

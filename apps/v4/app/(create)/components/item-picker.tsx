@@ -4,7 +4,6 @@ import * as React from "react"
 import Script from "next/script"
 import { Search01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { useQueryStates } from "nuqs"
 import { type RegistryItem } from "shadcn/schema"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -21,7 +20,7 @@ import {
   ComboboxTrigger,
   ComboboxValue,
 } from "@/registry/new-york-v4/ui/combobox"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 import { groupItemsByType } from "@/app/(create)/lib/utils"
 
 export const CMD_K_FORWARD_TYPE = "cmd-k-forward"
@@ -38,10 +37,7 @@ export function ItemPicker({
   items: Pick<RegistryItem, "name" | "title" | "type">[]
 }) {
   const [open, setOpen] = React.useState(false)
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    history: "push",
-    shallow: true,
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
 
   const groupedItems = React.useMemo(() => cachedGroupedItems(items), [items])
 
