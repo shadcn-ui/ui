@@ -1,6 +1,6 @@
 "use client"
 
-import { Row } from "@tanstack/react-table"
+import { type Row } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"

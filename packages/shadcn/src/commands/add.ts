@@ -4,6 +4,7 @@ import { preFlightAdd } from "@/src/preflights/preflight-add"
 import { getRegistryItems, getShadcnRegistryIndex } from "@/src/registry/api"
 import { DEPRECATED_COMPONENTS } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
+import { registryItemTypeSchema } from "@/src/registry/schema"
 import { isUniversalRegistryItem } from "@/src/registry/utils"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
@@ -77,6 +78,50 @@ export const add = new Command()
         })
       }
 
+      // Check for restricted component prefixes with base- or radix- styles.
+      const restrictedComponentPrefixes = [
+        "sidebar-",
+        "login-",
+        "signup-",
+        "otp-",
+        "calendar-",
+      ]
+      const restrictedStylePrefixes = ["base-", "radix-"]
+
+      if (components.length > 0) {
+        if (initialConfig?.style) {
+          const isRestrictedStyle = restrictedStylePrefixes.some((prefix) =>
+            initialConfig?.style.startsWith(prefix)
+          )
+
+          if (isRestrictedStyle) {
+            const restrictedComponents = components.filter(
+              (component: string) =>
+                restrictedComponentPrefixes.some((prefix) =>
+                  component.startsWith(prefix)
+                )
+            )
+
+            if (restrictedComponents.length) {
+              logger.warn(
+                `The ${highlighter.info(
+                  restrictedComponents
+                    .map((component: string) => component)
+                    .join(", ")
+                )} component(s) are not available for the ${highlighter.info(
+                  initialConfig.style
+                )} style yet. They are coming soon.`
+              )
+              logger.warn(
+                "In the meantime, you can visit the blocks page on https://ui.shadcn.com/blocks and copy the code."
+              )
+              logger.break()
+              process.exit(1)
+            }
+          }
+        }
+      }
+
       let hasNewRegistries = false
       if (components.length > 0) {
         const { config: updatedConfig, newRegistries } =
@@ -88,14 +133,21 @@ export const add = new Command()
         hasNewRegistries = newRegistries.length > 0
       }
 
+      let itemType: z.infer<typeof registryItemTypeSchema> | undefined
+      let shouldInstallBaseStyle = true
       if (components.length > 0) {
         const [registryItem] = await getRegistryItems([components[0]], {
           config: initialConfig,
         })
-        const itemType = registryItem?.type
+        itemType = registryItem?.type
+        shouldInstallBaseStyle =
+          itemType !== "registry:theme" && itemType !== "registry:style"
 
         if (isUniversalRegistryItem(registryItem)) {
-          await addComponents(components, initialConfig, options)
+          await addComponents(components, initialConfig, {
+            ...options,
+            baseStyle: shouldInstallBaseStyle,
+          })
           return
         }
 
@@ -168,11 +220,12 @@ export const add = new Command()
           force: true,
           defaults: false,
           skipPreflight: false,
-          silent: options.silent || !hasNewRegistries,
+          silent: options.silent && !hasNewRegistries,
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
-          baseStyle: true,
+          baseStyle: shouldInstallBaseStyle,
+          baseColor: shouldInstallBaseStyle ? undefined : "neutral",
           components: options.components,
         })
         initHasRun = true
@@ -207,7 +260,8 @@ export const add = new Command()
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
-            baseStyle: true,
+            baseStyle: shouldInstallBaseStyle,
+            baseColor: shouldInstallBaseStyle ? undefined : "neutral",
             components: options.components,
           })
           initHasRun = true
@@ -234,7 +288,10 @@ export const add = new Command()
       config = updatedConfig
 
       if (!initHasRun) {
-        await addComponents(options.components, config, options)
+        await addComponents(options.components, config, {
+          ...options,
+          baseStyle: shouldInstallBaseStyle,
+        })
       }
 
       // If we're adding a single component and it's from the v0 registry,

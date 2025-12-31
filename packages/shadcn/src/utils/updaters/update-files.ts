@@ -18,9 +18,11 @@ import { logger } from "@/src/utils/logger"
 import { resolveImport } from "@/src/utils/resolve-import"
 import { spinner } from "@/src/utils/spinner"
 import { transform } from "@/src/utils/transformers"
+import { transformAsChild } from "@/src/utils/transformers/transform-aschild"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
+import { transformMenu } from "@/src/utils/transformers/transform-menu"
 import { transformNext } from "@/src/utils/transformers/transform-next"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
@@ -139,6 +141,8 @@ export async function updateFiles(
             transformCssVars,
             transformTwPrefixes,
             transformIcons,
+            transformMenu,
+            transformAsChild,
             ...(_isNext16Middleware(filePath, projectInfo, config)
               ? [transformNext]
               : []),
@@ -716,7 +720,7 @@ export function toAliasedImport(
   // if noExt is empty (i.e. file was exactly at the root), we import the root
   let suffix = noExt === "" ? "" : `/${noExt}`
 
-  // Rremove /src from suffix.
+  // Remove /src from suffix.
   // Alias will handle this.
   suffix = suffix.replace("/src", "")
 

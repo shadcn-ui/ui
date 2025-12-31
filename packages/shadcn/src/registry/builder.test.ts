@@ -342,10 +342,14 @@ describe("buildHeadersFromRegistryConfig", () => {
 })
 
 describe("buildUrlAndHeadersForRegistryItem", () => {
-  it("should return null for non-registry items", () => {
+  it("should resolve non-registry items through @shadcn registry", () => {
     const input = "button"
     const config = {} as any
-    expect(buildUrlAndHeadersForRegistryItem(input, config)).toBeNull()
+    // Non-prefixed items are resolved through the built-in @shadcn registry
+    expect(buildUrlAndHeadersForRegistryItem(input, config)).toEqual({
+      url: "https://ui.shadcn.com/r/styles/{style}/button.json",
+      headers: {},
+    })
   })
 
   it("should throw error for unknown registry", () => {
