@@ -66,6 +66,7 @@
   "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
   "@prosekit": "https://prosekit.dev/r/{name}.json",
   "@phucbm": "https://ui.phucbm.com/r/{name}.json",
+  "@react-aria": "https://react-aria.adobe.com/registry/{name}.json",
   "@react-bits": "https://reactbits.dev/r/{name}.json",
   "@react-market": "https://www.react-market.com/get/{name}.json",
   "@retroui": "https://retroui.dev/r/{name}.json",
@@ -112,6 +113,5 @@
   "@ui-layouts": "https://ui-layouts.com/r/{name}.json",
   "@pureui": "https://pure.kam-ui.com/r/{name}.json",
   "@tour": "https://onboarding-tour.vercel.app/r/{name}.json",
-  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json",
-  "@ui-layouts": "https://ui-layouts.com/r/{name}.json"
+  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json"
 }
