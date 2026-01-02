@@ -39,7 +39,7 @@ export async function getPackageRunner(cwd: string) {
 
   if (packageManager === "pnpm") return "pnpm dlx"
 
-  if (packageManager === "bun") return "bunx"
+  if (packageManager === "bun") return "bun x"
 
   return "npx"
 }
