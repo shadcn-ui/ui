@@ -32,7 +32,7 @@ export const transformers = [
             "npx create-",
             "pnpm create "
           )
-          node.properties["__bun__"] = raw.replace("npx", "bunx --bun")
+          node.properties["__bun__"] = raw.replace("npx", "bun x --bun")
         } else if (raw.startsWith("npm create")) {
           // npm create.
           node.properties["__npm__"] = raw
@@ -44,7 +44,7 @@ export const transformers = [
           node.properties["__npm__"] = raw
           node.properties["__yarn__"] = raw.replace("npx", "yarn dlx")
           node.properties["__pnpm__"] = raw.replace("npx", "pnpm dlx")
-          node.properties["__bun__"] = raw.replace("npx", "bunx --bun")
+          node.properties["__bun__"] = raw.replace("npx", "bun x --bun")
         } else if (raw.startsWith("npm run")) {
           // npm run.
           node.properties["__npm__"] = raw
