@@ -3,7 +3,7 @@
 import * as React from "react"
 import { CheckIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/registry/bases/radix/lib/utils"
 
 type StepStatus = "pending" | "active" | "completed" | "error"
 

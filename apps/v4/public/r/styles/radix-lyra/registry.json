@@ -629,6 +629,16 @@
       "type": "registry:ui"
     },
     {
+      "name": "stepper",
+      "files": [
+        {
+          "path": "registry/radix-lyra/ui/stepper.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "accordion-example",
       "title": "Accordion",
       "registryDependencies": [
@@ -1524,6 +1534,23 @@
       "files": [
         {
           "path": "registry/radix-lyra/examples/spinner-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "stepper-example",
+      "title": "Stepper",
+      "registryDependencies": [
+        "button",
+        "card",
+        "stepper",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/radix-lyra/examples/stepper-example.tsx",
           "type": "registry:example"
         }
       ],
