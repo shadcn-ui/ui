@@ -138,6 +138,7 @@ function ContextMenuSubTrigger({
         lucide="ChevronRightIcon"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
+        phosphor="CaretRightIcon"
         className="ml-auto"
       />
     </ContextMenuPrimitive.SubmenuTrigger>
@@ -179,6 +180,7 @@ function ContextMenuCheckboxItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
           />
         </ContextMenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -218,6 +220,7 @@ function ContextMenuRadioItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
           />
         </ContextMenuPrimitive.RadioItemIndicator>
       </span>

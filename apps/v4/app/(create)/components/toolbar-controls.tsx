@@ -7,7 +7,6 @@ import {
   Tick02Icon,
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import { useQueryStates } from "nuqs"
 import { toast } from "sonner"
 
 import { useConfig } from "@/hooks/use-config"
@@ -43,7 +42,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/new-york-v4/ui/tooltip"
-import { designSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const TEMPLATES = [
   {
@@ -65,10 +64,7 @@ const TEMPLATES = [
 
 export function ToolbarControls() {
   const [open, setOpen] = React.useState(false)
-  const [params, setParams] = useQueryStates(designSystemSearchParams, {
-    shallow: false,
-    history: "push",
-  })
+  const [params, setParams] = useDesignSystemSearchParams()
   const [config, setConfig] = useConfig()
   const [hasCopied, setHasCopied] = React.useState(false)
 

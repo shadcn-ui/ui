@@ -22,7 +22,7 @@ function SelectValue({ className, ...props }: SelectPrimitive.Value.Props) {
   return (
     <SelectPrimitive.Value
       data-slot="select-value"
-      className={cn("cn-select-value text-left", className)}
+      className={cn("cn-select-value", className)}
       {...props}
     />
   )
@@ -53,6 +53,7 @@ function SelectTrigger({
             lucide="ChevronDownIcon"
             tabler="IconSelector"
             hugeicons="UnfoldMoreIcon"
+            phosphor="CaretDownIcon"
             className="cn-select-trigger-icon pointer-events-none"
           />
         }
@@ -139,6 +140,7 @@ function SelectItem({
           lucide="CheckIcon"
           tabler="IconCheck"
           hugeicons="Tick02Icon"
+          phosphor="CheckIcon"
           className="cn-select-item-indicator-icon pointer-events-none"
         />
       </SelectPrimitive.ItemIndicator>
@@ -173,6 +175,7 @@ function SelectScrollUpButton({
         lucide="ChevronUpIcon"
         tabler="IconChevronUp"
         hugeicons="ArrowUp01Icon"
+        phosphor="CaretUpIcon"
       />
     </SelectPrimitive.ScrollUpArrow>
   )
@@ -192,6 +195,7 @@ function SelectScrollDownButton({
         lucide="ChevronDownIcon"
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
+        phosphor="CaretDownIcon"
       />
     </SelectPrimitive.ScrollDownArrow>
   )

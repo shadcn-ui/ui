@@ -193,6 +193,7 @@ export default function SidebarExample() {
                         lucide="ChevronsUpDownIcon"
                         tabler="IconSelector"
                         hugeicons="UnfoldMoreIcon"
+                        phosphor="CaretUpDownIcon"
                       />
                     </ItemActions>
                   </Item>
@@ -209,6 +210,7 @@ export default function SidebarExample() {
                           lucide="CheckIcon"
                           tabler="IconCheck"
                           hugeicons="Tick02Icon"
+                          phosphor="CheckIcon"
                           className="ml-auto"
                         />
                       )}
@@ -233,6 +235,7 @@ export default function SidebarExample() {
                   lucide="SearchIcon"
                   tabler="IconSearch"
                   hugeicons="SearchIcon"
+                  phosphor="MagnifyingGlassIcon"
                   className="pointer-events-none absolute top-1/2 left-2 size-4 -translate-y-1/2 opacity-50 select-none"
                 />
               </SidebarGroupContent>
