@@ -1,4 +1,3 @@
-import { basename, resolve } from "node:path"
 import path from "path"
 import { getPreset, getPresets, getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
@@ -15,8 +14,8 @@ import { Command } from "commander"
 import dedent from "dedent"
 import open from "open"
 import prompts from "prompts"
+import validateProjectName from "validate-npm-package-name"
 
-import { validateNpmName } from "../utils/validate-pkg"
 import { initOptionsSchema, runInit } from "./init"
 
 const SHADCN_URL = "https://ui.shadcn.com"
@@ -91,11 +90,13 @@ export const create = new Command()
           initial: opts.template ? `${opts.template}-app` : "my-app",
           format: (value: string) => value.trim(),
           validate: (name) => {
-            const validation = validateNpmName(basename(resolve(name)))
-            if (validation.valid) {
+            const validation = validateProjectName(
+              path.basename(path.resolve(name))
+            )
+            if (validation.validForNewPackages) {
               return true
             }
-            return "Invalid project name: " + validation.problems[0]
+            return "Invalid project name. Name should be lowercase, URL-friendly, and not start with a period or underscore."
           },
         })
 
