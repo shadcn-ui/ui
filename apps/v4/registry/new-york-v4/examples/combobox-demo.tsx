@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
+import { ChevronsUpDown } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Command,
@@ -71,18 +70,13 @@ export default function ComboboxDemo() {
                 <CommandItem
                   key={framework.value}
                   value={framework.value}
+                  data-checked={framework.value === value}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue)
                     setOpen(false)
                   }}
                 >
                   {framework.label}
-                  <Check
-                    className={cn(
-                      "ml-auto",
-                      value === framework.value ? "opacity-100" : "opacity-0"
-                    )}
-                  />
                 </CommandItem>
               ))}
             </CommandGroup>

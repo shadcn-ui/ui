@@ -23,9 +23,8 @@ See installation instructions for the [Popover](/docs/components/popover#install
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
+import { ChevronsUpDownIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Command,
@@ -93,17 +92,12 @@ export function ExampleCombobox() {
                 <CommandItem
                   key={framework.value}
                   value={framework.value}
+                  data-checked={framework.value === value}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue)
                     setOpen(false)
                   }}
                 >
-                  <CheckIcon
-                    className={cn(
-                      "mr-2 h-4 w-4",
-                      value === framework.value ? "opacity-100" : "opacity-0"
-                    )}
-                  />
                   {framework.label}
                 </CommandItem>
               ))}
