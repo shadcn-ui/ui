@@ -105,6 +105,7 @@
     "recast": "^0.23.11",
     "stringify-object": "^5.0.0",
     "ts-morph": "^26.0.0",
+    "ts-morph-react": "^1.0.6",
     "tsconfig-paths": "^4.2.0",
     "validate-npm-package-name": "^7.0.1",
     "zod": "^3.24.1",
