@@ -114,5 +114,5 @@
   "@pureui": "https://pure.kam-ui.com/r/{name}.json",
   "@tour": "https://onboarding-tour.vercel.app/r/{name}.json",
   "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json",
-  "@heroicons-animated": "https://heroicons-animated.vercel.app/r/{name}.json",
+  "@heroicons-animated": "https://www.heroicons-animated.com/r/{name}.json",
 }
