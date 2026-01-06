@@ -31,8 +31,8 @@ export function ChartCodeViewer({
 }: {
   chart: Chart
 } & React.ComponentProps<"div">) {
-  const isDesktop = useMediaQuery("(min-width: 768px)")
 
+  const isDesktop = useMediaQuery("(min-width: 768px)")
   const button = (
     <Button
       size="sm"

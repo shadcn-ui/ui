@@ -3730,6 +3730,120 @@ export const Index: Record<string, Record<string, any>> = {
       categories: ["charts","charts-radial"],
       meta: undefined,
     },
+    "chart-scatter-default": {
+      name: "chart-scatter-default",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-scatter-default.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-scatter-default.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-scatter"],
+      meta: undefined,
+    },
+    "chart-scatter-bubble": {
+      name: "chart-scatter-bubble",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-scatter-bubble.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-scatter-bubble.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-scatter"],
+      meta: undefined,
+    },
+    "chart-scatter-multiple": {
+      name: "chart-scatter-multiple",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-scatter-multiple.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-scatter-multiple.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-scatter"],
+      meta: undefined,
+    },
+    "chart-scatter-shape": {
+      name: "chart-scatter-shape",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-scatter-shape.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-scatter-shape.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-scatter"],
+      meta: undefined,
+    },
+    "chart-scatter-label": {
+      name: "chart-scatter-label",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-scatter-label.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-scatter-label.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-scatter"],
+      meta: undefined,
+    },
+    "chart-scatter-legend": {
+      name: "chart-scatter-legend",
+      title: "undefined",
+      description: "",
+      type: "registry:block",
+      registryDependencies: ["card","chart"],
+      files: [{
+        path: "registry/new-york-v4/charts/chart-scatter-legend.tsx",
+        type: "registry:block",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/charts/chart-scatter-legend.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: ["charts","charts-scatter"],
+      meta: undefined,
+    },
     "chart-tooltip-default": {
       name: "chart-tooltip-default",
       title: "undefined",

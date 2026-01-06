@@ -32,6 +32,10 @@ const links = [
     href: "/charts/radial#charts",
   },
   {
+    name: "Scatter Charts",
+    href: "/charts/scatter#charts",
+  },
+  {
     name: "Tooltips",
     href: "/charts/tooltip#charts",
   },
