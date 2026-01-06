@@ -26,7 +26,10 @@ const nextConfig = {
     ],
   },
   experimental: {
-    turbopackFileSystemCacheForDev: true,
+    // Disable Turbopack on-disk filesystem cache to avoid RocksDB SST write
+    // errors on some Windows environments (permission/locking issues).
+    // Re-enable if you need on-disk caching after resolving SST issues.
+    turbopackFileSystemCacheForDev: false,
   },
   redirects() {
     return [
