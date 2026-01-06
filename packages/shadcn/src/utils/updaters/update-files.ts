@@ -11,6 +11,7 @@ import {
   mergeEnvContent,
   parseEnvContent,
 } from "@/src/utils/env-helpers"
+import { FormatCase, formatFileName } from "@/src/utils/format"
 import { Config } from "@/src/utils/get-config"
 import { ProjectInfo, getProjectInfo } from "@/src/utils/get-project-info"
 import { highlighter } from "@/src/utils/highlighter"
@@ -378,7 +379,11 @@ export function resolveFilePath(
 
   const targetDir = resolveFileTargetDirectory(file, config)
 
-  const relativePath = resolveNestedFilePath(file.path, targetDir)
+  const relativePath = resolveNestedFilePath(
+    file.path,
+    targetDir,
+    config.fileCase
+  )
   return path.join(targetDir, relativePath)
 }
 
@@ -439,7 +444,8 @@ export function findCommonRoot(paths: string[], needle: string): string {
 
 export function resolveNestedFilePath(
   filePath: string,
-  targetDir: string
+  targetDir: string,
+  fileCase?: FormatCase
 ): string {
   // Normalize paths by removing leading/trailing slashes
   const normalizedFilePath = filePath.replace(/^\/|\/$/g, "")
@@ -457,11 +463,12 @@ export function resolveNestedFilePath(
 
   if (commonDirIndex === -1) {
     // Return just the filename if no common directory is found
-    return fileSegments[fileSegments.length - 1]
+    return formatFileName(fileSegments[fileSegments.length - 1], fileCase)
   }
 
   // Return everything after the common directory
-  return fileSegments.slice(commonDirIndex + 1).join("/")
+  const outputFileName = fileSegments.slice(commonDirIndex + 1).join("/")
+  return formatFileName(outputFileName, fileCase)
 }
 
 export function resolvePageTarget(
