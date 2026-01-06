@@ -7,7 +7,7 @@ import {
 export default function ResizableDemo() {
   return (
     <ResizablePanelGroup
-      direction="vertical"
+      orientation="vertical"
       className="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"
     >
       <ResizablePanel defaultSize={25}>
