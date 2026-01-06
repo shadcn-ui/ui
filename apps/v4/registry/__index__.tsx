@@ -3996,6 +3996,25 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "alert-action": {
+      name: "alert-action",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["alert","button","badge"],
+      files: [{
+        path: "registry/new-york-v4/examples/alert-action.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/alert-action.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "alert-dialog-demo": {
       name: "alert-dialog-demo",
       title: "undefined",

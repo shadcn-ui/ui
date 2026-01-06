@@ -35,6 +35,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "alert-action",
+    type: "registry:example",
+    registryDependencies: ["alert", "button", "badge"],
+    files: [
+      {
+        path: "examples/alert-action.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "alert-dialog-demo",
     type: "registry:example",
     registryDependencies: ["alert-dialog", "button"],

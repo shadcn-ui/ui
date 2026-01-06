@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-action",
+  "registryDependencies": [
+    "alert",
+    "button",
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/alert-action.tsx",
+      "content": "import { MailIcon, TrashIcon } from \"lucide-react\"\n\nimport { Alert, AlertAction, AlertTitle } from \"@/registry/new-york-v4/ui/alert\"\nimport { Badge } from \"@/registry/new-york-v4/ui/badge\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\n\nexport default function AlertActionExample() {\n  return (\n    <div className=\"grid w-full max-w-xl items-start gap-4\">\n      <Alert>\n        <MailIcon />\n        <AlertTitle>The selected emails have been marked as spam.</AlertTitle>\n        <AlertAction>\n          <Button size=\"sm\" variant=\"outline\">\n            Undo\n          </Button>\n        </AlertAction>\n      </Alert>\n      <Alert variant=\"destructive\">\n        <TrashIcon />\n        <AlertTitle>3 items have been deleted.</AlertTitle>\n        <AlertAction>\n          <Badge variant=\"destructive\">Action Required</Badge>\n        </AlertAction>\n      </Alert>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

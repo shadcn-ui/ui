@@ -10,6 +10,12 @@ component: true
   description="An alert with an icon, title and description. The title says 'Heads up!' and the description is 'You can add components to your app using the cli.'."
 />
 
+<ComponentPreview
+  name="alert-action"
+  title="An alert with action buttons."
+  description="An alert with action buttons on the right side."
+/>
+
 ## Installation
 
 <CodeTabs>
@@ -45,7 +51,7 @@ npx shadcn@latest add alert
 ## Usage
 
 ```tsx showLineNumbers
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@/components/ui/alert"
 ```
 
 ```tsx showLineNumbers
@@ -55,5 +61,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
   <AlertDescription>
     You can add components and dependencies to your app using the cli.
   </AlertDescription>
+  <AlertAction>
+    <Button size="sm" variant="outline">Undo</Button>
+  </AlertAction>
 </Alert>
 ```
