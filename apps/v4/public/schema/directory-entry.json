@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "description": "A directory entry representing a single registry in the shadcn/ui registry directory.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^@[a-zA-Z0-9][a-zA-Z0-9-_]*$",
+      "description": "The registry namespace. Must start with @ and follow the pattern @[a-zA-Z0-9][a-zA-Z0-9-_]*"
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to the registry homepage where users can browse the registry"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": ".*\\{name\\}.*",
+      "description": "The registry URL template. Must include the {name} placeholder that will be replaced with the registry item name"
+    },
+    "description": {
+      "type": "string",
+      "description": "A brief description of the registry and what type of components or code it distributes"
+    },
+    "logo": {
+      "type": "string",
+      "description": "The SVG logo for the registry as an HTML string"
+    }
+  },
+  "required": ["name", "homepage", "url", "description", "logo"],
+  "additionalProperties": false
+}
+
