@@ -73,12 +73,12 @@ args = ["shadcn@${SHADCN_MCP_VERSION}", "mcp"]
     label: "OpenCode",
     configPath: "opencode.json",
     config: {
-      "$schema": "https://opencode.ai/config.json",
-      "mcp": {
-        "shadcn": {
-          "type": "local",
-          "command": ["npx", `shadcn@${SHADCN_MCP_VERSION}`, "mcp"],
-          "enabled": true,
+      $schema: "https://opencode.ai/config.json",
+      mcp: {
+        shadcn: {
+          type: "local",
+          command: ["npx", `shadcn@${SHADCN_MCP_VERSION}`, "mcp"],
+          enabled: true,
         },
       },
     },
