@@ -1,0 +1,122 @@
+---
+title: Multi-select
+description: Select multiple options from a searchable list of items.
+component: true
+---
+
+<ComponentPreview
+  name="multi-select-demo"
+  description="A searchable multi-select with badges."
+/>
+
+## Installation
+
+The Multi-select component is built using a composition of the `<Popover />`, `<Command />`, `<Checkbox />`, and `<Badge />` components.
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add multi-select
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="multi-select" title="components/ui/multi-select.tsx" />
+
+<Step>
+  Install and set up the dependencies used by this component:
+  [Popover](/docs/components/popover#installation),
+  [Command](/docs/components/command#installation),
+  [Checkbox](/docs/components/checkbox#installation), and
+  [Badge](/docs/components/badge#installation).
+</Step>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers title="components/example-multi-select.tsx"
+"use client"
+
+import * as React from "react"
+
+import {
+  MultiSelect,
+  MultiSelectContent,
+  MultiSelectGroup,
+  MultiSelectItem,
+  MultiSelectLabel,
+  MultiSelectTrigger,
+  MultiSelectValue,
+} from "@/components/ui/multi-select"
+
+const frameworks = [
+  { value: "next.js", label: "Next.js" },
+  { value: "sveltekit", label: "SvelteKit" },
+  { value: "nuxt.js", label: "Nuxt.js" },
+  { value: "remix", label: "Remix" },
+  { value: "astro", label: "Astro" },
+]
+
+export function ExampleMultiSelect() {
+  const [values, setValues] = React.useState<string[]>([])
+
+  return (
+    <MultiSelect value={values} onValueChange={setValues}>
+      <MultiSelectTrigger className="w-[260px] justify-between">
+        <MultiSelectValue
+          placeholder="Select frameworks"
+          options={frameworks}
+          maxBadges={2}
+        />
+      </MultiSelectTrigger>
+      <MultiSelectContent searchPlaceholder="Search framework...">
+        <MultiSelectGroup>
+          <MultiSelectLabel>Frameworks</MultiSelectLabel>
+          {frameworks.map((framework) => (
+            <MultiSelectItem
+              key={framework.value}
+              value={framework.value}
+              label={framework.label}
+            />
+          ))}
+        </MultiSelectGroup>
+      </MultiSelectContent>
+    </MultiSelect>
+  )
+}
+```
+
+## Examples
+
+### Basic multi-select
+
+<ComponentPreview
+  name="multi-select-demo"
+  description="A searchable multi-select with a list of frameworks."
+/>
+
+## Accessibility
+
+- Uses a button-based trigger with `role="combobox"` and `aria-expanded` to indicate the open state.
+- Renders options inside a focus-managed list using the `Command` component for keyboard support.
+- Each option uses a `Checkbox` for clear selected state indication.
+- The badges in `MultiSelectValue` provide a concise summary of the current selection.

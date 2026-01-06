@@ -36,6 +36,7 @@ import { ItemDemo } from "./components/item-demo"
 import { KbdDemo } from "./components/kbd-demo"
 import { LabelDemo } from "./components/label-demo"
 import { MenubarDemo } from "./components/menubar-demo"
+import { MultiSelectDemo } from "./components/multi-select-demo"
 import { NativeSelectDemo } from "./components/native-select-demo"
 import { NavigationMenuDemo } from "./components/navigation-menu-demo"
 import { PaginationDemo } from "./components/pagination-demo"
@@ -273,6 +274,13 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: MenubarDemo,
     type: "registry:ui",
     href: "/sink/menubar",
+  },
+  "multi-select": {
+    name: "Multi-select",
+    component: MultiSelectDemo,
+    type: "registry:ui",
+    href: "/sink/multi-select",
+    label: "New",
   },
   "navigation-menu": {
     name: "Navigation Menu",
