@@ -41,6 +41,7 @@ export async function addComponents(
     baseStyle?: boolean
     registryHeaders?: Record<string, Record<string, string>>
     path?: string
+    name?: string
   }
 ) {
   options = {
@@ -76,6 +77,7 @@ async function addProjectComponents(
     isNewProject?: boolean
     baseStyle?: boolean
     path?: string
+    name?: string
   }
 ) {
   if (!options.baseStyle && !components.length) {
@@ -141,6 +143,8 @@ async function addProjectComponents(
     overwrite: options.overwrite,
     silent: options.silent,
     path: options.path,
+    name: options.name,
+    sourceComponentName: components.length === 1 ? components[0] : undefined,
   })
 
   if (tree.docs) {
