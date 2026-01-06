@@ -1,0 +1,143 @@
+---
+title: Stepper
+description: A component for displaying progress through a sequence of steps.
+component: true
+---
+
+<ComponentPreview
+  name="stepper-demo"
+  description="A stepper component with navigation."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add stepper
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stepper" title="components/ui/stepper.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Step,
+  StepDescription,
+  Stepper,
+  StepTitle,
+} from "@/components/ui/stepper"
+```
+
+```tsx showLineNumbers
+<Stepper currentStep={1} onStepChange={setStep}>
+  <Step step={0}>
+    <StepTitle>Account</StepTitle>
+    <StepDescription>Create your account</StepDescription>
+  </Step>
+  <Step step={1}>
+    <StepTitle>Profile</StepTitle>
+    <StepDescription>Set up your profile</StepDescription>
+  </Step>
+  <Step step={2}>
+    <StepTitle>Complete</StepTitle>
+    <StepDescription>Review and finish</StepDescription>
+  </Step>
+</Stepper>
+```
+
+## Examples
+
+### Vertical
+
+Use the `orientation` prop to display a vertical stepper.
+
+<ComponentPreview name="stepper-vertical" description="A vertical stepper." />
+
+### With Custom Icons
+
+Use the `StepIndicator` component to add custom icons.
+
+<ComponentPreview
+  name="stepper-with-icons"
+  description="A stepper with custom icons."
+/>
+
+### Custom Colors
+
+Use the `color` prop to customize each step's color.
+
+<ComponentPreview
+  name="stepper-colors"
+  description="A stepper with custom colors per step."
+/>
+
+### Form Wizard
+
+A complete multi-step form implementation.
+
+<ComponentPreview
+  name="stepper-form"
+  description="A multi-step form with stepper navigation."
+  className="[&_.preview]:h-auto [&_.preview]:min-h-[500px] [&_.preview]:py-8"
+  align="start"
+/>
+
+## API Reference
+
+### Stepper
+
+The root container component.
+
+| Prop           | Type                         | Default        | Description                             |
+| -------------- | ---------------------------- | -------------- | --------------------------------------- |
+| `currentStep`  | `number`                     | `0`            | The current active step index (0-based) |
+| `orientation`  | `"horizontal" \| "vertical"` | `"horizontal"` | The layout direction                    |
+| `onStepChange` | `(step: number) => void`     | -              | Callback fired when a step is clicked   |
+
+### Step
+
+Individual step component.
+
+| Prop        | Type                                              | Default  | Description                                               |
+| ----------- | ------------------------------------------------- | -------- | --------------------------------------------------------- |
+| `step`      | `number`                                          | required | The step index (0-based)                                  |
+| `status`    | `"pending" \| "active" \| "completed" \| "error"` | auto     | Override the computed status                              |
+| `disabled`  | `boolean`                                         | `false`  | Whether the step is disabled                              |
+| `clickable` | `boolean`                                         | `true`   | Whether the step can be clicked to navigate               |
+| `color`     | `string`                                          | -        | Custom color for active/completed state (CSS color value) |
+
+### StepIndicator
+
+The visual indicator showing step number or icon.
+
+### StepTitle
+
+The step heading text.
+
+### StepDescription
+
+Optional description text for the step.

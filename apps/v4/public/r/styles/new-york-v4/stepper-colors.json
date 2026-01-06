@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-colors",
+  "registryDependencies": [
+    "stepper",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stepper-colors.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Step,\n  StepDescription,\n  Stepper,\n  StepTitle,\n} from \"@/registry/new-york-v4/ui/stepper\"\n\nexport default function StepperColors() {\n  const [currentStep, setCurrentStep] = React.useState(1)\n\n  const steps = [\n    { title: \"Draft\", description: \"Create your content\", color: \"#6366f1\" },\n    { title: \"Review\", description: \"Check for errors\", color: \"#f59e0b\" },\n    { title: \"Publish\", description: \"Make it live\", color: \"#22c55e\" },\n  ]\n\n  const nextStep = () =>\n    setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1))\n  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0))\n\n  return (\n    <div className=\"flex w-full max-w-xl flex-col gap-6\">\n      <Stepper currentStep={currentStep} onStepChange={setCurrentStep}>\n        {steps.map((step, index) => (\n          <Step key={step.title} step={index} color={step.color}>\n            <StepTitle>{step.title}</StepTitle>\n            <StepDescription>{step.description}</StepDescription>\n          </Step>\n        ))}\n      </Stepper>\n      <div className=\"flex justify-center gap-2\">\n        <Button\n          variant=\"outline\"\n          onClick={prevStep}\n          disabled={currentStep === 0}\n        >\n          Previous\n        </Button>\n        <Button onClick={nextStep} disabled={currentStep === steps.length - 1}>\n          Next\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

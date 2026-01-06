@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-vertical",
+  "registryDependencies": [
+    "stepper"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stepper-vertical.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Step,\n  StepDescription,\n  Stepper,\n  StepTitle,\n} from \"@/registry/new-york-v4/ui/stepper\"\n\nexport default function StepperVertical() {\n  const [currentStep, setCurrentStep] = React.useState(1)\n\n  const steps = [\n    { title: \"Create account\", description: \"Enter your email and password\" },\n    { title: \"Verify email\", description: \"Check your inbox for verification\" },\n    { title: \"Complete profile\", description: \"Add your personal information\" },\n    { title: \"Get started\", description: \"You're all set!\" },\n  ]\n\n  const nextStep = () =>\n    setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1))\n  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0))\n\n  return (\n    <div className=\"flex flex-col gap-6\">\n      <Stepper\n        orientation=\"vertical\"\n        currentStep={currentStep}\n        onStepChange={setCurrentStep}\n        className=\"max-w-xs\"\n      >\n        {steps.map((step, index) => (\n          <Step key={step.title} step={index}>\n            <StepTitle>{step.title}</StepTitle>\n            <StepDescription>{step.description}</StepDescription>\n          </Step>\n        ))}\n      </Stepper>\n      <div className=\"flex gap-2\">\n        <Button\n          variant=\"outline\"\n          onClick={prevStep}\n          disabled={currentStep === 0}\n        >\n          Previous\n        </Button>\n        <Button onClick={nextStep} disabled={currentStep === steps.length - 1}>\n          Next\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
