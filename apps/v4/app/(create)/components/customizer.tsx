@@ -7,15 +7,17 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { getThemesForBaseColor, PRESETS, STYLES } from "@/registry/config"
 import { FieldGroup } from "@/registry/new-york-v4/ui/field"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"
 import { BasePicker } from "@/app/(create)/components/base-picker"
-import { CustomizerControls } from "@/app/(create)/components/customizer-controls"
 import { FontPicker } from "@/app/(create)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(create)/components/icon-library-picker"
 import { MenuColorPicker } from "@/app/(create)/components/menu-picker"
 import { PresetPicker } from "@/app/(create)/components/preset-picker"
 import { RadiusPicker } from "@/app/(create)/components/radius-picker"
+import { RandomButton } from "@/app/(create)/components/random-button"
+import { ResetButton } from "@/app/(create)/components/reset-button"
 import { StylePicker } from "@/app/(create)/components/style-picker"
 import { ThemePicker } from "@/app/(create)/components/theme-picker"
 import { FONTS } from "@/app/(create)/lib/fonts"
@@ -75,7 +77,10 @@ export function Customizer() {
           <RadiusPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
-          <CustomizerControls className="mt-auto hidden w-full flex-col md:flex" />
+          <div className="mt-auto hidden w-full flex-col items-center gap-0 md:flex">
+            <RandomButton />
+            <ResetButton />
+          </div>
         </FieldGroup>
       </div>
     </div>
