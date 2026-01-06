@@ -48,11 +48,19 @@ function DrawerOverlay({
 function DrawerContent({
   className,
   children,
+  withOverlay = true,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Content>) {
+}: React.ComponentProps<typeof DrawerPrimitive.Content> & {
+  /**
+   * When false, the visual overlay is not rendered. Focus trap, scroll lock,
+   * aria-hiding, and other dialog behaviors remain intact.
+   * See: https://github.com/shadcn-ui/ui/issues/8493
+   */
+  withOverlay?: boolean
+}) {
   return (
     <DrawerPortal data-slot="drawer-portal">
-      <DrawerOverlay />
+      {withOverlay !== false && <DrawerOverlay />}
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         className={cn(
