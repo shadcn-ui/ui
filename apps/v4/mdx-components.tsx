@@ -11,6 +11,7 @@ import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { ComponentsList } from "@/components/components-list"
 import { CopyButton } from "@/components/copy-button"
+import { DirectoryList } from "@/components/directory-list"
 import { getIconForLanguageExtension } from "@/components/icons"
 import {
   Accordion,
@@ -127,7 +128,6 @@ export const mdxComponents = {
     />
   ),
   img: ({ className, alt, ...props }: React.ComponentProps<"img">) => (
-    // eslint-disable-next-line @next/next/no-img-element
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }: React.ComponentProps<"hr">) => (
@@ -280,7 +280,7 @@ export const mdxComponents = {
   }: React.ComponentProps<"img">) => (
     <Image
       className={cn("mt-6 rounded-md border", className)}
-      src={src || ""}
+      src={(src as string) || ""}
       width={Number(width)}
       height={Number(height)}
       alt={alt || ""}
@@ -344,6 +344,7 @@ export const mdxComponents = {
   ComponentSource,
   CodeCollapsibleWrapper,
   ComponentsList,
+  DirectoryList,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
       className={cn("font-medium underline underline-offset-4", className)}

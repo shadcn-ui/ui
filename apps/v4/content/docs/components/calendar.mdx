@@ -108,12 +108,40 @@ To use the Persian calendar, edit `components/ui/calendar.tsx` and replace `reac
   description="A Persian calendar."
 />
 
+## Selected Date (With TimeZone)
+
+The Calendar component accepts a `timeZone` prop to ensure dates are displayed and selected in the user's local timezone.
+
+```tsx showLineNumbers
+export function CalendarWithTimezone() {
+  const [date, setDate] = React.useState<Date | undefined>(undefined)
+  const [timeZone, setTimeZone] = React.useState<string | undefined>(undefined)
+
+  React.useEffect(() => {
+    setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone)
+  }, [])
+
+  return (
+    <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+      timeZone={timeZone}
+    />
+  )
+}
+```
+
+**Note:** If you notice a selected date offset (for example, selecting the 20th highlights the 19th), make sure the `timeZone` prop is set to the user's local timezone.
+
+**Why client-side?** The timezone is detected using `Intl.DateTimeFormat().resolvedOptions().timeZone` inside a `useEffect` to ensure compatibility with server-side rendering. Detecting the timezone during render would cause hydration mismatches, as the server and client may be in different timezones.
+
 ## Examples
 
 ### Range Calendar
 
 <ComponentPreview
-  name="calendar-02"
+  name="calendar-05"
   title="Range Calendar"
   description="A calendar showing the current date and range selection."
   className="**:[.preview]:h-auto lg:**:[.preview]:h-[450px]"
@@ -153,9 +181,36 @@ This component uses the `chrono-node` library to parse natural language dates.
   description="A calendar with natural language picker."
 />
 
-### Form
+### Custom Cell Size
 
-<ComponentPreview name="calendar-form" />
+<ComponentPreview
+  name="calendar-18"
+  title="Custom Cell Size"
+  description="A calendar with custom cell size that's responsive."
+  className="**:[.preview]:h-[560px]"
+/>
+
+You can customize the size of calendar cells using the `--cell-size` CSS variable. You can also make it responsive by using breakpoint-specific values:
+
+```tsx showLineNumbers
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-lg border [--cell-size:--spacing(11)] md:[--cell-size:--spacing(12)]"
+/>
+```
+
+Or use fixed values:
+
+```tsx showLineNumbers
+<Calendar
+  mode="single"
+  selected={date}
+  onSelect={setDate}
+  className="rounded-lg border [--cell-size:2.75rem] md:[--cell-size:3rem]"
+/>
+```
 
 ## Upgrade Guide
 
@@ -289,7 +344,10 @@ function Calendar({
           defaultClassNames.week_number
         ),
         day: cn(
-          "group/day relative aspect-square h-full w-full select-none p-0 text-center [&:first-child[data-selected=true]_button]:rounded-l-md [&:last-child[data-selected=true]_button]:rounded-r-md",
+          "relative w-full h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
+          props.showWeekNumber
+            ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
+            : "[&:first-child[data-selected=true]_button]:rounded-l-md",
           defaultClassNames.day
         ),
         range_start: cn(
@@ -417,3 +475,25 @@ npx shadcn@latest add calendar-02
 ```
 
 This will install the latest version of the calendar blocks.
+
+## Changelog
+
+### 2025-10-26 Fixed day radius with week numbers
+
+We have fixed an issue where the selected day's left border radius was not applied correctly when week numbers were displayed. The fix ensures that when `showWeekNumber` is enabled, the first day (which is the second child due to the week number column) correctly receives the rounded left border.
+
+To apply this fix, edit `components/ui/calendar.tsx` and update the `day` class in `classNames`:
+
+```tsx showLineNumbers title="components/ui/calendar.tsx" {5-7}
+classNames={{
+  // ... other classNames
+  day: cn(
+    "relative w-full h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
+    props.showWeekNumber
+      ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
+      : "[&:first-child[data-selected=true]_button]:rounded-l-md",
+    defaultClassNames.day
+  ),
+  // ... other classNames
+}}
+```

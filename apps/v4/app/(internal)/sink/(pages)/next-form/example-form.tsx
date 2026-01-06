@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Form from "next/form"
-import { z } from "zod"
+import { type z } from "zod"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -48,7 +48,10 @@ import {
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 import { Switch } from "@/registry/new-york-v4/ui/switch"
 import { Textarea } from "@/registry/new-york-v4/ui/textarea"
-import { addons, exampleFormSchema } from "@/app/(internal)/sink/(pages)/schema"
+import {
+  addons,
+  type exampleFormSchema,
+} from "@/app/(internal)/sink/(pages)/schema"
 
 import { subscriptionAction } from "./actions"
 
