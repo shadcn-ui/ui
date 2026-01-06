@@ -173,7 +173,7 @@ function ChartTooltipContent({
   return (
     <div
       className={cn(
-        "cn-chart-tooltip grid min-w-[8rem] items-start",
+        "cn-chart-tooltip grid min-w-32 items-start",
         className
       )}
     >
