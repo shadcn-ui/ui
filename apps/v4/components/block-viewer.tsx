@@ -289,6 +289,7 @@ function BlockViewerView({ styleName }: { styleName: Style["name"] }) {
 
 function BlockViewerMobile({ children }: { children: React.ReactNode }) {
   const { item } = useBlockViewer()
+  const [fallback, setFallback] = React.useState(false)
 
   return (
     <div className="flex flex-col gap-2 lg:hidden">
@@ -302,6 +303,10 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
       </div>
       {item.meta?.mobile === "component" ? (
         children
+      ) : fallback ? (
+        <div className="relative aspect-[4/2.5] overflow-hidden rounded-xl border">
+          <iframe src={`/view/${item.name}`} className="absolute inset-0 size-full" />
+        </div>
       ) : (
         <div className="overflow-hidden rounded-xl border">
           <Image
@@ -310,6 +315,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
             data-block={item.name}
             width={1440}
             height={900}
+            onError={() => setFallback(true)}
             className="object-cover dark:hidden"
           />
           <Image
@@ -318,6 +324,7 @@ function BlockViewerMobile({ children }: { children: React.ReactNode }) {
             data-block={item.name}
             width={1440}
             height={900}
+            onError={() => setFallback(true)}
             className="hidden object-cover dark:block"
           />
         </div>
