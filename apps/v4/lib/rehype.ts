@@ -3,8 +3,20 @@ import path from "path"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
-import { Index } from "@/registry/__index__"
+import { Index as StylesIndex } from "@/registry/__index__"
 import { getActiveStyle } from "@/registry/_legacy-styles"
+import { Index as BasesIndex } from "@/registry/bases/__index__"
+
+// Map style names to their corresponding index and key.
+function getIndexForStyle(styleName: string) {
+  if (styleName.startsWith("radix-")) {
+    return { index: BasesIndex, key: "radix" }
+  }
+  if (styleName.startsWith("base-")) {
+    return { index: BasesIndex, key: "base" }
+  }
+  return { index: StylesIndex, key: styleName }
+}
 
 interface UnistNode {
   type: string
@@ -43,6 +55,9 @@ export function rehypeComponent() {
         const fileName = getNodeAttributeByName(node, "fileName")?.value as
           | string
           | undefined
+        const styleName =
+          (getNodeAttributeByName(node, "styleName")?.value as string) ||
+          activeStyle.name
 
         if (!name && !srcPath) {
           return null
@@ -54,7 +69,8 @@ export function rehypeComponent() {
           if (srcPath) {
             src = path.join(process.cwd(), srcPath)
           } else {
-            const component = Index[name]
+            const { index, key } = getIndexForStyle(styleName)
+            const component = index[key]?.[name]
             src = fileName
               ? component.files.find((file: unknown) => {
                   if (typeof file === "string") {
@@ -75,7 +91,12 @@ export function rehypeComponent() {
           // Replace imports.
           // TODO: Use @swc/core and a visitor to replace this.
           // For now a simple regex should do.
-          source = source.replaceAll(`@/registry/new-york-v4/`, "@/components/")
+          source = source.replaceAll(
+            `@/registry/${styleName}/`,
+            "@/components/"
+          )
+          source = source.replaceAll(`@/registry/bases/radix/`, "@/components/")
+          source = source.replaceAll(`@/registry/bases/base/`, "@/components/")
           source = source.replaceAll("export default", "export")
 
           // Add code as children so that rehype can take over at build time.
@@ -108,13 +129,17 @@ export function rehypeComponent() {
 
       if (node.name === "ComponentPreview") {
         const name = getNodeAttributeByName(node, "name")?.value as string
+        const styleName =
+          (getNodeAttributeByName(node, "styleName")?.value as string) ||
+          activeStyle.name
 
         if (!name) {
           return null
         }
 
         try {
-          const component = Index[activeStyle.name]?.[name]
+          const { index, key } = getIndexForStyle(styleName)
+          const component = index[key]?.[name]
           const src = component.files[0]?.path
 
           // Read the source file.
@@ -124,7 +149,12 @@ export function rehypeComponent() {
           // Replace imports.
           // TODO: Use @swc/core and a visitor to replace this.
           // For now a simple regex should do.
-          source = source.replaceAll(`@/registry/new-york-v4/`, "@/components/")
+          source = source.replaceAll(
+            `@/registry/${styleName}/`,
+            "@/components/"
+          )
+          source = source.replaceAll(`@/registry/bases/radix/`, "@/components/")
+          source = source.replaceAll(`@/registry/bases/base/`, "@/components/")
           source = source.replaceAll("export default", "export")
 
           // Add code as children so that rehype can take over at build time.

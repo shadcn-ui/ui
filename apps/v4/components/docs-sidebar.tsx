@@ -17,6 +17,10 @@ import {
   SidebarMenuItem,
 } from "@/registry/new-york-v4/ui/sidebar"
 
+type PageTreeNode = (typeof source.pageTree)["children"][number]
+type PageTreeFolder = Extract<PageTreeNode, { type: "folder" }>
+type PageTreePage = Extract<PageTreeNode, { type: "page" }>
+
 const TOP_LEVEL_SECTIONS = [
   { name: "Get Started", href: "/docs" },
   {
@@ -43,11 +47,66 @@ const TOP_LEVEL_SECTIONS = [
 const EXCLUDED_SECTIONS = ["installation", "dark-mode"]
 const EXCLUDED_PAGES = ["/docs", "/docs/changelog"]
 
+// Recursively find all pages in a folder tree.
+function getAllPagesFromFolder(folder: PageTreeFolder): PageTreePage[] {
+  const pages: PageTreePage[] = []
+
+  for (const child of folder.children) {
+    if (child.type === "page") {
+      pages.push(child)
+    } else if (child.type === "folder") {
+      pages.push(...getAllPagesFromFolder(child))
+    }
+  }
+
+  return pages
+}
+
+// Get the pages from a folder, handling nested base folders (radix/base).
+function getPagesFromFolder(
+  folder: PageTreeFolder,
+  currentBase: string
+): PageTreePage[] {
+  // For the components folder, find the base subfolder.
+  if (folder.$id === "components" || folder.name === "Components") {
+    for (const child of folder.children) {
+      if (child.type === "folder") {
+        // Match by $id or by name.
+        const isRadix = child.$id === "radix" || child.name === "Radix UI"
+        const isBase = child.$id === "base" || child.name === "Base UI"
+
+        if (
+          (currentBase === "radix" && isRadix) ||
+          (currentBase === "base" && isBase)
+        ) {
+          return child.children.filter(
+            (c): c is PageTreePage => c.type === "page"
+          )
+        }
+      }
+    }
+
+    // Fallback: return all pages from nested folders.
+    return getAllPagesFromFolder(folder).filter(
+      (page) => !page.url.endsWith("/components")
+    )
+  }
+
+  // For other folders, return direct page children.
+  return folder.children.filter(
+    (child): child is PageTreePage => child.type === "page"
+  )
+}
+
 export function DocsSidebar({
   tree,
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
   const pathname = usePathname()
+
+  // Detect current base from URL (radix or base).
+  const baseMatch = pathname.match(/\/docs\/components\/(radix|base)\//)
+  const currentBase = baseMatch ? baseMatch[1] : "radix" // Default to radix.
 
   return (
     <Sidebar
@@ -102,37 +161,34 @@ export function DocsSidebar({
               <SidebarGroupContent>
                 {item.type === "folder" && (
                   <SidebarMenu className="gap-0.5">
-                    {item.children.map((item) => {
-                      if (
-                        !showMcpDocs &&
-                        item.type === "page" &&
-                        item.url?.includes("/mcp")
-                      ) {
+                    {getPagesFromFolder(item, currentBase).map((page) => {
+                      if (!showMcpDocs && page.url.includes("/mcp")) {
+                        return null
+                      }
+
+                      if (EXCLUDED_PAGES.includes(page.url)) {
                         return null
                       }
 
                       return (
-                        item.type === "page" &&
-                        !EXCLUDED_PAGES.includes(item.url) && (
-                          <SidebarMenuItem key={item.url}>
-                            <SidebarMenuButton
-                              asChild
-                              isActive={item.url === pathname}
-                              className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
-                            >
-                              <Link href={item.url}>
-                                <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
-                                {item.name}
-                                {PAGES_NEW.includes(item.url) && (
-                                  <span
-                                    className="flex size-2 rounded-full bg-blue-500"
-                                    title="New"
-                                  />
-                                )}
-                              </Link>
-                            </SidebarMenuButton>
-                          </SidebarMenuItem>
-                        )
+                        <SidebarMenuItem key={page.url}>
+                          <SidebarMenuButton
+                            asChild
+                            isActive={page.url === pathname}
+                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
+                          >
+                            <Link href={page.url}>
+                              <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
+                              {page.name}
+                              {PAGES_NEW.includes(page.url) && (
+                                <span
+                                  className="flex size-2 rounded-full bg-blue-500"
+                                  title="New"
+                                />
+                              )}
+                            </Link>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
                       )
                     })}
                   </SidebarMenu>

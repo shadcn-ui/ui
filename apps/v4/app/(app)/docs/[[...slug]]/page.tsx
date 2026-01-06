@@ -12,6 +12,7 @@ import z from "zod"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
+import { DocsBaseSwitcher } from "@/components/docs-base-switcher"
 import { DocsCopyPage } from "@/components/docs-copy-page"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
@@ -147,6 +148,10 @@ export default async function Page(props: {
                 </p>
               )}
             </div>
+            {params.slug?.[0] === "components" &&
+              (params.slug?.[1] === "radix" || params.slug?.[1] === "base") && (
+                <DocsBaseSwitcher />
+              )}
             {links ? (
               <div className="flex items-center gap-2 pt-4">
                 {links?.doc && (

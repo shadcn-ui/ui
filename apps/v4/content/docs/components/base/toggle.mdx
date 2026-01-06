@@ -1,0 +1,117 @@
+---
+title: Toggle
+description: A two-state button that can be either on or off.
+base: base
+component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/toggle
+  api: https://www.radix-ui.com/docs/primitives/components/toggle#api-reference
+---
+
+<ComponentPreview
+  styleName="base-nova"
+  name="toggle-demo"
+  description="A toggle component."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add toggle
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @radix-ui/react-toggle
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="toggle"
+  title="components/ui/toggle.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Toggle } from "@/components/ui/toggle"
+```
+
+```tsx
+<Toggle>Toggle</Toggle>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview
+  styleName="base-nova"
+  name="toggle-demo"
+  description="A toggle component."
+/>
+
+### Outline
+
+<ComponentPreview
+  styleName="base-nova"
+  name="toggle-outline"
+  description="A toggle component using the outline variant."
+/>
+
+### With Text
+
+<ComponentPreview
+  styleName="base-nova"
+  name="toggle-with-text"
+  description="A toggle component with text."
+/>
+
+### Small
+
+<ComponentPreview
+  styleName="base-nova"
+  name="toggle-sm"
+  description="A small toggle component."
+/>
+
+### Large
+
+<ComponentPreview
+  styleName="base-nova"
+  name="toggle-lg"
+  description="A large toggle component."
+/>
+
+### Disabled
+
+<ComponentPreview
+  styleName="base-nova"
+  name="toggle-disabled"
+  description="A disabled toggle component."
+/>

@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
-import { type Style } from "@/registry/_legacy-styles"
 
 export async function ComponentSource({
   name,
@@ -24,7 +23,7 @@ export async function ComponentSource({
   title?: string
   language?: string
   collapsible?: boolean
-  styleName?: Style["name"]
+  styleName?: string
 }) {
   if (!name && !src) {
     return null
