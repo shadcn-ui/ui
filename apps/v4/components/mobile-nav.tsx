@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link, { type LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
@@ -19,7 +19,7 @@ const TOP_LEVEL_SECTIONS = [
   { name: "Get Started", href: "/docs" },
   {
     name: "Components",
-    href: "/docs/components",
+    href: "/docs/components/radix",
   },
   {
     name: "Directory",
@@ -39,6 +39,61 @@ const TOP_LEVEL_SECTIONS = [
   },
 ]
 
+type PageTreeNode = (typeof source.pageTree)["children"][number]
+type PageTreeFolder = Extract<PageTreeNode, { type: "folder" }>
+type PageTreePage = Extract<PageTreeNode, { type: "page" }>
+
+// Recursively find all pages in a folder tree.
+function getAllPagesFromFolder(folder: PageTreeFolder): PageTreePage[] {
+  const pages: PageTreePage[] = []
+
+  for (const child of folder.children) {
+    if (child.type === "page") {
+      pages.push(child)
+    } else if (child.type === "folder") {
+      pages.push(...getAllPagesFromFolder(child))
+    }
+  }
+
+  return pages
+}
+
+// Get the pages from a folder, handling nested base folders (radix/base).
+function getPagesFromFolder(
+  folder: PageTreeFolder,
+  currentBase: string
+): PageTreePage[] {
+  // For the components folder, find the base subfolder.
+  if (folder.$id === "components" || folder.name === "Components") {
+    for (const child of folder.children) {
+      if (child.type === "folder") {
+        // Match by $id or by name.
+        const isRadix = child.$id === "radix" || child.name === "Radix UI"
+        const isBase = child.$id === "base" || child.name === "Base UI"
+
+        if (
+          (currentBase === "radix" && isRadix) ||
+          (currentBase === "base" && isBase)
+        ) {
+          return child.children.filter(
+            (c): c is PageTreePage => c.type === "page"
+          )
+        }
+      }
+    }
+
+    // Fallback: return all pages from nested folders.
+    return getAllPagesFromFolder(folder).filter(
+      (page) => !page.url.endsWith("/components")
+    )
+  }
+
+  // For other folders, return direct page children.
+  return folder.children.filter(
+    (child): child is PageTreePage => child.type === "page"
+  )
+}
+
 export function MobileNav({
   tree,
   items,
@@ -49,6 +104,12 @@ export function MobileNav({
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
+  const pathname = usePathname()
+
+  // Determine current base from pathname.
+  const currentBase = pathname.includes("/docs/components/base/")
+    ? "base"
+    : "radix"
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -125,31 +186,30 @@ export function MobileNav({
           <div className="flex flex-col gap-8">
             {tree?.children?.map((group, index) => {
               if (group.type === "folder") {
+                const pages = getPagesFromFolder(group, currentBase)
                 return (
                   <div key={index} className="flex flex-col gap-4">
                     <div className="text-muted-foreground text-sm font-medium">
                       {group.name}
                     </div>
                     <div className="flex flex-col gap-3">
-                      {group.children.map((item) => {
-                        if (item.type === "page") {
-                          if (!showMcpDocs && item.url.includes("/mcp")) {
-                            return null
-                          }
-                          return (
-                            <MobileLink
-                              key={`${item.url}-${index}`}
-                              href={item.url}
-                              onOpenChange={setOpen}
-                              className="flex items-center gap-2"
-                            >
-                              {item.name}{" "}
-                              {PAGES_NEW.includes(item.url) && (
-                                <span className="flex size-2 rounded-full bg-blue-500" />
-                              )}
-                            </MobileLink>
-                          )
+                      {pages.map((item) => {
+                        if (!showMcpDocs && item.url.includes("/mcp")) {
+                          return null
                         }
+                        return (
+                          <MobileLink
+                            key={`${item.url}-${index}`}
+                            href={item.url}
+                            onOpenChange={setOpen}
+                            className="flex items-center gap-2"
+                          >
+                            {item.name}{" "}
+                            {PAGES_NEW.includes(item.url) && (
+                              <span className="flex size-2 rounded-full bg-blue-500" />
+                            )}
+                          </MobileLink>
+                        )
                       })}
                     </div>
                   </div>

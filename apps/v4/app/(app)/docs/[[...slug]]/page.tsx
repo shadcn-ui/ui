@@ -149,8 +149,12 @@ export default async function Page(props: {
               )}
             </div>
             {params.slug?.[0] === "components" &&
-              (params.slug?.[1] === "radix" || params.slug?.[1] === "base") && (
-                <DocsBaseSwitcher />
+              (params.slug?.[1] === "radix" || params.slug?.[1] === "base") &&
+              params.slug?.[2] && (
+                <DocsBaseSwitcher
+                  base={params.slug[1]}
+                  component={params.slug[2]}
+                />
               )}
             {links ? (
               <div className="flex items-center gap-2 pt-4">
