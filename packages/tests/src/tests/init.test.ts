@@ -499,7 +499,7 @@ describe("shadcn init - custom style", async () => {
 describe("shadcn init - existing components.json", () => {
   // TODO: Revisit --force behavior. Currently it only skips backup merge,
   // but doesn't reset config values like style. Need to decide intended behavior.
-  it.skip("should override existing components.json when using --force", async () => {
+  it("should override existing components.json when using --force", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
 
     // Run init with default configuration.
