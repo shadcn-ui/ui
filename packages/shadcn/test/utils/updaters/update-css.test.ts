@@ -852,4 +852,36 @@ describe("transformCss", () => {
       }"
     `)
   })
+
+  test("should replace existing keyframes instead of duplicating", async () => {
+    const input = `@import "tailwindcss";
+
+@theme inline {
+  @keyframes skeleton {
+    to {
+      background-position: "-100% 0";
+    }
+  }
+}`
+
+    const result = await transformCss(input, {
+      "@keyframes skeleton": {
+        "to": {
+          "background-position": "-200% 0",
+        },
+      },
+    })
+
+    expect(result).toMatchInlineSnapshot(`
+      "@import "tailwindcss";
+
+      @theme inline {
+        @keyframes skeleton {
+        to {
+          background-position: -200% 0;
+          }
+        }
+      }"
+    `)
+  })
 })

@@ -10,7 +10,7 @@ import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
 import { type Color, type ColorPalette } from "@/lib/colors"
 import { trackEvent } from "@/lib/events"
 import { showMcpDocs } from "@/lib/flags"
-import { source } from "@/lib/source"
+import { type source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
 import { useMutationObserver } from "@/hooks/use-mutation-observer"
@@ -193,20 +193,17 @@ export function CommandMenu({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
-          variant="secondary"
+          variant="outline"
           className={cn(
-            "bg-surface text-foreground dark:bg-card relative h-8 w-full justify-start pl-3 font-medium shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64"
+            "text-foreground dark:bg-card hover:bg-muted/50 relative h-8 w-full justify-start pl-3 font-normal shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64"
           )}
           onClick={() => setOpen(true)}
           {...props}
         >
           <span className="hidden lg:inline-flex">Search documentation...</span>
           <span className="inline-flex lg:hidden">Search...</span>
-          <div className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
-            <KbdGroup>
-              <Kbd className="border">⌘</Kbd>
-              <Kbd className="border">K</Kbd>
-            </KbdGroup>
+          <div className="absolute top-1.5 right-1.5 hidden gap-1 group-has-[[data-slot=designer]]/body:hidden sm:flex">
+            <Kbd>⌘K</Kbd>
           </div>
         </Button>
       </DialogTrigger>

@@ -1,5 +1,43 @@
 # @shadcn/ui
 
+## 3.6.3
+
+### Patch Changes
+
+- [#9161](https://github.com/shadcn-ui/ui/pull/9161) [`f2583391eafc22a6ec6c9299a8ad9fac857f8181`](https://github.com/shadcn-ui/ui/commit/f2583391eafc22a6ec6c9299a8ad9fac857f8181) Thanks [@yeasin2002](https://github.com/yeasin2002)! - validate app name on create
+
+- [#8422](https://github.com/shadcn-ui/ui/pull/8422) [`c2fd847d65bfccde531cf1b4462ae466446efa06`](https://github.com/shadcn-ui/ui/commit/c2fd847d65bfccde531cf1b4462ae466446efa06) Thanks [@aquaticcalf](https://github.com/aquaticcalf)! - add mcp support for opencode
+
+## 3.6.2
+
+### Patch Changes
+
+- [#9126](https://github.com/shadcn-ui/ui/pull/9126) [`df67e49aac8c87da59a4257164f55ef0f53b55de`](https://github.com/shadcn-ui/ui/commit/df67e49aac8c87da59a4257164f55ef0f53b55de) Thanks [@shadcn](https://github.com/shadcn)! - add create command to readme
+
+- [#9044](https://github.com/shadcn-ui/ui/pull/9044) [`137b1c12b7bde1318c8781680b41ae449e40df8f`](https://github.com/shadcn-ui/ui/commit/137b1c12b7bde1318c8781680b41ae449e40df8f) Thanks [@mezotv](https://github.com/mezotv)! - add phosphor icons
+
+## 3.6.1
+
+### Patch Changes
+
+- [#9054](https://github.com/shadcn-ui/ui/pull/9054) [`d3156c09ae1df2321c0505db6b2e637374e320f7`](https://github.com/shadcn-ui/ui/commit/d3156c09ae1df2321c0505db6b2e637374e320f7) Thanks [@shadcn](https://github.com/shadcn)! - fix resolver for url
+
+## 3.6.0
+
+### Minor Changes
+
+- [#9022](https://github.com/shadcn-ui/ui/pull/9022) [`86d9b00084affa7010e6c7c7bd410ec62525caac`](https://github.com/shadcn-ui/ui/commit/86d9b00084affa7010e6c7c7bd410ec62525caac) Thanks [@shadcn](https://github.com/shadcn)! - add registry:base item type
+
+- [#9022](https://github.com/shadcn-ui/ui/pull/9022) [`86d9b00084affa7010e6c7c7bd410ec62525caac`](https://github.com/shadcn-ui/ui/commit/86d9b00084affa7010e6c7c7bd410ec62525caac) Thanks [@shadcn](https://github.com/shadcn)! - add npx shadcn create
+
+## 3.5.2
+
+### Patch Changes
+
+- [#8997](https://github.com/shadcn-ui/ui/pull/8997) [`6699158a22e376a6abc91693843a64cdb0b496da`](https://github.com/shadcn-ui/ui/commit/6699158a22e376a6abc91693843a64cdb0b496da) Thanks [@shadcn](https://github.com/shadcn)! - fix handling of base styles for add command
+
+- [#8993](https://github.com/shadcn-ui/ui/pull/8993) [`142cd8ef13a0ff691a94bbd73dba9d7a62428ffa`](https://github.com/shadcn-ui/ui/commit/142cd8ef13a0ff691a94bbd73dba9d7a62428ffa) Thanks [@pasqualevitiello](https://github.com/pasqualevitiello)! - Prevent duplicate keyframes when adding components
+
 ## 3.5.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 "use server"
 
-import { FormState } from "@/app/(internal)/sink/(pages)/next-form/example-form"
+import { type FormState } from "@/app/(internal)/sink/(pages)/next-form/example-form"
 import { exampleFormSchema } from "@/app/(internal)/sink/(pages)/schema"
 
 export async function subscriptionAction(

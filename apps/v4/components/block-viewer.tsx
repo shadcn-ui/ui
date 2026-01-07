@@ -16,16 +16,23 @@ import {
   Tablet,
   Terminal,
 } from "lucide-react"
-import { ImperativePanelHandle } from "react-resizable-panels"
-import { registryItemFileSchema, registryItemSchema } from "shadcn/schema"
-import { z } from "zod"
+import { type ImperativePanelHandle } from "react-resizable-panels"
+import {
+  type registryItemFileSchema,
+  type registryItemSchema,
+} from "shadcn/schema"
+import { type z } from "zod"
 
 import { trackEvent } from "@/lib/events"
-import { createFileTreeForRegistryItemFiles, FileTree } from "@/lib/registry"
+import {
+  type createFileTreeForRegistryItemFiles,
+  type FileTree,
+} from "@/lib/registry"
 import { cn } from "@/lib/utils"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { getIconForLanguageExtension } from "@/components/icons"
 import { OpenInV0Button } from "@/components/open-in-v0-button"
+import { type Style } from "@/registry/_legacy-styles"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Collapsible,
@@ -54,7 +61,6 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/new-york-v4/ui/toggle-group"
-import { type Style } from "@/registry/styles"
 
 type BlockViewerContext = {
   item: z.infer<typeof registryItemSchema>

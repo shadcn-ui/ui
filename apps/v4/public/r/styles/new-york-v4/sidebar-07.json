@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sidebar-07",
-  "type": "registry:block",
   "description": "A sidebar that collapses to icons.",
   "registryDependencies": [
     "sidebar",
@@ -47,5 +46,6 @@
   "categories": [
     "sidebar",
     "dashboard"
-  ]
+  ],
+  "type": "registry:block"
 }
