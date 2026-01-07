@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Field, FieldLabel } from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/components/example"
+import { Field, FieldLabel } from "@/registry/radix-nova/ui/field"
 import {
   Item,
   ItemActions,
@@ -14,9 +14,9 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
-import { Progress } from "@/registry/bases/radix/ui/progress"
-import { Slider } from "@/registry/bases/radix/ui/slider"
+} from "@/registry/radix-nova/ui/item"
+import { Progress } from "@/registry/radix-nova/ui/progress"
+import { Slider } from "@/registry/radix-nova/ui/slider"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ProgressExample() {

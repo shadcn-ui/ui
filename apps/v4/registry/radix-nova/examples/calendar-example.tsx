@@ -8,21 +8,21 @@ import { es } from "react-day-picker/locale"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
-import { Calendar, CalendarDayButton } from "@/registry/bases/radix/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/registry/bases/radix/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
+import { Calendar, CalendarDayButton } from "@/registry/radix-nova/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/registry/radix-nova/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/registry/radix-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/radix/ui/input-group"
+} from "@/registry/radix-nova/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/radix/ui/popover"
+} from "@/registry/radix-nova/ui/popover"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CalendarExample() {

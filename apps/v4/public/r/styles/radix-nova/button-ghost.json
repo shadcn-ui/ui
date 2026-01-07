@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-ghost",
+  "title": "Button Ghost",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/demo/button-ghost.tsx",
+      "content": "import { Button } from \"@/registry/radix-nova/ui/button\"\n\nexport default function ButtonGhost() {\n  return <Button variant=\"ghost\">Ghost</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

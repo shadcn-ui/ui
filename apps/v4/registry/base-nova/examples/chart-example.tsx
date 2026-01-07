@@ -25,7 +25,7 @@ import {
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   Card,
   CardContent,
@@ -33,13 +33,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/registry/bases/base/ui/chart"
+} from "@/registry/base-nova/ui/chart"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const areaChartData = [

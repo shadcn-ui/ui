@@ -1,22 +1,22 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/dropdown-menu"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/bases/base/ui/tabs"
+} from "@/registry/base-nova/ui/tabs"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function TabsExample() {

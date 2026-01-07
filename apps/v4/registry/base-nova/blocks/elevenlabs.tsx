@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -16,7 +16,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/ui/card"
 
 export default function ElevenlabsBlocks() {
   return (

@@ -1,9 +1,9 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Spinner } from "@/registry/bases/radix/ui/spinner"
+} from "@/registry/radix-nova/components/example"
+import { Badge } from "@/registry/radix-nova/ui/badge"
+import { Spinner } from "@/registry/radix-nova/ui/spinner"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function BadgeExample() {

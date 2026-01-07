@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-with-button",
+  "title": "Input With Button",
+  "registryDependencies": [
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/base-nova/demo/input-with-button.tsx",
+      "content": "import { Button } from \"@/registry/base-nova/ui/button\"\nimport { Input } from \"@/registry/base-nova/ui/input\"\n\nexport default function InputWithButton() {\n  return (\n    <div className=\"flex w-full max-w-sm items-center gap-2\">\n      <Input type=\"email\" placeholder=\"Email\" />\n      <Button type=\"submit\" variant=\"outline\">\n        Subscribe\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

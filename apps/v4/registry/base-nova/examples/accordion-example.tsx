@@ -1,21 +1,21 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/bases/base/ui/accordion"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/ui/accordion"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/ui/card"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function AccordionExample() {

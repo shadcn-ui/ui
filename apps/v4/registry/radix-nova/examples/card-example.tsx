@@ -3,15 +3,15 @@ import Image from "next/image"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/ui/avatar"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -20,9 +20,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CardExample() {

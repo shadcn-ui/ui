@@ -1,15 +1,15 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Card, CardContent } from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/components/example"
+import { Card, CardContent } from "@/registry/base-nova/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/registry/bases/base/ui/carousel"
+} from "@/registry/base-nova/ui/carousel"
 
 export default function CarouselExample() {
   return (

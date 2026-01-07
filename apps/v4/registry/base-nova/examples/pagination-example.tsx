@@ -3,8 +3,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Field, FieldLabel } from "@/registry/bases/base/ui/field"
+} from "@/registry/base-nova/components/example"
+import { Field, FieldLabel } from "@/registry/base-nova/ui/field"
 import {
   Pagination,
   PaginationContent,
@@ -13,7 +13,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/registry/bases/base/ui/pagination"
+} from "@/registry/base-nova/ui/pagination"
 import {
   Select,
   SelectContent,
@@ -21,7 +21,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/base-nova/ui/select"
 
 export default function PaginationExample() {
   return (

@@ -1,16 +1,16 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/ui/dropdown-menu"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   Select,
   SelectContent,
@@ -18,7 +18,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
+} from "@/registry/radix-nova/ui/select"
 import {
   Table,
   TableBody,
@@ -28,7 +28,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/bases/radix/ui/table"
+} from "@/registry/radix-nova/ui/table"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const invoices = [

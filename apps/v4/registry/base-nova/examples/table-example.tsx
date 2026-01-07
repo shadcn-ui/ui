@@ -3,16 +3,16 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/dropdown-menu"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   Select,
   SelectContent,
@@ -20,7 +20,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/base-nova/ui/select"
 import {
   Table,
   TableBody,
@@ -30,7 +30,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/bases/base/ui/table"
+} from "@/registry/base-nova/ui/table"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const invoices = [

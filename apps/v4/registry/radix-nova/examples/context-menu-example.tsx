@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -22,7 +22,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/registry/bases/radix/ui/context-menu"
+} from "@/registry/radix-nova/ui/context-menu"
 import {
   Dialog,
   DialogContent,
@@ -30,7 +30,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
+} from "@/registry/radix-nova/ui/dialog"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ContextMenuExample() {

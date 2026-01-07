@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-destructive",
+  "title": "Badge Destructive",
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-lyra/demo/badge-destructive.tsx",
+      "content": "import { Badge } from \"@/registry/radix-lyra/ui/badge\"\n\nexport default function BadgeDestructive() {\n  return <Badge variant=\"destructive\">Destructive</Badge>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

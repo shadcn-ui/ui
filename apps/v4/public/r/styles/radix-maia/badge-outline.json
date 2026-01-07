@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-outline",
+  "title": "Badge Outline",
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-maia/demo/badge-outline.tsx",
+      "content": "import { Badge } from \"@/registry/radix-maia/ui/badge\"\n\nexport default function BadgeOutline() {\n  return <Badge variant=\"outline\">Outline</Badge>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

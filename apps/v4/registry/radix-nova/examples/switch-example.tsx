@@ -1,16 +1,16 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldLabel,
   FieldTitle,
-} from "@/registry/bases/radix/ui/field"
-import { Label } from "@/registry/bases/radix/ui/label"
-import { Switch } from "@/registry/bases/radix/ui/switch"
+} from "@/registry/radix-nova/ui/field"
+import { Label } from "@/registry/radix-nova/ui/label"
+import { Switch } from "@/registry/radix-nova/ui/switch"
 
 export default function SwitchExample() {
   return (

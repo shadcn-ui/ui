@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/base-mira/demo/textarea-demo.tsx",
-      "content": "import { Textarea } from \"@/registry/base-nova/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return <Textarea placeholder=\"Type your message here.\" />\n}\n",
+      "content": "import { Textarea } from \"@/registry/base-mira/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return <Textarea placeholder=\"Type your message here.\" />\n}\n",
       "type": "registry:example"
     }
   ],

@@ -5,12 +5,12 @@ import { useState } from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   ButtonGroup,
   ButtonGroupText,
-} from "@/registry/bases/radix/ui/button-group"
+} from "@/registry/radix-nova/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,27 +18,27 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
-import { Field, FieldGroup } from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/ui/dropdown-menu"
+import { Field, FieldGroup } from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/radix/ui/input-group"
-import { Label } from "@/registry/bases/radix/ui/label"
+} from "@/registry/radix-nova/ui/input-group"
+import { Label } from "@/registry/radix-nova/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
+} from "@/registry/radix-nova/ui/select"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/radix/ui/tooltip"
+} from "@/registry/radix-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ButtonGroupExample() {

@@ -1,8 +1,8 @@
 "use client"
 
-import { Button } from "@/registry/base-nova/ui/button"
-import { Input } from "@/registry/base-nova/ui/input"
-import { Label } from "@/registry/base-nova/ui/label"
+import { Button } from "@/registry/bases/base/ui/button"
+import { Input } from "@/registry/bases/base/ui/input"
+import { Label } from "@/registry/bases/base/ui/label"
 import {
   Sheet,
   SheetClose,
@@ -12,7 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/base-nova/ui/sheet"
+} from "@/registry/bases/base/ui/sheet"
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-with-text",
+  "title": "Toggle With Text",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-mira/demo/toggle-with-text.tsx",
+      "content": "import { Italic } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/radix-mira/ui/toggle\"\n\nexport function ToggleWithText() {\n  return (\n    <Toggle aria-label=\"Toggle italic\">\n      <Italic />\n      Italic\n    </Toggle>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

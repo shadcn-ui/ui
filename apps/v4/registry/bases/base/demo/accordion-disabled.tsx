@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/base-nova/ui/accordion"
+} from "@/registry/bases/base/ui/accordion"
 
 export default function AccordionDisabled() {
   return (

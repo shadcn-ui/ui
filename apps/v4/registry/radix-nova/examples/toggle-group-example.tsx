@@ -1,8 +1,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/components/example"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   Select,
   SelectContent,
@@ -10,11 +10,11 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
+} from "@/registry/radix-nova/ui/select"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/registry/bases/radix/ui/toggle-group"
+} from "@/registry/radix-nova/ui/toggle-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ToggleGroupExample() {

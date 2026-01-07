@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Command,
   CommandDialog,
@@ -17,7 +17,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/registry/bases/radix/ui/command"
+} from "@/registry/radix-nova/ui/command"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CommandExample() {

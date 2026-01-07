@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-icon",
+  "title": "Button Icon",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-vega/demo/button-icon.tsx",
+      "content": "import { CircleFadingArrowUpIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/radix-vega/ui/button\"\n\nexport default function ButtonIcon() {\n  return (\n    <Button variant=\"outline\" size=\"icon\">\n      <CircleFadingArrowUpIcon />\n    </Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -3,8 +3,8 @@ import Image from "next/image"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { AspectRatio } from "@/registry/bases/base/ui/aspect-ratio"
+} from "@/registry/base-nova/components/example"
+import { AspectRatio } from "@/registry/base-nova/ui/aspect-ratio"
 
 export default function AspectRatioExample() {
   return (

@@ -6,12 +6,12 @@ import { toast } from "sonner"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   ButtonGroup,
   ButtonGroupText,
-} from "@/registry/bases/radix/ui/button-group"
+} from "@/registry/radix-nova/ui/button-group"
 import {
   Card,
   CardContent,
@@ -19,20 +19,20 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
+} from "@/registry/radix-nova/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/radix-nova/ui/dropdown-menu"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
@@ -40,8 +40,8 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/bases/radix/ui/input-group"
-import { Kbd, KbdGroup } from "@/registry/bases/radix/ui/kbd"
+} from "@/registry/radix-nova/ui/input-group"
+import { Kbd, KbdGroup } from "@/registry/radix-nova/ui/kbd"
 import {
   Popover,
   PopoverContent,
@@ -49,14 +49,14 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/registry/bases/radix/ui/popover"
-import { Spinner } from "@/registry/bases/radix/ui/spinner"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
+} from "@/registry/radix-nova/ui/popover"
+import { Spinner } from "@/registry/radix-nova/ui/spinner"
+import { Textarea } from "@/registry/radix-nova/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/radix/ui/tooltip"
+} from "@/registry/radix-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function InputGroupExample() {

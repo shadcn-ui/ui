@@ -1,7 +1,7 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Field,
   FieldContent,
@@ -9,11 +9,11 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/ui/field"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/registry/bases/radix/ui/radio-group"
+} from "@/registry/radix-nova/ui/radio-group"
 
 export default function RadioGroupExample() {
   return (

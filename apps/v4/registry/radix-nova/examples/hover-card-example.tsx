@@ -1,8 +1,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -10,12 +10,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
+} from "@/registry/radix-nova/ui/dialog"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/registry/bases/radix/ui/hover-card"
+} from "@/registry/radix-nova/ui/hover-card"
 
 export default function HoverCardExample() {
   return (

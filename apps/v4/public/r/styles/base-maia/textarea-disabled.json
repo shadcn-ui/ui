@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/base-maia/demo/textarea-disabled.tsx",
-      "content": "import { Textarea } from \"@/registry/base-nova/ui/textarea\"\n\nexport default function TextareaDisabled() {\n  return <Textarea placeholder=\"Type your message here.\" disabled />\n}\n",
+      "content": "import { Textarea } from \"@/registry/base-maia/ui/textarea\"\n\nexport default function TextareaDisabled() {\n  return <Textarea placeholder=\"Type your message here.\" disabled />\n}\n",
       "type": "registry:example"
     }
   ],

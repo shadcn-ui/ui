@@ -3,8 +3,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -14,7 +14,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/bases/base/ui/drawer"
+} from "@/registry/base-nova/ui/drawer"
 
 export default function DrawerExample() {
   return (

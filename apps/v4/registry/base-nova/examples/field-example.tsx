@@ -6,9 +6,9 @@ import { REGEXP_ONLY_DIGITS } from "input-otp"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Checkbox } from "@/registry/bases/base/ui/checkbox"
+} from "@/registry/base-nova/components/example"
+import { Badge } from "@/registry/base-nova/ui/badge"
+import { Checkbox } from "@/registry/base-nova/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -18,23 +18,23 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/registry/bases/base/ui/input-otp"
+} from "@/registry/base-nova/ui/input-otp"
 import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption,
-} from "@/registry/bases/base/ui/native-select"
+} from "@/registry/base-nova/ui/native-select"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/registry/bases/base/ui/radio-group"
+} from "@/registry/base-nova/ui/radio-group"
 import {
   Select,
   SelectContent,
@@ -42,10 +42,10 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
-import { Slider } from "@/registry/bases/base/ui/slider"
-import { Switch } from "@/registry/bases/base/ui/switch"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/base-nova/ui/select"
+import { Slider } from "@/registry/base-nova/ui/slider"
+import { Switch } from "@/registry/base-nova/ui/switch"
+import { Textarea } from "@/registry/base-nova/ui/textarea"
 
 export default function FieldExample() {
   return (

@@ -1,9 +1,9 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
-import { Toggle } from "@/registry/bases/radix/ui/toggle"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
+import { Toggle } from "@/registry/radix-nova/ui/toggle"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ToggleExample() {

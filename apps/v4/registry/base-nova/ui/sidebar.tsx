@@ -5,23 +5,23 @@ import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
 
-import { cn } from "@/registry/bases/base/lib/utils"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Input } from "@/registry/bases/base/ui/input"
-import { Separator } from "@/registry/bases/base/ui/separator"
+import { cn } from "@/registry/base-nova/lib/utils"
+import { Button } from "@/registry/base-nova/ui/button"
+import { Input } from "@/registry/base-nova/ui/input"
+import { Separator } from "@/registry/base-nova/ui/separator"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/registry/bases/base/ui/sheet"
-import { Skeleton } from "@/registry/bases/base/ui/skeleton"
+} from "@/registry/base-nova/ui/sheet"
+import { Skeleton } from "@/registry/base-nova/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/base-nova/ui/tooltip"
 import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 

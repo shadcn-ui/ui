@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-badge",
+  "title": "Spinner Badge",
+  "registryDependencies": [
+    "badge",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-vega/demo/spinner-badge.tsx",
+      "content": "import { Badge } from \"@/registry/radix-vega/ui/badge\"\nimport { Spinner } from \"@/registry/radix-vega/ui/spinner\"\n\nexport function SpinnerBadge() {\n  return (\n    <div className=\"flex items-center gap-4 [--radius:1.2rem]\">\n      <Badge>\n        <Spinner />\n        Syncing\n      </Badge>\n      <Badge variant=\"secondary\">\n        <Spinner />\n        Updating\n      </Badge>\n      <Badge variant=\"outline\">\n        <Spinner />\n        Processing\n      </Badge>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

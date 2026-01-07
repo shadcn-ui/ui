@@ -1,17 +1,17 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/ui/field"
 import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption,
-} from "@/registry/bases/radix/ui/native-select"
+} from "@/registry/radix-nova/ui/native-select"
 
 export default function NativeSelectExample() {
   return (

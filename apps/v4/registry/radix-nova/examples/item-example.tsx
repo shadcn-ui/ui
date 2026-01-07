@@ -3,8 +3,8 @@ import Image from "next/image"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Item,
   ItemActions,
@@ -16,7 +16,7 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
+} from "@/registry/radix-nova/ui/item"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ItemExample() {

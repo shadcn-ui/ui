@@ -5,8 +5,8 @@ import { toast } from "sonner"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 
 export default function SonnerExample() {
   return (

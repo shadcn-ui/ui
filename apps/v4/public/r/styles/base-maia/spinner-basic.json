@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner-basic",
+  "title": "Spinner Basic",
+  "registryDependencies": [
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/base-maia/demo/spinner-basic.tsx",
+      "content": "import { Spinner } from \"@/registry/base-maia/ui/spinner\"\n\nexport function SpinnerBasic() {\n  return (\n    <div className=\"flex flex-col items-center justify-center gap-8\">\n      <Spinner />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

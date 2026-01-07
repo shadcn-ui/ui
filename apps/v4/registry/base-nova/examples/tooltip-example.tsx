@@ -3,14 +3,14 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Kbd } from "@/registry/bases/base/ui/kbd"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
+import { Kbd } from "@/registry/base-nova/ui/kbd"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/base-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function TooltipExample() {

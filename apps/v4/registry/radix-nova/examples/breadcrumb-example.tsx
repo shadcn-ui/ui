@@ -3,7 +3,7 @@ import Link from "next/link"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -12,14 +12,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/bases/radix/ui/breadcrumb"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/ui/breadcrumb"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/radix-nova/ui/dropdown-menu"
 
 export default function BreadcrumbExample() {
   return (

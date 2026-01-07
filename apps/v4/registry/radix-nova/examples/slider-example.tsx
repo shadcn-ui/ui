@@ -5,9 +5,9 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Label } from "@/registry/bases/radix/ui/label"
-import { Slider } from "@/registry/bases/radix/ui/slider"
+} from "@/registry/radix-nova/components/example"
+import { Label } from "@/registry/radix-nova/ui/label"
+import { Slider } from "@/registry/radix-nova/ui/slider"
 
 export default function SliderExample() {
   return (

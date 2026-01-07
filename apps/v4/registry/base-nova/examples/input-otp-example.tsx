@@ -6,8 +6,8 @@ import { REGEXP_ONLY_DIGITS, REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -15,19 +15,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/ui/card"
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
+} from "@/registry/base-nova/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/registry/bases/base/ui/input-otp"
+} from "@/registry/base-nova/ui/input-otp"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function InputOTPExample() {

@@ -1,10 +1,10 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
+import { Field, FieldGroup, FieldLabel } from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   Sheet,
   SheetClose,
@@ -14,7 +14,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/bases/radix/ui/sheet"
+} from "@/registry/radix-nova/ui/sheet"
 
 export default function SheetExample() {
   return (

@@ -1,12 +1,12 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
-import { Field } from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
-import { Label } from "@/registry/bases/radix/ui/label"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
+} from "@/registry/radix-nova/components/example"
+import { Checkbox } from "@/registry/radix-nova/ui/checkbox"
+import { Field } from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
+import { Label } from "@/registry/radix-nova/ui/label"
+import { Textarea } from "@/registry/radix-nova/ui/textarea"
 
 export default function LabelExample() {
   return (

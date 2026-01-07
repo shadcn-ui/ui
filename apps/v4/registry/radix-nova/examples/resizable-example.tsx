@@ -5,12 +5,12 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/bases/radix/ui/resizable"
+} from "@/registry/radix-nova/ui/resizable"
 
 export default function ResizableExample() {
   return (

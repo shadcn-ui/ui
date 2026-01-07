@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "registry/radix-vega/demo/textarea-disabled.tsx",
-      "content": "import { Textarea } from \"@/registry/radix-nova/ui/textarea\"\n\nexport default function TextareaDisabled() {\n  return <Textarea placeholder=\"Type your message here.\" disabled />\n}\n",
+      "content": "import { Textarea } from \"@/registry/radix-vega/ui/textarea\"\n\nexport default function TextareaDisabled() {\n  return <Textarea placeholder=\"Type your message here.\" disabled />\n}\n",
       "type": "registry:example"
     }
   ],

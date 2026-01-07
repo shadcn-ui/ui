@@ -1,15 +1,15 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Card, CardContent } from "@/registry/bases/radix/ui/card"
+} from "@/registry/radix-nova/components/example"
+import { Card, CardContent } from "@/registry/radix-nova/ui/card"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/registry/bases/radix/ui/carousel"
+} from "@/registry/radix-nova/ui/carousel"
 
 export default function CarouselExample() {
   return (

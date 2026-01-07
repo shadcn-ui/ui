@@ -4,23 +4,23 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
-import { Button } from "@/registry/bases/radix/ui/button"
-import { Input } from "@/registry/bases/radix/ui/input"
-import { Separator } from "@/registry/bases/radix/ui/separator"
+import { cn } from "@/registry/radix-nova/lib/utils"
+import { Button } from "@/registry/radix-nova/ui/button"
+import { Input } from "@/registry/radix-nova/ui/input"
+import { Separator } from "@/registry/radix-nova/ui/separator"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/registry/bases/radix/ui/sheet"
-import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
+} from "@/registry/radix-nova/ui/sheet"
+import { Skeleton } from "@/registry/radix-nova/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/radix/ui/tooltip"
+} from "@/registry/radix-nova/ui/tooltip"
 import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 

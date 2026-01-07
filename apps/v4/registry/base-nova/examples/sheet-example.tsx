@@ -1,10 +1,10 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
+import { Field, FieldGroup, FieldLabel } from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   Sheet,
   SheetClose,
@@ -14,7 +14,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/bases/base/ui/sheet"
+} from "@/registry/base-nova/ui/sheet"
 
 export default function SheetExample() {
   return (

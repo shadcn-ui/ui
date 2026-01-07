@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-loading",
+  "title": "Button Loading",
+  "registryDependencies": [
+    "button",
+    "spinner"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-maia/demo/button-loading.tsx",
+      "content": "import { Button } from \"@/registry/radix-maia/ui/button\"\nimport { Spinner } from \"@/registry/radix-maia/ui/spinner\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button size=\"sm\" variant=\"outline\" disabled>\n      <Spinner />\n      Submit\n    </Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

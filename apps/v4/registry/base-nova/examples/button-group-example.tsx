@@ -3,12 +3,12 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   ButtonGroup,
   ButtonGroupText,
-} from "@/registry/bases/base/ui/button-group"
+} from "@/registry/base-nova/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,15 +16,15 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
-import { Field, FieldGroup } from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/dropdown-menu"
+import { Field, FieldGroup } from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
-import { Label } from "@/registry/bases/base/ui/label"
+} from "@/registry/base-nova/ui/input-group"
+import { Label } from "@/registry/base-nova/ui/label"
 import {
   Select,
   SelectContent,
@@ -32,12 +32,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/base-nova/ui/select"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/base-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ButtonGroupExample() {

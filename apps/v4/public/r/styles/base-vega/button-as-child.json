@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-as-child",
+  "title": "Button As Child",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/base-vega/demo/button-as-child.tsx",
+      "content": "import Link from \"next/link\"\n\nimport { Button } from \"@/registry/base-vega/ui/button\"\n\nexport default function ButtonAsChild() {\n  return (\n    <Button render={<Link href=\"/login\" />}>Login</Button>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

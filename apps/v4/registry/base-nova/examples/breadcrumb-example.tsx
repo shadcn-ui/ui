@@ -3,7 +3,7 @@ import Link from "next/link"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -12,14 +12,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/bases/base/ui/breadcrumb"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/ui/breadcrumb"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/base-nova/ui/dropdown-menu"
 
 export default function BreadcrumbExample() {
   return (

@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -14,24 +14,24 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
+} from "@/registry/radix-nova/ui/dialog"
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
+} from "@/registry/radix-nova/ui/item"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/bases/radix/ui/native-select"
+} from "@/registry/radix-nova/ui/native-select"
 import {
   Select,
   SelectContent,
@@ -41,7 +41,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
+} from "@/registry/radix-nova/ui/select"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SelectExample() {

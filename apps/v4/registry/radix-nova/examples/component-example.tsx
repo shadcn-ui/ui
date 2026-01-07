@@ -5,7 +5,7 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,9 +17,9 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/bases/radix/ui/alert-dialog"
-import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/ui/alert-dialog"
+import { Badge } from "@/registry/radix-nova/ui/badge"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -28,7 +28,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
+} from "@/registry/radix-nova/ui/card"
 import {
   Combobox,
   ComboboxContent,
@@ -36,7 +36,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/registry/bases/radix/ui/combobox"
+} from "@/registry/radix-nova/ui/combobox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -53,9 +53,9 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/ui/dropdown-menu"
+import { Field, FieldGroup, FieldLabel } from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   Select,
   SelectContent,
@@ -63,8 +63,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
+} from "@/registry/radix-nova/ui/select"
+import { Textarea } from "@/registry/radix-nova/ui/textarea"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function ComponentExample() {

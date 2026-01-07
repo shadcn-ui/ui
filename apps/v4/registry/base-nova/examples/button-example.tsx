@@ -1,8 +1,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ButtonExample() {

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-sm",
+  "title": "Toggle Sm",
+  "registryDependencies": [
+    "toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/base-vega/demo/toggle-sm.tsx",
+      "content": "import { Italic } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/base-vega/ui/toggle\"\n\nexport function ToggleSm() {\n  return (\n    <Toggle size=\"sm\" aria-label=\"Toggle italic\">\n      <Italic />\n    </Toggle>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

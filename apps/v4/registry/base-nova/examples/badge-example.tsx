@@ -1,9 +1,9 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Spinner } from "@/registry/bases/base/ui/spinner"
+} from "@/registry/base-nova/components/example"
+import { Badge } from "@/registry/base-nova/ui/badge"
+import { Spinner } from "@/registry/base-nova/ui/spinner"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function BadgeExample() {

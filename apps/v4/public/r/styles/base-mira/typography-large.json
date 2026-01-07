@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-large",
+  "title": "Typography Large",
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/base-mira/demo/typography-large.tsx",
+      "content": "export function TypographyLarge() {\n  return <div className=\"text-lg font-semibold\">Are you absolutely sure?</div>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

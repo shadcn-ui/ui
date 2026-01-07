@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover"
 
-import { cn } from "@/registry/bases/base/lib/utils"
+import { cn } from "@/registry/base-nova/lib/utils"
 
 function Popover({ ...props }: PopoverPrimitive.Root.Props) {
   return <PopoverPrimitive.Root data-slot="popover" {...props} />

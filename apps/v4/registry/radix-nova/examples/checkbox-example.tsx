@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
+} from "@/registry/radix-nova/components/example"
+import { Checkbox } from "@/registry/radix-nova/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -14,7 +14,7 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/ui/field"
 import {
   Table,
   TableBody,
@@ -22,7 +22,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/bases/radix/ui/table"
+} from "@/registry/radix-nova/ui/table"
 
 export default function CheckboxExample() {
   return (

@@ -1,26 +1,26 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/bases/base/ui/native-select"
+} from "@/registry/base-nova/ui/native-select"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/base-nova/ui/select"
 
 export default function InputExample() {
   return (

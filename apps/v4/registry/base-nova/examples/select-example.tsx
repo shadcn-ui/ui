@@ -3,8 +3,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -12,24 +12,24 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
+} from "@/registry/base-nova/ui/dialog"
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/base-nova/ui/item"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/bases/base/ui/native-select"
+} from "@/registry/base-nova/ui/native-select"
 import {
   Select,
   SelectContent,
@@ -39,7 +39,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/base-nova/ui/select"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SelectExample() {

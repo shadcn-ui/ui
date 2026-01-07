@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Alert, AlertDescription } from "@/registry/bases/radix/ui/alert"
+} from "@/registry/radix-nova/components/example"
+import { Alert, AlertDescription } from "@/registry/radix-nova/ui/alert"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,9 +17,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/bases/radix/ui/alert-dialog"
-import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/ui/alert-dialog"
+import { Badge } from "@/registry/radix-nova/ui/badge"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -27,7 +27,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
+} from "@/registry/radix-nova/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -40,37 +40,37 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/radix-nova/ui/dropdown-menu"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/registry/bases/radix/ui/input-group"
+} from "@/registry/radix-nova/ui/input-group"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
-import { Kbd } from "@/registry/bases/radix/ui/kbd"
+} from "@/registry/radix-nova/ui/item"
+import { Kbd } from "@/registry/radix-nova/ui/kbd"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/radix/ui/popover"
+} from "@/registry/radix-nova/ui/popover"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/radix/ui/tooltip"
+} from "@/registry/radix-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ChatGPTBlock() {

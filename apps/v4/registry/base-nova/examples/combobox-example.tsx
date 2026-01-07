@@ -6,9 +6,9 @@ import { toast } from "sonner"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Card, CardContent, CardFooter } from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
+import { Card, CardContent, CardFooter } from "@/registry/base-nova/ui/card"
 import {
   Combobox,
   ComboboxChip,
@@ -26,7 +26,7 @@ import {
   ComboboxTrigger,
   ComboboxValue,
   useComboboxAnchor,
-} from "@/registry/bases/base/ui/combobox"
+} from "@/registry/base-nova/ui/combobox"
 import {
   Dialog,
   DialogContent,
@@ -35,26 +35,26 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
+} from "@/registry/base-nova/ui/dialog"
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/base-nova/ui/input-group"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/base-nova/ui/item"
 import {
   Select,
   SelectContent,
@@ -62,7 +62,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
+} from "@/registry/base-nova/ui/select"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ComboboxExample() {

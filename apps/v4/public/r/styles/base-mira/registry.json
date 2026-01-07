@@ -648,6 +648,20 @@
       "type": "registry:example"
     },
     {
+      "name": "accordion-disabled",
+      "title": "Accordion Disabled",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/accordion-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "accordion-multiple",
       "title": "Accordion Multiple",
       "registryDependencies": [
@@ -662,14 +676,2583 @@
       "type": "registry:example"
     },
     {
-      "name": "accordion-disabled",
-      "title": "Accordion Disabled",
+      "name": "alert-demo",
+      "title": "Alert Demo",
       "registryDependencies": [
-        "accordion"
+        "alert"
       ],
       "files": [
         {
-          "path": "registry/base-mira/demo/accordion-disabled.tsx",
+          "path": "registry/base-mira/demo/alert-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-destructive",
+      "title": "Alert Destructive",
+      "registryDependencies": [
+        "alert"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/alert-destructive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-dialog-demo",
+      "title": "Alert Dialog Demo",
+      "registryDependencies": [
+        "alert-dialog",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/alert-dialog-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "aspect-ratio-demo",
+      "title": "Aspect Ratio Demo",
+      "registryDependencies": [
+        "aspect-ratio"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/aspect-ratio-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "avatar-demo",
+      "title": "Avatar Demo",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/avatar-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-demo",
+      "title": "Badge Demo",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/badge-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-destructive",
+      "title": "Badge Destructive",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/badge-destructive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-outline",
+      "title": "Badge Outline",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/badge-outline.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-secondary",
+      "title": "Badge Secondary",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/badge-secondary.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-demo",
+      "title": "Breadcrumb Demo",
+      "registryDependencies": [
+        "breadcrumb",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/breadcrumb-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-dropdown",
+      "title": "Breadcrumb Dropdown",
+      "registryDependencies": [
+        "breadcrumb",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/breadcrumb-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-ellipsis",
+      "title": "Breadcrumb Ellipsis",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/breadcrumb-ellipsis.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-link",
+      "title": "Breadcrumb Link",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/breadcrumb-link.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-responsive",
+      "title": "Breadcrumb Responsive",
+      "registryDependencies": [
+        "breadcrumb",
+        "button",
+        "drawer",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/breadcrumb-responsive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-separator",
+      "title": "Breadcrumb Separator",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/breadcrumb-separator.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-as-child",
+      "title": "Button As Child",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-as-child.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-default",
+      "title": "Button Default",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-default.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-demo",
+      "title": "Button Demo",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-destructive",
+      "title": "Button Destructive",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-destructive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-ghost",
+      "title": "Button Ghost",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-ghost.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-demo",
+      "title": "Button Group Demo",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-dropdown",
+      "title": "Button Group Dropdown",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-input-group",
+      "title": "Button Group Input Group",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "input-group",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-input-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-input",
+      "title": "Button Group Input",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-input.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-nested",
+      "title": "Button Group Nested",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-nested.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-orientation",
+      "title": "Button Group Orientation",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-orientation.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-popover",
+      "title": "Button Group Popover",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "popover",
+        "separator",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-popover.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-select",
+      "title": "Button Group Select",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "input",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-select.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-separator",
+      "title": "Button Group Separator",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-separator.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-size",
+      "title": "Button Group Size",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-split",
+      "title": "Button Group Split",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-group-split.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-icon",
+      "title": "Button Icon",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-icon.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-link",
+      "title": "Button Link",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-link.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-loading",
+      "title": "Button Loading",
+      "registryDependencies": [
+        "button",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-loading.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-outline",
+      "title": "Button Outline",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-outline.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-rounded",
+      "title": "Button Rounded",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-rounded.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-secondary",
+      "title": "Button Secondary",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-secondary.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-size",
+      "title": "Button Size",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-with-icon",
+      "title": "Button With Icon",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/button-with-icon.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "calendar-demo",
+      "title": "Calendar Demo",
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/calendar-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "calendar-hijri",
+      "title": "Calendar Hijri",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/calendar-hijri.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "card-demo",
+      "title": "Card Demo",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/card-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-api",
+      "title": "Carousel Api",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/carousel-api.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-demo",
+      "title": "Carousel Demo",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/carousel-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-orientation",
+      "title": "Carousel Orientation",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/carousel-orientation.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-plugin",
+      "title": "Carousel Plugin",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/carousel-plugin.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-size",
+      "title": "Carousel Size",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/carousel-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-spacing",
+      "title": "Carousel Spacing",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/carousel-spacing.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-bar-demo-axis",
+      "title": "Chart Bar Demo Axis",
+      "registryDependencies": [
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/chart-bar-demo-axis.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-bar-demo-grid",
+      "title": "Chart Bar Demo Grid",
+      "registryDependencies": [
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/chart-bar-demo-grid.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-bar-demo-legend",
+      "title": "Chart Bar Demo Legend",
+      "registryDependencies": [
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/chart-bar-demo-legend.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-bar-demo-tooltip",
+      "title": "Chart Bar Demo Tooltip",
+      "registryDependencies": [
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/chart-bar-demo-tooltip.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-bar-demo",
+      "title": "Chart Bar Demo",
+      "registryDependencies": [
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/chart-bar-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-tooltip-demo",
+      "title": "Chart Tooltip Demo",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/chart-tooltip-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-demo",
+      "title": "Checkbox Demo",
+      "registryDependencies": [
+        "checkbox",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/checkbox-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-disabled",
+      "title": "Checkbox Disabled",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/checkbox-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-with-text",
+      "title": "Checkbox With Text",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/checkbox-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "collapsible-demo",
+      "title": "Collapsible Demo",
+      "registryDependencies": [
+        "button",
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/collapsible-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-demo",
+      "title": "Combobox Demo",
+      "registryDependencies": [
+        "button",
+        "command",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/combobox-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-dropdown-menu",
+      "title": "Combobox Dropdown Menu",
+      "registryDependencies": [
+        "button",
+        "command",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/combobox-dropdown-menu.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-popover",
+      "title": "Combobox Popover",
+      "registryDependencies": [
+        "button",
+        "command",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/combobox-popover.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-responsive",
+      "title": "Combobox Responsive",
+      "registryDependencies": [
+        "button",
+        "command",
+        "drawer",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/combobox-responsive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "command-demo",
+      "title": "Command Demo",
+      "registryDependencies": [
+        "command"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/command-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "command-dialog",
+      "title": "Command Dialog",
+      "registryDependencies": [
+        "command"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/command-dialog.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "context-menu-demo",
+      "title": "Context Menu Demo",
+      "registryDependencies": [
+        "context-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/context-menu-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "data-table-demo",
+      "title": "Data Table Demo",
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "dropdown-menu",
+        "input",
+        "table"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/data-table-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "date-picker-demo",
+      "title": "Date Picker Demo",
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/date-picker-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "date-picker-with-presets",
+      "title": "Date Picker With Presets",
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/date-picker-with-presets.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "date-picker-with-range",
+      "title": "Date Picker With Range",
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/date-picker-with-range.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dialog-close-button",
+      "title": "Dialog Close Button",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/dialog-close-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dialog-demo",
+      "title": "Dialog Demo",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/dialog-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "drawer-demo",
+      "title": "Drawer Demo",
+      "registryDependencies": [
+        "button",
+        "drawer"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/drawer-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "drawer-dialog",
+      "title": "Drawer Dialog",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "drawer",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/drawer-dialog.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-checkboxes",
+      "title": "Dropdown Menu Checkboxes",
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/dropdown-menu-checkboxes.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-demo",
+      "title": "Dropdown Menu Demo",
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/dropdown-menu-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-dialog",
+      "title": "Dropdown Menu Dialog",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "dropdown-menu",
+        "field",
+        "input",
+        "label",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/dropdown-menu-dialog.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-radio-group",
+      "title": "Dropdown Menu Radio Group",
+      "registryDependencies": [
+        "button",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/dropdown-menu-radio-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-avatar-group",
+      "title": "Empty Avatar Group",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/empty-avatar-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-avatar",
+      "title": "Empty Avatar",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/empty-avatar.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-background",
+      "title": "Empty Background",
+      "registryDependencies": [
+        "button",
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/empty-background.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-demo",
+      "title": "Empty Demo",
+      "registryDependencies": [
+        "button",
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/empty-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-icon",
+      "title": "Empty Icon",
+      "registryDependencies": [
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/empty-icon.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-input-group",
+      "title": "Empty Input Group",
+      "registryDependencies": [
+        "empty",
+        "input-group",
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/empty-input-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-outline",
+      "title": "Empty Outline",
+      "registryDependencies": [
+        "button",
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/empty-outline.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-checkbox",
+      "title": "Field Checkbox",
+      "registryDependencies": [
+        "checkbox",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-checkbox.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-choice-card",
+      "title": "Field Choice Card",
+      "registryDependencies": [
+        "field",
+        "radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-choice-card.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-demo",
+      "title": "Field Demo",
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "field",
+        "input",
+        "select",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-fieldset",
+      "title": "Field Fieldset",
+      "registryDependencies": [
+        "field",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-fieldset.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-group",
+      "title": "Field Group",
+      "registryDependencies": [
+        "checkbox",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-input",
+      "title": "Field Input",
+      "registryDependencies": [
+        "field",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-input.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-radio",
+      "title": "Field Radio",
+      "registryDependencies": [
+        "field",
+        "radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-radio.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-responsive",
+      "title": "Field Responsive",
+      "registryDependencies": [
+        "button",
+        "field",
+        "input",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-responsive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-select",
+      "title": "Field Select",
+      "registryDependencies": [
+        "field",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-select.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-slider",
+      "title": "Field Slider",
+      "registryDependencies": [
+        "field",
+        "slider"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-slider.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-switch",
+      "title": "Field Switch",
+      "registryDependencies": [
+        "field",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-switch.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-textarea",
+      "title": "Field Textarea",
+      "registryDependencies": [
+        "field",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/field-textarea.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "hover-card-demo",
+      "title": "Hover Card Demo",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "hover-card"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/hover-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-demo",
+      "title": "Input Demo",
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-disabled",
+      "title": "Input Disabled",
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-file",
+      "title": "Input File",
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-file.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-button-group",
+      "title": "Input Group Button Group",
+      "registryDependencies": [
+        "button-group",
+        "input-group",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-button-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-button",
+      "title": "Input Group Button",
+      "registryDependencies": [
+        "input-group",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-custom",
+      "title": "Input Group Custom",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-custom.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-demo",
+      "title": "Input Group Demo",
+      "registryDependencies": [
+        "dropdown-menu",
+        "input-group",
+        "separator",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-dropdown",
+      "title": "Input Group Dropdown",
+      "registryDependencies": [
+        "dropdown-menu",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-icon",
+      "title": "Input Group Icon",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-icon.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-label",
+      "title": "Input Group Label",
+      "registryDependencies": [
+        "input-group",
+        "label",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-label.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-spinner",
+      "title": "Input Group Spinner",
+      "registryDependencies": [
+        "input-group",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-spinner.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-text",
+      "title": "Input Group Text",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-textarea",
+      "title": "Input Group Textarea",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-textarea.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-tooltip",
+      "title": "Input Group Tooltip",
+      "registryDependencies": [
+        "input-group",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-group-tooltip.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-controlled",
+      "title": "Input Otp Controlled",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-otp-controlled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-demo",
+      "title": "Input Otp Demo",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-otp-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-pattern",
+      "title": "Input Otp Pattern",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-otp-pattern.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-separator",
+      "title": "Input Otp Separator",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-otp-separator.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-button",
+      "title": "Input With Button",
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-with-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-label",
+      "title": "Input With Label",
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-with-label.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-text",
+      "title": "Input With Text",
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/input-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-avatar",
+      "title": "Item Avatar",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-avatar.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-demo",
+      "title": "Item Demo",
+      "registryDependencies": [
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-dropdown",
+      "title": "Item Dropdown",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "dropdown-menu",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-group",
+      "title": "Item Group",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-header",
+      "title": "Item Header",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-header.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-icon",
+      "title": "Item Icon",
+      "registryDependencies": [
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-icon.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-image",
+      "title": "Item Image",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-image.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-link",
+      "title": "Item Link",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-link.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-size",
+      "title": "Item Size",
+      "registryDependencies": [
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-variant",
+      "title": "Item Variant",
+      "registryDependencies": [
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/item-variant.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-button",
+      "title": "Kbd Button",
+      "registryDependencies": [
+        "button",
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/kbd-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-demo",
+      "title": "Kbd Demo",
+      "registryDependencies": [
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/kbd-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-group",
+      "title": "Kbd Group",
+      "registryDependencies": [
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/kbd-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-input-group",
+      "title": "Kbd Input Group",
+      "registryDependencies": [
+        "input-group",
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/kbd-input-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-tooltip",
+      "title": "Kbd Tooltip",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "kbd",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/kbd-tooltip.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "label-demo",
+      "title": "Label Demo",
+      "registryDependencies": [
+        "checkbox",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/label-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "menubar-demo",
+      "title": "Menubar Demo",
+      "registryDependencies": [
+        "menubar"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/menubar-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-demo",
+      "title": "Native Select Demo",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/native-select-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-disabled",
+      "title": "Native Select Disabled",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/native-select-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-groups",
+      "title": "Native Select Groups",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/native-select-groups.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-invalid",
+      "title": "Native Select Invalid",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/native-select-invalid.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "navigation-menu-demo",
+      "title": "Navigation Menu Demo",
+      "registryDependencies": [
+        "navigation-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/navigation-menu-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "pagination-demo",
+      "title": "Pagination Demo",
+      "registryDependencies": [
+        "pagination"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/pagination-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "popover-demo",
+      "title": "Popover Demo",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/popover-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "progress-demo",
+      "title": "Progress Demo",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/progress-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "radio-group-demo",
+      "title": "Radio Group Demo",
+      "registryDependencies": [
+        "label",
+        "radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/radio-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-demo-with-handle",
+      "title": "Resizable Demo With Handle",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/resizable-demo-with-handle.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-demo",
+      "title": "Resizable Demo",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/resizable-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-handle",
+      "title": "Resizable Handle",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/resizable-handle.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-vertical",
+      "title": "Resizable Vertical",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/resizable-vertical.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-demo",
+      "title": "Scroll Area Demo",
+      "registryDependencies": [
+        "scroll-area",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/scroll-area-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-horizontal-demo",
+      "title": "Scroll Area Horizontal Demo",
+      "registryDependencies": [
+        "scroll-area"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/scroll-area-horizontal-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-demo",
+      "title": "Select Demo",
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/select-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-scrollable",
+      "title": "Select Scrollable",
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/select-scrollable.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "separator-demo",
+      "title": "Separator Demo",
+      "registryDependencies": [
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/separator-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-demo",
+      "title": "Sheet Demo",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/sheet-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-side",
+      "title": "Sheet Side",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/sheet-side.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-card",
+      "title": "Skeleton Card",
+      "registryDependencies": [
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/skeleton-card.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-demo",
+      "title": "Skeleton Demo",
+      "registryDependencies": [
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/skeleton-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slider-demo",
+      "title": "Slider Demo",
+      "registryDependencies": [
+        "slider"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/slider-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-demo",
+      "title": "Sonner Demo",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/sonner-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-types",
+      "title": "Sonner Types",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/sonner-types.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-badge",
+      "title": "Spinner Badge",
+      "registryDependencies": [
+        "badge",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-badge.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-basic",
+      "title": "Spinner Basic",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-basic.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-button",
+      "title": "Spinner Button",
+      "registryDependencies": [
+        "button",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-color",
+      "title": "Spinner Color",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-color.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-custom",
+      "title": "Spinner Custom",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-custom.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-demo",
+      "title": "Spinner Demo",
+      "registryDependencies": [
+        "item",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-empty",
+      "title": "Spinner Empty",
+      "registryDependencies": [
+        "button",
+        "empty",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-empty.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-input-group",
+      "title": "Spinner Input Group",
+      "registryDependencies": [
+        "input-group",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-input-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-item",
+      "title": "Spinner Item",
+      "registryDependencies": [
+        "button",
+        "item",
+        "progress",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-item.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-size",
+      "title": "Spinner Size",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/spinner-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "switch-demo",
+      "title": "Switch Demo",
+      "registryDependencies": [
+        "label",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/switch-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "table-demo",
+      "title": "Table Demo",
+      "registryDependencies": [
+        "table"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/table-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tabs-demo",
+      "title": "Tabs Demo",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/tabs-demo.tsx",
           "type": "registry:example"
         }
       ],
@@ -707,8 +3290,8 @@
       "name": "textarea-with-button",
       "title": "Textarea With Button",
       "registryDependencies": [
-        "textarea",
-        "button"
+        "button",
+        "textarea"
       ],
       "files": [
         {
@@ -722,8 +3305,8 @@
       "name": "textarea-with-label",
       "title": "Textarea With Label",
       "registryDependencies": [
-        "textarea",
-        "label"
+        "label",
+        "textarea"
       ],
       "files": [
         {
@@ -737,8 +3320,8 @@
       "name": "textarea-with-text",
       "title": "Textarea With Text",
       "registryDependencies": [
-        "textarea",
-        "label"
+        "label",
+        "textarea"
       ],
       "files": [
         {
@@ -749,92 +3332,365 @@
       "type": "registry:example"
     },
     {
-      "name": "radio-group-demo",
-      "title": "Radio Group Demo",
+      "name": "toggle-demo",
+      "title": "Toggle Demo",
       "registryDependencies": [
-        "radio-group",
-        "label"
+        "toggle"
       ],
       "files": [
         {
-          "path": "registry/base-mira/demo/radio-group-demo.tsx",
+          "path": "registry/base-mira/demo/toggle-demo.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "separator-demo",
-      "title": "Separator Demo",
+      "name": "toggle-disabled",
+      "title": "Toggle Disabled",
       "registryDependencies": [
-        "separator"
+        "toggle"
       ],
       "files": [
         {
-          "path": "registry/base-mira/demo/separator-demo.tsx",
+          "path": "registry/base-mira/demo/toggle-disabled.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "sheet-demo",
-      "title": "Sheet Demo",
+      "name": "toggle-group-demo",
+      "title": "Toggle Group Demo",
       "registryDependencies": [
-        "sheet",
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-disabled",
+      "title": "Toggle Group Disabled",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-group-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-lg",
+      "title": "Toggle Group Lg",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-group-lg.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-outline",
+      "title": "Toggle Group Outline",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-group-outline.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-single",
+      "title": "Toggle Group Single",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-group-single.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-sm",
+      "title": "Toggle Group Sm",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-group-sm.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-spacing",
+      "title": "Toggle Group Spacing",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-group-spacing.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-lg",
+      "title": "Toggle Lg",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-lg.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-outline",
+      "title": "Toggle Outline",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-outline.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-sm",
+      "title": "Toggle Sm",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-sm.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-with-text",
+      "title": "Toggle With Text",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/toggle-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tooltip-demo",
+      "title": "Tooltip Demo",
+      "registryDependencies": [
         "button",
-        "input",
-        "label"
+        "tooltip"
       ],
       "files": [
         {
-          "path": "registry/base-mira/demo/sheet-demo.tsx",
+          "path": "registry/base-mira/demo/tooltip-demo.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "sheet-side",
-      "title": "Sheet Side",
-      "registryDependencies": [
-        "sheet",
-        "button",
-        "input",
-        "label"
-      ],
-      "files": [
-        {
-          "path": "registry/base-mira/demo/sheet-side.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "chart-tooltip-demo",
-      "title": "Chart Tooltip Demo",
+      "name": "typography-blockquote",
+      "title": "Typography Blockquote",
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/base-mira/demo/chart-tooltip-demo.tsx",
+          "path": "registry/base-mira/demo/typography-blockquote.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "combobox-responsive",
-      "title": "Combobox Responsive",
-      "registryDependencies": [
-        "command",
-        "popover",
-        "drawer",
-        "button"
-      ],
+      "name": "typography-demo",
+      "title": "Typography Demo",
+      "registryDependencies": [],
       "files": [
         {
-          "path": "registry/base-mira/demo/combobox-responsive.tsx",
+          "path": "registry/base-mira/demo/typography-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h1",
+      "title": "Typography H1",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-h1.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h2",
+      "title": "Typography H2",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-h2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h3",
+      "title": "Typography H3",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-h3.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h4",
+      "title": "Typography H4",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-h4.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-inline-code",
+      "title": "Typography Inline Code",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-inline-code.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-large",
+      "title": "Typography Large",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-large.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-lead",
+      "title": "Typography Lead",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-lead.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-list",
+      "title": "Typography List",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-list.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-muted",
+      "title": "Typography Muted",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-muted.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-p",
+      "title": "Typography P",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-p.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-small",
+      "title": "Typography Small",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-small.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-table",
+      "title": "Typography Table",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-mira/demo/typography-table.tsx",
           "type": "registry:example"
         }
       ],

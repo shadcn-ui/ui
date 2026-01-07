@@ -1,9 +1,9 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Card, CardContent, CardHeader } from "@/registry/bases/radix/ui/card"
-import { Skeleton } from "@/registry/bases/radix/ui/skeleton"
+} from "@/registry/radix-nova/components/example"
+import { Card, CardContent, CardHeader } from "@/registry/radix-nova/ui/card"
+import { Skeleton } from "@/registry/radix-nova/ui/skeleton"
 
 export default function SkeletonExample() {
   return (

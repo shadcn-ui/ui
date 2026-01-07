@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-outline",
+  "title": "Button Outline",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-mira/demo/button-outline.tsx",
+      "content": "import { Button } from \"@/registry/radix-mira/ui/button\"\n\nexport default function ButtonOutline() {\n  return <Button variant=\"outline\">Outline</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

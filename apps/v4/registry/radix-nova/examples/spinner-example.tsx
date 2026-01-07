@@ -1,9 +1,9 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Badge } from "@/registry/radix-nova/ui/badge"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -11,14 +11,14 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/radix/ui/empty"
-import { Field, FieldLabel } from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/ui/empty"
+import { Field, FieldLabel } from "@/registry/radix-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/radix/ui/input-group"
-import { Spinner } from "@/registry/bases/radix/ui/spinner"
+} from "@/registry/radix-nova/ui/input-group"
+import { Spinner } from "@/registry/radix-nova/ui/spinner"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SpinnerExample() {

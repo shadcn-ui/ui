@@ -1,16 +1,16 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldLabel,
   FieldTitle,
-} from "@/registry/bases/base/ui/field"
-import { Label } from "@/registry/bases/base/ui/label"
-import { Switch } from "@/registry/bases/base/ui/switch"
+} from "@/registry/base-nova/ui/field"
+import { Label } from "@/registry/base-nova/ui/label"
+import { Switch } from "@/registry/base-nova/ui/switch"
 
 export default function SwitchExample() {
   return (

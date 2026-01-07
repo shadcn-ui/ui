@@ -6,13 +6,13 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/bases/base/ui/avatar"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/ui/avatar"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/bases/base/ui/collapsible"
+} from "@/registry/base-nova/ui/collapsible"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,14 +21,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/base-nova/ui/dropdown-menu"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/base-nova/ui/item"
 import {
   Sidebar,
   SidebarContent,
@@ -46,7 +46,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/base-nova/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarIconExample() {

@@ -6,8 +6,8 @@ import { REGEXP_ONLY_DIGITS, REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Card,
   CardContent,
@@ -15,19 +15,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
+} from "@/registry/radix-nova/ui/card"
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldLabel,
-} from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from "@/registry/bases/radix/ui/input-otp"
+} from "@/registry/radix-nova/ui/input-otp"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function InputOTPExample() {

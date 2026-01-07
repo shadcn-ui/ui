@@ -648,6 +648,20 @@ export const registry = {
       "type": "registry:example"
     },
     {
+      "name": "accordion-disabled",
+      "title": "Accordion Disabled",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "demo/accordion-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "accordion-multiple",
       "title": "Accordion Multiple",
       "registryDependencies": [
@@ -662,14 +676,216 @@ export const registry = {
       "type": "registry:example"
     },
     {
-      "name": "accordion-disabled",
-      "title": "Accordion Disabled",
+      "name": "alert-demo",
+      "title": "Alert Demo",
       "registryDependencies": [
-        "accordion"
+        "alert"
       ],
       "files": [
         {
-          "path": "demo/accordion-disabled.tsx",
+          "path": "demo/alert-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-destructive",
+      "title": "Alert Destructive",
+      "registryDependencies": [
+        "alert"
+      ],
+      "files": [
+        {
+          "path": "demo/alert-destructive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-dialog-demo",
+      "title": "Alert Dialog Demo",
+      "registryDependencies": [
+        "alert-dialog",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "demo/alert-dialog-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "aspect-ratio-demo",
+      "title": "Aspect Ratio Demo",
+      "registryDependencies": [
+        "aspect-ratio"
+      ],
+      "files": [
+        {
+          "path": "demo/aspect-ratio-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "avatar-demo",
+      "title": "Avatar Demo",
+      "registryDependencies": [
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "demo/avatar-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-demo",
+      "title": "Badge Demo",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "demo/badge-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-destructive",
+      "title": "Badge Destructive",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "demo/badge-destructive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-outline",
+      "title": "Badge Outline",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "demo/badge-outline.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-secondary",
+      "title": "Badge Secondary",
+      "registryDependencies": [
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "demo/badge-secondary.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-demo",
+      "title": "Breadcrumb Demo",
+      "registryDependencies": [
+        "breadcrumb",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "demo/breadcrumb-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-dropdown",
+      "title": "Breadcrumb Dropdown",
+      "registryDependencies": [
+        "breadcrumb",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "demo/breadcrumb-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-ellipsis",
+      "title": "Breadcrumb Ellipsis",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "demo/breadcrumb-ellipsis.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-link",
+      "title": "Breadcrumb Link",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "demo/breadcrumb-link.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-responsive",
+      "title": "Breadcrumb Responsive",
+      "registryDependencies": [
+        "breadcrumb",
+        "button",
+        "drawer",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "demo/breadcrumb-responsive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-separator",
+      "title": "Breadcrumb Separator",
+      "registryDependencies": [
+        "breadcrumb"
+      ],
+      "files": [
+        {
+          "path": "demo/breadcrumb-separator.tsx",
           "type": "registry:example"
         }
       ],
@@ -746,6 +962,181 @@ export const registry = {
       "type": "registry:example"
     },
     {
+      "name": "button-group-demo",
+      "title": "Button Group Demo",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-dropdown",
+      "title": "Button Group Dropdown",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-input-group",
+      "title": "Button Group Input Group",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "input-group",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-input-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-input",
+      "title": "Button Group Input",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-input.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-nested",
+      "title": "Button Group Nested",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-nested.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-orientation",
+      "title": "Button Group Orientation",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-orientation.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-popover",
+      "title": "Button Group Popover",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "popover",
+        "separator",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-popover.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-select",
+      "title": "Button Group Select",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "input",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-select.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-separator",
+      "title": "Button Group Separator",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-separator.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-size",
+      "title": "Button Group Size",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-split",
+      "title": "Button Group Split",
+      "registryDependencies": [
+        "button",
+        "button-group"
+      ],
+      "files": [
+        {
+          "path": "demo/button-group-split.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "button-icon",
       "title": "Button Icon",
       "registryDependencies": [
@@ -777,7 +1168,8 @@ export const registry = {
       "name": "button-loading",
       "title": "Button Loading",
       "registryDependencies": [
-        "button"
+        "button",
+        "spinner"
       ],
       "files": [
         {
@@ -858,162 +1250,135 @@ export const registry = {
       "type": "registry:example"
     },
     {
-      "name": "textarea-demo",
-      "title": "Textarea Demo",
+      "name": "calendar-demo",
+      "title": "Calendar Demo",
       "registryDependencies": [
-        "textarea"
+        "calendar"
       ],
       "files": [
         {
-          "path": "demo/textarea-demo.tsx",
+          "path": "demo/calendar-demo.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "textarea-disabled",
-      "title": "Textarea Disabled",
+      "name": "calendar-hijri",
+      "title": "Calendar Hijri",
       "registryDependencies": [
-        "textarea"
-      ],
-      "files": [
-        {
-          "path": "demo/textarea-disabled.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "textarea-with-button",
-      "title": "Textarea With Button",
-      "registryDependencies": [
-        "textarea",
         "button"
       ],
       "files": [
         {
-          "path": "demo/textarea-with-button.tsx",
+          "path": "demo/calendar-hijri.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "textarea-with-label",
-      "title": "Textarea With Label",
+      "name": "card-demo",
+      "title": "Card Demo",
       "registryDependencies": [
-        "textarea",
-        "label"
-      ],
-      "files": [
-        {
-          "path": "demo/textarea-with-label.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "textarea-with-text",
-      "title": "Textarea With Text",
-      "registryDependencies": [
-        "textarea",
-        "label"
-      ],
-      "files": [
-        {
-          "path": "demo/textarea-with-text.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "radio-group-demo",
-      "title": "Radio Group Demo",
-      "registryDependencies": [
-        "radio-group",
-        "label"
-      ],
-      "files": [
-        {
-          "path": "demo/radio-group-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "separator-demo",
-      "title": "Separator Demo",
-      "registryDependencies": [
-        "separator"
-      ],
-      "files": [
-        {
-          "path": "demo/separator-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "sheet-demo",
-      "title": "Sheet Demo",
-      "registryDependencies": [
-        "sheet",
         "button",
+        "card",
         "input",
         "label"
       ],
       "files": [
         {
-          "path": "demo/sheet-demo.tsx",
+          "path": "demo/card-demo.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "sheet-side",
-      "title": "Sheet Side",
+      "name": "carousel-api",
+      "title": "Carousel Api",
       "registryDependencies": [
-        "sheet",
-        "button",
-        "input",
-        "label"
+        "card",
+        "carousel"
       ],
       "files": [
         {
-          "path": "demo/sheet-side.tsx",
+          "path": "demo/carousel-api.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "chart-tooltip-demo",
-      "title": "Chart Tooltip Demo",
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "demo/chart-tooltip-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "chart-bar-demo",
-      "title": "Chart Bar Demo",
+      "name": "carousel-demo",
+      "title": "Carousel Demo",
       "registryDependencies": [
-        "chart"
+        "card",
+        "carousel"
       ],
       "files": [
         {
-          "path": "demo/chart-bar-demo.tsx",
+          "path": "demo/carousel-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-orientation",
+      "title": "Carousel Orientation",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "demo/carousel-orientation.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-plugin",
+      "title": "Carousel Plugin",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "demo/carousel-plugin.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-size",
+      "title": "Carousel Size",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "demo/carousel-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-spacing",
+      "title": "Carousel Spacing",
+      "registryDependencies": [
+        "card",
+        "carousel"
+      ],
+      "files": [
+        {
+          "path": "demo/carousel-spacing.tsx",
           "type": "registry:example"
         }
       ],
@@ -1076,13 +1441,145 @@ export const registry = {
       "type": "registry:example"
     },
     {
+      "name": "chart-bar-demo",
+      "title": "Chart Bar Demo",
+      "registryDependencies": [
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "demo/chart-bar-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-tooltip-demo",
+      "title": "Chart Tooltip Demo",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/chart-tooltip-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-demo",
+      "title": "Checkbox Demo",
+      "registryDependencies": [
+        "checkbox",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "demo/checkbox-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-disabled",
+      "title": "Checkbox Disabled",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "demo/checkbox-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-with-text",
+      "title": "Checkbox With Text",
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "demo/checkbox-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "collapsible-demo",
+      "title": "Collapsible Demo",
+      "registryDependencies": [
+        "button",
+        "collapsible"
+      ],
+      "files": [
+        {
+          "path": "demo/collapsible-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-demo",
+      "title": "Combobox Demo",
+      "registryDependencies": [
+        "button",
+        "command",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "demo/combobox-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-dropdown-menu",
+      "title": "Combobox Dropdown Menu",
+      "registryDependencies": [
+        "button",
+        "command",
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "demo/combobox-dropdown-menu.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-popover",
+      "title": "Combobox Popover",
+      "registryDependencies": [
+        "button",
+        "command",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "demo/combobox-popover.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "combobox-responsive",
       "title": "Combobox Responsive",
       "registryDependencies": [
+        "button",
         "command",
-        "popover",
         "drawer",
-        "button"
+        "popover"
       ],
       "files": [
         {
@@ -1093,289 +1590,42 @@ export const registry = {
       "type": "registry:example"
     },
     {
-      "name": "button-group-demo",
-      "title": "Button Group Demo",
+      "name": "command-demo",
+      "title": "Command Demo",
       "registryDependencies": [
-        "button-group"
+        "command"
       ],
       "files": [
         {
-          "path": "demo/button-group-demo.tsx",
+          "path": "demo/command-demo.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-group-dropdown",
-      "title": "Button Group Dropdown",
+      "name": "command-dialog",
+      "title": "Command Dialog",
       "registryDependencies": [
-        "button-group"
+        "command"
       ],
       "files": [
         {
-          "path": "demo/button-group-dropdown.tsx",
+          "path": "demo/command-dialog.tsx",
           "type": "registry:example"
         }
       ],
       "type": "registry:example"
     },
     {
-      "name": "button-group-input",
-      "title": "Button Group Input",
+      "name": "context-menu-demo",
+      "title": "Context Menu Demo",
       "registryDependencies": [
-        "button-group"
+        "context-menu"
       ],
       "files": [
         {
-          "path": "demo/button-group-input.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "button-group-input-group",
-      "title": "Button Group Input Group",
-      "registryDependencies": [
-        "button-group"
-      ],
-      "files": [
-        {
-          "path": "demo/button-group-input-group.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "button-group-nested",
-      "title": "Button Group Nested",
-      "registryDependencies": [
-        "button-group"
-      ],
-      "files": [
-        {
-          "path": "demo/button-group-nested.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "button-group-orientation",
-      "title": "Button Group Orientation",
-      "registryDependencies": [
-        "button-group"
-      ],
-      "files": [
-        {
-          "path": "demo/button-group-orientation.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "button-group-popover",
-      "title": "Button Group Popover",
-      "registryDependencies": [
-        "button-group"
-      ],
-      "files": [
-        {
-          "path": "demo/button-group-popover.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "button-group-select",
-      "title": "Button Group Select",
-      "registryDependencies": [
-        "button-group"
-      ],
-      "files": [
-        {
-          "path": "demo/button-group-select.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "button-group-separator",
-      "title": "Button Group Separator",
-      "registryDependencies": [
-        "button-group"
-      ],
-      "files": [
-        {
-          "path": "demo/button-group-separator.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "button-group-size",
-      "title": "Button Group Size",
-      "registryDependencies": [
-        "button-group"
-      ],
-      "files": [
-        {
-          "path": "demo/button-group-size.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "button-group-split",
-      "title": "Button Group Split",
-      "registryDependencies": [
-        "button-group"
-      ],
-      "files": [
-        {
-          "path": "demo/button-group-split.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "calendar-demo",
-      "title": "Calendar Demo",
-      "registryDependencies": [
-        "calendar"
-      ],
-      "files": [
-        {
-          "path": "demo/calendar-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "calendar-hijri",
-      "title": "Calendar Hijri",
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "demo/calendar-hijri.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "card-demo",
-      "title": "Card Demo",
-      "registryDependencies": [
-        "card",
-        "button",
-        "input",
-        "label"
-      ],
-      "files": [
-        {
-          "path": "demo/card-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "carousel-api",
-      "title": "Carousel API",
-      "registryDependencies": [
-        "carousel",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "demo/carousel-api.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "carousel-demo",
-      "title": "Carousel Demo",
-      "registryDependencies": [
-        "carousel",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "demo/carousel-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "carousel-orientation",
-      "title": "Carousel Orientation",
-      "registryDependencies": [
-        "carousel",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "demo/carousel-orientation.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "carousel-plugin",
-      "title": "Carousel Plugin",
-      "registryDependencies": [
-        "carousel",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "demo/carousel-plugin.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "carousel-size",
-      "title": "Carousel Size",
-      "registryDependencies": [
-        "carousel",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "demo/carousel-size.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "carousel-spacing",
-      "title": "Carousel Spacing",
-      "registryDependencies": [
-        "carousel",
-        "card"
-      ],
-      "files": [
-        {
-          "path": "demo/carousel-spacing.tsx",
+          "path": "demo/context-menu-demo.tsx",
           "type": "registry:example"
         }
       ],
@@ -1385,11 +1635,11 @@ export const registry = {
       "name": "data-table-demo",
       "title": "Data Table Demo",
       "registryDependencies": [
-        "table",
         "button",
         "checkbox",
         "dropdown-menu",
-        "input"
+        "input",
+        "table"
       ],
       "files": [
         {
@@ -1403,9 +1653,9 @@ export const registry = {
       "name": "date-picker-demo",
       "title": "Date Picker Demo",
       "registryDependencies": [
+        "button",
         "calendar",
-        "popover",
-        "button"
+        "popover"
       ],
       "files": [
         {
@@ -1419,9 +1669,9 @@ export const registry = {
       "name": "date-picker-with-presets",
       "title": "Date Picker With Presets",
       "registryDependencies": [
+        "button",
         "calendar",
         "popover",
-        "button",
         "select"
       ],
       "files": [
@@ -1436,9 +1686,9 @@ export const registry = {
       "name": "date-picker-with-range",
       "title": "Date Picker With Range",
       "registryDependencies": [
+        "button",
         "calendar",
-        "popover",
-        "button"
+        "popover"
       ],
       "files": [
         {
@@ -1452,8 +1702,8 @@ export const registry = {
       "name": "dialog-close-button",
       "title": "Dialog Close Button",
       "registryDependencies": [
-        "dialog",
         "button",
+        "dialog",
         "input",
         "label"
       ],
@@ -1469,8 +1719,8 @@ export const registry = {
       "name": "dialog-demo",
       "title": "Dialog Demo",
       "registryDependencies": [
-        "dialog",
         "button",
+        "dialog",
         "input",
         "label"
       ],
@@ -1486,8 +1736,8 @@ export const registry = {
       "name": "drawer-demo",
       "title": "Drawer Demo",
       "registryDependencies": [
-        "drawer",
-        "button"
+        "button",
+        "drawer"
       ],
       "files": [
         {
@@ -1501,9 +1751,9 @@ export const registry = {
       "name": "drawer-dialog",
       "title": "Drawer Dialog",
       "registryDependencies": [
-        "drawer",
-        "dialog",
         "button",
+        "dialog",
+        "drawer",
         "input",
         "label"
       ],
@@ -1519,8 +1769,8 @@ export const registry = {
       "name": "dropdown-menu-checkboxes",
       "title": "Dropdown Menu Checkboxes",
       "registryDependencies": [
-        "dropdown-menu",
-        "button"
+        "button",
+        "dropdown-menu"
       ],
       "files": [
         {
@@ -1534,8 +1784,8 @@ export const registry = {
       "name": "dropdown-menu-demo",
       "title": "Dropdown Menu Demo",
       "registryDependencies": [
-        "dropdown-menu",
-        "button"
+        "button",
+        "dropdown-menu"
       ],
       "files": [
         {
@@ -1549,9 +1799,9 @@ export const registry = {
       "name": "dropdown-menu-dialog",
       "title": "Dropdown Menu Dialog",
       "registryDependencies": [
-        "dropdown-menu",
-        "dialog",
         "button",
+        "dialog",
+        "dropdown-menu",
         "field",
         "input",
         "label",
@@ -1569,8 +1819,8 @@ export const registry = {
       "name": "dropdown-menu-radio-group",
       "title": "Dropdown Menu Radio Group",
       "registryDependencies": [
-        "dropdown-menu",
-        "button"
+        "button",
+        "dropdown-menu"
       ],
       "files": [
         {
@@ -1581,132 +1831,12 @@ export const registry = {
       "type": "registry:example"
     },
     {
-      "name": "hover-card-demo",
-      "title": "Hover Card Demo",
-      "registryDependencies": [
-        "hover-card",
-        "avatar",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "demo/hover-card-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "input-demo",
-      "title": "Input Demo",
-      "registryDependencies": [
-        "input"
-      ],
-      "files": [
-        {
-          "path": "demo/input-demo.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "input-disabled",
-      "title": "Input Disabled",
-      "registryDependencies": [
-        "input"
-      ],
-      "files": [
-        {
-          "path": "demo/input-disabled.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "input-file",
-      "title": "Input File",
-      "registryDependencies": [
-        "input",
-        "label"
-      ],
-      "files": [
-        {
-          "path": "demo/input-file.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "input-with-button",
-      "title": "Input With Button",
-      "registryDependencies": [
-        "input",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "demo/input-with-button.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "input-with-label",
-      "title": "Input With Label",
-      "registryDependencies": [
-        "input",
-        "label"
-      ],
-      "files": [
-        {
-          "path": "demo/input-with-label.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "input-with-text",
-      "title": "Input With Text",
-      "registryDependencies": [
-        "input",
-        "label"
-      ],
-      "files": [
-        {
-          "path": "demo/input-with-text.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "empty-avatar",
-      "title": "Empty Avatar",
-      "registryDependencies": [
-        "empty",
-        "avatar",
-        "button"
-      ],
-      "files": [
-        {
-          "path": "demo/empty-avatar.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
       "name": "empty-avatar-group",
       "title": "Empty Avatar Group",
       "registryDependencies": [
-        "empty",
         "avatar",
-        "button"
+        "button",
+        "empty"
       ],
       "files": [
         {
@@ -1717,11 +1847,27 @@ export const registry = {
       "type": "registry:example"
     },
     {
+      "name": "empty-avatar",
+      "title": "Empty Avatar",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "empty"
+      ],
+      "files": [
+        {
+          "path": "demo/empty-avatar.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "empty-background",
       "title": "Empty Background",
       "registryDependencies": [
-        "empty",
-        "button"
+        "button",
+        "empty"
       ],
       "files": [
         {
@@ -1735,8 +1881,8 @@ export const registry = {
       "name": "empty-demo",
       "title": "Empty Demo",
       "registryDependencies": [
-        "empty",
-        "button"
+        "button",
+        "empty"
       ],
       "files": [
         {
@@ -1780,8 +1926,8 @@ export const registry = {
       "name": "empty-outline",
       "title": "Empty Outline",
       "registryDependencies": [
-        "empty",
-        "button"
+        "button",
+        "empty"
       ],
       "files": [
         {
@@ -1795,8 +1941,8 @@ export const registry = {
       "name": "field-checkbox",
       "title": "Field Checkbox",
       "registryDependencies": [
-        "field",
-        "checkbox"
+        "checkbox",
+        "field"
       ],
       "files": [
         {
@@ -1825,9 +1971,9 @@ export const registry = {
       "name": "field-demo",
       "title": "Field Demo",
       "registryDependencies": [
-        "field",
         "button",
         "checkbox",
+        "field",
         "input",
         "select",
         "textarea"
@@ -1859,8 +2005,8 @@ export const registry = {
       "name": "field-group",
       "title": "Field Group",
       "registryDependencies": [
-        "field",
-        "checkbox"
+        "checkbox",
+        "field"
       ],
       "files": [
         {
@@ -1904,8 +2050,8 @@ export const registry = {
       "name": "field-responsive",
       "title": "Field Responsive",
       "registryDependencies": [
-        "field",
         "button",
+        "field",
         "input",
         "textarea"
       ],
@@ -1972,6 +2118,1579 @@ export const registry = {
       "files": [
         {
           "path": "demo/field-textarea.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "hover-card-demo",
+      "title": "Hover Card Demo",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "hover-card"
+      ],
+      "files": [
+        {
+          "path": "demo/hover-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-demo",
+      "title": "Input Demo",
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "demo/input-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-disabled",
+      "title": "Input Disabled",
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "demo/input-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-file",
+      "title": "Input File",
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "demo/input-file.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-button-group",
+      "title": "Input Group Button Group",
+      "registryDependencies": [
+        "button-group",
+        "input-group",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-button-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-button",
+      "title": "Input Group Button",
+      "registryDependencies": [
+        "input-group",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-custom",
+      "title": "Input Group Custom",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-custom.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-demo",
+      "title": "Input Group Demo",
+      "registryDependencies": [
+        "dropdown-menu",
+        "input-group",
+        "separator",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-dropdown",
+      "title": "Input Group Dropdown",
+      "registryDependencies": [
+        "dropdown-menu",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-icon",
+      "title": "Input Group Icon",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-icon.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-label",
+      "title": "Input Group Label",
+      "registryDependencies": [
+        "input-group",
+        "label",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-label.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-spinner",
+      "title": "Input Group Spinner",
+      "registryDependencies": [
+        "input-group",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-spinner.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-text",
+      "title": "Input Group Text",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-textarea",
+      "title": "Input Group Textarea",
+      "registryDependencies": [
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-textarea.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-tooltip",
+      "title": "Input Group Tooltip",
+      "registryDependencies": [
+        "input-group",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "demo/input-group-tooltip.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-controlled",
+      "title": "Input Otp Controlled",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "demo/input-otp-controlled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-demo",
+      "title": "Input Otp Demo",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "demo/input-otp-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-pattern",
+      "title": "Input Otp Pattern",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "demo/input-otp-pattern.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-separator",
+      "title": "Input Otp Separator",
+      "registryDependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "demo/input-otp-separator.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-button",
+      "title": "Input With Button",
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "demo/input-with-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-label",
+      "title": "Input With Label",
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "demo/input-with-label.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-with-text",
+      "title": "Input With Text",
+      "registryDependencies": [
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "demo/input-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-avatar",
+      "title": "Item Avatar",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-avatar.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-demo",
+      "title": "Item Demo",
+      "registryDependencies": [
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-dropdown",
+      "title": "Item Dropdown",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "dropdown-menu",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-dropdown.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-group",
+      "title": "Item Group",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-header",
+      "title": "Item Header",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-header.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-icon",
+      "title": "Item Icon",
+      "registryDependencies": [
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-icon.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-image",
+      "title": "Item Image",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-image.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-link",
+      "title": "Item Link",
+      "registryDependencies": [
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-link.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-size",
+      "title": "Item Size",
+      "registryDependencies": [
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-variant",
+      "title": "Item Variant",
+      "registryDependencies": [
+        "button",
+        "item"
+      ],
+      "files": [
+        {
+          "path": "demo/item-variant.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-button",
+      "title": "Kbd Button",
+      "registryDependencies": [
+        "button",
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "demo/kbd-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-demo",
+      "title": "Kbd Demo",
+      "registryDependencies": [
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "demo/kbd-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-group",
+      "title": "Kbd Group",
+      "registryDependencies": [
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "demo/kbd-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-input-group",
+      "title": "Kbd Input Group",
+      "registryDependencies": [
+        "input-group",
+        "kbd"
+      ],
+      "files": [
+        {
+          "path": "demo/kbd-input-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-tooltip",
+      "title": "Kbd Tooltip",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "kbd",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "demo/kbd-tooltip.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "label-demo",
+      "title": "Label Demo",
+      "registryDependencies": [
+        "checkbox",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "demo/label-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "menubar-demo",
+      "title": "Menubar Demo",
+      "registryDependencies": [
+        "menubar"
+      ],
+      "files": [
+        {
+          "path": "demo/menubar-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-demo",
+      "title": "Native Select Demo",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "demo/native-select-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-disabled",
+      "title": "Native Select Disabled",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "demo/native-select-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-groups",
+      "title": "Native Select Groups",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "demo/native-select-groups.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-invalid",
+      "title": "Native Select Invalid",
+      "registryDependencies": [
+        "native-select"
+      ],
+      "files": [
+        {
+          "path": "demo/native-select-invalid.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "navigation-menu-demo",
+      "title": "Navigation Menu Demo",
+      "registryDependencies": [
+        "navigation-menu"
+      ],
+      "files": [
+        {
+          "path": "demo/navigation-menu-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "pagination-demo",
+      "title": "Pagination Demo",
+      "registryDependencies": [
+        "pagination"
+      ],
+      "files": [
+        {
+          "path": "demo/pagination-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "popover-demo",
+      "title": "Popover Demo",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "demo/popover-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "progress-demo",
+      "title": "Progress Demo",
+      "registryDependencies": [
+        "progress"
+      ],
+      "files": [
+        {
+          "path": "demo/progress-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "radio-group-demo",
+      "title": "Radio Group Demo",
+      "registryDependencies": [
+        "label",
+        "radio-group"
+      ],
+      "files": [
+        {
+          "path": "demo/radio-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-demo-with-handle",
+      "title": "Resizable Demo With Handle",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "demo/resizable-demo-with-handle.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-demo",
+      "title": "Resizable Demo",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "demo/resizable-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-handle",
+      "title": "Resizable Handle",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "demo/resizable-handle.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-vertical",
+      "title": "Resizable Vertical",
+      "registryDependencies": [
+        "resizable"
+      ],
+      "files": [
+        {
+          "path": "demo/resizable-vertical.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-demo",
+      "title": "Scroll Area Demo",
+      "registryDependencies": [
+        "scroll-area",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "demo/scroll-area-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-horizontal-demo",
+      "title": "Scroll Area Horizontal Demo",
+      "registryDependencies": [
+        "scroll-area"
+      ],
+      "files": [
+        {
+          "path": "demo/scroll-area-horizontal-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-demo",
+      "title": "Select Demo",
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "demo/select-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-scrollable",
+      "title": "Select Scrollable",
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "demo/select-scrollable.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "separator-demo",
+      "title": "Separator Demo",
+      "registryDependencies": [
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "demo/separator-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-demo",
+      "title": "Sheet Demo",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "sheet"
+      ],
+      "files": [
+        {
+          "path": "demo/sheet-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-side",
+      "title": "Sheet Side",
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "sheet"
+      ],
+      "files": [
+        {
+          "path": "demo/sheet-side.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-card",
+      "title": "Skeleton Card",
+      "registryDependencies": [
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "demo/skeleton-card.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-demo",
+      "title": "Skeleton Demo",
+      "registryDependencies": [
+        "skeleton"
+      ],
+      "files": [
+        {
+          "path": "demo/skeleton-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slider-demo",
+      "title": "Slider Demo",
+      "registryDependencies": [
+        "slider"
+      ],
+      "files": [
+        {
+          "path": "demo/slider-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-demo",
+      "title": "Sonner Demo",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "demo/sonner-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-types",
+      "title": "Sonner Types",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "demo/sonner-types.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-badge",
+      "title": "Spinner Badge",
+      "registryDependencies": [
+        "badge",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/spinner-badge.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-basic",
+      "title": "Spinner Basic",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/spinner-basic.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-button",
+      "title": "Spinner Button",
+      "registryDependencies": [
+        "button",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/spinner-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-color",
+      "title": "Spinner Color",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/spinner-color.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-custom",
+      "title": "Spinner Custom",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/spinner-custom.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-demo",
+      "title": "Spinner Demo",
+      "registryDependencies": [
+        "item",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/spinner-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-empty",
+      "title": "Spinner Empty",
+      "registryDependencies": [
+        "button",
+        "empty",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/spinner-empty.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-input-group",
+      "title": "Spinner Input Group",
+      "registryDependencies": [
+        "input-group",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/spinner-input-group.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-item",
+      "title": "Spinner Item",
+      "registryDependencies": [
+        "button",
+        "item",
+        "progress",
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/spinner-item.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-size",
+      "title": "Spinner Size",
+      "registryDependencies": [
+        "spinner"
+      ],
+      "files": [
+        {
+          "path": "demo/spinner-size.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "switch-demo",
+      "title": "Switch Demo",
+      "registryDependencies": [
+        "label",
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "demo/switch-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "table-demo",
+      "title": "Table Demo",
+      "registryDependencies": [
+        "table"
+      ],
+      "files": [
+        {
+          "path": "demo/table-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tabs-demo",
+      "title": "Tabs Demo",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "demo/tabs-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-demo",
+      "title": "Textarea Demo",
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "demo/textarea-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-disabled",
+      "title": "Textarea Disabled",
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "demo/textarea-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-button",
+      "title": "Textarea With Button",
+      "registryDependencies": [
+        "button",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "demo/textarea-with-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-label",
+      "title": "Textarea With Label",
+      "registryDependencies": [
+        "label",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "demo/textarea-with-label.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-text",
+      "title": "Textarea With Text",
+      "registryDependencies": [
+        "label",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "demo/textarea-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-demo",
+      "title": "Toggle Demo",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-disabled",
+      "title": "Toggle Disabled",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-demo",
+      "title": "Toggle Group Demo",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-disabled",
+      "title": "Toggle Group Disabled",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-group-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-lg",
+      "title": "Toggle Group Lg",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-group-lg.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-outline",
+      "title": "Toggle Group Outline",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-group-outline.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-single",
+      "title": "Toggle Group Single",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-group-single.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-sm",
+      "title": "Toggle Group Sm",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-group-sm.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-spacing",
+      "title": "Toggle Group Spacing",
+      "registryDependencies": [
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-group-spacing.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-lg",
+      "title": "Toggle Lg",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-lg.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-outline",
+      "title": "Toggle Outline",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-outline.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-sm",
+      "title": "Toggle Sm",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-sm.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-with-text",
+      "title": "Toggle With Text",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "demo/toggle-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tooltip-demo",
+      "title": "Tooltip Demo",
+      "registryDependencies": [
+        "button",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "demo/tooltip-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-blockquote",
+      "title": "Typography Blockquote",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-blockquote.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-demo",
+      "title": "Typography Demo",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h1",
+      "title": "Typography H1",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-h1.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h2",
+      "title": "Typography H2",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-h2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h3",
+      "title": "Typography H3",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-h3.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-h4",
+      "title": "Typography H4",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-h4.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-inline-code",
+      "title": "Typography Inline Code",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-inline-code.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-large",
+      "title": "Typography Large",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-large.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-lead",
+      "title": "Typography Lead",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-lead.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-list",
+      "title": "Typography List",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-list.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-muted",
+      "title": "Typography Muted",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-muted.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-p",
+      "title": "Typography P",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-p.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-small",
+      "title": "Typography Small",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-small.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "typography-table",
+      "title": "Typography Table",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "demo/typography-table.tsx",
           "type": "registry:example"
         }
       ],

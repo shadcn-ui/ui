@@ -1,7 +1,7 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Avatar,
   AvatarBadge,
@@ -9,8 +9,8 @@ import {
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/ui/avatar"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -18,7 +18,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/radix/ui/empty"
+} from "@/registry/radix-nova/ui/empty"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function AvatarExample() {

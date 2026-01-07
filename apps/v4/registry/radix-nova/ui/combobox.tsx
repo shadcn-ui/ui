@@ -3,14 +3,14 @@
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
-import { Button } from "@/registry/bases/radix/ui/button"
+import { cn } from "@/registry/radix-nova/lib/utils"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/bases/radix/ui/input-group"
+} from "@/registry/radix-nova/ui/input-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const Combobox = ComboboxPrimitive.Root

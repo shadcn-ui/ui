@@ -5,13 +5,13 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/ui/avatar"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -19,7 +19,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
+} from "@/registry/radix-nova/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -36,7 +36,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/radix-nova/ui/dropdown-menu"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function DropdownMenuExample() {

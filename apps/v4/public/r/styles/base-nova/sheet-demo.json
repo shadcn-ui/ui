@@ -3,10 +3,10 @@
   "name": "sheet-demo",
   "title": "Sheet Demo",
   "registryDependencies": [
-    "sheet",
     "button",
     "input",
-    "label"
+    "label",
+    "sheet"
   ],
   "files": [
     {

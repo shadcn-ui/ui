@@ -1,8 +1,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -10,13 +10,13 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/radix/ui/empty"
+} from "@/registry/radix-nova/ui/empty"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/radix/ui/input-group"
-import { Kbd } from "@/registry/bases/radix/ui/kbd"
+} from "@/registry/radix-nova/ui/input-group"
+import { Kbd } from "@/registry/radix-nova/ui/kbd"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function EmptyExample() {

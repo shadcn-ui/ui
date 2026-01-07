@@ -6,7 +6,7 @@ import { useState } from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,16 +18,16 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/bases/radix/ui/alert-dialog"
+} from "@/registry/radix-nova/ui/alert-dialog"
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
-import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Button } from "@/registry/bases/radix/ui/button"
-import { ButtonGroup } from "@/registry/bases/radix/ui/button-group"
+} from "@/registry/radix-nova/ui/avatar"
+import { Badge } from "@/registry/radix-nova/ui/badge"
+import { Button } from "@/registry/radix-nova/ui/button"
+import { ButtonGroup } from "@/registry/radix-nova/ui/button-group"
 import {
   Card,
   CardAction,
@@ -36,8 +36,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
-import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
+} from "@/registry/radix-nova/ui/card"
+import { Checkbox } from "@/registry/radix-nova/ui/checkbox"
 import {
   Combobox,
   ComboboxContent,
@@ -45,7 +45,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/registry/bases/radix/ui/combobox"
+} from "@/registry/radix-nova/ui/combobox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -62,7 +62,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/radix-nova/ui/dropdown-menu"
 import {
   Empty,
   EmptyContent,
@@ -70,7 +70,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/radix/ui/empty"
+} from "@/registry/radix-nova/ui/empty"
 import {
   Field,
   FieldContent,
@@ -81,8 +81,8 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
@@ -90,7 +90,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/bases/radix/ui/input-group"
+} from "@/registry/radix-nova/ui/input-group"
 import {
   Item,
   ItemActions,
@@ -98,8 +98,8 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
-import { Label } from "@/registry/bases/radix/ui/label"
+} from "@/registry/radix-nova/ui/item"
+import { Label } from "@/registry/radix-nova/ui/label"
 import {
   Popover,
   PopoverContent,
@@ -107,11 +107,11 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/registry/bases/radix/ui/popover"
+} from "@/registry/radix-nova/ui/popover"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/registry/bases/radix/ui/radio-group"
+} from "@/registry/radix-nova/ui/radio-group"
 import {
   Select,
   SelectContent,
@@ -119,8 +119,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
-import { Separator } from "@/registry/bases/radix/ui/separator"
+} from "@/registry/radix-nova/ui/select"
+import { Separator } from "@/registry/radix-nova/ui/separator"
 import {
   Sheet,
   SheetClose,
@@ -130,16 +130,16 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/bases/radix/ui/sheet"
-import { Slider } from "@/registry/bases/radix/ui/slider"
-import { Spinner } from "@/registry/bases/radix/ui/spinner"
-import { Switch } from "@/registry/bases/radix/ui/switch"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
+} from "@/registry/radix-nova/ui/sheet"
+import { Slider } from "@/registry/radix-nova/ui/slider"
+import { Spinner } from "@/registry/radix-nova/ui/spinner"
+import { Switch } from "@/registry/radix-nova/ui/switch"
+import { Textarea } from "@/registry/radix-nova/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/radix/ui/tooltip"
+} from "@/registry/radix-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CoverExample() {

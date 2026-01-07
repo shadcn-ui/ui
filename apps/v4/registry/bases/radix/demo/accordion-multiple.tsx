@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/radix-nova/ui/accordion"
+} from "@/registry/bases/radix/ui/accordion"
 
 export default function AccordionMultiple() {
   return (

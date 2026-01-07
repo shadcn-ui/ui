@@ -7,15 +7,15 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/base-nova/ui/dropdown-menu"
 import {
   Item,
   ItemActions,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
-import { Label } from "@/registry/bases/base/ui/label"
+} from "@/registry/base-nova/ui/item"
+import { Label } from "@/registry/base-nova/ui/label"
 import {
   Sidebar,
   SidebarContent,
@@ -31,7 +31,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/base-nova/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarExample() {

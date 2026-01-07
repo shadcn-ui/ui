@@ -5,8 +5,8 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 
-import { cn } from "@/registry/bases/base/lib/utils"
-import { Button } from "@/registry/bases/base/ui/button"
+import { cn } from "@/registry/base-nova/lib/utils"
+import { Button } from "@/registry/base-nova/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 type CarouselApi = UseEmblaCarouselType[1]

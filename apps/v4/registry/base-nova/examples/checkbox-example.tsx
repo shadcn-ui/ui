@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Checkbox } from "@/registry/bases/base/ui/checkbox"
+} from "@/registry/base-nova/components/example"
+import { Checkbox } from "@/registry/base-nova/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -14,7 +14,7 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@/registry/bases/base/ui/field"
+} from "@/registry/base-nova/ui/field"
 import {
   Table,
   TableBody,
@@ -22,7 +22,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/registry/bases/base/ui/table"
+} from "@/registry/base-nova/ui/table"
 
 export default function CheckboxExample() {
   return (

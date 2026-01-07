@@ -1,7 +1,7 @@
 import * as React from "react"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
-import { Button } from "@/registry/bases/radix/ui/button"
+import { cn } from "@/registry/radix-nova/lib/utils"
+import { Button } from "@/registry/radix-nova/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {

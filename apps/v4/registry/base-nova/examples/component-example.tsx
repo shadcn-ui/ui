@@ -5,7 +5,7 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,9 +17,9 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/bases/base/ui/alert-dialog"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/ui/alert-dialog"
+import { Badge } from "@/registry/base-nova/ui/badge"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -28,7 +28,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/ui/card"
 import {
   Combobox,
   ComboboxContent,
@@ -36,7 +36,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/registry/bases/base/ui/combobox"
+} from "@/registry/base-nova/ui/combobox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -53,9 +53,9 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/dropdown-menu"
+import { Field, FieldGroup, FieldLabel } from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   Select,
   SelectContent,
@@ -63,8 +63,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/base-nova/ui/select"
+import { Textarea } from "@/registry/base-nova/ui/textarea"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function ComponentExample() {

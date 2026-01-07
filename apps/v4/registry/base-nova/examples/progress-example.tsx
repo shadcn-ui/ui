@@ -5,7 +5,7 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   Item,
   ItemActions,
@@ -13,13 +13,13 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/base-nova/ui/item"
 import {
   Progress,
   ProgressLabel,
   ProgressValue,
-} from "@/registry/bases/base/ui/progress"
-import { Slider } from "@/registry/bases/base/ui/slider"
+} from "@/registry/base-nova/ui/progress"
+import { Slider } from "@/registry/base-nova/ui/slider"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ProgressExample() {

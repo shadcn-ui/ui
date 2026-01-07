@@ -6,13 +6,13 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/ui/avatar"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/bases/radix/ui/collapsible"
+} from "@/registry/radix-nova/ui/collapsible"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,14 +21,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/radix-nova/ui/dropdown-menu"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
+} from "@/registry/radix-nova/ui/item"
 import {
   Sidebar,
   SidebarContent,
@@ -47,7 +47,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/registry/bases/radix/ui/sidebar"
+} from "@/registry/radix-nova/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarIconExample() {

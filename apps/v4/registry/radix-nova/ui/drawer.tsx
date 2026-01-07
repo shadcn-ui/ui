@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Drawer as DrawerPrimitive } from "vaul"
 
-import { cn } from "@/registry/bases/radix/lib/utils"
+import { cn } from "@/registry/radix-nova/lib/utils"
 
 function Drawer({
   ...props

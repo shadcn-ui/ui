@@ -5,8 +5,8 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Alert, AlertDescription } from "@/registry/bases/base/ui/alert"
+} from "@/registry/base-nova/components/example"
+import { Alert, AlertDescription } from "@/registry/base-nova/ui/alert"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,9 +17,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/bases/base/ui/alert-dialog"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/ui/alert-dialog"
+import { Badge } from "@/registry/base-nova/ui/badge"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -27,7 +27,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -42,37 +42,37 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/base-nova/ui/dropdown-menu"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
+} from "@/registry/base-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/base-nova/ui/input-group"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
-import { Kbd } from "@/registry/bases/base/ui/kbd"
+} from "@/registry/base-nova/ui/item"
+import { Kbd } from "@/registry/base-nova/ui/kbd"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/base/ui/popover"
+} from "@/registry/base-nova/ui/popover"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/base-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ChatGPTBlock() {

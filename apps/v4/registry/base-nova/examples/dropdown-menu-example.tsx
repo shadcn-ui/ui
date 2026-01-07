@@ -5,13 +5,13 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/registry/bases/base/ui/avatar"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/ui/avatar"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -19,7 +19,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/base/ui/dialog"
+} from "@/registry/base-nova/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -36,7 +36,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/base-nova/ui/dropdown-menu"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function DropdownMenuExample() {

@@ -1,7 +1,7 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   Field,
   FieldContent,
@@ -9,11 +9,11 @@ import {
   FieldLabel,
   FieldLegend,
   FieldSet,
-} from "@/registry/bases/base/ui/field"
+} from "@/registry/base-nova/ui/field"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/registry/bases/base/ui/radio-group"
+} from "@/registry/base-nova/ui/radio-group"
 
 export default function RadioGroupExample() {
   return (

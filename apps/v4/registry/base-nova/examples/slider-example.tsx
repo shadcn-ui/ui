@@ -5,9 +5,9 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Label } from "@/registry/bases/base/ui/label"
-import { Slider } from "@/registry/bases/base/ui/slider"
+} from "@/registry/base-nova/components/example"
+import { Label } from "@/registry/base-nova/ui/label"
+import { Slider } from "@/registry/base-nova/ui/slider"
 
 export default function SliderExample() {
   return (

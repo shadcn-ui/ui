@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { useMediaQuery } from "@/hooks/use-media-query"
-import { Button } from "@/registry/radix-nova/ui/button"
+import { Button } from "@/registry/bases/radix/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -11,17 +11,17 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/radix-nova/ui/command"
+} from "@/registry/bases/radix/ui/command"
 import {
   Drawer,
   DrawerContent,
   DrawerTrigger,
-} from "@/registry/radix-nova/ui/drawer"
+} from "@/registry/bases/radix/ui/drawer"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/radix-nova/ui/popover"
+} from "@/registry/bases/radix/ui/popover"
 
 type Status = {
   value: string

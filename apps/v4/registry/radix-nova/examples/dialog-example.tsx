@@ -5,9 +5,9 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
-import { Checkbox } from "@/registry/bases/radix/ui/checkbox"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
+import { Checkbox } from "@/registry/radix-nova/ui/checkbox"
 import {
   Dialog,
   DialogClose,
@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
+} from "@/registry/radix-nova/ui/dialog"
 import {
   Field,
   FieldContent,
@@ -27,19 +27,19 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/bases/radix/ui/input-group"
-import { Kbd } from "@/registry/bases/radix/ui/kbd"
+} from "@/registry/radix-nova/ui/input-group"
+import { Kbd } from "@/registry/radix-nova/ui/kbd"
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/bases/radix/ui/native-select"
+} from "@/registry/radix-nova/ui/native-select"
 import {
   Select,
   SelectContent,
@@ -47,20 +47,20 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
-import { Switch } from "@/registry/bases/radix/ui/switch"
+} from "@/registry/radix-nova/ui/select"
+import { Switch } from "@/registry/radix-nova/ui/switch"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/bases/radix/ui/tabs"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
+} from "@/registry/radix-nova/ui/tabs"
+import { Textarea } from "@/registry/radix-nova/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/radix/ui/tooltip"
+} from "@/registry/radix-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function DialogExample() {

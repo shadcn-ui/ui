@@ -1,5 +1,5 @@
-import { Label } from "@/registry/base-nova/ui/label"
-import { Textarea } from "@/registry/base-nova/ui/textarea"
+import { Label } from "@/registry/bases/base/ui/label"
+import { Textarea } from "@/registry/bases/base/ui/textarea"
 
 export default function TextareaWithLabel() {
   return (

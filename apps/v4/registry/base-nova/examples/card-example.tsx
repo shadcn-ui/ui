@@ -3,15 +3,15 @@ import Image from "next/image"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "@/registry/bases/base/ui/avatar"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/ui/avatar"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Card,
   CardAction,
@@ -20,9 +20,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CardExample() {

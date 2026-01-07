@@ -6,7 +6,7 @@ import Link from "next/link"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,7 +15,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/registry/bases/base/ui/navigation-menu"
+} from "@/registry/base-nova/ui/navigation-menu"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const components: { title: string; href: string; description: string }[] = [

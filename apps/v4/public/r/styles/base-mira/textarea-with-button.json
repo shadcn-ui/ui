@@ -3,13 +3,13 @@
   "name": "textarea-with-button",
   "title": "Textarea With Button",
   "registryDependencies": [
-    "textarea",
-    "button"
+    "button",
+    "textarea"
   ],
   "files": [
     {
       "path": "registry/base-mira/demo/textarea-with-button.tsx",
-      "content": "import { Button } from \"@/registry/base-nova/ui/button\"\nimport { Textarea } from \"@/registry/base-nova/ui/textarea\"\n\nexport default function TextareaWithButton() {\n  return (\n    <div className=\"grid w-full gap-2\">\n      <Textarea placeholder=\"Type your message here.\" />\n      <Button>Send message</Button>\n    </div>\n  )\n}\n",
+      "content": "import { Button } from \"@/registry/base-mira/ui/button\"\nimport { Textarea } from \"@/registry/base-mira/ui/textarea\"\n\nexport default function TextareaWithButton() {\n  return (\n    <div className=\"grid w-full gap-2\">\n      <Textarea placeholder=\"Type your message here.\" />\n      <Button>Send message</Button>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

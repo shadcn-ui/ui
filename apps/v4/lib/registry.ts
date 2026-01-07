@@ -8,8 +8,16 @@ import { type z } from "zod"
 import { Index as StylesIndex } from "@/registry/__index__"
 import { Index as BasesIndex } from "@/registry/bases/__index__"
 
+// Styles that have their own index in StylesIndex (built with style transforms).
+const INDEXED_STYLES = ["new-york-v4", "radix-nova", "base-nova"]
+
 // Map style names to their corresponding index and key.
 function getIndexForStyle(styleName: string) {
+  // Use StylesIndex for styles that are built with transforms.
+  if (INDEXED_STYLES.includes(styleName)) {
+    return { index: StylesIndex, key: styleName }
+  }
+  // Fall back to BasesIndex for other base-style combinations.
   if (styleName.startsWith("radix-")) {
     return { index: BasesIndex, key: "radix" }
   }

@@ -3,8 +3,8 @@
   "name": "textarea-with-label",
   "title": "Textarea With Label",
   "registryDependencies": [
-    "textarea",
-    "label"
+    "label",
+    "textarea"
   ],
   "files": [
     {

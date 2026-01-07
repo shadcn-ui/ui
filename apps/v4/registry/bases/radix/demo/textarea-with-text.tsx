@@ -1,5 +1,5 @@
-import { Label } from "@/registry/radix-nova/ui/label"
-import { Textarea } from "@/registry/radix-nova/ui/textarea"
+import { Label } from "@/registry/bases/radix/ui/label"
+import { Textarea } from "@/registry/bases/radix/ui/textarea"
 
 export default function TextareaWithText() {
   return (

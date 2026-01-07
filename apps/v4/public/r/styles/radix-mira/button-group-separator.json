@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-separator",
+  "title": "Button Group Separator",
+  "registryDependencies": [
+    "button",
+    "button-group"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-mira/demo/button-group-separator.tsx",
+      "content": "import { Button } from \"@/registry/radix-mira/ui/button\"\nimport {\n  ButtonGroup,\n  ButtonGroupSeparator,\n} from \"@/registry/radix-mira/ui/button-group\"\n\nexport default function ButtonGroupSeparatorDemo() {\n  return (\n    <ButtonGroup>\n      <Button variant=\"secondary\" size=\"sm\">\n        Copy\n      </Button>\n      <ButtonGroupSeparator />\n      <Button variant=\"secondary\" size=\"sm\">\n        Paste\n      </Button>\n    </ButtonGroup>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -6,9 +6,9 @@ import { toast } from "sonner"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
-import { Card, CardContent, CardFooter } from "@/registry/bases/radix/ui/card"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
+import { Card, CardContent, CardFooter } from "@/registry/radix-nova/ui/card"
 import {
   Combobox,
   ComboboxChip,
@@ -26,7 +26,7 @@ import {
   ComboboxTrigger,
   ComboboxValue,
   useComboboxAnchor,
-} from "@/registry/bases/radix/ui/combobox"
+} from "@/registry/radix-nova/ui/combobox"
 import {
   Dialog,
   DialogContent,
@@ -35,26 +35,26 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/bases/radix/ui/dialog"
+} from "@/registry/radix-nova/ui/dialog"
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
+} from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/radix/ui/input-group"
+} from "@/registry/radix-nova/ui/input-group"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
+} from "@/registry/radix-nova/ui/item"
 import {
   Select,
   SelectContent,
@@ -62,7 +62,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
+} from "@/registry/radix-nova/ui/select"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function ComboboxExample() {

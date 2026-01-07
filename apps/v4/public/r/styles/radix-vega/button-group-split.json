@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-split",
+  "title": "Button Group Split",
+  "registryDependencies": [
+    "button",
+    "button-group",
+    "dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-vega/demo/button-group-split.tsx",
+      "content": "import { IconPlus } from \"@tabler/icons-react\"\n\nimport { Button } from \"@/registry/radix-vega/ui/button\"\nimport {\n  ButtonGroup,\n  ButtonGroupSeparator,\n} from \"@/registry/radix-vega/ui/button-group\"\n\nexport default function ButtonGroupSplit() {\n  return (\n    <ButtonGroup>\n      <Button variant=\"secondary\">Button</Button>\n      <ButtonGroupSeparator />\n      <Button size=\"icon\" variant=\"secondary\">\n        <IconPlus />\n      </Button>\n    </ButtonGroup>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

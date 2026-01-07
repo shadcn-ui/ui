@@ -4,9 +4,9 @@ import Image from "next/image"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { ScrollArea, ScrollBar } from "@/registry/bases/base/ui/scroll-area"
-import { Separator } from "@/registry/bases/base/ui/separator"
+} from "@/registry/base-nova/components/example"
+import { ScrollArea, ScrollBar } from "@/registry/base-nova/ui/scroll-area"
+import { Separator } from "@/registry/base-nova/ui/separator"
 
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`

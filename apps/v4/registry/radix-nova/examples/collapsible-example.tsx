@@ -5,23 +5,23 @@ import * as React from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/components/example"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
+} from "@/registry/radix-nova/ui/card"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/bases/radix/ui/collapsible"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/radix/ui/field"
-import { Input } from "@/registry/bases/radix/ui/input"
-import { Tabs, TabsList, TabsTrigger } from "@/registry/bases/radix/ui/tabs"
+} from "@/registry/radix-nova/ui/collapsible"
+import { Field, FieldGroup, FieldLabel } from "@/registry/radix-nova/ui/field"
+import { Input } from "@/registry/radix-nova/ui/input"
+import { Tabs, TabsList, TabsTrigger } from "@/registry/radix-nova/ui/tabs"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CollapsibleExample() {

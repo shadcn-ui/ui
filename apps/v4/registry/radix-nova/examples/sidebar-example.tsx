@@ -2,14 +2,14 @@
 
 import * as React from "react"
 
-import { Button } from "@/registry/bases/radix/ui/button"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
+} from "@/registry/radix-nova/ui/dropdown-menu"
 import {
   Item,
   ItemActions,
@@ -17,8 +17,8 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
-import { Label } from "@/registry/bases/radix/ui/label"
+} from "@/registry/radix-nova/ui/item"
+import { Label } from "@/registry/radix-nova/ui/label"
 import {
   Sidebar,
   SidebarContent,
@@ -34,7 +34,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/registry/bases/radix/ui/sidebar"
+} from "@/registry/radix-nova/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarExample() {

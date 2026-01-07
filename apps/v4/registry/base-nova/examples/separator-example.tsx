@@ -1,8 +1,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Separator } from "@/registry/bases/base/ui/separator"
+} from "@/registry/base-nova/components/example"
+import { Separator } from "@/registry/base-nova/ui/separator"
 
 export default function SeparatorExample() {
   return (

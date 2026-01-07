@@ -1,15 +1,15 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Alert,
   AlertAction,
   AlertDescription,
   AlertTitle,
-} from "@/registry/bases/radix/ui/alert"
-import { Badge } from "@/registry/bases/radix/ui/badge"
-import { Button } from "@/registry/bases/radix/ui/button"
+} from "@/registry/radix-nova/ui/alert"
+import { Badge } from "@/registry/radix-nova/ui/badge"
+import { Button } from "@/registry/radix-nova/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function AlertExample() {

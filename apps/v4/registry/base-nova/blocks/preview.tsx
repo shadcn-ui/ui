@@ -6,7 +6,7 @@ import { useState } from "react"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
+} from "@/registry/base-nova/components/example"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,16 +18,16 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/bases/base/ui/alert-dialog"
+} from "@/registry/base-nova/ui/alert-dialog"
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarImage,
-} from "@/registry/bases/base/ui/avatar"
-import { Badge } from "@/registry/bases/base/ui/badge"
-import { Button } from "@/registry/bases/base/ui/button"
-import { ButtonGroup } from "@/registry/bases/base/ui/button-group"
+} from "@/registry/base-nova/ui/avatar"
+import { Badge } from "@/registry/base-nova/ui/badge"
+import { Button } from "@/registry/base-nova/ui/button"
+import { ButtonGroup } from "@/registry/base-nova/ui/button-group"
 import {
   Card,
   CardAction,
@@ -36,8 +36,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
-import { Checkbox } from "@/registry/bases/base/ui/checkbox"
+} from "@/registry/base-nova/ui/card"
+import { Checkbox } from "@/registry/base-nova/ui/checkbox"
 import {
   Combobox,
   ComboboxContent,
@@ -45,7 +45,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/registry/bases/base/ui/combobox"
+} from "@/registry/base-nova/ui/combobox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -62,7 +62,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/base-nova/ui/dropdown-menu"
 import {
   Empty,
   EmptyContent,
@@ -70,7 +70,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/bases/base/ui/empty"
+} from "@/registry/base-nova/ui/empty"
 import {
   Field,
   FieldContent,
@@ -81,8 +81,8 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
@@ -90,7 +90,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/base-nova/ui/input-group"
 import {
   Item,
   ItemActions,
@@ -98,8 +98,8 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
-import { Label } from "@/registry/bases/base/ui/label"
+} from "@/registry/base-nova/ui/item"
+import { Label } from "@/registry/base-nova/ui/label"
 import {
   Popover,
   PopoverContent,
@@ -107,11 +107,11 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/registry/bases/base/ui/popover"
+} from "@/registry/base-nova/ui/popover"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@/registry/bases/base/ui/radio-group"
+} from "@/registry/base-nova/ui/radio-group"
 import {
   Select,
   SelectContent,
@@ -119,8 +119,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/base/ui/select"
-import { Separator } from "@/registry/bases/base/ui/separator"
+} from "@/registry/base-nova/ui/select"
+import { Separator } from "@/registry/base-nova/ui/separator"
 import {
   Sheet,
   SheetClose,
@@ -130,16 +130,16 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/bases/base/ui/sheet"
-import { Slider } from "@/registry/bases/base/ui/slider"
-import { Spinner } from "@/registry/bases/base/ui/spinner"
-import { Switch } from "@/registry/bases/base/ui/switch"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/base-nova/ui/sheet"
+import { Slider } from "@/registry/base-nova/ui/slider"
+import { Spinner } from "@/registry/base-nova/ui/spinner"
+import { Switch } from "@/registry/base-nova/ui/switch"
+import { Textarea } from "@/registry/base-nova/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/base-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CoverExample() {

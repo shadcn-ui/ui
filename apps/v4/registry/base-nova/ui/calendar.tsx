@@ -7,8 +7,8 @@ import {
   type DayButton,
 } from "react-day-picker"
 
-import { cn } from "@/registry/bases/base/lib/utils"
-import { Button, buttonVariants } from "@/registry/bases/base/ui/button"
+import { cn } from "@/registry/base-nova/lib/utils"
+import { Button, buttonVariants } from "@/registry/base-nova/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Calendar({

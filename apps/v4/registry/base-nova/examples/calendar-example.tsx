@@ -8,21 +8,21 @@ import { es } from "react-day-picker/locale"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
-import { Calendar, CalendarDayButton } from "@/registry/bases/base/ui/calendar"
-import { Card, CardContent, CardFooter } from "@/registry/bases/base/ui/card"
-import { Field, FieldGroup, FieldLabel } from "@/registry/bases/base/ui/field"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
+import { Calendar, CalendarDayButton } from "@/registry/base-nova/ui/calendar"
+import { Card, CardContent, CardFooter } from "@/registry/base-nova/ui/card"
+import { Field, FieldGroup, FieldLabel } from "@/registry/base-nova/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/base-nova/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/bases/base/ui/popover"
+} from "@/registry/base-nova/ui/popover"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function CalendarExample() {

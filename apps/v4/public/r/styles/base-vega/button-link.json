@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-link",
+  "title": "Button Link",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/base-vega/demo/button-link.tsx",
+      "content": "import { Button } from \"@/registry/base-vega/ui/button\"\n\nexport default function ButtonLink() {\n  return <Button variant=\"link\">Link</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

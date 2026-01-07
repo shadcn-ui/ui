@@ -6,12 +6,12 @@ import { toast } from "sonner"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/base/components/example"
-import { Button } from "@/registry/bases/base/ui/button"
+} from "@/registry/base-nova/components/example"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   ButtonGroup,
   ButtonGroupText,
-} from "@/registry/bases/base/ui/button-group"
+} from "@/registry/base-nova/ui/button-group"
 import {
   Card,
   CardContent,
@@ -19,20 +19,20 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
+} from "@/registry/base-nova/ui/dropdown-menu"
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/registry/bases/base/ui/field"
-import { Input } from "@/registry/bases/base/ui/input"
+} from "@/registry/base-nova/ui/field"
+import { Input } from "@/registry/base-nova/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
@@ -40,8 +40,8 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/bases/base/ui/input-group"
-import { Kbd, KbdGroup } from "@/registry/bases/base/ui/kbd"
+} from "@/registry/base-nova/ui/input-group"
+import { Kbd, KbdGroup } from "@/registry/base-nova/ui/kbd"
 import {
   Popover,
   PopoverContent,
@@ -49,14 +49,14 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/registry/bases/base/ui/popover"
-import { Spinner } from "@/registry/bases/base/ui/spinner"
-import { Textarea } from "@/registry/bases/base/ui/textarea"
+} from "@/registry/base-nova/ui/popover"
+import { Spinner } from "@/registry/base-nova/ui/spinner"
+import { Textarea } from "@/registry/base-nova/ui/textarea"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/bases/base/ui/tooltip"
+} from "@/registry/base-nova/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function InputGroupExample() {

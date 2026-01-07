@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-default",
+  "title": "Button Default",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-maia/demo/button-default.tsx",
+      "content": "import { Button } from \"@/registry/radix-maia/ui/button\"\n\nexport default function ButtonDefault() {\n  return <Button>Button</Button>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

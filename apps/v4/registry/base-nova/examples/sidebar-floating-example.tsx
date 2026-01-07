@@ -1,27 +1,27 @@
 "use client"
 
-import { Button } from "@/registry/bases/base/ui/button"
+import { Button } from "@/registry/base-nova/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/base/ui/card"
+} from "@/registry/base-nova/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/bases/base/ui/dropdown-menu"
-import { Field } from "@/registry/bases/base/ui/field"
+} from "@/registry/base-nova/ui/dropdown-menu"
+import { Field } from "@/registry/base-nova/ui/field"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/bases/base/ui/item"
+} from "@/registry/base-nova/ui/item"
 import {
   Sidebar,
   SidebarContent,
@@ -36,7 +36,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/registry/bases/base/ui/sidebar"
+} from "@/registry/base-nova/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarFloatingExample() {

@@ -3,10 +3,10 @@
   "name": "combobox-responsive",
   "title": "Combobox Responsive",
   "registryDependencies": [
+    "button",
     "command",
-    "popover",
     "drawer",
-    "button"
+    "popover"
   ],
   "files": [
     {

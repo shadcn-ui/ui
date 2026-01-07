@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-demo",
+  "title": "Button Demo",
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/base-vega/demo/button-demo.tsx",
+      "content": "import { ArrowUpIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/base-vega/ui/button\"\n\nexport default function ButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center gap-2 md:flex-row\">\n      <Button variant=\"outline\">Button</Button>\n      <Button variant=\"outline\" size=\"icon\" aria-label=\"Submit\">\n        <ArrowUpIcon />\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

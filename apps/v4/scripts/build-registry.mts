@@ -37,9 +37,13 @@ try {
 
   const stylesToBuild = getStylesToBuild()
 
-  // We only need the legacy styles here for backward compatibility.
+  // Build index for legacy styles and whitelisted base-style combinations.
   console.log(`📦 Building registry/__index__.tsx...`)
-  await buildRegistryIndex([...legacyStyles])
+  const stylesForIndex = WHITELISTED_STYLES.map((name) => ({
+    name,
+    title: name,
+  }))
+  await buildRegistryIndex(stylesForIndex)
 
   console.log("💅 Building styles...")
   for (const style of stylesToBuild) {
@@ -214,11 +218,25 @@ async function buildBases(bases: Base[]) {
           const fileExtension = path.extname(file.path)
           const shouldTransform =
             fileExtension === ".tsx" || fileExtension === ".ts"
-          const transformedContent = shouldTransform
-            ? await transformStyle(source, {
-                styleMap: styleMap,
-              })
-            : source
+
+          let transformedContent = source
+
+          if (shouldTransform) {
+            // Transform style classes (cn-* -> Tailwind).
+            transformedContent = await transformStyle(source, {
+              styleMap: styleMap,
+            })
+
+            // Transform import paths from base to style-specific paths.
+            // e.g., @/registry/bases/radix/ui/button -> @/registry/radix-nova/ui/button
+            transformedContent = transformedContent.replace(
+              new RegExp(
+                `@/registry/bases/${base.name}/`,
+                "g"
+              ),
+              `@/registry/${base.name}-${style.name}/`
+            )
+          }
 
           const outputPath = path.join(
             process.cwd(),

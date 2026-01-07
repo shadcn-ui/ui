@@ -1,8 +1,8 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { Field, FieldLabel } from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/components/example"
+import { Field, FieldLabel } from "@/registry/radix-nova/ui/field"
 import {
   Pagination,
   PaginationContent,
@@ -11,7 +11,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/registry/bases/radix/ui/pagination"
+} from "@/registry/radix-nova/ui/pagination"
 import {
   Select,
   SelectContent,
@@ -19,7 +19,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/bases/radix/ui/select"
+} from "@/registry/radix-nova/ui/select"
 
 export default function PaginationExample() {
   return (

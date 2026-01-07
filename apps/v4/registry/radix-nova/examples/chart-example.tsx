@@ -25,7 +25,7 @@ import {
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Card,
   CardContent,
@@ -33,13 +33,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
+} from "@/registry/radix-nova/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/registry/bases/radix/ui/chart"
+} from "@/registry/radix-nova/ui/chart"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const areaChartData = [

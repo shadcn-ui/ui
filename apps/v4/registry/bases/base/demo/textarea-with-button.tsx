@@ -1,5 +1,5 @@
-import { Button } from "@/registry/base-nova/ui/button"
-import { Textarea } from "@/registry/base-nova/ui/textarea"
+import { Button } from "@/registry/bases/base/ui/button"
+import { Textarea } from "@/registry/bases/base/ui/textarea"
 
 export default function TextareaWithButton() {
   return (

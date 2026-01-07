@@ -3,18 +3,18 @@
 import * as React from "react"
 import { Command as CommandPrimitive } from "cmdk"
 
-import { cn } from "@/registry/bases/base/lib/utils"
+import { cn } from "@/registry/base-nova/lib/utils"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/registry/bases/base/ui/dialog"
+} from "@/registry/base-nova/ui/dialog"
 import {
   InputGroup,
   InputGroupAddon,
-} from "@/registry/bases/base/ui/input-group"
+} from "@/registry/base-nova/ui/input-group"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Command({

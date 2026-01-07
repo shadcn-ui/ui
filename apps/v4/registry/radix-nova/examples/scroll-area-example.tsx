@@ -4,9 +4,9 @@ import Image from "next/image"
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
-import { ScrollArea, ScrollBar } from "@/registry/bases/radix/ui/scroll-area"
-import { Separator } from "@/registry/bases/radix/ui/separator"
+} from "@/registry/radix-nova/components/example"
+import { ScrollArea, ScrollBar } from "@/registry/radix-nova/ui/scroll-area"
+import { Separator } from "@/registry/radix-nova/ui/separator"
 
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`

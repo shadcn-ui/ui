@@ -3,8 +3,8 @@
   "name": "radio-group-demo",
   "title": "Radio Group Demo",
   "registryDependencies": [
-    "radio-group",
-    "label"
+    "label",
+    "radio-group"
   ],
   "files": [
     {

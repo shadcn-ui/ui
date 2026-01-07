@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-secondary",
+  "title": "Badge Secondary",
+  "registryDependencies": [
+    "badge"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/demo/badge-secondary.tsx",
+      "content": "import { Badge } from \"@/registry/radix-nova/ui/badge\"\n\nexport default function BadgeSecondary() {\n  return <Badge variant=\"secondary\">Secondary</Badge>\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

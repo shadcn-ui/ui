@@ -1,13 +1,13 @@
 import {
   Example,
   ExampleWrapper,
-} from "@/registry/bases/radix/components/example"
+} from "@/registry/radix-nova/components/example"
 import {
   Field,
   FieldDescription,
   FieldLabel,
-} from "@/registry/bases/radix/ui/field"
-import { Textarea } from "@/registry/bases/radix/ui/textarea"
+} from "@/registry/radix-nova/ui/field"
+import { Textarea } from "@/registry/radix-nova/ui/textarea"
 
 export default function TextareaExample() {
   return (

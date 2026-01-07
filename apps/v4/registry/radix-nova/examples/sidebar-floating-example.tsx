@@ -2,29 +2,29 @@
 
 import * as React from "react"
 
-import { Button } from "@/registry/bases/radix/ui/button"
+import { Button } from "@/registry/radix-nova/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/bases/radix/ui/card"
+} from "@/registry/radix-nova/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
-import { Field } from "@/registry/bases/radix/ui/field"
+} from "@/registry/radix-nova/ui/dropdown-menu"
+import { Field } from "@/registry/radix-nova/ui/field"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/bases/radix/ui/item"
+} from "@/registry/radix-nova/ui/item"
 import {
   Sidebar,
   SidebarContent,
@@ -39,7 +39,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/registry/bases/radix/ui/sidebar"
+} from "@/registry/radix-nova/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarFloatingExample() {
