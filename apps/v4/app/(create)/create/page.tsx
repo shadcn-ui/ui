@@ -12,10 +12,11 @@ import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { SidebarProvider } from "@/registry/new-york-v4/ui/sidebar"
 import { Customizer } from "@/app/(create)/components/customizer"
-import { CustomizerControls } from "@/app/(create)/components/customizer-controls"
 import { ItemExplorer } from "@/app/(create)/components/item-explorer"
 import { ItemPicker } from "@/app/(create)/components/item-picker"
 import { Preview } from "@/app/(create)/components/preview"
+import { RandomButton } from "@/app/(create)/components/random-button"
+import { ResetButton } from "@/app/(create)/components/reset-button"
 import { ShareButton } from "@/app/(create)/components/share-button"
 import { ToolbarControls } from "@/app/(create)/components/toolbar-controls"
 import { V0Button } from "@/app/(create)/components/v0-button"
@@ -103,7 +104,10 @@ export default async function CreatePage({
             </div>
             <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center gap-2 px-4.5 pb-4 sm:static sm:justify-end sm:p-0 lg:ml-0 xl:justify-center">
               <ItemPicker items={filteredItems} />
-              <CustomizerControls className="sm:hidden" />
+              <div className="items-center gap-0 sm:hidden">
+                <RandomButton />
+                <ResetButton />
+              </div>
               <Separator
                 orientation="vertical"
                 className="mr-2 hidden sm:flex xl:hidden"
