@@ -113,5 +113,6 @@
   "@ui-layouts": "https://ui-layouts.com/r/{name}.json",
   "@pureui": "https://pure.kam-ui.com/r/{name}.json",
   "@tour": "https://onboarding-tour.vercel.app/r/{name}.json",
-  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json"
+  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json",
+  "@darx": "https://darshitdev.in/r/{name}.json"
 }
