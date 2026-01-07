@@ -118,7 +118,7 @@ function NavigationMenuPositioner({
         )}
         {...props}
       >
-        <NavigationMenuPrimitive.Popup className="cn-navigation-menu-popup xs:w-(--popup-width) relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin)">
+        <NavigationMenuPrimitive.Popup className="cn-navigation-menu-popup relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin)">
           <NavigationMenuPrimitive.Viewport className="relative size-full overflow-hidden" />
         </NavigationMenuPrimitive.Popup>
       </NavigationMenuPrimitive.Positioner>
