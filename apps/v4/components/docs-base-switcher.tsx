@@ -11,16 +11,14 @@ export function DocsBaseSwitcher({
   component: string
 }) {
   return (
-    <div className="flex gap-1 rounded-md border p-1">
+    <div className="flex items-center gap-4">
       {BASES.map((baseItem) => (
         <Link
           key={baseItem.name}
           href={`/docs/components/${baseItem.name}/${component}`}
+          data-active={base === baseItem.name}
           className={cn(
-            "rounded px-3 py-1 text-sm transition-colors",
-            base === baseItem.name
-              ? "bg-primary text-primary-foreground"
-              : "hover:bg-muted"
+            "text-muted-foreground data-[active=true]:text-foreground data-[active=true]:border-primary dark:data-[active=true]:border-primary hover:text-primary rounded-none border-0 border-b-2 border-transparent bg-transparent px-0 pb-1 text-base font-medium transition-colors data-[active=true]:bg-transparent data-[active=true]:shadow-none dark:data-[active=true]:bg-transparent"
           )}
         >
           {baseItem.title}

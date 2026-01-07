@@ -148,14 +148,6 @@ export default async function Page(props: {
                 </p>
               )}
             </div>
-            {params.slug?.[0] === "components" &&
-              (params.slug?.[1] === "radix" || params.slug?.[1] === "base") &&
-              params.slug?.[2] && (
-                <DocsBaseSwitcher
-                  base={params.slug[1]}
-                  component={params.slug[2]}
-                />
-              )}
             {links ? (
               <div className="flex items-center gap-2 pt-4">
                 {links?.doc && (
@@ -176,6 +168,10 @@ export default async function Page(props: {
             ) : null}
           </div>
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
+            <DocsBaseSwitcher
+              base={params.slug[1]}
+              component={params.slug[2]}
+            />
             <MDX components={mdxComponents} />
           </div>
         </div>

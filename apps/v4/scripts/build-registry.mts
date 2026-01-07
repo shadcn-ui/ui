@@ -13,7 +13,7 @@ import { STYLES } from "@/registry/styles"
 
 // This is a list of styles that we want to check into tracking.
 // This is used by the v4 site.
-const WHITELISTED_STYLES = ["new-york-v4"]
+const WHITELISTED_STYLES = ["new-york-v4", "radix-nova", "base-nova"]
 
 function getStylesToBuild() {
   const stylesToBuild: { name: string; title: string }[] = [...legacyStyles]

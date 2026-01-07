@@ -634,6 +634,213 @@
       "type": "registry:ui"
     },
     {
+      "name": "accordion-demo",
+      "title": "Accordion Demo",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/accordion-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "accordion-multiple",
+      "title": "Accordion Multiple",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/accordion-multiple.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "accordion-disabled",
+      "title": "Accordion Disabled",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/accordion-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-demo",
+      "title": "Textarea Demo",
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/textarea-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-disabled",
+      "title": "Textarea Disabled",
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/textarea-disabled.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-button",
+      "title": "Textarea With Button",
+      "registryDependencies": [
+        "textarea",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/textarea-with-button.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-label",
+      "title": "Textarea With Label",
+      "registryDependencies": [
+        "textarea",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/textarea-with-label.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-with-text",
+      "title": "Textarea With Text",
+      "registryDependencies": [
+        "textarea",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/textarea-with-text.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "radio-group-demo",
+      "title": "Radio Group Demo",
+      "registryDependencies": [
+        "radio-group",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/radio-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "separator-demo",
+      "title": "Separator Demo",
+      "registryDependencies": [
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/separator-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-demo",
+      "title": "Sheet Demo",
+      "registryDependencies": [
+        "sheet",
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/sheet-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-side",
+      "title": "Sheet Side",
+      "registryDependencies": [
+        "sheet",
+        "button",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/sheet-side.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-tooltip-demo",
+      "title": "Chart Tooltip Demo",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/chart-tooltip-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-responsive",
+      "title": "Combobox Responsive",
+      "registryDependencies": [
+        "command",
+        "popover",
+        "drawer",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-vega/demo/combobox-responsive.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "accordion-example",
       "title": "Accordion",
       "registryDependencies": [

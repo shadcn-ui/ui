@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-disabled",
+  "title": "Accordion Disabled",
+  "registryDependencies": [
+    "accordion"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-maia/demo/accordion-disabled.tsx",
+      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/registry/radix-nova/ui/accordion\"\n\nexport default function AccordionDisabled() {\n  return (\n    <Accordion type=\"single\" collapsible className=\"w-full\">\n      <AccordionItem value=\"item-1\">\n        <AccordionTrigger>Can I access my account history?</AccordionTrigger>\n        <AccordionContent>\n          Yes, you can view your complete account history including all\n          transactions, plan changes, and support tickets in the Account History\n          section of your dashboard.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-2\" disabled>\n        <AccordionTrigger>Premium feature information</AccordionTrigger>\n        <AccordionContent>\n          This section contains information about premium features. Upgrade your\n          plan to access this content.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-3\">\n        <AccordionTrigger>How do I update my email address?</AccordionTrigger>\n        <AccordionContent>\n          You can update your email address in your account settings.\n          You&apos;ll receive a verification email at your new address to\n          confirm the change.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
