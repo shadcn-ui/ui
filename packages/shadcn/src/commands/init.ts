@@ -26,6 +26,7 @@ import {
   DEFAULT_TAILWIND_CONFIG,
   DEFAULT_TAILWIND_CSS,
   DEFAULT_UTILS,
+  clearStyleCache,
   createConfig,
   getConfig,
   resolveConfigPaths,
@@ -144,6 +145,9 @@ export const init = new Command()
   .option("--no-base-style", "do not install the base shadcn style.")
   .action(async (components, opts) => {
     try {
+      // Clear style cache to ensure we're using the latest config especially when running tests.
+      clearStyleCache()
+
       // Apply defaults when --defaults flag is set.
       if (opts.defaults) {
         opts.template = opts.template || "next"
@@ -297,11 +301,19 @@ export async function runInit(
     return await getConfig(options.cwd)
   }
 
-  const projectConfig = await getProjectConfig(options.cwd, projectInfo)
+  const projectConfig = !options.force
+    ? await getProjectConfig(options.cwd, projectInfo)
+    : null
 
   let config = projectConfig
     ? await promptForMinimalConfig(projectConfig, options)
-    : await promptForConfig(await getConfig(options.cwd))
+    : await promptForConfig(
+        !options.force ? await getConfig(options.cwd) : null
+      )
+
+  if (options.force) {
+    config.style = "new-york"
+  }
 
   if (!options.yes) {
     const { proceed } = await prompts({
@@ -373,6 +385,9 @@ export async function runInit(
   )
 
   // Write components.json.
+  if (options.force) {
+    config.style = "new-york"
+  }
   await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
   componentSpinner.succeed()
 
