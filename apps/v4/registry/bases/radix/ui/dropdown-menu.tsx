@@ -110,6 +110,7 @@ function DropdownMenuCheckboxItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
@@ -153,6 +154,7 @@ function DropdownMenuRadioItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
@@ -234,6 +236,7 @@ function DropdownMenuSubTrigger({
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
+        remixicon="RiArrowRightSLine"
         className="ml-auto"
       />
     </DropdownMenuPrimitive.SubTrigger>

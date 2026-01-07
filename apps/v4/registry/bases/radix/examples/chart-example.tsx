@@ -122,6 +122,7 @@ function ChartAreaExample() {
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
                   phosphor="TrendUpIcon"
+                  remixicon="RiLineChartLine"
                   className="size-4"
                 />
               </div>
@@ -192,6 +193,7 @@ function ChartBarExample() {
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
@@ -278,6 +280,7 @@ function ChartLineExample() {
                   tabler="IconTrendingUp"
                   hugeicons="ChartUpIcon"
                   phosphor="TrendUpIcon"
+                  remixicon="RiLineChartLine"
                   className="size-4"
                 />
               </div>
@@ -396,6 +399,7 @@ function ChartPieExample() {
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
@@ -467,6 +471,7 @@ function ChartRadarExample() {
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>
@@ -562,6 +567,7 @@ function ChartRadialExample() {
               tabler="IconTrendingUp"
               hugeicons="ChartUpIcon"
               phosphor="TrendUpIcon"
+              remixicon="RiLineChartLine"
               className="size-4"
             />
           </div>

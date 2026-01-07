@@ -119,6 +119,7 @@ function FileUploadList() {
                 tabler="IconFile"
                 hugeicons="FileIcon"
                 phosphor="FileIcon"
+                remixicon="RiFileLine"
                 className="size-5"
               />
             </ItemMedia>

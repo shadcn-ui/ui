@@ -161,6 +161,7 @@ function CodespacesCard() {
                           tabler="IconPlus"
                           hugeicons="PlusSignIcon"
                           phosphor="PlusIcon"
+                          remixicon="RiAddLine"
                         />
                       </Button>
                     </TooltipTrigger>
@@ -178,6 +179,7 @@ function CodespacesCard() {
                               tabler="IconDots"
                               hugeicons="MoreHorizontalCircle01Icon"
                               phosphor="DotsThreeOutlineIcon"
+                              remixicon="RiMoreLine"
                             />
                           </Button>
                         </DropdownMenuTrigger>
@@ -197,6 +199,7 @@ function CodespacesCard() {
                           tabler="IconPlus"
                           hugeicons="PlusSignIcon"
                           phosphor="PlusIcon"
+                          remixicon="RiAddLine"
                         />
                         New with options...
                       </DropdownMenuItem>
@@ -206,6 +209,7 @@ function CodespacesCard() {
                           tabler="IconBox"
                           hugeicons="CubeIcon"
                           phosphor="CubeIcon"
+                          remixicon="RiBox1Line"
                         />
                         Configure dev container
                       </DropdownMenuItem>
@@ -215,6 +219,7 @@ function CodespacesCard() {
                           tabler="IconBolt"
                           hugeicons="ZapIcon"
                           phosphor="LightningIcon"
+                          remixicon="RiFlashlightLine"
                         />
                         Set up prebuilds
                       </DropdownMenuItem>
@@ -225,6 +230,7 @@ function CodespacesCard() {
                           tabler="IconServer"
                           hugeicons="ServerStackIcon"
                           phosphor="HardDrivesIcon"
+                          remixicon="RiHardDriveLine"
                         />
                         Manage codespaces
                       </DropdownMenuItem>
@@ -234,6 +240,7 @@ function CodespacesCard() {
                           tabler="IconShare2"
                           hugeicons="Share03Icon"
                           phosphor="ShareIcon"
+                          remixicon="RiShareLine"
                         />
                         Share deep link
                       </DropdownMenuItem>
@@ -243,6 +250,7 @@ function CodespacesCard() {
                           tabler="IconInfoCircle"
                           hugeicons="AlertCircleIcon"
                           phosphor="InfoIcon"
+                          remixicon="RiInformationLine"
                         />
                         What are codespaces?
                       </DropdownMenuItem>
@@ -259,6 +267,7 @@ function CodespacesCard() {
                       tabler="IconServer"
                       hugeicons="ServerStackIcon"
                       phosphor="HardDrivesIcon"
+                      remixicon="RiHardDriveLine"
                     />
                   </EmptyMedia>
                   <EmptyTitle>No codespaces</EmptyTitle>
@@ -308,6 +317,7 @@ function CodespacesCard() {
                       tabler="IconTerminal"
                       hugeicons="ComputerTerminal01Icon"
                       phosphor="TerminalIcon"
+                      remixicon="RiTerminalBoxLine"
                       className="size-4"
                     />
                     Clone
@@ -322,6 +332,7 @@ function CodespacesCard() {
                           tabler="IconInfoCircle"
                           hugeicons="AlertCircleIcon"
                           phosphor="InfoIcon"
+                          remixicon="RiInformationLine"
                         />
                       </Button>
                     </TooltipTrigger>
@@ -354,6 +365,7 @@ function CodespacesCard() {
                               tabler="IconCopy"
                               hugeicons="Copy01Icon"
                               phosphor="CopyIcon"
+                              remixicon="RiFileCopyLine"
                             />
                           </InputGroupButton>
                         </InputGroupAddon>
@@ -381,6 +393,7 @@ function CodespacesCard() {
                               tabler="IconCopy"
                               hugeicons="Copy01Icon"
                               phosphor="CopyIcon"
+                              remixicon="RiFileCopyLine"
                             />
                           </InputGroupButton>
                         </InputGroupAddon>
@@ -408,6 +421,7 @@ function CodespacesCard() {
                               tabler="IconCopy"
                               hugeicons="Copy01Icon"
                               phosphor="CopyIcon"
+                              remixicon="RiFileCopyLine"
                             />
                           </InputGroupButton>
                         </InputGroupAddon>
@@ -437,6 +451,7 @@ function CodespacesCard() {
                     tabler="IconDeviceDesktop"
                     hugeicons="ComputerIcon"
                     phosphor="MonitorIcon"
+                    remixicon="RiComputerLine"
                     data-icon="inline-start"
                   />
                   Open with GitHub Desktop
@@ -451,6 +466,7 @@ function CodespacesCard() {
                     tabler="IconDownload"
                     hugeicons="DownloadIcon"
                     phosphor="DownloadIcon"
+                    remixicon="RiDownloadLine"
                     data-icon="inline-start"
                   />
                   Download ZIP
@@ -478,6 +494,7 @@ function RepositoryToolbar() {
                 tabler="IconSearch"
                 hugeicons="SearchIcon"
                 phosphor="MagnifyingGlassIcon"
+                remixicon="RiSearchLine"
               />
             </InputGroupButton>
           </InputGroupAddon>
@@ -494,6 +511,7 @@ function RepositoryToolbar() {
                 tabler="IconChevronDown"
                 hugeicons="ArrowDown01Icon"
                 phosphor="CaretDownIcon"
+                remixicon="RiArrowDownSLine"
                 data-icon="inline-end"
               />
             </Button>
@@ -505,6 +523,7 @@ function RepositoryToolbar() {
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
+                remixicon="RiAddLine"
               />
               Create new file
             </DropdownMenuItem>
@@ -514,6 +533,7 @@ function RepositoryToolbar() {
                 hugeicons="Upload01Icon"
                 tabler="IconUpload"
                 phosphor="UploadIcon"
+                remixicon="RiUploadLine"
               />
               Upload files
             </DropdownMenuItem>
@@ -529,6 +549,7 @@ function RepositoryToolbar() {
                     hugeicons="AiCloud01Icon"
                     tabler="IconCloudCog"
                     phosphor="CloudArrowUpIcon"
+                    remixicon="RiUploadCloudLine"
                   />
                 </Button>
               </PopoverTrigger>
@@ -554,6 +575,7 @@ function RepositoryToolbar() {
                               hugeicons="GitBranchIcon"
                               tabler="IconGitBranch"
                               phosphor="GitBranchIcon"
+                              remixicon="RiGitBranchLine"
                             />
                           </InputGroupButton>
                         </TooltipTrigger>
@@ -628,6 +650,7 @@ function RepositoryToolbar() {
                               hugeicons="RoboticIcon"
                               tabler="IconRobot"
                               phosphor="RobotIcon"
+                              remixicon="RiRobotLine"
                             />
                           </InputGroupButton>
                         </TooltipTrigger>
@@ -665,6 +688,7 @@ function RepositoryToolbar() {
                           hugeicons="SentIcon"
                           tabler="IconSend"
                           phosphor="PaperPlaneTiltIcon"
+                          remixicon="RiSendPlaneLine"
                         />
                       </InputGroupButton>
                     </TooltipTrigger>
@@ -694,6 +718,7 @@ function Navbar() {
                 hugeicons="Menu09Icon"
                 tabler="IconMenu"
                 phosphor="ListIcon"
+                remixicon="RiListUnordered"
               />
               <span className="sr-only">Open menu</span>
             </Button>
@@ -708,6 +733,7 @@ function Navbar() {
                     tabler="IconX"
                     hugeicons="Cancel01Icon"
                     phosphor="XIcon"
+                    remixicon="RiCloseLine"
                   />
                   <span className="sr-only">Close</span>
                 </Button>
@@ -723,6 +749,7 @@ function Navbar() {
                         tabler="IconHome"
                         hugeicons="HomeIcon"
                         phosphor="HouseIcon"
+                        remixicon="RiHomeLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -738,6 +765,7 @@ function Navbar() {
                         tabler="IconCircle"
                         hugeicons="CircleIcon"
                         phosphor="CircleIcon"
+                        remixicon="RiCircleLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -753,6 +781,7 @@ function Navbar() {
                         tabler="IconGitBranch"
                         hugeicons="GitBranchIcon"
                         phosphor="GitBranchIcon"
+                        remixicon="RiGitBranchLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -768,6 +797,7 @@ function Navbar() {
                         tabler="IconLayoutGrid"
                         hugeicons="GridIcon"
                         phosphor="GridFourIcon"
+                        remixicon="RiGridLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -783,6 +813,7 @@ function Navbar() {
                         tabler="IconMail"
                         hugeicons="MailIcon"
                         phosphor="EnvelopeIcon"
+                        remixicon="RiMailLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -798,6 +829,7 @@ function Navbar() {
                         tabler="IconServer"
                         hugeicons="ServerStackIcon"
                         phosphor="HardDrivesIcon"
+                        remixicon="RiHardDriveLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -813,6 +845,7 @@ function Navbar() {
                         tabler="IconRobot"
                         hugeicons="RoboticIcon"
                         phosphor="RobotIcon"
+                        remixicon="RiRobotLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -828,6 +861,7 @@ function Navbar() {
                         tabler="IconSparkles"
                         hugeicons="SparklesIcon"
                         phosphor="SparkleIcon"
+                        remixicon="RiSparklingLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -844,6 +878,7 @@ function Navbar() {
                         tabler="IconSearch"
                         hugeicons="SearchIcon"
                         phosphor="MagnifyingGlassIcon"
+                        remixicon="RiSearchLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -859,6 +894,7 @@ function Navbar() {
                         tabler="IconShoppingBag"
                         hugeicons="ShoppingBasket01Icon"
                         phosphor="BagIcon"
+                        remixicon="RiShoppingBagLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -874,6 +910,7 @@ function Navbar() {
                         tabler="IconLink"
                         hugeicons="LinkIcon"
                         phosphor="LinkIcon"
+                        remixicon="RiLinksLine"
                       />
                     </ItemMedia>
                     <ItemContent>
@@ -928,6 +965,7 @@ function Navbar() {
                   tabler="IconMoodSmile"
                   hugeicons="SmileIcon"
                   phosphor="SmileyIcon"
+                  remixicon="RiEmotionLine"
                 />
                 Set status
               </DropdownMenuItem>
@@ -937,6 +975,7 @@ function Navbar() {
                   tabler="IconExclamationCircle"
                   hugeicons="AlertCircleIcon"
                   phosphor="WarningCircleIcon"
+                  remixicon="RiErrorWarningLine"
                 />
                 Single sign-on
               </DropdownMenuItem>
@@ -949,6 +988,7 @@ function Navbar() {
                   tabler="IconUser"
                   hugeicons="UserIcon"
                   phosphor="UserIcon"
+                  remixicon="RiUserLine"
                 />
                 Profile
               </DropdownMenuItem>
@@ -958,6 +998,7 @@ function Navbar() {
                   tabler="IconFolder"
                   hugeicons="FolderIcon"
                   phosphor="FolderIcon"
+                  remixicon="RiFolderLine"
                 />
                 Repositories
               </DropdownMenuItem>
@@ -967,6 +1008,7 @@ function Navbar() {
                   tabler="IconStar"
                   hugeicons="StarIcon"
                   phosphor="StarIcon"
+                  remixicon="RiStarLine"
                 />
                 Stars
               </DropdownMenuItem>
@@ -976,6 +1018,7 @@ function Navbar() {
                   tabler="IconCode"
                   hugeicons="CodeIcon"
                   phosphor="CodeIcon"
+                  remixicon="RiCodeLine"
                 />
                 Gists
               </DropdownMenuItem>
@@ -985,6 +1028,7 @@ function Navbar() {
                   tabler="IconFolder"
                   hugeicons="FolderIcon"
                   phosphor="FolderIcon"
+                  remixicon="RiFolderLine"
                 />
                 Organizations
               </DropdownMenuItem>
@@ -994,6 +1038,7 @@ function Navbar() {
                   tabler="IconServer"
                   hugeicons="ServerStackIcon"
                   phosphor="HardDrivesIcon"
+                  remixicon="RiHardDriveLine"
                 />
                 Enterprises
               </DropdownMenuItem>
@@ -1003,6 +1048,7 @@ function Navbar() {
                   tabler="IconHeart"
                   hugeicons="FavouriteIcon"
                   phosphor="HeartIcon"
+                  remixicon="RiHeartLine"
                 />
                 Sponsors
               </DropdownMenuItem>
@@ -1015,6 +1061,7 @@ function Navbar() {
                   tabler="IconSettings"
                   hugeicons="SettingsIcon"
                   phosphor="GearIcon"
+                  remixicon="RiSettingsLine"
                 />
                 Settings
               </DropdownMenuItem>
@@ -1024,6 +1071,7 @@ function Navbar() {
                   tabler="IconRobot"
                   hugeicons="RoboticIcon"
                   phosphor="RobotIcon"
+                  remixicon="RiRobotLine"
                 />
                 Copilot settings
               </DropdownMenuItem>
@@ -1033,6 +1081,7 @@ function Navbar() {
                   tabler="IconSparkles"
                   hugeicons="SparklesIcon"
                   phosphor="SparkleIcon"
+                  remixicon="RiSparklingLine"
                 />
                 Feature preview
               </DropdownMenuItem>
@@ -1042,6 +1091,7 @@ function Navbar() {
                   tabler="IconDeviceDesktop"
                   hugeicons="ComputerIcon"
                   phosphor="MonitorIcon"
+                  remixicon="RiComputerLine"
                 />
                 Appearance
               </DropdownMenuItem>
@@ -1051,6 +1101,7 @@ function Navbar() {
                   tabler="IconUser"
                   hugeicons="UserIcon"
                   phosphor="UserIcon"
+                  remixicon="RiUserLine"
                 />
                 Accessibility
               </DropdownMenuItem>
@@ -1060,6 +1111,7 @@ function Navbar() {
                   tabler="IconArrowUp"
                   hugeicons="ArrowUpIcon"
                   phosphor="ArrowUpIcon"
+                  remixicon="RiArrowUpLine"
                 />
                 Upgrade
               </DropdownMenuItem>
@@ -1071,6 +1123,7 @@ function Navbar() {
                 tabler="IconLogout"
                 hugeicons="LogoutIcon"
                 phosphor="SignOutIcon"
+                remixicon="RiLogoutBoxLine"
               />
               Sign out
             </DropdownMenuItem>
@@ -1278,6 +1331,7 @@ function AssignIssue() {
                     tabler="IconPlus"
                     hugeicons="PlusSignIcon"
                     phosphor="PlusIcon"
+                    remixicon="RiAddLine"
                   />
                 </Button>
               </TooltipTrigger>

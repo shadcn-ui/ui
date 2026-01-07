@@ -77,6 +77,7 @@ function TooltipWithIcon() {
               tabler="IconInfoCircle"
               hugeicons="AlertCircleIcon"
               phosphor="InfoIcon"
+              remixicon="RiInformationLine"
             />
             <span className="sr-only">Info</span>
           </Button>
@@ -137,6 +138,7 @@ function TooltipWithKeyboard() {
               tabler="IconDeviceFloppy"
               hugeicons="FloppyDiskIcon"
               phosphor="FloppyDiskIcon"
+              remixicon="RiSaveLine"
             />
           </Button>
         </TooltipTrigger>

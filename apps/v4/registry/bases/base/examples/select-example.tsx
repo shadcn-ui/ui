@@ -102,6 +102,7 @@ function SelectWithIcons() {
             tabler="IconChartLine"
             hugeicons="Chart03Icon"
             phosphor="ChartLineIcon"
+            remixicon="RiLineChartLine"
           />
           Chart Type
         </>
@@ -116,6 +117,7 @@ function SelectWithIcons() {
             tabler="IconChartLine"
             hugeicons="Chart03Icon"
             phosphor="ChartLineIcon"
+            remixicon="RiLineChartLine"
           />
           Line
         </>
@@ -130,6 +132,7 @@ function SelectWithIcons() {
             tabler="IconChartBar"
             hugeicons="Chart03Icon"
             phosphor="ChartBarIcon"
+            remixicon="RiBarChartLine"
           />
           Bar
         </>
@@ -144,6 +147,7 @@ function SelectWithIcons() {
             tabler="IconChartPie"
             hugeicons="Chart03Icon"
             phosphor="ChartPieIcon"
+            remixicon="RiPieChartLine"
           />
           Pie
         </>

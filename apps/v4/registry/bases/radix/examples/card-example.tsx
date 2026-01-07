@@ -114,6 +114,7 @@ function CardMeetingNotes() {
                 tabler="IconTextCaption"
                 hugeicons="TextCheckIcon"
                 phosphor="TextTIcon"
+                remixicon="RiTextWrap"
                 data-icon="inline-start"
               />
               Transcribe
@@ -185,6 +186,7 @@ function CardWithImage() {
               tabler="IconPlus"
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             Button
@@ -219,6 +221,7 @@ function CardWithImageSmall() {
               tabler="IconPlus"
               hugeicons="Add01Icon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             Button

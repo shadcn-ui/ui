@@ -84,6 +84,7 @@ function ContextMenuWithIcons() {
                 tabler="IconCopy"
                 hugeicons="CopyIcon"
                 phosphor="CopyIcon"
+                remixicon="RiFileCopyLine"
               />
               Copy
             </ContextMenuItem>
@@ -93,6 +94,7 @@ function ContextMenuWithIcons() {
                 tabler="IconCut"
                 hugeicons="ScissorIcon"
                 phosphor="ScissorsIcon"
+                remixicon="RiScissorsLine"
               />
               Cut
             </ContextMenuItem>
@@ -102,6 +104,7 @@ function ContextMenuWithIcons() {
                 tabler="IconClipboard"
                 hugeicons="ClipboardIcon"
                 phosphor="ClipboardIcon"
+                remixicon="RiClipboardLine"
               />
               Paste
             </ContextMenuItem>
@@ -114,6 +117,7 @@ function ContextMenuWithIcons() {
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </ContextMenuItem>
@@ -356,6 +360,7 @@ function ContextMenuWithDestructive() {
                 tabler="IconPencil"
                 hugeicons="EditIcon"
                 phosphor="PencilIcon"
+                remixicon="RiPencilLine"
               />
               Edit
             </ContextMenuItem>
@@ -365,6 +370,7 @@ function ContextMenuWithDestructive() {
                 tabler="IconShare"
                 hugeicons="ShareIcon"
                 phosphor="ShareIcon"
+                remixicon="RiShareLine"
               />
               Share
             </ContextMenuItem>
@@ -377,6 +383,7 @@ function ContextMenuWithDestructive() {
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
                 phosphor="ArchiveIcon"
+                remixicon="RiArchiveLine"
               />
               Archive
             </ContextMenuItem>
@@ -386,6 +393,7 @@ function ContextMenuWithDestructive() {
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </ContextMenuItem>
@@ -479,6 +487,7 @@ function ContextMenuInDialog() {
                     tabler="IconCopy"
                     hugeicons="CopyIcon"
                     phosphor="CopyIcon"
+                    remixicon="RiFileCopyLine"
                   />
                   Copy
                 </ContextMenuItem>
@@ -488,6 +497,7 @@ function ContextMenuInDialog() {
                     tabler="IconCut"
                     hugeicons="ScissorIcon"
                     phosphor="ScissorsIcon"
+                    remixicon="RiScissorsLine"
                   />
                   Cut
                 </ContextMenuItem>
@@ -497,6 +507,7 @@ function ContextMenuInDialog() {
                     tabler="IconClipboard"
                     hugeicons="ClipboardIcon"
                     phosphor="ClipboardIcon"
+                    remixicon="RiClipboardLine"
                   />
                   Paste
                 </ContextMenuItem>
@@ -524,6 +535,7 @@ function ContextMenuInDialog() {
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
                     phosphor="TrashIcon"
+                    remixicon="RiDeleteBinLine"
                   />
                   Delete
                 </ContextMenuItem>

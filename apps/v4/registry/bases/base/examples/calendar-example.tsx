@@ -201,6 +201,7 @@ function CalendarWithTime() {
                     tabler="IconClockHour2"
                     hugeicons="Clock03Icon"
                     phosphor="ClockIcon"
+                    remixicon="RiTimeLine"
                     className="text-muted-foreground"
                   />
                 </InputGroupAddon>
@@ -222,6 +223,7 @@ function CalendarWithTime() {
                     tabler="IconClockHour2"
                     hugeicons="Clock03Icon"
                     phosphor="ClockIcon"
+                    remixicon="RiTimeLine"
                     className="text-muted-foreground"
                   />
                 </InputGroupAddon>
@@ -353,6 +355,7 @@ function DatePickerSimple() {
               tabler="IconCalendar"
               hugeicons="CalendarIcon"
               phosphor="CalendarBlankIcon"
+              remixicon="RiCalendarLine"
               data-icon="inline-start"
             />
             {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -391,6 +394,7 @@ function DatePickerWithRange() {
               tabler="IconCalendar"
               hugeicons="CalendarIcon"
               phosphor="CalendarBlankIcon"
+              remixicon="RiCalendarLine"
               data-icon="inline-start"
             />
             {date?.from ? (
@@ -446,6 +450,7 @@ function DataPickerWithDropdowns() {
               tabler="IconChevronDown"
               hugeicons="ArrowDownIcon"
               phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
               data-icon="inline-start"
               className="ml-auto"
             />

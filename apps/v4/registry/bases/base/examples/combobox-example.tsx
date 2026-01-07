@@ -811,6 +811,7 @@ function ComboxboxInputAddon() {
               tabler="IconGlobe"
               hugeicons="Globe02Icon"
               phosphor="GlobeIcon"
+              remixicon="RiGlobeLine"
             />
           </InputGroupAddon>
         </ComboboxInput>
@@ -1235,6 +1236,7 @@ function ComboboxWithOtherInputs() {
           tabler="IconSelector"
           hugeicons="UnfoldMoreIcon"
           phosphor="CaretDownIcon"
+          remixicon="RiArrowDownSLine"
         />
       </Button>
       <Input placeholder="Select a framework" className="w-52" />
@@ -1246,6 +1248,7 @@ function ComboboxWithOtherInputs() {
             tabler="IconSelector"
             hugeicons="UnfoldMoreIcon"
             phosphor="CaretDownIcon"
+            remixicon="RiArrowDownSLine"
           />
         </InputGroupAddon>
       </InputGroup>

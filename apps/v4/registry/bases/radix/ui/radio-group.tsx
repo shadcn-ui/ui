@@ -41,6 +41,7 @@ function RadioGroupItem({
           tabler="IconCircle"
           hugeicons="CircleIcon"
           phosphor="CircleIcon"
+          remixicon="RiCircleLine"
           className="cn-radio-group-indicator-icon"
         />
       </RadioGroupPrimitive.Indicator>

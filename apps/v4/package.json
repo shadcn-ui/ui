@@ -31,6 +31,7 @@
     "@hugeicons/core-free-icons": "^1.2.1",
     "@hugeicons/react": "^1.1.1",
     "@phosphor-icons/react": "^2.1.10",
+    "@remixicon/react": "^4.7.0",
     "@radix-ui/react-accessible-icon": "^1.1.1",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.5",

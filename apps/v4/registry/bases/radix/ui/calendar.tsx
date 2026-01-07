@@ -149,6 +149,7 @@ function Calendar({
                 tabler="IconChevronLeft"
                 hugeicons="ArrowLeftIcon"
                 phosphor="CaretLeftIcon"
+                remixicon="RiArrowLeftSLine"
                 className={cn("size-4", className)}
                 {...props}
               />
@@ -162,6 +163,7 @@ function Calendar({
                 tabler="IconChevronRight"
                 hugeicons="ArrowRightIcon"
                 phosphor="CaretRightIcon"
+                remixicon="RiArrowRightSLine"
                 className={cn("size-4", className)}
                 {...props}
               />
@@ -174,6 +176,7 @@ function Calendar({
               tabler="IconChevronDown"
               hugeicons="ArrowDownIcon"
               phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
               className={cn("size-4", className)}
               {...props}
             />
