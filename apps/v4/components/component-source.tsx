@@ -3,7 +3,7 @@ import path from "node:path"
 import * as React from "react"
 
 import { highlightCode } from "@/lib/highlight-code"
-import { getRegistryItem } from "@/lib/registry"
+import { getDemoItem, getRegistryItem } from "@/lib/registry"
 import { transformForDisplay } from "@/lib/rehype"
 import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
@@ -33,7 +33,10 @@ export async function ComponentSource({
   let code: string | undefined
 
   if (name) {
-    const item = await getRegistryItem(name, styleName)
+    // Try demo item first, then fall back to registry item.
+    const item =
+      (await getDemoItem(name, styleName)) ??
+      (await getRegistryItem(name, styleName))
     code = item?.files?.[0]?.content
   }
 

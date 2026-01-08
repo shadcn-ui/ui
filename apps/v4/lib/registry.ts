@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
+import { ExamplesIndex } from "@/examples/__index__"
 import { registryItemSchema, type registryItemFileSchema } from "shadcn/schema"
 import { Project, ScriptKind } from "ts-morph"
 import { type z } from "zod"
@@ -9,7 +10,53 @@ import { Index as StylesIndex } from "@/registry/__index__"
 import { Index as BasesIndex } from "@/registry/bases/__index__"
 
 // Styles that have their own index in StylesIndex (built with style transforms).
-const INDEXED_STYLES = ["new-york-v4", "radix-nova", "base-nova"]
+const INDEXED_STYLES = ["new-york-v4"]
+
+// Get the base name from a style name (e.g., "base-nova" -> "base").
+// Returns null for legacy styles that don't use the examples system.
+function getBaseForStyle(styleName: string) {
+  if (styleName.startsWith("radix-")) {
+    return "radix"
+  }
+  if (styleName.startsWith("base-")) {
+    return "base"
+  }
+  // Legacy styles (e.g., "new-york-v4") don't use the examples system.
+  return null
+}
+
+// Get a demo component from the examples index.
+export function getDemoComponent(name: string, styleName: string) {
+  const base = getBaseForStyle(styleName)
+  if (!base) return undefined
+  return ExamplesIndex[base]?.[name]?.component
+}
+
+// Get a demo item with file content from the examples index.
+export async function getDemoItem(name: string, styleName: string) {
+  const base = getBaseForStyle(styleName)
+  if (!base) return null
+
+  const demo = ExamplesIndex[base]?.[name]
+  if (!demo) {
+    return null
+  }
+
+  const filePath = path.join(process.cwd(), demo.filePath)
+  const content = await fs.readFile(filePath, "utf-8")
+
+  return {
+    name: demo.name,
+    type: "registry:internal" as const,
+    files: [
+      {
+        path: demo.filePath,
+        content,
+        type: "registry:internal" as const,
+      },
+    ],
+  }
+}
 
 // Map style names to their corresponding index and key.
 function getIndexForStyle(styleName: string) {
@@ -28,6 +75,13 @@ function getIndexForStyle(styleName: string) {
 }
 
 export function getRegistryComponent(name: string, styleName: string) {
+  // Check demo index first.
+  const demoComponent = getDemoComponent(name, styleName)
+  if (demoComponent) {
+    return demoComponent
+  }
+
+  // Fall back to registry.
   const { index, key } = getIndexForStyle(styleName)
   return index[key]?.[name]?.component
 }

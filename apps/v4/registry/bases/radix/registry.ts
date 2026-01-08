@@ -5,7 +5,6 @@ import { fonts } from "@/registry/fonts"
 
 import { blocks } from "./blocks/_registry"
 import { components } from "./components/_registry"
-import { demo } from "./demo/_registry"
 import { examples } from "./examples/_registry"
 import { hooks } from "./hooks/_registry"
 import { internal } from "./internal/_registry"
@@ -19,7 +18,6 @@ export const registry = {
     .array(registryItemSchema)
     .parse([
       ...ui,
-      ...demo,
       ...examples,
       ...lib,
       ...components,

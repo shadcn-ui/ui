@@ -13,7 +13,7 @@ import { STYLES } from "@/registry/styles"
 
 // This is a list of styles that we want to check into tracking.
 // This is used by the v4 site.
-const WHITELISTED_STYLES = ["new-york-v4", "radix-nova", "base-nova"]
+const WHITELISTED_STYLES = ["new-york-v4"]
 
 function getStylesToBuild() {
   const stylesToBuild: { name: string; title: string }[] = [...legacyStyles]
@@ -58,6 +58,10 @@ try {
   console.log("\n⚙️ Building public/r/config.json...")
   await buildConfig()
 
+  // Copy UI to examples before cleanup.
+  console.log("\n📋 Copying UI to examples...")
+  await copyUIToExamples()
+
   // Clean up intermediate files and generated base directories.
   console.log("\n🧹 Cleaning up...")
   await cleanUp(stylesToBuild)
@@ -97,6 +101,11 @@ export const Index: Record<string, Record<string, any>> = {`
   "${base.name}": {`
 
     for (const item of registry.items) {
+      // Skip demos - they're handled by the examples index.
+      if (item.type === "registry:internal") {
+        continue
+      }
+
       const files =
         item.files?.map((file) => ({
           path: typeof file === "string" ? file : file.path,
@@ -170,7 +179,10 @@ async function buildBases(bases: Base[]) {
       throw new Error(`Invalid registry schema for ${base.name}`)
     }
 
-    const registryItems = result.data.items
+    // Filter out demos - they're handled by the examples index.
+    const registryItems = result.data.items.filter(
+      (item) => item.type !== "registry:internal"
+    )
 
     for (const style of STYLES) {
       console.log(`   ✅ ${base.name}-${style.name}...`)
@@ -279,6 +291,11 @@ export const Index: Record<string, Record<string, any>> = {`
   "${style.name}": {`
 
     for (const item of registry.items) {
+      // Skip demos - they're handled by the examples index.
+      if (item.type === "registry:internal") {
+        continue
+      }
+
       const files =
         item.files?.map((file) => ({
           path: typeof file === "string" ? file : file.path,
@@ -468,4 +485,55 @@ async function buildConfig() {
       }
     })
   })
+}
+
+async function copyUIToExamples() {
+  const bases = [
+    { name: "base", sourceStyle: "base-nova" },
+    { name: "radix", sourceStyle: "radix-nova" },
+  ]
+
+  const directories = ["ui", "lib", "hooks"]
+
+  for (const base of bases) {
+    for (const dir of directories) {
+      const fromDir = path.join(
+        process.cwd(),
+        `registry/${base.sourceStyle}/${dir}`
+      )
+      const toDir = path.join(process.cwd(), `examples/${base.name}/${dir}`)
+
+      // Check if source directory exists.
+      try {
+        await fs.access(fromDir)
+      } catch {
+        console.log(
+          `   ⚠️ registry/${base.sourceStyle}/${dir} not found, skipping`
+        )
+        continue
+      }
+
+      // Clean and create target directory.
+      rimraf.sync(toDir)
+      await fs.mkdir(toDir, { recursive: true })
+
+      // Copy all files and transform imports.
+      const files = await fs.readdir(fromDir)
+      for (const file of files) {
+        const sourcePath = path.join(fromDir, file)
+        const targetPath = path.join(toDir, file)
+
+        // Read, transform imports, and write.
+        let content = await fs.readFile(sourcePath, "utf-8")
+        content = content.replace(
+          new RegExp(`@/registry/${base.sourceStyle}/`, "g"),
+          `@/examples/${base.name}/`
+        )
+        await fs.writeFile(targetPath, content)
+      }
+      console.log(
+        `   ✅ registry/${base.sourceStyle}/${dir} → examples/${base.name}/${dir}`
+      )
+    }
+  }
 }
