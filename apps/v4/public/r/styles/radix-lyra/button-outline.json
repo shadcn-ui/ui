@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-lyra/demo/button-outline.tsx",
       "content": "import { Button } from \"@/registry/radix-lyra/ui/button\"\n\nexport default function ButtonOutline() {\n  return <Button variant=\"outline\">Outline</Button>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

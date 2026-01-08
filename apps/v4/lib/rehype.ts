@@ -11,7 +11,7 @@ import {
 import { Project, ScriptKind } from "ts-morph"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
-import { z } from "zod"
+import { type z } from "zod"
 
 import { Index as StylesIndex } from "@/registry/__index__"
 import { getActiveStyle } from "@/registry/_legacy-styles"
@@ -98,7 +98,7 @@ export async function transformForDisplay(content: string, styleName: string) {
   try {
     // 1. Apply style transformation (cn-* → Tailwind classes).
     const styleMap = await getStyleMap(styleName)
-    let transformed = await transformStyle(content, { styleMap })
+    const transformed = await transformStyle(content, { styleMap })
 
     // 2. Apply icon/menu/render transforms.
     const config = buildDisplayConfig(styleName)

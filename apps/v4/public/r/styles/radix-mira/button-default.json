@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-mira/demo/button-default.tsx",
       "content": "import { Button } from \"@/registry/radix-mira/ui/button\"\n\nexport default function ButtonDefault() {\n  return <Button>Button</Button>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

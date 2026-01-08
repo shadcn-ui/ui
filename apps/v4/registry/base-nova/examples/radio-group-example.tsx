@@ -10,10 +10,7 @@ import {
   FieldLegend,
   FieldSet,
 } from "@/registry/base-nova/ui/field"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/base-nova/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/registry/base-nova/ui/radio-group"
 
 export default function RadioGroupExample() {
   return (

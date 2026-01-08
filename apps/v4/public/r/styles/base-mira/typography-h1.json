@@ -7,8 +7,8 @@
     {
       "path": "registry/base-mira/demo/typography-h1.tsx",
       "content": "export function TypographyH1() {\n  return (\n    <h1 className=\"scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance\">\n      Taxing Laughter: The Joke Tax Chronicles\n    </h1>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

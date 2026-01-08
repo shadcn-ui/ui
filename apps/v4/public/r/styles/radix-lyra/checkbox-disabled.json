@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-lyra/demo/checkbox-disabled.tsx",
       "content": "import { Checkbox } from \"@/registry/radix-lyra/ui/checkbox\"\n\nexport default function CheckboxDisabled() {\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <Checkbox id=\"terms2\" disabled />\n      <label\n        htmlFor=\"terms2\"\n        className=\"text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n      >\n        Accept terms and conditions\n      </label>\n    </div>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

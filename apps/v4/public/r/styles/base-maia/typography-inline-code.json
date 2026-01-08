@@ -7,8 +7,8 @@
     {
       "path": "registry/base-maia/demo/typography-inline-code.tsx",
       "content": "export function TypographyInlineCode() {\n  return (\n    <code className=\"bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold\">\n      @radix-ui/react-alert-dialog\n    </code>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

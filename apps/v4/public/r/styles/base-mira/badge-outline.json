@@ -9,8 +9,8 @@
     {
       "path": "registry/base-mira/demo/badge-outline.tsx",
       "content": "import { Badge } from \"@/registry/base-mira/ui/badge\"\n\nexport default function BadgeOutline() {\n  return <Badge variant=\"outline\">Outline</Badge>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

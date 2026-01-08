@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-nova/demo/textarea-demo.tsx",
       "content": "import { Textarea } from \"@/registry/radix-nova/ui/textarea\"\n\nexport default function TextareaDemo() {\n  return <Textarea placeholder=\"Type your message here.\" />\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

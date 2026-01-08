@@ -9,8 +9,8 @@
     {
       "path": "registry/base-lyra/demo/badge-secondary.tsx",
       "content": "import { Badge } from \"@/registry/base-lyra/ui/badge\"\n\nexport default function BadgeSecondary() {\n  return <Badge variant=\"secondary\">Secondary</Badge>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

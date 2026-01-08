@@ -11,8 +11,8 @@
     {
       "path": "registry/radix-mira/demo/button-group-split.tsx",
       "content": "import { IconPlus } from \"@tabler/icons-react\"\n\nimport { Button } from \"@/registry/radix-mira/ui/button\"\nimport {\n  ButtonGroup,\n  ButtonGroupSeparator,\n} from \"@/registry/radix-mira/ui/button-group\"\n\nexport default function ButtonGroupSplit() {\n  return (\n    <ButtonGroup>\n      <Button variant=\"secondary\">Button</Button>\n      <ButtonGroupSeparator />\n      <Button size=\"icon\" variant=\"secondary\">\n        <IconPlus />\n      </Button>\n    </ButtonGroup>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-lyra/demo/button-destructive.tsx",
       "content": "import { Button } from \"@/registry/radix-lyra/ui/button\"\n\nexport default function ButtonDestructive() {\n  return <Button variant=\"destructive\">Destructive</Button>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

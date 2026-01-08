@@ -9,8 +9,8 @@
     {
       "path": "registry/base-lyra/demo/spinner-basic.tsx",
       "content": "import { Spinner } from \"@/registry/base-lyra/ui/spinner\"\n\nexport function SpinnerBasic() {\n  return (\n    <div className=\"flex flex-col items-center justify-center gap-8\">\n      <Spinner />\n    </div>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

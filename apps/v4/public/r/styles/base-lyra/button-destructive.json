@@ -9,8 +9,8 @@
     {
       "path": "registry/base-lyra/demo/button-destructive.tsx",
       "content": "import { Button } from \"@/registry/base-lyra/ui/button\"\n\nexport default function ButtonDestructive() {\n  return <Button variant=\"destructive\">Destructive</Button>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

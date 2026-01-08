@@ -13,11 +13,12 @@ import z from "zod"
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsBaseSwitcher } from "@/components/docs-base-switcher"
-import { DocsCopyPage } from "@/components/docs-copy-page"
+import { DocsPageLinks } from "@/components/docs-page-links"
 import { DocsTableOfContents } from "@/components/docs-toc"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { Button } from "@/registry/new-york-v4/ui/button"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -102,18 +103,26 @@ export default async function Page(props: {
     .parse(attributes)
 
   return (
-    <div className="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full">
+    <div className="flex scroll-mt-24 items-stretch text-[1.05rem] sm:text-[15px] xl:w-full">
       <div className="flex min-w-0 flex-1 flex-col">
-        <div className="h-(--top-spacing) shrink-0" />
+        <div className="h-(--top-spacing) shrink-0"></div>
         <div className="mx-auto flex w-full max-w-2xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-start justify-between">
-                <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
+                <h1 className="scroll-m-24 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
                   {doc.title}
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
-                  <DocsCopyPage page={raw} url={absoluteUrl(page.url)} />
+                  {params.slug &&
+                    params.slug[0] === "components" &&
+                    params.slug[1] &&
+                    params.slug[2] && (
+                      <DocsBaseSwitcher
+                        base={params.slug[1]}
+                        component={params.slug[2]}
+                      />
+                    )}
                   {neighbours.previous && (
                     <Button
                       variant="secondary"
@@ -168,10 +177,6 @@ export default async function Page(props: {
             ) : null}
           </div>
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
-            <DocsBaseSwitcher
-              base={params.slug[1]}
-              component={params.slug[2]}
-            />
             <MDX components={mdxComponents} />
           </div>
         </div>
@@ -203,14 +208,17 @@ export default async function Page(props: {
         </div>
       </div>
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
-        <div className="h-(--top-spacing) shrink-0" />
+        <div className="h-(--top-spacing) shrink-0"></div>
         {doc.toc?.length ? (
-          <div className="no-scrollbar overflow-y-auto px-8">
+          <div className="no-scrollbar flex flex-1 flex-col gap-8 overflow-y-auto px-8">
             <DocsTableOfContents toc={doc.toc} />
-            <div className="h-12" />
           </div>
         ) : null}
-        <div className="flex flex-1 flex-col gap-12 px-6">
+        <div className="flex flex-1 flex-col gap-6 px-6">
+          <div className="px-6">
+            <Separator />
+          </div>
+          <DocsPageLinks page={raw} url={absoluteUrl(page.url)} />
           <OpenInV0Cta />
         </div>
       </div>

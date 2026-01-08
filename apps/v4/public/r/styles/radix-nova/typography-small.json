@@ -7,8 +7,8 @@
     {
       "path": "registry/radix-nova/demo/typography-small.tsx",
       "content": "export function TypographySmall() {\n  return (\n    <small className=\"text-sm leading-none font-medium\">Email address</small>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

@@ -10,8 +10,8 @@
     {
       "path": "registry/radix-nova/demo/input-with-label.tsx",
       "content": "import { Input } from \"@/registry/radix-nova/ui/input\"\nimport { Label } from \"@/registry/radix-nova/ui/label\"\n\nexport default function InputWithLabel() {\n  return (\n    <div className=\"grid w-full max-w-sm items-center gap-3\">\n      <Label htmlFor=\"email\">Email</Label>\n      <Input type=\"email\" id=\"email\" placeholder=\"Email\" />\n    </div>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

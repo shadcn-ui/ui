@@ -108,10 +108,7 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "@/registry/base-nova/ui/popover"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/base-nova/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/registry/base-nova/ui/radio-group"
 import {
   Select,
   SelectContent,

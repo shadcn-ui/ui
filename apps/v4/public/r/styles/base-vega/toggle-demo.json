@@ -9,8 +9,8 @@
     {
       "path": "registry/base-vega/demo/toggle-demo.tsx",
       "content": "import { BookmarkIcon } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/base-vega/ui/toggle\"\n\nexport function ToggleDemo() {\n  return (\n    <Toggle\n      aria-label=\"Toggle bookmark\"\n      size=\"sm\"\n      variant=\"outline\"\n      className=\"data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500\"\n    >\n      <BookmarkIcon />\n      Bookmark\n    </Toggle>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

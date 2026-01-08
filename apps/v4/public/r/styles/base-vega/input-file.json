@@ -10,8 +10,8 @@
     {
       "path": "registry/base-vega/demo/input-file.tsx",
       "content": "import { Input } from \"@/registry/base-vega/ui/input\"\nimport { Label } from \"@/registry/base-vega/ui/label\"\n\nexport default function InputFile() {\n  return (\n    <div className=\"grid w-full max-w-sm items-center gap-3\">\n      <Label htmlFor=\"picture\">Picture</Label>\n      <Input id=\"picture\" type=\"file\" />\n    </div>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

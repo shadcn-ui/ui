@@ -9,8 +9,8 @@
     {
       "path": "registry/base-nova/demo/badge-secondary.tsx",
       "content": "import { Badge } from \"@/registry/base-nova/ui/badge\"\n\nexport default function BadgeSecondary() {\n  return <Badge variant=\"secondary\">Secondary</Badge>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

@@ -22,7 +22,10 @@ export function ItemLink() {
           <ChevronRightIcon className="size-4" />
         </ItemActions>
       </Item>
-      <Item variant="outline" render={<a href="#" target="_blank" rel="noopener noreferrer" />}>
+      <Item
+        variant="outline"
+        render={<a href="#" target="_blank" rel="noopener noreferrer" />}
+      >
         <ItemContent>
           <ItemTitle>External resource</ItemTitle>
           <ItemDescription>

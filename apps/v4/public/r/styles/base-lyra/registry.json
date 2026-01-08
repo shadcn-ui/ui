@@ -642,10 +642,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/accordion-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "accordion-disabled",
@@ -656,10 +656,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/accordion-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "accordion-multiple",
@@ -670,10 +670,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/accordion-multiple.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "alert-demo",
@@ -684,10 +684,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/alert-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "alert-destructive",
@@ -698,10 +698,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/alert-destructive.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "alert-dialog-demo",
@@ -713,10 +713,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/alert-dialog-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "aspect-ratio-demo",
@@ -727,10 +727,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/aspect-ratio-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "avatar-demo",
@@ -741,10 +741,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/avatar-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "badge-demo",
@@ -755,10 +755,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/badge-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "badge-destructive",
@@ -769,10 +769,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/badge-destructive.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "badge-outline",
@@ -783,10 +783,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/badge-outline.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "badge-secondary",
@@ -797,10 +797,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/badge-secondary.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "breadcrumb-demo",
@@ -812,10 +812,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/breadcrumb-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "breadcrumb-dropdown",
@@ -827,10 +827,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/breadcrumb-dropdown.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "breadcrumb-ellipsis",
@@ -841,10 +841,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/breadcrumb-ellipsis.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "breadcrumb-link",
@@ -855,10 +855,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/breadcrumb-link.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "breadcrumb-responsive",
@@ -872,10 +872,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/breadcrumb-responsive.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "breadcrumb-separator",
@@ -886,10 +886,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/breadcrumb-separator.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-as-child",
@@ -900,10 +900,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-as-child.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-default",
@@ -914,10 +914,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-default.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-demo",
@@ -928,10 +928,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-destructive",
@@ -942,10 +942,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-destructive.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-ghost",
@@ -956,10 +956,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-ghost.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-demo",
@@ -972,10 +972,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-dropdown",
@@ -988,10 +988,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-dropdown.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-input-group",
@@ -1005,10 +1005,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-input-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-input",
@@ -1021,10 +1021,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-input.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-nested",
@@ -1036,10 +1036,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-nested.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-orientation",
@@ -1051,10 +1051,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-orientation.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-popover",
@@ -1069,10 +1069,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-popover.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-select",
@@ -1086,10 +1086,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-select.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-separator",
@@ -1101,10 +1101,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-separator.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-size",
@@ -1116,10 +1116,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-size.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-group-split",
@@ -1131,10 +1131,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-group-split.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-icon",
@@ -1145,10 +1145,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-icon.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-link",
@@ -1159,10 +1159,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-link.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-loading",
@@ -1174,10 +1174,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-loading.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-outline",
@@ -1188,10 +1188,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-outline.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-rounded",
@@ -1202,10 +1202,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-rounded.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-secondary",
@@ -1216,10 +1216,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-secondary.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-size",
@@ -1230,10 +1230,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-size.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "button-with-icon",
@@ -1244,10 +1244,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/button-with-icon.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "calendar-demo",
@@ -1258,10 +1258,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/calendar-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "calendar-hijri",
@@ -1272,10 +1272,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/calendar-hijri.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "card-demo",
@@ -1289,10 +1289,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/card-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "carousel-api",
@@ -1304,10 +1304,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/carousel-api.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "carousel-demo",
@@ -1319,10 +1319,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/carousel-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "carousel-orientation",
@@ -1334,10 +1334,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/carousel-orientation.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "carousel-plugin",
@@ -1349,10 +1349,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/carousel-plugin.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "carousel-size",
@@ -1364,10 +1364,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/carousel-size.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "carousel-spacing",
@@ -1379,10 +1379,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/carousel-spacing.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "chart-bar-demo-axis",
@@ -1393,10 +1393,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/chart-bar-demo-axis.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "chart-bar-demo-grid",
@@ -1407,10 +1407,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/chart-bar-demo-grid.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "chart-bar-demo-legend",
@@ -1421,10 +1421,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/chart-bar-demo-legend.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "chart-bar-demo-tooltip",
@@ -1435,10 +1435,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/chart-bar-demo-tooltip.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "chart-bar-demo",
@@ -1449,10 +1449,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/chart-bar-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "chart-tooltip-demo",
@@ -1461,10 +1461,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/chart-tooltip-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "checkbox-demo",
@@ -1476,10 +1476,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/checkbox-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "checkbox-disabled",
@@ -1490,10 +1490,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/checkbox-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "checkbox-with-text",
@@ -1504,10 +1504,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/checkbox-with-text.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "collapsible-demo",
@@ -1519,10 +1519,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/collapsible-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "combobox-demo",
@@ -1535,10 +1535,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/combobox-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "combobox-dropdown-menu",
@@ -1551,10 +1551,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/combobox-dropdown-menu.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "combobox-popover",
@@ -1567,10 +1567,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/combobox-popover.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "combobox-responsive",
@@ -1584,10 +1584,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/combobox-responsive.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "command-demo",
@@ -1598,10 +1598,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/command-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "command-dialog",
@@ -1612,10 +1612,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/command-dialog.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "context-menu-demo",
@@ -1626,10 +1626,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/context-menu-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "data-table-demo",
@@ -1644,10 +1644,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/data-table-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "date-picker-demo",
@@ -1660,10 +1660,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/date-picker-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "date-picker-with-presets",
@@ -1677,10 +1677,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/date-picker-with-presets.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "date-picker-with-range",
@@ -1693,10 +1693,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/date-picker-with-range.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "dialog-close-button",
@@ -1710,10 +1710,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/dialog-close-button.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "dialog-demo",
@@ -1727,10 +1727,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/dialog-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "drawer-demo",
@@ -1742,10 +1742,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/drawer-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "drawer-dialog",
@@ -1760,10 +1760,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/drawer-dialog.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "dropdown-menu-checkboxes",
@@ -1775,10 +1775,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/dropdown-menu-checkboxes.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "dropdown-menu-demo",
@@ -1790,10 +1790,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/dropdown-menu-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "dropdown-menu-dialog",
@@ -1810,10 +1810,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/dropdown-menu-dialog.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "dropdown-menu-radio-group",
@@ -1825,10 +1825,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/dropdown-menu-radio-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "empty-avatar-group",
@@ -1841,10 +1841,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/empty-avatar-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "empty-avatar",
@@ -1857,10 +1857,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/empty-avatar.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "empty-background",
@@ -1872,10 +1872,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/empty-background.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "empty-demo",
@@ -1887,10 +1887,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/empty-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "empty-icon",
@@ -1901,10 +1901,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/empty-icon.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "empty-input-group",
@@ -1917,10 +1917,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/empty-input-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "empty-outline",
@@ -1932,10 +1932,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/empty-outline.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-checkbox",
@@ -1947,10 +1947,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-checkbox.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-choice-card",
@@ -1962,10 +1962,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-choice-card.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-demo",
@@ -1981,10 +1981,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-fieldset",
@@ -1996,10 +1996,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-fieldset.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-group",
@@ -2011,10 +2011,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-input",
@@ -2026,10 +2026,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-input.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-radio",
@@ -2041,10 +2041,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-radio.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-responsive",
@@ -2058,10 +2058,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-responsive.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-select",
@@ -2073,10 +2073,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-select.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-slider",
@@ -2088,10 +2088,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-slider.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-switch",
@@ -2103,10 +2103,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-switch.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "field-textarea",
@@ -2118,10 +2118,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/field-textarea.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "hover-card-demo",
@@ -2134,10 +2134,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/hover-card-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-demo",
@@ -2148,10 +2148,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-disabled",
@@ -2162,10 +2162,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-file",
@@ -2177,10 +2177,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-file.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-button-group",
@@ -2193,10 +2193,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-button-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-button",
@@ -2208,10 +2208,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-button.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-custom",
@@ -2222,10 +2222,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-custom.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-demo",
@@ -2239,10 +2239,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-dropdown",
@@ -2254,10 +2254,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-dropdown.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-icon",
@@ -2268,10 +2268,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-icon.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-label",
@@ -2284,10 +2284,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-label.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-spinner",
@@ -2299,10 +2299,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-spinner.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-text",
@@ -2313,10 +2313,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-text.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-textarea",
@@ -2327,10 +2327,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-textarea.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-group-tooltip",
@@ -2342,10 +2342,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-group-tooltip.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-otp-controlled",
@@ -2356,10 +2356,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-otp-controlled.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-otp-demo",
@@ -2370,10 +2370,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-otp-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-otp-pattern",
@@ -2384,10 +2384,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-otp-pattern.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-otp-separator",
@@ -2398,10 +2398,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-otp-separator.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-with-button",
@@ -2413,10 +2413,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-with-button.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-with-label",
@@ -2428,10 +2428,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-with-label.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "input-with-text",
@@ -2443,10 +2443,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/input-with-text.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-avatar",
@@ -2459,10 +2459,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-avatar.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-demo",
@@ -2474,10 +2474,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-dropdown",
@@ -2491,10 +2491,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-dropdown.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-group",
@@ -2507,10 +2507,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-header",
@@ -2521,10 +2521,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-header.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-icon",
@@ -2536,10 +2536,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-icon.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-image",
@@ -2550,10 +2550,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-image.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-link",
@@ -2564,10 +2564,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-link.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-size",
@@ -2579,10 +2579,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-size.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "item-variant",
@@ -2594,10 +2594,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/item-variant.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "kbd-button",
@@ -2609,10 +2609,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/kbd-button.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "kbd-demo",
@@ -2623,10 +2623,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/kbd-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "kbd-group",
@@ -2637,10 +2637,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/kbd-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "kbd-input-group",
@@ -2652,10 +2652,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/kbd-input-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "kbd-tooltip",
@@ -2669,10 +2669,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/kbd-tooltip.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "label-demo",
@@ -2684,10 +2684,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/label-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "menubar-demo",
@@ -2698,10 +2698,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/menubar-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "native-select-demo",
@@ -2712,10 +2712,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/native-select-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "native-select-disabled",
@@ -2726,10 +2726,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/native-select-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "native-select-groups",
@@ -2740,10 +2740,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/native-select-groups.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "native-select-invalid",
@@ -2754,10 +2754,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/native-select-invalid.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "navigation-menu-demo",
@@ -2768,10 +2768,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/navigation-menu-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "pagination-demo",
@@ -2782,10 +2782,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/pagination-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "popover-demo",
@@ -2799,10 +2799,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/popover-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "progress-demo",
@@ -2813,10 +2813,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/progress-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "radio-group-demo",
@@ -2828,10 +2828,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/radio-group-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "resizable-demo-with-handle",
@@ -2842,10 +2842,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/resizable-demo-with-handle.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "resizable-demo",
@@ -2856,10 +2856,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/resizable-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "resizable-handle",
@@ -2870,10 +2870,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/resizable-handle.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "resizable-vertical",
@@ -2884,10 +2884,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/resizable-vertical.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "scroll-area-demo",
@@ -2899,10 +2899,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/scroll-area-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "scroll-area-horizontal-demo",
@@ -2913,10 +2913,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/scroll-area-horizontal-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "select-demo",
@@ -2927,10 +2927,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/select-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "select-scrollable",
@@ -2941,10 +2941,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/select-scrollable.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "separator-demo",
@@ -2955,10 +2955,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/separator-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "sheet-demo",
@@ -2972,10 +2972,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/sheet-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "sheet-side",
@@ -2989,10 +2989,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/sheet-side.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "skeleton-card",
@@ -3003,10 +3003,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/skeleton-card.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "skeleton-demo",
@@ -3017,10 +3017,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/skeleton-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "slider-demo",
@@ -3031,10 +3031,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/slider-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "sonner-demo",
@@ -3045,10 +3045,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/sonner-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "sonner-types",
@@ -3059,10 +3059,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/sonner-types.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-badge",
@@ -3074,10 +3074,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-badge.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-basic",
@@ -3088,10 +3088,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-basic.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-button",
@@ -3103,10 +3103,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-button.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-color",
@@ -3117,10 +3117,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-color.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-custom",
@@ -3129,10 +3129,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-custom.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-demo",
@@ -3144,10 +3144,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-empty",
@@ -3160,10 +3160,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-empty.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-input-group",
@@ -3175,10 +3175,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-input-group.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-item",
@@ -3192,10 +3192,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-item.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "spinner-size",
@@ -3206,10 +3206,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/spinner-size.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "switch-demo",
@@ -3221,10 +3221,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/switch-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "table-demo",
@@ -3235,10 +3235,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/table-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "tabs-demo",
@@ -3253,10 +3253,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/tabs-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "textarea-demo",
@@ -3267,10 +3267,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/textarea-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "textarea-disabled",
@@ -3281,10 +3281,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/textarea-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "textarea-with-button",
@@ -3296,10 +3296,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/textarea-with-button.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "textarea-with-label",
@@ -3311,10 +3311,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/textarea-with-label.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "textarea-with-text",
@@ -3326,10 +3326,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/textarea-with-text.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-demo",
@@ -3340,10 +3340,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-disabled",
@@ -3354,10 +3354,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-group-demo",
@@ -3368,10 +3368,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-group-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-group-disabled",
@@ -3382,10 +3382,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-group-disabled.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-group-lg",
@@ -3396,10 +3396,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-group-lg.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-group-outline",
@@ -3410,10 +3410,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-group-outline.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-group-single",
@@ -3424,10 +3424,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-group-single.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-group-sm",
@@ -3438,10 +3438,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-group-sm.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-group-spacing",
@@ -3452,10 +3452,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-group-spacing.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-lg",
@@ -3466,10 +3466,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-lg.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-outline",
@@ -3480,10 +3480,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-outline.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-sm",
@@ -3494,10 +3494,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-sm.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "toggle-with-text",
@@ -3508,10 +3508,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/toggle-with-text.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "tooltip-demo",
@@ -3523,10 +3523,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/tooltip-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-blockquote",
@@ -3535,10 +3535,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-blockquote.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-demo",
@@ -3547,10 +3547,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-demo.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-h1",
@@ -3559,10 +3559,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-h1.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-h2",
@@ -3571,10 +3571,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-h2.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-h3",
@@ -3583,10 +3583,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-h3.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-h4",
@@ -3595,10 +3595,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-h4.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-inline-code",
@@ -3607,10 +3607,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-inline-code.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-large",
@@ -3619,10 +3619,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-large.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-lead",
@@ -3631,10 +3631,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-lead.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-list",
@@ -3643,10 +3643,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-list.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-muted",
@@ -3655,10 +3655,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-muted.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-p",
@@ -3667,10 +3667,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-p.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-small",
@@ -3679,10 +3679,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-small.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "typography-table",
@@ -3691,10 +3691,10 @@
       "files": [
         {
           "path": "registry/base-lyra/demo/typography-table.tsx",
-          "type": "registry:example"
+          "type": "registry:internal"
         }
       ],
-      "type": "registry:example"
+      "type": "registry:internal"
     },
     {
       "name": "accordion-example",

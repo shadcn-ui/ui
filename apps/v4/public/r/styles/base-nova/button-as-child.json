@@ -9,8 +9,8 @@
     {
       "path": "registry/base-nova/demo/button-as-child.tsx",
       "content": "import Link from \"next/link\"\n\nimport { Button } from \"@/registry/base-nova/ui/button\"\n\nexport default function ButtonAsChild() {\n  return (\n    <Button render={<Link href=\"/login\" />}>Login</Button>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

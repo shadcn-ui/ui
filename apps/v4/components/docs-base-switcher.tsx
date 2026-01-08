@@ -1,6 +1,5 @@
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
 import { BASES } from "@/registry/bases"
 
 export function DocsBaseSwitcher({
@@ -11,16 +10,20 @@ export function DocsBaseSwitcher({
   component: string
 }) {
   return (
-    <div className="flex items-center gap-4">
+    <div className="bg-muted inline-flex h-7 items-center gap-0.5 rounded-md p-0.5">
       {BASES.map((baseItem) => (
         <Link
           key={baseItem.name}
           href={`/docs/components/${baseItem.name}/${component}`}
           data-active={base === baseItem.name}
-          className={cn(
-            "text-muted-foreground data-[active=true]:text-foreground data-[active=true]:border-primary dark:data-[active=true]:border-primary hover:text-primary rounded-none border-0 border-b-2 border-transparent bg-transparent px-0 pb-1 text-base font-medium transition-colors data-[active=true]:bg-transparent data-[active=true]:shadow-none dark:data-[active=true]:bg-transparent"
-          )}
+          className="text-muted-foreground hover:text-foreground data-[active=true]:bg-background data-[active=true]:text-foreground inline-flex h-[--spacing(6.25)] items-center justify-center gap-1 rounded-sm pr-2.5 pl-2 text-sm font-medium data-[active=true]:shadow-sm"
         >
+          {baseItem.meta?.logo && (
+            <span
+              className="size-3.5 shrink-0 [&>svg]:size-full"
+              dangerouslySetInnerHTML={{ __html: baseItem.meta.logo }}
+            />
+          )}
           {baseItem.title}
         </Link>
       ))}

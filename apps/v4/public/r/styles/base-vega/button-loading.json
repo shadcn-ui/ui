@@ -10,8 +10,8 @@
     {
       "path": "registry/base-vega/demo/button-loading.tsx",
       "content": "import { Button } from \"@/registry/base-vega/ui/button\"\nimport { Spinner } from \"@/registry/base-vega/ui/spinner\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button size=\"sm\" variant=\"outline\" disabled>\n      <Spinner />\n      Submit\n    </Button>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

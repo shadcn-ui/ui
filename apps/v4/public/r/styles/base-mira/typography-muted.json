@@ -7,8 +7,8 @@
     {
       "path": "registry/base-mira/demo/typography-muted.tsx",
       "content": "export function TypographyMuted() {\n  return (\n    <p className=\"text-muted-foreground text-sm\">Enter your email address.</p>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

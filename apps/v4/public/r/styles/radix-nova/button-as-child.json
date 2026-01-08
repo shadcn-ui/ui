@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-nova/demo/button-as-child.tsx",
       "content": "import Link from \"next/link\"\n\nimport { Button } from \"@/registry/radix-nova/ui/button\"\n\nexport default function ButtonAsChild() {\n  return (\n    <Button asChild>\n      <Link href=\"/login\">Login</Link>\n    </Button>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

@@ -10,8 +10,8 @@
     {
       "path": "registry/radix-nova/demo/button-loading.tsx",
       "content": "import { Button } from \"@/registry/radix-nova/ui/button\"\nimport { Spinner } from \"@/registry/radix-nova/ui/spinner\"\n\nexport default function ButtonLoading() {\n  return (\n    <Button size=\"sm\" variant=\"outline\" disabled>\n      <Spinner />\n      Submit\n    </Button>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

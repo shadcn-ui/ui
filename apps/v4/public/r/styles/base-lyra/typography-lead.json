@@ -7,8 +7,8 @@
     {
       "path": "registry/base-lyra/demo/typography-lead.tsx",
       "content": "export function TypographyLead() {\n  return (\n    <p className=\"text-muted-foreground text-xl\">\n      A modal dialog that interrupts the user with important content and expects\n      a response.\n    </p>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

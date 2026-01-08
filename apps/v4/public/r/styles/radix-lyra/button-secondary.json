@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-lyra/demo/button-secondary.tsx",
       "content": "import { Button } from \"@/registry/radix-lyra/ui/button\"\n\nexport default function ButtonSecondary() {\n  return <Button variant=\"secondary\">Secondary</Button>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

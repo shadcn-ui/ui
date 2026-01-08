@@ -7,8 +7,8 @@
     {
       "path": "registry/radix-maia/demo/typography-large.tsx",
       "content": "export function TypographyLarge() {\n  return <div className=\"text-lg font-semibold\">Are you absolutely sure?</div>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

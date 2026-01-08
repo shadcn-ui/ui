@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-vega/demo/toggle-outline.tsx",
       "content": "import { Italic } from \"lucide-react\"\n\nimport { Toggle } from \"@/registry/radix-vega/ui/toggle\"\n\nexport function ToggleOutline() {\n  return (\n    <Toggle variant=\"outline\" aria-label=\"Toggle italic\">\n      <Italic />\n    </Toggle>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

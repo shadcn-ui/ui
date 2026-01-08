@@ -1,8 +1,28 @@
+import * as React from "react"
 import Image from "next/image"
 
 import { getRegistryComponent } from "@/lib/registry"
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
 import { ComponentSource } from "@/components/component-source"
+
+function DynamicComponent({
+  name,
+  styleName,
+}: {
+  name: string
+  styleName: string
+}) {
+  const Component = React.useMemo(
+    () => getRegistryComponent(name, styleName),
+    [name, styleName]
+  )
+
+  if (!Component) {
+    return null
+  }
+
+  return React.createElement(Component)
+}
 
 export function ComponentPreview({
   name,
@@ -65,7 +85,7 @@ export function ComponentPreview({
       className={className}
       align={align}
       hideCode={hideCode}
-      component={<Component />}
+      component={<DynamicComponent name={name} styleName={styleName} />}
       source={
         <ComponentSource
           name={name}

@@ -44,7 +44,9 @@ export function ItemDropdown() {
   return (
     <div className="flex min-h-64 w-full max-w-md flex-col items-center gap-6">
       <DropdownMenu>
-        <DropdownMenuTrigger render={<Button variant="outline" size="sm" className="w-fit" />}>
+        <DropdownMenuTrigger
+          render={<Button variant="outline" size="sm" className="w-fit" />}
+        >
           Select <ChevronDownIcon />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-72 [--radius:0.65rem]" align="end">

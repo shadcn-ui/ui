@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-maia/demo/kbd-group.tsx",
       "content": "import { Kbd, KbdGroup } from \"@/registry/radix-maia/ui/kbd\"\n\nexport default function KbdGroupExample() {\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <p className=\"text-muted-foreground text-sm\">\n        Use{\" \"}\n        <KbdGroup>\n          <Kbd>Ctrl + B</Kbd>\n          <Kbd>Ctrl + K</Kbd>\n        </KbdGroup>{\" \"}\n        to open the command palette\n      </p>\n    </div>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

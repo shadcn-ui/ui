@@ -1,8 +1,5 @@
 import { Label } from "@/registry/base-nova/ui/label"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/base-nova/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/registry/base-nova/ui/radio-group"
 
 export default function RadioGroupDemo() {
   return (

@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-vega/demo/input-disabled.tsx",
       "content": "import { Input } from \"@/registry/radix-vega/ui/input\"\n\nexport default function InputDisabled() {\n  return <Input disabled type=\"email\" placeholder=\"Email\" />\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

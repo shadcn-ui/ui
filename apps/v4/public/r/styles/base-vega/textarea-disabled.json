@@ -9,8 +9,8 @@
     {
       "path": "registry/base-vega/demo/textarea-disabled.tsx",
       "content": "import { Textarea } from \"@/registry/base-vega/ui/textarea\"\n\nexport default function TextareaDisabled() {\n  return <Textarea placeholder=\"Type your message here.\" disabled />\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

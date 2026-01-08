@@ -9,8 +9,8 @@
     {
       "path": "registry/base-nova/demo/native-select-disabled.tsx",
       "content": "import {\n  NativeSelect,\n  NativeSelectOption,\n} from \"@/registry/base-nova/ui/native-select\"\n\nexport default function NativeSelectDisabled() {\n  return (\n    <NativeSelect disabled>\n      <NativeSelectOption value=\"\">Select priority</NativeSelectOption>\n      <NativeSelectOption value=\"low\">Low</NativeSelectOption>\n      <NativeSelectOption value=\"medium\">Medium</NativeSelectOption>\n      <NativeSelectOption value=\"high\">High</NativeSelectOption>\n      <NativeSelectOption value=\"critical\">Critical</NativeSelectOption>\n    </NativeSelect>\n  )\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

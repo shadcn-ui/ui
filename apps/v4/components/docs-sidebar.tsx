@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
+import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import type { source } from "@/lib/source"
 import {
   Sidebar,
@@ -16,10 +17,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/registry/new-york-v4/ui/sidebar"
-
-type PageTreeNode = (typeof source.pageTree)["children"][number]
-type PageTreeFolder = Extract<PageTreeNode, { type: "folder" }>
-type PageTreePage = Extract<PageTreeNode, { type: "page" }>
 
 const TOP_LEVEL_SECTIONS = [
   { name: "Get Started", href: "/docs" },
@@ -47,66 +44,12 @@ const TOP_LEVEL_SECTIONS = [
 const EXCLUDED_SECTIONS = ["installation", "dark-mode"]
 const EXCLUDED_PAGES = ["/docs", "/docs/changelog"]
 
-// Recursively find all pages in a folder tree.
-function getAllPagesFromFolder(folder: PageTreeFolder): PageTreePage[] {
-  const pages: PageTreePage[] = []
-
-  for (const child of folder.children) {
-    if (child.type === "page") {
-      pages.push(child)
-    } else if (child.type === "folder") {
-      pages.push(...getAllPagesFromFolder(child))
-    }
-  }
-
-  return pages
-}
-
-// Get the pages from a folder, handling nested base folders (radix/base).
-function getPagesFromFolder(
-  folder: PageTreeFolder,
-  currentBase: string
-): PageTreePage[] {
-  // For the components folder, find the base subfolder.
-  if (folder.$id === "components" || folder.name === "Components") {
-    for (const child of folder.children) {
-      if (child.type === "folder") {
-        // Match by $id or by name.
-        const isRadix = child.$id === "radix" || child.name === "Radix UI"
-        const isBase = child.$id === "base" || child.name === "Base UI"
-
-        if (
-          (currentBase === "radix" && isRadix) ||
-          (currentBase === "base" && isBase)
-        ) {
-          return child.children.filter(
-            (c): c is PageTreePage => c.type === "page"
-          )
-        }
-      }
-    }
-
-    // Fallback: return all pages from nested folders.
-    return getAllPagesFromFolder(folder).filter(
-      (page) => !page.url.endsWith("/components")
-    )
-  }
-
-  // For other folders, return direct page children.
-  return folder.children.filter(
-    (child): child is PageTreePage => child.type === "page"
-  )
-}
-
 export function DocsSidebar({
   tree,
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
   const pathname = usePathname()
-
-  // Detect current base from URL (radix or base).
-  const baseMatch = pathname.match(/\/docs\/components\/(radix|base)\//)
-  const currentBase = baseMatch ? baseMatch[1] : "radix" // Default to radix.
+  const currentBase = getCurrentBase(pathname)
 
   return (
     <Sidebar

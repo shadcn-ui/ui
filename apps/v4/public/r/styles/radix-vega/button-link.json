@@ -9,8 +9,8 @@
     {
       "path": "registry/radix-vega/demo/button-link.tsx",
       "content": "import { Button } from \"@/registry/radix-vega/ui/button\"\n\nexport default function ButtonLink() {\n  return <Button variant=\"link\">Link</Button>\n}\n",
-      "type": "registry:example"
+      "type": "registry:internal"
     }
   ],
-  "type": "registry:example"
+  "type": "registry:internal"
 }

@@ -9550,11 +9550,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "accordion-demo",
       title: "Accordion Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["accordion"],
       files: [{
         path: "registry/radix-nova/demo/accordion-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9569,11 +9569,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "accordion-disabled",
       title: "Accordion Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["accordion"],
       files: [{
         path: "registry/radix-nova/demo/accordion-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9588,11 +9588,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "accordion-multiple",
       title: "Accordion Multiple",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["accordion"],
       files: [{
         path: "registry/radix-nova/demo/accordion-multiple.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9607,11 +9607,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "alert-demo",
       title: "Alert Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["alert"],
       files: [{
         path: "registry/radix-nova/demo/alert-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9626,11 +9626,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "alert-destructive",
       title: "Alert Destructive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["alert"],
       files: [{
         path: "registry/radix-nova/demo/alert-destructive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9645,11 +9645,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "alert-dialog-demo",
       title: "Alert Dialog Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["alert-dialog","button"],
       files: [{
         path: "registry/radix-nova/demo/alert-dialog-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9664,11 +9664,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "aspect-ratio-demo",
       title: "Aspect Ratio Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["aspect-ratio"],
       files: [{
         path: "registry/radix-nova/demo/aspect-ratio-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9683,11 +9683,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "avatar-demo",
       title: "Avatar Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar"],
       files: [{
         path: "registry/radix-nova/demo/avatar-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9702,11 +9702,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "badge-demo",
       title: "Badge Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge"],
       files: [{
         path: "registry/radix-nova/demo/badge-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9721,11 +9721,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "badge-destructive",
       title: "Badge Destructive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge"],
       files: [{
         path: "registry/radix-nova/demo/badge-destructive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9740,11 +9740,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "badge-outline",
       title: "Badge Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge"],
       files: [{
         path: "registry/radix-nova/demo/badge-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9759,11 +9759,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "badge-secondary",
       title: "Badge Secondary",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge"],
       files: [{
         path: "registry/radix-nova/demo/badge-secondary.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9778,11 +9778,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-demo",
       title: "Breadcrumb Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/breadcrumb-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9797,11 +9797,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-dropdown",
       title: "Breadcrumb Dropdown",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/breadcrumb-dropdown.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9816,11 +9816,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-ellipsis",
       title: "Breadcrumb Ellipsis",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/breadcrumb-ellipsis.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9835,11 +9835,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-link",
       title: "Breadcrumb Link",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb"],
       files: [{
         path: "registry/radix-nova/demo/breadcrumb-link.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9854,11 +9854,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-responsive",
       title: "Breadcrumb Responsive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb","button","drawer","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/breadcrumb-responsive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9873,11 +9873,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-separator",
       title: "Breadcrumb Separator",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb"],
       files: [{
         path: "registry/radix-nova/demo/breadcrumb-separator.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9892,11 +9892,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-as-child",
       title: "Button As Child",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-as-child.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9911,11 +9911,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-default",
       title: "Button Default",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-default.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9930,11 +9930,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-demo",
       title: "Button Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9949,11 +9949,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-destructive",
       title: "Button Destructive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-destructive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9968,11 +9968,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-ghost",
       title: "Button Ghost",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-ghost.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -9987,11 +9987,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-demo",
       title: "Button Group Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/radix-nova/demo/button-group-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10006,11 +10006,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-dropdown",
       title: "Button Group Dropdown",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/button-group-dropdown.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10025,11 +10025,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-input-group",
       title: "Button Group Input Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","input-group"],
       files: [{
         path: "registry/radix-nova/demo/button-group-input-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10044,11 +10044,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-input",
       title: "Button Group Input",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","input"],
       files: [{
         path: "registry/radix-nova/demo/button-group-input.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10063,11 +10063,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-nested",
       title: "Button Group Nested",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/radix-nova/demo/button-group-nested.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10082,11 +10082,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-orientation",
       title: "Button Group Orientation",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/radix-nova/demo/button-group-orientation.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10101,11 +10101,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-popover",
       title: "Button Group Popover",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","popover","separator","textarea"],
       files: [{
         path: "registry/radix-nova/demo/button-group-popover.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10120,11 +10120,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-select",
       title: "Button Group Select",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","input","select"],
       files: [{
         path: "registry/radix-nova/demo/button-group-select.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10139,11 +10139,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-separator",
       title: "Button Group Separator",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/radix-nova/demo/button-group-separator.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10158,11 +10158,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-size",
       title: "Button Group Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/radix-nova/demo/button-group-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10177,11 +10177,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-split",
       title: "Button Group Split",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/button-group-split.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10196,11 +10196,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-icon",
       title: "Button Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10215,11 +10215,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-link",
       title: "Button Link",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-link.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10234,11 +10234,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-loading",
       title: "Button Loading",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","spinner"],
       files: [{
         path: "registry/radix-nova/demo/button-loading.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10253,11 +10253,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-outline",
       title: "Button Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10272,11 +10272,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-rounded",
       title: "Button Rounded",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-rounded.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10291,11 +10291,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-secondary",
       title: "Button Secondary",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-secondary.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10310,11 +10310,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-size",
       title: "Button Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10329,11 +10329,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-with-icon",
       title: "Button With Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/button-with-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10348,11 +10348,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "calendar-demo",
       title: "Calendar Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["calendar"],
       files: [{
         path: "registry/radix-nova/demo/calendar-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10367,11 +10367,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "calendar-hijri",
       title: "Calendar Hijri",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/radix-nova/demo/calendar-hijri.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10386,11 +10386,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "card-demo",
       title: "Card Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","card","input","label"],
       files: [{
         path: "registry/radix-nova/demo/card-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10405,11 +10405,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-api",
       title: "Carousel Api",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/radix-nova/demo/carousel-api.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10424,11 +10424,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-demo",
       title: "Carousel Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/radix-nova/demo/carousel-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10443,11 +10443,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-orientation",
       title: "Carousel Orientation",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/radix-nova/demo/carousel-orientation.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10462,11 +10462,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-plugin",
       title: "Carousel Plugin",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/radix-nova/demo/carousel-plugin.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10481,11 +10481,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-size",
       title: "Carousel Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/radix-nova/demo/carousel-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10500,11 +10500,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-spacing",
       title: "Carousel Spacing",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/radix-nova/demo/carousel-spacing.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10519,11 +10519,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo",
       title: "Chart Bar Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/radix-nova/demo/chart-bar-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10538,11 +10538,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo-axis",
       title: "Chart Bar Demo Axis",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/radix-nova/demo/chart-bar-demo-axis.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10557,11 +10557,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo-grid",
       title: "Chart Bar Demo Grid",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/radix-nova/demo/chart-bar-demo-grid.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10576,11 +10576,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo-legend",
       title: "Chart Bar Demo Legend",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/radix-nova/demo/chart-bar-demo-legend.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10595,11 +10595,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo-tooltip",
       title: "Chart Bar Demo Tooltip",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/radix-nova/demo/chart-bar-demo-tooltip.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10614,11 +10614,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-tooltip-demo",
       title: "Chart Tooltip Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/chart-tooltip-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10633,11 +10633,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "checkbox-demo",
       title: "Checkbox Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox","label"],
       files: [{
         path: "registry/radix-nova/demo/checkbox-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10652,11 +10652,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "checkbox-disabled",
       title: "Checkbox Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox"],
       files: [{
         path: "registry/radix-nova/demo/checkbox-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10671,11 +10671,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "checkbox-with-text",
       title: "Checkbox With Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox"],
       files: [{
         path: "registry/radix-nova/demo/checkbox-with-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10690,11 +10690,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "collapsible-demo",
       title: "Collapsible Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","collapsible"],
       files: [{
         path: "registry/radix-nova/demo/collapsible-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10709,11 +10709,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "combobox-demo",
       title: "Combobox Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","command","popover"],
       files: [{
         path: "registry/radix-nova/demo/combobox-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10728,11 +10728,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "combobox-dropdown-menu",
       title: "Combobox Dropdown Menu",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","command","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/combobox-dropdown-menu.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10747,11 +10747,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "combobox-popover",
       title: "Combobox Popover",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","command","popover"],
       files: [{
         path: "registry/radix-nova/demo/combobox-popover.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10766,11 +10766,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "combobox-responsive",
       title: "Combobox Responsive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","command","drawer","popover"],
       files: [{
         path: "registry/radix-nova/demo/combobox-responsive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10785,11 +10785,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "command-demo",
       title: "Command Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["command"],
       files: [{
         path: "registry/radix-nova/demo/command-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10804,11 +10804,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "command-dialog",
       title: "Command Dialog",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["command"],
       files: [{
         path: "registry/radix-nova/demo/command-dialog.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10823,11 +10823,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "context-menu-demo",
       title: "Context Menu Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["context-menu"],
       files: [{
         path: "registry/radix-nova/demo/context-menu-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10842,11 +10842,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "data-table-demo",
       title: "Data Table Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","checkbox","dropdown-menu","input","table"],
       files: [{
         path: "registry/radix-nova/demo/data-table-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10861,11 +10861,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "date-picker-demo",
       title: "Date Picker Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","calendar","popover"],
       files: [{
         path: "registry/radix-nova/demo/date-picker-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10880,11 +10880,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "date-picker-with-presets",
       title: "Date Picker With Presets",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","calendar","popover","select"],
       files: [{
         path: "registry/radix-nova/demo/date-picker-with-presets.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10899,11 +10899,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "date-picker-with-range",
       title: "Date Picker With Range",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","calendar","popover"],
       files: [{
         path: "registry/radix-nova/demo/date-picker-with-range.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10918,11 +10918,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dialog-close-button",
       title: "Dialog Close Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dialog","input","label"],
       files: [{
         path: "registry/radix-nova/demo/dialog-close-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10937,11 +10937,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dialog-demo",
       title: "Dialog Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dialog","input","label"],
       files: [{
         path: "registry/radix-nova/demo/dialog-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10956,11 +10956,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "drawer-demo",
       title: "Drawer Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","drawer"],
       files: [{
         path: "registry/radix-nova/demo/drawer-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10975,11 +10975,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "drawer-dialog",
       title: "Drawer Dialog",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dialog","drawer","input","label"],
       files: [{
         path: "registry/radix-nova/demo/drawer-dialog.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -10994,11 +10994,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dropdown-menu-checkboxes",
       title: "Dropdown Menu Checkboxes",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/dropdown-menu-checkboxes.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11013,11 +11013,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dropdown-menu-demo",
       title: "Dropdown Menu Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/dropdown-menu-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11032,11 +11032,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dropdown-menu-dialog",
       title: "Dropdown Menu Dialog",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dialog","dropdown-menu","field","input","label","textarea"],
       files: [{
         path: "registry/radix-nova/demo/dropdown-menu-dialog.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11051,11 +11051,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dropdown-menu-radio-group",
       title: "Dropdown Menu Radio Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dropdown-menu"],
       files: [{
         path: "registry/radix-nova/demo/dropdown-menu-radio-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11070,11 +11070,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-avatar-group",
       title: "Empty Avatar Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","empty"],
       files: [{
         path: "registry/radix-nova/demo/empty-avatar-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11089,11 +11089,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-avatar",
       title: "Empty Avatar",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","empty"],
       files: [{
         path: "registry/radix-nova/demo/empty-avatar.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11108,11 +11108,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-background",
       title: "Empty Background",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","empty"],
       files: [{
         path: "registry/radix-nova/demo/empty-background.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11127,11 +11127,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-demo",
       title: "Empty Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","empty"],
       files: [{
         path: "registry/radix-nova/demo/empty-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11146,11 +11146,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-icon",
       title: "Empty Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["empty"],
       files: [{
         path: "registry/radix-nova/demo/empty-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11165,11 +11165,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-input-group",
       title: "Empty Input Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["empty","input-group","kbd"],
       files: [{
         path: "registry/radix-nova/demo/empty-input-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11184,11 +11184,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-outline",
       title: "Empty Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","empty"],
       files: [{
         path: "registry/radix-nova/demo/empty-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11203,11 +11203,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-checkbox",
       title: "Field Checkbox",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox","field"],
       files: [{
         path: "registry/radix-nova/demo/field-checkbox.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11222,11 +11222,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-choice-card",
       title: "Field Choice Card",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","radio-group"],
       files: [{
         path: "registry/radix-nova/demo/field-choice-card.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11241,11 +11241,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-demo",
       title: "Field Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","checkbox","field","input","select","textarea"],
       files: [{
         path: "registry/radix-nova/demo/field-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11260,11 +11260,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-fieldset",
       title: "Field Fieldset",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","input"],
       files: [{
         path: "registry/radix-nova/demo/field-fieldset.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11279,11 +11279,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-group",
       title: "Field Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox","field"],
       files: [{
         path: "registry/radix-nova/demo/field-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11298,11 +11298,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-input",
       title: "Field Input",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","input"],
       files: [{
         path: "registry/radix-nova/demo/field-input.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11317,11 +11317,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-radio",
       title: "Field Radio",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","radio-group"],
       files: [{
         path: "registry/radix-nova/demo/field-radio.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11336,11 +11336,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-responsive",
       title: "Field Responsive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","field","input","textarea"],
       files: [{
         path: "registry/radix-nova/demo/field-responsive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11355,11 +11355,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-select",
       title: "Field Select",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","select"],
       files: [{
         path: "registry/radix-nova/demo/field-select.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11374,11 +11374,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-slider",
       title: "Field Slider",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","slider"],
       files: [{
         path: "registry/radix-nova/demo/field-slider.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11393,11 +11393,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-switch",
       title: "Field Switch",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","switch"],
       files: [{
         path: "registry/radix-nova/demo/field-switch.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11412,11 +11412,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-textarea",
       title: "Field Textarea",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","textarea"],
       files: [{
         path: "registry/radix-nova/demo/field-textarea.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11431,11 +11431,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "hover-card-demo",
       title: "Hover Card Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","hover-card"],
       files: [{
         path: "registry/radix-nova/demo/hover-card-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11450,11 +11450,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-demo",
       title: "Input Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input"],
       files: [{
         path: "registry/radix-nova/demo/input-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11469,11 +11469,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-disabled",
       title: "Input Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input"],
       files: [{
         path: "registry/radix-nova/demo/input-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11488,11 +11488,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-file",
       title: "Input File",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input","label"],
       files: [{
         path: "registry/radix-nova/demo/input-file.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11507,11 +11507,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-button-group",
       title: "Input Group Button Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button-group","input-group","label"],
       files: [{
         path: "registry/radix-nova/demo/input-group-button-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11526,11 +11526,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-button",
       title: "Input Group Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group"],
       files: [{
         path: "registry/radix-nova/demo/input-group-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11545,11 +11545,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-custom",
       title: "Input Group Custom",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group"],
       files: [{
         path: "registry/radix-nova/demo/input-group-custom.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11564,11 +11564,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-demo",
       title: "Input Group Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["dropdown-menu","input-group","separator","tooltip"],
       files: [{
         path: "registry/radix-nova/demo/input-group-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11583,11 +11583,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-dropdown",
       title: "Input Group Dropdown",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["dropdown-menu","input-group"],
       files: [{
         path: "registry/radix-nova/demo/input-group-dropdown.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11602,11 +11602,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-icon",
       title: "Input Group Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group"],
       files: [{
         path: "registry/radix-nova/demo/input-group-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11621,11 +11621,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-label",
       title: "Input Group Label",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","label"],
       files: [{
         path: "registry/radix-nova/demo/input-group-label.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11640,11 +11640,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-spinner",
       title: "Input Group Spinner",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","spinner"],
       files: [{
         path: "registry/radix-nova/demo/input-group-spinner.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11659,11 +11659,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-text",
       title: "Input Group Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group"],
       files: [{
         path: "registry/radix-nova/demo/input-group-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11678,11 +11678,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-textarea",
       title: "Input Group Textarea",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group"],
       files: [{
         path: "registry/radix-nova/demo/input-group-textarea.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11697,11 +11697,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-tooltip",
       title: "Input Group Tooltip",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","tooltip"],
       files: [{
         path: "registry/radix-nova/demo/input-group-tooltip.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11716,11 +11716,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-otp-controlled",
       title: "Input OTP Controlled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-otp"],
       files: [{
         path: "registry/radix-nova/demo/input-otp-controlled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11735,11 +11735,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-otp-demo",
       title: "Input OTP Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-otp"],
       files: [{
         path: "registry/radix-nova/demo/input-otp-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11754,11 +11754,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-otp-pattern",
       title: "Input OTP Pattern",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-otp"],
       files: [{
         path: "registry/radix-nova/demo/input-otp-pattern.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11773,11 +11773,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-otp-separator",
       title: "Input OTP Separator",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-otp"],
       files: [{
         path: "registry/radix-nova/demo/input-otp-separator.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11792,11 +11792,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-with-button",
       title: "Input With Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","input"],
       files: [{
         path: "registry/radix-nova/demo/input-with-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11811,11 +11811,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-with-label",
       title: "Input With Label",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input","label"],
       files: [{
         path: "registry/radix-nova/demo/input-with-label.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11830,11 +11830,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-with-text",
       title: "Input With Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input","label"],
       files: [{
         path: "registry/radix-nova/demo/input-with-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11849,11 +11849,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-avatar",
       title: "Item Avatar",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","item"],
       files: [{
         path: "registry/radix-nova/demo/item-avatar.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11868,11 +11868,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-demo",
       title: "Item Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","item"],
       files: [{
         path: "registry/radix-nova/demo/item-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11887,11 +11887,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-dropdown",
       title: "Item Dropdown",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dropdown-menu","item"],
       files: [{
         path: "registry/radix-nova/demo/item-dropdown.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11906,11 +11906,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-group",
       title: "Item Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","item"],
       files: [{
         path: "registry/radix-nova/demo/item-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11925,11 +11925,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-header",
       title: "Item Header",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["item"],
       files: [{
         path: "registry/radix-nova/demo/item-header.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11944,11 +11944,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-icon",
       title: "Item Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","item"],
       files: [{
         path: "registry/radix-nova/demo/item-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11963,11 +11963,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-image",
       title: "Item Image",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["item"],
       files: [{
         path: "registry/radix-nova/demo/item-image.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -11982,11 +11982,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-link",
       title: "Item Link",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["item"],
       files: [{
         path: "registry/radix-nova/demo/item-link.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12001,11 +12001,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-size",
       title: "Item Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","item"],
       files: [{
         path: "registry/radix-nova/demo/item-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12020,11 +12020,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-variant",
       title: "Item Variant",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["item"],
       files: [{
         path: "registry/radix-nova/demo/item-variant.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12039,11 +12039,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-button",
       title: "Kbd Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","kbd"],
       files: [{
         path: "registry/radix-nova/demo/kbd-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12058,11 +12058,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-demo",
       title: "Kbd Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["kbd"],
       files: [{
         path: "registry/radix-nova/demo/kbd-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12077,11 +12077,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-group",
       title: "Kbd Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["kbd"],
       files: [{
         path: "registry/radix-nova/demo/kbd-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12096,11 +12096,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-input-group",
       title: "Kbd Input Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","kbd"],
       files: [{
         path: "registry/radix-nova/demo/kbd-input-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12115,11 +12115,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-tooltip",
       title: "Kbd Tooltip",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","kbd","tooltip"],
       files: [{
         path: "registry/radix-nova/demo/kbd-tooltip.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12134,11 +12134,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "label-demo",
       title: "Label Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox","label"],
       files: [{
         path: "registry/radix-nova/demo/label-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12153,11 +12153,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "menubar-demo",
       title: "Menubar Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["menubar"],
       files: [{
         path: "registry/radix-nova/demo/menubar-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12172,11 +12172,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "native-select-demo",
       title: "Native Select Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["native-select"],
       files: [{
         path: "registry/radix-nova/demo/native-select-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12191,11 +12191,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "native-select-disabled",
       title: "Native Select Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["native-select"],
       files: [{
         path: "registry/radix-nova/demo/native-select-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12210,11 +12210,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "native-select-groups",
       title: "Native Select Groups",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["native-select"],
       files: [{
         path: "registry/radix-nova/demo/native-select-groups.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12229,11 +12229,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "native-select-invalid",
       title: "Native Select Invalid",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["native-select"],
       files: [{
         path: "registry/radix-nova/demo/native-select-invalid.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12248,11 +12248,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "navigation-menu-demo",
       title: "Navigation Menu Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["navigation-menu"],
       files: [{
         path: "registry/radix-nova/demo/navigation-menu-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12267,11 +12267,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "pagination-demo",
       title: "Pagination Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["pagination"],
       files: [{
         path: "registry/radix-nova/demo/pagination-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12286,11 +12286,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "popover-demo",
       title: "Popover Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","input","label","popover"],
       files: [{
         path: "registry/radix-nova/demo/popover-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12305,11 +12305,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "progress-demo",
       title: "Progress Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["progress"],
       files: [{
         path: "registry/radix-nova/demo/progress-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12324,11 +12324,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "radio-group-demo",
       title: "Radio Group Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["label","radio-group"],
       files: [{
         path: "registry/radix-nova/demo/radio-group-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12343,11 +12343,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "resizable-demo",
       title: "Resizable Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["resizable"],
       files: [{
         path: "registry/radix-nova/demo/resizable-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12362,11 +12362,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "resizable-demo-with-handle",
       title: "Resizable Demo With Handle",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["resizable"],
       files: [{
         path: "registry/radix-nova/demo/resizable-demo-with-handle.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12381,11 +12381,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "resizable-handle",
       title: "Resizable Handle",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["resizable"],
       files: [{
         path: "registry/radix-nova/demo/resizable-handle.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12400,11 +12400,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "resizable-vertical",
       title: "Resizable Vertical",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["resizable"],
       files: [{
         path: "registry/radix-nova/demo/resizable-vertical.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12419,11 +12419,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "scroll-area-demo",
       title: "Scroll Area Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["scroll-area","separator"],
       files: [{
         path: "registry/radix-nova/demo/scroll-area-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12438,11 +12438,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "scroll-area-horizontal-demo",
       title: "Scroll Area Horizontal Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["scroll-area"],
       files: [{
         path: "registry/radix-nova/demo/scroll-area-horizontal-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12457,11 +12457,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "select-demo",
       title: "Select Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["select"],
       files: [{
         path: "registry/radix-nova/demo/select-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12476,11 +12476,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "select-scrollable",
       title: "Select Scrollable",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["select"],
       files: [{
         path: "registry/radix-nova/demo/select-scrollable.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12495,11 +12495,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "separator-demo",
       title: "Separator Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["separator"],
       files: [{
         path: "registry/radix-nova/demo/separator-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12514,11 +12514,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sheet-demo",
       title: "Sheet Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","input","label","sheet"],
       files: [{
         path: "registry/radix-nova/demo/sheet-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12533,11 +12533,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sheet-side",
       title: "Sheet Side",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","input","label","sheet"],
       files: [{
         path: "registry/radix-nova/demo/sheet-side.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12552,11 +12552,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "skeleton-card",
       title: "Skeleton Card",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["skeleton"],
       files: [{
         path: "registry/radix-nova/demo/skeleton-card.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12571,11 +12571,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "skeleton-demo",
       title: "Skeleton Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["skeleton"],
       files: [{
         path: "registry/radix-nova/demo/skeleton-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12590,11 +12590,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "slider-demo",
       title: "Slider Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["slider"],
       files: [{
         path: "registry/radix-nova/demo/slider-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12609,11 +12609,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sonner-demo",
       title: "Sonner Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","sonner"],
       files: [{
         path: "registry/radix-nova/demo/sonner-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12628,11 +12628,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sonner-types",
       title: "Sonner Types",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","sonner"],
       files: [{
         path: "registry/radix-nova/demo/sonner-types.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12647,11 +12647,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-badge",
       title: "Spinner Badge",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge","spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-badge.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12666,11 +12666,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-basic",
       title: "Spinner Basic",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-basic.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12685,11 +12685,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-button",
       title: "Spinner Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12704,11 +12704,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-color",
       title: "Spinner Color",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-color.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12723,11 +12723,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-custom",
       title: "Spinner Custom",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-custom.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12742,11 +12742,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-demo",
       title: "Spinner Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12761,11 +12761,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-empty",
       title: "Spinner Empty",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["empty","spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-empty.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12780,11 +12780,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-input-group",
       title: "Spinner Input Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-input-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12799,11 +12799,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-item",
       title: "Spinner Item",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","item","progress","spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-item.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12818,11 +12818,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-size",
       title: "Spinner Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["spinner"],
       files: [{
         path: "registry/radix-nova/demo/spinner-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12837,11 +12837,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "switch-demo",
       title: "Switch Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["label","switch"],
       files: [{
         path: "registry/radix-nova/demo/switch-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12856,11 +12856,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "table-demo",
       title: "Table Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["table"],
       files: [{
         path: "registry/radix-nova/demo/table-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12875,11 +12875,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "tabs-demo",
       title: "Tabs Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","card","input","label","tabs"],
       files: [{
         path: "registry/radix-nova/demo/tabs-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12894,11 +12894,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-demo",
       title: "Textarea Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["textarea"],
       files: [{
         path: "registry/radix-nova/demo/textarea-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12913,11 +12913,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-disabled",
       title: "Textarea Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["textarea"],
       files: [{
         path: "registry/radix-nova/demo/textarea-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12932,11 +12932,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-with-button",
       title: "Textarea With Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","textarea"],
       files: [{
         path: "registry/radix-nova/demo/textarea-with-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12951,11 +12951,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-with-label",
       title: "Textarea With Label",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["label","textarea"],
       files: [{
         path: "registry/radix-nova/demo/textarea-with-label.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12970,11 +12970,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-with-text",
       title: "Textarea With Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["label","textarea"],
       files: [{
         path: "registry/radix-nova/demo/textarea-with-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -12989,11 +12989,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-demo",
       title: "Toggle Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/radix-nova/demo/toggle-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13008,11 +13008,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-disabled",
       title: "Toggle Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/radix-nova/demo/toggle-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13027,11 +13027,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-demo",
       title: "Toggle Group Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/radix-nova/demo/toggle-group-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13046,11 +13046,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-disabled",
       title: "Toggle Group Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/radix-nova/demo/toggle-group-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13065,11 +13065,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-lg",
       title: "Toggle Group Lg",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/radix-nova/demo/toggle-group-lg.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13084,11 +13084,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-outline",
       title: "Toggle Group Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/radix-nova/demo/toggle-group-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13103,11 +13103,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-single",
       title: "Toggle Group Single",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/radix-nova/demo/toggle-group-single.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13122,11 +13122,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-sm",
       title: "Toggle Group Sm",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/radix-nova/demo/toggle-group-sm.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13141,11 +13141,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-spacing",
       title: "Toggle Group Spacing",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/radix-nova/demo/toggle-group-spacing.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13160,11 +13160,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-lg",
       title: "Toggle Lg",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/radix-nova/demo/toggle-lg.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13179,11 +13179,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-outline",
       title: "Toggle Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/radix-nova/demo/toggle-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13198,11 +13198,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-sm",
       title: "Toggle Sm",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/radix-nova/demo/toggle-sm.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13217,11 +13217,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-with-text",
       title: "Toggle With Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/radix-nova/demo/toggle-with-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13236,11 +13236,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "tooltip-demo",
       title: "Tooltip Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","tooltip"],
       files: [{
         path: "registry/radix-nova/demo/tooltip-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13255,11 +13255,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-blockquote",
       title: "Typography Blockquote",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-blockquote.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13274,11 +13274,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-demo",
       title: "Typography Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13293,11 +13293,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-h1",
       title: "Typography H1",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-h1.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13312,11 +13312,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-h2",
       title: "Typography H2",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-h2.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13331,11 +13331,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-h3",
       title: "Typography H3",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-h3.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13350,11 +13350,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-h4",
       title: "Typography H4",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-h4.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13369,11 +13369,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-inline-code",
       title: "Typography Inline Code",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-inline-code.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13388,11 +13388,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-large",
       title: "Typography Large",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-large.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13407,11 +13407,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-lead",
       title: "Typography Lead",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-lead.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13426,11 +13426,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-list",
       title: "Typography List",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-list.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13445,11 +13445,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-muted",
       title: "Typography Muted",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-muted.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13464,11 +13464,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-p",
       title: "Typography P",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-p.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13483,11 +13483,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-small",
       title: "Typography Small",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-small.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -13502,11 +13502,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-table",
       title: "Typography Table",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/radix-nova/demo/typography-table.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15822,11 +15822,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "accordion-demo",
       title: "Accordion Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["accordion"],
       files: [{
         path: "registry/base-nova/demo/accordion-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15841,11 +15841,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "accordion-disabled",
       title: "Accordion Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["accordion"],
       files: [{
         path: "registry/base-nova/demo/accordion-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15860,11 +15860,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "accordion-multiple",
       title: "Accordion Multiple",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["accordion"],
       files: [{
         path: "registry/base-nova/demo/accordion-multiple.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15879,11 +15879,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "alert-demo",
       title: "Alert Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["alert"],
       files: [{
         path: "registry/base-nova/demo/alert-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15898,11 +15898,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "alert-destructive",
       title: "Alert Destructive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["alert"],
       files: [{
         path: "registry/base-nova/demo/alert-destructive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15917,11 +15917,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "alert-dialog-demo",
       title: "Alert Dialog Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["alert-dialog","button"],
       files: [{
         path: "registry/base-nova/demo/alert-dialog-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15936,11 +15936,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "aspect-ratio-demo",
       title: "Aspect Ratio Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["aspect-ratio"],
       files: [{
         path: "registry/base-nova/demo/aspect-ratio-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15955,11 +15955,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "avatar-demo",
       title: "Avatar Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar"],
       files: [{
         path: "registry/base-nova/demo/avatar-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15974,11 +15974,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "badge-demo",
       title: "Badge Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge"],
       files: [{
         path: "registry/base-nova/demo/badge-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -15993,11 +15993,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "badge-destructive",
       title: "Badge Destructive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge"],
       files: [{
         path: "registry/base-nova/demo/badge-destructive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16012,11 +16012,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "badge-outline",
       title: "Badge Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge"],
       files: [{
         path: "registry/base-nova/demo/badge-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16031,11 +16031,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "badge-secondary",
       title: "Badge Secondary",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge"],
       files: [{
         path: "registry/base-nova/demo/badge-secondary.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16050,11 +16050,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-demo",
       title: "Breadcrumb Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb","dropdown-menu"],
       files: [{
         path: "registry/base-nova/demo/breadcrumb-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16069,11 +16069,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-dropdown",
       title: "Breadcrumb Dropdown",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb","dropdown-menu"],
       files: [{
         path: "registry/base-nova/demo/breadcrumb-dropdown.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16088,11 +16088,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-ellipsis",
       title: "Breadcrumb Ellipsis",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb"],
       files: [{
         path: "registry/base-nova/demo/breadcrumb-ellipsis.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16107,11 +16107,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-link",
       title: "Breadcrumb Link",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb"],
       files: [{
         path: "registry/base-nova/demo/breadcrumb-link.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16126,11 +16126,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-responsive",
       title: "Breadcrumb Responsive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb","button","drawer","dropdown-menu"],
       files: [{
         path: "registry/base-nova/demo/breadcrumb-responsive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16145,11 +16145,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "breadcrumb-separator",
       title: "Breadcrumb Separator",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["breadcrumb"],
       files: [{
         path: "registry/base-nova/demo/breadcrumb-separator.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16164,11 +16164,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-as-child",
       title: "Button As Child",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-as-child.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16183,11 +16183,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-default",
       title: "Button Default",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-default.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16202,11 +16202,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-demo",
       title: "Button Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16221,11 +16221,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-destructive",
       title: "Button Destructive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-destructive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16240,11 +16240,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-ghost",
       title: "Button Ghost",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-ghost.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16259,11 +16259,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-demo",
       title: "Button Group Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","dropdown-menu"],
       files: [{
         path: "registry/base-nova/demo/button-group-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16278,11 +16278,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-dropdown",
       title: "Button Group Dropdown",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","dropdown-menu"],
       files: [{
         path: "registry/base-nova/demo/button-group-dropdown.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16297,11 +16297,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-input-group",
       title: "Button Group Input Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","input-group","tooltip"],
       files: [{
         path: "registry/base-nova/demo/button-group-input-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16316,11 +16316,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-input",
       title: "Button Group Input",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","input"],
       files: [{
         path: "registry/base-nova/demo/button-group-input.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16335,11 +16335,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-nested",
       title: "Button Group Nested",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/base-nova/demo/button-group-nested.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16354,11 +16354,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-orientation",
       title: "Button Group Orientation",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/base-nova/demo/button-group-orientation.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16373,11 +16373,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-popover",
       title: "Button Group Popover",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","popover","separator","textarea"],
       files: [{
         path: "registry/base-nova/demo/button-group-popover.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16392,11 +16392,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-select",
       title: "Button Group Select",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","input","select"],
       files: [{
         path: "registry/base-nova/demo/button-group-select.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16411,11 +16411,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-separator",
       title: "Button Group Separator",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/base-nova/demo/button-group-separator.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16430,11 +16430,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-size",
       title: "Button Group Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/base-nova/demo/button-group-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16449,11 +16449,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-group-split",
       title: "Button Group Split",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group"],
       files: [{
         path: "registry/base-nova/demo/button-group-split.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16468,11 +16468,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-icon",
       title: "Button Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16487,11 +16487,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-link",
       title: "Button Link",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-link.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16506,11 +16506,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-loading",
       title: "Button Loading",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","spinner"],
       files: [{
         path: "registry/base-nova/demo/button-loading.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16525,11 +16525,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-outline",
       title: "Button Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16544,11 +16544,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-rounded",
       title: "Button Rounded",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-rounded.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16563,11 +16563,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-secondary",
       title: "Button Secondary",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-secondary.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16582,11 +16582,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-size",
       title: "Button Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16601,11 +16601,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "button-with-icon",
       title: "Button With Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/button-with-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16620,11 +16620,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "calendar-demo",
       title: "Calendar Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["calendar"],
       files: [{
         path: "registry/base-nova/demo/calendar-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16639,11 +16639,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "calendar-hijri",
       title: "Calendar Hijri",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/calendar-hijri.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16658,11 +16658,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "card-demo",
       title: "Card Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","card","input","label"],
       files: [{
         path: "registry/base-nova/demo/card-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16677,11 +16677,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-api",
       title: "Carousel Api",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/base-nova/demo/carousel-api.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16696,11 +16696,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-demo",
       title: "Carousel Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/base-nova/demo/carousel-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16715,11 +16715,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-orientation",
       title: "Carousel Orientation",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/base-nova/demo/carousel-orientation.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16734,11 +16734,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-plugin",
       title: "Carousel Plugin",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/base-nova/demo/carousel-plugin.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16753,11 +16753,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-size",
       title: "Carousel Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/base-nova/demo/carousel-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16772,11 +16772,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "carousel-spacing",
       title: "Carousel Spacing",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["card","carousel"],
       files: [{
         path: "registry/base-nova/demo/carousel-spacing.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16791,11 +16791,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo-axis",
       title: "Chart Bar Demo Axis",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/base-nova/demo/chart-bar-demo-axis.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16810,11 +16810,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo-grid",
       title: "Chart Bar Demo Grid",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/base-nova/demo/chart-bar-demo-grid.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16829,11 +16829,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo-legend",
       title: "Chart Bar Demo Legend",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/base-nova/demo/chart-bar-demo-legend.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16848,11 +16848,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo-tooltip",
       title: "Chart Bar Demo Tooltip",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/base-nova/demo/chart-bar-demo-tooltip.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16867,11 +16867,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-bar-demo",
       title: "Chart Bar Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["chart"],
       files: [{
         path: "registry/base-nova/demo/chart-bar-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16886,11 +16886,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "chart-tooltip-demo",
       title: "Chart Tooltip Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/chart-tooltip-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16905,11 +16905,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "checkbox-demo",
       title: "Checkbox Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox","label"],
       files: [{
         path: "registry/base-nova/demo/checkbox-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16924,11 +16924,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "checkbox-disabled",
       title: "Checkbox Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox"],
       files: [{
         path: "registry/base-nova/demo/checkbox-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16943,11 +16943,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "checkbox-with-text",
       title: "Checkbox With Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox"],
       files: [{
         path: "registry/base-nova/demo/checkbox-with-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16962,11 +16962,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "collapsible-demo",
       title: "Collapsible Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","collapsible"],
       files: [{
         path: "registry/base-nova/demo/collapsible-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -16981,11 +16981,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "combobox-demo",
       title: "Combobox Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","command","popover"],
       files: [{
         path: "registry/base-nova/demo/combobox-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17000,11 +17000,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "combobox-dropdown-menu",
       title: "Combobox Dropdown Menu",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","command","dropdown-menu"],
       files: [{
         path: "registry/base-nova/demo/combobox-dropdown-menu.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17019,11 +17019,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "combobox-popover",
       title: "Combobox Popover",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","command","popover"],
       files: [{
         path: "registry/base-nova/demo/combobox-popover.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17038,11 +17038,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "combobox-responsive",
       title: "Combobox Responsive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","command","drawer","popover"],
       files: [{
         path: "registry/base-nova/demo/combobox-responsive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17057,11 +17057,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "command-demo",
       title: "Command Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["command"],
       files: [{
         path: "registry/base-nova/demo/command-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17076,11 +17076,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "command-dialog",
       title: "Command Dialog",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["command"],
       files: [{
         path: "registry/base-nova/demo/command-dialog.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17095,11 +17095,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "context-menu-demo",
       title: "Context Menu Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["context-menu"],
       files: [{
         path: "registry/base-nova/demo/context-menu-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17114,11 +17114,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "data-table-demo",
       title: "Data Table Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","checkbox","dropdown-menu","input","table"],
       files: [{
         path: "registry/base-nova/demo/data-table-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17133,11 +17133,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "date-picker-demo",
       title: "Date Picker Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","calendar","popover"],
       files: [{
         path: "registry/base-nova/demo/date-picker-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17152,11 +17152,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "date-picker-with-presets",
       title: "Date Picker With Presets",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","calendar","popover","select"],
       files: [{
         path: "registry/base-nova/demo/date-picker-with-presets.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17171,11 +17171,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "date-picker-with-range",
       title: "Date Picker With Range",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","calendar","popover"],
       files: [{
         path: "registry/base-nova/demo/date-picker-with-range.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17190,11 +17190,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dialog-close-button",
       title: "Dialog Close Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dialog","input","label"],
       files: [{
         path: "registry/base-nova/demo/dialog-close-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17209,11 +17209,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dialog-demo",
       title: "Dialog Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dialog","input","label"],
       files: [{
         path: "registry/base-nova/demo/dialog-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17228,11 +17228,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "drawer-demo",
       title: "Drawer Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","drawer"],
       files: [{
         path: "registry/base-nova/demo/drawer-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17247,11 +17247,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "drawer-dialog",
       title: "Drawer Dialog",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dialog","drawer","input","label"],
       files: [{
         path: "registry/base-nova/demo/drawer-dialog.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17266,11 +17266,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dropdown-menu-checkboxes",
       title: "Dropdown Menu Checkboxes",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dropdown-menu"],
       files: [{
         path: "registry/base-nova/demo/dropdown-menu-checkboxes.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17285,11 +17285,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dropdown-menu-demo",
       title: "Dropdown Menu Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dropdown-menu"],
       files: [{
         path: "registry/base-nova/demo/dropdown-menu-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17304,11 +17304,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dropdown-menu-dialog",
       title: "Dropdown Menu Dialog",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dialog","dropdown-menu","field","input","label","textarea"],
       files: [{
         path: "registry/base-nova/demo/dropdown-menu-dialog.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17323,11 +17323,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "dropdown-menu-radio-group",
       title: "Dropdown Menu Radio Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","dropdown-menu"],
       files: [{
         path: "registry/base-nova/demo/dropdown-menu-radio-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17342,11 +17342,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-avatar-group",
       title: "Empty Avatar Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","empty"],
       files: [{
         path: "registry/base-nova/demo/empty-avatar-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17361,11 +17361,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-avatar",
       title: "Empty Avatar",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","empty"],
       files: [{
         path: "registry/base-nova/demo/empty-avatar.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17380,11 +17380,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-background",
       title: "Empty Background",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","empty"],
       files: [{
         path: "registry/base-nova/demo/empty-background.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17399,11 +17399,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-demo",
       title: "Empty Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","empty"],
       files: [{
         path: "registry/base-nova/demo/empty-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17418,11 +17418,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-icon",
       title: "Empty Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["empty"],
       files: [{
         path: "registry/base-nova/demo/empty-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17437,11 +17437,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-input-group",
       title: "Empty Input Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["empty","input-group","kbd"],
       files: [{
         path: "registry/base-nova/demo/empty-input-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17456,11 +17456,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "empty-outline",
       title: "Empty Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","empty"],
       files: [{
         path: "registry/base-nova/demo/empty-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17475,11 +17475,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-checkbox",
       title: "Field Checkbox",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox","field"],
       files: [{
         path: "registry/base-nova/demo/field-checkbox.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17494,11 +17494,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-choice-card",
       title: "Field Choice Card",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","radio-group"],
       files: [{
         path: "registry/base-nova/demo/field-choice-card.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17513,11 +17513,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-demo",
       title: "Field Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","checkbox","field","input","select","textarea"],
       files: [{
         path: "registry/base-nova/demo/field-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17532,11 +17532,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-fieldset",
       title: "Field Fieldset",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","input"],
       files: [{
         path: "registry/base-nova/demo/field-fieldset.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17551,11 +17551,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-group",
       title: "Field Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox","field"],
       files: [{
         path: "registry/base-nova/demo/field-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17570,11 +17570,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-input",
       title: "Field Input",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","input"],
       files: [{
         path: "registry/base-nova/demo/field-input.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17589,11 +17589,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-radio",
       title: "Field Radio",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","radio-group"],
       files: [{
         path: "registry/base-nova/demo/field-radio.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17608,11 +17608,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-responsive",
       title: "Field Responsive",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","field","input","textarea"],
       files: [{
         path: "registry/base-nova/demo/field-responsive.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17627,11 +17627,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-select",
       title: "Field Select",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","select"],
       files: [{
         path: "registry/base-nova/demo/field-select.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17646,11 +17646,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-slider",
       title: "Field Slider",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","slider"],
       files: [{
         path: "registry/base-nova/demo/field-slider.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17665,11 +17665,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-switch",
       title: "Field Switch",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","switch"],
       files: [{
         path: "registry/base-nova/demo/field-switch.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17684,11 +17684,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "field-textarea",
       title: "Field Textarea",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["field","textarea"],
       files: [{
         path: "registry/base-nova/demo/field-textarea.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17703,11 +17703,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "hover-card-demo",
       title: "Hover Card Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","hover-card"],
       files: [{
         path: "registry/base-nova/demo/hover-card-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17722,11 +17722,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-demo",
       title: "Input Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input"],
       files: [{
         path: "registry/base-nova/demo/input-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17741,11 +17741,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-disabled",
       title: "Input Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input"],
       files: [{
         path: "registry/base-nova/demo/input-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17760,11 +17760,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-file",
       title: "Input File",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input","label"],
       files: [{
         path: "registry/base-nova/demo/input-file.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17779,11 +17779,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-button-group",
       title: "Input Group Button Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button-group","input-group","label"],
       files: [{
         path: "registry/base-nova/demo/input-group-button-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17798,11 +17798,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-button",
       title: "Input Group Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","popover"],
       files: [{
         path: "registry/base-nova/demo/input-group-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17817,11 +17817,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-custom",
       title: "Input Group Custom",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group"],
       files: [{
         path: "registry/base-nova/demo/input-group-custom.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17836,11 +17836,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-demo",
       title: "Input Group Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["dropdown-menu","input-group","separator","tooltip"],
       files: [{
         path: "registry/base-nova/demo/input-group-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17855,11 +17855,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-dropdown",
       title: "Input Group Dropdown",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["dropdown-menu","input-group"],
       files: [{
         path: "registry/base-nova/demo/input-group-dropdown.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17874,11 +17874,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-icon",
       title: "Input Group Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group"],
       files: [{
         path: "registry/base-nova/demo/input-group-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17893,11 +17893,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-label",
       title: "Input Group Label",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","label","tooltip"],
       files: [{
         path: "registry/base-nova/demo/input-group-label.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17912,11 +17912,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-spinner",
       title: "Input Group Spinner",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","spinner"],
       files: [{
         path: "registry/base-nova/demo/input-group-spinner.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17931,11 +17931,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-text",
       title: "Input Group Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group"],
       files: [{
         path: "registry/base-nova/demo/input-group-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17950,11 +17950,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-textarea",
       title: "Input Group Textarea",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group"],
       files: [{
         path: "registry/base-nova/demo/input-group-textarea.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17969,11 +17969,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-group-tooltip",
       title: "Input Group Tooltip",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","tooltip"],
       files: [{
         path: "registry/base-nova/demo/input-group-tooltip.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -17988,11 +17988,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-otp-controlled",
       title: "Input Otp Controlled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-otp"],
       files: [{
         path: "registry/base-nova/demo/input-otp-controlled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18007,11 +18007,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-otp-demo",
       title: "Input Otp Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-otp"],
       files: [{
         path: "registry/base-nova/demo/input-otp-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18026,11 +18026,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-otp-pattern",
       title: "Input Otp Pattern",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-otp"],
       files: [{
         path: "registry/base-nova/demo/input-otp-pattern.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18045,11 +18045,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-otp-separator",
       title: "Input Otp Separator",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-otp"],
       files: [{
         path: "registry/base-nova/demo/input-otp-separator.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18064,11 +18064,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-with-button",
       title: "Input With Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","input"],
       files: [{
         path: "registry/base-nova/demo/input-with-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18083,11 +18083,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-with-label",
       title: "Input With Label",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input","label"],
       files: [{
         path: "registry/base-nova/demo/input-with-label.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18102,11 +18102,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "input-with-text",
       title: "Input With Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input","label"],
       files: [{
         path: "registry/base-nova/demo/input-with-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18121,11 +18121,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-avatar",
       title: "Item Avatar",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","item"],
       files: [{
         path: "registry/base-nova/demo/item-avatar.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18140,11 +18140,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-demo",
       title: "Item Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","item"],
       files: [{
         path: "registry/base-nova/demo/item-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18159,11 +18159,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-dropdown",
       title: "Item Dropdown",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","dropdown-menu","item"],
       files: [{
         path: "registry/base-nova/demo/item-dropdown.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18178,11 +18178,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-group",
       title: "Item Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["avatar","button","item"],
       files: [{
         path: "registry/base-nova/demo/item-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18197,11 +18197,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-header",
       title: "Item Header",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["item"],
       files: [{
         path: "registry/base-nova/demo/item-header.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18216,11 +18216,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-icon",
       title: "Item Icon",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","item"],
       files: [{
         path: "registry/base-nova/demo/item-icon.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18235,11 +18235,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-image",
       title: "Item Image",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["item"],
       files: [{
         path: "registry/base-nova/demo/item-image.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18254,11 +18254,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-link",
       title: "Item Link",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["item"],
       files: [{
         path: "registry/base-nova/demo/item-link.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18273,11 +18273,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-size",
       title: "Item Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","item"],
       files: [{
         path: "registry/base-nova/demo/item-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18292,11 +18292,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "item-variant",
       title: "Item Variant",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","item"],
       files: [{
         path: "registry/base-nova/demo/item-variant.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18311,11 +18311,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-button",
       title: "Kbd Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","kbd"],
       files: [{
         path: "registry/base-nova/demo/kbd-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18330,11 +18330,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-demo",
       title: "Kbd Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["kbd"],
       files: [{
         path: "registry/base-nova/demo/kbd-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18349,11 +18349,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-group",
       title: "Kbd Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["kbd"],
       files: [{
         path: "registry/base-nova/demo/kbd-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18368,11 +18368,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-input-group",
       title: "Kbd Input Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","kbd"],
       files: [{
         path: "registry/base-nova/demo/kbd-input-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18387,11 +18387,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "kbd-tooltip",
       title: "Kbd Tooltip",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","button-group","kbd","tooltip"],
       files: [{
         path: "registry/base-nova/demo/kbd-tooltip.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18406,11 +18406,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "label-demo",
       title: "Label Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["checkbox","label"],
       files: [{
         path: "registry/base-nova/demo/label-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18425,11 +18425,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "menubar-demo",
       title: "Menubar Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["menubar"],
       files: [{
         path: "registry/base-nova/demo/menubar-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18444,11 +18444,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "native-select-demo",
       title: "Native Select Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["native-select"],
       files: [{
         path: "registry/base-nova/demo/native-select-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18463,11 +18463,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "native-select-disabled",
       title: "Native Select Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["native-select"],
       files: [{
         path: "registry/base-nova/demo/native-select-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18482,11 +18482,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "native-select-groups",
       title: "Native Select Groups",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["native-select"],
       files: [{
         path: "registry/base-nova/demo/native-select-groups.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18501,11 +18501,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "native-select-invalid",
       title: "Native Select Invalid",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["native-select"],
       files: [{
         path: "registry/base-nova/demo/native-select-invalid.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18520,11 +18520,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "navigation-menu-demo",
       title: "Navigation Menu Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["navigation-menu"],
       files: [{
         path: "registry/base-nova/demo/navigation-menu-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18539,11 +18539,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "pagination-demo",
       title: "Pagination Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["pagination"],
       files: [{
         path: "registry/base-nova/demo/pagination-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18558,11 +18558,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "popover-demo",
       title: "Popover Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","input","label","popover"],
       files: [{
         path: "registry/base-nova/demo/popover-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18577,11 +18577,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "progress-demo",
       title: "Progress Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["progress"],
       files: [{
         path: "registry/base-nova/demo/progress-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18596,11 +18596,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "radio-group-demo",
       title: "Radio Group Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["label","radio-group"],
       files: [{
         path: "registry/base-nova/demo/radio-group-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18615,11 +18615,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "resizable-demo-with-handle",
       title: "Resizable Demo With Handle",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["resizable"],
       files: [{
         path: "registry/base-nova/demo/resizable-demo-with-handle.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18634,11 +18634,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "resizable-demo",
       title: "Resizable Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["resizable"],
       files: [{
         path: "registry/base-nova/demo/resizable-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18653,11 +18653,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "resizable-handle",
       title: "Resizable Handle",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["resizable"],
       files: [{
         path: "registry/base-nova/demo/resizable-handle.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18672,11 +18672,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "resizable-vertical",
       title: "Resizable Vertical",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["resizable"],
       files: [{
         path: "registry/base-nova/demo/resizable-vertical.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18691,11 +18691,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "scroll-area-demo",
       title: "Scroll Area Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["scroll-area","separator"],
       files: [{
         path: "registry/base-nova/demo/scroll-area-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18710,11 +18710,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "scroll-area-horizontal-demo",
       title: "Scroll Area Horizontal Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["scroll-area"],
       files: [{
         path: "registry/base-nova/demo/scroll-area-horizontal-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18729,11 +18729,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "select-demo",
       title: "Select Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["select"],
       files: [{
         path: "registry/base-nova/demo/select-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18748,11 +18748,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "select-scrollable",
       title: "Select Scrollable",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["select"],
       files: [{
         path: "registry/base-nova/demo/select-scrollable.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18767,11 +18767,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "separator-demo",
       title: "Separator Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["separator"],
       files: [{
         path: "registry/base-nova/demo/separator-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18786,11 +18786,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sheet-demo",
       title: "Sheet Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","input","label","sheet"],
       files: [{
         path: "registry/base-nova/demo/sheet-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18805,11 +18805,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sheet-side",
       title: "Sheet Side",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","input","label","sheet"],
       files: [{
         path: "registry/base-nova/demo/sheet-side.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18824,11 +18824,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "skeleton-card",
       title: "Skeleton Card",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["skeleton"],
       files: [{
         path: "registry/base-nova/demo/skeleton-card.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18843,11 +18843,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "skeleton-demo",
       title: "Skeleton Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["skeleton"],
       files: [{
         path: "registry/base-nova/demo/skeleton-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18862,11 +18862,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "slider-demo",
       title: "Slider Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["slider"],
       files: [{
         path: "registry/base-nova/demo/slider-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18881,11 +18881,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sonner-demo",
       title: "Sonner Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/sonner-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18900,11 +18900,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "sonner-types",
       title: "Sonner Types",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button"],
       files: [{
         path: "registry/base-nova/demo/sonner-types.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18919,11 +18919,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-badge",
       title: "Spinner Badge",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["badge","spinner"],
       files: [{
         path: "registry/base-nova/demo/spinner-badge.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18938,11 +18938,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-basic",
       title: "Spinner Basic",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["spinner"],
       files: [{
         path: "registry/base-nova/demo/spinner-basic.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18957,11 +18957,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-button",
       title: "Spinner Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","spinner"],
       files: [{
         path: "registry/base-nova/demo/spinner-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18976,11 +18976,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-color",
       title: "Spinner Color",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["spinner"],
       files: [{
         path: "registry/base-nova/demo/spinner-color.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -18995,11 +18995,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-custom",
       title: "Spinner Custom",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/spinner-custom.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19014,11 +19014,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-demo",
       title: "Spinner Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["item","spinner"],
       files: [{
         path: "registry/base-nova/demo/spinner-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19033,11 +19033,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-empty",
       title: "Spinner Empty",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","empty","spinner"],
       files: [{
         path: "registry/base-nova/demo/spinner-empty.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19052,11 +19052,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-input-group",
       title: "Spinner Input Group",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["input-group","spinner"],
       files: [{
         path: "registry/base-nova/demo/spinner-input-group.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19071,11 +19071,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-item",
       title: "Spinner Item",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","item","progress","spinner"],
       files: [{
         path: "registry/base-nova/demo/spinner-item.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19090,11 +19090,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "spinner-size",
       title: "Spinner Size",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["spinner"],
       files: [{
         path: "registry/base-nova/demo/spinner-size.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19109,11 +19109,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "switch-demo",
       title: "Switch Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["label","switch"],
       files: [{
         path: "registry/base-nova/demo/switch-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19128,11 +19128,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "table-demo",
       title: "Table Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["table"],
       files: [{
         path: "registry/base-nova/demo/table-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19147,11 +19147,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "tabs-demo",
       title: "Tabs Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","card","input","label","tabs"],
       files: [{
         path: "registry/base-nova/demo/tabs-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19166,11 +19166,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-demo",
       title: "Textarea Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["textarea"],
       files: [{
         path: "registry/base-nova/demo/textarea-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19185,11 +19185,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-disabled",
       title: "Textarea Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["textarea"],
       files: [{
         path: "registry/base-nova/demo/textarea-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19204,11 +19204,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-with-button",
       title: "Textarea With Button",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","textarea"],
       files: [{
         path: "registry/base-nova/demo/textarea-with-button.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19223,11 +19223,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-with-label",
       title: "Textarea With Label",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["label","textarea"],
       files: [{
         path: "registry/base-nova/demo/textarea-with-label.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19242,11 +19242,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "textarea-with-text",
       title: "Textarea With Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["label","textarea"],
       files: [{
         path: "registry/base-nova/demo/textarea-with-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19261,11 +19261,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-demo",
       title: "Toggle Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/base-nova/demo/toggle-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19280,11 +19280,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-disabled",
       title: "Toggle Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/base-nova/demo/toggle-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19299,11 +19299,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-demo",
       title: "Toggle Group Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/base-nova/demo/toggle-group-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19318,11 +19318,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-disabled",
       title: "Toggle Group Disabled",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/base-nova/demo/toggle-group-disabled.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19337,11 +19337,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-lg",
       title: "Toggle Group Lg",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/base-nova/demo/toggle-group-lg.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19356,11 +19356,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-outline",
       title: "Toggle Group Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/base-nova/demo/toggle-group-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19375,11 +19375,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-single",
       title: "Toggle Group Single",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/base-nova/demo/toggle-group-single.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19394,11 +19394,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-sm",
       title: "Toggle Group Sm",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/base-nova/demo/toggle-group-sm.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19413,11 +19413,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-group-spacing",
       title: "Toggle Group Spacing",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle-group"],
       files: [{
         path: "registry/base-nova/demo/toggle-group-spacing.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19432,11 +19432,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-lg",
       title: "Toggle Lg",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/base-nova/demo/toggle-lg.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19451,11 +19451,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-outline",
       title: "Toggle Outline",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/base-nova/demo/toggle-outline.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19470,11 +19470,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-sm",
       title: "Toggle Sm",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/base-nova/demo/toggle-sm.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19489,11 +19489,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "toggle-with-text",
       title: "Toggle With Text",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["toggle"],
       files: [{
         path: "registry/base-nova/demo/toggle-with-text.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19508,11 +19508,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "tooltip-demo",
       title: "Tooltip Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: ["button","tooltip"],
       files: [{
         path: "registry/base-nova/demo/tooltip-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19527,11 +19527,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-blockquote",
       title: "Typography Blockquote",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-blockquote.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19546,11 +19546,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-demo",
       title: "Typography Demo",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-demo.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19565,11 +19565,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-h1",
       title: "Typography H1",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-h1.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19584,11 +19584,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-h2",
       title: "Typography H2",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-h2.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19603,11 +19603,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-h3",
       title: "Typography H3",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-h3.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19622,11 +19622,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-h4",
       title: "Typography H4",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-h4.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19641,11 +19641,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-inline-code",
       title: "Typography Inline Code",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-inline-code.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19660,11 +19660,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-large",
       title: "Typography Large",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-large.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19679,11 +19679,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-lead",
       title: "Typography Lead",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-lead.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19698,11 +19698,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-list",
       title: "Typography List",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-list.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19717,11 +19717,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-muted",
       title: "Typography Muted",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-muted.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19736,11 +19736,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-p",
       title: "Typography P",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-p.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19755,11 +19755,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-small",
       title: "Typography Small",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-small.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
@@ -19774,11 +19774,11 @@ export const Index: Record<string, Record<string, any>> = {
       name: "typography-table",
       title: "Typography Table",
       description: "",
-      type: "registry:example",
+      type: "registry:internal",
       registryDependencies: [],
       files: [{
         path: "registry/base-nova/demo/typography-table.tsx",
-        type: "registry:example",
+        type: "registry:internal",
         target: ""
       }],
       component: React.lazy(async () => {
