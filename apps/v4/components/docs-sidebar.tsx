@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
+import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import type { source } from "@/lib/source"
 import {
   Sidebar,
@@ -48,6 +49,7 @@ export function DocsSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar> & { tree: typeof source.pageTree }) {
   const pathname = usePathname()
+  const currentBase = getCurrentBase(pathname)
 
   return (
     <Sidebar
@@ -102,37 +104,34 @@ export function DocsSidebar({
               <SidebarGroupContent>
                 {item.type === "folder" && (
                   <SidebarMenu className="gap-0.5">
-                    {item.children.map((item) => {
-                      if (
-                        !showMcpDocs &&
-                        item.type === "page" &&
-                        item.url?.includes("/mcp")
-                      ) {
+                    {getPagesFromFolder(item, currentBase).map((page) => {
+                      if (!showMcpDocs && page.url.includes("/mcp")) {
+                        return null
+                      }
+
+                      if (EXCLUDED_PAGES.includes(page.url)) {
                         return null
                       }
 
                       return (
-                        item.type === "page" &&
-                        !EXCLUDED_PAGES.includes(item.url) && (
-                          <SidebarMenuItem key={item.url}>
-                            <SidebarMenuButton
-                              asChild
-                              isActive={item.url === pathname}
-                              className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
-                            >
-                              <Link href={item.url}>
-                                <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
-                                {item.name}
-                                {PAGES_NEW.includes(item.url) && (
-                                  <span
-                                    className="flex size-2 rounded-full bg-blue-500"
-                                    title="New"
-                                  />
-                                )}
-                              </Link>
-                            </SidebarMenuButton>
-                          </SidebarMenuItem>
-                        )
+                        <SidebarMenuItem key={page.url}>
+                          <SidebarMenuButton
+                            asChild
+                            isActive={page.url === pathname}
+                            className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
+                          >
+                            <Link href={page.url}>
+                              <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
+                              {page.name}
+                              {PAGES_NEW.includes(page.url) && (
+                                <span
+                                  className="flex size-2 rounded-full bg-blue-500"
+                                  title="New"
+                                />
+                              )}
+                            </Link>
+                          </SidebarMenuButton>
+                        </SidebarMenuItem>
                       )
                     })}
                   </SidebarMenu>

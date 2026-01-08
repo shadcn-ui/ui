@@ -1,22 +1,86 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
+import { ExamplesIndex } from "@/examples/__index__"
 import { registryItemSchema, type registryItemFileSchema } from "shadcn/schema"
 import { Project, ScriptKind } from "ts-morph"
 import { type z } from "zod"
 
-import { Index } from "@/registry/__index__"
-import { type Style } from "@/registry/_legacy-styles"
+import { Index as StylesIndex } from "@/registry/__index__"
+import { BASES } from "@/registry/bases"
+import { Index as BasesIndex } from "@/registry/bases/__index__"
 
-export function getRegistryComponent(name: string, styleName: Style["name"]) {
-  return Index[styleName]?.[name]?.component
+const INDEXED_STYLES = ["new-york-v4"]
+
+function getBaseForStyle(styleName: string) {
+  for (const base of BASES) {
+    if (styleName.startsWith(`${base.name}-`)) {
+      return base.name
+    }
+  }
+  return null
+}
+
+export function getDemoComponent(name: string, styleName: string) {
+  const base = getBaseForStyle(styleName)
+  if (!base) return undefined
+  return ExamplesIndex[base]?.[name]?.component
+}
+
+export async function getDemoItem(name: string, styleName: string) {
+  const base = getBaseForStyle(styleName)
+  if (!base) return null
+
+  const demo = ExamplesIndex[base]?.[name]
+  if (!demo) {
+    return null
+  }
+
+  const filePath = path.join(process.cwd(), demo.filePath)
+  const content = await fs.readFile(filePath, "utf-8")
+
+  return {
+    name: demo.name,
+    type: "registry:internal" as const,
+    files: [
+      {
+        path: demo.filePath,
+        content,
+        type: "registry:internal" as const,
+      },
+    ],
+  }
+}
+
+function getIndexForStyle(styleName: string) {
+  if (INDEXED_STYLES.includes(styleName)) {
+    return { index: StylesIndex, key: styleName }
+  }
+
+  const base = getBaseForStyle(styleName)
+  if (base) {
+    return { index: BasesIndex, key: base }
+  }
+
+  return { index: StylesIndex, key: styleName }
+}
+
+export function getRegistryComponent(name: string, styleName: string) {
+  const demoComponent = getDemoComponent(name, styleName)
+  if (demoComponent) {
+    return demoComponent
+  }
+
+  const { index, key } = getIndexForStyle(styleName)
+  return index[key]?.[name]?.component
 }
 
 export async function getRegistryItems(
-  styleName: Style["name"],
+  styleName: string,
   filter?: (item: z.infer<typeof registryItemSchema>) => boolean
 ) {
-  const styleIndex = Index[styleName]
+  const { index, key } = getIndexForStyle(styleName)
+  const styleIndex = index[key]
 
   if (!styleIndex) {
     return []
@@ -34,8 +98,9 @@ export async function getRegistryItems(
   ).then((results) => results.filter(Boolean))
 }
 
-export async function getRegistryItem(name: string, styleName: Style["name"]) {
-  const item = Index[styleName]?.[name]
+export async function getRegistryItem(name: string, styleName: string) {
+  const { index, key } = getIndexForStyle(styleName)
+  const item = index[key]?.[name]
 
   if (!item) {
     return null

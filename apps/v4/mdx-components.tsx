@@ -2,6 +2,8 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
+import { type PageTreeFolder } from "@/lib/page-tree"
+import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { CodeBlockCommand } from "@/components/code-block-command"
@@ -33,6 +35,25 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
+
+// Wrapper component that passes the components folder from the server.
+// This is only used on /docs/components/ index page, so default to radix.
+function ComponentsListWrapper() {
+  const componentsFolder = source.pageTree.children.find(
+    (page) => page.$id === "components"
+  )
+
+  if (componentsFolder?.type !== "folder") {
+    return null
+  }
+
+  return (
+    <ComponentsList
+      componentsFolder={componentsFolder as PageTreeFolder}
+      currentBase="radix"
+    />
+  )
+}
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
@@ -266,7 +287,7 @@ export const mdxComponents = {
   ),
   Steps: ({ ...props }) => (
     <div
-      className="[&>h3]:step steps mb-12 [counter-reset:step] *:[h3]:first:!mt-0"
+      className="[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8"
       {...props}
     />
   ),
@@ -343,7 +364,7 @@ export const mdxComponents = {
   ComponentPreview,
   ComponentSource,
   CodeCollapsibleWrapper,
-  ComponentsList,
+  ComponentsList: ComponentsListWrapper,
   DirectoryList,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link

@@ -1,0 +1,102 @@
+"use client"
+
+import * as React from "react"
+import { Button } from "@/examples/radix/ui/button"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/examples/radix/ui/command"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/examples/radix/ui/dropdown-menu"
+import { MoreHorizontal } from "lucide-react"
+
+const labels = [
+  "feature",
+  "bug",
+  "enhancement",
+  "documentation",
+  "design",
+  "question",
+  "maintenance",
+]
+
+export default function ComboboxDropdownMenu() {
+  const [label, setLabel] = React.useState("feature")
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <div className="flex w-full flex-col items-start justify-between rounded-md border px-4 py-3 sm:flex-row sm:items-center">
+      <p className="text-sm leading-none font-medium">
+        <span className="bg-primary text-primary-foreground mr-2 rounded-lg px-2 py-1 text-xs">
+          {label}
+        </span>
+        <span className="text-muted-foreground">Create a new project</span>
+      </p>
+      <DropdownMenu open={open} onOpenChange={setOpen}>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="sm">
+            <MoreHorizontal />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-[200px]">
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem>Assign to...</DropdownMenuItem>
+            <DropdownMenuItem>Set due date...</DropdownMenuItem>
+          </DropdownMenuGroup>
+          <DropdownMenuGroup>
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Apply label</DropdownMenuSubTrigger>
+              <DropdownMenuSubContent className="p-0">
+                <Command>
+                  <CommandInput
+                    placeholder="Filter label..."
+                    autoFocus={true}
+                    className="h-9"
+                  />
+                  <CommandList>
+                    <CommandEmpty>No label found.</CommandEmpty>
+                    <CommandGroup>
+                      {labels.map((label) => (
+                        <CommandItem
+                          key={label}
+                          value={label}
+                          onSelect={(value) => {
+                            setLabel(value)
+                            setOpen(false)
+                          }}
+                        >
+                          {label}
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  </CommandList>
+                </Command>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+          </DropdownMenuGroup>
+          <DropdownMenuGroup>
+            <DropdownMenuItem className="text-red-600">
+              Delete
+              <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  )
+}

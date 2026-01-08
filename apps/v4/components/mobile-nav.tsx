@@ -2,10 +2,11 @@
 
 import * as React from "react"
 import Link, { type LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
 import { PAGES_NEW } from "@/lib/docs"
 import { showMcpDocs } from "@/lib/flags"
+import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import { type source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -19,7 +20,7 @@ const TOP_LEVEL_SECTIONS = [
   { name: "Get Started", href: "/docs" },
   {
     name: "Components",
-    href: "/docs/components",
+    href: "/docs/components/radix",
   },
   {
     name: "Directory",
@@ -49,6 +50,8 @@ export function MobileNav({
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
+  const pathname = usePathname()
+  const currentBase = getCurrentBase(pathname)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -125,31 +128,30 @@ export function MobileNav({
           <div className="flex flex-col gap-8">
             {tree?.children?.map((group, index) => {
               if (group.type === "folder") {
+                const pages = getPagesFromFolder(group, currentBase)
                 return (
                   <div key={index} className="flex flex-col gap-4">
                     <div className="text-muted-foreground text-sm font-medium">
                       {group.name}
                     </div>
                     <div className="flex flex-col gap-3">
-                      {group.children.map((item) => {
-                        if (item.type === "page") {
-                          if (!showMcpDocs && item.url.includes("/mcp")) {
-                            return null
-                          }
-                          return (
-                            <MobileLink
-                              key={`${item.url}-${index}`}
-                              href={item.url}
-                              onOpenChange={setOpen}
-                              className="flex items-center gap-2"
-                            >
-                              {item.name}{" "}
-                              {PAGES_NEW.includes(item.url) && (
-                                <span className="flex size-2 rounded-full bg-blue-500" />
-                              )}
-                            </MobileLink>
-                          )
+                      {pages.map((item) => {
+                        if (!showMcpDocs && item.url.includes("/mcp")) {
+                          return null
                         }
+                        return (
+                          <MobileLink
+                            key={`${item.url}-${index}`}
+                            href={item.url}
+                            onOpenChange={setOpen}
+                            className="flex items-center gap-2"
+                          >
+                            {item.name}{" "}
+                            {PAGES_NEW.includes(item.url) && (
+                              <span className="flex size-2 rounded-full bg-blue-500" />
+                            )}
+                          </MobileLink>
+                        )
                       })}
                     </div>
                   </div>

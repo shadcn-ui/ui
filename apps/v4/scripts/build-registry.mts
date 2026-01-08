@@ -37,9 +37,13 @@ try {
 
   const stylesToBuild = getStylesToBuild()
 
-  // We only need the legacy styles here for backward compatibility.
+  // Build index for legacy styles and whitelisted base-style combinations.
   console.log(`📦 Building registry/__index__.tsx...`)
-  await buildRegistryIndex([...legacyStyles])
+  const stylesForIndex = WHITELISTED_STYLES.map((name) => ({
+    name,
+    title: name,
+  }))
+  await buildRegistryIndex(stylesForIndex)
 
   console.log("💅 Building styles...")
   for (const style of stylesToBuild) {
@@ -53,6 +57,10 @@ try {
 
   console.log("\n⚙️ Building public/r/config.json...")
   await buildConfig()
+
+  // Copy UI to examples before cleanup.
+  console.log("\n📋 Copying UI to examples...")
+  await copyUIToExamples()
 
   // Clean up intermediate files and generated base directories.
   console.log("\n🧹 Cleaning up...")
@@ -93,6 +101,11 @@ export const Index: Record<string, Record<string, any>> = {`
   "${base.name}": {`
 
     for (const item of registry.items) {
+      // Skip demos - they're handled by the examples index.
+      if (item.type === "registry:internal") {
+        continue
+      }
+
       const files =
         item.files?.map((file) => ({
           path: typeof file === "string" ? file : file.path,
@@ -166,7 +179,10 @@ async function buildBases(bases: Base[]) {
       throw new Error(`Invalid registry schema for ${base.name}`)
     }
 
-    const registryItems = result.data.items
+    // Filter out demos - they're handled by the examples index.
+    const registryItems = result.data.items.filter(
+      (item) => item.type !== "registry:internal"
+    )
 
     for (const style of STYLES) {
       console.log(`   ✅ ${base.name}-${style.name}...`)
@@ -214,11 +230,25 @@ async function buildBases(bases: Base[]) {
           const fileExtension = path.extname(file.path)
           const shouldTransform =
             fileExtension === ".tsx" || fileExtension === ".ts"
-          const transformedContent = shouldTransform
-            ? await transformStyle(source, {
-                styleMap: styleMap,
-              })
-            : source
+
+          let transformedContent = source
+
+          if (shouldTransform) {
+            // Transform style classes (cn-* -> Tailwind).
+            transformedContent = await transformStyle(source, {
+              styleMap: styleMap,
+            })
+
+            // Transform import paths from base to style-specific paths.
+            // e.g., @/registry/bases/radix/ui/button -> @/registry/radix-nova/ui/button
+            transformedContent = transformedContent.replace(
+              new RegExp(
+                `@/registry/bases/${base.name}/`,
+                "g"
+              ),
+              `@/registry/${base.name}-${style.name}/`
+            )
+          }
 
           const outputPath = path.join(
             process.cwd(),
@@ -261,6 +291,11 @@ export const Index: Record<string, Record<string, any>> = {`
   "${style.name}": {`
 
     for (const item of registry.items) {
+      // Skip demos - they're handled by the examples index.
+      if (item.type === "registry:internal") {
+        continue
+      }
+
       const files =
         item.files?.map((file) => ({
           path: typeof file === "string" ? file : file.path,
@@ -450,4 +485,44 @@ async function buildConfig() {
       }
     })
   })
+}
+
+async function copyUIToExamples() {
+  const defaultStyle = "nova"
+  const directories = ["ui", "lib", "hooks"]
+
+  for (const base of BASES) {
+    const sourceStyle = `${base.name}-${defaultStyle}`
+
+    for (const dir of directories) {
+      const fromDir = path.join(process.cwd(), `registry/${sourceStyle}/${dir}`)
+      const toDir = path.join(process.cwd(), `examples/${base.name}/${dir}`)
+
+      try {
+        await fs.access(fromDir)
+      } catch {
+        console.log(`   ⚠️ registry/${sourceStyle}/${dir} not found, skipping`)
+        continue
+      }
+
+      rimraf.sync(toDir)
+      await fs.mkdir(toDir, { recursive: true })
+
+      const files = await fs.readdir(fromDir)
+      for (const file of files) {
+        const sourcePath = path.join(fromDir, file)
+        const targetPath = path.join(toDir, file)
+
+        let content = await fs.readFile(sourcePath, "utf-8")
+        content = content.replace(
+          new RegExp(`@/registry/${sourceStyle}/`, "g"),
+          `@/examples/${base.name}/`
+        )
+        await fs.writeFile(targetPath, content)
+      }
+      console.log(
+        `   ✅ registry/${sourceStyle}/${dir} → examples/${base.name}/${dir}`
+      )
+    }
+  }
 }
