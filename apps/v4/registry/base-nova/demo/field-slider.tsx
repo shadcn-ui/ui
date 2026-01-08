@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import * as React from "react"
 
 import {
   Field,
@@ -10,7 +10,8 @@ import {
 import { Slider } from "@/registry/base-nova/ui/slider"
 
 export default function FieldSlider() {
-  const [value, setValue] = useState([200, 800])
+  const [value, setValue] = React.useState([200, 800])
+
   return (
     <div className="w-full max-w-md">
       <Field>
@@ -22,7 +23,7 @@ export default function FieldSlider() {
         </FieldDescription>
         <Slider
           value={value}
-          onValueChange={setValue}
+          onValueChange={(value) => setValue(value as [number, number])}
           max={1000}
           min={0}
           step={10}

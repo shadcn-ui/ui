@@ -19,14 +19,16 @@ export default function InputGroupTooltip() {
         <InputGroupInput placeholder="Enter password" type="password" />
         <InputGroupAddon align="inline-end">
           <Tooltip>
-            <TooltipTrigger asChild>
-              <InputGroupButton
-                variant="ghost"
-                aria-label="Info"
-                size="icon-xs"
-              >
-                <InfoIcon />
-              </InputGroupButton>
+            <TooltipTrigger
+              render={
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="Info"
+                  size="icon-xs"
+                />
+              }
+            >
+              <InfoIcon />
             </TooltipTrigger>
             <TooltipContent>
               <p>Password must be at least 8 characters</p>
@@ -38,14 +40,16 @@ export default function InputGroupTooltip() {
         <InputGroupInput placeholder="Your email address" />
         <InputGroupAddon align="inline-end">
           <Tooltip>
-            <TooltipTrigger asChild>
-              <InputGroupButton
-                variant="ghost"
-                aria-label="Help"
-                size="icon-xs"
-              >
-                <HelpCircle />
-              </InputGroupButton>
+            <TooltipTrigger
+              render={
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="Help"
+                  size="icon-xs"
+                />
+              }
+            >
+              <HelpCircle />
             </TooltipTrigger>
             <TooltipContent>
               <p>We&apos;ll use this to send you notifications</p>
@@ -56,16 +60,10 @@ export default function InputGroupTooltip() {
       <InputGroup>
         <InputGroupInput placeholder="Enter API key" />
         <Tooltip>
-          <TooltipTrigger asChild>
-            <InputGroupAddon>
-              <InputGroupButton
-                variant="ghost"
-                aria-label="Help"
-                size="icon-xs"
-              >
-                <HelpCircle />
-              </InputGroupButton>
-            </InputGroupAddon>
+          <TooltipTrigger render={<InputGroupAddon />}>
+            <InputGroupButton variant="ghost" aria-label="Help" size="icon-xs">
+              <HelpCircle />
+            </InputGroupButton>
           </TooltipTrigger>
           <TooltipContent side="left">
             <p>Click for help with API keys</p>

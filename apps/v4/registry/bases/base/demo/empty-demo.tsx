@@ -32,13 +32,11 @@ export default function EmptyDemo() {
       </EmptyContent>
       <Button
         variant="link"
-        asChild
+        render={<a href="#" />}
         className="text-muted-foreground"
         size="sm"
       >
-        <a href="#">
-          Learn More <ArrowUpRightIcon />
-        </a>
+        Learn More <ArrowUpRightIcon />
       </Button>
     </Empty>
   )

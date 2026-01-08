@@ -1,5 +1,3 @@
-import * as React from "react"
-
 import {
   Select,
   SelectContent,
@@ -10,64 +8,103 @@ import {
   SelectValue,
 } from "@/registry/bases/base/ui/select"
 
+const northAmerica = [
+  { label: "Eastern Standard Time (EST)", value: "est" },
+  { label: "Central Standard Time (CST)", value: "cst" },
+  { label: "Mountain Standard Time (MST)", value: "mst" },
+  { label: "Pacific Standard Time (PST)", value: "pst" },
+  { label: "Alaska Standard Time (AKST)", value: "akst" },
+  { label: "Hawaii Standard Time (HST)", value: "hst" },
+]
+
+const europeAfrica = [
+  { label: "Greenwich Mean Time (GMT)", value: "gmt" },
+  { label: "Central European Time (CET)", value: "cet" },
+  { label: "Eastern European Time (EET)", value: "eet" },
+  { label: "Western European Summer Time (WEST)", value: "west" },
+  { label: "Central Africa Time (CAT)", value: "cat" },
+  { label: "East Africa Time (EAT)", value: "eat" },
+]
+
+const asia = [
+  { label: "Moscow Time (MSK)", value: "msk" },
+  { label: "India Standard Time (IST)", value: "ist" },
+  { label: "China Standard Time (CST)", value: "cst_china" },
+  { label: "Japan Standard Time (JST)", value: "jst" },
+  { label: "Korea Standard Time (KST)", value: "kst" },
+  { label: "Indonesia Central Standard Time (WITA)", value: "ist_indonesia" },
+]
+
+const australiaPacific = [
+  { label: "Australian Western Standard Time (AWST)", value: "awst" },
+  { label: "Australian Central Standard Time (ACST)", value: "acst" },
+  { label: "Australian Eastern Standard Time (AEST)", value: "aest" },
+  { label: "New Zealand Standard Time (NZST)", value: "nzst" },
+  { label: "Fiji Time (FJT)", value: "fjt" },
+]
+
+const southAmerica = [
+  { label: "Argentina Time (ART)", value: "art" },
+  { label: "Bolivia Time (BOT)", value: "bot" },
+  { label: "Brasilia Time (BRT)", value: "brt" },
+  { label: "Chile Standard Time (CLT)", value: "clt" },
+]
+
+const items = [
+  { label: "Select a timezone", value: null },
+  ...northAmerica,
+  ...europeAfrica,
+  ...asia,
+  ...australiaPacific,
+  ...southAmerica,
+]
+
 export function SelectScrollable() {
   return (
-    <Select>
+    <Select items={items}>
       <SelectTrigger className="w-[280px]">
-        <SelectValue placeholder="Select a timezone" />
+        <SelectValue />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>North America</SelectLabel>
-          <SelectItem value="est">Eastern Standard Time (EST)</SelectItem>
-          <SelectItem value="cst">Central Standard Time (CST)</SelectItem>
-          <SelectItem value="mst">Mountain Standard Time (MST)</SelectItem>
-          <SelectItem value="pst">Pacific Standard Time (PST)</SelectItem>
-          <SelectItem value="akst">Alaska Standard Time (AKST)</SelectItem>
-          <SelectItem value="hst">Hawaii Standard Time (HST)</SelectItem>
+          {northAmerica.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
         </SelectGroup>
         <SelectGroup>
           <SelectLabel>Europe & Africa</SelectLabel>
-          <SelectItem value="gmt">Greenwich Mean Time (GMT)</SelectItem>
-          <SelectItem value="cet">Central European Time (CET)</SelectItem>
-          <SelectItem value="eet">Eastern European Time (EET)</SelectItem>
-          <SelectItem value="west">
-            Western European Summer Time (WEST)
-          </SelectItem>
-          <SelectItem value="cat">Central Africa Time (CAT)</SelectItem>
-          <SelectItem value="eat">East Africa Time (EAT)</SelectItem>
+          {europeAfrica.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
         </SelectGroup>
         <SelectGroup>
           <SelectLabel>Asia</SelectLabel>
-          <SelectItem value="msk">Moscow Time (MSK)</SelectItem>
-          <SelectItem value="ist">India Standard Time (IST)</SelectItem>
-          <SelectItem value="cst_china">China Standard Time (CST)</SelectItem>
-          <SelectItem value="jst">Japan Standard Time (JST)</SelectItem>
-          <SelectItem value="kst">Korea Standard Time (KST)</SelectItem>
-          <SelectItem value="ist_indonesia">
-            Indonesia Central Standard Time (WITA)
-          </SelectItem>
+          {asia.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
         </SelectGroup>
         <SelectGroup>
           <SelectLabel>Australia & Pacific</SelectLabel>
-          <SelectItem value="awst">
-            Australian Western Standard Time (AWST)
-          </SelectItem>
-          <SelectItem value="acst">
-            Australian Central Standard Time (ACST)
-          </SelectItem>
-          <SelectItem value="aest">
-            Australian Eastern Standard Time (AEST)
-          </SelectItem>
-          <SelectItem value="nzst">New Zealand Standard Time (NZST)</SelectItem>
-          <SelectItem value="fjt">Fiji Time (FJT)</SelectItem>
+          {australiaPacific.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
         </SelectGroup>
         <SelectGroup>
           <SelectLabel>South America</SelectLabel>
-          <SelectItem value="art">Argentina Time (ART)</SelectItem>
-          <SelectItem value="bot">Bolivia Time (BOT)</SelectItem>
-          <SelectItem value="brt">Brasilia Time (BRT)</SelectItem>
-          <SelectItem value="clt">Chile Standard Time (CLT)</SelectItem>
+          {southAmerica.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>

@@ -3,6 +3,7 @@ import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/base/ui/dropdown-menu"
@@ -20,19 +21,23 @@ export default function InputGroupDropdown() {
         <InputGroupInput placeholder="Enter file name" />
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <InputGroupButton
-                variant="ghost"
-                aria-label="More"
-                size="icon-xs"
-              >
-                <MoreHorizontal />
-              </InputGroupButton>
+            <DropdownMenuTrigger
+              render={
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="More"
+                  size="icon-xs"
+                />
+              }
+            >
+              <MoreHorizontal />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Copy path</DropdownMenuItem>
-              <DropdownMenuItem>Open location</DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Copy path</DropdownMenuItem>
+                <DropdownMenuItem>Open location</DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </InputGroupAddon>
@@ -41,15 +46,19 @@ export default function InputGroupDropdown() {
         <InputGroupInput placeholder="Enter search query" />
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <InputGroupButton variant="ghost" className="!pr-1.5 text-xs">
-                Search In... <ChevronDownIcon className="size-3" />
-              </InputGroupButton>
+            <DropdownMenuTrigger
+              render={
+                <InputGroupButton variant="ghost" className="!pr-1.5 text-xs" />
+              }
+            >
+              Search In... <ChevronDownIcon className="size-3" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="[--radius:0.95rem]">
-              <DropdownMenuItem>Documentation</DropdownMenuItem>
-              <DropdownMenuItem>Blog Posts</DropdownMenuItem>
-              <DropdownMenuItem>Changelog</DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Documentation</DropdownMenuItem>
+                <DropdownMenuItem>Blog Posts</DropdownMenuItem>
+                <DropdownMenuItem>Changelog</DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </InputGroupAddon>

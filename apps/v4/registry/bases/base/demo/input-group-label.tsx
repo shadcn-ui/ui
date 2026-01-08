@@ -29,15 +29,17 @@ export default function InputGroupLabel() {
             Email
           </Label>
           <Tooltip>
-            <TooltipTrigger asChild>
-              <InputGroupButton
-                variant="ghost"
-                aria-label="Help"
-                className="ml-auto rounded-full"
-                size="icon-xs"
-              >
-                <InfoIcon />
-              </InputGroupButton>
+            <TooltipTrigger
+              render={
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="Help"
+                  className="ml-auto rounded-full"
+                  size="icon-xs"
+                />
+              }
+            >
+              <InfoIcon />
             </TooltipTrigger>
             <TooltipContent>
               <p>We&apos;ll use this to send you notifications</p>

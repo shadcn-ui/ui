@@ -4,6 +4,7 @@ import { ArrowUpIcon, Search } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
@@ -67,9 +68,11 @@ export default function InputGroupDemo() {
               align="start"
               className="[--radius:0.95rem]"
             >
-              <DropdownMenuItem>Auto</DropdownMenuItem>
-              <DropdownMenuItem>Agent</DropdownMenuItem>
-              <DropdownMenuItem>Manual</DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Auto</DropdownMenuItem>
+                <DropdownMenuItem>Agent</DropdownMenuItem>
+                <DropdownMenuItem>Manual</DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
           <InputGroupText className="ml-auto">52% used</InputGroupText>

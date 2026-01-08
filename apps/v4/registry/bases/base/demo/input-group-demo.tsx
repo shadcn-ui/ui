@@ -4,6 +4,7 @@ import { ArrowUpIcon, Search } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/base/ui/dropdown-menu"
@@ -39,10 +40,12 @@ export default function InputGroupDemo() {
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
           <Tooltip>
-            <TooltipTrigger asChild>
-              <InputGroupButton className="rounded-full" size="icon-xs">
-                <IconInfoCircle />
-              </InputGroupButton>
+            <TooltipTrigger
+              render={
+                <InputGroupButton className="rounded-full" size="icon-xs" />
+              }
+            >
+              <IconInfoCircle />
             </TooltipTrigger>
             <TooltipContent>This is content in a tooltip.</TooltipContent>
           </Tooltip>
@@ -59,17 +62,19 @@ export default function InputGroupDemo() {
             <IconPlus />
           </InputGroupButton>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <InputGroupButton variant="ghost">Auto</InputGroupButton>
+            <DropdownMenuTrigger render={<InputGroupButton variant="ghost" />}>
+              Auto
             </DropdownMenuTrigger>
             <DropdownMenuContent
               side="top"
               align="start"
               className="[--radius:0.95rem]"
             >
-              <DropdownMenuItem>Auto</DropdownMenuItem>
-              <DropdownMenuItem>Agent</DropdownMenuItem>
-              <DropdownMenuItem>Manual</DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Auto</DropdownMenuItem>
+                <DropdownMenuItem>Agent</DropdownMenuItem>
+                <DropdownMenuItem>Manual</DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
           <InputGroupText className="ml-auto">52% used</InputGroupText>

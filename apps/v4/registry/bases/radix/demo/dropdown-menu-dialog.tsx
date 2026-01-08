@@ -39,8 +39,8 @@ export function DropdownMenuDialog() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-40" align="end">
-          <DropdownMenuLabel>File Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
+            <DropdownMenuLabel>File Actions</DropdownMenuLabel>
             <DropdownMenuItem onSelect={() => setShowNewDialog(true)}>
               New File...
             </DropdownMenuItem>

@@ -16,8 +16,8 @@ export function DialogDemo() {
   return (
     <Dialog>
       <form>
-        <DialogTrigger asChild>
-          <Button variant="outline">Open Dialog</Button>
+        <DialogTrigger render={<Button variant="outline" />}>
+          Open Dialog
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -38,8 +38,8 @@ export function DialogDemo() {
             </div>
           </div>
           <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+            <DialogClose render={<Button variant="outline" />}>
+              Cancel
             </DialogClose>
             <Button type="submit">Save changes</Button>
           </DialogFooter>

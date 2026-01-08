@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/base-vega/demo/tooltip-demo.tsx",
-      "content": "import { Button } from \"@/registry/base-vega/ui/button\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/registry/base-vega/ui/tooltip\"\n\nexport function TooltipDemo() {\n  return (\n    <Tooltip>\n      <TooltipTrigger asChild>\n        <Button variant=\"outline\">Hover</Button>\n      </TooltipTrigger>\n      <TooltipContent>\n        <p>Add to library</p>\n      </TooltipContent>\n    </Tooltip>\n  )\n}\n",
+      "content": "import { Button } from \"@/registry/base-vega/ui/button\"\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/registry/base-vega/ui/tooltip\"\n\nexport function TooltipDemo() {\n  return (\n    <Tooltip>\n      <TooltipTrigger render={<Button variant=\"outline\" />}>Hover</TooltipTrigger>\n      <TooltipContent>\n        <p>Add to library</p>\n      </TooltipContent>\n    </Tooltip>\n  )\n}\n",
       "type": "registry:internal"
     }
   ],

@@ -49,14 +49,12 @@ export default function ComboboxDropdownMenu() {
         <span className="text-muted-foreground">Create a new project</span>
       </p>
       <DropdownMenu open={open} onOpenChange={setOpen}>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm">
-            <MoreHorizontal />
-          </Button>
+        <DropdownMenuTrigger render={<Button variant="ghost" size="sm" />}>
+          <MoreHorizontal />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[200px]">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem>Assign to...</DropdownMenuItem>
             <DropdownMenuItem>Set due date...</DropdownMenuItem>
             <DropdownMenuSeparator />

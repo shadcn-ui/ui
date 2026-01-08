@@ -12,10 +12,8 @@ export default function KbdTooltip() {
     <div className="flex flex-wrap gap-4">
       <ButtonGroup>
         <Tooltip>
-          <TooltipTrigger asChild>
-            <Button size="sm" variant="outline">
-              Save
-            </Button>
+          <TooltipTrigger render={<Button size="sm" variant="outline" />}>
+            Save
           </TooltipTrigger>
           <TooltipContent>
             <div className="flex items-center gap-2">
@@ -24,10 +22,8 @@ export default function KbdTooltip() {
           </TooltipContent>
         </Tooltip>
         <Tooltip>
-          <TooltipTrigger asChild>
-            <Button size="sm" variant="outline">
-              Print
-            </Button>
+          <TooltipTrigger render={<Button size="sm" variant="outline" />}>
+            Print
           </TooltipTrigger>
           <TooltipContent>
             <div className="flex items-center gap-2">

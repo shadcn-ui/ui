@@ -18,7 +18,6 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
@@ -55,11 +54,12 @@ export default function ComboboxDropdownMenu() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[200px]">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem>Assign to...</DropdownMenuItem>
             <DropdownMenuItem>Set due date...</DropdownMenuItem>
-            <DropdownMenuSeparator />
+          </DropdownMenuGroup>
+          <DropdownMenuGroup>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>Apply label</DropdownMenuSubTrigger>
               <DropdownMenuSubContent className="p-0">
@@ -89,7 +89,8 @@ export default function ComboboxDropdownMenu() {
                 </Command>
               </DropdownMenuSubContent>
             </DropdownMenuSub>
-            <DropdownMenuSeparator />
+          </DropdownMenuGroup>
+          <DropdownMenuGroup>
             <DropdownMenuItem className="text-red-600">
               Delete
               <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>

@@ -3,6 +3,7 @@ import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/radix/ui/dropdown-menu"
@@ -30,9 +31,11 @@ export default function InputGroupDropdown() {
               </InputGroupButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Copy path</DropdownMenuItem>
-              <DropdownMenuItem>Open location</DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Copy path</DropdownMenuItem>
+                <DropdownMenuItem>Open location</DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </InputGroupAddon>
@@ -47,9 +50,11 @@ export default function InputGroupDropdown() {
               </InputGroupButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="[--radius:0.95rem]">
-              <DropdownMenuItem>Documentation</DropdownMenuItem>
-              <DropdownMenuItem>Blog Posts</DropdownMenuItem>
-              <DropdownMenuItem>Changelog</DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Documentation</DropdownMenuItem>
+                <DropdownMenuItem>Blog Posts</DropdownMenuItem>
+                <DropdownMenuItem>Changelog</DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </InputGroupAddon>

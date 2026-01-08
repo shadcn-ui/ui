@@ -11,6 +11,7 @@ import { Button } from "@/registry/radix-nova/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/radix-nova/ui/dropdown-menu"
@@ -50,22 +51,26 @@ export function ItemDropdown() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-72 [--radius:0.65rem]" align="end">
-          {people.map((person) => (
-            <DropdownMenuItem key={person.username} className="p-0">
-              <Item size="sm" className="w-full p-2">
-                <ItemMedia>
-                  <Avatar className="size-8">
-                    <AvatarImage src={person.avatar} className="grayscale" />
-                    <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                </ItemMedia>
-                <ItemContent className="gap-0.5">
-                  <ItemTitle>{person.username}</ItemTitle>
-                  <ItemDescription>{person.email}</ItemDescription>
-                </ItemContent>
-              </Item>
-            </DropdownMenuItem>
-          ))}
+          <DropdownMenuGroup>
+            {people.map((person) => (
+              <DropdownMenuItem key={person.username} className="p-0">
+                <Item size="sm" className="w-full p-2">
+                  <ItemMedia>
+                    <Avatar className="size-8">
+                      <AvatarImage src={person.avatar} className="grayscale" />
+                      <AvatarFallback>
+                        {person.username.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+                  </ItemMedia>
+                  <ItemContent className="gap-0.5">
+                    <ItemTitle>{person.username}</ItemTitle>
+                    <ItemDescription>{person.email}</ItemDescription>
+                  </ItemContent>
+                </Item>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

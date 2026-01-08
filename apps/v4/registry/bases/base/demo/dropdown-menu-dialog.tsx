@@ -33,14 +33,16 @@ export function DropdownMenuDialog() {
   return (
     <>
       <DropdownMenu modal={false}>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" aria-label="Open menu" size="icon-sm">
-            <MoreHorizontalIcon />
-          </Button>
+        <DropdownMenuTrigger
+          render={
+            <Button variant="outline" aria-label="Open menu" size="icon-sm" />
+          }
+        >
+          <MoreHorizontalIcon />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-40" align="end">
-          <DropdownMenuLabel>File Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
+            <DropdownMenuLabel>File Actions</DropdownMenuLabel>
             <DropdownMenuItem onSelect={() => setShowNewDialog(true)}>
               New File...
             </DropdownMenuItem>
@@ -67,8 +69,8 @@ export function DropdownMenuDialog() {
             </Field>
           </FieldGroup>
           <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+            <DialogClose render={<Button variant="outline" />}>
+              Cancel
             </DialogClose>
             <Button type="submit">Create</Button>
           </DialogFooter>
@@ -103,8 +105,8 @@ export function DropdownMenuDialog() {
             </Field>
           </FieldGroup>
           <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+            <DialogClose render={<Button variant="outline" />}>
+              Cancel
             </DialogClose>
             <Button type="submit">Send Invite</Button>
           </DialogFooter>

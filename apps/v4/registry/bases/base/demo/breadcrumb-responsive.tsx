@@ -27,6 +27,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/bases/base/ui/dropdown-menu"
@@ -66,13 +67,15 @@ export function BreadcrumbResponsive() {
                     <BreadcrumbEllipsis className="size-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
-                    {items.slice(1, -2).map((item, index) => (
-                      <DropdownMenuItem key={index}>
-                        <Link href={item.href ? item.href : "#"}>
-                          {item.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
+                    <DropdownMenuGroup>
+                      {items.slice(1, -2).map((item, index) => (
+                        <DropdownMenuItem key={index}>
+                          <Link href={item.href ? item.href : "#"}>
+                            {item.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuGroup>
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
@@ -101,6 +104,7 @@ export function BreadcrumbResponsive() {
                     <DrawerFooter className="pt-4">
                       <DrawerClose asChild>
                         <Button variant="outline">Close</Button>
+                        Close
                       </DrawerClose>
                     </DrawerFooter>
                   </DrawerContent>

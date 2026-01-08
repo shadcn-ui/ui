@@ -44,12 +44,10 @@ export default function InputGroupButtonExample() {
       </InputGroup>
       <InputGroup className="[--radius:9999px]">
         <Popover>
-          <PopoverTrigger asChild>
-            <InputGroupAddon>
-              <InputGroupButton variant="secondary" size="icon-xs">
-                <IconInfoCircle />
-              </InputGroupButton>
-            </InputGroupAddon>
+          <PopoverTrigger render={<InputGroupAddon />}>
+            <InputGroupButton variant="secondary" size="icon-xs">
+              <IconInfoCircle />
+            </InputGroupButton>
           </PopoverTrigger>
           <PopoverContent
             align="start"

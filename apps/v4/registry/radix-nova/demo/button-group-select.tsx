@@ -9,6 +9,7 @@ import { Input } from "@/registry/radix-nova/ui/input"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
 } from "@/registry/radix-nova/ui/select"
@@ -37,12 +38,16 @@ export default function ButtonGroupSelect() {
         <Select value={currency} onValueChange={setCurrency}>
           <SelectTrigger className="font-mono">{currency}</SelectTrigger>
           <SelectContent className="min-w-24">
-            {CURRENCIES.map((currency) => (
-              <SelectItem key={currency.value} value={currency.value}>
-                {currency.value}{" "}
-                <span className="text-muted-foreground">{currency.label}</span>
-              </SelectItem>
-            ))}
+            <SelectGroup>
+              {CURRENCIES.map((currency) => (
+                <SelectItem key={currency.value} value={currency.value}>
+                  {currency.value}{" "}
+                  <span className="text-muted-foreground">
+                    {currency.label}
+                  </span>
+                </SelectItem>
+              ))}
+            </SelectGroup>
           </SelectContent>
         </Select>
         <Input placeholder="10.00" pattern="[0-9]*" />

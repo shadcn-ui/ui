@@ -15,45 +15,60 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/base/ui/select"
+
+const items = [
+  { label: "Select", value: null },
+  { label: "Today", value: "0" },
+  { label: "Tomorrow", value: "1" },
+  { label: "In 3 days", value: "3" },
+  { label: "In a week", value: "7" },
+]
 
 export function DatePickerWithPresets() {
   const [date, setDate] = React.useState<Date>()
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant={"outline"}
-          className={cn(
-            "w-[240px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
-          )}
-        >
-          <CalendarIcon />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
-        </Button>
+      <PopoverTrigger
+        render={
+          <Button
+            variant={"outline"}
+            className={cn(
+              "w-[240px] justify-start text-left font-normal",
+              !date && "text-muted-foreground"
+            )}
+          />
+        }
+      >
+        <CalendarIcon />
+        {date ? format(date, "PPP") : <span>Pick a date</span>}
       </PopoverTrigger>
       <PopoverContent
         align="start"
         className="flex w-auto flex-col space-y-2 p-2"
       >
         <Select
+          items={items}
           onValueChange={(value) =>
-            setDate(addDays(new Date(), parseInt(value)))
+            setDate(addDays(new Date(), parseInt(value as string)))
           }
         >
           <SelectTrigger>
-            <SelectValue placeholder="Select" />
+            <SelectValue />
           </SelectTrigger>
-          <SelectContent position="popper">
-            <SelectItem value="0">Today</SelectItem>
-            <SelectItem value="1">Tomorrow</SelectItem>
-            <SelectItem value="3">In 3 days</SelectItem>
-            <SelectItem value="7">In a week</SelectItem>
+          <SelectContent>
+            <SelectGroup>
+              {items.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectGroup>
           </SelectContent>
         </Select>
         <div className="rounded-md border">

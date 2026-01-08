@@ -15,9 +15,7 @@ import { Label } from "@/registry/base-nova/ui/label"
 export function DialogCloseButton() {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Share</Button>
-      </DialogTrigger>
+      <DialogTrigger render={<Button variant="outline" />}>Share</DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Share link</DialogTitle>
@@ -38,10 +36,8 @@ export function DialogCloseButton() {
           </div>
         </div>
         <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
+          <DialogClose render={<Button type="button" variant="secondary" />}>
+            Close
           </DialogClose>
         </DialogFooter>
       </DialogContent>

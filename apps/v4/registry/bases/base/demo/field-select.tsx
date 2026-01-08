@@ -6,29 +6,41 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/registry/bases/base/ui/select"
+
+const items = [
+  { label: "Choose department", value: null },
+  { label: "Engineering", value: "engineering" },
+  { label: "Design", value: "design" },
+  { label: "Marketing", value: "marketing" },
+  { label: "Sales", value: "sales" },
+  { label: "Customer Support", value: "support" },
+  { label: "Human Resources", value: "hr" },
+  { label: "Finance", value: "finance" },
+  { label: "Operations", value: "operations" },
+]
 
 export default function FieldSelect() {
   return (
     <div className="w-full max-w-md">
       <Field>
         <FieldLabel>Department</FieldLabel>
-        <Select>
+        <Select items={items}>
           <SelectTrigger>
-            <SelectValue placeholder="Choose department" />
+            <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="engineering">Engineering</SelectItem>
-            <SelectItem value="design">Design</SelectItem>
-            <SelectItem value="marketing">Marketing</SelectItem>
-            <SelectItem value="sales">Sales</SelectItem>
-            <SelectItem value="support">Customer Support</SelectItem>
-            <SelectItem value="hr">Human Resources</SelectItem>
-            <SelectItem value="finance">Finance</SelectItem>
-            <SelectItem value="operations">Operations</SelectItem>
+            <SelectGroup>
+              {items.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
+            </SelectGroup>
           </SelectContent>
         </Select>
         <FieldDescription>

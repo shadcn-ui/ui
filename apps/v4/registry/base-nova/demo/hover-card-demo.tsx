@@ -13,8 +13,8 @@ import {
 export default function HoverCardDemo() {
   return (
     <HoverCard>
-      <HoverCardTrigger asChild>
-        <Button variant="link">@nextjs</Button>
+      <HoverCardTrigger render={<Button variant="link" />}>
+        @nextjs
       </HoverCardTrigger>
       <HoverCardContent className="w-80">
         <div className="flex justify-between gap-4">

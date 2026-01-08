@@ -27,10 +27,10 @@ export default function ButtonGroupDropdown() {
     <ButtonGroup>
       <Button variant="outline">Follow</Button>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="!pl-2">
-            <ChevronDownIcon />
-          </Button>
+        <DropdownMenuTrigger
+          render={<Button variant="outline" className="!pl-2" />}
+        >
+          <ChevronDownIcon />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="[--radius:1rem]">
           <DropdownMenuGroup>

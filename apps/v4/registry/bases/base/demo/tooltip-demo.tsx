@@ -8,8 +8,8 @@ import {
 export function TooltipDemo() {
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
-        <Button variant="outline">Hover</Button>
+      <TooltipTrigger render={<Button variant="outline" />}>
+        Hover
       </TooltipTrigger>
       <TooltipContent>
         <p>Add to library</p>

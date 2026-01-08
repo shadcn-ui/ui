@@ -17,10 +17,12 @@ export default function ButtonGroupPopover() {
         <BotIcon /> Copilot
       </Button>
       <Popover>
-        <PopoverTrigger asChild>
-          <Button variant="outline" size="icon" aria-label="Open Popover">
-            <ChevronDownIcon />
-          </Button>
+        <PopoverTrigger
+          render={
+            <Button variant="outline" size="icon" aria-label="Open Popover" />
+          }
+        >
+          <ChevronDownIcon />
         </PopoverTrigger>
         <PopoverContent align="end" className="rounded-xl p-0 text-sm">
           <div className="px-4 py-3">
