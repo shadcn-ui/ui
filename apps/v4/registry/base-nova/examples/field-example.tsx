@@ -31,7 +31,10 @@ import {
   NativeSelectOptGroup,
   NativeSelectOption,
 } from "@/registry/base-nova/ui/native-select"
-import { RadioGroup, RadioGroupItem } from "@/registry/base-nova/ui/radio-group"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/registry/base-nova/ui/radio-group"
 import {
   Select,
   SelectContent,

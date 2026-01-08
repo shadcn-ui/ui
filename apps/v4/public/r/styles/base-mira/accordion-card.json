@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-card",
+  "title": "Accordion Card",
+  "registryDependencies": [
+    "accordion",
+    "card"
+  ],
+  "files": [
+    {
+      "path": "registry/base-mira/demo/accordion-card.tsx",
+      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/registry/base-mira/ui/accordion\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/registry/base-mira/ui/card\"\n\nexport default function AccordionCard() {\n  return (\n    <Card className=\"w-full\">\n      <CardHeader>\n        <CardTitle>Subscription & Billing</CardTitle>\n        <CardDescription>\n          Common questions about your account, plans, and payments\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <Accordion defaultValue={[\"plans\"]}>\n          <AccordionItem value=\"plans\">\n            <AccordionTrigger>\n              What subscription plans do you offer?\n            </AccordionTrigger>\n            <AccordionContent>\n              We offer three subscription tiers: Starter ($9/month), Professional\n              ($29/month), and Enterprise ($99/month). Each plan includes\n              increasing storage limits, API access, priority support, and team\n              collaboration features.\n            </AccordionContent>\n          </AccordionItem>\n          <AccordionItem value=\"billing\">\n            <AccordionTrigger>How does billing work?</AccordionTrigger>\n            <AccordionContent>\n              Billing occurs automatically at the start of each billing cycle. We\n              accept all major credit cards, PayPal, and ACH transfers for\n              enterprise customers. You&apos;ll receive an invoice via email after\n              each payment.\n            </AccordionContent>\n          </AccordionItem>\n          <AccordionItem value=\"cancel\">\n            <AccordionTrigger>How do I cancel my subscription?</AccordionTrigger>\n            <AccordionContent>\n              You can cancel your subscription anytime from your account settings.\n              There are no cancellation fees or penalties. Your access will\n              continue until the end of your current billing period.\n            </AccordionContent>\n          </AccordionItem>\n        </Accordion>\n      </CardContent>\n    </Card>\n  )\n}\n",
+      "type": "registry:internal"
+    }
+  ],
+  "type": "registry:internal"
+}

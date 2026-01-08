@@ -10,7 +10,10 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
       role="navigation"
       aria-label="pagination"
       data-slot="pagination"
-      className={cn("mx-auto flex w-full justify-center", className)}
+      className={cn(
+        "mx-auto flex w-full justify-center",
+        className
+      )}
       {...props}
     />
   )
@@ -23,7 +26,7 @@ function PaginationContent({
   return (
     <ul
       data-slot="pagination-content"
-      className={cn("flex items-center gap-0.5", className)}
+      className={cn("gap-0.5 flex items-center", className)}
       {...props}
     />
   )
@@ -80,7 +83,9 @@ function PaginationPrevious({
         phosphor="CaretLeftIcon"
         data-icon="inline-start"
       />
-      <span className="hidden sm:block">Previous</span>
+      <span className="hidden sm:block">
+        Previous
+      </span>
     </PaginationLink>
   )
 }
@@ -117,7 +122,7 @@ function PaginationEllipsis({
       aria-hidden
       data-slot="pagination-ellipsis"
       className={cn(
-        "flex size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4",
+        "size-8 items-center justify-center [&_svg:not([class*='size-'])]:size-4 flex items-center justify-center",
         className
       )}
       {...props}

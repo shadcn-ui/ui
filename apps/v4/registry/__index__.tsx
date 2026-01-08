@@ -9603,6 +9603,44 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "accordion-borders": {
+      name: "accordion-borders",
+      title: "Accordion Borders",
+      description: "",
+      type: "registry:internal",
+      registryDependencies: ["accordion"],
+      files: [{
+        path: "registry/radix-nova/demo/accordion-borders.tsx",
+        type: "registry:internal",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/demo/accordion-borders.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-card": {
+      name: "accordion-card",
+      title: "Accordion Card",
+      description: "",
+      type: "registry:internal",
+      registryDependencies: ["accordion","card"],
+      files: [{
+        path: "registry/radix-nova/demo/accordion-card.tsx",
+        type: "registry:internal",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/radix-nova/demo/accordion-card.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "alert-demo": {
       name: "alert-demo",
       title: "Alert Demo",
@@ -15869,6 +15907,44 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/base-nova/demo/accordion-multiple.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-borders": {
+      name: "accordion-borders",
+      title: "Accordion Borders",
+      description: "",
+      type: "registry:internal",
+      registryDependencies: ["accordion"],
+      files: [{
+        path: "registry/base-nova/demo/accordion-borders.tsx",
+        type: "registry:internal",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/base-nova/demo/accordion-borders.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "accordion-card": {
+      name: "accordion-card",
+      title: "Accordion Card",
+      description: "",
+      type: "registry:internal",
+      registryDependencies: ["accordion","card"],
+      files: [{
+        path: "registry/base-nova/demo/accordion-card.tsx",
+        type: "registry:internal",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/base-nova/demo/accordion-card.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),

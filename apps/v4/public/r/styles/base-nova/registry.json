@@ -676,6 +676,35 @@
       "type": "registry:internal"
     },
     {
+      "name": "accordion-borders",
+      "title": "Accordion Borders",
+      "registryDependencies": [
+        "accordion"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/demo/accordion-borders.tsx",
+          "type": "registry:internal"
+        }
+      ],
+      "type": "registry:internal"
+    },
+    {
+      "name": "accordion-card",
+      "title": "Accordion Card",
+      "registryDependencies": [
+        "accordion",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/demo/accordion-card.tsx",
+          "type": "registry:internal"
+        }
+      ],
+      "type": "registry:internal"
+    },
+    {
       "name": "alert-demo",
       "title": "Alert Demo",
       "registryDependencies": [

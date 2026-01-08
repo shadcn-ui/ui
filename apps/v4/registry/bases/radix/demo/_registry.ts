@@ -38,6 +38,30 @@ export const demo: Registry["items"] = [
     ],
   },
   {
+    name: "accordion-borders",
+    title: "Accordion Borders",
+    type: "registry:internal",
+    registryDependencies: ["accordion"],
+    files: [
+      {
+        path: "demo/accordion-borders.tsx",
+        type: "registry:internal",
+      },
+    ],
+  },
+  {
+    name: "accordion-card",
+    title: "Accordion Card",
+    type: "registry:internal",
+    registryDependencies: ["accordion", "card"],
+    files: [
+      {
+        path: "demo/accordion-card.tsx",
+        type: "registry:internal",
+      },
+    ],
+  },
+  {
     name: "alert-demo",
     title: "Alert Demo",
     type: "registry:internal",
