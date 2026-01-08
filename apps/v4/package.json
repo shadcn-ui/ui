@@ -16,7 +16,7 @@
     "icons:dev": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-icons.ts --watch",
     "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && pnpm examples:build && prettier --log-level silent --write \"registry/**/*.{ts,tsx,json,mdx}\" \"examples/**/*.{ts,tsx}\" --cache",
     "registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
-    "examples:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-examples.ts",
+    "examples:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-examples.ts && prettier --log-level silent --write \"examples/**/*.{ts,tsx}\" --cache",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",
     "postinstall": "fumadocs-mdx"
