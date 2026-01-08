@@ -14,7 +14,7 @@ import {
 
 export default function AccordionCard() {
   return (
-    <Card className="w-full">
+    <Card className="w-full max-w-sm">
       <CardHeader>
         <CardTitle>Subscription & Billing</CardTitle>
         <CardDescription>

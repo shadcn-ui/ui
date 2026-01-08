@@ -488,51 +488,40 @@ async function buildConfig() {
 }
 
 async function copyUIToExamples() {
-  const bases = [
-    { name: "base", sourceStyle: "base-nova" },
-    { name: "radix", sourceStyle: "radix-nova" },
-  ]
-
+  const defaultStyle = "nova"
   const directories = ["ui", "lib", "hooks"]
 
-  for (const base of bases) {
+  for (const base of BASES) {
+    const sourceStyle = `${base.name}-${defaultStyle}`
+
     for (const dir of directories) {
-      const fromDir = path.join(
-        process.cwd(),
-        `registry/${base.sourceStyle}/${dir}`
-      )
+      const fromDir = path.join(process.cwd(), `registry/${sourceStyle}/${dir}`)
       const toDir = path.join(process.cwd(), `examples/${base.name}/${dir}`)
 
-      // Check if source directory exists.
       try {
         await fs.access(fromDir)
       } catch {
-        console.log(
-          `   ⚠️ registry/${base.sourceStyle}/${dir} not found, skipping`
-        )
+        console.log(`   ⚠️ registry/${sourceStyle}/${dir} not found, skipping`)
         continue
       }
 
-      // Clean and create target directory.
       rimraf.sync(toDir)
       await fs.mkdir(toDir, { recursive: true })
 
-      // Copy all files and transform imports.
       const files = await fs.readdir(fromDir)
       for (const file of files) {
         const sourcePath = path.join(fromDir, file)
         const targetPath = path.join(toDir, file)
 
-        // Read, transform imports, and write.
         let content = await fs.readFile(sourcePath, "utf-8")
         content = content.replace(
-          new RegExp(`@/registry/${base.sourceStyle}/`, "g"),
+          new RegExp(`@/registry/${sourceStyle}/`, "g"),
           `@/examples/${base.name}/`
         )
         await fs.writeFile(targetPath, content)
       }
       console.log(
-        `   ✅ registry/${base.sourceStyle}/${dir} → examples/${base.name}/${dir}`
+        `   ✅ registry/${sourceStyle}/${dir} → examples/${base.name}/${dir}`
       )
     }
   }

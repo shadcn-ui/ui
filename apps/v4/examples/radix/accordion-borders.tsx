@@ -7,7 +7,7 @@ import {
 
 export default function AccordionBorders() {
   return (
-    <Accordion type="single" collapsible className="w-full">
+    <Accordion type="single" collapsible className="w-full max-w-sm">
       <AccordionItem
         value="billing"
         className="border px-4 first:rounded-t-lg last:rounded-b-lg"

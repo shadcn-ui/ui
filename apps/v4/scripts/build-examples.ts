@@ -2,7 +2,7 @@ import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
 
-const BASES = ["base", "radix"] as const
+import { BASES } from "@/registry/bases"
 
 async function buildExamplesIndex() {
   const cwd = process.cwd()
@@ -18,38 +18,36 @@ import * as React from "react"
 export const ExamplesIndex: Record<string, Record<string, any>> = {`
 
   for (const base of BASES) {
-    const baseDir = path.join(examplesDir, base)
+    const baseDir = path.join(examplesDir, base.name)
 
-    // Check if base directory exists.
     try {
       await fs.access(baseDir)
     } catch {
-      console.log(`   Skipping ${base} - directory does not exist`)
+      console.log(`   Skipping ${base.name} - directory does not exist`)
       continue
     }
 
-    // Find all demo files (excluding subdirectories like ui/).
     const allEntries = await fs.readdir(baseDir, { withFileTypes: true })
     const files = allEntries
       .filter((entry) => entry.isFile() && entry.name.endsWith(".tsx"))
       .map((entry) => entry.name)
       .sort()
 
-    console.log(`   Found ${files.length} demos for ${base}`)
+    console.log(`   Found ${files.length} demos for ${base.name}`)
 
     index += `
-  "${base}": {`
+  "${base.name}": {`
 
     for (const file of files) {
       const name = file.replace(/\.tsx$/, "")
-      const filePath = `examples/${base}/${file}`
+      const filePath = `examples/${base.name}/${file}`
 
       index += `
     "${name}": {
       name: "${name}",
       filePath: "${filePath}",
       component: React.lazy(async () => {
-        const mod = await import("./${base}/${name}")
+        const mod = await import("./${base.name}/${name}")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || "${name}"
         return { default: mod.default || mod[exportName] }
       }),
@@ -64,7 +62,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {`
 }
 `
 
-  // Write the index file.
   const indexPath = path.join(examplesDir, "__index__.tsx")
   rimraf.sync(indexPath)
   await fs.writeFile(indexPath, index)

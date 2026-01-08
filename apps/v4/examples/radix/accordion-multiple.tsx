@@ -7,7 +7,7 @@ import {
 
 export default function AccordionMultiple() {
   return (
-    <Accordion type="multiple" className="w-full">
+    <Accordion type="multiple" className="w-full max-w-md">
       <AccordionItem value="item-1">
         <AccordionTrigger>
           What are the key considerations when implementing a comprehensive

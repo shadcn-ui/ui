@@ -7,32 +7,26 @@ import { Project, ScriptKind } from "ts-morph"
 import { type z } from "zod"
 
 import { Index as StylesIndex } from "@/registry/__index__"
+import { BASES } from "@/registry/bases"
 import { Index as BasesIndex } from "@/registry/bases/__index__"
 
-// Styles that have their own index in StylesIndex (built with style transforms).
 const INDEXED_STYLES = ["new-york-v4"]
 
-// Get the base name from a style name (e.g., "base-nova" -> "base").
-// Returns null for legacy styles that don't use the examples system.
 function getBaseForStyle(styleName: string) {
-  if (styleName.startsWith("radix-")) {
-    return "radix"
+  for (const base of BASES) {
+    if (styleName.startsWith(`${base.name}-`)) {
+      return base.name
+    }
   }
-  if (styleName.startsWith("base-")) {
-    return "base"
-  }
-  // Legacy styles (e.g., "new-york-v4") don't use the examples system.
   return null
 }
 
-// Get a demo component from the examples index.
 export function getDemoComponent(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
   if (!base) return undefined
   return ExamplesIndex[base]?.[name]?.component
 }
 
-// Get a demo item with file content from the examples index.
 export async function getDemoItem(name: string, styleName: string) {
   const base = getBaseForStyle(styleName)
   if (!base) return null
@@ -58,30 +52,25 @@ export async function getDemoItem(name: string, styleName: string) {
   }
 }
 
-// Map style names to their corresponding index and key.
 function getIndexForStyle(styleName: string) {
-  // Use StylesIndex for styles that are built with transforms.
   if (INDEXED_STYLES.includes(styleName)) {
     return { index: StylesIndex, key: styleName }
   }
-  // Fall back to BasesIndex for other base-style combinations.
-  if (styleName.startsWith("radix-")) {
-    return { index: BasesIndex, key: "radix" }
+
+  const base = getBaseForStyle(styleName)
+  if (base) {
+    return { index: BasesIndex, key: base }
   }
-  if (styleName.startsWith("base-")) {
-    return { index: BasesIndex, key: "base" }
-  }
+
   return { index: StylesIndex, key: styleName }
 }
 
 export function getRegistryComponent(name: string, styleName: string) {
-  // Check demo index first.
   const demoComponent = getDemoComponent(name, styleName)
   if (demoComponent) {
     return demoComponent
   }
 
-  // Fall back to registry.
   const { index, key } = getIndexForStyle(styleName)
   return index[key]?.[name]?.component
 }
