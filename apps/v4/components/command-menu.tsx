@@ -36,15 +36,23 @@ import { Kbd, KbdGroup } from "@/registry/new-york-v4/ui/kbd"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
+type Registry = {
+  name: string
+  logo: string
+  homepage: string
+}
+
 export function CommandMenu({
   tree,
   colors,
   blocks,
   navItems,
+  registries,
   ...props
 }: DialogProps & {
   tree: typeof source.pageTree
   colors: ColorPalette[]
+  registries: Registry[]
   blocks?: { name: string; description: string; categories: string[] }[]
   navItems?: { href: string; label: string }[]
 }) {
@@ -52,7 +60,7 @@ export function CommandMenu({
   const [config] = useConfig()
   const [open, setOpen] = React.useState(false)
   const [selectedType, setSelectedType] = React.useState<
-    "color" | "page" | "component" | "block" | null
+    "color" | "page" | "component" | "block" | "registry" | null
   >(null)
   const [copyPayload, setCopyPayload] = React.useState("")
 
@@ -134,6 +142,14 @@ export function CommandMenu({
     (block: { name: string; description: string; categories: string[] }) => {
       setSelectedType("block")
       setCopyPayload(`${packageManager} dlx shadcn@latest add ${block.name}`)
+    },
+    [setSelectedType, setCopyPayload, packageManager]
+  )
+
+  const handleRegistryHighlight = React.useCallback(
+    (registry: Registry) => {
+      setSelectedType("registry")
+      setCopyPayload(registry.homepage)
     },
     [setSelectedType, setCopyPayload, packageManager]
   )
@@ -342,6 +358,34 @@ export function CommandMenu({
                 ))}
               </CommandGroup>
             ))}
+            <CommandGroup heading="Registries">
+              {registries.map((registry) => (
+                <CommandMenuItem
+                  key={registry.name}
+                  value={registry.name}
+                  keywords={["registry", registry.name]}
+                  onHighlight={() => handleRegistryHighlight(registry)}
+                  onSelect={() => {
+                    runCommand(() => {
+                      const url = new URL(registry.homepage)
+                      url.searchParams.set("utm_source", "ui.shadcn.com")
+                      url.searchParams.set("utm_medium", "referral")
+                      url.searchParams.set("utm_campaign", "directory")
+
+                      window.open(url.toString(), "_blank")
+                    })
+                  }}
+                >
+                  <div className="flex items-center gap-x-2">
+                    <div
+                      dangerouslySetInnerHTML={{ __html: registry.logo }}
+                      className="*:[svg]:fill-foreground grayscale *:[svg]:size-8"
+                    />
+                    {registry.name.replace("@", "")}
+                  </div>
+                </CommandMenuItem>
+              ))}
+            </CommandGroup>
             {blocks?.length ? (
               <CommandGroup
                 heading="Blocks"
@@ -394,6 +438,7 @@ export function CommandMenu({
               ? "Go to Page"
               : null}
             {selectedType === "color" ? "Copy OKLCH" : null}
+            {selectedType === "registry" ? "Open registry" : null}
           </div>
           {copyPayload && (
             <>
