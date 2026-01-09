@@ -10,7 +10,7 @@ import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
-import { rawConfigSchema } from "@/src/schema"
+import { rawConfigSchema, rawConfigSchemaDeepPartial } from "@/src/schema"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -105,7 +105,7 @@ export const initOptionsSchema = z.object({
     ),
   baseStyle: z.boolean(),
   // Config from registry:base item to merge into components.json.
-  registryBaseConfig: rawConfigSchema.deepPartial().optional(),
+  registryBaseConfig: rawConfigSchemaDeepPartial.optional(),
 })
 
 export const init = new Command()
