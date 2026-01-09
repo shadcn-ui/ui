@@ -2,6 +2,8 @@ import { promises as fs } from "fs"
 import path from "path"
 import { preFlightInit } from "@/src/preflights/preflight-init"
 import {
+  getPreset,
+  getPresets,
   getRegistryBaseColors,
   getRegistryItems,
   getRegistryStyles,
@@ -10,7 +12,8 @@ import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
-import { rawConfigSchema } from "@/src/schema"
+import { isUrl } from "@/src/registry/utils"
+import { Preset, rawConfigSchema } from "@/src/schema"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -45,8 +48,11 @@ import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-cont
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
+import open from "open"
 import prompts from "prompts"
 import { z } from "zod"
+
+const SHADCN_URL = "https://ui.shadcn.com"
 
 process.on("exit", (code) => {
   const filePath = path.resolve(process.cwd(), "components.json")
@@ -71,6 +77,7 @@ export const initOptionsSchema = z.object({
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
+  preset: z.union([z.string(), z.boolean()]).optional(),
   template: z
     .string()
     .optional()
@@ -116,6 +123,7 @@ export const init = new Command()
     "-t, --template <template>",
     "the template to use. (next, start, vite, next-monorepo)"
   )
+  .option("-p, --preset [name]", "use a preset configuration")
   .option(
     "-b, --base-color <base-color>",
     "the base color to use. (neutral, gray, zinc, stone, slate)",
@@ -159,10 +167,38 @@ export const init = new Command()
 
       await loadEnvFiles(options.cwd)
 
+      // Handle preset option if provided.
+      if (opts.preset !== undefined) {
+        const presetResult = await handlePresetOption(opts.preset)
+
+        if (!presetResult) {
+          process.exit(0)
+        }
+
+        // Determine initUrl and baseColor based on preset type.
+        let initUrl: string
+        let baseColor: string
+
+        if ("_isUrl" in presetResult) {
+          // User provided a URL directly.
+          initUrl = presetResult.url
+          const url = new URL(presetResult.url)
+          baseColor = url.searchParams.get("baseColor") ?? "neutral"
+        } else {
+          // User selected a preset by name.
+          initUrl = buildInitUrl(presetResult)
+          baseColor = presetResult.baseColor
+        }
+
+        // Add the init URL to components and set the base color.
+        options.components = [initUrl, ...(options.components ?? [])]
+        options.baseColor = baseColor
+      }
+
       // We need to check if we're initializing with a new style.
       // This will allow us to determine if we need to install the base style.
       // And if we should prompt the user for a base color.
-      if (components.length > 0) {
+      if (options.components && options.components.length > 0) {
         // We don't know the full config at this point.
         // So we'll use a shadow config to fetch the first item.
         let shadowConfig = configWithDefaults(
@@ -200,7 +236,7 @@ export const init = new Command()
 
         // Ensure all registries used in components are configured.
         const { config: updatedConfig } = await ensureRegistriesInConfig(
-          components,
+          options.components,
           shadowConfig,
           {
             silent: true,
@@ -210,9 +246,9 @@ export const init = new Command()
         shadowConfig = updatedConfig
 
         // This forces a shadowConfig validation early in the process.
-        buildUrlAndHeadersForRegistryItem(components[0], shadowConfig)
+        buildUrlAndHeadersForRegistryItem(options.components[0], shadowConfig)
 
-        const [item] = await getRegistryItems([components[0]], {
+        const [item] = await getRegistryItems([options.components[0]], {
           config: shadowConfig,
         })
 
@@ -402,6 +438,84 @@ export async function runInit(
   return fullConfig
 }
 
+export function buildInitUrl(preset: Preset) {
+  const params = new URLSearchParams({
+    base: preset.base,
+    style: preset.style,
+    baseColor: preset.baseColor,
+    theme: preset.theme,
+    iconLibrary: preset.iconLibrary,
+    font: preset.font,
+    menuAccent: preset.menuAccent,
+    menuColor: preset.menuColor,
+    radius: preset.radius,
+  })
+
+  return `${getShadcnInitUrl()}?${params.toString()}`
+}
+
+export async function handlePresetOption(presetArg: string | boolean) {
+  // If --preset is used without a name, show interactive list.
+  if (presetArg === true) {
+    const presets = await getPresets()
+
+    const { selectedPreset } = await prompts({
+      type: "select",
+      name: "selectedPreset",
+      message: `Which ${highlighter.info("preset")} would you like to use?`,
+      choices: [
+        ...presets.map((preset) => ({
+          title: preset.title,
+          description: preset.description,
+          value: preset.name,
+        })),
+        {
+          title: "Custom",
+          description: "Build your own on https://ui.shadcn.com",
+          value: "custom",
+        },
+      ],
+    })
+
+    if (!selectedPreset) {
+      return null
+    }
+
+    if (selectedPreset === "custom") {
+      const url = getShadcnCreateUrl()
+      logger.info(`\nOpening ${highlighter.info(url)} in your browser...\n`)
+      await open(url)
+      return null
+    }
+
+    return presets.find((p) => p.name === selectedPreset) ?? null
+  }
+
+  // If --preset NAME or URL is provided.
+  if (typeof presetArg === "string") {
+    // Check if it's a URL.
+    if (isUrl(presetArg)) {
+      return { _isUrl: true, url: presetArg } as const
+    }
+
+    // Otherwise, fetch that preset by name.
+    const preset = await getPreset(presetArg)
+
+    if (!preset) {
+      const presets = await getPresets()
+      const presetNames = presets.map((p) => p.name).join(", ")
+      logger.error(
+        `Preset "${presetArg}" not found. Available presets: ${presetNames}`
+      )
+      process.exit(1)
+    }
+
+    return preset
+  }
+
+  return null
+}
+
 async function promptForConfig(defaultConfig: Config | null = null) {
   const [styles, baseColors] = await Promise.all([
     getRegistryStyles(),
@@ -578,4 +692,12 @@ async function promptForMinimalConfig(
     iconLibrary,
     aliases: defaultConfig?.aliases,
   })
+}
+
+function getShadcnCreateUrl() {
+  return `${SHADCN_URL}/create`
+}
+
+function getShadcnInitUrl() {
+  return `${SHADCN_URL}/init`
 }

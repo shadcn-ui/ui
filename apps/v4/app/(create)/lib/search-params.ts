@@ -63,6 +63,7 @@ const designSystemSearchParams = {
   ).withDefault("default"),
   template: parseAsStringLiteral([
     "next",
+    "next-monorepo",
     "start",
     "vite",
   ] as const).withDefault("next"),
