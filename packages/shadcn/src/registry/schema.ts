@@ -25,31 +25,53 @@ export const registryConfigSchema = z.record(
   registryConfigItemSchema
 )
 
+// Extracted to support deep partial in Zod v3 and v4
+const tailwindConfigSchema = z.object({
+  config: z.string().optional(),
+  css: z.string(),
+  baseColor: z.string(),
+  cssVariables: z.boolean().default(true),
+  prefix: z.string().default("").optional(),
+})
+
+const aliasesSchema = z.object({
+  components: z.string(),
+  utils: z.string(),
+  ui: z.string().optional(),
+  lib: z.string().optional(),
+  hooks: z.string().optional(),
+})
+
 export const rawConfigSchema = z
   .object({
     $schema: z.string().optional(),
     style: z.string(),
     rsc: z.coerce.boolean().default(false),
     tsx: z.coerce.boolean().default(true),
-    tailwind: z.object({
-      config: z.string().optional(),
-      css: z.string(),
-      baseColor: z.string(),
-      cssVariables: z.boolean().default(true),
-      prefix: z.string().default("").optional(),
-    }),
+    tailwind: tailwindConfigSchema,
     iconLibrary: z.string().optional(),
     menuColor: z.enum(["default", "inverted"]).default("default").optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
-    aliases: z.object({
-      components: z.string(),
-      utils: z.string(),
-      ui: z.string().optional(),
-      lib: z.string().optional(),
-      hooks: z.string().optional(),
-    }),
+    aliases: aliasesSchema,
     registries: registryConfigSchema.optional(),
   })
+  .strict()
+
+// Deep partial version for registry:base config field
+export const rawConfigSchemaDeepPartial = z
+  .object({
+    $schema: z.string().optional(),
+    style: z.string(),
+    rsc: z.coerce.boolean().default(false),
+    tsx: z.coerce.boolean().default(true),
+    tailwind: tailwindConfigSchema.partial(),
+    iconLibrary: z.string().optional(),
+    menuColor: z.enum(["default", "inverted"]).default("default").optional(),
+    menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
+    aliases: aliasesSchema.partial(),
+    registries: registryConfigSchema.optional(),
+  })
+  .partial()
   .strict()
 
 export const configSchema = rawConfigSchema.extend({
@@ -168,7 +190,7 @@ export const registryItemCommonSchema = z.object({
 export const registryItemSchema = z.discriminatedUnion("type", [
   registryItemCommonSchema.extend({
     type: z.literal("registry:base"),
-    config: rawConfigSchema.deepPartial().optional(),
+    config: rawConfigSchemaDeepPartial.optional(),
   }),
   registryItemCommonSchema.extend({
     type: z.literal("registry:font"),
