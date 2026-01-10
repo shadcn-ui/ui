@@ -40,7 +40,7 @@
     "test": "start-server-and-test v4:dev http://localhost:4000 test:dev",
     "validate:registries": "pnpm --filter=v4 validate:registries"
   },
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@10.28.0",
   "dependencies": {
     "@babel/core": "^7.22.1",
     "@changesets/changelog-github": "^0.4.8",
@@ -84,6 +84,14 @@
     "overrides": {
       "@types/react": "19.2.2",
       "@types/react-dom": "19.2.2"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "esbuild",
+      "msw",
+      "puppeteer",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
