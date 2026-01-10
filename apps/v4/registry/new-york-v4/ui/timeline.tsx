@@ -19,7 +19,7 @@ const TimelineItemContext = React.createContext<{ index: number }>({ index: 0 })
 // ============================================
 // 1. Timeline
 // ============================================
-const timelineVariants = cva("flex flex-col", {
+const timelineVariants = cva("flex flex-col list-none m-0 p-0", {
   variants: {
     position: {
       left: "gap-6",
@@ -99,7 +99,7 @@ const TimelineItem = React.forwardRef<
         data-slot="timeline-item"
         data-position={isEven ? "left" : "right"}
         className={cn(
-          "relative grid grid-cols-[1fr_auto_1fr] gap-4",
+          "relative m-0 grid grid-cols-[1fr_auto_1fr] gap-4 p-0",
           className
         )}
         {...props}
@@ -116,7 +116,7 @@ const TimelineItem = React.forwardRef<
       data-slot="timeline-item"
       data-position={isRight ? "right" : "left"}
       className={cn(
-        "relative flex gap-4",
+        "relative m-0 flex gap-4 p-0",
         position === "alternate" && "justify-center",
         isRight && "flex-row-reverse",
         className
@@ -200,9 +200,11 @@ const TimelineMarker = React.forwardRef<HTMLDivElement, TimelineMarkerProps>(
             />
           )}
         </div>
+        {/* Line */}
         <div
-          className="bg-border absolute top-6 h-full w-px [li:last-child_&]:hidden"
+          className="bg-border absolute -top-4 -bottom-4 left-1/2 w-px -translate-x-1/2 [li:first-child_&]:top-6 [li:last-child_&]:bottom-auto [li:last-child_&]:h-full"
           data-slot="timeline-line"
+          aria-hidden="true"
         />
       </div>
     )
