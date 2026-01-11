@@ -1,0 +1,125 @@
+
+> ui@0.0.1 build /Users/marfreax/Github/ocean-erp
+> turbo run build
+
+• Packages in scope: shadcn, tests, v4, www
+• Running build in 4 packages
+• Remote caching disabled
+www:build: cache miss, executing 6c874657596d0680
+v4:build: cache miss, executing 87e9a16168ceeda8
+shadcn:build: cache hit, replaying logs 080e37ae1e649138
+shadcn:build: 
+shadcn:build: > shadcn@3.5.0 build /Users/marfreax/Github/ocean-erp/packages/shadcn
+shadcn:build: > tsup
+shadcn:build: 
+shadcn:build: [34mCLI[39m Building entry: src/index.ts, src/mcp/index.ts, src/schema/index.ts, src/registry/index.ts
+shadcn:build: [34mCLI[39m Using tsconfig: tsconfig.json
+shadcn:build: [34mCLI[39m tsup v8.5.0
+shadcn:build: [34mCLI[39m Using tsup config: /Users/marfreax/Github/ocean-erp/packages/shadcn/tsup.config.ts
+shadcn:build: [34mCLI[39m Target: esnext
+shadcn:build: [34mCLI[39m Cleaning output folder
+shadcn:build: [34mESM[39m Build start
+shadcn:build: DTS Build start
+shadcn:build: [32mESM[39m [1mdist/registry/index.js     [22m[32m568.00 B[39m
+shadcn:build: [32mESM[39m [1mdist/chunk-EN57B455.js     [22m[32m10.25 KB[39m
+shadcn:build: [32mESM[39m [1mdist/schema/index.js       [22m[32m650.00 B[39m
+shadcn:build: [32mESM[39m [1mdist/index.js              [22m[32m65.26 KB[39m
+shadcn:build: [32mESM[39m [1mdist/mcp/index.js          [22m[32m171.00 B[39m
+shadcn:build: [32mESM[39m [1mdist/chunk-OYVM23Y7.js     [22m[32m55.57 KB[39m
+shadcn:build: [32mESM[39m [1mdist/chunk-OG5VNDVA.js     [22m[32m3.71 KB[39m
+shadcn:build: [32mESM[39m [1mdist/registry/index.js.map [22m[32m69.00 B[39m
+shadcn:build: [32mESM[39m [1mdist/chunk-EN57B455.js.map [22m[32m31.37 KB[39m
+shadcn:build: [32mESM[39m [1mdist/index.js.map          [22m[32m300.74 KB[39m
+shadcn:build: [32mESM[39m [1mdist/mcp/index.js.map      [22m[32m69.00 B[39m
+shadcn:build: [32mESM[39m [1mdist/schema/index.js.map   [22m[32m69.00 B[39m
+shadcn:build: [32mESM[39m [1mdist/chunk-OG5VNDVA.js.map [22m[32m12.57 KB[39m
+shadcn:build: [32mESM[39m [1mdist/chunk-OYVM23Y7.js.map [22m[32m275.63 KB[39m
+shadcn:build: [32mESM[39m ⚡️ Build success in 944ms
+shadcn:build: DTS ⚡️ Build success in 8766ms
+shadcn:build: DTS dist/mcp/index.d.ts      598.00 B
+shadcn:build: DTS dist/registry/index.d.ts 3.98 KB
+shadcn:build: DTS dist/schema/index.d.ts   56.12 KB
+shadcn:build: DTS dist/index.d.ts          408.00 B
+shadcn:build: DTS dist/index-jrlOVvd4.d.ts 12.48 KB
+v4:build: 
+v4:build: > v4@0.1.0 build /Users/marfreax/Github/ocean-erp/apps/v4
+v4:build: > pnpm --filter=shadcn build && next build
+v4:build: 
+www:build: 
+www:build: > www@0.0.1 build /Users/marfreax/Github/ocean-erp/apps/www
+www:build: > pnpm --filter=shadcn build && contentlayer2 build && pnpm build:registry && next build
+www:build: 
+www:build: 
+www:build: > shadcn@3.5.0 build /Users/marfreax/Github/ocean-erp/packages/shadcn
+www:build: > tsup
+www:build: 
+v4:build: 
+v4:build: > shadcn@3.5.0 build /Users/marfreax/Github/ocean-erp/packages/shadcn
+v4:build: > tsup
+v4:build: 
+v4:build: CLI Building entry: src/index.ts, src/mcp/index.ts, src/schema/index.ts, src/registry/index.ts
+www:build: CLI Building entry: src/index.ts, src/mcp/index.ts, src/schema/index.ts, src/registry/index.ts
+v4:build: CLI Using tsconfig: tsconfig.json
+v4:build: CLI tsup v8.5.0
+v4:build: CLI Using tsup config: /Users/marfreax/Github/ocean-erp/packages/shadcn/tsup.config.ts
+www:build: CLI Using tsconfig: tsconfig.json
+www:build: CLI tsup v8.5.0
+www:build: CLI Using tsup config: /Users/marfreax/Github/ocean-erp/packages/shadcn/tsup.config.ts
+v4:build: CLI Target: esnext
+www:build: CLI Target: esnext
+www:build: CLI Cleaning output folder
+v4:build: Error: ENOENT: no such file or directory, unlink '/Users/marfreax/Github/ocean-erp/packages/shadcn/dist/schema/index.js'
+v4:build:     at Object.unlinkSync (node:fs:1886:11)
+v4:build:     at /Users/marfreax/Github/ocean-erp/node_modules/.pnpm/tsup@8.5.0_jiti@2.5.1_postcss@8.5.6_tsx@4.20.3_typescript@5.9.2_yaml@2.8.1/node_modules/tsup/dist/chunk-TWFEYLU4.js:143:73
+v4:build:     at Array.forEach (<anonymous>)
+v4:build:     at removeFiles (/Users/marfreax/Github/ocean-erp/node_modules/.pnpm/tsup@8.5.0_jiti@2.5.1_postcss@8.5.6_tsx@4.20.3_typescript@5.9.2_yaml@2.8.1/node_modules/tsup/dist/chunk-TWFEYLU4.js:143:9)
+v4:build:     at async buildAll (/Users/marfreax/Github/ocean-erp/node_modules/.pnpm/tsup@8.5.0_jiti@2.5.1_postcss@8.5.6_tsx@4.20.3_typescript@5.9.2_yaml@2.8.1/node_modules/tsup/dist/index.js:1595:17)
+v4:build:     at async mainTasks (/Users/marfreax/Github/ocean-erp/node_modules/.pnpm/tsup@8.5.0_jiti@2.5.1_postcss@8.5.6_tsx@4.20.3_typescript@5.9.2_yaml@2.8.1/node_modules/tsup/dist/index.js:1699:13)
+v4:build:     at async Promise.all (index 1)
+v4:build:     at async /Users/marfreax/Github/ocean-erp/node_modules/.pnpm/tsup@8.5.0_jiti@2.5.1_postcss@8.5.6_tsx@4.20.3_typescript@5.9.2_yaml@2.8.1/node_modules/tsup/dist/index.js:1703:9
+v4:build:     at async Promise.all (index 0)
+v4:build:     at async build (/Users/marfreax/Github/ocean-erp/node_modules/.pnpm/tsup@8.5.0_jiti@2.5.1_postcss@8.5.6_tsx@4.20.3_typescript@5.9.2_yaml@2.8.1/node_modules/tsup/dist/index.js:1494:3)
+www:build: ESM Build start
+v4:build: DTS Build start
+www:build: DTS Build start
+www:build: ESM dist/schema/index.js       650.00 B
+www:build: ESM dist/mcp/index.js          171.00 B
+www:build: ESM dist/chunk-OG5VNDVA.js     3.71 KB
+www:build: ESM dist/registry/index.js     568.00 B
+www:build: ESM dist/chunk-EN57B455.js     10.25 KB
+www:build: ESM dist/index.js              65.26 KB
+www:build: ESM dist/chunk-OYVM23Y7.js     55.57 KB
+www:build: ESM dist/mcp/index.js.map      69.00 B
+www:build: ESM dist/schema/index.js.map   69.00 B
+www:build: ESM dist/chunk-OG5VNDVA.js.map 12.57 KB
+www:build: ESM dist/registry/index.js.map 69.00 B
+www:build: ESM dist/chunk-EN57B455.js.map 31.37 KB
+www:build: ESM dist/index.js.map          300.74 KB
+www:build: ESM dist/chunk-OYVM23Y7.js.map 275.63 KB
+www:build: ESM ⚡️ Build success in 451ms
+www:build: DTS ⚡️ Build success in 6608ms
+www:build: DTS dist/mcp/index.d.ts      598.00 B
+www:build: DTS dist/registry/index.d.ts 3.98 KB
+www:build: DTS dist/schema/index.d.ts   56.12 KB
+www:build: DTS dist/index.d.ts          408.00 B
+www:build: DTS dist/index-jrlOVvd4.d.ts 12.48 KB
+v4:build: DTS ⚡️ Build success in 6608ms
+v4:build: DTS dist/mcp/index.d.ts      598.00 B
+v4:build: DTS dist/registry/index.d.ts 3.98 KB
+v4:build: DTS dist/schema/index.d.ts   56.12 KB
+v4:build: DTS dist/index.d.ts          408.00 B
+v4:build: DTS dist/index-jrlOVvd4.d.ts 12.48 KB
+v4:build: /Users/marfreax/Github/ocean-erp/packages/shadcn:
+v4:build:  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  shadcn@3.5.0 build: `tsup`
+v4:build: Exit status 1
+v4:build:  ELIFECYCLE  Command failed with exit code 1.
+v4:build: ERROR: command finished with error: command (/Users/marfreax/Github/ocean-erp/apps/v4) /Users/marfreax/Library/pnpm/.tools/pnpm/9.0.6/bin/pnpm run build exited (1)
+v4#build: command (/Users/marfreax/Github/ocean-erp/apps/v4) /Users/marfreax/Library/pnpm/.tools/pnpm/9.0.6/bin/pnpm run build exited (1)
+
+ Tasks:    1 successful, 3 total
+Cached:    1 cached, 3 total
+  Time:    7.962s 
+Failed:    v4#build
+
+ ERROR  run failed: command  exited (1)
+ ELIFECYCLE  Command failed with exit code 1.

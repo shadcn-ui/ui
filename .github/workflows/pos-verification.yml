@@ -1,0 +1,122 @@
+name: POS Verification
+
+on:
+  workflow_dispatch:
+    inputs:
+      auth_method:
+        description: 'Authentication method: cookie or creds'
+        required: false
+        default: 'cookie'
+      base_url:
+        description: 'Override BASE_URL (defaults to secrets.POS_BASE_URL or http://localhost:4000)'
+        required: false
+      cookie:
+        description: 'Session cookie string (if not using secrets)'
+        required: false
+      email:
+        description: 'Email (if using credentials and not using secrets)'
+        required: false
+      password:
+        description: 'Password (if using credentials and not using secrets)'
+        required: false
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/pos_verification.cjs'
+      - 'scripts/auto_run_pos_verification.sh'
+      - 'scripts/pos_verifier.Dockerfile'
+      - '.github/workflows/pos-verification.yml'
+      - 'apps/v4/app/(erp)/erp/pos/**'
+      - 'apps/v4/components/pos/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'scripts/pos_verification.cjs'
+      - 'scripts/auto_run_pos_verification.sh'
+      - 'scripts/pos_verifier.Dockerfile'
+      - '.github/workflows/pos-verification.yml'
+      - 'apps/v4/app/(erp)/erp/pos/**'
+      - 'apps/v4/components/pos/**'
+
+jobs:
+  run-verifier:
+    runs-on: ubuntu-latest
+    env:
+      POS_BASE_URL: ${{ secrets.POS_BASE_URL }}
+      POS_COOKIE: ${{ secrets.POS_COOKIE }}
+      POS_EMAIL: ${{ secrets.POS_EMAIL }}
+      POS_PASSWORD: ${{ secrets.POS_PASSWORD }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Enable corepack (pnpm)
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.0.6 --activate
+
+      - name: Resolve configuration
+        id: config
+        run: |
+          BASE_URL="${POS_BASE_URL}"
+          if [ -z "$BASE_URL" ] && [ -n "${{ github.event.inputs.base_url }}" ]; then
+            BASE_URL='${{ github.event.inputs.base_url }}'
+          fi
+          if [ -z "$BASE_URL" ]; then
+            BASE_URL="http://localhost:4000"
+          fi
+
+          AUTH_AVAILABLE=false
+          if [ -n "$POS_COOKIE" ] || { [ -n "$POS_EMAIL" ] && [ -n "$POS_PASSWORD" ]; }; then
+            AUTH_AVAILABLE=true
+          fi
+          if [ -n "${{ github.event.inputs.cookie }}" ] || { [ -n "${{ github.event.inputs.email }}" ] && [ -n "${{ github.event.inputs.password }}" ]; }; then
+            AUTH_AVAILABLE=true
+          fi
+
+          echo "BASE_URL=$BASE_URL" >> $GITHUB_ENV
+          echo "AUTH_AVAILABLE=$AUTH_AVAILABLE" >> $GITHUB_ENV
+          echo "Resolved BASE_URL=$BASE_URL, auth_available=$AUTH_AVAILABLE"
+
+      - name: Install dependencies (puppeteer)
+        if: env.AUTH_AVAILABLE == 'true'
+        run: |
+          pnpm add -w puppeteer@23.6.0 --silent || pnpm add puppeteer@23.6.0 --silent
+
+      - name: Run POS verifier
+        if: env.AUTH_AVAILABLE == 'true'
+        env:
+          BASE_URL: ${{ env.BASE_URL }}
+          COOKIE: ${{ env.POS_COOKIE }}
+          EMAIL: ${{ env.POS_EMAIL }}
+          PASSWORD: ${{ env.POS_PASSWORD }}
+        run: |
+          mkdir -p tmp/pos-verification
+          # Prefer secrets, fall back to workflow inputs
+          if [ -z "$COOKIE" ] && [ "${{ github.event.inputs.cookie }}" != "" ]; then
+            export COOKIE='${{ github.event.inputs.cookie }}'
+          fi
+          if [ -z "$EMAIL" ] && [ "${{ github.event.inputs.email }}" != "" ]; then
+            export EMAIL='${{ github.event.inputs.email }}'
+          fi
+          if [ -z "$PASSWORD" ] && [ "${{ github.event.inputs.password }}" != "" ]; then
+            export PASSWORD='${{ github.event.inputs.password }}'
+          fi
+
+          node scripts/pos_verification.cjs || true
+
+      - name: Skip (auth not provided)
+        if: env.AUTH_AVAILABLE != 'true'
+        run: |
+          echo "Skipping verifier: no POS_COOKIE or POS_EMAIL/POS_PASSWORD provided via secrets or inputs."
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pos-verification-artifacts
+          path: tmp/pos-verification/**

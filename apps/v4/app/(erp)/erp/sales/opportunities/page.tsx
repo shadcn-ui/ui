@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/registry/new-york-v4/ui/card"
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -45,34 +46,41 @@ import {
   Clock,
   Users,
   Calendar,
-  Building2
+  Building2,
+  LayoutGrid,
+  List
 } from "lucide-react"
+import { PipelineBoard } from "./components/pipeline-board"
 
 interface Opportunity {
-  id: number
-  title: string
-  company: string
-  contact: string
-  email?: string
-  phone?: string
+  id: string
+  name: string
+  lead_id?: string
+  lead_name?: string
+  lead_company?: string
+  lead_email?: string
   stage: string
-  value: number
+  amount: number
   probability: number
   expected_close_date?: string
   assigned_to?: string
-  source?: string
   description?: string
   notes?: string
+  is_closed: boolean
+  is_won: boolean
+  closed_at?: string
   created_at: string
   updated_at: string
 }
 
 export default function OpportunitiesPage() {
+  const router = useRouter()
   const [searchTerm, setSearchTerm] = useState("")
   const [stageFilter, setStageFilter] = useState("all")
   const [opportunities, setOpportunities] = useState<Opportunity[]>([])
   const [filteredOpportunities, setFilteredOpportunities] = useState<Opportunity[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [viewMode, setViewMode] = useState<"table" | "pipeline">("table")
 
   // Fetch opportunities from API
   useEffect(() => {
@@ -104,9 +112,9 @@ export default function OpportunitiesPage() {
     // Apply search filter
     if (searchTerm) {
       filtered = filtered.filter(opportunity =>
-        opportunity.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        opportunity.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        opportunity.contact.toLowerCase().includes(searchTerm.toLowerCase())
+        opportunity.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (opportunity.lead_company || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (opportunity.lead_name || '').toLowerCase().includes(searchTerm.toLowerCase())
       )
     }
 
@@ -120,16 +128,16 @@ export default function OpportunitiesPage() {
 
   // Calculate pipeline statistics
   const stats = {
-    totalValue: opportunities.reduce((sum, opp) => sum + Number(opp.value), 0),
-    weightedPipeline: opportunities.reduce((sum, opp) => sum + (Number(opp.value) * Number(opp.probability) / 100), 0),
-    activeOpportunities: opportunities.filter(opp => !['Closed Won', 'Closed Lost'].includes(opp.stage)).length,
-    wonDeals: opportunities.filter(opp => opp.stage === 'Closed Won').length
+    totalValue: opportunities.reduce((sum, opp) => sum + Number(opp.amount), 0),
+    weightedPipeline: opportunities.reduce((sum, opp) => sum + (Number(opp.amount) * Number(opp.probability) / 100), 0),
+    activeOpportunities: opportunities.filter(opp => !opp.is_closed).length,
+    wonDeals: opportunities.filter(opp => opp.is_won).length
   }
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('id-ID', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'IDR',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount)
@@ -154,6 +162,46 @@ export default function OpportunitiesPage() {
       "Closed Lost": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
     }
     return colors[stage] || "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300"
+  }
+
+  const handleStageChange = async (opportunityId: number, newStage: string) => {
+    try {
+      const response = await fetch(`/api/opportunities/${opportunityId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ stage: newStage }),
+      })
+
+      if (response.ok) {
+        // Update the opportunity in state
+        setOpportunities(prev => 
+          prev.map(opp => 
+            opp.id === opportunityId ? { ...opp, stage: newStage } : opp
+          )
+        )
+        try {
+          (await import('sonner')).toast.success('Opportunity stage updated')
+        } catch(e) {
+          console.log('toast import failed', e)
+        }
+      } else {
+        const data = await response.json()
+        try {
+          (await import('sonner')).toast.error(data?.error || 'Failed to update stage')
+        } catch(e) {
+          console.error(e)
+        }
+      }
+    } catch (error) {
+      console.error('Error updating stage:', error)
+      try {
+        (await import('sonner')).toast.error('Failed to update stage')
+      } catch(e) {
+        console.error(e)
+      }
+    }
   }
 
   if (isLoading) {
@@ -211,12 +259,34 @@ export default function OpportunitiesPage() {
               Manage your sales pipeline and track deal progress
             </p>
           </div>
-          <Button asChild>
-            <Link href="/erp/sales/opportunities/new">
-              <Plus className="mr-2 h-4 w-4" />
-              Create Opportunity
-            </Link>
-          </Button>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center rounded-md border">
+              <Button 
+                variant={viewMode === "table" ? "secondary" : "ghost"}
+                size="sm"
+                onClick={() => setViewMode("table")}
+                className="rounded-r-none"
+              >
+                <List className="h-4 w-4 mr-2" />
+                Table
+              </Button>
+              <Button 
+                variant={viewMode === "pipeline" ? "secondary" : "ghost"}
+                size="sm"
+                onClick={() => setViewMode("pipeline")}
+                className="rounded-l-none"
+              >
+                <LayoutGrid className="h-4 w-4 mr-2" />
+                Pipeline
+              </Button>
+            </div>
+            <Button asChild>
+              <Link href="/erp/sales/opportunities/new">
+                <Plus className="mr-2 h-4 w-4" />
+                Create Opportunity
+              </Link>
+            </Button>
+          </div>
         </div>
 
         {/* Stats Cards */}
@@ -274,40 +344,43 @@ export default function OpportunitiesPage() {
         {/* Filters and Search */}
         <Card>
           <CardHeader>
-            <CardTitle>Opportunity Pipeline</CardTitle>
+            <CardTitle>Opportunity {viewMode === "pipeline" ? "Pipeline" : "List"}</CardTitle>
             <CardDescription>
               Track and manage your sales opportunities through each stage
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="relative flex-1">
-                <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search opportunities..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-8"
-                />
+            {viewMode === "table" && (
+              <div className="flex items-center gap-4 mb-6">
+                <div className="relative flex-1">
+                  <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    placeholder="Search opportunities..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-8"
+                  />
+                </div>
+                <Select value={stageFilter} onValueChange={setStageFilter}>
+                  <SelectTrigger className="w-[180px]">
+                    <Filter className="mr-2 h-4 w-4" />
+                    <SelectValue placeholder="Filter by stage" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Stages</SelectItem>
+                    <SelectItem value="Discovery">Discovery</SelectItem>
+                    <SelectItem value="Qualification">Qualification</SelectItem>
+                    <SelectItem value="Proposal">Proposal</SelectItem>
+                    <SelectItem value="Negotiation">Negotiation</SelectItem>
+                    <SelectItem value="Closed Won">Closed Won</SelectItem>
+                    <SelectItem value="Closed Lost">Closed Lost</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-              <Select value={stageFilter} onValueChange={setStageFilter}>
-                <SelectTrigger className="w-[180px]">
-                  <Filter className="mr-2 h-4 w-4" />
-                  <SelectValue placeholder="Filter by stage" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Stages</SelectItem>
-                  <SelectItem value="Discovery">Discovery</SelectItem>
-                  <SelectItem value="Qualification">Qualification</SelectItem>
-                  <SelectItem value="Proposal">Proposal</SelectItem>
-                  <SelectItem value="Negotiation">Negotiation</SelectItem>
-                  <SelectItem value="Closed Won">Closed Won</SelectItem>
-                  <SelectItem value="Closed Lost">Closed Lost</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+            )}
 
-            <div className="rounded-md border">
+            {viewMode === "table" ? (
+              <div className="rounded-md border">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -334,7 +407,7 @@ export default function OpportunitiesPage() {
                       <TableRow key={opportunity.id}>
                         <TableCell className="font-medium">
                           <div>
-                            <div className="font-semibold">{opportunity.title}</div>
+                            <div className="font-semibold">{opportunity.name}</div>
                             <div className="text-sm text-muted-foreground">
                               Created {formatDate(opportunity.created_at)}
                             </div>
@@ -343,14 +416,14 @@ export default function OpportunitiesPage() {
                         <TableCell>
                           <div className="flex items-center">
                             <Building2 className="mr-2 h-4 w-4 text-muted-foreground" />
-                            {opportunity.company}
+                            {opportunity.lead_company || 'N/A'}
                           </div>
                         </TableCell>
                         <TableCell>
                           <div>
-                            <div className="font-medium">{opportunity.contact}</div>
-                            {opportunity.email && (
-                              <div className="text-sm text-muted-foreground">{opportunity.email}</div>
+                            <div className="font-medium">{opportunity.lead_name || 'N/A'}</div>
+                            {opportunity.lead_email && (
+                              <div className="text-sm text-muted-foreground">{opportunity.lead_email}</div>
                             )}
                           </div>
                         </TableCell>
@@ -363,7 +436,7 @@ export default function OpportunitiesPage() {
                           </Badge>
                         </TableCell>
                         <TableCell className="font-semibold">
-                          {formatCurrency(Number(opportunity.value))}
+                          {formatCurrency(Number(opportunity.amount))}
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center">
@@ -396,22 +469,45 @@ export default function OpportunitiesPage() {
                                 <MoreHorizontal className="h-4 w-4" />
                               </Button>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                              <DropdownMenuItem>
-                                <Eye className="mr-2 h-4 w-4" />
-                                View Details
-                              </DropdownMenuItem>
-                              <DropdownMenuItem>
-                                <Edit className="mr-2 h-4 w-4" />
-                                Edit
-                              </DropdownMenuItem>
-                              <DropdownMenuSeparator />
-                              <DropdownMenuItem className="text-red-600">
-                                <Trash2 className="mr-2 h-4 w-4" />
-                                Delete
-                              </DropdownMenuItem>
-                            </DropdownMenuContent>
+                                  <DropdownMenuContent align="end">
+                                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                    <DropdownMenuItem onClick={() => router.push(`/erp/sales/opportunities/${opportunity.id}`)}>
+                                      <Eye className="mr-2 h-4 w-4" />
+                                      View Details
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => router.push(`/erp/sales/opportunities/${opportunity.id}/edit`)}>
+                                      <Edit className="mr-2 h-4 w-4" />
+                                      Edit
+                                    </DropdownMenuItem>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem
+                                      className="text-red-600"
+                                      onClick={async () => {
+                                        const confirmDelete = window.confirm('Are you sure you want to delete this opportunity? This action cannot be undone.')
+                                        if (!confirmDelete) return
+
+                                        try {
+                                          const res = await fetch(`/api/opportunities/${opportunity.id}`, { method: 'DELETE' })
+                                          if (res.ok) {
+                                            // remove from state
+                                            setOpportunities(prev => prev.filter(o => o.id !== opportunity.id))
+                                            setFilteredOpportunities(prev => prev.filter(o => o.id !== opportunity.id))
+                                            // optional: show toast
+                                            try { (await import('sonner')).toast.success('Opportunity deleted') } catch(e) { console.log('toast import failed', e) }
+                                          } else {
+                                            const data = await res.json()
+                                            try { (await import('sonner')).toast.error(data?.error || 'Failed to delete opportunity') } catch(e) { console.error(e) }
+                                          }
+                                        } catch (error) {
+                                          console.error('Delete error', error)
+                                          try { (await import('sonner')).toast.error('Failed to delete opportunity') } catch(e) { console.error(e) }
+                                        }
+                                      }}
+                                    >
+                                      <Trash2 className="mr-2 h-4 w-4" />
+                                      Delete
+                                    </DropdownMenuItem>
+                                  </DropdownMenuContent>
                           </DropdownMenu>
                         </TableCell>
                       </TableRow>
@@ -420,6 +516,12 @@ export default function OpportunitiesPage() {
                 </TableBody>
               </Table>
             </div>
+            ) : (
+              <PipelineBoard 
+                opportunities={opportunities}
+                onStageChange={handleStageChange}
+              />
+            )}
           </CardContent>
         </Card>
       </div>

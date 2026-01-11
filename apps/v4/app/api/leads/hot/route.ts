@@ -6,7 +6,7 @@ const pool = new Pool({
   password: '',
   host: 'localhost',
   port: 5432,
-  database: 'ocean_erp',
+  database: 'ocean-erp',
 })
 
 interface HotLead {

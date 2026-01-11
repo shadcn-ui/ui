@@ -472,7 +472,7 @@ export default function CreateLeadPage() {
                           );
                         })
                       ) : (
-                        <SelectItem value="" disabled>
+                        <SelectItem value="loading" disabled>
                           {isLoadingLookup ? 'Loading sales reps...' : 'No sales reps available'}
                         </SelectItem>
                       )}

@@ -1,4 +1,6 @@
-import { Metadata } from "next"
+"use client"
+
+import { useEffect, useState } from "react"
 import { 
   Users, 
   ShoppingCart, 
@@ -18,47 +20,76 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { 
-  SidebarTrigger, 
-  SidebarProvider 
-} from "@/registry/new-york-v4/ui/sidebar"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/registry/new-york-v4/ui/breadcrumb"
 
-export const metadata: Metadata = {
-  title: "Ocean ERP Dashboard",
-  description: "Enterprise Resource Planning System - Main Dashboard",
+interface DashboardStats {
+  totalRevenue: number
+  activeOrders: number
+  inventoryItems: number
+  activeEmployees: number
+  sales?: {
+    totalLeads: number
+    totalOpportunities: number
+    activeOrders: number
+    monthlyRevenue: number
+  }
+  products?: {
+    total: number
+    inStock: number
+    lowStock: number
+  }
+  operations?: {
+    activeProduction: number
+    pendingInspections: number
+  }
+  accounting?: {
+    totalAccounts: number
+    journalEntries: number
+    totalAssets: number
+  }
+  hris?: {
+    totalEmployees: number
+    activeEmployees: number
+    pendingLeave: number
+  }
 }
 
 export default function ERPDashboard() {
+  const [stats, setStats] = useState<DashboardStats>({
+    totalRevenue: 0,
+    activeOrders: 0,
+    inventoryItems: 0,
+    activeEmployees: 0,
+  })
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const response = await fetch('/api/dashboard/stats')
+        if (response.ok) {
+          const data = await response.json()
+          setStats(data)
+        }
+      } catch (error) {
+        console.error('Error fetching dashboard stats:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchStats()
+  }, [])
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount)
+  }
+
   return (
-    <>
-      <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem className="hidden md:block">
-              <BreadcrumbLink href="/erp">
-                ERP
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator className="hidden md:block" />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Dashboard</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </header>
-      
-      <div className="flex-1 space-y-4 p-4 pt-6">
+    <div className="flex-1 space-y-4">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Ocean ERP Dashboard</h2>
         </div>
@@ -73,9 +104,11 @@ export default function ERPDashboard() {
               <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">$45,231.89</div>
+              <div className="text-2xl font-bold">
+                {loading ? "..." : formatCurrency(stats.totalRevenue)}
+              </div>
               <p className="text-xs text-muted-foreground">
-                +20.1% from last month
+                From all sales orders
               </p>
             </CardContent>
           </Card>
@@ -87,9 +120,11 @@ export default function ERPDashboard() {
               <ShoppingCart className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">+2350</div>
+              <div className="text-2xl font-bold">
+                {loading ? "..." : stats.activeOrders.toLocaleString()}
+              </div>
               <p className="text-xs text-muted-foreground">
-                +180.1% from last month
+                Pending and processing orders
               </p>
             </CardContent>
           </Card>
@@ -99,9 +134,11 @@ export default function ERPDashboard() {
               <Package className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">12,234</div>
+              <div className="text-2xl font-bold">
+                {loading ? "..." : stats.inventoryItems.toLocaleString()}
+              </div>
               <p className="text-xs text-muted-foreground">
-                +19% from last month
+                Active products in catalog
               </p>
             </CardContent>
           </Card>
@@ -113,9 +150,11 @@ export default function ERPDashboard() {
               <Activity className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">573</div>
+              <div className="text-2xl font-bold">
+                {loading ? "..." : stats.activeEmployees.toLocaleString()}
+              </div>
               <p className="text-xs text-muted-foreground">
-                +201 since last month
+                Currently employed staff
               </p>
             </CardContent>
           </Card>
@@ -134,6 +173,26 @@ export default function ERPDashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
+              <div className="space-y-3 mb-4">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Total Leads:</span>
+                  <span className="font-semibold">{loading ? "..." : stats.sales?.totalLeads || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Opportunities:</span>
+                  <span className="font-semibold text-blue-600">{loading ? "..." : stats.sales?.totalOpportunities || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Active Orders:</span>
+                  <span className="font-semibold text-green-600">{loading ? "..." : stats.sales?.activeOrders || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Monthly Revenue:</span>
+                  <span className="font-semibold text-green-600">
+                    {loading ? "..." : formatCurrency(stats.sales?.monthlyRevenue || 0)}
+                  </span>
+                </div>
+              </div>
               <div className="space-y-2">
                 <Button asChild variant="outline" className="w-full justify-start">
                   <a href="/erp/sales/leads">View Leads</a>
@@ -159,6 +218,20 @@ export default function ERPDashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
+              <div className="space-y-3 mb-4">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Total Products:</span>
+                  <span className="font-semibold">{loading ? "..." : stats.products?.total || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">In Stock:</span>
+                  <span className="font-semibold text-green-600">{loading ? "..." : stats.products?.inStock || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Low Stock:</span>
+                  <span className="font-semibold text-orange-600">{loading ? "..." : stats.products?.lowStock || 0}</span>
+                </div>
+              </div>
               <div className="space-y-2">
                 <Button asChild variant="outline" className="w-full justify-start">
                   <a href="/erp/product/catalog">Product Catalog</a>
@@ -184,6 +257,16 @@ export default function ERPDashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
+              <div className="space-y-3 mb-4">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Active Production:</span>
+                  <span className="font-semibold">{loading ? "..." : stats.operations?.activeProduction || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Pending Inspections:</span>
+                  <span className="font-semibold text-orange-600">{loading ? "..." : stats.operations?.pendingInspections || 0}</span>
+                </div>
+              </div>
               <div className="space-y-2">
                 <Button asChild variant="outline" className="w-full justify-start">
                   <a href="/erp/operations/manufacturing">Manufacturing</a>
@@ -209,15 +292,31 @@ export default function ERPDashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
+              <div className="space-y-3 mb-4">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Chart of Accounts:</span>
+                  <span className="font-semibold">{loading ? "..." : stats.accounting?.totalAccounts || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Journal Entries:</span>
+                  <span className="font-semibold">{loading ? "..." : stats.accounting?.journalEntries || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Total Assets:</span>
+                  <span className="font-semibold text-green-600">
+                    {loading ? "..." : formatCurrency(stats.accounting?.totalAssets || 0)}
+                  </span>
+                </div>
+              </div>
               <div className="space-y-2">
+                <Button asChild variant="outline" className="w-full justify-start">
+                  <a href="/erp/accounting/chart-of-accounts">Chart of Accounts</a>
+                </Button>
                 <Button asChild variant="outline" className="w-full justify-start">
                   <a href="/erp/accounting/general-ledger">General Ledger</a>
                 </Button>
                 <Button asChild variant="outline" className="w-full justify-start">
                   <a href="/erp/accounting/reports">Financial Reports</a>
-                </Button>
-                <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="/erp/accounting/budgeting">Budgeting</a>
                 </Button>
               </div>
             </CardContent>
@@ -234,21 +333,34 @@ export default function ERPDashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
+              <div className="space-y-3 mb-4">
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Total Employees:</span>
+                  <span className="font-semibold">{loading ? "..." : stats.hris?.totalEmployees || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Active Employees:</span>
+                  <span className="font-semibold text-green-600">{loading ? "..." : stats.hris?.activeEmployees || 0}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-muted-foreground">Pending Leave:</span>
+                  <span className="font-semibold text-orange-600">{loading ? "..." : stats.hris?.pendingLeave || 0}</span>
+                </div>
+              </div>
               <div className="space-y-2">
                 <Button asChild variant="outline" className="w-full justify-start">
                   <a href="/erp/hris/employees">Employees</a>
                 </Button>
                 <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="/erp/hris/payroll">Payroll</a>
+                  <a href="/erp/hris/recruitment">Recruitment</a>
                 </Button>
                 <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="/erp/hris/recruitment">Recruitment</a>
+                  <a href="/erp/hris/payroll">Payroll</a>
                 </Button>
               </div>
             </CardContent>
           </Card>
         </div>
-      </div>
-    </>
+    </div>
   )
 }

@@ -1,0 +1,548 @@
+"use client"
+
+import * as React from "react"
+import { useRouter } from "next/navigation"
+import {
+  Award,
+  Plus,
+  Search,
+  Filter,
+  MoreHorizontal,
+  Eye,
+  Edit,
+  TrendingUp,
+  Target,
+  Star,
+  Calendar,
+  Users,
+  CheckCircle2,
+  Clock,
+  BarChart3,
+} from "lucide-react"
+import {
+  SidebarTrigger,
+} from "@/registry/new-york-v4/ui/sidebar"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import { Input } from "@/registry/new-york-v4/ui/input"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/new-york-v4/ui/card"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/new-york-v4/ui/table"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/new-york-v4/ui/dropdown-menu"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/registry/new-york-v4/ui/dialog"
+import { Label } from "@/registry/new-york-v4/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
+import { Badge } from "@/registry/new-york-v4/ui/badge"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/new-york-v4/ui/tabs"
+import { Progress } from "@/registry/new-york-v4/ui/progress"
+
+interface PerformanceReview {
+  id: number
+  employee_number: string
+  employee_name: string
+  department_name: string
+  reviewer_name: string
+  review_period_start: string
+  review_period_end: string
+  overall_rating: number
+  status: string
+  review_date: string
+}
+
+export default function PerformancePage() {
+  const router = useRouter()
+  const [activeTab, setActiveTab] = React.useState("reviews")
+  const [reviews, setReviews] = React.useState<PerformanceReview[]>([])
+  const [loading, setLoading] = React.useState(true)
+  const [searchQuery, setSearchQuery] = React.useState("")
+  const [statusFilter, setStatusFilter] = React.useState("all")
+  const [detailsDialog, setDetailsDialog] = React.useState(false)
+  const [selectedReview, setSelectedReview] = React.useState<PerformanceReview | null>(null)
+
+  const [stats, setStats] = React.useState({
+    total_reviews: 0,
+    completed_reviews: 0,
+    pending_reviews: 0,
+    average_rating: 0,
+  })
+
+  React.useEffect(() => {
+    if (activeTab === "reviews") {
+      fetchReviews()
+    }
+  }, [activeTab, statusFilter])
+
+  const fetchReviews = async () => {
+    try {
+      setLoading(true)
+      const params = new URLSearchParams()
+      if (statusFilter !== "all") {
+        params.append("status", statusFilter)
+      }
+
+      const response = await fetch(`/api/hris/performance/reviews?${params}`)
+      if (response.ok) {
+        const data = await response.json()
+        setReviews(data.reviews || [])
+        setStats(data.stats || stats)
+      }
+    } catch (error) {
+      console.error("Error fetching performance reviews:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const getStatusBadge = (status: string) => {
+    const variants: Record<string, { variant: "default" | "secondary" | "destructive" | "outline"; label: string }> = {
+      Draft: { variant: "outline", label: "Draft" },
+      "In Progress": { variant: "secondary", label: "In Progress" },
+      Completed: { variant: "default", label: "Completed" },
+      Approved: { variant: "default", label: "Approved" },
+    }
+    const config = variants[status] || { variant: "outline", label: status }
+    return <Badge variant={config.variant}>{config.label}</Badge>
+  }
+
+  const getRatingStars = (rating: number) => {
+    return (
+      <div className="flex items-center gap-1">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star
+            key={i}
+            className={`h-4 w-4 ${
+              i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+            }`}
+          />
+        ))}
+        <span className="ml-2 text-sm font-medium">{rating.toFixed(1)}</span>
+      </div>
+    )
+  }
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("id-ID", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  }
+
+  const filteredReviews = reviews.filter((review) => {
+    const searchLower = searchQuery.toLowerCase()
+    return (
+      review.employee_name.toLowerCase().includes(searchLower) ||
+      review.employee_number.toLowerCase().includes(searchLower) ||
+      review.department_name?.toLowerCase().includes(searchLower)
+    )
+  })
+
+  return (
+    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <div className="flex items-center gap-4 py-4">
+        <SidebarTrigger className="-ml-1" />
+        <Separator orientation="vertical" className="h-6" />
+        <div className="flex flex-1 items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold">Performance Management</h1>
+            <p className="text-sm text-muted-foreground">
+              Manage performance reviews, goals, and employee development
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button size="sm" variant="outline">
+              <Target className="mr-2 h-4 w-4" />
+              Set Goals
+            </Button>
+            <Button size="sm">
+              <Plus className="mr-2 h-4 w-4" />
+              New Review
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Cards */}
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Reviews</CardTitle>
+            <Award className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.total_reviews}</div>
+            <p className="text-xs text-muted-foreground">All performance reviews</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Completed</CardTitle>
+            <CheckCircle2 className="h-4 w-4 text-green-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.completed_reviews}</div>
+            <p className="text-xs text-muted-foreground">Reviews finalized</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Pending</CardTitle>
+            <Clock className="h-4 w-4 text-yellow-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.pending_reviews}</div>
+            <p className="text-xs text-muted-foreground">Awaiting completion</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Average Rating</CardTitle>
+            <TrendingUp className="h-4 w-4 text-blue-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.average_rating.toFixed(1)}/5</div>
+            <p className="text-xs text-muted-foreground">Overall performance</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList>
+          <TabsTrigger value="reviews">Performance Reviews</TabsTrigger>
+          <TabsTrigger value="goals">Goals & KPIs</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        </TabsList>
+
+        {/* Performance Reviews Tab */}
+        <TabsContent value="reviews">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative flex-1 max-w-sm">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="search"
+                      placeholder="Search reviews..."
+                      className="pl-8"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  <Select value={statusFilter} onValueChange={setStatusFilter}>
+                    <SelectTrigger className="w-[180px]">
+                      <Filter className="mr-2 h-4 w-4" />
+                      <SelectValue placeholder="Filter by status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Status</SelectItem>
+                      <SelectItem value="Draft">Draft</SelectItem>
+                      <SelectItem value="In Progress">In Progress</SelectItem>
+                      <SelectItem value="Completed">Completed</SelectItem>
+                      <SelectItem value="Approved">Approved</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Employee</TableHead>
+                    <TableHead>Department</TableHead>
+                    <TableHead>Reviewer</TableHead>
+                    <TableHead>Review Period</TableHead>
+                    <TableHead>Rating</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Review Date</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={8} className="text-center py-10">
+                        Loading performance reviews...
+                      </TableCell>
+                    </TableRow>
+                  ) : filteredReviews.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={8} className="text-center py-10">
+                        <div className="flex flex-col items-center gap-2">
+                          <Award className="h-8 w-8 text-muted-foreground" />
+                          <p className="text-sm text-muted-foreground">No performance reviews found</p>
+                          <Button size="sm">
+                            <Plus className="mr-2 h-4 w-4" />
+                            Create First Review
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    filteredReviews.map((review) => (
+                      <TableRow key={review.id}>
+                        <TableCell>
+                          <div>
+                            <div className="font-medium">{review.employee_name}</div>
+                            <div className="text-sm text-muted-foreground">
+                              {review.employee_number}
+                            </div>
+                          </div>
+                        </TableCell>
+                        <TableCell>{review.department_name || "-"}</TableCell>
+                        <TableCell className="text-sm">{review.reviewer_name || "-"}</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-1 text-sm">
+                            <Calendar className="h-3 w-3 text-muted-foreground" />
+                            {formatDate(review.review_period_start)} - {formatDate(review.review_period_end)}
+                          </div>
+                        </TableCell>
+                        <TableCell>{getRatingStars(review.overall_rating || 0)}</TableCell>
+                        <TableCell>{getStatusBadge(review.status)}</TableCell>
+                        <TableCell>{formatDate(review.review_date)}</TableCell>
+                        <TableCell className="text-right">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem
+                                onClick={() => {
+                                  setSelectedReview(review)
+                                  setDetailsDialog(true)
+                                }}
+                              >
+                                <Eye className="mr-2 h-4 w-4" />
+                                View Details
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Edit className="mr-2 h-4 w-4" />
+                                Edit Review
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <CheckCircle2 className="mr-2 h-4 w-4" />
+                                Complete Review
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Goals & KPIs Tab */}
+        <TabsContent value="goals">
+          <Card>
+            <CardHeader>
+              <CardTitle>Goals & KPIs</CardTitle>
+              <CardDescription>Set and track employee goals and key performance indicators</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center py-10">
+                <Target className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <p className="text-sm text-muted-foreground mb-4">
+                  Goal management feature
+                </p>
+                <Button size="sm">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Set New Goal
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Analytics Tab */}
+        <TabsContent value="analytics">
+          <div className="grid gap-4 md:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Performance Distribution</CardTitle>
+                <CardDescription>Rating breakdown across all employees</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span>Excellent (5 stars)</span>
+                      <span className="font-medium">25%</span>
+                    </div>
+                    <Progress value={25} className="h-2" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span>Good (4 stars)</span>
+                      <span className="font-medium">40%</span>
+                    </div>
+                    <Progress value={40} className="h-2" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span>Satisfactory (3 stars)</span>
+                      <span className="font-medium">25%</span>
+                    </div>
+                    <Progress value={25} className="h-2" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span>Needs Improvement (2 stars)</span>
+                      <span className="font-medium">8%</span>
+                    </div>
+                    <Progress value={8} className="h-2" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span>Poor (1 star)</span>
+                      <span className="font-medium">2%</span>
+                    </div>
+                    <Progress value={2} className="h-2" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Department Performance</CardTitle>
+                <CardDescription>Average ratings by department</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Sales & Marketing</span>
+                    <div className="flex items-center gap-2">
+                      {getRatingStars(4.2)}
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Product & Operations</span>
+                    <div className="flex items-center gap-2">
+                      {getRatingStars(4.5)}
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Finance & Accounting</span>
+                    <div className="flex items-center gap-2">
+                      {getRatingStars(4.1)}
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">Information Technology</span>
+                    <div className="flex items-center gap-2">
+                      {getRatingStars(4.7)}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </TabsContent>
+      </Tabs>
+
+      {/* Review Details Dialog */}
+      <Dialog open={detailsDialog} onOpenChange={setDetailsDialog}>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader>
+            <DialogTitle>Performance Review Details</DialogTitle>
+            <DialogDescription>
+              Complete performance review information
+            </DialogDescription>
+          </DialogHeader>
+          {selectedReview && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-muted-foreground">Employee Name</Label>
+                  <p className="font-medium">{selectedReview.employee_name}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">Employee Number</Label>
+                  <p className="font-medium">{selectedReview.employee_number}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">Department</Label>
+                  <p className="font-medium">{selectedReview.department_name}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">Reviewer</Label>
+                  <p className="font-medium">{selectedReview.reviewer_name}</p>
+                </div>
+              </div>
+
+              <Separator />
+
+              <div>
+                <Label className="text-muted-foreground">Review Period</Label>
+                <p className="font-medium">
+                  {formatDate(selectedReview.review_period_start)} - {formatDate(selectedReview.review_period_end)}
+                </p>
+              </div>
+
+              <div>
+                <Label className="text-muted-foreground">Overall Rating</Label>
+                <div className="mt-2">{getRatingStars(selectedReview.overall_rating || 0)}</div>
+              </div>
+
+              <div>
+                <Label className="text-muted-foreground">Status</Label>
+                <div className="mt-2">{getStatusBadge(selectedReview.status)}</div>
+              </div>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDetailsDialog(false)}>
+              Close
+            </Button>
+            <Button>
+              <Edit className="mr-2 h-4 w-4" />
+              Edit Review
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  )
+}

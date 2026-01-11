@@ -1,0 +1,688 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Ocean ERP - POS API",
+		"description": "Complete API collection for Ocean ERP Point of Sale system. Includes sessions, products, customers, transactions, and loyalty endpoints.\n\n## Getting Started\n1. Import this collection into Postman\n2. Set up the environment variables (see Environment section)\n3. Start with Session Management to create a POS session\n4. Test product search and customer lookup\n5. Process transactions with loyalty calculations\n\n## Test Data Available\n- 50 Indonesian skincare products (Wardah, Somethinc, Avoskin, etc.)\n- 20 customers across 5 membership tiers\n- Multiple warehouses and payment methods\n\n## Documentation\nFull API docs: `/docs/api/pos.md`\nPhase 2 RFC: `/docs/rfcs/phase2-offline-mode.md`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Session Management",
+			"item": [
+				{
+					"name": "Open POS Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const jsonData = pm.response.json();",
+									"    pm.environment.set('session_id', jsonData.data.id);",
+									"    pm.environment.set('session_number', jsonData.data.session_number);",
+									"    console.log('Session created:', jsonData.data.session_number);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user_id\": 1,\n  \"warehouse_id\": 1,\n  \"register_number\": \"POS-001\",\n  \"opening_cash\": 500000,\n  \"notes\": \"Morning shift - Main counter\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pos/sessions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"sessions"
+							]
+						},
+						"description": "Opens a new POS session for a cashier. Required before processing any transactions.\n\n**Required Fields:**\n- user_id: Cashier user ID\n- warehouse_id: Store/warehouse location\n- register_number: POS terminal identifier\n- opening_cash: Starting cash amount in IDR"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Active Session",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/sessions/active?user_id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"sessions",
+								"active"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"description": "Cashier user ID"
+								}
+							]
+						},
+						"description": "Retrieves the currently active session for a cashier. Returns session details including opening cash, current totals, and transaction count."
+					},
+					"response": []
+				},
+				{
+					"name": "Close POS Session",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"closing_cash\": 2450000,\n  \"cash_difference\": 0,\n  \"notes\": \"End of shift - all balanced\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pos/sessions/{{session_id}}/close",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"sessions",
+								"{{session_id}}",
+								"close"
+							]
+						},
+						"description": "Closes an active POS session at end of shift. Records closing cash count and calculates differences.\n\n**Required Fields:**\n- closing_cash: Actual cash counted in drawer\n- cash_difference: Expected vs actual (positive = overage, negative = shortage)"
+					},
+					"response": []
+				}
+			],
+			"description": "POS session lifecycle management - opening, monitoring, and closing cashier shifts"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Search Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/products/search?q=wardah&warehouse_id=1&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "wardah",
+									"description": "Search by product name, SKU, or brand"
+								},
+								{
+									"key": "warehouse_id",
+									"value": "1",
+									"description": "Filter by warehouse/store location"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Maximum results (default: 50)"
+								},
+								{
+									"key": "category_id",
+									"value": "",
+									"description": "Filter by product category",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Fast product search for POS checkout. Searches by name, SKU, or brand with fuzzy matching.\n\n**Search Tips:**\n- Use partial words: \"war\" finds \"Wardah\"\n- Brand search: \"somethinc\" finds all Somethinc products\n- SKU search: \"WRD-MC-\" finds products by SKU prefix\n\n**Response Includes:**\n- Available quantity at specified warehouse\n- Price with tax calculated\n- Batch tracking data (if applicable)"
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Barcode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/products/search?barcode=8992745001234&warehouse_id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "barcode",
+									"value": "8992745001234",
+									"description": "Exact barcode match"
+								},
+								{
+									"key": "warehouse_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Search product by exact barcode match. Returns single product with batch information if batch tracking is enabled."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/products/:product_id?warehouse_id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"products",
+								":product_id"
+							],
+							"query": [
+								{
+									"key": "warehouse_id",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get detailed product information including inventory levels, batches, and pricing for a specific warehouse."
+					},
+					"response": []
+				}
+			],
+			"description": "Product search and inventory lookup for POS checkout"
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Search Customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const jsonData = pm.response.json();",
+									"    if (jsonData.data && jsonData.data.length > 0) {",
+									"        pm.environment.set('customer_id', jsonData.data[0].id);",
+									"        console.log('Customer found:', jsonData.data[0].name);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/customers/search?q=siti&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"customers",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "siti",
+									"description": "Search by name, email, or phone"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "membership_tier_id",
+									"value": "",
+									"description": "Filter by membership tier",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Search customers by name, email, or phone number. Returns customer details including membership tier and loyalty points.\n\n**Test Customers:**\n- Siti Nurhaliza (Titanium tier, 12,500 points)\n- Budi Santoso (Bronze tier, 250 points)\n- Ahmad Wijaya (Platinum tier, 8,200 points)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/customers/:customer_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"customers",
+								":customer_id"
+							],
+							"variable": [
+								{
+									"key": "customer_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get detailed customer information including membership tier, loyalty points, total purchases, and tier benefits."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Walk-in Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Walk-in Customer\",\n  \"phone\": \"+62-812-3456-7890\",\n  \"email\": \"walkin@temp.com\",\n  \"date_of_birth\": \"1990-01-01\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pos/customers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"customers"
+							]
+						},
+						"description": "Quick customer registration for walk-in purchases. Creates a new customer with Bronze tier (default).\n\n**Required Fields:**\n- name: Customer name\n- phone: Phone number (unique)\n\n**Optional Fields:**\n- email, date_of_birth, gender, address, city, province, postal_code"
+					},
+					"response": []
+				}
+			],
+			"description": "Customer lookup and quick registration for POS"
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Create POS Transaction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 201) {",
+									"    const jsonData = pm.response.json();",
+									"    pm.environment.set('transaction_id', jsonData.data.id);",
+									"    pm.environment.set('invoice_number', jsonData.data.invoice_number);",
+									"    console.log('Transaction created:', jsonData.data.invoice_number);",
+									"    console.log('Total amount:', jsonData.data.total_amount);",
+									"    console.log('Points earned:', jsonData.data.loyalty_points_earned);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"session_id\": {{session_id}},\n  \"customer_id\": 1,\n  \"warehouse_id\": 1,\n  \"items\": [\n    {\n      \"product_id\": 1,\n      \"quantity\": 2,\n      \"unit_price\": 45000,\n      \"discount_amount\": 0,\n      \"notes\": \"Customer requested extra samples\"\n    },\n    {\n      \"product_id\": 3,\n      \"quantity\": 1,\n      \"unit_price\": 65000,\n      \"discount_amount\": 5000,\n      \"notes\": \"10% member discount applied\"\n    }\n  ],\n  \"payment_method\": \"Cash\",\n  \"payment_amount\": 200000,\n  \"subtotal\": 150000,\n  \"tax_amount\": 16500,\n  \"discount_amount\": 5000,\n  \"total_amount\": 161500,\n  \"notes\": \"Birthday promo applied\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pos/transactions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"transactions"
+							]
+						},
+						"description": "Process a complete POS transaction with automatic:\n- Inventory deduction\n- Loyalty points calculation (based on membership tier)\n- Tax calculation (11% PPN)\n- Session totals update\n\n**Payment Methods:**\n- Cash, Debit Card, Credit Card, GoPay, OVO, DANA, QRIS, Bank Transfer\n\n**Loyalty Points:**\n- Bronze: 1 point per IDR 1,000 spent\n- Silver: 1.5 points per IDR 1,000\n- Gold: 2 points per IDR 1,000\n- Platinum: 3 points per IDR 1,000\n- Titanium: 5 points per IDR 1,000"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/transactions/:transaction_id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"transactions",
+								":transaction_id"
+							],
+							"variable": [
+								{
+									"key": "transaction_id",
+									"value": "{{transaction_id}}"
+								}
+							]
+						},
+						"description": "Retrieve complete transaction details including line items, payments, customer info, and loyalty points earned."
+					},
+					"response": []
+				},
+				{
+					"name": "List Session Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/transactions?session_id={{session_id}}&limit=20",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "session_id",
+									"value": "{{session_id}}",
+									"description": "Filter by POS session"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "customer_id",
+									"value": "",
+									"description": "Filter by customer",
+									"disabled": true
+								},
+								{
+									"key": "from_date",
+									"value": "",
+									"description": "Start date (YYYY-MM-DD)",
+									"disabled": true
+								},
+								{
+									"key": "to_date",
+									"value": "",
+									"description": "End date (YYYY-MM-DD)",
+									"disabled": true
+								}
+							]
+						},
+						"description": "List all transactions for a POS session or filter by customer and date range."
+					},
+					"response": []
+				}
+			],
+			"description": "Transaction processing with inventory, loyalty, and payment handling"
+		},
+		{
+			"name": "Loyalty & Membership",
+			"item": [
+				{
+					"name": "Get Loyalty Points",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/loyalty/points?customer_id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"loyalty",
+								"points"
+							],
+							"query": [
+								{
+									"key": "customer_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get current loyalty points balance and history for a customer."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Membership Tiers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/loyalty/tiers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"loyalty",
+								"tiers"
+							]
+						},
+						"description": "List all membership tiers with benefits and requirements.\n\n**Tiers:**\n1. Bronze (Entry): IDR 0 - 5M annual spend, 1x points\n2. Silver: IDR 5M - 15M, 1.5x points, 5% discount\n3. Gold: IDR 15M - 30M, 2x points, 10% discount, priority service\n4. Platinum: IDR 30M - 75M, 3x points, 15% discount, free treatments\n5. Titanium (VIP): IDR 75M+, 5x points, 20% discount, exclusive events"
+					},
+					"response": []
+				},
+				{
+					"name": "Redeem Loyalty Points",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_id\": 1,\n  \"points_to_redeem\": 1000,\n  \"redemption_type\": \"discount\",\n  \"transaction_id\": {{transaction_id}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pos/loyalty/redeem",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"loyalty",
+								"redeem"
+							]
+						},
+						"description": "Redeem loyalty points for discounts or rewards.\n\n**Redemption Rate:** 100 points = IDR 10,000 discount\n\n**Redemption Types:**\n- discount: Apply points as discount to current transaction\n- voucher: Convert points to store voucher\n- product: Exchange points for free product"
+					},
+					"response": []
+				}
+			],
+			"description": "Loyalty points, membership tiers, and rewards management"
+		},
+		{
+			"name": "Reports & Analytics",
+			"item": [
+				{
+					"name": "Session Summary Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/reports/session-summary?session_id={{session_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"reports",
+								"session-summary"
+							],
+							"query": [
+								{
+									"key": "session_id",
+									"value": "{{session_id}}"
+								}
+							]
+						},
+						"description": "Get comprehensive session report including:\n- Total sales by payment method\n- Number of transactions\n- Average transaction value\n- Top selling products\n- Cash reconciliation"
+					},
+					"response": []
+				},
+				{
+					"name": "Daily Sales Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/pos/reports/daily-sales?date=2025-11-12&warehouse_id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pos",
+								"reports",
+								"daily-sales"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2025-11-12",
+									"description": "Report date (YYYY-MM-DD)"
+								},
+								{
+									"key": "warehouse_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Daily sales summary across all sessions for a warehouse/store location."
+					},
+					"response": []
+				}
+			],
+			"description": "Sales reports and analytics endpoints"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-set timestamps for requests",
+					"pm.variables.set('timestamp', new Date().toISOString());",
+					"",
+					"// Log current environment",
+					"console.log('Environment:', pm.environment.name);",
+					"console.log('Base URL:', pm.environment.get('base_url'));"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Global test - check response time",
+					"pm.test('Response time is acceptable', function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+					"});",
+					"",
+					"// Global test - check for success field",
+					"if (pm.response.code !== 404) {",
+					"    pm.test('Response has success field', function () {",
+					"        const jsonData = pm.response.json();",
+					"        pm.expect(jsonData).to.have.property('success');",
+					"    });",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:4000",
+			"type": "string"
+		},
+		{
+			"key": "session_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "customer_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "transaction_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

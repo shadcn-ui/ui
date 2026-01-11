@@ -1,0 +1,532 @@
+{
+  "info": {
+    "name": "Ocean ERP API v4",
+    "_postman_id": "ocean-erp-v4-collection",
+    "description": "Complete API collection for Ocean ERP v4 with all Phase 7 endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000/api",
+      "type": "string"
+    },
+    {
+      "key": "apiKey",
+      "value": "your-api-key-here",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "CRM",
+      "item": [
+        {
+          "name": "Leads",
+          "item": [
+            {
+              "name": "List Leads",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/crm/leads?page=1&limit=20",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["crm", "leads"],
+                  "query": [
+                    {"key": "page", "value": "1"},
+                    {"key": "limit", "value": "20"},
+                    {"key": "search", "value": "", "disabled": true},
+                    {"key": "lead_status", "value": "", "disabled": true}
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Create Lead",
+              "request": {
+                "method": "POST",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"+1-555-0100\",\n  \"company_name\": \"Tech Corp\",\n  \"job_title\": \"CTO\",\n  \"lead_source\": \"website\",\n  \"estimated_value\": 50000,\n  \"created_by\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/crm/leads",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["crm", "leads"]
+                }
+              }
+            },
+            {
+              "name": "Get Lead by ID",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/crm/leads/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["crm", "leads", "1"]
+                }
+              }
+            },
+            {
+              "name": "Update Lead",
+              "request": {
+                "method": "PUT",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lead_status\": \"qualified\",\n  \"lead_score\": 85\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/crm/leads/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["crm", "leads", "1"]
+                }
+              }
+            },
+            {
+              "name": "Convert Lead",
+              "request": {
+                "method": "POST",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"create_contact\": true,\n  \"create_company\": true,\n  \"converted_by\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/crm/leads/1/convert",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["crm", "leads", "1", "convert"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Contacts",
+          "item": [
+            {
+              "name": "List Contacts",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/crm/contacts",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["crm", "contacts"]
+                }
+              }
+            },
+            {
+              "name": "Create Contact",
+              "request": {
+                "method": "POST",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Smith\",\n  \"email\": \"jane@company.com\",\n  \"phone\": \"+1-555-0101\",\n  \"job_title\": \"VP Operations\",\n  \"contact_type\": \"customer\",\n  \"created_by\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/crm/contacts",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["crm", "contacts"]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "List Projects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects?page=1&limit=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["projects"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "20"},
+                {"key": "project_status", "value": "", "disabled": true},
+                {"key": "health_status", "value": "", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Project",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"project_code\": \"PROJ-2025-001\",\n  \"project_name\": \"New ERP Implementation\",\n  \"project_type\": \"internal\",\n  \"planned_start_date\": \"2025-01-01\",\n  \"planned_end_date\": \"2025-06-30\",\n  \"budget_amount\": 100000,\n  \"billing_type\": \"time_and_material\",\n  \"created_by\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["projects"]
+            }
+          }
+        },
+        {
+          "name": "Get Project Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["projects", "1"]
+            }
+          }
+        },
+        {
+          "name": "Tasks",
+          "item": [
+            {
+              "name": "List Tasks",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/tasks?project_id=1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "tasks"],
+                  "query": [
+                    {"key": "project_id", "value": "1"},
+                    {"key": "task_status", "value": "", "disabled": true}
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Create Task",
+              "request": {
+                "method": "POST",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": 1,\n  \"task_name\": \"Setup Development Environment\",\n  \"estimated_hours\": 16,\n  \"priority\": \"high\",\n  \"assigned_to\": 2,\n  \"created_by\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/tasks",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "tasks"]
+                }
+              }
+            },
+            {
+              "name": "Get Task Details",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/tasks/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "tasks", "1"]
+                }
+              }
+            },
+            {
+              "name": "Update Task",
+              "request": {
+                "method": "PUT",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"task_status\": \"completed\",\n  \"completion_percentage\": 100\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/tasks/1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "tasks", "1"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Time Tracking",
+          "item": [
+            {
+              "name": "List Time Entries",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/time-entries?project_id=1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "time-entries"],
+                  "query": [
+                    {"key": "project_id", "value": "1"},
+                    {"key": "is_approved", "value": "", "disabled": true}
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Log Time Entry",
+              "request": {
+                "method": "POST",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": 1,\n  \"task_id\": 1,\n  \"user_id\": 2,\n  \"entry_date\": \"2025-01-15\",\n  \"hours_worked\": 8,\n  \"work_description\": \"Completed environment setup\",\n  \"is_billable\": true,\n  \"activity_type\": \"development\",\n  \"created_by\": 2\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/time-entries",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "time-entries"]
+                }
+              }
+            },
+            {
+              "name": "Approve Time Entries",
+              "request": {
+                "method": "PUT",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"time_entry_ids\": [1, 2, 3],\n  \"approved_by\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/time-entries/approve",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "time-entries", "approve"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Resources",
+          "item": [
+            {
+              "name": "List Resources",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/resources",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "resources"]
+                }
+              }
+            },
+            {
+              "name": "Create Resource",
+              "request": {
+                "method": "POST",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resource_type\": \"human\",\n  \"resource_name\": \"John Developer\",\n  \"role\": \"Senior Developer\",\n  \"billing_rate_per_hour\": 150,\n  \"created_by\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/resources",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "resources"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Budgets",
+          "item": [
+            {
+              "name": "List Budgets",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/budgets?project_id=1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "budgets"],
+                  "query": [{"key": "project_id", "value": "1"}]
+                }
+              }
+            },
+            {
+              "name": "Create Budget",
+              "request": {
+                "method": "POST",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": 1,\n  \"budget_category\": \"labor\",\n  \"budgeted_amount\": 50000,\n  \"created_by\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/budgets",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "budgets"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Expenses",
+          "item": [
+            {
+              "name": "List Expenses",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/expenses?project_id=1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "expenses"],
+                  "query": [{"key": "project_id", "value": "1"}]
+                }
+              }
+            },
+            {
+              "name": "Submit Expense",
+              "request": {
+                "method": "POST",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": 1,\n  \"expense_date\": \"2025-01-15\",\n  \"expense_category\": \"Software\",\n  \"expense_description\": \"Development tools\",\n  \"expense_amount\": 500,\n  \"submitted_by\": 2,\n  \"is_billable\": true\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/expenses",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "expenses"]
+                }
+              }
+            },
+            {
+              "name": "Approve Expenses",
+              "request": {
+                "method": "PUT",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expense_ids\": [1, 2],\n  \"action\": \"approve\",\n  \"approved_by\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/expenses/approve",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "expenses", "approve"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Documents",
+          "item": [
+            {
+              "name": "List Documents",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/documents?project_id=1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "documents"],
+                  "query": [{"key": "project_id", "value": "1"}]
+                }
+              }
+            },
+            {
+              "name": "Upload Document",
+              "request": {
+                "method": "POST",
+                "header": [{"key": "Content-Type", "value": "application/json"}],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": 1,\n  \"document_name\": \"Requirements Specification\",\n  \"file_url\": \"https://storage.../requirements.pdf\",\n  \"uploaded_by\": 1\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/projects/documents",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "documents"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Analytics",
+          "item": [
+            {
+              "name": "Portfolio Dashboard",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/analytics",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "analytics"]
+                }
+              }
+            },
+            {
+              "name": "Financial Analytics",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/analytics?type=financial",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "analytics"],
+                  "query": [{"key": "type", "value": "financial"}]
+                }
+              }
+            },
+            {
+              "name": "Resource Analytics",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/analytics?type=resources",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "analytics"],
+                  "query": [{"key": "type", "value": "resources"}]
+                }
+              }
+            },
+            {
+              "name": "Timeline Analytics",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/analytics?type=timeline",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "analytics"],
+                  "query": [{"key": "type", "value": "timeline"}]
+                }
+              }
+            },
+            {
+              "name": "Project Dashboard",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/projects/analytics?project_id=1",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["projects", "analytics"],
+                  "query": [{"key": "project_id", "value": "1"}]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 export const siteConfig = {
-  name: "shadcn/ui",
-  url: "https://ui.shadcn.com",
-  ogImage: "https://ui.shadcn.com/og.jpg",
+  name: "Ocean ERP",
+  url: "http://localhost:4000",
+  ogImage: "http://localhost:4000/opengraph-image.png",
   description:
-    "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own. Open Source. Open Code.",
+    "Ocean ERP — Enterprise resource planning tailored for modern teams. Manage sales, inventory, accounting and operations in one place.",
   links: {
     twitter: "https://twitter.com/shadcn",
     github: "https://github.com/shadcn-ui/ui",

@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     creator: "@shadcn",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: ["/ocean-erp.svg", "/favicon.ico"],
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },

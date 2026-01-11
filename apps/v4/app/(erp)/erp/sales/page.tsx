@@ -1,16 +1,6 @@
-import { Metadata } from "next"
-import {
-  SidebarTrigger,
-} from "@/registry/new-york-v4/ui/sidebar"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/registry/new-york-v4/ui/breadcrumb"
+"use client"
+
+import { useEffect, useState } from "react"
 import {
   Card,
   CardContent,
@@ -19,37 +9,58 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import { Button } from "@/registry/new-york-v4/ui/button"
-import { Users, FileText, TrendingUp, Target, DollarSign } from "lucide-react"
+import { Users, FileText, TrendingUp, Target, DollarSign, CreditCard } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Sales Management - Ocean ERP",
-  description: "Manage sales processes, leads, and customer relationships",
+interface SalesStats {
+  totalLeads: number
+  totalOpportunities: number
+  totalRevenue: number
+  conversionRate: number
 }
 
 export default function SalesPage() {
-  return (
-    <>
-      <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem className="hidden md:block">
-              <BreadcrumbLink href="/erp">ERP</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator className="hidden md:block" />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Sales</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </header>
+  const [stats, setStats] = useState<SalesStats>({
+    totalLeads: 0,
+    totalOpportunities: 0,
+    totalRevenue: 0,
+    conversionRate: 0,
+  })
+  const [loading, setLoading] = useState(true)
 
-      <div className="flex-1 space-y-4 p-4 pt-6">
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const response = await fetch('/api/sales/stats')
+        if (response.ok) {
+          const data = await response.json()
+          setStats(data)
+        }
+      } catch (error) {
+        console.error('Error fetching sales stats:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchStats()
+  }, [])
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount)
+  }
+
+  return (
+    <div className="flex-1 space-y-4">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Sales Management</h2>
           <div className="flex items-center space-x-2">
-            <Button>Create New Lead</Button>
+            <Button asChild>
+              <a href="/erp/sales/leads/new">Create New Lead</a>
+            </Button>
           </div>
         </div>
 
@@ -61,9 +72,11 @@ export default function SalesPage() {
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">1,234</div>
+              <div className="text-2xl font-bold">
+                {loading ? "..." : stats.totalLeads.toLocaleString()}
+              </div>
               <p className="text-xs text-muted-foreground">
-                +12% from last month
+                Active leads in pipeline
               </p>
             </CardContent>
           </Card>
@@ -73,9 +86,11 @@ export default function SalesPage() {
               <Target className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">456</div>
+              <div className="text-2xl font-bold">
+                {loading ? "..." : stats.totalOpportunities.toLocaleString()}
+              </div>
               <p className="text-xs text-muted-foreground">
-                +8% from last month
+                Open opportunities
               </p>
             </CardContent>
           </Card>
@@ -85,9 +100,11 @@ export default function SalesPage() {
               <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">$125,430</div>
+              <div className="text-2xl font-bold">
+                {loading ? "..." : formatCurrency(stats.totalRevenue)}
+              </div>
               <p className="text-xs text-muted-foreground">
-                +20% from last month
+                Total from all orders
               </p>
             </CardContent>
           </Card>
@@ -97,9 +114,11 @@ export default function SalesPage() {
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">24.5%</div>
+              <div className="text-2xl font-bold">
+                {loading ? "..." : `${stats.conversionRate}%`}
+              </div>
               <p className="text-xs text-muted-foreground">
-                +2.1% from last month
+                Leads to customers
               </p>
             </CardContent>
           </Card>
@@ -220,8 +239,29 @@ export default function SalesPage() {
               </div>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Point of Sale (POS)</CardTitle>
+              <CardDescription>
+                Quick checkout and sales processing
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <Button asChild variant="outline" className="w-full justify-start">
+                  <a href="/erp/pos/checkout">
+                    <CreditCard className="mr-2 h-4 w-4" />
+                    POS Checkout
+                  </a>
+                </Button>
+                <Button asChild variant="outline" className="w-full justify-start">
+                  <a href="/erp/pos/sessions">View Sessions</a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-      </div>
-    </>
+    </div>
   )
 }

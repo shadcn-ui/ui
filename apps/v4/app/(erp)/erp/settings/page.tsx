@@ -4,26 +4,68 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/reg
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Badge } from "@/registry/new-york-v4/ui/badge"
 import { Progress } from "@/registry/new-york-v4/ui/progress"
-import { SidebarTrigger } from "@/registry/new-york-v4/ui/sidebar"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/registry/new-york-v4/ui/tooltip"
 import { 
   Users, 
   Shield, 
   Database, 
   Building, 
-  Settings2, 
-  Download, 
-  Upload, 
-  FileText,
-  Globe,
-  Lock,
-  UserCog,
-  Archive
-} from "lucide-react"
-import Link from "next/link"
-
-export default function SettingsPage() {
-  const settingsModules = [
+        <Card>
+          <CardHeader>
+            <CardTitle>Quick Actions</CardTitle>
+            <CardDescription>
+              Frequently used administrative tasks and shortcuts
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <TooltipProvider>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {[{
+                  icon: UserCog,
+                  label: "Add New User"
+                }, {
+                  icon: Upload,
+                  label: "Import Data"
+                }, {
+                  icon: Download,
+                  label: "Export Backup"
+                }, {
+                  icon: Lock,
+                  label: "Security Audit"
+                }].map((action) => {
+                  const Icon = action.icon
+                  return (
+                    <Tooltip key={action.label}>
+                      <TooltipTrigger asChild>
+                        <Button variant="outline" className="h-auto p-4 flex flex-col items-center gap-2" disabled={productionMode}>
+                          <Icon className="h-6 w-6" />
+                          <span className="text-sm">{action.label}</span>
+                        </Button>
+                      </TooltipTrigger>
+                      {productionMode && (
+                        <TooltipContent className="text-sm">{productionTooltip}</TooltipContent>
+                      )}
+                    </Tooltip>
+                  )
+                })}
+              </div>
+            </TooltipProvider>
+            {productionMode && (
+              <p className="mt-3 text-sm text-amber-800">{productionHelper}</p>
+            )}
+          </CardContent>
+        </Card>
+      featured: true
+    },
+    {
+      title: "Quotations",
+      description: "Manage quotations, view reports, and export documents",
+      icon: QuoteIcon,
+      href: "/erp/sales/quotations",
+      color: "bg-indigo-100 text-indigo-600",
+      stats: "Sales Module",
+      featured: true
+    },
     {
       title: "General Settings",
       description: "Configure application preferences, themes, and basic settings",
@@ -41,28 +83,21 @@ export default function SettingsPage() {
       stats: "45 active users"
     },
     {
+      title: "Master Data",
+      description: "Manage lookup tables, departments, positions, and reference data",
+      icon: FolderTree,
+      href: "/erp/settings/master-data",
+      color: "bg-emerald-100 text-emerald-600",
+      stats: "HRIS & Sales",
+      featured: true
+    },
+    {
       title: "Role & Permissions",
       description: "Define roles, assign permissions, and manage access control",
       icon: Shield,
       href: "/erp/settings/roles",
       color: "bg-purple-100 text-purple-600",
       stats: "8 roles defined"
-    },
-    {
-      title: "Master Data",
-      description: "Manage lookup tables, categories, and reference data",
-      icon: Database,
-      href: "/erp/settings/master-data",
-      color: "bg-orange-100 text-orange-600",
-      stats: "25 data tables"
-    },
-    {
-      title: "Company Profile",
-      description: "Update company information, logos, and business details",
-      icon: Building,
-      href: "/erp/settings/company",
-      color: "bg-cyan-100 text-cyan-600",
-      stats: "Profile updated"
     },
     {
       title: "System Configuration",
@@ -98,14 +133,7 @@ export default function SettingsPage() {
   ]
 
   return (
-    <>
-      <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <h1 className="text-lg font-semibold">Settings</h1>
-      </header>
-
-      <div className="flex-1 space-y-6 p-6">
+    <div className="flex-1 space-y-6">
         {/* Page Header */}
         <div className="flex items-center justify-between">
           <div>
@@ -114,10 +142,19 @@ export default function SettingsPage() {
               Manage your Ocean ERP system configuration and administrative settings
             </p>
           </div>
-          <Button>
-            <Settings2 className="mr-2 h-4 w-4" />
-            Quick Setup
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button disabled={productionMode}>
+                  <Settings2 className="mr-2 h-4 w-4" />
+                  Quick Setup
+                </Button>
+              </TooltipTrigger>
+              {productionMode && (
+                <TooltipContent className="text-sm">{productionTooltip}</TooltipContent>
+              )}
+            </Tooltip>
+          </TooltipProvider>
         </div>
 
         {/* System Health Overview */}
@@ -150,20 +187,30 @@ export default function SettingsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {settingsModules.map((module) => {
             const IconComponent = module.icon
+            const isFeatured = module.featured
             return (
-              <Card key={module.title} className="group hover:shadow-md transition-shadow cursor-pointer">
+              <Card 
+                key={module.title} 
+                className={`group hover:shadow-md transition-shadow cursor-pointer ${
+                  isFeatured ? 'border-2 border-primary shadow-sm' : ''
+                }`}
+              >
                 <Link href={module.href}>
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
                       <div className={`p-2 rounded-lg ${module.color}`}>
                         <IconComponent className="h-5 w-5" />
                       </div>
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge 
+                        variant={isFeatured ? "default" : "secondary"} 
+                        className="text-xs"
+                      >
                         {module.stats}
                       </Badge>
                     </div>
                     <CardTitle className="text-base group-hover:text-primary transition-colors">
                       {module.title}
+                      {isFeatured && <span className="ml-2 text-xs text-primary">⭐</span>}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -206,7 +253,6 @@ export default function SettingsPage() {
             </div>
           </CardContent>
         </Card>
-      </div>
-    </>
+    </div>
   )
 }

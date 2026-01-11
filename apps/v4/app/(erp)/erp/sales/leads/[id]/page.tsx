@@ -118,10 +118,10 @@ export default function LeadDetailsPage({ params }: { params: Promise<{ id: stri
   }, [fetchLead])
 
   const formatCurrency = (value?: number) => {
-    if (!value) return "$0"
-    return new Intl.NumberFormat('en-US', {
+    if (!value) return "Rp0"
+    return new Intl.NumberFormat('id-ID', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'IDR',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value)

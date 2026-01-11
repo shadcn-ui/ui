@@ -1,0 +1,631 @@
+"use client"
+
+import * as React from "react"
+import { useRouter } from "next/navigation"
+import {
+  Calendar as CalendarIcon,
+  Plus,
+  Search,
+  Filter,
+  MoreHorizontal,
+  Eye,
+  Edit,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  Users,
+  Plane,
+  AlertCircle,
+} from "lucide-react"
+import {
+  SidebarTrigger,
+} from "@/registry/new-york-v4/ui/sidebar"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import { Input } from "@/registry/new-york-v4/ui/input"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/new-york-v4/ui/card"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/new-york-v4/ui/table"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/new-york-v4/ui/dropdown-menu"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/registry/new-york-v4/ui/dialog"
+import { Label } from "@/registry/new-york-v4/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
+import { Badge } from "@/registry/new-york-v4/ui/badge"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/new-york-v4/ui/tabs"
+
+interface LeaveRequest {
+  id: number
+  employee_number: string
+  employee_name: string
+  department_name: string
+  leave_type_name: string
+  start_date: string
+  end_date: string
+  days: number
+  reason: string
+  status: string
+  requested_date: string
+}
+
+interface LeaveBalance {
+  employee_name: string
+  leave_type_name: string
+  total_days: number
+  used_days: number
+  remaining_days: number
+}
+
+interface PublicHoliday {
+  id: number
+  holiday_name: string
+  holiday_date: string
+  description: string
+}
+
+export default function LeavePage() {
+  const router = useRouter()
+  const [activeTab, setActiveTab] = React.useState("requests")
+  const [requests, setRequests] = React.useState<LeaveRequest[]>([])
+  const [balances, setBalances] = React.useState<LeaveBalance[]>([])
+  const [holidays, setHolidays] = React.useState<PublicHoliday[]>([])
+  const [loading, setLoading] = React.useState(true)
+  const [searchQuery, setSearchQuery] = React.useState("")
+  const [statusFilter, setStatusFilter] = React.useState("all")
+  const [detailsDialog, setDetailsDialog] = React.useState(false)
+  const [selectedRequest, setSelectedRequest] = React.useState<LeaveRequest | null>(null)
+
+  const [stats, setStats] = React.useState({
+    total_requests: 0,
+    pending_requests: 0,
+    approved_requests: 0,
+    total_holidays: 0,
+  })
+
+  React.useEffect(() => {
+    if (activeTab === "requests") {
+      fetchRequests()
+    } else if (activeTab === "balances") {
+      fetchBalances()
+    } else if (activeTab === "holidays") {
+      fetchHolidays()
+    }
+  }, [activeTab, statusFilter])
+
+  const fetchRequests = async () => {
+    try {
+      setLoading(true)
+      const params = new URLSearchParams()
+      if (statusFilter !== "all") {
+        params.append("status", statusFilter)
+      }
+
+      const response = await fetch(`/api/hris/leave/requests?${params}`)
+      if (response.ok) {
+        const data = await response.json()
+        setRequests(data.requests || [])
+        setStats(data.stats || stats)
+      }
+    } catch (error) {
+      console.error("Error fetching leave requests:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchBalances = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch(`/api/hris/leave/balances`)
+      if (response.ok) {
+        const data = await response.json()
+        setBalances(data.balances || [])
+      }
+    } catch (error) {
+      console.error("Error fetching leave balances:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchHolidays = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch(`/api/hris/leave/holidays`)
+      if (response.ok) {
+        const data = await response.json()
+        setHolidays(data.holidays || [])
+        setStats((prev) => ({ ...prev, total_holidays: data.holidays?.length || 0 }))
+      }
+    } catch (error) {
+      console.error("Error fetching public holidays:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const getStatusBadge = (status: string) => {
+    const variants: Record<string, { variant: "default" | "secondary" | "destructive" | "outline"; label: string }> = {
+      Pending: { variant: "outline", label: "Pending" },
+      Approved: { variant: "default", label: "Approved" },
+      Rejected: { variant: "destructive", label: "Rejected" },
+      Cancelled: { variant: "secondary", label: "Cancelled" },
+    }
+    const config = variants[status] || { variant: "outline", label: status }
+    return <Badge variant={config.variant}>{config.label}</Badge>
+  }
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("id-ID", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  }
+
+  const filteredRequests = requests.filter((request) => {
+    const searchLower = searchQuery.toLowerCase()
+    return (
+      request.employee_name.toLowerCase().includes(searchLower) ||
+      request.employee_number.toLowerCase().includes(searchLower) ||
+      request.leave_type_name?.toLowerCase().includes(searchLower)
+    )
+  })
+
+  const filteredBalances = balances.filter((balance) => {
+    const searchLower = searchQuery.toLowerCase()
+    return (
+      balance.employee_name.toLowerCase().includes(searchLower) ||
+      balance.leave_type_name?.toLowerCase().includes(searchLower)
+    )
+  })
+
+  return (
+    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <div className="flex items-center gap-4 py-4">
+        <SidebarTrigger className="-ml-1" />
+        <Separator orientation="vertical" className="h-6" />
+        <div className="flex flex-1 items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold">Leave Management</h1>
+            <p className="text-sm text-muted-foreground">
+              Manage leave requests, balances, and Indonesian public holidays
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button size="sm" variant="outline">
+              <CalendarIcon className="mr-2 h-4 w-4" />
+              View Calendar
+            </Button>
+            <Button size="sm">
+              <Plus className="mr-2 h-4 w-4" />
+              New Request
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Cards */}
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Requests</CardTitle>
+            <Plane className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.total_requests}</div>
+            <p className="text-xs text-muted-foreground">All leave requests</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Pending</CardTitle>
+            <Clock className="h-4 w-4 text-yellow-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.pending_requests}</div>
+            <p className="text-xs text-muted-foreground">Awaiting approval</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Approved</CardTitle>
+            <CheckCircle2 className="h-4 w-4 text-green-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.approved_requests}</div>
+            <p className="text-xs text-muted-foreground">Approved this month</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Public Holidays</CardTitle>
+            <CalendarIcon className="h-4 w-4 text-blue-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.total_holidays}</div>
+            <p className="text-xs text-muted-foreground">Indonesian holidays 2025</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList>
+          <TabsTrigger value="requests">Leave Requests</TabsTrigger>
+          <TabsTrigger value="balances">Leave Balances</TabsTrigger>
+          <TabsTrigger value="holidays">Public Holidays</TabsTrigger>
+        </TabsList>
+
+        {/* Leave Requests Tab */}
+        <TabsContent value="requests">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative flex-1 max-w-sm">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="search"
+                      placeholder="Search requests..."
+                      className="pl-8"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  <Select value={statusFilter} onValueChange={setStatusFilter}>
+                    <SelectTrigger className="w-[180px]">
+                      <Filter className="mr-2 h-4 w-4" />
+                      <SelectValue placeholder="Filter by status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Status</SelectItem>
+                      <SelectItem value="Pending">Pending</SelectItem>
+                      <SelectItem value="Approved">Approved</SelectItem>
+                      <SelectItem value="Rejected">Rejected</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Employee</TableHead>
+                    <TableHead>Department</TableHead>
+                    <TableHead>Leave Type</TableHead>
+                    <TableHead>Start Date</TableHead>
+                    <TableHead>End Date</TableHead>
+                    <TableHead>Days</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Requested</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={9} className="text-center py-10">
+                        Loading leave requests...
+                      </TableCell>
+                    </TableRow>
+                  ) : filteredRequests.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={9} className="text-center py-10">
+                        <div className="flex flex-col items-center gap-2">
+                          <Plane className="h-8 w-8 text-muted-foreground" />
+                          <p className="text-sm text-muted-foreground">No leave requests found</p>
+                          <Button size="sm">
+                            <Plus className="mr-2 h-4 w-4" />
+                            Submit First Request
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    filteredRequests.map((request) => (
+                      <TableRow key={request.id}>
+                        <TableCell>
+                          <div>
+                            <div className="font-medium">{request.employee_name}</div>
+                            <div className="text-sm text-muted-foreground">
+                              {request.employee_number}
+                            </div>
+                          </div>
+                        </TableCell>
+                        <TableCell>{request.department_name || "-"}</TableCell>
+                        <TableCell>
+                          <Badge variant="outline">{request.leave_type_name}</Badge>
+                        </TableCell>
+                        <TableCell>{formatDate(request.start_date)}</TableCell>
+                        <TableCell>{formatDate(request.end_date)}</TableCell>
+                        <TableCell className="text-center">
+                          <Badge variant="secondary">{request.days}</Badge>
+                        </TableCell>
+                        <TableCell>{getStatusBadge(request.status)}</TableCell>
+                        <TableCell className="text-sm">{formatDate(request.requested_date)}</TableCell>
+                        <TableCell className="text-right">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem
+                                onClick={() => {
+                                  setSelectedRequest(request)
+                                  setDetailsDialog(true)
+                                }}
+                              >
+                                <Eye className="mr-2 h-4 w-4" />
+                                View Details
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Edit className="mr-2 h-4 w-4" />
+                                Edit
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <CheckCircle2 className="mr-2 h-4 w-4" />
+                                Approve
+                              </DropdownMenuItem>
+                              <DropdownMenuItem className="text-red-600">
+                                <XCircle className="mr-2 h-4 w-4" />
+                                Reject
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Leave Balances Tab */}
+        <TabsContent value="balances">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative flex-1 max-w-sm">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="search"
+                      placeholder="Search balances..."
+                      className="pl-8"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Employee Name</TableHead>
+                    <TableHead>Leave Type</TableHead>
+                    <TableHead>Total Days</TableHead>
+                    <TableHead>Used Days</TableHead>
+                    <TableHead>Remaining Days</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={6} className="text-center py-10">
+                        Loading leave balances...
+                      </TableCell>
+                    </TableRow>
+                  ) : filteredBalances.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={6} className="text-center py-10">
+                        <div className="flex flex-col items-center gap-2">
+                          <Users className="h-8 w-8 text-muted-foreground" />
+                          <p className="text-sm text-muted-foreground">No leave balances found</p>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    filteredBalances.map((balance, index) => (
+                      <TableRow key={index}>
+                        <TableCell className="font-medium">{balance.employee_name}</TableCell>
+                        <TableCell>
+                          <Badge variant="outline">{balance.leave_type_name}</Badge>
+                        </TableCell>
+                        <TableCell className="text-center">{balance.total_days}</TableCell>
+                        <TableCell className="text-center text-red-600">{balance.used_days}</TableCell>
+                        <TableCell className="text-center font-bold text-green-600">
+                          {balance.remaining_days}
+                        </TableCell>
+                        <TableCell>
+                          {balance.remaining_days < 5 ? (
+                            <Badge variant="destructive" className="gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              Low
+                            </Badge>
+                          ) : (
+                            <Badge variant="default">Available</Badge>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Public Holidays Tab */}
+        <TabsContent value="holidays">
+          <Card>
+            <CardHeader>
+              <CardTitle>Indonesian Public Holidays 2025</CardTitle>
+              <CardDescription>National holidays and observances</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Holiday Name</TableHead>
+                    <TableHead>Date</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={3} className="text-center py-10">
+                        Loading public holidays...
+                      </TableCell>
+                    </TableRow>
+                  ) : holidays.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={3} className="text-center py-10">
+                        <div className="flex flex-col items-center gap-2">
+                          <CalendarIcon className="h-8 w-8 text-muted-foreground" />
+                          <p className="text-sm text-muted-foreground">No public holidays found</p>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    holidays.map((holiday) => (
+                      <TableRow key={holiday.id}>
+                        <TableCell className="font-medium">{holiday.holiday_name}</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-2">
+                            <CalendarIcon className="h-4 w-4 text-muted-foreground" />
+                            {formatDate(holiday.holiday_date)}
+                          </div>
+                        </TableCell>
+                        <TableCell className="text-sm text-muted-foreground">
+                          {holiday.description || "-"}
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+
+      {/* Request Details Dialog */}
+      <Dialog open={detailsDialog} onOpenChange={setDetailsDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Leave Request Details</DialogTitle>
+            <DialogDescription>
+              Complete information about the leave request
+            </DialogDescription>
+          </DialogHeader>
+          {selectedRequest && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-muted-foreground">Employee Name</Label>
+                  <p className="font-medium">{selectedRequest.employee_name}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">Employee Number</Label>
+                  <p className="font-medium">{selectedRequest.employee_number}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">Department</Label>
+                  <p className="font-medium">{selectedRequest.department_name}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">Leave Type</Label>
+                  <p className="font-medium">{selectedRequest.leave_type_name}</p>
+                </div>
+              </div>
+
+              <Separator />
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-muted-foreground">Start Date</Label>
+                  <p className="font-medium">{formatDate(selectedRequest.start_date)}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">End Date</Label>
+                  <p className="font-medium">{formatDate(selectedRequest.end_date)}</p>
+                </div>
+              </div>
+
+              <div>
+                <Label className="text-muted-foreground">Number of Days</Label>
+                <p className="font-medium">{selectedRequest.days} days</p>
+              </div>
+
+              <div>
+                <Label className="text-muted-foreground">Reason</Label>
+                <p className="font-medium">{selectedRequest.reason || "-"}</p>
+              </div>
+
+              <div>
+                <Label className="text-muted-foreground">Status</Label>
+                <div className="mt-2">{getStatusBadge(selectedRequest.status)}</div>
+              </div>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDetailsDialog(false)}>
+              Close
+            </Button>
+            <Button variant="destructive">
+              <XCircle className="mr-2 h-4 w-4" />
+              Reject
+            </Button>
+            <Button>
+              <CheckCircle2 className="mr-2 h-4 w-4" />
+              Approve
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  )
+}

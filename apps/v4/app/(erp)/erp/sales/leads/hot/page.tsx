@@ -86,9 +86,9 @@ export default async function HotLeadsPage() {
   const hotLeads = await getHotLeads()
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('id-ID', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'IDR',
       minimumFractionDigits: 0,
     }).format(amount)
   }
@@ -203,7 +203,7 @@ export default async function HotLeadsPage() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">
-                {hotLeads.length > 0 ? formatCurrency(totalValue / hotLeads.length) : '$0'}
+                {hotLeads.length > 0 ? formatCurrency(totalValue / hotLeads.length) : 'Rp0'}
               </div>
               <p className="text-xs text-muted-foreground">
                 Per hot lead

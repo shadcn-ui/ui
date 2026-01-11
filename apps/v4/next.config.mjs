@@ -2,6 +2,7 @@ import { createMDX } from "fumadocs-mdx/next"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   devIndicators: false,
   typescript: {
     ignoreBuildErrors: true,
@@ -30,6 +31,50 @@ const nextConfig = {
   },
   redirects() {
     return [
+      {
+        source: "/accounting/journals/:path*",
+        destination: "/erp/accounting/journal-entries/:path*",
+        permanent: false,
+      },
+      {
+        source: "/erp/accounting/journals/:path*",
+        destination: "/erp/accounting/journal-entries/:path*",
+        permanent: false,
+      },
+      {
+        source: "/accounting/ledger/:path*",
+        destination: "/erp/accounting/general-ledger/:path*",
+        permanent: false,
+      },
+      {
+        source: "/erp/accounting/ledger/:path*",
+        destination: "/erp/accounting/general-ledger/:path*",
+        permanent: false,
+      },
+      {
+        source: "/accounting/reports",
+        has: [
+          {
+            type: "query",
+            key: "tab",
+            value: "pl",
+          },
+        ],
+        destination: "/erp/accounting/reports/profit-loss",
+        permanent: false,
+      },
+      {
+        source: "/accounting/reports",
+        has: [
+          {
+            type: "query",
+            key: "tab",
+            value: "bs",
+          },
+        ],
+        destination: "/erp/accounting/reports/balance-sheet",
+        permanent: false,
+      },
       {
         source: "/components",
         destination: "/docs/components",
@@ -79,6 +124,11 @@ const nextConfig = {
   },
   rewrites() {
     return [
+      {
+        source: "/accounting/:path*",
+        destination: "/erp/accounting/:path*",
+        // TODO: remove legacy /accounting/* alias after migration stabilizes
+      },
       {
         source: "/docs/:path*.md",
         destination: "/llm/:path*",

@@ -1,17 +1,5 @@
 import { Metadata } from "next"
 import {
-  SidebarTrigger,
-} from "@/registry/new-york-v4/ui/sidebar"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/registry/new-york-v4/ui/breadcrumb"
-import {
   Card,
   CardContent,
   CardDescription,
@@ -28,24 +16,7 @@ export const metadata: Metadata = {
 
 export default function HRISPage() {
   return (
-    <>
-      <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem className="hidden md:block">
-              <BreadcrumbLink href="/erp">ERP</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator className="hidden md:block" />
-            <BreadcrumbItem>
-              <BreadcrumbPage>HRIS</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </header>
-
-      <div className="flex-1 space-y-4 p-4 pt-6">
+    <div className="flex-1 space-y-4">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Human Resources Information System</h2>
           <div className="flex items-center space-x-2">
@@ -204,6 +175,25 @@ export default function HRISPage() {
 
           <Card>
             <CardHeader>
+              <CardTitle>Expenses</CardTitle>
+              <CardDescription>
+                Manage employee expense claims and reimbursements
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <Button asChild variant="outline" className="w-full justify-start">
+                  <a href="/erp/hris/expense-claims">Expense Claims</a>
+                </Button>
+                <Button asChild variant="outline" className="w-full justify-start">
+                  <a href="/erp/hris/expense-claims/reports">Expense Reports</a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
               <CardTitle>Leave Management</CardTitle>
               <CardDescription>
                 Track employee attendance and leave requests
@@ -217,11 +207,13 @@ export default function HRISPage() {
                 <Button asChild variant="outline" className="w-full justify-start">
                   <a href="/erp/hris/leave/calendar">Leave Calendar</a>
                 </Button>
+                <Button asChild variant="outline" className="w-full justify-start">
+                  <a href="/erp/hris/expense-claims">Expense Claims</a>
+                </Button>
               </div>
             </CardContent>
           </Card>
         </div>
-      </div>
-    </>
+    </div>
   )
 }

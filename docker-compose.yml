@@ -1,0 +1,64 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ocean-erp-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-ocean_erp}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-your_secure_password_here}
+      POSTGRES_DB: ${DB_NAME:-ocean_erp}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    networks:
+      - ocean-erp-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-ocean_erp}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ocean-erp-app
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${DB_USER:-ocean_erp}:${DB_PASSWORD:-your_secure_password_here}@postgres:5432/${DB_NAME:-ocean_erp}
+      NEXTAUTH_URL: http://103.168.135.169:4000
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:-generate_a_secure_secret_here}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - ocean-erp-network
+    volumes:
+      - ./apps/v4/public/uploads:/app/apps/v4/public/uploads
+
+  nginx:
+    image: nginx:alpine
+    container_name: ocean-erp-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - app
+    networks:
+      - ocean-erp-network
+
+networks:
+  ocean-erp-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

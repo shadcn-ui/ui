@@ -18,9 +18,15 @@ import {
   PieChart,
   Truck,
   Factory,
+  BarChart3,
+  Plug,
+  CreditCard,
+  Boxes,
+  GitBranch,
 } from "lucide-react"
 
 import { NavMain } from "./nav-main"
+import { LogoutButton } from "./logout-button"
 import {
   Sidebar,
   SidebarContent,
@@ -32,14 +38,70 @@ import {
   SidebarRail,
 } from "@/registry/new-york-v4/ui/sidebar"
 
+// Module to menu item mapping
+const moduleMenuMap: Record<string, string> = {
+  'sales': 'Sales',
+  'products': 'Product',
+  'operations': 'Operations',
+  'analytics': 'Analytics',
+  'dashboard': 'Analytics',
+  'reports': 'Analytics',
+  'accounting': 'Accounting',
+  'hris': 'HRIS',
+  'settings': 'Settings',
+}
+
 // ERP navigation data
-const data = {
+const allNavigationData = {
   navMain: [
     {
       title: "Sales",
       url: "/erp/sales",
       icon: TrendingUp,
       isActive: false,
+      module: "sales",
+      items: [
+        {
+          title: "Leads",
+          url: "/erp/sales/leads",
+        },
+        {
+          title: "Opportunities",
+          url: "/erp/sales/opportunities",
+        },
+        {
+          title: "Quotations",
+          url: "/erp/sales/quotations",
+        },
+        {
+          title: "Sales Orders",
+          url: "/erp/sales/orders",
+        },
+        {
+          title: "Customers",
+          url: "/erp/sales/customers",
+        },
+        {
+          title: "POS Checkout",
+          url: "/erp/pos/checkout",
+          icon: CreditCard,
+        },
+        {
+          title: "Sales Analytics",
+          url: "/erp/sales/analytics",
+        },
+        {
+          title: "Performance Metrics",
+          url: "/erp/sales/performance",
+        },
+      ],
+    },
+    {
+      title: "Product",
+      url: "/erp/product",
+      icon: Package,
+      isActive: false,
+      module: "products",
       items: [
         {
           title: "Leads",
@@ -64,6 +126,10 @@ const data = {
         {
           title: "Sales Analytics",
           url: "/erp/sales/analytics",
+        },
+        {
+          title: "Performance Metrics",
+          url: "/erp/sales/performance",
         },
       ],
     },
@@ -104,10 +170,15 @@ const data = {
       url: "/erp/operations",
       icon: Factory,
       isActive: false,
+      module: "operations",
       items: [
         {
           title: "Manufacturing",
           url: "/erp/operations/manufacturing",
+        },
+        {
+          title: "Skincare Formulations",
+          url: "/erp/operations/manufacturing/skincare-formulations",
         },
         {
           title: "Production Planning",
@@ -116,6 +187,10 @@ const data = {
         {
           title: "Quality Control",
           url: "/erp/operations/quality",
+        },
+        {
+          title: "Skincare Compliance",
+          url: "/erp/operations/quality/skincare-compliance",
         },
         {
           title: "Logistics",
@@ -132,10 +207,40 @@ const data = {
       ],
     },
     {
+      title: "Analytics",
+      url: "/erp/analytics",
+      icon: BarChart3,
+      isActive: false,
+      module: "analytics",
+      items: [
+        {
+          title: "Dashboard",
+          url: "/erp/analytics",
+        },
+        {
+          title: "Production Analytics",
+          url: "/erp/analytics/production",
+        },
+        {
+          title: "Quality Metrics",
+          url: "/erp/analytics/quality",
+        },
+        {
+          title: "Financial Reports",
+          url: "/erp/analytics/financial",
+        },
+        {
+          title: "Supplier Performance",
+          url: "/erp/analytics/suppliers",
+        },
+      ],
+    },
+    {
       title: "Accounting",
       url: "/erp/accounting",
       icon: Calculator,
       isActive: false,
+      module: "accounting",
       items: [
         {
           title: "Chart of Accounts",
@@ -147,19 +252,31 @@ const data = {
         },
         {
           title: "Accounts Payable",
-          url: "/erp/accounting/payable",
+          url: "/erp/accounting/accounts-payable",
         },
         {
           title: "Accounts Receivable",
-          url: "/erp/accounting/receivable",
+          url: "/erp/accounting/accounts-receivable",
         },
         {
           title: "Financial Reports",
           url: "/erp/accounting/reports",
         },
         {
+          title: "Transaction Trace",
+          url: "/erp/trace",
+        },
+        {
           title: "Budgeting",
           url: "/erp/accounting/budgeting",
+        },
+        {
+          title: "P&L Closing",
+          url: "/erp/accounting/close/pl",
+        },
+        {
+          title: "BS Closing",
+          url: "/erp/accounting/close/balance-sheet",
         },
       ],
     },
@@ -168,6 +285,7 @@ const data = {
       url: "/erp/hris",
       icon: Users,
       isActive: false,
+      module: "hris",
       items: [
         {
           title: "Employees",
@@ -193,6 +311,64 @@ const data = {
           title: "Leave Management",
           url: "/erp/hris/leave",
         },
+        {
+          title: "Expense Claims",
+          url: "/erp/hris/expense-claims",
+        },
+      ],
+    },
+    {
+      title: "Asset Management",
+      url: "/erp/asset-management",
+      icon: Boxes,
+      isActive: false,
+      module: "operations",
+      items: [
+        {
+          title: "Assets",
+          url: "/erp/asset-management/assets",
+        },
+        {
+          title: "Asset Transfers",
+          url: "/erp/asset-management/transfers",
+        },
+        {
+          title: "Maintenance",
+          url: "/erp/asset-management/maintenance",
+        },
+      ],
+    },
+    {
+      title: "Integrations",
+      url: "/erp/integrations",
+      icon: Plug,
+      isActive: false,
+      module: "settings",
+      items: [
+        {
+          title: "All Integrations",
+          url: "/erp/integrations",
+        },
+        {
+          title: "Accounting",
+          url: "/erp/integrations?tab=accounting",
+        },
+        {
+          title: "E-Commerce",
+          url: "/erp/integrations?tab=ecommerce",
+        },
+        {
+          title: "Payment Gateways",
+          url: "/erp/integrations?tab=payment",
+        },
+        {
+          title: "Logistics",
+          url: "/erp/integrations?tab=logistics",
+        },
+        {
+          title: "Webhooks",
+          url: "/erp/integrations?tab=webhook",
+        },
       ],
     },
     {
@@ -200,6 +376,7 @@ const data = {
       url: "/erp/settings",
       icon: Cog,
       isActive: false,
+      module: "settings",
       items: [
         {
           title: "General Settings",
@@ -239,6 +416,39 @@ const data = {
 }
 
 export function ERPSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const [accessibleModules, setAccessibleModules] = React.useState<string[]>([])
+  const [isLoading, setIsLoading] = React.useState(true)
+
+  React.useEffect(() => {
+    async function fetchUserModules() {
+      try {
+        const response = await fetch('/api/auth/session')
+        if (response.ok) {
+          const data = await response.json()
+          if (data.user?.permissions) {
+            // Extract unique modules from permissions
+            const modules = [...new Set(data.user.permissions.map((p: any) => p.module))]
+            console.log('User modules:', modules)
+            setAccessibleModules(modules)
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user modules:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchUserModules()
+  }, [])
+
+  // Filter navigation items based on accessible modules
+  const filteredNavItems = React.useMemo(() => {
+    if (isLoading) return []
+    return allNavigationData.navMain.filter(item => 
+      accessibleModules.includes(item.module)
+    )
+  }, [accessibleModules, isLoading])
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -266,7 +476,7 @@ export function ERPSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={filteredNavItems} />
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
@@ -277,6 +487,9 @@ export function ERPSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <span>Settings</span>
               </a>
             </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <LogoutButton />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

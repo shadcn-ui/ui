@@ -1,0 +1,723 @@
+openapi: 3.0.3
+info:
+  title: Ocean ERP API
+  description: |
+    # Ocean ERP v4 - Comprehensive Enterprise Resource Planning API
+    
+    Ocean ERP provides a complete set of RESTful APIs for managing all aspects of your business operations.
+    
+    ## Features
+    - 🏭 **Manufacturing & Production** - MRP, BOM, Work Orders, Quality Control
+    - 📦 **Supply Chain** - Procurement, Vendors, Purchase Orders, Inventory
+    - 👥 **CRM & Sales** - Leads, Contacts, Opportunities, Quotes
+    - 🎧 **Customer Service** - Tickets, SLA, Knowledge Base
+    - 📧 **Marketing** - Campaigns, Email Automation, Analytics
+    - 👨‍💼 **Human Resources** - Employees, Time Tracking, Payroll
+    - 🏢 **Asset Management** - Assets, Maintenance, Depreciation
+    - 🛒 **E-commerce** - Products, Orders, Customers, Reviews
+    - 📊 **Project Management** - Projects, Tasks, Time Tracking, Budgets
+    
+    ## Authentication
+    Currently, authentication is handled at the application level. API key authentication will be added in future releases.
+    
+    ## Rate Limiting
+    - **Rate Limit:** 100 requests per minute per IP
+    - **Burst:** 200 requests
+    - Headers: `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`
+    
+    ## Error Codes
+    - `200` - Success
+    - `201` - Created
+    - `400` - Bad Request (validation error)
+    - `401` - Unauthorized
+    - `403` - Forbidden
+    - `404` - Not Found
+    - `409` - Conflict (duplicate resource)
+    - `422` - Unprocessable Entity
+    - `429` - Too Many Requests (rate limit)
+    - `500` - Internal Server Error
+    
+  version: 4.0.0
+  contact:
+    name: Ocean ERP Support
+    url: https://github.com/ocean-erp
+    email: support@ocean-erp.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:4000/api
+    description: Development server
+  - url: https://api.ocean-erp.com/v4
+    description: Production server
+
+tags:
+  - name: CRM
+    description: Customer Relationship Management
+  - name: Sales
+    description: Sales Pipeline & Opportunities
+  - name: Support
+    description: Customer Service & Ticketing
+  - name: Marketing
+    description: Marketing Automation & Campaigns
+  - name: HRM
+    description: Human Resource Management
+  - name: Assets
+    description: Asset Management
+  - name: E-commerce
+    description: E-commerce Integration
+  - name: Projects
+    description: Project Management
+  - name: Analytics
+    description: Business Intelligence & Reporting
+
+components:
+  schemas:
+    Error:
+      type: object
+      required:
+        - success
+        - error
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: "VALIDATION_ERROR"
+            message:
+              type: string
+              example: "Invalid input data"
+            details:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                  message:
+                    type: string
+
+    SuccessResponse:
+      type: object
+      required:
+        - success
+        - data
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+        message:
+          type: string
+
+    PaginationMeta:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        limit:
+          type: integer
+          example: 20
+        total:
+          type: integer
+          example: 150
+        total_pages:
+          type: integer
+          example: 8
+        has_next:
+          type: boolean
+          example: true
+        has_prev:
+          type: boolean
+          example: false
+
+    Lead:
+      type: object
+      properties:
+        lead_id:
+          type: integer
+          example: 1
+        first_name:
+          type: string
+          example: "John"
+        last_name:
+          type: string
+          example: "Doe"
+        email:
+          type: string
+          format: email
+          example: "john.doe@example.com"
+        phone:
+          type: string
+          example: "+1-555-0100"
+        company_name:
+          type: string
+          example: "Tech Corp"
+        job_title:
+          type: string
+          example: "CTO"
+        lead_source:
+          type: string
+          enum: [website, referral, cold_call, social_media, event, partner, other]
+          example: "website"
+        lead_status:
+          type: string
+          enum: [new, contacted, qualified, unqualified, converted, lost]
+          example: "new"
+        lead_score:
+          type: integer
+          minimum: 0
+          maximum: 100
+          example: 75
+        estimated_value:
+          type: number
+          format: decimal
+          example: 50000.00
+        industry:
+          type: string
+          example: "Technology"
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Project:
+      type: object
+      properties:
+        project_id:
+          type: integer
+          example: 1
+        project_code:
+          type: string
+          example: "PROJ-2025-001"
+        project_name:
+          type: string
+          example: "ERP Implementation"
+        project_description:
+          type: string
+        project_type:
+          type: string
+          enum: [internal, client, maintenance, development, consulting]
+        project_status:
+          type: string
+          enum: [planning, active, on_hold, completed, cancelled]
+        health_status:
+          type: string
+          enum: [on_track, at_risk, delayed, critical]
+        completion_percentage:
+          type: number
+          format: decimal
+          minimum: 0
+          maximum: 100
+        budget_amount:
+          type: number
+          format: decimal
+        actual_cost:
+          type: number
+          format: decimal
+        budget_variance:
+          type: number
+          format: decimal
+        planned_start_date:
+          type: string
+          format: date
+        planned_end_date:
+          type: string
+          format: date
+        actual_start_date:
+          type: string
+          format: date
+        actual_end_date:
+          type: string
+          format: date
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+  parameters:
+    PageParam:
+      name: page
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    
+    LimitParam:
+      name: limit
+      in: query
+      description: Number of items per page
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+    
+    SearchParam:
+      name: search
+      in: query
+      description: Search term for filtering results
+      schema:
+        type: string
+    
+    IsActiveParam:
+      name: is_active
+      in: query
+      description: Filter by active status
+      schema:
+        type: boolean
+
+  responses:
+    BadRequest:
+      description: Bad Request - Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    Unauthorized:
+      description: Unauthorized - Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    Conflict:
+      description: Conflict - Resource already exists
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+paths:
+  # Health Check
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Check if the API is operational
+      tags:
+        - System
+      responses:
+        '200':
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  timestamp:
+                    type: string
+                    format: date-time
+                  uptime:
+                    type: number
+                    example: 86400
+
+  # CRM - Leads
+  /crm/leads:
+    get:
+      summary: List all leads
+      description: Retrieve a paginated list of leads with optional filtering
+      tags:
+        - CRM
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/LimitParam'
+        - $ref: '#/components/parameters/SearchParam'
+        - name: lead_status
+          in: query
+          schema:
+            type: string
+            enum: [new, contacted, qualified, unqualified, converted, lost]
+        - name: lead_source
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved leads
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          leads:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/Lead'
+                          pagination:
+                            $ref: '#/components/schemas/PaginationMeta'
+                          statistics:
+                            type: object
+                            properties:
+                              total_leads:
+                                type: integer
+                              by_status:
+                                type: object
+    
+    post:
+      summary: Create a new lead
+      description: Add a new lead to the CRM system
+      tags:
+        - CRM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - first_name
+                - last_name
+                - email
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                phone:
+                  type: string
+                company_name:
+                  type: string
+                job_title:
+                  type: string
+                lead_source:
+                  type: string
+                estimated_value:
+                  type: number
+                created_by:
+                  type: integer
+      responses:
+        '201':
+          description: Lead created successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Lead'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /crm/leads/{id}:
+    get:
+      summary: Get lead by ID
+      description: Retrieve detailed information about a specific lead
+      tags:
+        - CRM
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lead found
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - type: object
+                    properties:
+                      data:
+                        allOf:
+                          - $ref: '#/components/schemas/Lead'
+                          - type: object
+                            properties:
+                              interactions:
+                                type: array
+                                items:
+                                  type: object
+                              activities:
+                                type: array
+                                items:
+                                  type: object
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      summary: Update lead
+      description: Update an existing lead's information
+      tags:
+        - CRM
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lead_status:
+                  type: string
+                lead_score:
+                  type: integer
+                estimated_value:
+                  type: number
+      responses:
+        '200':
+          description: Lead updated successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Lead'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      summary: Delete lead
+      description: Soft delete a lead (sets is_active to false)
+      tags:
+        - CRM
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lead deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Projects
+  /projects:
+    get:
+      summary: List all projects
+      description: Retrieve a paginated list of projects with statistics
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/LimitParam'
+        - $ref: '#/components/parameters/SearchParam'
+        - name: project_status
+          in: query
+          schema:
+            type: string
+            enum: [planning, active, on_hold, completed, cancelled]
+        - name: health_status
+          in: query
+          schema:
+            type: string
+            enum: [on_track, at_risk, delayed, critical]
+        - name: project_type
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved projects
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          projects:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/Project'
+                          pagination:
+                            $ref: '#/components/schemas/PaginationMeta'
+                          statistics:
+                            type: object
+    
+    post:
+      summary: Create a new project
+      description: Initialize a new project
+      tags:
+        - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - project_code
+                - project_name
+                - planned_start_date
+                - planned_end_date
+              properties:
+                project_code:
+                  type: string
+                project_name:
+                  type: string
+                project_description:
+                  type: string
+                project_type:
+                  type: string
+                budget_amount:
+                  type: number
+                planned_start_date:
+                  type: string
+                  format: date
+                planned_end_date:
+                  type: string
+                  format: date
+      responses:
+        '201':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Project'
+
+  /projects/{id}:
+    get:
+      summary: Get project by ID
+      description: Retrieve detailed project information including phases, milestones, tasks, team, and budget
+      tags:
+        - Projects
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Project found with complete details
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SuccessResponse'
+                  - type: object
+                    properties:
+                      data:
+                        allOf:
+                          - $ref: '#/components/schemas/Project'
+                          - type: object
+                            properties:
+                              phases:
+                                type: array
+                                items:
+                                  type: object
+                              milestones:
+                                type: array
+                                items:
+                                  type: object
+                              tasks_summary:
+                                type: object
+                              team_members:
+                                type: array
+                                items:
+                                  type: object
+                              budget_breakdown:
+                                type: array
+                                items:
+                                  type: object
+
+  /projects/analytics:
+    get:
+      summary: Get project analytics
+      description: Retrieve comprehensive project analytics and reports
+      tags:
+        - Projects
+        - Analytics
+      parameters:
+        - name: type
+          in: query
+          description: Type of analytics report
+          schema:
+            type: string
+            enum: [dashboard, financial, resources, timeline]
+            default: dashboard
+        - name: project_id
+          in: query
+          description: Filter by specific project
+          schema:
+            type: integer
+        - name: from_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: to_date
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Analytics data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+externalDocs:
+  description: Find more documentation
+  url: https://github.com/ocean-erp/docs

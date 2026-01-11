@@ -1,24 +1,22 @@
-import {
-  Inter,
-} from "next/font/google"
+// Temporarily disabled Google fonts due to compilation error
+// import {
+//   Inter,
+// } from "next/font/google"
 
 import { cn } from "@/lib/utils"
 
-const fontSans = Inter({
-  subsets: ["latin"],
+// Use CSS fallback fonts instead of Google fonts
+const fontSans = {
   variable: "--font-sans",
-})
+}
 
-const fontMono = Inter({
-  subsets: ["latin"],
+const fontMono = {
   variable: "--font-mono",
-  weight: ["400"],
-})
+}
 
-const fontInter = Inter({
-  subsets: ["latin"],
+const fontInter = {
   variable: "--font-inter",
-})
+}
 
 export const fontVariables = cn(
   fontSans.variable,

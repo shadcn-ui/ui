@@ -1,0 +1,757 @@
+"use client"
+
+import * as React from "react"
+import { useRouter } from "next/navigation"
+import {
+  DollarSign,
+  Plus,
+  Search,
+  Filter,
+  MoreHorizontal,
+  Eye,
+  Edit,
+  Download,
+  Send,
+  Calendar,
+  FileText,
+  CheckCircle2,
+  Clock,
+  Users,
+  Calculator,
+} from "lucide-react"
+import {
+  SidebarTrigger,
+} from "@/registry/new-york-v4/ui/sidebar"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import { Input } from "@/registry/new-york-v4/ui/input"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/new-york-v4/ui/card"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/new-york-v4/ui/table"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/new-york-v4/ui/dropdown-menu"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/registry/new-york-v4/ui/dialog"
+import { Label } from "@/registry/new-york-v4/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
+import { Badge } from "@/registry/new-york-v4/ui/badge"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/new-york-v4/ui/tabs"
+
+interface PayrollPeriod {
+  id: number
+  period_name: string
+  start_date: string
+  end_date: string
+  payment_date: string
+  status: string
+  total_employees: number
+  total_gross: number
+  total_deductions: number
+  total_net: number
+}
+
+interface PayrollRecord {
+  id: number
+  employee_number: string
+  employee_name: string
+  department_name: string
+  position_title: string
+  basic_salary: number
+  allowances: number
+  overtime_pay: number
+  gross_salary: number
+  bpjs_kesehatan_employee: number
+  bpjs_ketenagakerjaan_employee: number
+  jht_employee: number
+  tax_deduction: number
+  other_deductions: number
+  total_deductions: number
+  net_salary: number
+  status: string
+}
+
+export default function PayrollPage() {
+  const router = useRouter()
+  const [activeTab, setActiveTab] = React.useState("periods")
+  const [periods, setPeriods] = React.useState<PayrollPeriod[]>([])
+  const [records, setRecords] = React.useState<PayrollRecord[]>([])
+  const [loading, setLoading] = React.useState(true)
+  const [searchQuery, setSearchQuery] = React.useState("")
+  const [statusFilter, setStatusFilter] = React.useState("all")
+  const [selectedPeriod, setSelectedPeriod] = React.useState<number | null>(null)
+  const [detailsDialog, setDetailsDialog] = React.useState(false)
+  const [selectedRecord, setSelectedRecord] = React.useState<PayrollRecord | null>(null)
+
+  const [stats, setStats] = React.useState({
+    total_periods: 0,
+    current_period: 0,
+    total_employees: 0,
+    total_payroll: 0,
+  })
+
+  React.useEffect(() => {
+    if (activeTab === "periods") {
+      fetchPeriods()
+    } else if (activeTab === "records" && selectedPeriod) {
+      fetchRecords(selectedPeriod)
+    }
+  }, [activeTab, statusFilter, selectedPeriod])
+
+  const fetchPeriods = async () => {
+    try {
+      setLoading(true)
+      const params = new URLSearchParams()
+      if (statusFilter !== "all") {
+        params.append("status", statusFilter)
+      }
+
+      const response = await fetch(`/api/hris/payroll/periods?${params}`)
+      if (response.ok) {
+        const data = await response.json()
+        setPeriods(data.periods || [])
+        setStats(data.stats || stats)
+      }
+    } catch (error) {
+      console.error("Error fetching payroll periods:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchRecords = async (periodId: number) => {
+    try {
+      setLoading(true)
+      const response = await fetch(`/api/hris/payroll/records?period_id=${periodId}`)
+      if (response.ok) {
+        const data = await response.json()
+        setRecords(data.records || [])
+      }
+    } catch (error) {
+      console.error("Error fetching payroll records:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const getStatusBadge = (status: string) => {
+    const variants: Record<string, { variant: "default" | "secondary" | "destructive" | "outline"; label: string }> = {
+      Draft: { variant: "outline", label: "Draft" },
+      Calculated: { variant: "secondary", label: "Calculated" },
+      Approved: { variant: "default", label: "Approved" },
+      Paid: { variant: "default", label: "Paid" },
+      Cancelled: { variant: "destructive", label: "Cancelled" },
+    }
+    const config = variants[status] || { variant: "outline", label: status }
+    return <Badge variant={config.variant}>{config.label}</Badge>
+  }
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(amount)
+  }
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("id-ID", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  }
+
+  const filteredPeriods = periods.filter((period) => {
+    const searchLower = searchQuery.toLowerCase()
+    return period.period_name.toLowerCase().includes(searchLower)
+  })
+
+  const filteredRecords = records.filter((record) => {
+    const searchLower = searchQuery.toLowerCase()
+    return (
+      record.employee_name.toLowerCase().includes(searchLower) ||
+      record.employee_number.toLowerCase().includes(searchLower) ||
+      record.department_name?.toLowerCase().includes(searchLower)
+    )
+  })
+
+  const viewPayrollDetails = (record: PayrollRecord) => {
+    setSelectedRecord(record)
+    setDetailsDialog(true)
+  }
+
+  return (
+    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <div className="flex items-center gap-4 py-4">
+        <SidebarTrigger className="-ml-1" />
+        <Separator orientation="vertical" className="h-6" />
+        <div className="flex flex-1 items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold">Payroll Management</h1>
+            <p className="text-sm text-muted-foreground">
+              Manage payroll periods, calculate salaries with Indonesian tax & BPJS
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button size="sm" variant="outline">
+              <Calculator className="mr-2 h-4 w-4" />
+              Run Payroll
+            </Button>
+            <Button size="sm">
+              <Plus className="mr-2 h-4 w-4" />
+              New Period
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Cards */}
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Periods</CardTitle>
+            <Calendar className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.total_periods}</div>
+            <p className="text-xs text-muted-foreground">All payroll periods</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Current Period</CardTitle>
+            <Clock className="h-4 w-4 text-blue-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.current_period}</div>
+            <p className="text-xs text-muted-foreground">Active period</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Employees</CardTitle>
+            <Users className="h-4 w-4 text-green-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.total_employees}</div>
+            <p className="text-xs text-muted-foreground">In payroll system</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Payroll</CardTitle>
+            <DollarSign className="h-4 w-4 text-yellow-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{formatCurrency(stats.total_payroll)}</div>
+            <p className="text-xs text-muted-foreground">Current period</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList>
+          <TabsTrigger value="periods">Payroll Periods</TabsTrigger>
+          <TabsTrigger value="records">Payroll Records</TabsTrigger>
+          <TabsTrigger value="reports">Reports</TabsTrigger>
+        </TabsList>
+
+        {/* Payroll Periods Tab */}
+        <TabsContent value="periods">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative flex-1 max-w-sm">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="search"
+                      placeholder="Search periods..."
+                      className="pl-8"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  <Select value={statusFilter} onValueChange={setStatusFilter}>
+                    <SelectTrigger className="w-[180px]">
+                      <Filter className="mr-2 h-4 w-4" />
+                      <SelectValue placeholder="Filter by status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Status</SelectItem>
+                      <SelectItem value="Draft">Draft</SelectItem>
+                      <SelectItem value="Calculated">Calculated</SelectItem>
+                      <SelectItem value="Approved">Approved</SelectItem>
+                      <SelectItem value="Paid">Paid</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Period Name</TableHead>
+                    <TableHead>Period Dates</TableHead>
+                    <TableHead>Payment Date</TableHead>
+                    <TableHead>Employees</TableHead>
+                    <TableHead>Gross Salary</TableHead>
+                    <TableHead>Deductions</TableHead>
+                    <TableHead>Net Salary</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={9} className="text-center py-10">
+                        Loading payroll periods...
+                      </TableCell>
+                    </TableRow>
+                  ) : filteredPeriods.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={9} className="text-center py-10">
+                        <div className="flex flex-col items-center gap-2">
+                          <Calendar className="h-8 w-8 text-muted-foreground" />
+                          <p className="text-sm text-muted-foreground">No payroll periods found</p>
+                          <Button size="sm">
+                            <Plus className="mr-2 h-4 w-4" />
+                            Create First Period
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    filteredPeriods.map((period) => (
+                      <TableRow key={period.id}>
+                        <TableCell className="font-medium">{period.period_name}</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3 text-muted-foreground" />
+                            {formatDate(period.start_date)} - {formatDate(period.end_date)}
+                          </div>
+                        </TableCell>
+                        <TableCell>{formatDate(period.payment_date)}</TableCell>
+                        <TableCell className="text-center">
+                          <Badge variant="secondary">{period.total_employees || 0}</Badge>
+                        </TableCell>
+                        <TableCell className="font-medium">
+                          {formatCurrency(period.total_gross || 0)}
+                        </TableCell>
+                        <TableCell className="text-red-600">
+                          {formatCurrency(period.total_deductions || 0)}
+                        </TableCell>
+                        <TableCell className="font-bold text-green-600">
+                          {formatCurrency(period.total_net || 0)}
+                        </TableCell>
+                        <TableCell>{getStatusBadge(period.status)}</TableCell>
+                        <TableCell className="text-right">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem
+                                onClick={() => {
+                                  setSelectedPeriod(period.id)
+                                  setActiveTab("records")
+                                }}
+                              >
+                                <Eye className="mr-2 h-4 w-4" />
+                                View Records
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Calculator className="mr-2 h-4 w-4" />
+                                Calculate Payroll
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Download className="mr-2 h-4 w-4" />
+                                Export
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <CheckCircle2 className="mr-2 h-4 w-4" />
+                                Approve
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Send className="mr-2 h-4 w-4" />
+                                Process Payment
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Payroll Records Tab */}
+        <TabsContent value="records">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative flex-1 max-w-sm">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="search"
+                      placeholder="Search employees..."
+                      className="pl-8"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  <Select
+                    value={selectedPeriod?.toString() || ""}
+                    onValueChange={(value) => setSelectedPeriod(parseInt(value))}
+                  >
+                    <SelectTrigger className="w-[250px]">
+                      <Calendar className="mr-2 h-4 w-4" />
+                      <SelectValue placeholder="Select period" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {periods.map((period) => (
+                        <SelectItem key={period.id} value={period.id.toString()}>
+                          {period.period_name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <Button size="sm" variant="outline">
+                  <Download className="mr-2 h-4 w-4" />
+                  Export Payslips
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              {!selectedPeriod ? (
+                <div className="text-center py-10">
+                  <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-sm text-muted-foreground">
+                    Please select a payroll period to view records
+                  </p>
+                </div>
+              ) : (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Employee</TableHead>
+                      <TableHead>Department</TableHead>
+                      <TableHead>Basic Salary</TableHead>
+                      <TableHead>Allowances</TableHead>
+                      <TableHead>Gross</TableHead>
+                      <TableHead>BPJS</TableHead>
+                      <TableHead>Tax (PPh 21)</TableHead>
+                      <TableHead>Net Salary</TableHead>
+                      <TableHead className="text-right">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {loading ? (
+                      <TableRow>
+                        <TableCell colSpan={9} className="text-center py-10">
+                          Loading payroll records...
+                        </TableCell>
+                      </TableRow>
+                    ) : filteredRecords.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={9} className="text-center py-10">
+                          <div className="flex flex-col items-center gap-2">
+                            <FileText className="h-8 w-8 text-muted-foreground" />
+                            <p className="text-sm text-muted-foreground">
+                              No payroll records for this period
+                            </p>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      filteredRecords.map((record) => (
+                        <TableRow key={record.id}>
+                          <TableCell>
+                            <div>
+                              <div className="font-medium">{record.employee_name}</div>
+                              <div className="text-sm text-muted-foreground">
+                                {record.employee_number}
+                              </div>
+                            </div>
+                          </TableCell>
+                          <TableCell className="text-sm">{record.department_name || "-"}</TableCell>
+                          <TableCell>{formatCurrency(record.basic_salary)}</TableCell>
+                          <TableCell>{formatCurrency(record.allowances || 0)}</TableCell>
+                          <TableCell className="font-medium">
+                            {formatCurrency(record.gross_salary)}
+                          </TableCell>
+                          <TableCell className="text-red-600">
+                            {formatCurrency(
+                              (record.bpjs_kesehatan_employee || 0) +
+                                (record.bpjs_ketenagakerjaan_employee || 0) +
+                                (record.jht_employee || 0)
+                            )}
+                          </TableCell>
+                          <TableCell className="text-red-600">
+                            {formatCurrency(record.tax_deduction || 0)}
+                          </TableCell>
+                          <TableCell className="font-bold text-green-600">
+                            {formatCurrency(record.net_salary)}
+                          </TableCell>
+                          <TableCell className="text-right">
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" size="sm">
+                                  <MoreHorizontal className="h-4 w-4" />
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end">
+                                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem onClick={() => viewPayrollDetails(record)}>
+                                  <Eye className="mr-2 h-4 w-4" />
+                                  View Payslip
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                  <Download className="mr-2 h-4 w-4" />
+                                  Download PDF
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                  <Send className="mr-2 h-4 w-4" />
+                                  Email Payslip
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Reports Tab */}
+        <TabsContent value="reports">
+          <Card>
+            <CardHeader>
+              <CardTitle>Payroll Reports</CardTitle>
+              <CardDescription>Generate payroll reports and analytics</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4 md:grid-cols-2">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-base">BPJS Summary Report</CardTitle>
+                    <CardDescription>BPJS Kesehatan & Ketenagakerjaan contributions</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button size="sm" className="w-full">
+                      <Download className="mr-2 h-4 w-4" />
+                      Generate Report
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-base">Tax Report (PPh 21)</CardTitle>
+                    <CardDescription>Income tax withholding summary</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button size="sm" className="w-full">
+                      <Download className="mr-2 h-4 w-4" />
+                      Generate Report
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-base">Salary Distribution</CardTitle>
+                    <CardDescription>Department-wise salary breakdown</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button size="sm" className="w-full">
+                      <Download className="mr-2 h-4 w-4" />
+                      Generate Report
+                    </Button>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-base">Payroll Summary</CardTitle>
+                    <CardDescription>Comprehensive payroll overview</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button size="sm" className="w-full">
+                      <Download className="mr-2 h-4 w-4" />
+                      Generate Report
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+
+      {/* Payslip Details Dialog */}
+      <Dialog open={detailsDialog} onOpenChange={setDetailsDialog}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Payslip Details</DialogTitle>
+            <DialogDescription>
+              Detailed payroll breakdown with Indonesian tax & BPJS
+            </DialogDescription>
+          </DialogHeader>
+          {selectedRecord && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-muted-foreground">Employee Name</Label>
+                  <p className="font-medium">{selectedRecord.employee_name}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">Employee Number</Label>
+                  <p className="font-medium">{selectedRecord.employee_number}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">Department</Label>
+                  <p className="font-medium">{selectedRecord.department_name}</p>
+                </div>
+                <div>
+                  <Label className="text-muted-foreground">Position</Label>
+                  <p className="font-medium">{selectedRecord.position_title}</p>
+                </div>
+              </div>
+
+              <Separator />
+
+              <div className="space-y-2">
+                <h4 className="font-semibold">Earnings</h4>
+                <div className="space-y-1">
+                  <div className="flex justify-between">
+                    <span className="text-sm">Basic Salary</span>
+                    <span className="font-medium">{formatCurrency(selectedRecord.basic_salary)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Allowances</span>
+                    <span className="font-medium">{formatCurrency(selectedRecord.allowances || 0)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Overtime Pay</span>
+                    <span className="font-medium">{formatCurrency(selectedRecord.overtime_pay || 0)}</span>
+                  </div>
+                  <Separator />
+                  <div className="flex justify-between font-bold">
+                    <span>Gross Salary</span>
+                    <span>{formatCurrency(selectedRecord.gross_salary)}</span>
+                  </div>
+                </div>
+              </div>
+
+              <Separator />
+
+              <div className="space-y-2">
+                <h4 className="font-semibold">Deductions</h4>
+                <div className="space-y-1">
+                  <div className="flex justify-between">
+                    <span className="text-sm">BPJS Kesehatan (1%)</span>
+                    <span className="text-red-600">
+                      {formatCurrency(selectedRecord.bpjs_kesehatan_employee || 0)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">BPJS Ketenagakerjaan (2%)</span>
+                    <span className="text-red-600">
+                      {formatCurrency(selectedRecord.bpjs_ketenagakerjaan_employee || 0)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">JHT (2%)</span>
+                    <span className="text-red-600">
+                      {formatCurrency(selectedRecord.jht_employee || 0)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">Tax (PPh 21)</span>
+                    <span className="text-red-600">
+                      {formatCurrency(selectedRecord.tax_deduction || 0)}
+                    </span>
+                  </div>
+                  {selectedRecord.other_deductions > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-sm">Other Deductions</span>
+                      <span className="text-red-600">
+                        {formatCurrency(selectedRecord.other_deductions)}
+                      </span>
+                    </div>
+                  )}
+                  <Separator />
+                  <div className="flex justify-between font-bold text-red-600">
+                    <span>Total Deductions</span>
+                    <span>{formatCurrency(selectedRecord.total_deductions)}</span>
+                  </div>
+                </div>
+              </div>
+
+              <Separator />
+
+              <div className="flex justify-between text-lg font-bold text-green-600">
+                <span>Net Salary</span>
+                <span>{formatCurrency(selectedRecord.net_salary)}</span>
+              </div>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDetailsDialog(false)}>
+              Close
+            </Button>
+            <Button>
+              <Download className="mr-2 h-4 w-4" />
+              Download PDF
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  )
+}

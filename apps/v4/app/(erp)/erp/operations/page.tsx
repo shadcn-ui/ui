@@ -1,17 +1,5 @@
 import { Metadata } from "next"
 import {
-  SidebarTrigger,
-} from "@/registry/new-york-v4/ui/sidebar"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/registry/new-york-v4/ui/breadcrumb"
-import {
   Card,
   CardContent,
   CardDescription,
@@ -28,24 +16,7 @@ export const metadata: Metadata = {
 
 export default function OperationsPage() {
   return (
-    <>
-      <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem className="hidden md:block">
-              <BreadcrumbLink href="/erp">ERP</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator className="hidden md:block" />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Operations</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </header>
-
-      <div className="flex-1 space-y-4 p-4 pt-6">
+    <div className="flex-1 space-y-4">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Operations Management</h2>
           <div className="flex items-center space-x-2">
@@ -122,6 +93,9 @@ export default function OperationsPage() {
                 <Button asChild variant="outline" className="w-full justify-start">
                   <a href="/erp/operations/manufacturing/bom">Bill of Materials</a>
                 </Button>
+                <Button asChild variant="outline" className="w-full justify-start">
+                  <a href="/erp/operations/manufacturing/skincare-formulations">Skincare Formulations</a>
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -160,6 +134,9 @@ export default function OperationsPage() {
                 <Button asChild variant="outline" className="w-full justify-start">
                   <a href="/erp/operations/quality/reports">Quality Reports</a>
                 </Button>
+                <Button asChild variant="outline" className="w-full justify-start">
+                  <a href="/erp/operations/quality/skincare-compliance">Skincare Compliance</a>
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -196,7 +173,7 @@ export default function OperationsPage() {
                   <a href="/erp/operations/supply-chain">Supply Chain Overview</a>
                 </Button>
                 <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="/erp/operations/supply-chain/procurement">Procurement</a>
+                  <a href="/erp/operations/supply-chain/procurement-advanced">Procurement Advanced</a>
                 </Button>
               </div>
             </CardContent>
@@ -221,7 +198,6 @@ export default function OperationsPage() {
             </CardContent>
           </Card>
         </div>
-      </div>
-    </>
+    </div>
   )
 }

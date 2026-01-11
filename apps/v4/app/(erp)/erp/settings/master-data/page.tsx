@@ -26,7 +26,10 @@ import {
   Package,
   MapPin,
   Tag,
-  Calendar
+  Calendar,
+  Building2,
+  Briefcase,
+  UmbrellaIcon
 } from "lucide-react"
 import Link from "next/link"
 
@@ -41,7 +44,8 @@ export default function MasterDataPage() {
       lastUpdated: "2 days ago",
       category: "Sales",
       icon: Users,
-      color: "bg-blue-100 text-blue-600"
+      color: "bg-blue-100 text-blue-600",
+      link: undefined as string | undefined
     },
     {
       name: "Lead Statuses",
@@ -98,13 +102,34 @@ export default function MasterDataPage() {
       color: "bg-red-100 text-red-600"
     },
     {
-      name: "Department Types",
-      description: "Organizational department categories",
-      records: 12,
-      lastUpdated: "5 days ago",
+      name: "Departments",
+      description: "Organizational departments and hierarchy",
+      records: 5,
+      lastUpdated: "2 days ago",
       category: "HRIS",
-      icon: Users,
-      color: "bg-yellow-100 text-yellow-600"
+      icon: Building2,
+      color: "bg-yellow-100 text-yellow-600",
+      link: "/erp/settings/master-data/hris/departments"
+    },
+    {
+      name: "Positions",
+      description: "Job positions and role definitions",
+      records: 8,
+      lastUpdated: "3 days ago",
+      category: "HRIS",
+      icon: Briefcase,
+      color: "bg-amber-100 text-amber-600",
+      link: "/erp/settings/master-data/hris/positions"
+    },
+    {
+      name: "Leave Types",
+      description: "Types of leave and entitlements",
+      records: 5,
+      lastUpdated: "1 week ago",
+      category: "HRIS",
+      icon: UmbrellaIcon,
+      color: "bg-orange-100 text-orange-600",
+      link: "/erp/settings/master-data/hris/leave-types"
     },
     {
       name: "Holiday Calendar",
@@ -260,16 +285,7 @@ export default function MasterDataPage() {
               <TableBody>
                 {filteredTables.map((table) => {
                   const IconComponent = table.icon
-                  const getTableLink = (tableName: string) => {
-                    switch (tableName) {
-                      case "Sales Team Members":
-                        return "/erp/settings/master-data/sales-team"
-                      default:
-                        return null
-                    }
-                  }
-
-                  const tableLink = getTableLink(table.name)
+                  const tableLink = table.link || (table.name === "Sales Team Members" ? "/erp/settings/master-data/sales-team" : null)
 
                   return (
                     <TableRow key={table.name} className="cursor-pointer hover:bg-muted/50">

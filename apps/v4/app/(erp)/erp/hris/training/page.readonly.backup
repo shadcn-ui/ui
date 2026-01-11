@@ -1,0 +1,386 @@
+"use client"
+
+import * as React from "react"
+import { useRouter } from "next/navigation"
+import {
+  GraduationCap,
+  Plus,
+  Search,
+  Filter,
+  MoreHorizontal,
+  Eye,
+  Edit,
+  Users,
+  Calendar,
+  BookOpen,
+  Award,
+  CheckCircle2,
+  Clock,
+  TrendingUp,
+} from "lucide-react"
+import {
+  SidebarTrigger,
+} from "@/registry/new-york-v4/ui/sidebar"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import { Input } from "@/registry/new-york-v4/ui/input"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/new-york-v4/ui/card"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/new-york-v4/ui/table"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/new-york-v4/ui/dropdown-menu"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
+import { Badge } from "@/registry/new-york-v4/ui/badge"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/new-york-v4/ui/tabs"
+import { Progress } from "@/registry/new-york-v4/ui/progress"
+
+interface TrainingProgram {
+  id: number
+  program_name: string
+  description: string
+  trainer: string
+  start_date: string
+  end_date: string
+  duration_hours: number
+  max_participants: number
+  enrolled_count: number
+  status: string
+}
+
+export default function TrainingPage() {
+  const router = useRouter()
+  const [activeTab, setActiveTab] = React.useState("programs")
+  const [programs, setPrograms] = React.useState<TrainingProgram[]>([])
+  const [loading, setLoading] = React.useState(true)
+  const [searchQuery, setSearchQuery] = React.useState("")
+  const [statusFilter, setStatusFilter] = React.useState("all")
+
+  const [stats, setStats] = React.useState({
+    total_programs: 0,
+    active_programs: 0,
+    total_enrollments: 0,
+    completion_rate: 0,
+  })
+
+  React.useEffect(() => {
+    fetchPrograms()
+  }, [statusFilter])
+
+  const fetchPrograms = async () => {
+    try {
+      setLoading(true)
+      const params = new URLSearchParams()
+      if (statusFilter !== "all") {
+        params.append("status", statusFilter)
+      }
+
+      const response = await fetch(`/api/hris/training/programs?${params}`)
+      if (response.ok) {
+        const data = await response.json()
+        setPrograms(data.programs || [])
+        setStats(data.stats || stats)
+      }
+    } catch (error) {
+      console.error("Error fetching training programs:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const getStatusBadge = (status: string) => {
+    const variants: Record<string, { variant: "default" | "secondary" | "destructive" | "outline"; label: string }> = {
+      Planned: { variant: "outline", label: "Planned" },
+      "In Progress": { variant: "default", label: "In Progress" },
+      Completed: { variant: "secondary", label: "Completed" },
+      Cancelled: { variant: "destructive", label: "Cancelled" },
+    }
+    const config = variants[status] || { variant: "outline", label: status }
+    return <Badge variant={config.variant}>{config.label}</Badge>
+  }
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("id-ID", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  }
+
+  const filteredPrograms = programs.filter((program) => {
+    const searchLower = searchQuery.toLowerCase()
+    return (
+      program.program_name.toLowerCase().includes(searchLower) ||
+      program.trainer?.toLowerCase().includes(searchLower)
+    )
+  })
+
+  return (
+    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <div className="flex items-center gap-4 py-4">
+        <SidebarTrigger className="-ml-1" />
+        <Separator orientation="vertical" className="h-6" />
+        <div className="flex flex-1 items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold">Training Management</h1>
+            <p className="text-sm text-muted-foreground">
+              Manage training programs, enrollments, and certifications
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button size="sm" variant="outline">
+              <Award className="mr-2 h-4 w-4" />
+              Certificates
+            </Button>
+            <Button size="sm">
+              <Plus className="mr-2 h-4 w-4" />
+              New Program
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Cards */}
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Programs</CardTitle>
+            <BookOpen className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.total_programs}</div>
+            <p className="text-xs text-muted-foreground">All training programs</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Active Programs</CardTitle>
+            <TrendingUp className="h-4 w-4 text-green-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.active_programs}</div>
+            <p className="text-xs text-muted-foreground">Currently running</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Enrollments</CardTitle>
+            <Users className="h-4 w-4 text-blue-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.total_enrollments}</div>
+            <p className="text-xs text-muted-foreground">Employees enrolled</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Completion Rate</CardTitle>
+            <CheckCircle2 className="h-4 w-4 text-yellow-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.completion_rate}%</div>
+            <p className="text-xs text-muted-foreground">Training completion</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList>
+          <TabsTrigger value="programs">Training Programs</TabsTrigger>
+          <TabsTrigger value="enrollments">Enrollments</TabsTrigger>
+          <TabsTrigger value="certifications">Certifications</TabsTrigger>
+        </TabsList>
+
+        {/* Training Programs Tab */}
+        <TabsContent value="programs">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative flex-1 max-w-sm">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="search"
+                      placeholder="Search programs..."
+                      className="pl-8"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  <Select value={statusFilter} onValueChange={setStatusFilter}>
+                    <SelectTrigger className="w-[180px]">
+                      <Filter className="mr-2 h-4 w-4" />
+                      <SelectValue placeholder="Filter by status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Status</SelectItem>
+                      <SelectItem value="Planned">Planned</SelectItem>
+                      <SelectItem value="In Progress">In Progress</SelectItem>
+                      <SelectItem value="Completed">Completed</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Program Name</TableHead>
+                    <TableHead>Trainer</TableHead>
+                    <TableHead>Schedule</TableHead>
+                    <TableHead>Duration</TableHead>
+                    <TableHead>Capacity</TableHead>
+                    <TableHead>Enrolled</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={8} className="text-center py-10">
+                        Loading training programs...
+                      </TableCell>
+                    </TableRow>
+                  ) : filteredPrograms.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={8} className="text-center py-10">
+                        <div className="flex flex-col items-center gap-2">
+                          <GraduationCap className="h-8 w-8 text-muted-foreground" />
+                          <p className="text-sm text-muted-foreground">No training programs found</p>
+                          <Button size="sm">
+                            <Plus className="mr-2 h-4 w-4" />
+                            Create First Program
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    filteredPrograms.map((program) => (
+                      <TableRow key={program.id}>
+                        <TableCell className="font-medium">{program.program_name}</TableCell>
+                        <TableCell>{program.trainer || "-"}</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-1 text-sm">
+                            <Calendar className="h-3 w-3 text-muted-foreground" />
+                            {formatDate(program.start_date)} - {formatDate(program.end_date)}
+                          </div>
+                        </TableCell>
+                        <TableCell>{program.duration_hours}h</TableCell>
+                        <TableCell className="text-center">{program.max_participants}</TableCell>
+                        <TableCell>
+                          <div className="flex flex-col gap-1">
+                            <Badge variant="secondary">{program.enrolled_count || 0}</Badge>
+                            <Progress 
+                              value={(program.enrolled_count / program.max_participants) * 100} 
+                              className="h-1 w-16"
+                            />
+                          </div>
+                        </TableCell>
+                        <TableCell>{getStatusBadge(program.status)}</TableCell>
+                        <TableCell className="text-right">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <Eye className="mr-2 h-4 w-4" />
+                                View Details
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Edit className="mr-2 h-4 w-4" />
+                                Edit Program
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <Users className="mr-2 h-4 w-4" />
+                                Manage Enrollments
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Enrollments Tab */}
+        <TabsContent value="enrollments">
+          <Card>
+            <CardHeader>
+              <CardTitle>Training Enrollments</CardTitle>
+              <CardDescription>View and manage employee enrollments</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center py-10">
+                <Users className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <p className="text-sm text-muted-foreground mb-4">
+                  Enrollment management feature
+                </p>
+                <Button size="sm">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Enroll Employee
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Certifications Tab */}
+        <TabsContent value="certifications">
+          <Card>
+            <CardHeader>
+              <CardTitle>Certifications</CardTitle>
+              <CardDescription>Track employee certifications and achievements</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center py-10">
+                <Award className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <p className="text-sm text-muted-foreground mb-4">
+                  Certification tracking feature
+                </p>
+                <Button size="sm">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Add Certification
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
+  )
+}

@@ -74,7 +74,7 @@ interface Lead {
   status_name?: string
   status_color?: string
   assigned_name?: string
-  estimated_value?: number
+  estimated_value?: string | number
   created_at: string
 }
 
@@ -157,10 +157,10 @@ export default function ViewAllLeadsPage() {
   const uniqueSources = Array.from(new Set(leads.map(lead => lead.source_name).filter(Boolean))) as string[]
 
   const formatCurrency = (value?: number) => {
-    if (!value) return "$0"
-    return new Intl.NumberFormat('en-US', {
+    if (!value) return "Rp0"
+    return new Intl.NumberFormat('id-ID', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'IDR',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value)
@@ -246,9 +246,14 @@ export default function ViewAllLeadsPage() {
         </Breadcrumb>
       </header>
 
-      <div className="flex-1 space-y-4 p-4 pt-6">
-        <div className="flex items-center justify-between space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">View All Leads</h2>
+      <div className="flex-1 space-y-4 p-4 pt-6 md:p-8">
+        <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight">View All Leads</h2>
+            <p className="text-muted-foreground mt-1">
+              Manage and track all your sales leads in one place
+            </p>
+          </div>
           <div className="flex items-center space-x-2">
             <Button onClick={fetchLeads} variant="outline" size="sm">
               <RefreshCw className="mr-2 h-4 w-4" />
@@ -263,29 +268,96 @@ export default function ViewAllLeadsPage() {
           </div>
         </div>
 
+        {/* Summary Stats */}
+        {!isLoading && leads.length > 0 && (
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  Total Leads
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{filteredLeads.length}</div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {filteredLeads.length === leads.length ? "All active leads" : `of ${leads.length} total`}
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  Total Pipeline Value
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">
+                  {formatCurrency(filteredLeads.reduce((sum, lead) => sum + (parseFloat(String(lead.estimated_value || 0)) || 0), 0))}
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Estimated opportunity value
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  Average Deal Size
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">
+                  {filteredLeads.length > 0 
+                    ? formatCurrency(filteredLeads.reduce((sum, lead) => sum + (parseFloat(String(lead.estimated_value || 0)) || 0), 0) / filteredLeads.length)
+                    : formatCurrency(0)
+                  }
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Per lead estimate
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  Lead Sources
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">
+                  {uniqueSources.length}
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Active channels
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
         {/* Filters and Search */}
         <Card>
-          <CardHeader>
+          <CardHeader className="pb-3">
             <CardTitle>Lead Management</CardTitle>
             <CardDescription>
-              Manage and track all your sales leads
+              Search, filter and manage your sales leads
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+            <div className="flex flex-col space-y-3 lg:flex-row lg:space-y-0 lg:space-x-3">
               <div className="flex-1">
                 <div className="relative">
-                  <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+                  <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input
-                    placeholder="Search leads by name, company, or email..."
+                    placeholder="Search by name, company, or email..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-8"
+                    className="pl-9"
                   />
                 </div>
               </div>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-[200px]">
+                <SelectTrigger className="w-full lg:w-[200px]">
                   <Filter className="mr-2 h-4 w-4" />
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
@@ -299,7 +371,7 @@ export default function ViewAllLeadsPage() {
                 </SelectContent>
               </Select>
               <Select value={sourceFilter} onValueChange={setSourceFilter}>
-                <SelectTrigger className="w-[200px]">
+                <SelectTrigger className="w-full lg:w-[200px]">
                   <Filter className="mr-2 h-4 w-4" />
                   <SelectValue placeholder="Filter by source" />
                 </SelectTrigger>
@@ -321,159 +393,147 @@ export default function ViewAllLeadsPage() {
           <CardContent className="p-0">
             {isLoading ? (
               <div className="flex items-center justify-center h-64">
-                <RefreshCw className="h-8 w-8 animate-spin" />
+                <RefreshCw className="h-8 w-8 animate-spin text-muted-foreground" />
+                <span className="ml-3 text-muted-foreground">Loading leads...</span>
               </div>
             ) : (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Company</TableHead>
-                    <TableHead>Contact</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Source</TableHead>
-                    <TableHead>Assigned To</TableHead>
-                    <TableHead className="text-right">Value</TableHead>
-                    <TableHead>Created</TableHead>
-                    <TableHead className="w-[70px]"></TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {filteredLeads.length === 0 ? (
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
                     <TableRow>
-                      <TableCell colSpan={9} className="text-center py-8 text-muted-foreground">
-                        {searchTerm || statusFilter !== "all" || sourceFilter !== "all" 
-                          ? "No leads found matching your filters." 
-                          : "No leads found. Create your first lead to get started."
-                        }
-                      </TableCell>
+                      <TableHead className="min-w-[180px]">Name</TableHead>
+                      <TableHead className="min-w-[150px]">Company</TableHead>
+                      <TableHead className="min-w-[200px]">Contact</TableHead>
+                      <TableHead className="min-w-[120px]">Status</TableHead>
+                      <TableHead className="min-w-[130px]">Source</TableHead>
+                      <TableHead className="min-w-[140px]">Assigned To</TableHead>
+                      <TableHead className="text-right min-w-[130px]">Value</TableHead>
+                      <TableHead className="min-w-[110px]">Created</TableHead>
+                      <TableHead className="w-[70px]"></TableHead>
                     </TableRow>
-                  ) : (
-                    filteredLeads.map((lead) => (
-                      <TableRow key={lead.id}>
-                        <TableCell className="font-medium">
-                          <div>
-                            <div className="font-semibold">{lead.first_name} {lead.last_name}</div>
-                            {lead.job_title && (
-                              <div className="text-sm text-muted-foreground">{lead.job_title}</div>
-                            )}
-                          </div>
-                        </TableCell>
-                        <TableCell>{lead.company}</TableCell>
-                        <TableCell>
-                          <div className="space-y-1">
-                            <div className="flex items-center text-sm">
-                              <Mail className="mr-1 h-3 w-3" />
-                              {lead.email}
+                  </TableHeader>
+                  <TableBody>
+                    {filteredLeads.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={9} className="text-center py-12">
+                          <div className="flex flex-col items-center justify-center space-y-3">
+                            <div className="rounded-full bg-muted p-3">
+                              <UserPlus className="h-6 w-6 text-muted-foreground" />
                             </div>
-                            {lead.phone && (
-                              <div className="flex items-center text-sm text-muted-foreground">
-                                <Phone className="mr-1 h-3 w-3" />
-                                {lead.phone}
-                              </div>
+                            <div className="space-y-1">
+                              <p className="font-medium">
+                                {searchTerm || statusFilter !== "all" || sourceFilter !== "all" 
+                                  ? "No leads found matching your filters" 
+                                  : "No leads yet"
+                                }
+                              </p>
+                              <p className="text-sm text-muted-foreground">
+                                {searchTerm || statusFilter !== "all" || sourceFilter !== "all" 
+                                  ? "Try adjusting your search or filter criteria" 
+                                  : "Get started by creating your first lead"
+                                }
+                              </p>
+                            </div>
+                            {!searchTerm && statusFilter === "all" && sourceFilter === "all" && (
+                              <Button asChild className="mt-4">
+                                <Link href="/erp/sales/leads/new">
+                                  <UserPlus className="mr-2 h-4 w-4" />
+                                  Create New Lead
+                                </Link>
+                              </Button>
                             )}
                           </div>
-                        </TableCell>
-                        <TableCell>
-                          <Badge className={getStatusColor(lead.status_color)}>
-                            {lead.status_name}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>{lead.source_name}</TableCell>
-                        <TableCell>{lead.assigned_name || "Unassigned"}</TableCell>
-                        <TableCell className="text-right font-medium">
-                          {formatCurrency(lead.estimated_value)}
-                        </TableCell>
-                        <TableCell>{formatDate(lead.created_at)}</TableCell>
-                        <TableCell>
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" className="h-8 w-8 p-0">
-                                <span className="sr-only">Open menu</span>
-                                <MoreHorizontal className="h-4 w-4" />
-                              </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                              <DropdownMenuItem onClick={() => handleViewDetails(lead.id)}>
-                                <Eye className="mr-2 h-4 w-4" />
-                                View Details
-                              </DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => handleEditLead(lead.id)}>
-                                <Edit className="mr-2 h-4 w-4" />
-                                Edit Lead
-                              </DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => handleSendEmail(lead.email)}>
-                                <Mail className="mr-2 h-4 w-4" />
-                                Send Email
-                              </DropdownMenuItem>
-                              <DropdownMenuItem onClick={() => handleCallLead(lead.phone)}>
-                                <Phone className="mr-2 h-4 w-4" />
-                                Call Lead
-                              </DropdownMenuItem>
-                              <DropdownMenuSeparator />
-                              <DropdownMenuItem 
-                                className="text-red-600"
-                                onClick={() => handleDeleteLead(lead.id, `${lead.first_name} ${lead.last_name}`)}
-                              >
-                                <Trash2 className="mr-2 h-4 w-4" />
-                                Delete Lead
-                              </DropdownMenuItem>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
                         </TableCell>
                       </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
+                    ) : (
+                      filteredLeads.map((lead) => (
+                        <TableRow key={lead.id}>
+                          <TableCell className="font-medium">
+                            <div>
+                              <div className="font-semibold">{lead.first_name} {lead.last_name}</div>
+                              {lead.job_title && (
+                                <div className="text-xs text-muted-foreground mt-0.5">{lead.job_title}</div>
+                              )}
+                            </div>
+                          </TableCell>
+                          <TableCell>{lead.company}</TableCell>
+                          <TableCell>
+                            <div className="space-y-1">
+                              <div className="flex items-center text-xs">
+                                <Mail className="mr-1.5 h-3 w-3 shrink-0 text-muted-foreground" />
+                                <span className="truncate">{lead.email}</span>
+                              </div>
+                              {lead.phone && (
+                                <div className="flex items-center text-xs text-muted-foreground">
+                                  <Phone className="mr-1.5 h-3 w-3 shrink-0" />
+                                  <span>{lead.phone}</span>
+                                </div>
+                              )}
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <Badge className={getStatusColor(lead.status_color)}>
+                              {lead.status_name}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <span className="text-sm">{lead.source_name}</span>
+                          </TableCell>
+                          <TableCell>
+                            <span className="text-sm">{lead.assigned_name || <span className="text-muted-foreground">Unassigned</span>}</span>
+                          </TableCell>
+                          <TableCell className="text-right font-medium">
+                            {formatCurrency(parseFloat(String(lead.estimated_value || 0)) || 0)}
+                          </TableCell>
+                          <TableCell>
+                            <span className="text-sm">{formatDate(lead.created_at)}</span>
+                          </TableCell>
+                          <TableCell>
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" className="h-8 w-8 p-0">
+                                  <span className="sr-only">Open menu</span>
+                                  <MoreHorizontal className="h-4 w-4" />
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end">
+                                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                <DropdownMenuItem onClick={() => handleViewDetails(lead.id)}>
+                                  <Eye className="mr-2 h-4 w-4" />
+                                  View Details
+                                </DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => handleEditLead(lead.id)}>
+                                  <Edit className="mr-2 h-4 w-4" />
+                                  Edit Lead
+                                </DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => handleSendEmail(lead.email)}>
+                                  <Mail className="mr-2 h-4 w-4" />
+                                  Send Email
+                                </DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => handleCallLead(lead.phone)}>
+                                  <Phone className="mr-2 h-4 w-4" />
+                                  Call Lead
+                                </DropdownMenuItem>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem 
+                                  className="text-red-600"
+                                  onClick={() => handleDeleteLead(lead.id, `${lead.first_name} ${lead.last_name}`)}
+                                >
+                                  <Trash2 className="mr-2 h-4 w-4" />
+                                  Delete Lead
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
             )}
           </CardContent>
         </Card>
-
-        {/* Summary Stats */}
-        {!isLoading && filteredLeads.length > 0 && (
-          <div className="grid gap-4 md:grid-cols-4">
-            <Card>
-              <CardContent className="p-6">
-                <div className="text-2xl font-bold">{filteredLeads.length}</div>
-                <p className="text-xs text-muted-foreground">
-                  Total Leads
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="text-2xl font-bold">
-                  {formatCurrency(filteredLeads.reduce((sum, lead) => sum + (lead.estimated_value || 0), 0))}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Total Pipeline Value
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="text-2xl font-bold">
-                  {formatCurrency(filteredLeads.reduce((sum, lead) => sum + (lead.estimated_value || 0), 0) / filteredLeads.length)}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Average Deal Size
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="text-2xl font-bold">
-                  {uniqueSources.length}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Lead Sources
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        )}
       </div>
     </>
   )

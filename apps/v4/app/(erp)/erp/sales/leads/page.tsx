@@ -3,18 +3,6 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import {
-  SidebarTrigger,
-} from "@/registry/new-york-v4/ui/sidebar"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/registry/new-york-v4/ui/breadcrumb"
-import {
   Card,
   CardContent,
   CardDescription,
@@ -54,28 +42,7 @@ export default function LeadsPage() {
     fetchSummary()
   }, [])
   return (
-    <>
-      <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem className="hidden md:block">
-              <BreadcrumbLink href="/erp">ERP</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator className="hidden md:block" />
-            <BreadcrumbItem className="hidden md:block">
-              <BreadcrumbLink href="/erp/sales">Sales</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator className="hidden md:block" />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Lead Management</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </header>
-
-      <div className="flex-1 space-y-4 p-4 pt-6">
+    <div className="flex-1 space-y-4">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Lead Management</h2>
           <div className="flex items-center space-x-2">
@@ -285,7 +252,6 @@ export default function LeadsPage() {
             </div>
           </CardContent>
         </Card>
-      </div>
-    </>
+    </div>
   )
 }

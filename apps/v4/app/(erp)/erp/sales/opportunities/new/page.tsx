@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/registry/new-york-v4/ui/card"
@@ -45,6 +45,15 @@ interface OpportunityForm {
   notes: string
 }
 
+interface LookupData {
+  users: Array<{
+    id: string
+    full_name: string
+    email: string
+    role: string
+  }>
+}
+
 const initialFormData: OpportunityForm = {
   title: "",
   company: "",
@@ -65,6 +74,30 @@ export default function CreateOpportunityPage() {
   const router = useRouter()
   const [formData, setFormData] = useState<OpportunityForm>(initialFormData)
   const [isLoading, setIsLoading] = useState(false)
+  const [lookupData, setLookupData] = useState<LookupData>({ users: [] })
+  const [isLoadingLookup, setIsLoadingLookup] = useState(true)
+
+  // Fetch lookup data on component mount
+  useEffect(() => {
+    const fetchLookupData = async () => {
+      try {
+        const response = await fetch('/api/opportunities/lookup')
+        const result = await response.json()
+        
+        if (result.success) {
+          setLookupData(result.data)
+        } else {
+          console.error('Failed to fetch lookup data:', result.error)
+        }
+      } catch (error) {
+        console.error('Error fetching lookup data:', error)
+      } finally {
+        setIsLoadingLookup(false)
+      }
+    }
+
+    fetchLookupData()
+  }, [])
 
   const handleInputChange = (field: keyof OpportunityForm, value: string) => {
     setFormData(prev => ({
@@ -155,14 +188,6 @@ export default function CreateOpportunityPage() {
     "Partner Referral",
     "Existing Customer",
     "Other"
-  ]
-
-  const salesReps = [
-    "Sarah Johnson",
-    "Mike Wilson", 
-    "Lisa Taylor",
-    "David Brown",
-    "Alex Chen"
   ]
 
   return (
@@ -393,11 +418,16 @@ export default function CreateOpportunityPage() {
                         <SelectValue placeholder="Select sales rep" />
                       </SelectTrigger>
                       <SelectContent>
-                        {salesReps.map((rep) => (
-                          <SelectItem key={rep} value={rep}>
-                            {rep}
-                          </SelectItem>
-                        ))}
+                        <SelectItem value="unassigned">Unassigned</SelectItem>
+                        {isLoadingLookup ? (
+                          <SelectItem value="loading" disabled>Loading...</SelectItem>
+                        ) : (
+                          lookupData.users.map((user) => (
+                            <SelectItem key={user.id} value={user.full_name}>
+                              {user.full_name}
+                            </SelectItem>
+                          ))
+                        )}
                       </SelectContent>
                     </Select>
                   </div>

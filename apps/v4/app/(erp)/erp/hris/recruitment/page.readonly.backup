@@ -1,0 +1,585 @@
+"use client"
+
+import * as React from "react"
+import { useRouter } from "next/navigation"
+import {
+  Briefcase,
+  Plus,
+  Search,
+  Filter,
+  MoreHorizontal,
+  Eye,
+  Edit,
+  Trash2,
+  Users,
+  Calendar,
+  DollarSign,
+  MapPin,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  FileText,
+  Send,
+} from "lucide-react"
+import {
+  SidebarTrigger,
+} from "@/registry/new-york-v4/ui/sidebar"
+import { Button } from "@/registry/new-york-v4/ui/button"
+import { Input } from "@/registry/new-york-v4/ui/input"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/registry/new-york-v4/ui/card"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/registry/new-york-v4/ui/table"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/new-york-v4/ui/dropdown-menu"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/registry/new-york-v4/ui/dialog"
+import { Label } from "@/registry/new-york-v4/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/new-york-v4/ui/select"
+import { Badge } from "@/registry/new-york-v4/ui/badge"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/new-york-v4/ui/tabs"
+import { Textarea } from "@/registry/new-york-v4/ui/textarea"
+
+interface JobPosting {
+  id: number
+  title: string
+  department_name: string
+  position_title: string
+  employment_type: string
+  location: string
+  salary_min: number
+  salary_max: number
+  status: string
+  openings: number
+  application_count: number
+  posted_date: string
+  closing_date: string
+}
+
+interface Application {
+  id: number
+  job_posting_id: number
+  job_title: string
+  first_name: string
+  last_name: string
+  email: string
+  phone: string
+  status: string
+  stage: string
+  rating: number
+  applied_date: string
+}
+
+export default function RecruitmentPage() {
+  const router = useRouter()
+  const [activeTab, setActiveTab] = React.useState("jobs")
+  const [jobPostings, setJobPostings] = React.useState<JobPosting[]>([])
+  const [applications, setApplications] = React.useState<Application[]>([])
+  const [loading, setLoading] = React.useState(true)
+  const [searchQuery, setSearchQuery] = React.useState("")
+  const [statusFilter, setStatusFilter] = React.useState("all")
+  const [dialogOpen, setDialogOpen] = React.useState(false)
+  const [selectedItem, setSelectedItem] = React.useState<any>(null)
+
+  const [stats, setStats] = React.useState({
+    total_jobs: 0,
+    published_jobs: 0,
+    total_applications: 0,
+    new_applications: 0,
+  })
+
+  React.useEffect(() => {
+    if (activeTab === "jobs") {
+      fetchJobPostings()
+    } else {
+      fetchApplications()
+    }
+  }, [activeTab, statusFilter])
+
+  const fetchJobPostings = async () => {
+    try {
+      setLoading(true)
+      const params = new URLSearchParams()
+      if (statusFilter !== "all") {
+        params.append("status", statusFilter)
+      }
+
+      const response = await fetch(`/api/hris/recruitment/jobs?${params}`)
+      if (response.ok) {
+        const data = await response.json()
+        setJobPostings(data.jobs || [])
+        setStats(data.stats || stats)
+      }
+    } catch (error) {
+      console.error("Error fetching job postings:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchApplications = async () => {
+    try {
+      setLoading(true)
+      const params = new URLSearchParams()
+      if (statusFilter !== "all") {
+        params.append("status", statusFilter)
+      }
+
+      const response = await fetch(`/api/hris/recruitment/applications?${params}`)
+      if (response.ok) {
+        const data = await response.json()
+        setApplications(data.applications || [])
+        setStats(data.stats || stats)
+      }
+    } catch (error) {
+      console.error("Error fetching applications:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const getStatusBadge = (status: string, type: "job" | "application") => {
+    if (type === "job") {
+      const variants: Record<string, { variant: "default" | "secondary" | "destructive" | "outline"; label: string }> = {
+        Draft: { variant: "outline", label: "Draft" },
+        Published: { variant: "default", label: "Published" },
+        Closed: { variant: "secondary", label: "Closed" },
+        Filled: { variant: "destructive", label: "Filled" },
+      }
+      const config = variants[status] || { variant: "outline", label: status }
+      return <Badge variant={config.variant}>{config.label}</Badge>
+    } else {
+      const variants: Record<string, { variant: "default" | "secondary" | "destructive" | "outline"; label: string }> = {
+        New: { variant: "default", label: "New" },
+        Screening: { variant: "secondary", label: "Screening" },
+        Interview: { variant: "outline", label: "Interview" },
+        Offer: { variant: "default", label: "Offer" },
+        Rejected: { variant: "destructive", label: "Rejected" },
+        Hired: { variant: "default", label: "Hired" },
+      }
+      const config = variants[status] || { variant: "outline", label: status }
+      return <Badge variant={config.variant}>{config.label}</Badge>
+    }
+  }
+
+  const formatCurrency = (min: number, max: number) => {
+    const format = (amount: number) => {
+      return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+      }).format(amount)
+    }
+    return `${format(min)} - ${format(max)}`
+  }
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("id-ID", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  }
+
+  const filteredJobs = jobPostings.filter((job) => {
+    const searchLower = searchQuery.toLowerCase()
+    return (
+      job.title.toLowerCase().includes(searchLower) ||
+      job.department_name?.toLowerCase().includes(searchLower) ||
+      job.position_title?.toLowerCase().includes(searchLower) ||
+      job.location?.toLowerCase().includes(searchLower)
+    )
+  })
+
+  const filteredApplications = applications.filter((app) => {
+    const searchLower = searchQuery.toLowerCase()
+    return (
+      app.first_name.toLowerCase().includes(searchLower) ||
+      app.last_name.toLowerCase().includes(searchLower) ||
+      app.email.toLowerCase().includes(searchLower) ||
+      app.job_title?.toLowerCase().includes(searchLower)
+    )
+  })
+
+  return (
+    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <div className="flex items-center gap-4 py-4">
+        <SidebarTrigger className="-ml-1" />
+        <Separator orientation="vertical" className="h-6" />
+        <div className="flex flex-1 items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold">Recruitment Management</h1>
+            <p className="text-sm text-muted-foreground">
+              Manage job postings, applications, and hiring process
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button size="sm" onClick={() => router.push("/erp/hris/recruitment/jobs/new")}>
+              <Plus className="mr-2 h-4 w-4" />
+              Post New Job
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Cards */}
+      <div className="grid gap-4 md:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Jobs</CardTitle>
+            <Briefcase className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.total_jobs}</div>
+            <p className="text-xs text-muted-foreground">All job postings</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Published</CardTitle>
+            <CheckCircle2 className="h-4 w-4 text-green-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.published_jobs}</div>
+            <p className="text-xs text-muted-foreground">Currently active</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Applications</CardTitle>
+            <FileText className="h-4 w-4 text-blue-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.total_applications}</div>
+            <p className="text-xs text-muted-foreground">Total received</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">New</CardTitle>
+            <Clock className="h-4 w-4 text-yellow-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.new_applications}</div>
+            <p className="text-xs text-muted-foreground">Pending review</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <TabsList>
+          <TabsTrigger value="jobs">Job Postings</TabsTrigger>
+          <TabsTrigger value="applications">Applications</TabsTrigger>
+          <TabsTrigger value="interviews">Interviews</TabsTrigger>
+        </TabsList>
+
+        {/* Job Postings Tab */}
+        <TabsContent value="jobs">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative flex-1 max-w-sm">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="search"
+                      placeholder="Search jobs..."
+                      className="pl-8"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  <Select value={statusFilter} onValueChange={setStatusFilter}>
+                    <SelectTrigger className="w-[180px]">
+                      <Filter className="mr-2 h-4 w-4" />
+                      <SelectValue placeholder="Filter by status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Status</SelectItem>
+                      <SelectItem value="Draft">Draft</SelectItem>
+                      <SelectItem value="Published">Published</SelectItem>
+                      <SelectItem value="Closed">Closed</SelectItem>
+                      <SelectItem value="Filled">Filled</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Job Title</TableHead>
+                    <TableHead>Department</TableHead>
+                    <TableHead>Type</TableHead>
+                    <TableHead>Location</TableHead>
+                    <TableHead>Salary Range</TableHead>
+                    <TableHead>Openings</TableHead>
+                    <TableHead>Applications</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={9} className="text-center py-10">
+                        Loading job postings...
+                      </TableCell>
+                    </TableRow>
+                  ) : filteredJobs.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={9} className="text-center py-10">
+                        <div className="flex flex-col items-center gap-2">
+                          <Briefcase className="h-8 w-8 text-muted-foreground" />
+                          <p className="text-sm text-muted-foreground">No job postings found</p>
+                          <Button size="sm" onClick={() => router.push("/erp/hris/recruitment/jobs/new")}>
+                            <Plus className="mr-2 h-4 w-4" />
+                            Post First Job
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    filteredJobs.map((job) => (
+                      <TableRow key={job.id}>
+                        <TableCell className="font-medium">{job.title}</TableCell>
+                        <TableCell>{job.department_name || "-"}</TableCell>
+                        <TableCell>
+                          <Badge variant="outline">{job.employment_type}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-1">
+                            <MapPin className="h-3 w-3 text-muted-foreground" />
+                            {job.location}
+                          </div>
+                        </TableCell>
+                        <TableCell className="text-sm">
+                          {formatCurrency(job.salary_min, job.salary_max)}
+                        </TableCell>
+                        <TableCell className="text-center">{job.openings}</TableCell>
+                        <TableCell className="text-center">
+                          <Badge variant="secondary">{job.application_count || 0}</Badge>
+                        </TableCell>
+                        <TableCell>{getStatusBadge(job.status, "job")}</TableCell>
+                        <TableCell className="text-right">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem onClick={() => router.push(`/erp/hris/recruitment/jobs/${job.id}`)}>
+                                <Eye className="mr-2 h-4 w-4" />
+                                View Details
+                              </DropdownMenuItem>
+                              <DropdownMenuItem onClick={() => router.push(`/erp/hris/recruitment/jobs/${job.id}/edit`)}>
+                                <Edit className="mr-2 h-4 w-4" />
+                                Edit
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <Send className="mr-2 h-4 w-4" />
+                                Publish
+                              </DropdownMenuItem>
+                              <DropdownMenuItem className="text-red-600">
+                                <XCircle className="mr-2 h-4 w-4" />
+                                Close
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Applications Tab */}
+        <TabsContent value="applications">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-1 items-center gap-4">
+                  <div className="relative flex-1 max-w-sm">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      type="search"
+                      placeholder="Search applications..."
+                      className="pl-8"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  <Select value={statusFilter} onValueChange={setStatusFilter}>
+                    <SelectTrigger className="w-[180px]">
+                      <Filter className="mr-2 h-4 w-4" />
+                      <SelectValue placeholder="Filter by status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Status</SelectItem>
+                      <SelectItem value="New">New</SelectItem>
+                      <SelectItem value="Screening">Screening</SelectItem>
+                      <SelectItem value="Interview">Interview</SelectItem>
+                      <SelectItem value="Offer">Offer</SelectItem>
+                      <SelectItem value="Rejected">Rejected</SelectItem>
+                      <SelectItem value="Hired">Hired</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Candidate Name</TableHead>
+                    <TableHead>Job Title</TableHead>
+                    <TableHead>Email</TableHead>
+                    <TableHead>Phone</TableHead>
+                    <TableHead>Stage</TableHead>
+                    <TableHead>Rating</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Applied Date</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {loading ? (
+                    <TableRow>
+                      <TableCell colSpan={9} className="text-center py-10">
+                        Loading applications...
+                      </TableCell>
+                    </TableRow>
+                  ) : filteredApplications.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={9} className="text-center py-10">
+                        <div className="flex flex-col items-center gap-2">
+                          <FileText className="h-8 w-8 text-muted-foreground" />
+                          <p className="text-sm text-muted-foreground">No applications found</p>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    filteredApplications.map((app) => (
+                      <TableRow key={app.id}>
+                        <TableCell className="font-medium">
+                          {app.first_name} {app.last_name}
+                        </TableCell>
+                        <TableCell>{app.job_title || "-"}</TableCell>
+                        <TableCell className="text-sm">{app.email}</TableCell>
+                        <TableCell className="text-sm">{app.phone || "-"}</TableCell>
+                        <TableCell>
+                          <Badge variant="outline">{app.stage || "Initial"}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          {app.rating ? (
+                            <div className="flex items-center gap-1">
+                              {"⭐".repeat(app.rating)}
+                            </div>
+                          ) : (
+                            "-"
+                          )}
+                        </TableCell>
+                        <TableCell>{getStatusBadge(app.status, "application")}</TableCell>
+                        <TableCell>{formatDate(app.applied_date)}</TableCell>
+                        <TableCell className="text-right">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <Eye className="mr-2 h-4 w-4" />
+                                View Application
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Calendar className="mr-2 h-4 w-4" />
+                                Schedule Interview
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem>
+                                <CheckCircle2 className="mr-2 h-4 w-4" />
+                                Move to Next Stage
+                              </DropdownMenuItem>
+                              <DropdownMenuItem className="text-red-600">
+                                <XCircle className="mr-2 h-4 w-4" />
+                                Reject
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Interviews Tab */}
+        <TabsContent value="interviews">
+          <Card>
+            <CardHeader>
+              <CardTitle>Interview Schedule</CardTitle>
+              <CardDescription>Manage and track interview appointments</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center py-10">
+                <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <p className="text-sm text-muted-foreground mb-4">
+                  Interview scheduling feature coming soon
+                </p>
+                <Button size="sm" variant="outline">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Schedule Interview
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
+  )
+}

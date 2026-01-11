@@ -1,0 +1,1074 @@
+openapi: 3.0.0
+info:
+  title: Ocean ERP - Phase 6 Analytics & Intelligence API
+  description: |
+    Comprehensive analytics and intelligence APIs for data-driven decision making.
+    
+    **Phase 6 Features:**
+    - KPI & Metrics Engine
+    - Executive Dashboards
+    - Advanced Reporting
+    - Predictive Analytics
+    - Anomaly Detection
+    - Data Warehouse & ETL
+    - Business Intelligence (OLAP, Pivot, Cohort, Funnel)
+    - Prescriptive Analytics (Recommendations)
+    
+    **Base URL:** `http://localhost:3000/api/analytics`
+    
+    **Authentication:** Bearer token (future implementation)
+    
+    **Rate Limits:** 1000 requests/hour per user
+    
+  version: 1.0.0
+  contact:
+    name: Ocean ERP Engineering
+    email: support@ocean-erp.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:3000/api/analytics
+    description: Development server
+  - url: https://api.ocean-erp.com/analytics
+    description: Production server
+
+tags:
+  - name: KPIs
+    description: Key Performance Indicators management and calculation
+  - name: Dashboards
+    description: Executive dashboards and visualizations
+  - name: Reports
+    description: Advanced report generation and scheduling
+  - name: Forecasting
+    description: Predictive analytics and demand forecasting
+  - name: Anomalies
+    description: Anomaly detection and alerting
+  - name: Data Warehouse
+    description: ETL jobs and data quality management
+  - name: Business Intelligence
+    description: OLAP queries, pivot tables, cohorts, funnels
+  - name: Recommendations
+    description: Prescriptive analytics and optimization
+
+paths:
+  # ============================================================================
+  # KPI & METRICS ENGINE
+  # ============================================================================
+  
+  /kpis:
+    get:
+      tags: [KPIs]
+      summary: List all KPIs
+      description: Retrieve all configured KPIs with optional filtering
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+            enum: [sales, operations, finance, customer, inventory]
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, inactive, archived]
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of KPIs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kpis:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/KPI'
+                  metadata:
+                    $ref: '#/components/schemas/Metadata'
+    
+    post:
+      tags: [KPIs]
+      summary: Create new KPI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, category, calculation_method, target_value, unit]
+              properties:
+                name:
+                  type: string
+                category:
+                  type: string
+                  enum: [sales, operations, finance, customer, inventory]
+                calculation_method:
+                  type: string
+                  enum: [manual, automatic, formula]
+                target_value:
+                  type: number
+                unit:
+                  type: string
+                formula:
+                  type: string
+      responses:
+        '201':
+          description: KPI created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KPI'
+  
+  /kpis/calculate:
+    get:
+      tags: [KPIs]
+      summary: Calculate KPI values
+      parameters:
+        - name: kpi_id
+          in: query
+          schema:
+            type: integer
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: KPI calculations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  calculations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/KPICalculation'
+  
+  /kpis/history:
+    get:
+      tags: [KPIs]
+      summary: Get KPI historical data
+      parameters:
+        - name: kpi_id
+          in: query
+          schema:
+            type: integer
+        - name: start_date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: KPI history
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  history:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/KPIHistory'
+  
+  # ============================================================================
+  # DASHBOARDS
+  # ============================================================================
+  
+  /dashboard:
+    get:
+      tags: [Dashboards]
+      summary: Get dashboard overview
+      description: Executive dashboard with KPIs, alerts, and trends
+      responses:
+        '200':
+          description: Dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+  
+  /dashboards:
+    get:
+      tags: [Dashboards]
+      summary: List all dashboards
+      responses:
+        '200':
+          description: List of dashboards
+    
+    post:
+      tags: [Dashboards]
+      summary: Create custom dashboard
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, layout, widgets]
+              properties:
+                name:
+                  type: string
+                layout:
+                  type: string
+                  enum: [grid, vertical, horizontal]
+                widgets:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        '201':
+          description: Dashboard created
+  
+  # ============================================================================
+  # REPORTS
+  # ============================================================================
+  
+  /reports:
+    get:
+      tags: [Reports]
+      summary: List saved reports
+      responses:
+        '200':
+          description: List of reports
+  
+  /reports/generate:
+    post:
+      tags: [Reports]
+      summary: Generate report
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [report_type, format, date_range]
+              properties:
+                report_type:
+                  type: string
+                  enum: [sales_summary, inventory_status, financial_overview]
+                format:
+                  type: string
+                  enum: [json, pdf, excel, csv]
+                date_range:
+                  type: object
+                  properties:
+                    start_date:
+                      type: string
+                      format: date
+                    end_date:
+                      type: string
+                      format: date
+      responses:
+        '200':
+          description: Report generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  report:
+                    type: object
+                  metadata:
+                    $ref: '#/components/schemas/Metadata'
+  
+  /reports/schedule:
+    post:
+      tags: [Reports]
+      summary: Schedule recurring report
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [report_type, frequency, format, recipients]
+              properties:
+                report_type:
+                  type: string
+                frequency:
+                  type: string
+                  enum: [daily, weekly, monthly]
+                format:
+                  type: string
+                recipients:
+                  type: array
+                  items:
+                    type: string
+                    format: email
+      responses:
+        '201':
+          description: Report scheduled
+  
+  # ============================================================================
+  # FORECASTING
+  # ============================================================================
+  
+  /forecast/demand:
+    get:
+      tags: [Forecasting]
+      summary: Generate demand forecast
+      parameters:
+        - name: product_id
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: forecast_days
+          in: query
+          schema:
+            type: integer
+            default: 30
+      responses:
+        '200':
+          description: Demand forecast
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DemandForecast'
+  
+  /forecast/revenue:
+    get:
+      tags: [Forecasting]
+      summary: Forecast revenue
+      parameters:
+        - name: forecast_months
+          in: query
+          schema:
+            type: integer
+            default: 3
+      responses:
+        '200':
+          description: Revenue forecast
+  
+  /trends:
+    get:
+      tags: [Forecasting]
+      summary: Identify trends
+      parameters:
+        - name: metric
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: period
+          in: query
+          schema:
+            type: integer
+            default: 90
+      responses:
+        '200':
+          description: Trend analysis
+  
+  # ============================================================================
+  # ANOMALY DETECTION
+  # ============================================================================
+  
+  /anomalies/detect:
+    get:
+      tags: [Anomalies]
+      summary: Detect anomalies
+      parameters:
+        - name: metric
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: lookback_days
+          in: query
+          schema:
+            type: integer
+            default: 90
+      responses:
+        '200':
+          description: Detected anomalies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  anomalies:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Anomaly'
+                  statistics:
+                    type: object
+  
+  /alerts:
+    get:
+      tags: [Anomalies]
+      summary: Get alerts
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, resolved, acknowledged]
+      responses:
+        '200':
+          description: List of alerts
+  
+  /alerts/rules:
+    post:
+      tags: [Anomalies]
+      summary: Create alert rule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, metric, condition, threshold, severity]
+              properties:
+                name:
+                  type: string
+                metric:
+                  type: string
+                condition:
+                  type: string
+                  enum: [above_threshold, below_threshold, outside_range]
+                threshold:
+                  type: number
+                severity:
+                  type: string
+                  enum: [low, medium, high, critical]
+      responses:
+        '201':
+          description: Alert rule created
+  
+  # ============================================================================
+  # DATA WAREHOUSE & ETL
+  # ============================================================================
+  
+  /warehouse/etl/jobs:
+    get:
+      tags: [Data Warehouse]
+      summary: List ETL jobs
+      responses:
+        '200':
+          description: ETL job history
+    
+    post:
+      tags: [Data Warehouse]
+      summary: Trigger ETL job
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [job_name]
+              properties:
+                job_name:
+                  type: string
+                  enum: [load_dim_product, load_fact_sales, run_all]
+                incremental:
+                  type: boolean
+                  default: true
+      responses:
+        '200':
+          description: ETL job started
+  
+  /warehouse/etl/quality:
+    get:
+      tags: [Data Warehouse]
+      summary: Data quality metrics
+      responses:
+        '200':
+          description: Quality check results
+    
+    post:
+      tags: [Data Warehouse]
+      summary: Run quality checks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [check_type, table_name]
+              properties:
+                check_type:
+                  type: string
+                  enum: [null_check, duplicate_check]
+                table_name:
+                  type: string
+      responses:
+        '200':
+          description: Quality check completed
+  
+  /warehouse/metrics:
+    get:
+      tags: [Data Warehouse]
+      summary: Warehouse health metrics
+      responses:
+        '200':
+          description: Warehouse metrics
+  
+  # ============================================================================
+  # BUSINESS INTELLIGENCE
+  # ============================================================================
+  
+  /bi/query:
+    post:
+      tags: [Business Intelligence]
+      summary: Execute OLAP query
+      description: Ad-hoc multi-dimensional analytical queries
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OLAPQuery'
+      responses:
+        '200':
+          description: Query results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OLAPResult'
+  
+  /bi/pivot:
+    post:
+      tags: [Business Intelligence]
+      summary: Generate pivot table
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PivotRequest'
+      responses:
+        '200':
+          description: Pivot table data
+  
+  /bi/cohorts:
+    post:
+      tags: [Business Intelligence]
+      summary: Cohort analysis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CohortRequest'
+      responses:
+        '200':
+          description: Cohort analysis data
+  
+  /bi/funnels:
+    post:
+      tags: [Business Intelligence]
+      summary: Funnel analysis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [funnel_type, start_date, end_date]
+              properties:
+                funnel_type:
+                  type: string
+                  enum: [sales_pipeline, order_fulfillment, customer_journey]
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Funnel analysis data
+  
+  # ============================================================================
+  # PRESCRIPTIVE ANALYTICS
+  # ============================================================================
+  
+  /recommendations/reorder:
+    get:
+      tags: [Recommendations]
+      summary: Inventory reorder recommendations
+      description: AI-powered recommendations for optimal inventory ordering
+      parameters:
+        - name: warehouse_id
+          in: query
+          schema:
+            type: integer
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: max_recommendations
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: Reorder recommendations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReorderRecommendations'
+    
+    post:
+      tags: [Recommendations]
+      summary: Create PO from recommendation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [product_id, quantity, supplier_id]
+              properties:
+                product_id:
+                  type: integer
+                quantity:
+                  type: integer
+                supplier_id:
+                  type: integer
+                notes:
+                  type: string
+      responses:
+        '200':
+          description: Purchase order created
+  
+  /recommendations/pricing:
+    get:
+      tags: [Recommendations]
+      summary: Dynamic pricing recommendations
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: strategy
+          in: query
+          schema:
+            type: string
+            enum: [maximize_revenue, maximize_volume, competitive, balanced]
+            default: balanced
+        - name: min_margin
+          in: query
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Pricing recommendations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingRecommendations'
+    
+    post:
+      tags: [Recommendations]
+      summary: Apply pricing recommendation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [product_id, new_price]
+              properties:
+                product_id:
+                  type: integer
+                new_price:
+                  type: number
+                effective_date:
+                  type: string
+                  format: date
+                notes:
+                  type: string
+      responses:
+        '200':
+          description: Price updated
+  
+  /recommendations/routing:
+    get:
+      tags: [Recommendations]
+      summary: Logistics routing optimization
+      parameters:
+        - name: origin_location_id
+          in: query
+          schema:
+            type: integer
+        - name: optimization_goal
+          in: query
+          schema:
+            type: string
+            enum: [minimize_cost, minimize_time, balanced]
+            default: balanced
+        - name: max_stops
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Route recommendations
+    
+    post:
+      tags: [Recommendations]
+      summary: Create route from recommendation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [shipment_ids]
+              properties:
+                shipment_ids:
+                  type: array
+                  items:
+                    type: integer
+                carrier_id:
+                  type: integer
+                driver_id:
+                  type: integer
+      responses:
+        '200':
+          description: Route created
+  
+  /recommendations/cost-savings:
+    get:
+      tags: [Recommendations]
+      summary: Cost-saving opportunities
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+            enum: [procurement, inventory, logistics, operations, pricing]
+        - name: min_savings
+          in: query
+          schema:
+            type: number
+        - name: max_difficulty
+          in: query
+          schema:
+            type: string
+            enum: [easy, medium, hard]
+      responses:
+        '200':
+          description: Cost-saving opportunities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CostSavingsOpportunities'
+
+# ==============================================================================
+# COMPONENTS
+# ==============================================================================
+
+components:
+  schemas:
+    KPI:
+      type: object
+      properties:
+        kpi_id:
+          type: integer
+        name:
+          type: string
+        category:
+          type: string
+        calculation_method:
+          type: string
+        target_value:
+          type: number
+        current_value:
+          type: number
+        unit:
+          type: string
+        status:
+          type: string
+    
+    KPICalculation:
+      type: object
+      properties:
+        kpi_id:
+          type: integer
+        current_value:
+          type: number
+        target_value:
+          type: number
+        performance_percentage:
+          type: number
+        trend:
+          type: string
+          enum: [up, down, stable]
+    
+    KPIHistory:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        value:
+          type: number
+    
+    Dashboard:
+      type: object
+      properties:
+        overview:
+          type: object
+        kpi_summary:
+          type: array
+          items:
+            $ref: '#/components/schemas/KPICalculation'
+        recent_alerts:
+          type: array
+    
+    DemandForecast:
+      type: object
+      properties:
+        forecast:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+              predicted_demand:
+                type: number
+              confidence_interval:
+                type: object
+                properties:
+                  lower:
+                    type: number
+                  upper:
+                    type: number
+        model_metrics:
+          type: object
+          properties:
+            mae:
+              type: number
+            mape:
+              type: number
+            rmse:
+              type: number
+    
+    Anomaly:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        metric:
+          type: string
+        value:
+          type: number
+        expected_value:
+          type: number
+        deviation:
+          type: number
+        severity:
+          type: string
+          enum: [low, medium, high, critical]
+    
+    OLAPQuery:
+      type: object
+      required: [fact_table, dimensions, measures]
+      properties:
+        fact_table:
+          type: string
+          enum: [sales, inventory, production, shipments, purchases]
+        dimensions:
+          type: array
+          items:
+            type: string
+        measures:
+          type: array
+          items:
+            type: string
+        filters:
+          type: object
+        time_period:
+          type: object
+          properties:
+            start_date:
+              type: string
+              format: date
+            end_date:
+              type: string
+              format: date
+        order_by:
+          type: array
+          items:
+            type: string
+        limit:
+          type: integer
+          default: 1000
+    
+    OLAPResult:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+    
+    PivotRequest:
+      type: object
+      required: [fact_table, pivot]
+      properties:
+        fact_table:
+          type: string
+        pivot:
+          type: object
+          required: [rows, columns, values, aggregation]
+          properties:
+            rows:
+              type: array
+              items:
+                type: string
+            columns:
+              type: array
+              items:
+                type: string
+            values:
+              type: array
+              items:
+                type: string
+            aggregation:
+              type: string
+              enum: [SUM, AVG, COUNT, MIN, MAX]
+    
+    CohortRequest:
+      type: object
+      required: [cohort_type, period, start_date, end_date]
+      properties:
+        cohort_type:
+          type: string
+          enum: [customer_retention, product_repurchase, customer_lifecycle]
+        period:
+          type: string
+          enum: [day, week, month, quarter]
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        metric:
+          type: string
+    
+    ReorderRecommendations:
+      type: object
+      properties:
+        recommendations:
+          type: array
+          items:
+            type: object
+            properties:
+              product_id:
+                type: integer
+              product_name:
+                type: string
+              current_stock:
+                type: number
+              recommended_order_qty:
+                type: integer
+              economic_order_qty:
+                type: integer
+              urgency:
+                type: string
+                enum: [critical, high, medium, low]
+              estimated_cost:
+                type: number
+              confidence_score:
+                type: number
+        summary:
+          type: object
+    
+    PricingRecommendations:
+      type: object
+      properties:
+        recommendations:
+          type: array
+          items:
+            type: object
+            properties:
+              product_id:
+                type: integer
+              current_price:
+                type: number
+              recommended_price:
+                type: number
+              price_change_pct:
+                type: number
+              expected_impact:
+                type: object
+                properties:
+                  revenue_change_pct:
+                    type: number
+                  volume_change_pct:
+                    type: number
+              rationale:
+                type: string
+        summary:
+          type: object
+        strategy:
+          type: string
+    
+    CostSavingsOpportunities:
+      type: object
+      properties:
+        opportunities:
+          type: array
+          items:
+            type: object
+            properties:
+              opportunity_id:
+                type: string
+              category:
+                type: string
+              title:
+                type: string
+              description:
+                type: string
+              current_cost:
+                type: number
+              potential_savings:
+                type: number
+              savings_percentage:
+                type: number
+              implementation_difficulty:
+                type: string
+                enum: [easy, medium, hard]
+              actionable_items:
+                type: array
+                items:
+                  type: string
+        summary:
+          type: object
+    
+    Metadata:
+      type: object
+      properties:
+        execution_time_ms:
+          type: integer
+        row_count:
+          type: integer
+        generated_at:
+          type: string
+          format: date-time
+  
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []

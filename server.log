@@ -1,0 +1,369 @@
+
+> ui@0.0.1 dev
+> turbo run dev --filter=!www --parallel
+
+• Packages in scope: shadcn, tests, v4
+• Running dev in 3 packages
+• Remote caching disabled
+shadcn:dev: cache bypass, force executing 41491fcf8078e32d
+v4:dev: cache bypass, force executing 684613c29a37b258
+shadcn:dev: 
+shadcn:dev: > shadcn@3.5.0 dev /Users/mac/Projects/Github/ocean-erp/ocean-erp/packages/shadcn
+shadcn:dev: > tsup --watch
+shadcn:dev: 
+v4:dev: 
+v4:dev: > v4@0.1.0 dev /Users/mac/Projects/Github/ocean-erp/ocean-erp/apps/v4
+v4:dev: > next dev --turbopack --port 4000
+v4:dev: 
+shadcn:dev: CLI Building entry: src/index.ts, src/mcp/index.ts, src/schema/index.ts, src/registry/index.ts
+shadcn:dev: CLI Using tsconfig: tsconfig.json
+shadcn:dev: CLI tsup v8.5.0
+shadcn:dev: CLI Using tsup config: /Users/mac/Projects/Github/ocean-erp/ocean-erp/packages/shadcn/tsup.config.ts
+shadcn:dev: CLI Running in watch mode
+shadcn:dev: CLI Target: esnext
+shadcn:dev: CLI Cleaning output folder
+shadcn:dev: ESM Build start
+v4:dev: [MDX] updated map file in 9.781374999999969ms
+v4:dev: [MDX] started dev server
+shadcn:dev: DTS Build start
+shadcn:dev: ESM dist/schema/index.js       650.00 B
+shadcn:dev: ESM dist/registry/index.js     568.00 B
+shadcn:dev: ESM dist/chunk-EN57B455.js     10.25 KB
+shadcn:dev: ESM dist/mcp/index.js          171.00 B
+shadcn:dev: ESM dist/chunk-OYVM23Y7.js     55.57 KB
+shadcn:dev: ESM dist/chunk-OG5VNDVA.js     3.71 KB
+shadcn:dev: ESM dist/index.js              65.26 KB
+shadcn:dev: ESM dist/schema/index.js.map   69.00 B
+shadcn:dev: ESM dist/chunk-EN57B455.js.map 31.37 KB
+shadcn:dev: ESM dist/mcp/index.js.map      69.00 B
+shadcn:dev: ESM dist/registry/index.js.map 69.00 B
+shadcn:dev: ESM dist/chunk-OG5VNDVA.js.map 12.57 KB
+shadcn:dev: ESM dist/index.js.map          300.74 KB
+shadcn:dev: ESM dist/chunk-OYVM23Y7.js.map 275.63 KB
+shadcn:dev: ESM ⚡️ Build success in 328ms
+shadcn:dev: CLI Watching for changes in "."
+shadcn:dev: CLI Ignoring changes in "**/{.git,node_modules}/**" | "dist"
+v4:dev:    ▲ Next.js 15.3.1 (Turbopack)
+v4:dev:    - Local:        http://localhost:4000
+v4:dev:    - Network:      http://10.191.45.77:4000
+v4:dev:    - Environments: .env.local
+v4:dev: 
+v4:dev:  ✓ Starting...
+v4:dev:  ✓ Ready in 800ms
+shadcn:dev: DTS ⚡️ Build success in 3359ms
+v4:dev:  ✓ Compiled /api/opportunities in 294ms
+v4:dev:  GET /api/opportunities 200 in 403ms
+v4:dev:  POST /api/opportunities 201 in 34ms
+v4:dev:  ✓ Compiled /api/opportunities/[id] in 139ms
+v4:dev: Error: Route "/api/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at GET (app/api/opportunities/[id]/route.ts:13:29)
+v4:dev:   11 |
+v4:dev:   12 | export async function GET(_request: Request, { params }: { params: { id: string } }) {
+v4:dev: > 13 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   14 |   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+v4:dev:   15 |
+v4:dev:   16 |   try {
+v4:dev:  GET /api/opportunities/6 200 in 482ms
+v4:dev: Error: Route "/api/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at PATCH (app/api/opportunities/[id]/route.ts:32:29)
+v4:dev:   30 |
+v4:dev:   31 | export async function PATCH(request: Request, { params }: { params: { id: string } }) {
+v4:dev: > 32 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   33 |   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+v4:dev:   34 |
+v4:dev:   35 |   try {
+v4:dev:  PATCH /api/opportunities/6 200 in 49ms
+v4:dev: Error: Route "/api/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at DELETE (app/api/opportunities/[id]/route.ts:72:29)
+v4:dev:   70 |
+v4:dev:   71 | export async function DELETE(_request: Request, { params }: { params: { id: string } }) {
+v4:dev: > 72 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   73 |   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+v4:dev:   74 |
+v4:dev:   75 |   try {
+v4:dev:  DELETE /api/opportunities/6 200 in 39ms
+v4:dev: Error: Route "/api/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at GET (app/api/opportunities/[id]/route.ts:13:29)
+v4:dev:   11 |
+v4:dev:   12 | export async function GET(_request: Request, { params }: { params: { id: string } }) {
+v4:dev: > 13 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   14 |   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+v4:dev:   15 |
+v4:dev:   16 |   try {
+v4:dev:  GET /api/opportunities/6 404 in 55ms
+v4:dev:  ○ Compiling /erp/sales/opportunities ...
+v4:dev:  ✓ Compiled /erp/sales/opportunities in 1415ms
+v4:dev:  HEAD /erp/sales/opportunities 200 in 1607ms
+v4:dev:  ✓ Compiled /erp/sales/opportunities/[id] in 314ms
+v4:dev: Error: Route "/erp/sales/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at OpportunityDetailsPage (app/(erp)/erp/sales/opportunities/[id]/page.tsx:12:29)
+v4:dev:   10 |
+v4:dev:   11 | export default async function OpportunityDetailsPage({ params }: { params: { id: string } }) {
+v4:dev: > 12 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   13 |   if (isNaN(id)) return <div>Invalid opportunity id</div>
+v4:dev:   14 |
+v4:dev:   15 |   try {
+v4:dev:  GET /erp/sales/opportunities/4 200 in 621ms
+v4:dev:  ✓ Compiled /erp/sales/opportunities/[id]/edit in 317ms
+v4:dev: Error: Route "/erp/sales/opportunities/[id]/edit" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at EditPage (app/(erp)/erp/sales/opportunities/[id]/edit/page.tsx:13:29)
+v4:dev:   11 |
+v4:dev:   12 | export default async function EditPage({ params }: { params: { id: string } }) {
+v4:dev: > 13 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   14 |   if (isNaN(id)) return <div>Invalid id</div>
+v4:dev:   15 |
+v4:dev:   16 |   try {
+v4:dev:  HEAD /erp/sales/opportunities/4/edit 200 in 607ms
+v4:dev:  GET /erp/sales/opportunities?id=54048a66-0ff9-4038-b6c2-801a33fa8e2b&vscodeBrowserReqId=1761500030674 200 in 103ms
+v4:dev:  GET /api/opportunities 200 in 25ms
+v4:dev:  ✓ Compiled /erp/sales/opportunities/new in 402ms
+v4:dev:  GET /erp/sales/opportunities/new 200 in 424ms
+v4:dev:  GET /erp/sales/opportunities 200 in 32ms
+v4:dev:  GET /api/opportunities 200 in 15ms
+v4:dev:  GET /api/opportunities 200 in 13ms
+v4:dev:  GET /erp/sales/opportunities/new 200 in 18ms
+v4:dev:  POST /api/opportunities 201 in 40ms
+v4:dev:  GET /erp/sales/opportunities 200 in 21ms
+v4:dev:  GET /api/opportunities 200 in 17ms
+v4:dev:  GET /api/opportunities 200 in 14ms
+v4:dev: Error: Route "/erp/sales/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at OpportunityDetailsPage (app/(erp)/erp/sales/opportunities/[id]/page.tsx:12:29)
+v4:dev:   10 |
+v4:dev:   11 | export default async function OpportunityDetailsPage({ params }: { params: { id: string } }) {
+v4:dev: > 12 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   13 |   if (isNaN(id)) return <div>Invalid opportunity id</div>
+v4:dev:   14 |
+v4:dev:   15 |   try {
+v4:dev:  GET /erp/sales/opportunities/7 200 in 43ms
+v4:dev:  GET /api/opportunities 200 in 27ms
+v4:dev:  GET /api/opportunities 200 in 15ms
+v4:dev: Error: Route "/erp/sales/opportunities/[id]/edit" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at EditPage (app/(erp)/erp/sales/opportunities/[id]/edit/page.tsx:13:29)
+v4:dev:   11 |
+v4:dev:   12 | export default async function EditPage({ params }: { params: { id: string } }) {
+v4:dev: > 13 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   14 |   if (isNaN(id)) return <div>Invalid id</div>
+v4:dev:   15 |
+v4:dev:   16 |   try {
+v4:dev:  GET /erp/sales/opportunities/7/edit 200 in 44ms
+v4:dev: Error: Route "/api/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at PATCH (app/api/opportunities/[id]/route.ts:32:29)
+v4:dev:   30 |
+v4:dev:   31 | export async function PATCH(request: Request, { params }: { params: { id: string } }) {
+v4:dev: > 32 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   33 |   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+v4:dev:   34 |
+v4:dev:   35 |   try {
+v4:dev:  PATCH /api/opportunities/7 200 in 55ms
+v4:dev:  GET /erp/sales/opportunities 200 in 24ms
+v4:dev:  GET /api/opportunities 200 in 14ms
+v4:dev:  GET /api/opportunities 200 in 14ms
+v4:dev: Error: Route "/erp/sales/opportunities/[id]/edit" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at EditPage (app/(erp)/erp/sales/opportunities/[id]/edit/page.tsx:13:29)
+v4:dev:   11 |
+v4:dev:   12 | export default async function EditPage({ params }: { params: { id: string } }) {
+v4:dev: > 13 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   14 |   if (isNaN(id)) return <div>Invalid id</div>
+v4:dev:   15 |
+v4:dev:   16 |   try {
+v4:dev:  GET /erp/sales/opportunities/7/edit 200 in 47ms
+v4:dev:  ✓ Compiled /erp/sales in 337ms
+v4:dev:  GET /erp/sales 200 in 487ms
+v4:dev:  GET /erp/sales 200 in 39ms
+v4:dev:  ✓ Compiled in 399ms
+v4:dev:  ✓ Compiled /erp/sales/opportunities/[id]/edit in 26ms
+v4:dev:  HEAD /erp/sales/opportunities/4/edit 200 in 245ms
+v4:dev:  GET /erp/sales/opportunities/4/edit?id=54048a66-0ff9-4038-b6c2-801a33fa8e2b&vscodeBrowserReqId=1761500374826 200 in 94ms
+v4:dev: Error: Route "/api/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at GET (app/api/opportunities/[id]/route.ts:13:29)
+v4:dev:   11 |
+v4:dev:   12 | export async function GET(_request: Request, { params }: { params: { id: string } }) {
+v4:dev: > 13 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   14 |   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+v4:dev:   15 |
+v4:dev:   16 |   try {
+v4:dev:  GET /api/opportunities/4 200 in 53ms
+v4:dev:  GET /erp/sales/opportunities 200 in 38ms
+v4:dev:  GET /api/opportunities 200 in 23ms
+v4:dev:  GET /api/opportunities 200 in 13ms
+v4:dev:  GET /erp/sales/opportunities/7/edit 200 in 38ms
+v4:dev: Error: Route "/api/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at GET (app/api/opportunities/[id]/route.ts:13:29)
+v4:dev:   11 |
+v4:dev:   12 | export async function GET(_request: Request, { params }: { params: { id: string } }) {
+v4:dev: > 13 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   14 |   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+v4:dev:   15 |
+v4:dev:   16 |   try {
+v4:dev:  GET /api/opportunities/7 200 in 50ms
+v4:dev:  GET /erp/sales/opportunities 200 in 37ms
+v4:dev:  GET /api/opportunities 200 in 21ms
+v4:dev:  GET /api/opportunities 200 in 13ms
+v4:dev:  GET /erp/sales 200 in 54ms
+v4:dev:  ✓ Compiled /erp/sales/leads in 430ms
+v4:dev:  GET /erp/sales/leads 200 in 560ms
+v4:dev:  ✓ Compiled /api/leads/summary in 172ms
+v4:dev:  GET /api/leads/summary 200 in 210ms
+v4:dev:  ✓ Compiled /erp/sales/leads/all in 435ms
+v4:dev:  GET /erp/sales/leads/all 200 in 458ms
+v4:dev:  ✓ Compiled /api/leads in 160ms
+v4:dev: Executed query {
+v4:dev:   text: '\n' +
+v4:dev:     '      SELECT \n' +
+v4:dev:     '        l.*,\n' +
+v4:dev:     '        ls.name as source_name,\n' +
+v4:dev:     '        lst.name as status_name,\n' +
+v4:dev:     '        lst.color as status_color,\n' +
+v4:dev:     "        u.first_name || ' ' || u.last_name as assigned_name\n" +
+v4:dev:     '      FROM leads l\n' +
+v4:dev:     '      LEFT JOIN lead_sources ls ON l.source_id = ls.id\n' +
+v4:dev:     '      LEFT JOIN lead_statuses lst ON l.status_id = lst.id\n' +
+v4:dev:     '      LEFT JOIN users u ON l.assigned_to = u.id\n' +
+v4:dev:     '      ORDER BY l.created_at DESC\n' +
+v4:dev:     '    ',
+v4:dev:   duration: 14,
+v4:dev:   rows: 8
+v4:dev: }
+v4:dev:  GET /api/leads 200 in 192ms
+v4:dev: Executed query {
+v4:dev:   text: '\n' +
+v4:dev:     '      SELECT \n' +
+v4:dev:     '        l.*,\n' +
+v4:dev:     '        ls.name as source_name,\n' +
+v4:dev:     '        lst.name as status_name,\n' +
+v4:dev:     '        lst.color as status_color,\n' +
+v4:dev:     "        u.first_name || ' ' || u.last_name as assigned_name\n" +
+v4:dev:     '      FROM leads l\n' +
+v4:dev:     '      LEFT JOIN lead_sources ls ON l.source_id = ls.id\n' +
+v4:dev:     '      LEFT JOIN lead_statuses lst ON l.status_id = lst.id\n' +
+v4:dev:     '      LEFT JOIN users u ON l.assigned_to = u.id\n' +
+v4:dev:     '      ORDER BY l.created_at DESC\n' +
+v4:dev:     '    ',
+v4:dev:   duration: 2,
+v4:dev:   rows: 8
+v4:dev: }
+v4:dev:  GET /api/leads 200 in 13ms
+v4:dev:  ✓ Compiled /erp/sales/leads/[id] in 395ms
+v4:dev:  GET /erp/sales/leads/8 200 in 690ms
+v4:dev:  ✓ Compiled /api/leads/[id] in 140ms
+v4:dev: Executed query {
+v4:dev:   text: '\n' +
+v4:dev:     '      SELECT \n' +
+v4:dev:     '        l.*,\n' +
+v4:dev:     '        ls.name as source_name,\n' +
+v4:dev:     '        lst.name as status_name,\n' +
+v4:dev:     '        lst.color as status_color,\n' +
+v4:dev:     "        u.first_name || ' ' || u.last_name as assigned_name\n" +
+v4:dev:     '      FROM leads l\n' +
+v4:dev:     '      LEFT JOIN lead_sources ls ON l.source_id = ls.id\n' +
+v4:dev:     '      LEFT JOIN lead_statuses lst ON l.status_id = lst.id\n' +
+v4:dev:     '      LEFT JOIN users u ON l.assigned_to = u.id\n' +
+v4:dev:     '      WHERE l.id = $1\n' +
+v4:dev:     '    ',
+v4:dev:   duration: 2,
+v4:dev:   rows: 1
+v4:dev: }
+v4:dev:  GET /api/leads/8 200 in 363ms
+v4:dev:  GET /erp/sales/leads 200 in 35ms
+v4:dev:  GET /api/leads/summary 200 in 30ms
+v4:dev:  GET /api/leads/summary 200 in 15ms
+v4:dev:  ○ Compiling /erp/sales/leads/new ...
+v4:dev:  ✓ Compiled /erp/sales/leads/new in 585ms
+v4:dev:  GET /erp/sales/leads/new 200 in 603ms
+v4:dev:  ✓ Compiled /api/leads/lookup in 318ms
+v4:dev:  GET /api/leads/lookup 200 in 350ms
+v4:dev:  GET /api/leads/lookup 200 in 25ms
+v4:dev:  GET /erp/sales/leads/new 200 in 33ms
+v4:dev:  ✓ Compiled in 556ms
+v4:dev:  GET /erp/sales/leads 200 in 28ms
+v4:dev:  GET /api/leads/summary 200 in 32ms
+v4:dev:  GET /api/leads/summary 200 in 15ms
+v4:dev:  GET /erp/sales/leads 200 in 24ms
+v4:dev:  ✓ Compiled in 369ms
+v4:dev:  GET /erp/sales 200 in 210ms
+v4:dev:  ✓ Compiled /erp/sales/opportunities/[id] in 24ms
+v4:dev: Error: Route "/erp/sales/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at OpportunityDetailsPage (app/(erp)/erp/sales/opportunities/[id]/page.tsx:50:29)
+v4:dev:   48 |
+v4:dev:   49 | export default async function OpportunityDetailsPage({ params }: { params: { id: string } }) {
+v4:dev: > 50 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   51 |   if (isNaN(id)) {
+v4:dev:   52 |     return (
+v4:dev:   53 |       <>
+v4:dev:  HEAD /erp/sales/opportunities/4 200 in 334ms
+v4:dev:  GET /erp/sales/opportunities 200 in 113ms
+v4:dev:  GET /api/opportunities 200 in 21ms
+v4:dev: Error: Route "/erp/sales/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at OpportunityDetailsPage (app/(erp)/erp/sales/opportunities/[id]/page.tsx:50:29)
+v4:dev:   48 |
+v4:dev:   49 | export default async function OpportunityDetailsPage({ params }: { params: { id: string } }) {
+v4:dev: > 50 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   51 |   if (isNaN(id)) {
+v4:dev:   52 |     return (
+v4:dev:   53 |       <>
+v4:dev:  GET /erp/sales/opportunities/7 200 in 56ms
+v4:dev:  GET /erp/sales/opportunities/7/edit 200 in 45ms
+v4:dev: Error: Route "/api/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at GET (app/api/opportunities/[id]/route.ts:13:29)
+v4:dev:   11 |
+v4:dev:   12 | export async function GET(_request: Request, { params }: { params: { id: string } }) {
+v4:dev: > 13 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   14 |   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+v4:dev:   15 |
+v4:dev:   16 |   try {
+v4:dev:  GET /api/opportunities/7 200 in 47ms
+v4:dev: Error: Route "/erp/sales/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at OpportunityDetailsPage (app/(erp)/erp/sales/opportunities/[id]/page.tsx:50:29)
+v4:dev:   48 |
+v4:dev:   49 | export default async function OpportunityDetailsPage({ params }: { params: { id: string } }) {
+v4:dev: > 50 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   51 |   if (isNaN(id)) {
+v4:dev:   52 |     return (
+v4:dev:   53 |       <>
+v4:dev:  GET /erp/sales/opportunities/4?id=54048a66-0ff9-4038-b6c2-801a33fa8e2b&vscodeBrowserReqId=1761500478784 200 in 195ms
+v4:dev:  GET /erp/sales/opportunities/4/edit?id=54048a66-0ff9-4038-b6c2-801a33fa8e2b&vscodeBrowserReqId=1761500483155 200 in 103ms
+v4:dev: Error: Route "/api/opportunities/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+v4:dev:     at GET (app/api/opportunities/[id]/route.ts:13:29)
+v4:dev:   11 |
+v4:dev:   12 | export async function GET(_request: Request, { params }: { params: { id: string } }) {
+v4:dev: > 13 |   const id = parseInt(params.id)
+v4:dev:      |                             ^
+v4:dev:   14 |   if (isNaN(id)) return NextResponse.json({ error: 'Invalid id' }, { status: 400 })
+v4:dev:   15 |
+v4:dev:   16 |   try {
+v4:dev:  GET /api/opportunities/4 200 in 53ms
+v4:dev:  GET /erp/sales/opportunities 200 in 22ms
+v4:dev:  GET /api/opportunities 200 in 22ms
+v4:dev:  GET /api/opportunities 200 in 13ms
+v4:dev:  GET /erp/sales 200 in 49ms
+v4:dev:  GET /erp/sales 200 in 153ms
+v4:dev:  ✓ Compiled /erp/product in 323ms
+v4:dev:  GET /erp/product 200 in 468ms
+v4:dev:  ✓ Compiled /erp/operations in 332ms
+v4:dev:  GET /erp/operations 200 in 464ms
+v4:dev:  ✓ Compiled /erp/accounting in 325ms
+v4:dev:  GET /erp/accounting 200 in 446ms
+v4:dev:  ✓ Compiled /erp/hris in 347ms
+v4:dev:  GET /erp/hris 200 in 462ms
+v4:dev:  GET /erp/product 200 in 133ms
+v4:dev:  GET /erp/operations 200 in 141ms
+v4:dev:  GET /erp/operations 200 in 262ms
+v4:dev:  GET /erp/operations 200 in 41ms
+v4:dev:  ✓ Compiled /api/opportunities/lookup in 210ms
+v4:dev:  GET /api/opportunities/lookup 200 in 247ms
