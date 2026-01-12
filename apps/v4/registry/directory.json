@@ -705,5 +705,103 @@
     "url": "https://www.heroicons-animated.com/r/{name}.json",
     "description": "An open-source collection of 316 beautifully animated heroicons for your projects.",
     "logo": "<svg fill='none' viewBox='0 0 156 166' xmlns='http://www.w3.org/2000/svg'><path clipRule='evenodd' d='m78.091 0 5.967 5.676c15.038 14.306 35.323 23.067 57.663 23.067.356 0 .711-.002 1.065-.006l6.363-.08 1.988 6.072a102.026 102.026 0 0 1 5.045 31.782c0 47.391-32.269 87.19-75.928 98.477l-2.163.559-2.163-.559C32.27 153.701 0 113.902 0 66.511c0-11.085 1.769-21.772 5.045-31.782l1.988-6.072 6.363.08c.354.004.71.006 1.065.006 22.34 0 42.625-8.761 57.664-23.067L78.09 0Z' fill='#8b5cf6' fillRule='evenodd'/><circle cx='58' cy='78' fill='white' r='14'/><circle cx='98' cy='78' fill='white' r='14'/><circle cx='61' cy='82' fill='black' r='5.5'/><circle cx='95' cy='82' fill='black' r='5.5'/></svg>"
+  },
+  {
+    "name": "@darx",
+    "homepage": "https://darshitdev.in/arts",
+    "url": "https://darshitdev.in/r/{name}.json",
+    "description": "Magic 3D Tabs component featuring mouse-interactive 3D rotation, floating particles background effect, and smooth spring animations.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='75' height='43' viewBox='0 0 75 43' fill='var(--foreground)'><rect width='75' height='43' rx='4'/></svg>"
+  },
+  {
+    "name": "@gamifykit",
+    "homepage": "https://gamifykit.com",
+    "url": "https://gamifykit.com/r/registry.json",
+    "description": "A collection of fully composable components that extend shadcn/ui with a focus on common gamification UI patterns.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
+  },
+  {
+    "name": "@beste-ui",
+    "homepage": "https://ui.beste.co",
+    "url": "https://ui.beste.co/r/registry.json",
+    "description": "A collection of UI components for building modern web applications.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
+  },
+  {
+    "name": "@tokenui",
+    "homepage": "https://www.tokenui.dev",
+    "url": "https://www.tokenui.dev/r/{name}.json",
+    "description": "Beautiful, interactive documentation components for your design tokens following industry standards.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'><circle cx='16.9' cy='18' r='16' fill='var(--foreground)'/><circle cx='16.9' cy='16' r='16' fill='var(--background)'/><circle cx='16.9' cy='17' r='13' fill='var(--foreground)'/><circle cx='16.9' cy='19' r='13' fill='var(--background)'/></svg>"
+  },
+  {
+    "name": "@lumiui",
+    "homepage": "https://www.lumiui.dev",
+    "url": "https://www.lumiui.dev/r/{name}.json",
+    "description": "Composable React components powered by Base UI and Tailwind CSS — Build fast, customize everything.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><circle cx='16' cy='16' r='14'/></svg>"
+  },
+  {
+    "name": "@uselayouts",
+    "homepage": "https://uselayouts.com",
+    "url": "https://uselayouts.com/r/{name}.json",
+    "description": "A collection of premium animated React components and micro-interactions built with Motion for building fluid, professional interfaces.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
+  },
+  {
+    "name": "@joyco",
+    "homepage": "https://registry.joyco.studio",
+    "url": "https://registry.joyco.studio/r/{name}.json",
+    "description": "Components including MobileMenu, ScrollArea with gradients, Chat UI, HLSVideoPlayer, and Marquee.",
+    "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><rect fill='var(--foreground)' width='32' height='32' rx='6.4'/><rect x='8' y='8' width='16' height='16' fill='var(--background)'/></svg>"
+  },
+  {
+    "name": "@gooseui",
+    "homepage": "https://gooseui.pro",
+    "url": "https://gooseui.pro/r/{name}.json",
+    "description": "Open source component library with animated components, beautiful effects, and custom toast notifications. Built with Radix UI and Tailwind CSS.",
+    "logo": "<svg width='250' height='250' viewBox='0 0 250 250' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' clip-rule='evenodd' d='M125 0C194.036 0 250 55.9644 250 125C250 194.036 194.036 250 125 250C55.9644 250 0 194.036 0 125C0 55.9644 55.9644 0 125 0ZM157.01 104.497C155.131 95.6004 145.401 90.8275 137.216 94.7871L44.9951 139.397C31.6071 145.874 36.2193 166 51.0918 166H152.734C161.63 166 168.27 157.811 166.432 149.106L157.01 104.497ZM196 84C189.925 84 185 88.9249 185 95C185 101.075 189.925 106 196 106C202.075 106 207 101.075 207 95C207 88.9249 202.075 84 196 84Z' fill='var(--foreground)'/><path d='M137 106C137 107.657 138.343 109 140 109C141.657 109 143 107.657 143 106C143 104.343 141.657 103 140 103C138.343 103 137 104.343 137 106Z' fill='var(--foreground)'/></svg>"
+  },
+  {
+    "name": "@baselayer",
+    "homepage": "https://www.baselayer.dev",
+    "url": "https://www.baselayer.dev/r/{name}.json",
+    "description": "A collection of components built on React Aria, Tailwind CSS, and tailwind-variants.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 24 24'><path fill='var(--foreground)' d='M12 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2M6 16c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m12 12c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2Z'/></svg>"
+  },
+  {
+    "name": "@jolyui",
+    "homepage": "https://www.jolyui.dev",
+    "url": "https://www.jolyui.dev/r/{name}.json",
+    "description": "A collection of beautifully designed UI components for modern web applications.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
+  },
+  {
+    "name": "@fab-ui",
+    "homepage": "https://fab-ui.com",
+    "url": "https://fab-ui.com/r/{name}.json",
+    "description": "A collection of beautifully designed UI components for building modern web applications.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
+  },
+  {
+    "name": "@asanshay",
+    "homepage": "https://ds.asanshay.com",
+    "url": "https://ds.asanshay.com/r/{name}.json",
+    "description": "A design system with reusable UI components for building modern web applications.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
+  },
+  {
+    "name": "@headcodecms",
+    "homepage": "https://headcodecms.com",
+    "url": "https://headcodecms.com/r/{name}.json",
+    "description": "UI components for building headless CMS applications.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
+  },
+  {
+    "name": "@typedora-ui",
+    "homepage": "https://typedora-ui.netlify.app",
+    "url": "https://typedora-ui.netlify.app/r/{name}.json",
+    "description": "Typedora UI is a next-generation extension layer for shadcn/ui, designed to bring full type-safety to your UI components.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='var(--foreground)'><rect width='32' height='32' rx='4'/></svg>"
   }
 ]

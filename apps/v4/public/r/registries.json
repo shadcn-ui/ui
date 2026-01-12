@@ -118,5 +118,19 @@
   "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json",
   "@heroicons-animated": "https://www.heroicons-animated.com/r/{name}.json",
   "@icons-animated": "https://icons.lndev.me/r/{name}.json",
-  "@forgeui": "https://forgeui.in/r/{name}.json"
+  "@forgeui": "https://forgeui.in/r/{name}.json",
+  "@darx": "https://darshitdev.in/r/{name}.json",
+  "@gamifykit": "https://gamifykit.com/r/registry.json",
+  "@beste-ui": "https://ui.beste.co/r/registry.json",
+  "@tokenui": "https://www.tokenui.dev/r/{name}.json",
+  "@lumiui": "https://www.lumiui.dev/r/{name}.json",
+  "@uselayouts": "https://uselayouts.com/r/{name}.json",
+  "@joyco": "https://registry.joyco.studio/r/{name}.json",
+  "@gooseui": "https://gooseui.pro/r/{name}.json",
+  "@baselayer": "https://www.baselayer.dev/r/{name}.json",
+  "@jolyui": "https://www.jolyui.dev/r/{name}.json",
+  "@fab-ui": "https://fab-ui.com/r/{name}.json",
+  "@asanshay": "https://ds.asanshay.com/r/{name}.json",
+  "@headcodecms": "https://headcodecms.com/r/{name}.json",
+  "@typedora-ui": "https://typedora-ui.netlify.app/r/{name}.json"
 }
