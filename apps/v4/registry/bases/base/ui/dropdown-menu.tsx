@@ -6,7 +6,7 @@ import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function DropdownMenu({ ...props }: MenuPrimitive.Root.Props) {
+function DropdownMenu<T>({ ...props }: MenuPrimitive.Root.Props<T>) {
   return <MenuPrimitive.Root data-slot="dropdown-menu" {...props} />
 }
 
@@ -14,7 +14,7 @@ function DropdownMenuPortal({ ...props }: MenuPrimitive.Portal.Props) {
   return <MenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />
 }
 
-function DropdownMenuTrigger({ ...props }: MenuPrimitive.Trigger.Props) {
+function DropdownMenuTrigger<T>({ ...props }: MenuPrimitive.Trigger.Props<T>) {
   return <MenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />
 }
 
@@ -251,6 +251,8 @@ function DropdownMenuShortcut({
     />
   )
 }
+
+export const createDropdownMenuHandle = MenuPrimitive.createHandle;
 
 export {
   DropdownMenu,

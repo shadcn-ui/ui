@@ -7,11 +7,11 @@ import { cn } from "@/registry/bases/base/lib/utils"
 import { Button } from "@/registry/bases/base/ui/button"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Dialog({ ...props }: DialogPrimitive.Root.Props) {
+function Dialog<T>({ ...props }: DialogPrimitive.Root.Props<T>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
 }
 
-function DialogTrigger({ ...props }: DialogPrimitive.Trigger.Props) {
+function DialogTrigger<T>({ ...props }: DialogPrimitive.Trigger.Props<T>) {
   return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
 }
 
@@ -140,6 +140,8 @@ function DialogDescription({
     />
   )
 }
+
+export const createDialogHandle = DialogPrimitive.createHandle
 
 export {
   Dialog,

@@ -6,11 +6,11 @@ import { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog
 import { cn } from "@/registry/bases/base/lib/utils"
 import { Button } from "@/registry/bases/base/ui/button"
 
-function AlertDialog({ ...props }: AlertDialogPrimitive.Root.Props) {
+function AlertDialog<T>({ ...props }: AlertDialogPrimitive.Root.Props<T>) {
   return <AlertDialogPrimitive.Root data-slot="alert-dialog" {...props} />
 }
 
-function AlertDialogTrigger({ ...props }: AlertDialogPrimitive.Trigger.Props) {
+function AlertDialogTrigger<T>({ ...props }: AlertDialogPrimitive.Trigger.Props<T>) {
   return (
     <AlertDialogPrimitive.Trigger data-slot="alert-dialog-trigger" {...props} />
   )
@@ -158,6 +158,8 @@ function AlertDialogCancel({
     />
   )
 }
+
+export const createAlertDialogHandle = AlertDialogPrimitive.createHandle;
 
 export {
   AlertDialog,
