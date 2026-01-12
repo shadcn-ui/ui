@@ -59,6 +59,7 @@
   "@nativeui": "https://nativeui.io/registry/{name}.json",
   "@nexus-elements": "https://elements.nexus.availproject.org/r/{name}.json",
   "@ncdai": "https://chanhdai.com/r/{name}.json",
+  "@neobrutalism": "https://www.neobrutalism.dev/r/{name}.json",
   "@nuqs": "https://nuqs.dev/r/{name}.json",
   "@optics": "https://optics.agusmayol.com.ar/r/{name}.json",
   "@oui": "https://oui.mw10013.workers.dev/r/{name}.json",
@@ -66,7 +67,7 @@
   "@plate": "https://platejs.org/r/{name}.json",
   "@prompt-kit": "https://prompt-kit.com/c/{name}.json",
   "@prosekit": "https://prosekit.dev/r/{name}.json",
-  "@phucbm": "https://ui.phucbm.com/r/{name}.json",
+  "@phucbm": "https://phucbm.com/r/{name}.json",
   "@react-aria": "https://react-aria.adobe.com/registry/{name}.json",
   "@react-bits": "https://reactbits.dev/r/{name}.json",
   "@react-market": "https://www.react-market.com/get/{name}.json",
@@ -114,5 +115,7 @@
   "@ui-layouts": "https://ui-layouts.com/r/{name}.json",
   "@pureui": "https://pure.kam-ui.com/r/{name}.json",
   "@tour": "https://onboarding-tour.vercel.app/r/{name}.json",
-  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json"
+  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json",
+  "@icons-animated": "https://icons.lndev.me/r/{name}.json",
+  "@forgeui": "https://forgeui.in/r/{name}.json"
 }
