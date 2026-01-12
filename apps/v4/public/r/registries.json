@@ -22,6 +22,7 @@
   "@bucharitesh": "https://bucharitesh.in/r/{name}.json",
   "@bundui": "https://bundui.io/r/{name}.json",
   "@cardcn": "https://cardcn.dev/r/{name}.json",
+  "@chamaac": "https://chamaac.com/r/{name}.json",
   "@clerk": "https://clerk.com/r/{name}.json",
   "@coss": "https://coss.com/ui/r/{name}.json",
   "@commercn": "https://commercn.com/r/{name}.json",
