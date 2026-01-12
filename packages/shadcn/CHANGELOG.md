@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 3.6.3
+
+### Patch Changes
+
+- [#9161](https://github.com/shadcn-ui/ui/pull/9161) [`f2583391eafc22a6ec6c9299a8ad9fac857f8181`](https://github.com/shadcn-ui/ui/commit/f2583391eafc22a6ec6c9299a8ad9fac857f8181) Thanks [@yeasin2002](https://github.com/yeasin2002)! - validate app name on create
+
+- [#8422](https://github.com/shadcn-ui/ui/pull/8422) [`c2fd847d65bfccde531cf1b4462ae466446efa06`](https://github.com/shadcn-ui/ui/commit/c2fd847d65bfccde531cf1b4462ae466446efa06) Thanks [@aquaticcalf](https://github.com/aquaticcalf)! - add mcp support for opencode
+
 ## 3.6.2
 
 ### Patch Changes

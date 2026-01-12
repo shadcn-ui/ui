@@ -14,6 +14,7 @@ import { Command } from "commander"
 import dedent from "dedent"
 import open from "open"
 import prompts from "prompts"
+import validateProjectName from "validate-npm-package-name"
 
 import { initOptionsSchema, runInit } from "./init"
 
@@ -88,10 +89,15 @@ export const create = new Command()
           message: "What is your project named?",
           initial: opts.template ? `${opts.template}-app` : "my-app",
           format: (value: string) => value.trim(),
-          validate: (value: string) =>
-            value.length > 128
-              ? `Name should be less than 128 characters.`
-              : true,
+          validate: (name) => {
+            const validation = validateProjectName(
+              path.basename(path.resolve(name))
+            )
+            if (validation.validForNewPackages) {
+              return true
+            }
+            return "Invalid project name. Name should be lowercase, URL-friendly, and not start with a period or underscore."
+          },
         })
 
         if (!enteredName) {
