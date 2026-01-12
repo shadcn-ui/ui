@@ -298,7 +298,7 @@ export const mdxComponents = {
       "data-language" in props && typeof props["data-language"] === "string"
         ? getIconForLanguageExtension(props["data-language"])
         : null
-
+    console.log('figcaption', props, children);
     return (
       <figcaption
         className={cn(
@@ -329,6 +329,16 @@ export const mdxComponents = {
     __pnpm__?: string
     __bun__?: string
   }) => {
+    console.log('code', {
+      className,
+      __raw__,
+      __src__,
+      __npm__,
+      __yarn__,
+      __pnpm__,
+      __bun__,
+      ...props
+    })
     // Inline Code.
     if (typeof props.children === "string") {
       return (
