@@ -189,12 +189,23 @@ function buildLayoutFile(designSystemConfig: DesignSystemConfig) {
     throw new Error(`Font "${designSystemConfig.font}" not found`)
   }
 
+  const isLocal = font.font.provider === "local"
+  const fontImport = isLocal ? `localFont` : font.font.import
+  // Convert public URL path to relative file system path for next/font/local
+  const fontPath =
+    isLocal && font.font.path
+      ? font.font.path.replace(/^\/fonts\//, "../public/fonts/")
+      : font.font.path
+  const fontSource = isLocal
+    ? `{ src: "${fontPath}", variable: "--font-sans", display: "swap" }`
+    : `{subsets:['latin'],variable:'--font-sans'}`
+
   const content = dedent`
     import type { Metadata } from "next";
-    import { ${font.font.import} } from "next/font/google";
+    ${isLocal ? `import localFont from "next/font/local";` : `import { ${font.font.import} } from "next/font/google";`}
     import "./globals.css";
 
-    const fontSans = ${font.font.import}({subsets:['latin'],variable:'--font-sans'});
+    const fontSans = ${fontImport}(${fontSource});
 
     export const metadata: Metadata = {
       title: "Create Next App",

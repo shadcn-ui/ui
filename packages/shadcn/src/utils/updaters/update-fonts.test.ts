@@ -698,4 +698,125 @@ export default function RootLayout({
     // All runs should produce the same result.
     expect(secondRun).toBe(firstRun)
   })
+
+  it("should add a single local font to empty layout", async () => {
+    const input = `
+import type { Metadata } from "next"
+import "./globals.css"
+
+export const metadata: Metadata = {
+  title: "My App",
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-inter",
+        type: "registry:font" as const,
+        font: {
+          family: "Inter",
+          provider: "local" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          path: "/fonts/inter/inter-v20-latin-regular.woff2",
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result).toMatchInlineSnapshot(`
+      "
+      import type { Metadata } from "next"
+      import "./globals.css"
+      import localFont from "next/font/local";
+
+      const inter = localFont({src:'../public/fonts/inter/inter-v20-latin-regular.woff2',variable:'--font-sans',display:'swap'});
+
+      export const metadata: Metadata = {
+        title: "My App",
+      }
+
+      export default function RootLayout({
+        children,
+      }: {
+        children: React.ReactNode
+      }) {
+        return (
+          <html lang="en" className={inter.variable}>
+            <body>{children}</body>
+          </html>
+        )
+      }
+      "
+    `)
+  })
+
+  it("should add both Google and local fonts", async () => {
+    const input = `
+import type { Metadata } from "next"
+import "./globals.css"
+
+export const metadata: Metadata = {
+  title: "My App",
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+`
+    const fonts = [
+      {
+        name: "font-inter",
+        type: "registry:font" as const,
+        font: {
+          family: "Inter",
+          provider: "google" as const,
+          import: "Inter",
+          variable: "--font-sans",
+          subsets: ["latin"],
+        },
+      },
+      {
+        name: "font-jetbrains-mono",
+        type: "registry:font" as const,
+        font: {
+          family: "JetBrains Mono",
+          provider: "local" as const,
+          import: "JetBrains_Mono",
+          variable: "--font-mono",
+          path: "/fonts/jetbrains-mono/jetbrains-mono-v24-latin-regular.woff2",
+        },
+      },
+    ]
+
+    const result = await transformLayoutFonts(input, fonts, mockConfig)
+
+    expect(result).toContain('import { Inter } from "next/font/google"')
+    expect(result).toContain('import localFont from "next/font/local"')
+    expect(result).toContain("const inter = Inter")
+    expect(result).toContain("const jetbrainsMono = localFont")
+    expect(result).toContain(
+      "../public/fonts/jetbrains-mono/jetbrains-mono-v24-latin-regular.woff2"
+    )
+  })
 })

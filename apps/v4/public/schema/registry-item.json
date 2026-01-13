@@ -222,16 +222,20 @@
         },
         "provider": {
           "type": "string",
-          "enum": ["google"],
-          "description": "The font provider. Currently only 'google' is supported."
+          "enum": ["google", "local"],
+          "description": "The font provider. Use 'google' for Google Fonts or 'local' for self-hosted fonts."
         },
         "import": {
           "type": "string",
-          "description": "The import name for the font from next/font/google (e.g., 'Inter', 'JetBrains_Mono')."
+          "description": "The import name for the font. For Google Fonts, this is the name from next/font/google (e.g., 'Inter', 'JetBrains_Mono'). For local fonts, this is typically the same as the font family name."
         },
         "variable": {
           "type": "string",
           "description": "The CSS variable name for the font (e.g., '--font-sans', '--font-mono')."
+        },
+        "path": {
+          "type": "string",
+          "description": "The path to the font file. Required for local fonts, relative to the public directory (e.g., '/fonts/inter/inter-v20-latin-regular.woff2'). Optional for Google Fonts."
         },
         "weight": {
           "type": "array",

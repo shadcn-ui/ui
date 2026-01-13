@@ -18,6 +18,7 @@
     "registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",
+    "fonts:download": "node scripts/download-fonts.mjs",
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {

@@ -18,7 +18,8 @@ import validateProjectName from "validate-npm-package-name"
 
 import { initOptionsSchema, runInit } from "./init"
 
-const SHADCN_URL = "https://ui.shadcn.com"
+// const DEFAULT_SHADCN_URL = "https://ui.shadcn.com"
+const DEFAULT_SHADCN_URL = "http://localhost:4000"
 
 const CREATE_TEMPLATES = {
   next: "Next.js",
@@ -52,12 +53,35 @@ export const create = new Command()
     "do not use the src directory when creating a new project."
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
+  .option(
+    "--shadcn-url <url>",
+    "the base URL for shadcn/ui hosting. defaults to https://ui.shadcn.com",
+    DEFAULT_SHADCN_URL
+  )
   .action(async (name, opts) => {
     try {
+      // Get the shadcn URL from options
+      const shadcnUrl = opts.shadcnUrl ?? DEFAULT_SHADCN_URL
+
+      // Extract the registry base URL from shadcnUrl
+      // The registry is typically at {baseUrl}/r
+      let registryBaseUrl: string | undefined
+      if (opts.shadcnUrl) {
+        try {
+          const url = new URL(shadcnUrl)
+          registryBaseUrl = `${url.protocol}//${url.host}/r`
+        } catch {
+          // If URL parsing fails, use the shadcnUrl as-is and append /r
+          registryBaseUrl = `${shadcnUrl}/r`
+        }
+        // Also set the environment variable as a fallback for code that reads it directly
+        process.env.REGISTRY_URL = registryBaseUrl
+      }
+
       // If no arguments or options provided, show initial prompt.
       const hasNoArgs = !name && !opts.template && !opts.preset
       if (hasNoArgs) {
-        const createUrl = getShadcnCreateUrl()
+        const createUrl = getShadcnCreateUrl(shadcnUrl)
         logger.log("Build your own shadcn/ui.")
         logger.log(
           `You will be taken to ${highlighter.info(
@@ -130,7 +154,10 @@ export const create = new Command()
       }
 
       // Handle preset selection.
-      const presetResult = await handlePresetOption(opts.preset ?? true)
+      const presetResult = await handlePresetOption(
+        opts.preset ?? true,
+        shadcnUrl
+      )
 
       if (!presetResult) {
         process.exit(0)
@@ -145,14 +172,27 @@ export const create = new Command()
         initUrl = presetResult.url
         const url = new URL(presetResult.url)
         baseColor = url.searchParams.get("baseColor") ?? "neutral"
+
+        // If registryBaseUrl wasn't set from --shadcn-url, extract it from the preset URL
+        if (!registryBaseUrl) {
+          registryBaseUrl = `${url.protocol}//${url.host}/r`
+          process.env.REGISTRY_URL = registryBaseUrl
+        }
       } else {
         // User selected a preset by name.
-        initUrl = buildInitUrl(presetResult)
+        initUrl = buildInitUrl(presetResult, shadcnUrl)
         baseColor = presetResult.baseColor
       }
 
       // Fetch the registry:base item to get its config.
-      let shadowConfig = configWithDefaults({})
+      // If a custom registry URL is provided, configure it in the config
+      let shadowConfig = configWithDefaults({
+        registries: registryBaseUrl
+          ? {
+              "@shadcn": `${registryBaseUrl}/styles/{style}/{name}.json`,
+            }
+          : undefined,
+      })
       const { config: updatedConfig } = await ensureRegistriesInConfig(
         [initUrl],
         shadowConfig,
@@ -221,7 +261,7 @@ export const create = new Command()
     }
   })
 
-function buildInitUrl(preset: Preset) {
+function buildInitUrl(preset: Preset, shadcnUrl: string) {
   const params = new URLSearchParams({
     base: preset.base,
     style: preset.style,
@@ -234,10 +274,13 @@ function buildInitUrl(preset: Preset) {
     radius: preset.radius,
   })
 
-  return `${getShadcnInitUrl()}?${params.toString()}`
+  return `${getShadcnInitUrl(shadcnUrl)}?${params.toString()}`
 }
 
-async function handlePresetOption(presetArg: string | boolean) {
+async function handlePresetOption(
+  presetArg: string | boolean,
+  shadcnUrl: string
+) {
   // If --preset is used without a name, show interactive list.
   if (presetArg === true) {
     const presets = await getPresets()
@@ -254,7 +297,7 @@ async function handlePresetOption(presetArg: string | boolean) {
         })),
         {
           title: "Custom",
-          description: "Build your own on https://ui.shadcn.com",
+          description: `Build your own on ${shadcnUrl}`,
           value: "custom",
         },
       ],
@@ -265,7 +308,7 @@ async function handlePresetOption(presetArg: string | boolean) {
     }
 
     if (selectedPreset === "custom") {
-      const url = getShadcnCreateUrl()
+      const url = getShadcnCreateUrl(shadcnUrl)
       logger.info(`\nOpening ${highlighter.info(url)} in your browser...\n`)
       await open(url)
       return null
@@ -355,10 +398,10 @@ function App() {
   }
 }
 
-function getShadcnCreateUrl() {
-  return `${SHADCN_URL}/create`
+function getShadcnCreateUrl(shadcnUrl: string) {
+  return `${shadcnUrl}/create`
 }
 
-function getShadcnInitUrl() {
-  return `${SHADCN_URL}/init`
+function getShadcnInitUrl(shadcnUrl: string) {
+  return `${shadcnUrl}/init`
 }

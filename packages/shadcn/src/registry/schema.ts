@@ -134,14 +134,29 @@ export const registryItemCssSchema = z.record(z.string(), cssValueSchema)
 export const registryItemEnvVarsSchema = z.record(z.string(), z.string())
 
 // Font metadata schema for registry:font items.
-export const registryItemFontSchema = z.object({
-  family: z.string(),
-  provider: z.literal("google"),
-  import: z.string(),
-  variable: z.string(),
-  weight: z.array(z.string()).optional(),
-  subsets: z.array(z.string()).optional(),
-})
+export const registryItemFontSchema = z
+  .object({
+    family: z.string(),
+    provider: z.enum(["google", "local"]),
+    import: z.string(),
+    variable: z.string(),
+    weight: z.array(z.string()).optional(),
+    subsets: z.array(z.string()).optional(),
+    path: z.string().optional(), // Required for local fonts, path to font file
+  })
+  .refine(
+    (data) => {
+      // If provider is "local", path is required
+      if (data.provider === "local" && !data.path) {
+        return false
+      }
+      return true
+    },
+    {
+      message: "path is required when provider is 'local'",
+      path: ["path"],
+    }
+  )
 
 // Common fields shared by all registry items.
 export const registryItemCommonSchema = z.object({

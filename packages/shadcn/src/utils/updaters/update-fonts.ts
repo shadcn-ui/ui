@@ -162,7 +162,7 @@ async function findLayoutFile(
 export async function transformLayoutFonts(
   input: string,
   fonts: RegistryFontItem[],
-  _config: Config
+  config: Config
 ) {
   const project = new Project({
     compilerOptions: {},
@@ -172,8 +172,9 @@ export async function transformLayoutFonts(
     scriptKind: ScriptKind.TSX,
   })
 
-  // Only process Google fonts for now.
+  // Process both Google and local fonts.
   const googleFonts = fonts.filter((f) => f.font.provider === "google")
+  const localFonts = fonts.filter((f) => f.font.provider === "local")
 
   // Track which font variables we're adding.
   const fontVariableNames: string[] = []
@@ -248,6 +249,72 @@ export async function transformLayoutFonts(
     fontVariableNames.push(varName)
   }
 
+  // Process local fonts.
+  for (const font of localFonts) {
+    if (!font.font.path) {
+      continue
+    }
+
+    // Generate a variable name from the font name (e.g., "font-inter" -> "inter", "font-geist-mono" -> "geistMono").
+    const fontName = font.name.replace("font-", "")
+    const varName = toCamelCase(fontName)
+
+    // Convert public URL path to relative file system path for next/font/local
+    // /fonts/inter/... -> ../public/fonts/inter/...
+    const fontPath = font.font.path.replace(/^\/fonts\//, "../public/fonts/")
+
+    // Build font options for local fonts.
+    const fontOptions = buildLocalFontOptions(font, fontPath)
+
+    // Check if localFont import already exists.
+    const existingLocalImport = sourceFile.getImportDeclaration((decl) => {
+      const moduleSpecifier = decl.getModuleSpecifierValue()
+      return moduleSpecifier === "next/font/local"
+    })
+
+    if (!existingLocalImport) {
+      // Add default import for localFont.
+      sourceFile.addImportDeclaration({
+        moduleSpecifier: "next/font/local",
+        defaultImport: "localFont",
+      })
+    }
+
+    // Check if variable declaration already exists with same variable CSS property.
+    const existingVarDecl = findFontVariableDeclaration(
+      sourceFile,
+      font.font.variable
+    )
+
+    if (existingVarDecl) {
+      // Replace the initializer of the existing declaration.
+      existingVarDecl.setInitializer(`localFont(${fontOptions})`)
+      // Update the variable name if different.
+      if (existingVarDecl.getName() !== varName) {
+        existingVarDecl.rename(varName)
+      }
+    } else {
+      // Find the last import or existing font declaration to insert after.
+      const insertPosition = findInsertPosition(sourceFile)
+
+      // Add variable declaration.
+      const statement = sourceFile.insertVariableStatement(insertPosition, {
+        declarationKind: VariableDeclarationKind.Const,
+        declarations: [
+          {
+            name: varName,
+            initializer: `localFont(${fontOptions})`,
+          },
+        ],
+      })
+
+      // Add a blank line after the declaration.
+      statement.appendWhitespace("\n")
+    }
+
+    fontVariableNames.push(varName)
+  }
+
   // Update html className to include font variables.
   if (fontVariableNames.length > 0) {
     updateHtmlClassName(sourceFile, fontVariableNames)
@@ -268,6 +335,18 @@ function buildFontOptions(font: RegistryFontItem) {
   }
 
   options.variable = font.font.variable
+
+  return JSON.stringify(options)
+    .replace(/"([^"]+)":/g, "$1:") // Remove quotes from keys.
+    .replace(/"/g, "'") // Use single quotes for strings.
+}
+
+function buildLocalFontOptions(font: RegistryFontItem, fontPath: string) {
+  const options: Record<string, unknown> = {
+    src: fontPath,
+    variable: font.font.variable,
+    display: "swap",
+  }
 
   return JSON.stringify(options)
     .replace(/"([^"]+)":/g, "$1:") // Remove quotes from keys.

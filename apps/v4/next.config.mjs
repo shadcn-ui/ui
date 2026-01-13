@@ -27,6 +27,8 @@ const nextConfig = {
   },
   experimental: {
     turbopackFileSystemCacheForDev: true,
+    cpus: 1,
+    workerThreads: false,
   },
   redirects() {
     return [

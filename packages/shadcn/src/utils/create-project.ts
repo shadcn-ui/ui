@@ -13,6 +13,7 @@ import prompts from "prompts"
 import { z } from "zod"
 
 const GITHUB_TEMPLATE_URL =
+  process.env.GITHUB_TEMPLATE_URL ||
   "https://codeload.github.com/shadcn-ui/ui/tar.gz/main"
 
 export const TEMPLATES = {

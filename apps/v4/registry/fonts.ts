@@ -6,11 +6,12 @@ export const fonts = [
     title: "Geist Sans",
     type: "registry:font",
     font: {
-      family: "'Geist Variable', sans-serif",
-      provider: "google",
+      family: "'Geist', sans-serif",
+      provider: "local",
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Geist",
+      path: "/fonts/geist/geist-v4-latin-regular.woff2",
     },
   },
   {
@@ -18,11 +19,12 @@ export const fonts = [
     title: "Inter",
     type: "registry:font",
     font: {
-      family: "'Inter Variable', sans-serif",
-      provider: "google",
+      family: "'Inter', sans-serif",
+      provider: "local",
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Inter",
+      path: "/fonts/inter/inter-v20-latin-regular.woff2",
     },
   },
   {
@@ -30,10 +32,11 @@ export const fonts = [
     title: "Noto Sans",
     type: "registry:font",
     font: {
-      family: "'Noto Sans Variable', sans-serif",
-      provider: "google",
+      family: "'Noto Sans', sans-serif",
+      provider: "local",
       variable: "--font-sans",
       import: "Noto_Sans",
+      path: "/fonts/noto-sans/noto-sans-v42-latin-regular.woff2",
     },
   },
   {
@@ -41,10 +44,11 @@ export const fonts = [
     title: "Nunito Sans",
     type: "registry:font",
     font: {
-      family: "'Nunito Sans Variable', sans-serif",
-      provider: "google",
+      family: "'Nunito Sans', sans-serif",
+      provider: "local",
       variable: "--font-sans",
       import: "Nunito_Sans",
+      path: "/fonts/nunito-sans/nunito-sans-v19-latin-regular.woff2",
     },
   },
   {
@@ -52,11 +56,12 @@ export const fonts = [
     title: "Figtree",
     type: "registry:font",
     font: {
-      family: "'Figtree Variable', sans-serif",
-      provider: "google",
+      family: "'Figtree', sans-serif",
+      provider: "local",
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Figtree",
+      path: "/fonts/figtree/figtree-v9-latin-regular.woff2",
     },
   },
   {
@@ -65,10 +70,11 @@ export const fonts = [
     type: "registry:font",
     font: {
       family: "'Roboto', sans-serif",
-      provider: "google",
+      provider: "local",
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Roboto",
+      path: "/fonts/roboto/roboto-v50-latin-regular.woff2",
     },
   },
   {
@@ -77,10 +83,11 @@ export const fonts = [
     type: "registry:font",
     font: {
       family: "'Raleway', sans-serif",
-      provider: "google",
+      provider: "local",
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Raleway",
+      path: "/fonts/raleway/raleway-v37-latin-regular.woff2",
     },
   },
   {
@@ -89,10 +96,11 @@ export const fonts = [
     type: "registry:font",
     font: {
       family: "'DM Sans', sans-serif",
-      provider: "google",
+      provider: "local",
       variable: "--font-sans",
       subsets: ["latin"],
       import: "DM_Sans",
+      path: "/fonts/dm-sans/dm-sans-v17-latin-regular.woff2",
     },
   },
   {
@@ -101,10 +109,11 @@ export const fonts = [
     type: "registry:font",
     font: {
       family: "'Public Sans', sans-serif",
-      provider: "google",
+      provider: "local",
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Public_Sans",
+      path: "/fonts/public-sans/public-sans-v21-latin-regular.woff2",
     },
   },
   {
@@ -113,10 +122,11 @@ export const fonts = [
     type: "registry:font",
     font: {
       family: "'Outfit', sans-serif",
-      provider: "google",
+      provider: "local",
       variable: "--font-sans",
       subsets: ["latin"],
       import: "Outfit",
+      path: "/fonts/outfit/outfit-v15-latin-regular.woff2",
     },
   },
   {
@@ -124,11 +134,12 @@ export const fonts = [
     title: "JetBrains Mono",
     type: "registry:font",
     font: {
-      family: "'JetBrains Mono Variable', monospace",
-      provider: "google",
+      family: "'JetBrains Mono', monospace",
+      provider: "local",
       variable: "--font-sans",
       subsets: ["latin"],
       import: "JetBrains_Mono",
+      path: "/fonts/jetbrains-mono/jetbrains-mono-v24-latin-regular.woff2",
     },
   },
   // {

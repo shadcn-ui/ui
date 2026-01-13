@@ -1,76 +1,75 @@
-import {
-  DM_Sans,
-  Figtree,
-  Geist,
-  Geist_Mono,
-  Inter,
-  JetBrains_Mono,
-  Noto_Sans,
-  Nunito_Sans,
-  Outfit,
-  Public_Sans,
-  Raleway,
-  Roboto,
-} from "next/font/google"
+import localFont from "next/font/local"
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../../../public/fonts/inter/inter-v20-latin-regular.woff2",
   variable: "--font-inter",
+  display: "swap",
 })
 
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
+const notoSans = localFont({
+  src: "../../../public/fonts/noto-sans/noto-sans-v42-latin-regular.woff2",
   variable: "--font-noto-sans",
+  display: "swap",
 })
 
-const nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
+const nunitoSans = localFont({
+  src: "../../../public/fonts/nunito-sans/nunito-sans-v19-latin-regular.woff2",
   variable: "--font-nunito-sans",
+  display: "swap",
 })
 
-const figtree = Figtree({
-  subsets: ["latin"],
+const figtree = localFont({
+  src: "../../../public/fonts/figtree/figtree-v9-latin-regular.woff2",
   variable: "--font-figtree",
+  display: "swap",
 })
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetbrainsMono = localFont({
+  src: "../../../public/fonts/jetbrains-mono/jetbrains-mono-v24-latin-regular.woff2",
   variable: "--font-jetbrains-mono",
+  display: "swap",
 })
 
-// const geistSans = Geist({
-//   subsets: ["latin"],
+// const geistSans = localFont({
+//   src: "../../../public/fonts/geist/geist-v4-latin-regular.woff2",
 //   variable: "--font-geist-sans",
+//   display: "swap",
 // })
 
-// const geistMono = Geist_Mono({
-//   subsets: ["latin"],
+// const geistMono = localFont({
+//   src: "../../../public/fonts/geist-mono/geist-mono-v4-latin-regular.woff2",
 //   variable: "--font-geist-mono",
+//   display: "swap",
 // })
 
-const roboto = Roboto({
-  subsets: ["latin"],
+const roboto = localFont({
+  src: "../../../public/fonts/roboto/roboto-v50-latin-regular.woff2",
   variable: "--font-roboto",
+  display: "swap",
 })
 
-const raleway = Raleway({
-  subsets: ["latin"],
+const raleway = localFont({
+  src: "../../../public/fonts/raleway/raleway-v37-latin-regular.woff2",
   variable: "--font-raleway",
+  display: "swap",
 })
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
+const dmSans = localFont({
+  src: "../../../public/fonts/dm-sans/dm-sans-v17-latin-regular.woff2",
   variable: "--font-dm-sans",
+  display: "swap",
 })
 
-const publicSans = Public_Sans({
-  subsets: ["latin"],
+const publicSans = localFont({
+  src: "../../../public/fonts/public-sans/public-sans-v21-latin-regular.woff2",
   variable: "--font-public-sans",
+  display: "swap",
 })
 
-const outfit = Outfit({
-  subsets: ["latin"],
+const outfit = localFont({
+  src: "../../../public/fonts/outfit/outfit-v15-latin-regular.woff2",
   variable: "--font-outfit",
+  display: "swap",
 })
 
 export const FONTS = [

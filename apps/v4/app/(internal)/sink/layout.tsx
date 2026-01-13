@@ -1,4 +1,4 @@
-import { Figtree, Inter, Noto_Sans, Nunito_Sans } from "next/font/google"
+import localFont from "next/font/local"
 
 import { cn } from "@/lib/utils"
 import { ModeSwitcher } from "@/components/mode-switcher"
@@ -12,24 +12,28 @@ import { AppBreadcrumbs } from "@/app/(internal)/sink/components/app-breadcrumbs
 import { AppSidebar } from "@/app/(internal)/sink/components/app-sidebar"
 import { ThemeSelector } from "@/app/(internal)/sink/components/theme-selector"
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../../../public/fonts/inter/inter-v20-latin-regular.woff2",
   variable: "--font-inter",
+  display: "swap",
 })
 
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
+const notoSans = localFont({
+  src: "../../../public/fonts/noto-sans/noto-sans-v42-latin-regular.woff2",
   variable: "--font-noto-sans",
+  display: "swap",
 })
 
-const nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
+const nunitoSans = localFont({
+  src: "../../../public/fonts/nunito-sans/nunito-sans-v19-latin-regular.woff2",
   variable: "--font-nunito-sans",
+  display: "swap",
 })
 
-const figtree = Figtree({
-  subsets: ["latin"],
+const figtree = localFont({
+  src: "../../../public/fonts/figtree/figtree-v9-latin-regular.woff2",
   variable: "--font-figtree",
+  display: "swap",
 })
 
 export default async function SinkLayout({
