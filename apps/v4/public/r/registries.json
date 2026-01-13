@@ -22,6 +22,7 @@
   "@bucharitesh": "https://bucharitesh.in/r/{name}.json",
   "@bundui": "https://bundui.io/r/{name}.json",
   "@cardcn": "https://cardcn.dev/r/{name}.json",
+  "@chamaac": "https://chamaac.com/r/{name}.json",
   "@clerk": "https://clerk.com/r/{name}.json",
   "@coss": "https://coss.com/ui/r/{name}.json",
   "@commercn": "https://commercn.com/r/{name}.json",
@@ -58,6 +59,7 @@
   "@nativeui": "https://nativeui.io/registry/{name}.json",
   "@nexus-elements": "https://elements.nexus.availproject.org/r/{name}.json",
   "@ncdai": "https://chanhdai.com/r/{name}.json",
+  "@neobrutalism": "https://www.neobrutalism.dev/r/{name}.json",
   "@nuqs": "https://nuqs.dev/r/{name}.json",
   "@optics": "https://optics.agusmayol.com.ar/r/{name}.json",
   "@oui": "https://oui.mw10013.workers.dev/r/{name}.json",
@@ -113,5 +115,8 @@
   "@ui-layouts": "https://ui-layouts.com/r/{name}.json",
   "@pureui": "https://pure.kam-ui.com/r/{name}.json",
   "@tour": "https://onboarding-tour.vercel.app/r/{name}.json",
-  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json"
+  "@tb-blocks": "https://tailwindbuilder.ai/r/blocks/{name}.json",
+  "@heroicons-animated": "https://www.heroicons-animated.com/r/{name}.json",
+  "@icons-animated": "https://icons.lndev.me/r/{name}.json",
+  "@forgeui": "https://forgeui.in/r/{name}.json"
 }
