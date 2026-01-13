@@ -235,6 +235,7 @@ function PickerRadioItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
             className="size-4 pointer-coarse:size-5"
           />
         </MenuPrimitive.RadioItemIndicator>
