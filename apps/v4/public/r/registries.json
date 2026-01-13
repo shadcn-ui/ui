@@ -24,6 +24,7 @@
   "@cardcn": "https://cardcn.dev/r/{name}.json",
   "@chamaac": "https://chamaac.com/r/{name}.json",
   "@clerk": "https://clerk.com/r/{name}.json",
+  "@coderabbit": "https://coderabbit-shadcn-registry.vercel.app/r/{name}.json",
   "@coss": "https://coss.com/ui/r/{name}.json",
   "@commercn": "https://commercn.com/r/{name}.json",
   "@chisom-ui": "https://chisom-ui.netlify.app/r/{name}.json",
