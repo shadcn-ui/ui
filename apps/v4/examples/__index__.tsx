@@ -382,29 +382,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-as-link": {
-      name: "badge-as-link",
-      filePath: "examples/radix/badge-as-link.tsx",
+    "badge-colors": {
+      name: "badge-colors",
+      filePath: "examples/radix/badge-colors.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/badge-as-link")
+        const mod = await import("./radix/badge-colors")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-as-link"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-custom-colors": {
-      name: "badge-custom-colors",
-      filePath: "examples/radix/badge-custom-colors.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/badge-custom-colors")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-custom-colors"
+          ) || "badge-colors"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -421,55 +408,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-destructive": {
-      name: "badge-destructive",
-      filePath: "examples/radix/badge-destructive.tsx",
+    "badge-icon": {
+      name: "badge-icon",
+      filePath: "examples/radix/badge-icon.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/badge-destructive")
+        const mod = await import("./radix/badge-icon")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-destructive"
+          ) || "badge-icon"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-long-text": {
-      name: "badge-long-text",
-      filePath: "examples/radix/badge-long-text.tsx",
+    "badge-link": {
+      name: "badge-link",
+      filePath: "examples/radix/badge-link.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/badge-long-text")
+        const mod = await import("./radix/badge-link")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-long-text"
+          ) || "badge-link"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-outline": {
-      name: "badge-outline",
-      filePath: "examples/radix/badge-outline.tsx",
+    "badge-spinner": {
+      name: "badge-spinner",
+      filePath: "examples/radix/badge-spinner.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/badge-outline")
+        const mod = await import("./radix/badge-spinner")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-outline"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-secondary": {
-      name: "badge-secondary",
-      filePath: "examples/radix/badge-secondary.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/badge-secondary")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-secondary"
+          ) || "badge-spinner"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -483,45 +457,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "badge-variants"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-with-icon-left": {
-      name: "badge-with-icon-left",
-      filePath: "examples/radix/badge-with-icon-left.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/badge-with-icon-left")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-with-icon-left"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-with-icon-right": {
-      name: "badge-with-icon-right",
-      filePath: "examples/radix/badge-with-icon-right.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/badge-with-icon-right")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-with-icon-right"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-with-spinner": {
-      name: "badge-with-spinner",
-      filePath: "examples/radix/badge-with-spinner.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/badge-with-spinner")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-with-spinner"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7601,29 +7536,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-as-link": {
-      name: "badge-as-link",
-      filePath: "examples/base/badge-as-link.tsx",
+    "badge-colors": {
+      name: "badge-colors",
+      filePath: "examples/base/badge-colors.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/badge-as-link")
+        const mod = await import("./base/badge-colors")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-as-link"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-custom-colors": {
-      name: "badge-custom-colors",
-      filePath: "examples/base/badge-custom-colors.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/badge-custom-colors")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-custom-colors"
+          ) || "badge-colors"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7640,55 +7562,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-destructive": {
-      name: "badge-destructive",
-      filePath: "examples/base/badge-destructive.tsx",
+    "badge-icon": {
+      name: "badge-icon",
+      filePath: "examples/base/badge-icon.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/badge-destructive")
+        const mod = await import("./base/badge-icon")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-destructive"
+          ) || "badge-icon"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-long-text": {
-      name: "badge-long-text",
-      filePath: "examples/base/badge-long-text.tsx",
+    "badge-link": {
+      name: "badge-link",
+      filePath: "examples/base/badge-link.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/badge-long-text")
+        const mod = await import("./base/badge-link")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-long-text"
+          ) || "badge-link"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-outline": {
-      name: "badge-outline",
-      filePath: "examples/base/badge-outline.tsx",
+    "badge-spinner": {
+      name: "badge-spinner",
+      filePath: "examples/base/badge-spinner.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/badge-outline")
+        const mod = await import("./base/badge-spinner")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-outline"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-secondary": {
-      name: "badge-secondary",
-      filePath: "examples/base/badge-secondary.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/badge-secondary")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-secondary"
+          ) || "badge-spinner"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7702,45 +7611,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "badge-variants"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-with-icon-left": {
-      name: "badge-with-icon-left",
-      filePath: "examples/base/badge-with-icon-left.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/badge-with-icon-left")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-with-icon-left"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-with-icon-right": {
-      name: "badge-with-icon-right",
-      filePath: "examples/base/badge-with-icon-right.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/badge-with-icon-right")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-with-icon-right"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "badge-with-spinner": {
-      name: "badge-with-spinner",
-      filePath: "examples/base/badge-with-spinner.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/badge-with-spinner")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-with-spinner"
         return { default: mod.default || mod[exportName] }
       }),
     },

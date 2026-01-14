@@ -5,12 +5,7 @@ base: radix
 component: true
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="badge-demo"
-  title="Badge"
-  description="A default badge"
-/>
+<ComponentPreview name="badge-demo" />
 
 ## Installation
 
@@ -37,7 +32,6 @@ npx shadcn@latest add badge
 <ComponentSource
   name="badge"
   title="components/ui/badge.tsx"
-  styleName="radix-nova"
 />
 
 <Step>Update the import paths to match your project setup.</Step>
@@ -58,20 +52,45 @@ import { Badge } from "@/components/ui/badge"
 <Badge variant="default | outline | secondary | destructive">Badge</Badge>
 ```
 
+## Examples
+
+### Variants
+
+Use the `variant` prop to change the variant of the badge.
+
+<ComponentPreview name="badge-variants" />
+
+### With Icon
+
+You can render an icon inside the badge. Use `data-icon="inline-start"` to render the icon on the left and `data-icon="inline-end"` to render the icon on the right.
+
+<ComponentPreview name="badge-icon" />
+
+### With Spinner
+
+You can render a spinner inside the badge. Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` prop to the spinner.
+
+<ComponentPreview name="badge-spinner" />
+
 ### Link
 
-You can use the `asChild` prop to make another component look like a badge. Here's an example of a link that looks like a badge.
+Use the `asChild` prop to render a link as a badge.
 
-```tsx showLineNumbers
-import Link from "next/link"
+<ComponentPreview name="badge-link" />
 
-import { Badge } from "@/components/ui/badge"
+### Custom Colors
 
-export function LinkAsBadge() {
-  return (
-    <Badge asChild>
-      <Link href="/">Badge</Link>
-    </Badge>
-  )
-}
-```
+You can customize the colors of a badge by adding custom classes such as `bg-green-50 dark:bg-green-800` to the `Badge` component.
+
+<ComponentPreview name="badge-colors" />
+
+## API Reference
+
+### Badge
+
+The `Badge` component displays a badge or a component that looks like a badge.
+
+| Prop        | Type                                                                          | Default     |
+| ----------- | ----------------------------------------------------------------------------- | ----------- |
+| `variant`   | `"default" \| "secondary" \| "destructive" \| "outline" \| "ghost" \| "link"` | `"default"` |
+| `className` | `string`                                                                      | -           |

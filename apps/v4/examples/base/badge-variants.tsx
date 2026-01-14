@@ -8,7 +8,6 @@ export function BadgeVariants() {
       <Badge variant="destructive">Destructive</Badge>
       <Badge variant="outline">Outline</Badge>
       <Badge variant="ghost">Ghost</Badge>
-      <Badge variant="link">Link</Badge>
     </div>
   )
 }
