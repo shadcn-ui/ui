@@ -4,15 +4,14 @@ description: Displays content within a desired ratio.
 base: radix
 component: true
 links:
-  doc: https://www.radix-ui.com/docs/primitives/components/aspect-ratio
-  api: https://www.radix-ui.com/docs/primitives/components/aspect-ratio#api-reference
+  doc: https://www.radix-ui.com/primitives/docs/components/aspect-ratio
+  api: https://www.radix-ui.com/primitives/docs/components/aspect-ratio#api-reference
 ---
 
 <ComponentPreview
-  styleName="radix-nova"
   name="aspect-ratio-demo"
-  title="Aspect Ratio"
-  description="A component that displays an image with a 16:9 aspect ratio."
+  styleName="radix-nova"
+  previewClassName="h-96"
 />
 
 ## Installation
@@ -33,7 +32,7 @@ npx shadcn@latest add aspect-ratio
 
 <TabsContent value="manual">
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 <Step>Install the following dependencies:</Step>
 
@@ -68,3 +67,38 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
   <Image src="..." alt="Image" className="rounded-md object-cover" />
 </AspectRatio>
 ```
+
+## Examples
+
+### Square
+
+A square aspect ratio component using the `ratio={1 / 1}` prop. This is useful for displaying images in a square format.
+
+<ComponentPreview
+  name="aspect-ratio-square"
+  styleName="radix-nova"
+  previewClassName="h-96"
+/>
+
+### Portrait
+
+A portrait aspect ratio component using the `ratio={9 / 16}` prop. This is useful for displaying images in a portrait format.
+
+<ComponentPreview
+  name="aspect-ratio-portrait"
+  styleName="radix-nova"
+  previewClassName="h-96"
+/>
+
+## API Reference
+
+### AspectRatio
+
+The `AspectRatio` component displays content within a desired ratio.
+
+| Prop        | Type     | Default | Required |
+| ----------- | -------- | ------- | -------- |
+| `ratio`     | `number` | -       | Yes      |
+| `className` | `string` | -       | No       |
+
+For more information, see the [Radix UI documentation](https://www.radix-ui.com/primitives/docs/components/aspect-ratio#api-reference).

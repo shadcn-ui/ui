@@ -239,55 +239,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "aspect-ratio16x9": {
-      name: "aspect-ratio16x9",
-      filePath: "examples/radix/aspect-ratio16x9.tsx",
+    "aspect-ratio-portrait": {
+      name: "aspect-ratio-portrait",
+      filePath: "examples/radix/aspect-ratio-portrait.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/aspect-ratio16x9")
+        const mod = await import("./radix/aspect-ratio-portrait")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio16x9"
+          ) || "aspect-ratio-portrait"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "aspect-ratio1x1": {
-      name: "aspect-ratio1x1",
-      filePath: "examples/radix/aspect-ratio1x1.tsx",
+    "aspect-ratio-square": {
+      name: "aspect-ratio-square",
+      filePath: "examples/radix/aspect-ratio-square.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/aspect-ratio1x1")
+        const mod = await import("./radix/aspect-ratio-square")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio1x1"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "aspect-ratio21x9": {
-      name: "aspect-ratio21x9",
-      filePath: "examples/radix/aspect-ratio21x9.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/aspect-ratio21x9")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio21x9"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "aspect-ratio9x16": {
-      name: "aspect-ratio9x16",
-      filePath: "examples/radix/aspect-ratio9x16.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/aspect-ratio9x16")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio9x16"
+          ) || "aspect-ratio-square"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7471,55 +7445,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "aspect-ratio16x9": {
-      name: "aspect-ratio16x9",
-      filePath: "examples/base/aspect-ratio16x9.tsx",
+    "aspect-ratio-portrait": {
+      name: "aspect-ratio-portrait",
+      filePath: "examples/base/aspect-ratio-portrait.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/aspect-ratio16x9")
+        const mod = await import("./base/aspect-ratio-portrait")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio16x9"
+          ) || "aspect-ratio-portrait"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "aspect-ratio1x1": {
-      name: "aspect-ratio1x1",
-      filePath: "examples/base/aspect-ratio1x1.tsx",
+    "aspect-ratio-square": {
+      name: "aspect-ratio-square",
+      filePath: "examples/base/aspect-ratio-square.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/aspect-ratio1x1")
+        const mod = await import("./base/aspect-ratio-square")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio1x1"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "aspect-ratio21x9": {
-      name: "aspect-ratio21x9",
-      filePath: "examples/base/aspect-ratio21x9.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/aspect-ratio21x9")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio21x9"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "aspect-ratio9x16": {
-      name: "aspect-ratio9x16",
-      filePath: "examples/base/aspect-ratio9x16.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/aspect-ratio9x16")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio9x16"
+          ) || "aspect-ratio-square"
         return { default: mod.default || mod[exportName] }
       }),
     },
