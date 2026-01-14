@@ -13,7 +13,7 @@ export function ComponentPreview({
   align = "center",
   hideCode = false,
   chromeLessOnMobile = false,
-  styleName = "base-nova",
+  styleName = "new-york-v4",
   ...props
 }: React.ComponentProps<"div"> & {
   name: string

@@ -5,7 +5,11 @@ base: base
 component: true
 ---
 
-<ComponentPreview name="breadcrumb-demo" previewClassName="p-2" />
+<ComponentPreview
+  styleName="base-nova"
+  name="breadcrumb-demo"
+  previewClassName="p-2"
+/>
 
 ## Installation
 
@@ -82,31 +86,31 @@ import {
 
 A basic breadcrumb with a home link and a components link.
 
-<ComponentPreview name="breadcrumb-basic" />
+<ComponentPreview styleName="base-nova" name="breadcrumb-basic" />
 
 ### Custom separator
 
 Use a custom component as `children` for `<BreadcrumbSeparator />` to create a custom separator.
 
-<ComponentPreview name="breadcrumb-separator" />
+<ComponentPreview styleName="base-nova" name="breadcrumb-separator" />
 
 ### Dropdown
 
 You can compose `<BreadcrumbItem />` with a `<DropdownMenu />` to create a dropdown in the breadcrumb.
 
-<ComponentPreview name="breadcrumb-dropdown" />
+<ComponentPreview styleName="base-nova" name="breadcrumb-dropdown" />
 
 ### Collapsed
 
 We provide a `<BreadcrumbEllipsis />` component to show a collapsed state when the breadcrumb is too long.
 
-<ComponentPreview name="breadcrumb-ellipsis" />
+<ComponentPreview styleName="base-nova" name="breadcrumb-ellipsis" />
 
 ### Link component
 
 To use a custom link component from your routing library, you can use the `render` prop on `<BreadcrumbLink />`.
 
-<ComponentPreview name="breadcrumb-link" />
+<ComponentPreview styleName="base-nova" name="breadcrumb-link" />
 
 ## API Reference
 

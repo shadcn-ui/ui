@@ -143,6 +143,7 @@ export default async function Page(props: {
                 <DocsBaseSwitcher
                   base={params.slug[1]}
                   component={params.slug[2]}
+                  className="mb-4"
                 />
               )}
             <MDX components={mdxComponents} />

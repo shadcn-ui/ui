@@ -1,16 +1,19 @@
 import Link from "next/link"
 
+import { cn } from "@/lib/utils"
 import { BASES } from "@/registry/bases"
 
 export function DocsBaseSwitcher({
   base,
   component,
+  className,
 }: {
   base: string
   component: string
+  className?: string
 }) {
   return (
-    <div className="inline-flex items-center gap-6">
+    <div className={cn("inline-flex items-center gap-6", className)}>
       {BASES.map((baseItem) => (
         <Link
           key={baseItem.name}

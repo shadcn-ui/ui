@@ -30,7 +30,7 @@ export function BreadcrumbDemo() {
             <DropdownMenuTrigger
               render={<Button size="icon-sm" variant="ghost" />}
             >
-              <BreadcrumbEllipsis className="size-4" />
+              <BreadcrumbEllipsis />
               <span className="sr-only">Toggle menu</span>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">

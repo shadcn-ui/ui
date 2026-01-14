@@ -30,9 +30,11 @@ export function BreadcrumbDropdown() {
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5">
-              Components
-              <ChevronDownIcon />
+            <DropdownMenuTrigger asChild>
+              <button className="flex items-center gap-1">
+                Components
+                <ChevronDownIcon />
+              </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuGroup>
