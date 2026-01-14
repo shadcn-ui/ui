@@ -1,11 +1,14 @@
 import { Button } from "@/examples/base/ui/button"
 import { ButtonGroup } from "@/examples/base/ui/button-group"
+import { Field, FieldDescription, FieldLabel } from "@/examples/base/ui/field"
 import {
   Popover,
   PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
   PopoverTrigger,
 } from "@/examples/base/ui/popover"
-import { Separator } from "@/examples/base/ui/separator"
 import { Textarea } from "@/examples/base/ui/textarea"
 import { BotIcon, ChevronDownIcon } from "lucide-react"
 
@@ -23,22 +26,26 @@ export default function ButtonGroupPopover() {
         >
           <ChevronDownIcon />
         </PopoverTrigger>
-        <PopoverContent align="end" className="rounded-xl p-0 text-sm">
-          <div className="px-4 py-3">
-            <div className="text-sm font-medium">Agent Tasks</div>
-          </div>
-          <Separator />
-          <div className="p-4 text-sm *:[p:not(:last-child)]:mb-2">
+        <PopoverContent align="end" className="rounded-xl text-sm">
+          <PopoverHeader>
+            <PopoverTitle>Start a new task with Copilot</PopoverTitle>
+            <PopoverDescription>
+              Describe your task in natural language.
+            </PopoverDescription>
+          </PopoverHeader>
+          <Field>
+            <FieldLabel htmlFor="task" className="sr-only">
+              Task Description
+            </FieldLabel>
             <Textarea
-              placeholder="Describe your task in natural language."
-              className="mb-4 resize-none"
+              id="task"
+              placeholder="I need to..."
+              className="resize-none"
             />
-            <p className="font-medium">Start a new task with Copilot</p>
-            <p className="text-muted-foreground">
-              Describe your task in natural language. Copilot will work in the
-              background and open a pull request for your review.
-            </p>
-          </div>
+            <FieldDescription>
+              Copilot will open a pull request for review.
+            </FieldDescription>
+          </Field>
         </PopoverContent>
       </Popover>
     </ButtonGroup>

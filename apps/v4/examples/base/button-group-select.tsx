@@ -31,7 +31,7 @@ export default function ButtonGroupSelect() {
           onValueChange={(value) => setCurrency(value as string)}
         >
           <SelectTrigger className="font-mono">{currency}</SelectTrigger>
-          <SelectContent className="min-w-24">
+          <SelectContent alignItemWithTrigger={false} align="start">
             <SelectGroup>
               {CURRENCIES.map((item) => (
                 <SelectItem key={item.value} value={item.value}>

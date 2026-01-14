@@ -603,19 +603,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-group-basic": {
-      name: "button-group-basic",
-      filePath: "examples/radix/button-group-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "button-group-demo": {
       name: "button-group-demo",
       filePath: "examples/radix/button-group-demo.tsx",
@@ -668,19 +655,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-group-navigation": {
-      name: "button-group-navigation",
-      filePath: "examples/radix/button-group-navigation.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-navigation")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-navigation"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "button-group-nested": {
       name: "button-group-nested",
       filePath: "examples/radix/button-group-nested.tsx",
@@ -704,32 +678,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-group-orientation"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-pagination-split": {
-      name: "button-group-pagination-split",
-      filePath: "examples/radix/button-group-pagination-split.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-pagination-split")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-pagination-split"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-pagination": {
-      name: "button-group-pagination",
-      filePath: "examples/radix/button-group-pagination.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-pagination")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-pagination"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -795,162 +743,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-group-split"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-text-alignment": {
-      name: "button-group-text-alignment",
-      filePath: "examples/radix/button-group-text-alignment.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-text-alignment")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-text-alignment"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-vertical-nested": {
-      name: "button-group-vertical-nested",
-      filePath: "examples/radix/button-group-vertical-nested.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-vertical-nested")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-vertical-nested"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-vertical": {
-      name: "button-group-vertical",
-      filePath: "examples/radix/button-group-vertical.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-vertical")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-vertical"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-dropdown": {
-      name: "button-group-with-dropdown",
-      filePath: "examples/radix/button-group-with-dropdown.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-with-dropdown")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-dropdown"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-fields": {
-      name: "button-group-with-fields",
-      filePath: "examples/radix/button-group-with-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-with-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-fields"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-icons": {
-      name: "button-group-with-icons",
-      filePath: "examples/radix/button-group-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-input-group": {
-      name: "button-group-with-input-group",
-      filePath: "examples/radix/button-group-with-input-group.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-with-input-group")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-input-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-input": {
-      name: "button-group-with-input",
-      filePath: "examples/radix/button-group-with-input.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-with-input")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-input"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-like": {
-      name: "button-group-with-like",
-      filePath: "examples/radix/button-group-with-like.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-with-like")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-like"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-select-and-input": {
-      name: "button-group-with-select-and-input",
-      filePath: "examples/radix/button-group-with-select-and-input.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-with-select-and-input")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-select-and-input"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-select": {
-      name: "button-group-with-select",
-      filePath: "examples/radix/button-group-with-select.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-with-select")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-select"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-text": {
-      name: "button-group-with-text",
-      filePath: "examples/radix/button-group-with-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-group-with-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-text"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7627,19 +7419,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-group-basic": {
-      name: "button-group-basic",
-      filePath: "examples/base/button-group-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "button-group-demo": {
       name: "button-group-demo",
       filePath: "examples/base/button-group-demo.tsx",
@@ -7692,19 +7471,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-group-navigation": {
-      name: "button-group-navigation",
-      filePath: "examples/base/button-group-navigation.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-navigation")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-navigation"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "button-group-nested": {
       name: "button-group-nested",
       filePath: "examples/base/button-group-nested.tsx",
@@ -7728,32 +7494,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-group-orientation"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-pagination-split": {
-      name: "button-group-pagination-split",
-      filePath: "examples/base/button-group-pagination-split.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-pagination-split")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-pagination-split"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-pagination": {
-      name: "button-group-pagination",
-      filePath: "examples/base/button-group-pagination.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-pagination")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-pagination"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7819,162 +7559,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-group-split"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-text-alignment": {
-      name: "button-group-text-alignment",
-      filePath: "examples/base/button-group-text-alignment.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-text-alignment")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-text-alignment"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-vertical-nested": {
-      name: "button-group-vertical-nested",
-      filePath: "examples/base/button-group-vertical-nested.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-vertical-nested")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-vertical-nested"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-vertical": {
-      name: "button-group-vertical",
-      filePath: "examples/base/button-group-vertical.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-vertical")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-vertical"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-dropdown": {
-      name: "button-group-with-dropdown",
-      filePath: "examples/base/button-group-with-dropdown.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-with-dropdown")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-dropdown"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-fields": {
-      name: "button-group-with-fields",
-      filePath: "examples/base/button-group-with-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-with-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-fields"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-icons": {
-      name: "button-group-with-icons",
-      filePath: "examples/base/button-group-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-input-group": {
-      name: "button-group-with-input-group",
-      filePath: "examples/base/button-group-with-input-group.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-with-input-group")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-input-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-input": {
-      name: "button-group-with-input",
-      filePath: "examples/base/button-group-with-input.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-with-input")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-input"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-like": {
-      name: "button-group-with-like",
-      filePath: "examples/base/button-group-with-like.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-with-like")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-like"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-select-and-input": {
-      name: "button-group-with-select-and-input",
-      filePath: "examples/base/button-group-with-select-and-input.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-with-select-and-input")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-select-and-input"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-select": {
-      name: "button-group-with-select",
-      filePath: "examples/base/button-group-with-select.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-with-select")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-select"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-group-with-text": {
-      name: "button-group-with-text",
-      filePath: "examples/base/button-group-with-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-group-with-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-group-with-text"
         return { default: mod.default || mod[exportName] }
       }),
     },

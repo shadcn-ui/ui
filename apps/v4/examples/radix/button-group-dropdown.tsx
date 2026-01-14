@@ -31,7 +31,7 @@ export default function ButtonGroupDropdown() {
             <ChevronDownIcon />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="[--radius:1rem]">
+        <DropdownMenuContent align="end" className="w-44">
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <VolumeOffIcon />
