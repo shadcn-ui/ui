@@ -1,3 +1,5 @@
+"use client"
+
 import { Field, FieldLabel } from "@/examples/base/ui/field"
 import {
   InputOTP,
