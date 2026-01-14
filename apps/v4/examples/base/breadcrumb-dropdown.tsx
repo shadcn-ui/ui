@@ -14,7 +14,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/examples/base/ui/dropdown-menu"
-import { ChevronDownIcon, SlashIcon } from "lucide-react"
+import { ChevronDownIcon, DotIcon } from "lucide-react"
 
 export function BreadcrumbDropdown() {
   return (
@@ -24,13 +24,15 @@ export function BreadcrumbDropdown() {
           <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5">
+            <DropdownMenuTrigger
+              render={<button className="flex items-center gap-1" />}
+            >
               Components
-              <ChevronDownIcon />
+              <ChevronDownIcon data-icon="inline-end" className="size-3.5" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuGroup>
@@ -42,7 +44,7 @@ export function BreadcrumbDropdown() {
           </DropdownMenu>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>

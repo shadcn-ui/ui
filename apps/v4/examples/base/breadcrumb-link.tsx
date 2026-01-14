@@ -13,11 +13,13 @@ export function BreadcrumbLinkDemo() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
+          <BreadcrumbLink render={<Link href="#link-component" />}>
+            Home
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink render={<Link href="/components" />}>
+          <BreadcrumbLink render={<Link href="#link-component" />}>
             Components
           </BreadcrumbLink>
         </BreadcrumbItem>

@@ -5,12 +5,7 @@ base: radix
 component: true
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="breadcrumb-demo"
-  className="[&_.preview]:p-2"
-  description="A breadcrumb with a collapsible dropdown."
-/>
+<ComponentPreview name="breadcrumb-demo" previewClassName="p-2" />
 
 ## Installation
 
@@ -37,7 +32,6 @@ npx shadcn@latest add breadcrumb
 <ComponentSource
   name="breadcrumb"
   title="components/ui/breadcrumb.tsx"
-  styleName="radix-nova"
 />
 
 <Step>Update the import paths to match your project setup.</Step>
@@ -81,142 +75,91 @@ import {
 
 ## Examples
 
+### Basic
+
+A basic breadcrumb with a home link and a components link.
+
+<ComponentPreview name="breadcrumb-basic" />
+
 ### Custom separator
 
 Use a custom component as `children` for `<BreadcrumbSeparator />` to create a custom separator.
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="breadcrumb-separator"
-  description="A breadcrumb with a custom separator"
-/>
-
-```tsx showLineNumbers {1,10-12}
-import { SlashIcon } from "lucide-react"
-
-...
-
-<Breadcrumb>
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/">Home</BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator>
-      <SlashIcon />
-    </BreadcrumbSeparator>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>
-```
-
----
+<ComponentPreview name="breadcrumb-separator" />
 
 ### Dropdown
 
 You can compose `<BreadcrumbItem />` with a `<DropdownMenu />` to create a dropdown in the breadcrumb.
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="breadcrumb-dropdown"
-  className="[&_.preview]:p-2"
-  description="A breadcrumb with a dropdown."
-/>
-
-```tsx showLineNumbers {1-6,11-21}
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
-...
-
-<BreadcrumbItem>
-  <DropdownMenu>
-    <DropdownMenuTrigger>
-      Components
-    </DropdownMenuTrigger>
-    <DropdownMenuContent align="start">
-      <DropdownMenuItem>Documentation</DropdownMenuItem>
-      <DropdownMenuItem>Themes</DropdownMenuItem>
-      <DropdownMenuItem>GitHub</DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
-</BreadcrumbItem>
-```
-
----
+<ComponentPreview name="breadcrumb-dropdown" />
 
 ### Collapsed
 
 We provide a `<BreadcrumbEllipsis />` component to show a collapsed state when the breadcrumb is too long.
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="breadcrumb-ellipsis"
-  className="[&_.preview]:p-2"
-  description="A breadcrumb showing a collapsed state."
-/>
-
-```tsx showLineNumbers {1,9}
-import { BreadcrumbEllipsis } from "@/components/ui/breadcrumb"
-
-...
-
-<Breadcrumb>
-  <BreadcrumbList>
-    {/* ... */}
-    <BreadcrumbItem>
-      <BreadcrumbEllipsis />
-    </BreadcrumbItem>
-    {/* ... */}
-  </BreadcrumbList>
-</Breadcrumb>
-```
-
----
+<ComponentPreview name="breadcrumb-ellipsis" />
 
 ### Link component
 
 To use a custom link component from your routing library, you can use the `asChild` prop on `<BreadcrumbLink />`.
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="breadcrumb-link"
-  description="A breadcrumb with a custom Link component"
-/>
+<ComponentPreview name="breadcrumb-link" />
 
-```tsx showLineNumbers {1,8-10}
-import Link from "next/link"
+## API Reference
 
-...
+### Breadcrumb
 
-<Breadcrumb>
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink asChild>
-        <Link href="/">Home</Link>
-      </BreadcrumbLink>
-    </BreadcrumbItem>
-    {/* ... */}
-  </BreadcrumbList>
-</Breadcrumb>
-```
+The `Breadcrumb` component is the root navigation element that wraps all breadcrumb components.
 
----
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
 
-### Responsive
+### BreadcrumbList
 
-Here's an example of a responsive breadcrumb that composes `<BreadcrumbItem />` with `<BreadcrumbEllipsis />`, `<DropdownMenu />`, and `<Drawer />`.
+The `BreadcrumbList` component displays the ordered list of breadcrumb items.
 
-It displays a dropdown on desktop and a drawer on mobile.
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="breadcrumb-responsive"
-  className="[&_.preview]:p-2"
-  description="A responsive breadcrumb. It displays a dropdown on desktop and a drawer on mobile."
-/>
+### BreadcrumbItem
+
+The `BreadcrumbItem` component wraps individual breadcrumb items.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### BreadcrumbLink
+
+The `BreadcrumbLink` component displays a clickable link in the breadcrumb.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### BreadcrumbPage
+
+The `BreadcrumbPage` component displays the current page in the breadcrumb (non-clickable).
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### BreadcrumbSeparator
+
+The `BreadcrumbSeparator` component displays a separator between breadcrumb items. You can pass custom children to override the default separator icon.
+
+| Prop        | Type              | Default |
+| ----------- | ----------------- | ------- |
+| `children`  | `React.ReactNode` | -       |
+| `className` | `string`          | -       |
+
+### BreadcrumbEllipsis
+
+The `BreadcrumbEllipsis` component displays an ellipsis indicator for collapsed breadcrumb items.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |

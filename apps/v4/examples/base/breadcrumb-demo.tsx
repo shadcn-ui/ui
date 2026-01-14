@@ -8,6 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/examples/base/ui/breadcrumb"
+import { Button } from "@/examples/base/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,12 +22,14 @@ export function BreadcrumbDemo() {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
+          <BreadcrumbLink render={<a href="#" />}>Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1">
+            <DropdownMenuTrigger
+              render={<Button size="icon-sm" variant="ghost" />}
+            >
               <BreadcrumbEllipsis className="size-4" />
               <span className="sr-only">Toggle menu</span>
             </DropdownMenuTrigger>
@@ -41,9 +44,7 @@ export function BreadcrumbDemo() {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink render={<Link href="/docs/components" />}>
-            Components
-          </BreadcrumbLink>
+          <BreadcrumbLink render={<a href="#" />}>Components</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>

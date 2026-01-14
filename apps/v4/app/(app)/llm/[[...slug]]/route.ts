@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server"
 
 import { processMdxForLLMs } from "@/lib/llm"
 import { source } from "@/lib/source"
-import { getActiveStyle } from "@/registry/_legacy-styles"
+import { getActiveStyle, type Style } from "@/registry/_legacy-styles"
 
 export const revalidate = false
 
@@ -36,7 +36,7 @@ export async function GET(
 
   const processedContent = processMdxForLLMs(
     await page.data.getText("raw"),
-    effectiveStyle
+    effectiveStyle as Style["name"]
   )
 
   return new NextResponse(processedContent, {

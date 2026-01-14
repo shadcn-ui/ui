@@ -525,19 +525,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "breadcrumb-responsive": {
-      name: "breadcrumb-responsive",
-      filePath: "examples/radix/breadcrumb-responsive.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/breadcrumb-responsive")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "breadcrumb-responsive"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "breadcrumb-separator": {
       name: "breadcrumb-separator",
       filePath: "examples/radix/breadcrumb-separator.tsx",
@@ -548,32 +535,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "breadcrumb-separator"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "breadcrumb-with-dropdown": {
-      name: "breadcrumb-with-dropdown",
-      filePath: "examples/radix/breadcrumb-with-dropdown.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/breadcrumb-with-dropdown")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "breadcrumb-with-dropdown"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "breadcrumb-with-link": {
-      name: "breadcrumb-with-link",
-      filePath: "examples/radix/breadcrumb-with-link.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/breadcrumb-with-link")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "breadcrumb-with-link"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7679,19 +7640,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "breadcrumb-responsive": {
-      name: "breadcrumb-responsive",
-      filePath: "examples/base/breadcrumb-responsive.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/breadcrumb-responsive")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "breadcrumb-responsive"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "breadcrumb-separator": {
       name: "breadcrumb-separator",
       filePath: "examples/base/breadcrumb-separator.tsx",
@@ -7702,32 +7650,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "breadcrumb-separator"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "breadcrumb-with-dropdown": {
-      name: "breadcrumb-with-dropdown",
-      filePath: "examples/base/breadcrumb-with-dropdown.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/breadcrumb-with-dropdown")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "breadcrumb-with-dropdown"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "breadcrumb-with-link": {
-      name: "breadcrumb-with-link",
-      filePath: "examples/base/breadcrumb-with-link.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/breadcrumb-with-link")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "breadcrumb-with-link"
         return { default: mod.default || mod[exportName] }
       }),
     },

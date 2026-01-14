@@ -7,7 +7,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/examples/base/ui/breadcrumb"
-import { SlashIcon } from "lucide-react"
+import { DotIcon } from "lucide-react"
 
 export function BreadcrumbSeparatorDemo() {
   return (
@@ -17,7 +17,7 @@ export function BreadcrumbSeparatorDemo() {
           <BreadcrumbLink render={<Link href="/" />}>Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbLink render={<Link href="/components" />}>
@@ -25,7 +25,7 @@ export function BreadcrumbSeparatorDemo() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>

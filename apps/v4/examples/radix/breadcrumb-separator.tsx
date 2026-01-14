@@ -7,7 +7,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/examples/radix/ui/breadcrumb"
-import { SlashIcon } from "lucide-react"
+import { DotIcon } from "lucide-react"
 
 export function BreadcrumbSeparatorDemo() {
   return (
@@ -19,7 +19,7 @@ export function BreadcrumbSeparatorDemo() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
@@ -27,7 +27,7 @@ export function BreadcrumbSeparatorDemo() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>

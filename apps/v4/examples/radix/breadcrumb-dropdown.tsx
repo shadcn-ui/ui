@@ -14,7 +14,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/examples/radix/ui/dropdown-menu"
-import { ChevronDownIcon, SlashIcon } from "lucide-react"
+import { ChevronDownIcon, DotIcon } from "lucide-react"
 
 export function BreadcrumbDropdown() {
   return (
@@ -26,7 +26,7 @@ export function BreadcrumbDropdown() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <DropdownMenu>
@@ -44,7 +44,7 @@ export function BreadcrumbDropdown() {
           </DropdownMenu>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
