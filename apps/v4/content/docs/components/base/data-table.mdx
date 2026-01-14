@@ -107,7 +107,7 @@ I'm using a Next.js example here but this works for any other React framework.
 
 Let's start by building a basic table.
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 ### Column Definitions
 
@@ -284,7 +284,7 @@ export default async function DemoPage() {
 
 Let's format the amount cell to display the dollar amount. We'll also align the cell to the right.
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 ### Update columns definition
 
@@ -316,7 +316,7 @@ You can use the same approach to format other cells and headers.
 
 Let's add row actions to our table. We'll use a `<Dropdown />` component for this.
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 ### Update columns definition
 
@@ -380,7 +380,7 @@ You can access the row data using `row.original` in the `cell` function. Use thi
 
 Next, we'll add pagination to our table.
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 ### Update `<DataTable>`
 
@@ -466,7 +466,7 @@ See [Reusable Components](#reusable-components) section for a more advanced pagi
 
 Let's make the email column sortable.
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 ### Update `<DataTable>`
 
@@ -548,7 +548,7 @@ This will automatically sort the table (asc and desc) when the user toggles on t
 
 Let's add a search input to filter emails in our table.
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 ### Update `<DataTable>`
 
@@ -623,7 +623,7 @@ Filtering is now enabled for the `email` column. You can add filters to other co
 
 Adding column visibility is fairly simple using `@tanstack/react-table` visibility API.
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 ### Update `<DataTable>`
 
@@ -736,7 +736,7 @@ This adds a dropdown menu that you can use to toggle column visibility.
 
 Next, we're going to add row selection to our table.
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 ### Update column definitions
 

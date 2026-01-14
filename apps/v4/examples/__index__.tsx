@@ -265,6 +265,45 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "avatar-badge-icon": {
+      name: "avatar-badge-icon",
+      filePath: "examples/radix/avatar-badge-icon.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/avatar-badge-icon")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "avatar-badge-icon"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "avatar-badge": {
+      name: "avatar-badge",
+      filePath: "examples/radix/avatar-badge.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/avatar-badge")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "avatar-badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "avatar-basic": {
+      name: "avatar-basic",
+      filePath: "examples/radix/avatar-basic.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/avatar-basic")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "avatar-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "avatar-demo": {
       name: "avatar-demo",
       filePath: "examples/radix/avatar-demo.tsx",
@@ -278,94 +317,68 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-group-example": {
-      name: "avatar-group-example",
-      filePath: "examples/radix/avatar-group-example.tsx",
+    "avatar-dropdown": {
+      name: "avatar-dropdown",
+      filePath: "examples/radix/avatar-dropdown.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/avatar-group-example")
+        const mod = await import("./radix/avatar-dropdown")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-group-example"
+          ) || "avatar-dropdown"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-group-with-count": {
-      name: "avatar-group-with-count",
-      filePath: "examples/radix/avatar-group-with-count.tsx",
+    "avatar-group-count-icon": {
+      name: "avatar-group-count-icon",
+      filePath: "examples/radix/avatar-group-count-icon.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/avatar-group-with-count")
+        const mod = await import("./radix/avatar-group-count-icon")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-group-with-count"
+          ) || "avatar-group-count-icon"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-group-with-icon-count": {
-      name: "avatar-group-with-icon-count",
-      filePath: "examples/radix/avatar-group-with-icon-count.tsx",
+    "avatar-group-count": {
+      name: "avatar-group-count",
+      filePath: "examples/radix/avatar-group-count.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/avatar-group-with-icon-count")
+        const mod = await import("./radix/avatar-group-count")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-group-with-icon-count"
+          ) || "avatar-group-count"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-in-empty": {
-      name: "avatar-in-empty",
-      filePath: "examples/radix/avatar-in-empty.tsx",
+    "avatar-group": {
+      name: "avatar-group",
+      filePath: "examples/radix/avatar-group.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/avatar-in-empty")
+        const mod = await import("./radix/avatar-group")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-in-empty"
+          ) || "avatar-group"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-sizes": {
-      name: "avatar-sizes",
-      filePath: "examples/radix/avatar-sizes.tsx",
+    "avatar-size": {
+      name: "avatar-size",
+      filePath: "examples/radix/avatar-size.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/avatar-sizes")
+        const mod = await import("./radix/avatar-size")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-sizes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "avatar-with-badge-icon": {
-      name: "avatar-with-badge-icon",
-      filePath: "examples/radix/avatar-with-badge-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/avatar-with-badge-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-with-badge-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "avatar-with-badge": {
-      name: "avatar-with-badge",
-      filePath: "examples/radix/avatar-with-badge.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/avatar-with-badge")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-with-badge"
+          ) || "avatar-size"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7471,6 +7484,45 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "avatar-badge-icon": {
+      name: "avatar-badge-icon",
+      filePath: "examples/base/avatar-badge-icon.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/avatar-badge-icon")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "avatar-badge-icon"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "avatar-badge": {
+      name: "avatar-badge",
+      filePath: "examples/base/avatar-badge.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/avatar-badge")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "avatar-badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "avatar-basic": {
+      name: "avatar-basic",
+      filePath: "examples/base/avatar-basic.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/avatar-basic")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "avatar-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "avatar-demo": {
       name: "avatar-demo",
       filePath: "examples/base/avatar-demo.tsx",
@@ -7484,94 +7536,68 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-group-example": {
-      name: "avatar-group-example",
-      filePath: "examples/base/avatar-group-example.tsx",
+    "avatar-dropdown": {
+      name: "avatar-dropdown",
+      filePath: "examples/base/avatar-dropdown.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/avatar-group-example")
+        const mod = await import("./base/avatar-dropdown")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-group-example"
+          ) || "avatar-dropdown"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-group-with-count": {
-      name: "avatar-group-with-count",
-      filePath: "examples/base/avatar-group-with-count.tsx",
+    "avatar-group-count-icon": {
+      name: "avatar-group-count-icon",
+      filePath: "examples/base/avatar-group-count-icon.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/avatar-group-with-count")
+        const mod = await import("./base/avatar-group-count-icon")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-group-with-count"
+          ) || "avatar-group-count-icon"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-group-with-icon-count": {
-      name: "avatar-group-with-icon-count",
-      filePath: "examples/base/avatar-group-with-icon-count.tsx",
+    "avatar-group-count": {
+      name: "avatar-group-count",
+      filePath: "examples/base/avatar-group-count.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/avatar-group-with-icon-count")
+        const mod = await import("./base/avatar-group-count")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-group-with-icon-count"
+          ) || "avatar-group-count"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-in-empty": {
-      name: "avatar-in-empty",
-      filePath: "examples/base/avatar-in-empty.tsx",
+    "avatar-group": {
+      name: "avatar-group",
+      filePath: "examples/base/avatar-group.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/avatar-in-empty")
+        const mod = await import("./base/avatar-group")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-in-empty"
+          ) || "avatar-group"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "avatar-sizes": {
-      name: "avatar-sizes",
-      filePath: "examples/base/avatar-sizes.tsx",
+    "avatar-size": {
+      name: "avatar-size",
+      filePath: "examples/base/avatar-size.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/avatar-sizes")
+        const mod = await import("./base/avatar-size")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-sizes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "avatar-with-badge-icon": {
-      name: "avatar-with-badge-icon",
-      filePath: "examples/base/avatar-with-badge-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/avatar-with-badge-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-with-badge-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "avatar-with-badge": {
-      name: "avatar-with-badge",
-      filePath: "examples/base/avatar-with-badge.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/avatar-with-badge")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "avatar-with-badge"
+          ) || "avatar-size"
         return { default: mod.default || mod[exportName] }
       }),
     },
