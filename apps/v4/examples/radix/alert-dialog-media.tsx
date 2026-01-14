@@ -9,30 +9,29 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/base/ui/alert-dialog"
-import { Button } from "@/examples/base/ui/button"
-import { BluetoothIcon } from "lucide-react"
+} from "@/examples/radix/ui/alert-dialog"
+import { Button } from "@/examples/radix/ui/button"
+import { CircleFadingPlusIcon } from "lucide-react"
 
 export function AlertDialogWithMedia() {
   return (
     <AlertDialog>
-      <AlertDialogTrigger
-        render={<Button variant="outline">Default (Media)</Button>}
-      />
+      <AlertDialogTrigger asChild>
+        <Button variant="outline">Share Project</Button>
+      </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogMedia>
-            <BluetoothIcon />
+            <CircleFadingPlusIcon />
           </AlertDialogMedia>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>Share this project?</AlertDialogTitle>
           <AlertDialogDescription>
-            This will permanently delete your account and remove your data from
-            our servers.
+            Anyone with the link will be able to view and edit this project.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <AlertDialogAction>Share</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

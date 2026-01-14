@@ -285,9 +285,12 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  Steps: ({ ...props }) => (
+  Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div
-      className="[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8"
+      className={cn(
+        "[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8",
+        className
+      )}
       {...props}
     />
   ),

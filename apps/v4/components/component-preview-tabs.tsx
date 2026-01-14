@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 
 export function ComponentPreviewTabs({
   className,
+  previewClassName,
   align = "center",
   hideCode = false,
   chromeLessOnMobile = false,
@@ -13,6 +14,7 @@ export function ComponentPreviewTabs({
   source,
   ...props
 }: React.ComponentProps<"div"> & {
+  previewClassName?: string
   align?: "center" | "start" | "end"
   hideCode?: boolean
   chromeLessOnMobile?: boolean
@@ -22,7 +24,7 @@ export function ComponentPreviewTabs({
   return (
     <div
       className={cn(
-        "group relative mt-4 mb-12 flex flex-col gap-2 overflow-hidden rounded-xl border",
+        "group relative mt-4 mb-12 flex flex-col gap-2 overflow-hidden rounded-lg border",
         className
       )}
       {...props}
@@ -30,9 +32,10 @@ export function ComponentPreviewTabs({
       <div data-slot="preview">
         <div
           data-align={align}
+          data-chromeless={chromeLessOnMobile}
           className={cn(
-            "preview flex w-full justify-center data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
-            chromeLessOnMobile ? "sm:p-10" : "h-[450px] p-10"
+            "preview flex h-[450px] w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
+            previewClassName
           )}
         >
           {component}

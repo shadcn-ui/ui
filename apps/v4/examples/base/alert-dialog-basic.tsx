@@ -14,7 +14,9 @@ import { Button } from "@/examples/base/ui/button"
 export function AlertDialogBasic() {
   return (
     <AlertDialog>
-      <AlertDialogTrigger render={<Button variant="outline">Default</Button>} />
+      <AlertDialogTrigger
+        render={<Button variant="outline">Show Dialog</Button>}
+      />
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>

@@ -168,7 +168,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
 
   return (
     <Popover>
-      <div className="bg-secondary group/buttons relative flex hidden rounded-lg *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
+      <div className="bg-secondary group/buttons relative flex rounded-lg *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
         <PopoverAnchor />
         <Button
           variant="secondary"
@@ -183,7 +183,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
           <DropdownMenuTrigger asChild className="hidden sm:flex">
             {trigger}
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="shadow-none">
+          <DropdownMenuContent align="end" className="rounded-lg shadow-none">
             {Object.entries(menuItems).map(([key, value]) => (
               <DropdownMenuItem key={key} asChild>
                 {value(url)}
@@ -193,13 +193,13 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         </DropdownMenu>
         <Separator
           orientation="vertical"
-          className="!bg-foreground/10 absolute top-0 right-8 z-0 !h-8 peer-focus-visible:opacity-0 sm:right-7 sm:!h-7"
+          className="!bg-foreground/5 absolute top-1 right-8 z-0 !h-6 peer-focus-visible:opacity-0 sm:right-7 sm:!h-5"
         />
         <PopoverTrigger asChild className="flex sm:hidden">
           {trigger}
         </PopoverTrigger>
         <PopoverContent
-          className="bg-background/70 dark:bg-background/60 w-52 !origin-center rounded-lg p-1 shadow-sm backdrop-blur-sm"
+          className="bg-background/70 dark:bg-background/60 w-52 !origin-center rounded-lg p-1 shadow-none backdrop-blur-sm"
           align="start"
         >
           {Object.entries(menuItems).map(([key, value]) => (

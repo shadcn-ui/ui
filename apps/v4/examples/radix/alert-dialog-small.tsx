@@ -15,7 +15,7 @@ export function AlertDialogSmall() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">Small</Button>
+        <Button variant="outline">Show Dialog</Button>
       </AlertDialogTrigger>
       <AlertDialogContent size="sm">
         <AlertDialogHeader>

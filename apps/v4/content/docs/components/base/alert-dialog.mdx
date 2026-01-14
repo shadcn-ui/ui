@@ -5,23 +5,18 @@ featured: true
 base: base
 component: true
 links:
-  doc: https://www.radix-ui.com/docs/primitives/components/alert-dialog
-  api: https://www.radix-ui.com/docs/primitives/components/alert-dialog#api-reference
+  doc: https://base-ui.com/react/components/alert-dialog
+  api: https://base-ui.com/react/components/alert-dialog#api-reference
 ---
 
-<ComponentPreview
-  styleName="base-nova"
-  name="alert-dialog-demo"
-  title="An alert dialog with cancel and continue buttons."
-  description="An alert dialog with cancel and continue buttons."
-/>
+<ComponentPreview name="alert-dialog-demo" previewClassName="h-56" />
 
 ## Installation
 
 <CodeTabs>
 
 <TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="cli">Command</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
 <TabsContent value="cli">
@@ -34,7 +29,7 @@ npx shadcn@latest add alert-dialog
 
 <TabsContent value="manual">
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 <Step>Install the following dependencies:</Step>
 
@@ -76,13 +71,15 @@ import {
 
 ```tsx showLineNumbers
 <AlertDialog>
-  <AlertDialogTrigger>Open</AlertDialogTrigger>
+  <AlertDialogTrigger render={<Button variant="outline" />}>
+    Show Dialog
+  </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
       <AlertDialogDescription>
         This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
+        from our servers.
       </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
@@ -92,3 +89,47 @@ import {
   </AlertDialogContent>
 </AlertDialog>
 ```
+
+## Examples
+
+### Basic
+
+A basic alert dialog with a title, description, and cancel and continue buttons.
+
+<ComponentPreview name="alert-dialog-basic" previewClassName="h-56" />
+
+### Small
+
+Use the `size="sm"` prop to make the alert dialog smaller.
+
+<ComponentPreview name="alert-dialog-small" previewClassName="h-56" />
+
+### Media
+
+Use the `AlertDialogMedia` component to add a media element such as an icon or image to the alert dialog.
+
+<ComponentPreview name="alert-dialog-media" previewClassName="h-56" />
+
+### Small with Media
+
+Use the `size="sm"` prop to make the alert dialog smaller and the `AlertDialogMedia` component to add a media element such as an icon or image to the alert dialog.
+
+<ComponentPreview name="alert-dialog-small-media" previewClassName="h-56" />
+
+### Destructive
+
+Use the `AlertDialogAction` component to add a destructive action button to the alert dialog.
+
+<ComponentPreview name="alert-dialog-destructive" previewClassName="h-56" />
+
+## API Reference
+
+### size
+
+Use the `size` props on the `AlertDialogContent` component to control the size of the alert dialog. It accepts the following values:
+
+| Prop   | Type                | Default     |
+| ------ | ------------------- | ----------- |
+| `size` | `"default" \| "sm"` | `"default"` |
+
+For more information about the other components and their props, see the [Base UI documentation](https://base-ui.com/react/components/alert-dialog#api-reference).

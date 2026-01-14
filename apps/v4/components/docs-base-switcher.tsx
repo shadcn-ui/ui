@@ -10,20 +10,14 @@ export function DocsBaseSwitcher({
   component: string
 }) {
   return (
-    <div className="bg-muted inline-flex h-7 items-center gap-0.5 rounded-md p-0.5">
+    <div className="inline-flex items-center gap-6">
       {BASES.map((baseItem) => (
         <Link
           key={baseItem.name}
           href={`/docs/components/${baseItem.name}/${component}`}
           data-active={base === baseItem.name}
-          className="text-muted-foreground hover:text-foreground data-[active=true]:bg-background data-[active=true]:text-foreground inline-flex h-[--spacing(6.25)] items-center justify-center gap-1 rounded-sm pr-2.5 pl-2 text-sm font-medium data-[active=true]:shadow-sm"
+          className="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground after:bg-foreground relative inline-flex items-center justify-center gap-1 pt-1 pb-0.5 text-base font-medium transition-colors after:absolute after:inset-x-0 after:bottom-[-4px] after:h-0.5 after:opacity-0 after:transition-opacity data-[active=true]:after:opacity-100"
         >
-          {baseItem.meta?.logo && (
-            <span
-              className="size-3.5 shrink-0 [&>svg]:size-full"
-              dangerouslySetInnerHTML={{ __html: baseItem.meta.logo }}
-            />
-          )}
           {baseItem.title}
         </Link>
       ))}

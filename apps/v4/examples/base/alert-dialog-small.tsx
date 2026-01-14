@@ -14,7 +14,9 @@ import { Button } from "@/examples/base/ui/button"
 export function AlertDialogSmall() {
   return (
     <AlertDialog>
-      <AlertDialogTrigger render={<Button variant="outline">Small</Button>} />
+      <AlertDialogTrigger
+        render={<Button variant="outline">Show Dialog</Button>}
+      />
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
           <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>

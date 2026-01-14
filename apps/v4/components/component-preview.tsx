@@ -5,33 +5,15 @@ import { getRegistryComponent } from "@/lib/registry"
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
 import { ComponentSource } from "@/components/component-source"
 
-function DynamicComponent({
-  name,
-  styleName,
-}: {
-  name: string
-  styleName: string
-}) {
-  const Component = React.useMemo(
-    () => getRegistryComponent(name, styleName),
-    [name, styleName]
-  )
-
-  if (!Component) {
-    return null
-  }
-
-  return React.createElement(Component)
-}
-
 export function ComponentPreview({
   name,
-  styleName = "new-york-v4",
   type,
   className,
+  previewClassName,
   align = "center",
   hideCode = false,
   chromeLessOnMobile = false,
+  styleName = "base-nova",
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
@@ -41,6 +23,7 @@ export function ComponentPreview({
   hideCode?: boolean
   type?: "block" | "component" | "example"
   chromeLessOnMobile?: boolean
+  previewClassName?: string
 }) {
   const Component = getRegistryComponent(name, styleName)
 
@@ -83,6 +66,7 @@ export function ComponentPreview({
   return (
     <ComponentPreviewTabs
       className={className}
+      previewClassName={previewClassName}
       align={align}
       hideCode={hideCode}
       component={<DynamicComponent name={name} styleName={styleName} />}
@@ -97,4 +81,23 @@ export function ComponentPreview({
       {...props}
     />
   )
+}
+
+function DynamicComponent({
+  name,
+  styleName,
+}: {
+  name: string
+  styleName: string
+}) {
+  const Component = React.useMemo(
+    () => getRegistryComponent(name, styleName),
+    [name, styleName]
+  )
+
+  if (!Component) {
+    return null
+  }
+
+  return React.createElement(Component)
 }

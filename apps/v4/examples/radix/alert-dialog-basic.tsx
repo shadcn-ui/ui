@@ -15,7 +15,7 @@ export function AlertDialogBasic() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">Default</Button>
+        <Button variant="outline">Show Dialog</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

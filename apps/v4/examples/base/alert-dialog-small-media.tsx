@@ -9,30 +9,30 @@ import {
   AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/examples/radix/ui/alert-dialog"
-import { Button } from "@/examples/radix/ui/button"
+} from "@/examples/base/ui/alert-dialog"
+import { Button } from "@/examples/base/ui/button"
 import { BluetoothIcon } from "lucide-react"
 
-export function AlertDialogWithMedia() {
+export function AlertDialogSmallWithMedia() {
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Default (Media)</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogTrigger
+        render={<Button variant="outline">Show Dialog</Button>}
+      />
+
+      <AlertDialogContent size="sm">
         <AlertDialogHeader>
           <AlertDialogMedia>
             <BluetoothIcon />
           </AlertDialogMedia>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
           <AlertDialogDescription>
-            This will permanently delete your account and remove your data from
-            our servers.
+            Do you want to allow the USB accessory to connect to this device?
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
+          <AlertDialogAction>Allow</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

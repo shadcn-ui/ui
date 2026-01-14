@@ -4,16 +4,15 @@ description: A vertically stacked set of interactive headings that each reveal a
 base: radix
 component: true
 links:
-  doc: https://www.radix-ui.com/docs/primitives/components/accordion
-  api: https://www.radix-ui.com/docs/primitives/components/accordion#api-reference
+  doc: https://www.radix-ui.com/primitives/docs/components/accordion
+  api: https://www.radix-ui.com/primitives/docs/components/accordion#api-reference
 ---
 
 <ComponentPreview
-  styleName="radix-nova"
   name="accordion-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
-  description="An accordion with three items"
+  styleName="radix-nova"
   align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
 />
 
 ## Installation
@@ -21,7 +20,7 @@ links:
 <CodeTabs>
 
 <TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="cli">Command</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
 
@@ -35,7 +34,7 @@ npx shadcn@latest add accordion
 
 <TabsContent value="manual">
 
-<Steps>
+<Steps className="mb-0 pt-2">
 
 <Step>Install the following dependencies:</Step>
 
@@ -71,7 +70,7 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Accordion type="single" collapsible>
+<Accordion type="single" collapsible defaultValue="item-1">
   <AccordionItem value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionContent>
@@ -83,14 +82,26 @@ import {
 
 ## Examples
 
+### Basic
+
+A basic accordion that shows one item at a time. The first item is open by default.
+
+<ComponentPreview
+  name="accordion-basic"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
+/>
+
 ### Multiple
 
 Use `type="multiple"` to allow multiple items to be open at the same time.
 
 <ComponentPreview
-  styleName="radix-nova"
   name="accordion-multiple"
-  description="An accordion that allows multiple items to be open"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[450px]"
 />
 
 ### Disabled
@@ -98,27 +109,34 @@ Use `type="multiple"` to allow multiple items to be open at the same time.
 Use the `disabled` prop on `AccordionItem` to disable individual items.
 
 <ComponentPreview
-  styleName="radix-nova"
   name="accordion-disabled"
-  description="An accordion with a disabled item"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
 />
 
-### With Borders
+### Borders
 
-An accordion with bordered items.
+Add `border` to the `Accordion` and `border-b last:border-b-0` to the `AccordionItem` to add borders to the items.
 
 <ComponentPreview
-  styleName="radix-nova"
   name="accordion-borders"
-  description="An accordion with bordered items"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
 />
 
-### In Card
+### Card
 
-An accordion inside a card component.
+Wrap the `Accordion` in a `Card` component.
 
 <ComponentPreview
-  styleName="radix-nova"
   name="accordion-card"
-  description="An accordion inside a card"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[435px]"
 />
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/primitives/docs/components/accordion#api-reference) documentation for more information.

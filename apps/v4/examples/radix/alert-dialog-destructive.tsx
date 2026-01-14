@@ -31,7 +31,7 @@ export function AlertDialogDestructive() {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel variant="ghost">Cancel</AlertDialogCancel>
+          <AlertDialogCancel variant="outline">Cancel</AlertDialogCancel>
           <AlertDialogAction variant="destructive">Delete</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

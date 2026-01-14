@@ -249,7 +249,7 @@
     }
 
     > h3 {
-      @apply !mt-16;
+      @apply !mt-8;
     }
 
     > h3 + p {

@@ -11,28 +11,27 @@ import {
   AlertDialogTrigger,
 } from "@/examples/base/ui/alert-dialog"
 import { Button } from "@/examples/base/ui/button"
-import { BluetoothIcon } from "lucide-react"
+import { CircleFadingPlusIcon } from "lucide-react"
 
-export function AlertDialogSmallWithMedia() {
+export function AlertDialogWithMedia() {
   return (
     <AlertDialog>
       <AlertDialogTrigger
-        render={<Button variant="outline">Small (Media)</Button>}
+        render={<Button variant="outline">Share Project</Button>}
       />
-
-      <AlertDialogContent size="sm">
+      <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogMedia>
-            <BluetoothIcon />
+            <CircleFadingPlusIcon />
           </AlertDialogMedia>
-          <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
+          <AlertDialogTitle>Share this project?</AlertDialogTitle>
           <AlertDialogDescription>
-            Do you want to allow the USB accessory to connect to this device?
+            Anyone with the link will be able to view and edit this project.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Don&apos;t allow</AlertDialogCancel>
-          <AlertDialogAction>Allow</AlertDialogAction>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Share</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

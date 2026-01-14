@@ -19,10 +19,14 @@ import {
 } from "@/registry/new-york-v4/ui/sidebar"
 
 const TOP_LEVEL_SECTIONS = [
-  { name: "Get Started", href: "/docs" },
+  { name: "Introduction", href: "/docs" },
   {
     name: "Components",
     href: "/docs/components",
+  },
+  {
+    name: "Installation",
+    href: "/docs/installation",
   },
   {
     name: "Directory",
@@ -31,6 +35,10 @@ const TOP_LEVEL_SECTIONS = [
   {
     name: "MCP Server",
     href: "/docs/mcp",
+  },
+  {
+    name: "Registry",
+    href: "/docs/registry",
   },
   {
     name: "Forms",

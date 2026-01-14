@@ -70,19 +70,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "accordion-in-card": {
-      name: "accordion-in-card",
-      filePath: "examples/radix/accordion-in-card.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/accordion-in-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "accordion-in-card"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "accordion-multiple": {
       name: "accordion-multiple",
       filePath: "examples/radix/accordion-multiple.tsx",
@@ -96,29 +83,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "accordion-with-borders": {
-      name: "accordion-with-borders",
-      filePath: "examples/radix/accordion-with-borders.tsx",
+    "alert-action": {
+      name: "alert-action",
+      filePath: "examples/radix/alert-action.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/accordion-with-borders")
+        const mod = await import("./radix/alert-action")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "accordion-with-borders"
+          ) || "alert-action"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "accordion-with-disabled": {
-      name: "accordion-with-disabled",
-      filePath: "examples/radix/accordion-with-disabled.tsx",
+    "alert-basic": {
+      name: "alert-basic",
+      filePath: "examples/radix/alert-basic.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/accordion-with-disabled")
+        const mod = await import("./radix/alert-basic")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "accordion-with-disabled"
+          ) || "alert-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "alert-colors": {
+      name: "alert-colors",
+      filePath: "examples/radix/alert-colors.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/alert-colors")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "alert-colors"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -187,29 +187,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "alert-dialog-in-dialog": {
-      name: "alert-dialog-in-dialog",
-      filePath: "examples/radix/alert-dialog-in-dialog.tsx",
+    "alert-dialog-media": {
+      name: "alert-dialog-media",
+      filePath: "examples/radix/alert-dialog-media.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/alert-dialog-in-dialog")
+        const mod = await import("./radix/alert-dialog-media")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-dialog-in-dialog"
+          ) || "alert-dialog-media"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "alert-dialog-small-with-media": {
-      name: "alert-dialog-small-with-media",
-      filePath: "examples/radix/alert-dialog-small-with-media.tsx",
+    "alert-dialog-small-media": {
+      name: "alert-dialog-small-media",
+      filePath: "examples/radix/alert-dialog-small-media.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/alert-dialog-small-with-media")
+        const mod = await import("./radix/alert-dialog-small-media")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-dialog-small-with-media"
+          ) || "alert-dialog-small-media"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -223,71 +223,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "alert-dialog-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-dialog-with-media": {
-      name: "alert-dialog-with-media",
-      filePath: "examples/radix/alert-dialog-with-media.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/alert-dialog-with-media")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-dialog-with-media"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-example1": {
-      name: "alert-example1",
-      filePath: "examples/radix/alert-example1.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/alert-example1")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-example1"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-example2": {
-      name: "alert-example2",
-      filePath: "examples/radix/alert-example2.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/alert-example2")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-example2"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-example3": {
-      name: "alert-example3",
-      filePath: "examples/radix/alert-example3.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/alert-example3")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-example3"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-example4": {
-      name: "alert-example4",
-      filePath: "examples/radix/alert-example4.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/alert-example4")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-example4"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7367,19 +7302,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "accordion-in-card": {
-      name: "accordion-in-card",
-      filePath: "examples/base/accordion-in-card.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/accordion-in-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "accordion-in-card"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "accordion-multiple": {
       name: "accordion-multiple",
       filePath: "examples/base/accordion-multiple.tsx",
@@ -7393,29 +7315,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "accordion-with-borders": {
-      name: "accordion-with-borders",
-      filePath: "examples/base/accordion-with-borders.tsx",
+    "alert-action": {
+      name: "alert-action",
+      filePath: "examples/base/alert-action.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/accordion-with-borders")
+        const mod = await import("./base/alert-action")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "accordion-with-borders"
+          ) || "alert-action"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "accordion-with-disabled": {
-      name: "accordion-with-disabled",
-      filePath: "examples/base/accordion-with-disabled.tsx",
+    "alert-basic": {
+      name: "alert-basic",
+      filePath: "examples/base/alert-basic.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/accordion-with-disabled")
+        const mod = await import("./base/alert-basic")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "accordion-with-disabled"
+          ) || "alert-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "alert-colors": {
+      name: "alert-colors",
+      filePath: "examples/base/alert-colors.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/alert-colors")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "alert-colors"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7484,29 +7419,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "alert-dialog-in-dialog": {
-      name: "alert-dialog-in-dialog",
-      filePath: "examples/base/alert-dialog-in-dialog.tsx",
+    "alert-dialog-media": {
+      name: "alert-dialog-media",
+      filePath: "examples/base/alert-dialog-media.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/alert-dialog-in-dialog")
+        const mod = await import("./base/alert-dialog-media")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-dialog-in-dialog"
+          ) || "alert-dialog-media"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "alert-dialog-small-with-media": {
-      name: "alert-dialog-small-with-media",
-      filePath: "examples/base/alert-dialog-small-with-media.tsx",
+    "alert-dialog-small-media": {
+      name: "alert-dialog-small-media",
+      filePath: "examples/base/alert-dialog-small-media.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/alert-dialog-small-with-media")
+        const mod = await import("./base/alert-dialog-small-media")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-dialog-small-with-media"
+          ) || "alert-dialog-small-media"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7520,71 +7455,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "alert-dialog-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-dialog-with-media": {
-      name: "alert-dialog-with-media",
-      filePath: "examples/base/alert-dialog-with-media.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/alert-dialog-with-media")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-dialog-with-media"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-example1": {
-      name: "alert-example1",
-      filePath: "examples/base/alert-example1.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/alert-example1")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-example1"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-example2": {
-      name: "alert-example2",
-      filePath: "examples/base/alert-example2.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/alert-example2")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-example2"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-example3": {
-      name: "alert-example3",
-      filePath: "examples/base/alert-example3.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/alert-example3")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-example3"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "alert-example4": {
-      name: "alert-example4",
-      filePath: "examples/base/alert-example4.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/alert-example4")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "alert-example4"
         return { default: mod.default || mod[exportName] }
       }),
     },

@@ -1,32 +1,23 @@
 import { Alert, AlertDescription, AlertTitle } from "@/examples/base/ui/alert"
-import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from "lucide-react"
+import { CheckCircle2Icon, InfoIcon } from "lucide-react"
 
 export default function AlertDemo() {
   return (
-    <div className="grid w-full max-w-xl items-start gap-4">
+    <div className="grid w-full max-w-md items-start gap-4">
       <Alert>
         <CheckCircle2Icon />
-        <AlertTitle>Success! Your changes have been saved</AlertTitle>
+        <AlertTitle>Payment successful</AlertTitle>
         <AlertDescription>
-          This is an alert with icon, title and description.
+          Your payment of $29.99 has been processed. A receipt has been sent to
+          your email address.
         </AlertDescription>
       </Alert>
       <Alert>
-        <PopcornIcon />
-        <AlertTitle>
-          This Alert has a title and an icon. No description.
-        </AlertTitle>
-      </Alert>
-      <Alert variant="destructive">
-        <AlertCircleIcon />
-        <AlertTitle>Unable to process your payment.</AlertTitle>
+        <InfoIcon />
+        <AlertTitle>New feature available</AlertTitle>
         <AlertDescription>
-          <p>Please verify your billing information and try again.</p>
-          <ul className="list-inside list-disc text-sm">
-            <li>Check your card details</li>
-            <li>Ensure sufficient funds</li>
-            <li>Verify billing address</li>
-          </ul>
+          We&apos;ve added dark mode support. You can enable it in your account
+          settings.
         </AlertDescription>
       </Alert>
     </div>
