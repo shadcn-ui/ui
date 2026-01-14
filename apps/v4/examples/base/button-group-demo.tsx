@@ -52,7 +52,7 @@ export default function ButtonGroupDemo() {
           >
             <MoreHorizontalIcon />
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-52">
+          <DropdownMenuContent align="end" className="w-40">
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <MailCheckIcon />

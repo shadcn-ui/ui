@@ -1,10 +1,16 @@
 import { Button } from "@/examples/base/ui/button"
-import { IconGitBranch } from "@tabler/icons-react"
+import { IconGitBranch, IconGitFork } from "@tabler/icons-react"
 
 export default function ButtonWithIcon() {
   return (
-    <Button variant="outline" size="sm">
-      <IconGitBranch /> New Branch
-    </Button>
+    <div className="flex gap-2">
+      <Button variant="outline">
+        <IconGitBranch data-icon="inline-start" /> New Branch
+      </Button>
+      <Button variant="outline">
+        Fork
+        <IconGitFork data-icon="inline-end" />
+      </Button>
+    </div>
   )
 }

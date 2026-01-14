@@ -538,16 +538,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-as-child": {
-      name: "button-as-child",
-      filePath: "examples/radix/button-as-child.tsx",
+    "button-aschild": {
+      name: "button-aschild",
+      filePath: "examples/radix/button-aschild.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/button-as-child")
+        const mod = await import("./radix/button-aschild")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-as-child"
+          ) || "button-aschild"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -587,19 +587,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-destructive"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-examples": {
-      name: "button-examples",
-      filePath: "examples/radix/button-examples.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-examples")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-examples"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -967,45 +954,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-icon-left": {
-      name: "button-icon-left",
-      filePath: "examples/radix/button-icon-left.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-icon-left")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-icon-left"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-icon-only": {
-      name: "button-icon-only",
-      filePath: "examples/radix/button-icon-only.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-icon-only")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-icon-only"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-icon-right": {
-      name: "button-icon-right",
-      filePath: "examples/radix/button-icon-right.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-icon-right")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-icon-right"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "button-icon": {
       name: "button-icon",
       filePath: "examples/radix/button-icon.tsx",
@@ -1019,19 +967,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-invalid-states": {
-      name: "button-invalid-states",
-      filePath: "examples/radix/button-invalid-states.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-invalid-states")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-invalid-states"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "button-link": {
       name: "button-link",
       filePath: "examples/radix/button-link.tsx",
@@ -1042,19 +977,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-link"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-loading": {
-      name: "button-loading",
-      filePath: "examples/radix/button-loading.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/button-loading")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-loading"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1110,16 +1032,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-variants-and-sizes": {
-      name: "button-variants-and-sizes",
-      filePath: "examples/radix/button-variants-and-sizes.tsx",
+    "button-spinner": {
+      name: "button-spinner",
+      filePath: "examples/radix/button-spinner.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/button-variants-and-sizes")
+        const mod = await import("./radix/button-spinner")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-variants-and-sizes"
+          ) || "button-spinner"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7653,19 +7575,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-as-child": {
-      name: "button-as-child",
-      filePath: "examples/base/button-as-child.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-as-child")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-as-child"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "button-default": {
       name: "button-default",
       filePath: "examples/base/button-default.tsx",
@@ -7702,19 +7611,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-destructive"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-examples": {
-      name: "button-examples",
-      filePath: "examples/base/button-examples.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-examples")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-examples"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8082,45 +7978,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-icon-left": {
-      name: "button-icon-left",
-      filePath: "examples/base/button-icon-left.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-icon-left")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-icon-left"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-icon-only": {
-      name: "button-icon-only",
-      filePath: "examples/base/button-icon-only.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-icon-only")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-icon-only"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-icon-right": {
-      name: "button-icon-right",
-      filePath: "examples/base/button-icon-right.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-icon-right")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-icon-right"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "button-icon": {
       name: "button-icon",
       filePath: "examples/base/button-icon.tsx",
@@ -8131,19 +7988,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "button-invalid-states": {
-      name: "button-invalid-states",
-      filePath: "examples/base/button-invalid-states.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-invalid-states")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-invalid-states"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8160,19 +8004,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-loading": {
-      name: "button-loading",
-      filePath: "examples/base/button-loading.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/button-loading")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-loading"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "button-outline": {
       name: "button-outline",
       filePath: "examples/base/button-outline.tsx",
@@ -8183,6 +8014,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-outline"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "button-render": {
+      name: "button-render",
+      filePath: "examples/base/button-render.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/button-render")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "button-render"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8225,16 +8069,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "button-variants-and-sizes": {
-      name: "button-variants-and-sizes",
-      filePath: "examples/base/button-variants-and-sizes.tsx",
+    "button-spinner": {
+      name: "button-spinner",
+      filePath: "examples/base/button-spinner.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/button-variants-and-sizes")
+        const mod = await import("./base/button-spinner")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "button-variants-and-sizes"
+          ) || "button-spinner"
         return { default: mod.default || mod[exportName] }
       }),
     },

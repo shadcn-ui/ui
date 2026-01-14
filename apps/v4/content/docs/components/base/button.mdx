@@ -6,28 +6,7 @@ base: base
 component: true
 ---
 
-import { InfoIcon } from "lucide-react"
-
-<Callout variant="info" icon={<InfoIcon />}>
-**Updated:** We have updated the button component to add new sizes: `icon-sm` and `icon-lg`. See the
-[changelog](/docs/components/button#changelog) for more details. Follow the
-instructions to update your project.
-
-</Callout>
-
-<ComponentPreview
-  styleName="base-nova"
-  name="button-demo"
-  description="A button"
-  className="mb-4"
-/>
-
-```tsx showLineNumbers
-<Button variant="outline">Button</Button>
-<Button variant="outline" size="icon" aria-label="Submit">
-  <ArrowUpIcon />
-</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-demo" />
 
 ## Installation
 
@@ -100,223 +79,67 @@ If you want to keep the `cursor: pointer` behavior, add the following code to yo
 
 ### Size
 
-<ComponentPreview styleName="base-nova" name="button-size" className="mb-4" />
+Use the `size` prop to change the size of the button.
 
-```tsx
-// Small
-<Button size="sm" variant="outline">Small</Button>
-<Button size="icon-sm" aria-label="Submit" variant="outline">
-  <ArrowUpRightIcon />
-</Button>
-
-// Medium
-<Button variant="outline">Default</Button>
-<Button size="icon" aria-label="Submit" variant="outline">
-  <ArrowUpRightIcon />
-</Button>
-
-// Large
-<Button size="lg" variant="outline">Large</Button>
-<Button size="icon-lg" aria-label="Submit" variant="outline">
-  <ArrowUpRightIcon />
-</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-size" />
 
 ### Default
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-default"
-  description="A primary button"
-  className="mb-4"
-/>
-
-```tsx
-<Button>Button</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-default" />
 
 ### Outline
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-outline"
-  description="A button using the outline variant."
-  className="mb-4"
-/>
-
-```tsx
-<Button variant="outline">Outline</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-outline" />
 
 ### Secondary
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-secondary"
-  description="A secondary button"
-  className="mb-4"
-/>
-
-```tsx
-<Button variant="secondary">Secondary</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-secondary" />
 
 ### Ghost
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-ghost"
-  description="A button using the ghost variant"
-  className="mb-4"
-/>
-
-```tsx
-<Button variant="ghost">Ghost</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-ghost" />
 
 ### Destructive
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-destructive"
-  description="A destructive button"
-  className="mb-4"
-/>
-
-```tsx
-<Button variant="destructive">Destructive</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-destructive" />
 
 ### Link
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-link"
-  description="A button using the link variant."
-  className="mb-4"
-/>
-
-```tsx
-<Button variant="link">Link</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-link" />
 
 ### Icon
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-icon"
-  description="An icon button"
-  className="mb-4"
-/>
-
-```tsx showLineNumbers
-<Button variant="outline" size="icon" aria-label="Submit">
-  <CircleFadingArrowUpIcon />
-</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-icon" />
 
 ### With Icon
 
-The spacing between the icon and the text is automatically adjusted
-based on the size of the button. You do not need any margin on the icon.
+Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the icon for the correct spacing.
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-with-icon"
-  description="A button with an icon"
-  className="mb-4"
-/>
-
-```tsx
-<Button variant="outline" size="sm">
-  <IconGitBranch /> New Branch
-</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-with-icon" />
 
 ### Rounded
 
 Use the `rounded-full` class to make the button rounded.
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-rounded"
-  className="mb-4"
-/>
-
-```tsx
-<Button variant="outline" size="icon" className="rounded-full">
-  <ArrowUpRightIcon />
-</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-rounded" />
 
 ### Spinner
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-loading"
-  description="A button with a loading state."
-  className="mb-4"
-/>
+Render a `<Spinner />` component inside the button to show a loading state. Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the spinner for the correct spacing.
 
-```tsx showLineNumbers
-<Button size="sm" variant="outline" disabled>
-  <Spinner />
-  Submit
-</Button>
-```
+<ComponentPreview styleName="base-nova" name="button-spinner" />
 
 ### Button Group
 
-To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/button-group) documentation for more details.
+To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/base/button-group) documentation for more details.
 
-<ComponentPreview
-  styleName="base-nova"
-  name="button-group-demo"
-  className="mb-4"
-/>
-
-```tsx showLineNumbers
-<ButtonGroup>
-  <ButtonGroup>
-    <Button variant="outline" size="icon" aria-label="Go Back">
-      <ArrowLeftIcon />
-    </Button>
-  </ButtonGroup>
-  <ButtonGroup>
-    <Button variant="outline">Archive</Button>
-    <Button variant="outline">Report</Button>
-  </ButtonGroup>
-  <ButtonGroup>
-    <Button variant="outline">Snooze</Button>
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" aria-label="More Options">
-          <MoreHorizontalIcon />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent />
-    </DropdownMenu>
-  </ButtonGroup>
-</ButtonGroup>
-```
+<ComponentPreview styleName="base-nova" name="button-group-demo" />
 
 ### Link
 
-You can use the `asChild` prop to make another component look like a button. Here's an example of a link that looks like a button.
+You can use the `render` prop on `<Button />` to make another component look like a button. Here's an example of a link that looks like a button.
 
-```tsx showLineNumbers
-import Link from "next/link"
-
-import { Button } from "@/components/ui/button"
-
-export function LinkAsButton() {
-  return (
-    <Button asChild>
-      <Link href="/login">Login</Link>
-    </Button>
-  )
-}
-```
+<ComponentPreview styleName="base-nova" name="button-render" />
 
 ## API Reference
 
@@ -328,23 +151,3 @@ The `Button` component is a wrapper around the `button` element that adds a vari
 | --------- | ----------------------------------------------------------------------------- | ----------- |
 | `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"` | `"default"` |
 | `size`    | `"default" \| "sm" \| "lg" \| "icon" \| "icon-sm" \| "icon-lg"`               | `"default"` |
-| `asChild` | `boolean`                                                                     | `false`     |
-
-## Changelog
-
-### 2025-09-24 New sizes
-
-We have added two new sizes to the button component: `icon-sm` and `icon-lg`. These sizes are used to create icon buttons. To add them, edit `button.tsx` and add the following code under `size` in `buttonVariants`:
-
-```tsx showLineNumbers title="components/ui/button.tsx"
-const buttonVariants = cva("...", {
-  variants: {
-    size: {
-      // ...
-      "icon-sm": "size-8",
-      "icon-lg": "size-10",
-      // ...
-    },
-  },
-})
-```
