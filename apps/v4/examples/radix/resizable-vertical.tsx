@@ -4,11 +4,11 @@ import {
   ResizablePanelGroup,
 } from "@/examples/radix/ui/resizable"
 
-export default function ResizableDemo() {
+export function ResizableVertical() {
   return (
     <ResizablePanelGroup
       direction="vertical"
-      className="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"
+      className="min-h-[200px] rounded-lg border"
     >
       <ResizablePanel defaultSize={25}>
         <div className="flex h-full items-center justify-center p-6">

@@ -1,11 +1,15 @@
-import { Label } from "@/examples/base/ui/label"
+import { Field, FieldLabel } from "@/examples/base/ui/field"
 import { Textarea } from "@/examples/base/ui/textarea"
 
-export default function TextareaWithLabel() {
+export function TextareaWithLabel() {
   return (
-    <div className="grid w-full gap-3">
-      <Label htmlFor="message">Your message</Label>
-      <Textarea placeholder="Type your message here." id="message" />
-    </div>
+    <Field>
+      <FieldLabel htmlFor="textarea-demo-message">Message</FieldLabel>
+      <Textarea
+        id="textarea-demo-message"
+        placeholder="Type your message here."
+        rows={6}
+      />
+    </Field>
   )
 }

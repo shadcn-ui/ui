@@ -1,11 +1,15 @@
+import { Field, FieldLabel } from "@/examples/radix/ui/field"
 import { Input } from "@/examples/radix/ui/input"
-import { Label } from "@/examples/radix/ui/label"
 
-export default function InputWithLabel() {
+export function InputWithLabel() {
   return (
-    <div className="grid w-full max-w-sm items-center gap-3">
-      <Label htmlFor="email">Email</Label>
-      <Input type="email" id="email" placeholder="Email" />
-    </div>
+    <Field>
+      <FieldLabel htmlFor="input-demo-email">Email</FieldLabel>
+      <Input
+        id="input-demo-email"
+        type="email"
+        placeholder="name@example.com"
+      />
+    </Field>
   )
 }

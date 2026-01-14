@@ -2,8 +2,9 @@ import { Spinner } from "@/examples/radix/ui/spinner"
 
 export function SpinnerBasic() {
   return (
-    <div className="flex flex-col items-center justify-center gap-8">
+    <div className="flex items-center gap-6">
       <Spinner />
+      <Spinner className="size-6" />
     </div>
   )
 }

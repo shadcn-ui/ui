@@ -1,15 +1,11 @@
 import { Checkbox } from "@/examples/radix/ui/checkbox"
+import { Field, FieldLabel } from "@/examples/radix/ui/field"
 
-export default function CheckboxDisabled() {
+export function CheckboxDisabled() {
   return (
-    <div className="flex items-center space-x-2">
-      <Checkbox id="terms2" disabled />
-      <label
-        htmlFor="terms2"
-        className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Accept terms and conditions
-      </label>
-    </div>
+    <Field orientation="horizontal">
+      <Checkbox id="toggle" disabled />
+      <FieldLabel htmlFor="toggle">Enable notifications</FieldLabel>
+    </Field>
   )
 }

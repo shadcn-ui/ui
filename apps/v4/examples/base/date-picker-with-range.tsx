@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Button } from "@/examples/base/ui/button"
 import { Calendar } from "@/examples/base/ui/calendar"
+import { Field, FieldLabel } from "@/examples/base/ui/field"
 import {
   Popover,
   PopoverContent,
@@ -12,28 +13,22 @@ import { addDays, format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { type DateRange } from "react-day-picker"
 
-import { cn } from "@/lib/utils"
-
-export function DatePickerWithRange({
-  className,
-}: React.HTMLAttributes<HTMLDivElement>) {
+export function DatePickerWithRange() {
   const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(2022, 0, 20),
-    to: addDays(new Date(2022, 0, 20), 20),
+    from: new Date(new Date().getFullYear(), 0, 20),
+    to: addDays(new Date(new Date().getFullYear(), 0, 20), 20),
   })
 
   return (
-    <div className={cn("grid gap-2", className)}>
+    <Field className="mx-auto w-72">
+      <FieldLabel htmlFor="date-picker-range">Date Picker Range</FieldLabel>
       <Popover>
         <PopoverTrigger
           render={
             <Button
-              id="date"
-              variant={"outline"}
-              className={cn(
-                "w-[300px] justify-start text-left font-normal",
-                !date && "text-muted-foreground"
-              )}
+              variant="outline"
+              id="date-picker-range"
+              className="justify-start px-2.5 font-normal"
             />
           }
         >
@@ -53,7 +48,6 @@ export function DatePickerWithRange({
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
           <Calendar
-            initialFocus
             mode="range"
             defaultMonth={date?.from}
             selected={date}
@@ -62,6 +56,6 @@ export function DatePickerWithRange({
           />
         </PopoverContent>
       </Popover>
-    </div>
+    </Field>
   )
 }

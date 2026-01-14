@@ -1,13 +1,16 @@
+import { Card, CardContent, CardHeader } from "@/examples/radix/ui/card"
 import { Skeleton } from "@/examples/radix/ui/skeleton"
 
 export function SkeletonCard() {
   return (
-    <div className="flex flex-col space-y-3">
-      <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-[250px]" />
-        <Skeleton className="h-4 w-[200px]" />
-      </div>
-    </div>
+    <Card className="w-full">
+      <CardHeader>
+        <Skeleton className="h-4 w-2/3" />
+        <Skeleton className="h-4 w-1/2" />
+      </CardHeader>
+      <CardContent>
+        <Skeleton className="aspect-square w-full" />
+      </CardContent>
+    </Card>
   )
 }

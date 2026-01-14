@@ -1,10 +1,14 @@
 import { Toggle } from "@/examples/radix/ui/toggle"
-import { Underline } from "lucide-react"
 
 export function ToggleDisabled() {
   return (
-    <Toggle aria-label="Toggle italic" disabled>
-      <Underline className="h-4 w-4" />
-    </Toggle>
+    <div className="flex flex-wrap items-center gap-2">
+      <Toggle aria-label="Toggle disabled" disabled>
+        Disabled
+      </Toggle>
+      <Toggle variant="outline" aria-label="Toggle disabled outline" disabled>
+        Disabled
+      </Toggle>
+    </div>
   )
 }
