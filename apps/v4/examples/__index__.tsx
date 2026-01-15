@@ -850,6 +850,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "calendar-basic": {
+      name: "calendar-basic",
+      filePath: "examples/radix/calendar-basic.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/calendar-basic")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "calendar-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "calendar-booked-dates": {
       name: "calendar-booked-dates",
       filePath: "examples/radix/calendar-booked-dates.tsx",
@@ -860,6 +873,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "calendar-booked-dates"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "calendar-caption": {
+      name: "calendar-caption",
+      filePath: "examples/radix/calendar-caption.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/calendar-caption")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "calendar-caption"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -915,16 +941,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "calendar-range-multiple-months": {
-      name: "calendar-range-multiple-months",
-      filePath: "examples/radix/calendar-range-multiple-months.tsx",
+    "calendar-presets": {
+      name: "calendar-presets",
+      filePath: "examples/radix/calendar-presets.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/calendar-range-multiple-months")
+        const mod = await import("./radix/calendar-presets")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "calendar-range-multiple-months"
+          ) || "calendar-presets"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -941,16 +967,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "calendar-single": {
-      name: "calendar-single",
-      filePath: "examples/radix/calendar-single.tsx",
+    "calendar-time": {
+      name: "calendar-time",
+      filePath: "examples/radix/calendar-time.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/calendar-single")
+        const mod = await import("./radix/calendar-time")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "calendar-single"
+          ) || "calendar-time"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -967,45 +993,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "calendar-with-presets": {
-      name: "calendar-with-presets",
-      filePath: "examples/radix/calendar-with-presets.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/calendar-with-presets")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "calendar-with-presets"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "calendar-with-time": {
-      name: "calendar-with-time",
-      filePath: "examples/radix/calendar-with-time.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/calendar-with-time")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "calendar-with-time"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-default": {
-      name: "card-default",
-      filePath: "examples/radix/card-default.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/card-default")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-default"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "card-demo": {
       name: "card-demo",
       filePath: "examples/radix/card-demo.tsx",
@@ -1019,81 +1006,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "card-footer-with-border-small": {
-      name: "card-footer-with-border-small",
-      filePath: "examples/radix/card-footer-with-border-small.tsx",
+    "card-image": {
+      name: "card-image",
+      filePath: "examples/radix/card-image.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/card-footer-with-border-small")
+        const mod = await import("./radix/card-image")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-footer-with-border-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-footer-with-border": {
-      name: "card-footer-with-border",
-      filePath: "examples/radix/card-footer-with-border.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/card-footer-with-border")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-footer-with-border"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-header-with-border-small": {
-      name: "card-header-with-border-small",
-      filePath: "examples/radix/card-header-with-border-small.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/card-header-with-border-small")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-header-with-border-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-header-with-border": {
-      name: "card-header-with-border",
-      filePath: "examples/radix/card-header-with-border.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/card-header-with-border")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-header-with-border"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-login": {
-      name: "card-login",
-      filePath: "examples/radix/card-login.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/card-login")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-login"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-meeting-notes": {
-      name: "card-meeting-notes",
-      filePath: "examples/radix/card-meeting-notes.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/card-meeting-notes")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-meeting-notes"
+          ) || "card-image"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1107,32 +1029,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "card-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-with-image-small": {
-      name: "card-with-image-small",
-      filePath: "examples/radix/card-with-image-small.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/card-with-image-small")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-with-image-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-with-image": {
-      name: "card-with-image",
-      filePath: "examples/radix/card-with-image.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/card-with-image")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-with-image"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7679,6 +7575,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "calendar-basic": {
+      name: "calendar-basic",
+      filePath: "examples/base/calendar-basic.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/calendar-basic")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "calendar-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "calendar-booked-dates": {
       name: "calendar-booked-dates",
       filePath: "examples/base/calendar-booked-dates.tsx",
@@ -7689,6 +7598,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "calendar-booked-dates"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "calendar-caption": {
+      name: "calendar-caption",
+      filePath: "examples/base/calendar-caption.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/calendar-caption")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "calendar-caption"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7744,16 +7666,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "calendar-range-multiple-months": {
-      name: "calendar-range-multiple-months",
-      filePath: "examples/base/calendar-range-multiple-months.tsx",
+    "calendar-presets": {
+      name: "calendar-presets",
+      filePath: "examples/base/calendar-presets.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/calendar-range-multiple-months")
+        const mod = await import("./base/calendar-presets")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "calendar-range-multiple-months"
+          ) || "calendar-presets"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7770,16 +7692,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "calendar-single": {
-      name: "calendar-single",
-      filePath: "examples/base/calendar-single.tsx",
+    "calendar-time": {
+      name: "calendar-time",
+      filePath: "examples/base/calendar-time.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/calendar-single")
+        const mod = await import("./base/calendar-time")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "calendar-single"
+          ) || "calendar-time"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7796,45 +7718,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "calendar-with-presets": {
-      name: "calendar-with-presets",
-      filePath: "examples/base/calendar-with-presets.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/calendar-with-presets")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "calendar-with-presets"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "calendar-with-time": {
-      name: "calendar-with-time",
-      filePath: "examples/base/calendar-with-time.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/calendar-with-time")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "calendar-with-time"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-default": {
-      name: "card-default",
-      filePath: "examples/base/card-default.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/card-default")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-default"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "card-demo": {
       name: "card-demo",
       filePath: "examples/base/card-demo.tsx",
@@ -7848,81 +7731,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "card-footer-with-border-small": {
-      name: "card-footer-with-border-small",
-      filePath: "examples/base/card-footer-with-border-small.tsx",
+    "card-image": {
+      name: "card-image",
+      filePath: "examples/base/card-image.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/card-footer-with-border-small")
+        const mod = await import("./base/card-image")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-footer-with-border-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-footer-with-border": {
-      name: "card-footer-with-border",
-      filePath: "examples/base/card-footer-with-border.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/card-footer-with-border")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-footer-with-border"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-header-with-border-small": {
-      name: "card-header-with-border-small",
-      filePath: "examples/base/card-header-with-border-small.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/card-header-with-border-small")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-header-with-border-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-header-with-border": {
-      name: "card-header-with-border",
-      filePath: "examples/base/card-header-with-border.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/card-header-with-border")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-header-with-border"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-login": {
-      name: "card-login",
-      filePath: "examples/base/card-login.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/card-login")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-login"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-meeting-notes": {
-      name: "card-meeting-notes",
-      filePath: "examples/base/card-meeting-notes.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/card-meeting-notes")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-meeting-notes"
+          ) || "card-image"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7936,32 +7754,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "card-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-with-image-small": {
-      name: "card-with-image-small",
-      filePath: "examples/base/card-with-image-small.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/card-with-image-small")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-with-image-small"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "card-with-image": {
-      name: "card-with-image",
-      filePath: "examples/base/card-with-image.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/card-with-image")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "card-with-image"
         return { default: mod.default || mod[exportName] }
       }),
     },

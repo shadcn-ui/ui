@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/examples/base/ui/card"
 
 export function CalendarWeekNumbers() {
   const [date, setDate] = React.useState<Date | undefined>(
-    new Date(new Date().getFullYear(), 1, 3)
+    new Date(new Date().getFullYear(), 0, 12)
   )
 
   return (

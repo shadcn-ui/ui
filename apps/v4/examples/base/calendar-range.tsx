@@ -13,19 +13,13 @@ export function CalendarRange() {
   })
 
   return (
-    <Card className="mx-auto w-fit p-0">
-      <CardContent className="p-0">
-        <Calendar
-          mode="range"
-          defaultMonth={dateRange?.from}
-          selected={dateRange}
-          onSelect={setDateRange}
-          numberOfMonths={2}
-          disabled={(date) =>
-            date > new Date() || date < new Date("1900-01-01")
-          }
-        />
-      </CardContent>
-    </Card>
+    <Calendar
+      mode="range"
+      defaultMonth={dateRange?.from}
+      selected={dateRange}
+      onSelect={setDateRange}
+      numberOfMonths={2}
+      className="rounded-lg border"
+    />
   )
 }

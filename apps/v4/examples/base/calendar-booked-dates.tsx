@@ -3,15 +3,14 @@
 import * as React from "react"
 import { Calendar } from "@/examples/base/ui/calendar"
 import { Card, CardContent } from "@/examples/base/ui/card"
-import { es } from "react-day-picker/locale"
 
 export function CalendarBookedDates() {
   const [date, setDate] = React.useState<Date | undefined>(
-    new Date(new Date().getFullYear(), 1, 3)
+    new Date(new Date().getFullYear(), 0, 6)
   )
   const bookedDates = Array.from(
     { length: 15 },
-    (_, i) => new Date(new Date().getFullYear(), 1, 12 + i)
+    (_, i) => new Date(new Date().getFullYear(), 0, 12 + i)
   )
 
   return (

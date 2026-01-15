@@ -16,7 +16,7 @@ export function CalendarWithPresets() {
 
   return (
     <Card className="mx-auto w-fit max-w-[300px]" size="sm">
-      <CardContent className="px-4">
+      <CardContent>
         <Calendar
           mode="single"
           selected={date}

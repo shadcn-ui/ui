@@ -1,6 +1,6 @@
 ---
 title: Calendar
-description: A date field component that allows users to enter and edit date.
+description: A calendar component that allows users to select a date or a range of dates.
 base: radix
 component: true
 links:
@@ -10,8 +10,7 @@ links:
 <ComponentPreview
   styleName="radix-nova"
   name="calendar-demo"
-  title="Calendar"
-  description="A calendar showing the current date."
+  previewClassName="h-96"
 />
 
 ## Blocks
@@ -91,13 +90,9 @@ See the [React DayPicker](https://react-day-picker.js.org) documentation for mor
 
 The `Calendar` component is built on top of [React DayPicker](https://react-day-picker.js.org).
 
-## Customization
-
-See the [React DayPicker](https://react-day-picker.js.org/docs/customization) documentation for more information on how to customize the `Calendar` component.
-
 ## Date Picker
 
-You can use the `<Calendar>` component to build a date picker. See the [Date Picker](/docs/components/date-picker) page for more information.
+You can use the `<Calendar>` component to build a date picker. See the [Date Picker](/docs/components/radix/date-picker) page for more information.
 
 ## Persian / Hijri / Jalali Calendar
 
@@ -113,6 +108,7 @@ To use the Persian calendar, edit `components/ui/calendar.tsx` and replace `reac
   name="calendar-hijri"
   title="Persian / Hijri / Jalali Calendar"
   description="A Persian calendar."
+  previewClassName="h-[400px]"
 />
 
 ## Selected Date (With TimeZone)
@@ -145,59 +141,65 @@ export function CalendarWithTimezone() {
 
 ## Examples
 
-### Range Calendar
+### Basic
+
+A basic calendar component. We used `className="rounded-lg border"` to style the calendar.
 
 <ComponentPreview
   styleName="radix-nova"
-  name="calendar-05"
-  title="Range Calendar"
-  description="A calendar showing the current date and range selection."
-  className="**:[.preview]:h-auto lg:**:[.preview]:h-[450px]"
+  name="calendar-basic"
+  previewClassName="h-96"
+/>
+
+### Range Calendar
+
+Use the `mode="range"` prop to enable range selection.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="calendar-range"
+  previewClassName="h-96"
 />
 
 ### Month and Year Selector
 
+Use `captionLayout="dropdown"` to show month and year dropdowns.
+
 <ComponentPreview
   styleName="radix-nova"
-  name="calendar-13"
-  title="Month and Year Selector"
-  description="A calendar with month and year dropdowns."
+  name="calendar-caption"
+  previewClassName="h-96"
 />
 
-### Date of Birth Picker
+### Presets
 
 <ComponentPreview
   styleName="radix-nova"
-  name="calendar-22"
-  title="Date of Birth Picker"
-  description="A calendar with date of birth picker."
+  name="calendar-presets"
+  previewClassName="h-[650px]"
 />
 
 ### Date and Time Picker
 
 <ComponentPreview
   styleName="radix-nova"
-  name="calendar-24"
-  title="Date and Time Picker"
-  description="A calendar with date and time picker."
+  name="calendar-time"
+  previewClassName="h-[600px]"
 />
 
-### Natural Language Picker
-
-This component uses the `chrono-node` library to parse natural language dates.
+### Booked dates
 
 <ComponentPreview
   styleName="radix-nova"
-  name="calendar-29"
-  title="Natural Language Picker"
-  description="A calendar with natural language picker."
+  name="calendar-booked-dates"
+  previewClassName="h-96"
 />
 
 ### Custom Cell Size
 
 <ComponentPreview
   styleName="radix-nova"
-  name="calendar-18"
+  name="calendar-custom-days"
   title="Custom Cell Size"
   description="A calendar with custom cell size that's responsive."
   className="**:[.preview]:h-[560px]"
@@ -224,6 +226,16 @@ Or use fixed values:
   className="rounded-lg border [--cell-size:2.75rem] md:[--cell-size:3rem]"
 />
 ```
+
+### Week Numbers
+
+Use `showWeekNumber` to show week numbers.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="calendar-week-numbers"
+  previewClassName="h-96"
+/>
 
 ## Upgrade Guide
 
@@ -489,24 +501,6 @@ npx shadcn@latest add calendar-02
 
 This will install the latest version of the calendar blocks.
 
-## Changelog
+## API Reference
 
-### 2025-10-26 Fixed day radius with week numbers
-
-We have fixed an issue where the selected day's left border radius was not applied correctly when week numbers were displayed. The fix ensures that when `showWeekNumber` is enabled, the first day (which is the second child due to the week number column) correctly receives the rounded left border.
-
-To apply this fix, edit `components/ui/calendar.tsx` and update the `day` class in `classNames`:
-
-```tsx showLineNumbers title="components/ui/calendar.tsx" {5-7}
-classNames={{
-  // ... other classNames
-  day: cn(
-    "relative w-full h-full p-0 text-center [&:last-child[data-selected=true]_button]:rounded-r-md group/day aspect-square select-none",
-    props.showWeekNumber
-      ? "[&:nth-child(2)[data-selected=true]_button]:rounded-l-md"
-      : "[&:first-child[data-selected=true]_button]:rounded-l-md",
-    defaultClassNames.day
-  ),
-  // ... other classNames
-}}
-```
+See the [React DayPicker](https://react-day-picker.js.org) documentation for more information on the `Calendar` component API.
