@@ -114,9 +114,7 @@ export async function transformWxtConfig(input: string): Promise<string> {
     // Add vite property with tailwindcss plugin.
     configObject.addPropertyAssignment({
       name: "vite",
-      initializer: `() => ({
-    plugins: [tailwindcss()],
-  })`,
+      initializer: `() => ({ plugins: [tailwindcss()] })`,
     })
   } else if (viteProperty.isKind(SyntaxKind.PropertyAssignment)) {
     // vite property exists, need to add plugin to existing config.

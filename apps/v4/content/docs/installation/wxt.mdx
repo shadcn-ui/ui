@@ -10,7 +10,7 @@ description: Install and configure shadcn/ui for WXT.
 Start by creating a new WXT project using the React template:
 
 ```bash
-npx wxt@latest init --template react --pm pnpm
+npx wxt@latest init --template react
 ```
 
 ### Add Tailwind CSS
@@ -72,7 +72,7 @@ import { Button } from "@/components/ui/button"
 
 function App() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
+    <div className="flex min-w-[400px] min-h-[600px] flex-col items-center justify-center">
       <Button>Click me</Button>
     </div>
   )
