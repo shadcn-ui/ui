@@ -2,22 +2,23 @@ import { Button } from "@/examples/base/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/examples/base/ui/dropdown-menu"
-import { ArchiveIcon, PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
+import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
 
-export function DropdownMenuWithDestructive() {
+export function DropdownMenuDestructive() {
   return (
-    <>
-      <DropdownMenu>
-        <DropdownMenuTrigger
-          render={<Button variant="outline" className="w-fit" />}
-        >
-          Actions
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        render={<Button variant="outline" />}
+      >
+        Actions
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuGroup>
           <DropdownMenuItem>
             <PencilIcon />
             Edit
@@ -26,17 +27,15 @@ export function DropdownMenuWithDestructive() {
             <ShareIcon />
             Share
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <ArchiveIcon />
-            Archive
-          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
           <DropdownMenuItem variant="destructive">
             <TrashIcon />
             Delete
           </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

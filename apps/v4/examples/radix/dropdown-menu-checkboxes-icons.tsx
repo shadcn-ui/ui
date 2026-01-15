@@ -12,7 +12,7 @@ import {
 } from "@/examples/radix/ui/dropdown-menu"
 import { BellIcon, MailIcon, MessageSquareIcon } from "lucide-react"
 
-export function DropdownMenuWithCheckboxesIcons() {
+export function DropdownMenuCheckboxesIcons() {
   const [notifications, setNotifications] = React.useState({
     email: true,
     sms: false,
@@ -22,11 +22,11 @@ export function DropdownMenuWithCheckboxesIcons() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-fit">
+        <Button variant="outline">
           Notifications
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="min-w-56">
+      <DropdownMenuContent className="w-48">
         <DropdownMenuGroup>
           <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>
           <DropdownMenuCheckboxItem

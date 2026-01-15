@@ -58,11 +58,11 @@ export function DropdownMenuComplex() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-fit">
+        <Button variant="outline">
           Complex Menu
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="style-maia:w-56 style-mira:w-48 style-nova:w-48 style-vega:w-56 style-lyra:w-48">
+      <DropdownMenuContent className="w-44">
         <DropdownMenuGroup>
           <DropdownMenuLabel>File</DropdownMenuLabel>
           <DropdownMenuItem>

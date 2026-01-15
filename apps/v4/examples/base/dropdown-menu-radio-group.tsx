@@ -20,7 +20,7 @@ export function DropdownMenuRadioGroupDemo() {
       <DropdownMenuTrigger render={<Button variant="outline" />}>
         Open
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-32">
         <DropdownMenuGroup>
           <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
           <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>

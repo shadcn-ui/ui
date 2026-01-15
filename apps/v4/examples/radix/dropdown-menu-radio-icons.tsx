@@ -13,13 +13,15 @@ import {
 } from "@/examples/radix/ui/dropdown-menu"
 import { Building2Icon, CreditCardIcon, WalletIcon } from "lucide-react"
 
-export function DropdownMenuWithRadioIcons() {
+export function DropdownMenuRadioIcons() {
   const [paymentMethod, setPaymentMethod] = React.useState("card")
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">Payment Method</Button>
+        <Button variant="outline">
+          Payment Method
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-56">
         <DropdownMenuGroup>

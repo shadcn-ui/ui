@@ -10,25 +10,22 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/examples/radix/ui/dropdown-menu"
-import { type DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
-
-type Checked = DropdownMenuCheckboxItemProps["checked"]
 
 export function DropdownMenuCheckboxes() {
-  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true)
-  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false)
-  const [showPanel, setShowPanel] = React.useState<Checked>(false)
+  const [showStatusBar, setShowStatusBar] = React.useState(true)
+  const [showActivityBar, setShowActivityBar] = React.useState(false)
+  const [showPanel, setShowPanel] = React.useState(false)
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">Open</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-40">
         <DropdownMenuGroup>
           <DropdownMenuLabel>Appearance</DropdownMenuLabel>
           <DropdownMenuCheckboxItem
-            checked={showStatusBar}
+            checked={showStatusBar ?? false}
             onCheckedChange={setShowStatusBar}
           >
             Status Bar

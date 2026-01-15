@@ -13,11 +13,11 @@ import {
   DropdownMenuTrigger,
 } from "@/examples/radix/ui/dropdown-menu"
 
-export function DropdownMenuWithSubmenu() {
+export function DropdownMenuSubmenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="w-fit">
+        <Button variant="outline">
           Open
         </Button>
       </DropdownMenuTrigger>
@@ -28,14 +28,21 @@ export function DropdownMenuWithSubmenu() {
             <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>Email</DropdownMenuItem>
-                  <DropdownMenuItem>Message</DropdownMenuItem>
-                </DropdownMenuGroup>
+                <DropdownMenuItem>Email</DropdownMenuItem>
+                <DropdownMenuItem>Message</DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>More options</DropdownMenuSubTrigger>
+                  <DropdownMenuPortal>
+                    <DropdownMenuSubContent>
+                      <DropdownMenuItem>Calendly</DropdownMenuItem>
+                      <DropdownMenuItem>Slack</DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Webhook</DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuPortal>
+                </DropdownMenuSub>
                 <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>More...</DropdownMenuItem>
-                </DropdownMenuGroup>
+                <DropdownMenuItem>Advanced...</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>

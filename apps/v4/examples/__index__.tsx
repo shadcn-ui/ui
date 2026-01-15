@@ -1916,6 +1916,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "dropdown-menu-avatar": {
+      name: "dropdown-menu-avatar",
+      filePath: "examples/radix/dropdown-menu-avatar.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/dropdown-menu-avatar")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "dropdown-menu-avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "dropdown-menu-basic": {
       name: "dropdown-menu-basic",
       filePath: "examples/radix/dropdown-menu-basic.tsx",
@@ -1926,6 +1939,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "dropdown-menu-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "dropdown-menu-checkboxes-icons": {
+      name: "dropdown-menu-checkboxes-icons",
+      filePath: "examples/radix/dropdown-menu-checkboxes-icons.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/dropdown-menu-checkboxes-icons")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "dropdown-menu-checkboxes-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1968,29 +1994,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-dialog": {
-      name: "dropdown-menu-dialog",
-      filePath: "examples/radix/dropdown-menu-dialog.tsx",
+    "dropdown-menu-destructive": {
+      name: "dropdown-menu-destructive",
+      filePath: "examples/radix/dropdown-menu-destructive.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-dialog")
+        const mod = await import("./radix/dropdown-menu-destructive")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-dialog"
+          ) || "dropdown-menu-destructive"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-in-dialog": {
-      name: "dropdown-menu-in-dialog",
-      filePath: "examples/radix/dropdown-menu-in-dialog.tsx",
+    "dropdown-menu-icons": {
+      name: "dropdown-menu-icons",
+      filePath: "examples/radix/dropdown-menu-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-in-dialog")
+        const mod = await import("./radix/dropdown-menu-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-in-dialog"
+          ) || "dropdown-menu-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -2007,120 +2033,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-with-avatar": {
-      name: "dropdown-menu-with-avatar",
-      filePath: "examples/radix/dropdown-menu-with-avatar.tsx",
+    "dropdown-menu-radio-icons": {
+      name: "dropdown-menu-radio-icons",
+      filePath: "examples/radix/dropdown-menu-radio-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-with-avatar")
+        const mod = await import("./radix/dropdown-menu-radio-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-avatar"
+          ) || "dropdown-menu-radio-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-with-checkboxes-icons": {
-      name: "dropdown-menu-with-checkboxes-icons",
-      filePath: "examples/radix/dropdown-menu-with-checkboxes-icons.tsx",
+    "dropdown-menu-shortcuts": {
+      name: "dropdown-menu-shortcuts",
+      filePath: "examples/radix/dropdown-menu-shortcuts.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-with-checkboxes-icons")
+        const mod = await import("./radix/dropdown-menu-shortcuts")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-checkboxes-icons"
+          ) || "dropdown-menu-shortcuts"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-with-checkboxes": {
-      name: "dropdown-menu-with-checkboxes",
-      filePath: "examples/radix/dropdown-menu-with-checkboxes.tsx",
+    "dropdown-menu-submenu": {
+      name: "dropdown-menu-submenu",
+      filePath: "examples/radix/dropdown-menu-submenu.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-with-checkboxes")
+        const mod = await import("./radix/dropdown-menu-submenu")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-checkboxes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-destructive": {
-      name: "dropdown-menu-with-destructive",
-      filePath: "examples/radix/dropdown-menu-with-destructive.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-with-destructive")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-destructive"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-icons": {
-      name: "dropdown-menu-with-icons",
-      filePath: "examples/radix/dropdown-menu-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-radio-icons": {
-      name: "dropdown-menu-with-radio-icons",
-      filePath: "examples/radix/dropdown-menu-with-radio-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-with-radio-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-radio-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-radio": {
-      name: "dropdown-menu-with-radio",
-      filePath: "examples/radix/dropdown-menu-with-radio.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-with-radio")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-radio"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-shortcuts": {
-      name: "dropdown-menu-with-shortcuts",
-      filePath: "examples/radix/dropdown-menu-with-shortcuts.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-with-shortcuts")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-shortcuts"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-submenu": {
-      name: "dropdown-menu-with-submenu",
-      filePath: "examples/radix/dropdown-menu-with-submenu.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/dropdown-menu-with-submenu")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-submenu"
+          ) || "dropdown-menu-submenu"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8329,6 +8277,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "dropdown-menu-avatar": {
+      name: "dropdown-menu-avatar",
+      filePath: "examples/base/dropdown-menu-avatar.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/dropdown-menu-avatar")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "dropdown-menu-avatar"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "dropdown-menu-basic": {
       name: "dropdown-menu-basic",
       filePath: "examples/base/dropdown-menu-basic.tsx",
@@ -8339,6 +8300,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "dropdown-menu-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "dropdown-menu-checkboxes-icons": {
+      name: "dropdown-menu-checkboxes-icons",
+      filePath: "examples/base/dropdown-menu-checkboxes-icons.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/dropdown-menu-checkboxes-icons")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "dropdown-menu-checkboxes-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8381,29 +8355,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-dialog": {
-      name: "dropdown-menu-dialog",
-      filePath: "examples/base/dropdown-menu-dialog.tsx",
+    "dropdown-menu-destructive": {
+      name: "dropdown-menu-destructive",
+      filePath: "examples/base/dropdown-menu-destructive.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-dialog")
+        const mod = await import("./base/dropdown-menu-destructive")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-dialog"
+          ) || "dropdown-menu-destructive"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-in-dialog": {
-      name: "dropdown-menu-in-dialog",
-      filePath: "examples/base/dropdown-menu-in-dialog.tsx",
+    "dropdown-menu-icons": {
+      name: "dropdown-menu-icons",
+      filePath: "examples/base/dropdown-menu-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-in-dialog")
+        const mod = await import("./base/dropdown-menu-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-in-dialog"
+          ) || "dropdown-menu-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8420,120 +8394,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-with-avatar": {
-      name: "dropdown-menu-with-avatar",
-      filePath: "examples/base/dropdown-menu-with-avatar.tsx",
+    "dropdown-menu-radio-icons": {
+      name: "dropdown-menu-radio-icons",
+      filePath: "examples/base/dropdown-menu-radio-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-with-avatar")
+        const mod = await import("./base/dropdown-menu-radio-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-avatar"
+          ) || "dropdown-menu-radio-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-with-checkboxes-icons": {
-      name: "dropdown-menu-with-checkboxes-icons",
-      filePath: "examples/base/dropdown-menu-with-checkboxes-icons.tsx",
+    "dropdown-menu-shortcuts": {
+      name: "dropdown-menu-shortcuts",
+      filePath: "examples/base/dropdown-menu-shortcuts.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-with-checkboxes-icons")
+        const mod = await import("./base/dropdown-menu-shortcuts")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-checkboxes-icons"
+          ) || "dropdown-menu-shortcuts"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "dropdown-menu-with-checkboxes": {
-      name: "dropdown-menu-with-checkboxes",
-      filePath: "examples/base/dropdown-menu-with-checkboxes.tsx",
+    "dropdown-menu-submenu": {
+      name: "dropdown-menu-submenu",
+      filePath: "examples/base/dropdown-menu-submenu.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-with-checkboxes")
+        const mod = await import("./base/dropdown-menu-submenu")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-checkboxes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-destructive": {
-      name: "dropdown-menu-with-destructive",
-      filePath: "examples/base/dropdown-menu-with-destructive.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-with-destructive")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-destructive"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-icons": {
-      name: "dropdown-menu-with-icons",
-      filePath: "examples/base/dropdown-menu-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-radio-icons": {
-      name: "dropdown-menu-with-radio-icons",
-      filePath: "examples/base/dropdown-menu-with-radio-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-with-radio-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-radio-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-radio": {
-      name: "dropdown-menu-with-radio",
-      filePath: "examples/base/dropdown-menu-with-radio.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-with-radio")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-radio"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-shortcuts": {
-      name: "dropdown-menu-with-shortcuts",
-      filePath: "examples/base/dropdown-menu-with-shortcuts.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-with-shortcuts")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-shortcuts"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "dropdown-menu-with-submenu": {
-      name: "dropdown-menu-with-submenu",
-      filePath: "examples/base/dropdown-menu-with-submenu.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/dropdown-menu-with-submenu")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "dropdown-menu-with-submenu"
+          ) || "dropdown-menu-submenu"
         return { default: mod.default || mod[exportName] }
       }),
     },
