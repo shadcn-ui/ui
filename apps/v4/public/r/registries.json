@@ -14,6 +14,7 @@
   "@aliimam": "https://aliimam.in/r/{name}.json",
   "@animate-ui": "https://animate-ui.com/r/{name}.json",
   "@assistant-ui": "https://r.assistant-ui.com/{name}.json",
+  "@audio": "https://audio-ui.xyz/r/{name}.json",
   "@austin-ui": "https://austin-ui.netlify.app/r/{name}.json",
   "@basecn": "https://basecn.dev/r/{name}.json",
   "@better-upload": "https://better-upload.com/r/{name}.json",
