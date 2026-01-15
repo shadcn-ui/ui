@@ -1,6 +1,6 @@
 "use client"
 
-import { ChartContainer, type ChartConfig } from "@/examples/radix/ui/chart"
+import { ChartContainer, type ChartConfig } from "@/examples/base/ui/chart"
 import { Bar, BarChart } from "recharts"
 
 const chartData = [
@@ -23,7 +23,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartBarDemo() {
+export function ChartExample() {
   return (
     <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
       <BarChart accessibilityLayer data={chartData}>

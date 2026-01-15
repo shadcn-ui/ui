@@ -227,7 +227,7 @@
   counter-increment: step;
 
   &:before {
-    @apply border-background bg-muted mr-2 inline-flex size-8 items-center justify-center rounded-full border-4 text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9;
+    @apply border-background bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9 md:border-4;
     content: counter(step);
   }
 }

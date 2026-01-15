@@ -4,7 +4,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-export default function Component() {
+export function ChartTooltipDemo() {
   return (
     <div className="text-foreground grid aspect-video w-full max-w-md justify-center md:grid-cols-2 [&>div]:relative [&>div]:flex [&>div]:h-[137px] [&>div]:w-[224px] [&>div]:items-center [&>div]:justify-center [&>div]:p-4">
       <div>
@@ -34,8 +34,8 @@ export default function Component() {
         <TooltipDemo
           label="Page Views"
           payload={[
-            { name: "Desktop", value: 186, fill: "hsl(var(--chart-1))" },
-            { name: "Mobile", value: 80, fill: "hsl(var(--chart-2))" },
+            { name: "Desktop", value: 186, fill: "var(--chart-1)" },
+            { name: "Mobile", value: 80, fill: "var(--chart-2)" },
           ]}
           className="w-[8rem]"
         />
@@ -68,8 +68,8 @@ export default function Component() {
           label="Browser"
           hideLabel
           payload={[
-            { name: "Chrome", value: 1286, fill: "hsl(var(--chart-3))" },
-            { name: "Firefox", value: 1000, fill: "hsl(var(--chart-4))" },
+            { name: "Chrome", value: 1286, fill: "var(--chart-3)" },
+            { name: "Firefox", value: 1000, fill: "var(--chart-4)" },
           ]}
           indicator="dashed"
           className="w-[8rem]"
@@ -78,9 +78,7 @@ export default function Component() {
       <div className="!hidden md:!flex">
         <TooltipDemo
           label="Page Views"
-          payload={[
-            { name: "Desktop", value: 12486, fill: "hsl(var(--chart-3))" },
-          ]}
+          payload={[{ name: "Desktop", value: 12486, fill: "var(--chart-3)" }]}
           className="w-[9rem]"
           indicator="line"
         />
@@ -92,9 +90,7 @@ export default function Component() {
         <TooltipDemo
           label="Browser"
           hideLabel
-          payload={[
-            { name: "Chrome", value: 1286, fill: "hsl(var(--chart-1))" },
-          ]}
+          payload={[{ name: "Chrome", value: 1286, fill: "var(--chart-1)" }]}
           indicator="dot"
           className="w-[8rem]"
         />

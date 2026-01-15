@@ -279,7 +279,7 @@ export const mdxComponents = {
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-32 text-xl font-medium tracking-tight",
+        "font-heading mt-8 scroll-m-32 text-lg font-medium tracking-tight",
         className
       )}
       {...props}

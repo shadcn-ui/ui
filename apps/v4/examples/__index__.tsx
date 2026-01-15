@@ -1123,159 +1123,94 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-area-example": {
-      name: "chart-area-example",
-      filePath: "examples/radix/chart-area-example.tsx",
+    "chart-demo": {
+      name: "chart-demo",
+      filePath: "examples/radix/chart-demo.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/chart-area-example")
+        const mod = await import("./radix/chart-demo")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-area-example"
+          ) || "chart-demo"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo-axis": {
-      name: "chart-bar-demo-axis",
-      filePath: "examples/radix/chart-bar-demo-axis.tsx",
+    "chart-example-axis": {
+      name: "chart-example-axis",
+      filePath: "examples/radix/chart-example-axis.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/chart-bar-demo-axis")
+        const mod = await import("./radix/chart-example-axis")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo-axis"
+          ) || "chart-example-axis"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo-grid": {
-      name: "chart-bar-demo-grid",
-      filePath: "examples/radix/chart-bar-demo-grid.tsx",
+    "chart-example-grid": {
+      name: "chart-example-grid",
+      filePath: "examples/radix/chart-example-grid.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/chart-bar-demo-grid")
+        const mod = await import("./radix/chart-example-grid")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo-grid"
+          ) || "chart-example-grid"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo-legend": {
-      name: "chart-bar-demo-legend",
-      filePath: "examples/radix/chart-bar-demo-legend.tsx",
+    "chart-example-legend": {
+      name: "chart-example-legend",
+      filePath: "examples/radix/chart-example-legend.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/chart-bar-demo-legend")
+        const mod = await import("./radix/chart-example-legend")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo-legend"
+          ) || "chart-example-legend"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo-tooltip": {
-      name: "chart-bar-demo-tooltip",
-      filePath: "examples/radix/chart-bar-demo-tooltip.tsx",
+    "chart-example-tooltip": {
+      name: "chart-example-tooltip",
+      filePath: "examples/radix/chart-example-tooltip.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/chart-bar-demo-tooltip")
+        const mod = await import("./radix/chart-example-tooltip")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo-tooltip"
+          ) || "chart-example-tooltip"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo": {
-      name: "chart-bar-demo",
-      filePath: "examples/radix/chart-bar-demo.tsx",
+    "chart-example": {
+      name: "chart-example",
+      filePath: "examples/radix/chart-example.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/chart-bar-demo")
+        const mod = await import("./radix/chart-example")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo"
+          ) || "chart-example"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-example": {
-      name: "chart-bar-example",
-      filePath: "examples/radix/chart-bar-example.tsx",
+    "chart-tooltip": {
+      name: "chart-tooltip",
+      filePath: "examples/radix/chart-tooltip.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/chart-bar-example")
+        const mod = await import("./radix/chart-tooltip")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-line-example": {
-      name: "chart-line-example",
-      filePath: "examples/radix/chart-line-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/chart-line-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-line-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-pie-example": {
-      name: "chart-pie-example",
-      filePath: "examples/radix/chart-pie-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/chart-pie-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-pie-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-radar-example": {
-      name: "chart-radar-example",
-      filePath: "examples/radix/chart-radar-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/chart-radar-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-radar-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-radial-example": {
-      name: "chart-radial-example",
-      filePath: "examples/radix/chart-radial-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/chart-radial-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-radial-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-tooltip-demo": {
-      name: "chart-tooltip-demo",
-      filePath: "examples/radix/chart-tooltip-demo.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/chart-tooltip-demo")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-tooltip-demo"
+          ) || "chart-tooltip"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7822,159 +7757,94 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-area-example": {
-      name: "chart-area-example",
-      filePath: "examples/base/chart-area-example.tsx",
+    "chart-demo": {
+      name: "chart-demo",
+      filePath: "examples/base/chart-demo.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/chart-area-example")
+        const mod = await import("./base/chart-demo")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-area-example"
+          ) || "chart-demo"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo-axis": {
-      name: "chart-bar-demo-axis",
-      filePath: "examples/base/chart-bar-demo-axis.tsx",
+    "chart-example-axis": {
+      name: "chart-example-axis",
+      filePath: "examples/base/chart-example-axis.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/chart-bar-demo-axis")
+        const mod = await import("./base/chart-example-axis")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo-axis"
+          ) || "chart-example-axis"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo-grid": {
-      name: "chart-bar-demo-grid",
-      filePath: "examples/base/chart-bar-demo-grid.tsx",
+    "chart-example-grid": {
+      name: "chart-example-grid",
+      filePath: "examples/base/chart-example-grid.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/chart-bar-demo-grid")
+        const mod = await import("./base/chart-example-grid")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo-grid"
+          ) || "chart-example-grid"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo-legend": {
-      name: "chart-bar-demo-legend",
-      filePath: "examples/base/chart-bar-demo-legend.tsx",
+    "chart-example-legend": {
+      name: "chart-example-legend",
+      filePath: "examples/base/chart-example-legend.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/chart-bar-demo-legend")
+        const mod = await import("./base/chart-example-legend")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo-legend"
+          ) || "chart-example-legend"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo-tooltip": {
-      name: "chart-bar-demo-tooltip",
-      filePath: "examples/base/chart-bar-demo-tooltip.tsx",
+    "chart-example-tooltip": {
+      name: "chart-example-tooltip",
+      filePath: "examples/base/chart-example-tooltip.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/chart-bar-demo-tooltip")
+        const mod = await import("./base/chart-example-tooltip")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo-tooltip"
+          ) || "chart-example-tooltip"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-demo": {
-      name: "chart-bar-demo",
-      filePath: "examples/base/chart-bar-demo.tsx",
+    "chart-example": {
+      name: "chart-example",
+      filePath: "examples/base/chart-example.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/chart-bar-demo")
+        const mod = await import("./base/chart-example")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-demo"
+          ) || "chart-example"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "chart-bar-example": {
-      name: "chart-bar-example",
-      filePath: "examples/base/chart-bar-example.tsx",
+    "chart-tooltip": {
+      name: "chart-tooltip",
+      filePath: "examples/base/chart-tooltip.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/chart-bar-example")
+        const mod = await import("./base/chart-tooltip")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-bar-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-line-example": {
-      name: "chart-line-example",
-      filePath: "examples/base/chart-line-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/chart-line-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-line-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-pie-example": {
-      name: "chart-pie-example",
-      filePath: "examples/base/chart-pie-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/chart-pie-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-pie-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-radar-example": {
-      name: "chart-radar-example",
-      filePath: "examples/base/chart-radar-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/chart-radar-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-radar-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-radial-example": {
-      name: "chart-radial-example",
-      filePath: "examples/base/chart-radial-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/chart-radial-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-radial-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "chart-tooltip-demo": {
-      name: "chart-tooltip-demo",
-      filePath: "examples/base/chart-tooltip-demo.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/chart-tooltip-demo")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "chart-tooltip-demo"
+          ) || "chart-tooltip"
         return { default: mod.default || mod[exportName] }
       }),
     },
