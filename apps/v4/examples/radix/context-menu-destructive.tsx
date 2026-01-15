@@ -6,13 +6,18 @@ import {
   ContextMenuSeparator,
   ContextMenuTrigger,
 } from "@/examples/radix/ui/context-menu"
-import { ArchiveIcon, PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
+import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
 
-export function ContextMenuWithDestructive() {
+export function ContextMenuDestructive() {
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-        Right click here
+      <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
+        <span className="hidden pointer-fine:inline-block">
+          Right click here
+        </span>
+        <span className="hidden pointer-coarse:inline-block">
+          Long press here
+        </span>
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuGroup>
@@ -27,10 +32,6 @@ export function ContextMenuWithDestructive() {
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
-          <ContextMenuItem>
-            <ArchiveIcon />
-            Archive
-          </ContextMenuItem>
           <ContextMenuItem variant="destructive">
             <TrashIcon />
             Delete

@@ -1,12 +1,12 @@
 import {
   ContextMenu,
+  ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuGroup,
-  ContextMenuItem,
   ContextMenuTrigger,
-} from "@/examples/radix/ui/context-menu"
+} from "@/examples/base/ui/context-menu"
 
-export function ContextMenuBasic() {
+export function ContextMenuCheckboxes() {
   return (
     <ContextMenu>
       <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
@@ -19,9 +19,13 @@ export function ContextMenuBasic() {
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuGroup>
-          <ContextMenuItem>Back</ContextMenuItem>
-          <ContextMenuItem disabled>Forward</ContextMenuItem>
-          <ContextMenuItem>Reload</ContextMenuItem>
+          <ContextMenuCheckboxItem defaultChecked>
+            Show Bookmarks Bar
+          </ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem defaultChecked>
+            Show Developer Tools
+          </ContextMenuCheckboxItem>
         </ContextMenuGroup>
       </ContextMenuContent>
     </ContextMenu>

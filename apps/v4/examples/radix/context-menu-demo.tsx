@@ -15,28 +15,33 @@ import {
   ContextMenuTrigger,
 } from "@/examples/radix/ui/context-menu"
 
-export default function ContextMenuDemo() {
+export function ContextMenuDemo() {
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
-        Right click here
+      <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
+        <span className="hidden pointer-fine:inline-block">
+          Right click here
+        </span>
+        <span className="hidden pointer-coarse:inline-block">
+          Long press here
+        </span>
       </ContextMenuTrigger>
-      <ContextMenuContent className="w-52">
+      <ContextMenuContent className="w-48">
         <ContextMenuGroup>
-          <ContextMenuItem inset>
+          <ContextMenuItem>
             Back
             <ContextMenuShortcut>⌘[</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem inset disabled>
+          <ContextMenuItem disabled>
             Forward
             <ContextMenuShortcut>⌘]</ContextMenuShortcut>
           </ContextMenuItem>
-          <ContextMenuItem inset>
+          <ContextMenuItem>
             Reload
             <ContextMenuShortcut>⌘R</ContextMenuShortcut>
           </ContextMenuItem>
           <ContextMenuSub>
-            <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
+            <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
             <ContextMenuSubContent className="w-44">
               <ContextMenuGroup>
                 <ContextMenuItem>Save Page...</ContextMenuItem>
@@ -63,8 +68,8 @@ export default function ContextMenuDemo() {
         </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuGroup>
-          <ContextMenuLabel inset>People</ContextMenuLabel>
           <ContextMenuRadioGroup value="pedro">
+            <ContextMenuLabel>People</ContextMenuLabel>
             <ContextMenuRadioItem value="pedro">
               Pedro Duarte
             </ContextMenuRadioItem>

@@ -1591,6 +1591,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "context-menu-checkboxes": {
+      name: "context-menu-checkboxes",
+      filePath: "examples/radix/context-menu-checkboxes.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/context-menu-checkboxes")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "context-menu-checkboxes"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "context-menu-demo": {
       name: "context-menu-demo",
       filePath: "examples/radix/context-menu-demo.tsx",
@@ -1604,120 +1617,94 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-in-dialog": {
-      name: "context-menu-in-dialog",
-      filePath: "examples/radix/context-menu-in-dialog.tsx",
+    "context-menu-destructive": {
+      name: "context-menu-destructive",
+      filePath: "examples/radix/context-menu-destructive.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/context-menu-in-dialog")
+        const mod = await import("./radix/context-menu-destructive")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-in-dialog"
+          ) || "context-menu-destructive"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-checkboxes": {
-      name: "context-menu-with-checkboxes",
-      filePath: "examples/radix/context-menu-with-checkboxes.tsx",
+    "context-menu-groups": {
+      name: "context-menu-groups",
+      filePath: "examples/radix/context-menu-groups.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/context-menu-with-checkboxes")
+        const mod = await import("./radix/context-menu-groups")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-checkboxes"
+          ) || "context-menu-groups"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-destructive": {
-      name: "context-menu-with-destructive",
-      filePath: "examples/radix/context-menu-with-destructive.tsx",
+    "context-menu-icons": {
+      name: "context-menu-icons",
+      filePath: "examples/radix/context-menu-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/context-menu-with-destructive")
+        const mod = await import("./radix/context-menu-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-destructive"
+          ) || "context-menu-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-groups": {
-      name: "context-menu-with-groups",
-      filePath: "examples/radix/context-menu-with-groups.tsx",
+    "context-menu-radio": {
+      name: "context-menu-radio",
+      filePath: "examples/radix/context-menu-radio.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/context-menu-with-groups")
+        const mod = await import("./radix/context-menu-radio")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-groups"
+          ) || "context-menu-radio"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-icons": {
-      name: "context-menu-with-icons",
-      filePath: "examples/radix/context-menu-with-icons.tsx",
+    "context-menu-shortcuts": {
+      name: "context-menu-shortcuts",
+      filePath: "examples/radix/context-menu-shortcuts.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/context-menu-with-icons")
+        const mod = await import("./radix/context-menu-shortcuts")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-icons"
+          ) || "context-menu-shortcuts"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-radio": {
-      name: "context-menu-with-radio",
-      filePath: "examples/radix/context-menu-with-radio.tsx",
+    "context-menu-sides": {
+      name: "context-menu-sides",
+      filePath: "examples/radix/context-menu-sides.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/context-menu-with-radio")
+        const mod = await import("./radix/context-menu-sides")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-radio"
+          ) || "context-menu-sides"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-shortcuts": {
-      name: "context-menu-with-shortcuts",
-      filePath: "examples/radix/context-menu-with-shortcuts.tsx",
+    "context-menu-submenu": {
+      name: "context-menu-submenu",
+      filePath: "examples/radix/context-menu-submenu.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/context-menu-with-shortcuts")
+        const mod = await import("./radix/context-menu-submenu")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-shortcuts"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "context-menu-with-sides": {
-      name: "context-menu-with-sides",
-      filePath: "examples/radix/context-menu-with-sides.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/context-menu-with-sides")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-sides"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "context-menu-with-submenu": {
-      name: "context-menu-with-submenu",
-      filePath: "examples/radix/context-menu-with-submenu.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/context-menu-with-submenu")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-submenu"
+          ) || "context-menu-submenu"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8056,6 +8043,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "context-menu-checkboxes": {
+      name: "context-menu-checkboxes",
+      filePath: "examples/base/context-menu-checkboxes.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/context-menu-checkboxes")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "context-menu-checkboxes"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "context-menu-demo": {
       name: "context-menu-demo",
       filePath: "examples/base/context-menu-demo.tsx",
@@ -8069,120 +8069,94 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-in-dialog": {
-      name: "context-menu-in-dialog",
-      filePath: "examples/base/context-menu-in-dialog.tsx",
+    "context-menu-destructive": {
+      name: "context-menu-destructive",
+      filePath: "examples/base/context-menu-destructive.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/context-menu-in-dialog")
+        const mod = await import("./base/context-menu-destructive")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-in-dialog"
+          ) || "context-menu-destructive"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-checkboxes": {
-      name: "context-menu-with-checkboxes",
-      filePath: "examples/base/context-menu-with-checkboxes.tsx",
+    "context-menu-groups": {
+      name: "context-menu-groups",
+      filePath: "examples/base/context-menu-groups.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/context-menu-with-checkboxes")
+        const mod = await import("./base/context-menu-groups")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-checkboxes"
+          ) || "context-menu-groups"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-destructive": {
-      name: "context-menu-with-destructive",
-      filePath: "examples/base/context-menu-with-destructive.tsx",
+    "context-menu-icons": {
+      name: "context-menu-icons",
+      filePath: "examples/base/context-menu-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/context-menu-with-destructive")
+        const mod = await import("./base/context-menu-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-destructive"
+          ) || "context-menu-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-groups": {
-      name: "context-menu-with-groups",
-      filePath: "examples/base/context-menu-with-groups.tsx",
+    "context-menu-radio": {
+      name: "context-menu-radio",
+      filePath: "examples/base/context-menu-radio.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/context-menu-with-groups")
+        const mod = await import("./base/context-menu-radio")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-groups"
+          ) || "context-menu-radio"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-icons": {
-      name: "context-menu-with-icons",
-      filePath: "examples/base/context-menu-with-icons.tsx",
+    "context-menu-shortcuts": {
+      name: "context-menu-shortcuts",
+      filePath: "examples/base/context-menu-shortcuts.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/context-menu-with-icons")
+        const mod = await import("./base/context-menu-shortcuts")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-icons"
+          ) || "context-menu-shortcuts"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-radio": {
-      name: "context-menu-with-radio",
-      filePath: "examples/base/context-menu-with-radio.tsx",
+    "context-menu-sides": {
+      name: "context-menu-sides",
+      filePath: "examples/base/context-menu-sides.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/context-menu-with-radio")
+        const mod = await import("./base/context-menu-sides")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-radio"
+          ) || "context-menu-sides"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "context-menu-with-shortcuts": {
-      name: "context-menu-with-shortcuts",
-      filePath: "examples/base/context-menu-with-shortcuts.tsx",
+    "context-menu-submenu": {
+      name: "context-menu-submenu",
+      filePath: "examples/base/context-menu-submenu.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/context-menu-with-shortcuts")
+        const mod = await import("./base/context-menu-submenu")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-shortcuts"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "context-menu-with-sides": {
-      name: "context-menu-with-sides",
-      filePath: "examples/base/context-menu-with-sides.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/context-menu-with-sides")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-sides"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "context-menu-with-submenu": {
-      name: "context-menu-with-submenu",
-      filePath: "examples/base/context-menu-with-submenu.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/context-menu-with-submenu")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "context-menu-with-submenu"
+          ) || "context-menu-submenu"
         return { default: mod.default || mod[exportName] }
       }),
     },
