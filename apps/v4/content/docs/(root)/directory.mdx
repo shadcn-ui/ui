@@ -3,7 +3,19 @@ title: Registry Directory
 description: Discover community registries for shadcn/ui components and blocks.
 ---
 
+import { TriangleAlertIcon } from "lucide-react"
+
 These registries are built into the CLI with no additional configuration required. To add a component, run: `npx shadcn add @<registry>/<component>`.
+
+<Callout
+  type="warning"
+  icon={<TriangleAlertIcon />}
+  className="gap-2! border-amber-200 bg-amber-50 p-2 font-semibold dark:border-amber-800 dark:bg-amber-900 *:[svg]:translate-y-1"
+>
+  Community registries are maintained by third-party developers and are not
+  officially curated. Always review code on installation to ensure it meets your
+  security and quality standards.
+</Callout>
 
 <DirectoryList />
 
