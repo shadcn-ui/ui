@@ -22,27 +22,25 @@ const items = [
 
 export default function FieldSelect() {
   return (
-    <div className="w-full max-w-md">
-      <Field>
-        <FieldLabel>Department</FieldLabel>
-        <Select items={items}>
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              {items.map((item) => (
-                <SelectItem key={item.value} value={item.value}>
-                  {item.label}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <FieldDescription>
-          Select your department or area of work.
-        </FieldDescription>
-      </Field>
-    </div>
+    <Field className="w-full max-w-xs">
+      <FieldLabel>Department</FieldLabel>
+      <Select items={items}>
+        <SelectTrigger>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {items.map((item) => (
+              <SelectItem key={item.value} value={item.value}>
+                {item.label}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <FieldDescription>
+        Select your department or area of work.
+      </FieldDescription>
+    </Field>
   )
 }

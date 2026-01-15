@@ -1,24 +1,11 @@
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldLabel,
-} from "@/examples/radix/ui/field"
+import { Field, FieldLabel } from "@/examples/radix/ui/field"
 import { Switch } from "@/examples/radix/ui/switch"
 
 export default function FieldSwitch() {
   return (
-    <div className="w-full max-w-md">
-      <Field orientation="horizontal">
-        <FieldContent>
-          <FieldLabel htmlFor="2fa">Multi-factor authentication</FieldLabel>
-          <FieldDescription>
-            Enable multi-factor authentication. If you do not have a two-factor
-            device, you can use a one-time code sent to your email.
-          </FieldDescription>
-        </FieldContent>
-        <Switch id="2fa" />
-      </Field>
-    </div>
+    <Field orientation="horizontal" className="w-fit">
+      <FieldLabel htmlFor="2fa">Multi-factor authentication</FieldLabel>
+      <Switch id="2fa" />
+    </Field>
   )
 }

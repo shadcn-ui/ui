@@ -8706,19 +8706,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "hover-card-in-dialog": {
-      name: "hover-card-in-dialog",
-      filePath: "examples/base/hover-card-in-dialog.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/hover-card-in-dialog")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card-in-dialog"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "hover-card-sides": {
       name: "hover-card-sides",
       filePath: "examples/base/hover-card-sides.tsx",

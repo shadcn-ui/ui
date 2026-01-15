@@ -8,31 +8,29 @@ import {
 } from "@/examples/base/ui/field"
 import { Input } from "@/examples/base/ui/input"
 
-export default function FieldFieldset() {
+export function FieldFieldset() {
   return (
-    <div className="w-full max-w-md space-y-6">
-      <FieldSet>
-        <FieldLegend>Address Information</FieldLegend>
-        <FieldDescription>
-          We need your address to deliver your order.
-        </FieldDescription>
-        <FieldGroup>
+    <FieldSet className="w-full max-w-sm">
+      <FieldLegend>Address Information</FieldLegend>
+      <FieldDescription>
+        We need your address to deliver your order.
+      </FieldDescription>
+      <FieldGroup>
+        <Field>
+          <FieldLabel htmlFor="street">Street Address</FieldLabel>
+          <Input id="street" type="text" placeholder="123 Main St" />
+        </Field>
+        <div className="grid grid-cols-2 gap-4">
           <Field>
-            <FieldLabel htmlFor="street">Street Address</FieldLabel>
-            <Input id="street" type="text" placeholder="123 Main St" />
+            <FieldLabel htmlFor="city">City</FieldLabel>
+            <Input id="city" type="text" placeholder="New York" />
           </Field>
-          <div className="grid grid-cols-2 gap-4">
-            <Field>
-              <FieldLabel htmlFor="city">City</FieldLabel>
-              <Input id="city" type="text" placeholder="New York" />
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="zip">Postal Code</FieldLabel>
-              <Input id="zip" type="text" placeholder="90502" />
-            </Field>
-          </div>
-        </FieldGroup>
-      </FieldSet>
-    </div>
+          <Field>
+            <FieldLabel htmlFor="zip">Postal Code</FieldLabel>
+            <Input id="zip" type="text" placeholder="90502" />
+          </Field>
+        </div>
+      </FieldGroup>
+    </FieldSet>
   )
 }

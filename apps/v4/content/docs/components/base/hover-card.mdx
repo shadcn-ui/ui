@@ -11,7 +11,7 @@ links:
 <ComponentPreview
   styleName="base-nova"
   name="hover-card-demo"
-  description="A hover card component"
+  previewClassName="h-80"
 />
 
 ## Installation
@@ -32,13 +32,13 @@ npx shadcn@latest add hover-card
 
 <TabsContent value="manual">
 
+<Steps className="mb-0 pt-2">
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
 npm install @base-ui/react
 ```
-
-<Steps className="mb-0 pt-2">
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -74,3 +74,52 @@ import {
   </HoverCardContent>
 </HoverCard>
 ```
+
+## Trigger Delays
+
+Use `delay` and `closeDelay` on the trigger to control when the card opens and
+closes.
+
+```tsx showLineNumbers
+<HoverCard>
+  <HoverCardTrigger delay={100} closeDelay={200}>
+    Hover
+  </HoverCardTrigger>
+  <HoverCardContent>Content</HoverCardContent>
+</HoverCard>
+```
+
+## Positioning
+
+Use the `side` and `align` props on `HoverCardContent` to control placement.
+
+```tsx showLineNumbers
+<HoverCard>
+  <HoverCardTrigger>Hover</HoverCardTrigger>
+  <HoverCardContent side="top" align="start">
+    Content
+  </HoverCardContent>
+</HoverCard>
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview
+  styleName="base-nova"
+  name="hover-card-demo"
+  previewClassName="h-80"
+/>
+
+### Sides
+
+<ComponentPreview
+  styleName="base-nova"
+  name="hover-card-sides"
+  previewClassName="h-[22rem]"
+/>
+
+## API Reference
+
+See the [Base UI](https://base-ui.com/react/components/hover-card#api-reference) documentation for more information.

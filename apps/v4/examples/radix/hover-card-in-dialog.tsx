@@ -32,7 +32,7 @@ export function HoverCardInDialog() {
               Hover me
             </Button>
           </HoverCardTrigger>
-          <HoverCardContent className="w-64">
+          <HoverCardContent>
             <div className="style-lyra:gap-1 style-nova:gap-1.5 style-vega:gap-2 style-maia:gap-2 style-mira:gap-1 flex flex-col">
               <h4 className="font-medium">Hover Card</h4>
               <p>

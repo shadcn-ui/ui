@@ -6,20 +6,17 @@ import {
   FieldGroup,
   FieldLabel,
   FieldLegend,
-  FieldSeparator,
   FieldSet,
 } from "@/examples/radix/ui/field"
 import { Input } from "@/examples/radix/ui/input"
-import { Textarea } from "@/examples/radix/ui/textarea"
 
-export default function FieldResponsive() {
+export function FieldResponsive() {
   return (
-    <div className="w-full max-w-4xl">
+    <div className="w-full max-w-lg">
       <form>
         <FieldSet>
           <FieldLegend>Profile</FieldLegend>
           <FieldDescription>Fill in your profile information.</FieldDescription>
-          <FieldSeparator />
           <FieldGroup>
             <Field orientation="responsive">
               <FieldContent>
@@ -30,23 +27,6 @@ export default function FieldResponsive() {
               </FieldContent>
               <Input id="name" placeholder="Evil Rabbit" required />
             </Field>
-            <FieldSeparator />
-            <Field orientation="responsive">
-              <FieldContent>
-                <FieldLabel htmlFor="lastName">Message</FieldLabel>
-                <FieldDescription>
-                  You can write your message here. Keep it short, preferably
-                  under 100 characters.
-                </FieldDescription>
-              </FieldContent>
-              <Textarea
-                id="message"
-                placeholder="Hello, world!"
-                required
-                className="min-h-[100px] resize-none sm:min-w-[300px]"
-              />
-            </Field>
-            <FieldSeparator />
             <Field orientation="responsive">
               <Button type="submit">Submit</Button>
               <Button type="button" variant="outline">

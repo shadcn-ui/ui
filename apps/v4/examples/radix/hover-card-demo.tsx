@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
 import { Button } from "@/examples/radix/ui/button"
 import {
   HoverCard,
@@ -8,25 +7,15 @@ import {
 
 export default function HoverCardDemo() {
   return (
-    <HoverCard>
+    <HoverCard openDelay={10} closeDelay={100}>
       <HoverCardTrigger asChild>
-        <Button variant="link">@nextjs</Button>
+        <Button variant="link">Hover Here</Button>
       </HoverCardTrigger>
-      <HoverCardContent className="w-80">
-        <div className="flex justify-between gap-4">
-          <Avatar>
-            <AvatarImage src="https://github.com/vercel.png" />
-            <AvatarFallback>VC</AvatarFallback>
-          </Avatar>
-          <div className="space-y-1">
-            <h4 className="text-sm font-semibold">@nextjs</h4>
-            <p className="text-sm">
-              The React Framework – created and maintained by @vercel.
-            </p>
-            <div className="text-muted-foreground text-xs">
-              Joined December 2021
-            </div>
-          </div>
+      <HoverCardContent className="flex w-64 flex-col gap-0.5">
+        <div className="font-semibold">@nextjs</div>
+        <div>The React Framework – created and maintained by @vercel.</div>
+        <div className="text-muted-foreground mt-1 text-xs">
+          Joined December 2021
         </div>
       </HoverCardContent>
     </HoverCard>
