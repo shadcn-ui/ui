@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Checkbox } from "@/examples/radix/ui/checkbox"
+import { Checkbox } from "@/examples/base/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/examples/radix/ui/table"
+} from "@/examples/base/ui/table"
 
 const tableData = [
   {
@@ -69,7 +69,8 @@ export function CheckboxInTable() {
         <TableRow>
           <TableHead className="w-8">
             <Checkbox
-              id="select-all"
+              id="select-all-checkbox"
+              name="select-all-checkbox"
               checked={selectAll}
               onCheckedChange={handleSelectAll}
             />
@@ -87,7 +88,8 @@ export function CheckboxInTable() {
           >
             <TableCell>
               <Checkbox
-                id={`row-${row.id}`}
+                id={`row-${row.id}-checkbox`}
+                name={`row-${row.id}-checkbox`}
                 checked={selectedRows.has(row.id)}
                 onCheckedChange={(checked) =>
                   handleSelectRow(row.id, checked === true)

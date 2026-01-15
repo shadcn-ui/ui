@@ -1,11 +1,19 @@
 import { Checkbox } from "@/examples/base/ui/checkbox"
-import { Field, FieldLabel } from "@/examples/base/ui/field"
+import { Field, FieldGroup, FieldLabel } from "@/examples/base/ui/field"
 
 export function CheckboxInvalid() {
   return (
-    <Field orientation="horizontal" data-invalid>
-      <Checkbox id="terms-3" aria-invalid />
-      <FieldLabel htmlFor="terms-3">Accept terms and conditions</FieldLabel>
-    </Field>
+    <FieldGroup className="mx-auto w-56">
+      <Field orientation="horizontal" data-invalid>
+        <Checkbox
+          id="terms-checkbox-invalid"
+          name="terms-checkbox-invalid"
+          aria-invalid
+        />
+        <FieldLabel htmlFor="terms-checkbox-invalid">
+          Accept terms and conditions
+        </FieldLabel>
+      </Field>
+    </FieldGroup>
   )
 }

@@ -1,43 +1,53 @@
 "use client"
 
 import { Checkbox } from "@/examples/base/ui/checkbox"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FieldTitle,
+} from "@/examples/base/ui/field"
 import { Label } from "@/examples/base/ui/label"
 
 export default function CheckboxDemo() {
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex items-center gap-3">
-        <Checkbox id="terms" />
-        <Label htmlFor="terms">Accept terms and conditions</Label>
-      </div>
-      <div className="flex items-start gap-3">
-        <Checkbox id="terms-2" defaultChecked />
-        <div className="grid gap-2">
-          <Label htmlFor="terms-2">Accept terms and conditions</Label>
-          <p className="text-muted-foreground text-sm">
-            By clicking this checkbox, you agree to the terms and conditions.
-          </p>
-        </div>
-      </div>
-      <div className="flex items-start gap-3">
-        <Checkbox id="toggle" disabled />
-        <Label htmlFor="toggle">Enable notifications</Label>
-      </div>
-      <Label className="hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950">
+    <FieldGroup className="max-w-sm">
+      <Field orientation="horizontal">
+        <Checkbox id="terms-checkbox" name="terms-checkbox" />
+        <Label htmlFor="terms-checkbox">Accept terms and conditions</Label>
+      </Field>
+      <Field orientation="horizontal">
         <Checkbox
-          id="toggle-2"
+          id="terms-checkbox-2"
+          name="terms-checkbox-2"
           defaultChecked
-          className="data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700"
         />
-        <div className="grid gap-1.5 font-normal">
-          <p className="text-sm leading-none font-medium">
-            Enable notifications
-          </p>
-          <p className="text-muted-foreground text-sm">
-            You can enable or disable notifications at any time.
-          </p>
-        </div>
-      </Label>
-    </div>
+        <FieldContent>
+          <FieldLabel htmlFor="terms-checkbox-2">
+            Accept terms and conditions
+          </FieldLabel>
+          <FieldDescription>
+            By clicking this checkbox, you agree to the terms.
+          </FieldDescription>
+        </FieldContent>
+      </Field>
+      <Field orientation="horizontal" data-disabled>
+        <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled />
+        <FieldLabel htmlFor="toggle-checkbox">Enable notifications</FieldLabel>
+      </Field>
+      <FieldLabel>
+        <Field orientation="horizontal">
+          <Checkbox id="toggle-checkbox-2" name="toggle-checkbox-2" />
+          <FieldContent>
+            <FieldTitle>Enable notifications</FieldTitle>
+            <FieldDescription>
+              You can enable or disable notifications at any time.
+            </FieldDescription>
+          </FieldContent>
+        </Field>
+      </FieldLabel>
+    </FieldGroup>
   )
 }

@@ -1240,6 +1240,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "checkbox-description": {
+      name: "checkbox-description",
+      filePath: "examples/radix/checkbox-description.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/checkbox-description")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "checkbox-description"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "checkbox-disabled": {
       name: "checkbox-disabled",
       filePath: "examples/radix/checkbox-disabled.tsx",
@@ -1250,19 +1263,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "checkbox-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "checkbox-fields": {
-      name: "checkbox-fields",
-      filePath: "examples/radix/checkbox-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/checkbox-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-fields"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1279,19 +1279,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "checkbox-in-table": {
-      name: "checkbox-in-table",
-      filePath: "examples/radix/checkbox-in-table.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/checkbox-in-table")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-in-table"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "checkbox-invalid": {
       name: "checkbox-invalid",
       filePath: "examples/radix/checkbox-invalid.tsx",
@@ -1305,42 +1292,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "checkbox-with-description": {
-      name: "checkbox-with-description",
-      filePath: "examples/radix/checkbox-with-description.tsx",
+    "checkbox-table": {
+      name: "checkbox-table",
+      filePath: "examples/radix/checkbox-table.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/checkbox-with-description")
+        const mod = await import("./radix/checkbox-table")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-with-description"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "checkbox-with-text": {
-      name: "checkbox-with-text",
-      filePath: "examples/radix/checkbox-with-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/checkbox-with-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-with-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "checkbox-with-title": {
-      name: "checkbox-with-title",
-      filePath: "examples/radix/checkbox-with-title.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/checkbox-with-title")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-with-title"
+          ) || "checkbox-table"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7874,6 +7835,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "checkbox-description": {
+      name: "checkbox-description",
+      filePath: "examples/base/checkbox-description.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/checkbox-description")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "checkbox-description"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "checkbox-disabled": {
       name: "checkbox-disabled",
       filePath: "examples/base/checkbox-disabled.tsx",
@@ -7884,19 +7858,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "checkbox-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "checkbox-fields": {
-      name: "checkbox-fields",
-      filePath: "examples/base/checkbox-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/checkbox-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-fields"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7913,19 +7874,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "checkbox-in-table": {
-      name: "checkbox-in-table",
-      filePath: "examples/base/checkbox-in-table.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/checkbox-in-table")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-in-table"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "checkbox-invalid": {
       name: "checkbox-invalid",
       filePath: "examples/base/checkbox-invalid.tsx",
@@ -7939,42 +7887,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "checkbox-with-description": {
-      name: "checkbox-with-description",
-      filePath: "examples/base/checkbox-with-description.tsx",
+    "checkbox-table": {
+      name: "checkbox-table",
+      filePath: "examples/base/checkbox-table.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/checkbox-with-description")
+        const mod = await import("./base/checkbox-table")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-with-description"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "checkbox-with-text": {
-      name: "checkbox-with-text",
-      filePath: "examples/base/checkbox-with-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/checkbox-with-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-with-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "checkbox-with-title": {
-      name: "checkbox-with-title",
-      filePath: "examples/base/checkbox-with-title.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/checkbox-with-title")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "checkbox-with-title"
+          ) || "checkbox-table"
         return { default: mod.default || mod[exportName] }
       }),
     },
