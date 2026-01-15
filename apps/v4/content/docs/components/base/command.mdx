@@ -1,23 +1,22 @@
 ---
 title: Command
-description: Fast, composable, unstyled command menu for React.
+description: Command menu for search and quick actions.
 base: base
 component: true
 links:
-  doc: https://cmdk.paco.me
+  doc: https://github.com/dip/cmdk
 ---
 
 <ComponentPreview
   styleName="base-nova"
   name="command-demo"
   align="start"
-  className="[&_.preview>div]:max-w-[450px]"
-  description="A command menu"
+  previewClassName="h-[24.5rem]"
 />
 
 ## About
 
-The `<Command />` component uses the [`cmdk`](https://cmdk.paco.me) component by [pacocoursey](https://twitter.com/pacocoursey).
+The `<Command />` component uses the [`cmdk`](https://github.com/dip/cmdk) component by [Dip](https://www.dip.org/).
 
 ## Installation
 
@@ -78,7 +77,7 @@ import {
 ```
 
 ```tsx showLineNumbers
-<Command>
+<Command className="max-w-sm rounded-lg border">
   <CommandInput placeholder="Type a command or search..." />
   <CommandList>
     <CommandEmpty>No results found.</CommandEmpty>
@@ -99,47 +98,28 @@ import {
 
 ## Examples
 
-### Dialog
+### Basic
 
-<ComponentPreview
-  styleName="base-nova"
-  name="command-dialog"
-  description="A command menu in a dialog"
-/>
+A simple command menu in a dialog.
 
-To show the command menu in a dialog, use the `<CommandDialog />` component.
+<ComponentPreview styleName="base-nova" name="command-basic" />
 
-```tsx showLineNumbers title="components/example-command-menu.tsx"
-export function CommandMenu() {
-  const [open, setOpen] = React.useState(false)
+### Shortcuts
 
-  React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        setOpen((open) => !open)
-      }
-    }
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
-  }, [])
+<ComponentPreview styleName="base-nova" name="command-shortcuts" />
 
-  return (
-    <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Type a command or search..." />
-      <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <CommandItem>Calendar</CommandItem>
-          <CommandItem>Search Emoji</CommandItem>
-          <CommandItem>Calculator</CommandItem>
-        </CommandGroup>
-      </CommandList>
-    </CommandDialog>
-  )
-}
-```
+### Groups
 
-### Combobox
+A command menu with groups, icons and separators.
 
-You can use the `<Command />` component as a combobox. See the [Combobox](/docs/components/combobox) page for more information.
+<ComponentPreview styleName="base-nova" name="command-groups" />
+
+### Scrollable
+
+Scrollable command menu with multiple items.
+
+<ComponentPreview styleName="base-nova" name="command-scrollable" />
+
+## API Reference
+
+See the [cmdk](https://github.com/dip/cmdk) documentation for more information.

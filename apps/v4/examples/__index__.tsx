@@ -1539,42 +1539,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "command-many-items": {
-      name: "command-many-items",
-      filePath: "examples/radix/command-many-items.tsx",
+    "command-groups": {
+      name: "command-groups",
+      filePath: "examples/radix/command-groups.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/command-many-items")
+        const mod = await import("./radix/command-groups")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "command-many-items"
+          ) || "command-groups"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "command-with-groups": {
-      name: "command-with-groups",
-      filePath: "examples/radix/command-with-groups.tsx",
+    "command-scrollable": {
+      name: "command-scrollable",
+      filePath: "examples/radix/command-scrollable.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/command-with-groups")
+        const mod = await import("./radix/command-scrollable")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "command-with-groups"
+          ) || "command-scrollable"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "command-with-shortcuts": {
-      name: "command-with-shortcuts",
-      filePath: "examples/radix/command-with-shortcuts.tsx",
+    "command-shortcuts": {
+      name: "command-shortcuts",
+      filePath: "examples/radix/command-shortcuts.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/command-with-shortcuts")
+        const mod = await import("./radix/command-shortcuts")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "command-with-shortcuts"
+          ) || "command-shortcuts"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8004,42 +8004,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "command-many-items": {
-      name: "command-many-items",
-      filePath: "examples/base/command-many-items.tsx",
+    "command-groups": {
+      name: "command-groups",
+      filePath: "examples/base/command-groups.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/command-many-items")
+        const mod = await import("./base/command-groups")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "command-many-items"
+          ) || "command-groups"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "command-with-groups": {
-      name: "command-with-groups",
-      filePath: "examples/base/command-with-groups.tsx",
+    "command-scrollable": {
+      name: "command-scrollable",
+      filePath: "examples/base/command-scrollable.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/command-with-groups")
+        const mod = await import("./base/command-scrollable")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "command-with-groups"
+          ) || "command-scrollable"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "command-with-shortcuts": {
-      name: "command-with-shortcuts",
-      filePath: "examples/base/command-with-shortcuts.tsx",
+    "command-shortcuts": {
+      name: "command-shortcuts",
+      filePath: "examples/base/command-shortcuts.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/command-with-shortcuts")
+        const mod = await import("./base/command-shortcuts")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "command-with-shortcuts"
+          ) || "command-shortcuts"
         return { default: mod.default || mod[exportName] }
       }),
     },
