@@ -36,10 +36,7 @@ export function DrawerWithSides() {
             </DrawerHeader>
             <div className="no-scrollbar overflow-y-auto px-4">
               {Array.from({ length: 10 }).map((_, index) => (
-                <p
-                  key={index}
-                  className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
-                >
+                <p key={index} className="mb-4 leading-normal">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco

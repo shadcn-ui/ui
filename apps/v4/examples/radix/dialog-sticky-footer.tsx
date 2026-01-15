@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/examples/radix/ui/dialog"
 
-export function DialogWithStickyFooter() {
+export function DialogStickyFooter() {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -18,17 +18,15 @@ export function DialogWithStickyFooter() {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Scrollable Content</DialogTitle>
+          <DialogTitle>Sticky Footer</DialogTitle>
           <DialogDescription>
-            This is a dialog with scrollable content.
+            This dialog has a sticky footer that stays visible while the content
+            scrolls.
           </DialogDescription>
         </DialogHeader>
-        <div className="style-nova:-mx-4 style-nova:px-4 no-scrollbar style-vega:px-6 style-mira:px-4 style-maia:px-6 style-vega:-mx-6 style-maia:-mx-6 style-mira:-mx-4 style-lyra:-mx-4 style-lyra:px-4 max-h-[70vh] overflow-y-auto">
+        <div className="no-scrollbar -mx-4 max-h-[50vh] overflow-y-auto px-4">
           {Array.from({ length: 10 }).map((_, index) => (
-            <p
-              key={index}
-              className="style-lyra:mb-2 style-lyra:leading-relaxed mb-4 leading-normal"
-            >
+            <p key={index} className="mb-4 leading-normal">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris

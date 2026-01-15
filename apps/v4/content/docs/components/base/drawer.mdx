@@ -7,11 +7,7 @@ links:
   doc: https://vaul.emilkowal.ski/getting-started
 ---
 
-<ComponentPreview
-  styleName="base-nova"
-  name="drawer-demo"
-  description="A drawer component."
-/>
+<ComponentPreview styleName="base-nova" name="drawer-demo" />
 
 ## About
 
@@ -94,8 +90,24 @@ import {
 
 ## Examples
 
+### Scrollable Content
+
+Keep actions visible while the content scrolls.
+
+<ComponentPreview styleName="base-nova" name="drawer-scrollable-content" />
+
+### Sides
+
+Use the `direction` prop to set the side of the drawer. Available options are `top`, `right`, `bottom`, and `left`.
+
+<ComponentPreview styleName="base-nova" name="drawer-sides" />
+
 ### Responsive Dialog
 
 You can combine the `Dialog` and `Drawer` components to create a responsive dialog. This renders a `Dialog` component on desktop and a `Drawer` on mobile.
 
 <ComponentPreview styleName="base-nova" name="drawer-dialog" />
+
+## API Reference
+
+See the [Vaul documentation](https://vaul.emilkowal.ski/components/drawer) for the full API reference.

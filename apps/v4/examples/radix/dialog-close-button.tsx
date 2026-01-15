@@ -39,9 +39,7 @@ export function DialogCloseButton() {
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
+            <Button type="button">Close</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>

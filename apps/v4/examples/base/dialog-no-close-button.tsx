@@ -12,26 +12,19 @@ import {
 
 export function DialogNoCloseButton() {
   return (
-    <>
-      <Dialog>
-        <DialogTrigger render={<Button variant="outline" />}>
-          No Close Button
-        </DialogTrigger>
-        <DialogContent showCloseButton={false}>
-          <DialogHeader>
-            <DialogTitle>No Close Button</DialogTitle>
-            <DialogDescription>
-              This dialog doesn&apos;t have a close button in the top-right
-              corner.
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <DialogClose render={<Button variant="outline" />}>
-              Close
-            </DialogClose>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </>
+    <Dialog>
+      <DialogTrigger render={<Button variant="outline" />}>
+        No Close Button
+      </DialogTrigger>
+      <DialogContent showCloseButton={false}>
+        <DialogHeader>
+          <DialogTitle>No Close Button</DialogTitle>
+          <DialogDescription>
+            This dialog doesn&apos;t have a close button in the top-right
+            corner.
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   )
 }

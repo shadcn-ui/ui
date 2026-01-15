@@ -1,24 +1,27 @@
-import { Button } from "@/examples/radix/ui/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/examples/radix/ui/dialog"
+} from "@/examples/base/ui/dialog"
 
-export function DialogScrollableContent() {
+export function DialogStickyFooter() {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Scrollable Content</Button>
+      <DialogTrigger render={<Button variant="outline" />}>
+        Sticky Footer
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Scrollable Content</DialogTitle>
+          <DialogTitle>Sticky Footer</DialogTitle>
           <DialogDescription>
-            This is a dialog with scrollable content.
+            This dialog has a sticky footer that stays visible while the content
+            scrolls.
           </DialogDescription>
         </DialogHeader>
         <div className="no-scrollbar -mx-4 max-h-[50vh] overflow-y-auto px-4">
@@ -34,6 +37,9 @@ export function DialogScrollableContent() {
             </p>
           ))}
         </div>
+        <DialogFooter>
+          <DialogClose render={<Button variant="outline" />}>Close</DialogClose>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   )
