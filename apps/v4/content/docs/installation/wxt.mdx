@@ -1,0 +1,84 @@
+---
+title: WXT
+description: Install and configure shadcn/ui for WXT.
+---
+
+<Steps>
+
+### Create project
+
+Start by creating a new WXT project using the React template:
+
+```bash
+npx wxt@latest init --template react --pm pnpm
+```
+
+### Add Tailwind CSS
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+Replace everything in `entrypoints/popup/style.css` with the following:
+
+```css title="entrypoints/popup/style.css"
+@import "tailwindcss";
+```
+
+### Edit tsconfig.json file
+
+Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the `tsconfig.json` file:
+
+```ts title="tsconfig.json" {5-8} showLineNumbers
+{
+  "extends": "./.wxt/tsconfig.json",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+### Run the CLI
+
+Run the `shadcn` init command to setup your project:
+
+```bash
+npx shadcn@latest init
+```
+
+You will be asked a few questions to configure `components.json`.
+
+```txt
+Which color would you like to use as base color? › Neutral
+```
+
+### Add Components
+
+You can now start adding components to your project.
+
+```bash
+npx shadcn@latest add button
+```
+
+The command above will add the `Button` component to your project. You can then import it like this:
+
+```tsx showLineNumbers title="entrypoints/popup/App.tsx"
+import { Button } from "@/components/ui/button"
+
+function App() {
+  return (
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      <Button>Click me</Button>
+    </div>
+  )
+}
+
+export default App
+```
+
+</Steps>
