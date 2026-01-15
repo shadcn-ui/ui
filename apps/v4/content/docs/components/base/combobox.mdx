@@ -1,8 +1,11 @@
 ---
 title: Combobox
-description: Autocomplete input and command palette with a list of suggestions.
+description: Autocomplete input with a list of suggestions.
 base: base
 component: true
+links:
+  doc: https://base-ui.com/react/components/combobox
+  api: https://base-ui.com/react/components/combobox#api-reference
 ---
 
 <ComponentPreview
@@ -13,137 +16,246 @@ component: true
 
 ## Installation
 
-The Combobox is built using a composition of the `<Popover />` and the `<Command />` components.
+<CodeTabs>
 
-See installation instructions for the [Popover](/docs/components/popover#installation) and the [Command](/docs/components/command#installation) components.
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add combobox
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="combobox"
+  title="components/ui/combobox.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
-<CodeCollapsibleWrapper>
-
-```tsx showLineNumbers title="components/example-combobox.tsx"
-"use client"
-
-import * as React from "react"
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
-
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+```tsx showLineNumbers
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox"
+```
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
+```tsx showLineNumbers
+const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
 
 export function ExampleCombobox() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
-
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-[200px] justify-between"
-        >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
-          <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
-        <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
-            <CommandGroup>
-              {frameworks.map((framework) => (
-                <CommandItem
-                  key={framework.value}
-                  value={framework.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
-                    setOpen(false)
-                  }}
-                >
-                  <CheckIcon
-                    className={cn(
-                      "mr-2 h-4 w-4",
-                      value === framework.value ? "opacity-100" : "opacity-0"
-                    )}
-                  />
-                  {framework.label}
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <Combobox items={frameworks}>
+      <ComboboxInput placeholder="Select a framework" />
+      <ComboboxContent>
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
   )
 }
 ```
 
-</CodeCollapsibleWrapper>
+## Custom Items
+
+Use `itemToStringValue` when your items are objects.
+
+```tsx showLineNumbers
+import * as React from "react"
+
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox"
+
+type Framework = {
+  label: string
+  value: string
+}
+
+const frameworks: Framework[] = [
+  { label: "Next.js", value: "next" },
+  { label: "SvelteKit", value: "sveltekit" },
+  { label: "Nuxt", value: "nuxt" },
+]
+
+export function ExampleComboboxCustomItems() {
+  return (
+    <Combobox
+      items={frameworks}
+      itemToStringValue={(framework) => framework.label}
+    >
+      <ComboboxInput placeholder="Select a framework" />
+      <ComboboxContent>
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(framework) => (
+            <ComboboxItem key={framework.value} value={framework}>
+              {framework.label}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+```
+
+## Multiple Selection
+
+Use `multiple` with chips for multi-select behavior.
+
+```tsx showLineNumbers
+import * as React from "react"
+
+import {
+  Combobox,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipsInput,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxValue,
+} from "@/components/ui/combobox"
+
+const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
+
+export function ExampleComboboxMultiple() {
+  const [value, setValue] = React.useState<string[]>([])
+
+  return (
+    <Combobox
+      items={frameworks}
+      multiple
+      value={value}
+      onValueChange={setValue}
+    >
+      <ComboboxChips>
+        <ComboboxValue>
+          {value.map((item) => (
+            <ComboboxChip key={item}>{item}</ComboboxChip>
+          ))}
+        </ComboboxValue>
+        <ComboboxChipsInput placeholder="Add framework" />
+      </ComboboxChips>
+      <ComboboxContent>
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  )
+}
+```
 
 ## Examples
 
-### Combobox
+### Basic
 
-<ComponentPreview
-  styleName="base-nova"
-  name="combobox-demo"
-  description="A combobox with a list of frameworks."
-/>
+A simple combobox with a list of frameworks.
 
-### Popover
+<ComponentPreview styleName="base-nova" name="combobox-basic" />
 
-<ComponentPreview styleName="base-nova" name="combobox-popover" />
+### Multiple
 
-### Dropdown menu
+A combobox with multiple selection using `multiple` and `ComboboxChips`.
 
-<ComponentPreview
-  styleName="base-nova"
-  name="combobox-dropdown-menu"
-  description="A combobox in a dropdown menu"
-/>
+<ComponentPreview styleName="base-nova" name="combobox-multiple" />
 
-### Responsive
+### Clear Button
 
-You can create a responsive combobox by using the `<Popover />` on desktop and the `<Drawer />` components on mobile.
+Use the `showClear` prop to show a clear button.
 
-<ComponentPreview styleName="base-nova" name="combobox-responsive" />
+<ComponentPreview styleName="base-nova" name="combobox-clear" />
+
+### Groups
+
+Use `ComboboxGroup` and `ComboboxSeparator` to group items.
+
+<ComponentPreview styleName="base-nova" name="combobox-groups" />
+
+### Custom Items
+
+You can render custom component inside `ComboboxItem`.
+
+<ComponentPreview styleName="base-nova" name="combobox-custom" />
+
+### Invalid
+
+Use the `aria-invalid` prop to make the combobox invalid.
+
+<ComponentPreview styleName="base-nova" name="combobox-invalid" />
+
+### Disabled
+
+Use the `disabled` prop to disable the combobox.
+
+<ComponentPreview styleName="base-nova" name="combobox-disabled" />
+
+### Auto Highlight
+
+Use the `autoHighlight` prop automatically highlight the first item on filter.
+
+<ComponentPreview styleName="base-nova" name="combobox-auto-highlight" />
+
+### Popup
+
+You can trigger the combobox from a button or any other component by using the `render` prop. Move the `ComboboxInput` inside the `ComboboxContent`.
+
+<ComponentPreview styleName="base-nova" name="combobox-popup" />
+
+### Input Group
+
+You can add an addon to the combobox by using the `InputGroupAddon` component inside the `ComboboxInput`.
+
+<ComponentPreview styleName="base-nova" name="combobox-input-group" />
+
+## API Reference
+
+See the [Base UI](https://base-ui.com/react/components/combobox#api-reference) documentation for more information.

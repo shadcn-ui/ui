@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Combobox,
   ComboboxCollection,
@@ -9,7 +11,8 @@ import {
   ComboboxLabel,
   ComboboxList,
 } from "@/examples/radix/ui/combobox"
-import { Select } from "@/examples/radix/ui/select"
+import { InputGroupAddon } from "@/examples/radix/ui/input-group"
+import { GlobeIcon } from "lucide-react"
 
 const timezones = [
   {
@@ -47,11 +50,15 @@ const timezones = [
   },
 ] as const
 
-export function ComboboxWithGroups() {
+export function ComboxboxInputGroup() {
   return (
     <Combobox items={timezones}>
-      <ComboboxInput placeholder="Select a timezone" />
-      <ComboboxContent>
+      <ComboboxInput placeholder="Select a timezone">
+        <InputGroupAddon>
+          <GlobeIcon />
+        </InputGroupAddon>
+      </ComboboxInput>
+      <ComboboxContent alignOffset={-28} className="w-60">
         <ComboboxEmpty>No timezones found.</ComboboxEmpty>
         <ComboboxList>
           {(group) => (

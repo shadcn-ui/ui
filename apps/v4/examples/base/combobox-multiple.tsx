@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import {
   Combobox,
@@ -11,7 +13,6 @@ import {
   ComboboxValue,
   useComboboxAnchor,
 } from "@/examples/base/ui/combobox"
-import { Select } from "@/examples/base/ui/select"
 
 const frameworks = [
   "Next.js",
@@ -20,41 +21,6 @@ const frameworks = [
   "Remix",
   "Astro",
 ] as const
-
-const items = [
-  {
-    label: "Select a framework",
-    value: null,
-  },
-  {
-    label: "React",
-    value: "react",
-  },
-  {
-    label: "Vue",
-    value: "vue",
-  },
-  {
-    label: "Angular",
-    value: "angular",
-  },
-  {
-    label: "Svelte",
-    value: "svelte",
-  },
-  {
-    label: "Solid",
-    value: "solid",
-  },
-  {
-    label: "Preact",
-    value: "preact",
-  },
-  {
-    label: "Next.js",
-    value: "next.js",
-  },
-]
 
 export function ComboboxMultiple() {
   const anchor = useComboboxAnchor()
@@ -66,7 +32,7 @@ export function ComboboxMultiple() {
       items={frameworks}
       defaultValue={[frameworks[0]]}
     >
-      <ComboboxChips ref={anchor}>
+      <ComboboxChips ref={anchor} className="w-full max-w-xs">
         <ComboboxValue>
           {(values) => (
             <React.Fragment>

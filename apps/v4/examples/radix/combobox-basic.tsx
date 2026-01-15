@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Combobox,
   ComboboxContent,
@@ -6,7 +8,6 @@ import {
   ComboboxItem,
   ComboboxList,
 } from "@/examples/radix/ui/combobox"
-import { Select } from "@/examples/radix/ui/select"
 
 const frameworks = [
   "Next.js",
@@ -16,7 +17,7 @@ const frameworks = [
   "Astro",
 ] as const
 
-export function ComboboxBasic() {
+export default function ComboboxBasic() {
   return (
     <Combobox items={frameworks}>
       <ComboboxInput placeholder="Select a framework" />

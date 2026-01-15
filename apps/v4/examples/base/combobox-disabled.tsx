@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Combobox,
   ComboboxContent,
@@ -6,7 +8,6 @@ import {
   ComboboxItem,
   ComboboxList,
 } from "@/examples/base/ui/combobox"
-import { Select } from "@/examples/base/ui/select"
 
 const frameworks = [
   "Next.js",
@@ -15,41 +16,6 @@ const frameworks = [
   "Remix",
   "Astro",
 ] as const
-
-const items = [
-  {
-    label: "Select a framework",
-    value: null,
-  },
-  {
-    label: "React",
-    value: "react",
-  },
-  {
-    label: "Vue",
-    value: "vue",
-  },
-  {
-    label: "Angular",
-    value: "angular",
-  },
-  {
-    label: "Svelte",
-    value: "svelte",
-  },
-  {
-    label: "Solid",
-    value: "solid",
-  },
-  {
-    label: "Preact",
-    value: "preact",
-  },
-  {
-    label: "Next.js",
-    value: "next.js",
-  },
-]
 
 export function ComboboxDisabled() {
   return (

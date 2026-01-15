@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Combobox,
   ComboboxCollection,
@@ -10,7 +12,6 @@ import {
   ComboboxList,
   ComboboxSeparator,
 } from "@/examples/radix/ui/combobox"
-import { Select } from "@/examples/radix/ui/select"
 
 const timezones = [
   {
@@ -55,7 +56,7 @@ export function ComboboxWithGroupsAndSeparator() {
       <ComboboxContent>
         <ComboboxEmpty>No timezones found.</ComboboxEmpty>
         <ComboboxList>
-          {(group) => (
+          {(group, index) => (
             <ComboboxGroup key={group.value} items={group.items}>
               <ComboboxLabel>{group.value}</ComboboxLabel>
               <ComboboxCollection>
@@ -65,7 +66,7 @@ export function ComboboxWithGroupsAndSeparator() {
                   </ComboboxItem>
                 )}
               </ComboboxCollection>
-              <ComboboxSeparator />
+              {index < timezones.length - 1 && <ComboboxSeparator />}
             </ComboboxGroup>
           )}
         </ComboboxList>

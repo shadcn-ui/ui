@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Combobox,
   ComboboxContent,
@@ -6,14 +8,19 @@ import {
   ComboboxItem,
   ComboboxList,
 } from "@/examples/radix/ui/combobox"
-import { Item } from "@/examples/radix/ui/item"
 
-const largeListItems = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`)
+const frameworks = [
+  "Next.js",
+  "SvelteKit",
+  "Nuxt.js",
+  "Remix",
+  "Astro",
+] as const
 
-export function ComboboxLargeList() {
+export function ComboboxWithClear() {
   return (
-    <Combobox items={largeListItems}>
-      <ComboboxInput placeholder="Search from 100 items" />
+    <Combobox items={frameworks} defaultValue={frameworks[0]}>
+      <ComboboxInput placeholder="Select a framework" showClear />
       <ComboboxContent>
         <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>

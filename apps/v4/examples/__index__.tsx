@@ -1383,6 +1383,32 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "combobox-clear": {
+      name: "combobox-clear",
+      filePath: "examples/radix/combobox-clear.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/combobox-clear")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "combobox-clear"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "combobox-custom": {
+      name: "combobox-custom",
+      filePath: "examples/radix/combobox-custom.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/combobox-custom")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "combobox-custom"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "combobox-demo": {
       name: "combobox-demo",
       filePath: "examples/radix/combobox-demo.tsx",
@@ -1409,42 +1435,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "combobox-dropdown-menu": {
-      name: "combobox-dropdown-menu",
-      filePath: "examples/radix/combobox-dropdown-menu.tsx",
+    "combobox-groups": {
+      name: "combobox-groups",
+      filePath: "examples/radix/combobox-groups.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-dropdown-menu")
+        const mod = await import("./radix/combobox-groups")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-dropdown-menu"
+          ) || "combobox-groups"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "combobox-in-dialog": {
-      name: "combobox-in-dialog",
-      filePath: "examples/radix/combobox-in-dialog.tsx",
+    "combobox-input-group": {
+      name: "combobox-input-group",
+      filePath: "examples/radix/combobox-input-group.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-in-dialog")
+        const mod = await import("./radix/combobox-input-group")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-in-dialog"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-in-popup": {
-      name: "combobox-in-popup",
-      filePath: "examples/radix/combobox-in-popup.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-in-popup")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-in-popup"
+          ) || "combobox-input-group"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1461,58 +1474,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "combobox-large-list": {
-      name: "combobox-large-list",
-      filePath: "examples/radix/combobox-large-list.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-large-list")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-large-list"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-multiple-disabled": {
-      name: "combobox-multiple-disabled",
-      filePath: "examples/radix/combobox-multiple-disabled.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-multiple-disabled")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-multiple-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-multiple-invalid": {
-      name: "combobox-multiple-invalid",
-      filePath: "examples/radix/combobox-multiple-invalid.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-multiple-invalid")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-multiple-invalid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-multiple-no-remove": {
-      name: "combobox-multiple-no-remove",
-      filePath: "examples/radix/combobox-multiple-no-remove.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-multiple-no-remove")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-multiple-no-remove"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "combobox-multiple": {
       name: "combobox-multiple",
       filePath: "examples/radix/combobox-multiple.tsx",
@@ -1526,120 +1487,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "combobox-popover": {
-      name: "combobox-popover",
-      filePath: "examples/radix/combobox-popover.tsx",
+    "combobox-popup": {
+      name: "combobox-popup",
+      filePath: "examples/radix/combobox-popup.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-popover")
+        const mod = await import("./radix/combobox-popup")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-popover"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-responsive": {
-      name: "combobox-responsive",
-      filePath: "examples/radix/combobox-responsive.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-responsive")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-responsive"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-clear": {
-      name: "combobox-with-clear",
-      filePath: "examples/radix/combobox-with-clear.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-with-clear")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-clear"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-custom-items": {
-      name: "combobox-with-custom-items",
-      filePath: "examples/radix/combobox-with-custom-items.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-with-custom-items")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-custom-items"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-form": {
-      name: "combobox-with-form",
-      filePath: "examples/radix/combobox-with-form.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-with-form")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-form"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-groups-and-separator": {
-      name: "combobox-with-groups-and-separator",
-      filePath: "examples/radix/combobox-with-groups-and-separator.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-with-groups-and-separator")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-groups-and-separator"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-groups": {
-      name: "combobox-with-groups",
-      filePath: "examples/radix/combobox-with-groups.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-with-groups")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-groups"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-other-inputs": {
-      name: "combobox-with-other-inputs",
-      filePath: "examples/radix/combobox-with-other-inputs.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/combobox-with-other-inputs")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-other-inputs"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "comboxbox-input-addon": {
-      name: "comboxbox-input-addon",
-      filePath: "examples/radix/comboxbox-input-addon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/comboxbox-input-addon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "comboxbox-input-addon"
+          ) || "combobox-popup"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7991,6 +7848,32 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "combobox-clear": {
+      name: "combobox-clear",
+      filePath: "examples/base/combobox-clear.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/combobox-clear")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "combobox-clear"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "combobox-custom": {
+      name: "combobox-custom",
+      filePath: "examples/base/combobox-custom.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/combobox-custom")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "combobox-custom"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "combobox-demo": {
       name: "combobox-demo",
       filePath: "examples/base/combobox-demo.tsx",
@@ -8017,42 +7900,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "combobox-dropdown-menu": {
-      name: "combobox-dropdown-menu",
-      filePath: "examples/base/combobox-dropdown-menu.tsx",
+    "combobox-groups": {
+      name: "combobox-groups",
+      filePath: "examples/base/combobox-groups.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/combobox-dropdown-menu")
+        const mod = await import("./base/combobox-groups")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-dropdown-menu"
+          ) || "combobox-groups"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "combobox-in-dialog": {
-      name: "combobox-in-dialog",
-      filePath: "examples/base/combobox-in-dialog.tsx",
+    "combobox-input-group": {
+      name: "combobox-input-group",
+      filePath: "examples/base/combobox-input-group.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/combobox-in-dialog")
+        const mod = await import("./base/combobox-input-group")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-in-dialog"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-in-popup": {
-      name: "combobox-in-popup",
-      filePath: "examples/base/combobox-in-popup.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-in-popup")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-in-popup"
+          ) || "combobox-input-group"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8069,58 +7939,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "combobox-large-list": {
-      name: "combobox-large-list",
-      filePath: "examples/base/combobox-large-list.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-large-list")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-large-list"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-multiple-disabled": {
-      name: "combobox-multiple-disabled",
-      filePath: "examples/base/combobox-multiple-disabled.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-multiple-disabled")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-multiple-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-multiple-invalid": {
-      name: "combobox-multiple-invalid",
-      filePath: "examples/base/combobox-multiple-invalid.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-multiple-invalid")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-multiple-invalid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-multiple-no-remove": {
-      name: "combobox-multiple-no-remove",
-      filePath: "examples/base/combobox-multiple-no-remove.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-multiple-no-remove")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-multiple-no-remove"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "combobox-multiple": {
       name: "combobox-multiple",
       filePath: "examples/base/combobox-multiple.tsx",
@@ -8134,120 +7952,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "combobox-popover": {
-      name: "combobox-popover",
-      filePath: "examples/base/combobox-popover.tsx",
+    "combobox-popup": {
+      name: "combobox-popup",
+      filePath: "examples/base/combobox-popup.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/combobox-popover")
+        const mod = await import("./base/combobox-popup")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-popover"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-responsive": {
-      name: "combobox-responsive",
-      filePath: "examples/base/combobox-responsive.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-responsive")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-responsive"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-clear": {
-      name: "combobox-with-clear",
-      filePath: "examples/base/combobox-with-clear.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-with-clear")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-clear"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-custom-items": {
-      name: "combobox-with-custom-items",
-      filePath: "examples/base/combobox-with-custom-items.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-with-custom-items")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-custom-items"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-form": {
-      name: "combobox-with-form",
-      filePath: "examples/base/combobox-with-form.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-with-form")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-form"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-groups-and-separator": {
-      name: "combobox-with-groups-and-separator",
-      filePath: "examples/base/combobox-with-groups-and-separator.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-with-groups-and-separator")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-groups-and-separator"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-groups": {
-      name: "combobox-with-groups",
-      filePath: "examples/base/combobox-with-groups.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-with-groups")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-groups"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "combobox-with-other-inputs": {
-      name: "combobox-with-other-inputs",
-      filePath: "examples/base/combobox-with-other-inputs.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/combobox-with-other-inputs")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "combobox-with-other-inputs"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "comboxbox-input-addon": {
-      name: "comboxbox-input-addon",
-      filePath: "examples/base/comboxbox-input-addon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/comboxbox-input-addon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "comboxbox-input-addon"
+          ) || "combobox-popup"
         return { default: mod.default || mod[exportName] }
       }),
     },

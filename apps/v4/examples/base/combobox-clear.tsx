@@ -1,4 +1,5 @@
-import { Button } from "@/examples/radix/ui/button"
+"use client"
+
 import {
   Combobox,
   ComboboxContent,
@@ -6,8 +7,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/examples/radix/ui/combobox"
-import { Select } from "@/examples/radix/ui/select"
+} from "@/examples/base/ui/combobox"
 
 const frameworks = [
   "Next.js",

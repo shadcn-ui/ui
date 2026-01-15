@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import {
   Combobox,
@@ -30,7 +32,7 @@ export function ComboboxMultiple() {
       items={frameworks}
       defaultValue={[frameworks[0]]}
     >
-      <ComboboxChips ref={anchor}>
+      <ComboboxChips ref={anchor} className="w-full max-w-xs">
         <ComboboxValue>
           {(values) => (
             <React.Fragment>

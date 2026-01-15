@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Combobox,
   ComboboxCollection,
@@ -8,9 +10,9 @@ import {
   ComboboxItem,
   ComboboxLabel,
   ComboboxList,
-  ComboboxSeparator,
 } from "@/examples/base/ui/combobox"
-import { Select } from "@/examples/base/ui/select"
+import { InputGroupAddon } from "@/examples/base/ui/input-group"
+import { GlobeIcon } from "lucide-react"
 
 const timezones = [
   {
@@ -48,46 +50,15 @@ const timezones = [
   },
 ] as const
 
-const items = [
-  {
-    label: "Select a framework",
-    value: null,
-  },
-  {
-    label: "React",
-    value: "react",
-  },
-  {
-    label: "Vue",
-    value: "vue",
-  },
-  {
-    label: "Angular",
-    value: "angular",
-  },
-  {
-    label: "Svelte",
-    value: "svelte",
-  },
-  {
-    label: "Solid",
-    value: "solid",
-  },
-  {
-    label: "Preact",
-    value: "preact",
-  },
-  {
-    label: "Next.js",
-    value: "next.js",
-  },
-]
-
-export function ComboboxWithGroupsAndSeparator() {
+export function ComboxboxInputGroup() {
   return (
     <Combobox items={timezones}>
-      <ComboboxInput placeholder="Select a timezone" />
-      <ComboboxContent>
+      <ComboboxInput placeholder="Select a timezone">
+        <InputGroupAddon>
+          <GlobeIcon />
+        </InputGroupAddon>
+      </ComboboxInput>
+      <ComboboxContent alignOffset={-28} className="w-60">
         <ComboboxEmpty>No timezones found.</ComboboxEmpty>
         <ComboboxList>
           {(group) => (
@@ -100,7 +71,6 @@ export function ComboboxWithGroupsAndSeparator() {
                   </ComboboxItem>
                 )}
               </ComboboxCollection>
-              <ComboboxSeparator />
             </ComboboxGroup>
           )}
         </ComboboxList>
