@@ -13,9 +13,7 @@ export function DropdownMenuDestructive() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">
-          Actions
-        </Button>
+        <Button variant="outline">Actions</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>

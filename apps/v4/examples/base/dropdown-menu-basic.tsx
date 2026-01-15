@@ -12,9 +12,7 @@ import {
 export function DropdownMenuBasic() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        render={<Button variant="outline" />}
-      >
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
         Open
       </DropdownMenuTrigger>
       <DropdownMenuContent>

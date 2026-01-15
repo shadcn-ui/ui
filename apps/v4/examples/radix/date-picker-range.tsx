@@ -20,13 +20,13 @@ export function DatePickerWithRange() {
   })
 
   return (
-    <Field className="mx-auto w-72">
+    <Field className="mx-auto w-60">
       <FieldLabel htmlFor="date-picker-range">Date Picker Range</FieldLabel>
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            id="date-picker-range"
             variant="outline"
+            id="date-picker-range"
             className="justify-start px-2.5 font-normal"
           >
             <CalendarIcon />

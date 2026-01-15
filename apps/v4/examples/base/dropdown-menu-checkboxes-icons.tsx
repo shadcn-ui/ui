@@ -21,9 +21,7 @@ export function DropdownMenuCheckboxesIcons() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        render={<Button variant="outline" />}
-      >
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
         Notifications
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48">

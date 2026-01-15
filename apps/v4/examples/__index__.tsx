@@ -1734,6 +1734,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "date-picker-basic": {
+      name: "date-picker-basic",
+      filePath: "examples/radix/date-picker-basic.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/date-picker-basic")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "date-picker-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "date-picker-demo": {
       name: "date-picker-demo",
       filePath: "examples/radix/date-picker-demo.tsx",
@@ -1747,42 +1760,68 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "date-picker-simple": {
-      name: "date-picker-simple",
-      filePath: "examples/radix/date-picker-simple.tsx",
+    "date-picker-dob": {
+      name: "date-picker-dob",
+      filePath: "examples/radix/date-picker-dob.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/date-picker-simple")
+        const mod = await import("./radix/date-picker-dob")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "date-picker-simple"
+          ) || "date-picker-dob"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "date-picker-with-presets": {
-      name: "date-picker-with-presets",
-      filePath: "examples/radix/date-picker-with-presets.tsx",
+    "date-picker-input": {
+      name: "date-picker-input",
+      filePath: "examples/radix/date-picker-input.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/date-picker-with-presets")
+        const mod = await import("./radix/date-picker-input")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "date-picker-with-presets"
+          ) || "date-picker-input"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "date-picker-with-range": {
-      name: "date-picker-with-range",
-      filePath: "examples/radix/date-picker-with-range.tsx",
+    "date-picker-natural-language": {
+      name: "date-picker-natural-language",
+      filePath: "examples/radix/date-picker-natural-language.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/date-picker-with-range")
+        const mod = await import("./radix/date-picker-natural-language")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "date-picker-with-range"
+          ) || "date-picker-natural-language"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "date-picker-range": {
+      name: "date-picker-range",
+      filePath: "examples/radix/date-picker-range.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/date-picker-range")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "date-picker-range"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "date-picker-time": {
+      name: "date-picker-time",
+      filePath: "examples/radix/date-picker-time.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/date-picker-time")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "date-picker-time"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8108,6 +8147,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "date-picker-basic": {
+      name: "date-picker-basic",
+      filePath: "examples/base/date-picker-basic.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/date-picker-basic")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "date-picker-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "date-picker-demo": {
       name: "date-picker-demo",
       filePath: "examples/base/date-picker-demo.tsx",
@@ -8121,42 +8173,68 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "date-picker-simple": {
-      name: "date-picker-simple",
-      filePath: "examples/base/date-picker-simple.tsx",
+    "date-picker-dob": {
+      name: "date-picker-dob",
+      filePath: "examples/base/date-picker-dob.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/date-picker-simple")
+        const mod = await import("./base/date-picker-dob")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "date-picker-simple"
+          ) || "date-picker-dob"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "date-picker-with-presets": {
-      name: "date-picker-with-presets",
-      filePath: "examples/base/date-picker-with-presets.tsx",
+    "date-picker-input": {
+      name: "date-picker-input",
+      filePath: "examples/base/date-picker-input.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/date-picker-with-presets")
+        const mod = await import("./base/date-picker-input")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "date-picker-with-presets"
+          ) || "date-picker-input"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "date-picker-with-range": {
-      name: "date-picker-with-range",
-      filePath: "examples/base/date-picker-with-range.tsx",
+    "date-picker-natural-language": {
+      name: "date-picker-natural-language",
+      filePath: "examples/base/date-picker-natural-language.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/date-picker-with-range")
+        const mod = await import("./base/date-picker-natural-language")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "date-picker-with-range"
+          ) || "date-picker-natural-language"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "date-picker-range": {
+      name: "date-picker-range",
+      filePath: "examples/base/date-picker-range.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/date-picker-range")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "date-picker-range"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "date-picker-time": {
+      name: "date-picker-time",
+      filePath: "examples/base/date-picker-time.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/date-picker-time")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "date-picker-time"
         return { default: mod.default || mod[exportName] }
       }),
     },

@@ -20,7 +20,7 @@ export function DatePickerWithRange() {
   })
 
   return (
-    <Field className="mx-auto w-72">
+    <Field className="mx-auto w-60">
       <FieldLabel htmlFor="date-picker-range">Date Picker Range</FieldLabel>
       <Popover>
         <PopoverTrigger
@@ -32,7 +32,7 @@ export function DatePickerWithRange() {
             />
           }
         >
-          <CalendarIcon />
+          <CalendarIcon data-icon="inline-start" />
           {date?.from ? (
             date.to ? (
               <>

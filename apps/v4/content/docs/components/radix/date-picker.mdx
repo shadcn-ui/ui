@@ -5,18 +5,13 @@ base: radix
 component: true
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="calendar-22"
-  title="Date of Birth Picker"
-  description="A calendar with date of birth picker."
-/>
+<ComponentPreview styleName="radix-nova" name="date-picker-demo" />
 
 ## Installation
 
 The Date Picker is built using a composition of the `<Popover />` and the `<Calendar />` components.
 
-See installation instructions for the [Popover](/docs/components/popover#installation) and the [Calendar](/docs/components/calendar#installation) components.
+See installation instructions for the [Popover](/docs/components/radix/popover#installation) and the [Calendar](/docs/components/radix/calendar#installation) components.
 
 ## Usage
 
@@ -63,40 +58,38 @@ See the [React DayPicker](https://react-day-picker.js.org) documentation for mor
 
 ## Examples
 
-### Date of Birth Picker
+### Basic
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="calendar-22"
-  title="Date of Birth Picker"
-  description="A calendar with date of birth picker."
-/>
+A basic date picker component.
 
-### Picker with Input
+<ComponentPreview styleName="radix-nova" name="date-picker-basic" />
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="calendar-28"
-  title="Picker with Input"
-  description="A calendar with input and picker."
-/>
+### Range Picker
 
-### Date and Time Picker
+A date picker component for selecting a range of dates.
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="calendar-24"
-  title="Date and Time Picker"
-  description="A calendar with date and time picker."
-/>
+<ComponentPreview styleName="radix-nova" name="date-picker-range" />
+
+### Date of Birth
+
+A date picker component for selecting a date of birth. This component includes a dropdown caption layout for date and month selection.
+
+<ComponentPreview styleName="radix-nova" name="date-picker-dob" />
+
+### Input
+
+A date picker component with an input field for selecting a date.
+
+<ComponentPreview styleName="radix-nova" name="date-picker-input" />
+
+### Time Picker
+
+A date picker component with a time input field for selecting a time.
+
+<ComponentPreview styleName="radix-nova" name="date-picker-time" />
 
 ### Natural Language Picker
 
 This component uses the `chrono-node` library to parse natural language dates.
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="calendar-29"
-  title="Natural Language Picker"
-  description="A calendar with natural language picker."
-/>
+<ComponentPreview styleName="radix-nova" name="date-picker-natural-language" />

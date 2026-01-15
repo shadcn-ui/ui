@@ -18,9 +18,7 @@ export function DropdownMenuRadioIcons() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        render={<Button variant="outline" />}
-      >
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
         Payment Method
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-56">

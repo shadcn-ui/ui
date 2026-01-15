@@ -16,9 +16,7 @@ import {
 export function DropdownMenuSubmenu() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        render={<Button variant="outline" />}
-      >
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
         Open
       </DropdownMenuTrigger>
       <DropdownMenuContent>

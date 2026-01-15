@@ -12,9 +12,7 @@ import { PencilIcon, ShareIcon, TrashIcon } from "lucide-react"
 export function DropdownMenuDestructive() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        render={<Button variant="outline" />}
-      >
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
         Actions
       </DropdownMenuTrigger>
       <DropdownMenuContent>

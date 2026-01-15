@@ -9,9 +9,7 @@ import {
   PopoverTrigger,
 } from "@/examples/radix/ui/popover"
 import { format } from "date-fns"
-import { CalendarIcon } from "lucide-react"
-
-import { cn } from "@/lib/utils"
+import { ChevronDownIcon } from "lucide-react"
 
 export function DatePickerDemo() {
   const [date, setDate] = React.useState<Date>()
@@ -20,14 +18,12 @@ export function DatePickerDemo() {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={"outline"}
-          className={cn(
-            "w-[240px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
-          )}
+          variant="outline"
+          data-empty={!date}
+          className="data-[empty=true]:text-muted-foreground w-[212px] justify-between text-left font-normal"
         >
-          <CalendarIcon />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
+          <ChevronDownIcon />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
@@ -35,7 +31,7 @@ export function DatePickerDemo() {
           mode="single"
           selected={date}
           onSelect={setDate}
-          initialFocus
+          defaultMonth={date}
         />
       </PopoverContent>
     </Popover>
