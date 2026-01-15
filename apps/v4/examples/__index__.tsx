@@ -2150,16 +2150,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "empty-basic": {
-      name: "empty-basic",
-      filePath: "examples/radix/empty-basic.tsx",
+    "empty-card": {
+      name: "empty-card",
+      filePath: "examples/radix/empty-card.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/empty-basic")
+        const mod = await import("./radix/empty-card")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-basic"
+          ) || "empty-card"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -2173,32 +2173,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "empty-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-icon": {
-      name: "empty-icon",
-      filePath: "examples/radix/empty-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/empty-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-in-card": {
-      name: "empty-in-card",
-      filePath: "examples/radix/empty-in-card.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/empty-in-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-in-card"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -2225,58 +2199,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "empty-outline"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-with-border": {
-      name: "empty-with-border",
-      filePath: "examples/radix/empty-with-border.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/empty-with-border")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-with-border"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-with-icon": {
-      name: "empty-with-icon",
-      filePath: "examples/radix/empty-with-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/empty-with-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-with-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-with-muted-background-alt": {
-      name: "empty-with-muted-background-alt",
-      filePath: "examples/radix/empty-with-muted-background-alt.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/empty-with-muted-background-alt")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-with-muted-background-alt"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-with-muted-background": {
-      name: "empty-with-muted-background",
-      filePath: "examples/radix/empty-with-muted-background.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/empty-with-muted-background")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-with-muted-background"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8550,16 +8472,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "empty-basic": {
-      name: "empty-basic",
-      filePath: "examples/base/empty-basic.tsx",
+    "empty-card": {
+      name: "empty-card",
+      filePath: "examples/base/empty-card.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/empty-basic")
+        const mod = await import("./base/empty-card")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-basic"
+          ) || "empty-card"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8573,32 +8495,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "empty-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-icon": {
-      name: "empty-icon",
-      filePath: "examples/base/empty-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/empty-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-in-card": {
-      name: "empty-in-card",
-      filePath: "examples/base/empty-in-card.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/empty-in-card")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-in-card"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8625,58 +8521,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "empty-outline"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-with-border": {
-      name: "empty-with-border",
-      filePath: "examples/base/empty-with-border.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/empty-with-border")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-with-border"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-with-icon": {
-      name: "empty-with-icon",
-      filePath: "examples/base/empty-with-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/empty-with-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-with-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-with-muted-background-alt": {
-      name: "empty-with-muted-background-alt",
-      filePath: "examples/base/empty-with-muted-background-alt.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/empty-with-muted-background-alt")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-with-muted-background-alt"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "empty-with-muted-background": {
-      name: "empty-with-muted-background",
-      filePath: "examples/base/empty-with-muted-background.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/empty-with-muted-background")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "empty-with-muted-background"
         return { default: mod.default || mod[exportName] }
       }),
     },

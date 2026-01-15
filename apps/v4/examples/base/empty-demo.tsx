@@ -23,17 +23,16 @@ export default function EmptyDemo() {
           your first project.
         </EmptyDescription>
       </EmptyHeader>
-      <EmptyContent>
-        <div className="flex gap-2">
-          <Button>Create Project</Button>
-          <Button variant="outline">Import Project</Button>
-        </div>
+      <EmptyContent className="flex-row justify-center gap-2">
+        <Button>Create Project</Button>
+        <Button variant="outline">Import Project</Button>
       </EmptyContent>
       <Button
         variant="link"
         render={<a href="#" />}
         className="text-muted-foreground"
         size="sm"
+        nativeButton={false}
       >
         Learn More <ArrowUpRightIcon />
       </Button>
