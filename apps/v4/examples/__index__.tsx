@@ -1045,19 +1045,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "carousel-basic": {
-      name: "carousel-basic",
-      filePath: "examples/radix/carousel-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/carousel-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "carousel-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "carousel-demo": {
       name: "carousel-demo",
       filePath: "examples/radix/carousel-demo.tsx",
@@ -1133,19 +1120,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "carousel-spacing"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "carousel-with-gap": {
-      name: "carousel-with-gap",
-      filePath: "examples/radix/carousel-with-gap.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/carousel-with-gap")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "carousel-with-gap"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7770,19 +7744,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "carousel-basic": {
-      name: "carousel-basic",
-      filePath: "examples/base/carousel-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/carousel-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "carousel-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "carousel-demo": {
       name: "carousel-demo",
       filePath: "examples/base/carousel-demo.tsx",
@@ -7858,19 +7819,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "carousel-spacing"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "carousel-with-gap": {
-      name: "carousel-with-gap",
-      filePath: "examples/base/carousel-with-gap.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/carousel-with-gap")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "carousel-with-gap"
         return { default: mod.default || mod[exportName] }
       }),
     },

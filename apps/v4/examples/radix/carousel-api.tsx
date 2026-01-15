@@ -30,12 +30,12 @@ export default function CarouselDApiDemo() {
   }, [api])
 
   return (
-    <div className="mx-auto max-w-xs">
+    <div className="mx-auto max-w-[10rem] sm:max-w-xs">
       <Carousel setApi={setApi} className="w-full max-w-xs">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
-              <Card>
+              <Card className="m-px">
                 <CardContent className="flex aspect-square items-center justify-center p-6">
                   <span className="text-4xl font-semibold">{index + 1}</span>
                 </CardContent>

@@ -11,8 +11,7 @@ links:
 <ComponentPreview
   styleName="base-nova"
   name="carousel-demo"
-  title="Carousel"
-  description="A carousel with 5 items and a previous and next button."
+  previewClassName="h-80 sm:h-[32rem]"
 />
 
 ## About
@@ -92,12 +91,7 @@ import {
 
 To set the size of the items, you can use the `basis` utility class on the `<CarouselItem />`.
 
-<ComponentPreview
-  styleName="base-nova"
-  name="carousel-size"
-  title="Carousel"
-  description="A carousel with 3 active items of equal size."
-/>
+<ComponentPreview styleName="base-nova" name="carousel-size" />
 
 ```tsx showLineNumbers {4-6}
 // 33% of the carousel width.
@@ -125,22 +119,7 @@ To set the size of the items, you can use the `basis` utility class on the `<Car
 
 To set the spacing between the items, we use a `pl-[VALUE]` utility on the `<CarouselItem />` and a negative `-ml-[VALUE]` on the `<CarouselContent />`.
 
-<Callout className="mt-6">
-  **Why:** I tried to use the `gap` property or a `grid` layout on the `
-  <CarouselContent />` but it required a lot of math and mental effort to get the
-  spacing right. I found `pl-[VALUE]` and `-ml-[VALUE]` utilities much easier to
-  use.
-
-You can always adjust this in your own project if you need to.
-
-</Callout>
-
-<ComponentPreview
-  styleName="base-nova"
-  name="carousel-spacing"
-  title="Carousel"
-  description="A carousel with 3 items with a spacing of 1rem."
-/>
+<ComponentPreview styleName="base-nova" name="carousel-spacing" />
 
 ```tsx showLineNumbers /-ml-4/ /pl-4/
 <Carousel>
@@ -169,8 +148,7 @@ Use the `orientation` prop to set the orientation of the carousel.
 <ComponentPreview
   styleName="base-nova"
   name="carousel-orientation"
-  title="Carousel"
-  description="A vertical carousel."
+  previewClassName="h-[32rem]"
 />
 
 ```tsx showLineNumbers /vertical | horizontal/
@@ -209,8 +187,7 @@ Use a state and the `setApi` props to get an instance of the carousel API.
 <ComponentPreview
   styleName="base-nova"
   name="carousel-api"
-  title="Carousel"
-  description="A carousel with a slide counter."
+  previewClassName="sm:h-[32rem]"
 />
 
 ```tsx showLineNumbers {1,4,22}
@@ -305,8 +282,9 @@ export function Example() {
 <ComponentPreview
   styleName="base-nova"
   name="carousel-plugin"
-  title="Carousel"
-  description="A carousel with the autoplay plugin."
+  previewClassName="sm:h-[32rem]"
 />
 
-See the [Embla Carousel docs](https://www.embla-carousel.com/api/plugins/) for more information on using plugins.
+## API Reference
+
+See the [Embla Carousel docs](https://www.embla-carousel.com/api/plugins/) for more information on props and plugins.
