@@ -9,11 +9,7 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/collapsible#api-reference
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="collapsible-demo"
-  description="A collapsible component."
-/>
+<ComponentPreview styleName="radix-nova" name="collapsible-demo" align="start" />
 
 ## Installation
 
@@ -76,3 +72,52 @@ import {
   </CollapsibleContent>
 </Collapsible>
 ```
+
+## Controlled State
+
+Use the `open` and `onOpenChange` props to control the state.
+
+```tsx showLineNumbers
+import * as React from "react"
+
+export function Example() {
+  const [open, setOpen] = React.useState(false)
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+      <CollapsibleContent>Content</CollapsibleContent>
+    </Collapsible>
+  )
+}
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="collapsible-basic"
+  align="start"
+/>
+
+### Settings Panel
+
+Use a trigger button to reveal additional settings.
+
+<ComponentPreview styleName="radix-nova" name="collapsible-settings" />
+
+### File Tree
+
+Use nested collapsibles to build a file tree.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="collapsible-file-tree"
+  previewClassName="h-[36rem]"
+/>
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/collapsible#api-reference) documentation for more information.

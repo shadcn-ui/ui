@@ -1305,6 +1305,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "collapsible-basic": {
+      name: "collapsible-basic",
+      filePath: "examples/radix/collapsible-basic.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/collapsible-basic")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "collapsible-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "collapsible-demo": {
       name: "collapsible-demo",
       filePath: "examples/radix/collapsible-demo.tsx",
@@ -7897,6 +7910,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "checkbox-table"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "collapsible-basic": {
+      name: "collapsible-basic",
+      filePath: "examples/base/collapsible-basic.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/collapsible-basic")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "collapsible-basic"
         return { default: mod.default || mod[exportName] }
       }),
     },
