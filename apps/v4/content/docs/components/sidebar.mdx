@@ -349,6 +349,8 @@ The `SidebarProvider` component is used to provide the sidebar context to the `S
 | `defaultOpen`  | `boolean`                 | Default open state of the sidebar.           |
 | `open`         | `boolean`                 | Open state of the sidebar (controlled).      |
 | `onOpenChange` | `(open: boolean) => void` | Sets open state of the sidebar (controlled). |
+| `cookieName`   | `string`                  | Cookie key used for persisted state.         |
+| `shortcut`     | `string` or `null`        | Shortcut key; set `null` to disable.         |
 
 ### Width
 
@@ -388,7 +390,7 @@ If you have multiple sidebars in the same page, you can configure a different sh
 </SidebarProvider>
 ```
 
-To disable the keyboard shortcut for a specific provider, set `shortcut={null}`.
+To disable the keyboard shortcut for a specific provider, set `shortcut={null}`. This opts that provider out of global keyboard handling.
 
 ```tsx showLineNumbers
 <SidebarProvider shortcut={null}>
@@ -426,6 +428,8 @@ export async function Layout({ children }: { children: React.ReactNode }) {
 
 If you have multiple sidebars and want them to persist independently, pass a unique `cookieName` to each provider.
 
+If you only want one sidebar to respond to `cmd/ctrl + b`, set `shortcut={null}` on the other provider. You can also choose a custom shortcut (e.g. `shortcut="k"`) if you want the second sidebar to be keyboard-toggleable.
+
 ```tsx showLineNumbers title="app/layout.tsx"
 import { cookies } from "next/headers"
 
@@ -444,7 +448,7 @@ export async function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </SidebarProvider>
 
-      <SidebarProvider defaultOpen={rightDefaultOpen} cookieName="sidebar_right_state" shortcut="k">
+      <SidebarProvider defaultOpen={rightDefaultOpen} cookieName="sidebar_right_state" shortcut={null}>
         {/* Right sidebar */}
       </SidebarProvider>
     </>
