@@ -75,7 +75,7 @@ export default function CheckboxReactHookFormMultiple() {
         <FormField
           control={form.control}
           name="items"
-          render={() => (
+          render={({ field }) => (
             <FormItem>
               <div className="mb-4">
                 <FormLabel className="text-base">Sidebar</FormLabel>
@@ -84,37 +84,28 @@ export default function CheckboxReactHookFormMultiple() {
                 </FormDescription>
               </div>
               {items.map((item) => (
-                <FormField
+                <FormItem
                   key={item.id}
-                  control={form.control}
-                  name="items"
-                  render={({ field }) => {
-                    return (
-                      <FormItem
-                        key={item.id}
-                        className="flex flex-row items-start space-x-3 space-y-0"
-                      >
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value?.includes(item.id)}
-                            onCheckedChange={(checked) => {
-                              return checked
-                                ? field.onChange([...field.value, item.id])
-                                : field.onChange(
-                                    field.value?.filter(
-                                      (value) => value !== item.id
-                                    )
-                                  )
-                            }}
-                          />
-                        </FormControl>
-                        <FormLabel className="font-normal">
-                          {item.label}
-                        </FormLabel>
-                      </FormItem>
-                    )
-                  }}
-                />
+                  className="flex flex-row items-start space-x-3 space-y-0"
+                >
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value?.includes(item.id)}
+                      onCheckedChange={(checked) => {
+                        return checked
+                          ? field.onChange([...field.value, item.id])
+                          : field.onChange(
+                              field.value?.filter(
+                                (value) => value !== item.id
+                              )
+                            )
+                      }}
+                    />
+                  </FormControl>
+                  <FormLabel className="font-normal">
+                    {item.label}
+                  </FormLabel>
+                </FormItem>
               ))}
               <FormMessage />
             </FormItem>
