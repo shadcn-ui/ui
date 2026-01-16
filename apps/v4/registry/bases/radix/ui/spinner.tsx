@@ -8,6 +8,7 @@ function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
       tabler="IconLoader"
       hugeicons="Loading03Icon"
       phosphor="SpinnerIcon"
+      remixicon="RiLoaderLine"
       role="status"
       aria-label="Loading"
       className={cn("size-4 animate-spin", className)}
