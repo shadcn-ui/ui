@@ -7,6 +7,7 @@ import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
 import { transformImport } from "@/src/utils/transformers/transform-import"
 import { transformJsx } from "@/src/utils/transformers/transform-jsx"
+import { transformReact } from "@/src/utils/transformers/transform-react"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import { z } from "zod"
@@ -45,6 +46,7 @@ export async function transform(
     transformCssVars,
     transformTwPrefixes,
     transformIcons,
+    transformReact,
   ]
 ) {
   const tempFile = await createTempSourceFile(opts.filename)
