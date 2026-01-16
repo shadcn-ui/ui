@@ -133,5 +133,6 @@
   "@asanshay": "https://ds.asanshay.com/r/{name}.json",
   "@headcodecms": "https://headcodecms.com/r/{name}.json",
   "@typedora-ui": "https://typedora-ui.netlify.app/r/{name}.json",
-  "@agents-ui": "https://livekit.io/ui/r/{name}.json"
+  "@agents-ui": "https://livekit.io/ui/r/{name}.json",
+  "@launchui": "https://www.launchuicomponents.com/r/{name}.json"
 }
