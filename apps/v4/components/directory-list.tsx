@@ -50,8 +50,10 @@ export function DirectoryList() {
                     href={getHomepageUrl(registry.homepage)}
                     target="_blank"
                     rel="noopener noreferrer external"
+                    className="group flex items-center gap-1"
                   >
-                    {registry.name}
+                    {registry.name}{" "}
+                    <IconArrowUpRight className="size-4 opacity-0 group-hover:opacity-100" />
                   </a>
                 </ItemTitle>
                 {registry.description && (
@@ -61,15 +63,6 @@ export function DirectoryList() {
                 )}
               </ItemContent>
               <ItemActions className="relative z-10 hidden self-start sm:flex">
-                <Button size="sm" variant="outline" asChild>
-                  <a
-                    href={getHomepageUrl(registry.homepage)}
-                    target="_blank"
-                    rel="noopener noreferrer external"
-                  >
-                    View <IconArrowUpRight />
-                  </a>
-                </Button>
                 <DirectoryAddButton registry={registry} />
               </ItemActions>
               <ItemFooter className="justify-start pl-16 sm:hidden">
