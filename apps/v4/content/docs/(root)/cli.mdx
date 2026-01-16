@@ -223,3 +223,124 @@ To customize the output directory, use the `--output` option.
 ```bash
 npx shadcn@latest build --output ./public/registry
 ```
+
+---
+
+## generate
+
+Use the `generate` command to generate boilerplate code for various types of files.
+
+```bash
+npx shadcn@latest generate [type] [name]
+```
+
+The `generate` command creates template files for common patterns like components, hooks, utilities, contexts, pages, layouts, and API routes.
+
+**Examples**
+
+Generate a new component:
+
+```bash
+npx shadcn@latest generate component button
+```
+
+Generate a new hook:
+
+```bash
+npx shadcn@latest generate hook use-counter
+```
+
+Generate a utility function:
+
+```bash
+npx shadcn@latest generate util format-date
+```
+
+Generate a context provider:
+
+```bash
+npx shadcn@latest generate context theme
+```
+
+Generate a Next.js page:
+
+```bash
+npx shadcn@latest generate page dashboard
+```
+
+Generate a Next.js layout:
+
+```bash
+npx shadcn@latest generate layout auth
+```
+
+Generate a Next.js API route:
+
+```bash
+npx shadcn@latest generate api users
+```
+
+**Alias**
+
+The `gen` command is an alias for `generate`:
+
+```bash
+npx shadcn@latest gen component header
+```
+
+**Options**
+
+```bash
+Usage: shadcn generate|gen [options] <type> [name]
+
+generate boilerplate code for various types
+
+Arguments:
+  type                type of code to generate (component, hook, util, context, page, layout, api)
+  name                name of the file/component to generate
+
+Options:
+  -c, --cwd <cwd>     the working directory. defaults to the current directory.
+  -p, --path <path>   custom path for the generated file
+  -h, --help          display help for command
+```
+
+**Types**
+
+The following types are available:
+
+- `component` - React component with TypeScript and forwardRef
+- `hook` - Custom React hook with TypeScript
+- `util` - Utility function with JSDoc comments
+- `context` - React Context with Provider and hook
+- `page` - Next.js page component with metadata
+- `layout` - Next.js layout component with metadata
+- `api` - Next.js API route with GET and POST handlers
+
+**Naming Conventions**
+
+The CLI automatically formats names based on the type:
+
+- **Components**: Converted to PascalCase (e.g., `user-card` → `UserCard`)
+- **Hooks**: Converted to camelCase with `use` prefix (e.g., `counter` → `useCounter`)
+- **Utils**: Converted to camelCase (e.g., `format-date` → `formatDate`)
+- **Contexts**: Converted to PascalCase (e.g., `auth` → `Auth`)
+- **Pages/Layouts**: Converted to PascalCase (e.g., `dashboard` → `Dashboard`)
+
+**Default Paths**
+
+Files are generated in these default locations:
+
+- **Components**: `components/`
+- **Hooks**: `hooks/`
+- **Utils**: `lib/`
+- **Contexts**: `contexts/`
+- **Pages**: `app/`
+- **Layouts**: `app/`
+- **API Routes**: `app/api/`
+
+You can override the default path using the `--path` option:
+
+```bash
+npx shadcn@latest generate component card --path src/components
+```
