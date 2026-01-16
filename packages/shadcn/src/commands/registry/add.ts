@@ -10,41 +10,71 @@ import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
 
-// Detect registry-only arguments:
-// - "@magicui" (lookup from index)
-// - "@mycompany=https://..." (custom URL)
-// But NOT "@magicui/button" (component).
-export function isRegistryOnlyArg(arg: string) {
-  if (!arg.startsWith("@")) return false
-  if (arg.includes("=")) return true
-  return !arg.includes("/")
-}
-
-// Parse registry argument into namespace and optional URL.
-export function parseRegistryArg(arg: string): {
-  namespace: string
-  url?: string
-} {
-  if (arg.includes("=")) {
-    const [namespace, ...rest] = arg.split("=")
-    return { namespace, url: rest.join("=") }
-  }
-  return { namespace: arg }
-}
-
-export const addOptionsSchema = z.object({
-  registries: z.array(z.string()).optional(),
+const addOptionsSchema = z.object({
   cwd: z.string(),
   silent: z.boolean(),
 })
 
-// Add registries to components.json.
+export const add = new Command()
+  .name("add")
+  .description("add registries to your project")
+  .argument(
+    "[registries...]",
+    "registries (@namespace) or registry URLs (@namespace=url)"
+  )
+  .option(
+    "-c, --cwd <cwd>",
+    "the working directory. defaults to the current directory.",
+    process.cwd()
+  )
+  .option("-s, --silent", "mute output.", false)
+  .action(async (registries: string[], opts) => {
+    try {
+      const options = addOptionsSchema.parse({
+        cwd: path.resolve(opts.cwd),
+        silent: opts.silent,
+      })
+
+      const registryArgs =
+        registries.length > 0
+          ? registries
+          : await promptForRegistries({ silent: options.silent })
+
+      await addRegistriesToConfig(registryArgs, options.cwd, {
+        silent: options.silent,
+      })
+    } catch (error) {
+      logger.break()
+      handleError(error)
+    }
+  })
+
+export function parseRegistryArg(arg: string): {
+  namespace: string
+  url?: string
+} {
+  const [namespace, ...rest] = arg.split("=")
+  const url = rest.length > 0 ? rest.join("=") : undefined
+
+  if (!namespace.startsWith("@")) {
+    throw new Error(
+      `Invalid registry namespace: ${highlighter.info(namespace)}. ` +
+        `Registry names must start with @ (e.g., @acme).`
+    )
+  }
+
+  return { namespace, url }
+}
+
+function pluralize(count: number, singular: string, plural: string) {
+  return `${count} ${count === 1 ? singular : plural}`
+}
+
 async function addRegistriesToConfig(
   registryArgs: string[],
   cwd: string,
   options: { silent?: boolean }
 ) {
-  // Check for components.json first.
   const configPath = path.resolve(cwd, "components.json")
   if (!fs.existsSync(configPath)) {
     throw new Error(
@@ -54,10 +84,7 @@ async function addRegistriesToConfig(
     )
   }
 
-  // Parse all registry args.
   const parsed = registryArgs.map(parseRegistryArg)
-
-  // Fetch registries for those without custom URLs.
   const needsLookup = parsed.filter((p) => !p.url)
   let registriesIndex: { name: string; url: string }[] = []
   if (needsLookup.length > 0) {
@@ -73,10 +100,8 @@ async function addRegistriesToConfig(
     registriesIndex = registries
   }
 
-  // Resolve URLs and validate.
   const registriesToAdd: Record<string, string> = {}
   for (const { namespace, url } of parsed) {
-    // Check for built-in registry.
     if (namespace in BUILTIN_REGISTRIES) {
       logger.warn(
         `${highlighter.info(
@@ -87,17 +112,17 @@ async function addRegistriesToConfig(
     }
 
     if (url) {
-      // Custom URL - validate it has {name} placeholder.
       if (!url.includes("{name}")) {
         throw new Error(
           `Invalid registry URL for ${highlighter.info(
             namespace
-          )}. URL must include {name} placeholder.`
+          )}. URL must include {name} placeholder. Example: ${highlighter.info(
+            `${namespace}=https://example.com/r/{name}.json`
+          )}`
         )
       }
       registriesToAdd[namespace] = url
     } else {
-      // Lookup from index.
       const registry = registriesIndex.find((r) => r.name === namespace)
       if (!registry) {
         throw new Error(
@@ -117,8 +142,6 @@ async function addRegistriesToConfig(
 
   const existingConfig = await fs.readJson(configPath)
   const existingRegistries = existingConfig.registries || {}
-
-  // Filter out already-added registries.
   const newRegistries: Record<string, string> = {}
   const skipped: string[] = []
   for (const [ns, url] of Object.entries(registriesToAdd)) {
@@ -132,9 +155,11 @@ async function addRegistriesToConfig(
   if (Object.keys(newRegistries).length === 0) {
     if (skipped.length > 0 && !options.silent) {
       spinner(
-        `Skipped ${skipped.length} ${
-          skipped.length === 1 ? "registry" : "registries"
-        }: (already configured)`,
+        `Skipped ${pluralize(
+          skipped.length,
+          "registry",
+          "registries"
+        )}: (already configured)`,
         { silent: options.silent }
       )?.info()
       for (const name of skipped) {
@@ -143,10 +168,9 @@ async function addRegistriesToConfig(
     } else if (!options.silent) {
       logger.info("No new registries to add.")
     }
-    return { addedRegistries: [] }
+    return
   }
 
-  // Write updated config.
   const updatedConfig = {
     ...existingConfig,
     registries: {
@@ -164,9 +188,7 @@ async function addRegistriesToConfig(
   if (!options.silent) {
     const newRegistryNames = Object.keys(newRegistries)
     spinner(
-      `Added ${newRegistryNames.length} ${
-        newRegistryNames.length === 1 ? "registry" : "registries"
-      }:`,
+      `Added ${pluralize(newRegistryNames.length, "registry", "registries")}:`,
       { silent: options.silent }
     )?.succeed()
     for (const name of newRegistryNames) {
@@ -175,9 +197,11 @@ async function addRegistriesToConfig(
 
     if (skipped.length > 0) {
       spinner(
-        `Skipped ${skipped.length} ${
-          skipped.length === 1 ? "registry" : "registries"
-        }: (already configured)`,
+        `Skipped ${pluralize(
+          skipped.length,
+          "registry",
+          "registries"
+        )}: (already configured)`,
         { silent: options.silent }
       )?.info()
       for (const name of skipped) {
@@ -185,11 +209,8 @@ async function addRegistriesToConfig(
       }
     }
   }
-
-  return { addedRegistries: Object.keys(newRegistries) }
 }
 
-// Show interactive picker when no args provided.
 async function promptForRegistries(options: { silent?: boolean }) {
   const fetchSpinner = spinner("Fetching registries.", {
     silent: options.silent,
@@ -201,7 +222,6 @@ async function promptForRegistries(options: { silent?: boolean }) {
   }
   fetchSpinner.succeed()
 
-  // Sort alphabetically.
   const sorted = [...registries].sort((a, b) => a.name.localeCompare(b.name))
 
   const { selected } = await prompts({
@@ -225,40 +245,3 @@ async function promptForRegistries(options: { silent?: boolean }) {
 
   return selected as string[]
 }
-
-export const add = new Command()
-  .name("add")
-  .description("add registries to your project")
-  .argument(
-    "[registries...]",
-    "registries (@namespace) or registry URLs (@namespace=url)"
-  )
-  .option(
-    "-c, --cwd <cwd>",
-    "the working directory. defaults to the current directory.",
-    process.cwd()
-  )
-  .option("-s, --silent", "mute output.", false)
-  .action(async (registries, opts) => {
-    try {
-      const options = addOptionsSchema.parse({
-        registries,
-        cwd: path.resolve(opts.cwd),
-        ...opts,
-      })
-
-      let registryArgs = registries as string[]
-
-      // If no registries provided, show interactive picker.
-      if (!registryArgs.length) {
-        registryArgs = await promptForRegistries({ silent: options.silent })
-      }
-
-      await addRegistriesToConfig(registryArgs, options.cwd, {
-        silent: options.silent,
-      })
-    } catch (error) {
-      logger.break()
-      handleError(error)
-    }
-  })
