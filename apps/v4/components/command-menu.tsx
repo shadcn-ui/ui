@@ -149,7 +149,9 @@ export function CommandMenu({
   const handleRegistryHighlight = React.useCallback(
     (registry: Registry) => {
       setSelectedType("registry")
-      setCopyPayload(registry.homepage)
+      setCopyPayload(
+        `${packageManager} dlx shadcn@latest registry add ${registry.name}`
+      )
     },
     [setSelectedType, setCopyPayload, packageManager]
   )
@@ -367,12 +369,13 @@ export function CommandMenu({
                   onHighlight={() => handleRegistryHighlight(registry)}
                   onSelect={() => {
                     runCommand(() => {
-                      const url = new URL(registry.homepage)
-                      url.searchParams.set("utm_source", "ui.shadcn.com")
-                      url.searchParams.set("utm_medium", "referral")
-                      url.searchParams.set("utm_campaign", "directory")
-
-                      window.open(url.toString(), "_blank")
+                      copyToClipboardWithMeta(copyPayload, {
+                        name: "copy_npm_command",
+                        properties: {
+                          command: copyPayload,
+                          pm: packageManager,
+                        },
+                      })
                     })
                   }}
                 >
@@ -438,7 +441,7 @@ export function CommandMenu({
               ? "Go to Page"
               : null}
             {selectedType === "color" ? "Copy OKLCH" : null}
-            {selectedType === "registry" ? "Open registry" : null}
+            {selectedType === "registry" ? "Add registry" : null}
           </div>
           {copyPayload && (
             <>
