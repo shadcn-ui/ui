@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-center",
+  "registryDependencies": [
+    "timeline"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/timeline-center.tsx",
+      "content": "import { CheckIcon, CircleIcon, XIcon } from \"lucide-react\"\n\nimport {\n  Timeline,\n  TimelineContent,\n  TimelineDescription,\n  TimelineItem,\n  TimelineMarker,\n  TimelineSpacer,\n  TimelineTitle,\n} from \"@/registry/new-york-v4/ui/timeline\"\n\nexport default function TimelineCenterDemo() {\n  return (\n    <Timeline position=\"center\" className=\"mx-auto max-w-xl\">\n      {/* Item 1 - Left side */}\n      <TimelineItem>\n        <TimelineContent>\n          <TimelineTitle className=\"flex items-center justify-end gap-2\">\n            Plan <CheckIcon className=\"size-4 text-green-500\" />\n          </TimelineTitle>\n          <TimelineDescription>\n            Define project scope and objectives.\n          </TimelineDescription>\n        </TimelineContent>\n        <TimelineMarker variant=\"success\" />\n        <TimelineSpacer />\n      </TimelineItem>\n\n      {/* Item 2 - Right side */}\n      <TimelineItem>\n        <TimelineSpacer />\n        <TimelineMarker variant=\"destructive\" />\n        <TimelineContent>\n          <TimelineTitle className=\"flex items-center gap-2\">\n            <XIcon className=\"text-destructive size-4\" /> Design\n          </TimelineTitle>\n          <TimelineDescription>\n            Create UI/UX wireframes and prototypes.\n          </TimelineDescription>\n        </TimelineContent>\n      </TimelineItem>\n\n      {/* Item 3 - Left side */}\n      <TimelineItem>\n        <TimelineContent>\n          <TimelineTitle className=\"flex items-center justify-end gap-2\">\n            Code <CircleIcon className=\"size-4\" />\n          </TimelineTitle>\n          <TimelineDescription>\n            Implement features and functionality.\n          </TimelineDescription>\n        </TimelineContent>\n        <TimelineMarker />\n        <TimelineSpacer />\n      </TimelineItem>\n\n      {/* Item 4 - Right side */}\n      <TimelineItem>\n        <TimelineSpacer />\n        <TimelineMarker variant=\"primary\" />\n        <TimelineContent>\n          <TimelineTitle>Deploy</TimelineTitle>\n          <TimelineDescription>\n            Launch to production environment.\n          </TimelineDescription>\n        </TimelineContent>\n      </TimelineItem>\n    </Timeline>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

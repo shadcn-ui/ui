@@ -601,6 +601,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "timeline",
+    type: "registry:ui",
+    dependencies: ["class-variance-authority"],
+    files: [
+      {
+        path: "ui/timeline.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "toast",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-toast"],

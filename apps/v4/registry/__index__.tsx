@@ -936,6 +936,25 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "timeline": {
+      name: "timeline",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york-v4/ui/timeline.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/timeline.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "toggle": {
       name: "toggle",
       title: "undefined",
@@ -7581,6 +7600,101 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/new-york-v4/examples/textarea-with-text.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "timeline-demo": {
+      name: "timeline-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/new-york-v4/examples/timeline-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/timeline-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "timeline-with-icons": {
+      name: "timeline-with-icons",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/new-york-v4/examples/timeline-with-icons.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/timeline-with-icons.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "timeline-right": {
+      name: "timeline-right",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/new-york-v4/examples/timeline-right.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/timeline-right.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "timeline-alternate": {
+      name: "timeline-alternate",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/new-york-v4/examples/timeline-alternate.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/timeline-alternate.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "timeline-center": {
+      name: "timeline-center",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/new-york-v4/examples/timeline-center.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/timeline-center.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
