@@ -61,6 +61,12 @@ import { ChartRadialShape } from "@/registry/new-york-v4/charts/chart-radial-sha
 import { ChartRadialSimple } from "@/registry/new-york-v4/charts/chart-radial-simple"
 import { ChartRadialStacked } from "@/registry/new-york-v4/charts/chart-radial-stacked"
 import { ChartRadialText } from "@/registry/new-york-v4/charts/chart-radial-text"
+import { ChartScatterBubble } from "@/registry/new-york-v4/charts/chart-scatter-bubble"
+import { ChartScatterDefault } from "@/registry/new-york-v4/charts/chart-scatter-default"
+import { ChartScatterLabel } from "@/registry/new-york-v4/charts/chart-scatter-label"
+import { ChartScatterLegend } from "@/registry/new-york-v4/charts/chart-scatter-legend"
+import { ChartScatterMultiple } from "@/registry/new-york-v4/charts/chart-scatter-multiple"
+import { ChartScatterShape } from "@/registry/new-york-v4/charts/chart-scatter-shape"
 import { ChartTooltipAdvanced } from "@/registry/new-york-v4/charts/chart-tooltip-advanced"
 import { ChartTooltipDefault } from "@/registry/new-york-v4/charts/chart-tooltip-default"
 import { ChartTooltipFormatter } from "@/registry/new-york-v4/charts/chart-tooltip-formatter"
@@ -86,6 +92,7 @@ interface ChartGroups {
   pie: ChartItem[]
   radar: ChartItem[]
   radial: ChartItem[]
+  scatter: ChartItem[]
   tooltip: ChartItem[]
 }
 
@@ -178,6 +185,14 @@ export const charts: ChartGroups = {
     { id: "chart-radial-shape", component: ChartRadialShape },
     { id: "chart-radial-stacked", component: ChartRadialStacked },
   ],
+  scatter: [
+    { id: "chart-scatter-default", component: ChartScatterDefault },
+    { id: "chart-scatter-bubble", component: ChartScatterBubble },
+    { id: "chart-scatter-multiple", component: ChartScatterMultiple },
+    { id: "chart-scatter-shape", component: ChartScatterShape },
+    { id: "chart-scatter-label", component: ChartScatterLabel },
+    { id: "chart-scatter-legend", component: ChartScatterLegend },
+  ],
   tooltip: [
     { id: "chart-tooltip-default", component: ChartTooltipDefault },
     {
@@ -263,6 +278,12 @@ export {
   ChartRadialText,
   ChartRadialShape,
   ChartRadialStacked,
+  ChartScatterDefault,
+  ChartScatterBubble,
+  ChartScatterMultiple,
+  ChartScatterShape,
+  ChartScatterLabel,
+  ChartScatterLegend,
   ChartTooltipDefault,
   ChartTooltipIndicatorLine,
   ChartTooltipIndicatorNone,

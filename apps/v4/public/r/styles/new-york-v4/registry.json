@@ -3773,6 +3773,114 @@
       "type": "registry:block"
     },
     {
+      "name": "chart-scatter-default",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-scatter-default.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-scatter"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-scatter-bubble",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-scatter-bubble.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-scatter"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-scatter-multiple",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-scatter-multiple.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-scatter"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-scatter-shape",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-scatter-shape.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-scatter"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-scatter-label",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-scatter-label.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-scatter"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chart-scatter-legend",
+      "registryDependencies": [
+        "card",
+        "chart"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/charts/chart-scatter-legend.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "categories": [
+        "charts",
+        "charts-scatter"
+      ],
+      "type": "registry:block"
+    },
+    {
       "name": "chart-tooltip-default",
       "registryDependencies": [
         "card",
