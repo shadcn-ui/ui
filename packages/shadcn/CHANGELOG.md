@@ -1,5 +1,13 @@
 # @shadcn/ui
 
+## 3.7.0
+
+### Minor Changes
+
+- [#9156](https://github.com/shadcn-ui/ui/pull/9156) [`66d24007849ca34c18a5c28b55f2d8dac29ce1e0`](https://github.com/shadcn-ui/ui/commit/66d24007849ca34c18a5c28b55f2d8dac29ce1e0) Thanks [@nrjdalal](https://github.com/nrjdalal)! - add remix icons
+
+- [#9351](https://github.com/shadcn-ui/ui/pull/9351) [`682c98989d28971a04382da1f174b970fff91d92`](https://github.com/shadcn-ui/ui/commit/682c98989d28971a04382da1f174b970fff91d92) Thanks [@shadcn](https://github.com/shadcn)! - add registry add command
+
 ## 3.6.3
 
 ### Patch Changes
