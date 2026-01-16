@@ -4368,6 +4368,21 @@
       "type": "registry:example"
     },
     {
+      "name": "alert-action",
+      "registryDependencies": [
+        "alert",
+        "button",
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/alert-action.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
       "name": "alert-dialog-demo",
       "registryDependencies": [
         "alert-dialog",
