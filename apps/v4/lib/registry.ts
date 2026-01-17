@@ -1,10 +1,19 @@
 import { promises as fs } from "fs"
 import path from "path"
+import { LRUCache } from "lru-cache"
 import { registryItemSchema, type registryItemFileSchema } from "shadcn/schema"
 import { type z } from "zod"
 
 import { Index } from "@/registry/__index__"
 import { type Style } from "@/registry/_legacy-styles"
+
+// LRU cache for cross-request caching of registry items.
+// File reads are I/O-bound, so caching improves dev server performance.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const registryCache = new LRUCache<string, any>({
+  max: 500,
+  ttl: 1000 * 60 * 5, // 5 minutes (shorter for dev to pick up changes).
+})
 
 export function getRegistryComponent(name: string, styleName: Style["name"]) {
   return Index[styleName]?.[name]?.component
@@ -33,9 +42,17 @@ export async function getRegistryItems(
 }
 
 export async function getRegistryItem(name: string, styleName: Style["name"]) {
+  const cacheKey = `${styleName}:${name}`
+
+  // Check cache first.
+  if (registryCache.has(cacheKey)) {
+    return registryCache.get(cacheKey)
+  }
+
   const item = Index[styleName]?.[name]
 
   if (!item) {
+    registryCache.set(cacheKey, null)
     return null
   }
 
@@ -48,20 +65,23 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
   // Fail early before doing expensive file operations.
   const result = registryItemSchema.safeParse(item)
   if (!result.success) {
+    registryCache.set(cacheKey, null)
     return null
   }
 
-  let files: typeof result.data.files = []
-  for (const file of item.files) {
-    const content = await getFileContent(file)
-    const relativePath = path.relative(process.cwd(), file.path)
+  // Read all files in parallel.
+  let files: typeof result.data.files = await Promise.all(
+    item.files.map(async (file: z.infer<typeof registryItemFileSchema>) => {
+      const content = await getFileContent(file)
+      const relativePath = path.relative(process.cwd(), file.path)
 
-    files.push({
-      ...file,
-      path: relativePath,
-      content,
+      return {
+        ...file,
+        path: relativePath,
+        content,
+      }
     })
-  }
+  )
 
   // Fix file paths.
   files = fixFilePaths(files)
@@ -73,8 +93,12 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
 
   if (!parsed.success) {
     console.error(parsed.error.message)
+    registryCache.set(cacheKey, null)
     return null
   }
+
+  // Cache the result.
+  registryCache.set(cacheKey, parsed.data)
 
   return parsed.data
 }

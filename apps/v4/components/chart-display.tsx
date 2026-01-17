@@ -13,23 +13,12 @@ export type Chart = z.infer<typeof registryItemSchema> & {
 }
 
 export async function ChartDisplay({
-  name,
-  styleName,
+  chart,
   children,
   className,
 }: {
-  name: string
-  styleName: Style["name"]
+  chart: Chart
 } & React.ComponentProps<"div">) {
-  const chart = await getCachedRegistryItem(name, styleName)
-  const highlightedCode = await getChartHighlightedCode(
-    chart?.files?.[0]?.content ?? ""
-  )
-
-  if (!chart || !highlightedCode) {
-    return null
-  }
-
   return (
     <div
       className={cn(
@@ -38,7 +27,7 @@ export async function ChartDisplay({
       )}
     >
       <ChartToolbar
-        chart={{ ...chart, highlightedCode }}
+        chart={chart}
         className="bg-card text-card-foreground relative z-20 flex justify-end border-b px-3 py-2.5"
       >
         {children}
@@ -50,12 +39,13 @@ export async function ChartDisplay({
   )
 }
 
-const getCachedRegistryItem = React.cache(
+// Exported for parallel prefetching in page components.
+export const getCachedRegistryItem = React.cache(
   async (name: string, styleName: Style["name"]) => {
     return await getRegistryItem(name, styleName)
   }
 )
 
-const getChartHighlightedCode = React.cache(async (content: string) => {
+export const getChartHighlightedCode = React.cache(async (content: string) => {
   return await highlightCode(content)
 })
