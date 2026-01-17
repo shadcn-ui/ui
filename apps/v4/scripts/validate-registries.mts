@@ -3,10 +3,12 @@ import path from "path"
 import { registrySchema } from "shadcn/schema"
 import { z } from "zod"
 
-const registriesIndexSchema = z.record(
-  z.string().regex(/^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/),
-  z.string().refine((url) => url.includes("{name}"))
-)
+const registriesIndexSchema = z.object({
+  name: z.string(),
+  homepage: z.string(),
+  url: z.string(),
+  description: z.string(),
+})
 
 const directoryEntrySchema = z.object({
   name: z.string(),
@@ -21,9 +23,11 @@ const directorySchema = z.array(directoryEntrySchema)
 async function main() {
   // 1. Validate the registries.json file.
   const registriesFile = path.join(process.cwd(), "public/r/registries.json")
+
   const content = await fs.readFile(registriesFile, "utf-8")
   const data = JSON.parse(content)
-  const registries = registriesIndexSchema.parse(data)
+  console.log("data", data)
+  const registries = z.array(registriesIndexSchema).parse(data)
 
   // 2. Check that all directory.json entries are in registries.json.
   const directoryFile = path.join(process.cwd(), "registry/directory.json")
@@ -32,7 +36,7 @@ async function main() {
   const directory = directorySchema.parse(directoryData)
 
   const directoryNames = new Set(directory.map((entry) => entry.name))
-  const registryNames = new Set(Object.keys(registries))
+  const registryNames = new Set(registries.map((entry) => entry.name))
 
   const missingInRegistries = Array.from(directoryNames).filter(
     (name) => !registryNames.has(name)
@@ -50,7 +54,7 @@ async function main() {
 
   // 3. Validate each registry endpoint.
   const errors: string[] = []
-  for (const [name, url] of Object.entries(registries)) {
+  for (const { name, url } of registries) {
     try {
       const testUrl = url.replace("{name}", "registry")
       const response = await fetch(testUrl)
