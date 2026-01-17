@@ -12,50 +12,45 @@ export type Chart = z.infer<typeof registryItemSchema> & {
   highlightedCode: string
 }
 
-export async function ChartDisplay({
-  name,
-  styleName,
-  children,
+export function ChartDisplay({
+  chart,
+  style,
   className,
 }: {
-  name: string
-  styleName: Style["name"]
+  chart: Chart
+  style: string
 } & React.ComponentProps<"div">) {
-  const chart = await getCachedRegistryItem(name, styleName)
-  const highlightedCode = await getChartHighlightedCode(
-    chart?.files?.[0]?.content ?? ""
-  )
-
-  if (!chart || !highlightedCode) {
-    return null
-  }
-
   return (
     <div
       className={cn(
-        "themes-wrapper group relative flex flex-col overflow-hidden rounded-xl border transition-all duration-200 ease-in-out hover:z-30",
+        "themes-wrapper group relative flex flex-col overflow-hidden rounded-xl transition-all duration-200 ease-in-out hover:z-30",
         className
       )}
     >
       <ChartToolbar
-        chart={{ ...chart, highlightedCode }}
-        className="bg-card text-card-foreground relative z-20 flex justify-end border-b px-3 py-2.5"
-      >
-        {children}
-      </ChartToolbar>
-      <div className="relative z-10 [&>div]:rounded-none [&>div]:border-none [&>div]:shadow-none">
-        {children}
+        chart={chart}
+        className="bg-card text-card-foreground relative z-20 flex justify-end px-3 py-2.5"
+      />
+      <div className="relative z-10">
+        <iframe
+          src={`/view/${style}/${chart.name}`}
+          className="w-full border-none"
+          height={430}
+          loading="lazy"
+          title={chart.name}
+        />
       </div>
     </div>
   )
 }
 
-const getCachedRegistryItem = React.cache(
+// Exported for parallel prefetching in page components.
+export const getCachedRegistryItem = React.cache(
   async (name: string, styleName: Style["name"]) => {
     return await getRegistryItem(name, styleName)
   }
 )
 
-const getChartHighlightedCode = React.cache(async (content: string) => {
+export const getChartHighlightedCode = React.cache(async (content: string) => {
   return await highlightCode(content)
 })
