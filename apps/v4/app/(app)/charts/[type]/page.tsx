@@ -49,6 +49,7 @@ export default async function ChartPage({ params }: ChartPageProps) {
   const activeStyle = await getActiveStyle()
 
   // Prefetch all chart data in parallel for better performance.
+  // Charts are rendered via iframes, so we only need the metadata and highlighted code.
   const chartDataPromises = chartList.map(async (chart) => {
     const registryItem = await getCachedRegistryItem(chart.id, activeStyle.name)
     if (!registryItem) return null
@@ -61,7 +62,6 @@ export default async function ChartPage({ params }: ChartPageProps) {
     return {
       ...registryItem,
       highlightedCode,
-      component: chart.component,
       fullWidth: chart.fullWidth,
     }
   })
@@ -80,10 +80,9 @@ export default async function ChartPage({ params }: ChartPageProps) {
             <ChartDisplay
               key={chart.name}
               chart={chart}
+              style={activeStyle.name}
               className={cn(chart.fullWidth && "md:col-span-2 lg:col-span-3")}
-            >
-              <chart.component />
-            </ChartDisplay>
+            />
           ) : (
             <div
               key={`empty-${index}`}
