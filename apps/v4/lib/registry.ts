@@ -1,8 +1,6 @@
 import { promises as fs } from "fs"
-import { tmpdir } from "os"
 import path from "path"
 import { registryItemSchema, type registryItemFileSchema } from "shadcn/schema"
-import { Project, ScriptKind } from "ts-morph"
 import { type z } from "zod"
 
 import { Index } from "@/registry/__index__"
@@ -82,27 +80,10 @@ export async function getRegistryItem(name: string, styleName: Style["name"]) {
 }
 
 async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
-  const raw = await fs.readFile(file.path, "utf-8")
-
-  const project = new Project({
-    compilerOptions: {},
-  })
-
-  const tempFile = await createTempSourceFile(file.path)
-  const sourceFile = project.createSourceFile(tempFile, raw, {
-    scriptKind: ScriptKind.TSX,
-  })
-
-  // Remove meta variables.
-  // removeVariable(sourceFile, "iframeHeight")
-  // removeVariable(sourceFile, "containerClassName")
-  // removeVariable(sourceFile, "description")
-
-  let code = sourceFile.getFullText()
+  let code = await fs.readFile(file.path, "utf-8")
 
   // Some registry items uses default export.
   // We want to use named export instead.
-  // TODO: do we really need this? - @shadcn.
   if (file.type !== "registry:page") {
     code = code.replaceAll("export default", "export")
   }
@@ -140,11 +121,6 @@ function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
   }
 
   return target ?? ""
-}
-
-async function createTempSourceFile(filename: string) {
-  const dir = await fs.mkdtemp(path.join(tmpdir(), "shadcn-"))
-  return path.join(dir, filename)
 }
 
 function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
