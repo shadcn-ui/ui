@@ -23,10 +23,8 @@ const directorySchema = z.array(directoryEntrySchema)
 async function main() {
   // 1. Validate the registries.json file.
   const registriesFile = path.join(process.cwd(), "public/r/registries.json")
-
   const content = await fs.readFile(registriesFile, "utf-8")
   const data = JSON.parse(content)
-  console.log("data", data)
   const registries = z.array(registriesIndexSchema).parse(data)
 
   // 2. Check that all directory.json entries are in registries.json.
