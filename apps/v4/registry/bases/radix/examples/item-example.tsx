@@ -92,6 +92,7 @@ function DefaultVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -105,6 +106,7 @@ function DefaultVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -121,6 +123,7 @@ function DefaultVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -137,6 +140,7 @@ function DefaultVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -210,6 +214,7 @@ function OutlineVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -223,6 +228,7 @@ function OutlineVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -239,6 +245,7 @@ function OutlineVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -255,6 +262,7 @@ function OutlineVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -328,6 +336,7 @@ function MutedVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -341,6 +350,7 @@ function MutedVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -357,6 +367,7 @@ function MutedVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -373,6 +384,7 @@ function MutedVariantItems() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -450,6 +462,7 @@ function DefaultVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -463,6 +476,7 @@ function DefaultVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -479,6 +493,7 @@ function DefaultVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -495,6 +510,7 @@ function DefaultVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -572,6 +588,7 @@ function OutlineVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -585,6 +602,7 @@ function OutlineVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -601,6 +619,7 @@ function OutlineVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -617,6 +636,7 @@ function OutlineVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -694,6 +714,7 @@ function MutedVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -707,6 +728,7 @@ function MutedVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -723,6 +745,7 @@ function MutedVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -739,6 +762,7 @@ function MutedVariantItemsSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -810,6 +834,7 @@ function DefaultVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -823,6 +848,7 @@ function DefaultVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -839,6 +865,7 @@ function DefaultVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -852,6 +879,7 @@ function DefaultVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -916,6 +944,7 @@ function OutlineVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -929,6 +958,7 @@ function OutlineVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -945,6 +975,7 @@ function OutlineVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -958,6 +989,7 @@ function OutlineVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1022,6 +1054,7 @@ function MutedVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1035,6 +1068,7 @@ function MutedVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1051,6 +1085,7 @@ function MutedVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1064,6 +1099,7 @@ function MutedVariantItemsExtraSmall() {
             tabler="IconArchive"
             hugeicons="Archive02Icon"
             phosphor="ArchiveIcon"
+            remixicon="RiArchiveLine"
           />
         </ItemMedia>
         <ItemContent>
@@ -1117,6 +1153,7 @@ function DefaultLinkItems() {
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
                 phosphor="TrayIcon"
+                remixicon="RiInboxLine"
               />
             </ItemMedia>
             <ItemContent>
@@ -1132,6 +1169,7 @@ function DefaultLinkItems() {
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
                 phosphor="TrayIcon"
+                remixicon="RiInboxLine"
               />
             </ItemMedia>
             <ItemContent>
@@ -1191,6 +1229,7 @@ function OutlineLinkItems() {
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
                 phosphor="TrayIcon"
+                remixicon="RiInboxLine"
               />
             </ItemMedia>
             <ItemContent>
@@ -1206,6 +1245,7 @@ function OutlineLinkItems() {
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
                 phosphor="TrayIcon"
+                remixicon="RiInboxLine"
               />
             </ItemMedia>
             <ItemContent>
@@ -1265,6 +1305,7 @@ function MutedLinkItems() {
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
                 phosphor="TrayIcon"
+                remixicon="RiInboxLine"
               />
             </ItemMedia>
             <ItemContent>
@@ -1280,6 +1321,7 @@ function MutedLinkItems() {
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
                 phosphor="TrayIcon"
+                remixicon="RiInboxLine"
               />
             </ItemMedia>
             <ItemContent>
@@ -1348,6 +1390,7 @@ function OutlineItemGroup() {
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="TrayIcon"
+              remixicon="RiInboxLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1362,6 +1405,7 @@ function OutlineItemGroup() {
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="TrayIcon"
+              remixicon="RiInboxLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1376,6 +1420,7 @@ function OutlineItemGroup() {
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="TrayIcon"
+              remixicon="RiInboxLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1441,6 +1486,7 @@ function ItemSeparatorExample() {
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="TrayIcon"
+              remixicon="RiInboxLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1456,6 +1502,7 @@ function ItemSeparatorExample() {
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="TrayIcon"
+              remixicon="RiInboxLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1471,6 +1518,7 @@ function ItemSeparatorExample() {
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="TrayIcon"
+              remixicon="RiInboxLine"
             />
           </ItemMedia>
           <ItemContent>
@@ -1486,6 +1534,7 @@ function ItemSeparatorExample() {
               tabler="IconArchive"
               hugeicons="Archive02Icon"
               phosphor="TrayIcon"
+              remixicon="RiInboxLine"
             />
           </ItemMedia>
           <ItemContent>

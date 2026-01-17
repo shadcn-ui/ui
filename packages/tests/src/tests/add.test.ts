@@ -375,3 +375,96 @@ describe("shadcn add", () => {
     ).toBe(true)
   })
 })
+
+describe("shadcn registry add", () => {
+  it("should add registry from index to components.json", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["registry", "add", "@magicui"])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.registries).toBeDefined()
+    expect(componentsJson.registries["@magicui"]).toBeDefined()
+    expect(componentsJson.registries["@magicui"]).toContain("{name}")
+  })
+
+  it("should add custom registry with URL", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, [
+      "registry",
+      "add",
+      "@mycompany=https://example.com/r/{name}.json",
+    ])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.registries["@mycompany"]).toBe(
+      "https://example.com/r/{name}.json"
+    )
+  })
+
+  it("should add multiple registries", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["registry", "add", "@magicui", "@aceternity"])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.registries["@magicui"]).toBeDefined()
+    expect(componentsJson.registries["@aceternity"]).toBeDefined()
+  })
+
+  it("should skip already configured registries", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["registry", "add", "@magicui"])
+
+    // Add again - should not error.
+    await npxShadcn(fixturePath, ["registry", "add", "@magicui"])
+
+    const componentsJson = await fs.readJson(
+      path.join(fixturePath, "components.json")
+    )
+    expect(componentsJson.registries["@magicui"]).toBeDefined()
+  })
+
+  it("should error for registry not in index without URL", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+
+    const result = await npxShadcn(fixturePath, [
+      "registry",
+      "add",
+      "@nonexistent-registry-12345",
+    ])
+    expect(result.exitCode).toBe(1)
+    expect(result.stdout).toContain("not found")
+  })
+
+  it("should error for invalid URL missing {name}", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+
+    const result = await npxShadcn(fixturePath, [
+      "registry",
+      "add",
+      "@foo=https://example.com/bad.json",
+    ])
+    expect(result.exitCode).toBe(1)
+    expect(result.stdout).toContain("{name}")
+  })
+
+  it("should require components.json for adding registries", async () => {
+    const fixturePath = await createFixtureTestDirectory("no-framework")
+
+    // No init, so no components.json.
+    const result = await npxShadcn(fixturePath, ["registry", "add", "@magicui"])
+    expect(result.exitCode).toBe(1)
+    expect(result.stdout).toContain("components.json")
+  })
+})
