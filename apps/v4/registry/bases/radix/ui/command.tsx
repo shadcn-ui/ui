@@ -56,7 +56,7 @@ function CommandDialog({
         className={cn("cn-command-dialog overflow-hidden p-0", className)}
         showCloseButton={showCloseButton}
       >
-        {children}
+        <Command>{children}</Command>
       </DialogContent>
     </Dialog>
   )
