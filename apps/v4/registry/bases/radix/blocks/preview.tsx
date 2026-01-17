@@ -251,6 +251,7 @@ function FieldExamples() {
                   tabler="IconMinus"
                   hugeicons="MinusSignIcon"
                   phosphor="MinusIcon"
+                  remixicon="RiSubtractLine"
                 />
               </Button>
               <Button
@@ -266,6 +267,7 @@ function FieldExamples() {
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"
+                  remixicon="RiAddLine"
                 />
               </Button>
             </ButtonGroup>
@@ -335,6 +337,7 @@ function ButtonGroupExamples() {
                 tabler="IconArrowLeft"
                 hugeicons="ArrowLeft01Icon"
                 phosphor="ArrowLeftIcon"
+                remixicon="RiArrowLeftLine"
               />
             </Button>
           </ButtonGroup>
@@ -362,6 +365,7 @@ function ButtonGroupExamples() {
                     tabler="IconChevronDown"
                     hugeicons="ArrowDown01Icon"
                     phosphor="CaretDownIcon"
+                    remixicon="RiArrowDownSLine"
                   />
                 </Button>
               </DropdownMenuTrigger>
@@ -373,6 +377,7 @@ function ButtonGroupExamples() {
                       tabler="IconMailCheck"
                       hugeicons="MailValidation01Icon"
                       phosphor="EnvelopeIcon"
+                      remixicon="RiMailLine"
                     />
                     Mark as Read
                   </DropdownMenuItem>
@@ -382,6 +387,7 @@ function ButtonGroupExamples() {
                       tabler="IconArchive"
                       hugeicons="ArchiveIcon"
                       phosphor="ArchiveIcon"
+                      remixicon="RiArchiveLine"
                     />
                     Archive
                   </DropdownMenuItem>
@@ -394,6 +400,7 @@ function ButtonGroupExamples() {
                       tabler="IconClock"
                       hugeicons="ClockIcon"
                       phosphor="ClockIcon"
+                      remixicon="RiTimeLine"
                     />
                     Snooze
                   </DropdownMenuItem>
@@ -403,6 +410,7 @@ function ButtonGroupExamples() {
                       tabler="IconCalendarPlus"
                       hugeicons="CalendarAdd01Icon"
                       phosphor="CalendarPlusIcon"
+                      remixicon="RiCalendarEventLine"
                     />
                     Add to Calendar
                   </DropdownMenuItem>
@@ -412,6 +420,7 @@ function ButtonGroupExamples() {
                       tabler="IconFilterPlus"
                       hugeicons="AddToListIcon"
                       phosphor="ListPlusIcon"
+                      remixicon="RiPlayListAddLine"
                     />
                     Add to List
                   </DropdownMenuItem>
@@ -422,6 +431,7 @@ function ButtonGroupExamples() {
                         tabler="IconTag"
                         hugeicons="TagIcon"
                         phosphor="TagIcon"
+                        remixicon="RiPriceTagLine"
                       />
                       Label As...
                     </DropdownMenuSubTrigger>
@@ -451,6 +461,7 @@ function ButtonGroupExamples() {
                       tabler="IconTrash"
                       hugeicons="Delete02Icon"
                       phosphor="TrashIcon"
+                      remixicon="RiDeleteBinLine"
                     />
                     Trash
                   </DropdownMenuItem>
@@ -465,6 +476,7 @@ function ButtonGroupExamples() {
                 tabler="IconArrowLeft"
                 hugeicons="ArrowLeft01Icon"
                 phosphor="ArrowLeftIcon"
+                remixicon="RiArrowLeftLine"
               />
             </Button>
             <Button variant="outline" size="icon-sm" aria-label="Next">
@@ -473,6 +485,7 @@ function ButtonGroupExamples() {
                 tabler="IconArrowRight"
                 hugeicons="ArrowRight01Icon"
                 phosphor="ArrowRightIcon"
+                remixicon="RiArrowRightLine"
               />
             </Button>
           </ButtonGroup>
@@ -496,6 +509,7 @@ function ButtonGroupExamples() {
                       tabler="IconChevronDown"
                       hugeicons="ArrowDown01Icon"
                       phosphor="CaretDownIcon"
+                      remixicon="RiArrowDownSLine"
                     />
                   </Button>
                 </DropdownMenuTrigger>
@@ -508,6 +522,7 @@ function ButtonGroupExamples() {
                         tabler="IconVolume"
                         hugeicons="VolumeOffIcon"
                         phosphor="SpeakerSlashIcon"
+                        remixicon="RiVolumeMuteLine"
                       />
                       Mute Conversation
                     </DropdownMenuItem>
@@ -517,6 +532,7 @@ function ButtonGroupExamples() {
                         tabler="IconCheck"
                         hugeicons="Tick02Icon"
                         phosphor="CheckIcon"
+                        remixicon="RiCheckLine"
                       />
                       Mark as Read
                     </DropdownMenuItem>
@@ -526,6 +542,7 @@ function ButtonGroupExamples() {
                         tabler="IconUserX"
                         hugeicons="UserRemove01Icon"
                         phosphor="UserMinusIcon"
+                        remixicon="RiUserUnfollowLine"
                       />
                       Block User
                     </DropdownMenuItem>
@@ -539,6 +556,7 @@ function ButtonGroupExamples() {
                         tabler="IconShare"
                         hugeicons="Share03Icon"
                         phosphor="ShareIcon"
+                        remixicon="RiShareLine"
                       />
                       Share Conversation
                     </DropdownMenuItem>
@@ -548,6 +566,7 @@ function ButtonGroupExamples() {
                         tabler="IconCopy"
                         hugeicons="Copy01Icon"
                         phosphor="CopyIcon"
+                        remixicon="RiFileCopyLine"
                       />
                       Copy Conversation
                     </DropdownMenuItem>
@@ -557,6 +576,7 @@ function ButtonGroupExamples() {
                         tabler="IconAlertTriangle"
                         hugeicons="AlertCircleIcon"
                         phosphor="WarningIcon"
+                        remixicon="RiErrorWarningLine"
                       />
                       Report Conversation
                     </DropdownMenuItem>
@@ -569,6 +589,7 @@ function ButtonGroupExamples() {
                         tabler="IconTrash"
                         hugeicons="Delete02Icon"
                         phosphor="TrashIcon"
+                        remixicon="RiDeleteBinLine"
                       />
                       Delete Conversation
                     </DropdownMenuItem>
@@ -583,6 +604,7 @@ function ButtonGroupExamples() {
                   tabler="IconRobot"
                   hugeicons="BotIcon"
                   phosphor="RobotIcon"
+                  remixicon="RiRobotLine"
                 />{" "}
                 Copilot
               </Button>
@@ -598,6 +620,7 @@ function ButtonGroupExamples() {
                       tabler="IconChevronDown"
                       hugeicons="ArrowDown01Icon"
                       phosphor="CaretDownIcon"
+                      remixicon="RiArrowDownSLine"
                     />
                   </Button>
                 </PopoverTrigger>
@@ -640,6 +663,7 @@ function InputGroupExamples() {
               tabler="IconSearch"
               hugeicons="Search01Icon"
               phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </InputGroupAddon>
           <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
@@ -662,6 +686,7 @@ function InputGroupExamples() {
                     tabler="IconInfoCircle"
                     hugeicons="AlertCircleIcon"
                     phosphor="InfoIcon"
+                    remixicon="RiInformationLine"
                   />
                 </InputGroupButton>
               </TooltipTrigger>
@@ -688,6 +713,7 @@ function InputGroupExamples() {
                       tabler="IconInfoCircle"
                       hugeicons="AlertCircleIcon"
                       phosphor="InfoIcon"
+                      remixicon="RiInformationLine"
                     />
                   </InputGroupButton>
                 </InputGroupAddon>
@@ -717,6 +743,7 @@ function InputGroupExamples() {
                   tabler="IconStar"
                   hugeicons="StarIcon"
                   phosphor="StarIcon"
+                  remixicon="RiStarLine"
                   data-favorite={isFavorite}
                   className="data-[favorite=true]:fill-primary data-[favorite=true]:stroke-primary"
                 />
@@ -732,6 +759,7 @@ function InputGroupExamples() {
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
+                remixicon="RiAddLine"
               />
             </Button>
           </ButtonGroup>
@@ -761,6 +789,7 @@ function InputGroupExamples() {
                         tabler="IconWaveSine"
                         hugeicons="AudioWave01Icon"
                         phosphor="MicrophoneIcon"
+                        remixicon="RiMicLine"
                       />
                     </InputGroupButton>
                   </TooltipTrigger>
@@ -784,6 +813,7 @@ function InputGroupExamples() {
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
                 phosphor="PlusIcon"
+                remixicon="RiAddLine"
               />
             </InputGroupButton>
             <DropdownMenu>
@@ -812,6 +842,7 @@ function InputGroupExamples() {
                 tabler="IconArrowUp"
                 hugeicons="ArrowUp01Icon"
                 phosphor="ArrowUpIcon"
+                remixicon="RiArrowUpLine"
               />
               <span className="sr-only">Send</span>
             </InputGroupButton>
@@ -889,6 +920,7 @@ function EmptyAvatarGroup() {
                       tabler="IconBluetooth"
                       hugeicons="BluetoothIcon"
                       phosphor="BluetoothIcon"
+                      remixicon="RiBluetoothLine"
                     />
                   </AlertDialogMedia>
                   <AlertDialogTitle>
@@ -1086,6 +1118,7 @@ function SmallFormExample() {
                     tabler="IconDotsVertical"
                     hugeicons="MoreVerticalCircle01Icon"
                     phosphor="DotsThreeVerticalIcon"
+                    remixicon="RiMore2Line"
                   />
                   <span className="sr-only">More options</span>
                 </Button>
@@ -1102,6 +1135,7 @@ function SmallFormExample() {
                       tabler="IconFile"
                       hugeicons="FileIcon"
                       phosphor="FileIcon"
+                      remixicon="RiFileLine"
                     />
                     New File
                     <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
@@ -1112,6 +1146,7 @@ function SmallFormExample() {
                       tabler="IconFolder"
                       hugeicons="FolderIcon"
                       phosphor="FolderIcon"
+                      remixicon="RiFolderLine"
                     />
                     New Folder
                     <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
@@ -1123,6 +1158,7 @@ function SmallFormExample() {
                         tabler="IconFolderOpen"
                         hugeicons="FolderOpenIcon"
                         phosphor="FolderOpenIcon"
+                        remixicon="RiFolderOpenLine"
                       />
                       Open Recent
                     </DropdownMenuSubTrigger>
@@ -1136,6 +1172,7 @@ function SmallFormExample() {
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
                               phosphor="CodeIcon"
+                              remixicon="RiCodeLine"
                             />
                             Project Alpha
                           </DropdownMenuItem>
@@ -1145,6 +1182,7 @@ function SmallFormExample() {
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
                               phosphor="CodeIcon"
+                              remixicon="RiCodeLine"
                             />
                             Project Beta
                           </DropdownMenuItem>
@@ -1155,6 +1193,7 @@ function SmallFormExample() {
                                 tabler="IconDots"
                                 hugeicons="MoreHorizontalCircle01Icon"
                                 phosphor="DotsThreeOutlineIcon"
+                                remixicon="RiMoreLine"
                               />
                               More Projects
                             </DropdownMenuSubTrigger>
@@ -1166,6 +1205,7 @@ function SmallFormExample() {
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
                                     phosphor="CodeIcon"
+                                    remixicon="RiCodeLine"
                                   />
                                   Project Gamma
                                 </DropdownMenuItem>
@@ -1175,6 +1215,7 @@ function SmallFormExample() {
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
                                     phosphor="CodeIcon"
+                                    remixicon="RiCodeLine"
                                   />
                                   Project Delta
                                 </DropdownMenuItem>
@@ -1190,6 +1231,7 @@ function SmallFormExample() {
                               tabler="IconFolderSearch"
                               hugeicons="SearchIcon"
                               phosphor="MagnifyingGlassIcon"
+                              remixicon="RiSearchLine"
                             />
                             Browse...
                           </DropdownMenuItem>
@@ -1204,6 +1246,7 @@ function SmallFormExample() {
                       tabler="IconDeviceFloppy"
                       hugeicons="FloppyDiskIcon"
                       phosphor="FloppyDiskIcon"
+                      remixicon="RiSaveLine"
                     />
                     Save
                     <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
@@ -1214,6 +1257,7 @@ function SmallFormExample() {
                       tabler="IconDownload"
                       hugeicons="DownloadIcon"
                       phosphor="DownloadIcon"
+                      remixicon="RiDownloadLine"
                     />
                     Export
                     <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
@@ -1236,6 +1280,7 @@ function SmallFormExample() {
                       tabler="IconEye"
                       hugeicons="EyeIcon"
                       phosphor="EyeIcon"
+                      remixicon="RiEyeLine"
                     />
                     Show Sidebar
                   </DropdownMenuCheckboxItem>
@@ -1253,6 +1298,7 @@ function SmallFormExample() {
                       tabler="IconLayout"
                       hugeicons="LayoutIcon"
                       phosphor="LayoutIcon"
+                      remixicon="RiLayoutLine"
                     />
                     Show Status Bar
                   </DropdownMenuCheckboxItem>
@@ -1263,6 +1309,7 @@ function SmallFormExample() {
                         tabler="IconPalette"
                         hugeicons="PaintBoardIcon"
                         phosphor="PaletteIcon"
+                        remixicon="RiPaletteLine"
                       />
                       Theme
                     </DropdownMenuSubTrigger>
@@ -1280,6 +1327,7 @@ function SmallFormExample() {
                                 tabler="IconSun"
                                 hugeicons="SunIcon"
                                 phosphor="SunIcon"
+                                remixicon="RiSunLine"
                               />
                               Light
                             </DropdownMenuRadioItem>
@@ -1289,6 +1337,7 @@ function SmallFormExample() {
                                 tabler="IconMoon"
                                 hugeicons="MoonIcon"
                                 phosphor="MoonIcon"
+                                remixicon="RiMoonLine"
                               />
                               Dark
                             </DropdownMenuRadioItem>
@@ -1298,6 +1347,7 @@ function SmallFormExample() {
                                 tabler="IconDeviceDesktop"
                                 hugeicons="ComputerIcon"
                                 phosphor="MonitorIcon"
+                                remixicon="RiComputerLine"
                               />
                               System
                             </DropdownMenuRadioItem>
@@ -1315,6 +1365,7 @@ function SmallFormExample() {
                       tabler="IconHelpCircle"
                       hugeicons="HelpCircleIcon"
                       phosphor="QuestionIcon"
+                      remixicon="RiQuestionLine"
                     />
                     Help & Support
                   </DropdownMenuItem>
@@ -1324,6 +1375,7 @@ function SmallFormExample() {
                       tabler="IconFileText"
                       hugeicons="File01Icon"
                       phosphor="FileTextIcon"
+                      remixicon="RiFileTextLine"
                     />
                     Documentation
                   </DropdownMenuItem>
@@ -1336,6 +1388,7 @@ function SmallFormExample() {
                       tabler="IconLogout"
                       hugeicons="LogoutIcon"
                       phosphor="SignOutIcon"
+                      remixicon="RiLogoutBoxLine"
                     />
                     Sign Out
                     <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
@@ -1444,6 +1497,7 @@ function ObservabilityCard() {
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-end"
             />
           </Button>
@@ -1508,6 +1562,7 @@ function ItemExample() {
                 tabler="IconShoppingBag"
                 hugeicons="ShoppingBasket01Icon"
                 phosphor="BagIcon"
+                remixicon="RiShoppingBagLine"
               />
             </ItemMedia>
             <ItemContent>

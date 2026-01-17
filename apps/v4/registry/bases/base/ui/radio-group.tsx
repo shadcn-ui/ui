@@ -35,6 +35,7 @@ function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
           tabler="IconCircle"
           hugeicons="CircleIcon"
           phosphor="CircleIcon"
+          remixicon="RiCircleLine"
           className="cn-radio-group-indicator-icon"
         />
       </RadioPrimitive.Indicator>

@@ -54,6 +54,9 @@ try {
   console.log("\n⚙️ Building public/r/config.json...")
   await buildConfig()
 
+  console.log("\n📋 Building public/r/registries.json...")
+  await buildRegistriesJson()
+
   // Clean up intermediate files and generated base directories.
   console.log("\n🧹 Cleaning up...")
   await cleanUp(stylesToBuild)
@@ -439,6 +442,45 @@ async function buildConfig() {
 
   const outputPath = path.join(process.cwd(), "public/r/config.json")
   await fs.writeFile(outputPath, JSON.stringify(config, null, 2))
+
+  // Format with prettier.
+  await new Promise<void>((resolve, reject) => {
+    execFile("prettier", ["--write", outputPath], (error) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
+// Build public/r/registries.json from registry/directory.json.
+// This generates a slim version without logos for CLI consumption.
+async function buildRegistriesJson() {
+  // Read the source directory.json.
+  const directoryPath = path.join(process.cwd(), "registry/directory.json")
+  const directoryContent = await fs.readFile(directoryPath, "utf8")
+  const directory = JSON.parse(directoryContent) as Array<{
+    name: string
+    homepage?: string
+    url: string
+    description?: string
+    featured?: boolean
+    logo?: string
+  }>
+
+  // Transform to slim format (without logos and featured).
+  const registries = directory.map((entry) => ({
+    name: entry.name,
+    homepage: entry.homepage,
+    url: entry.url,
+    description: entry.description,
+  }))
+
+  // Write to public/r/registries.json.
+  const outputPath = path.join(process.cwd(), "public/r/registries.json")
+  await fs.writeFile(outputPath, JSON.stringify(registries, null, 2))
 
   // Format with prettier.
   await new Promise<void>((resolve, reject) => {
