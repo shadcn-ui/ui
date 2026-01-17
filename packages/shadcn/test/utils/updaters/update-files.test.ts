@@ -436,7 +436,7 @@ describe("resolveFilePath", () => {
     expect(
       resolveFilePath(
         {
-          path: "hello-world/design-system/primitives/button.tsx",
+          path: "hello-world/create-system/primitives/button.tsx",
           type: "registry:ui",
         },
         {
