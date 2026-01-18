@@ -453,17 +453,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "calendar-form",
-    type: "registry:example",
-    registryDependencies: ["calendar", "form", "popover"],
-    files: [
-      {
-        path: "examples/calendar-form.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "card-demo",
     type: "registry:example",
     registryDependencies: ["card", "button", "switch"],
@@ -574,28 +563,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "checkbox-form-multiple",
-    type: "registry:example",
-    registryDependencies: ["checkbox", "form"],
-    files: [
-      {
-        path: "examples/checkbox-form-multiple.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "checkbox-form-single",
-    type: "registry:example",
-    registryDependencies: ["checkbox", "form"],
-    files: [
-      {
-        path: "examples/checkbox-form-single.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "checkbox-with-text",
     type: "registry:example",
     registryDependencies: ["checkbox"],
@@ -635,17 +602,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/combobox-dropdown-menu.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "combobox-form",
-    type: "registry:example",
-    registryDependencies: ["command", "form"],
-    files: [
-      {
-        path: "examples/combobox-form.tsx",
         type: "registry:example",
       },
     ],
@@ -723,18 +679,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/date-picker-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-    dependencies: ["date-fns"],
-  },
-  {
-    name: "date-picker-form",
-    type: "registry:example",
-    registryDependencies: ["button", "calendar", "form", "popover"],
-    files: [
-      {
-        path: "examples/date-picker-form.tsx",
         type: "registry:example",
       },
     ],
@@ -1362,17 +1306,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "input-form",
-    type: "registry:example",
-    registryDependencies: ["input", "button", "form"],
-    files: [
-      {
-        path: "examples/input-form.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "input-with-button",
     type: "registry:example",
     registryDependencies: ["input", "button"],
@@ -1572,17 +1505,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/input-otp-controlled.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "input-otp-form",
-    type: "registry:example",
-    registryDependencies: ["input-otp", "form"],
-    files: [
-      {
-        path: "examples/input-otp-form.tsx",
         type: "registry:example",
       },
     ],
@@ -1874,17 +1796,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "radio-group-form",
-    type: "registry:example",
-    registryDependencies: ["radio-group", "form"],
-    files: [
-      {
-        path: "examples/radio-group-form.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "resizable-demo",
     type: "registry:example",
     registryDependencies: ["resizable"],
@@ -1968,17 +1879,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/select-scrollable.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "select-form",
-    type: "registry:example",
-    registryDependencies: ["select"],
-    files: [
-      {
-        path: "examples/select-form.tsx",
         type: "registry:example",
       },
     ],
@@ -2193,17 +2093,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "switch-form",
-    type: "registry:example",
-    registryDependencies: ["switch", "form"],
-    files: [
-      {
-        path: "examples/switch-form.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "table-demo",
     type: "registry:example",
     registryDependencies: ["table"],
@@ -2243,17 +2132,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/textarea-disabled.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "textarea-form",
-    type: "registry:example",
-    registryDependencies: ["textarea", "form"],
-    files: [
-      {
-        path: "examples/textarea-form.tsx",
         type: "registry:example",
       },
     ],

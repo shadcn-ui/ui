@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sidebar-12",
-  "type": "registry:block",
   "description": "A sidebar with a calendar.",
   "registryDependencies": [
     "sidebar",
@@ -43,5 +42,6 @@
   "categories": [
     "sidebar",
     "dashboard"
-  ]
+  ],
+  "type": "registry:block"
 }

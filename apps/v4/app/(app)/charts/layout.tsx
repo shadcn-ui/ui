@@ -1,4 +1,4 @@
-import { Metadata } from "next"
+import { type Metadata } from "next"
 import Link from "next/link"
 
 import { Announcement } from "@/components/announcement"
@@ -63,7 +63,6 @@ export default function ChartsLayout({
       </PageHeader>
       <PageNav id="charts">
         <ChartsNav />
-        <ThemeSelector className="mr-4 hidden md:flex" />
       </PageNav>
       <div className="container-wrapper section-soft flex-1">
         <div className="container pb-6">

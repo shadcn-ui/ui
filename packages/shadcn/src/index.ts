@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 import { add } from "@/src/commands/add"
 import { build } from "@/src/commands/build"
+import { create } from "@/src/commands/create"
 import { diff } from "@/src/commands/diff"
 import { info } from "@/src/commands/info"
 import { init } from "@/src/commands/init"
 import { mcp } from "@/src/commands/mcp"
 import { migrate } from "@/src/commands/migrate"
+import { registry } from "@/src/commands/registry"
 import { build as registryBuild } from "@/src/commands/registry/build"
 import { mcp as registryMcp } from "@/src/commands/registry/mcp"
 import { search } from "@/src/commands/search"
@@ -29,6 +31,7 @@ async function main() {
 
   program
     .addCommand(init)
+    .addCommand(create)
     .addCommand(add)
     .addCommand(diff)
     .addCommand(view)
@@ -37,7 +40,8 @@ async function main() {
     .addCommand(info)
     .addCommand(build)
     .addCommand(mcp)
-  // Registry commands
+    .addCommand(registry)
+  // Legacy registry commands.
   program.addCommand(registryBuild).addCommand(registryMcp)
 
   program.parse()
