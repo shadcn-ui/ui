@@ -5,7 +5,14 @@ import { Checkbox as CheckboxPrimitive } from "@base-ui/react/checkbox"
 import { cn } from "@/registry/bases/base/lib/utils"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
-function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {
+function Checkbox({
+  className,
+  checked,
+  ...props
+}: Omit<CheckboxPrimitive.Root.Props, "checked"> & {
+  checked?: boolean | "indeterminate"
+}) {
+  const isIndeterminate = checked === "indeterminate"
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
@@ -13,19 +20,31 @@ function Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {
         "cn-checkbox peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
+      checked={isIndeterminate ? false : checked}
+      indeterminate={isIndeterminate}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
         className="cn-checkbox-indicator grid place-content-center text-current transition-none"
       >
-        <IconPlaceholder
-          lucide="CheckIcon"
-          tabler="IconCheck"
-          hugeicons="Tick02Icon"
-          phosphor="CheckIcon"
-          remixicon="RiCheckLine"
-        />
+        {isIndeterminate ? (
+          <IconPlaceholder
+            lucide="MinusIcon"
+            tabler="IconMinus"
+            hugeicons="MinusSignIcon"
+            phosphor="MinusIcon"
+            remixicon="RiSubtractLine"
+          />
+        ) : (
+          <IconPlaceholder
+            lucide="CheckIcon"
+            tabler="IconCheck"
+            hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
+          />
+        )}
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   )
