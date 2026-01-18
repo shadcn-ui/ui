@@ -5,6 +5,7 @@ import { type z } from "zod"
 import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
+import { ChartIframe } from "@/components/chart-iframe"
 import { ChartToolbar } from "@/components/chart-toolbar"
 import { type Style } from "@/registry/_legacy-styles"
 
@@ -29,14 +30,12 @@ export function ChartDisplay({
     >
       <ChartToolbar
         chart={chart}
-        className="bg-card text-card-foreground relative z-20 flex justify-end px-3 py-2.5"
+        className="relative z-20 flex justify-end px-3 py-2.5"
       />
-      <div className="relative z-10">
-        <iframe
+      <div className="bg-background relative z-10 overflow-hidden rounded-xl">
+        <ChartIframe
           src={`/view/${style}/${chart.name}`}
-          className="w-full border-none"
           height={430}
-          loading="lazy"
           title={chart.name}
         />
       </div>
