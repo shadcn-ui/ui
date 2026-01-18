@@ -98,6 +98,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -108,6 +109,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -118,6 +120,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -128,6 +131,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -138,6 +142,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -148,6 +153,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -160,6 +166,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -170,6 +177,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -180,6 +188,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -190,6 +199,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -200,6 +210,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -210,6 +221,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -222,6 +234,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -232,6 +245,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -242,6 +256,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -252,6 +267,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -262,6 +278,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -272,6 +289,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -284,6 +302,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -294,6 +313,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -304,6 +324,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -314,6 +335,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -324,6 +346,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -334,6 +357,7 @@ function ButtonIconRight() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
             data-icon="inline-end"
           />
         </Button>
@@ -352,6 +376,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Default
@@ -362,6 +387,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Secondary
@@ -372,6 +398,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Outline
@@ -382,6 +409,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Ghost
@@ -392,6 +420,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Destructive
@@ -402,6 +431,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Link
@@ -414,6 +444,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Default
@@ -424,6 +455,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Secondary
@@ -434,6 +466,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Outline
@@ -444,6 +477,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Ghost
@@ -454,6 +488,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Destructive
@@ -464,6 +499,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Link
@@ -476,6 +512,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Default
@@ -486,6 +523,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Secondary
@@ -496,6 +534,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Outline
@@ -506,6 +545,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Ghost
@@ -516,6 +556,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Destructive
@@ -526,6 +567,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Link
@@ -538,6 +580,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Default
@@ -548,6 +591,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Secondary
@@ -558,6 +602,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Outline
@@ -568,6 +613,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Ghost
@@ -578,6 +624,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Destructive
@@ -588,6 +635,7 @@ function ButtonIconLeft() {
             hugeicons="CircleArrowLeft02Icon"
             tabler="IconCircleArrowLeft"
             phosphor="ArrowCircleLeftIcon"
+            remixicon="RiArrowLeftCircleLine"
             data-icon="inline-start"
           />{" "}
           Link
@@ -607,6 +655,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-xs" variant="secondary">
@@ -615,6 +664,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-xs" variant="outline">
@@ -623,6 +673,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-xs" variant="ghost">
@@ -631,6 +682,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-xs" variant="destructive">
@@ -639,6 +691,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-xs" variant="link">
@@ -647,6 +700,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
       </div>
@@ -657,6 +711,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-sm" variant="secondary">
@@ -665,6 +720,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-sm" variant="outline">
@@ -673,6 +729,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-sm" variant="ghost">
@@ -681,6 +738,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-sm" variant="destructive">
@@ -689,6 +747,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-sm" variant="link">
@@ -697,6 +756,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
       </div>
@@ -707,6 +767,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon" variant="secondary">
@@ -715,6 +776,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon" variant="outline">
@@ -723,6 +785,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon" variant="ghost">
@@ -731,6 +794,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon" variant="destructive">
@@ -739,6 +803,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon" variant="link">
@@ -747,6 +812,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
       </div>
@@ -757,6 +823,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-lg" variant="secondary">
@@ -765,6 +832,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-lg" variant="outline">
@@ -773,6 +841,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-lg" variant="ghost">
@@ -781,6 +850,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-lg" variant="destructive">
@@ -789,6 +859,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
         <Button size="icon-lg" variant="link">
@@ -797,6 +868,7 @@ function ButtonIconOnly() {
             tabler="IconArrowRight"
             hugeicons="ArrowRight02Icon"
             phosphor="ArrowRightIcon"
+            remixicon="RiArrowRightLine"
           />
         </Button>
       </div>
@@ -817,6 +889,7 @@ function ButtonExamples() {
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
               phosphor="ArrowRightIcon"
+              remixicon="RiArrowRightLine"
               data-icon="inline-end"
             />
           </Button>
@@ -829,6 +902,7 @@ function ButtonExamples() {
               tabler="IconArrowRight"
               hugeicons="ArrowRight02Icon"
               phosphor="ArrowRightIcon"
+              remixicon="RiArrowRightLine"
               data-icon="inline-end"
             />
           </Button>
