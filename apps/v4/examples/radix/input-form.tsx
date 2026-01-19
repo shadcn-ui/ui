@@ -16,11 +16,16 @@ import {
 
 export function InputForm() {
   return (
-    <form className="w-full">
+    <form className="w-full max-w-sm">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="form-name">Name</FieldLabel>
-          <Input id="form-name" type="text" placeholder="John Doe" />
+          <Input
+            id="form-name"
+            type="text"
+            placeholder="Evil Rabbit"
+            required
+          />
         </Field>
         <Field>
           <FieldLabel htmlFor="form-email">Email</FieldLabel>

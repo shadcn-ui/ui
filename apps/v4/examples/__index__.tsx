@@ -2410,6 +2410,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-badge": {
+      name: "input-badge",
+      filePath: "examples/radix/input-badge.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-badge")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-basic": {
       name: "input-basic",
       filePath: "examples/radix/input-basic.tsx",
@@ -2420,6 +2433,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-basic"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-button-group": {
+      name: "input-button-group",
+      filePath: "examples/radix/input-button-group.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-button-group")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-button-group"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -2449,16 +2475,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "input-fields": {
-      name: "input-fields",
-      filePath: "examples/radix/input-fields.tsx",
+    "input-field": {
+      name: "input-field",
+      filePath: "examples/radix/input-field.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/input-fields")
+        const mod = await import("./radix/input-field")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-fields"
+          ) || "input-field"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-fieldgroup": {
+      name: "input-fieldgroup",
+      filePath: "examples/radix/input-fieldgroup.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-fieldgroup")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-fieldgroup"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -2485,6 +2524,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-form"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-grid": {
+      name: "input-grid",
+      filePath: "examples/radix/input-grid.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-grid"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -2722,6 +2774,32 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-inline": {
+      name: "input-inline",
+      filePath: "examples/radix/input-inline.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-inline")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-inline"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-input-group": {
+      name: "input-input-group",
+      filePath: "examples/radix/input-input-group.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-input-group")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-invalid": {
       name: "input-invalid",
       filePath: "examples/radix/input-invalid.tsx",
@@ -2891,94 +2969,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "input-types": {
-      name: "input-types",
-      filePath: "examples/radix/input-types.tsx",
+    "input-required": {
+      name: "input-required",
+      filePath: "examples/radix/input-required.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/input-types")
+        const mod = await import("./radix/input-required")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-types"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-with-button": {
-      name: "input-with-button",
-      filePath: "examples/radix/input-with-button.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/input-with-button")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-with-button"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-with-description": {
-      name: "input-with-description",
-      filePath: "examples/radix/input-with-description.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/input-with-description")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-with-description"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-with-label": {
-      name: "input-with-label",
-      filePath: "examples/radix/input-with-label.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/input-with-label")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-with-label"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-with-native-select": {
-      name: "input-with-native-select",
-      filePath: "examples/radix/input-with-native-select.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/input-with-native-select")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-with-native-select"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-with-select": {
-      name: "input-with-select",
-      filePath: "examples/radix/input-with-select.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/input-with-select")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-with-select"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-with-text": {
-      name: "input-with-text",
-      filePath: "examples/radix/input-with-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/input-with-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-with-text"
+          ) || "input-required"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8719,6 +8719,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-badge": {
+      name: "input-badge",
+      filePath: "examples/base/input-badge.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-badge")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-basic": {
       name: "input-basic",
       filePath: "examples/base/input-basic.tsx",
@@ -8732,16 +8745,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "input-button": {
-      name: "input-button",
-      filePath: "examples/base/input-button.tsx",
+    "input-button-group": {
+      name: "input-button-group",
+      filePath: "examples/base/input-button-group.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/input-button")
+        const mod = await import("./base/input-button-group")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-button"
+          ) || "input-button-group"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8758,19 +8771,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "input-description": {
-      name: "input-description",
-      filePath: "examples/base/input-description.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/input-description")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-description"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "input-disabled": {
       name: "input-disabled",
       filePath: "examples/base/input-disabled.tsx",
@@ -8784,16 +8784,29 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "input-fields": {
-      name: "input-fields",
-      filePath: "examples/base/input-fields.tsx",
+    "input-field": {
+      name: "input-field",
+      filePath: "examples/base/input-field.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/input-fields")
+        const mod = await import("./base/input-field")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-fields"
+          ) || "input-field"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-fieldgroup": {
+      name: "input-fieldgroup",
+      filePath: "examples/base/input-fieldgroup.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-fieldgroup")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-fieldgroup"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8820,6 +8833,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-form"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-grid": {
+      name: "input-grid",
+      filePath: "examples/base/input-grid.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-grid")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-grid"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9057,6 +9083,32 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-inline": {
+      name: "input-inline",
+      filePath: "examples/base/input-inline.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-inline")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-inline"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-input-group": {
+      name: "input-input-group",
+      filePath: "examples/base/input-input-group.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-input-group")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-input-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-invalid": {
       name: "input-invalid",
       filePath: "examples/base/input-invalid.tsx",
@@ -9067,19 +9119,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-invalid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-label": {
-      name: "input-label",
-      filePath: "examples/base/input-label.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/input-label")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-label"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9236,6 +9275,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-otp-with-separator"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-required": {
+      name: "input-required",
+      filePath: "examples/base/input-required.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-required")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-required"
         return { default: mod.default || mod[exportName] }
       }),
     },

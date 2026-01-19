@@ -1,11 +1,12 @@
+import { Field, FieldDescription, FieldLabel } from "@/examples/base/ui/field"
 import { Input } from "@/examples/base/ui/input"
-import { Label } from "@/examples/base/ui/label"
 
-export default function InputFile() {
+export function InputFile() {
   return (
-    <div className="grid w-full max-w-sm items-center gap-3">
-      <Label htmlFor="picture">Picture</Label>
+    <Field>
+      <FieldLabel htmlFor="picture">Picture</FieldLabel>
       <Input id="picture" type="file" />
-    </div>
+      <FieldDescription>Select a picture to upload.</FieldDescription>
+    </Field>
   )
 }

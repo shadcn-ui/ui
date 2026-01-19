@@ -1,6 +1,6 @@
 ---
 title: Input
-description: Displays a form input field or a component that looks like an input field.
+description: A text input component for forms and user data entry with built-in styling and accessibility features.
 base: radix
 component: true
 ---
@@ -8,8 +8,7 @@ component: true
 <ComponentPreview
   styleName="radix-nova"
   name="input-demo"
-  className="[&_input]:max-w-xs"
-  description="A form input component."
+  previewClassName="*:max-w-xs"
 />
 
 ## Installation
@@ -60,53 +59,132 @@ import { Input } from "@/components/ui/input"
 
 ## Examples
 
-### Default
+### Basic
 
 <ComponentPreview
   styleName="radix-nova"
-  name="input-demo"
-  className="[&_input]:max-w-xs"
-  description="A form input component."
+  name="input-basic"
+  previewClassName="*:max-w-xs"
 />
 
-### File
+### Field
+
+Use `Field`, `FieldLabel`, and `FieldDescription` to create an input with a
+label and description.
 
 <ComponentPreview
   styleName="radix-nova"
-  name="input-file"
-  className="[&_input]:max-w-xs"
-  description="A file input component."
+  name="input-field"
+  previewClassName="*:max-w-xs"
+/>
+
+### Field Group
+
+Use `FieldGroup` to show multiple `Field` blocks and to build forms.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="input-fieldgroup"
+  previewClassName="*:max-w-xs"
 />
 
 ### Disabled
 
+Use the `disabled` prop to disable the input. To style the disabled state, add the `data-disabled` attribute to the `Field` component.
+
 <ComponentPreview
   styleName="radix-nova"
   name="input-disabled"
-  className="[&_input]:max-w-xs"
-  description="A disabled input component."
+  previewClassName="*:max-w-xs"
 />
 
-### With Label
+### Invalid
+
+Use the `aria-invalid` prop to mark the input as invalid. To style the invalid state, add the `data-invalid` attribute to the `Field` component.
 
 <ComponentPreview
   styleName="radix-nova"
-  name="input-with-label"
-  className="[&_input]:max-w-xs"
-  description="An input component with a label."
+  name="input-invalid"
+  previewClassName="*:max-w-xs"
 />
 
-### With Button
+### File
+
+Use the `type="file"` prop to create a file input.
 
 <ComponentPreview
   styleName="radix-nova"
-  name="input-with-button"
-  className="[&_input]:max-w-xs"
-  description="An input component with a button."
+  name="input-file"
+  previewClassName="*:max-w-xs"
 />
 
-## Changelog
+### Inline
 
-### 2025-09-18 Remove `flex` class
+Use `Field` with `orientation="horizontal"` to create an inline input.
+Pair with `Button` to create a search input with a button.
 
-Edit `input.tsx` and remove the `flex` class from the input component. This is no longer needed.
+<ComponentPreview
+  styleName="radix-nova"
+  name="input-inline"
+  previewClassName="*:max-w-xs"
+/>
+
+### Grid
+
+Use a grid layout to place multiple inputs side by side.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="input-grid"
+  previewClassName="p-6"
+/>
+
+### Required
+
+Use the `required` attribute to indicate required inputs.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="input-required"
+  previewClassName="*:max-w-xs"
+/>
+
+### Badge
+
+Use `Badge` in the label to highlight a recommended field.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="input-badge"
+  previewClassName="*:max-w-xs"
+/>
+
+### Input Group
+
+To add icons, text, or buttons inside an input, use the `InputGroup` component. See the [Input Group](/docs/components/input-group) component for more examples.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="input-input-group"
+  previewClassName="*:max-w-xs"
+/>
+
+### Button Group
+
+To add buttons to an input, use the `ButtonGroup` component. See the [Button Group](/docs/components/button-group) component for more examples.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="input-button-group"
+  previewClassName="*:max-w-xs"
+/>
+
+### Form
+
+A full form example with multiple inputs, a select, and a button.
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="input-form"
+  previewClassName="h-[32rem]"
+/>

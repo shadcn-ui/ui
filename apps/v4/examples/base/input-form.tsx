@@ -9,18 +9,29 @@ import { Input } from "@/examples/base/ui/input"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/examples/base/ui/select"
 
 export function InputForm() {
+  const countries = [
+    { label: "United States", value: "us" },
+    { label: "United Kingdom", value: "uk" },
+    { label: "Canada", value: "ca" },
+  ]
   return (
-    <form className="w-full">
+    <form className="w-full max-w-sm">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="form-name">Name</FieldLabel>
-          <Input id="form-name" type="text" placeholder="John Doe" />
+          <Input
+            id="form-name"
+            type="text"
+            placeholder="Evil Rabbit"
+            required
+          />
         </Field>
         <Field>
           <FieldLabel htmlFor="form-email">Email</FieldLabel>
@@ -36,14 +47,18 @@ export function InputForm() {
           </Field>
           <Field>
             <FieldLabel htmlFor="form-country">Country</FieldLabel>
-            <Select defaultValue="us">
+            <Select items={countries} defaultValue="us">
               <SelectTrigger id="form-country">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="us">United States</SelectItem>
-                <SelectItem value="uk">United Kingdom</SelectItem>
-                <SelectItem value="ca">Canada</SelectItem>
+                <SelectGroup>
+                  {countries.map((country) => (
+                    <SelectItem key={country.value} value={country.value}>
+                      {country.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
               </SelectContent>
             </Select>
           </Field>

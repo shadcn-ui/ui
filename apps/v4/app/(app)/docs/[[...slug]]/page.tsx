@@ -176,14 +176,14 @@ export default async function Page(props: {
           </div>
         </div>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 lg:flex">
         <div className="h-(--top-spacing) shrink-0"></div>
         {doc.toc?.length ? (
           <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto px-8">
             <DocsTableOfContents toc={doc.toc} />
           </div>
         ) : null}
-        <div className="flex flex-1 flex-col gap-6 px-6">
+        <div className="hidden flex-1 flex-col gap-6 px-6 xl:flex">
           <OpenInV0Cta />
         </div>
       </div>
