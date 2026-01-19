@@ -39,6 +39,7 @@ export default function SidebarInsetExample() {
             tabler="IconHome"
             hugeicons="Home01Icon"
             phosphor="HouseIcon"
+            remixicon="RiHomeLine"
           />
         ),
         isActive: true,
@@ -62,6 +63,7 @@ export default function SidebarInsetExample() {
             tabler="IconChartLine"
             hugeicons="ChartIcon"
             phosphor="ChartLineIcon"
+            remixicon="RiLineChartLine"
           />
         ),
         items: [
@@ -84,6 +86,7 @@ export default function SidebarInsetExample() {
             tabler="IconShoppingBag"
             hugeicons="ShoppingBag01Icon"
             phosphor="BagIcon"
+            remixicon="RiShoppingBagLine"
           />
         ),
         items: [
@@ -110,6 +113,7 @@ export default function SidebarInsetExample() {
             tabler="IconShoppingCart"
             hugeicons="ShoppingCart01Icon"
             phosphor="ShoppingCartIcon"
+            remixicon="RiShoppingCartLine"
           />
         ),
         items: [
@@ -132,6 +136,7 @@ export default function SidebarInsetExample() {
             tabler="IconFile"
             hugeicons="File01Icon"
             phosphor="FileIcon"
+            remixicon="RiFileLine"
           />
         ),
       },
@@ -144,6 +149,7 @@ export default function SidebarInsetExample() {
             tabler="IconUser"
             hugeicons="UserIcon"
             phosphor="UserIcon"
+            remixicon="RiUserLine"
           />
         ),
       },
@@ -156,6 +162,7 @@ export default function SidebarInsetExample() {
             tabler="IconSettings"
             hugeicons="Settings05Icon"
             phosphor="GearIcon"
+            remixicon="RiSettingsLine"
           />
         ),
       },
@@ -170,6 +177,7 @@ export default function SidebarInsetExample() {
             tabler="IconLifebuoy"
             hugeicons="ChartRingIcon"
             phosphor="LifebuoyIcon"
+            remixicon="RiLifebuoyLine"
           />
         ),
       },
@@ -182,6 +190,7 @@ export default function SidebarInsetExample() {
             tabler="IconSend"
             hugeicons="SentIcon"
             phosphor="PaperPlaneTiltIcon"
+            remixicon="RiSendPlaneLine"
           />
         ),
       },
@@ -221,6 +230,7 @@ export default function SidebarInsetExample() {
                               tabler="IconChevronRight"
                               hugeicons="ArrowRight01Icon"
                               phosphor="CaretRightIcon"
+                              remixicon="RiArrowRightSLine"
                             />
                             <span className="sr-only">Toggle</span>
                           </SidebarMenuAction>
