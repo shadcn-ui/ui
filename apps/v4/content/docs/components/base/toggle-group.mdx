@@ -8,7 +8,7 @@ links:
   api: https://base-ui.com/react/components/toggle-group#api-reference
 ---
 
-<ComponentPreview styleName="base-nova" name="toggle-group-spacing" />
+<ComponentPreview styleName="base-nova" name="toggle-group-demo" />
 
 ## Installation
 
@@ -70,80 +70,32 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 ### Outline
 
-<ComponentPreview
-  styleName="base-nova"
-  name="toggle-group-outline"
-  description="A toggle group using the outline variant."
-/>
+Use `variant="outline"` for an outline style.
 
-### Single
+<ComponentPreview styleName="base-nova" name="toggle-group-outline" />
 
-<ComponentPreview
-  styleName="base-nova"
-  name="toggle-group-single"
-  description="A toggle group with single selection."
-/>
+### Size
 
-### Small
+Use the `size` prop to change the size of the toggle group.
 
-<ComponentPreview
-  styleName="base-nova"
-  name="toggle-group-sm"
-  description="A toggle group using the small size."
-/>
-
-### Large
-
-<ComponentPreview
-  styleName="base-nova"
-  name="toggle-group-lg"
-  description="A toggle group using the large size."
-/>
-
-### Disabled
-
-<ComponentPreview
-  styleName="base-nova"
-  name="toggle-group-disabled"
-  description="A disabled toggle group."
-/>
+<ComponentPreview styleName="base-nova" name="toggle-group-sizes" />
 
 ### Spacing
 
-Use `spacing={2}` to add spacing between toggle group items.
+Use `spacing` to add spacing between toggle group items.
 
-<ComponentPreview
-  styleName="base-nova"
-  name="toggle-group-spacing"
-  description="A toggle group with spacing."
-/>
+<ComponentPreview styleName="base-nova" name="toggle-group-spacing" />
+
+### Vertical
+
+Use `orientation="vertical"` for vertical toggle groups.
+
+<ComponentPreview styleName="base-nova" name="toggle-group-vertical" />
+
+### Disabled
+
+<ComponentPreview styleName="base-nova" name="toggle-group-disabled" />
 
 ## API Reference
 
-### ToggleGroup
-
-The main component that wraps toggle group items.
-
-| Prop        | Type                        | Default     |
-| ----------- | --------------------------- | ----------- |
-| `type`      | `"single" \| "multiple"`    | `"single"`  |
-| `variant`   | `"default" \| "outline"`    | `"default"` |
-| `size`      | `"default" \| "sm" \| "lg"` | `"default"` |
-| `spacing`   | `number`                    | `0`         |
-| `className` | `string`                    |             |
-
-```tsx
-<ToggleGroup type="single" variant="outline" size="sm">
-  <ToggleGroupItem value="a">A</ToggleGroupItem>
-  <ToggleGroupItem value="b">B</ToggleGroupItem>
-</ToggleGroup>
-```
-
-### ToggleGroupItem
-
-Individual toggle items within a toggle group. Remember to add an `aria-label` to each item for accessibility.
-
-| Prop        | Type     | Default  |
-| ----------- | -------- | -------- |
-| `value`     | `string` | Required |
-| `className` | `string` |          |
+See the [Base UI Toggle Group](https://base-ui.com/react/components/toggle-group#api-reference) documentation.

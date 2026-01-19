@@ -3,15 +3,15 @@ import { Bold, Italic, Underline } from "lucide-react"
 
 export function ToggleGroupDisabled() {
   return (
-    <ToggleGroup type="multiple" disabled>
+    <ToggleGroup disabled type="multiple">
       <ToggleGroupItem value="bold" aria-label="Toggle bold">
-        <Bold className="h-4 w-4" />
+        <Bold />
       </ToggleGroupItem>
       <ToggleGroupItem value="italic" aria-label="Toggle italic">
-        <Italic className="h-4 w-4" />
+        <Italic />
       </ToggleGroupItem>
       <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">
-        <Underline className="h-4 w-4" />
+        <Underline />
       </ToggleGroupItem>
     </ToggleGroup>
   )

@@ -3,13 +3,8 @@ import { BookmarkIcon } from "lucide-react"
 
 export function ToggleDemo() {
   return (
-    <Toggle
-      aria-label="Toggle bookmark"
-      size="sm"
-      variant="outline"
-      className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
-    >
-      <BookmarkIcon />
+    <Toggle aria-label="Toggle bookmark" size="sm" variant="outline">
+      <BookmarkIcon className="group-data-[state=on]/toggle:fill-foreground" />
       Bookmark
     </Toggle>
   )

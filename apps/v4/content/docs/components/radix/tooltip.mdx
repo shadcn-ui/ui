@@ -8,11 +8,7 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/tooltip#api-reference
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="tooltip-demo"
-  description="A tooltip component."
-/>
+<ComponentPreview styleName="radix-nova" name="tooltip-demo" />
 
 ## Installation
 
@@ -75,12 +71,24 @@ import {
 </Tooltip>
 ```
 
----
+## Examples
 
-## Changelog
+### Side
 
-### 2025-09-22 Update tooltip colors
+Use the `side` prop to change the position of the tooltip.
 
-We've updated the tooltip colors to use the foreground color for the background and the background color for the foreground.
+<ComponentPreview styleName="radix-nova" name="tooltip-sides" />
 
-Replace `bg-primary text-primary-foreground` with `bg-foreground text-background` for both `<TooltipContent />` and `<TooltipArrow />`.
+### With Keyboard Shortcut
+
+<ComponentPreview styleName="radix-nova" name="tooltip-keyboard" />
+
+### Disabled Button
+
+Show a tooltip on a disabled button by wrapping it with a span.
+
+<ComponentPreview styleName="radix-nova" name="tooltip-disabled" />
+
+## API Reference
+
+See the [Radix Tooltip](https://www.radix-ui.com/docs/primitives/components/tooltip#api-reference) documentation.

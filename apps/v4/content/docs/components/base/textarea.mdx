@@ -8,7 +8,7 @@ component: true
 <ComponentPreview
   styleName="base-nova"
   name="textarea-demo"
-  description="A textarea"
+  previewClassName="*:max-w-xs"
 />
 
 ## Installation
@@ -59,43 +59,42 @@ import { Textarea } from "@/components/ui/textarea"
 
 ## Examples
 
-### Default
+### Field
+
+Use `Field`, `FieldLabel`, and `FieldDescription` to create a textarea with a label and description.
 
 <ComponentPreview
   styleName="base-nova"
-  name="textarea-demo"
-  description="A textarea"
+  name="textarea-field"
+  previewClassName="*:max-w-xs"
 />
 
 ### Disabled
 
+Use the `disabled` prop to disable the textarea. To style the disabled state, add the `data-disabled` attribute to the `Field` component.
+
 <ComponentPreview
   styleName="base-nova"
   name="textarea-disabled"
-  description="A disabled textarea"
+  previewClassName="*:max-w-xs"
 />
 
-### With Label
+### Invalid
+
+Use the `aria-invalid` prop to mark the textarea as invalid. To style the invalid state, add the `data-invalid` attribute to the `Field` component.
 
 <ComponentPreview
   styleName="base-nova"
-  name="textarea-with-label"
-  className="[&_div.grid]:w-full"
-  description="A textarea with a label"
+  name="textarea-invalid"
+  previewClassName="*:max-w-xs"
 />
 
-### With Text
+### Button
+
+Pair with `Button` to create a textarea with a submit button.
 
 <ComponentPreview
   styleName="base-nova"
-  name="textarea-with-text"
-  description="A textarea with text"
-/>
-
-### With Button
-
-<ComponentPreview
-  styleName="base-nova"
-  name="textarea-with-button"
-  description="A textarea with a button"
+  name="textarea-button"
+  previewClassName="*:max-w-xs"
 />

@@ -3,10 +3,10 @@ import { Textarea } from "@/examples/radix/ui/textarea"
 
 export function TextareaDisabled() {
   return (
-    <Field>
-      <FieldLabel htmlFor="textarea-demo-disabled">Message</FieldLabel>
+    <Field data-disabled>
+      <FieldLabel htmlFor="textarea-disabled">Message</FieldLabel>
       <Textarea
-        id="textarea-demo-disabled"
+        id="textarea-disabled"
         placeholder="Type your message here."
         disabled
       />

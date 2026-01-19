@@ -4204,16 +4204,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "table-basic": {
-      name: "table-basic",
-      filePath: "examples/radix/table-basic.tsx",
+    "table-actions": {
+      name: "table-actions",
+      filePath: "examples/radix/table-actions.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/table-basic")
+        const mod = await import("./radix/table-actions")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-basic"
+          ) || "table-actions"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4230,94 +4230,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "table-simple": {
-      name: "table-simple",
-      filePath: "examples/radix/table-simple.tsx",
+    "table-footer": {
+      name: "table-footer",
+      filePath: "examples/radix/table-footer.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/table-simple")
+        const mod = await import("./radix/table-footer")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-simple"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-actions": {
-      name: "table-with-actions",
-      filePath: "examples/radix/table-with-actions.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/table-with-actions")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-actions"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-badges": {
-      name: "table-with-badges",
-      filePath: "examples/radix/table-with-badges.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/table-with-badges")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-badges"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-footer": {
-      name: "table-with-footer",
-      filePath: "examples/radix/table-with-footer.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/table-with-footer")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-footer"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-input": {
-      name: "table-with-input",
-      filePath: "examples/radix/table-with-input.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/table-with-input")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-input"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-select": {
-      name: "table-with-select",
-      filePath: "examples/radix/table-with-select.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/table-with-select")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-select"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-basic": {
-      name: "tabs-basic",
-      filePath: "examples/radix/tabs-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-basic"
+          ) || "table-footer"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4347,42 +4269,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "tabs-icon-only": {
-      name: "tabs-icon-only",
-      filePath: "examples/radix/tabs-icon-only.tsx",
+    "tabs-icons": {
+      name: "tabs-icons",
+      filePath: "examples/radix/tabs-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-icon-only")
+        const mod = await import("./radix/tabs-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-icon-only"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-line-disabled": {
-      name: "tabs-line-disabled",
-      filePath: "examples/radix/tabs-line-disabled.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-line-disabled")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-line-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-line-with-content": {
-      name: "tabs-line-with-content",
-      filePath: "examples/radix/tabs-line-with-content.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-line-with-content")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-line-with-content"
+          ) || "tabs-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4399,32 +4295,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "tabs-multiple": {
-      name: "tabs-multiple",
-      filePath: "examples/radix/tabs-multiple.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-multiple")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-multiple"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-variants-comparison": {
-      name: "tabs-variants-comparison",
-      filePath: "examples/radix/tabs-variants-comparison.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-variants-comparison")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-variants-comparison"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "tabs-vertical": {
       name: "tabs-vertical",
       filePath: "examples/radix/tabs-vertical.tsx",
@@ -4438,68 +4308,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "tabs-with-content": {
-      name: "tabs-with-content",
-      filePath: "examples/radix/tabs-with-content.tsx",
+    "textarea-button": {
+      name: "textarea-button",
+      filePath: "examples/radix/textarea-button.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-with-content")
+        const mod = await import("./radix/textarea-button")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-with-content"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-with-dropdown": {
-      name: "tabs-with-dropdown",
-      filePath: "examples/radix/tabs-with-dropdown.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-with-dropdown")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-with-dropdown"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-with-icons": {
-      name: "tabs-with-icons",
-      filePath: "examples/radix/tabs-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-with-input-and-button": {
-      name: "tabs-with-input-and-button",
-      filePath: "examples/radix/tabs-with-input-and-button.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tabs-with-input-and-button")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-with-input-and-button"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-basic": {
-      name: "textarea-basic",
-      filePath: "examples/radix/textarea-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/textarea-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-basic"
+          ) || "textarea-button"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4529,16 +4347,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "textarea-fields": {
-      name: "textarea-fields",
-      filePath: "examples/radix/textarea-fields.tsx",
+    "textarea-field": {
+      name: "textarea-field",
+      filePath: "examples/radix/textarea-field.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/textarea-fields")
+        const mod = await import("./radix/textarea-field")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-fields"
+          ) || "textarea-field"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4552,71 +4370,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "textarea-invalid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-with-button": {
-      name: "textarea-with-button",
-      filePath: "examples/radix/textarea-with-button.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/textarea-with-button")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-with-button"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-with-description": {
-      name: "textarea-with-description",
-      filePath: "examples/radix/textarea-with-description.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/textarea-with-description")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-with-description"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-with-label": {
-      name: "textarea-with-label",
-      filePath: "examples/radix/textarea-with-label.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/textarea-with-label")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-with-label"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-with-text": {
-      name: "textarea-with-text",
-      filePath: "examples/radix/textarea-with-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/textarea-with-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-with-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-basic": {
-      name: "toggle-basic",
-      filePath: "examples/radix/toggle-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-basic"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4646,32 +4399,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-group-basic": {
-      name: "toggle-group-basic",
-      filePath: "examples/radix/toggle-group-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-date-range": {
-      name: "toggle-group-date-range",
-      filePath: "examples/radix/toggle-group-date-range.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-date-range")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-date-range"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "toggle-group-demo": {
       name: "toggle-group-demo",
       filePath: "examples/radix/toggle-group-demo.tsx",
@@ -4698,45 +4425,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-group-filter": {
-      name: "toggle-group-filter",
-      filePath: "examples/radix/toggle-group-filter.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-filter")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-filter"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-lg": {
-      name: "toggle-group-lg",
-      filePath: "examples/radix/toggle-group-lg.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-lg")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-lg"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-outline-with-icons": {
-      name: "toggle-group-outline-with-icons",
-      filePath: "examples/radix/toggle-group-outline-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-outline-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-outline-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "toggle-group-outline": {
       name: "toggle-group-outline",
       filePath: "examples/radix/toggle-group-outline.tsx",
@@ -4747,19 +4435,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "toggle-group-outline"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-single": {
-      name: "toggle-group-single",
-      filePath: "examples/radix/toggle-group-single.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-single")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-single"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4776,32 +4451,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-group-sm": {
-      name: "toggle-group-sm",
-      filePath: "examples/radix/toggle-group-sm.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-sm")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-sm"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-sort": {
-      name: "toggle-group-sort",
-      filePath: "examples/radix/toggle-group-sort.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-sort")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-sort"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "toggle-group-spacing": {
       name: "toggle-group-spacing",
       filePath: "examples/radix/toggle-group-spacing.tsx",
@@ -4815,47 +4464,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-group-vertical-outline-with-icons": {
-      name: "toggle-group-vertical-outline-with-icons",
-      filePath: "examples/radix/toggle-group-vertical-outline-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import(
-          "./radix/toggle-group-vertical-outline-with-icons"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-vertical-outline-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-vertical-outline": {
-      name: "toggle-group-vertical-outline",
-      filePath: "examples/radix/toggle-group-vertical-outline.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-vertical-outline")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-vertical-outline"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-vertical-with-spacing": {
-      name: "toggle-group-vertical-with-spacing",
-      filePath: "examples/radix/toggle-group-vertical-with-spacing.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-vertical-with-spacing")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-vertical-with-spacing"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "toggle-group-vertical": {
       name: "toggle-group-vertical",
       filePath: "examples/radix/toggle-group-vertical.tsx",
@@ -4866,45 +4474,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "toggle-group-vertical"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-with-icons": {
-      name: "toggle-group-with-icons",
-      filePath: "examples/radix/toggle-group-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-with-input-and-select": {
-      name: "toggle-group-with-input-and-select",
-      filePath: "examples/radix/toggle-group-with-input-and-select.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-group-with-input-and-select")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-with-input-and-select"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-lg": {
-      name: "toggle-lg",
-      filePath: "examples/radix/toggle-lg.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-lg")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-lg"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4934,94 +4503,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-sm": {
-      name: "toggle-sm",
-      filePath: "examples/radix/toggle-sm.tsx",
+    "toggle-text": {
+      name: "toggle-text",
+      filePath: "examples/radix/toggle-text.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-sm")
+        const mod = await import("./radix/toggle-text")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-sm"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-button-icon-text": {
-      name: "toggle-with-button-icon-text",
-      filePath: "examples/radix/toggle-with-button-icon-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-with-button-icon-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-button-icon-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-button-icon": {
-      name: "toggle-with-button-icon",
-      filePath: "examples/radix/toggle-with-button-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-with-button-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-button-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-button-text": {
-      name: "toggle-with-button-text",
-      filePath: "examples/radix/toggle-with-button-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-with-button-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-button-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-icon": {
-      name: "toggle-with-icon",
-      filePath: "examples/radix/toggle-with-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-with-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-text": {
-      name: "toggle-with-text",
-      filePath: "examples/radix/toggle-with-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/toggle-with-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-basic": {
-      name: "tooltip-basic",
-      filePath: "examples/radix/tooltip-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tooltip-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-basic"
+          ) || "toggle-text"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -5051,42 +4542,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "tooltip-formatted": {
-      name: "tooltip-formatted",
-      filePath: "examples/radix/tooltip-formatted.tsx",
+    "tooltip-keyboard": {
+      name: "tooltip-keyboard",
+      filePath: "examples/radix/tooltip-keyboard.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/tooltip-formatted")
+        const mod = await import("./radix/tooltip-keyboard")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-formatted"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-long-content": {
-      name: "tooltip-long-content",
-      filePath: "examples/radix/tooltip-long-content.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tooltip-long-content")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-long-content"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-on-link": {
-      name: "tooltip-on-link",
-      filePath: "examples/radix/tooltip-on-link.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tooltip-on-link")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-on-link"
+          ) || "tooltip-keyboard"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -5100,32 +4565,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "tooltip-sides"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-with-icon": {
-      name: "tooltip-with-icon",
-      filePath: "examples/radix/tooltip-with-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tooltip-with-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-with-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-with-keyboard": {
-      name: "tooltip-with-keyboard",
-      filePath: "examples/radix/tooltip-with-keyboard.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/tooltip-with-keyboard")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-with-keyboard"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9486,16 +8925,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "table-basic": {
-      name: "table-basic",
-      filePath: "examples/base/table-basic.tsx",
+    "table-actions": {
+      name: "table-actions",
+      filePath: "examples/base/table-actions.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/table-basic")
+        const mod = await import("./base/table-actions")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-basic"
+          ) || "table-actions"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9512,94 +8951,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "table-simple": {
-      name: "table-simple",
-      filePath: "examples/base/table-simple.tsx",
+    "table-footer": {
+      name: "table-footer",
+      filePath: "examples/base/table-footer.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/table-simple")
+        const mod = await import("./base/table-footer")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-simple"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-actions": {
-      name: "table-with-actions",
-      filePath: "examples/base/table-with-actions.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/table-with-actions")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-actions"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-badges": {
-      name: "table-with-badges",
-      filePath: "examples/base/table-with-badges.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/table-with-badges")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-badges"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-footer": {
-      name: "table-with-footer",
-      filePath: "examples/base/table-with-footer.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/table-with-footer")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-footer"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-input": {
-      name: "table-with-input",
-      filePath: "examples/base/table-with-input.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/table-with-input")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-input"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "table-with-select": {
-      name: "table-with-select",
-      filePath: "examples/base/table-with-select.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/table-with-select")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "table-with-select"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-basic": {
-      name: "tabs-basic",
-      filePath: "examples/base/tabs-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tabs-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-basic"
+          ) || "table-footer"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9629,42 +8990,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "tabs-icon-only": {
-      name: "tabs-icon-only",
-      filePath: "examples/base/tabs-icon-only.tsx",
+    "tabs-icons": {
+      name: "tabs-icons",
+      filePath: "examples/base/tabs-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/tabs-icon-only")
+        const mod = await import("./base/tabs-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-icon-only"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-line-disabled": {
-      name: "tabs-line-disabled",
-      filePath: "examples/base/tabs-line-disabled.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tabs-line-disabled")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-line-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-line-with-content": {
-      name: "tabs-line-with-content",
-      filePath: "examples/base/tabs-line-with-content.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tabs-line-with-content")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-line-with-content"
+          ) || "tabs-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9681,32 +9016,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "tabs-multiple": {
-      name: "tabs-multiple",
-      filePath: "examples/base/tabs-multiple.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tabs-multiple")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-multiple"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-variants-comparison": {
-      name: "tabs-variants-comparison",
-      filePath: "examples/base/tabs-variants-comparison.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tabs-variants-comparison")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-variants-comparison"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "tabs-vertical": {
       name: "tabs-vertical",
       filePath: "examples/base/tabs-vertical.tsx",
@@ -9720,68 +9029,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "tabs-with-content": {
-      name: "tabs-with-content",
-      filePath: "examples/base/tabs-with-content.tsx",
+    "textarea-button": {
+      name: "textarea-button",
+      filePath: "examples/base/textarea-button.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/tabs-with-content")
+        const mod = await import("./base/textarea-button")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-with-content"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-with-dropdown": {
-      name: "tabs-with-dropdown",
-      filePath: "examples/base/tabs-with-dropdown.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tabs-with-dropdown")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-with-dropdown"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-with-icons": {
-      name: "tabs-with-icons",
-      filePath: "examples/base/tabs-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tabs-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tabs-with-input-and-button": {
-      name: "tabs-with-input-and-button",
-      filePath: "examples/base/tabs-with-input-and-button.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tabs-with-input-and-button")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tabs-with-input-and-button"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-basic": {
-      name: "textarea-basic",
-      filePath: "examples/base/textarea-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/textarea-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-basic"
+          ) || "textarea-button"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9811,16 +9068,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "textarea-fields": {
-      name: "textarea-fields",
-      filePath: "examples/base/textarea-fields.tsx",
+    "textarea-field": {
+      name: "textarea-field",
+      filePath: "examples/base/textarea-field.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/textarea-fields")
+        const mod = await import("./base/textarea-field")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-fields"
+          ) || "textarea-field"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9834,71 +9091,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "textarea-invalid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-with-button": {
-      name: "textarea-with-button",
-      filePath: "examples/base/textarea-with-button.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/textarea-with-button")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-with-button"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-with-description": {
-      name: "textarea-with-description",
-      filePath: "examples/base/textarea-with-description.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/textarea-with-description")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-with-description"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-with-label": {
-      name: "textarea-with-label",
-      filePath: "examples/base/textarea-with-label.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/textarea-with-label")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-with-label"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "textarea-with-text": {
-      name: "textarea-with-text",
-      filePath: "examples/base/textarea-with-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/textarea-with-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "textarea-with-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-basic": {
-      name: "toggle-basic",
-      filePath: "examples/base/toggle-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-basic"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9928,32 +9120,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-group-basic": {
-      name: "toggle-group-basic",
-      filePath: "examples/base/toggle-group-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-date-range": {
-      name: "toggle-group-date-range",
-      filePath: "examples/base/toggle-group-date-range.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-date-range")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-date-range"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "toggle-group-demo": {
       name: "toggle-group-demo",
       filePath: "examples/base/toggle-group-demo.tsx",
@@ -9980,45 +9146,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-group-filter": {
-      name: "toggle-group-filter",
-      filePath: "examples/base/toggle-group-filter.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-filter")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-filter"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-lg": {
-      name: "toggle-group-lg",
-      filePath: "examples/base/toggle-group-lg.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-lg")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-lg"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-outline-with-icons": {
-      name: "toggle-group-outline-with-icons",
-      filePath: "examples/base/toggle-group-outline-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-outline-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-outline-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "toggle-group-outline": {
       name: "toggle-group-outline",
       filePath: "examples/base/toggle-group-outline.tsx",
@@ -10029,19 +9156,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "toggle-group-outline"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-single": {
-      name: "toggle-group-single",
-      filePath: "examples/base/toggle-group-single.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-single")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-single"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -10058,32 +9172,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-group-sm": {
-      name: "toggle-group-sm",
-      filePath: "examples/base/toggle-group-sm.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-sm")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-sm"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-sort": {
-      name: "toggle-group-sort",
-      filePath: "examples/base/toggle-group-sort.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-sort")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-sort"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "toggle-group-spacing": {
       name: "toggle-group-spacing",
       filePath: "examples/base/toggle-group-spacing.tsx",
@@ -10097,47 +9185,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-group-vertical-outline-with-icons": {
-      name: "toggle-group-vertical-outline-with-icons",
-      filePath: "examples/base/toggle-group-vertical-outline-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import(
-          "./base/toggle-group-vertical-outline-with-icons"
-        )
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-vertical-outline-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-vertical-outline": {
-      name: "toggle-group-vertical-outline",
-      filePath: "examples/base/toggle-group-vertical-outline.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-vertical-outline")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-vertical-outline"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-vertical-with-spacing": {
-      name: "toggle-group-vertical-with-spacing",
-      filePath: "examples/base/toggle-group-vertical-with-spacing.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-vertical-with-spacing")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-vertical-with-spacing"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "toggle-group-vertical": {
       name: "toggle-group-vertical",
       filePath: "examples/base/toggle-group-vertical.tsx",
@@ -10148,45 +9195,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "toggle-group-vertical"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-with-icons": {
-      name: "toggle-group-with-icons",
-      filePath: "examples/base/toggle-group-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-group-with-input-and-select": {
-      name: "toggle-group-with-input-and-select",
-      filePath: "examples/base/toggle-group-with-input-and-select.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-group-with-input-and-select")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-group-with-input-and-select"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-lg": {
-      name: "toggle-lg",
-      filePath: "examples/base/toggle-lg.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-lg")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-lg"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -10216,94 +9224,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "toggle-sm": {
-      name: "toggle-sm",
-      filePath: "examples/base/toggle-sm.tsx",
+    "toggle-text": {
+      name: "toggle-text",
+      filePath: "examples/base/toggle-text.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/toggle-sm")
+        const mod = await import("./base/toggle-text")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-sm"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-button-icon-text": {
-      name: "toggle-with-button-icon-text",
-      filePath: "examples/base/toggle-with-button-icon-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-with-button-icon-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-button-icon-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-button-icon": {
-      name: "toggle-with-button-icon",
-      filePath: "examples/base/toggle-with-button-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-with-button-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-button-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-button-text": {
-      name: "toggle-with-button-text",
-      filePath: "examples/base/toggle-with-button-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-with-button-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-button-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-icon": {
-      name: "toggle-with-icon",
-      filePath: "examples/base/toggle-with-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-with-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "toggle-with-text": {
-      name: "toggle-with-text",
-      filePath: "examples/base/toggle-with-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/toggle-with-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "toggle-with-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-basic": {
-      name: "tooltip-basic",
-      filePath: "examples/base/tooltip-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tooltip-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-basic"
+          ) || "toggle-text"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -10333,42 +9263,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "tooltip-formatted": {
-      name: "tooltip-formatted",
-      filePath: "examples/base/tooltip-formatted.tsx",
+    "tooltip-keyboard": {
+      name: "tooltip-keyboard",
+      filePath: "examples/base/tooltip-keyboard.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/tooltip-formatted")
+        const mod = await import("./base/tooltip-keyboard")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-formatted"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-long-content": {
-      name: "tooltip-long-content",
-      filePath: "examples/base/tooltip-long-content.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tooltip-long-content")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-long-content"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-on-link": {
-      name: "tooltip-on-link",
-      filePath: "examples/base/tooltip-on-link.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tooltip-on-link")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-on-link"
+          ) || "tooltip-keyboard"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -10382,32 +9286,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "tooltip-sides"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-with-icon": {
-      name: "tooltip-with-icon",
-      filePath: "examples/base/tooltip-with-icon.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tooltip-with-icon")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-with-icon"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "tooltip-with-keyboard": {
-      name: "tooltip-with-keyboard",
-      filePath: "examples/base/tooltip-with-keyboard.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/tooltip-with-keyboard")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "tooltip-with-keyboard"
         return { default: mod.default || mod[exportName] }
       }),
     },
