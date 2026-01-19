@@ -3294,19 +3294,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "native-select-basic": {
-      name: "native-select-basic",
-      filePath: "examples/radix/native-select-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/native-select-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "native-select-demo": {
       name: "native-select-demo",
       filePath: "examples/radix/native-select-demo.tsx",
@@ -3333,19 +3320,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "native-select-fields": {
-      name: "native-select-fields",
-      filePath: "examples/radix/native-select-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/native-select-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-fields"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "native-select-groups": {
       name: "native-select-groups",
       filePath: "examples/radix/native-select-groups.tsx",
@@ -3369,45 +3343,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "native-select-invalid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "native-select-sizes": {
-      name: "native-select-sizes",
-      filePath: "examples/radix/native-select-sizes.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/native-select-sizes")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-sizes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "native-select-with-field": {
-      name: "native-select-with-field",
-      filePath: "examples/radix/native-select-with-field.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/native-select-with-field")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-with-field"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "native-select-with-groups": {
-      name: "native-select-with-groups",
-      filePath: "examples/radix/native-select-with-groups.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/native-select-with-groups")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-with-groups"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9109,19 +9044,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "native-select-basic": {
-      name: "native-select-basic",
-      filePath: "examples/base/native-select-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/native-select-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "native-select-demo": {
       name: "native-select-demo",
       filePath: "examples/base/native-select-demo.tsx",
@@ -9148,19 +9070,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "native-select-fields": {
-      name: "native-select-fields",
-      filePath: "examples/base/native-select-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/native-select-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-fields"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "native-select-groups": {
       name: "native-select-groups",
       filePath: "examples/base/native-select-groups.tsx",
@@ -9184,45 +9093,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "native-select-invalid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "native-select-sizes": {
-      name: "native-select-sizes",
-      filePath: "examples/base/native-select-sizes.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/native-select-sizes")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-sizes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "native-select-with-field": {
-      name: "native-select-with-field",
-      filePath: "examples/base/native-select-with-field.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/native-select-with-field")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-with-field"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "native-select-with-groups": {
-      name: "native-select-with-groups",
-      filePath: "examples/base/native-select-with-groups.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/native-select-with-groups")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "native-select-with-groups"
         return { default: mod.default || mod[exportName] }
       }),
     },

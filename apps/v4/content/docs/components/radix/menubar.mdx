@@ -58,9 +58,9 @@ npm install radix-ui
 import {
   Menubar,
   MenubarContent,
+  MenubarGroup,
   MenubarItem,
   MenubarMenu,
-  MenubarGroup,
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
@@ -72,11 +72,11 @@ import {
   <MenubarMenu>
     <MenubarTrigger>File</MenubarTrigger>
     <MenubarContent>
-    <MenubarGroup>
-      <MenubarItem>
-        New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-      </MenubarItem>
-      <MenubarItem>New Window</MenubarItem>
+      <MenubarGroup>
+        <MenubarItem>
+          New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>New Window</MenubarItem>
       </MenubarGroup>
       <MenubarSeparator />
       <MenubarGroup>
