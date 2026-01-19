@@ -302,7 +302,7 @@
   {
     "name": "@motion-primitives",
     "homepage": "https://www.motion-primitives.com",
-    "url": "https://motion-primitives.com/c/registry.json",
+    "url": "https://motion-primitives.com/c/{name}.json",
     "description": "Beautifully designed motions components. Easy copy-paste. Customizable. Open Source. Built for engineers and designers."
   },
   {
@@ -469,8 +469,8 @@
   },
   {
     "name": "@shadcraft",
-    "homepage": "https://shadcraft-free.vercel.app",
-    "url": "https://shadcraft-free.vercel.app/r/{name}.json",
+    "homepage": "https://free.shadcraft.com",
+    "url": "https://free.shadcraft.com/r/{name}.json",
     "description": "A collection of polished shadcn/ui components and marketing blocks built to production standards. Fast to use, easy to extend, and ready for any modern web project."
   },
   {
