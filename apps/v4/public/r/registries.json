@@ -302,7 +302,7 @@
   {
     "name": "@motion-primitives",
     "homepage": "https://www.motion-primitives.com",
-    "url": "https://motion-primitives.com/c/registry.json",
+    "url": "https://motion-primitives.com/c/{name}.json",
     "description": "Beautifully designed motions components. Easy copy-paste. Customizable. Open Source. Built for engineers and designers."
   },
   {
