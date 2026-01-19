@@ -9,10 +9,10 @@ import {
   SelectValue,
 } from "@/examples/radix/ui/select"
 
-export function SelectWithGroups() {
+export function SelectGroups() {
   return (
     <Select>
-      <SelectTrigger>
+      <SelectTrigger className="w-full max-w-48">
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>

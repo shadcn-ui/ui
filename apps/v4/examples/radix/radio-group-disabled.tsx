@@ -3,11 +3,11 @@ import { RadioGroup, RadioGroupItem } from "@/examples/radix/ui/radio-group"
 
 export function RadioGroupDisabled() {
   return (
-    <RadioGroup defaultValue="option2" disabled>
-      <Field orientation="horizontal">
-        <RadioGroupItem value="option1" id="disabled-1" />
+    <RadioGroup defaultValue="option2" className="w-fit">
+      <Field orientation="horizontal" data-disabled>
+        <RadioGroupItem value="option1" id="disabled-1" disabled />
         <FieldLabel htmlFor="disabled-1" className="font-normal">
-          Option 1
+          Disabled
         </FieldLabel>
       </Field>
       <Field orientation="horizontal">

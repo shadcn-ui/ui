@@ -2,20 +2,17 @@ import { Separator } from "@/examples/radix/ui/separator"
 
 export default function SeparatorDemo() {
   return (
-    <div>
-      <div className="space-y-1">
-        <h4 className="text-sm leading-none font-medium">Radix Primitives</h4>
-        <p className="text-muted-foreground text-sm">
-          An open-source UI component library.
-        </p>
+    <div className="flex max-w-sm flex-col gap-4 text-sm">
+      <div className="flex flex-col gap-1.5">
+        <div className="leading-none font-medium">shadcn/ui</div>
+        <div className="text-muted-foreground">
+          The Foundation for your Design System
+        </div>
       </div>
-      <Separator className="my-4" />
-      <div className="flex h-5 items-center space-x-4 text-sm">
-        <div>Blog</div>
-        <Separator orientation="vertical" />
-        <div>Docs</div>
-        <Separator orientation="vertical" />
-        <div>Source</div>
+      <Separator />
+      <div>
+        A set of beautifully designed components that you can customize, extend,
+        and build on.
       </div>
     </div>
   )

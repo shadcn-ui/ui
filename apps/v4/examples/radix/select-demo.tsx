@@ -1,4 +1,3 @@
-import * as React from "react"
 import {
   Select,
   SelectContent,
@@ -12,7 +11,7 @@ import {
 export function SelectDemo() {
   return (
     <Select>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-full max-w-48">
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>

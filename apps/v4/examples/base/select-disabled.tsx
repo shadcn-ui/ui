@@ -18,7 +18,7 @@ export function SelectDisabled() {
   ]
   return (
     <Select items={items} disabled>
-      <SelectTrigger>
+      <SelectTrigger className="w-full max-w-48">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

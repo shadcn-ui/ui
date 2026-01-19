@@ -9,11 +9,7 @@ links:
   api: https://base-ui.com/react/components/select#api-reference
 ---
 
-<ComponentPreview
-  styleName="base-nova"
-  name="select-demo"
-  description="A select component with a list of options."
-/>
+<ComponentPreview styleName="base-nova" name="select-demo" />
 
 ## Installation
 
@@ -84,10 +80,43 @@ import {
 
 ## Examples
 
+### Align Item With Trigger
+
+Use `alignItemWithTrigger` on `SelectContent` to control whether the selected item aligns with the trigger. When `true` (default), the popup positions so the selected item appears over the trigger. When `false`, the popup aligns to the trigger edge.
+
+<ComponentPreview styleName="base-nova" name="select-align-item" />
+
+### Groups
+
+Use `SelectGroup`, `SelectLabel`, and `SelectSeparator` to organize items.
+
+<ComponentPreview styleName="base-nova" name="select-groups" />
+
 ### Scrollable
 
-<ComponentPreview
-  styleName="base-nova"
-  name="select-scrollable"
-  description="A select component with a scrollable list of options."
-/>
+A select with many items that scrolls.
+
+<ComponentPreview styleName="base-nova" name="select-scrollable" />
+
+### Disabled
+
+<ComponentPreview styleName="base-nova" name="select-disabled" />
+
+### Invalid
+
+Add the `data-invalid` attribute to the `Field` component and the `aria-invalid` attribute to the `SelectTrigger` component to show an error state.
+
+```tsx showLineNumbers /data-invalid/ /aria-invalid/
+<Field data-invalid>
+  <FieldLabel>Fruit</FieldLabel>
+  <SelectTrigger aria-invalid>
+    <SelectValue />
+  </SelectTrigger>
+</Field>
+```
+
+<ComponentPreview styleName="base-nova" name="select-invalid" />
+
+## API Reference
+
+See the [Base UI Select](https://base-ui.com/react/components/select#api-reference) documentation.

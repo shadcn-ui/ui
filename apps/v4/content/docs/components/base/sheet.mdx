@@ -4,15 +4,11 @@ description: Extends the Dialog component to display content that complements th
 base: base
 component: true
 links:
-  doc: https://base-ui.com/react/components/sheet
-  api: https://base-ui.com/react/components/sheet#api-reference
+  doc: https://base-ui.com/react/components/dialog
+  api: https://base-ui.com/react/components/dialog#api-reference
 ---
 
-<ComponentPreview
-  styleName="base-nova"
-  name="sheet-demo"
-  description="A sheet component."
-/>
+<ComponentPreview styleName="base-nova" name="sheet-demo" />
 
 ## Installation
 
@@ -56,13 +52,15 @@ npm install @base-ui/react
 
 </CodeTabs>
 
-### Usage
+## Usage
 
 ```tsx showLineNumbers
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -75,10 +73,7 @@ import {
   <SheetContent>
     <SheetHeader>
       <SheetTitle>Are you absolutely sure?</SheetTitle>
-      <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </SheetDescription>
+      <SheetDescription>This action cannot be undone.</SheetDescription>
     </SheetHeader>
   </SheetContent>
 </Sheet>
@@ -88,23 +83,16 @@ import {
 
 ### Side
 
-Use the `side` property to `<SheetContent />` to indicate the edge of the screen where the component will appear. The values can be `top`, `right`, `bottom` or `left`.
+Use the `side` prop on `SheetContent` to set the edge of the screen where the sheet appears. Values are `top`, `right`, `bottom`, or `left`.
 
-### Size
+<ComponentPreview styleName="base-nova" name="sheet-side" />
 
-You can adjust the size of the sheet using CSS classes:
+### No Close Button
 
-```tsx showLineNumbers {3}
-<Sheet>
-  <SheetTrigger>Open</SheetTrigger>
-  <SheetContent className="w-[400px] sm:w-[540px]">
-    <SheetHeader>
-      <SheetTitle>Are you absolutely sure?</SheetTitle>
-      <SheetDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
-      </SheetDescription>
-    </SheetHeader>
-  </SheetContent>
-</Sheet>
-```
+Use `showCloseButton={false}` on `SheetContent` to hide the close button.
+
+<ComponentPreview styleName="base-nova" name="sheet-no-close-button" />
+
+## API Reference
+
+See the [Base UI Dialog](https://base-ui.com/react/components/dialog#api-reference) documentation.

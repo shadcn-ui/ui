@@ -20,7 +20,7 @@ const items = [
 export function SelectDemo() {
   return (
     <Select items={items}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-full max-w-48">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

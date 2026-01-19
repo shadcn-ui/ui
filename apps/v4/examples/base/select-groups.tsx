@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/examples/base/ui/select"
 
-export function SelectWithGroups() {
+export function SelectGroups() {
   const fruits = [
     { label: "Apple", value: "apple" },
     { label: "Banana", value: "banana" },
@@ -27,7 +27,7 @@ export function SelectWithGroups() {
   ]
   return (
     <Select items={allItems}>
-      <SelectTrigger>
+      <SelectTrigger className="w-full max-w-48">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

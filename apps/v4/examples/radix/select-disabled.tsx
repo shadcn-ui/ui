@@ -10,8 +10,8 @@ import {
 export function SelectDisabled() {
   return (
     <Select disabled>
-      <SelectTrigger>
-        <SelectValue placeholder="Disabled" />
+      <SelectTrigger className="w-full max-w-48">
+        <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>

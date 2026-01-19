@@ -1,8 +1,4 @@
-"use client"
-
 import { Button } from "@/examples/base/ui/button"
-import { Input } from "@/examples/base/ui/input"
-import { Label } from "@/examples/base/ui/label"
 import {
   Sheet,
   SheetClose,
@@ -16,17 +12,20 @@ import {
 
 const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
 
-type SheetSide = (typeof SHEET_SIDES)[number]
-
 export default function SheetSide() {
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="flex flex-wrap gap-2">
       {SHEET_SIDES.map((side) => (
         <Sheet key={side}>
-          <SheetTrigger render={<Button variant="outline" />}>
+          <SheetTrigger
+            render={<Button variant="outline" className="capitalize" />}
+          >
             {side}
           </SheetTrigger>
-          <SheetContent side={side}>
+          <SheetContent
+            side={side}
+            className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
+          >
             <SheetHeader>
               <SheetTitle>Edit profile</SheetTitle>
               <SheetDescription>
@@ -34,23 +33,24 @@ export default function SheetSide() {
                 done.
               </SheetDescription>
             </SheetHeader>
-            <div className="grid gap-4 py-4">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="name" className="text-right">
-                  Name
-                </Label>
-                <Input id="name" value="Pedro Duarte" className="col-span-3" />
-              </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="username" className="text-right">
-                  Username
-                </Label>
-                <Input id="username" value="@peduarte" className="col-span-3" />
-              </div>
+            <div className="no-scrollbar overflow-y-auto px-4">
+              {Array.from({ length: 10 }).map((_, index) => (
+                <p key={index} className="mb-2 leading-relaxed">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </p>
+              ))}
             </div>
             <SheetFooter>
-              <SheetClose render={<Button type="submit" />}>
-                Save changes
+              <Button type="submit">Save changes</Button>
+              <SheetClose render={<Button variant="outline" />}>
+                Cancel
               </SheetClose>
             </SheetFooter>
           </SheetContent>

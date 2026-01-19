@@ -8,11 +8,7 @@ links:
   api: https://base-ui.com/react/components/separator#api-reference
 ---
 
-<ComponentPreview
-  styleName="base-nova"
-  name="separator-demo"
-  description="A separator component."
-/>
+<ComponentPreview styleName="base-nova" name="separator-demo" />
 
 ## Installation
 
@@ -33,6 +29,7 @@ npx shadcn@latest add separator
 <TabsContent value="manual">
 
 <Steps className="mb-0 pt-2">
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -64,3 +61,27 @@ import { Separator } from "@/components/ui/separator"
 ```tsx showLineNumbers
 <Separator />
 ```
+
+## Examples
+
+### Vertical
+
+Use `orientation="vertical"` for a vertical separator.
+
+<ComponentPreview styleName="base-nova" name="separator-vertical" />
+
+### Menu
+
+Vertical separators between menu items with descriptions.
+
+<ComponentPreview styleName="base-nova" name="separator-menu" />
+
+### List
+
+Horizontal separators between list items.
+
+<ComponentPreview styleName="base-nova" name="separator-list" />
+
+## API Reference
+
+See the [Base UI Separator](https://base-ui.com/react/components/separator#api-reference) documentation.

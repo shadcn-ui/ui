@@ -8,11 +8,7 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/separator#api-reference
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="separator-demo"
-  description="A separator component."
-/>
+<ComponentPreview styleName="radix-nova" name="separator-demo" />
 
 ## Installation
 
@@ -33,6 +29,7 @@ npx shadcn@latest add separator
 <TabsContent value="manual">
 
 <Steps className="mb-0 pt-2">
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -64,3 +61,27 @@ import { Separator } from "@/components/ui/separator"
 ```tsx showLineNumbers
 <Separator />
 ```
+
+## Examples
+
+### Vertical
+
+Use `orientation="vertical"` for a vertical separator.
+
+<ComponentPreview styleName="radix-nova" name="separator-vertical" />
+
+### Menu
+
+Vertical separators between menu items with descriptions.
+
+<ComponentPreview styleName="radix-nova" name="separator-menu" />
+
+### List
+
+Horizontal separators between list items.
+
+<ComponentPreview styleName="radix-nova" name="separator-list" />
+
+## API Reference
+
+See the [Radix UI Separator](https://www.radix-ui.com/docs/primitives/components/separator#api-reference) documentation.

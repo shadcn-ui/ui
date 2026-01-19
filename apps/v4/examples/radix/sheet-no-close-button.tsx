@@ -8,18 +8,18 @@ import {
   SheetTrigger,
 } from "@/examples/radix/ui/sheet"
 
-export function SheetNoCloseButton() {
+export default function SheetNoCloseButton() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">No Close Button</Button>
+        <Button variant="outline">Open Sheet</Button>
       </SheetTrigger>
       <SheetContent showCloseButton={false}>
         <SheetHeader>
           <SheetTitle>No Close Button</SheetTitle>
           <SheetDescription>
             This sheet doesn&apos;t have a close button in the top-right corner.
-            You can only close it using the button below.
+            Click outside to close.
           </SheetDescription>
         </SheetHeader>
       </SheetContent>

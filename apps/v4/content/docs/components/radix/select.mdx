@@ -9,11 +9,7 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/select#api-reference
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="select-demo"
-  description="A select component with a list of options."
-/>
+<ComponentPreview styleName="radix-nova" name="select-demo" />
 
 ## Installation
 
@@ -84,10 +80,43 @@ import {
 
 ## Examples
 
+### Align Item With Trigger
+
+Use the `position` prop on `SelectContent` to control alignment. When `position="item-aligned"` (default), the popup positions so the selected item appears over the trigger. When `position="popper"`, the popup aligns to the trigger edge.
+
+<ComponentPreview styleName="radix-nova" name="select-align-item" />
+
+### Groups
+
+Use `SelectGroup`, `SelectLabel`, and `SelectSeparator` to organize items.
+
+<ComponentPreview styleName="radix-nova" name="select-groups" />
+
 ### Scrollable
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="select-scrollable"
-  description="A select component with a scrollable list of options."
-/>
+A select with many items that scrolls.
+
+<ComponentPreview styleName="radix-nova" name="select-scrollable" />
+
+### Disabled
+
+<ComponentPreview styleName="radix-nova" name="select-disabled" />
+
+### Invalid
+
+Add the `data-invalid` attribute to the `Field` component and the `aria-invalid` attribute to the `SelectTrigger` component to show an error state.
+
+```tsx showLineNumbers /data-invalid/ /aria-invalid/
+<Field data-invalid>
+  <FieldLabel>Fruit</FieldLabel>
+  <SelectTrigger aria-invalid>
+    <SelectValue />
+  </SelectTrigger>
+</Field>
+```
+
+<ComponentPreview styleName="radix-nova" name="select-invalid" />
+
+## API Reference
+
+See the [Radix UI Select](https://www.radix-ui.com/docs/primitives/components/select#api-reference) documentation.

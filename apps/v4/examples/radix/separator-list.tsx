@@ -1,8 +1,8 @@
-import { Separator } from "@/examples/base/ui/separator"
+import { Separator } from "@/examples/radix/ui/separator"
 
-export function SeparatorInList() {
+export function SeparatorList() {
   return (
-    <div className="style-lyra:text-xs/relaxed flex flex-col gap-2 text-sm">
+    <div className="flex w-full max-w-sm flex-col gap-2 text-sm">
       <dl className="flex items-center justify-between">
         <dt>Item 1</dt>
         <dd className="text-muted-foreground">Value 1</dd>
