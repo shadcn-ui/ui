@@ -147,7 +147,7 @@ export const create = new Command()
         baseColor = url.searchParams.get("baseColor") ?? "neutral"
       } else {
         // User selected a preset by name.
-        initUrl = buildInitUrl(presetResult)
+        initUrl = buildInitUrl(presetResult, template as Template)
         baseColor = presetResult.baseColor
       }
 
@@ -221,7 +221,7 @@ export const create = new Command()
     }
   })
 
-function buildInitUrl(preset: Preset) {
+function buildInitUrl(preset: Preset, template: Template) {
   const params = new URLSearchParams({
     base: preset.base,
     style: preset.style,
@@ -232,6 +232,7 @@ function buildInitUrl(preset: Preset) {
     menuAccent: preset.menuAccent,
     menuColor: preset.menuColor,
     radius: preset.radius,
+    template,
   })
 
   return `${getShadcnInitUrl()}?${params.toString()}`
