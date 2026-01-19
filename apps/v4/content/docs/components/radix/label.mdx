@@ -8,11 +8,12 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/label#api-reference
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="label-demo"
-  description="A label"
-/>
+<ComponentPreview styleName="radix-nova" name="label-demo" />
+
+<Callout>
+  For form fields, use the [Field](/docs/components/radix/field) component which
+  includes built-in label, description, and error handling.
+</Callout>
 
 ## Installation
 
@@ -65,3 +66,25 @@ import { Label } from "@/components/ui/label"
 ```tsx
 <Label htmlFor="email">Your email address</Label>
 ```
+
+## Label in Field
+
+For form fields, use the [Field](/docs/components/radix/field) component which
+includes built-in `FieldLabel`, `FieldDescription`, and `FieldError` components.
+
+```tsx
+<Field>
+  <FieldLabel htmlFor="email">Your email address</FieldLabel>
+  <Input id="email" />
+</Field>
+```
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="field-demo"
+  previewClassName="h-[44rem]"
+/>
+
+## API Reference
+
+See the [Radix UI Label](https://www.radix-ui.com/docs/primitives/components/label#api-reference) documentation for more information.

@@ -3138,32 +3138,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "kbd-arrow-keys": {
-      name: "kbd-arrow-keys",
-      filePath: "examples/radix/kbd-arrow-keys.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/kbd-arrow-keys")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-arrow-keys"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-basic": {
-      name: "kbd-basic",
-      filePath: "examples/radix/kbd-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/kbd-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "kbd-button": {
       name: "kbd-button",
       filePath: "examples/radix/kbd-button.tsx",
@@ -3190,19 +3164,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "kbd-group-example": {
-      name: "kbd-group-example",
-      filePath: "examples/radix/kbd-group-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/kbd-group-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-group-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "kbd-group": {
       name: "kbd-group",
       filePath: "examples/radix/kbd-group.tsx",
@@ -3213,32 +3174,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "kbd-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-in-input-group": {
-      name: "kbd-in-input-group",
-      filePath: "examples/radix/kbd-in-input-group.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/kbd-in-input-group")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-in-input-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-in-tooltip": {
-      name: "kbd-in-tooltip",
-      filePath: "examples/radix/kbd-in-tooltip.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/kbd-in-tooltip")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-in-tooltip"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3255,19 +3190,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "kbd-modifier-keys": {
-      name: "kbd-modifier-keys",
-      filePath: "examples/radix/kbd-modifier-keys.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/kbd-modifier-keys")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-modifier-keys"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "kbd-tooltip": {
       name: "kbd-tooltip",
       filePath: "examples/radix/kbd-tooltip.tsx",
@@ -3281,45 +3203,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "kbd-with-icons-and-text": {
-      name: "kbd-with-icons-and-text",
-      filePath: "examples/radix/kbd-with-icons-and-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/kbd-with-icons-and-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-with-icons-and-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-with-icons": {
-      name: "kbd-with-icons",
-      filePath: "examples/radix/kbd-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/kbd-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-with-samp": {
-      name: "kbd-with-samp",
-      filePath: "examples/radix/kbd-with-samp.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/kbd-with-samp")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-with-samp"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "label-demo": {
       name: "label-demo",
       filePath: "examples/radix/label-demo.tsx",
@@ -3330,58 +3213,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "label-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "label-disabled": {
-      name: "label-disabled",
-      filePath: "examples/radix/label-disabled.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/label-disabled")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "label-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "label-with-checkbox": {
-      name: "label-with-checkbox",
-      filePath: "examples/radix/label-with-checkbox.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/label-with-checkbox")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "label-with-checkbox"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "label-with-input": {
-      name: "label-with-input",
-      filePath: "examples/radix/label-with-input.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/label-with-input")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "label-with-input"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "label-with-textarea": {
-      name: "label-with-textarea",
-      filePath: "examples/radix/label-with-textarea.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/label-with-textarea")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "label-with-textarea"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9200,32 +9031,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "kbd-arrow-keys": {
-      name: "kbd-arrow-keys",
-      filePath: "examples/base/kbd-arrow-keys.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/kbd-arrow-keys")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-arrow-keys"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-basic": {
-      name: "kbd-basic",
-      filePath: "examples/base/kbd-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/kbd-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "kbd-button": {
       name: "kbd-button",
       filePath: "examples/base/kbd-button.tsx",
@@ -9252,19 +9057,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "kbd-group-example": {
-      name: "kbd-group-example",
-      filePath: "examples/base/kbd-group-example.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/kbd-group-example")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-group-example"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "kbd-group": {
       name: "kbd-group",
       filePath: "examples/base/kbd-group.tsx",
@@ -9275,32 +9067,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "kbd-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-in-input-group": {
-      name: "kbd-in-input-group",
-      filePath: "examples/base/kbd-in-input-group.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/kbd-in-input-group")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-in-input-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-in-tooltip": {
-      name: "kbd-in-tooltip",
-      filePath: "examples/base/kbd-in-tooltip.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/kbd-in-tooltip")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-in-tooltip"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9317,19 +9083,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "kbd-modifier-keys": {
-      name: "kbd-modifier-keys",
-      filePath: "examples/base/kbd-modifier-keys.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/kbd-modifier-keys")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-modifier-keys"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "kbd-tooltip": {
       name: "kbd-tooltip",
       filePath: "examples/base/kbd-tooltip.tsx",
@@ -9343,45 +9096,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "kbd-with-icons-and-text": {
-      name: "kbd-with-icons-and-text",
-      filePath: "examples/base/kbd-with-icons-and-text.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/kbd-with-icons-and-text")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-with-icons-and-text"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-with-icons": {
-      name: "kbd-with-icons",
-      filePath: "examples/base/kbd-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/kbd-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "kbd-with-samp": {
-      name: "kbd-with-samp",
-      filePath: "examples/base/kbd-with-samp.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/kbd-with-samp")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "kbd-with-samp"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "label-demo": {
       name: "label-demo",
       filePath: "examples/base/label-demo.tsx",
@@ -9392,58 +9106,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "label-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "label-disabled": {
-      name: "label-disabled",
-      filePath: "examples/base/label-disabled.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/label-disabled")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "label-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "label-with-checkbox": {
-      name: "label-with-checkbox",
-      filePath: "examples/base/label-with-checkbox.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/label-with-checkbox")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "label-with-checkbox"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "label-with-input": {
-      name: "label-with-input",
-      filePath: "examples/base/label-with-input.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/label-with-input")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "label-with-input"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "label-with-textarea": {
-      name: "label-with-textarea",
-      filePath: "examples/base/label-with-textarea.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/label-with-textarea")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "label-with-textarea"
         return { default: mod.default || mod[exportName] }
       }),
     },

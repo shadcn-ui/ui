@@ -8,11 +8,12 @@ links:
   api: https://base-ui.com/react/components/label#api-reference
 ---
 
-<ComponentPreview
-  styleName="base-nova"
-  name="label-demo"
-  description="A label"
-/>
+<ComponentPreview styleName="base-nova" name="label-demo" />
+
+<Callout>
+  For form fields, use the [Field](/docs/components/base/field) component which
+  includes built-in label, description, and error handling.
+</Callout>
 
 ## Installation
 
@@ -65,3 +66,25 @@ import { Label } from "@/components/ui/label"
 ```tsx
 <Label htmlFor="email">Your email address</Label>
 ```
+
+## Label in Field
+
+For form fields, use the [Field](/docs/components/base/field) component which
+includes built-in `FieldLabel`, `FieldDescription`, and `FieldError` components.
+
+```tsx
+<Field>
+  <FieldLabel htmlFor="email">Your email address</FieldLabel>
+  <Input id="email" />
+</Field>
+```
+
+<ComponentPreview
+  styleName="base-nova"
+  name="field-demo"
+  previewClassName="h-[44rem]"
+/>
+
+## API Reference
+
+See the [Base UI Label](https://base-ui.com/react/components/label#api-reference) documentation for more information.

@@ -12,20 +12,20 @@ export default function KbdTooltip() {
     <div className="flex flex-wrap gap-4">
       <ButtonGroup>
         <Tooltip>
-          <TooltipTrigger render={<Button size="sm" variant="outline" />}>
+          <TooltipTrigger render={<Button variant="outline" />}>
             Save
           </TooltipTrigger>
-          <TooltipContent>
+          <TooltipContent className="pr-1.5">
             <div className="flex items-center gap-2">
               Save Changes <Kbd>S</Kbd>
             </div>
           </TooltipContent>
         </Tooltip>
         <Tooltip>
-          <TooltipTrigger render={<Button size="sm" variant="outline" />}>
+          <TooltipTrigger render={<Button variant="outline" />}>
             Print
           </TooltipTrigger>
-          <TooltipContent>
+          <TooltipContent className="pr-1.5">
             <div className="flex items-center gap-2">
               Print Document{" "}
               <KbdGroup>

@@ -13,11 +13,9 @@ export default function KbdTooltip() {
       <ButtonGroup>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button size="sm" variant="outline">
-              Save
-            </Button>
+            <Button variant="outline">Save</Button>
           </TooltipTrigger>
-          <TooltipContent>
+          <TooltipContent className="pr-1.5">
             <div className="flex items-center gap-2">
               Save Changes <Kbd>S</Kbd>
             </div>
@@ -25,11 +23,9 @@ export default function KbdTooltip() {
         </Tooltip>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button size="sm" variant="outline">
-              Print
-            </Button>
+            <Button variant="outline">Print</Button>
           </TooltipTrigger>
-          <TooltipContent>
+          <TooltipContent className="pr-1.5">
             <div className="flex items-center gap-2">
               Print Document{" "}
               <KbdGroup>
