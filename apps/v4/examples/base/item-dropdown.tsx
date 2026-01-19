@@ -38,36 +38,32 @@ const people = [
 
 export function ItemDropdown() {
   return (
-    <div className="flex min-h-64 w-full max-w-md flex-col items-center gap-6">
-      <DropdownMenu>
-        <DropdownMenuTrigger
-          render={<Button variant="outline" size="sm" className="w-fit" />}
-        >
-          Select <ChevronDownIcon />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-72 [--radius:0.65rem]" align="end">
-          <DropdownMenuGroup>
-            {people.map((person) => (
-              <DropdownMenuItem key={person.username} className="p-0">
-                <Item size="sm" className="w-full p-2">
-                  <ItemMedia>
-                    <Avatar className="size-8">
-                      <AvatarImage src={person.avatar} className="grayscale" />
-                      <AvatarFallback>
-                        {person.username.charAt(0)}
-                      </AvatarFallback>
-                    </Avatar>
-                  </ItemMedia>
-                  <ItemContent className="gap-0.5">
-                    <ItemTitle>{person.username}</ItemTitle>
-                    <ItemDescription>{person.email}</ItemDescription>
-                  </ItemContent>
-                </Item>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
+        Select <ChevronDownIcon />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48" align="end">
+        <DropdownMenuGroup>
+          {people.map((person) => (
+            <DropdownMenuItem key={person.username}>
+              <Item size="xs" className="w-full p-2">
+                <ItemMedia>
+                  <Avatar className="size-[--spacing(6.5)]">
+                    <AvatarImage src={person.avatar} className="grayscale" />
+                    <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                </ItemMedia>
+                <ItemContent className="gap-0">
+                  <ItemTitle>{person.username}</ItemTitle>
+                  <ItemDescription className="leading-none">
+                    {person.email}
+                  </ItemDescription>
+                </ItemContent>
+              </Item>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

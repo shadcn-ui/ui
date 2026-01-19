@@ -1,53 +1,47 @@
-import { Button } from "@/examples/base/ui/button"
 import {
   Item,
-  ItemActions,
   ItemContent,
   ItemDescription,
+  ItemMedia,
   ItemTitle,
 } from "@/examples/base/ui/item"
+import { InboxIcon } from "lucide-react"
 
 export function ItemVariant() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex w-full max-w-md flex-col gap-6">
       <Item>
+        <ItemMedia variant="icon">
+          <InboxIcon />
+        </ItemMedia>
         <ItemContent>
           <ItemTitle>Default Variant</ItemTitle>
           <ItemDescription>
-            Standard styling with subtle background and borders.
+            Transparent background with no border.
           </ItemDescription>
         </ItemContent>
-        <ItemActions>
-          <Button variant="outline" size="sm">
-            Open
-          </Button>
-        </ItemActions>
       </Item>
       <Item variant="outline">
+        <ItemMedia variant="icon">
+          <InboxIcon />
+        </ItemMedia>
         <ItemContent>
           <ItemTitle>Outline Variant</ItemTitle>
           <ItemDescription>
-            Outlined style with clear borders and transparent background.
+            Outlined style with a visible border.
           </ItemDescription>
         </ItemContent>
-        <ItemActions>
-          <Button variant="outline" size="sm">
-            Open
-          </Button>
-        </ItemActions>
       </Item>
       <Item variant="muted">
+        <ItemMedia variant="icon">
+          <InboxIcon />
+        </ItemMedia>
         <ItemContent>
           <ItemTitle>Muted Variant</ItemTitle>
           <ItemDescription>
-            Subdued appearance with muted colors for secondary content.
+            Muted background for secondary content.
           </ItemDescription>
         </ItemContent>
-        <ItemActions>
-          <Button variant="outline" size="sm">
-            Open
-          </Button>
-        </ItemActions>
       </Item>
     </div>
   )

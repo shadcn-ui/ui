@@ -33,31 +33,26 @@ const people = [
 
 export function ItemGroupExample() {
   return (
-    <div className="flex w-full max-w-md flex-col gap-6">
-      <ItemGroup>
-        {people.map((person, index) => (
-          <React.Fragment key={person.username}>
-            <Item>
-              <ItemMedia>
-                <Avatar>
-                  <AvatarImage src={person.avatar} className="grayscale" />
-                  <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
-                </Avatar>
-              </ItemMedia>
-              <ItemContent className="gap-1">
-                <ItemTitle>{person.username}</ItemTitle>
-                <ItemDescription>{person.email}</ItemDescription>
-              </ItemContent>
-              <ItemActions>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <PlusIcon />
-                </Button>
-              </ItemActions>
-            </Item>
-            {index !== people.length - 1 && <ItemSeparator />}
-          </React.Fragment>
-        ))}
-      </ItemGroup>
-    </div>
+    <ItemGroup className="max-w-sm">
+      {people.map((person, index) => (
+        <Item key={person.username} variant="outline">
+          <ItemMedia>
+            <Avatar>
+              <AvatarImage src={person.avatar} className="grayscale" />
+              <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+            </Avatar>
+          </ItemMedia>
+          <ItemContent className="gap-1">
+            <ItemTitle>{person.username}</ItemTitle>
+            <ItemDescription>{person.email}</ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <PlusIcon />
+            </Button>
+          </ItemActions>
+        </Item>
+      ))}
+    </ItemGroup>
   )
 }

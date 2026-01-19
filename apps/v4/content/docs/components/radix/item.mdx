@@ -1,19 +1,13 @@
 ---
 title: Item
-description: A versatile component that you can use to display any content.
+description: A versatile component for displaying content with media, title, description, and actions.
 base: radix
 component: true
 ---
 
+<ComponentPreview styleName="radix-nova" name="item-demo" />
+
 The `Item` component is a straightforward flex container that can house nearly any type of content. Use it to display a title, description, and actions. Group it with the `ItemGroup` component to create a list of items.
-
-You can pretty much achieve the same result with the `div` element and some classes, but **I've built this so many times** that I decided to create a component for it. Now I use it all the time.
-
-<ComponentPreview
-  styleName="radix-nova"
-  name="item-demo"
-  className="[&_.preview]:p-4"
-/>
 
 ## Installation
 
@@ -59,8 +53,6 @@ import {
   ItemActions,
   ItemContent,
   ItemDescription,
-  ItemFooter,
-  ItemHeader,
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item"
@@ -68,14 +60,16 @@ import {
 
 ```tsx showLineNumbers
 <Item>
-  <ItemHeader>Item Header</ItemHeader>
-  <ItemMedia />
+  <ItemMedia variant="icon">
+    <Icon />
+  </ItemMedia>
   <ItemContent>
-    <ItemTitle>Item</ItemTitle>
-    <ItemDescription>Item</ItemDescription>
+    <ItemTitle>Title</ItemTitle>
+    <ItemDescription>Description</ItemDescription>
   </ItemContent>
-  <ItemActions />
-  <ItemFooter>Item Footer</ItemFooter>
+  <ItemActions>
+    <Button>Action</Button>
+  </ItemActions>
 </Item>
 ```
 
@@ -85,96 +79,89 @@ Use `Field` if you need to display a form input such as a checkbox, input, radio
 
 If you only need to display content such as a title, description, and actions, use `Item`.
 
-## Examples
+## Variant
 
-### Variants
+Use the `variant` prop to change the visual style of the item.
 
 <ComponentPreview
   styleName="radix-nova"
   name="item-variant"
-  className="[&_.preview]:p-4"
+  previewClassName="h-96"
 />
 
-### Size
+## Size
 
-The `Item` component has different sizes for different use cases. For example, you can use the `sm` size for a compact item or the `default` size for a standard item.
+Use the `size` prop to change the size of the item. Available sizes are `default`, `sm`, and `xs`.
 
 <ComponentPreview
   styleName="radix-nova"
   name="item-size"
-  className="[&_.preview]:p-4"
+  previewClassName="h-96"
 />
+
+## Examples
 
 ### Icon
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="item-icon"
-  className="[&_.preview]:p-4"
-/>
+Use `ItemMedia` with `variant="icon"` to display an icon.
+
+<ComponentPreview styleName="radix-nova" name="item-icon" />
 
 ### Avatar
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="item-avatar"
-  className="[&_.preview]:p-4"
-/>
+You can use `ItemMedia` with `variant="avatar"` to display an avatar.
+
+<ComponentPreview styleName="radix-nova" name="item-avatar" />
 
 ### Image
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="item-image"
-  className="[&_.preview]:p-4"
-/>
+Use `ItemMedia` with `variant="image"` to display an image.
+
+<ComponentPreview styleName="radix-nova" name="item-image" />
 
 ### Group
+
+Use `ItemGroup` to group related items together.
 
 <ComponentPreview
   styleName="radix-nova"
   name="item-group"
-  className="[&_.preview]:p-4"
+  previewClassName="h-96"
 />
 
 ### Header
 
+Use `ItemHeader` to add a header above the item content.
+
 <ComponentPreview
   styleName="radix-nova"
   name="item-header"
-  className="[&_.preview]:p-4"
+  previewClassName="h-96"
 />
 
 ### Link
 
-To render an item as a link, use the `asChild` prop. The hover and focus states will be applied to the anchor element.
+Use the `asChild` prop to render the item as a link. The hover and focus states will be applied to the anchor element.
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="item-link"
-  className="[&_.preview]:p-4"
-/>
+<ComponentPreview styleName="radix-nova" name="item-link" />
 
 ```tsx showLineNumbers
 <Item asChild>
   <a href="/dashboard">
-    <ItemMedia />
+    <ItemMedia variant="icon">
+      <HomeIcon />
+    </ItemMedia>
     <ItemContent>
       <ItemTitle>Dashboard</ItemTitle>
       <ItemDescription>Overview of your account and activity.</ItemDescription>
     </ItemContent>
-    <ItemActions />
   </a>
 </Item>
 ```
 
 ### Dropdown
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="item-dropdown"
-  className="[&_.preview]:p-4"
-/>
+<ComponentPreview styleName="radix-nova" name="item-dropdown" />
 
 ## API Reference
 
@@ -185,57 +172,12 @@ The main component for displaying content with media, title, description, and ac
 | Prop      | Type                                | Default     |
 | --------- | ----------------------------------- | ----------- |
 | `variant` | `"default" \| "outline" \| "muted"` | `"default"` |
-| `size`    | `"default" \| "sm"`                 | `"default"` |
+| `size`    | `"default" \| "sm" \| "xs"`         | `"default"` |
 | `asChild` | `boolean`                           | `false`     |
-
-```tsx
-<Item size="" variant="">
-  <ItemMedia />
-  <ItemContent>
-    <ItemTitle>Item</ItemTitle>
-    <ItemDescription>Item</ItemDescription>
-  </ItemContent>
-  <ItemActions />
-</Item>
-```
-
-You can use the `asChild` prop to render a custom component as the item, for example a link. The hover and focus states will be applied to the custom component.
-
-```tsx showLineNumbers
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-  ItemMedia,
-  ItemTitle,
-} from "@/components/ui/item"
-
-export function ItemLink() {
-  return (
-    <Item asChild>
-      <a href="/dashboard">
-        <ItemMedia variant="icon">
-          <Home />
-        </ItemMedia>
-        <ItemContent>
-          <ItemTitle>Dashboard</ItemTitle>
-          <ItemDescription>
-            Overview of your account and activity.
-          </ItemDescription>
-        </ItemContent>
-      </a>
-    </Item>
-  )
-}
-```
 
 ### ItemGroup
 
-The `ItemGroup` component is a container that groups related items together with consistent styling.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+A container that groups related items together with consistent styling.
 
 ```tsx
 <ItemGroup>
@@ -246,11 +188,7 @@ The `ItemGroup` component is a container that groups related items together with
 
 ### ItemSeparator
 
-The `ItemSeparator` component is a separator that separates items in the item group.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+A separator between items in a group.
 
 ```tsx
 <ItemGroup>
@@ -262,12 +200,11 @@ The `ItemSeparator` component is a separator that separates items in the item gr
 
 ### ItemMedia
 
-Use the `ItemMedia` component to display media content such as icons, images, or avatars.
+Use `ItemMedia` to display media content such as icons, images, or avatars.
 
-| Prop        | Type                             | Default     |
-| ----------- | -------------------------------- | ----------- |
-| `variant`   | `"default" \| "icon" \| "image"` | `"default"` |
-| `className` | `string`                         |             |
+| Prop      | Type                             | Default     |
+| --------- | -------------------------------- | ----------- |
+| `variant` | `"default" \| "icon" \| "image"` | `"default"` |
 
 ```tsx
 <ItemMedia variant="icon">
@@ -283,28 +220,18 @@ Use the `ItemMedia` component to display media content such as icons, images, or
 
 ### ItemContent
 
-The `ItemContent` component wraps the title and description of the item.
-
-You can skip `ItemContent` if you only need a title.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+Wraps the title and description of the item.
 
 ```tsx
 <ItemContent>
-  <ItemTitle>Item</ItemTitle>
-  <ItemDescription>Item</ItemDescription>
+  <ItemTitle>Title</ItemTitle>
+  <ItemDescription>Description</ItemDescription>
 </ItemContent>
 ```
 
 ### ItemTitle
 
-Use the `ItemTitle` component to display the title of the item.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+Displays the title of the item.
 
 ```tsx
 <ItemTitle>Item Title</ItemTitle>
@@ -312,11 +239,7 @@ Use the `ItemTitle` component to display the title of the item.
 
 ### ItemDescription
 
-Use the `ItemDescription` component to display the description of the item.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+Displays the description of the item.
 
 ```tsx
 <ItemDescription>Item description</ItemDescription>
@@ -324,39 +247,32 @@ Use the `ItemDescription` component to display the description of the item.
 
 ### ItemActions
 
-Use the `ItemActions` component to display action buttons or other interactive elements.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+Container for action buttons or other interactive elements.
 
 ```tsx
 <ItemActions>
-  <Button>Action</Button>
   <Button>Action</Button>
 </ItemActions>
 ```
 
 ### ItemHeader
 
-Use the `ItemHeader` component to display a header in the item.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+Displays a header above the item content.
 
 ```tsx
-<ItemHeader>Item Header</ItemHeader>
+<Item>
+  <ItemHeader>Header</ItemHeader>
+  <ItemContent>...</ItemContent>
+</Item>
 ```
 
 ### ItemFooter
 
-Use the `ItemFooter` component to display a footer in the item.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` |         |
+Displays a footer below the item content.
 
 ```tsx
-<ItemFooter>Item Footer</ItemFooter>
+<Item>
+  <ItemContent>...</ItemContent>
+  <ItemFooter>Footer</ItemFooter>
+</Item>
 ```
