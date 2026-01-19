@@ -8,11 +8,7 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/popover#api-reference
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="popover-demo"
-  description="A popover component with a form."
-/>
+<ComponentPreview styleName="radix-nova" name="popover-demo" />
 
 ## Installation
 
@@ -62,13 +58,47 @@ npm install radix-ui
 import {
   Popover,
   PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover"
 ```
 
 ```tsx showLineNumbers
 <Popover>
-  <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent>Place content for the popover here.</PopoverContent>
+  <PopoverTrigger asChild>
+    <Button variant="outline">Open Popover</Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    <PopoverHeader>
+      <PopoverTitle>Title</PopoverTitle>
+      <PopoverDescription>Description text here.</PopoverDescription>
+    </PopoverHeader>
+  </PopoverContent>
 </Popover>
 ```
+
+## Examples
+
+### Basic
+
+A simple popover with a header, title, and description.
+
+<ComponentPreview styleName="radix-nova" name="popover-basic" />
+
+### Align
+
+Use the `align` prop on `PopoverContent` to control the horizontal alignment.
+
+<ComponentPreview styleName="radix-nova" name="popover-alignments" />
+
+### With Form
+
+A popover with form fields inside.
+
+<ComponentPreview styleName="radix-nova" name="popover-form" />
+
+## API Reference
+
+See the [Radix UI Popover](https://www.radix-ui.com/docs/primitives/components/popover#api-reference) documentation.

@@ -11,7 +11,7 @@ links:
 <ComponentPreview
   styleName="radix-nova"
   name="navigation-menu-demo"
-  className="[&_.preview]:!items-start [&_.preview]:p-4 [&_.preview]:pt-8 md:[&_.preview]:pt-16"
+  previewClassName="h-96"
 />
 
 ## Installation
@@ -61,12 +61,10 @@ npm install radix-ui
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 ```
 
@@ -83,20 +81,30 @@ import {
 </NavigationMenu>
 ```
 
-## Link
+## Link Component
 
-You can use the `asChild` prop to make another component look like a navigation menu trigger. Here's an example of a link that looks like a navigation menu trigger.
+Use the `asChild` prop to compose a custom link component such as Next.js `Link`.
 
-```tsx showLineNumbers title="components/example-navigation-menu.tsx"
+```tsx showLineNumbers
 import Link from "next/link"
+
+import {
+  NavigationMenuItem,
+  NavigationMenuLink,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
 
 export function NavigationMenuDemo() {
   return (
     <NavigationMenuItem>
-      <NavigationMenuLink asChild>
+      <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
         <Link href="/docs">Documentation</Link>
       </NavigationMenuLink>
     </NavigationMenuItem>
   )
 }
 ```
+
+## API Reference
+
+See the [Radix UI Navigation Menu](https://www.radix-ui.com/docs/primitives/components/navigation-menu#api-reference) documentation for more information.

@@ -3359,32 +3359,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "navigation-menu-with-viewport": {
-      name: "navigation-menu-with-viewport",
-      filePath: "examples/radix/navigation-menu-with-viewport.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/navigation-menu-with-viewport")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "navigation-menu-with-viewport"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "navigation-menu-without-viewport": {
-      name: "navigation-menu-without-viewport",
-      filePath: "examples/radix/navigation-menu-without-viewport.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/navigation-menu-without-viewport")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "navigation-menu-without-viewport"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "outline-item-group": {
       name: "outline-item-group",
       filePath: "examples/radix/outline-item-group.tsx",
@@ -3395,19 +3369,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "outline-item-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "pagination-basic": {
-      name: "pagination-basic",
-      filePath: "examples/radix/pagination-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/pagination-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "pagination-basic"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3489,29 +3450,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "popover-in-dialog": {
-      name: "popover-in-dialog",
-      filePath: "examples/radix/popover-in-dialog.tsx",
+    "popover-form": {
+      name: "popover-form",
+      filePath: "examples/radix/popover-form.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/popover-in-dialog")
+        const mod = await import("./radix/popover-form")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "popover-in-dialog"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "popover-with-form": {
-      name: "popover-with-form",
-      filePath: "examples/radix/popover-with-form.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/popover-with-form")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "popover-with-form"
+          ) || "popover-form"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3541,29 +3489,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "progress-values": {
-      name: "progress-values",
-      filePath: "examples/radix/progress-values.tsx",
+    "progress-label": {
+      name: "progress-label",
+      filePath: "examples/radix/progress-label.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/progress-values")
+        const mod = await import("./radix/progress-label")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "progress-values"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "progress-with-label": {
-      name: "progress-with-label",
-      filePath: "examples/radix/progress-with-label.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/progress-with-label")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "progress-with-label"
+          ) || "progress-label"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9096,19 +9031,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "navigation-menu-basic": {
-      name: "navigation-menu-basic",
-      filePath: "examples/base/navigation-menu-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/navigation-menu-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "navigation-menu-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "navigation-menu-demo": {
       name: "navigation-menu-demo",
       filePath: "examples/base/navigation-menu-demo.tsx",
@@ -9132,19 +9054,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "outline-item-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "pagination-basic": {
-      name: "pagination-basic",
-      filePath: "examples/base/pagination-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/pagination-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "pagination-basic"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9226,29 +9135,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "popover-in-dialog": {
-      name: "popover-in-dialog",
-      filePath: "examples/base/popover-in-dialog.tsx",
+    "popover-form": {
+      name: "popover-form",
+      filePath: "examples/base/popover-form.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/popover-in-dialog")
+        const mod = await import("./base/popover-form")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "popover-in-dialog"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "popover-with-form": {
-      name: "popover-with-form",
-      filePath: "examples/base/popover-with-form.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/popover-with-form")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "popover-with-form"
+          ) || "popover-form"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9278,29 +9174,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "progress-values": {
-      name: "progress-values",
-      filePath: "examples/base/progress-values.tsx",
+    "progress-label": {
+      name: "progress-label",
+      filePath: "examples/base/progress-label.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/progress-values")
+        const mod = await import("./base/progress-label")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "progress-values"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "progress-with-label": {
-      name: "progress-with-label",
-      filePath: "examples/base/progress-with-label.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/progress-with-label")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "progress-with-label"
+          ) || "progress-label"
         return { default: mod.default || mod[exportName] }
       }),
     },

@@ -8,8 +8,8 @@ export function ProgressControlled() {
   const [value, setValue] = React.useState([50])
 
   return (
-    <div className="flex w-full flex-col gap-4">
-      <Progress value={value[0]} className="w-full" />
+    <div className="flex w-full max-w-sm flex-col gap-4">
+      <Progress value={value[0]} />
       <Slider
         value={value}
         onValueChange={setValue}

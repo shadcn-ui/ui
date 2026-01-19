@@ -5,11 +5,7 @@ base: radix
 component: true
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="pagination-demo"
-  description="A pagination with previous and next links."
-/>
+<ComponentPreview styleName="radix-nova" name="pagination-demo" />
 
 ## Installation
 
@@ -71,6 +67,14 @@ import {
       <PaginationLink href="#">1</PaginationLink>
     </PaginationItem>
     <PaginationItem>
+      <PaginationLink href="#" isActive>
+        2
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">3</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
       <PaginationEllipsis />
     </PaginationItem>
     <PaginationItem>
@@ -80,7 +84,21 @@ import {
 </Pagination>
 ```
 
-### Next.js
+## Examples
+
+### Simple
+
+A simple pagination with only page numbers.
+
+<ComponentPreview styleName="radix-nova" name="pagination-simple" />
+
+### Icons Only
+
+Use just the previous and next buttons without page numbers. This is useful for data tables with a rows per page selector.
+
+<ComponentPreview styleName="radix-nova" name="pagination-icons-only" />
+
+## Next.js
 
 By default the `<PaginationLink />` component will render an `<a />` tag.
 
