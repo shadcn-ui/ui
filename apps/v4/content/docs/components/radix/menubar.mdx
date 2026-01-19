@@ -8,11 +8,7 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/menubar#api-reference
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="menubar-demo"
-  description="A menubar component."
-/>
+<ComponentPreview styleName="radix-nova" name="menubar-demo" />
 
 ## Installation
 
@@ -64,6 +60,7 @@ import {
   MenubarContent,
   MenubarItem,
   MenubarMenu,
+  MenubarGroup,
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
@@ -75,15 +72,46 @@ import {
   <MenubarMenu>
     <MenubarTrigger>File</MenubarTrigger>
     <MenubarContent>
+    <MenubarGroup>
       <MenubarItem>
         New Tab <MenubarShortcut>⌘T</MenubarShortcut>
       </MenubarItem>
       <MenubarItem>New Window</MenubarItem>
+      </MenubarGroup>
       <MenubarSeparator />
-      <MenubarItem>Share</MenubarItem>
-      <MenubarSeparator />
-      <MenubarItem>Print</MenubarItem>
+      <MenubarGroup>
+        <MenubarItem>Share</MenubarItem>
+        <MenubarItem>Print</MenubarItem>
+      </MenubarGroup>
     </MenubarContent>
   </MenubarMenu>
 </Menubar>
 ```
+
+## Examples
+
+### Checkbox
+
+Use `MenubarCheckboxItem` for toggleable options.
+
+<ComponentPreview styleName="radix-nova" name="menubar-checkbox" />
+
+### Radio
+
+Use `MenubarRadioGroup` and `MenubarRadioItem` for single-select options.
+
+<ComponentPreview styleName="radix-nova" name="menubar-radio" />
+
+### Submenu
+
+Use `MenubarSub`, `MenubarSubTrigger`, and `MenubarSubContent` for nested menus.
+
+<ComponentPreview styleName="radix-nova" name="menubar-submenu" />
+
+### With Icons
+
+<ComponentPreview styleName="radix-nova" name="menubar-icons" />
+
+## API Reference
+
+See the [Radix UI Menubar](https://www.radix-ui.com/docs/primitives/components/menubar#api-reference) documentation.

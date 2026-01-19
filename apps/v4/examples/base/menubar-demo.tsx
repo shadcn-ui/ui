@@ -17,7 +17,7 @@ import {
 
 export default function MenubarDemo() {
   return (
-    <Menubar>
+    <Menubar className="w-72">
       <MenubarMenu>
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>
@@ -89,12 +89,10 @@ export default function MenubarDemo() {
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>View</MenubarTrigger>
-        <MenubarContent>
+        <MenubarContent className="w-44">
           <MenubarGroup>
-            <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
-            <MenubarCheckboxItem checked>
-              Always Show Full URLs
-            </MenubarCheckboxItem>
+            <MenubarCheckboxItem>Bookmarks Bar</MenubarCheckboxItem>
+            <MenubarCheckboxItem checked>Full URLs</MenubarCheckboxItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>

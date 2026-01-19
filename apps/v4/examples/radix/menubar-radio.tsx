@@ -4,7 +4,6 @@ import * as React from "react"
 import {
   Menubar,
   MenubarContent,
-  MenubarGroup,
   MenubarItem,
   MenubarMenu,
   MenubarRadioGroup,
@@ -13,12 +12,12 @@ import {
   MenubarTrigger,
 } from "@/examples/radix/ui/menubar"
 
-export function MenubarWithRadio() {
+export function MenubarRadio() {
   const [user, setUser] = React.useState("benoit")
   const [theme, setTheme] = React.useState("system")
 
   return (
-    <Menubar>
+    <Menubar className="w-72">
       <MenubarMenu>
         <MenubarTrigger>Profiles</MenubarTrigger>
         <MenubarContent>
@@ -28,10 +27,8 @@ export function MenubarWithRadio() {
             <MenubarRadioItem value="luis">Luis</MenubarRadioItem>
           </MenubarRadioGroup>
           <MenubarSeparator />
-          <MenubarGroup>
-            <MenubarItem inset>Edit...</MenubarItem>
-            <MenubarItem inset>Add Profile...</MenubarItem>
-          </MenubarGroup>
+          <MenubarItem inset>Edit...</MenubarItem>
+          <MenubarItem inset>Add Profile...</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>

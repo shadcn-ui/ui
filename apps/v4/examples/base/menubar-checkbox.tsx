@@ -2,35 +2,30 @@ import {
   Menubar,
   MenubarCheckboxItem,
   MenubarContent,
-  MenubarGroup,
   MenubarItem,
   MenubarMenu,
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-} from "@/examples/radix/ui/menubar"
+} from "@/examples/base/ui/menubar"
 
-export function MenubarWithCheckboxes() {
+export function MenubarCheckbox() {
   return (
-    <Menubar>
+    <Menubar className="w-72">
       <MenubarMenu>
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent className="w-64">
-          <MenubarGroup>
-            <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
-            <MenubarCheckboxItem checked>
-              Always Show Full URLs
-            </MenubarCheckboxItem>
-          </MenubarGroup>
+          <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
+          <MenubarCheckboxItem checked>
+            Always Show Full URLs
+          </MenubarCheckboxItem>
           <MenubarSeparator />
-          <MenubarGroup>
-            <MenubarItem inset>
-              Reload <MenubarShortcut>⌘R</MenubarShortcut>
-            </MenubarItem>
-            <MenubarItem disabled inset>
-              Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
-            </MenubarItem>
-          </MenubarGroup>
+          <MenubarItem inset>
+            Reload <MenubarShortcut>⌘R</MenubarShortcut>
+          </MenubarItem>
+          <MenubarItem disabled inset>
+            Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
+          </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>

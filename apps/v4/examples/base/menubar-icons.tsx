@@ -8,11 +8,18 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/examples/base/ui/menubar"
-import { CircleDashedIcon, FileIcon, FolderIcon, SaveIcon } from "lucide-react"
+import {
+  FileIcon,
+  FolderIcon,
+  HelpCircleIcon,
+  SaveIcon,
+  SettingsIcon,
+  TrashIcon,
+} from "lucide-react"
 
-export function MenubarWithIcons() {
+export function MenubarIcons() {
   return (
-    <Menubar>
+    <Menubar className="w-72">
       <MenubarMenu>
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>
@@ -36,16 +43,16 @@ export function MenubarWithIcons() {
         <MenubarContent>
           <MenubarGroup>
             <MenubarItem>
-              <CircleDashedIcon />
+              <SettingsIcon />
               Settings
             </MenubarItem>
             <MenubarItem>
-              <CircleDashedIcon />
+              <HelpCircleIcon />
               Help
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem variant="destructive">
-              <CircleDashedIcon />
+              <TrashIcon />
               Delete
             </MenubarItem>
           </MenubarGroup>

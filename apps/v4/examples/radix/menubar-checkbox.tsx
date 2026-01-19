@@ -7,11 +7,11 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-} from "@/examples/base/ui/menubar"
+} from "@/examples/radix/ui/menubar"
 
-export function MenubarWithCheckboxes() {
+export function MenubarCheckbox() {
   return (
-    <Menubar>
+    <Menubar className="w-72">
       <MenubarMenu>
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent className="w-64">

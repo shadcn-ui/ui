@@ -9,11 +9,11 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/examples/base/ui/menubar"
+} from "@/examples/radix/ui/menubar"
 
-export function MenubarWithSubmenu() {
+export function MenubarSubmenu() {
   return (
-    <Menubar>
+    <Menubar className="w-72">
       <MenubarMenu>
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>

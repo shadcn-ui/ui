@@ -12,12 +12,12 @@ import {
   MenubarTrigger,
 } from "@/examples/base/ui/menubar"
 
-export function MenubarWithRadio() {
+export function MenubarRadio() {
   const [user, setUser] = React.useState("benoit")
   const [theme, setTheme] = React.useState("system")
 
   return (
-    <Menubar>
+    <Menubar className="w-72">
       <MenubarMenu>
         <MenubarTrigger>Profiles</MenubarTrigger>
         <MenubarContent>

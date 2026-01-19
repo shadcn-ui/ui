@@ -3216,16 +3216,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "menubar-basic": {
-      name: "menubar-basic",
-      filePath: "examples/radix/menubar-basic.tsx",
+    "menubar-checkbox": {
+      name: "menubar-checkbox",
+      filePath: "examples/radix/menubar-checkbox.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-basic")
+        const mod = await import("./radix/menubar-checkbox")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-basic"
+          ) || "menubar-checkbox"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3242,120 +3242,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "menubar-destructive": {
-      name: "menubar-destructive",
-      filePath: "examples/radix/menubar-destructive.tsx",
+    "menubar-icons": {
+      name: "menubar-icons",
+      filePath: "examples/radix/menubar-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-destructive")
+        const mod = await import("./radix/menubar-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-destructive"
+          ) || "menubar-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "menubar-format": {
-      name: "menubar-format",
-      filePath: "examples/radix/menubar-format.tsx",
+    "menubar-radio": {
+      name: "menubar-radio",
+      filePath: "examples/radix/menubar-radio.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-format")
+        const mod = await import("./radix/menubar-radio")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-format"
+          ) || "menubar-radio"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "menubar-in-dialog": {
-      name: "menubar-in-dialog",
-      filePath: "examples/radix/menubar-in-dialog.tsx",
+    "menubar-submenu": {
+      name: "menubar-submenu",
+      filePath: "examples/radix/menubar-submenu.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-in-dialog")
+        const mod = await import("./radix/menubar-submenu")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-in-dialog"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-insert": {
-      name: "menubar-insert",
-      filePath: "examples/radix/menubar-insert.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-insert")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-insert"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-checkboxes": {
-      name: "menubar-with-checkboxes",
-      filePath: "examples/radix/menubar-with-checkboxes.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-with-checkboxes")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-checkboxes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-icons": {
-      name: "menubar-with-icons",
-      filePath: "examples/radix/menubar-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-radio": {
-      name: "menubar-with-radio",
-      filePath: "examples/radix/menubar-with-radio.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-with-radio")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-radio"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-shortcuts": {
-      name: "menubar-with-shortcuts",
-      filePath: "examples/radix/menubar-with-shortcuts.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-with-shortcuts")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-shortcuts"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-submenu": {
-      name: "menubar-with-submenu",
-      filePath: "examples/radix/menubar-with-submenu.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/menubar-with-submenu")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-submenu"
+          ) || "menubar-submenu"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9109,16 +9031,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "menubar-basic": {
-      name: "menubar-basic",
-      filePath: "examples/base/menubar-basic.tsx",
+    "menubar-checkbox": {
+      name: "menubar-checkbox",
+      filePath: "examples/base/menubar-checkbox.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/menubar-basic")
+        const mod = await import("./base/menubar-checkbox")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-basic"
+          ) || "menubar-checkbox"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9135,120 +9057,42 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "menubar-destructive": {
-      name: "menubar-destructive",
-      filePath: "examples/base/menubar-destructive.tsx",
+    "menubar-icons": {
+      name: "menubar-icons",
+      filePath: "examples/base/menubar-icons.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/menubar-destructive")
+        const mod = await import("./base/menubar-icons")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-destructive"
+          ) || "menubar-icons"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "menubar-format": {
-      name: "menubar-format",
-      filePath: "examples/base/menubar-format.tsx",
+    "menubar-radio": {
+      name: "menubar-radio",
+      filePath: "examples/base/menubar-radio.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/menubar-format")
+        const mod = await import("./base/menubar-radio")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-format"
+          ) || "menubar-radio"
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "menubar-in-dialog": {
-      name: "menubar-in-dialog",
-      filePath: "examples/base/menubar-in-dialog.tsx",
+    "menubar-submenu": {
+      name: "menubar-submenu",
+      filePath: "examples/base/menubar-submenu.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/menubar-in-dialog")
+        const mod = await import("./base/menubar-submenu")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-in-dialog"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-insert": {
-      name: "menubar-insert",
-      filePath: "examples/base/menubar-insert.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/menubar-insert")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-insert"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-checkboxes": {
-      name: "menubar-with-checkboxes",
-      filePath: "examples/base/menubar-with-checkboxes.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/menubar-with-checkboxes")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-checkboxes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-icons": {
-      name: "menubar-with-icons",
-      filePath: "examples/base/menubar-with-icons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/menubar-with-icons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-icons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-radio": {
-      name: "menubar-with-radio",
-      filePath: "examples/base/menubar-with-radio.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/menubar-with-radio")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-radio"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-shortcuts": {
-      name: "menubar-with-shortcuts",
-      filePath: "examples/base/menubar-with-shortcuts.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/menubar-with-shortcuts")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-shortcuts"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "menubar-with-submenu": {
-      name: "menubar-with-submenu",
-      filePath: "examples/base/menubar-with-submenu.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/menubar-with-submenu")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "menubar-with-submenu"
+          ) || "menubar-submenu"
         return { default: mod.default || mod[exportName] }
       }),
     },
