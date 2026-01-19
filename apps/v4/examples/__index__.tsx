@@ -4048,19 +4048,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "spinner-basic": {
-      name: "spinner-basic",
-      filePath: "examples/radix/spinner-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/spinner-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "spinner-button": {
       name: "spinner-button",
       filePath: "examples/radix/spinner-button.tsx",
@@ -4071,19 +4058,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "spinner-button"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-color": {
-      name: "spinner-color",
-      filePath: "examples/radix/spinner-color.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/spinner-color")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-color"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4126,58 +4100,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "spinner-in-badges": {
-      name: "spinner-in-badges",
-      filePath: "examples/radix/spinner-in-badges.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/spinner-in-badges")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-in-badges"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-in-buttons": {
-      name: "spinner-in-buttons",
-      filePath: "examples/radix/spinner-in-buttons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/spinner-in-buttons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-in-buttons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-in-empty": {
-      name: "spinner-in-empty",
-      filePath: "examples/radix/spinner-in-empty.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/spinner-in-empty")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-in-empty"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-in-input-group": {
-      name: "spinner-in-input-group",
-      filePath: "examples/radix/spinner-in-input-group.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/spinner-in-input-group")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-in-input-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "spinner-input-group": {
       name: "spinner-input-group",
       filePath: "examples/radix/spinner-input-group.tsx",
@@ -4188,19 +4110,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "spinner-input-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-item": {
-      name: "spinner-item",
-      filePath: "examples/radix/spinner-item.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/spinner-item")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-item"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4217,16 +4126,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "switch-basic": {
-      name: "switch-basic",
-      filePath: "examples/radix/switch-basic.tsx",
+    "switch-choice-card": {
+      name: "switch-choice-card",
+      filePath: "examples/radix/switch-choice-card.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/switch-basic")
+        const mod = await import("./radix/switch-choice-card")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "switch-basic"
+          ) || "switch-choice-card"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4243,6 +4152,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "switch-description": {
+      name: "switch-description",
+      filePath: "examples/radix/switch-description.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/switch-description")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch-description"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "switch-disabled": {
       name: "switch-disabled",
       filePath: "examples/radix/switch-disabled.tsx",
@@ -4256,16 +4178,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "switch-fields": {
-      name: "switch-fields",
-      filePath: "examples/radix/switch-fields.tsx",
+    "switch-invalid": {
+      name: "switch-invalid",
+      filePath: "examples/radix/switch-invalid.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/switch-fields")
+        const mod = await import("./radix/switch-invalid")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "switch-fields"
+          ) || "switch-invalid"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4279,32 +4201,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "switch-sizes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "switch-with-description": {
-      name: "switch-with-description",
-      filePath: "examples/radix/switch-with-description.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/switch-with-description")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "switch-with-description"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "switch-with-label": {
-      name: "switch-with-label",
-      filePath: "examples/radix/switch-with-label.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/switch-with-label")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "switch-with-label"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9434,19 +9330,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "spinner-basic": {
-      name: "spinner-basic",
-      filePath: "examples/base/spinner-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/spinner-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "spinner-button": {
       name: "spinner-button",
       filePath: "examples/base/spinner-button.tsx",
@@ -9457,19 +9340,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "spinner-button"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-color": {
-      name: "spinner-color",
-      filePath: "examples/base/spinner-color.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/spinner-color")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-color"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9512,58 +9382,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "spinner-in-badges": {
-      name: "spinner-in-badges",
-      filePath: "examples/base/spinner-in-badges.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/spinner-in-badges")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-in-badges"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-in-buttons": {
-      name: "spinner-in-buttons",
-      filePath: "examples/base/spinner-in-buttons.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/spinner-in-buttons")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-in-buttons"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-in-empty": {
-      name: "spinner-in-empty",
-      filePath: "examples/base/spinner-in-empty.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/spinner-in-empty")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-in-empty"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-in-input-group": {
-      name: "spinner-in-input-group",
-      filePath: "examples/base/spinner-in-input-group.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/spinner-in-input-group")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-in-input-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "spinner-input-group": {
       name: "spinner-input-group",
       filePath: "examples/base/spinner-input-group.tsx",
@@ -9574,19 +9392,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "spinner-input-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "spinner-item": {
-      name: "spinner-item",
-      filePath: "examples/base/spinner-item.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/spinner-item")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "spinner-item"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9603,16 +9408,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "switch-basic": {
-      name: "switch-basic",
-      filePath: "examples/base/switch-basic.tsx",
+    "switch-choice-card": {
+      name: "switch-choice-card",
+      filePath: "examples/base/switch-choice-card.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/switch-basic")
+        const mod = await import("./base/switch-choice-card")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "switch-basic"
+          ) || "switch-choice-card"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9629,6 +9434,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "switch-description": {
+      name: "switch-description",
+      filePath: "examples/base/switch-description.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/switch-description")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch-description"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "switch-disabled": {
       name: "switch-disabled",
       filePath: "examples/base/switch-disabled.tsx",
@@ -9642,16 +9460,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "switch-fields": {
-      name: "switch-fields",
-      filePath: "examples/base/switch-fields.tsx",
+    "switch-invalid": {
+      name: "switch-invalid",
+      filePath: "examples/base/switch-invalid.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/switch-fields")
+        const mod = await import("./base/switch-invalid")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "switch-fields"
+          ) || "switch-invalid"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9665,32 +9483,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "switch-sizes"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "switch-with-description": {
-      name: "switch-with-description",
-      filePath: "examples/base/switch-with-description.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/switch-with-description")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "switch-with-description"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "switch-with-label": {
-      name: "switch-with-label",
-      filePath: "examples/base/switch-with-label.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/switch-with-label")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "switch-with-label"
         return { default: mod.default || mod[exportName] }
       }),
     },

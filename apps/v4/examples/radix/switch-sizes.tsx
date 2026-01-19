@@ -1,17 +1,17 @@
-import { Label } from "@/examples/radix/ui/label"
+import { Field, FieldGroup, FieldLabel } from "@/examples/radix/ui/field"
 import { Switch } from "@/examples/radix/ui/switch"
 
 export function SwitchSizes() {
   return (
-    <div className="flex flex-col gap-12">
-      <div className="flex items-center gap-2">
+    <FieldGroup className="w-full max-w-[10rem]">
+      <Field orientation="horizontal">
         <Switch id="switch-size-sm" size="sm" />
-        <Label htmlFor="switch-size-sm">Small</Label>
-      </div>
-      <div className="flex items-center gap-2">
+        <FieldLabel htmlFor="switch-size-sm">Small</FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
         <Switch id="switch-size-default" size="default" />
-        <Label htmlFor="switch-size-default">Default</Label>
-      </div>
-    </div>
+        <FieldLabel htmlFor="switch-size-default">Default</FieldLabel>
+      </Field>
+    </FieldGroup>
   )
 }

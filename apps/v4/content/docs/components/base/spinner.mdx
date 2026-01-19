@@ -5,11 +5,7 @@ base: base
 component: true
 ---
 
-<ComponentPreview
-  styleName="base-nova"
-  name="spinner-demo"
-  className="[&_.preview]:p-6"
-/>
+<ComponentPreview styleName="base-nova" name="spinner-demo" />
 
 ## Installation
 
@@ -90,50 +86,22 @@ Use the `size-*` utility class to change the size of the spinner.
 
 <ComponentPreview styleName="base-nova" name="spinner-size" />
 
-### Color
-
-Use the `text-` utility class to change the color of the spinner.
-
-<ComponentPreview styleName="base-nova" name="spinner-color" />
-
 ### Button
 
-Add a spinner to a button to indicate a loading state. The `<Button />` will handle the spacing between the spinner and the text.
+Add a spinner to a button to indicate a loading state. Remember to use the `data-icon="inline-start"` prop to add the spinner to the start of the button and the `data-icon="inline-end"` prop to add the spinner to the end of the button.
 
 <ComponentPreview styleName="base-nova" name="spinner-button" />
 
 ### Badge
 
-You can also use a spinner inside a badge.
+Add a spinner to a badge to indicate a loading state. Remember to use the `data-icon="inline-start"` prop to add the spinner to the start of the badge and the `data-icon="inline-end"` prop to add the spinner to the end of the badge.
 
 <ComponentPreview styleName="base-nova" name="spinner-badge" />
 
 ### Input Group
-
-Input Group can have spinners inside `<InputGroupAddon>`.
 
 <ComponentPreview styleName="base-nova" name="spinner-input-group" />
 
 ### Empty
 
 <ComponentPreview styleName="base-nova" name="spinner-empty" />
-
-### Item
-
-Use the spinner inside `<ItemMedia>` to indicate a loading state.
-
-<ComponentPreview styleName="base-nova" name="spinner-item" />
-
-## API Reference
-
-### Spinner
-
-Use the `Spinner` component to display a spinner.
-
-| Prop        | Type     | Default |
-| ----------- | -------- | ------- |
-| `className` | `string` | ``      |
-
-```tsx
-<Spinner />
-```
