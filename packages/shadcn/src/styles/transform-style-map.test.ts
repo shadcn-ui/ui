@@ -785,4 +785,134 @@ function Menu({ className, ...props }: React.ComponentProps<"div">) {
       "
     `)
   })
+
+  it("applies styles to cn-* classes in object properties (toastOptions pattern)", async () => {
+    const source = `import * as React from "react"
+import { Toaster as Sonner } from "sonner"
+
+const Toaster = ({ ...props }) => {
+  return (
+    <Sonner
+      toastOptions={{
+        classNames: {
+          toast: "cn-toast",
+        },
+      }}
+      {...props}
+    />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-toast": "rounded-2xl",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { Toaster as Sonner } from "sonner"
+
+      const Toaster = ({ ...props }) => {
+        return (
+          <Sonner
+            toastOptions={{
+              classNames: {
+                toast: "rounded-2xl",
+              },
+            }}
+            {...props}
+          />
+        )
+      }
+      "
+    `)
+  })
+
+  it("applies styles to cn-* classes in deeply nested object properties", async () => {
+    const source = `import * as React from "react"
+
+const config = {
+  options: {
+    classNames: {
+      wrapper: "cn-wrapper existing-class",
+      inner: "cn-inner",
+    },
+  },
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-wrapper": "flex flex-col",
+      "cn-inner": "p-4 rounded-lg",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+
+      const config = {
+        options: {
+          classNames: {
+            wrapper: "flex flex-col existing-class",
+            inner: "p-4 rounded-lg",
+          },
+        },
+      }
+      "
+    `)
+  })
+
+  it("removes cn-* classes from object properties when not in styleMap", async () => {
+    const source = `import * as React from "react"
+
+const config = {
+  classNames: {
+    item: "cn-unknown-class existing-class",
+  },
+}
+`
+
+    const styleMap: StyleMap = {}
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+
+      const config = {
+        classNames: {
+          item: "existing-class",
+        },
+      }
+      "
+    `)
+  })
+
+  it("handles multiple cn-* classes in object property values", async () => {
+    const source = `import * as React from "react"
+
+const options = {
+  toast: "cn-toast cn-toast-content extra-class",
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-toast": "rounded-lg",
+      "cn-toast-content": "p-4",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+
+      const options = {
+        toast: "rounded-lg p-4 extra-class",
+      }
+      "
+    `)
+  })
 })
