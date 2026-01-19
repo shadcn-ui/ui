@@ -8,11 +8,7 @@ links:
   api: https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="resizable-demo"
-  description="A group of resizable horizontal and vertical panels."
-/>
+<ComponentPreview styleName="radix-nova" name="resizable-demo" previewClassName="h-80" />
 
 ## About
 
@@ -82,56 +78,16 @@ import {
 
 ### Vertical
 
-Use the `direction` prop to set the direction of the resizable panels.
+Use `direction="vertical"` for vertical resizing.
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="resizable-vertical"
-  description="A group of resizable vertical panels."
-/>
-
-```tsx showLineNumbers {9}
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable"
-
-export default function Example() {
-  return (
-    <ResizablePanelGroup direction="vertical">
-      <ResizablePanel>One</ResizablePanel>
-      <ResizableHandle />
-      <ResizablePanel>Two</ResizablePanel>
-    </ResizablePanelGroup>
-  )
-}
-```
+<ComponentPreview styleName="radix-nova" name="resizable-vertical" />
 
 ### Handle
 
-You can set or hide the handle by using the `withHandle` prop on the `ResizableHandle` component.
+Use the `withHandle` prop on `ResizableHandle` to show a visible handle.
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="resizable-handle"
-  description="A group of resizable panels with a handle."
-/>
+<ComponentPreview styleName="radix-nova" name="resizable-handle" />
 
-```tsx showLineNumbers {11}
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable"
+## API Reference
 
-export default function Example() {
-  return (
-    <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel>One</ResizablePanel>
-      <ResizableHandle withHandle />
-      <ResizablePanel>Two</ResizablePanel>
-    </ResizablePanelGroup>
-  )
-}
-```
+See the [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels) documentation.

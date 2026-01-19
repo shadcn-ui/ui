@@ -3,17 +3,20 @@ import {
   FieldContent,
   FieldDescription,
   FieldLabel,
+  FieldTitle,
 } from "@/examples/base/ui/field"
 import { RadioGroup, RadioGroupItem } from "@/examples/base/ui/radio-group"
 
-export function RadioGroupWithDescriptions() {
+export function RadioGroupChoiceCard() {
   return (
-    <RadioGroup defaultValue="plus">
+    <RadioGroup defaultValue="plus" className="max-w-sm">
       <FieldLabel htmlFor="plus-plan">
         <Field orientation="horizontal">
           <FieldContent>
-            <div className="font-medium">Plus</div>
-            <FieldDescription>For individuals and small teams</FieldDescription>
+            <FieldTitle>Plus</FieldTitle>
+            <FieldDescription>
+              For individuals and small teams.
+            </FieldDescription>
           </FieldContent>
           <RadioGroupItem value="plus" id="plus-plan" />
         </Field>
@@ -21,8 +24,8 @@ export function RadioGroupWithDescriptions() {
       <FieldLabel htmlFor="pro-plan">
         <Field orientation="horizontal">
           <FieldContent>
-            <div className="font-medium">Pro</div>
-            <FieldDescription>For growing businesses</FieldDescription>
+            <FieldTitle>Pro</FieldTitle>
+            <FieldDescription>For growing businesses.</FieldDescription>
           </FieldContent>
           <RadioGroupItem value="pro" id="pro-plan" />
         </Field>
@@ -30,8 +33,10 @@ export function RadioGroupWithDescriptions() {
       <FieldLabel htmlFor="enterprise-plan">
         <Field orientation="horizontal">
           <FieldContent>
-            <div className="font-medium">Enterprise</div>
-            <FieldDescription>For large teams and enterprises</FieldDescription>
+            <FieldTitle>Enterprise</FieldTitle>
+            <FieldDescription>
+              For large teams and enterprises.
+            </FieldDescription>
           </FieldContent>
           <RadioGroupItem value="enterprise" id="enterprise-plan" />
         </Field>

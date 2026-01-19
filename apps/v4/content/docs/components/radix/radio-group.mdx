@@ -8,11 +8,7 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/radio-group#api-reference
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="radio-group-demo"
-  description="A radio group with 3 items."
-/>
+<ComponentPreview styleName="radix-nova" name="radio-group-demo" />
 
 ## Installation
 
@@ -65,13 +61,37 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 ```tsx showLineNumbers
 <RadioGroup defaultValue="option-one">
-  <div className="flex items-center space-x-2">
+  <div className="flex items-center gap-3">
     <RadioGroupItem value="option-one" id="option-one" />
     <Label htmlFor="option-one">Option One</Label>
   </div>
-  <div className="flex items-center space-x-2">
+  <div className="flex items-center gap-3">
     <RadioGroupItem value="option-two" id="option-two" />
     <Label htmlFor="option-two">Option Two</Label>
   </div>
 </RadioGroup>
 ```
+
+## Examples
+
+### Description
+
+Radio group items with a description using the `Field` component.
+
+<ComponentPreview styleName="radix-nova" name="radio-group-description" />
+
+### Choice Card
+
+Use `FieldLabel` to wrap the entire `Field` for a clickable card-style selection.
+
+<ComponentPreview styleName="radix-nova" name="radio-group-choice-card" />
+
+### Disabled
+
+Use the `disabled` prop on `RadioGroup` to disable all items.
+
+<ComponentPreview styleName="radix-nova" name="radio-group-disabled" />
+
+## API Reference
+
+See the [Radix UI Radio Group](https://www.radix-ui.com/docs/primitives/components/radio-group#api-reference) documentation.

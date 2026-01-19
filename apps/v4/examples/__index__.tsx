@@ -3515,16 +3515,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "radio-group-basic": {
-      name: "radio-group-basic",
-      filePath: "examples/radix/radio-group-basic.tsx",
+    "radio-group-choice-card": {
+      name: "radio-group-choice-card",
+      filePath: "examples/radix/radio-group-choice-card.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./radix/radio-group-basic")
+        const mod = await import("./radix/radio-group-choice-card")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-basic"
+          ) || "radio-group-choice-card"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3541,6 +3541,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "radio-group-description": {
+      name: "radio-group-description",
+      filePath: "examples/radix/radio-group-description.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/radio-group-description")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group-description"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "radio-group-disabled": {
       name: "radio-group-disabled",
       filePath: "examples/radix/radio-group-disabled.tsx",
@@ -3551,84 +3564,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "radio-group-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "radio-group-grid": {
-      name: "radio-group-grid",
-      filePath: "examples/radix/radio-group-grid.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/radio-group-grid")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-grid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "radio-group-invalid": {
-      name: "radio-group-invalid",
-      filePath: "examples/radix/radio-group-invalid.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/radio-group-invalid")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-invalid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "radio-group-with-descriptions": {
-      name: "radio-group-with-descriptions",
-      filePath: "examples/radix/radio-group-with-descriptions.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/radio-group-with-descriptions")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-with-descriptions"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "radio-group-with-field-set": {
-      name: "radio-group-with-field-set",
-      filePath: "examples/radix/radio-group-with-field-set.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/radio-group-with-field-set")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-with-field-set"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "resizable-controlled": {
-      name: "resizable-controlled",
-      filePath: "examples/radix/resizable-controlled.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/resizable-controlled")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-controlled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "resizable-demo-with-handle": {
-      name: "resizable-demo-with-handle",
-      filePath: "examples/radix/resizable-demo-with-handle.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/resizable-demo-with-handle")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-demo-with-handle"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3658,32 +3593,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "resizable-horizontal": {
-      name: "resizable-horizontal",
-      filePath: "examples/radix/resizable-horizontal.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/resizable-horizontal")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-horizontal"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "resizable-nested": {
-      name: "resizable-nested",
-      filePath: "examples/radix/resizable-nested.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/resizable-nested")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-nested"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "resizable-vertical": {
       name: "resizable-vertical",
       filePath: "examples/radix/resizable-vertical.tsx",
@@ -3694,19 +3603,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "resizable-vertical"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "resizable-with-handle": {
-      name: "resizable-with-handle",
-      filePath: "examples/radix/resizable-with-handle.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/resizable-with-handle")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-with-handle"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3733,32 +3629,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "scroll-area-horizontal-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "scroll-area-horizontal": {
-      name: "scroll-area-horizontal",
-      filePath: "examples/radix/scroll-area-horizontal.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/scroll-area-horizontal")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "scroll-area-horizontal"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "scroll-area-vertical": {
-      name: "scroll-area-vertical",
-      filePath: "examples/radix/scroll-area-vertical.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/scroll-area-vertical")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "scroll-area-vertical"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9200,16 +9070,16 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "radio-group-basic": {
-      name: "radio-group-basic",
-      filePath: "examples/base/radio-group-basic.tsx",
+    "radio-group-choice-card": {
+      name: "radio-group-choice-card",
+      filePath: "examples/base/radio-group-choice-card.tsx",
       component: React.lazy(async () => {
-        const mod = await import("./base/radio-group-basic")
+        const mod = await import("./base/radio-group-choice-card")
         const exportName =
           Object.keys(mod).find(
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-basic"
+          ) || "radio-group-choice-card"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9226,6 +9096,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "radio-group-description": {
+      name: "radio-group-description",
+      filePath: "examples/base/radio-group-description.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/radio-group-description")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group-description"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "radio-group-disabled": {
       name: "radio-group-disabled",
       filePath: "examples/base/radio-group-disabled.tsx",
@@ -9236,84 +9119,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "radio-group-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "radio-group-grid": {
-      name: "radio-group-grid",
-      filePath: "examples/base/radio-group-grid.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/radio-group-grid")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-grid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "radio-group-invalid": {
-      name: "radio-group-invalid",
-      filePath: "examples/base/radio-group-invalid.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/radio-group-invalid")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-invalid"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "radio-group-with-descriptions": {
-      name: "radio-group-with-descriptions",
-      filePath: "examples/base/radio-group-with-descriptions.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/radio-group-with-descriptions")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-with-descriptions"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "radio-group-with-field-set": {
-      name: "radio-group-with-field-set",
-      filePath: "examples/base/radio-group-with-field-set.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/radio-group-with-field-set")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "radio-group-with-field-set"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "resizable-controlled": {
-      name: "resizable-controlled",
-      filePath: "examples/base/resizable-controlled.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/resizable-controlled")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-controlled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "resizable-demo-with-handle": {
-      name: "resizable-demo-with-handle",
-      filePath: "examples/base/resizable-demo-with-handle.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/resizable-demo-with-handle")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-demo-with-handle"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9343,32 +9148,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "resizable-horizontal": {
-      name: "resizable-horizontal",
-      filePath: "examples/base/resizable-horizontal.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/resizable-horizontal")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-horizontal"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "resizable-nested": {
-      name: "resizable-nested",
-      filePath: "examples/base/resizable-nested.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/resizable-nested")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-nested"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "resizable-vertical": {
       name: "resizable-vertical",
       filePath: "examples/base/resizable-vertical.tsx",
@@ -9379,19 +9158,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "resizable-vertical"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "resizable-with-handle": {
-      name: "resizable-with-handle",
-      filePath: "examples/base/resizable-with-handle.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/resizable-with-handle")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "resizable-with-handle"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9418,32 +9184,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "scroll-area-horizontal-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "scroll-area-horizontal": {
-      name: "scroll-area-horizontal",
-      filePath: "examples/base/scroll-area-horizontal.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/scroll-area-horizontal")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "scroll-area-horizontal"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "scroll-area-vertical": {
-      name: "scroll-area-vertical",
-      filePath: "examples/base/scroll-area-vertical.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/scroll-area-vertical")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "scroll-area-vertical"
         return { default: mod.default || mod[exportName] }
       }),
     },
