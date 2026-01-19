@@ -1,6 +1,6 @@
 ---
 title: Input Group
-description: Display additional information or actions to an input or textarea.
+description: Add addons, buttons, and helper content to inputs.
 base: base
 component: true
 ---
@@ -10,7 +10,7 @@ import { IconInfoCircle } from "@tabler/icons-react"
 <ComponentPreview
   styleName="base-nova"
   name="input-group-demo"
-  className="[&_.preview]:p-4"
+  previewClassName="h-[26rem]"
 />
 
 ## Installation
@@ -68,11 +68,58 @@ import {
   <InputGroupAddon>
     <SearchIcon />
   </InputGroupAddon>
-  <InputGroupAddon align="inline-end">
-    <InputGroupButton>Search</InputGroupButton>
-  </InputGroupAddon>
 </InputGroup>
 ```
+
+## Align
+
+Use the `align` prop on `InputGroupAddon` to position the addon relative to the input.
+
+<Callout>
+  For proper focus management, `InputGroupAddon` should always be placed after
+  `InputGroupInput` or `InputGroupTextarea` in the DOM. Use the `align` prop to
+  visually position the addon.
+</Callout>
+
+### inline-start
+
+Use `align="inline-start"` to position the addon at the start of the input. This is the default.
+
+<ComponentPreview
+  styleName="base-nova"
+  name="input-group-inline-start"
+  previewClassName="h-48"
+/>
+
+### inline-end
+
+Use `align="inline-end"` to position the addon at the end of the input.
+
+<ComponentPreview
+  styleName="base-nova"
+  name="input-group-inline-end"
+  previewClassName="h-48"
+/>
+
+### block-start
+
+Use `align="block-start"` to position the addon above the input.
+
+<ComponentPreview
+  styleName="base-nova"
+  name="input-group-block-start"
+  previewClassName="h-96"
+/>
+
+### block-end
+
+Use `align="block-end"` to position the addon below the input.
+
+<ComponentPreview
+  styleName="base-nova"
+  name="input-group-block-end"
+  previewClassName="h-[26rem]"
+/>
 
 ## Examples
 
@@ -81,118 +128,68 @@ import {
 <ComponentPreview
   styleName="base-nova"
   name="input-group-icon"
-  className="[&_.preview]:p-4"
+  previewClassName="h-80"
 />
 
 ### Text
 
-Display additional text information alongside inputs.
-
 <ComponentPreview
   styleName="base-nova"
   name="input-group-text"
-  className="[&_.preview]:p-4"
+  previewClassName="h-80"
 />
 
 ### Button
 
-Add buttons to perform actions within the input group.
-
 <ComponentPreview
   styleName="base-nova"
   name="input-group-button"
-  className="[&_.preview]:p-4"
+  previewClassName="h-72"
 />
 
-### Tooltip
-
-Add tooltips to provide additional context or help.
+### Kbd
 
 <ComponentPreview
   styleName="base-nova"
-  name="input-group-tooltip"
-  className="[&_.preview]:p-4"
-/>
-
-### Textarea
-
-Input groups also work with textarea components. Use `block-start` or `block-end` for alignment.
-
-<ComponentPreview
-  styleName="base-nova"
-  name="input-group-textarea"
-  className="[&_.preview]:p-4"
-/>
-
-### Spinner
-
-Show loading indicators while processing input.
-
-<ComponentPreview
-  styleName="base-nova"
-  name="input-group-spinner"
-  className="[&_.preview]:p-4"
-/>
-
-### Label
-
-Add labels within input groups to improve accessibility.
-
-<ComponentPreview
-  styleName="base-nova"
-  name="input-group-label"
-  className="[&_.preview]:p-4"
+  name="input-group-kbd"
+  previewClassName="h-40"
 />
 
 ### Dropdown
 
-Pair input groups with dropdown menus for complex interactions.
-
 <ComponentPreview
   styleName="base-nova"
   name="input-group-dropdown"
-  className="[&_.preview]:p-4"
+  previewClassName="h-56"
 />
 
-### Button Group
-
-Wrap input groups with button groups to create prefixes and suffixes.
+### Spinner
 
 <ComponentPreview
   styleName="base-nova"
-  name="input-group-button-group"
-  className="[&_.preview]:p-4"
+  name="input-group-spinner"
+  previewClassName="h-80"
+/>
+
+### Textarea
+
+<ComponentPreview
+  styleName="base-nova"
+  name="input-group-textarea"
+  previewClassName="h-96"
 />
 
 ### Custom Input
 
-Add the `data-slot="input-group-control"` attribute to your custom input for automatic behavior and focus state handling.
+Add the `data-slot="input-group-control"` attribute to your custom input for automatic focus state handling.
 
-No style is applied to the custom input. Apply your own styles using the `className` prop.
+Here's an example of a custom resizable textarea from a third-party library.
 
 <ComponentPreview
   styleName="base-nova"
   name="input-group-custom"
-  className="!mb-4 [&_.preview]:p-4"
+  previewClassName="h-56"
 />
-
-```tsx showLineNumbers
-import { InputGroup, InputGroupAddon } from "@/component/ui/input-group"
-import TextareaAutosize from "react-textarea-autosize"
-
-export function InputGroupCustom() {
-  return (
-    <InputGroup>
-      <TextareaAutosize
-        data-slot="input-group-control"
-        className="dark:bg-input/30 flex field-sizing-content min-h-16 w-full resize-none rounded-md bg-transparent px-3 py-2 text-base transition-[color,box-shadow] outline-none"
-        placeholder="Autoresize textarea..."
-      />
-      <InputGroupAddon align="block-end">how</InputGroupAddon>
-    </InputGroup>
-  )
-}
-```
 
 ## API Reference
 
@@ -297,8 +294,3 @@ All other props are passed through to the underlying `<Textarea />` component.
 </InputGroup>
 ```
 
-## Changelog
-
-### 2025-10-06 `InputGroup`
-
-Add the `min-w-0` class to the `InputGroup` component. See [diff](https://github.com/shadcn-ui/ui/pull/8341/files#diff-0e2ee95d0050ca4c5d82339df86c54e14a6739dc4638fdda0eec8f73aebc2da9).

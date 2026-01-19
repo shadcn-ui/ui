@@ -2553,6 +2553,32 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-group-block-end": {
+      name: "input-group-block-end",
+      filePath: "examples/radix/input-group-block-end.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-group-block-end")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-block-end"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-group-block-start": {
+      name: "input-group-block-start",
+      filePath: "examples/radix/input-group-block-start.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-group-block-start")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-block-start"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-group-button-group": {
       name: "input-group-button-group",
       filePath: "examples/radix/input-group-button-group.tsx",
@@ -2641,6 +2667,45 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-group-in-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-group-inline-end": {
+      name: "input-group-inline-end",
+      filePath: "examples/radix/input-group-inline-end.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-group-inline-end")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-inline-end"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-group-inline-start": {
+      name: "input-group-inline-start",
+      filePath: "examples/radix/input-group-inline-start.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-group-inline-start")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-inline-start"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-group-kbd": {
+      name: "input-group-kbd",
+      filePath: "examples/radix/input-group-kbd.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-group-kbd")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-kbd"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8862,6 +8927,32 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-group-block-end": {
+      name: "input-group-block-end",
+      filePath: "examples/base/input-group-block-end.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-group-block-end")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-block-end"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-group-block-start": {
+      name: "input-group-block-start",
+      filePath: "examples/base/input-group-block-start.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-group-block-start")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-block-start"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-group-button-group": {
       name: "input-group-button-group",
       filePath: "examples/base/input-group-button-group.tsx",
@@ -8950,6 +9041,45 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-group-in-card"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-group-inline-end": {
+      name: "input-group-inline-end",
+      filePath: "examples/base/input-group-inline-end.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-group-inline-end")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-inline-end"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-group-inline-start": {
+      name: "input-group-inline-start",
+      filePath: "examples/base/input-group-inline-start.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-group-inline-start")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-inline-start"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-group-kbd": {
+      name: "input-group-kbd",
+      filePath: "examples/base/input-group-kbd.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-group-kbd")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-kbd"
         return { default: mod.default || mod[exportName] }
       }),
     },

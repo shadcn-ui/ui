@@ -1,4 +1,5 @@
-import { Button } from "@/examples/base/ui/button"
+"use client"
+
 import { ButtonGroup, ButtonGroupText } from "@/examples/base/ui/button-group"
 import {
   DropdownMenu,
@@ -12,7 +13,6 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/examples/base/ui/field"
-import { Input } from "@/examples/base/ui/input"
 import {
   InputGroup,
   InputGroupAddon,

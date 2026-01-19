@@ -10,27 +10,27 @@ import { LoaderIcon } from "lucide-react"
 export default function InputGroupSpinner() {
   return (
     <div className="grid w-full max-w-sm gap-4">
-      <InputGroup data-disabled>
-        <InputGroupInput placeholder="Searching..." disabled />
+      <InputGroup>
+        <InputGroupInput placeholder="Searching..." />
         <InputGroupAddon align="inline-end">
           <Spinner />
         </InputGroupAddon>
       </InputGroup>
-      <InputGroup data-disabled>
-        <InputGroupInput placeholder="Processing..." disabled />
+      <InputGroup>
+        <InputGroupInput placeholder="Processing..." />
         <InputGroupAddon>
           <Spinner />
         </InputGroupAddon>
       </InputGroup>
-      <InputGroup data-disabled>
-        <InputGroupInput placeholder="Saving changes..." disabled />
+      <InputGroup>
+        <InputGroupInput placeholder="Saving changes..." />
         <InputGroupAddon align="inline-end">
           <InputGroupText>Saving...</InputGroupText>
           <Spinner />
         </InputGroupAddon>
       </InputGroup>
-      <InputGroup data-disabled>
-        <InputGroupInput placeholder="Refreshing data..." disabled />
+      <InputGroup>
+        <InputGroupInput placeholder="Refreshing data..." />
         <InputGroupAddon>
           <LoaderIcon className="animate-spin" />
         </InputGroupAddon>

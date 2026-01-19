@@ -1,3 +1,5 @@
+"use client"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +15,7 @@ import {
 } from "@/examples/base/ui/input-group"
 import { ChevronDownIcon, MoreHorizontal } from "lucide-react"
 
-export default function InputGroupDropdown() {
+export function InputGroupDropdown() {
   return (
     <div className="grid w-full max-w-sm gap-4">
       <InputGroup>
@@ -31,7 +33,7 @@ export default function InputGroupDropdown() {
             >
               <MoreHorizontal />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" sideOffset={8} alignOffset={-4}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Copy path</DropdownMenuItem>
@@ -41,7 +43,7 @@ export default function InputGroupDropdown() {
           </DropdownMenu>
         </InputGroupAddon>
       </InputGroup>
-      <InputGroup className="[--radius:1rem]">
+      <InputGroup>
         <InputGroupInput placeholder="Enter search query" />
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
@@ -52,7 +54,7 @@ export default function InputGroupDropdown() {
             >
               Search In... <ChevronDownIcon className="size-3" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="[--radius:0.95rem]">
+            <DropdownMenuContent align="end" sideOffset={8} alignOffset={-4}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
                 <DropdownMenuItem>Blog Posts</DropdownMenuItem>
