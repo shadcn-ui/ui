@@ -2930,19 +2930,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "input-otp-fields": {
-      name: "input-otp-fields",
-      filePath: "examples/radix/input-otp-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/input-otp-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-otp-fields"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "input-otp-form": {
       name: "input-otp-form",
       filePath: "examples/radix/input-otp-form.tsx",
@@ -3005,32 +2992,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-otp-separator"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-otp-simple": {
-      name: "input-otp-simple",
-      filePath: "examples/radix/input-otp-simple.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/input-otp-simple")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-otp-simple"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-otp-with-separator": {
-      name: "input-otp-with-separator",
-      filePath: "examples/radix/input-otp-with-separator.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/input-otp-with-separator")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-otp-with-separator"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9304,19 +9265,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "input-otp-fields": {
-      name: "input-otp-fields",
-      filePath: "examples/base/input-otp-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/input-otp-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-otp-fields"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "input-otp-form": {
       name: "input-otp-form",
       filePath: "examples/base/input-otp-form.tsx",
@@ -9379,32 +9327,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-otp-separator"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-otp-simple": {
-      name: "input-otp-simple",
-      filePath: "examples/base/input-otp-simple.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/input-otp-simple")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-otp-simple"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "input-otp-with-separator": {
-      name: "input-otp-with-separator",
-      filePath: "examples/base/input-otp-with-separator.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/input-otp-with-separator")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "input-otp-with-separator"
         return { default: mod.default || mod[exportName] }
       }),
     },

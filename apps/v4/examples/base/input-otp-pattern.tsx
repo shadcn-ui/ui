@@ -10,7 +10,7 @@ import { REGEXP_ONLY_DIGITS } from "input-otp"
 
 export function InputOTPPattern() {
   return (
-    <Field>
+    <Field className="w-fit">
       <FieldLabel htmlFor="digits-only">Digits Only</FieldLabel>
       <InputOTP id="digits-only" maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
         <InputOTPGroup>

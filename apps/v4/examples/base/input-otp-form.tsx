@@ -27,49 +27,49 @@ export function InputOTPForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
-          <Field>
-            <div className="flex items-center justify-between">
-              <FieldLabel htmlFor="otp-verification">
-                Verification code
-              </FieldLabel>
-              <Button variant="outline" size="xs">
-                <RefreshCwIcon />
-                Resend Code
-              </Button>
-            </div>
-            <InputOTP maxLength={6} id="otp-verification" required>
-              <InputOTPGroup className="style-nova:*:data-[slot=input-otp-slot]:h-12 style-nova:*:data-[slot=input-otp-slot]:w-11 style-vega:*:data-[slot=input-otp-slot]:h-16 style-maia:*:data-[slot=input-otp-slot]:h-16 style-vega:*:data-[slot=input-otp-slot]:w-12 style-maia:*:data-[slot=input-otp-slot]:w-12 style-mira:*:data-[slot=input-otp-slot]:h-12 style-lyra:*:data-[slot=input-otp-slot]:h-12 style-lyra:*:data-[slot=input-otp-slot]:w-11 style-mira:*:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-              </InputOTPGroup>
-              <InputOTPSeparator />
-              <InputOTPGroup className="style-nova:*:data-[slot=input-otp-slot]:h-12 style-nova:*:data-[slot=input-otp-slot]:w-11 style-vega:*:data-[slot=input-otp-slot]:h-16 style-maia:*:data-[slot=input-otp-slot]:h-16 style-vega:*:data-[slot=input-otp-slot]:w-12 style-maia:*:data-[slot=input-otp-slot]:w-12 style-mira:*:data-[slot=input-otp-slot]:h-12 style-lyra:*:data-[slot=input-otp-slot]:h-12 style-lyra:*:data-[slot=input-otp-slot]:w-11 style-mira:*:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
-              </InputOTPGroup>
-            </InputOTP>
-            <FieldDescription>
-              <a href="#">I no longer have access to this email address.</a>
-            </FieldDescription>
-          </Field>
-        </form>
+        <Field>
+          <div className="flex items-center justify-between">
+            <FieldLabel htmlFor="otp-verification">
+              Verification code
+            </FieldLabel>
+            <Button variant="outline" size="xs">
+              <RefreshCwIcon />
+              Resend Code
+            </Button>
+          </div>
+          <InputOTP maxLength={6} id="otp-verification" required>
+            <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
+              <InputOTPSlot index={2} />
+            </InputOTPGroup>
+            <InputOTPSeparator className="mx-2" />
+            <InputOTPGroup className="*:data-[slot=input-otp-slot]:h-12 *:data-[slot=input-otp-slot]:w-11 *:data-[slot=input-otp-slot]:text-xl">
+              <InputOTPSlot index={3} />
+              <InputOTPSlot index={4} />
+              <InputOTPSlot index={5} />
+            </InputOTPGroup>
+          </InputOTP>
+          <FieldDescription>
+            <a href="#">I no longer have access to this email address.</a>
+          </FieldDescription>
+        </Field>
       </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
-          Verify
-        </Button>
-        <div className="text-muted-foreground text-sm">
-          Having trouble signing in?{" "}
-          <a
-            href="#"
-            className="hover:text-primary underline underline-offset-4 transition-colors"
-          >
-            Contact support
-          </a>
-        </div>
+      <CardFooter>
+        <Field>
+          <Button type="submit" className="w-full">
+            Verify
+          </Button>
+          <div className="text-muted-foreground text-sm">
+            Having trouble signing in?{" "}
+            <a
+              href="#"
+              className="hover:text-primary underline underline-offset-4 transition-colors"
+            >
+              Contact support
+            </a>
+          </div>
+        </Field>
       </CardFooter>
     </Card>
   )
