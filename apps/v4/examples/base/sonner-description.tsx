@@ -1,7 +1,9 @@
-import { Button } from "@/examples/radix/ui/button"
+"use client"
+
+import { Button } from "@/examples/base/ui/button"
 import { toast } from "sonner"
 
-export function SonnerWithDescription() {
+export function SonnerDescription() {
   return (
     <Button
       onClick={() =>

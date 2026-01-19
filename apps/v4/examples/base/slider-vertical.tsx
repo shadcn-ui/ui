@@ -2,7 +2,7 @@ import { Slider } from "@/examples/base/ui/slider"
 
 export function SliderVertical() {
   return (
-    <div className="flex items-center gap-6">
+    <div className="mx-auto flex w-full max-w-xs items-center justify-center gap-6">
       <Slider
         defaultValue={[50]}
         max={100}

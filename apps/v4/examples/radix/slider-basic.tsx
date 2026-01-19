@@ -1,5 +1,0 @@
-import { Slider } from "@/examples/radix/ui/slider"
-
-export function SliderBasic() {
-  return <Slider defaultValue={[50]} max={100} step={1} />
-}

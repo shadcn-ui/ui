@@ -33,7 +33,7 @@ npx shadcn@latest add sonner
 
 <Step>Add the Toaster component</Step>
 
-```tsx title="app/layout.tsx" {1,9}
+```tsx title="app/layout.tsx" {1,9} showLineNumbers
 import { Toaster } from "@/components/ui/sonner"
 
 export default function RootLayout({ children }) {
@@ -107,53 +107,20 @@ toast("Event has been created.")
 
 ## Examples
 
+### Types
+
 <ComponentPreview styleName="base-nova" name="sonner-types" />
 
-## Changelog
+### Description
 
-### 2025-10-13 Icons
+<ComponentPreview styleName="base-nova" name="sonner-description" />
 
-We've updated the Sonner component to use icons from `lucide`. Update your `sonner.tsx` file to use the new icons.
+### Position
 
-```tsx showLineNumbers title="components/ui/sonner.tsx" {3-9,20-26}
-"use client"
+Use the `position` prop to change the position of the toast.
 
-import {
-  CircleCheckIcon,
-  InfoIcon,
-  Loader2Icon,
-  OctagonXIcon,
-  TriangleAlertIcon,
-} from "lucide-react"
-import { useTheme } from "next-themes"
-import { Toaster as Sonner, ToasterProps } from "sonner"
+<ComponentPreview styleName="base-nova" name="sonner-position" />
 
-const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+## API Reference
 
-  return (
-    <Sonner
-      theme={theme as ToasterProps["theme"]}
-      className="toaster group"
-      icons={{
-        success: <CircleCheckIcon className="size-4" />,
-        info: <InfoIcon className="size-4" />,
-        warning: <TriangleAlertIcon className="size-4" />,
-        error: <OctagonXIcon className="size-4" />,
-        loading: <Loader2Icon className="size-4 animate-spin" />,
-      }}
-      style={
-        {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
-          "--normal-border": "var(--border)",
-          "--border-radius": "var(--radius)",
-        } as React.CSSProperties
-      }
-      {...props}
-    />
-  )
-}
-
-export { Toaster }
-```
+See the [Sonner API Reference](https://sonner.emilkowal.ski/api) for more information.

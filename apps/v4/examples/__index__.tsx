@@ -3905,19 +3905,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "slider-basic": {
-      name: "slider-basic",
-      filePath: "examples/radix/slider-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/slider-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "slider-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "slider-controlled": {
       name: "slider-controlled",
       filePath: "examples/radix/slider-controlled.tsx",
@@ -3954,19 +3941,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "slider-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "slider-fields": {
-      name: "slider-fields",
-      filePath: "examples/radix/slider-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/slider-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "slider-fields"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4009,19 +3983,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "sonner-basic": {
-      name: "sonner-basic",
-      filePath: "examples/radix/sonner-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/sonner-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "sonner-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "sonner-demo": {
       name: "sonner-demo",
       filePath: "examples/radix/sonner-demo.tsx",
@@ -4035,6 +3996,32 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "sonner-description": {
+      name: "sonner-description",
+      filePath: "examples/radix/sonner-description.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sonner-description")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner-description"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sonner-position": {
+      name: "sonner-position",
+      filePath: "examples/radix/sonner-position.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sonner-position")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner-position"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "sonner-types": {
       name: "sonner-types",
       filePath: "examples/radix/sonner-types.tsx",
@@ -4045,19 +4032,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "sonner-types"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "sonner-with-description": {
-      name: "sonner-with-description",
-      filePath: "examples/radix/sonner-with-description.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/sonner-with-description")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "sonner-with-description"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9317,19 +9291,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "slider-basic": {
-      name: "slider-basic",
-      filePath: "examples/base/slider-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/slider-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "slider-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "slider-controlled": {
       name: "slider-controlled",
       filePath: "examples/base/slider-controlled.tsx",
@@ -9366,19 +9327,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "slider-disabled"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "slider-fields": {
-      name: "slider-fields",
-      filePath: "examples/base/slider-fields.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/slider-fields")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "slider-fields"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9421,19 +9369,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "sonner-basic": {
-      name: "sonner-basic",
-      filePath: "examples/base/sonner-basic.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/sonner-basic")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "sonner-basic"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "sonner-demo": {
       name: "sonner-demo",
       filePath: "examples/base/sonner-demo.tsx",
@@ -9447,6 +9382,32 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "sonner-description": {
+      name: "sonner-description",
+      filePath: "examples/base/sonner-description.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sonner-description")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner-description"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sonner-position": {
+      name: "sonner-position",
+      filePath: "examples/base/sonner-position.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sonner-position")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sonner-position"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "sonner-types": {
       name: "sonner-types",
       filePath: "examples/base/sonner-types.tsx",
@@ -9457,19 +9418,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "sonner-types"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "sonner-with-description": {
-      name: "sonner-with-description",
-      filePath: "examples/base/sonner-with-description.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/sonner-with-description")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "sonner-with-description"
         return { default: mod.default || mod[exportName] }
       }),
     },

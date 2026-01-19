@@ -8,11 +8,7 @@ links:
   api: https://www.radix-ui.com/docs/primitives/components/slider#api-reference
 ---
 
-<ComponentPreview
-  styleName="radix-nova"
-  name="slider-demo"
-  description="A slider component."
-/>
+<ComponentPreview styleName="radix-nova" name="slider-demo" />
 
 ## Installation
 
@@ -65,3 +61,37 @@ import { Slider } from "@/components/ui/slider"
 ```tsx
 <Slider defaultValue={[33]} max={100} step={1} />
 ```
+
+## Examples
+
+### Range
+
+Use an array with two values for a range slider.
+
+<ComponentPreview styleName="radix-nova" name="slider-range" />
+
+### Multiple Thumbs
+
+Use an array with multiple values for multiple thumbs.
+
+<ComponentPreview styleName="radix-nova" name="slider-multiple" />
+
+### Vertical
+
+Use `orientation="vertical"` for a vertical slider.
+
+<ComponentPreview styleName="radix-nova" name="slider-vertical" />
+
+### Controlled
+
+<ComponentPreview styleName="radix-nova" name="slider-controlled" />
+
+### Disabled
+
+Use the `disabled` prop to disable the slider.
+
+<ComponentPreview styleName="radix-nova" name="slider-disabled" />
+
+## API Reference
+
+See the [Radix UI Slider](https://www.radix-ui.com/docs/primitives/components/slider#api-reference) documentation.
