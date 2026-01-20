@@ -1,11 +1,5 @@
-import { PlusIcon } from "lucide-react"
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/new-york-v4/ui/avatar"
-import { Button } from "@/registry/new-york-v4/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
+import { Button } from "@/examples/radix/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -13,7 +7,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/new-york-v4/ui/empty"
+} from "@/examples/radix/ui/empty"
+import { PlusIcon } from "lucide-react"
 
 export function EmptyAvatarGroup() {
   return (

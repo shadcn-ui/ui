@@ -1,5 +1,5 @@
-import { Button } from "@/registry/new-york-v4/ui/button"
-import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
+import { Button } from "@/examples/radix/ui/button"
+import { Checkbox } from "@/examples/radix/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -8,16 +8,16 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/registry/new-york-v4/ui/field"
-import { Input } from "@/registry/new-york-v4/ui/input"
+} from "@/examples/radix/ui/field"
+import { Input } from "@/examples/radix/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/new-york-v4/ui/select"
-import { Textarea } from "@/registry/new-york-v4/ui/textarea"
+} from "@/examples/radix/ui/select"
+import { Textarea } from "@/examples/radix/ui/textarea"
 
 export function FieldDemo() {
   return (
