@@ -12,8 +12,10 @@ export function DocsBaseSwitcher({
   component: string
   className?: string
 }) {
+  const activeBase = BASES.find((baseItem) => base === baseItem.name)
+
   return (
-    <div className={cn("inline-flex items-center gap-6", className)}>
+    <div className={cn("inline-flex w-full items-center gap-6", className)}>
       {BASES.map((baseItem) => (
         <Link
           key={baseItem.name}
@@ -24,6 +26,14 @@ export function DocsBaseSwitcher({
           {baseItem.title}
         </Link>
       ))}
+      {activeBase?.meta?.logo && (
+        <div
+          className="text-muted-foreground ml-auto size-4 shrink-0 opacity-80 [&_svg]:size-4"
+          dangerouslySetInnerHTML={{
+            __html: activeBase.meta.logo,
+          }}
+        />
+      )}
     </div>
   )
 }
