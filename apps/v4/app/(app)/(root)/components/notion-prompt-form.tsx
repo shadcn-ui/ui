@@ -1,24 +1,8 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import {
-  IconApps,
-  IconArrowUp,
-  IconAt,
-  IconBook,
-  IconCircleDashedPlus,
-  IconPaperclip,
-  IconPlus,
-  IconWorld,
-  IconX,
-} from "@tabler/icons-react"
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/new-york-v4/ui/avatar"
-import { Badge } from "@/registry/new-york-v4/ui/badge"
+import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
+import { Badge } from "@/examples/radix/ui/badge"
 import {
   Command,
   CommandEmpty,
@@ -26,7 +10,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/new-york-v4/ui/command"
+} from "@/examples/radix/ui/command"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -39,25 +23,36 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/new-york-v4/ui/dropdown-menu"
-import { Field, FieldLabel } from "@/registry/new-york-v4/ui/field"
+} from "@/examples/radix/ui/dropdown-menu"
+import { Field, FieldLabel } from "@/examples/radix/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@/registry/new-york-v4/ui/input-group"
+} from "@/examples/radix/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york-v4/ui/popover"
-import { Switch } from "@/registry/new-york-v4/ui/switch"
+} from "@/examples/radix/ui/popover"
+import { Switch } from "@/examples/radix/ui/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
+} from "@/examples/radix/ui/tooltip"
+import {
+  IconApps,
+  IconArrowUp,
+  IconAt,
+  IconBook,
+  IconCircleDashedPlus,
+  IconPaperclip,
+  IconPlus,
+  IconWorld,
+  IconX,
+} from "@tabler/icons-react"
 
 const SAMPLE_DATA = {
   mentionable: [

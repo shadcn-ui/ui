@@ -99,7 +99,7 @@ export function ItemPicker({
             variant="outline"
             aria-label="Select item"
             size="sm"
-            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-muted/50 sm:bg-background md:dark:bg-background border-foreground/10 dark:bg-muted/50 h-[calc(--spacing(13.5))] flex-1 touch-manipulation justify-between gap-2 rounded-xl pr-4! pl-2.5 text-left shadow-none select-none *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:max-w-56 sm:rounded-lg sm:pr-2! xl:max-w-md"
+            className="data-popup-open:bg-muted dark:data-popup-open:bg-muted/50 bg-muted/50 sm:bg-background md:dark:bg-background border-foreground/10 dark:bg-muted/50 h-[calc(--spacing(13.5))] flex-1 touch-manipulation justify-between gap-2 rounded-xl pr-4! pl-2.5 text-left shadow-none select-none *:data-[slot=combobox-trigger-icon]:hidden sm:h-8 sm:max-w-56 sm:rounded-lg sm:pr-2! xl:max-w-64"
           />
         }
       >
@@ -123,9 +123,9 @@ export function ItemPicker({
         <HugeiconsIcon icon={Search01Icon} />
       </ComboboxTrigger>
       <ComboboxContent
-        className="ring-foreground/10 min-w-[calc(var(--available-width)---spacing(4))] translate-x-2 animate-none rounded-xl border-0 ring-1 data-open:animate-none sm:min-w-[calc(var(--anchor-width)+--spacing(7))] sm:translate-x-0"
+        className="ring-foreground/10 min-w-[calc(var(--available-width)---spacing(4))] translate-x-2 animate-none rounded-xl border-0 ring-1 data-open:animate-none sm:min-w-[calc(var(--anchor-width)+--spacing(7))] sm:translate-x-0 xl:w-96"
         side="bottom"
-        align="center"
+        align="end"
       >
         <ComboboxInput
           showTrigger={false}

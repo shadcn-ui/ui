@@ -2,6 +2,8 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
+import { type PageTreeFolder } from "@/lib/page-tree"
+import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { CodeBlockCommand } from "@/components/code-block-command"
@@ -33,6 +35,25 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
+
+// Wrapper component that passes the components folder from the server.
+// This is only used on /docs/components/ index page, so default to radix.
+function ComponentsListWrapper() {
+  const componentsFolder = source.pageTree.children.find(
+    (page) => page.$id === "components"
+  )
+
+  if (componentsFolder?.type !== "folder") {
+    return null
+  }
+
+  return (
+    <ComponentsList
+      componentsFolder={componentsFolder as PageTreeFolder}
+      currentBase="radix"
+    />
+  )
+}
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
@@ -134,7 +155,7 @@ export const mdxComponents = {
     <hr className="my-4 md:my-8" {...props} />
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <div className="no-scrollbar my-6 w-full overflow-y-auto rounded-lg border">
+    <div className="no-scrollbar my-6 w-full overflow-y-auto rounded-xl border">
       <table
         className={cn(
           "relative w-full overflow-hidden border-none text-sm [&_tbody_tr:last-child]:border-b-0",
@@ -169,7 +190,7 @@ export const mdxComponents = {
     return (
       <pre
         className={cn(
-          "no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0",
+          "no-scrollbar min-w-0 overflow-x-auto overscroll-none px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0",
           className
         )}
         {...props}
@@ -258,15 +279,18 @@ export const mdxComponents = {
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
-        "font-heading mt-8 scroll-m-32 text-xl font-medium tracking-tight",
+        "font-heading mt-8 scroll-m-32 text-lg font-medium tracking-tight",
         className
       )}
       {...props}
     />
   ),
-  Steps: ({ ...props }) => (
+  Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div
-      className="[&>h3]:step steps mb-12 [counter-reset:step] *:[h3]:first:!mt-0"
+      className={cn(
+        "[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8",
+        className
+      )}
       {...props}
     />
   ),
@@ -343,7 +367,7 @@ export const mdxComponents = {
   ComponentPreview,
   ComponentSource,
   CodeCollapsibleWrapper,
-  ComponentsList,
+  ComponentsList: ComponentsListWrapper,
   DirectoryList,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
