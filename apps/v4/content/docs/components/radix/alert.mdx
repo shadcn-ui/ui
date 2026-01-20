@@ -1,0 +1,148 @@
+---
+title: Alert
+description: Displays a callout for user attention.
+base: radix
+component: true
+---
+
+<ComponentPreview
+  name="alert-demo"
+  styleName="radix-nova"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add alert
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="alert"
+  title="components/ui/alert.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Alert,
+  AlertAction,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+```
+
+```tsx showLineNumbers
+<Alert>
+  <InfoIcon />
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    You can add components and dependencies to your app using the cli.
+  </AlertDescription>
+  <AlertAction>
+    <Button variant="outline">Enable</Button>
+  </AlertAction>
+</Alert>
+```
+
+## Examples
+
+### Basic
+
+A basic alert with an icon, title and description.
+
+<ComponentPreview
+  name="alert-basic"
+  styleName="radix-nova"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
+
+### Destructive
+
+Use `variant="destructive"` to create a destructive alert.
+
+<ComponentPreview
+  name="alert-destructive"
+  styleName="radix-nova"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
+
+### Action
+
+Use `AlertAction` to add a button or other action element to the alert.
+
+<ComponentPreview
+  name="alert-action"
+  styleName="radix-nova"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
+
+### Custom Colors
+
+You can customize the alert colors by adding custom classes such as `bg-amber-50 dark:bg-amber-950` to the `Alert` component.
+
+<ComponentPreview
+  name="alert-colors"
+  styleName="radix-nova"
+  previewClassName="h-auto sm:h-72 p-6"
+/>
+
+## API Reference
+
+### Alert
+
+The `Alert` component displays a callout for user attention.
+
+| Prop      | Type                         | Default     |
+| --------- | ---------------------------- | ----------- |
+| `variant` | `"default" \| "destructive"` | `"default"` |
+
+### AlertTitle
+
+The `AlertTitle` component displays the title of the alert.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### AlertDescription
+
+The `AlertDescription` component displays the description or content of the alert.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
+
+### AlertAction
+
+The `AlertAction` component displays an action element (like a button) positioned absolutely in the top-right corner of the alert.
+
+| Prop        | Type     | Default |
+| ----------- | -------- | ------- |
+| `className` | `string` | -       |
