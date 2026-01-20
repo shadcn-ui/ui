@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/examples/radix/ui/button"
 import { ButtonGroup, ButtonGroupText } from "@/examples/radix/ui/button-group"
 import {

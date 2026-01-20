@@ -6,7 +6,6 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/examples/base/ui/field"
-import { Input } from "@/examples/base/ui/input"
 import {
   InputGroup,
   InputGroupAddon,

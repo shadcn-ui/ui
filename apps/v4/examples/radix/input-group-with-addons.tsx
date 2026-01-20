@@ -1,10 +1,11 @@
+"use client"
+
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
 } from "@/examples/radix/ui/field"
-import { Input } from "@/examples/radix/ui/input"
 import {
   InputGroup,
   InputGroupAddon,
