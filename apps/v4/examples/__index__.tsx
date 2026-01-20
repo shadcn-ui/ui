@@ -1825,19 +1825,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "default-item-group": {
-      name: "default-item-group",
-      filePath: "examples/radix/default-item-group.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/default-item-group")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "default-item-group"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "dialog-close-button": {
       name: "dialog-close-button",
       filePath: "examples/radix/dialog-close-button.tsx",
@@ -2381,19 +2368,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "hover-card-demo"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
-    "hover-card-in-dialog": {
-      name: "hover-card-in-dialog",
-      filePath: "examples/radix/hover-card-in-dialog.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/hover-card-in-dialog")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "hover-card-in-dialog"
         return { default: mod.default || mod[exportName] }
       }),
     },

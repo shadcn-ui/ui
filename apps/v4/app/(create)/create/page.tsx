@@ -4,7 +4,11 @@ import { ArrowLeftIcon } from "lucide-react"
 import type { SearchParams } from "nuqs/server"
 
 import { siteConfig } from "@/lib/config"
+import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
+import { Icons } from "@/components/icons"
+import { MainNav } from "@/components/main-nav"
+import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { SiteConfig } from "@/components/site-config"
 import { BASES } from "@/registry/config"
@@ -23,10 +27,6 @@ import { V0Button } from "@/app/(create)/components/v0-button"
 import { WelcomeDialog } from "@/app/(create)/components/welcome-dialog"
 import { getItemsForBase } from "@/app/(create)/lib/api"
 import { loadDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
-import { MainNav } from "@/components/main-nav"
-import { MobileNav } from "@/components/mobile-nav"
-import { Icons } from "@/components/icons"
-import { source } from "@/lib/source"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -87,35 +87,32 @@ export default async function CreatePage({
       <header className="sticky top-0 z-50 w-full">
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
           <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
-          <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
-          <MobileNav
-            tree={pageTree}
-            items={siteConfig.navItems}
-            className="flex lg:hidden"
-          />
-          <Button
-            asChild
-            variant="ghost"
-            size="icon"
-            className="hidden size-8 lg:flex"
-          >
-            <Link href="/">
-              <Icons.logo className="size-5" />
-              <span className="sr-only">{siteConfig.name}</span>
-            </Link>
-          </Button>
-          <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
-          </div>
-            <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center gap-2 px-4.5 pb-4 sm:static justify-end sm:p-0 lg:ml-0">
+            <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
+              <MobileNav
+                tree={pageTree}
+                items={siteConfig.navItems}
+                className="flex lg:hidden"
+              />
+              <Button
+                asChild
+                variant="ghost"
+                size="icon"
+                className="hidden size-8 lg:flex"
+              >
+                <Link href="/">
+                  <Icons.logo className="size-5" />
+                  <span className="sr-only">{siteConfig.name}</span>
+                </Link>
+              </Button>
+              <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
+            </div>
+            <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center justify-end gap-2 px-4.5 pb-4 sm:static sm:p-0 lg:ml-0">
               <ItemPicker items={filteredItems} />
               <div className="items-center gap-0 sm:hidden">
                 <RandomButton />
                 <ResetButton />
               </div>
-              <Separator
-                orientation="vertical"
-                className="mr-2 flex"
-              />
+              <Separator orientation="vertical" className="mr-2 flex" />
             </div>
             <div className="ml-auto flex items-center gap-2 sm:ml-0 md:justify-end">
               <SiteConfig className="3xl:flex hidden" />

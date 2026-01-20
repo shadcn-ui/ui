@@ -123,7 +123,7 @@ export function ItemPicker({
         <HugeiconsIcon icon={Search01Icon} />
       </ComboboxTrigger>
       <ComboboxContent
-        className="ring-foreground/10 min-w-[calc(var(--available-width)---spacing(4))] translate-x-2 animate-none rounded-xl border-0 ring-1 data-open:animate-none sm:min-w-[calc(var(--anchor-width)+--spacing(7))] xl:w-96 sm:translate-x-0"
+        className="ring-foreground/10 min-w-[calc(var(--available-width)---spacing(4))] translate-x-2 animate-none rounded-xl border-0 ring-1 data-open:animate-none sm:min-w-[calc(var(--anchor-width)+--spacing(7))] sm:translate-x-0 xl:w-96"
         side="bottom"
         align="end"
       >

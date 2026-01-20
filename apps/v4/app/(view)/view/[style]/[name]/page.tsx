@@ -84,7 +84,7 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const { Index } = await import("@/registry/__index__")
-  const { Index: BasesIndex } = await import("@/registry/bases/__index__")
+  // const { Index: BasesIndex } = await import("@/registry/bases/__index__")
   const { ExamplesIndex } = await import("@/examples/__index__")
   const params: Array<{ style: string; name: string }> = []
 
@@ -98,33 +98,35 @@ export async function generateStaticParams() {
       const examples = ExamplesIndex[baseName]
       if (examples) {
         for (const exampleName of Object.keys(examples)) {
-          params.push({
-            style: style.name,
-            name: exampleName,
-          })
-        }
-      }
-
-      // Add UI components from BasesIndex.
-      const baseIndex = BasesIndex[baseName]
-      if (baseIndex) {
-        for (const itemName in baseIndex) {
-          const item = baseIndex[itemName]
-          if (
-            [
-              "registry:block",
-              "registry:component",
-              "registry:example",
-              "registry:internal",
-            ].includes(item.type)
-          ) {
+          if (exampleName.startsWith("sidebar-")) {
             params.push({
               style: style.name,
-              name: item.name,
+              name: exampleName,
             })
           }
         }
       }
+
+      // // Add UI components from BasesIndex.
+      // const baseIndex = BasesIndex[baseName]
+      // if (baseIndex) {
+      //   for (const itemName in baseIndex) {
+      //     const item = baseIndex[itemName]
+      //     if (
+      //       [
+      //         "registry:block",
+      //         "registry:component",
+      //         "registry:example",
+      //         "registry:internal",
+      //       ].includes(item.type)
+      //     ) {
+      //       params.push({
+      //         style: style.name,
+      //         name: item.name,
+      //       })
+      //     }
+      //   }
+      // }
 
       continue
     }

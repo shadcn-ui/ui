@@ -64,7 +64,7 @@ export default function ChartsLayout({
       <PageNav id="charts">
         <ChartsNav />
       </PageNav>
-      <div className="container-wrapper section-soft flex-1">
+      <div className="container-wrapper flex-1">
         <div className="container pb-6">
           <section className="theme-container">{children}</section>
         </div>
