@@ -25,23 +25,9 @@ export function ComponentPreview({
   chromeLessOnMobile?: boolean
   previewClassName?: string
 }) {
-  const Component = getRegistryComponent(name, styleName)
-
-  if (!Component) {
-    return (
-      <p className="text-muted-foreground mt-6 text-sm">
-        Component{" "}
-        <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
-          {name}
-        </code>{" "}
-        not found in registry.
-      </p>
-    )
-  }
-
   if (type === "block") {
     return (
-      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-1">
+      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-xl border md:-mx-1">
         <Image
           src={`/r/styles/new-york-v4/${name}-light.png`}
           alt={name}
@@ -62,6 +48,22 @@ export function ComponentPreview({
       </div>
     )
   }
+
+  const Component = getRegistryComponent(name, styleName)
+
+  if (!Component) {
+    return (
+      <p className="text-muted-foreground mt-6 text-sm">
+        Component{" "}
+        <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
+          {name}
+        </code>{" "}
+        not found in registry.
+      </p>
+    )
+  }
+
+
 
   return (
     <ComponentPreviewTabs

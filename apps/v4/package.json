@@ -22,7 +22,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@base-ui/react": "1.0.0-rc.2",
+    "@base-ui/react": "1.1.0",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",
@@ -89,7 +89,7 @@
     "lru-cache": "^11.2.4",
     "lucide-react": "0.474.0",
     "motion": "^12.12.1",
-    "next": "16.0.10",
+    "next": "16.1.4",
     "next-themes": "0.4.6",
     "nuqs": "^2.7.2",
     "postcss": "^8.5.1",
