@@ -45,18 +45,6 @@ export async function GET(request: NextRequest) {
     }
 
     const designSystemConfig = parseResult.data
-    const registryBase = buildRegistryBase(designSystemConfig)
-    const validateResult = registryItemSchema.safeParse(registryBase)
-
-    if (!validateResult.success) {
-      return NextResponse.json(
-        {
-          error: "Invalid registry base item",
-          details: validateResult.error.format(),
-        },
-        { status: 500 }
-      )
-    }
 
     track("create_open_in_v0", designSystemConfig)
 
@@ -75,28 +63,23 @@ export async function GET(request: NextRequest) {
 }
 
 async function buildV0Payload(designSystemConfig: DesignSystemConfig) {
-  const files: z.infer<typeof registryItemFileSchema>[] = []
+  const registryBase = buildRegistryBase(designSystemConfig)
 
-  // Build globals.css file.
-  files.push(buildGlobalsCss(designSystemConfig))
-
-  // Build layout.tsx file.
-  files.push(buildLayoutFile(designSystemConfig))
-
-  // Build component files.
-  const componentFiles = await buildComponentFiles(designSystemConfig)
-  files.push(...componentFiles)
+  // Build all files in parallel.
+  const [globalsCss, layoutFile, componentFiles] = await Promise.all([
+    buildGlobalsCss(registryBase),
+    buildLayoutFile(designSystemConfig),
+    buildComponentFiles(designSystemConfig),
+  ])
 
   return registryItemSchema.parse({
     name: designSystemConfig.item ?? "Item",
     type: "registry:item",
-    files,
+    files: [globalsCss, layoutFile, ...componentFiles],
   })
 }
 
-function buildGlobalsCss(designSystemConfig: DesignSystemConfig) {
-  const registryBase = buildRegistryBase(designSystemConfig)
-
+function buildGlobalsCss(registryBase: RegistryItem) {
   const lightVars = Object.entries(registryBase.cssVars?.light ?? {})
     .map(([key, value]) => `  --${key}: ${value};`)
     .join("\n")
