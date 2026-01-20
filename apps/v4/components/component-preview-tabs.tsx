@@ -47,11 +47,11 @@ export function ComponentPreviewTabs({
           <div
             data-slot="code"
             data-mobile-code-visible={isMobileCodeVisible}
-            className="relative overflow-hidden data-[mobile-code-visible=false]:max-h-24 md:max-h-none data-[mobile-code-visible=false]:md:max-h-none [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
+            className="relative overflow-hidden data-[mobile-code-visible=false]:max-h-24 [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
           >
             {source}
             {!isMobileCodeVisible && (
-              <div className="absolute inset-0 flex items-center justify-center md:hidden">
+              <div className="absolute inset-0 flex items-center justify-center">
                 <div
                   className="absolute inset-0"
                   style={{

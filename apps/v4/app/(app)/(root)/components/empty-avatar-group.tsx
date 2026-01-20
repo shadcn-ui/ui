@@ -1,4 +1,9 @@
-import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "@/examples/radix/ui/avatar"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarImage,
+} from "@/examples/radix/ui/avatar"
 import { Button } from "@/examples/radix/ui/button"
 import {
   Empty,
