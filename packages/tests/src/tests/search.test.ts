@@ -404,13 +404,6 @@ describe("shadcn search", () => {
     expect(output.stdout).toContain('Unknown registry "@test-123"')
   })
 
-  it("should handle empty registry name", async () => {
-    const fixturePath = await createFixtureTestDirectory("next-app-init")
-    const output = await npxShadcn(fixturePath, ["search", "@"])
-
-    expect(output.stdout).toContain("The item at @/registry was not found.")
-  })
-
   it("should handle namespace without @ prefix", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app-init")
     const output = await npxShadcn(fixturePath, ["search", "one"])

@@ -1,4 +1,5 @@
 export {
+  getRegistries,
   getRegistryItems,
   resolveRegistryItems,
   getRegistry,

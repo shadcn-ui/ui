@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sidebar-11",
-  "type": "registry:block",
   "description": "A sidebar with a collapsible file tree.",
   "registryDependencies": [
     "sidebar",
@@ -25,5 +24,6 @@
   "categories": [
     "sidebar",
     "dashboard"
-  ]
+  ],
+  "type": "registry:block"
 }
