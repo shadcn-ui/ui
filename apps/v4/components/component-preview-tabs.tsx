@@ -48,6 +48,10 @@ export function ComponentPreviewTabs({
             data-slot="code"
             data-mobile-code-visible={isMobileCodeVisible}
             className="relative overflow-hidden data-[mobile-code-visible=false]:max-h-24 [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
+            style={{
+              contentVisibility: "auto",
+              containIntrinsicSize: "auto 96px",
+            }}
           >
             {source}
             {!isMobileCodeVisible && (
