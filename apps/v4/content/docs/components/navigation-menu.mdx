@@ -87,14 +87,24 @@ You can use the `asChild` prop to make another component look like a navigation 
 
 ```tsx showLineNumbers title="components/example-navigation-menu.tsx"
 import Link from "next/link"
+import { 
+  NavigationMenu, 
+  NavigationMenuList, 
+  NavigationMenuItem, 
+  NavigationMenuLink 
+} from "@/components/ui/navigation-menu"
 
 export function NavigationMenuDemo() {
   return (
-    <NavigationMenuItem>
-      <NavigationMenuLink asChild>
-        <Link href="/docs">Documentation</Link>
-      </NavigationMenuLink>
-    </NavigationMenuItem>
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild>
+            <Link href="/docs">Documentation</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   )
 }
 ```
