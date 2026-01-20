@@ -349,6 +349,8 @@ The `SidebarProvider` component is used to provide the sidebar context to the `S
 | `defaultOpen`  | `boolean`                 | Default open state of the sidebar.           |
 | `open`         | `boolean`                 | Open state of the sidebar (controlled).      |
 | `onOpenChange` | `(open: boolean) => void` | Sets open state of the sidebar (controlled). |
+| `cookieName`   | `string`                  | Cookie key used for persisted state.         |
+| `shortcut`     | `string` or `null`        | Shortcut key; set `null` to disable.         |
 
 ### Width
 
@@ -378,14 +380,22 @@ This will handle the width of the sidebar but also the layout spacing.
 
 ### Keyboard Shortcut
 
-The `SIDEBAR_KEYBOARD_SHORTCUT` variable is used to set the keyboard shortcut used to open and close the sidebar.
+By default, the `SidebarProvider` listens for `cmd+b` on Mac and `ctrl+b` on Windows.
 
-To trigger the sidebar, you use the `cmd+b` keyboard shortcut on Mac and `ctrl+b` on Windows.
+If you have multiple sidebars in the same page, you can configure a different shortcut per provider using the `shortcut` prop.
 
-You can change the keyboard shortcut by updating the `SIDEBAR_KEYBOARD_SHORTCUT` variable.
+```tsx showLineNumbers
+<SidebarProvider shortcut="b">
+  <Sidebar />
+</SidebarProvider>
+```
 
-```tsx showLineNumbers title="components/ui/sidebar.tsx"
-const SIDEBAR_KEYBOARD_SHORTCUT = "b"
+To disable the keyboard shortcut for a specific provider, set `shortcut={null}`. This opts that provider out of global keyboard handling.
+
+```tsx showLineNumbers
+<SidebarProvider shortcut={null}>
+  <Sidebar />
+</SidebarProvider>
 ```
 
 ### Persisted State
@@ -416,10 +426,34 @@ export async function Layout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-You can change the name of the cookie by updating the `SIDEBAR_COOKIE_NAME` variable in `sidebar.tsx`.
+If you have multiple sidebars and want them to persist independently, pass a unique `cookieName` to each provider.
 
-```tsx showLineNumbers title="components/ui/sidebar.tsx"
-const SIDEBAR_COOKIE_NAME = "sidebar_state"
+If you only want one sidebar to respond to `cmd/ctrl + b`, set `shortcut={null}` on the other provider. You can also choose a custom shortcut (e.g. `shortcut="k"`) if you want the second sidebar to be keyboard-toggleable.
+
+```tsx showLineNumbers title="app/layout.tsx"
+import { cookies } from "next/headers"
+
+import { SidebarProvider } from "@/components/ui/sidebar"
+
+export async function Layout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies()
+
+  const leftDefaultOpen = cookieStore.get("sidebar_left_state")?.value === "true"
+  const rightDefaultOpen = cookieStore.get("sidebar_right_state")?.value === "true"
+
+  return (
+    <>
+      <SidebarProvider defaultOpen={leftDefaultOpen} cookieName="sidebar_left_state" shortcut="b">
+        {/* Left sidebar */}
+        {children}
+      </SidebarProvider>
+
+      <SidebarProvider defaultOpen={rightDefaultOpen} cookieName="sidebar_right_state" shortcut={null}>
+        {/* Right sidebar */}
+      </SidebarProvider>
+    </>
+  )
+}
 ```
 
 ## Sidebar
