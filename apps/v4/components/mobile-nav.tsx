@@ -20,7 +20,7 @@ const TOP_LEVEL_SECTIONS = [
   { name: "Introduction", href: "/docs" },
   {
     name: "Components",
-    href: "/docs/components/radix",
+    href: "/docs/components",
   },
   {
     name: "Installation",

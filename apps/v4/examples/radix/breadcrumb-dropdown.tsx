@@ -33,7 +33,7 @@ export function BreadcrumbDropdown() {
             <DropdownMenuTrigger asChild>
               <button className="flex items-center gap-1">
                 Components
-                <ChevronDownIcon />
+                <ChevronDownIcon className="size-3.5" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
