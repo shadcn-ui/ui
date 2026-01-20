@@ -23,6 +23,10 @@ import { V0Button } from "@/app/(create)/components/v0-button"
 import { WelcomeDialog } from "@/app/(create)/components/welcome-dialog"
 import { getItemsForBase } from "@/app/(create)/lib/api"
 import { loadDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { MainNav } from "@/components/main-nav"
+import { MobileNav } from "@/components/mobile-nav"
+import { Icons } from "@/components/icons"
+import { source } from "@/lib/source"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -64,6 +68,7 @@ export default async function CreatePage({
   const params = await loadDesignSystemSearchParams(searchParams)
   const base = BASES.find((b) => b.name === params.base) ?? BASES[0]
 
+  const pageTree = source.pageTree
   const items = await getItemsForBase(base.name)
 
   const filteredItems = items
@@ -82,27 +87,26 @@ export default async function CreatePage({
       <header className="sticky top-0 z-50 w-full">
         <div className="container-wrapper 3xl:fixed:px-0 px-6">
           <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
-            <div className="flex items-center xl:w-1/3">
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="rounded-lg shadow-none"
-              >
-                <Link href="/">
-                  <ArrowLeftIcon />
-                  Back
-                </Link>
-              </Button>
-              <Separator
-                orientation="vertical"
-                className="mx-2 hidden sm:mx-4 lg:flex"
-              />
-              <div className="text-muted-foreground hidden text-sm font-medium lg:flex">
-                New Project
-              </div>
-            </div>
-            <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center gap-2 px-4.5 pb-4 sm:static sm:justify-end sm:p-0 lg:ml-0 xl:justify-center">
+          <div className="3xl:fixed:container flex h-(--header-height) items-center **:data-[slot=separator]:!h-4">
+          <MobileNav
+            tree={pageTree}
+            items={siteConfig.navItems}
+            className="flex lg:hidden"
+          />
+          <Button
+            asChild
+            variant="ghost"
+            size="icon"
+            className="hidden size-8 lg:flex"
+          >
+            <Link href="/">
+              <Icons.logo className="size-5" />
+              <span className="sr-only">{siteConfig.name}</span>
+            </Link>
+          </Button>
+          <MainNav items={siteConfig.navItems} className="hidden lg:flex" />
+          </div>
+            <div className="fixed inset-x-0 bottom-0 ml-auto flex flex-1 items-center gap-2 px-4.5 pb-4 sm:static justify-end sm:p-0 lg:ml-0">
               <ItemPicker items={filteredItems} />
               <div className="items-center gap-0 sm:hidden">
                 <RandomButton />
@@ -110,10 +114,10 @@ export default async function CreatePage({
               </div>
               <Separator
                 orientation="vertical"
-                className="mr-2 hidden sm:flex xl:hidden"
+                className="mr-2 flex"
               />
             </div>
-            <div className="ml-auto flex items-center gap-2 sm:ml-0 md:justify-end xl:ml-auto xl:w-1/3">
+            <div className="ml-auto flex items-center gap-2 sm:ml-0 md:justify-end">
               <SiteConfig className="3xl:flex hidden" />
               <Separator orientation="vertical" className="3xl:flex hidden" />
               <ModeSwitcher />
