@@ -185,7 +185,7 @@ export function NotionPromptForm() {
   const hasMentions = mentions.length > 0
 
   return (
-    <form className="[--radius:1.2rem]">
+    <form>
       <Field>
         <FieldLabel htmlFor="notion-prompt" className="sr-only">
           Prompt
@@ -217,7 +217,7 @@ export function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Mention a person, page, or date</TooltipContent>
               </Tooltip>
-              <PopoverContent className="p-0 [--radius:1.2rem]" align="start">
+              <PopoverContent className="p-0" align="start">
                 <Command>
                   <CommandInput placeholder="Search pages..." />
                   <CommandList>
@@ -304,9 +304,9 @@ export function NotionPromptForm() {
               <DropdownMenuContent
                 side="top"
                 align="start"
-                className="[--radius:1rem]"
+                className="w-48"
               >
-                <DropdownMenuGroup className="w-42">
+                <DropdownMenuGroup className="w-48">
                   <DropdownMenuLabel className="text-muted-foreground text-xs">
                     Select Agent Mode
                   </DropdownMenuLabel>
@@ -344,7 +344,7 @@ export function NotionPromptForm() {
               <DropdownMenuContent
                 side="top"
                 align="end"
-                className="[--radius:1rem]"
+                className="w-72"
               >
                 <DropdownMenuGroup>
                   <DropdownMenuItem

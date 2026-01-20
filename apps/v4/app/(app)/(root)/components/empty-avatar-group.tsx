@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
+import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "@/examples/radix/ui/avatar"
 import { Button } from "@/examples/radix/ui/button"
 import {
   Empty,
@@ -12,10 +12,10 @@ import { PlusIcon } from "lucide-react"
 
 export function EmptyAvatarGroup() {
   return (
-    <Empty className="flex-none border">
+    <Empty className="flex-none border py-10">
       <EmptyHeader>
         <EmptyMedia>
-          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
+          <AvatarGroup className="grayscale">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
@@ -34,7 +34,7 @@ export function EmptyAvatarGroup() {
               />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
-          </div>
+          </AvatarGroup>
         </EmptyMedia>
         <EmptyTitle>No Team Members</EmptyTitle>
         <EmptyDescription>
