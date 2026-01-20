@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline-activity-feed",
+  "type": "registry:example",
+  "registryDependencies": [
+    "timeline",
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/timeline-activity-feed.tsx",
+      "content": "import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/new-york-v4/ui/avatar\"\nimport {\n  Timeline,\n  TimelineConnector,\n  TimelineContent,\n  TimelineDescription,\n  TimelineHeader,\n  TimelineIcon,\n  TimelineItem,\n  TimelineTime,\n  TimelineTitle,\n} from \"@/registry/new-york-v4/ui/timeline\"\n\nexport default function TimelineActivityFeed() {\n  return (\n    <Timeline>\n      <TimelineItem>\n        <TimelineConnector />\n        <TimelineHeader>\n          <TimelineIcon className=\"overflow-hidden p-0\">\n            <Avatar className=\"size-full\">\n              <AvatarImage src=\"/avatars/01.png\" alt=\"@shadcn\" />\n              <AvatarFallback>CN</AvatarFallback>\n            </Avatar>\n          </TimelineIcon>\n          <div className=\"flex flex-col gap-0.5\">\n            <TimelineTitle>\n              <span className=\"font-semibold\">Sarah Chen</span>{\" \"}\n              <span className=\"text-muted-foreground font-normal\">\n                commented on\n              </span>{\" \"}\n              <span className=\"font-semibold\">Issue #42</span>\n            </TimelineTitle>\n            <TimelineTime>5 minutes ago</TimelineTime>\n          </div>\n        </TimelineHeader>\n        <TimelineContent>\n          <TimelineDescription className=\"bg-muted/50 rounded-md border p-3\">\n            I think we should consider using a different approach for the\n            authentication flow. Let me know your thoughts.\n          </TimelineDescription>\n        </TimelineContent>\n      </TimelineItem>\n      <TimelineItem>\n        <TimelineConnector />\n        <TimelineHeader>\n          <TimelineIcon className=\"overflow-hidden p-0\">\n            <Avatar className=\"size-full\">\n              <AvatarImage src=\"/avatars/02.png\" alt=\"@user\" />\n              <AvatarFallback>JD</AvatarFallback>\n            </Avatar>\n          </TimelineIcon>\n          <div className=\"flex flex-col gap-0.5\">\n            <TimelineTitle>\n              <span className=\"font-semibold\">John Doe</span>{\" \"}\n              <span className=\"text-muted-foreground font-normal\">\n                merged pull request\n              </span>{\" \"}\n              <span className=\"font-semibold\">#123</span>\n            </TimelineTitle>\n            <TimelineTime>2 hours ago</TimelineTime>\n          </div>\n        </TimelineHeader>\n      </TimelineItem>\n    </Timeline>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

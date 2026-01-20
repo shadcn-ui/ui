@@ -1031,6 +1031,24 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "timeline": {
+      name: "timeline",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york-v4/ui/timeline.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/timeline.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "dashboard-01": {
       name: "dashboard-01",
       title: "undefined",
@@ -8270,6 +8288,78 @@ export const Index: Record<string, Record<string, any>> = {
       }),
       categories: ["calendar","date"],
       meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
+    },
+    "timeline-demo": {
+      name: "timeline-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/new-york-v4/examples/timeline-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/timeline-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "timeline-with-icons": {
+      name: "timeline-with-icons",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/new-york-v4/examples/timeline-with-icons.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/timeline-with-icons.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "timeline-activity-feed": {
+      name: "timeline-activity-feed",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline","avatar"],
+      files: [{
+        path: "registry/new-york-v4/examples/timeline-activity-feed.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/timeline-activity-feed.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "timeline-horizontal": {
+      name: "timeline-horizontal",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["timeline"],
+      files: [{
+        path: "registry/new-york-v4/examples/timeline-horizontal.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/timeline-horizontal.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
     },
     "sidebar-demo": {
       name: "sidebar-demo",

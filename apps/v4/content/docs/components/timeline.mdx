@@ -1,0 +1,148 @@
+---
+title: Timeline
+description: A component for displaying chronological events, activities, or steps.
+component: true
+---
+
+<ComponentPreview
+  name="timeline-demo"
+  description="A basic timeline showing order tracking."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add timeline
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="timeline" title="components/ui/timeline.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Timeline,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDescription,
+  TimelineHeader,
+  TimelineIcon,
+  TimelineItem,
+  TimelineTime,
+  TimelineTitle,
+} from "@/components/ui/timeline"
+```
+
+```tsx showLineNumbers
+<Timeline>
+  <TimelineItem>
+    <TimelineConnector />
+    <TimelineHeader>
+      <TimelineIcon />
+      <TimelineTitle>Event Title</TimelineTitle>
+    </TimelineHeader>
+    <TimelineContent>
+      <TimelineDescription>Event description goes here.</TimelineDescription>
+      <TimelineTime>Jan 15, 2024</TimelineTime>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+## Examples
+
+### With Icons
+
+Use the `variant` prop on `TimelineIcon` and `status` prop on `TimelineItem` and `TimelineConnector` to show progress states.
+
+<ComponentPreview
+  name="timeline-with-icons"
+  description="Timeline with status icons and colors."
+/>
+
+### Activity Feed
+
+Combine with Avatar for activity feed layouts.
+
+<ComponentPreview
+  name="timeline-activity-feed"
+  description="Timeline as an activity feed with avatars."
+/>
+
+### Horizontal
+
+Use `orientation="horizontal"` for step indicators and wizard flows.
+
+<ComponentPreview
+  name="timeline-horizontal"
+  description="Horizontal timeline for step indicators."
+/>
+
+## API Reference
+
+### Timeline
+
+The root container for timeline items.
+
+| Prop        | Type                               | Default      | Description                      |
+| ----------- | ---------------------------------- | ------------ | -------------------------------- |
+| orientation | `"vertical" \| "horizontal"`       | `"vertical"` | The orientation of the timeline. |
+| position    | `"left" \| "right" \| "alternate"` | `"left"`     | Position of timeline items.      |
+
+### TimelineItem
+
+Individual timeline entry.
+
+| Prop   | Type                                                  | Default     | Description                |
+| ------ | ----------------------------------------------------- | ----------- | -------------------------- |
+| status | `"default" \| "completed" \| "current" \| "upcoming"` | `"default"` | Visual status of the item. |
+
+### TimelineIcon
+
+The indicator dot/icon for each item.
+
+| Prop    | Type                                                                  | Default     | Description                        |
+| ------- | --------------------------------------------------------------------- | ----------- | ---------------------------------- |
+| size    | `"sm" \| "default" \| "lg"`                                           | `"default"` | Size of the icon container.        |
+| variant | `"default" \| "primary" \| "secondary" \| "destructive" \| "outline"` | `"default"` | Visual variant using theme colors. |
+
+### TimelineConnector
+
+The line connecting timeline items.
+
+| Prop    | Type                                                  | Default     | Description                    |
+| ------- | ----------------------------------------------------- | ----------- | ------------------------------ |
+| variant | `"default" \| "dashed" \| "dotted"`                   | `"default"` | Line style.                    |
+| status  | `"default" \| "completed" \| "current" \| "upcoming"` | `"default"` | Visual status affecting color. |
+
+### TimelineTime
+
+A semantic `<time>` element for timestamps.
+
+| Prop     | Type     | Description                              |
+| -------- | -------- | ---------------------------------------- |
+| dateTime | `string` | Machine-readable date (ISO 8601 format). |

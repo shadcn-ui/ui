@@ -55,6 +55,7 @@ import { SwitchDemo } from "./components/switch-demo"
 import { TableDemo } from "./components/table-demo"
 import { TabsDemo } from "./components/tabs-demo"
 import { TextareaDemo } from "./components/textarea-demo"
+import { TimelineDemo } from "./components/timeline-demo"
 import { ToggleDemo } from "./components/toggle-demo"
 import { ToggleGroupDemo } from "./components/toggle-group-demo"
 import { TooltipDemo } from "./components/tooltip-demo"
@@ -389,6 +390,13 @@ export const componentRegistry: Record<string, ComponentConfig> = {
     component: TextareaDemo,
     type: "registry:ui",
     href: "/sink/textarea",
+  },
+  timeline: {
+    name: "Timeline",
+    component: TimelineDemo,
+    type: "registry:ui",
+    href: "/sink/timeline",
+    label: "New",
   },
   toggle: {
     name: "Toggle",
