@@ -12,6 +12,7 @@ import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeSwitcher } from "@/components/mode-switcher"
 import { SiteConfig } from "@/components/site-config"
+import globalRegistries from "@/registry/directory.json"
 // import blocks from "@/registry/__blocks__.json"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
@@ -46,6 +47,7 @@ export function SiteHeader() {
               <CommandMenu
                 tree={pageTree}
                 colors={colors}
+                registries={globalRegistries}
                 navItems={siteConfig.navItems}
               />
             </div>
