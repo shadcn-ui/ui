@@ -25,7 +25,7 @@ function Slider({
 
   return (
     <SliderPrimitive.Root
-      className="data-horizontal:w-full data-vertical:h-full"
+      className="data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full"
       data-slot="slider"
       defaultValue={defaultValue}
       value={value}
@@ -36,7 +36,7 @@ function Slider({
     >
       <SliderPrimitive.Control
         className={cn(
-          "cn-slider relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:w-auto data-vertical:flex-col",
+          "cn-slider relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
           className
         )}
       >
@@ -46,7 +46,7 @@ function Slider({
         >
           <SliderPrimitive.Indicator
             data-slot="slider-range"
-            className="cn-slider-range select-none data-horizontal:h-full data-vertical:w-full"
+            className="cn-slider-range select-none data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
           />
         </SliderPrimitive.Track>
         {Array.from({ length: _values.length }, (_, index) => (
