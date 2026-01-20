@@ -6,11 +6,7 @@ component: true
 ---
 
 <figure className="flex flex-col gap-4">
-  <ComponentPreview
-    styleName="base-nova"
-    name="sidebar-07"
-    type="block"
-  />
+  <ComponentPreview styleName="base-nova" name="sidebar-demo" type="block" />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar that collapses to icons.
   </figcaption>
@@ -318,15 +314,8 @@ export function AppSidebar() {
 
 You should see something like this:
 
-<figure className="flex flex-col gap-4">
-  <ComponentPreview
-    styleName="base-nova"
-    name="sidebar-demo"
-    title="Sidebar"
-    type="block"
-    description="Your first sidebar."
-    className="w-full"
-  />
+<figure className="mt-6 flex flex-col gap-4">
+  <ComponentPreview styleName="base-nova" name="sidebar-demo" type="block" />
   <figcaption className="text-center text-sm text-gray-500">
     Your first sidebar.
   </figcaption>
@@ -545,14 +534,7 @@ Use the `SidebarHeader` component to add a sticky header to the sidebar.
 The following example adds a `<DropdownMenu>` to the `SidebarHeader`.
 
 <figure className="mt-6 flex flex-col gap-4">
-  <ComponentPreview
-    styleName="base-nova"
-    name="sidebar-header"
-    title="Sidebar"
-    type="block"
-    description="A sidebar header with a dropdown menu."
-    className="w-full"
-  />
+  <ComponentPreview styleName="base-nova" name="sidebar-header" type="block" />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar header with a dropdown menu.
   </figcaption>
@@ -592,14 +574,7 @@ Use the `SidebarFooter` component to add a sticky footer to the sidebar.
 The following example adds a `<DropdownMenu>` to the `SidebarFooter`.
 
 <figure className="mt-6 flex flex-col gap-4">
-  <ComponentPreview
-    styleName="base-nova"
-    name="sidebar-footer"
-    title="Sidebar"
-    type="block"
-    description="A sidebar footer with a dropdown menu."
-    className="w-full"
-  />
+  <ComponentPreview styleName="base-nova" name="sidebar-footer" type="block" />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar footer with a dropdown menu.
   </figcaption>
@@ -672,14 +647,7 @@ Use the `SidebarGroup` component to create a section within the sidebar.
 A `SidebarGroup` has a `SidebarGroupLabel`, a `SidebarGroupContent` and an optional `SidebarGroupAction`.
 
 <figure className="mt-6 flex flex-col gap-4">
-  <ComponentPreview
-    styleName="base-nova"
-    name="sidebar-group"
-    title="Sidebar Group"
-    type="block"
-    description="A sidebar group."
-    className="w-full"
-  />
+  <ComponentPreview styleName="base-nova" name="sidebar-group" type="block" />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar group.
   </figcaption>
@@ -713,10 +681,7 @@ To make a `SidebarGroup` collapsible, wrap it in a `Collapsible`.
   <ComponentPreview
     styleName="base-nova"
     name="sidebar-group-collapsible"
-    title="Sidebar Group"
     type="block"
-    description="A collapsible sidebar group."
-    className="w-full"
   />
   <figcaption className="text-center text-sm text-gray-500">
     A collapsible sidebar group.
@@ -756,10 +721,7 @@ Use the `SidebarGroupAction` component to add an action button to the `SidebarGr
   <ComponentPreview
     styleName="base-nova"
     name="sidebar-group-action"
-    title="Sidebar Group"
     type="block"
-    description="A sidebar group with an action button."
-    className="w-full"
   />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar group with an action button.
@@ -804,14 +766,7 @@ A `SidebarMenu` component is composed of `SidebarMenuItem`, `SidebarMenuButton`,
 Here's an example of a `SidebarMenu` component rendering a list of projects.
 
 <figure className="mt-6 flex flex-col gap-4">
-  <ComponentPreview
-    styleName="base-nova"
-    name="sidebar-menu"
-    title="Sidebar Menu"
-    type="block"
-    description="A sidebar menu with a list of projects."
-    className="w-full"
-  />
+  <ComponentPreview styleName="base-nova" name="sidebar-menu" type="block" />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu with a list of projects.
   </figcaption>
@@ -906,10 +861,7 @@ Here's an example of a `SidebarMenuAction` component rendering a `DropdownMenu`.
   <ComponentPreview
     styleName="base-nova"
     name="sidebar-menu-action"
-    title="Sidebar Menu Action"
     type="block"
-    description="A sidebar menu action with a dropdown menu."
-    className="w-full"
   />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu action with a dropdown menu.
@@ -952,10 +904,7 @@ Use `<SidebarMenuSubItem />` and `<SidebarMenuSubButton />` to render a submenu 
   <ComponentPreview
     styleName="base-nova"
     name="sidebar-menu-sub"
-    title="Sidebar Menu Sub"
     type="block"
-    description="A sidebar menu sub."
-    className="w-full"
   />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu with a submenu.
@@ -984,10 +933,7 @@ To make a `SidebarMenu` component collapsible, wrap it and the `SidebarMenuSub` 
   <ComponentPreview
     styleName="base-nova"
     name="sidebar-menu-collapsible"
-    title="Sidebar Menu"
     type="block"
-    description="A collapsible sidebar menu."
-    className="w-full"
   />
   <figcaption className="text-center text-sm text-gray-500">
     A collapsible sidebar menu.
@@ -1019,10 +965,7 @@ The `SidebarMenuBadge` component is used to render a badge within a `SidebarMenu
   <ComponentPreview
     styleName="base-nova"
     name="sidebar-menu-badge"
-    title="Sidebar Menu Badge"
     type="block"
-    description="A sidebar menu badge."
-    className="w-full"
   />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu with a badge.
@@ -1121,14 +1064,7 @@ The `SidebarRail` component is used to render a rail within a `Sidebar`. This ra
 Here's an example of a `SidebarMenu` component rendering a list of projects using React Server Components.
 
 <figure className="mt-6 flex flex-col gap-4">
-  <ComponentPreview
-    styleName="base-nova"
-    name="sidebar-rsc"
-    title="Sidebar Menu RSC"
-    type="block"
-    description="A sidebar menu using React Server Components."
-    className="w-full"
-  />
+  <ComponentPreview styleName="base-nova" name="sidebar-rsc" type="block" />
   <figcaption className="text-center text-sm text-gray-500">
     A sidebar menu using React Server Components.
   </figcaption>
@@ -1274,10 +1210,7 @@ Use the `open` and `onOpenChange` props to control the sidebar.
   <ComponentPreview
     styleName="base-nova"
     name="sidebar-controlled"
-    title="Sidebar Controlled"
     type="block"
-    description="A controlled sidebar."
-    className="w-full"
   />
   <figcaption className="text-center text-sm text-gray-500">
     A controlled sidebar.

@@ -3827,6 +3827,175 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "sidebar-controlled": {
+      name: "sidebar-controlled",
+      filePath: "examples/radix/sidebar-controlled.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-controlled")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-controlled"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-demo": {
+      name: "sidebar-demo",
+      filePath: "examples/radix/sidebar-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-footer": {
+      name: "sidebar-footer",
+      filePath: "examples/radix/sidebar-footer.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-footer")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-footer"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-group-action": {
+      name: "sidebar-group-action",
+      filePath: "examples/radix/sidebar-group-action.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-group-action")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-group-action"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-group-collapsible": {
+      name: "sidebar-group-collapsible",
+      filePath: "examples/radix/sidebar-group-collapsible.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-group-collapsible")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-group-collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-group": {
+      name: "sidebar-group",
+      filePath: "examples/radix/sidebar-group.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-group")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-header": {
+      name: "sidebar-header",
+      filePath: "examples/radix/sidebar-header.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-header")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-header"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu-action": {
+      name: "sidebar-menu-action",
+      filePath: "examples/radix/sidebar-menu-action.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-menu-action")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu-action"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu-badge": {
+      name: "sidebar-menu-badge",
+      filePath: "examples/radix/sidebar-menu-badge.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-menu-badge")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu-badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu-collapsible": {
+      name: "sidebar-menu-collapsible",
+      filePath: "examples/radix/sidebar-menu-collapsible.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-menu-collapsible")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu-collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu-sub": {
+      name: "sidebar-menu-sub",
+      filePath: "examples/radix/sidebar-menu-sub.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-menu-sub")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu-sub"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu": {
+      name: "sidebar-menu",
+      filePath: "examples/radix/sidebar-menu.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-menu")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-rsc": {
+      name: "sidebar-rsc",
+      filePath: "examples/radix/sidebar-rsc.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sidebar-rsc")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-rsc"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "skeleton-avatar": {
       name: "skeleton-avatar",
       filePath: "examples/radix/skeleton-avatar.tsx",
@@ -8545,6 +8714,175 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "sheet-side"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-controlled": {
+      name: "sidebar-controlled",
+      filePath: "examples/base/sidebar-controlled.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-controlled")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-controlled"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-demo": {
+      name: "sidebar-demo",
+      filePath: "examples/base/sidebar-demo.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-demo")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-footer": {
+      name: "sidebar-footer",
+      filePath: "examples/base/sidebar-footer.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-footer")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-footer"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-group-action": {
+      name: "sidebar-group-action",
+      filePath: "examples/base/sidebar-group-action.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-group-action")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-group-action"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-group-collapsible": {
+      name: "sidebar-group-collapsible",
+      filePath: "examples/base/sidebar-group-collapsible.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-group-collapsible")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-group-collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-group": {
+      name: "sidebar-group",
+      filePath: "examples/base/sidebar-group.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-group")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-group"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-header": {
+      name: "sidebar-header",
+      filePath: "examples/base/sidebar-header.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-header")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-header"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu-action": {
+      name: "sidebar-menu-action",
+      filePath: "examples/base/sidebar-menu-action.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-menu-action")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu-action"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu-badge": {
+      name: "sidebar-menu-badge",
+      filePath: "examples/base/sidebar-menu-badge.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-menu-badge")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu-badge"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu-collapsible": {
+      name: "sidebar-menu-collapsible",
+      filePath: "examples/base/sidebar-menu-collapsible.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-menu-collapsible")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu-collapsible"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu-sub": {
+      name: "sidebar-menu-sub",
+      filePath: "examples/base/sidebar-menu-sub.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-menu-sub")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu-sub"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-menu": {
+      name: "sidebar-menu",
+      filePath: "examples/base/sidebar-menu.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-menu")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sidebar-rsc": {
+      name: "sidebar-rsc",
+      filePath: "examples/base/sidebar-rsc.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sidebar-rsc")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sidebar-rsc"
         return { default: mod.default || mod[exportName] }
       }),
     },
