@@ -85,6 +85,44 @@ import {
 
 <ComponentPreview name="dialog-close-button" />
 
+### Manually Open and Close Dialog
+
+Sometimes you may want to control the dialog's open state manually, without a trigger component. You can do this by using the `open` prop and the `onOpenChange` callback.
+
+```tsx showLineNumbers
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
+import { useState } from "react";
+
+export function ManuallyOpenDialog() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    </>
+  )
+}
+```
+
 ## Notes
 
 To use the `Dialog` component from within a `Context Menu` or `Dropdown Menu`, you must encase the `Context Menu` or
