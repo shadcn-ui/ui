@@ -113,7 +113,7 @@ function DropdownMenuSubTrigger({
       data-slot="dropdown-menu-sub-trigger"
       data-inset={inset}
       className={cn(
-        "cn-dropdown-menu-sub-trigger flex cursor-default items-center outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "cn-dropdown-menu-sub-trigger data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center outline-hidden select-none data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className
       )}
       {...props}
@@ -124,6 +124,7 @@ function DropdownMenuSubTrigger({
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
+        remixicon="RiArrowRightSLine"
         className="ml-auto"
       />
     </MenuPrimitive.SubmenuTrigger>
@@ -177,6 +178,7 @@ function DropdownMenuCheckboxItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -218,6 +220,7 @@ function DropdownMenuRadioItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenuPrimitive.RadioItemIndicator>
       </span>
