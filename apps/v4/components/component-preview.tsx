@@ -14,6 +14,7 @@ export function ComponentPreview({
   hideCode = false,
   chromeLessOnMobile = false,
   styleName = "new-york-v4",
+  direction = "ltr",
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
@@ -24,6 +25,7 @@ export function ComponentPreview({
   type?: "block" | "component" | "example"
   chromeLessOnMobile?: boolean
   previewClassName?: string
+  direction?: "ltr" | "rtl"
 }) {
   if (type === "block") {
     return (
@@ -78,6 +80,8 @@ export function ComponentPreview({
         />
       }
       chromeLessOnMobile={chromeLessOnMobile}
+      direction={direction}
+      styleName={styleName}
       {...props}
     />
   )

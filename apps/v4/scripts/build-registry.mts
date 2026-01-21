@@ -3,7 +3,7 @@ import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
 import { registrySchema } from "shadcn/schema"
-import { createStyleMap, transformStyle } from "shadcn/utils"
+import { createStyleMap, transformDirection, transformStyle } from "shadcn/utils"
 
 import { getAllBlocks } from "@/lib/blocks"
 import { legacyStyles } from "@/registry/_legacy-styles"
@@ -61,6 +61,10 @@ try {
   // Copy UI to examples before cleanup.
   console.log("\n📋 Copying UI to examples...")
   await copyUIToExamples()
+
+  // Build RTL variants of examples.
+  console.log("\n🔄 Building RTL examples...")
+  await buildRtlExamples()
 
   console.log("\n📋 Building public/r/registries.json...")
   await buildRegistriesJson()
@@ -567,4 +571,49 @@ async function buildRegistriesJson() {
       }
     })
   })
+}
+
+// Build RTL variants of examples.
+async function buildRtlExamples() {
+  for (const base of BASES) {
+    const sourceDir = path.join(process.cwd(), `examples/${base.name}/ui`)
+    const targetDir = path.join(process.cwd(), `examples/${base.name}/ui-rtl`)
+
+    // Check if source directory exists.
+    try {
+      await fs.access(sourceDir)
+    } catch {
+      console.log(`   ⚠️ examples/${base.name}/ui not found, skipping`)
+      continue
+    }
+
+    // Create target directory.
+    rimraf.sync(targetDir)
+    await fs.mkdir(targetDir, { recursive: true })
+
+    // Get all UI component files.
+    const files = await fs.readdir(sourceDir)
+
+    for (const file of files) {
+      if (!file.endsWith(".tsx") && !file.endsWith(".ts")) continue
+
+      const sourcePath = path.join(sourceDir, file)
+      const targetPath = path.join(targetDir, file)
+
+      let content = await fs.readFile(sourcePath, "utf-8")
+
+      // Apply RTL transformations using the shadcn transformer.
+      content = await transformDirection(content, "rtl")
+
+      // Update import paths from ui/ to ui-rtl/.
+      content = content.replace(
+        new RegExp(`@/examples/${base.name}/ui/`, "g"),
+        `@/examples/${base.name}/ui-rtl/`
+      )
+
+      await fs.writeFile(targetPath, content)
+    }
+
+    console.log(`   ✅ examples/${base.name}/ui-rtl`)
+  }
 }

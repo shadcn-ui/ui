@@ -83,6 +83,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "accordion-rtl": {
+      name: "accordion-rtl",
+      filePath: "examples/radix/accordion-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/accordion-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "accordion-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "alert-action": {
       name: "alert-action",
       filePath: "examples/radix/alert-action.tsx",
@@ -2072,6 +2085,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "dropdown-menu-rtl": {
+      name: "dropdown-menu-rtl",
+      filePath: "examples/radix/dropdown-menu-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/dropdown-menu-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "dropdown-menu-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "dropdown-menu-shortcuts": {
       name: "dropdown-menu-shortcuts",
       filePath: "examples/radix/dropdown-menu-shortcuts.tsx",
@@ -3697,6 +3723,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "select-rtl": {
+      name: "select-rtl",
+      filePath: "examples/radix/select-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/select-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "select-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "select-scrollable": {
       name: "select-scrollable",
       filePath: "examples/radix/select-scrollable.tsx",
@@ -4970,6 +5009,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "accordion-multiple"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "accordion-rtl": {
+      name: "accordion-rtl",
+      filePath: "examples/base/accordion-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/accordion-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "accordion-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -6962,6 +7014,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "dropdown-menu-rtl": {
+      name: "dropdown-menu-rtl",
+      filePath: "examples/base/dropdown-menu-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/dropdown-menu-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "dropdown-menu-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "dropdown-menu-shortcuts": {
       name: "dropdown-menu-shortcuts",
       filePath: "examples/base/dropdown-menu-shortcuts.tsx",
@@ -8584,6 +8649,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "select-invalid"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "select-rtl": {
+      name: "select-rtl",
+      filePath: "examples/base/select-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/select-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "select-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },

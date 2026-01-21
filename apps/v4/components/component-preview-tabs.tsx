@@ -3,7 +3,14 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { DirectionProvider as BaseDirectionProvider } from "@/registry/bases/base/ui/direction"
+import { DirectionProvider as RadixDirectionProvider } from "@/registry/bases/radix/ui/direction"
 import { Button } from "@/registry/new-york-v4/ui/button"
+import {
+  LanguageProvider,
+  LanguageSelector,
+  useLanguageContext,
+} from "@/components/language-selector"
 
 export function ComponentPreviewTabs({
   className,
@@ -13,6 +20,8 @@ export function ComponentPreviewTabs({
   chromeLessOnMobile = false,
   component,
   source,
+  direction = "ltr",
+  styleName,
   ...props
 }: React.ComponentProps<"div"> & {
   previewClassName?: string
@@ -21,8 +30,13 @@ export function ComponentPreviewTabs({
   chromeLessOnMobile?: boolean
   component: React.ReactNode
   source: React.ReactNode
+  direction?: "ltr" | "rtl"
+  styleName?: string
 }) {
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false)
+
+  // Determine the base from styleName (e.g., "base-nova" -> "base", "radix-nova" -> "radix").
+  const base = styleName?.split("-")[0]
 
   return (
     <div
@@ -36,12 +50,28 @@ export function ComponentPreviewTabs({
         <div
           data-align={align}
           data-chromeless={chromeLessOnMobile}
+          dir={direction}
           className={cn(
-            "preview flex h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
+            "preview relative flex h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
             previewClassName
           )}
         >
-          {component}
+          {direction === "rtl" ? (
+            <LanguageProvider defaultLanguage="ar">
+              <RtlLanguageSelector />
+              {base === "base" ? (
+                <BaseDirectionProvider direction="rtl">
+                  {component}
+                </BaseDirectionProvider>
+              ) : (
+                <RadixDirectionProvider dir="rtl">
+                  {component}
+                </RadixDirectionProvider>
+              )}
+            </LanguageProvider>
+          ) : (
+            component
+          )}
         </div>
         {!hideCode && (
           <div
@@ -80,5 +110,20 @@ export function ComponentPreviewTabs({
         )}
       </div>
     </div>
+  )
+}
+
+function RtlLanguageSelector() {
+  const context = useLanguageContext()
+  // This component is always rendered inside LanguageProvider when direction === "rtl"
+  // so context should always be available
+  if (!context) {
+    return null
+  }
+  return (
+    <LanguageSelector
+      value={context.language}
+      onValueChange={context.setLanguage}
+    />
   )
 }

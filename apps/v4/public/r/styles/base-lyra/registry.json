@@ -634,6 +634,19 @@
       "type": "registry:ui"
     },
     {
+      "name": "direction",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/base-lyra/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "accordion-example",
       "title": "Accordion",
       "registryDependencies": [
@@ -1841,6 +1854,46 @@
       "files": [
         {
           "path": "registry/base-lyra/blocks/chatgpt.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "rtl",
+      "title": "RTL",
+      "registryDependencies": [
+        "alert-dialog",
+        "avatar",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "checkbox",
+        "combobox",
+        "direction",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "label",
+        "popover",
+        "radio-group",
+        "select",
+        "separator",
+        "sheet",
+        "slider",
+        "spinner",
+        "switch",
+        "textarea",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-lyra/blocks/rtl.tsx",
           "type": "registry:block"
         }
       ],

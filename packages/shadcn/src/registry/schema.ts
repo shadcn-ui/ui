@@ -39,6 +39,7 @@ export const rawConfigSchema = z
       prefix: z.string().default("").optional(),
     }),
     iconLibrary: z.string().optional(),
+    direction: z.enum(["ltr", "rtl"]).default("ltr").optional(),
     menuColor: z.enum(["default", "inverted"]).default("default").optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
     aliases: z.object({
@@ -286,6 +287,7 @@ export const presetSchema = z.object({
   theme: z.string(),
   iconLibrary: z.string(),
   font: z.string(),
+  direction: z.enum(["ltr", "rtl"]).default("ltr"),
   menuAccent: z.enum(["subtle", "bold"]),
   menuColor: z.enum(["default", "inverted"]),
   radius: z.string(),

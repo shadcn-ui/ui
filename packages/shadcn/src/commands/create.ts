@@ -229,6 +229,7 @@ function buildInitUrl(preset: Preset) {
     theme: preset.theme,
     iconLibrary: preset.iconLibrary,
     font: preset.font,
+    direction: preset.direction,
     menuAccent: preset.menuAccent,
     menuColor: preset.menuColor,
     radius: preset.radius,

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction",
+  "files": [
+    {
+      "path": "registry/radix-vega/ui/direction.tsx",
+      "content": "\"use client\"\n\nimport { Direction } from \"radix-ui\"\n\nconst DirectionProvider = Direction.DirectionProvider\nconst useDirection = Direction.useDirection\n\nexport { DirectionProvider, useDirection }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
