@@ -12,12 +12,12 @@ import {
   CardTitle,
 } from "@/registry/new-york-v4/ui/card"
 import {
-  ChartConfig,
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
+  type ChartConfig,
 } from "@/registry/new-york-v4/ui/chart"
 
 export const description = "A radar chart with a legend"
@@ -45,7 +45,7 @@ const chartConfig = {
 export function ChartRadarLegend() {
   return (
     <Card>
-      <CardHeader className="items-center pb-4">
+      <CardHeader className="items-center">
         <CardTitle>Radar Chart - Legend</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months

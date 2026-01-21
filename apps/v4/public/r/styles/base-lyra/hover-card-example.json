@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card-example",
+  "title": "Hover Card",
+  "registryDependencies": [
+    "button",
+    "dialog",
+    "hover-card",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/base-lyra/examples/hover-card-example.tsx",
+      "content": "import {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/base-lyra/components/example\"\nimport { Button } from \"@/registry/base-lyra/ui/button\"\nimport {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/registry/base-lyra/ui/dialog\"\nimport {\n  HoverCard,\n  HoverCardContent,\n  HoverCardTrigger,\n} from \"@/registry/base-lyra/ui/hover-card\"\n\nexport default function HoverCardExample() {\n  return (\n    <ExampleWrapper>\n      <HoverCardSides />\n      <HoverCardInDialog />\n    </ExampleWrapper>\n  )\n}\n\nconst HOVER_CARD_SIDES = [\"top\", \"right\", \"bottom\", \"left\"] as const\n\nfunction HoverCardSides() {\n  return (\n    <Example title=\"Sides\">\n      <div className=\"flex flex-wrap items-center justify-center gap-4\">\n        {HOVER_CARD_SIDES.map((side) => (\n          <HoverCard key={side}>\n            <HoverCardTrigger\n              delay={100}\n              closeDelay={100}\n              render={<Button variant=\"outline\" className=\"capitalize\" />}\n            >\n              {side}\n            </HoverCardTrigger>\n            <HoverCardContent side={side}>\n              <div className=\"style-lyra:gap-1 style-nova:gap-1.5 style-vega:gap-2 style-maia:gap-2 style-mira:gap-1 flex flex-col\">\n                <h4 className=\"font-medium\">Hover Card</h4>\n                <p>\n                  This hover card appears on the {side} side of the trigger.\n                </p>\n              </div>\n            </HoverCardContent>\n          </HoverCard>\n        ))}\n      </div>\n    </Example>\n  )\n}\n\nfunction HoverCardInDialog() {\n  return (\n    <Example title=\"In Dialog\">\n      <Dialog>\n        <DialogTrigger render={<Button variant=\"outline\" />}>\n          Open Dialog\n        </DialogTrigger>\n        <DialogContent>\n          <DialogHeader>\n            <DialogTitle>Hover Card Example</DialogTitle>\n            <DialogDescription>\n              Hover over the button below to see the hover card.\n            </DialogDescription>\n          </DialogHeader>\n          <HoverCard>\n            <HoverCardTrigger\n              delay={100}\n              closeDelay={100}\n              render={<Button variant=\"outline\" className=\"w-fit\" />}\n            >\n              Hover me\n            </HoverCardTrigger>\n            <HoverCardContent>\n              <div className=\"style-lyra:gap-1 style-nova:gap-1.5 style-vega:gap-2 style-maia:gap-2 style-mira:gap-1 flex flex-col\">\n                <h4 className=\"font-medium\">Hover Card</h4>\n                <p>\n                  This hover card appears inside a dialog. Hover over the button\n                  to see it.\n                </p>\n              </div>\n            </HoverCardContent>\n          </HoverCard>\n        </DialogContent>\n      </Dialog>\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -13,7 +13,7 @@ import {
 import { cn } from "@/lib/utils"
 import { ChartCodeViewer } from "@/components/chart-code-viewer"
 import { ChartCopyButton } from "@/components/chart-copy-button"
-import { Chart } from "@/components/chart-display"
+import { type Chart } from "@/components/chart-display"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 export function ChartToolbar({
@@ -46,7 +46,7 @@ export function ChartToolbar({
 }
 
 function ChartTitle({ chart }: { chart: Chart }) {
-  if (chart.name.includes("charts-line")) {
+  if (chart.name.includes("chart-line")) {
     return (
       <>
         <LineChartIcon /> Line Chart

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { PopoverProps } from "@radix-ui/react-popover"
+import { type PopoverProps } from "@radix-ui/react-popover"
 import { Check, ChevronsUpDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -27,7 +27,7 @@ import {
   PopoverTrigger,
 } from "@/registry/new-york-v4/ui/popover"
 
-import { Model, ModelType } from "../data/models"
+import { type Model, type ModelType } from "../data/models"
 
 interface ModelSelectorProps extends PopoverProps {
   types: readonly ModelType[]

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "files": [
+    {
+      "path": "registry/base-mira/ui/slider.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Slider as SliderPrimitive } from \"@base-ui/react/slider\"\n\nimport { cn } from \"@/registry/base-mira/lib/utils\"\n\nfunction Slider({\n  className,\n  defaultValue,\n  value,\n  min = 0,\n  max = 100,\n  ...props\n}: SliderPrimitive.Root.Props) {\n  const _values = React.useMemo(\n    () =>\n      Array.isArray(value)\n        ? value\n        : Array.isArray(defaultValue)\n          ? defaultValue\n          : [min, max],\n    [value, defaultValue, min, max]\n  )\n\n  return (\n    <SliderPrimitive.Root\n      className={cn(\"data-horizontal:w-full data-vertical:h-full\", className)}\n      data-slot=\"slider\"\n      defaultValue={defaultValue}\n      value={value}\n      min={min}\n      max={max}\n      thumbAlignment=\"edge\"\n      {...props}\n    >\n      <SliderPrimitive.Control className=\"data-vertical:min-h-40 relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:w-auto data-vertical:flex-col\">\n        <SliderPrimitive.Track\n          data-slot=\"slider-track\"\n          className=\"bg-muted rounded-md data-horizontal:h-3 data-horizontal:w-full data-vertical:h-full data-vertical:w-3 relative grow overflow-hidden select-none\"\n        >\n          <SliderPrimitive.Indicator\n            data-slot=\"slider-range\"\n            className=\"bg-primary select-none data-horizontal:h-full data-vertical:w-full\"\n          />\n        </SliderPrimitive.Track>\n        {Array.from({ length: _values.length }, (_, index) => (\n          <SliderPrimitive.Thumb\n            data-slot=\"slider-thumb\"\n            key={index}\n            className=\"border-primary ring-ring/30 size-4 rounded-md border bg-white shadow-sm transition-colors hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden block shrink-0 select-none disabled:pointer-events-none disabled:opacity-50\"\n          />\n        ))}\n      </SliderPrimitive.Control>\n    </SliderPrimitive.Root>\n  )\n}\n\nexport { Slider }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

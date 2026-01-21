@@ -1,10 +1,21 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./legacy-themes.css";
 
-@import "./themes.css";
+@import "../registry/styles/style-vega.css" layer(base);
+@import "../registry/styles/style-nova.css" layer(base);
+@import "../registry/styles/style-lyra.css" layer(base);
+@import "../registry/styles/style-maia.css" layer(base);
+@import "../registry/styles/style-mira.css" layer(base);
+
+@custom-variant style-vega (&:where(.style-vega *));
+@custom-variant style-nova (&:where(.style-nova *));
+@custom-variant style-lyra (&:where(.style-lyra *));
+@custom-variant style-maia (&:where(.style-maia *));
+@custom-variant style-mira (&:where(.style-mira *));
 
 @custom-variant dark (&:is(.dark *));
-
 @custom-variant fixed (&:is(.layout-fixed *));
 
 @theme inline {
@@ -16,6 +27,9 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -31,6 +45,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -74,6 +89,7 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.97 0.01 17);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
@@ -116,6 +132,7 @@
   --accent: oklch(0.371 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.58 0.22 27);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
@@ -150,7 +167,7 @@
     @apply bg-selection text-selection-foreground;
   }
   html {
-    @apply overscroll-none scroll-smooth;
+    @apply overscroll-y-none;
   }
   body {
     font-synthesis-weight: none;
@@ -158,7 +175,7 @@
   }
 
   [data-slot="layout"] {
-    @apply 3xl:p-2 3xl:fixed:p-0 overscroll-none;
+    @apply overscroll-none;
   }
 
   @supports (font: -apple-system-body) and (-webkit-appearance: none) {
@@ -208,10 +225,9 @@
 
 @utility step {
   counter-increment: step;
-  @apply relative;
 
   &:before {
-    @apply text-muted-foreground right-0 mr-2 hidden size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
+    @apply border-background bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9 md:border-4;
     content: counter(step);
   }
 }
@@ -233,7 +249,7 @@
     }
 
     > h3 {
-      @apply !mt-16;
+      @apply !mt-8;
     }
 
     > h3 + p {
@@ -244,7 +260,7 @@
   [data-rehype-pretty-code-figure] {
     background-color: var(--color-code);
     color: var(--color-code-foreground);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     border-width: 0px;
     border-color: var(--border);
     margin-top: calc(var(--spacing) * 6);
@@ -343,5 +359,11 @@
     padding-block: 0.1rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
+  }
+}
+
+@layer components {
+  .dialog-ring {
+    @apply rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800;
   }
 }

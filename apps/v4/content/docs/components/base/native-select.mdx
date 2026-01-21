@@ -1,0 +1,134 @@
+---
+title: Native Select
+description: A styled native HTML select element with consistent design system integration.
+base: base
+component: true
+---
+
+import { InfoIcon } from "lucide-react"
+
+<Callout variant="info" icon={<InfoIcon className="!translate-y-[3px]" />}>
+  For a styled select component, see the [Select](/docs/components/select)
+  component.
+</Callout>
+
+<ComponentPreview styleName="base-nova" name="native-select-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add native-select
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="native-select"
+  title="components/ui/native-select.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  NativeSelect,
+  NativeSelectOptGroup,
+  NativeSelectOption,
+} from "@/components/ui/native-select"
+```
+
+```tsx showLineNumbers
+<NativeSelect>
+  <NativeSelectOption value="">Select a fruit</NativeSelectOption>
+  <NativeSelectOption value="apple">Apple</NativeSelectOption>
+  <NativeSelectOption value="banana">Banana</NativeSelectOption>
+  <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
+  <NativeSelectOption value="pineapple">Pineapple</NativeSelectOption>
+</NativeSelect>
+```
+
+## Examples
+
+### Groups
+
+Use `NativeSelectOptGroup` to organize options into categories.
+
+<ComponentPreview styleName="base-nova" name="native-select-groups" />
+
+### Disabled
+
+Add the `disabled` prop to the `NativeSelect` component to disable the select.
+
+<ComponentPreview styleName="base-nova" name="native-select-disabled" />
+
+### Invalid
+
+Use `aria-invalid` to show validation errors and the `data-invalid` attribute to the `Field` component for styling.
+
+<ComponentPreview styleName="base-nova" name="native-select-invalid" />
+
+## Native Select vs Select
+
+- Use `NativeSelect` for native browser behavior, better performance, or mobile-optimized dropdowns.
+- Use `Select` for custom styling, animations, or complex interactions.
+
+## API Reference
+
+### NativeSelect
+
+The main select component that wraps the native HTML select element.
+
+```tsx
+<NativeSelect>
+  <NativeSelectOption value="option1">Option 1</NativeSelectOption>
+  <NativeSelectOption value="option2">Option 2</NativeSelectOption>
+</NativeSelect>
+```
+
+### NativeSelectOption
+
+Represents an individual option within the select.
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `value`    | `string`  |         |
+| `disabled` | `boolean` | `false` |
+
+### NativeSelectOptGroup
+
+Groups related options together for better organization.
+
+| Prop       | Type      | Default |
+| ---------- | --------- | ------- |
+| `label`    | `string`  |         |
+| `disabled` | `boolean` | `false` |
+
+```tsx
+<NativeSelectOptGroup label="Fruits">
+  <NativeSelectOption value="apple">Apple</NativeSelectOption>
+  <NativeSelectOption value="banana">Banana</NativeSelectOption>
+</NativeSelectOptGroup>
+```

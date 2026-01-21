@@ -1,61 +1,55 @@
 import * as React from "react"
-import { registryItemSchema } from "shadcn/schema"
-import { z } from "zod"
+import { type registryItemSchema } from "shadcn/schema"
+import { type z } from "zod"
 
 import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
 import { cn } from "@/lib/utils"
+import { ChartIframe } from "@/components/chart-iframe"
 import { ChartToolbar } from "@/components/chart-toolbar"
-import { type Style } from "@/registry/styles"
+import { type Style } from "@/registry/_legacy-styles"
 
 export type Chart = z.infer<typeof registryItemSchema> & {
   highlightedCode: string
 }
 
-export async function ChartDisplay({
-  name,
-  styleName,
-  children,
+export function ChartDisplay({
+  chart,
+  style,
   className,
 }: {
-  name: string
-  styleName: Style["name"]
+  chart: Chart
+  style: string
 } & React.ComponentProps<"div">) {
-  const chart = await getCachedRegistryItem(name, styleName)
-  const highlightedCode = await getChartHighlightedCode(
-    chart?.files?.[0]?.content ?? ""
-  )
-
-  if (!chart || !highlightedCode) {
-    return null
-  }
-
   return (
     <div
       className={cn(
-        "themes-wrapper group relative flex flex-col overflow-hidden rounded-xl border transition-all duration-200 ease-in-out hover:z-30",
+        "themes-wrapper group relative flex flex-col overflow-hidden rounded-xl transition-all duration-200 ease-in-out hover:z-30",
         className
       )}
     >
       <ChartToolbar
-        chart={{ ...chart, highlightedCode }}
-        className="bg-card text-card-foreground relative z-20 flex justify-end border-b px-3 py-2.5"
-      >
-        {children}
-      </ChartToolbar>
-      <div className="relative z-10 [&>div]:rounded-none [&>div]:border-none [&>div]:shadow-none">
-        {children}
+        chart={chart}
+        className="relative z-20 flex justify-end px-3 py-2.5"
+      />
+      <div className="bg-background relative z-10 overflow-hidden rounded-xl">
+        <ChartIframe
+          src={`/view/${style}/${chart.name}`}
+          height={460}
+          title={chart.name}
+        />
       </div>
     </div>
   )
 }
 
-const getCachedRegistryItem = React.cache(
+// Exported for parallel prefetching in page components.
+export const getCachedRegistryItem = React.cache(
   async (name: string, styleName: Style["name"]) => {
     return await getRegistryItem(name, styleName)
   }
 )
 
-const getChartHighlightedCode = React.cache(async (content: string) => {
+export const getChartHighlightedCode = React.cache(async (content: string) => {
   return await highlightCode(content)
 })

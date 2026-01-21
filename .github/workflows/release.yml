@@ -7,6 +7,11 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+
 jobs:
   release:
     if: ${{ github.repository_owner == 'shadcn-ui' }}
@@ -24,11 +29,14 @@ jobs:
           version: 9.0.6
 
       - name: Use Node.js 20
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          version: 9.0.6
           node-version: 20
+          registry-url: "https://registry.npmjs.org"
           cache: "pnpm"
+
+      - name: Update npm for OIDC support
+        run: npm install -g npm@latest
 
       - name: Install NPM Dependencies
         run: pnpm install
@@ -49,5 +57,4 @@ jobs:
           publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NODE_ENV: "production"

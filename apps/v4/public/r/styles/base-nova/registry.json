@@ -1,0 +1,2008 @@
+{
+  "name": "shadcn/ui",
+  "homepage": "https://ui.shadcn.com",
+  "items": [
+    {
+      "name": "accordion",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "alert",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "alert-dialog",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "aspect-ratio",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "avatar",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "badge",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "breadcrumb",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "button",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "button-group",
+      "registryDependencies": [
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "calendar",
+      "dependencies": [
+        "react-day-picker@latest",
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "card",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "carousel",
+      "dependencies": [
+        "embla-carousel-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "chart",
+      "dependencies": [
+        "recharts@2.15.4"
+      ],
+      "registryDependencies": [
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "checkbox",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "collapsible",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "combobox",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "command",
+      "dependencies": [
+        "cmdk"
+      ],
+      "registryDependencies": [
+        "dialog",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "context-menu",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "dialog",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "drawer",
+      "dependencies": [
+        "vaul"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "dropdown-menu",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "empty",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "field",
+      "registryDependencies": [
+        "label",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "form",
+      "type": "registry:ui"
+    },
+    {
+      "name": "hover-card",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-group",
+      "registryDependencies": [
+        "button",
+        "input",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "input-otp",
+      "dependencies": [
+        "input-otp"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "item",
+      "registryDependencies": [
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "label",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "menubar",
+      "registryDependencies": [
+        "dropdown-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "navigation-menu",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "pagination",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "popover",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "progress",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "radio-group",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "resizable",
+      "dependencies": [
+        "react-resizable-panels"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "scroll-area",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "select",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "separator",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sheet",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sidebar",
+      "registryDependencies": [
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "skeleton",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "slider",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "sonner",
+      "dependencies": [
+        "sonner",
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "spinner",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "switch",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "table",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "tabs",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "textarea",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "toggle-group",
+      "registryDependencies": [
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "tooltip",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "kbd",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "native-select",
+      "files": [
+        {
+          "path": "registry/base-nova/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "accordion-example",
+      "title": "Accordion",
+      "registryDependencies": [
+        "accordion",
+        "button",
+        "card",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/accordion-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-example",
+      "title": "Alert",
+      "registryDependencies": [
+        "alert",
+        "badge",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/alert-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "alert-dialog-example",
+      "title": "Alert Dialog",
+      "registryDependencies": [
+        "alert-dialog",
+        "button",
+        "dialog",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/alert-dialog-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "aspect-ratio-example",
+      "title": "Aspect Ratio",
+      "registryDependencies": [
+        "aspect-ratio",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/aspect-ratio-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "avatar-example",
+      "title": "Avatar",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "empty",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/avatar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "badge-example",
+      "title": "Badge",
+      "registryDependencies": [
+        "badge",
+        "spinner",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/badge-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "breadcrumb-example",
+      "title": "Breadcrumb",
+      "registryDependencies": [
+        "breadcrumb",
+        "dropdown-menu",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/breadcrumb-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-example",
+      "title": "Button",
+      "registryDependencies": [
+        "button",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/button-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "button-group-example",
+      "title": "Button Group",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "dropdown-menu",
+        "field",
+        "input",
+        "input-group",
+        "label",
+        "popover",
+        "select",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/button-group-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "calendar-example",
+      "title": "Calendar",
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "card",
+        "field",
+        "input",
+        "label",
+        "popover",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/calendar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "card-example",
+      "title": "Card",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "card",
+        "field",
+        "input",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/card-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "carousel-example",
+      "title": "Carousel",
+      "registryDependencies": [
+        "card",
+        "carousel",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/carousel-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "chart-example",
+      "title": "Chart",
+      "registryDependencies": [
+        "chart",
+        "card",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/chart-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "checkbox-example",
+      "title": "Checkbox",
+      "registryDependencies": [
+        "checkbox",
+        "field",
+        "table",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/checkbox-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "collapsible-example",
+      "title": "Collapsible",
+      "registryDependencies": [
+        "button",
+        "card",
+        "collapsible",
+        "field",
+        "input",
+        "tabs",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/collapsible-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "combobox-example",
+      "title": "Combobox",
+      "registryDependencies": [
+        "button",
+        "card",
+        "combobox",
+        "dialog",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "select",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/combobox-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "command-example",
+      "title": "Command",
+      "registryDependencies": [
+        "button",
+        "command",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/command-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "context-menu-example",
+      "title": "Context Menu",
+      "registryDependencies": [
+        "button",
+        "context-menu",
+        "dialog",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/context-menu-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dialog-example",
+      "title": "Dialog",
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "dialog",
+        "field",
+        "input",
+        "input-group",
+        "kbd",
+        "native-select",
+        "select",
+        "switch",
+        "tabs",
+        "textarea",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/dialog-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "drawer-example",
+      "title": "Drawer",
+      "registryDependencies": [
+        "drawer",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/drawer-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dropdown-menu-example",
+      "title": "Dropdown Menu",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "dialog",
+        "dropdown-menu",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/dropdown-menu-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "empty-example",
+      "title": "Empty",
+      "registryDependencies": [
+        "button",
+        "empty",
+        "input-group",
+        "kbd",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/empty-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "field-example",
+      "title": "Field",
+      "registryDependencies": [
+        "badge",
+        "checkbox",
+        "field",
+        "input",
+        "input-otp",
+        "native-select",
+        "radio-group",
+        "select",
+        "slider",
+        "switch",
+        "textarea",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/field-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "hover-card-example",
+      "title": "Hover Card",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "hover-card",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/hover-card-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-example",
+      "title": "Input",
+      "registryDependencies": [
+        "button",
+        "field",
+        "input",
+        "native-select",
+        "select",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/input-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-group-example",
+      "title": "Input Group",
+      "registryDependencies": [
+        "button",
+        "button-group",
+        "card",
+        "dropdown-menu",
+        "field",
+        "input",
+        "input-group",
+        "kbd",
+        "popover",
+        "spinner",
+        "textarea",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/input-group-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "input-otp-example",
+      "title": "Input OTP",
+      "registryDependencies": [
+        "button",
+        "card",
+        "field",
+        "input-otp",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/input-otp-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "item-example",
+      "title": "Item",
+      "registryDependencies": [
+        "button",
+        "item",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/item-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "kbd-example",
+      "title": "Kbd",
+      "registryDependencies": [
+        "button",
+        "input-group",
+        "kbd",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/kbd-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "label-example",
+      "title": "Label",
+      "registryDependencies": [
+        "checkbox",
+        "field",
+        "input",
+        "label",
+        "textarea",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/label-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "menubar-example",
+      "title": "Menubar",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "menubar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/menubar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "native-select-example",
+      "title": "Native Select",
+      "registryDependencies": [
+        "field",
+        "native-select",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/native-select-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "navigation-menu-example",
+      "title": "Navigation Menu",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "navigation-menu",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/navigation-menu-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "pagination-example",
+      "title": "Pagination",
+      "registryDependencies": [
+        "field",
+        "pagination",
+        "select",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/pagination-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "popover-example",
+      "title": "Popover",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "field",
+        "input",
+        "popover",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/popover-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "progress-example",
+      "title": "Progress",
+      "registryDependencies": [
+        "field",
+        "item",
+        "progress",
+        "slider",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/progress-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "radio-group-example",
+      "title": "Radio Group",
+      "registryDependencies": [
+        "field",
+        "radio-group",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/radio-group-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "resizable-example",
+      "title": "Resizable",
+      "registryDependencies": [
+        "resizable",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/resizable-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-area-example",
+      "title": "Scroll Area",
+      "registryDependencies": [
+        "scroll-area",
+        "separator",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/scroll-area-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "select-example",
+      "title": "Select",
+      "registryDependencies": [
+        "button",
+        "dialog",
+        "field",
+        "input",
+        "item",
+        "native-select",
+        "select",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/select-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "separator-example",
+      "title": "Separator",
+      "registryDependencies": [
+        "separator",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/separator-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sheet-example",
+      "title": "Sheet",
+      "registryDependencies": [
+        "button",
+        "field",
+        "input",
+        "sheet",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/sheet-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-example",
+      "title": "Sidebar",
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "item",
+        "label",
+        "sidebar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/sidebar-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-icon-example",
+      "title": "Sidebar (Icon)",
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "collapsible",
+        "dropdown-menu",
+        "item",
+        "sidebar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/sidebar-icon-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-inset-example",
+      "title": "Sidebar (Inset)",
+      "registryDependencies": [
+        "collapsible",
+        "sidebar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/sidebar-inset-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sidebar-floating-example",
+      "title": "Sidebar (Floating)",
+      "registryDependencies": [
+        "button",
+        "card",
+        "dropdown-menu",
+        "field",
+        "item",
+        "sidebar",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/sidebar-floating-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "skeleton-example",
+      "title": "Skeleton",
+      "registryDependencies": [
+        "skeleton",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/skeleton-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slider-example",
+      "title": "Slider",
+      "registryDependencies": [
+        "label",
+        "slider",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/slider-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "sonner-example",
+      "title": "Sonner",
+      "registryDependencies": [
+        "sonner",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/sonner-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "spinner-example",
+      "title": "Spinner",
+      "registryDependencies": [
+        "badge",
+        "button",
+        "empty",
+        "field",
+        "input-group",
+        "spinner",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/spinner-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "switch-example",
+      "title": "Switch",
+      "registryDependencies": [
+        "field",
+        "label",
+        "switch",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/switch-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "table-example",
+      "title": "Table",
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "input",
+        "select",
+        "table",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/table-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tabs-example",
+      "title": "Tabs",
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "tabs",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/tabs-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "textarea-example",
+      "title": "Textarea",
+      "registryDependencies": [
+        "field",
+        "textarea",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/textarea-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-example",
+      "title": "Toggle",
+      "registryDependencies": [
+        "toggle",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/toggle-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "toggle-group-example",
+      "title": "Toggle Group",
+      "registryDependencies": [
+        "input",
+        "select",
+        "toggle-group",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/toggle-group-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "tooltip-example",
+      "title": "Tooltip",
+      "registryDependencies": [
+        "button",
+        "kbd",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/tooltip-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "component-example",
+      "title": "Example",
+      "registryDependencies": [
+        "alert-dialog",
+        "badge",
+        "button",
+        "card",
+        "combobox",
+        "dropdown-menu",
+        "field",
+        "input",
+        "select",
+        "textarea",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/examples/component-example.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "utils",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "type": "registry:lib"
+    },
+    {
+      "name": "example",
+      "title": "Example",
+      "files": [
+        {
+          "path": "registry/base-nova/components/example.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "preview",
+      "title": "Home",
+      "registryDependencies": [
+        "alert-dialog",
+        "avatar",
+        "badge",
+        "button",
+        "button-group",
+        "card",
+        "checkbox",
+        "combobox",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "label",
+        "popover",
+        "radio-group",
+        "select",
+        "separator",
+        "sheet",
+        "slider",
+        "spinner",
+        "switch",
+        "textarea",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/blocks/preview.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "elevenlabs",
+      "title": "Elevenlabs",
+      "registryDependencies": [
+        "example",
+        "button",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/blocks/elevenlabs.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "github",
+      "title": "GitHub",
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "button",
+        "card",
+        "checkbox",
+        "combobox",
+        "command",
+        "drawer",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input",
+        "input-group",
+        "item",
+        "kbd",
+        "native-select",
+        "popover",
+        "separator",
+        "spinner",
+        "tabs",
+        "textarea",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/blocks/github.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "vercel",
+      "title": "Vercel",
+      "registryDependencies": [
+        "alert",
+        "badge",
+        "button",
+        "calendar",
+        "card",
+        "chart",
+        "dialog",
+        "dropdown-menu",
+        "empty",
+        "field",
+        "input-group",
+        "item",
+        "native-select",
+        "popover",
+        "textarea",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/blocks/vercel.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "chatgpt",
+      "title": "ChatGPT",
+      "registryDependencies": [
+        "alert",
+        "alert-dialog",
+        "badge",
+        "button",
+        "card",
+        "dropdown-menu",
+        "field",
+        "input-group",
+        "item",
+        "kbd",
+        "popover",
+        "tooltip",
+        "example"
+      ],
+      "files": [
+        {
+          "path": "registry/base-nova/blocks/chatgpt.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "use-mobile",
+      "files": [
+        {
+          "path": "registry/base-nova/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "type": "registry:hook"
+    },
+    {
+      "name": "font-geist-sans",
+      "title": "Geist Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Geist Variable', sans-serif",
+        "provider": "google",
+        "import": "Geist",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-inter",
+      "title": "Inter",
+      "type": "registry:font",
+      "font": {
+        "family": "'Inter Variable', sans-serif",
+        "provider": "google",
+        "import": "Inter",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-noto-sans",
+      "title": "Noto Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Noto Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Noto_Sans",
+        "variable": "--font-sans"
+      }
+    },
+    {
+      "name": "font-nunito-sans",
+      "title": "Nunito Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Nunito Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Nunito_Sans",
+        "variable": "--font-sans"
+      }
+    },
+    {
+      "name": "font-figtree",
+      "title": "Figtree",
+      "type": "registry:font",
+      "font": {
+        "family": "'Figtree Variable', sans-serif",
+        "provider": "google",
+        "import": "Figtree",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-roboto",
+      "title": "Roboto",
+      "type": "registry:font",
+      "font": {
+        "family": "'Roboto', sans-serif",
+        "provider": "google",
+        "import": "Roboto",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-raleway",
+      "title": "Raleway",
+      "type": "registry:font",
+      "font": {
+        "family": "'Raleway', sans-serif",
+        "provider": "google",
+        "import": "Raleway",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-dm-sans",
+      "title": "DM Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'DM Sans', sans-serif",
+        "provider": "google",
+        "import": "DM_Sans",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-public-sans",
+      "title": "Public Sans",
+      "type": "registry:font",
+      "font": {
+        "family": "'Public Sans', sans-serif",
+        "provider": "google",
+        "import": "Public_Sans",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-outfit",
+      "title": "Outfit",
+      "type": "registry:font",
+      "font": {
+        "family": "'Outfit', sans-serif",
+        "provider": "google",
+        "import": "Outfit",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-jetbrains-mono",
+      "title": "JetBrains Mono",
+      "type": "registry:font",
+      "font": {
+        "family": "'JetBrains Mono Variable', monospace",
+        "provider": "google",
+        "import": "JetBrains_Mono",
+        "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    }
+  ]
+}

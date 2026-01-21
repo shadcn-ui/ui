@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
@@ -8,7 +9,7 @@ import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/registry/new-york-v4/ui/sonner"
+import { Toaster } from "@/registry/bases/radix/ui/sonner"
 
 import "@/styles/globals.css"
 
@@ -64,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={fontVariables}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -84,16 +85,17 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "group/body theme-blue overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
-          fontVariables
+          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]"
         )}
       >
         <ThemeProvider>
           <LayoutProvider>
-            <ActiveThemeProvider initialTheme="blue">
-              {children}
+            <ActiveThemeProvider>
+              <NuqsAdapter>
+                {children}
+                <Toaster position="top-center" />
+              </NuqsAdapter>
               <TailwindIndicator />
-              <Toaster position="top-center" />
               <Analytics />
             </ActiveThemeProvider>
           </LayoutProvider>
