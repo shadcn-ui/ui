@@ -49,8 +49,8 @@ function Button({
   ref,
   ...props
 }: ButtonPrimitive.Props &
-  VariantProps<typeof buttonVariants> &
-  React.ComponentProps<"button">) {
+  React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants>) {
   return (
     <ButtonPrimitive
       ref={ref}
