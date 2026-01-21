@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import { cn } from "@/examples/base/lib/utils"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -45,10 +46,14 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  ref,
   ...props
-}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+}: ButtonPrimitive.Props &
+  VariantProps<typeof buttonVariants> &
+  React.ComponentProps<"button">) {
   return (
     <ButtonPrimitive
+      ref={ref}
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
