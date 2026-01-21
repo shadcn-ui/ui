@@ -1,0 +1,80 @@
+---
+title: Skeleton
+description: Use to show a placeholder while content is loading.
+base: base
+component: true
+---
+
+<ComponentPreview styleName="base-nova" name="skeleton-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add skeleton
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="skeleton"
+  title="components/ui/skeleton.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Skeleton } from "@/components/ui/skeleton"
+```
+
+```tsx
+<Skeleton className="h-[20px] w-[100px] rounded-full" />
+```
+
+## Examples
+
+### Avatar
+
+<ComponentPreview styleName="base-nova" name="skeleton-avatar" />
+
+### Card
+
+<ComponentPreview
+  styleName="base-nova"
+  name="skeleton-card"
+  previewClassName="h-80"
+/>
+
+### Text
+
+<ComponentPreview styleName="base-nova" name="skeleton-text" />
+
+### Form
+
+<ComponentPreview styleName="base-nova" name="skeleton-form" />
+
+### Table
+
+<ComponentPreview styleName="base-nova" name="skeleton-table" />

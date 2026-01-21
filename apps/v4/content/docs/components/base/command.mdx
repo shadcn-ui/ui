@@ -1,0 +1,125 @@
+---
+title: Command
+description: Command menu for search and quick actions.
+base: base
+component: true
+links:
+  doc: https://github.com/dip/cmdk
+---
+
+<ComponentPreview
+  styleName="base-nova"
+  name="command-demo"
+  align="start"
+  previewClassName="h-[24.5rem]"
+/>
+
+## About
+
+The `<Command />` component uses the [`cmdk`](https://github.com/dip/cmdk) component by [Dip](https://www.dip.org/).
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add command
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install cmdk
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="command"
+  title="components/ui/command.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "@/components/ui/command"
+```
+
+```tsx showLineNumbers
+<Command className="max-w-sm rounded-lg border">
+  <CommandInput placeholder="Type a command or search..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>Calendar</CommandItem>
+      <CommandItem>Search Emoji</CommandItem>
+      <CommandItem>Calculator</CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>Profile</CommandItem>
+      <CommandItem>Billing</CommandItem>
+      <CommandItem>Settings</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+## Examples
+
+### Basic
+
+A simple command menu in a dialog.
+
+<ComponentPreview styleName="base-nova" name="command-basic" />
+
+### Shortcuts
+
+<ComponentPreview styleName="base-nova" name="command-shortcuts" />
+
+### Groups
+
+A command menu with groups, icons and separators.
+
+<ComponentPreview styleName="base-nova" name="command-groups" />
+
+### Scrollable
+
+Scrollable command menu with multiple items.
+
+<ComponentPreview styleName="base-nova" name="command-scrollable" />
+
+## API Reference
+
+See the [cmdk](https://github.com/dip/cmdk) documentation for more information.

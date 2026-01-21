@@ -81,6 +81,7 @@ function PaginationPrevious({
         tabler="IconChevronLeft"
         hugeicons="ArrowLeft01Icon"
         phosphor="CaretLeftIcon"
+        remixicon="RiArrowLeftSLine"
         data-icon="inline-start"
       />
       <span className="cn-pagination-previous-text hidden sm:block">
@@ -107,6 +108,7 @@ function PaginationNext({
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
+        remixicon="RiArrowRightSLine"
         data-icon="inline-end"
       />
     </PaginationLink>
@@ -132,6 +134,7 @@ function PaginationEllipsis({
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
         phosphor="DotsThreeIcon"
+        remixicon="RiMoreLine"
       />
       <span className="sr-only">More pages</span>
     </span>

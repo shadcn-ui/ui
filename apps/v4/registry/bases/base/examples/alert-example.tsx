@@ -56,6 +56,7 @@ function AlertExample2() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertTitle>
             Let&apos;s try one with icon, title and a <a href="#">link</a>.
@@ -67,6 +68,7 @@ function AlertExample2() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertDescription>
             This one has an icon and a description only. No title.{" "}
@@ -80,6 +82,7 @@ function AlertExample2() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertTitle>Success! Your changes have been saved</AlertTitle>
           <AlertDescription>
@@ -92,6 +95,7 @@ function AlertExample2() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertTitle>
             This is a very long alert title that demonstrates how the component
@@ -105,6 +109,7 @@ function AlertExample2() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertDescription>
             This is a very long alert description that demonstrates how the
@@ -118,6 +123,7 @@ function AlertExample2() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertTitle>
             This is an extremely long alert title that spans multiple lines to
@@ -148,6 +154,7 @@ function AlertExample3() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertTitle>Something went wrong!</AlertTitle>
           <AlertDescription>
@@ -160,6 +167,7 @@ function AlertExample3() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertTitle>Unable to process your payment.</AlertTitle>
           <AlertDescription>
@@ -189,6 +197,7 @@ function AlertExample4() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
           <AlertAction>
@@ -201,6 +210,7 @@ function AlertExample4() {
             tabler="IconExclamationCircle"
             hugeicons="AlertCircleIcon"
             phosphor="WarningCircleIcon"
+            remixicon="RiErrorWarningLine"
           />
           <AlertTitle>The selected emails have been marked as spam.</AlertTitle>
           <AlertDescription>
