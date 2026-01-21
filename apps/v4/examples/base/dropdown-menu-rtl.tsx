@@ -112,92 +112,87 @@ export function DropdownMenuRtl() {
 
   return (
     <DropdownMenu>
-        <DropdownMenuTrigger render={<Button variant="outline" />}>
-          {t.open}
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align={dir === "rtl" ? "end" : "start"}
-          dir={dir}
-          className="w-36"
-        >
-          <DropdownMenuGroup>
-            <DropdownMenuLabel>{t.team}</DropdownMenuLabel>
-            <DropdownMenuItem>{t.team}</DropdownMenuItem>
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>{t.inviteUsers}</DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent
-                  dir={dir}
-                  side={dir === "rtl" ? "left" : "right"}
-                >
-                  <DropdownMenuItem>{t.email}</DropdownMenuItem>
-                  <DropdownMenuItem>{t.message}</DropdownMenuItem>
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
-                    <DropdownMenuPortal>
-                      <DropdownMenuSubContent
-                        dir={dir}
-                        side={dir === "rtl" ? "left" : "right"}
-                      >
-                        <DropdownMenuItem>{t.calendar}</DropdownMenuItem>
-                        <DropdownMenuItem>{t.chat}</DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>{t.webhook}</DropdownMenuItem>
-                      </DropdownMenuSubContent>
-                    </DropdownMenuPortal>
-                  </DropdownMenuSub>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>{t.advanced}</DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
-            </DropdownMenuSub>
-            <DropdownMenuItem>
-              {t.newTeam}
-              <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuLabel>{t.view}</DropdownMenuLabel>
-            <DropdownMenuCheckboxItem
-              checked={showStatusBar}
-              onCheckedChange={setShowStatusBar}
-            >
-              {t.statusBar}
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem
-              checked={showActivityBar}
-              onCheckedChange={setShowActivityBar}
-            >
-              {t.activityBar}
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem
-              checked={showPanel}
-              onCheckedChange={setShowPanel}
-            >
-              {t.panel}
-            </DropdownMenuCheckboxItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuLabel>{t.position}</DropdownMenuLabel>
-            <DropdownMenuRadioGroup
-              value={position}
-              onValueChange={setPosition}
-            >
-              <DropdownMenuRadioItem value="top">{t.top}</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="bottom">
-                {t.bottom}
-              </DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="right">
-                {t.right}
-              </DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="left">
-                {t.left}
-              </DropdownMenuRadioItem>
-            </DropdownMenuRadioGroup>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
+        {t.open}
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align={dir === "rtl" ? "end" : "start"}
+        dir={dir}
+        className="w-36"
+      >
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>{t.team}</DropdownMenuLabel>
+          <DropdownMenuItem>{t.team}</DropdownMenuItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>{t.inviteUsers}</DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent
+                dir={dir}
+                side={dir === "rtl" ? "left" : "right"}
+              >
+                <DropdownMenuItem>{t.email}</DropdownMenuItem>
+                <DropdownMenuItem>{t.message}</DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
+                  <DropdownMenuPortal>
+                    <DropdownMenuSubContent
+                      dir={dir}
+                      side={dir === "rtl" ? "left" : "right"}
+                    >
+                      <DropdownMenuItem>{t.calendar}</DropdownMenuItem>
+                      <DropdownMenuItem>{t.chat}</DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>{t.webhook}</DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuPortal>
+                </DropdownMenuSub>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>{t.advanced}</DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+          <DropdownMenuItem>
+            {t.newTeam}
+            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>{t.view}</DropdownMenuLabel>
+          <DropdownMenuCheckboxItem
+            checked={showStatusBar}
+            onCheckedChange={setShowStatusBar}
+          >
+            {t.statusBar}
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={showActivityBar}
+            onCheckedChange={setShowActivityBar}
+          >
+            {t.activityBar}
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={showPanel}
+            onCheckedChange={setShowPanel}
+          >
+            {t.panel}
+          </DropdownMenuCheckboxItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>{t.position}</DropdownMenuLabel>
+          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+            <DropdownMenuRadioItem value="top">{t.top}</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="bottom">
+              {t.bottom}
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="right">
+              {t.right}
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="left">{t.left}</DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

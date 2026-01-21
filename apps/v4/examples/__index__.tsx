@@ -213,6 +213,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "alert-dialog-rtl": {
+      name: "alert-dialog-rtl",
+      filePath: "examples/radix/alert-dialog-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/alert-dialog-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "alert-dialog-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "alert-dialog-small-media": {
       name: "alert-dialog-small-media",
       filePath: "examples/radix/alert-dialog-small-media.tsx",
@@ -236,6 +249,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "alert-dialog-small"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "alert-rtl": {
+      name: "alert-rtl",
+      filePath: "examples/radix/alert-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/alert-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "alert-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -275,6 +301,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "aspect-ratio-square"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "aspect-ratio-rtl": {
+      name: "aspect-ratio-rtl",
+      filePath: "examples/radix/aspect-ratio-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/aspect-ratio-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "aspect-ratio-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -382,6 +421,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "avatar-rtl": {
+      name: "avatar-rtl",
+      filePath: "examples/radix/avatar-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/avatar-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "avatar-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "avatar-size": {
       name: "avatar-size",
       filePath: "examples/radix/avatar-size.tsx",
@@ -418,6 +470,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "badge-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "badge-rtl": {
+      name: "badge-rtl",
+      filePath: "examples/radix/badge-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/badge-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "badge-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -535,6 +600,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "breadcrumb-link"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "breadcrumb-rtl": {
+      name: "breadcrumb-rtl",
+      filePath: "examples/radix/breadcrumb-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/breadcrumb-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "breadcrumb-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -5142,6 +5220,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "alert-dialog-rtl": {
+      name: "alert-dialog-rtl",
+      filePath: "examples/base/alert-dialog-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/alert-dialog-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "alert-dialog-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "alert-dialog-small-media": {
       name: "alert-dialog-small-media",
       filePath: "examples/base/alert-dialog-small-media.tsx",
@@ -5165,6 +5256,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "alert-dialog-small"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "alert-rtl": {
+      name: "alert-rtl",
+      filePath: "examples/base/alert-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/alert-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "alert-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -5204,6 +5308,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "aspect-ratio-square"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "aspect-ratio-rtl": {
+      name: "aspect-ratio-rtl",
+      filePath: "examples/base/aspect-ratio-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/aspect-ratio-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "aspect-ratio-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -5311,6 +5428,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "avatar-rtl": {
+      name: "avatar-rtl",
+      filePath: "examples/base/avatar-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/avatar-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "avatar-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "avatar-size": {
       name: "avatar-size",
       filePath: "examples/base/avatar-size.tsx",
@@ -5347,6 +5477,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "badge-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "badge-rtl": {
+      name: "badge-rtl",
+      filePath: "examples/base/badge-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/badge-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "badge-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -5464,6 +5607,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "breadcrumb-link"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "breadcrumb-rtl": {
+      name: "breadcrumb-rtl",
+      filePath: "examples/base/breadcrumb-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/breadcrumb-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "breadcrumb-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },

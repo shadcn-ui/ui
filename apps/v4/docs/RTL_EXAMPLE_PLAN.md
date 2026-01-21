@@ -17,11 +17,29 @@ When adding a new RTL example, you need to:
   - `apps/v4/examples/radix/ui-rtl/` (for Radix UI)
 - If RTL UI components don't exist, they need to be created first (outside this plan's scope)
 
+## Important: Follow Demo Structure
+
+**The RTL example should follow the same structure as the demo version.**
+
+For example:
+- `dropdown-menu-rtl.tsx` should be similar to `dropdown-menu-demo.tsx`
+- `avatar-rtl.tsx` should be similar to `avatar-demo.tsx`
+- `alert-rtl.tsx` should be similar to `alert-demo.tsx`
+
+**Key Points:**
+- Use the same component structure and layout as the demo
+- Keep the same visual elements (icons, badges, groups, etc.)
+- Only add translations for text content that needs to be translated
+- If the demo has no text (like `avatar-demo`), the RTL example should also have minimal/no text
+- The main difference is using RTL UI components (`@/examples/{base|radix}/ui-rtl/`) and passing the `dir` prop
+
 ## Step-by-Step Process
 
 ### Step 1: Create Base UI RTL Example Component
 
 **Location:** `apps/v4/examples/base/{component-name}-rtl.tsx`
+
+**Important:** Before creating the RTL example, check the corresponding demo file (`{component-name}-demo.tsx`) and use it as a reference. The RTL example should follow the same structure, layout, and visual elements as the demo, but use RTL UI components and add translations for text content.
 
 **Template Structure:**
 ```tsx
@@ -219,6 +237,21 @@ Add the same RTL section, but with:
 - [ ] RTL UI components exist in both `ui-rtl` directories
 - [ ] Language selector appears automatically (handled by `ComponentPreviewTabs`)
 
+### Step 7: Build Examples Index
+
+**Important:** After adding new RTL examples, you must run the build command to regenerate the examples index:
+
+```bash
+pnpm examples:build
+```
+
+This command will:
+- Scan all example files
+- Regenerate `apps/v4/examples/__index__.tsx`
+- Ensure all examples are properly registered
+
+**Note:** The examples index is auto-generated, so manual edits to `__index__.tsx` will be overwritten. Always run the build command after adding new examples.
+
 ## Example: Accordion RTL
 
 As a reference, here's what was done for the `accordion` component:
@@ -227,11 +260,13 @@ As a reference, here's what was done for the `accordion` component:
    - Uses `@/examples/base/ui-rtl/accordion`
    - Exports `AccordionRtl`
    - Uses `defaultValue={["item-1"]}` (Base UI pattern)
+   - Follows the same structure as `accordion-demo.tsx` but with translations
 
 2. **Radix UI Example:** `apps/v4/examples/radix/accordion-rtl.tsx`
    - Uses `@/examples/radix/ui-rtl/accordion`
    - Exports `AccordionRtl`
    - Uses `type="single" collapsible defaultValue="item-1"` (Radix UI pattern)
+   - Follows the same structure as `accordion-demo.tsx` but with translations
 
 3. **Registered in:** `apps/v4/examples/__index__.tsx`
    - Radix: line ~86
@@ -240,6 +275,11 @@ As a reference, here's what was done for the `accordion` component:
 4. **Documentation added to:**
    - `apps/v4/content/docs/components/base/accordion.mdx`
    - `apps/v4/content/docs/components/radix/accordion.mdx`
+
+**Other Examples:**
+- `dropdown-menu-rtl.tsx` follows `dropdown-menu-demo.tsx` structure
+- `avatar-rtl.tsx` follows `avatar-demo.tsx` structure (no text labels)
+- `alert-rtl.tsx` follows `alert-demo.tsx` structure
 
 ## Common Patterns
 

@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "@/examples/base/lib/utils"
 import * as ResizablePrimitive from "react-resizable-panels"
+
+import { cn } from "@/examples/base/lib/utils"
 
 function ResizablePanelGroup({
   className,
@@ -43,7 +44,7 @@ function ResizableHandle({
       {...props}
     >
       {withHandle && (
-        <div className="bg-border z-10 flex h-6 w-1 shrink-0 rounded-lg" />
+        <div className="bg-border h-6 w-1 rounded-lg z-10 flex shrink-0" />
       )}
     </ResizablePrimitive.PanelResizeHandle>
   )

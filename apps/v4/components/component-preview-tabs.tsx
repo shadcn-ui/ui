@@ -34,8 +34,6 @@ export function ComponentPreviewTabs({
   styleName?: string
 }) {
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false)
-
-  // Determine the base from styleName (e.g., "base-nova" -> "base", "radix-nova" -> "radix").
   const base = styleName?.split("-")[0]
 
   return (

@@ -1,7 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Alert, AlertDescription, AlertTitle } from "@/examples/base/ui-rtl/alert"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/examples/base/ui-rtl/alert"
 import { CheckCircle2Icon, InfoIcon } from "lucide-react"
 
 import {

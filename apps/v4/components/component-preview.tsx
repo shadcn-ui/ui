@@ -15,6 +15,7 @@ export function ComponentPreview({
   chromeLessOnMobile = false,
   styleName = "new-york-v4",
   direction = "ltr",
+  caption,
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
@@ -26,9 +27,13 @@ export function ComponentPreview({
   chromeLessOnMobile?: boolean
   previewClassName?: string
   direction?: "ltr" | "rtl"
+  caption?: string
 }) {
+  const translationDisclaimer = direction === "rtl" ? "Automatic translation may contain errors." : undefined
+  const finalCaption = [caption, translationDisclaimer].filter(Boolean).join(" ") || undefined
+
   if (type === "block") {
-    return (
+    const content = (
       <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-xl border md:-mx-1">
         <Image
           src={`/r/styles/new-york-v4/${name}-light.png`}
@@ -49,6 +54,19 @@ export function ComponentPreview({
         </div>
       </div>
     )
+
+    if (finalCaption) {
+      return (
+        <figure className="flex flex-col gap-4">
+          {content}
+          <figcaption className="text-center text-sm text-muted-foreground">
+            {finalCaption}
+          </figcaption>
+        </figure>
+      )
+    }
+
+    return content
   }
 
   const Component = getRegistryComponent(name, styleName)
@@ -65,7 +83,7 @@ export function ComponentPreview({
     )
   }
 
-  return (
+  const content = (
     <ComponentPreviewTabs
       className={className}
       previewClassName={previewClassName}
@@ -85,6 +103,19 @@ export function ComponentPreview({
       {...props}
     />
   )
+
+  if (finalCaption) {
+    return (
+      <figure data-hide-code={hideCode} className="flex flex-col data-[hide-code=true]:gap-4">
+        {content}
+        <figcaption className="text-center text-sm text-muted-foreground data-[hide-code=true]:mt-0 -mt-8">
+          {finalCaption}
+        </figcaption>
+      </figure>
+    )
+  }
+
+  return content
 }
 
 function DynamicComponent({

@@ -81,6 +81,14 @@ describe("applyRtlMapping", () => {
     expect(applyRtlMapping("sm:md:ml-2")).toBe("sm:md:ms-2")
   })
 
+  test("handles named group selectors with data attributes", () => {
+    expect(
+      applyRtlMapping(
+        "sm:group-data-[size=default]/alert-dialog-content:text-left"
+      )
+    ).toBe("sm:group-data-[size=default]/alert-dialog-content:text-start")
+  })
+
   test("preserves arbitrary values", () => {
     expect(applyRtlMapping("ml-[10px]")).toBe("ms-[10px]")
     expect(applyRtlMapping("left-[50%]")).toBe("start-[50%]")
@@ -94,24 +102,20 @@ describe("applyRtlMapping", () => {
     expect(applyRtlMapping("ml-2 mr-4 pl-2 pr-4")).toBe("ms-2 me-4 ps-2 pe-4")
   })
 
-  test("adds rtl: variant for animation classes", () => {
-    expect(applyRtlMapping("slide-in-from-left-2")).toBe(
-      "slide-in-from-left-2 rtl:slide-in-from-right-2"
-    )
-    expect(applyRtlMapping("slide-in-from-right-2")).toBe(
-      "slide-in-from-right-2 rtl:slide-in-from-left-2"
-    )
-    expect(applyRtlMapping("slide-out-to-left-2")).toBe(
-      "slide-out-to-left-2 rtl:slide-out-to-right-2"
-    )
-    expect(applyRtlMapping("slide-out-to-right-2")).toBe(
-      "slide-out-to-right-2 rtl:slide-out-to-left-2"
-    )
+  test("transforms slide animation classes to logical equivalents", () => {
+    // tw-animate-css has logical slide utilities (start/end).
+    expect(applyRtlMapping("slide-in-from-left-2")).toBe("slide-in-from-start-2")
+    expect(applyRtlMapping("slide-in-from-right-2")).toBe("slide-in-from-end-2")
+    expect(applyRtlMapping("slide-out-to-left-2")).toBe("slide-out-to-start-2")
+    expect(applyRtlMapping("slide-out-to-right-2")).toBe("slide-out-to-end-2")
   })
 
-  test("handles animation classes with variants", () => {
+  test("transforms slide animations with variants", () => {
     expect(applyRtlMapping("data-[side=left]:slide-in-from-right-2")).toBe(
-      "data-[side=left]:slide-in-from-right-2 rtl:data-[side=left]:slide-in-from-left-2"
+      "data-[side=left]:slide-in-from-end-2"
+    )
+    expect(applyRtlMapping("data-[side=right]:slide-in-from-left-2")).toBe(
+      "data-[side=right]:slide-in-from-start-2"
     )
   })
 

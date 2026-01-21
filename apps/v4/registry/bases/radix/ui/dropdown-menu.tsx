@@ -237,7 +237,7 @@ function DropdownMenuSubTrigger({
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
-        className="ml-auto"
+        className="ml-auto rtl:rotate-180"
       />
     </DropdownMenuPrimitive.SubTrigger>
   )

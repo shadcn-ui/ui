@@ -59,15 +59,13 @@ const RTL_MAPPINGS: [string, string][] = [
   ["origin-bottom-right", "origin-bottom-end"],
   ["origin-left", "origin-start"],
   ["origin-right", "origin-end"],
+  // Slide animations (tw-animate-css has logical equivalents).
+  ["slide-in-from-left", "slide-in-from-start"],
+  ["slide-in-from-right", "slide-in-from-end"],
+  ["slide-out-to-left", "slide-out-to-start"],
+  ["slide-out-to-right", "slide-out-to-end"],
 ]
 
-// Animation classes that need rtl: variant additions.
-const RTL_ANIMATION_MAPPINGS: [string, string][] = [
-  ["slide-in-from-left", "slide-in-from-right"],
-  ["slide-in-from-right", "slide-in-from-left"],
-  ["slide-out-to-left", "slide-out-to-right"],
-  ["slide-out-to-right", "slide-out-to-left"],
-]
 
 // Props that need value swapping for RTL.
 // Format: { propName: { fromValue: toValue } }
@@ -98,27 +96,11 @@ function stripQuotes(str: string) {
 export function applyRtlMapping(input: string) {
   return input
     .split(" ")
-    .flatMap((className) => {
+    .map((className) => {
       const [variant, value, modifier] = splitClassName(className)
 
       if (!value) {
         return className
-      }
-
-      // Check for animation class mappings first (these add rtl: variant).
-      for (const [ltrPattern, rtlPattern] of RTL_ANIMATION_MAPPINGS) {
-        if (value.startsWith(ltrPattern)) {
-          // Keep original and add rtl: variant with swapped direction.
-          const rtlValue = value.replace(ltrPattern, rtlPattern)
-          const rtlClass = variant
-            ? modifier
-              ? `rtl:${variant}:${rtlValue}/${modifier}`
-              : `rtl:${variant}:${rtlValue}`
-            : modifier
-            ? `rtl:${rtlValue}/${modifier}`
-            : `rtl:${rtlValue}`
-          return [className, rtlClass]
-        }
       }
 
       // Find matching RTL mapping for direct replacement.
