@@ -4,7 +4,11 @@ import { type Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { siteConfig } from "@/lib/config"
-import { getRegistryComponent, getRegistryItem } from "@/lib/registry"
+import {
+  getDemoItem,
+  getRegistryComponent,
+  getRegistryItem,
+} from "@/lib/registry"
 import { absoluteUrl } from "@/lib/utils"
 import { getStyle, legacyStyles, type Style } from "@/registry/_legacy-styles"
 
@@ -18,7 +22,12 @@ export const dynamicParams = false
 
 const getCachedRegistryItem = React.cache(
   async (name: string, styleName: Style["name"]) => {
-    return await getRegistryItem(name, styleName)
+    // Try registry item first, then fallback to demo item (for examples).
+    const item = await getRegistryItem(name, styleName)
+    if (item) {
+      return item
+    }
+    return await getDemoItem(name, styleName)
   }
 )
 
@@ -75,9 +84,54 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   const { Index } = await import("@/registry/__index__")
+  // const { Index: BasesIndex } = await import("@/registry/bases/__index__")
+  const { ExamplesIndex } = await import("@/examples/__index__")
   const params: Array<{ style: string; name: string }> = []
 
   for (const style of legacyStyles) {
+    // Check if this is a base-prefixed style (e.g., base-nova, radix-nova).
+    const baseMatch = style.name.match(/^(base|radix)-/)
+    if (baseMatch) {
+      const baseName = baseMatch[1]
+
+      // Add examples from ExamplesIndex.
+      const examples = ExamplesIndex[baseName]
+      if (examples) {
+        for (const exampleName of Object.keys(examples)) {
+          if (exampleName.startsWith("sidebar-")) {
+            params.push({
+              style: style.name,
+              name: exampleName,
+            })
+          }
+        }
+      }
+
+      // // Add UI components from BasesIndex.
+      // const baseIndex = BasesIndex[baseName]
+      // if (baseIndex) {
+      //   for (const itemName in baseIndex) {
+      //     const item = baseIndex[itemName]
+      //     if (
+      //       [
+      //         "registry:block",
+      //         "registry:component",
+      //         "registry:example",
+      //         "registry:internal",
+      //       ].includes(item.type)
+      //     ) {
+      //       params.push({
+      //         style: style.name,
+      //         name: item.name,
+      //       })
+      //     }
+      //   }
+      // }
+
+      continue
+    }
+
+    // Handle legacy styles (e.g., new-york-v4).
     if (!Index[style.name]) {
       continue
     }

@@ -56,7 +56,7 @@ export function ShareButton() {
         <Button
           size="sm"
           variant="outline"
-          className="rounded-lg shadow-none"
+          className="rounded-lg shadow-none lg:w-8 xl:w-fit"
           onClick={handleCopy}
         >
           {hasCopied ? (
@@ -64,7 +64,7 @@ export function ShareButton() {
           ) : (
             <HugeiconsIcon icon={Share03Icon} strokeWidth={2} />
           )}
-          Share
+          <span className="lg:hidden xl:block">Share</span>
         </Button>
       </TooltipTrigger>
       <TooltipContent>Copy Link</TooltipContent>

@@ -17,6 +17,7 @@
     "registry:build": "pnpm --filter=v4 registry:build && pnpm lint:fix && pnpm format:write -- --loglevel silent",
     "registry": "turbo run registry",
     "registry:capture": "pnpm --filter=v4 registry:capture",
+    "examples:build": "pnpm --filter=v4 examples:build",
     "dev": "turbo run dev --parallel",
     "shadcn:dev": "turbo --filter=shadcn dev",
     "shadcn": "pnpm --filter=shadcn start:dev",

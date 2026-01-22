@@ -1,0 +1,97 @@
+---
+title: Date Picker
+description: A date picker component with range and presets.
+base: base
+component: true
+---
+
+<ComponentPreview styleName="base-nova" name="date-picker-demo" />
+
+## Installation
+
+The Date Picker is built using a composition of the `<Popover />` and the `<Calendar />` components.
+
+See installation instructions for the [Popover](/docs/components/base/popover#installation) and the [Calendar](/docs/components/base/calendar#installation) components.
+
+## Usage
+
+```tsx showLineNumbers title="components/example-date-picker.tsx"
+"use client"
+
+import * as React from "react"
+import { format } from "date-fns"
+import { Calendar as CalendarIcon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+
+export function DatePickerDemo() {
+  const [date, setDate] = React.useState<Date>()
+
+  return (
+    <Popover>
+      <PopoverTrigger
+        render={
+          <Button
+            variant="outline"
+            data-empty={!date}
+            className="data-[empty=true]:text-muted-foreground justify-start text-left font-normal"
+          />
+        }
+      >
+        <CalendarIcon />
+        {date ? format(date, "PPP") : <span>Pick a date</span>}
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0">
+        <Calendar mode="single" selected={date} onSelect={setDate} />
+      </PopoverContent>
+    </Popover>
+  )
+}
+```
+
+See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
+
+## Examples
+
+### Basic
+
+A basic date picker component.
+
+<ComponentPreview styleName="base-nova" name="date-picker-basic" />
+
+### Range Picker
+
+A date picker component for selecting a range of dates.
+
+<ComponentPreview styleName="base-nova" name="date-picker-range" />
+
+### Date of Birth
+
+A date picker component for selecting a date of birth. This component includes a dropdown caption layout for date and month selection.
+
+<ComponentPreview styleName="base-nova" name="date-picker-dob" />
+
+### Input
+
+A date picker component with an input field for selecting a date.
+
+<ComponentPreview styleName="base-nova" name="date-picker-input" />
+
+### Time Picker
+
+A date picker component with a time input field for selecting a time.
+
+<ComponentPreview styleName="base-nova" name="date-picker-time" />
+
+### Natural Language Picker
+
+This component uses the `chrono-node` library to parse natural language dates.
+
+<ComponentPreview styleName="base-nova" name="date-picker-natural-language" />
