@@ -97,6 +97,14 @@ export function ComponentPreview({
           styleName={styleName}
         />
       }
+      sourcePreview={
+        <ComponentSource
+          name={name}
+          collapsible={false}
+          styleName={styleName}
+          maxLines={3}
+        />
+      }
       chromeLessOnMobile={chromeLessOnMobile}
       direction={direction}
       styleName={styleName}

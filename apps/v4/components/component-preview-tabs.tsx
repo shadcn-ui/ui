@@ -22,6 +22,7 @@ export function ComponentPreviewTabs({
   chromeLessOnMobile = false,
   component,
   source,
+  sourcePreview,
   direction = "ltr",
   styleName,
   ...props
@@ -32,6 +33,7 @@ export function ComponentPreviewTabs({
   chromeLessOnMobile?: boolean
   component: React.ReactNode
   source: React.ReactNode
+  sourcePreview?: React.ReactNode
   direction?: "ltr" | "rtl"
   styleName?: string
 }) {
@@ -40,6 +42,7 @@ export function ComponentPreviewTabs({
 
   return (
     <div
+      data-slot="component-preview"
       className={cn(
         "group relative mt-4 mb-12 flex flex-col gap-2 overflow-hidden rounded-xl border",
         className
@@ -75,33 +78,33 @@ export function ComponentPreviewTabs({
         <div
             data-slot="code"
             data-mobile-code-visible={isMobileCodeVisible}
-            className="relative overflow-hidden data-[mobile-code-visible=false]:max-h-24 [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
-            style={{
-              contentVisibility: "auto",
-              containIntrinsicSize: "auto 96px",
-            }}
+            className="relative overflow-hidden [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
           >
-            {source}
-            {!isMobileCodeVisible && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(to top, var(--color-code), color-mix(in oklab, var(--color-code) 60%, transparent), transparent)",
-                  }}
-                />
-                <Button
-                  type="button"
-                  size="sm"
-                  variant="outline"
-                  className="bg-background text-foreground dark:bg-background dark:text-foreground relative z-10"
-                  onClick={() => {
-                    setIsMobileCodeVisible(true)
-                  }}
-                >
-                  View Code
-                </Button>
+            {isMobileCodeVisible ? (
+              source
+            ) : (
+              <div className="relative">
+                {sourcePreview}
+                <div className="absolute inset-0 flex items-center justify-center pb-4">
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(to top, var(--color-code), color-mix(in oklab, var(--color-code) 60%, transparent), transparent)",
+                    }}
+                  />
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    className="bg-background text-foreground dark:bg-background dark:text-foreground hover:bg-muted dark:hover:bg-muted relative z-10"
+                    onClick={() => {
+                      setIsMobileCodeVisible(true)
+                    }}
+                  >
+                    View Code
+                  </Button>
+                </div>
               </div>
             )}
           </div>
@@ -127,8 +130,8 @@ const directionTranslations: Translations<Record<string, never>> = {
 
 function RtlLanguageSelector() {
   const context = useLanguageContext()
-  // This component is always rendered inside LanguageProvider when direction === "rtl"
-  // so context should always be available
+  // This component is always rendered inside LanguageProvider when direction === "rtl".
+  // so context should always be available.
   if (!context) {
     return null
   }
@@ -153,8 +156,8 @@ function PreviewWrapper({
   dir?: "ltr" | "rtl"
   children: React.ReactNode
 }) {
-  // useTranslation handles the case when there's no LanguageProvider context
-  // It will fall back to local state with defaultLanguage
+  // useTranslation handles the case when there's no LanguageProvider context.
+  // It will fall back to local state with defaultLanguage.
   const translation = useTranslation(directionTranslations, "ar")
   const dir = explicitDir ?? translation.dir
 
@@ -183,8 +186,8 @@ function DirectionProviderWrapper({
   dir?: "ltr" | "rtl"
   children: React.ReactNode
 }) {
-  // useTranslation handles the case when there's no LanguageProvider context
-  // It will fall back to local state with defaultLanguage
+  // useTranslation handles the case when there's no LanguageProvider context.
+  // It will fall back to local state with defaultLanguage.
   const translation = useTranslation(directionTranslations, "ar")
   const dir = explicitDir ?? translation.dir
 
