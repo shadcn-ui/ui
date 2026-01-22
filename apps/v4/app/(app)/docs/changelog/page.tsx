@@ -1,9 +1,10 @@
 import fs from "fs"
 import path from "path"
-import fm from "front-matter"
 import Link from "next/link"
+import { Button } from "@/examples/radix/ui/button"
 import { mdxComponents } from "@/mdx-components"
 import { IconRss } from "@tabler/icons-react"
+import fm from "front-matter"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
@@ -55,8 +56,6 @@ function getDateFromFile(slugs: string[]): Date | null {
 
 export default async function ChangelogPage() {
   const rawPages = source.getPages()
-  console.log("Raw pages sample:", JSON.stringify(rawPages[0], null, 2))
-
   const pages = rawPages
     .filter((page) => page.slugs[0] === "changelog" && page.slugs.length > 1)
     .map((page) => ({
@@ -81,17 +80,16 @@ export default async function ChangelogPage() {
         <div className="h-(--top-spacing) shrink-0" />
         <div className="mx-auto flex w-full max-w-[40rem] min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
           <div className="flex flex-col gap-2">
-            <div className="flex items-start justify-between">
+            <div className="flex items-center justify-between">
               <h1 className="scroll-m-24 text-4xl font-semibold tracking-tight sm:text-3xl">
                 Changelog
               </h1>
-              <Link
-                href="/rss.xml"
-                className="text-muted-foreground hover:text-foreground flex items-center gap-1.5 text-sm transition-colors"
-              >
-                <IconRss className="size-4" />
-                <span className="sr-only sm:not-sr-only">RSS</span>
-              </Link>
+              <Button variant="secondary" size="sm" asChild>
+                <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+                  <IconRss />
+                  RSS
+                </a>
+              </Button>
             </div>
             <p className="text-muted-foreground text-[1.05rem] sm:text-base sm:text-balance md:max-w-[80%]">
               Latest updates and announcements.
@@ -106,34 +104,10 @@ export default async function ChangelogPage() {
               }
 
               return (
-                <article
-                  key={page.url}
-                  className="border-b pb-12 last:border-b-0"
-                >
-                  <div className="mb-4 flex items-center gap-3">
-                    {page.date && (
-                      <time
-                        dateTime={page.date.toISOString()}
-                        className="text-muted-foreground text-sm"
-                      >
-                        {page.date.toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </time>
-                    )}
-                  </div>
-                  <h2 className="font-heading text-2xl font-semibold tracking-tight">
-                    <Link href={page.url} className="hover:underline">
-                      {data.title}
-                    </Link>
+                <article key={page.url} className="mb-12 border-b pb-12">
+                  <h2 className="font-heading text-xl font-semibold tracking-tight">
+                    {data.title}
                   </h2>
-                  {data.description && (
-                    <p className="text-muted-foreground mt-2">
-                      {data.description}
-                    </p>
-                  )}
                   <div className="prose-changelog mt-6 *:first:mt-0">
                     <MDX components={mdxComponents} />
                   </div>
@@ -141,29 +115,17 @@ export default async function ChangelogPage() {
               )
             })}
             {olderPages.length > 0 && (
-              <div id="more-updates" className="mt-12 pt-8 scroll-mt-24">
+              <div id="more-updates" className="mb-24 scroll-mt-24">
                 <h2 className="font-heading mb-6 text-xl font-semibold tracking-tight">
                   More Updates
                 </h2>
-                <ul className="space-y-3">
+                <ul className="flex flex-col gap-4">
                   {olderPages.map((page) => {
                     const data = page.data as {
                       title: string
                     }
                     return (
                       <li key={page.url} className="flex items-center gap-3">
-                        {page.date && (
-                          <time
-                            dateTime={page.date.toISOString()}
-                            className="text-muted-foreground w-28 shrink-0 text-sm"
-                          >
-                            {page.date.toLocaleDateString("en-US", {
-                              year: "numeric",
-                              month: "short",
-                              day: "numeric",
-                            })}
-                          </time>
-                        )}
                         <Link
                           href={page.url}
                           className="font-medium hover:underline"

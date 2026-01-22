@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
-import fm from "front-matter"
 import { NextResponse } from "next/server"
+import fm from "front-matter"
 
 import { siteConfig } from "@/lib/config"
 import { source } from "@/lib/source"
