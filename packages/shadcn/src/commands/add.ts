@@ -31,6 +31,7 @@ export const addOptionsSchema = z.object({
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
+  skipInstallDeps: z.boolean().optional(),
 })
 
 export const add = new Command()
@@ -58,6 +59,7 @@ export const add = new Command()
   )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
+  .option("--skip-install-deps", "skip installing dependencies.", false)
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -227,6 +229,7 @@ export const add = new Command()
           baseStyle: shouldInstallBaseStyle,
           baseColor: shouldInstallBaseStyle ? undefined : "neutral",
           components: options.components,
+          skipInstallDeps: options.skipInstallDeps,
         })
         initHasRun = true
       }
@@ -263,6 +266,7 @@ export const add = new Command()
             baseStyle: shouldInstallBaseStyle,
             baseColor: shouldInstallBaseStyle ? undefined : "neutral",
             components: options.components,
+            skipInstallDeps: options.skipInstallDeps,
           })
           initHasRun = true
 
