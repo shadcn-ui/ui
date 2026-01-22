@@ -102,28 +102,54 @@ describe("applyRtlMapping", () => {
     expect(applyRtlMapping("ml-2 mr-4 pl-2 pr-4")).toBe("ms-2 me-4 ps-2 pe-4")
   })
 
-  test("transforms slide animation classes to logical equivalents", () => {
-    // tw-animate-css has logical slide utilities (start/end).
-    expect(applyRtlMapping("slide-in-from-left-2")).toBe("slide-in-from-start-2")
-    expect(applyRtlMapping("slide-in-from-right-2")).toBe("slide-in-from-end-2")
-    expect(applyRtlMapping("slide-out-to-left-2")).toBe("slide-out-to-start-2")
-    expect(applyRtlMapping("slide-out-to-right-2")).toBe("slide-out-to-end-2")
-  })
+  // test("transforms slide animation classes to logical equivalents", () => {
+  //   // tw-animate-css has logical slide utilities (start/end).
+  //   expect(applyRtlMapping("slide-in-from-left-2")).toBe("slide-in-from-start-2")
+  //   expect(applyRtlMapping("slide-in-from-right-2")).toBe("slide-in-from-end-2")
+  //   expect(applyRtlMapping("slide-out-to-left-2")).toBe("slide-out-to-start-2")
+  //   expect(applyRtlMapping("slide-out-to-right-2")).toBe("slide-out-to-end-2")
+  // })
 
-  test("transforms slide animations with variants", () => {
-    expect(applyRtlMapping("data-[side=left]:slide-in-from-right-2")).toBe(
-      "data-[side=left]:slide-in-from-end-2"
-    )
-    expect(applyRtlMapping("data-[side=right]:slide-in-from-left-2")).toBe(
-      "data-[side=right]:slide-in-from-start-2"
-    )
-  })
+  // test("transforms slide animations with variants", () => {
+  //   expect(applyRtlMapping("data-[side=left]:slide-in-from-right-2")).toBe(
+  //     "data-[side=left]:slide-in-from-end-2"
+  //   )
+  //   expect(applyRtlMapping("data-[side=right]:slide-in-from-left-2")).toBe(
+  //     "data-[side=right]:slide-in-from-start-2"
+  //   )
+  // })
 
   test("does not transform unrelated classes", () => {
     expect(applyRtlMapping("bg-red-500")).toBe("bg-red-500")
     expect(applyRtlMapping("flex")).toBe("flex")
     expect(applyRtlMapping("mx-auto")).toBe("mx-auto")
     expect(applyRtlMapping("px-4")).toBe("px-4")
+  })
+
+  test("adds rtl: variant for translate-x classes", () => {
+    expect(applyRtlMapping("-translate-x-1/2")).toBe(
+      "-translate-x-1/2 rtl:translate-x-1/2"
+    )
+    expect(applyRtlMapping("translate-x-full")).toBe(
+      "translate-x-full rtl:-translate-x-full"
+    )
+    expect(applyRtlMapping("-translate-x-px")).toBe(
+      "-translate-x-px rtl:translate-x-px"
+    )
+  })
+
+  test("handles translate-x with variant prefixes", () => {
+    expect(applyRtlMapping("after:-translate-x-1/2")).toBe(
+      "after:-translate-x-1/2 rtl:after:translate-x-1/2"
+    )
+    expect(applyRtlMapping("group-hover:translate-x-2")).toBe(
+      "group-hover:translate-x-2 rtl:group-hover:-translate-x-2"
+    )
+  })
+
+  test("does not add rtl: variant for translate-y classes", () => {
+    expect(applyRtlMapping("-translate-y-1/2")).toBe("-translate-y-1/2")
+    expect(applyRtlMapping("translate-y-full")).toBe("translate-y-full")
   })
 })
 
@@ -260,132 +286,132 @@ const buttonVariants = cva("ml-2 mr-4", {
     expect(result).toContain("pe-2")
   })
 
-  test("transforms side prop values", async () => {
-    const result = await transform({
-      filename: "test.tsx",
-      raw: `import * as React from "react"
-export function Foo() {
-  return <Popover side="right" />
-}
-`,
-      config: {
-        direction: "rtl",
-        tailwind: {
-          baseColor: "neutral",
-        },
-        aliases: {
-          components: "@/components",
-          utils: "@/lib/utils",
-        },
-      },
-    })
+  // test("transforms side prop values", async () => {
+  //   const result = await transform({
+  //     filename: "test.tsx",
+  //     raw: `import * as React from "react"
+  // export function Foo() {
+  //   return <Popover side="right" />
+  // }
+  // `,
+  //     config: {
+  //       direction: "rtl",
+  //       tailwind: {
+  //         baseColor: "neutral",
+  //       },
+  //       aliases: {
+  //         components: "@/components",
+  //         utils: "@/lib/utils",
+  //       },
+  //     },
+  //   })
 
-    expect(result).toContain('side="left"')
-    expect(result).not.toContain('side="right"')
-  })
+  //   expect(result).toContain('side="left"')
+  //   expect(result).not.toContain('side="right"')
+  // })
 
-  test("transforms align prop values", async () => {
-    const result = await transform({
-      filename: "test.tsx",
-      raw: `import * as React from "react"
-export function Foo() {
-  return <Dropdown align="left" />
-}
-`,
-      config: {
-        direction: "rtl",
-        tailwind: {
-          baseColor: "neutral",
-        },
-        aliases: {
-          components: "@/components",
-          utils: "@/lib/utils",
-        },
-      },
-    })
+  // test("transforms align prop values", async () => {
+  //   const result = await transform({
+  //     filename: "test.tsx",
+  //     raw: `import * as React from "react"
+  // export function Foo() {
+  //   return <Dropdown align="left" />
+  // }
+  // `,
+  //     config: {
+  //       direction: "rtl",
+  //       tailwind: {
+  //         baseColor: "neutral",
+  //       },
+  //       aliases: {
+  //         components: "@/components",
+  //         utils: "@/lib/utils",
+  //       },
+  //     },
+  //   })
 
-    expect(result).toContain('align="right"')
-    expect(result).not.toContain('align="left"')
-  })
+  //   expect(result).toContain('align="right"')
+  //   expect(result).not.toContain('align="left"')
+  // })
 
-  test("transforms position prop values", async () => {
-    const result = await transform({
-      filename: "test.tsx",
-      raw: `import * as React from "react"
-export function Foo() {
-  return <Sheet position="left" />
-}
-`,
-      config: {
-        direction: "rtl",
-        tailwind: {
-          baseColor: "neutral",
-        },
-        aliases: {
-          components: "@/components",
-          utils: "@/lib/utils",
-        },
-      },
-    })
+  // test("transforms position prop values", async () => {
+  //   const result = await transform({
+  //     filename: "test.tsx",
+  //     raw: `import * as React from "react"
+  // export function Foo() {
+  //   return <Sheet position="left" />
+  // }
+  // `,
+  //     config: {
+  //       direction: "rtl",
+  //       tailwind: {
+  //         baseColor: "neutral",
+  //       },
+  //       aliases: {
+  //         components: "@/components",
+  //         utils: "@/lib/utils",
+  //       },
+  //     },
+  //   })
 
-    expect(result).toContain('position="right"')
-    expect(result).not.toContain('position="left"')
-  })
+  //   expect(result).toContain('position="right"')
+  //   expect(result).not.toContain('position="left"')
+  // })
 
-  test("does not transform non-directional prop values", async () => {
-    const result = await transform({
-      filename: "test.tsx",
-      raw: `import * as React from "react"
-export function Foo() {
-  return <Popover side="top" align="center" />
-}
-`,
-      config: {
-        direction: "rtl",
-        tailwind: {
-          baseColor: "neutral",
-        },
-        aliases: {
-          components: "@/components",
-          utils: "@/lib/utils",
-        },
-      },
-    })
+  // test("does not transform non-directional prop values", async () => {
+  //   const result = await transform({
+  //     filename: "test.tsx",
+  //     raw: `import * as React from "react"
+  // export function Foo() {
+  //   return <Popover side="top" align="center" />
+  // }
+  // `,
+  //     config: {
+  //       direction: "rtl",
+  //       tailwind: {
+  //         baseColor: "neutral",
+  //       },
+  //       aliases: {
+  //         components: "@/components",
+  //         utils: "@/lib/utils",
+  //       },
+  //     },
+  //   })
 
-    expect(result).toContain('side="top"')
-    expect(result).toContain('align="center"')
-  })
+  //   expect(result).toContain('side="top"')
+  //   expect(result).toContain('align="center"')
+  // })
 
-  test("transforms default parameter values", async () => {
-    const result = await transform({
-      filename: "test.tsx",
-      raw: `import * as React from "react"
-function DropdownMenuSubContent({
-  align = "start",
-  alignOffset = -3,
-  side = "right",
-  sideOffset = 0,
-  className,
-  ...props
-}: Props) {
-  return <div />
-}
-`,
-      config: {
-        direction: "rtl",
-        tailwind: {
-          baseColor: "neutral",
-        },
-        aliases: {
-          components: "@/components",
-          utils: "@/lib/utils",
-        },
-      },
-    })
+  // test("transforms default parameter values", async () => {
+  //   const result = await transform({
+  //     filename: "test.tsx",
+  //     raw: `import * as React from "react"
+  // function DropdownMenuSubContent({
+  //   align = "start",
+  //   alignOffset = -3,
+  //   side = "right",
+  //   sideOffset = 0,
+  //   className,
+  //   ...props
+  // }: Props) {
+  //   return <div />
+  // }
+  // `,
+  //     config: {
+  //       direction: "rtl",
+  //       tailwind: {
+  //         baseColor: "neutral",
+  //       },
+  //       aliases: {
+  //         components: "@/components",
+  //         utils: "@/lib/utils",
+  //       },
+  //     },
+  //   })
 
-    expect(result).toContain('side = "left"')
-    expect(result).not.toContain('side = "right"')
-    // align = "start" should remain unchanged (not a directional value).
-    expect(result).toContain('align = "start"')
-  })
+  //   expect(result).toContain('side = "left"')
+  //   expect(result).not.toContain('side = "right"')
+  //   // align = "start" should remain unchanged (not a directional value).
+  //   expect(result).toContain('align = "start"')
+  // })
 })

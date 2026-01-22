@@ -19,7 +19,7 @@ const translations: Translations = {
     values: {
       question1: "How do I reset my password?",
       answer1:
-        "Click on 'Forgot Password' on the login page, enter your email address, and we'll send you a link to reset your password. The link will expire in 24 hours.",
+        "Click on 'Forgot Password' on the login page, enter your email address, and we'll send you a link to reset your password.",
       question2: "Can I change my subscription plan?",
       answer2:
         "Yes, you can upgrade or downgrade your plan at any time from your account settings. Changes will be reflected in your next billing cycle.",
@@ -80,7 +80,7 @@ export function AccordionRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Accordion defaultValue={["item-1"]} className="max-w-md" dir={dir}>
+    <Accordion defaultValue={["item-1"]} className="max-w-md">
       {items.map((item) => (
         <AccordionItem key={item.value} value={item.value}>
           <AccordionTrigger>{t[item.questionKey]}</AccordionTrigger>

@@ -80,7 +80,10 @@ export function BreadcrumbRtl() {
               {t.components}
               <ChevronDownIcon data-icon="inline-end" className="size-3.5" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align={dir === "rtl" ? "end" : "start"} dir={dir}>
+            <DropdownMenuContent
+              align={dir === "rtl" ? "end" : "start"}
+              dir={dir}
+            >
               <DropdownMenuGroup>
                 <DropdownMenuItem>{t.documentation}</DropdownMenuItem>
                 <DropdownMenuItem>{t.themes}</DropdownMenuItem>

@@ -42,7 +42,7 @@ function RadioGroupItem({
           hugeicons="CircleIcon"
           phosphor="CircleIcon"
           remixicon="RiCircleLine"
-          className="absolute top-1/2 start-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current"
+          className="absolute top-1/2 start-1/2 size-2 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 fill-current"
         />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>

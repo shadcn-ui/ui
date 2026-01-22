@@ -32,6 +32,7 @@ For example:
 - Only add translations for text content that needs to be translated
 - If the demo has no text (like `avatar-demo`), the RTL example should also have minimal/no text
 - The main difference is using RTL UI components (`@/examples/{base|radix}/ui-rtl/`) and passing the `dir` prop
+- **Important:** When adding the RTL component preview to MDX files, ensure the `previewClassName` matches the reference component preview (usually the demo version) to maintain consistent preview heights and layout
 
 ## Step-by-Step Process
 
@@ -215,7 +216,7 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 - Use `styleName="base-nova"` for Base UI
 - Use `name="{component-name}-rtl"` (matches the registered example name)
 - Use `direction="rtl"` to enable RTL mode
-- Adjust `previewClassName` as needed (e.g., `h-96` for accordion)
+- **Important:** The `previewClassName` on the RTL component preview must match that of the reference component preview (usually the demo version) in the MDX file. For example, if `card-demo` uses `previewClassName="h-[30rem]"`, then `card-rtl` should also use `previewClassName="h-[30rem]"`. This ensures consistent preview heights and layout.
 
 ### Step 5: Add Documentation to Radix UI MDX
 
@@ -224,6 +225,7 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 Add the same RTL section, but with:
 - `styleName="radix-nova"` instead of `base-nova`
 - Same `name` and `direction` props
+- **Important:** Match the `previewClassName` with the reference component preview (usually the demo version) in the same MDX file
 
 ### Step 6: Verify the Implementation
 

@@ -43,7 +43,7 @@ export function AspectRatioRtl() {
           className="w-full rounded-lg object-cover grayscale dark:brightness-20"
         />
       </AspectRatio>
-      <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+      <figcaption className="text-muted-foreground mt-2 text-center text-sm">
         {t.caption}
       </figcaption>
     </figure>

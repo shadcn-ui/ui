@@ -98,7 +98,7 @@ export function LanguageSelector({
       >
         <SelectValue />
       </SelectTrigger>
-      <SelectContent dir="ltr">
+      <SelectContent dir="ltr" className="data-open:animate-none data-closed:animate-none">
         <SelectGroup>
           {languageOptions.map((option) => (
             <SelectItem key={option.value} value={option.value}>

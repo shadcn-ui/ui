@@ -60,33 +60,39 @@ const RTL_MAPPINGS: [string, string][] = [
   ["origin-left", "origin-start"],
   ["origin-right", "origin-end"],
   // Slide animations (tw-animate-css has logical equivalents).
-  ["slide-in-from-left", "slide-in-from-start"],
-  ["slide-in-from-right", "slide-in-from-end"],
-  ["slide-out-to-left", "slide-out-to-start"],
-  ["slide-out-to-right", "slide-out-to-end"],
+  // ["slide-in-from-left", "slide-in-from-start"],
+  // ["slide-in-from-right", "slide-in-from-end"],
+  // ["slide-out-to-left", "slide-out-to-start"],
+  // ["slide-out-to-right", "slide-out-to-end"],
 ]
 
+// Translate-x mappings (these add rtl: variants instead of replacing).
+// Pattern: [physical, rtlPhysical] - negative becomes positive and vice versa.
+const RTL_TRANSLATE_X_MAPPINGS: [string, string][] = [
+  ["-translate-x-", "translate-x-"],
+  ["translate-x-", "-translate-x-"],
+]
 
 // Props that need value swapping for RTL.
 // Format: { propName: { fromValue: toValue } }
-const RTL_PROP_MAPPINGS: Record<string, Record<string, string>> = {
-  side: {
-    left: "right",
-    right: "left",
-  },
-  align: {
-    left: "right",
-    right: "left",
-  },
-  position: {
-    left: "right",
-    right: "left",
-  },
-  origin: {
-    left: "right",
-    right: "left",
-  },
-}
+// const RTL_PROP_MAPPINGS: Record<string, Record<string, string>> = {
+//   side: {
+//     left: "right",
+//     right: "left",
+//   },
+//   align: {
+//     left: "right",
+//     right: "left",
+//   },
+//   position: {
+//     left: "right",
+//     right: "left",
+//   },
+//   origin: {
+//     left: "right",
+//     right: "left",
+//   },
+// }
 
 // Helper to strip quotes from a string literal.
 function stripQuotes(str: string) {
@@ -96,11 +102,22 @@ function stripQuotes(str: string) {
 export function applyRtlMapping(input: string) {
   return input
     .split(" ")
-    .map((className) => {
+    .flatMap((className) => {
       const [variant, value, modifier] = splitClassName(className)
 
       if (!value) {
-        return className
+        return [className]
+      }
+
+      // Check for translate-x patterns first (add rtl: variant, don't replace).
+      for (const [physical, rtlPhysical] of RTL_TRANSLATE_X_MAPPINGS) {
+        if (value.startsWith(physical)) {
+          const rtlValue = value.replace(physical, rtlPhysical)
+          const rtlClass = variant
+            ? `rtl:${variant}:${rtlValue}${modifier ? `/${modifier}` : ""}`
+            : `rtl:${rtlValue}${modifier ? `/${modifier}` : ""}`
+          return [className, rtlClass]
+        }
       }
 
       // Find matching RTL mapping for direct replacement.
@@ -119,10 +136,10 @@ export function applyRtlMapping(input: string) {
       // Reassemble with variant and modifier.
       if (variant) {
         return modifier
-          ? `${variant}:${mappedValue}/${modifier}`
-          : `${variant}:${mappedValue}`
+          ? [`${variant}:${mappedValue}/${modifier}`]
+          : [`${variant}:${mappedValue}`]
       }
-      return modifier ? `${mappedValue}/${modifier}` : mappedValue
+      return modifier ? [`${mappedValue}/${modifier}`] : [mappedValue]
     })
     .join(" ")
 }
@@ -257,36 +274,36 @@ export const transformRtl: Transformer = async ({ sourceFile, config }) => {
   })
 
   // Transform directional prop values (e.g., side="right" → side="left").
-  sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
-    const propName = node.getNameNode().getText()
-    const propMapping = RTL_PROP_MAPPINGS[propName]
+  // sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
+  //   const propName = node.getNameNode().getText()
+  //   const propMapping = RTL_PROP_MAPPINGS[propName]
 
-    if (propMapping) {
-      const initializer = node.getInitializer()
-      if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-        const value = stripQuotes(initializer.getText() ?? "")
-        if (propMapping[value]) {
-          initializer.replaceWithText(`"${propMapping[value]}"`)
-        }
-      }
-    }
-  })
+  //   if (propMapping) {
+  //     const initializer = node.getInitializer()
+  //     if (initializer?.isKind(SyntaxKind.StringLiteral)) {
+  //       const value = stripQuotes(initializer.getText() ?? "")
+  //       if (propMapping[value]) {
+  //         initializer.replaceWithText(`"${propMapping[value]}"`)
+  //       }
+  //     }
+  //   }
+  // })
 
   // Transform default parameter values (e.g., side = "right" → side = "left").
-  sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
-    const paramName = node.getNameNode().getText()
-    const propMapping = RTL_PROP_MAPPINGS[paramName]
+  // sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
+  //   const paramName = node.getNameNode().getText()
+  //   const propMapping = RTL_PROP_MAPPINGS[paramName]
 
-    if (propMapping) {
-      const initializer = node.getInitializer()
-      if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-        const value = stripQuotes(initializer.getText() ?? "")
-        if (propMapping[value]) {
-          initializer.replaceWithText(`"${propMapping[value]}"`)
-        }
-      }
-    }
-  })
+  //   if (propMapping) {
+  //     const initializer = node.getInitializer()
+  //     if (initializer?.isKind(SyntaxKind.StringLiteral)) {
+  //       const value = stripQuotes(initializer.getText() ?? "")
+  //       if (propMapping[value]) {
+  //         initializer.replaceWithText(`"${propMapping[value]}"`)
+  //       }
+  //     }
+  //   }
+  // })
 
   return sourceFile
 }
@@ -420,36 +437,36 @@ export async function transformDirection(
   })
 
   // Transform directional prop values (e.g., side="right" → side="left").
-  sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
-    const propName = node.getNameNode().getText()
-    const propMapping = RTL_PROP_MAPPINGS[propName]
+  // sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
+  //   const propName = node.getNameNode().getText()
+  //   const propMapping = RTL_PROP_MAPPINGS[propName]
 
-    if (propMapping) {
-      const initializer = node.getInitializer()
-      if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-        const value = initializer.getLiteralText()
-        if (propMapping[value]) {
-          initializer.setLiteralValue(propMapping[value])
-        }
-      }
-    }
-  })
+  //   if (propMapping) {
+  //     const initializer = node.getInitializer()
+  //     if (initializer?.isKind(SyntaxKind.StringLiteral)) {
+  //       const value = initializer.getLiteralText()
+  //       if (propMapping[value]) {
+  //         initializer.setLiteralValue(propMapping[value])
+  //       }
+  //     }
+  //   }
+  // })
 
   // Transform default parameter values (e.g., side = "right" → side = "left").
-  sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
-    const paramName = node.getNameNode().getText()
-    const propMapping = RTL_PROP_MAPPINGS[paramName]
+  // sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
+  //   const paramName = node.getNameNode().getText()
+  //   const propMapping = RTL_PROP_MAPPINGS[paramName]
 
-    if (propMapping) {
-      const initializer = node.getInitializer()
-      if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-        const value = initializer.getLiteralText()
-        if (propMapping[value]) {
-          initializer.setLiteralValue(propMapping[value])
-        }
-      }
-    }
-  })
+  //   if (propMapping) {
+  //     const initializer = node.getInitializer()
+  //     if (initializer?.isKind(SyntaxKind.StringLiteral)) {
+  //       const value = initializer.getLiteralText()
+  //       if (propMapping[value]) {
+  //         initializer.setLiteralValue(propMapping[value])
+  //       }
+  //     }
+  //   }
+  // })
 
   return sourceFile.getText()
 }

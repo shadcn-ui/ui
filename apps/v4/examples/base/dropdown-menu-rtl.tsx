@@ -19,6 +19,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/examples/base/ui-rtl/dropdown-menu"
+import { CreditCardIcon, SettingsIcon, UserIcon } from "lucide-react"
 
 import {
   useTranslation,
@@ -30,6 +31,11 @@ const translations: Translations = {
     dir: "ltr",
     values: {
       open: "Open",
+      account: "Account",
+      profile: "Profile",
+      billing: "Billing",
+      settings: "Settings",
+      logout: "Log out",
       team: "Team",
       inviteUsers: "Invite users",
       email: "Email",
@@ -55,6 +61,11 @@ const translations: Translations = {
     dir: "rtl",
     values: {
       open: "افتح القائمة",
+      account: "الحساب",
+      profile: "الملف الشخصي",
+      billing: "الفوترة",
+      settings: "الإعدادات",
+      logout: "تسجيل الخروج",
       team: "الفريق",
       inviteUsers: "دعوة المستخدمين",
       email: "البريد الإلكتروني",
@@ -80,6 +91,11 @@ const translations: Translations = {
     dir: "rtl",
     values: {
       open: "פתח תפריט",
+      account: "חשבון",
+      profile: "פרופיל",
+      billing: "חיוב",
+      settings: "הגדרות",
+      logout: "התנתק",
       team: "הצוות",
       inviteUsers: "הזמן משתמשים",
       email: "אימייל",
@@ -121,24 +137,42 @@ export function DropdownMenuRtl() {
         className="w-36"
       >
         <DropdownMenuGroup>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>{t.account}</DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent dir={dir}>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <UserIcon />
+                    {t.profile}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <CreditCardIcon />
+                    {t.billing}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <SettingsIcon />
+                    {t.settings}
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
           <DropdownMenuLabel>{t.team}</DropdownMenuLabel>
           <DropdownMenuItem>{t.team}</DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.inviteUsers}</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
-              <DropdownMenuSubContent
-                dir={dir}
-                side={dir === "rtl" ? "left" : "right"}
-              >
+              <DropdownMenuSubContent dir={dir}>
                 <DropdownMenuItem>{t.email}</DropdownMenuItem>
                 <DropdownMenuItem>{t.message}</DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
                   <DropdownMenuPortal>
-                    <DropdownMenuSubContent
-                      dir={dir}
-                      side={dir === "rtl" ? "left" : "right"}
-                    >
+                    <DropdownMenuSubContent dir={dir}>
                       <DropdownMenuItem>{t.calendar}</DropdownMenuItem>
                       <DropdownMenuItem>{t.chat}</DropdownMenuItem>
                       <DropdownMenuSeparator />
@@ -191,6 +225,10 @@ export function DropdownMenuRtl() {
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="left">{t.left}</DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem variant="destructive">{t.logout}</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

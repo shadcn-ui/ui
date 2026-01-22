@@ -33,7 +33,7 @@ function ContextMenuContent({
   className,
   align = "start",
   alignOffset = 4,
-  side = "right",
+  side = "inline-end",
   sideOffset = 0,
   ...props
 }: ContextMenuPrimitive.Popup.Props &

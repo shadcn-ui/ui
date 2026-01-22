@@ -10,6 +10,8 @@ import {
   LanguageProvider,
   LanguageSelector,
   useLanguageContext,
+  useTranslation,
+  type Translations,
 } from "@/components/language-selector"
 
 export function ComponentPreviewTabs({
@@ -44,35 +46,33 @@ export function ComponentPreviewTabs({
       )}
       {...props}
     >
-      <div data-slot="preview">
+      {direction === "rtl" ? (
+        <LanguageProvider defaultLanguage="ar">
+          <RtlLanguageSelector />
+            <PreviewWrapper
+              align={align}
+              chromeLessOnMobile={chromeLessOnMobile}
+              previewClassName={previewClassName}
+            >
+              <DirectionProviderWrapper base={base}>
+              {component}
+              </DirectionProviderWrapper>
+            </PreviewWrapper>
+        </LanguageProvider>
+      ) : (
+        <DirectionProviderWrapper base={base} dir="ltr">
+          <PreviewWrapper
+            align={align}
+            chromeLessOnMobile={chromeLessOnMobile}
+            previewClassName={previewClassName}
+            dir="ltr"
+          >
+            {component}
+          </PreviewWrapper>
+        </DirectionProviderWrapper>
+      )}
+      {!hideCode && (
         <div
-          data-align={align}
-          data-chromeless={chromeLessOnMobile}
-          dir={direction}
-          className={cn(
-            "preview relative flex h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
-            previewClassName
-          )}
-        >
-          {direction === "rtl" ? (
-            <LanguageProvider defaultLanguage="ar">
-              <RtlLanguageSelector />
-              {base === "base" ? (
-                <BaseDirectionProvider direction="rtl">
-                  {component}
-                </BaseDirectionProvider>
-              ) : (
-                <RadixDirectionProvider dir="rtl">
-                  {component}
-                </RadixDirectionProvider>
-              )}
-            </LanguageProvider>
-          ) : (
-            component
-          )}
-        </div>
-        {!hideCode && (
-          <div
             data-slot="code"
             data-mobile-code-visible={isMobileCodeVisible}
             className="relative overflow-hidden data-[mobile-code-visible=false]:max-h-24 [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
@@ -106,9 +106,23 @@ export function ComponentPreviewTabs({
             )}
           </div>
         )}
-      </div>
     </div>
   )
+}
+
+const directionTranslations: Translations<Record<string, never>> = {
+  en: {
+    dir: "ltr",
+    values: {},
+  },
+  ar: {
+    dir: "rtl",
+    values: {},
+  },
+  he: {
+    dir: "rtl",
+    values: {},
+  },
 }
 
 function RtlLanguageSelector() {
@@ -124,4 +138,63 @@ function RtlLanguageSelector() {
       onValueChange={context.setLanguage}
     />
   )
+}
+
+function PreviewWrapper({
+  align,
+  chromeLessOnMobile,
+  previewClassName,
+  dir: explicitDir,
+  children,
+}: {
+  align: "center" | "start" | "end"
+  chromeLessOnMobile: boolean
+  previewClassName?: string
+  dir?: "ltr" | "rtl"
+  children: React.ReactNode
+}) {
+  // useTranslation handles the case when there's no LanguageProvider context
+  // It will fall back to local state with defaultLanguage
+  const translation = useTranslation(directionTranslations, "ar")
+  const dir = explicitDir ?? translation.dir
+
+  return (
+    <div data-slot="preview" dir={dir}>
+      <div
+        data-align={align}
+        data-chromeless={chromeLessOnMobile}
+        className={cn(
+          "preview relative flex h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
+          previewClassName
+        )}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function DirectionProviderWrapper({
+  base,
+  dir: explicitDir,
+  children,
+}: {
+  base?: string
+  dir?: "ltr" | "rtl"
+  children: React.ReactNode
+}) {
+  // useTranslation handles the case when there's no LanguageProvider context
+  // It will fall back to local state with defaultLanguage
+  const translation = useTranslation(directionTranslations, "ar")
+  const dir = explicitDir ?? translation.dir
+
+  if (base === "base") {
+    return (
+      <BaseDirectionProvider direction={dir}>
+        {children}
+      </BaseDirectionProvider>
+    )
+  }
+
+  return <RadixDirectionProvider dir={dir}>{children}</RadixDirectionProvider>
 }

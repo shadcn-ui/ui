@@ -244,7 +244,7 @@ function MenubarSubTrigger({
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
-        className="ml-auto size-4"
+        className="ml-auto size-4 rtl:rotate-180"
       />
     </MenubarPrimitive.SubTrigger>
   )

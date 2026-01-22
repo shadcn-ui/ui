@@ -162,6 +162,18 @@ Stack `Field` components with `FieldGroup`. Add `FieldSeparator` to divide them.
   previewClassName="h-96"
 />
 
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="field-rtl"
+  direction="rtl"
+  previewClassName="h-[800px] p-6 md:h-[850px]"
+/>
+
 ## Responsive Layout
 
 - **Vertical fields:** Default orientation stacks label, control, and helper text—ideal for mobile-first layouts.
@@ -173,6 +185,7 @@ Stack `Field` components with `FieldGroup`. Add `FieldSeparator` to divide them.
   name="field-responsive"
   previewClassName="h-[650px] p-6 md:h-[500px] md:p-10"
 />
+
 
 ## Validation and Errors
 
@@ -344,3 +357,4 @@ Accessible error container that accepts children or an `errors` array (e.g., fro
 When the `errors` array contains multiple messages, the component renders a list automatically.
 
 `FieldError` also accepts issues produced by any validator that implements [Standard Schema](https://standardschema.dev/), including Zod, Valibot, and ArkType. Pass the `issues` array from the schema result directly to render a unified error list across libraries.
+

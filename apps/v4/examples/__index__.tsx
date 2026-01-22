@@ -291,19 +291,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "aspect-ratio-square": {
-      name: "aspect-ratio-square",
-      filePath: "examples/radix/aspect-ratio-square.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/aspect-ratio-square")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio-square"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "aspect-ratio-rtl": {
       name: "aspect-ratio-rtl",
       filePath: "examples/radix/aspect-ratio-rtl.tsx",
@@ -314,6 +301,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "aspect-ratio-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "aspect-ratio-square": {
+      name: "aspect-ratio-square",
+      filePath: "examples/radix/aspect-ratio-square.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/aspect-ratio-square")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "aspect-ratio-square"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -473,19 +473,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-rtl": {
-      name: "badge-rtl",
-      filePath: "examples/radix/badge-rtl.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./radix/badge-rtl")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-rtl"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "badge-icon": {
       name: "badge-icon",
       filePath: "examples/radix/badge-icon.tsx",
@@ -509,6 +496,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "badge-link"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "badge-rtl": {
+      name: "badge-rtl",
+      filePath: "examples/radix/badge-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/badge-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "badge-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -785,6 +785,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "button-group-rtl": {
+      name: "button-group-rtl",
+      filePath: "examples/radix/button-group-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/button-group-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "button-group-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "button-group-select": {
       name: "button-group-select",
       filePath: "examples/radix/button-group-select.tsx",
@@ -886,6 +899,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-rounded"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "button-rtl": {
+      name: "button-rtl",
+      filePath: "examples/radix/button-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/button-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "button-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1058,6 +1084,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "calendar-rtl": {
+      name: "calendar-rtl",
+      filePath: "examples/radix/calendar-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/calendar-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "calendar-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "calendar-time": {
       name: "calendar-time",
       filePath: "examples/radix/calendar-time.tsx",
@@ -1107,6 +1146,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "card-image"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "card-rtl": {
+      name: "card-rtl",
+      filePath: "examples/radix/card-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/card-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "card-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1185,6 +1237,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "carousel-plugin"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "carousel-rtl": {
+      name: "carousel-rtl",
+      filePath: "examples/radix/carousel-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/carousel-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "carousel-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1383,6 +1448,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "checkbox-rtl": {
+      name: "checkbox-rtl",
+      filePath: "examples/radix/checkbox-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/checkbox-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "checkbox-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "checkbox-table": {
       name: "checkbox-table",
       filePath: "examples/radix/checkbox-table.tsx",
@@ -1432,6 +1510,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "collapsible-file-tree"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "collapsible-rtl": {
+      name: "collapsible-rtl",
+      filePath: "examples/radix/collapsible-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/collapsible-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "collapsible-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1591,6 +1682,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "combobox-rtl": {
+      name: "combobox-rtl",
+      filePath: "examples/radix/combobox-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/combobox-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "combobox-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "command-basic": {
       name: "command-basic",
       filePath: "examples/radix/command-basic.tsx",
@@ -1640,6 +1744,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "command-groups"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "command-rtl": {
+      name: "command-rtl",
+      filePath: "examples/radix/command-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/command-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "command-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1757,6 +1874,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "context-menu-radio"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "context-menu-rtl": {
+      name: "context-menu-rtl",
+      filePath: "examples/radix/context-menu-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/context-menu-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "context-menu-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -1903,6 +2033,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "date-picker-rtl": {
+      name: "date-picker-rtl",
+      filePath: "examples/radix/date-picker-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/date-picker-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "date-picker-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "date-picker-time": {
       name: "date-picker-time",
       filePath: "examples/radix/date-picker-time.tsx",
@@ -1955,6 +2098,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "dialog-rtl": {
+      name: "dialog-rtl",
+      filePath: "examples/radix/dialog-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/dialog-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "dialog-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "dialog-scrollable-content": {
       name: "dialog-scrollable-content",
       filePath: "examples/radix/dialog-scrollable-content.tsx",
@@ -2004,6 +2160,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "drawer-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "drawer-rtl": {
+      name: "drawer-rtl",
+      filePath: "examples/radix/drawer-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/drawer-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "drawer-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -2293,6 +2462,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "empty-rtl": {
+      name: "empty-rtl",
+      filePath: "examples/radix/empty-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/empty-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "empty-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "field-checkbox": {
       name: "field-checkbox",
       filePath: "examples/radix/field-checkbox.tsx",
@@ -2397,6 +2579,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "field-rtl": {
+      name: "field-rtl",
+      filePath: "examples/radix/field-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/field-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "field-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "field-select": {
       name: "field-select",
       filePath: "examples/radix/field-select.tsx",
@@ -2472,6 +2667,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "hover-card-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "hover-card-rtl": {
+      name: "hover-card-rtl",
+      filePath: "examples/radix/hover-card-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/hover-card-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "hover-card-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -2800,6 +3008,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-group-rtl": {
+      name: "input-group-rtl",
+      filePath: "examples/radix/input-group-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-group-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-group-spinner": {
       name: "input-group-spinner",
       filePath: "examples/radix/input-group-spinner.tsx",
@@ -3060,6 +3281,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-otp-rtl": {
+      name: "input-otp-rtl",
+      filePath: "examples/radix/input-otp-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-otp-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-otp-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-otp-separator": {
       name: "input-otp-separator",
       filePath: "examples/radix/input-otp-separator.tsx",
@@ -3083,6 +3317,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-required"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-rtl": {
+      name: "input-rtl",
+      filePath: "examples/radix/input-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/input-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3190,6 +3437,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "item-rtl": {
+      name: "item-rtl",
+      filePath: "examples/radix/item-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/item-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "item-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "item-size": {
       name: "item-size",
       filePath: "examples/radix/item-size.tsx",
@@ -3268,6 +3528,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "kbd-rtl": {
+      name: "kbd-rtl",
+      filePath: "examples/radix/kbd-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/kbd-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "kbd-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "kbd-tooltip": {
       name: "kbd-tooltip",
       filePath: "examples/radix/kbd-tooltip.tsx",
@@ -3291,6 +3564,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "label-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "label-rtl": {
+      name: "label-rtl",
+      filePath: "examples/radix/label-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/label-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "label-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3343,6 +3629,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "menubar-radio"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "menubar-rtl": {
+      name: "menubar-rtl",
+      filePath: "examples/radix/menubar-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/menubar-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "menubar-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3424,6 +3723,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "native-select-rtl": {
+      name: "native-select-rtl",
+      filePath: "examples/radix/native-select-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/native-select-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "native-select-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "navigation-menu-demo": {
       name: "navigation-menu-demo",
       filePath: "examples/radix/navigation-menu-demo.tsx",
@@ -3434,6 +3746,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "navigation-menu-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "navigation-menu-rtl": {
+      name: "navigation-menu-rtl",
+      filePath: "examples/radix/navigation-menu-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/navigation-menu-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "navigation-menu-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3473,6 +3798,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "pagination-icons-only"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "pagination-rtl": {
+      name: "pagination-rtl",
+      filePath: "examples/radix/pagination-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/pagination-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "pagination-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3541,6 +3879,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "popover-rtl": {
+      name: "popover-rtl",
+      filePath: "examples/radix/popover-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/popover-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "popover-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "progress-controlled": {
       name: "progress-controlled",
       filePath: "examples/radix/progress-controlled.tsx",
@@ -3577,6 +3928,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "progress-label"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "progress-rtl": {
+      name: "progress-rtl",
+      filePath: "examples/radix/progress-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/progress-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "progress-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3671,6 +4035,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "radio-group-rtl": {
+      name: "radio-group-rtl",
+      filePath: "examples/radix/radio-group-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/radio-group-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "resizable-demo": {
       name: "resizable-demo",
       filePath: "examples/radix/resizable-demo.tsx",
@@ -3694,6 +4071,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "resizable-handle"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "resizable-rtl": {
+      name: "resizable-rtl",
+      filePath: "examples/radix/resizable-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/resizable-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "resizable-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3733,6 +4123,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "scroll-area-horizontal-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "scroll-area-rtl": {
+      name: "scroll-area-rtl",
+      filePath: "examples/radix/scroll-area-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/scroll-area-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "scroll-area-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -3863,6 +4266,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "separator-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "separator-rtl": {
+      name: "separator-rtl",
+      filePath: "examples/radix/separator-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/separator-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "separator-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4139,6 +4555,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "skeleton-rtl": {
+      name: "skeleton-rtl",
+      filePath: "examples/radix/skeleton-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/skeleton-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "skeleton-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "skeleton-table": {
       name: "skeleton-table",
       filePath: "examples/radix/skeleton-table.tsx",
@@ -4227,6 +4656,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "slider-range"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "slider-rtl": {
+      name: "slider-rtl",
+      filePath: "examples/radix/slider-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/slider-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "slider-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4373,6 +4815,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "spinner-rtl": {
+      name: "spinner-rtl",
+      filePath: "examples/radix/spinner-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/spinner-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "spinner-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "spinner-size": {
       name: "spinner-size",
       filePath: "examples/radix/spinner-size.tsx",
@@ -4451,6 +4906,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "switch-rtl": {
+      name: "switch-rtl",
+      filePath: "examples/radix/switch-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/switch-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "switch-sizes": {
       name: "switch-sizes",
       filePath: "examples/radix/switch-sizes.tsx",
@@ -4503,6 +4971,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "table-rtl": {
+      name: "table-rtl",
+      filePath: "examples/radix/table-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/table-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "table-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "tabs-demo": {
       name: "tabs-demo",
       filePath: "examples/radix/tabs-demo.tsx",
@@ -4552,6 +5033,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "tabs-line"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "tabs-rtl": {
+      name: "tabs-rtl",
+      filePath: "examples/radix/tabs-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/tabs-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tabs-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4633,6 +5127,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "textarea-rtl": {
+      name: "textarea-rtl",
+      filePath: "examples/radix/textarea-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/textarea-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "toggle-demo": {
       name: "toggle-demo",
       filePath: "examples/radix/toggle-demo.tsx",
@@ -4698,6 +5205,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "toggle-group-rtl": {
+      name: "toggle-group-rtl",
+      filePath: "examples/radix/toggle-group-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/toggle-group-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "toggle-group-sizes": {
       name: "toggle-group-sizes",
       filePath: "examples/radix/toggle-group-sizes.tsx",
@@ -4747,6 +5267,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "toggle-outline"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "toggle-rtl": {
+      name: "toggle-rtl",
+      filePath: "examples/radix/toggle-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/toggle-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -4812,6 +5345,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "tooltip-keyboard"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "tooltip-rtl": {
+      name: "tooltip-rtl",
+      filePath: "examples/radix/tooltip-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/tooltip-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tooltip-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -5298,19 +5844,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "aspect-ratio-square": {
-      name: "aspect-ratio-square",
-      filePath: "examples/base/aspect-ratio-square.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/aspect-ratio-square")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "aspect-ratio-square"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "aspect-ratio-rtl": {
       name: "aspect-ratio-rtl",
       filePath: "examples/base/aspect-ratio-rtl.tsx",
@@ -5321,6 +5854,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "aspect-ratio-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "aspect-ratio-square": {
+      name: "aspect-ratio-square",
+      filePath: "examples/base/aspect-ratio-square.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/aspect-ratio-square")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "aspect-ratio-square"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -5480,19 +6026,6 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
-    "badge-rtl": {
-      name: "badge-rtl",
-      filePath: "examples/base/badge-rtl.tsx",
-      component: React.lazy(async () => {
-        const mod = await import("./base/badge-rtl")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || "badge-rtl"
-        return { default: mod.default || mod[exportName] }
-      }),
-    },
     "badge-icon": {
       name: "badge-icon",
       filePath: "examples/base/badge-icon.tsx",
@@ -5516,6 +6049,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "badge-link"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "badge-rtl": {
+      name: "badge-rtl",
+      filePath: "examples/base/badge-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/badge-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "badge-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -5779,6 +6325,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "button-group-rtl": {
+      name: "button-group-rtl",
+      filePath: "examples/base/button-group-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/button-group-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "button-group-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "button-group-select": {
       name: "button-group-select",
       filePath: "examples/base/button-group-select.tsx",
@@ -5893,6 +6452,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "button-rounded"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "button-rtl": {
+      name: "button-rtl",
+      filePath: "examples/base/button-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/button-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "button-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -6065,6 +6637,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "calendar-rtl": {
+      name: "calendar-rtl",
+      filePath: "examples/base/calendar-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/calendar-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "calendar-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "calendar-time": {
       name: "calendar-time",
       filePath: "examples/base/calendar-time.tsx",
@@ -6114,6 +6699,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "card-image"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "card-rtl": {
+      name: "card-rtl",
+      filePath: "examples/base/card-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/card-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "card-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -6192,6 +6790,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "carousel-plugin"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "carousel-rtl": {
+      name: "carousel-rtl",
+      filePath: "examples/base/carousel-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/carousel-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "carousel-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -6390,6 +7001,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "checkbox-rtl": {
+      name: "checkbox-rtl",
+      filePath: "examples/base/checkbox-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/checkbox-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "checkbox-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "checkbox-table": {
       name: "checkbox-table",
       filePath: "examples/base/checkbox-table.tsx",
@@ -6439,6 +7063,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "collapsible-file-tree"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "collapsible-rtl": {
+      name: "collapsible-rtl",
+      filePath: "examples/base/collapsible-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/collapsible-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "collapsible-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -6598,6 +7235,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "combobox-rtl": {
+      name: "combobox-rtl",
+      filePath: "examples/base/combobox-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/combobox-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "combobox-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "command-basic": {
       name: "command-basic",
       filePath: "examples/base/command-basic.tsx",
@@ -6647,6 +7297,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "command-groups"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "command-rtl": {
+      name: "command-rtl",
+      filePath: "examples/base/command-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/command-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "command-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -6764,6 +7427,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "context-menu-radio"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "context-menu-rtl": {
+      name: "context-menu-rtl",
+      filePath: "examples/base/context-menu-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/context-menu-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "context-menu-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -6910,6 +7586,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "date-picker-rtl": {
+      name: "date-picker-rtl",
+      filePath: "examples/base/date-picker-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/date-picker-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "date-picker-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "date-picker-time": {
       name: "date-picker-time",
       filePath: "examples/base/date-picker-time.tsx",
@@ -6962,6 +7651,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "dialog-rtl": {
+      name: "dialog-rtl",
+      filePath: "examples/base/dialog-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/dialog-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "dialog-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "dialog-scrollable-content": {
       name: "dialog-scrollable-content",
       filePath: "examples/base/dialog-scrollable-content.tsx",
@@ -7011,6 +7713,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "drawer-dialog"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "drawer-rtl": {
+      name: "drawer-rtl",
+      filePath: "examples/base/drawer-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/drawer-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "drawer-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7300,6 +8015,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "empty-rtl": {
+      name: "empty-rtl",
+      filePath: "examples/base/empty-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/empty-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "empty-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "field-checkbox": {
       name: "field-checkbox",
       filePath: "examples/base/field-checkbox.tsx",
@@ -7404,6 +8132,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "field-rtl": {
+      name: "field-rtl",
+      filePath: "examples/base/field-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/field-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "field-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "field-select": {
       name: "field-select",
       filePath: "examples/base/field-select.tsx",
@@ -7479,6 +8220,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "hover-card-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "hover-card-rtl": {
+      name: "hover-card-rtl",
+      filePath: "examples/base/hover-card-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/hover-card-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "hover-card-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -7807,6 +8561,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-group-rtl": {
+      name: "input-group-rtl",
+      filePath: "examples/base/input-group-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-group-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-group-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-group-spinner": {
       name: "input-group-spinner",
       filePath: "examples/base/input-group-spinner.tsx",
@@ -8067,6 +8834,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "input-otp-rtl": {
+      name: "input-otp-rtl",
+      filePath: "examples/base/input-otp-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-otp-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-otp-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "input-otp-separator": {
       name: "input-otp-separator",
       filePath: "examples/base/input-otp-separator.tsx",
@@ -8090,6 +8870,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "input-required"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "input-rtl": {
+      name: "input-rtl",
+      filePath: "examples/base/input-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/input-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "input-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8197,6 +8990,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "item-rtl": {
+      name: "item-rtl",
+      filePath: "examples/base/item-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/item-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "item-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "item-size": {
       name: "item-size",
       filePath: "examples/base/item-size.tsx",
@@ -8275,6 +9081,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "kbd-rtl": {
+      name: "kbd-rtl",
+      filePath: "examples/base/kbd-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/kbd-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "kbd-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "kbd-tooltip": {
       name: "kbd-tooltip",
       filePath: "examples/base/kbd-tooltip.tsx",
@@ -8298,6 +9117,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "label-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "label-rtl": {
+      name: "label-rtl",
+      filePath: "examples/base/label-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/label-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "label-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8350,6 +9182,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "menubar-radio"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "menubar-rtl": {
+      name: "menubar-rtl",
+      filePath: "examples/base/menubar-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/menubar-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "menubar-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8431,6 +9276,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "native-select-rtl": {
+      name: "native-select-rtl",
+      filePath: "examples/base/native-select-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/native-select-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "native-select-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "navigation-menu-demo": {
       name: "navigation-menu-demo",
       filePath: "examples/base/navigation-menu-demo.tsx",
@@ -8441,6 +9299,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "navigation-menu-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "navigation-menu-rtl": {
+      name: "navigation-menu-rtl",
+      filePath: "examples/base/navigation-menu-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/navigation-menu-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "navigation-menu-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8480,6 +9351,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "pagination-icons-only"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "pagination-rtl": {
+      name: "pagination-rtl",
+      filePath: "examples/base/pagination-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/pagination-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "pagination-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8548,6 +9432,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "popover-rtl": {
+      name: "popover-rtl",
+      filePath: "examples/base/popover-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/popover-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "popover-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "progress-controlled": {
       name: "progress-controlled",
       filePath: "examples/base/progress-controlled.tsx",
@@ -8584,6 +9481,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "progress-label"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "progress-rtl": {
+      name: "progress-rtl",
+      filePath: "examples/base/progress-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/progress-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "progress-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8678,6 +9588,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "radio-group-rtl": {
+      name: "radio-group-rtl",
+      filePath: "examples/base/radio-group-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/radio-group-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "radio-group-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "resizable-demo": {
       name: "resizable-demo",
       filePath: "examples/base/resizable-demo.tsx",
@@ -8701,6 +9624,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "resizable-handle"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "resizable-rtl": {
+      name: "resizable-rtl",
+      filePath: "examples/base/resizable-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/resizable-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "resizable-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8740,6 +9676,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "scroll-area-horizontal-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "scroll-area-rtl": {
+      name: "scroll-area-rtl",
+      filePath: "examples/base/scroll-area-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/scroll-area-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "scroll-area-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -8870,6 +9819,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "separator-menu"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "separator-rtl": {
+      name: "separator-rtl",
+      filePath: "examples/base/separator-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/separator-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "separator-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9146,6 +10108,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "skeleton-rtl": {
+      name: "skeleton-rtl",
+      filePath: "examples/base/skeleton-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/skeleton-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "skeleton-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "skeleton-table": {
       name: "skeleton-table",
       filePath: "examples/base/skeleton-table.tsx",
@@ -9234,6 +10209,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "slider-range"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "slider-rtl": {
+      name: "slider-rtl",
+      filePath: "examples/base/slider-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/slider-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "slider-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9380,6 +10368,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "spinner-rtl": {
+      name: "spinner-rtl",
+      filePath: "examples/base/spinner-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/spinner-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "spinner-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "spinner-size": {
       name: "spinner-size",
       filePath: "examples/base/spinner-size.tsx",
@@ -9458,6 +10459,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "switch-rtl": {
+      name: "switch-rtl",
+      filePath: "examples/base/switch-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/switch-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "switch-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "switch-sizes": {
       name: "switch-sizes",
       filePath: "examples/base/switch-sizes.tsx",
@@ -9510,6 +10524,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "table-rtl": {
+      name: "table-rtl",
+      filePath: "examples/base/table-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/table-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "table-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "tabs-demo": {
       name: "tabs-demo",
       filePath: "examples/base/tabs-demo.tsx",
@@ -9559,6 +10586,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "tabs-line"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "tabs-rtl": {
+      name: "tabs-rtl",
+      filePath: "examples/base/tabs-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/tabs-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tabs-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9640,6 +10680,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "textarea-rtl": {
+      name: "textarea-rtl",
+      filePath: "examples/base/textarea-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/textarea-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "textarea-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "toggle-demo": {
       name: "toggle-demo",
       filePath: "examples/base/toggle-demo.tsx",
@@ -9705,6 +10758,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "toggle-group-rtl": {
+      name: "toggle-group-rtl",
+      filePath: "examples/base/toggle-group-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/toggle-group-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-group-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "toggle-group-sizes": {
       name: "toggle-group-sizes",
       filePath: "examples/base/toggle-group-sizes.tsx",
@@ -9754,6 +10820,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "toggle-outline"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "toggle-rtl": {
+      name: "toggle-rtl",
+      filePath: "examples/base/toggle-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/toggle-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "toggle-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
@@ -9819,6 +10898,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "tooltip-keyboard"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "tooltip-rtl": {
+      name: "tooltip-rtl",
+      filePath: "examples/base/tooltip-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/tooltip-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "tooltip-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
