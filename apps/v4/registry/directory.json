@@ -266,6 +266,12 @@
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M208 128L128 208' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><path d='M192 40L40 192' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><rect x='27' y='28' width='70' height='70' rx='7' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@inferencesh",
+    "homepage": "https://ui.inference.sh",
+    "url": "https://ui.inference.sh/r/{name}.json",
+    "description": "UI components for building AI-powered applications. Agent chat interfaces, tool invocation UI, syntax-highlighted code blocks, and more."
+  },
+  {
     "name": "@intentui",
     "homepage": "https://intentui.com",
     "url": "https://intentui.com/r/{name}",
