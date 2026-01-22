@@ -1,0 +1,127 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and not checked.
+base: radix
+component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/checkbox
+  api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
+---
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="checkbox-demo"
+  previewClassName="h-80"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add checkbox
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install radix-ui
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="checkbox"
+  title="components/ui/checkbox.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox"
+```
+
+```tsx
+<Checkbox />
+```
+
+## Checked State
+
+Use `defaultChecked` for uncontrolled checkboxes, or `checked` and
+`onCheckedChange` to control the state.
+
+```tsx showLineNumbers
+import * as React from "react"
+
+export function Example() {
+  const [checked, setChecked] = React.useState(false)
+
+  return <Checkbox checked={checked} onCheckedChange={setChecked} />
+}
+```
+
+## Invalid State
+
+Set `aria-invalid` on the checkbox and `data-invalid` on the field wrapper to
+show the invalid styles.
+
+<ComponentPreview styleName="radix-nova" name="checkbox-invalid" />
+
+## Examples
+
+### Basic
+
+Pair the checkbox with `Field` and `FieldLabel` for proper layout and labeling.
+
+<ComponentPreview styleName="radix-nova" name="checkbox-basic" />
+
+### Description
+
+Use `FieldContent` and `FieldDescription` for helper text.
+
+<ComponentPreview styleName="radix-nova" name="checkbox-description" />
+
+### Disabled
+
+Use the `disabled` prop to prevent interaction and add the `data-disabled` attribute to the `<Field>` component for disabled styles.
+
+<ComponentPreview styleName="radix-nova" name="checkbox-disabled" />
+
+### Group
+
+Use multiple fields to create a checkbox list.
+
+<ComponentPreview styleName="radix-nova" name="checkbox-group" />
+
+### Table
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="checkbox-table"
+  previewClassName="p-4 md:p-8"
+/>
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference) documentation for more information.

@@ -1,14 +1,13 @@
-import { BotIcon, ChevronDownIcon } from "lucide-react"
-
-import { Button } from "@/registry/new-york-v4/ui/button"
-import { ButtonGroup } from "@/registry/new-york-v4/ui/button-group"
+import { Button } from "@/examples/radix/ui/button"
+import { ButtonGroup } from "@/examples/radix/ui/button-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york-v4/ui/popover"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
-import { Textarea } from "@/registry/new-york-v4/ui/textarea"
+} from "@/examples/radix/ui/popover"
+import { Separator } from "@/examples/radix/ui/separator"
+import { Textarea } from "@/examples/radix/ui/textarea"
+import { BotIcon, ChevronDownIcon } from "lucide-react"
 
 export function ButtonGroupPopover() {
   return (

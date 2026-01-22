@@ -1,0 +1,98 @@
+---
+title: Sheet
+description: Extends the Dialog component to display content that complements the main content of the screen.
+base: radix
+component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/dialog
+  api: https://www.radix-ui.com/docs/primitives/components/dialog#api-reference
+---
+
+<ComponentPreview styleName="radix-nova" name="sheet-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add sheet
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install radix-ui
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="sheet"
+  title="components/ui/sheet.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+```
+
+```tsx showLineNumbers
+<Sheet>
+  <SheetTrigger>Open</SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Are you absolutely sure?</SheetTitle>
+      <SheetDescription>This action cannot be undone.</SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```
+
+## Examples
+
+### Side
+
+Use the `side` prop on `SheetContent` to set the edge of the screen where the sheet appears. Values are `top`, `right`, `bottom`, or `left`.
+
+<ComponentPreview styleName="radix-nova" name="sheet-side" />
+
+### No Close Button
+
+Use `showCloseButton={false}` on `SheetContent` to hide the close button.
+
+<ComponentPreview styleName="radix-nova" name="sheet-no-close-button" />
+
+## API Reference
+
+See the [Radix UI Dialog](https://www.radix-ui.com/docs/primitives/components/dialog#api-reference) documentation.

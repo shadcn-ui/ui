@@ -1,0 +1,81 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+base: base
+component: true
+links:
+  doc: https://base-ui.com/react/components/progress
+  api: https://base-ui.com/react/components/progress#api-reference
+---
+
+<ComponentPreview styleName="base-nova" name="progress-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add progress
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="progress"
+  title="components/ui/progress.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Progress } from "@/components/ui/progress"
+```
+
+```tsx showLineNumbers
+<Progress value={33} />
+```
+
+## Examples
+
+### Label
+
+Use `ProgressLabel` and `ProgressValue` to add a label and value display.
+
+<ComponentPreview styleName="base-nova" name="progress-label" />
+
+### Controlled
+
+A progress bar that can be controlled by a slider.
+
+<ComponentPreview styleName="base-nova" name="progress-controlled" />
+
+## API Reference
+
+See the [Base UI Progress](https://base-ui.com/react/components/progress#api-reference) documentation.
