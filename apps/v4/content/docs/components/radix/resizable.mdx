@@ -1,0 +1,97 @@
+---
+title: Resizable
+description: Accessible resizable panel groups and layouts with keyboard support.
+base: radix
+component: true
+links:
+  doc: https://github.com/bvaughn/react-resizable-panels
+  api: https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels
+---
+
+<ComponentPreview
+  styleName="radix-nova"
+  name="resizable-demo"
+  previewClassName="h-80"
+/>
+
+## About
+
+The `Resizable` component is built on top of [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels) by [bvaughn](https://github.com/bvaughn).
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add resizable
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-resizable-panels
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="resizable"
+  title="components/ui/resizable.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
+```
+
+```tsx showLineNumbers
+<ResizablePanelGroup direction="horizontal">
+  <ResizablePanel>One</ResizablePanel>
+  <ResizableHandle />
+  <ResizablePanel>Two</ResizablePanel>
+</ResizablePanelGroup>
+```
+
+## Examples
+
+### Vertical
+
+Use `direction="vertical"` for vertical resizing.
+
+<ComponentPreview styleName="radix-nova" name="resizable-vertical" />
+
+### Handle
+
+Use the `withHandle` prop on `ResizableHandle` to show a visible handle.
+
+<ComponentPreview styleName="radix-nova" name="resizable-handle" />
+
+## API Reference
+
+See the [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels) documentation.

@@ -28,6 +28,7 @@ import {
 import { z } from "zod"
 
 import {
+  getRegistries,
   getRegistriesConfig,
   getRegistriesIndex,
   getRegistry,
@@ -104,11 +105,24 @@ const server = setupServer(
     })
   }),
   http.get(`${REGISTRY_URL}/registries.json`, () => {
-    return HttpResponse.json({
-      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
-      "@example": "https://example.com/registry/styles/{style}/{name}.json",
-      "@test": "https://test.com/registry/{name}.json",
-    })
+    return HttpResponse.json([
+      {
+        name: "@shadcn",
+        url: "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+        description: "The official shadcn/ui registry.",
+      },
+      {
+        name: "@example",
+        homepage: "https://example.com",
+        url: "https://example.com/registry/styles/{style}/{name}.json",
+        description: "An example registry for testing.",
+      },
+      {
+        name: "@test",
+        url: "https://test.com/registry/{name}.json",
+        description: "A test registry.",
+      },
+    ])
   })
 )
 
@@ -1664,10 +1678,70 @@ describe("getRegistriesConfig", () => {
     })
   })
 
+  describe("getRegistries", () => {
+    it("should fetch and parse registries successfully", async () => {
+      const result = await getRegistries()
+
+      expect(result).toEqual([
+        {
+          name: "@shadcn",
+          url: "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+          description: "The official shadcn/ui registry.",
+        },
+        {
+          name: "@example",
+          homepage: "https://example.com",
+          url: "https://example.com/registry/styles/{style}/{name}.json",
+          description: "An example registry for testing.",
+        },
+        {
+          name: "@test",
+          url: "https://test.com/registry/{name}.json",
+          description: "A test registry.",
+        },
+      ])
+    })
+
+    it("should respect cache options", async () => {
+      const result1 = await getRegistries({ useCache: false })
+      expect(result1).toBeDefined()
+
+      const result2 = await getRegistries({ useCache: true })
+      expect(result2).toBeDefined()
+
+      expect(result1).toEqual(result2)
+    })
+
+    it("should handle network errors properly", async () => {
+      server.use(
+        http.get(`${REGISTRY_URL}/registries.json`, () => {
+          return new HttpResponse(null, { status: 500 })
+        })
+      )
+
+      await expect(getRegistries({ useCache: false })).rejects.toThrow()
+    })
+
+    it("should handle invalid JSON response", async () => {
+      server.use(
+        http.get(`${REGISTRY_URL}/registries.json`, () => {
+          return HttpResponse.json({
+            invalid: "format",
+          })
+        })
+      )
+
+      await expect(getRegistries({ useCache: false })).rejects.toThrow(
+        RegistriesIndexParseError
+      )
+    })
+  })
+
   describe("getRegistriesIndex", () => {
     it("should fetch and parse the registries index successfully", async () => {
       const result = await getRegistriesIndex()
 
+      // getRegistriesIndex transforms array format to object format.
       expect(result).toEqual({
         "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
         "@example": "https://example.com/registry/styles/{style}/{name}.json",

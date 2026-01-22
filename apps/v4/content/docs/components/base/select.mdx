@@ -1,0 +1,122 @@
+---
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+base: base
+component: true
+featured: true
+links:
+  doc: https://base-ui.com/react/components/select
+  api: https://base-ui.com/react/components/select#api-reference
+---
+
+<ComponentPreview styleName="base-nova" name="select-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add select
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="select"
+  title="components/ui/select.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+```
+
+```tsx showLineNumbers
+<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+## Examples
+
+### Align Item With Trigger
+
+Use `alignItemWithTrigger` on `SelectContent` to control whether the selected item aligns with the trigger. When `true` (default), the popup positions so the selected item appears over the trigger. When `false`, the popup aligns to the trigger edge.
+
+<ComponentPreview styleName="base-nova" name="select-align-item" />
+
+### Groups
+
+Use `SelectGroup`, `SelectLabel`, and `SelectSeparator` to organize items.
+
+<ComponentPreview styleName="base-nova" name="select-groups" />
+
+### Scrollable
+
+A select with many items that scrolls.
+
+<ComponentPreview styleName="base-nova" name="select-scrollable" />
+
+### Disabled
+
+<ComponentPreview styleName="base-nova" name="select-disabled" />
+
+### Invalid
+
+Add the `data-invalid` attribute to the `Field` component and the `aria-invalid` attribute to the `SelectTrigger` component to show an error state.
+
+```tsx showLineNumbers /data-invalid/ /aria-invalid/
+<Field data-invalid>
+  <FieldLabel>Fruit</FieldLabel>
+  <SelectTrigger aria-invalid>
+    <SelectValue />
+  </SelectTrigger>
+</Field>
+```
+
+<ComponentPreview styleName="base-nova" name="select-invalid" />
+
+## API Reference
+
+See the [Base UI Select](https://base-ui.com/react/components/select#api-reference) documentation.

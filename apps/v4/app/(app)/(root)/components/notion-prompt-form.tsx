@@ -1,24 +1,8 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import {
-  IconApps,
-  IconArrowUp,
-  IconAt,
-  IconBook,
-  IconCircleDashedPlus,
-  IconPaperclip,
-  IconPlus,
-  IconWorld,
-  IconX,
-} from "@tabler/icons-react"
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/new-york-v4/ui/avatar"
-import { Badge } from "@/registry/new-york-v4/ui/badge"
+import { Avatar, AvatarFallback, AvatarImage } from "@/examples/radix/ui/avatar"
+import { Badge } from "@/examples/radix/ui/badge"
 import {
   Command,
   CommandEmpty,
@@ -26,7 +10,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/new-york-v4/ui/command"
+} from "@/examples/radix/ui/command"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -39,25 +23,36 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/new-york-v4/ui/dropdown-menu"
-import { Field, FieldLabel } from "@/registry/new-york-v4/ui/field"
+} from "@/examples/radix/ui/dropdown-menu"
+import { Field, FieldLabel } from "@/examples/radix/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@/registry/new-york-v4/ui/input-group"
+} from "@/examples/radix/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york-v4/ui/popover"
-import { Switch } from "@/registry/new-york-v4/ui/switch"
+} from "@/examples/radix/ui/popover"
+import { Switch } from "@/examples/radix/ui/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
+} from "@/examples/radix/ui/tooltip"
+import {
+  IconApps,
+  IconArrowUp,
+  IconAt,
+  IconBook,
+  IconCircleDashedPlus,
+  IconPaperclip,
+  IconPlus,
+  IconWorld,
+  IconX,
+} from "@tabler/icons-react"
 
 const SAMPLE_DATA = {
   mentionable: [
@@ -190,7 +185,7 @@ export function NotionPromptForm() {
   const hasMentions = mentions.length > 0
 
   return (
-    <form className="[--radius:1.2rem]">
+    <form>
       <Field>
         <FieldLabel htmlFor="notion-prompt" className="sr-only">
           Prompt
@@ -222,7 +217,7 @@ export function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Mention a person, page, or date</TooltipContent>
               </Tooltip>
-              <PopoverContent className="p-0 [--radius:1.2rem]" align="start">
+              <PopoverContent className="p-0" align="start">
                 <Command>
                   <CommandInput placeholder="Search pages..." />
                   <CommandList>
@@ -306,12 +301,8 @@ export function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Select AI model</TooltipContent>
               </Tooltip>
-              <DropdownMenuContent
-                side="top"
-                align="start"
-                className="[--radius:1rem]"
-              >
-                <DropdownMenuGroup className="w-42">
+              <DropdownMenuContent side="top" align="start" className="w-48">
+                <DropdownMenuGroup className="w-48">
                   <DropdownMenuLabel className="text-muted-foreground text-xs">
                     Select Agent Mode
                   </DropdownMenuLabel>
@@ -346,11 +337,7 @@ export function NotionPromptForm() {
                   <IconWorld /> All Sources
                 </InputGroupButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side="top"
-                align="end"
-                className="[--radius:1rem]"
-              >
+              <DropdownMenuContent side="top" align="end" className="w-72">
                 <DropdownMenuGroup>
                   <DropdownMenuItem
                     asChild
