@@ -1,12 +1,9 @@
-import fs from "fs"
-import path from "path"
 import Link from "next/link"
 import { Button } from "@/examples/radix/ui/button"
 import { mdxComponents } from "@/mdx-components"
 import { IconRss } from "@tabler/icons-react"
-import fm from "front-matter"
 
-import { source } from "@/lib/source"
+import { getChangelogPages, type ChangelogPageData } from "@/lib/changelog"
 import { absoluteUrl } from "@/lib/utils"
 import { OpenInV0Cta } from "@/components/open-in-v0-cta"
 
@@ -35,39 +32,8 @@ export function generateMetadata() {
   }
 }
 
-function getDateFromFile(slugs: string[]): Date | null {
-  const filePath = path.join(
-    process.cwd(),
-    "content/docs",
-    ...slugs.slice(0, -1),
-    `${slugs[slugs.length - 1]}.mdx`
-  )
-  try {
-    const content = fs.readFileSync(filePath, "utf-8")
-    const { attributes } = fm<{ date?: string | Date }>(content)
-    if (attributes.date) {
-      return new Date(attributes.date)
-    }
-  } catch {
-    // File not found or parse error.
-  }
-  return null
-}
-
-export default async function ChangelogPage() {
-  const rawPages = source.getPages()
-  const pages = rawPages
-    .filter((page) => page.slugs[0] === "changelog" && page.slugs.length > 1)
-    .map((page) => ({
-      ...page,
-      date: getDateFromFile(page.slugs),
-    }))
-    .sort((a, b) => {
-      const dateA = a.date?.getTime() ?? 0
-      const dateB = b.date?.getTime() ?? 0
-      return dateB - dateA
-    })
-
+export default function ChangelogPage() {
+  const pages = getChangelogPages()
   const latestPages = pages.slice(0, 5)
   const olderPages = pages.slice(5)
 
@@ -96,12 +62,9 @@ export default async function ChangelogPage() {
             </p>
           </div>
           <div className="w-full flex-1 pb-16 sm:pb-0">
-            {latestPages.map(async (page) => {
+            {latestPages.map((page) => {
+              const data = page.data as ChangelogPageData
               const MDX = page.data.body
-              const data = page.data as {
-                title: string
-                description?: string
-              }
 
               return (
                 <article key={page.url} className="mb-12 border-b pb-12">
@@ -121,9 +84,7 @@ export default async function ChangelogPage() {
                 </h2>
                 <ul className="flex flex-col gap-4">
                   {olderPages.map((page) => {
-                    const data = page.data as {
-                      title: string
-                    }
+                    const data = page.data as ChangelogPageData
                     return (
                       <li key={page.url} className="flex items-center gap-3">
                         <Link
@@ -149,7 +110,7 @@ export default async function ChangelogPage() {
               On This Page
             </p>
             {latestPages.map((page) => {
-              const data = page.data as { title: string }
+              const data = page.data as ChangelogPageData
               return (
                 <Link
                   key={page.url}
