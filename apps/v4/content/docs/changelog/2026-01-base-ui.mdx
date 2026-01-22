@@ -1,0 +1,45 @@
+---
+title: January 2026 - Base UI Documentation
+description: Full documentation for Base UI components.
+date: 2026-01-20
+---
+
+We've shipped full documentation for Base UI components.
+
+<div className="bg-muted/50 mt-6 flex w-full items-center justify-center rounded-lg border py-32">
+  <svg width="17" height="24" viewBox="0 0 17 24" className="size-12">
+    <path
+      fill="currentColor"
+      d="M9.5001 7.01537C9.2245 6.99837 9 7.22385 9 7.49999V23C13.4183 23 17 19.4183 17 15C17 10.7497 13.6854 7.27351 9.5001 7.01537Z"
+    />
+    <path
+      fill="currentColor"
+      d="M8 9.8V12V23C3.58172 23 0 19.0601 0 14.2V12V1C4.41828 1 8 4.93989 8 9.8Z"
+    />
+  </svg>
+</div>
+
+When we launched `npx shadcn create` in December, we introduced the ability to choose between Radix and Base UI as your component library. Today, we're following up with complete documentation for all Base UI components.
+
+### What's New
+
+- **Full Base UI docs** - Every component now has dedicated documentation for Base UI, covering usage, props, and examples.
+- **Rebuilt examples** - All component examples have been rebuilt for both Radix and Base UI. Switch between them to see the implementation differences.
+- **Side-by-side comparison** - The docs make it easy to compare how components work across both libraries.
+
+### Same Abstraction, Different Primitives
+
+The goal remains the same: give you a consistent API regardless of which primitive library you choose. The components look and behave the same way. Only the underlying implementation changes.
+
+```tsx
+// Works the same whether you're using Radix or Base UI.
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+```
+
+If you're starting a new project, run `npx shadcn create` and pick your preferred library. The CLI handles the rest.
+
+<Button asChild size="sm">
+  <Link href="/create" className="mt-6 no-underline!">
+    Try shadcn/create
+  </Link>
+</Button>
