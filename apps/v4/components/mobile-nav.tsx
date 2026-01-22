@@ -31,6 +31,10 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/directory",
   },
   {
+    name: "RTL",
+    href: "/docs/rtl",
+  },
+  {
     name: "MCP Server",
     href: "/docs/mcp",
   },

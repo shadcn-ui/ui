@@ -33,6 +33,10 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/directory",
   },
   {
+    name: "RTL",
+    href: "/docs/rtl",
+  },
+  {
     name: "MCP Server",
     href: "/docs/mcp",
   },
@@ -91,6 +95,12 @@ export function DocsSidebar({
                       <Link href={href}>
                         <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
                         {name}
+                        {PAGES_NEW.includes(href) && (
+                          <span
+                            className="flex size-2 rounded-full bg-blue-500"
+                            title="New"
+                          />
+                        )}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>

@@ -73,6 +73,20 @@ const RTL_TRANSLATE_X_MAPPINGS: [string, string][] = [
   ["translate-x-", "-translate-x-"],
 ]
 
+// Classes that need rtl:*-reverse added (no logical equivalents in Tailwind).
+// Pattern: prefix → rtl variant to add.
+const RTL_REVERSE_MAPPINGS: [string, string][] = [
+  ["space-x-", "space-x-reverse"],
+  ["divide-x-", "divide-x-reverse"],
+]
+
+// Classes that need rtl: variant with swapped value (no logical equivalents).
+// Pattern: [physical, rtlSwapped] - value swaps in RTL.
+const RTL_SWAP_MAPPINGS: [string, string][] = [
+  ["cursor-w-resize", "cursor-e-resize"],
+  ["cursor-e-resize", "cursor-w-resize"],
+]
+
 // Props that need value swapping for RTL.
 // Format: { propName: { fromValue: toValue } }
 // const RTL_PROP_MAPPINGS: Record<string, Record<string, string>> = {
@@ -116,6 +130,26 @@ export function applyRtlMapping(input: string) {
           const rtlClass = variant
             ? `rtl:${variant}:${rtlValue}${modifier ? `/${modifier}` : ""}`
             : `rtl:${rtlValue}${modifier ? `/${modifier}` : ""}`
+          return [className, rtlClass]
+        }
+      }
+
+      // Check for space-x/divide-x patterns (add rtl:*-reverse variant).
+      for (const [prefix, reverseClass] of RTL_REVERSE_MAPPINGS) {
+        if (value.startsWith(prefix)) {
+          const rtlClass = variant
+            ? `rtl:${variant}:${reverseClass}`
+            : `rtl:${reverseClass}`
+          return [className, rtlClass]
+        }
+      }
+
+      // Check for cursor and other swap patterns (add rtl: variant with swapped value).
+      for (const [physical, swapped] of RTL_SWAP_MAPPINGS) {
+        if (value === physical) {
+          const rtlClass = variant
+            ? `rtl:${variant}:${swapped}`
+            : `rtl:${swapped}`
           return [className, rtlClass]
         }
       }
@@ -305,6 +339,54 @@ export const transformRtl: Transformer = async ({ sourceFile, config }) => {
   //   }
   // })
 
+  // Find mergeProps calls with className property containing cn().
+  sourceFile
+    .getDescendantsOfKind(SyntaxKind.CallExpression)
+    .filter((node) => node.getExpression().getText() === "mergeProps")
+    .forEach((node) => {
+      const firstArg = node.getArguments()[0]
+      if (firstArg?.isKind(SyntaxKind.ObjectLiteralExpression)) {
+        // Find className property.
+        const classNameProp = firstArg
+          .getProperties()
+          .find(
+            (prop) =>
+              prop.isKind(SyntaxKind.PropertyAssignment) &&
+              prop.getName() === "className"
+          )
+        if (classNameProp?.isKind(SyntaxKind.PropertyAssignment)) {
+          const init = classNameProp.getInitializer()
+          // Handle cn() call.
+          if (init?.isKind(SyntaxKind.CallExpression)) {
+            if (init.getExpression().getText() === "cn") {
+              init.getArguments().forEach((arg) => {
+                if (arg.isKind(SyntaxKind.StringLiteral)) {
+                  const text = stripQuotes(arg.getText() ?? "")
+                  arg.replaceWithText(`"${applyRtlMapping(text)}"`)
+                }
+                if (
+                  arg.isKind(SyntaxKind.ConditionalExpression) ||
+                  arg.isKind(SyntaxKind.BinaryExpression)
+                ) {
+                  arg
+                    .getChildrenOfKind(SyntaxKind.StringLiteral)
+                    .forEach((n) => {
+                      const text = stripQuotes(n.getText() ?? "")
+                      n.replaceWithText(`"${applyRtlMapping(text)}"`)
+                    })
+                }
+              })
+            }
+          }
+          // Handle plain string literal.
+          if (init?.isKind(SyntaxKind.StringLiteral)) {
+            const text = stripQuotes(init.getText() ?? "")
+            init.replaceWithText(`"${applyRtlMapping(text)}"`)
+          }
+        }
+      }
+    })
+
   return sourceFile
 }
 
@@ -467,6 +549,54 @@ export async function transformDirection(
   //     }
   //   }
   // })
+
+  // Find mergeProps calls with className property containing cn().
+  sourceFile
+    .getDescendantsOfKind(SyntaxKind.CallExpression)
+    .filter((node) => node.getExpression().getText() === "mergeProps")
+    .forEach((node) => {
+      const firstArg = node.getArguments()[0]
+      if (firstArg?.isKind(SyntaxKind.ObjectLiteralExpression)) {
+        // Find className property.
+        const classNameProp = firstArg
+          .getProperties()
+          .find(
+            (prop) =>
+              prop.isKind(SyntaxKind.PropertyAssignment) &&
+              prop.getName() === "className"
+          )
+        if (classNameProp?.isKind(SyntaxKind.PropertyAssignment)) {
+          const init = classNameProp.getInitializer()
+          // Handle cn() call.
+          if (init?.isKind(SyntaxKind.CallExpression)) {
+            if (init.getExpression().getText() === "cn") {
+              init.getArguments().forEach((arg) => {
+                if (arg.isKind(SyntaxKind.StringLiteral)) {
+                  const text = arg.getLiteralText()
+                  arg.setLiteralValue(applyRtlMapping(text))
+                }
+                if (
+                  arg.isKind(SyntaxKind.ConditionalExpression) ||
+                  arg.isKind(SyntaxKind.BinaryExpression)
+                ) {
+                  arg
+                    .getChildrenOfKind(SyntaxKind.StringLiteral)
+                    .forEach((n) => {
+                      const text = n.getLiteralText()
+                      n.setLiteralValue(applyRtlMapping(text))
+                    })
+                }
+              })
+            }
+          }
+          // Handle plain string literal.
+          if (init?.isKind(SyntaxKind.StringLiteral)) {
+            const text = init.getLiteralText()
+            init.setLiteralValue(applyRtlMapping(text))
+          }
+        }
+      }
+    })
 
   return sourceFile.getText()
 }

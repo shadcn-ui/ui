@@ -153,7 +153,7 @@ function ContextMenuSubContent({
     <ContextMenuContent
       data-slot="context-menu-sub-content"
       className="shadow-lg"
-      side="right"
+      side="inline-end"
       {...props}
     />
   )

@@ -19,6 +19,7 @@ describe("applyRtlMapping", () => {
   test("transforms positioning classes", () => {
     expect(applyRtlMapping("left-0")).toBe("start-0")
     expect(applyRtlMapping("right-0")).toBe("end-0")
+    expect(applyRtlMapping("right-1")).toBe("end-1")
     expect(applyRtlMapping("-left-2")).toBe("-start-2")
     expect(applyRtlMapping("-right-2")).toBe("-end-2")
   })
@@ -150,6 +151,46 @@ describe("applyRtlMapping", () => {
   test("does not add rtl: variant for translate-y classes", () => {
     expect(applyRtlMapping("-translate-y-1/2")).toBe("-translate-y-1/2")
     expect(applyRtlMapping("translate-y-full")).toBe("translate-y-full")
+  })
+
+  test("adds rtl:space-x-reverse for space-x classes", () => {
+    expect(applyRtlMapping("space-x-4")).toBe("space-x-4 rtl:space-x-reverse")
+    expect(applyRtlMapping("space-x-2")).toBe("space-x-2 rtl:space-x-reverse")
+    expect(applyRtlMapping("space-x-0")).toBe("space-x-0 rtl:space-x-reverse")
+  })
+
+  test("adds rtl:divide-x-reverse for divide-x classes", () => {
+    expect(applyRtlMapping("divide-x-2")).toBe("divide-x-2 rtl:divide-x-reverse")
+    expect(applyRtlMapping("divide-x-0")).toBe("divide-x-0 rtl:divide-x-reverse")
+  })
+
+  test("handles space-x and divide-x with variant prefixes", () => {
+    expect(applyRtlMapping("md:space-x-4")).toBe(
+      "md:space-x-4 rtl:md:space-x-reverse"
+    )
+    expect(applyRtlMapping("hover:divide-x-2")).toBe(
+      "hover:divide-x-2 rtl:hover:divide-x-reverse"
+    )
+  })
+
+  test("does not add rtl: variant for space-y or divide-y classes", () => {
+    expect(applyRtlMapping("space-y-4")).toBe("space-y-4")
+    expect(applyRtlMapping("divide-y-2")).toBe("divide-y-2")
+  })
+
+  test("adds rtl: variant for cursor resize classes", () => {
+    expect(applyRtlMapping("cursor-w-resize")).toBe(
+      "cursor-w-resize rtl:cursor-e-resize"
+    )
+    expect(applyRtlMapping("cursor-e-resize")).toBe(
+      "cursor-e-resize rtl:cursor-w-resize"
+    )
+  })
+
+  test("handles cursor resize with variant prefixes", () => {
+    expect(applyRtlMapping("hover:cursor-w-resize")).toBe(
+      "hover:cursor-w-resize rtl:hover:cursor-e-resize"
+    )
   })
 })
 
@@ -414,4 +455,64 @@ const buttonVariants = cva("ml-2 mr-4", {
   //   // align = "start" should remain unchanged (not a directional value).
   //   expect(result).toContain('align = "start"')
   // })
+
+  test("transforms cn() inside mergeProps", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo() {
+  return mergeProps(
+    {
+      className: cn("absolute right-1 top-1"),
+    },
+    props
+  )
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain("end-1")
+    expect(result).not.toContain("right-1")
+  })
+
+  test("transforms string literal className inside mergeProps", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo() {
+  return mergeProps(
+    {
+      className: "ml-2 right-0",
+    },
+    props
+  )
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain("ms-2")
+    expect(result).toContain("end-0")
+    expect(result).not.toContain("ml-2")
+    expect(result).not.toContain("right-0")
+  })
 })

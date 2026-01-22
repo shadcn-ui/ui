@@ -1,5 +1,6 @@
 export const PAGES_NEW = [
   "/create",
+  "/docs/rtl",
   "/docs/components/button-group",
   "/docs/components/empty",
   "/docs/components/field",

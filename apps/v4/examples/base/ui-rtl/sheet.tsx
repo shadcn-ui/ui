@@ -36,7 +36,7 @@ function SheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props) {
 function SheetContent({
   className,
   children,
-  side = "left",
+  side = "right",
   showCloseButton = true,
   ...props
 }: SheetPrimitive.Popup.Props & {

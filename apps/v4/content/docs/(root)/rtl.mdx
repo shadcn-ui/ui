@@ -1,0 +1,95 @@
+---
+title: "RTL"
+description: "RTL documentation"
+---
+
+
+## Overview
+
+RTL is a feature that allows you to display content from right to left.
+
+## Sidebar
+
+If you have an existing `sidebar.tsx` component and want to make it RTL compatible, you'll need to make the following changes:
+
+### 1. Update the side prop type and default
+
+```tsx
+function Sidebar({
+  side = "inline-start", // [!code highlight]
+  variant = "sidebar",
+  collapsible = "offcanvas",
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"div"> & {
+  side?: "left" | "right" | "inline-start" | "inline-end" // [!code highlight]
+  variant?: "sidebar" | "floating" | "inset"
+  collapsible?: "offcanvas" | "icon" | "none"
+}) {
+```
+
+### 2. Update the mobile Sheet side prop
+
+The Sheet component only accepts physical `left` or `right` values, so map the logical values:
+
+```tsx
+<SheetContent
+  side={side === "inline-start" || side === "left" ? "left" : "right"}
+  // ...
+>
+```
+
+### 3. Normalize the data-side attribute
+
+The `data-side` attribute is used by CSS selectors, so normalize it to physical values:
+
+```tsx
+<div
+  data-side={side === "inline-start" || side === "left" ? "left" : "right"}
+  // ...
+>
+```
+
+### 4. Update the sidebar container positioning
+
+Change the conditional logic to include `inline-start` and use logical positioning classes:
+
+```tsx
+className={cn(
+  "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) md:flex",
+  side === "left" || side === "inline-start"
+    ? "start-0 group-data-[collapsible=offcanvas]:start-[calc(var(--sidebar-width)*-1)]"
+    : "end-0 group-data-[collapsible=offcanvas]:end-[calc(var(--sidebar-width)*-1)]",
+  // ...
+)}
+```
+
+### 5. Update SidebarRail classes
+
+Replace physical positioning classes with logical equivalents:
+
+| Before | After |
+|--------|-------|
+| `group-data-[side=left]:-right-4` | `group-data-[side=left]:-end-4` |
+| `group-data-[side=right]:left-0` | `group-data-[side=right]:start-0` |
+| `after:left-1/2` | `after:start-1/2` |
+| `after:left-full` | `after:start-full` |
+| `-right-2` | `-end-2` |
+| `-left-2` | `-start-2` |
+
+### Usage
+
+After these changes, you can use the sidebar with logical side values:
+
+```tsx
+// LTR: sidebar on the left, RTL: sidebar on the right
+<Sidebar side="inline-start" />
+
+// LTR: sidebar on the right, RTL: sidebar on the left
+<Sidebar side="inline-end" />
+
+// Physical values still work for explicit positioning
+<Sidebar side="left" />
+<Sidebar side="right" />
+```

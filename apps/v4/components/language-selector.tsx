@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/examples/base/ui/select"
+import { cn } from "@/lib/utils"
 
 export type Language = "en" | "ar" | "he"
 
@@ -65,9 +66,8 @@ export function useTranslation<T extends Record<string, string>>(
   defaultLanguage: Language = "ar"
 ) {
   const context = useLanguageContext()
-  const [localLanguage, setLocalLanguage] = React.useState<Language>(
-    defaultLanguage
-  )
+  const [localLanguage, setLocalLanguage] =
+    React.useState<Language>(defaultLanguage)
 
   const language = context?.language ?? localLanguage
   const setLanguage = context?.setLanguage ?? setLocalLanguage
@@ -84,7 +84,10 @@ export interface LanguageSelectorProps {
 export function LanguageSelector({
   value,
   onValueChange,
-}: LanguageSelectorProps) {
+  className,
+}: LanguageSelectorProps & {
+  className?: string
+}) {
   return (
     <Select
       items={languageOptions}
@@ -93,12 +96,15 @@ export function LanguageSelector({
     >
       <SelectTrigger
         size="sm"
-        className="absolute top-4 right-4 z-50 w-36"
+        className={cn("absolute top-4 right-4 z-50 w-36", className)}
         dir="ltr"
       >
         <SelectValue />
       </SelectTrigger>
-      <SelectContent dir="ltr" className="data-open:animate-none data-closed:animate-none">
+      <SelectContent
+        dir="ltr"
+        className="data-closed:animate-none data-open:animate-none"
+      >
         <SelectGroup>
           {languageOptions.map((option) => (
             <SelectItem key={option.value} value={option.value}>
