@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/examples/base/ui/button"
 import {
   DropdownMenu,
