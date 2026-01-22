@@ -17,7 +17,7 @@ function TooltipProvider({
   )
 }
 
-function Tooltip({ ...props }: TooltipPrimitive.Root.Props) {
+function Tooltip<T>({ ...props }: TooltipPrimitive.Root.Props<T>) {
   return (
     <TooltipProvider>
       <TooltipPrimitive.Root data-slot="tooltip" {...props} />
@@ -25,7 +25,7 @@ function Tooltip({ ...props }: TooltipPrimitive.Root.Props) {
   )
 }
 
-function TooltipTrigger({ ...props }: TooltipPrimitive.Trigger.Props) {
+function TooltipTrigger<T>({ ...props }: TooltipPrimitive.Trigger.Props<T>) {
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
 }
 
@@ -66,5 +66,7 @@ function TooltipContent({
     </TooltipPrimitive.Portal>
   )
 }
+
+export const createTooltipHandle = TooltipPrimitive.createHandle;
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
