@@ -46,6 +46,7 @@ export default function SelectExample() {
   return (
     <ExampleWrapper>
       <SelectBasic />
+      <SelectSides />
       <SelectWithIcons />
       <SelectWithGroups />
       <SelectLargeList />
@@ -88,6 +89,46 @@ function SelectBasic() {
           </SelectGroup>
         </SelectContent>
       </Select>
+    </Example>
+  )
+}
+
+function SelectSides() {
+  const items = [
+    { label: "Select", value: null },
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Blueberry", value: "blueberry" },
+  ]
+  return (
+    <Example title="Sides" containerClassName="col-span-2">
+      <div className="flex flex-wrap justify-center gap-2">
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
+          <Select key={side} items={items}>
+            <SelectTrigger className="w-28 capitalize">
+              <SelectValue placeholder={side.replace("-", " ")} />
+            </SelectTrigger>
+            <SelectContent side={side} alignItemWithTrigger={false}>
+              <SelectGroup>
+                {items.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        ))}
+      </div>
     </Example>
   )
 }

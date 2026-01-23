@@ -70,6 +70,7 @@ export default function ComboboxExample() {
     <ExampleWrapper>
       <ComboboxBasic />
       <ComboboxDisabled />
+      <ComboboxSides />
       <ComboboxInvalid />
       <ComboboxWithClear />
       <ComboboxAutoHighlight />
@@ -561,6 +562,42 @@ function ComboboxBasic() {
           </ComboboxList>
         </ComboboxContent>
       </Combobox>
+    </Example>
+  )
+}
+
+function ComboboxSides() {
+  return (
+    <Example title="Sides" containerClassName="col-span-2">
+      <div className="flex flex-wrap justify-center gap-2">
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
+          <Combobox key={side} items={frameworks}>
+            <ComboboxInput
+              placeholder={side.replace("-", " ")}
+              className="w-32 **:data-[slot=input-group-control]:capitalize"
+            />
+            <ComboboxContent side={side}>
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem key={item} value={item}>
+                    {item}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
+        ))}
+      </div>
     </Example>
   )
 }
