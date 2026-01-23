@@ -192,6 +192,27 @@ describe("applyRtlMapping", () => {
       "hover:cursor-w-resize rtl:hover:cursor-e-resize"
     )
   })
+
+  test("adds logical side selectors when cn-logical-sides marker is present", () => {
+    // With cn-logical-sides marker, adds logical alongside physical.
+    // In RTL: inline-start = right, inline-end = left.
+    expect(
+      applyRtlMapping("cn-logical-sides data-[side=left]:top-1")
+    ).toBe("cn-logical-sides data-[side=left]:top-1 data-[side=inline-end]:top-1")
+    expect(
+      applyRtlMapping("cn-logical-sides data-[side=right]:-left-1")
+    ).toBe("cn-logical-sides data-[side=right]:-start-1 data-[side=inline-start]:-start-1")
+  })
+
+  test("does not add logical side selectors without cn-logical-sides marker", () => {
+    // Without marker, no logical selectors added.
+    expect(applyRtlMapping("data-[side=left]:top-1")).toBe(
+      "data-[side=left]:top-1"
+    )
+    expect(applyRtlMapping("data-[side=right]:-left-1")).toBe(
+      "data-[side=right]:-start-1"
+    )
+  })
 })
 
 describe("transformRtl", () => {

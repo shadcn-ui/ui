@@ -5,13 +5,13 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/examples/base/ui-rtl/avatar"
+} from "@/examples/radix/ui-rtl/avatar"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/examples/base/ui-rtl/collapsible"
-import { DirectionProvider } from "@/examples/base/ui-rtl/direction"
+} from "@/examples/radix/ui-rtl/collapsible"
+import { DirectionProvider } from "@/examples/radix/ui-rtl/direction"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,7 +20,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/examples/base/ui-rtl/dropdown-menu"
+} from "@/examples/radix/ui-rtl/dropdown-menu"
 import {
   Sidebar,
   SidebarContent,
@@ -40,7 +40,7 @@ import {
   SidebarRail,
   SidebarTrigger,
   useSidebar,
-} from "@/examples/base/ui-rtl/sidebar"
+} from "@/examples/radix/ui-rtl/sidebar"
 import {
   BadgeCheck,
   Bell,
@@ -196,7 +196,7 @@ function AppSidebarWithProvider() {
   const { language, setLanguage, dir } = useTranslation(translations, "ar")
 
   return (
-    <DirectionProvider direction={dir}>
+    <DirectionProvider dir={dir}>
       <div className="relative" dir={dir}>
         <LanguageSelector
           value={language}
@@ -318,14 +318,16 @@ function SidebarContentInner({
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton size="lg" render={<a href="#" />}>
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <GalleryVerticalEnd className="size-4" />
-                </div>
-                <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">{t.teamName}</span>
-                  <span className="">{t.teamPlan}</span>
-                </div>
+              <SidebarMenuButton size="lg" asChild>
+                <a href="#">
+                  <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                    <GalleryVerticalEnd className="size-4" />
+                  </div>
+                  <div className="flex flex-col gap-0.5 leading-none">
+                    <span className="font-medium">{t.teamName}</span>
+                    <span className="">{t.teamPlan}</span>
+                  </div>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -337,25 +339,26 @@ function SidebarContentInner({
               {navMain.map((item) => (
                 <Collapsible
                   key={item.title}
+                  asChild
                   defaultOpen={item.isActive}
                   className="group/collapsible"
                 >
                   <SidebarMenuItem>
-                    <CollapsibleTrigger
-                      render={<SidebarMenuButton tooltip={item.title} />}
-                    >
-                      {item.icon && <item.icon />}
-                      <span>{item.title}</span>
-                      <ChevronRight className="ms-auto transition-transform duration-200 group-data-open/collapsible:rotate-90 rtl:rotate-180 rtl:group-data-open/collapsible:rotate-90" />
+                    <CollapsibleTrigger asChild>
+                      <SidebarMenuButton tooltip={item.title}>
+                        {item.icon && <item.icon />}
+                        <span>{item.title}</span>
+                        <ChevronRight className="ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 rtl:rotate-180 rtl:group-data-[state=open]/collapsible:rotate-90" />
+                      </SidebarMenuButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
                       <SidebarMenuSub>
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton
-                              render={<a href={subItem.url} />}
-                            >
-                              <span>{subItem.title}</span>
+                            <SidebarMenuSubButton asChild>
+                              <a href={subItem.url}>
+                                <span>{subItem.title}</span>
+                              </a>
                             </SidebarMenuSubButton>
                           </SidebarMenuSubItem>
                         ))}
@@ -371,22 +374,23 @@ function SidebarContentInner({
             <SidebarMenu>
               {projects.map((item) => (
                 <SidebarMenuItem key={item.name}>
-                  <SidebarMenuButton render={<a href={item.url} />}>
-                    <item.icon />
-                    <span>{item.name}</span>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.name}</span>
+                    </a>
                   </SidebarMenuButton>
                   <DropdownMenu>
-                    <DropdownMenuTrigger
-                      render={<SidebarMenuAction showOnHover />}
-                    >
-                      <MoreHorizontal />
-                      <span className="sr-only">{t.more}</span>
+                    <DropdownMenuTrigger asChild>
+                      <SidebarMenuAction showOnHover>
+                        <MoreHorizontal />
+                        <span className="sr-only">{t.more}</span>
+                      </SidebarMenuAction>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                       className="w-48 rounded-lg"
-                      side={isMobile ? "bottom" : "inline-end"}
+                      side={isMobile ? "bottom" : "right"}
                       align={isMobile ? "end" : "start"}
-                      dir={dir}
                     >
                       <DropdownMenuGroup>
                         <DropdownMenuItem>
@@ -422,30 +426,27 @@ function SidebarContentInner({
           <SidebarMenu>
             <SidebarMenuItem>
               <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={
-                    <SidebarMenuButton
-                      size="lg"
-                      className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                    />
-                  }
-                >
-                  <Avatar className="rounded-lg">
-                    <AvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-                  </Avatar>
-                  <div className="grid flex-1 text-start text-sm leading-tight">
-                    <span className="truncate font-medium">{user.name}</span>
-                    <span className="truncate text-xs">{user.email}</span>
-                  </div>
-                  <ChevronsUpDown className="ms-auto size-4" />
+                <DropdownMenuTrigger asChild>
+                  <SidebarMenuButton
+                    size="lg"
+                    className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                  >
+                    <Avatar className="rounded-lg">
+                      <AvatarImage src={user.avatar} alt={user.name} />
+                      <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                    </Avatar>
+                    <div className="grid flex-1 text-start text-sm leading-tight">
+                      <span className="truncate font-medium">{user.name}</span>
+                      <span className="truncate text-xs">{user.email}</span>
+                    </div>
+                    <ChevronsUpDown className="ms-auto size-4" />
+                  </SidebarMenuButton>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-                  side={isMobile ? "bottom" : "inline-end"}
+                  side={isMobile ? "bottom" : "right"}
                   align="end"
                   sideOffset={4}
-                  dir={dir}
                 >
                   <DropdownMenuGroup>
                     <DropdownMenuLabel className="p-0 font-normal">

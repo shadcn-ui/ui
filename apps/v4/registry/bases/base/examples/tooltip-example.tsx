@@ -47,12 +47,12 @@ function TooltipSides() {
   return (
     <Example title="Sides">
       <div className="flex flex-wrap gap-2">
-        {(["top", "right", "bottom", "left"] as const).map((side) => (
+        {(["top", "right", "bottom", "left", "inline-start", "inline-end"] as const).map((side) => (
           <Tooltip key={side}>
             <TooltipTrigger
               render={<Button variant="outline" className="w-fit capitalize" />}
             >
-              {side}
+              {side.replace("-", " ")}
             </TooltipTrigger>
             <TooltipContent side={side}>
               <p>Add to library</p>

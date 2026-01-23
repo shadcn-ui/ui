@@ -5,7 +5,6 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/examples/base/ui-rtl/toggle-group"
-import { Bold, Italic, Underline } from "lucide-react"
 
 import {
   useTranslation,
@@ -15,31 +14,43 @@ import {
 const translations: Translations = {
   en: {
     dir: "ltr",
-    values: {},
+    values: {
+      list: "List",
+      grid: "Grid",
+      cards: "Cards",
+    },
   },
   ar: {
     dir: "rtl",
-    values: {},
+    values: {
+      list: "قائمة",
+      grid: "شبكة",
+      cards: "بطاقات",
+    },
   },
   he: {
     dir: "rtl",
-    values: {},
+    values: {
+      list: "רשימה",
+      grid: "רשת",
+      cards: "כרטיסים",
+    },
   },
 }
 
 export function ToggleGroupRtl() {
-  const { dir } = useTranslation(translations, "ar")
+  const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <ToggleGroup variant="outline" multiple dir={dir}>
-      <ToggleGroupItem value="bold" aria-label="Toggle bold">
-        <Bold />
+    <ToggleGroup variant="outline" defaultValue={["list"]} dir={dir}>
+      <ToggleGroupItem value="list" aria-label={t.list}>
+        {t.list}
       </ToggleGroupItem>
-      <ToggleGroupItem value="italic" aria-label="Toggle italic">
-        <Italic />
+      <ToggleGroupItem value="grid" aria-label={t.grid}>
+        {t.grid}
       </ToggleGroupItem>
-      <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">
-        <Underline />
+      <ToggleGroupItem value="cards" aria-label={t.cards}>
+        {t.cards}
       </ToggleGroupItem>
     </ToggleGroup>
   )

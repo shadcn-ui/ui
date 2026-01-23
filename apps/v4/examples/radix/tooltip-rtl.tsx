@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Button } from "@/examples/radix/ui-rtl/button"
 import {
   Tooltip,
@@ -38,15 +37,15 @@ const translations: Translations = {
 }
 
 export function TooltipRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { t } = useTranslation(translations, "ar")
 
   return (
-    <Tooltip dir={dir}>
+    <Tooltip>
       <TooltipTrigger asChild>
         <Button variant="outline">{t.trigger}</Button>
       </TooltipTrigger>
-      <TooltipContent dir={dir}>
-        <p>{t.content}</p>
+      <TooltipContent>
+        {t.content}
       </TooltipContent>
     </Tooltip>
   )

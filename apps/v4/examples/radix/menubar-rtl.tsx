@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -17,6 +16,7 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/examples/radix/ui-rtl/menubar"
+import * as React from "react"
 
 import {
   useTranslation,
@@ -148,7 +148,7 @@ export function MenubarRtl() {
     <Menubar className="w-72" dir={dir}>
       <MenubarMenu>
         <MenubarTrigger>{t.file}</MenubarTrigger>
-        <MenubarContent dir={dir}>
+        <MenubarContent>
           <MenubarGroup>
             <MenubarItem>
               {t.newTab} <MenubarShortcut>⌘T</MenubarShortcut>
@@ -162,7 +162,7 @@ export function MenubarRtl() {
           <MenubarGroup>
             <MenubarSub>
               <MenubarSubTrigger>{t.share}</MenubarSubTrigger>
-              <MenubarSubContent dir={dir}>
+              <MenubarSubContent>
                 <MenubarGroup>
                   <MenubarItem>{t.emailLink}</MenubarItem>
                   <MenubarItem>{t.messages}</MenubarItem>
@@ -181,7 +181,7 @@ export function MenubarRtl() {
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>{t.edit}</MenubarTrigger>
-        <MenubarContent dir={dir}>
+        <MenubarContent>
           <MenubarGroup>
             <MenubarItem>
               {t.undo} <MenubarShortcut>⌘Z</MenubarShortcut>
@@ -194,7 +194,7 @@ export function MenubarRtl() {
           <MenubarGroup>
             <MenubarSub>
               <MenubarSubTrigger>{t.find}</MenubarSubTrigger>
-              <MenubarSubContent dir={dir}>
+              <MenubarSubContent>
                 <MenubarGroup>
                   <MenubarItem>{t.searchTheWeb}</MenubarItem>
                 </MenubarGroup>
@@ -217,7 +217,7 @@ export function MenubarRtl() {
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>{t.view}</MenubarTrigger>
-        <MenubarContent className="w-44" dir={dir}>
+        <MenubarContent className="w-44">
           <MenubarGroup>
             <MenubarCheckboxItem>{t.bookmarksBar}</MenubarCheckboxItem>
             <MenubarCheckboxItem checked>{t.fullUrls}</MenubarCheckboxItem>
@@ -243,7 +243,7 @@ export function MenubarRtl() {
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>{t.profiles}</MenubarTrigger>
-        <MenubarContent dir={dir}>
+        <MenubarContent>
           <MenubarRadioGroup value={profile} onValueChange={setProfile}>
             <MenubarRadioItem value="andy">{t.andy}</MenubarRadioItem>
             <MenubarRadioItem value="benoit">{t.benoit}</MenubarRadioItem>

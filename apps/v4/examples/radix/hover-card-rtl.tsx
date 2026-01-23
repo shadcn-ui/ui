@@ -1,11 +1,5 @@
 "use client"
 
-import * as React from "react"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/examples/radix/ui-rtl/avatar"
 import { Button } from "@/examples/radix/ui-rtl/button"
 import {
   HoverCard,
@@ -22,28 +16,25 @@ const translations: Translations = {
   en: {
     dir: "ltr",
     values: {
-      trigger: "Hover Here",
-      username: "@nextjs",
-      description: "The React Framework – created and maintained by @vercel.",
-      joined: "Joined December 2021",
+      trigger: "Wireless Headphones",
+      name: "Wireless Headphones",
+      price: "$99.99",
     },
   },
   ar: {
     dir: "rtl",
     values: {
-      trigger: "مرر هنا",
-      username: "@nextjs",
-      description: "إطار عمل React – تم إنشاؤه وصيانته بواسطة @vercel.",
-      joined: "انضم في ديسمبر 2021",
+      trigger: "سماعات لاسلكية",
+      name: "سماعات لاسلكية",
+      price: "٩٩.٩٩ $",
     },
   },
   he: {
     dir: "rtl",
     values: {
-      trigger: "רחף כאן",
-      username: "@nextjs",
-      description: "מסגרת React – נוצרה ומתוחזקת על ידי @vercel.",
-      joined: "הצטרף בדצמבר 2021",
+      trigger: "אוזניות אלחוטיות",
+      name: "אוזניות אלחוטיות",
+      price: "99.99 $",
     },
   },
 }
@@ -52,14 +43,13 @@ export function HoverCardRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <HoverCard dir={dir}>
-      <HoverCardTrigger delay={10} closeDelay={100} asChild>
+    <HoverCard openDelay={10} closeDelay={100}>
+      <HoverCardTrigger asChild>
         <Button variant="link">{t.trigger}</Button>
       </HoverCardTrigger>
-      <HoverCardContent className="flex w-64 flex-col gap-0.5" dir={dir}>
-        <div className="font-semibold">{t.username}</div>
-        <div>{t.description}</div>
-        <div className="text-muted-foreground mt-1 text-xs">{t.joined}</div>
+      <HoverCardContent className="flex w-64 flex-col gap-1" dir={dir}>
+        <div className="font-semibold">{t.name}</div>
+        <div className="text-muted-foreground text-sm">{t.price}</div>
       </HoverCardContent>
     </HoverCard>
   )

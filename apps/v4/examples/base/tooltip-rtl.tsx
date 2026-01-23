@@ -41,12 +41,12 @@ export function TooltipRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Tooltip dir={dir}>
-      <TooltipTrigger render={<Button variant="outline" />}>
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="outline" />} dir={dir}>
         {t.trigger}
       </TooltipTrigger>
       <TooltipContent dir={dir}>
-        <p>{t.content}</p>
+        {t.content}
       </TooltipContent>
     </Tooltip>
   )
