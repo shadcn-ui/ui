@@ -77,7 +77,10 @@ function MenubarContent({
       align={align}
       alignOffset={alignOffset}
       sideOffset={sideOffset}
-      className={cn("cn-menubar-content cn-menu-target", className)}
+      className={cn(
+        "cn-menubar-content cn-menubar-content-logical cn-menu-target",
+        className
+      )}
       {...props}
     />
   )

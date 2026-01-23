@@ -14,7 +14,7 @@ function Menubar({
     <MenubarPrimitive.Root
       data-slot="menubar"
       className={cn(
-        "bg-background flex h-8 items-center gap-0.5 rounded-lg border p-1",
+        "bg-background flex h-8 items-center gap-0.5 rounded-lg border p-[3px]",
         className
       )}
       {...props}
@@ -56,7 +56,7 @@ function MenubarTrigger({
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       className={cn(
-        "hover:bg-muted aria-expanded:bg-muted flex items-center rounded-sm px-1.5 py-px text-sm font-medium outline-hidden select-none",
+        "hover:bg-muted aria-expanded:bg-muted flex items-center rounded-sm px-1.5 py-[2px] text-sm font-medium outline-hidden select-none",
         className
       )}
       {...props}
