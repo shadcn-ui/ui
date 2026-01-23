@@ -38,6 +38,7 @@ export default function MenubarExample() {
     <ExampleWrapper>
       <MenubarBasic />
       <MenubarWithSubmenu />
+      <MenubarSides />
       <MenubarWithCheckboxes />
       <MenubarWithRadio />
       <MenubarWithIcons />
@@ -86,6 +87,40 @@ function MenubarBasic() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
+    </Example>
+  )
+}
+
+function MenubarSides() {
+  return (
+    <Example title="Sides" containerClassName="col-span-2">
+      <div className="flex flex-wrap justify-center gap-2">
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
+          <Menubar key={side}>
+            <MenubarMenu>
+              <MenubarTrigger className="capitalize">
+                {side.replace("-", " ")}
+              </MenubarTrigger>
+              <MenubarContent side={side}>
+                <MenubarGroup>
+                  <MenubarItem>New Tab</MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarItem>New Incognito Window</MenubarItem>
+                </MenubarGroup>
+              </MenubarContent>
+            </MenubarMenu>
+          </Menubar>
+        ))}
+      </div>
     </Example>
   )
 }
