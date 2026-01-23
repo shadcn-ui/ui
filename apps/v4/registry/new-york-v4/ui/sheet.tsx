@@ -48,13 +48,20 @@ function SheetContent({
   className,
   children,
   side = "right",
+  withOverlay = true,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
   side?: "top" | "right" | "bottom" | "left"
+  /**
+   * When false, the visual overlay is not rendered. Focus trap, scroll lock,
+   * aria-hiding, and other dialog behaviors remain intact.
+   * See: https://github.com/shadcn-ui/ui/issues/8493
+   */
+  withOverlay?: boolean
 }) {
   return (
     <SheetPortal>
-      <SheetOverlay />
+      {withOverlay !== false && <SheetOverlay />}
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
