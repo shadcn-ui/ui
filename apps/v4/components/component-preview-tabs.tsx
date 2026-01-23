@@ -3,9 +3,6 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { DirectionProvider as BaseDirectionProvider } from "@/registry/bases/base/ui/direction"
-import { DirectionProvider as RadixDirectionProvider } from "@/registry/bases/radix/ui/direction"
-import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   LanguageProvider,
   LanguageSelector,
@@ -13,6 +10,9 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
+import { DirectionProvider as BaseDirectionProvider } from "@/registry/bases/base/ui/direction"
+import { DirectionProvider as RadixDirectionProvider } from "@/registry/bases/radix/ui/direction"
+import { Button } from "@/registry/new-york-v4/ui/button"
 
 export function ComponentPreviewTabs({
   className,
@@ -52,15 +52,15 @@ export function ComponentPreviewTabs({
       {direction === "rtl" ? (
         <LanguageProvider defaultLanguage="ar">
           <RtlLanguageSelector />
-            <PreviewWrapper
-              align={align}
-              chromeLessOnMobile={chromeLessOnMobile}
-              previewClassName={previewClassName}
-            >
-              <DirectionProviderWrapper base={base}>
+          <PreviewWrapper
+            align={align}
+            chromeLessOnMobile={chromeLessOnMobile}
+            previewClassName={previewClassName}
+          >
+            <DirectionProviderWrapper base={base}>
               {component}
-              </DirectionProviderWrapper>
-            </PreviewWrapper>
+            </DirectionProviderWrapper>
+          </PreviewWrapper>
         </LanguageProvider>
       ) : (
         <DirectionProviderWrapper base={base} dir="ltr">
@@ -76,39 +76,39 @@ export function ComponentPreviewTabs({
       )}
       {!hideCode && (
         <div
-            data-slot="code"
-            data-mobile-code-visible={isMobileCodeVisible}
-            className="relative overflow-hidden [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
-          >
-            {isMobileCodeVisible ? (
-              source
-            ) : (
-              <div className="relative">
-                {sourcePreview}
-                <div className="absolute inset-0 flex items-center justify-center pb-4">
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(to top, var(--color-code), color-mix(in oklab, var(--color-code) 60%, transparent), transparent)",
-                    }}
-                  />
-                  <Button
-                    type="button"
-                    size="sm"
-                    variant="outline"
-                    className="bg-background text-foreground dark:bg-background dark:text-foreground hover:bg-muted dark:hover:bg-muted relative z-10"
-                    onClick={() => {
-                      setIsMobileCodeVisible(true)
-                    }}
-                  >
-                    View Code
-                  </Button>
-                </div>
+          data-slot="code"
+          data-mobile-code-visible={isMobileCodeVisible}
+          className="relative overflow-hidden [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
+        >
+          {isMobileCodeVisible ? (
+            source
+          ) : (
+            <div className="relative">
+              {sourcePreview}
+              <div className="absolute inset-0 flex items-center justify-center pb-4">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, var(--color-code), color-mix(in oklab, var(--color-code) 60%, transparent), transparent)",
+                  }}
+                />
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  className="bg-background text-foreground dark:bg-background dark:text-foreground hover:bg-muted dark:hover:bg-muted relative z-10"
+                  onClick={() => {
+                    setIsMobileCodeVisible(true)
+                  }}
+                >
+                  View Code
+                </Button>
               </div>
-            )}
-          </div>
-        )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
@@ -193,9 +193,7 @@ function DirectionProviderWrapper({
 
   if (base === "base") {
     return (
-      <BaseDirectionProvider direction={dir}>
-        {children}
-      </BaseDirectionProvider>
+      <BaseDirectionProvider direction={dir}>{children}</BaseDirectionProvider>
     )
   }
 

@@ -33,7 +33,7 @@ function ContextMenuContent({
   className,
   align = "start",
   alignOffset = 4,
-  side = "right",
+  side = "inline-end",
   sideOffset = 0,
   ...props
 }: ContextMenuPrimitive.Popup.Props &
@@ -143,7 +143,7 @@ function ContextMenuSubTrigger({
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
-        className="ml-auto"
+        className="ml-auto rtl:rotate-180"
       />
     </ContextMenuPrimitive.SubmenuTrigger>
   )
@@ -156,7 +156,7 @@ function ContextMenuSubContent({
     <ContextMenuContent
       data-slot="context-menu-sub-content"
       className="shadow-lg"
-      side="right"
+      side="inline-end"
       {...props}
     />
   )

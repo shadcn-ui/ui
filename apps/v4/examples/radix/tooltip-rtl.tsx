@@ -44,9 +44,7 @@ export function TooltipRtl() {
       <TooltipTrigger asChild>
         <Button variant="outline">{t.trigger}</Button>
       </TooltipTrigger>
-      <TooltipContent>
-        {t.content}
-      </TooltipContent>
+      <TooltipContent>{t.content}</TooltipContent>
     </Tooltip>
   )
 }

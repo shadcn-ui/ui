@@ -51,7 +51,11 @@ export function HoverCardRtl() {
       >
         {t.trigger}
       </HoverCardTrigger>
-      <HoverCardContent side="inline-start" className="flex w-64 flex-col gap-1" dir={dir}>
+      <HoverCardContent
+        side="inline-start"
+        className="flex w-64 flex-col gap-1"
+        dir={dir}
+      >
         <div className="font-semibold">{t.name}</div>
         <div className="text-muted-foreground text-sm">{t.price}</div>
       </HoverCardContent>

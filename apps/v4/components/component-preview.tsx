@@ -29,8 +29,12 @@ export function ComponentPreview({
   direction?: "ltr" | "rtl"
   caption?: string
 }) {
-  const translationDisclaimer = direction === "rtl" ? "Automatic translation may contain errors." : undefined
-  const finalCaption = [caption, translationDisclaimer].filter(Boolean).join(" ") || undefined
+  const translationDisclaimer =
+    direction === "rtl"
+      ? "Automatic translation may contain errors."
+      : undefined
+  const finalCaption =
+    [caption, translationDisclaimer].filter(Boolean).join(" ") || undefined
 
   if (type === "block") {
     const content = (
@@ -59,7 +63,7 @@ export function ComponentPreview({
       return (
         <figure className="flex flex-col gap-4">
           {content}
-          <figcaption className="text-center text-sm text-muted-foreground">
+          <figcaption className="text-muted-foreground text-center text-sm">
             {finalCaption}
           </figcaption>
         </figure>
@@ -114,9 +118,12 @@ export function ComponentPreview({
 
   if (finalCaption) {
     return (
-      <figure data-hide-code={hideCode} className="flex flex-col data-[hide-code=true]:gap-4">
+      <figure
+        data-hide-code={hideCode}
+        className="flex flex-col data-[hide-code=true]:gap-4"
+      >
         {content}
-        <figcaption className="text-center text-sm text-muted-foreground data-[hide-code=true]:mt-0 -mt-8">
+        <figcaption className="text-muted-foreground -mt-8 text-center text-sm data-[hide-code=true]:mt-0">
           {finalCaption}
         </figcaption>
       </figure>

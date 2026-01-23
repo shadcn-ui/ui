@@ -1,5 +1,6 @@
 "use client"
 
+import * as React from "react"
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -16,7 +17,6 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/examples/radix/ui-rtl/menubar"
-import * as React from "react"
 
 import {
   useTranslation,

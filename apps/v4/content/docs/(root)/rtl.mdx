@@ -3,7 +3,6 @@ title: "RTL"
 description: "RTL documentation"
 ---
 
-
 ## Overview
 
 RTL is a feature that allows you to display content from right to left.
@@ -69,14 +68,14 @@ className={cn(
 
 Replace physical positioning classes with logical equivalents:
 
-| Before | After |
-|--------|-------|
-| `group-data-[side=left]:-right-4` | `group-data-[side=left]:-end-4` |
-| `group-data-[side=right]:left-0` | `group-data-[side=right]:start-0` |
-| `after:left-1/2` | `after:start-1/2` |
-| `after:left-full` | `after:start-full` |
-| `-right-2` | `-end-2` |
-| `-left-2` | `-start-2` |
+| Before                            | After                             |
+| --------------------------------- | --------------------------------- |
+| `group-data-[side=left]:-right-4` | `group-data-[side=left]:-end-4`   |
+| `group-data-[side=right]:left-0`  | `group-data-[side=right]:start-0` |
+| `after:left-1/2`                  | `after:start-1/2`                 |
+| `after:left-full`                 | `after:start-full`                |
+| `-right-2`                        | `-end-2`                          |
+| `-left-2`                         | `-start-2`                        |
 
 ### Usage
 
