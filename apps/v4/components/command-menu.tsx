@@ -30,6 +30,7 @@ import {
   Dialog,
   DialogDescription,
   DialogHeader,
+  DialogOverlay,
   DialogPortal,
   DialogTitle,
   DialogTrigger,
@@ -534,10 +535,7 @@ function DialogContent({
 }) {
   return (
     <DialogPortal data-slot="dialog-portal">
-      <DialogPrimitive.Overlay
-        data-slot="dialog-overlay"
-        className="fixed inset-0 z-50 bg-black/50"
-      />
+      <DialogOverlay />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
