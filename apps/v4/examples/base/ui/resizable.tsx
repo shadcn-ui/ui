@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { cn } from "@/examples/base/lib/utils"
-
 import { Group, Panel, Separator } from "react-resizable-panels"
 
 function ResizablePanelGroup({
