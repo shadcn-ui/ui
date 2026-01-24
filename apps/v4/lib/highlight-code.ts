@@ -1,5 +1,14 @@
+import { createHash } from "crypto"
+import { LRUCache } from "lru-cache"
 import { codeToHtml } from "shiki"
 import type { ShikiTransformer } from "shiki"
+
+// LRU cache for cross-request caching of highlighted code.
+// Shiki highlighting is CPU-intensive and deterministic, so caching is safe.
+const highlightCache = new LRUCache<string, string>({
+  max: 500,
+  ttl: 1000 * 60 * 60, // 1 hour.
+})
 
 export const transformers = [
   {
@@ -57,6 +66,17 @@ export const transformers = [
 ] as ShikiTransformer[]
 
 export async function highlightCode(code: string, language: string = "tsx") {
+  // Create cache key from code content and language.
+  const cacheKey = createHash("sha256")
+    .update(`${language}:${code}`)
+    .digest("hex")
+
+  // Check cache first.
+  const cached = highlightCache.get(cacheKey)
+  if (cached) {
+    return cached
+  }
+
   const html = await codeToHtml(code, {
     lang: language,
     themes: {
@@ -67,7 +87,7 @@ export async function highlightCode(code: string, language: string = "tsx") {
       {
         pre(node) {
           node.properties["class"] =
-            "no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 !bg-transparent"
+            "no-scrollbar min-w-0 overflow-x-auto overscroll-none px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 !bg-transparent"
         },
         code(node) {
           node.properties["data-line-numbers"] = ""
@@ -78,6 +98,9 @@ export async function highlightCode(code: string, language: string = "tsx") {
       },
     ],
   })
+
+  // Cache the result.
+  highlightCache.set(cacheKey, html)
 
   return html
 }

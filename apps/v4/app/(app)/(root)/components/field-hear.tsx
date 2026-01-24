@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/registry/new-york-v4/ui/card"
-import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
+import { Card, CardContent } from "@/examples/radix/ui/card"
+import { Checkbox } from "@/examples/radix/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -8,7 +8,7 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/registry/new-york-v4/ui/field"
+} from "@/examples/radix/ui/field"
 
 const options = [
   {
