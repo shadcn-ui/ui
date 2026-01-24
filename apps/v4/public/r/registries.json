@@ -450,6 +450,12 @@
     "description": "A growing collection of high-quality blocks and themes for shadcn/ui."
   },
   {
+    "name": "@shadcnstore",
+    "homepage": "https://www.shadcnstore.com",
+    "url": "https://shadcnstore.com/r/{name}.json",
+    "description": "An open-source collection of shadcn/ui components, blocks, and templates for building modern web apps."
+  },
+  {
     "name": "@shadcn-map",
     "homepage": "https://shadcn-map.vercel.app",
     "url": "http://shadcn-map.vercel.app/r/{name}.json",
