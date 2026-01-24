@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/base-nova/ui/direction.tsx",
-      "content": "\"use client\"\n\nexport {\n  DirectionProvider,\n  useDirection,\n} from \"@base-ui/react/direction-provider\"\n",
+      "content": "export {\n  DirectionProvider,\n  useDirection,\n} from \"@base-ui/react/direction-provider\"\n",
       "type": "registry:ui"
     }
   ],
