@@ -79,7 +79,10 @@ export default async function Page(props: {
 
   const doc = page.data
   const MDX = doc.body
-  const neighbours = findNeighbour(source.pageTree, page.url)
+  const isChangelog = params.slug?.[0] === "changelog"
+  const neighbours = isChangelog
+    ? { previous: null, next: null }
+    : findNeighbour(source.pageTree, page.url)
   const raw = await page.data.getText("raw")
 
   return (

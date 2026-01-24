@@ -245,10 +245,7 @@ async function buildBases(bases: Base[]) {
             // Transform import paths from base to style-specific paths.
             // e.g., @/registry/bases/radix/ui/button -> @/registry/radix-nova/ui/button
             transformedContent = transformedContent.replace(
-              new RegExp(
-                `@/registry/bases/${base.name}/`,
-                "g"
-              ),
+              new RegExp(`@/registry/bases/${base.name}/`, "g"),
               `@/registry/${base.name}-${style.name}/`
             )
           }

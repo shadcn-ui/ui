@@ -1,0 +1,68 @@
+---
+title: December 2023 - New Components
+description: Carousel, Drawer, Pagination, Resizable, Sonner, and CLI updates.
+date: 2023-12-22
+---
+
+We've added new components to shadcn/ui and made a lot of improvements to the CLI.
+
+Here's a quick overview of what's new:
+
+- [**Carousel**](#carousel) - A carousel component with motion, swipe gestures and keyboard support.
+- [**Drawer**](#drawer) - A drawer component that looks amazing on mobile.
+- [**Pagination**](#pagination) - A pagination component with page navigation, previous and next buttons.
+- [**Resizable**](#resizable) - A resizable component for building resizable panel groups and layouts.
+- [**Sonner**](#sonner) - The last toast component you'll ever need.
+- [**CLI updates**](#cli-updates) - Support for custom **Tailwind prefix** and `tailwind.config.ts`.
+
+### Carousel
+
+We've added a fully featured carousel component with motion, swipe gestures and keyboard support. Built on top of [Embla Carousel](https://www.embla-carousel.com).
+
+It has support for infinite looping, autoplay, vertical orientation, and more.
+
+<ComponentPreview name="carousel-demo" />
+
+### Drawer
+
+Oh the drawer component. Built on top of [Vaul](https://github.com/emilkowalski/vaul) by [emilkowalski](https://twitter.com/emilkowalski).
+
+Try opening the following drawer on mobile. It looks amazing!
+
+<ComponentPreview name="drawer-demo" />
+
+### Pagination
+
+We've added a pagination component with page navigation, previous and next buttons. Simple, flexible and works with your framework's `<Link />` component.
+
+<ComponentPreview name="pagination-demo" />
+
+### Resizable
+
+Build resizable panel groups and layouts with this `<Resizable />` component.
+
+<ComponentPreview name="resizable-demo-with-handle" />
+
+`<Resizable />` is built using [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels) by [bvaughn](https://github.com/bvaughn). It has support for mouse, touch and keyboard.
+
+### Sonner
+
+Another one by [emilkowalski](https://twitter.com/emilkowalski). The last toast component you'll ever need. Sonner is now availabe in shadcn/ui.
+
+<ComponentPreview name="sonner-demo" />
+
+### CLI updates
+
+This has been one of the most requested features. You can now configure a custom Tailwind prefix and the cli will automatically prefix your utility classes when adding components.
+
+This means you can now easily add shadcn/ui components to existing projects like Docusaurus, Nextra...etc. A drop-in for your existing design system with no conflict.
+
+```tsx /tw-/
+<AlertDialog className="tw-grid tw-gap-4 tw-border tw-bg-background tw-shadow-lg" />
+```
+
+It works with `cn`, `cva` and CSS variables.
+
+The cli can now also detect `tailwind.config.ts` and add the TypeScript version of the config for you.
+
+That's it. Happy Holidays.

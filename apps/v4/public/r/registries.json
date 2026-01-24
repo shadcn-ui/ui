@@ -50,7 +50,7 @@
   {
     "name": "@ai-elements",
     "homepage": "https://ai-sdk.dev/elements",
-    "url": "https://registry.ai-sdk.dev/{name}.json",
+    "url": "https://ai-sdk.dev/elements/api/registry/{name}.json",
     "description": "Pre-built components like conversations, messages and more to help you build AI-native applications faster."
   },
   {
