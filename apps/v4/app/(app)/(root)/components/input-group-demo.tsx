@@ -1,12 +1,9 @@
-import { IconCheck, IconInfoCircle, IconPlus } from "@tabler/icons-react"
-import { ArrowUpIcon, Search } from "lucide-react"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/new-york-v4/ui/dropdown-menu"
+} from "@/examples/radix/ui/dropdown-menu"
 import {
   InputGroup,
   InputGroupAddon,
@@ -14,13 +11,15 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/new-york-v4/ui/input-group"
-import { Separator } from "@/registry/new-york-v4/ui/separator"
+} from "@/examples/radix/ui/input-group"
+import { Separator } from "@/examples/radix/ui/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
+} from "@/examples/radix/ui/tooltip"
+import { IconCheck, IconInfoCircle, IconPlus } from "@tabler/icons-react"
+import { ArrowUpIcon, Search } from "lucide-react"
 
 export function InputGroupDemo() {
   return (

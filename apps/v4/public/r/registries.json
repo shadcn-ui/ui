@@ -50,7 +50,7 @@
   {
     "name": "@ai-elements",
     "homepage": "https://ai-sdk.dev/elements",
-    "url": "https://registry.ai-sdk.dev/{name}.json",
+    "url": "https://ai-sdk.dev/elements/api/registry/{name}.json",
     "description": "Pre-built components like conversations, messages and more to help you build AI-native applications faster."
   },
   {
@@ -346,6 +346,12 @@
     "homepage": "https://ui.paceui.com",
     "url": "https://ui.paceui.com/r/{name}.json",
     "description": "Animated components and building blocks built for smooth interaction and rich detail. Copy, customise, and create without the extra setup."
+  },
+  {
+    "name": "@pastecn",
+    "homepage": "https://pastecn.com",
+    "url": "https://pastecn.com/r/{name}",
+    "description": "pastebin + shadcn = pastecn. Paste your code and get a shadcn-compatible registry URL instantly."
   },
   {
     "name": "@paykit-sdk",

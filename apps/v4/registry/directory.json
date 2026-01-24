@@ -58,7 +58,7 @@
   {
     "name": "@ai-elements",
     "homepage": "https://ai-sdk.dev/elements",
-    "url": "https://registry.ai-sdk.dev/{name}.json",
+    "url": "https://ai-sdk.dev/elements/api/registry/{name}.json",
     "description": "Pre-built components like conversations, messages and more to help you build AI-native applications faster.",
     "logo": "<svg stroke-linejoin='round' viewBox='0 0 16 16' width='18' style='color:currentcolor'><path fill-rule='evenodd' clip-rule='evenodd' d='M8 1L16 15H0L8 1Z' fill='currentColor'></path></svg>"
   },
@@ -404,6 +404,13 @@
     "url": "https://ui.paceui.com/r/{name}.json",
     "description": "Animated components and building blocks built for smooth interaction and rich detail. Copy, customise, and create without the extra setup.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' fill='none' viewBox='0 0 512 512'><g clip-path='url(#clip0_832_289)'><path fill='var(--foregorund)' d='M256 0C51.2 0 0 51.2 0 256s51.2 256 256 256 256-51.2 256-256S460.8 0 256 0'/><path stroke='var(--background)' stroke-width='24' d='M381.631 89.102 156.848 226.934c-1.77 1.101-3.439 2.653-4.844 4.505s-2.5 3.94-3.177 6.062c-.673 2.062-.875 4.084-.584 5.83.288 1.658 1.077 2.946 2.257 3.686l98.286 32.478-122.2 137.576a7.9 7.9 0 0 0-1.306 2.72c-.234.895-.22 1.742.04 2.404q.369 1.032 1.341 1.214c.64.125 1.387-.039 2.127-.468l224.795-137.85c1.77-1.102 3.438-2.654 4.844-4.506 1.405-1.852 2.5-3.94 3.177-6.061.666-2.057.864-4.072.571-5.813-.282-1.663-1.066-2.957-2.245-3.704l-87.131-44.529L383.845 94.953a7.9 7.9 0 0 0 1.306-2.72c.233-.895.219-1.741-.04-2.404-.257-.632-.727-1.058-1.341-1.214-.641-.125-1.4.058-2.139.487Z'/></g></svg>"
+  },
+  {
+    "name": "@pastecn",
+    "homepage": "https://pastecn.com",
+    "url": "https://pastecn.com/r/{name}",
+    "description": "pastebin + shadcn = pastecn. Paste your code and get a shadcn-compatible registry URL instantly.",
+    "logo": "<svg width='32' height='32' viewBox='0 0 180 180' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_2_12)'><mask id='mask0_2_12' style='mask-type:luminance' maskUnits='userSpaceOnUse' x='0' y='0' width='180' height='180'><path d='M180 0H0V180H180V0Z' fill='white'/></mask><g mask='url(#mask0_2_12)'><path d='M143 0H37C16.5655 0 0 16.5655 0 37V143C0 163.435 16.5655 180 37 180H143C163.435 180 180 163.435 180 143V37C180 16.5655 163.435 0 143 0Z' fill='var(--foreground)'/><path d='M85.784 116.76C83.48 116.76 81.4747 116.077 79.768 114.712C78.1467 113.261 77.1653 110.616 76.824 106.776C76.6533 103.875 76.2693 100.675 75.672 97.176C75.16 93.6773 74.4773 90.3493 73.624 87.192C72.7707 84.0347 71.7893 81.56 70.68 79.768C70.0827 78.8293 69.4 78.1467 68.632 77.72C67.9493 77.208 66.8827 76.8667 65.432 76.696C64.4933 76.6107 63.8533 76.312 63.512 75.8C63.1707 75.288 63 74.4773 63 73.368C63 69.8693 63.9387 67.3093 65.816 65.688C67.7787 63.9813 69.9973 63.128 72.472 63.128C75.032 63.128 77.1653 63.9813 78.872 65.688C80.5787 67.3093 81.9013 69.4853 82.84 72.216C83.7787 74.9467 84.4187 77.976 84.76 81.304C85.1867 84.5467 85.4 87.832 85.4 91.16C85.4 92.5253 85.3573 93.976 85.272 95.512C85.272 96.9627 85.272 98.2 85.272 99.224C85.272 100.163 85.4427 100.888 85.784 101.4C86.2107 101.912 86.9787 102.168 88.088 102.168C89.4533 102.168 91.032 101.784 92.824 101.016C94.616 100.163 96.3653 98.968 98.072 97.432C99.864 95.896 101.315 94.104 102.424 92.056C103.619 89.9227 104.216 87.576 104.216 85.016C104.216 83.5653 103.96 82.0293 103.448 80.408C103.021 78.7867 102.296 77.4213 101.272 76.312C100.248 75.2027 99.48 74.3493 98.968 73.752C98.5413 73.0693 98.328 72.3013 98.328 71.448C98.328 69.912 99.0107 68.504 100.376 67.224C101.827 65.944 103.491 64.92 105.368 64.152C107.331 63.384 109.037 63 110.488 63C112.963 63 114.541 64.024 115.224 66.072C115.907 68.12 116.248 70.3813 116.248 72.856C116.248 77.5493 115.395 82.456 113.688 87.576C111.981 92.696 109.677 97.4747 106.776 101.912C103.875 106.349 100.589 109.933 96.92 112.664C93.336 115.395 89.624 116.76 85.784 116.76Z' fill='var(--background)'/></g></g><defs><clipPath id='clip0_2_12'><rect width='180' height='180' fill='white'/></clipPath></defs></svg>"
   },
   {
     "name": "@paykit-sdk",

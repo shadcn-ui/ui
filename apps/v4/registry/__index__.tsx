@@ -290,6 +290,25 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "combobox": {
+      name: "combobox",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "registry/new-york-v4/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/combobox.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "command": {
       name: "command",
       title: "undefined",
@@ -8270,253 +8289,6 @@ export const Index: Record<string, Record<string, any>> = {
       }),
       categories: ["calendar","date"],
       meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
-    },
-    "sidebar-demo": {
-      name: "sidebar-demo",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-demo.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-demo.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-header": {
-      name: "sidebar-header",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-header.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-header.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-footer": {
-      name: "sidebar-footer",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-footer.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-footer.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-group": {
-      name: "sidebar-group",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-group.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-group.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-group-collapsible": {
-      name: "sidebar-group-collapsible",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-group-collapsible.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-group-collapsible.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-group-action": {
-      name: "sidebar-group-action",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-group-action.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-group-action.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-menu": {
-      name: "sidebar-menu",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-menu-action": {
-      name: "sidebar-menu-action",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu-action.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu-action.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-menu-sub": {
-      name: "sidebar-menu-sub",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu-sub.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu-sub.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-menu-collapsible": {
-      name: "sidebar-menu-collapsible",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu-collapsible.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu-collapsible.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-menu-badge": {
-      name: "sidebar-menu-badge",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-menu-badge.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-menu-badge.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-rsc": {
-      name: "sidebar-rsc",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-rsc.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-rsc.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    "sidebar-controlled": {
-      name: "sidebar-controlled",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: undefined,
-      files: [{
-        path: "registry/new-york-v4/internal/sidebar-controlled.tsx",
-        type: "registry:component",
-        target: ""
-      }],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/new-york-v4/internal/sidebar-controlled.tsx")
-        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
     },
   },
 }

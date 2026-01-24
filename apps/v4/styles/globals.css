@@ -167,7 +167,7 @@
     @apply bg-selection text-selection-foreground;
   }
   html {
-    @apply overscroll-y-none scroll-smooth;
+    @apply overscroll-y-none;
   }
   body {
     font-synthesis-weight: none;
@@ -225,10 +225,9 @@
 
 @utility step {
   counter-increment: step;
-  @apply relative;
 
   &:before {
-    @apply text-muted-foreground right-0 mr-2 hidden size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
+    @apply border-background bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9 md:border-4;
     content: counter(step);
   }
 }
@@ -250,7 +249,7 @@
     }
 
     > h3 {
-      @apply !mt-16;
+      @apply !mt-8;
     }
 
     > h3 + p {
@@ -261,7 +260,7 @@
   [data-rehype-pretty-code-figure] {
     background-color: var(--color-code);
     color: var(--color-code-foreground);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     border-width: 0px;
     border-color: var(--border);
     margin-top: calc(var(--spacing) * 6);
