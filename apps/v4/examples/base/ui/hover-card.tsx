@@ -1,5 +1,3 @@
-"use client"
-
 import { cn } from "@/examples/base/lib/utils"
 import { PreviewCard as PreviewCardPrimitive } from "@base-ui/react/preview-card"
 

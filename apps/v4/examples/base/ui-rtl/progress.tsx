@@ -1,5 +1,3 @@
-"use client"
-
 import { cn } from "@/examples/base/lib/utils"
 import { Progress as ProgressPrimitive } from "@base-ui/react/progress"
 
