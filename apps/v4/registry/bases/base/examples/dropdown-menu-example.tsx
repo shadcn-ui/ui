@@ -44,6 +44,7 @@ export default function DropdownMenuExample() {
     <ExampleWrapper>
       <DropdownMenuBasic />
       <DropdownMenuComplex />
+      <DropdownMenuSides />
       <DropdownMenuWithIcons />
       <DropdownMenuWithShortcuts />
       <DropdownMenuWithSubmenu />
@@ -80,6 +81,40 @@ function DropdownMenuBasic() {
           <DropdownMenuItem disabled>API</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+    </Example>
+  )
+}
+
+function DropdownMenuSides() {
+  return (
+    <Example title="Sides" containerClassName="col-span-2">
+      <div className="flex flex-wrap justify-center gap-2">
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
+          <DropdownMenu key={side}>
+            <DropdownMenuTrigger
+              render={<Button variant="outline" className="w-fit capitalize" />}
+            >
+              {side.replace("-", " ")}
+            </DropdownMenuTrigger>
+            <DropdownMenuContent side={side}>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Billing</DropdownMenuItem>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ))}
+      </div>
     </Example>
   )
 }
