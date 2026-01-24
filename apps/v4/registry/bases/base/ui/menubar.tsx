@@ -77,7 +77,10 @@ function MenubarContent({
       align={align}
       alignOffset={alignOffset}
       sideOffset={sideOffset}
-      className={cn("cn-menubar-content cn-menu-target", className)}
+      className={cn(
+        "cn-menubar-content cn-menubar-content-logical cn-menu-target",
+        className
+      )}
       {...props}
     />
   )
@@ -122,6 +125,8 @@ function MenubarCheckboxItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -156,6 +161,8 @@ function MenubarRadioItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenuPrimitive.RadioItemIndicator>
       </span>

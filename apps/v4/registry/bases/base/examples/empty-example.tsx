@@ -61,6 +61,8 @@ function EmptyBasic() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRight01Icon"
+              phosphor="ArrowUpRightIcon"
+              remixicon="RiArrowRightUpLine"
             />
           </Button>
         </EmptyContent>
@@ -92,6 +94,8 @@ function EmptyWithMutedBackground() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRight01Icon"
+              phosphor="ArrowUpRightIcon"
+              remixicon="RiArrowRightUpLine"
             />
           </Button>
         </EmptyContent>
@@ -119,6 +123,8 @@ function EmptyWithBorder() {
                 lucide="CircleDashedIcon"
                 tabler="IconCircleDashed"
                 hugeicons="DashedLineCircleIcon"
+                phosphor="CircleDashedIcon"
+                remixicon="RiLoaderLine"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -144,6 +150,8 @@ function EmptyWithIcon() {
               lucide="FolderIcon"
               tabler="IconFolder"
               hugeicons="Folder01Icon"
+              phosphor="FolderIcon"
+              remixicon="RiFolderLine"
             />
           </EmptyMedia>
           <EmptyTitle>Nothing to see here</EmptyTitle>
@@ -158,6 +166,8 @@ function EmptyWithIcon() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             New Post
@@ -187,6 +197,8 @@ function EmptyWithMutedBackgroundAlt() {
                 lucide="CircleDashedIcon"
                 tabler="IconCircleDashed"
                 hugeicons="DashedLineCircleIcon"
+                phosphor="CircleDashedIcon"
+                remixicon="RiLoaderLine"
               />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end">
@@ -212,6 +224,8 @@ function EmptyInCard() {
               lucide="FolderIcon"
               tabler="IconFolder"
               hugeicons="Folder01Icon"
+              phosphor="FolderIcon"
+              remixicon="RiFolderLine"
             />
           </EmptyMedia>
           <EmptyTitle>No projects yet</EmptyTitle>
@@ -238,6 +252,8 @@ function EmptyInCard() {
               lucide="ArrowUpRightIcon"
               tabler="IconArrowUpRight"
               hugeicons="ArrowUpRight01Icon"
+              phosphor="ArrowUpRightIcon"
+              remixicon="RiArrowRightUpLine"
             />
           </Button>
         </EmptyContent>

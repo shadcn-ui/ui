@@ -471,6 +471,8 @@ function DialogChatSettings() {
                                   lucide="InfoIcon"
                                   tabler="IconInfoCircle"
                                   hugeicons="AlertCircleIcon"
+                                  phosphor="InfoIcon"
+                                  remixicon="RiInformationLine"
                                 />
                               </InputGroupButton>
                             </TooltipTrigger>

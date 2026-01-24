@@ -203,6 +203,8 @@ export default function SidebarFloatingExample() {
                         lucide="MoreHorizontalIcon"
                         tabler="IconDots"
                         hugeicons="MoreHorizontalCircle01Icon"
+                        phosphor="DotsThreeOutlineIcon"
+                        remixicon="RiMoreLine"
                         className="ml-auto"
                       />
                     </DropdownMenuTrigger>

@@ -118,6 +118,8 @@ function PromptForm() {
                     lucide="PlusIcon"
                     tabler="IconPlus"
                     hugeicons="PlusSignIcon"
+                    phosphor="PlusIcon"
+                    remixicon="RiAddLine"
                   />
                 </TooltipTrigger>
                 <TooltipContent>
@@ -131,6 +133,8 @@ function PromptForm() {
                       lucide="PaperclipIcon"
                       tabler="IconPaperclip"
                       hugeicons="AttachmentIcon"
+                      phosphor="PaperclipIcon"
+                      remixicon="RiAttachmentLine"
                     />
                     Add photos & files
                   </DropdownMenuItem>
@@ -139,6 +143,8 @@ function PromptForm() {
                       lucide="SparklesIcon"
                       tabler="IconSparkles"
                       hugeicons="SparklesIcon"
+                      phosphor="SparkleIcon"
+                      remixicon="RiSparklingLine"
                     />
                     Deep research
                   </DropdownMenuItem>
@@ -147,6 +153,8 @@ function PromptForm() {
                       lucide="ShoppingBagIcon"
                       tabler="IconShoppingBag"
                       hugeicons="ShoppingBag01Icon"
+                      phosphor="BagIcon"
+                      remixicon="RiShoppingBagLine"
                     />
                     Shopping research
                   </DropdownMenuItem>
@@ -155,6 +163,8 @@ function PromptForm() {
                       lucide="WandIcon"
                       tabler="IconWand"
                       hugeicons="MagicWand05Icon"
+                      phosphor="MagicWandIcon"
+                      remixicon="RiMagicLine"
                     />
                     Create image
                   </DropdownMenuItem>
@@ -166,6 +176,8 @@ function PromptForm() {
                             lucide="MousePointerIcon"
                             tabler="IconPointer"
                             hugeicons="Cursor01Icon"
+                            phosphor="HandPointingIcon"
+                            remixicon="RiHand"
                           />
                           Agent mode
                         </DropdownMenuItem>
@@ -185,6 +197,8 @@ function PromptForm() {
                       lucide="MoreHorizontalIcon"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
+                      phosphor="DotsThreeOutlineIcon"
+                      remixicon="RiMoreLine"
                     />
                     More
                   </DropdownMenuSubTrigger>
@@ -196,6 +210,8 @@ function PromptForm() {
                             lucide="ShareIcon"
                             tabler="IconShare"
                             hugeicons="Share03Icon"
+                            phosphor="ShareIcon"
+                            remixicon="RiShareLine"
                           />
                           Add sources
                         </DropdownMenuItem>
@@ -204,6 +220,8 @@ function PromptForm() {
                             lucide="BookOpenIcon"
                             tabler="IconBook"
                             hugeicons="BookIcon"
+                            phosphor="BookOpenIcon"
+                            remixicon="RiBookOpenLine"
                           />
                           Study and learn
                         </DropdownMenuItem>
@@ -212,6 +230,8 @@ function PromptForm() {
                             lucide="GlobeIcon"
                             tabler="IconWorld"
                             hugeicons="GlobalIcon"
+                            phosphor="GlobeIcon"
+                            remixicon="RiGlobeLine"
                           />
                           Web search
                         </DropdownMenuItem>
@@ -220,6 +240,8 @@ function PromptForm() {
                             lucide="PenToolIcon"
                             tabler="IconPencil"
                             hugeicons="PenIcon"
+                            phosphor="PencilIcon"
+                            remixicon="RiPencilLine"
                           />
                           Canvas
                         </DropdownMenuItem>
@@ -244,6 +266,8 @@ function PromptForm() {
                   lucide="AudioLinesIcon"
                   tabler="IconMicrophone"
                   hugeicons="AudioWave01Icon"
+                  phosphor="MicrophoneIcon"
+                  remixicon="RiMicLine"
                 />
               </TooltipTrigger>
               <TooltipContent>Dictate</TooltipContent>
@@ -257,6 +281,8 @@ function PromptForm() {
                 lucide="ArrowUpIcon"
                 tabler="IconArrowUp"
                 hugeicons="ArrowUp02Icon"
+                phosphor="ArrowUpIcon"
+                remixicon="RiArrowUpLine"
               />
             </InputGroupButton>
           </InputGroupAddon>
@@ -281,6 +307,8 @@ function ModelSelector() {
             lucide="ChevronDownIcon"
             tabler="IconChevronDown"
             hugeicons="ArrowDown01Icon"
+            phosphor="CaretDownIcon"
+            remixicon="RiArrowDownSLine"
             className="text-muted-foreground size-4"
           />
         </DropdownMenuTrigger>
@@ -435,6 +463,8 @@ function CreateProjectForm() {
                   lucide="SettingsIcon"
                   tabler="IconSettings"
                   hugeicons="Settings01Icon"
+                  phosphor="GearIcon"
+                  remixicon="RiSettingsLine"
                 />
                 <span className="sr-only">Memory</span>
               </DropdownMenuTrigger>
@@ -509,6 +539,8 @@ function CreateProjectForm() {
                         lucide="FolderIcon"
                         tabler="IconFolder"
                         hugeicons="FolderIcon"
+                        phosphor="FolderIcon"
+                        remixicon="RiFolderLine"
                         className="text-(--color)"
                       />
                     </PopoverTrigger>
@@ -570,6 +602,8 @@ function CreateProjectForm() {
                       lucide="CircleCheckIcon"
                       tabler="IconCircleCheck"
                       hugeicons="CheckmarkCircle02Icon"
+                      phosphor="CheckCircleIcon"
+                      remixicon="RiCheckboxCircleLine"
                       data-icon="inline-start"
                       className="hidden group-data-[checked=true]/badge:inline"
                     />
@@ -584,6 +618,8 @@ function CreateProjectForm() {
                   lucide="LightbulbIcon"
                   tabler="IconBulb"
                   hugeicons="BulbIcon"
+                  phosphor="LightbulbIcon"
+                  remixicon="RiLightbulbLine"
                 />
                 <AlertDescription className="text-xs">
                   Projects keep chats, files, and custom instructions in one

@@ -87,6 +87,8 @@ function BreadcrumbSeparator({
           lucide="ChevronRightIcon"
           tabler="IconChevronRight"
           hugeicons="ArrowRight01Icon"
+          phosphor="CaretRightIcon"
+          remixicon="RiArrowRightSLine"
         />
       )}
     </li>
@@ -112,6 +114,8 @@ function BreadcrumbEllipsis({
         lucide="MoreHorizontalIcon"
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
+        phosphor="DotsThreeIcon"
+        remixicon="RiMoreLine"
       />
       <span className="sr-only">More</span>
     </span>

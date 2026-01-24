@@ -45,7 +45,7 @@ const chartConfig = {
 export function ChartRadarLegend() {
   return (
     <Card>
-      <CardHeader className="items-center pb-4">
+      <CardHeader className="items-center">
         <CardTitle>Radar Chart - Legend</CardTitle>
         <CardDescription>
           Showing total visitors for the last 6 months

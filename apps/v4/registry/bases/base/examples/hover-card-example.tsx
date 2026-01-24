@@ -26,12 +26,19 @@ export default function HoverCardExample() {
   )
 }
 
-const HOVER_CARD_SIDES = ["top", "right", "bottom", "left"] as const
+const HOVER_CARD_SIDES = [
+  "inline-start",
+  "left",
+  "top",
+  "bottom",
+  "right",
+  "inline-end",
+] as const
 
 function HoverCardSides() {
   return (
-    <Example title="Sides">
-      <div className="flex flex-wrap items-center justify-center gap-4">
+    <Example title="Sides" containerClassName="col-span-2">
+      <div className="flex flex-wrap items-center justify-center gap-2">
         {HOVER_CARD_SIDES.map((side) => (
           <HoverCard key={side}>
             <HoverCardTrigger
@@ -39,13 +46,14 @@ function HoverCardSides() {
               closeDelay={100}
               render={<Button variant="outline" className="capitalize" />}
             >
-              {side}
+              {side.replace("-", " ")}
             </HoverCardTrigger>
             <HoverCardContent side={side}>
               <div className="style-lyra:gap-1 style-nova:gap-1.5 style-vega:gap-2 style-maia:gap-2 style-mira:gap-1 flex flex-col">
                 <h4 className="font-medium">Hover Card</h4>
                 <p>
-                  This hover card appears on the {side} side of the trigger.
+                  This hover card appears on the {side.replace("-", " ")} side
+                  of the trigger.
                 </p>
               </div>
             </HoverCardContent>

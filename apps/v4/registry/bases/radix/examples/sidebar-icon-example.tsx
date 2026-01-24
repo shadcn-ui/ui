@@ -80,6 +80,8 @@ export default function SidebarIconExample() {
             lucide="TerminalSquareIcon"
             tabler="IconTerminal2"
             hugeicons="ComputerTerminalIcon"
+            phosphor="TerminalIcon"
+            remixicon="RiTerminalBoxLine"
           />
         ),
         isActive: true,
@@ -106,6 +108,8 @@ export default function SidebarIconExample() {
             lucide="BotIcon"
             tabler="IconRobot"
             hugeicons="RoboticIcon"
+            phosphor="RobotIcon"
+            remixicon="RiRobotLine"
           />
         ),
         items: [
@@ -131,6 +135,8 @@ export default function SidebarIconExample() {
             lucide="BookOpen"
             tabler="IconBook"
             hugeicons="BookOpen02Icon"
+            phosphor="BookOpenIcon"
+            remixicon="RiBookOpenLine"
           />
         ),
         items: [
@@ -160,6 +166,8 @@ export default function SidebarIconExample() {
             lucide="Settings2Icon"
             tabler="IconSettings"
             hugeicons="Settings05Icon"
+            phosphor="GearIcon"
+            remixicon="RiSettingsLine"
           />
         ),
         items: [
@@ -191,6 +199,8 @@ export default function SidebarIconExample() {
             lucide="FrameIcon"
             tabler="IconFrame"
             hugeicons="CropIcon"
+            phosphor="CropIcon"
+            remixicon="RiCropLine"
           />
         ),
       },
@@ -202,6 +212,8 @@ export default function SidebarIconExample() {
             lucide="PieChartIcon"
             tabler="IconChartPie"
             hugeicons="PieChartIcon"
+            phosphor="ChartPieIcon"
+            remixicon="RiPieChartLine"
           />
         ),
       },
@@ -213,6 +225,8 @@ export default function SidebarIconExample() {
             lucide="MapIcon"
             tabler="IconMap"
             hugeicons="MapsIcon"
+            phosphor="MapTrifoldIcon"
+            remixicon="RiMapLine"
           />
         ),
       },
@@ -277,6 +291,8 @@ export default function SidebarIconExample() {
                       lucide="ChevronsUpDownIcon"
                       tabler="IconSelector"
                       hugeicons="UnfoldMoreIcon"
+                      phosphor="CaretUpDownIcon"
+                      remixicon="RiArrowUpDownLine"
                     />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
@@ -317,6 +333,8 @@ export default function SidebarIconExample() {
                           lucide="ChevronRightIcon"
                           tabler="IconChevronRight"
                           hugeicons="ArrowRight01Icon"
+                          phosphor="CaretRightIcon"
+                          remixicon="RiArrowRightSLine"
                           className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
                         />
                       </CollapsibleTrigger>
@@ -381,6 +399,8 @@ export default function SidebarIconExample() {
                       lucide="ChevronsUpDownIcon"
                       tabler="IconSelector"
                       hugeicons="UnfoldMoreIcon"
+                      phosphor="CaretUpDownIcon"
+                      remixicon="RiArrowUpDownLine"
                     />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>

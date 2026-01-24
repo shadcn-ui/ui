@@ -113,6 +113,8 @@ function CardMeetingNotes() {
                 lucide="CaptionsIcon"
                 tabler="IconTextCaption"
                 hugeicons="TextCheckIcon"
+                phosphor="TextTIcon"
+                remixicon="RiTextWrap"
                 data-icon="inline-start"
               />
               Transcribe
@@ -183,6 +185,8 @@ function CardWithImage() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="Add01Icon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             Button
@@ -216,6 +220,8 @@ function CardWithImageSmall() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="Add01Icon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-start"
             />
             Button

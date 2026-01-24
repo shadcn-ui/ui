@@ -35,6 +35,8 @@ function ComboboxTrigger({
         lucide="ChevronDownIcon"
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
+        phosphor="CaretDownIcon"
+        remixicon="RiArrowDownSLine"
         className="cn-combobox-trigger-icon pointer-events-none"
       />
     </ComboboxPrimitive.Trigger>
@@ -53,6 +55,8 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
         lucide="XIcon"
         tabler="IconX"
         hugeicons="Cancel01Icon"
+        phosphor="XIcon"
+        remixicon="RiCloseLine"
         className="cn-combobox-clear-icon pointer-events-none"
       />
     </ComboboxPrimitive.Clear>
@@ -168,6 +172,8 @@ function ComboboxItem({
           lucide="CheckIcon"
           tabler="IconCheck"
           hugeicons="Tick02Icon"
+          phosphor="CheckIcon"
+          remixicon="RiCheckLine"
           className="cn-combobox-item-indicator-icon pointer-events-none"
         />
       </ComboboxPrimitive.ItemIndicator>
@@ -269,6 +275,8 @@ function ComboboxChip({
             lucide="XIcon"
             tabler="IconX"
             hugeicons="Cancel01Icon"
+            phosphor="XIcon"
+            remixicon="RiCloseLine"
             className="cn-combobox-chip-indicator-icon pointer-events-none"
           />
         </ComboboxPrimitive.ChipRemove>
@@ -279,7 +287,6 @@ function ComboboxChip({
 
 function ComboboxChipsInput({
   className,
-  children,
   ...props
 }: ComboboxPrimitive.Input.Props) {
   return (

@@ -264,6 +264,8 @@ function DeploymentFilter() {
               lucide="CalendarIcon"
               tabler="IconCalendar"
               hugeicons="Calendar01Icon"
+              phosphor="CalendarIcon"
+              remixicon="RiCalendarLine"
               data-icon="inline-start"
               className="text-muted-foreground"
             />
@@ -296,6 +298,8 @@ function DeploymentFilter() {
               lucide="Search"
               tabler="IconSearch"
               hugeicons="Search01Icon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
             />
           </InputGroupAddon>
           <InputGroupInput placeholder="All Authors..." />
@@ -304,6 +308,8 @@ function DeploymentFilter() {
               lucide="ChevronDownIcon"
               tabler="IconChevronDown"
               hugeicons="ArrowDown01Icon"
+              phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
               className="text-muted-foreground"
             />
           </InputGroupAddon>
@@ -317,6 +323,8 @@ function DeploymentFilter() {
               lucide="ChevronDownIcon"
               tabler="IconChevronDown"
               hugeicons="ArrowDown01Icon"
+              phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
               data-icon="inline-end"
               className="text-muted-foreground"
             />
@@ -333,6 +341,8 @@ function DeploymentFilter() {
                   lucide="CheckIcon"
                   tabler="IconCheck"
                   hugeicons="Tick02Icon"
+                  phosphor="CheckIcon"
+                  remixicon="RiCheckLine"
                   className="ml-auto opacity-0 group-data-[active=true]/dropdown-menu-item:opacity-100"
                 />
               </DropdownMenuItem>
@@ -362,6 +372,8 @@ function DeploymentFilter() {
               lucide="ChevronDownIcon"
               tabler="IconChevronDown"
               hugeicons="ArrowDown01Icon"
+              phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
               data-icon="inline-end"
               className="text-muted-foreground ml-auto"
             />
@@ -388,6 +400,8 @@ function DeploymentFilter() {
                     lucide="CheckIcon"
                     tabler="IconCheck"
                     hugeicons="Tick02Icon"
+                    phosphor="CheckIcon"
+                    remixicon="RiCheckLine"
                     className="ml-auto opacity-0 group-data-[active=true]/dropdown-menu-item:opacity-100"
                   />
                 </DropdownMenuItem>
@@ -464,6 +478,8 @@ function BillingList() {
                       lucide="MoreHorizontalIcon"
                       tabler="IconDots"
                       hugeicons="MoreHorizontalCircle01Icon"
+                      phosphor="DotsThreeOutlineIcon"
+                      remixicon="RiMoreLine"
                     />
                     <span className="sr-only">More options</span>
                   </DropdownMenuTrigger>
@@ -605,6 +621,8 @@ function ActivateAgentDialog() {
                       lucide="CheckCircle2Icon"
                       tabler="IconCircleCheckFilled"
                       hugeicons="CheckmarkCircle02Icon"
+                      phosphor="CheckCircleIcon"
+                      remixicon="RiCheckboxCircleLine"
                       className="fill-primary text-primary-foreground size-5"
                     />
                   </ItemMedia>
@@ -621,6 +639,8 @@ function ActivateAgentDialog() {
                 lucide="CircleDollarSignIcon"
                 hugeicons="DollarCircleIcon"
                 tabler="IconCoin"
+                phosphor="CurrencyCircleDollarIcon"
+                remixicon="RiMoneyDollarCircleLine"
               />
               <AlertDescription>
                 Pro teams get $100 in Vercel Agent trial credit for 2 weeks.
@@ -665,6 +685,8 @@ function ObservabilityCard() {
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
               data-icon="inline-end"
             />
           </Button>

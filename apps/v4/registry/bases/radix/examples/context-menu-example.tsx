@@ -83,6 +83,8 @@ function ContextMenuWithIcons() {
                 lucide="CopyIcon"
                 tabler="IconCopy"
                 hugeicons="CopyIcon"
+                phosphor="CopyIcon"
+                remixicon="RiFileCopyLine"
               />
               Copy
             </ContextMenuItem>
@@ -91,6 +93,8 @@ function ContextMenuWithIcons() {
                 lucide="ScissorsIcon"
                 tabler="IconCut"
                 hugeicons="ScissorIcon"
+                phosphor="ScissorsIcon"
+                remixicon="RiScissorsLine"
               />
               Cut
             </ContextMenuItem>
@@ -99,6 +103,8 @@ function ContextMenuWithIcons() {
                 lucide="ClipboardPasteIcon"
                 tabler="IconClipboard"
                 hugeicons="ClipboardIcon"
+                phosphor="ClipboardIcon"
+                remixicon="RiClipboardLine"
               />
               Paste
             </ContextMenuItem>
@@ -110,6 +116,8 @@ function ContextMenuWithIcons() {
                 lucide="TrashIcon"
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
+                phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </ContextMenuItem>
@@ -351,6 +359,8 @@ function ContextMenuWithDestructive() {
                 lucide="PencilIcon"
                 tabler="IconPencil"
                 hugeicons="EditIcon"
+                phosphor="PencilIcon"
+                remixicon="RiPencilLine"
               />
               Edit
             </ContextMenuItem>
@@ -359,6 +369,8 @@ function ContextMenuWithDestructive() {
                 lucide="ShareIcon"
                 tabler="IconShare"
                 hugeicons="ShareIcon"
+                phosphor="ShareIcon"
+                remixicon="RiShareLine"
               />
               Share
             </ContextMenuItem>
@@ -370,6 +382,8 @@ function ContextMenuWithDestructive() {
                 lucide="ArchiveIcon"
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
+                phosphor="ArchiveIcon"
+                remixicon="RiArchiveLine"
               />
               Archive
             </ContextMenuItem>
@@ -378,6 +392,8 @@ function ContextMenuWithDestructive() {
                 lucide="TrashIcon"
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
+                phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </ContextMenuItem>
@@ -470,6 +486,8 @@ function ContextMenuInDialog() {
                     lucide="CopyIcon"
                     tabler="IconCopy"
                     hugeicons="CopyIcon"
+                    phosphor="CopyIcon"
+                    remixicon="RiFileCopyLine"
                   />
                   Copy
                 </ContextMenuItem>
@@ -478,6 +496,8 @@ function ContextMenuInDialog() {
                     lucide="ScissorsIcon"
                     tabler="IconCut"
                     hugeicons="ScissorIcon"
+                    phosphor="ScissorsIcon"
+                    remixicon="RiScissorsLine"
                   />
                   Cut
                 </ContextMenuItem>
@@ -486,6 +506,8 @@ function ContextMenuInDialog() {
                     lucide="ClipboardPasteIcon"
                     tabler="IconClipboard"
                     hugeicons="ClipboardIcon"
+                    phosphor="ClipboardIcon"
+                    remixicon="RiClipboardLine"
                   />
                   Paste
                 </ContextMenuItem>
@@ -512,6 +534,8 @@ function ContextMenuInDialog() {
                     lucide="TrashIcon"
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
+                    phosphor="TrashIcon"
+                    remixicon="RiDeleteBinLine"
                   />
                   Delete
                 </ContextMenuItem>

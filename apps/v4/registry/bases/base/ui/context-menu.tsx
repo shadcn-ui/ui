@@ -53,7 +53,7 @@ function ContextMenuContent({
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"
           className={cn(
-            "cn-context-menu-content cn-menu-target z-50 max-h-(--available-height) origin-(--transform-origin) overflow-x-hidden overflow-y-auto outline-none",
+            "cn-context-menu-content cn-context-menu-content-logical cn-menu-target z-50 max-h-(--available-height) origin-(--transform-origin) overflow-x-hidden overflow-y-auto outline-none",
             className
           )}
           {...props}
@@ -138,6 +138,8 @@ function ContextMenuSubTrigger({
         lucide="ChevronRightIcon"
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
+        phosphor="CaretRightIcon"
+        remixicon="RiArrowRightSLine"
         className="ml-auto"
       />
     </ContextMenuPrimitive.SubmenuTrigger>
@@ -179,6 +181,8 @@ function ContextMenuCheckboxItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </ContextMenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -218,6 +222,8 @@ function ContextMenuRadioItem({
             lucide="CheckIcon"
             tabler="IconCheck"
             hugeicons="Tick02Icon"
+            phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </ContextMenuPrimitive.RadioItemIndicator>
       </span>

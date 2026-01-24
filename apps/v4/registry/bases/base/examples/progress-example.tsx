@@ -118,6 +118,8 @@ function FileUploadList() {
                 lucide="FileIcon"
                 tabler="IconFile"
                 hugeicons="FileIcon"
+                phosphor="FileIcon"
+                remixicon="RiFileLine"
                 className="size-5"
               />
             </ItemMedia>

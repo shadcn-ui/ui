@@ -102,6 +102,8 @@ function CardExample() {
                 lucide="PlusIcon"
                 tabler="IconPlus"
                 hugeicons="PlusSignIcon"
+                phosphor="PlusIcon"
+                remixicon="RiAddLine"
                 data-icon="inline-start"
               />
               Show Dialog
@@ -113,6 +115,8 @@ function CardExample() {
                     lucide="BluetoothIcon"
                     tabler="IconBluetooth"
                     hugeicons="BluetoothIcon"
+                    phosphor="BluetoothIcon"
+                    remixicon="RiBluetoothLine"
                   />
                 </AlertDialogMedia>
                 <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
@@ -174,6 +178,8 @@ function FormExample() {
                   lucide="MoreVerticalIcon"
                   tabler="IconDotsVertical"
                   hugeicons="MoreVerticalCircle01Icon"
+                  phosphor="DotsThreeVerticalIcon"
+                  remixicon="RiMore2Line"
                 />
                 <span className="sr-only">More options</span>
               </DropdownMenuTrigger>
@@ -185,6 +191,8 @@ function FormExample() {
                       lucide="FileIcon"
                       tabler="IconFile"
                       hugeicons="FileIcon"
+                      phosphor="FileIcon"
+                      remixicon="RiFileLine"
                     />
                     New File
                     <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
@@ -194,6 +202,8 @@ function FormExample() {
                       lucide="FolderIcon"
                       tabler="IconFolder"
                       hugeicons="FolderIcon"
+                      phosphor="FolderIcon"
+                      remixicon="RiFolderLine"
                     />
                     New Folder
                     <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
@@ -204,6 +214,8 @@ function FormExample() {
                         lucide="FolderOpenIcon"
                         tabler="IconFolderOpen"
                         hugeicons="FolderOpenIcon"
+                        phosphor="FolderOpenIcon"
+                        remixicon="RiFolderOpenLine"
                       />
                       Open Recent
                     </DropdownMenuSubTrigger>
@@ -216,6 +228,8 @@ function FormExample() {
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
+                              phosphor="CodeIcon"
+                              remixicon="RiCodeLine"
                             />
                             Project Alpha
                           </DropdownMenuItem>
@@ -224,6 +238,8 @@ function FormExample() {
                               lucide="FileCodeIcon"
                               tabler="IconFileCode"
                               hugeicons="CodeIcon"
+                              phosphor="CodeIcon"
+                              remixicon="RiCodeLine"
                             />
                             Project Beta
                           </DropdownMenuItem>
@@ -233,6 +249,8 @@ function FormExample() {
                                 lucide="MoreHorizontalIcon"
                                 tabler="IconDots"
                                 hugeicons="MoreHorizontalCircle01Icon"
+                                phosphor="DotsThreeOutlineIcon"
+                                remixicon="RiMoreLine"
                               />
                               More Projects
                             </DropdownMenuSubTrigger>
@@ -243,6 +261,8 @@ function FormExample() {
                                     lucide="FileCodeIcon"
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
+                                    phosphor="CodeIcon"
+                                    remixicon="RiCodeLine"
                                   />
                                   Project Gamma
                                 </DropdownMenuItem>
@@ -251,6 +271,8 @@ function FormExample() {
                                     lucide="FileCodeIcon"
                                     tabler="IconFileCode"
                                     hugeicons="CodeIcon"
+                                    phosphor="CodeIcon"
+                                    remixicon="RiCodeLine"
                                   />
                                   Project Delta
                                 </DropdownMenuItem>
@@ -265,6 +287,8 @@ function FormExample() {
                               lucide="FolderSearchIcon"
                               tabler="IconFolderSearch"
                               hugeicons="SearchIcon"
+                              phosphor="MagnifyingGlassIcon"
+                              remixicon="RiSearchLine"
                             />
                             Browse...
                           </DropdownMenuItem>
@@ -278,6 +302,8 @@ function FormExample() {
                       lucide="SaveIcon"
                       tabler="IconDeviceFloppy"
                       hugeicons="FloppyDiskIcon"
+                      phosphor="FloppyDiskIcon"
+                      remixicon="RiSaveLine"
                     />
                     Save
                     <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
@@ -287,6 +313,8 @@ function FormExample() {
                       lucide="DownloadIcon"
                       tabler="IconDownload"
                       hugeicons="DownloadIcon"
+                      phosphor="DownloadIcon"
+                      remixicon="RiDownloadLine"
                     />
                     Export
                     <DropdownMenuShortcut>⇧⌘E</DropdownMenuShortcut>
@@ -308,6 +336,8 @@ function FormExample() {
                       lucide="EyeIcon"
                       tabler="IconEye"
                       hugeicons="EyeIcon"
+                      phosphor="EyeIcon"
+                      remixicon="RiEyeLine"
                     />
                     Show Sidebar
                   </DropdownMenuCheckboxItem>
@@ -324,6 +354,8 @@ function FormExample() {
                       lucide="LayoutIcon"
                       tabler="IconLayout"
                       hugeicons="LayoutIcon"
+                      phosphor="LayoutIcon"
+                      remixicon="RiLayoutLine"
                     />
                     Show Status Bar
                   </DropdownMenuCheckboxItem>
@@ -333,6 +365,8 @@ function FormExample() {
                         lucide="PaletteIcon"
                         tabler="IconPalette"
                         hugeicons="PaintBoardIcon"
+                        phosphor="PaletteIcon"
+                        remixicon="RiPaletteLine"
                       />
                       Theme
                     </DropdownMenuSubTrigger>
@@ -349,6 +383,8 @@ function FormExample() {
                                 lucide="SunIcon"
                                 tabler="IconSun"
                                 hugeicons="SunIcon"
+                                phosphor="SunIcon"
+                                remixicon="RiSunLine"
                               />
                               Light
                             </DropdownMenuRadioItem>
@@ -357,6 +393,8 @@ function FormExample() {
                                 lucide="MoonIcon"
                                 tabler="IconMoon"
                                 hugeicons="MoonIcon"
+                                phosphor="MoonIcon"
+                                remixicon="RiMoonLine"
                               />
                               Dark
                             </DropdownMenuRadioItem>
@@ -365,6 +403,8 @@ function FormExample() {
                                 lucide="MonitorIcon"
                                 tabler="IconDeviceDesktop"
                                 hugeicons="ComputerIcon"
+                                phosphor="MonitorIcon"
+                                remixicon="RiComputerLine"
                               />
                               System
                             </DropdownMenuRadioItem>
@@ -382,6 +422,8 @@ function FormExample() {
                       lucide="UserIcon"
                       tabler="IconUser"
                       hugeicons="UserIcon"
+                      phosphor="UserIcon"
+                      remixicon="RiUserLine"
                     />
                     Profile
                     <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -391,6 +433,8 @@ function FormExample() {
                       lucide="CreditCardIcon"
                       tabler="IconCreditCard"
                       hugeicons="CreditCardIcon"
+                      phosphor="CreditCardIcon"
+                      remixicon="RiBankCardLine"
                     />
                     Billing
                   </DropdownMenuItem>
@@ -400,6 +444,8 @@ function FormExample() {
                         lucide="SettingsIcon"
                         tabler="IconSettings"
                         hugeicons="SettingsIcon"
+                        phosphor="GearIcon"
+                        remixicon="RiSettingsLine"
                       />
                       Settings
                     </DropdownMenuSubTrigger>
@@ -412,6 +458,8 @@ function FormExample() {
                               lucide="KeyboardIcon"
                               tabler="IconKeyboard"
                               hugeicons="KeyboardIcon"
+                              phosphor="KeyboardIcon"
+                              remixicon="RiKeyboardLine"
                             />
                             Keyboard Shortcuts
                           </DropdownMenuItem>
@@ -420,6 +468,8 @@ function FormExample() {
                               lucide="LanguagesIcon"
                               tabler="IconLanguage"
                               hugeicons="LanguageCircleIcon"
+                              phosphor="TranslateIcon"
+                              remixicon="RiTranslate"
                             />
                             Language
                           </DropdownMenuItem>
@@ -429,6 +479,8 @@ function FormExample() {
                                 lucide="BellIcon"
                                 tabler="IconBell"
                                 hugeicons="NotificationIcon"
+                                phosphor="BellIcon"
+                                remixicon="RiNotificationLine"
                               />
                               Notifications
                             </DropdownMenuSubTrigger>
@@ -451,6 +503,8 @@ function FormExample() {
                                       lucide="BellIcon"
                                       tabler="IconBell"
                                       hugeicons="NotificationIcon"
+                                      phosphor="BellIcon"
+                                      remixicon="RiNotificationLine"
                                     />
                                     Push Notifications
                                   </DropdownMenuCheckboxItem>
@@ -467,6 +521,8 @@ function FormExample() {
                                       lucide="MailIcon"
                                       tabler="IconMail"
                                       hugeicons="MailIcon"
+                                      phosphor="EnvelopeIcon"
+                                      remixicon="RiMailLine"
                                     />
                                     Email Notifications
                                   </DropdownMenuCheckboxItem>
@@ -482,6 +538,8 @@ function FormExample() {
                               lucide="ShieldIcon"
                               tabler="IconShield"
                               hugeicons="ShieldIcon"
+                              phosphor="ShieldIcon"
+                              remixicon="RiShieldLine"
                             />
                             Privacy & Security
                           </DropdownMenuItem>
@@ -497,6 +555,8 @@ function FormExample() {
                       lucide="HelpCircleIcon"
                       tabler="IconHelpCircle"
                       hugeicons="HelpCircleIcon"
+                      phosphor="QuestionIcon"
+                      remixicon="RiQuestionLine"
                     />
                     Help & Support
                   </DropdownMenuItem>
@@ -505,6 +565,8 @@ function FormExample() {
                       lucide="FileTextIcon"
                       tabler="IconFileText"
                       hugeicons="File01Icon"
+                      phosphor="FileTextIcon"
+                      remixicon="RiFileTextLine"
                     />
                     Documentation
                   </DropdownMenuItem>
@@ -516,6 +578,8 @@ function FormExample() {
                       lucide="LogOutIcon"
                       tabler="IconLogout"
                       hugeicons="LogoutIcon"
+                      phosphor="SignOutIcon"
+                      remixicon="RiLogoutBoxLine"
                     />
                     Sign Out
                     <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
