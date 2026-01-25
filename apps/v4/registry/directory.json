@@ -1014,5 +1014,12 @@
     "url": "https://www.fluidfunctionalism.com/r/{name}.json",
     "description": "Fluid components used exclusively in service of functional clarity. Proximity hover, spring animations, font-weight transitions, and animated focus rings.",
     "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='8' fill='var(--foreground)'/><text x='20' y='26' text-anchor='middle' font-size='20' font-weight='700' font-family='system-ui' fill='var(--background)'>F</text></svg>"
+  },
+  {
+    "name": "@gammaui",
+    "homepage": "https://www.gammaui.com",
+    "url": "https://www.gammaui.com/r/{name}.json",
+    "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><g><g><path d='M561.27,349.76v-54.72H342.36c-11.96,0-23.77,3.15-33.89,9.51c-21.73,14.52-29.14,36.49-31.32,44.1H561.27z' /><path d='M275.43,358.4s-2.88,38.88,13.68,56.88l65.52,102.96s67.52,41.04,145-5.76s61.64-136.08,61.64-136.08H423.03l-0.72,54.72l74.16,0.72s0,29.52-61.2,48.24c0,0-73.44,14.4-99.36-72c0,0,5.04-37.44-21.6-45.36c-26.64-7.92-38.88-4.32-38.88-4.32z' /></g><path d='M444.63,562.16h-61.92l79.92,130.32s29.52-45.36,12.96-79.2l-30.96-51.12z' /><path d='M471.99,698.24l115.92-186.48V295.04h55.44v229.68l-85.68,138.96s-35.28,61.2-85.68,34.56z' /><path d='M669.27,480.08V295.04h55.44v78.48s2.16,24.48-19.44,51.84l-36,54.72z' /></g></svg>"
   }
 ]
