@@ -1,12 +1,11 @@
 "use client"
 
-import * as React from "react"
-import { Button } from "@/examples/base/ui-rtl/button"
+import { Button } from "@/examples/base/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/base/ui-rtl/tooltip"
+} from "@/examples/base/ui/tooltip"
 
 import {
   useTranslation,
@@ -17,35 +16,63 @@ const translations: Translations = {
   en: {
     dir: "ltr",
     values: {
-      trigger: "Hover",
       content: "Add to library",
+      "inline-start": "Inline Start",
+      left: "Left",
+      top: "Top",
+      bottom: "Bottom",
+      right: "Right",
+      "inline-end": "Inline End",
     },
   },
   ar: {
     dir: "rtl",
     values: {
-      trigger: "مرر",
       content: "إضافة إلى المكتبة",
+      "inline-start": "بداية السطر",
+      left: "يسار",
+      top: "أعلى",
+      bottom: "أسفل",
+      right: "يمين",
+      "inline-end": "نهاية السطر",
     },
   },
   he: {
     dir: "rtl",
     values: {
-      trigger: "רחף",
       content: "הוסף לספרייה",
+      "inline-start": "תחילת השורה",
+      left: "שמאל",
+      top: "למעלה",
+      bottom: "למטה",
+      right: "ימין",
+      "inline-end": "סוף השורה",
     },
   },
 }
+
+const sides = [
+  "inline-start",
+  "left",
+  "top",
+  "bottom",
+  "right",
+  "inline-end",
+] as const
 
 export function TooltipRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Tooltip>
-      <TooltipTrigger render={<Button variant="outline" />} dir={dir}>
-        {t.trigger}
-      </TooltipTrigger>
-      <TooltipContent dir={dir}>{t.content}</TooltipContent>
-    </Tooltip>
+    <div className="flex flex-wrap gap-2" dir="rtl">
+      {sides.map((side) => (
+        <Tooltip key={side}>
+          <TooltipTrigger render={<Button variant="outline" />}>
+            {t[side]}
+          </TooltipTrigger>
+          <TooltipContent side={side} dir={dir}>{t.content}</TooltipContent>
+        </Tooltip>
+      ))}
+    </div>
   )
 }
