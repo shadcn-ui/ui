@@ -688,5 +688,11 @@
     "homepage": "https://typedora-ui.netlify.app",
     "url": "https://typedora-ui.netlify.app/r/{name}.json",
     "description": "Typedora UI is a next-generation extension layer for shadcn/ui, designed to bring full type-safety to your UI components."
+  },
+  {
+    "name": "@gammaui",
+    "homepage": "https://www.gammaui.com",
+    "url": "https://www.gammaui.com/r/{name}.json",
+    "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion."
   }
 ]
