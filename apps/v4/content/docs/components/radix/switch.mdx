@@ -1,0 +1,97 @@
+---
+title: Switch
+description: A control that allows the user to toggle between checked and not checked.
+base: radix
+component: true
+links:
+  doc: https://www.radix-ui.com/docs/primitives/components/switch
+  api: https://www.radix-ui.com/docs/primitives/components/switch#api-reference
+---
+
+<ComponentPreview styleName="radix-nova" name="switch-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add switch
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install radix-ui
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="switch"
+  title="components/ui/switch.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Switch } from "@/components/ui/switch"
+```
+
+```tsx
+<Switch />
+```
+
+## Examples
+
+### Description
+
+<ComponentPreview styleName="radix-nova" name="switch-description" />
+
+### Choice Card
+
+Card-style selection where `FieldLabel` wraps the entire `Field` for a clickable card pattern.
+
+<ComponentPreview styleName="radix-nova" name="switch-choice-card" />
+
+### Disabled
+
+Add the `disabled` prop to the `Switch` component to disable the switch. Add the `data-disabled` prop to the `Field` component for styling.
+
+<ComponentPreview styleName="radix-nova" name="switch-disabled" />
+
+### Invalid
+
+Add the `aria-invalid` prop to the `Switch` component to indicate an invalid state. Add the `data-invalid` prop to the `Field` component for styling.
+
+<ComponentPreview styleName="radix-nova" name="switch-invalid" />
+
+### Size
+
+Use the `size` prop to change the size of the switch.
+
+<ComponentPreview styleName="radix-nova" name="switch-sizes" />
+
+## API Reference
+
+See the [Radix Switch](https://www.radix-ui.com/docs/primitives/components/switch#api-reference) documentation.

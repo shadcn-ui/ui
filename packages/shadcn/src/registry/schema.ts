@@ -260,9 +260,20 @@ export const searchResultsSchema = z.object({
   items: z.array(searchResultItemSchema),
 })
 
+// Legacy schema for getRegistriesIndex() backward compatibility.
 export const registriesIndexSchema = z.record(
   z.string().regex(/^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/),
   z.string()
+)
+
+// New schema for getRegistries().
+export const registriesSchema = z.array(
+  z.object({
+    name: z.string(),
+    homepage: z.string().optional(),
+    url: z.string(),
+    description: z.string().optional(),
+  })
 )
 
 export const presetSchema = z.object({

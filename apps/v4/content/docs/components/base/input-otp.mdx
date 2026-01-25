@@ -1,0 +1,147 @@
+---
+title: Input OTP
+description: Accessible one-time password component with copy paste functionality.
+base: base
+component: true
+links:
+  doc: https://input-otp.rodz.dev
+---
+
+<ComponentPreview styleName="base-nova" name="input-otp-demo" />
+
+## About
+
+Input OTP is built on top of [input-otp](https://github.com/guilhermerodz/input-otp) by [@guilherme_rodz](https://twitter.com/guilherme_rodz).
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add input-otp
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install input-otp
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="input-otp"
+  title="components/ui/input-otp.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+```
+
+```tsx showLineNumbers
+<InputOTP maxLength={6}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>
+```
+
+## Pattern
+
+Use the `pattern` prop to define a custom pattern for the OTP input.
+
+```tsx showLineNumbers {1,5}
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
+
+;<InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
+  ...
+</InputOTP>
+```
+
+<ComponentPreview styleName="base-nova" name="input-otp-pattern" />
+
+## Examples
+
+### Separator
+
+Use the `<InputOTPSeparator />` component to add a separator between input groups.
+
+<ComponentPreview styleName="base-nova" name="input-otp-separator" />
+
+### Disabled
+
+Use the `disabled` prop to disable the input.
+
+<ComponentPreview styleName="base-nova" name="input-otp-disabled" />
+
+### Controlled
+
+Use the `value` and `onChange` props to control the input value.
+
+<ComponentPreview styleName="base-nova" name="input-otp-controlled" />
+
+### Invalid
+
+Use `aria-invalid` on the slots to show an error state.
+
+<ComponentPreview styleName="base-nova" name="input-otp-invalid" />
+
+### Four Digits
+
+A common pattern for PIN codes. This uses the `pattern={REGEXP_ONLY_DIGITS}` prop.
+
+<ComponentPreview styleName="base-nova" name="input-otp-four-digits" />
+
+### Alphanumeric
+
+Use `REGEXP_ONLY_DIGITS_AND_CHARS` to accept both letters and numbers.
+
+<ComponentPreview styleName="base-nova" name="input-otp-alphanumeric" />
+
+### Form
+
+<ComponentPreview
+  styleName="base-nova"
+  name="input-otp-form"
+  previewClassName="h-[30rem]"
+/>
+
+## API Reference
+
+See the [input-otp](https://input-otp.rodz.dev) documentation for more information.

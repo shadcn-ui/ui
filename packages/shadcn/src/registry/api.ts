@@ -27,6 +27,7 @@ import {
   configJsonSchema,
   iconsSchema,
   registriesIndexSchema,
+  registriesSchema,
   registryBaseColorSchema,
   registryConfigSchema,
   registryIndexSchema,
@@ -279,7 +280,8 @@ export async function getItemTargetPath(
   )
 }
 
-export async function getRegistriesIndex(options?: { useCache?: boolean }) {
+// Fetch registries with new schema (array of objects with name, homepage, url, featured).
+export async function getRegistries(options?: { useCache?: boolean }) {
   options = {
     useCache: true,
     ...options,
@@ -291,7 +293,7 @@ export async function getRegistriesIndex(options?: { useCache?: boolean }) {
   })
 
   try {
-    return registriesIndexSchema.parse(data)
+    return registriesSchema.parse(data)
   } catch (error) {
     if (error instanceof z.ZodError) {
       throw new RegistriesIndexParseError(error)
@@ -299,6 +301,18 @@ export async function getRegistriesIndex(options?: { useCache?: boolean }) {
 
     throw error
   }
+}
+
+/**
+ * @deprecated Use getRegistries() instead.
+ */
+export async function getRegistriesIndex(options?: { useCache?: boolean }) {
+  // Fetch new format and transform to old Record<string, string> for backward compatibility.
+  const registries = await getRegistries(options)
+  if (!registries) return null
+  return Object.fromEntries(registries.map((r) => [r.name, r.url])) as z.infer<
+    typeof registriesIndexSchema
+  >
 }
 
 export async function getPresets(options?: { useCache?: boolean }) {

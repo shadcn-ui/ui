@@ -107,7 +107,7 @@ function Calendar({
           defaultClassNames.day
         ),
         range_start: cn(
-          "rounded-l-(--cell-radius) bg-muted elative after:bg-muted after:absolute after:inset-y-0 after:w-4 after:right-0 -z-0 isolate",
+          "rounded-l-(--cell-radius) bg-muted relative after:bg-muted after:absolute after:inset-y-0 after:w-4 after:right-0 -z-0 isolate",
           defaultClassNames.range_start
         ),
         range_middle: cn("rounded-none", defaultClassNames.range_middle),
@@ -149,6 +149,7 @@ function Calendar({
                 tabler="IconChevronLeft"
                 hugeicons="ArrowLeftIcon"
                 phosphor="CaretLeftIcon"
+                remixicon="RiArrowLeftSLine"
                 className={cn("size-4", className)}
                 {...props}
               />
@@ -162,6 +163,7 @@ function Calendar({
                 tabler="IconChevronRight"
                 hugeicons="ArrowRightIcon"
                 phosphor="CaretRightIcon"
+                remixicon="RiArrowRightSLine"
                 className={cn("size-4", className)}
                 {...props}
               />
@@ -174,6 +176,7 @@ function Calendar({
               tabler="IconChevronDown"
               hugeicons="ArrowDownIcon"
               phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
               className={cn("size-4", className)}
               {...props}
             />

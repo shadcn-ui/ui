@@ -1,45 +1,33 @@
+import * as React from "react"
 import Image from "next/image"
 
+import { getRegistryComponent } from "@/lib/registry"
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
 import { ComponentSource } from "@/components/component-source"
-import { Index } from "@/registry/__index__"
-import { type Style } from "@/registry/_legacy-styles"
 
 export function ComponentPreview({
   name,
-  styleName = "new-york-v4",
   type,
   className,
+  previewClassName,
   align = "center",
   hideCode = false,
   chromeLessOnMobile = false,
+  styleName = "new-york-v4",
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
-  styleName?: Style["name"]
+  styleName?: string
   align?: "center" | "start" | "end"
   description?: string
   hideCode?: boolean
   type?: "block" | "component" | "example"
   chromeLessOnMobile?: boolean
+  previewClassName?: string
 }) {
-  const Component = Index[styleName]?.[name]?.component
-
-  if (!Component) {
-    return (
-      <p className="text-muted-foreground mt-6 text-sm">
-        Component{" "}
-        <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
-          {name}
-        </code>{" "}
-        not found in registry.
-      </p>
-    )
-  }
-
   if (type === "block") {
     return (
-      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-1">
+      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-xl border md:-mx-1">
         <Image
           src={`/r/styles/new-york-v4/${name}-light.png`}
           alt={name}
@@ -61,12 +49,27 @@ export function ComponentPreview({
     )
   }
 
+  const Component = getRegistryComponent(name, styleName)
+
+  if (!Component) {
+    return (
+      <p className="text-muted-foreground mt-6 text-sm">
+        Component{" "}
+        <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
+          {name}
+        </code>{" "}
+        not found in registry.
+      </p>
+    )
+  }
+
   return (
     <ComponentPreviewTabs
       className={className}
+      previewClassName={previewClassName}
       align={align}
       hideCode={hideCode}
-      component={<Component />}
+      component={<DynamicComponent name={name} styleName={styleName} />}
       source={
         <ComponentSource
           name={name}
@@ -74,8 +77,35 @@ export function ComponentPreview({
           styleName={styleName}
         />
       }
+      sourcePreview={
+        <ComponentSource
+          name={name}
+          collapsible={false}
+          styleName={styleName}
+          maxLines={3}
+        />
+      }
       chromeLessOnMobile={chromeLessOnMobile}
       {...props}
     />
   )
+}
+
+function DynamicComponent({
+  name,
+  styleName,
+}: {
+  name: string
+  styleName: string
+}) {
+  const Component = React.useMemo(
+    () => getRegistryComponent(name, styleName),
+    [name, styleName]
+  )
+
+  if (!Component) {
+    return null
+  }
+
+  return React.createElement(Component)
 }
