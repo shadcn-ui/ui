@@ -239,6 +239,23 @@
       "type": "registry:ui"
     },
     {
+      "name": "combobox",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "button",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "command",
       "dependencies": [
         "cmdk"
