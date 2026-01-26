@@ -86,7 +86,7 @@
   {
     "name": "@basecn",
     "homepage": "https://basecn.dev",
-    "url": "https://basecn.dev/r/{name}",
+    "url": "https://basecn.dev/r/{name}.json",
     "description": "Beautifully crafted shadcn/ui components powered by Base UI"
   },
   {
