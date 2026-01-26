@@ -1968,6 +1968,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "data-table-rtl": {
+      name: "data-table-rtl",
+      filePath: "examples/radix/data-table-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/data-table-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "data-table-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "date-picker-basic": {
       name: "date-picker-basic",
       filePath: "examples/radix/date-picker-basic.tsx",
@@ -7544,6 +7557,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "data-table-demo"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "data-table-rtl": {
+      name: "data-table-rtl",
+      filePath: "examples/base/data-table-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/data-table-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "data-table-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },

@@ -9,7 +9,9 @@ import {
   PopoverTrigger,
 } from "@/examples/radix/ui-rtl/popover"
 import { format } from "date-fns"
+import { arSA, he } from "date-fns/locale"
 import { ChevronDownIcon } from "lucide-react"
+import { arSA as arSADayPicker, he as heDayPicker } from "react-day-picker/locale"
 
 import {
   useTranslation,
@@ -37,9 +39,28 @@ const translations: Translations = {
   },
 }
 
+const dayPickerLocales = {
+  ar: arSADayPicker,
+  he: heDayPicker,
+} as const
+
+const dateFnsLocales = {
+  ar: arSA,
+  he: he,
+} as const
+
 export function DatePickerRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
   const [date, setDate] = React.useState<Date>()
+
+  const dateFnsLocale =
+    dir === "rtl"
+      ? dateFnsLocales[language as keyof typeof dateFnsLocales]
+      : undefined
+  const dayPickerLocale =
+    dir === "rtl"
+      ? dayPickerLocales[language as keyof typeof dayPickerLocales]
+      : undefined
 
   return (
     <Popover dir={dir}>
@@ -50,7 +71,11 @@ export function DatePickerRtl() {
           className="data-[empty=true]:text-muted-foreground w-[212px] justify-between text-left font-normal"
           dir={dir}
         >
-          {date ? format(date, "PPP") : <span>{t.placeholder}</span>}
+          {date ? (
+            format(date, "PPP", { locale: dateFnsLocale })
+          ) : (
+            <span>{t.placeholder}</span>
+          )}
           <ChevronDownIcon />
         </Button>
       </PopoverTrigger>
@@ -61,6 +86,7 @@ export function DatePickerRtl() {
           onSelect={setDate}
           defaultMonth={date}
           dir={dir}
+          locale={dayPickerLocale}
         />
       </PopoverContent>
     </Popover>
