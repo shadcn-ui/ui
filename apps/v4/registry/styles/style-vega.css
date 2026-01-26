@@ -396,7 +396,7 @@
   }
 
   .cn-context-menu-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
+    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
   }
 
   .cn-context-menu-item {
@@ -884,7 +884,7 @@
   }
 
   .cn-popover-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
+    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
   }
 
   .cn-popover-header {
@@ -1290,7 +1290,7 @@
   }
 
   .cn-tooltip-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
+    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
   }
 
   .cn-tooltip-arrow {
@@ -1298,7 +1298,7 @@
   }
 
   .cn-tooltip-arrow-logical {
-    @apply data-[side=inline-start]:top-1/2! data-[side=inline-start]:-right-1 data-[side=inline-start]:-translate-y-1/2 data-[side=inline-end]:top-1/2! data-[side=inline-end]:-left-1 data-[side=inline-end]:-translate-y-1/2;
+    @apply data-[side=inline-end]:-start-1 data-[side=inline-end]:top-1/2! data-[side=inline-end]:-translate-y-1/2 data-[side=inline-start]:-end-1 data-[side=inline-start]:top-1/2! data-[side=inline-start]:-translate-y-1/2;
   }
 
   /* MARK: Input Group */

@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+/* @import "tw-animate-css"; */
+@import "./tw-animate.css";
 @import "shadcn/tailwind.css";
 @import "./legacy-themes.css";
 
@@ -187,6 +188,14 @@
   a:active,
   button:active {
     @apply opacity-60 md:opacity-100;
+  }
+
+  [data-lang="ar"] {
+    font-family: var(--font-ar);
+  }
+
+  [data-lang="he"] {
+    font-family: var(--font-he);
   }
 }
 

@@ -52,8 +52,7 @@ const translations: Translations = {
       answer2:
         "כן, אתה יכול לשדרג או להוריד את התוכנית שלך בכל עת מההגדרות של החשבון שלך. השינויים יבואו לידי ביטוי במחזור החיוב הבא.",
       question3: "אילו אמצעי תשלום אתם מקבלים?",
-      answer3:
-        "אנו מקבלים את כל כרטיסי האשראי העיקריים, PayPal והעברות בנקאיות. כל התשלומים מעובדים בצורה מאובטחת דרך שותפי התשלום שלנו.",
+      answer3: "אנו מקבלים כרטיסי אשראי, PayPal והעברות בנקאיות.",
     },
   },
 }
@@ -77,7 +76,7 @@ const items = [
 ] as const
 
 export function AccordionRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { t } = useTranslation(translations, "ar")
 
   return (
     <Accordion defaultValue={["item-1"]} className="max-w-md">

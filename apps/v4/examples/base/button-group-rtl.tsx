@@ -85,7 +85,7 @@ const translations: Translations = {
 }
 
 export function ButtonGroupRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
   const [label, setLabel] = React.useState("personal")
 
   return (
@@ -115,7 +115,8 @@ export function ButtonGroupRtl() {
               <MoreHorizontalIcon />
             </DropdownMenuTrigger>
             <DropdownMenuContent
-              align={dir === "rtl" ? "end" : "end"}
+              align={dir === "rtl" ? "start" : "end"}
+              data-lang={dir === "rtl" ? language : undefined}
               dir={dir}
               className="w-40"
             >
@@ -148,7 +149,10 @@ export function ButtonGroupRtl() {
                     <TagIcon />
                     {t.labelAs}
                   </DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent dir={dir}>
+                  <DropdownMenuSubContent
+                    dir={dir}
+                    data-lang={dir === "rtl" ? language : undefined}
+                  >
                     <DropdownMenuRadioGroup
                       value={label}
                       onValueChange={setLabel}

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Calendar } from "@/examples/radix/ui-rtl/calendar"
+import { arSA, he } from "react-day-picker/locale"
 
 import {
   useTranslation,
@@ -23,8 +24,13 @@ const translations: Translations = {
   },
 }
 
+const locales = {
+  ar: arSA,
+  he: he,
+} as const
+
 export function CalendarRtl() {
-  const { dir } = useTranslation(translations, "ar")
+  const { dir, language } = useTranslation(translations, "ar")
   const [date, setDate] = React.useState<Date | undefined>(new Date())
 
   return (
@@ -32,9 +38,12 @@ export function CalendarRtl() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="rounded-md border shadow-sm"
+      className="rounded-lg border [--cell-size:--spacing(9)]"
       captionLayout="dropdown"
       dir={dir}
+      locale={
+        dir === "rtl" ? locales[language as keyof typeof locales] : undefined
+      }
     />
   )
 }

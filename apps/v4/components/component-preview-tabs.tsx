@@ -1,6 +1,12 @@
 "use client"
 
 import * as React from "react"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/examples/base/ui/popover"
+import { IconAlertCircle } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -44,14 +50,36 @@ export function ComponentPreviewTabs({
     <div
       data-slot="component-preview"
       className={cn(
-        "group relative mt-4 mb-12 flex flex-col gap-2 overflow-hidden rounded-xl border",
+        "group relative mt-4 mb-12 flex flex-col overflow-hidden rounded-xl border",
         className
       )}
       {...props}
     >
       {direction === "rtl" ? (
         <LanguageProvider defaultLanguage="ar">
-          <RtlLanguageSelector />
+          <div className="flex h-16 items-center border-b px-4">
+            <RtlLanguageSelector />
+            <Popover>
+              <PopoverTrigger
+                render={
+                  <Button
+                    variant="ghost"
+                    size="icon-sm"
+                    className="ml-auto size-7"
+                  >
+                    <IconAlertCircle />
+                    <span className="sr-only">Toggle</span>
+                  </Button>
+                }
+              ></PopoverTrigger>
+              <PopoverContent side="bottom" align="end" className="w-56">
+                <div className="text-xs">
+                  This preview uses automatic translation and may not be
+                  accurate.
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
           <PreviewWrapper
             align={align}
             chromeLessOnMobile={chromeLessOnMobile}
@@ -78,7 +106,7 @@ export function ComponentPreviewTabs({
         <div
           data-slot="code"
           data-mobile-code-visible={isMobileCodeVisible}
-          className="relative overflow-hidden [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
+          className="relative overflow-hidden **:data-[slot=copy-button]:right-4 **:data-[slot=copy-button]:hidden data-[mobile-code-visible=true]:**:data-[slot=copy-button]:flex [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
         >
           {isMobileCodeVisible ? (
             source
@@ -97,7 +125,7 @@ export function ComponentPreviewTabs({
                   type="button"
                   size="sm"
                   variant="outline"
-                  className="bg-background text-foreground dark:bg-background dark:text-foreground hover:bg-muted dark:hover:bg-muted relative z-10"
+                  className="bg-background text-foreground dark:bg-background dark:text-foreground hover:bg-muted dark:hover:bg-muted relative z-10 rounded-lg shadow-none"
                   onClick={() => {
                     setIsMobileCodeVisible(true)
                   }}
@@ -128,10 +156,8 @@ const directionTranslations: Translations<Record<string, never>> = {
   },
 }
 
-function RtlLanguageSelector() {
+function RtlLanguageSelector({ className }: { className?: string }) {
   const context = useLanguageContext()
-  // This component is always rendered inside LanguageProvider when direction === "rtl".
-  // so context should always be available.
   if (!context) {
     return null
   }
@@ -139,6 +165,7 @@ function RtlLanguageSelector() {
     <LanguageSelector
       value={context.language}
       onValueChange={context.setLanguage}
+      className={className}
     />
   )
 }
@@ -162,7 +189,11 @@ function PreviewWrapper({
   const dir = explicitDir ?? translation.dir
 
   return (
-    <div data-slot="preview" dir={dir}>
+    <div
+      data-slot="preview"
+      dir={dir}
+      data-lang={dir === "rtl" ? translation.language : undefined}
+    >
       <div
         data-align={align}
         data-chromeless={chromeLessOnMobile}

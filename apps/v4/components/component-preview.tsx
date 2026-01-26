@@ -29,13 +29,6 @@ export function ComponentPreview({
   direction?: "ltr" | "rtl"
   caption?: string
 }) {
-  const translationDisclaimer =
-    direction === "rtl"
-      ? "Automatic translation may contain errors."
-      : undefined
-  const finalCaption =
-    [caption, translationDisclaimer].filter(Boolean).join(" ") || undefined
-
   if (type === "block") {
     const content = (
       <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-xl border md:-mx-1">
@@ -59,12 +52,12 @@ export function ComponentPreview({
       </div>
     )
 
-    if (finalCaption) {
+    if (caption) {
       return (
         <figure className="flex flex-col gap-4">
           {content}
           <figcaption className="text-muted-foreground text-center text-sm">
-            {finalCaption}
+            {caption}
           </figcaption>
         </figure>
       )
@@ -93,7 +86,7 @@ export function ComponentPreview({
       previewClassName={previewClassName}
       align={align}
       hideCode={hideCode}
-      component={<DynamicComponent name={name} styleName={styleName} />}
+      component={React.createElement(Component)}
       source={
         <ComponentSource
           name={name}
@@ -116,7 +109,7 @@ export function ComponentPreview({
     />
   )
 
-  if (finalCaption) {
+  if (caption) {
     return (
       <figure
         data-hide-code={hideCode}
@@ -124,30 +117,11 @@ export function ComponentPreview({
       >
         {content}
         <figcaption className="text-muted-foreground -mt-8 text-center text-sm data-[hide-code=true]:mt-0">
-          {finalCaption}
+          {caption}
         </figcaption>
       </figure>
     )
   }
 
   return content
-}
-
-function DynamicComponent({
-  name,
-  styleName,
-}: {
-  name: string
-  styleName: string
-}) {
-  const Component = React.useMemo(
-    () => getRegistryComponent(name, styleName),
-    [name, styleName]
-  )
-
-  if (!Component) {
-    return null
-  }
-
-  return React.createElement(Component)
 }

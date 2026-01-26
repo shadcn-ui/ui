@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import Link from "next/link"
 import {
   Breadcrumb,
@@ -61,7 +60,7 @@ const translations: Translations = {
 }
 
 export function BreadcrumbRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
 
   return (
     <Breadcrumb dir={dir}>
@@ -82,6 +81,7 @@ export function BreadcrumbRtl() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align={dir === "rtl" ? "end" : "start"}
+              data-lang={dir === "rtl" ? language : undefined}
               dir={dir}
             >
               <DropdownMenuGroup>

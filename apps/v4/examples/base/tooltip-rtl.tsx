@@ -1,11 +1,11 @@
 "use client"
 
-import { Button } from "@/examples/base/ui/button"
+import { Button } from "@/examples/base/ui-rtl/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/examples/base/ui/tooltip"
+} from "@/examples/base/ui-rtl/tooltip"
 
 import {
   useTranslation,
@@ -51,28 +51,38 @@ const translations: Translations = {
   },
 }
 
-const sides = [
-  "inline-start",
-  "left",
-  "top",
-  "bottom",
-  "right",
-  "inline-end",
-] as const
+const physicalSides = ["left", "top", "bottom", "right"] as const
+const logicalSides = ["inline-start", "inline-end"] as const
 
 export function TooltipRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <div className="flex flex-wrap gap-2" dir="rtl">
-      {sides.map((side) => (
-        <Tooltip key={side}>
-          <TooltipTrigger render={<Button variant="outline" />}>
-            {t[side]}
-          </TooltipTrigger>
-          <TooltipContent side={side} dir={dir}>{t.content}</TooltipContent>
-        </Tooltip>
-      ))}
+    <div className="grid gap-4">
+      <div className="flex flex-wrap justify-center gap-2">
+        {physicalSides.map((side) => (
+          <Tooltip key={side}>
+            <TooltipTrigger render={<Button variant="outline" />}>
+              {t[side]}
+            </TooltipTrigger>
+            <TooltipContent side={side} dir={dir}>
+              {t.content}
+            </TooltipContent>
+          </Tooltip>
+        ))}
+      </div>
+      <div className="flex flex-wrap justify-center gap-2">
+        {logicalSides.map((side) => (
+          <Tooltip key={side}>
+            <TooltipTrigger render={<Button variant="outline" />}>
+              {t[side]}
+            </TooltipTrigger>
+            <TooltipContent side={side} dir={dir}>
+              {t.content}
+            </TooltipContent>
+          </Tooltip>
+        ))}
+      </div>
     </div>
   )
 }

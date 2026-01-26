@@ -97,8 +97,9 @@ export function LanguageSelector({
     >
       <SelectTrigger
         size="sm"
-        className={cn("absolute top-4 right-4 z-50 w-36", className)}
+        className={cn("w-36", className)}
         dir="ltr"
+        data-name="language-selector"
       >
         <SelectValue />
       </SelectTrigger>

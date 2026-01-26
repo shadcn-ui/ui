@@ -16,35 +16,52 @@ const translations: Translations = {
   en: {
     dir: "ltr",
     values: {
-      trigger: "Hover",
       content: "Add to library",
+      left: "Left",
+      top: "Top",
+      bottom: "Bottom",
+      right: "Right",
     },
   },
   ar: {
     dir: "rtl",
     values: {
-      trigger: "مرر",
       content: "إضافة إلى المكتبة",
+      left: "يسار",
+      top: "أعلى",
+      bottom: "أسفل",
+      right: "يمين",
     },
   },
   he: {
     dir: "rtl",
     values: {
-      trigger: "רחף",
       content: "הוסף לספרייה",
+      left: "שמאל",
+      top: "למעלה",
+      bottom: "למטה",
+      right: "ימין",
     },
   },
 }
 
+const sides = ["left", "top", "bottom", "right"] as const
+
 export function TooltipRtl() {
-  const { t } = useTranslation(translations, "ar")
+  const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button variant="outline">{t.trigger}</Button>
-      </TooltipTrigger>
-      <TooltipContent>{t.content}</TooltipContent>
-    </Tooltip>
+    <div className="flex flex-wrap gap-2">
+      {sides.map((side) => (
+        <Tooltip key={side}>
+          <TooltipTrigger asChild>
+            <Button variant="outline" className="w-fit capitalize">
+              {t[side]}
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side={side}>{t.content}</TooltipContent>
+        </Tooltip>
+      ))}
+    </div>
   )
 }

@@ -80,9 +80,9 @@ export function CardRtl() {
         <form>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
-              <Label htmlFor="email">{t.email}</Label>
+              <Label htmlFor="email-rtl">{t.email}</Label>
               <Input
-                id="email"
+                id="email-rtl"
                 type="email"
                 placeholder={t.emailPlaceholder}
                 required
@@ -90,7 +90,7 @@ export function CardRtl() {
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
-                <Label htmlFor="password">{t.password}</Label>
+                <Label htmlFor="password-rtl">{t.password}</Label>
                 <a
                   href="#"
                   className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
@@ -98,7 +98,7 @@ export function CardRtl() {
                   {t.forgotPassword}
                 </a>
               </div>
-              <Input id="password" type="password" required />
+              <Input id="password-rtl" type="password" required />
             </div>
           </div>
         </form>

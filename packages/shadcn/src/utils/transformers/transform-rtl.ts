@@ -91,10 +91,10 @@ const RTL_SWAP_MAPPINGS: [string, string][] = [
 // Used when cn-logical-sides marker class is present.
 // In RTL: inline-start = right, inline-end = left.
 // Pattern: [physical, logical] - add logical selector alongside physical.
-const LOGICAL_SIDE_MAPPINGS: [string, string][] = [
-  ["data-[side=left]:", "data-[side=inline-end]:"],
-  ["data-[side=right]:", "data-[side=inline-start]:"],
-]
+// const LOGICAL_SIDE_MAPPINGS: [string, string][] = [
+//   ["data-[side=left]:", "data-[side=inline-end]:"],
+//   ["data-[side=right]:", "data-[side=inline-start]:"],
+// ]
 
 // Props that need value swapping for RTL.
 // Format: { propName: { fromValue: toValue } }
@@ -124,7 +124,7 @@ function stripQuotes(str: string) {
 
 export function applyRtlMapping(input: string) {
   // Check if the class string contains the marker for logical side support.
-  const hasLogicalSides = input.includes("cn-logical-sides")
+  // const hasLogicalSides = input.includes("cn-logical-sides")
 
   return input
     .split(" ")
@@ -166,9 +166,27 @@ export function applyRtlMapping(input: string) {
         }
       }
 
+      // Skip positioning transformations for physical side variants.
+      // e.g., data-[side=left]:-right-1 should NOT become data-[side=left]:-end-1
+      // because the physical side needs physical positioning.
+      const isPhysicalSideVariant =
+        variant?.includes("data-[side=left]") ||
+        variant?.includes("data-[side=right]")
+
+      // Positioning prefixes that should be skipped for physical side variants.
+      const positioningPrefixes = ["-left-", "-right-", "left-", "right-"]
+
       // Find matching RTL mapping for direct replacement.
       let mappedValue = value
       for (const [physical, logical] of RTL_MAPPINGS) {
+        // Skip positioning transforms for physical side variants.
+        if (
+          isPhysicalSideVariant &&
+          positioningPrefixes.some((p) => physical.startsWith(p))
+        ) {
+          continue
+        }
+
         if (value.startsWith(physical)) {
           mappedValue = value.replace(physical, logical)
           break
@@ -192,20 +210,20 @@ export function applyRtlMapping(input: string) {
       // If cn-logical-sides marker is present, add logical side selectors.
       // e.g., data-[side=left]:foo → data-[side=left]:foo data-[side=inline-start]:foo
       // Applied after RTL mappings so the value is already transformed.
-      if (hasLogicalSides && variant) {
-        for (const [physical, logical] of LOGICAL_SIDE_MAPPINGS) {
-          if (variant.includes(physical.slice(0, -1))) {
-            const logicalVariant = variant.replace(
-              physical.slice(0, -1),
-              logical.slice(0, -1)
-            )
-            const logicalClass = modifier
-              ? `${logicalVariant}:${mappedValue}/${modifier}`
-              : `${logicalVariant}:${mappedValue}`
-            return [result, logicalClass]
-          }
-        }
-      }
+      // if (hasLogicalSides && variant) {
+      // for (const [physical, logical] of LOGICAL_SIDE_MAPPINGS) {
+      //   if (variant.includes(physical.slice(0, -1))) {
+      //     const logicalVariant = variant.replace(
+      //       physical.slice(0, -1),
+      //       logical.slice(0, -1)
+      //     )
+      //     const logicalClass = modifier
+      //       ? `${logicalVariant}:${mappedValue}/${modifier}`
+      //       : `${logicalVariant}:${mappedValue}`
+      //     return [result, logicalClass]
+      //   }
+      // }
+      // }
 
       return [result]
     })

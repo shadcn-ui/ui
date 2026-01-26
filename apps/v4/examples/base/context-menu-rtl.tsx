@@ -105,16 +105,13 @@ export function ContextMenuRtl() {
 
   return (
     <ContextMenu>
-      <ContextMenuTrigger
-        className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm"
-        dir={dir}
-      >
+      <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
         <span className="hidden pointer-fine:inline-block">{t.rightClick}</span>
         <span className="hidden pointer-coarse:inline-block">
           {t.longPress}
         </span>
       </ContextMenuTrigger>
-      <ContextMenuContent className="w-48" dir={dir}>
+      <ContextMenuContent className="w-48" dir={dir} side="inline-end">
         <ContextMenuGroup>
           <ContextMenuSub>
             <ContextMenuSubTrigger>{t.navigation}</ContextMenuSubTrigger>

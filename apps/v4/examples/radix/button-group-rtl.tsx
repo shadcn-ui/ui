@@ -85,7 +85,7 @@ const translations: Translations = {
 }
 
 export function ButtonGroupRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
   const [label, setLabel] = React.useState("personal")
 
   return (
@@ -93,7 +93,7 @@ export function ButtonGroupRtl() {
       <ButtonGroup>
         <ButtonGroup className="hidden sm:flex">
           <Button variant="outline" size="icon" aria-label="Go Back">
-            <ArrowLeftIcon />
+            <ArrowLeftIcon className="rtl:rotate-180" />
           </Button>
         </ButtonGroup>
         <ButtonGroup>
@@ -110,7 +110,7 @@ export function ButtonGroupRtl() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align={dir === "rtl" ? "end" : "end"}
-              dir={dir}
+              data-lang={dir === "rtl" ? language : undefined}
               className="w-40"
             >
               <DropdownMenuGroup>
@@ -142,7 +142,9 @@ export function ButtonGroupRtl() {
                     <TagIcon />
                     {t.labelAs}
                   </DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent dir={dir}>
+                  <DropdownMenuSubContent
+                    data-lang={dir === "rtl" ? language : undefined}
+                  >
                     <DropdownMenuRadioGroup
                       value={label}
                       onValueChange={setLabel}

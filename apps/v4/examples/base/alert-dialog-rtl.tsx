@@ -25,6 +25,7 @@ const translations: Translations = {
     dir: "ltr",
     values: {
       showDialog: "Show Dialog",
+      showDialogSm: "Show Dialog (sm)",
       title: "Are you absolutely sure?",
       description:
         "This action cannot be undone. This will permanently delete your account from our servers.",
@@ -41,6 +42,7 @@ const translations: Translations = {
     dir: "rtl",
     values: {
       showDialog: "إظهار الحوار",
+      showDialogSm: "إظهار الحوار (صغير)",
       title: "هل أنت متأكد تمامًا؟",
       description:
         "لا يمكن التراجع عن هذا الإجراء. سيؤدي هذا إلى حذف حسابك نهائيًا من خوادمنا.",
@@ -56,6 +58,7 @@ const translations: Translations = {
     dir: "rtl",
     values: {
       showDialog: "הצג דיאלוג",
+      showDialogSm: "הצג דיאלוג (קטן)",
       title: "האם אתה בטוח לחלוטין?",
       description:
         "פעולה זו לא ניתנת לביטול. זה ימחק לצמיתות את החשבון שלך מהשרתים שלנו.",
@@ -70,7 +73,7 @@ const translations: Translations = {
 }
 
 export function AlertDialogRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
 
   return (
     <div className="flex gap-4" dir={dir}>
@@ -78,7 +81,10 @@ export function AlertDialogRtl() {
         <AlertDialogTrigger render={<Button variant="outline" />}>
           {t.showDialog}
         </AlertDialogTrigger>
-        <AlertDialogContent dir={dir}>
+        <AlertDialogContent
+          dir={dir}
+          data-lang={dir === "rtl" ? language : undefined}
+        >
           <AlertDialogHeader>
             <AlertDialogTitle>{t.title}</AlertDialogTitle>
             <AlertDialogDescription>{t.description}</AlertDialogDescription>
@@ -91,9 +97,13 @@ export function AlertDialogRtl() {
       </AlertDialog>
       <AlertDialog>
         <AlertDialogTrigger render={<Button variant="outline" />}>
-          {t.showDialog}
+          {t.showDialogSm}
         </AlertDialogTrigger>
-        <AlertDialogContent size="sm" dir={dir}>
+        <AlertDialogContent
+          size="sm"
+          dir={dir}
+          data-lang={dir === "rtl" ? language : undefined}
+        >
           <AlertDialogHeader>
             <AlertDialogMedia>
               <BluetoothIcon />

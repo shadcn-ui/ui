@@ -1,5 +1,7 @@
 "use client"
 
+import { DirectionProvider } from "@/examples/radix/ui/direction"
+
 import {
   Example,
   ExampleWrapper,
@@ -12,7 +14,6 @@ import {
   TooltipTrigger,
 } from "@/registry/bases/base/ui/tooltip"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
-import { DirectionProvider } from "@/examples/radix/ui/direction"
 
 export default function TooltipExample() {
   return (
@@ -61,7 +62,9 @@ function TooltipSides() {
           ).map((side) => (
             <Tooltip key={side}>
               <TooltipTrigger
-                render={<Button variant="outline" className="w-fit capitalize" />}
+                render={
+                  <Button variant="outline" className="w-fit capitalize" />
+                }
               >
                 {side.replace("-", " ")}
               </TooltipTrigger>

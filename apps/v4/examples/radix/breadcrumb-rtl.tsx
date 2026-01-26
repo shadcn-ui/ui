@@ -61,7 +61,7 @@ const translations: Translations = {
 }
 
 export function BreadcrumbRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
 
   return (
     <Breadcrumb dir={dir}>
@@ -83,8 +83,7 @@ export function BreadcrumbRtl() {
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-              align={dir === "rtl" ? "end" : "start"}
-              dir={dir}
+              data-lang={dir === "rtl" ? language : undefined}
             >
               <DropdownMenuGroup>
                 <DropdownMenuItem>{t.documentation}</DropdownMenuItem>
