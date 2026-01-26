@@ -58,23 +58,25 @@ export function CheckboxRtl() {
   return (
     <FieldGroup className="max-w-sm" dir={dir}>
       <Field orientation="horizontal">
-        <Checkbox id="terms-checkbox" name="terms-checkbox" />
-        <Label htmlFor="terms-checkbox">{t.acceptTerms}</Label>
+        <Checkbox id="terms-checkbox-rtl" name="terms-checkbox" />
+        <Label htmlFor="terms-checkbox-rtl">{t.acceptTerms}</Label>
       </Field>
       <Field orientation="horizontal">
         <Checkbox
-          id="terms-checkbox-2"
+          id="terms-checkbox-2-rtl"
           name="terms-checkbox-2"
           defaultChecked
         />
         <FieldContent>
-          <FieldLabel htmlFor="terms-checkbox-2">{t.acceptTerms}</FieldLabel>
+          <FieldLabel htmlFor="terms-checkbox-2-rtl">
+            {t.acceptTerms}
+          </FieldLabel>
           <FieldDescription>{t.acceptTermsDescription}</FieldDescription>
         </FieldContent>
       </Field>
       <Field orientation="horizontal" data-disabled>
-        <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled />
-        <FieldLabel htmlFor="toggle-checkbox">
+        <Checkbox id="toggle-checkbox-rtl" name="toggle-checkbox" disabled />
+        <FieldLabel htmlFor="toggle-checkbox-rtl">
           {t.enableNotifications}
         </FieldLabel>
       </Field>

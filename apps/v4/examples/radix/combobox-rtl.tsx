@@ -13,6 +13,7 @@ import {
   ComboboxValue,
   useComboboxAnchor,
 } from "@/examples/radix/ui-rtl/combobox"
+import { Field, FieldLabel } from "@/examples/radix/ui-rtl/field"
 
 import {
   useTranslation,
@@ -32,6 +33,7 @@ const translations: Translations = {
   en: {
     dir: "ltr",
     values: {
+      label: "Categories",
       placeholder: "Add categories",
       empty: "No categories found.",
       technology: "Technology",
@@ -45,6 +47,7 @@ const translations: Translations = {
   ar: {
     dir: "rtl",
     values: {
+      label: "الفئات",
       placeholder: "أضف فئات",
       empty: "لم يتم العثور على فئات.",
       technology: "التكنولوجيا",
@@ -58,6 +61,7 @@ const translations: Translations = {
   he: {
     dir: "rtl",
     values: {
+      label: "קטגוריות",
       placeholder: "הוסף קטגוריות",
       empty: "לא נמצאו קטגוריות.",
       technology: "טכנולוגיה",
@@ -71,7 +75,7 @@ const translations: Translations = {
 }
 
 export function ComboboxRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
   const anchor = useComboboxAnchor()
 
   const categoryLabels: Record<string, string> = {
@@ -84,37 +88,46 @@ export function ComboboxRtl() {
   }
 
   return (
-    <Combobox
-      multiple
-      autoHighlight
-      items={categories}
-      defaultValue={[categories[0]]}
-      dir={dir}
-    >
-      <ComboboxChips ref={anchor} className="w-full max-w-xs">
-        <ComboboxValue>
-          {(values) => (
-            <React.Fragment>
-              {values.map((value: string) => (
-                <ComboboxChip key={value}>
-                  {categoryLabels[value] || value}
-                </ComboboxChip>
-              ))}
-              <ComboboxChipsInput placeholder={t.placeholder} />
-            </React.Fragment>
-          )}
-        </ComboboxValue>
-      </ComboboxChips>
-      <ComboboxContent anchor={anchor} dir={dir}>
-        <ComboboxEmpty>{t.empty}</ComboboxEmpty>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
-              {categoryLabels[item] || item}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxContent>
-    </Combobox>
+    <Field className="mx-auto w-full max-w-xs">
+      <FieldLabel>{t.label}</FieldLabel>
+      <Combobox
+        multiple
+        autoHighlight
+        items={categories}
+        defaultValue={[categories[0]]}
+        itemToStringValue={(item: (typeof categories)[number]) =>
+          categoryLabels[item] || item
+        }
+      >
+        <ComboboxChips ref={anchor}>
+          <ComboboxValue>
+            {(values) => (
+              <React.Fragment>
+                {values.map((value: string) => (
+                  <ComboboxChip key={value}>
+                    {categoryLabels[value] || value}
+                  </ComboboxChip>
+                ))}
+                <ComboboxChipsInput placeholder={t.placeholder} />
+              </React.Fragment>
+            )}
+          </ComboboxValue>
+        </ComboboxChips>
+        <ComboboxContent
+          anchor={anchor}
+          dir={dir}
+          data-lang={dir === "rtl" ? language : undefined}
+        >
+          <ComboboxEmpty>{t.empty}</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {categoryLabels[item] || item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Field>
   )
 }

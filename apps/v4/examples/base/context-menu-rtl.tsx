@@ -17,13 +17,7 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/examples/base/ui-rtl/context-menu"
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  RotateCwIcon,
-  SaveIcon,
-  TrashIcon,
-} from "lucide-react"
+import { ArrowLeftIcon, ArrowRightIcon, RotateCwIcon } from "lucide-react"
 
 import {
   useTranslation,
@@ -100,7 +94,7 @@ const translations: Translations = {
 }
 
 export function ContextMenuRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
   const [people, setPeople] = React.useState("pedro")
 
   return (
@@ -111,11 +105,19 @@ export function ContextMenuRtl() {
           {t.longPress}
         </span>
       </ContextMenuTrigger>
-      <ContextMenuContent className="w-48" dir={dir} side="inline-end">
+      <ContextMenuContent
+        className="w-48"
+        dir={dir}
+        data-lang={dir === "rtl" ? language : undefined}
+      >
         <ContextMenuGroup>
           <ContextMenuSub>
             <ContextMenuSubTrigger>{t.navigation}</ContextMenuSubTrigger>
-            <ContextMenuSubContent className="w-44" dir={dir}>
+            <ContextMenuSubContent
+              className="w-44"
+              dir={dir}
+              data-lang={dir === "rtl" ? language : undefined}
+            >
               <ContextMenuGroup>
                 <ContextMenuItem>
                   <ArrowLeftIcon />
@@ -137,12 +139,13 @@ export function ContextMenuRtl() {
           </ContextMenuSub>
           <ContextMenuSub>
             <ContextMenuSubTrigger>{t.moreTools}</ContextMenuSubTrigger>
-            <ContextMenuSubContent className="w-44" dir={dir}>
+            <ContextMenuSubContent
+              className="w-44"
+              dir={dir}
+              data-lang={dir === "rtl" ? language : undefined}
+            >
               <ContextMenuGroup>
-                <ContextMenuItem>
-                  <SaveIcon />
-                  {t.savePage}
-                </ContextMenuItem>
+                <ContextMenuItem>{t.savePage}</ContextMenuItem>
                 <ContextMenuItem>{t.createShortcut}</ContextMenuItem>
                 <ContextMenuItem>{t.nameWindow}</ContextMenuItem>
               </ContextMenuGroup>
@@ -153,7 +156,6 @@ export function ContextMenuRtl() {
               <ContextMenuSeparator />
               <ContextMenuGroup>
                 <ContextMenuItem variant="destructive">
-                  <TrashIcon />
                   {t.delete}
                 </ContextMenuItem>
               </ContextMenuGroup>

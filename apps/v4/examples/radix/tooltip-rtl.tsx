@@ -48,7 +48,7 @@ const translations: Translations = {
 const sides = ["left", "top", "bottom", "right"] as const
 
 export function TooltipRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { t } = useTranslation(translations, "ar")
 
   return (
     <div className="flex flex-wrap gap-2">

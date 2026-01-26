@@ -1357,6 +1357,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "chart-rtl": {
+      name: "chart-rtl",
+      filePath: "examples/radix/chart-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/chart-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "chart-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "chart-tooltip": {
       name: "chart-tooltip",
       filePath: "examples/radix/chart-tooltip.tsx",
@@ -6920,6 +6933,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "chart-example"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "chart-rtl": {
+      name: "chart-rtl",
+      filePath: "examples/base/chart-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/chart-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "chart-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },
