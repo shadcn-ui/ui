@@ -1,7 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Progress } from "@/examples/base/ui-rtl/progress"
+import {
+  Progress,
+  ProgressLabel,
+  ProgressValue,
+} from "@/examples/base/ui-rtl/progress"
 
 import {
   useTranslation,
@@ -11,26 +15,51 @@ import {
 const translations: Translations = {
   en: {
     dir: "ltr",
-    values: {},
+    values: {
+      label: "Upload progress",
+    },
   },
   ar: {
     dir: "rtl",
-    values: {},
+    values: {
+      label: "تقدم الرفع",
+    },
   },
   he: {
     dir: "rtl",
-    values: {},
+    values: {
+      label: "התקדמות העלאה",
+    },
   },
 }
 
+function toArabicNumerals(num: number): string {
+  const arabicNumerals = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
+  return num
+    .toString()
+    .split("")
+    .map((digit) => arabicNumerals[parseInt(digit, 10)])
+    .join("")
+}
+
 export function ProgressRtl() {
-  const { dir } = useTranslation(translations, "ar")
-  const [progress, setProgress] = React.useState(13)
+  const { dir, t, language } = useTranslation(translations, "ar")
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500)
-    return () => clearTimeout(timer)
-  }, [])
+  const formatNumber = (num: number): string => {
+    if (language === "ar") {
+      return toArabicNumerals(num)
+    }
+    return num.toString()
+  }
 
-  return <Progress value={progress} className="w-[60%]" dir={dir} />
+  return (
+    <Progress value={56} className="w-full max-w-sm" dir={dir}>
+      <ProgressLabel>{t.label}</ProgressLabel>
+      <ProgressValue>
+        {(value) => (
+          <span className="ms-auto">{formatNumber(parseFloat(value ?? "0"))}%</span>
+        )}
+      </ProgressValue>
+    </Progress>
+  )
 }

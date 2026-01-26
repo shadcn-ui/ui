@@ -141,14 +141,14 @@ const translations: Translations = {
 }
 
 export function MenubarRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
   const [profile, setProfile] = React.useState("benoit")
 
   return (
     <Menubar className="w-72" dir={dir}>
       <MenubarMenu>
         <MenubarTrigger>{t.file}</MenubarTrigger>
-        <MenubarContent>
+        <MenubarContent data-lang={dir === "rtl" ? language : undefined}>
           <MenubarGroup>
             <MenubarItem>
               {t.newTab} <MenubarShortcut>⌘T</MenubarShortcut>
@@ -162,7 +162,9 @@ export function MenubarRtl() {
           <MenubarGroup>
             <MenubarSub>
               <MenubarSubTrigger>{t.share}</MenubarSubTrigger>
-              <MenubarSubContent>
+              <MenubarSubContent
+                data-lang={dir === "rtl" ? language : undefined}
+              >
                 <MenubarGroup>
                   <MenubarItem>{t.emailLink}</MenubarItem>
                   <MenubarItem>{t.messages}</MenubarItem>
@@ -181,7 +183,7 @@ export function MenubarRtl() {
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>{t.edit}</MenubarTrigger>
-        <MenubarContent>
+        <MenubarContent data-lang={dir === "rtl" ? language : undefined}>
           <MenubarGroup>
             <MenubarItem>
               {t.undo} <MenubarShortcut>⌘Z</MenubarShortcut>
@@ -194,7 +196,9 @@ export function MenubarRtl() {
           <MenubarGroup>
             <MenubarSub>
               <MenubarSubTrigger>{t.find}</MenubarSubTrigger>
-              <MenubarSubContent>
+              <MenubarSubContent
+                data-lang={dir === "rtl" ? language : undefined}
+              >
                 <MenubarGroup>
                   <MenubarItem>{t.searchTheWeb}</MenubarItem>
                 </MenubarGroup>
@@ -217,7 +221,10 @@ export function MenubarRtl() {
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>{t.view}</MenubarTrigger>
-        <MenubarContent className="w-44">
+        <MenubarContent
+          className="w-44"
+          data-lang={dir === "rtl" ? language : undefined}
+        >
           <MenubarGroup>
             <MenubarCheckboxItem>{t.bookmarksBar}</MenubarCheckboxItem>
             <MenubarCheckboxItem checked>{t.fullUrls}</MenubarCheckboxItem>
@@ -243,7 +250,7 @@ export function MenubarRtl() {
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>{t.profiles}</MenubarTrigger>
-        <MenubarContent>
+        <MenubarContent data-lang={dir === "rtl" ? language : undefined}>
           <MenubarRadioGroup value={profile} onValueChange={setProfile}>
             <MenubarRadioItem value="andy">{t.andy}</MenubarRadioItem>
             <MenubarRadioItem value="benoit">{t.benoit}</MenubarRadioItem>

@@ -53,7 +53,7 @@ export function ResizableRtl() {
           <span className="font-semibold">{t.one}</span>
         </div>
       </ResizablePanel>
-      <ResizableHandle />
+      <ResizableHandle withHandle />
       <ResizablePanel defaultSize={50}>
         <ResizablePanelGroup direction="vertical" dir={dir}>
           <ResizablePanel defaultSize={25}>
@@ -61,7 +61,7 @@ export function ResizableRtl() {
               <span className="font-semibold">{t.two}</span>
             </div>
           </ResizablePanel>
-          <ResizableHandle />
+          <ResizableHandle withHandle />
           <ResizablePanel defaultSize={75}>
             <div className="flex h-full items-center justify-center p-6">
               <span className="font-semibold">{t.three}</span>

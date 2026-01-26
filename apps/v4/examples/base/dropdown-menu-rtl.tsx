@@ -120,7 +120,7 @@ const translations: Translations = {
 }
 
 export function DropdownMenuRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, language, t } = useTranslation(translations, "ar")
   const [showStatusBar, setShowStatusBar] = React.useState(true)
   const [showActivityBar, setShowActivityBar] = React.useState(false)
   const [showPanel, setShowPanel] = React.useState(false)
@@ -135,12 +135,16 @@ export function DropdownMenuRtl() {
         align={dir === "rtl" ? "end" : "start"}
         dir={dir}
         className="w-36"
+        data-lang={dir === "rtl" ? language : undefined}
       >
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.account}</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
-              <DropdownMenuSubContent dir={dir}>
+              <DropdownMenuSubContent
+                dir={dir}
+                data-lang={dir === "rtl" ? language : undefined}
+              >
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
                     <UserIcon />
@@ -166,13 +170,19 @@ export function DropdownMenuRtl() {
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>{t.inviteUsers}</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
-              <DropdownMenuSubContent dir={dir}>
+              <DropdownMenuSubContent
+                dir={dir}
+                data-lang={dir === "rtl" ? language : undefined}
+              >
                 <DropdownMenuItem>{t.email}</DropdownMenuItem>
                 <DropdownMenuItem>{t.message}</DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuSubTrigger>{t.more}</DropdownMenuSubTrigger>
                   <DropdownMenuPortal>
-                    <DropdownMenuSubContent dir={dir}>
+                    <DropdownMenuSubContent
+                      dir={dir}
+                      data-lang={dir === "rtl" ? language : undefined}
+                    >
                       <DropdownMenuItem>{t.calendar}</DropdownMenuItem>
                       <DropdownMenuItem>{t.chat}</DropdownMenuItem>
                       <DropdownMenuSeparator />

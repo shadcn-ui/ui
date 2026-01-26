@@ -630,7 +630,7 @@
   }
 
   .cn-hover-card-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
+    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
   }
 
   /* MARK: Input */
@@ -764,7 +764,7 @@
   }
 
   .cn-menubar-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
+    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
   }
 
   .cn-menubar-item {

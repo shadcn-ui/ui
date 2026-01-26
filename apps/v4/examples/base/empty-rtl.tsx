@@ -76,7 +76,8 @@ export function EmptyRtl() {
         size="sm"
         nativeButton={false}
       >
-        {t.learnMore} <ArrowUpRightIcon />
+        {t.learnMore}{" "}
+        <ArrowUpRightIcon className="rtl:rotate-270" data-icon="inline-end" />
       </Button>
     </Empty>
   )

@@ -19,43 +19,58 @@ const translations: Translations = {
   en: {
     dir: "ltr",
     values: {
-      trigger: "Open Popover",
       title: "Dimensions",
       description: "Set the dimensions for the layer.",
+      left: "Left",
+      top: "Top",
+      bottom: "Bottom",
+      right: "Right",
     },
   },
   ar: {
     dir: "rtl",
     values: {
-      trigger: "فتح النافذة المنبثقة",
       title: "الأبعاد",
       description: "تعيين الأبعاد للطبقة.",
+      left: "يسار",
+      top: "أعلى",
+      bottom: "أسفل",
+      right: "يمين",
     },
   },
   he: {
     dir: "rtl",
     values: {
-      trigger: "פתח חלון קופץ",
       title: "מימדים",
       description: "הגדר את המימדים לשכבה.",
+      left: "שמאל",
+      top: "למעלה",
+      bottom: "למטה",
+      right: "ימין",
     },
   },
 }
+
+const physicalSides = ["left", "top", "bottom", "right"] as const
 
 export function PopoverRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button variant="outline">{t.trigger}</Button>
-      </PopoverTrigger>
-      <PopoverContent align="start" dir={dir}>
-        <PopoverHeader>
-          <PopoverTitle>{t.title}</PopoverTitle>
-          <PopoverDescription>{t.description}</PopoverDescription>
-        </PopoverHeader>
-      </PopoverContent>
-    </Popover>
+    <div className="flex flex-wrap justify-center gap-2">
+      {physicalSides.map((side) => (
+        <Popover key={side}>
+          <PopoverTrigger asChild>
+            <Button variant="outline">{t[side]}</Button>
+          </PopoverTrigger>
+          <PopoverContent side={side} dir={dir}>
+            <PopoverHeader>
+              <PopoverTitle>{t.title}</PopoverTitle>
+              <PopoverDescription>{t.description}</PopoverDescription>
+            </PopoverHeader>
+          </PopoverContent>
+        </Popover>
+      ))}
+    </div>
   )
 }

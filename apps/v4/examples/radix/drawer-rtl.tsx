@@ -13,7 +13,7 @@ import {
   DrawerTrigger,
 } from "@/examples/radix/ui-rtl/drawer"
 import { Minus, Plus } from "lucide-react"
-import { Bar, BarChart, ResponsiveContainer } from "recharts"
+import { Bar, BarChart, ResponsiveContainer, XAxis } from "recharts"
 
 import {
   useTranslation,
@@ -65,6 +65,7 @@ const data = [
 const translations: Translations = {
   en: {
     dir: "ltr",
+    locale: "en-US",
     values: {
       trigger: "Open Drawer",
       title: "Move Goal",
@@ -78,6 +79,7 @@ const translations: Translations = {
   },
   ar: {
     dir: "rtl",
+    locale: "ar-EG",
     values: {
       trigger: "فتح الدرج",
       title: "نقل الهدف",
@@ -91,6 +93,7 @@ const translations: Translations = {
   },
   he: {
     dir: "rtl",
+    locale: "he-IL",
     values: {
       trigger: "פתח מגירה",
       title: "הזז מטרה",
@@ -105,7 +108,7 @@ const translations: Translations = {
 }
 
 export function DrawerRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, locale, language, t } = useTranslation(translations, "ar")
   const [goal, setGoal] = React.useState(350)
 
   function onClick(adjustment: number) {
@@ -113,11 +116,11 @@ export function DrawerRtl() {
   }
 
   return (
-    <Drawer dir={dir}>
+    <Drawer>
       <DrawerTrigger asChild>
         <Button variant="outline">{t.trigger}</Button>
       </DrawerTrigger>
-      <DrawerContent dir={dir}>
+      <DrawerContent dir={dir} data-lang={dir === "rtl" ? language : undefined}>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle>{t.title}</DrawerTitle>
@@ -137,7 +140,7 @@ export function DrawerRtl() {
               </Button>
               <div className="flex-1 text-center">
                 <div className="text-7xl font-bold tracking-tighter">
-                  {goal}
+                  {goal.toLocaleString(locale)}
                 </div>
                 <div className="text-muted-foreground text-[0.70rem] uppercase">
                   {t.caloriesPerDay}
@@ -157,11 +160,19 @@ export function DrawerRtl() {
             <div className="mt-3 h-[120px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={data}>
+                  <XAxis
+                    dataKey="goal"
+                    tickLine={false}
+                    tickMargin={10}
+                    axisLine={false}
+                    tickFormatter={(value) => value.toLocaleString(locale)}
+                    reversed={dir === "rtl"}
+                  />
                   <Bar
                     dataKey="goal"
                     style={
                       {
-                        fill: "var(--chart-1)",
+                        fill: "var(--chart-2)",
                       } as React.CSSProperties
                     }
                   />

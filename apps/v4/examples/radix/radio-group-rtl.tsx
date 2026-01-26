@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { Label } from "@/examples/radix/ui-rtl/label"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldLabel,
+} from "@/examples/radix/ui-rtl/field"
 import { RadioGroup, RadioGroupItem } from "@/examples/radix/ui-rtl/radio-group"
 
 import {
@@ -14,24 +19,33 @@ const translations: Translations = {
     dir: "ltr",
     values: {
       default: "Default",
+      defaultDescription: "Standard spacing for most use cases.",
       comfortable: "Comfortable",
+      comfortableDescription: "More space between elements.",
       compact: "Compact",
+      compactDescription: "Minimal spacing for dense layouts.",
     },
   },
   ar: {
     dir: "rtl",
     values: {
       default: "افتراضي",
+      defaultDescription: "تباعد قياسي لمعظم حالات الاستخدام.",
       comfortable: "مريح",
+      comfortableDescription: "مساحة أكبر بين العناصر.",
       compact: "مضغوط",
+      compactDescription: "تباعد أدنى للتخطيطات الكثيفة.",
     },
   },
   he: {
     dir: "rtl",
     values: {
       default: "ברירת מחדל",
+      defaultDescription: "ריווח סטנדרטי לרוב מקרי השימוש.",
       comfortable: "נוח",
+      comfortableDescription: "יותר מקום בין האלמנטים.",
       compact: "קומפקטי",
+      compactDescription: "ריווח מינימלי לפריסות צפופות.",
     },
   },
 }
@@ -41,24 +55,39 @@ export function RadioGroupRtl() {
 
   return (
     <RadioGroup defaultValue="comfortable" className="w-fit" dir={dir}>
-      <div className="flex items-center gap-3">
+      <Field orientation="horizontal">
         <RadioGroupItem value="default" id="r1-rtl" dir={dir} />
-        <Label htmlFor="r1-rtl" dir={dir}>
-          {t.default}
-        </Label>
-      </div>
-      <div className="flex items-center gap-3">
+        <FieldContent>
+          <FieldLabel htmlFor="r1-rtl" dir={dir}>
+            {t.default}
+          </FieldLabel>
+          <FieldDescription dir={dir}>
+            {t.defaultDescription}
+          </FieldDescription>
+        </FieldContent>
+      </Field>
+      <Field orientation="horizontal">
         <RadioGroupItem value="comfortable" id="r2-rtl" dir={dir} />
-        <Label htmlFor="r2-rtl" dir={dir}>
-          {t.comfortable}
-        </Label>
-      </div>
-      <div className="flex items-center gap-3">
+        <FieldContent>
+          <FieldLabel htmlFor="r2-rtl" dir={dir}>
+            {t.comfortable}
+          </FieldLabel>
+          <FieldDescription dir={dir}>
+            {t.comfortableDescription}
+          </FieldDescription>
+        </FieldContent>
+      </Field>
+      <Field orientation="horizontal">
         <RadioGroupItem value="compact" id="r3-rtl" dir={dir} />
-        <Label htmlFor="r3-rtl" dir={dir}>
-          {t.compact}
-        </Label>
-      </div>
+        <FieldContent>
+          <FieldLabel htmlFor="r3-rtl" dir={dir}>
+            {t.compact}
+          </FieldLabel>
+          <FieldDescription dir={dir}>
+            {t.compactDescription}
+          </FieldDescription>
+        </FieldContent>
+      </Field>
     </RadioGroup>
   )
 }

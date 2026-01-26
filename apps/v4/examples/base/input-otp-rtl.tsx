@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Field, FieldLabel } from "@/examples/base/ui-rtl/field"
 import {
   InputOTP,
   InputOTPGroup,
@@ -15,31 +16,45 @@ import {
 const translations: Translations = {
   en: {
     dir: "ltr",
-    values: {},
+    values: {
+      verificationCode: "Verification code",
+    },
   },
   ar: {
     dir: "rtl",
-    values: {},
+    values: {
+      verificationCode: "رمز التحقق",
+    },
   },
   he: {
     dir: "rtl",
-    values: {},
+    values: {
+      verificationCode: "קוד אימות",
+    },
   },
 }
 
 export function InputOTPRtl() {
-  const { dir } = useTranslation(translations, "ar")
+  const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <InputOTP maxLength={6} defaultValue="123456" dir={dir}>
-      <InputOTPGroup>
-        <InputOTPSlot index={0} />
-        <InputOTPSlot index={1} />
-        <InputOTPSlot index={2} />
-        <InputOTPSlot index={3} />
-        <InputOTPSlot index={4} />
-        <InputOTPSlot index={5} />
-      </InputOTPGroup>
-    </InputOTP>
+    <Field className="mx-auto max-w-xs">
+      <FieldLabel htmlFor="input-otp-rtl">{t.verificationCode}</FieldLabel>
+      <InputOTP
+        maxLength={6}
+        defaultValue="123456"
+        dir={dir}
+        id="input-otp-rtl"
+      >
+        <InputOTPGroup>
+          <InputOTPSlot index={0} />
+          <InputOTPSlot index={1} />
+          <InputOTPSlot index={2} />
+          <InputOTPSlot index={3} />
+          <InputOTPSlot index={4} />
+          <InputOTPSlot index={5} />
+        </InputOTPGroup>
+      </InputOTP>
+    </Field>
   )
 }

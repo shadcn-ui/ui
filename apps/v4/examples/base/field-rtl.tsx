@@ -167,7 +167,7 @@ export function FieldRtl() {
   }
 
   return (
-    <div className="w-full max-w-md" dir={dir}>
+    <div className="w-full max-w-md py-6" dir={dir}>
       <form>
         <FieldGroup>
           <FieldSet>
@@ -175,21 +175,21 @@ export function FieldRtl() {
             <FieldDescription>{t.secureTransactions}</FieldDescription>
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="checkout-7j9-card-name-43j">
+                <FieldLabel htmlFor="checkout-7j9-card-name-43j-rtl">
                   {t.nameOnCard}
                 </FieldLabel>
                 <Input
-                  id="checkout-7j9-card-name-43j"
+                  id="checkout-7j9-card-name-43j-rtl"
                   placeholder="Evil Rabbit"
                   required
                 />
               </Field>
               <Field>
-                <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
+                <FieldLabel htmlFor="checkout-7j9-card-number-uw1-rtl">
                   {t.cardNumber}
                 </FieldLabel>
                 <Input
-                  id="checkout-7j9-card-number-uw1"
+                  id="checkout-7j9-card-number-uw1-rtl"
                   placeholder="1234 5678 9012 3456"
                   required
                 />
@@ -197,11 +197,11 @@ export function FieldRtl() {
               </Field>
               <div className="grid grid-cols-3 gap-4">
                 <Field>
-                  <FieldLabel htmlFor="checkout-exp-month-ts6">
+                  <FieldLabel htmlFor="checkout-exp-month-ts6-rtl">
                     {t.month}
                   </FieldLabel>
                   <Select items={months}>
-                    <SelectTrigger id="checkout-exp-month-ts6">
+                    <SelectTrigger id="checkout-exp-month-ts6-rtl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent dir={dir}>
@@ -216,11 +216,11 @@ export function FieldRtl() {
                   </Select>
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="checkout-7j9-exp-year-f59">
+                  <FieldLabel htmlFor="checkout-7j9-exp-year-f59-rtl">
                     {t.year}
                   </FieldLabel>
                   <Select items={years}>
-                    <SelectTrigger id="checkout-7j9-exp-year-f59">
+                    <SelectTrigger id="checkout-7j9-exp-year-f59-rtl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent dir={dir}>
@@ -235,8 +235,10 @@ export function FieldRtl() {
                   </Select>
                 </Field>
                 <Field>
-                  <FieldLabel htmlFor="checkout-7j9-cvv">{t.cvv}</FieldLabel>
-                  <Input id="checkout-7j9-cvv" placeholder="123" required />
+                  <FieldLabel htmlFor="checkout-7j9-cvv-rtl">
+                    {t.cvv}
+                  </FieldLabel>
+                  <Input id="checkout-7j9-cvv-rtl" placeholder="123" required />
                 </Field>
               </div>
             </FieldGroup>
@@ -248,11 +250,11 @@ export function FieldRtl() {
             <FieldGroup>
               <Field orientation="horizontal">
                 <Checkbox
-                  id="checkout-7j9-same-as-shipping-wgm"
+                  id="checkout-7j9-same-as-shipping-wgm-rtl"
                   defaultChecked
                 />
                 <FieldLabel
-                  htmlFor="checkout-7j9-same-as-shipping-wgm"
+                  htmlFor="checkout-7j9-same-as-shipping-wgm-rtl"
                   className="font-normal"
                 >
                   {t.sameAsShipping}
@@ -263,11 +265,11 @@ export function FieldRtl() {
           <FieldSet>
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="checkout-7j9-optional-comments">
+                <FieldLabel htmlFor="checkout-7j9-optional-comments-rtl">
                   {t.comments}
                 </FieldLabel>
                 <Textarea
-                  id="checkout-7j9-optional-comments"
+                  id="checkout-7j9-optional-comments-rtl"
                   placeholder={t.commentsPlaceholder}
                   className="resize-none"
                 />

@@ -19,43 +19,68 @@ import {
 const translations: Translations = {
   en: {
     dir: "ltr",
-    values: {},
+    values: {
+      previous: "Previous",
+      next: "Next",
+    },
   },
   ar: {
     dir: "rtl",
-    values: {},
+    values: {
+      previous: "السابق",
+      next: "التالي",
+    },
   },
   he: {
     dir: "rtl",
-    values: {},
+    values: {
+      previous: "הקודם",
+      next: "הבא",
+    },
   },
 }
 
+function toArabicNumerals(num: number): string {
+  const arabicNumerals = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
+  return num
+    .toString()
+    .split("")
+    .map((digit) => arabicNumerals[parseInt(digit, 10)])
+    .join("")
+}
+
 export function PaginationRtl() {
-  const { dir } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
+
+  const formatNumber = (num: number): string => {
+    if (language === "ar") {
+      return toArabicNumerals(num)
+    }
+    return num.toString()
+  }
 
   return (
     <Pagination dir={dir}>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious href="#" text={t.previous} />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
+          <PaginationLink href="#">{formatNumber(1)}</PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationLink href="#" isActive>
-            2
+            {formatNumber(2)}
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
+          <PaginationLink href="#">{formatNumber(3)}</PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationEllipsis />
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href="#" />
+          <PaginationNext href="#" text={t.next} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

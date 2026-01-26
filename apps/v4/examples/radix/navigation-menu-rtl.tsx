@@ -11,7 +11,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/examples/radix/ui-rtl/navigation-menu"
-import { CircleAlertIcon } from "lucide-react"
 
 import {
   useTranslation,
@@ -158,14 +157,17 @@ const components = [
 ] as const
 
 export function NavigationMenuRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
 
   return (
     <NavigationMenu dir={dir}>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>{t.gettingStarted}</NavigationMenuTrigger>
-          <NavigationMenuContent dir={dir}>
+          <NavigationMenuContent
+            dir={dir}
+            data-lang={dir === "rtl" ? language : undefined}
+          >
             <ul className="w-96">
               <ListItem href="/docs" title={t.introduction}>
                 {t.introductionDesc}
@@ -181,7 +183,10 @@ export function NavigationMenuRtl() {
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:flex">
           <NavigationMenuTrigger>{t.components}</NavigationMenuTrigger>
-          <NavigationMenuContent dir={dir}>
+          <NavigationMenuContent
+            dir={dir}
+            data-lang={dir === "rtl" ? language : undefined}
+          >
             <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
                 <ListItem
@@ -196,34 +201,11 @@ export function NavigationMenuRtl() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>{t.withIcon}</NavigationMenuTrigger>
-          <NavigationMenuContent dir={dir}>
-            <ul className="grid w-[200px]">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link href="#" className="flex-row items-center gap-2">
-                    <CircleAlertIcon />
-                    {t.backlog}
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="#" className="flex-row items-center gap-2">
-                    <CircleAlertIcon />
-                    {t.toDo}
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="#" className="flex-row items-center gap-2">
-                    <CircleAlertIcon />
-                    {t.done}
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink
+            asChild
+            className={navigationMenuTriggerStyle()}
+            data-lang={dir === "rtl" ? language : undefined}
+          >
             <Link href="/docs">{t.docs}</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>

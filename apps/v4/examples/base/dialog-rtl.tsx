@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Button } from "@/examples/base/ui-rtl/button"
 import {
   Dialog,
@@ -12,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/examples/base/ui-rtl/dialog"
+import { Field, FieldGroup } from "@/examples/base/ui-rtl/field"
 import { Input } from "@/examples/base/ui-rtl/input"
 import { Label } from "@/examples/base/ui-rtl/label"
 
@@ -62,7 +62,7 @@ const translations: Translations = {
 }
 
 export function DialogRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
 
   return (
     <Dialog>
@@ -70,21 +70,25 @@ export function DialogRtl() {
         <DialogTrigger render={<Button variant="outline" />}>
           {t.openDialog}
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]" dir={dir}>
+        <DialogContent
+          className="sm:max-w-sm"
+          dir={dir}
+          data-lang={dir === "rtl" ? language : undefined}
+        >
           <DialogHeader>
             <DialogTitle>{t.editProfile}</DialogTitle>
             <DialogDescription>{t.description}</DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4">
-            <div className="grid gap-3">
+          <FieldGroup>
+            <Field>
               <Label htmlFor="name-1">{t.name}</Label>
               <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="grid gap-3">
+            </Field>
+            <Field>
               <Label htmlFor="username-1">{t.username}</Label>
               <Input id="username-1" name="username" defaultValue="@peduarte" />
-            </div>
-          </div>
+            </Field>
+          </FieldGroup>
           <DialogFooter>
             <DialogClose render={<Button variant="outline" />}>
               {t.cancel}

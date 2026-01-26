@@ -22,6 +22,7 @@ export type Translations<
   Language,
   {
     dir: Direction
+    locale?: string
     values: T
   }
 >
@@ -73,8 +74,8 @@ export function useTranslation<T extends Record<string, string>>(
   const language = context?.language ?? localLanguage
   const setLanguage = context?.setLanguage ?? setLocalLanguage
 
-  const { dir, values: t } = translations[language]
-  return { language, setLanguage, dir, t }
+  const { dir, locale, values: t } = translations[language]
+  return { language, setLanguage, dir, locale, t }
 }
 
 export interface LanguageSelectorProps {

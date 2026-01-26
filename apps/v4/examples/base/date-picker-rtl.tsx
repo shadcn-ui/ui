@@ -11,7 +11,10 @@ import {
 import { format } from "date-fns"
 import { arSA, he } from "date-fns/locale"
 import { ChevronDownIcon } from "lucide-react"
-import { arSA as arSADayPicker, he as heDayPicker } from "react-day-picker/locale"
+import {
+  arSA as arSADayPicker,
+  he as heDayPicker,
+} from "react-day-picker/locale"
 
 import {
   useTranslation,
