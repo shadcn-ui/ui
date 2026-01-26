@@ -33,7 +33,7 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
           <span className="font-medium">Theme:</span>
           <SelectValue placeholder="Select a theme" />
         </SelectTrigger>
-        <SelectContent align="end">
+        <SelectContent align="end" position="popper">
           {THEMES.map((theme) => (
             <SelectItem
               key={theme.name}

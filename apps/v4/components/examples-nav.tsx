@@ -31,6 +31,12 @@ const examples = [
     code: "https://github.com/shadcn/ui/tree/main/apps/v4/app/(app)/examples/authentication",
     hidden: false,
   },
+  {
+    name: "RTL",
+    href: "/examples/rtl",
+    code: "https://github.com/shadcn/ui/tree/main/apps/v4/app/(app)/examples/rtl",
+    hidden: false,
+  },
 ]
 
 export function ExamplesNav({

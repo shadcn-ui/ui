@@ -5569,6 +5569,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "typography-rtl": {
+      name: "typography-rtl",
+      filePath: "examples/radix/typography-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/typography-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "typography-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "typography-small": {
       name: "typography-small",
       filePath: "examples/radix/typography-small.tsx",
@@ -11158,6 +11171,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "typography-p"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "typography-rtl": {
+      name: "typography-rtl",
+      filePath: "examples/base/typography-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/typography-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "typography-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },

@@ -61,9 +61,7 @@ export function RadioGroupRtl() {
           <FieldLabel htmlFor="r1-rtl" dir={dir}>
             {t.default}
           </FieldLabel>
-          <FieldDescription dir={dir}>
-            {t.defaultDescription}
-          </FieldDescription>
+          <FieldDescription dir={dir}>{t.defaultDescription}</FieldDescription>
         </FieldContent>
       </Field>
       <Field orientation="horizontal">
@@ -83,9 +81,7 @@ export function RadioGroupRtl() {
           <FieldLabel htmlFor="r3-rtl" dir={dir}>
             {t.compact}
           </FieldLabel>
-          <FieldDescription dir={dir}>
-            {t.compactDescription}
-          </FieldDescription>
+          <FieldDescription dir={dir}>{t.compactDescription}</FieldDescription>
         </FieldContent>
       </Field>
     </RadioGroup>

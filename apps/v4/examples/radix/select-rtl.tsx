@@ -69,7 +69,7 @@ const translations: Translations = {
 }
 
 export function SelectRtl() {
-  const { dir, t } = useTranslation(translations, "ar")
+  const { dir, t, language } = useTranslation(translations, "ar")
   const [selectedFruit, setSelectedFruit] = React.useState<string>("")
 
   const fruits = [
@@ -88,10 +88,10 @@ export function SelectRtl() {
 
   return (
     <Select value={selectedFruit} onValueChange={setSelectedFruit}>
-      <SelectTrigger className="w-28" dir={dir}>
+      <SelectTrigger className="w-32" dir={dir}>
         <SelectValue placeholder={t.selectFruit} />
       </SelectTrigger>
-      <SelectContent dir={dir}>
+      <SelectContent dir={dir} data-lang={dir === "rtl" ? language : undefined}>
         <SelectGroup>
           <SelectLabel>{t.fruits}</SelectLabel>
           {fruits.map((item) => (

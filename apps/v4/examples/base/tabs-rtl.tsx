@@ -102,7 +102,7 @@ export function TabsRtl() {
   const { dir, t } = useTranslation(translations, "ar")
 
   return (
-    <Tabs defaultValue="overview" className="w-[400px]" dir={dir}>
+    <Tabs defaultValue="overview" className="w-full max-w-sm" dir={dir}>
       <TabsList dir={dir}>
         <TabsTrigger value="overview">{t.overview}</TabsTrigger>
         <TabsTrigger value="analytics">{t.analytics}</TabsTrigger>

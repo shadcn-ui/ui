@@ -87,8 +87,10 @@ export function LanguageSelector({
   value,
   onValueChange,
   className,
+  languages = ["en", "ar", "he"],
 }: LanguageSelectorProps & {
   className?: string
+  languages?: Language[]
 }) {
   return (
     <Select
@@ -109,11 +111,13 @@ export function LanguageSelector({
         className="data-closed:animate-none data-open:animate-none"
       >
         <SelectGroup>
-          {languageOptions.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.label}
-            </SelectItem>
-          ))}
+          {languageOptions
+            .filter((option) => languages.includes(option.value as Language))
+            .map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
+              </SelectItem>
+            ))}
         </SelectGroup>
       </SelectContent>
     </Select>

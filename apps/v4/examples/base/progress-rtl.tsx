@@ -57,7 +57,9 @@ export function ProgressRtl() {
       <ProgressLabel>{t.label}</ProgressLabel>
       <ProgressValue>
         {(value) => (
-          <span className="ms-auto">{formatNumber(parseFloat(value ?? "0"))}%</span>
+          <span className="ms-auto">
+            {formatNumber(parseFloat(value ?? "0"))}%
+          </span>
         )}
       </ProgressValue>
     </Progress>
