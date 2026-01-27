@@ -193,6 +193,7 @@ export function FieldDemo() {
                 <Textarea
                   id="rtl-comments"
                   placeholder={t.commentsPlaceholder}
+                  className="resize-none"
                 />
               </Field>
             </FieldGroup>

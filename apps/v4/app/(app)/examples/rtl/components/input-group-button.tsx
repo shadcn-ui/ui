@@ -51,27 +51,31 @@ export function InputGroupButtonExample() {
       </Label>
       <InputGroup className="[--radius:9999px]">
         <InputGroupInput id="input-secure-rtl" className="!pr-0.5" />
-        <Popover>
-          <PopoverTrigger render={<InputGroupAddon />}>
-            <InputGroupButton
-              variant="secondary"
-              size="icon-xs"
-              aria-label={t.info}
+        <InputGroupAddon>
+          <Popover>
+            <PopoverTrigger
+              render={
+                <InputGroupButton
+                  variant="secondary"
+                  size="icon-xs"
+                  aria-label={t.info}
+                />
+              }
             >
               <IconInfoCircle />
-            </InputGroupButton>
-          </PopoverTrigger>
-          <PopoverContent
-            align="end"
-            alignOffset={10}
-            className="flex flex-col gap-1 rounded-xl text-sm"
-            data-lang={lang}
-            dir={t.dir}
-          >
-            <p className="font-medium">{t.priceInfo}</p>
-            <p>{t.priceDescription}</p>
-          </PopoverContent>
-        </Popover>
+            </PopoverTrigger>
+            <PopoverContent
+              align="end"
+              alignOffset={10}
+              className="flex flex-col gap-1 rounded-xl text-sm"
+              data-lang={lang}
+              dir={t.dir}
+            >
+              <p className="font-medium">{t.priceInfo}</p>
+              <p>{t.priceDescription}</p>
+            </PopoverContent>
+          </Popover>
+        </InputGroupAddon>
         <InputGroupAddon className="text-muted-foreground">
           {t.currency}
         </InputGroupAddon>
