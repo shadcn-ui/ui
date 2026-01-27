@@ -534,6 +534,12 @@
     "description": "Fullstack registry items to start those big features. Utilcn has ChatGPT Apps, file uploading (with progress bars) and downloading, and a way to make your env vars typesafe on the backend."
   },
   {
+    "name": "@w3-kit",
+    "homepage": "https://w3-kit.com",
+    "url": "https://w3-kit.com/registry/{name}.json",
+    "description": "Web3 UI components for blockchain dApps. Includes wallet connection, token swaps, NFT cards, staking interfaces, and 20+ more crypto components."
+  },
+  {
     "name": "@wandry-ui",
     "homepage": "http://ui.wandry.com.ua/",
     "url": "https://ui.wandry.com.ua/r/{name}.json",
