@@ -140,7 +140,7 @@ function ContextMenuSubTrigger({
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
-        className="ml-auto rtl:rotate-180"
+        className="ml-auto"
       />
     </ContextMenuPrimitive.SubmenuTrigger>
   )

@@ -92,7 +92,6 @@ function BreadcrumbSeparator({
           hugeicons="ArrowRight01Icon"
           phosphor="CaretRightIcon"
           remixicon="RiArrowRightSLine"
-          className="rtl:rotate-180"
         />
       )}
     </li>

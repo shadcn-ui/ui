@@ -87,6 +87,27 @@ const RTL_SWAP_MAPPINGS: [string, string][] = [
   ["cursor-e-resize", "cursor-w-resize"],
 ]
 
+// Directional icon names that should get rtl:rotate-180.
+// These are checked against the lucide prop value.
+const RTL_ROTATE_ICONS = [
+  "ChevronRightIcon",
+  "ChevronLeftIcon",
+  "CaretRightIcon",
+  "CaretLeftIcon",
+  "ArrowRightIcon",
+  "ArrowLeftIcon",
+  "ArrowUpRightIcon",
+  "ArrowUpLeftIcon",
+  "ArrowDownRightIcon",
+  "ArrowDownLeftIcon",
+  "MoveRightIcon",
+  "MoveLeftIcon",
+  "MoveUpRightIcon",
+  "MoveDownRightIcon",
+  "MoveUpLeftIcon",
+  "MoveDownLeftIcon",
+]
+
 // Logical side selector mappings (additive - adds logical alongside physical).
 // Used when cn-logical-sides marker class is present.
 // In RTL: inline-start = right, inline-end = left.
@@ -359,37 +380,78 @@ export const transformRtl: Transformer = async ({ sourceFile, config }) => {
     }
   })
 
-  // Transform directional prop values (e.g., side="right" → side="left").
-  // sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
-  //   const propName = node.getNameNode().getText()
-  //   const propMapping = RTL_PROP_MAPPINGS[propName]
+  // Add rtl:rotate-180 to directional icons.
+  sourceFile
+    .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
+    .forEach((element) => {
+      const lucideAttr = element
+        .getAttributes()
+        .find(
+          (attr) =>
+            attr.isKind(SyntaxKind.JsxAttribute) &&
+            attr.getNameNode().getText() === "lucide"
+        )
 
-  //   if (propMapping) {
-  //     const initializer = node.getInitializer()
-  //     if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-  //       const value = stripQuotes(initializer.getText() ?? "")
-  //       if (propMapping[value]) {
-  //         initializer.replaceWithText(`"${propMapping[value]}"`)
-  //       }
-  //     }
-  //   }
-  // })
+      if (!lucideAttr?.isKind(SyntaxKind.JsxAttribute)) {
+        return
+      }
 
-  // Transform default parameter values (e.g., side = "right" → side = "left").
-  // sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
-  //   const paramName = node.getNameNode().getText()
-  //   const propMapping = RTL_PROP_MAPPINGS[paramName]
+      const lucideValue = lucideAttr.getInitializer()
+      if (!lucideValue?.isKind(SyntaxKind.StringLiteral)) {
+        return
+      }
 
-  //   if (propMapping) {
-  //     const initializer = node.getInitializer()
-  //     if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-  //       const value = stripQuotes(initializer.getText() ?? "")
-  //       if (propMapping[value]) {
-  //         initializer.replaceWithText(`"${propMapping[value]}"`)
-  //       }
-  //     }
-  //   }
-  // })
+      const iconName = stripQuotes(lucideValue.getText() ?? "")
+      if (!RTL_ROTATE_ICONS.includes(iconName)) {
+        return
+      }
+
+      // Find or create className attribute.
+      const classNameAttr = element
+        .getAttributes()
+        .find(
+          (attr) =>
+            attr.isKind(SyntaxKind.JsxAttribute) &&
+            attr.getNameNode().getText() === "className"
+        )
+
+      if (classNameAttr?.isKind(SyntaxKind.JsxAttribute)) {
+        const initializer = classNameAttr.getInitializer()
+        if (initializer?.isKind(SyntaxKind.StringLiteral)) {
+          const currentValue = stripQuotes(initializer.getText() ?? "")
+          if (!currentValue.includes("rtl:rotate-180")) {
+            initializer.replaceWithText(`"${currentValue} rtl:rotate-180"`)
+          }
+        } else if (initializer?.isKind(SyntaxKind.JsxExpression)) {
+          // Handle className={cn(...)} - find the cn call and append to first string arg.
+          const cnCall = initializer
+            .getDescendantsOfKind(SyntaxKind.CallExpression)
+            .find((call) => call.getExpression().getText() === "cn")
+          if (cnCall) {
+            const firstStringArg = cnCall
+              .getArguments()
+              .find((arg) => arg.isKind(SyntaxKind.StringLiteral))
+            if (firstStringArg?.isKind(SyntaxKind.StringLiteral)) {
+              const currentValue = stripQuotes(firstStringArg.getText() ?? "")
+              if (!currentValue.includes("rtl:rotate-180")) {
+                firstStringArg.replaceWithText(
+                  `"${currentValue} rtl:rotate-180"`
+                )
+              }
+            } else {
+              // No string arg, insert at beginning.
+              cnCall.insertArgument(0, `"rtl:rotate-180"`)
+            }
+          }
+        }
+      } else {
+        // No className attribute, add one.
+        element.addAttribute({
+          name: "className",
+          initializer: `"rtl:rotate-180"`,
+        })
+      }
+    })
 
   // Find mergeProps calls with className property containing cn().
   sourceFile
@@ -570,37 +632,76 @@ export async function transformDirection(
     }
   })
 
-  // Transform directional prop values (e.g., side="right" → side="left").
-  // sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
-  //   const propName = node.getNameNode().getText()
-  //   const propMapping = RTL_PROP_MAPPINGS[propName]
+  // Add rtl:rotate-180 to directional icons.
+  sourceFile
+    .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
+    .forEach((element) => {
+      const lucideAttr = element
+        .getAttributes()
+        .find(
+          (attr) =>
+            attr.isKind(SyntaxKind.JsxAttribute) &&
+            attr.getNameNode().getText() === "lucide"
+        )
 
-  //   if (propMapping) {
-  //     const initializer = node.getInitializer()
-  //     if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-  //       const value = initializer.getLiteralText()
-  //       if (propMapping[value]) {
-  //         initializer.setLiteralValue(propMapping[value])
-  //       }
-  //     }
-  //   }
-  // })
+      if (!lucideAttr?.isKind(SyntaxKind.JsxAttribute)) {
+        return
+      }
 
-  // Transform default parameter values (e.g., side = "right" → side = "left").
-  // sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
-  //   const paramName = node.getNameNode().getText()
-  //   const propMapping = RTL_PROP_MAPPINGS[paramName]
+      const lucideValue = lucideAttr.getInitializer()
+      if (!lucideValue?.isKind(SyntaxKind.StringLiteral)) {
+        return
+      }
 
-  //   if (propMapping) {
-  //     const initializer = node.getInitializer()
-  //     if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-  //       const value = initializer.getLiteralText()
-  //       if (propMapping[value]) {
-  //         initializer.setLiteralValue(propMapping[value])
-  //       }
-  //     }
-  //   }
-  // })
+      const iconName = lucideValue.getLiteralText()
+      if (!RTL_ROTATE_ICONS.includes(iconName)) {
+        return
+      }
+
+      // Find or create className attribute.
+      const classNameAttr = element
+        .getAttributes()
+        .find(
+          (attr) =>
+            attr.isKind(SyntaxKind.JsxAttribute) &&
+            attr.getNameNode().getText() === "className"
+        )
+
+      if (classNameAttr?.isKind(SyntaxKind.JsxAttribute)) {
+        const initializer = classNameAttr.getInitializer()
+        if (initializer?.isKind(SyntaxKind.StringLiteral)) {
+          const currentValue = initializer.getLiteralText()
+          if (!currentValue.includes("rtl:rotate-180")) {
+            initializer.setLiteralValue(`${currentValue} rtl:rotate-180`)
+          }
+        } else if (initializer?.isKind(SyntaxKind.JsxExpression)) {
+          // Handle className={cn(...)} - find the cn call and append to first string arg.
+          const cnCall = initializer
+            .getDescendantsOfKind(SyntaxKind.CallExpression)
+            .find((call) => call.getExpression().getText() === "cn")
+          if (cnCall) {
+            const firstStringArg = cnCall
+              .getArguments()
+              .find((arg) => arg.isKind(SyntaxKind.StringLiteral))
+            if (firstStringArg?.isKind(SyntaxKind.StringLiteral)) {
+              const currentValue = firstStringArg.getLiteralText()
+              if (!currentValue.includes("rtl:rotate-180")) {
+                firstStringArg.setLiteralValue(`${currentValue} rtl:rotate-180`)
+              }
+            } else {
+              // No string arg, insert at beginning.
+              cnCall.insertArgument(0, `"rtl:rotate-180"`)
+            }
+          }
+        }
+      } else {
+        // No className attribute, add one.
+        element.addAttribute({
+          name: "className",
+          initializer: `"rtl:rotate-180"`,
+        })
+      }
+    })
 
   // Find mergeProps calls with className property containing cn().
   sourceFile

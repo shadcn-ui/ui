@@ -72,8 +72,8 @@ export function CarouselRtl() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="rtl:rotate-180" />
-      <CarouselNext className="rtl:rotate-180" />
+      <CarouselPrevious />
+      <CarouselNext />
     </Carousel>
   )
 }

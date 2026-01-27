@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Card, CardContent } from "@/examples/radix/ui-rtl/card"
 import {
   Carousel,
@@ -72,8 +71,8 @@ export function CarouselRtl() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="rtl:rotate-180" />
-      <CarouselNext className="rtl:rotate-180" />
+      <CarouselPrevious />
+      <CarouselNext />
     </Carousel>
   )
 }

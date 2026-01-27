@@ -564,4 +564,100 @@ export function Foo() {
     expect(result).not.toContain("ml-2")
     expect(result).not.toContain("right-0")
   })
+
+  test("adds rtl:rotate-180 to directional icons with existing className", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo() {
+  return <IconPlaceholder lucide="ChevronRightIcon" className="size-4" />
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain("rtl:rotate-180")
+    expect(result).toContain("size-4")
+  })
+
+  test("adds rtl:rotate-180 to directional icons without className", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo() {
+  return <IconPlaceholder lucide="ChevronLeftIcon" />
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain('className="rtl:rotate-180"')
+  })
+
+  test("does not add rtl:rotate-180 to non-directional icons", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo() {
+  return <IconPlaceholder lucide="ChevronDownIcon" className="size-4" />
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).not.toContain("rtl:rotate-180")
+    expect(result).toContain("size-4")
+  })
+
+  test("appends rtl:rotate-180 to first string arg in cn() for directional icons", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo({ className }) {
+  return <IconPlaceholder lucide="ChevronRightIcon" className={cn("size-4", className)} />
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    // Should append to first string arg, not add as new arg.
+    expect(result).toContain('cn("size-4 rtl:rotate-180", className)')
+    expect(result).not.toContain('cn("size-4", className, "rtl:rotate-180")')
+  })
 })

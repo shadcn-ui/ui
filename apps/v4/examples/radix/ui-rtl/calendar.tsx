@@ -153,7 +153,7 @@ function Calendar({
                 hugeicons="ArrowLeftIcon"
                 phosphor="CaretLeftIcon"
                 remixicon="RiArrowLeftSLine"
-                className={cn("size-4", className)}
+                className={cn("size-4 rtl:rotate-180", className)}
                 {...props}
               />
             )
@@ -167,7 +167,7 @@ function Calendar({
                 hugeicons="ArrowRightIcon"
                 phosphor="CaretRightIcon"
                 remixicon="RiArrowRightSLine"
-                className={cn("size-4", className)}
+                className={cn("size-4 rtl:rotate-180", className)}
                 {...props}
               />
             )
