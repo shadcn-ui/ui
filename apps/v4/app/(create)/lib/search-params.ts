@@ -14,7 +14,6 @@ import {
   BASE_COLORS,
   BASES,
   DEFAULT_CONFIG,
-  DIRECTIONS,
   iconLibraries,
   MENU_ACCENTS,
   MENU_COLORS,
@@ -23,7 +22,6 @@ import {
   THEMES,
   type BaseColorName,
   type BaseName,
-  type DirectionValue,
   type FontValue,
   type IconLibraryName,
   type MenuAccentValue,
@@ -54,9 +52,6 @@ const designSystemSearchParams = {
   baseColor: parseAsStringLiteral<BaseColorName>(
     BASE_COLORS.map((b) => b.name)
   ).withDefault(DEFAULT_CONFIG.baseColor),
-  direction: parseAsStringLiteral<DirectionValue>(
-    DIRECTIONS.map((d) => d.value)
-  ).withDefault(DEFAULT_CONFIG.direction),
   menuAccent: parseAsStringLiteral<MenuAccentValue>(
     MENU_ACCENTS.map((a) => a.value)
   ).withDefault(DEFAULT_CONFIG.menuAccent),

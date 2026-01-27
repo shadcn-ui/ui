@@ -11,7 +11,6 @@ import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { MenuAccentPicker } from "@/app/(create)/components/accent-picker"
 import { BaseColorPicker } from "@/app/(create)/components/base-color-picker"
 import { BasePicker } from "@/app/(create)/components/base-picker"
-import { DirectionPicker } from "@/app/(create)/components/direction-picker"
 import { FontPicker } from "@/app/(create)/components/font-picker"
 import { IconLibraryPicker } from "@/app/(create)/components/icon-library-picker"
 import { MenuColorPicker } from "@/app/(create)/components/menu-picker"
@@ -76,7 +75,6 @@ export function Customizer() {
           <IconLibraryPicker isMobile={isMobile} anchorRef={anchorRef} />
           <FontPicker fonts={FONTS} isMobile={isMobile} anchorRef={anchorRef} />
           <RadiusPicker isMobile={isMobile} anchorRef={anchorRef} />
-          <DirectionPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuColorPicker isMobile={isMobile} anchorRef={anchorRef} />
           <MenuAccentPicker isMobile={isMobile} anchorRef={anchorRef} />
           <div className="mt-auto hidden w-full flex-col items-center gap-0 md:flex">

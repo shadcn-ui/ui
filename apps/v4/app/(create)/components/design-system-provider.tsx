@@ -17,7 +17,7 @@ export function DesignSystemProvider({
   children: React.ReactNode
 }) {
   const [
-    { style, theme, font, baseColor, direction, menuAccent, menuColor, radius },
+    { style, theme, font, baseColor, menuAccent, menuColor, radius },
     setSearchParams,
   ] = useDesignSystemSearchParams({
     shallow: true, // No need to go through the server…
@@ -165,13 +165,6 @@ export function DesignSystemProvider({
       observer.disconnect()
     }
   }, [menuColor])
-
-  // Set dir attribute on html element when direction changes.
-  React.useLayoutEffect(() => {
-    if (direction) {
-      document.documentElement.dir = direction
-    }
-  }, [direction])
 
   if (!isReady) {
     return null
