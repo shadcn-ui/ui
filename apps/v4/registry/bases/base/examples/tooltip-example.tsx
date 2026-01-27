@@ -1,7 +1,5 @@
 "use client"
 
-import { DirectionProvider } from "@/examples/radix/ui/direction"
-
 import {
   Example,
   ExampleWrapper,
@@ -47,34 +45,30 @@ function TooltipBasic() {
 
 function TooltipSides() {
   return (
-    <Example title="Sides" dir="rtl">
-      <DirectionProvider dir="rtl">
-        <div className="flex flex-wrap gap-2">
-          {(
-            [
-              "inline-start",
-              "left",
-              "top",
-              "bottom",
-              "right",
-              "inline-end",
-            ] as const
-          ).map((side) => (
-            <Tooltip key={side}>
-              <TooltipTrigger
-                render={
-                  <Button variant="outline" className="w-fit capitalize" />
-                }
-              >
-                {side.replace("-", " ")}
-              </TooltipTrigger>
-              <TooltipContent side={side} dir="rtl">
-                <p>Add to library</p>
-              </TooltipContent>
-            </Tooltip>
-          ))}
-        </div>
-      </DirectionProvider>
+    <Example title="Sides">
+      <div className="flex flex-wrap gap-2">
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
+          <Tooltip key={side}>
+            <TooltipTrigger
+              render={<Button variant="outline" className="w-fit capitalize" />}
+            >
+              {side.replace("-", " ")}
+            </TooltipTrigger>
+            <TooltipContent side={side}>
+              <p>Add to library</p>
+            </TooltipContent>
+          </Tooltip>
+        ))}
+      </div>
     </Example>
   )
 }
