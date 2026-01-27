@@ -201,7 +201,7 @@ function AppSidebarWithProvider() {
         <LanguageSelector
           value={language}
           onValueChange={setLanguage}
-          className="rtl:right-auto rtl:left-4"
+          className="absolute top-4 right-4 z-10 rtl:right-auto rtl:left-4"
         />
         <AppSidebar />
       </div>
