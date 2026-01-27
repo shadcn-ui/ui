@@ -294,7 +294,7 @@
   }
 
   .cn-combobox-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
+    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
   }
 
   .cn-combobox-label {
@@ -387,7 +387,7 @@
   }
 
   .cn-command-item {
-    @apply data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground relative flex min-h-7 cursor-default items-center gap-2 rounded-md px-2.5 py-1.5 text-xs/relaxed outline-hidden select-none [&_svg:not([class*='size-'])]:size-3.5;
+    @apply data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground relative flex min-h-7 cursor-default items-center gap-2 rounded-md px-2.5 py-1.5 text-xs/relaxed outline-hidden select-none [&_svg:not([class*='size-'])]:size-3.5 [[data-slot=dialog-content]_&]:rounded-md;
   }
 
   .cn-command-shortcut {
@@ -400,7 +400,7 @@
   }
 
   .cn-context-menu-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
+    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
   }
 
   .cn-context-menu-item {
@@ -507,7 +507,7 @@
   }
 
   .cn-dropdown-menu-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
+    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
   }
 
   .cn-dropdown-menu-item {
@@ -634,7 +634,7 @@
   }
 
   .cn-hover-card-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
+    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
   }
 
   /* MARK: Input */
@@ -768,7 +768,7 @@
   }
 
   .cn-menubar-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
+    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
   }
 
   .cn-menubar-item {
@@ -973,7 +973,7 @@
   }
 
   .cn-select-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
+    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
   }
 
   .cn-select-label {
@@ -1296,7 +1296,7 @@
   }
 
   .cn-tooltip-content-logical {
-    @apply data-[side=inline-start]:slide-in-from-end-2 data-[side=inline-end]:slide-in-from-start-2;
+    @apply data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2;
   }
 
   .cn-tooltip-arrow {
@@ -1304,7 +1304,7 @@
   }
 
   .cn-tooltip-arrow-logical {
-    @apply data-[side=inline-end]:-start-1 data-[side=inline-end]:top-1/2! data-[side=inline-end]:-translate-y-1/2 data-[side=inline-start]:-end-1 data-[side=inline-start]:top-1/2! data-[side=inline-start]:-translate-y-1/2;
+    @apply data-[side=inline-end]:top-1/2! data-[side=inline-end]:-left-1 data-[side=inline-end]:-translate-y-1/2 data-[side=inline-start]:top-1/2! data-[side=inline-start]:-right-1 data-[side=inline-start]:-translate-y-1/2;
   }
 
   /* MARK: Input Group */

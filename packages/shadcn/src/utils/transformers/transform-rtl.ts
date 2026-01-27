@@ -87,6 +87,16 @@ const RTL_SWAP_MAPPINGS: [string, string][] = [
   ["cursor-e-resize", "cursor-w-resize"],
 ]
 
+// Slide animation mappings for logical side variants.
+// When inside data-[side=inline-start/end], slide directions should use logical values.
+// Pattern: [variant, physical, logical]
+const RTL_LOGICAL_SIDE_SLIDE_MAPPINGS: [string, string, string][] = [
+  ["data-[side=inline-start]", "slide-in-from-right", "slide-in-from-end"],
+  ["data-[side=inline-start]", "slide-out-to-right", "slide-out-to-end"],
+  ["data-[side=inline-end]", "slide-in-from-left", "slide-in-from-start"],
+  ["data-[side=inline-end]", "slide-out-to-left", "slide-out-to-start"],
+]
+
 // Directional icon names that should get rtl:rotate-180.
 // These are checked against the lucide prop value.
 const RTL_ROTATE_ICONS = [
@@ -198,6 +208,22 @@ export function applyRtlMapping(input: string) {
             ? `rtl:${variant}:${swapped}`
             : `rtl:${swapped}`
           return [className, rtlClass]
+        }
+      }
+
+      // Check for slide animations inside logical side variants.
+      // e.g., data-[side=inline-start]:slide-in-from-right-2 → data-[side=inline-start]:slide-in-from-end-2
+      for (const [
+        variantPattern,
+        physical,
+        logical,
+      ] of RTL_LOGICAL_SIDE_SLIDE_MAPPINGS) {
+        if (variant?.includes(variantPattern) && value.startsWith(physical)) {
+          const mappedValue = value.replace(physical, logical)
+          const result = modifier
+            ? `${variant}:${mappedValue}/${modifier}`
+            : `${variant}:${mappedValue}`
+          return [result]
         }
       }
 

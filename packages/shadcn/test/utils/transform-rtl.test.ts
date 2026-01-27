@@ -120,6 +120,31 @@ describe("applyRtlMapping", () => {
   //   )
   // })
 
+  test("transforms slide animations inside logical side variants", () => {
+    expect(
+      applyRtlMapping("data-[side=inline-start]:slide-in-from-right-2")
+    ).toBe("data-[side=inline-start]:slide-in-from-end-2")
+    expect(
+      applyRtlMapping("data-[side=inline-start]:slide-out-to-right-2")
+    ).toBe("data-[side=inline-start]:slide-out-to-end-2")
+    expect(
+      applyRtlMapping("data-[side=inline-end]:slide-in-from-left-2")
+    ).toBe("data-[side=inline-end]:slide-in-from-start-2")
+    expect(
+      applyRtlMapping("data-[side=inline-end]:slide-out-to-left-2")
+    ).toBe("data-[side=inline-end]:slide-out-to-start-2")
+  })
+
+  test("does not transform slide animations inside physical side variants", () => {
+    // Physical side variants should keep physical slide directions.
+    expect(
+      applyRtlMapping("data-[side=left]:slide-in-from-right-2")
+    ).toBe("data-[side=left]:slide-in-from-right-2")
+    expect(
+      applyRtlMapping("data-[side=right]:slide-in-from-left-2")
+    ).toBe("data-[side=right]:slide-in-from-left-2")
+  })
+
   test("does not transform unrelated classes", () => {
     expect(applyRtlMapping("bg-red-500")).toBe("bg-red-500")
     expect(applyRtlMapping("flex")).toBe("flex")
