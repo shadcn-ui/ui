@@ -108,6 +108,20 @@ const RTL_ROTATE_ICONS = [
   "MoveDownLeftIcon",
 ]
 
+// Components that should have their side prop transformed to logical values.
+// side="right" → side="inline-end", side="left" → side="inline-start".
+const RTL_SIDE_PROP_COMPONENTS = [
+  "ContextMenuContent",
+  "ContextMenuSubContent",
+  "DropdownMenuSubContent",
+]
+
+// Mapping for side prop values.
+const RTL_SIDE_PROP_MAPPINGS: Record<string, string> = {
+  right: "inline-end",
+  left: "inline-start",
+}
+
 // Logical side selector mappings (additive - adds logical alongside physical).
 // Used when cn-logical-sides marker class is present.
 // In RTL: inline-start = right, inline-end = left.
@@ -501,6 +515,69 @@ export const transformRtl: Transformer = async ({ sourceFile, config }) => {
       }
     })
 
+  // Transform side prop to logical values for specific components.
+  ;[
+    ...sourceFile.getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement),
+    ...sourceFile.getDescendantsOfKind(SyntaxKind.JsxOpeningElement),
+  ].forEach((element) => {
+    const tagName = element.getTagNameNode().getText()
+    if (!RTL_SIDE_PROP_COMPONENTS.includes(tagName)) {
+      return
+    }
+
+    const sideAttr = element
+      .getAttributes()
+      .find(
+        (attr) =>
+          attr.isKind(SyntaxKind.JsxAttribute) &&
+          attr.getNameNode().getText() === "side"
+      )
+
+    if (!sideAttr?.isKind(SyntaxKind.JsxAttribute)) {
+      return
+    }
+
+    const sideValue = sideAttr.getInitializer()
+    if (!sideValue?.isKind(SyntaxKind.StringLiteral)) {
+      return
+    }
+
+    const currentValue = stripQuotes(sideValue.getText() ?? "")
+    const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
+    if (mappedValue) {
+      sideValue.replaceWithText(`"${mappedValue}"`)
+    }
+  })
+
+  // Transform default parameter values for side prop (e.g., side = "right").
+  // Only for functions whose names are in the whitelist.
+  sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
+    const paramName = node.getNameNode().getText()
+    if (paramName !== "side") {
+      return
+    }
+
+    // Check if this binding element is inside a whitelisted function.
+    const functionDecl = node.getFirstAncestorByKind(
+      SyntaxKind.FunctionDeclaration
+    )
+    const functionName = functionDecl?.getName()
+    if (!functionName || !RTL_SIDE_PROP_COMPONENTS.includes(functionName)) {
+      return
+    }
+
+    const initializer = node.getInitializer()
+    if (!initializer?.isKind(SyntaxKind.StringLiteral)) {
+      return
+    }
+
+    const currentValue = stripQuotes(initializer.getText() ?? "")
+    const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
+    if (mappedValue) {
+      initializer.replaceWithText(`"${mappedValue}"`)
+    }
+  })
+
   return sourceFile
 }
 
@@ -750,6 +827,69 @@ export async function transformDirection(
         }
       }
     })
+
+  // Transform side prop to logical values for specific components.
+  ;[
+    ...sourceFile.getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement),
+    ...sourceFile.getDescendantsOfKind(SyntaxKind.JsxOpeningElement),
+  ].forEach((element) => {
+    const tagName = element.getTagNameNode().getText()
+    if (!RTL_SIDE_PROP_COMPONENTS.includes(tagName)) {
+      return
+    }
+
+    const sideAttr = element
+      .getAttributes()
+      .find(
+        (attr) =>
+          attr.isKind(SyntaxKind.JsxAttribute) &&
+          attr.getNameNode().getText() === "side"
+      )
+
+    if (!sideAttr?.isKind(SyntaxKind.JsxAttribute)) {
+      return
+    }
+
+    const sideValue = sideAttr.getInitializer()
+    if (!sideValue?.isKind(SyntaxKind.StringLiteral)) {
+      return
+    }
+
+    const currentValue = sideValue.getLiteralText()
+    const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
+    if (mappedValue) {
+      sideValue.setLiteralValue(mappedValue)
+    }
+  })
+
+  // Transform default parameter values for side prop (e.g., side = "right").
+  // Only for functions whose names are in the whitelist.
+  sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
+    const paramName = node.getNameNode().getText()
+    if (paramName !== "side") {
+      return
+    }
+
+    // Check if this binding element is inside a whitelisted function.
+    const functionDecl = node.getFirstAncestorByKind(
+      SyntaxKind.FunctionDeclaration
+    )
+    const functionName = functionDecl?.getName()
+    if (!functionName || !RTL_SIDE_PROP_COMPONENTS.includes(functionName)) {
+      return
+    }
+
+    const initializer = node.getInitializer()
+    if (!initializer?.isKind(SyntaxKind.StringLiteral)) {
+      return
+    }
+
+    const currentValue = initializer.getLiteralText()
+    const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
+    if (mappedValue) {
+      initializer.setLiteralValue(mappedValue)
+    }
+  })
 
   return sourceFile.getText()
 }

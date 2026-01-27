@@ -660,4 +660,130 @@ export function Foo({ className }) {
     expect(result).toContain('cn("size-4 rtl:rotate-180", className)')
     expect(result).not.toContain('cn("size-4", className, "rtl:rotate-180")')
   })
+
+  test("transforms side prop to logical value for whitelisted components", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo() {
+  return <ContextMenuContent side="right" />
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain('side="inline-end"')
+    expect(result).not.toContain('side="right"')
+  })
+
+  test("transforms side prop left to inline-start", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo() {
+  return <DropdownMenuSubContent side="left" />
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain('side="inline-start"')
+    expect(result).not.toContain('side="left"')
+  })
+
+  test("does not transform side prop for non-whitelisted components", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+export function Foo() {
+  return <SomeOtherComponent side="right" />
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain('side="right"')
+    expect(result).not.toContain('side="inline-end"')
+  })
+
+  test("transforms default parameter value for side prop in whitelisted functions", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+function DropdownMenuSubContent({
+  side = "right",
+  ...props
+}) {
+  return <div />
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain('side = "inline-end"')
+    expect(result).not.toContain('side = "right"')
+  })
+
+  test("does not transform default parameter value for side prop in non-whitelisted functions", async () => {
+    const result = await transform({
+      filename: "test.tsx",
+      raw: `import * as React from "react"
+function Sidebar({
+  side = "right",
+  ...props
+}) {
+  return <div />
+}
+`,
+      config: {
+        direction: "rtl",
+        tailwind: {
+          baseColor: "neutral",
+        },
+        aliases: {
+          components: "@/components",
+          utils: "@/lib/utils",
+        },
+      },
+    })
+
+    expect(result).toContain('side = "right"')
+    expect(result).not.toContain('side = "inline-end"')
+  })
 })

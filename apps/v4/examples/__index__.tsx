@@ -4347,6 +4347,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
         return { default: mod.default || mod[exportName] }
       }),
     },
+    "sheet-rtl": {
+      name: "sheet-rtl",
+      filePath: "examples/radix/sheet-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./radix/sheet-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sheet-rtl"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
     "sheet-side": {
       name: "sheet-side",
       filePath: "examples/radix/sheet-side.tsx",
@@ -9949,6 +9962,19 @@ export const ExamplesIndex: Record<string, Record<string, any>> = {
             (key) =>
               typeof mod[key] === "function" || typeof mod[key] === "object"
           ) || "sheet-no-close-button"
+        return { default: mod.default || mod[exportName] }
+      }),
+    },
+    "sheet-rtl": {
+      name: "sheet-rtl",
+      filePath: "examples/base/sheet-rtl.tsx",
+      component: React.lazy(async () => {
+        const mod = await import("./base/sheet-rtl")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || "sheet-rtl"
         return { default: mod.default || mod[exportName] }
       }),
     },

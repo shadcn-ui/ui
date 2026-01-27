@@ -134,7 +134,7 @@ function DropdownMenuSubTrigger({
 function DropdownMenuSubContent({
   align = "start",
   alignOffset = -3,
-  side = "inline-end",
+  side = "right",
   sideOffset = 0,
   className,
   ...props
