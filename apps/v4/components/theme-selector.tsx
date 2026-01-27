@@ -1,8 +1,5 @@
 "use client"
 
-import { THEMES } from "@/lib/themes"
-import { cn } from "@/lib/utils"
-import { useThemeConfig } from "@/components/active-theme"
 import { Label } from "@/examples/base/ui/label"
 import {
   Select,
@@ -13,6 +10,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/examples/base/ui/select"
+
+import { THEMES } from "@/lib/themes"
+import { cn } from "@/lib/utils"
+import { useThemeConfig } from "@/components/active-theme"
 
 import { CopyCodeButton } from "./theme-customizer"
 
@@ -54,7 +55,11 @@ export function ThemeSelector({ className }: React.ComponentProps<"div">) {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <CopyCodeButton variant="secondary" size="icon-sm" className="rounded-lg bg-transparent border" />
+      <CopyCodeButton
+        variant="secondary"
+        size="icon-sm"
+        className="rounded-lg border bg-transparent"
+      />
     </div>
   )
 }

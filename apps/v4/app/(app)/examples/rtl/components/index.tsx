@@ -45,7 +45,7 @@ function RtlComponentsContent() {
       <LanguageSelector
         value={language}
         onValueChange={context.setLanguage}
-        className="absolute -top-12 right-52 data-[size=sm]:rounded-lg hidden h-8! lg:flex"
+        className="absolute -top-12 right-52 hidden h-8! data-[size=sm]:rounded-lg lg:flex"
         languages={["ar", "he"]}
       />
       <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">

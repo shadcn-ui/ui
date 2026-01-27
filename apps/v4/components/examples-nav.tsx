@@ -82,15 +82,12 @@ function ExampleLink({
     <Link
       href={example.href}
       key={example.href}
-      className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 gap-2 items-center justify-center px-4 text-center text-base font-medium transition-colors"
+      className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 items-center justify-center gap-2 px-4 text-center text-base font-medium transition-colors"
       data-active={isActive}
     >
       {example.name}
       {example.name === "RTL" && (
-        <span
-          className="flex size-2 rounded-full bg-blue-500"
-          title="New"
-        />
+        <span className="flex size-2 rounded-full bg-blue-500" title="New" />
       )}
     </Link>
   )
