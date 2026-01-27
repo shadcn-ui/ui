@@ -7,6 +7,7 @@ import {
   PopoverTrigger,
 } from "@/examples/base/ui/popover"
 import { IconAlertCircle } from "@tabler/icons-react"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import {
@@ -19,6 +20,7 @@ import {
 import { DirectionProvider as BaseDirectionProvider } from "@/registry/bases/base/ui/direction"
 import { DirectionProvider as RadixDirectionProvider } from "@/registry/bases/radix/ui/direction"
 import { Button } from "@/registry/new-york-v4/ui/button"
+import { Separator } from "@/registry/new-york-v4/ui/separator"
 
 export function ComponentPreviewTabs({
   className,
@@ -72,10 +74,17 @@ export function ComponentPreviewTabs({
                   </Button>
                 }
               ></PopoverTrigger>
-              <PopoverContent side="bottom" align="end" className="w-56">
-                <div className="text-xs">
-                  This preview uses automatic translation and may not be
-                  accurate.
+              <PopoverContent side="bottom" align="end" className="w-56 text-xs">
+                <div>
+                  I used AI to translate the text for demonstration purposes. It&apos;s not perfect and may contain errors.
+                </div>
+                <Separator className="-mx-2.5 w-auto!" />
+                <div data-lang="ar">
+                  لقد استخدمت الذكاء الاصطناعي لترجمة النص للأغراض التجريبية فقط. قد لا تكون الترجمة دقيقة وقد تحتوي على أخطاء.
+                </div>
+                <Separator className="-mx-2.5 w-auto!" />
+                <div data-lang="he">
+                  השתמשתי בבינה מלאכותית כדי לתרגם את הטקסט למטרות הדגמה. זה לא מושלם ויכול להכיל שגיאות.
                 </div>
               </PopoverContent>
             </Popover>
@@ -109,7 +118,17 @@ export function ComponentPreviewTabs({
           className="relative overflow-hidden **:data-[slot=copy-button]:right-4 **:data-[slot=copy-button]:hidden data-[mobile-code-visible=true]:**:data-[slot=copy-button]:flex [&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
         >
           {isMobileCodeVisible ? (
-            source
+            <>
+              {direction === "rtl" && (
+                <div className="text-sm font-mono bg-code p-6 border-t relative z-10 text-muted-foreground overflow-x-auto no-scrollbar">
+                  <pre>{`// You will notice this example uses dir and data-lang attributes.
+// This is because this site is not RTL by default.
+// In your application, you won't need these.`}</pre>
+                  <span>{"// See the "}<Link href="/docs/rtl" className="underline underline-offset-4">RTL guide</Link>{" for more information."}</span>
+                </div>
+              )}
+              {source}
+            </>
           ) : (
             <div className="relative">
               {sourcePreview}

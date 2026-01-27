@@ -1,3 +1,3 @@
 "use client"
 
-export { DirectionProvider } from "@base-ui/react/direction-provider"
+export { DirectionProvider, useDirection } from "@base-ui/react/direction-provider"

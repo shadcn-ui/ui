@@ -132,6 +132,12 @@ export function MobileNav({
                 return (
                   <MobileLink key={name} href={href} onOpenChange={setOpen}>
                     {name}
+                    {PAGES_NEW.includes(href) && (
+                      <span
+                        className="flex size-2 rounded-full bg-blue-500"
+                        title="New"
+                      />
+                    )}
                   </MobileLink>
                 )
               })}
@@ -196,7 +202,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-2xl font-medium", className)}
+      className={cn("text-2xl flex items-center gap-2 font-medium", className)}
       {...props}
     >
       {children}

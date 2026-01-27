@@ -1,14 +1,8 @@
 export const PAGES_NEW = [
   "/create",
   "/docs/rtl",
-  "/docs/components/button-group",
-  "/docs/components/empty",
-  "/docs/components/field",
-  "/docs/components/input-group",
-  "/docs/components/item",
-  "/docs/components/kbd",
-  "/docs/components/spinner",
-  "/docs/components/native-select",
+  "/docs/components/radix/direction",
+  "/docs/components/base/direction",
 ]
 
 export const PAGES_UPDATED = ["/docs/components/button"]

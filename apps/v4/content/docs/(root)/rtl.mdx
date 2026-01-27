@@ -1,94 +1,104 @@
 ---
 title: "RTL"
-description: "RTL documentation"
+description: "Right-to-left support for shadcn/ui components."
 ---
 
-## Overview
+shadcn/ui components have first-class support for right-to-left (RTL) layouts. Text alignment, positioning, and directional styles automatically adapt for languages like Arabic, Hebrew, and Persian.
 
-RTL is a feature that allows you to display content from right to left.
+When you install components, the CLI automatically transforms physical positioning classes to logical equivalents, so your components work seamlessly in both LTR and RTL contexts.
 
-## Sidebar
+## Example
 
-If you have an existing `sidebar.tsx` component and want to make it RTL compatible, you'll need to make the following changes:
+Here's a preview of a card component in RTL mode. Use the language switcher to switch the language. To see more examples, look for the RTL section on components pages.
 
-### 1. Update the side prop type and default
+<ComponentPreview
+  styleName="base-nova"
+  name="card-rtl"
+  direction="rtl"
+  previewClassName="h-auto"
+  hideCode
+  caption="A card component in RTL mode."
+  className="mb-8"
+/>
 
-```tsx
-function Sidebar({
-  side = "inline-start", // [!code highlight]
-  variant = "sidebar",
-  collapsible = "offcanvas",
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"div"> & {
-  side?: "left" | "right" | "inline-start" | "inline-end" // [!code highlight]
-  variant?: "sidebar" | "floating" | "inset"
-  collapsible?: "offcanvas" | "icon" | "none"
-}) {
+## Setup
+
+<Steps>
+
+<Step>Update your components.json</Step>
+
+Add `direction: "rtl"` to your `components.json` file:
+
+```json title="components.json" showLineNumbers {4}
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "direction": "rtl",
+  "tailwind": {
+    "config": "",
+    "css": "src/app/globals.css",
+    "baseColor": "neutral"
+    ...
+  }
+}
 ```
 
-### 2. Update the mobile Sheet side prop
+<Step>Add the DirectionProvider</Step>
 
-The Sheet component only accepts physical `left` or `right` values, so map the logical values:
+Wrap your application with the `DirectionProvider` component. Follow the installation guide for your UI library:
 
-```tsx
-<SheetContent
-  side={side === "inline-start" || side === "left" ? "left" : "right"}
-  // ...
->
-```
+- [Direction for Radix UI](/docs/components/radix/direction)
+- [Direction for Base UI](/docs/components/base/direction)
 
-### 3. Normalize the data-side attribute
+<Step>Set the dir attribute</Step>
 
-The `data-side` attribute is used by CSS selectors, so normalize it to physical values:
+Add the `dir="rtl"` attribute to your `html` element:
 
 ```tsx
-<div
-  data-side={side === "inline-start" || side === "left" ? "left" : "right"}
-  // ...
->
+<html dir="rtl">
+  <body>
+    <DirectionProvider dir="rtl">{/* Your app content */}</DirectionProvider>
+  </body>
+</html>
 ```
 
-### 4. Update the sidebar container positioning
+</Steps>
 
-Change the conditional logic to include `inline-start` and use logical positioning classes:
+## How it works
 
-```tsx
-className={cn(
-  "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) md:flex",
-  side === "left" || side === "inline-start"
-    ? "start-0 group-data-[collapsible=offcanvas]:start-[calc(var(--sidebar-width)*-1)]"
-    : "end-0 group-data-[collapsible=offcanvas]:end-[calc(var(--sidebar-width)*-1)]",
-  // ...
-)}
+When you install new components with `direction: "rtl"` set in your `components.json`, the shadcn CLI automatically transforms classes and props to be RTL compatible:
+
+- Physical positioning classes like `left-*` and `right-*` are converted to logical equivalents like `start-*` and `end-*`.
+- Directional props are updated to use logical values.
+- Text alignment and spacing classes are adjusted accordingly.
+
+## Supported Styles
+
+Automatic RTL transformation via the CLI is only available for projects created using `shadcn create` with the new styles (`base-nova`, `radix-nova`, etc.).
+
+For other styles, see the [Migration Guide](#migrating-existing-components).
+
+## Migrating existing components
+
+If you have existing components installed before enabling RTL, you can migrate them using the CLI as follows:
+
+<Steps>
+
+<Step>Add direction to your components.json</Step>
+
+```json title="components.json" showLineNumbers {4}
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "direction": "rtl",
+  ...
+}
 ```
 
-### 5. Update SidebarRail classes
+<Step>Run the migrate command</Step>
 
-Replace physical positioning classes with logical equivalents:
-
-| Before                            | After                             |
-| --------------------------------- | --------------------------------- |
-| `group-data-[side=left]:-right-4` | `group-data-[side=left]:-end-4`   |
-| `group-data-[side=right]:left-0`  | `group-data-[side=right]:start-0` |
-| `after:left-1/2`                  | `after:start-1/2`                 |
-| `after:left-full`                 | `after:start-full`                |
-| `-right-2`                        | `-end-2`                          |
-| `-left-2`                         | `-start-2`                        |
-
-### Usage
-
-After these changes, you can use the sidebar with logical side values:
-
-```tsx
-// LTR: sidebar on the left, RTL: sidebar on the right
-<Sidebar side="inline-start" />
-
-// LTR: sidebar on the right, RTL: sidebar on the left
-<Sidebar side="inline-end" />
-
-// Physical values still work for explicit positioning
-<Sidebar side="left" />
-<Sidebar side="right" />
+```bash
+npx shadcn@latest migrate rtl
 ```
+
+</Steps>
