@@ -27,15 +27,14 @@ import { useLanguageContext } from "@/components/language-selector"
 const translations = {
   ar: {
     dir: "rtl" as const,
+    locale: "ar-SA",
     paymentMethod: "طريقة الدفع",
     secureEncrypted: "جميع المعاملات آمنة ومشفرة",
     nameOnCard: "الاسم على البطاقة",
     namePlaceholder: "أحمد محمد",
     cardNumber: "رقم البطاقة",
-    cardPlaceholder: "1234 5678 9012 3456",
     cardDescription: "أدخل رقمك المكون من 16 رقمًا.",
     cvv: "رمز الأمان",
-    cvvPlaceholder: "123",
     month: "الشهر",
     year: "السنة",
     billingAddress: "عنوان الفواتير",
@@ -48,15 +47,14 @@ const translations = {
   },
   he: {
     dir: "rtl" as const,
+    locale: "he-IL",
     paymentMethod: "אמצעי תשלום",
     secureEncrypted: "כל העסקאות מאובטחות ומוצפנות",
     nameOnCard: "שם על הכרטיס",
     namePlaceholder: "ישראל ישראלי",
     cardNumber: "מספר כרטיס",
-    cardPlaceholder: "1234 5678 9012 3456",
     cardDescription: "הזן את המספר בן 16 הספרות שלך.",
     cvv: "קוד אבטחה",
-    cvvPlaceholder: "123",
     month: "חודש",
     year: "שנה",
     billingAddress: "כתובת לחיוב",
@@ -69,34 +67,42 @@ const translations = {
   },
 }
 
-const months = [
-  { label: "01", value: "01" },
-  { label: "02", value: "02" },
-  { label: "03", value: "03" },
-  { label: "04", value: "04" },
-  { label: "05", value: "05" },
-  { label: "06", value: "06" },
-  { label: "07", value: "07" },
-  { label: "08", value: "08" },
-  { label: "09", value: "09" },
-  { label: "10", value: "10" },
-  { label: "11", value: "11" },
-  { label: "12", value: "12" },
-]
+function formatCardNumber(locale: string) {
+  const formatter = new Intl.NumberFormat(locale, { useGrouping: false })
+  return `${formatter.format(1234)} ${formatter.format(5678)} ${formatter.format(9012)} ${formatter.format(3456)}`
+}
 
-const years = [
-  { label: "2024", value: "2024" },
-  { label: "2025", value: "2025" },
-  { label: "2026", value: "2026" },
-  { label: "2027", value: "2027" },
-  { label: "2028", value: "2028" },
-  { label: "2029", value: "2029" },
-]
+function formatCvv(locale: string) {
+  return new Intl.NumberFormat(locale, { useGrouping: false }).format(123)
+}
+
+function getMonths(locale: string) {
+  const formatter = new Intl.NumberFormat(locale, {
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  })
+  return Array.from({ length: 12 }, (_, i) => {
+    const value = String(i + 1).padStart(2, "0")
+    return { label: formatter.format(i + 1), value }
+  })
+}
+
+function getYears(locale: string) {
+  const formatter = new Intl.NumberFormat(locale, { useGrouping: false })
+  return Array.from({ length: 6 }, (_, i) => {
+    const year = 2024 + i
+    return { label: formatter.format(year), value: String(year) }
+  })
+}
 
 export function FieldDemo() {
   const context = useLanguageContext()
   const lang = context?.language === "he" ? "he" : "ar"
   const t = translations[lang]
+  const months = getMonths(t.locale)
+  const years = getYears(t.locale)
+  const cardPlaceholder = formatCardNumber(t.locale)
+  const cvvPlaceholder = formatCvv(t.locale)
 
   return (
     <div dir={t.dir} className="w-full max-w-md rounded-lg border p-6">
@@ -121,14 +127,14 @@ export function FieldDemo() {
                   </FieldLabel>
                   <Input
                     id="rtl-card-number"
-                    placeholder={t.cardPlaceholder}
+                    placeholder={cardPlaceholder}
                     required
                   />
                   <FieldDescription>{t.cardDescription}</FieldDescription>
                 </Field>
                 <Field className="col-span-1">
                   <FieldLabel htmlFor="rtl-cvv">{t.cvv}</FieldLabel>
-                  <Input id="rtl-cvv" placeholder={t.cvvPlaceholder} required />
+                  <Input id="rtl-cvv" placeholder={cvvPlaceholder} required />
                 </Field>
               </div>
               <div className="grid grid-cols-2 gap-4">

@@ -1,7 +1,7 @@
 "use client"
 
+import { DirectionProvider } from "@/examples/base/ui-rtl/direction"
 import { FieldSeparator } from "@/examples/base/ui-rtl/field"
-import { DirectionProvider } from "@/examples/radix/ui-rtl/direction"
 
 import {
   LanguageProvider,
@@ -45,7 +45,7 @@ function RtlComponentsContent() {
       <LanguageSelector
         value={language}
         onValueChange={context.setLanguage}
-        className="absolute -top-12 right-52 hidden h-8! -translate-x-3 lg:flex"
+        className="absolute -top-12 right-52 data-[size=sm]:rounded-lg hidden h-8! lg:flex"
         languages={["ar", "he"]}
       />
       <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
@@ -84,7 +84,7 @@ function RtlComponentsContent() {
 export function RtlComponents() {
   return (
     <LanguageProvider defaultLanguage="ar">
-      <DirectionProvider dir="rtl">
+      <DirectionProvider direction="rtl">
         <RtlComponentsContent />
       </DirectionProvider>
     </LanguageProvider>

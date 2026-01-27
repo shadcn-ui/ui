@@ -1,6 +1,5 @@
 "use client"
 
-
 import { Button } from "@/examples/radix/ui-rtl/button"
 import { Checkbox } from "@/examples/radix/ui-rtl/checkbox"
 import {
@@ -207,7 +206,10 @@ export function FieldRtl() {
                     <SelectContent dir={dir}>
                       <SelectGroup>
                         {months.map((item) => (
-                          <SelectItem key={item.label} value={item.value ?? item.label}>
+                          <SelectItem
+                            key={item.label}
+                            value={item.value ?? item.label}
+                          >
                             {getMonthLabel(item.value)}
                           </SelectItem>
                         ))}
@@ -226,7 +228,10 @@ export function FieldRtl() {
                     <SelectContent dir={dir}>
                       <SelectGroup>
                         {years.map((item) => (
-                          <SelectItem key={item.label} value={item.value ?? item.label}>
+                          <SelectItem
+                            key={item.label}
+                            value={item.value ?? item.label}
+                          >
                             {item.label}
                           </SelectItem>
                         ))}

@@ -1,13 +1,13 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/examples/base/ui/popover"
 import { IconAlertCircle } from "@tabler/icons-react"
-import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import {
@@ -74,17 +74,24 @@ export function ComponentPreviewTabs({
                   </Button>
                 }
               ></PopoverTrigger>
-              <PopoverContent side="bottom" align="end" className="w-56 text-xs">
+              <PopoverContent
+                side="bottom"
+                align="end"
+                className="w-56 text-xs"
+              >
                 <div>
-                  I used AI to translate the text for demonstration purposes. It&apos;s not perfect and may contain errors.
+                  I used AI to translate the text for demonstration purposes.
+                  It&apos;s not perfect and may contain errors.
                 </div>
                 <Separator className="-mx-2.5 w-auto!" />
                 <div data-lang="ar">
-                  لقد استخدمت الذكاء الاصطناعي لترجمة النص للأغراض التجريبية فقط. قد لا تكون الترجمة دقيقة وقد تحتوي على أخطاء.
+                  لقد استخدمت الذكاء الاصطناعي لترجمة النص للأغراض التجريبية
+                  فقط. قد لا تكون الترجمة دقيقة وقد تحتوي على أخطاء.
                 </div>
                 <Separator className="-mx-2.5 w-auto!" />
                 <div data-lang="he">
-                  השתמשתי בבינה מלאכותית כדי לתרגם את הטקסט למטרות הדגמה. זה לא מושלם ויכול להכיל שגיאות.
+                  השתמשתי בבינה מלאכותית כדי לתרגם את הטקסט למטרות הדגמה. זה לא
+                  מושלם ויכול להכיל שגיאות.
                 </div>
               </PopoverContent>
             </Popover>
@@ -120,11 +127,20 @@ export function ComponentPreviewTabs({
           {isMobileCodeVisible ? (
             <>
               {direction === "rtl" && (
-                <div className="text-sm font-mono bg-code p-6 border-t relative z-10 text-muted-foreground overflow-x-auto no-scrollbar">
+                <div className="bg-code text-muted-foreground no-scrollbar relative z-10 overflow-x-auto border-t p-6 font-mono text-sm">
                   <pre>{`// You will notice this example uses dir and data-lang attributes.
 // This is because this site is not RTL by default.
 // In your application, you won't need these.`}</pre>
-                  <span>{"// See the "}<Link href="/docs/rtl" className="underline underline-offset-4">RTL guide</Link>{" for more information."}</span>
+                  <span>
+                    {"// See the "}
+                    <Link
+                      href="/docs/rtl"
+                      className="underline underline-offset-4"
+                    >
+                      RTL guide
+                    </Link>
+                    {" for more information."}
+                  </span>
                 </div>
               )}
               {source}

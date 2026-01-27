@@ -76,10 +76,7 @@ export function InputGroupDemo() {
         <InputGroupAddon align="inline-end">{t.results}</InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <InputGroupInput placeholder={t.example} className="!pr-1" />
-        <InputGroupAddon>
-          <InputGroupText>https://</InputGroupText>
-        </InputGroupAddon>
+        <InputGroupInput placeholder={t.example} />
         <InputGroupAddon align="inline-end">
           <Tooltip>
             <TooltipTrigger
@@ -131,7 +128,7 @@ export function InputGroupDemo() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <InputGroupInput placeholder="@shadcn" />
+        <InputGroupInput placeholder="shadcn" />
         <InputGroupAddon align="inline-end">
           <div className="bg-primary text-foreground flex size-4 items-center justify-center rounded-full">
             <IconCheck className="size-3 text-white" />

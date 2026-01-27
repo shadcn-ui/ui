@@ -202,7 +202,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-2xl flex items-center gap-2 font-medium", className)}
+      className={cn("flex items-center gap-2 text-2xl font-medium", className)}
       {...props}
     >
       {children}

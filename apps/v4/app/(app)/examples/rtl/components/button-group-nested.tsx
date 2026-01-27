@@ -9,14 +9,20 @@ import { useLanguageContext } from "@/components/language-selector"
 const translations = {
   ar: {
     dir: "rtl" as const,
+    locale: "ar-SA",
     previous: "السابق",
     next: "التالي",
   },
   he: {
     dir: "rtl" as const,
+    locale: "he-IL",
     previous: "הקודם",
     next: "הבא",
   },
+}
+
+function formatNumber(value: number, locale: string) {
+  return new Intl.NumberFormat(locale).format(value)
 }
 
 export function ButtonGroupNested() {
@@ -28,13 +34,13 @@ export function ButtonGroupNested() {
     <ButtonGroup dir={t.dir}>
       <ButtonGroup>
         <Button variant="outline" size="sm">
-          1
+          {formatNumber(1, t.locale)}
         </Button>
         <Button variant="outline" size="sm">
-          2
+          {formatNumber(2, t.locale)}
         </Button>
         <Button variant="outline" size="sm">
-          3
+          {formatNumber(3, t.locale)}
         </Button>
       </ButtonGroup>
       <ButtonGroup>
