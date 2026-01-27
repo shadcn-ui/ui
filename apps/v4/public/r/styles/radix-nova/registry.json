@@ -1853,46 +1853,6 @@
       "type": "registry:block"
     },
     {
-      "name": "rtl",
-      "title": "RTL",
-      "registryDependencies": [
-        "alert-dialog",
-        "avatar",
-        "badge",
-        "button",
-        "button-group",
-        "card",
-        "checkbox",
-        "combobox",
-        "direction",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "label",
-        "popover",
-        "radio-group",
-        "select",
-        "separator",
-        "sheet",
-        "slider",
-        "spinner",
-        "switch",
-        "textarea",
-        "tooltip",
-        "example"
-      ],
-      "files": [
-        {
-          "path": "registry/radix-nova/blocks/rtl.tsx",
-          "type": "registry:block"
-        }
-      ],
-      "type": "registry:block"
-    },
-    {
       "name": "use-mobile",
       "files": [
         {

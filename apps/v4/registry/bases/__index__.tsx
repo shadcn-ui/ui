@@ -3404,59 +3404,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    rtl: {
-      name: "rtl",
-      title: "RTL",
-      description: "",
-      type: "registry:block",
-      registryDependencies: [
-        "alert-dialog",
-        "avatar",
-        "badge",
-        "button",
-        "button-group",
-        "card",
-        "checkbox",
-        "combobox",
-        "direction",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "label",
-        "popover",
-        "radio-group",
-        "select",
-        "separator",
-        "sheet",
-        "slider",
-        "spinner",
-        "switch",
-        "textarea",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/radix/blocks/rtl.tsx",
-          type: "registry:block",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/radix/blocks/rtl.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     "use-mobile": {
       name: "use-mobile",
       title: "undefined",
@@ -6866,59 +6813,6 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/base/blocks/chatgpt.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    rtl: {
-      name: "rtl",
-      title: "RTL",
-      description: "",
-      type: "registry:block",
-      registryDependencies: [
-        "alert-dialog",
-        "avatar",
-        "badge",
-        "button",
-        "button-group",
-        "card",
-        "checkbox",
-        "combobox",
-        "direction",
-        "dropdown-menu",
-        "empty",
-        "field",
-        "input",
-        "input-group",
-        "item",
-        "label",
-        "popover",
-        "radio-group",
-        "select",
-        "separator",
-        "sheet",
-        "slider",
-        "spinner",
-        "switch",
-        "textarea",
-        "tooltip",
-        "example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/blocks/rtl.tsx",
-          type: "registry:block",
-          target: "",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/base/blocks/rtl.tsx")
         const exportName =
           Object.keys(mod).find(
             (key) =>
