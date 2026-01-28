@@ -3,93 +3,71 @@ import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 
 import { splitClassName } from "./transform-css-vars"
 
-// Mapping of physical → logical Tailwind class prefixes.
-// Order matters: longer prefixes should come first to avoid partial matches.
+// Physical → logical Tailwind class mappings (direct replacement).
+// Order matters to avoid partial matches:
+// - Negative prefixes before positive (e.g., -ml- before ml-).
+// - Specific corners before general ones e.g. rounded-tl- before rounded-l-.
+// - With-value variants before without-value (e.g., border-l- before border-l).
 const RTL_MAPPINGS: [string, string][] = [
-  // Negative margins (must come before positive).
   ["-ml-", "-ms-"],
   ["-mr-", "-me-"],
-  // Margins.
   ["ml-", "ms-"],
   ["mr-", "me-"],
-  // Paddings.
   ["pl-", "ps-"],
   ["pr-", "pe-"],
-  // Negative positioning (must come before positive).
   ["-left-", "-start-"],
   ["-right-", "-end-"],
-  // Positioning.
   ["left-", "start-"],
   ["right-", "end-"],
-  // Inset.
   ["inset-l-", "inset-inline-start-"],
   ["inset-r-", "inset-inline-end-"],
-  // Rounded corners (specific first).
   ["rounded-tl-", "rounded-ss-"],
   ["rounded-tr-", "rounded-se-"],
   ["rounded-bl-", "rounded-es-"],
   ["rounded-br-", "rounded-ee-"],
   ["rounded-l-", "rounded-s-"],
   ["rounded-r-", "rounded-e-"],
-  // Borders (with values first).
   ["border-l-", "border-s-"],
   ["border-r-", "border-e-"],
-  // Borders (without values).
   ["border-l", "border-s"],
   ["border-r", "border-e"],
-  // Text alignment.
   ["text-left", "text-start"],
   ["text-right", "text-end"],
-  // Scroll margins.
   ["scroll-ml-", "scroll-ms-"],
   ["scroll-mr-", "scroll-me-"],
-  // Scroll paddings.
   ["scroll-pl-", "scroll-ps-"],
   ["scroll-pr-", "scroll-pe-"],
-  // Float.
   ["float-left", "float-start"],
   ["float-right", "float-end"],
-  // Clear.
   ["clear-left", "clear-start"],
   ["clear-right", "clear-end"],
-  // Transform origin (specific first).
   ["origin-top-left", "origin-top-start"],
   ["origin-top-right", "origin-top-end"],
   ["origin-bottom-left", "origin-bottom-start"],
   ["origin-bottom-right", "origin-bottom-end"],
   ["origin-left", "origin-start"],
   ["origin-right", "origin-end"],
-  // Slide animations (tw-animate-css has logical equivalents).
-  // ["slide-in-from-left", "slide-in-from-start"],
-  // ["slide-in-from-right", "slide-in-from-end"],
-  // ["slide-out-to-left", "slide-out-to-start"],
-  // ["slide-out-to-right", "slide-out-to-end"],
 ]
 
-// Translate-x mappings (these add rtl: variants instead of replacing).
-// Pattern: [physical, rtlPhysical] - negative becomes positive and vice versa.
+// Translate-x: adds rtl: variant (negative ↔ positive).
 const RTL_TRANSLATE_X_MAPPINGS: [string, string][] = [
   ["-translate-x-", "translate-x-"],
   ["translate-x-", "-translate-x-"],
 ]
 
-// Classes that need rtl:*-reverse added (no logical equivalents in Tailwind).
-// Pattern: prefix → rtl variant to add.
+// Classes that need rtl:*-reverse (no logical equivalents).
 const RTL_REVERSE_MAPPINGS: [string, string][] = [
   ["space-x-", "space-x-reverse"],
   ["divide-x-", "divide-x-reverse"],
 ]
 
-// Classes that need rtl: variant with swapped value (no logical equivalents).
-// Pattern: [physical, rtlSwapped] - value swaps in RTL.
+// Classes that need rtl: variant with swapped value.
 const RTL_SWAP_MAPPINGS: [string, string][] = [
   ["cursor-w-resize", "cursor-e-resize"],
   ["cursor-e-resize", "cursor-w-resize"],
 ]
 
-// Slide animation mappings for logical side variants.
-// When inside data-[side=inline-start/end], slide directions should use logical values.
-// Pattern: [variant, physical, logical]
+// Slide animations inside logical side variants: [variant, physical, logical].
 const RTL_LOGICAL_SIDE_SLIDE_MAPPINGS: [string, string, string][] = [
   ["data-[side=inline-start]", "slide-in-from-right", "slide-in-from-end"],
   ["data-[side=inline-start]", "slide-out-to-right", "slide-out-to-end"],
@@ -98,68 +76,75 @@ const RTL_LOGICAL_SIDE_SLIDE_MAPPINGS: [string, string, string][] = [
 ]
 
 // Marker class for icons that should get rtl:rotate-180.
-// This class is added in the registry and removed during transformation.
 const RTL_FLIP_MARKER = "cn-rtl-flip"
 
-// Components that should have their side prop transformed to logical values.
-// side="right" → side="inline-end", side="left" → side="inline-start".
+// Components with side prop transformed to logical values.
 const RTL_SIDE_PROP_COMPONENTS = [
   "ContextMenuContent",
   "ContextMenuSubContent",
   "DropdownMenuSubContent",
 ]
 
-// Mapping for side prop values.
+// Side prop value mappings.
 const RTL_SIDE_PROP_MAPPINGS: Record<string, string> = {
   right: "inline-end",
   left: "inline-start",
 }
 
-// Logical side selector mappings (additive - adds logical alongside physical).
-// Used when cn-logical-sides marker class is present.
-// In RTL: inline-start = right, inline-end = left.
-// Pattern: [physical, logical] - add logical selector alongside physical.
-// const LOGICAL_SIDE_MAPPINGS: [string, string][] = [
-//   ["data-[side=left]:", "data-[side=inline-end]:"],
-//   ["data-[side=right]:", "data-[side=inline-start]:"],
-// ]
+// Positioning prefixes to skip for physical side variants.
+const POSITIONING_PREFIXES = ["-left-", "-right-", "left-", "right-"]
 
-// Props that need value swapping for RTL.
-// Format: { propName: { fromValue: toValue } }
-// const RTL_PROP_MAPPINGS: Record<string, Record<string, string>> = {
-//   side: {
-//     left: "right",
-//     right: "left",
-//   },
-//   align: {
-//     left: "right",
-//     right: "left",
-//   },
-//   position: {
-//     left: "right",
-//     right: "left",
-//   },
-//   origin: {
-//     left: "right",
-//     right: "left",
-//   },
-// }
+export const transformRtl: Transformer = async ({ sourceFile, config }) => {
+  if (!config.rtl) {
+    return sourceFile
+  }
 
-// Helper to strip quotes from a string literal.
+  applyRtlTransformToSourceFile(sourceFile)
+
+  return sourceFile
+}
+
+// Standalone function to transform source code for RTL.
+// This is used by the build script.
+export async function transformDirection(source: string, rtl: boolean) {
+  if (!rtl) {
+    return source
+  }
+
+  const project = new Project({
+    useInMemoryFileSystem: true,
+  })
+
+  const sourceFile = project.createSourceFile("component.tsx", source, {
+    scriptKind: ScriptKind.TSX,
+    overwrite: true,
+  })
+
+  applyRtlTransformToSourceFile(sourceFile)
+
+  return sourceFile.getText()
+}
+
 function stripQuotes(str: string) {
   return str.replace(/^["']|["']$/g, "")
 }
 
-export function applyRtlMapping(input: string) {
-  // Check if the class string contains the marker for RTL icon flip.
-  const hasRtlFlip = input.includes(RTL_FLIP_MARKER)
+// Transforms a string literal node by applying RTL mappings.
+function transformStringLiteralNode(node: {
+  getText(): string
+  replaceWithText(text: string): void
+}) {
+  const text = stripQuotes(node.getText() ?? "")
+  node.replaceWithText(`"${applyRtlMapping(text)}"`)
+}
 
+export function applyRtlMapping(input: string) {
   return input
     .split(" ")
     .flatMap((className) => {
-      // Remove the cn-rtl-flip marker and add rtl:rotate-180.
+      // Replace the cn-rtl-flip marker with rtl:rotate-180.
       if (className === RTL_FLIP_MARKER) {
-        return hasRtlFlip ? ["rtl:rotate-180"] : []
+        return ["rtl:rotate-180"]
       }
       const [variant, value, modifier] = splitClassName(className)
 
@@ -215,22 +200,17 @@ export function applyRtlMapping(input: string) {
       }
 
       // Skip positioning transformations for physical side variants.
-      // e.g., data-[side=left]:-right-1 should NOT become data-[side=left]:-end-1
-      // because the physical side needs physical positioning.
+      // e.g., data-[side=left]:-right-1 should NOT become data-[side=left]:-end-1.
       const isPhysicalSideVariant =
         variant?.includes("data-[side=left]") ||
         variant?.includes("data-[side=right]")
 
-      // Positioning prefixes that should be skipped for physical side variants.
-      const positioningPrefixes = ["-left-", "-right-", "left-", "right-"]
-
       // Find matching RTL mapping for direct replacement.
       let mappedValue = value
       for (const [physical, logical] of RTL_MAPPINGS) {
-        // Skip positioning transforms for physical side variants.
         if (
           isPhysicalSideVariant &&
-          positioningPrefixes.some((p) => physical.startsWith(p))
+          POSITIONING_PREFIXES.some((p) => physical.startsWith(p))
         ) {
           continue
         }
@@ -255,24 +235,6 @@ export function applyRtlMapping(input: string) {
         result = modifier ? `${mappedValue}/${modifier}` : mappedValue
       }
 
-      // If cn-logical-sides marker is present, add logical side selectors.
-      // e.g., data-[side=left]:foo → data-[side=left]:foo data-[side=inline-start]:foo
-      // Applied after RTL mappings so the value is already transformed.
-      // if (hasLogicalSides && variant) {
-      // for (const [physical, logical] of LOGICAL_SIDE_MAPPINGS) {
-      //   if (variant.includes(physical.slice(0, -1))) {
-      //     const logicalVariant = variant.replace(
-      //       physical.slice(0, -1),
-      //       logical.slice(0, -1)
-      //     )
-      //     const logicalClass = modifier
-      //       ? `${logicalVariant}:${mappedValue}/${modifier}`
-      //       : `${logicalVariant}:${mappedValue}`
-      //     return [result, logicalClass]
-      //   }
-      // }
-      // }
-
       return [result]
     })
     .join(" ")
@@ -287,12 +249,9 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
     .filter((node) => node.getExpression().getText() === "cva")
     .forEach((node) => {
       // cva(base, ...).
-      if (node.getArguments()[0]?.isKind(SyntaxKind.StringLiteral)) {
-        const defaultClassNames = node.getArguments()[0]
-        if (defaultClassNames) {
-          const text = stripQuotes(defaultClassNames.getText() ?? "")
-          defaultClassNames.replaceWithText(`"${applyRtlMapping(text)}"`)
-        }
+      const firstArg = node.getArguments()[0]
+      if (firstArg?.isKind(SyntaxKind.StringLiteral)) {
+        transformStringLiteralNode(firstArg)
       }
 
       // cva(..., { variants: { ... } }).
@@ -305,13 +264,12 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
           .forEach((node) => {
             node
               .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
-              .forEach((node) => {
-                const classNames = node.getInitializerIfKind(
+              .forEach((prop) => {
+                const classNames = prop.getInitializerIfKind(
                   SyntaxKind.StringLiteral
                 )
                 if (classNames) {
-                  const text = stripQuotes(classNames.getText() ?? "")
-                  classNames.replaceWithText(`"${applyRtlMapping(text)}"`)
+                  transformStringLiteralNode(classNames)
                 }
               })
           })
@@ -322,12 +280,9 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
   sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
     if (node.getNameNode().getText() === "className") {
       // className="...".
-      if (node.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
-        const value = node.getInitializer()
-        if (value) {
-          const text = stripQuotes(value.getText() ?? "")
-          value.replaceWithText(`"${applyRtlMapping(text)}"`)
-        }
+      const initializer = node.getInitializer()
+      if (initializer?.isKind(SyntaxKind.StringLiteral)) {
+        transformStringLiteralNode(initializer)
       }
 
       // className={...}.
@@ -338,23 +293,17 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
           ?.getDescendantsOfKind(SyntaxKind.CallExpression)
           .find((node) => node.getExpression().getText() === "cn")
         if (callExpression) {
-          // Loop through the arguments.
-          callExpression.getArguments().forEach((node) => {
+          callExpression.getArguments().forEach((arg) => {
             if (
-              node.isKind(SyntaxKind.ConditionalExpression) ||
-              node.isKind(SyntaxKind.BinaryExpression)
+              arg.isKind(SyntaxKind.ConditionalExpression) ||
+              arg.isKind(SyntaxKind.BinaryExpression)
             ) {
-              node
+              arg
                 .getChildrenOfKind(SyntaxKind.StringLiteral)
-                .forEach((node) => {
-                  const text = stripQuotes(node.getText() ?? "")
-                  node.replaceWithText(`"${applyRtlMapping(text)}"`)
-                })
+                .forEach(transformStringLiteralNode)
             }
-
-            if (node.isKind(SyntaxKind.StringLiteral)) {
-              const text = stripQuotes(node.getText() ?? "")
-              node.replaceWithText(`"${applyRtlMapping(text)}"`)
+            if (arg.isKind(SyntaxKind.StringLiteral)) {
+              transformStringLiteralNode(arg)
             }
           })
         }
@@ -372,32 +321,23 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
                 SyntaxKind.CallExpression
               )
               if (callExpression) {
-                // Loop through the arguments.
                 callExpression.getArguments().forEach((arg) => {
                   if (arg.isKind(SyntaxKind.ConditionalExpression)) {
                     arg
                       .getChildrenOfKind(SyntaxKind.StringLiteral)
-                      .forEach((node) => {
-                        const text = stripQuotes(node.getText() ?? "")
-                        node.replaceWithText(`"${applyRtlMapping(text)}"`)
-                      })
+                      .forEach(transformStringLiteralNode)
                   }
-
                   if (arg.isKind(SyntaxKind.StringLiteral)) {
-                    const text = stripQuotes(arg.getText() ?? "")
-                    arg.replaceWithText(`"${applyRtlMapping(text)}"`)
+                    transformStringLiteralNode(arg)
                   }
                 })
               }
             }
 
-            if (node.getInitializer()?.isKind(SyntaxKind.StringLiteral)) {
+            const propInit = node.getInitializer()
+            if (propInit?.isKind(SyntaxKind.StringLiteral)) {
               if (node.getNameNode().getText() !== "variant") {
-                const classNames = node.getInitializer()
-                if (classNames) {
-                  const text = stripQuotes(classNames.getText() ?? "")
-                  classNames.replaceWithText(`"${applyRtlMapping(text)}"`)
-                }
+                transformStringLiteralNode(propInit)
               }
             }
           })
@@ -427,8 +367,7 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
             if (init.getExpression().getText() === "cn") {
               init.getArguments().forEach((arg) => {
                 if (arg.isKind(SyntaxKind.StringLiteral)) {
-                  const text = stripQuotes(arg.getText() ?? "")
-                  arg.replaceWithText(`"${applyRtlMapping(text)}"`)
+                  transformStringLiteralNode(arg)
                 }
                 if (
                   arg.isKind(SyntaxKind.ConditionalExpression) ||
@@ -436,18 +375,14 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
                 ) {
                   arg
                     .getChildrenOfKind(SyntaxKind.StringLiteral)
-                    .forEach((n) => {
-                      const text = stripQuotes(n.getText() ?? "")
-                      n.replaceWithText(`"${applyRtlMapping(text)}"`)
-                    })
+                    .forEach(transformStringLiteralNode)
                 }
               })
             }
           }
           // Handle plain string literal.
           if (init?.isKind(SyntaxKind.StringLiteral)) {
-            const text = stripQuotes(init.getText() ?? "")
-            init.replaceWithText(`"${applyRtlMapping(text)}"`)
+            transformStringLiteralNode(init)
           }
         }
       }
@@ -515,35 +450,4 @@ function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
       initializer.replaceWithText(`"${mappedValue}"`)
     }
   })
-}
-
-export const transformRtl: Transformer = async ({ sourceFile, config }) => {
-  if (!config.rtl) {
-    return sourceFile
-  }
-
-  applyRtlTransformToSourceFile(sourceFile)
-
-  return sourceFile
-}
-
-// Standalone function to transform source code for RTL.
-// This is used by the build script.
-export async function transformDirection(source: string, rtl: boolean) {
-  if (!rtl) {
-    return source
-  }
-
-  const project = new Project({
-    useInMemoryFileSystem: true,
-  })
-
-  const sourceFile = project.createSourceFile("component.tsx", source, {
-    scriptKind: ScriptKind.TSX,
-    overwrite: true,
-  })
-
-  applyRtlTransformToSourceFile(sourceFile)
-
-  return sourceFile.getText()
 }

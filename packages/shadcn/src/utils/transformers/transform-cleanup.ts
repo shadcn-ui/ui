@@ -1,35 +1,51 @@
 import { Transformer } from "@/src/utils/transformers"
-import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
+import {
+  NoSubstitutionTemplateLiteral,
+  Node,
+  Project,
+  ScriptKind,
+  SourceFile,
+  StringLiteral,
+  SyntaxKind,
+} from "ts-morph"
 
 // Regex to match cn-* marker classes (e.g., cn-rtl-flip, cn-logical-sides).
-const CN_MARKER_REGEX = /\bcn-[a-z-]+\b/g
+const CN_MARKER_REGEX = /\bcn-[a-z-]+\b/
+const CN_MARKER_REGEX_GLOBAL = /\bcn-[a-z-]+\b/g
 
 // Helper to strip all cn-* marker classes from a className string.
 export function stripCnMarkers(className: string) {
-  return className.replace(CN_MARKER_REGEX, "").replace(/\s+/g, " ").trim()
+  return className
+    .replace(CN_MARKER_REGEX_GLOBAL, "")
+    .replace(/\s+/g, " ")
+    .trim()
 }
 
-// Processes a string literal and strips cn-* markers.
-function processStringLiteral(
-  node: ReturnType<
-    typeof import("ts-morph").SourceFile.prototype.getDescendantsOfKind
-  >[number]
-) {
-  if (!node.isKind(SyntaxKind.StringLiteral)) {
+type StringLikeLiteral = StringLiteral | NoSubstitutionTemplateLiteral
+
+// Processes a string-like literal and strips cn-* markers.
+function processStringLiteral(node: StringLikeLiteral) {
+  const currentValue = node.getLiteralValue()
+  if (!CN_MARKER_REGEX.test(currentValue)) {
     return
   }
 
-  const currentValue = node.getLiteralValue()
-  if (CN_MARKER_REGEX.test(currentValue)) {
-    // Reset regex lastIndex since we're using global flag.
-    CN_MARKER_REGEX.lastIndex = 0
-    const newValue = stripCnMarkers(currentValue)
-    if (newValue !== currentValue) {
-      node.setLiteralValue(newValue)
-    }
+  const newValue = stripCnMarkers(currentValue)
+  if (newValue !== currentValue) {
+    node.setLiteralValue(newValue)
   }
-  // Reset regex lastIndex for next iteration.
-  CN_MARKER_REGEX.lastIndex = 0
+}
+
+function processStringLiterals(node: Node) {
+  for (const stringLit of node.getDescendantsOfKind(SyntaxKind.StringLiteral)) {
+    processStringLiteral(stringLit)
+  }
+
+  for (const templateLit of node.getDescendantsOfKind(
+    SyntaxKind.NoSubstitutionTemplateLiteral
+  )) {
+    processStringLiteral(templateLit)
+  }
 }
 
 // Apply cleanup to a SourceFile directly (used by transformDirection).
@@ -52,7 +68,6 @@ export function applyCleanup(sourceFile: SourceFile) {
     if (initializer?.isKind(SyntaxKind.StringLiteral)) {
       const currentValue = initializer.getLiteralValue()
       if (CN_MARKER_REGEX.test(currentValue)) {
-        CN_MARKER_REGEX.lastIndex = 0
         const newValue = stripCnMarkers(currentValue)
         if (newValue === "") {
           // Remove the entire attribute if className becomes empty.
@@ -61,16 +76,11 @@ export function applyCleanup(sourceFile: SourceFile) {
           initializer.setLiteralValue(newValue)
         }
       }
-      CN_MARKER_REGEX.lastIndex = 0
     }
 
     // className={...} or classNames={{...}}
     if (initializer?.isKind(SyntaxKind.JsxExpression)) {
-      for (const stringLit of initializer.getDescendantsOfKind(
-        SyntaxKind.StringLiteral
-      )) {
-        processStringLiteral(stringLit)
-      }
+      processStringLiterals(initializer)
     }
   }
 
@@ -90,13 +100,14 @@ export function applyCleanup(sourceFile: SourceFile) {
     for (const arg of call.getArguments()) {
       if (arg.isKind(SyntaxKind.StringLiteral)) {
         processStringLiteral(arg)
+        continue
+      }
+      if (arg.isKind(SyntaxKind.NoSubstitutionTemplateLiteral)) {
+        processStringLiteral(arg)
+        continue
       }
       // Handle object arguments (variants).
-      for (const stringLit of arg.getDescendantsOfKind(
-        SyntaxKind.StringLiteral
-      )) {
-        processStringLiteral(stringLit)
-      }
+      processStringLiterals(arg)
     }
   }
 
@@ -108,11 +119,7 @@ export function applyCleanup(sourceFile: SourceFile) {
       continue
     }
 
-    for (const stringLit of call.getDescendantsOfKind(
-      SyntaxKind.StringLiteral
-    )) {
-      processStringLiteral(stringLit)
-    }
+    processStringLiterals(call)
   }
 }
 
