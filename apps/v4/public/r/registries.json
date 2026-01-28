@@ -86,7 +86,7 @@
   {
     "name": "@basecn",
     "homepage": "https://basecn.dev",
-    "url": "https://basecn.dev/r/{name}",
+    "url": "https://basecn.dev/r/{name}.json",
     "description": "Beautifully crafted shadcn/ui components powered by Base UI"
   },
   {
@@ -432,6 +432,12 @@
     "description": "Roi UI is a library that offers UI components and blocks built with Base UI primitives. Some blocks and components use motion (framer). Everything is open-source and will be forever."
   },
   {
+    "name": "@satoriui",
+    "homepage": "https://satoriui.site",
+    "url": "https://satoriui.site/r/{name}.json",
+    "description": "A comprehensive suite of high-fidelity interaction components. It offers motion-driven components that designed with motion-react and tailwindcss, that blends seamlessly."
+  },
+  {
     "name": "@solaceui",
     "homepage": "https://www.solaceui.com",
     "url": "https://www.solaceui.com/r/{name}.json",
@@ -688,5 +694,11 @@
     "homepage": "https://typedora-ui.netlify.app",
     "url": "https://typedora-ui.netlify.app/r/{name}.json",
     "description": "Typedora UI is a next-generation extension layer for shadcn/ui, designed to bring full type-safety to your UI components."
+  },
+  {
+    "name": "@shadcn-space",
+    "homepage": "https://shadcnspace.com/",
+    "url": "https://shadcnspace.com/r/{name}.json",
+    "description": "An open-source collection of production-ready Shadcn UI blocks, components, and templates for websites, admin dashboards and modern React web projects, built with Tailwind CSS and ready to copy-paste or install via the Shadcn CLI."
   }
 ]
