@@ -117,3 +117,31 @@ npx shadcn@latest migrate rtl
 ```
 
 </Steps>
+
+## Animations
+
+The CLI also handles animation classes, automatically transforming physical directional animations to their logical equivalents. For example, `slide-in-from-right` becomes `slide-in-from-end`.
+
+This ensures animations like dropdowns, popovers, and tooltips animate in the correct direction based on the document's text direction.
+
+**A note on tw-animate-css:**
+
+There is a [known issue](https://github.com/Wombosvideo/tw-animate-css/issues/67) with the `tw-animate-css` library where the logical slide utilities are not working as expected. For now, make sure you pass in the `dir` prop to portal elements.
+
+```tsx showLineNumbers /dir="rtl"/
+<Popover>
+  <PopoverTrigger>Open</PopoverTrigger>
+  <PopoverContent dir="rtl">
+    <div>Content</div>
+  </PopoverContent>
+</Popover>
+```
+
+```tsx showLineNumbers /dir="rtl"/
+<Tooltip>
+  <TooltipTrigger>Open</TooltipTrigger>
+  <TooltipContent dir="rtl">
+    <div>Content</div>
+  </TooltipContent>
+</Tooltip>
+```
