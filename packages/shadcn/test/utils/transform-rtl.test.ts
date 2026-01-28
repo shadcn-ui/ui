@@ -152,6 +152,26 @@ describe("applyRtlMapping", () => {
     expect(applyRtlMapping("px-4")).toBe("px-4")
   })
 
+  test("does not transform classes that partially match RTL mappings", () => {
+    // border-r should become border-e, but border-ring should stay as-is.
+    expect(applyRtlMapping("border-ring")).toBe("border-ring")
+    expect(applyRtlMapping("border-ring/50")).toBe("border-ring/50")
+    // border-l should become border-s, but border-lime-500 should stay as-is.
+    expect(applyRtlMapping("border-lime-500")).toBe("border-lime-500")
+    // text-left should become text-start, but text-left-foo should stay as-is.
+    expect(applyRtlMapping("text-left")).toBe("text-start")
+    // text-right should become text-end, but text-right-foo should stay as-is if it existed.
+    expect(applyRtlMapping("text-right")).toBe("text-end")
+    // float-left should become float-start, but float-leftish (hypothetical) should stay.
+    expect(applyRtlMapping("float-left")).toBe("float-start")
+    // origin-left should become origin-start, but origin-leftover (hypothetical) should stay.
+    expect(applyRtlMapping("origin-left")).toBe("origin-start")
+    // origin-top-left should become origin-top-start.
+    expect(applyRtlMapping("origin-top-left")).toBe("origin-top-start")
+    // scroll-mr- should become scroll-me-, but scroll-m-4 should stay as-is.
+    expect(applyRtlMapping("scroll-m-4")).toBe("scroll-m-4")
+  })
+
   test("adds rtl: variant for translate-x classes", () => {
     expect(applyRtlMapping("-translate-x-1/2")).toBe(
       "-translate-x-1/2 rtl:translate-x-1/2"

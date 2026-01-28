@@ -130,7 +130,39 @@ If you have existing components installed before enabling RTL, you can migrate t
 <Step>Run the migrate command</Step>
 
 ```bash
-npx shadcn@latest migrate rtl
+npx shadcn@latest migrate rtl [path]
 ```
+
+`[path]` accepts a path or glob pattern to migrate. If you don't provide a path, it will migrate all the files in the `ui` directory.
+
+### Manual Migration (Optional)
+
+The following components are not automatically migrated by the CLI. Follow the RTL support section for each component to manually migrate them.
+
+- [Calendar](/docs/components/radix/calendar#rtl-support)
+- [Pagination](/docs/components/radix/pagination#rtl-support)
+- [Sidebar](/docs/components/radix/sidebar#rtl-support)
+
+### Migrate Icons
+
+Some icons like `ArrowRightIcon` or `ChevronLeftIcon` might need the `rtl:rotate-180` class to be flipped correctly. Add the `rtl:rotate-180` class to the icon component to flip it correctly.
+
+```tsx showLineNumbers /rtl:rotate-180/
+<ArrowRightIcon className="rtl:rotate-180" />
+```
+
+### Add direction component
+
+Add the direction component to your project.
+
+```bash
+npx shadcn@latest add direction
+```
+
+### Add DirectionProvider
+
+Follow your framework's documentation for details on how to add the `DirectionProvider` component to your project.
+
+See the [Get Started](#get-started) section for details on how to add the `DirectionProvider` component to your project.
 
 </Steps>

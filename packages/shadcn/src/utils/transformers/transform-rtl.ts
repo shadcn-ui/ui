@@ -221,11 +221,12 @@ export function applyRtlMapping(input: string) {
         }
 
         if (value.startsWith(physical)) {
+          // For patterns without trailing '-', require exact match to avoid
+          // partial matches like border-ring matching border-r.
+          if (!physical.endsWith("-") && value !== physical) {
+            continue
+          }
           mappedValue = value.replace(physical, logical)
-          break
-        } else if (value === physical.replace(/-$/, "")) {
-          // Handle classes without values (e.g., border-l -> border-s).
-          mappedValue = logical.replace(/-$/, "")
           break
         }
       }

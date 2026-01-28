@@ -604,12 +604,12 @@ Update the `SidebarRail` component to use physical positioning for the rail:
 
 <Step>Add RTL flip to SidebarTrigger icon.</Step>
 
-Add `className="rtl:-scale-x-100"` to the icon in `SidebarTrigger` to flip it in RTL mode:
+Add `className="rtl:rotate-180"` to the icon in `SidebarTrigger` to flip it in RTL mode:
 
 ```diff
   <Button ...>
 -   <PanelLeftIcon />
-+   <PanelLeftIcon className="rtl:-scale-x-100" />
++   <PanelLeftIcon className="rtl:rotate-180" />
     <span className="sr-only">Toggle Sidebar</span>
   </Button>
 ```

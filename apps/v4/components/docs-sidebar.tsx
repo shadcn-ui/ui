@@ -53,8 +53,8 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/changelog",
   },
 ]
-const EXCLUDED_SECTIONS = ["installation", "dark-mode", "changelog"]
-const EXCLUDED_PAGES = ["/docs", "/docs/changelog"]
+const EXCLUDED_SECTIONS = ["installation", "dark-mode", "changelog", "rtl"]
+const EXCLUDED_PAGES = ["/docs", "/docs/changelog", "/docs/rtl"]
 
 export function DocsSidebar({
   tree,
