@@ -706,6 +706,16 @@
       "type": "registry:ui"
     },
     {
+      "name": "stepper",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/stepper.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "switch",
       "dependencies": [
         "@radix-ui/react-switch"
@@ -6958,6 +6968,80 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/spinner-item.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "stepper-demo",
+      "registryDependencies": [
+        "stepper",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/stepper-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "stepper-vertical",
+      "registryDependencies": [
+        "stepper"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/stepper-vertical.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "stepper-with-icons",
+      "registryDependencies": [
+        "stepper",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/stepper-with-icons.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "stepper-colors",
+      "registryDependencies": [
+        "stepper",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/stepper-colors.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "stepper-form",
+      "registryDependencies": [
+        "stepper",
+        "button",
+        "card",
+        "form",
+        "input",
+        "select",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/stepper-form.tsx",
           "type": "registry:example"
         }
       ],

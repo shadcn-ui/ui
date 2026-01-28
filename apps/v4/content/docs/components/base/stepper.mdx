@@ -1,0 +1,108 @@
+---
+title: Stepper
+description: A component for displaying progress through a sequence of steps.
+base: base
+component: true
+---
+
+<ComponentPreview styleName="base-nova" name="stepper-example" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add stepper
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="stepper"
+  title="components/ui/stepper.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Step,
+  StepDescription,
+  Stepper,
+  StepTitle,
+} from "@/components/ui/stepper"
+```
+
+```tsx
+<Stepper currentStep={1} onStepChange={setStep}>
+  <Step step={0}>
+    <StepTitle>Account</StepTitle>
+    <StepDescription>Create your account</StepDescription>
+  </Step>
+  <Step step={1}>
+    <StepTitle>Profile</StepTitle>
+    <StepDescription>Set up your profile</StepDescription>
+  </Step>
+  <Step step={2}>
+    <StepTitle>Complete</StepTitle>
+    <StepDescription>Review and finish</StepDescription>
+  </Step>
+</Stepper>
+```
+
+## API Reference
+
+### Stepper
+
+The root container component.
+
+| Prop           | Type                         | Default        | Description                             |
+| -------------- | ---------------------------- | -------------- | --------------------------------------- |
+| `currentStep`  | `number`                     | `0`            | The current active step index (0-based) |
+| `orientation`  | `"horizontal" \| "vertical"` | `"horizontal"` | The layout direction                    |
+| `onStepChange` | `(step: number) => void`     | -              | Callback fired when a step is clicked   |
+
+### Step
+
+Individual step component.
+
+| Prop        | Type                                              | Default  | Description                                               |
+| ----------- | ------------------------------------------------- | -------- | --------------------------------------------------------- |
+| `step`      | `number`                                          | required | The step index (0-based)                                  |
+| `status`    | `"pending" \| "active" \| "completed" \| "error"` | auto     | Override the computed status                              |
+| `disabled`  | `boolean`                                         | `false`  | Whether the step is disabled                              |
+| `clickable` | `boolean`                                         | `true`   | Whether the step can be clicked to navigate               |
+| `color`     | `string`                                          | -        | Custom color for active/completed state (CSS color value) |
+
+### StepIndicator
+
+The visual indicator showing step number or icon.
+
+### StepTitle
+
+The step heading text.
+
+### StepDescription
+
+Optional description text for the step.

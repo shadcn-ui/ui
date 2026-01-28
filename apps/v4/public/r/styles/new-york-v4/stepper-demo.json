@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-demo",
+  "registryDependencies": [
+    "stepper",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stepper-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Step,\n  StepDescription,\n  Stepper,\n  StepTitle,\n} from \"@/registry/new-york-v4/ui/stepper\"\n\nexport default function StepperDemo() {\n  const [currentStep, setCurrentStep] = React.useState(1)\n\n  return (\n    <div className=\"w-full max-w-2xl space-y-8\">\n      <Stepper currentStep={currentStep} onStepChange={setCurrentStep}>\n        <Step step={0}>\n          <StepTitle>Account</StepTitle>\n          <StepDescription>Create your account</StepDescription>\n        </Step>\n        <Step step={1}>\n          <StepTitle>Profile</StepTitle>\n          <StepDescription>Set up your profile</StepDescription>\n        </Step>\n        <Step step={2}>\n          <StepTitle>Complete</StepTitle>\n          <StepDescription>Review and finish</StepDescription>\n        </Step>\n      </Stepper>\n      <div className=\"flex justify-center gap-4\">\n        <Button\n          variant=\"outline\"\n          onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}\n          disabled={currentStep === 0}\n        >\n          Previous\n        </Button>\n        <Button\n          onClick={() => setCurrentStep(Math.min(2, currentStep + 1))}\n          disabled={currentStep === 2}\n        >\n          Next\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
