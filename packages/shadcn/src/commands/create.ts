@@ -58,7 +58,10 @@ export const create = new Command()
       // If no arguments or options provided, show initial prompt.
       const hasNoArgs = !name && !opts.template && !opts.preset
       if (hasNoArgs) {
-        const createUrl = getShadcnCreateUrl()
+        // TODO: Revisit this when we implement presets.
+        const createUrl = getShadcnCreateUrl(
+          opts.rtl ? { rtl: "true" } : undefined
+        )
         logger.log("Build your own shadcn/ui.")
         logger.log(
           `You will be taken to ${highlighter.info(
@@ -131,7 +134,10 @@ export const create = new Command()
       }
 
       // Handle preset selection.
-      const presetResult = await handlePresetOption(opts.preset ?? true)
+      const presetResult = await handlePresetOption(
+        opts.preset ?? true,
+        opts.rtl
+      )
 
       if (!presetResult) {
         process.exit(0)
@@ -143,12 +149,15 @@ export const create = new Command()
 
       if ("_isUrl" in presetResult) {
         // User provided a URL directly.
-        initUrl = presetResult.url
         const url = new URL(presetResult.url)
+        if (opts.rtl) {
+          url.searchParams.set("rtl", "true")
+        }
+        initUrl = url.toString()
         baseColor = url.searchParams.get("baseColor") ?? "neutral"
       } else {
         // User selected a preset by name.
-        initUrl = buildInitUrl(presetResult)
+        initUrl = buildInitUrl(presetResult, opts.rtl)
         baseColor = presetResult.baseColor
       }
 
@@ -223,7 +232,7 @@ export const create = new Command()
     }
   })
 
-function buildInitUrl(preset: Preset) {
+function buildInitUrl(preset: Preset, rtl: boolean) {
   const params = new URLSearchParams({
     base: preset.base,
     style: preset.style,
@@ -231,7 +240,7 @@ function buildInitUrl(preset: Preset) {
     theme: preset.theme,
     iconLibrary: preset.iconLibrary,
     font: preset.font,
-    rtl: String(preset.rtl),
+    rtl: String(rtl || preset.rtl),
     menuAccent: preset.menuAccent,
     menuColor: preset.menuColor,
     radius: preset.radius,
@@ -240,7 +249,7 @@ function buildInitUrl(preset: Preset) {
   return `${getShadcnInitUrl()}?${params.toString()}`
 }
 
-async function handlePresetOption(presetArg: string | boolean) {
+async function handlePresetOption(presetArg: string | boolean, rtl: boolean) {
   // If --preset is used without a name, show interactive list.
   if (presetArg === true) {
     const presets = await getPresets()
@@ -268,7 +277,7 @@ async function handlePresetOption(presetArg: string | boolean) {
     }
 
     if (selectedPreset === "custom") {
-      const url = getShadcnCreateUrl()
+      const url = getShadcnCreateUrl(rtl ? { rtl: "true" } : undefined)
       logger.info(`\nOpening ${highlighter.info(url)} in your browser...\n`)
       await open(url)
       return null
@@ -358,8 +367,14 @@ function App() {
   }
 }
 
-function getShadcnCreateUrl() {
-  return `${SHADCN_URL}/create`
+function getShadcnCreateUrl(searchParams?: Record<string, string>) {
+  const url = new URL(`${SHADCN_URL}/create`)
+  if (searchParams) {
+    for (const [key, value] of Object.entries(searchParams)) {
+      url.searchParams.set(key, value)
+    }
+  }
+  return url.toString()
 }
 
 function getShadcnInitUrl() {
