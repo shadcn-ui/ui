@@ -11,6 +11,7 @@ import {
 import { setRegistryHeaders } from "@/src/registry/context"
 import {
   RegistryNotConfiguredError,
+  RegistryNotFoundError,
   RegistryParseError,
 } from "@/src/registry/errors"
 import { fetchRegistry, fetchRegistryLocal } from "@/src/registry/fetcher"
@@ -96,10 +97,19 @@ export async function fetchRegistryItems(
       }
 
       const path = `styles/${config?.style ?? "new-york-v4"}/${item}.json`
-      const [result] = await fetchRegistry([path], options)
       try {
+        const [result] = await fetchRegistry([path], options)
         return registryItemSchema.parse(result)
       } catch (error) {
+        if (
+          error instanceof RegistryNotFoundError &&
+          config?.style !== "new-york"
+        ) {
+          const path = `styles/new-york/${item}.json`
+          const [result] = await fetchRegistry([path], options)
+          return registryItemSchema.parse(result)
+        }
+
         throw new RegistryParseError(item, error)
       }
     })
@@ -387,9 +397,9 @@ async function resolveDependenciesRecursively(
           // Resolve namespaced dependencies to set proper headers.
           const resolvedDeps = config?.registries
             ? resolveRegistryItemsFromRegistries(
-                item.registryDependencies,
-                config
-              )
+              item.registryDependencies,
+              config
+            )
             : item.registryDependencies
 
           const nested = await resolveDependenciesRecursively(
@@ -420,9 +430,9 @@ async function resolveDependenciesRecursively(
           // Resolve namespaced dependencies to set proper headers.
           const resolvedDeps = config?.registries
             ? resolveRegistryItemsFromRegistries(
-                item.registryDependencies,
-                config
-              )
+              item.registryDependencies,
+              config
+            )
             : item.registryDependencies
 
           const nested = await resolveDependenciesRecursively(
@@ -447,9 +457,9 @@ async function resolveDependenciesRecursively(
             // Resolve namespaced dependencies to set proper headers.
             const resolvedDeps = config?.registries
               ? resolveRegistryItemsFromRegistries(
-                  item.registryDependencies,
-                  config
-                )
+                item.registryDependencies,
+                config
+              )
               : item.registryDependencies
 
             const nested = await resolveDependenciesRecursively(
