@@ -18,6 +18,7 @@ export async function ComponentSource({
   collapsible = true,
   className,
   styleName = "new-york-v4",
+  maxLines,
 }: React.ComponentProps<"div"> & {
   name?: string
   src?: string
@@ -25,6 +26,7 @@ export async function ComponentSource({
   language?: string
   collapsible?: boolean
   styleName?: string
+  maxLines?: number
 }) {
   if (!name && !src) {
     return null
@@ -50,6 +52,11 @@ export async function ComponentSource({
 
   code = await formatCode(code, styleName)
   code = code.replaceAll("/* eslint-disable react/no-children-prop */\n", "")
+
+  // Truncate code if maxLines is set.
+  if (maxLines) {
+    code = code.split("\n").slice(0, maxLines).join("\n")
+  }
 
   const lang = language ?? title?.split(".").pop() ?? "tsx"
   const highlightedCode = await highlightCode(code, lang)
