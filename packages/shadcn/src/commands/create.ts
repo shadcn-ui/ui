@@ -52,6 +52,7 @@ export const create = new Command()
     "do not use the src directory when creating a new project."
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
+  .option("--rtl", "enable RTL support.", false)
   .action(async (name, opts) => {
     try {
       // If no arguments or options provided, show initial prompt.
@@ -181,6 +182,7 @@ export const create = new Command()
         isNewProject: true,
         srcDir: opts.srcDir,
         cssVariables: true,
+        rtl: opts.rtl,
         template,
         baseColor,
         baseStyle: false,
@@ -229,7 +231,7 @@ function buildInitUrl(preset: Preset) {
     theme: preset.theme,
     iconLibrary: preset.iconLibrary,
     font: preset.font,
-    direction: preset.direction,
+    rtl: String(preset.rtl),
     menuAccent: preset.menuAccent,
     menuColor: preset.menuColor,
     radius: preset.radius,

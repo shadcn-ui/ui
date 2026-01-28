@@ -80,6 +80,7 @@ function PaginationPrevious({
         phosphor="CaretLeftIcon"
         remixicon="RiArrowLeftSLine"
         data-icon="inline-start"
+        className="cn-rtl-flip"
       />
       <span className="hidden sm:block">{text}</span>
     </PaginationLink>
@@ -106,6 +107,7 @@ function PaginationNext({
         phosphor="CaretRightIcon"
         remixicon="RiArrowRightSLine"
         data-icon="inline-end"
+        className="cn-rtl-flip"
       />
     </PaginationLink>
   )

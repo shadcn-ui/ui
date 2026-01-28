@@ -218,6 +218,16 @@ describe("applyRtlMapping", () => {
     )
   })
 
+  test("transforms cn-rtl-flip marker to rtl:rotate-180", () => {
+    expect(applyRtlMapping("cn-rtl-flip size-4")).toBe("rtl:rotate-180 size-4")
+    expect(applyRtlMapping("size-4 cn-rtl-flip")).toBe("size-4 rtl:rotate-180")
+    expect(applyRtlMapping("cn-rtl-flip")).toBe("rtl:rotate-180")
+  })
+
+  test("transforms cn-rtl-flip with other RTL mappings", () => {
+    expect(applyRtlMapping("cn-rtl-flip ml-2")).toBe("rtl:rotate-180 ms-2")
+  })
+
   // test("adds logical side selectors when cn-logical-sides marker is present", () => {
   //   // With cn-logical-sides marker, adds logical alongside physical.
   //   // In RTL: inline-start = right, inline-end = left.
@@ -269,7 +279,7 @@ describe("applyRtlMapping", () => {
 })
 
 describe("transformRtl", () => {
-  test("transforms className string literals when direction is rtl", async () => {
+  test("transforms className string literals when rtl is true", async () => {
     const result = await transform({
       filename: "test.tsx",
       raw: `import * as React from "react"
@@ -278,7 +288,7 @@ export function Foo() {
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -294,7 +304,7 @@ export function Foo() {
     expect(result).toContain("text-start")
   })
 
-  test("does not transform when direction is ltr", async () => {
+  test("does not transform when rtl is false", async () => {
     const result = await transform({
       filename: "test.tsx",
       raw: `import * as React from "react"
@@ -303,7 +313,7 @@ export function Foo() {
 }
 `,
       config: {
-        direction: "ltr",
+        rtl: false,
         tailwind: {
           baseColor: "neutral",
         },
@@ -352,7 +362,7 @@ export function Foo() {
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -382,7 +392,7 @@ const buttonVariants = cva("ml-2 mr-4", {
 })
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -410,7 +420,7 @@ const buttonVariants = cva("ml-2 mr-4", {
   // }
   // `,
   //     config: {
-  //       direction: "rtl",
+  //       rtl: true,
   //       tailwind: {
   //         baseColor: "neutral",
   //       },
@@ -434,7 +444,7 @@ const buttonVariants = cva("ml-2 mr-4", {
   // }
   // `,
   //     config: {
-  //       direction: "rtl",
+  //       rtl: true,
   //       tailwind: {
   //         baseColor: "neutral",
   //       },
@@ -458,7 +468,7 @@ const buttonVariants = cva("ml-2 mr-4", {
   // }
   // `,
   //     config: {
-  //       direction: "rtl",
+  //       rtl: true,
   //       tailwind: {
   //         baseColor: "neutral",
   //       },
@@ -482,7 +492,7 @@ const buttonVariants = cva("ml-2 mr-4", {
   // }
   // `,
   //     config: {
-  //       direction: "rtl",
+  //       rtl: true,
   //       tailwind: {
   //         baseColor: "neutral",
   //       },
@@ -513,7 +523,7 @@ const buttonVariants = cva("ml-2 mr-4", {
   // }
   // `,
   //     config: {
-  //       direction: "rtl",
+  //       rtl: true,
   //       tailwind: {
   //         baseColor: "neutral",
   //       },
@@ -544,7 +554,7 @@ export function Foo() {
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -573,7 +583,7 @@ export function Foo() {
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -590,16 +600,16 @@ export function Foo() {
     expect(result).not.toContain("right-0")
   })
 
-  test("adds rtl:rotate-180 to directional icons with existing className", async () => {
+  test("transforms cn-rtl-flip marker to rtl:rotate-180", async () => {
     const result = await transform({
       filename: "test.tsx",
       raw: `import * as React from "react"
 export function Foo() {
-  return <IconPlaceholder lucide="ChevronRightIcon" className="size-4" />
+  return <IconPlaceholder lucide="ChevronRightIcon" className="cn-rtl-flip size-4" />
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -612,18 +622,19 @@ export function Foo() {
 
     expect(result).toContain("rtl:rotate-180")
     expect(result).toContain("size-4")
+    expect(result).not.toContain("cn-rtl-flip")
   })
 
-  test("adds rtl:rotate-180 to directional icons without className", async () => {
+  test("transforms cn-rtl-flip marker in cn() call", async () => {
     const result = await transform({
       filename: "test.tsx",
       raw: `import * as React from "react"
-export function Foo() {
-  return <IconPlaceholder lucide="ChevronLeftIcon" />
+export function Foo({ className }) {
+  return <IconPlaceholder lucide="ChevronRightIcon" className={cn("cn-rtl-flip size-4", className)} />
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -634,19 +645,21 @@ export function Foo() {
       },
     })
 
-    expect(result).toContain('className="rtl:rotate-180"')
+    expect(result).toContain("rtl:rotate-180")
+    expect(result).toContain("size-4")
+    expect(result).not.toContain("cn-rtl-flip")
   })
 
-  test("does not add rtl:rotate-180 to non-directional icons", async () => {
+  test("does not add rtl:rotate-180 without cn-rtl-flip marker", async () => {
     const result = await transform({
       filename: "test.tsx",
       raw: `import * as React from "react"
 export function Foo() {
-  return <IconPlaceholder lucide="ChevronDownIcon" className="size-4" />
+  return <IconPlaceholder lucide="ChevronRightIcon" className="size-4" />
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -661,31 +674,6 @@ export function Foo() {
     expect(result).toContain("size-4")
   })
 
-  test("appends rtl:rotate-180 to first string arg in cn() for directional icons", async () => {
-    const result = await transform({
-      filename: "test.tsx",
-      raw: `import * as React from "react"
-export function Foo({ className }) {
-  return <IconPlaceholder lucide="ChevronRightIcon" className={cn("size-4", className)} />
-}
-`,
-      config: {
-        direction: "rtl",
-        tailwind: {
-          baseColor: "neutral",
-        },
-        aliases: {
-          components: "@/components",
-          utils: "@/lib/utils",
-        },
-      },
-    })
-
-    // Should append to first string arg, not add as new arg.
-    expect(result).toContain('cn("size-4 rtl:rotate-180", className)')
-    expect(result).not.toContain('cn("size-4", className, "rtl:rotate-180")')
-  })
-
   test("transforms side prop to logical value for whitelisted components", async () => {
     const result = await transform({
       filename: "test.tsx",
@@ -695,7 +683,7 @@ export function Foo() {
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -719,7 +707,7 @@ export function Foo() {
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -743,7 +731,7 @@ export function Foo() {
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -770,7 +758,7 @@ function DropdownMenuSubContent({
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },
@@ -797,7 +785,7 @@ function Sidebar({
 }
 `,
       config: {
-        direction: "rtl",
+        rtl: true,
         tailwind: {
           baseColor: "neutral",
         },

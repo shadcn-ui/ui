@@ -25,15 +25,21 @@ Here's a preview of a card component in RTL mode. Use the language switcher to s
 
 <Steps>
 
-<Step>Update your components.json</Step>
+<Step>Create a new app with the RTL flag</Step>
 
-Add `direction: "rtl"` to your `components.json` file:
+For new applications, use the `--rtl` flag when running `init` or `create`. This will automatically set `rtl: true` in your `components.json` file.
+
+**If you're using [`shadcn/create`](/create), look for the RTL toggle.**
+
+```bash
+npx shadcn@latest init --rtl
+```
 
 ```json title="components.json" showLineNumbers {4}
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "base-nova",
-  "direction": "rtl",
+  "rtl": true,
   "tailwind": {
     "config": "",
     "css": "src/app/globals.css",
@@ -43,6 +49,11 @@ Add `direction: "rtl"` to your `components.json` file:
 }
 ```
 
+<Callout>
+  For existing projects, add `rtl: true` to your `components.json` file
+  manually.
+</Callout>
+
 <Step>Add the DirectionProvider</Step>
 
 Wrap your application with the `DirectionProvider` component. Follow the installation guide for your UI library:
@@ -50,11 +61,11 @@ Wrap your application with the `DirectionProvider` component. Follow the install
 - [Direction for Radix UI](/docs/components/radix/direction)
 - [Direction for Base UI](/docs/components/base/direction)
 
-<Step>Set the dir attribute</Step>
+<Step>Set the `dir` attribute</Step>
 
 Add the `dir="rtl"` attribute to your `html` element:
 
-```tsx
+```tsx showLineNumbers
 <html dir="rtl">
   <body>
     <DirectionProvider dir="rtl">{/* Your app content */}</DirectionProvider>
@@ -66,11 +77,12 @@ Add the `dir="rtl"` attribute to your `html` element:
 
 ## How it works
 
-When you install new components with `direction: "rtl"` set in your `components.json`, the shadcn CLI automatically transforms classes and props to be RTL compatible:
+When you install new components with `rtl: true` set in your `components.json`, the shadcn CLI automatically transforms classes and props to be RTL compatible:
 
 - Physical positioning classes like `left-*` and `right-*` are converted to logical equivalents like `start-*` and `end-*`.
 - Directional props are updated to use logical values.
 - Text alignment and spacing classes are adjusted accordingly.
+- Supported icons are automatically flipped using `rtl:rotate-180`.
 
 ## Supported Styles
 
@@ -84,13 +96,13 @@ If you have existing components installed before enabling RTL, you can migrate t
 
 <Steps>
 
-<Step>Add direction to your components.json</Step>
+<Step>Add rtl to your components.json</Step>
 
 ```json title="components.json" showLineNumbers {4}
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
-  "direction": "rtl",
+  "rtl": true,
   ...
 }
 ```

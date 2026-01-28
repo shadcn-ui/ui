@@ -31,6 +31,7 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from "@/registry/new-york-v4/ui/radio-group"
+import { Switch } from "@/registry/new-york-v4/ui/switch"
 import {
   Tabs,
   TabsContent,
@@ -67,6 +68,7 @@ export function ToolbarControls() {
   const [params, setParams] = useDesignSystemSearchParams()
   const [config, setConfig] = useConfig()
   const [hasCopied, setHasCopied] = React.useState(false)
+  const [rtl, setRtl] = React.useState(false)
 
   const packageManager = config.packageManager || "pnpm"
 
@@ -74,11 +76,12 @@ export function ToolbarControls() {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
     const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}`
     const templateFlag = params.template ? ` --template ${params.template}` : ""
+    const rtlFlag = rtl ? " --rtl" : ""
     return {
-      pnpm: `pnpm dlx shadcn@latest create --preset "${url}"${templateFlag}`,
-      npm: `npx shadcn@latest create --preset "${url}"${templateFlag}`,
-      yarn: `yarn dlx shadcn@latest create --preset "${url}"${templateFlag}`,
-      bun: `bunx --bun shadcn@latest create --preset "${url}"${templateFlag}`,
+      pnpm: `pnpm dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+      npm: `npx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+      yarn: `yarn dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+      bun: `bunx --bun shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
     }
   }, [
     params.base,
@@ -91,6 +94,7 @@ export function ToolbarControls() {
     params.menuColor,
     params.radius,
     params.template,
+    rtl,
   ])
 
   const command = commands[packageManager]
@@ -204,6 +208,15 @@ export function ToolbarControls() {
                 </FieldLabel>
               ))}
             </RadioGroup>
+          </Field>
+          <Field className="flex-row items-center justify-between rounded-lg border p-3">
+            <div className="space-y-0.5">
+              <FieldTitle>RTL Support</FieldTitle>
+              <p className="text-muted-foreground text-[13px]">
+                Enable right-to-left layout support.
+              </p>
+            </div>
+            <Switch checked={rtl} onCheckedChange={setRtl} />
           </Field>
         </FieldGroup>
         <Tabs

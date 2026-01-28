@@ -3,7 +3,11 @@ import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
 import { registrySchema } from "shadcn/schema"
-import { createStyleMap, transformDirection, transformStyle } from "shadcn/utils"
+import {
+  createStyleMap,
+  transformDirection,
+  transformStyle,
+} from "shadcn/utils"
 
 import { getAllBlocks } from "@/lib/blocks"
 import { legacyStyles } from "@/registry/_legacy-styles"
@@ -600,7 +604,7 @@ async function buildRtlExamples() {
       let content = await fs.readFile(sourcePath, "utf-8")
 
       // Apply RTL transformations using the shadcn transformer.
-      content = await transformDirection(content, "rtl")
+      content = await transformDirection(content, true)
 
       // Update import paths from ui/ to ui-rtl/.
       content = content.replace(

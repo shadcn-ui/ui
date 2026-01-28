@@ -50,15 +50,6 @@ export type MenuColor = (typeof MENU_COLORS)[number]
 
 export type MenuColorValue = MenuColor["value"]
 
-export const DIRECTIONS = [
-  { value: "ltr", label: "LTR" },
-  { value: "rtl", label: "RTL" },
-] as const
-
-export type Direction = (typeof DIRECTIONS)[number]
-
-export type DirectionValue = Direction["value"]
-
 export const RADII = [
   { name: "default", label: "Default", value: "" },
   { name: "none", label: "None", value: "0" },
@@ -86,11 +77,7 @@ export const designSystemConfigSchema = z
     theme: z.enum(THEMES.map((t) => t.name) as [ThemeName, ...ThemeName[]]),
     font: z.enum(fontValues).default("inter"),
     item: z.string().optional(),
-    direction: z
-      .enum(
-        DIRECTIONS.map((d) => d.value) as [DirectionValue, ...DirectionValue[]]
-      )
-      .default("ltr"),
+    rtl: z.boolean().default(false),
     menuAccent: z
       .enum(
         MENU_ACCENTS.map((a) => a.value) as [
@@ -130,7 +117,7 @@ export const DEFAULT_CONFIG: DesignSystemConfig = {
   iconLibrary: "lucide",
   font: "inter",
   item: "Item",
-  direction: "ltr",
+  rtl: false,
   menuAccent: "subtle",
   menuColor: "default",
   radius: "default",
@@ -156,7 +143,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "lucide",
     font: "inter",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -172,7 +159,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "inter",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -188,7 +175,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "figtree",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -204,7 +191,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "jetbrains-mono",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -221,7 +208,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "lucide",
     font: "inter",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -237,7 +224,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "inter",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -253,7 +240,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "figtree",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -269,7 +256,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "jetbrains-mono",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -285,7 +272,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "inter",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -301,7 +288,7 @@ export const PRESETS: Preset[] = [
     iconLibrary: "hugeicons",
     font: "inter",
     item: "Item",
-    direction: "ltr",
+    rtl: false,
     menuAccent: "subtle",
     menuColor: "default",
     radius: "default",
@@ -427,7 +414,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
     config: {
       style: `${config.base}-${config.style}`,
       iconLibrary: iconLibraryItem.name,
-      direction: config.direction,
+      rtl: config.rtl,
       menuColor: config.menuColor,
       menuAccent: config.menuAccent,
       tailwind: {

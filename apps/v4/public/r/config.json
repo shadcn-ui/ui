@@ -11,7 +11,7 @@
       "iconLibrary": "lucide",
       "font": "inter",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -27,7 +27,7 @@
       "iconLibrary": "hugeicons",
       "font": "inter",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -43,7 +43,7 @@
       "iconLibrary": "hugeicons",
       "font": "figtree",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -59,7 +59,7 @@
       "iconLibrary": "hugeicons",
       "font": "jetbrains-mono",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -75,7 +75,7 @@
       "iconLibrary": "lucide",
       "font": "inter",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -91,7 +91,7 @@
       "iconLibrary": "hugeicons",
       "font": "inter",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -107,7 +107,7 @@
       "iconLibrary": "hugeicons",
       "font": "figtree",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -123,7 +123,7 @@
       "iconLibrary": "hugeicons",
       "font": "jetbrains-mono",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -139,7 +139,7 @@
       "iconLibrary": "hugeicons",
       "font": "inter",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -155,7 +155,7 @@
       "iconLibrary": "hugeicons",
       "font": "inter",
       "item": "Item",
-      "direction": "ltr",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"

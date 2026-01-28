@@ -11,6 +11,7 @@ import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import { z } from "zod"
 
+import { transformCleanup } from "./transform-cleanup"
 import { transformRtl } from "./transform-rtl"
 import { transformTwPrefixes } from "./transform-tw-prefix"
 
@@ -47,6 +48,7 @@ export async function transform(
     transformTwPrefixes,
     transformRtl,
     transformIcons,
+    transformCleanup,
   ]
 ) {
   const tempFile = await createTempSourceFile(opts.filename)
