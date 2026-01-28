@@ -140,11 +140,13 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 
 ## Changelog
 
-### Add `text` prop
+### RTL Support
 
 If you're upgrading from a previous version of the `Pagination` component, you'll need to apply the following updates to add the `text` prop:
 
-#### 1. Update `PaginationPrevious`
+<Steps>
+
+<Step>Update `PaginationPrevious`.</Step>
 
 ```diff
   function PaginationPrevious({
@@ -170,7 +172,7 @@ If you're upgrading from a previous version of the `Pagination` component, you'l
   }
 ```
 
-#### 2. Update `PaginationNext`
+<Step>Update `PaginationNext`.</Step>
 
 ```diff
   function PaginationNext({
@@ -193,3 +195,5 @@ If you're upgrading from a previous version of the `Pagination` component, you'l
     )
   }
 ```
+
+</Steps>

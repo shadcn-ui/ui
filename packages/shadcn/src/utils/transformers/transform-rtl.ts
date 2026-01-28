@@ -142,6 +142,11 @@ export function applyRtlMapping(input: string) {
   return input
     .split(" ")
     .flatMap((className) => {
+      // Skip classes that already have rtl: or ltr: prefix.
+      if (className.startsWith("rtl:") || className.startsWith("ltr:")) {
+        return [className]
+      }
+
       // Replace the cn-rtl-flip marker with rtl:rotate-180.
       if (className === RTL_FLIP_MARKER) {
         return ["rtl:rotate-180"]

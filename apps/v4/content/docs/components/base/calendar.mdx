@@ -270,11 +270,13 @@ See the [React DayPicker](https://react-day-picker.js.org) documentation for mor
 
 ## Changelog
 
-### Locale Support
+### RTL Support
 
 If you're upgrading from a previous version of the `Calendar` component, you'll need to apply the following updates to add locale support:
 
-#### 1. Import the `Locale` type
+<Steps>
+
+<Step>Import the `Locale` type.</Step>
 
 Add `Locale` to your imports from `react-day-picker`:
 
@@ -287,7 +289,7 @@ Add `Locale` to your imports from `react-day-picker`:
   } from "react-day-picker"
 ```
 
-#### 2. Add `locale` prop to the Calendar component
+<Step>Add `locale` prop to the Calendar component.</Step>
 
 Add the `locale` prop to the component's props:
 
@@ -307,7 +309,7 @@ Add the `locale` prop to the component's props:
   }) {
 ```
 
-#### 3. Pass `locale` to DayPicker
+<Step>Pass `locale` to DayPicker.</Step>
 
 Pass the `locale` prop to the `DayPicker` component:
 
@@ -325,7 +327,7 @@ Pass the `locale` prop to the `DayPicker` component:
       }}
 ```
 
-#### 4. Update CalendarDayButton to accept locale
+<Step>Update CalendarDayButton to accept locale.</Step>
 
 Update the `CalendarDayButton` component signature and pass `locale`:
 
@@ -340,7 +342,7 @@ Update the `CalendarDayButton` component signature and pass `locale`:
 + }: React.ComponentProps<typeof DayButton> & { locale?: Partial<Locale> }) {
 ```
 
-#### 5. Update date formatting in CalendarDayButton
+<Step>Update date formatting in CalendarDayButton.</Step>
 
 Use `locale?.code` in the date formatting:
 
@@ -354,7 +356,7 @@ Use `locale?.code` in the date formatting:
     />
 ```
 
-#### 6. Pass locale to DayButton component
+<Step>Pass locale to DayButton component.</Step>
 
 Update the `DayButton` component usage to pass the `locale` prop:
 
@@ -369,7 +371,7 @@ Update the `DayButton` component usage to pass the `locale` prop:
       }}
 ```
 
-#### 7. Update RTL-aware CSS classes
+<Step>Update RTL-aware CSS classes.</Step>
 
 Replace directional classes with logical properties for better RTL support:
 
@@ -396,6 +398,8 @@ Replace directional classes with logical properties for better RTL support:
 - data-[range-start=true]:rounded-l-(--cell-radius)
 + data-[range-start=true]:rounded-s-(--cell-radius)
 ```
+
+</Steps>
 
 After applying these changes, you can use the `locale` prop to provide locale-specific formatting:
 

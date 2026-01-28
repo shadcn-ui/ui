@@ -276,6 +276,31 @@ describe("applyRtlMapping", () => {
       "data-[side=left]:text-start"
     )
   })
+
+  test("skips classes with rtl: prefix", () => {
+    expect(applyRtlMapping("rtl:ml-2")).toBe("rtl:ml-2")
+    expect(applyRtlMapping("rtl:text-right")).toBe("rtl:text-right")
+    expect(applyRtlMapping("rtl:space-x-reverse")).toBe("rtl:space-x-reverse")
+  })
+
+  test("skips classes with ltr: prefix", () => {
+    expect(applyRtlMapping("ltr:ml-2")).toBe("ltr:ml-2")
+    expect(applyRtlMapping("ltr:text-left")).toBe("ltr:text-left")
+  })
+
+  test("skips rtl:/ltr: classes but transforms others in same string", () => {
+    expect(applyRtlMapping("ml-2 rtl:mr-2")).toBe("ms-2 rtl:mr-2")
+    expect(applyRtlMapping("ltr:pl-4 pr-4")).toBe("ltr:pl-4 pe-4")
+    expect(applyRtlMapping("text-left rtl:text-right ltr:text-left")).toBe(
+      "text-start rtl:text-right ltr:text-left"
+    )
+  })
+
+  test("skips manually specified ltr:/rtl: translate pairs", () => {
+    expect(applyRtlMapping("ltr:-translate-x-1/2 rtl:-translate-x-1/2")).toBe(
+      "ltr:-translate-x-1/2 rtl:-translate-x-1/2"
+    )
+  })
 })
 
 describe("transformRtl", () => {
