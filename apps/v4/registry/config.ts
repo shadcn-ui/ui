@@ -432,5 +432,8 @@ export function buildRegistryBase(config: DesignSystemConfig) {
         body: { "@apply bg-background text-foreground": {} },
       },
     },
+    ...(config.rtl && {
+      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template ?? "next"}`,
+    }),
   }
 }

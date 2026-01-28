@@ -55,12 +55,21 @@ export const create = new Command()
   .option("--rtl", "enable RTL support.", false)
   .action(async (name, opts) => {
     try {
-      // If no arguments or options provided, show initial prompt.
-      const hasNoArgs = !name && !opts.template && !opts.preset
-      if (hasNoArgs) {
-        // TODO: Revisit this when we implement presets.
+      // If no preset provided, open create URL with template and rtl params.
+      const hasNoPreset = !name && !opts.preset
+      if (hasNoPreset) {
+        const searchParams: Record<string, string> = {}
+        if (opts.template) {
+          searchParams.template = opts.template
+        }
+        if (opts.rtl) {
+          searchParams.rtl = "true"
+
+          // Recommend base-ui in RTL.
+          searchParams.base = "base"
+        }
         const createUrl = getShadcnCreateUrl(
-          opts.rtl ? { rtl: "true" } : undefined
+          Object.keys(searchParams).length > 0 ? searchParams : undefined
         )
         logger.log("Build your own shadcn/ui.")
         logger.log(
@@ -203,7 +212,11 @@ export const create = new Command()
 
       // Add component example.
       if (config) {
-        await addComponents(["component-example"], config, {
+        const components = ["component-example"]
+        if (opts.rtl) {
+          components.push("direction")
+        }
+        await addComponents(components, config, {
           baseStyle: false,
           silent: true,
           overwrite: true,

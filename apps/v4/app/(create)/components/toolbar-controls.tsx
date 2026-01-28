@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import {
   ComputerTerminal01Icon,
   Copy01Icon,
@@ -24,10 +25,10 @@ import {
 import {
   Field,
   FieldContent,
+  FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldTitle,
-  FieldDescription,
 } from "@/registry/new-york-v4/ui/field"
 import {
   RadioGroup,
@@ -188,7 +189,7 @@ export function ToolbarControls() {
                 <FieldLabel
                   key={template.value}
                   htmlFor={template.value}
-                  className="rounded-lg! has-data-[state=checked]:border-primary/10"
+                  className="has-data-[state=checked]:border-primary/10 rounded-lg!"
                 >
                   <Field className="flex min-w-0 flex-col items-center justify-center gap-2 p-3! text-center *:w-auto!">
                     <RadioGroupItem
@@ -212,9 +213,18 @@ export function ToolbarControls() {
           </Field>
           <FieldLabel className="has-data-[state=checked]:border-primary/10 rounded-lg!">
             <Field orientation="horizontal">
-              <FieldContent>
-                <FieldTitle>RTL Support</FieldTitle>
-                <FieldDescription>Enable right-to-left layout support.</FieldDescription>
+              <FieldContent className="gap-1">
+                <FieldTitle>Enable RTL</FieldTitle>
+                <FieldDescription>
+                  <a
+                    href={`/docs/rtl/${params.template}`}
+                    className="text-foreground underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View the RTL setup guide for {selectedTemplate?.title}.
+                  </a>
+                </FieldDescription>
               </FieldContent>
               <Switch
                 checked={params.rtl}
@@ -234,7 +244,7 @@ export function ToolbarControls() {
             className="bg-surface min-w-0 gap-0 overflow-hidden rounded-lg border"
           >
             <div className="flex items-center gap-2 p-2">
-              <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-0 font-mono *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none! *:data-[slot=tabs-trigger]:h-7 group-data-[orientation=horizontal]/tabs:h-8">
+              <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-0 font-mono group-data-[orientation=horizontal]/tabs:h-8 *:data-[slot=tabs-trigger]:h-7 *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none!">
                 <TabsTrigger value="pnpm">pnpm</TabsTrigger>
                 <TabsTrigger value="npm">npm</TabsTrigger>
                 <TabsTrigger value="yarn">yarn</TabsTrigger>
