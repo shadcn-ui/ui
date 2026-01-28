@@ -580,21 +580,17 @@ async function buildRtlExamples() {
     const sourceDir = path.join(process.cwd(), `examples/${base.name}/ui`)
     const targetDir = path.join(process.cwd(), `examples/${base.name}/ui-rtl`)
 
-    // Check if source directory exists.
     try {
       await fs.access(sourceDir)
     } catch {
-      console.log(`   ⚠️ examples/${base.name}/ui not found, skipping`)
+      console.log(`   ⚠️ examples/${base.name}/ui not found, skipping...`)
       continue
     }
 
-    // Create target directory.
     rimraf.sync(targetDir)
     await fs.mkdir(targetDir, { recursive: true })
 
-    // Get all UI component files.
     const files = await fs.readdir(sourceDir)
-
     for (const file of files) {
       if (!file.endsWith(".tsx") && !file.endsWith(".ts")) continue
 
@@ -603,10 +599,8 @@ async function buildRtlExamples() {
 
       let content = await fs.readFile(sourcePath, "utf-8")
 
-      // Apply RTL transformations using the shadcn transformer.
       content = await transformDirection(content, true)
 
-      // Update import paths from ui/ to ui-rtl/.
       content = content.replace(
         new RegExp(`@/examples/${base.name}/ui/`, "g"),
         `@/examples/${base.name}/ui-rtl/`

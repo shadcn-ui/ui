@@ -1,5 +1,5 @@
 import { Transformer } from "@/src/utils/transformers"
-import { Project, ScriptKind, SyntaxKind } from "ts-morph"
+import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 
 import { splitClassName } from "./transform-css-vars"
 
@@ -278,11 +278,9 @@ export function applyRtlMapping(input: string) {
     .join(" ")
 }
 
-export const transformRtl: Transformer = async ({ sourceFile, config }) => {
-  if (!config.rtl) {
-    return sourceFile
-  }
-
+// Core RTL transformation logic that operates on a SourceFile.
+// Extracted to be reusable by both transformRtl (CLI) and transformDirection (build script).
+function applyRtlTransformToSourceFile(sourceFile: SourceFile) {
   // Find the cva function calls.
   sourceFile
     .getDescendantsOfKind(SyntaxKind.CallExpression)
@@ -517,12 +515,20 @@ export const transformRtl: Transformer = async ({ sourceFile, config }) => {
       initializer.replaceWithText(`"${mappedValue}"`)
     }
   })
+}
+
+export const transformRtl: Transformer = async ({ sourceFile, config }) => {
+  if (!config.rtl) {
+    return sourceFile
+  }
+
+  applyRtlTransformToSourceFile(sourceFile)
 
   return sourceFile
 }
 
 // Standalone function to transform source code for RTL.
-// This is used by the build script and doesn't require a config object.
+// This is used by the build script.
 export async function transformDirection(source: string, rtl: boolean) {
   if (!rtl) {
     return source
@@ -537,225 +543,7 @@ export async function transformDirection(source: string, rtl: boolean) {
     overwrite: true,
   })
 
-  // Find cva function calls.
-  sourceFile
-    .getDescendantsOfKind(SyntaxKind.CallExpression)
-    .filter((node) => node.getExpression().getText() === "cva")
-    .forEach((node) => {
-      // cva(base, ...).
-      const firstArg = node.getArguments()[0]
-      if (firstArg?.isKind(SyntaxKind.StringLiteral)) {
-        const text = firstArg.getLiteralText()
-        firstArg.setLiteralValue(applyRtlMapping(text))
-      }
-
-      // cva(..., { variants: { ... } }).
-      if (node.getArguments()[1]?.isKind(SyntaxKind.ObjectLiteralExpression)) {
-        node
-          .getArguments()[1]
-          ?.getDescendantsOfKind(SyntaxKind.PropertyAssignment)
-          .find((n) => n.getName() === "variants")
-          ?.getDescendantsOfKind(SyntaxKind.PropertyAssignment)
-          .forEach((n) => {
-            n.getDescendantsOfKind(SyntaxKind.PropertyAssignment).forEach(
-              (propNode) => {
-                const classNames = propNode.getInitializerIfKind(
-                  SyntaxKind.StringLiteral
-                )
-                if (classNames) {
-                  const text = classNames.getLiteralText()
-                  classNames.setLiteralValue(applyRtlMapping(text))
-                }
-              }
-            )
-          })
-      }
-    })
-
-  // Find all jsx attributes with the name className.
-  sourceFile.getDescendantsOfKind(SyntaxKind.JsxAttribute).forEach((node) => {
-    if (node.getNameNode().getText() === "className") {
-      // className="...".
-      const initializer = node.getInitializer()
-      if (initializer?.isKind(SyntaxKind.StringLiteral)) {
-        const text = initializer.getLiteralText()
-        initializer.setLiteralValue(applyRtlMapping(text))
-      }
-
-      // className={...}.
-      if (initializer?.isKind(SyntaxKind.JsxExpression)) {
-        // Check if it's a call to cn().
-        const callExpression = initializer
-          .getDescendantsOfKind(SyntaxKind.CallExpression)
-          .find((n) => n.getExpression().getText() === "cn")
-        if (callExpression) {
-          callExpression.getArguments().forEach((arg) => {
-            if (
-              arg.isKind(SyntaxKind.ConditionalExpression) ||
-              arg.isKind(SyntaxKind.BinaryExpression)
-            ) {
-              arg.getChildrenOfKind(SyntaxKind.StringLiteral).forEach((n) => {
-                const text = n.getLiteralText()
-                n.setLiteralValue(applyRtlMapping(text))
-              })
-            }
-
-            if (arg.isKind(SyntaxKind.StringLiteral)) {
-              const text = arg.getLiteralText()
-              arg.setLiteralValue(applyRtlMapping(text))
-            }
-          })
-        }
-      }
-    }
-
-    // classNames={...}.
-    if (node.getNameNode().getText() === "classNames") {
-      const init = node.getInitializer()
-      if (init?.isKind(SyntaxKind.JsxExpression)) {
-        node
-          .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
-          .forEach((propAssign) => {
-            const propInit = propAssign.getInitializer()
-            if (propInit?.isKind(SyntaxKind.CallExpression)) {
-              propInit.getArguments().forEach((arg) => {
-                if (arg.isKind(SyntaxKind.ConditionalExpression)) {
-                  arg
-                    .getChildrenOfKind(SyntaxKind.StringLiteral)
-                    .forEach((strNode) => {
-                      const text = strNode.getLiteralText()
-                      strNode.setLiteralValue(applyRtlMapping(text))
-                    })
-                }
-
-                if (arg.isKind(SyntaxKind.StringLiteral)) {
-                  const text = arg.getLiteralText()
-                  arg.setLiteralValue(applyRtlMapping(text))
-                }
-              })
-            }
-
-            if (propInit?.isKind(SyntaxKind.StringLiteral)) {
-              if (propAssign.getNameNode().getText() !== "variant") {
-                const text = propInit.getLiteralText()
-                propInit.setLiteralValue(applyRtlMapping(text))
-              }
-            }
-          })
-      }
-    }
-  })
-
-  // Find mergeProps calls with className property containing cn().
-  sourceFile
-    .getDescendantsOfKind(SyntaxKind.CallExpression)
-    .filter((node) => node.getExpression().getText() === "mergeProps")
-    .forEach((node) => {
-      const firstArg = node.getArguments()[0]
-      if (firstArg?.isKind(SyntaxKind.ObjectLiteralExpression)) {
-        // Find className property.
-        const classNameProp = firstArg
-          .getProperties()
-          .find(
-            (prop) =>
-              prop.isKind(SyntaxKind.PropertyAssignment) &&
-              prop.getName() === "className"
-          )
-        if (classNameProp?.isKind(SyntaxKind.PropertyAssignment)) {
-          const init = classNameProp.getInitializer()
-          // Handle cn() call.
-          if (init?.isKind(SyntaxKind.CallExpression)) {
-            if (init.getExpression().getText() === "cn") {
-              init.getArguments().forEach((arg) => {
-                if (arg.isKind(SyntaxKind.StringLiteral)) {
-                  const text = arg.getLiteralText()
-                  arg.setLiteralValue(applyRtlMapping(text))
-                }
-                if (
-                  arg.isKind(SyntaxKind.ConditionalExpression) ||
-                  arg.isKind(SyntaxKind.BinaryExpression)
-                ) {
-                  arg
-                    .getChildrenOfKind(SyntaxKind.StringLiteral)
-                    .forEach((n) => {
-                      const text = n.getLiteralText()
-                      n.setLiteralValue(applyRtlMapping(text))
-                    })
-                }
-              })
-            }
-          }
-          // Handle plain string literal.
-          if (init?.isKind(SyntaxKind.StringLiteral)) {
-            const text = init.getLiteralText()
-            init.setLiteralValue(applyRtlMapping(text))
-          }
-        }
-      }
-    })
-
-  // Transform side prop to logical values for specific components.
-  ;[
-    ...sourceFile.getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement),
-    ...sourceFile.getDescendantsOfKind(SyntaxKind.JsxOpeningElement),
-  ].forEach((element) => {
-    const tagName = element.getTagNameNode().getText()
-    if (!RTL_SIDE_PROP_COMPONENTS.includes(tagName)) {
-      return
-    }
-
-    const sideAttr = element
-      .getAttributes()
-      .find(
-        (attr) =>
-          attr.isKind(SyntaxKind.JsxAttribute) &&
-          attr.getNameNode().getText() === "side"
-      )
-
-    if (!sideAttr?.isKind(SyntaxKind.JsxAttribute)) {
-      return
-    }
-
-    const sideValue = sideAttr.getInitializer()
-    if (!sideValue?.isKind(SyntaxKind.StringLiteral)) {
-      return
-    }
-
-    const currentValue = sideValue.getLiteralText()
-    const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
-    if (mappedValue) {
-      sideValue.setLiteralValue(mappedValue)
-    }
-  })
-
-  // Transform default parameter values for side prop (e.g., side = "right").
-  // Only for functions whose names are in the whitelist.
-  sourceFile.getDescendantsOfKind(SyntaxKind.BindingElement).forEach((node) => {
-    const paramName = node.getNameNode().getText()
-    if (paramName !== "side") {
-      return
-    }
-
-    // Check if this binding element is inside a whitelisted function.
-    const functionDecl = node.getFirstAncestorByKind(
-      SyntaxKind.FunctionDeclaration
-    )
-    const functionName = functionDecl?.getName()
-    if (!functionName || !RTL_SIDE_PROP_COMPONENTS.includes(functionName)) {
-      return
-    }
-
-    const initializer = node.getInitializer()
-    if (!initializer?.isKind(SyntaxKind.StringLiteral)) {
-      return
-    }
-
-    const currentValue = initializer.getLiteralText()
-    const mappedValue = RTL_SIDE_PROP_MAPPINGS[currentValue]
-    if (mappedValue) {
-      initializer.setLiteralValue(mappedValue)
-    }
-  })
+  applyRtlTransformToSourceFile(sourceFile)
 
   return sourceFile.getText()
 }
