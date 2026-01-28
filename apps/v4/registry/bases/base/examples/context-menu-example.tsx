@@ -37,8 +37,8 @@ export default function ContextMenuExample() {
   return (
     <ExampleWrapper>
       <ContextMenuBasic />
-      <ContextMenuWithSides />
       <ContextMenuWithIcons />
+      <ContextMenuWithSides />
       <ContextMenuWithShortcuts />
       <ContextMenuWithSubmenu />
       <ContextMenuWithGroups />
@@ -84,6 +84,7 @@ function ContextMenuWithIcons() {
                 tabler="IconCopy"
                 hugeicons="CopyIcon"
                 phosphor="CopyIcon"
+                remixicon="RiFileCopyLine"
               />
               Copy
             </ContextMenuItem>
@@ -93,6 +94,7 @@ function ContextMenuWithIcons() {
                 tabler="IconCut"
                 hugeicons="ScissorIcon"
                 phosphor="ScissorsIcon"
+                remixicon="RiScissorsLine"
               />
               Cut
             </ContextMenuItem>
@@ -102,6 +104,7 @@ function ContextMenuWithIcons() {
                 tabler="IconClipboard"
                 hugeicons="ClipboardIcon"
                 phosphor="ClipboardIcon"
+                remixicon="RiClipboardLine"
               />
               Paste
             </ContextMenuItem>
@@ -114,6 +117,7 @@ function ContextMenuWithIcons() {
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </ContextMenuItem>
@@ -343,6 +347,7 @@ function ContextMenuWithDestructive() {
                 tabler="IconPencil"
                 hugeicons="EditIcon"
                 phosphor="PencilIcon"
+                remixicon="RiPencilLine"
               />
               Edit
             </ContextMenuItem>
@@ -352,6 +357,7 @@ function ContextMenuWithDestructive() {
                 tabler="IconShare"
                 hugeicons="ShareIcon"
                 phosphor="ShareIcon"
+                remixicon="RiShareLine"
               />
               Share
             </ContextMenuItem>
@@ -364,6 +370,7 @@ function ContextMenuWithDestructive() {
                 tabler="IconArchive"
                 hugeicons="Archive02Icon"
                 phosphor="ArchiveIcon"
+                remixicon="RiArchiveLine"
               />
               Archive
             </ContextMenuItem>
@@ -373,6 +380,7 @@ function ContextMenuWithDestructive() {
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </ContextMenuItem>
@@ -385,56 +393,31 @@ function ContextMenuWithDestructive() {
 
 function ContextMenuWithSides() {
   return (
-    <Example title="With Sides">
-      <div className="grid grid-cols-2 gap-6">
-        <ContextMenu>
-          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-            Right click (top)
-          </ContextMenuTrigger>
-          <ContextMenuContent side="top">
-            <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
-            </ContextMenuGroup>
-          </ContextMenuContent>
-        </ContextMenu>
-        <ContextMenu>
-          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-            Right click (right)
-          </ContextMenuTrigger>
-          <ContextMenuContent side="right">
-            <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
-            </ContextMenuGroup>
-          </ContextMenuContent>
-        </ContextMenu>
-        <ContextMenu>
-          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-            Right click (bottom)
-          </ContextMenuTrigger>
-          <ContextMenuContent side="bottom">
-            <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
-            </ContextMenuGroup>
-          </ContextMenuContent>
-        </ContextMenu>
-        <ContextMenu>
-          <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
-            Right click (left)
-          </ContextMenuTrigger>
-          <ContextMenuContent side="left">
-            <ContextMenuGroup>
-              <ContextMenuItem>Back</ContextMenuItem>
-              <ContextMenuItem>Forward</ContextMenuItem>
-              <ContextMenuItem>Reload</ContextMenuItem>
-            </ContextMenuGroup>
-          </ContextMenuContent>
-        </ContextMenu>
+    <Example title="With Sides" containerClassName="col-span-2">
+      <div className="flex flex-wrap justify-center gap-2">
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
+          <ContextMenu key={side}>
+            <ContextMenuTrigger className="flex aspect-[2/0.5] items-center justify-center rounded-lg border p-4 text-sm capitalize">
+              {side.replace("-", " ")}
+            </ContextMenuTrigger>
+            <ContextMenuContent side={side}>
+              <ContextMenuGroup>
+                <ContextMenuItem>Back</ContextMenuItem>
+                <ContextMenuItem>Forward</ContextMenuItem>
+                <ContextMenuItem>Reload</ContextMenuItem>
+              </ContextMenuGroup>
+            </ContextMenuContent>
+          </ContextMenu>
+        ))}
       </div>
     </Example>
   )
@@ -466,6 +449,7 @@ function ContextMenuInDialog() {
                     tabler="IconCopy"
                     hugeicons="CopyIcon"
                     phosphor="CopyIcon"
+                    remixicon="RiFileCopyLine"
                   />
                   Copy
                 </ContextMenuItem>
@@ -475,6 +459,7 @@ function ContextMenuInDialog() {
                     tabler="IconCut"
                     hugeicons="ScissorIcon"
                     phosphor="ScissorsIcon"
+                    remixicon="RiScissorsLine"
                   />
                   Cut
                 </ContextMenuItem>
@@ -484,6 +469,7 @@ function ContextMenuInDialog() {
                     tabler="IconClipboard"
                     hugeicons="ClipboardIcon"
                     phosphor="ClipboardIcon"
+                    remixicon="RiClipboardLine"
                   />
                   Paste
                 </ContextMenuItem>
@@ -511,6 +497,7 @@ function ContextMenuInDialog() {
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
                     phosphor="TrashIcon"
+                    remixicon="RiDeleteBinLine"
                   />
                   Delete
                 </ContextMenuItem>

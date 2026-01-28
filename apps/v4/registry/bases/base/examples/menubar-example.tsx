@@ -38,6 +38,7 @@ export default function MenubarExample() {
     <ExampleWrapper>
       <MenubarBasic />
       <MenubarWithSubmenu />
+      <MenubarSides />
       <MenubarWithCheckboxes />
       <MenubarWithRadio />
       <MenubarWithIcons />
@@ -86,6 +87,40 @@ function MenubarBasic() {
           </MenubarContent>
         </MenubarMenu>
       </Menubar>
+    </Example>
+  )
+}
+
+function MenubarSides() {
+  return (
+    <Example title="Sides" containerClassName="col-span-2">
+      <div className="flex flex-wrap justify-center gap-2">
+        {(
+          [
+            "inline-start",
+            "left",
+            "top",
+            "bottom",
+            "right",
+            "inline-end",
+          ] as const
+        ).map((side) => (
+          <Menubar key={side}>
+            <MenubarMenu>
+              <MenubarTrigger className="capitalize">
+                {side.replace("-", " ")}
+              </MenubarTrigger>
+              <MenubarContent side={side}>
+                <MenubarGroup>
+                  <MenubarItem>New Tab</MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarItem>New Incognito Window</MenubarItem>
+                </MenubarGroup>
+              </MenubarContent>
+            </MenubarMenu>
+          </Menubar>
+        ))}
+      </div>
     </Example>
   )
 }
@@ -221,6 +256,7 @@ function MenubarWithIcons() {
                 tabler="IconFile"
                 hugeicons="FileIcon"
                 phosphor="FileIcon"
+                remixicon="RiFileLine"
               />
               New File <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
@@ -230,6 +266,7 @@ function MenubarWithIcons() {
                 tabler="IconFolder"
                 hugeicons="FolderIcon"
                 phosphor="FolderIcon"
+                remixicon="RiFolderLine"
               />
               Open Folder
             </MenubarItem>
@@ -240,6 +277,7 @@ function MenubarWithIcons() {
                 tabler="IconDeviceFloppy"
                 hugeicons="FloppyDiskIcon"
                 phosphor="FloppyDiskIcon"
+                remixicon="RiSaveLine"
               />
               Save <MenubarShortcut>⌘S</MenubarShortcut>
             </MenubarItem>
@@ -255,6 +293,7 @@ function MenubarWithIcons() {
                   tabler="IconCircleDashed"
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
+                  remixicon="RiLoaderLine"
                 />
                 Settings
               </MenubarItem>
@@ -264,6 +303,7 @@ function MenubarWithIcons() {
                   tabler="IconCircleDashed"
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
+                  remixicon="RiLoaderLine"
                 />
                 Help
               </MenubarItem>
@@ -274,6 +314,7 @@ function MenubarWithIcons() {
                   tabler="IconCircleDashed"
                   hugeicons="DashedLineCircleIcon"
                   phosphor="CircleDashedIcon"
+                  remixicon="RiLoaderLine"
                 />
                 Delete
               </MenubarItem>
@@ -342,6 +383,7 @@ function MenubarFormat() {
                 tabler="IconBold"
                 hugeicons="TextBoldIcon"
                 phosphor="TextBIcon"
+                remixicon="RiBold"
               />
               Bold <MenubarShortcut>⌘B</MenubarShortcut>
             </MenubarItem>
@@ -351,6 +393,7 @@ function MenubarFormat() {
                 tabler="IconItalic"
                 hugeicons="TextItalicIcon"
                 phosphor="TextItalicIcon"
+                remixicon="RiItalic"
               />
               Italic <MenubarShortcut>⌘I</MenubarShortcut>
             </MenubarItem>
@@ -360,6 +403,7 @@ function MenubarFormat() {
                 tabler="IconUnderline"
                 hugeicons="TextUnderlineIcon"
                 phosphor="TextUnderlineIcon"
+                remixicon="RiUnderline"
               />
               Underline <MenubarShortcut>⌘U</MenubarShortcut>
             </MenubarItem>
@@ -397,6 +441,7 @@ function MenubarInsert() {
                   tabler="IconPhoto"
                   hugeicons="ImageIcon"
                   phosphor="ImageIcon"
+                  remixicon="RiImageLine"
                 />
                 Media
               </MenubarSubTrigger>
@@ -413,6 +458,7 @@ function MenubarInsert() {
                 tabler="IconLink"
                 hugeicons="LinkIcon"
                 phosphor="LinkIcon"
+                remixicon="RiLinksLine"
               />
               Link <MenubarShortcut>⌘K</MenubarShortcut>
             </MenubarItem>
@@ -422,6 +468,7 @@ function MenubarInsert() {
                 tabler="IconTable"
                 hugeicons="TableIcon"
                 phosphor="TableIcon"
+                remixicon="RiTableLine"
               />
               Table
             </MenubarItem>
@@ -436,6 +483,7 @@ function MenubarInsert() {
                 tabler="IconSearch"
                 hugeicons="SearchIcon"
                 phosphor="MagnifyingGlassIcon"
+                remixicon="RiSearchLine"
               />
               Find & Replace <MenubarShortcut>⌘F</MenubarShortcut>
             </MenubarItem>
@@ -445,6 +493,7 @@ function MenubarInsert() {
                 tabler="IconCheck"
                 hugeicons="Tick02Icon"
                 phosphor="CheckIcon"
+                remixicon="RiCheckLine"
               />
               Spell Check
             </MenubarItem>
@@ -468,6 +517,7 @@ function MenubarDestructive() {
                 tabler="IconFile"
                 hugeicons="FileIcon"
                 phosphor="FileIcon"
+                remixicon="RiFileLine"
               />
               New File <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
@@ -477,6 +527,7 @@ function MenubarDestructive() {
                 tabler="IconFolder"
                 hugeicons="FolderIcon"
                 phosphor="FolderIcon"
+                remixicon="RiFolderLine"
               />
               Open Folder
             </MenubarItem>
@@ -487,6 +538,7 @@ function MenubarDestructive() {
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete File <MenubarShortcut>⌘⌫</MenubarShortcut>
             </MenubarItem>
@@ -501,6 +553,7 @@ function MenubarDestructive() {
                 tabler="IconUser"
                 hugeicons="UserIcon"
                 phosphor="UserIcon"
+                remixicon="RiUserLine"
               />
               Profile
             </MenubarItem>
@@ -510,6 +563,7 @@ function MenubarDestructive() {
                 tabler="IconSettings"
                 hugeicons="SettingsIcon"
                 phosphor="GearIcon"
+                remixicon="RiSettingsLine"
               />
               Settings
             </MenubarItem>
@@ -520,6 +574,7 @@ function MenubarDestructive() {
                 tabler="IconLogout"
                 hugeicons="LogoutIcon"
                 phosphor="SignOutIcon"
+                remixicon="RiLogoutBoxLine"
               />
               Sign out
             </MenubarItem>
@@ -530,6 +585,7 @@ function MenubarDestructive() {
                 tabler="IconTrash"
                 hugeicons="DeleteIcon"
                 phosphor="TrashIcon"
+                remixicon="RiDeleteBinLine"
               />
               Delete
             </MenubarItem>
@@ -564,6 +620,7 @@ function MenubarInDialog() {
                     tabler="IconCopy"
                     hugeicons="CopyIcon"
                     phosphor="CopyIcon"
+                    remixicon="RiFileCopyLine"
                   />
                   Copy
                 </MenubarItem>
@@ -573,6 +630,7 @@ function MenubarInDialog() {
                     tabler="IconCut"
                     hugeicons="ScissorIcon"
                     phosphor="ScissorsIcon"
+                    remixicon="RiScissorsLine"
                   />
                   Cut
                 </MenubarItem>
@@ -582,6 +640,7 @@ function MenubarInDialog() {
                     tabler="IconClipboard"
                     hugeicons="ClipboardIcon"
                     phosphor="ClipboardIcon"
+                    remixicon="RiClipboardLine"
                   />
                   Paste
                 </MenubarItem>
@@ -603,6 +662,7 @@ function MenubarInDialog() {
                     tabler="IconTrash"
                     hugeicons="DeleteIcon"
                     phosphor="TrashIcon"
+                    remixicon="RiDeleteBinLine"
                   />
                   Delete
                 </MenubarItem>

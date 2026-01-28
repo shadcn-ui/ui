@@ -101,6 +101,7 @@ function SelectWithIcons() {
                     tabler="IconChartLine"
                     hugeicons="Chart03Icon"
                     phosphor="ChartLineIcon"
+                    remixicon="RiLineChartLine"
                   />
                   Chart Type
                 </>
@@ -115,6 +116,7 @@ function SelectWithIcons() {
                   tabler="IconChartLine"
                   hugeicons="Chart03Icon"
                   phosphor="ChartBarIcon"
+                  remixicon="RiBarChartLine"
                 />
                 Line
               </SelectItem>
@@ -124,6 +126,7 @@ function SelectWithIcons() {
                   tabler="IconChartBar"
                   hugeicons="Chart03Icon"
                   phosphor="ChartBarIcon"
+                  remixicon="RiBarChartLine"
                 />
                 Bar
               </SelectItem>
@@ -133,6 +136,7 @@ function SelectWithIcons() {
                   tabler="IconChartPie"
                   hugeicons="Chart03Icon"
                   phosphor="ChartPieIcon"
+                  remixicon="RiPieChartLine"
                 />
                 Pie
               </SelectItem>
@@ -149,6 +153,7 @@ function SelectWithIcons() {
                     tabler="IconChartLine"
                     hugeicons="Chart03Icon"
                     phosphor="ChartLineIcon"
+                    remixicon="RiLineChartLine"
                   />
                   Chart Type
                 </>
@@ -163,6 +168,7 @@ function SelectWithIcons() {
                   tabler="IconChartLine"
                   hugeicons="Chart03Icon"
                   phosphor="ChartLineIcon"
+                  remixicon="RiLineChartLine"
                 />
                 Line
               </SelectItem>
@@ -172,6 +178,7 @@ function SelectWithIcons() {
                   tabler="IconChartBar"
                   hugeicons="Chart03Icon"
                   phosphor="ChartBarIcon"
+                  remixicon="RiBarChartLine"
                 />
                 Bar
               </SelectItem>
@@ -181,6 +188,7 @@ function SelectWithIcons() {
                   tabler="IconChartPie"
                   hugeicons="Chart03Icon"
                   phosphor="ChartPieIcon"
+                  remixicon="RiPieChartLine"
                 />
                 Pie
               </SelectItem>

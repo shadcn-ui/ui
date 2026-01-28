@@ -1,15 +1,17 @@
 "use client"
 
 import * as React from "react"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { type DialogProps } from "@radix-ui/react-dialog"
+import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { IconArrowRight } from "@tabler/icons-react"
 import { useDocsSearch } from "fumadocs-core/search/client"
-import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
+import { CornerDownLeftIcon, SquareDashedIcon, XIcon } from "lucide-react"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
 import { trackEvent } from "@/lib/events"
 import { showMcpDocs } from "@/lib/flags"
+import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import { type source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
@@ -26,13 +28,14 @@ import {
 } from "@/registry/new-york-v4/ui/command"
 import {
   Dialog,
-  DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogOverlay,
+  DialogPortal,
   DialogTitle,
   DialogTrigger,
 } from "@/registry/new-york-v4/ui/dialog"
-import { Kbd, KbdGroup } from "@/registry/new-york-v4/ui/kbd"
+import { Kbd } from "@/registry/new-york-v4/ui/kbd"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
@@ -49,7 +52,9 @@ export function CommandMenu({
   navItems?: { href: string; label: string }[]
 }) {
   const router = useRouter()
+  const pathname = usePathname()
   const [config] = useConfig()
+  const currentBase = getCurrentBase(pathname)
   const [open, setOpen] = React.useState(false)
   const [selectedType, setSelectedType] = React.useState<
     "color" | "page" | "component" | "block" | null
@@ -138,10 +143,13 @@ export function CommandMenu({
     [setSelectedType, setCopyPayload, packageManager]
   )
 
-  const runCommand = React.useCallback((command: () => unknown) => {
-    setOpen(false)
-    command()
-  }, [])
+  const runCommand = React.useCallback(
+    (command: () => unknown) => {
+      setOpen(false)
+      command()
+    },
+    [setOpen]
+  )
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -207,10 +215,7 @@ export function CommandMenu({
           </div>
         </Button>
       </DialogTrigger>
-      <DialogContent
-        showCloseButton={false}
-        className="rounded-xl border-none bg-clip-padding p-2 pb-11 shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800"
-      >
+      <DialogContent className="rounded-xl border-none bg-clip-padding p-2 pb-11 shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800">
         <DialogHeader className="sr-only">
           <DialogTitle>Search documentation...</DialogTitle>
           <DialogDescription>Search for a command to run...</DialogDescription>
@@ -269,40 +274,37 @@ export function CommandMenu({
                 className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
               >
                 {group.type === "folder" &&
-                  group.children.map((item) => {
-                    if (item.type === "page") {
-                      const isComponent = item.url.includes("/components/")
+                  getPagesFromFolder(group, currentBase).map((item) => {
+                    const isComponent = item.url.includes("/components/")
 
-                      if (!showMcpDocs && item.url.includes("/mcp")) {
-                        return null
-                      }
-
-                      return (
-                        <CommandMenuItem
-                          key={item.url}
-                          value={
-                            item.name?.toString()
-                              ? `${group.name} ${item.name}`
-                              : ""
-                          }
-                          keywords={isComponent ? ["component"] : undefined}
-                          onHighlight={() =>
-                            handlePageHighlight(isComponent, item)
-                          }
-                          onSelect={() => {
-                            runCommand(() => router.push(item.url))
-                          }}
-                        >
-                          {isComponent ? (
-                            <div className="border-muted-foreground aspect-square size-4 rounded-full border border-dashed" />
-                          ) : (
-                            <IconArrowRight />
-                          )}
-                          {item.name}
-                        </CommandMenuItem>
-                      )
+                    if (!showMcpDocs && item.url.includes("/mcp")) {
+                      return null
                     }
-                    return null
+
+                    return (
+                      <CommandMenuItem
+                        key={item.url}
+                        value={
+                          item.name?.toString()
+                            ? `${group.name} ${item.name}`
+                            : ""
+                        }
+                        keywords={isComponent ? ["component"] : undefined}
+                        onHighlight={() =>
+                          handlePageHighlight(isComponent, item)
+                        }
+                        onSelect={() => {
+                          runCommand(() => router.push(item.url))
+                        }}
+                      >
+                        {isComponent ? (
+                          <div className="border-muted-foreground aspect-square size-4 rounded-full border border-dashed" />
+                        ) : (
+                          <IconArrowRight />
+                        )}
+                        {item.name}
+                      </CommandMenuItem>
+                    )
                   })}
               </CommandGroup>
             ))}
@@ -521,5 +523,29 @@ function SearchResults({
         )
       })}
     </CommandGroup>
+  )
+}
+
+function DialogContent({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof DialogPrimitive.Content> & {
+  showCloseButton?: boolean
+}) {
+  return (
+    <DialogPortal data-slot="dialog-portal">
+      <DialogOverlay />
+      <DialogPrimitive.Content
+        data-slot="dialog-content"
+        className={cn(
+          "bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 outline-none sm:max-w-lg",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </DialogPrimitive.Content>
+    </DialogPortal>
   )
 }
