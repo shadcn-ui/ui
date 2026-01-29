@@ -21,9 +21,8 @@ function BaseUILogo() {
 export function Announcement() {
   return (
     <Badge asChild variant="secondary" className="bg-transparent">
-      <Link href="/docs/changelog">
-        <BaseUILogo />
-        Base UI Documentation <ArrowRightIcon />
+      <Link href="/docs/changelog/2026-01-rtl">
+        RTL Support <ArrowRightIcon />
       </Link>
     </Badge>
   )

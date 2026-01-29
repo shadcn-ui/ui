@@ -236,11 +236,11 @@ npx shadcn@latest migrate [migration]
 
 **Available Migrations**
 
-| Migration | Description |
-| --- | --- |
-| `icons` | Migrate your UI components to a different icon library. |
-| `radix` | Migrate to radix-ui. |
-| `rtl` | Migrate your components to support RTL (right-to-left). |
+| Migration | Description                                             |
+| --------- | ------------------------------------------------------- |
+| `icons`   | Migrate your UI components to a different icon library. |
+| `radix`   | Migrate to radix-ui.                                    |
+| `rtl`     | Migrate your components to support RTL (right-to-left). |
 
 **Options**
 
@@ -271,6 +271,7 @@ npx shadcn@latest migrate rtl
 ```
 
 This will:
+
 1. Update `components.json` to set `rtl: true`
 2. Transform physical CSS properties to logical equivalents (e.g., `ml-4` → `ms-4`, `text-left` → `text-start`)
 3. Add `rtl:` variants where needed (e.g., `space-x-4` → `space-x-4 rtl:space-x-reverse`)

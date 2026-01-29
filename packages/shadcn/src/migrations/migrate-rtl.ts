@@ -37,18 +37,25 @@ export async function migrateRtl(
         ignore: ["**/node_modules/**"],
       })
     } else {
-      // Single file - verify it exists.
       const fullPath = path.resolve(basePath, options.path)
-      const exists = await fs
-        .stat(fullPath)
-        .then(() => true)
-        .catch(() => false)
+      const stat = await fs.stat(fullPath).catch(() => null)
 
-      if (!exists) {
+      if (!stat) {
         throw new Error(`File not found: ${options.path}`)
       }
 
-      files = [options.path]
+      if (stat.isDirectory()) {
+        basePath = fullPath
+        files = await fg("**/*.{js,ts,jsx,tsx}", {
+          cwd: basePath,
+          onlyFiles: true,
+          ignore: ["**/node_modules/**"],
+        })
+      } else if (stat.isFile()) {
+        files = [options.path]
+      } else {
+        throw new Error(`Unsupported path type: ${options.path}`)
+      }
     }
 
     if (files.length === 0) {
