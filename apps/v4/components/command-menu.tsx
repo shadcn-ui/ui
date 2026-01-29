@@ -1,22 +1,22 @@
 "use client"
 
-import * as React from "react"
-import { usePathname, useRouter } from "next/navigation"
-import { type DialogProps } from "@radix-ui/react-dialog"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
+import { type DialogProps } from "@radix-ui/react-dialog"
 import { IconArrowRight } from "@tabler/icons-react"
 import { useDocsSearch } from "fumadocs-core/search/client"
-import { CornerDownLeftIcon, SquareDashedIcon, XIcon } from "lucide-react"
+import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
+import { usePathname, useRouter } from "next/navigation"
+import * as React from "react"
 
+import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { useConfig } from "@/hooks/use-config"
+import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { type Color, type ColorPalette } from "@/lib/colors"
 import { trackEvent } from "@/lib/events"
 import { showMcpDocs } from "@/lib/flags"
 import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
 import { type source } from "@/lib/source"
 import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
-import { useMutationObserver } from "@/hooks/use-mutation-observer"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Command,
@@ -35,7 +35,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/registry/new-york-v4/ui/dialog"
-import { Kbd } from "@/registry/new-york-v4/ui/kbd"
 import { Separator } from "@/registry/new-york-v4/ui/separator"
 import { Spinner } from "@/registry/new-york-v4/ui/spinner"
 
@@ -203,16 +202,13 @@ export function CommandMenu({
         <Button
           variant="outline"
           className={cn(
-            "text-foreground dark:bg-card hover:bg-muted/50 relative h-8 w-full justify-start pl-3 font-normal shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64"
+            "text-foreground dark:bg-card hover:bg-muted/50 relative h-8 w-full justify-start pl-3 font-normal shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64 rounded-lg"
           )}
           onClick={() => setOpen(true)}
           {...props}
         >
           <span className="hidden lg:inline-flex">Search documentation...</span>
           <span className="inline-flex lg:hidden">Search...</span>
-          <div className="absolute top-1.5 right-1.5 hidden gap-1 group-has-[[data-slot=designer]]/body:hidden sm:flex">
-            <Kbd>⌘K</Kbd>
-          </div>
         </Button>
       </DialogTrigger>
       <DialogContent className="rounded-xl border-none bg-clip-padding p-2 pb-11 shadow-2xl ring-4 ring-neutral-200/80 dark:bg-neutral-900 dark:ring-neutral-800">
@@ -480,12 +476,12 @@ function SearchResults({
   const uniqueResults =
     query.data && Array.isArray(query.data)
       ? query.data.filter(
-          (item, index, self) =>
-            !(
-              item.type === "text" &&
-              item.content.trim().split(/\s+/).length <= 1
-            ) && index === self.findIndex((t) => t.content === item.content)
-        )
+        (item, index, self) =>
+          !(
+            item.type === "text" &&
+            item.content.trim().split(/\s+/).length <= 1
+          ) && index === self.findIndex((t) => t.content === item.content)
+      )
       : []
 
   if (!search.trim()) {
