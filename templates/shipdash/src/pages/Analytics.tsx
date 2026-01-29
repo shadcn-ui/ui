@@ -1,4 +1,4 @@
-import { BarChart3, TrendingUp, Calendar, Download } from "lucide-react"
+import { TrendingUp, Calendar, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
