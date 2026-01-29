@@ -95,12 +95,12 @@ export default async function Page(props: {
         <div className="mx-auto flex w-full max-w-[40rem] min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
-              <div className="flex items-center md:items-start justify-between">
+              <div className="flex items-center justify-between md:items-start">
                 <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">
                   {doc.title}
                 </h1>
                 <div className="docs-nav flex items-center gap-2">
-                  <div className="hidden sm:block" >
+                  <div className="hidden sm:block">
                     <DocsCopyPage page={raw} url={absoluteUrl(page.url)} />
                   </div>
                   <div className="ml-auto flex gap-2">
