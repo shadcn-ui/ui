@@ -4,6 +4,7 @@ import { mdxComponents } from "@/mdx-components"
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 import { findNeighbour } from "fumadocs-core/page-tree"
 
+import { getComponentsList } from "@/lib/llm"
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsBaseSwitcher } from "@/components/docs-base-switcher"
@@ -83,7 +84,8 @@ export default async function Page(props: {
   const neighbours = isChangelog
     ? { previous: null, next: null }
     : findNeighbour(source.pageTree, page.url)
-  const raw = await page.data.getText("raw")
+  const rawText = await page.data.getText("raw")
+  const raw = rawText.replace(/<ComponentsList\s*\/>/g, getComponentsList())
 
   return (
     <div
