@@ -1,0 +1,142 @@
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+base: radix
+component: true
+links:
+  doc: https://www.radix-ui.com/primitives/docs/components/accordion
+  api: https://www.radix-ui.com/primitives/docs/components/accordion#api-reference
+---
+
+<ComponentPreview
+  name="accordion-demo"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add accordion
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install radix-ui
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="accordion"
+  title="components/ui/accordion.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+```
+
+```tsx showLineNumbers
+<Accordion type="single" collapsible defaultValue="item-1">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Examples
+
+### Basic
+
+A basic accordion that shows one item at a time. The first item is open by default.
+
+<ComponentPreview
+  name="accordion-basic"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
+/>
+
+### Multiple
+
+Use `type="multiple"` to allow multiple items to be open at the same time.
+
+<ComponentPreview
+  name="accordion-multiple"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[36rem] md:h-[30rem]"
+/>
+
+### Disabled
+
+Use the `disabled` prop on `AccordionItem` to disable individual items.
+
+<ComponentPreview
+  name="accordion-disabled"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[300px]"
+/>
+
+### Borders
+
+Add `border` to the `Accordion` and `border-b last:border-b-0` to the `AccordionItem` to add borders to the items.
+
+<ComponentPreview
+  name="accordion-borders"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-96 md:h-80"
+/>
+
+### Card
+
+Wrap the `Accordion` in a `Card` component.
+
+<ComponentPreview
+  name="accordion-card"
+  styleName="radix-nova"
+  align="start"
+  previewClassName="*:data-[slot=accordion]:max-w-sm h-[32rem] md:h-[28rem]"
+/>
+
+## API Reference
+
+See the [Radix UI](https://www.radix-ui.com/primitives/docs/components/accordion#api-reference) documentation for more information.

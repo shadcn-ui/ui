@@ -139,6 +139,7 @@ function PickerSubTrigger({
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
+        remixicon="RiArrowRightSLine"
         className="ml-auto"
       />
     </MenuPrimitive.SubmenuTrigger>
@@ -192,6 +193,7 @@ function PickerCheckboxItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenuPrimitive.CheckboxItemIndicator>
       </span>
@@ -233,6 +235,7 @@ function PickerRadioItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
             className="size-4 pointer-coarse:size-5"
           />
         </MenuPrimitive.RadioItemIndicator>

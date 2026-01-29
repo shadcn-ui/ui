@@ -1,4 +1,4 @@
-const SHOW = false
+const SHOW = true
 
 export function TailwindIndicator({
   forceMount = false,
