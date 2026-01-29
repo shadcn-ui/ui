@@ -24,9 +24,7 @@
     },
     {
       "name": "alert-dialog",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-lyra/ui/alert-dialog.tsx",
@@ -87,9 +85,7 @@
     },
     {
       "name": "button-group",
-      "registryDependencies": [
-        "separator"
-      ],
+      "registryDependencies": ["separator"],
       "files": [
         {
           "path": "registry/base-lyra/ui/button-group.tsx",
@@ -100,13 +96,8 @@
     },
     {
       "name": "calendar",
-      "dependencies": [
-        "react-day-picker@latest",
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["react-day-picker@latest", "date-fns"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-lyra/ui/calendar.tsx",
@@ -127,12 +118,8 @@
     },
     {
       "name": "carousel",
-      "dependencies": [
-        "embla-carousel-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["embla-carousel-react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-lyra/ui/carousel.tsx",
@@ -143,12 +130,8 @@
     },
     {
       "name": "chart",
-      "dependencies": [
-        "recharts@2.15.4"
-      ],
-      "registryDependencies": [
-        "card"
-      ],
+      "dependencies": ["recharts@2.15.4"],
+      "registryDependencies": ["card"],
       "files": [
         {
           "path": "registry/base-lyra/ui/chart.tsx",
@@ -179,13 +162,8 @@
     },
     {
       "name": "combobox",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "button",
-        "input-group"
-      ],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["button", "input-group"],
       "files": [
         {
           "path": "registry/base-lyra/ui/combobox.tsx",
@@ -196,13 +174,8 @@
     },
     {
       "name": "command",
-      "dependencies": [
-        "cmdk"
-      ],
-      "registryDependencies": [
-        "dialog",
-        "input-group"
-      ],
+      "dependencies": ["cmdk"],
+      "registryDependencies": ["dialog", "input-group"],
       "files": [
         {
           "path": "registry/base-lyra/ui/command.tsx",
@@ -223,9 +196,7 @@
     },
     {
       "name": "dialog",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-lyra/ui/dialog.tsx",
@@ -236,9 +207,7 @@
     },
     {
       "name": "drawer",
-      "dependencies": [
-        "vaul"
-      ],
+      "dependencies": ["vaul"],
       "files": [
         {
           "path": "registry/base-lyra/ui/drawer.tsx",
@@ -269,10 +238,7 @@
     },
     {
       "name": "field",
-      "registryDependencies": [
-        "label",
-        "separator"
-      ],
+      "registryDependencies": ["label", "separator"],
       "files": [
         {
           "path": "registry/base-lyra/ui/field.tsx",
@@ -307,11 +273,7 @@
     },
     {
       "name": "input-group",
-      "registryDependencies": [
-        "button",
-        "input",
-        "textarea"
-      ],
+      "registryDependencies": ["button", "input", "textarea"],
       "files": [
         {
           "path": "registry/base-lyra/ui/input-group.tsx",
@@ -322,9 +284,7 @@
     },
     {
       "name": "input-otp",
-      "dependencies": [
-        "input-otp"
-      ],
+      "dependencies": ["input-otp"],
       "files": [
         {
           "path": "registry/base-lyra/ui/input-otp.tsx",
@@ -335,9 +295,7 @@
     },
     {
       "name": "item",
-      "registryDependencies": [
-        "separator"
-      ],
+      "registryDependencies": ["separator"],
       "files": [
         {
           "path": "registry/base-lyra/ui/item.tsx",
@@ -358,9 +316,7 @@
     },
     {
       "name": "menubar",
-      "registryDependencies": [
-        "dropdown-menu"
-      ],
+      "registryDependencies": ["dropdown-menu"],
       "files": [
         {
           "path": "registry/base-lyra/ui/menubar.tsx",
@@ -381,9 +337,7 @@
     },
     {
       "name": "pagination",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-lyra/ui/pagination.tsx",
@@ -424,9 +378,7 @@
     },
     {
       "name": "resizable",
-      "dependencies": [
-        "react-resizable-panels"
-      ],
+      "dependencies": ["react-resizable-panels"],
       "files": [
         {
           "path": "registry/base-lyra/ui/resizable.tsx",
@@ -467,9 +419,7 @@
     },
     {
       "name": "sheet",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/base-lyra/ui/sheet.tsx",
@@ -518,10 +468,7 @@
     },
     {
       "name": "sonner",
-      "dependencies": [
-        "sonner",
-        "next-themes"
-      ],
+      "dependencies": ["sonner", "next-themes"],
       "files": [
         {
           "path": "registry/base-lyra/ui/sonner.tsx",
@@ -592,9 +539,7 @@
     },
     {
       "name": "toggle-group",
-      "registryDependencies": [
-        "toggle"
-      ],
+      "registryDependencies": ["toggle"],
       "files": [
         {
           "path": "registry/base-lyra/ui/toggle-group.tsx",
@@ -635,9 +580,7 @@
     },
     {
       "name": "direction",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/base-lyra/ui/direction.tsx",
@@ -649,12 +592,7 @@
     {
       "name": "accordion-example",
       "title": "Accordion",
-      "registryDependencies": [
-        "accordion",
-        "button",
-        "card",
-        "example"
-      ],
+      "registryDependencies": ["accordion", "button", "card", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/accordion-example.tsx",
@@ -666,11 +604,7 @@
     {
       "name": "alert-example",
       "title": "Alert",
-      "registryDependencies": [
-        "alert",
-        "badge",
-        "example"
-      ],
+      "registryDependencies": ["alert", "badge", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/alert-example.tsx",
@@ -682,12 +616,7 @@
     {
       "name": "alert-dialog-example",
       "title": "Alert Dialog",
-      "registryDependencies": [
-        "alert-dialog",
-        "button",
-        "dialog",
-        "example"
-      ],
+      "registryDependencies": ["alert-dialog", "button", "dialog", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/alert-dialog-example.tsx",
@@ -699,10 +628,7 @@
     {
       "name": "aspect-ratio-example",
       "title": "Aspect Ratio",
-      "registryDependencies": [
-        "aspect-ratio",
-        "example"
-      ],
+      "registryDependencies": ["aspect-ratio", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/aspect-ratio-example.tsx",
@@ -714,12 +640,7 @@
     {
       "name": "avatar-example",
       "title": "Avatar",
-      "registryDependencies": [
-        "avatar",
-        "button",
-        "empty",
-        "example"
-      ],
+      "registryDependencies": ["avatar", "button", "empty", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/avatar-example.tsx",
@@ -731,11 +652,7 @@
     {
       "name": "badge-example",
       "title": "Badge",
-      "registryDependencies": [
-        "badge",
-        "spinner",
-        "example"
-      ],
+      "registryDependencies": ["badge", "spinner", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/badge-example.tsx",
@@ -747,11 +664,7 @@
     {
       "name": "breadcrumb-example",
       "title": "Breadcrumb",
-      "registryDependencies": [
-        "breadcrumb",
-        "dropdown-menu",
-        "example"
-      ],
+      "registryDependencies": ["breadcrumb", "dropdown-menu", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/breadcrumb-example.tsx",
@@ -763,10 +676,7 @@
     {
       "name": "button-example",
       "title": "Button",
-      "registryDependencies": [
-        "button",
-        "example"
-      ],
+      "registryDependencies": ["button", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/button-example.tsx",
@@ -842,11 +752,7 @@
     {
       "name": "carousel-example",
       "title": "Carousel",
-      "registryDependencies": [
-        "card",
-        "carousel",
-        "example"
-      ],
+      "registryDependencies": ["card", "carousel", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/carousel-example.tsx",
@@ -858,11 +764,7 @@
     {
       "name": "chart-example",
       "title": "Chart",
-      "registryDependencies": [
-        "chart",
-        "card",
-        "example"
-      ],
+      "registryDependencies": ["chart", "card", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/chart-example.tsx",
@@ -874,12 +776,7 @@
     {
       "name": "checkbox-example",
       "title": "Checkbox",
-      "registryDependencies": [
-        "checkbox",
-        "field",
-        "table",
-        "example"
-      ],
+      "registryDependencies": ["checkbox", "field", "table", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/checkbox-example.tsx",
@@ -934,11 +831,7 @@
     {
       "name": "command-example",
       "title": "Command",
-      "registryDependencies": [
-        "button",
-        "command",
-        "example"
-      ],
+      "registryDependencies": ["button", "command", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/command-example.tsx",
@@ -950,12 +843,7 @@
     {
       "name": "context-menu-example",
       "title": "Context Menu",
-      "registryDependencies": [
-        "button",
-        "context-menu",
-        "dialog",
-        "example"
-      ],
+      "registryDependencies": ["button", "context-menu", "dialog", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/context-menu-example.tsx",
@@ -994,10 +882,7 @@
     {
       "name": "drawer-example",
       "title": "Drawer",
-      "registryDependencies": [
-        "drawer",
-        "example"
-      ],
+      "registryDependencies": ["drawer", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/drawer-example.tsx",
@@ -1070,12 +955,7 @@
     {
       "name": "hover-card-example",
       "title": "Hover Card",
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "hover-card",
-        "example"
-      ],
+      "registryDependencies": ["button", "dialog", "hover-card", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/hover-card-example.tsx",
@@ -1150,11 +1030,7 @@
     {
       "name": "item-example",
       "title": "Item",
-      "registryDependencies": [
-        "button",
-        "item",
-        "example"
-      ],
+      "registryDependencies": ["button", "item", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/item-example.tsx",
@@ -1203,12 +1079,7 @@
     {
       "name": "menubar-example",
       "title": "Menubar",
-      "registryDependencies": [
-        "button",
-        "dialog",
-        "menubar",
-        "example"
-      ],
+      "registryDependencies": ["button", "dialog", "menubar", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/menubar-example.tsx",
@@ -1220,11 +1091,7 @@
     {
       "name": "native-select-example",
       "title": "Native Select",
-      "registryDependencies": [
-        "field",
-        "native-select",
-        "example"
-      ],
+      "registryDependencies": ["field", "native-select", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/native-select-example.tsx",
@@ -1253,12 +1120,7 @@
     {
       "name": "pagination-example",
       "title": "Pagination",
-      "registryDependencies": [
-        "field",
-        "pagination",
-        "select",
-        "example"
-      ],
+      "registryDependencies": ["field", "pagination", "select", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/pagination-example.tsx",
@@ -1307,11 +1169,7 @@
     {
       "name": "radio-group-example",
       "title": "Radio Group",
-      "registryDependencies": [
-        "field",
-        "radio-group",
-        "example"
-      ],
+      "registryDependencies": ["field", "radio-group", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/radio-group-example.tsx",
@@ -1323,10 +1181,7 @@
     {
       "name": "resizable-example",
       "title": "Resizable",
-      "registryDependencies": [
-        "resizable",
-        "example"
-      ],
+      "registryDependencies": ["resizable", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/resizable-example.tsx",
@@ -1338,11 +1193,7 @@
     {
       "name": "scroll-area-example",
       "title": "Scroll Area",
-      "registryDependencies": [
-        "scroll-area",
-        "separator",
-        "example"
-      ],
+      "registryDependencies": ["scroll-area", "separator", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/scroll-area-example.tsx",
@@ -1375,10 +1226,7 @@
     {
       "name": "separator-example",
       "title": "Separator",
-      "registryDependencies": [
-        "separator",
-        "example"
-      ],
+      "registryDependencies": ["separator", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/separator-example.tsx",
@@ -1390,13 +1238,7 @@
     {
       "name": "sheet-example",
       "title": "Sheet",
-      "registryDependencies": [
-        "button",
-        "field",
-        "input",
-        "sheet",
-        "example"
-      ],
+      "registryDependencies": ["button", "field", "input", "sheet", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/sheet-example.tsx",
@@ -1447,11 +1289,7 @@
     {
       "name": "sidebar-inset-example",
       "title": "Sidebar (Inset)",
-      "registryDependencies": [
-        "collapsible",
-        "sidebar",
-        "example"
-      ],
+      "registryDependencies": ["collapsible", "sidebar", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/sidebar-inset-example.tsx",
@@ -1483,10 +1321,7 @@
     {
       "name": "skeleton-example",
       "title": "Skeleton",
-      "registryDependencies": [
-        "skeleton",
-        "example"
-      ],
+      "registryDependencies": ["skeleton", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/skeleton-example.tsx",
@@ -1498,11 +1333,7 @@
     {
       "name": "slider-example",
       "title": "Slider",
-      "registryDependencies": [
-        "label",
-        "slider",
-        "example"
-      ],
+      "registryDependencies": ["label", "slider", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/slider-example.tsx",
@@ -1514,10 +1345,7 @@
     {
       "name": "sonner-example",
       "title": "Sonner",
-      "registryDependencies": [
-        "sonner",
-        "example"
-      ],
+      "registryDependencies": ["sonner", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/sonner-example.tsx",
@@ -1549,12 +1377,7 @@
     {
       "name": "switch-example",
       "title": "Switch",
-      "registryDependencies": [
-        "field",
-        "label",
-        "switch",
-        "example"
-      ],
+      "registryDependencies": ["field", "label", "switch", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/switch-example.tsx",
@@ -1585,12 +1408,7 @@
     {
       "name": "tabs-example",
       "title": "Tabs",
-      "registryDependencies": [
-        "button",
-        "dropdown-menu",
-        "tabs",
-        "example"
-      ],
+      "registryDependencies": ["button", "dropdown-menu", "tabs", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/tabs-example.tsx",
@@ -1602,11 +1420,7 @@
     {
       "name": "textarea-example",
       "title": "Textarea",
-      "registryDependencies": [
-        "field",
-        "textarea",
-        "example"
-      ],
+      "registryDependencies": ["field", "textarea", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/textarea-example.tsx",
@@ -1618,10 +1432,7 @@
     {
       "name": "toggle-example",
       "title": "Toggle",
-      "registryDependencies": [
-        "toggle",
-        "example"
-      ],
+      "registryDependencies": ["toggle", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/toggle-example.tsx",
@@ -1633,12 +1444,7 @@
     {
       "name": "toggle-group-example",
       "title": "Toggle Group",
-      "registryDependencies": [
-        "input",
-        "select",
-        "toggle-group",
-        "example"
-      ],
+      "registryDependencies": ["input", "select", "toggle-group", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/toggle-group-example.tsx",
@@ -1650,12 +1456,7 @@
     {
       "name": "tooltip-example",
       "title": "Tooltip",
-      "registryDependencies": [
-        "button",
-        "kbd",
-        "tooltip",
-        "example"
-      ],
+      "registryDependencies": ["button", "kbd", "tooltip", "example"],
       "files": [
         {
           "path": "registry/base-lyra/examples/tooltip-example.tsx",
@@ -1690,10 +1491,7 @@
     },
     {
       "name": "utils",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/base-lyra/lib/utils.ts",
@@ -1755,11 +1553,7 @@
     {
       "name": "elevenlabs",
       "title": "Elevenlabs",
-      "registryDependencies": [
-        "example",
-        "button",
-        "card"
-      ],
+      "registryDependencies": ["example", "button", "card"],
       "files": [
         {
           "path": "registry/base-lyra/blocks/elevenlabs.tsx",
@@ -1878,9 +1672,7 @@
         "provider": "google",
         "import": "Geist",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1892,9 +1684,7 @@
         "provider": "google",
         "import": "Inter",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1928,9 +1718,7 @@
         "provider": "google",
         "import": "Figtree",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1942,9 +1730,7 @@
         "provider": "google",
         "import": "Roboto",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1956,9 +1742,7 @@
         "provider": "google",
         "import": "Raleway",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1970,9 +1754,7 @@
         "provider": "google",
         "import": "DM_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1984,9 +1766,7 @@
         "provider": "google",
         "import": "Public_Sans",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -1998,9 +1778,7 @@
         "provider": "google",
         "import": "Outfit",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     },
     {
@@ -2012,9 +1790,7 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-sans",
-        "subsets": [
-          "latin"
-        ]
+        "subsets": ["latin"]
       }
     }
   ]
