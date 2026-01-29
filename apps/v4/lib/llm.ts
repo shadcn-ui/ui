@@ -1,6 +1,7 @@
 import fs from "fs"
 import { ExamplesIndex } from "@/examples/__index__"
 
+import { getPagesFromFolder, type PageTreeFolder } from "@/lib/page-tree"
 import { source } from "@/lib/source"
 import { Index as StylesIndex } from "@/registry/__index__"
 import { type Style } from "@/registry/_legacy-styles"
@@ -36,7 +37,7 @@ function getIndexForStyle(styleName: string) {
   return { index: StylesIndex, key: styleName }
 }
 
-function getComponentsList() {
+export function getComponentsList() {
   const components = source.pageTree.children.find(
     (page) => page.$id === "components"
   )
@@ -45,9 +46,7 @@ function getComponentsList() {
     return ""
   }
 
-  const list = components.children.filter(
-    (component) => component.type === "page"
-  )
+  const list = getPagesFromFolder(components as PageTreeFolder, "radix")
 
   return list
     .map((component) => `- [${component.name}](${component.url})`)
