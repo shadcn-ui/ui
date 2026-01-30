@@ -1,0 +1,73 @@
+---
+title: Time Picker
+description: A time picker component with support for custom steps and presets.
+component: true
+---
+
+<ComponentPreview
+  name="time-picker-demo"
+  title="Time Picker"
+  description="Pick a time from a popover."
+/>
+
+## Installation
+
+The Time Picker uses the `<Select />` and `<Label />` components under the hood.
+Install the component with the CLI:
+
+```bash
+npx shadcn@latest add time-picker popover button
+```
+
+<ComponentSource name="time-picker" title="components/ui/time-picker.tsx" />
+
+## Usage
+
+```tsx showLineNumbers title="components/example-time-picker.tsx"
+"use client"
+
+import * as React from "react"
+import { format } from "date-fns"
+import { Clock3Icon } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { TimePicker } from "@/components/ui/time-picker"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+
+export function ExampleTimePicker() {
+  const [value, setValue] = React.useState<Date | undefined>()
+
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          className="w-[220px] justify-start font-normal"
+          data-empty={!value}
+        >
+          <Clock3Icon className="mr-2 size-4 opacity-50" />
+          {value ? format(value, "h:mm a") : <span>Pick a time</span>}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto" align="start">
+        <TimePicker value={value} onValueChange={setValue} />
+      </PopoverContent>
+    </Popover>
+  )
+}
+```
+
+## Granularity and presets
+
+Control the hour cycle and minute steps with the `hourCycle`, `minuteStep`,
+and `granularity` props. You can combine the picker with any UI to offer quick selections.
+
+<ComponentPreview
+  name="time-picker-with-presets"
+  title="Time Picker with Presets"
+  description="Customize the hour cycle and add quick actions."
+/>
