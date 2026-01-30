@@ -4,12 +4,12 @@ description: Autocomplete input with a list of suggestions.
 base: radix
 component: true
 links:
-  doc: https://base-ui.com/react/components/combobox
-  api: https://base-ui.com/react/components/combobox#api-reference
+  doc: https://ui.shadcn.com/docs/components/combobox
+  api: https://www.radix-ui.com/primitives/docs/components/popover
 ---
 
 <ComponentPreview
-  styleName="base-nova"
+  styleName="radix-nova"
   name="combobox-demo"
   description="A combobox with a list of frameworks."
 />
@@ -36,15 +36,15 @@ npx shadcn@latest add combobox
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install @base-ui/react
+npm install @radix-ui/react-popover
 ```
 
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource
   name="combobox"
-  title="components/ui/combobox.tsx"
-  styleName="base-nova"
+  title="components/ui/radix/combobox.tsx"
+  styleName="radix-nova"
 />
 
 <Step>Update the import paths to match your project setup.</Step>
@@ -65,7 +65,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/components/ui/combobox"
+} from "@/components/ui/radix/combobox"
 ```
 
 ```tsx showLineNumbers
@@ -104,7 +104,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/components/ui/combobox"
+} from "@/components/ui/radix/combobox"
 
 type Framework = {
   label: string
@@ -157,7 +157,7 @@ import {
   ComboboxItem,
   ComboboxList,
   ComboboxValue,
-} from "@/components/ui/combobox"
+} from "@/components/ui/radix/combobox"
 
 const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"]
 
@@ -200,62 +200,62 @@ export function ExampleComboboxMultiple() {
 
 A simple combobox with a list of frameworks.
 
-<ComponentPreview styleName="base-nova" name="combobox-basic" />
+<ComponentPreview styleName="radix-nova" name="combobox-basic" />
 
 ### Multiple
 
 A combobox with multiple selection using `multiple` and `ComboboxChips`.
 
-<ComponentPreview styleName="base-nova" name="combobox-multiple" />
+<ComponentPreview styleName="radix-nova" name="combobox-multiple" />
 
 ### Clear Button
 
 Use the `showClear` prop to show a clear button.
 
-<ComponentPreview styleName="base-nova" name="combobox-clear" />
+<ComponentPreview styleName="radix-nova" name="combobox-clear" />
 
 ### Groups
 
 Use `ComboboxGroup` and `ComboboxSeparator` to group items.
 
-<ComponentPreview styleName="base-nova" name="combobox-groups" />
+<ComponentPreview styleName="radix-nova" name="combobox-groups" />
 
 ### Custom Items
 
 You can render custom component inside `ComboboxItem`.
 
-<ComponentPreview styleName="base-nova" name="combobox-custom" />
+<ComponentPreview styleName="radix-nova" name="combobox-custom" />
 
 ### Invalid
 
 Use the `aria-invalid` prop to make the combobox invalid.
 
-<ComponentPreview styleName="base-nova" name="combobox-invalid" />
+<ComponentPreview styleName="radix-nova" name="combobox-invalid" />
 
 ### Disabled
 
 Use the `disabled` prop to disable the combobox.
 
-<ComponentPreview styleName="base-nova" name="combobox-disabled" />
+<ComponentPreview styleName="radix-nova" name="combobox-disabled" />
 
 ### Auto Highlight
 
 Use the `autoHighlight` prop automatically highlight the first item on filter.
 
-<ComponentPreview styleName="base-nova" name="combobox-auto-highlight" />
+<ComponentPreview styleName="radix-nova" name="combobox-auto-highlight" />
 
 ### Popup
 
 You can trigger the combobox from a button or any other component by using the `render` prop. Move the `ComboboxInput` inside the `ComboboxContent`.
 
-<ComponentPreview styleName="base-nova" name="combobox-popup" />
+<ComponentPreview styleName="radix-nova" name="combobox-popup" />
 
 ### Input Group
 
 You can add an addon to the combobox by using the `InputGroupAddon` component inside the `ComboboxInput`.
 
-<ComponentPreview styleName="base-nova" name="combobox-input-group" />
+<ComponentPreview styleName="radix-nova" name="combobox-input-group" />
 
 ## API Reference
 
-See the [Base UI](https://base-ui.com/react/components/combobox#api-reference) documentation for more information.
+See the [shadcn/ui Combobox](https://ui.shadcn.com/docs/components/combobox) recipe and the [Radix UI Popover](https://www.radix-ui.com/primitives/docs/components/popover) docs for the underlying primitives.
