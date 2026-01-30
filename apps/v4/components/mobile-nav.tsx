@@ -31,6 +31,10 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/directory",
   },
   {
+    name: "RTL",
+    href: "/docs/rtl",
+  },
+  {
     name: "MCP Server",
     href: "/docs/mcp",
   },
@@ -94,7 +98,7 @@ export function MobileNav({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur duration-100"
+        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur duration-100 data-open:animate-none!"
         align="start"
         side="bottom"
         alignOffset={-16}
@@ -128,6 +132,12 @@ export function MobileNav({
                 return (
                   <MobileLink key={name} href={href} onOpenChange={setOpen}>
                     {name}
+                    {PAGES_NEW.includes(href) && (
+                      <span
+                        className="flex size-2 rounded-full bg-blue-500"
+                        title="New"
+                      />
+                    )}
                   </MobileLink>
                 )
               })}
@@ -192,7 +202,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-2xl font-medium", className)}
+      className={cn("flex items-center gap-2 text-2xl font-medium", className)}
       {...props}
     >
       {children}
