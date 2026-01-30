@@ -65,13 +65,14 @@ export function DocsSidebar({
 
   return (
     <Sidebar
-      className="sticky top-[calc(var(--header-height)+0.6rem)] z-30 hidden h-[calc(100svh-10rem)] overscroll-none bg-transparent lg:flex [--sidebar-menu-width:--spacing(56)]"
+      className="sticky top-[calc(var(--header-height)+0.6rem)] z-30 hidden h-[calc(100svh-10rem)] overscroll-none bg-transparent [--sidebar-menu-width:--spacing(56)] lg:flex"
       collapsible="none"
       {...props}
     >
       <div className="h-9" />
       <div className="from-background via-background/80 to-background/50 absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-gradient-to-b blur-xs" />
-      <SidebarContent className="no-scrollbar w-(--sidebar-menu-width) overflow-x-hidden px-2">
+      <div className="via-border absolute top-12 right-2 bottom-0 h-full w-px bg-gradient-to-b from-transparent to-transparent" />
+      <SidebarContent className="no-scrollbar mx-auto w-(--sidebar-menu-width) overflow-x-hidden px-2">
         <SidebarGroup className="pt-6">
           <SidebarGroupLabel className="text-muted-foreground font-medium">
             Sections
