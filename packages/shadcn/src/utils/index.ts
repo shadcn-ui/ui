@@ -3,3 +3,5 @@ export { transformStyle } from "../styles/transform"
 export { transformIcons } from "../utils/transformers/transform-icons"
 export { transformMenu } from "../utils/transformers/transform-menu"
 export { transformRender } from "../utils/transformers/transform-render"
+
+export { loadConfig } from "./load-config"
