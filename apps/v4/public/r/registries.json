@@ -231,7 +231,7 @@
     "name": "@inferencesh",
     "homepage": "https://ui.inference.sh",
     "url": "https://ui.inference.sh/r/{name}.json",
-    "description": "Batteries-included UI components for AI applications. Agent chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more."
+    "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more."
   },
   {
     "name": "@intentui",
