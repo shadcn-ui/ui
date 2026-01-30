@@ -1,5 +1,15 @@
 # @shadcn/ui
 
+## 3.8.0
+
+### Minor Changes
+
+- [#9498](https://github.com/shadcn-ui/ui/pull/9498) [`38de7fddc257f04901e98a5fd7821cb8729d54bf`](https://github.com/shadcn-ui/ui/commit/38de7fddc257f04901e98a5fd7821cb8729d54bf) Thanks [@shadcn](https://github.com/shadcn)! - Add RTL support
+
+### Patch Changes
+
+- [#8798](https://github.com/shadcn-ui/ui/pull/8798) [`2acaf954d7492ce722d2a7ee02747dc8f85691ef`](https://github.com/shadcn-ui/ui/commit/2acaf954d7492ce722d2a7ee02747dc8f85691ef) Thanks [@VeiaG](https://github.com/VeiaG)! - Fix: skip all transforms for universal registry items
+
 ## 3.7.0
 
 ### Minor Changes
