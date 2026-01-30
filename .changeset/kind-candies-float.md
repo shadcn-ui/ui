@@ -1,5 +1,5 @@
 ---
-"shadcn": patch
+"shadcn": minor
 ---
 
-Fix: skip all transforms for universal registry items
+Add stepper component for displaying progress through a sequence of steps

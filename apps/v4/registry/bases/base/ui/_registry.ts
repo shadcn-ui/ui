@@ -577,4 +577,14 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "stepper",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/stepper.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

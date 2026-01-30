@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper-with-icons",
+  "registryDependencies": [
+    "stepper",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stepper-with-icons.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { CheckIcon, PackageIcon, TruckIcon, UserIcon } from \"lucide-react\"\n\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Step,\n  StepDescription,\n  StepIndicator,\n  Stepper,\n  StepTitle,\n} from \"@/registry/new-york-v4/ui/stepper\"\n\nexport default function StepperWithIcons() {\n  const [currentStep, setCurrentStep] = React.useState(1)\n\n  const steps = [\n    {\n      title: \"Account\",\n      description: \"Create your account\",\n      icon: UserIcon,\n    },\n    {\n      title: \"Shipping\",\n      description: \"Add shipping details\",\n      icon: TruckIcon,\n    },\n    {\n      title: \"Package\",\n      description: \"Review your order\",\n      icon: PackageIcon,\n    },\n    {\n      title: \"Complete\",\n      description: \"Order confirmed\",\n      icon: CheckIcon,\n    },\n  ]\n\n  const nextStep = () =>\n    setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1))\n  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0))\n\n  return (\n    <div className=\"flex w-full max-w-2xl flex-col gap-6\">\n      <Stepper currentStep={currentStep} onStepChange={setCurrentStep}>\n        {steps.map((s, index) => {\n          const status =\n            index < currentStep\n              ? \"completed\"\n              : index === currentStep\n                ? \"active\"\n                : \"pending\"\n          return (\n            <Step key={s.title} step={index}>\n              <StepIndicator status={status}>\n                {status === \"completed\" ? (\n                  <CheckIcon className=\"size-4\" />\n                ) : (\n                  <s.icon className=\"size-4\" />\n                )}\n              </StepIndicator>\n              <StepTitle>{s.title}</StepTitle>\n              <StepDescription>{s.description}</StepDescription>\n            </Step>\n          )\n        })}\n      </Stepper>\n      <div className=\"flex justify-center gap-2\">\n        <Button\n          variant=\"outline\"\n          onClick={prevStep}\n          disabled={currentStep === 0}\n        >\n          Previous\n        </Button>\n        <Button onClick={nextStep} disabled={currentStep === steps.length - 1}>\n          Next\n        </Button>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -879,6 +879,25 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    "stepper": {
+      name: "stepper",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/new-york-v4/ui/stepper.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/ui/stepper.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "switch": {
       name: "switch",
       title: "undefined",
@@ -7448,6 +7467,101 @@ export const Index: Record<string, Record<string, any>> = {
       }],
       component: React.lazy(async () => {
         const mod = await import("@/registry/new-york-v4/examples/spinner-item.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "stepper-demo": {
+      name: "stepper-demo",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper","button"],
+      files: [{
+        path: "registry/new-york-v4/examples/stepper-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/stepper-demo.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "stepper-vertical": {
+      name: "stepper-vertical",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper"],
+      files: [{
+        path: "registry/new-york-v4/examples/stepper-vertical.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/stepper-vertical.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "stepper-with-icons": {
+      name: "stepper-with-icons",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper","button"],
+      files: [{
+        path: "registry/new-york-v4/examples/stepper-with-icons.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/stepper-with-icons.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "stepper-colors": {
+      name: "stepper-colors",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper","button"],
+      files: [{
+        path: "registry/new-york-v4/examples/stepper-colors.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/stepper-colors.tsx")
+        const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    "stepper-form": {
+      name: "stepper-form",
+      title: "undefined",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stepper","button","card","form","input","select","textarea"],
+      files: [{
+        path: "registry/new-york-v4/examples/stepper-form.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/new-york-v4/examples/stepper-form.tsx")
         const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
         return { default: mod.default || mod[exportName] }
       }),
