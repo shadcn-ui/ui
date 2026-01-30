@@ -1862,6 +1862,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "multi-select-demo",
+    type: "registry:example",
+    registryDependencies: ["multi-select"],
+    files: [
+      {
+        path: "examples/multi-select-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "select-demo",
     type: "registry:example",
     registryDependencies: ["select"],

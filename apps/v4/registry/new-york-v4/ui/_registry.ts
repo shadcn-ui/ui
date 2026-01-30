@@ -676,6 +676,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "multi-select",
+    type: "registry:ui",
+    registryDependencies: ["badge", "button", "checkbox", "command", "popover"],
+    files: [
+      {
+        path: "ui/multi-select.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "native-select",
     type: "registry:ui",
     files: [

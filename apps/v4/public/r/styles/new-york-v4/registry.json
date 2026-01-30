@@ -804,6 +804,23 @@
       "type": "registry:ui"
     },
     {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "badge",
+        "button",
+        "checkbox",
+        "command",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/multi-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "native-select",
       "files": [
         {
@@ -6697,6 +6714,19 @@
         }
       ],
       "type": "registry:example"
+    },
+    {
+      "name": "multi-select-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "multi-select"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/multi-select-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
     },
     {
       "name": "select-demo",

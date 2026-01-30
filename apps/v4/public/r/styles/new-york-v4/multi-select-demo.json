@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-select-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "multi-select"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/multi-select-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport {\n  MultiSelect,\n  MultiSelectContent,\n  MultiSelectGroup,\n  MultiSelectItem,\n  MultiSelectLabel,\n  MultiSelectTrigger,\n  MultiSelectValue,\n} from \"@/registry/new-york-v4/ui/multi-select\"\n\nconst frameworks = [\n  { value: \"next.js\", label: \"Next.js\" },\n  { value: \"sveltekit\", label: \"SvelteKit\" },\n  { value: \"nuxt.js\", label: \"Nuxt.js\" },\n  { value: \"remix\", label: \"Remix\" },\n  { value: \"astro\", label: \"Astro\" },\n]\n\nexport default function MultiSelectDemo() {\n  const [values, setValues] = React.useState<string[]>([\"next.js\"])\n\n  return (\n    <MultiSelect value={values} onValueChange={setValues}>\n      <MultiSelectTrigger className=\"w-[260px] justify-between\">\n        <MultiSelectValue\n          placeholder=\"Select frameworks\"\n          options={frameworks}\n          maxBadges={2}\n        />\n      </MultiSelectTrigger>\n      <MultiSelectContent searchPlaceholder=\"Search framework...\">\n        <MultiSelectGroup>\n          <MultiSelectLabel>Frameworks</MultiSelectLabel>\n          {frameworks.map((framework) => (\n            <MultiSelectItem\n              key={framework.value}\n              value={framework.value}\n              label={framework.label}\n            />\n          ))}\n        </MultiSelectGroup>\n      </MultiSelectContent>\n    </MultiSelect>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
