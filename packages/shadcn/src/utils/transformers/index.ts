@@ -20,6 +20,7 @@ export type TransformOpts = {
   baseColor?: z.infer<typeof registryBaseColorSchema>
   transformJsx?: boolean
   isRemote?: boolean
+  renameMap?: Record<string, string>
 }
 
 export type Transformer<Output = SourceFile> = (

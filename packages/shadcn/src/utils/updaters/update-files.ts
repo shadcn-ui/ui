@@ -26,6 +26,10 @@ import { transformMenu } from "@/src/utils/transformers/transform-menu"
 import { transformNext } from "@/src/utils/transformers/transform-next"
 import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { transformTwPrefixes } from "@/src/utils/transformers/transform-tw-prefix"
+import {
+  createRenameMapFromComponentName,
+  transformRename,
+} from "@/src/utils/transformers/transform-rename"
 import prompts from "prompts"
 import { Project, ScriptKind } from "ts-morph"
 import { loadConfig } from "tsconfig-paths"
@@ -42,6 +46,8 @@ export async function updateFiles(
     isRemote?: boolean
     isWorkspace?: boolean
     path?: string
+    name?: string
+    sourceComponentName?: string
   }
 ) {
   if (!files?.length) {
@@ -76,6 +82,15 @@ export async function updateFiles(
   let envVarsAdded: string[] = []
   let envFile: string | null = null
 
+  // Build rename map once before the loop
+  const renameMap =
+    options.name && options.sourceComponentName
+      ? createRenameMapFromComponentName(
+          options.sourceComponentName,
+          options.name
+        )
+      : undefined
+
   for (let index = 0; index < files.length; index++) {
     const file = files[index]
     if (!file.content) {
@@ -104,6 +119,17 @@ export async function updateFiles(
       filePath = filePath.replace(/\.tsx?$/, (match) =>
         match === ".tsx" ? ".jsx" : ".js"
       )
+    }
+
+    // Rename the file if --name option is provided
+    if (options.name && options.sourceComponentName) {
+      const oldName = options.sourceComponentName.toLowerCase()
+      const newName = options.name.toLowerCase()
+      const fileBaseName = path.basename(filePath)
+      if (fileBaseName.startsWith(oldName)) {
+        const newFileName = fileBaseName.replace(oldName, newName)
+        filePath = path.join(path.dirname(filePath), newFileName)
+      }
     }
 
     if (isEnvFile(filePath) && !existsSync(filePath)) {
@@ -139,6 +165,7 @@ export async function updateFiles(
               baseColor,
               transformJsx: !config.tsx,
               isRemote: options.isRemote,
+              renameMap,
             },
             [
               transformImport,
@@ -151,6 +178,7 @@ export async function updateFiles(
               ...(_isNext16Middleware(filePath, projectInfo, config)
                 ? [transformNext]
                 : []),
+              ...(renameMap ? [transformRename] : []),
             ]
           )
 

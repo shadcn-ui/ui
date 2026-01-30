@@ -31,6 +31,7 @@ export const addOptionsSchema = z.object({
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
+  name: z.string().optional(),
 })
 
 export const add = new Command()
@@ -58,6 +59,7 @@ export const add = new Command()
   )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
+  .option("-n, --name <name>", "override the component name.")
   .action(async (components, opts) => {
     try {
       const options = addOptionsSchema.parse({
@@ -67,6 +69,26 @@ export const add = new Command()
       })
 
       await loadEnvFiles(options.cwd)
+
+      // Validate --name option is only used with a single component
+      if (options.name && options.components && options.components.length > 1) {
+        logger.error(
+          `The ${highlighter.info(
+            "--name"
+          )} option can only be used when adding a single component.`
+        )
+        process.exit(1)
+      }
+
+      // Validate --name option is a valid component name
+      if (options.name && !/^[a-zA-Z][a-zA-Z0-9_-]*$/.test(options.name)) {
+        logger.error(
+          `The ${highlighter.info(
+            "--name"
+          )} option must be a valid component name (alphanumeric, hyphens, underscores, cannot start with a number).`
+        )
+        process.exit(1)
+      }
 
       let initialConfig = await getConfig(options.cwd)
       if (!initialConfig) {
