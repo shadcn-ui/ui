@@ -69,7 +69,7 @@ export function DocsSidebar({
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="no-scrollbar overflow-x-hidden px-2">
+      <SidebarContent className="no-scrollbar w-56 overflow-x-hidden px-2">
         <div className="from-background via-background/80 to-background/50 sticky -top-1 z-10 h-8 shrink-0 bg-gradient-to-b blur-xs" />
         <SidebarGroup>
           <SidebarGroupLabel className="text-muted-foreground font-medium">
