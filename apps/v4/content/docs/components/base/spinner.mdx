@@ -1,0 +1,107 @@
+---
+title: Spinner
+description: An indicator that can be used to show a loading state.
+base: base
+component: true
+---
+
+<ComponentPreview styleName="base-nova" name="spinner-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add spinner
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="spinner"
+  title="components/ui/spinner.tsx"
+  styleName="base-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Spinner } from "@/components/ui/spinner"
+```
+
+```tsx
+<Spinner />
+```
+
+## Customization
+
+You can replace the default spinner icon with any other icon by editing the `Spinner` component.
+
+<ComponentPreview styleName="base-nova" name="spinner-custom" />
+
+```tsx showLineNumbers title="components/ui/spinner.tsx"
+import { LoaderIcon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
+  return (
+    <LoaderIcon
+      role="status"
+      aria-label="Loading"
+      className={cn("size-4 animate-spin", className)}
+      {...props}
+    />
+  )
+}
+
+export { Spinner }
+```
+
+## Examples
+
+### Size
+
+Use the `size-*` utility class to change the size of the spinner.
+
+<ComponentPreview styleName="base-nova" name="spinner-size" />
+
+### Button
+
+Add a spinner to a button to indicate a loading state. Remember to use the `data-icon="inline-start"` prop to add the spinner to the start of the button and the `data-icon="inline-end"` prop to add the spinner to the end of the button.
+
+<ComponentPreview styleName="base-nova" name="spinner-button" />
+
+### Badge
+
+Add a spinner to a badge to indicate a loading state. Remember to use the `data-icon="inline-start"` prop to add the spinner to the start of the badge and the `data-icon="inline-end"` prop to add the spinner to the end of the badge.
+
+<ComponentPreview styleName="base-nova" name="spinner-badge" />
+
+### Input Group
+
+<ComponentPreview styleName="base-nova" name="spinner-input-group" />
+
+### Empty
+
+<ComponentPreview styleName="base-nova" name="spinner-empty" />

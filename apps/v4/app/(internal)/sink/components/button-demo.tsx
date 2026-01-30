@@ -1,4 +1,4 @@
-import { ArrowRightIcon, Loader2Icon, SendIcon } from "lucide-react"
+import { ArrowRightIcon, Loader2Icon, PlusIcon, SendIcon } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
 
@@ -6,21 +6,24 @@ export function ButtonDemo() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center gap-2 md:flex-row">
-        <Button>Button</Button>
-        <Button variant="outline">Outline</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="destructive">Destructive</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="link">Link</Button>
-        <Button variant="outline">
+        <Button size="xs">Extra Small</Button>
+        <Button variant="outline" size="xs">
+          Outline
+        </Button>
+        <Button variant="ghost" size="xs">
+          Ghost
+        </Button>
+        <Button variant="destructive" size="xs">
+          Destructive
+        </Button>
+        <Button variant="secondary" size="xs">
+          Secondary
+        </Button>
+        <Button variant="link" size="xs">
+          Link
+        </Button>
+        <Button variant="outline" size="xs">
           <SendIcon /> Send
-        </Button>
-        <Button variant="outline">
-          Learn More <ArrowRightIcon />
-        </Button>
-        <Button disabled variant="outline">
-          <Loader2Icon className="animate-spin" />
-          Please wait
         </Button>
       </div>
       <div className="flex flex-wrap items-center gap-2 md:flex-row">
@@ -43,10 +46,21 @@ export function ButtonDemo() {
         <Button variant="outline" size="sm">
           <SendIcon /> Send
         </Button>
-        <Button variant="outline" size="sm">
+      </div>
+      <div className="flex flex-wrap items-center gap-2 md:flex-row">
+        <Button>Button</Button>
+        <Button variant="outline">Outline</Button>
+        <Button variant="ghost">Ghost</Button>
+        <Button variant="destructive">Destructive</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="link">Link</Button>
+        <Button variant="outline">
+          <SendIcon /> Send
+        </Button>
+        <Button variant="outline">
           Learn More <ArrowRightIcon />
         </Button>
-        <Button disabled size="sm" variant="outline">
+        <Button disabled variant="outline">
           <Loader2Icon className="animate-spin" />
           Please wait
         </Button>
@@ -71,12 +85,19 @@ export function ButtonDemo() {
         <Button variant="outline" size="lg">
           <SendIcon /> Send
         </Button>
-        <Button variant="outline" size="lg">
-          Learn More <ArrowRightIcon />
+      </div>
+      <div className="flex flex-wrap items-center gap-2 md:flex-row">
+        <Button size="icon-xs" variant="outline">
+          <PlusIcon />
         </Button>
-        <Button disabled size="lg" variant="outline">
-          <Loader2Icon className="animate-spin" />
-          Please wait
+        <Button size="icon-sm" variant="outline">
+          <PlusIcon />
+        </Button>
+        <Button size="icon" variant="outline">
+          <PlusIcon />
+        </Button>
+        <Button size="icon-lg" variant="outline">
+          <PlusIcon />
         </Button>
       </div>
     </div>

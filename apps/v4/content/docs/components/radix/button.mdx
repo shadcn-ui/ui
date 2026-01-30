@@ -1,0 +1,154 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+featured: true
+base: radix
+component: true
+---
+
+<ComponentPreview styleName="radix-nova" name="button-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">Command</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps className="mb-0 pt-2">
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install radix-ui
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource
+  name="button"
+  title="components/ui/button.tsx"
+  styleName="radix-nova"
+/>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button"
+```
+
+```tsx
+<Button variant="outline">Button</Button>
+```
+
+## Cursor
+
+Tailwind v4 [switched](https://tailwindcss.com/docs/upgrade-guide#buttons-use-the-default-cursor) from `cursor: pointer` to `cursor: default` for the button component.
+
+If you want to keep the `cursor: pointer` behavior, add the following code to your CSS file:
+
+```css showLineNumbers title="globals.css"
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the size of the button.
+
+<ComponentPreview styleName="radix-nova" name="button-size" />
+
+### Default
+
+<ComponentPreview styleName="radix-nova" name="button-default" />
+
+### Outline
+
+<ComponentPreview styleName="radix-nova" name="button-outline" />
+
+### Secondary
+
+<ComponentPreview styleName="radix-nova" name="button-secondary" />
+
+### Ghost
+
+<ComponentPreview styleName="radix-nova" name="button-ghost" />
+
+### Destructive
+
+<ComponentPreview styleName="radix-nova" name="button-destructive" />
+
+### Link
+
+<ComponentPreview styleName="radix-nova" name="button-link" />
+
+### Icon
+
+<ComponentPreview styleName="radix-nova" name="button-icon" />
+
+### With Icon
+
+Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the icon for the correct spacing.
+
+<ComponentPreview styleName="radix-nova" name="button-with-icon" />
+
+### Rounded
+
+Use the `rounded-full` class to make the button rounded.
+
+<ComponentPreview styleName="radix-nova" name="button-rounded" />
+
+### Spinner
+
+Render a `<Spinner />` component inside the button to show a loading state. Remember to add the `data-icon="inline-start"` or `data-icon="inline-end"` attribute to the spinner for the correct spacing.
+
+<ComponentPreview styleName="radix-nova" name="button-spinner" />
+
+### Button Group
+
+To create a button group, use the `ButtonGroup` component. See the [Button Group](/docs/components/radix/button-group) documentation for more details.
+
+<ComponentPreview styleName="radix-nova" name="button-group-demo" />
+
+### Link
+
+You can use the `asChild` prop on `<Button />` to make another component look like a button. Here's an example of a link that looks like a button.
+
+<ComponentPreview styleName="radix-nova" name="button-aschild" />
+
+## API Reference
+
+### Button
+
+The `Button` component is a wrapper around the `button` element that adds a variety of styles and functionality.
+
+| Prop      | Type                                                                                 | Default     |
+| --------- | ------------------------------------------------------------------------------------ | ----------- |
+| `variant` | `"default" \| "outline" \| "ghost" \| "destructive" \| "secondary" \| "link"`        | `"default"` |
+| `size`    | `"default" \| "xs" \| "sm" \| "lg" \| "icon" \| "icon-xs" \| "icon-sm" \| "icon-lg"` | `"default"` |
+| `asChild` | `boolean`                                                                            | `false`     |

@@ -118,6 +118,7 @@ function DropdownMenuCheckboxes() {
               tabler="IconUser"
               hugeicons="UserIcon"
               phosphor="UserIcon"
+              remixicon="RiUserLine"
             />
             Profile
           </DropdownMenuItem>
@@ -127,6 +128,7 @@ function DropdownMenuCheckboxes() {
               tabler="IconCreditCard"
               hugeicons="CreditCardIcon"
               phosphor="CreditCardIcon"
+              remixicon="RiBankCardLine"
             />
             Billing
           </DropdownMenuItem>
@@ -136,6 +138,7 @@ function DropdownMenuCheckboxes() {
               tabler="IconSettings"
               hugeicons="SettingsIcon"
               phosphor="GearIcon"
+              remixicon="RiSettings3Line"
             />
             Settings
           </DropdownMenuItem>
@@ -171,6 +174,7 @@ function DropdownMenuCheckboxes() {
               tabler="IconLogout"
               hugeicons="LogoutIcon"
               phosphor="SignOutIcon"
+              remixicon="RiLogoutBoxLine"
             />
             Sign Out
           </DropdownMenuItem>
@@ -227,6 +231,7 @@ function DropdownMenuWithAvatar() {
             tabler="IconChevronsUpDown"
             hugeicons="ChevronUpDownIcon"
             phosphor="CaretUpDownIcon"
+            remixicon="RiExpandUpDownLine"
             className="text-muted-foreground ml-auto"
           />
         </Button>
@@ -257,6 +262,7 @@ function DropdownMenuWithAvatar() {
               tabler="IconSparkles"
               hugeicons="SparklesIcon"
               phosphor="SparklesIcon"
+              remixicon="RiSparklingLine"
             />
             Upgrade to Pro
           </DropdownMenuItem>
@@ -269,6 +275,7 @@ function DropdownMenuWithAvatar() {
               tabler="IconBadgeCheck"
               hugeicons="BadgeCheckIcon"
               phosphor="CheckCircleIcon"
+              remixicon="RiVerifiedBadgeLine"
             />
             Account
           </DropdownMenuItem>
@@ -278,6 +285,7 @@ function DropdownMenuWithAvatar() {
               tabler="IconCreditCard"
               hugeicons="CreditCardIcon"
               phosphor="CreditCardIcon"
+              remixicon="RiBankCardLine"
             />
             Billing
           </DropdownMenuItem>
@@ -287,6 +295,7 @@ function DropdownMenuWithAvatar() {
               tabler="IconBell"
               hugeicons="BellIcon"
               phosphor="BellIcon"
+              remixicon="RiNotification3Line"
             />
             Notifications
           </DropdownMenuItem>
@@ -298,6 +307,7 @@ function DropdownMenuWithAvatar() {
             tabler="IconLogout"
             hugeicons="LogoutIcon"
             phosphor="SignOutIcon"
+            remixicon="RiLogoutBoxLine"
           />
           Sign Out
         </DropdownMenuItem>
@@ -352,6 +362,7 @@ function DropdownMenuAvatarOnly() {
               tabler="IconSparkles"
               hugeicons="SparklesIcon"
               phosphor="SparklesIcon"
+              remixicon="RiSparklingLine"
             />
             Upgrade to Pro
           </DropdownMenuItem>
@@ -364,6 +375,7 @@ function DropdownMenuAvatarOnly() {
               tabler="IconBadgeCheck"
               hugeicons="BadgeCheckIcon"
               phosphor="CheckCircleIcon"
+              remixicon="RiVerifiedBadgeLine"
             />
             Account
           </DropdownMenuItem>
@@ -373,6 +385,7 @@ function DropdownMenuAvatarOnly() {
               tabler="IconCreditCard"
               hugeicons="CreditCardIcon"
               phosphor="CreditCardIcon"
+              remixicon="RiBankCardLine"
             />
             Billing
           </DropdownMenuItem>
@@ -382,6 +395,7 @@ function DropdownMenuAvatarOnly() {
               tabler="IconBell"
               hugeicons="BellIcon"
               phosphor="BellIcon"
+              remixicon="RiNotification3Line"
             />
             Notifications
           </DropdownMenuItem>
@@ -393,6 +407,7 @@ function DropdownMenuAvatarOnly() {
             tabler="IconLogout"
             hugeicons="LogoutIcon"
             phosphor="SignOutIcon"
+            remixicon="RiLogoutBoxLine"
           />
           Sign Out
         </DropdownMenuItem>
@@ -411,6 +426,7 @@ function DropdownMenuIconColor() {
             tabler="IconDots"
             hugeicons="MoreHorizontalCircle01Icon"
             phosphor="DotsThreeOutlineIcon"
+            remixicon="RiMoreLine"
           />
           <span className="sr-only">Toggle menu</span>
         </Button>
@@ -423,6 +439,7 @@ function DropdownMenuIconColor() {
               tabler="IconPencil"
               hugeicons="EditIcon"
               phosphor="PencilIcon"
+              remixicon="RiPencilLine"
             />
             Edit
           </DropdownMenuItem>
@@ -432,6 +449,7 @@ function DropdownMenuIconColor() {
               tabler="IconShare"
               hugeicons="ShareIcon"
               phosphor="ShareIcon"
+              remixicon="RiShareLine"
             />
             Share
           </DropdownMenuItem>
@@ -442,6 +460,7 @@ function DropdownMenuIconColor() {
               tabler="IconTrash"
               hugeicons="DeleteIcon"
               phosphor="TrashIcon"
+              remixicon="RiDeleteBinLine"
             />
             Delete
           </DropdownMenuItem>
