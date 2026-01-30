@@ -1,9 +1,10 @@
 import { describe, expect, test } from "vitest"
 
 import { transform } from "."
+import { createConfig } from "../get-config"
 import { transformCleanup } from "./transform-cleanup"
 
-const testConfig = {
+const testConfig = createConfig({
   tailwind: {
     baseColor: "neutral",
   },
@@ -11,7 +12,7 @@ const testConfig = {
     components: "@/components",
     utils: "@/lib/utils",
   },
-}
+})
 
 describe("transformCleanup", () => {
   test("removes cn-rtl-flip marker from className string", async () => {

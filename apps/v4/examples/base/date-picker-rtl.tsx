@@ -66,7 +66,7 @@ export function DatePickerRtl() {
       : undefined
 
   return (
-    <Popover dir={dir}>
+    <Popover>
       <PopoverTrigger
         render={
           <Button
