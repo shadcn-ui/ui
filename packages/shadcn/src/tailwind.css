@@ -93,12 +93,3 @@
     display: none;
   }
 }
-
-@utility slide-out-to-start {
-  &:dir(ltr) {
-    --tw-exit-translate-x: -100%;
-  }
-  &:dir(rtl) {
-    --tw-exit-translate-x: 100%;
-  }
-}
