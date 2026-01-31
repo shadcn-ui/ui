@@ -2,8 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "drawer",
   "dependencies": [
-    "vaul",
-    "@radix-ui/react-dialog"
+    "vaul"
   ],
   "files": [
     {

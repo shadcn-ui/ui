@@ -300,8 +300,7 @@
     {
       "name": "drawer",
       "dependencies": [
-        "vaul",
-        "@radix-ui/react-dialog"
+        "vaul"
       ],
       "files": [
         {
