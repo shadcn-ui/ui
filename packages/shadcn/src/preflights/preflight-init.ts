@@ -31,18 +31,18 @@ export async function preFlightInit(
   }).start()
 
   if (
-    fs.existsSync(path.resolve(options.cwd, "components.json")) &&
+    fs.existsSync(path.resolve(options.cwd, options.configPath)) &&
     !options.force
   ) {
     projectSpinner?.fail()
     logger.break()
     logger.error(
       `A ${highlighter.info(
-        "components.json"
+        options.configPath
       )} file already exists at ${highlighter.info(
         options.cwd
       )}.\nTo start over, remove the ${highlighter.info(
-        "components.json"
+        options.configPath
       )} file and run ${highlighter.info("init")} again.`
     )
     logger.break()
