@@ -2,11 +2,10 @@
 
 import * as React from "react"
 import { usePathname, useRouter } from "next/navigation"
-import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { type DialogProps } from "@radix-ui/react-dialog"
 import { IconArrowRight } from "@tabler/icons-react"
 import { useDocsSearch } from "fumadocs-core/search/client"
 import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
+import { Dialog as DialogPrimitive } from "radix-ui"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
 import { trackEvent } from "@/lib/events"
@@ -44,7 +43,7 @@ export function CommandMenu({
   blocks,
   navItems,
   ...props
-}: DialogProps & {
+}: React.ComponentProps<typeof Dialog> & {
   tree: typeof source.pageTree
   colors: ColorPalette[]
   blocks?: { name: string; description: string; categories: string[] }[]
