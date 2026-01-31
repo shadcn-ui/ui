@@ -92,7 +92,7 @@ export function ExampleCombobox() {
 
 ## Custom Items
 
-Use `itemToStringValue` when your items are objects.
+Use `itemToStringLabel` when your items are objects. Alternatively, have a `label` key.
 
 ```tsx showLineNumbers
 import * as React from "react"
@@ -107,21 +107,21 @@ import {
 } from "@/components/ui/combobox"
 
 type Framework = {
-  label: string
+  name: string
   value: string
 }
 
 const frameworks: Framework[] = [
-  { label: "Next.js", value: "next" },
-  { label: "SvelteKit", value: "sveltekit" },
-  { label: "Nuxt", value: "nuxt" },
+  { name: "Next.js", value: "next" },
+  { name: "SvelteKit", value: "sveltekit" },
+  { name: "Nuxt", value: "nuxt" },
 ]
 
 export function ExampleComboboxCustomItems() {
   return (
     <Combobox
       items={frameworks}
-      itemToStringValue={(framework) => framework.label}
+      itemToStringLabel={(framework) => framework.name}
     >
       <ComboboxInput placeholder="Select a framework" />
       <ComboboxContent>
