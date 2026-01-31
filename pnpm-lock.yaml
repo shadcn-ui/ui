@@ -483,8 +483,8 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       diff:
-        specifier: ^8.0.2
-        version: 8.0.2
+        specifier: ^8.0.3
+        version: 8.0.3
       execa:
         specifier: ^9.6.0
         version: 9.6.0
@@ -4537,8 +4537,8 @@ packages:
   didyoumean@1.2.2:
     resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
 
-  diff@8.0.2:
-    resolution: {integrity: sha512-sSuxWU5j5SR9QQji/o2qMvqRNYRDOcBTgsJ/DeCf4iSN4gW+gNMXM7wFIP+fdXZxoNiAnHUTGjCr+TSWXdRDKg==}
+  diff@8.0.3:
+    resolution: {integrity: sha512-qejHi7bcSD4hQAZE0tNAawRK1ZtafHDmMTMkrrIGgSLl7hTnQHmKCeB45xAcbfTqK2zowkM3j3bHt/4b/ARbYQ==}
     engines: {node: '>=0.3.1'}
 
   dir-glob@3.0.1:
@@ -12472,7 +12472,7 @@ snapshots:
 
   didyoumean@1.2.2: {}
 
-  diff@8.0.2: {}
+  diff@8.0.3: {}
 
   dir-glob@3.0.1:
     dependencies:
