@@ -14,6 +14,8 @@ export function ComponentPreview({
   hideCode = false,
   chromeLessOnMobile = false,
   styleName = "new-york-v4",
+  direction = "ltr",
+  caption,
   ...props
 }: React.ComponentProps<"div"> & {
   name: string
@@ -24,10 +26,12 @@ export function ComponentPreview({
   type?: "block" | "component" | "example"
   chromeLessOnMobile?: boolean
   previewClassName?: string
+  direction?: "ltr" | "rtl"
+  caption?: string
 }) {
   if (type === "block") {
-    return (
-      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-xl border md:-mx-1">
+    const content = (
+      <div className="relative mt-6 aspect-[4/2.5] w-full overflow-hidden rounded-xl border md:-mx-1">
         <Image
           src={`/r/styles/new-york-v4/${name}-light.png`}
           alt={name}
@@ -47,6 +51,19 @@ export function ComponentPreview({
         </div>
       </div>
     )
+
+    if (caption) {
+      return (
+        <figure className="flex flex-col gap-4">
+          {content}
+          <figcaption className="text-muted-foreground text-center text-sm">
+            {caption}
+          </figcaption>
+        </figure>
+      )
+    }
+
+    return content
   }
 
   const Component = getRegistryComponent(name, styleName)
@@ -63,13 +80,13 @@ export function ComponentPreview({
     )
   }
 
-  return (
+  const content = (
     <ComponentPreviewTabs
       className={className}
       previewClassName={previewClassName}
       align={align}
       hideCode={hideCode}
-      component={<DynamicComponent name={name} styleName={styleName} />}
+      component={React.createElement(Component)}
       source={
         <ComponentSource
           name={name}
@@ -86,26 +103,25 @@ export function ComponentPreview({
         />
       }
       chromeLessOnMobile={chromeLessOnMobile}
+      direction={direction}
+      styleName={styleName}
       {...props}
     />
   )
-}
 
-function DynamicComponent({
-  name,
-  styleName,
-}: {
-  name: string
-  styleName: string
-}) {
-  const Component = React.useMemo(
-    () => getRegistryComponent(name, styleName),
-    [name, styleName]
-  )
-
-  if (!Component) {
-    return null
+  if (caption) {
+    return (
+      <figure
+        data-hide-code={hideCode}
+        className="flex flex-col data-[hide-code=true]:gap-4"
+      >
+        {content}
+        <figcaption className="text-muted-foreground -mt-8 text-center text-sm data-[hide-code=true]:mt-0">
+          {caption}
+        </figcaption>
+      </figure>
+    )
   }
 
-  return React.createElement(Component)
+  return content
 }

@@ -82,21 +82,25 @@ export default function ChangelogPage() {
                 <h2 className="font-heading mb-6 text-xl font-semibold tracking-tight">
                   More Updates
                 </h2>
-                <ul className="flex flex-col gap-4">
+                <div className="grid auto-rows-fr gap-3 sm:grid-cols-2">
                   {olderPages.map((page) => {
                     const data = page.data as ChangelogPageData
+                    const [date, ...titleParts] = data.title.split(" - ")
+                    const title = titleParts.join(" - ")
                     return (
-                      <li key={page.url} className="flex items-center gap-3">
-                        <Link
-                          href={page.url}
-                          className="font-medium hover:underline"
-                        >
-                          {data.title}
-                        </Link>
-                      </li>
+                      <Link
+                        key={page.url}
+                        href={page.url}
+                        className="bg-surface text-surface-foreground hover:bg-surface/80 flex w-full flex-col rounded-xl px-4 py-3 transition-colors"
+                      >
+                        <span className="text-muted-foreground text-xs">
+                          {date}
+                        </span>
+                        <span className="text-sm font-medium">{title}</span>
+                      </Link>
                     )
                   })}
-                </ul>
+                </div>
               </div>
             )}
           </div>

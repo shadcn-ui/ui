@@ -23,7 +23,7 @@ export default function CalendarHijri() {
       defaultMonth={date}
       selected={date}
       onSelect={setDate}
-      className="rounded-lg border shadow-sm"
+      className="rounded-lg border"
     />
   )
 }

@@ -14,7 +14,8 @@ import { type StyleMap } from "./create-style-map"
  * These are typically used as CSS selectors or for other purposes
  * that require the class name to remain in the code.
  */
-const ALLOWLIST = new Set(["cn-menu-target"])
+// TODO: all cn-* classes to be allowedlisted.
+const ALLOWLIST = new Set(["cn-menu-target", "cn-logical-sides", "cn-rtl-flip"])
 
 function isStringLiteralLike(
   node: Node

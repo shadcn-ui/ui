@@ -11,7 +11,8 @@ links:
   styleName="radix-nova"
   name="data-table-demo"
   align="start"
-  previewClassName="items-start h-[28rem] px-4 md:px-8"
+  previewClassName="items-start h-auto px-4 md:px-8"
+  hideCode
 />
 
 ## Introduction
@@ -883,3 +884,15 @@ A component to toggle column visibility.
 ```tsx
 <DataTableViewOptions table={table} />
 ```
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="base-nova"
+  name="data-table-rtl"
+  direction="rtl"
+  previewClassName="items-start h-auto px-4 md:px-8"
+  hideCode
+/>

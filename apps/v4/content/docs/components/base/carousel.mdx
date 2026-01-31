@@ -285,6 +285,38 @@ export function Example() {
   previewClassName="sm:h-[32rem]"
 />
 
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview
+  styleName="base-nova"
+  name="carousel-rtl"
+  direction="rtl"
+  previewClassName="h-80 sm:h-[32rem]"
+/>
+
+When localizing the carousel for RTL languages, you need to set the `direction` option in the `opts` prop to match the text direction. This ensures the carousel scrolls in the correct direction.
+
+```tsx showLineNumbers {2-5}
+<Carousel
+  dir={dir}
+  opts={{
+    direction: dir,
+  }}
+>
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+    <CarouselItem>...</CarouselItem>
+  </CarouselContent>
+  <CarouselPrevious className="rtl:rotate-180" />
+  <CarouselNext className="rtl:rotate-180" />
+</Carousel>
+```
+
+The `direction` option accepts `"ltr"` or `"rtl"` and should match the `dir` prop value. You may also want to rotate the navigation buttons using the `rtl:rotate-180` class to ensure they point in the correct direction.
+
 ## API Reference
 
 See the [Embla Carousel docs](https://www.embla-carousel.com/api/plugins/) for more information on props and plugins.

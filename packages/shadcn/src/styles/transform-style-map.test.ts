@@ -538,8 +538,8 @@ function Foo() {
 
   it("applies styles to cn-* classes inside mergeProps within useRender", async () => {
     const source = `import * as React from "react"
-import { mergeProps } from "@base-ui-components/react/merge-props"
-import { useRender } from "@base-ui-components/react/use-render"
+import { mergeProps } from "@base-ui/react/merge-props"
+import { useRender } from "@base-ui/react/use-render"
 import { cn } from "@/lib/utils"
 
 function ButtonGroupText({
@@ -574,8 +574,8 @@ function ButtonGroupText({
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
-      import { mergeProps } from "@base-ui-components/react/merge-props"
-      import { useRender } from "@base-ui-components/react/use-render"
+      import { mergeProps } from "@base-ui/react/merge-props"
+      import { useRender } from "@base-ui/react/use-render"
       import { cn } from "@/lib/utils"
 
       function ButtonGroupText({
@@ -666,8 +666,8 @@ function Menu({ className, ...props }: React.ComponentProps<"div">) {
 
   it("preserves allowlisted classes in mergeProps within useRender", async () => {
     const source = `import * as React from "react"
-import { mergeProps } from "@base-ui-components/react/merge-props"
-import { useRender } from "@base-ui-components/react/use-render"
+import { mergeProps } from "@base-ui/react/merge-props"
+import { useRender } from "@base-ui/react/use-render"
 import { cn } from "@/lib/utils"
 
 function MenuContent({
@@ -702,8 +702,8 @@ function MenuContent({
 
     expect(result).toMatchInlineSnapshot(`
       "import * as React from "react"
-      import { mergeProps } from "@base-ui-components/react/merge-props"
-      import { useRender } from "@base-ui-components/react/use-render"
+      import { mergeProps } from "@base-ui/react/merge-props"
+      import { useRender } from "@base-ui/react/use-render"
       import { cn } from "@/lib/utils"
 
       function MenuContent({

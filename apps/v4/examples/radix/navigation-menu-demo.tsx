@@ -11,7 +11,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/examples/radix/ui/navigation-menu"
-import { CircleAlertIcon } from "lucide-react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -84,33 +83,6 @@ export default function NavigationMenuDemo() {
                   {component.description}
                 </ListItem>
               ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[200px]">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link href="#" className="flex-row items-center gap-2">
-                    <CircleAlertIcon />
-                    Backlog
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="#" className="flex-row items-center gap-2">
-                    <CircleAlertIcon />
-                    To Do
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="#" className="flex-row items-center gap-2">
-                    <CircleAlertIcon />
-                    Done
-                  </Link>
-                </NavigationMenuLink>
-              </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

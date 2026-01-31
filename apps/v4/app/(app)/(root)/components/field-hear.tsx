@@ -50,7 +50,7 @@ export function FieldHear() {
                   >
                     <Field
                       orientation="horizontal"
-                      className="gap-1.5 overflow-hidden !px-3 !py-1.5 transition-all duration-100 ease-linear group-has-data-[state=checked]/field-label:!px-2"
+                      className="gap-1.5 overflow-hidden px-3! py-1.5! transition-all duration-100 ease-linear group-has-data-[state=checked]/field-label:px-2!"
                     >
                       <Checkbox
                         value={option.value}
