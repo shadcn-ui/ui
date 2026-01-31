@@ -4,7 +4,6 @@ export const ui: Registry["items"] = [
   {
     name: "accordion",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-accordion"],
     files: [
       {
         path: "ui/accordion.tsx",
@@ -25,7 +24,6 @@ export const ui: Registry["items"] = [
   {
     name: "alert-dialog",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-alert-dialog"],
     registryDependencies: ["button"],
     files: [
       {
@@ -37,7 +35,6 @@ export const ui: Registry["items"] = [
   {
     name: "aspect-ratio",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-aspect-ratio"],
     files: [
       {
         path: "ui/aspect-ratio.tsx",
@@ -48,7 +45,6 @@ export const ui: Registry["items"] = [
   {
     name: "avatar",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-avatar"],
     files: [
       {
         path: "ui/avatar.tsx",
@@ -59,7 +55,6 @@ export const ui: Registry["items"] = [
   {
     name: "badge",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-slot"],
     files: [
       {
         path: "ui/badge.tsx",
@@ -70,7 +65,6 @@ export const ui: Registry["items"] = [
   {
     name: "breadcrumb",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-slot"],
     files: [
       {
         path: "ui/breadcrumb.tsx",
@@ -81,7 +75,6 @@ export const ui: Registry["items"] = [
   {
     name: "button",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-slot"],
     files: [
       {
         path: "ui/button.tsx",
@@ -149,7 +142,6 @@ export const ui: Registry["items"] = [
   {
     name: "checkbox",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-checkbox"],
     files: [
       {
         path: "ui/checkbox.tsx",
@@ -160,7 +152,6 @@ export const ui: Registry["items"] = [
   {
     name: "collapsible",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-collapsible"],
     files: [
       {
         path: "ui/collapsible.tsx",
@@ -195,7 +186,6 @@ export const ui: Registry["items"] = [
   {
     name: "context-menu",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-context-menu"],
     files: [
       {
         path: "ui/context-menu.tsx",
@@ -206,7 +196,6 @@ export const ui: Registry["items"] = [
   {
     name: "dialog",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-dialog"],
     files: [
       {
         path: "ui/dialog.tsx",
@@ -217,7 +206,7 @@ export const ui: Registry["items"] = [
   {
     name: "drawer",
     type: "registry:ui",
-    dependencies: ["vaul", "@radix-ui/react-dialog"],
+    dependencies: ["vaul"],
     files: [
       {
         path: "ui/drawer.tsx",
@@ -228,7 +217,6 @@ export const ui: Registry["items"] = [
   {
     name: "dropdown-menu",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-dropdown-menu"],
     files: [
       {
         path: "ui/dropdown-menu.tsx",
@@ -260,13 +248,7 @@ export const ui: Registry["items"] = [
   {
     name: "form",
     type: "registry:ui",
-    dependencies: [
-      "@radix-ui/react-label",
-      "@radix-ui/react-slot",
-      "@hookform/resolvers",
-      "zod",
-      "react-hook-form",
-    ],
+    dependencies: ["@hookform/resolvers", "zod", "react-hook-form"],
     registryDependencies: ["button", "label"],
     files: [
       {
@@ -278,7 +260,6 @@ export const ui: Registry["items"] = [
   {
     name: "hover-card",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-hover-card"],
     files: [
       {
         path: "ui/hover-card.tsx",
@@ -332,7 +313,6 @@ export const ui: Registry["items"] = [
   {
     name: "label",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-label"],
     files: [
       {
         path: "ui/label.tsx",
@@ -343,7 +323,6 @@ export const ui: Registry["items"] = [
   {
     name: "menubar",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-menubar"],
     files: [
       {
         path: "ui/menubar.tsx",
@@ -354,7 +333,6 @@ export const ui: Registry["items"] = [
   {
     name: "navigation-menu",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-navigation-menu"],
     files: [
       {
         path: "ui/navigation-menu.tsx",
@@ -376,7 +354,6 @@ export const ui: Registry["items"] = [
   {
     name: "popover",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-popover"],
     files: [
       {
         path: "ui/popover.tsx",
@@ -387,7 +364,6 @@ export const ui: Registry["items"] = [
   {
     name: "progress",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-progress"],
     files: [
       {
         path: "ui/progress.tsx",
@@ -398,7 +374,6 @@ export const ui: Registry["items"] = [
   {
     name: "radio-group",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-radio-group"],
     files: [
       {
         path: "ui/radio-group.tsx",
@@ -420,7 +395,6 @@ export const ui: Registry["items"] = [
   {
     name: "scroll-area",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-scroll-area"],
     files: [
       {
         path: "ui/scroll-area.tsx",
@@ -431,7 +405,6 @@ export const ui: Registry["items"] = [
   {
     name: "select",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-select"],
     files: [
       {
         path: "ui/select.tsx",
@@ -442,7 +415,6 @@ export const ui: Registry["items"] = [
   {
     name: "separator",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-separator"],
     files: [
       {
         path: "ui/separator.tsx",
@@ -453,7 +425,6 @@ export const ui: Registry["items"] = [
   {
     name: "sheet",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-dialog"],
     files: [
       {
         path: "ui/sheet.tsx",
@@ -464,11 +435,7 @@ export const ui: Registry["items"] = [
   {
     name: "sidebar",
     type: "registry:ui",
-    dependencies: [
-      "@radix-ui/react-slot",
-      "class-variance-authority",
-      "lucide-react",
-    ],
+    dependencies: ["class-variance-authority", "lucide-react"],
     registryDependencies: [
       "button",
       "separator",
@@ -540,7 +507,6 @@ export const ui: Registry["items"] = [
   {
     name: "slider",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-slider"],
     files: [
       {
         path: "ui/slider.tsx",
@@ -573,7 +539,6 @@ export const ui: Registry["items"] = [
   {
     name: "switch",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-switch"],
     files: [
       {
         path: "ui/switch.tsx",
@@ -594,7 +559,6 @@ export const ui: Registry["items"] = [
   {
     name: "tabs",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-tabs"],
     files: [
       {
         path: "ui/tabs.tsx",
@@ -615,7 +579,6 @@ export const ui: Registry["items"] = [
   {
     name: "toast",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-toast"],
     files: [
       {
         path: "ui/toast.tsx",
@@ -634,7 +597,6 @@ export const ui: Registry["items"] = [
   {
     name: "toggle",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-toggle"],
     files: [
       {
         path: "ui/toggle.tsx",
@@ -645,7 +607,6 @@ export const ui: Registry["items"] = [
   {
     name: "toggle-group",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-toggle-group"],
     registryDependencies: ["toggle"],
     files: [
       {
@@ -657,7 +618,6 @@ export const ui: Registry["items"] = [
   {
     name: "tooltip",
     type: "registry:ui",
-    dependencies: ["@radix-ui/react-tooltip"],
     files: [
       {
         path: "ui/tooltip.tsx",
@@ -688,7 +648,6 @@ export const ui: Registry["items"] = [
   {
     name: "direction",
     type: "registry:ui",
-    dependencies: ["radix-ui"],
     files: [
       {
         path: "ui/direction.tsx",
