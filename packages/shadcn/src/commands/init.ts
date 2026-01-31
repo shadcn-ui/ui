@@ -271,6 +271,7 @@ export const init = new Command()
 export async function runInit(
   options: z.infer<typeof initOptionsSchema> & {
     skipPreflight?: boolean
+    skipInstallDeps?: boolean
   }
 ) {
   let projectInfo
@@ -390,6 +391,7 @@ export async function runInit(
     overwrite: true,
     silent: options.silent,
     baseStyle: options.baseStyle,
+    skipInstallDeps: options.skipInstallDeps,
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })
