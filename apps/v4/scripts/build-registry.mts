@@ -1,3 +1,4 @@
+import { spawn } from "child_process"
 import { promises as fs } from "fs"
 import path from "path"
 import { rimraf } from "rimraf"
@@ -232,7 +233,7 @@ async function buildBases(bases: Base[]) {
     style: (typeof STYLES)[number]
     baseRegistry: (typeof baseImports)[number]["baseRegistry"]
     registryItems: (typeof baseImports)[number]["registryItems"]
-    styleMap: Map<string, string>
+    styleMap: Record<string, string>
   }> = []
 
   for (const { base, baseRegistry, registryItems } of baseImports) {
@@ -435,23 +436,29 @@ async function buildRegistryJsonFile(styleName: string) {
 
 async function buildRegistry(styleName: string) {
   const outputPath = `public/r/styles/${styleName}`
-  const proc = Bun.spawn(
-    [
+  await new Promise<void>((resolve, reject) => {
+    const proc = spawn(
       "node",
-      "../../packages/shadcn/dist/index.js",
-      "build",
-      `registry-${styleName}.json`,
-      "--output",
-      outputPath,
-    ],
-    { cwd: process.cwd(), stdout: "pipe", stderr: "pipe" }
-  )
-
-  const exitCode = await proc.exited
-  if (exitCode !== 0) {
-    const stderr = await new Response(proc.stderr).text()
-    throw new Error(`Process exited with code ${exitCode}: ${stderr}`)
-  }
+      [
+        "../../packages/shadcn/dist/index.js",
+        "build",
+        `registry-${styleName}.json`,
+        "--output",
+        outputPath,
+      ],
+      { cwd: process.cwd(), stdio: "pipe" }
+    )
+    let stderr = ""
+    proc.stderr?.on("data", (data) => (stderr += data))
+    proc.on("close", (code) => {
+      if (code !== 0) {
+        reject(new Error(`Process exited with code ${code}: ${stderr}`))
+      } else {
+        resolve()
+      }
+    })
+    proc.on("error", reject)
+  })
 }
 
 async function buildBlocksIndex() {
@@ -471,7 +478,7 @@ async function buildBlocksIndex() {
 
 async function cleanUp(stylesToBuild: { name: string; title: string }[]) {
   // Clean up all in parallel.
-  const cleanupPromises: Promise<void>[] = []
+  const cleanupPromises: Promise<boolean>[] = []
 
   for (const style of stylesToBuild) {
     cleanupPromises.push(
@@ -616,11 +623,12 @@ async function buildRtlExamples() {
 async function batchPrettier(paths: string[]) {
   if (paths.length === 0) return
 
-  const proc = Bun.spawn(["bun", "x", "prettier", "--write", ...paths], {
-    cwd: process.cwd(),
-    stdout: "pipe",
-    stderr: "pipe",
+  await new Promise<void>((resolve, reject) => {
+    const proc = spawn("npx", ["prettier", "--write", ...paths], {
+      cwd: process.cwd(),
+      stdio: "pipe",
+    })
+    proc.on("close", () => resolve())
+    proc.on("error", reject)
   })
-
-  await proc.exited
 }
