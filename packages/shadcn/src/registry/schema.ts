@@ -1,3 +1,4 @@
+import { formatCases } from "@/src/utils/format"
 import { z } from "zod"
 
 // Note: if you edit the schema here, you must also edit the schema in the
@@ -42,6 +43,7 @@ export const rawConfigSchema = z
     rtl: z.coerce.boolean().default(false).optional(),
     menuColor: z.enum(["default", "inverted"]).default("default").optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
+    fileCase: z.enum(formatCases).default("pathCase").optional(),
     aliases: z.object({
       components: z.string(),
       utils: z.string(),
