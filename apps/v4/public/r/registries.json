@@ -164,7 +164,7 @@
   {
     "name": "@elements",
     "homepage": "https://www.tryelements.dev",
-    "url": "https://www.tryelements.dev/r/registry.json",
+    "url": "https://www.tryelements.dev/r/{name}.json",
     "description": "Full-stack shadcn/ui components that go beyond UI. Add auth, monetization, uploads, and AI to your app in seconds."
   },
   {
@@ -176,7 +176,7 @@
   {
     "name": "@efferd",
     "homepage": "https://efferd.com/",
-    "url": "https://efferd.com/r/registry.json",
+    "url": "https://efferd.com/r/{name}.json",
     "description": "A collection of beautifully crafted Shadcn/UI blocks, designed to help developers build modern websites with ease."
   },
   {
@@ -368,7 +368,7 @@
   {
     "name": "@prompt-kit",
     "homepage": "https://www.prompt-kit.com",
-    "url": "https://www.prompt-kit.com/c/registry.json",
+    "url": "https://www.prompt-kit.com/c/{name}.json",
     "description": "Core building blocks for AI apps. High-quality, accessible, and customizable components for AI interfaces."
   },
   {
@@ -638,7 +638,7 @@
   {
     "name": "@beste-ui",
     "homepage": "https://ui.beste.co",
-    "url": "https://ui.beste.co/r/registry.json",
+    "url": "https://ui.beste.co/r/{name}.json",
     "description": "Production-ready UI blocks for landing pages, dashboards, and web apps."
   },
   {
