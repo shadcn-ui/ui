@@ -162,13 +162,21 @@ export async function migrateIconsFile(
       continue
     }
 
+    // Build lookup map once before the loop
+    const iconLookup = new Map<string, string>();
+    for (const [_, iconMap] of Object.entries(iconsMapping)) {
+      const sourceIcon = iconMap[sourceLibrary];
+      const targetIcon = iconMap[targetLibrary];
+      if (sourceIcon && targetIcon) {
+        iconLookup.set(sourceIcon, targetIcon);
+      }
+    }
+
     for (const specifier of importDeclaration.getNamedImports() ?? []) {
       const iconName = specifier.getName()
 
-      // TODO: this is O(n^2) but okay for now.
-      const targetedIcon = Object.values(iconsMapping).find(
-        (icon) => icon[sourceLibrary] === iconName
-      )?.[targetLibrary]
+      // O(1) lookup
+      const targetedIcon = iconLookup.get(iconName);
 
       if (!targetedIcon || targetedIcons.includes(targetedIcon)) {
         continue
@@ -190,6 +198,7 @@ export async function migrateIconsFile(
     if (importDeclaration.getNamedImports()?.length === 0) {
       importDeclaration.remove()
     }
+
   }
 
   if (targetedIcons.length > 0) {
