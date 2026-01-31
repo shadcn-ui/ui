@@ -1,6 +1,7 @@
 import path from "path"
 import { getPreset, getPresets, getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
+import { REGISTRY_URL } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { isUrl } from "@/src/registry/utils"
 import { Preset } from "@/src/schema"
@@ -18,7 +19,7 @@ import validateProjectName from "validate-npm-package-name"
 
 import { initOptionsSchema, runInit } from "./init"
 
-const SHADCN_URL = "https://ui.shadcn.com"
+const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
 const CREATE_TEMPLATES = {
   next: "Next.js",

@@ -2,8 +2,8 @@ import { type RegistryItem } from "shadcn/schema"
 
 export const fonts = [
   {
-    name: "font-geist-sans",
-    title: "Geist Sans",
+    name: "font-geist",
+    title: "Geist",
     type: "registry:font",
     font: {
       family: "'Geist Variable', sans-serif",
@@ -131,16 +131,16 @@ export const fonts = [
       import: "JetBrains_Mono",
     },
   },
-  // {
-  //   name: "font-geist-mono",
-  //   title: "Geist Mono",
-  //   type: "registry:font",
-  //   font: {
-  //     family: "'Geist Mono Variable', monospace",
-  //     provider: "google",
-  //     variable: "--font-sans",
-  //     subsets: ["latin"],
-  //     import: "Geist_Mono",
-  //   },
-  // },
+  {
+    name: "font-geist-mono",
+    title: "Geist Mono",
+    type: "registry:font",
+    font: {
+      family: "'Geist Mono Variable', monospace",
+      provider: "google",
+      variable: "--font-mono",
+      subsets: ["latin"],
+      import: "Geist_Mono",
+    },
+  },
 ] satisfies RegistryItem[]
