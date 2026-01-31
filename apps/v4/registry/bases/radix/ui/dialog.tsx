@@ -105,8 +105,8 @@ function DialogFooter({
     <div
       data-slot="dialog-footer"
       className={cn(
-        "cn-dialog-footer flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        className
+        "cn-dialog-footer flex flex-col-reverse sm:flex-row sm:justify-end",
+        className,
       )}
       {...props}
     >
@@ -117,7 +117,7 @@ function DialogFooter({
         </DialogPrimitive.Close>
       )}
     </div>
-  )
+  );
 }
 
 function DialogTitle({
