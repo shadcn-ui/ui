@@ -19,6 +19,15 @@ import { z } from "zod"
 
 const FILE_EXTENSIONS_FOR_LOOKUP = [".tsx", ".ts", ".jsx", ".js", ".css"]
 const FILE_PATH_SKIP_LIST = ["lib/utils.ts"]
+
+export type FileMetadataMap = Map<
+  string,
+  Pick<z.infer<typeof registryItemFileSchema>, "type" | "target">
+>
+
+function normalizePathForLookup(p: string): string {
+  return path.normalize(p).replace(/\\/g, "/")
+}
 const DEPENDENCY_SKIP_LIST = [
   /^(react|react-dom|next)(\/.*)?$/, // Matches react, react-dom, next and their submodules
   /^(node|jsr|npm):.*$/, // Matches node:, jsr:, and npm: prefixed modules
@@ -60,7 +69,8 @@ export async function recursivelyResolveFileImports(
   filePath: string,
   config: z.infer<typeof configSchema>,
   projectInfo: ProjectInfo,
-  processedFiles: Set<string> = new Set()
+  processedFiles: Set<string> = new Set(),
+  fileMetadataMap?: FileMetadataMap
 ): Promise<Pick<z.infer<typeof registryItemSchema>, "files" | "dependencies">> {
   const resolvedFilePath = path.resolve(config.resolvedPaths.cwd, filePath)
   const relativeRegistryFilePath = path.relative(
@@ -104,13 +114,21 @@ export async function recursivelyResolveFileImports(
   const files: z.infer<typeof registryItemSchema>["files"] = []
   const dependencies = new Set<string>()
 
-  // Add the original file first
-  const fileType = determineFileType(filePath)
-  const originalFile = {
-    path: relativeRegistryFilePath,
-    type: fileType,
-    target: "",
-  }
+  const originalLookup = fileMetadataMap?.get(normalizePathForLookup(relativeRegistryFilePath))
+  const originalType = originalLookup?.type ?? determineFileType(filePath)
+  const originalTarget =
+    originalLookup && "target" in originalLookup && originalLookup.target !== undefined
+      ? originalLookup.target
+      : ""
+
+  const originalFile =
+    originalType === "registry:file" || originalType === "registry:page"
+      ? { path: relativeRegistryFilePath, type: originalType, target: originalTarget }
+      : {
+          path: relativeRegistryFilePath,
+          type: originalType,
+          ...(originalTarget && { target: originalTarget }),
+        }
   files.push(originalFile)
 
   // 1. Find all import statements in the file.
@@ -174,26 +192,31 @@ export async function recursivelyResolveFileImports(
       continue
     }
 
-    const fileType = determineFileType(moduleSpecifier)
-    const file = {
-      path: nestedRelativeRegistryFilePath,
-      type: fileType,
-      target: "",
-    }
+    const lookupKey = normalizePathForLookup(nestedRelativeRegistryFilePath)
+    const metadata = fileMetadataMap?.get(lookupKey)
+    const fileType = metadata?.type ?? determineFileType(nestedRelativeRegistryFilePath)
+    const target =
+      metadata && "target" in metadata && metadata.target !== undefined
+        ? metadata.target
+        : ""
 
-    // TODO (shadcn): fix this.
-    if (fileType === "registry:page" || fileType === "registry:file") {
-      file.target = moduleSpecifier
-    }
+    const file =
+      fileType === "registry:file" || fileType === "registry:page"
+        ? { path: nestedRelativeRegistryFilePath, type: fileType, target }
+        : {
+            path: nestedRelativeRegistryFilePath,
+            type: fileType,
+            ...(target && { target }),
+          }
 
     files.push(file)
 
-    // Recursively process the imported file, passing the shared processedFiles set
     const nestedResults = await recursivelyResolveFileImports(
       nestedRelativeRegistryFilePath,
       config,
       projectInfo,
-      processedFiles
+      processedFiles,
+      fileMetadataMap
     )
 
     if (nestedResults.files) {
