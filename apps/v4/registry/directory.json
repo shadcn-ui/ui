@@ -378,6 +378,13 @@
     "logo": "<svg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'><rect x='2' y='2' width='60' height='60' rx='10' ry='10' fill='#5b9bff' stroke='#000' stroke-width='4'/><text x='32' y='42' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='36' font-weight='900'>N</text></svg>"
   },
   {
+    "name": "@nessra-ui",
+    "homepage": "https://nessra-ui.vercel.app",
+    "url": "https://nessra-ui.vercel.app/r/{name}.json",
+    "description": "Beautiful, accessible components built with Tailwind CSS v4 and Radix UI. Includes auth blocks, data tables, and TanStack Form integration.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 493 512' width='32' height='32'><path fill='var(--foreground)' d='M189.5 96.3c.1-2.7.2-5.3.2-8 0-27.8-5.3-48.8-15.9-63-10.6-14.2-29.6-21.3-56.8-21.3-31.1 0-54.8 12.8-71.1 38.4-16.4 25.6-27.3 60.8-32.7 105.5-2.7 23.4-5 49.5-7 78.1a3073 3073 0 00-4.5 85.4c-1.1 28.3-1.6 54-1.6 76.9 0 44.7 8.4 76.4 25.3 95.2 16.9 18.8 42 28.2 75.2 28.2 27.3 0 48.9-8.4 65-25.3 16.1-16.9 25.7-45 29-84.2 1.1-13.1 2-29.3 2.9-48.6l2.5-58.5c.8-19.6 2-36 3.7-49.1 3.3-25.6 10.1-45.5 20.4-59.7 10.4-14.2 22.9-21.3 37.6-21.3 26.7 0 40.1 22.4 40.1 67 0 14.2-.7 32.2-2 54a6398 6398 0 01-4.5 66.2c-1.6 22.3-2.5 41.7-2.5 58 0 29.4 6.7 52.5 20 69.1 13.4 16.6 32.6 24.9 57.6 24.9 22.4 0 41.7-5 58-15.1 16.4-10.1 28.9-25.2 37.6-45.4 6-13.1 10.9-29.8 14.7-50.3 3.8-20.4 6.8-43.2 9-68.3 2.2-25 3.3-50.4 3.3-76 0-50.7-6.1-94.7-18.4-132-12.3-37.3-30.7-66.2-55.2-86.7C394.9 10.2 364.1 0 327 0c-30 0-58.3 10-85 29.8-34.3 25.5-31.4 38.3-52.5 66.5zM67.2 76c1.8-4.7 7.2-7 11.9-5.2 4.7 1.8 7 7.2 5.2 11.9-4.5 11.5-8.4 24.6-11.6 39.2-3.3 14.7-6 31.3-8.2 49.7-.6 5-5.2 8.6-10.2 8-5-.6-8.6-5.2-8-10.2 2.2-18.7 5-35.8 8.5-51.5 3.5-15.8 7.7-29.7 12.4-41.9zm-25 120.7a9.2 9.2 0 0118.1 2.6l-.8 5.7a9.2 9.2 0 11-18.1-2.6l.8-5.7z'/></svg>"
+  },
+  {
     "name": "@nexus-elements",
     "homepage": "https://elements.nexus.availproject.org/docs/view-components",
     "description": "Ready-made React components for almost any use case. Use as is or customise and go to market fast",
