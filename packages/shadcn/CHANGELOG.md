@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.8.1
+
+### Patch Changes
+
+- [#9502](https://github.com/shadcn-ui/ui/pull/9502) [`2bf55c91338525f886f7c4a7b1fe820155d6bace`](https://github.com/shadcn-ui/ui/commit/2bf55c91338525f886f7c4a7b1fe820155d6bace) Thanks [@shadcn](https://github.com/shadcn)! - properly detect already installed fonts
+
 ## 3.8.0
 
 ### Minor Changes
