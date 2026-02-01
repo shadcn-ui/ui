@@ -814,6 +814,19 @@
       "type": "registry:ui"
     },
     {
+      "name": "direction",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "dashboard-01",
       "description": "A dashboard with sidebar, charts and data table.",
       "dependencies": [

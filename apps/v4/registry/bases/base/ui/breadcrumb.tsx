@@ -92,6 +92,7 @@ function BreadcrumbSeparator({
           hugeicons="ArrowRight01Icon"
           phosphor="CaretRightIcon"
           remixicon="RiArrowRightSLine"
+          className="cn-rtl-flip"
         />
       )}
     </li>
