@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/examples/radix/ui/dialog"
+import { Field, FieldGroup } from "@/examples/radix/ui/field"
 import { Input } from "@/examples/radix/ui/input"
 import { Label } from "@/examples/radix/ui/label"
 
@@ -19,7 +20,7 @@ export function DialogDemo() {
         <DialogTrigger asChild>
           <Button variant="outline">Open Dialog</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-sm">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>
@@ -27,16 +28,16 @@ export function DialogDemo() {
               done.
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4">
-            <div className="grid gap-3">
+          <FieldGroup>
+            <Field>
               <Label htmlFor="name-1">Name</Label>
               <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="grid gap-3">
+            </Field>
+            <Field>
               <Label htmlFor="username-1">Username</Label>
               <Input id="username-1" name="username" defaultValue="@peduarte" />
-            </div>
-          </div>
+            </Field>
+          </FieldGroup>
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>

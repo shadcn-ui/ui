@@ -56,7 +56,7 @@
     "chokidar": "^4.0.3",
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
-    "eslint": "^8.41.0",
+    "eslint": "^9.26.0",
     "eslint-config-next": "13.3.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-turbo": "^1.9.9",

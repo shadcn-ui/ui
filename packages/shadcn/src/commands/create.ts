@@ -1,6 +1,7 @@
 import path from "path"
 import { getPreset, getPresets, getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
+import { REGISTRY_URL } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { isUrl } from "@/src/registry/utils"
 import { Preset } from "@/src/schema"
@@ -18,7 +19,7 @@ import validateProjectName from "validate-npm-package-name"
 
 import { initOptionsSchema, runInit } from "./init"
 
-const SHADCN_URL = "https://ui.shadcn.com"
+const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
 const CREATE_TEMPLATES = {
   next: "Next.js",
@@ -52,12 +53,25 @@ export const create = new Command()
     "do not use the src directory when creating a new project."
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
+  .option("--rtl", "enable RTL support.", false)
   .action(async (name, opts) => {
     try {
-      // If no arguments or options provided, show initial prompt.
-      const hasNoArgs = !name && !opts.template && !opts.preset
-      if (hasNoArgs) {
-        const createUrl = getShadcnCreateUrl()
+      // If no preset provided, open create URL with template and rtl params.
+      const hasNoPreset = !name && !opts.preset
+      if (hasNoPreset) {
+        const searchParams: Record<string, string> = {}
+        if (opts.template) {
+          searchParams.template = opts.template
+        }
+        if (opts.rtl) {
+          searchParams.rtl = "true"
+
+          // Recommend base-ui in RTL.
+          searchParams.base = "base"
+        }
+        const createUrl = getShadcnCreateUrl(
+          Object.keys(searchParams).length > 0 ? searchParams : undefined
+        )
         logger.log("Build your own shadcn/ui.")
         logger.log(
           `You will be taken to ${highlighter.info(
@@ -130,7 +144,10 @@ export const create = new Command()
       }
 
       // Handle preset selection.
-      const presetResult = await handlePresetOption(opts.preset ?? true)
+      const presetResult = await handlePresetOption(
+        opts.preset ?? true,
+        opts.rtl
+      )
 
       if (!presetResult) {
         process.exit(0)
@@ -142,12 +159,15 @@ export const create = new Command()
 
       if ("_isUrl" in presetResult) {
         // User provided a URL directly.
-        initUrl = presetResult.url
         const url = new URL(presetResult.url)
+        if (opts.rtl) {
+          url.searchParams.set("rtl", "true")
+        }
+        initUrl = url.toString()
         baseColor = url.searchParams.get("baseColor") ?? "neutral"
       } else {
         // User selected a preset by name.
-        initUrl = buildInitUrl(presetResult)
+        initUrl = buildInitUrl(presetResult, opts.rtl)
         baseColor = presetResult.baseColor
       }
 
@@ -181,6 +201,7 @@ export const create = new Command()
         isNewProject: true,
         srcDir: opts.srcDir,
         cssVariables: true,
+        rtl: opts.rtl,
         template,
         baseColor,
         baseStyle: false,
@@ -192,7 +213,11 @@ export const create = new Command()
 
       // Add component example.
       if (config) {
-        await addComponents(["component-example"], config, {
+        const components = ["component-example"]
+        if (opts.rtl) {
+          components.push("direction")
+        }
+        await addComponents(components, config, {
           baseStyle: false,
           silent: true,
           overwrite: true,
@@ -221,7 +246,7 @@ export const create = new Command()
     }
   })
 
-function buildInitUrl(preset: Preset) {
+function buildInitUrl(preset: Preset, rtl: boolean) {
   const params = new URLSearchParams({
     base: preset.base,
     style: preset.style,
@@ -229,6 +254,7 @@ function buildInitUrl(preset: Preset) {
     theme: preset.theme,
     iconLibrary: preset.iconLibrary,
     font: preset.font,
+    rtl: String(rtl || preset.rtl),
     menuAccent: preset.menuAccent,
     menuColor: preset.menuColor,
     radius: preset.radius,
@@ -237,7 +263,7 @@ function buildInitUrl(preset: Preset) {
   return `${getShadcnInitUrl()}?${params.toString()}`
 }
 
-async function handlePresetOption(presetArg: string | boolean) {
+async function handlePresetOption(presetArg: string | boolean, rtl: boolean) {
   // If --preset is used without a name, show interactive list.
   if (presetArg === true) {
     const presets = await getPresets()
@@ -265,7 +291,7 @@ async function handlePresetOption(presetArg: string | boolean) {
     }
 
     if (selectedPreset === "custom") {
-      const url = getShadcnCreateUrl()
+      const url = getShadcnCreateUrl(rtl ? { rtl: "true" } : undefined)
       logger.info(`\nOpening ${highlighter.info(url)} in your browser...\n`)
       await open(url)
       return null
@@ -355,8 +381,14 @@ function App() {
   }
 }
 
-function getShadcnCreateUrl() {
-  return `${SHADCN_URL}/create`
+function getShadcnCreateUrl(searchParams?: Record<string, string>) {
+  const url = new URL(`${SHADCN_URL}/create`)
+  if (searchParams) {
+    for (const [key, value] of Object.entries(searchParams)) {
+      url.searchParams.set(key, value)
+    }
+  }
+  return url.toString()
 }
 
 function getShadcnInitUrl() {

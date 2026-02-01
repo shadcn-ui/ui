@@ -164,7 +164,7 @@
   {
     "name": "@elements",
     "homepage": "https://www.tryelements.dev",
-    "url": "https://www.tryelements.dev/r/registry.json",
+    "url": "https://www.tryelements.dev/r/{name}.json",
     "description": "Full-stack shadcn/ui components that go beyond UI. Add auth, monetization, uploads, and AI to your app in seconds."
   },
   {
@@ -176,7 +176,7 @@
   {
     "name": "@efferd",
     "homepage": "https://efferd.com/",
-    "url": "https://efferd.com/r/registry.json",
+    "url": "https://efferd.com/r/{name}.json",
     "description": "A collection of beautifully crafted Shadcn/UI blocks, designed to help developers build modern websites with ease."
   },
   {
@@ -368,7 +368,7 @@
   {
     "name": "@prompt-kit",
     "homepage": "https://www.prompt-kit.com",
-    "url": "https://www.prompt-kit.com/c/registry.json",
+    "url": "https://www.prompt-kit.com/c/{name}.json",
     "description": "Core building blocks for AI apps. High-quality, accessible, and customizable components for AI interfaces."
   },
   {
@@ -606,6 +606,18 @@
     "description": "AnimBits is a collection animated UI components for React that use Framer Motion. The components provided include buttons, cards, text, icons, lists, loaders, and page transitions, animation hooks all of which have general-purpose effects that are not flashy and easy on the eyes, making them easy to use."
   },
   {
+    "name": "@shadcn-space",
+    "homepage": "https://shadcnspace.com",
+    "url": "https://shadcnspace.com/r/{name}.json",
+    "description": "ShadcnSpace is a collection of extra-ordinary, highly customizable shadcn/ui components, blocks, and themes to build modern UIs with speed and clarity."
+  },
+  {
+    "name": "@shadcn-dashboard",
+    "homepage": "https://shadcn-dashboard.com",
+    "url": "https://shadcn-dashboard.com/r/{name}.json",
+    "description": "ShadcnDashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization."
+  },
+  {
     "name": "@icons-animated",
     "homepage": "https://icons.lndev.me",
     "url": "https://icons.lndev.me/r/{name}.json",
@@ -626,7 +638,7 @@
   {
     "name": "@beste-ui",
     "homepage": "https://ui.beste.co",
-    "url": "https://ui.beste.co/r/registry.json",
+    "url": "https://ui.beste.co/r/{name}.json",
     "description": "Production-ready UI blocks for landing pages, dashboards, and web apps."
   },
   {
@@ -694,11 +706,5 @@
     "homepage": "https://typedora-ui.netlify.app",
     "url": "https://typedora-ui.netlify.app/r/{name}.json",
     "description": "Typedora UI is a next-generation extension layer for shadcn/ui, designed to bring full type-safety to your UI components."
-  },
-  {
-    "name": "@shadcn-space",
-    "homepage": "https://shadcnspace.com/",
-    "url": "https://shadcnspace.com/r/{name}.json",
-    "description": "An open-source collection of production-ready Shadcn UI blocks, components, and templates for websites, admin dashboards and modern React web projects, built with Tailwind CSS and ready to copy-paste or install via the Shadcn CLI."
   }
 ]

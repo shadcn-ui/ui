@@ -56,7 +56,7 @@ export function ButtonGroupDemo() {
               <MoreHorizontalIcon />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48 [--radius:1rem]">
+          <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <MailCheckIcon />
