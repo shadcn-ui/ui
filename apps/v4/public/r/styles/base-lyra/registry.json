@@ -4,6 +4,9 @@
   "items": [
     {
       "name": "accordion",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/accordion.tsx",
@@ -24,6 +27,9 @@
     },
     {
       "name": "alert-dialog",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
         "button"
       ],
@@ -37,6 +43,9 @@
     },
     {
       "name": "aspect-ratio",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/aspect-ratio.tsx",
@@ -47,6 +56,9 @@
     },
     {
       "name": "avatar",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/avatar.tsx",
@@ -77,6 +89,9 @@
     },
     {
       "name": "button",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/button.tsx",
@@ -87,6 +102,9 @@
     },
     {
       "name": "button-group",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
         "separator"
       ],
@@ -159,6 +177,9 @@
     },
     {
       "name": "checkbox",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/checkbox.tsx",
@@ -169,6 +190,9 @@
     },
     {
       "name": "collapsible",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/collapsible.tsx",
@@ -213,6 +237,9 @@
     },
     {
       "name": "context-menu",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/context-menu.tsx",
@@ -223,6 +250,9 @@
     },
     {
       "name": "dialog",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
         "button"
       ],
@@ -249,6 +279,9 @@
     },
     {
       "name": "dropdown-menu",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/dropdown-menu.tsx",
@@ -287,6 +320,9 @@
     },
     {
       "name": "hover-card",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/hover-card.tsx",
@@ -348,6 +384,9 @@
     },
     {
       "name": "label",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/label.tsx",
@@ -358,6 +397,9 @@
     },
     {
       "name": "menubar",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
         "dropdown-menu"
       ],
@@ -371,6 +413,9 @@
     },
     {
       "name": "navigation-menu",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/navigation-menu.tsx",
@@ -394,6 +439,9 @@
     },
     {
       "name": "popover",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/popover.tsx",
@@ -404,6 +452,9 @@
     },
     {
       "name": "progress",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/progress.tsx",
@@ -414,6 +465,9 @@
     },
     {
       "name": "radio-group",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/radio-group.tsx",
@@ -437,6 +491,9 @@
     },
     {
       "name": "scroll-area",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/scroll-area.tsx",
@@ -447,6 +504,9 @@
     },
     {
       "name": "select",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/select.tsx",
@@ -457,6 +517,9 @@
     },
     {
       "name": "separator",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/separator.tsx",
@@ -467,6 +530,9 @@
     },
     {
       "name": "sheet",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
         "button"
       ],
@@ -508,6 +574,9 @@
     },
     {
       "name": "slider",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/slider.tsx",
@@ -542,6 +611,9 @@
     },
     {
       "name": "switch",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/switch.tsx",
@@ -562,6 +634,9 @@
     },
     {
       "name": "tabs",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/tabs.tsx",
@@ -582,6 +657,9 @@
     },
     {
       "name": "toggle",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/toggle.tsx",
@@ -592,6 +670,9 @@
     },
     {
       "name": "toggle-group",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
         "toggle"
       ],
@@ -605,6 +686,9 @@
     },
     {
       "name": "tooltip",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/base-lyra/ui/tooltip.tsx",
