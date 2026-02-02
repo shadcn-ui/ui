@@ -46,7 +46,7 @@ export function ChartToolbar({
 }
 
 function ChartTitle({ chart }: { chart: Chart }) {
-  if (chart.name.includes("charts-line")) {
+  if (chart.name.includes("chart-line")) {
     return (
       <>
         <LineChartIcon /> Line Chart

@@ -169,6 +169,18 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "combobox",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react"],
+    registryDependencies: ["button", "input-group"],
+    files: [
+      {
+        path: "ui/combobox.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "command",
     type: "registry:ui",
     dependencies: ["cmdk"],
@@ -669,6 +681,17 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/native-select.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "direction",
+    type: "registry:ui",
+    dependencies: ["radix-ui"],
+    files: [
+      {
+        path: "ui/direction.tsx",
         type: "registry:ui",
       },
     ],

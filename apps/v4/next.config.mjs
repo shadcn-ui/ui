@@ -30,6 +30,34 @@ const nextConfig = {
   },
   redirects() {
     return [
+      // Form redirects to /docs/forms.
+      {
+        source: "/docs/components/form",
+        destination: "/docs/forms",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/radix/form",
+        destination: "/docs/forms",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/base/form",
+        destination: "/docs/forms",
+        permanent: true,
+      },
+      // Component redirects (default to radix).
+      {
+        source: "/docs/components/:name((?!radix|base|form)[^/]+)",
+        destination: "/docs/components/radix/:name",
+        permanent: false,
+      },
+      {
+        source: "/docs/components/:name((?!radix|base|form)[^/]+).md",
+        destination: "/docs/components/radix/:name.md",
+        permanent: false,
+      },
+      // Other redirects.
       {
         source: "/components",
         destination: "/docs/components",

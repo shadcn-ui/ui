@@ -65,6 +65,9 @@
       "type": "string",
       "enum": ["subtle", "bold"]
     },
+    "rtl": {
+      "type": "boolean"
+    },
     "registries": {
       "type": "object",
       "patternProperties": {

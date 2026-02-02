@@ -81,6 +81,7 @@ export default function SidebarIconExample() {
             tabler="IconTerminal2"
             hugeicons="ComputerTerminalIcon"
             phosphor="TerminalIcon"
+            remixicon="RiTerminalBoxLine"
           />
         ),
         isActive: true,
@@ -108,6 +109,7 @@ export default function SidebarIconExample() {
             tabler="IconRobot"
             hugeicons="RoboticIcon"
             phosphor="RobotIcon"
+            remixicon="RiRobotLine"
           />
         ),
         items: [
@@ -134,6 +136,7 @@ export default function SidebarIconExample() {
             tabler="IconBook"
             hugeicons="BookOpen02Icon"
             phosphor="BookOpenIcon"
+            remixicon="RiBookOpenLine"
           />
         ),
         items: [
@@ -164,6 +167,7 @@ export default function SidebarIconExample() {
             tabler="IconSettings"
             hugeicons="Settings05Icon"
             phosphor="GearIcon"
+            remixicon="RiSettingsLine"
           />
         ),
         items: [
@@ -196,6 +200,7 @@ export default function SidebarIconExample() {
             tabler="IconFrame"
             hugeicons="CropIcon"
             phosphor="CropIcon"
+            remixicon="RiCropLine"
           />
         ),
       },
@@ -208,6 +213,7 @@ export default function SidebarIconExample() {
             tabler="IconChartPie"
             hugeicons="PieChartIcon"
             phosphor="ChartPieIcon"
+            remixicon="RiPieChartLine"
           />
         ),
       },
@@ -220,6 +226,7 @@ export default function SidebarIconExample() {
             tabler="IconMap"
             hugeicons="MapsIcon"
             phosphor="MapTrifoldIcon"
+            remixicon="RiMapLine"
           />
         ),
       },
@@ -285,6 +292,7 @@ export default function SidebarIconExample() {
                       tabler="IconSelector"
                       hugeicons="UnfoldMoreIcon"
                       phosphor="CaretUpDownIcon"
+                      remixicon="RiArrowUpDownLine"
                     />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>
@@ -326,6 +334,7 @@ export default function SidebarIconExample() {
                           tabler="IconChevronRight"
                           hugeicons="ArrowRight01Icon"
                           phosphor="CaretRightIcon"
+                          remixicon="RiArrowRightSLine"
                           className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
                         />
                       </CollapsibleTrigger>
@@ -391,6 +400,7 @@ export default function SidebarIconExample() {
                       tabler="IconSelector"
                       hugeicons="UnfoldMoreIcon"
                       phosphor="CaretUpDownIcon"
+                      remixicon="RiArrowUpDownLine"
                     />
                   </SidebarMenuButton>
                 </DropdownMenuTrigger>

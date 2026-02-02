@@ -130,6 +130,7 @@ function AvatarWithBadgeIcon() {
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
             />
           </AvatarBadge>
         </Avatar>
@@ -145,6 +146,7 @@ function AvatarWithBadgeIcon() {
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
             />
           </AvatarBadge>
         </Avatar>
@@ -160,6 +162,7 @@ function AvatarWithBadgeIcon() {
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
             />
           </AvatarBadge>
         </Avatar>
@@ -173,6 +176,7 @@ function AvatarWithBadgeIcon() {
               tabler="IconCheck"
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
+              remixicon="RiCheckLine"
             />
           </AvatarBadge>
         </Avatar>
@@ -184,6 +188,7 @@ function AvatarWithBadgeIcon() {
               tabler="IconCheck"
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
+              remixicon="RiCheckLine"
             />
           </AvatarBadge>
         </Avatar>
@@ -195,6 +200,7 @@ function AvatarWithBadgeIcon() {
               tabler="IconCheck"
               hugeicons="Tick02Icon"
               phosphor="CheckIcon"
+              remixicon="RiCheckLine"
             />
           </AvatarBadge>
         </Avatar>
@@ -368,6 +374,7 @@ function AvatarGroupWithIconCount() {
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
+            remixicon="RiAddLine"
           />
         </AvatarGroupCount>
       </AvatarGroup>
@@ -396,6 +403,7 @@ function AvatarGroupWithIconCount() {
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
+            remixicon="RiAddLine"
           />
         </AvatarGroupCount>
       </AvatarGroup>
@@ -430,6 +438,7 @@ function AvatarGroupWithIconCount() {
             tabler="IconPlus"
             hugeicons="PlusSignIcon"
             phosphor="PlusIcon"
+            remixicon="RiAddLine"
           />
         </AvatarGroupCount>
       </AvatarGroup>
@@ -474,6 +483,7 @@ function AvatarInEmpty() {
                   tabler="IconPlus"
                   hugeicons="PlusSignIcon"
                   phosphor="PlusIcon"
+                  remixicon="RiAddLine"
                 />
               </AvatarGroupCount>
             </AvatarGroup>
@@ -490,6 +500,7 @@ function AvatarInEmpty() {
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
+              remixicon="RiAddLine"
             />
             Invite Members
           </Button>

@@ -39,6 +39,7 @@ export const rawConfigSchema = z
       prefix: z.string().default("").optional(),
     }),
     iconLibrary: z.string().optional(),
+    rtl: z.coerce.boolean().default(false).optional(),
     menuColor: z.enum(["default", "inverted"]).default("default").optional(),
     menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
     aliases: z.object({
@@ -260,9 +261,20 @@ export const searchResultsSchema = z.object({
   items: z.array(searchResultItemSchema),
 })
 
+// Legacy schema for getRegistriesIndex() backward compatibility.
 export const registriesIndexSchema = z.record(
   z.string().regex(/^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/),
   z.string()
+)
+
+// New schema for getRegistries().
+export const registriesSchema = z.array(
+  z.object({
+    name: z.string(),
+    homepage: z.string().optional(),
+    url: z.string(),
+    description: z.string().optional(),
+  })
 )
 
 export const presetSchema = z.object({
@@ -275,6 +287,7 @@ export const presetSchema = z.object({
   theme: z.string(),
   iconLibrary: z.string(),
   font: z.string(),
+  rtl: z.coerce.boolean().default(false),
   menuAccent: z.enum(["subtle", "bold"]),
   menuColor: z.enum(["default", "inverted"]),
   radius: z.string(),

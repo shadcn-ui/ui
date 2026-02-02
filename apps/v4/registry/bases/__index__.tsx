@@ -1367,6 +1367,31 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
+    direction: {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/radix/ui/direction.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/radix/ui/direction.tsx")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
     "accordion-example": {
       name: "accordion-example",
       title: "Accordion",
@@ -3172,85 +3197,6 @@ export const Index: Record<string, Record<string, any>> = {
       categories: undefined,
       meta: undefined,
     },
-    sink: {
-      name: "sink",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: [
-        "accordion-example",
-        "alert-dialog-example",
-        "alert-example",
-        "aspect-ratio-example",
-        "avatar-example",
-        "badge-example",
-        "breadcrumb-example",
-        "button-example",
-        "button-group-example",
-        "calendar-example",
-        "card-example",
-        "carousel-example",
-        "chart-example",
-        "checkbox-example",
-        "collapsible-example",
-        "combobox-example",
-        "command-example",
-        "context-menu-example",
-        "dialog-example",
-        "drawer-example",
-        "dropdown-menu-example",
-        "empty-example",
-        "field-example",
-        "hover-card-example",
-        "input-example",
-        "input-group-example",
-        "input-otp-example",
-        "item-example",
-        "kbd-example",
-        "label-example",
-        "menubar-example",
-        "native-select-example",
-        "navigation-menu-example",
-        "pagination-example",
-        "popover-example",
-        "progress-example",
-        "radio-group-example",
-        "resizable-example",
-        "scroll-area-example",
-        "select-example",
-        "separator-example",
-        "sheet-example",
-        "skeleton-example",
-        "slider-example",
-        "sonner-example",
-        "spinner-example",
-        "switch-example",
-        "table-example",
-        "tabs-example",
-        "textarea-example",
-        "toggle-example",
-        "toggle-group-example",
-        "tooltip-example",
-      ],
-      files: [
-        {
-          path: "registry/bases/radix/internal/sink.tsx",
-          type: "registry:page",
-          target: "app/sink/page.tsx",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/radix/internal/sink.tsx")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
     preview: {
       name: "preview",
       title: "Home",
@@ -4832,6 +4778,31 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/base/ui/native-select.tsx")
+        const exportName =
+          Object.keys(mod).find(
+            (key) =>
+              typeof mod[key] === "function" || typeof mod[key] === "object"
+          ) || item.name
+        return { default: mod.default || mod[exportName] }
+      }),
+      categories: undefined,
+      meta: undefined,
+    },
+    direction: {
+      name: "direction",
+      title: "undefined",
+      description: "",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/bases/base/ui/direction.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      component: React.lazy(async () => {
+        const mod = await import("@/registry/bases/base/ui/direction.tsx")
         const exportName =
           Object.keys(mod).find(
             (key) =>
@@ -6867,85 +6838,6 @@ export const Index: Record<string, Record<string, any>> = {
       ],
       component: React.lazy(async () => {
         const mod = await import("@/registry/bases/base/hooks/use-mobile.ts")
-        const exportName =
-          Object.keys(mod).find(
-            (key) =>
-              typeof mod[key] === "function" || typeof mod[key] === "object"
-          ) || item.name
-        return { default: mod.default || mod[exportName] }
-      }),
-      categories: undefined,
-      meta: undefined,
-    },
-    sink: {
-      name: "sink",
-      title: "undefined",
-      description: "",
-      type: "registry:internal",
-      registryDependencies: [
-        "accordion-example",
-        "alert-dialog-example",
-        "alert-example",
-        "aspect-ratio-example",
-        "avatar-example",
-        "badge-example",
-        "breadcrumb-example",
-        "button-example",
-        "button-group-example",
-        "calendar-example",
-        "card-example",
-        "carousel-example",
-        "chart-example",
-        "checkbox-example",
-        "collapsible-example",
-        "combobox-example",
-        "command-example",
-        "context-menu-example",
-        "dialog-example",
-        "drawer-example",
-        "dropdown-menu-example",
-        "empty-example",
-        "field-example",
-        "hover-card-example",
-        "input-example",
-        "input-group-example",
-        "input-otp-example",
-        "item-example",
-        "kbd-example",
-        "label-example",
-        "menubar-example",
-        "native-select-example",
-        "navigation-menu-example",
-        "pagination-example",
-        "popover-example",
-        "progress-example",
-        "radio-group-example",
-        "resizable-example",
-        "scroll-area-example",
-        "select-example",
-        "separator-example",
-        "sheet-example",
-        "skeleton-example",
-        "slider-example",
-        "sonner-example",
-        "spinner-example",
-        "switch-example",
-        "table-example",
-        "tabs-example",
-        "textarea-example",
-        "toggle-example",
-        "toggle-group-example",
-        "tooltip-example",
-      ],
-      files: [
-        {
-          path: "registry/bases/base/internal/sink.tsx",
-          type: "registry:page",
-          target: "app/sink/page.tsx",
-        },
-      ],
-      component: React.lazy(async () => {
-        const mod = await import("@/registry/bases/base/internal/sink.tsx")
         const exportName =
           Object.keys(mod).find(
             (key) =>

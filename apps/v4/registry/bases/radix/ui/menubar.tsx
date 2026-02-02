@@ -131,6 +131,7 @@ function MenubarCheckboxItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -160,6 +161,7 @@ function MenubarRadioItem({
             tabler="IconCheck"
             hugeicons="Tick02Icon"
             phosphor="CheckIcon"
+            remixicon="RiCheckLine"
           />
         </MenubarPrimitive.ItemIndicator>
       </span>
@@ -241,7 +243,8 @@ function MenubarSubTrigger({
         tabler="IconChevronRight"
         hugeicons="ArrowRight01Icon"
         phosphor="CaretRightIcon"
-        className="ml-auto size-4"
+        remixicon="RiArrowRightSLine"
+        className="cn-rtl-flip ml-auto size-4"
       />
     </MenubarPrimitive.SubTrigger>
   )

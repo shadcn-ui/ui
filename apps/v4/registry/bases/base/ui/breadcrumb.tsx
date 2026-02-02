@@ -91,6 +91,8 @@ function BreadcrumbSeparator({
           tabler="IconChevronRight"
           hugeicons="ArrowRight01Icon"
           phosphor="CaretRightIcon"
+          remixicon="RiArrowRightSLine"
+          className="cn-rtl-flip"
         />
       )}
     </li>
@@ -117,6 +119,7 @@ function BreadcrumbEllipsis({
         tabler="IconDots"
         hugeicons="MoreHorizontalCircle01Icon"
         phosphor="DotsThreeIcon"
+        remixicon="RiMoreLine"
       />
       <span className="sr-only">More</span>
     </span>
