@@ -63,9 +63,8 @@ export default function ChartsLayout({
       </PageHeader>
       <PageNav id="charts">
         <ChartsNav />
-        <ThemeSelector className="mr-4 hidden md:flex" />
       </PageNav>
-      <div className="container-wrapper section-soft flex-1">
+      <div className="container-wrapper flex-1">
         <div className="container pb-6">
           <section className="theme-container">{children}</section>
         </div>

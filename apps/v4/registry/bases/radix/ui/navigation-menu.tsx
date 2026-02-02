@@ -79,6 +79,7 @@ function NavigationMenuTrigger({
         tabler="IconChevronDown"
         hugeicons="ArrowDown01Icon"
         phosphor="CaretDownIcon"
+        remixicon="RiArrowDownSLine"
         className="cn-navigation-menu-trigger-icon"
         aria-hidden="true"
       />

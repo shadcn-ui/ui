@@ -1,5 +1,5 @@
-import { Button } from "@/registry/new-york-v4/ui/button"
-import { Checkbox } from "@/registry/new-york-v4/ui/checkbox"
+import { Button } from "@/examples/radix/ui/button"
+import { Checkbox } from "@/examples/radix/ui/checkbox"
 import {
   Field,
   FieldDescription,
@@ -8,16 +8,17 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/registry/new-york-v4/ui/field"
-import { Input } from "@/registry/new-york-v4/ui/input"
+} from "@/examples/radix/ui/field"
+import { Input } from "@/examples/radix/ui/input"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/new-york-v4/ui/select"
-import { Textarea } from "@/registry/new-york-v4/ui/textarea"
+} from "@/examples/radix/ui/select"
+import { Textarea } from "@/examples/radix/ui/textarea"
 
 export function FieldDemo() {
   return (
@@ -69,18 +70,20 @@ export function FieldDemo() {
                       <SelectValue placeholder="MM" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="01">01</SelectItem>
-                      <SelectItem value="02">02</SelectItem>
-                      <SelectItem value="03">03</SelectItem>
-                      <SelectItem value="04">04</SelectItem>
-                      <SelectItem value="05">05</SelectItem>
-                      <SelectItem value="06">06</SelectItem>
-                      <SelectItem value="07">07</SelectItem>
-                      <SelectItem value="08">08</SelectItem>
-                      <SelectItem value="09">09</SelectItem>
-                      <SelectItem value="10">10</SelectItem>
-                      <SelectItem value="11">11</SelectItem>
-                      <SelectItem value="12">12</SelectItem>
+                      <SelectGroup>
+                        <SelectItem value="01">01</SelectItem>
+                        <SelectItem value="02">02</SelectItem>
+                        <SelectItem value="03">03</SelectItem>
+                        <SelectItem value="04">04</SelectItem>
+                        <SelectItem value="05">05</SelectItem>
+                        <SelectItem value="06">06</SelectItem>
+                        <SelectItem value="07">07</SelectItem>
+                        <SelectItem value="08">08</SelectItem>
+                        <SelectItem value="09">09</SelectItem>
+                        <SelectItem value="10">10</SelectItem>
+                        <SelectItem value="11">11</SelectItem>
+                        <SelectItem value="12">12</SelectItem>
+                      </SelectGroup>
                     </SelectContent>
                   </Select>
                 </Field>
@@ -93,12 +96,14 @@ export function FieldDemo() {
                       <SelectValue placeholder="YYYY" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="2024">2024</SelectItem>
-                      <SelectItem value="2025">2025</SelectItem>
-                      <SelectItem value="2026">2026</SelectItem>
-                      <SelectItem value="2027">2027</SelectItem>
-                      <SelectItem value="2028">2028</SelectItem>
-                      <SelectItem value="2029">2029</SelectItem>
+                      <SelectGroup>
+                        <SelectItem value="2024">2024</SelectItem>
+                        <SelectItem value="2025">2025</SelectItem>
+                        <SelectItem value="2026">2026</SelectItem>
+                        <SelectItem value="2027">2027</SelectItem>
+                        <SelectItem value="2028">2028</SelectItem>
+                        <SelectItem value="2029">2029</SelectItem>
+                      </SelectGroup>
                     </SelectContent>
                   </Select>
                 </Field>

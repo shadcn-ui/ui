@@ -5,6 +5,7 @@ import {
   DayPicker,
   getDefaultClassNames,
   type DayButton,
+  type Locale,
 } from "react-day-picker"
 
 import { cn } from "@/registry/bases/base/lib/utils"
@@ -17,6 +18,7 @@ function Calendar({
   showOutsideDays = true,
   captionLayout = "label",
   buttonVariant = "ghost",
+  locale,
   formatters,
   components,
   ...props
@@ -35,9 +37,10 @@ function Calendar({
         className
       )}
       captionLayout={captionLayout}
+      locale={locale}
       formatters={{
         formatMonthDropdown: (date) =>
-          date.toLocaleString("default", { month: "short" }),
+          date.toLocaleString(locale?.code, { month: "short" }),
         ...formatters,
       }}
       classNames={{
@@ -107,7 +110,7 @@ function Calendar({
           defaultClassNames.day
         ),
         range_start: cn(
-          "rounded-l-(--cell-radius) bg-muted elative after:bg-muted after:absolute after:inset-y-0 after:w-4 after:right-0 -z-0 isolate",
+          "rounded-l-(--cell-radius) bg-muted relative after:bg-muted after:absolute after:inset-y-0 after:w-4 after:right-0 -z-0 isolate",
           defaultClassNames.range_start
         ),
         range_middle: cn("rounded-none", defaultClassNames.range_middle),
@@ -149,7 +152,8 @@ function Calendar({
                 tabler="IconChevronLeft"
                 hugeicons="ArrowLeftIcon"
                 phosphor="CaretLeftIcon"
-                className={cn("size-4", className)}
+                remixicon="RiArrowLeftSLine"
+                className={cn("cn-rtl-flip size-4", className)}
                 {...props}
               />
             )
@@ -162,7 +166,8 @@ function Calendar({
                 tabler="IconChevronRight"
                 hugeicons="ArrowRightIcon"
                 phosphor="CaretRightIcon"
-                className={cn("size-4", className)}
+                remixicon="RiArrowRightSLine"
+                className={cn("cn-rtl-flip size-4", className)}
                 {...props}
               />
             )
@@ -174,12 +179,15 @@ function Calendar({
               tabler="IconChevronDown"
               hugeicons="ArrowDownIcon"
               phosphor="CaretDownIcon"
+              remixicon="RiArrowDownSLine"
               className={cn("size-4", className)}
               {...props}
             />
           )
         },
-        DayButton: CalendarDayButton,
+        DayButton: ({ ...props }) => (
+          <CalendarDayButton locale={locale} {...props} />
+        ),
         WeekNumber: ({ children, ...props }) => {
           return (
             <td {...props}>
@@ -200,8 +208,9 @@ function CalendarDayButton({
   className,
   day,
   modifiers,
+  locale,
   ...props
-}: React.ComponentProps<typeof DayButton>) {
+}: React.ComponentProps<typeof DayButton> & { locale?: Partial<Locale> }) {
   const defaultClassNames = getDefaultClassNames()
 
   const ref = React.useRef<HTMLButtonElement>(null)
@@ -213,7 +222,7 @@ function CalendarDayButton({
     <Button
       variant="ghost"
       size="icon"
-      data-day={day.date.toLocaleDateString()}
+      data-day={day.date.toLocaleDateString(locale?.code)}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&

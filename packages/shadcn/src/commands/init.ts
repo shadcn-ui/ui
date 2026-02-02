@@ -71,6 +71,7 @@ export const initOptionsSchema = z.object({
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
+  rtl: z.boolean().optional(),
   template: z
     .string()
     .optional()
@@ -142,6 +143,7 @@ export const init = new Command()
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
   .option("--no-base-style", "do not install the base shadcn style.")
+  .option("--rtl", "enable RTL support.", false)
   .action(async (components, opts) => {
     try {
       // Apply defaults when --defaults flag is set.
@@ -364,6 +366,11 @@ export async function runInit(
     config = mergeConfig(config, options.registryBaseConfig)
   }
 
+  // Ensure rtl is set from CLI option (takes priority over registryBaseConfig).
+  if (options.rtl !== undefined) {
+    config.rtl = options.rtl
+  }
+
   // Make sure to filter out built-in registries.
   // TODO: fix this in ensureRegistriesInConfig.
   config.registries = Object.fromEntries(
@@ -576,6 +583,7 @@ async function promptForMinimalConfig(
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
     iconLibrary,
+    rtl: opts.rtl ?? defaultConfig?.rtl ?? false,
     aliases: defaultConfig?.aliases,
   })
 }

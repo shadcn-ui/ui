@@ -3,7 +3,8 @@
   "name": "index",
   "dependencies": [
     "class-variance-authority",
-    "lucide-react"
+    "lucide-react",
+    "radix-ui"
   ],
   "devDependencies": [
     "tw-animate-css"
