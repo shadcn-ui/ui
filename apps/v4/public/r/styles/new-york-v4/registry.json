@@ -38,6 +38,9 @@
     },
     {
       "name": "accordion",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/accordion.tsx",
@@ -58,6 +61,9 @@
     },
     {
       "name": "alert-dialog",
+      "dependencies": [
+        "radix-ui"
+      ],
       "registryDependencies": [
         "button"
       ],
@@ -71,6 +77,9 @@
     },
     {
       "name": "aspect-ratio",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/aspect-ratio.tsx",
@@ -81,6 +90,9 @@
     },
     {
       "name": "avatar",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/avatar.tsx",
@@ -91,6 +103,9 @@
     },
     {
       "name": "badge",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/badge.tsx",
@@ -101,6 +116,9 @@
     },
     {
       "name": "breadcrumb",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/breadcrumb.tsx",
@@ -111,6 +129,9 @@
     },
     {
       "name": "button",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/button.tsx",
@@ -195,6 +216,9 @@
     },
     {
       "name": "checkbox",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/checkbox.tsx",
@@ -205,6 +229,9 @@
     },
     {
       "name": "collapsible",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/collapsible.tsx",
@@ -248,6 +275,9 @@
     },
     {
       "name": "context-menu",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/context-menu.tsx",
@@ -258,6 +288,9 @@
     },
     {
       "name": "dialog",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/dialog.tsx",
@@ -281,6 +314,9 @@
     },
     {
       "name": "dropdown-menu",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/dropdown-menu.tsx",
@@ -316,6 +352,7 @@
     {
       "name": "form",
       "dependencies": [
+        "radix-ui",
         "@hookform/resolvers",
         "zod",
         "react-hook-form"
@@ -334,6 +371,9 @@
     },
     {
       "name": "hover-card",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/hover-card.tsx",
@@ -382,6 +422,9 @@
     },
     {
       "name": "item",
+      "dependencies": [
+        "radix-ui"
+      ],
       "registryDependencies": [
         "separator"
       ],
@@ -395,6 +438,9 @@
     },
     {
       "name": "label",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/label.tsx",
@@ -405,6 +451,9 @@
     },
     {
       "name": "menubar",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/menubar.tsx",
@@ -415,6 +464,9 @@
     },
     {
       "name": "navigation-menu",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/navigation-menu.tsx",
@@ -438,6 +490,9 @@
     },
     {
       "name": "popover",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/popover.tsx",
@@ -448,6 +503,9 @@
     },
     {
       "name": "progress",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/progress.tsx",
@@ -458,6 +516,9 @@
     },
     {
       "name": "radio-group",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/radio-group.tsx",
@@ -469,7 +530,7 @@
     {
       "name": "resizable",
       "dependencies": [
-        "react-resizable-panels"
+        "react-resizable-panels@^3"
       ],
       "files": [
         {
@@ -481,6 +542,9 @@
     },
     {
       "name": "scroll-area",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/scroll-area.tsx",
@@ -491,6 +555,9 @@
     },
     {
       "name": "select",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/select.tsx",
@@ -501,6 +568,9 @@
     },
     {
       "name": "separator",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/separator.tsx",
@@ -511,6 +581,9 @@
     },
     {
       "name": "sheet",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/sheet.tsx",
@@ -522,6 +595,7 @@
     {
       "name": "sidebar",
       "dependencies": [
+        "radix-ui",
         "class-variance-authority",
         "lucide-react"
       ],
@@ -596,6 +670,9 @@
     },
     {
       "name": "slider",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/slider.tsx",
@@ -633,6 +710,9 @@
     },
     {
       "name": "switch",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/switch.tsx",
@@ -653,6 +733,9 @@
     },
     {
       "name": "tabs",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/tabs.tsx",
@@ -673,6 +756,9 @@
     },
     {
       "name": "toggle",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/toggle.tsx",
@@ -683,6 +769,9 @@
     },
     {
       "name": "toggle-group",
+      "dependencies": [
+        "radix-ui"
+      ],
       "registryDependencies": [
         "toggle"
       ],
@@ -696,6 +785,9 @@
     },
     {
       "name": "tooltip",
+      "dependencies": [
+        "radix-ui"
+      ],
       "files": [
         {
           "path": "registry/new-york-v4/ui/tooltip.tsx",

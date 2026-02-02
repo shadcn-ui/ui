@@ -1,6 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "item",
+  "dependencies": [
+    "radix-ui"
+  ],
   "registryDependencies": [
     "separator"
   ],
