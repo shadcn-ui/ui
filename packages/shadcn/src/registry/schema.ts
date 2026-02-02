@@ -58,22 +58,14 @@ export const rawConfigSchema = z
   })
   .strict()
 
-// Deep partial version for registry:base config field
-export const rawConfigSchemaDeepPartial = z
-  .object({
-    $schema: z.string().optional(),
-    style: z.string(),
-    rsc: z.coerce.boolean().default(false),
-    tsx: z.coerce.boolean().default(true),
+// Deep partial version for registry:base config field.
+// Derived from rawConfigSchema to prevent field drift.
+export const rawConfigSchemaDeepPartial = rawConfigSchema
+  .extend({
     tailwind: tailwindConfigSchema.partial(),
-    iconLibrary: z.string().optional(),
-    menuColor: z.enum(["default", "inverted"]).default("default").optional(),
-    menuAccent: z.enum(["subtle", "bold"]).default("subtle").optional(),
     aliases: aliasesSchema.partial(),
-    registries: registryConfigSchema.optional(),
   })
   .partial()
-  .strict()
 
 export const configSchema = rawConfigSchema.extend({
   resolvedPaths: z.object({

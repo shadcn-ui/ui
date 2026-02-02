@@ -117,8 +117,23 @@ describe("rawConfigSchemaDeepPartial", () => {
     expect(result.success).toBe(true)
   })
 
+  it("should accept config with rtl field", () => {
+    const configWithRtl = {
+      style: "vega",
+      rtl: true,
+      tailwind: {
+        baseColor: "neutral",
+      },
+    }
+
+    const result = rawConfigSchemaDeepPartial.safeParse(configWithRtl)
+    expect(result.success).toBe(true)
+    if (result.success) {
+      expect(result.data.rtl).toBe(true)
+    }
+  })
+
   it("should validate real-world registry:base config", () => {
-    // Example from apps/v4/registry/config.ts
     const realWorldConfig = {
       style: "radix-vega",
       iconLibrary: "lucide",
