@@ -7,6 +7,7 @@ import { type DialogProps } from "@radix-ui/react-dialog"
 import { IconArrowRight } from "@tabler/icons-react"
 import { useDocsSearch } from "fumadocs-core/search/client"
 import { CornerDownLeftIcon, SquareDashedIcon } from "lucide-react"
+import { useCommandState } from "cmdk"
 
 import { type Color, type ColorPalette } from "@/lib/colors"
 import { trackEvent } from "@/lib/events"
@@ -477,6 +478,8 @@ function CommandMenuItem({
   "aria-selected"?: string
 }) {
   const ref = React.useRef<HTMLDivElement>(null)
+
+  useCommandState((state) => state.search)
 
   useMutationObserver(ref, (mutations) => {
     mutations.forEach((mutation) => {
