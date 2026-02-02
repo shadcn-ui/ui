@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-sizes",
+  "registryDependencies": [
+    "rating"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/rating-sizes.tsx",
+      "content": "\"use client\"\n\nimport { Rating } from \"@/registry/new-york-v4/ui/rating\"\n\nexport default function RatingSizes() {\n  return (\n    <div className=\"flex items-center gap-4\">\n      <Rating defaultValue={3} size=\"sm\" />\n      <Rating defaultValue={3} />\n      <Rating defaultValue={3} size=\"lg\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

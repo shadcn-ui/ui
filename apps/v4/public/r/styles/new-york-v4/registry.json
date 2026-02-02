@@ -528,6 +528,20 @@
       "type": "registry:ui"
     },
     {
+      "name": "rating",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/rating.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "resizable",
       "dependencies": [
         "react-resizable-panels@^3"
@@ -6628,6 +6642,33 @@
       "files": [
         {
           "path": "registry/new-york-v4/examples/radio-group-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "rating-demo",
+      "registryDependencies": [
+        "rating",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/rating-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "rating-sizes",
+      "registryDependencies": [
+        "rating"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/rating-sizes.tsx",
           "type": "registry:example"
         }
       ],

@@ -402,6 +402,17 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "rating",
+    type: "registry:ui",
+    dependencies: ["class-variance-authority", "lucide-react"],
+    files: [
+      {
+        path: "ui/rating.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "resizable",
     type: "registry:ui",
     dependencies: ["react-resizable-panels@^3"],
