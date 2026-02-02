@@ -40,24 +40,27 @@ function getComponentsList() {
   const components = source.pageTree.children.find(
     (page) => page.$id === "components"
   )
+  if (components?.type !== "folder") return ""
 
-  if (components?.type !== "folder") {
-    return ""
-  }
-
-  const list = components.children.filter(
-    (component) => component.type === "page"
+  const radix = components.children.find(
+    (child) =>
+      child.type === "folder" &&
+      (child.$id === "radix" || child.name === "Radix UI")
   )
+  if (!radix || radix.type !== "folder") return ""
 
-  return list
+  return radix.children
+    .filter((component) => component.type === "page")
     .map((component) => `- [${component.name}](${component.url})`)
     .join("\n")
 }
 
+export function replaceComponentsList(content: string) {
+  return content.replace(/<ComponentsList\s*\/>/g, getComponentsList())
+}
+
 export function processMdxForLLMs(content: string, style: Style["name"]) {
-  // Replace <ComponentsList /> with a markdown list of components.
-  const componentsListRegex = /<ComponentsList\s*\/>/g
-  content = content.replace(componentsListRegex, getComponentsList())
+  content = replaceComponentsList(content)
 
   const componentPreviewRegex =
     /<ComponentPreview[\s\S]*?name="([^"]+)"[\s\S]*?\/>/g
