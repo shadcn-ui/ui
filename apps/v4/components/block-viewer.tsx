@@ -16,7 +16,7 @@ import {
   Tablet,
   Terminal,
 } from "lucide-react"
-import { type ImperativePanelHandle } from "react-resizable-panels"
+import { type PanelImperativeHandle } from "react-resizable-panels"
 import {
   type registryItemFileSchema,
   type registryItemSchema,
@@ -68,7 +68,7 @@ type BlockViewerContext = {
   setView: (view: "code" | "preview") => void
   activeFile: string | null
   setActiveFile: (file: string) => void
-  resizablePanelRef: React.RefObject<ImperativePanelHandle | null> | null
+  resizablePanelRef: React.RefObject<PanelImperativeHandle | null> | null
   tree: ReturnType<typeof createFileTreeForRegistryItemFiles> | null
   highlightedFiles:
     | (z.infer<typeof registryItemFileSchema> & {
@@ -101,7 +101,7 @@ function BlockViewerProvider({
   const [activeFile, setActiveFile] = React.useState<
     BlockViewerContext["activeFile"]
   >(highlightedFiles?.[0].target ?? null)
-  const resizablePanelRef = React.useRef<ImperativePanelHandle>(null)
+  const resizablePanelRef = React.useRef<PanelImperativeHandle>(null)
   const [iframeKey, setIframeKey] = React.useState(0)
 
   return (
@@ -272,7 +272,7 @@ function BlockViewerView({ styleName }: { styleName: Style["name"] }) {
           className="after:bg-surface/50 relative z-10 after:absolute after:inset-0 after:right-3 after:z-0 after:rounded-xl"
         >
           <ResizablePanel
-            ref={resizablePanelRef}
+            panelRef={resizablePanelRef}
             className="bg-background relative aspect-[4/2.5] overflow-hidden rounded-lg border md:aspect-auto md:rounded-xl"
             defaultSize="100%"
             minSize="30%"

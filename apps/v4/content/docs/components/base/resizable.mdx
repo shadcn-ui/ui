@@ -101,3 +101,27 @@ To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl)
 ## API Reference
 
 See the [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels/tree/main/packages/react-resizable-panels) documentation.
+
+## Changelog
+
+### 2025-02-02 `react-resizable-panels` v4
+
+Updated to `react-resizable-panels` v4. See the [v4.0.0 release notes](https://github.com/bvaughn/react-resizable-panels/releases/tag/4.0.0) for full details.
+
+If you're using `react-resizable-panels` primitives directly, note the following changes:
+
+| v3                           | v4                      |
+| ---------------------------- | ----------------------- |
+| `PanelGroup`                 | `Group`                 |
+| `PanelResizeHandle`          | `Separator`             |
+| `direction` prop             | `orientation` prop      |
+| `defaultSize={50}`           | `defaultSize="50%"`     |
+| `onLayout`                   | `onLayoutChange`        |
+| `ImperativePanelHandle`      | `PanelImperativeHandle` |
+| `ref` prop on Panel          | `panelRef` prop         |
+| `data-panel-group-direction` | `aria-orientation`      |
+
+<Callout>
+  The shadcn/ui wrapper components (`ResizablePanelGroup`, `ResizablePanel`,
+  `ResizableHandle`) remain unchanged.
+</Callout>
