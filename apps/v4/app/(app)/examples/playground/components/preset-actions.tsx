@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Dialog } from "@radix-ui/react-dialog"
 import { MoreHorizontal } from "lucide-react"
 import { toast } from "sonner"
 
@@ -16,6 +15,7 @@ import {
 } from "@/registry/new-york-v4/ui/alert-dialog"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
+  Dialog,
   DialogClose,
   DialogContent,
   DialogDescription,
