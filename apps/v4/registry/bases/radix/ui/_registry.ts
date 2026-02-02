@@ -576,4 +576,14 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "direction",
+    type: "registry:ui",
+    files: [
+      {
+        path: "ui/direction.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

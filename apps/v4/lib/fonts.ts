@@ -1,5 +1,7 @@
 import {
   Geist_Mono as FontMono,
+  Noto_Sans_Arabic as FontNotoSansArabic,
+  Noto_Sans_Hebrew as FontNotoSansHebrew,
   Geist as FontSans,
   Inter,
 } from "next/font/google"
@@ -22,8 +24,20 @@ const fontInter = Inter({
   variable: "--font-inter",
 })
 
+const fontNotoSansArabic = FontNotoSansArabic({
+  subsets: ["latin"],
+  variable: "--font-ar",
+})
+
+const fontNotoSansHebrew = FontNotoSansHebrew({
+  subsets: ["latin"],
+  variable: "--font-he",
+})
+
 export const fontVariables = cn(
   fontSans.variable,
   fontMono.variable,
-  fontInter.variable
+  fontInter.variable,
+  fontNotoSansArabic.variable,
+  fontNotoSansHebrew.variable
 )

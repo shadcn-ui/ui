@@ -38,15 +38,15 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 })
 
-// const geistSans = Geist({
-//   subsets: ["latin"],
-//   variable: "--font-geist-sans",
-// })
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+})
 
-// const geistMono = Geist_Mono({
-//   subsets: ["latin"],
-//   variable: "--font-geist-mono",
-// })
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+})
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -74,12 +74,12 @@ const outfit = Outfit({
 })
 
 export const FONTS = [
-  // {
-  //   name: "Geist Sans",
-  //   value: "geist",
-  //   font: geistSans,
-  //   type: "sans",
-  // },
+  {
+    name: "Geist",
+    value: "geist",
+    font: geistSans,
+    type: "sans",
+  },
   {
     name: "Inter",
     value: "inter",
@@ -135,17 +135,17 @@ export const FONTS = [
     type: "sans",
   },
   {
+    name: "Geist Mono",
+    value: "geist-mono",
+    font: geistMono,
+    type: "mono",
+  },
+  {
     name: "JetBrains Mono",
     value: "jetbrains-mono",
     font: jetbrainsMono,
     type: "mono",
   },
-  // {
-  //   name: "Geist Mono",
-  //   value: "geist-mono",
-  //   font: geistMono,
-  //   type: "mono",
-  // },
 ] as const
 
 export type Font = (typeof FONTS)[number]

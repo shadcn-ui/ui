@@ -685,4 +685,15 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "direction",
+    type: "registry:ui",
+    dependencies: ["radix-ui"],
+    files: [
+      {
+        path: "ui/direction.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
