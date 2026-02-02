@@ -627,6 +627,7 @@ async function batchPrettier(paths: string[]) {
     const proc = spawn("npx", ["prettier", "--write", ...paths], {
       cwd: process.cwd(),
       stdio: "pipe",
+      shell: true,
     })
     proc.on("close", () => resolve())
     proc.on("error", reject)
