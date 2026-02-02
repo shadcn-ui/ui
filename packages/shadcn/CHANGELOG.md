@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.8.2
+
+### Patch Changes
+
+- [#9507](https://github.com/shadcn-ui/ui/pull/9507) [`b7b839ebc254120eb9bf1a138ce979c38fc348d6`](https://github.com/shadcn-ui/ui/commit/b7b839ebc254120eb9bf1a138ce979c38fc348d6) Thanks [@shadcn](https://github.com/shadcn)! - update migrate radix command
+
 ## 3.8.1
 
 ### Patch Changes
