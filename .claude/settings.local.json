@@ -6,7 +6,8 @@
       "Bash(ls:*)",
       "Bash(cat:*)",
       "WebSearch",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(gh api /repos/shadcn-ui/ui/pulls/9311/comments --jq '.[] | select\\(.user.login == \"\"\"\"Copilot\"\"\"\"\\) | {id: .id, created_at: .created_at, path: .path, line: .line, body: .body, diff_hunk: .diff_hunk}')"
     ],
     "deny": []
   }

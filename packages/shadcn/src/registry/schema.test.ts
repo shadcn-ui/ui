@@ -146,7 +146,9 @@ describe("rawConfigSchemaDeepPartial", () => {
 
     const result = rawConfigSchemaDeepPartial.optional().safeParse(realWorldConfig)
     expect(result.success).toBe(true)
-    expect(result.data).toEqual(realWorldConfig)
+    if (result.success) {
+      expect(result.data).toEqual(realWorldConfig)
+    }
   })
 
   it("should allow empty config", () => {
