@@ -289,3 +289,47 @@ npx shadcn@latest migrate rtl "src/components/ui/**"
 ```
 
 If no path is provided, the migration will transform all files in your `ui` directory (from `components.json`).
+
+---
+
+### migrate radix
+
+The `radix` migration updates your imports from individual `@radix-ui/react-*` packages to the unified `radix-ui` package.
+
+```bash
+npx shadcn@latest migrate radix
+```
+
+This will:
+
+1. Transform imports from `@radix-ui/react-*` to `radix-ui`
+2. Add the `radix-ui` package to your `package.json`
+
+**Before**
+
+```tsx
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+import * as SelectPrimitive from "@radix-ui/react-select"
+```
+
+**After**
+
+```tsx
+import { Dialog as DialogPrimitive, Select as SelectPrimitive } from "radix-ui"
+```
+
+**Migrate specific files**
+
+You can migrate specific files or use glob patterns:
+
+```bash
+# Migrate a specific file.
+npx shadcn@latest migrate radix src/components/ui/dialog.tsx
+
+# Migrate files matching a glob pattern.
+npx shadcn@latest migrate radix "src/components/ui/**"
+```
+
+If no path is provided, the migration will transform all files in your `ui` directory (from `components.json`).
+
+Once complete, you can remove any unused `@radix-ui/react-*` packages from your `package.json`.

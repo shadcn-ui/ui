@@ -22,7 +22,7 @@ const DEPRECATED_ITEMS = [
 // Shared between index and style for backward compatibility.
 const NEW_YORK_V4_STYLE = {
   type: "registry:style",
-  dependencies: ["class-variance-authority", "lucide-react"],
+  dependencies: ["class-variance-authority", "lucide-react", "radix-ui"],
   devDependencies: ["tw-animate-css"],
   registryDependencies: ["utils"],
   cssVars: {},

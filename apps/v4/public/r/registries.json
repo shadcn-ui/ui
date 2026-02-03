@@ -342,10 +342,10 @@
     "description": "React Aria Components with shadcn characteristics.Copy-and-paste react aria components that run side-by-side with shadcn components."
   },
   {
-    "name": "@paceui",
-    "homepage": "https://ui.paceui.com",
-    "url": "https://ui.paceui.com/r/{name}.json",
-    "description": "Animated components and building blocks built for smooth interaction and rich detail. Copy, customise, and create without the extra setup."
+    "name": "@pacekit",
+    "homepage": "https://ui.pacekit.dev",
+    "url": "https://ui.pacekit.dev/r/{name}.json",
+    "description": "Carefully built UI blocks for real apps and dashboards, designed to integrate smoothly from early ideas to production releases."
   },
   {
     "name": "@pastecn",
@@ -544,6 +544,12 @@
     "homepage": "http://ui.wandry.com.ua/",
     "url": "https://ui.wandry.com.ua/r/{name}.json",
     "description": "A set of open source fully controlled React Inertia form elements"
+  },
+  {
+    "name": "@wds",
+    "homepage": "https://wds-shadcn-registry.netlify.app/",
+    "url": "https://wds-shadcn-registry.netlify.app/r/{name}.json",
+    "description": "A collection of accessible components built for use with Shadcn."
   },
   {
     "name": "@wigggle-ui",
