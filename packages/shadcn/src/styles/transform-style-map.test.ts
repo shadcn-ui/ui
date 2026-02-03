@@ -732,6 +732,68 @@ function MenuContent({
     `)
   })
 
+  it("deduplicates classes when style map classes overlap with existing", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Foo({ className, ...props }: { className?: string }) {
+  return (
+    <div className={cn("cn-foo bg-background", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-foo": "bg-background gap-4 rounded-xl",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    // bg-background should appear only once, not twice.
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Foo({ className, ...props }: { className?: string }) {
+        return (
+          <div className={cn("gap-4 rounded-xl bg-background", className)} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
+  it("handles conflicting tailwind classes with tailwind-merge", async () => {
+    const source = `import * as React from "react"
+import { cn } from "@/lib/utils"
+
+function Foo({ className, ...props }: { className?: string }) {
+  return (
+    <div className={cn("cn-foo p-4", className)} {...props} />
+  )
+}
+`
+
+    const styleMap: StyleMap = {
+      "cn-foo": "p-2 rounded-xl",
+    }
+
+    const result = await applyTransform(source, styleMap)
+
+    // p-2 from style map should be overridden by p-4 from existing.
+    expect(result).toMatchInlineSnapshot(`
+      "import * as React from "react"
+      import { cn } from "@/lib/utils"
+
+      function Foo({ className, ...props }: { className?: string }) {
+        return (
+          <div className={cn("rounded-xl p-4", className)} {...props} />
+        )
+      }
+      "
+    `)
+  })
+
   it("preserves allowlisted classes in cva base string", async () => {
     const source = `import * as React from "react"
 import { cva } from "class-variance-authority"

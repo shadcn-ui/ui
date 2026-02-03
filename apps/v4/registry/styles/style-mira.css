@@ -523,7 +523,7 @@
   }
 
   .cn-dropdown-menu-item-indicator {
-    @apply pointer-events-none absolute right-2 flex items-center justify-center;
+    @apply absolute right-2 flex items-center justify-center;
   }
 
   .cn-dropdown-menu-label {
@@ -776,7 +776,7 @@
   }
 
   .cn-menubar-checkbox-item {
-    @apply focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground min-h-7 gap-2 rounded-md py-1.5 pr-2 pl-7.5 text-xs data-disabled:opacity-50 data-inset:pl-7.5;
+    @apply focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground min-h-7 gap-2 rounded-md py-1.5 pr-2 pl-7.5 text-xs data-inset:pl-7.5;
   }
 
   .cn-menubar-checkbox-item-indicator {
