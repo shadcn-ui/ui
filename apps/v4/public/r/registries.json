@@ -546,6 +546,12 @@
     "description": "A set of open source fully controlled React Inertia form elements"
   },
   {
+    "name": "@wds",
+    "homepage": "https://wds-shadcn-registry.netlify.app/",
+    "url": "https://wds-shadcn-registry.netlify.app/r/{name}.json",
+    "description": "A collection of accessible components built for use with Shadcn."
+  },
+  {
     "name": "@wigggle-ui",
     "homepage": "https://wigggle-ui.vercel.app",
     "url": "https://wigggle-ui.vercel.app/r/{name}.json",
