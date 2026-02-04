@@ -1,8 +1,7 @@
 import * as React from "react"
 import { cn } from "@/examples/radix/lib/utils"
+import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
 import { Slot } from "radix-ui"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
   return (
@@ -82,16 +81,7 @@ function BreadcrumbSeparator({
       className={cn("[&>svg]:size-3.5", className)}
       {...props}
     >
-      {children ?? (
-        <IconPlaceholder
-          lucide="ChevronRightIcon"
-          tabler="IconChevronRight"
-          hugeicons="ArrowRight01Icon"
-          phosphor="CaretRightIcon"
-          remixicon="RiArrowRightSLine"
-          className="rtl:rotate-180"
-        />
-      )}
+      {children ?? <ChevronRightIcon className="rtl:rotate-180" />}
     </li>
   )
 }
@@ -111,13 +101,7 @@ function BreadcrumbEllipsis({
       )}
       {...props}
     >
-      <IconPlaceholder
-        lucide="MoreHorizontalIcon"
-        tabler="IconDots"
-        hugeicons="MoreHorizontalCircle01Icon"
-        phosphor="DotsThreeIcon"
-        remixicon="RiMoreLine"
-      />
+      <MoreHorizontalIcon />
       <span className="sr-only">More</span>
     </span>
   )

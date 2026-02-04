@@ -2,9 +2,8 @@
 
 import * as React from "react"
 import { cn } from "@/examples/radix/lib/utils"
+import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import { ContextMenu as ContextMenuPrimitive } from "radix-ui"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function ContextMenu({
   ...props
@@ -120,14 +119,7 @@ function ContextMenuSubTrigger({
       {...props}
     >
       {children}
-      <IconPlaceholder
-        lucide="ChevronRightIcon"
-        tabler="IconChevronRight"
-        hugeicons="ArrowRight01Icon"
-        phosphor="CaretRightIcon"
-        remixicon="RiArrowRightSLine"
-        className="ms-auto rtl:rotate-180"
-      />
+      <ChevronRightIcon className="ms-auto rtl:rotate-180" />
     </ContextMenuPrimitive.SubTrigger>
   )
 }
@@ -170,13 +162,7 @@ function ContextMenuCheckboxItem({
     >
       <span className="pointer-events-none absolute end-2">
         <ContextMenuPrimitive.ItemIndicator>
-          <IconPlaceholder
-            lucide="CheckIcon"
-            tabler="IconCheck"
-            hugeicons="Tick02Icon"
-            phosphor="CheckIcon"
-            remixicon="RiCheckLine"
-          />
+          <CheckIcon />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -204,13 +190,7 @@ function ContextMenuRadioItem({
     >
       <span className="pointer-events-none absolute end-2">
         <ContextMenuPrimitive.ItemIndicator>
-          <IconPlaceholder
-            lucide="CheckIcon"
-            tabler="IconCheck"
-            hugeicons="Tick02Icon"
-            phosphor="CheckIcon"
-            remixicon="RiCheckLine"
-          />
+          <CheckIcon />
         </ContextMenuPrimitive.ItemIndicator>
       </span>
       {children}

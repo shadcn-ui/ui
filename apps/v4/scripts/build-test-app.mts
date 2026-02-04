@@ -348,7 +348,9 @@ async function applyIconTransform(content: string, filename: string) {
   })
 
   // Create a minimal config with just iconLibrary.
-  const config = { iconLibrary: "lucide" } as { iconLibrary: string }
+  // transformIcons only uses config.iconLibrary, so we can safely cast this.
+  type TransformIconsConfig = Parameters<typeof transformIcons>[0]["config"]
+  const config = { iconLibrary: "lucide" } as TransformIconsConfig
 
   await transformIcons({
     sourceFile,

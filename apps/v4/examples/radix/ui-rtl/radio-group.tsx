@@ -2,9 +2,8 @@
 
 import * as React from "react"
 import { cn } from "@/examples/radix/lib/utils"
+import { CircleIcon } from "lucide-react"
 import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function RadioGroup({
   className,
@@ -36,14 +35,7 @@ function RadioGroupItem({
         data-slot="radio-group-indicator"
         className="group-aria-invalid/radio-group-item:text-destructive text-primary flex size-4 items-center justify-center"
       >
-        <IconPlaceholder
-          lucide="CircleIcon"
-          tabler="IconCircle"
-          hugeicons="CircleIcon"
-          phosphor="CircleIcon"
-          remixicon="RiCircleLine"
-          className="absolute start-1/2 top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current rtl:translate-x-1/2"
-        />
+        <CircleIcon className="absolute start-1/2 top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current rtl:translate-x-1/2" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )

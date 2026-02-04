@@ -14,8 +14,7 @@ import {
   InputGroupAddon,
 } from "@/examples/radix/ui-rtl/input-group"
 import { Command as CommandPrimitive } from "cmdk"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { CheckIcon, SearchIcon } from "lucide-react"
 
 function Command({
   className,
@@ -81,14 +80,7 @@ function CommandInput({
           {...props}
         />
         <InputGroupAddon>
-          <IconPlaceholder
-            lucide="SearchIcon"
-            tabler="IconSearch"
-            hugeicons="SearchIcon"
-            phosphor="MagnifyingGlassIcon"
-            remixicon="RiSearchLine"
-            className="size-4 shrink-0 opacity-50"
-          />
+          <SearchIcon className="size-4 shrink-0 opacity-50" />
         </InputGroupAddon>
       </InputGroup>
     </div>
@@ -168,14 +160,7 @@ function CommandItem({
       {...props}
     >
       {children}
-      <IconPlaceholder
-        lucide="CheckIcon"
-        tabler="IconCheck"
-        hugeicons="Tick02Icon"
-        phosphor="CheckIcon"
-        remixicon="RiCheckLine"
-        className="ms-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
-      />
+      <CheckIcon className="ms-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
     </CommandPrimitive.Item>
   )
 }

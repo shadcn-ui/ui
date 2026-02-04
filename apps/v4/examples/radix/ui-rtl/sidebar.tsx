@@ -20,9 +20,8 @@ import {
   TooltipTrigger,
 } from "@/examples/radix/ui-rtl/tooltip"
 import { cva, type VariantProps } from "class-variance-authority"
+import { PanelLeftIcon } from "lucide-react"
 import { Slot } from "radix-ui"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -270,14 +269,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <IconPlaceholder
-        lucide="PanelLeftIcon"
-        tabler="IconLayoutSidebar"
-        hugeicons="SidebarLeftIcon"
-        phosphor="SidebarIcon"
-        remixicon="RiSideBarLine"
-        className="rtl:rotate-180"
-      />
+      <PanelLeftIcon className="rtl:rotate-180" />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )

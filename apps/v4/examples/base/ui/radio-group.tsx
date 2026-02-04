@@ -3,8 +3,7 @@
 import { cn } from "@/examples/base/lib/utils"
 import { Radio as RadioPrimitive } from "@base-ui/react/radio"
 import { RadioGroup as RadioGroupPrimitive } from "@base-ui/react/radio-group"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { CircleIcon } from "lucide-react"
 
 function RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {
   return (
@@ -30,14 +29,7 @@ function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
         data-slot="radio-group-indicator"
         className="group-aria-invalid/radio-group-item:text-destructive text-primary flex size-4 items-center justify-center"
       >
-        <IconPlaceholder
-          lucide="CircleIcon"
-          tabler="IconCircle"
-          hugeicons="CircleIcon"
-          phosphor="CircleIcon"
-          remixicon="RiCircleLine"
-          className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current"
-        />
+        <CircleIcon className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-current" />
       </RadioPrimitive.Indicator>
     </RadioPrimitive.Root>
   )

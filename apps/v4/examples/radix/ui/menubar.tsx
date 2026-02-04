@@ -2,9 +2,8 @@
 
 import * as React from "react"
 import { cn } from "@/examples/radix/lib/utils"
+import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import { Menubar as MenubarPrimitive } from "radix-ui"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Menubar({
   className,
@@ -133,13 +132,7 @@ function MenubarCheckboxItem({
     >
       <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenubarPrimitive.ItemIndicator>
-          <IconPlaceholder
-            lucide="CheckIcon"
-            tabler="IconCheck"
-            hugeicons="Tick02Icon"
-            phosphor="CheckIcon"
-            remixicon="RiCheckLine"
-          />
+          <CheckIcon />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -167,13 +160,7 @@ function MenubarRadioItem({
     >
       <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenubarPrimitive.ItemIndicator>
-          <IconPlaceholder
-            lucide="CheckIcon"
-            tabler="IconCheck"
-            hugeicons="Tick02Icon"
-            phosphor="CheckIcon"
-            remixicon="RiCheckLine"
-          />
+          <CheckIcon />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -255,14 +242,7 @@ function MenubarSubTrigger({
       {...props}
     >
       {children}
-      <IconPlaceholder
-        lucide="ChevronRightIcon"
-        tabler="IconChevronRight"
-        hugeicons="ArrowRight01Icon"
-        phosphor="CaretRightIcon"
-        remixicon="RiArrowRightSLine"
-        className="cn-rtl-flip ml-auto size-4"
-      />
+      <ChevronRightIcon className="cn-rtl-flip ml-auto size-4" />
     </MenubarPrimitive.SubTrigger>
   )
 }
