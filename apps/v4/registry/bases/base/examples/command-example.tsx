@@ -36,7 +36,7 @@ export default function CommandExample() {
 function CommandInline() {
   return (
     <Example title="Inline">
-      <Card className="p-0">
+      <Card className="w-full p-0">
         <CardContent className="p-0">
           <Command>
             <CommandInput placeholder="Type a command or search..." />

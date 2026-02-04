@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useIsMobile } from "@/examples/base/hooks/use-mobile"
 import { cn } from "@/examples/base/lib/utils"
 import { Button } from "@/examples/base/ui-rtl/button"
 import { Input } from "@/examples/base/ui-rtl/input"
@@ -22,7 +23,6 @@ import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
 import { cva, type VariantProps } from "class-variance-authority"
 
-import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"

@@ -211,9 +211,11 @@ function SelectFields() {
               <SelectValue placeholder="Choose an option" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="option1">Option 1</SelectItem>
-              <SelectItem value="option2">Option 2</SelectItem>
-              <SelectItem value="option3">Option 3</SelectItem>
+              <SelectGroup>
+                <SelectItem value="option1">Option 1</SelectItem>
+                <SelectItem value="option2">Option 2</SelectItem>
+                <SelectItem value="option3">Option 3</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
         </Field>
@@ -224,9 +226,11 @@ function SelectFields() {
               <SelectValue placeholder="Select your country" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="us">United States</SelectItem>
-              <SelectItem value="uk">United Kingdom</SelectItem>
-              <SelectItem value="ca">Canada</SelectItem>
+              <SelectGroup>
+                <SelectItem value="us">United States</SelectItem>
+                <SelectItem value="uk">United Kingdom</SelectItem>
+                <SelectItem value="ca">Canada</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
           <FieldDescription>
@@ -243,9 +247,11 @@ function SelectFields() {
               <SelectValue placeholder="Select timezone" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="utc">UTC</SelectItem>
-              <SelectItem value="est">Eastern Time</SelectItem>
-              <SelectItem value="pst">Pacific Time</SelectItem>
+              <SelectGroup>
+                <SelectItem value="utc">UTC</SelectItem>
+                <SelectItem value="est">Eastern Time</SelectItem>
+                <SelectItem value="pst">Pacific Time</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
         </Field>
@@ -256,9 +262,11 @@ function SelectFields() {
               <SelectValue placeholder="This field has an error" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="option1">Option 1</SelectItem>
-              <SelectItem value="option2">Option 2</SelectItem>
-              <SelectItem value="option3">Option 3</SelectItem>
+              <SelectGroup>
+                <SelectItem value="option1">Option 1</SelectItem>
+                <SelectItem value="option2">Option 2</SelectItem>
+                <SelectItem value="option3">Option 3</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
           <FieldDescription>
@@ -274,9 +282,11 @@ function SelectFields() {
               <SelectValue placeholder="Cannot select" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="option1">Option 1</SelectItem>
-              <SelectItem value="option2">Option 2</SelectItem>
-              <SelectItem value="option3">Option 3</SelectItem>
+              <SelectGroup>
+                <SelectItem value="option1">Option 1</SelectItem>
+                <SelectItem value="option2">Option 2</SelectItem>
+                <SelectItem value="option3">Option 3</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
           <FieldDescription>This field is currently disabled.</FieldDescription>
