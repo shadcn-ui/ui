@@ -831,5 +831,12 @@
     "url": "https://typedora-ui.netlify.app/r/{name}.json",
     "description": "Typedora UI is a next-generation extension layer for shadcn/ui, designed to bring full type-safety to your UI components.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g><path d='m22 7h-20c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2v-7c0-1.1-.9-2-2-2zm-20 10c-.551 0-1-.449-1-1v-7c0-.551.449-1 1-1h12v9zm21-1c0 .551-.449 1-1 1h-7v-9h7c.551 0 1 .449 1 1z'/><path d='m19 14 2-2h-4z'/><path d='m4 10.5h3v.5c0 .276.224.5.5.5s.5-.224.5-.5v-1c0-.276-.224-.5-.5-.5h-3.5c-.276 0-.5.224-.5.5s.224.5.5.5zm1.5.5v3c0 .276.224.5.5.5s.5-.224.5-.5v-3z'/></g></svg>"
+  },
+  {
+    "name": "@gammaui",
+    "homepage": "https://www.gammaui.com",
+    "url": "https://www.gammaui.com/r/{name}.json",
+    "description": "Beautifully designed landing page components built with React & Tailwind CSS & Motion.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><g><g><path d='M561.27,349.76v-54.72H342.36c-11.96,0-23.77,3.15-33.89,9.51c-21.73,14.52-29.14,36.49-31.32,44.1H561.27z' /><path d='M275.43,358.4s-2.88,38.88,13.68,56.88l65.52,102.96s67.52,41.04,145-5.76s61.64-136.08,61.64-136.08H423.03l-0.72,54.72l74.16,0.72s0,29.52-61.2,48.24c0,0-73.44,14.4-99.36-72c0,0,5.04-37.44-21.6-45.36c-26.64-7.92-38.88-4.32-38.88-4.32z' /></g><path d='M444.63,562.16h-61.92l79.92,130.32s29.52-45.36,12.96-79.2l-30.96-51.12z' /><path d='M471.99,698.24l115.92-186.48V295.04h55.44v229.68l-85.68,138.96s-35.28,61.2-85.68,34.56z' /><path d='M669.27,480.08V295.04h55.44v78.48s2.16,24.48-19.44,51.84l-36,54.72z' /></g></svg>"
   }
 ]
