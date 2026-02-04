@@ -59,11 +59,29 @@ const translations = {
     used: "52% בשימוש",
     send: "שלח",
   },
+  fa: {
+    dir: "rtl" as const,
+    search: "جستجو...",
+    results: "۱۲ نتیجه",
+    example: "example.com",
+    tooltipContent: "این محتوای تولتیپ است.",
+    askSearchChat: "پرسش، جستجو یا گفتگو...",
+    add: "افزودن",
+    auto: "خودکار",
+    agent: "دستیار",
+    manual: "دستی",
+    used: "۵۲٪ استفاده‌شده",
+    send: "ارسال",
+  },
 }
 
 export function InputGroupDemo() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
 
   return (

@@ -28,6 +28,12 @@ const translations: Translations = {
       placeholder: "Pick a date",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      placeholder: "یک تاریخ انتخاب کنید",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

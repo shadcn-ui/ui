@@ -37,6 +37,15 @@ const translations: Translations = {
       loading: "טוען",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      button: "دکمه",
+      submit: "ارسال",
+      delete: "حذف",
+      loading: "در حال بارگذاری",
+    },
+  },
 }
 
 export function ButtonRtl() {

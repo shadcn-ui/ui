@@ -39,6 +39,21 @@ const translations: Translations = {
       textareaDescription: "Footer positioned below the textarea.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      placeholder: "جستجو...",
+      results: "12 نتیجه",
+      searching: "در حال جستجو...",
+      saving: "در حال ذخیره...",
+      savingChanges: "در حال ذخیره تغییرات...",
+      textareaLabel: "متن",
+      textareaPlaceholder: "نظر بنویسید...",
+      characterCount: "0/280",
+      post: "ارسال",
+      textareaDescription: "فوتر در زیر ناحیه متن قرار دارد.",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

@@ -196,6 +196,10 @@
   [data-lang="he"] {
     font-family: var(--font-he);
   }
+  
+  [data-lang="fa"] {
+    font-family: var(--font-fa);
+  }
 }
 
 @utility border-grid {

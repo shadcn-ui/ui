@@ -28,11 +28,22 @@ const translations = {
     enable: "הפעל",
     verified: "הפרופיל שלך אומת.",
   },
+  fa: {
+    dir: "rtl" as const,
+    twoFactor: "احراز هویت دو مرحله‌ای",
+    twoFactorDescription: "تأیید از طریق ایمیل یا شماره تلفن.",
+    enable: "فعال‌سازی",
+    verified: "پروفایل شما تأیید شد.",
+  },
 }
 
 export function ItemDemo() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
 
   return (

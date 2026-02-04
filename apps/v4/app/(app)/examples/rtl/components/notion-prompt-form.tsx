@@ -135,6 +135,45 @@ const translations = {
     technicalSpecs: "מפרט טכני",
     analyticsReport: "דוח אנליטיקה",
   },
+  fa: {
+    dir: "rtl" as const,
+    prompt: "فرمان",
+    placeholder: "پرسش کنید، جستجو کنید یا چیزی ایجاد کنید...",
+    addContext: "افزودن زمینه",
+    mentionTooltip: "یک فرد، صفحه یا تاریخ را ذکر کنید",
+    searchPages: "جستجوی صفحات...",
+    noPagesFound: "هیچ صفحه‌ای یافت نشد",
+    pages: "صفحات",
+    users: "کاربران",
+    attachFile: "پیوست فایل",
+    selectModel: "انتخاب مدل هوش مصنوعی",
+    selectAgentMode: "انتخاب حالت دستیار",
+    webSearch: "جستجوی وب",
+    appsIntegrations: "اپلیکیشن‌ها و یکپارچه‌سازی‌ها",
+    allSourcesAccess: "تمام منابعی که به آن‌ها دسترسی دارم",
+    findKnowledge: "جستجو یا استفاده از دانش در...",
+    noKnowledgeFound: "هیچ دانشی یافت نشد",
+    helpCenter: "مرکز راهنما",
+    connectApps: "اتصال اپ‌ها",
+    searchSourcesNote: "ما فقط در منابع انتخاب‌شده در اینجا جستجو خواهیم کرد.",
+    send: "ارسال",
+    allSources: "تمام منابع",
+    auto: "خودکار",
+    agentMode: "حالت دستیار",
+    planMode: "حالت برنامه‌ریزی",
+    beta: "نسخه بتا",
+    workspace: "فضای کاری",
+    meetingNotes: "یادداشت‌های جلسه",
+    projectDashboard: "داشبورد پروژه",
+    ideasBrainstorming: "ایده‌ها و طوفان فکری",
+    calendarEvents: "تقویم و رویدادها",
+    documentation: "مستندات",
+    goalsObjectives: "اهداف و مقاصد",
+    budgetPlanning: "برنامه‌ریزی بودجه",
+    teamDirectory: "فهرست تیم",
+    technicalSpecs: "مشخصات فنی",
+    analyticsReport: "گزارش تحلیلات",
+  },
 }
 
 function MentionableIcon({
@@ -156,7 +195,11 @@ function MentionableIcon({
 
 export function NotionPromptForm() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
 
   const SAMPLE_DATA = useMemo(

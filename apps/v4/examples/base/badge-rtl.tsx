@@ -32,6 +32,17 @@ const translations: Translations = {
       bookmark: "إشارة مرجعية",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      badge: "نشان",
+      secondary: "ثانویه",
+      destructive: "مخرب",
+      outline: "طرح کلی",
+      verified: "تایید شده",
+      bookmark: "نشانک",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

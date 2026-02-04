@@ -120,6 +120,32 @@ const translations: Translations = {
       pending: "ממתין",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      filterEmails: "فیلتر ایمیل‌ها...",
+      columns: "ستون‌ها",
+      status: "وضعیت",
+      email: "ایمیل",
+      amount: "مبلغ",
+      actions: "عملیات",
+      copyPaymentId: "کپی شناسه پرداخت",
+      viewCustomer: "مشاهده مشتری",
+      viewPaymentDetails: "مشاهده جزئیات پرداخت",
+      selectAll: "انتخاب همه",
+      selectRow: "انتخاب ردیف",
+      openMenu: "باز کردن منو",
+      noResults: "هیچ نتیجه‌ای یافت نشد.",
+      rowsSelected: "از",
+      rowsSelectedSuffix: "ردیف(ها) انتخاب شده.",
+      previous: "قبلی",
+      next: "بعدی",
+      success: "موفق",
+      processing: "در حال پردازش",
+      failed: "ناموفق",
+      pending: "در انتظار",
+    },
+  },
 }
 
 type Payment = {

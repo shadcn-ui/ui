@@ -89,6 +89,11 @@ export function ComponentPreviewTabs({
                   فقط. قد لا تكون الترجمة دقيقة وقد تحتوي على أخطاء.
                 </div>
                 <Separator className="-mx-2.5 w-auto!" />
+                <div data-lang="fa">
+                  من هوش مصنوعی را برای ترجمه متن برای اهداف نمایشی استفاده کردم.
+                  کامل نیست و ممکن است خطاهایی داشته باشد.
+                </div>
+                <Separator className="-mx-2.5 w-auto!" />
                 <div data-lang="he">
                   השתמשתי בבינה מלאכותית כדי לתרגם את הטקסט למטרות הדגמה. זה לא
                   מושלם ויכול להכיל שגיאות.
@@ -182,6 +187,10 @@ const directionTranslations: Translations<Record<string, never>> = {
     values: {},
   },
   ar: {
+    dir: "rtl",
+    values: {},
+  },
+  fa: {
     dir: "rtl",
     values: {},
   },

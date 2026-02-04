@@ -19,6 +19,15 @@ const translations: Translations = {
       loading: "Loading",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      button: "دکمه",
+      submit: "ارسال",
+      delete: "حذف",
+      loading: "در حال بارگزاری",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

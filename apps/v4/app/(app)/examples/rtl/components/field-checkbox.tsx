@@ -14,11 +14,19 @@ const translations = {
     dir: "rtl" as const,
     terms: "אני מסכים לתנאים וההגבלות",
   },
+  fa: {
+    dir: "rtl" as const,
+    terms: "من با شرایط و ضوابط موافقم",
+  },
 }
 
 export function FieldCheckbox() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const { dir, terms } = translations[lang]
 
   return (

@@ -33,11 +33,24 @@ const translations = {
     referral: "הפניה",
     other: "אחר",
   },
+  fa: {
+    dir: "rtl" as const,
+    legend: "چگونه ما را پیدا کردید؟",
+    description: "گزینه‌ای را انتخاب کنید که بهترین توضیح را از نحوه آشنایی شما ارائه می‌دهد.",
+    socialMedia: "شبکه‌های اجتماعی",
+    searchEngine: "موتور جستجو",
+    referral: "معرف",
+    other: "سایر",
+  },
 }
 
 export function FieldHear() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
 
   const options = [

@@ -22,6 +22,12 @@ const translations: Translations = {
       moreUsers: "+3",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      moreUsers: "+۳",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

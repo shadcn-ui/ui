@@ -12,7 +12,7 @@ import {
 
 import { cn } from "@/lib/utils"
 
-export type Language = "en" | "ar" | "he"
+export type Language = "en" | "fa" | "ar" | "he"
 
 export type Direction = "ltr" | "rtl"
 
@@ -29,6 +29,7 @@ export type Translations<
 
 export const languageOptions = [
   { value: "en", label: "English" },
+  { value: "fa", label: "Farsi (فارسی)" },
   { value: "ar", label: "Arabic (العربية)" },
   { value: "he", label: "Hebrew (עברית)" },
 ] as const
@@ -87,7 +88,7 @@ export function LanguageSelector({
   value,
   onValueChange,
   className,
-  languages = ["en", "ar", "he"],
+  languages = ["en", "fa", "ar", "he"],
 }: LanguageSelectorProps & {
   className?: string
   languages?: Language[]
@@ -101,13 +102,13 @@ export function LanguageSelector({
       <SelectTrigger
         size="sm"
         className={cn("w-36", className)}
-        dir="ltr"
+        dir={value === "fa" || value === "ar" || value === "he" ? "rtl" : "ltr"}
         data-name="language-selector"
       >
         <SelectValue />
       </SelectTrigger>
       <SelectContent
-        dir="ltr"
+        dir={value === "fa" || value === "ar" || value === "he" ? "rtl" : "ltr"}
         className="data-closed:animate-none data-open:animate-none"
       >
         <SelectGroup>

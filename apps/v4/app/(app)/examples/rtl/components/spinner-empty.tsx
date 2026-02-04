@@ -26,11 +26,21 @@ const translations = {
     description: "אנא המתן בזמן שאנו מעבדים את בקשתך. אל תרענן את הדף.",
     cancel: "ביטול",
   },
+  fa: {
+    dir: "rtl" as const,
+    title: "در حال پردازش درخواست شما",
+    description: "لطفاً صبر کنید در حالی که درخواست شما را پردازش می‌کنیم. صفحه را بازنشانی نکنید.",
+    cancel: "لغو",
+  },
 }
 
 export function SpinnerEmpty() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
 
   return (

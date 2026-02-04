@@ -50,6 +50,22 @@ const translations: Translations = {
       trash: "Trash",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      archive: "بایگانی",
+      report: "گزارش",
+      snooze: "به تعویق",
+      markAsRead: "علامت‌گذاری به‌عنوان خوانده‌شده",
+      addToCalendar: "افزودن به تقویم",
+      addToList: "افزودن به فهرست",
+      labelAs: "برچسب‌گذاری به‌عنوان...",
+      personal: "شخصی",
+      work: "کاری",
+      other: "دیگر",
+      trash: "زباله‌دان",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

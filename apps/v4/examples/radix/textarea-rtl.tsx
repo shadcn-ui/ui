@@ -22,6 +22,14 @@ const translations: Translations = {
       description: "Share your thoughts about our service.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      label: "بازخورد",
+      placeholder: "بازخورد شما به ما کمک می‌کند بهتر شویم...",
+      description: "افکار خود را درباره سرویس ما به اشتراک بگذارید.",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

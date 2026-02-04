@@ -54,6 +54,21 @@ const translations: Translations = {
       textareaDescription: "تذييل موضع أسفل منطقة النص.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      placeholder: "جستجو...",
+      results: "۱۲ نتیجه",
+      searching: "در حال جستجو...",
+      saving: "در حال ذخیره...",
+      savingChanges: "در حال ذخیره تغییرات...",
+      textareaLabel: "ناحیه متن",
+      textareaPlaceholder: "نظر خود را بنویسید...",
+      characterCount: "۰/۲۸۰",
+      post: "ارسال",
+      textareaDescription: "تذیل در زیر ناحیه متن.",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

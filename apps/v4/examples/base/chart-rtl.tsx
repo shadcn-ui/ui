@@ -55,6 +55,19 @@ const translations: Translations = {
       mobile: "נייד",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      january: "فروردین",
+      february: "اردیبهشت",
+      march: "خرداد",
+      april: "تیر",
+      may: "مرداد",
+      june: "شهریور",
+      desktop: "دسکتاپ",
+      mobile: "موبایل",
+    },
+  },
 }
 
 const chartData = [

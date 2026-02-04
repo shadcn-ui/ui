@@ -64,11 +64,31 @@ const translations = {
     other: "אחר",
     trash: "מחק",
   },
+  fa: {
+    dir: "rtl" as const,
+    goBack: "بازگشت",
+    archive: "بایگانی",
+    report: "گزارش",
+    snooze: "به تعویق",
+    moreOptions: "گزینه‌های بیشتر",
+    markAsRead: "علامت‌گذاری به‌عنوان خوانده‌شده",
+    addToCalendar: "افزودن به تقویم",
+    addToList: "افزودن به فهرست",
+    labelAs: "برچسب‌گذاری به‌عنوان...",
+    personal: "شخصی",
+    work: "کاری",
+    other: "سایر",
+    trash: "حذف",
+  },
 }
 
 export function ButtonGroupDemo() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
   const [label, setLabel] = React.useState("personal")
 

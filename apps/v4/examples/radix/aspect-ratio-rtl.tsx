@@ -28,6 +28,12 @@ const translations: Translations = {
       caption: "נוף יפה",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      caption: "منظره زیبا",
+    },
+  },
 }
 
 export function AspectRatioRtl() {

@@ -28,6 +28,12 @@ const translations: Translations = {
       label: "קבל תנאים והגבלות",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      label: "پذیرش شرایط و ضوابط",
+    },
+  },
 }
 
 export function LabelRtl() {

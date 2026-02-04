@@ -57,6 +57,17 @@ const translations: Translations = {
       breadcrumb: "פירורי לחם",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      home: "خانه",
+      components: "کامپوننت‌ها",
+      documentation: "مستندات",
+      themes: "قالب‌ها",
+      github: "گیت‌هاب",
+      breadcrumb: "مسیر",
+    },
+  },
 }
 
 export function BreadcrumbRtl() {

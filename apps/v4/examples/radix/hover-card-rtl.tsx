@@ -49,6 +49,18 @@ const translations: Translations = {
       right: "ימין",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      trigger: "هدفون بی‌سیم",
+      name: "هدفون بی‌سیم",
+      price: "۹۹٫۹۹ $",
+      left: "چپ",
+      top: "بالا",
+      bottom: "پایین",
+      right: "راست",
+    },
+  },
 }
 
 const physicalSides: Array<"left" | "top" | "bottom" | "right"> = [

@@ -51,6 +51,18 @@ const translations: Translations = {
       itemsDescription: "2x אוזניות סטודיו",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      orderNumber: "سفارش #4189",
+      status: "وضعیت",
+      shipped: "ارسال شد",
+      shippingAddress: "نشانی ارسال",
+      address: "100 Market St, San Francisco",
+      items: "اقلام",
+      itemsDescription: "2x هدفون استودیو",
+    },
+  },
 }
 
 export function CollapsibleRtl() {

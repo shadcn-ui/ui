@@ -91,6 +91,28 @@ const translations: Translations = {
       colm: "Colm Tuite",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      rightClick: "کلیک راست اینجا",
+      longPress: "فشار طولانی اینجا",
+      navigation: "ناوبری",
+      back: "بازگشت",
+      forward: "جلو",
+      reload: "بارگذاری مجدد",
+      moreTools: "ابزارهای بیشتر",
+      savePage: "ذخیره صفحه...",
+      createShortcut: "ایجاد میانبر...",
+      nameWindow: "نام پنجره...",
+      developerTools: "ابزارهای توسعه‌دهنده",
+      delete: "حذف",
+      showBookmarks: "نمایش نشانک‌ها",
+      showFullUrls: "نمایش آدرس‌های کامل",
+      people: "افراد",
+      pedro: "Pedro Duarte",
+      colm: "Colm Tuite",
+    },
+  },
 }
 
 export function ContextMenuRtl() {

@@ -20,6 +20,12 @@ const translations: Translations = {
       tags: "Tags",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      tags: "برچسب‌ها",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

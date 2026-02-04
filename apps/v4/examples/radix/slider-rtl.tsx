@@ -13,6 +13,10 @@ const translations: Translations = {
     dir: "ltr",
     values: {},
   },
+  fa: {
+    dir: "rtl",
+    values: {},
+  },
   ar: {
     dir: "rtl",
     values: {},

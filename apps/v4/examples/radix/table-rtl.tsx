@@ -69,6 +69,23 @@ const translations: Translations = {
       total: 'סה"כ',
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      caption: "فهرستی از فاکتورهای اخیر شما.",
+      invoice: "فاکتور",
+      status: "وضعیت",
+      method: "روش",
+      amount: "مبلغ",
+      paid: "پرداخت شده",
+      pending: "در انتظار",
+      unpaid: "پرداخت‌نشده",
+      creditCard: "کارت اعتباری",
+      paypal: "پی‌پال",
+      bankTransfer: "انتقال بانکی",
+      total: "مجموع",
+    },
+  },
 }
 
 const invoices = [

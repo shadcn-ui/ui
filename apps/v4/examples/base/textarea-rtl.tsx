@@ -38,6 +38,14 @@ const translations: Translations = {
       description: "שתף את מחשבותיך על השירות שלנו.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      label: "بازخورد",
+      placeholder: "بازخورد شما به ما کمک می‌کند بهتر شویم...",
+      description: "دیدگاه‌های خود را دربارهٔ سرویس ما به اشتراک بگذارید.",
+    },
+  },
 }
 
 export default function TextareaRtl() {

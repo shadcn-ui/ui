@@ -27,6 +27,10 @@ const translations: Translations = {
     dir: "rtl",
     values: {},
   },
+  fa: {
+    dir: "rtl",
+    values: {},
+  },
 }
 
 function toArabicNumerals(num: number): string {

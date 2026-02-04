@@ -27,6 +27,14 @@ const translations = {
     ariaLabel: "טווח מחירים",
     currency: "₪",
   },
+  fa: {
+    dir: "rtl" as const,
+    locale: "fa-IR",
+    title: "محدوده قیمت",
+    description: "بازه بودجه خود را انتخاب کنید",
+    ariaLabel: "محدوده قیمت",
+    currency: "﷼",
+  },
 }
 
 function formatNumber(value: number, locale: string) {
@@ -35,7 +43,11 @@ function formatNumber(value: number, locale: string) {
 
 export function FieldSlider() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
   const [value, setValue] = useState([200, 800])
 

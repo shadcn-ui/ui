@@ -28,6 +28,12 @@ const translations: Translations = {
       label: "סימנייה",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      label: "نشانک",
+    },
+  },
 }
 
 export function ToggleRtl() {

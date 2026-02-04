@@ -28,6 +28,12 @@ const translations: Translations = {
       moreUsers: "+٣",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      moreUsers: "+۳",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

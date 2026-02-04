@@ -19,6 +19,14 @@ const translations: Translations = {
       cards: "Cards",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      list: "فهرست",
+      grid: "شبکه",
+      cards: "کارت‌ها",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

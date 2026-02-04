@@ -51,6 +51,17 @@ const translations: Translations = {
       learnMore: "למד עוד",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      title: "هنوز پروژه‌ای وجود ندارد",
+      description:
+        "شما هنوز هیچ پروژه‌ای ایجاد نکرده‌اید. با ایجاد اولین پروژه خود شروع کنید.",
+      createProject: "ایجاد پروژه",
+      importProject: "وارد کردن پروژه",
+      learnMore: "اطلاعات بیشتر",
+    },
+  },
 }
 
 export function EmptyRtl() {

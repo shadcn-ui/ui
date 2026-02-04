@@ -23,6 +23,16 @@ const translations: Translations = {
       right: "Right",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      content: "افزودن به کتابخانه",
+      left: "چپ",
+      top: "بالا",
+      bottom: "پایین",
+      right: "راست",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

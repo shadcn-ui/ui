@@ -34,6 +34,20 @@ const translations: Translations = {
       loginWithGoogle: "Login with Google",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      title: "ورود به حساب کاربری",
+      description: "ایمیل خود را در زیر وارد کنید تا وارد حساب خود شوید",
+      signUp: "ثبت‌نام",
+      email: "ایمیل",
+      emailPlaceholder: "m@example.com",
+      password: "رمز عبور",
+      forgotPassword: "رمز عبور را فراموش کرده‌اید؟",
+      login: "ورود",
+      loginWithGoogle: "ورود با Google",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

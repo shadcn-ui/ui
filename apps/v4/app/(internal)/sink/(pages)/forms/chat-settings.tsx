@@ -56,6 +56,7 @@ const spokenLanguages = [
   { label: "Japanese", value: "ja" },
   { label: "Korean", value: "ko" },
   { label: "Arabic", value: "ar" },
+  { label: "Farsi", value: "fa" },
   { label: "Hindi", value: "hi" },
   { label: "Bengali", value: "bn" },
   { label: "Telugu", value: "te" },

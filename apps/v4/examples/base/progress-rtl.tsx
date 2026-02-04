@@ -25,6 +25,12 @@ const translations: Translations = {
       label: "تقدم الرفع",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      label: "پیشرفت آپلود",
+    },
+  },
   he: {
     dir: "rtl",
     values: {
@@ -42,12 +48,24 @@ function toArabicNumerals(num: number): string {
     .join("")
 }
 
+function toPersianNumerals(num: number): string {
+  const persianNumerals = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"]
+  return num
+    .toString()
+    .split("")
+    .map((digit) => persianNumerals[parseInt(digit, 10)])
+    .join("")
+}
+
 export function ProgressRtl() {
   const { dir, t, language } = useTranslation(translations, "ar")
 
   const formatNumber = (num: number): string => {
     if (language === "ar") {
       return toArabicNumerals(num)
+    }
+    if (language === "fa") {
+      return toPersianNumerals(num)
     }
     return num.toString()
   }

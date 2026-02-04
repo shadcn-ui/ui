@@ -47,6 +47,17 @@ const translations: Translations = {
         "הוספנו תמיכה במצב כהה. אתה יכול להפעיל אותו בהגדרות החשבון שלך.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      paymentTitle: "پرداخت موفق بود",
+      paymentDescription:
+        "پرداخت شما به مبلغ 29.99 دلار پردازش شد. رسید به ایمیل شما ارسال شد.",
+      featureTitle: "ویژگی جدید در دسترس است",
+      featureDescription:
+        "حالت تاریک اضافه شد. می‌توانید آن را در تنظیمات حساب خود فعال کنید.",
+    },
+  },
 }
 
 const alerts = [

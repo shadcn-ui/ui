@@ -25,6 +25,17 @@ const translations: Translations = {
         "We've added dark mode support. You can enable it in your account settings.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      paymentTitle: "پرداخت با موفقیت انجام شد",
+      paymentDescription:
+        "پرداخت شما به مبلغ 29.99 دلار پردازش شد. رسید به ایمیل شما ارسال شده است.",
+      featureTitle: "ویژگی جدید در دسترس",
+      featureDescription:
+        "حالت تاریک اضافه شد. می‌توانید آن را در تنظیمات حساب خود فعال کنید.",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

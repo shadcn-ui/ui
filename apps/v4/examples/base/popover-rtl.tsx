@@ -42,6 +42,19 @@ const translations: Translations = {
       "inline-end": "نهاية السطر",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      title: "ابعاد",
+      description: "ابعاد را برای لایه تعیین کنید.",
+      "inline-start": "شروع خطی",
+      left: "چپ",
+      top: "بالا",
+      bottom: "پایین",
+      right: "راست",
+      "inline-end": "پایان خطی",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

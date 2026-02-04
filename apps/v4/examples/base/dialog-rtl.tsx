@@ -47,6 +47,18 @@ const translations: Translations = {
       saveChanges: "حفظ التغييرات",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      openDialog: "باز کردن گفتگو",
+      editProfile: "ویرایش پروفایل",
+      description: "تغییرات خود را در پروفایل اینجا انجام دهید. زمانی که تمام شدید روی ذخیره کلیک کنید.",
+      name: "نام",
+      username: "نام کاربری",
+      cancel: "لغو",
+      saveChanges: "ذخیره تغییرات",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

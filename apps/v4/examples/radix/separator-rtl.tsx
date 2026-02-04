@@ -36,6 +36,15 @@ const translations: Translations = {
         "סט של רכיבים מעוצבים בצורה יפה שאתה יכול להתאים אישית, להרחיב ולבנות עליהם.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      title: "shadcn/ui",
+      subtitle: "زیرساختی برای دیزاین سیستم شما",
+      description:
+        "مجموعه‌ای از کامپوننت‌های زیبا که می‌توانید آن‌ها را سفارشی‌سازی، گسترش و روی آن‌ها بسازید.",
+    },
+  },
 }
 
 export function SeparatorRtl() {

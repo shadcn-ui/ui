@@ -65,6 +65,26 @@ const translations = {
     submit: "שלח",
     cancel: "ביטול",
   },
+  fa: {
+    dir: "rtl" as const,
+    locale: "fa-IR",
+    paymentMethod: "روش پرداخت",
+    secureEncrypted: "تمام تراکنش‌ها ایمن و رمزنگاری شده‌اند",
+    nameOnCard: "نام روی کارت",
+    namePlaceholder: "احمد محمد",
+    cardNumber: "شماره کارت",
+    cardDescription: "شماره ۱۶ رقمی کارت خود را وارد کنید.",
+    cvv: "کد امنیتی",
+    month: "ماه",
+    year: "سال",
+    billingAddress: "آدرس صورتحساب",
+    billingDescription: "آدرس صورتحساب مرتبط با روش پرداخت شما",
+    sameAsShipping: "مشابه آدرس ارسال",
+    comments: "نظرات",
+    commentsPlaceholder: "هر نظر اضافی را اضافه کنید",
+    submit: "ارسال",
+    cancel: "لغو",
+  },
 }
 
 function formatCardNumber(locale: string) {
@@ -97,7 +117,11 @@ function getYears(locale: string) {
 
 export function FieldDemo() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
   const months = getMonths(t.locale)
   const years = getYears(t.locale)

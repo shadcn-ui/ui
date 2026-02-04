@@ -34,11 +34,25 @@ const translations = {
     description:
       "תאר את המשימה שלך בשפה טבעית. העוזר יעבוד ברקע ויפתח בקשת משיכה לבדיקתך.",
   },
+  fa: {
+    dir: "rtl" as const,
+    copilot: "دستیار",
+    openPopover: "باز کردن فهرست",
+    agentTasks: "وظایف دستیار",
+    placeholder: "وظیفه‌تان را به زبان طبیعی توصیف کنید.",
+    startTask: "شروع یک وظیفه جدید با دستیار",
+    description:
+      "وظیفه‌تان را به زبان طبیعی توصیف کنید. دستیار در پس‌زمینه کار می‌کند و یک درخواست pull برای بررسی شما باز می‌کند.",
+  },
 }
 
 export function ButtonGroupPopover() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
 
   return (

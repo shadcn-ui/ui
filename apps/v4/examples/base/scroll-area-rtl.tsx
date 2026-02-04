@@ -32,6 +32,12 @@ const translations: Translations = {
       tags: "תגיות",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      tags: "برچسب‌ها",
+    },
+  },
 }
 
 export function ScrollAreaRtl() {

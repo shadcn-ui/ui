@@ -51,6 +51,22 @@ const translations: Translations = {
       spinach: "سبانخ",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      selectFruit: "یک میوه انتخاب کنید",
+      fruits: "میوه‌ها",
+      apple: "سیب",
+      banana: "موز",
+      blueberry: "بلوبری",
+      grapes: "انگور",
+      pineapple: "آناناس",
+      vegetables: "سبزیجات",
+      carrot: "هویج",
+      broccoli: "بروکلی",
+      spinach: "اسفناج",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

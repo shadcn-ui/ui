@@ -36,6 +36,13 @@ const translations: Translations = {
       amount: "$100.00",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      title: "در حال پردازش پرداخت...",
+      amount: "۱۰۰٫۰۰ دلار",
+    },
+  },
 }
 
 export function SpinnerRtl() {

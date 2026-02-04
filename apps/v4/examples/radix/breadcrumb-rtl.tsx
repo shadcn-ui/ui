@@ -36,6 +36,17 @@ const translations: Translations = {
       breadcrumb: "Breadcrumb",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      home: "خانه",
+      components: "کامپوننت‌ها",
+      documentation: "مستندات",
+      themes: "قالب‌ها",
+      github: "گیت‌هاب",
+      breadcrumb: "مسیر",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

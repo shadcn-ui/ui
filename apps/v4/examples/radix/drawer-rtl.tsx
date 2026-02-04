@@ -77,6 +77,20 @@ const translations: Translations = {
       cancel: "Cancel",
     },
   },
+  fa: {
+    dir: "rtl",
+    locale: "fa-IR",
+    values: {
+      trigger: "باز کردن پنل",
+      title: "تنظیم هدف",
+      description: "هدف فعالیت روزانه خود را تنظیم کنید.",
+      caloriesPerDay: "کالری/روز",
+      decrease: "کاهش",
+      increase: "افزایش",
+      submit: "ارسال",
+      cancel: "لغو",
+    },
+  },
   ar: {
     dir: "rtl",
     locale: "ar-EG",

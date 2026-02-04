@@ -58,6 +58,18 @@ const translations: Translations = {
       close: "סגור",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      open: "باز کردن",
+      editProfile: "ویرایش پروفایل",
+      description: "تغییرات را در اینجا اعمال کنید. پس از پایان روی ذخیره کلیک کنید.",
+      name: "نام",
+      username: "نام کاربری",
+      save: "ذخیره تغییرات",
+      close: "بستن",
+    },
+  },
 }
 
 export function SheetRtl() {

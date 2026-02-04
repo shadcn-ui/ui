@@ -36,11 +36,24 @@ const translations = {
     favorite: "מועדף",
     currency: "₪",
   },
+  fa: {
+    dir: "rtl" as const,
+    inputLabel: "قیمت",
+    info: "اطلاعات",
+    priceInfo: "قیمت را به ریال سعودی وارد کنید.",
+    priceDescription: "قیمت به‌صورت خودکار تبدیل خواهد شد.",
+    favorite: "مورد علاقه",
+    currency: "ر.س",
+  },
 }
 
 export function InputGroupButtonExample() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
   const [isFavorite, setIsFavorite] = React.useState(false)
 

@@ -45,6 +45,15 @@ const translations: Translations = {
       verifiedTitle: "הפרופיל שלך אומת.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      basicItem: "آیتم پایه",
+      basicItemDesc: "یک آیتم ساده با عنوان و توضیحات.",
+      action: "عمل",
+      verifiedTitle: "پروفایل شما تأیید شد.",
+    },
+  },
 }
 
 export function ItemRtl() {

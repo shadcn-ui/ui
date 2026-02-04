@@ -18,11 +18,21 @@ const translations = {
     updating: "מעדכן",
     loading: "טוען",
   },
+  fa: {
+    dir: "rtl" as const,
+    syncing: "در حال همگام‌سازی",
+    updating: "در حال بروزرسانی",
+    loading: "در حال بارگذاری",
+  },
 }
 
 export function SpinnerBadge() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
 
   return (

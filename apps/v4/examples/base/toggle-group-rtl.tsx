@@ -28,6 +28,14 @@ const translations: Translations = {
       cards: "بطاقات",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      list: "فهرست",
+      grid: "شبکه",
+      cards: "کارت‌ها",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

@@ -31,6 +31,13 @@ const translations: Translations = {
       next: "التالي",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      previous: "قبلی",
+      next: "بعدی",
+    },
+  },
   he: {
     dir: "rtl",
     values: {
@@ -49,12 +56,24 @@ function toArabicNumerals(num: number): string {
     .join("")
 }
 
+function toPersianNumerals(num: number): string {
+  const persianNumerals = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"]
+  return num
+    .toString()
+    .split("")
+    .map((digit) => persianNumerals[parseInt(digit, 10)])
+    .join("")
+}
+
 export function PaginationRtl() {
   const { dir, t, language } = useTranslation(translations, "ar")
 
   const formatNumber = (num: number): string => {
     if (language === "ar") {
       return toArabicNumerals(num)
+    }
+    if (language === "fa") {
+      return toPersianNumerals(num)
     }
     return num.toString()
   }

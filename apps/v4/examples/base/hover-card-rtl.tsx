@@ -55,6 +55,20 @@ const translations: Translations = {
       "inline-end": "סוף השורה",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      trigger: "هدفون بی‌سیم",
+      name: "هدفون بی‌سیم",
+      price: "۹۹٫۹۹ $",
+      "inline-start": "شروع درون‌خطی",
+      left: "چپ",
+      top: "بالا",
+      bottom: "پایین",
+      right: "راست",
+      "inline-end": "پایان درون‌خطی",
+    },
+  },
 }
 
 const physicalSides = ["left", "top", "bottom", "right"] as const

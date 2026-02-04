@@ -19,6 +19,12 @@ const translations = {
     previous: "הקודם",
     next: "הבא",
   },
+  fa: {
+    dir: "rtl" as const,
+    locale: "fa-IR",
+    previous: "قبلی",
+    next: "بعدی",
+  },
 }
 
 function formatNumber(value: number, locale: string) {
@@ -27,7 +33,11 @@ function formatNumber(value: number, locale: string) {
 
 export function ButtonGroupNested() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
 
   return (

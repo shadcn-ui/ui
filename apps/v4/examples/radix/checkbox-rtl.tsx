@@ -29,6 +29,16 @@ const translations: Translations = {
         "You can enable or disable notifications at any time.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      acceptTerms: "پذیرفتن شرایط و ضوابط",
+      acceptTermsDescription: "با کلیک روی این جعبه، شما با شرایط موافقت می‌کنید.",
+      enableNotifications: "فعال‌سازی اعلان‌ها",
+      enableNotificationsDescription:
+        "شما می‌توانید در هر زمان اعلان‌ها را فعال یا غیرفعال کنید.",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

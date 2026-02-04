@@ -21,6 +21,10 @@ const translations: Translations = {
     dir: "rtl",
     values: {},
   },
+  fa: {
+    dir: "rtl",
+    values: {},
+  },
 }
 
 export function KbdRtl() {

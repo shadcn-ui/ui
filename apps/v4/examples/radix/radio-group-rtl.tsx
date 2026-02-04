@@ -26,6 +26,17 @@ const translations: Translations = {
       compactDescription: "Minimal spacing for dense layouts.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      default: "پیش‌فرض",
+      defaultDescription: "فاصله استاندارد برای اکثر موارد استفاده.",
+      comfortable: "راحت",
+      comfortableDescription: "فضای بیشتر بین عناصر.",
+      compact: "فشرده",
+      compactDescription: "فاصله حداقلی برای طرح‌های متراکم.",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

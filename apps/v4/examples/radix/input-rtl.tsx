@@ -22,6 +22,14 @@ const translations: Translations = {
       description: "Your API key is encrypted and stored securely.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      apiKey: "کلید API",
+      placeholder: "sk-...",
+      description: "کلید API شما رمزنگاری شده و به‌صورت امن ذخیره شده است.",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

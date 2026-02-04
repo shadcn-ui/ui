@@ -54,11 +54,31 @@ const translations = {
     wallpaperTinting: "צביעת טפט",
     wallpaperDescription: "אפשר לטפט להיצבע.",
   },
+  fa: {
+    dir: "rtl" as const,
+    computeEnvironment: "محیط محاسباتی",
+    computeDescription: "محیط محاسباتی را برای کلاستر خود انتخاب کنید.",
+    kubernetes: "کوبرنتیز",
+    kubernetesDescription:
+      "اجرای بارهای کاری GPU روی یک کلاستر پیکربندی‌شده با K8s. این حالت پیش‌فرض است.",
+    virtualMachine: "ماشین مجازی",
+    vmDescription: "دسترسی به کلاستری از VM‌های پیکربندی‌شده برای اجرای بارهای کاری. (به‌زودی)",
+    numberOfGpus: "تعداد GPU‌ها",
+    gpuDescription: "می‌توانید بعداً GPU بیشتری اضافه کنید.",
+    decrement: "کاهش",
+    increment: "افزایش",
+    wallpaperTinting: "رنگ‌آمیزی والپیپر",
+    wallpaperDescription: "اجازه به رنگ‌آمیزی والپیپر.",
+  },
 }
 
 export function AppearanceSettings() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
   const [gpuCount, setGpuCount] = React.useState(8)
 

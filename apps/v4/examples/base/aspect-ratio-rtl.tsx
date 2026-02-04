@@ -22,6 +22,12 @@ const translations: Translations = {
       caption: "منظر طبيعي جميل",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      caption: "منظره طبیعی زیبا",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

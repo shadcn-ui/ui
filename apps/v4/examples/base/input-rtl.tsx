@@ -38,6 +38,14 @@ const translations: Translations = {
       description: "מפתח ה-API שלך מוצפן ונשמר בצורה מאובטחת.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      apiKey: "کلید API",
+      placeholder: "sk-...",
+      description: "کلید API شما رمزگذاری شده و به‌صورت امن ذخیره شده است.",
+    },
+  },
 }
 
 export function InputRtl() {

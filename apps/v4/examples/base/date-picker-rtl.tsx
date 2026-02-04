@@ -40,6 +40,12 @@ const translations: Translations = {
       placeholder: "בחר תאריך",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      placeholder: "یک تاریخ انتخاب کنید",
+    },
+  },
 }
 
 const dayPickerLocales = {

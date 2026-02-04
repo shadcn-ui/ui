@@ -82,6 +82,22 @@ const translations: Translations = {
       trash: "פח",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      archive: "بایگانی",
+      report: "گزارش",
+      snooze: "به تعویق انداختن",
+      markAsRead: "علامت‌گذاری به‌عنوان خوانده‌شده",
+      addToCalendar: "افزودن به تقویم",
+      addToList: "افزودن به فهرست",
+      labelAs: "برچسب‌گذاری به عنوان...",
+      personal: "شخصی",
+      work: "کار",
+      other: "سایر",
+      trash: "حذف",
+    },
+  },
 }
 
 export function ButtonGroupRtl() {

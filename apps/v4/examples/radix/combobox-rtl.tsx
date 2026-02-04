@@ -44,6 +44,20 @@ const translations: Translations = {
       health: "Health",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      label: "دسته‌بندی‌ها",
+      placeholder: "افزودن دسته‌بندی",
+      empty: "هیچ دسته‌ای یافت نشد.",
+      technology: "فناوری",
+      design: "طراحی",
+      business: "کسب‌وکار",
+      marketing: "بازاریابی",
+      education: "آموزش",
+      health: "سلامت",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

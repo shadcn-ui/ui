@@ -92,6 +92,40 @@ const translations: Translations = {
       docs: "الوثائق",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      gettingStarted: "شروع کردن",
+      introduction: "مقدمه",
+      introductionDesc:
+        "اجزای قابل استفاده مجدد ساخته شده با Tailwind CSS.",
+      installation: "نصب",
+      installationDesc: "نحوه نصب وابستگی‌ها و ساختار برنامه خود.",
+      typography: "تایپوگرافی",
+      typographyDesc: "سبک‌های برای عنوان‌ها، پاراگراف‌ها، فهرست‌ها و غیره",
+      components: "اجزاء",
+      alertDialog: "دیالوگ هشدار",
+      alertDialogDesc: "دیالوگ مودال که کاربر را با محتوای مهم قطع می‌کند.",
+      hoverCard: "کارت هاور",
+      hoverCardDesc: "برای کاربرانی که می‌توانند محتوای پشت پیوند را پیش‌نمایش کنند.",
+      progress: "پیشرفت",
+      progressDesc:
+        "نشان‌دهنده‌ای را نمایش می‌دهد که پیشرفت تکمیل یک کار را نشان می‌دهد.",
+      scrollArea: "ناحیه اسکرول",
+      scrollAreaDesc: "محتوا را به صورت بصری یا معنایی جدا می‌کند.",
+      tabs: "برگه‌ها",
+      tabsDesc:
+        "مجموعه‌ای از بخش‌های محتوای لایه‌دار که یک‌بار یکی نمایش داده می‌شود.",
+      tooltip: "نکته‌ی کمکی",
+      tooltipDesc:
+        "پنجره‌ای که اطلاعات مرتبط با عنصر را نمایش می‌دهد.",
+      withIcon: "با نماد",
+      backlog: "لیست انتظار",
+      toDo: "انجام دادن",
+      done: "انجام شده",
+      docs: "مستندات",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

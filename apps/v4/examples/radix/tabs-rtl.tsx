@@ -46,6 +46,31 @@ const translations: Translations = {
       settingsContent: "Configure notifications, security, and themes.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      overview: "بررسی",
+      analytics: "تحلیل‌ها",
+      reports: "گزارش‌ها",
+      settings: "تنظیمات",
+      overviewTitle: "بررسی",
+      overviewDesc:
+        "معیارهای کلیدی و فعالیت‌های اخیر پروژه را مشاهده کنید. پیشرفت را در تمام پروژه‌های فعال دنبال کنید.",
+      overviewContent: "شما 12 پروژه فعال و 3 کار معلق دارید.",
+      analyticsTitle: "تحلیل‌ها",
+      analyticsDesc:
+        "عملکرد و شاخص‌های تعامل کاربران را دنبال کنید. روندها را رصد کرده و فرصت‌های رشد را بیابید.",
+      analyticsContent: "بازدید صفحات نسبت به ماه گذشته 25% افزایش داشته است.",
+      reportsTitle: "گزارش‌ها",
+      reportsDesc:
+        "گزارش‌های تفصیلی خود را تولید و دانلود کنید. داده‌ها را برای تحلیل در فرمت‌های مختلف صادر کنید.",
+      reportsContent: "شما 5 گزارش آماده برای صادر کردن دارید.",
+      settingsTitle: "تنظیمات",
+      settingsDesc:
+        "تنظیمات و ترجیحات حساب خود را مدیریت کنید. تجربه خود را مطابق نیازهایتان سفارشی کنید.",
+      settingsContent: "اعلان‌ها، امنیت و تم‌ها را پیکربندی کنید.",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

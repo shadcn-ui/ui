@@ -27,6 +27,17 @@ const translations: Translations = {
       right: "Right",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      title: "ابعاد",
+      description: "ابعاد لایه را تنظیم کنید.",
+      left: "چپ",
+      top: "بالا",
+      bottom: "پایین",
+      right: "راست",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

@@ -70,6 +70,23 @@ const translations: Translations = {
       allow: "אפשר",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      showDialog: "نمایش دیالوگ",
+      showDialogSm: "نمایش دیالوگ (کوچک)",
+      title: "آیا از این کار کاملاً مطمئن هستید؟",
+      description:
+        "این عمل قابل بازگشت نیست. این حساب کاربری شما را برای همیشه از سرورهای ما حذف خواهد کرد.",
+      cancel: "لغو",
+      continue: "ادامه",
+      smallTitle: "اجازه اتصال لوازم جانبی؟",
+      smallDescription:
+        "آیا می‌خواهید اجازه دهید لوازم جانبی USB به این دستگاه متصل شوند؟",
+      dontAllow: "عدم اجازه",
+      allow: "اجازه",
+    },
+  },
 }
 
 export function AlertDialogRtl() {

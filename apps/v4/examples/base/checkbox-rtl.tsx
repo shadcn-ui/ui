@@ -50,6 +50,17 @@ const translations: Translations = {
         "אתה יכול להפעיל או להשבית התראות בכל עת.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      acceptTerms: "پذیرش شرایط و ضوابط",
+      acceptTermsDescription:
+        "با کلیک روی این کادر، شما با شرایط موافقت می‌کنید.",
+      enableNotifications: "فعال‌سازی اعلان‌ها",
+      enableNotificationsDescription:
+        "شما می‌توانید اعلان‌ها را در هر زمان فعال یا غیرفعال کنید.",
+    },
+  },
 }
 
 export function CheckboxRtl() {

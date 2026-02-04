@@ -22,6 +22,16 @@ const translations: Translations = {
       cancelled: "Cancelled",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      placeholder: "وضعیت را انتخاب کنید",
+      todo: "در لیست کارها",
+      inProgress: "در حال انجام",
+      done: "تکمیل شده",
+      cancelled: "لغو شده",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

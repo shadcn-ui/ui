@@ -23,6 +23,14 @@ const translations: Translations = {
         "Focus is shared across devices, and turns off when you leave the app.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      label: "اشتراک‌گذاری بین دستگاه‌ها",
+      description:
+        "تمرکز بین دستگاه‌ها به اشتراک گذاشته می‌شود و هنگام ترک برنامه غیرفعال می‌شود.",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

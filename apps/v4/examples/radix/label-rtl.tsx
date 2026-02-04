@@ -16,6 +16,12 @@ const translations: Translations = {
       label: "Accept terms and conditions",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      label: "پذیرفتن شرایط و ضوابط",
+    },
+  },
   ar: {
     dir: "rtl",
     values: {

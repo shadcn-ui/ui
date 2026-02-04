@@ -26,6 +26,12 @@ import { NotionPromptForm } from "./notion-prompt-form"
 import { SpinnerBadge } from "./spinner-badge"
 import { SpinnerEmpty } from "./spinner-empty"
 
+const APPEARANCE_SETTINGS_LABELS: Record<string, string> = {
+  he: "הגדרות מראה",
+  fa: "تنظیمات ظاهر",
+  ar: "إعدادات المظهر",
+}
+
 function RtlComponentsContent() {
   const context = useLanguageContext()
 
@@ -46,7 +52,7 @@ function RtlComponentsContent() {
         value={language}
         onValueChange={context.setLanguage}
         className="absolute -top-12 right-52 hidden h-8! data-[size=sm]:rounded-lg lg:flex"
-        languages={["ar", "he"]}
+        languages={["ar", "fa", "he"]}
       />
       <div className="flex flex-col gap-6 *:[div]:w-full *:[div]:max-w-full">
         <FieldDemo />
@@ -62,7 +68,7 @@ function RtlComponentsContent() {
         <InputGroupButtonExample />
         <ItemDemo />
         <FieldSeparator className="my-4">
-          {language === "he" ? "הגדרות מראה" : "إعدادات المظهر"}
+          {APPEARANCE_SETTINGS_LABELS[language]}
         </FieldSeparator>
         <AppearanceSettings />
       </div>

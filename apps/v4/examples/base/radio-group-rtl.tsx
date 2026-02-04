@@ -37,6 +37,17 @@ const translations: Translations = {
       compactDescription: "تباعد أدنى للتخطيطات الكثيفة.",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      default: "پیش‌فرض",
+      defaultDescription: "فاصله استاندارد برای بیشتر موارد استفاده.",
+      comfortable: "راحت",
+      comfortableDescription: "فضای بیشتر بین عناصر.",
+      compact: "فشرده",
+      compactDescription: "فاصله کمینه برای طرح‌های متراکم.",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

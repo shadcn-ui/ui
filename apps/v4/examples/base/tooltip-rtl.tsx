@@ -37,6 +37,18 @@ const translations: Translations = {
       "inline-end": "نهاية السطر",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      content: "افزودن به کتابخانه",
+      "inline-start": "شروع خطی",
+      left: "چپ",
+      top: "بالا",
+      bottom: "پایین",
+      right: "راست",
+      "inline-end": "پایان خطی",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

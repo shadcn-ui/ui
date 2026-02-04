@@ -32,11 +32,21 @@ const translations = {
     description: "הזמן את הצוות שלך לשתף פעולה בפרויקט זה.",
     invite: "הזמן חברים",
   },
+  fa: {
+    dir: "rtl" as const,
+    title: "تیمی وجود ندارد",
+    description: "تیم خود را برای همکاری در این پروژه دعوت کنید.",
+    invite: "دعوت اعضا",
+  },
 }
 
 export function EmptyAvatarGroup() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
 
   return (

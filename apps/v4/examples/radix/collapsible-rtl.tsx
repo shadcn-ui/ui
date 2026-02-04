@@ -25,6 +25,20 @@ const translations: Translations = {
       address: "100 Market St, San Francisco",
       items: "Items",
       itemsDescription: "2x Studio Headphones",
+      toggleDetails: "Toggle details",
+    },
+  },
+  fa: {
+    dir: "rtl",
+    values: {
+      orderNumber: "سفارش #4189",
+      status: "وضعیت",
+      shipped: "ارسال شد",
+      shippingAddress: "آدرس ارسال",
+      address: "100 Market St, San Francisco",
+      items: "موارد",
+      itemsDescription: "2x هدفون استودیویی",
+      toggleDetails: "نمایش جزئیات",
     },
   },
   ar: {
@@ -37,6 +51,7 @@ const translations: Translations = {
       address: "100 Market St, San Francisco",
       items: "العناصر",
       itemsDescription: "2x سماعات الاستوديو",
+      toggleDetails: "تبديل التفاصيل",
     },
   },
   he: {
@@ -49,6 +64,7 @@ const translations: Translations = {
       address: "100 Market St, San Francisco",
       items: "פריטים",
       itemsDescription: "2x אוזניות סטודיו",
+      toggleDetails: "הצג פרטים",
     },
   },
 }
@@ -69,7 +85,7 @@ export function CollapsibleRtl() {
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="icon" className="size-8">
             <ChevronsUpDown />
-            <span className="sr-only">Toggle details</span>
+            <span className="sr-only">{t.toggleDetails}</span>
           </Button>
         </CollapsibleTrigger>
       </div>

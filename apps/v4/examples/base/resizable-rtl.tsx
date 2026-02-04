@@ -29,6 +29,14 @@ const translations: Translations = {
       three: "ثلاثة",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      one: "یک",
+      two: "دو",
+      three: "سه",
+    },
+  },
   he: {
     dir: "rtl",
     values: {

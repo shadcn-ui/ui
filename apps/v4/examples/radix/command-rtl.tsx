@@ -68,6 +68,20 @@ const translations: Translations = {
       billing: "חיוב",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      placeholder: "یک فرمان یا جستجو تایپ کنید...",
+      empty: "هیچ نتیجه‌ای یافت نشد.",
+      suggestions: "پیشنهادها",
+      calendar: "تقویم",
+      searchEmoji: "جستجوی ایموجی",
+      calculator: "ماشین حساب",
+      settings: "تنظیمات",
+      profile: "پروفایل",
+      billing: "صورتحساب",
+    },
+  },
 }
 
 export function CommandRtl() {

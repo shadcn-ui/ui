@@ -22,6 +22,10 @@ const translations: Translations = {
     dir: "rtl",
     values: {},
   },
+  fa: {
+    dir: "rtl",
+    values: {},
+  },
 }
 
 const locales = {

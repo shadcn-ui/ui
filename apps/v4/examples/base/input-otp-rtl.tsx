@@ -32,6 +32,12 @@ const translations: Translations = {
       verificationCode: "קוד אימות",
     },
   },
+  fa: {
+    dir: "rtl",
+    values: {
+      verificationCode: "کد تأیید",
+    },
+  },
 }
 
 export function InputOTPRtl() {

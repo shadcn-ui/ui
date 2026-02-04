@@ -33,11 +33,22 @@ const translations = {
     messagePlaceholder: "שלח הודעה...",
     voiceMode: "מצב קולי",
   },
+  fa: {
+    dir: "rtl" as const,
+    add: "افزودن",
+    voicePlaceholder: "ضبط و ارسال صدا...",
+    messagePlaceholder: "ارسال پیام...",
+    voiceMode: "حالت صوتی",
+  },
 }
 
 export function ButtonGroupInputGroup() {
   const context = useLanguageContext()
-  const lang = context?.language === "he" ? "he" : "ar"
+  const lang = (['ar', 'he', 'fa'] as const).includes(
+    context?.language as any
+  )
+    ? (context?.language as 'ar' | 'he' | 'fa')
+    : 'ar'
   const t = translations[lang]
   const [voiceEnabled, setVoiceEnabled] = React.useState(false)
 
