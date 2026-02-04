@@ -95,7 +95,7 @@ const translations: Translations = {
     dir: "rtl",
     locale: "fa-IR",
     values: {
-      trigger: "باز کردن کشو",
+      trigger: "باز کردن",
       title: "تغییر هدف",
       description: "هدف فعالیت روزانه خود را تعیین کنید.",
       caloriesPerDay: "کالری/روز",
