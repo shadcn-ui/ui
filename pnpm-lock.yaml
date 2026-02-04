@@ -278,7 +278,7 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
       shadcn:
-        specifier: 3.8.2
+        specifier: 3.8.3
         version: link:../../packages/shadcn
       shiki:
         specifier: ^1.10.1
@@ -510,7 +510,7 @@ importers:
         version: 5.9.2
       vite-tsconfig-paths:
         specifier: ^4.2.0
-        version: 4.3.2(typescript@5.9.2)(vite@7.1.12(@types/node@20.19.10)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.3)(yaml@2.8.1))
+        version: 4.3.2(typescript@5.9.2)(vite@5.4.19(@types/node@20.19.10)(lightningcss@1.30.2))
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@20.19.10)(lightningcss@1.30.2)(msw@2.10.4(@types/node@20.19.10)(typescript@5.9.2))
@@ -4969,11 +4969,13 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   glob@11.0.3:
     resolution: {integrity: sha512-2Nim7dha1KVkaiF4q6Dj+ngPPMdfvLJEOpZk/jKiUAkqKebpGAWQXAq9z1xu9HKu5lWfqw/FASuccEjyznjPaA==}
     engines: {node: 20 || >=22}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   global-directory@4.0.1:
@@ -12151,7 +12153,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.39.0(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1)):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.39.0(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1)))(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -12162,7 +12164,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.54.0(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7)):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.54.0(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7)))(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -12184,7 +12186,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.26.0(hono@4.11.7)(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.39.0(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1))
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.39.0(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1)))(eslint@9.26.0(hono@4.11.7)(jiti@2.6.1))
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -12213,7 +12215,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.26.0(hono@4.11.7)(jiti@1.21.7)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.54.0(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1)(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7))
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.54.0(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7))(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7)))(eslint@9.26.0(hono@4.11.7)(jiti@1.21.7))
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -16358,6 +16360,17 @@ snapshots:
       - supports-color
       - terser
 
+  vite-tsconfig-paths@4.3.2(typescript@5.9.2)(vite@5.4.19(@types/node@20.19.10)(lightningcss@1.30.2)):
+    dependencies:
+      debug: 4.4.1
+      globrex: 0.1.2
+      tsconfck: 3.1.6(typescript@5.9.2)
+    optionalDependencies:
+      vite: 5.4.19(@types/node@20.19.10)(lightningcss@1.30.2)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
   vite-tsconfig-paths@4.3.2(typescript@5.9.2)(vite@7.1.12(@types/node@20.19.10)(jiti@1.21.7)(lightningcss@1.30.2)(tsx@4.20.3)(yaml@2.8.1)):
     dependencies:
       debug: 4.4.1
@@ -16365,17 +16378,6 @@ snapshots:
       tsconfck: 3.1.6(typescript@5.9.2)
     optionalDependencies:
       vite: 7.1.12(@types/node@20.19.10)(jiti@1.21.7)(lightningcss@1.30.2)(tsx@4.20.3)(yaml@2.8.1)
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-
-  vite-tsconfig-paths@4.3.2(typescript@5.9.2)(vite@7.1.12(@types/node@20.19.10)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.3)(yaml@2.8.1)):
-    dependencies:
-      debug: 4.4.1
-      globrex: 0.1.2
-      tsconfck: 3.1.6(typescript@5.9.2)
-    optionalDependencies:
-      vite: 7.1.12(@types/node@20.19.10)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.3)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
       - typescript
