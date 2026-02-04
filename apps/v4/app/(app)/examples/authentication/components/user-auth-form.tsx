@@ -19,12 +19,21 @@ export function UserAuthForm({
   ...props
 }: React.ComponentProps<"div">) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
     setIsLoading(true)
 
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       setIsLoading(false)
     }, 3000)
   }
