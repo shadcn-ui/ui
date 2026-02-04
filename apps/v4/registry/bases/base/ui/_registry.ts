@@ -577,4 +577,15 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "direction",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react"],
+    files: [
+      {
+        path: "ui/direction.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
