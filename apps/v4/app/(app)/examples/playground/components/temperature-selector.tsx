@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { type SliderProps } from "@radix-ui/react-slider"
+import type { Slider as SliderPrimitive } from "radix-ui"
 
 import {
   HoverCard,
@@ -12,7 +12,9 @@ import { Label } from "@/registry/new-york-v4/ui/label"
 import { Slider } from "@/registry/new-york-v4/ui/slider"
 
 interface TemperatureSelectorProps {
-  defaultValue: SliderProps["defaultValue"]
+  defaultValue: React.ComponentProps<
+    typeof SliderPrimitive.Root
+  >["defaultValue"]
 }
 
 export function TemperatureSelector({

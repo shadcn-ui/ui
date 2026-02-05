@@ -1,5 +1,33 @@
 # @shadcn/ui
 
+## 3.8.3
+
+### Patch Changes
+
+- [#9539](https://github.com/shadcn-ui/ui/pull/9539) [`e0063070a63751efd40cf5e5d93da3c9536e64c8`](https://github.com/shadcn-ui/ui/commit/e0063070a63751efd40cf5e5d93da3c9536e64c8) Thanks [@shadcn](https://github.com/shadcn)! - use tw-merge to transform-style
+
+## 3.8.2
+
+### Patch Changes
+
+- [#9507](https://github.com/shadcn-ui/ui/pull/9507) [`b7b839ebc254120eb9bf1a138ce979c38fc348d6`](https://github.com/shadcn-ui/ui/commit/b7b839ebc254120eb9bf1a138ce979c38fc348d6) Thanks [@shadcn](https://github.com/shadcn)! - update migrate radix command
+
+## 3.8.1
+
+### Patch Changes
+
+- [#9502](https://github.com/shadcn-ui/ui/pull/9502) [`2bf55c91338525f886f7c4a7b1fe820155d6bace`](https://github.com/shadcn-ui/ui/commit/2bf55c91338525f886f7c4a7b1fe820155d6bace) Thanks [@shadcn](https://github.com/shadcn)! - properly detect already installed fonts
+
+## 3.8.0
+
+### Minor Changes
+
+- [#9498](https://github.com/shadcn-ui/ui/pull/9498) [`38de7fddc257f04901e98a5fd7821cb8729d54bf`](https://github.com/shadcn-ui/ui/commit/38de7fddc257f04901e98a5fd7821cb8729d54bf) Thanks [@shadcn](https://github.com/shadcn)! - Add RTL support
+
+### Patch Changes
+
+- [#8798](https://github.com/shadcn-ui/ui/pull/8798) [`2acaf954d7492ce722d2a7ee02747dc8f85691ef`](https://github.com/shadcn-ui/ui/commit/2acaf954d7492ce722d2a7ee02747dc8f85691ef) Thanks [@VeiaG](https://github.com/VeiaG)! - Fix: skip all transforms for universal registry items
+
 ## 3.7.0
 
 ### Minor Changes

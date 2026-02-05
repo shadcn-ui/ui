@@ -185,26 +185,24 @@ export async function transformLayoutFonts(
       continue
     }
 
-    // Generate a variable name from the import (e.g., "Inter" -> "inter", "Geist_Mono" -> "geistMono").
-    const varName = toCamelCase(importName)
-
     // Check if import already exists.
     const existingImport = sourceFile.getImportDeclaration((decl) => {
       const moduleSpecifier = decl.getModuleSpecifierValue()
       return moduleSpecifier === "next/font/google"
     })
 
-    // Build font options.
-    const fontOptions = buildFontOptions(font)
-
     if (existingImport) {
       // Check if this specific font is already imported.
       const namedImports = existingImport.getNamedImports()
       const hasImport = namedImports.some((imp) => imp.getName() === importName)
 
-      if (!hasImport) {
-        existingImport.addNamedImport(importName)
+      if (hasImport) {
+        // Font is already imported - skip this font entirely.
+        // Assume the user already has it set up correctly.
+        continue
       }
+
+      existingImport.addNamedImport(importName)
     } else {
       // Add new import.
       sourceFile.addImportDeclaration({
@@ -212,6 +210,12 @@ export async function transformLayoutFonts(
         namedImports: [importName],
       })
     }
+
+    // Generate a variable name from the import (e.g., "Inter" -> "inter", "Geist_Mono" -> "geistMono").
+    const varName = toCamelCase(importName)
+
+    // Build font options.
+    const fontOptions = buildFontOptions(font)
 
     // Check if variable declaration already exists with same variable CSS property.
     const existingVarDecl = findFontVariableDeclaration(

@@ -129,7 +129,7 @@ describe("shadcn init - vite-app", () => {
       "utf-8"
     )
     expect(alertDialogContent).toContain(
-      'import { buttonVariants } from "#custom/components/ui/button"'
+      'import { Button } from "#custom/components/ui/button"'
     )
     expect(alertDialogContent).toContain(
       'import { cn } from "#custom/lib/utils"'

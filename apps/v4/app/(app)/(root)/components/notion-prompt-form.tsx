@@ -190,12 +190,12 @@ export function NotionPromptForm() {
         <FieldLabel htmlFor="notion-prompt" className="sr-only">
           Prompt
         </FieldLabel>
-        <InputGroup>
+        <InputGroup className="rounded-xl">
           <InputGroupTextarea
             id="notion-prompt"
             placeholder="Ask, search, or make anything..."
           />
-          <InputGroupAddon align="block-start">
+          <InputGroupAddon align="block-start" className="pt-3">
             <Popover
               open={mentionPopoverOpen}
               onOpenChange={setMentionPopoverOpen}
@@ -209,7 +209,7 @@ export function NotionPromptForm() {
                     <InputGroupButton
                       variant="outline"
                       size={!hasMentions ? "sm" : "icon-sm"}
-                      className="rounded-full transition-transform"
+                      className="transition-transform"
                     >
                       <IconAt /> {!hasMentions && "Add context"}
                     </InputGroupButton>
@@ -235,6 +235,7 @@ export function NotionPromptForm() {
                               setMentions((prev) => [...prev, currentValue])
                               setMentionPopoverOpen(false)
                             }}
+                            className="rounded-lg"
                           >
                             <MentionableIcon item={item} />
                             {item.title}

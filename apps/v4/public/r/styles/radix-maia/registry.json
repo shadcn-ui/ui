@@ -629,6 +629,16 @@
       "type": "registry:ui"
     },
     {
+      "name": "direction",
+      "files": [
+        {
+          "path": "registry/radix-maia/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "accordion-example",
       "title": "Accordion",
       "registryDependencies": [
@@ -1853,8 +1863,8 @@
       "type": "registry:hook"
     },
     {
-      "name": "font-geist-sans",
-      "title": "Geist Sans",
+      "name": "font-geist",
+      "title": "Geist",
       "type": "registry:font",
       "font": {
         "family": "'Geist Variable', sans-serif",
@@ -1995,6 +2005,20 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-geist-mono",
+      "title": "Geist Mono",
+      "type": "registry:font",
+      "font": {
+        "family": "'Geist Mono Variable', monospace",
+        "provider": "google",
+        "import": "Geist_Mono",
+        "variable": "--font-mono",
         "subsets": [
           "latin"
         ]

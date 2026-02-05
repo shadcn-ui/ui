@@ -234,6 +234,23 @@
     ]
   },
   {
+    "name": "combobox",
+    "type": "registry:ui",
+    "dependencies": [
+      "@base-ui/react"
+    ],
+    "registryDependencies": [
+      "button",
+      "input-group"
+    ],
+    "files": [
+      {
+        "path": "ui/combobox.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "command",
     "type": "registry:ui",
     "dependencies": [
@@ -271,6 +288,19 @@
     "files": [
       {
         "path": "ui/dialog.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "direction",
+    "type": "registry:ui",
+    "dependencies": [
+      "radix-ui"
+    ],
+    "files": [
+      {
+        "path": "ui/direction.tsx",
         "type": "registry:ui"
       }
     ]
@@ -456,6 +486,16 @@
     "files": [
       {
         "path": "ui/navigation-menu.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "native-select",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/native-select.tsx",
         "type": "registry:ui"
       }
     ]

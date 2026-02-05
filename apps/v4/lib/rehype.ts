@@ -170,6 +170,7 @@ interface NodeToProcess {
   styleName: string
   fileName?: string
   srcPath?: string
+  hideCode?: boolean
 }
 
 export function rehypeComponent() {
@@ -211,6 +212,9 @@ export function rehypeComponent() {
         const styleName =
           (getNodeAttributeByName(node, "styleName")?.value as string) ||
           activeStyle.name
+        const hideCode = isTruthyMdxAttribute(
+          getNodeAttributeByName(node, "hideCode")
+        )
 
         if (name) {
           nodesToProcess.push({
@@ -218,6 +222,7 @@ export function rehypeComponent() {
             type: "ComponentPreview",
             name,
             styleName,
+            hideCode,
           })
         }
       }
@@ -226,6 +231,10 @@ export function rehypeComponent() {
     await Promise.all(
       nodesToProcess.map(async (item) => {
         try {
+          if (item.type === "ComponentPreview" && item.hideCode) {
+            return
+          }
+
           let src: string | null = null
 
           if (item.srcPath) {
@@ -293,4 +302,21 @@ export function rehypeComponent() {
 
 function getNodeAttributeByName(node: UnistNode, name: string) {
   return node.attributes?.find((attribute) => attribute.name === name)
+}
+
+function isTruthyMdxAttribute(
+  attribute?: {
+    value?: unknown
+  } | null
+) {
+  if (!attribute) return false
+
+  if (!("value" in attribute)) return true
+
+  const { value } = attribute
+
+  if (value === undefined || value === null) return true
+  if (typeof value === "boolean") return value
+  if (typeof value === "string") return value !== "false"
+  return Boolean(value)
 }

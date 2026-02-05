@@ -59,7 +59,7 @@ export function FontPicker({
           anchor={isMobile ? anchorRef : undefined}
           side={isMobile ? "top" : "right"}
           align={isMobile ? "center" : "start"}
-          className="max-h-80 md:w-72"
+          className="max-h-96 md:w-72"
         >
           <PickerRadioGroup
             value={currentFont?.value}

@@ -86,7 +86,7 @@
   {
     "name": "@basecn",
     "homepage": "https://basecn.dev",
-    "url": "https://basecn.dev/r/{name}",
+    "url": "https://basecn.dev/r/{name}.json",
     "description": "Beautifully crafted shadcn/ui components powered by Base UI"
   },
   {
@@ -164,7 +164,7 @@
   {
     "name": "@elements",
     "homepage": "https://www.tryelements.dev",
-    "url": "https://www.tryelements.dev/r/registry.json",
+    "url": "https://www.tryelements.dev/r/{name}.json",
     "description": "Full-stack shadcn/ui components that go beyond UI. Add auth, monetization, uploads, and AI to your app in seconds."
   },
   {
@@ -176,7 +176,7 @@
   {
     "name": "@efferd",
     "homepage": "https://efferd.com/",
-    "url": "https://efferd.com/r/registry.json",
+    "url": "https://efferd.com/r/{name}.json",
     "description": "A collection of beautifully crafted Shadcn/UI blocks, designed to help developers build modern websites with ease."
   },
   {
@@ -312,6 +312,12 @@
     "description": "A collection of reusable components."
   },
   {
+    "name": "@nteract",
+    "homepage": "https://nteract-elements.vercel.app/",
+    "url": "https://nteract-elements.vercel.app/r/{name}.json",
+    "description": "Components for interactive computing notebooks."
+  },
+  {
     "name": "@nuqs",
     "homepage": "https://nuqs.dev/registry",
     "url": "https://nuqs.dev/r/{name}.json",
@@ -342,10 +348,10 @@
     "description": "React Aria Components with shadcn characteristics.Copy-and-paste react aria components that run side-by-side with shadcn components."
   },
   {
-    "name": "@paceui",
-    "homepage": "https://ui.paceui.com",
-    "url": "https://ui.paceui.com/r/{name}.json",
-    "description": "Animated components and building blocks built for smooth interaction and rich detail. Copy, customise, and create without the extra setup."
+    "name": "@pacekit",
+    "homepage": "https://ui.pacekit.dev",
+    "url": "https://ui.pacekit.dev/r/{name}.json",
+    "description": "Carefully built UI blocks for real apps and dashboards, designed to integrate smoothly from early ideas to production releases."
   },
   {
     "name": "@pastecn",
@@ -368,7 +374,7 @@
   {
     "name": "@prompt-kit",
     "homepage": "https://www.prompt-kit.com",
-    "url": "https://www.prompt-kit.com/c/registry.json",
+    "url": "https://www.prompt-kit.com/c/{name}.json",
     "description": "Core building blocks for AI apps. High-quality, accessible, and customizable components for AI interfaces."
   },
   {
@@ -430,6 +436,12 @@
     "homepage": "https://roiui.com",
     "url": "https://roiui.com/r/{name}.json",
     "description": "Roi UI is a library that offers UI components and blocks built with Base UI primitives. Some blocks and components use motion (framer). Everything is open-source and will be forever."
+  },
+  {
+    "name": "@satoriui",
+    "homepage": "https://satoriui.site",
+    "url": "https://satoriui.site/r/{name}.json",
+    "description": "A comprehensive suite of high-fidelity interaction components. It offers motion-driven components that designed with motion-react and tailwindcss, that blends seamlessly."
   },
   {
     "name": "@solaceui",
@@ -540,6 +552,12 @@
     "description": "A set of open source fully controlled React Inertia form elements"
   },
   {
+    "name": "@wds",
+    "homepage": "https://wds-shadcn-registry.netlify.app/",
+    "url": "https://wds-shadcn-registry.netlify.app/r/{name}.json",
+    "description": "A collection of accessible components built for use with Shadcn."
+  },
+  {
     "name": "@wigggle-ui",
     "homepage": "https://wigggle-ui.vercel.app",
     "url": "https://wigggle-ui.vercel.app/r/{name}.json",
@@ -600,6 +618,18 @@
     "description": "AnimBits is a collection animated UI components for React that use Framer Motion. The components provided include buttons, cards, text, icons, lists, loaders, and page transitions, animation hooks all of which have general-purpose effects that are not flashy and easy on the eyes, making them easy to use."
   },
   {
+    "name": "@shadcn-space",
+    "homepage": "https://shadcnspace.com",
+    "url": "https://shadcnspace.com/r/{name}.json",
+    "description": "ShadcnSpace is a collection of extra-ordinary, highly customizable shadcn/ui components, blocks, and themes to build modern UIs with speed and clarity."
+  },
+  {
+    "name": "@shadcn-dashboard",
+    "homepage": "https://shadcn-dashboard.com",
+    "url": "https://shadcn-dashboard.com/r/{name}.json",
+    "description": "ShadcnDashboard is a collection of modern, production-ready dashboard layouts, components, and UI patterns built on top of shadcn/ui and Tailwind CSS. It’s designed to help developers build clean, scalable, and data-driven dashboards faster—without compromising on performance, accessibility, or customization."
+  },
+  {
     "name": "@icons-animated",
     "homepage": "https://icons.lndev.me",
     "url": "https://icons.lndev.me/r/{name}.json",
@@ -620,7 +650,7 @@
   {
     "name": "@beste-ui",
     "homepage": "https://ui.beste.co",
-    "url": "https://ui.beste.co/r/registry.json",
+    "url": "https://ui.beste.co/r/{name}.json",
     "description": "Production-ready UI blocks for landing pages, dashboards, and web apps."
   },
   {
@@ -688,5 +718,11 @@
     "homepage": "https://typedora-ui.netlify.app",
     "url": "https://typedora-ui.netlify.app/r/{name}.json",
     "description": "Typedora UI is a next-generation extension layer for shadcn/ui, designed to bring full type-safety to your UI components."
+  },
+  {
+    "name": "@sona-ui",
+    "homepage": "https://sona-ui.vercel.app",
+    "url": "https://sona-ui.vercel.app/r/{name}.json",
+    "description": "A modern UI component library built with React and TailwindCSS to help you build beautiful and accessible web applications faster."
   }
 ]

@@ -40,7 +40,46 @@ export default function CalendarExample() {
       <DatePickerSimple />
       <DataPickerWithDropdowns />
       <DatePickerWithRange />
+      <CalendarInCard />
+      <CalendarInPopover />
     </ExampleWrapper>
+  )
+}
+
+function CalendarInCard() {
+  return (
+    <Example title="In Card">
+      <Card className="mx-auto w-fit p-0">
+        <CardContent className="p-0">
+          <Calendar mode="single" />
+        </CardContent>
+      </Card>
+    </Example>
+  )
+}
+
+function CalendarInPopover() {
+  return (
+    <Example title="In Popover">
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline" className="px-2.5 font-normal">
+            <IconPlaceholder
+              lucide="CalendarIcon"
+              tabler="IconCalendar"
+              hugeicons="CalendarIcon"
+              phosphor="CalendarBlankIcon"
+              remixicon="RiCalendarLine"
+              data-icon="inline-start"
+            />
+            Open Calendar
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar mode="single" />
+        </PopoverContent>
+      </Popover>
+    </Example>
   )
 }
 

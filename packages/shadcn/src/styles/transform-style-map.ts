@@ -1,4 +1,5 @@
 import { TransformerStyle } from "@/src/styles/transform"
+import { twMerge } from "tailwind-merge"
 import {
   Node,
   type CallExpression,
@@ -14,7 +15,8 @@ import { type StyleMap } from "./create-style-map"
  * These are typically used as CSS selectors or for other purposes
  * that require the class name to remain in the code.
  */
-const ALLOWLIST = new Set(["cn-menu-target"])
+// TODO: all cn-* classes to be allowedlisted.
+const ALLOWLIST = new Set(["cn-menu-target", "cn-logical-sides", "cn-rtl-flip"])
 
 function isStringLiteralLike(
   node: Node
@@ -414,10 +416,7 @@ function applyClassesToElement(element: Node, tailwindClasses: string) {
 }
 
 function mergeClasses(newClasses: string, existing: string) {
-  const existingParts = existing.split(/\s+/).filter(Boolean)
-  const newParts = newClasses.split(/\s+/).filter(Boolean)
-  const combined = [...newParts, ...existingParts]
-  return combined.join(" ").trim()
+  return twMerge(newClasses, existing)
 }
 
 function isCnCall(call: CallExpression) {

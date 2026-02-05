@@ -39,7 +39,8 @@
     "pub:release": "cd packages/shadcn && pnpm pub:release",
     "test:dev": "turbo run test --filter=!shadcn-ui --force",
     "test": "start-server-and-test v4:dev http://localhost:4000 test:dev",
-    "validate:registries": "pnpm --filter=v4 validate:registries"
+    "validate:registries": "pnpm --filter=v4 validate:registries",
+    "test:apps": "pnpm --filter=v4 test:apps"
   },
   "packageManager": "pnpm@9.0.6",
   "dependencies": {
@@ -51,13 +52,13 @@
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
-    "@typescript-eslint/parser": "^5.59.7",
+    "@typescript-eslint/parser": "^8.49.0",
     "autoprefixer": "^10.4.14",
     "chokidar": "^4.0.3",
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
-    "eslint": "^8.41.0",
-    "eslint-config-next": "13.3.0",
+    "eslint": "^9.26.0",
+    "eslint-config-next": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-turbo": "^1.9.9",
     "eslint-plugin-react": "^7.32.2",

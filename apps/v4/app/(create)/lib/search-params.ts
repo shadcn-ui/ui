@@ -66,6 +66,7 @@ const designSystemSearchParams = {
     "start",
     "vite",
   ] as const).withDefault("next"),
+  rtl: parseAsBoolean.withDefault(false),
   size: parseAsInteger.withDefault(100),
   custom: parseAsBoolean.withDefault(false),
 }

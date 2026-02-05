@@ -4,8 +4,7 @@ import * as React from "react"
 import { cn } from "@/examples/base/lib/utils"
 import { Button } from "@/examples/base/ui/button"
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { XIcon } from "lucide-react"
 
 function Dialog({ ...props }: DialogPrimitive.Root.Props) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
@@ -70,13 +69,7 @@ function DialogContent({
               />
             }
           >
-            <IconPlaceholder
-              lucide="XIcon"
-              tabler="IconX"
-              hugeicons="Cancel01Icon"
-              phosphor="XIcon"
-              remixicon="RiCloseLine"
-            />
+            <XIcon />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         )}

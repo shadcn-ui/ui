@@ -95,12 +95,14 @@ export default async function Page(props: {
         <div className="mx-auto flex w-full max-w-[40rem] min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
-              <div className="flex items-start justify-between">
-                <h1 className="scroll-m-24 text-4xl font-semibold tracking-tight sm:text-3xl">
+              <div className="flex items-center justify-between md:items-start">
+                <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight sm:text-3xl">
                   {doc.title}
                 </h1>
-                <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:py-1.5 sm:backdrop-blur-none">
-                  <DocsCopyPage page={raw} url={absoluteUrl(page.url)} />
+                <div className="docs-nav flex items-center gap-2">
+                  <div className="hidden sm:block">
+                    <DocsCopyPage page={raw} url={absoluteUrl(page.url)} />
+                  </div>
                   <div className="ml-auto flex gap-2">
                     {neighbours.previous && (
                       <Button
@@ -179,7 +181,7 @@ export default async function Page(props: {
           </div>
         </div>
       </div>
-      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 lg:flex">
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-(--sidebar-width) flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0"></div>
         {doc.toc?.length ? (
           <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto px-8">

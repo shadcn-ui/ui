@@ -172,10 +172,7 @@ function ChartTooltipContent({
 
   return (
     <div
-      className={cn(
-        "cn-chart-tooltip grid min-w-[8rem] items-start",
-        className
-      )}
+      className={cn("cn-chart-tooltip grid min-w-32 items-start", className)}
     >
       {!nestLabel ? tooltipLabel : null}
       <div className="grid gap-1.5">

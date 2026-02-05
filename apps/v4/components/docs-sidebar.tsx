@@ -33,6 +33,10 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/directory",
   },
   {
+    name: "RTL",
+    href: "/docs/rtl",
+  },
+  {
     name: "MCP Server",
     href: "/docs/mcp",
   },
@@ -49,8 +53,8 @@ const TOP_LEVEL_SECTIONS = [
     href: "/docs/changelog",
   },
 ]
-const EXCLUDED_SECTIONS = ["installation", "dark-mode", "changelog"]
-const EXCLUDED_PAGES = ["/docs", "/docs/changelog"]
+const EXCLUDED_SECTIONS = ["installation", "dark-mode", "changelog", "rtl"]
+const EXCLUDED_PAGES = ["/docs", "/docs/changelog", "/docs/rtl"]
 
 export function DocsSidebar({
   tree,
@@ -61,13 +65,15 @@ export function DocsSidebar({
 
   return (
     <Sidebar
-      className="sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-6rem)] overscroll-none bg-transparent lg:flex"
+      className="sticky top-[calc(var(--header-height)+0.6rem)] z-30 hidden h-[calc(100svh-10rem)] overscroll-none bg-transparent [--sidebar-menu-width:--spacing(56)] lg:flex"
       collapsible="none"
       {...props}
     >
-      <SidebarContent className="no-scrollbar overflow-x-hidden px-2">
-        <div className="from-background via-background/80 to-background/50 sticky -top-1 z-10 h-8 shrink-0 bg-gradient-to-b blur-xs" />
-        <SidebarGroup>
+      <div className="h-9" />
+      <div className="from-background via-background/80 to-background/50 absolute top-8 z-10 h-8 w-(--sidebar-menu-width) shrink-0 bg-gradient-to-b blur-xs" />
+      <div className="via-border absolute top-12 right-2 bottom-0 hidden h-full w-px bg-gradient-to-b from-transparent to-transparent lg:flex" />
+      <SidebarContent className="no-scrollbar mx-auto w-(--sidebar-menu-width) overflow-x-hidden px-2">
+        <SidebarGroup className="pt-6">
           <SidebarGroupLabel className="text-muted-foreground font-medium">
             Sections
           </SidebarGroupLabel>
@@ -89,8 +95,14 @@ export function DocsSidebar({
                       className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                     >
                       <Link href={href}>
-                        <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
+                        <span className="absolute inset-0 flex w-(--sidebar-menu-width) bg-transparent" />
                         {name}
+                        {PAGES_NEW.includes(href) && (
+                          <span
+                            className="flex size-2 rounded-full bg-blue-500"
+                            title="New"
+                          />
+                        )}
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -129,7 +141,7 @@ export function DocsSidebar({
                             className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                           >
                             <Link href={page.url}>
-                              <span className="absolute inset-0 flex w-(--sidebar-width) bg-transparent" />
+                              <span className="absolute inset-0 flex w-(--sidebar-menu-width) bg-transparent" />
                               {page.name}
                               {PAGES_NEW.includes(page.url) && (
                                 <span
