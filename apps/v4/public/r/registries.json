@@ -312,6 +312,12 @@
     "description": "A collection of reusable components."
   },
   {
+    "name": "@nteract",
+    "homepage": "https://nteract-elements.vercel.app/",
+    "url": "https://nteract-elements.vercel.app/r/{name}.json",
+    "description": "Components for interactive computing notebooks."
+  },
+  {
     "name": "@nuqs",
     "homepage": "https://nuqs.dev/registry",
     "url": "https://nuqs.dev/r/{name}.json",
@@ -712,5 +718,11 @@
     "homepage": "https://typedora-ui.netlify.app",
     "url": "https://typedora-ui.netlify.app/r/{name}.json",
     "description": "Typedora UI is a next-generation extension layer for shadcn/ui, designed to bring full type-safety to your UI components."
+  },
+  {
+    "name": "@sona-ui",
+    "homepage": "https://sona-ui.vercel.app",
+    "url": "https://sona-ui.vercel.app/r/{name}.json",
+    "description": "A modern UI component library built with React and TailwindCSS to help you build beautiful and accessible web applications faster."
   }
 ]

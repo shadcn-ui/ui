@@ -552,7 +552,7 @@
 
   /* MARK: Empty */
   .cn-empty {
-    @apply gap-4 rounded-lg border-dashed p-6;
+    @apply gap-4 rounded-xl border-dashed p-6;
   }
 
   .cn-empty-header {
