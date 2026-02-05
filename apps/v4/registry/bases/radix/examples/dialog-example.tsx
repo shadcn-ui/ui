@@ -43,6 +43,7 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectSeparator,
   SelectTrigger,
@@ -308,9 +309,11 @@ function DialogChatSettings() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end">
-                            <SelectItem value="light">Light</SelectItem>
-                            <SelectItem value="dark">Dark</SelectItem>
-                            <SelectItem value="system">System</SelectItem>
+                            <SelectGroup>
+                              <SelectItem value="light">Light</SelectItem>
+                              <SelectItem value="dark">Dark</SelectItem>
+                              <SelectItem value="system">System</SelectItem>
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -327,30 +330,32 @@ function DialogChatSettings() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end">
-                            <SelectItem value="default">
-                              <div className="size-3 rounded-full bg-neutral-500 dark:bg-neutral-400" />
-                              Default
-                            </SelectItem>
-                            <SelectItem value="red">
-                              <div className="size-3 rounded-full bg-red-500 dark:bg-red-400" />
-                              Red
-                            </SelectItem>
-                            <SelectItem value="blue">
-                              <div className="size-3 rounded-full bg-blue-500 dark:bg-blue-400" />
-                              Blue
-                            </SelectItem>
-                            <SelectItem value="green">
-                              <div className="size-3 rounded-full bg-green-500 dark:bg-green-400" />
-                              Green
-                            </SelectItem>
-                            <SelectItem value="purple">
-                              <div className="size-3 rounded-full bg-purple-500 dark:bg-purple-400" />
-                              Purple
-                            </SelectItem>
-                            <SelectItem value="pink">
-                              <div className="size-3 rounded-full bg-pink-500 dark:bg-pink-400" />
-                              Pink
-                            </SelectItem>
+                            <SelectGroup>
+                              <SelectItem value="default">
+                                <div className="size-3 rounded-full bg-neutral-500 dark:bg-neutral-400" />
+                                Default
+                              </SelectItem>
+                              <SelectItem value="red">
+                                <div className="size-3 rounded-full bg-red-500 dark:bg-red-400" />
+                                Red
+                              </SelectItem>
+                              <SelectItem value="blue">
+                                <div className="size-3 rounded-full bg-blue-500 dark:bg-blue-400" />
+                                Blue
+                              </SelectItem>
+                              <SelectItem value="green">
+                                <div className="size-3 rounded-full bg-green-500 dark:bg-green-400" />
+                                Green
+                              </SelectItem>
+                              <SelectItem value="purple">
+                                <div className="size-3 rounded-full bg-purple-500 dark:bg-purple-400" />
+                                Purple
+                              </SelectItem>
+                              <SelectItem value="pink">
+                                <div className="size-3 rounded-full bg-pink-500 dark:bg-pink-400" />
+                                Pink
+                              </SelectItem>
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -374,16 +379,20 @@ function DialogChatSettings() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end" position="item-aligned">
-                            <SelectItem value="auto">Auto</SelectItem>
+                            <SelectGroup>
+                              <SelectItem value="auto">Auto</SelectItem>
+                            </SelectGroup>
                             <SelectSeparator />
-                            {spokenLanguages.map((language) => (
-                              <SelectItem
-                                key={language.value}
-                                value={language.value}
-                              >
-                                {language.label}
-                              </SelectItem>
-                            ))}
+                            <SelectGroup>
+                              {spokenLanguages.map((language) => (
+                                <SelectItem
+                                  key={language.value}
+                                  value={language.value}
+                                >
+                                  {language.label}
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>
@@ -395,11 +404,16 @@ function DialogChatSettings() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent align="end" position="item-aligned">
-                            {voices.map((voice) => (
-                              <SelectItem key={voice.value} value={voice.value}>
-                                {voice.label}
-                              </SelectItem>
-                            ))}
+                            <SelectGroup>
+                              {voices.map((voice) => (
+                                <SelectItem
+                                  key={voice.value}
+                                  value={voice.value}
+                                >
+                                  {voice.label}
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
                           </SelectContent>
                         </Select>
                       </Field>

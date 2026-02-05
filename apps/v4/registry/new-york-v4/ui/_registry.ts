@@ -404,7 +404,7 @@ export const ui: Registry["items"] = [
   {
     name: "resizable",
     type: "registry:ui",
-    dependencies: ["react-resizable-panels@^3"],
+    dependencies: ["react-resizable-panels@^4"],
     files: [
       {
         path: "ui/resizable.tsx",

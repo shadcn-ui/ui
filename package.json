@@ -39,7 +39,8 @@
     "pub:release": "cd packages/shadcn && pnpm pub:release",
     "test:dev": "turbo run test --filter=!shadcn-ui --force",
     "test": "start-server-and-test v4:dev http://localhost:4000 test:dev",
-    "validate:registries": "pnpm --filter=v4 validate:registries"
+    "validate:registries": "pnpm --filter=v4 validate:registries",
+    "test:apps": "pnpm --filter=v4 test:apps"
   },
   "packageManager": "pnpm@9.0.6",
   "dependencies": {

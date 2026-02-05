@@ -486,7 +486,8 @@
         "separator",
         "sheet",
         "skeleton",
-        "tooltip"
+        "tooltip",
+        "use-mobile"
       ],
       "files": [
         {
