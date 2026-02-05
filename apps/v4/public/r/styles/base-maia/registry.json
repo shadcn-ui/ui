@@ -486,7 +486,8 @@
         "separator",
         "sheet",
         "skeleton",
-        "tooltip"
+        "tooltip",
+        "use-mobile"
       ],
       "files": [
         {
@@ -628,6 +629,19 @@
       "files": [
         {
           "path": "registry/base-maia/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "direction",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/base-maia/ui/direction.tsx",
           "type": "registry:ui"
         }
       ],
@@ -1857,8 +1871,8 @@
       "type": "registry:hook"
     },
     {
-      "name": "font-geist-sans",
-      "title": "Geist Sans",
+      "name": "font-geist",
+      "title": "Geist",
       "type": "registry:font",
       "font": {
         "family": "'Geist Variable', sans-serif",
@@ -1999,6 +2013,20 @@
         "provider": "google",
         "import": "JetBrains_Mono",
         "variable": "--font-sans",
+        "subsets": [
+          "latin"
+        ]
+      }
+    },
+    {
+      "name": "font-geist-mono",
+      "title": "Geist Mono",
+      "type": "registry:font",
+      "font": {
+        "family": "'Geist Mono Variable', monospace",
+        "provider": "google",
+        "import": "Geist_Mono",
+        "variable": "--font-mono",
         "subsets": [
           "latin"
         ]

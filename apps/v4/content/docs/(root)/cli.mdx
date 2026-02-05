@@ -223,3 +223,113 @@ To customize the output directory, use the `--output` option.
 ```bash
 npx shadcn@latest build --output ./public/registry
 ```
+
+---
+
+## migrate
+
+Use the `migrate` command to run migrations on your project.
+
+```bash
+npx shadcn@latest migrate [migration]
+```
+
+**Available Migrations**
+
+| Migration | Description                                             |
+| --------- | ------------------------------------------------------- |
+| `icons`   | Migrate your UI components to a different icon library. |
+| `radix`   | Migrate to radix-ui.                                    |
+| `rtl`     | Migrate your components to support RTL (right-to-left). |
+
+**Options**
+
+```bash
+Usage: shadcn migrate [options] [migration] [path]
+
+run a migration.
+
+Arguments:
+  migration        the migration to run.
+  path             optional path or glob pattern to migrate.
+
+Options:
+  -c, --cwd <cwd>  the working directory. defaults to the current directory.
+  -l, --list       list all migrations. (default: false)
+  -y, --yes        skip confirmation prompt. (default: false)
+  -h, --help       display help for command
+```
+
+---
+
+### migrate rtl
+
+The `rtl` migration transforms your components to support RTL (right-to-left) languages.
+
+```bash
+npx shadcn@latest migrate rtl
+```
+
+This will:
+
+1. Update `components.json` to set `rtl: true`
+2. Transform physical CSS properties to logical equivalents (e.g., `ml-4` → `ms-4`, `text-left` → `text-start`)
+3. Add `rtl:` variants where needed (e.g., `space-x-4` → `space-x-4 rtl:space-x-reverse`)
+
+**Migrate specific files**
+
+You can migrate specific files or use glob patterns:
+
+```bash
+# Migrate a specific file
+npx shadcn@latest migrate rtl src/components/ui/button.tsx
+
+# Migrate files matching a glob pattern
+npx shadcn@latest migrate rtl "src/components/ui/**"
+```
+
+If no path is provided, the migration will transform all files in your `ui` directory (from `components.json`).
+
+---
+
+### migrate radix
+
+The `radix` migration updates your imports from individual `@radix-ui/react-*` packages to the unified `radix-ui` package.
+
+```bash
+npx shadcn@latest migrate radix
+```
+
+This will:
+
+1. Transform imports from `@radix-ui/react-*` to `radix-ui`
+2. Add the `radix-ui` package to your `package.json`
+
+**Before**
+
+```tsx
+import * as DialogPrimitive from "@radix-ui/react-dialog"
+import * as SelectPrimitive from "@radix-ui/react-select"
+```
+
+**After**
+
+```tsx
+import { Dialog as DialogPrimitive, Select as SelectPrimitive } from "radix-ui"
+```
+
+**Migrate specific files**
+
+You can migrate specific files or use glob patterns:
+
+```bash
+# Migrate a specific file.
+npx shadcn@latest migrate radix src/components/ui/dialog.tsx
+
+# Migrate files matching a glob pattern.
+npx shadcn@latest migrate radix "src/components/ui/**"
+```
+
+If no path is provided, the migration will transform all files in your `ui` directory (from `components.json`).
+
+Once complete, you can remove any unused `@radix-ui/react-*` packages from your `package.json`.

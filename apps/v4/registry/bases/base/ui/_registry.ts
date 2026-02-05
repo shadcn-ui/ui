@@ -437,6 +437,7 @@ export const ui: Registry["items"] = [
       "sheet",
       "skeleton",
       "tooltip",
+      "use-mobile",
     ],
     files: [
       {
@@ -573,6 +574,17 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/native-select.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "direction",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react"],
+    files: [
+      {
+        path: "ui/direction.tsx",
         type: "registry:ui",
       },
     ],

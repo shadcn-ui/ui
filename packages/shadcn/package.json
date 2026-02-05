@@ -1,6 +1,6 @@
 {
   "name": "shadcn",
-  "version": "3.7.0",
+  "version": "3.8.3",
   "description": "Add components to your apps.",
   "publishConfig": {
     "access": "public"
@@ -104,6 +104,7 @@
     "prompts": "^2.4.2",
     "recast": "^0.23.11",
     "stringify-object": "^5.0.0",
+    "tailwind-merge": "^3.0.1",
     "ts-morph": "^26.0.0",
     "tsconfig-paths": "^4.2.0",
     "validate-npm-package-name": "^7.0.1",

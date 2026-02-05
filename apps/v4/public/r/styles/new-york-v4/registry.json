@@ -6,7 +6,8 @@
       "name": "index",
       "dependencies": [
         "class-variance-authority",
-        "lucide-react"
+        "lucide-react",
+        "radix-ui"
       ],
       "devDependencies": [
         "tw-animate-css"
@@ -22,7 +23,8 @@
       "name": "style",
       "dependencies": [
         "class-variance-authority",
-        "lucide-react"
+        "lucide-react",
+        "radix-ui"
       ],
       "devDependencies": [
         "tw-animate-css"
@@ -37,7 +39,7 @@
     {
       "name": "accordion",
       "dependencies": [
-        "@radix-ui/react-accordion"
+        "radix-ui"
       ],
       "files": [
         {
@@ -60,7 +62,7 @@
     {
       "name": "alert-dialog",
       "dependencies": [
-        "@radix-ui/react-alert-dialog"
+        "radix-ui"
       ],
       "registryDependencies": [
         "button"
@@ -76,7 +78,7 @@
     {
       "name": "aspect-ratio",
       "dependencies": [
-        "@radix-ui/react-aspect-ratio"
+        "radix-ui"
       ],
       "files": [
         {
@@ -89,7 +91,7 @@
     {
       "name": "avatar",
       "dependencies": [
-        "@radix-ui/react-avatar"
+        "radix-ui"
       ],
       "files": [
         {
@@ -102,7 +104,7 @@
     {
       "name": "badge",
       "dependencies": [
-        "@radix-ui/react-slot"
+        "radix-ui"
       ],
       "files": [
         {
@@ -115,7 +117,7 @@
     {
       "name": "breadcrumb",
       "dependencies": [
-        "@radix-ui/react-slot"
+        "radix-ui"
       ],
       "files": [
         {
@@ -128,7 +130,7 @@
     {
       "name": "button",
       "dependencies": [
-        "@radix-ui/react-slot"
+        "radix-ui"
       ],
       "files": [
         {
@@ -215,7 +217,7 @@
     {
       "name": "checkbox",
       "dependencies": [
-        "@radix-ui/react-checkbox"
+        "radix-ui"
       ],
       "files": [
         {
@@ -228,7 +230,7 @@
     {
       "name": "collapsible",
       "dependencies": [
-        "@radix-ui/react-collapsible"
+        "radix-ui"
       ],
       "files": [
         {
@@ -274,7 +276,7 @@
     {
       "name": "context-menu",
       "dependencies": [
-        "@radix-ui/react-context-menu"
+        "radix-ui"
       ],
       "files": [
         {
@@ -287,7 +289,7 @@
     {
       "name": "dialog",
       "dependencies": [
-        "@radix-ui/react-dialog"
+        "radix-ui"
       ],
       "files": [
         {
@@ -300,8 +302,7 @@
     {
       "name": "drawer",
       "dependencies": [
-        "vaul",
-        "@radix-ui/react-dialog"
+        "vaul"
       ],
       "files": [
         {
@@ -314,7 +315,7 @@
     {
       "name": "dropdown-menu",
       "dependencies": [
-        "@radix-ui/react-dropdown-menu"
+        "radix-ui"
       ],
       "files": [
         {
@@ -351,8 +352,7 @@
     {
       "name": "form",
       "dependencies": [
-        "@radix-ui/react-label",
-        "@radix-ui/react-slot",
+        "radix-ui",
         "@hookform/resolvers",
         "zod",
         "react-hook-form"
@@ -372,7 +372,7 @@
     {
       "name": "hover-card",
       "dependencies": [
-        "@radix-ui/react-hover-card"
+        "radix-ui"
       ],
       "files": [
         {
@@ -422,6 +422,9 @@
     },
     {
       "name": "item",
+      "dependencies": [
+        "radix-ui"
+      ],
       "registryDependencies": [
         "separator"
       ],
@@ -436,7 +439,7 @@
     {
       "name": "label",
       "dependencies": [
-        "@radix-ui/react-label"
+        "radix-ui"
       ],
       "files": [
         {
@@ -449,7 +452,7 @@
     {
       "name": "menubar",
       "dependencies": [
-        "@radix-ui/react-menubar"
+        "radix-ui"
       ],
       "files": [
         {
@@ -462,7 +465,7 @@
     {
       "name": "navigation-menu",
       "dependencies": [
-        "@radix-ui/react-navigation-menu"
+        "radix-ui"
       ],
       "files": [
         {
@@ -488,7 +491,7 @@
     {
       "name": "popover",
       "dependencies": [
-        "@radix-ui/react-popover"
+        "radix-ui"
       ],
       "files": [
         {
@@ -501,7 +504,7 @@
     {
       "name": "progress",
       "dependencies": [
-        "@radix-ui/react-progress"
+        "radix-ui"
       ],
       "files": [
         {
@@ -514,7 +517,7 @@
     {
       "name": "radio-group",
       "dependencies": [
-        "@radix-ui/react-radio-group"
+        "radix-ui"
       ],
       "files": [
         {
@@ -527,7 +530,7 @@
     {
       "name": "resizable",
       "dependencies": [
-        "react-resizable-panels"
+        "react-resizable-panels@^4"
       ],
       "files": [
         {
@@ -540,7 +543,7 @@
     {
       "name": "scroll-area",
       "dependencies": [
-        "@radix-ui/react-scroll-area"
+        "radix-ui"
       ],
       "files": [
         {
@@ -553,7 +556,7 @@
     {
       "name": "select",
       "dependencies": [
-        "@radix-ui/react-select"
+        "radix-ui"
       ],
       "files": [
         {
@@ -566,7 +569,7 @@
     {
       "name": "separator",
       "dependencies": [
-        "@radix-ui/react-separator"
+        "radix-ui"
       ],
       "files": [
         {
@@ -579,7 +582,7 @@
     {
       "name": "sheet",
       "dependencies": [
-        "@radix-ui/react-dialog"
+        "radix-ui"
       ],
       "files": [
         {
@@ -592,7 +595,7 @@
     {
       "name": "sidebar",
       "dependencies": [
-        "@radix-ui/react-slot",
+        "radix-ui",
         "class-variance-authority",
         "lucide-react"
       ],
@@ -668,7 +671,7 @@
     {
       "name": "slider",
       "dependencies": [
-        "@radix-ui/react-slider"
+        "radix-ui"
       ],
       "files": [
         {
@@ -708,7 +711,7 @@
     {
       "name": "switch",
       "dependencies": [
-        "@radix-ui/react-switch"
+        "radix-ui"
       ],
       "files": [
         {
@@ -731,7 +734,7 @@
     {
       "name": "tabs",
       "dependencies": [
-        "@radix-ui/react-tabs"
+        "radix-ui"
       ],
       "files": [
         {
@@ -754,7 +757,7 @@
     {
       "name": "toggle",
       "dependencies": [
-        "@radix-ui/react-toggle"
+        "radix-ui"
       ],
       "files": [
         {
@@ -767,7 +770,7 @@
     {
       "name": "toggle-group",
       "dependencies": [
-        "@radix-ui/react-toggle-group"
+        "radix-ui"
       ],
       "registryDependencies": [
         "toggle"
@@ -783,7 +786,7 @@
     {
       "name": "tooltip",
       "dependencies": [
-        "@radix-ui/react-tooltip"
+        "radix-ui"
       ],
       "files": [
         {
@@ -808,6 +811,16 @@
       "files": [
         {
           "path": "registry/new-york-v4/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
+      "name": "direction",
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/direction.tsx",
           "type": "registry:ui"
         }
       ],
