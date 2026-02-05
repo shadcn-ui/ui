@@ -348,10 +348,10 @@
     "description": "React Aria Components with shadcn characteristics.Copy-and-paste react aria components that run side-by-side with shadcn components."
   },
   {
-    "name": "@pacekit",
-    "homepage": "https://ui.pacekit.dev",
-    "url": "https://ui.pacekit.dev/r/{name}.json",
-    "description": "Carefully built UI blocks for real apps and dashboards, designed to integrate smoothly from early ideas to production releases."
+    "name": "@paceui",
+    "homepage": "https://ui.paceui.com",
+    "url": "https://ui.paceui.com/r/{name}.json",
+    "description": "Animated components and building blocks built for smooth interaction and rich detail. Copy, customise, and create without the extra setup."
   },
   {
     "name": "@pastecn",
@@ -718,5 +718,11 @@
     "homepage": "https://typedora-ui.netlify.app",
     "url": "https://typedora-ui.netlify.app/r/{name}.json",
     "description": "Typedora UI is a next-generation extension layer for shadcn/ui, designed to bring full type-safety to your UI components."
+  },
+  {
+    "name": "@react-slot",
+    "homepage": "https://react-slot.vercel.app/",
+    "url": "https://react-slot.vercel.app/r/{name}.json",
+    "description": "Vue-style slot composition for React - Fine-grained control over component composition"
   }
 ]
