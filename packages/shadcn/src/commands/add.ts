@@ -86,7 +86,7 @@ export const add = new Command()
         "otp-",
         "calendar-",
       ]
-      const restrictedStylePrefixes = ["base-", "radix-"]
+      const restrictedStylePrefixes = ["base-", "radix-", "ark-"]
 
       if (components.length > 0) {
         if (initialConfig?.style) {
