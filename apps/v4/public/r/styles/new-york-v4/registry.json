@@ -530,7 +530,7 @@
     {
       "name": "resizable",
       "dependencies": [
-        "react-resizable-panels@^3"
+        "react-resizable-panels@^4"
       ],
       "files": [
         {

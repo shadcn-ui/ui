@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useIsMobile } from "@/examples/radix/hooks/use-mobile"
 import { cn } from "@/examples/radix/lib/utils"
 import { Button } from "@/examples/radix/ui-rtl/button"
 import { Input } from "@/examples/radix/ui-rtl/input"
@@ -19,10 +20,8 @@ import {
   TooltipTrigger,
 } from "@/examples/radix/ui-rtl/tooltip"
 import { cva, type VariantProps } from "class-variance-authority"
+import { PanelLeftIcon } from "lucide-react"
 import { Slot } from "radix-ui"
-
-import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -270,14 +269,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <IconPlaceholder
-        lucide="PanelLeftIcon"
-        tabler="IconLayoutSidebar"
-        hugeicons="SidebarLeftIcon"
-        phosphor="SidebarIcon"
-        remixicon="RiSideBarLine"
-        className="rtl:rotate-180"
-      />
+      <PanelLeftIcon className="rtl:rotate-180" />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )
