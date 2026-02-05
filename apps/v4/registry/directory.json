@@ -364,6 +364,13 @@
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 640 640'><path fill='var(--foreground)' d='M0 0h640v640H0z'/><path fill='var(--background)' d='M256 448H128v-64h128v64ZM512 256H384v128h128v64H320V192h192v64ZM128 384H64V256h64v128ZM576 384h-64V256h64v128ZM256 256H128v-64h128v64Z'/></svg>"
   },
   {
+    "name": "@nteract",
+    "homepage": "https://nteract-elements.vercel.app/",
+    "url": "https://nteract-elements.vercel.app/r/{name}.json",
+    "description": "Components for interactive computing notebooks.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256' fill='none' viewBox='0 0 256 256'><path fill='#000' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.62' d='m191.321 207-63.775-36.91V49.272l63.775 36.919z'/><path fill='#fff' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.62' d='M127.546 49.272 63.779 86.191V207l63.767-36.91z'/><path fill='#fff' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.62' d='M127.546 9 29 66.05l17.394 10.07 81.152-46.988 81.161 46.989v120.817l17.394-10.07V66.051z'/><path fill='#000' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.62' d='M46.394 76.12 29 66.05v120.818l17.394 10.07zM46.394 76.12v120.818L63.78 207V86.19z'/><path fill='#fff' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.62' d='m46.394 76.12 81.152-46.988 81.161 46.989v120.817L191.321 207V86.19l-63.775-36.918L63.78 86.191z'/><path fill='#fff' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.62' d='m127.554 76.113 40.572 23.494v46.988l-40.58 23.495-40.572-23.495V99.607z'/><path fill='#000' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.62' d='m127.546 170.09.008-46.989-40.58-23.494v46.988z'/><path fill='#fff' stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.62' d='m127.554 123.101 40.572-23.494v46.988l-40.58 23.495z'/></svg>"
+  },
+  {
     "name": "@nuqs",
     "homepage": "https://nuqs.dev/registry",
     "description": "Custom parsers, adapters and utilities from the community for type-safe URL state management.",
@@ -831,5 +838,12 @@
     "url": "https://typedora-ui.netlify.app/r/{name}.json",
     "description": "Typedora UI is a next-generation extension layer for shadcn/ui, designed to bring full type-safety to your UI components.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g><path d='m22 7h-20c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2v-7c0-1.1-.9-2-2-2zm-20 10c-.551 0-1-.449-1-1v-7c0-.551.449-1 1-1h12v9zm21-1c0 .551-.449 1-1 1h-7v-9h7c.551 0 1 .449 1 1z'/><path d='m19 14 2-2h-4z'/><path d='m4 10.5h3v.5c0 .276.224.5.5.5s.5-.224.5-.5v-1c0-.276-.224-.5-.5-.5h-3.5c-.276 0-.5.224-.5.5s.224.5.5.5zm1.5.5v3c0 .276.224.5.5.5s.5-.224.5-.5v-3z'/></g></svg>"
+  },
+  {
+    "name": "@sona-ui",
+    "homepage": "https://sona-ui.vercel.app",
+    "url": "https://sona-ui.vercel.app/r/{name}.json",
+    "description": "A modern UI component library built with React and TailwindCSS to help you build beautiful and accessible web applications faster.",
+    "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M0 18.5887C0 8.32245 8.32244 0 18.5887 0H237.411C247.678 0 256 8.32244 256 18.5887V237.411C256 247.678 247.678 256 237.411 256H18.5887C8.32245 256 0 247.678 0 237.411V18.5887Z' fill='black'/> <path d='M128.001 30.0059C128.001 83.7034 171.192 127.313 224.728 127.991L225.994 128L224.728 128.008C171.192 128.686 128.001 172.296 128.001 225.994V256H128V225.994C128 171.873 84.1271 128 30.0068 128L31.273 127.991C84.8099 127.314 128 83.7036 128 30.0059V0.000488281H128.001V30.0059Z' fill='#D9D9D9'/></svg>"
   }
 ]
