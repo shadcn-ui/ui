@@ -312,6 +312,12 @@
     "description": "A collection of reusable components."
   },
   {
+    "name": "@nteract",
+    "homepage": "https://nteract-elements.vercel.app/",
+    "url": "https://nteract-elements.vercel.app/r/{name}.json",
+    "description": "Components for interactive computing notebooks."
+  },
+  {
     "name": "@nuqs",
     "homepage": "https://nuqs.dev/registry",
     "url": "https://nuqs.dev/r/{name}.json",
