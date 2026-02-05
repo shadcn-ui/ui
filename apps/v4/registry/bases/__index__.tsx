@@ -4443,6 +4443,7 @@ export const Index: Record<string, Record<string, any>> = {
         "sheet",
         "skeleton",
         "tooltip",
+        "use-mobile",
       ],
       files: [
         {

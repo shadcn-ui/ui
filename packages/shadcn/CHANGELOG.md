@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.8.3
+
+### Patch Changes
+
+- [#9539](https://github.com/shadcn-ui/ui/pull/9539) [`e0063070a63751efd40cf5e5d93da3c9536e64c8`](https://github.com/shadcn-ui/ui/commit/e0063070a63751efd40cf5e5d93da3c9536e64c8) Thanks [@shadcn](https://github.com/shadcn)! - use tw-merge to transform-style
+
 ## 3.8.2
 
 ### Patch Changes
