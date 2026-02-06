@@ -722,28 +722,32 @@ function Navbar() {
     <Example title="Account Menu">
       <header className="flex h-14 w-full items-center gap-2">
         <Drawer direction="left">
-          <DrawerTrigger render={<Button variant="outline" size="icon" />}>
-            <IconPlaceholder
-              lucide="MenuIcon"
-              hugeicons="Menu09Icon"
-              tabler="IconMenu"
-              phosphor="ListIcon"
-              remixicon="RiListUnordered"
-            />
-            <span className="sr-only">Open menu</span>
+          <DrawerTrigger asChild>
+            <Button variant="outline" size="icon">
+              <IconPlaceholder
+                lucide="MenuIcon"
+                hugeicons="Menu09Icon"
+                tabler="IconMenu"
+                phosphor="ListIcon"
+                remixicon="RiListUnordered"
+              />
+              <span className="sr-only">Open menu</span>
+            </Button>
           </DrawerTrigger>
           <DrawerContent className="max-w-72">
             <DrawerHeader className="flex flex-row items-center justify-between px-5 pb-0">
               <DrawerTitle>Menu</DrawerTitle>
-              <DrawerClose render={<Button variant="ghost" size="icon-sm" />}>
-                <IconPlaceholder
-                  lucide="XIcon"
-                  tabler="IconX"
-                  hugeicons="Cancel01Icon"
-                  phosphor="XIcon"
-                  remixicon="RiCloseLine"
-                />
-                <span className="sr-only">Close</span>
+              <DrawerClose asChild>
+                <Button variant="ghost" size="icon-sm">
+                  <IconPlaceholder
+                    lucide="XIcon"
+                    tabler="IconX"
+                    hugeicons="Cancel01Icon"
+                    phosphor="XIcon"
+                    remixicon="RiCloseLine"
+                  />
+                  <span className="sr-only">Close</span>
+                </Button>
               </DrawerClose>
             </DrawerHeader>
             <div className="p-2">
