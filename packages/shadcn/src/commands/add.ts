@@ -78,50 +78,6 @@ export const add = new Command()
         })
       }
 
-      // Check for restricted component prefixes with base- or radix- styles.
-      const restrictedComponentPrefixes = [
-        "sidebar-",
-        "login-",
-        "signup-",
-        "otp-",
-        "calendar-",
-      ]
-      const restrictedStylePrefixes = ["base-", "radix-"]
-
-      if (components.length > 0) {
-        if (initialConfig?.style) {
-          const isRestrictedStyle = restrictedStylePrefixes.some((prefix) =>
-            initialConfig?.style.startsWith(prefix)
-          )
-
-          if (isRestrictedStyle) {
-            const restrictedComponents = components.filter(
-              (component: string) =>
-                restrictedComponentPrefixes.some((prefix) =>
-                  component.startsWith(prefix)
-                )
-            )
-
-            if (restrictedComponents.length) {
-              logger.warn(
-                `The ${highlighter.info(
-                  restrictedComponents
-                    .map((component: string) => component)
-                    .join(", ")
-                )} component(s) are not available for the ${highlighter.info(
-                  initialConfig.style
-                )} style yet. They are coming soon.`
-              )
-              logger.warn(
-                "In the meantime, you can visit the blocks page on https://ui.shadcn.com/blocks and copy the code."
-              )
-              logger.break()
-              process.exit(1)
-            }
-          }
-        }
-      }
-
       let hasNewRegistries = false
       if (components.length > 0) {
         const { config: updatedConfig, newRegistries } =
