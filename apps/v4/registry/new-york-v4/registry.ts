@@ -23,8 +23,11 @@ const DEPRECATED_ITEMS = [
 const NEW_YORK_V4_STYLE = {
   type: "registry:style",
   dependencies: ["class-variance-authority", "lucide-react", "radix-ui"],
-  devDependencies: ["tw-animate-css"],
+  devDependencies: ["tw-animate-css", "shadcn"],
   registryDependencies: ["utils"],
+  css: {
+    '@import "shadcn/tailwind.css"': {},
+  },
   cssVars: {},
   files: [],
 }
