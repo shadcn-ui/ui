@@ -134,10 +134,8 @@ export default function GithubBlock() {
     </ExampleWrapper>
   )
 }
-
 function CodespacesCard() {
   const [isCreatingCodespace, setIsCreatingCodespace] = React.useState(false)
-
   return (
     <Example title="Codespaces" className="min-h-[550px] lg:p-12">
       <Card className="mx-auto w-full max-w-sm" size="sm">
@@ -484,7 +482,6 @@ function CodespacesCard() {
     </Example>
   )
 }
-
 function RepositoryToolbar() {
   const [selectedBranch, setSelectedBranch] = React.useState("main")
   return (
@@ -720,38 +717,33 @@ function RepositoryToolbar() {
     </Example>
   )
 }
-
 function Navbar() {
   return (
     <Example title="Account Menu">
       <header className="flex h-14 w-full items-center gap-2">
         <Drawer direction="left">
-          <DrawerTrigger asChild>
-            <Button variant="outline" size="icon">
-              <IconPlaceholder
-                lucide="MenuIcon"
-                hugeicons="Menu09Icon"
-                tabler="IconMenu"
-                phosphor="ListIcon"
-                remixicon="RiListUnordered"
-              />
-              <span className="sr-only">Open menu</span>
-            </Button>
+          <DrawerTrigger render={<Button variant="outline" size="icon" />}>
+            <IconPlaceholder
+              lucide="MenuIcon"
+              hugeicons="Menu09Icon"
+              tabler="IconMenu"
+              phosphor="ListIcon"
+              remixicon="RiListUnordered"
+            />
+            <span className="sr-only">Open menu</span>
           </DrawerTrigger>
           <DrawerContent className="max-w-72">
             <DrawerHeader className="flex flex-row items-center justify-between px-5 pb-0">
               <DrawerTitle>Menu</DrawerTitle>
-              <DrawerClose asChild>
-                <Button variant="ghost" size="icon-sm">
-                  <IconPlaceholder
-                    lucide="XIcon"
-                    tabler="IconX"
-                    hugeicons="Cancel01Icon"
-                    phosphor="XIcon"
-                    remixicon="RiCloseLine"
-                  />
-                  <span className="sr-only">Close</span>
-                </Button>
+              <DrawerClose render={<Button variant="ghost" size="icon-sm" />}>
+                <IconPlaceholder
+                  lucide="XIcon"
+                  tabler="IconX"
+                  hugeicons="Cancel01Icon"
+                  phosphor="XIcon"
+                  remixicon="RiCloseLine"
+                />
+                <span className="sr-only">Close</span>
               </DrawerClose>
             </DrawerHeader>
             <div className="p-2">
@@ -1132,7 +1124,6 @@ function Navbar() {
     </Example>
   )
 }
-
 const usernames = [
   "shadcn",
   "vercel",
@@ -1151,7 +1142,6 @@ const usernames = [
   "angular",
   "solid",
 ]
-
 function Contributors() {
   return (
     <Example title="Contributors" className="items-center lg:p-16">
@@ -1183,7 +1173,6 @@ function Contributors() {
     </Example>
   )
 }
-
 function Profile() {
   return (
     <Example title="Profile" className="items-center justify-center">
@@ -1239,7 +1228,6 @@ function Profile() {
     </Example>
   )
 }
-
 function ContributionsActivity() {
   return (
     <Example title="Contributions Activity" className="justify-center">
@@ -1303,7 +1291,6 @@ function ContributionsActivity() {
     </Example>
   )
 }
-
 const users = [
   "shadcn",
   "maxleiter",
@@ -1313,10 +1300,8 @@ const users = [
   "shuding",
   "rauchg",
 ]
-
 function AssignIssue() {
   const anchor = useComboboxAnchor()
-
   return (
     <Example title="User Select" className="items-center justify-center">
       <Card className="w-full max-w-sm" size="sm">
