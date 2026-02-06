@@ -24,14 +24,4 @@ export const registryCategories = [
     slug: "signup",
     hidden: false,
   },
-  {
-    name: "OTP",
-    slug: "otp",
-    hidden: false,
-  },
-  {
-    name: "Calendar",
-    slug: "calendar",
-    hidden: false,
-  },
 ]
