@@ -1,5 +1,11 @@
 # @shadcn/ui
 
+## 3.8.4
+
+### Patch Changes
+
+- [#9568](https://github.com/shadcn-ui/ui/pull/9568) [`a1e3afed06a78474abff6a729ff990938f455719`](https://github.com/shadcn-ui/ui/commit/a1e3afed06a78474abff6a729ff990938f455719) Thanks [@shadcn](https://github.com/shadcn)! - remove restricted blocks
+
 ## 3.8.3
 
 ### Patch Changes
