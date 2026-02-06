@@ -10,13 +10,17 @@
         "radix-ui"
       ],
       "devDependencies": [
-        "tw-animate-css"
+        "tw-animate-css",
+        "shadcn"
       ],
       "registryDependencies": [
         "utils"
       ],
       "files": [],
       "cssVars": {},
+      "css": {
+        "@import \"shadcn/tailwind.css\"": {}
+      },
       "type": "registry:style"
     },
     {
@@ -27,13 +31,17 @@
         "radix-ui"
       ],
       "devDependencies": [
-        "tw-animate-css"
+        "tw-animate-css",
+        "shadcn"
       ],
       "registryDependencies": [
         "utils"
       ],
       "files": [],
       "cssVars": {},
+      "css": {
+        "@import \"shadcn/tailwind.css\"": {}
+      },
       "type": "registry:style"
     },
     {
