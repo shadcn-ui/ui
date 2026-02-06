@@ -528,6 +528,12 @@
     "description": "Beautifully designed, accessible components that you can copy and paste into your apps. Made with React Aria Components and Shadcn tokens."
   },
   {
+    "name": "@thegridcn",
+    "homepage": "https://thegridcn.com",
+    "url": "https://thegridcn.com/r/{name}.json",
+    "description": "A Tron-inspired shadcn/ui theme system with Greek god color schemes, glow intensity levels, and sci-fi components like DataCard, HUD, Radar, and more."
+  },
+  {
     "name": "@tour",
     "homepage": "https://onboarding-tour.vercel.app",
     "url": "https://onboarding-tour.vercel.app/r/{name}.json",
