@@ -41,6 +41,7 @@ export async function addComponents(
     baseStyle?: boolean
     registryHeaders?: Record<string, Record<string, string>>
     path?: string
+    skipInstallDeps?: boolean
   }
 ) {
   options = {
@@ -76,6 +77,7 @@ async function addProjectComponents(
     isNewProject?: boolean
     baseStyle?: boolean
     path?: string
+    skipInstallDeps?: boolean
   }
 ) {
   if (!options.baseStyle && !components.length) {
@@ -129,9 +131,21 @@ async function addProjectComponents(
     silent: options.silent,
   })
 
-  await updateDependencies(tree.dependencies, tree.devDependencies, config, {
-    silent: options.silent,
-  })
+  if (!options.skipInstallDeps) {
+    await updateDependencies(tree.dependencies, tree.devDependencies, config, {
+      silent: options.silent,
+    })
+  } else {
+    // print all dependencies
+    if (tree.dependencies?.length) {
+      logger.info("Please Install dependencies manually:")
+      logger.info(`npm install --save ${tree.dependencies?.join(" ")}`)
+    }
+    if (tree.devDependencies?.length) {
+      logger.info("Please Install devDependencies manually:")
+      logger.info(`npm install --save-dev ${tree.devDependencies?.join(" ")}`)
+    }
+  }
 
   await updateFonts(tree.fonts, config, {
     silent: options.silent,
@@ -159,6 +173,7 @@ async function addWorkspaceComponents(
     isRemote?: boolean
     baseStyle?: boolean
     path?: string
+    skipInstallDeps?: boolean
   }
 ) {
   if (!options.baseStyle && !components.length) {
@@ -247,14 +262,26 @@ async function addWorkspaceComponents(
   }
 
   // 5. Update dependencies.
-  await updateDependencies(
-    tree.dependencies,
-    tree.devDependencies,
-    mainTargetConfig,
-    {
-      silent: true,
+  if (!options.skipInstallDeps) {
+    await updateDependencies(
+      tree.dependencies,
+      tree.devDependencies,
+      mainTargetConfig,
+      {
+        silent: true,
+      }
+    )
+  } else {
+    // print all dependencies
+    if (tree.dependencies?.length) {
+      logger.info("Please Install dependencies manually:")
+      logger.info(`npm install --save ${tree.dependencies?.join(" ")}`)
     }
-  )
+    if (tree.devDependencies?.length) {
+      logger.info("Please Install devDependencies manually:")
+      logger.info(`npm install --save-dev ${tree.devDependencies?.join(" ")}`)
+    }
+  }
 
   // 6. Update fonts.
   await updateFonts(tree.fonts, mainTargetConfig, {
