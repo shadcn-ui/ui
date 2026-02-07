@@ -60,7 +60,7 @@
     "lru-cache": "^11.2.4",
     "lucide-react": "0.474.0",
     "motion": "^12.12.1",
-    "next": "16.1.4",
+    "next": "16.1.5",
     "next-themes": "0.4.6",
     "nuqs": "^2.7.2",
     "postcss": "^8.5.1",
