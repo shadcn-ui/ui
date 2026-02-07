@@ -686,4 +686,15 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "date-field",
+    type: "registry:ui",
+    registryDependencies: ["calendar", "button", "scroll-area"],
+    files: [
+      {
+        path: "ui/date-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
