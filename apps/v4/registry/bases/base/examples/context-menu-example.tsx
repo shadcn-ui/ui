@@ -46,6 +46,7 @@ export default function ContextMenuExample() {
       <ContextMenuWithRadio />
       <ContextMenuWithDestructive />
       <ContextMenuInDialog />
+      <ContextMenuWithInset />
     </ExampleWrapper>
   )
 }
@@ -506,6 +507,91 @@ function ContextMenuInDialog() {
           </ContextMenu>
         </DialogContent>
       </Dialog>
+    </Example>
+  )
+}
+
+function ContextMenuWithInset() {
+  const [showBookmarks, setShowBookmarks] = React.useState(true)
+  const [showUrls, setShowUrls] = React.useState(false)
+  const [theme, setTheme] = React.useState("system")
+
+  return (
+    <Example title="With Inset">
+      <ContextMenu>
+        <ContextMenuTrigger className="flex aspect-[2/0.5] w-full items-center justify-center rounded-lg border text-sm">
+          Right click here
+        </ContextMenuTrigger>
+        <ContextMenuContent className="w-44">
+          <ContextMenuGroup>
+            <ContextMenuLabel>Actions</ContextMenuLabel>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="CopyIcon"
+                tabler="IconCopy"
+                hugeicons="CopyIcon"
+                phosphor="CopyIcon"
+                remixicon="RiFileCopyLine"
+              />
+              Copy
+            </ContextMenuItem>
+            <ContextMenuItem>
+              <IconPlaceholder
+                lucide="ScissorsIcon"
+                tabler="IconCut"
+                hugeicons="ScissorIcon"
+                phosphor="ScissorsIcon"
+                remixicon="RiScissorsLine"
+              />
+              Cut
+            </ContextMenuItem>
+            <ContextMenuItem inset>Paste</ContextMenuItem>
+          </ContextMenuGroup>
+          <ContextMenuSeparator />
+          <ContextMenuGroup>
+            <ContextMenuLabel inset>Appearance</ContextMenuLabel>
+            <ContextMenuCheckboxItem
+              inset
+              checked={showBookmarks}
+              onCheckedChange={setShowBookmarks}
+            >
+              Bookmarks
+            </ContextMenuCheckboxItem>
+            <ContextMenuCheckboxItem
+              inset
+              checked={showUrls}
+              onCheckedChange={setShowUrls}
+            >
+              Full URLs
+            </ContextMenuCheckboxItem>
+          </ContextMenuGroup>
+          <ContextMenuSeparator />
+          <ContextMenuGroup>
+            <ContextMenuLabel inset>Theme</ContextMenuLabel>
+            <ContextMenuRadioGroup value={theme} onValueChange={setTheme}>
+              <ContextMenuRadioItem inset value="light">
+                Light
+              </ContextMenuRadioItem>
+              <ContextMenuRadioItem inset value="dark">
+                Dark
+              </ContextMenuRadioItem>
+              <ContextMenuRadioItem inset value="system">
+                System
+              </ContextMenuRadioItem>
+            </ContextMenuRadioGroup>
+          </ContextMenuGroup>
+          <ContextMenuSeparator />
+          <ContextMenuSub>
+            <ContextMenuSubTrigger inset>More Options</ContextMenuSubTrigger>
+            <ContextMenuSubContent>
+              <ContextMenuGroup>
+                <ContextMenuItem>Save Page...</ContextMenuItem>
+                <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+              </ContextMenuGroup>
+            </ContextMenuSubContent>
+          </ContextMenuSub>
+        </ContextMenuContent>
+      </ContextMenu>
     </Example>
   )
 }
