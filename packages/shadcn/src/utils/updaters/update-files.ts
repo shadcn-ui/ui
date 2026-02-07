@@ -159,8 +159,12 @@ export async function updateFiles(
           )
 
     // Skip the file if it already exists and the content is the same.
-    // Exception: Don't skip .env files as we merge content instead of replacing
-    if (existingFile && !isEnvFile(filePath)) {
+    // Exception: Don't skip .env files as we merge content instead of replacing.
+    // Exception: Don't skip when --overwrite is passed — the user explicitly
+    // wants to force re-write even if the content hasn't changed (e.g. to
+    // reset local modifications back to the registry version, or to re-run
+    // transformers after a config change).
+    if (existingFile && !options.overwrite && !isEnvFile(filePath)) {
       const existingFileContent = await fs.readFile(filePath, "utf-8")
 
       if (
