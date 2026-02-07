@@ -1,6 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button-group",
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "registryDependencies": [
     "separator"
   ],

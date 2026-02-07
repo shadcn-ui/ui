@@ -1,6 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert-dialog",
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "registryDependencies": [
     "button"
   ],

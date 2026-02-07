@@ -1,6 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-area",
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "registry/base-nova/ui/scroll-area.tsx",

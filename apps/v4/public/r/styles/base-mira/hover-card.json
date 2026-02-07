@@ -1,6 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hover-card",
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "registry/base-mira/ui/hover-card.tsx",

@@ -1,6 +1,9 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "popover",
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "registry/base-mira/ui/popover.tsx",
