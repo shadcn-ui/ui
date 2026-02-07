@@ -223,6 +223,7 @@ async function addWorkspaceComponents(
       tailwindVersion,
       tailwindConfig: tree.tailwind?.config,
       overwriteCssVars,
+      initIndex: options.baseStyle,
     })
     filesUpdated.push(
       path.relative(workspaceRoot, mainTargetConfig.resolvedPaths.tailwindCss)
