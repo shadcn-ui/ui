@@ -228,6 +228,12 @@
     "description": "A comprehensive React Hooks Collection built with Shadcn."
   },
   {
+    "name": "@inferencesh",
+    "homepage": "https://ui.inference.sh",
+    "url": "https://ui.inference.sh/r/{name}.json",
+    "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more."
+  },
+  {
     "name": "@intentui",
     "homepage": "https://intentui.com",
     "url": "https://intentui.com/r/{name}",
@@ -526,6 +532,12 @@
     "homepage": "https://taki-ui.com",
     "url": "https://taki-ui.com/r/{name}.json",
     "description": "Beautifully designed, accessible components that you can copy and paste into your apps. Made with React Aria Components and Shadcn tokens."
+  },
+  {
+    "name": "@thegridcn",
+    "homepage": "https://thegridcn.com",
+    "url": "https://thegridcn.com/r/{name}.json",
+    "description": "A Tron-inspired shadcn/ui theme system with Greek god color schemes, glow intensity levels, and sci-fi components like DataCard, HUD, Radar, and more."
   },
   {
     "name": "@tour",
