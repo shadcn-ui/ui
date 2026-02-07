@@ -1,0 +1,171 @@
+---
+title: Stepper
+description: A composable stepper component for displaying progress through a sequence of steps.
+component: true
+---
+
+<ComponentPreview name="stepper-registration-flow" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add stepper
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install lucide-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stepper" title="components/ui/stepper.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Stepper } from "@/components/ui/stepper"
+import { StepperItem } from "@/components/ui/stepper-item"
+```
+
+```tsx
+<Stepper currentStep={1}>
+  <StepperItem title="Step 1" description="First step description" />
+  <StepperItem title="Step 2" description="Second step description" />
+  <StepperItem title="Step 3" description="Third step description" />
+</Stepper>
+```
+
+## Examples
+
+### Basic Horizontal Stepper
+
+A simple horizontal stepper showing step progression.
+
+<ComponentPreview name="stepper-demo" />
+
+```tsx
+<Stepper currentStep={1}>
+  <StepperItem title="Account" description="Create your account" />
+  <StepperItem title="Profile" description="Complete your profile" />
+  <StepperItem title="Review" description="Verify your details" />
+</Stepper>
+```
+
+### Vertical
+
+Use the `orientation` prop to display the stepper vertically.
+
+<ComponentPreview name="stepper-vertical" />
+
+```tsx
+<Stepper currentStep={1} orientation="vertical">
+  <StepperItem title="Step 1" description="This step is completed" />
+  <StepperItem title="Step 2" description="This is the current step" />
+  <StepperItem title="Step 3" description="This step is upcoming" />
+</Stepper>
+```
+
+### With Custom Icons
+
+Pass custom icons to each step using the `icon` prop.
+
+<ComponentPreview name="stepper-with-icons" />
+
+```tsx
+import { FileText, Settings, User } from "lucide-react"
+
+<Stepper currentStep={1}>
+  <StepperItem title="Personal Info" icon={<User className="size-4" />} />
+  <StepperItem title="Documents" icon={<FileText className="size-4" />} />
+  <StepperItem title="Settings" icon={<Settings className="size-4" />} />
+</Stepper>
+```
+
+## Accessibility
+
+The Stepper component is built with accessibility in mind:
+
+- Uses `role="list"` on the container and `role="listitem"` on each step for proper semantic structure.
+- Active step is indicated with `aria-current="step"` for screen readers.
+- Step indicators use `aria-hidden="true"` since state is communicated via the parent listitem.
+- Connector lines are marked as `role="presentation"` and `aria-hidden="true"` since they are decorative.
+
+## API Reference
+
+### Stepper
+
+The root component that provides context to all child steps.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `currentStep` | `number` | Required | The current active step (0-based index). |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The orientation of the stepper. |
+| `className` | `string` | - | Additional CSS classes. |
+
+### StepperItem
+
+Individual step component that renders the indicator, label, and connector.
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string` | - | The title of the step. |
+| `description` | `string` | - | Optional description text. |
+| `icon` | `React.ReactNode` | - | Custom icon to display in the indicator. |
+| `className` | `string` | - | Additional CSS classes. |
+
+### StepIndicator
+
+Visual circular indicator component (used internally by StepperItem).
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `index` | `number` | Required | The step index (0-based). |
+| `isCompleted` | `boolean` | Required | Whether this step is completed. |
+| `isActive` | `boolean` | Required | Whether this step is active. |
+| `isUpcoming` | `boolean` | Required | Whether this step is upcoming. |
+| `icon` | `React.ReactNode` | - | Custom icon to display. |
+| `title` | `string` | - | Step title for accessibility. |
+
+### StepLabel
+
+Renders the step title and description (used internally by StepperItem).
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string` | - | The step title. |
+| `description` | `string` | - | Optional description. |
+| `isActive` | `boolean` | Required | Whether this step is active. |
+| `isCompleted` | `boolean` | Required | Whether this step is completed. |
+
+### StepConnector
+
+Connector line between steps (used internally by StepperItem).
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `isCompleted` | `boolean` | Required | Whether the preceding step is completed. |
+| `orientation` | `"horizontal" \| "vertical"` | Required | The orientation of the stepper. |
