@@ -41,3 +41,9 @@ tsconfig.tsbuildinfo
 .vscode
 
 .notes
+
+# storybook
+storybook-static/
+
+# agents
+.sisyphus

@@ -20,7 +20,9 @@
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
     "validate:registries": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/validate-registries.mts",
     "test:apps": "bun run ./scripts/build-test-app.mts",
-    "postinstall": "fumadocs-mdx"
+    "postinstall": "fumadocs-mdx",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@base-ui/react": "1.1.0",
@@ -86,6 +88,9 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@storybook/addon-docs": "^9",
+    "@storybook/react": "^9",
+    "@storybook/react-vite": "^9",
     "@tailwindcss/postcss": "^4",
     "@types/lodash": "^4.17.7",
     "@types/mdx": "^2.0.13",
@@ -97,6 +102,7 @@
     "eslint-config-next": "16.0.0",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "storybook": "^9",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5",
