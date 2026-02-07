@@ -1073,6 +1073,101 @@ return <div>Hello World</div>
     `)
   })
 
+  test("should overwrite existing file with same content when --overwrite is passed", async () => {
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+    expect(
+      await updateFiles(
+        [
+          {
+            path: "registry/default/ui/button.tsx",
+            type: "registry:ui",
+            // Same content as the fixture button.tsx.
+            content: `export function Button() {
+  return <button>Click me</button>
+}`,
+          },
+        ],
+        config,
+        {
+          overwrite: true,
+          silent: true,
+        }
+      )
+    ).toMatchInlineSnapshot(`
+      {
+        "filesCreated": [],
+        "filesSkipped": [],
+        "filesUpdated": [
+          "src/components/ui/button.tsx",
+        ],
+      }
+    `)
+  })
+
+  test("should not prompt when --overwrite is passed and content is different", async () => {
+    const prompts = (await import("prompts")).default as unknown as ReturnType<
+      typeof vi.fn
+    >
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+    await updateFiles(
+      [
+        {
+          path: "registry/default/ui/button.tsx",
+          type: "registry:ui",
+          content: `export function Button() {
+  return <button>Click this button</button>
+}`,
+        },
+      ],
+      config,
+      {
+        overwrite: true,
+        silent: true,
+      }
+    )
+    // prompts should NOT be called — overwrite bypasses the confirmation prompt.
+    expect(prompts).not.toHaveBeenCalled()
+  })
+
+  test("should prompt when file exists, content is different, and --overwrite is not passed", async () => {
+    const prompts = (await import("prompts")).default as unknown as ReturnType<
+      typeof vi.fn
+    >
+    vi.mocked(prompts).mockResolvedValueOnce({ overwrite: false })
+    const config = await getConfig(
+      path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
+    )
+    const result = await updateFiles(
+      [
+        {
+          path: "registry/default/ui/button.tsx",
+          type: "registry:ui",
+          content: `export function Button() {
+  return <button>Click this button</button>
+}`,
+        },
+      ],
+      config,
+      {
+        overwrite: false,
+        silent: true,
+      }
+    )
+    // prompts SHOULD be called — user declined overwrite.
+    expect(prompts).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: "confirm",
+        name: "overwrite",
+      })
+    )
+    // File should be skipped since user declined.
+    expect(result.filesSkipped).toContain("src/components/ui/button.tsx")
+  })
+
   test("should mark .env file as created when it doesn't exist", async () => {
     const config = await getConfig(
       path.resolve(__dirname, "../../fixtures/vite-with-tailwind")
