@@ -266,6 +266,13 @@
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M208 128L128 208' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><path d='M192 40L40 192' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><rect x='27' y='28' width='70' height='70' rx='7' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@inferencesh",
+    "homepage": "https://ui.inference.sh",
+    "url": "https://ui.inference.sh/r/{name}.json",
+    "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more.",
+    "logo": "<svg width='18' height='16' viewBox='0 0 18 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M16.837 12.659L10.105 1H8.781c-.433 0-.834.232-1.05.608L1 13.266l.662 1.146c.217.375.618.607 1.051.607h13.463l.662-1.146a1.215 1.215 0 000-1.213v-.001z' stroke='var(--foreground)' stroke-width='0.3' stroke-miterlimit='10'/><path fill='none' d='M6.057 11.515v0l3.977-6.888a.08.08 0 01.14 0l6.002 10.392' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M1 13.266h12.001a.08.08 0 00.07-.122L9.09 6.256' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M12.13 11.514H4.173a.08.08 0 01-.07-.121L10.105 1' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/></svg>"
+  },
+  {
     "name": "@intentui",
     "homepage": "https://intentui.com",
     "url": "https://intentui.com/r/{name}",
