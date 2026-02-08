@@ -342,6 +342,12 @@
     "description": "Ready-made React components for almost any use case. Use as is or customise and go to market fast"
   },
   {
+    "name": "@openstatus",
+    "homepage": "https://openstatus.dev/registry",
+    "url": "https://openstatus.dev/r/{name}.json",
+    "description": "Hand-crafted, accessible components for building beautiful status pages."
+  },
+  {
     "name": "@optics",
     "homepage": "https://optics.agusmayol.com.ar",
     "url": "https://optics.agusmayol.com.ar/r/{name}.json",
