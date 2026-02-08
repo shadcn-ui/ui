@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import Script from "next/script"
 import { useTheme } from "next-themes"
 
 import { useMetaColor } from "@/hooks/use-meta-color"
@@ -88,9 +87,8 @@ export function ModeSwitcher() {
 
 export function DarkModeScript() {
   return (
-    <Script
+    <script
       id="dark-mode-listener"
-      strategy="beforeInteractive"
       dangerouslySetInnerHTML={{
         __html: `
             (function() {
