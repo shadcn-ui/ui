@@ -79,7 +79,7 @@ export function ItemExplorer({
                         )}
                         <SidebarMenuButton
                           onClick={() => setParams({ item: item.name })}
-                          className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[26px] w-fit cursor-pointer overflow-visible border border-transparent text-[0.8rem] font-normal after:absolute after:inset-x-0 after:-inset-y-1 after:-z-0 after:rounded-md"
+                          className="data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[26px] w-fit cursor-pointer overflow-visible border border-transparent text-[0.8rem] font-normal after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md"
                           data-active={item.name === currentItem?.name}
                           isActive={item.name === currentItem?.name}
                         >

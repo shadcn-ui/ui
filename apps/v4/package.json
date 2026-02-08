@@ -23,6 +23,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@ark-ui/react": "5.31.0",
     "@base-ui/react": "1.1.0",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/modifiers": "^9.0.0",
@@ -75,7 +76,7 @@
     "rehype-pretty-code": "^0.14.1",
     "rimraf": "^6.0.1",
     "server-only": "^0.0.1",
-    "shadcn": "3.8.3",
+    "shadcn": "3.8.4",
     "shiki": "^1.10.1",
     "sonner": "^2.0.0",
     "swr": "^2.3.6",

@@ -266,6 +266,13 @@
     "logo": "<svg width='256' height='256' viewBox='0 0 256 256' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M208 128L128 208' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><path d='M192 40L40 192' stroke='var(--foreground)' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><rect x='27' y='28' width='70' height='70' rx='7' fill='var(--foreground)'/></svg>"
   },
   {
+    "name": "@inferencesh",
+    "homepage": "https://ui.inference.sh",
+    "url": "https://ui.inference.sh/r/{name}.json",
+    "description": "batteries-included agent components by inference.sh. chat interfaces with streaming, tool invocation rendering, syntax-highlighted code blocks, markdown renderer, and more.",
+    "logo": "<svg width='18' height='16' viewBox='0 0 18 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M16.837 12.659L10.105 1H8.781c-.433 0-.834.232-1.05.608L1 13.266l.662 1.146c.217.375.618.607 1.051.607h13.463l.662-1.146a1.215 1.215 0 000-1.213v-.001z' stroke='var(--foreground)' stroke-width='0.3' stroke-miterlimit='10'/><path fill='none' d='M6.057 11.515v0l3.977-6.888a.08.08 0 01.14 0l6.002 10.392' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M1 13.266h12.001a.08.08 0 00.07-.122L9.09 6.256' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/><path fill='none' d='M12.13 11.514H4.173a.08.08 0 01-.07-.121L10.105 1' stroke='var(--foreground)' stroke-miterlimit='10' stroke-width='0.3'/></svg>"
+  },
+  {
     "name": "@intentui",
     "homepage": "https://intentui.com",
     "url": "https://intentui.com/r/{name}",
@@ -614,6 +621,13 @@
     "url": "https://taki-ui.com/r/{name}.json",
     "description": "Beautifully designed, accessible components that you can copy and paste into your apps. Made with React Aria Components and Shadcn tokens.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' class='fill-none!' stroke='var(--foreground)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='size-5'><path d='M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z'></path><path d='M12 22V12'></path><polyline points='3.29 7 12 12 20.71 7'></polyline><path d='m7.5 4.27 9 5.15'></path></svg>"
+  },
+  {
+    "name": "@thegridcn",
+    "homepage": "https://thegridcn.com",
+    "url": "https://thegridcn.com/r/{name}.json",
+    "description": "A Tron-inspired shadcn/ui theme system with Greek god color schemes, glow intensity levels, and sci-fi components like DataCard, HUD, Radar, and more.",
+    "logo": "<svg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_5_30)'><path d='M0 8H32' stroke='var(--foreground)' stroke-width='0.5'/><path d='M0 16H32' stroke='var(--foreground)' stroke-width='0.5'/><path d='M0 24H32' stroke='var(--foreground)' stroke-width='0.5'/><path d='M8 0V32' stroke='var(--foreground)' stroke-width='0.5'/><path d='M16 0V32' stroke='var(--foreground)' stroke-width='0.5'/><path d='M24 0V32' stroke='var(--foreground)' stroke-width='0.5'/><path d='M23 8H9C8.44772 8 8 8.44772 8 9V23C8 23.5523 8.44772 24 9 24H23C23.5523 24 24 23.5523 24 23V9C24 8.44772 23.5523 8 23 8Z' stroke='var(--foreground)' stroke-width='1.5'/><path d='M16 10V22' stroke='var(--foreground)' stroke-width='1.5'/><path d='M10 16H22' stroke='var(--foreground)' stroke-width='1.5'/><path d='M8 9.5C8.82843 9.5 9.5 8.82843 9.5 8C9.5 7.17157 8.82843 6.5 8 6.5C7.17157 6.5 6.5 7.17157 6.5 8C6.5 8.82843 7.17157 9.5 8 9.5Z' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='1.5'/><path d='M24 9.5C24.8284 9.5 25.5 8.82843 25.5 8C25.5 7.17157 24.8284 6.5 24 6.5C23.1716 6.5 22.5 7.17157 22.5 8C22.5 8.82843 23.1716 9.5 24 9.5Z' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='1.5'/><path d='M8 25.5C8.82843 25.5 9.5 24.8284 9.5 24C9.5 23.1716 8.82843 22.5 8 22.5C7.17157 22.5 6.5 23.1716 6.5 24C6.5 24.8284 7.17157 25.5 8 25.5Z' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='1.5'/><path d='M24 25.5C24.8284 25.5 25.5 24.8284 25.5 24C25.5 23.1716 24.8284 22.5 24 22.5C23.1716 22.5 22.5 23.1716 22.5 24C22.5 24.8284 23.1716 25.5 24 25.5Z' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='1.5'/><path d='M16 18C17.1046 18 18 17.1046 18 16C18 14.8954 17.1046 14 16 14C14.8954 14 14 14.8954 14 16C14 17.1046 14.8954 18 16 18Z' fill='var(--foreground)' stroke='var(--foreground)' stroke-width='1.5'/><path d='M2 2H6' stroke='var(--foreground)'/><path d='M2 2V6' stroke='var(--foreground)'/><path d='M30 2H26' stroke='var(--foreground)'/><path d='M30 2V6' stroke='var(--foreground)'/><path d='M2 30H6' stroke='var(--foreground)'/><path d='M2 30V26' stroke='var(--foreground)'/><path d='M30 30H26' stroke='var(--foreground)'/><path d='M30 30V26' stroke='var(--foreground)'/></g><defs><clipPath id='clip0_5_30'><rect width='32' height='32' fill='var(--background)'/></clipPath></defs></svg>"
   },
   {
     "name": "@tour",
