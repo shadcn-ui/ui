@@ -19,6 +19,7 @@ export async function GET(request: NextRequest) {
       menuColor: searchParams.get("menuColor"),
       radius: searchParams.get("radius"),
       template: searchParams.get("template"),
+      rtl: searchParams.get("rtl") === "true",
     })
 
     if (!result.success) {

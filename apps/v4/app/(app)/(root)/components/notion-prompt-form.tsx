@@ -190,12 +190,12 @@ export function NotionPromptForm() {
         <FieldLabel htmlFor="notion-prompt" className="sr-only">
           Prompt
         </FieldLabel>
-        <InputGroup>
+        <InputGroup className="rounded-xl">
           <InputGroupTextarea
             id="notion-prompt"
             placeholder="Ask, search, or make anything..."
           />
-          <InputGroupAddon align="block-start">
+          <InputGroupAddon align="block-start" className="pt-3">
             <Popover
               open={mentionPopoverOpen}
               onOpenChange={setMentionPopoverOpen}
@@ -209,7 +209,7 @@ export function NotionPromptForm() {
                     <InputGroupButton
                       variant="outline"
                       size={!hasMentions ? "sm" : "icon-sm"}
-                      className="rounded-full transition-transform"
+                      className="transition-transform"
                     >
                       <IconAt /> {!hasMentions && "Add context"}
                     </InputGroupButton>
@@ -235,6 +235,7 @@ export function NotionPromptForm() {
                               setMentions((prev) => [...prev, currentValue])
                               setMentionPopoverOpen(false)
                             }}
+                            className="rounded-lg"
                           >
                             <MentionableIcon item={item} />
                             {item.title}
@@ -301,11 +302,7 @@ export function NotionPromptForm() {
                 </TooltipTrigger>
                 <TooltipContent>Select AI model</TooltipContent>
               </Tooltip>
-              <DropdownMenuContent
-                side="top"
-                align="start"
-                className="w-48"
-              >
+              <DropdownMenuContent side="top" align="start" className="w-48">
                 <DropdownMenuGroup className="w-48">
                   <DropdownMenuLabel className="text-muted-foreground text-xs">
                     Select Agent Mode
@@ -341,11 +338,7 @@ export function NotionPromptForm() {
                   <IconWorld /> All Sources
                 </InputGroupButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side="top"
-                align="end"
-                className="w-72"
-              >
+              <DropdownMenuContent side="top" align="end" className="w-72">
                 <DropdownMenuGroup>
                   <DropdownMenuItem
                     asChild

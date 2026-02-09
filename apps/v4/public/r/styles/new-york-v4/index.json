@@ -3,15 +3,20 @@
   "name": "index",
   "dependencies": [
     "class-variance-authority",
-    "lucide-react"
+    "lucide-react",
+    "radix-ui"
   ],
   "devDependencies": [
-    "tw-animate-css"
+    "tw-animate-css",
+    "shadcn"
   ],
   "registryDependencies": [
     "utils"
   ],
   "files": [],
   "cssVars": {},
+  "css": {
+    "@import \"shadcn/tailwind.css\"": {}
+  },
   "type": "registry:style"
 }

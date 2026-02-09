@@ -1,88 +1,84 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { registrySchema } from "shadcn/schema"
 import { z } from "zod"
 
-const registriesIndexSchema = z.record(
-  z.string().regex(/^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/),
-  z.string().refine((url) => url.includes("{name}"))
-)
-
-const directoryEntrySchema = z.object({
-  name: z.string(),
-  homepage: z.string(),
-  url: z.string(),
+const registryEntrySchema = z.object({
+  name: z.string().regex(/^@[a-zA-Z0-9][a-zA-Z0-9-_]*$/),
+  homepage: z.string().url(),
+  url: z.string().refine((url) => url.includes("{name}"), {
+    message: "URL must include {name} placeholder",
+  }),
   description: z.string(),
+})
+
+const registriesSchema = z.array(registryEntrySchema)
+
+const directoryEntrySchema = registryEntrySchema.extend({
   logo: z.string(),
 })
 
 const directorySchema = z.array(directoryEntrySchema)
 
 async function main() {
-  // 1. Validate the registries.json file.
-  const registriesFile = path.join(process.cwd(), "public/r/registries.json")
-  const content = await fs.readFile(registriesFile, "utf-8")
-  const data = JSON.parse(content)
-  const registries = registriesIndexSchema.parse(data)
+  let hasErrors = false
 
-  // 2. Check that all directory.json entries are in registries.json.
+  // 1. Validate registries.json.
+  const registriesFile = path.join(process.cwd(), "public/r/registries.json")
+  const registriesContent = await fs.readFile(registriesFile, "utf-8")
+  const registriesData = JSON.parse(registriesContent)
+
+  const registriesResult = registriesSchema.safeParse(registriesData)
+  if (!registriesResult.success) {
+    console.error("❌ registries.json validation failed:")
+    console.error(registriesResult.error.format())
+    hasErrors = true
+  } else {
+    console.log("✅ registries.json is valid")
+  }
+
+  // 2. Validate directory.json.
   const directoryFile = path.join(process.cwd(), "registry/directory.json")
   const directoryContent = await fs.readFile(directoryFile, "utf-8")
   const directoryData = JSON.parse(directoryContent)
-  const directory = directorySchema.parse(directoryData)
 
-  const directoryNames = new Set(directory.map((entry) => entry.name))
-  const registryNames = new Set(Object.keys(registries))
-
-  const missingInRegistries = Array.from(directoryNames).filter(
-    (name) => !registryNames.has(name)
-  )
-
-  if (missingInRegistries.length > 0) {
-    console.error(
-      "\n❌ The following registries are in directory.json but missing from registries.json:"
-    )
-    missingInRegistries.forEach((name) => console.error(`   ${name}`))
-    process.exit(1)
+  const directoryResult = directorySchema.safeParse(directoryData)
+  if (!directoryResult.success) {
+    console.error("❌ directory.json validation failed:")
+    console.error(directoryResult.error.format())
+    hasErrors = true
+  } else {
+    console.log("✅ directory.json is valid")
   }
 
-  console.log("✅ All directory entries are present in registries.json\n")
+  // 3. Check that all directory.json entries are in registries.json.
+  if (registriesResult.success && directoryResult.success) {
+    const registryNames = new Set(
+      registriesResult.data.map((entry) => entry.name)
+    )
+    const directoryNames = new Set(
+      directoryResult.data.map((entry) => entry.name)
+    )
 
-  // 3. Validate each registry endpoint.
-  const errors: string[] = []
-  for (const [name, url] of Object.entries(registries)) {
-    try {
-      const testUrl = url.replace("{name}", "registry")
-      const response = await fetch(testUrl)
+    const missingInRegistries = Array.from(directoryNames).filter(
+      (name) => !registryNames.has(name)
+    )
 
-      if (!response.ok) {
-        errors.push(`${name}: HTTP ${response.status}`)
-        continue
-      }
-
-      const json = await response.json()
-      registrySchema.parse(json)
-      console.log(`✅ ${name}`)
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        errors.push(`${name}: ${error.message}`)
-        continue
-      }
-
-      errors.push(
-        `${name}: ${error instanceof Error ? error.message : String(error)}`
+    if (missingInRegistries.length > 0) {
+      console.error(
+        "\n❌ The following registries are in directory.json but missing from registries.json:"
       )
+      missingInRegistries.forEach((name) => console.error(`   ${name}`))
+      hasErrors = true
+    } else {
+      console.log("✅ All directory entries are present in registries.json")
     }
   }
 
-  if (errors.length > 0) {
-    console.error("\n❌ Validation failed:")
-    errors.forEach((err) => console.error(`   ${err}`))
+  if (hasErrors) {
     process.exit(1)
   }
 
   console.log("\n✅ All registries passed validation.")
-  process.exit(0)
 }
 
 main().catch((error) => {

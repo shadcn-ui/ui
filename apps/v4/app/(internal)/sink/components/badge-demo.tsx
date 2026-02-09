@@ -10,6 +10,10 @@ export function BadgeDemo() {
         <Badge variant="secondary">Secondary</Badge>
         <Badge variant="destructive">Destructive</Badge>
         <Badge variant="outline">Outline</Badge>
+        <Badge variant="ghost">Ghost</Badge>
+        <Badge variant="link">Link</Badge>
+      </div>
+      <div className="flex w-full flex-wrap gap-2">
         <Badge variant="outline">
           <CheckIcon />
           Badge
@@ -51,6 +55,16 @@ export function BadgeDemo() {
           </a>
         </Badge>
         <Badge asChild variant="outline">
+          <a href="#">
+            Link <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge asChild variant="ghost">
+          <a href="#">
+            Link <ArrowRightIcon />
+          </a>
+        </Badge>
+        <Badge asChild variant="link">
           <a href="#">
             Link <ArrowRightIcon />
           </a>

@@ -66,11 +66,7 @@ export function InputGroupDemo() {
             <DropdownMenuTrigger asChild>
               <InputGroupButton variant="ghost">Auto</InputGroupButton>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              side="top"
-              align="start"
-              className="[--radius:0.95rem]"
-            >
+            <DropdownMenuContent side="top" align="start">
               <DropdownMenuItem>Auto</DropdownMenuItem>
               <DropdownMenuItem>Agent</DropdownMenuItem>
               <DropdownMenuItem>Manual</DropdownMenuItem>

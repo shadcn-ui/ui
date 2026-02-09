@@ -38,21 +38,6 @@ export function Customizer() {
       className="no-scrollbar -mx-2.5 flex flex-col overflow-y-auto p-1 md:mx-0 md:h-[calc(100svh-var(--header-height)-2rem)] md:w-48 md:gap-0 md:py-0"
       ref={anchorRef}
     >
-      <div className="hidden items-center gap-2 px-[calc(--spacing(2.5))] pb-1 md:flex md:flex-col md:items-start">
-        <HugeiconsIcon
-          icon={Settings05Icon}
-          className="size-4"
-          strokeWidth={2}
-        />
-        <div className="relative flex flex-col gap-1 rounded-lg text-[13px]/snug">
-          <div className="flex items-center gap-1 font-medium text-balance">
-            Build your own shadcn/ui
-          </div>
-          <div className="hidden md:flex">
-            When you&apos;re done, click Create Project to start a new project.
-          </div>
-        </div>
-      </div>
       <div className="no-scrollbar h-14 overflow-x-auto overflow-y-hidden p-px md:h-full md:overflow-x-hidden md:overflow-y-auto">
         <FieldGroup className="flex h-full flex-1 flex-row gap-2 md:flex-col md:gap-0">
           <PresetPicker
