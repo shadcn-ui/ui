@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Vazirmatn } from "next/font/google"
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -8,7 +9,6 @@ import {
 } from "lucide-react"
 import { getDefaultClassNames, type DayButton } from "react-day-picker"
 import { DayPicker } from "react-day-picker/persian"
-import { Vazirmatn } from "next/font/google"
 
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/registry/new-york-v4/ui/button"
