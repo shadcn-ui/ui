@@ -459,6 +459,7 @@ export const ui: Registry["items"] = [
       "sheet",
       "skeleton",
       "tooltip",
+      "use-mobile",
     ],
     files: [
       {
