@@ -14,13 +14,23 @@ const memoizedIndex: typeof Index = Object.fromEntries(
   Object.entries(Index).map(([style, items]) => [style, { ...items }])
 )
 
+function isUnsafeKey(key: string): boolean {
+  return key === "__proto__" || key === "constructor" || key === "prototype"
+}
+
 export function getRegistryComponent(
   name: string,
   style: Style["name"] = DEFAULT_REGISTRY_STYLE
 ) {
+  if (isUnsafeKey(name)) {
+    return undefined
+  }
   return memoizedIndex[style][name]?.component
 }
 
+  if (isUnsafeKey(name)) {
+    return null
+  }
 export async function getRegistryItem(
   name: string,
   style: Style["name"] = DEFAULT_REGISTRY_STYLE
