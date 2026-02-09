@@ -91,6 +91,9 @@ test("get config", async () => {
       lib: path.resolve(__dirname, "../fixtures/config-partial", "./lib"),
     },
     iconLibrary: "lucide",
+    registries: {
+      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+    },
   })
 
   expect(
@@ -144,6 +147,9 @@ test("get config", async () => {
         "./src/lib/utils"
       ),
     },
+    registries: {
+      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
+    },
   })
 
   expect(
@@ -184,6 +190,9 @@ test("get config", async () => {
       utils: path.resolve(__dirname, "../fixtures/config-jsx", "./lib/utils"),
       hooks: path.resolve(__dirname, "../fixtures/config-jsx", "./hooks"),
       lib: path.resolve(__dirname, "../fixtures/config-jsx", "./lib"),
+    },
+    registries: {
+      "@shadcn": "https://ui.shadcn.com/r/styles/{style}/{name}.json",
     },
   })
 })

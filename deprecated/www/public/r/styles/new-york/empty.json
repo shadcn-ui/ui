@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty",
+  "type": "registry:ui",
+  "author": "shadcn (https://ui.shadcn.com)",
+  "files": [
+    {
+      "path": "ui/empty.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Empty({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty\"\n      className={cn(\n        \"flex min-w-0 flex-1 flex-col items-center justify-center gap-6 text-balance rounded-lg border-dashed p-6 text-center md:p-12\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction EmptyHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty-header\"\n      className={cn(\n        \"flex max-w-sm flex-col items-center gap-2 text-center\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nconst emptyMediaVariants = cva(\n  \"mb-2 flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-transparent\",\n        icon: \"bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-6\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction EmptyMedia({\n  className,\n  variant = \"default\",\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof emptyMediaVariants>) {\n  return (\n    <div\n      data-slot=\"empty-icon\"\n      data-variant={variant}\n      className={cn(emptyMediaVariants({ variant, className }))}\n      {...props}\n    />\n  )\n}\n\nfunction EmptyTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty-title\"\n      className={cn(\"text-lg font-medium tracking-tight\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction EmptyDescription({ className, ...props }: React.ComponentProps<\"p\">) {\n  return (\n    <div\n      data-slot=\"empty-description\"\n      className={cn(\n        \"text-muted-foreground [&>a:hover]:text-primary text-sm/relaxed [&>a]:underline [&>a]:underline-offset-4\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction EmptyContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"empty-content\"\n      className={cn(\n        \"flex w-full min-w-0 max-w-sm flex-col items-center gap-4 text-balance text-sm\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Empty,\n  EmptyHeader,\n  EmptyTitle,\n  EmptyDescription,\n  EmptyContent,\n  EmptyMedia,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

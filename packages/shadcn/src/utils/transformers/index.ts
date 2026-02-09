@@ -1,7 +1,7 @@
 import { promises as fs } from "fs"
 import { tmpdir } from "os"
 import path from "path"
-import { registryBaseColorSchema } from "@/src/registry/schema"
+import { registryBaseColorSchema } from "@/src/schema"
 import { Config } from "@/src/utils/get-config"
 import { transformCssVars } from "@/src/utils/transformers/transform-css-vars"
 import { transformIcons } from "@/src/utils/transformers/transform-icons"
@@ -11,6 +11,8 @@ import { transformRsc } from "@/src/utils/transformers/transform-rsc"
 import { Project, ScriptKind, type SourceFile } from "ts-morph"
 import { z } from "zod"
 
+import { transformCleanup } from "./transform-cleanup"
+import { transformRtl } from "./transform-rtl"
 import { transformTwPrefixes } from "./transform-tw-prefix"
 
 export type TransformOpts = {
@@ -44,7 +46,9 @@ export async function transform(
     transformRsc,
     transformCssVars,
     transformTwPrefixes,
+    transformRtl,
     transformIcons,
+    transformCleanup,
   ]
 ) {
   const tempFile = await createTempSourceFile(opts.filename)

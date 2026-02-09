@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-example",
+  "title": "Slider",
+  "registryDependencies": [
+    "label",
+    "slider",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/base-mira/examples/slider-example.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/base-mira/components/example\"\nimport { Label } from \"@/registry/base-mira/ui/label\"\nimport { Slider } from \"@/registry/base-mira/ui/slider\"\n\nexport default function SliderExample() {\n  return (\n    <ExampleWrapper>\n      <SliderBasic />\n      <SliderRange />\n      <SliderMultiple />\n      <SliderVertical />\n      <SliderControlled />\n      <SliderDisabled />\n    </ExampleWrapper>\n  )\n}\n\nfunction SliderBasic() {\n  return (\n    <Example title=\"Basic\">\n      <Slider defaultValue={50} max={100} step={1} />\n    </Example>\n  )\n}\n\nfunction SliderRange() {\n  return (\n    <Example title=\"Range\">\n      <Slider defaultValue={[25, 50]} max={100} step={5} />\n    </Example>\n  )\n}\n\nfunction SliderMultiple() {\n  return (\n    <Example title=\"Multiple Thumbs\">\n      <Slider defaultValue={[10, 20, 70]} max={100} step={10} />\n    </Example>\n  )\n}\n\nfunction SliderVertical() {\n  return (\n    <Example title=\"Vertical\">\n      <div className=\"flex items-center gap-6\">\n        <Slider\n          defaultValue={[50]}\n          max={100}\n          step={1}\n          orientation=\"vertical\"\n          className=\"h-40\"\n        />\n        <Slider\n          defaultValue={[25]}\n          max={100}\n          step={1}\n          orientation=\"vertical\"\n          className=\"h-40\"\n        />\n      </div>\n    </Example>\n  )\n}\n\nfunction SliderControlled() {\n  const [value, setValue] = React.useState([0.3, 0.7])\n\n  return (\n    <Example title=\"Controlled\">\n      <div className=\"grid w-full gap-3\">\n        <div className=\"flex items-center justify-between gap-2\">\n          <Label htmlFor=\"slider-demo-temperature\">Temperature</Label>\n          <span className=\"text-muted-foreground text-sm\">\n            {value.join(\", \")}\n          </span>\n        </div>\n        <Slider\n          id=\"slider-demo-temperature\"\n          value={value}\n          onValueChange={(value) => setValue(value as number[])}\n          min={0}\n          max={1}\n          step={0.1}\n        />\n      </div>\n    </Example>\n  )\n}\n\nfunction SliderDisabled() {\n  return (\n    <Example title=\"Disabled\">\n      <Slider defaultValue={[50]} max={100} step={1} disabled />\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

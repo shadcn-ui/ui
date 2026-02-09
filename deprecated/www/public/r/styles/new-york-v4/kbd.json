@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/kbd.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nfunction Kbd({ className, ...props }: React.ComponentProps<\"kbd\">) {\n  return (\n    <kbd\n      data-slot=\"kbd\"\n      className={cn(\n        \"bg-muted text-muted-foreground pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 font-sans text-xs font-medium select-none\",\n        \"[&_svg:not([class*='size-'])]:size-3\",\n        \"[[data-slot=tooltip-content]_&]:bg-background/20 [[data-slot=tooltip-content]_&]:text-background dark:[[data-slot=tooltip-content]_&]:bg-background/10\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction KbdGroup({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <kbd\n      data-slot=\"kbd-group\"\n      className={cn(\"inline-flex items-center gap-1\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Kbd, KbdGroup }\n",
+      "type": "registry:ui"
+    }
+  ]
+}

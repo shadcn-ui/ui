@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-avatar-group",
+  "type": "registry:example",
+  "registryDependencies": [
+    "empty",
+    "button",
+    "avatar"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/empty-avatar-group.tsx",
+      "content": "import { PlusIcon } from \"lucide-react\"\n\nimport {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"@/registry/new-york-v4/ui/avatar\"\nimport { Button } from \"@/registry/new-york-v4/ui/button\"\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/registry/new-york-v4/ui/empty\"\n\nexport default function EmptyAvatarGroup() {\n  return (\n    <Empty>\n      <EmptyHeader>\n        <EmptyMedia>\n          <div className=\"*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale\">\n            <Avatar>\n              <AvatarImage src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n              <AvatarFallback>CN</AvatarFallback>\n            </Avatar>\n            <Avatar>\n              <AvatarImage\n                src=\"https://github.com/maxleiter.png\"\n                alt=\"@maxleiter\"\n              />\n              <AvatarFallback>LR</AvatarFallback>\n            </Avatar>\n            <Avatar>\n              <AvatarImage\n                src=\"https://github.com/evilrabbit.png\"\n                alt=\"@evilrabbit\"\n              />\n              <AvatarFallback>ER</AvatarFallback>\n            </Avatar>\n          </div>\n        </EmptyMedia>\n        <EmptyTitle>No Team Members</EmptyTitle>\n        <EmptyDescription>\n          Invite your team to collaborate on this project.\n        </EmptyDescription>\n      </EmptyHeader>\n      <EmptyContent>\n        <Button size=\"sm\">\n          <PlusIcon />\n          Invite Members\n        </Button>\n      </EmptyContent>\n    </Empty>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

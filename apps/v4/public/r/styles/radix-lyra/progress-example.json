@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-example",
+  "title": "Progress",
+  "registryDependencies": [
+    "field",
+    "item",
+    "progress",
+    "slider",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-lyra/examples/progress-example.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/radix-lyra/components/example\"\nimport { Field, FieldLabel } from \"@/registry/radix-lyra/ui/field\"\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemGroup,\n  ItemMedia,\n  ItemTitle,\n} from \"@/registry/radix-lyra/ui/item\"\nimport { Progress } from \"@/registry/radix-lyra/ui/progress\"\nimport { Slider } from \"@/registry/radix-lyra/ui/slider\"\nimport { IconPlaceholder } from \"@/app/(create)/components/icon-placeholder\"\n\nexport default function ProgressExample() {\n  return (\n    <ExampleWrapper>\n      <ProgressValues />\n      <ProgressWithLabel />\n      <ProgressControlled />\n      <FileUploadList />\n    </ExampleWrapper>\n  )\n}\n\nfunction ProgressValues() {\n  return (\n    <Example title=\"Progress Bar\">\n      <div className=\"flex w-full flex-col gap-4\">\n        <Progress value={0} />\n        <Progress value={25} className=\"w-full\" />\n        <Progress value={50} />\n        <Progress value={75} />\n        <Progress value={100} />\n      </div>\n    </Example>\n  )\n}\n\nfunction ProgressWithLabel() {\n  return (\n    <Example title=\"With Label\">\n      <Field>\n        <FieldLabel htmlFor=\"progress-upload\">\n          <span>Upload progress</span>\n          <span className=\"ml-auto\">66%</span>\n        </FieldLabel>\n        <Progress value={66} className=\"w-full\" id=\"progress-upload\" />\n      </Field>\n    </Example>\n  )\n}\n\nfunction ProgressControlled() {\n  const [value, setValue] = React.useState([50])\n\n  return (\n    <Example title=\"Controlled\">\n      <div className=\"flex w-full flex-col gap-4\">\n        <Progress value={value[0]} className=\"w-full\" />\n        <Slider\n          value={value}\n          onValueChange={setValue}\n          min={0}\n          max={100}\n          step={1}\n        />\n      </div>\n    </Example>\n  )\n}\n\nfunction FileUploadList() {\n  const files = React.useMemo(\n    () => [\n      {\n        id: \"1\",\n        name: \"document.pdf\",\n        progress: 45,\n        timeRemaining: \"2m 30s\",\n      },\n      {\n        id: \"2\",\n        name: \"presentation.pptx\",\n        progress: 78,\n        timeRemaining: \"45s\",\n      },\n      {\n        id: \"3\",\n        name: \"spreadsheet.xlsx\",\n        progress: 12,\n        timeRemaining: \"5m 12s\",\n      },\n      {\n        id: \"4\",\n        name: \"image.jpg\",\n        progress: 100,\n        timeRemaining: \"Complete\",\n      },\n    ],\n    []\n  )\n\n  return (\n    <Example title=\"File Upload List\">\n      <ItemGroup>\n        {files.map((file) => (\n          <Item key={file.id} size=\"xs\" className=\"px-0\">\n            <ItemMedia variant=\"icon\">\n              <IconPlaceholder\n                lucide=\"FileIcon\"\n                tabler=\"IconFile\"\n                hugeicons=\"FileIcon\"\n                phosphor=\"FileIcon\"\n                remixicon=\"RiFileLine\"\n                className=\"size-5\"\n              />\n            </ItemMedia>\n            <ItemContent className=\"inline-block truncate\">\n              <ItemTitle className=\"inline\">{file.name}</ItemTitle>\n            </ItemContent>\n            <ItemContent>\n              <Progress value={file.progress} className=\"w-32\" />\n            </ItemContent>\n            <ItemActions className=\"w-16 justify-end\">\n              <span className=\"text-muted-foreground text-sm\">\n                {file.timeRemaining}\n              </span>\n            </ItemActions>\n          </Item>\n        ))}\n      </ItemGroup>\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

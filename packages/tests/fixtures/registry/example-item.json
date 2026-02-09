@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "example-item",
+  "type": "registry:item",
+  "files": [
+    {
+      "path": "example/foo.txt",
+      "type": "registry:item",
+      "content": "Foo Bar",
+      "target": "path/to/foo.txt"
+    }
+  ]
+}

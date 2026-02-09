@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "style",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react",
+    "radix-ui"
+  ],
+  "devDependencies": [
+    "tw-animate-css",
+    "shadcn"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [],
+  "cssVars": {},
+  "css": {
+    "@import \"shadcn/tailwind.css\"": {}
+  },
+  "type": "registry:style"
+}

@@ -5,7 +5,7 @@ description: Adding dark mode to your vite app.
 
 ## Create a theme provider
 
-```tsx title="components/theme-provider.tsx"
+```tsx title="components/theme-provider.tsx" showLineNumbers
 import { createContext, useContext, useEffect, useState } from "react"
 
 type Theme = "dark" | "light" | "system"
@@ -85,7 +85,7 @@ export const useTheme = () => {
 
 Add the `ThemeProvider` to your root layout.
 
-```tsx {1,5-7} title="App.tsx"
+```tsx {1,5-7} title="App.tsx" showLineNumbers
 import { ThemeProvider } from "@/components/theme-provider"
 
 function App() {
@@ -103,7 +103,7 @@ export default App
 
 Place a mode toggle on your site to toggle between light and dark mode.
 
-```tsx title="components/mode-toggle.tsx"
+```tsx title="components/mode-toggle.tsx" showLineNumbers
 import { Moon, Sun } from "lucide-react"
 
 import { Button } from "@/components/ui/button"

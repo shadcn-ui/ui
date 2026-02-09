@@ -2,16 +2,16 @@
 
 import * as React from "react"
 import {
-  ColumnDef,
-  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  SortingState,
   useReactTable,
-  VisibilityState,
+  type ColumnDef,
+  type ColumnFiltersState,
+  type SortingState,
+  type VisibilityState,
 } from "@tanstack/react-table"
 import { MoreHorizontalIcon } from "lucide-react"
 
@@ -209,7 +209,7 @@ export function CardsPayments() {
         </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        <div className="rounded-md border">
+        <div className="overflow-hidden rounded-md border">
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (

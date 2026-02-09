@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner",
+  "dependencies": [
+    "sonner",
+    "next-themes"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-nova/ui/sonner.tsx",
+      "content": "\"use client\"\n\nimport { useTheme } from \"next-themes\"\nimport { Toaster as Sonner, type ToasterProps } from \"sonner\"\n\nimport { IconPlaceholder } from \"@/app/(create)/components/icon-placeholder\"\n\nconst Toaster = ({ ...props }: ToasterProps) => {\n  const { theme = \"system\" } = useTheme()\n\n  return (\n    <Sonner\n      theme={theme as ToasterProps[\"theme\"]}\n      className=\"toaster group\"\n      icons={{\n        success: (\n          <IconPlaceholder\n            lucide=\"CircleCheckIcon\"\n            tabler=\"IconCircleCheck\"\n            hugeicons=\"CheckmarkCircle02Icon\"\n            phosphor=\"CheckCircleIcon\"\n            remixicon=\"RiCheckboxCircleLine\"\n            className=\"size-4\"\n          />\n        ),\n        info: (\n          <IconPlaceholder\n            lucide=\"InfoIcon\"\n            tabler=\"IconInfoCircle\"\n            hugeicons=\"InformationCircleIcon\"\n            phosphor=\"InfoIcon\"\n            remixicon=\"RiInformationLine\"\n            className=\"size-4\"\n          />\n        ),\n        warning: (\n          <IconPlaceholder\n            lucide=\"TriangleAlertIcon\"\n            tabler=\"IconAlertTriangle\"\n            hugeicons=\"Alert02Icon\"\n            phosphor=\"WarningIcon\"\n            remixicon=\"RiErrorWarningLine\"\n            className=\"size-4\"\n          />\n        ),\n        error: (\n          <IconPlaceholder\n            lucide=\"OctagonXIcon\"\n            tabler=\"IconAlertOctagon\"\n            hugeicons=\"MultiplicationSignCircleIcon\"\n            phosphor=\"XCircleIcon\"\n            remixicon=\"RiCloseCircleLine\"\n            className=\"size-4\"\n          />\n        ),\n        loading: (\n          <IconPlaceholder\n            lucide=\"Loader2Icon\"\n            tabler=\"IconLoader\"\n            hugeicons=\"Loading03Icon\"\n            phosphor=\"SpinnerIcon\"\n            remixicon=\"RiLoaderLine\"\n            className=\"size-4 animate-spin\"\n          />\n        ),\n      }}\n      style={\n        {\n          \"--normal-bg\": \"var(--popover)\",\n          \"--normal-text\": \"var(--popover-foreground)\",\n          \"--normal-border\": \"var(--border)\",\n          \"--border-radius\": \"var(--radius)\",\n        } as React.CSSProperties\n      }\n      toastOptions={{\n        classNames: {\n          toast: \"cn-toast\",\n        },\n      }}\n      {...props}\n    />\n  )\n}\n\nexport { Toaster }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

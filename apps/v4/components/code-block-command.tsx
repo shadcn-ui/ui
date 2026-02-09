@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckIcon, ClipboardIcon, TerminalIcon } from "lucide-react"
+import { IconCheck, IconCopy, IconTerminal } from "@tabler/icons-react"
 
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
@@ -80,7 +80,7 @@ export function CodeBlockCommand({
       >
         <div className="border-border/50 flex items-center gap-2 border-b px-3 py-1">
           <div className="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">
-            <TerminalIcon className="text-code size-3" />
+            <IconTerminal className="text-code size-3" />
           </div>
           <TabsList className="rounded-none bg-transparent p-0">
             {Object.entries(tabs).map(([key]) => {
@@ -88,7 +88,7 @@ export function CodeBlockCommand({
                 <TabsTrigger
                   key={key}
                   value={key}
-                  className="data-[state=active]:bg-accent data-[state=active]:border-input h-7 border border-transparent pt-0.5 data-[state=active]:shadow-none"
+                  className="data-[state=active]:bg-background! data-[state=active]:border-input h-7 border border-transparent pt-0.5 shadow-none!"
                 >
                   {key}
                 </TabsTrigger>
@@ -113,23 +113,16 @@ export function CodeBlockCommand({
           })}
         </div>
       </Tabs>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            data-slot="copy-button"
-            size="icon"
-            variant="ghost"
-            className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
-            onClick={copyCommand}
-          >
-            <span className="sr-only">Copy</span>
-            {hasCopied ? <CheckIcon /> : <ClipboardIcon />}
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          {hasCopied ? "Copied" : "Copy to Clipboard"}
-        </TooltipContent>
-      </Tooltip>
+      <Button
+        data-slot="copy-button"
+        size="icon"
+        variant="ghost"
+        className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+        onClick={copyCommand}
+      >
+        <span className="sr-only">Copy</span>
+        {hasCopied ? <IconCheck /> : <IconCopy />}
+      </Button>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { Icons } from "@/components/icons"
 import { Button } from "@/registry/new-york-v4/ui/button"
 
 // v0 uses the default style.
-const V0_STYLE = "default"
+const V0_STYLE = "new-york-v4"
 
 export function OpenInV0Button({
   name,

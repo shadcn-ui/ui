@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton-example",
+  "title": "Skeleton",
+  "registryDependencies": [
+    "skeleton",
+    "example"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-maia/examples/skeleton-example.tsx",
+      "content": "import {\n  Example,\n  ExampleWrapper,\n} from \"@/registry/radix-maia/components/example\"\nimport { Card, CardContent, CardHeader } from \"@/registry/radix-maia/ui/card\"\nimport { Skeleton } from \"@/registry/radix-maia/ui/skeleton\"\n\nexport default function SkeletonExample() {\n  return (\n    <ExampleWrapper>\n      <SkeletonAvatar />\n      <SkeletonCard />\n      <SkeletonText />\n      <SkeletonForm />\n      <SkeletonTable />\n    </ExampleWrapper>\n  )\n}\n\nfunction SkeletonAvatar() {\n  return (\n    <Example title=\"Avatar\">\n      <div className=\"flex w-full items-center gap-4\">\n        <Skeleton className=\"size-10 shrink-0 rounded-full\" />\n        <div className=\"grid gap-2\">\n          <Skeleton className=\"h-4 w-[150px]\" />\n          <Skeleton className=\"h-4 w-[100px]\" />\n        </div>\n      </div>\n    </Example>\n  )\n}\n\nfunction SkeletonCard() {\n  return (\n    <Example title=\"Card\">\n      <Card className=\"w-full\">\n        <CardHeader>\n          <Skeleton className=\"h-4 w-2/3\" />\n          <Skeleton className=\"h-4 w-1/2\" />\n        </CardHeader>\n        <CardContent>\n          <Skeleton className=\"aspect-square w-full\" />\n        </CardContent>\n      </Card>\n    </Example>\n  )\n}\n\nfunction SkeletonText() {\n  return (\n    <Example title=\"Text\">\n      <div className=\"flex w-full flex-col gap-2\">\n        <Skeleton className=\"h-4 w-full\" />\n        <Skeleton className=\"h-4 w-full\" />\n        <Skeleton className=\"h-4 w-3/4\" />\n      </div>\n    </Example>\n  )\n}\n\nfunction SkeletonForm() {\n  return (\n    <Example title=\"Form\">\n      <div className=\"flex w-full flex-col gap-7\">\n        <div className=\"flex flex-col gap-3\">\n          <Skeleton className=\"h-4 w-20\" />\n          <Skeleton className=\"h-10 w-full\" />\n        </div>\n        <div className=\"flex flex-col gap-3\">\n          <Skeleton className=\"h-4 w-24\" />\n          <Skeleton className=\"h-10 w-full\" />\n        </div>\n        <Skeleton className=\"h-9 w-24\" />\n      </div>\n    </Example>\n  )\n}\n\nfunction SkeletonTable() {\n  return (\n    <Example title=\"Table\">\n      <div className=\"flex w-full flex-col gap-2\">\n        <div className=\"flex gap-4\">\n          <Skeleton className=\"h-4 flex-1\" />\n          <Skeleton className=\"h-4 w-24\" />\n          <Skeleton className=\"h-4 w-20\" />\n        </div>\n        <div className=\"flex gap-4\">\n          <Skeleton className=\"h-4 flex-1\" />\n          <Skeleton className=\"h-4 w-24\" />\n          <Skeleton className=\"h-4 w-20\" />\n        </div>\n        <div className=\"flex gap-4\">\n          <Skeleton className=\"h-4 flex-1\" />\n          <Skeleton className=\"h-4 w-24\" />\n          <Skeleton className=\"h-4 w-20\" />\n        </div>\n      </div>\n    </Example>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

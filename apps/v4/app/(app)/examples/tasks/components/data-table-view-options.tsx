@@ -1,7 +1,6 @@
 "use client"
 
-import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
-import { Table } from "@tanstack/react-table"
+import { type Table } from "@tanstack/react-table"
 import { Settings2 } from "lucide-react"
 
 import { Button } from "@/registry/new-york-v4/ui/button"
@@ -11,6 +10,7 @@ import {
   DropdownMenuContent,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/registry/new-york-v4/ui/dropdown-menu"
 
 export function DataTableViewOptions<TData>({

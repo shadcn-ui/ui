@@ -1,109 +1,65 @@
 "use client"
 
-import { cn } from "@/lib/utils"
-import { useThemeConfig } from "@/components/active-theme"
-import { Label } from "@/registry/new-york-v4/ui/label"
+import { Label } from "@/examples/base/ui/label"
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectLabel,
-  SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/new-york-v4/ui/select"
+} from "@/examples/base/ui/select"
 
-const DEFAULT_THEMES = [
-  {
-    name: "Default",
-    value: "default",
-  },
-  {
-    name: "Scaled",
-    value: "scaled",
-  },
-  {
-    name: "Mono",
-    value: "mono",
-  },
-]
+import { THEMES } from "@/lib/themes"
+import { cn } from "@/lib/utils"
+import { useThemeConfig } from "@/components/active-theme"
 
-const COLOR_THEMES = [
-  {
-    name: "Blue",
-    value: "blue",
-  },
-  {
-    name: "Green",
-    value: "green",
-  },
-  {
-    name: "Amber",
-    value: "amber",
-  },
-  {
-    name: "Rose",
-    value: "rose",
-  },
-  {
-    name: "Purple",
-    value: "purple",
-  },
-  {
-    name: "Orange",
-    value: "orange",
-  },
-  {
-    name: "Teal",
-    value: "teal",
-  },
-]
+import { CopyCodeButton } from "./theme-customizer"
 
 export function ThemeSelector({ className }: React.ComponentProps<"div">) {
   const { activeTheme, setActiveTheme } = useThemeConfig()
+
+  const value = activeTheme === "default" ? "neutral" : activeTheme
+
+  const items = THEMES.map((theme) => ({
+    label: theme.label,
+    value: theme.name,
+  }))
 
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <Label htmlFor="theme-selector" className="sr-only">
         Theme
       </Label>
-      <Select value={activeTheme} onValueChange={setActiveTheme}>
-        <SelectTrigger
-          id="theme-selector"
-          size="sm"
-          className="bg-secondary text-secondary-foreground border-secondary justify-start shadow-none *:data-[slot=select-value]:w-12"
-        >
-          <span className="font-medium">Theme:</span>
+      <Select
+        items={items}
+        value={value}
+        onValueChange={(value) => value && setActiveTheme(value)}
+      >
+        <SelectTrigger id="theme-selector" className="w-36">
           <SelectValue placeholder="Select a theme" />
         </SelectTrigger>
-        <SelectContent align="end">
+        <SelectContent>
           <SelectGroup>
-            {DEFAULT_THEMES.map((theme) => (
+            <SelectLabel>Theme</SelectLabel>
+            {items.map((item) => (
               <SelectItem
-                key={theme.name}
-                value={theme.value}
+                key={item.value}
+                value={item.value}
                 className="data-[state=checked]:opacity-50"
               >
-                {theme.name}
-              </SelectItem>
-            ))}
-          </SelectGroup>
-          <SelectSeparator />
-          <SelectGroup>
-            <SelectLabel>Colors</SelectLabel>
-            {COLOR_THEMES.map((theme) => (
-              <SelectItem
-                key={theme.name}
-                value={theme.value}
-                className="data-[state=checked]:opacity-50"
-              >
-                {theme.name}
+                {item.label}
               </SelectItem>
             ))}
           </SelectGroup>
         </SelectContent>
       </Select>
+      <CopyCodeButton
+        variant="secondary"
+        size="icon-sm"
+        className="rounded-lg border bg-transparent"
+      />
     </div>
   )
 }

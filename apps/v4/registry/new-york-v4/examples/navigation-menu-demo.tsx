@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 
+import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -53,9 +54,11 @@ const components: { title: string; href: string; description: string }[] = [
 ]
 
 export default function NavigationMenuDemo() {
+  const isMobile = useIsMobile()
+
   return (
-    <NavigationMenu viewport={false}>
-      <NavigationMenuList>
+    <NavigationMenu viewport={isMobile}>
+      <NavigationMenuList className="flex-wrap">
         <NavigationMenuItem>
           <NavigationMenuTrigger>Home</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -63,10 +66,10 @@ export default function NavigationMenuDemo() {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
+                    className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
                     href="/"
                   >
-                    <div className="mt-4 mb-2 text-lg font-medium">
+                    <div className="mb-2 text-lg font-medium sm:mt-4">
                       shadcn/ui
                     </div>
                     <p className="text-muted-foreground text-sm leading-tight">
@@ -90,7 +93,7 @@ export default function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
@@ -108,7 +111,7 @@ export default function NavigationMenuDemo() {
             <Link href="/docs">Docs</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger>List</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[300px] gap-4">
@@ -141,7 +144,7 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-4">
@@ -159,7 +162,7 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-4">

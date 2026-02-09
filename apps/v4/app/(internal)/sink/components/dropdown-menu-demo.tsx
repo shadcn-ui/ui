@@ -1,21 +1,6 @@
 "use client"
 
 import * as React from "react"
-import {
-  BadgeCheckIcon,
-  BellIcon,
-  ChevronsUpDownIcon,
-  CreditCardIcon,
-  LogOut,
-  LogOutIcon,
-  MoreHorizontalIcon,
-  PencilIcon,
-  Settings2Icon,
-  ShareIcon,
-  SparklesIcon,
-  TrashIcon,
-  UserIcon,
-} from "lucide-react"
 
 import {
   Avatar,
@@ -40,6 +25,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/registry/new-york-v4/ui/dropdown-menu"
+import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export function DropdownMenuDemo() {
   return (
@@ -127,13 +113,34 @@ function DropdownMenuCheckboxes() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>Account</DropdownMenuLabel>
           <DropdownMenuItem>
-            <UserIcon /> Profile
+            <IconPlaceholder
+              lucide="UserIcon"
+              tabler="IconUser"
+              hugeicons="UserIcon"
+              phosphor="UserIcon"
+              remixicon="RiUserLine"
+            />
+            Profile
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCardIcon /> Billing
+            <IconPlaceholder
+              lucide="CreditCardIcon"
+              tabler="IconCreditCard"
+              hugeicons="CreditCardIcon"
+              phosphor="CreditCardIcon"
+              remixicon="RiBankCardLine"
+            />
+            Billing
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Settings2Icon /> Settings
+            <IconPlaceholder
+              lucide="SettingsIcon"
+              tabler="IconSettings"
+              hugeicons="SettingsIcon"
+              phosphor="GearIcon"
+              remixicon="RiSettings3Line"
+            />
+            Settings
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -162,7 +169,14 @@ function DropdownMenuCheckboxes() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <LogOutIcon /> Sign Out
+            <IconPlaceholder
+              lucide="LogOutIcon"
+              tabler="IconLogout"
+              hugeicons="LogoutIcon"
+              phosphor="SignOutIcon"
+              remixicon="RiLogoutBoxLine"
+            />
+            Sign Out
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
@@ -212,7 +226,14 @@ function DropdownMenuWithAvatar() {
               shadcn@example.com
             </span>
           </div>
-          <ChevronsUpDownIcon className="text-muted-foreground ml-auto" />
+          <IconPlaceholder
+            lucide="ChevronsUpDownIcon"
+            tabler="IconChevronsUpDown"
+            hugeicons="ChevronUpDownIcon"
+            phosphor="CaretUpDownIcon"
+            remixicon="RiExpandUpDownLine"
+            className="text-muted-foreground ml-auto"
+          />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -236,28 +257,58 @@ function DropdownMenuWithAvatar() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <SparklesIcon />
+            <IconPlaceholder
+              lucide="SparklesIcon"
+              tabler="IconSparkles"
+              hugeicons="SparklesIcon"
+              phosphor="SparklesIcon"
+              remixicon="RiSparklingLine"
+            />
             Upgrade to Pro
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <BadgeCheckIcon />
+            <IconPlaceholder
+              lucide="BadgeCheckIcon"
+              tabler="IconBadgeCheck"
+              hugeicons="BadgeCheckIcon"
+              phosphor="CheckCircleIcon"
+              remixicon="RiVerifiedBadgeLine"
+            />
             Account
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCardIcon />
+            <IconPlaceholder
+              lucide="CreditCardIcon"
+              tabler="IconCreditCard"
+              hugeicons="CreditCardIcon"
+              phosphor="CreditCardIcon"
+              remixicon="RiBankCardLine"
+            />
             Billing
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <BellIcon />
+            <IconPlaceholder
+              lucide="BellIcon"
+              tabler="IconBell"
+              hugeicons="BellIcon"
+              phosphor="BellIcon"
+              remixicon="RiNotification3Line"
+            />
             Notifications
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOut />
+          <IconPlaceholder
+            lucide="LogOutIcon"
+            tabler="IconLogout"
+            hugeicons="LogoutIcon"
+            phosphor="SignOutIcon"
+            remixicon="RiLogoutBoxLine"
+          />
           Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -274,7 +325,10 @@ function DropdownMenuAvatarOnly() {
           className="size-8 rounded-full border-none p-0"
         >
           <Avatar>
-            <AvatarImage src="https://github.com/leerob.png" alt="leerob" />
+            <AvatarImage
+              src="https://github.com/maxleiter.png"
+              alt="maxleiter"
+            />
             <AvatarFallback className="rounded-lg">LR</AvatarFallback>
           </Avatar>
         </Button>
@@ -286,13 +340,16 @@ function DropdownMenuAvatarOnly() {
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
             <Avatar>
-              <AvatarImage src="https://github.com/leerob.png" alt="leerob" />
+              <AvatarImage
+                src="https://github.com/maxleiter.png"
+                alt="maxleiter"
+              />
               <AvatarFallback className="rounded-lg">LR</AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-semibold">leerob</span>
+              <span className="truncate font-semibold">maxleiter</span>
               <span className="text-muted-foreground truncate text-xs">
-                leerob@example.com
+                maxleiter@example.com
               </span>
             </div>
           </div>
@@ -300,28 +357,58 @@ function DropdownMenuAvatarOnly() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <SparklesIcon />
+            <IconPlaceholder
+              lucide="SparklesIcon"
+              tabler="IconSparkles"
+              hugeicons="SparklesIcon"
+              phosphor="SparklesIcon"
+              remixicon="RiSparklingLine"
+            />
             Upgrade to Pro
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <BadgeCheckIcon />
+            <IconPlaceholder
+              lucide="BadgeCheckIcon"
+              tabler="IconBadgeCheck"
+              hugeicons="BadgeCheckIcon"
+              phosphor="CheckCircleIcon"
+              remixicon="RiVerifiedBadgeLine"
+            />
             Account
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCardIcon />
+            <IconPlaceholder
+              lucide="CreditCardIcon"
+              tabler="IconCreditCard"
+              hugeicons="CreditCardIcon"
+              phosphor="CreditCardIcon"
+              remixicon="RiBankCardLine"
+            />
             Billing
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <BellIcon />
+            <IconPlaceholder
+              lucide="BellIcon"
+              tabler="IconBell"
+              hugeicons="BellIcon"
+              phosphor="BellIcon"
+              remixicon="RiNotification3Line"
+            />
             Notifications
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <LogOut />
+          <IconPlaceholder
+            lucide="LogOutIcon"
+            tabler="IconLogout"
+            hugeicons="LogoutIcon"
+            phosphor="SignOutIcon"
+            remixicon="RiLogoutBoxLine"
+          />
           Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -334,23 +421,47 @@ function DropdownMenuIconColor() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          <MoreHorizontalIcon />
+          <IconPlaceholder
+            lucide="MoreHorizontalIcon"
+            tabler="IconDots"
+            hugeicons="MoreHorizontalCircle01Icon"
+            phosphor="DotsThreeOutlineIcon"
+            remixicon="RiMoreLine"
+          />
           <span className="sr-only">Toggle menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
-        <DropdownMenuGroup className="*:data-[slot=dropdown-menu-item]:[&>svg]:text-muted-foreground">
+        <DropdownMenuGroup>
           <DropdownMenuItem>
-            <PencilIcon />
+            <IconPlaceholder
+              lucide="PencilIcon"
+              tabler="IconPencil"
+              hugeicons="EditIcon"
+              phosphor="PencilIcon"
+              remixicon="RiPencilLine"
+            />
             Edit
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <ShareIcon />
+            <IconPlaceholder
+              lucide="ShareIcon"
+              tabler="IconShare"
+              hugeicons="ShareIcon"
+              phosphor="ShareIcon"
+              remixicon="RiShareLine"
+            />
             Share
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem variant="destructive">
-            <TrashIcon />
+            <IconPlaceholder
+              lucide="TrashIcon"
+              tabler="IconTrash"
+              hugeicons="DeleteIcon"
+              phosphor="TrashIcon"
+              remixicon="RiDeleteBinLine"
+            />
             Delete
           </DropdownMenuItem>
         </DropdownMenuGroup>

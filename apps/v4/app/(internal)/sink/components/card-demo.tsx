@@ -98,7 +98,10 @@ export function CardDemo() {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <Avatar>
-              <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+              <AvatarImage
+                src="https://github.com/maxleiter.png"
+                alt="@maxleiter"
+              />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
             <Avatar>
@@ -184,6 +187,21 @@ export function CardDemo() {
           </CardHeader>
           <CardContent className="text-sm">Content</CardContent>
           <CardFooter className="text-sm">Footer</CardFooter>
+        </Card>
+        <Card>
+          <CardHeader className="border-b">
+            <CardTitle>Header with Border</CardTitle>
+            <CardDescription>
+              This is a card with a header that has a bottom border.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">Content</CardContent>
+        </Card>
+        <Card>
+          <CardContent className="text-sm">Content</CardContent>
+          <CardFooter className="border-t text-sm">
+            Footer with Border
+          </CardFooter>
         </Card>
       </div>
     </div>

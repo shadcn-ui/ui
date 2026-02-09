@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "files": [
+    {
+      "path": "registry/radix-lyra/ui/native-select.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/registry/radix-lyra/lib/utils\"\nimport { IconPlaceholder } from \"@/app/(create)/components/icon-placeholder\"\n\ntype NativeSelectProps = Omit<React.ComponentProps<\"select\">, \"size\"> & {\n  size?: \"sm\" | \"default\"\n}\n\nfunction NativeSelect({\n  className,\n  size = \"default\",\n  ...props\n}: NativeSelectProps) {\n  return (\n    <div\n      className={cn(\n        \"group/native-select relative w-fit has-[select:disabled]:opacity-50\",\n        className\n      )}\n      data-slot=\"native-select-wrapper\"\n      data-size={size}\n    >\n      <select\n        data-slot=\"native-select\"\n        data-size={size}\n        className=\"border-input placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 dark:hover:bg-input/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-8 w-full min-w-0 appearance-none rounded-none border bg-transparent py-1 pr-8 pl-2.5 text-xs transition-colors select-none focus-visible:ring-1 aria-invalid:ring-1 data-[size=sm]:h-7 data-[size=sm]:rounded-none data-[size=sm]:py-0.5 outline-none disabled:pointer-events-none disabled:cursor-not-allowed\"\n        {...props}\n      />\n      <IconPlaceholder\n        lucide=\"ChevronDownIcon\"\n        tabler=\"IconSelector\"\n        hugeicons=\"UnfoldMoreIcon\"\n        phosphor=\"CaretDownIcon\"\n        remixicon=\"RiArrowDownSLine\"\n        className=\"text-muted-foreground top-1/2 right-2.5 size-4 -translate-y-1/2 pointer-events-none absolute select-none\"\n        aria-hidden=\"true\"\n        data-slot=\"native-select-icon\"\n      />\n    </div>\n  )\n}\n\nfunction NativeSelectOption({ ...props }: React.ComponentProps<\"option\">) {\n  return <option data-slot=\"native-select-option\" {...props} />\n}\n\nfunction NativeSelectOptGroup({\n  className,\n  ...props\n}: React.ComponentProps<\"optgroup\">) {\n  return (\n    <optgroup\n      data-slot=\"native-select-optgroup\"\n      className={cn(className)}\n      {...props}\n    />\n  )\n}\n\nexport { NativeSelect, NativeSelectOptGroup, NativeSelectOption }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

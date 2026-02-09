@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-select",
+  "type": "registry:example",
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/field-select.tsx",
+      "content": "import {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/registry/new-york-v4/ui/field\"\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/registry/new-york-v4/ui/select\"\n\nexport default function FieldSelect() {\n  return (\n    <div className=\"w-full max-w-md\">\n      <Field>\n        <FieldLabel>Department</FieldLabel>\n        <Select>\n          <SelectTrigger>\n            <SelectValue placeholder=\"Choose department\" />\n          </SelectTrigger>\n          <SelectContent>\n            <SelectItem value=\"engineering\">Engineering</SelectItem>\n            <SelectItem value=\"design\">Design</SelectItem>\n            <SelectItem value=\"marketing\">Marketing</SelectItem>\n            <SelectItem value=\"sales\">Sales</SelectItem>\n            <SelectItem value=\"support\">Customer Support</SelectItem>\n            <SelectItem value=\"hr\">Human Resources</SelectItem>\n            <SelectItem value=\"finance\">Finance</SelectItem>\n            <SelectItem value=\"operations\">Operations</SelectItem>\n          </SelectContent>\n        </Select>\n        <FieldDescription>\n          Select your department or area of work.\n        </FieldDescription>\n      </Field>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,10 +1,13 @@
 "use client"
 
 import * as React from "react"
-import Link, { LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
+import Link, { type LinkProps } from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 
-import { source } from "@/lib/source"
+import { PAGES_NEW } from "@/lib/docs"
+import { showMcpDocs } from "@/lib/flags"
+import { getCurrentBase, getPagesFromFolder } from "@/lib/page-tree"
+import { type source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
@@ -12,6 +15,42 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york-v4/ui/popover"
+
+const TOP_LEVEL_SECTIONS = [
+  { name: "Introduction", href: "/docs" },
+  {
+    name: "Components",
+    href: "/docs/components",
+  },
+  {
+    name: "Installation",
+    href: "/docs/installation",
+  },
+  {
+    name: "Directory",
+    href: "/docs/directory",
+  },
+  {
+    name: "RTL",
+    href: "/docs/rtl",
+  },
+  {
+    name: "MCP Server",
+    href: "/docs/mcp",
+  },
+  {
+    name: "Registry",
+    href: "/docs/registry",
+  },
+  {
+    name: "Forms",
+    href: "/docs/forms",
+  },
+  {
+    name: "Changelog",
+    href: "/docs/changelog",
+  },
+]
 
 export function MobileNav({
   tree,
@@ -23,6 +62,8 @@ export function MobileNav({
   className?: string
 }) {
   const [open, setOpen] = React.useState(false)
+  const pathname = usePathname()
+  const currentBase = getCurrentBase(pathname)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -57,7 +98,7 @@ export function MobileNav({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur duration-100"
+        className="bg-background/90 no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur duration-100 data-open:animate-none!"
         align="start"
         side="bottom"
         alignOffset={-16}
@@ -79,27 +120,56 @@ export function MobileNav({
               ))}
             </div>
           </div>
+          <div className="flex flex-col gap-4">
+            <div className="text-muted-foreground text-sm font-medium">
+              Sections
+            </div>
+            <div className="flex flex-col gap-3">
+              {TOP_LEVEL_SECTIONS.map(({ name, href }) => {
+                if (!showMcpDocs && href.includes("/mcp")) {
+                  return null
+                }
+                return (
+                  <MobileLink key={name} href={href} onOpenChange={setOpen}>
+                    {name}
+                    {PAGES_NEW.includes(href) && (
+                      <span
+                        className="flex size-2 rounded-full bg-blue-500"
+                        title="New"
+                      />
+                    )}
+                  </MobileLink>
+                )
+              })}
+            </div>
+          </div>
           <div className="flex flex-col gap-8">
             {tree?.children?.map((group, index) => {
               if (group.type === "folder") {
+                const pages = getPagesFromFolder(group, currentBase)
                 return (
                   <div key={index} className="flex flex-col gap-4">
                     <div className="text-muted-foreground text-sm font-medium">
                       {group.name}
                     </div>
                     <div className="flex flex-col gap-3">
-                      {group.children.map((item) => {
-                        if (item.type === "page") {
-                          return (
-                            <MobileLink
-                              key={`${item.url}-${index}`}
-                              href={item.url}
-                              onOpenChange={setOpen}
-                            >
-                              {item.name}
-                            </MobileLink>
-                          )
+                      {pages.map((item) => {
+                        if (!showMcpDocs && item.url.includes("/mcp")) {
+                          return null
                         }
+                        return (
+                          <MobileLink
+                            key={`${item.url}-${index}`}
+                            href={item.url}
+                            onOpenChange={setOpen}
+                            className="flex items-center gap-2"
+                          >
+                            {item.name}{" "}
+                            {PAGES_NEW.includes(item.url) && (
+                              <span className="flex size-2 rounded-full bg-blue-500" />
+                            )}
+                          </MobileLink>
+                        )
                       })}
                     </div>
                   </div>
@@ -132,7 +202,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn("text-2xl font-medium", className)}
+      className={cn("flex items-center gap-2 text-2xl font-medium", className)}
       {...props}
     >
       {children}

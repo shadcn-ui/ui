@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 import { META_THEME_COLORS, siteConfig } from "@/lib/config"
 import { fontVariables } from "@/lib/fonts"
@@ -8,7 +9,9 @@ import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Toaster } from "@/registry/new-york-v4/ui/sonner"
+import { TooltipProvider as BaseTooltipProvider } from "@/registry/bases/base/ui/tooltip"
+import { Toaster } from "@/registry/bases/radix/ui/sonner"
+import { TooltipProvider as RadixTooltipProvider } from "@/registry/bases/radix/ui/tooltip"
 
 import "@/styles/globals.css"
 
@@ -56,6 +59,11 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
+  alternates: {
+    types: {
+      "application/rss+xml": `${siteConfig.url}/rss.xml`,
+    },
+  },
 }
 
 export default function RootLayout({
@@ -64,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={fontVariables}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -84,16 +92,21 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
-          fontVariables
+          "group/body overscroll-none antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]"
         )}
       >
         <ThemeProvider>
           <LayoutProvider>
             <ActiveThemeProvider>
-              {children}
+              <NuqsAdapter>
+                <BaseTooltipProvider delay={0}>
+                  <RadixTooltipProvider delayDuration={0}>
+                    {children}
+                    <Toaster position="top-center" />
+                  </RadixTooltipProvider>
+                </BaseTooltipProvider>
+              </NuqsAdapter>
               <TailwindIndicator />
-              <Toaster position="top-center" />
               <Analytics />
             </ActiveThemeProvider>
           </LayoutProvider>

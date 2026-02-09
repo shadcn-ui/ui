@@ -2,8 +2,6 @@
 
 import * as React from "react"
 import {
-  ColumnDef,
-  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -11,9 +9,11 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  SortingState,
   useReactTable,
-  VisibilityState,
+  type ColumnDef,
+  type ColumnFiltersState,
+  type SortingState,
+  type VisibilityState,
 } from "@tanstack/react-table"
 
 import {
@@ -75,7 +75,7 @@ export function DataTable<TData, TValue>({
   return (
     <div className="flex flex-col gap-4">
       <DataTableToolbar table={table} />
-      <div className="rounded-md border">
+      <div className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
