@@ -71,10 +71,10 @@ type BlockViewerContext = {
   resizablePanelRef: React.RefObject<PanelImperativeHandle | null> | null
   tree: ReturnType<typeof createFileTreeForRegistryItemFiles> | null
   highlightedFiles:
-  | (z.infer<typeof registryItemFileSchema> & {
-    highlightedContent: string
-  })[]
-  | null
+    | (z.infer<typeof registryItemFileSchema> & {
+        highlightedContent: string
+      })[]
+    | null
   iframeKey?: number
   setIframeKey?: React.Dispatch<React.SetStateAction<number>>
 }
@@ -154,7 +154,7 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
         value={view}
         onValueChange={(value) => setView(value as "preview" | "code")}
       >
-        <TabsList className="grid h-8! grid-cols-2 items-center p-1 *:data-[slot=tabs-trigger]:h-6 *:data-[slot=tabs-trigger]:rounded-sm *:data-[slot=tabs-trigger]:px-2 *:data-[slot=tabs-trigger]:text-xs rounded-lg">
+        <TabsList className="grid h-8! grid-cols-2 items-center rounded-lg p-1 *:data-[slot=tabs-trigger]:h-6 *:data-[slot=tabs-trigger]:rounded-sm *:data-[slot=tabs-trigger]:px-2 *:data-[slot=tabs-trigger]:text-xs">
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>

@@ -314,7 +314,8 @@ function SidebarContentInner({
 
   return (
     <>
-      <Sidebar collapsible="icon" dir={dir}>
+      <Sidebar collapsible="icon" dir={dir}
+        side={dir === "ltr" ? "left" : "right"}>
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
