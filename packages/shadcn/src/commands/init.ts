@@ -234,7 +234,7 @@ export const init = new Command()
               value: "create",
             },
             {
-              title: "No. Use defaults.",
+              title: "No. Continue without a preset.",
               value: "defaults",
             },
           ],
@@ -252,10 +252,7 @@ export const init = new Command()
           process.exit(0)
         }
 
-        // User chose defaults — continue with default init flow.
-        opts.defaults = true
-        opts.template = opts.template || "next"
-        opts.baseColor = opts.baseColor || "neutral"
+        // User chose no preset — continue with normal init flow.
       }
 
       const options = initOptionsSchema.parse({

@@ -177,4 +177,70 @@ describe("handlePresetOption", () => {
 
     expect(result).toBeNull()
   })
+
+  it("should exit with error when preset name is empty string", async () => {
+    vi.mocked(getPreset).mockResolvedValue(null)
+    mockExit = vi
+      .spyOn(process, "exit")
+      .mockImplementation(() => undefined as never)
+
+    await handlePresetOption("", false)
+
+    expect(mockExit).toHaveBeenCalledWith(1)
+  })
+
+  it("should list available presets in error when not found", async () => {
+    const { logger } = await import("@/src/utils/logger")
+    const secondPreset = { ...mockPreset, name: "minimal", title: "Minimal" }
+    vi.mocked(getPreset).mockResolvedValue(null)
+    vi.mocked(getPresets).mockResolvedValue([mockPreset, secondPreset])
+    mockExit = vi
+      .spyOn(process, "exit")
+      .mockImplementation(() => undefined as never)
+
+    await handlePresetOption("nonexistent", false)
+
+    expect(logger.error).toHaveBeenCalledWith(
+      expect.stringContaining("default, minimal")
+    )
+  })
+
+  it("should pass rtl to create url when custom is selected", async () => {
+    vi.mocked(prompts).mockResolvedValue({ selectedPreset: "custom" })
+
+    await handlePresetOption(true, true)
+
+    expect(open).toHaveBeenCalledWith(expect.stringContaining("rtl=true"))
+  })
+
+  it("should select correct preset from multiple options", async () => {
+    const secondPreset = {
+      ...mockPreset,
+      name: "minimal",
+      title: "Minimal",
+      baseColor: "zinc",
+    }
+    vi.mocked(getPresets).mockResolvedValue([mockPreset, secondPreset])
+    vi.mocked(prompts).mockResolvedValue({ selectedPreset: "minimal" })
+
+    const result = await handlePresetOption(true, false)
+
+    expect(result).toEqual(secondPreset)
+  })
+
+  it("should propagate error when getPresets fails", async () => {
+    vi.mocked(getPresets).mockRejectedValue(new Error("Network error"))
+
+    await expect(handlePresetOption(true, false)).rejects.toThrow(
+      "Network error"
+    )
+  })
+
+  it("should propagate error when getPreset fails", async () => {
+    vi.mocked(getPreset).mockRejectedValue(new Error("Network error"))
+
+    await expect(handlePresetOption("default", false)).rejects.toThrow(
+      "Network error"
+    )
+  })
 })
