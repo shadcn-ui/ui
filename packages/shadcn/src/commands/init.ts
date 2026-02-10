@@ -159,6 +159,26 @@ export const init = new Command()
         opts.baseColor = opts.baseColor || "neutral"
       }
 
+      // Run early preflight check for existing components.json.
+      const cwd = path.resolve(opts.cwd)
+      if (
+        fsExtra.existsSync(path.resolve(cwd, "components.json")) &&
+        !opts.force
+      ) {
+        logger.break()
+        logger.error(
+          `A ${highlighter.info(
+            "components.json"
+          )} file already exists at ${highlighter.info(
+            cwd
+          )}.\nTo start over, remove the ${highlighter.info(
+            "components.json"
+          )} file and run ${highlighter.info("init")} again.`
+        )
+        logger.break()
+        process.exit(1)
+      }
+
       // Handle --preset option.
       if (opts.preset !== undefined) {
         const presetResult = await handlePresetOption(
@@ -200,18 +220,31 @@ export const init = new Command()
         components.length === 0 &&
         !opts.defaults
       ) {
-        const { useCreate } = await prompts({
-          type: "confirm",
-          name: "useCreate",
-          message:
-            "Would you like to use shadcn/create to build your custom design system?",
-          initial: true,
+        const createUrl = getShadcnCreateUrl(
+          opts.rtl ? { rtl: "true" } : undefined
+        )
+
+        const { preset } = await prompts({
+          type: "select",
+          name: "preset",
+          message: "Would you like to start with a preset?",
+          choices: [
+            {
+              title: "Use shadcn/create to build a preset.",
+              value: "create",
+            },
+            {
+              title: "No. Use defaults.",
+              value: "defaults",
+            },
+          ],
         })
 
-        if (useCreate) {
-          const createUrl = getShadcnCreateUrl(
-            opts.rtl ? { rtl: "true" } : undefined
-          )
+        if (!preset) {
+          process.exit(0)
+        }
+
+        if (preset === "create") {
           logger.info(
             `\nOpening ${highlighter.info(createUrl)} in your browser...\n`
           )
@@ -219,7 +252,7 @@ export const init = new Command()
           process.exit(0)
         }
 
-        // User chose "No" — continue with default init flow.
+        // User chose defaults — continue with default init flow.
         opts.defaults = true
         opts.template = opts.template || "next"
         opts.baseColor = opts.baseColor || "neutral"
