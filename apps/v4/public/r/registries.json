@@ -294,6 +294,12 @@
     "description": "Agentic UI toolkit for building MCP Apps. Open-source components and blocks ready to use within your chat app."
   },
   {
+    "name": "@mapcn",
+    "homepage": "https://mapcn.dev",
+    "url": "https://mapcn.dev/r/{name}.json",
+    "description": "Beautiful maps, made simple. Ready to use, customizable map components for React. Built on MapLibre. Styled with Tailwind CSS."
+  },
+  {
     "name": "@mui-treasury",
     "homepage": "https://www.mui-treasury.com",
     "url": "https://mui-treasury.com/r/{name}.json",
