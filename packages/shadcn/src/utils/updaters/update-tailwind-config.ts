@@ -118,7 +118,10 @@ export async function transformTailwindConfig(
     await addTailwindConfigTheme(configObject, tailwindConfig.theme)
   }
 
-  return sourceFile.getFullText()
+  const output = sourceFile.getFullText()
+
+  // Preserve trailing newline if it exists in the input.
+  return input.endsWith("\n") ? output.trimEnd() + "\n" : output
 }
 
 function addTailwindConfigProperty(

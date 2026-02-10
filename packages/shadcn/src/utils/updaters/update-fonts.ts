@@ -257,7 +257,10 @@ export async function transformLayoutFonts(
     updateHtmlClassName(sourceFile, fontVariableNames)
   }
 
-  return sourceFile.getFullText()
+  const output = sourceFile.getFullText()
+
+  // Preserve trailing newline if it exists in the input.
+  return input.endsWith("\n") ? output.trimEnd() + "\n" : output
 }
 
 function buildFontOptions(font: RegistryFontItem) {

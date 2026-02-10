@@ -1375,3 +1375,125 @@ describe("buildTailwindThemeColorsFromCssVars", () => {
     })
   })
 })
+
+describe("transformTailwindConfig -> newline preservation", () => {
+  test("should preserve trailing newline when present", async () => {
+    const input = `import type { Config } from "tailwindcss"
+
+const config: Config = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+}
+
+export default config
+`
+    const result = await transformTailwindConfig(
+      input,
+      {
+        plugins: ["require('tailwindcss-animate')"],
+      },
+      { config: SHARED_CONFIG }
+    )
+
+    expect(result.endsWith("\n")).toBe(true)
+    expect(result.endsWith("\n\n")).toBe(false)
+  })
+
+  test("should not add trailing newline when not present", async () => {
+    const input = `import type { Config } from "tailwindcss"
+
+const config: Config = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+}
+
+export default config`
+
+    const result = await transformTailwindConfig(
+      input,
+      {
+        plugins: ["require('tailwindcss-animate')"],
+      },
+      { config: SHARED_CONFIG }
+    )
+
+    expect(result.endsWith("\n")).toBe(false)
+  })
+
+  test("should preserve trailing newline when adding darkMode", async () => {
+    const input = `import type { Config } from "tailwindcss"
+
+const config: Config = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+}
+
+export default config
+`
+    const result = await transformTailwindConfig(input, {}, { config: SHARED_CONFIG })
+
+    expect(result).toContain('darkMode: ["class"]')
+    expect(result.endsWith("\n")).toBe(true)
+  })
+
+  test("should preserve trailing newline when adding theme", async () => {
+    const input = `import type { Config } from "tailwindcss"
+
+const config: Config = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: ["class"],
+}
+
+export default config
+`
+    const result = await transformTailwindConfig(
+      input,
+      {
+        theme: {
+          extend: {
+            colors: {
+              border: "hsl(var(--border))",
+            },
+          },
+        },
+      },
+      { config: SHARED_CONFIG }
+    )
+
+    expect(result).toContain("border:")
+    expect(result.endsWith("\n")).toBe(true)
+  })
+
+  test("should handle multiple trailing newlines correctly", async () => {
+    const input = `import type { Config } from "tailwindcss"
+
+const config: Config = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+}
+
+export default config
+
+
+`
+    const result = await transformTailwindConfig(
+      input,
+      {
+        plugins: ["require('tailwindcss-animate')"],
+      },
+      { config: SHARED_CONFIG }
+    )
+
+    // Should normalize to single trailing newline
+    expect(result.endsWith("\n")).toBe(true)
+    expect(result.match(/\n+$/)?.[0]).toBe("\n")
+  })
+})
