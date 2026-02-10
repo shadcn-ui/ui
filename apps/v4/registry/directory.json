@@ -492,8 +492,8 @@
   {
     "name": "@reui",
     "homepage": "https://reui.io",
-    "url": "https://reui.io/r/{name}.json",
-    "description": "Open-source collection of UI components and animated effects built with React, Typescript, Tailwind CSS, and Motion. Pairs beautifully with shadcn/ui.",
+    "url": "https://reui.io/r/{style}/{name}.json",
+    "description": "Free & open-source library of 1,000+ components and patterns to 10x your productivity in shadcn projects.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' width='101' height='100' fill='none' viewBox='0 0 101 100'><g fill='var(--foreground)' clip-path='url(#a)'><path fill-rule='evenodd' d='M67.167 3.846H33.833c-16.285 0-29.487 13.202-29.487 29.487v33.334c0 16.285 13.202 29.487 29.487 29.487h33.334c16.285 0 29.487-13.202 29.487-29.487V33.333c0-16.285-13.202-29.487-29.487-29.487M33.833 0C15.423 0 .5 14.924.5 33.333v33.334C.5 85.077 15.424 100 33.833 100h33.334c18.41 0 33.333-14.924 33.333-33.333V33.333C100.5 14.923 85.576 0 67.167 0z' clip-rule='evenodd' opacity='.2'/><path d='M70.636 34.396a4.698 4.698 0 1 0 0-9.396 4.698 4.698 0 0 0 0 9.396'/><path fill-rule='evenodd' d='M25.672 56.879V29.698a4.698 4.698 0 1 1 9.396 0v27.181a8.725 8.725 0 0 0 8.725 8.725h13.423a8.725 8.725 0 0 0 8.724-8.725V43.59a4.698 4.698 0 1 1 9.396 0v13.29c0 10.008-8.113 18.12-18.12 18.12H43.793c-10.008 0-18.121-8.113-18.121-18.121' clip-rule='evenodd'/></g><defs><clipPath id='a'><path fill='var(--background)' d='M0 0h101v100H0z'/></clipPath></defs></svg>"
   },
   {
