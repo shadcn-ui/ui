@@ -458,10 +458,20 @@ export async function runInit(
     return { ...merged, registries } as typeof config
   }
 
-  // Merge with backup config if it exists and not using --force.
-  if (!options.force && fsExtra.existsSync(backupPath)) {
+  // Merge with backup config if it exists.
+  if (fsExtra.existsSync(backupPath)) {
     const existingConfig = await fsExtra.readJson(backupPath)
-    config = mergeConfig(existingConfig, config)
+    if (options.force) {
+      // With --force, only preserve registries from existing config.
+      if (existingConfig.registries) {
+        config.registries = {
+          ...existingConfig.registries,
+          ...(config.registries || {}),
+        }
+      }
+    } else {
+      config = mergeConfig(existingConfig, config)
+    }
   }
 
   // Merge config from registry:base item.
