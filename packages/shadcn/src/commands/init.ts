@@ -39,12 +39,18 @@ import {
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
+import {
+  buildInitUrl,
+  getShadcnCreateUrl,
+  handlePresetOption,
+} from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
+import open from "open"
 import prompts from "prompts"
 import { z } from "zod"
 
@@ -144,10 +150,77 @@ export const init = new Command()
   .option("--no-css-variables", "do not use css variables for theming.")
   .option("--no-base-style", "do not install the base shadcn style.")
   .option("--rtl", "enable RTL support.", false)
+  .option("-p, --preset [name]", "use a preset configuration")
   .action(async (components, opts) => {
     try {
       // Apply defaults when --defaults flag is set.
       if (opts.defaults) {
+        opts.template = opts.template || "next"
+        opts.baseColor = opts.baseColor || "neutral"
+      }
+
+      // Handle --preset option.
+      if (opts.preset !== undefined) {
+        const presetResult = await handlePresetOption(
+          opts.preset === true ? true : opts.preset,
+          opts.rtl ?? false
+        )
+
+        if (!presetResult) {
+          process.exit(0)
+        }
+
+        let initUrl: string
+        let baseColor: string
+
+        if ("_isUrl" in presetResult) {
+          const url = new URL(presetResult.url)
+          if (opts.rtl) {
+            url.searchParams.set("rtl", "true")
+          }
+          initUrl = url.toString()
+          baseColor = url.searchParams.get("baseColor") ?? "neutral"
+        } else {
+          initUrl = buildInitUrl(presetResult, opts.rtl ?? false)
+          baseColor = presetResult.baseColor
+        }
+
+        // Prepend the preset URL to the components list.
+        components = [initUrl, ...components]
+
+        // Set baseColor from preset if not explicitly provided.
+        if (!opts.baseColor) {
+          opts.baseColor = baseColor
+        }
+      }
+
+      // Prompt to use shadcn/create when no preset, no components, and no defaults.
+      if (
+        opts.preset === undefined &&
+        components.length === 0 &&
+        !opts.defaults
+      ) {
+        const { useCreate } = await prompts({
+          type: "confirm",
+          name: "useCreate",
+          message:
+            "Would you like to use shadcn/create to build your custom design system?",
+          initial: true,
+        })
+
+        if (useCreate) {
+          const createUrl = getShadcnCreateUrl(
+            opts.rtl ? { rtl: "true" } : undefined
+          )
+          logger.info(
+            `\nOpening ${highlighter.info(createUrl)} in your browser...\n`
+          )
+          await open(createUrl)
+          process.exit(0)
+        }
+
+        // User chose "No" — continue with default init flow.
+        opts.defaults = true
         opts.template = opts.template || "next"
         opts.baseColor = opts.baseColor || "neutral"
       }
