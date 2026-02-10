@@ -15,7 +15,7 @@ describe("shadcn init - next-app", () => {
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "--base-color=neutral"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
     expect(await fs.pathExists(componentsJsonPath)).toBe(true)
@@ -56,7 +56,7 @@ describe("shadcn init - next-app", () => {
 
   it("should init with custom base color", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=zinc"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "--base-color=zinc"])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -69,6 +69,7 @@ describe("shadcn init - next-app", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, [
       "init",
+      "--defaults",
       "--base-color=stone",
       "--no-css-variables",
     ])
@@ -360,7 +361,7 @@ describe("shadcn init - custom style", async () => {
 
   it("should init with --no-base-style", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--no-base-style"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "--no-base-style"])
 
     // We still expect components.json to be created.
     // With some defaults.
@@ -503,7 +504,7 @@ describe("shadcn init - existing components.json", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
 
     // Run init with default configuration.
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "--base-color=neutral"])
 
     // Override style in components.json.
     const componentsJsonPath = path.join(fixturePath, "components.json")
@@ -512,7 +513,12 @@ describe("shadcn init - existing components.json", () => {
     await fs.writeJson(componentsJsonPath, config)
 
     // Reinit with --force and different base color.
-    await npxShadcn(fixturePath, ["init", "--force", "--base-color=zinc"])
+    await npxShadcn(fixturePath, [
+      "init",
+      "--force",
+      "--defaults",
+      "--base-color=zinc",
+    ])
 
     const newConfig = await fs.readJson(componentsJsonPath)
     expect(newConfig.style).toBe("new-york")

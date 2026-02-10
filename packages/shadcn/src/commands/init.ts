@@ -672,8 +672,10 @@ async function promptForMinimalConfig(
 
     style = options.style ?? style ?? "new-york"
     baseColor = options.tailwindBaseColor ?? baseColor
-    cssVariables = opts.cssVariables
   }
+
+  // Always respect the explicit --css-variables / --no-css-variables flag.
+  cssVariables = opts.cssVariables
 
   return rawConfigSchema.parse({
     $schema: defaultConfig?.$schema,
