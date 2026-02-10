@@ -294,6 +294,12 @@
     "description": "Agentic UI toolkit for building MCP Apps. Open-source components and blocks ready to use within your chat app."
   },
   {
+    "name": "@mapcn",
+    "homepage": "https://mapcn.dev",
+    "url": "https://mapcn.dev/r/{name}.json",
+    "description": "Beautiful maps, made simple. Ready to use, customizable map components for React. Built on MapLibre. Styled with Tailwind CSS."
+  },
+  {
     "name": "@mui-treasury",
     "homepage": "https://www.mui-treasury.com",
     "url": "https://mui-treasury.com/r/{name}.json",
@@ -422,8 +428,8 @@
   {
     "name": "@reui",
     "homepage": "https://reui.io",
-    "url": "https://reui.io/r/{name}.json",
-    "description": "Open-source collection of UI components and animated effects built with React, Typescript, Tailwind CSS, and Motion. Pairs beautifully with shadcn/ui."
+    "url": "https://reui.io/r/{style}/{name}.json",
+    "description": "Free & open-source library of 1,000+ components and patterns to 10x your productivity in shadcn projects."
   },
   {
     "name": "@scrollxui",
