@@ -91,6 +91,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" fill=\"var(--foreground)\" /><g transform=\"translate(4,4)\" fill=\"var(--foreground)\" stroke=\"var(--background)\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z\" /><path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\" /></g></svg>"
   },
   {
+    "name": "@audio",
+    "homepage": "https://audio-ui.xyz",
+    "url": "https://audio-ui.xyz/r/{name}.json",
+    "description": "A set of accessible and composable Audio UI components. Built on top of shadcn/ui, it's designed for you to copy, paste, and own.",
+    "logo": "<svg width='256' height='256' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'><path d='M2 10v3'/><path d='M6 6v11'/><path d='M10 3v18'/><path d='M14 8v7'/><path d='M18 5v13'/><path d='M22 10v3'/></svg>"
+  },
+  {
     "name": "@better-upload",
     "homepage": "https://better-upload.com",
     "url": "https://better-upload.com/r/{name}.json",
