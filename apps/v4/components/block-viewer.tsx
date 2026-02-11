@@ -154,12 +154,12 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
         value={view}
         onValueChange={(value) => setView(value as "preview" | "code")}
       >
-        <TabsList className="grid h-8 grid-cols-2 items-center rounded-md p-1 *:data-[slot=tabs-trigger]:h-6 *:data-[slot=tabs-trigger]:rounded-sm *:data-[slot=tabs-trigger]:px-2 *:data-[slot=tabs-trigger]:text-xs">
+        <TabsList className="grid h-8! grid-cols-2 items-center rounded-lg p-1 *:data-[slot=tabs-trigger]:h-6 *:data-[slot=tabs-trigger]:rounded-sm *:data-[slot=tabs-trigger]:px-2 *:data-[slot=tabs-trigger]:text-xs">
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
       </Tabs>
-      <Separator orientation="vertical" className="mx-2 !h-4" />
+      <Separator orientation="vertical" className="mx-2 h-4!" />
       <a
         href={`#${item.name}`}
         className="flex-1 text-center text-sm font-medium underline-offset-2 hover:underline md:flex-auto md:text-left"
@@ -167,7 +167,7 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
         {item.description?.replace(/\.$/, "")}
       </a>
       <div className="ml-auto flex items-center gap-2">
-        <div className="h-8 items-center gap-1.5 rounded-md border p-1 shadow-none">
+        <div className="h-8 items-center gap-1.5 rounded-md border p-[3px] shadow-none">
           <ToggleGroup
             type="single"
             defaultValue="100"
@@ -177,7 +177,7 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
                 resizablePanelRef.current.resize(parseInt(value))
               }
             }}
-            className="gap-1 *:data-[slot=toggle-group-item]:!size-6 *:data-[slot=toggle-group-item]:!rounded-sm"
+            className="gap-1 *:data-[slot=toggle-group-item]:size-6! *:data-[slot=toggle-group-item]:rounded-sm!"
           >
             <ToggleGroupItem value="100" title="Desktop">
               <Monitor />
@@ -188,7 +188,7 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
             <ToggleGroupItem value="30" title="Mobile">
               <Smartphone />
             </ToggleGroupItem>
-            <Separator orientation="vertical" className="!h-4" />
+            <Separator orientation="vertical" className="h-4!" />
             <Button
               size="icon"
               variant="ghost"
@@ -201,7 +201,7 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
                 <Fullscreen />
               </Link>
             </Button>
-            <Separator orientation="vertical" className="!h-4" />
+            <Separator orientation="vertical" className="h-4!" />
             <Button
               size="icon"
               variant="ghost"
@@ -218,7 +218,7 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
             </Button>
           </ToggleGroup>
         </div>
-        <Separator orientation="vertical" className="mx-1 !h-4" />
+        <Separator orientation="vertical" className="mx-1 h-4!" />
         <Button
           variant="outline"
           className="w-fit gap-1 px-2 shadow-none"
@@ -230,7 +230,7 @@ function BlockViewerToolbar({ styleName }: { styleName: Style["name"] }) {
           {isCopied ? <Check /> : <Terminal />}
           <span>npx shadcn add {item.name}</span>
         </Button>
-        <Separator orientation="vertical" className="mx-1 !h-4" />
+        <Separator orientation="vertical" className="mx-1 h-4!" />
         <OpenInV0Button name={item.name} />
       </div>
     </div>
