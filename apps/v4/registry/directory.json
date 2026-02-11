@@ -91,6 +91,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" fill=\"var(--foreground)\" /><g transform=\"translate(4,4)\" fill=\"var(--foreground)\" stroke=\"var(--background)\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z\" /><path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\" /></g></svg>"
   },
   {
+    "name": "@tool-ui",
+    "homepage": "https://www.tool-ui.com",
+    "url": "https://www.tool-ui.com/r/{name}.json",
+    "description": "Open source React components for rendering AI tool call widgets and rich assistant outputs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='var(--foreground)' d='M12 1 21.526 6.5v11L12 23 2.474 17.5v-11z'/><circle cx='12' cy='12' r='5' fill='var(--background)'/></svg>"
+  },
+  {
     "name": "@better-upload",
     "homepage": "https://better-upload.com",
     "url": "https://better-upload.com/r/{name}.json",
