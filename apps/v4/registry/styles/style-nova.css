@@ -371,7 +371,7 @@
   }
 
   .cn-command-list {
-    @apply no-scrollbar max-h-72 scroll-py-1 outline-none;
+    @apply max-h-72 scroll-py-1 outline-none;
   }
 
   .cn-command-empty {
