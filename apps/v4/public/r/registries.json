@@ -462,6 +462,12 @@
     "description": "Roi UI is a library that offers UI components and blocks built with Base UI primitives. Some blocks and components use motion (framer). Everything is open-source and will be forever."
   },
   {
+    "name": "@slide-cn",
+    "homepage": "https://slide-cn.com",
+    "url": "https://slide-cn.com/r/{name}.json",
+    "description": "A component library to build slide decks using code."
+  },
+  {
     "name": "@satoriui",
     "homepage": "https://satoriui.site",
     "url": "https://satoriui.site/r/{name}.json",
