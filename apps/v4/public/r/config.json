@@ -11,6 +11,7 @@
       "iconLibrary": "lucide",
       "font": "inter",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -18,14 +19,15 @@
     {
       "name": "radix-nova",
       "title": "Nova (Radix)",
-      "description": "Nova / Hugeicons / Inter",
+      "description": "Nova / Hugeicons / Geist",
       "base": "radix",
       "style": "nova",
       "baseColor": "neutral",
       "theme": "neutral",
       "iconLibrary": "hugeicons",
-      "font": "inter",
+      "font": "geist",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -41,6 +43,7 @@
       "iconLibrary": "hugeicons",
       "font": "figtree",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -56,6 +59,7 @@
       "iconLibrary": "hugeicons",
       "font": "jetbrains-mono",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -71,6 +75,7 @@
       "iconLibrary": "lucide",
       "font": "inter",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -78,14 +83,15 @@
     {
       "name": "base-nova",
       "title": "Nova (Base)",
-      "description": "Nova / Hugeicons / Inter",
+      "description": "Nova / Hugeicons / Geist",
       "base": "base",
       "style": "nova",
       "baseColor": "neutral",
       "theme": "neutral",
       "iconLibrary": "hugeicons",
-      "font": "inter",
+      "font": "geist",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -101,6 +107,7 @@
       "iconLibrary": "hugeicons",
       "font": "figtree",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -116,6 +123,7 @@
       "iconLibrary": "hugeicons",
       "font": "jetbrains-mono",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -131,6 +139,7 @@
       "iconLibrary": "hugeicons",
       "font": "inter",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"
@@ -146,6 +155,7 @@
       "iconLibrary": "hugeicons",
       "font": "inter",
       "item": "Item",
+      "rtl": false,
       "menuAccent": "subtle",
       "menuColor": "default",
       "radius": "default"

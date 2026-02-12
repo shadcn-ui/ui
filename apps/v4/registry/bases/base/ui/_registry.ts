@@ -437,6 +437,7 @@ export const ui: Registry["items"] = [
       "sheet",
       "skeleton",
       "tooltip",
+      "use-mobile",
     ],
     files: [
       {
@@ -550,6 +551,22 @@ export const ui: Registry["items"] = [
   {
     name: "tooltip",
     type: "registry:ui",
+    docs: `The \`tooltip\` component has been added. Remember to wrap your app with the \`TooltipProvider\` component.
+
+\`\`\`tsx title="app/layout.tsx"
+import { TooltipProvider } from "@/components/ui/tooltip"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <TooltipProvider>{children}</TooltipProvider>
+      </body>
+    </html>
+  )
+}
+\`\`\`
+`,
     files: [
       {
         path: "ui/tooltip.tsx",
@@ -573,6 +590,17 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/native-select.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "direction",
+    type: "registry:ui",
+    dependencies: ["@base-ui/react"],
+    files: [
+      {
+        path: "ui/direction.tsx",
         type: "registry:ui",
       },
     ],
