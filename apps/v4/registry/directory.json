@@ -91,6 +91,13 @@
     "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" fill=\"var(--foreground)\" /><g transform=\"translate(4,4)\" fill=\"var(--foreground)\" stroke=\"var(--background)\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2z\" /><path d=\"M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1\" /></g></svg>"
   },
   {
+    "name": "@tool-ui",
+    "homepage": "https://www.tool-ui.com",
+    "url": "https://www.tool-ui.com/r/{name}.json",
+    "description": "Open source React components for rendering AI tool call widgets and rich assistant outputs.",
+    "logo": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='var(--foreground)' d='M12 1 21.526 6.5v11L12 23 2.474 17.5v-11z'/><circle cx='12' cy='12' r='5' fill='var(--background)'/></svg>"
+  },
+  {
     "name": "@better-upload",
     "homepage": "https://better-upload.com",
     "url": "https://better-upload.com/r/{name}.json",
@@ -530,6 +537,13 @@
     "url": "https://roiui.com/r/{name}.json",
     "description": "Roi UI is a library that offers UI components and blocks built with Base UI primitives. Some blocks and components use motion (framer). Everything is open-source and will be forever.",
     "logo": "<svg xmlns='http://www.w3.org/2000/svg' id='Layer_2' data-name='Layer 2' viewBox='0 0 463.07 463.07'><defs><style>.cls-1{fill:var(--muted);stroke:var(--foreground);stroke-miterlimit:10;stroke-width:12px}</style></defs><g id='Layer_1-2' data-name='Layer 1'><path d='M459.07 231.54c0 41.45-11.07 80.3-30.44 113.76H231.54c6.42 0 12.72-.52 18.86-1.57 53.85-8.99 94.91-55.81 94.91-112.2s-41.05-103.21-94.91-112.2c-6.14-1.05-12.45-1.57-18.86-1.57V4c26.62 0 52.15 4.58 75.88 12.97a225 225 0 0 1 37.89 17.47 227.1 227.1 0 0 1 56.88 46.63 225 225 0 0 1 26.44 36.7c19.37 33.47 30.44 72.31 30.44 113.77Z' class='cls-1'/><path d='M345.31 231.54c0 56.38-41.05 103.21-94.91 112.2a113 113 0 0 1-18.86 1.57c-62.82 0-113.77-50.95-113.77-113.76s50.95-113.77 113.77-113.77c6.42 0 12.72.52 18.86 1.57 53.85 8.99 94.91 55.81 94.91 112.2Z' class='cls-1'/><path d='M231.53 4v113.77c-62.82 0-113.77 50.95-113.77 113.77V345.3H4V231.54c0-41.46 11.07-80.3 30.44-113.77 19.97-34.54 48.78-63.35 83.32-83.33C151.24 15.08 190.08 4 231.53 4Z' class='cls-1'/></g></svg>"
+  },
+  {
+    "name": "@slide-cn",
+    "homepage": "https://slide-cn.com",
+    "url": "https://slide-cn.com/r/{name}.json",
+    "description": "A component library to build slide decks using code.",
+    "logo": "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><path d='M0 0h512v512H0z' fill='#222222'/><path d='M252.128 99.616q3.552 0.016 7.088 -0.016c25.168 -0.032 50.576 6.56 69.776 23.408l2.304 1.824c13.152 10.784 20.256 26.096 24.704 42.176l0.608 1.952c0.56 2.96 0.384 6.032 0.384 9.056h-44l-4 -13.008c-9.216 -15.072 -21.792 -24.688 -38.992 -29.088 -18.672 -3.984 -39.104 -2.016 -55.328 8.176 -10.352 7.328 -16.416 17.424 -18.688 29.904a64 64 0 0 0 -0.368 8.256v2.224c0.272 12.272 5.104 21.984 13.872 30.448 7.488 6.224 16.16 10.16 25.216 13.456l2.48 0.912c8.336 2.992 16.8 5.456 25.312 7.856 57.472 16.224 57.472 16.224 74.464 31.856l2.352 2.112c5.664 5.344 9.84 11.104 13.648 17.888l1.216 2.096c8.48 16.576 8.72 41.984 3.184 59.376 -7.6 19.216 -18.224 33.824 -35.392 45.52l-2.304 1.6c-12.512 8.128 -26.96 12.4 -41.664 14.4l-2.016 0.288c-14.816 1.888 -31.424 2.144 -45.984 -1.28l-2.096 -0.464c-25.472 -5.632 -49.136 -18.096 -63.776 -40.416A78.4 78.4 0 0 1 152 328h43.008l3.008 12c4.624 14.112 13.488 25.12 26.56 32.304 16.8 7.728 40.816 9.12 58.304 3.024 15.056 -6.368 26.592 -13.152 33.2 -28.864 4.48 -12.976 4.608 -26.848 -1.072 -39.472a48 48 0 0 0 -7.008 -9.008l-1.952 -2.08c-15.568 -15.136 -40 -19.376 -60.176 -25.072 -67.12 -18.928 -67.12 -18.928 -81.84 -44.56a88 88 0 0 1 -7.408 -66.32c3.52 -10.608 8.864 -20.672 16.4 -28.976l1.904 -2.192c9.968 -10.736 22.496 -17.712 36.096 -22.816l2.304 -0.928c12.496 -4.64 25.632 -5.568 38.816 -5.472' fill='#FDFDFD'/><path d='M511.008 471.008h1.008v41.008h-41.008a112 112 0 0 1 9.696 -4.192c13.968 -5.824 22.432 -16.112 28.304 -29.824a64 64 0 0 0 2 -7.008' fill='#000000'/><path d='M0 471.008c1.616 3.216 2.896 6.336 4.192 9.696 5.808 13.968 16.096 22.432 29.808 28.304 2.336 0.816 4.576 1.456 7.008 2v1.008H0z' fill='#000000'/><path d='M471.008 0h41.008v41.008a112 112 0 0 1 -4.192 -9.68c-5.824 -14 -16.112 -22.464 -29.824 -28.32a64 64 0 0 0 -7.008 -2z' fill='#000000'/><path d='M0 0h41.008a112 112 0 0 1 -9.68 4.192C17.328 10 8.864 20.288 3.008 34a64 64 0 0 0 -2 7.008H0z' fill='#000000'/></svg>"
   },
   {
     "name": "@satoriui",

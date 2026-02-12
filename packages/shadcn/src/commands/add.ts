@@ -90,20 +90,19 @@ export const add = new Command()
       }
 
       let itemType: z.infer<typeof registryItemTypeSchema> | undefined
-      let shouldInstallBaseStyle = true
+      let shouldInstallStyleIndex = true
       if (components.length > 0) {
         const [registryItem] = await getRegistryItems([components[0]], {
           config: initialConfig,
         })
         itemType = registryItem?.type
-        shouldInstallBaseStyle =
-          itemType !== "registry:theme" && itemType !== "registry:style"
+        shouldInstallStyleIndex =
+          itemType !== "registry:theme" &&
+          itemType !== "registry:style" &&
+          itemType !== "registry:base"
 
         if (isUniversalRegistryItem(registryItem)) {
-          await addComponents(components, initialConfig, {
-            ...options,
-            baseStyle: shouldInstallBaseStyle,
-          })
+          await addComponents(components, initialConfig, options)
           return
         }
 
@@ -180,8 +179,8 @@ export const add = new Command()
           isNewProject: false,
           srcDir: options.srcDir,
           cssVariables: options.cssVariables,
-          baseStyle: shouldInstallBaseStyle,
-          baseColor: shouldInstallBaseStyle ? undefined : "neutral",
+          installStyleIndex: shouldInstallStyleIndex,
+          baseColor: shouldInstallStyleIndex ? undefined : "neutral",
           components: options.components,
         })
         initHasRun = true
@@ -216,8 +215,8 @@ export const add = new Command()
             isNewProject: true,
             srcDir: options.srcDir,
             cssVariables: options.cssVariables,
-            baseStyle: shouldInstallBaseStyle,
-            baseColor: shouldInstallBaseStyle ? undefined : "neutral",
+            installStyleIndex: shouldInstallStyleIndex,
+            baseColor: shouldInstallStyleIndex ? undefined : "neutral",
             components: options.components,
           })
           initHasRun = true
@@ -244,10 +243,7 @@ export const add = new Command()
       config = updatedConfig
 
       if (!initHasRun) {
-        await addComponents(options.components, config, {
-          ...options,
-          baseStyle: shouldInstallBaseStyle,
-        })
+        await addComponents(options.components, config, options)
       }
 
       // If we're adding a single component and it's from the v0 registry,
