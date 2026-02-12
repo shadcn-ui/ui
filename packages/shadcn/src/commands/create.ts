@@ -23,6 +23,7 @@ import { initOptionsSchema, runInit } from "./init"
 
 const CREATE_TEMPLATES = {
   next: "Next.js",
+  "next-monorepo": "Next.js (Monorepo)",
   vite: "Vite",
   start: "TanStack Start",
 } as const
@@ -35,7 +36,7 @@ export const create = new Command()
   .argument("[name]", "the name of your project")
   .option(
     "-t, --template <template>",
-    "the template to use. e.g. next, start or vite"
+    "the template to use. e.g. next, next-monorepo, start or vite"
   )
   .option("-p, --preset [name]", "use a preset configuration")
   .option(
@@ -265,6 +266,7 @@ export default App;
         },
       ]
     case "next":
+    case "next-monorepo":
       return [
         {
           type: "registry:page" as const,

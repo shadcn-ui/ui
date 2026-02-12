@@ -1,17 +1,17 @@
 "use client"
 
-import * as React from "react"
-import Link from "next/link"
 import {
   ComputerTerminal01Icon,
   Copy01Icon,
   Tick02Icon,
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
+import * as React from "react"
 import { toast } from "sonner"
 
-import { useConfig } from "@/hooks/use-config"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
+import { useConfig } from "@/hooks/use-config"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
@@ -41,17 +41,16 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york-v4/ui/tooltip"
-import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const TEMPLATES = [
   {
     value: "next",
     title: "Next.js",
+    logo: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Next.js</title><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z" fill="currentColor"/></svg>',
+  },
+  {
+    value: "next-monorepo",
+    title: "Next.js (Monorepo)",
     logo: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Next.js</title><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z" fill="currentColor"/></svg>',
   },
   {
@@ -180,10 +179,10 @@ export function ToolbarControls() {
               value={params.template}
               onValueChange={(value) => {
                 setParams({
-                  template: value as "next" | "start" | "vite",
+                  template: value as "next" | "next-monorepo" | "start" | "vite",
                 })
               }}
-              className="grid grid-cols-3 gap-2"
+              className="grid grid-cols-2 gap-2"
             >
               {TEMPLATES.map((template) => (
                 <FieldLabel
@@ -217,7 +216,7 @@ export function ToolbarControls() {
                 <FieldTitle>Enable RTL</FieldTitle>
                 <FieldDescription>
                   <a
-                    href={`/docs/rtl/${params.template}`}
+                    href={`/docs/rtl/${params.template === "next-monorepo" ? "next" : params.template}`}
                     className="text-foreground underline"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -243,33 +242,26 @@ export function ToolbarControls() {
             }}
             className="bg-surface min-w-0 gap-0 overflow-hidden rounded-lg border"
           >
-            <div className="flex items-center gap-2 p-2">
+            <div className="flex items-center gap-2 px-1.5 py-1">
               <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-0 font-mono group-data-[orientation=horizontal]/tabs:h-8 *:data-[slot=tabs-trigger]:h-7 *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none!">
                 <TabsTrigger value="pnpm">pnpm</TabsTrigger>
                 <TabsTrigger value="npm">npm</TabsTrigger>
                 <TabsTrigger value="yarn">yarn</TabsTrigger>
                 <TabsTrigger value="bun">bun</TabsTrigger>
               </TabsList>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    size="icon-sm"
-                    variant="ghost"
-                    className="ml-auto size-7 rounded-lg"
-                    onClick={handleCopyFromTabs}
-                  >
-                    {hasCopied ? (
-                      <HugeiconsIcon icon={Tick02Icon} className="size-4" />
-                    ) : (
-                      <HugeiconsIcon icon={Copy01Icon} className="size-4" />
-                    )}
-                    <span className="sr-only">Copy command</span>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  {hasCopied ? "Copied!" : "Copy command"}
-                </TooltipContent>
-              </Tooltip>
+              <Button
+                size="icon-sm"
+                variant="ghost"
+                className="ml-auto size-7 rounded-lg"
+                onClick={handleCopyFromTabs}
+              >
+                {hasCopied ? (
+                  <HugeiconsIcon icon={Tick02Icon} className="size-4" />
+                ) : (
+                  <HugeiconsIcon icon={Copy01Icon} className="size-4" />
+                )}
+                <span className="sr-only">Copy command</span>
+              </Button>
             </div>
             {Object.entries(commands).map(([key, cmd]) => {
               return (

@@ -13,6 +13,7 @@ import { clearRegistryContext } from "@/src/registry/context"
 import { rawConfigSchema } from "@/src/schema"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
+import { initMonorepoProject } from "@/src/utils/init-monorepo"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import {
@@ -398,8 +399,35 @@ export async function runInit(
   }
 
   if (newProjectTemplate === "next-monorepo") {
-    options.cwd = path.resolve(options.cwd, "apps/web")
-    return await getConfig(options.cwd)
+    // Prompt for base color if not set.
+    if (!options.baseColor) {
+      const baseColors = await getRegistryBaseColors()
+      const { tailwindBaseColor } = await prompts({
+        type: "select",
+        name: "tailwindBaseColor",
+        message: "Which color would you like to use as the base color?",
+        choices: baseColors.map((color) => ({
+          title: color.label,
+          value: color.name,
+        })),
+      })
+      options.baseColor = tailwindBaseColor
+    }
+
+    const components = [
+      ...(options.baseStyle ? ["index"] : []),
+      ...(options.components ?? []),
+    ]
+
+    return await initMonorepoProject({
+      projectPath: options.cwd,
+      components,
+      baseStyle: options.baseStyle,
+      baseColor: options.baseColor ?? "neutral",
+      registryBaseConfig: options.registryBaseConfig,
+      rtl: options.rtl ?? false,
+      silent: options.silent,
+    })
   }
 
   const projectConfig = await getProjectConfig(options.cwd, projectInfo)

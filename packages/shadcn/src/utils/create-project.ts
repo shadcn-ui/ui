@@ -237,36 +237,51 @@ async function createMonorepoProject(
   ).start()
 
   try {
-    // Get the template.
-    const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
-    await fs.ensureDir(templatePath)
-    const response = await fetch(GITHUB_TEMPLATE_URL)
-    if (!response.ok) {
-      throw new Error(`Failed to download template: ${response.statusText}`)
+    const localTemplateDir = process.env.SHADCN_TEMPLATE_DIR
+    if (localTemplateDir) {
+      // Use local template directory for development.
+      const localTemplatePath = path.resolve(localTemplateDir, "monorepo-next")
+      await fs.copy(localTemplatePath, projectPath, {
+        filter: (src) => !src.includes("node_modules"),
+      })
+    } else {
+      // Get the template from GitHub.
+      const templatePath = path.join(
+        os.tmpdir(),
+        `shadcn-template-${Date.now()}`
+      )
+      await fs.ensureDir(templatePath)
+      const response = await fetch(GITHUB_TEMPLATE_URL)
+      if (!response.ok) {
+        throw new Error(`Failed to download template: ${response.statusText}`)
+      }
+
+      // Write the tar file.
+      const tarPath = path.resolve(templatePath, "template.tar.gz")
+      await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
+      await execa("tar", [
+        "-xzf",
+        tarPath,
+        "-C",
+        templatePath,
+        "--strip-components=2",
+        "ui-main/templates/monorepo-next",
+      ])
+      const extractedPath = path.resolve(templatePath, "monorepo-next")
+      await fs.move(extractedPath, projectPath)
+      await fs.remove(templatePath)
     }
 
-    // Write the tar file
-    const tarPath = path.resolve(templatePath, "template.tar.gz")
-    await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
-    await execa("tar", [
-      "-xzf",
-      tarPath,
-      "-C",
-      templatePath,
-      "--strip-components=2",
-      "ui-main/templates/monorepo-next",
-    ])
-    const extractedPath = path.resolve(templatePath, "monorepo-next")
-    await fs.move(extractedPath, projectPath)
-    await fs.remove(templatePath)
-
-    // Run install.
+    // Run install. Disable frozen lockfile since the template's lockfile may not match.
     await execa(options.packageManager, ["install"], {
       cwd: projectPath,
+      env: {
+        ...process.env,
+        CI: "",
+      },
     })
-    // await execa("cd", [cwd])
 
-    // Write project name to the package.json
+    // Write project name to the package.json.
     const packageJsonPath = path.join(projectPath, "package.json")
     if (fs.existsSync(packageJsonPath)) {
       const packageJsonContent = await fs.readFile(packageJsonPath, "utf8")
@@ -302,28 +317,40 @@ async function createViteProject(
   ).start()
 
   try {
-    // Get the template.
-    const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
-    await fs.ensureDir(templatePath)
-    const response = await fetch(GITHUB_TEMPLATE_URL)
-    if (!response.ok) {
-      throw new Error(`Failed to download template: ${response.statusText}`)
-    }
+    const localTemplateDir = process.env.SHADCN_TEMPLATE_DIR
+    if (localTemplateDir) {
+      // Use local template directory for development.
+      const localTemplatePath = path.resolve(localTemplateDir, "vite-app")
+      await fs.copy(localTemplatePath, projectPath, {
+        filter: (src) => !src.includes("node_modules"),
+      })
+    } else {
+      // Get the template from GitHub.
+      const templatePath = path.join(
+        os.tmpdir(),
+        `shadcn-template-${Date.now()}`
+      )
+      await fs.ensureDir(templatePath)
+      const response = await fetch(GITHUB_TEMPLATE_URL)
+      if (!response.ok) {
+        throw new Error(`Failed to download template: ${response.statusText}`)
+      }
 
-    // Write the tar file.
-    const tarPath = path.resolve(templatePath, "template.tar.gz")
-    await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
-    await execa("tar", [
-      "-xzf",
-      tarPath,
-      "-C",
-      templatePath,
-      "--strip-components=2",
-      "ui-main/templates/vite-app",
-    ])
-    const extractedPath = path.resolve(templatePath, "vite-app")
-    await fs.move(extractedPath, projectPath)
-    await fs.remove(templatePath)
+      // Write the tar file.
+      const tarPath = path.resolve(templatePath, "template.tar.gz")
+      await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
+      await execa("tar", [
+        "-xzf",
+        tarPath,
+        "-C",
+        templatePath,
+        "--strip-components=2",
+        "ui-main/templates/vite-app",
+      ])
+      const extractedPath = path.resolve(templatePath, "vite-app")
+      await fs.move(extractedPath, projectPath)
+      await fs.remove(templatePath)
+    }
 
     // Remove pnpm-lock.yaml if using a different package manager.
     if (options.packageManager !== "pnpm") {
@@ -373,28 +400,40 @@ async function createStartProject(
   ).start()
 
   try {
-    // Get the template.
-    const templatePath = path.join(os.tmpdir(), `shadcn-template-${Date.now()}`)
-    await fs.ensureDir(templatePath)
-    const response = await fetch(GITHUB_TEMPLATE_URL)
-    if (!response.ok) {
-      throw new Error(`Failed to download template: ${response.statusText}`)
-    }
+    const localTemplateDir = process.env.SHADCN_TEMPLATE_DIR
+    if (localTemplateDir) {
+      // Use local template directory for development.
+      const localTemplatePath = path.resolve(localTemplateDir, "start-app")
+      await fs.copy(localTemplatePath, projectPath, {
+        filter: (src) => !src.includes("node_modules"),
+      })
+    } else {
+      // Get the template from GitHub.
+      const templatePath = path.join(
+        os.tmpdir(),
+        `shadcn-template-${Date.now()}`
+      )
+      await fs.ensureDir(templatePath)
+      const response = await fetch(GITHUB_TEMPLATE_URL)
+      if (!response.ok) {
+        throw new Error(`Failed to download template: ${response.statusText}`)
+      }
 
-    // Write the tar file.
-    const tarPath = path.resolve(templatePath, "template.tar.gz")
-    await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
-    await execa("tar", [
-      "-xzf",
-      tarPath,
-      "-C",
-      templatePath,
-      "--strip-components=2",
-      "ui-main/templates/start-app",
-    ])
-    const extractedPath = path.resolve(templatePath, "start-app")
-    await fs.move(extractedPath, projectPath)
-    await fs.remove(templatePath)
+      // Write the tar file.
+      const tarPath = path.resolve(templatePath, "template.tar.gz")
+      await fs.writeFile(tarPath, Buffer.from(await response.arrayBuffer()))
+      await execa("tar", [
+        "-xzf",
+        tarPath,
+        "-C",
+        templatePath,
+        "--strip-components=2",
+        "ui-main/templates/start-app",
+      ])
+      const extractedPath = path.resolve(templatePath, "start-app")
+      await fs.move(extractedPath, projectPath)
+      await fs.remove(templatePath)
+    }
 
     // Remove pnpm-lock.yaml if using a different package manager.
     if (options.packageManager !== "pnpm") {

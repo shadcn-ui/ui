@@ -317,56 +317,58 @@ async function addWorkspaceComponents(
 
   rootSpinner?.succeed()
 
-  // Sort files.
-  filesCreated.sort()
-  filesUpdated.sort()
-  filesSkipped.sort()
+  // Deduplicate and sort files.
+  const dedupedCreated = Array.from(new Set(filesCreated)).sort()
+  const dedupedUpdated = Array.from(
+    new Set(filesUpdated.filter((file) => !filesCreated.includes(file)))
+  ).sort()
+  const dedupedSkipped = Array.from(new Set(filesSkipped)).sort()
 
-  const hasUpdatedFiles = filesCreated.length || filesUpdated.length
-  if (!hasUpdatedFiles && !filesSkipped.length) {
+  const hasUpdatedFiles = dedupedCreated.length || dedupedUpdated.length
+  if (!hasUpdatedFiles && !dedupedSkipped.length) {
     spinner(`No files updated.`, {
       silent: options.silent,
     })?.info()
   }
 
-  if (filesCreated.length) {
+  if (dedupedCreated.length) {
     spinner(
-      `Created ${filesCreated.length} ${
-        filesCreated.length === 1 ? "file" : "files"
+      `Created ${dedupedCreated.length} ${
+        dedupedCreated.length === 1 ? "file" : "files"
       }:`,
       {
         silent: options.silent,
       }
     )?.succeed()
-    for (const file of filesCreated) {
+    for (const file of dedupedCreated) {
       logger.log(`  - ${file}`)
     }
   }
 
-  if (filesUpdated.length) {
+  if (dedupedUpdated.length) {
     spinner(
-      `Updated ${filesUpdated.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+      `Updated ${dedupedUpdated.length} ${
+        dedupedUpdated.length === 1 ? "file" : "files"
       }:`,
       {
         silent: options.silent,
       }
     )?.info()
-    for (const file of filesUpdated) {
+    for (const file of dedupedUpdated) {
       logger.log(`  - ${file}`)
     }
   }
 
-  if (filesSkipped.length) {
+  if (dedupedSkipped.length) {
     spinner(
-      `Skipped ${filesSkipped.length} ${
-        filesUpdated.length === 1 ? "file" : "files"
+      `Skipped ${dedupedSkipped.length} ${
+        dedupedSkipped.length === 1 ? "file" : "files"
       }: (use --overwrite to overwrite)`,
       {
         silent: options.silent,
       }
     )?.info()
-    for (const file of filesSkipped) {
+    for (const file of dedupedSkipped) {
       logger.log(`  - ${file}`)
     }
   }

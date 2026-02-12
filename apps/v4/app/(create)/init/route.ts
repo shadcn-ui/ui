@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
       menuAccent: searchParams.get("menuAccent"),
       menuColor: searchParams.get("menuColor"),
       radius: searchParams.get("radius"),
-      template: searchParams.get("template"),
+      template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
     })
 

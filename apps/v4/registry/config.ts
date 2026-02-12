@@ -94,7 +94,7 @@ export const designSystemConfigSchema = z
     radius: z
       .enum(RADII.map((r) => r.name) as [RadiusValue, ...RadiusValue[]])
       .default("default"),
-    template: z.enum(["next", "start", "vite"]).default("next").optional(),
+    template: z.enum(["next", "next-monorepo", "start", "vite"]).default("next").optional(),
   })
   .refine(
     (data) => {
@@ -433,7 +433,7 @@ export function buildRegistryBase(config: DesignSystemConfig) {
       },
     },
     ...(config.rtl && {
-      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template ?? "next"}`,
+      docs: `To learn how to set up the RTL provider and fonts for your app, see https://ui.shadcn.com/docs/rtl/${config.template === "next-monorepo" ? "next" : (config.template ?? "next")}`,
     }),
   }
 }
