@@ -111,7 +111,7 @@ export const initOptionsSchema = z.object({
         ).join("', '")}'`,
       }
     ),
-  baseStyle: z.boolean(),
+  installStyleIndex: z.boolean(),
   // Config from registry:base item to merge into components.json.
   registryBaseConfig: rawConfigSchema.deepPartial().optional(),
 })
@@ -261,6 +261,7 @@ export const init = new Command()
         isNewProject: false,
         components,
         ...opts,
+        installStyleIndex: opts.baseStyle,
       })
 
       await loadEnvFiles(options.cwd)
@@ -332,8 +333,8 @@ export const init = new Command()
             // Store config to be merged into components.json later.
             options.registryBaseConfig = item.config
           }
-          options.baseStyle =
-            item.extends === "none" ? false : options.baseStyle
+          options.installStyleIndex =
+            item.extends === "none" ? false : options.installStyleIndex
         }
 
         if (item?.type === "registry:style") {
@@ -342,14 +343,13 @@ export const init = new Command()
           options.baseColor = "neutral"
 
           // If the style extends none, we don't want to install the base style.
-          options.baseStyle =
-            item.extends === "none" ? false : options.baseStyle
+          options.installStyleIndex =
+            item.extends === "none" ? false : options.installStyleIndex
         }
       }
 
       // If --no-base-style, we don't want to prompt for a base color either.
-      // The style will extend or override it.
-      if (!options.baseStyle) {
+      if (!options.installStyleIndex) {
         options.baseColor = "neutral"
       }
 
@@ -457,7 +457,7 @@ export async function runInit(
     // Why index? Because when style is true, we read style from components.json and fetch that.
     // i.e new-york from components.json then fetch /styles/new-york/index.
     // TODO: Fix this so that we can extend any style i.e --style=new-york.
-    ...(options.baseStyle ? ["index"] : []),
+    ...(options.installStyleIndex ? ["index"] : []),
     ...(options.components ?? []),
   ]
 
@@ -530,7 +530,6 @@ export async function runInit(
     // Init will always overwrite files.
     overwrite: true,
     silent: options.silent,
-    baseStyle: options.baseStyle,
     isNewProject:
       options.isNewProject || projectInfo?.framework.name === "next-app",
   })

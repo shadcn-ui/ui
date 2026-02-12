@@ -78,6 +78,12 @@
     "description": "Radix-style React primitives for AI chat with adapters for AI SDK, LangGraph, Mastra, and custom backends."
   },
   {
+    "name": "@tool-ui",
+    "homepage": "https://www.tool-ui.com",
+    "url": "https://www.tool-ui.com/r/{name}.json",
+    "description": "Open source React components for rendering AI tool call widgets and rich assistant outputs."
+  },
+  {
     "name": "@better-upload",
     "homepage": "https://better-upload.com",
     "url": "https://better-upload.com/r/{name}.json",
@@ -428,8 +434,8 @@
   {
     "name": "@reui",
     "homepage": "https://reui.io",
-    "url": "https://reui.io/r/{name}.json",
-    "description": "Open-source collection of UI components and animated effects built with React, Typescript, Tailwind CSS, and Motion. Pairs beautifully with shadcn/ui."
+    "url": "https://reui.io/r/{style}/{name}.json",
+    "description": "Free & open-source library of 1,000+ components and patterns to 10x your productivity in shadcn projects."
   },
   {
     "name": "@scrollxui",
@@ -454,6 +460,12 @@
     "homepage": "https://roiui.com",
     "url": "https://roiui.com/r/{name}.json",
     "description": "Roi UI is a library that offers UI components and blocks built with Base UI primitives. Some blocks and components use motion (framer). Everything is open-source and will be forever."
+  },
+  {
+    "name": "@slide-cn",
+    "homepage": "https://slide-cn.com",
+    "url": "https://slide-cn.com/r/{name}.json",
+    "description": "A component library to build slide decks using code."
   },
   {
     "name": "@satoriui",
