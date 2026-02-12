@@ -472,12 +472,23 @@ function processRule(parent: Root | AtRule, selector: string, properties: any) {
         const atRuleMatch = prop.match(/@([a-zA-Z-]+)\s*(.*)/)
         if (atRuleMatch) {
           const [, atRuleName, atRuleParams] = atRuleMatch
-          const atRule = postcss.atRule({
-            name: atRuleName,
-            params: atRuleParams,
-            raws: { semicolon: true, before: "\n    " },
-          })
-          rule.append(atRule)
+
+          // Check if this at-rule already exists in the rule.
+          const existingAtRule = rule.nodes?.find(
+            (node): node is AtRule =>
+              node.type === "atrule" &&
+              node.name === atRuleName &&
+              node.params === atRuleParams
+          )
+
+          if (!existingAtRule) {
+            const atRule = postcss.atRule({
+              name: atRuleName,
+              params: atRuleParams,
+              raws: { semicolon: true, before: "\n    " },
+            })
+            rule.append(atRule)
+          }
         }
       } else if (typeof value === "string") {
         const decl = postcss.decl({

@@ -16,7 +16,16 @@
   "files": [],
   "cssVars": {},
   "css": {
-    "@import \"shadcn/tailwind.css\"": {}
+    "@import \"tw-animate-css\"": {},
+    "@import \"shadcn/tailwind.css\"": {},
+    "@layer base": {
+      "*": {
+        "@apply border-border outline-ring/50": {}
+      },
+      "body": {
+        "@apply bg-background text-foreground": {}
+      }
+    }
   },
   "type": "registry:style"
 }

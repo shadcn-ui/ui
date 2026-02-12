@@ -204,7 +204,7 @@ export const create = new Command()
         rtl: opts.rtl,
         template,
         baseColor,
-        baseStyle: false,
+        installStyleIndex: false,
         registryBaseConfig,
         skipPreflight: false,
       })
@@ -218,7 +218,6 @@ export const create = new Command()
           components.push("direction")
         }
         await addComponents(components, config, {
-          baseStyle: false,
           silent: true,
           overwrite: true,
         })
