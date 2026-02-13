@@ -98,6 +98,7 @@ export const designSystemConfigSchema = z
       .enum(["next", "next-monorepo", "start", "vite"])
       .default("next")
       .optional(),
+    new: z.boolean().default(true),
   })
   .refine(
     (data) => {

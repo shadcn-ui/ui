@@ -281,7 +281,7 @@ export const init = new Command()
 
         // Build create URL with template param.
         const createUrl = getShadcnCreateUrl({
-          command: "init",
+          new: hasPackageJson ? "false" : "true",
           ...(opts.rtl && { rtl: "true" }),
           ...(opts.template && { template: opts.template }),
         })

@@ -32,7 +32,6 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from "@/registry/new-york-v4/ui/radio-group"
-import { Switch } from "@/registry/new-york-v4/ui/switch"
 import {
   Tabs,
   TabsContent,
@@ -40,16 +39,12 @@ import {
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
+import { FieldSeparator } from "@/examples/radix/ui/field"
 
 const TEMPLATES = [
   {
     value: "next",
     title: "Next.js",
-    logo: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Next.js</title><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z" fill="currentColor"/></svg>',
-  },
-  {
-    value: "next-monorepo",
-    title: "Next.js (Monorepo)",
     logo: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Next.js</title><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z" fill="currentColor"/></svg>',
   },
   {
@@ -61,6 +56,11 @@ const TEMPLATES = [
     value: "vite",
     title: "Vite",
     logo: '<svg xmlns="http://www.w3.org/2000/svg" width="410" height="404" fill="none" viewBox="0 0 410 404"><path fill="var(--foreground)" d="m399.641 59.525-183.998 329.02c-3.799 6.793-13.559 6.833-17.415.073L10.582 59.556C6.38 52.19 12.68 43.266 21.028 44.76l184.195 32.923c1.175.21 2.378.208 3.553-.006l180.343-32.87c8.32-1.517 14.649 7.337 10.522 14.719"/><path fill="var(--background)" d="M292.965 1.574 156.801 28.255a5 5 0 0 0-4.03 4.611l-8.376 141.464c-.197 3.332 2.863 5.918 6.115 5.168l37.91-8.749c3.547-.818 6.752 2.306 6.023 5.873l-11.263 55.153c-.758 3.712 2.727 6.886 6.352 5.785l23.415-7.114c3.63-1.102 7.118 2.081 6.35 5.796l-17.899 86.633c-1.12 5.419 6.088 8.374 9.094 3.728l2.008-3.103 110.954-221.428c1.858-3.707-1.346-7.935-5.418-7.15l-39.022 7.532c-3.667.707-6.787-2.708-5.752-6.296l25.469-88.291c1.036-3.594-2.095-7.012-5.766-6.293"/></svg>',
+  },
+  {
+    value: "next-monorepo",
+    title: "Next.js (Monorepo)",
+    logo: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Next.js</title><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z" fill="currentColor"/></svg>',
   },
 ] as const
 
@@ -74,7 +74,7 @@ export function ProjectForm() {
 
   const commands = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
-    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}&rtl=${params.rtl}`
+    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}&rtl=${params.rtl}&new=${params.new}`
     const rtlFlag = params.rtl ? " --rtl" : ""
     const templateFlag = params.template ? ` --template ${params.template}` : ""
     const isLocalDev = origin.includes("localhost")
@@ -131,6 +131,12 @@ export function ProjectForm() {
     }
   }, [hasCopied])
 
+  React.useEffect(() => {
+    if (!params.new && params.template === "next-monorepo") {
+      setParams({ template: "next" })
+    }
+  }, [params.new, params.template, setParams])
+
   const handleCopy = React.useCallback(() => {
     const properties: Record<string, string> = {
       command,
@@ -160,25 +166,58 @@ export function ProjectForm() {
           Create Project
         </Button>
       </DialogTrigger>
-      <DialogContent className="dialog-ring min-w-0 overflow-hidden rounded-xl sm:max-w-md">
+      <DialogContent className="dialog-ring min-w-0 overflow-hidden rounded-xl sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>
-            {params.new
-              ? "Create Project"
-              : "Initialize Project"}
+            Create Project
           </DialogTitle>
           <DialogDescription className="text-balance">
-            Run this command to initialize shadcn/ui in your project.
+            Configure your project to use shadcn/ui.
           </DialogDescription>
         </DialogHeader>
-        <FieldGroup className="gap-3">
+        <FieldGroup className="**:data-[slot=field-label]:has-data-[state=checked]:border-blue-600 **:data-[slot=field-label]:has-data-[state=checked]:bg-blue-50/50 dark:**:data-[slot=field-label]:has-data-[state=checked]:bg-primary/10 dark:**:data-[slot=field-label]:has-data-[state=checked]:border-primary **:data-[slot=radio-group-item]:sr-only **:data-[slot=radio-group-item]:absolute **:data-[slot=field-label]:rounded-lg! **:data-[slot=field-description]:text-balance">
+
           <Field>
-            <FieldLabel htmlFor="template">
-              Select a template
-            </FieldLabel>
+            <FieldLabel className="text-base">Are you creating a new project?</FieldLabel>
+            <RadioGroup
+              value={params.new ? "new" : "existing"}
+              onValueChange={(value) => setParams({ new: value === "new" })}
+              className="grid grid-cols-2 gap-2"
+            >
+              <FieldLabel htmlFor="project-new">
+                <Field orientation="horizontal" className="p-3!">
+                  <FieldContent className="gap-1">
+                    <FieldTitle>Yes</FieldTitle>
+                    <FieldDescription>I&apos;m creating a new project.</FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem value="new" id="project-new" />
+                </Field>
+              </FieldLabel>
+              <FieldLabel htmlFor="project-existing">
+                <Field orientation="horizontal" className="p-3!">
+                  <FieldContent className="gap-1">
+                    <FieldTitle>No</FieldTitle>
+                    <FieldDescription>
+                      I have an existing project.
+                    </FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem value="existing" id="project-existing" />
+                </Field>
+              </FieldLabel>
+            </RadioGroup>
             <FieldDescription>
-              Which template would you like to use?
+              {params.new
+                ? `The cli will create a new project, install dependencies, add CSS variables and utils, configure dark mode and add an example component.`
+                : `The cli will install dependencies, add CSS variables and utils in your existing project.`}
             </FieldDescription>
+          </Field>
+          <FieldSeparator />
+          <Field>
+            <FieldLabel htmlFor="template" className="text-base ">
+              {params.new
+                ? "Choose a starter template"
+                : "What framework is your existing project using?"}
+            </FieldLabel>
             <RadioGroup
               id="template"
               value={params.template}
@@ -193,72 +232,86 @@ export function ProjectForm() {
               }}
               className="grid grid-cols-2 gap-2"
             >
-              {TEMPLATES.map((template) => (
-                <FieldLabel
-                  key={template.value}
-                  htmlFor={template.value}
-                  className="has-data-[state=checked]:border-primary/10 rounded-lg!"
-                >
-                  <Field className="flex min-w-0 flex-col items-center justify-center gap-2 p-3! text-center *:w-auto!">
-                    <RadioGroupItem
-                      value={template.value}
-                      id={template.value}
-                      className="sr-only"
-                    />
-                    {template.logo && (
-                      <div
-                        className="text-foreground *:[svg]:text-foreground! size-6 [&_svg]:size-6"
-                        dangerouslySetInnerHTML={{
-                          __html: template.logo,
-                        }}
-                      />
-                    )}
-                    <FieldTitle>{template.title}</FieldTitle>
-                  </Field>
-                </FieldLabel>
-              ))}
-            </RadioGroup>
-          </Field>
-          <FieldLabel className="has-data-[state=checked]:border-primary/10 rounded-lg!">
-            <Field orientation="horizontal">
-              <FieldContent className="gap-1">
-                <FieldTitle>Existing Project</FieldTitle>
-                <FieldDescription>
-                  Initialize shadcn/ui in an existing project.
-                </FieldDescription>
-              </FieldContent>
-              <Switch
-                checked={!params.new}
-                onCheckedChange={(checked) =>
-                  setParams({ new: !checked })
-                }
-                className="shadow-none"
-              />
-            </Field>
-          </FieldLabel>
+              {TEMPLATES.map((template) => {
+                const isDisabled = !params.new && template.value === "next-monorepo"
 
-          <FieldLabel className="has-data-[state=checked]:border-primary/10 rounded-lg!">
-            <Field orientation="horizontal">
-              <FieldContent className="gap-1">
-                <FieldTitle>Enable RTL</FieldTitle>
-                <FieldDescription>
-                  <a
-                    href={`/docs/rtl/${params.template === "next-monorepo" ? "next" : params.template}`}
-                    className="text-foreground underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                return (
+                  <FieldLabel
+                    key={template.value}
+                    htmlFor={template.value}
+                    className={isDisabled ? "cursor-not-allowed opacity-50" : undefined}
                   >
-                    View the RTL setup guide for {selectedTemplate?.title}.
-                  </a>
-                </FieldDescription>
-              </FieldContent>
-              <Switch
-                checked={params.rtl}
-                onCheckedChange={(rtl) => setParams({ rtl })}
-                className="shadow-none"
-              />
-            </Field>
-          </FieldLabel>
+                    <Field className="flex min-w-0 flex-col items-center justify-center gap-2 p-4! text-center *:w-auto!">
+                      <RadioGroupItem
+                        value={template.value}
+                        id={template.value}
+                        className="sr-only"
+                        disabled={isDisabled}
+                      />
+                      {template.logo ? (
+                        <div
+                          className="text-foreground *:[svg]:text-foreground! size-6 [&_svg]:size-6"
+                          dangerouslySetInnerHTML={{
+                            __html: template.logo,
+                          }}
+                        />
+                      ) : null}
+                      <FieldTitle>{template.title}</FieldTitle>
+                    </Field>
+                  </FieldLabel>
+                )
+              })}
+            </RadioGroup>
+            <FieldDescription>
+              See the <a href="/docs/installation" className="text-foreground underline" target="_blank" rel="noopener noreferrer">installation guides</a> for more templates and frameworks.
+            </FieldDescription>
+          </Field>
+          <FieldSeparator />
+          <Field>
+            <FieldLabel className="text-base">Do you want to enable RTL?</FieldLabel>
+            <RadioGroup
+              value={params.rtl ? "yes" : "no"}
+              onValueChange={(value) => setParams({ rtl: value === "yes" })}
+              className="grid grid-cols-2 gap-2"
+            >
+              <FieldLabel
+                htmlFor="rtl-no"
+              >
+                <Field orientation="horizontal" className="p-3!">
+                  <FieldContent className="gap-1">
+                    <FieldTitle>No</FieldTitle>
+                    <FieldDescription>
+                      Use default left-to-right layout.
+                    </FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem value="no" id="rtl-no" />
+                </Field>
+              </FieldLabel>
+              <FieldLabel
+                htmlFor="rtl-yes"
+              >
+                <Field orientation="horizontal" className="p-3!">
+                  <FieldContent className="gap-1">
+                    <FieldTitle>Yes</FieldTitle>
+                    <FieldDescription>
+                      Enable right-to-left support.
+                    </FieldDescription>
+                  </FieldContent>
+                  <RadioGroupItem value="yes" id="rtl-yes" />
+                </Field>
+              </FieldLabel>
+            </RadioGroup>
+            <FieldDescription className="text-balance">
+              To learn more about RTL, see the <a
+                href={`/docs/rtl/${params.template === "next-monorepo" ? "next" : params.template}`}
+                className="text-foreground underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RTL setup guide
+              </a> for {selectedTemplate?.title}.
+            </FieldDescription>
+          </Field>
 
         </FieldGroup>
         <DialogFooter className="bg-muted/30 -mx-6 mt-2 -mb-6 flex flex-col gap-3 border-t p-6 sm:flex-col min-w-0">
