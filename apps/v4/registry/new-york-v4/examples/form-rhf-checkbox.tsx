@@ -148,8 +148,8 @@ export default function FormRhfCheckbox() {
                               const newValue = checked
                                 ? [...field.value, task.id]
                                 : field.value.filter(
-                                  (value) => value !== task.id
-                                )
+                                    (value) => value !== task.id
+                                  )
                               field.onChange(newValue)
                             }}
                           />
