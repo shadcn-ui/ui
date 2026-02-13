@@ -3,9 +3,8 @@
 import * as React from "react"
 import { cn } from "@/examples/radix/lib/utils"
 import { Button } from "@/examples/radix/ui/button"
+import { XIcon } from "lucide-react"
 import { Dialog as DialogPrimitive } from "radix-ui"
-
-import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 function Dialog({
   ...props
@@ -61,7 +60,7 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl p-4 text-sm ring-1 duration-100 sm:max-w-sm",
+          "bg-background data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl p-4 text-sm ring-1 duration-100 outline-none sm:max-w-sm",
           className
         )}
         {...props}
@@ -74,13 +73,7 @@ function DialogContent({
               className="absolute top-2 right-2"
               size="icon-sm"
             >
-              <IconPlaceholder
-                lucide="XIcon"
-                tabler="IconX"
-                hugeicons="Cancel01Icon"
-                phosphor="XIcon"
-                remixicon="RiCloseLine"
-              />
+              <XIcon />
               <span className="sr-only">Close</span>
             </Button>
           </DialogPrimitive.Close>

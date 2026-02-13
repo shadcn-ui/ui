@@ -20,9 +20,31 @@ links:
 </TabsList>
 <TabsContent value="cli">
 
+<Steps className="mb-0 pt-2">
+
+<Step>Run the following command:</Step>
+
 ```bash
 npx shadcn@latest add tooltip
 ```
+
+<Step>Add the `TooltipProvider` to the root of your app.</Step>
+
+```tsx title="app/layout.tsx" showLineNumbers {1,7}
+import { TooltipProvider } from "@/components/ui/tooltip"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <TooltipProvider>{children}</TooltipProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+</Steps>
 
 </TabsContent>
 
@@ -45,6 +67,22 @@ npm install radix-ui
 />
 
 <Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the `TooltipProvider` to the root of your app.</Step>
+
+```tsx title="app/layout.tsx" showLineNumbers {1,7}
+import { TooltipProvider } from "@/components/ui/tooltip"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <TooltipProvider>{children}</TooltipProvider>
+      </body>
+    </html>
+  )
+}
+```
 
 </Steps>
 
@@ -88,6 +126,12 @@ Use the `side` prop to change the position of the tooltip.
 Show a tooltip on a disabled button by wrapping it with a span.
 
 <ComponentPreview styleName="radix-nova" name="tooltip-disabled" />
+
+## RTL
+
+To enable RTL support in shadcn/ui, see the [RTL configuration guide](/docs/rtl).
+
+<ComponentPreview styleName="radix-nova" name="tooltip-rtl" direction="rtl" />
 
 ## API Reference
 

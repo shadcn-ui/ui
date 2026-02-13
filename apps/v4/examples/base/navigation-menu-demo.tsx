@@ -11,7 +11,11 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/examples/base/ui/navigation-menu"
-import { CircleAlertIcon } from "lucide-react"
+import {
+  CircleAlertIcon,
+  CircleCheckIcon,
+  CircleDashedIcon,
+} from "lucide-react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -105,7 +109,7 @@ export default function NavigationMenuDemo() {
                     <Link href="#" className="flex-row items-center gap-2" />
                   }
                 >
-                  <CircleAlertIcon />
+                  <CircleDashedIcon />
                   To Do
                 </NavigationMenuLink>
                 <NavigationMenuLink
@@ -113,7 +117,7 @@ export default function NavigationMenuDemo() {
                     <Link href="#" className="flex-row items-center gap-2" />
                   }
                 >
-                  <CircleAlertIcon />
+                  <CircleCheckIcon />
                   Done
                 </NavigationMenuLink>
               </li>

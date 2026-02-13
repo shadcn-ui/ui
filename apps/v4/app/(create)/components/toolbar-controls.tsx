@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import {
   ComputerTerminal01Icon,
   Copy01Icon,
@@ -23,6 +24,8 @@ import {
 } from "@/registry/new-york-v4/ui/dialog"
 import {
   Field,
+  FieldContent,
+  FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldTitle,
@@ -31,6 +34,7 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from "@/registry/new-york-v4/ui/radio-group"
+import { Switch } from "@/registry/new-york-v4/ui/switch"
 import {
   Tabs,
   TabsContent,
@@ -71,14 +75,15 @@ export function ToolbarControls() {
   const packageManager = config.packageManager || "pnpm"
 
   const commands = React.useMemo(() => {
-    const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}`
+    const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
+    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}&rtl=${params.rtl}`
     const templateFlag = params.template ? ` --template ${params.template}` : ""
+    const rtlFlag = params.rtl ? " --rtl" : ""
     return {
-      pnpm: `pnpm dlx shadcn@latest create --preset "${url}"${templateFlag}`,
-      npm: `npx shadcn@latest create --preset "${url}"${templateFlag}`,
-      yarn: `yarn dlx shadcn@latest create --preset "${url}"${templateFlag}`,
-      bun: `bunx --bun shadcn@latest create --preset "${url}"${templateFlag}`,
+      pnpm: `pnpm dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+      npm: `npx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+      yarn: `yarn dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+      bun: `bunx --bun shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
     }
   }, [
     params.base,
@@ -91,6 +96,7 @@ export function ToolbarControls() {
     params.menuColor,
     params.radius,
     params.template,
+    params.rtl,
   ])
 
   const command = commands[packageManager]
@@ -164,7 +170,7 @@ export function ToolbarControls() {
             {selectedTemplate?.title} + shadcn/ui project.
           </DialogDescription>
         </DialogHeader>
-        <FieldGroup>
+        <FieldGroup className="gap-3">
           <Field>
             <FieldLabel htmlFor="template" className="sr-only">
               Template
@@ -183,7 +189,7 @@ export function ToolbarControls() {
                 <FieldLabel
                   key={template.value}
                   htmlFor={template.value}
-                  className="rounded-lg!"
+                  className="has-data-[state=checked]:border-primary/10 rounded-lg!"
                 >
                   <Field className="flex min-w-0 flex-col items-center justify-center gap-2 p-3! text-center *:w-auto!">
                     <RadioGroupItem
@@ -205,59 +211,81 @@ export function ToolbarControls() {
               ))}
             </RadioGroup>
           </Field>
-        </FieldGroup>
-        <Tabs
-          value={packageManager}
-          onValueChange={(value) => {
-            setConfig({
-              ...config,
-              packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
-            })
-          }}
-          className="bg-surface min-w-0 gap-0 overflow-hidden rounded-lg border"
-        >
-          <div className="flex items-center gap-2 p-2">
-            <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-0 font-mono *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none!">
-              <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-              <TabsTrigger value="npm">npm</TabsTrigger>
-              <TabsTrigger value="yarn">yarn</TabsTrigger>
-              <TabsTrigger value="bun">bun</TabsTrigger>
-            </TabsList>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  size="icon-sm"
-                  variant="ghost"
-                  className="ml-auto size-7 rounded-lg"
-                  onClick={handleCopyFromTabs}
-                >
-                  {hasCopied ? (
-                    <HugeiconsIcon icon={Tick02Icon} className="size-4" />
-                  ) : (
-                    <HugeiconsIcon icon={Copy01Icon} className="size-4" />
-                  )}
-                  <span className="sr-only">Copy command</span>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                {hasCopied ? "Copied!" : "Copy command"}
-              </TooltipContent>
-            </Tooltip>
-          </div>
-          {Object.entries(commands).map(([key, cmd]) => {
-            return (
-              <TabsContent key={key} value={key}>
-                <div className="bg-surface border-border/50 text-surface-foreground relative overflow-hidden border-t px-3 py-3">
-                  <div className="no-scrollbar overflow-x-auto">
-                    <code className="font-mono text-sm whitespace-nowrap">
-                      {cmd}
-                    </code>
+          <FieldLabel className="has-data-[state=checked]:border-primary/10 rounded-lg!">
+            <Field orientation="horizontal">
+              <FieldContent className="gap-1">
+                <FieldTitle>Enable RTL</FieldTitle>
+                <FieldDescription>
+                  <a
+                    href={`/docs/rtl/${params.template}`}
+                    className="text-foreground underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View the RTL setup guide for {selectedTemplate?.title}.
+                  </a>
+                </FieldDescription>
+              </FieldContent>
+              <Switch
+                checked={params.rtl}
+                onCheckedChange={(rtl) => setParams({ rtl })}
+                className="shadow-none"
+              />
+            </Field>
+          </FieldLabel>
+          <Tabs
+            value={packageManager}
+            onValueChange={(value) => {
+              setConfig({
+                ...config,
+                packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
+              })
+            }}
+            className="bg-surface min-w-0 gap-0 overflow-hidden rounded-lg border"
+          >
+            <div className="flex items-center gap-2 p-2">
+              <TabsList className="*:data-[slot=tabs-trigger]:data-[state=active]:border-input h-auto rounded-none bg-transparent p-0 font-mono group-data-[orientation=horizontal]/tabs:h-8 *:data-[slot=tabs-trigger]:h-7 *:data-[slot=tabs-trigger]:border *:data-[slot=tabs-trigger]:border-transparent *:data-[slot=tabs-trigger]:pt-0.5 *:data-[slot=tabs-trigger]:shadow-none!">
+                <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+                <TabsTrigger value="npm">npm</TabsTrigger>
+                <TabsTrigger value="yarn">yarn</TabsTrigger>
+                <TabsTrigger value="bun">bun</TabsTrigger>
+              </TabsList>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    size="icon-sm"
+                    variant="ghost"
+                    className="ml-auto size-7 rounded-lg"
+                    onClick={handleCopyFromTabs}
+                  >
+                    {hasCopied ? (
+                      <HugeiconsIcon icon={Tick02Icon} className="size-4" />
+                    ) : (
+                      <HugeiconsIcon icon={Copy01Icon} className="size-4" />
+                    )}
+                    <span className="sr-only">Copy command</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  {hasCopied ? "Copied!" : "Copy command"}
+                </TooltipContent>
+              </Tooltip>
+            </div>
+            {Object.entries(commands).map(([key, cmd]) => {
+              return (
+                <TabsContent key={key} value={key}>
+                  <div className="bg-surface border-border/50 text-surface-foreground relative overflow-hidden border-t px-3 py-3">
+                    <div className="no-scrollbar overflow-x-auto">
+                      <code className="font-mono text-sm whitespace-nowrap">
+                        {cmd}
+                      </code>
+                    </div>
                   </div>
-                </div>
-              </TabsContent>
-            )
-          })}
-        </Tabs>
+                </TabsContent>
+              )
+            })}
+          </Tabs>
+        </FieldGroup>
         <DialogFooter className="bg-muted/50 -mx-6 mt-2 -mb-6 flex flex-col gap-2 border-t p-6 sm:flex-col">
           <Button
             size="sm"
