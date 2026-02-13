@@ -126,7 +126,7 @@ export default function FormRhfCheckbox() {
               name="tasks"
               control={form.control}
               render={({ field, fieldState }) => (
-                <div>
+                <FieldGroup>
                   <FieldSet data-invalid={fieldState.invalid}>
                     <FieldLegend variant="label">Tasks</FieldLegend>
                     <FieldDescription>
@@ -148,8 +148,8 @@ export default function FormRhfCheckbox() {
                               const newValue = checked
                                 ? [...field.value, task.id]
                                 : field.value.filter(
-                                    (value) => value !== task.id
-                                  )
+                                  (value) => value !== task.id
+                                )
                               field.onChange(newValue)
                             }}
                           />
@@ -166,7 +166,7 @@ export default function FormRhfCheckbox() {
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
                   )}
-                </div>
+                </FieldGroup>
               )}
             />
           </FieldGroup>

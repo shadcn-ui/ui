@@ -143,8 +143,8 @@ export default function FormTanstackCheckbox() {
                 const isInvalid =
                   field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <div>
-                    <FieldSet>
+                  <FieldGroup>
+                    <FieldSet data-invalid={isInvalid}>
                       <FieldLegend variant="label">Tasks</FieldLegend>
                       <FieldDescription>
                         Get notified when tasks you&apos;ve created have
@@ -188,7 +188,7 @@ export default function FormTanstackCheckbox() {
                     {isInvalid && (
                       <FieldError errors={field.state.meta.errors} />
                     )}
-                  </div>
+                  </FieldGroup>
                 )
               }}
             />
