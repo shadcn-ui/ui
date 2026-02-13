@@ -41,3 +41,8 @@ tsconfig.tsbuildinfo
 .vscode
 
 .notes
+
+lib
+.bsb.lock
+**/*.res.mjs
+packages/shadcn/test/artifacts/

@@ -1,0 +1,23 @@
+{
+  "name": "shadcn",
+  "namespace": true,
+  "sources": [
+    {
+      "dir": "rescript",
+      "subdirs": true
+    }
+  ],
+  "jsx": {
+    "version": 4,
+    "mode": "automatic"
+  },
+  "package-specs": {
+    "module": "esmodule",
+    "in-source": true
+  },
+  "suffix": ".res.mjs",
+  "dependencies": [
+    "@rescript/react",
+    "@rescript-shadcn-ui/base-ui"
+  ]
+}

@@ -1,0 +1,32 @@
+type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
+external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
+
+let badgeVariantClass = (~variant: string) =>
+  switch variant {
+  | "secondary" => "bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80"
+  | "destructive" =>
+    "bg-destructive/10 [a]:hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 text-destructive dark:bg-destructive/20"
+  | "outline" =>
+    "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground"
+  | "ghost" => "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50"
+  | "link" => "text-primary underline-offset-4 hover:underline"
+  | _ => "bg-primary text-primary-foreground [a]:hover:bg-primary/80"
+  }
+
+let badgeVariants = (~variant="default") => {
+  let base =
+    "h-5 gap-1 rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium transition-all has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&>svg]:size-3! inline-flex items-center justify-center w-fit whitespace-nowrap shrink-0 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive overflow-hidden group/badge"
+  `${base} ${badgeVariantClass(~variant)}`
+}
+
+@react.componentWithProps
+let make = (props: props<'value, 'checked>) => {
+  let variant = props.dataVariant->Option.getOr("default")
+  let props = {...props, dataSlot: "badge", dataVariant: variant}
+  <span
+    {...toDomProps(props)}
+    className={`${badgeVariants(~variant)} ${props.className->Option.getOr("")}`}
+  >
+    {props.children->Option.getOr(React.null)}
+  </span>
+}
