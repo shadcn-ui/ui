@@ -27,8 +27,8 @@ module DayButton = {
   let make = (props: primitiveProps) =>
     <Button
       {...props}
-      dataVariant="ghost"
-      dataSize="icon"
+      dataVariant=BaseUi.Types.Variant.Ghost
+      dataSize=BaseUi.Types.Size.Icon
       className={`data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground data-[range-middle=true]:bg-muted data-[range-middle=true]:text-foreground data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 border-0 leading-none font-normal data-[range-end=true]:rounded-(--cell-radius) data-[range-end=true]:rounded-r-(--cell-radius) data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-(--cell-radius) data-[range-start=true]:rounded-l-(--cell-radius) [&>span]:text-xs [&>span]:opacity-70 ${props.className->Option.getOr("")}`}
     />
 }

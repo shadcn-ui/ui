@@ -35,8 +35,9 @@ module Link = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
     let isActive = props.dataActive->Option.getOr(false)
-    let size = props.dataSize->Option.getOr("icon")
-    let variant = if isActive {"outline"} else {"ghost"}
+    let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Icon)
+    let variant =
+      if isActive {BaseUi.Types.Variant.Outline} else {BaseUi.Types.Variant.Ghost}
     let anchorProps = {
       ...props,
       className: "",
@@ -65,7 +66,7 @@ let make = (props: props<'value, 'checked>) => {
     <Link.make
       {...props}
       ariaLabel="Go to previous page"
-      dataSize="default"
+      dataSize=BaseUi.Types.Size.Default
       className={`pl-1.5! ${props.className->Option.getOr("")}`}
     >
       <Icons.chevronLeft dataIcon="inline-start" className="cn-rtl-flip" />
@@ -81,7 +82,7 @@ let make = (props: props<'value, 'checked>) => {
     <Link.make
       {...props}
       ariaLabel="Go to next page"
-      dataSize="default"
+      dataSize=BaseUi.Types.Size.Default
       className={`pr-1.5! ${props.className->Option.getOr("")}`}
     >
       <span className="hidden sm:block">{text->React.string}</span>

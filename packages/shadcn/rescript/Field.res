@@ -4,16 +4,16 @@ external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
 module UiLabel = Label
 module UiSeparator = Separator
 
-let fieldOrientationClass = (~orientation: string) =>
+let fieldOrientationClass = (~orientation: BaseUi.Types.DataOrientation.t) =>
   switch orientation {
-  | "horizontal" =>
+  | Horizontal =>
     "flex-row items-center *:data-[slot=field-label]:flex-auto has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px"
-  | "responsive" =>
+  | Responsive =>
     "flex-col *:w-full [&>.sr-only]:w-auto @md/field-group:flex-row @md/field-group:items-center @md/field-group:*:w-auto @md/field-group:*:data-[slot=field-label]:flex-auto @md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px"
-  | _ => "flex-col *:w-full [&>.sr-only]:w-auto"
+  | Vertical => "flex-col *:w-full [&>.sr-only]:w-auto"
   }
 
-let fieldVariants = (~orientation="vertical") => {
+let fieldVariants = (~orientation=BaseUi.Types.DataOrientation.Vertical) => {
   let base = "data-[invalid=true]:text-destructive gap-2 group/field flex w-full"
   `${base} ${fieldOrientationClass(~orientation)}`
 }
@@ -32,7 +32,7 @@ module Set = {
 module Legend = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr("legend")
+    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Legend)
     let props = {...props, dataSlot: "field-legend", dataVariant: variant}
     <legend
       {...toDomProps(props)}
@@ -54,7 +54,7 @@ module Group = {
 
 @react.componentWithProps
 let make = (props: props<'value, 'checked>) => {
-  let orientation = props.dataOrientation->Option.getOr("vertical")
+  let orientation = props.dataOrientation->Option.getOr(BaseUi.Types.DataOrientation.Vertical)
   let props = {...props, dataSlot: "field", dataOrientation: orientation}
   <div
     {...toDomProps(props)}

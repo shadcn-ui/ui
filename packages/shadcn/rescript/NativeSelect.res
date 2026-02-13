@@ -3,7 +3,7 @@ external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
 
 @react.componentWithProps
 let make = (props: props<'value, 'checked>) => {
-  let size = props.dataSize->Belt.Option.getWithDefault("default")
+  let size = props.dataSize->Belt.Option.getWithDefault(BaseUi.Types.Size.Default)
   let wrapperProps = {
     ...props,
     className: "",

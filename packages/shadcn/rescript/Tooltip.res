@@ -25,9 +25,9 @@ module Content = {
   let make = (props: props<'value, 'checked>) =>
     <BaseUi.Tooltip.Portal>
       <BaseUi.Tooltip.Positioner
-        align={props.align->Option.getOr(BaseUi.Types.Center)}
+        align={props.align->Option.getOr(BaseUi.Types.Align.Center)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
-        side={props.side->Option.getOr(BaseUi.Types.Top)}
+        side={props.side->Option.getOr(BaseUi.Types.Side.Top)}
         sideOffset={props.sideOffset->Option.getOr(4.)}
         className="isolate z-50"
       >

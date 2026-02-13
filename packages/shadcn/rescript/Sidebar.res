@@ -24,20 +24,39 @@ let useSidebar = () => {
   toggleSidebar: () => (),
 }
 
-let sidebarMenuButtonVariants = (~variant="default", ~size="default") => {
+let sidebarMenuButtonVariants = (
+  ~variant=BaseUi.Types.Variant.Default,
+  ~size=BaseUi.Types.Size.Default,
+) => {
   let base =
     "ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:text-sidebar-accent-foreground data-open:hover:bg-sidebar-accent data-open:hover:text-sidebar-accent-foreground gap-2 rounded-md p-2 text-left text-sm transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! focus-visible:ring-2 data-active:font-medium peer/menu-button flex w-full items-center overflow-hidden outline-hidden group/menu-button disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&_svg]:size-4 [&_svg]:shrink-0"
   let variantClass =
     switch variant {
-    | "outline" =>
+    | Outline =>
       "bg-background hover:bg-sidebar-accent hover:text-sidebar-accent-foreground shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]"
-    | _ => ""
+    | Default
+    | Secondary
+    | Destructive
+    | Ghost
+    | Muted
+    | Line
+    | Link
+    | Icon
+    | Image
+    | Legend
+    | Label => ""
     }
   let sizeClass =
     switch size {
-    | "sm" => "h-7 text-xs"
-    | "lg" => "h-12 text-sm group-data-[collapsible=icon]:p-0!"
-    | _ => "h-8"
+    | Sm => "h-7 text-xs"
+    | Lg => "h-12 text-sm group-data-[collapsible=icon]:p-0!"
+    | Default
+    | Xs
+    | Md
+    | Icon
+    | IconXs
+    | IconSm
+    | IconLg => "h-8"
     }
   `${base} ${variantClass} ${sizeClass}`
 }
@@ -94,8 +113,8 @@ module Trigger = {
       {...props}
       dataSidebar="trigger"
       dataSlot="sidebar-trigger"
-      dataVariant="ghost"
-      dataSize="icon-sm"
+      dataVariant=BaseUi.Types.Variant.Ghost
+      dataSize=BaseUi.Types.Size.IconSm
       className={`${props.className->Option.getOr("")}`}
     >
       <Icons.panelLeft className="cn-rtl-flip" />
@@ -274,8 +293,8 @@ module MenuItem = {
 module MenuButton = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr("default")
-    let size = props.dataSize->Option.getOr("default")
+    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
+    let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Default)
     let props = {
       ...props,
       dataSlot: "sidebar-menu-button",
@@ -362,7 +381,7 @@ module MenuSubItem = {
 module MenuSubButton = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let size = props.dataSize->Option.getOr("md")
+    let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Md)
     let props = {
       ...props,
       dataSlot: "sidebar-menu-sub-button",

@@ -25,7 +25,7 @@ external toJsxDomRef: ReactDOM.Ref.callbackDomRef => JsxDOM.domRef = "%identity"
 type carouselContext = {
   carouselRef: carouselRef,
   api: option<carouselApi>,
-  orientation: string,
+  orientation: BaseUi.Types.DataOrientation.t,
   scrollPrev: unit => unit,
   scrollNext: unit => unit,
   canScrollPrev: bool,
@@ -42,8 +42,8 @@ let useCarousel = () =>
 
 @react.componentWithProps
 let make = (props: primitiveProps) => {
-  let orientation = props.dataOrientation->Option.getOr("horizontal")
-  let axis = if orientation == "horizontal" {"x"} else {"y"}
+  let orientation = props.dataOrientation->Option.getOr(BaseUi.Types.DataOrientation.Horizontal)
+  let axis = if orientation == BaseUi.Types.DataOrientation.Horizontal {"x"} else {"y"}
   let (carouselRef, api) = useEmblaCarousel(~options={axis: axis})
   let (canScrollPrev, setCanScrollPrev) = React.useState(() => false)
   let (canScrollNext, setCanScrollNext) = React.useState(() => false)
@@ -116,7 +116,7 @@ module Content = {
     >
       <div
         {...toDomProps(props)}
-        className={`flex ${if orientation == "horizontal" {"-ml-4"} else {"-mt-4 flex-col"}} ${props.className->Option.getOr("")}`}
+        className={`flex ${if orientation == BaseUi.Types.DataOrientation.Horizontal {"-ml-4"} else {"-mt-4 flex-col"}} ${props.className->Option.getOr("")}`}
       />
     </div>
   }
@@ -131,7 +131,7 @@ module Item = {
       {...toDomProps(props)}
       role="group"
       ariaLabel="slide"
-      className={`min-w-0 shrink-0 grow-0 basis-full ${if orientation == "horizontal" {"pl-4"} else {"pt-4"}} ${props.className->Option.getOr("")}`}
+      className={`min-w-0 shrink-0 grow-0 basis-full ${if orientation == BaseUi.Types.DataOrientation.Horizontal {"pl-4"} else {"pt-4"}} ${props.className->Option.getOr("")}`}
     />
   }
 }
@@ -143,9 +143,9 @@ module Previous = {
     <Button
       {...props}
       dataSlot="carousel-previous"
-      dataVariant={props.dataVariant->Option.getOr("outline")}
-      dataSize={props.dataSize->Option.getOr("icon-sm")}
-      className={`absolute touch-manipulation rounded-full ${if orientation == "horizontal" {"top-1/2 -left-12 -translate-y-1/2"} else {"-top-12 left-1/2 -translate-x-1/2 rotate-90"}} ${props.className->Option.getOr("")}`}
+      dataVariant={props.dataVariant->Option.getOr(BaseUi.Types.Variant.Outline)}
+      dataSize={props.dataSize->Option.getOr(BaseUi.Types.Size.IconSm)}
+      className={`absolute touch-manipulation rounded-full ${if orientation == BaseUi.Types.DataOrientation.Horizontal {"top-1/2 -left-12 -translate-y-1/2"} else {"-top-12 left-1/2 -translate-x-1/2 rotate-90"}} ${props.className->Option.getOr("")}`}
       disabled={!canScrollPrev}
       onClick={_ => scrollPrev()}
     >
@@ -162,9 +162,9 @@ module Next = {
     <Button
       {...props}
       dataSlot="carousel-next"
-      dataVariant={props.dataVariant->Option.getOr("outline")}
-      dataSize={props.dataSize->Option.getOr("icon-sm")}
-      className={`absolute touch-manipulation rounded-full ${if orientation == "horizontal" {"top-1/2 -right-12 -translate-y-1/2"} else {"-bottom-12 left-1/2 -translate-x-1/2 rotate-90"}} ${props.className->Option.getOr("")}`}
+      dataVariant={props.dataVariant->Option.getOr(BaseUi.Types.Variant.Outline)}
+      dataSize={props.dataSize->Option.getOr(BaseUi.Types.Size.IconSm)}
+      className={`absolute touch-manipulation rounded-full ${if orientation == BaseUi.Types.DataOrientation.Horizontal {"top-1/2 -right-12 -translate-y-1/2"} else {"-bottom-12 left-1/2 -translate-x-1/2 rotate-90"}} ${props.className->Option.getOr("")}`}
       disabled={!canScrollNext}
       onClick={_ => scrollNext()}
     >

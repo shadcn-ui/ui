@@ -2,57 +2,123 @@
 type eventDetails = JSON.t
 type htmlProps = JSON.t
 
-@unboxed
-type side =
-  | @as("top") Top
-  | @as("bottom") Bottom
-  | @as("left") Left
-  | @as("right") Right
-  | @as("inline-start") InlineStart
-  | @as("inline-end") InlineEnd
+module Side = {
+  @unboxed
+  type t =
+    | @as("top") Top
+    | @as("bottom") Bottom
+    | @as("left") Left
+    | @as("right") Right
+    | @as("inline-start") InlineStart
+    | @as("inline-end") InlineEnd
+}
 
-@unboxed
-type align =
-  | @as("start") Start
-  | @as("center") Center
-  | @as("end") End
+module Align = {
+  @unboxed
+  type t =
+    | @as("start") Start
+    | @as("center") Center
+    | @as("end") End
+}
 
-@unboxed
-type orientation =
-  | @as("horizontal") Horizontal
-  | @as("vertical") Vertical
+module Orientation = {
+  @unboxed
+  type t =
+    | @as("horizontal") Horizontal
+    | @as("vertical") Vertical
+}
 
-@unboxed
-type modal =
-  | Modal(bool)
-  | @as("trap-focus") TrapFocus
+module Modal = {
+  @unboxed
+  type t =
+    | Bool(bool)
+    | @as("trap-focus") TrapFocus
+}
 
-@unboxed
-type checkedState =
-  | Checked(bool)
-  | @as("indeterminate") Indeterminate
+module CheckedState = {
+  @unboxed
+  type t =
+    | Checked(bool)
+    | @as("indeterminate") Indeterminate
+}
 
-@unboxed
-type positionMethod =
-  | @as("absolute") Absolute
-  | @as("fixed") Fixed
+module PositionMethod = {
+  @unboxed
+  type t =
+    | @as("absolute") Absolute
+    | @as("fixed") Fixed
+}
 
-@unboxed
-type thumbAlignment =
-  | @as("center") ThumbCenter
-  | @as("edge") ThumbEdge
-  | @as("edge-client-only") ThumbEdgeClientOnly
+module ThumbAlignment = {
+  @unboxed
+  type t =
+    | @as("center") Center
+    | @as("edge") Edge
+    | @as("edge-client-only") EdgeClientOnly
+}
 
-@unboxed
-type thumbCollisionBehavior =
-  | @as("push") Push
-  | @as("swap") Swap
-  | @as("none") NoCollisionBehavior
+module ThumbCollisionBehavior = {
+  @unboxed
+  type t =
+    | @as("push") Push
+    | @as("swap") Swap
+    | @as("none") None
+}
 
-@unboxed
-type textDirection =
-  | @as("ltr") Ltr
-  | @as("rtl") Rtl
+module TextDirection = {
+  @unboxed
+  type t =
+    | @as("ltr") Ltr
+    | @as("rtl") Rtl
+}
+
+module Variant = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("secondary") Secondary
+    | @as("destructive") Destructive
+    | @as("outline") Outline
+    | @as("ghost") Ghost
+    | @as("muted") Muted
+    | @as("line") Line
+    | @as("link") Link
+    | @as("icon") Icon
+    | @as("image") Image
+    | @as("legend") Legend
+    | @as("label") Label
+}
+
+module Size = {
+  @unboxed
+  type t =
+    | @as("default") Default
+    | @as("xs") Xs
+    | @as("sm") Sm
+    | @as("md") Md
+    | @as("lg") Lg
+    | @as("icon") Icon
+    | @as("icon-xs") IconXs
+    | @as("icon-sm") IconSm
+    | @as("icon-lg") IconLg
+}
+
+module DataAlign = {
+  @unboxed
+  type t =
+    | @as("inline-start") InlineStart
+    | @as("inline-end") InlineEnd
+    | @as("block-start") BlockStart
+    | @as("block-end") BlockEnd
+}
+
+module DataOrientation = {
+  @unboxed
+  type t =
+    | @as("horizontal") Horizontal
+    | @as("vertical") Vertical
+    | @as("responsive") Responsive
+}
 
 type props<'value, 'checked> = {
   children?: React.element,
@@ -90,11 +156,11 @@ type props<'value, 'checked> = {
   required?: bool,
   indeterminate?: bool,
   multiple?: bool,
-  modal?: modal,
-  orientation?: orientation,
-  side?: side,
+  modal?: Modal.t,
+  orientation?: Orientation.t,
+  side?: Side.t,
   sideOffset?: float,
-  align?: align,
+  align?: Align.t,
   alignOffset?: float,
   alignItemWithTrigger?: bool,
   loopFocus?: bool,
@@ -109,7 +175,7 @@ type props<'value, 'checked> = {
   finalFocus?: htmlProps,
   container?: Dom.element,
   anchor?: htmlProps,
-  positionMethod?: positionMethod,
+  positionMethod?: PositionMethod.t,
   href?: string,
   target?: string,
   src?: string,
@@ -135,8 +201,8 @@ type props<'value, 'checked> = {
   min?: float,
   step?: float,
   largeStep?: float,
-  thumbAlignment?: thumbAlignment,
-  thumbCollisionBehavior?: thumbCollisionBehavior,
+  thumbAlignment?: ThumbAlignment.t,
+  thumbCollisionBehavior?: ThumbCollisionBehavior.t,
   @as("type") type_?: string,
   @as("aria-label") ariaLabel?: string,
   @as("aria-current") ariaCurrent?: string,
@@ -144,7 +210,7 @@ type props<'value, 'checked> = {
   @as("data-slot") dataSlot?: string,
   @as("data-sidebar") dataSidebar?: string,
   @as("data-side") dataSide?: string,
-  @as("data-align") dataAlign?: string,
+  @as("data-align") dataAlign?: DataAlign.t,
   @as("data-icon") dataIcon?: string,
   @as("data-mobile") dataMobile?: string,
   @as("data-chips") dataChips?: bool,
@@ -157,10 +223,10 @@ type props<'value, 'checked> = {
   @as("data-range-start") dataRangeStart?: bool,
   @as("data-range-end") dataRangeEnd?: bool,
   @as("data-range-middle") dataRangeMiddle?: bool,
-  @as("data-size") dataSize?: string,
-  @as("data-variant") dataVariant?: string,
+  @as("data-size") dataSize?: Size.t,
+  @as("data-variant") dataVariant?: Variant.t,
   @as("data-state") dataState?: string,
-  @as("data-orientation") dataOrientation?: string,
+  @as("data-orientation") dataOrientation?: DataOrientation.t,
   @as("data-align-trigger") dataAlignTrigger?: bool,
   @as("data-spacing") dataSpacing?: float,
   @as("data-inset") dataInset?: bool,

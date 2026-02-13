@@ -15,7 +15,7 @@ let make = (props: props<'value, 'checked>) =>
     </BaseUi.ScrollArea.Viewport>
     <BaseUi.ScrollArea.Scrollbar
       dataSlot="scroll-area-scrollbar"
-      orientation={BaseUi.Types.Vertical}
+      orientation={BaseUi.Types.Orientation.Vertical}
       className="flex touch-none p-px transition-colors select-none data-horizontal:h-2.5 data-horizontal:flex-col data-horizontal:border-t data-horizontal:border-t-transparent data-vertical:h-full data-vertical:w-2.5 data-vertical:border-l data-vertical:border-l-transparent"
     >
       <BaseUi.ScrollArea.Thumb
@@ -32,7 +32,7 @@ module ScrollBar = {
     <BaseUi.ScrollArea.Scrollbar
       {...props}
       dataSlot="scroll-area-scrollbar"
-      orientation={props.orientation->Option.getOr(BaseUi.Types.Vertical)}
+      orientation={props.orientation->Option.getOr(BaseUi.Types.Orientation.Vertical)}
       className={`flex touch-none p-px transition-colors select-none data-horizontal:h-2.5 data-horizontal:flex-col data-horizontal:border-t data-horizontal:border-t-transparent data-vertical:h-full data-vertical:w-2.5 data-vertical:border-l data-vertical:border-l-transparent ${props.className->Option.getOr("")}`}
     >
       <BaseUi.ScrollArea.Thumb

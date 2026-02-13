@@ -5,33 +5,39 @@ module UiButton = Button
 module UiInput = Input
 module UiTextarea = Textarea
 
-let inputGroupAddonAlignClass = (~align: string) =>
+let inputGroupAddonAlignClass = (~align: BaseUi.Types.DataAlign.t) =>
   switch align {
-  | "inline-end" =>
+  | InlineEnd =>
     "pr-2 has-[>button]:mr-[-0.3rem] has-[>kbd]:mr-[-0.15rem] order-last"
-  | "block-start" =>
+  | BlockStart =>
     "px-2.5 pt-2 group-has-[>input]/input-group:pt-2 [.border-b]:pb-2 order-first w-full justify-start"
-  | "block-end" =>
+  | BlockEnd =>
     "px-2.5 pb-2 group-has-[>input]/input-group:pb-2 [.border-t]:pt-2 order-last w-full justify-start"
-  | _ => "pl-2 has-[>button]:ml-[-0.3rem] has-[>kbd]:ml-[-0.15rem] order-first"
+  | InlineStart =>
+    "pl-2 has-[>button]:ml-[-0.3rem] has-[>kbd]:ml-[-0.15rem] order-first"
   }
 
-let inputGroupAddonVariants = (~align="inline-start") => {
+let inputGroupAddonVariants = (~align=BaseUi.Types.DataAlign.InlineStart) => {
   let base =
     "text-muted-foreground h-auto gap-2 py-1.5 text-sm font-medium group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4 flex cursor-text items-center justify-center select-none"
   `${base} ${inputGroupAddonAlignClass(~align)}`
 }
 
-let inputGroupButtonSizeClass = (~size: string) =>
+let inputGroupButtonSizeClass = (~size: BaseUi.Types.Size.t) =>
   switch size {
-  | "sm" => ""
-  | "icon-xs" => "size-6 rounded-[calc(var(--radius)-3px)] p-0 has-[>svg]:p-0"
-  | "icon-sm" => "size-8 p-0 has-[>svg]:p-0"
-  | _ =>
+  | Sm => ""
+  | IconXs => "size-6 rounded-[calc(var(--radius)-3px)] p-0 has-[>svg]:p-0"
+  | IconSm => "size-8 p-0 has-[>svg]:p-0"
+  | Default
+  | Xs
+  | Md
+  | Lg
+  | Icon
+  | IconLg =>
     "h-6 gap-1 rounded-[calc(var(--radius)-3px)] px-1.5 [&>svg:not([class*='size-'])]:size-3.5"
   }
 
-let inputGroupButtonVariants = (~size="xs") => {
+let inputGroupButtonVariants = (~size=BaseUi.Types.Size.Xs) => {
   let base = "gap-2 text-sm shadow-none flex items-center"
   `${base} ${inputGroupButtonSizeClass(~size)}`
 }
@@ -49,7 +55,7 @@ let make = (props: props<'value, 'checked>) => {
 module Addon = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let align = props.dataAlign->Option.getOr("inline-start")
+    let align = props.dataAlign->Option.getOr(BaseUi.Types.DataAlign.InlineStart)
     let props = {...props, dataSlot: "input-group-addon", dataAlign: align}
     <div
       {...toDomProps(props)}
@@ -62,8 +68,8 @@ module Addon = {
 module Button = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let size = props.dataSize->Option.getOr("xs")
-    let variant = props.dataVariant->Option.getOr("ghost")
+    let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Xs)
+    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Ghost)
     let type_ = props.type_->Option.getOr("button")
     <UiButton.make
       {...props}

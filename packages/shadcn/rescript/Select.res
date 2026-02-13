@@ -27,7 +27,7 @@ module Value = {
 module Trigger = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let size = props.dataSize->Option.getOr("default")
+    let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Default)
     let hasWidthOverride =
       switch props.className {
       | Some(className) => String.includes(className, "w-")
@@ -52,9 +52,9 @@ module Content = {
     let alignItemWithTrigger = props.dataAlignTrigger->Option.getOr(true)
     <BaseUi.Select.Portal>
       <BaseUi.Select.Positioner
-        side={props.side->Option.getOr(BaseUi.Types.Bottom)}
+        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(4.)}
-        align={props.align->Option.getOr(BaseUi.Types.Center)}
+        align={props.align->Option.getOr(BaseUi.Types.Align.Center)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
         alignItemWithTrigger
         className="isolate z-50"

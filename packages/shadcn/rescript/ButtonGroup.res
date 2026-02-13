@@ -1,14 +1,14 @@
 type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
 external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
 
-let buttonGroupVariants = (~orientation="horizontal") => {
+let buttonGroupVariants = (~orientation=BaseUi.Types.DataOrientation.Horizontal) => {
   let base =
     "has-[>[data-slot=button-group]]:gap-2 has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-lg flex w-fit items-stretch *:focus-visible:z-10 *:focus-visible:relative [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit [&>input]:flex-1"
-  let orientationClass =
-    switch orientation {
-    | "vertical" =>
+  let orientationClass = switch orientation {
+    | Vertical =>
       "[&>[data-slot]:not(:has(~[data-slot]))]:rounded-b-lg! flex-col [&>[data-slot]~[data-slot]]:rounded-t-none [&>[data-slot]~[data-slot]]:border-t-0 *:data-slot:rounded-b-none"
-    | _ =>
+    | Horizontal
+    | Responsive =>
       "[&>[data-slot]:not(:has(~[data-slot]))]:rounded-r-lg! [&>[data-slot]~[data-slot]]:rounded-l-none [&>[data-slot]~[data-slot]]:border-l-0 *:data-slot:rounded-r-none"
     }
   `${base} ${orientationClass}`
@@ -16,7 +16,7 @@ let buttonGroupVariants = (~orientation="horizontal") => {
 
 @react.componentWithProps
 let make = (props: props<'value, 'checked>) => {
-  let orientation = props.dataOrientation->Option.getOr("horizontal")
+  let orientation = props.dataOrientation->Option.getOr(BaseUi.Types.DataOrientation.Horizontal)
   let props = {...props, dataSlot: "button-group"}
   <div
     {...toDomProps(props)}
@@ -44,7 +44,7 @@ module Separator = {
     <BaseUi.Separator
       {...props}
       dataSlot="button-group-separator"
-      orientation={props.orientation->Option.getOr(BaseUi.Types.Vertical)}
+      orientation={props.orientation->Option.getOr(BaseUi.Types.Orientation.Vertical)}
       className={`bg-input relative self-stretch shrink-0 data-horizontal:mx-px data-horizontal:h-px data-horizontal:w-auto data-vertical:my-px data-vertical:h-auto data-vertical:w-px data-vertical:self-stretch ${props.className->Option.getOr("")}`}
     />
 }

@@ -1,12 +1,22 @@
 type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
 
-let tabsListVariants = (~variant="default") => {
+let tabsListVariants = (~variant=BaseUi.Types.Variant.Default) => {
   let base =
     "rounded-lg p-[3px] group-data-horizontal/tabs:h-8 data-[variant=line]:rounded-none group/tabs-list text-muted-foreground inline-flex w-fit items-center justify-center group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col"
   let variantClass =
     switch variant {
-    | "line" => "gap-1 bg-transparent"
-    | _ => "bg-muted"
+    | Line => "gap-1 bg-transparent"
+    | Default
+    | Secondary
+    | Destructive
+    | Outline
+    | Ghost
+    | Muted
+    | Link
+    | Icon
+    | Image
+    | Legend
+    | Label => "bg-muted"
     }
   `${base} ${variantClass}`
 }
@@ -15,7 +25,7 @@ let tabsListVariants = (~variant="default") => {
 let make = (props: props<'value, 'checked>) =>
   <BaseUi.Tabs.Root
     {...props}
-    orientation={props.orientation->Option.getOr(BaseUi.Types.Horizontal)}
+    orientation={props.orientation->Option.getOr(BaseUi.Types.Orientation.Horizontal)}
     dataSlot="tabs"
     className={`group/tabs flex gap-2 data-horizontal:flex-col ${props.className->Option.getOr("")}`}
   />
@@ -23,7 +33,7 @@ let make = (props: props<'value, 'checked>) =>
 module List = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr("default")
+    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
     <BaseUi.Tabs.List
       {...props}
       dataSlot="tabs-list"

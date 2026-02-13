@@ -1,14 +1,24 @@
 type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
 external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
 
-let alertVariantClass = (~variant: string) =>
+let alertVariantClass = (~variant: BaseUi.Types.Variant.t) =>
   switch variant {
-  | "destructive" =>
-    "text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current"
-  | _ => "bg-card text-card-foreground"
-  }
+    | Destructive =>
+      "text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current"
+    | Default
+    | Secondary
+    | Outline
+    | Ghost
+    | Muted
+    | Line
+    | Link
+    | Icon
+    | Image
+    | Legend
+    | Label => "bg-card text-card-foreground"
+    }
 
-let alertVariants = (~variant="default") => {
+let alertVariants = (~variant=BaseUi.Types.Variant.Default) => {
   let base =
     "grid gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4 w-full relative group/alert"
   `${base} ${alertVariantClass(~variant)}`
@@ -16,7 +26,7 @@ let alertVariants = (~variant="default") => {
 
 @react.componentWithProps
 let make = (props: props<'value, 'checked>) => {
-  let variant = props.dataVariant->Option.getOr("default")
+  let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
   let props = {...props, dataSlot: "alert", dataVariant: variant}
   <div
     {...toDomProps(props)}

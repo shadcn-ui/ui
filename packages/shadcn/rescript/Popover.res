@@ -15,9 +15,9 @@ module Content = {
   let make = (props: props<'value, 'checked>) =>
     <BaseUi.Popover.Portal>
       <BaseUi.Popover.Positioner
-        align={props.align->Option.getOr(BaseUi.Types.Center)}
+        align={props.align->Option.getOr(BaseUi.Types.Align.Center)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
-        side={props.side->Option.getOr(BaseUi.Types.Bottom)}
+        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(4.)}
         className="isolate z-50"
       >

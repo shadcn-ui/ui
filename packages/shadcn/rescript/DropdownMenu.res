@@ -22,9 +22,9 @@ module Content = {
     <BaseUi.Menu.Portal>
       <BaseUi.Menu.Positioner
         className="isolate z-50 outline-none"
-        align={props.align->Option.getOr(BaseUi.Types.Start)}
+        align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
-        side={props.side->Option.getOr(BaseUi.Types.Bottom)}
+        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(4.)}
       >
         <BaseUi.Menu.Popup
@@ -55,7 +55,7 @@ module Label = {
 module Item = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr("default")
+    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
     <BaseUi.Menu.Item
       {...props}
       dataSlot="dropdown-menu-item"
@@ -153,9 +153,9 @@ module SubContent = {
     <Content
       {...props}
       dataSlot="dropdown-menu-sub-content"
-      align={props.align->Option.getOr(BaseUi.Types.Start)}
+      align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
       alignOffset={props.alignOffset->Option.getOr(-3.)}
-      side={props.side->Option.getOr(BaseUi.Types.Right)}
+      side={props.side->Option.getOr(BaseUi.Types.Side.Right)}
       sideOffset={props.sideOffset->Option.getOr(0.)}
       className={`data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/10 bg-popover text-popover-foreground w-auto min-w-[96px] rounded-md p-1 shadow-lg ring-1 duration-100 ${props.className->Option.getOr("")}`}
     />

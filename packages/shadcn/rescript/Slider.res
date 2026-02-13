@@ -5,7 +5,7 @@ let make = (props: props<'value, 'checked>) =>
   <BaseUi.Slider.Root
     {...props}
     dataSlot="slider"
-    thumbAlignment={BaseUi.Types.ThumbEdge}
+    thumbAlignment={BaseUi.Types.ThumbAlignment.Edge}
     className={`data-horizontal:w-full data-vertical:h-full ${props.className->Option.getOr("")}`}
   >
     <BaseUi.Slider.Control className="relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col">

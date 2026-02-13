@@ -30,7 +30,7 @@ module Clear = {
     <BaseUi.Combobox.Clear
       {...props}
       dataSlot="combobox-clear"
-      render={<Button dataVariant="ghost" dataSize="icon-xs" />}
+      render={<Button dataVariant=BaseUi.Types.Variant.Ghost dataSize=BaseUi.Types.Size.IconXs />}
       className={`${props.className->Option.getOr("")}`}
     >
       <Icons.x className="pointer-events-none" />
@@ -45,7 +45,7 @@ module Input = {
     let controlProps: props<'value, 'checked> = {dataSlot: "input-group-control"}
     let addonProps: props<'value, 'checked> = {
       dataSlot: "input-group-addon",
-      dataAlign: "inline-end",
+      dataAlign: BaseUi.Types.DataAlign.InlineEnd,
     }
     <div
       {...toDomProps(rootProps)}
@@ -68,7 +68,7 @@ module Input = {
         className="[&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4 cursor-text flex font-medium gap-2 group-data-[disabled=true]/input-group:opacity-50 h-auto has-[>button]:mr-[-0.3rem] has-[>kbd]:mr-[-0.15rem] items-center justify-center order-last pr-2 py-1.5 select-none text-muted-foreground text-sm"
       >
         <BaseUi.Combobox.Trigger
-          dataSize="icon-xs"
+          dataSize=BaseUi.Types.Size.IconXs
           dataSlot="input-group-button"
           tabIndex={0}
           disabled={disabled}
@@ -88,9 +88,9 @@ module Content = {
     let hasAnchor = props.anchor->Option.isSome
     <BaseUi.Combobox.Portal>
       <BaseUi.Combobox.Positioner
-        side={props.side->Option.getOr(BaseUi.Types.Bottom)}
+        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(6.)}
-        align={props.align->Option.getOr(BaseUi.Types.Start)}
+        align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
         className="isolate z-50"
       >
@@ -200,7 +200,7 @@ module Chip = {
     >
       {props.children->Option.getOr(React.null)}
       <BaseUi.Combobox.ChipRemove
-        render={<Button dataVariant="ghost" dataSize="icon-xs" />}
+        render={<Button dataVariant=BaseUi.Types.Variant.Ghost dataSize=BaseUi.Types.Size.IconXs />}
         className="-ml-1 opacity-50 hover:opacity-100"
         dataSlot="combobox-chip-remove"
       >

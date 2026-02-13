@@ -5,7 +5,7 @@ let navigationMenuTriggerStyle = () =>
 
 @react.componentWithProps
 let make = (props: props<'value, 'checked>) => {
-  let align = props.align->Option.getOr(BaseUi.Types.Start)
+  let align = props.align->Option.getOr(BaseUi.Types.Align.Start)
   <BaseUi.NavigationMenu.Root
     {...props}
     dataSlot="navigation-menu"
@@ -14,7 +14,7 @@ let make = (props: props<'value, 'checked>) => {
     {props.children->Option.getOr(React.null)}
     <BaseUi.NavigationMenu.Portal>
       <BaseUi.NavigationMenu.Positioner
-        side={BaseUi.Types.Bottom}
+        side={BaseUi.Types.Side.Bottom}
         sideOffset={8.}
         align
         alignOffset={0.}
@@ -80,9 +80,9 @@ module Positioner = {
     <BaseUi.NavigationMenu.Portal>
       <BaseUi.NavigationMenu.Positioner
         {...props}
-        side={props.side->Option.getOr(BaseUi.Types.Bottom)}
+        side={props.side->Option.getOr(BaseUi.Types.Side.Bottom)}
         sideOffset={props.sideOffset->Option.getOr(8.)}
-        align={props.align->Option.getOr(BaseUi.Types.Start)}
+        align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
         alignOffset={props.alignOffset->Option.getOr(0.)}
         className={`isolate z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] data-instant:transition-none data-[side=bottom]:before:top-[-10px] data-[side=bottom]:before:right-0 data-[side=bottom]:before:left-0 ${props.className->Option.getOr("")}`}
       >

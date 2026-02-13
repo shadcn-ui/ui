@@ -33,18 +33,20 @@ module Overlay = {
     />
 }
 
-let sideToString = side =>
+let sideToString = (side: BaseUi.Types.Side.t) =>
   switch side {
-  | BaseUi.Types.Top => "top"
-  | BaseUi.Types.Bottom => "bottom"
-  | BaseUi.Types.Left => "left"
-  | _ => "right"
+  | Top => "top"
+  | Bottom => "bottom"
+  | Left => "left"
+  | Right
+  | InlineStart
+  | InlineEnd => "right"
   }
 
 module Content = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let side = props.side->Option.getOr(BaseUi.Types.Right)
+    let side = props.side->Option.getOr(BaseUi.Types.Side.Right)
     <Portal>
       <Overlay />
       <BaseUi.Dialog.Popup

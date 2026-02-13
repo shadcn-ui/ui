@@ -30,7 +30,7 @@ module Overlay = {
 module Content = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let size = props.dataSize->Option.getOr("default")
+    let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Default)
     <Portal>
       <Overlay />
       <BaseUi.AlertDialog.Popup

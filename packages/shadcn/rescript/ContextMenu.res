@@ -26,9 +26,9 @@ module Content = {
     <BaseUi.ContextMenu.Portal>
       <BaseUi.ContextMenu.Positioner
         className="isolate z-50 outline-none"
-        align={props.align->Option.getOr(BaseUi.Types.Start)}
+        align={props.align->Option.getOr(BaseUi.Types.Align.Start)}
         alignOffset={props.alignOffset->Option.getOr(4.)}
-        side={props.side->Option.getOr(BaseUi.Types.Right)}
+        side={props.side->Option.getOr(BaseUi.Types.Side.Right)}
         sideOffset={props.sideOffset->Option.getOr(0.)}
       >
         <BaseUi.ContextMenu.Popup
@@ -59,7 +59,7 @@ module Label = {
 module Item = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr("default")
+    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
     <BaseUi.ContextMenu.Item
       {...props}
       dataSlot="context-menu-item"
@@ -139,7 +139,7 @@ module SubContent = {
       {...props}
       dataSlot="context-menu-sub-content"
       className={`shadow-lg ${props.className->Option.getOr("")}`}
-      side={BaseUi.Types.Right}
+      side={BaseUi.Types.Side.Right}
     />
 }
 

@@ -2,4 +2,4 @@
 external make: React.component<Types.props<'value, 'checked>> = "DirectionProvider"
 
 @module("@base-ui/react/direction-provider")
-external useDirection: unit => Types.textDirection = "useDirection"
+external useDirection: unit => Types.TextDirection.t = "useDirection"

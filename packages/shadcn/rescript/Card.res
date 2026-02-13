@@ -3,7 +3,7 @@ external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
 
 @react.componentWithProps
 let make = (props: props<'value, 'checked>) => {
-  let size = props.dataSize->Option.getOr("default")
+  let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Default)
   let props = {...props, dataSlot: "card", dataSize: size}
   <div
     {...toDomProps(props)}

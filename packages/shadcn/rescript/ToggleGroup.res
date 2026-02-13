@@ -3,7 +3,7 @@ type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
 @react.componentWithProps
 let make = (props: props<'value, 'checked>) => {
   let spacing = props.dataSpacing->Option.getOr(0.)
-  let orientation = props.dataOrientation->Option.getOr("horizontal")
+  let orientation = props.dataOrientation->Option.getOr(BaseUi.Types.DataOrientation.Horizontal)
   let style =
     ReactDOM.Style._dictToStyle(Dict.make())
     ->ReactDOM.Style.unsafeAddProp("--gap", Float.toString(spacing))
@@ -20,8 +20,8 @@ let make = (props: props<'value, 'checked>) => {
 module Item = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr("default")
-    let size = props.dataSize->Option.getOr("default")
+    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
+    let size = props.dataSize->Option.getOr(BaseUi.Types.Size.Default)
     let spacing = props.dataSpacing->Option.getOr(0.)
     <BaseUi.Toggle
       {...props}

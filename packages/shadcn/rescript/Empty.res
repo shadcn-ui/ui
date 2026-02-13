@@ -1,14 +1,24 @@
 type props<'value, 'checked> = BaseUi.Types.props<'value, 'checked>
 external toDomProps: props<'value, 'checked> => JsxDOM.domProps = "%identity"
 
-let emptyMediaVariantClass = (~variant: string) =>
+let emptyMediaVariantClass = (~variant: BaseUi.Types.Variant.t) =>
   switch variant {
-  | "icon" =>
+  | Icon =>
     "bg-muted text-foreground flex size-8 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-4"
-  | _ => "bg-transparent"
+  | Default
+  | Secondary
+  | Destructive
+  | Outline
+  | Ghost
+  | Muted
+  | Line
+  | Link
+  | Image
+  | Legend
+  | Label => "bg-transparent"
   }
 
-let emptyMediaVariants = (~variant="default") => {
+let emptyMediaVariants = (~variant=BaseUi.Types.Variant.Default) => {
   let base =
     "mb-2 flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0"
   `${base} ${emptyMediaVariantClass(~variant)}`
@@ -37,7 +47,7 @@ module Header = {
 module Media = {
   @react.componentWithProps
   let make = (props: props<'value, 'checked>) => {
-    let variant = props.dataVariant->Option.getOr("default")
+    let variant = props.dataVariant->Option.getOr(BaseUi.Types.Variant.Default)
     let props = {...props, dataSlot: "empty-icon", dataVariant: variant}
     <div
       {...toDomProps(props)}
