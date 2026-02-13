@@ -147,7 +147,8 @@ export const create = new Command()
       // Handle preset selection.
       const presetResult = await handlePresetOption(
         opts.preset ?? true,
-        opts.rtl
+        opts.rtl,
+        "create"
       )
 
       if (!presetResult) {

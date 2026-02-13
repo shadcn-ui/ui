@@ -1,17 +1,15 @@
 "use client"
 
+import * as React from "react"
 import {
   ComputerTerminal01Icon,
   Copy01Icon,
   Tick02Icon,
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
-import * as React from "react"
-import { toast } from "sonner"
 
-import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { useConfig } from "@/hooks/use-config"
+import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
 import {
   Dialog,
@@ -41,6 +39,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
+import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
 
 const TEMPLATES = [
   {
@@ -65,7 +64,7 @@ const TEMPLATES = [
   },
 ] as const
 
-export function ToolbarControls() {
+export function ProjectForm() {
   const [open, setOpen] = React.useState(false)
   const [params, setParams] = useDesignSystemSearchParams()
   const [config, setConfig] = useConfig()
@@ -76,15 +75,40 @@ export function ToolbarControls() {
   const commands = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
     const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}&rtl=${params.rtl}`
-    const templateFlag = params.template ? ` --template ${params.template}` : ""
     const rtlFlag = params.rtl ? " --rtl" : ""
-    return {
-      pnpm: `pnpm dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-      npm: `npx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-      yarn: `yarn dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-      bun: `bunx --bun shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+    const templateFlag = params.template ? ` --template ${params.template}` : ""
+    const isLocalDev = origin.includes("localhost")
+
+    if (!params.new) {
+      return isLocalDev
+        ? {
+          pnpm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+          npm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+          yarn: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+          bun: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+        }
+        : {
+          pnpm: `pnpm dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+          npm: `npx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+          yarn: `yarn dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+          bun: `bunx --bun shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+        }
     }
+    return isLocalDev
+      ? {
+        pnpm: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
+        npm: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
+        yarn: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
+        bun: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
+      }
+      : {
+        pnpm: `pnpm dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+        npm: `npx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+        yarn: `yarn dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+        bun: `bunx --bun shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+      }
   }, [
+    params.new,
     params.base,
     params.style,
     params.baseColor,
@@ -118,31 +142,6 @@ export function ToolbarControls() {
       name: "copy_npm_command",
       properties,
     })
-    setOpen(false)
-    setHasCopied(true)
-    toast("Command copied to clipboard.", {
-      description:
-        "Paste and run the command in your terminal to create a new shadcn/ui project.",
-      position: "bottom-center",
-      classNames: {
-        content: "rounded-xl",
-        toast: "rounded-xl!",
-        description: "text-sm/leading-normal!",
-      },
-    })
-  }, [command, params.template, setOpen])
-
-  const handleCopyFromTabs = React.useCallback(() => {
-    const properties: Record<string, string> = {
-      command,
-    }
-    if (params.template) {
-      properties.template = params.template
-    }
-    copyToClipboardWithMeta(command, {
-      name: "copy_npm_command",
-      properties,
-    })
     setHasCopied(true)
   }, [command, params.template])
 
@@ -163,23 +162,33 @@ export function ToolbarControls() {
       </DialogTrigger>
       <DialogContent className="dialog-ring min-w-0 overflow-hidden rounded-xl sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Create Project</DialogTitle>
+          <DialogTitle>
+            {params.new
+              ? "Create Project"
+              : "Initialize Project"}
+          </DialogTitle>
           <DialogDescription className="text-balance">
-            Select a template and run this command to create a{" "}
-            {selectedTemplate?.title} + shadcn/ui project.
+            Run this command to initialize shadcn/ui in your project.
           </DialogDescription>
         </DialogHeader>
         <FieldGroup className="gap-3">
           <Field>
-            <FieldLabel htmlFor="template" className="sr-only">
-              Template
+            <FieldLabel htmlFor="template">
+              Select a template
             </FieldLabel>
+            <FieldDescription>
+              Which template would you like to use?
+            </FieldDescription>
             <RadioGroup
               id="template"
               value={params.template}
               onValueChange={(value) => {
                 setParams({
-                  template: value as "next" | "next-monorepo" | "start" | "vite",
+                  template: value as
+                    | "next"
+                    | "next-monorepo"
+                    | "start"
+                    | "vite",
                 })
               }}
               className="grid grid-cols-2 gap-2"
@@ -213,6 +222,24 @@ export function ToolbarControls() {
           <FieldLabel className="has-data-[state=checked]:border-primary/10 rounded-lg!">
             <Field orientation="horizontal">
               <FieldContent className="gap-1">
+                <FieldTitle>Existing Project</FieldTitle>
+                <FieldDescription>
+                  Initialize shadcn/ui in an existing project.
+                </FieldDescription>
+              </FieldContent>
+              <Switch
+                checked={!params.new}
+                onCheckedChange={(checked) =>
+                  setParams({ new: !checked })
+                }
+                className="shadow-none"
+              />
+            </Field>
+          </FieldLabel>
+
+          <FieldLabel className="has-data-[state=checked]:border-primary/10 rounded-lg!">
+            <Field orientation="horizontal">
+              <FieldContent className="gap-1">
                 <FieldTitle>Enable RTL</FieldTitle>
                 <FieldDescription>
                   <a
@@ -232,6 +259,9 @@ export function ToolbarControls() {
               />
             </Field>
           </FieldLabel>
+
+        </FieldGroup>
+        <DialogFooter className="bg-muted/30 -mx-6 mt-2 -mb-6 flex flex-col gap-3 border-t p-6 sm:flex-col min-w-0">
           <Tabs
             value={packageManager}
             onValueChange={(value) => {
@@ -253,7 +283,7 @@ export function ToolbarControls() {
                 size="icon-sm"
                 variant="ghost"
                 className="ml-auto size-7 rounded-lg"
-                onClick={handleCopyFromTabs}
+                onClick={handleCopy}
               >
                 {hasCopied ? (
                   <HugeiconsIcon icon={Tick02Icon} className="size-4" />
@@ -277,8 +307,6 @@ export function ToolbarControls() {
               )
             })}
           </Tabs>
-        </FieldGroup>
-        <DialogFooter className="bg-muted/50 -mx-6 mt-2 -mb-6 flex flex-col gap-2 border-t p-6 sm:flex-col">
           <Button
             size="sm"
             onClick={handleCopy}

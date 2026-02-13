@@ -13,7 +13,6 @@ import { clearRegistryContext } from "@/src/registry/context"
 import { rawConfigSchema } from "@/src/schema"
 import { addComponents } from "@/src/utils/add-components"
 import { TEMPLATES, createProject } from "@/src/utils/create-project"
-import { initMonorepoProject } from "@/src/utils/init-monorepo"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import {
@@ -39,10 +38,12 @@ import {
 } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
+import { initMonorepoProject } from "@/src/utils/init-monorepo"
 import { logger } from "@/src/utils/logger"
 import {
   buildInitUrl,
   getShadcnCreateUrl,
+  getShadcnInitUrl,
   handlePresetOption,
 } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
@@ -129,6 +130,7 @@ export const init = new Command()
     "the base color to use. (neutral, gray, zinc, stone, slate)",
     undefined
   )
+  .option("-p, --preset [name]", "use a preset configuration")
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("-d, --defaults,", "use default configuration.", false)
   .option("-f, --force", "force overwrite of existing configuration.", false)
@@ -151,13 +153,26 @@ export const init = new Command()
   .option("--no-css-variables", "do not use css variables for theming.")
   .option("--no-base-style", "do not install the base shadcn style.")
   .option("--rtl", "enable RTL support.", false)
-  .option("-p, --preset [name]", "use a preset configuration")
   .action(async (components, opts) => {
     try {
       // Apply defaults when --defaults flag is set.
       if (opts.defaults) {
         opts.template = opts.template || "next"
         opts.baseColor = opts.baseColor || "neutral"
+      }
+
+      // Validate template early.
+      if (opts.template && !TEMPLATES[opts.template as keyof typeof TEMPLATES]) {
+        logger.break()
+        logger.error(
+          `Invalid template: ${highlighter.info(
+            opts.template
+          )}. Use ${Object.keys(TEMPLATES)
+            .map((t) => highlighter.info(t))
+            .join(", ")}.`
+        )
+        logger.break()
+        process.exit(1)
       }
 
       // Run early preflight check for existing components.json.
@@ -184,7 +199,8 @@ export const init = new Command()
       if (opts.preset !== undefined) {
         const presetResult = await handlePresetOption(
           opts.preset === true ? true : opts.preset,
-          opts.rtl ?? false
+          opts.rtl ?? false,
+          "init"
         )
 
         if (!presetResult) {
@@ -215,28 +231,80 @@ export const init = new Command()
         }
       }
 
-      // Prompt to use shadcn/create when no preset, no components, and no defaults.
+      // Prompt for preset when no preset, no components, and no defaults.
       if (
         opts.preset === undefined &&
         components.length === 0 &&
         !opts.defaults
       ) {
-        const createUrl = getShadcnCreateUrl(
-          opts.rtl ? { rtl: "true" } : undefined
+        // Determine template for the create URL.
+        const hasPackageJson = fsExtra.existsSync(
+          path.resolve(cwd, "package.json")
         )
+
+        if (!hasPackageJson) {
+          // New project: prompt for template (skip if already set via -t flag).
+          const { template } = await prompts({
+            type: opts.template ? null : "select",
+            name: "template",
+            message: "Which template would you like to use?",
+            choices: [
+              { title: "Next.js", value: "next" },
+              { title: "Next.js (Monorepo)", value: "next-monorepo" },
+              { title: "Vite", value: "vite" },
+              { title: "TanStack Start", value: "start" },
+            ],
+          })
+
+          if (template) {
+            opts.template = template
+          }
+
+          if (!opts.template) {
+            process.exit(0)
+          }
+        }
+
+        // For existing projects, detect framework for the create URL.
+        if (hasPackageJson && !opts.template) {
+          const frameworkTemplateMap: Record<string, string> = {
+            "next-app": "next",
+            "next-pages": "next",
+            vite: "vite",
+            "tanstack-start": "start",
+          }
+          const projectInfo = await getProjectInfo(cwd)
+          if (projectInfo) {
+            opts.template = frameworkTemplateMap[projectInfo.framework.name]
+          }
+        }
+
+        // Build create URL with template param.
+        const createUrl = getShadcnCreateUrl({
+          command: "init",
+          ...(opts.rtl && { rtl: "true" }),
+          ...(opts.template && { template: opts.template }),
+        })
 
         const { preset } = await prompts({
           type: "select",
           name: "preset",
-          message: "Would you like to start with a preset?",
+          message: "Which preset would you like to use?",
           choices: [
             {
-              title: "Use shadcn/create to build a preset.",
+              title: "Build your own",
+              description: "Build a custom preset on ui.shadcn.com",
               value: "create",
             },
             {
-              title: "No. Continue without a preset.",
-              value: "defaults",
+              title: "Radix UI",
+              description: "Nova / Lucide / Geist",
+              value: "radix",
+            },
+            {
+              title: "Base UI",
+              description: "Nova / Lucide / Geist",
+              value: "base",
             },
           ],
         })
@@ -253,7 +321,24 @@ export const init = new Command()
           process.exit(0)
         }
 
-        // User chose no preset — continue with normal init flow.
+        // User chose a default base (radix or base).
+        const initUrl = buildInitUrl(
+          {
+            base: preset,
+            style: "nova",
+            baseColor: "neutral",
+            theme: "neutral",
+            iconLibrary: "lucide",
+            font: "geist",
+            rtl: opts.rtl ?? false,
+            menuAccent: "subtle",
+            menuColor: "default",
+            radius: "default",
+          },
+          opts.rtl ?? false
+        )
+        components = [initUrl, ...components]
+        opts.baseColor = "neutral"
       }
 
       const options = initOptionsSchema.parse({
@@ -415,14 +500,14 @@ export async function runInit(
     }
 
     const components = [
-      ...(options.baseStyle ? ["index"] : []),
+      ...(options.installStyleIndex ? ["index"] : []),
       ...(options.components ?? []),
     ]
 
     return await initMonorepoProject({
       projectPath: options.cwd,
       components,
-      baseStyle: options.baseStyle,
+      installStyleIndex: options.installStyleIndex,
       baseColor: options.baseColor ?? "neutral",
       registryBaseConfig: options.registryBaseConfig,
       rtl: options.rtl ?? false,

@@ -23,7 +23,22 @@ export function getShadcnInitUrl() {
   return `${SHADCN_URL}/init`
 }
 
-export function buildInitUrl(preset: Preset, rtl: boolean) {
+export function buildInitUrl(
+  preset: Pick<
+    Preset,
+    | "base"
+    | "style"
+    | "baseColor"
+    | "theme"
+    | "iconLibrary"
+    | "font"
+    | "rtl"
+    | "menuAccent"
+    | "menuColor"
+    | "radius"
+  >,
+  rtl: boolean
+) {
   const params = new URLSearchParams({
     base: preset.base,
     style: preset.style,
@@ -42,7 +57,8 @@ export function buildInitUrl(preset: Preset, rtl: boolean) {
 
 export async function handlePresetOption(
   presetArg: string | boolean,
-  rtl: boolean
+  rtl: boolean,
+  command: "create" | "init" = "create"
 ) {
   // If --preset is used without a name, show interactive list.
   if (presetArg === true) {
@@ -71,7 +87,10 @@ export async function handlePresetOption(
     }
 
     if (selectedPreset === "custom") {
-      const url = getShadcnCreateUrl(rtl ? { rtl: "true" } : undefined)
+      const url = getShadcnCreateUrl({
+        command,
+        ...(rtl && { rtl: "true" }),
+      })
       logger.info(`\nOpening ${highlighter.info(url)} in your browser...\n`)
       await open(url)
       return null

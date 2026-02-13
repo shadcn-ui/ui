@@ -15,7 +15,7 @@ import fsExtra from "fs-extra"
 export async function initMonorepoProject(options: {
   projectPath: string
   components: string[]
-  baseStyle: boolean
+  installStyleIndex: boolean
   baseColor: string
   registryBaseConfig?: Record<string, unknown>
   rtl: boolean

@@ -61,6 +61,7 @@ const designSystemSearchParams = {
   radius: parseAsStringLiteral<RadiusValue>(
     RADII.map((r) => r.name)
   ).withDefault("default"),
+  new: parseAsBoolean.withDefault(true),
   template: parseAsStringLiteral([
     "next",
     "next-monorepo",

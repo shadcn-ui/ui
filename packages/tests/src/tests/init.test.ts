@@ -497,6 +497,34 @@ describe("shadcn init - custom style", async () => {
   })
 })
 
+describe("shadcn init - template flag", () => {
+  it("should reject invalid template", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    const result = await npxShadcn(fixturePath, ["init", "-t", "invalid"])
+
+    expect(result.exitCode).toBe(1)
+    expect(result.stdout).toContain("Invalid template")
+  })
+
+  it("should accept valid template with --defaults", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    await npxShadcn(fixturePath, [
+      "init",
+      "-t",
+      "next",
+      "--defaults",
+      "--base-color=neutral",
+    ])
+
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
+
+    const componentsJson = await fs.readJson(componentsJsonPath)
+    expect(componentsJson.style).toBe("new-york")
+    expect(componentsJson.tailwind.baseColor).toBe("neutral")
+  })
+})
+
 describe("shadcn init - existing components.json", () => {
   // TODO: Revisit --force behavior. Currently it only skips backup merge,
   // but doesn't reset config values like style. Need to decide intended behavior.
