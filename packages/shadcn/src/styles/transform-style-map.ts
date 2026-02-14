@@ -1,4 +1,5 @@
 import { TransformerStyle } from "@/src/styles/transform"
+import { twMerge } from "tailwind-merge"
 import {
   Node,
   type CallExpression,
@@ -415,10 +416,7 @@ function applyClassesToElement(element: Node, tailwindClasses: string) {
 }
 
 function mergeClasses(newClasses: string, existing: string) {
-  const existingParts = existing.split(/\s+/).filter(Boolean)
-  const newParts = newClasses.split(/\s+/).filter(Boolean)
-  const combined = [...newParts, ...existingParts]
-  return combined.join(" ").trim()
+  return twMerge(newClasses, existing)
 }
 
 function isCnCall(call: CallExpression) {

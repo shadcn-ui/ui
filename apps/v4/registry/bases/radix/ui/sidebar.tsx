@@ -4,6 +4,7 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
+import { useIsMobile } from "@/registry/bases/radix/hooks/use-mobile"
 import { cn } from "@/registry/bases/radix/lib/utils"
 import { Button } from "@/registry/bases/radix/ui/button"
 import { Input } from "@/registry/bases/radix/ui/input"
@@ -21,7 +22,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/registry/bases/radix/ui/tooltip"
-import { useIsMobile } from "@/registry/new-york-v4/hooks/use-mobile"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
@@ -564,7 +564,7 @@ function SidebarMenuAction({
       className={cn(
         "cn-sidebar-menu-action flex items-center justify-center outline-hidden transition-transform group-data-[collapsible=icon]:hidden after:absolute after:-inset-2 md:after:hidden [&>svg]:shrink-0",
         showOnHover &&
-          "peer-data-active/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-open:opacity-100 md:opacity-0",
+          "peer-data-active/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 aria-expanded:opacity-100 md:opacity-0",
         className
       )}
       {...props}
