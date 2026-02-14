@@ -101,6 +101,45 @@ export function TabsDemo() {
           </TabsTrigger>
         </TabsList>
       </Tabs>
+      {/* Line variant. */}
+      <Tabs defaultValue="preview">
+        <TabsList variant="line">
+          <TabsTrigger value="preview">
+            <AppWindowIcon />
+            Preview
+          </TabsTrigger>
+          <TabsTrigger value="code">
+            <CodeIcon />
+            Code
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
+      {/* Vertical orientation. */}
+      <Tabs defaultValue="preview" orientation="vertical">
+        <TabsList>
+          <TabsTrigger value="preview">
+            <AppWindowIcon />
+            Preview
+          </TabsTrigger>
+          <TabsTrigger value="code">
+            <CodeIcon />
+            Code
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
+      {/* Vertical orientation with line variant. */}
+      <Tabs defaultValue="preview" orientation="vertical">
+        <TabsList variant="line">
+          <TabsTrigger value="preview">
+            <AppWindowIcon />
+            Preview
+          </TabsTrigger>
+          <TabsTrigger value="code">
+            <CodeIcon />
+            Code
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
     </div>
   )
 }
