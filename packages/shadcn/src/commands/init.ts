@@ -50,22 +50,20 @@ import { spinner } from "@/src/utils/spinner"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
-import { bold, gray, green } from "kleur/colors"
 import open from "open"
 import prompts from "prompts"
 import { z } from "zod"
 
-process.on("exit", (code) => {
-  const filePath = path.resolve(process.cwd(), "components.json")
-
-  // Delete backup if successful.
-  if (code === 0) {
-    return deleteFileBackup(filePath)
-  }
-
-  // Restore backup if error.
-  return restoreFileBackup(filePath)
-})
+const DEFAULT_INIT_PRESET = {
+  style: "nova",
+  baseColor: "neutral",
+  theme: "neutral",
+  iconLibrary: "lucide",
+  font: "geist",
+  menuAccent: "subtle",
+  menuColor: "default",
+  radius: "default",
+} as const
 
 export const initOptionsSchema = z.object({
   cwd: z.string(),
@@ -125,31 +123,22 @@ export const init = new Command()
   .option("--no-css-variables", "do not use css variables for theming.")
   .option("--rtl", "enable RTL support.", false)
   .action(async (components, opts) => {
+    let componentsJsonBackupPath: string | undefined
+
     try {
-      // Apply defaults when --defaults flag is set.
       if (opts.defaults) {
         opts.template = opts.template || "next"
-
-        // Use base-nova preset as default.
         const initUrl = buildInitUrl(
           {
+            ...DEFAULT_INIT_PRESET,
             base: "base",
-            style: "nova",
-            baseColor: "neutral",
-            theme: "neutral",
-            iconLibrary: "lucide",
-            font: "geist",
             rtl: opts.rtl ?? false,
-            menuAccent: "subtle",
-            menuColor: "default",
-            radius: "default",
           },
           opts.rtl ?? false
         )
         components = [initUrl, ...components]
       }
 
-      // Validate template early.
       if (opts.template && !(opts.template in templates)) {
         logger.break()
         logger.error(
@@ -163,7 +152,6 @@ export const init = new Command()
         process.exit(1)
       }
 
-      // Run early preflight check for existing components.json.
       const cwd = path.resolve(opts.cwd)
       if (
         fsExtra.existsSync(path.resolve(cwd, "components.json")) &&
@@ -183,7 +171,6 @@ export const init = new Command()
         process.exit(1)
       }
 
-      // Handle --preset option.
       if (opts.preset !== undefined) {
         const presetResult = await handlePresetOption(
           opts.preset === true ? true : opts.preset,
@@ -207,11 +194,9 @@ export const init = new Command()
           initUrl = buildInitUrl(presetResult, opts.rtl ?? false)
         }
 
-        // Prepend the preset URL to the components list.
         components = [initUrl, ...components]
       }
 
-      // Prompt for preset when no preset, no components, and no defaults.
       if (
         opts.preset === undefined &&
         components.length === 0 &&
@@ -222,44 +207,16 @@ export const init = new Command()
           path.resolve(cwd, "package.json")
         )
 
-        // Detect framework for existing projects.
-        let detectedTemplate: string | undefined
-        if (hasPackageJson) {
-          const frameworkTemplateMap: Record<string, string> = {
-            "next-app": "next",
-            "next-pages": "next",
-            vite: "vite",
-            "tanstack-start": "start",
-          }
-          const projectInfo = await getProjectInfo(cwd)
-          if (projectInfo) {
-            detectedTemplate = frameworkTemplateMap[projectInfo.framework.name]
-          }
-        }
-
-        // Use detected framework or prompt for template.
-        const templateChoices = Object.entries(templates).map(([value, t]) => ({
-          title: t.title,
-          value,
-        }))
-        if (opts.template) {
-          // Template provided via -t flag, use it directly.
-        } else if (detectedTemplate) {
-          opts.template = detectedTemplate
-          const title =
-            templates[detectedTemplate as keyof typeof templates]?.title ??
-            detectedTemplate
-          logger.log(
-            `${green("✔")} ${bold("Select a template")} ${gray(
-              "›"
-            )} ${title} ${gray("(detected)")}`
-          )
-        } else {
+        // Prompt for template only for new projects without -t flag.
+        if (!opts.template && !hasPackageJson) {
           const { template } = await prompts({
             type: "select",
             name: "template",
             message: "Select a template",
-            choices: templateChoices,
+            choices: Object.entries(templates).map(([value, t]) => ({
+              title: t.title,
+              value,
+            })),
           })
 
           if (!template) {
@@ -314,16 +271,9 @@ export const init = new Command()
         // User chose a default base (radix or base).
         const initUrl = buildInitUrl(
           {
+            ...DEFAULT_INIT_PRESET,
             base: preset,
-            style: "nova",
-            baseColor: "neutral",
-            theme: "neutral",
-            iconLibrary: "lucide",
-            font: "geist",
             rtl: opts.rtl ?? false,
-            menuAccent: "subtle",
-            menuColor: "default",
-            radius: "default",
           },
           opts.rtl ?? false
         )
@@ -331,10 +281,10 @@ export const init = new Command()
       }
 
       const options = initOptionsSchema.parse({
-        cwd: path.resolve(opts.cwd),
         isNewProject: false,
         components,
         ...opts,
+        cwd: path.resolve(opts.cwd),
         installStyleIndex: true,
       })
 
@@ -376,7 +326,13 @@ export const init = new Command()
           // Since components.json might not be valid at this point.
           // Temporarily rename components.json to allow preflight to run.
           // We'll rename it back after preflight.
-          createFileBackup(componentsJsonPath)
+          componentsJsonBackupPath =
+            createFileBackup(componentsJsonPath) ?? undefined
+          if (!componentsJsonBackupPath) {
+            logger.warn(
+              `Could not back up ${highlighter.info("components.json")}.`
+            )
+          }
         }
 
         // Ensure all registries used in components are configured.
@@ -428,6 +384,11 @@ export const init = new Command()
       deleteFileBackup(path.resolve(options.cwd, "components.json"))
       logger.break()
     } catch (error) {
+      if (componentsJsonBackupPath) {
+        restoreFileBackup(
+          componentsJsonBackupPath.replace(FILE_BACKUP_SUFFIX, "")
+        )
+      }
       logger.break()
       handleError(error)
     } finally {
@@ -441,7 +402,7 @@ export async function runInit(
   }
 ) {
   let projectInfo
-  let newProjectTemplate
+  let newProjectTemplate: keyof typeof templates | undefined
   if (!options.skipPreflight) {
     const preflight = await preFlightInit(options)
     if (preflight.errors[ERRORS.MISSING_DIR_OR_EMPTY_PROJECT]) {
@@ -462,140 +423,125 @@ export async function runInit(
   }
 
   const selectedTemplate = newProjectTemplate
-    ? templates[newProjectTemplate as keyof typeof templates]
+    ? templates[newProjectTemplate]
     : undefined
 
-  let result
+  const components = [
+    ...(options.installStyleIndex ? ["index"] : []),
+    ...(options.components ?? []),
+  ]
+
   if (selectedTemplate?.init) {
-    const components = [
-      ...(options.installStyleIndex ? ["index"] : []),
-      ...(options.components ?? []),
-    ]
-    result = await selectedTemplate.init({
+    const result = await selectedTemplate.init({
       projectPath: options.cwd,
       components,
       registryBaseConfig: options.registryBaseConfig,
       rtl: options.rtl ?? false,
       silent: options.silent,
     })
-  } else {
-    const projectConfig = await getProjectConfig(options.cwd, projectInfo)
 
-    let config = projectConfig
-      ? await promptForMinimalConfig(projectConfig, options)
-      : await promptForConfig(await getConfig(options.cwd))
+    // Run postInit for new projects (e.g. git init).
+    await selectedTemplate.postInit({ projectPath: options.cwd })
 
-    if (!options.yes) {
-      const { proceed } = await prompts({
-        type: "confirm",
-        name: "proceed",
-        message: `Write configuration to ${highlighter.info(
-          "components.json"
-        )}. Proceed?`,
-        initial: true,
-      })
+    return result
+  }
 
-      if (!proceed) {
-        process.exit(0)
-      }
-    }
+  // Standard init path for existing projects.
+  const projectConfig = await getProjectConfig(options.cwd, projectInfo)
 
-    // Prepare the list of components to be added.
-    const components = [
-      // "index" is the default shadcn style.
-      // Why index? Because when style is true, we read style from components.json and fetch that.
-      // i.e new-york from components.json then fetch /styles/new-york/index.
-      // TODO: Fix this so that we can extend any style i.e --style=new-york.
-      ...(options.installStyleIndex ? ["index"] : []),
-      ...(options.components ?? []),
-    ]
+  let config = projectConfig
+    ? await promptForMinimalConfig(projectConfig, options)
+    : await promptForConfig(await getConfig(options.cwd))
 
-    // Ensure registries are configured for the components we're about to add.
-    const fullConfigForRegistry = await resolveConfigPaths(options.cwd, config)
-    const { config: configWithRegistries } = await ensureRegistriesInConfig(
-      components,
-      fullConfigForRegistry,
-      {
-        silent: true,
-      }
-    )
-
-    // Update config with any new registries found.
-    if (configWithRegistries.registries) {
-      config.registries = configWithRegistries.registries
-    }
-
-    const componentSpinner = spinner(`Writing components.json.`).start()
-    const targetPath = path.resolve(options.cwd, "components.json")
-    const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
-
-    // Merge and keep registries at the end.
-    const mergeConfig = (base: typeof config, override: object) => {
-      const { registries, ...merged } = deepmerge(base, override)
-      return { ...merged, registries } as typeof config
-    }
-
-    // Merge with backup config if it exists.
-    if (fsExtra.existsSync(backupPath)) {
-      const existingConfig = await fsExtra.readJson(backupPath)
-      if (options.force) {
-        // With --force, only preserve registries from existing config.
-        if (existingConfig.registries) {
-          config.registries = {
-            ...existingConfig.registries,
-            ...(config.registries || {}),
-          }
-        }
-      } else {
-        config = mergeConfig(existingConfig, config)
-      }
-    }
-
-    // Merge config from registry:base item.
-    if (options.registryBaseConfig) {
-      config = mergeConfig(config, options.registryBaseConfig)
-    }
-
-    // Ensure rtl is set from CLI option (takes priority over registryBaseConfig).
-    if (options.rtl !== undefined) {
-      config.rtl = options.rtl
-    }
-
-    // Make sure to filter out built-in registries.
-    // TODO: fix this in ensureRegistriesInConfig.
-    config.registries = Object.fromEntries(
-      Object.entries(config.registries || {}).filter(
-        ([key]) => !Object.keys(BUILTIN_REGISTRIES).includes(key)
-      )
-    )
-
-    // Write components.json.
-    await fs.writeFile(
-      targetPath,
-      `${JSON.stringify(config, null, 2)}\n`,
-      "utf8"
-    )
-    componentSpinner.succeed()
-
-    // Add components.
-    const fullConfig = await resolveConfigPaths(options.cwd, config)
-    await addComponents(components, fullConfig, {
-      // Init will always overwrite files.
-      overwrite: true,
-      silent: options.silent,
-      isNewProject:
-        options.isNewProject || projectInfo?.framework.name === "next-app",
+  if (!options.yes) {
+    const { proceed } = await prompts({
+      type: "confirm",
+      name: "proceed",
+      message: `Write configuration to ${highlighter.info(
+        "components.json"
+      )}. Proceed?`,
+      initial: true,
     })
 
-    result = fullConfig
+    if (!proceed) {
+      process.exit(0)
+    }
   }
 
-  // Run postInit for new projects.
-  if (selectedTemplate?.postInit) {
-    await selectedTemplate.postInit({ projectPath: options.cwd })
+  // Ensure registries are configured for the components we're about to add.
+  const fullConfigForRegistry = await resolveConfigPaths(options.cwd, config)
+  const { config: configWithRegistries } = await ensureRegistriesInConfig(
+    components,
+    fullConfigForRegistry,
+    {
+      silent: true,
+    }
+  )
+
+  // Update config with any new registries found.
+  if (configWithRegistries.registries) {
+    config.registries = configWithRegistries.registries
   }
 
-  return result
+  const componentSpinner = spinner(`Writing components.json.`).start()
+  const targetPath = path.resolve(options.cwd, "components.json")
+  const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
+
+  // Merge and keep registries at the end.
+  const mergeConfig = (base: typeof config, override: object) => {
+    const { registries, ...merged } = deepmerge(base, override)
+    return { ...merged, registries } as typeof config
+  }
+
+  // Merge with backup config if it exists.
+  if (fsExtra.existsSync(backupPath)) {
+    const existingConfig = await fsExtra.readJson(backupPath)
+    if (options.force) {
+      // With --force, only preserve registries from existing config.
+      if (existingConfig.registries) {
+        config.registries = {
+          ...existingConfig.registries,
+          ...(config.registries || {}),
+        }
+      }
+    } else {
+      config = mergeConfig(existingConfig, config)
+    }
+  }
+
+  // Merge config from registry:base item.
+  if (options.registryBaseConfig) {
+    config = mergeConfig(config, options.registryBaseConfig)
+  }
+
+  // Ensure rtl is set from CLI option (takes priority over registryBaseConfig).
+  if (options.rtl !== undefined) {
+    config.rtl = options.rtl
+  }
+
+  // Make sure to filter out built-in registries.
+  // TODO: fix this in ensureRegistriesInConfig.
+  config.registries = Object.fromEntries(
+    Object.entries(config.registries || {}).filter(
+      ([key]) => !Object.keys(BUILTIN_REGISTRIES).includes(key)
+    )
+  )
+
+  // Write components.json.
+  await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
+  componentSpinner.succeed()
+
+  // Add components.
+  const fullConfig = await resolveConfigPaths(options.cwd, config)
+  await addComponents(components, fullConfig, {
+    // Init will always overwrite files.
+    overwrite: true,
+    silent: options.silent,
+    isNewProject:
+      options.isNewProject || projectInfo?.framework.name === "next-app",
+  })
+
+  return fullConfig
 }
 
 async function promptForConfig(defaultConfig: Config | null = null) {
@@ -691,6 +637,10 @@ async function promptForConfig(defaultConfig: Config | null = null) {
       inactive: "no",
     },
   ])
+
+  if (!options.style) {
+    process.exit(0)
+  }
 
   return rawConfigSchema.parse({
     $schema: "https://ui.shadcn.com/schema.json",

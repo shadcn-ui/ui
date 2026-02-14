@@ -32,6 +32,8 @@ export function createTemplate(config: {
   }
 }
 
+// Initialize a git repository and create an initial commit.
+// Silently ignores failures (e.g. git not installed).
 async function defaultPostInit({ projectPath }: { projectPath: string }) {
   try {
     await execa("git", ["init"], { cwd: projectPath })

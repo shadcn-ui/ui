@@ -201,8 +201,7 @@ export const create = new Command()
           overwrite: true,
         })
 
-        const selectedTemplate =
-          templates[template as keyof typeof templates]
+        const selectedTemplate = templates[template as keyof typeof templates]
 
         if (selectedTemplate?.files?.length) {
           await updateFiles(selectedTemplate.files, config, {

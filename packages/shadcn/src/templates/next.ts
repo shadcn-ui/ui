@@ -80,7 +80,9 @@ export const next = createTemplate({
 
       createSpinner?.succeed("Creating a new Next.js project.")
     } catch (error) {
-      createSpinner?.fail("Something went wrong creating a new Next.js project.")
+      createSpinner?.fail(
+        "Something went wrong creating a new Next.js project."
+      )
       handleError(error)
     }
   },

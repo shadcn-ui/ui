@@ -57,11 +57,7 @@ describe("shadcn init - next-app", () => {
 
   it("should init without CSS variables", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, [
-      "init",
-      "--defaults",
-      "--no-css-variables",
-    ])
+    await npxShadcn(fixturePath, ["init", "--defaults", "--no-css-variables"])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
@@ -399,6 +395,44 @@ describe("shadcn init - custom style", async () => {
   })
 })
 
+describe("shadcn init - unsupported framework", () => {
+  it("should init with --defaults on unsupported framework", async () => {
+    const fixturePath = await createFixtureTestDirectory("remix-app")
+    await npxShadcn(fixturePath, ["init", "--defaults"])
+
+    const componentsJsonPath = path.join(fixturePath, "components.json")
+    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
+
+    const componentsJson = await fs.readJson(componentsJsonPath)
+    expect(componentsJson).toMatchObject({
+      style: "base-nova",
+      tailwind: {
+        baseColor: "neutral",
+        cssVariables: true,
+      },
+    })
+
+    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
+      true
+    )
+  })
+
+  it("should init with --defaults and components on unsupported framework", async () => {
+    const fixturePath = await createFixtureTestDirectory("remix-app")
+    await npxShadcn(fixturePath, ["init", "--defaults", "button"])
+
+    expect(
+      await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
+    ).toBe(true)
+
+    const cssPath = path.join(fixturePath, "app/globals.css")
+    const cssContent = await fs.readFile(cssPath, "utf-8")
+    expect(cssContent).toContain("@layer base")
+    expect(cssContent).toContain("--background")
+    expect(cssContent).toContain("--foreground")
+  })
+})
+
 describe("shadcn init - template flag", () => {
   it("should reject invalid template", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
@@ -410,12 +444,7 @@ describe("shadcn init - template flag", () => {
 
   it("should accept valid template with --defaults", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, [
-      "init",
-      "-t",
-      "next",
-      "--defaults",
-    ])
+    await npxShadcn(fixturePath, ["init", "-t", "next", "--defaults"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
     expect(await fs.pathExists(componentsJsonPath)).toBe(true)
@@ -445,19 +474,17 @@ describe("shadcn init - --name flag", () => {
     const emptyDir = path.join(testBaseDir, "empty-next")
     await fs.ensureDir(emptyDir)
 
-    await npxShadcn(
-      emptyDir,
-      ["init", "--defaults", "--name", projectName],
-      { timeout: 120000 }
-    )
+    await npxShadcn(emptyDir, ["init", "--defaults", "--name", projectName], {
+      timeout: 120000,
+    })
 
     const projectPath = path.join(emptyDir, projectName)
 
     // Verify project was created with the correct name.
     expect(await fs.pathExists(projectPath)).toBe(true)
-    expect(
-      await fs.pathExists(path.join(projectPath, "package.json"))
-    ).toBe(true)
+    expect(await fs.pathExists(path.join(projectPath, "package.json"))).toBe(
+      true
+    )
 
     // Verify components.json was created.
     const componentsJsonPath = path.join(projectPath, "components.json")
@@ -525,11 +552,7 @@ describe("shadcn init - existing components.json", () => {
     await fs.writeJson(componentsJsonPath, config)
 
     // Reinit with --force.
-    await npxShadcn(fixturePath, [
-      "init",
-      "--force",
-      "--defaults",
-    ])
+    await npxShadcn(fixturePath, ["init", "--force", "--defaults"])
 
     const newConfig = await fs.readJson(componentsJsonPath)
     expect(newConfig.style).toBe("new-york")
