@@ -41,3 +41,4 @@ tsconfig.tsbuildinfo
 .vscode
 
 .notes
+.playwright-mcp
