@@ -1,43 +1,68 @@
-import { getPreset, getPresets } from "@/src/registry/api"
 import { REGISTRY_URL } from "@/src/registry/constants"
-import { isUrl } from "@/src/registry/utils"
-import { Preset } from "@/src/schema"
-import { highlighter } from "@/src/utils/highlighter"
-import { logger } from "@/src/utils/logger"
-import open from "open"
-import prompts from "prompts"
+import { type Preset } from "@/src/schema"
 
 const SHADCN_URL = REGISTRY_URL.replace(/\/r\/?$/, "")
 
-export function getShadcnCreateUrl(searchParams?: Record<string, string>) {
+export const DEFAULT_PRESETS = {
+  "radix-nova": {
+    name: "radix-nova",
+    title: "Radix",
+    description: "Nova / Lucide / Geist",
+    base: "radix",
+    style: "nova",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "lucide",
+    font: "geist",
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+    rtl: false,
+  },
+  "base-nova": {
+    name: "base-nova",
+    title: "Base",
+    description: "Nova / Lucide / Geist",
+    base: "base",
+    style: "nova",
+    baseColor: "neutral",
+    theme: "neutral",
+    iconLibrary: "lucide",
+    font: "geist",
+    menuAccent: "subtle",
+    menuColor: "default",
+    radius: "default",
+    rtl: false,
+  },
+} satisfies Record<string, Preset>
+
+export function resolveCreateUrl(
+  searchParams?: Partial<{
+    command: "create" | "init"
+    template: string
+    rtl: boolean
+    base: string
+  }>
+) {
   const url = new URL(`${SHADCN_URL}/create`)
-  if (searchParams) {
-    for (const [key, value] of Object.entries(searchParams)) {
-      url.searchParams.set(key, value)
+  const { rtl, ...params } = searchParams ?? {}
+
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined) {
+      url.searchParams.set(key, String(value))
     }
   }
+
+  // Do not set rtl if it's false.
+  if (rtl) {
+    url.searchParams.set("rtl", "true")
+  }
+
   return url.toString()
 }
 
-export function getShadcnInitUrl() {
-  return `${SHADCN_URL}/init`
-}
-
-export function buildInitUrl(
-  preset: Pick<
-    Preset,
-    | "base"
-    | "style"
-    | "baseColor"
-    | "theme"
-    | "iconLibrary"
-    | "font"
-    | "rtl"
-    | "menuAccent"
-    | "menuColor"
-    | "radius"
-  >,
-  rtl: boolean
+export function resolveInitUrl(
+  preset: Omit<Preset, "name" | "title" | "description">
 ) {
   const params = new URLSearchParams({
     base: preset.base,
@@ -46,80 +71,11 @@ export function buildInitUrl(
     theme: preset.theme,
     iconLibrary: preset.iconLibrary,
     font: preset.font,
-    rtl: String(rtl || preset.rtl),
+    rtl: String(preset.rtl ?? false),
     menuAccent: preset.menuAccent,
     menuColor: preset.menuColor,
     radius: preset.radius,
   })
 
-  return `${getShadcnInitUrl()}?${params.toString()}`
-}
-
-export async function handlePresetOption(
-  presetArg: string | boolean,
-  rtl: boolean,
-  command: "create" | "init" = "create"
-) {
-  // If --preset is used without a name, show interactive list.
-  if (presetArg === true) {
-    const presets = await getPresets()
-
-    const { selectedPreset } = await prompts({
-      type: "select",
-      name: "selectedPreset",
-      message: `Which ${highlighter.info("preset")} would you like to use?`,
-      choices: [
-        ...presets.map((preset) => ({
-          title: preset.title,
-          description: preset.description,
-          value: preset.name,
-        })),
-        {
-          title: "Custom",
-          description: "Build your own on https://ui.shadcn.com",
-          value: "custom",
-        },
-      ],
-    })
-
-    if (!selectedPreset) {
-      return null
-    }
-
-    if (selectedPreset === "custom") {
-      const url = getShadcnCreateUrl({
-        command,
-        ...(rtl && { rtl: "true" }),
-      })
-      logger.info(`\nOpening ${highlighter.info(url)} in your browser...\n`)
-      await open(url)
-      return null
-    }
-
-    return presets.find((p) => p.name === selectedPreset) ?? null
-  }
-
-  // If --preset NAME or URL is provided.
-  if (typeof presetArg === "string") {
-    // Check if it's a URL.
-    if (isUrl(presetArg)) {
-      return { _isUrl: true, url: presetArg } as const
-    }
-
-    // Otherwise, fetch that preset by name.
-    const preset = await getPreset(presetArg)
-
-    if (!preset) {
-      const presets = await getPresets()
-      const presetNames = presets.map((p) => p.name).join(", ")
-      logger.error(
-        `Preset "${presetArg}" not found. Available presets: ${presetNames}`
-      )
-      process.exit(1)
-    }
-
-    return preset
-  }
-
-  return null
+  return `${SHADCN_URL}/init?${params.toString()}`
 }

@@ -1,17 +1,14 @@
 import path from "path"
-import { getRegistryItems } from "@/src/registry/api"
+import { getPreset, getPresets, getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
 import { clearRegistryContext } from "@/src/registry/context"
+import { isUrl } from "@/src/registry/utils"
 import { templates } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import {
-  buildInitUrl,
-  getShadcnCreateUrl,
-  handlePresetOption,
-} from "@/src/utils/presets"
+import { resolveCreateUrl, resolveInitUrl } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { Command } from "commander"
@@ -42,17 +39,21 @@ export const create = new Command()
       // If no preset provided, open create URL with template and rtl params.
       const hasNoPreset = !name && !opts.preset
       if (hasNoPreset) {
-        const searchParams: Record<string, string> = {}
+        const searchParams: {
+          template?: string
+          rtl?: boolean
+          base?: string
+        } = {}
         if (opts.template) {
           searchParams.template = opts.template
         }
         if (opts.rtl) {
-          searchParams.rtl = "true"
+          searchParams.rtl = true
 
           // Recommend base-ui in RTL.
           searchParams.base = "base"
         }
-        const createUrl = getShadcnCreateUrl(
+        const createUrl = resolveCreateUrl(
           Object.keys(searchParams).length > 0 ? searchParams : undefined
         )
         logger.log("Build your own shadcn/ui.")
@@ -127,29 +128,78 @@ export const create = new Command()
       }
 
       // Handle preset selection.
-      const presetResult = await handlePresetOption(
-        opts.preset ?? true,
-        opts.rtl,
-        "create"
-      )
-
-      if (!presetResult) {
-        process.exit(0)
-      }
-
-      // Determine initUrl based on preset type.
       let initUrl: string
+      const presetArg = opts.preset ?? true
 
-      if ("_isUrl" in presetResult) {
-        // User provided a URL directly.
-        const url = new URL(presetResult.url)
+      if (presetArg === true) {
+        // Show interactive preset list.
+        const presets = await getPresets()
+
+        const { selectedPreset } = await prompts({
+          type: "select",
+          name: "selectedPreset",
+          message: `Which ${highlighter.info("preset")} would you like to use?`,
+          choices: [
+            ...presets.map((preset) => ({
+              title: preset.title,
+              description: preset.description,
+              value: preset.name,
+            })),
+            {
+              title: "Custom",
+              description: "Build your own on https://ui.shadcn.com",
+              value: "custom",
+            },
+          ],
+        })
+
+        if (!selectedPreset) {
+          process.exit(0)
+        }
+
+        if (selectedPreset === "custom") {
+          const createUrl = resolveCreateUrl({
+            command: "create",
+            ...(opts.rtl && { rtl: true }),
+            ...(template && { template }),
+          })
+          logger.info(
+            `\nOpening ${highlighter.info(createUrl)} in your browser...\n`
+          )
+          await open(createUrl)
+          process.exit(0)
+        }
+
+        const preset = presets.find((p) => p.name === selectedPreset)
+        if (!preset) {
+          process.exit(0)
+        }
+        initUrl = resolveInitUrl({
+          ...preset,
+          rtl: opts.rtl || preset.rtl,
+        })
+      } else if (isUrl(presetArg)) {
+        // Direct URL.
+        const url = new URL(presetArg)
         if (opts.rtl) {
           url.searchParams.set("rtl", "true")
         }
         initUrl = url.toString()
       } else {
-        // User selected a preset by name.
-        initUrl = buildInitUrl(presetResult, opts.rtl)
+        // Preset name.
+        const preset = await getPreset(presetArg)
+        if (!preset) {
+          const presets = await getPresets()
+          const presetNames = presets.map((p) => p.name).join(", ")
+          logger.error(
+            `Preset "${presetArg}" not found. Available presets: ${presetNames}`
+          )
+          process.exit(1)
+        }
+        initUrl = resolveInitUrl({
+          ...preset,
+          rtl: opts.rtl || preset.rtl,
+        })
       }
 
       // Fetch the registry:base item to get its config.

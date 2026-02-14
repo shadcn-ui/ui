@@ -168,6 +168,7 @@ export const add = new Command()
           silent: options.silent && !hasNewRegistries,
           isNewProject: false,
           cssVariables: options.cssVariables,
+          rtl: false,
           installStyleIndex: shouldInstallStyleIndex,
           components: options.components,
         })
@@ -201,6 +202,7 @@ export const add = new Command()
             silent: !hasNewRegistries && options.silent,
             isNewProject: true,
             cssVariables: options.cssVariables,
+            rtl: false,
             installStyleIndex: shouldInstallStyleIndex,
             components: options.components,
           })

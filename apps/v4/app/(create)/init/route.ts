@@ -20,7 +20,6 @@ export async function GET(request: NextRequest) {
       radius: searchParams.get("radius"),
       template: searchParams.get("template") ?? undefined,
       rtl: searchParams.get("rtl") === "true",
-      new: searchParams.get("new") !== "false",
     })
 
     if (!result.success) {

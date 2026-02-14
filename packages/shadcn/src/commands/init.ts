@@ -10,6 +10,7 @@ import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
 import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
+import { isUrl } from "@/src/registry/utils"
 import { rawConfigSchema } from "@/src/schema"
 import { templates } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
@@ -41,9 +42,9 @@ import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import {
-  buildInitUrl,
-  getShadcnCreateUrl,
-  handlePresetOption,
+  DEFAULT_PRESETS,
+  resolveCreateUrl,
+  resolveInitUrl,
 } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
@@ -54,45 +55,20 @@ import open from "open"
 import prompts from "prompts"
 import { z } from "zod"
 
-const DEFAULT_INIT_PRESET = {
-  style: "nova",
-  baseColor: "neutral",
-  theme: "neutral",
-  iconLibrary: "lucide",
-  font: "geist",
-  menuAccent: "subtle",
-  menuColor: "default",
-  radius: "default",
-} as const
-
 export const initOptionsSchema = z.object({
   cwd: z.string(),
   name: z.string().optional(),
+  preset: z.union([z.boolean(), z.string()]).optional(),
   components: z.array(z.string()).optional(),
   yes: z.boolean(),
   defaults: z.boolean(),
   force: z.boolean(),
   silent: z.boolean(),
-  isNewProject: z.boolean(),
-  cssVariables: z.boolean(),
-  rtl: z.boolean().optional(),
-  template: z
-    .string()
-    .optional()
-    .refine(
-      (val) => {
-        if (val) {
-          return val in templates
-        }
-        return true
-      },
-      {
-        message:
-          "Invalid template. Please use 'next', 'vite', 'start' or 'next-monorepo'.",
-      }
-    ),
-  installStyleIndex: z.boolean(),
-  // Config from registry:base item to merge into components.json.
+  isNewProject: z.boolean().default(false),
+  cssVariables: z.boolean().default(true),
+  rtl: z.boolean().default(false),
+  template: z.string().optional(),
+  installStyleIndex: z.boolean().default(true),
   registryBaseConfig: rawConfigSchema.deepPartial().optional(),
 })
 
@@ -126,25 +102,29 @@ export const init = new Command()
     let componentsJsonBackupPath: string | undefined
 
     try {
-      if (opts.defaults) {
-        opts.template = opts.template || "next"
-        const initUrl = buildInitUrl(
-          {
-            ...DEFAULT_INIT_PRESET,
-            base: "base",
-            rtl: opts.rtl ?? false,
-          },
-          opts.rtl ?? false
-        )
+      const options = initOptionsSchema.parse({
+        ...opts,
+        cwd: path.resolve(opts.cwd),
+      })
+      const presets = Object.values(DEFAULT_PRESETS)
+      const presetsByName = new Map(
+        presets.map((preset) => [preset.name, preset])
+      )
+
+      if (options.defaults) {
+        options.template = options.template || "next"
+        const initUrl = resolveInitUrl({
+          ...DEFAULT_PRESETS["base-nova"],
+          rtl: options.rtl,
+        })
         components = [initUrl, ...components]
       }
 
-      if (opts.template && !(opts.template in templates)) {
-        logger.break()
+      if (options.template && !(options.template in templates)) {
         logger.error(
           `Invalid template: ${highlighter.info(
-            opts.template
-          )}. Use ${Object.keys(templates)
+            options.template
+          )}. Available templates: ${Object.keys(templates)
             .map((t) => highlighter.info(t))
             .join(", ")}.`
         )
@@ -152,12 +132,25 @@ export const init = new Command()
         process.exit(1)
       }
 
-      const cwd = path.resolve(opts.cwd)
+      if (typeof options.preset === "string" && !isUrl(options.preset)) {
+        const knownPresetNames = presets.map((preset) => preset.name)
+
+        if (!presetsByName.has(options.preset)) {
+          logger.error(
+            `Invalid preset: ${highlighter.info(
+              options.preset
+            )}. Available presets: ${knownPresetNames.join(", ")}`
+          )
+          logger.break()
+          process.exit(1)
+        }
+      }
+
+      const cwd = options.cwd
       if (
         fsExtra.existsSync(path.resolve(cwd, "components.json")) &&
-        !opts.force
+        !options.force
       ) {
-        logger.break()
         logger.error(
           `A ${highlighter.info(
             "components.json"
@@ -171,36 +164,10 @@ export const init = new Command()
         process.exit(1)
       }
 
-      if (opts.preset !== undefined) {
-        const presetResult = await handlePresetOption(
-          opts.preset === true ? true : opts.preset,
-          opts.rtl ?? false,
-          "init"
-        )
-
-        if (!presetResult) {
-          process.exit(0)
-        }
-
-        let initUrl: string
-
-        if ("_isUrl" in presetResult) {
-          const url = new URL(presetResult.url)
-          if (opts.rtl) {
-            url.searchParams.set("rtl", "true")
-          }
-          initUrl = url.toString()
-        } else {
-          initUrl = buildInitUrl(presetResult, opts.rtl ?? false)
-        }
-
-        components = [initUrl, ...components]
-      }
-
       if (
-        opts.preset === undefined &&
+        options.preset === undefined &&
         components.length === 0 &&
-        !opts.defaults
+        !options.defaults
       ) {
         // Determine template for the create URL.
         const hasPackageJson = fsExtra.existsSync(
@@ -208,7 +175,7 @@ export const init = new Command()
         )
 
         // Prompt for template only for new projects without -t flag.
-        if (!opts.template && !hasPackageJson) {
+        if (!options.template && !hasPackageJson) {
           const { template } = await prompts({
             type: "select",
             name: "template",
@@ -223,103 +190,155 @@ export const init = new Command()
             process.exit(0)
           }
 
-          opts.template = template
+          options.template = template
         }
 
-        // Build create URL with template param.
-        const createUrl = getShadcnCreateUrl({
-          new: hasPackageJson ? "false" : "true",
-          ...(opts.rtl && { rtl: "true" }),
-          ...(opts.template && { template: opts.template }),
-        })
-
-        const { preset } = await prompts({
-          type: "select",
-          name: "preset",
-          message: "Select a preset",
-          choices: [
-            {
-              title: "Build your own",
-              description: "Build a custom preset on ui.shadcn.com",
-              value: "create",
-            },
-            {
-              title: "Radix UI",
-              description: "Nova / Lucide / Geist",
-              value: "radix",
-            },
-            {
-              title: "Base UI",
-              description: "Nova / Lucide / Geist",
-              value: "base",
-            },
-          ],
-        })
-
-        if (!preset) {
-          process.exit(0)
-        }
-
-        if (preset === "create") {
-          logger.info(
-            `\nOpening ${highlighter.info(createUrl)} in your browser...\n`
+        // Try to infer template for existing projects.
+        if (!options.template && hasPackageJson) {
+          const projectInfo = await getProjectInfo(cwd)
+          const detectedTemplate = getTemplateFromFrameworkName(
+            projectInfo?.framework.name
           )
-          await open(createUrl)
-          process.exit(0)
+          if (detectedTemplate) {
+            options.template = detectedTemplate
+          }
         }
 
-        // User chose a default base (radix or base).
-        const initUrl = buildInitUrl(
-          {
-            ...DEFAULT_INIT_PRESET,
-            base: preset,
-            rtl: opts.rtl ?? false,
-          },
-          opts.rtl ?? false
-        )
-        components = [initUrl, ...components]
+        // Show interactive preset list.
+        options.preset = true
       }
 
-      const options = initOptionsSchema.parse({
-        isNewProject: false,
+      if (options.preset !== undefined) {
+        const presetArg = options.preset === true ? true : options.preset
+
+        if (presetArg === true) {
+          const { selectedPreset } = await prompts({
+            type: "select",
+            name: "selectedPreset",
+            message: `Which ${highlighter.info(
+              "preset"
+            )} would you like to use?`,
+            choices: [
+              ...presets.map((preset) => ({
+                title: preset.title,
+                description: preset.description,
+                value: preset.name,
+              })),
+              {
+                title: "Custom",
+                description: "Build your own on https://ui.shadcn.com",
+                value: "custom",
+              },
+            ],
+          })
+
+          if (!selectedPreset) {
+            process.exit(0)
+          }
+
+          if (selectedPreset === "custom") {
+            const createUrl = resolveCreateUrl({
+              command: "init",
+              rtl: options.rtl,
+              ...(options.template && { template: options.template }),
+            })
+            logger.break()
+            logger.log(
+              `  Build your custom preset on ${highlighter.info(createUrl)}`
+            )
+            logger.log(
+              `  Then ${highlighter.info(
+                "copy and run the command"
+              )} from ui.shadcn.com.`
+            )
+            logger.break()
+
+            const { proceed } = await prompts({
+              type: "confirm",
+              name: "proceed",
+              message: "Open in browser?",
+              initial: true,
+            })
+
+            if (proceed) {
+              await open(createUrl)
+            }
+
+            process.exit(0)
+          }
+
+          const preset = presets.find((p) => p.name === selectedPreset)
+          if (!preset) {
+            process.exit(0)
+          }
+          const initUrl = resolveInitUrl({
+            ...preset,
+            rtl: options.rtl,
+          })
+          components = [initUrl, ...components]
+        }
+
+        if (typeof presetArg === "string") {
+          let initUrl: string
+
+          if (isUrl(presetArg)) {
+            const url = new URL(presetArg)
+            if (options.rtl) {
+              url.searchParams.set("rtl", "true")
+            }
+            initUrl = url.toString()
+          } else {
+            const preset = presetsByName.get(presetArg)!
+            initUrl = resolveInitUrl({
+              ...preset,
+              rtl: options.rtl || preset.rtl,
+            })
+          }
+
+          components = [initUrl, ...components]
+        }
+      }
+
+      const parsedOptions = initOptionsSchema.parse({
         components,
-        ...opts,
-        cwd: path.resolve(opts.cwd),
-        installStyleIndex: true,
+        ...options,
+        cwd: options.cwd,
       })
 
-      await loadEnvFiles(options.cwd)
+      await loadEnvFiles(parsedOptions.cwd)
 
       // We need to check if we're initializing with a new style.
       // This will allow us to determine if we need to install the base style.
-      // And if we should prompt the user for a base color.
       if (components.length > 0) {
         // We don't know the full config at this point.
         // So we'll use a shadow config to fetch the first item.
         let shadowConfig = configWithDefaults(
           createConfig({
             resolvedPaths: {
-              cwd: options.cwd,
+              cwd: parsedOptions.cwd,
             },
           })
         )
 
         // Check if there's a components.json file.
         // If so, we'll merge with our shadow config.
-        const componentsJsonPath = path.resolve(options.cwd, "components.json")
+        const componentsJsonPath = path.resolve(
+          parsedOptions.cwd,
+          "components.json"
+        )
         if (fsExtra.existsSync(componentsJsonPath)) {
           const existingConfig = await fsExtra.readJson(componentsJsonPath)
           const config = rawConfigSchema.partial().parse(existingConfig)
           const baseConfig = createConfig({
             resolvedPaths: {
-              cwd: options.cwd,
+              cwd: parsedOptions.cwd,
             },
           })
           shadowConfig = configWithDefaults({
             ...config,
             resolvedPaths: {
               ...baseConfig.resolvedPaths,
-              cwd: options.cwd,
+              cwd: parsedOptions.cwd,
             },
           })
 
@@ -353,7 +372,10 @@ export const init = new Command()
           config: shadowConfig,
         })
 
-        // Set options from registry:base.
+        if (item?.extends === "none") {
+          parsedOptions.installStyleIndex = false
+        }
+
         if (item?.type === "registry:base") {
           if (item.config) {
             // Merge config values into shadowConfig.
@@ -361,27 +383,19 @@ export const init = new Command()
               deepmerge(shadowConfig, item.config)
             )
             // Store config to be merged into components.json later.
-            options.registryBaseConfig = item.config
+            parsedOptions.registryBaseConfig = item.config
           }
-          options.installStyleIndex =
-            item.extends === "none" ? false : options.installStyleIndex
-        }
-
-        if (item?.type === "registry:style") {
-          // If the style extends none, we don't want to install the base style.
-          options.installStyleIndex =
-            item.extends === "none" ? false : options.installStyleIndex
         }
       }
 
-      await runInit(options)
+      await runInit(parsedOptions)
 
       logger.log(
         `Project initialization completed.\nYou may now add components.`
       )
 
       // We need when running with custom cwd.
-      deleteFileBackup(path.resolve(options.cwd, "components.json"))
+      deleteFileBackup(path.resolve(parsedOptions.cwd, "components.json"))
       logger.break()
     } catch (error) {
       if (componentsJsonBackupPath) {
@@ -714,4 +728,20 @@ async function promptForMinimalConfig(
     rtl: opts.rtl ?? defaultConfig?.rtl ?? false,
     aliases: defaultConfig?.aliases,
   })
+}
+
+function getTemplateFromFrameworkName(frameworkName?: string) {
+  if (frameworkName === "next-app" || frameworkName === "next-pages") {
+    return "next"
+  }
+
+  if (frameworkName === "vite") {
+    return "vite"
+  }
+
+  if (frameworkName === "tanstack-start" || frameworkName === "react-router") {
+    return "start"
+  }
+
+  return undefined
 }

@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { FieldSeparator } from "@/examples/radix/ui/field"
 import {
   ComputerTerminal01Icon,
   Copy01Icon,
@@ -12,6 +11,11 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { useConfig } from "@/hooks/use-config"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
 import { Button } from "@/registry/new-york-v4/ui/button"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/registry/new-york-v4/ui/collapsible"
 import {
   Dialog,
   DialogContent,
@@ -33,6 +37,7 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from "@/registry/new-york-v4/ui/radio-group"
+import { Switch } from "@/registry/new-york-v4/ui/switch"
 import {
   Tabs,
   TabsContent,
@@ -74,41 +79,25 @@ export function ProjectForm() {
 
   const commands = React.useMemo(() => {
     const origin = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4000"
-    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}&rtl=${params.rtl}&new=${params.new}`
+    const url = `${origin}/init?base=${params.base}&style=${params.style}&baseColor=${params.baseColor}&theme=${params.theme}&iconLibrary=${params.iconLibrary}&font=${params.font}&menuAccent=${params.menuAccent}&menuColor=${params.menuColor}&radius=${params.radius}&template=${params.template}&rtl=${params.rtl}`
     const rtlFlag = params.rtl ? " --rtl" : ""
     const templateFlag = params.template ? ` --template ${params.template}` : ""
     const isLocalDev = origin.includes("localhost")
 
-    if (!params.new) {
-      return isLocalDev
-        ? {
-            pnpm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-            npm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-            yarn: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-            bun: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-          }
-        : {
-            pnpm: `pnpm dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-            npm: `npx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-            yarn: `yarn dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-            bun: `bunx --bun shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-          }
-    }
     return isLocalDev
       ? {
-          pnpm: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
-          npm: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
-          yarn: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
-          bun: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
+          pnpm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+          npm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+          yarn: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+          bun: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
         }
       : {
-          pnpm: `pnpm dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-          npm: `npx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-          yarn: `yarn dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-          bun: `bunx --bun shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+          pnpm: `pnpm dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+          npm: `npx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+          yarn: `yarn dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+          bun: `bunx --bun shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
         }
   }, [
-    params.new,
     params.base,
     params.style,
     params.baseColor,
@@ -130,12 +119,6 @@ export function ProjectForm() {
       return () => clearTimeout(timer)
     }
   }, [hasCopied])
-
-  React.useEffect(() => {
-    if (!params.new && params.template === "next-monorepo") {
-      setParams({ template: "next" })
-    }
-  }, [params.new, params.template, setParams])
 
   const handleCopy = React.useCallback(() => {
     const properties: Record<string, string> = {
@@ -163,7 +146,7 @@ export function ProjectForm() {
             icon={ComputerTerminal01Icon}
             className="hidden xl:flex"
           />
-          Create Project
+          Copy Command
         </Button>
       </DialogTrigger>
       <DialogContent className="dialog-ring min-w-0 overflow-hidden rounded-xl sm:max-w-lg">
@@ -175,49 +158,8 @@ export function ProjectForm() {
         </DialogHeader>
         <FieldGroup className="dark:**:data-[slot=field-label]:has-data-[state=checked]:bg-primary/10 dark:**:data-[slot=field-label]:has-data-[state=checked]:border-primary **:data-[slot=field-description]:text-balance **:data-[slot=field-label]:rounded-lg! **:data-[slot=field-label]:has-data-[state=checked]:border-blue-600 **:data-[slot=field-label]:has-data-[state=checked]:bg-blue-50/50 **:data-[slot=radio-group-item]:sr-only **:data-[slot=radio-group-item]:absolute">
           <Field>
-            <FieldLabel className="text-base">
-              Are you creating a new project?
-            </FieldLabel>
-            <RadioGroup
-              value={params.new ? "new" : "existing"}
-              onValueChange={(value) => setParams({ new: value === "new" })}
-              className="grid grid-cols-2 gap-2"
-            >
-              <FieldLabel htmlFor="project-new">
-                <Field orientation="horizontal" className="p-3!">
-                  <FieldContent className="gap-1">
-                    <FieldTitle>Yes</FieldTitle>
-                    <FieldDescription>
-                      I&apos;m creating a new project.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem value="new" id="project-new" />
-                </Field>
-              </FieldLabel>
-              <FieldLabel htmlFor="project-existing">
-                <Field orientation="horizontal" className="p-3!">
-                  <FieldContent className="gap-1">
-                    <FieldTitle>No</FieldTitle>
-                    <FieldDescription>
-                      I have an existing project.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem value="existing" id="project-existing" />
-                </Field>
-              </FieldLabel>
-            </RadioGroup>
-            <FieldDescription>
-              {params.new
-                ? `The cli will create a new project, install dependencies, add CSS variables and utils, configure dark mode and add an example component.`
-                : `The cli will install dependencies, add CSS variables and utils in your existing project.`}
-            </FieldDescription>
-          </Field>
-          <FieldSeparator />
-          <Field>
             <FieldLabel htmlFor="template" className="text-base">
-              {params.new
-                ? "Choose a starter template"
-                : "What framework is your existing project using?"}
+              Choose a template
             </FieldLabel>
             <RadioGroup
               id="template"
@@ -233,38 +175,26 @@ export function ProjectForm() {
               }}
               className="grid grid-cols-2 gap-2"
             >
-              {TEMPLATES.map((template) => {
-                const isDisabled =
-                  !params.new && template.value === "next-monorepo"
-
-                return (
-                  <FieldLabel
-                    key={template.value}
-                    htmlFor={template.value}
-                    className={
-                      isDisabled ? "cursor-not-allowed opacity-50" : undefined
-                    }
-                  >
-                    <Field className="flex min-w-0 flex-col items-center justify-center gap-2 p-4! text-center *:w-auto!">
-                      <RadioGroupItem
-                        value={template.value}
-                        id={template.value}
-                        className="sr-only"
-                        disabled={isDisabled}
+              {TEMPLATES.map((template) => (
+                <FieldLabel key={template.value} htmlFor={template.value}>
+                  <Field className="flex min-w-0 flex-col items-center justify-center gap-2 p-4! text-center *:w-auto!">
+                    <RadioGroupItem
+                      value={template.value}
+                      id={template.value}
+                      className="sr-only"
+                    />
+                    {template.logo ? (
+                      <div
+                        className="text-foreground *:[svg]:text-foreground! size-6 [&_svg]:size-6"
+                        dangerouslySetInnerHTML={{
+                          __html: template.logo,
+                        }}
                       />
-                      {template.logo ? (
-                        <div
-                          className="text-foreground *:[svg]:text-foreground! size-6 [&_svg]:size-6"
-                          dangerouslySetInnerHTML={{
-                            __html: template.logo,
-                          }}
-                        />
-                      ) : null}
-                      <FieldTitle>{template.title}</FieldTitle>
-                    </Field>
-                  </FieldLabel>
-                )
-              })}
+                    ) : null}
+                    <FieldTitle>{template.title}</FieldTitle>
+                  </Field>
+                </FieldLabel>
+              ))}
             </RadioGroup>
             <FieldDescription>
               See the{" "}
@@ -279,52 +209,53 @@ export function ProjectForm() {
               for more templates and frameworks.
             </FieldDescription>
           </Field>
-          <FieldSeparator />
-          <Field>
-            <FieldLabel className="text-base">
-              Do you want to enable RTL?
-            </FieldLabel>
-            <RadioGroup
-              value={params.rtl ? "yes" : "no"}
-              onValueChange={(value) => setParams({ rtl: value === "yes" })}
-              className="grid grid-cols-2 gap-2"
-            >
-              <FieldLabel htmlFor="rtl-no">
-                <Field orientation="horizontal" className="p-3!">
-                  <FieldContent className="gap-1">
-                    <FieldTitle>No</FieldTitle>
-                    <FieldDescription>
-                      Use default left-to-right layout.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem value="no" id="rtl-no" />
-                </Field>
-              </FieldLabel>
-              <FieldLabel htmlFor="rtl-yes">
-                <Field orientation="horizontal" className="p-3!">
-                  <FieldContent className="gap-1">
-                    <FieldTitle>Yes</FieldTitle>
-                    <FieldDescription>
-                      Enable right-to-left support.
-                    </FieldDescription>
-                  </FieldContent>
-                  <RadioGroupItem value="yes" id="rtl-yes" />
-                </Field>
-              </FieldLabel>
-            </RadioGroup>
-            <FieldDescription className="text-balance">
-              To learn more about RTL, see the{" "}
-              <a
-                href={`/docs/rtl/${params.template === "next-monorepo" ? "next" : params.template}`}
-                className="text-foreground underline"
-                target="_blank"
-                rel="noopener noreferrer"
+          <Collapsible className="rounded-lg border">
+            <CollapsibleTrigger className="text-muted-foreground hover:text-foreground flex w-full items-center justify-between px-3 py-2.5 text-sm font-medium transition-colors">
+              Options
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform [[data-state=open]>&]:rotate-180"
               >
-                RTL setup guide
-              </a>{" "}
-              for {selectedTemplate?.title}.
-            </FieldDescription>
-          </Field>
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="border-t px-3 py-3">
+              <Field orientation="horizontal" className="items-center">
+                <FieldContent className="gap-0.5">
+                  <FieldLabel htmlFor="rtl" className="text-sm">
+                    Enable RTL
+                  </FieldLabel>
+                  <FieldDescription className="text-balance">
+                    Enable right-to-left support. See the{" "}
+                    <a
+                      href={`/docs/rtl/${params.template === "next-monorepo" ? "next" : params.template}`}
+                      className="text-foreground underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      RTL setup guide
+                    </a>{" "}
+                    for {selectedTemplate?.title}.
+                  </FieldDescription>
+                </FieldContent>
+                <Switch
+                  id="rtl"
+                  checked={params.rtl}
+                  onCheckedChange={(checked) =>
+                    setParams({ rtl: checked === true })
+                  }
+                />
+              </Field>
+            </CollapsibleContent>
+          </Collapsible>
         </FieldGroup>
         <DialogFooter className="bg-muted/30 -mx-6 mt-2 -mb-6 flex min-w-0 flex-col gap-3 border-t p-6 sm:flex-col">
           <Tabs
