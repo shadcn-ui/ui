@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { FieldSeparator } from "@/examples/radix/ui/field"
 import {
   ComputerTerminal01Icon,
   Copy01Icon,
@@ -39,7 +40,6 @@ import {
   TabsTrigger,
 } from "@/registry/new-york-v4/ui/tabs"
 import { useDesignSystemSearchParams } from "@/app/(create)/lib/search-params"
-import { FieldSeparator } from "@/examples/radix/ui/field"
 
 const TEMPLATES = [
   {
@@ -82,31 +82,31 @@ export function ProjectForm() {
     if (!params.new) {
       return isLocalDev
         ? {
-          pnpm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-          npm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-          yarn: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-          bun: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
-        }
+            pnpm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+            npm: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+            yarn: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+            bun: `pnpm shadcn init${rtlFlag} --preset "${url}"${templateFlag}`,
+          }
         : {
-          pnpm: `pnpm dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-          npm: `npx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-          yarn: `yarn dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-          bun: `bunx --bun shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
-        }
+            pnpm: `pnpm dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+            npm: `npx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+            yarn: `yarn dlx shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+            bun: `bunx --bun shadcn@latest init${rtlFlag} --preset "${url}"${templateFlag}`,
+          }
     }
     return isLocalDev
       ? {
-        pnpm: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
-        npm: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
-        yarn: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
-        bun: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
-      }
+          pnpm: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
+          npm: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
+          yarn: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
+          bun: `pnpm shadcn create${rtlFlag} --preset "${url}"${templateFlag}`,
+        }
       : {
-        pnpm: `pnpm dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-        npm: `npx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-        yarn: `yarn dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-        bun: `bunx --bun shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
-      }
+          pnpm: `pnpm dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+          npm: `npx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+          yarn: `yarn dlx shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+          bun: `bunx --bun shadcn@latest create${rtlFlag} --preset "${url}"${templateFlag}`,
+        }
   }, [
     params.new,
     params.base,
@@ -168,17 +168,16 @@ export function ProjectForm() {
       </DialogTrigger>
       <DialogContent className="dialog-ring min-w-0 overflow-hidden rounded-xl sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>
-            Create Project
-          </DialogTitle>
+          <DialogTitle>Create Project</DialogTitle>
           <DialogDescription className="text-balance">
             Configure your project to use shadcn/ui.
           </DialogDescription>
         </DialogHeader>
-        <FieldGroup className="**:data-[slot=field-label]:has-data-[state=checked]:border-blue-600 **:data-[slot=field-label]:has-data-[state=checked]:bg-blue-50/50 dark:**:data-[slot=field-label]:has-data-[state=checked]:bg-primary/10 dark:**:data-[slot=field-label]:has-data-[state=checked]:border-primary **:data-[slot=radio-group-item]:sr-only **:data-[slot=radio-group-item]:absolute **:data-[slot=field-label]:rounded-lg! **:data-[slot=field-description]:text-balance">
-
+        <FieldGroup className="dark:**:data-[slot=field-label]:has-data-[state=checked]:bg-primary/10 dark:**:data-[slot=field-label]:has-data-[state=checked]:border-primary **:data-[slot=field-description]:text-balance **:data-[slot=field-label]:rounded-lg! **:data-[slot=field-label]:has-data-[state=checked]:border-blue-600 **:data-[slot=field-label]:has-data-[state=checked]:bg-blue-50/50 **:data-[slot=radio-group-item]:sr-only **:data-[slot=radio-group-item]:absolute">
           <Field>
-            <FieldLabel className="text-base">Are you creating a new project?</FieldLabel>
+            <FieldLabel className="text-base">
+              Are you creating a new project?
+            </FieldLabel>
             <RadioGroup
               value={params.new ? "new" : "existing"}
               onValueChange={(value) => setParams({ new: value === "new" })}
@@ -188,7 +187,9 @@ export function ProjectForm() {
                 <Field orientation="horizontal" className="p-3!">
                   <FieldContent className="gap-1">
                     <FieldTitle>Yes</FieldTitle>
-                    <FieldDescription>I&apos;m creating a new project.</FieldDescription>
+                    <FieldDescription>
+                      I&apos;m creating a new project.
+                    </FieldDescription>
                   </FieldContent>
                   <RadioGroupItem value="new" id="project-new" />
                 </Field>
@@ -213,7 +214,7 @@ export function ProjectForm() {
           </Field>
           <FieldSeparator />
           <Field>
-            <FieldLabel htmlFor="template" className="text-base ">
+            <FieldLabel htmlFor="template" className="text-base">
               {params.new
                 ? "Choose a starter template"
                 : "What framework is your existing project using?"}
@@ -233,13 +234,16 @@ export function ProjectForm() {
               className="grid grid-cols-2 gap-2"
             >
               {TEMPLATES.map((template) => {
-                const isDisabled = !params.new && template.value === "next-monorepo"
+                const isDisabled =
+                  !params.new && template.value === "next-monorepo"
 
                 return (
                   <FieldLabel
                     key={template.value}
                     htmlFor={template.value}
-                    className={isDisabled ? "cursor-not-allowed opacity-50" : undefined}
+                    className={
+                      isDisabled ? "cursor-not-allowed opacity-50" : undefined
+                    }
                   >
                     <Field className="flex min-w-0 flex-col items-center justify-center gap-2 p-4! text-center *:w-auto!">
                       <RadioGroupItem
@@ -263,20 +267,29 @@ export function ProjectForm() {
               })}
             </RadioGroup>
             <FieldDescription>
-              See the <a href="/docs/installation" className="text-foreground underline" target="_blank" rel="noopener noreferrer">installation guides</a> for more templates and frameworks.
+              See the{" "}
+              <a
+                href="/docs/installation"
+                className="text-foreground underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                installation guides
+              </a>{" "}
+              for more templates and frameworks.
             </FieldDescription>
           </Field>
           <FieldSeparator />
           <Field>
-            <FieldLabel className="text-base">Do you want to enable RTL?</FieldLabel>
+            <FieldLabel className="text-base">
+              Do you want to enable RTL?
+            </FieldLabel>
             <RadioGroup
               value={params.rtl ? "yes" : "no"}
               onValueChange={(value) => setParams({ rtl: value === "yes" })}
               className="grid grid-cols-2 gap-2"
             >
-              <FieldLabel
-                htmlFor="rtl-no"
-              >
+              <FieldLabel htmlFor="rtl-no">
                 <Field orientation="horizontal" className="p-3!">
                   <FieldContent className="gap-1">
                     <FieldTitle>No</FieldTitle>
@@ -287,9 +300,7 @@ export function ProjectForm() {
                   <RadioGroupItem value="no" id="rtl-no" />
                 </Field>
               </FieldLabel>
-              <FieldLabel
-                htmlFor="rtl-yes"
-              >
+              <FieldLabel htmlFor="rtl-yes">
                 <Field orientation="horizontal" className="p-3!">
                   <FieldContent className="gap-1">
                     <FieldTitle>Yes</FieldTitle>
@@ -302,19 +313,20 @@ export function ProjectForm() {
               </FieldLabel>
             </RadioGroup>
             <FieldDescription className="text-balance">
-              To learn more about RTL, see the <a
+              To learn more about RTL, see the{" "}
+              <a
                 href={`/docs/rtl/${params.template === "next-monorepo" ? "next" : params.template}`}
                 className="text-foreground underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 RTL setup guide
-              </a> for {selectedTemplate?.title}.
+              </a>{" "}
+              for {selectedTemplate?.title}.
             </FieldDescription>
           </Field>
-
         </FieldGroup>
-        <DialogFooter className="bg-muted/30 -mx-6 mt-2 -mb-6 flex flex-col gap-3 border-t p-6 sm:flex-col min-w-0">
+        <DialogFooter className="bg-muted/30 -mx-6 mt-2 -mb-6 flex min-w-0 flex-col gap-3 border-t p-6 sm:flex-col">
           <Tabs
             value={packageManager}
             onValueChange={(value) => {

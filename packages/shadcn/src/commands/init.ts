@@ -12,7 +12,7 @@ import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { rawConfigSchema } from "@/src/schema"
 import { addComponents } from "@/src/utils/add-components"
-import { TEMPLATES, createProject } from "@/src/utils/create-project"
+import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
 import * as ERRORS from "@/src/utils/errors"
 import {
@@ -43,15 +43,16 @@ import { logger } from "@/src/utils/logger"
 import {
   buildInitUrl,
   getShadcnCreateUrl,
-  getShadcnInitUrl,
   handlePresetOption,
 } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
+import { templates } from "@/src/utils/templates/index"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
+import { bold, gray, green } from "kleur/colors"
 import open from "open"
 import prompts from "prompts"
 import { z } from "zod"
@@ -86,7 +87,7 @@ export const initOptionsSchema = z.object({
     .refine(
       (val) => {
         if (val) {
-          return TEMPLATES[val as keyof typeof TEMPLATES]
+          return val in templates
         }
         return true
       },
@@ -162,12 +163,12 @@ export const init = new Command()
       }
 
       // Validate template early.
-      if (opts.template && !TEMPLATES[opts.template as keyof typeof TEMPLATES]) {
+      if (opts.template && !(opts.template in templates)) {
         logger.break()
         logger.error(
           `Invalid template: ${highlighter.info(
             opts.template
-          )}. Use ${Object.keys(TEMPLATES)
+          )}. Use ${Object.keys(templates)
             .map((t) => highlighter.info(t))
             .join(", ")}.`
         )
@@ -242,31 +243,9 @@ export const init = new Command()
           path.resolve(cwd, "package.json")
         )
 
-        if (!hasPackageJson) {
-          // New project: prompt for template (skip if already set via -t flag).
-          const { template } = await prompts({
-            type: opts.template ? null : "select",
-            name: "template",
-            message: "Which template would you like to use?",
-            choices: [
-              { title: "Next.js", value: "next" },
-              { title: "Next.js (Monorepo)", value: "next-monorepo" },
-              { title: "Vite", value: "vite" },
-              { title: "TanStack Start", value: "start" },
-            ],
-          })
-
-          if (template) {
-            opts.template = template
-          }
-
-          if (!opts.template) {
-            process.exit(0)
-          }
-        }
-
-        // For existing projects, detect framework for the create URL.
-        if (hasPackageJson && !opts.template) {
+        // Detect framework for existing projects.
+        let detectedTemplate: string | undefined
+        if (hasPackageJson) {
           const frameworkTemplateMap: Record<string, string> = {
             "next-app": "next",
             "next-pages": "next",
@@ -275,7 +254,39 @@ export const init = new Command()
           }
           const projectInfo = await getProjectInfo(cwd)
           if (projectInfo) {
-            opts.template = frameworkTemplateMap[projectInfo.framework.name]
+            detectedTemplate = frameworkTemplateMap[projectInfo.framework.name]
+          }
+        }
+
+        // Use detected framework or prompt for template.
+        const templateChoices = Object.entries(templates).map(([value, t]) => ({
+          title: t.title,
+          value,
+        }))
+        if (!opts.template) {
+          if (detectedTemplate) {
+            opts.template = detectedTemplate
+            const title =
+              templates[detectedTemplate as keyof typeof templates]?.title ??
+              detectedTemplate
+            logger.log(
+              `${green("✔")} ${bold("Select a template")} ${gray(
+                "›"
+              )} ${title} ${gray("(detected)")}`
+            )
+          } else {
+            const { template } = await prompts({
+              type: "select",
+              name: "template",
+              message: "Select a template",
+              choices: templateChoices,
+            })
+
+            if (!template) {
+              process.exit(0)
+            }
+
+            opts.template = template
           }
         }
 
@@ -289,7 +300,7 @@ export const init = new Command()
         const { preset } = await prompts({
           type: "select",
           name: "preset",
-          message: "Which preset would you like to use?",
+          message: "Select a preset",
           choices: [
             {
               title: "Build your own",

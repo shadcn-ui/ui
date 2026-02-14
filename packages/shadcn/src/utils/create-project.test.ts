@@ -13,7 +13,7 @@ import {
   type MockInstance,
 } from "vitest"
 
-import { TEMPLATES, createProject } from "./create-project"
+import { createProject } from "./create-project"
 
 // Mock dependencies
 vi.mock("fs-extra")
@@ -116,7 +116,7 @@ describe("createProject", () => {
     expect(result).toEqual({
       projectPath: "/test/my-app",
       projectName: "my-app",
-      template: TEMPLATES.next,
+      template: "next",
     })
 
     expect(execa).toHaveBeenCalledWith(
@@ -141,7 +141,7 @@ describe("createProject", () => {
     expect(result).toEqual({
       projectPath: "/test/my-monorepo",
       projectName: "my-monorepo",
-      template: TEMPLATES["next-monorepo"],
+      template: "next-monorepo",
     })
   })
 
@@ -158,7 +158,7 @@ describe("createProject", () => {
       components: ["/chat/b/some-component"],
     })
 
-    expect(result.template).toBe(TEMPLATES.next)
+    expect(result.template).toBe("next")
   })
 
   it("should throw error if project path already exists", async () => {

@@ -12,23 +12,14 @@ import {
   handlePresetOption,
 } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
+import { templates } from "@/src/utils/templates/index"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { Command } from "commander"
-import dedent from "dedent"
 import open from "open"
 import prompts from "prompts"
 import validateProjectName from "validate-npm-package-name"
 
 import { initOptionsSchema, runInit } from "./init"
-
-const CREATE_TEMPLATES = {
-  next: "Next.js",
-  "next-monorepo": "Next.js (Monorepo)",
-  vite: "Vite",
-  start: "TanStack Start",
-} as const
-
-type Template = keyof typeof CREATE_TEMPLATES
 
 export const create = new Command()
   .name("create")
@@ -131,8 +122,8 @@ export const create = new Command()
           message: `Which ${highlighter.info(
             "template"
           )} would you like to use?`,
-          choices: Object.entries(CREATE_TEMPLATES).map(([key, value]) => ({
-            title: value,
+          choices: Object.entries(templates).map(([key, t]) => ({
+            title: t.title,
             value: key,
           })),
         })
@@ -224,7 +215,8 @@ export const create = new Command()
           overwrite: true,
         })
 
-        const templateFiles = getTemplateFiles(template as Template)
+        const templateFiles =
+          templates[template as keyof typeof templates]?.files ?? []
         if (templateFiles.length > 0) {
           await updateFiles(templateFiles, config, {
             overwrite: true,
@@ -246,60 +238,3 @@ export const create = new Command()
       clearRegistryContext()
     }
   })
-
-function getTemplateFiles(template: Template) {
-  switch (template) {
-    case "vite":
-      return [
-        {
-          type: "registry:file" as const,
-          path: "src/App.tsx",
-          target: "src/App.tsx",
-          content: dedent`import { ComponentExample } from "@/components/component-example";
-
-export function App() {
-  return <ComponentExample />;
-}
-
-export default App;
-`,
-        },
-      ]
-    case "next":
-    case "next-monorepo":
-      return [
-        {
-          type: "registry:page" as const,
-          path: "app/page.tsx",
-          target: "app/page.tsx",
-          content: dedent`import { ComponentExample } from "@/components/component-example";
-
-export default function Page() {
-  return <ComponentExample />;
-}
-`,
-        },
-      ]
-    case "start":
-      return [
-        {
-          type: "registry:file" as const,
-          path: "src/routes/index.tsx",
-          target: "src/routes/index.tsx",
-          content: dedent`import { createFileRoute } from "@tanstack/react-router";
-import { ComponentExample } from "@/components/component-example";
-
-export const Route = createFileRoute("/")({ component: App });
-
-function App() {
-  return (
-    <ComponentExample />
-  );
-}
-`,
-        },
-      ]
-    default:
-      return []
-  }
-}
