@@ -2,6 +2,7 @@ import path from "path"
 import { getRegistryItems } from "@/src/registry/api"
 import { configWithDefaults } from "@/src/registry/config"
 import { clearRegistryContext } from "@/src/registry/context"
+import { templates } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
@@ -12,7 +13,6 @@ import {
   handlePresetOption,
 } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
-import { templates } from "@/src/utils/templates/index"
 import { updateFiles } from "@/src/utils/updaters/update-files"
 import { Command } from "commander"
 import open from "open"
@@ -34,15 +34,6 @@ export const create = new Command()
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
     process.cwd()
-  )
-  .option(
-    "--src-dir",
-    "use the src directory when creating a new project.",
-    false
-  )
-  .option(
-    "--no-src-dir",
-    "do not use the src directory when creating a new project."
   )
   .option("-y, --yes", "skip confirmation prompt.", true)
   .option("--rtl", "enable RTL support.", false)
@@ -146,9 +137,8 @@ export const create = new Command()
         process.exit(0)
       }
 
-      // Determine initUrl and baseColor based on preset type.
+      // Determine initUrl based on preset type.
       let initUrl: string
-      let baseColor: string
 
       if ("_isUrl" in presetResult) {
         // User provided a URL directly.
@@ -157,11 +147,9 @@ export const create = new Command()
           url.searchParams.set("rtl", "true")
         }
         initUrl = url.toString()
-        baseColor = url.searchParams.get("baseColor") ?? "neutral"
       } else {
         // User selected a preset by name.
         initUrl = buildInitUrl(presetResult, opts.rtl)
-        baseColor = presetResult.baseColor
       }
 
       // Fetch the registry:base item to get its config.
@@ -192,11 +180,9 @@ export const create = new Command()
         force: false,
         silent: false,
         isNewProject: true,
-        srcDir: opts.srcDir,
         cssVariables: true,
         rtl: opts.rtl,
         template,
-        baseColor,
         installStyleIndex: false,
         registryBaseConfig,
         skipPreflight: false,
@@ -215,10 +201,11 @@ export const create = new Command()
           overwrite: true,
         })
 
-        const templateFiles =
-          templates[template as keyof typeof templates]?.files ?? []
-        if (templateFiles.length > 0) {
-          await updateFiles(templateFiles, config, {
+        const selectedTemplate =
+          templates[template as keyof typeof templates]
+
+        if (selectedTemplate?.files?.length) {
+          await updateFiles(selectedTemplate.files, config, {
             overwrite: true,
             silent: true,
           })
@@ -226,9 +213,7 @@ export const create = new Command()
       }
 
       logger.log(
-        `${highlighter.success(
-          "Success!"
-        )} Project initialization completed.\nYou may now add components.`
+        `Project initialization completed.\nYou may now add components.`
       )
       logger.break()
     } catch (error) {

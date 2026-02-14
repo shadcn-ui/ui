@@ -38,6 +38,7 @@ export async function addComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    skipFonts?: boolean
     registryHeaders?: Record<string, Record<string, string>>
     path?: string
   }
@@ -62,7 +63,10 @@ export async function addComponents(
     })
   }
 
-  return await addProjectComponents(components, config, options)
+  return await addProjectComponents(components, config, {
+    ...options,
+    skipFonts: options.skipFonts,
+  })
 }
 
 async function addProjectComponents(
@@ -72,6 +76,7 @@ async function addProjectComponents(
     overwrite?: boolean
     silent?: boolean
     isNewProject?: boolean
+    skipFonts?: boolean
     path?: string
   }
 ) {
@@ -100,7 +105,9 @@ async function addProjectComponents(
 
   const tailwindVersion = await getProjectTailwindVersionFromConfig(config)
 
-  tree = await massageTreeForFonts(tree, config)
+  if (!options.skipFonts) {
+    tree = await massageTreeForFonts(tree, config)
+  }
 
   await updateTailwindConfig(tree.tailwind?.config, config, {
     silent: options.silent,
@@ -129,9 +136,11 @@ async function addProjectComponents(
     silent: options.silent,
   })
 
-  await updateFonts(tree.fonts, config, {
-    silent: options.silent,
-  })
+  if (!options.skipFonts) {
+    await updateFonts(tree.fonts, config, {
+      silent: options.silent,
+    })
+  }
 
   await updateFiles(tree.files, config, {
     overwrite: options.overwrite,

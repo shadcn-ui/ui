@@ -8,9 +8,10 @@ import {
 } from "@/src/registry/api"
 import { buildUrlAndHeadersForRegistryItem } from "@/src/registry/builder"
 import { configWithDefaults } from "@/src/registry/config"
-import { BASE_COLORS, BUILTIN_REGISTRIES } from "@/src/registry/constants"
+import { BUILTIN_REGISTRIES } from "@/src/registry/constants"
 import { clearRegistryContext } from "@/src/registry/context"
 import { rawConfigSchema } from "@/src/schema"
+import { templates } from "@/src/templates/index"
 import { addComponents } from "@/src/utils/add-components"
 import { createProject } from "@/src/utils/create-project"
 import { loadEnvFiles } from "@/src/utils/env-loader"
@@ -38,7 +39,6 @@ import {
 } from "@/src/utils/get-project-info"
 import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
-import { initMonorepoProject } from "@/src/utils/init-monorepo"
 import { logger } from "@/src/utils/logger"
 import {
   buildInitUrl,
@@ -47,8 +47,6 @@ import {
 } from "@/src/utils/presets"
 import { ensureRegistriesInConfig } from "@/src/utils/registries"
 import { spinner } from "@/src/utils/spinner"
-import { templates } from "@/src/utils/templates/index"
-import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
 import { Command } from "commander"
 import deepmerge from "deepmerge"
 import fsExtra from "fs-extra"
@@ -78,7 +76,6 @@ export const initOptionsSchema = z.object({
   force: z.boolean(),
   silent: z.boolean(),
   isNewProject: z.boolean(),
-  srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
   rtl: z.boolean().optional(),
   template: z
@@ -96,23 +93,6 @@ export const initOptionsSchema = z.object({
           "Invalid template. Please use 'next', 'vite', 'start' or 'next-monorepo'.",
       }
     ),
-  baseColor: z
-    .string()
-    .optional()
-    .refine(
-      (val) => {
-        if (val) {
-          return BASE_COLORS.find((color) => color.name === val)
-        }
-
-        return true
-      },
-      {
-        message: `Invalid base color. Please use '${BASE_COLORS.map(
-          (color) => color.name
-        ).join("', '")}'`,
-      }
-    ),
   installStyleIndex: z.boolean(),
   // Config from registry:base item to merge into components.json.
   registryBaseConfig: rawConfigSchema.deepPartial().optional(),
@@ -126,40 +106,47 @@ export const init = new Command()
     "-t, --template <template>",
     "the template to use. (next, start, vite, next-monorepo)"
   )
-  .option(
-    "-b, --base-color <base-color>",
-    "the base color to use. (neutral, gray, zinc, stone, slate)",
-    undefined
-  )
   .option("-p, --preset [name]", "use a preset configuration")
   .option("-y, --yes", "skip confirmation prompt.", true)
-  .option("-d, --defaults,", "use default configuration.", false)
+  .option(
+    "-d, --defaults,",
+    "use default configuration: --template=next --preset=base-nova",
+    false
+  )
   .option("-f, --force", "force overwrite of existing configuration.", false)
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
     process.cwd()
   )
+  .option("-n, --name <name>", "the name for the new project.")
   .option("-s, --silent", "mute output.", false)
-  .option(
-    "--src-dir",
-    "use the src directory when creating a new project.",
-    false
-  )
-  .option(
-    "--no-src-dir",
-    "do not use the src directory when creating a new project."
-  )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
-  .option("--no-base-style", "do not install the base shadcn style.")
   .option("--rtl", "enable RTL support.", false)
   .action(async (components, opts) => {
     try {
       // Apply defaults when --defaults flag is set.
       if (opts.defaults) {
         opts.template = opts.template || "next"
-        opts.baseColor = opts.baseColor || "neutral"
+
+        // Use base-nova preset as default.
+        const initUrl = buildInitUrl(
+          {
+            base: "base",
+            style: "nova",
+            baseColor: "neutral",
+            theme: "neutral",
+            iconLibrary: "lucide",
+            font: "geist",
+            rtl: opts.rtl ?? false,
+            menuAccent: "subtle",
+            menuColor: "default",
+            radius: "default",
+          },
+          opts.rtl ?? false
+        )
+        components = [initUrl, ...components]
       }
 
       // Validate template early.
@@ -209,7 +196,6 @@ export const init = new Command()
         }
 
         let initUrl: string
-        let baseColor: string
 
         if ("_isUrl" in presetResult) {
           const url = new URL(presetResult.url)
@@ -217,19 +203,12 @@ export const init = new Command()
             url.searchParams.set("rtl", "true")
           }
           initUrl = url.toString()
-          baseColor = url.searchParams.get("baseColor") ?? "neutral"
         } else {
           initUrl = buildInitUrl(presetResult, opts.rtl ?? false)
-          baseColor = presetResult.baseColor
         }
 
         // Prepend the preset URL to the components list.
         components = [initUrl, ...components]
-
-        // Set baseColor from preset if not explicitly provided.
-        if (!opts.baseColor) {
-          opts.baseColor = baseColor
-        }
       }
 
       // Prompt for preset when no preset, no components, and no defaults.
@@ -263,31 +242,31 @@ export const init = new Command()
           title: t.title,
           value,
         }))
-        if (!opts.template) {
-          if (detectedTemplate) {
-            opts.template = detectedTemplate
-            const title =
-              templates[detectedTemplate as keyof typeof templates]?.title ??
-              detectedTemplate
-            logger.log(
-              `${green("✔")} ${bold("Select a template")} ${gray(
-                "›"
-              )} ${title} ${gray("(detected)")}`
-            )
-          } else {
-            const { template } = await prompts({
-              type: "select",
-              name: "template",
-              message: "Select a template",
-              choices: templateChoices,
-            })
+        if (opts.template) {
+          // Template provided via -t flag, use it directly.
+        } else if (detectedTemplate) {
+          opts.template = detectedTemplate
+          const title =
+            templates[detectedTemplate as keyof typeof templates]?.title ??
+            detectedTemplate
+          logger.log(
+            `${green("✔")} ${bold("Select a template")} ${gray(
+              "›"
+            )} ${title} ${gray("(detected)")}`
+          )
+        } else {
+          const { template } = await prompts({
+            type: "select",
+            name: "template",
+            message: "Select a template",
+            choices: templateChoices,
+          })
 
-            if (!template) {
-              process.exit(0)
-            }
-
-            opts.template = template
+          if (!template) {
+            process.exit(0)
           }
+
+          opts.template = template
         }
 
         // Build create URL with template param.
@@ -349,7 +328,6 @@ export const init = new Command()
           opts.rtl ?? false
         )
         components = [initUrl, ...components]
-        opts.baseColor = "neutral"
       }
 
       const options = initOptionsSchema.parse({
@@ -357,7 +335,7 @@ export const init = new Command()
         isNewProject: false,
         components,
         ...opts,
-        installStyleIndex: opts.baseStyle,
+        installStyleIndex: true,
       })
 
       await loadEnvFiles(options.cwd)
@@ -434,27 +412,16 @@ export const init = new Command()
         }
 
         if (item?.type === "registry:style") {
-          // Set a default base color so we're not prompted.
-          // The style will extend or override it.
-          options.baseColor = "neutral"
-
           // If the style extends none, we don't want to install the base style.
           options.installStyleIndex =
             item.extends === "none" ? false : options.installStyleIndex
         }
       }
 
-      // If --no-base-style, we don't want to prompt for a base color either.
-      if (!options.installStyleIndex) {
-        options.baseColor = "neutral"
-      }
-
       await runInit(options)
 
       logger.log(
-        `${highlighter.success(
-          "Success!"
-        )} Project initialization completed.\nYou may now add components.`
+        `Project initialization completed.\nYou may now add components.`
       )
 
       // We need when running with custom cwd.
@@ -494,155 +461,141 @@ export async function runInit(
     projectInfo = await getProjectInfo(options.cwd)
   }
 
-  if (newProjectTemplate === "next-monorepo") {
-    // Prompt for base color if not set.
-    if (!options.baseColor) {
-      const baseColors = await getRegistryBaseColors()
-      const { tailwindBaseColor } = await prompts({
-        type: "select",
-        name: "tailwindBaseColor",
-        message: "Which color would you like to use as the base color?",
-        choices: baseColors.map((color) => ({
-          title: color.label,
-          value: color.name,
-        })),
-      })
-      options.baseColor = tailwindBaseColor
-    }
+  const selectedTemplate = newProjectTemplate
+    ? templates[newProjectTemplate as keyof typeof templates]
+    : undefined
 
+  let result
+  if (selectedTemplate?.init) {
     const components = [
       ...(options.installStyleIndex ? ["index"] : []),
       ...(options.components ?? []),
     ]
-
-    return await initMonorepoProject({
+    result = await selectedTemplate.init({
       projectPath: options.cwd,
       components,
-      installStyleIndex: options.installStyleIndex,
-      baseColor: options.baseColor ?? "neutral",
       registryBaseConfig: options.registryBaseConfig,
       rtl: options.rtl ?? false,
       silent: options.silent,
     })
-  }
+  } else {
+    const projectConfig = await getProjectConfig(options.cwd, projectInfo)
 
-  const projectConfig = await getProjectConfig(options.cwd, projectInfo)
+    let config = projectConfig
+      ? await promptForMinimalConfig(projectConfig, options)
+      : await promptForConfig(await getConfig(options.cwd))
 
-  let config = projectConfig
-    ? await promptForMinimalConfig(projectConfig, options)
-    : await promptForConfig(await getConfig(options.cwd))
+    if (!options.yes) {
+      const { proceed } = await prompts({
+        type: "confirm",
+        name: "proceed",
+        message: `Write configuration to ${highlighter.info(
+          "components.json"
+        )}. Proceed?`,
+        initial: true,
+      })
 
-  if (!options.yes) {
-    const { proceed } = await prompts({
-      type: "confirm",
-      name: "proceed",
-      message: `Write configuration to ${highlighter.info(
-        "components.json"
-      )}. Proceed?`,
-      initial: true,
+      if (!proceed) {
+        process.exit(0)
+      }
+    }
+
+    // Prepare the list of components to be added.
+    const components = [
+      // "index" is the default shadcn style.
+      // Why index? Because when style is true, we read style from components.json and fetch that.
+      // i.e new-york from components.json then fetch /styles/new-york/index.
+      // TODO: Fix this so that we can extend any style i.e --style=new-york.
+      ...(options.installStyleIndex ? ["index"] : []),
+      ...(options.components ?? []),
+    ]
+
+    // Ensure registries are configured for the components we're about to add.
+    const fullConfigForRegistry = await resolveConfigPaths(options.cwd, config)
+    const { config: configWithRegistries } = await ensureRegistriesInConfig(
+      components,
+      fullConfigForRegistry,
+      {
+        silent: true,
+      }
+    )
+
+    // Update config with any new registries found.
+    if (configWithRegistries.registries) {
+      config.registries = configWithRegistries.registries
+    }
+
+    const componentSpinner = spinner(`Writing components.json.`).start()
+    const targetPath = path.resolve(options.cwd, "components.json")
+    const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
+
+    // Merge and keep registries at the end.
+    const mergeConfig = (base: typeof config, override: object) => {
+      const { registries, ...merged } = deepmerge(base, override)
+      return { ...merged, registries } as typeof config
+    }
+
+    // Merge with backup config if it exists.
+    if (fsExtra.existsSync(backupPath)) {
+      const existingConfig = await fsExtra.readJson(backupPath)
+      if (options.force) {
+        // With --force, only preserve registries from existing config.
+        if (existingConfig.registries) {
+          config.registries = {
+            ...existingConfig.registries,
+            ...(config.registries || {}),
+          }
+        }
+      } else {
+        config = mergeConfig(existingConfig, config)
+      }
+    }
+
+    // Merge config from registry:base item.
+    if (options.registryBaseConfig) {
+      config = mergeConfig(config, options.registryBaseConfig)
+    }
+
+    // Ensure rtl is set from CLI option (takes priority over registryBaseConfig).
+    if (options.rtl !== undefined) {
+      config.rtl = options.rtl
+    }
+
+    // Make sure to filter out built-in registries.
+    // TODO: fix this in ensureRegistriesInConfig.
+    config.registries = Object.fromEntries(
+      Object.entries(config.registries || {}).filter(
+        ([key]) => !Object.keys(BUILTIN_REGISTRIES).includes(key)
+      )
+    )
+
+    // Write components.json.
+    await fs.writeFile(
+      targetPath,
+      `${JSON.stringify(config, null, 2)}\n`,
+      "utf8"
+    )
+    componentSpinner.succeed()
+
+    // Add components.
+    const fullConfig = await resolveConfigPaths(options.cwd, config)
+    await addComponents(components, fullConfig, {
+      // Init will always overwrite files.
+      overwrite: true,
+      silent: options.silent,
+      isNewProject:
+        options.isNewProject || projectInfo?.framework.name === "next-app",
     })
 
-    if (!proceed) {
-      process.exit(0)
-    }
+    result = fullConfig
   }
 
-  // Prepare the list of components to be added.
-  const components = [
-    // "index" is the default shadcn style.
-    // Why index? Because when style is true, we read style from components.json and fetch that.
-    // i.e new-york from components.json then fetch /styles/new-york/index.
-    // TODO: Fix this so that we can extend any style i.e --style=new-york.
-    ...(options.installStyleIndex ? ["index"] : []),
-    ...(options.components ?? []),
-  ]
-
-  // Ensure registries are configured for the components we're about to add.
-  const fullConfigForRegistry = await resolveConfigPaths(options.cwd, config)
-  const { config: configWithRegistries } = await ensureRegistriesInConfig(
-    components,
-    fullConfigForRegistry,
-    {
-      silent: true,
-    }
-  )
-
-  // Update config with any new registries found.
-  if (configWithRegistries.registries) {
-    config.registries = configWithRegistries.registries
+  // Run postInit for new projects.
+  if (selectedTemplate?.postInit) {
+    await selectedTemplate.postInit({ projectPath: options.cwd })
   }
 
-  const componentSpinner = spinner(`Writing components.json.`).start()
-  const targetPath = path.resolve(options.cwd, "components.json")
-  const backupPath = `${targetPath}${FILE_BACKUP_SUFFIX}`
-
-  // Merge and keep registries at the end.
-  const mergeConfig = (base: typeof config, override: object) => {
-    const { registries, ...merged } = deepmerge(base, override)
-    return { ...merged, registries } as typeof config
-  }
-
-  // Merge with backup config if it exists.
-  if (fsExtra.existsSync(backupPath)) {
-    const existingConfig = await fsExtra.readJson(backupPath)
-    if (options.force) {
-      // With --force, only preserve registries from existing config.
-      if (existingConfig.registries) {
-        config.registries = {
-          ...existingConfig.registries,
-          ...(config.registries || {}),
-        }
-      }
-    } else {
-      config = mergeConfig(existingConfig, config)
-    }
-  }
-
-  // Merge config from registry:base item.
-  if (options.registryBaseConfig) {
-    config = mergeConfig(config, options.registryBaseConfig)
-  }
-
-  // Ensure rtl is set from CLI option (takes priority over registryBaseConfig).
-  if (options.rtl !== undefined) {
-    config.rtl = options.rtl
-  }
-
-  // Make sure to filter out built-in registries.
-  // TODO: fix this in ensureRegistriesInConfig.
-  config.registries = Object.fromEntries(
-    Object.entries(config.registries || {}).filter(
-      ([key]) => !Object.keys(BUILTIN_REGISTRIES).includes(key)
-    )
-  )
-
-  // Write components.json.
-  await fs.writeFile(targetPath, `${JSON.stringify(config, null, 2)}\n`, "utf8")
-  componentSpinner.succeed()
-
-  // Add components.
-  const fullConfig = await resolveConfigPaths(options.cwd, config)
-  await addComponents(components, fullConfig, {
-    // Init will always overwrite files.
-    overwrite: true,
-    silent: options.silent,
-    isNewProject:
-      options.isNewProject || projectInfo?.framework.name === "next-app",
-  })
-
-  // If a new project is using src dir, let's update the tailwind content config.
-  // TODO: Handle this per framework.
-  if (options.isNewProject && options.srcDir) {
-    await updateTailwindContent(
-      ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
-      fullConfig,
-      {
-        silent: options.silent,
-      }
-    )
-  }
-
-  return fullConfig
+  return result
 }
 
 async function promptForConfig(defaultConfig: Config | null = null) {
@@ -766,14 +719,13 @@ async function promptForMinimalConfig(
   opts: z.infer<typeof initOptionsSchema>
 ) {
   let style = defaultConfig.style
-  let baseColor = opts.baseColor
+  let baseColor = "neutral"
   let cssVariables = defaultConfig.tailwind.cssVariables
   let iconLibrary = defaultConfig.iconLibrary ?? "lucide"
 
   if (!opts.defaults) {
-    const [styles, baseColors, tailwindVersion] = await Promise.all([
+    const [styles, tailwindVersion] = await Promise.all([
       getRegistryStyles(),
-      getRegistryBaseColors(),
       getProjectTailwindVersionFromConfig(defaultConfig),
     ])
 
@@ -790,21 +742,9 @@ async function promptForMinimalConfig(
         })),
         initial: 0,
       },
-      {
-        type: opts.baseColor ? null : "select",
-        name: "tailwindBaseColor",
-        message: `Which color would you like to use as the ${highlighter.info(
-          "base color"
-        )}?`,
-        choices: baseColors.map((color) => ({
-          title: color.label,
-          value: color.name,
-        })),
-      },
     ])
 
     style = options.style ?? style ?? "new-york"
-    baseColor = options.tailwindBaseColor ?? baseColor
   }
 
   // Always respect the explicit --css-variables / --no-css-variables flag.

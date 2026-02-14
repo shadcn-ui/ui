@@ -1,4 +1,3 @@
-import { fetchRegistry } from "@/src/registry/fetcher"
 import { spinner } from "@/src/utils/spinner"
 import { execa } from "execa"
 import fs from "fs-extra"
@@ -19,7 +18,6 @@ import { createProject } from "./create-project"
 vi.mock("fs-extra")
 vi.mock("execa")
 vi.mock("prompts")
-vi.mock("@/src/registry/fetcher")
 vi.mock("@/src/utils/get-package-manager", () => ({
   getPackageManager: vi.fn().mockResolvedValue("npm"),
 }))
@@ -46,7 +44,7 @@ describe("createProject", () => {
     vi.mocked(fs.move).mockResolvedValue(undefined)
     vi.mocked(fs.remove).mockResolvedValue(undefined)
 
-    // Mock execa to resolve immediately without actual execution
+    // Mock execa for template scaffold commands.
     vi.mocked(execa).mockResolvedValue({
       stdout: "",
       stderr: "",
@@ -61,7 +59,7 @@ describe("createProject", () => {
       killed: false,
     } as any)
 
-    // Mock fetch for monorepo template
+    // Mock fetch for template download.
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
       arrayBuffer: () => Promise.resolve(new ArrayBuffer(0)),
@@ -69,9 +67,6 @@ describe("createProject", () => {
 
     // Reset prompts mock
     vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
-
-    // Reset registry mock
-    vi.mocked(fetchRegistry).mockResolvedValue([])
 
     // Mock spinner function
     const mockSpinner = {
@@ -110,7 +105,6 @@ describe("createProject", () => {
     const result = await createProject({
       cwd: "/test",
       force: false,
-      srcDir: false,
     })
 
     expect(result).toEqual({
@@ -118,12 +112,6 @@ describe("createProject", () => {
       projectName: "my-app",
       template: "next",
     })
-
-    expect(execa).toHaveBeenCalledWith(
-      "npx",
-      expect.arrayContaining(["create-next-app@latest", "/test/my-app"]),
-      expect.any(Object)
-    )
   })
 
   it("should create a monorepo project when selected", async () => {
@@ -135,7 +123,6 @@ describe("createProject", () => {
     const result = await createProject({
       cwd: "/test",
       force: false,
-      srcDir: false,
     })
 
     expect(result).toEqual({
@@ -145,13 +132,7 @@ describe("createProject", () => {
     })
   })
 
-  it("should handle remote components and force next template", async () => {
-    vi.mocked(fetchRegistry).mockResolvedValue([
-      {
-        meta: { nextVersion: "13.0.0" },
-      },
-    ])
-
+  it("should force next template for remote components", async () => {
     const result = await createProject({
       cwd: "/test",
       force: true,
@@ -194,21 +175,5 @@ describe("createProject", () => {
     })
 
     expect(mockExit).toHaveBeenCalledWith(1)
-  })
-
-  it("should include --no-react-compiler flag for Next.js (latest)", async () => {
-    vi.mocked(prompts).mockResolvedValue({ type: "next", name: "my-app" })
-
-    await createProject({
-      cwd: "/test",
-      force: false,
-      srcDir: false,
-    })
-
-    expect(execa).toHaveBeenCalledWith(
-      "npx",
-      expect.arrayContaining(["--no-react-compiler"]),
-      expect.any(Object)
-    )
   })
 })

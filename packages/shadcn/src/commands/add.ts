@@ -29,7 +29,6 @@ export const addOptionsSchema = z.object({
   all: z.boolean(),
   path: z.string().optional(),
   silent: z.boolean(),
-  srcDir: z.boolean().optional(),
   cssVariables: z.boolean(),
 })
 
@@ -47,15 +46,6 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the path to add the component to.")
   .option("-s, --silent", "mute output.", false)
-  .option(
-    "--src-dir",
-    "use the src directory when creating a new project.",
-    false
-  )
-  .option(
-    "--no-src-dir",
-    "do not use the src directory when creating a new project."
-  )
   .option("--css-variables", "use css variables for theming.", true)
   .option("--no-css-variables", "do not use css variables for theming.")
   .action(async (components, opts) => {
@@ -177,10 +167,8 @@ export const add = new Command()
           skipPreflight: false,
           silent: options.silent && !hasNewRegistries,
           isNewProject: false,
-          srcDir: options.srcDir,
           cssVariables: options.cssVariables,
           installStyleIndex: shouldInstallStyleIndex,
-          baseColor: shouldInstallStyleIndex ? undefined : "neutral",
           components: options.components,
         })
         initHasRun = true
@@ -192,7 +180,6 @@ export const add = new Command()
         const { projectPath, template } = await createProject({
           cwd: options.cwd,
           force: options.overwrite,
-          srcDir: options.srcDir,
           components: options.components,
         })
         if (!projectPath) {
@@ -213,10 +200,8 @@ export const add = new Command()
             skipPreflight: true,
             silent: !hasNewRegistries && options.silent,
             isNewProject: true,
-            srcDir: options.srcDir,
             cssVariables: options.cssVariables,
             installStyleIndex: shouldInstallStyleIndex,
-            baseColor: shouldInstallStyleIndex ? undefined : "neutral",
             components: options.components,
           })
           initHasRun = true

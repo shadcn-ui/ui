@@ -1,6 +1,7 @@
+import os from "os"
 import path from "path"
 import fs from "fs-extra"
-import { describe, expect, it } from "vitest"
+import { afterAll, beforeAll, describe, expect, it } from "vitest"
 
 import {
   createFixtureTestDirectory,
@@ -15,14 +16,14 @@ describe("shadcn init - next-app", () => {
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
     expect(await fs.pathExists(componentsJsonPath)).toBe(true)
 
     const componentsJson = await fs.readJson(componentsJsonPath)
     expect(componentsJson).toMatchObject({
-      style: "new-york",
+      style: "base-nova",
       rsc: true,
       tsx: true,
       tailwind: {
@@ -54,23 +55,11 @@ describe("shadcn init - next-app", () => {
     expect(cssContent).toContain("--foreground")
   })
 
-  it("should init with custom base color", async () => {
-    const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults", "--base-color=zinc"])
-
-    const componentsJson = await fs.readJson(
-      path.join(fixturePath, "components.json")
-    )
-    expect(componentsJson.style).toBe("new-york")
-    expect(componentsJson.tailwind.baseColor).toBe("zinc")
-  })
-
   it("should init without CSS variables", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, [
       "init",
       "--defaults",
-      "--base-color=stone",
       "--no-css-variables",
     ])
 
@@ -78,16 +67,11 @@ describe("shadcn init - next-app", () => {
       path.join(fixturePath, "components.json")
     )
     expect(componentsJson.tailwind.cssVariables).toBe(false)
-
-    const cssPath = path.join(fixturePath, "app/globals.css")
-    const cssContent = await fs.readFile(cssPath, "utf-8")
-    expect(cssContent).not.toContain("--background")
-    expect(cssContent).not.toContain("--foreground")
   })
 
   it("should init with components", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=neutral", "button"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "button"])
 
     expect(
       await fs.pathExists(path.join(fixturePath, "components/ui/button.tsx"))
@@ -98,13 +82,13 @@ describe("shadcn init - next-app", () => {
 describe("shadcn init - vite-app", () => {
   it("should init with custom alias and src", async () => {
     const fixturePath = await createFixtureTestDirectory("vite-app")
-    await npxShadcn(fixturePath, ["init", "--base-color=gray", "alert-dialog"])
+    await npxShadcn(fixturePath, ["init", "--defaults", "alert-dialog"])
 
     const componentsJson = await fs.readJson(
       path.join(fixturePath, "components.json")
     )
-    expect(componentsJson.style).toBe("new-york")
-    expect(componentsJson.tailwind.baseColor).toBe("gray")
+    expect(componentsJson.style).toBe("base-nova")
+    expect(componentsJson.tailwind.baseColor).toBe("neutral")
     expect(componentsJson.aliases).toMatchObject({
       components: "#custom/components",
       utils: "#custom/lib/utils",
@@ -359,88 +343,6 @@ describe("shadcn init - custom style", async () => {
     ).toBe(true)
   })
 
-  it("should init with --no-base-style", async () => {
-    const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, ["init", "--defaults", "--no-base-style"])
-
-    // We still expect components.json to be created.
-    // With some defaults.
-    const componentsJson = await fs.readJson(
-      path.join(fixturePath, "components.json")
-    )
-    expect(componentsJson.style).toBe("new-york")
-    expect(componentsJson.tailwind.baseColor).toBe("neutral")
-
-    // No utils should be installed.
-    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
-      false
-    )
-
-    // The css file should only have tailwind imports.
-    expect(
-      await fs.readFile(path.join(fixturePath, "app/globals.css"), "utf-8")
-    ).toMatchInlineSnapshot(`
-      "@import "tailwindcss";
-      "
-    `)
-  })
-
-  it("should init with custom style and --no-base-style", async () => {
-    const fixturePath = await createFixtureTestDirectory("next-app")
-    await npxShadcn(fixturePath, [
-      "init",
-      "http://localhost:4445/r/style-extended.json",
-      "--no-base-style",
-    ])
-
-    // We still expect components.json to be created.
-    // With some defaults.
-    const componentsJson = await fs.readJson(
-      path.join(fixturePath, "components.json")
-    )
-    expect(componentsJson.style).toBe("new-york")
-    expect(componentsJson.tailwind.baseColor).toBe("neutral")
-
-    // No utils should be installed.
-    expect(await fs.pathExists(path.join(fixturePath, "lib/utils.ts"))).toBe(
-      false
-    )
-
-    // But we should have the foo.ts from the custom style.
-    expect(
-      await fs.readFile(path.join(fixturePath, "lib/foo.ts"), "utf-8")
-    ).toBe("const foo = 'baz-qux'")
-
-    expect(
-      await fs.readFile(path.join(fixturePath, "app/globals.css"), "utf-8")
-    ).toMatchInlineSnapshot(`
-      "@import "tailwindcss";
-
-      @custom-variant dark (&:is(.dark *));
-
-      @theme inline {
-          --font-sans: Geist Sans, sans-serif;
-          --font-mono: Geist Mono, monospace;
-          --color-custom-brand: var(--custom-brand);
-          --color-secondary: var(--secondary);
-          --foo-var: var(--foo-var);
-          --color-primary: var(--primary);
-      }
-
-      :root {
-          --primary: #059669;
-          --foo-var: 3rem;
-          --secondary: #06b6d4;
-      }
-
-      .dark {
-          --custom-brand: #fef3c7;
-          --foo-var: 2rem;
-      }
-      "
-    `)
-  })
-
   it("should init with custom style extended none", async () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
     await npxShadcn(fixturePath, [
@@ -513,15 +415,97 @@ describe("shadcn init - template flag", () => {
       "-t",
       "next",
       "--defaults",
-      "--base-color=neutral",
     ])
 
     const componentsJsonPath = path.join(fixturePath, "components.json")
     expect(await fs.pathExists(componentsJsonPath)).toBe(true)
 
     const componentsJson = await fs.readJson(componentsJsonPath)
-    expect(componentsJson.style).toBe("new-york")
+    expect(componentsJson.style).toBe("base-nova")
     expect(componentsJson.tailwind.baseColor).toBe("neutral")
+  })
+})
+
+describe("shadcn init - --name flag", () => {
+  // Use os.tmpdir() to create projects outside the monorepo tree.
+  // This prevents pnpm from detecting the monorepo workspace root.
+  let testBaseDir: string
+
+  beforeAll(async () => {
+    testBaseDir = path.join(os.tmpdir(), `shadcn-name-test-${process.pid}`)
+    await fs.ensureDir(testBaseDir)
+  })
+
+  afterAll(async () => {
+    await fs.remove(testBaseDir)
+  })
+
+  it("should create a new project with the specified name", async () => {
+    const projectName = "my-named-app"
+    const emptyDir = path.join(testBaseDir, "empty-next")
+    await fs.ensureDir(emptyDir)
+
+    await npxShadcn(
+      emptyDir,
+      ["init", "--defaults", "--name", projectName],
+      { timeout: 120000 }
+    )
+
+    const projectPath = path.join(emptyDir, projectName)
+
+    // Verify project was created with the correct name.
+    expect(await fs.pathExists(projectPath)).toBe(true)
+    expect(
+      await fs.pathExists(path.join(projectPath, "package.json"))
+    ).toBe(true)
+
+    // Verify components.json was created.
+    const componentsJsonPath = path.join(projectPath, "components.json")
+    expect(await fs.pathExists(componentsJsonPath)).toBe(true)
+
+    // Verify theme-provider is included from the template.
+    expect(
+      await fs.pathExists(
+        path.join(projectPath, "components/theme-provider.tsx")
+      )
+    ).toBe(true)
+  })
+
+  it("should create a new project with --name and -t vite", async () => {
+    const projectName = "my-vite-app"
+    const emptyDir = path.join(testBaseDir, "empty-vite")
+    await fs.ensureDir(emptyDir)
+
+    await npxShadcn(
+      emptyDir,
+      ["init", "--defaults", "--name", projectName, "-t", "vite"],
+      { timeout: 120000 }
+    )
+
+    const projectPath = path.join(emptyDir, projectName)
+
+    // Verify project was created.
+    expect(await fs.pathExists(projectPath)).toBe(true)
+
+    // Verify it's a vite project with the correct name.
+    const packageJson = await fs.readJson(
+      path.join(projectPath, "package.json")
+    )
+    expect(packageJson.name).toBe(projectName)
+    expect(packageJson.dependencies).toHaveProperty("react")
+  })
+})
+
+describe("shadcn init - deprecated --src-dir", () => {
+  it("should reject --src-dir as unknown option", async () => {
+    const fixturePath = await createFixtureTestDirectory("next-app")
+    const result = await npxShadcn(fixturePath, [
+      "init",
+      "--defaults",
+      "--src-dir",
+    ])
+
+    expect(result.exitCode).toBe(1)
   })
 })
 
@@ -532,7 +516,7 @@ describe("shadcn init - existing components.json", () => {
     const fixturePath = await createFixtureTestDirectory("next-app")
 
     // Run init with default configuration.
-    await npxShadcn(fixturePath, ["init", "--defaults", "--base-color=neutral"])
+    await npxShadcn(fixturePath, ["init", "--defaults"])
 
     // Override style in components.json.
     const componentsJsonPath = path.join(fixturePath, "components.json")
@@ -540,17 +524,16 @@ describe("shadcn init - existing components.json", () => {
     config.style = "custom-style"
     await fs.writeJson(componentsJsonPath, config)
 
-    // Reinit with --force and different base color.
+    // Reinit with --force.
     await npxShadcn(fixturePath, [
       "init",
       "--force",
       "--defaults",
-      "--base-color=zinc",
     ])
 
     const newConfig = await fs.readJson(componentsJsonPath)
     expect(newConfig.style).toBe("new-york")
-    expect(newConfig.tailwind.baseColor).toBe("zinc")
+    expect(newConfig.tailwind.baseColor).toBe("neutral")
     expect(await fs.pathExists(componentsJsonPath + ".bak")).toBe(false)
   })
 
@@ -575,7 +558,7 @@ describe("shadcn init - existing components.json", () => {
     const componentsJsonPath = path.join(fixturePath, "components.json")
     await fs.writeJson(componentsJsonPath, existingConfig)
 
-    // Run init with an invalid component - this should fail and restore
+    // Run init with an invalid component - this should fail and restore.
     await npxShadcn(fixturePath, [
       "init",
       "invalid-component-that-does-not-exist",

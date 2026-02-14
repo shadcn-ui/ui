@@ -1,12 +1,9 @@
 import path from "path"
 import { initOptionsSchema } from "@/src/commands/init"
-import { fetchRegistry } from "@/src/registry/fetcher"
+import { templates } from "@/src/templates/index"
 import { getPackageManager } from "@/src/utils/get-package-manager"
-import { handleError } from "@/src/utils/handle-error"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
-import { templates } from "@/src/utils/templates/index"
-import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
 import { z } from "zod"
@@ -14,44 +11,23 @@ import { z } from "zod"
 export async function createProject(
   options: Pick<
     z.infer<typeof initOptionsSchema>,
-    "cwd" | "name" | "force" | "srcDir" | "components" | "template"
+    "cwd" | "name" | "force" | "components" | "template"
   >
 ) {
-  options = {
-    srcDir: false,
-    ...options,
-  }
-
   let template: keyof typeof templates =
     options.template && options.template in templates
       ? (options.template as keyof typeof templates)
       : "next"
   let projectName: string =
     options.name ?? templates[template].defaultProjectName
-  let nextVersion = "latest"
 
   const isRemoteComponent =
     options.components?.length === 1 &&
     !!options.components[0].match(/\/chat\/b\//)
 
-  if (options.components && isRemoteComponent) {
-    try {
-      const [result] = await fetchRegistry(options.components)
-      const { meta } = z
-        .object({
-          meta: z.object({
-            nextVersion: z.string(),
-          }),
-        })
-        .parse(result)
-      nextVersion = meta.nextVersion
-
-      // Force template to next for remote components.
-      template = "next"
-    } catch (error) {
-      logger.break()
-      handleError(error)
-    }
+  // Force template to next for remote components.
+  if (isRemoteComponent) {
+    template = "next"
   }
 
   if (!options.force) {
@@ -116,12 +92,10 @@ export async function createProject(
     process.exit(1)
   }
 
-  await templates[template].init({
+  await templates[template].scaffold({
     projectPath,
     packageManager,
     cwd: options.cwd,
-    srcDir: !!options.srcDir,
-    version: nextVersion,
   })
 
   return {
