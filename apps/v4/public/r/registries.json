@@ -102,6 +102,12 @@
     "description": "A set of clean, modern application building blocks for you in your applications. Free and Open Source"
   },
   {
+    "name": "@boldkit",
+    "homepage": "https://boldkit.dev",
+    "url": "https://boldkit.dev/r/{name}.json",
+    "description": "Neubrutalism component library with 43 components, 42 SVG shapes, thick borders, and hard shadows. Supports React, Vue, and Nuxt. Built on shadcn/ui."
+  },
+  {
     "name": "@bundui",
     "homepage": "https://bundui.io",
     "url": "https://bundui.io/r/{name}.json",
